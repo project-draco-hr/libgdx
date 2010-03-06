@@ -1,0 +1,17 @@
+{
+  l_vez.set(a_dir).nor();
+  l_vex.set(a_dir).nor();
+  l_vex.crs(a_up).nor();
+  l_vey.set(l_vex).crs(l_vez).nor();
+  this.setToIdentity();
+  val[M00]=l_vex.val[0];
+  val[M01]=l_vex.val[1];
+  val[M02]=l_vex.val[2];
+  val[M10]=l_vey.val[0];
+  val[M11]=l_vey.val[1];
+  val[M12]=l_vey.val[2];
+  val[M20]=-l_vez.val[0];
+  val[M21]=-l_vez.val[1];
+  val[M22]=-l_vez.val[2];
+  return this;
+}

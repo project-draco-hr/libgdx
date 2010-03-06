@@ -1,0 +1,10 @@
+{
+  LittleEndianDataInputStream in=new LittleEndianDataInputStream(new ByteArrayInputStream(bytes));
+  in.skip(header.offsetFrames);
+  MD2Frame[] frames=new MD2Frame[header.numFrames];
+  for (int i=0; i < header.numFrames; i++) {
+    frames[i]=loadFrame(header,in);
+  }
+  in.close();
+  return frames;
+}

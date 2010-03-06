@@ -1,0 +1,8 @@
+{
+  pixmap=bitmap;
+  if (pixmap.isMutable())   canvas=new Canvas(pixmap);
+  paint=new Paint();
+  paint.setStyle(Style.FILL);
+  paint.setAntiAlias(true);
+  paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
+}

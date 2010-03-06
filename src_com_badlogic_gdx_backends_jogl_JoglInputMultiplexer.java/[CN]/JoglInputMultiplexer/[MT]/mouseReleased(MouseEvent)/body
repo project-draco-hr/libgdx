@@ -1,0 +1,7 @@
+{
+synchronized (eventQueue) {
+    Event event=freeEvents.get(freeEventIndex++);
+    event.set(EventType.MouseUp,e.getX(),e.getY(),getButton(e.getButton()),0,'\0');
+    eventQueue.add(event);
+  }
+}

@@ -1,0 +1,37 @@
+{
+  int[] ptType=new int[polygon.size()];
+  concaveCount=0;
+  if (!polygonClockwise(polygon)) {
+    Collections.reverse(polygon);
+  }
+  for (int i=0; i < polygon.size(); i++) {
+    if (i == 0) {
+      if (convex(polygon.get(polygon.size() - 1).getX(),polygon.get(polygon.size() - 1).getY(),polygon.get(i).getX(),polygon.get(i).getY(),polygon.get(i + 1).getX(),polygon.get(i + 1).getY())) {
+        ptType[i]=1;
+      }
+ else {
+        ptType[i]=-1;
+        concaveCount++;
+      }
+    }
+ else     if (i == polygon.size() - 1) {
+      if (convex(polygon.get(i - 1).getX(),polygon.get(i - 1).getY(),polygon.get(i).getX(),polygon.get(i).getY(),polygon.get(0).getX(),polygon.get(0).getY())) {
+        ptType[i]=1;
+      }
+ else {
+        ptType[i]=-1;
+        concaveCount++;
+      }
+    }
+ else {
+      if (convex(polygon.get(i - 1).getX(),polygon.get(i - 1).getY(),polygon.get(i).getX(),polygon.get(i).getY(),polygon.get(i + 1).getX(),polygon.get(i + 1).getY())) {
+        ptType[i]=1;
+      }
+ else {
+        ptType[i]=-1;
+        concaveCount++;
+      }
+    }
+  }
+  return ptType;
+}

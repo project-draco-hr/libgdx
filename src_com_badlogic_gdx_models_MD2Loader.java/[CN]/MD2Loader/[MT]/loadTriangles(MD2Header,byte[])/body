@@ -1,0 +1,17 @@
+{
+  LittleEndianDataInputStream in=new LittleEndianDataInputStream(new ByteArrayInputStream(bytes));
+  in.skip(header.offsetTriangles);
+  MD2Triangle[] triangles=new MD2Triangle[header.numTriangles];
+  for (int i=0; i < header.numTriangles; i++) {
+    MD2Triangle triangle=new MD2Triangle();
+    triangle.vertices[0]=in.readShort();
+    triangle.vertices[1]=in.readShort();
+    triangle.vertices[2]=in.readShort();
+    triangle.texCoords[0]=in.readShort();
+    triangle.texCoords[1]=in.readShort();
+    triangle.texCoords[2]=in.readShort();
+    triangles[i]=triangle;
+  }
+  in.close();
+  return triangles;
+}

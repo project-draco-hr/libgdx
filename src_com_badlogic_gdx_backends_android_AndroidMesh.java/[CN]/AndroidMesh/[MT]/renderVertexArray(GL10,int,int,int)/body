@@ -1,0 +1,30 @@
+{
+  GL11 gl11=(GL11)gl;
+  if (lastMesh != null && lastMesh.isVBO) {
+    gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER,0);
+    gl11.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,0);
+  }
+  gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+  gl.glVertexPointer(3,GL10.GL_FLOAT,0,verticesBuffer);
+  if (colorsBuffer != null) {
+    gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+    gl.glColorPointer(4,GL10.GL_FLOAT,0,colorsBuffer);
+  }
+  if (normalsBuffer != null) {
+    gl.glEnableClientState(GL10.GL_NORMAL_ARRAY);
+    gl.glNormalPointer(GL10.GL_FLOAT,0,normalsBuffer);
+  }
+  if (uvBuffer != null) {
+    gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+    gl.glTexCoordPointer(2,GL10.GL_FLOAT,0,uvBuffer);
+  }
+  if (indicesBuffer != null) {
+    indicesBuffer.position(offset);
+    gl.glDrawElements(type,numVertices,GL10.GL_UNSIGNED_SHORT,indicesBuffer);
+  }
+ else   gl.glDrawArrays(type,offset,numVertices);
+  gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
+  gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
+  gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+  gl.glDisableClientState(GL10.GL_NORMAL_ARRAY);
+}

@@ -1,0 +1,5 @@
+{
+  if (buffer.length / 2 < samples.length)   buffer=new byte[samples.length * 2];
+  fillBuffer(samples);
+  out.write(buffer,0,buffer.length);
+}

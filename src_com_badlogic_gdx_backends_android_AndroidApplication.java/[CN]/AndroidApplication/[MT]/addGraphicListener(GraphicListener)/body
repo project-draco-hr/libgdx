@@ -1,0 +1,5 @@
+{
+synchronized (setupListeners) {
+    setupListeners.add(listener);
+  }
+}

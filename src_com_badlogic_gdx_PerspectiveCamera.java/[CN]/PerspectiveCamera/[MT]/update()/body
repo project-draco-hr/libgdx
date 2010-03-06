@@ -1,0 +1,10 @@
+{
+  float aspect=viewportWidth / viewportHeight;
+  frustum.setCameraParameters(fov,aspect,near,far);
+  frustum.setCameraOrientation(position,direction,up);
+  right.set(direction).crs(up);
+  proj.setToProjection(near,far,fov,aspect);
+  model.setToLookat(direction,up);
+  model.mul(tmp.setToTranslation(position.tmp().mul(-1)));
+  comb.set(proj).mul(model);
+}

@@ -1,0 +1,5 @@
+{
+  int flags=(color ? GL10.GL_COLOR_BUFFER_BIT : 0) | (depth ? GL10.GL_DEPTH_BUFFER_BIT : 0) | (stencil ? GL10.GL_STENCIL_BUFFER_BIT : 0);
+  if (depth)   gl.glDepthMask(true);
+  gl.glClear(flags);
+}

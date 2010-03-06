@@ -1,0 +1,4 @@
+{
+  int streamVolume=manager.getStreamVolume(AudioManager.STREAM_MUSIC);
+  soundPool.play(soundId,streamVolume,streamVolume,1,0,1);
+}

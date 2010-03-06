@@ -1,0 +1,4 @@
+{
+  Bitmap image=BitmapFactory.decodeStream(in);
+  return new AndroidTexture(gl,image,minFilter,maxFilter,uWrap,vWrap);
+}

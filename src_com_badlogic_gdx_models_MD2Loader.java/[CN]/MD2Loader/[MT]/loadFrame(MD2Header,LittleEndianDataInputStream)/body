@@ -1,0 +1,24 @@
+{
+  MD2Frame frame=new MD2Frame();
+  frame.vertices=new float[header.numVertices * 3];
+  float scaleX=in.readFloat() / 25.0f, scaleY=in.readFloat() / 25.0f, scaleZ=in.readFloat() / 25.0f;
+  float transX=in.readFloat() / 25.0f, transY=in.readFloat() / 25.0f, transZ=in.readFloat() / 25.0f;
+  in.readFully(charBuffer);
+  int len=0;
+  for (int i=0; i < charBuffer.length; i++)   if (charBuffer[i] == 0) {
+    len=i - 1;
+    break;
+  }
+  frame.name=new String(charBuffer,0,len);
+  int vertIdx=0;
+  for (int i=0; i < header.numVertices; i++) {
+    float x=in.read() * scaleX + transX;
+    float y=in.read() * scaleY + transY;
+    float z=in.read() * scaleZ + transZ;
+    frame.vertices[vertIdx++]=y;
+    frame.vertices[vertIdx++]=z;
+    frame.vertices[vertIdx++]=x;
+    in.read();
+  }
+  return frame;
+}

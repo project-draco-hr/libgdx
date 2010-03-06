@@ -1,0 +1,9 @@
+{
+  int N=spectrum.length * timeSize;
+  sinlookup=new float[N];
+  coslookup=new float[N];
+  for (int i=0; i < N; i++) {
+    sinlookup[i]=(float)Math.sin(i * TWO_PI / timeSize);
+    coslookup[i]=(float)Math.cos(i * TWO_PI / timeSize);
+  }
+}

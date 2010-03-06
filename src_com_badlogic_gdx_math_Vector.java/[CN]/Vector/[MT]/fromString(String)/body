@@ -1,0 +1,4 @@
+{
+  String[] coords=nodeValue.split(" ");
+  return new Vector(Float.parseFloat(coords[0]),Float.parseFloat(coords[1]),Float.parseFloat(coords[2]));
+}

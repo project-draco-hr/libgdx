@@ -1,0 +1,20 @@
+{
+  GL gl=GLContext.getCurrent().getGL();
+  if (state == RenderState.Blending) {
+    gl.glEnable(GL.GL_BLEND);
+  }
+  if (state == RenderState.DepthTest) {
+    gl.glEnable(GL.GL_DEPTH_TEST);
+    gl.glDepthMask(true);
+  }
+  if (state == RenderState.Lighting) {
+    gl.glEnable(GL.GL_LIGHTING);
+    gl.glEnable(GL.GL_COLOR_MATERIAL);
+  }
+  if (state == RenderState.AlphaTest) {
+    gl.glEnable(GL.GL_ALPHA_TEST);
+    gl.glAlphaFunc(GL.GL_GREATER,0.9f);
+  }
+  if (state == RenderState.Texturing)   gl.glEnable(GL.GL_TEXTURE_2D);
+  if (state == RenderState.Culling)   gl.glEnable(GL.GL_CULL_FACE);
+}

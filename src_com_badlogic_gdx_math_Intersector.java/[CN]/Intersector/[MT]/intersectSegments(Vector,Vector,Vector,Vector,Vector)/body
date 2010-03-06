@@ -1,0 +1,11 @@
+{
+  float x1=p1.getX(), y1=p1.getY(), x2=p2.getX(), y2=p2.getY(), x3=p3.getX(), y3=p3.getY(), x4=p4.getX(), y4=p4.getY();
+  float d=(y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
+  if (d == 0)   return false;
+  float ua=((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / d;
+  float ub=((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / d;
+  if (ua < 0 || ua > 1)   return false;
+  if (ub < 0 || ub > 1)   return false;
+  intersection.set(x1 + (x2 - x1) * ua,y1 + (y2 - y1) * ua,0);
+  return true;
+}

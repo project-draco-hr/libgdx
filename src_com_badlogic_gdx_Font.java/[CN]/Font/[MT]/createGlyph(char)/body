@@ -1,0 +1,13 @@
+{
+  Object bitmap=getGlyphBitmap(character);
+  Rectangle rect=new Rectangle();
+  getGlyphBounds(character,rect);
+  if (glyphX + rect.width >= 256) {
+    glyphX=0;
+    glyphY+=getLineGap() + getLineHeight();
+  }
+  texture.draw(bitmap,glyphX,glyphY);
+  Glyph glyph=new Glyph(getGlyphAdvance(character),(int)rect.width,(int)rect.height,glyphX / 256.0f,glyphY / 256.0f,rect.width / 256.0f,rect.height / 256.0f);
+  glyphX+=rect.width;
+  return glyph;
+}

@@ -1,0 +1,6 @@
+{
+  ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+  int b=-1;
+  while ((b=in.read()) != -1)   bytes.write(b);
+  this.bytes=bytes.toByteArray();
+}

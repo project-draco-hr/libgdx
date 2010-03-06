@@ -1,0 +1,8 @@
+{
+  if (type == PrimitiveType.Lines)   return GL10.GL_LINES;
+ else   if (type == PrimitiveType.Triangles)   return GL10.GL_TRIANGLES;
+ else   if (type == PrimitiveType.LineStrip)   return GL10.GL_LINE_STRIP;
+ else   if (type == PrimitiveType.TriangleStrip)   return GL10.GL_TRIANGLE_STRIP;
+ else   if (type == PrimitiveType.Points)   return GL10.GL_POINTS;
+ else   return GL10.GL_TRIANGLE_FAN;
+}

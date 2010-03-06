@@ -1,0 +1,4 @@
+{
+  crn_dirty=true;
+  return this.set(min.set(Math.min(min.getX(),a_vec.getX()),Math.min(min.getY(),a_vec.getY()),Math.min(min.getZ(),a_vec.getZ())),max.set(Math.max(max.getX(),a_vec.getX()),Math.max(max.getY(),a_vec.getY()),Math.max(max.getZ(),a_vec.getZ())));
+}

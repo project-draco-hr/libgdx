@@ -1,0 +1,7 @@
+{
+  if (style == FontStyle.Plain)   return java.awt.Font.PLAIN;
+  if (style == FontStyle.Bold)   return java.awt.Font.BOLD;
+  if (style == FontStyle.Italic)   return java.awt.Font.ITALIC;
+  if (style == FontStyle.BoldItalic)   return java.awt.Font.BOLD | java.awt.Font.ITALIC;
+  return java.awt.Font.PLAIN;
+}

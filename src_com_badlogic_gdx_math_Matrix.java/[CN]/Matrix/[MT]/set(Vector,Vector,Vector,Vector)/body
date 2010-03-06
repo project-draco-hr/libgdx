@@ -1,0 +1,18 @@
+{
+  val[M00]=xAxis.getX();
+  val[M01]=xAxis.getY();
+  val[M02]=xAxis.getZ();
+  val[M10]=yAxis.getX();
+  val[M11]=yAxis.getY();
+  val[M12]=yAxis.getZ();
+  val[M20]=-zAxis.getX();
+  val[M21]=-zAxis.getY();
+  val[M22]=-zAxis.getZ();
+  val[M03]=pos.getX();
+  val[M13]=pos.getY();
+  val[M23]=pos.getZ();
+  val[M30]=0;
+  val[M31]=0;
+  val[M32]=0;
+  val[M33]=1;
+}

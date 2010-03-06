@@ -1,0 +1,39 @@
+{
+  float rotation=0;
+  if (side == Side.FRONT) {
+    direction.set(0,0,-1);
+    up.set(0,1,0);
+  }
+ else   if (side == Side.BACK) {
+    axis.set(0,1,0);
+    rotation=180;
+    direction.set(0,0,1);
+    up.set(0,1,0);
+  }
+ else   if (side == Side.TOP) {
+    axis.set(1,0,0);
+    rotation=90;
+    direction.set(0,-1,0);
+    up.set(0,0,-1);
+  }
+ else   if (side == Side.BOTTOM) {
+    axis.set(1,0,0);
+    rotation=-90;
+    direction.set(0,1,0);
+    up.set(0,0,-1);
+  }
+ else   if (side == Side.LEFT) {
+    axis.set(0,1,0);
+    rotation=90;
+    direction.set(-1,0,0);
+    up.set(0,1,0);
+  }
+ else   if (side == Side.RIGHT) {
+    axis.set(0,1,0);
+    rotation=-90;
+    direction.set(1,0,0);
+    up.set(0,1,0);
+  }
+  rotationMatrix.setToRotation(axis,rotation);
+  return rotationMatrix;
+}

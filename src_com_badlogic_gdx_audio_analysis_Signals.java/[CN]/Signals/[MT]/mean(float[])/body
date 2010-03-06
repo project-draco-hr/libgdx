@@ -1,0 +1,6 @@
+{
+  float mean=0;
+  for (int i=0; i < signal.length; i++)   mean+=signal[i];
+  mean/=signal.length;
+  return mean;
+}

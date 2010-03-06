@@ -1,0 +1,14 @@
+{
+  float u=(point.getX() - start.getX()) * (end.getX() - start.getX()) + (point.getY() - start.getY()) * (end.getY() - start.getY());
+  float d=start.dst(end);
+  u/=(d * d);
+  if (u < 0 || u > 1)   return Float.POSITIVE_INFINITY;
+  tmp.set(end).sub(start);
+  tmp2.set(start).add(tmp.mul(u));
+  d=tmp2.dst(point);
+  if (d < radius) {
+    displacement.set(point).sub(tmp2).nor();
+    return d;
+  }
+ else   return Float.POSITIVE_INFINITY;
+}

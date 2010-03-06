@@ -1,0 +1,13 @@
+{
+  if (func == BlendFunc.DestAlpha)   return GL10.GL_DST_ALPHA;
+  if (func == BlendFunc.DestColor)   return GL10.GL_DST_COLOR;
+  if (func == BlendFunc.One)   return GL10.GL_ONE;
+  if (func == BlendFunc.OneMinusDestAlpha)   return GL10.GL_ONE_MINUS_DST_ALPHA;
+  if (func == BlendFunc.OneMinusDestColor)   return GL10.GL_ONE_MINUS_DST_COLOR;
+  if (func == BlendFunc.OneMinusSourceAlpha)   return GL10.GL_ONE_MINUS_SRC_ALPHA;
+  if (func == BlendFunc.OneMinusSourceColor)   return GL10.GL_ONE_MINUS_SRC_COLOR;
+  if (func == BlendFunc.SourceAlpha)   return GL10.GL_SRC_ALPHA;
+  if (func == BlendFunc.SourceColor)   return GL10.GL_SRC_COLOR;
+  if (func == BlendFunc.Zero)   return GL10.GL_ZERO;
+  return GL10.GL_ONE;
+}
