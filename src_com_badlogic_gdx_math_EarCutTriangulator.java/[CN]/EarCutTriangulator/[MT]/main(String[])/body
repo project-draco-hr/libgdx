@@ -1,9 +1,0 @@
-{
-  List<Vector> poly=new ArrayList<Vector>();
-  poly.add(new Vector(-10,-10,0));
-  poly.add(new Vector(10,-10,0));
-  poly.add(new Vector(10,10,0));
-  poly.add(new Vector(-10,10,0));
-  List<Vector> triangles=new EarCutTriangulator().triangulate(poly);
-  for (  Vector v : triangles)   System.out.println(v);
-}

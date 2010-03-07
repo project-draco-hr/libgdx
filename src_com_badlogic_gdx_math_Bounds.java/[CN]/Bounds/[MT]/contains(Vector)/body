@@ -1,9 +1,0 @@
-{
-  if (min.getX() > v.getX())   return false;
-  if (max.getX() < v.getX())   return false;
-  if (min.getY() > v.getY())   return false;
-  if (max.getY() < v.getY())   return false;
-  if (min.getZ() > v.getZ())   return false;
-  if (max.getZ() < v.getZ())   return false;
-  return true;
-}

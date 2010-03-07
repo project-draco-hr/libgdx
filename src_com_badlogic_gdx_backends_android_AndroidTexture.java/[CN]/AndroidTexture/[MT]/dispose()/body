@@ -1,6 +1,0 @@
-{
-  int[] textures={textureHandle};
-  gl.glDeleteTextures(1,textures,0);
-  textureHandle=0;
-  this.textures--;
-}

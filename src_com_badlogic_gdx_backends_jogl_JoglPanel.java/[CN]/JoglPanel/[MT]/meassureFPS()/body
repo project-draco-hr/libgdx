@@ -1,9 +1,0 @@
-{
-  frames++;
-  if (System.nanoTime() - start_time > 1000000000) {
-    framesPerSecond=frames;
-    frames=0;
-    start_time=System.nanoTime();
-    System.out.println("AFX fps: " + framesPerSecond + ", #meshes: "+ JoglMesh.meshes+ ", #textures: "+ JoglTexture.textures);
-  }
-}

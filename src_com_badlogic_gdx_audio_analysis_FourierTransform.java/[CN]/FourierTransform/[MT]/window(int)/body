@@ -1,8 +1,0 @@
-{
-  if (which < 0 || which > 1) {
-    throw new IllegalArgumentException("Invalid window type.");
-  }
- else {
-    whichWindow=which;
-  }
-}

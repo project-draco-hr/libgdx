@@ -1,7 +1,0 @@
-{
-  for (int i=0; i < count; i++) {
-    float s=src.get(i);
-    float d=dst.get(i);
-    out.put(i,s + (d - s) * alpha);
-  }
-}

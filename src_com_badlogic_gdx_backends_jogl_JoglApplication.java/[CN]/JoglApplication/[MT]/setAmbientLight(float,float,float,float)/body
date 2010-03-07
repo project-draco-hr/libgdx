@@ -1,8 +1,0 @@
-{
-  GL gl=GLContext.getCurrent().getGL();
-  color[0]=r;
-  color[1]=g;
-  color[2]=b;
-  color[3]=a;
-  gl.glLightModelfv(GL.GL_LIGHT_MODEL_AMBIENT,color,0);
-}

@@ -1,5 +1,0 @@
-{
-  GL gl=GLContext.getCurrent().getGL();
-  if (order == CullMode.Clockwise)   gl.glCullFace(GL.GL_CW);
- else   gl.glCullFace(GL.GL_CCW);
-}

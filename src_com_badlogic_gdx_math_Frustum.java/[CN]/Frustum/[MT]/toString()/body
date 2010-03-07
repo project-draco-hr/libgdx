@@ -1,9 +1,0 @@
-{
-  StringBuilder builder=new StringBuilder();
-  for (  Plane plane : planes) {
-    builder.append(plane.normal);
-    builder.append(plane.d);
-    builder.append("\n");
-  }
-  return builder.toString();
-}

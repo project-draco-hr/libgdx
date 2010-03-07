@@ -1,7 +1,0 @@
-{
-  if (dirty) {
-    if (isVBO)     updateVertexBufferObject(gl);
- else     updateVertexArray();
-    dirty=false;
-  }
-}

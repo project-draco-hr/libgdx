@@ -1,7 +1,0 @@
-{
-  tmp.set(start).add(dir);
-  tmp.mul(matrix);
-  start.mul(matrix);
-  dir.set(tmp.sub(start));
-  return this;
-}

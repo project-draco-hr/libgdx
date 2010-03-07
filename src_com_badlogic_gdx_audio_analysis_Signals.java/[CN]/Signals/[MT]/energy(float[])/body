@@ -1,5 +1,0 @@
-{
-  float totalEnergy=0;
-  for (int i=0; i < signal.length; i++)   totalEnergy+=(signal[i] * signal[i]);
-  return totalEnergy;
-}

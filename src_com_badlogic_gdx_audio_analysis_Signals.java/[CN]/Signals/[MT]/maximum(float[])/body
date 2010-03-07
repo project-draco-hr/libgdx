@@ -1,5 +1,0 @@
-{
-  float max=Float.NEGATIVE_INFINITY;
-  for (int i=0; i < signal.length; i++)   max=Math.max(max,signal[i]);
-  return max;
-}

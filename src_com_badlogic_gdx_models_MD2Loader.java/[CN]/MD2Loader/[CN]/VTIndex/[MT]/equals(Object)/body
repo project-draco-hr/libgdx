@@ -1,9 +1,0 @@
-{
-  if (this == obj)   return true;
-  if (obj == null)   return false;
-  if (getClass() != obj.getClass())   return false;
-  VTIndex other=(VTIndex)obj;
-  if (tIdx != other.tIdx)   return false;
-  if (vIdx != other.vIdx)   return false;
-  return true;
-}

@@ -1,6 +1,0 @@
-{
-  float l_ang=(float)(a_ang * (Math.PI / 180));
-  float l_sin=(float)(Math.sin(l_ang / 2));
-  float l_cos=(float)(Math.cos(l_ang / 2));
-  return this.set(a_axs.getX() * l_sin,a_axs.getY() * l_sin,a_axs.getZ() * l_sin,l_cos).nor();
-}
