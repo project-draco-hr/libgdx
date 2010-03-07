@@ -1,0 +1,7 @@
+{
+  setViewport(app.getViewportWidth(),app.getViewportHeight());
+  app.setMatrixMode(MatrixMode.Projection);
+  app.loadMatrix(getCombinedMatrix().val);
+  app.setMatrixMode(MatrixMode.ModelView);
+  app.loadIdentity();
+}

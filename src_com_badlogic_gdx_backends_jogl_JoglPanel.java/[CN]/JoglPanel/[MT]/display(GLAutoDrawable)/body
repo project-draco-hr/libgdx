@@ -3,9 +3,9 @@
   deltaTime=(System.nanoTime() - frameStart) / 1000000000.0f;
   frameStart=System.nanoTime();
   mean.addValue(deltaTime);
-  for (  GraphicListener listener : setupListeners)   listener.setup(application);
+  for (  RenderListener listener : setupListeners)   listener.setup(application);
   listeners.addAll(setupListeners);
   setupListeners.clear();
-  for (  GraphicListener listener : listeners)   listener.render(application);
+  for (  RenderListener listener : listeners)   listener.render(application);
   meassureFPS();
 }

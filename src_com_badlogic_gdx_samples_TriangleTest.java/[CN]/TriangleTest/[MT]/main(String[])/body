@@ -1,4 +1,4 @@
 {
   JoglApplication app=new JoglApplication("Triangle",480,320);
-  app.addGraphicListener(new Triangle());
+  app.addRenderListener(new TriangleTest());
 }
