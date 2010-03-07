@@ -3,8 +3,10 @@
   thread=new Thread(new Runnable(){
     @Override public void run(){
       AudioDevice device=application.getAudioDevice();
-      NativeMP3Decoder decoder=new NativeMP3Decoder("D:/music/Audioslave/Audioslave/Cochise.mp3");
-      while (decoder.readSamples(samples) > 0 && !finished)       device.writeSamples(samples);
+      NativeMP3Decoder decoder=new NativeMP3Decoder("/sdcard/audio/cloudconnected.mp3");
+      while (decoder.readSamples(samples) > 0 && !finished) {
+        device.writeSamples(samples);
+      }
     }
   }
 );
