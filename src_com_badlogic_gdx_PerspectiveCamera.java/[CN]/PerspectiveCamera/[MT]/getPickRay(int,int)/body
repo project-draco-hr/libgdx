@@ -1,0 +1,3 @@
+{
+  return frustum.calculatePickRay(viewportWidth,viewportHeight,screenX,viewportHeight - screenY - 1,position,direction,up);
+}

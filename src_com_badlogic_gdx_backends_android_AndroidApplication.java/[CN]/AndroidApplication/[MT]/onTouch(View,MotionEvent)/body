@@ -1,0 +1,12 @@
+{
+  if (requestedFocus) {
+    glView.requestFocus();
+    glView.requestFocusFromTouch();
+    requestedFocus=false;
+  }
+  if (!multitouchEnabled) {
+    singleTouch(event);
+    sleep(16);
+  }
+  return true;
+}

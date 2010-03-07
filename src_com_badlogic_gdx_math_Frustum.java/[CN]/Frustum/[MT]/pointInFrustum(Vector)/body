@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < planes.size(); i++) {
+    Intersection result=planes.get(i).testPoint(p);
+    if (result == Intersection.Back)     return false;
+  }
+  return true;
+}

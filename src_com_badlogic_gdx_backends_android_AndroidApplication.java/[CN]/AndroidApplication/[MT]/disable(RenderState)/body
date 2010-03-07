@@ -1,0 +1,11 @@
+{
+  if (state == RenderState.Blending)   gl.glDisable(GL10.GL_BLEND);
+  if (state == RenderState.DepthTest) {
+    gl.glDisable(GL10.GL_DEPTH_TEST);
+    gl.glDepthMask(false);
+  }
+  if (state == RenderState.Lighting)   gl.glDisable(GL10.GL_LIGHTING);
+  if (state == RenderState.Texturing)   gl.glDisable(GL10.GL_TEXTURE_2D);
+  if (state == RenderState.Culling)   gl.glDisable(GL10.GL_CULL_FACE);
+  if (state == RenderState.AlphaTest)   gl.glDisable(GL10.GL_ALPHA_TEST);
+}

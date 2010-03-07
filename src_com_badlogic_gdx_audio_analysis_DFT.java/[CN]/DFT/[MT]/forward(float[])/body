@@ -1,0 +1,16 @@
+{
+  if (samples.length != timeSize) {
+    throw new IllegalArgumentException("DFT.forward: The length of the passed sample buffer must be equal to DFT.timeSize().");
+  }
+  doWindow(samples);
+  int N=samples.length;
+  for (int f=0; f <= N / 2; f++) {
+    real[f]=0.0f;
+    imag[f]=0.0f;
+    for (int t=0; t < N; t++) {
+      real[f]+=samples[t] * cos(t * f);
+      imag[f]+=samples[t] * -sin(t * f);
+    }
+  }
+  fillSpectrum();
+}

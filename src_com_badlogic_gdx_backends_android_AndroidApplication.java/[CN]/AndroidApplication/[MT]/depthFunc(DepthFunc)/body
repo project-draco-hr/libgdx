@@ -1,0 +1,10 @@
+{
+  if (func == DepthFunc.Always)   gl.glDepthFunc(GL10.GL_ALWAYS);
+  if (func == DepthFunc.Equal)   gl.glDepthFunc(GL10.GL_EQUAL);
+  if (func == DepthFunc.Greater)   gl.glDepthFunc(GL10.GL_GREATER);
+  if (func == DepthFunc.Less)   gl.glDepthFunc(GL10.GL_LESS);
+  if (func == DepthFunc.LessEqual)   gl.glDepthFunc(GL10.GL_LEQUAL);
+  if (func == DepthFunc.Never)   gl.glDepthFunc(GL10.GL_NEVER);
+  if (func == DepthFunc.GreaterEqual)   gl.glDepthFunc(GL10.GL_GEQUAL);
+  if (func == DepthFunc.NotEqual)   gl.glDepthFunc(GL10.GL_NOTEQUAL);
+}

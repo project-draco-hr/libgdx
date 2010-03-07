@@ -1,0 +1,33 @@
+{
+  vertices=new float[numVertices * 3];
+  int[] buffer=new int[1];
+  gl.glGenBuffers(1,buffer,0);
+  vertexHandle=buffer[0];
+  verticesBuffer=FloatBuffer.wrap(vertices);
+  if (hasColors) {
+    colors=new float[numVertices * 4];
+    gl.glGenBuffers(1,buffer,0);
+    colorHandle=buffer[0];
+    colorsBuffer=FloatBuffer.wrap(colors);
+  }
+  if (hasNormals) {
+    normals=new float[numVertices * 3];
+    gl.glGenBuffers(1,buffer,0);
+    normalHandle=buffer[0];
+    normalsBuffer=FloatBuffer.wrap(normals);
+  }
+  if (hasUV) {
+    uv=new float[numVertices * 2];
+    gl.glGenBuffers(1,buffer,0);
+    uvHandle=buffer[0];
+    uvBuffer=FloatBuffer.wrap(uv);
+  }
+  if (hasIndices) {
+    indices=new short[numIndices];
+    gl.glGenBuffers(1,buffer,0);
+    indexHandle=buffer[0];
+    indicesBuffer=ShortBuffer.wrap(indices);
+  }
+  setDirty();
+  updateVertexBufferObject(gl);
+}

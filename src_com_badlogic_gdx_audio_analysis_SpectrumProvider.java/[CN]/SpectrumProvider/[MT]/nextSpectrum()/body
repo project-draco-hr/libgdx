@@ -1,0 +1,14 @@
+{
+  if (currentSample >= samples.length) {
+    float[] tmp=nextSamples;
+    nextSamples=samples;
+    samples=tmp;
+    if (decoder.readSamples(nextSamples) == 0)     return null;
+    currentSample-=samples.length;
+  }
+  System.arraycopy(samples,currentSample,tempSamples,0,samples.length - currentSample);
+  System.arraycopy(nextSamples,0,tempSamples,samples.length - currentSample,currentSample);
+  fft.forward(tempSamples);
+  currentSample+=hopSize;
+  return fft.getSpectrum();
+}

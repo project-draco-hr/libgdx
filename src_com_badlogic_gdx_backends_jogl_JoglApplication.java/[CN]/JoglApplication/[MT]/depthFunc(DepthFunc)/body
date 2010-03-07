@@ -1,0 +1,11 @@
+{
+  GL gl=GLContext.getCurrent().getGL();
+  if (func == DepthFunc.Always)   gl.glDepthFunc(GL.GL_ALWAYS);
+  if (func == DepthFunc.Equal)   gl.glDepthFunc(GL.GL_EQUAL);
+  if (func == DepthFunc.Greater)   gl.glDepthFunc(GL.GL_GREATER);
+  if (func == DepthFunc.Less)   gl.glDepthFunc(GL.GL_LESS);
+  if (func == DepthFunc.LessEqual)   gl.glDepthFunc(GL.GL_LEQUAL);
+  if (func == DepthFunc.Never)   gl.glDepthFunc(GL.GL_NEVER);
+  if (func == DepthFunc.GreaterEqual)   gl.glDepthFunc(GL.GL_GEQUAL);
+  if (func == DepthFunc.NotEqual)   gl.glDepthFunc(GL.GL_NOTEQUAL);
+}

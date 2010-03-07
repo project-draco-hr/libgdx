@@ -1,0 +1,5 @@
+{
+  update(gl);
+  if (indices != null)   render(type,numIndices,0);
+ else   render(type,numVertices,0);
+}

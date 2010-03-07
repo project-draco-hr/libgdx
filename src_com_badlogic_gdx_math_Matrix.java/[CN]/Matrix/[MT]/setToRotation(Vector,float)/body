@@ -1,0 +1,5 @@
+{
+  this.setToIdentity();
+  if (a_ang == 0)   return this;
+  return this.set(quat.set(a_axs,a_ang));
+}

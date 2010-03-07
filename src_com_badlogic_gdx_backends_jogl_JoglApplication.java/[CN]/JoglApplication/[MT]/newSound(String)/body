@@ -1,0 +1,9 @@
+{
+  try {
+    return new JoglSound(getResourceInputStream(file));
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+    throw new RuntimeException("couldn't load sound '" + file + "'");
+  }
+}

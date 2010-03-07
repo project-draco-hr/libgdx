@@ -1,0 +1,9 @@
+{
+  super(app);
+  font=Typeface.createFromAsset(assets,file);
+  paint=new Paint();
+  paint.setTypeface(font);
+  paint.setTextSize(size);
+  paint.setAntiAlias(false);
+  metrics=paint.getFontMetrics();
+}

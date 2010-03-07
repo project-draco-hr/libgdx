@@ -1,0 +1,32 @@
+{
+  super.onCreate(savedInstanceState);
+  Log.d("AFX","application created");
+  setRequestedOrientation(0);
+  requestWindowFeature(Window.FEATURE_NO_TITLE);
+  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+  glView=new GLSurfaceView(this){
+    public boolean onKeyDown(    int keychar,    KeyEvent event){
+      keys.add(keychar);
+      return false;
+    }
+    @Override public boolean onKeyUp(    int keychar,    KeyEvent event){
+      keys.remove(keychar);
+      return false;
+    }
+  }
+;
+  glView.setEGLConfigChooser(true);
+  glView.setRenderer(this);
+  glView.setKeepScreenOn(true);
+  setContentView(glView);
+  glView.setOnTouchListener(this);
+  glView.setFocusable(true);
+  glView.setFocusableInTouchMode(true);
+  glView.requestFocus();
+  glView.requestFocusFromTouch();
+  setupSensors(this);
+  setupSoundManager(this);
+  setVolumeControlStream(AudioManager.STREAM_MUSIC);
+  for (int i=0; i < 1000; i++)   freeEvents.add(new Event());
+  handle=new Handler();
+}

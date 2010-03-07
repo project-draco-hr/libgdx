@@ -1,0 +1,6 @@
+{
+synchronized (eventQueue) {
+    listeners.add(listener);
+    disabled.put(listener,false);
+  }
+}

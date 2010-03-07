@@ -1,0 +1,9 @@
+{
+  float a=point.val[0] - val[0];
+  float b=point.val[1] - val[1];
+  float c=point.val[2] - val[2];
+  a*=a;
+  b*=b;
+  c*=c;
+  return a + b + c;
+}

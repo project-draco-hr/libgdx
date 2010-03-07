@@ -1,0 +1,37 @@
+{
+  if (lastMesh == this) {
+    if (indexHandle != -1) {
+      gl.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER,indexHandle);
+      gl.glDrawElements(type,numVertices,GL.GL_UNSIGNED_SHORT,offset);
+    }
+ else     gl.glDrawArrays(type,offset,numVertices);
+    return;
+  }
+  gl.glEnableClientState(GL.GL_VERTEX_ARRAY);
+  gl.glBindBuffer(GL.GL_ARRAY_BUFFER,vertexHandle);
+  gl.glVertexPointer(3,GL.GL_FLOAT,0,0);
+  if (colorHandle != -1) {
+    gl.glEnableClientState(GL.GL_COLOR_ARRAY);
+    gl.glBindBuffer(GL.GL_ARRAY_BUFFER,colorHandle);
+    gl.glColorPointer(4,GL.GL_FLOAT,0,0);
+  }
+  if (normalHandle != -1) {
+    gl.glEnableClientState(GL.GL_NORMAL_ARRAY);
+    gl.glBindBuffer(GL.GL_ARRAY_BUFFER,normalHandle);
+    gl.glNormalPointer(GL.GL_FLOAT,0,0);
+  }
+  if (uvHandle != -1) {
+    gl.glEnableClientState(GL.GL_TEXTURE_COORD_ARRAY);
+    gl.glBindBuffer(GL.GL_ARRAY_BUFFER,uvHandle);
+    gl.glTexCoordPointer(2,GL.GL_FLOAT,0,0);
+  }
+  if (indexHandle != -1) {
+    gl.glBindBuffer(GL.GL_ELEMENT_ARRAY_BUFFER,indexHandle);
+    gl.glDrawElements(type,numVertices,GL.GL_UNSIGNED_SHORT,offset);
+  }
+ else   gl.glDrawArrays(type,offset,numVertices);
+  gl.glDisableClientState(GL.GL_VERTEX_ARRAY);
+  gl.glDisableClientState(GL.GL_COLOR_ARRAY);
+  gl.glDisableClientState(GL.GL_TEXTURE_COORD_ARRAY);
+  gl.glDisableClientState(GL.GL_NORMAL_ARRAY);
+}

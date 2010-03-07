@@ -1,0 +1,10 @@
+{
+  float[] frame=mesh.getVertices();
+  float[] src=frames[startIdx].vertices;
+  float[] dst=frames[endIdx].vertices;
+  for (int i=0; i < frame.length; i++) {
+    float d=dst[i];
+    float s=src[i];
+    frame[i]=s + (d - s) * alpha;
+  }
+}

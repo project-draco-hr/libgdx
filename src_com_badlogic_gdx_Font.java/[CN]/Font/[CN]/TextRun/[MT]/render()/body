@@ -1,0 +1,5 @@
+{
+  if (mesh == null)   return;
+  texture.bind();
+  mesh.render(PrimitiveType.Triangles);
+}

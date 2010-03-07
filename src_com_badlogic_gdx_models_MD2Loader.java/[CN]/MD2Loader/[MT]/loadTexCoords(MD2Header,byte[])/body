@@ -1,0 +1,15 @@
+{
+  LittleEndianDataInputStream in=new LittleEndianDataInputStream(new ByteArrayInputStream(bytes));
+  in.skip(header.offsetTexCoords);
+  float[] texCoords=new float[header.numTexCoords * 2];
+  float width=header.skinWidth;
+  float height=header.skinHeight;
+  for (int i=0; i < header.numTexCoords * 2; i+=2) {
+    short u=in.readShort();
+    short v=in.readShort();
+    texCoords[i]=u / width;
+    texCoords[i + 1]=v / height;
+  }
+  in.close();
+  return texCoords;
+}

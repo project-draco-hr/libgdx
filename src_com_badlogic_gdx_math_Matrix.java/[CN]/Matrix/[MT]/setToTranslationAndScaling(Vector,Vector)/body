@@ -1,0 +1,10 @@
+{
+  this.setToIdentity();
+  val[M03]=a_trn.getX();
+  val[M13]=a_trn.getY();
+  val[M23]=a_trn.getZ();
+  val[M00]=a_scl.getX();
+  val[M11]=a_scl.getY();
+  val[M22]=a_scl.getZ();
+  return this;
+}

@@ -1,0 +1,37 @@
+{
+  if (mesh == null)   mesh=app.newMesh(6 * text.length(),false,false,true,false,0,true);
+  if (mesh.getMaximumVertices() / 6 < text.length()) {
+    mesh.dispose();
+    mesh=app.newMesh(6 * text.length(),false,false,true,false,0,true);
+  }
+  mesh.reset();
+  int lineHeight=getLineHeight();
+  for (int i=0; i < lines.length; i++) {
+    String line=lines[i];
+    int x=0;
+    int y=height;
+    if (hAlign == HorizontalAlign.Left)     x=0;
+    if (hAlign == HorizontalAlign.Center)     x=width / 2 - widths[i] / 2;
+    if (hAlign == HorizontalAlign.Right)     x=width - widths[i];
+    if (vAlign == VerticalAlign.Top)     y=height;
+    if (vAlign == VerticalAlign.Center)     y=height / 2 + lines.length * (getLineHeight() + getLineGap()) / 2;
+    if (vAlign == VerticalAlign.Bottom)     y=lines.length * (getLineHeight() + getLineGap());
+    y-=i * (getLineHeight() + getLineGap());
+    for (int j=0; j < line.length(); j++) {
+      Glyph glyph=getGlyph(line.charAt(j));
+      mesh.texCoord(glyph.u,glyph.v);
+      mesh.vertex(posX + x,posY + y,0);
+      mesh.texCoord(glyph.u + glyph.uWidth,glyph.v);
+      mesh.vertex(posX + x + glyph.width,posY + y,0);
+      mesh.texCoord(glyph.u + glyph.uWidth,glyph.v + glyph.vHeight);
+      mesh.vertex(posX + x + glyph.width,posY + y - lineHeight,0);
+      mesh.texCoord(glyph.u + glyph.uWidth,glyph.v + glyph.vHeight);
+      mesh.vertex(posX + x + glyph.width,posY + y - lineHeight,0);
+      mesh.texCoord(glyph.u,glyph.v + glyph.vHeight);
+      mesh.vertex(posX + x,posY + y - lineHeight,0);
+      mesh.texCoord(glyph.u,glyph.v);
+      mesh.vertex(posX + x,y,0);
+      x+=glyph.advance;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  frame=new JFrame(title);
+  graphicPanel=new JoglPanel(this);
+  graphicPanel.setPreferredSize(new Dimension(width,height));
+  frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);
+  frame.add(graphicPanel,BorderLayout.CENTER);
+  frame.pack();
+  frame.setVisible(true);
+  frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  frame.addWindowListener(new WindowAdapter(){
+    public void windowClosing(    WindowEvent e){
+      for (      CloseListener listener : closeListeners)       listener.close();
+      graphicPanel.dispose();
+    }
+  }
+);
+  inputMultiplexer=new JoglInputMultiplexer(graphicPanel.getCanvas());
+  graphicPanel.setInputMultiplexer(inputMultiplexer);
+  graphicPanel.addGraphicListener(this);
+}

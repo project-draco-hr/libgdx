@@ -1,0 +1,4 @@
+{
+  if (!new File("/sdcard/" + file).exists())   new File("/sdcard/" + file).createNewFile();
+  return new FileOutputStream("/sdcard/" + file);
+}

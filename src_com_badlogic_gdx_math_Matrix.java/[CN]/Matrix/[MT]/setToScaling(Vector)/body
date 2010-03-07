@@ -1,0 +1,7 @@
+{
+  this.setToIdentity();
+  val[M00]=a_vector.getX();
+  val[M11]=a_vector.getY();
+  val[M22]=a_vector.getZ();
+  return this;
+}

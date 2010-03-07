@@ -1,0 +1,10 @@
+{
+  try {
+    AssetFileDescriptor descriptor=getAssets().openFd(file);
+    return new AndroidSound(soundPool,(AudioManager)getSystemService(Context.AUDIO_SERVICE),soundPool.load(descriptor,1));
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    throw new RuntimeException("couldn't open sound '" + file + "'");
+  }
+}

@@ -1,0 +1,15 @@
+{
+  this.app=app;
+  this.mesh=app.newMesh(frames[0].vertices.length / 3,false,false,true,true,indices.length,false);
+  this.frames=frames;
+  this.indices=indices;
+  this.texCoords=texCoords;
+  this.normals=normals;
+  this.numVertices=frames[0].vertices.length / 3;
+  System.arraycopy(indices,0,mesh.getIndices(),0,indices.length);
+  System.arraycopy(texCoords,0,mesh.getUV(),0,texCoords.length);
+  System.arraycopy(frames[0].vertices,0,mesh.getVertices(),0,frames[0].vertices.length);
+  ByteBuffer buffer=ByteBuffer.allocateDirect(4 * mesh.getVertices().length);
+  buffer.order(ByteOrder.nativeOrder());
+  outBuffer=buffer.asFloatBuffer();
+}

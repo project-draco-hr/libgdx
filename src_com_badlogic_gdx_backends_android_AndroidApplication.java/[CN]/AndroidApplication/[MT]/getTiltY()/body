@@ -1,0 +1,6 @@
+{
+  float y=(tiltOffsetY - accelerometerValues[0]) / 2f;
+  if (y > 1)   y=1;
+  if (y < -1)   y=-1;
+  return y;
+}

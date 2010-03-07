@@ -1,0 +1,21 @@
+{
+  if (isVBO) {
+    GL11 gl=(GL11)this.gl;
+    if (vertexHandle != -1)     gl.glDeleteBuffers(1,new int[]{vertexHandle},0);
+    if (colorHandle != -1)     gl.glDeleteBuffers(1,new int[]{colorHandle},0);
+    if (normalHandle != -1)     gl.glDeleteBuffers(1,new int[]{normalHandle},0);
+    if (uvHandle != -1)     gl.glDeleteBuffers(1,new int[]{uvHandle},0);
+    if (indexHandle != -1)     gl.glDeleteBuffers(1,new int[]{indexHandle},0);
+  }
+  vertices=null;
+  verticesBuffer=null;
+  colors=null;
+  colorsBuffer=null;
+  normals=null;
+  normalsBuffer=null;
+  uv=null;
+  uvBuffer=null;
+  indices=null;
+  indicesBuffer=null;
+  meshes--;
+}

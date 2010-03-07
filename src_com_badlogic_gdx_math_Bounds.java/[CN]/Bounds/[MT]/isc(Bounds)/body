@@ -1,0 +1,10 @@
+{
+  if (!isValid())   return true;
+  if (min.getX() > a_bounds.max.getX())   return false;
+  if (min.getY() > a_bounds.max.getY())   return false;
+  if (min.getZ() > a_bounds.max.getZ())   return false;
+  if (max.getX() < a_bounds.min.getX())   return false;
+  if (max.getY() < a_bounds.min.getY())   return false;
+  if (max.getZ() < a_bounds.min.getZ())   return false;
+  return true;
+}

@@ -1,0 +1,4 @@
+{
+  if (order == CullMode.Clockwise)   gl.glCullFace(GL10.GL_CW);
+ else   gl.glCullFace(GL10.GL_CCW);
+}

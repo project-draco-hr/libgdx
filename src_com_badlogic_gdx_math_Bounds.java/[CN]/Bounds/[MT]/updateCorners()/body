@@ -1,0 +1,12 @@
+{
+  if (!crn_dirty)   return;
+  crn[0].set(min.getX(),min.getY(),min.getZ());
+  crn[1].set(max.getX(),min.getY(),min.getZ());
+  crn[2].set(max.getX(),max.getY(),min.getZ());
+  crn[3].set(min.getX(),max.getY(),min.getZ());
+  crn[4].set(min.getX(),min.getY(),max.getZ());
+  crn[5].set(max.getX(),min.getY(),max.getZ());
+  crn[6].set(max.getX(),max.getY(),max.getZ());
+  crn[7].set(min.getX(),max.getY(),max.getZ());
+  crn_dirty=false;
+}

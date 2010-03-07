@@ -1,0 +1,7 @@
+{
+  dirty=true;
+  int offset=currentVertex * 3;
+  normals[offset]=x;
+  normals[offset + 1]=y;
+  normals[offset + 2]=z;
+}

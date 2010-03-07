@@ -1,0 +1,6 @@
+{
+  canvas.getContext().makeCurrent();
+  for (  GraphicListener listener : listeners)   listener.dispose(application);
+  remove(canvas);
+  if (animator != null)   animator.stop();
+}

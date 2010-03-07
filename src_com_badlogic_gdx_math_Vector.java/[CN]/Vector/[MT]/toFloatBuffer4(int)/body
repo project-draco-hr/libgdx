@@ -1,0 +1,9 @@
+{
+  FloatBuffer buffer=FloatBuffer.allocate(4);
+  buffer.put(val[0]);
+  buffer.put(val[1]);
+  buffer.put(val[2]);
+  buffer.put(0);
+  buffer.flip();
+  return buffer;
+}

@@ -1,0 +1,13 @@
+{
+synchronized (eventQueue) {
+    for (int i=0; i < eventQueue.size(); i++) {
+      Event event=eventQueue.get(i);
+      if (event.type == EventType.MouseDown)       for (int j=0; j < inputListeners.size(); j++)       if (inputListeners.get(j).mouseDown(event.x,event.y,event.button,event.pointer))       break;
+      if (event.type == EventType.MouseUp)       for (int j=0; j < inputListeners.size(); j++)       if (inputListeners.get(j).mouseUp(event.x,event.y,event.button,event.pointer))       break;
+      if (event.type == EventType.MouseMoved)       for (int j=0; j < inputListeners.size(); j++)       if (inputListeners.get(j).mouseMoved(event.x,event.y,event.button,event.pointer))       break;
+      if (event.type == EventType.MouseDragged)       for (int j=0; j < inputListeners.size(); j++)       if (inputListeners.get(j).mouseDragged(event.x,event.y,event.button,event.pointer))       break;
+    }
+    eventQueue.clear();
+    freeEventIndex=0;
+  }
+}

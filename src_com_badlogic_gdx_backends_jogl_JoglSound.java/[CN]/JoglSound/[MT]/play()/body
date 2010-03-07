@@ -1,0 +1,15 @@
+{
+  try {
+    final Clip clip=AudioSystem.getClip();
+    clip.open(AudioSystem.getAudioInputStream(new ByteArrayInputStream(bytes)));
+    clip.addLineListener(new LineListener(){
+      @Override public void update(      LineEvent arg0){
+        if (arg0.getType() == Type.STOP)         clip.close();
+      }
+    }
+);
+    clip.start();
+  }
+ catch (  Exception ex) {
+  }
+}

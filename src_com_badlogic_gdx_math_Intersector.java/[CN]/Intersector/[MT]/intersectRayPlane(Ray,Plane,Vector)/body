@@ -1,0 +1,14 @@
+{
+  float denom=ray.getDirection().dot(p.getNormal());
+  if (denom != 0) {
+    float t=-(ray.getStartPoint().dot(p.getNormal()) + p.getD()) / denom;
+    if (t < 0)     return false;
+    intersection.set(ray.getStartPoint()).add(ray.getDirection().tmp().mul(t));
+    return true;
+  }
+ else   if (p.testPoint(ray.getStartPoint()) == Plane.Intersection.OnPlane) {
+    intersection.set(ray.getStartPoint());
+    return true;
+  }
+ else   return false;
+}

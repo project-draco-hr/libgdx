@@ -1,0 +1,34 @@
+{
+  ArrayList<Vector> tangents=new ArrayList<Vector>();
+  if (controlPoints.size() < 4)   return tangents;
+  Vector T1=new Vector();
+  Vector T2=new Vector();
+  for (int i=1; i <= controlPoints.size() - 3; i++) {
+    float increment=1.0f / (numPoints + 1);
+    float t=increment;
+    T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
+    T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+    Vector normal=new Vector(T1).nor();
+    float x=normal.getX();
+    normal.setX(normal.getY());
+    normal.setY(-x);
+    tangents.add(normal);
+    for (int j=0; j < numPoints; j++) {
+      float h1=6 * t * t - 6 * t;
+      float h2=-6 * t * t + 6 * t;
+      float h3=3 * t * t - 4 * t + 1;
+      float h4=3 * t * t - 2 * t;
+      Vector point=new Vector(controlPoints.get(i)).mul(h1);
+      point.add(controlPoints.get(i + 1).tmp().mul(h2));
+      point.add(T1.tmp().mul(h3));
+      point.add(T2.tmp().mul(h4));
+      point.nor();
+      x=point.getX();
+      point.setX(point.getY());
+      point.setY(-x);
+      tangents.add(point);
+      t+=increment;
+    }
+  }
+  return tangents;
+}

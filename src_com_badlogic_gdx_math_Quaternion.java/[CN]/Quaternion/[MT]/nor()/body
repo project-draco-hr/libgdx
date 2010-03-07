@@ -1,0 +1,4 @@
+{
+  float l_len=this.len();
+  return this.set(val[0] / l_len,val[1] / l_len,val[2] / l_len,val[3] / l_len);
+}

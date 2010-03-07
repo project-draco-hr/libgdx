@@ -1,0 +1,7 @@
+{
+  update(gl);
+  int t=getPrimitiveType(type);
+  if (isVBO)   renderVertexBufferObject(gl,t,numVertices,offset);
+ else   renderVertexArray(gl,t,numVertices,offset);
+  lastMesh=this;
+}
