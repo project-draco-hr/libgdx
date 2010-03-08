@@ -1,5 +1,0 @@
-{
-  TextureData data=TextureIO.newTextureData((BufferedImage)bitmap,true);
-  texture.bind();
-  texture.updateSubImage(data,0,x,y);
-}

@@ -1,5 +1,5 @@
 {
-  Object bitmap=getGlyphBitmap(character);
+  Pixmap bitmap=getGlyphBitmap(character);
   Rectangle rect=new Rectangle();
   getGlyphBounds(character,rect);
   if (glyphX + rect.width >= 256) {

@@ -17,7 +17,6 @@
   lastFrameTime=System.nanoTime();
   mean.addValue(deltaTime);
   for (int i=0; i < listeners.size(); i++)   listeners.get(i).render(this);
-  float frameTime=(System.nanoTime() - lastFrameTime) / 1000000000.0f;
   if (System.nanoTime() - framesStartTime > 1000000000l) {
     fps=frames / ((System.nanoTime() - framesStartTime) / 1000000000.0f);
     frames=0;

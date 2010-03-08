@@ -1,0 +1,11 @@
+{
+  updateCorners();
+  this.inf();
+  for (  Vector l_pnt : crn) {
+    l_pnt.mul(matrix);
+    min.set(min(min.getX(),l_pnt.getX()),min(min.getY(),l_pnt.getY()),min(min.getZ(),l_pnt.getZ()));
+    max.set(max(max.getX(),l_pnt.getX()),max(max.getY(),l_pnt.getY()),max(max.getZ(),l_pnt.getZ()));
+  }
+  crn_dirty=true;
+  return this.set(min,max);
+}

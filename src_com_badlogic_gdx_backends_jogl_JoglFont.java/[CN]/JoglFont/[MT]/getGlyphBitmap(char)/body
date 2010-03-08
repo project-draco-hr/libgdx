@@ -11,5 +11,5 @@
   g.setColor(new java.awt.Color(0xffffffff,true));
   g.drawString("" + character,0,metrics.getAscent());
   g.dispose();
-  return bitmap;
+  return new JoglPixmap(bitmap);
 }

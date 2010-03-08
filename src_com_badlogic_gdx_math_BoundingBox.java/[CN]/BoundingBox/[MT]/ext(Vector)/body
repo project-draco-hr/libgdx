@@ -1,0 +1,4 @@
+{
+  crn_dirty=true;
+  return this.set(min.set(min(min.getX(),point.getX()),min(min.getY(),point.getY()),min(min.getZ(),point.getZ())),max.set(Math.max(max.getX(),point.getX()),Math.max(max.getY(),point.getY()),Math.max(max.getZ(),point.getZ())));
+}
