@@ -1,4 +1,4 @@
 {
   JoglApplication app=new JoglApplication("Audio Decoding",480,320);
-  app.addRenderListener(new AudioDecoding());
+  app.addRenderListener(new AudioDecodingTest());
 }
