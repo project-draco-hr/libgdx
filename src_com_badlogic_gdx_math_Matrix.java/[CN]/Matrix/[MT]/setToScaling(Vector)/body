@@ -1,7 +1,7 @@
 {
   idt();
-  val[M00]=a_vector.getX();
-  val[M11]=a_vector.getY();
-  val[M22]=a_vector.getZ();
+  val[M00]=vector.getX();
+  val[M11]=vector.getY();
+  val[M22]=vector.getZ();
   return this;
 }

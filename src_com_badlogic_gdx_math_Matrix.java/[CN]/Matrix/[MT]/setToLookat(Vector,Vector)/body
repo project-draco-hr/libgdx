@@ -1,7 +1,7 @@
 {
-  l_vez.set(a_dir).nor();
-  l_vex.set(a_dir).nor();
-  l_vex.crs(a_up).nor();
+  l_vez.set(direction).nor();
+  l_vex.set(direction).nor();
+  l_vex.crs(up).nor();
   l_vey.set(l_vex).crs(l_vez).nor();
   idt();
   val[M00]=l_vex.val[0];

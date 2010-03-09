@@ -1,10 +1,10 @@
 {
   this.idt();
-  val[M03]=tX;
-  val[M13]=tY;
-  val[M23]=tZ;
-  val[M00]=sX;
-  val[M11]=sY;
-  val[M22]=sZ;
+  val[M03]=translationX;
+  val[M13]=translationY;
+  val[M23]=translationZ;
+  val[M00]=scalingX;
+  val[M11]=scalingY;
+  val[M22]=scalingZ;
   return this;
 }
