@@ -2,7 +2,7 @@
   Vector dir=ray.dir.cpy().nor();
   Vector start=ray.start.cpy();
   float b=2 * (dir.dot(start.tmp().sub(center)));
-  float c=start.sqrdist(center) - radius * radius;
+  float c=start.dist2(center) - radius * radius;
   float disc=b * b - 4 * c;
   if (disc < 0)   return false;
   float distSqrt=(float)Math.sqrt(disc);

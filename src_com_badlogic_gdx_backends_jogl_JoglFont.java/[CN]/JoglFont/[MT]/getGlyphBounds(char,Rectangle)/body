@@ -3,6 +3,6 @@
   g.setFont(font);
   Rectangle2D bounds=metrics.getStringBounds("" + character,g);
   g.dispose();
-  rect.width=(int)Math.ceil(bounds.getWidth());
-  rect.height=getLineHeight();
+  rect.setWidth((int)Math.ceil(bounds.getWidth()));
+  rect.setHeight(getLineHeight());
 }

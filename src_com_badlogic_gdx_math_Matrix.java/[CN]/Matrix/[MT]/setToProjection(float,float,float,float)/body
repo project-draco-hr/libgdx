@@ -1,5 +1,5 @@
 {
-  this.setToIdentity();
+  this.idt();
   float l_fd=(float)(1.0 / Math.tan((a_fov * (Math.PI / 180)) / 2.0));
   float l_a1=-(a_far + a_near) / (a_far - a_near);
   float l_a2=-(2 * a_far * a_near) / (a_far - a_near);

@@ -6,7 +6,7 @@
     intersection.set(ray.getStartPoint()).add(ray.getDirection().tmp().mul(t));
     return true;
   }
- else   if (plane.testPoint(ray.getStartPoint()) == Plane.Intersection.OnPlane) {
+ else   if (plane.testPoint(ray.getStartPoint()) == Plane.PlaneSide.OnPlane) {
     intersection.set(ray.getStartPoint());
     return true;
   }

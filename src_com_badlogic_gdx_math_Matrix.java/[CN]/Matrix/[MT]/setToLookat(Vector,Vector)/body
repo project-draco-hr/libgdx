@@ -3,7 +3,7 @@
   l_vex.set(a_dir).nor();
   l_vex.crs(a_up).nor();
   l_vey.set(l_vex).crs(l_vez).nor();
-  this.setToIdentity();
+  idt();
   val[M00]=l_vex.val[0];
   val[M01]=l_vex.val[1];
   val[M02]=l_vex.val[2];

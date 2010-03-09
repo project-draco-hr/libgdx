@@ -1,6 +1,6 @@
 {
-  float dist=normal.dot(p) + d;
-  if (dist == 0)   return Intersection.OnPlane;
- else   if (dist < 0)   return Intersection.Back;
- else   return Intersection.Front;
+  float dist=normal.dot(point) + d;
+  if (dist == 0)   return PlaneSide.OnPlane;
+ else   if (dist < 0)   return PlaneSide.Back;
+ else   return PlaneSide.Front;
 }

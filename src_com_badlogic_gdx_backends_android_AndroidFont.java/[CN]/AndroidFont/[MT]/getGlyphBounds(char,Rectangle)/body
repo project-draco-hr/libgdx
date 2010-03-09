@@ -1,5 +1,5 @@
 {
   paint.getTextBounds("" + character,0,1,tmpRect);
-  rect.width=tmpRect.width() + 5;
-  rect.height=getLineHeight();
+  rect.setWidth(tmpRect.width() + 5);
+  rect.setHeight(getLineHeight());
 }
