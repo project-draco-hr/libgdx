@@ -1,3 +1,3 @@
 {
-  return !(min.getX() == max.getX() && min.getY() == max.getY() && min.getZ() == max.getZ());
+  return !(min.x == max.x && min.y == max.y && min.z == max.z);
 }

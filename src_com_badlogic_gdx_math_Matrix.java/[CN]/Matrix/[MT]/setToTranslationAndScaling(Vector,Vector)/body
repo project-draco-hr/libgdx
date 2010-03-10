@@ -1,10 +1,10 @@
 {
   idt();
-  val[M03]=translation.getX();
-  val[M13]=translation.getY();
-  val[M23]=translation.getZ();
-  val[M00]=scaling.getX();
-  val[M11]=scaling.getY();
-  val[M22]=scaling.getZ();
+  val[M03]=translation.x;
+  val[M13]=translation.y;
+  val[M23]=translation.z;
+  val[M00]=scaling.x;
+  val[M11]=scaling.y;
+  val[M22]=scaling.z;
   return this;
 }

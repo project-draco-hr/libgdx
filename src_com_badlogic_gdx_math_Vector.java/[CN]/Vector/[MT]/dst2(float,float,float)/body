@@ -1,7 +1,7 @@
 {
-  float a=x - val[0];
-  float b=y - val[1];
-  float c=z - val[2];
+  float a=x - this.x;
+  float b=y - this.y;
+  float c=z - this.z;
   a*=a;
   b*=b;
   c*=c;

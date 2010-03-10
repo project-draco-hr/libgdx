@@ -1,7 +1,7 @@
 {
   this.idt();
-  val[M03]=vector.getX();
-  val[M13]=vector.getY();
-  val[M23]=vector.getZ();
+  val[M03]=vector.x;
+  val[M13]=vector.y;
+  val[M23]=vector.z;
   return this;
 }

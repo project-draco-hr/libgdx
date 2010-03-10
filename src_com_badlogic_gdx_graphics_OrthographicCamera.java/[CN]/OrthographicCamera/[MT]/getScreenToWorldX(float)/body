@@ -1,3 +1,3 @@
 {
-  return (screenX * scale) - (viewportWidth * scale) / 2 + position.getX();
+  return (screenX * scale) - (viewportWidth * scale) / 2 + position.x;
 }

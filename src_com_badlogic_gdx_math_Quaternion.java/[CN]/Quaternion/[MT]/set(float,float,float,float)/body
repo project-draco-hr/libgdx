@@ -1,8 +1,7 @@
 {
-  val[0]=x;
-  val[1]=y;
-  val[2]=z;
-  val[3]=w;
-  dirty=true;
+  this.x=x;
+  this.y=y;
+  this.z=z;
+  this.w=w;
   return this;
 }

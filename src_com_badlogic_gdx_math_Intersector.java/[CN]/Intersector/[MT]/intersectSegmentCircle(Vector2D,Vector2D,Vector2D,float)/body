@@ -1,5 +1,5 @@
 {
-  float u=(center.getX() - start.getX()) * (end.getX() - start.getX()) + (center.getY() - start.getY()) * (end.getY() - start.getY());
+  float u=(center.x - start.x) * (end.x - start.x) + (center.y - start.y) * (end.y - start.y);
   float d=start.dst(end);
   u/=(d * d);
   if (u < 0 || u > 1)   return false;

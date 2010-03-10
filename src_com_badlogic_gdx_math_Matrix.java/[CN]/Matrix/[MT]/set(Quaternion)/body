@@ -1,13 +1,13 @@
 {
-  float l_xx=quaternion.val[0] * quaternion.val[0];
-  float l_xy=quaternion.val[0] * quaternion.val[1];
-  float l_xz=quaternion.val[0] * quaternion.val[2];
-  float l_xw=quaternion.val[0] * quaternion.val[3];
-  float l_yy=quaternion.val[1] * quaternion.val[1];
-  float l_yz=quaternion.val[1] * quaternion.val[2];
-  float l_yw=quaternion.val[1] * quaternion.val[3];
-  float l_zz=quaternion.val[2] * quaternion.val[2];
-  float l_zw=quaternion.val[2] * quaternion.val[3];
+  float l_xx=quaternion.x * quaternion.x;
+  float l_xy=quaternion.x * quaternion.y;
+  float l_xz=quaternion.x * quaternion.z;
+  float l_xw=quaternion.x * quaternion.w;
+  float l_yy=quaternion.y * quaternion.y;
+  float l_yz=quaternion.y * quaternion.z;
+  float l_yw=quaternion.y * quaternion.w;
+  float l_zz=quaternion.z * quaternion.z;
+  float l_zw=quaternion.z * quaternion.w;
   val[M00]=1 - 2 * (l_yy + l_zz);
   val[M01]=2 * (l_xy - l_zw);
   val[M02]=2 * (l_xz + l_yw);

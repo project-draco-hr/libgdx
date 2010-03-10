@@ -1,6 +1,6 @@
 {
-  min.set(minimum.getX() < maximum.getX() ? minimum.getX() : maximum.getX(),minimum.getY() < maximum.getY() ? minimum.getY() : maximum.getY(),minimum.getZ() < maximum.getZ() ? minimum.getZ() : maximum.getZ());
-  max.set(minimum.getX() > maximum.getX() ? minimum.getX() : maximum.getX(),minimum.getY() > maximum.getY() ? minimum.getY() : maximum.getY(),minimum.getZ() > maximum.getZ() ? minimum.getZ() : maximum.getZ());
+  min.set(minimum.x < maximum.x ? minimum.x : maximum.x,minimum.y < maximum.y ? minimum.y : maximum.y,minimum.z < maximum.z ? minimum.z : maximum.z);
+  max.set(minimum.x > maximum.x ? minimum.x : maximum.x,minimum.y > maximum.y ? minimum.y : maximum.y,minimum.z > maximum.z ? minimum.z : maximum.z);
   cnt.set(min).add(max).mul(0.5f);
   dim.set(max).sub(min);
   crn_dirty=true;

@@ -1,7 +1,7 @@
 {
-  float a=vector.val[0] - val[0];
-  float b=vector.val[1] - val[1];
-  float c=vector.val[2] - val[2];
+  float a=vector.x - x;
+  float b=vector.y - y;
+  float c=vector.z - z;
   a*=a;
   b*=b;
   c*=c;
