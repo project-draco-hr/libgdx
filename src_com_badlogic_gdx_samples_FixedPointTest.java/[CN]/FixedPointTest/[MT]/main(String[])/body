@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("Fixed Point Test",480,320);
+  app.addRenderListener(new FixedPointTest());
+}

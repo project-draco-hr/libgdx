@@ -1,0 +1,5 @@
+{
+  if (tmpFloat.length < params.length)   tmpFloat=new float[params.length];
+  for (int i=0; i < params.length; i++)   tmpFloat[i]=FIXED_TO_FLOAT * params[i];
+  gl.glPointParameterfv(pname,tmpFloat,offset);
+}

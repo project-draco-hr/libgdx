@@ -1,0 +1,9 @@
+{
+  if (type == GL10.GL_FIXED) {
+    convertFixedToFloatbuffer(pointer,normalBuffer,stride);
+    gl.glNormalPointer(GL10.GL_FLOAT,stride,normalBuffer);
+  }
+ else {
+    gl.glNormalPointer(type,stride,pointer);
+  }
+}

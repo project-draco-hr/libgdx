@@ -1,0 +1,18 @@
+{
+  this.gl=gl;
+  ByteBuffer buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+  buffer.order(ByteOrder.nativeOrder());
+  colorBuffer=buffer.asFloatBuffer();
+  buffer=ByteBuffer.allocateDirect(200000 * 4 * 3);
+  buffer.order(ByteOrder.nativeOrder());
+  normalBuffer=buffer.asFloatBuffer();
+  buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+  buffer.order(ByteOrder.nativeOrder());
+  vertexBuffer=buffer.asFloatBuffer();
+  buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+  buffer.order(ByteOrder.nativeOrder());
+  texCoordBuffer=buffer.asFloatBuffer();
+  buffer=ByteBuffer.allocateDirect(200000 * 4);
+  buffer.order(ByteOrder.nativeOrder());
+  indices=buffer.asIntBuffer();
+}

@@ -13,6 +13,7 @@
     textListener=null;
   }
   this.gl=gl;
+  if (badlogicGL == null)   badlogicGL=new AndroidGL10(gl);
   deltaTime=(System.nanoTime() - lastFrameTime) / 1000000000.0f;
   lastFrameTime=System.nanoTime();
   mean.addValue(deltaTime);

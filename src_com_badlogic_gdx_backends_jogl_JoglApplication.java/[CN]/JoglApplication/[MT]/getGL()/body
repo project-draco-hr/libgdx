@@ -1,0 +1,4 @@
+{
+  if (gl == null)   gl=new JoglGL10(GLContext.getCurrent().getGL());
+  return gl;
+}
