@@ -1,0 +1,45 @@
+{
+  String returnType=tokens[1];
+  if (returnType.equals("const"))   returnType=tokens[2];
+  if (returnType.equals("*char"))   returnType="String";
+  if (typedefsMap.containsKey(returnType))   returnType=typedefsMap.get(returnType).type;
+  int index=0;
+  for (int i=0; i < tokens.length; i++, index++)   if (tokens[i].startsWith("gl"))   break;
+  String name=tokens[index++];
+  if (functionsSet.contains(name)) {
+    System.out.println("omitting '" + name + "', already defined in previous file");
+    Iterator<Function> funcIter=functions.iterator();
+    while (funcIter.hasNext())     if (funcIter.next().name.equals(name))     funcIter.remove();
+    return;
+  }
+  for (int i=index; i < tokens.length; i++)   tokens[i]=tokens[i].replace("(","").replace(",","").replace(");","");
+  Function func=new Function(returnType,name);
+  functions.add(func);
+  functionsSet.add(func.name);
+  for (int i=index; i < tokens.length; ) {
+    if (tokens[i].equals("const")) {
+      i++;
+      continue;
+    }
+    String type=tokens[i++];
+    if (i == tokens.length)     break;
+    String paramName=tokens[i++];
+    if (paramName.startsWith("*")) {
+      String pointerType="Buffer";
+      if (type.equals("GLvoid"))       pointerType="Buffer";
+      if (type.equals("GLuint") || type.equals("GLint"))       pointerType="IntBuffer";
+      if (type.equals("GLfloat"))       pointerType="FloatBuffer";
+      Parameter param=new Parameter(pointerType,paramName.replace("*",""));
+      func.parameters.add(param);
+    }
+ else     if (type.startsWith("GLboolean")) {
+      Parameter param=new Parameter("boolean",paramName);
+      func.parameters.add(param);
+    }
+ else {
+      if (typedefsMap.containsKey(type))       type=typedefsMap.get(type).type;
+      Parameter param=new Parameter(type,paramName);
+      func.parameters.add(param);
+    }
+  }
+}

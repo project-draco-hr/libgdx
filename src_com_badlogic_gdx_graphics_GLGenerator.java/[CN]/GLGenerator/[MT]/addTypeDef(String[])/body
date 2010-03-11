@@ -1,0 +1,15 @@
+{
+  String name=tokens[tokens.length - 1].replace(";","");
+  String type=tokens[tokens.length - 2];
+  if (type.equals("")) {
+    type=tokens[1];
+    if (type.equals("unsigned"))     type=tokens[2];
+  }
+  if (khronosDefines.containsKey(type))   type=khronosDefines.get(type);
+  if (typedefsMap.containsKey(name)) {
+    System.out.println("warning: typedef '" + name + "' is already in map");
+  }
+  TypeDef typedef=new TypeDef(name,type);
+  typedefs.add(typedef);
+  typedefsMap.put(name,typedef);
+}

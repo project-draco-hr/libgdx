@@ -1,0 +1,13 @@
+{
+  if (definesMap.containsKey(tokens[1]))   System.out.println("warning: " + tokens[1] + " is already in map");
+  if (!tokens[1].startsWith("GL_"))   return;
+  if (definesMap.containsKey(tokens[1])) {
+    System.out.println("warning: '" + tokens[1] + "' already defined in previous file");
+    Iterator<Define> defineIter=defines.iterator();
+    while (defineIter.hasNext())     if (defineIter.next().name.equals(tokens[1]))     defineIter.remove();
+    return;
+  }
+  Define define=new Define(tokens[1],tokens[tokens.length - 1]);
+  defines.add(define);
+  definesMap.put(tokens[1],define);
+}
