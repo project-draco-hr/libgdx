@@ -1,0 +1,5 @@
+{
+  for (int x=0; x < pixmap.getWidth(); x++) {
+    pixels[x]=pixmap.getRGB(x,y);
+  }
+}

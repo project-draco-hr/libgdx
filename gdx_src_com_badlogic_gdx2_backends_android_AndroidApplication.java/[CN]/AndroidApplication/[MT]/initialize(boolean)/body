@@ -1,0 +1,7 @@
+{
+  graphics=new AndroidGraphics(this,useGL2IfAvailable);
+  input=new AndroidInput(this,graphics.view);
+  graphics.setInput(input);
+  audio=new AndroidAudio();
+  resources=new AndroidFiles(this.getAssets());
+}

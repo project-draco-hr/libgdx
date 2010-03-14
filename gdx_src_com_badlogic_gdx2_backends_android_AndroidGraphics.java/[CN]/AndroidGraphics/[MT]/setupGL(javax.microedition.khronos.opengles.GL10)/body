@@ -1,0 +1,13 @@
+{
+  if (gl10 != null || gl20 != null)   return;
+  if (view instanceof GLSurfaceView20)   gl20=new AndroidGL20();
+ else {
+    gl10=new AndroidGL10(gl);
+    if (gl instanceof GL11) {
+      String renderer=gl.glGetString(GL10.GL_RENDERER);
+      if (renderer.toLowerCase().contains("pixelflinger"))       return;
+      if (android.os.Build.MODEL.equals("MB200") || android.os.Build.MODEL.equals("MB220") || android.os.Build.MODEL.contains("Behold"))       return;
+      gl11=new AndroidGL11((javax.microedition.khronos.opengles.GL11)gl);
+    }
+  }
+}

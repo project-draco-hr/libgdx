@@ -1,0 +1,28 @@
+{
+  Vector dir=ray.dir.cpy().nor();
+  Vector start=ray.start.cpy();
+  float b=2 * (dir.dot(start.tmp().sub(center)));
+  float c=start.dist2(center) - radius * radius;
+  float disc=b * b - 4 * c;
+  if (disc < 0)   return false;
+  float distSqrt=(float)Math.sqrt(disc);
+  float q;
+  if (b < 0)   q=(-b - distSqrt) / 2.0f;
+ else   q=(-b + distSqrt) / 2.0f;
+  float t0=q / 1;
+  float t1=c / q;
+  if (t0 > t1) {
+    float temp=t0;
+    t0=t1;
+    t1=temp;
+  }
+  if (t1 < 0)   return false;
+  if (t0 < 0) {
+    if (intersection != null)     intersection.set(start).add(dir.tmp().mul(t1));
+    return true;
+  }
+ else {
+    if (intersection != null)     intersection.set(start).add(dir.tmp().mul(t0));
+    return true;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  if (listener != null)   listener.destroy();
+  if (graphics.listener != null)   graphics.listener.dispose(this);
+}

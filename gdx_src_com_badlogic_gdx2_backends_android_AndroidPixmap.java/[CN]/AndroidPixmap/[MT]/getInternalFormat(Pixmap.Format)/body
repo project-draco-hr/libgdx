@@ -1,0 +1,5 @@
+{
+  if (format == Pixmap.Format.Alpha)   return Bitmap.Config.ALPHA_8;
+  if (format == Pixmap.Format.RGBA4444)   return Bitmap.Config.ARGB_4444;
+  return Bitmap.Config.ARGB_8888;
+}

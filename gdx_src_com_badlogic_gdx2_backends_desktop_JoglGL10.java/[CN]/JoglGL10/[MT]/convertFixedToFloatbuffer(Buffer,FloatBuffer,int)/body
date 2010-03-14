@@ -1,0 +1,15 @@
+{
+  if (source instanceof IntBuffer) {
+    IntBuffer buffer=(IntBuffer)source;
+    if (stride % 4 != 0)     throw new IllegalArgumentException("Can't cope with strides % 4 != 0 for IntBuffers");
+    target.clear();
+    for (int i=buffer.position(); i < buffer.limit(); i++) {
+      float value=FIXED_TO_FLOAT * buffer.get(i);
+      target.put(value);
+    }
+    target.flip();
+  }
+ else {
+    throw new IllegalArgumentException("Can't cope with buffer of type " + source.getClass().getName() + ", only ByteBuffers and IntBuffers supported");
+  }
+}

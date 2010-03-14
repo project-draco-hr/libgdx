@@ -1,0 +1,4 @@
+{
+  if (useGL2)   gl20=new JoglGL20(graphicPanel.getGL());
+ else   gl11=new JoglGL11(graphicPanel.getGL());
+}

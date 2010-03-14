@@ -1,0 +1,7 @@
+{
+  if (lastTexture != this) {
+    lastTexture=this;
+    if (gl10 != null)     gl10.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
+ else     gl20.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
+  }
+}

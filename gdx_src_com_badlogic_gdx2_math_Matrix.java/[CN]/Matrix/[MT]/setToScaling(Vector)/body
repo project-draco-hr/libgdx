@@ -1,0 +1,7 @@
+{
+  idt();
+  val[M00]=vector.x;
+  val[M11]=vector.y;
+  val[M22]=vector.z;
+  return this;
+}

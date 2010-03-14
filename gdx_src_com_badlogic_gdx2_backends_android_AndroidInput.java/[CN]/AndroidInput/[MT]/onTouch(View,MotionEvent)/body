@@ -1,0 +1,42 @@
+{
+  if (requestFocus) {
+    view.requestFocus();
+    view.requestFocusFromTouch();
+    requestFocus=false;
+  }
+  touchX[0]=(int)event.getX();
+  touchY[0]=(int)event.getY();
+  if (event.getAction() == MotionEvent.ACTION_DOWN) {
+synchronized (eventQueue) {
+      Event ev=freeEvents.get(freeEventIndex++);
+      ev.set(EventType.MouseDown,touchX[0],touchY[0],0,0,'\0');
+      eventQueue.add(ev);
+    }
+    touched[0]=true;
+  }
+  if (event.getAction() == MotionEvent.ACTION_MOVE) {
+synchronized (eventQueue) {
+      Event ev=freeEvents.get(freeEventIndex++);
+      ev.set(EventType.MouseDragged,touchX[0],touchY[0],0,0,'\0');
+      eventQueue.add(ev);
+    }
+    touched[0]=true;
+  }
+  if (event.getAction() == MotionEvent.ACTION_UP) {
+synchronized (eventQueue) {
+      Event ev=freeEvents.get(freeEventIndex++);
+      ev.set(EventType.MouseUp,touchX[0],touchY[0],0,0,'\0');
+      eventQueue.add(ev);
+    }
+    touched[0]=false;
+  }
+  if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+synchronized (eventQueue) {
+      Event ev=freeEvents.get(freeEventIndex++);
+      ev.set(EventType.MouseUp,touchX[0],touchY[0],0,0,'\0');
+      eventQueue.add(ev);
+    }
+    touched[0]=false;
+  }
+  return true;
+}

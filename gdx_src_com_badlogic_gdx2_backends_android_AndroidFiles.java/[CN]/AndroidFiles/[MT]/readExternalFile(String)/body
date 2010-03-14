@@ -1,0 +1,9 @@
+{
+  FileInputStream in=null;
+  try {
+    in=new FileInputStream(fileName);
+  }
+ catch (  FileNotFoundException ex) {
+  }
+  return in;
+}

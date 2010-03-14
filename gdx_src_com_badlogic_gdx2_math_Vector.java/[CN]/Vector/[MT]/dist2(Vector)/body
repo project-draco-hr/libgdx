@@ -1,0 +1,6 @@
+{
+  float a=vector.x - x;
+  float b=vector.y - y;
+  float c=vector.z - z;
+  return a * a + b * b + c * c;
+}

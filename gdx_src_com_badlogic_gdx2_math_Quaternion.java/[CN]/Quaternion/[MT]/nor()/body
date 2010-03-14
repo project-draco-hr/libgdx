@@ -1,0 +1,4 @@
+{
+  float l_len=this.len();
+  return this.set(x / l_len,y / l_len,z / l_len,w / l_len);
+}

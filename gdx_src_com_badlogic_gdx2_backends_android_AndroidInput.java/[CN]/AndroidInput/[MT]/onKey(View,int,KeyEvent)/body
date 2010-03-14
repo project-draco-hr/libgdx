@@ -1,0 +1,5 @@
+{
+  if (event.getAction() == KeyEvent.ACTION_DOWN)   keys.add(event.getKeyCode());
+  if (event.getAction() == KeyEvent.ACTION_DOWN)   keys.remove(event.getKeyCode());
+  return false;
+}

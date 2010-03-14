@@ -1,0 +1,16 @@
+{
+  int i=0;
+  float area1, area2, area3;
+  boolean noPointInTriangle=true;
+  while ((i < polygon.size() - 1) && (noPointInTriangle)) {
+    if ((ptType[i] == -1) && (((polygon.get(i).x != x1) && (polygon.get(i).y != y1)) || ((polygon.get(i).x != x2) && (polygon.get(i).y != y2)) || ((polygon.get(i).x != x3) && (polygon.get(i).y != y3)))) {
+      area1=area(x1,y1,x2,y2,polygon.get(i).x,polygon.get(i).y);
+      area2=area(x2,y2,x3,y3,polygon.get(i).x,polygon.get(i).y);
+      area3=area(x3,y3,x1,y1,polygon.get(i).x,polygon.get(i).y);
+      if (area1 > 0)       if ((area2 > 0) && (area3 > 0))       noPointInTriangle=false;
+      if (area1 <= 0)       if ((area2 <= 0) && (area3 <= 0))       noPointInTriangle=false;
+    }
+    i++;
+  }
+  return !noPointInTriangle;
+}

@@ -1,0 +1,10 @@
+{
+  if (mEglContext != null) {
+    mEGLContextFactory.destroyContext(mEgl,mEglDisplay,mEglContext);
+    mEglContext=null;
+  }
+  if (mEglDisplay != null) {
+    mEgl.eglTerminate(mEglDisplay);
+    mEglDisplay=null;
+  }
+}

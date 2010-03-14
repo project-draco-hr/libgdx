@@ -1,0 +1,5 @@
+{
+  if (filter == TextureFilter.Linear)   return GL10.GL_LINEAR;
+ else   if (filter == TextureFilter.Nearest)   return GL10.GL_NEAREST;
+ else   return GL10.GL_LINEAR_MIPMAP_NEAREST;
+}

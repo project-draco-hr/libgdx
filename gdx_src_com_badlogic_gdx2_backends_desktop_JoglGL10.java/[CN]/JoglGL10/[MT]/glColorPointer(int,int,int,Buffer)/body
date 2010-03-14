@@ -1,0 +1,9 @@
+{
+  if (type == GL10.GL_FIXED) {
+    convertFixedToFloatbuffer(pointer,colorBuffer,stride);
+    gl.glColorPointer(size,GL10.GL_FLOAT,stride,colorBuffer);
+  }
+ else {
+    gl.glColorPointer(size,type,stride,pointer);
+  }
+}

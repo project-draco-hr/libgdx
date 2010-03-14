@@ -1,0 +1,6 @@
+{
+  float l_ang=(float)(angle * (Math.PI / 180));
+  float l_sin=(float)(Math.sin(l_ang / 2));
+  float l_cos=(float)(Math.cos(l_ang / 2));
+  return this.set(axis.x * l_sin,axis.y * l_sin,axis.z * l_sin,l_cos).nor();
+}

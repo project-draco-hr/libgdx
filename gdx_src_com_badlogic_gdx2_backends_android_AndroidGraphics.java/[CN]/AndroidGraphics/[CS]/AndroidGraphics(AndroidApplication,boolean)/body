@@ -1,0 +1,10 @@
+{
+  activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
+  activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+  if (useGL2IfAvailable) {
+    if (checkGL20(activity))     view=new GLSurfaceView20(activity);
+ else     view=new GLSurfaceView(activity);
+  }
+ else   view=new GLSurfaceView(activity);
+  activity.setContentView(view);
+}

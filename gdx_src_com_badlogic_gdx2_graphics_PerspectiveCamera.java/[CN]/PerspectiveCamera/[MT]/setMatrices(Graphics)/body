@@ -1,0 +1,9 @@
+{
+  setViewport(graphics.getWidth(),graphics.getHeight());
+  update();
+  GL10 gl=graphics.getGL10();
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(getCombinedMatrix().val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+}

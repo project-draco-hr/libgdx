@@ -1,0 +1,5 @@
+{
+  setupListeners.remove(listener);
+  listeners.remove(listener);
+  listener.dispose(application);
+}

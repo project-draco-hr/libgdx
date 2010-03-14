@@ -1,0 +1,7 @@
+{
+  Options options=new Options();
+  options.inPreferredConfig=AndroidPixmap.getInternalFormat(formatHint);
+  Bitmap bitmap=BitmapFactory.decodeStream(in,null,options);
+  if (bitmap != null)   return new AndroidPixmap(bitmap);
+ else   return null;
+}

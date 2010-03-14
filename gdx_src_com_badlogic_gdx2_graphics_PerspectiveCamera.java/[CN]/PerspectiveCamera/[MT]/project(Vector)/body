@@ -1,0 +1,6 @@
+{
+  Matrix m=getCombinedMatrix();
+  pos.prj(m);
+  pos.x=viewportWidth * (pos.x + 1) / 2;
+  pos.y=viewportHeight * (pos.y + 1) / 2;
+}
