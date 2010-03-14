@@ -10,7 +10,10 @@
   frame.addWindowListener(new WindowAdapter(){
     public void windowClosing(    WindowEvent e){
       graphicPanel.dispose();
-      if (application.listener != null)       application.listener.destroy(application);
+      if (application.listener != null) {
+        application.listener.pause(application);
+        application.listener.destroy(application);
+      }
     }
   }
 );

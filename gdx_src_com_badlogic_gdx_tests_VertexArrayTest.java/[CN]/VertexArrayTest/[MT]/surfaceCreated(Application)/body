@@ -1,0 +1,12 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(BYTES_PER_VERTEX * 3);
+  buffer.order(ByteOrder.nativeOrder());
+  vertices=buffer.asFloatBuffer();
+  float[] verts={-0.5f,-0.5f,0,1,0,0,0,0.5f,-0.5f,0,0,1,0,0,0,0.5f,0,0,0,1,0};
+  vertices.put(verts);
+  vertices.flip();
+  buffer=ByteBuffer.allocateDirect(3 * 2);
+  buffer.order(ByteOrder.nativeOrder());
+  indices=buffer.asShortBuffer();
+  indices.put(new short[]{0,1,2});
+}

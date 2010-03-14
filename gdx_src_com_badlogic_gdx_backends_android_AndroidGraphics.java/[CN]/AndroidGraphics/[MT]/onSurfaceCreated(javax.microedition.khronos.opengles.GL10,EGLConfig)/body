@@ -1,4 +1,4 @@
 {
   setupGL(gl);
-  if (listener != null)   listener.setup(app);
+  if (listener != null)   listener.surfaceCreated(app);
 }

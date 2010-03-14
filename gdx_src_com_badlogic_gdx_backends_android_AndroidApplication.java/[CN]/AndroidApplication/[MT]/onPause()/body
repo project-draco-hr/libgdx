@@ -2,4 +2,5 @@
   super.onPause();
   if (isFinishing())   graphics.disposeRenderListener();
   if (graphics.view != null)   graphics.view.onPause();
+  if (listener != null)   listener.pause(this);
 }

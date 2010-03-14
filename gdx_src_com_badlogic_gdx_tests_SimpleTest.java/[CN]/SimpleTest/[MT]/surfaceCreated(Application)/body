@@ -1,0 +1,5 @@
+{
+  app.getInput().addInputListener(this);
+  app.setApplicationListener(this);
+  app.log("Simple Test","Thread=" + Thread.currentThread().getId() + ", surface created");
+}
