@@ -8,6 +8,7 @@ synchronized (this) {
   }
   if (dispose) {
     if (listener != null)     listener.dispose(app);
+    listener=null;
     dispose=false;
   }
 }
