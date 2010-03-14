@@ -1,4 +1,4 @@
 {
   super.onPause();
-  graphics.view.onPause();
+  if (graphics.view != null)   graphics.view.onPause();
 }
