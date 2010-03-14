@@ -9,4 +9,5 @@
   buffer.order(ByteOrder.nativeOrder());
   indices=buffer.asShortBuffer();
   indices.put(new short[]{0,1,2});
+  indices.flip();
 }
