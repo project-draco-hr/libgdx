@@ -3,7 +3,6 @@
   Object o=this.getListAdapter().getItem(position);
   String keyword=o.toString();
   Intent intent=null;
-  if (keyword.equals(items[0]))   intent=new Intent(this,FixedPointTest.class);
-  if (keyword.equals(items[1]))   intent=new Intent(this,FloatTest.class);
+  if (keyword.equals(items[0]))   intent=new Intent(this,SimpleTest.class);
   startActivity(intent);
 }

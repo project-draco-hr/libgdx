@@ -1,0 +1,6 @@
+{
+  super.onCreate(bundle);
+  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+  initialize(false);
+  getGraphics().setRenderListener(new com.badlogic.gdx.tests.SimpleTest());
+}
