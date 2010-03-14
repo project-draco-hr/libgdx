@@ -4,5 +4,6 @@
   String keyword=o.toString();
   Intent intent=null;
   if (keyword.equals(items[0]))   intent=new Intent(this,SimpleTest.class);
+  if (keyword.equals(items[1]))   intent=new Intent(this,MeshRendererTest.class);
   startActivity(intent);
 }
