@@ -1,0 +1,8 @@
+{
+  if (vertices.length % (vertexSizeInt) != 0)   throw new IllegalArgumentException("vertices array must have a size being a multiple of " + vertexSize / 4);
+  if (vertices.length > verticesArray.length)   throw new IllegalArgumentException("vertices array is to large to fit into this mesh");
+  System.arraycopy(vertices,0,verticesArray,0,vertices.length);
+  verticesBuffer.position(0);
+  verticesBuffer.put(vertices,0,vertices.length);
+  verticesBuffer.flip();
+}

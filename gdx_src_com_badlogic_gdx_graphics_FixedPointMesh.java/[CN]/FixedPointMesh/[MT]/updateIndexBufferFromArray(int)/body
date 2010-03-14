@@ -1,0 +1,5 @@
+{
+  indicesBuffer.position(0);
+  indicesBuffer.put(indicesArray,0,numIndices);
+  indicesBuffer.flip();
+}

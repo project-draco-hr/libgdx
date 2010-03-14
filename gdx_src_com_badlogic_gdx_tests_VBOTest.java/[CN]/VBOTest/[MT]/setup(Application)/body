@@ -1,0 +1,14 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(3 * 7 * 4);
+  buffer.order(ByteOrder.nativeOrder());
+  FloatBuffer vertices=buffer.asFloatBuffer();
+  vertices.put(new float[]{-0.5f,-0.5f,0,1,0,0,1,0.5f,-0.5f,0,0,1,0,1,0.0f,0.5f,0,0,0,1,1});
+  vertices.flip();
+  GL11 gl=app.getGraphics().getGL11();
+  int[] handle=new int[1];
+  gl.glGenBuffers(1,handle,0);
+  vboHandle=handle[0];
+  gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,vboHandle);
+  gl.glBufferData(GL11.GL_ARRAY_BUFFER,3 * 7 * 4,vertices,GL11.GL_STATIC_DRAW);
+  gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,0);
+}

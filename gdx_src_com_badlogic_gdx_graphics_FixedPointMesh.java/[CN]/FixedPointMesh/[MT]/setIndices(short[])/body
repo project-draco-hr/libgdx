@@ -1,0 +1,7 @@
+{
+  if (indices.length > maxIndices)   throw new IllegalArgumentException("indices length is bigger than maximum indices length");
+  System.arraycopy(indices,0,indicesArray,0,indices.length);
+  indicesBuffer.position(0);
+  indicesBuffer.put(indices);
+  indicesBuffer.flip();
+}

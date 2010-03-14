@@ -1,0 +1,8 @@
+{
+  this.gl=gl;
+  this.mesh=mesh;
+  this.isStatic=isStatic;
+  this.type=mesh instanceof FloatMesh ? GL10.GL_FLOAT : GL10.GL_FIXED;
+  createVBO();
+  fillVBO();
+}

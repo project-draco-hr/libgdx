@@ -1,0 +1,4 @@
+{
+  if (vboVertexHandle != 0)   renderVBO(primitiveType,offset,count);
+ else   renderVA(primitiveType);
+}

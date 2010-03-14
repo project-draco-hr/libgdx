@@ -1,0 +1,5 @@
+{
+  FloatMesh m=new FloatMesh(3,3,true,4,false,false,0,0,false,0);
+  m.setVertices(new float[]{-0.5f,-0.5f,0,1,0,0,1,0.5f,-0.5f,0,0,1,0,1,0.0f,0.5f,0,0,0,1,1});
+  mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true);
+}

@@ -1,0 +1,11 @@
+{
+  if (!(gl instanceof GL11))   return;
+  GL11 gl11=(GL11)gl;
+  int handle[]=new int[1];
+  gl11.glGenBuffers(1,handle,0);
+  vboVertexHandle=handle[0];
+  if (mesh.hasIndices()) {
+    gl11.glGenBuffers(1,handle,0);
+    vboIndexHandle=handle[0];
+  }
+}

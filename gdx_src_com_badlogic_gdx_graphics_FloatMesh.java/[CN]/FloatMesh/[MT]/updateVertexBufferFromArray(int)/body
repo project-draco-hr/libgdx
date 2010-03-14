@@ -1,0 +1,5 @@
+{
+  verticesBuffer.position(0);
+  verticesBuffer.put(verticesArray,0,numVertices * vertexSize / 4);
+  verticesBuffer.flip();
+}

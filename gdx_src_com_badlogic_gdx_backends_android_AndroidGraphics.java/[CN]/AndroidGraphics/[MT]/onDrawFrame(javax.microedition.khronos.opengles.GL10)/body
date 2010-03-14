@@ -3,7 +3,6 @@
   lastFrameTime=System.nanoTime();
   mean.addValue(deltaTime);
   if (input != null)   input.update();
-  setupGL(gl);
 synchronized (this) {
     if (listener != null)     listener.render(app);
   }
