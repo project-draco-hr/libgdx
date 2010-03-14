@@ -1,0 +1,9 @@
+{
+  if (buffReal.length != timeSize || buffImag.length != timeSize) {
+    throw new IllegalArgumentException("FFT.forward: The length of the passed buffers must be equal to timeSize().");
+  }
+  setComplex(buffReal,buffImag);
+  bitReverseComplex();
+  fft();
+  fillSpectrum();
+}

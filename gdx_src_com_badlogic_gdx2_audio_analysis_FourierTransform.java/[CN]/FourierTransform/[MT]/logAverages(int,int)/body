@@ -1,0 +1,10 @@
+{
+  float nyq=(float)sampleRate / 2f;
+  octaves=1;
+  while ((nyq/=2) > minBandwidth) {
+    octaves++;
+  }
+  avgPerOctave=bandsPerOctave;
+  averages=new float[octaves * bandsPerOctave];
+  whichAverage=LOGAVG;
+}
