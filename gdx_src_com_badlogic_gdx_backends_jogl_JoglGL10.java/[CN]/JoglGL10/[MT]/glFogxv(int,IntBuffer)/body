@@ -1,6 +1,0 @@
-{
-  if (tmp.length < params.capacity())   tmp=new float[params.capacity()];
-  int i=0;
-  while (params.hasRemaining())   tmp[i++]=FIXED_TO_FLOAT * params.get();
-  gl.glFogfv(pname,tmp,0);
-}

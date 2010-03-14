@@ -1,5 +1,0 @@
-{
-  Rect rect=new Rect();
-  paint.getTextBounds(text,0,text.length(),rect);
-  return rect.width();
-}

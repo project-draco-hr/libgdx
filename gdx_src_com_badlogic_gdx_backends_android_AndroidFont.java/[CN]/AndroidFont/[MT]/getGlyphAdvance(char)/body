@@ -1,5 +1,0 @@
-{
-  float[] width=new float[1];
-  paint.getTextWidths("" + character,width);
-  return (int)(Math.ceil(width[0]));
-}

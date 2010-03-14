@@ -1,6 +1,0 @@
-{
-synchronized (eventQueue) {
-    listeners.remove(listener);
-    disabled.remove(listener);
-  }
-}

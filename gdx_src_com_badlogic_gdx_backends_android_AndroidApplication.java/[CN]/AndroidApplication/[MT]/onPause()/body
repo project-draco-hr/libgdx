@@ -1,7 +1,0 @@
-{
-  super.onPause();
-  glView.onPause();
-  for (  CloseListener listener : closeListeners)   listener.close();
-  Log.d("AFX","application paused");
-  System.exit(0);
-}

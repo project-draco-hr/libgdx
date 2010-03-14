@@ -1,5 +1,0 @@
-{
-  idt();
-  if (angle == 0)   return this;
-  return this.set(quat.set(axis,angle));
-}

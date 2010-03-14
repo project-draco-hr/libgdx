@@ -1,4 +1,0 @@
-{
-  handle=openFile(file);
-  if (handle == -1)   throw new IllegalArgumentException("Couldn't open file '" + file + "'");
-}

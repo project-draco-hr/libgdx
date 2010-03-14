@@ -1,8 +1,0 @@
-{
-  proj.setToOrtho2D(0,0,(viewportWidth * scale),(float)(viewportHeight * scale),near,far);
-  model.idt();
-  model.setToTranslation(tmp.set((float)(-position.x + (viewportWidth / 2) * scale),(float)(-position.y + (viewportHeight / 2) * scale),(float)(-position.z)));
-  combined.set(proj);
-  combined.mul(model);
-  combined.mul(rotationMatrix);
-}

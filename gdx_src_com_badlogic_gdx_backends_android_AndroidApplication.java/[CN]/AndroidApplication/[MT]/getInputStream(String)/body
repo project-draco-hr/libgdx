@@ -1,4 +1,0 @@
-{
-  if (!new File(sdcard + file).exists())   new File(sdcard + file).createNewFile();
-  return new FileInputStream(sdcard + file);
-}

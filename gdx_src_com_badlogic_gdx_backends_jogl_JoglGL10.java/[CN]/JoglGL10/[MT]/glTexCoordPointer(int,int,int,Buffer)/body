@@ -1,7 +1,0 @@
-{
-  if (type == GL10.GL_FIXED) {
-    convertFixedToFloatbuffer(pointer,texCoordBuffer[activeTexture],stride);
-    gl.glTexCoordPointer(size,GL10.GL_FLOAT,stride,texCoordBuffer[activeTexture]);
-  }
- else   gl.glTexCoordPointer(size,type,stride,pointer);
-}

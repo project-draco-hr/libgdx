@@ -1,8 +1,0 @@
-{
-  try {
-    return new JoglFont(this,getResourceInputStream(file),size,style);
-  }
- catch (  IOException e) {
-    return new JoglFont(this,"Arial",size,style);
-  }
-}

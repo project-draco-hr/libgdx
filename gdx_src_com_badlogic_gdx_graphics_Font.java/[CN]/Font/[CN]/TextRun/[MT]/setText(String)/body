@@ -1,9 +1,0 @@
-{
-  if (this.text.equals(text))   return;
-  if (text == null)   text="";
-  this.text=text;
-  this.lines=text.split("\n");
-  this.widths=new int[lines.length];
-  for (int i=0; i < lines.length; i++)   widths[i]=getStringWidth(lines[i]);
-  rebuild();
-}

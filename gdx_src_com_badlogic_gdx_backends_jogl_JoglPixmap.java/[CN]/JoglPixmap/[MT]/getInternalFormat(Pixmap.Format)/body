@@ -1,4 +1,0 @@
-{
-  if (format == Pixmap.Format.RGBA4444 || format == Pixmap.Format.RGBA8888)   return BufferedImage.TYPE_4BYTE_ABGR;
- else   return BufferedImage.TYPE_BYTE_GRAY;
-}

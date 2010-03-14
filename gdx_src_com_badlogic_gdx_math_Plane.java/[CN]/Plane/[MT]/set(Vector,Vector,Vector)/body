@@ -1,7 +1,0 @@
-{
-  Vector l=point1.tmp().sub(point2);
-  Vector r=point2.tmp2().sub(point3);
-  Vector nor=l.crs(r).nor();
-  normal.set(nor);
-  d=-point1.dot(nor);
-}

@@ -1,6 +1,0 @@
-{
-  if (canvas == null)   return;
-  dst.set(x,y,x + width,y + height);
-  src.set(srcx,srcy,srcx + width,srcy + height);
-  canvas.drawBitmap((Bitmap)pixmap.getNativePixmap(),src,dst,null);
-}

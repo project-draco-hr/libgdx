@@ -1,9 +1,0 @@
-{
-  float a=point.x - x;
-  float b=point.y - y;
-  float c=point.z - z;
-  a*=a;
-  b*=b;
-  c*=c;
-  return a + b + c;
-}

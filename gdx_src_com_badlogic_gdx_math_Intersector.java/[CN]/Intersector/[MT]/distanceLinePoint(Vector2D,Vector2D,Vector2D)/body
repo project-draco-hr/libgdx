@@ -1,6 +1,0 @@
-{
-  tmp.set(end.x,end.y,0).sub(start.x,start.y,0);
-  float l=tmp.len();
-  tmp2.set(start.x,start.y,0).sub(point.x,point.y,0);
-  return tmp.crs(tmp2).len() / l;
-}

@@ -1,6 +1,0 @@
-{
-  if (tmp.length < m.capacity())   tmp=new float[m.capacity()];
-  int i=0;
-  while (m.hasRemaining())   tmp[i++]=FIXED_TO_FLOAT * m.get();
-  gl.glMultMatrixf(tmp,0);
-}

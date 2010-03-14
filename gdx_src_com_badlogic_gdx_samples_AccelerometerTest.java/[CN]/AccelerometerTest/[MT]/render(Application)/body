@@ -1,6 +1,0 @@
-{
-  application.clear(true,false,false);
-  camera.setMatrices(application);
-  application.rotate(90 * application.getAccelerometerY() / 10,0,0,1);
-  mesh.render(PrimitiveType.Triangles);
-}

@@ -1,9 +1,0 @@
-{
-  if (buffer.length != timeSize) {
-    throw new IllegalArgumentException("FFT.forward: The length of the passed sample buffer must be equal to timeSize().");
-  }
-  doWindow(buffer);
-  bitReverseSamples(buffer);
-  fft();
-  fillSpectrum();
-}

@@ -1,9 +1,0 @@
-{
-  if (min.x > v.x)   return false;
-  if (max.x < v.x)   return false;
-  if (min.y > v.y)   return false;
-  if (max.y < v.y)   return false;
-  if (min.z > v.z)   return false;
-  if (max.z < v.z)   return false;
-  return true;
-}

@@ -1,6 +1,0 @@
-{
-  GL gl=GLContext.getCurrent().getGL();
-  if (mode == MatrixMode.ModelView)   gl.glMatrixMode(GL.GL_MODELVIEW);
-  if (mode == MatrixMode.Projection)   gl.glMatrixMode(GL.GL_PROJECTION);
-  if (mode == MatrixMode.Texture)   gl.glMatrixMode(GL.GL_TEXTURE);
-}
