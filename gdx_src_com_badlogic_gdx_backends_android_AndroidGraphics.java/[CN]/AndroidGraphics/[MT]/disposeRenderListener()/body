@@ -1,0 +1,10 @@
+{
+  dispose=true;
+  while (dispose) {
+    try {
+      Thread.sleep(20);
+    }
+ catch (    InterruptedException e) {
+    }
+  }
+}

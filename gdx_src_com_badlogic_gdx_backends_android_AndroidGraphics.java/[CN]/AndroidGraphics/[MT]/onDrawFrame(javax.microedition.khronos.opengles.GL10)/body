@@ -7,4 +7,8 @@
 synchronized (this) {
     if (listener != null)     listener.render(app);
   }
+  if (dispose) {
+    if (listener != null)     listener.dispose(app);
+    dispose=false;
+  }
 }
