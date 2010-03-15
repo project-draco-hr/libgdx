@@ -1,0 +1,4 @@
+{
+  font.getTexture().bind();
+  mesh.render(GL10.GL_TRIANGLES,0,mesh.getMesh().getNumVertices());
+}

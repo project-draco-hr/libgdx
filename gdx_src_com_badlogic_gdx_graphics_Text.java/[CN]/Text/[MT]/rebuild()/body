@@ -1,0 +1,62 @@
+{
+  if (mesh == null) {
+    FloatMesh m=new FloatMesh(6 * text.length(),3,false,false,true,1,2,false,0);
+    mesh=new MeshRenderer(graphics.getGL10(),m,false,font.isManaged());
+  }
+  if (mesh.getMaximumVertices() / 6 < text.length()) {
+    mesh.dispose();
+    FloatMesh m=new FloatMesh(6 * text.length(),3,false,false,true,1,2,false,0);
+    mesh=new MeshRenderer(graphics.getGL10(),m,false,font.isManaged());
+  }
+  float[] vertices=((FloatMesh)mesh.getMesh()).getVerticesArray();
+  int vertIdx=0;
+  int lineHeight=font.getLineHeight();
+  for (int i=0; i < lines.length; i++) {
+    String line=lines[i];
+    int x=0;
+    int y=height;
+    if (hAlign == HorizontalAlign.Left)     x=0;
+    if (hAlign == HorizontalAlign.Center)     x=width / 2 - widths[i] / 2;
+    if (hAlign == HorizontalAlign.Right)     x=width - widths[i];
+    if (vAlign == VerticalAlign.Top)     y=height;
+    if (vAlign == VerticalAlign.Center)     y=height / 2 + lines.length * (font.getLineHeight() + font.getLineGap()) / 2;
+    if (vAlign == VerticalAlign.Bottom)     y=lines.length * (font.getLineHeight() + font.getLineGap());
+    y-=i * (font.getLineHeight() + font.getLineGap());
+    for (int j=0; j < line.length(); j++) {
+      Glyph glyph=font.getGlyph(line.charAt(j));
+      vertices[vertIdx++]=x;
+      vertices[vertIdx++]=y;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u;
+      vertices[vertIdx++]=glyph.v;
+      vertices[vertIdx++]=x + glyph.width;
+      vertices[vertIdx++]=y;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u + glyph.uWidth;
+      vertices[vertIdx++]=glyph.v;
+      vertices[vertIdx++]=x + glyph.width;
+      vertices[vertIdx++]=y - lineHeight;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u + glyph.uWidth;
+      vertices[vertIdx++]=glyph.v + glyph.vHeight;
+      vertices[vertIdx++]=x + glyph.width;
+      vertices[vertIdx++]=y - lineHeight;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u + glyph.uWidth;
+      vertices[vertIdx++]=glyph.v + glyph.vHeight;
+      vertices[vertIdx++]=x;
+      vertices[vertIdx++]=y - lineHeight;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u;
+      vertices[vertIdx++]=glyph.v + glyph.vHeight;
+      vertices[vertIdx++]=x;
+      vertices[vertIdx++]=y;
+      vertices[vertIdx++]=0;
+      vertices[vertIdx++]=glyph.u;
+      vertices[vertIdx++]=glyph.v;
+      x+=glyph.advance;
+    }
+  }
+  ((FloatMesh)mesh.getMesh()).updateVertexBufferFromArray(vertIdx / 5);
+  mesh.update();
+}

@@ -1,0 +1,8 @@
+{
+  if (text == null) {
+    cam=new OrthographicCamera();
+    font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
+    text=font.newText();
+    text.setText("This is a test");
+  }
+}
