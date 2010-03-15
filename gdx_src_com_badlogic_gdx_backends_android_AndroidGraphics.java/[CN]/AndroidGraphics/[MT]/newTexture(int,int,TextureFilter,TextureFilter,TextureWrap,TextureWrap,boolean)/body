@@ -1,0 +1,9 @@
+{
+  Bitmap.Config config=Bitmap.Config.ARGB_8888;
+  Bitmap bitmap=Bitmap.createBitmap(width,height,config);
+  Texture texture=null;
+  if (gl10 != null)   texture=new AndroidTexture(this,gl10,bitmap,minFilter,magFilter,uWrap,vWrap,managed);
+ else   texture=new AndroidTexture(this,gl20,bitmap,minFilter,magFilter,uWrap,vWrap,managed);
+  bitmap.recycle();
+  return texture;
+}

@@ -1,4 +1,0 @@
-{
-  if (gl10 != null)   return new AndroidTexture(gl10,(Bitmap)pixmap.getNativePixmap(),minFilter,magFilter,uWrap,vWrap);
- else   return new AndroidTexture(gl20,(Bitmap)pixmap.getNativePixmap(),minFilter,magFilter,uWrap,vWrap);
-}

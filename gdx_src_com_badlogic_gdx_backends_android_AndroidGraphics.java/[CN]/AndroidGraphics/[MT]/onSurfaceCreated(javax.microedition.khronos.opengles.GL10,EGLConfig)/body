@@ -1,4 +1,5 @@
 {
   setupGL(gl);
+  for (  AndroidTexture texture : textures)   texture.invalidate();
   if (listener != null)   listener.surfaceCreated(app);
 }

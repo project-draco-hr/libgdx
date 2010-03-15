@@ -1,5 +1,9 @@
 {
   GL11 gl11=(GL11)gl;
+  if (isManaged && gl11.glIsBuffer(vboVertexHandle) == false) {
+    createVBO();
+    fillVBO();
+  }
   gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER,vboVertexHandle);
   gl11.glEnableClientState(GL11.GL_VERTEX_ARRAY);
   gl11.glVertexPointer(mesh.getCoordsSize(),type,mesh.getVertexSize(),0);
