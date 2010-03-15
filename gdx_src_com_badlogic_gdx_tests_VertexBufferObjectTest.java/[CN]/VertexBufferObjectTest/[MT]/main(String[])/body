@@ -1,4 +1,4 @@
 {
   JoglApplication app=new JoglApplication("VBO Test",480,320,false);
-  app.getGraphics().setRenderListener(new VertexBuferObjectTest());
+  app.getGraphics().setRenderListener(new VertexBufferObjectTest());
 }

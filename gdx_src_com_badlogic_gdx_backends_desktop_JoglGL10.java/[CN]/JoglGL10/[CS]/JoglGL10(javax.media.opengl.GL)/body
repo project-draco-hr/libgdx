@@ -12,7 +12,4 @@
   buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
   buffer.order(ByteOrder.nativeOrder());
   texCoordBuffer=buffer.asFloatBuffer();
-  buffer=ByteBuffer.allocateDirect(200000 * 4);
-  buffer.order(ByteOrder.nativeOrder());
-  indices=buffer.asIntBuffer();
 }
