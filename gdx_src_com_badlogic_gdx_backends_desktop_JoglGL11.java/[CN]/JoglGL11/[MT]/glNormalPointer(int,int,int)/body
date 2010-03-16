@@ -1,3 +1,4 @@
 {
+  if (type == GL10.GL_FIXED)   type=GL10.GL_FLOAT;
   gl.glNormalPointer(type,stride,pointer);
 }

@@ -9,7 +9,9 @@
   buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
   buffer.order(ByteOrder.nativeOrder());
   vertexBuffer=buffer.asFloatBuffer();
-  buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
-  buffer.order(ByteOrder.nativeOrder());
-  texCoordBuffer=buffer.asFloatBuffer();
+  for (int i=0; i < texCoordBuffer.length; i++) {
+    buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+    buffer.order(ByteOrder.nativeOrder());
+    texCoordBuffer[i]=buffer.asFloatBuffer();
+  }
 }

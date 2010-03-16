@@ -1,5 +1,5 @@
 {
-  if (!(gl instanceof GL11))   return;
+  if (!(gl instanceof GL11) || (type == GL10.GL_FIXED && gl instanceof JoglGL11))   return;
   GL11 gl11=(GL11)gl;
   int handle[]=new int[1];
   gl11.glGenBuffers(1,handle,0);

@@ -1,5 +1,5 @@
 {
-  if (!(gl instanceof GL11))   return;
+  if (!(gl instanceof GL11) || (type == GL10.GL_FIXED && gl instanceof JoglGL11))   return;
   GL11 gl11=(GL11)gl;
   gl11.glBindBuffer(GL11.GL_ARRAY_BUFFER,vboVertexHandle);
   gl11.glBufferData(GL11.GL_ARRAY_BUFFER,mesh.getVertexSize() * mesh.getNumVertices(),mesh.getVerticesBuffer(),isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW);
