@@ -2,4 +2,6 @@
   setupGL(gl);
   for (  AndroidTexture texture : textures)   texture.invalidate();
   if (listener != null)   listener.surfaceCreated(app);
+  mean=new WindowedMean(5);
+  this.lastFrameTime=System.nanoTime();
 }
