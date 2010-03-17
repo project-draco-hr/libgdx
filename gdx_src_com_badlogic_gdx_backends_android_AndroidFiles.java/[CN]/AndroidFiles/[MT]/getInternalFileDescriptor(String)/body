@@ -1,0 +1,9 @@
+{
+  FileDescriptor fd=null;
+  try {
+    fd=assets.openFd(filename).getFileDescriptor();
+  }
+ catch (  Exception ex) {
+  }
+  return fd;
+}

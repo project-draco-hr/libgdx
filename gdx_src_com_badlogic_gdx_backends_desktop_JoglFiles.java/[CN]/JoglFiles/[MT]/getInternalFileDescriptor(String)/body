@@ -1,0 +1,10 @@
+{
+  FileDescriptor fd=null;
+  try {
+    FileInputStream in=new FileInputStream(filename);
+    fd=in.getFD();
+  }
+ catch (  Exception ex) {
+  }
+  return fd;
+}
