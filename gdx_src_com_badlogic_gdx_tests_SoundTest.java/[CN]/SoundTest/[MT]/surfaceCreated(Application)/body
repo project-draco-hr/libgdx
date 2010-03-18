@@ -1,0 +1,4 @@
+{
+  app.getInput().addInputListener(this);
+  sound=app.getAudio().newSound(app.getFiles().getInternalFileDescriptor("data/shotgun.mp3"));
+}

@@ -1,3 +1,10 @@
 {
-  return null;
+  try {
+    FileInputStream in=new FileInputStream(fileDescriptor);
+    return new JoglSound(in);
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+    return null;
+  }
 }
