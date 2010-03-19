@@ -1,3 +1,11 @@
 {
-  audio.enqueuSound(this);
+  Clip clip;
+  try {
+    clip=AudioSystem.getClip();
+    clip.open(format,samples,0,samples.length);
+    clip.start();
+  }
+ catch (  LineUnavailableException e) {
+    e.printStackTrace();
+  }
 }

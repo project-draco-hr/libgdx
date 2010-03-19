@@ -1,21 +1,18 @@
 {
-  this.audio=audio;
   InputStream fin=new BufferedInputStream(new FileInputStream(file.getFile()));
-  AudioFormat decodeFormat=new AudioFormat(44100,16,1,true,false);
-  int idx=0;
-  try {
-    AudioInputStream ain=AudioSystem.getAudioInputStream(decodeFormat,AudioSystem.getAudioInputStream(fin));
-    DataInputStream din=new DataInputStream(ain);
-    while (true) {
-      samples[idx++]=din.readShort();
-      if (idx == samples.length) {
-        short[] tmp=new short[(int)(samples.length * 1.2)];
-        System.arraycopy(samples,0,tmp,0,samples.length);
-      }
-    }
+  AudioInputStream ain=AudioSystem.getAudioInputStream(fin);
+  AudioFormat baseFormat=ain.getFormat();
+  AudioFormat decodedFormat=new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,baseFormat.getSampleRate(),16,baseFormat.getChannels(),baseFormat.getChannels() * 2,baseFormat.getSampleRate(),false);
+  ain=AudioSystem.getAudioInputStream(decodedFormat,ain);
+  ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+  byte[] buffer=new byte[1024 * 10];
+  int readBytes=ain.read(buffer);
+  while (readBytes != -1) {
+    bytes.write(buffer,0,readBytes);
+    readBytes=ain.read(buffer);
   }
- catch (  IOException ex) {
-    if (ex instanceof EOFException == false)     throw new UnsupportedAudioFileException();
-    numSamples=idx;
-  }
+  ain.close();
+  System.out.println(decodedFormat);
+  format=decodedFormat;
+  samples=bytes.toByteArray();
 }
