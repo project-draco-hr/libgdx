@@ -1,0 +1,14 @@
+{
+synchronized (this) {
+    if (state == State.Stopped)     return;
+    state=State.Stopped;
+    line.flush();
+    try {
+      ain.close();
+    }
+ catch (    IOException e) {
+      e.printStackTrace();
+    }
+    ain=null;
+  }
+}

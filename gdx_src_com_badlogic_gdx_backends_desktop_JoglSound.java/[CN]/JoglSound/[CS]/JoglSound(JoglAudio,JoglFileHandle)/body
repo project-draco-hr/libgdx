@@ -1,0 +1,21 @@
+{
+  this.audio=audio;
+  InputStream fin=new BufferedInputStream(new FileInputStream(file.getFile()));
+  AudioFormat decodeFormat=new AudioFormat(44100,16,1,true,false);
+  int idx=0;
+  try {
+    AudioInputStream ain=AudioSystem.getAudioInputStream(decodeFormat,AudioSystem.getAudioInputStream(fin));
+    DataInputStream din=new DataInputStream(ain);
+    while (true) {
+      samples[idx++]=din.readShort();
+      if (idx == samples.length) {
+        short[] tmp=new short[(int)(samples.length * 1.2)];
+        System.arraycopy(samples,0,tmp,0,samples.length);
+      }
+    }
+  }
+ catch (  IOException ex) {
+    if (ex instanceof EOFException == false)     throw new UnsupportedAudioFileException();
+    numSamples=idx;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  JoglFileHandle jHandle=(JoglFileHandle)file;
+  InputStream in;
+  try {
+    in=new FileInputStream(jHandle.getFile());
+    JoglFont font=new JoglFont(this,in,size,style,managed);
+    in.close();
+    return font;
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}

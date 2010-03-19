@@ -1,0 +1,12 @@
+{
+  boolean exists=true;
+  try {
+    InputStream in=assets.open(filename);
+    in.close();
+  }
+ catch (  Exception ex) {
+    exists=false;
+  }
+  if (!exists)   return null;
+ else   return new AndroidFileHandle(assets,filename);
+}

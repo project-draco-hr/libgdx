@@ -1,0 +1,6 @@
+{
+  initLine();
+  thread=new Thread(this);
+  thread.setDaemon(true);
+  if (line != null)   thread.start();
+}

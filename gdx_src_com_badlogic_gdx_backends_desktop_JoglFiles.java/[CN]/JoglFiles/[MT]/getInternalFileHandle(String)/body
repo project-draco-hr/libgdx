@@ -1,0 +1,5 @@
+{
+  File file=new File(filename);
+  if (file.exists() == false)   return null;
+ else   return new JoglFileHandle(file);
+}

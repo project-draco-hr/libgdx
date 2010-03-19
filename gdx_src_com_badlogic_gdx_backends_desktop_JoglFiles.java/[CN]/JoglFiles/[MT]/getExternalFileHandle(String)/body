@@ -1,0 +1,5 @@
+{
+  File file=new File(externalPath + filename);
+  if (file.exists() == false)   return null;
+ else   return new JoglFileHandle(file);
+}

@@ -1,9 +1,0 @@
-{
-  FileDescriptor fd=null;
-  try {
-    fd=new FileInputStream(sdcard + filename).getFD();
-  }
- catch (  Exception ex) {
-  }
-  return fd;
-}

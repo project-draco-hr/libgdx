@@ -1,0 +1,42 @@
+{
+  int readBytes=0;
+  long readSamples=0;
+  while (!disposed) {
+synchronized (this) {
+      if (state == State.Playing) {
+        try {
+          readBytes=ain.read(buffer);
+          if (readBytes != -1) {
+            int writtenBytes=line.write(buffer,0,readBytes);
+            while (writtenBytes != readBytes)             writtenBytes+=line.write(buffer,writtenBytes,readBytes - writtenBytes);
+            readSamples+=readBytes / ain.getFormat().getFrameSize();
+          }
+ else {
+            System.out.println("samples: " + readSamples);
+            ain.close();
+            if (!isLooping())             state=State.Stopped;
+ else             openAudioInputStream();
+          }
+        }
+ catch (        Exception ex) {
+          try {
+            ain.close();
+          }
+ catch (          IOException e) {
+            e.printStackTrace();
+          }
+          line.close();
+          ex.printStackTrace();
+          state=State.Stopped;
+          return;
+        }
+      }
+      try {
+        Thread.sleep(10);
+      }
+ catch (      InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+}

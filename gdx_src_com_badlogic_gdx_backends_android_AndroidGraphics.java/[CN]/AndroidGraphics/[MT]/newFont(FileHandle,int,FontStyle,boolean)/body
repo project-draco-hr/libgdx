@@ -1,0 +1,5 @@
+{
+  AndroidFileHandle aHandle=(AndroidFileHandle)file;
+  AndroidFont font=new AndroidFont(this,aHandle.getAssetManager(),aHandle.getFileName(),size,style,managed);
+  return font;
+}

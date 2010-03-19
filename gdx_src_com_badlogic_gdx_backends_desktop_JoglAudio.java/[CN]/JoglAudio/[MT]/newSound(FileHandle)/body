@@ -1,0 +1,10 @@
+{
+  try {
+    JoglSound sound=new JoglSound(this,((JoglFileHandle)file));
+    return sound;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return null;
+  }
+}

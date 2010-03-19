@@ -1,14 +1,3 @@
 {
-  try {
-    AudioInputStream in=AudioSystem.getAudioInputStream(new ByteArrayInputStream(bytes));
-    AudioFormat baseFormat=in.getFormat();
-    AudioFormat decodedFormat=new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,baseFormat.getSampleRate(),16,baseFormat.getChannels(),baseFormat.getChannels() * 2,baseFormat.getSampleRate(),false);
-    in=AudioSystem.getAudioInputStream(decodedFormat,in);
-    final Clip clip=AudioSystem.getClip();
-    clip.open(in);
-    clip.start();
-  }
- catch (  Exception ex) {
-    ex.printStackTrace();
-  }
+  audio.enqueuSound(this);
 }

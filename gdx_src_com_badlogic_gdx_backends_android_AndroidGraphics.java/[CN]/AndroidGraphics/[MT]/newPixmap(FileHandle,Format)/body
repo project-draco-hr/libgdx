@@ -1,0 +1,21 @@
+{
+  AndroidFileHandle aHandle=(AndroidFileHandle)file;
+  Options options=new Options();
+  options.inPreferredConfig=AndroidPixmap.getInternalFormat(formatHint);
+  Bitmap bitmap=null;
+  if (aHandle.isAsset()) {
+    InputStream in;
+    try {
+      in=aHandle.getAssetManager().open(aHandle.getFileName());
+    }
+ catch (    IOException e) {
+      return null;
+    }
+    bitmap=BitmapFactory.decodeStream(in,null,options);
+  }
+ else {
+    bitmap=BitmapFactory.decodeFile(aHandle.getFileName());
+  }
+  if (bitmap != null)   return new AndroidPixmap(bitmap);
+ else   return null;
+}
