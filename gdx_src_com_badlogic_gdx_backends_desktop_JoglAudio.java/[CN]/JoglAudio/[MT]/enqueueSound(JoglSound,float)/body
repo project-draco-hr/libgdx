@@ -1,7 +1,7 @@
 {
   try {
 synchronized (this) {
-      buffers.add(new JoglSoundBuffer(sound));
+      buffers.add(new JoglSoundBuffer(sound,volume));
     }
   }
  catch (  Exception ex) {

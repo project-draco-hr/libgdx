@@ -2,8 +2,7 @@
   this.file=handle.getFile();
   openAudioInputStream();
   AudioFormat audioFormat=ain.getFormat();
-  DataLine.Info info=new DataLine.Info(SourceDataLine.class,audioFormat);
-  line=(SourceDataLine)AudioSystem.getLine(info);
+  line=AudioSystem.getSourceDataLine(audioFormat);
   line.open(audioFormat);
   line.start();
   buffer=new byte[10000 * ain.getFormat().getFrameSize()];
