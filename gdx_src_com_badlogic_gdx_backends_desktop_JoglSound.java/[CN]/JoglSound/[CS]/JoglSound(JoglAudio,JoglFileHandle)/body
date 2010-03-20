@@ -1,4 +1,5 @@
 {
+  this.audio=audio;
   InputStream fin=new BufferedInputStream(new FileInputStream(file.getFile()));
   AudioInputStream ain=AudioSystem.getAudioInputStream(fin);
   AudioFormat baseFormat=ain.getFormat();
@@ -14,5 +15,16 @@
   ain.close();
   System.out.println(decodedFormat);
   format=decodedFormat;
-  samples=bytes.toByteArray();
+  originalSamples=bytes.toByteArray();
+  ByteBuffer tmpBuffer=ByteBuffer.wrap(originalSamples);
+  tmpBuffer.order(ByteOrder.LITTLE_ENDIAN);
+  ShortBuffer shorts=tmpBuffer.asShortBuffer();
+  samples=new float[originalSamples.length / 2];
+  for (int i=0; i < samples.length; i++) {
+    float value=shorts.get(i) / (float)Short.MAX_VALUE;
+    if (value < -1)     value=-1;
+    if (value > 1)     value=1;
+    samples[i]=value;
+  }
+  samples=resample(samples,decodedFormat.getSampleRate(),decodedFormat.getChannels() == 1);
 }

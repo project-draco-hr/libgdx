@@ -1,0 +1,19 @@
+{
+  int NUM_SAMPLES=44100 * 2;
+  float[] buffer=new float[NUM_SAMPLES];
+  byte[] bytes=new byte[2 * NUM_SAMPLES];
+  while (true) {
+    int samplesToWrite=line.available() / 2;
+    if (samplesToWrite > 0) {
+      fillBuffer(buffer,bytes,samplesToWrite);
+      int writtenBytes=line.write(bytes,0,samplesToWrite * 2);
+      while (writtenBytes != samplesToWrite * 2)       writtenBytes+=line.write(bytes,writtenBytes,bytes.length - writtenBytes);
+    }
+    try {
+      Thread.sleep(5);
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+}

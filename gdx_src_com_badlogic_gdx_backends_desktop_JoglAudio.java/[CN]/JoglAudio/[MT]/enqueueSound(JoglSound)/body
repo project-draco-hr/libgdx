@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (this) {
+      buffers.add(new JoglSoundBuffer(sound));
+    }
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

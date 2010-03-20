@@ -1,4 +1,7 @@
 {
   app.getInput().addInputListener(this);
-  sound=app.getAudio().newSound(app.getFiles().getInternalFileHandle("data/shotgun.wav"));
+  sound=app.getAudio().newSound(app.getFiles().getInternalFileHandle("data/shotgunstereo.wav"));
+  music=app.getAudio().newMusic(app.getFiles().getInternalFileHandle("data/cloudconnected.ogg"));
+  music.setLooping(true);
+  music.play();
 }

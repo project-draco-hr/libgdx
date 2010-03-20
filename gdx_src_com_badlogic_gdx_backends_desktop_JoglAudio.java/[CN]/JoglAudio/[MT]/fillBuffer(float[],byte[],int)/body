@@ -1,0 +1,22 @@
+{
+  for (int i=0; i < buffer.length; i++)   buffer[i]=0.0f;
+  for (int i=0; i < bytes.length; i++)   bytes[i]=0;
+  int numBuffers=buffers.size();
+synchronized (this) {
+    Iterator<JoglSoundBuffer> bufferIter=buffers.iterator();
+    while (bufferIter.hasNext()) {
+      JoglSoundBuffer soundBuffer=bufferIter.next();
+      if (!soundBuffer.writeSamples(samplesToWrite,buffer))       bufferIter.remove();
+    }
+  }
+  if (numBuffers > 0) {
+    for (int i=0, j=0; i < samplesToWrite; i++, j+=2) {
+      float fValue=buffer[i];
+      if (fValue > 1)       fValue=1;
+      if (fValue < -1)       fValue=-1;
+      short value=(short)(fValue * Short.MAX_VALUE);
+      bytes[j]=(byte)(value | 0xff);
+      bytes[j + 1]=(byte)(value >> 8);
+    }
+  }
+}
