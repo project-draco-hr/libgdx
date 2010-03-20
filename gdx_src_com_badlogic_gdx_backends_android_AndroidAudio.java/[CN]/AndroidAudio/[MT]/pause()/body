@@ -1,0 +1,10 @@
+{
+  wasPlaying.clear();
+  for (  AndroidMusic music : musics) {
+    if (music.isPlaying()) {
+      music.pause();
+      wasPlaying.add(true);
+    }
+ else     wasPlaying.add(false);
+  }
+}

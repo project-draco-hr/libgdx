@@ -2,4 +2,5 @@
   super.onResume();
   if (listener != null)   listener.resume(this);
   if (graphics.view != null)   graphics.view.onResume();
+  audio.resume();
 }
