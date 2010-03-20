@@ -3,8 +3,10 @@
   deltaTime=(System.nanoTime() - frameStart) / 1000000000.0f;
   frameStart=System.nanoTime();
   mean.addValue(deltaTime);
-  for (  RenderListener listener : setupListeners)   listener.surfaceCreated(application);
-  listeners.addAll(setupListeners);
-  setupListeners.clear();
-  for (  RenderListener listener : listeners)   listener.render(application);
+synchronized (this) {
+    for (    RenderListener listener : setupListeners)     listener.surfaceCreated(application);
+    listeners.addAll(setupListeners);
+    setupListeners.clear();
+    for (    RenderListener listener : listeners)     listener.render(application);
+  }
 }

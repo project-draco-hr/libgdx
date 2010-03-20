@@ -1,5 +1,7 @@
 {
-  setupListeners.remove(listener);
-  listeners.remove(listener);
-  listener.dispose(application);
+synchronized (this) {
+    setupListeners.remove(listener);
+    listeners.remove(listener);
+    listener.dispose(application);
+  }
 }

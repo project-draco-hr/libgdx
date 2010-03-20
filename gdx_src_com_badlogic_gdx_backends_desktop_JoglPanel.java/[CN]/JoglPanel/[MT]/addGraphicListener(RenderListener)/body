@@ -1,3 +1,5 @@
 {
-  setupListeners.add(listener);
+synchronized (this) {
+    setupListeners.add(listener);
+  }
 }
