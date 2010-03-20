@@ -11,5 +11,6 @@
   if (keyword.equals(items[5]))   intent=new Intent(this,FixedPointMeshRendererTest.class);
   if (keyword.equals(items[6]))   intent=new Intent(this,ManagedTest.class);
   if (keyword.equals(items[7]))   intent=new Intent(this,TextTest.class);
+  if (keyword.equals(items[8]))   intent=new Intent(this,SoundTest.class);
   startActivity(intent);
 }
