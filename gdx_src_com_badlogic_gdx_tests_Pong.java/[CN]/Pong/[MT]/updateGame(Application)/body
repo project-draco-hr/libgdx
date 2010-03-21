@@ -1,0 +1,37 @@
+{
+  float deltaTime=app.getGraphics().getDeltaTime();
+  ball.add(ballSpeed * ballDirection.x * deltaTime,ballSpeed * ballDirection.y * deltaTime);
+  if (ball.x < -240) {
+    ball.set(0,0);
+    ballSpeed=BALL_SPEED;
+    ballDirection.set((float)Math.random() + 0.1f,(float)Math.random()).nor();
+    rightScore++;
+  }
+  if (ball.x > 240) {
+    ball.set(0,0);
+    ballDirection.set((float)Math.random() + 0.1f,(float)Math.random()).nor();
+    leftScore++;
+  }
+  if (ball.y > 160 || ball.y < -160)   ballDirection.y=-ballDirection.y;
+  if (ballDirection.x > 0 && ball.x > rightPaddle.x - 5 && ball.y > rightPaddle.y - 30 && ball.y < rightPaddle.y + 30) {
+    ball.x=rightPaddle.x - 6;
+    ballDirection.x=-ballDirection.x;
+    float sign=Math.signum(ball.y - rightPaddle.y);
+    ballDirection.y=sign * (float)Math.abs(ball.y - rightPaddle.y) / 30;
+    ballDirection.nor();
+    ballSpeed+=10;
+  }
+  if (ballDirection.x < 0 && ball.x < leftPaddle.x + 5 && ball.y > leftPaddle.y - 30 && ball.y < leftPaddle.y + 30) {
+    ball.x=leftPaddle.x + 6;
+    ballDirection.x=-ballDirection.x;
+    float sign=(float)Math.signum(ball.y - leftPaddle.y);
+    ballDirection.y=sign * (float)Math.abs(ball.y - leftPaddle.y) / 30;
+    ballDirection.nor();
+    ballSpeed+=10;
+  }
+  if (app.getInput().isTouched()) {
+    float touchX=480 * (app.getInput().getX() / app.getGraphics().getWidth() - 0.5f);
+    float touchY=320 * (0.5f - app.getInput().getY() / app.getGraphics().getHeight());
+    if (touchX > leftPaddle.x)     ball.y=touchY;
+  }
+}

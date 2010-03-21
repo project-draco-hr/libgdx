@@ -1,0 +1,13 @@
+{
+  Mesh mesh=new FixedPointMesh(4,2,false,false,false,0,0,false,0);
+  mesh.setVertices(new float[]{-5,-30,5,-30,5,30,-5,30});
+  paddleMesh=new MeshRenderer(app.getGraphics().getGL10(),mesh,true,true);
+  mesh=new FixedPointMesh(4,2,false,false,false,0,0,false,0);
+  mesh.setVertices(new float[]{-5,-5,5,-5,5,5,-5,5});
+  ballMesh=new MeshRenderer(app.getGraphics().getGL10(),mesh,true,true);
+  font=app.getGraphics().newFont("Arial",30,FontStyle.Plain,true);
+  score=font.newText();
+  score.setText("0 : 0");
+  camera=new OrthographicCamera();
+  camera.setViewport(480,320);
+}
