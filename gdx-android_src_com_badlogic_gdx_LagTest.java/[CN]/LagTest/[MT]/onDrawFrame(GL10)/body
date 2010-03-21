@@ -1,0 +1,8 @@
+{
+  frames++;
+  if (System.nanoTime() - startTime > 1000000000) {
+    Log.d("Lag Test","fps: " + frames);
+    startTime=System.nanoTime();
+    frames=0;
+  }
+}
