@@ -1,0 +1,20 @@
+{
+  AndroidFileHandle aHandle=(AndroidFileHandle)file;
+  Bitmap bitmap=null;
+  if (aHandle.isAsset()) {
+    InputStream in;
+    try {
+      in=aHandle.getAssetManager().open(aHandle.getFileName());
+      bitmap=BitmapFactory.decodeStream(in,null,null);
+      in.close();
+    }
+ catch (    IOException e) {
+      return null;
+    }
+  }
+ else {
+    bitmap=BitmapFactory.decodeFile(aHandle.getFileName());
+  }
+  if (bitmap != null)   return new AndroidPixmap(bitmap);
+ else   return null;
+}

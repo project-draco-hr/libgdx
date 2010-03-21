@@ -18,4 +18,5 @@
   if (minFilter == TextureFilter.MipMap)   isMipMap=true;
  else   isMipMap=false;
   this.graphics.textures.add(this);
+  gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
 }

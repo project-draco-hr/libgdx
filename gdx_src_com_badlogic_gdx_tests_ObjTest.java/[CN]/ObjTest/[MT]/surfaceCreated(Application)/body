@@ -1,0 +1,13 @@
+{
+  if (mesh == null) {
+    app.getInput().addInputListener(this);
+    Mesh m=ModelLoader.loadObj(app.getFiles().readInternalFile("data/cube.obj"),false);
+    mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
+    Pixmap pixmap=app.getGraphics().newPixmap(app.getFiles().readInternalFile("data/badlogic.jpg"));
+    texture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    cam=new PerspectiveCamera();
+    cam.getPosition().set(2,2,2);
+    cam.getDirection().set(-1,-1,-1);
+  }
+  frameStart=System.nanoTime();
+}

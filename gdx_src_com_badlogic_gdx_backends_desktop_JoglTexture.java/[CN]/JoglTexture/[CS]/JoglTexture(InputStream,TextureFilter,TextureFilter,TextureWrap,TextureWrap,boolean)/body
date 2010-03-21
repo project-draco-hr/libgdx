@@ -10,7 +10,6 @@
     throw new RuntimeException(ex);
   }
   GL gl=GLContext.getCurrent().getGL();
-  gl.glEnable(GL.GL_TEXTURE_2D);
   bind();
   gl.glTexParameteri(GL.GL_TEXTURE_2D,GL.GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));
   gl.glTexParameteri(GL.GL_TEXTURE_2D,GL.GL_TEXTURE_MAG_FILTER,getTextureFilter(maxFilter));
