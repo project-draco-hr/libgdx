@@ -5,7 +5,6 @@
     text=font.newText();
     text.setText("This is a test\nIt is a multline text!\nyes really!11!111one");
     text.setHorizontalAlign(HorizontalAlign.Center);
-    text.rebuild();
     FloatMesh m=new FloatMesh(4,2,false,false,false,0,0,false,0);
     m.setVertices(new float[]{0,0,text.getWidth(),0,text.getWidth(),text.getHeight(),0,text.getHeight()});
     bounds=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
