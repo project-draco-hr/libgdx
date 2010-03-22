@@ -17,5 +17,6 @@
   if (keyword.equals(items[11]))   intent=new Intent(this,FixedPointTest.class);
   if (keyword.equals(items[12]))   intent=new Intent(this,FloatTest.class);
   if (keyword.equals(items[13]))   intent=new Intent(this,LagTest.class);
+  if (keyword.equals(items[14]))   intent=new Intent(this,Pong.class);
   startActivity(intent);
 }
