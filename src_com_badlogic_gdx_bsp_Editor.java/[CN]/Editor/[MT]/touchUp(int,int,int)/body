@@ -1,0 +1,20 @@
+{
+  float touchX=10 * (x / 480.0f - 0.5f);
+  float touchY=10 * (0.5f - y / 320.0f);
+  if (drawing == false) {
+    currentPolygon=new Polygon();
+    currentPolygon.add(touchX,touchY,0);
+    drawing=true;
+  }
+ else {
+    if (currentPolygon.points.get(0).dst(touchX,touchY,0) < 0.1f) {
+      polygons.add(currentPolygon);
+      currentPolygon=null;
+      drawing=false;
+    }
+ else {
+      currentPolygon.add(touchX,touchY,0);
+    }
+  }
+  return false;
+}
