@@ -1,0 +1,44 @@
+{
+  int numVertices=0;
+  for (  Polygon polygon : polygons)   numVertices+=(polygon.points.size()) * 6;
+  FloatMesh mesh=new FloatMesh(numVertices,3,false,false,false,0,0,false,0);
+  FloatBuffer vertices=FloatBuffer.allocate(numVertices * 3);
+  for (  Polygon polygon : polygons) {
+    for (int i=0; i < polygon.points.size(); i++) {
+      Vector p1=polygon.points.get(i);
+      Vector p2=polygon.points.get(i < polygon.points.size() - 1 ? i + 1 : 0);
+      Vector p3=new Vector(p2);
+      Vector p4=new Vector(p1);
+      p3.z=p4.z=1;
+      vertices.put(p1.x);
+      vertices.put(p1.z);
+      vertices.put(p1.y);
+      vertices.put(p2.x);
+      vertices.put(p2.z);
+      vertices.put(p2.y);
+      vertices.put(p3.x);
+      vertices.put(p3.z);
+      vertices.put(p3.y);
+      vertices.put(p3.x);
+      vertices.put(p3.z);
+      vertices.put(p3.y);
+      vertices.put(p4.x);
+      vertices.put(p4.z);
+      vertices.put(p4.y);
+      vertices.put(p1.x);
+      vertices.put(p1.z);
+      vertices.put(p1.y);
+    }
+  }
+  mesh.setVertices(vertices.array());
+  try {
+    FileOutputStream out=new FileOutputStream(filename);
+    ModelWriter.writeObj(out,mesh);
+    out.flush();
+    out.close();
+    mesh=(FloatMesh)ModelLoader.loadObj(new FileInputStream(filename),true);
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

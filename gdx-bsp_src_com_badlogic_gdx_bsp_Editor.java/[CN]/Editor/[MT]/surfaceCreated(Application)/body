@@ -1,0 +1,13 @@
+{
+  this.app=app;
+  app.getInput().addInputListener(this);
+  cam=new OrthographicCamera();
+  cam.setViewport(10,10);
+  cam.update();
+  GL10 gl=app.getGraphics().getGL10();
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(cam.getCombinedMatrix().val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+  g=new ImmediateModeRenderer(gl);
+}
