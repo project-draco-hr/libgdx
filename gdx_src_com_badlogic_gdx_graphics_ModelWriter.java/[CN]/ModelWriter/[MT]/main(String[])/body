@@ -1,0 +1,4 @@
+{
+  FloatMesh mesh=(FloatMesh)ModelLoader.loadObj(new FileInputStream("data/cube.obj"),true);
+  ModelWriter.writeObj(new FileOutputStream("test.obj"),mesh);
+}
