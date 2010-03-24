@@ -1,5 +1,6 @@
 {
   BufferedWriter writer=new BufferedWriter(new OutputStreamWriter(out));
+  if (mesh.getCoordsSize() != 3)   throw new IllegalArgumentException("vertex position size must be 3");
   if (mesh.getNumTexCoords() > 1)   throw new IllegalArgumentException("only a single texture coordinate set allowed");
   if (mesh.getTexCoordsSize() != 2)   throw new IllegalArgumentException("texture coordinates size must be 2");
   if (mesh.hasIndices() && mesh.getNumIndices() % 3 != 0)   throw new IllegalArgumentException("mesh must be triangulated");
@@ -19,7 +20,7 @@
   }
   if (mesh.hasIndices()) {
     short[] indices=mesh.getIndicesArray();
-    for (int i=0; i < indices.length; i+=3) {
+    for (int i=0; i < mesh.getNumIndices(); i+=3) {
       int i1=indices[i] + 1;
       int i2=indices[i] + 1;
       int i3=indices[i] + 1;
