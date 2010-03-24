@@ -1,0 +1,55 @@
+{
+  if (!plane.isFrontFacing(packet.normalizedVelocity))   return;
+  float t0, t1;
+  boolean embeddedInPlane=false;
+  float signedDistanceToTrianglePlane=plane.distance(packet.position);
+  float normalDotVelocity=plane.normal.dot(packet.velocity);
+  if (normalDotVelocity == 0) {
+    if (Math.abs(signedDistanceToTrianglePlane) >= 1.0f) {
+      return;
+    }
+ else {
+      embeddedInPlane=true;
+      t0=0;
+      t1=1;
+    }
+  }
+ else {
+    t0=(-1 - signedDistanceToTrianglePlane) / normalDotVelocity;
+    t1=(1 - signedDistanceToTrianglePlane) / normalDotVelocity;
+    if (t0 > t1) {
+      float tmp=t1;
+      t1=t0;
+      t0=tmp;
+    }
+    if (t0 > 1 || t1 < 0)     return;
+    if (t0 < 0)     t0=0;
+    if (t1 < 0)     t1=0;
+    if (t0 > 1)     t0=1;
+    if (t1 > 1)     t1=1;
+  }
+  Vector collisionPoint=new Vector();
+  boolean foundCollision=false;
+  float t=1.0f;
+  if (!embeddedInPlane) {
+    Vector planeIntersectionPoint=new Vector(packet.position).sub(plane.normal);
+    planeIntersectionPoint.add(packet.velocity.x * t0,packet.velocity.y * t0,packet.velocity.z * t0);
+    if (Intersector.isPointInTriangle(planeIntersectionPoint,p1,p2,p3)) {
+      foundCollision=true;
+      t=t0;
+      collisionPoint=planeIntersectionPoint;
+    }
+  }
+  if (foundCollision == false) {
+    Vector velocity=packet.velocity;
+    Vector base=packet.position;
+    float velocitySquaredLength=velocity.len2();
+    float a, b, c;
+    float newT;
+    a=velocitySquaredLength;
+    b=2 * (velocity.dot(base.tmp().sub(p1)));
+    c=p1.tmp().sub(base).len2() - 1;
+    float root=Intersector.getLowestPositiveRoot(a,b,c);
+    if (root != Float.NaN)     t=root;
+  }
+}

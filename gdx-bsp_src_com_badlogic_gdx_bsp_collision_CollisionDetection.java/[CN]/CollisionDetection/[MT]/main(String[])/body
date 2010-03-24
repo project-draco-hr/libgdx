@@ -1,0 +1,7 @@
+{
+  FloatMesh mesh=new FloatMesh(4,3,false,false,false,0,0,true,6);
+  mesh.setVertices(new float[]{-1,0,1,1,0,1,1,0,-1,-1,0,-1});
+  mesh.setIndices(new short[]{0,1,2,2,3,1});
+  CollisionMesh cmesh=new CollisionMesh(mesh,false);
+  System.out.println(cmesh);
+}
