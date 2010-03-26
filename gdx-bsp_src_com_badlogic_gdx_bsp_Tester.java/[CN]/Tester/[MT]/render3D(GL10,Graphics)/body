@@ -1,0 +1,6 @@
+{
+  gl.glEnable(GL10.GL_DEPTH_TEST);
+  cam.setMatrices(g);
+  setupLights(gl);
+  mesh.render(GL10.GL_TRIANGLES);
+}

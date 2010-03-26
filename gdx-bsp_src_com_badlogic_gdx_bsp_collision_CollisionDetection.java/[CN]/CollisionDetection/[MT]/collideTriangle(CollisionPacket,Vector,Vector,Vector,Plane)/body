@@ -121,13 +121,13 @@
         collisionPoint=p3.tmp2().add(edge.tmp().mul(f));
       }
     }
-    if (foundCollision == true) {
-      float distToCollision=t * packet.velocity.len();
-      if (packet.foundCollision == false || distToCollision < packet.nearestDistance) {
-        packet.nearestDistance=distToCollision;
-        packet.intersectionPoint.set(collisionPoint);
-        packet.foundCollision=true;
-      }
+  }
+  if (foundCollision == true) {
+    float distToCollision=t * packet.velocity.len();
+    if (packet.foundCollision == false || distToCollision < packet.nearestDistance) {
+      packet.nearestDistance=distToCollision;
+      packet.intersectionPoint.set(collisionPoint);
+      packet.foundCollision=true;
     }
   }
 }

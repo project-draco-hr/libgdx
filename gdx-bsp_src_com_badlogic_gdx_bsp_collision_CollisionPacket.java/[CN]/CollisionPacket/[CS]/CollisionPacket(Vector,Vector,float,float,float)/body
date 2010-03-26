@@ -10,4 +10,5 @@
   this.velocity=new Vector(velocity.x * invRadiusX,velocity.y * invRadiusY,velocity.z * invRadiusZ);
   this.normalizedVelocity=new Vector(velocity).nor();
   this.position=new Vector(position.x * invRadiusX,position.y * invRadiusY,position.z * invRadiusZ);
+  this.intersectionPoint=new Vector();
 }

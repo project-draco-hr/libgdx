@@ -5,6 +5,7 @@
   numTriangles=mesh.hasIndices() ? mesh.getNumIndices() / 3 : mesh.getNumVertices() / 3;
   triangles=new float[3 * 3 * numTriangles];
   planes=new float[4 * numTriangles];
+  isClockWise=clockWise;
   if (mesh.hasIndices())   fillFromIndexedMesh(mesh);
  else   fillFromMesh(mesh);
   calculatePlanes(clockWise);
