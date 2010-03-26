@@ -2,9 +2,9 @@
   Plane p=new Plane(t1,t2,t3);
   Vector i=new Vector();
   if (!intersectRayPlane(ray,p,i))   return false;
-  Vector v0=new Vector().set(t3).sub(t1);
-  Vector v1=new Vector().set(t2).sub(t1);
-  Vector v2=new Vector(i).sub(t1);
+  v0.set(t3).sub(t1);
+  v1.set(t2).sub(t1);
+  v2.set(i).sub(t1);
   float dot00=v0.dot(v0);
   float dot01=v0.dot(v1);
   float dot02=v0.dot(v2);

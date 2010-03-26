@@ -1,0 +1,15 @@
+{
+  try {
+    FloatMesh m=(FloatMesh)ModelLoader.loadObj(new FileInputStream("scene.obj"),true);
+    mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
+    cam=new PerspectiveCamera();
+    cam.setFov(45);
+    cam.setNear(0.1f);
+    cam.setFar(1000);
+    cMesh=new CollisionMesh(m,false);
+    collider=new EllipsoidCollider(1,1,1,new SlideResponse());
+  }
+ catch (  FileNotFoundException e) {
+    e.printStackTrace();
+  }
+}

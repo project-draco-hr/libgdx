@@ -1,0 +1,5 @@
+{
+  if (response == null)   throw new IllegalArgumentException("response must be != null");
+  packet=new CollisionPacket(new Vector(),new Vector(),xRadius,yRadius,zRadius);
+  this.response=response;
+}
