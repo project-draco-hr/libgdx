@@ -1,8 +1,7 @@
 {
-  Vector p1=new Vector();
-  Vector p2=new Vector();
-  Vector p3=new Vector();
-  Plane plane=new Plane(new Vector(),0);
+  processedTriangles=0;
+  earlyOutTriangles=0;
+  culledTriangles=0;
   float[] triangles=mesh.getTriangles();
   int numTriangles=mesh.getNumTriangles();
   int idx=0;
@@ -13,6 +12,7 @@
     if (mesh.isClockWise())     plane.set(p3,p2,p1);
  else     plane.set(p1,p2,p3);
     collideTriangle(packet,p1,p2,p3,plane);
+    processedTriangles++;
   }
   return packet.isColliding();
 }

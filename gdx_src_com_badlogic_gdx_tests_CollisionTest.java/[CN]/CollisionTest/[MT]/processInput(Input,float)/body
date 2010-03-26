@@ -4,13 +4,11 @@
   cam.getDirection().set(0,0,-1);
   mat.setToRotation(axis,yAngle);
   cam.getDirection().rot(mat);
+  velocity.add(0,-0.5f * deltaTime,0);
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_UP))   velocity.add(cam.getDirection().tmp().mul(SPEED * deltaTime));
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_DOWN))   velocity.add(cam.getDirection().tmp().mul(SPEED * -deltaTime));
-  if (!collider.collide(cMesh,cam.getPosition(),velocity,0.0000001f)) {
-    velocity.add(0,-0.5f * deltaTime,0);
-    collider.collide(cMesh,cam.getPosition(),velocity,0.0000001f);
-  }
+  collider.collide(cMesh,cam.getPosition(),velocity,0.0000001f);
   cam.getPosition().add(velocity);
   velocity.mul(0.95f);
-  System.out.println(velocity);
+  System.out.println("processed: " + CollisionDetection.getNumProcessedTriangles() + ", culled: "+ CollisionDetection.getNumCulledTriangles()+ ", early out: "+ CollisionDetection.getNumEarlyOutTriangles()+ ", collided: "+ CollisionDetection.getNumCollidedTriangles());
 }
