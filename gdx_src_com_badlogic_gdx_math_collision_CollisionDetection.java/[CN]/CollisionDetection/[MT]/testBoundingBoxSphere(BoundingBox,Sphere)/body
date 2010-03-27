@@ -1,0 +1,4 @@
+{
+  float sqDist=squaredDistanceToBoundingBox(b,s.center);
+  return sqDist <= s.radius * s.radius;
+}

@@ -1,0 +1,4 @@
+{
+  float t=plane.normal.dot(p) - plane.d;
+  o.set(p).sub(plane.normal.tmp().mul(t));
+}

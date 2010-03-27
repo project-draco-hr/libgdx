@@ -1,0 +1,4 @@
+{
+  float dist=s.center.dot(p.normal) - p.d;
+  return Math.abs(dist) <= s.radius;
+}

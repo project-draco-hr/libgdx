@@ -5,7 +5,7 @@
   for (int i=0; i < triangles.length - 6; i+=9) {
     boolean result=intersectRayTriangle(ray,tmp1.set(triangles[i],triangles[i + 1],triangles[i + 2]),tmp2.set(triangles[i + 3],triangles[i + 4],triangles[i + 5]),tmp3.set(triangles[i + 6],triangles[i + 7],triangles[i + 8]),tmp);
     if (result == true) {
-      float dist=ray.getStartPoint().tmp().sub(tmp).len();
+      float dist=ray.origin.tmp().sub(tmp).len();
       if (dist < min_dist) {
         min_dist=dist;
         best.set(tmp);

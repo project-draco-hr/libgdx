@@ -6,7 +6,7 @@
   for (int i=0; i < triangles.size() - 2; i+=3) {
     boolean result=intersectRayTriangle(ray,triangles.get(i),triangles.get(i + 1),triangles.get(i + 2),tmp);
     if (result == true) {
-      float dist=ray.getStartPoint().tmp().sub(tmp).len();
+      float dist=ray.origin.tmp().sub(tmp).len();
       if (dist < min_dist) {
         min_dist=dist;
         if (best == null)         best=new Vector();

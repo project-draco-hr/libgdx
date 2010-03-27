@@ -1,0 +1,9 @@
+{
+  Vector ab=r.direction.tmp();
+  float t=(p.d - p.normal.dot(r.origin)) / p.normal.dot(ab);
+  if (t >= 0) {
+    i.set(r.origin).add(ab.mul(t));
+    return true;
+  }
+  return false;
+}
