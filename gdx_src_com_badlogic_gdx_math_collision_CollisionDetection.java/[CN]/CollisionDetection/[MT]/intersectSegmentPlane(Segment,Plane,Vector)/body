@@ -1,9 +1,8 @@
 {
   Vector ab=s.b.tmp().sub(s.a);
-  float t=(p.d - p.normal.dot(s.a)) / p.normal.dot(ab);
-  if (t >= 0 && t <= 1) {
-    i.set(s.a).add(ab.mul(t));
-    return true;
-  }
-  return false;
+  float denom=ab.dot(plane.getNormal());
+  float t=-(s.a.dot(plane.getNormal()) + plane.getD()) / denom;
+  if (t < 0 || t > 1)   return false;
+  intersection.set(s.a).add(ab.mul(t));
+  return true;
 }

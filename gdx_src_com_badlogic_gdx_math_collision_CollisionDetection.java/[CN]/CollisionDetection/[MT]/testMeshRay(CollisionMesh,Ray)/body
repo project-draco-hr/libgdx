@@ -9,8 +9,7 @@
     p2.set(triangles[idxt++],triangles[idxt++],triangles[idxt++]);
     p3.set(triangles[idxt++],triangles[idxt++],triangles[idxt++]);
     plane.set(planes[idx++],planes[idx++],planes[idx++],planes[idx++]);
-    if (Intersector.intersectSegmentPlane(start,end,plane,intersectionPoint))     if (Intersector.isPointInTriangle(intersectionPoint,p1,p2,p3))     return true;
-    processedTriangles++;
+    if (intersectRayTriangle(ray,p1,p2,p3,plane,intersection))     return true;
   }
   return false;
 }

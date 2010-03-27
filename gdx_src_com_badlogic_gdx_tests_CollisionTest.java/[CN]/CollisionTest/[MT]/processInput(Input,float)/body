@@ -4,8 +4,9 @@
   cam.getDirection().set(0,0,-1);
   mat.setToRotation(axis,yAngle);
   cam.getDirection().rot(mat);
-  tmp.set(cam.getPosition()).y-=0.55f;
-  if (!CollisionDetection.collide(cMesh,cam.getPosition(),tmp,intersection)) {
+  segment.a.set(cam.getPosition());
+  segment.b.set(cam.getPosition()).y-=1.1f;
+  if (!CollisionDetection.testMeshSegment(cMesh,segment)) {
     velocity.add(0,-0.5f * deltaTime,0);
     System.out.println("applying gravity");
   }

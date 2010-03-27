@@ -7,5 +7,5 @@
   cam.setFar(1000);
   cam.getPosition().y=5;
   cMesh=new CollisionMesh(m,false);
-  collider=new EllipsoidCollider(0.5f,0.5f,0.5f,new SlideResponse());
+  collider=new EllipsoidCollider(0.5f,1,0.5f,new SlideResponse());
 }
