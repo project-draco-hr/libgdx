@@ -1,4 +1,5 @@
 {
+  CollisionType type=CollisionType.Vertex;
   if (!plane.isFrontFacing(packet.normalizedVelocity)) {
     culledTriangles++;
     return;
@@ -16,7 +17,7 @@
       embeddedInPlane=true;
       t0=0;
       t1=1;
-      packet.type=CollisionType.Embedded;
+      type=CollisionType.Embedded;
     }
   }
  else {
@@ -47,7 +48,7 @@
       foundCollision=true;
       t=t0;
       collisionPoint=planeIntersectionPoint;
-      packet.type=CollisionType.Plane;
+      type=CollisionType.Plane;
     }
   }
   if (foundCollision == false) {
@@ -63,7 +64,7 @@
       t=root;
       foundCollision=true;
       collisionPoint=p1;
-      packet.type=CollisionType.Vertex;
+      type=CollisionType.Vertex;
     }
     if (!foundCollision) {
       b=2 * (velocity.dot(base.tmp().sub(p2)));
@@ -73,7 +74,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p2;
-        packet.type=CollisionType.Vertex;
+        type=CollisionType.Vertex;
       }
     }
     if (!foundCollision) {
@@ -84,7 +85,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p3;
-        packet.type=CollisionType.Vertex;
+        type=CollisionType.Vertex;
       }
     }
     edge.set(p2).sub(p1);
@@ -102,7 +103,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p1.tmp2().add(edge.tmp().mul(f));
-        packet.type=CollisionType.Edge;
+        type=CollisionType.Edge;
       }
     }
     edge.set(p3).sub(p2);
@@ -120,7 +121,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p2.tmp2().add(edge.tmp().mul(f));
-        packet.type=CollisionType.Edge;
+        type=CollisionType.Edge;
       }
     }
     edge.set(p1).sub(p3);
@@ -138,7 +139,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p3.tmp2().add(edge.tmp().mul(f));
-        packet.type=CollisionType.Edge;
+        type=CollisionType.Edge;
       }
     }
   }
@@ -148,6 +149,7 @@
       packet.nearestDistance=distToCollision;
       packet.intersectionPoint.set(collisionPoint);
       packet.foundCollision=true;
+      packet.type=type;
     }
   }
 }

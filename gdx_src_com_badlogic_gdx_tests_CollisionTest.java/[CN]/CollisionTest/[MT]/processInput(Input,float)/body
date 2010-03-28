@@ -5,13 +5,13 @@
   cam.getDirection().set(0,0,-1);
   mat.setToRotation(axis,yAngle);
   cam.getDirection().rot(mat);
-  segment.a.set(cam.getPosition());
-  segment.b.set(cam.getPosition()).y-=1.1f;
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_UP))   velocity.add(cam.getDirection().tmp().mul(SPEED * deltaTime));
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_DOWN))   velocity.add(cam.getDirection().tmp().mul(SPEED * -deltaTime));
   System.out.println("vel col:");
+  velocity.add(0,0.5f * -deltaTime,0);
   collider.collide(cMesh,cam.getPosition(),velocity,0.00005f);
-  System.out.println("grav col:");
-  collider.collide(cMesh,cam.getPosition(),new Vector(0,-2f * deltaTime,0),0.00005f);
+  segment.a.set(cam.getPosition());
+  segment.b.set(cam.getPosition()).y-=1.1f;
   velocity.mul(0.90f);
+  gravity.mul(0.9f);
 }
