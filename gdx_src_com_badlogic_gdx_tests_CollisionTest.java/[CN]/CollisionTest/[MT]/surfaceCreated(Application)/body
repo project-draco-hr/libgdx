@@ -5,8 +5,8 @@
   cam.setFov(45);
   cam.setNear(0.1f);
   cam.setFar(1000);
-  cam.getPosition().y=1.1f;
+  cam.getPosition().y=3f;
   cam.getPosition().z=0f;
   cMesh=new CollisionMesh(m,false);
-  collider=new EllipsoidCollider(0.5f,1,0.5f,new SlideResponse());
+  collider=new EllipsoidCollider(1,1,1,new SlideResponse());
 }

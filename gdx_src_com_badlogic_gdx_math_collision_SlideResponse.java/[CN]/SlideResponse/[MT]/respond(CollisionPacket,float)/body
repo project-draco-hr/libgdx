@@ -6,7 +6,9 @@
     newPosition.add(newVelocity);
     newVelocity.nor();
     packet.getIntersectionPoint().sub(newVelocity.mul(displacementDistance));
+    System.out.println("displacing");
   }
+  System.out.println(packet.getNearestDistance());
   slidingPlaneOrigin.set(packet.getIntersectionPoint());
   slidingPlaneNormal.set(newPosition).sub(packet.getIntersectionPoint()).nor();
   slidingPlane.set(slidingPlaneOrigin,slidingPlaneNormal);

@@ -16,6 +16,7 @@
       embeddedInPlane=true;
       t0=0;
       t1=1;
+      packet.type=CollisionType.Embedded;
     }
   }
  else {
@@ -46,6 +47,7 @@
       foundCollision=true;
       t=t0;
       collisionPoint=planeIntersectionPoint;
+      packet.type=CollisionType.Plane;
     }
   }
   if (foundCollision == false) {
@@ -61,6 +63,7 @@
       t=root;
       foundCollision=true;
       collisionPoint=p1;
+      packet.type=CollisionType.Vertex;
     }
     if (!foundCollision) {
       b=2 * (velocity.dot(base.tmp().sub(p2)));
@@ -70,6 +73,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p2;
+        packet.type=CollisionType.Vertex;
       }
     }
     if (!foundCollision) {
@@ -80,6 +84,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p3;
+        packet.type=CollisionType.Vertex;
       }
     }
     edge.set(p2).sub(p1);
@@ -97,6 +102,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p1.tmp2().add(edge.tmp().mul(f));
+        packet.type=CollisionType.Edge;
       }
     }
     edge.set(p3).sub(p2);
@@ -114,6 +120,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p2.tmp2().add(edge.tmp().mul(f));
+        packet.type=CollisionType.Edge;
       }
     }
     edge.set(p1).sub(p3);
@@ -131,6 +138,7 @@
         t=root;
         foundCollision=true;
         collisionPoint=p3.tmp2().add(edge.tmp().mul(f));
+        packet.type=CollisionType.Edge;
       }
     }
   }
