@@ -62,21 +62,25 @@
       foundCollision=true;
       collisionPoint=p1;
     }
-    b=2 * (velocity.dot(base.tmp().sub(p2)));
-    c=p2.tmp().sub(base).len2() - 1;
-    root=Intersector.getLowestPositiveRoot(a,b,c);
-    if (root != Float.NaN && root < t) {
-      t=root;
-      foundCollision=true;
-      collisionPoint=p2;
+    if (!foundCollision) {
+      b=2 * (velocity.dot(base.tmp().sub(p2)));
+      c=p2.tmp().sub(base).len2() - 1;
+      root=Intersector.getLowestPositiveRoot(a,b,c);
+      if (root != Float.NaN && root < t) {
+        t=root;
+        foundCollision=true;
+        collisionPoint=p2;
+      }
     }
-    b=2 * (velocity.dot(base.tmp().sub(p3)));
-    c=p3.tmp().sub(base).len2() - 1;
-    root=Intersector.getLowestPositiveRoot(a,b,c);
-    if (root != Float.NaN && root < t) {
-      t=root;
-      foundCollision=true;
-      collisionPoint=p3;
+    if (!foundCollision) {
+      b=2 * (velocity.dot(base.tmp().sub(p3)));
+      c=p3.tmp().sub(base).len2() - 1;
+      root=Intersector.getLowestPositiveRoot(a,b,c);
+      if (root != Float.NaN && root < t) {
+        t=root;
+        foundCollision=true;
+        collisionPoint=p3;
+      }
     }
     edge.set(p2).sub(p1);
     baseToVertex.set(p1).sub(base);
@@ -89,7 +93,7 @@
     root=Intersector.getLowestPositiveRoot(a,b,c);
     if (root != Float.NaN && root < t) {
       float f=(edgeDotVelocity * root - edgeDotBaseToVertex) / edgeSquaredLength;
-      if (f > 0 && f < 1) {
+      if (f >= 0 && f <= 1) {
         t=root;
         foundCollision=true;
         collisionPoint=p1.tmp2().add(edge.tmp().mul(f));
@@ -106,7 +110,7 @@
     root=Intersector.getLowestPositiveRoot(a,b,c);
     if (root != Float.NaN && root < t) {
       float f=(edgeDotVelocity * root - edgeDotBaseToVertex) / edgeSquaredLength;
-      if (f > 0 && f < 1) {
+      if (f >= 0 && f <= 1) {
         t=root;
         foundCollision=true;
         collisionPoint=p2.tmp2().add(edge.tmp().mul(f));
@@ -123,7 +127,7 @@
     root=Intersector.getLowestPositiveRoot(a,b,c);
     if (root != Float.NaN && root < t) {
       float f=(edgeDotVelocity * root - edgeDotBaseToVertex) / edgeSquaredLength;
-      if (f > 0 && f < 1) {
+      if (f >= 0 && f <= 1) {
         t=root;
         foundCollision=true;
         collisionPoint=p3.tmp2().add(edge.tmp().mul(f));

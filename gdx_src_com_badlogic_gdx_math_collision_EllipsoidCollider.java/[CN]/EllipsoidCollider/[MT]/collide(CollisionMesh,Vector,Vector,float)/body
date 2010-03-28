@@ -4,14 +4,17 @@
   while (true) {
     packet.set(position,velocity);
     CollisionDetection.collide(mesh,packet);
-    if (packet.isColliding() && iterations < 5) {
+    if (packet.isColliding() && iterations < 20) {
       collided=true;
       response.respond(packet,displacementDistance);
+      if (velocity.len() < displacementDistance)       break;
       position.set(packet.position).scale(packet.radiusX,packet.radiusY,packet.radiusZ);
       velocity.set(packet.velocity).scale(packet.radiusX,packet.radiusY,packet.radiusZ);
-      if (velocity.len() < displacementDistance)       break;
     }
- else     break;
+ else {
+      position.add(velocity);
+      break;
+    }
     iterations++;
   }
   return collided;
