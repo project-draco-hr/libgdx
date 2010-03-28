@@ -1,14 +1,14 @@
 {
-  FloatMesh m=(FloatMesh)ModelLoader.loadObj(app.getFiles().readInternalFile("data/scene.obj"),true);
+  FloatMesh m=new FloatMesh(8,3,false,true,false,0,0,true,12);
+  m.setVertices(new float[]{-2,0,-2,0,1,0,-2,0,2,0,1,0,2,0,2,0,1,0,2,0,-2,0,1,0,-2,0,-2,0,0,1,2,0,-2,0,0,1,2,2,-2,0,0,1,-2,2,-2,0,0,1});
+  m.setIndices(new short[]{0,1,2,2,3,0,4,5,6,6,7,4});
   mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
   cam=new PerspectiveCamera();
   cam.setFov(45);
   cam.setNear(0.1f);
   cam.setFar(1000);
   cam.getPosition().y=1.1f;
-  cam.getPosition().z=-1f;
+  cam.getPosition().z=0f;
   cMesh=new CollisionMesh(m,false);
-  collider=new EllipsoidCollider(0.5f,1,0.5f,new SlideResponse());
-  font=app.getGraphics().newFont("Arial",16,FontStyle.Plain,true);
-  text=font.newText();
+  collider=new EllipsoidCollider(1f,1,1f,new SlideResponse());
 }
