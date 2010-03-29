@@ -1,5 +1,6 @@
 {
-  if (input.isKeyPressed(Input.Keys.KEYCODE_ENTER))   cam.getPosition().set(0,1,0);
+  deltaTime=0.017f;
+  if (input.isKeyPressed(Input.Keys.KEYCODE_ENTER))   cam.getPosition().set(0,2,0);
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_LEFT))   yAngle+=deltaTime * 120;
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_RIGHT))   yAngle-=deltaTime * 120;
   cam.getDirection().set(0,0,-1);
@@ -8,10 +9,9 @@
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_UP))   velocity.add(cam.getDirection().tmp().mul(SPEED * deltaTime));
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_DOWN))   velocity.add(cam.getDirection().tmp().mul(SPEED * -deltaTime));
   System.out.println("vel col:");
-  velocity.add(0,0.5f * -deltaTime,0);
-  collider.collide(cMesh,cam.getPosition(),velocity,0.00005f);
-  segment.a.set(cam.getPosition());
-  segment.b.set(cam.getPosition()).y-=1.1f;
+  collider.collide(cMesh,cam.getPosition(),velocity,0.005f);
+  gravity.add(0,-0.1f * deltaTime,0);
+  collider.collide(cMesh,cam.getPosition(),gravity,0.005f);
   velocity.mul(0.90f);
-  gravity.mul(0.9f);
+  gravity.mul(0.99f);
 }
