@@ -1,0 +1,5 @@
+{
+  int temp=in.read();
+  if (temp == -1)   throw new EOFException();
+  return (byte)temp;
+}

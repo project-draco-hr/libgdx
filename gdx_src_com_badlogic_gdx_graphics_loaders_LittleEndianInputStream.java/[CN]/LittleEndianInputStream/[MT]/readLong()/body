@@ -1,0 +1,14 @@
+{
+  long byte1=in.read();
+  long byte2=in.read();
+  long byte3=in.read();
+  long byte4=in.read();
+  long byte5=in.read();
+  long byte6=in.read();
+  long byte7=in.read();
+  long byte8=in.read();
+  if (byte8 == -1) {
+    throw new EOFException();
+  }
+  return (byte8 << 56) + ((byte7 << 56) >>> 8) + ((byte6 << 56) >>> 16)+ ((byte5 << 56) >>> 24)+ ((byte4 << 56) >>> 32)+ ((byte3 << 56) >>> 40)+ ((byte2 << 56) >>> 48)+ ((byte1 << 56) >>> 56);
+}

@@ -1,14 +1,13 @@
 {
-  FloatMesh m=new FloatMesh(3,3,false,false,false,0,0,true,3);
-  m.setVertices(new float[]{-5,-2.5f,5,5,-2.5f,5,0,2.5f,-5});
-  m.setIndices(new short[]{0,1,2});
+  ax=app.getInput().getAccelerometerX();
+  ay=app.getInput().getAccelerometerZ();
+  FloatMesh m=(FloatMesh)ModelLoader.loadObj(app.getFiles().readInternalFile("data/scene.obj"),true);
   mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
   cam=new PerspectiveCamera();
   cam.setFov(45);
   cam.setNear(0.1f);
   cam.setFar(1000);
-  cam.getPosition().y=3f;
-  cam.getPosition().z=0f;
+  position.set(start).y+=SCALE * 3;
   cMesh=new CollisionMesh(m,false);
-  collider=new EllipsoidCollider(0.5f,1,0.5f,new SlideResponse());
+  collider=new EllipsoidCollider(0.5f * SCALE,1 * SCALE,0.5f * SCALE,new SlideResponse());
 }

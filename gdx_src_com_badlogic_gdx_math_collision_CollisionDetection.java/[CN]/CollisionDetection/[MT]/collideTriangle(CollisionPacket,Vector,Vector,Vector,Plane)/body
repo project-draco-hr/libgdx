@@ -150,6 +150,7 @@
       packet.intersectionPoint.set(collisionPoint);
       packet.foundCollision=true;
       packet.type=type;
+      packet.plane.set(plane);
     }
   }
 }

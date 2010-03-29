@@ -1,4 +1,5 @@
 {
+  cam.getPosition().set(position);
   gl.glEnable(GL10.GL_DEPTH_TEST);
   cam.setMatrices(g);
   setupLights(gl);
