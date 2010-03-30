@@ -7,7 +7,7 @@
     if (samplesToWrite > 0) {
       fillBuffer(buffer,bytes,samplesToWrite);
       int writtenBytes=line.write(bytes,0,samplesToWrite * 2);
-      while (writtenBytes != samplesToWrite * 2)       writtenBytes+=line.write(bytes,writtenBytes,bytes.length - writtenBytes);
+      while (writtenBytes != samplesToWrite * 2)       writtenBytes+=line.write(bytes,writtenBytes,samplesToWrite - writtenBytes);
     }
     try {
       Thread.sleep(5);
