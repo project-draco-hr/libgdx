@@ -8,5 +8,6 @@
     short value=(short)(fValue * Short.MAX_VALUE);
     buffer[j]=value;
   }
-  track.write(buffer,0,numSamples);
+  int writtenSamples=track.write(buffer,0,numSamples);
+  while (writtenSamples != numSamples)   track.write(buffer,writtenSamples,numSamples - writtenSamples);
 }
