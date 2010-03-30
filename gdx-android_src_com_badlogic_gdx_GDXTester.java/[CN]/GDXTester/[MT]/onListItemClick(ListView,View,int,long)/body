@@ -19,5 +19,6 @@
   if (keyword.equals(items[13]))   intent=new Intent(this,LagTest.class);
   if (keyword.equals(items[14]))   intent=new Intent(this,Pong.class);
   if (keyword.equals(items[15]))   intent=new Intent(this,CollisionTest.class);
+  if (keyword.equals(items[16]))   intent=new Intent(this,AudioDeviceTest.class);
   startActivity(intent);
 }
