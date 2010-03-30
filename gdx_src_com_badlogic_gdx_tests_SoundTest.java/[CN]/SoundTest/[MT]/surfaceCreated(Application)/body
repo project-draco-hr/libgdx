@@ -1,8 +1,8 @@
 {
   if (music == null) {
     app.getInput().addInputListener(this);
-    sound=app.getAudio().newSound(app.getFiles().getInternalFileHandle("data/shotgun.wav"));
-    music=app.getAudio().newMusic(app.getFiles().getInternalFileHandle("data/cloudconnected.ogg"));
+    sound=app.getAudio().newSound(app.getFiles().getFileHandle("data/shotgun.wav",FileType.Internal));
+    music=app.getAudio().newMusic(app.getFiles().getFileHandle("data/cloudconnected.ogg",FileType.Internal));
     music.play();
     music.setLooping(true);
   }

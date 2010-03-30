@@ -11,7 +11,7 @@
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_UP) || (input.isAccelerometerAvailable() && input.getAccelerometerX() < 5))   velocity.add(cam.getDirection().tmp().mul(SPEED * deltaTime));
   if (input.isKeyPressed(Input.Keys.KEYCODE_DPAD_DOWN) || (input.isAccelerometerAvailable() && input.getAccelerometerX() > 6))   velocity.add(cam.getDirection().tmp().mul(SPEED * -deltaTime));
   velocity.add(0,-1f * SCALE * deltaTime,0);
-  colliding=collider.collide(cMesh,position,velocity,0.005f);
+  colliding=collider.collide(cMesh,position,velocity,VERY_CLOSE_DISTANCE);
   velocity.mul(0.90f);
   gravity.mul(0.90f);
 }

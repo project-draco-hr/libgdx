@@ -1,0 +1,13 @@
+{
+  File file=null;
+  FileOutputStream out=null;
+  if (type == FileType.Internal)   return null;
+  if (type == FileType.Absolut)   file=new File(filename);
+ else   file=new File(this.externalPath + filename);
+  try {
+    out=new FileOutputStream(file);
+  }
+ catch (  FileNotFoundException e) {
+  }
+  return out;
+}

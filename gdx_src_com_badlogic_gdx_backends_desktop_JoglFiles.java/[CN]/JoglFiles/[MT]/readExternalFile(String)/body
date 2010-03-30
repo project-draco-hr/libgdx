@@ -1,9 +1,0 @@
-{
-  FileInputStream in=null;
-  try {
-    in=new FileInputStream(externalPath + fileName);
-  }
- catch (  FileNotFoundException e) {
-  }
-  return in;
-}

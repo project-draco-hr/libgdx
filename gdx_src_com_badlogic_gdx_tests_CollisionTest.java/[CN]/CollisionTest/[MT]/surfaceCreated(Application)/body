@@ -1,7 +1,7 @@
 {
   ax=app.getInput().getAccelerometerX();
   ay=app.getInput().getAccelerometerZ();
-  FloatMesh m=(FloatMesh)ModelLoader.loadObj(app.getFiles().readInternalFile("data/scene.obj"),true);
+  FloatMesh m=(FloatMesh)ModelLoader.loadObj(app.getFiles().readFile("data/scene2.obj",FileType.Internal),true);
   mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
   cam=new PerspectiveCamera();
   cam.setFov(45);

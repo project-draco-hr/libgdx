@@ -1,4 +1,0 @@
-{
-  if (new File(sdcard + filename).exists() == false)   return null;
- else   return new AndroidFileHandle(null,sdcard + filename);
-}
