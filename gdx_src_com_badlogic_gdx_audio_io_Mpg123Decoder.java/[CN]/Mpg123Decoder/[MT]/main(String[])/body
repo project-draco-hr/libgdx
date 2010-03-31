@@ -1,0 +1,15 @@
+{
+  Mpg123Decoder decoder=new Mpg123Decoder("data/threeofaperfectpair.mp3");
+  System.out.println("rate: " + decoder.getRate() + ", channels: "+ decoder.getNumChannels());
+  JoglAudioDevice device=new JoglAudioDevice(false);
+  ByteBuffer tmp=ByteBuffer.allocateDirect(1024 * 2 * decoder.getNumChannels());
+  tmp.order(ByteOrder.nativeOrder());
+  ShortBuffer buffer=tmp.asShortBuffer();
+  short[] samples=new short[1024 * decoder.getNumChannels()];
+  while (decoder.readSamples(decoder.handle,buffer,1024 * decoder.getNumChannels()) > 0) {
+    buffer.position(0);
+    buffer.get(samples);
+    device.writeSamples(samples,0,1024 * 2);
+  }
+  decoder.dispose();
+}
