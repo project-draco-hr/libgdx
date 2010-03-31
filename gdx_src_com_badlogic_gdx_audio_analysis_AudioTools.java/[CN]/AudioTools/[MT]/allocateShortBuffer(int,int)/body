@@ -1,0 +1,5 @@
+{
+  ByteBuffer b=ByteBuffer.allocateDirect(numSamples * numChannels * 2);
+  b.order(ByteOrder.nativeOrder());
+  return b.asShortBuffer();
+}
