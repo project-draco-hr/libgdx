@@ -1,0 +1,14 @@
+{
+  VorbisDecoder decoder=new VorbisDecoder("data/cloudconnected.ogg");
+  System.out.println("channels: " + decoder.getNumChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
+  ;
+  JoglAudioDevice device=new JoglAudioDevice(decoder.getNumChannels() == 2 ? false : true);
+  ShortBuffer samplesBuffer=AudioTools.allocateShortBuffer(1024,2);
+  short[] samples=new short[1024 * 2];
+  while (decoder.readSamples(samplesBuffer) > 0) {
+    samplesBuffer.get(samples);
+    device.writeSamples(samples,0,samples.length);
+  }
+  decoder.dispose();
+  device.dispose();
+}

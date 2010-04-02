@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("Vorbis test",480,320,false);
+  app.getGraphics().setRenderListener(new VorbisTest());
+}
