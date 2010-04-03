@@ -1,5 +1,8 @@
 {
   deltaTime=(System.nanoTime() - frameStart) / 1000000000.0f;
   frameStart=System.nanoTime();
-  for (  RenderListener listener : listeners)   listener.render(application);
+  for (  RenderListener listener : listeners) {
+    listener.surfaceChanged(application,this.getWidth(),this.getHeight());
+    listener.render(application);
+  }
 }

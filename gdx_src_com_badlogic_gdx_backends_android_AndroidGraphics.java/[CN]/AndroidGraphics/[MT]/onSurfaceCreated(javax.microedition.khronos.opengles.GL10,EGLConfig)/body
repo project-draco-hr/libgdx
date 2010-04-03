@@ -1,6 +1,9 @@
 {
   setupGL(gl);
   for (  AndroidTexture texture : textures)   texture.invalidate();
+  Display display=app.getWindowManager().getDefaultDisplay();
+  this.width=display.getWidth();
+  this.height=display.getHeight();
   if (listener != null)   listener.surfaceCreated(app);
   mean=new WindowedMean(5);
   this.lastFrameTime=System.nanoTime();

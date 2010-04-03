@@ -4,7 +4,10 @@
   frameStart=System.nanoTime();
   mean.addValue(deltaTime);
 synchronized (this) {
-    for (    RenderListener listener : setupListeners)     listener.surfaceCreated(application);
+    for (    RenderListener listener : setupListeners) {
+      listener.surfaceCreated(application);
+      listener.surfaceChanged(application,this.getWidth(),this.getHeight());
+    }
     listeners.addAll(setupListeners);
     setupListeners.clear();
     for (    RenderListener listener : listeners)     listener.render(application);
