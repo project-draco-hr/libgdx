@@ -1,0 +1,6 @@
+{
+  float value=sprite1.depth - sprite2.depth;
+  if (value < 0)   return -1;
+  if (value > 0)   return 1;
+  return 0;
+}

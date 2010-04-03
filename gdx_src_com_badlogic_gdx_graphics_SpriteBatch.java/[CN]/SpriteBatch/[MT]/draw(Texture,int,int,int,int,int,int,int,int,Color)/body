@@ -1,0 +1,19 @@
+{
+  Sprite sprite=getFreeSprite();
+  sprite.texture=texture;
+  sprite.x=x;
+  sprite.y=y;
+  sprite.depth=0;
+  sprite.width=width;
+  sprite.height=height;
+  sprite.srcX=srcX / texture.getWidth();
+  sprite.srcY=srcY / texture.getHeight();
+  sprite.srcHeight=srcHeight / texture.getHeight();
+  sprite.srcWidth=srcWidth / texture.getWidth();
+  sprite.originX=0;
+  sprite.originY=0;
+  sprite.scaleX=0;
+  sprite.scaleY=0;
+  sprite.rotation=0;
+  sprite.tint.set(Color.WHITE);
+}

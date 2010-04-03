@@ -1,0 +1,4 @@
+{
+  if (freeSprites.size() == 0)   return new Sprite();
+ else   return freeSprites.remove(freeSprites.size() - 1);
+}
