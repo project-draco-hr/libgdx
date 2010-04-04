@@ -1,0 +1,10 @@
+{
+  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
+  gl.glBufferData(GL20.GL_ARRAY_BUFFER,vertices.limit(),vertices,isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW);
+  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
+  if (maxIndices > 0) {
+    gl.glBindBuffer(GL20.GL_ELEMENT_ARRAY_BUFFER,indexBufferObjectHandle);
+    gl.glBufferData(GL20.GL_ELEMENT_ARRAY_BUFFER,indices.limit(),indices,isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW);
+    gl.glBindBuffer(GL20.GL_ELEMENT_ARRAY_BUFFER,0);
+  }
+}

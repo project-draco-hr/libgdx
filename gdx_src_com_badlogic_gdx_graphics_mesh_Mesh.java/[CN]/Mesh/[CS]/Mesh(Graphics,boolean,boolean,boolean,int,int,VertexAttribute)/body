@@ -1,0 +1,17 @@
+{
+  this.graphics=graphics;
+  this.managed=managed;
+  this.isStatic=isStatic;
+  this.useFixedPoint=useFixedPoint;
+  this.maxVertices=maxVertices;
+  this.maxIndices=maxIndices;
+  this.attributes=new VertexAttributes(attributes);
+  vertices=ByteBuffer.allocateDirect(maxVertices * this.attributes.vertexSize);
+  vertices.order(ByteOrder.nativeOrder());
+  verticesFixed=vertices.asIntBuffer();
+  verticesFloat=vertices.asFloatBuffer();
+  ByteBuffer buffer=ByteBuffer.allocateDirect(maxIndices * 2);
+  buffer.order(ByteOrder.nativeOrder());
+  indices=buffer.asShortBuffer();
+  createBuffers();
+}

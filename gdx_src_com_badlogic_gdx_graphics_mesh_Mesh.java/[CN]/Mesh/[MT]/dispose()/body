@@ -1,0 +1,5 @@
+{
+  if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
+  if (graphics.isGL20Available())   dispose(graphics.getGL20());
+ else   dispose(graphics.getGL11());
+}

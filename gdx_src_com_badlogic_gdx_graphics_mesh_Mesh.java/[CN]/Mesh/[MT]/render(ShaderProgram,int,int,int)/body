@@ -1,0 +1,4 @@
+{
+  if (!graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
+  checkManagedAndDirty();
+}

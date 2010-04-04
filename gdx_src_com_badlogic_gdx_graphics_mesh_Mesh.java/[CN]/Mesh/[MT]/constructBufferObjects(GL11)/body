@@ -1,0 +1,9 @@
+{
+  int[] handle=new int[1];
+  gl.glGenBuffers(1,handle,0);
+  vertexBufferObjectHandle=handle[0];
+  if (maxIndices > 0) {
+    gl.glGenBuffers(1,handle,0);
+    indexBufferObjectHandle=handle[0];
+  }
+}

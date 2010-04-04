@@ -1,0 +1,14 @@
+{
+  if (vertexBufferObjectHandle == 0)   return;
+  if (managed) {
+    if (graphics.isGL11Available() && graphics.getGL11().glIsBuffer(vertexBufferObjectHandle) == false) {
+      createBuffers();
+      fillBuffers();
+    }
+    if (graphics.isGL20Available() && graphics.getGL20().glIsBuffer(vertexBufferObjectHandle) == false) {
+      createBuffers();
+      fillBuffers();
+    }
+  }
+  if (dirty)   fillBuffers();
+}
