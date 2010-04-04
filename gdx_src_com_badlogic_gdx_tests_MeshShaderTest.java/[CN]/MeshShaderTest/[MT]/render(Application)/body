@@ -1,6 +1,9 @@
 {
+  app.getGraphics().getGL20().glEnable(GL20.GL_TEXTURE_2D);
+  texture.bind();
   shader.begin();
-  shader.setUniformMatrix("worldView",matrix);
+  shader.setUniformMatrix("u_worldView",matrix);
+  shader.setUniformi("u_texture",0);
   mesh.render(shader,GL10.GL_TRIANGLES);
   shader.end();
 }
