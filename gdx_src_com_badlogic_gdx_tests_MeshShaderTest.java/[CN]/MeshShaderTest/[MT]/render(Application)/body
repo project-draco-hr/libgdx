@@ -1,0 +1,6 @@
+{
+  shader.begin();
+  shader.setUniformMatrix("worldView",matrix);
+  mesh.render(shader,GL10.GL_TRIANGLES);
+  shader.end();
+}

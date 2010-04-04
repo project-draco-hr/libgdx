@@ -1,7 +1,0 @@
-{
-  if (gl == null)   throw new IllegalArgumentException("gl must not be null");
-  if (vertexShader == null)   throw new IllegalArgumentException("vertex shader must not be null");
-  if (fragmentShader == null)   throw new IllegalArgumentException("fragment shader must not be null");
-  this.gl=gl;
-  compileShaders(vertexShader,fragmentShader);
-}

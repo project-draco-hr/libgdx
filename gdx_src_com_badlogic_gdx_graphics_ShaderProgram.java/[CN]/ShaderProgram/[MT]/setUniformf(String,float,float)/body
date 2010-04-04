@@ -1,0 +1,4 @@
+{
+  int location=fetchUniformLocation(name);
+  gl.glUniform2f(location,value1,value2);
+}

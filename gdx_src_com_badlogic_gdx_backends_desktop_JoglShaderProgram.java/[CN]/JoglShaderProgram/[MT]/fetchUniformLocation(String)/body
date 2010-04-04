@@ -1,9 +1,0 @@
-{
-  Integer location;
-  if ((location=uniforms.get(name)) == null) {
-    location=gl.glGetAttribLocation(program,name);
-    if (location == -1)     throw new IllegalArgumentException("no uniform with name '" + name + "' in shader");
-    uniforms.put(name,location);
-  }
-  return location;
-}
