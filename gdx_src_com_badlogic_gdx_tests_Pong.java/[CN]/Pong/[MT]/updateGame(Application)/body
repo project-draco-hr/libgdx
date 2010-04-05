@@ -6,7 +6,7 @@
     ballSpeed=BALL_SPEED;
     ballDirection.set((float)Math.random() + 0.1f,(float)Math.random()).nor();
     rightScore++;
-    score.setText(leftScore + " : " + rightScore);
+    score=leftScore + " : " + rightScore;
     leftPaddleMulti=(float)Math.min(1,Math.random() + 0.3f);
   }
   if (ball.x > 240) {
@@ -14,7 +14,7 @@
     ballSpeed=BALL_SPEED;
     ballDirection.set((float)Math.random() + 0.1f,(float)Math.random()).nor();
     leftScore++;
-    score.setText(leftScore + " : " + rightScore);
+    score=leftScore + " : " + rightScore;
     leftPaddleMulti=(float)Math.min(1,Math.random() + 0.3f);
   }
   if (ball.y > 160) {

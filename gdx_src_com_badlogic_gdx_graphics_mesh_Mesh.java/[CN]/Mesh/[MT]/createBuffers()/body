@@ -1,5 +1,0 @@
-{
-  if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
-  if (graphics.isGL20Available())   constructBufferObjects(graphics.getGL20());
- else   constructBufferObjects(graphics.getGL11());
-}

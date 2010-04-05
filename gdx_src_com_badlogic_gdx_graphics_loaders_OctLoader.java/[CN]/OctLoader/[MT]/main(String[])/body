@@ -1,4 +1,0 @@
-{
-  Mesh m=OctLoader.loadOct(new FileInputStream("data/house5.oct"),true,new Vector());
-  ModelWriter.writeObj(new FileOutputStream("data/house5.obj"),(FloatMesh)m);
-}

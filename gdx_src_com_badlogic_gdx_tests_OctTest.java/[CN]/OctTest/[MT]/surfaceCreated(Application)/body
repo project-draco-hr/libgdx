@@ -1,8 +1,7 @@
 {
   if (mesh == null) {
     app.getInput().addInputListener(this);
-    Mesh m=ModelLoader.loadOct(app.getFiles().readFile("data/steps.oct",FileType.Internal),false,new Vector());
-    mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
+    mesh=ModelLoader.loadOct(app.getGraphics(),app.getFiles().readFile("data/steps.oct",FileType.Internal),true,false,new Vector());
     cam=new PerspectiveCamera();
     cam.getPosition().set(2,2,2);
     cam.getDirection().set(-1,-1,-1);

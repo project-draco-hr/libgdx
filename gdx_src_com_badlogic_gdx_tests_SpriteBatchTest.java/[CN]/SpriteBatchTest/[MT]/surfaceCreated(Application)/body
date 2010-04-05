@@ -1,0 +1,26 @@
+{
+  spriteBatch=new SpriteBatch(app.getGraphics());
+  Pixmap pixmap=app.getGraphics().newPixmap(32,32,Format.RGBA8888);
+  pixmap.setColor(1,0,0,1);
+  pixmap.fill();
+  pixmap.setColor(0,1,0,1);
+  pixmap.drawLine(0,0,32,32);
+  pixmap.drawLine(32,0,0,32);
+  pixmap.setColor(0,0,1,1);
+  pixmap.drawLine(0,0,31,0);
+  pixmap.drawLine(0,0,0,31);
+  pixmap.drawLine(31,0,31,31);
+  pixmap.drawLine(0,31,31,31);
+  texture=app.getGraphics().newTexture(pixmap,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+  pixmap=app.getGraphics().newPixmap(32,32,Format.RGBA8888);
+  pixmap.setColor(1,1,0,1);
+  pixmap.fill();
+  texture2=app.getGraphics().newTexture(pixmap,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+  font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
+  for (int i=0; i < coords.length; i+=2) {
+    coords[i]=(int)(Math.random() * app.getGraphics().getWidth());
+    coords[i + 1]=(int)(Math.random() * app.getGraphics().getHeight());
+    coords2[i]=(int)(Math.random() * app.getGraphics().getWidth());
+    coords2[i + 1]=(int)(Math.random() * app.getGraphics().getHeight());
+  }
+}

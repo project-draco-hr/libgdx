@@ -1,8 +1,8 @@
 {
-  Glyph glyph=glyphs.get(character);
+  Glyph glyph=glyphs[character];
   if (glyph == null) {
     glyph=createGlyph(character);
-    glyphs.put(character,glyph);
+    glyphs[character]=glyph;
   }
   return glyph;
 }

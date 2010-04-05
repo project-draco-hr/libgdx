@@ -1,9 +1,0 @@
-{
-  FixedPointMesh mesh=new FixedPointMesh(4,3,true,true,true,1,2,true,3);
-  float[] vertices={-0.5f,-0.5f,0,1,0,0,1,0,0,1,0,0,0.5f,-0.5f,0,0,1,0,1,0,0,1,1,0,0.0f,0.5f,0,0,0,1,1,0,0,1,0.5f,1};
-  short[] indices={0,1,2};
-  mesh.setVertices(vertices);
-  mesh.setIndices(indices);
-  System.out.println(mesh.getNumVertices());
-  System.out.println(mesh.getNumIndices());
-}

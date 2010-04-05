@@ -1,0 +1,7 @@
+{
+  if (idx == 0)   return;
+  lastTexture.bind();
+  mesh.setVertices(vertices,0,idx);
+  mesh.render(GL10.GL_TRIANGLES);
+  idx=0;
+}

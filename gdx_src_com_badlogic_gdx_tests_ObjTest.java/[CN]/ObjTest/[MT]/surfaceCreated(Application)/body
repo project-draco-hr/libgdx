@@ -1,8 +1,7 @@
 {
   if (mesh == null) {
     app.getInput().addInputListener(this);
-    Mesh m=ModelLoader.loadObj(app.getFiles().readFile("data/cube.obj",FileType.Internal),false);
-    mesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
+    mesh=ModelLoader.loadObj(app.getGraphics(),app.getFiles().readFile("data/cube.obj",FileType.Internal),true,false);
     Pixmap pixmap=app.getGraphics().newPixmap(app.getFiles().readFile("data/badlogic.jpg",FileType.Internal));
     texture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
     cam=new PerspectiveCamera();

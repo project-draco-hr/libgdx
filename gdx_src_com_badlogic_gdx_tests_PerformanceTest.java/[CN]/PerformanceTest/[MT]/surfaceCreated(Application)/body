@@ -1,6 +1,4 @@
 {
-  Mesh m=ModelLoader.loadObj(app.getFiles().readFile("data/heavysphere.obj",FileType.Internal),false);
-  fpMesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
-  m=ModelLoader.loadObj(app.getFiles().readFile("data/heavysphere.obj",FileType.Internal),true);
-  flMesh=new MeshRenderer(app.getGraphics().getGL10(),m,true,true);
+  fpMesh=ModelLoader.loadObj(app.getGraphics(),app.getFiles().readFile("data/heavysphere.obj",FileType.Internal),false,false);
+  flMesh=ModelLoader.loadObj(app.getGraphics(),app.getFiles().readFile("data/heavysphere.obj",FileType.Internal),false,true);
 }

@@ -1,0 +1,70 @@
+{
+  if (!drawing)   throw new IllegalStateException("you have to call SpriteBatch.begin() first");
+  if (font.getTexture() != lastTexture) {
+    renderMesh();
+    lastTexture=font.getTexture();
+  }
+  int len=text.length();
+  for (int i=0; i < len; i++) {
+    char c=text.charAt(i);
+    Glyph g=font.getGlyph(c);
+    float fx=x;
+    float fy=y;
+    float fx2=x + g.width;
+    float fy2=y - g.height;
+    float u=g.u;
+    float v=g.v;
+    float u2=g.u + g.uWidth;
+    float v2=g.v + g.vHeight;
+    vertices[idx++]=fx;
+    vertices[idx++]=fy;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u;
+    vertices[idx++]=v;
+    vertices[idx++]=fx;
+    vertices[idx++]=fy2;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u;
+    vertices[idx++]=v2;
+    vertices[idx++]=fx2;
+    vertices[idx++]=fy2;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u2;
+    vertices[idx++]=v2;
+    vertices[idx++]=fx2;
+    vertices[idx++]=fy2;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u2;
+    vertices[idx++]=v2;
+    vertices[idx++]=fx2;
+    vertices[idx++]=fy;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u2;
+    vertices[idx++]=v;
+    vertices[idx++]=fx;
+    vertices[idx++]=fy;
+    vertices[idx++]=tint.r;
+    vertices[idx++]=tint.g;
+    vertices[idx++]=tint.b;
+    vertices[idx++]=tint.a;
+    vertices[idx++]=u;
+    vertices[idx++]=v;
+    x+=g.advance;
+    if (idx == vertices.length)     renderMesh();
+  }
+}

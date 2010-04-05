@@ -1,0 +1,7 @@
+{
+  dirty=false;
+  if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
+  if (graphics.isGL20Available())   fillBuffers(graphics.getGL20());
+ else   fillBuffers(graphics.getGL11());
+  filledOnce=true;
+}

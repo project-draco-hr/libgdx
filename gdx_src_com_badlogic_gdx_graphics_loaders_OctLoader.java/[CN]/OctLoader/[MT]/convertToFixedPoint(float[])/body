@@ -1,0 +1,6 @@
+{
+  int[] fpverts=new int[fverts.length];
+  for (int i=0; i < fverts.length; i++)   fpverts[i]=(int)(fverts[i] * 65536);
+  ;
+  return fpverts;
+}

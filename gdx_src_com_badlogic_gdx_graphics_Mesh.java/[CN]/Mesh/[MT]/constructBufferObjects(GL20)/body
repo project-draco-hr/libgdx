@@ -1,0 +1,12 @@
+{
+  ByteBuffer tmp=ByteBuffer.allocateDirect(4);
+  tmp.order(ByteOrder.nativeOrder());
+  IntBuffer handle=tmp.asIntBuffer();
+  gl.glGenBuffers(1,handle);
+  vertexBufferObjectHandle=handle.get(0);
+  if (maxIndices > 0) {
+    gl.glGenBuffers(1,handle);
+    indexBufferObjectHandle=handle.get(0);
+  }
+  filledOnce=false;
+}

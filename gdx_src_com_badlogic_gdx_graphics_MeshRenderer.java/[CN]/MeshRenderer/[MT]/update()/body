@@ -1,6 +1,0 @@
-{
-  if (vboVertexHandle == 0)   return;
-  GL11 gl11=(GL11)gl;
-  if (isManaged && gl11.glIsBuffer(vboVertexHandle) == false)   createVBO();
-  fillVBO();
-}

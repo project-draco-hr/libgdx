@@ -1,4 +1,0 @@
-{
-  if (mesh.hasIndices())   render(primitiveType,0,mesh.getNumIndices());
- else   render(primitiveType,0,mesh.getNumVertices());
-}

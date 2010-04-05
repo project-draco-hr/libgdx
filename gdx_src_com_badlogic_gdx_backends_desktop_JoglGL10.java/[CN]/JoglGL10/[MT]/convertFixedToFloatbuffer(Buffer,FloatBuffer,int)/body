@@ -1,6 +1,6 @@
 {
-  if (source instanceof IntBuffer) {
-    IntBuffer buffer=(IntBuffer)source;
+  if (source instanceof IntBuffer || source instanceof ByteBuffer) {
+    IntBuffer buffer=source instanceof ByteBuffer ? ((ByteBuffer)source).asIntBuffer() : (IntBuffer)source;
     if (stride % 4 != 0)     throw new IllegalArgumentException("Can't cope with strides % 4 != 0 for IntBuffers");
     target.clear();
     for (int i=buffer.position(); i < buffer.limit(); i++) {
