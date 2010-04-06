@@ -4,7 +4,9 @@
   verticesFixed.put(vertices);
   verticesFixed.limit(vertices.length);
   verticesFixed.position(0);
-  this.vertices.limit(verticesFixed.limit() * 4);
-  this.vertices.position(0);
+  if (usesDirectBuffers) {
+    this.vertices.limit(verticesFixed.limit() * 4);
+    this.vertices.position(0);
+  }
   dirty=true;
 }

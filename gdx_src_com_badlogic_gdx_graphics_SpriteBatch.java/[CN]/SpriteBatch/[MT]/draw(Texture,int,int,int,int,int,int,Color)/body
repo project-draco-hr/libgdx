@@ -6,10 +6,10 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
-  float u=srcX / (float)texture.getWidth();
-  float v=srcY / (float)texture.getHeight();
-  float u2=(srcX + srcWidth) / (float)texture.getWidth();
-  float v2=(srcY + srcHeight) / (float)texture.getHeight();
+  float u=srcX * invTexWidth;
+  float v=srcY * invTexHeight;
+  float u2=(srcX + srcWidth) * invTexWidth;
+  float v2=(srcY + srcHeight) * invTexHeight;
   float fx=(float)x;
   float fy=(float)y;
   float fx2=(float)(x + srcWidth);

@@ -2,10 +2,10 @@
   int idx=0;
   int offset=position.offset / 4;
   int stride=mesh.getVertexSize() / 4;
-  float[] vertices=new float[mesh.getVerticesBuffer().limit() / 4];
-  mesh.getVerticesBuffer().asFloatBuffer().get(vertices);
-  short[] indices=new short[mesh.getIndicesBuffer().limit() / 4];
-  mesh.getIndicesBuffer().get(indices);
+  float[] vertices=new float[mesh.getNumVertices() * (mesh.getVertexSize() / 4)];
+  mesh.getVertices(vertices);
+  short[] indices=new short[mesh.getNumIndices()];
+  mesh.getIndices(indices);
   for (int i=0; i < mesh.getNumIndices(); i+=3) {
     int idx1=indices[i] * stride + offset;
     int idx2=indices[i + 1] * stride + offset;

@@ -2,8 +2,8 @@
   int idx=0;
   int offset=position.offset / 4;
   int stride=mesh.getVertexSize() / 4;
-  float[] vertices=new float[mesh.getVerticesBuffer().limit() / 4];
-  mesh.getVerticesBuffer().asFloatBuffer().get(vertices);
+  float[] vertices=new float[mesh.getNumVertices() * (mesh.getVertexSize() / 4)];
+  mesh.getVertices(vertices);
   for (int i=0; i < mesh.getNumVertices(); i+=3) {
     int idx1=(i) * stride + offset;
     int idx2=(i + 1) * stride + offset;
