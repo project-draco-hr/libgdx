@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("SpriteBatch Shader Test",480,320,true);
+  app.getGraphics().setRenderListener(new SpriteBatchShaderTest());
+}

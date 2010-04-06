@@ -4,6 +4,7 @@
     renderMesh();
     lastTexture=font.getTexture();
   }
+  useTextBlend=true;
   int len=text.length();
   for (int i=0; i < len; i++) {
     char c=text.charAt(i);

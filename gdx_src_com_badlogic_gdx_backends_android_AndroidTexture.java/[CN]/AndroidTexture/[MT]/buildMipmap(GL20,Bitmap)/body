@@ -5,7 +5,7 @@
   Log.d("texture","creating texture mipmaps: " + bitmap.getWidth() + ", "+ bitmap.getHeight());
   while (height >= 1 || width >= 1 && level < 4) {
     GLUtils.texImage2D(GL10.GL_TEXTURE_2D,level,bitmap,0);
-    if (height == 1 || width == 1) {
+    if (height == 1 || width == 1 || isMipMap == false) {
       break;
     }
     level++;

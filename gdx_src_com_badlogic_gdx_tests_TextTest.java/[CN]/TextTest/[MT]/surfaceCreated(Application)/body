@@ -1,6 +1,6 @@
 {
   if (font == null) {
     spriteBatch=new SpriteBatch(app.getGraphics());
-    font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
+    font=app.getGraphics().newFont("Arial",32,FontStyle.Italic,true);
   }
 }

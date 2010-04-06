@@ -1,7 +1,17 @@
 {
   if (idx == 0)   return;
+  renderCalls++;
   lastTexture.bind();
   mesh.setVertices(vertices,0,idx);
-  mesh.render(GL10.GL_TRIANGLES);
+  if (graphics.isGL20Available()) {
+    if (useTextBlend)     graphics.getGL20().glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
+ else     graphics.getGL20().glBlendFunc(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+    mesh.render(shader,GL10.GL_TRIANGLES);
+  }
+ else {
+    if (useTextBlend)     graphics.getGL10().glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
+ else     graphics.getGL10().glBlendFunc(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+    mesh.render(GL10.GL_TRIANGLES);
+  }
   idx=0;
 }

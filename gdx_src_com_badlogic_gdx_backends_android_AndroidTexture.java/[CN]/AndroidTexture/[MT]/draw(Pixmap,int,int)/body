@@ -3,6 +3,7 @@
   if (gl10 != null)   gl10.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
  else   gl20.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
   Bitmap bitmap=(Bitmap)bmp.getNativePixmap();
+  if (bitmap.getConfig() != format)   throw new IllegalArgumentException("can't draw bitmap with different format: " + bitmap.getConfig() + " != "+ format);
   if (isManaged) {
     Canvas canvas=new Canvas(this.bitmap);
     Rect src=new Rect();
@@ -10,10 +11,20 @@
     dst.set(x,y,x + bitmap.getWidth(),y + bitmap.getHeight());
     src.set(0,0,bitmap.getWidth(),bitmap.getHeight());
     canvas.drawBitmap(bitmap,src,dst,null);
+    try {
+      FileOutputStream out=new FileOutputStream("/sdcard/texture.png");
+      bitmap.compress(CompressFormat.PNG,100,out);
+      out.close();
+    }
+ catch (    Exception ex) {
+      System.out.println("no");
+    }
   }
   int level=0;
   int height=bitmap.getHeight();
   int width=bitmap.getWidth();
+  GL10 gl10=graphics.getGL10();
+  GL20 gl20=graphics.getGL20();
   while (height >= 1 || width >= 1 && level < 4) {
     GLUtils.texSubImage2D(GL10.GL_TEXTURE_2D,level,x,y,bitmap);
     if (height == 1 || width == 1 || isMipMap == false) {
