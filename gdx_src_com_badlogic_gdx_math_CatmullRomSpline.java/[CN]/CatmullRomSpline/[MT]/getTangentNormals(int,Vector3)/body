@@ -1,0 +1,6 @@
+{
+  List<Vector3> tangents=getTangents(numPoints);
+  ArrayList<Vector3> normals=new ArrayList<Vector3>();
+  for (  Vector3 tangent : tangents)   normals.add(new Vector3(tangent).crs(up).nor());
+  return normals;
+}

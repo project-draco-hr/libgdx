@@ -1,8 +1,8 @@
 {
-  ArrayList<Vector> points=new ArrayList<Vector>();
+  ArrayList<Vector3> points=new ArrayList<Vector3>();
   if (controlPoints.size() < 4)   return points;
-  Vector T1=new Vector();
-  Vector T2=new Vector();
+  Vector3 T1=new Vector3();
+  Vector3 T2=new Vector3();
   for (int i=1; i <= controlPoints.size() - 3; i++) {
     points.add(controlPoints.get(i));
     float increment=1.0f / (numPoints + 1);
@@ -14,7 +14,7 @@
       float h2=-2 * t * t* t + 3 * t * t;
       float h3=t * t * t - 2 * t * t + t;
       float h4=t * t * t - t * t;
-      Vector point=new Vector(controlPoints.get(i)).mul(h1);
+      Vector3 point=new Vector3(controlPoints.get(i)).mul(h1);
       point.add(controlPoints.get(i + 1).tmp().mul(h2));
       point.add(T1.tmp().mul(h3));
       point.add(T2.tmp().mul(h4));

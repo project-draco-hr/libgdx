@@ -1,0 +1,22 @@
+{
+  Vector3 tmp=new Vector3();
+  Vector3 best=null;
+  float min_dist=Float.MAX_VALUE;
+  if (triangles.size() % 3 != 0)   throw new RuntimeException("triangle list size is not a multiple of 3");
+  for (int i=0; i < triangles.size() - 2; i+=3) {
+    boolean result=intersectRayTriangle(ray,triangles.get(i),triangles.get(i + 1),triangles.get(i + 2),tmp);
+    if (result == true) {
+      float dist=ray.origin.tmp().sub(tmp).len();
+      if (dist < min_dist) {
+        min_dist=dist;
+        if (best == null)         best=new Vector3();
+        best.set(tmp);
+      }
+    }
+  }
+  if (best == null)   return false;
+ else {
+    if (intersection != null)     intersection.set(best);
+    return true;
+  }
+}

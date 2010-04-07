@@ -1,7 +1,7 @@
 {
   updateCorners();
   this.inf();
-  for (  Vector l_pnt : crn) {
+  for (  Vector3 l_pnt : crn) {
     l_pnt.mul(matrix);
     min.set(min(min.x,l_pnt.x),min(min.y,l_pnt.y),min(min.z,l_pnt.z));
     max.set(max(max.x,l_pnt.x),max(max.y,l_pnt.y),max(max.z,l_pnt.z));
