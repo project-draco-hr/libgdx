@@ -17,5 +17,7 @@
     pixmap.drawLine(0,0,256,256);
     pixmap.drawLine(256,0,0,256);
     texture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    spriteBatch=new SpriteBatch(app.getGraphics());
+    font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
   }
 }

@@ -7,12 +7,16 @@
     gl.glDisable(GL10.GL_DEPTH_TEST);
     gl.glDisable(GL10.GL_CULL_FACE);
     gl.glDepthMask(false);
-    gl.glEnable(GL10.GL_BLEND);
     gl.glEnable(GL10.GL_TEXTURE_2D);
-    gl.glEnable(GL10.GL_ALPHA_TEST);
-    gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
-    gl.glAlphaFunc(GL10.GL_GREATER,0);
-    gl.glActiveTexture(GL20.GL_TEXTURE0);
+    gl.glActiveTexture(GL10.GL_TEXTURE0);
+    if (!blendingDisabled) {
+      gl.glEnable(GL10.GL_BLEND);
+      ;
+      gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+    }
+ else {
+      gl.glDisable(GL10.GL_BLEND);
+    }
     gl.glMatrixMode(GL10.GL_PROJECTION);
     gl.glLoadMatrixf(viewMatrix.val,0);
     gl.glMatrixMode(GL10.GL_MODELVIEW);
@@ -25,10 +29,16 @@
     gl.glDisable(GL20.GL_DEPTH_TEST);
     gl.glDisable(GL20.GL_CULL_FACE);
     gl.glDepthMask(false);
-    gl.glEnable(GL20.GL_BLEND);
     gl.glEnable(GL20.GL_TEXTURE_2D);
-    gl.glBlendFunc(GL20.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
     gl.glActiveTexture(GL20.GL_TEXTURE0);
+    if (!blendingDisabled) {
+      gl.glEnable(GL20.GL_BLEND);
+      ;
+      gl.glBlendFunc(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
+ else {
+      gl.glDisable(GL20.GL_BLEND);
+    }
     shader.begin();
     shader.setUniformMatrix("u_projectionViewMatrix",viewMatrix);
     shader.setUniformi("u_texture",0);
