@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < shaders.size(); i++) {
+    shaders.get(i).invalidated=true;
+    shaders.get(i).checkManaged();
+  }
+}

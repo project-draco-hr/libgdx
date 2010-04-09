@@ -1,4 +1,5 @@
 {
   if (!managed)   return;
-  if (gl.glIsProgram(program) == false)   compileShaders(vertexShaderSource,fragmentShaderSource);
+  if (invalidated)   compileShaders(vertexShaderSource,fragmentShaderSource);
+  invalidated=false;
 }

@@ -1,14 +1,15 @@
 {
   if (vertexBufferObjectHandle == 0)   return;
-  if (managed) {
-    if (graphics.isGL11Available() && graphics.getGL11().glIsBuffer(vertexBufferObjectHandle) == false) {
+  if (managed && invalidated) {
+    if (graphics.isGL11Available()) {
       createBuffers();
       fillBuffers();
     }
-    if (graphics.isGL20Available() && graphics.getGL20().glIsBuffer(vertexBufferObjectHandle) == false) {
+    if (graphics.isGL20Available()) {
       createBuffers();
       fillBuffers();
     }
   }
+  invalidated=false;
   if (dirty)   fillBuffers();
 }
