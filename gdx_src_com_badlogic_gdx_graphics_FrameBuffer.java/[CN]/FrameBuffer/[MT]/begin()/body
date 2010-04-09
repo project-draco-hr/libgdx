@@ -1,0 +1,4 @@
+{
+  graphics.getGL20().glViewport(0,0,colorTexture.getWidth(),colorTexture.getHeight());
+  graphics.getGL20().glBindFramebuffer(GL20.GL_FRAMEBUFFER,framebufferHandle);
+}

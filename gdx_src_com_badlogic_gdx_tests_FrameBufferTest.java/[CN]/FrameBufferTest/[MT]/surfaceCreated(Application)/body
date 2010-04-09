@@ -1,0 +1,9 @@
+{
+  if (mesh == null) {
+    mesh=new Mesh(app.getGraphics(),true,true,false,3,0,new VertexAttribute(Usage.Position,2,"a_Position"),new VertexAttribute(Usage.Color,4,"a_Color"));
+    mesh.setVertices(new float[]{-0.5f,-0.5f,1,0,0,1,0.5f,-0.5f,0,1,0,1,0,0.5f,0,0,1,1});
+    spriteBatch=new SpriteBatch(app.getGraphics());
+    frameBuffer=new FrameBuffer(app.getGraphics(),Format.RGB565,128,128,true,true);
+    createShader(app.getGraphics());
+  }
+}

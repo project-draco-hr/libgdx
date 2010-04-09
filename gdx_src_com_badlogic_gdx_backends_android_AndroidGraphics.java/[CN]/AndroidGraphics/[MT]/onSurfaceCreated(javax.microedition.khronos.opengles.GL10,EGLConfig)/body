@@ -3,6 +3,7 @@
   Mesh.invalidateAllMeshes();
   AndroidTexture.invalidateAllTextures();
   ShaderProgram.invalidateAllShaderPrograms();
+  FrameBuffer.invalidateAllFrameBuffers();
   Display display=app.getWindowManager().getDefaultDisplay();
   this.width=display.getWidth();
   this.height=display.getHeight();
