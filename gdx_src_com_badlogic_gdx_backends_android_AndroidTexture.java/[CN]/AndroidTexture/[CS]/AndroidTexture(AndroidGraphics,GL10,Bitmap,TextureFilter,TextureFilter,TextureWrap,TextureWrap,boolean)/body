@@ -17,7 +17,6 @@
  else   isMipMap=false;
   createTexture(gl);
   buildMipmap(gl,image);
-  AndroidTexture.textures++;
-  this.graphics.textures.add(this);
   gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
+  textures.add(this);
 }

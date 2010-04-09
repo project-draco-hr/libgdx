@@ -23,10 +23,9 @@
     }
   }
   textureHandle=0;
-  AndroidTexture.textures--;
-  graphics.textures.remove(this);
   if (bitmap != null) {
     bitmap.recycle();
     bitmap=null;
   }
+  textures.remove(this);
 }

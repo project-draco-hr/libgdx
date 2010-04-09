@@ -1,6 +1,8 @@
 {
   setupGL(gl);
-  for (  AndroidTexture texture : textures)   texture.invalidate();
+  Mesh.invalidateAllMeshes();
+  AndroidTexture.invalidateAllTextures();
+  ShaderProgram.invalidateAllShaderPrograms();
   Display display=app.getWindowManager().getDefaultDisplay();
   this.width=display.getWidth();
   this.height=display.getHeight();

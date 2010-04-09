@@ -23,8 +23,6 @@
   int level=0;
   int height=bitmap.getHeight();
   int width=bitmap.getWidth();
-  GL10 gl10=graphics.getGL10();
-  GL20 gl20=graphics.getGL20();
   while (height >= 1 || width >= 1 && level < 4) {
     GLUtils.texSubImage2D(GL10.GL_TEXTURE_2D,level,x,y,bitmap);
     if (height == 1 || width == 1 || isMipMap == false) {
