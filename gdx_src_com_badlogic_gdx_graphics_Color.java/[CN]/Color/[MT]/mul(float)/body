@@ -1,0 +1,8 @@
+{
+  this.r*=value;
+  this.g*=value;
+  this.b*=value;
+  this.a*=value;
+  clamp();
+  return this;
+}

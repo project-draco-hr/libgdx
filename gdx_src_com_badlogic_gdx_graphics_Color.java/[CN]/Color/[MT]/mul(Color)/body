@@ -3,5 +3,6 @@
   this.g*=color.g;
   this.b*=color.b;
   this.a*=color.a;
+  clamp();
   return this;
 }
