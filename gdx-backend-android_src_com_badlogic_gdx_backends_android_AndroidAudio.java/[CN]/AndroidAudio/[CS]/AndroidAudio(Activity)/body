@@ -1,0 +1,5 @@
+{
+  soundPool=new SoundPool(16,AudioManager.STREAM_MUSIC,100);
+  manager=(AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+  context.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+}

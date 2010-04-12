@@ -1,0 +1,13 @@
+{
+  if (type == FileType.Internal)   return null;
+  if (type == FileType.External)   return writeExternalFile(filename);
+ else {
+    FileOutputStream out=null;
+    try {
+      out=new FileOutputStream(filename);
+    }
+ catch (    FileNotFoundException ex) {
+    }
+    return out;
+  }
+}

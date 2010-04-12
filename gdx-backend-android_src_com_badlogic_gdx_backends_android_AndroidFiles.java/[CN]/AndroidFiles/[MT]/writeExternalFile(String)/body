@@ -1,0 +1,9 @@
+{
+  FileOutputStream out=null;
+  try {
+    out=new FileOutputStream(sdcard + filename);
+  }
+ catch (  FileNotFoundException ex) {
+  }
+  return out;
+}

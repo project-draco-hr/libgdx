@@ -1,0 +1,5 @@
+{
+  Bitmap bitmap=BitmapFactory.decodeStream(in,null,null);
+  if (bitmap != null)   return new AndroidPixmap(bitmap);
+ else   return null;
+}

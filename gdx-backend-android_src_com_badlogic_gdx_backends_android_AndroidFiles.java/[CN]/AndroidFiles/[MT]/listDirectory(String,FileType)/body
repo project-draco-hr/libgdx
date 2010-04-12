@@ -1,0 +1,12 @@
+{
+  if (type == FileType.Internal) {
+    try {
+      return assets.list(directory);
+    }
+ catch (    Exception ex) {
+      return null;
+    }
+  }
+  if (type == FileType.External)   return new File(sdcard + directory).list();
+ else   return new File(directory).list();
+}

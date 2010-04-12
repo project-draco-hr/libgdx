@@ -1,0 +1,5 @@
+{
+  if (type == FileType.Internal)   return false;
+  if (type == FileType.External)   return new File(sdcard + directory).mkdirs();
+ else   return new File(directory).mkdirs();
+}

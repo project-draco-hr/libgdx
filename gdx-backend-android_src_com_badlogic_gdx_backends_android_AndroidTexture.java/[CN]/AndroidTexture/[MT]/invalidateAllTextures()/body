@@ -1,0 +1,10 @@
+{
+  for (int i=0; i < textures.size(); i++) {
+    if (textures.get(i).isManaged) {
+      AndroidTexture texture=textures.get(i);
+      texture.invalidated=true;
+      texture.rebuild();
+    }
+  }
+  lastTexture=null;
+}
