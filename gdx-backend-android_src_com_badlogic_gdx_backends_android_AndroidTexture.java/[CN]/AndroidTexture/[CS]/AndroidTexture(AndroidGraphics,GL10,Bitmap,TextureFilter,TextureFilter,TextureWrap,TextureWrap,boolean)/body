@@ -17,5 +17,5 @@
   createTexture(gl);
   buildMipmap(gl,image);
   gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
-  textures.add(this);
+  if (isManaged)   textures.add(this);
 }
