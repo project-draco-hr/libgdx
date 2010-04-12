@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("Mpg123 Test",480,320,false);
+  app.getGraphics().setRenderListener(new Mpg123Test());
+}

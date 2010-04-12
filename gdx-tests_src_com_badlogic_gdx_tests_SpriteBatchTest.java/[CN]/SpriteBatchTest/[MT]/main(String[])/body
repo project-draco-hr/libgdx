@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("SpriteBatch Test",480,320,false);
+  app.getGraphics().setRenderListener(new SpriteBatchTest());
+}

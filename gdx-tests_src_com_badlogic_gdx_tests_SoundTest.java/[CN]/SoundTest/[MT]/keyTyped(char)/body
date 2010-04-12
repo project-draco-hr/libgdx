@@ -1,0 +1,6 @@
+{
+  if (character == '+')   volume+=0.1f;
+  if (character == '-')   volume-=0.1f;
+  music.setVolume(volume);
+  return false;
+}

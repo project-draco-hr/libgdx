@@ -1,0 +1,13 @@
+{
+  VorbisDecoder decoder=null;
+  if (app.getType() == ApplicationType.Android)   decoder=new VorbisDecoder("/sdcard/audio/schism.ogg");
+ else   decoder=new VorbisDecoder("data/cloudconnected.ogg");
+  app.log("Vorbis","channels: " + decoder.getNumChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
+  ;
+  ShortBuffer samplesBuffer=AudioTools.allocateShortBuffer(1024,2);
+  long start=System.nanoTime();
+  while (decoder.readSamples(samplesBuffer) > 0) {
+  }
+  app.log("Vorbis","took " + (System.nanoTime() - start) / 1000000000.0);
+  decoder.dispose();
+}

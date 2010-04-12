@@ -1,0 +1,10 @@
+{
+  if (mesh == null) {
+    app.getInput().addInputListener(this);
+    mesh=ModelLoader.loadOct(app.getGraphics(),app.getFiles().readFile("data/steps.oct",FileType.Internal),true,false,new Vector3());
+    cam=new PerspectiveCamera();
+    cam.getPosition().set(2,2,2);
+    cam.getDirection().set(-1,-1,-1);
+  }
+  frameStart=System.nanoTime();
+}

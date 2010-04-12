@@ -1,0 +1,25 @@
+{
+  updateGame(app);
+  GL10 gl=app.getGraphics().getGL10();
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.update();
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(camera.getCombinedMatrix().val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+  gl.glPushMatrix();
+  gl.glTranslatef(ball.x,ball.y,0);
+  ballMesh.render(GL10.GL_TRIANGLE_FAN);
+  gl.glPopMatrix();
+  gl.glPushMatrix();
+  gl.glTranslatef(leftPaddle.x,leftPaddle.y,0);
+  paddleMesh.render(GL10.GL_TRIANGLE_FAN);
+  gl.glPopMatrix();
+  gl.glPushMatrix();
+  gl.glTranslatef(rightPaddle.x,rightPaddle.y,0);
+  paddleMesh.render(GL10.GL_TRIANGLE_FAN);
+  gl.glPopMatrix();
+  spriteBatch.begin();
+  spriteBatch.drawText(font,score,app.getGraphics().getWidth() / 2 - font.getStringWidth(score) / 2,app.getGraphics().getHeight(),Color.WHITE);
+  spriteBatch.end();
+}
