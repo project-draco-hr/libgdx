@@ -1,0 +1,8 @@
+{
+  if (component != null) {
+    component.removeMouseListener(this);
+    component.removeMouseMotionListener(this);
+    component.removeMouseWheelListener(this);
+    component.removeKeyListener(this);
+  }
+}

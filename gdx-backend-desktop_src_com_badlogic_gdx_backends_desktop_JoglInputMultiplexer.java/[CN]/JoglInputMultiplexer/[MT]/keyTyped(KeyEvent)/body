@@ -1,0 +1,7 @@
+{
+synchronized (eventQueue) {
+    Event event=freeEvents.get(freeEventIndex++);
+    event.set(EventType.KeyTyped,0,0,translateKeyCode(e.getKeyCode()),e.getKeyChar());
+    eventQueue.add(event);
+  }
+}

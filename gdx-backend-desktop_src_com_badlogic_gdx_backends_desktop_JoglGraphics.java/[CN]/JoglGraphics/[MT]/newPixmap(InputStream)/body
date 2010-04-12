@@ -1,0 +1,9 @@
+{
+  try {
+    BufferedImage img=(BufferedImage)ImageIO.read(in);
+    return new JoglPixmap(img);
+  }
+ catch (  Exception ex) {
+    return null;
+  }
+}

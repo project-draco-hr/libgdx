@@ -1,0 +1,23 @@
+{
+  frame=new JFrame(title);
+  graphicPanel=new JoglPanel(application);
+  graphicPanel.setPreferredSize(new Dimension(width,height));
+  frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);
+  frame.add(graphicPanel,BorderLayout.CENTER);
+  frame.pack();
+  frame.setVisible(true);
+  frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  frame.addWindowListener(new WindowAdapter(){
+    public void windowClosing(    WindowEvent e){
+      graphicPanel.dispose();
+      if (application.listener != null) {
+        application.listener.pause(application);
+        application.listener.destroy(application);
+      }
+    }
+  }
+);
+  useGL2=useGL2IfAvailable;
+  graphicPanel.addGraphicListener(this);
+  graphicPanel.requestFocusInWindow();
+}

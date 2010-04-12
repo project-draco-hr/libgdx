@@ -1,0 +1,7 @@
+{
+  if (type == GL10.GL_FIXED) {
+    convertFixedToFloatbuffer(pointer,vertexBuffer,stride);
+    gl.glVertexPointer(size,GL10.GL_FLOAT,stride,vertexBuffer);
+  }
+ else   gl.glVertexPointer(size,GL10.GL_FLOAT,stride,pointer);
+}

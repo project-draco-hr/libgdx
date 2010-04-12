@@ -1,0 +1,16 @@
+{
+synchronized (this) {
+    if (state == State.Playing)     return;
+    if (state == State.Paused) {
+      state=State.Playing;
+      return;
+    }
+    try {
+      openAudioInputStream();
+      state=State.Playing;
+    }
+ catch (    Exception e) {
+      state=State.Stopped;
+    }
+  }
+}
