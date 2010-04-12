@@ -34,5 +34,5 @@
     indices=buffer.asShortBuffer();
   }
   createBuffers();
-  meshes.add(this);
+  if (managed)   meshes.add(this);
 }
