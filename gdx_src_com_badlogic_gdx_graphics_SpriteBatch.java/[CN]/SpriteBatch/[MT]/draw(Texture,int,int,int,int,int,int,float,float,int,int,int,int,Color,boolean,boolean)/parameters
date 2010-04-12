@@ -1,11 +1,16 @@
 Texture texture
 int x
 int y
+int originX
+int originY
 int width
 int height
+float scale
+float rotation
 int srcX
 int srcY
 int srcWidth
 int srcHeight
 Color tint
+boolean flipX
 boolean flipY

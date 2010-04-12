@@ -1,7 +1,12 @@
 Texture texture
-int xy[]
+int x
+int y
+int width
+int height
 int srcX
 int srcY
 int srcWidth
 int srcHeight
 Color tint
+boolean flipX
+boolean flipY
