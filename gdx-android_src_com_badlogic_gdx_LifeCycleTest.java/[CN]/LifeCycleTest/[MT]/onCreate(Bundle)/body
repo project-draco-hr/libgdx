@@ -1,7 +1,0 @@
-{
-  super.onCreate(bundle);
-  this.initialize(false);
-  com.badlogic.gdx.tests.LifeCycleTest test=new com.badlogic.gdx.tests.LifeCycleTest();
-  this.setApplicationListener(test);
-  this.getGraphics().setRenderListener(test);
-}
