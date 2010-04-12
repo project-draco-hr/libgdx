@@ -1,0 +1,14 @@
+{
+  app.getGraphics().getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
+  spriteBatch.begin();
+  spriteBatch.draw(texture,100,100,25,-25,100,100,scale,angle,0,0,32,32,Color.WHITE,false,false);
+  spriteBatch.end();
+  im.begin(GL10.GL_POINTS);
+  im.color(0,1,0,1);
+  im.vertex(100 + 25,100 - 25,0);
+  im.end();
+  angle+=45 * app.getGraphics().getDeltaTime();
+  if (vScale < 0 && scale < 0.1f)   vScale*=-1;
+  if (vScale > 0 && scale > 3f)   vScale*=-1;
+  scale+=vScale * app.getGraphics().getDeltaTime();
+}

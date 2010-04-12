@@ -1,0 +1,8 @@
+{
+  if (spriteBatch == null) {
+    im=new ImmediateModeRenderer(app.getGraphics().getGL10());
+    spriteBatch=new SpriteBatch(app.getGraphics());
+    Pixmap pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/badlogicsmall.jpg",FileType.Internal));
+    texture=app.getGraphics().newTexture(pixmap,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+  }
+}

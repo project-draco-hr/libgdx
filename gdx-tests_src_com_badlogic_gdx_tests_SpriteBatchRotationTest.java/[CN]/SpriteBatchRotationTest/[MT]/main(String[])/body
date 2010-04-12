@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("SpriteBatch Rotation Test",480,320,false);
+  app.getGraphics().setRenderListener(new SpriteBatchRotationTest());
+}
