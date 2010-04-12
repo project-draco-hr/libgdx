@@ -6,7 +6,7 @@
   this.maxVertices=maxVertices;
   this.maxIndices=maxIndices;
   this.attributes=new VertexAttributes(attributes);
-  if (graphics instanceof JoglGraphics)   usesDirectBuffers=true;
+  if (graphics.getType() == GraphicsType.JoglGL)   usesDirectBuffers=true;
  else {
     if (graphics.isGL11Available() || graphics.isGL20Available())     usesDirectBuffers=false;
  else     usesDirectBuffers=true;

@@ -1,5 +1,0 @@
-{
-  if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-    System.arraycopy(event.values,0,accelerometerValues,0,accelerometerValues.length);
-  }
-}

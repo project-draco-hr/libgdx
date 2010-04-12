@@ -1,7 +1,0 @@
-{
-synchronized (eventQueue) {
-    Event event=freeEvents.get(freeEventIndex++);
-    event.set(EventType.MouseDown,e.getX(),e.getY(),0,'\0');
-    eventQueue.add(event);
-  }
-}

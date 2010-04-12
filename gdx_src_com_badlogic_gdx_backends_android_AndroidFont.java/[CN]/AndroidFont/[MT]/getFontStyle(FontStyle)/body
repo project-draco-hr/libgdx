@@ -1,7 +1,0 @@
-{
-  if (style == FontStyle.Bold)   return Typeface.BOLD;
-  if (style == FontStyle.BoldItalic)   return Typeface.BOLD_ITALIC;
-  if (style == FontStyle.Italic)   return Typeface.ITALIC;
-  if (style == FontStyle.Plain)   return Typeface.NORMAL;
-  return Typeface.NORMAL;
-}

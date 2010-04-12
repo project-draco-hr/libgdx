@@ -1,8 +1,0 @@
-{
-  unhook();
-  component.addMouseListener(this);
-  component.addMouseMotionListener(this);
-  component.addMouseWheelListener(this);
-  component.addKeyListener(this);
-  this.component=component;
-}

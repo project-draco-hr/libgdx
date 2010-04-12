@@ -1,5 +1,0 @@
-{
-synchronized (eventQueue) {
-    if (!inputListeners.contains(listener))     inputListeners.add(listener);
-  }
-}

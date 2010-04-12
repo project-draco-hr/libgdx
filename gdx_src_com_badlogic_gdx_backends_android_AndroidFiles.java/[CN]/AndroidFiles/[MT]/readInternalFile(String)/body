@@ -1,9 +1,0 @@
-{
-  InputStream in=null;
-  try {
-    in=assets.open(fileName);
-  }
- catch (  Exception ex) {
-  }
-  return in;
-}

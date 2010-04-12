@@ -1,9 +1,0 @@
-{
-  Bitmap.Config config=getInternalFormat(format);
-  pixmap=Bitmap.createBitmap(width,height,config);
-  canvas=new Canvas(pixmap);
-  paint=new Paint();
-  paint.setStyle(Style.FILL);
-  paint.setAntiAlias(true);
-  paint.setXfermode(new PorterDuffXfermode(Mode.SRC));
-}

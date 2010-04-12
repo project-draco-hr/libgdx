@@ -1,9 +1,0 @@
-{
-  FileInputStream in=null;
-  try {
-    in=new FileInputStream(sdcard + fileName);
-  }
- catch (  FileNotFoundException ex) {
-  }
-  return in;
-}

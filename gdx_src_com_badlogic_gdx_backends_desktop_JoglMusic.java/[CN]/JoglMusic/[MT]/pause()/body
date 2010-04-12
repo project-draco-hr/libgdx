@@ -1,5 +1,0 @@
-{
-synchronized (this) {
-    if (state == State.Playing)     state=State.Paused;
-  }
-}

@@ -1,5 +1,5 @@
 {
-  if (useFixedPoint && graphics instanceof JoglGraphics)   return;
+  if (useFixedPoint && graphics.getType() == GraphicsType.JoglGL)   return;
   if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
   if (graphics.isGL20Available())   constructBufferObjects(graphics.getGL20());
  else   constructBufferObjects(graphics.getGL11());

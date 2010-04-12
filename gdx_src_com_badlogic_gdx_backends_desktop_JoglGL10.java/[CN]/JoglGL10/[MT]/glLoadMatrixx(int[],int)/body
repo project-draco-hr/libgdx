@@ -1,5 +1,0 @@
-{
-  if (m.length > tmp.length)   tmp=new float[m.length];
-  for (int i=0; i + offset < m.length; i++)   tmp[i]=FIXED_TO_FLOAT * m[i + offset];
-  gl.glLoadMatrixf(tmp,0);
-}

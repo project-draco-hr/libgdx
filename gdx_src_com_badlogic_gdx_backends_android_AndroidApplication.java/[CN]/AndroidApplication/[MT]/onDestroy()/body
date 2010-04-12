@@ -1,4 +1,0 @@
-{
-  super.onDestroy();
-  if (listener != null)   listener.destroy(this);
-}
