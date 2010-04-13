@@ -1,0 +1,16 @@
+{
+  GL10 gl=app.getGraphics().getGL10();
+  gl.glClearColor(1,0,0,0);
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.setMatrices(app.getGraphics());
+  angle+=app.getGraphics().getDeltaTime() * 45;
+  matrix.setFromEulerAngles(angle,angle,0);
+  gl.glMultMatrixf(matrix.val,0);
+  mesh.render(GL10.GL_TRIANGLES);
+  try {
+    Thread.sleep(20);
+  }
+ catch (  InterruptedException e) {
+    e.printStackTrace();
+  }
+}
