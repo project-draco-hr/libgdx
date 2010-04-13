@@ -1,0 +1,7 @@
+{
+  BufferedImage image=(BufferedImage)pixmap.getNativePixmap();
+  Graphics2D g=(Graphics2D)this.pixmap.getGraphics();
+  g.setComposite(composite);
+  g.drawImage(image,x,y,x + width,y + height,srcx,srcy,srcx + width,srcy + height,null);
+  g.dispose();
+}

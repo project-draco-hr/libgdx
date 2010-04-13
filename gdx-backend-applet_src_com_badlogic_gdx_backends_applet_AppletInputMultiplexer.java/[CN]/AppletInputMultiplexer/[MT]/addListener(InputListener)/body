@@ -1,0 +1,8 @@
+{
+synchronized (eventQueue) {
+    if (!listeners.contains(listener)) {
+      listeners.add(listener);
+      disabled.put(listener,false);
+    }
+  }
+}

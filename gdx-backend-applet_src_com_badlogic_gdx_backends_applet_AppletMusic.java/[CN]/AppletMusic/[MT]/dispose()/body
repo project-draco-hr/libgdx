@@ -1,0 +1,10 @@
+{
+  disposed=true;
+  try {
+    thread.join();
+    line.close();
+    ain.close();
+  }
+ catch (  Exception e) {
+  }
+}

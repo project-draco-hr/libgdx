@@ -1,0 +1,9 @@
+{
+  try {
+    BufferedImage img=(BufferedImage)ImageIO.read(((AppletFileHandle)file).getFile());
+    return new AppletPixmap(img);
+  }
+ catch (  Exception ex) {
+    return null;
+  }
+}

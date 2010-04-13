@@ -1,0 +1,5 @@
+{
+  multiplexer=new AppletInputMultiplexer(panel.getCanvas());
+  this.panel=panel;
+  this.panel.addGraphicListener(this);
+}

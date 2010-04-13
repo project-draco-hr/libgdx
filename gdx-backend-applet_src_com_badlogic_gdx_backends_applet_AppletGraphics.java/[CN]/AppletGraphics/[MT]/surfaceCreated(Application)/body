@@ -1,0 +1,17 @@
+{
+  String version=graphicPanel.getGL().glGetString(GL.GL_VERSION);
+  int major=Integer.parseInt("" + version.charAt(0));
+  int minor=Integer.parseInt("" + version.charAt(2));
+  if (useGL2 && major >= 2) {
+    gl20=new AppletGL20(graphicPanel.getGL());
+  }
+ else {
+    if (major == 1 && minor < 5) {
+      gl10=new AppletGL10(graphicPanel.getGL());
+    }
+ else {
+      gl11=new AppletGL11(graphicPanel.getGL());
+      gl10=gl11;
+    }
+  }
+}

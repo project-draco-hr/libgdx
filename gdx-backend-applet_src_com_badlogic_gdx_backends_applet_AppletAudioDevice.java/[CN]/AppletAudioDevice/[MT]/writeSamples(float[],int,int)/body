@@ -1,0 +1,13 @@
+{
+  if (bytes.length < samples.length * 2)   bytes=new byte[samples.length * 2];
+  for (int i=offset, j=0; i < offset + numSamples; i++, j+=2) {
+    float fValue=samples[i];
+    if (fValue > 1)     fValue=1;
+    if (fValue < -1)     fValue=-1;
+    short value=(short)(fValue * Short.MAX_VALUE);
+    bytes[j]=(byte)(value | 0xff);
+    bytes[j + 1]=(byte)(value >> 8);
+  }
+  int writtenBytes=line.write(bytes,0,numSamples * 2);
+  while (writtenBytes != numSamples * 2)   writtenBytes+=line.write(bytes,writtenBytes,numSamples * 2 - writtenBytes);
+}

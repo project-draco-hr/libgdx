@@ -1,0 +1,20 @@
+{
+  if (format.getChannels() == 1) {
+    int remainingSamples=Math.min(samples.length,writtenSamples + numSamples / 2);
+    for (int i=writtenSamples, j=0; i < remainingSamples; i++, j+=2) {
+      buffer[j]+=samples[i] * volume;
+      buffer[j + 1]+=samples[i] * volume;
+      writtenSamples++;
+    }
+  }
+ else {
+    int remainingSamples=Math.min(samples.length,writtenSamples + numSamples);
+    for (int i=writtenSamples, j=0; i < remainingSamples; i+=2, j+=2) {
+      buffer[j]+=samples[i] * volume;
+      buffer[j + 1]+=samples[i + 1] * volume;
+      writtenSamples+=2;
+    }
+  }
+  if (writtenSamples >= samples.length)   return false;
+ else   return true;
+}

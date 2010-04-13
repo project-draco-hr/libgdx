@@ -1,0 +1,10 @@
+{
+  try {
+    AppletMusic music=new AppletMusic(((AppletFileHandle)file));
+    return music;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return null;
+  }
+}

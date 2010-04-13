@@ -1,0 +1,7 @@
+{
+  File file=null;
+  if (type == FileType.Absolut || type == FileType.Internal)   file=new File(filename);
+ else   file=new File(this.externalPath + filename);
+  if (file.exists() == false)   return null;
+ else   return new AppletFileHandle(file);
+}

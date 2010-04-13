@@ -1,0 +1,13 @@
+{
+  AppletFileHandle jHandle=(AppletFileHandle)file;
+  InputStream in;
+  try {
+    in=new FileInputStream(jHandle.getFile());
+    AppletFont font=new AppletFont(this,in,size,style,managed);
+    in.close();
+    return font;
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  try {
+    AppletSound sound=new AppletSound(this,((AppletFileHandle)file));
+    return sound;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return null;
+  }
+}
