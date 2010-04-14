@@ -1,0 +1,6 @@
+{
+  JoglApplication app=new JoglApplication("Life Cycle Test",480,320,false);
+  com.badlogic.gdx.tests.LifeCycleTest test=new com.badlogic.gdx.tests.LifeCycleTest();
+  app.setApplicationListener(test);
+  app.getGraphics().setRenderListener(test);
+}
