@@ -1,7 +1,5 @@
 {
   this.graphics=graphics;
-  this.hasDepth=hasDepth;
-  this.managed=managed;
   colorTexture=graphics.newTexture(width,height,format,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,managed);
   build();
   if (managed)   buffers.add(this);
