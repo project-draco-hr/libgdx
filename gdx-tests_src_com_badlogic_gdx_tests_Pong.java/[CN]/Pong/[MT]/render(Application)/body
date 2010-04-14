@@ -1,6 +1,7 @@
 {
   updateGame(app);
   GL10 gl=app.getGraphics().getGL10();
+  gl.glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   camera.update();
   gl.glMatrixMode(GL10.GL_PROJECTION);
