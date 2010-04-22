@@ -1,0 +1,10 @@
+{
+  final float frequency=440;
+  float increment=(float)(2 * Math.PI) * frequency / 44100;
+  float angle=0;
+  for (int i=0; i < samples.length; i++) {
+    samples[i]=(float)Math.sin(angle);
+    shortSamples.put((short)(Short.MAX_VALUE * samples[i]));
+    angle+=increment;
+  }
+}

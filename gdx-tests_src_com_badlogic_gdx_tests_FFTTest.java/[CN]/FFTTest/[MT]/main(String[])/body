@@ -1,0 +1,6 @@
+{
+  float[] samples=new float[SAMPLES];
+  ShortBuffer shortSamples=AudioTools.allocateShortBuffer(SAMPLES,1);
+  createSine(samples,shortSamples);
+  analyse(samples,shortSamples);
+}

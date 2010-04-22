@@ -1,0 +1,16 @@
+{
+  FFT fft=new FFT(SAMPLES,44100);
+  KissFFT kfft=new KissFFT(SAMPLES);
+  fft.forward(samples);
+  float[] spectrum=fft.getSpectrum();
+  FloatBuffer floatSpectrum=AudioTools.allocateFloatBuffer(SAMPLES / 2 + 1,1);
+  System.out.println(Arrays.toString(spectrum));
+  System.out.print("[");
+  kfft.spectrum(shortSamples,floatSpectrum);
+  for (int i=0; i < SAMPLES / 2 + 1; i++)   System.out.print(floatSpectrum.get(i) + ", ");
+  System.out.println("]");
+  System.out.println(sum(samples));
+  System.out.println(sum(spectrum));
+  System.out.println(sum(floatSpectrum));
+  kfft.dispose();
+}
