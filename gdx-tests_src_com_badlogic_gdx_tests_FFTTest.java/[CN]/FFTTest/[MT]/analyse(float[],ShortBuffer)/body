@@ -9,8 +9,6 @@
   kfft.spectrum(shortSamples,floatSpectrum);
   for (int i=0; i < SAMPLES / 2 + 1; i++)   System.out.print(floatSpectrum.get(i) + ", ");
   System.out.println("]");
-  System.out.println(sum(samples));
-  System.out.println(sum(spectrum));
-  System.out.println(sum(floatSpectrum));
+  System.out.println(sum(samples) / SAMPLES);
   kfft.dispose();
 }

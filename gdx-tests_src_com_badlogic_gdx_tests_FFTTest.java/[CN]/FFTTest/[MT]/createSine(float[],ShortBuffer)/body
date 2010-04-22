@@ -1,5 +1,5 @@
 {
-  final float frequency=440;
+  final float frequency=44100 / (SAMPLES / 2);
   float increment=(float)(2 * Math.PI) * frequency / 44100;
   float angle=0;
   for (int i=0; i < samples.length; i++) {
