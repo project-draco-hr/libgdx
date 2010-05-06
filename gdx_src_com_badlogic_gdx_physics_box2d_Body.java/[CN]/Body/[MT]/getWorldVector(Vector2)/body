@@ -1,0 +1,6 @@
+{
+  jniGetWorldVector(addr,localVector.x,localVector.y,tmp);
+  worldVector.x=tmp[0];
+  worldVector.y=tmp[1];
+  return worldVector;
+}
