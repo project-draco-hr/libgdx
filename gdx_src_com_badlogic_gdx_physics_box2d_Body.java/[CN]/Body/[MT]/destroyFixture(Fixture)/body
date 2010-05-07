@@ -1,3 +1,5 @@
 {
   jniDestroyFixture(addr,fixture.addr);
+  this.world.fixtures.remove(fixture);
+  this.fixtures.remove(fixture);
 }

@@ -1,3 +1,3 @@
 {
-  return new Body(jniGetBodyA(addr));
+  return world.bodies.get(jniGetBodyA(addr));
 }

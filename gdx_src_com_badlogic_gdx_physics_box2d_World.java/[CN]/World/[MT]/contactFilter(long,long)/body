@@ -1,0 +1,4 @@
+{
+  if (contactFilter != null)   return contactFilter.shouldCollide(fixtures.get(fixtureA),fixtures.get(fixtureB));
+ else   return true;
+}

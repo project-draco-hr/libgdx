@@ -1,3 +1,6 @@
 {
-  jniDestroyJoint(joint.addr,joint.addr);
+  jniDestroyJoint(addr,joint.addr);
+  joints.remove(joint.addr);
+  joint.jointEdgeA.other.joints.remove(joint.jointEdgeB);
+  joint.jointEdgeB.other.joints.remove(joint.jointEdgeA);
 }
