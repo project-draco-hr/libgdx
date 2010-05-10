@@ -1,0 +1,13 @@
+{
+  world=new World(new Vector2(0,-10),true);
+  BodyDef bodyDef=new BodyDef();
+  bodyDef.type=BodyType.StaticBody;
+  PolygonShape groundBox=new PolygonShape();
+  groundBox.setAsBox(24,1);
+  ground=world.createBody(bodyDef);
+  ground.createFixture(groundBox,1);
+  groundBox.dispose();
+  for (int i=0; i < 20; i++) {
+    boxes.add(createBox());
+  }
+}

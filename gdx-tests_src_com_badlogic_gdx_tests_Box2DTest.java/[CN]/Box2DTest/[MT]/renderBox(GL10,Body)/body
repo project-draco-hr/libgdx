@@ -1,0 +1,15 @@
+{
+  gl.glPushMatrix();
+  Vector2 pos=body.getWorldCenter();
+  float angle=body.getAngle();
+  gl.glTranslatef(pos.x,pos.y,0);
+  gl.glRotatef((float)Math.toDegrees(angle),0,0,1);
+  renderer.begin(GL10.GL_LINE_STRIP);
+  renderer.vertex(-1,-1,0);
+  renderer.vertex(-1,1,0);
+  renderer.vertex(1,1,0);
+  renderer.vertex(1,-1,0);
+  renderer.vertex(-1,-1,0);
+  renderer.end();
+  gl.glPopMatrix();
+}

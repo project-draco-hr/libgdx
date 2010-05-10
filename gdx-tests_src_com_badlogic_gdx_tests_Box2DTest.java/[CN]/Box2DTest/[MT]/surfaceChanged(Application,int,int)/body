@@ -1,0 +1,7 @@
+{
+  renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
+  cam=new OrthographicCamera();
+  cam.setViewport(48,32);
+  cam.getPosition().set(0,16,0);
+  createWorld();
+}

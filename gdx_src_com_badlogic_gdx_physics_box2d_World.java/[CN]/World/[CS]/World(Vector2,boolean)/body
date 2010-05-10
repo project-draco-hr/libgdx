@@ -1,3 +1,7 @@
 {
   addr=newWorld(gravity.x,gravity.y,doSleep);
+  for (int i=0; i < 1000; i++) {
+    contactEdgePool.push(new ContactEdge());
+    contactPool.push(new Contact(this,0));
+  }
 }

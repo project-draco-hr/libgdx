@@ -1,4 +1,9 @@
 {
+  Contact contact=null;
+  if (contactPool.size() == 0)   contact=new Contact(this,contactAddr);
+ else   contact=contactPool.pop();
   contact.addr=contactAddr;
+  Body bodyA=contact.getFixtureA().getBody();
+  Body bodyB=contact.getFixtureB().getBody();
   if (contactListener != null)   contactListener.endContact(contact);
 }
