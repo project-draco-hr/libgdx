@@ -1,0 +1,7 @@
+{
+  this.bodyA=bodyA;
+  this.bodyB=bodyB;
+  localAnchorA.set(bodyA.getLocalPoint(anchor));
+  localAnchorB.set(bodyB.getLocalPoint(anchor));
+  localAxisA.set(bodyA.getLocalVector(axis));
+}
