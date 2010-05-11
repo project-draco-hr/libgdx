@@ -28,5 +28,6 @@
   if (keyword.equals(items[22]))   intent=new Intent(this,SpriteBatchShaderTest.class);
   if (keyword.equals(items[23]))   intent=new Intent(this,FrameBufferTest.class);
   if (keyword.equals(items[24]))   intent=new Intent(this,SpriteBatchRotationTest.class);
+  if (keyword.equals(items[25]))   intent=new Intent(this,Box2DTest.class);
   startActivity(intent);
 }
