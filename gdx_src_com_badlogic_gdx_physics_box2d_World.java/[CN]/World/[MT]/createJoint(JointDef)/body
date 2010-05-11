@@ -1,5 +1,5 @@
 {
-  long jointAddr=jniCreateJoint(addr,def.type.getValue(),def.bodyA.addr,def.bodyB.addr,def.collideConnected);
+  long jointAddr=createProperJoint(def);
   Joint joint=null;
   if (def.type == JointType.DistanceJoint)   joint=new DistanceJoint(this,jointAddr);
   if (def.type == JointType.FrictionJoint)   joint=new FrictionJoint(this,jointAddr);
