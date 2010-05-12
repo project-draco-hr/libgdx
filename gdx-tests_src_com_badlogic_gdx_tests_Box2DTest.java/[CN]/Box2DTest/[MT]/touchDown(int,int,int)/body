@@ -1,0 +1,24 @@
+{
+  float wX=cam.getScreenToWorldX(x);
+  float wY=cam.getScreenToWorldY(y);
+  QueryCallback callback=new QueryCallback(){
+    @Override public boolean reportFixture(    Fixture fixture){
+      hitBody=fixture.getBody();
+      return false;
+    }
+  }
+;
+  hitBody=null;
+  world.QueryAABB(callback,wX - 0.1f,wY - 0.1f,wX + 0.1f,wY + 0.1f);
+  if (hitBody != null) {
+    MouseJointDef def=new MouseJointDef();
+    def.bodyA=ground;
+    def.bodyB=hitBody;
+    def.collideConnected=true;
+    def.target.set(wX,wY);
+    def.maxForce=1000.0f * hitBody.getMass();
+    mouseJoint=(MouseJoint)world.createJoint(def);
+    hitBody.setAwake(true);
+  }
+  return false;
+}

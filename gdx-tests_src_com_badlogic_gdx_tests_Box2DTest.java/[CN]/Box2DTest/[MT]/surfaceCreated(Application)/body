@@ -1,2 +1,13 @@
 {
+  if (renderer == null) {
+    renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
+    cam=new OrthographicCamera();
+    cam.setViewport(app.getGraphics().getWidth(),app.getGraphics().getHeight());
+    cam.setScale(0.1f);
+    cam.getPosition().set(0,16,0);
+    batch=new SpriteBatch(app.getGraphics());
+    font=app.getGraphics().newFont("Arial",16,FontStyle.Plain,true);
+    createWorld();
+    app.getInput().addInputListener(this);
+  }
 }
