@@ -1,21 +1,23 @@
 {
-  float wX=cam.getScreenToWorldX(x);
-  float wY=cam.getScreenToWorldY(y);
+  testPoint.set(cam.getScreenToWorldX(x),cam.getScreenToWorldY(y));
   QueryCallback callback=new QueryCallback(){
     @Override public boolean reportFixture(    Fixture fixture){
-      hitBody=fixture.getBody();
-      return false;
+      if (fixture.testPoint(testPoint)) {
+        hitBody=fixture.getBody();
+        return false;
+      }
+ else       return true;
     }
   }
 ;
   hitBody=null;
-  world.QueryAABB(callback,wX - 0.1f,wY - 0.1f,wX + 0.1f,wY + 0.1f);
+  world.QueryAABB(callback,testPoint.x - 0.1f,testPoint.y - 0.1f,testPoint.x + 0.1f,testPoint.y + 0.1f);
   if (hitBody != null) {
     MouseJointDef def=new MouseJointDef();
     def.bodyA=ground;
     def.bodyB=hitBody;
     def.collideConnected=true;
-    def.target.set(wX,wY);
+    def.target.set(testPoint);
     def.maxForce=1000.0f * hitBody.getMass();
     mouseJoint=(MouseJoint)world.createJoint(def);
     hitBody.setAwake(true);

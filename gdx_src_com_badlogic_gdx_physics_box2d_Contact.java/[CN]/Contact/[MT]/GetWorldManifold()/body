@@ -1,4 +1,6 @@
 {
   long worldManifoldAddr=jniGetWorldManifold(addr);
-  return null;
+  worldManifold.addr=worldManifoldAddr;
+  worldManifold.contactAddr=addr;
+  return worldManifold;
 }

@@ -1,0 +1,5 @@
+{
+  int numPoints=jniGetPoints(addr,contactAddr,tmp);
+  for (int i=0; i < numPoints; i++)   points[i].set(tmp[i * 2],tmp[i * 2 + 1]);
+  return points;
+}
