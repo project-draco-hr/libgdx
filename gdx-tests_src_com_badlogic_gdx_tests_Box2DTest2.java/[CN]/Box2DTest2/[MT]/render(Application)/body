@@ -1,0 +1,27 @@
+{
+  world.step(app.getGraphics().getDeltaTime(),8,3);
+  GL10 gl=app.getGraphics().getGL10();
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.setMatrices(app.getGraphics());
+  renderBox(gl,groundBody,50,1);
+  for (int i=0; i < boxes.size(); i++) {
+    Body box=boxes.get(i);
+    renderBox(gl,box,1,1);
+  }
+  gl.glPointSize(4);
+  renderer.begin(GL10.GL_POINTS);
+  for (int i=0; i < world.getContactCount(); i++) {
+    Contact contact=world.getContactList().get(i);
+    if (contact.isTouching()) {
+      WorldManifold manifold=contact.GetWorldManifold();
+      int numContactPoints=manifold.getNumberOfContactPoints();
+      for (int j=0; j < numContactPoints; j++) {
+        Vector2 point=manifold.getPoints()[j];
+        renderer.color(0,1,0,1);
+        renderer.vertex(point.x,point.y,0);
+      }
+    }
+  }
+  renderer.end();
+  gl.glPointSize(1);
+}

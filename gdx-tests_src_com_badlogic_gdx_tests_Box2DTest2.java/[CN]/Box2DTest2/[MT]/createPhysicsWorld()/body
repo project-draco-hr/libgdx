@@ -1,0 +1,22 @@
+{
+  world=new World(new Vector2(0,-10),true);
+  PolygonShape groundPoly=new PolygonShape();
+  groundPoly.setAsBox(50,1);
+  BodyDef groundBodyDef=new BodyDef();
+  groundBodyDef.type=BodyType.StaticBody;
+  groundBody=world.createBody(groundBodyDef);
+  groundBody.createFixture(groundPoly,10);
+  groundPoly.dispose();
+  PolygonShape boxPoly=new PolygonShape();
+  boxPoly.setAsBox(1,1);
+  for (int i=0; i < 50; i++) {
+    BodyDef boxBodyDef=new BodyDef();
+    boxBodyDef.type=BodyType.DynamicBody;
+    boxBodyDef.position.x=-24 + (float)(Math.random() * 48);
+    boxBodyDef.position.y=10 + (float)(Math.random() * 100);
+    Body boxBody=world.createBody(boxBodyDef);
+    boxBody.createFixture(boxPoly,10);
+    boxes.add(boxBody);
+  }
+  boxPoly.dispose();
+}

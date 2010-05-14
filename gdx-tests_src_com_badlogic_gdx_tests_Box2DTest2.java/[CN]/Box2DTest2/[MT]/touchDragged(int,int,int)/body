@@ -1,6 +1,6 @@
 {
   if (mouseJoint != null) {
-    cam.getScreenToWorld(x,y,target);
+    camera.getScreenToWorld(x,y,target);
     mouseJoint.setTarget(target);
   }
   return false;

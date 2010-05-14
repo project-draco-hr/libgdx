@@ -1,0 +1,8 @@
+{
+  camera=new OrthographicCamera(app.getGraphics());
+  camera.setViewport(48,32);
+  camera.getPosition().set(0,16,0);
+  renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
+  createPhysicsWorld();
+  app.getInput().addInputListener(this);
+}

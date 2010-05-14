@@ -1,20 +1,10 @@
 {
-  cam.getScreenToWorld(x,y,testPoint);
-  QueryCallback callback=new QueryCallback(){
-    @Override public boolean reportFixture(    Fixture fixture){
-      if (fixture.testPoint(testPoint)) {
-        hitBody=fixture.getBody();
-        return false;
-      }
- else       return true;
-    }
-  }
-;
+  camera.getScreenToWorld(x,y,testPoint);
   hitBody=null;
   world.QueryAABB(callback,testPoint.x - 0.1f,testPoint.y - 0.1f,testPoint.x + 0.1f,testPoint.y + 0.1f);
   if (hitBody != null) {
     MouseJointDef def=new MouseJointDef();
-    def.bodyA=ground;
+    def.bodyA=groundBody;
     def.bodyB=hitBody;
     def.collideConnected=true;
     def.target.set(testPoint);
