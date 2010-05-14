@@ -1,5 +1,5 @@
 {
-  testPoint.set(cam.getScreenToWorldX(x),cam.getScreenToWorldY(y));
+  cam.getScreenToWorld(x,y,testPoint);
   QueryCallback callback=new QueryCallback(){
     @Override public boolean reportFixture(    Fixture fixture){
       if (fixture.testPoint(testPoint)) {

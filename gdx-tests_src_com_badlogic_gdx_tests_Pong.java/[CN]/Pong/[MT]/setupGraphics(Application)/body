@@ -6,6 +6,6 @@
   font=app.getGraphics().newFont("Arial",30,FontStyle.Plain,true);
   score="0 : 0";
   spriteBatch=new SpriteBatch(app.getGraphics());
-  camera=new OrthographicCamera();
+  camera=new OrthographicCamera(app.getGraphics());
   camera.setViewport(480,320);
 }
