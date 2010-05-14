@@ -11,4 +11,10 @@ synchronized (this) {
     listener=null;
     dispose=false;
   }
+  if (System.nanoTime() - frameStart > 1000000000) {
+    fps=frames;
+    frames=0;
+    frameStart=System.nanoTime();
+  }
+  frames++;
 }

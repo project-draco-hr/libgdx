@@ -2,4 +2,10 @@
   deltaTime=(System.nanoTime() - lastFrameTime) / 1000000000.0f;
   lastFrameTime=System.nanoTime();
   mean.addValue(deltaTime);
+  if (System.nanoTime() - frameStart > 1000000000) {
+    fps=frames;
+    frames=0;
+    frameStart=System.nanoTime();
+  }
+  frames++;
 }

@@ -1,5 +1,7 @@
 {
-  world.step(app.getGraphics().getDeltaTime(),8,3);
+  long start=System.nanoTime();
+  world.step(app.getGraphics().getDeltaTime(),3,3);
+  float updateTime=(System.nanoTime() - start) / 1000000000.0f;
   GL10 gl=app.getGraphics().getGL10();
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   camera.setMatrices(app.getGraphics());
@@ -24,4 +26,7 @@
   }
   renderer.end();
   gl.glPointSize(1);
+  batch.begin();
+  batch.drawText(font,"fps: " + app.getGraphics().getFramesPerSecond() + " update time: "+ updateTime,0,app.getGraphics().getHeight(),Color.RED);
+  batch.end();
 }
