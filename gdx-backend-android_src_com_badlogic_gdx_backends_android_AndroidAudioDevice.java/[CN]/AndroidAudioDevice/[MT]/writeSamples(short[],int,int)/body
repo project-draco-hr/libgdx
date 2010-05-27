@@ -1,4 +1,4 @@
 {
   int writtenSamples=track.write(samples,offset,numSamples);
-  while (writtenSamples != numSamples)   track.write(samples,offset + writtenSamples,numSamples - writtenSamples);
+  while (writtenSamples != numSamples)   writtenSamples+=track.write(samples,offset + writtenSamples,numSamples - writtenSamples);
 }

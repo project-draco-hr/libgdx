@@ -9,5 +9,5 @@
     buffer[j]=value;
   }
   int writtenSamples=track.write(buffer,0,numSamples);
-  while (writtenSamples != numSamples)   track.write(buffer,writtenSamples,numSamples - writtenSamples);
+  while (writtenSamples != numSamples)   writtenSamples+=track.write(buffer,writtenSamples,numSamples - writtenSamples);
 }
