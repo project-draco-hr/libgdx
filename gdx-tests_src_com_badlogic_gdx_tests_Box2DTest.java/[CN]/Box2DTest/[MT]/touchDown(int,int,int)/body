@@ -12,5 +12,10 @@
     mouseJoint=(MouseJoint)world.createJoint(def);
     hitBody.setAwake(true);
   }
+ else {
+    for (    Body box : boxes)     world.destroyBody(box);
+    boxes.clear();
+    createBoxes();
+  }
   return false;
 }
