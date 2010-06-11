@@ -1,0 +1,8 @@
+{
+  if (!initialized) {
+    font=app.getGraphics().newFont("Arial",32,FontStyle.Plain,true);
+    Pixmap pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/badlogic.jpg",FileType.Internal));
+    texture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    spriteBatch=new SpriteBatch(app.getGraphics());
+  }
+}
