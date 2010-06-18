@@ -2,8 +2,8 @@
   boolean pos=false;
   boolean cols=false;
   boolean nors=false;
-  for (int i=0; i < attributes.size(); i++) {
-    VertexAttribute attribute=attributes.get(i);
+  for (int i=0; i < attributes.length; i++) {
+    VertexAttribute attribute=attributes[i];
     if (attribute.usage == Usage.Position) {
       if (pos)       throw new IllegalArgumentException("two position attributes were specified");
       pos=true;
