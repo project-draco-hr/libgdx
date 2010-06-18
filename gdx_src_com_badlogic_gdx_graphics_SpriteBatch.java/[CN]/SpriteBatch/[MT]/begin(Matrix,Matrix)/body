@@ -1,0 +1,49 @@
+{
+  renderCalls=0;
+  if (graphics.isGL20Available() == false) {
+    GL10 gl=graphics.getGL10();
+    gl.glViewport(0,0,graphics.getWidth(),graphics.getHeight());
+    gl.glDisable(GL10.GL_LIGHTING);
+    gl.glDisable(GL10.GL_DEPTH_TEST);
+    gl.glDisable(GL10.GL_CULL_FACE);
+    gl.glDepthMask(false);
+    gl.glEnable(GL10.GL_TEXTURE_2D);
+    gl.glActiveTexture(GL10.GL_TEXTURE0);
+    if (!blendingDisabled) {
+      gl.glEnable(GL10.GL_BLEND);
+      ;
+      gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+    }
+ else {
+      gl.glDisable(GL10.GL_BLEND);
+    }
+    gl.glMatrixMode(GL10.GL_PROJECTION);
+    gl.glLoadMatrixf(projection.val,0);
+    gl.glMatrixMode(GL10.GL_MODELVIEW);
+    gl.glLoadMatrixf(transform.val,0);
+  }
+ else {
+    viewMatrix.set(projection).mul(transform);
+    GL20 gl=graphics.getGL20();
+    gl.glViewport(0,0,graphics.getWidth(),graphics.getHeight());
+    gl.glDisable(GL20.GL_DEPTH_TEST);
+    gl.glDisable(GL20.GL_CULL_FACE);
+    gl.glDepthMask(false);
+    gl.glEnable(GL20.GL_TEXTURE_2D);
+    gl.glActiveTexture(GL20.GL_TEXTURE0);
+    if (!blendingDisabled) {
+      gl.glEnable(GL20.GL_BLEND);
+      ;
+      gl.glBlendFunc(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
+ else {
+      gl.glDisable(GL20.GL_BLEND);
+    }
+    shader.begin();
+    shader.setUniformMatrix("u_projectionViewMatrix",viewMatrix);
+    shader.setUniformi("u_texture",0);
+  }
+  idx=0;
+  lastTexture=null;
+  drawing=true;
+}
