@@ -1,8 +1,12 @@
 Texture texture
-int x
-int y
+float x
+float y
+float width
+float height
 int srcX
 int srcY
 int srcWidth
 int srcHeight
 Color tint
+boolean flipX
+boolean flipY
