@@ -15,4 +15,5 @@
   for (int i=0; i < 1000; i++)   freeEvents.add(new Event());
   handle=new Handler();
   this.app=activity;
+  this.sleepTime=sleepTime;
 }

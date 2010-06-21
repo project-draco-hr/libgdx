@@ -1,6 +1,6 @@
 {
   graphics=new AndroidGraphics(this,useGL2IfAvailable);
-  input=new AndroidInput(this,graphics.view,0);
+  input=new AndroidInput(this,graphics.view,sleepTime);
   graphics.setInput(input);
   audio=new AndroidAudio(this);
   resources=new AndroidFiles(this.getAssets());
