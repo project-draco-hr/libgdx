@@ -1,6 +1,7 @@
 {
   if (gl10 != null || gl20 != null)   return;
-{
+  if (view instanceof GLSurfaceView20)   gl20=new AndroidGL20();
+ else {
     gl10=new AndroidGL10(gl);
     if (gl instanceof javax.microedition.khronos.opengles.GL11) {
       String renderer=gl.glGetString(GL10.GL_RENDERER);

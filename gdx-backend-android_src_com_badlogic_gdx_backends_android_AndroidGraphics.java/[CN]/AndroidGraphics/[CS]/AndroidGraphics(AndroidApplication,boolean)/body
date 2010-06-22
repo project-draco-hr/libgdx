@@ -2,7 +2,8 @@
   activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
   activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
   if (useGL2IfAvailable) {
-    view=new android.opengl.GLSurfaceView(activity);
+    if (checkGL20(activity))     view=new GLSurfaceView20(activity);
+ else     view=new android.opengl.GLSurfaceView(activity);
   }
  else {
     view=new android.opengl.GLSurfaceView(activity);
