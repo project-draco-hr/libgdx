@@ -1,0 +1,7 @@
+{
+  simulation=new Simulation();
+  simulation.listener=this;
+  renderer=new Renderer(app);
+  explosion=app.getAudio().newSound(app.getFiles().getFileHandle("data/explosion.ogg",FileType.Internal));
+  shot=app.getAudio().newSound(app.getFiles().getFileHandle("data/shot.ogg",FileType.Internal));
+}

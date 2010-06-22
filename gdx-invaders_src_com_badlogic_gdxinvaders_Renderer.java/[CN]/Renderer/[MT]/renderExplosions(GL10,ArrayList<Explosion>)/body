@@ -1,0 +1,13 @@
+{
+  gl.glEnable(GL10.GL_BLEND);
+  gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  explosionTexture.bind();
+  for (int i=0; i < explosions.size(); i++) {
+    Explosion explosion=explosions.get(i);
+    gl.glPushMatrix();
+    gl.glTranslatef(explosion.position.x,explosion.position.y,explosion.position.z);
+    explosionMesh.render(GL10.GL_TRIANGLE_FAN,(int)((explosion.aliveTime / Explosion.EXPLOSION_LIVE_TIME) * 15) * 4,4);
+    gl.glPopMatrix();
+  }
+  gl.glDisable(GL10.GL_BLEND);
+}

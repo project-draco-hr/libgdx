@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < invaders.size(); i++) {
+    Invader invader=invaders.get(i);
+    invader.update(delta,multiplier);
+  }
+}

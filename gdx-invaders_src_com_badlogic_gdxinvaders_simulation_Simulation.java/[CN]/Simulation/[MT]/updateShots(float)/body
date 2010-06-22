@@ -1,0 +1,16 @@
+{
+  removedShots.clear();
+  for (int i=0; i < shots.size(); i++) {
+    Shot shot=shots.get(i);
+    shot.update(delta);
+    if (shot.hasLeftField)     removedShots.add(shot);
+  }
+  for (int i=0; i < removedShots.size(); i++)   shots.remove(removedShots.get(i));
+  if (shipShot != null && shipShot.hasLeftField)   shipShot=null;
+  if (Math.random() < 0.01 * multiplier && invaders.size() > 0) {
+    int index=(int)(Math.random() * (invaders.size() - 1));
+    Shot shot=new Shot(invaders.get(index).position,true);
+    shots.add(shot);
+    if (listener != null)     listener.shot();
+  }
+}

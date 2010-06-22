@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("Gdx Invaders",480,320,false);
+  app.getGraphics().setRenderListener(new GdxInvaders());
+}

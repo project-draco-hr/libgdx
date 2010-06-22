@@ -1,0 +1,9 @@
+{
+  removedExplosions.clear();
+  for (int i=0; i < explosions.size(); i++) {
+    Explosion explosion=explosions.get(i);
+    explosion.update(delta);
+    if (explosion.aliveTime > Explosion.EXPLOSION_LIVE_TIME)     removedExplosions.add(explosion);
+  }
+  for (int i=0; i < removedExplosions.size(); i++)   explosions.remove(removedExplosions.get(i));
+}

@@ -1,0 +1,10 @@
+{
+  ship.update(delta);
+  updateInvaders(delta);
+  updateShots(delta);
+  updateExplosions(delta);
+  checkShipCollision();
+  checkInvaderCollision();
+  checkBlockCollision();
+  checkNextLevel();
+}

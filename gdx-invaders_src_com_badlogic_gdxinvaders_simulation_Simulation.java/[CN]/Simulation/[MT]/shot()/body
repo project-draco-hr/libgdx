@@ -1,0 +1,7 @@
+{
+  if (shipShot == null && !ship.isExploding) {
+    shipShot=new Shot(ship.position,false);
+    shots.add(shipShot);
+    if (listener != null)     listener.shot();
+  }
+}

@@ -1,0 +1,11 @@
+{
+  camera.getPosition().set(ship.position.x,6,2);
+  dir.set(ship.position.x,0,-4).sub(camera.getPosition()).nor();
+  camera.getDirection().set(dir);
+  camera.update();
+  GL10 gl=graphics.getGL10();
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(camera.getCombinedMatrix().val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+}

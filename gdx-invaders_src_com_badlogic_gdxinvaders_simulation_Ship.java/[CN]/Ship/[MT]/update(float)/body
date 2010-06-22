@@ -1,0 +1,9 @@
+{
+  if (isExploding) {
+    explodeTime+=delta;
+    if (explodeTime > Explosion.EXPLOSION_LIVE_TIME) {
+      isExploding=false;
+      explodeTime=0;
+    }
+  }
+}

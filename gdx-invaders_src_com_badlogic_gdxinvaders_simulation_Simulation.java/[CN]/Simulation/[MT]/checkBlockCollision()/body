@@ -1,0 +1,16 @@
+{
+  removedShots.clear();
+  for (int i=0; i < shots.size(); i++) {
+    Shot shot=shots.get(i);
+    for (int j=0; j < blocks.size(); j++) {
+      Block block=blocks.get(j);
+      if (block.position.dst(shot.position) < Block.BLOCK_RADIUS) {
+        removedShots.add(shot);
+        shot.hasLeftField=true;
+        blocks.remove(block);
+        break;
+      }
+    }
+  }
+  for (int i=0; i < removedShots.size(); i++)   shots.remove(removedShots.get(i));
+}

@@ -1,0 +1,64 @@
+{
+  try {
+    spriteBatch=new SpriteBatch(app.getGraphics());
+    InputStream in=app.getFiles().readFile("data/ship.obj",FileType.Internal);
+    shipMesh=ModelLoader.loadObj(app.getGraphics(),in,true,true);
+    in.close();
+    in=app.getFiles().readFile("data/invader.obj",FileType.Internal);
+    invaderMesh=ModelLoader.loadObj(app.getGraphics(),in,true,true);
+    in.close();
+    in=app.getFiles().readFile("data/block.obj",FileType.Internal);
+    blockMesh=ModelLoader.loadObj(app.getGraphics(),in,true,true);
+    in.close();
+    in=app.getFiles().readFile("data/shot.obj",FileType.Internal);
+    shotMesh=ModelLoader.loadObj(app.getGraphics(),in,true,true);
+    in.close();
+    Pixmap pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/ship.png",FileType.Internal));
+    shipTexture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    pixmap.dispose();
+    pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/invader.png",FileType.Internal));
+    invaderTexture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    pixmap.dispose();
+    pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/planet.jpg",FileType.Internal));
+    backgroundTexture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    pixmap.dispose();
+    pixmap=app.getGraphics().newPixmap(app.getFiles().getFileHandle("data/explode.png",FileType.Internal));
+    explosionTexture=app.getGraphics().newTexture(pixmap,TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,true);
+    pixmap.dispose();
+    explosionMesh=new Mesh(app.getGraphics(),true,true,false,4 * 16,0,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoord"));
+    float[] vertices=new float[4 * 16 * (3 + 2)];
+    int idx=0;
+    for (int row=0; row < 4; row++) {
+      for (int column=0; column < 4; column++) {
+        vertices[idx++]=1;
+        vertices[idx++]=1;
+        vertices[idx++]=0;
+        vertices[idx++]=0.25f + column * 0.25f;
+        vertices[idx++]=0 + row * 0.25f;
+        vertices[idx++]=-1;
+        vertices[idx++]=1;
+        vertices[idx++]=0;
+        vertices[idx++]=0 + column * 0.25f;
+        vertices[idx++]=0 + row * 0.25f;
+        vertices[idx++]=-1;
+        vertices[idx++]=-1;
+        vertices[idx++]=0;
+        vertices[idx++]=0f + column * 0.25f;
+        vertices[idx++]=0.25f + row * 0.25f;
+        vertices[idx++]=1;
+        vertices[idx++]=-1;
+        vertices[idx++]=0;
+        vertices[idx++]=0.25f + column * 0.25f;
+        vertices[idx++]=0.25f + row * 0.25f;
+      }
+    }
+    explosionMesh.setVertices(vertices);
+    font=app.getGraphics().newFont(app.getFiles().getFileHandle("data/font.ttf",FileType.Internal),10,FontStyle.Plain,true);
+    camera=new PerspectiveCamera();
+    camera.setFov(67);
+    camera.setViewport(480,320);
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

@@ -1,0 +1,16 @@
+{
+  ship=new Ship();
+  for (int row=0; row < 4; row++) {
+    for (int column=0; column < 8; column++) {
+      Invader invader=new Invader(new Vector3(-PLAYFIELD_MAX_X / 2 + column * 2f,0,PLAYFIELD_MIN_Z + row * 2f));
+      invaders.add(invader);
+    }
+  }
+  for (int shield=0; shield < 3; shield++) {
+    blocks.add(new Block(new Vector3(-10 + shield * 10 - 1,0,-2)));
+    blocks.add(new Block(new Vector3(-10 + shield * 10 - 1,0,-3)));
+    blocks.add(new Block(new Vector3(-10 + shield * 10 + 0,0,-3)));
+    blocks.add(new Block(new Vector3(-10 + shield * 10 + 1,0,-3)));
+    blocks.add(new Block(new Vector3(-10 + shield * 10 + 1,0,-2)));
+  }
+}

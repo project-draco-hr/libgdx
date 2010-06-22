@@ -1,0 +1,27 @@
+{
+  movedDistance+=delta * INVADER_VELOCITY * speedMultiplier;
+  if (state == STATE_MOVE_LEFT) {
+    position.x-=delta * INVADER_VELOCITY * speedMultiplier;
+    if (movedDistance > Simulation.PLAYFIELD_MAX_X) {
+      state=STATE_MOVE_DOWN;
+      movedDistance=0;
+      wasLastStateLeft=true;
+    }
+  }
+  if (state == STATE_MOVE_RIGHT) {
+    position.x+=delta * INVADER_VELOCITY * speedMultiplier;
+    if (movedDistance > Simulation.PLAYFIELD_MAX_X) {
+      state=STATE_MOVE_DOWN;
+      movedDistance=0;
+      wasLastStateLeft=false;
+    }
+  }
+  if (state == STATE_MOVE_DOWN) {
+    position.z+=delta * INVADER_VELOCITY * speedMultiplier;
+    if (movedDistance > 1) {
+      if (wasLastStateLeft)       state=STATE_MOVE_RIGHT;
+ else       state=STATE_MOVE_LEFT;
+      movedDistance=0;
+    }
+  }
+}

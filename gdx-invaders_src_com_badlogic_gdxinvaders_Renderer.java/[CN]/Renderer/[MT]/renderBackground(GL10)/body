@@ -1,0 +1,7 @@
+{
+  viewMatrix.setToOrtho2D(0,0,400,320);
+  spriteBatch.begin(viewMatrix,transformMatrix);
+  spriteBatch.disableBlending();
+  spriteBatch.draw(backgroundTexture,0,320,480,320,0,0,512,512,Color.WHITE,false,false);
+  spriteBatch.end();
+}

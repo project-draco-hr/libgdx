@@ -1,0 +1,15 @@
+{
+  if (shipShot == null)   return;
+  for (int j=0; j < invaders.size(); j++) {
+    Invader invader=invaders.get(j);
+    if (invader.position.dst(shipShot.position) < Invader.INVADER_RADIUS) {
+      shots.remove(shipShot);
+      shipShot=null;
+      invaders.remove(invader);
+      explosions.add(new Explosion(invader.position));
+      if (listener != null)       listener.explosion();
+      score+=Invader.INVADER_POINTS;
+      break;
+    }
+  }
+}

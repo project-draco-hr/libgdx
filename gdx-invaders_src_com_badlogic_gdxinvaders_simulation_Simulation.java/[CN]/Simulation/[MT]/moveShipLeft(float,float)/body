@@ -1,0 +1,5 @@
+{
+  if (ship.isExploding)   return;
+  ship.position.x-=delta * Ship.SHIP_VELOCITY * scale;
+  if (ship.position.x < PLAYFIELD_MIN_X)   ship.position.x=PLAYFIELD_MIN_X;
+}

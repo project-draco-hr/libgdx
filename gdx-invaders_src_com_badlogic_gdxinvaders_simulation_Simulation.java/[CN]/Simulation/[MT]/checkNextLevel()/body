@@ -1,0 +1,14 @@
+{
+  if (invaders.size() == 0 && ship.lives > 0) {
+    blocks.clear();
+    shots.clear();
+    shipShot=null;
+    Vector3 shipPosition=ship.position;
+    int lives=ship.lives;
+    populate();
+    ship.position.set(shipPosition);
+    ship.lives=lives;
+    multiplier+=0.1f;
+    wave++;
+  }
+}
