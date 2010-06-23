@@ -5,4 +5,5 @@
   useGL2=useGL2IfAvailable;
   graphicPanel.addGraphicListener(this);
   graphicPanel.requestFocusInWindow();
+  this.allowFixedPoint=allowFixedPoint;
 }

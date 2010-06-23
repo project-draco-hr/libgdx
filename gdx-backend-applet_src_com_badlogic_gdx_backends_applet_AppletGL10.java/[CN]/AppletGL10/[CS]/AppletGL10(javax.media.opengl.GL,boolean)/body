@@ -1,0 +1,28 @@
+{
+  this.gl=gl;
+  this.allowFixedPoint=allowFixedPoint;
+  if (allowFixedPoint) {
+    ByteBuffer buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+    buffer.order(ByteOrder.nativeOrder());
+    colorBuffer=buffer.asFloatBuffer();
+    buffer=ByteBuffer.allocateDirect(200000 * 4 * 3);
+    buffer.order(ByteOrder.nativeOrder());
+    normalBuffer=buffer.asFloatBuffer();
+    buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+    buffer.order(ByteOrder.nativeOrder());
+    vertexBuffer=buffer.asFloatBuffer();
+    for (int i=0; i < texCoordBuffer.length; i++) {
+      buffer=ByteBuffer.allocateDirect(200000 * 4 * 4);
+      buffer.order(ByteOrder.nativeOrder());
+      texCoordBuffer[i]=buffer.asFloatBuffer();
+    }
+  }
+ else {
+    colorBuffer=null;
+    normalBuffer=null;
+    vertexBuffer=null;
+    for (int i=0; i < texCoordBuffer.length; i++) {
+      texCoordBuffer[i]=null;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  graphics=new AppletGraphics(this,applet,useGL20IfAvailable);
+  graphics=new AppletGraphics(this,applet,useGL20IfAvailable,allowFixedPoint);
   input=new AppletInput(graphics.graphicPanel);
   audio=new AppletAudio();
 }

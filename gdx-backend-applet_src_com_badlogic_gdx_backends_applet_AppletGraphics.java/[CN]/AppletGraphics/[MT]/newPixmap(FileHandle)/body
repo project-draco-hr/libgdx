@@ -1,6 +1,8 @@
 {
   try {
-    BufferedImage img=(BufferedImage)ImageIO.read(((AppletFileHandle)file).getFile());
+    InputStream in=((AppletFileHandle)file).getInputStream();
+    BufferedImage img=(BufferedImage)ImageIO.read(in);
+    in.close();
     return new AppletPixmap(img);
   }
  catch (  Exception ex) {

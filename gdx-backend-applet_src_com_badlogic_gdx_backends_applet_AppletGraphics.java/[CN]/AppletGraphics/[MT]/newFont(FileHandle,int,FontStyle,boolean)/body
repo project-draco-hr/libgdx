@@ -2,7 +2,7 @@
   AppletFileHandle jHandle=(AppletFileHandle)file;
   InputStream in;
   try {
-    in=new FileInputStream(jHandle.getFile());
+    in=jHandle.getInputStream();
     AppletFont font=new AppletFont(this,in,size,style,managed);
     in.close();
     return font;

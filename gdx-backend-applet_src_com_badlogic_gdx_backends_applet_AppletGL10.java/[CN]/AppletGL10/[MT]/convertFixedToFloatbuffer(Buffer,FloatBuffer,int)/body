@@ -1,4 +1,5 @@
 {
+  if (!allowFixedPoint)   throw new IllegalStateException("fixed point meshes were disabled when constructing the Applet!");
   if (source instanceof IntBuffer || source instanceof ByteBuffer) {
     IntBuffer buffer=source instanceof ByteBuffer ? ((ByteBuffer)source).asIntBuffer() : (IntBuffer)source;
     if (stride % 4 != 0)     throw new IllegalArgumentException("Can't cope with strides % 4 != 0 for IntBuffers");

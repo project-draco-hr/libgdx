@@ -1,12 +1,4 @@
 {
-  File file=null;
-  InputStream in=null;
-  if (type == FileType.Absolut || type == FileType.Internal)   file=new File(fileName);
- else   file=new File(this.externalPath + fileName);
-  try {
-    in=new FileInputStream(file);
-  }
- catch (  FileNotFoundException e) {
-  }
-  return in;
+  if (type == FileType.Absolut || type == FileType.External)   return null;
+ else   return new AppletFileHandle(fileName).getInputStream();
 }
