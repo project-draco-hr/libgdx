@@ -1,4 +1,4 @@
 {
-  AppletApplication app=new AppletApplication(this,false);
+  AppletApplication app=new AppletApplication(this,false,false);
   app.getGraphics().setRenderListener(this);
 }
