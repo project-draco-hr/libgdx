@@ -9,6 +9,7 @@
     view=new android.opengl.GLSurfaceView(activity);
   }
   view.setRenderer(this);
-  activity.setContentView(view);
+  if (layoutParams != null)   activity.setContentView(view,layoutParams);
+ else   activity.setContentView(view);
   this.app=activity;
 }
