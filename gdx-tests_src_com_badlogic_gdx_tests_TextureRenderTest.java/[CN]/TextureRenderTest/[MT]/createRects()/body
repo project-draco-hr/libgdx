@@ -1,0 +1,7 @@
+{
+  ArrayList<SimpleRect> l=new ArrayList<SimpleRect>();
+  l.add(new SimpleRect(0,10,0,50,50));
+  l.add(new SimpleRect(1,60,0,50,50));
+  l.add(new SimpleRect(2,110,0,50,50));
+  return l;
+}
