@@ -1,0 +1,4 @@
+{
+  device=app.getAudio().newAudioDevice(true);
+  recorder=app.getAudio().newAudioRecoder(22050,true);
+}

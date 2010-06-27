@@ -1,0 +1,5 @@
+{
+  int minBufferSize=AudioRecord.getMinBufferSize(samplingRate,isMono ? AudioFormat.CHANNEL_CONFIGURATION_MONO : AudioFormat.CHANNEL_CONFIGURATION_STEREO,AudioFormat.ENCODING_PCM_16BIT);
+  recorder=new AudioRecord(MediaRecorder.AudioSource.MIC,samplingRate,isMono ? AudioFormat.CHANNEL_CONFIGURATION_MONO : AudioFormat.CHANNEL_CONFIGURATION_STEREO,AudioFormat.ENCODING_PCM_16BIT,minBufferSize);
+  recorder.startRecording();
+}

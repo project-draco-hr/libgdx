@@ -13,4 +13,5 @@
 );
   t.setDaemon(true);
   t.start();
+  app.setApplicationListener(this);
 }
