@@ -11,10 +11,8 @@
   float v=srcY * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;
   float v2=(srcY + srcHeight) * invTexHeight;
-  float fx=(float)x;
-  float fy=(float)y;
-  float fx2=(float)(x + width);
-  float fy2=(float)(y - height);
+  final float fx2=x + width;
+  final float fy2=y - height;
   if (flipX) {
     float tmp=u;
     u=u2;
@@ -25,15 +23,15 @@
     v=v2;
     v2=tmp;
   }
-  vertices[idx++]=fx;
-  vertices[idx++]=fy;
+  vertices[idx++]=x;
+  vertices[idx++]=y;
   vertices[idx++]=tint.r;
   vertices[idx++]=tint.g;
   vertices[idx++]=tint.b;
   vertices[idx++]=tint.a;
   vertices[idx++]=u;
   vertices[idx++]=v;
-  vertices[idx++]=fx;
+  vertices[idx++]=x;
   vertices[idx++]=fy2;
   vertices[idx++]=tint.r;
   vertices[idx++]=tint.g;
@@ -58,15 +56,15 @@
   vertices[idx++]=u2;
   vertices[idx++]=v2;
   vertices[idx++]=fx2;
-  vertices[idx++]=fy;
+  vertices[idx++]=y;
   vertices[idx++]=tint.r;
   vertices[idx++]=tint.g;
   vertices[idx++]=tint.b;
   vertices[idx++]=tint.a;
   vertices[idx++]=u2;
   vertices[idx++]=v;
-  vertices[idx++]=fx;
-  vertices[idx++]=fy;
+  vertices[idx++]=x;
+  vertices[idx++]=y;
   vertices[idx++]=tint.r;
   vertices[idx++]=tint.g;
   vertices[idx++]=tint.b;
