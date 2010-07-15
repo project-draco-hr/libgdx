@@ -33,6 +33,6 @@
     buffer.order(ByteOrder.nativeOrder());
     indices=buffer.asShortBuffer();
   }
-  createBuffers();
+  bufferCreatedFirstTime=false;
   if (managed)   meshes.add(this);
 }
