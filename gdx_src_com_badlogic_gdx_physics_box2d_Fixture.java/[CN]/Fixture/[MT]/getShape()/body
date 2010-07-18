@@ -1,0 +1,9 @@
+{
+  if (shape == null) {
+    long shapeAddr=jniGetShape(addr);
+    int type=Shape.jniGetType(addr);
+    if (type == 0)     shape=new CircleShape(shapeAddr);
+ else     shape=new PolygonShape(shapeAddr);
+  }
+  return shape;
+}
