@@ -1,3 +1,3 @@
 {
-  return (float)Math.sqrt(x * x + y * y + z * z + w * w);
+  return FastMath.sqrt(x * x + y * y + z * z + w * w);
 }

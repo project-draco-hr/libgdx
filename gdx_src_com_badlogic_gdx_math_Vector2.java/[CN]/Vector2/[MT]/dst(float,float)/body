@@ -1,5 +1,5 @@
 {
   float x_d=x - this.x;
   float y_d=y - this.y;
-  return (float)Math.sqrt(x_d * x_d + y_d * y_d);
+  return FastMath.sqrt(x_d * x_d + y_d * y_d);
 }
