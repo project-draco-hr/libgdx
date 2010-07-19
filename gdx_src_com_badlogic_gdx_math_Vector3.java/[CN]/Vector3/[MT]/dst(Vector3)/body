@@ -5,5 +5,5 @@
   a*=a;
   b*=b;
   c*=c;
-  return FastMath.sqrt(a + b + c);
+  return (float)Math.sqrt(a + b + c);
 }

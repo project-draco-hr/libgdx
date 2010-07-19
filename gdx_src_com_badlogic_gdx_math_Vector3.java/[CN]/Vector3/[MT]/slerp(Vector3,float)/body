@@ -11,5 +11,5 @@
   float theta=theta0 * alpha;
   Vector3 v2=target.tmp().sub(x * dot,y * dot,z * dot);
   v2.nor();
-  return this.mul(FastMath.cos(theta)).add(v2.mul(FastMath.sin(theta))).nor();
+  return this.mul((float)Math.cos(theta)).add(v2.mul((float)Math.sin(theta))).nor();
 }

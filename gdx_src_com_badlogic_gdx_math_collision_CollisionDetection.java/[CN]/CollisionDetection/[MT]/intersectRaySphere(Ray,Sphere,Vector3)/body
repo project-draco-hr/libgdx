@@ -5,7 +5,7 @@
   if (c > 0 && b > 0)   return false;
   float discr=b * b - c;
   if (discr < 0)   return false;
-  float t=-b - FastMath.sqrt(discr);
+  float t=-b - (float)Math.sqrt(discr);
   if (t < 0)   t=0;
   i.set(r.origin).add(r.direction.tmp().mul(t));
   return true;
