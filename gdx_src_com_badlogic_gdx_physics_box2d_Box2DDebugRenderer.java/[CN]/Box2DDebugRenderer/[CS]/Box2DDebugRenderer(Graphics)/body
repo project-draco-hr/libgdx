@@ -1,0 +1,7 @@
+{
+  g=graphics;
+  renderer=new ImmediateModeRenderer(g.getGL10());
+  batch=new SpriteBatch(g);
+  font=g.newFont("Arial",12,FontStyle.Plain,true);
+  for (int i=0; i < vertices.length; i++)   vertices[i]=new Vector2();
+}
