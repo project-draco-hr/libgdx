@@ -1,0 +1,10 @@
+{
+  if (keycode == Keys.KEYCODE_SPACE) {
+    tests[testIndex].dispose(app);
+    testIndex++;
+    if (testIndex >= tests.length)     testIndex=0;
+    Box2DTest test=tests[testIndex];
+    test.surfaceCreated(app);
+  }
+  return false;
+}

@@ -1,0 +1,11 @@
+{
+  camera=new OrthographicCamera(app.getGraphics());
+  camera.setViewport(48,32);
+  camera.getPosition().set(0,15,0);
+  renderer=new Box2DDebugRenderer(app.getGraphics());
+  world=new World(new Vector2(0,-10),true);
+  BodyDef bodyDef=new BodyDef();
+  groundBody=world.createBody(bodyDef);
+  app.getInput().addInputListener(this);
+  createWorld(world);
+}

@@ -1,0 +1,17 @@
+{
+  camera.getScreenToWorld(x,y,testPoint);
+  hitBody=null;
+  world.QueryAABB(callback,testPoint.x - 0.0001f,testPoint.y - 0.0001f,testPoint.x + 0.0001f,testPoint.y + 0.0001f);
+  if (hitBody == groundBody)   hitBody=null;
+  if (hitBody != null) {
+    MouseJointDef def=new MouseJointDef();
+    def.bodyA=groundBody;
+    def.bodyB=hitBody;
+    def.collideConnected=true;
+    def.target.set(testPoint);
+    def.maxForce=1000.0f * hitBody.getMass();
+    mouseJoint=(MouseJoint)world.createJoint(def);
+    hitBody.setAwake(true);
+  }
+  return false;
+}

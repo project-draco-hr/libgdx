@@ -1,0 +1,7 @@
+{
+  if (mouseJoint != null) {
+    world.destroyJoint(mouseJoint);
+    mouseJoint=null;
+  }
+  return false;
+}
