@@ -3,4 +3,5 @@
   float y=vals[POS_Y] + vals[COL1_Y] * v.x + vals[COL2_Y] * v.y;
   v.x=x;
   v.y=y;
+  return v;
 }

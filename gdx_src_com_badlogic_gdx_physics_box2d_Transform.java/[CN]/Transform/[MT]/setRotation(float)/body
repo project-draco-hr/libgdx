@@ -1,0 +1,7 @@
+{
+  float c=(float)Math.cos(angle), s=(float)Math.sin(angle);
+  vals[COL1_X]=c;
+  vals[COL2_X]=-s;
+  vals[COL1_Y]=s;
+  vals[COL2_Y]=c;
+}
