@@ -30,5 +30,6 @@
   if (keyword.equals(items[24]))   intent=new Intent(this,SpriteBatchRotationTest.class);
   if (keyword.equals(items[25]))   intent=new Intent(this,Box2DTest.class);
   if (keyword.equals(items[26]))   intent=new Intent(this,AudioRecorderTest.class);
+  if (keyword.equals(items[27]))   intent=new Intent(this,TestCollection.class);
   startActivity(intent);
 }
