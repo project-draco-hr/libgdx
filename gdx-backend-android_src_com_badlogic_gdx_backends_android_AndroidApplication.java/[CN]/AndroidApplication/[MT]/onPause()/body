@@ -1,7 +1,7 @@
 {
   super.onPause();
   if (isFinishing())   graphics.disposeRenderListener();
-  if (graphics.view != null)   graphics.view.onPause();
-  audio.pause();
+  if (graphics != null && graphics.view != null)   graphics.view.onPause();
+  if (audio != null)   audio.pause();
   if (listener != null)   listener.pause(this);
 }

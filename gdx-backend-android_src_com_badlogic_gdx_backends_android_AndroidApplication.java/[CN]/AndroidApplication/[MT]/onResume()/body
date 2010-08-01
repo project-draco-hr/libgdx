@@ -1,6 +1,6 @@
 {
   super.onResume();
   if (listener != null)   listener.resume(this);
-  if (graphics.view != null)   graphics.view.onResume();
-  audio.resume();
+  if (graphics != null && graphics.view != null)   graphics.view.onResume();
+  if (audio != null)   audio.resume();
 }
