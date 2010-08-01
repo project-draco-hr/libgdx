@@ -1,0 +1,9 @@
+{
+  if (font != null) {
+    font.dispose();
+    batch.dispose();
+  }
+  font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
+  batch=new SpriteBatch(app.getGraphics());
+  renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
+}
