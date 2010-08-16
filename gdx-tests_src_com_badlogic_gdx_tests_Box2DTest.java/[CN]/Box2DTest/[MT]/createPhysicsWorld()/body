@@ -5,7 +5,10 @@
   BodyDef groundBodyDef=new BodyDef();
   groundBodyDef.type=BodyType.StaticBody;
   groundBody=world.createBody(groundBodyDef);
-  groundBody.createFixture(groundPoly,10);
+  FixtureDef fixtureDef=new FixtureDef();
+  fixtureDef.shape=groundPoly;
+  fixtureDef.filter.groupIndex=0;
+  groundBody.createFixture(fixtureDef);
   groundPoly.dispose();
   createBoxes();
 }

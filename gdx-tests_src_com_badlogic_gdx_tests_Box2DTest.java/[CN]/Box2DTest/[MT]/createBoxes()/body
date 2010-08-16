@@ -7,7 +7,9 @@
     boxBodyDef.position.x=-24 + (float)(Math.random() * 48);
     boxBodyDef.position.y=10 + (float)(Math.random() * 100);
     Body boxBody=world.createBody(boxBodyDef);
-    boxBody.createFixture(boxPoly,10);
+    FixtureDef fixtureDef=new FixtureDef();
+    fixtureDef.shape=boxPoly;
+    boxBody.createFixture(fixtureDef);
     boxes.add(boxBody);
   }
   boxPoly.dispose();
