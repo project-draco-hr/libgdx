@@ -1,0 +1,21 @@
+{
+  int index=key & mask;
+  Entry prev=table[index];
+  Entry e=prev;
+  while (e != null) {
+    Entry next=e.next;
+    if (e.key == key) {
+      size--;
+      if (prev == e) {
+        table[index]=next;
+      }
+ else {
+        prev.next=next;
+      }
+      return (T)e.value;
+    }
+    prev=e;
+    e=next;
+  }
+  return null;
+}
