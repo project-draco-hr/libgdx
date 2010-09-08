@@ -1,3 +1,4 @@
 {
-  MD5Loader.loadModel(new FileInputStream("data/zfat.md5mesh"));
+  JoglApplication app=new JoglApplication("MD5 Test",480,320,false);
+  app.getGraphics().setRenderListener(new com.badlogic.gdx.tests.MD5Test());
 }
