@@ -1,0 +1,5 @@
+{
+  short[] indices=new short[triangles.length * 3];
+  for (int k=0, i=0; i < triangles.length; i++)   for (int j=0; j < 3; j++, k++)   indices[k]=(short)triangles[i].indices[j];
+  return indices;
+}

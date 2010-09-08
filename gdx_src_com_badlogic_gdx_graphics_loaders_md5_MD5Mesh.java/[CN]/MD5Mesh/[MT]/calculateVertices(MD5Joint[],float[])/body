@@ -1,0 +1,20 @@
+{
+  for (int i=0, k=0; i < vertices.length; i++) {
+    finalVertex.set(0,0,0);
+    int weightIndex=vertices[i].start;
+    for (int j=0; j < vertices[i].count; j++, weightIndex++) {
+      MD5Weight weight=weights[weightIndex];
+      MD5Joint joint=skeleton[weight.joint];
+      quat.set(joint.orient);
+      weightVertex.set(weight.pos);
+      quat.rotate(weightVertex);
+      finalVertex.x+=(joint.pos.x + weightVertex.x) * weight.bias;
+      finalVertex.y+=(joint.pos.y + weightVertex.y) * weight.bias;
+      finalVertex.z+=(joint.pos.z + weightVertex.z) * weight.bias;
+    }
+    verts[k++]=finalVertex.x;
+    verts[k++]=finalVertex.y;
+    verts[k++]=finalVertex.z;
+    k+=2;
+  }
+}

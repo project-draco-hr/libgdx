@@ -1,5 +1,5 @@
 {
-  float t=1.0f - (x * x - y * y - z * z);
+  float t=1.0f - x * x - y * y - z * z;
   if (t < 0.0f)   w=0;
  else   w=-(float)Math.sqrt(t);
 }
