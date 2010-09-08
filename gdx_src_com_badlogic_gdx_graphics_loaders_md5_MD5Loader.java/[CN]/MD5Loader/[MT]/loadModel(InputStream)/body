@@ -1,0 +1,17 @@
+{
+  BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+  MD5Model model=new MD5Model();
+  try {
+    String line;
+    while ((line=reader.readLine()) != null) {
+      if (line.startsWith("MD5Version")) {
+        int version=Integer.parseInt(line.split(" ")[1]);
+        if (version != 10)         throw new IllegalArgumentException("Not a valid MD5 file, go version " + version + ", need 10");
+      }
+    }
+    return null;
+  }
+ catch (  Exception ex) {
+    return null;
+  }
+}
