@@ -1,8 +1,0 @@
-{
-  Glyph glyph=glyphs[character];
-  if (glyph == null) {
-    glyph=createGlyph(character);
-    glyphs[character]=glyph;
-  }
-  return glyph;
-}

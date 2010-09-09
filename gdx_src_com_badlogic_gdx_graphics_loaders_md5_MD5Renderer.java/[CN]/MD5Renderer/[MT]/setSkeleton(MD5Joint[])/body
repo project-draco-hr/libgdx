@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < model.meshes.length; i++) {
-    MD5Mesh mesh=model.meshes[i];
-    mesh.calculateVertices(skeleton,vertices[i]);
-  }
-}

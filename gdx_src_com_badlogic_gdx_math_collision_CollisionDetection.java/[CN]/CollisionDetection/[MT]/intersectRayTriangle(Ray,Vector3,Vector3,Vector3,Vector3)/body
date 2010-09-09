@@ -1,6 +1,0 @@
-{
-  plane.set(t1,t2,t3);
-  if (!intersectRayPlane(r,plane,i))   return false;
-  if (isPointInTriangle(i,t1,t2,t3))   return true;
- else   return false;
-}

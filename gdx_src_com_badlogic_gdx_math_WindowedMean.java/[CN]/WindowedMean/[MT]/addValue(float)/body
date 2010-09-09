@@ -1,6 +1,0 @@
-{
-  added_values++;
-  values[last_value++]=value;
-  if (last_value > values.length - 1)   last_value=0;
-  dirty=true;
-}

@@ -1,6 +1,0 @@
-{
-  Fixture fixture=new Fixture(world,this,jniCreateFixture(addr,shape.addr,density));
-  this.world.fixtures.put(fixture.addr,fixture);
-  this.fixtures.add(fixture);
-  return fixture;
-}

@@ -1,9 +1,0 @@
-{
-  int handle[]=new int[1];
-  handle[0]=vertexBufferObjectHandle;
-  gl.glDeleteBuffers(1,handle,0);
-  if (maxIndices > 0) {
-    handle[0]=indexBufferObjectHandle;
-    gl.glDeleteBuffers(1,handle,0);
-  }
-}

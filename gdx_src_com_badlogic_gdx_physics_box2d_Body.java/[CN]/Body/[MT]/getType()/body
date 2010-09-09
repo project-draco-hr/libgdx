@@ -1,7 +1,0 @@
-{
-  int type=jniGetType(addr);
-  if (type == 0)   return BodyType.StaticBody;
-  if (type == 1)   return BodyType.KinematicBody;
-  if (type == 2)   return BodyType.DynamicBody;
-  return BodyType.StaticBody;
-}

@@ -1,5 +1,0 @@
-{
-  int type=jniGetType(addr);
-  if (type == 0)   return Type.Circle;
- else   return Type.Polygon;
-}

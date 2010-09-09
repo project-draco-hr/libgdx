@@ -1,5 +1,0 @@
-{
-  Entry[] table=this.table;
-  for (int i=table.length; i-- > 0; )   for (Entry e=table[i]; e != null; e=e.next)   if (e.value.equals(value))   return true;
-  return false;
-}

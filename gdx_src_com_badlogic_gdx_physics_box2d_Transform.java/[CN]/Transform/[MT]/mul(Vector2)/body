@@ -1,7 +1,0 @@
-{
-  float x=vals[POS_X] + vals[COL1_X] * v.x + vals[COL2_X] * v.y;
-  float y=vals[POS_Y] + vals[COL1_Y] * v.x + vals[COL2_Y] * v.y;
-  v.x=x;
-  v.y=y;
-  return v;
-}

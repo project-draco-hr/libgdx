@@ -1,5 +1,0 @@
-{
-  int bool=in.read();
-  if (bool == -1)   throw new EOFException();
-  return (bool != 0);
-}

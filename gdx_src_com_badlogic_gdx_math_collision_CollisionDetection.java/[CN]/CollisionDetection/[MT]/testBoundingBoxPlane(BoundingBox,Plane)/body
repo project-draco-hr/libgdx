@@ -1,7 +1,0 @@
-{
-  c.set(b.max).add(b.min).mul(0.5f);
-  e.set(b.max).sub(c);
-  float r=e.x * Math.abs(p.normal.x) + e.y * Math.abs(p.normal.y) + e.z * Math.abs(p.normal.z);
-  float s=p.normal.dot(c) - p.d;
-  return Math.abs(s) <= r;
-}

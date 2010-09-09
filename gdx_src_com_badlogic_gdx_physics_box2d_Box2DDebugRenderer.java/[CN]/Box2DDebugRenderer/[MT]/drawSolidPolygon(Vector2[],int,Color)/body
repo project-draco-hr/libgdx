@@ -1,9 +1,0 @@
-{
-  renderer.begin(GL10.GL_LINE_LOOP);
-  for (int i=0; i < vertexCount; i++) {
-    Vector2 v=vertices[i];
-    renderer.color(color.r,color.g,color.b,color.a);
-    renderer.vertex(v.x,v.y,0);
-  }
-  renderer.end();
-}

@@ -1,5 +1,0 @@
-{
-  screenX=screenX / graphics.getWidth() * viewportWidth;
-  screenY=screenY / graphics.getHeight() * viewportHeight;
-  world.set((screenX * scale) - (viewportWidth * scale) / 2 + position.x,((viewportHeight - screenY) * scale) - (viewportHeight * scale) / 2 + position.y);
-}

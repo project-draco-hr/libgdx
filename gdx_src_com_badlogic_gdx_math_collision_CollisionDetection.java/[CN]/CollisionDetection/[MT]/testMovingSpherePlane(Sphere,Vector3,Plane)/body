@@ -1,7 +1,0 @@
-{
-  float adist=s.center.dot(p.normal) - p.d;
-  float bdist=s.center.tmp().add(v).dot(p.normal) - p.d;
-  if (adist * bdist < 0)   return true;
-  if (Math.abs(adist) <= s.radius || Math.abs(bdist) <= s.radius)   return true;
-  return false;
-}

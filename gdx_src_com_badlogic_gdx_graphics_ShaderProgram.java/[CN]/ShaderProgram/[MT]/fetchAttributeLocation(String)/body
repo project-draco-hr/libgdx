@@ -1,8 +1,0 @@
-{
-  Integer location;
-  if ((location=attributes.get(name)) == null) {
-    location=gl.glGetAttribLocation(program,name);
-    if (location != -1)     attributes.put(name,location);
-  }
-  return location;
-}

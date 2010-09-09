@@ -1,5 +1,0 @@
-{
-  FFT fft=new FFT(1024,44100);
-  System.out.println(fft.getRealPart().length);
-  System.out.println(fft.getSpectrum().length);
-}
