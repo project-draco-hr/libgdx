@@ -1,6 +1,7 @@
 {
   gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
-  gl.glBufferData(GL11.GL_ARRAY_BUFFER,getNumVertices() * attributes.vertexSize,vertices,isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW);
+  if (graphics.getType() == GraphicsType.AndroidGL)   gl.glBufferData(GL11.GL_ARRAY_BUFFER,getNumVertices() * attributes.vertexSize,vertices,isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW);
+ else   gl.glBufferSubData(GL11.GL_ARRAY_BUFFER,0,getNumVertices() * attributes.vertexSize,vertices);
   gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,0);
   if (maxIndices > 0) {
     gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,indexBufferObjectHandle);

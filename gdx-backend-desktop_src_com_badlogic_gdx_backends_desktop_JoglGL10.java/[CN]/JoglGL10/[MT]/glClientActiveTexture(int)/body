@@ -1,4 +1,8 @@
 {
   activeTexture=texture - GL10.GL_TEXTURE0;
-  gl.glClientActiveTexture(texture);
+  try {
+    gl.glClientActiveTexture(texture);
+  }
+ catch (  Throwable ex) {
+  }
 }

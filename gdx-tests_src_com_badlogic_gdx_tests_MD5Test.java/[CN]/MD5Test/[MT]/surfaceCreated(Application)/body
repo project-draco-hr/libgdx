@@ -1,0 +1,18 @@
+{
+  if (model == null) {
+    model=MD5Loader.loadModel(app.getFiles().readFile("data/zfat.md5mesh",FileType.Internal));
+    app.log("MD5 Test","num triangles: " + model.getNumTriangles());
+    app.log("MD5 Test","num vertices: " + model.getNumVertices());
+    renderer=new MD5Renderer(app.getGraphics(),model,true);
+    renderer.setSkeleton(model.baseSkeleton);
+    camera=new PerspectiveCamera();
+    camera.setFov(60);
+    camera.getPosition().set(0,25,100);
+    camera.setNear(1);
+    camera.setFar(1000);
+    batch=new SpriteBatch(app.getGraphics());
+    font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
+    GL10 gl=app.getGraphics().getGL10();
+    gl.glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
+  }
+}

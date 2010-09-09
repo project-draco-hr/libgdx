@@ -3,7 +3,6 @@
   inv.y=-y;
   inv.z=-z;
   inv.w=w;
-  inv.normalize();
   tmp.set(this);
   tmp.multiply(vec);
   tmp.multiply(inv);
