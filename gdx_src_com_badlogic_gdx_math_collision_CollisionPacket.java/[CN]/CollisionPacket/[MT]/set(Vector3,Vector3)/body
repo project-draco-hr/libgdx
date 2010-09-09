@@ -1,0 +1,10 @@
+{
+  r3Position.set(position);
+  r3Velocity.set(velocity);
+  this.velocity.set(velocity.x * invRadiusX,velocity.y * invRadiusY,velocity.z * invRadiusZ);
+  this.normalizedVelocity.set(velocity).nor();
+  this.position.set(position.x * invRadiusX,position.y * invRadiusY,position.z * invRadiusZ);
+  foundCollision=false;
+  nearestDistance=Float.MAX_VALUE;
+  intersectionPoint.set(0,0,0);
+}

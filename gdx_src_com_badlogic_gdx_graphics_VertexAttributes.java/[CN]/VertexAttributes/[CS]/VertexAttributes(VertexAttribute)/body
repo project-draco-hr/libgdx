@@ -1,0 +1,8 @@
+{
+  if (attributes.length == 0)   throw new IllegalArgumentException("attributes must be >= 1");
+  VertexAttribute[] list=new VertexAttribute[attributes.length];
+  for (int i=0; i < attributes.length; i++)   list[i]=attributes[i];
+  this.attributes=list;
+  checkValidity();
+  vertexSize=calculateOffsets();
+}

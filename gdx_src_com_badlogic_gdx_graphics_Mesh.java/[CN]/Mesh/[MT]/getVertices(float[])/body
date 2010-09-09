@@ -1,0 +1,5 @@
+{
+  if (useFixedPoint)   throw new IllegalArgumentException("can't get float vertices from fixed point mesh");
+  verticesFloat.get(vertices);
+  verticesFloat.position(0);
+}

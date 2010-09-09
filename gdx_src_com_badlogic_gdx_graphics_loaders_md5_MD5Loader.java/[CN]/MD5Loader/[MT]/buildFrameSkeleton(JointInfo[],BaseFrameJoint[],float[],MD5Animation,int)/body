@@ -1,0 +1,54 @@
+{
+  MD5Joint[] skelFrame=animation.frames[frameIndex];
+  for (int i=0; i < jointInfos.length; i++) {
+    BaseFrameJoint baseJoint=baseFrame[i];
+    Vector3 animatedPos=new Vector3();
+    MD5Quaternion animatedOrient=new MD5Quaternion();
+    int j=0;
+    animatedPos.set(baseJoint.pos);
+    animatedOrient.set(baseJoint.orient);
+    if ((jointInfos[i].flags & 1) != 0) {
+      animatedPos.x=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    if ((jointInfos[i].flags & 2) != 0) {
+      animatedPos.y=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    if ((jointInfos[i].flags & 4) != 0) {
+      animatedPos.z=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    if ((jointInfos[i].flags & 8) != 0) {
+      animatedOrient.x=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    if ((jointInfos[i].flags & 16) != 0) {
+      animatedOrient.y=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    if ((jointInfos[i].flags & 32) != 0) {
+      animatedOrient.z=animFrameData[jointInfos[i].startIndex + j];
+      j++;
+    }
+    animatedOrient.computeW();
+    MD5Joint thisJoint=skelFrame[i];
+    int parent=jointInfos[i].parent;
+    thisJoint.parent=parent;
+    thisJoint.name=jointInfos[i].name;
+    if (thisJoint.parent < 0) {
+      thisJoint.pos.set(animatedPos);
+      thisJoint.orient.set(animatedOrient);
+    }
+ else {
+      MD5Joint parentJoint=skelFrame[parent];
+      parentJoint.orient.rotate(animatedPos);
+      thisJoint.pos.x=animatedPos.x + parentJoint.pos.x;
+      thisJoint.pos.y=animatedPos.y + parentJoint.pos.y;
+      thisJoint.pos.z=animatedPos.z + parentJoint.pos.z;
+      thisJoint.orient.set(parentJoint.orient);
+      thisJoint.orient.multiply(animatedOrient);
+      thisJoint.orient.normalize();
+    }
+  }
+}

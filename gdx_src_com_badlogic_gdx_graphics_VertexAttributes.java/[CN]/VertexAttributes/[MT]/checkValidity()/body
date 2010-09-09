@@ -1,0 +1,20 @@
+{
+  boolean pos=false;
+  boolean cols=false;
+  boolean nors=false;
+  for (int i=0; i < attributes.length; i++) {
+    VertexAttribute attribute=attributes[i];
+    if (attribute.usage == Usage.Position) {
+      if (pos)       throw new IllegalArgumentException("two position attributes were specified");
+      pos=true;
+    }
+    if (attribute.usage == Usage.Normal) {
+      if (nors)       throw new IllegalArgumentException("two normal attributes were specified");
+    }
+    if (attribute.usage == Usage.Color) {
+      if (attribute.numComponents != 4)       throw new IllegalArgumentException("color attribute must have 4 components");
+      if (cols)       throw new IllegalArgumentException("two color attributes were specified");
+      cols=true;
+    }
+  }
+}

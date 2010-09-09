@@ -1,0 +1,7 @@
+{
+  checkManaged();
+  int location=fetchUniformLocation(name);
+  this.matrix.put(matrix.val);
+  this.matrix.position(0);
+  gl.glUniformMatrix4fv(location,1,false,this.matrix);
+}

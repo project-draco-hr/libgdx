@@ -1,0 +1,6 @@
+{
+  jniGetLocalCenter(addr,tmp);
+  localCenter.x=tmp[0];
+  localCenter.y=tmp[1];
+  return localCenter;
+}

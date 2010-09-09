@@ -1,0 +1,3 @@
+{
+  return vertices.limit() / (attributes.vertexSize / (usesDirectBuffers ? 1 : 4));
+}

@@ -1,0 +1,30 @@
+{
+  ByteBuffer tmp=ByteBuffer.allocateDirect(4);
+  tmp.order(ByteOrder.nativeOrder());
+  IntBuffer handle=tmp.asIntBuffer();
+  gl.glGenBuffers(1,handle);
+  vertexBufferObjectHandle=handle.get(0);
+  int oldLimit=vertices.limit();
+  int oldPosition=vertices.position();
+  vertices.position(0);
+  vertices.limit(vertices.capacity());
+  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
+  gl.glBufferData(GL20.GL_ARRAY_BUFFER,getNumVertices() * attributes.vertexSize,vertices,isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW);
+  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
+  vertices.position(oldPosition);
+  vertices.limit(oldLimit);
+  if (maxIndices > 0) {
+    gl.glGenBuffers(1,handle);
+    indexBufferObjectHandle=handle.get(0);
+    oldPosition=indices.position();
+    oldLimit=indices.limit();
+    indices.position(0);
+    indices.limit(indices.capacity());
+    gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,indexBufferObjectHandle);
+    gl.glBufferData(GL11.GL_ELEMENT_ARRAY_BUFFER,indices.limit() * 2,indices,isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW);
+    gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,0);
+    indices.position(oldPosition);
+    indices.limit(oldLimit);
+  }
+  dirty=false;
+}

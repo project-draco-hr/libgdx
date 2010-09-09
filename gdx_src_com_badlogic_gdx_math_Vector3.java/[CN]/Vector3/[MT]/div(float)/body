@@ -1,0 +1,4 @@
+{
+  float d=1 / value;
+  return this.set(this.x * d,this.y * d,this.z * d);
+}

@@ -1,0 +1,9 @@
+{
+  float a=vector.x - x;
+  float b=vector.y - y;
+  float c=vector.z - z;
+  a*=a;
+  b*=b;
+  c*=c;
+  return (float)Math.sqrt(a + b + c);
+}

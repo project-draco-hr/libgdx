@@ -1,0 +1,9 @@
+{
+  int count=0;
+  for (int i=0; i < attributes.length; i++) {
+    VertexAttribute attribute=attributes[i];
+    attribute.offset=count;
+    count+=4 * attribute.numComponents;
+  }
+  return count;
+}

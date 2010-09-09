@@ -1,0 +1,6 @@
+{
+  jniGetGravity(addr,tmpGravity);
+  gravity.x=tmpGravity[0];
+  gravity.y=tmpGravity[1];
+  return gravity;
+}

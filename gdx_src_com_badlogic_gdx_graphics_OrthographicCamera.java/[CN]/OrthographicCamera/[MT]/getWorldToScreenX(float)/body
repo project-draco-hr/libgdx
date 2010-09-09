@@ -1,0 +1,3 @@
+{
+  return (int)((worldX + (viewportWidth * scale) / 2 - position.x) / scale);
+}

@@ -1,0 +1,6 @@
+{
+  gl.glDeleteShader(vertexShaderHandle);
+  gl.glDeleteShader(fragmentShaderHandle);
+  gl.glDeleteProgram(program);
+  shaders.remove(this);
+}

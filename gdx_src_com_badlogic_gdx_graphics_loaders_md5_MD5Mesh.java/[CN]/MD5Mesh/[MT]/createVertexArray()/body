@@ -1,0 +1,9 @@
+{
+  float[] verts=new float[vertices.length * 5];
+  for (int i=0, j=3; i < vertices.length; i++) {
+    verts[j++]=vertices[i].st.x;
+    verts[j++]=vertices[i].st.y;
+    j+=3;
+  }
+  return verts;
+}

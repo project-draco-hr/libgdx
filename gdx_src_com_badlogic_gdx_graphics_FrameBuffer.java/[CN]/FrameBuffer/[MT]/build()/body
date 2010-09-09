@@ -1,0 +1,32 @@
+{
+  GL20 gl=graphics.getGL20();
+  ByteBuffer tmp=ByteBuffer.allocateDirect(4);
+  tmp.order(ByteOrder.nativeOrder());
+  IntBuffer handle=tmp.asIntBuffer();
+  gl.glGenFramebuffers(1,handle);
+  framebufferHandle=handle.get(0);
+  gl.glGenRenderbuffers(1,handle);
+  depthbufferHandle=handle.get(0);
+  gl.glBindTexture(GL20.GL_TEXTURE_2D,colorTexture.getTextureObjectHandle());
+  gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,depthbufferHandle);
+  gl.glRenderbufferStorage(GL20.GL_RENDERBUFFER,GL20.GL_DEPTH_COMPONENT16,colorTexture.getWidth(),colorTexture.getHeight());
+  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,framebufferHandle);
+  gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL20.GL_COLOR_ATTACHMENT0,GL20.GL_TEXTURE_2D,colorTexture.getTextureObjectHandle(),0);
+  gl.glFramebufferRenderbuffer(GL20.GL_FRAMEBUFFER,GL20.GL_DEPTH_ATTACHMENT,GL20.GL_RENDERBUFFER,depthbufferHandle);
+  int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
+  gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,0);
+  gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
+  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,0);
+  if (result != GL20.GL_FRAMEBUFFER_COMPLETE) {
+    colorTexture.dispose();
+    handle.put(depthbufferHandle);
+    handle.flip();
+    gl.glDeleteRenderbuffers(1,handle);
+    handle.put(framebufferHandle);
+    handle.flip();
+    gl.glDeleteFramebuffers(1,handle);
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete attachment");
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete dimensions");
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: missing attachment");
+  }
+}

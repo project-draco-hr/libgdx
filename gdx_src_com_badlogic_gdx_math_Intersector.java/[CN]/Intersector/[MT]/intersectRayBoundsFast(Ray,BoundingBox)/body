@@ -1,0 +1,40 @@
+{
+  float t_x_min, t_x_max;
+  float t_y_min, t_y_max;
+  float t_z_min, t_z_max;
+  float div_x, div_y, div_z;
+  div_x=1 / ray.direction.x;
+  div_y=1 / ray.direction.y;
+  div_z=1 / ray.direction.z;
+  if (div_x >= 0) {
+    t_x_min=(bounds.getMin().x - ray.origin.x) * div_x;
+    t_x_max=(bounds.getMax().x - ray.origin.x) * div_x;
+  }
+ else {
+    t_x_min=(bounds.getMax().x - ray.origin.x) * div_x;
+    t_x_max=(bounds.getMin().x - ray.origin.x) * div_x;
+  }
+  if (div_y >= 0) {
+    t_y_min=(bounds.getMin().y - ray.origin.y) * div_y;
+    t_y_max=(bounds.getMax().y - ray.origin.y) * div_y;
+  }
+ else {
+    t_y_min=(bounds.getMax().y - ray.origin.y) * div_y;
+    t_y_max=(bounds.getMin().y - ray.origin.y) * div_y;
+  }
+  if (t_x_min > t_y_max || (t_y_min > t_x_max))   return false;
+  if (t_y_min > t_x_min)   t_x_min=t_y_min;
+  if (t_y_max < t_x_max)   t_x_max=t_y_max;
+  if (div_z >= 0) {
+    t_z_min=(bounds.getMin().z - ray.origin.z) * div_z;
+    t_z_max=(bounds.getMax().z - ray.origin.z) * div_z;
+  }
+ else {
+    t_z_min=(bounds.getMax().z - ray.origin.z) * div_z;
+    t_z_max=(bounds.getMin().z - ray.origin.z) * div_z;
+  }
+  if ((t_x_min > t_z_max) || (t_z_min > t_x_max))   return false;
+  if (t_z_min > t_x_min)   t_x_min=t_z_min;
+  if (t_z_max < t_x_max)   t_x_max=t_z_max;
+  return ((t_x_min < 1) && (t_x_max > 0));
+}

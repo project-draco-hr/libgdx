@@ -1,0 +1,5 @@
+{
+  tokens.clear();
+  StringTokenizer tokenizer=new StringTokenizer(line);
+  while (tokenizer.hasMoreTokens())   tokens.add(tokenizer.nextToken());
+}

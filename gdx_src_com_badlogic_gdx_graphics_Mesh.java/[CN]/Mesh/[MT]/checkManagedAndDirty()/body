@@ -1,0 +1,19 @@
+{
+  if (!bufferCreatedFirstTime) {
+    createBuffers();
+    bufferCreatedFirstTime=true;
+  }
+  if (vertexBufferObjectHandle == 0)   return;
+  if (managed && invalidated || !bufferCreatedFirstTime) {
+    if (graphics.isGL11Available()) {
+      createBuffers();
+      fillBuffers();
+    }
+    if (graphics.isGL20Available()) {
+      createBuffers();
+      fillBuffers();
+    }
+  }
+  invalidated=false;
+  if (dirty)   fillBuffers();
+}

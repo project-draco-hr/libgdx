@@ -1,0 +1,6 @@
+{
+  jniGetWorldCenter(addr,tmp);
+  worldCenter.x=tmp[0];
+  worldCenter.y=tmp[1];
+  return worldCenter;
+}

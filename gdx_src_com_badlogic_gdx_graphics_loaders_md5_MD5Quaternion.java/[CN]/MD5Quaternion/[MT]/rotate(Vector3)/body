@@ -1,0 +1,12 @@
+{
+  inv.x=-x;
+  inv.y=-y;
+  inv.z=-z;
+  inv.w=w;
+  tmp.set(this);
+  tmp.multiply(vec);
+  tmp.multiply(inv);
+  vec.x=tmp.x;
+  vec.y=tmp.y;
+  vec.z=tmp.z;
+}

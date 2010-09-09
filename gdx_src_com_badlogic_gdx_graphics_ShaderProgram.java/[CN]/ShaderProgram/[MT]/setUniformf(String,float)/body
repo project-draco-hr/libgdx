@@ -1,0 +1,5 @@
+{
+  checkManaged();
+  int location=fetchUniformLocation(name);
+  gl.glUniform1f(location,value);
+}

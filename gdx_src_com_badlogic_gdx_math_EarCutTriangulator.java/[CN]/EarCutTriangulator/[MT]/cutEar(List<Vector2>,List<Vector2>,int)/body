@@ -1,0 +1,17 @@
+{
+  if (index == 0) {
+    triangles.add(new Vector2(polygon.get(polygon.size() - 1)));
+    triangles.add(new Vector2(polygon.get(index)));
+    triangles.add(new Vector2(polygon.get(index + 1)));
+  }
+ else   if ((index > 0) && (index < polygon.size() - 1)) {
+    triangles.add(new Vector2(polygon.get(index - 1)));
+    triangles.add(new Vector2(polygon.get(index)));
+    triangles.add(new Vector2(polygon.get(index + 1)));
+  }
+ else   if (index == polygon.size() - 1) {
+    triangles.add(new Vector2(polygon.get(index - 1)));
+    triangles.add(new Vector2(polygon.get(index)));
+    triangles.add(new Vector2(polygon.get(0)));
+  }
+}

@@ -1,0 +1,5 @@
+{
+  Body body=new Body(this,jniCreateBody(addr,def.type.getValue(),def.position.x,def.position.y,def.angle,def.linearVelocity.x,def.linearVelocity.y,def.angularVelocity,def.linearDamping,def.angularDamping,def.allowSleep,def.awake,def.fixedRotation,def.bullet,def.active,def.inertiaScale));
+  this.bodies.put(body.addr,body);
+  return body;
+}

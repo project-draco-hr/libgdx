@@ -1,0 +1,7 @@
+{
+  tmp.set(origin).add(direction);
+  tmp.mul(matrix);
+  origin.mul(matrix);
+  direction.set(tmp.sub(origin));
+  return this;
+}

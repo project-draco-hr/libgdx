@@ -1,0 +1,10 @@
+{
+  float[] revReal=new float[real.length];
+  float[] revImag=new float[imag.length];
+  for (int i=0; i < real.length; i++) {
+    revReal[i]=real[reverse[i]];
+    revImag[i]=imag[reverse[i]];
+  }
+  real=revReal;
+  imag=revImag;
+}

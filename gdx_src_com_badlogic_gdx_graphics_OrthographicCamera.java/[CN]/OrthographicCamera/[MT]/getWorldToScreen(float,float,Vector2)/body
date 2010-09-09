@@ -1,0 +1,4 @@
+{
+  screen.x=(int)((worldX + (viewportWidth * scale) / 2 - position.x) / scale);
+  screen.y=(int)(-(-worldY + (viewportHeight * scale) / 2 + position.y - viewportHeight * scale) / scale);
+}

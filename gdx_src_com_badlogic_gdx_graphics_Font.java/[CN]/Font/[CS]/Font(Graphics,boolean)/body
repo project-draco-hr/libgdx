@@ -1,0 +1,4 @@
+{
+  this.texture=graphics.newTexture(512,512,Pixmap.Format.RGBA8888,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,managed);
+  this.isManaged=managed;
+}

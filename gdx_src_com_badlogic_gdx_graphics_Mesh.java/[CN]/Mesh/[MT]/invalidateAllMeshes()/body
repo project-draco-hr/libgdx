@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < meshes.size(); i++) {
+    meshes.get(i).invalidated=true;
+    meshes.get(i).checkManagedAndDirty();
+  }
+}

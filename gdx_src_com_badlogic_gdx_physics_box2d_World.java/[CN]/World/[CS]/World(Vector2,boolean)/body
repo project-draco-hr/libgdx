@@ -1,0 +1,4 @@
+{
+  addr=newWorld(gravity.x,gravity.y,doSleep);
+  for (int i=0; i < 200; i++)   freeContacts.add(new Contact(this,0));
+}

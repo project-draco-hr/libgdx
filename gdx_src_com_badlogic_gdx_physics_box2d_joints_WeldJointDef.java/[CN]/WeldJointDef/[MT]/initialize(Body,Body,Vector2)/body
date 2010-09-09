@@ -1,0 +1,7 @@
+{
+  this.bodyA=body1;
+  this.bodyB=body2;
+  this.localAnchorA.set(body1.getLocalPoint(anchor));
+  this.localAnchorB.set(body2.getLocalPoint(anchor));
+  referenceAngle=body2.getAngle() - body1.getAngle();
+}

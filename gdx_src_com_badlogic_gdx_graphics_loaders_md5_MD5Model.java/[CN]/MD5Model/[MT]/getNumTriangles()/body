@@ -1,0 +1,5 @@
+{
+  int numTriangles=0;
+  for (int i=0; i < meshes.length; i++)   numTriangles+=meshes[i].triangles.length;
+  return numTriangles;
+}

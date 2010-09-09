@@ -1,0 +1,12 @@
+{
+  if (!useFixedPoint)   throw new IllegalArgumentException("can't set fixed point vertices for float mesh");
+  verticesFixed.clear();
+  verticesFixed.put(vertices);
+  verticesFixed.limit(vertices.length);
+  verticesFixed.position(0);
+  if (usesDirectBuffers) {
+    this.vertices.limit(verticesFixed.limit() * 4);
+    this.vertices.position(0);
+  }
+  dirty=true;
+}

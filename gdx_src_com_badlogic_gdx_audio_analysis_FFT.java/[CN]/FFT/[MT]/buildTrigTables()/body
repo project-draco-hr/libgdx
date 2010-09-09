@@ -1,0 +1,9 @@
+{
+  int N=timeSize;
+  sinlookup=new float[N];
+  coslookup=new float[N];
+  for (int i=0; i < N; i++) {
+    sinlookup[i]=(float)Math.sin(-(float)Math.PI / i);
+    coslookup[i]=(float)Math.cos(-(float)Math.PI / i);
+  }
+}

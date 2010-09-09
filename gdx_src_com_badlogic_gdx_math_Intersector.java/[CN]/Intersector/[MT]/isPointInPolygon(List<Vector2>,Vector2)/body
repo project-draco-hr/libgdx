@@ -1,0 +1,13 @@
+{
+  int j=polygon.size() - 1;
+  boolean oddNodes=false;
+  for (int i=0; i < polygon.size(); i++) {
+    if ((polygon.get(i).y < point.y && polygon.get(j).y >= point.y) || (polygon.get(j).y < point.y && polygon.get(i).y >= point.y)) {
+      if (polygon.get(i).x + (point.y - polygon.get(i).y) / (polygon.get(j).y - polygon.get(i).y) * (polygon.get(j).x - polygon.get(i).x) < point.x) {
+        oddNodes=!oddNodes;
+      }
+    }
+    j=i;
+  }
+  return oddNodes;
+}

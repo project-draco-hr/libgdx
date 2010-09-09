@@ -1,0 +1,3 @@
+{
+  return (int)(-(-worldY + (viewportHeight * scale) / 2 + position.y - viewportHeight * scale) / scale);
+}

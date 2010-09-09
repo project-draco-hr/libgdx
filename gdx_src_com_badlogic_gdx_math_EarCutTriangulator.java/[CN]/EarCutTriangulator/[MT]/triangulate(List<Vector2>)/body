@@ -1,0 +1,27 @@
+{
+  List<Vector2> triangles=new ArrayList<Vector2>();
+  List<Vector2> tmp=new ArrayList<Vector2>(polygon.size());
+  tmp.addAll(polygon);
+  polygon=tmp;
+  if (polygon.size() == 3) {
+    triangles.addAll(polygon);
+    return triangles;
+  }
+  while (polygon.size() >= 3) {
+    int ptType[]=classifyPoints(polygon);
+    for (int i=0; i < polygon.size(); i++) {
+      float x1=polygon.get(i == 0 ? polygon.size() - 1 : i - 1).x;
+      float y1=polygon.get(i == 0 ? polygon.size() - 1 : i - 1).y;
+      float x2=polygon.get(i).x;
+      float y2=polygon.get(i).y;
+      float x3=polygon.get(i == polygon.size() - 1 ? 0 : i + 1).x;
+      float y3=polygon.get(i == polygon.size() - 1 ? 0 : i + 1).y;
+      if (ear(polygon,ptType,x1,y1,x2,y2,x3,y3)) {
+        cutEar(polygon,triangles,i);
+        updatePolygon(polygon,i);
+        break;
+      }
+    }
+  }
+  return triangles;
+}
