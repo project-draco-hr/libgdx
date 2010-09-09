@@ -10,6 +10,7 @@
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);
     gl.glRotatef(-90,1,0,0);
+    renderer.setSkeleton(model.baseSkeleton);
     renderer.render();
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);
