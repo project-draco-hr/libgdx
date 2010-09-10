@@ -6,7 +6,7 @@
   animInfo.update(app.getGraphics().getDeltaTime());
   gl.glEnable(GL10.GL_DEPTH_TEST);
   gl.glPolygonMode(GL10.GL_FRONT_AND_BACK,GL10.GL_LINE);
-  for (int z=0; z < 50; z+=50) {
+  for (int z=0; z < 500; z+=50) {
     gl.glLoadIdentity();
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);

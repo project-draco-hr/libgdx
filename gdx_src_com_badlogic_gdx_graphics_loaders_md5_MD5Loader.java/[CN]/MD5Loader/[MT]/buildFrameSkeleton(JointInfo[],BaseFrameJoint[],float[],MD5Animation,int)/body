@@ -43,7 +43,6 @@
       skelFrame.joints[thisJointIdx + 5]=animatedOrient.y;
       skelFrame.joints[thisJointIdx + 6]=animatedOrient.z;
       skelFrame.joints[thisJointIdx + 7]=animatedOrient.w;
-      if (frameIndex == 0)       System.out.println(animatedPos + " | " + animatedOrient);
     }
  else {
       int parentJointIdx=jointInfos[i].parent << 3;
@@ -64,7 +63,6 @@
       skelFrame.joints[thisJointIdx + 5]=parentOrient.y;
       skelFrame.joints[thisJointIdx + 6]=parentOrient.z;
       skelFrame.joints[thisJointIdx + 7]=parentOrient.w;
-      if (frameIndex == 0)       System.out.println(parentPos.add(animatedPos) + " | " + parentOrient);
     }
   }
 }

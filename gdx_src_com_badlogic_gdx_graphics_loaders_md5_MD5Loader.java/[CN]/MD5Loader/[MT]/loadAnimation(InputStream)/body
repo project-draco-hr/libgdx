@@ -3,7 +3,6 @@
   List<String> tokens=new ArrayList<String>();
   MD5Animation animation=new MD5Animation();
   try {
-    int currFrame=0;
     String line;
     JointInfo[] jointInfos=null;
     BaseFrameJoint[] baseFrame=null;
