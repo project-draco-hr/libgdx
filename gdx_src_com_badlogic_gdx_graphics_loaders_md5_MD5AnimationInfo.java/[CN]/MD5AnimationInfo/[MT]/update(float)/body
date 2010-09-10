@@ -1,0 +1,10 @@
+{
+  lastTime+=delta;
+  if (lastTime >= maxTime) {
+    currFrame++;
+    nextFrame++;
+    lastTime=0;
+    if (currFrame >= maxFrame)     currFrame=0;
+    if (nextFrame >= maxFrame)     nextFrame=0;
+  }
+}

@@ -16,14 +16,16 @@
       }
       if (tokens.get(0).equals("numFrames")) {
         int numFrames=Integer.parseInt(tokens.get(1));
-        animation.frames=new MD5Joint[numFrames][];
+        animation.frames=new MD5Joints[numFrames];
         animation.bounds=new BoundingBox[numFrames];
       }
       if (tokens.get(0).equals("numJoints")) {
         int numJoints=Integer.parseInt(tokens.get(1));
         for (int i=0; i < animation.frames.length; i++) {
-          animation.frames[i]=new MD5Joint[numJoints];
-          for (int j=0; j < numJoints; j++)           animation.frames[i][j]=new MD5Joint();
+          animation.frames[i]=new MD5Joints();
+          animation.frames[i].numJoints=numJoints;
+          animation.frames[i].names=new String[numJoints];
+          animation.frames[i].joints=new float[numJoints * 8];
         }
         jointInfos=new JointInfo[numJoints];
         baseFrame=new BaseFrameJoint[numJoints];

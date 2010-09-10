@@ -1,5 +1,5 @@
 {
-  MD5Joint[] skelFrame=animation.frames[frameIndex];
+  MD5Joints skelFrame=animation.frames[frameIndex];
   for (int i=0; i < jointInfos.length; i++) {
     BaseFrameJoint baseJoint=baseFrame[i];
     Vector3 animatedPos=new Vector3();
@@ -32,23 +32,39 @@
       j++;
     }
     animatedOrient.computeW();
-    MD5Joint thisJoint=skelFrame[i];
-    int parent=jointInfos[i].parent;
-    thisJoint.parent=parent;
-    thisJoint.name=jointInfos[i].name;
-    if (thisJoint.parent < 0) {
-      thisJoint.pos.set(animatedPos);
-      thisJoint.orient.set(animatedOrient);
+    int thisJointIdx=i << 3;
+    skelFrame.names[i]=jointInfos[i].name;
+    skelFrame.joints[thisJointIdx]=jointInfos[i].parent;
+    if (jointInfos[i].parent < 0) {
+      skelFrame.joints[thisJointIdx + 1]=animatedPos.x;
+      skelFrame.joints[thisJointIdx + 2]=animatedPos.y;
+      skelFrame.joints[thisJointIdx + 3]=animatedPos.z;
+      skelFrame.joints[thisJointIdx + 4]=animatedOrient.x;
+      skelFrame.joints[thisJointIdx + 5]=animatedOrient.y;
+      skelFrame.joints[thisJointIdx + 6]=animatedOrient.z;
+      skelFrame.joints[thisJointIdx + 7]=animatedOrient.w;
+      if (frameIndex == 0)       System.out.println(animatedPos + " | " + animatedOrient);
     }
  else {
-      MD5Joint parentJoint=skelFrame[parent];
-      parentJoint.orient.rotate(animatedPos);
-      thisJoint.pos.x=animatedPos.x + parentJoint.pos.x;
-      thisJoint.pos.y=animatedPos.y + parentJoint.pos.y;
-      thisJoint.pos.z=animatedPos.z + parentJoint.pos.z;
-      thisJoint.orient.set(parentJoint.orient);
-      thisJoint.orient.multiply(animatedOrient);
-      thisJoint.orient.normalize();
+      int parentJointIdx=jointInfos[i].parent << 3;
+      parentPos.x=skelFrame.joints[parentJointIdx + 1];
+      parentPos.y=skelFrame.joints[parentJointIdx + 2];
+      parentPos.z=skelFrame.joints[parentJointIdx + 3];
+      parentOrient.x=skelFrame.joints[parentJointIdx + 4];
+      parentOrient.y=skelFrame.joints[parentJointIdx + 5];
+      parentOrient.z=skelFrame.joints[parentJointIdx + 6];
+      parentOrient.w=skelFrame.joints[parentJointIdx + 7];
+      parentOrient.rotate(animatedPos);
+      skelFrame.joints[thisJointIdx + 1]=animatedPos.x + parentPos.x;
+      skelFrame.joints[thisJointIdx + 2]=animatedPos.y + parentPos.y;
+      skelFrame.joints[thisJointIdx + 3]=animatedPos.z + parentPos.z;
+      parentOrient.multiply(animatedOrient);
+      parentOrient.normalize();
+      skelFrame.joints[thisJointIdx + 4]=parentOrient.x;
+      skelFrame.joints[thisJointIdx + 5]=parentOrient.y;
+      skelFrame.joints[thisJointIdx + 6]=parentOrient.z;
+      skelFrame.joints[thisJointIdx + 7]=parentOrient.w;
+      if (frameIndex == 0)       System.out.println(parentPos.add(animatedPos) + " | " + parentOrient);
     }
   }
 }
