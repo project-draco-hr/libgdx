@@ -33,5 +33,6 @@
   if (keyword.equals(items[27]))   intent=new Intent(this,TestCollection.class);
   if (keyword.equals(items[28]))   intent=new Intent(this,ResourcesTest.class);
   if (keyword.equals(items[29]))   intent=new Intent(this,MD5Test.class);
+  if (keyword.equals(items[30]))   intent=new Intent(this,MicroBenchmarks.class);
   startActivity(intent);
 }

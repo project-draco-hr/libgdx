@@ -5,10 +5,7 @@
     skeleton=new MD5Joints();
     skeleton.joints=new float[anim.frames[0].joints.length];
     animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
-    renderer=new MD5Renderer(app.getGraphics(),model,false,true);
-    long start=System.nanoTime();
-    for (int i=0; i < 100000; i++)     renderer.setSkeleton(model.baseSkeleton);
-    app.log("MD5 Test","took: " + (System.nanoTime() - start) / 1000000000.0);
+    renderer=new MD5Renderer(app.getGraphics(),model,true,true);
     camera=new PerspectiveCamera();
     camera.getPosition().set(0,25,100);
     camera.setFov(60);

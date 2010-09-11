@@ -1,0 +1,48 @@
+{
+  super.onCreate(bundle);
+  if (t == null) {
+    t=new Thread(new Runnable(){
+      @Override public void run(){
+        ByteBuffer byteBuffer=ByteBuffer.allocateDirect(1024 * 1024 * Float.SIZE / 8);
+        byteBuffer.order(ByteOrder.nativeOrder());
+        FloatBuffer buffer=byteBuffer.asFloatBuffer();
+        float[] array=new float[1024 * 1024];
+        tic();
+        for (int tries=0; tries < 25; tries++) {
+          for (int i=0; i < array.length; i++)           buffer.put(array[i]);
+          buffer.clear();
+        }
+        toc("single put");
+        tic();
+        for (int tries=0; tries < 25; tries++) {
+          for (int i=0; i < array.length; i++)           buffer.put(i,array[i]);
+          buffer.clear();
+        }
+        toc("single indexed put");
+        tic();
+        for (int tries=0; tries < 25; tries++) {
+          buffer.put(array);
+          buffer.clear();
+        }
+        toc("vector put");
+        tic();
+        for (int tries=0; tries < 25; tries++) {
+          BufferUtils.copy(array,buffer,array.length,0);
+          buffer.clear();
+        }
+        toc("jni put");
+        byteBuffer=ByteBuffer.allocateDirect(4 * Float.SIZE / 8);
+        byteBuffer.order(ByteOrder.nativeOrder());
+        buffer=byteBuffer.asFloatBuffer();
+        array=new float[]{0,1,2,3};
+        BufferUtils.copy(array,buffer,4,0);
+        System.out.println(buffer.get(0));
+        System.out.println(buffer.get(1));
+        System.out.println(buffer.get(2));
+        System.out.println(buffer.get(3));
+      }
+    }
+);
+    t.start();
+  }
+}
