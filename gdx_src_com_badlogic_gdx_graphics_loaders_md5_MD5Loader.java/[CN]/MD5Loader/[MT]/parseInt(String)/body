@@ -1,0 +1,19 @@
+{
+  int front=0;
+  int sign=1;
+  int len=value.length();
+  for (int i=0; i < len; i++) {
+    char c=value.charAt(i);
+    if (c == '-') {
+      sign=-1;
+      continue;
+    }
+    if (c == '+')     continue;
+    if (c == '.' || c == ',') {
+      break;
+    }
+    int val=c - '0';
+    front=front * 10 + val;
+  }
+  return sign * front;
+}

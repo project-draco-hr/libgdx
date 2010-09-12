@@ -5,17 +5,23 @@
   angle+=app.getGraphics().getDeltaTime() * 20;
   animInfo.update(app.getGraphics().getDeltaTime());
   gl.glEnable(GL10.GL_DEPTH_TEST);
-  gl.glPolygonMode(GL10.GL_FRONT_AND_BACK,GL10.GL_LINE);
+  long start=0;
+  float renderTime=0;
+  float skinTime=0;
   for (int z=0; z < 50; z+=50) {
     gl.glLoadIdentity();
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);
     gl.glRotatef(-90,1,0,0);
-    renderer.setSkeleton(model.baseSkeleton);
+    start=System.nanoTime();
+    MD5Animation.interpolate(anim.frames[animInfo.getCurrentFrame()],anim.frames[animInfo.getNextFrame()],skeleton,animInfo.getInterpolation());
+    renderer.setSkeleton(skeleton);
+    skinTime=(System.nanoTime() - start) / 1000000000.0f;
+    start=System.nanoTime();
     renderer.render();
+    renderTime=(System.nanoTime() - start) / 1000000000.0f;
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);
-  gl.glPolygonMode(GL10.GL_FRONT_AND_BACK,GL10.GL_FILL);
   batch.begin();
   batch.drawText(font,"fps: " + app.getGraphics().getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java"),10,20,Color.WHITE);
   batch.end();

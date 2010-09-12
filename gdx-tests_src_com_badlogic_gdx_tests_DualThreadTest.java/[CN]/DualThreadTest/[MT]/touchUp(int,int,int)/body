@@ -1,0 +1,5 @@
+{
+  if (gameLoop.isPaused())   gameLoop.onResume();
+ else   gameLoop.onPause();
+  return false;
+}

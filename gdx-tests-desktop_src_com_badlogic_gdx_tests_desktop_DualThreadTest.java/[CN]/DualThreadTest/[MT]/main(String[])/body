@@ -1,0 +1,6 @@
+{
+  JoglApplication app=new JoglApplication("Dual Thread Test",480,320,false);
+  com.badlogic.gdx.tests.DualThreadTest test=new com.badlogic.gdx.tests.DualThreadTest();
+  app.setApplicationListener(test);
+  app.getGraphics().setRenderListener(test);
+}

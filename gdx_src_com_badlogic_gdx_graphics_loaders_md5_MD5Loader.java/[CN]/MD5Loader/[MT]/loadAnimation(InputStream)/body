@@ -14,12 +14,12 @@
         if (!tokens.get(1).equals("10"))         throw new IllegalArgumentException("Not a valid MD5 animation file, version is " + tokens.get(1) + ", expected 10");
       }
       if (tokens.get(0).equals("numFrames")) {
-        int numFrames=Integer.parseInt(tokens.get(1));
+        int numFrames=parseInt(tokens.get(1));
         animation.frames=new MD5Joints[numFrames];
         animation.bounds=new BoundingBox[numFrames];
       }
       if (tokens.get(0).equals("numJoints")) {
-        int numJoints=Integer.parseInt(tokens.get(1));
+        int numJoints=parseInt(tokens.get(1));
         for (int i=0; i < animation.frames.length; i++) {
           animation.frames[i]=new MD5Joints();
           animation.frames[i].numJoints=numJoints;
@@ -30,12 +30,12 @@
         baseFrame=new BaseFrameJoint[numJoints];
       }
       if (tokens.get(0).equals("frameRate")) {
-        int frameRate=Integer.parseInt(tokens.get(1));
+        int frameRate=parseInt(tokens.get(1));
         animation.frameRate=frameRate;
         animation.secondsPerFrame=1.0f / frameRate;
       }
       if (tokens.get(0).equals("numAnimatedComponents")) {
-        int numAnimatedComponents=Integer.parseInt(tokens.get(1));
+        int numAnimatedComponents=parseInt(tokens.get(1));
         animFrameData=new float[numAnimatedComponents];
       }
       if (tokens.get(0).equals("hierarchy")) {
@@ -48,9 +48,9 @@
           }
           JointInfo jointInfo=new JointInfo();
           jointInfo.name=tokens.get(0);
-          jointInfo.parent=Integer.parseInt(tokens.get(1));
-          jointInfo.flags=Integer.parseInt(tokens.get(2));
-          jointInfo.startIndex=Integer.parseInt(tokens.get(3));
+          jointInfo.parent=parseInt(tokens.get(1));
+          jointInfo.flags=parseInt(tokens.get(2));
+          jointInfo.startIndex=parseInt(tokens.get(3));
           jointInfos[i]=jointInfo;
         }
       }
@@ -63,12 +63,12 @@
             continue;
           }
           BoundingBox bounds=new BoundingBox();
-          bounds.min.x=Float.parseFloat(tokens.get(1));
-          bounds.min.y=Float.parseFloat(tokens.get(2));
-          bounds.min.z=Float.parseFloat(tokens.get(3));
-          bounds.max.x=Float.parseFloat(tokens.get(6));
-          bounds.max.y=Float.parseFloat(tokens.get(7));
-          bounds.max.z=Float.parseFloat(tokens.get(8));
+          bounds.min.x=parseFloat(tokens.get(1));
+          bounds.min.y=parseFloat(tokens.get(2));
+          bounds.min.z=parseFloat(tokens.get(3));
+          bounds.max.x=parseFloat(tokens.get(6));
+          bounds.max.y=parseFloat(tokens.get(7));
+          bounds.max.z=parseFloat(tokens.get(8));
           animation.bounds[i]=bounds;
         }
       }
@@ -81,23 +81,23 @@
             continue;
           }
           BaseFrameJoint joint=new BaseFrameJoint();
-          joint.pos.x=Float.parseFloat(tokens.get(1));
-          joint.pos.y=Float.parseFloat(tokens.get(2));
-          joint.pos.z=Float.parseFloat(tokens.get(3));
-          joint.orient.x=Float.parseFloat(tokens.get(6));
-          joint.orient.y=Float.parseFloat(tokens.get(7));
-          joint.orient.z=Float.parseFloat(tokens.get(8));
+          joint.pos.x=parseFloat(tokens.get(1));
+          joint.pos.y=parseFloat(tokens.get(2));
+          joint.pos.z=parseFloat(tokens.get(3));
+          joint.orient.x=parseFloat(tokens.get(6));
+          joint.orient.y=parseFloat(tokens.get(7));
+          joint.orient.z=parseFloat(tokens.get(8));
           joint.orient.computeW();
           baseFrame[i]=joint;
         }
       }
       if (tokens.get(0).equals("frame")) {
-        int frameIndex=Integer.parseInt(tokens.get(1));
+        int frameIndex=parseInt(tokens.get(1));
         int i=0;
         line=reader.readLine();
         tokenize(line,tokens);
         while (tokens.get(0).equals("}") == false) {
-          for (int j=0; j < tokens.size(); j++)           animFrameData[i++]=Float.parseFloat(tokens.get(j));
+          for (int j=0; j < tokens.size(); j++)           animFrameData[i++]=parseFloat(tokens.get(j));
           line=reader.readLine();
           tokenize(line,tokens);
         }

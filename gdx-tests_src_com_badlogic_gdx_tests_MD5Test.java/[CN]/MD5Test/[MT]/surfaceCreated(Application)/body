@@ -1,20 +1,20 @@
 {
-  if (model == null) {
-    model=MD5Loader.loadModel(app.getFiles().readFile("data/zfat.md5mesh",FileType.Internal));
-    anim=MD5Loader.loadAnimation(app.getFiles().readFile("data/walk1.md5anim",FileType.Internal));
-    skeleton=new MD5Joints();
-    skeleton.joints=new float[anim.frames[0].joints.length];
-    animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
-    renderer=new MD5Renderer(app.getGraphics(),model,true,true);
-    camera=new PerspectiveCamera();
-    camera.getPosition().set(0,25,100);
-    camera.setFov(60);
-    camera.setNear(1);
-    camera.setFar(1000);
-    camera.setViewport(app.getGraphics().getWidth(),app.getGraphics().getHeight());
-    batch=new SpriteBatch(app.getGraphics());
-    font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
-    app.getGraphics().getGL10().glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
-    app.getInput().addInputListener(this);
-  }
+  app.log("MD5 Test","created");
+  model=MD5Loader.loadModel(app.getFiles().readFile("data/zfat.md5mesh",FileType.Internal));
+  anim=MD5Loader.loadAnimation(app.getFiles().readFile("data/walk1.md5anim",FileType.Internal));
+  skeleton=new MD5Joints();
+  skeleton.joints=new float[anim.frames[0].joints.length];
+  animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
+  renderer=new MD5Renderer(app.getGraphics(),model,true,false);
+  renderer.setSkeleton(model.baseSkeleton);
+  camera=new PerspectiveCamera();
+  camera.getPosition().set(0,25,100);
+  camera.setFov(60);
+  camera.setNear(1);
+  camera.setFar(1000);
+  camera.setViewport(app.getGraphics().getWidth(),app.getGraphics().getHeight());
+  batch=new SpriteBatch(app.getGraphics());
+  font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,false);
+  app.getGraphics().getGL10().glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
+  app.getInput().addInputListener(this);
 }

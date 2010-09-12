@@ -1,0 +1,24 @@
+{
+  float front=0;
+  float back=0;
+  float sign=1;
+  boolean isBack=false;
+  int count=1;
+  int len=value.length();
+  for (int i=0; i < len; i++) {
+    char c=value.charAt(i);
+    if (c == '-') {
+      sign=-1;
+      continue;
+    }
+    if (c == '+')     continue;
+    if (c == '.' || c == ',') {
+      isBack=true;
+      continue;
+    }
+    float val=c - '0';
+    if (!isBack)     front=front * 10 + val;
+ else     back=back + val * (1.0f / (float)Math.pow(10,count++));
+  }
+  return sign * (front + back);
+}
