@@ -11,13 +11,12 @@
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);
     gl.glRotatef(-90,1,0,0);
-    MD5Animation.interpolate(anim.frames[animInfo.getCurrentFrame()],anim.frames[animInfo.getNextFrame()],skeleton,animInfo.getInterpolation());
-    renderer.setSkeleton(skeleton);
+    renderer.setSkeleton(model.baseSkeleton);
     renderer.render();
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);
   gl.glPolygonMode(GL10.GL_FRONT_AND_BACK,GL10.GL_FILL);
   batch.begin();
-  batch.drawText(font,"fps: " + app.getGraphics().getFramesPerSecond(),10,20,Color.WHITE);
+  batch.drawText(font,"fps: " + app.getGraphics().getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java"),10,20,Color.WHITE);
   batch.end();
 }

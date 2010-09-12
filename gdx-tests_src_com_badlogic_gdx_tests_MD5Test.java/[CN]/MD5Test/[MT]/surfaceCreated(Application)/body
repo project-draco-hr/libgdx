@@ -5,7 +5,7 @@
     skeleton=new MD5Joints();
     skeleton.joints=new float[anim.frames[0].joints.length];
     animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
-    renderer=new MD5Renderer(app.getGraphics(),model,false,true);
+    renderer=new MD5Renderer(app.getGraphics(),model,true,true);
     camera=new PerspectiveCamera();
     camera.getPosition().set(0,25,100);
     camera.setFov(60);
@@ -15,5 +15,6 @@
     batch=new SpriteBatch(app.getGraphics());
     font=app.getGraphics().newFont("Arial",12,FontStyle.Plain,true);
     app.getGraphics().getGL10().glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
+    app.getInput().addInputListener(this);
   }
 }
