@@ -3,6 +3,7 @@
   hitBody=null;
   world.QueryAABB(callback,testPoint.x - 0.0001f,testPoint.y - 0.0001f,testPoint.x + 0.0001f,testPoint.y + 0.0001f);
   if (hitBody == groundBody)   hitBody=null;
+  if (hitBody.getType() == BodyType.KinematicBody)   return false;
   if (hitBody != null) {
     MouseJointDef def=new MouseJointDef();
     def.bodyA=groundBody;
