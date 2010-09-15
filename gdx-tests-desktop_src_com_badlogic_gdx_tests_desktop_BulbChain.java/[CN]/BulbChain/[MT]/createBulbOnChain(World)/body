@@ -1,0 +1,47 @@
+{
+  Body ground;
+{
+    BodyDef bd=new BodyDef();
+    ground=world.createBody(bd);
+  }
+{
+    PolygonShape shape=new PolygonShape();
+    shape.setAsBox(0.2f,0.6f);
+    FixtureDef fd=new FixtureDef();
+    fd.shape=shape;
+    fd.density=1.0f;
+    fd.friction=1.0f;
+    fd.restitution=0.0f;
+    RevoluteJointDef jd=new RevoluteJointDef();
+    jd.collideConnected=true;
+    float y=40.0f;
+    Body prevBody=ground;
+    for (int i=0; i < 30; i++) {
+      BodyDef bd=new BodyDef();
+      bd.type=BodyType.DynamicBody;
+      bd.position.set(0.1f,y - i * 1.5f);
+      Body body=world.createBody(bd);
+      body.createFixture(fd);
+      Vector2 anchor=new Vector2(0.1f,y - i * 1.5f);
+      jd.initialize(prevBody,body,anchor);
+      world.createJoint(jd);
+      prevBody=body;
+      links.add(body);
+    }
+    shape.dispose();
+    CircleShape bulbShape=new CircleShape();
+    shape.setRadius(10.0f);
+    fd.shape=bulbShape;
+    fd.density=100.0f;
+    fd.restitution=0.0f;
+    BodyDef bd=new BodyDef();
+    bd.type=BodyType.DynamicBody;
+    bd.position.set(0.0f,y - 30 * 1.5f - 5.0f);
+    bulbBody=world.createBody(bd);
+    bulbBody.createFixture(fd);
+    Vector2 anchor=new Vector2(0.0f,y - 30 * 1.5f - 5.0f);
+    jd.initialize(prevBody,bulbBody,anchor);
+    world.createJoint(jd);
+    bulbShape.dispose();
+  }
+}

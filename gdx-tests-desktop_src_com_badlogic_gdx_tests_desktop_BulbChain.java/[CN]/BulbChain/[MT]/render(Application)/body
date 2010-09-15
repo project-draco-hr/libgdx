@@ -1,0 +1,16 @@
+{
+  world.step(app.getGraphics().getDeltaTime(),3,3);
+  world.setGravity(new Vector2(-app.getInput().getAccelerometerX(),-10));
+  GL10 gl=app.getGraphics().getGL10();
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  gl.glViewport(0,0,app.getGraphics().getWidth(),app.getGraphics().getHeight());
+  batch.begin();
+  batch.draw(backgroundTexture,0,app.getGraphics().getHeight(),backgroundTexture.getWidth(),backgroundTexture.getHeight(),48,0,48,80,Color.WHITE,false,false);
+  batch.end();
+  camera.setMatrices();
+  for (  Body link : links) {
+    chainColor.set(0.3f + Math.abs(link.getLinearVelocity().x / 30),0.2f - Math.abs(link.getLinearVelocity().x / 30),0.2f - Math.abs(link.getLinearVelocity().x / 30),0.0f);
+    renderBox(gl,link,0.2f,0.6f);
+  }
+  this.drawSolidCircle(gl,bulbBody.getPosition(),5.0f,new Vector2(bulbBody.getPosition().x,bulbBody.getPosition().y - 10),bulbColor);
+}
