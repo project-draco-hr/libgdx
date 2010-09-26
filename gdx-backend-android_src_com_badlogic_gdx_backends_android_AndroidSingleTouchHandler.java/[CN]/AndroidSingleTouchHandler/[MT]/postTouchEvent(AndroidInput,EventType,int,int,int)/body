@@ -1,0 +1,7 @@
+{
+synchronized (input.eventQueue) {
+    Event ev=input.freeEvents.get(input.freeEventIndex++);
+    ev.set(type,x,y,pointer,0,'\0');
+    input.eventQueue.add(ev);
+  }
+}

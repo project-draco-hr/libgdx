@@ -1,6 +1,7 @@
 {
-  copyJni(src,dst,numFloats,offset);
+  int result=copyJni(src,dst,numFloats,offset);
   dst.position(0);
   if (dst instanceof ByteBuffer)   dst.limit(numFloats << 2);
  else   if (dst instanceof FloatBuffer)   dst.limit(numFloats);
+  return 0;
 }
