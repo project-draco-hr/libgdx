@@ -11,7 +11,7 @@
     if (attribute.usage == Usage.Normal) {
       if (nors)       throw new IllegalArgumentException("two normal attributes were specified");
     }
-    if (attribute.usage == Usage.Color) {
+    if (attribute.usage == Usage.Color || attribute.usage == Usage.ColorPacked) {
       if (attribute.numComponents != 4)       throw new IllegalArgumentException("color attribute must have 4 components");
       if (cols)       throw new IllegalArgumentException("two color attributes were specified");
       cols=true;

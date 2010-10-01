@@ -1,0 +1,4 @@
+{
+  int color=((int)(255 * r) << 24) | ((int)(255 * g) << 16) | ((int)(255 * b) << 8)| ((int)(255 * a));
+  return Float.intBitsToFloat(color);
+}

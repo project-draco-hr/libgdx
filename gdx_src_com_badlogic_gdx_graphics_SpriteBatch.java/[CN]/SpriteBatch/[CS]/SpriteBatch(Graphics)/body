@@ -1,6 +1,6 @@
 {
   this.graphics=graphics;
-  this.mesh=new Mesh(graphics,true,false,false,MAX_VERTICES,0,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.Color,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  this.mesh=new Mesh(graphics,true,false,false,MAX_VERTICES,0,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
   viewMatrix.setToOrtho2D(0,0,graphics.getWidth(),graphics.getHeight());
   if (graphics.isGL20Available())   createShader();
 }
