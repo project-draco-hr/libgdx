@@ -10,8 +10,12 @@
     VertexAttribute attribute=attributes.get(i);
     shader.enableVertexAttribute(attribute.alias);
     int colorType=type;
-    if (attribute.usage == Usage.ColorPacked)     colorType=GL20.GL_UNSIGNED_BYTE;
-    shader.setVertexAttribute(attribute.alias,attribute.numComponents,colorType,false,attributes.vertexSize,attribute.offset);
+    boolean normalize=false;
+    if (attribute.usage == Usage.ColorPacked) {
+      colorType=GL20.GL_UNSIGNED_BYTE;
+      normalize=true;
+    }
+    shader.setVertexAttribute(attribute.alias,attribute.numComponents,colorType,normalize,attributes.vertexSize,attribute.offset);
   }
   if (maxIndices > 0) {
     gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,indexBufferObjectHandle);
