@@ -1,0 +1,15 @@
+{
+  int heightPitch=height + 1;
+  int widthPitch=width + 1;
+  int idx=0;
+  int hIdx=0;
+  int inc=vertexSize - 3;
+  for (int z=0; z < heightPitch; z++) {
+    for (int x=0; x < widthPitch; x++) {
+      vertices[idx++]=x;
+      vertices[idx++]=heightMap[hIdx++];
+      vertices[idx++]=z;
+      idx+=inc;
+    }
+  }
+}

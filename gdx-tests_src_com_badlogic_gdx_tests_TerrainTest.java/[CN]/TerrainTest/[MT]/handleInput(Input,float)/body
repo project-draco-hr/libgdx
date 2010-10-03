@@ -1,0 +1,15 @@
+{
+  if (input.isTouched()) {
+    Ray ray=camera.getPickRay(input.getX(),input.getY());
+    if (Intersector.intersectRayTriangles(ray,chunk.vertices,chunk.indices,4,intersection))     intersected=true;
+  }
+ else {
+    intersected=false;
+  }
+  if (input.isKeyPressed(Keys.KEYCODE_W))   camera.getPosition().z-=delta;
+  if (input.isKeyPressed(Keys.KEYCODE_S))   camera.getPosition().z+=delta;
+  if (input.isKeyPressed(Keys.KEYCODE_A))   camera.getPosition().x-=delta;
+  if (input.isKeyPressed(Keys.KEYCODE_D))   camera.getPosition().x+=delta;
+  if (input.isKeyPressed(Keys.KEYCODE_Q))   camera.getPosition().y+=delta;
+  if (input.isKeyPressed(Keys.KEYCODE_E))   camera.getPosition().y-=delta;
+}

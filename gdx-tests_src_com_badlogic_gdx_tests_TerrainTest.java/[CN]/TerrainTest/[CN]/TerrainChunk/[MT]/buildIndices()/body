@@ -1,0 +1,28 @@
+{
+  int idx=0;
+  short pitch=(short)(width + 1);
+  short i1=0;
+  short i2=1;
+  short i3=(short)(1 + pitch);
+  short i4=pitch;
+  short row=0;
+  for (int z=0; z < height; z++) {
+    for (int x=0; x < width; x++) {
+      indices[idx++]=i1;
+      indices[idx++]=i2;
+      indices[idx++]=i3;
+      indices[idx++]=i3;
+      indices[idx++]=i4;
+      indices[idx++]=i1;
+      i1++;
+      i2++;
+      i3++;
+      i4++;
+    }
+    row+=pitch;
+    i1=row;
+    i2=(short)(row + 1);
+    i3=(short)(i2 + pitch);
+    i4=(short)(row + pitch);
+  }
+}
