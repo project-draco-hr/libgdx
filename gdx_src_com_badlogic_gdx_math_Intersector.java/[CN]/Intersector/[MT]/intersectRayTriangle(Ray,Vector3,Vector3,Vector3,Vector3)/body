@@ -1,6 +1,5 @@
 {
-  Plane p=new Plane(t1,t2,t3);
-  Vector3 i=new Vector3();
+  p.set(t1,t2,t3);
   if (!intersectRayPlane(ray,p,i))   return false;
   v0.set(t3).sub(t1);
   v1.set(t2).sub(t1);
