@@ -1,7 +1,7 @@
 {
   if (chunk == null) {
     renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
-    chunk=new TerrainChunk(64,64,4);
+    chunk=new TerrainChunk(32,32,4);
     Random rand=new Random();
     int len=chunk.vertices.length;
     for (int i=3; i < len; i+=4)     chunk.vertices[i]=Color.toFloatBits(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255),255);

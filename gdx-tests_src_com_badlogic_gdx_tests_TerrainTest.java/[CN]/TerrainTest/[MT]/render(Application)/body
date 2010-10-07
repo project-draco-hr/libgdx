@@ -14,4 +14,8 @@
     renderer.end();
   }
   handleInput(app.getInput(),app.getGraphics().getDeltaTime());
+  if (System.nanoTime() - lastTime > 1000000000) {
+    app.log("TerrainTest","fps: " + app.getGraphics().getFramesPerSecond());
+    lastTime=System.nanoTime();
+  }
 }
