@@ -1,5 +1,5 @@
 {
-  GL11 gl=graphics.getGL11();
+  GL11 gl=Gdx.graphics.getGL11();
   gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
   int numAttributes=attributes.size();
   int type=useFixedPoint ? GL11.GL_FIXED : GL11.GL_FLOAT;

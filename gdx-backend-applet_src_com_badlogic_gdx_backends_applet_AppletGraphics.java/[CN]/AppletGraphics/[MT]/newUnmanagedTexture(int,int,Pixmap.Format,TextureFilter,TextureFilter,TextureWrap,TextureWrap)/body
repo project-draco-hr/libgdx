@@ -1,0 +1,4 @@
+{
+  if (format == Format.Alpha)   return new AppletTexture(width,height,BufferedImage.TYPE_BYTE_GRAY,minFilter,magFilter,uWrap,vWrap,false);
+ else   return new AppletTexture(width,height,BufferedImage.TYPE_4BYTE_ABGR,minFilter,magFilter,uWrap,vWrap,false);
+}

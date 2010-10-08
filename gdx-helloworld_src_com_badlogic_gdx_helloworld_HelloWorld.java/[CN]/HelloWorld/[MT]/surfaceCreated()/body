@@ -1,0 +1,7 @@
+{
+  if (!initialized) {
+    font=Gdx.graphics.newFont("Arial",32,FontStyle.Plain);
+    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    spriteBatch=new SpriteBatch();
+  }
+}

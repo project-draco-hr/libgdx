@@ -4,6 +4,6 @@
     return new JoglPixmap(img);
   }
  catch (  Exception ex) {
-    return null;
+    throw new GdxRuntimeException("Couldn't load Pixmap from InputStream",ex);
   }
 }

@@ -4,10 +4,10 @@
   mean.addValue(deltaTime);
   if (input != null)   input.update();
 synchronized (this) {
-    if (listener != null)     listener.render(app);
+    if (listener != null)     listener.render();
   }
   if (dispose) {
-    if (listener != null)     listener.dispose(app);
+    if (listener != null)     listener.dispose();
     listener=null;
     dispose=false;
   }

@@ -1,6 +1,11 @@
 {
   super.onResume();
-  if (listener != null)   listener.resume(this);
+  Gdx.app=this;
+  Gdx.input=this.getInput();
+  Gdx.audio=this.getAudio();
+  Gdx.files=this.getFiles();
+  Gdx.graphics=this.getGraphics();
+  if (listener != null)   listener.resume();
   if (graphics != null && graphics.view != null)   graphics.view.onResume();
   if (audio != null)   audio.resume();
 }

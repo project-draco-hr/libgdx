@@ -1,5 +1,5 @@
 {
   this.width=width;
   this.height=height;
-  if (listener != null)   listener.surfaceChanged(app,width,height);
+  if (listener != null)   listener.surfaceChanged(width,height);
 }

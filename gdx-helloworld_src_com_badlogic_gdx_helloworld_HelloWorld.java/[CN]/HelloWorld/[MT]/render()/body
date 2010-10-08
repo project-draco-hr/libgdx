@@ -1,0 +1,12 @@
+{
+  int centerX=Gdx.graphics.getWidth() / 2;
+  int centerY=Gdx.graphics.getHeight() / 2;
+  Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
+  if (textPosition.x < 0 || textPosition.x > Gdx.graphics.getWidth())   textDirection.x=-textDirection.x;
+  if (textPosition.y < 0 || textPosition.y > Gdx.graphics.getHeight())   textDirection.y=-textDirection.y;
+  textPosition.add(textDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(60));
+  spriteBatch.begin();
+  spriteBatch.draw(texture,centerX - texture.getWidth() / 2,centerY + texture.getHeight() / 2,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE);
+  spriteBatch.drawText(font,"Hello World!",(int)textPosition.x,(int)textPosition.y,Color.RED);
+  spriteBatch.end();
+}

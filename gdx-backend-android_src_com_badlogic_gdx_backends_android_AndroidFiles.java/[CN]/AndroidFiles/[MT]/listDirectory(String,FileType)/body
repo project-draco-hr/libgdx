@@ -4,9 +4,15 @@
       return assets.list(directory);
     }
  catch (    Exception ex) {
-      return null;
+      throw new GdxRuntimeException("Couldn't open directory '" + directory + "'");
     }
   }
-  if (type == FileType.External)   return new File(sdcard + directory).list();
- else   return new File(directory).list();
+  if (type == FileType.External) {
+    if (new File(sdcard + directory).exists() == false)     throw new GdxRuntimeException("Couldn't open directory '" + directory + "'");
+ else     return new File(sdcard + directory).list();
+  }
+ else {
+    if (new File(directory).exists() == false)     throw new GdxRuntimeException("Couldn't open directory '" + directory + "'");
+ else     return new File(directory).list();
+  }
 }

@@ -1,0 +1,12 @@
+{
+  Gdx.input.addInputListener(this);
+  if (gameLoop == null) {
+    gameLoop=new PauseableThread(new Runnable(){
+      @Override public void run(){
+        System.out.println("working my ass off! " + System.nanoTime());
+      }
+    }
+);
+    gameLoop.start();
+  }
+}

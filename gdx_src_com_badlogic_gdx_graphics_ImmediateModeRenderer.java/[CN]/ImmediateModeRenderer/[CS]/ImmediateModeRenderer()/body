@@ -1,0 +1,11 @@
+{
+  if (Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("ImmediateModeRenderer can only be used with OpenGL ES 1.0/1.1");
+  this.positions=new float[3 * MAX_VERTICES];
+  this.positionsBuffer=allocateBuffer(3 * MAX_VERTICES);
+  this.colors=new float[4 * MAX_VERTICES];
+  this.colorsBuffer=allocateBuffer(4 * MAX_VERTICES);
+  this.normals=new float[3 * MAX_VERTICES];
+  this.normalsBuffer=allocateBuffer(3 * MAX_VERTICES);
+  this.texCoords=new float[2 * MAX_VERTICES];
+  this.texCoordsBuffer=allocateBuffer(2 * MAX_VERTICES);
+}

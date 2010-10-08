@@ -1,5 +1,6 @@
 {
-  GL20 gl=graphics.getGL20();
+  colorTexture=Gdx.graphics.newUnmanagedTexture(width,height,format,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  GL20 gl=Gdx.graphics.getGL20();
   ByteBuffer tmp=ByteBuffer.allocateDirect(4);
   tmp.order(ByteOrder.nativeOrder());
   IntBuffer handle=tmp.asIntBuffer();

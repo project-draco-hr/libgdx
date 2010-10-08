@@ -4,7 +4,6 @@
     return sound;
   }
  catch (  Exception e) {
-    e.printStackTrace();
-    return null;
+    throw new GdxRuntimeException("Couldn't create Sound instance from file '" + file + "'",e);
   }
 }

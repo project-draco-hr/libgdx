@@ -1,4 +1,5 @@
 {
+  GL20 gl=Gdx.graphics.getGL20();
   int program=gl.glCreateProgram();
   if (program == 0)   return -1;
   gl.glAttachShader(program,vertexShaderHandle);

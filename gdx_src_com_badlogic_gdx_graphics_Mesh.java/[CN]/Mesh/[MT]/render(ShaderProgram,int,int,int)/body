@@ -1,7 +1,7 @@
 {
-  if (!graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
+  if (!Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
   checkManagedAndDirty();
-  GL20 gl=graphics.getGL20();
+  GL20 gl=Gdx.graphics.getGL20();
   gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
   int numAttributes=attributes.size();
   int type=useFixedPoint ? GL11.GL_FIXED : GL11.GL_FLOAT;

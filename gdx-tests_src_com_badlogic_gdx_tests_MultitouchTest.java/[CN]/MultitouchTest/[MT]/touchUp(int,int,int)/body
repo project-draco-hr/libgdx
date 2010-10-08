@@ -1,4 +1,4 @@
 {
-  app.log("Multitouch","up: " + pointer);
+  Gdx.app.log("Multitouch","up: " + pointer);
   return false;
 }

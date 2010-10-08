@@ -8,8 +8,7 @@
       return sound;
     }
  catch (    IOException e) {
-      e.printStackTrace();
-      return null;
+      throw new GdxRuntimeException("Couldn't load Sound from file '" + file + "'",e);
     }
   }
  else {
@@ -17,8 +16,7 @@
       return new AndroidSound(soundPool,manager,soundPool.load(aHandle.getFileName(),1));
     }
  catch (    Exception e) {
-      e.printStackTrace();
-      return null;
+      throw new GdxRuntimeException("Couldn't load Sound from file '" + file + "'",e);
     }
   }
 }

@@ -1,4 +1,4 @@
 {
-  app.log("Input Test","touch down: " + x + ", "+ y);
+  Gdx.app.log("Input Test","touch down: " + x + ", "+ y);
   return false;
 }

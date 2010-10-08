@@ -1,5 +1,5 @@
 {
-  if (graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 2.0");
+  if (Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 2.0");
   checkManagedAndDirty();
   if (vertexBufferObjectHandle != 0)   renderVBO(primitiveType,offset,count);
  else   renderVA(primitiveType,offset,count);

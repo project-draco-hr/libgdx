@@ -1,0 +1,4 @@
+{
+  Gdx.app.log("Test","Thread=" + Thread.currentThread().getId() + ", renderer surface created: "+ Gdx.graphics.getWidth()+ "x"+ Gdx.graphics.getHeight());
+  System.out.println(Gdx.graphics.getGL10().glGetString(GL10.GL_VERSION));
+}

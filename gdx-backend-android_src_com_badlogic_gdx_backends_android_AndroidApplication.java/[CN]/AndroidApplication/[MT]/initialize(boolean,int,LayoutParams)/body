@@ -4,4 +4,9 @@
   graphics.setInput(input);
   audio=new AndroidAudio(this);
   resources=new AndroidFiles(this.getAssets());
+  Gdx.app=this;
+  Gdx.input=this.getInput();
+  Gdx.audio=this.getAudio();
+  Gdx.files=this.getFiles();
+  Gdx.graphics=this.getGraphics();
 }

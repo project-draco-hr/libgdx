@@ -1,5 +1,5 @@
 {
   super.onCreate(bundle);
-  initialize(true);
+  initialize(false);
   getGraphics().setRenderListener(this);
 }

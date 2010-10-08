@@ -6,6 +6,6 @@
     line.start();
   }
  catch (  Exception ex) {
-    throw new IllegalStateException("Couldn't create AudioRecorder",ex);
+    throw new GdxRuntimeException("Couldn't create AudioRecorder",ex);
   }
 }

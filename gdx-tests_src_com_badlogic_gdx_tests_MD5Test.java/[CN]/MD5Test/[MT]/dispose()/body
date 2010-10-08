@@ -1,0 +1,10 @@
+{
+  batch.dispose();
+  renderer.dispose();
+  font.dispose();
+  batch=null;
+  renderer=null;
+  font=null;
+  System.gc();
+  Gdx.input.removeInputListener(this);
+}

@@ -1,0 +1,18 @@
+{
+  this.managed=true;
+  this.isStatic=isStatic;
+  this.useFixedPoint=useFixedPoint;
+  this.maxVertices=maxVertices;
+  this.maxIndices=maxIndices;
+  this.attributes=new VertexAttributes(attributes);
+  ByteBuffer buffer=ByteBuffer.allocateDirect(maxVertices * this.attributes.vertexSize);
+  buffer.order(ByteOrder.nativeOrder());
+  vertices=buffer;
+  verticesFixed=buffer.asIntBuffer();
+  verticesFloat=buffer.asFloatBuffer();
+  buffer=ByteBuffer.allocateDirect(maxIndices * 2);
+  buffer.order(ByteOrder.nativeOrder());
+  indices=buffer.asShortBuffer();
+  bufferCreatedFirstTime=false;
+  if (managed)   meshes.add(this);
+}

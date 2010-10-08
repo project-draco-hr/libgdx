@@ -1,4 +1,4 @@
 {
-  app.log("Input Test","touch dragged: " + x + ", "+ y);
+  Gdx.app.log("Input Test","touch dragged: " + x + ", "+ y);
   return false;
 }

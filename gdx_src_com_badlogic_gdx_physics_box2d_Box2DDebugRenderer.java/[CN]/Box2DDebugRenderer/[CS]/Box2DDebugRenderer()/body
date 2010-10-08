@@ -1,0 +1,6 @@
+{
+  renderer=new ImmediateModeRenderer();
+  batch=new SpriteBatch();
+  font=Gdx.graphics.newFont("Arial",12,FontStyle.Plain);
+  for (int i=0; i < vertices.length; i++)   vertices[i]=new Vector2();
+}

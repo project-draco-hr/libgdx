@@ -1,3 +1,4 @@
 {
+  if (!isPowerOfTwo(width) || !isPowerOfTwo(height))   throw new GdxRuntimeException("Dimensions have to be a power of two");
   return new AndroidPixmap(width,height,format);
 }

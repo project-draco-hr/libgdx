@@ -1,0 +1,7 @@
+{
+  GL10 gl=Gdx.graphics.getGL10();
+  gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  float incX=2.0f / samples.length;
+  float x=-1;
+}

@@ -1,9 +1,0 @@
-{
-  app.log("Multitouch","multitouch supported: " + app.getInput().supportsMultitouch());
-  if (app != null)   app.getInput().addInputListener(this);
-  this.app=app;
-  renderer=new ImmediateModeRenderer(app.getGraphics().getGL10());
-  camera=new OrthographicCamera(app.getGraphics());
-  camera.setViewport(app.getGraphics().getWidth(),app.getGraphics().getHeight());
-  camera.getPosition().set(app.getGraphics().getWidth() / 2.0f,app.getGraphics().getHeight() / 2.0f,0);
-}

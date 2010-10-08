@@ -1,6 +1,0 @@
-{
-  this.graphics=graphics;
-  colorTexture=graphics.newTexture(width,height,format,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge,managed);
-  build();
-  if (managed)   buffers.add(this);
-}

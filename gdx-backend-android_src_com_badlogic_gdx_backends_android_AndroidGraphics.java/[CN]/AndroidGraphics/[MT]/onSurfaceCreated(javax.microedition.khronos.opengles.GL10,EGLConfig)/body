@@ -4,10 +4,11 @@
   AndroidTexture.invalidateAllTextures();
   ShaderProgram.invalidateAllShaderPrograms();
   FrameBuffer.invalidateAllFrameBuffers();
+  Font.invalidateAllFonts();
   Display display=app.getWindowManager().getDefaultDisplay();
   this.width=display.getWidth();
   this.height=display.getHeight();
-  if (listener != null)   listener.surfaceCreated(app);
+  if (listener != null)   listener.surfaceCreated();
   mean=new WindowedMean(5);
   this.lastFrameTime=System.nanoTime();
   gl.glViewport(0,0,this.width,this.height);

@@ -1,0 +1,7 @@
+{
+  if (spriteBatch == null) {
+    im=new ImmediateModeRenderer();
+    spriteBatch=new SpriteBatch();
+    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  }
+}

@@ -1,6 +1,6 @@
 {
   dirty=false;
-  if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
-  if (graphics.isGL20Available())   fillBuffers(graphics.getGL20());
- else   fillBuffers(graphics.getGL11());
+  if (Gdx.graphics.isGL11Available() == false && Gdx.graphics.isGL20Available() == false)   return;
+  if (Gdx.graphics.isGL20Available())   fillBuffers(Gdx.graphics.getGL20());
+ else   fillBuffers(Gdx.graphics.getGL11());
 }

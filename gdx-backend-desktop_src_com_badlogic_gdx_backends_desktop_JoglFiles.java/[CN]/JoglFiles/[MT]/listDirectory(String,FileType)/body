@@ -2,5 +2,6 @@
   File file=null;
   if (type == FileType.Absolut || type == FileType.Internal)   file=new File(directory);
  else   file=new File(this.externalPath + directory);
+  if (file.exists() == false)   throw new GdxRuntimeException("Directory '" + directory + "' does not exist");
   return file.list();
 }

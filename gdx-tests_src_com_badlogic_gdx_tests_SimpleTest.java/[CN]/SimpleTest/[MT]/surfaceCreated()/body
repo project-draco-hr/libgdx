@@ -1,0 +1,5 @@
+{
+  Gdx.input.addInputListener(this);
+  Gdx.app.setApplicationListener(this);
+  Gdx.app.log("Simple Test","Thread=" + Thread.currentThread().getId() + ", surface created");
+}

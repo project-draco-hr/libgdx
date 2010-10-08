@@ -1,0 +1,4 @@
+{
+  if (gl10 != null)   return new AndroidTexture(this,gl10,(Bitmap)null,minFilter,magFilter,uWrap,vWrap,true,(AndroidFileHandle)file);
+ else   return new AndroidTexture(this,gl20,(Bitmap)null,minFilter,magFilter,uWrap,vWrap,true,(AndroidFileHandle)file);
+}

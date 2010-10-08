@@ -1,5 +1,6 @@
 {
   Bitmap bitmap=BitmapFactory.decodeStream(in,null,null);
-  if (bitmap != null)   return new AndroidPixmap(bitmap);
- else   return null;
+  if (bitmap == null)   throw new GdxRuntimeException("Couldn't load Pixmap from InputStream");
+  if (!isPowerOfTwo(bitmap.getWidth()) || !isPowerOfTwo(bitmap.getHeight()))   throw new GdxRuntimeException("Dimensions have to be a power of two");
+  return new AndroidPixmap(bitmap);
 }

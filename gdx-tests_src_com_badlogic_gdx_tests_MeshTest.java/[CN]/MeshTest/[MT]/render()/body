@@ -1,0 +1,6 @@
+{
+  Gdx.graphics.getGL10().glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  Gdx.graphics.getGL10().glEnable(GL10.GL_TEXTURE_2D);
+  texture.bind();
+  mesh.render(GL10.GL_TRIANGLES,0,3);
+}

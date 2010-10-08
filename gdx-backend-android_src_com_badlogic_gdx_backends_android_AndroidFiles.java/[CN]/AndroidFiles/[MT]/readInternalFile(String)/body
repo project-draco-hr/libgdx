@@ -4,6 +4,7 @@
     in=assets.open(fileName);
   }
  catch (  Exception ex) {
+    throw new GdxRuntimeException("Couldn't load file '" + fileName + "'",ex);
   }
   return in;
 }

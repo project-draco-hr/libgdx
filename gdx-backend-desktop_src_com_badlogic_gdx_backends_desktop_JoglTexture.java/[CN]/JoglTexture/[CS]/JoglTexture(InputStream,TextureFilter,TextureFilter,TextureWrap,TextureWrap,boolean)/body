@@ -7,7 +7,7 @@
     texture=com.sun.opengl.util.texture.TextureIO.newTexture(image,minFilter == TextureFilter.MipMap ? true : false);
   }
  catch (  Exception ex) {
-    throw new RuntimeException(ex);
+    throw new GdxRuntimeException("Couldn load Texture",ex);
   }
   GL gl=GLContext.getCurrent().getGL();
   bind();

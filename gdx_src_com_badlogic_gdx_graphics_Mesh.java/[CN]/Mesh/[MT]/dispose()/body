@@ -1,6 +1,6 @@
 {
   meshes.remove(this);
-  if (graphics.isGL11Available() == false && graphics.isGL20Available() == false)   return;
-  if (graphics.isGL20Available())   dispose(graphics.getGL20());
- else   dispose(graphics.getGL11());
+  if (Gdx.graphics.isGL11Available() == false && Gdx.graphics.isGL20Available() == false)   return;
+  if (Gdx.graphics.isGL20Available())   dispose(Gdx.graphics.getGL20());
+ else   dispose(Gdx.graphics.getGL11());
 }

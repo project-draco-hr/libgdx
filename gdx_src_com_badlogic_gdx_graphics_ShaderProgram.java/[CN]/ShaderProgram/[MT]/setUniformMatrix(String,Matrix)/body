@@ -1,4 +1,5 @@
 {
+  GL20 gl=Gdx.graphics.getGL20();
   checkManaged();
   int location=fetchUniformLocation(name);
   this.matrix.put(matrix.val);

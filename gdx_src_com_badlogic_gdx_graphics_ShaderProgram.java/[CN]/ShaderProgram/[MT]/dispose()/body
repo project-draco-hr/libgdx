@@ -1,4 +1,5 @@
 {
+  GL20 gl=Gdx.graphics.getGL20();
   gl.glDeleteShader(vertexShaderHandle);
   gl.glDeleteShader(fragmentShaderHandle);
   gl.glDeleteProgram(program);

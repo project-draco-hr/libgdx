@@ -1,25 +1,10 @@
 {
+  if (isManaged)   throw new GdxRuntimeException("Can't draw to a managed texture!");
   if (isManaged && invalidated)   rebuild();
   if (gl10 != null)   gl10.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
  else   gl20.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
   Bitmap bitmap=(Bitmap)bmp.getNativePixmap();
   if (bitmap.getConfig() != format)   throw new IllegalArgumentException("can't draw bitmap with different format: " + bitmap.getConfig() + " != "+ format);
-  if (isManaged) {
-    Canvas canvas=new Canvas(this.bitmap);
-    Rect src=new Rect();
-    RectF dst=new RectF();
-    dst.set(x,y,x + bitmap.getWidth(),y + bitmap.getHeight());
-    src.set(0,0,bitmap.getWidth(),bitmap.getHeight());
-    canvas.drawBitmap(bitmap,src,dst,null);
-    try {
-      FileOutputStream out=new FileOutputStream("/sdcard/texture.png");
-      bitmap.compress(CompressFormat.PNG,100,out);
-      out.close();
-    }
- catch (    Exception ex) {
-      System.out.println("no");
-    }
-  }
   int level=0;
   int height=bitmap.getHeight();
   int width=bitmap.getWidth();

@@ -1,0 +1,6 @@
+{
+  if (font == null) {
+    spriteBatch=new SpriteBatch();
+    font=Gdx.graphics.newFont("Arial",32,FontStyle.Italic);
+  }
+}

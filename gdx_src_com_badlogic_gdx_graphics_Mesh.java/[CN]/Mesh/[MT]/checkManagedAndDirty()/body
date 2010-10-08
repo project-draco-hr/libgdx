@@ -5,11 +5,11 @@
   }
   if (vertexBufferObjectHandle == 0)   return;
   if (managed && invalidated || !bufferCreatedFirstTime) {
-    if (graphics.isGL11Available()) {
+    if (Gdx.graphics.isGL11Available()) {
       createBuffers();
       fillBuffers();
     }
-    if (graphics.isGL20Available()) {
+    if (Gdx.graphics.isGL20Available()) {
       createBuffers();
       fillBuffers();
     }

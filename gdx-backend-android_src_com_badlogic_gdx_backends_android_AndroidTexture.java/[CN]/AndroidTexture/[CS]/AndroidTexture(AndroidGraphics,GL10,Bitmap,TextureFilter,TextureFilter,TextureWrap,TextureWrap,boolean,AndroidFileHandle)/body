@@ -1,0 +1,24 @@
+{
+  this.file=file;
+  this.isManaged=managed;
+  this.bitmap=image;
+  this.minFilter=minFilter;
+  this.magFilter=maxFilter;
+  this.uWrap=uWrap;
+  this.vWrap=vWrap;
+  if (image != null) {
+    this.width=image.getWidth();
+    this.height=image.getHeight();
+    this.texWidth=image.getWidth();
+    this.texHeight=image.getHeight();
+    this.format=image.getConfig();
+  }
+  this.gl10=gl;
+  if (minFilter == TextureFilter.MipMap)   isMipMap=true;
+ else   isMipMap=false;
+  createTexture(gl);
+  buildMipmap(gl);
+  gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
+  if (bitmap != null)   bitmap=null;
+  if (isManaged)   textures.add(this);
+}

@@ -1,8 +1,0 @@
-{
-  if (this.app == null) {
-    this.app=app;
-    Box2DTest test=tests[testIndex];
-    test.surfaceCreated(app);
-    app.getInput().addInputListener(this);
-  }
-}

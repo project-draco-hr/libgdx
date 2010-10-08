@@ -1,9 +1,0 @@
-{
-  o.set(p);
-  if (p.x < b.min.x)   o.x=b.min.x;
-  if (p.x > b.max.x)   o.x=b.max.x;
-  if (p.y < b.min.y)   o.y=b.min.y;
-  if (p.y > b.max.y)   o.y=b.max.y;
-  if (p.z < b.min.z)   o.z=b.min.z;
-  if (p.z > b.max.z)   o.z=b.max.z;
-}

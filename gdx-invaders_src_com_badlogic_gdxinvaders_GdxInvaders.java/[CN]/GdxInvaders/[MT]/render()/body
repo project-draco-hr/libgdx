@@ -1,0 +1,11 @@
+{
+  Application app=Gdx.app;
+  screen.update(app);
+  screen.render(app);
+  if (screen.isDone()) {
+    screen.dispose();
+    if (screen instanceof MainMenu)     screen=new GameLoop(app);
+ else     if (screen instanceof GameLoop)     screen=new GameOver(app);
+ else     if (screen instanceof GameOver)     screen=new MainMenu(app);
+  }
+}

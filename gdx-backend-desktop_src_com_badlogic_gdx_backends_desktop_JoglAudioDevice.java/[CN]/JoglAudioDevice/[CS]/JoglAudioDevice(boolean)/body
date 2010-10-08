@@ -7,6 +7,6 @@
     line.start();
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    throw new GdxRuntimeException("Couldn't createa AudioDevice",e);
   }
 }

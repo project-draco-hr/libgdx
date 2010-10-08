@@ -1,0 +1,9 @@
+{
+  if (font != null) {
+    font.dispose();
+    batch.dispose();
+  }
+  font=Gdx.app.getGraphics().newFont("Arial",12,FontStyle.Plain);
+  batch=new SpriteBatch();
+  renderer=new ImmediateModeRenderer();
+}

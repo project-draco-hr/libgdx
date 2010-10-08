@@ -5,11 +5,11 @@
   mean.addValue(deltaTime);
 synchronized (this) {
     for (    RenderListener listener : setupListeners) {
-      listener.surfaceCreated(application);
-      listener.surfaceChanged(application,this.getWidth(),this.getHeight());
+      listener.surfaceCreated();
+      listener.surfaceChanged(this.getWidth(),this.getHeight());
     }
     listeners.addAll(setupListeners);
     setupListeners.clear();
-    for (    RenderListener listener : listeners)     listener.render(application);
+    for (    RenderListener listener : listeners)     listener.render();
   }
 }

@@ -1,0 +1,14 @@
+{
+  super();
+  try {
+    java.awt.Font baseFont=java.awt.Font.createFont(java.awt.Font.PLAIN,in);
+    font=baseFont.deriveFont(getJavaFontStyle(style),size);
+  }
+ catch (  Exception ex) {
+    font=new java.awt.Font("Arial",getJavaFontStyle(style),size);
+  }
+  Graphics g=tmpBitmap.getGraphics();
+  g.setFont(font);
+  metrics=g.getFontMetrics();
+  g.dispose();
+}

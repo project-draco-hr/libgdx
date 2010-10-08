@@ -1,4 +1,4 @@
 {
-  viewMatrix.setToOrtho2D(0,0,graphics.getWidth(),graphics.getHeight());
+  viewMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   begin(viewMatrix,transform);
 }

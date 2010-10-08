@@ -1,4 +1,4 @@
 {
-  app.log("Multitouch","drag: " + pointer);
+  Gdx.app.log("Multitouch","drag: " + pointer);
   return false;
 }

@@ -12,8 +12,7 @@
       return music;
     }
  catch (    Exception ex) {
-      ex.printStackTrace();
-      return null;
+      throw new GdxRuntimeException("Couldn't load Music from file '" + file + "'",ex);
     }
   }
  else {
@@ -25,8 +24,7 @@
       return music;
     }
  catch (    Exception ex) {
-      ex.printStackTrace();
-      return null;
+      throw new GdxRuntimeException("Couldn't load music from file '" + file + "'",ex);
     }
   }
 }

@@ -1,6 +1,0 @@
-{
-  Vector3 ab=r.direction.tmp();
-  float denom=ab.dot(p.getNormal());
-  float t=-(r.origin.dot(p.getNormal()) + p.getD()) / denom;
-  return t;
-}

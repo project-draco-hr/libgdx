@@ -1,0 +1,10 @@
+{
+  if (!isPowerOfTwo(width) || !isPowerOfTwo(height))   throw new GdxRuntimeException("Dimensions have to be a power of two");
+  Bitmap.Config config=AndroidPixmap.getInternalFormat(format);
+  Bitmap bitmap=Bitmap.createBitmap(width,height,config);
+  Texture texture=null;
+  if (gl10 != null)   texture=new AndroidTexture(this,gl10,bitmap,minFilter,magFilter,uWrap,vWrap,false,null);
+ else   texture=new AndroidTexture(this,gl20,bitmap,minFilter,magFilter,uWrap,vWrap,false,null);
+  bitmap.recycle();
+  return texture;
+}

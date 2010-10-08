@@ -9,12 +9,13 @@
       in.close();
     }
  catch (    IOException e) {
-      return null;
+      throw new GdxRuntimeException("Couldn't open Pixmap from file '" + file + "'",e);
     }
   }
  else {
     bitmap=BitmapFactory.decodeFile(aHandle.getFileName());
   }
-  if (bitmap != null)   return new AndroidPixmap(bitmap);
- else   return null;
+  if (bitmap == null)   throw new GdxRuntimeException("Couldn't open Pixmap from file '" + file + "'");
+  if (!isPowerOfTwo(bitmap.getWidth()) || !isPowerOfTwo(bitmap.getHeight()))   throw new GdxRuntimeException("Dimensions have to be a power of two");
+  return new AndroidPixmap(bitmap);
 }
