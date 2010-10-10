@@ -6,24 +6,34 @@
   if (Gdx.graphics.isGL20Available()) {
     if (useTextBlend) {
       Gdx.graphics.getGL20().glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
-      if (blendingDisabled)       Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+      Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
     }
- else     Gdx.graphics.getGL20().glBlendFunc(blendSrcFunc,blendDstFunc);
+ else {
+      if (blendingDisabled) {
+        Gdx.graphics.getGL20().glDisable(GL20.GL_BLEND);
+      }
+ else {
+        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+        Gdx.graphics.getGL20().glBlendFunc(blendSrcFunc,blendDstFunc);
+      }
+    }
     mesh.render(shader,GL10.GL_TRIANGLES);
-    if (useTextBlend && blendingDisabled) {
-      Gdx.graphics.getGL20().glDisable(GL20.GL_BLEND);
-    }
   }
  else {
     if (useTextBlend) {
-      Gdx.graphics.getGL10().glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
-      if (blendingDisabled)       Gdx.graphics.getGL10().glEnable(GL20.GL_BLEND);
+      Gdx.graphics.getGL10().glBlendFunc(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
+      Gdx.graphics.getGL10().glEnable(GL10.GL_BLEND);
     }
- else     Gdx.graphics.getGL10().glBlendFunc(blendSrcFunc,blendDstFunc);
+ else {
+      if (blendingDisabled) {
+        Gdx.graphics.getGL10().glDisable(GL10.GL_BLEND);
+      }
+ else {
+        Gdx.graphics.getGL10().glEnable(GL10.GL_BLEND);
+        Gdx.graphics.getGL10().glBlendFunc(blendSrcFunc,blendDstFunc);
+      }
+    }
     mesh.render(GL10.GL_TRIANGLES);
-    if (useTextBlend && blendingDisabled) {
-      Gdx.graphics.getGL10().glDisable(GL20.GL_BLEND);
-    }
   }
   idx=0;
 }
