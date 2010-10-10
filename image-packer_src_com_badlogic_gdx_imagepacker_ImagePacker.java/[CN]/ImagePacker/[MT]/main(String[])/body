@@ -1,0 +1,13 @@
+{
+  Random rand=new Random(0);
+  ImagePacker packer=new ImagePacker(512,512,1,true);
+  BufferedImage[] images={ImageIO.read(new File("test.png"))};
+  Arrays.sort(images,new Comparator<BufferedImage>(){
+    @Override public int compare(    BufferedImage o1,    BufferedImage o2){
+      return o2.getWidth() * o2.getHeight() - o1.getWidth() * o1.getHeight();
+    }
+  }
+);
+  for (int i=0; i < images.length; i++)   packer.insertImage("" + i,images[i]);
+  ImageIO.write(packer.getImage(),"png",new File("packed.png"));
+}
