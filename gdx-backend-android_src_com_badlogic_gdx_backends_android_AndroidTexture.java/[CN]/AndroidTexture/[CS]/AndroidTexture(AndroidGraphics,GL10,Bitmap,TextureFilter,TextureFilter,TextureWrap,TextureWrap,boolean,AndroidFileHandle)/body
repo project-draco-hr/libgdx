@@ -7,8 +7,6 @@
   this.uWrap=uWrap;
   this.vWrap=vWrap;
   if (image != null) {
-    this.width=image.getWidth();
-    this.height=image.getHeight();
     this.texWidth=image.getWidth();
     this.texHeight=image.getHeight();
     this.format=image.getConfig();

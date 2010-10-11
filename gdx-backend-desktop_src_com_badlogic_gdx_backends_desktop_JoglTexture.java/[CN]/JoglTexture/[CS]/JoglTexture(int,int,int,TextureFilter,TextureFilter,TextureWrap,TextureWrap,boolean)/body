@@ -1,8 +1,6 @@
 {
   this.isManaged=managed;
   BufferedImage image=new BufferedImage(width,height,format);
-  this.width=image.getWidth();
-  this.height=image.getHeight();
   texture=com.sun.opengl.util.texture.TextureIO.newTexture(image,minFilter == TextureFilter.MipMap ? true : false);
   GL gl=GLContext.getCurrent().getGL();
   bind();
