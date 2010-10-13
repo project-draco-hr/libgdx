@@ -1,0 +1,13 @@
+{
+  int idx=0;
+  for (int y=0; y <= HEIGHT; y++) {
+    for (int x=0; x <= WIDTH; x++) {
+      vertices[idx++]=x;
+      vertices[idx++]=y;
+      vertices[idx++]=curr[x][y];
+      vertices[idx++]=x / (float)WIDTH;
+      vertices[idx++]=y / (float)HEIGHT;
+    }
+  }
+  mesh.setVertices(vertices);
+}

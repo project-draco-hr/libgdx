@@ -1,0 +1,18 @@
+{
+  short[] indices=new short[WIDTH * HEIGHT * 6];
+  int idx=0;
+  short vidx=0;
+  for (int y=0; y < HEIGHT; y++) {
+    vidx=(short)(y * (WIDTH + 1));
+    for (int x=0; x < WIDTH; x++) {
+      indices[idx++]=vidx;
+      indices[idx++]=(short)(vidx + 1);
+      indices[idx++]=(short)(vidx + WIDTH + 1);
+      indices[idx++]=(short)(vidx + 1);
+      indices[idx++]=(short)(vidx + WIDTH + 2);
+      indices[idx++]=(short)(vidx + WIDTH + 1);
+      vidx++;
+    }
+  }
+  mesh.setIndices(indices);
+}

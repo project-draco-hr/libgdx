@@ -1,0 +1,8 @@
+{
+  for (int y=1; y < HEIGHT; y++) {
+    for (int x=1; x < WIDTH; x++) {
+      curr[x][y]=(last[x - 1][y] + last[x + 1][y] + last[x][y + 1]+ last[x][y - 1]) / 4 - curr[x][y];
+      curr[x][y]*=DAMPING;
+    }
+  }
+}
