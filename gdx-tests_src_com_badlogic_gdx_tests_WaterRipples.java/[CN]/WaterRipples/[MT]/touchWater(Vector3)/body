@@ -1,0 +1,10 @@
+{
+  for (int y=Math.max(0,(int)point.y - RADIUS); y < Math.min(HEIGHT,(int)point.y + RADIUS); y++) {
+    for (int x=Math.max(0,(int)point.x - RADIUS); x < Math.min(WIDTH,(int)point.x + RADIUS); x++) {
+      float val=curr[x][y] + DISPLACEMENT * Math.max(0,(float)Math.cos(Math.PI / 2 * Math.sqrt(point.dst2(x,y,0)) / RADIUS));
+      if (val < DISPLACEMENT)       val=DISPLACEMENT;
+ else       if (val > -DISPLACEMENT)       val=-DISPLACEMENT;
+      curr[x][y]=val;
+    }
+  }
+}

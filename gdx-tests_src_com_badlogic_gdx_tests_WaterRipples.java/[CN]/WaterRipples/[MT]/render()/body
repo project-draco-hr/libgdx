@@ -8,35 +8,26 @@
   gl.glMatrixMode(GL10.GL_MODELVIEW);
   accum+=Gdx.graphics.getDeltaTime();
   while (accum > TICK) {
+    for (int i=0; i < 5; i++) {
+      if (Gdx.input.isTouched(i)) {
+        Ray ray=camera.getPickRay(Gdx.input.getX(i),(int)(Gdx.input.getY(i) / (float)Gdx.graphics.getHeight() * Gdx.graphics.getWidth()));
+        Intersector.intersectRayPlane(ray,plane,point);
+        touchWater(point);
+      }
+    }
     updateWater();
     float[][] tmp=curr;
     curr=last;
     last=tmp;
     accum-=TICK;
   }
-  updateVertices();
+  float alpha=accum / TICK;
+  interpolateWater(alpha);
+  updateVertices(intp);
   gl.glEnable(GL10.GL_TEXTURE_2D);
   texture.bind();
   mesh.render(GL10.GL_TRIANGLES);
-  for (int i=0; i < 4; i++) {
-    if (Gdx.input.isTouched(i)) {
-      Ray ray=camera.getPickRay(Gdx.input.getX(i),(int)(Gdx.input.getY(i) / (float)Gdx.graphics.getHeight() * Gdx.graphics.getWidth()));
-      Intersector.intersectRayPlane(ray,plane,point);
-      int x=(int)point.x;
-      int y=(int)point.y;
-      if (x < 2)       x=2;
-      if (x > WIDTH - 1)       x=WIDTH - 2;
-      if (y < 2)       y=2;
-      if (y > HEIGHT - 1)       y=HEIGHT - 2;
-      curr[x][y]=DISPLACEMENT;
-      curr[x - 1][y]=DISPLACEMENT;
-      curr[x + 1][y]=DISPLACEMENT;
-      curr[x][y - 1]=DISPLACEMENT;
-      curr[x][y + 1]=DISPLACEMENT;
-    }
-  }
-  if (System.nanoTime() - lastTick > 1000000000) {
-    Gdx.app.log("Water","fps: " + Gdx.graphics.getFramesPerSecond());
-    lastTick=System.nanoTime();
-  }
+  batch.begin();
+  batch.drawText(font,"fps: " + Gdx.graphics.getFramesPerSecond(),10,20,Color.WHITE);
+  batch.end();
 }
