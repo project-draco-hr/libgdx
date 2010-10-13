@@ -2,11 +2,17 @@
   int idx=0;
   for (int y=0; y <= HEIGHT; y++) {
     for (int x=0; x <= WIDTH; x++) {
+      float xOffset=0;
+      float yOffset=0;
+      if (x > 0 && x < WIDTH && y > 0 && y < HEIGHT) {
+        xOffset=(curr[x - 1][y] - curr[x + 1][y]) / WIDTH;
+        yOffset=(curr[x][y - 1] - curr[x][y + 1]) / HEIGHT;
+      }
       vertices[idx++]=x;
       vertices[idx++]=y;
-      vertices[idx++]=curr[x][y];
-      vertices[idx++]=x / (float)WIDTH;
-      vertices[idx++]=y / (float)HEIGHT;
+      vertices[idx++]=0;
+      vertices[idx++]=x / (float)WIDTH + xOffset;
+      vertices[idx++]=y / (float)HEIGHT + yOffset;
     }
   }
   mesh.setVertices(vertices);
