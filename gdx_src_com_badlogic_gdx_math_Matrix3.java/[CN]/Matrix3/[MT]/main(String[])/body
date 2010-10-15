@@ -1,10 +1,10 @@
 {
-  Matrix3 transform=new Matrix3();
-  Matrix3 tmp=new Matrix3();
   float refX=50, refY=-50;
   float scaleX=2, scaleY=1;
   float rotation=45;
   float x=-232, y=123;
+  Matrix3 transform=new Matrix3();
+  Matrix3 tmp=new Matrix3();
   transform.idt();
   transform.setToTranslation(-refX,-refY);
   transform.mul(tmp.setToScaling(scaleX,scaleY));
