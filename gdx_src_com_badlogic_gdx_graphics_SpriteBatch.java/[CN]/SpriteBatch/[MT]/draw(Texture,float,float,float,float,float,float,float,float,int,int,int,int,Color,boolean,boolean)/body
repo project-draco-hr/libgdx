@@ -12,7 +12,7 @@
   float fx=x - worldOriginX;
   float fy=y - worldOriginY;
   float fx2=x + width - worldOriginX;
-  float fy2=y - height - worldOriginY;
+  float fy2=y + height - worldOriginY;
   fx*=scale;
   fy*=scale;
   fx2*=scale;
@@ -46,9 +46,9 @@
   x4+=worldX;
   y4+=worldY;
   float u=srcX * invTexWidth;
-  float v=srcY * invTexHeight;
+  float v=(srcY + srcHeight) * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;
-  float v2=(srcY + srcHeight) * invTexHeight;
+  float v2=srcY * invTexHeight;
   if (flipX) {
     float tmp=u;
     u=u2;

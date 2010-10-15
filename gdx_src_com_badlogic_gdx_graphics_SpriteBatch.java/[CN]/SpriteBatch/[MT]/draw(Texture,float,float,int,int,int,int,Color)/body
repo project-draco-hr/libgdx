@@ -8,11 +8,11 @@
   }
   useTextBlend=false;
   final float u=srcX * invTexWidth;
-  final float v=srcY * invTexHeight;
+  final float v=(srcY + srcHeight) * invTexHeight;
   final float u2=(srcX + srcWidth) * invTexWidth;
-  final float v2=(srcY + srcHeight) * invTexHeight;
+  final float v2=srcY * invTexHeight;
   final float fx2=x + srcWidth;
-  final float fy2=y - srcHeight;
+  final float fy2=y + srcHeight;
   final float color=tint.toFloatBits();
   vertices[idx++]=x;
   vertices[idx++]=y;

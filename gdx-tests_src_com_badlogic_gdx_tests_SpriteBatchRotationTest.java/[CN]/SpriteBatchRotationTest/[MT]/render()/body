@@ -1,14 +1,30 @@
 {
   Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
   spriteBatch.begin();
-  spriteBatch.draw(texture,100,100,25,-25,100,100,scale,angle,0,0,32,32,Color.WHITE,false,false);
+  spriteBatch.draw(texture,16,10,16,16,32,32,1,0,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
+  spriteBatch.draw(texture,64,10,32,32,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
+  spriteBatch.draw(texture,112,10,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE);
+  spriteBatch.draw(texture,sprites,Color.WHITE);
+  spriteBatch.draw(texture,16,58,16,16,32,32,1,angle,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
+  spriteBatch.draw(texture,64,58,16,16,32,32,scale,0,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
+  spriteBatch.draw(texture,112,58,16,16,32,32,scale,angle,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
+  spriteBatch.drawText(font,"Test",208,10,Color.WHITE);
   spriteBatch.end();
-  im.begin(GL10.GL_POINTS);
-  im.color(0,1,0,1);
-  im.vertex(100 + 25,100 - 25,0);
-  im.end();
-  angle+=45 * Gdx.graphics.getDeltaTime();
-  if (vScale < 0 && scale < 0.1f)   vScale*=-1;
-  if (vScale > 0 && scale > 3f)   vScale*=-1;
+  Gdx.graphics.getGL10().glFlush();
+  Gdx.graphics.getGL10().glReadPixels(16,10,1,1,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixelBuffer);
+  if (pixelBuffer.get(0) != 0xff00ff00)   throw new GdxRuntimeException("not pixel perfect!");
+  Gdx.graphics.getGL10().glReadPixels(47,10,1,1,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixelBuffer);
+  if (pixelBuffer.get(0) != 0xffff0000)   throw new GdxRuntimeException("not pixel perfect!");
+  Gdx.graphics.getGL10().glReadPixels(16,41,1,1,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixelBuffer);
+  if (pixelBuffer.get(0) != 0xff0000ff)   throw new GdxRuntimeException("not pixel perfect!");
+  angle+=20 * Gdx.graphics.getDeltaTime();
   scale+=vScale * Gdx.graphics.getDeltaTime();
+  if (scale > 2) {
+    vScale=-vScale;
+    scale=2;
+  }
+  if (scale < 0) {
+    vScale=-vScale;
+    scale=0;
+  }
 }

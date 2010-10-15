@@ -1,7 +1,11 @@
 {
   if (spriteBatch == null) {
-    im=new ImmediateModeRenderer();
     spriteBatch=new SpriteBatch();
-    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/test.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    font=Gdx.graphics.newFont("Arial",12,FontStyle.Plain);
+    sprites=new float[]{160,10,0,0,texture.getWidth(),texture.getHeight()};
+    ByteBuffer buffer=ByteBuffer.allocateDirect(4);
+    buffer.order(ByteOrder.nativeOrder());
+    pixelBuffer=buffer.asIntBuffer();
   }
 }

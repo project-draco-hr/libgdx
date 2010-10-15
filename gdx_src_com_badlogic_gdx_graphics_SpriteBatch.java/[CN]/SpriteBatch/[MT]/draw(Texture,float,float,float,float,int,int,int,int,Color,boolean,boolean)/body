@@ -8,11 +8,11 @@
   }
   useTextBlend=false;
   float u=srcX * invTexWidth;
-  float v=srcY * invTexHeight;
+  float v=(srcY + srcHeight) * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;
-  float v2=(srcY + srcHeight) * invTexHeight;
+  float v2=srcY * invTexHeight;
   final float fx2=x + width;
-  final float fy2=y - height;
+  final float fy2=y + height;
   if (flipX) {
     float tmp=u;
     u=u2;

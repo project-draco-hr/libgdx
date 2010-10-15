@@ -12,11 +12,11 @@
     Glyph g=font.getGlyph(c);
     final float fx=x;
     final float fx2=x + g.width;
-    final float fy2=y - g.height;
+    final float fy2=y + g.height;
     final float u=g.u;
-    final float v=g.v;
+    final float v=g.v + g.vHeight;
     final float u2=g.u + g.uWidth;
-    final float v2=g.v + g.vHeight;
+    final float v2=g.v;
     vertices[idx++]=fx;
     vertices[idx++]=y;
     vertices[idx++]=color;
