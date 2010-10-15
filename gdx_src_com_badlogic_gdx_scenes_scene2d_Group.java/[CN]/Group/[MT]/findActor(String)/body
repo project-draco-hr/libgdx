@@ -1,0 +1,11 @@
+{
+  Actor actor=namesToActors.get(name);
+  if (actor == null) {
+    int len=groups.size();
+    for (int i=0; i < len; i++) {
+      actor=groups.get(i).findActor(name);
+      if (actor != null)       return actor;
+    }
+  }
+  return actor;
+}

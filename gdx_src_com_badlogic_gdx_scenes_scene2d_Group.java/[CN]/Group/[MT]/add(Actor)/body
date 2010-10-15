@@ -1,0 +1,5 @@
+{
+  children.add(actor);
+  if (actor instanceof Group)   groups.add((Group)actor);
+  namesToActors.put(actor.name,actor);
+}

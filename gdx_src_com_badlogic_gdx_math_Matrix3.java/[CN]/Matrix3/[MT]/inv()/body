@@ -1,5 +1,5 @@
 {
   float det=det();
   if (det == 0)   throw new GdxRuntimeException("Can't invert a singular matrix");
-  return this;
+  throw new GdxRuntimeException("Not implemented yet");
 }

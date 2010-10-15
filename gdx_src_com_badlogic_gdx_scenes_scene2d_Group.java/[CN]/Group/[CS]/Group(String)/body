@@ -1,3 +1,10 @@
 {
   super(name);
+  this.transform=new Matrix3();
+  this.tmp=new Matrix3();
+  this.children=new ArrayList<Actor>();
+  this.immutableChildren=Collections.unmodifiableList(this.children);
+  this.groups=new ArrayList<Group>();
+  this.immutableGroups=Collections.unmodifiableList(this.groups);
+  this.namesToActors=new HashMap<String,Actor>();
 }
