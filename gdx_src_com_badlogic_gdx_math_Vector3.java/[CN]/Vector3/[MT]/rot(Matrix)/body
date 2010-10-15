@@ -1,4 +1,0 @@
-{
-  float l_mat[]=matrix.val;
-  return this.set(x * l_mat[Matrix.M00] + y * l_mat[Matrix.M01] + z * l_mat[Matrix.M02],x * l_mat[Matrix.M10] + y * l_mat[Matrix.M11] + z * l_mat[Matrix.M12],x * l_mat[Matrix.M20] + y * l_mat[Matrix.M21] + z * l_mat[Matrix.M22]);
-}

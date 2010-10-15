@@ -7,8 +7,8 @@
   mat.mul(tmp.setToTranslation(1,0));
   v.mul(mat);
   System.out.println(v);
-  Matrix mat4=new Matrix();
-  Matrix tmp4=new Matrix();
+  Matrix4 mat4=new Matrix4();
+  Matrix4 tmp4=new Matrix4();
   Vector3 v3=new Vector3(1,0,0);
   mat4.mul(tmp4.setToScaling(2,1,0));
   mat4.mul(tmp4.setToRotation(new Vector3(0,0,1),90));
