@@ -1,0 +1,8 @@
+{
+  transform.idt();
+  if (refX != 0 || refY != 0)   transform.setToTranslation(refX,refY);
+  if (scaleX != 1 || scaleY != 1)   transform.mul(tmp.setToScaling(scaleX,scaleY));
+  if (rotation != 0)   transform.mul(tmp.setToRotation(rotation));
+  if (refX != 0 || refY != 0)   transform.mul(tmp.setToTranslation(-refX,-refY));
+  if (x != 0 || y != 0)   transform.mul(tmp.setToTranslation(x,y));
+}

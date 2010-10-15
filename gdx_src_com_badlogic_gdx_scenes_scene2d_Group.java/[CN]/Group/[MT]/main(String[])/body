@@ -1,0 +1,18 @@
+{
+  Matrix3 mat=new Matrix3();
+  Matrix3 tmp=new Matrix3();
+  Vector2 v=new Vector2(1,0);
+  mat.mul(tmp.setToScaling(2,1));
+  mat.mul(tmp.setToRotation(90));
+  mat.mul(tmp.setToTranslation(1,0));
+  v.mul(mat);
+  System.out.println(v);
+  Matrix mat4=new Matrix();
+  Matrix tmp4=new Matrix();
+  Vector3 v3=new Vector3(1,0,0);
+  mat4.mul(tmp4.setToScaling(2,1,0));
+  mat4.mul(tmp4.setToRotation(new Vector3(0,0,1),90));
+  mat4.mul(tmp4.setToTranslation(1,0,0));
+  v3.mul(mat4);
+  System.out.println(v3);
+}

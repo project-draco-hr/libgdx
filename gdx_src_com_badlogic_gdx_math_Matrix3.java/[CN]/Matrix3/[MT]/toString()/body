@@ -1,0 +1,22 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  buffer.append(vals[0]);
+  buffer.append(" ");
+  buffer.append(vals[3]);
+  buffer.append(" ");
+  buffer.append(vals[6]);
+  buffer.append("\n");
+  buffer.append(vals[1]);
+  buffer.append(" ");
+  buffer.append(vals[4]);
+  buffer.append(" ");
+  buffer.append(vals[7]);
+  buffer.append("\n");
+  buffer.append(vals[2]);
+  buffer.append(" ");
+  buffer.append(vals[5]);
+  buffer.append(" ");
+  buffer.append(vals[8]);
+  buffer.append("\n");
+  return buffer.toString();
+}
