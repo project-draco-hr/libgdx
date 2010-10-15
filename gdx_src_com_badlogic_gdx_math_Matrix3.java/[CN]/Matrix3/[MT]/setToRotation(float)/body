@@ -1,7 +1,7 @@
 {
   angle=DEGREE_TO_RAD * angle;
-  float cos=-(float)Math.cos(angle);
-  float sin=-(float)Math.sin(angle);
+  float cos=(float)Math.cos(angle);
+  float sin=(float)Math.sin(angle);
   this.vals[0]=cos;
   this.vals[1]=sin;
   this.vals[2]=0;
