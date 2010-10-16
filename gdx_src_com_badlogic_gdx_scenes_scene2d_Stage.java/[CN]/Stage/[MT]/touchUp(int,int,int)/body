@@ -2,5 +2,6 @@
   float stageY=(Gdx.graphics.getHeight() - 1) - y;
   float stageX=(float)x / Gdx.graphics.getWidth() * width;
   stageY=stageY / Gdx.graphics.getHeight() * height;
-  return root.touchUp(stageX,stageY,pointer);
+  Group.toChildCoordinateSystem(root,stageX,stageY,point);
+  return root.touchUp(point.x,point.y,pointer);
 }
