@@ -2,9 +2,11 @@
   int len=children.size();
   for (int i=0; i < len; i++) {
     Actor child=children.get(i);
-    if (!child.touchable)     continue;
     toChildCoordinateSystem(child,x,y,point);
-    if (child.touchDown(point.x,point.y,pointer))     return true;
+    Actor hit=child.hit(point.x,point.y);
+    if (hit != null) {
+      return hit;
+    }
   }
-  return false;
+  return null;
 }

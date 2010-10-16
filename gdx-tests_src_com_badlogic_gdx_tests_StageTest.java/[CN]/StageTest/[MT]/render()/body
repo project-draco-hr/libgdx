@@ -2,5 +2,14 @@
   GL10 gl=Gdx.graphics.getGL10();
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  if (Gdx.input.isTouched()) {
+    Actor actor=stage.hit(Gdx.input.getX(),Gdx.input.getY());
+    if (actor != null) {
+      if (actor instanceof Image) {
+        ((Image)actor).color.a=(float)Math.random();
+      }
+    }
+  }
+  stage.findActor("img2").rotation+=20 * Gdx.graphics.getDeltaTime();
   stage.render();
 }

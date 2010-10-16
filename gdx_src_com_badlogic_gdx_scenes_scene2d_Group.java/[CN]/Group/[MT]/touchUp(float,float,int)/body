@@ -4,10 +4,7 @@
     Actor child=children.get(i);
     if (!child.touchable)     continue;
     toChildCoordinateSystem(child,x,y,point);
-    if (child.touchUp(point.x,point.y,pointer)) {
-      System.out.println("hit " + child.name);
-      return true;
-    }
+    if (child.touchUp(point.x,point.y,pointer))     return true;
   }
   return false;
 }
