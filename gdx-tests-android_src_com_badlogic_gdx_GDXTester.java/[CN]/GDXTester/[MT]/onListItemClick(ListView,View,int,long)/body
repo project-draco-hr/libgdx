@@ -37,5 +37,6 @@
   if (keyword.equals(items[31]))   intent=new Intent(this,BufferUtilsTest.class);
   if (keyword.equals(items[32]))   intent=new Intent(this,TerrainTest.class);
   if (keyword.equals(items[33]))   intent=new Intent(this,WaterRipples.class);
+  if (keyword.equals(items[34]))   intent=new Intent(this,StageTest.class);
   startActivity(intent);
 }

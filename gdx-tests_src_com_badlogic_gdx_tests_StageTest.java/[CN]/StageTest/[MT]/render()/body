@@ -6,7 +6,7 @@
     Actor actor=stage.hit(Gdx.input.getX(),Gdx.input.getY());
     if (actor != null) {
       if (actor instanceof Image) {
-        ((Image)actor).color.a=(float)Math.random();
+        ((Image)actor).color.b=(float)Math.random();
       }
     }
   }
