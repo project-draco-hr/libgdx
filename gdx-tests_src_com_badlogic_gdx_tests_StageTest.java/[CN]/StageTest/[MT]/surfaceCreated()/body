@@ -2,36 +2,26 @@
   if (stage == null) {
     Gdx.input.addInputListener(this);
     texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    font=Gdx.graphics.newFont("DroidSans",12,FontStyle.Plain);
     stage=new Stage(480,320,true);
-    Image img2=new Image("img2",texture);
-    img2.x=50;
-    img2.y=50;
-    img2.rotation=-45;
-    Group group=new Group("group");
-    group.refX=50;
-    group.refY=50;
-    group.x=100;
-    group.y=100;
-    group.rotation=45;
-    group.scaleX=group.scaleY=0.5f;
-    group.addActor(img2);
-    Group group2=new Group("group2");
-    group2.x=200;
-    group2.y=100;
-    group2.refX=50;
-    group2.refY=50;
-    group2.rotation=45;
-    group2.addActor(group);
-    group2.addActor(new Image("img3",texture));
-    Image img=new Image("img",texture);
-    img.x=100;
-    img.y=100;
-    img.scaleX=2;
-    img.scaleY=2f;
-    img.refX=0;
-    img.refY=0;
-    img.rotation=90;
-    stage.addActor(group2);
-    stage.addActor(img);
+    float loc=(NUM_SPRITES * (32 + SPACING) - SPACING) / 2;
+    for (int i=0; i < NUM_GROUPS; i++) {
+      Group group=new Group("group" + i);
+      group.x=(float)Math.random() * (stage.width() - NUM_SPRITES * (32 + SPACING));
+      group.y=(float)Math.random() * (stage.height() - NUM_SPRITES * (32 + SPACING));
+      group.refX=loc;
+      group.refY=loc;
+      fillGroup(group,texture);
+      stage.addActor(group);
+    }
+    uiTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/uiTexture.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    ui=new Stage(480,320,false);
+    Image blend=new Image("blend button",new TextureRegion(uiTexture,0,0,64,32));
+    blend.y=ui.height() - 32;
+    ui.addActor(blend);
+    Label fps=new Label("fps",font,"fps: 0");
+    ui.addActor(fps);
+    Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+    renderer=new ImmediateModeRenderer();
   }
 }

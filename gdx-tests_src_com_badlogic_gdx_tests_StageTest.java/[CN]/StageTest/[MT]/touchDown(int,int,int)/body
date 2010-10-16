@@ -1,3 +1,14 @@
 {
-  return stage.touchDown(x,y,pointer);
+  boolean touched=ui.touchDown(x,y,pointer);
+  if (touched) {
+    if (stage.getSpriteBatch().isBlendingEnabled()) {
+      stage.getSpriteBatch().disableBlending();
+      ((Image)ui.getLastTouchedChild()).region.y=32;
+    }
+ else {
+      stage.getSpriteBatch().enableBlending();
+      ((Image)ui.getLastTouchedChild()).region.y=0;
+    }
+  }
+  return touched;
 }

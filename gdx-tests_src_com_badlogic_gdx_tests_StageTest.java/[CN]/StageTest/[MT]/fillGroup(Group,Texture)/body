@@ -1,0 +1,12 @@
+{
+  float advance=32 + SPACING;
+  for (int y=0; y < NUM_SPRITES * advance; y+=advance)   for (int x=0; x < NUM_SPRITES * advance; x+=advance) {
+    Image img=new Image(group.name + "-sprite" + x * y,texture);
+    img.x=x;
+    img.y=y;
+    img.width=32;
+    img.height=32;
+    group.addActor(img);
+    images.add(img);
+  }
+}
