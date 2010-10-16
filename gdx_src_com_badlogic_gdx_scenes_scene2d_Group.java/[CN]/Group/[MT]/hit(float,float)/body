@@ -1,6 +1,6 @@
 {
-  int len=children.size();
-  for (int i=0; i < len; i++) {
+  int len=children.size() - 1;
+  for (int i=len; i >= 0; i--) {
     Actor child=children.get(i);
     toChildCoordinates(child,x,y,point);
     Actor hit=child.hit(point.x,point.y);

@@ -1,6 +1,7 @@
 {
   updateTransform();
   tmp4.set(scenetransform);
+  if (debug && debugTexture != null)   batch.draw(debugTexture,x,y,refX,refY,200,200,scaleX,scaleY,rotation,0,0,debugTexture.getWidth(),debugTexture.getHeight(),Color.WHITE,false,false);
   batch.end();
   Matrix4 projection=batch.getProjectionMatrix();
   oldBatchTransform.set(batch.getTransformMatrix());

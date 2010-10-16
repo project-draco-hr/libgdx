@@ -6,7 +6,5 @@
   this.batch=new SpriteBatch();
   this.projection=new Matrix4();
   this.identity=new Matrix4();
-  centerX=width / 2;
-  centerY=height / 2;
-  projection.setToOrtho2D(0,0,this.width,this.height);
+  setViewport(width,height,stretch);
 }

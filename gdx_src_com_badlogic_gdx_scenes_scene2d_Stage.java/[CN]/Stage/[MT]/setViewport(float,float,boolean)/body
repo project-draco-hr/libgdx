@@ -1,0 +1,25 @@
+{
+  if (!stretch) {
+    if (width > height) {
+      float toDeviceSpace=Gdx.graphics.getHeight() / height;
+      float toViewportSpace=height / Gdx.graphics.getHeight();
+      float deviceWidth=width * toDeviceSpace;
+      this.width=width + (Gdx.graphics.getWidth() - deviceWidth) * toViewportSpace;
+      this.height=height;
+    }
+ else {
+      float toDeviceSpace=Gdx.graphics.getWidth() / width;
+      float toViewportSpace=width / Gdx.graphics.getWidth();
+      float deviceHeight=height * toDeviceSpace;
+      this.height=height + (Gdx.graphics.getHeight() - deviceHeight) * toViewportSpace;
+      this.width=width;
+    }
+  }
+ else {
+    this.width=width;
+    this.height=height;
+  }
+  centerX=width / 2;
+  centerY=height / 2;
+  projection.setToOrtho2D(0,0,this.width,this.height);
+}
