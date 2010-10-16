@@ -3,7 +3,7 @@
   for (int i=0; i < len; i++) {
     Actor child=children.get(i);
     if (!child.touchable)     continue;
-    toChildCoordinateSystem(child,x,y,point);
+    toChildCoordinates(child,x,y,point);
     if (child.touchDragged(point.x,point.y,pointer))     return true;
   }
   return false;

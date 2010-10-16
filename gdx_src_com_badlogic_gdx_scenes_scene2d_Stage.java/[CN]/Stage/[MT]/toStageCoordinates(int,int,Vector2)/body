@@ -1,0 +1,5 @@
+{
+  out.y=(Gdx.graphics.getHeight() - 1) - y;
+  out.x=(float)x / Gdx.graphics.getWidth() * width;
+  out.y=out.y / Gdx.graphics.getHeight() * height;
+}

@@ -2,8 +2,6 @@
   if (stage == null) {
     Gdx.input.addInputListener(this);
     texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-    Stage.debugTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/debug.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-    Stage.enableDebugging=true;
     stage=new Stage(480,320,true);
     Image img2=new Image("img2",texture);
     img2.x=50;

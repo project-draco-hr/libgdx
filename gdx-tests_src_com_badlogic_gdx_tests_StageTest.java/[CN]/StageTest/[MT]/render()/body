@@ -3,13 +3,16 @@
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   if (Gdx.input.isTouched()) {
-    Actor actor=stage.hit(Gdx.input.getX(),Gdx.input.getY());
-    if (actor != null) {
-      if (actor instanceof Image) {
-        ((Image)actor).color.b=(float)Math.random();
-      }
-    }
+    stage.toStageCoordinates(Gdx.input.getX(),Gdx.input.getY(),point);
+    Actor actor=stage.hit(point.x,point.y);
+    if (actor != null)     if (actor instanceof Image)     ((Image)actor).color.set((float)Math.random(),0,0,1);
+    actor=stage.findActor("img2");
+    actor.toLocalCoordinates(point);
+    if (actor.hit(point.x,point.y) != null)     ((Image)actor).color.set(Color.GREEN);
+ else     ((Image)actor).color.set(Color.WHITE);
   }
+  stage.findActor("img").rotation+=20 * Gdx.graphics.getDeltaTime();
   stage.findActor("img2").rotation+=20 * Gdx.graphics.getDeltaTime();
+  stage.findActor("img3").rotation+=20 * Gdx.graphics.getDeltaTime();
   stage.render();
 }

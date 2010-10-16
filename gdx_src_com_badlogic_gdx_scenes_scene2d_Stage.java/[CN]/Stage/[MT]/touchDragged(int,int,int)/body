@@ -1,7 +1,5 @@
 {
-  float stageY=(Gdx.graphics.getHeight() - 1) - y;
-  float stageX=(float)x / Gdx.graphics.getWidth() * width;
-  stageY=stageY / Gdx.graphics.getHeight() * height;
-  Group.toChildCoordinateSystem(root,stageX,stageY,point);
+  toStageCoordinates(x,y,coords);
+  Group.toChildCoordinates(root,coords.x,coords.y,point);
   return root.touchDragged(point.x,point.y,pointer);
 }
