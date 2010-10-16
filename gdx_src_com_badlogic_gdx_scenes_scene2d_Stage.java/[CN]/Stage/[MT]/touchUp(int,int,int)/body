@@ -1,0 +1,6 @@
+{
+  float stageY=(Gdx.graphics.getHeight() - 1) - y;
+  float stageX=(float)x / Gdx.graphics.getWidth() * width;
+  stageY=stageY / Gdx.graphics.getHeight() * height;
+  return root.touchUp(stageX,stageY,pointer);
+}

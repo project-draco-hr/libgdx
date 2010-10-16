@@ -1,0 +1,18 @@
+{
+  if (stage == null) {
+    Gdx.input.addInputListener(this);
+    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    Stage.debugTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/debug.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    Stage.enableDebugging=true;
+    stage=new Stage(480,320,true);
+    Group root=stage.getRoot();
+    root.rotation=45;
+    root.x=100;
+    root.y=100;
+    root.refX=50;
+    root.refY=50;
+    root.scaleX=1.25f;
+    root.scaleY=0.75f;
+    System.out.println(stage.graphToString());
+  }
+}

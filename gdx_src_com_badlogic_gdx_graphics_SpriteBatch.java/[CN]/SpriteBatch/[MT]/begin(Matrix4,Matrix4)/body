@@ -1,5 +1,7 @@
 {
   renderCalls=0;
+  this.projectionMatrix.set(projection);
+  this.transformMatrix.set(transform);
   if (Gdx.graphics.isGL20Available() == false) {
     GL10 gl=Gdx.graphics.getGL10();
     gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -9,12 +11,12 @@
     gl.glDepthMask(false);
     gl.glEnable(GL10.GL_TEXTURE_2D);
     gl.glMatrixMode(GL10.GL_PROJECTION);
-    gl.glLoadMatrixf(projection.val,0);
+    gl.glLoadMatrixf(projectionMatrix.val,0);
     gl.glMatrixMode(GL10.GL_MODELVIEW);
-    gl.glLoadMatrixf(transform.val,0);
+    gl.glLoadMatrixf(transformMatrix.val,0);
   }
  else {
-    viewMatrix.set(projection).mul(transform);
+    combinedMatrix.set(projection).mul(transform);
     GL20 gl=Gdx.graphics.getGL20();
     gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     gl.glDisable(GL20.GL_DEPTH_TEST);
@@ -22,7 +24,7 @@
     gl.glDepthMask(false);
     gl.glEnable(GL20.GL_TEXTURE_2D);
     shader.begin();
-    shader.setUniformMatrix("u_projectionViewMatrix",viewMatrix);
+    shader.setUniformMatrix("u_projectionViewMatrix",combinedMatrix);
     shader.setUniformi("u_texture",0);
   }
   idx=0;

@@ -1,0 +1,13 @@
+{
+  updateTransform();
+  tmp4.set(scenetransform);
+  if (Stage.enableDebugging)   batch.draw(Stage.debugTexture,x,y,refX,refY,200,200,scaleX,scaleY,rotation,0,0,Stage.debugTexture.getWidth(),Stage.debugTexture.getHeight(),Color.WHITE,false,false);
+  batch.end();
+  Matrix4 projection=batch.getProjectionMatrix();
+  oldBatchTransform.set(batch.getTransformMatrix());
+  batch.begin(projection,tmp4);
+  int len=children.size();
+  for (int i=0; i < len; i++)   children.get(i).render(batch);
+  batch.end();
+  batch.begin(projection,oldBatchTransform);
+}
