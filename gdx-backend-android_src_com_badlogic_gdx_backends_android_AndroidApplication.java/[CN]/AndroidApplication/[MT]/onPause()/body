@@ -4,7 +4,10 @@
     graphics.disposeRenderListener();
     graphics.clearManagedCaches();
   }
-  if (graphics != null && graphics.view != null)   graphics.view.onPause();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
+  }
   if (audio != null)   audio.pause();
   if (listener != null)   listener.pause();
 }

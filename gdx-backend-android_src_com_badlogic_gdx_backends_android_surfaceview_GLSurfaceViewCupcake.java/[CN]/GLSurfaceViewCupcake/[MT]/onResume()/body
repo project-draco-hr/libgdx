@@ -1,0 +1,15 @@
+{
+  if (mEGLConfigChooser == null) {
+    mEGLConfigChooser=new SimpleEGLConfigChooser(true);
+  }
+  mGLThread=new GLThread(mRenderer);
+  mGLThread.start();
+  mGLThread.setRenderMode(mRenderMode);
+  if (mHasSurface) {
+    mGLThread.surfaceCreated();
+  }
+  if (mSurfaceWidth > 0 && mSurfaceHeight > 0) {
+    mGLThread.onWindowResize(mSurfaceWidth,mSurfaceHeight);
+  }
+  mGLThread.onResume();
+}

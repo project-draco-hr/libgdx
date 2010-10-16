@@ -6,6 +6,9 @@
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
   if (listener != null)   listener.resume();
-  if (graphics != null && graphics.view != null)   graphics.view.onResume();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
+  }
   if (audio != null)   audio.resume();
 }

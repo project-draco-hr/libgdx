@@ -1,0 +1,7 @@
+{
+  if (mGLThread != null) {
+    mGLThread.onWindowResize(w,h);
+  }
+  mSurfaceWidth=w;
+  mSurfaceHeight=h;
+}
