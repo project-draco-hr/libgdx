@@ -1,0 +1,4 @@
+{
+  Gdx.graphics.getGL10().glClearColor(color.r,color.g,color.g,color.a);
+  Gdx.graphics.getGL10().glClear(GL10.GL_COLOR_BUFFER_BIT);
+}

@@ -1,0 +1,13 @@
+{
+  if (useGL2IfAvailable) {
+    if (checkGL20())     view=new GLSurfaceView20(activity);
+ else     view=new android.opengl.GLSurfaceView(activity);
+  }
+ else {
+    view=new android.opengl.GLSurfaceView(activity);
+  }
+  view.setRenderer(this);
+  if (layoutParams != null)   viewGroup.addView(view,layoutParams);
+ else   viewGroup.addView(view);
+  this.app=activity;
+}
