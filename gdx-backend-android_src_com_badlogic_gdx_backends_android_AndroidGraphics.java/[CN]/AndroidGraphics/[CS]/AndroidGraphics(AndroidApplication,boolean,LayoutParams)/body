@@ -1,8 +1,0 @@
-{
-  activity.requestWindowFeature(Window.FEATURE_NO_TITLE);
-  activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-  view=createGLSurfaceView(activity,useGL2IfAvailable);
-  if (layoutParams != null)   activity.setContentView(view,layoutParams);
- else   activity.setContentView(view);
-  this.app=activity;
-}

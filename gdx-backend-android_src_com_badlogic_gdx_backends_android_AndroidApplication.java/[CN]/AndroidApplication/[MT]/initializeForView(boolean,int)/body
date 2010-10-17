@@ -1,5 +1,5 @@
 {
-  graphics=new AndroidGraphics(this,useGL2IfAvailable,layoutParams);
+  graphics=new AndroidGraphics(this,useGL2IfAvailable);
   input=new AndroidInput(this,graphics.view,sleepTime);
   graphics.setInput(input);
   audio=new AndroidAudio(this);
@@ -9,4 +9,5 @@
   Gdx.audio=this.getAudio();
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
+  return graphics.getView();
 }
