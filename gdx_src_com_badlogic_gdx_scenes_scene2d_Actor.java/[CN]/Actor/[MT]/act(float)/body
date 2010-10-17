@@ -1,0 +1,8 @@
+{
+  actions.iter();
+  Action action;
+  while ((action=actions.next()) != null) {
+    action.act(delta);
+    if (action.isDone())     actions.remove();
+  }
+}

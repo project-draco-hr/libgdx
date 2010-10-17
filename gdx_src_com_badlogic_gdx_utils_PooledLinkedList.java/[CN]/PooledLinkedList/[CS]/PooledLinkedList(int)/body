@@ -1,0 +1,8 @@
+{
+  this.pool=new Pool<PooledLinkedList.Item<T>>(new PoolObjectFactory<PooledLinkedList.Item<T>>(){
+    @Override public PooledLinkedList.Item<T> createObject(){
+      return new Item<T>();
+    }
+  }
+,maxPoolSize);
+}

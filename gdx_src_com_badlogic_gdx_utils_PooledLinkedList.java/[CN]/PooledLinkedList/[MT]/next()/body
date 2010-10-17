@@ -1,0 +1,7 @@
+{
+  if (iter == null)   return null;
+  T payload=iter.payload;
+  curr=iter;
+  iter=iter.next;
+  return payload;
+}
