@@ -1,0 +1,14 @@
+{
+  taken+=delta;
+  if (taken >= duration) {
+    pool.free(this);
+    taken=duration;
+    target.scaleX=scaleX;
+    target.scaleY=scaleY;
+    done=true;
+    return;
+  }
+  float alpha=taken * invDuration;
+  target.scaleX=startScaleX + deltaScaleX * alpha;
+  target.scaleY=startScaleY + deltaScaleY * alpha;
+}

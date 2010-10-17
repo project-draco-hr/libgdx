@@ -1,0 +1,17 @@
+{
+  if (uiTexture == null) {
+    Gdx.input.addInputListener(this);
+    uiTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/uitexture.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    ui=new Stage(480,320,false);
+    atlas=new TextureAtlas(uiTexture);
+    atlas.addRegion("blend",0,0,64,32);
+    atlas.addRegion("!blend",0,32,64,32);
+    atlas.addRegion("rotate",64,0,64,32);
+    atlas.addRegion("scale",64,32,64,32);
+    Image img1=new Image("image1",atlas.getRegion("blend"));
+    img1.action(MoveTo.$(100,100,2));
+    img1.action(RotateTo.$(360,2));
+    img1.action(ScaleTo.$(0.5f,0.5f,2));
+    ui.addActor(img1);
+  }
+}

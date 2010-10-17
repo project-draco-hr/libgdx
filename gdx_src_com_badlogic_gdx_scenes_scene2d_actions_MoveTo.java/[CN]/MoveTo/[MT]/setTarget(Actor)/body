@@ -1,0 +1,9 @@
+{
+  this.target=actor;
+  point.set(x,y);
+  if (actor.parent != null)   actor.parent.toLocalCoordinates(point);
+  this.startX=target.x;
+  this.startY=target.y;
+  this.deltaX=x - target.x;
+  this.deltaY=y - target.y;
+}

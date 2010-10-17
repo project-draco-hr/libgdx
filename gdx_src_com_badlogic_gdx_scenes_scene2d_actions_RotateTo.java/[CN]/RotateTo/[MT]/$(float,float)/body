@@ -1,0 +1,9 @@
+{
+  RotateTo action=pool.newObject();
+  action.rotation=rotation;
+  action.duration=duration;
+  action.invDuration=1 / duration;
+  action.taken=0;
+  action.done=false;
+  return action;
+}
