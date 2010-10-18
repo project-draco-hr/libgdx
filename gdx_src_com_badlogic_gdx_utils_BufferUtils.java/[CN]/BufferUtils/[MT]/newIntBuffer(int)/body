@@ -1,0 +1,5 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(numInts * Integer.SIZE / 8);
+  buffer.order(ByteOrder.nativeOrder());
+  return buffer.asIntBuffer();
+}
