@@ -1,4 +1,4 @@
 {
   for (  RenderListener listener : listeners)   listener.surfaceCreated();
-  setVerticalSynch(true);
+  setVerticalSynch(false);
 }

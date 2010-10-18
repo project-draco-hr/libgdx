@@ -14,5 +14,5 @@
       gl10=gl11;
     }
   }
-  lastTime=(Sys.getTime() * 1000) / Sys.getTimerResolution();
+  lastTime=System.nanoTime();
 }

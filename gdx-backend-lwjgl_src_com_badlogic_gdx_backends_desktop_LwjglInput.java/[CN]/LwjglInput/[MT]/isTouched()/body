@@ -1,3 +1,5 @@
 {
-  return Mouse.isButtonDown(0) || Mouse.isButtonDown(1) || Mouse.isButtonDown(2);
+  boolean button=Mouse.isButtonDown(0) || Mouse.isButtonDown(1) || Mouse.isButtonDown(2);
+  if (button)   System.out.println("button!!");
+  return button;
 }

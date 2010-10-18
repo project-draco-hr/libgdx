@@ -6,16 +6,12 @@
     listener.surfaceChanged(getWidth(),getHeight());
   }
   for (  RenderListener listener : listeners)   listener.render();
-  long lastTime=(Sys.getTime() * 1000) / Sys.getTimerResolution();
   while (running && !Display.isCloseRequested()) {
-    long time=(Sys.getTime() * 1000) / Sys.getTimerResolution();
-    int delta=(int)(time - lastTime);
-    lastTime=time;
     if (Keyboard.isCreated()) {
       while (Keyboard.next()) {
-        if (Keyboard.getEventKeyState())         input.fireKeyDown(Keyboard.getEventKey());
+        if (Keyboard.getEventKeyState())         input.fireKeyDown(LwjglInput.getKeyCode(Keyboard.getEventKey()));
  else {
-          input.fireKeyUp(Keyboard.getEventKey());
+          input.fireKeyUp(LwjglInput.getKeyCode(Keyboard.getEventKey()));
           input.fireKeyTyped(Keyboard.getEventCharacter());
         }
       }

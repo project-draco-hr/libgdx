@@ -21,6 +21,7 @@
   this.setLayout(new BorderLayout());
   add(canvas,BorderLayout.CENTER);
   animator=new Animator(canvas);
+  animator.setRunAsFastAsPossible(true);
   animator.start();
   canvas.addMouseListener(this);
   canvas.addMouseMotionListener(this);
