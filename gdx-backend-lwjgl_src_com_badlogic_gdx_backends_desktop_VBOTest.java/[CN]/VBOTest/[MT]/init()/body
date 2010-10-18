@@ -1,0 +1,20 @@
+{
+  System.out.println("Timer resolution: " + Sys.getTimerResolution());
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(0,Display.getDisplayMode().getWidth(),0,Display.getDisplayMode().getHeight(),-1,1);
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
+  glViewport(0,0,Display.getDisplayMode().getWidth(),Display.getDisplayMode().getHeight());
+  if (!GLContext.getCapabilities().GL_ARB_vertex_buffer_object) {
+    System.out.println("ARB VBO not supported!");
+    System.exit(1);
+  }
+  buffer_id=glGenBuffersARB();
+  glBindBufferARB(GL_ARRAY_BUFFER_ARB,buffer_id);
+  vertices=ByteBuffer.allocateDirect(2 * 4 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+  vertices.put(-50).put(-50).put(50).put(-50).put(50).put(50).put(-50).put(50);
+  glBufferDataARB(GL_ARRAY_BUFFER_ARB,2 * 4 * 4,GL_STREAM_DRAW_ARB);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glVertexPointer(2,GL_FLOAT,0,0);
+}

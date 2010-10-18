@@ -1,0 +1,4 @@
+{
+  if (!isPowerOfTwo(pixmap.getHeight()) || !isPowerOfTwo(pixmap.getWidth()))   throw new GdxRuntimeException("Texture dimensions must be a power of two");
+  return new LwjglTexture((BufferedImage)pixmap.getNativePixmap(),minFilter,magFilter,uWrap,vWrap,false);
+}

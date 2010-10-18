@@ -1,0 +1,14 @@
+{
+  glClear(GL_COLOR_BUFFER_BIT);
+  glPushMatrix();
+  glTranslatef(Display.getDisplayMode().getWidth() / 2,Display.getDisplayMode().getHeight() / 2,0.0f);
+  glRotatef(angle,0,0,1.0f);
+  ByteBuffer new_mapped_buffer=glMapBufferARB(GL_ARRAY_BUFFER_ARB,GL_WRITE_ONLY_ARB,mapped_buffer);
+  if (new_mapped_buffer != mapped_buffer)   mapped_float_buffer=new_mapped_buffer.order(ByteOrder.nativeOrder()).asFloatBuffer();
+  mapped_buffer=new_mapped_buffer;
+  mapped_float_buffer.rewind();
+  vertices.rewind();
+  mapped_float_buffer.put(vertices);
+  if (glUnmapBufferARB(GL_ARRAY_BUFFER_ARB))   glDrawArrays(GL_QUADS,0,4);
+  glPopMatrix();
+}

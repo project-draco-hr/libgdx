@@ -1,0 +1,28 @@
+{
+  try {
+    if (file.toString().endsWith("png")) {
+      pngDecoder.decodeHeader(in);
+      texWidth=pngDecoder.getWidth();
+      texHeight=pngDecoder.getHeight();
+      int stride=pngDecoder.getWidth() * 4;
+      int bufferSize=stride * pngDecoder.getHeight();
+      if (imageBuffer == null || imageBuffer.capacity() < bufferSize)       imageBuffer=ByteBuffer.allocateDirect(bufferSize);
+ else       imageBuffer.clear();
+      pngDecoder.decode(imageBuffer,stride,PNGDecoder.Format.RGBA);
+      imageBuffer.flip();
+    }
+ else {
+      imageBuffer=bitmapDecoder.decode(in,imageBuffer);
+      texWidth=bitmapDecoder.width;
+      texHeight=bitmapDecoder.height;
+    }
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Couldn't load Texture: " + file,ex);
+  }
+  buffer.clear();
+  GL11.glGenTextures(buffer);
+  textureID=buffer.get(0);
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
+  GL11.glTexImage2D(GL11.GL_TEXTURE_2D,0,GL11.GL_RGBA8,texWidth,texHeight,0,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+}

@@ -1,0 +1,22 @@
+{
+  if (paletteA != null) {
+    for (int i=1, n=curLine.length; i < n; i+=1) {
+      int idx=curLine[i] & 255;
+      byte r=palette[idx * 3 + 0];
+      byte g=palette[idx * 3 + 1];
+      byte b=palette[idx * 3 + 2];
+      byte a=paletteA[idx];
+      buffer.put(r).put(g).put(b).put(a);
+    }
+  }
+ else {
+    for (int i=1, n=curLine.length; i < n; i+=1) {
+      int idx=curLine[i] & 255;
+      byte r=palette[idx * 3 + 0];
+      byte g=palette[idx * 3 + 1];
+      byte b=palette[idx * 3 + 2];
+      byte a=(byte)0xFF;
+      buffer.put(r).put(g).put(b).put(a);
+    }
+  }
+}

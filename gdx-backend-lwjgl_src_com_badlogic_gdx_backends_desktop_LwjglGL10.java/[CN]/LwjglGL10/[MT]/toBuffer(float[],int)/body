@@ -1,0 +1,8 @@
+{
+  int n=src.length - offset;
+  if (tempFloat.capacity() < n)   tempFloat=BufferUtils.createFloatBuffer(n);
+ else   tempFloat.clear();
+  tempFloat.put(src,offset,src.length - offset);
+  tempFloat.flip();
+  return tempFloat;
+}

@@ -1,0 +1,27 @@
+{
+  this.input=input;
+  readFully(buffer,0,SIGNATURE.length);
+  if (!checkSignatur(buffer)) {
+    throw new IOException("Not a valid PNG file");
+  }
+  openChunk(IHDR);
+  readIHDR();
+  closeChunk();
+  searchIDAT:   for (; ; ) {
+    openChunk();
+switch (chunkType) {
+case IDAT:
+      break searchIDAT;
+case PLTE:
+    readPLTE();
+  break;
+case tRNS:
+readtRNS();
+break;
+}
+closeChunk();
+}
+if (colorType == COLOR_INDEXED && palette == null) {
+throw new IOException("Missing PLTE chunk");
+}
+}

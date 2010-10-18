@@ -1,0 +1,12 @@
+{
+  if (type == GL10.GL_FIXED) {
+    convertFixedToFloatbuffer(pointer,colorBuffer,stride);
+    GL11.glColorPointer(size,stride,colorBuffer);
+  }
+ else {
+    if (pointer instanceof FloatBuffer && type == GL10.GL_FLOAT)     GL11.glColorPointer(size,stride,(FloatBuffer)pointer);
+ else     if (pointer instanceof ByteBuffer && type == GL10.GL_FLOAT)     GL11.glColorPointer(size,stride,((ByteBuffer)pointer).asFloatBuffer());
+ else     if (pointer instanceof ByteBuffer && type == GL10.GL_UNSIGNED_BYTE)     GL11.glColorPointer(size,true,stride,(ByteBuffer)pointer);
+ else     throw new GdxRuntimeException("Can't use " + pointer.getClass().getName() + " with this method, use FloatBuffer or ByteBuffer. blame LWJGL");
+  }
+}

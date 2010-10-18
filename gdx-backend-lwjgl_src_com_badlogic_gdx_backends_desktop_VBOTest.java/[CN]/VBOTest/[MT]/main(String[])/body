@@ -1,0 +1,19 @@
+{
+  try {
+    init();
+    while (!finished) {
+      Display.update();
+      if (!Display.isVisible())       Thread.sleep(200);
+ else       if (Display.isCloseRequested())       System.exit(0);
+      mainLoop();
+      render();
+    }
+  }
+ catch (  Throwable t) {
+    t.printStackTrace();
+  }
+ finally {
+    cleanup();
+  }
+  System.exit(0);
+}

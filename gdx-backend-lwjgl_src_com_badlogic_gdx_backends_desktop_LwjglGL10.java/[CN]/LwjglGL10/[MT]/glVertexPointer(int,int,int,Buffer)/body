@@ -1,0 +1,9 @@
+{
+  if (type == GL10.GL_FIXED) {
+    convertFixedToFloatbuffer(pointer,vertexBuffer,stride);
+    GL11.glVertexPointer(size,stride,vertexBuffer);
+  }
+ else   if (pointer instanceof FloatBuffer && type == GL10.GL_FLOAT)   GL11.glVertexPointer(size,stride,((FloatBuffer)pointer));
+ else   if (pointer instanceof ByteBuffer && type == GL10.GL_FLOAT)   GL11.glVertexPointer(size,stride,((ByteBuffer)pointer).asFloatBuffer());
+ else   throw new GdxRuntimeException("Can't use " + pointer.getClass().getName() + " with this method. Use FloatBuffer or ByteBuffers with GL10.GL_FLOAT instead. Blame LWJGL");
+}

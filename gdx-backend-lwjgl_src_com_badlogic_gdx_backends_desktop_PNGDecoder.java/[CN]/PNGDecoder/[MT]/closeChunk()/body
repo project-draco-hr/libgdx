@@ -1,0 +1,16 @@
+{
+  if (chunkRemaining > 0) {
+    skip(chunkRemaining + 4);
+  }
+ else {
+    readFully(buffer,0,4);
+    int expectedCrc=readInt(buffer,0);
+    int computedCrc=(int)crc.getValue();
+    if (computedCrc != expectedCrc) {
+      throw new IOException("Invalid CRC");
+    }
+  }
+  chunkRemaining=0;
+  chunkLength=0;
+  chunkType=0;
+}

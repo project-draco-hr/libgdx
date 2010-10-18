@@ -1,0 +1,4 @@
+{
+  if (!(data instanceof ByteBuffer))   throw new GdxRuntimeException("Can't use " + data.getClass().getName() + " with this method. Use ByteBuffer. Blame LWJGL");
+  GL13.glCompressedTexSubImage2D(target,level,xoffset,yoffset,width,height,format,(ByteBuffer)data);
+}

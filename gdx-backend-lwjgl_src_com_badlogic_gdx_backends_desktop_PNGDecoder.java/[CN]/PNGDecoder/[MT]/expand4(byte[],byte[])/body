@@ -1,0 +1,11 @@
+{
+  for (int i=1, n=dst.length; i < n; i+=2) {
+    int val=src[1 + (i >> 1)] & 255;
+switch (n - i) {
+default :
+      dst[i + 1]=(byte)(val & 15);
+case 1:
+    dst[i]=(byte)(val >> 4);
+}
+}
+}

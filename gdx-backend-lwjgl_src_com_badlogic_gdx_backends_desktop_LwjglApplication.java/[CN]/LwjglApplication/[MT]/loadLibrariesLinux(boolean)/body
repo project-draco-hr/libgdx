@@ -1,0 +1,6 @@
+{
+  String[] libNames=null;
+  if (is64Bit)   libNames=new String[]{"libopenal64.so","liblwjgl64.so","jinput-linux64.so"};
+ else   libNames=new String[]{"libopenal.so","liblwjgl.so","jinput-linux.so"};
+  for (  String libName : libNames)   loadLibrary(libName,"/native/linux/");
+}

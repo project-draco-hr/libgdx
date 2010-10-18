@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < SIGNATURE.length; i++) {
+    if (buffer[i] != SIGNATURE[i]) {
+      return false;
+    }
+  }
+  return true;
+}

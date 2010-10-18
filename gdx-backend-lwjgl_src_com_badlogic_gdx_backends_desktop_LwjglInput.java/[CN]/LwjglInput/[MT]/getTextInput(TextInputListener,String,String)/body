@@ -1,0 +1,9 @@
+{
+  SwingUtilities.invokeLater(new Runnable(){
+    public void run(){
+      LwjglInput.this.text=JOptionPane.showInputDialog(null,title,text);
+      if (LwjglInput.this.text != null)       textListener=listener;
+    }
+  }
+);
+}

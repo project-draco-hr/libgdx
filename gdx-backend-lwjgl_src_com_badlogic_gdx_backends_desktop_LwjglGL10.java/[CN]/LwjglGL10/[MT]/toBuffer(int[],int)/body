@@ -1,0 +1,8 @@
+{
+  int n=src.length - offset;
+  if (tempInt.capacity() < n)   tempInt=BufferUtils.createIntBuffer(n);
+ else   tempInt.clear();
+  tempInt.put(src,offset,n);
+  tempInt.flip();
+  return tempInt;
+}

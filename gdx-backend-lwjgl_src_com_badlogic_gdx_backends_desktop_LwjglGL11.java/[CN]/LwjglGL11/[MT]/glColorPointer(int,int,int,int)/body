@@ -1,0 +1,4 @@
+{
+  if (type == GL10.GL_FIXED)   type=GL10.GL_FLOAT;
+  GL11.glColorPointer(size,type,stride,pointer);
+}

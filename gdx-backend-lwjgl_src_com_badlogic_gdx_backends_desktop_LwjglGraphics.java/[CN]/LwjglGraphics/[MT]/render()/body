@@ -1,0 +1,11 @@
+{
+  float time=Sys.getTime() / Sys.getTimerResolution();
+  deltaTime=(int)(time - lastTime);
+  lastTime=time;
+  if (time - frameStart > 1) {
+    fps=frames;
+    frames=0;
+    frameStart=time;
+  }
+  frames++;
+}

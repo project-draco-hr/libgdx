@@ -1,0 +1,9 @@
+{
+  running=false;
+  try {
+    gameThread.join();
+  }
+ catch (  InterruptedException ex) {
+    ex.printStackTrace();
+  }
+}

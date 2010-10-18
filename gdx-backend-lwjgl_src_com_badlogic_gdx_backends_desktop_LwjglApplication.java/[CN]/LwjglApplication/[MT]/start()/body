@@ -1,0 +1,62 @@
+{
+  gameThread=Thread.currentThread();
+  setupDisplay();
+  for (  RenderListener listener : listeners) {
+    listener.surfaceCreated();
+    listener.surfaceChanged(getWidth(),getHeight());
+  }
+  for (  RenderListener listener : listeners)   listener.render();
+  long lastTime=(Sys.getTime() * 1000) / Sys.getTimerResolution();
+  while (running && !Display.isCloseRequested()) {
+    long time=(Sys.getTime() * 1000) / Sys.getTimerResolution();
+    int delta=(int)(time - lastTime);
+    lastTime=time;
+    if (Keyboard.isCreated()) {
+      while (Keyboard.next()) {
+        if (Keyboard.getEventKeyState())         input.fireKeyDown(Keyboard.getEventKey());
+ else {
+          input.fireKeyUp(Keyboard.getEventKey());
+          input.fireKeyTyped(Keyboard.getEventCharacter());
+        }
+      }
+    }
+    if (Mouse.isCreated()) {
+      int x=Mouse.getX();
+      int y=height - Mouse.getY();
+      while (Mouse.next()) {
+        if (isButtonPressed()) {
+          if (mousePressed == false) {
+            mousePressed=true;
+            mouseX=x;
+            mouseY=y;
+            input.fireTouchDown(x,y,0);
+          }
+ else {
+            if (mouseX != x || mouseY != y) {
+              input.fireTouchDragged(x,y,0);
+              mouseX=x;
+              mouseY=y;
+            }
+          }
+        }
+ else {
+          if (mousePressed == true) {
+            mousePressed=false;
+            input.fireTouchUp(x,y,0);
+          }
+        }
+      }
+    }
+    for (int i=0, n=listeners.size(); i < n; i++)     listeners.get(i).render();
+    Display.update();
+    Display.sync(60);
+  }
+  if (appListener != null)   appListener.pause();
+  try {
+    for (int i=0, n=listeners.size(); i < n; i++)     listeners.get(i).dispose();
+  }
+  finally {
+    Display.destroy();
+  }
+  if (appListener != null)   appListener.destroy();
+}

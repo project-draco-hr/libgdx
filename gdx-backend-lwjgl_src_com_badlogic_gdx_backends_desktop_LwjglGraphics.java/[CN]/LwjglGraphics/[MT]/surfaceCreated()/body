@@ -1,0 +1,18 @@
+{
+  String version=org.lwjgl.opengl.GL11.glGetString(GL11.GL_VERSION);
+  int major=Integer.parseInt("" + version.charAt(0));
+  int minor=Integer.parseInt("" + version.charAt(2));
+  if (useGL2 && major >= 2) {
+    gl20=new LwjglGL20();
+  }
+ else {
+    if (major == 1 && minor < 5) {
+      gl10=new LwjglGL10();
+    }
+ else {
+      gl11=new LwjglGL11();
+      gl10=gl11;
+    }
+  }
+  lastTime=(Sys.getTime() * 1000) / Sys.getTimerResolution();
+}

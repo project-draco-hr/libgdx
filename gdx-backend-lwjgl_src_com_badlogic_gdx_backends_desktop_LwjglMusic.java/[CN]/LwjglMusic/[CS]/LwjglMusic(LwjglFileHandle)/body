@@ -1,0 +1,14 @@
+{
+  this.file=handle.getFile();
+  openAudioInputStream();
+  AudioFormat audioFormat=ain.getFormat();
+  line=AudioSystem.getSourceDataLine(audioFormat);
+  line.open(audioFormat);
+  line.start();
+  buffer=new byte[10000 * ain.getFormat().getFrameSize()];
+  ain.close();
+  ain=null;
+  thread=new Thread(this);
+  thread.setDaemon(true);
+  thread.start();
+}

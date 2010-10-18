@@ -1,0 +1,7 @@
+{
+  Graphics g=tmpBitmap.getGraphics();
+  g.setFont(font);
+  int width=(int)Math.ceil(metrics.getStringBounds(text,g).getWidth());
+  g.dispose();
+  return width;
+}

@@ -1,0 +1,26 @@
+{
+  if (image == null)   throw new IOException("Invalid image.");
+  width=image.getWidth();
+  height=image.getHeight();
+  WritableRaster raster;
+  if (tempImage == null || tempImage.getWidth() < width || tempImage.getHeight() < height) {
+    raster=Raster.createInterleavedRaster(DataBuffer.TYPE_BYTE,width,height,4,null);
+    tempImage=new BufferedImage(rgbaColorModel,raster,false,new Hashtable());
+  }
+ else   raster=tempImage.getRaster();
+  Graphics2D g=(Graphics2D)tempImage.getGraphics();
+  g.setComposite(AlphaComposite.Clear);
+  g.fillRect(0,0,width,height);
+  g.setComposite(AlphaComposite.SrcOver);
+  g.drawImage(image,0,0,null);
+  int bufferSize=width * height * 4;
+  if (buffer == null || buffer.capacity() < bufferSize)   buffer=ByteBuffer.allocateDirect(bufferSize);
+ else   buffer.clear();
+  byte[] row=new byte[width * 4];
+  for (int y=0; y < height; y++) {
+    raster.getDataElements(0,y,width,1,row);
+    buffer.put(row);
+  }
+  buffer.flip();
+  return buffer;
+}

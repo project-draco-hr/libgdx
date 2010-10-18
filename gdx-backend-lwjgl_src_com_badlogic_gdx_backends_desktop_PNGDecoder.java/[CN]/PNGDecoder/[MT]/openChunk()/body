@@ -1,0 +1,8 @@
+{
+  readFully(buffer,0,8);
+  chunkLength=readInt(buffer,0);
+  chunkType=readInt(buffer,4);
+  chunkRemaining=chunkLength;
+  crc.reset();
+  crc.update(buffer,4,4);
+}

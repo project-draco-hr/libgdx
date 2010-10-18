@@ -1,0 +1,15 @@
+{
+  try {
+    imageBuffer=bitmapDecoder.decode(image,imageBuffer);
+    texWidth=bitmapDecoder.width;
+    texHeight=bitmapDecoder.height;
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Couldn't load Texture",ex);
+  }
+  buffer.clear();
+  GL11.glGenTextures(buffer);
+  textureID=buffer.get(0);
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
+  GL11.glTexImage2D(GL11.GL_TEXTURE_2D,0,GL11.GL_RGBA8,texWidth,texHeight,0,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+}

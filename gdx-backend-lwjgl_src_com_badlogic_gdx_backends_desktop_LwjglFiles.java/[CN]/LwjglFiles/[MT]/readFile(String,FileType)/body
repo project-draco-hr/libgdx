@@ -1,0 +1,13 @@
+{
+  File file=null;
+  InputStream in=null;
+  if (type == FileType.Absolut || type == FileType.Internal)   file=new File(fileName);
+ else   file=new File(this.externalPath + fileName);
+  try {
+    in=new FileInputStream(file);
+  }
+ catch (  FileNotFoundException e) {
+    throw new GdxRuntimeException("File '" + file + "' does not exist");
+  }
+  return in;
+}

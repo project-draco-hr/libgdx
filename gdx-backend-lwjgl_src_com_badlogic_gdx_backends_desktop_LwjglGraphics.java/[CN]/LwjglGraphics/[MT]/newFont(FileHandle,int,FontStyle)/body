@@ -1,0 +1,13 @@
+{
+  LwjglFileHandle jHandle=(LwjglFileHandle)file;
+  InputStream in;
+  try {
+    in=new FileInputStream(jHandle.getFile());
+    LwjglFont font=new LwjglFont(in,size,style);
+    in.close();
+    return font;
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load font from file '" + file + "'",e);
+  }
+}

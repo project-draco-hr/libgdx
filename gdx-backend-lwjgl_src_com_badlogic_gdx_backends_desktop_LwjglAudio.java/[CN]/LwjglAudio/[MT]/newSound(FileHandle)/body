@@ -1,0 +1,9 @@
+{
+  try {
+    LwjglSound sound=new LwjglSound(this,((LwjglFileHandle)file));
+    return sound;
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't create Sound instance from file '" + file + "'",e);
+  }
+}

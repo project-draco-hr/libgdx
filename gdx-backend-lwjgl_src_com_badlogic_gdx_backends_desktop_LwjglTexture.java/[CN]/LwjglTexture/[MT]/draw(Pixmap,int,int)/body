@@ -1,0 +1,11 @@
+{
+  if (isManaged)   throw new GdxRuntimeException("Can't draw to a managed texture");
+  try {
+    imageBuffer=bitmapDecoder.decode((BufferedImage)pixmap.getNativePixmap(),imageBuffer);
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+  bind();
+  GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D,0,x,y,bitmapDecoder.width,bitmapDecoder.height,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+}

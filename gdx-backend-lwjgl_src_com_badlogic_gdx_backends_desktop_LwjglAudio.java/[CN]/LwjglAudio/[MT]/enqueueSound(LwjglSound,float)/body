@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (this) {
+      buffers.add(new LwjglSoundBuffer(sound,volume));
+    }
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}
