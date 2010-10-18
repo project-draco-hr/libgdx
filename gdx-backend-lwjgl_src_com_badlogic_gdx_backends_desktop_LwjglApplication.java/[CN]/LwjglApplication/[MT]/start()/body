@@ -49,7 +49,6 @@
     }
     for (int i=0, n=listeners.size(); i < n; i++)     listeners.get(i).render();
     Display.update();
-    Display.sync(60);
   }
   if (appListener != null)   appListener.pause();
   try {

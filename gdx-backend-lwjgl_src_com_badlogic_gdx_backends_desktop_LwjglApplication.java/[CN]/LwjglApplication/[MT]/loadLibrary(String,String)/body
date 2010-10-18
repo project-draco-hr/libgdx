@@ -14,7 +14,6 @@
     out=null;
     in.close();
     in=null;
-    System.load(new File(libName).getAbsolutePath());
   }
  catch (  Throwable t) {
     new GdxRuntimeException("Couldn't load lwjgl native, " + libName,t);
