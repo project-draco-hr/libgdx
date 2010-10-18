@@ -1,0 +1,4 @@
+{
+  LwjglApplication app=new LwjglApplication("VA Test",480,320,false);
+  app.getGraphics().setRenderListener(new com.badlogic.gdx.tests.VertexArrayTest());
+}
