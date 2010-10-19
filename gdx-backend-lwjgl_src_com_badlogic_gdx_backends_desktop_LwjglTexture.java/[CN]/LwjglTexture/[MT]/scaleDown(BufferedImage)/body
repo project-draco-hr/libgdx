@@ -1,0 +1,7 @@
+{
+  BufferedImage scaled=new BufferedImage(image.getWidth() / 2,image.getHeight() / 2,BufferedImage.TYPE_4BYTE_ABGR);
+  Graphics2D g=scaled.createGraphics();
+  g.drawImage(image,0,0,scaled.getWidth(),scaled.getHeight(),null);
+  g.dispose();
+  return scaled;
+}

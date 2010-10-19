@@ -1,13 +1,14 @@
 {
-  if (isManaged)   throw new GdxRuntimeException("Can't draw to a managed texture");
-  BufferedImage image=(BufferedImage)pixmap.getNativePixmap();
   int level=0;
   int height=image.getHeight();
   int width=image.getWidth();
-  bind();
+  texWidth=width;
+  texHeight=height;
+  textureID=GL11.glGenTextures();
+  GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
   while (height >= 1 || width >= 1 && level < 4) {
     ByteBuffer imageBuffer=toByteBuffer(image);
-    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D,level,x,y,bitmapDecoder.width,bitmapDecoder.height,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+    GL11.glTexImage2D(GL11.GL_TEXTURE_2D,level,GL11.GL_RGBA8,bitmapDecoder.width,bitmapDecoder.height,0,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
     if (height == 1 || width == 1 || isMipMapped == false) {
       break;
     }

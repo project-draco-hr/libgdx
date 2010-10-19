@@ -1,3 +1,6 @@
 {
-  GL11.glDrawElements(mode,count,type,BufferUtils.getOffset(indices));
+  if (indices instanceof ShortBuffer && type == GL10.GL_UNSIGNED_SHORT)   GL11.glDrawElements(mode,(ShortBuffer)indices);
+ else   if (indices instanceof ByteBuffer && type == GL10.GL_UNSIGNED_SHORT)   GL11.glDrawElements(mode,((ByteBuffer)indices).asShortBuffer());
+ else   if (indices instanceof ByteBuffer && type == GL10.GL_UNSIGNED_BYTE)   GL11.glDrawElements(mode,(ByteBuffer)indices);
+ else   throw new GdxRuntimeException("Can't use " + indices.getClass().getName() + " with this method. Use ShortBuffer or ByteBuffer instead. Blame LWJGL");
 }

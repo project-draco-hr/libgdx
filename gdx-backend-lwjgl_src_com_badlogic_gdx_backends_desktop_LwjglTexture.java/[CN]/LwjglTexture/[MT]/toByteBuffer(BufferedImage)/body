@@ -1,0 +1,9 @@
+{
+  try {
+    imageBuffer=bitmapDecoder.decode(image,imageBuffer);
+    return imageBuffer;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("couldn't decode image");
+  }
+}
