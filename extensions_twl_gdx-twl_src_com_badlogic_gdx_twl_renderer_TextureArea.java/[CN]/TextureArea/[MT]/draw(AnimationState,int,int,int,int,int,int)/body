@@ -1,0 +1,9 @@
+{
+  if (texture.bind(tintColor)) {
+    if ((repeatCountX * this.width != width) || (repeatCountY * this.height != height)) {
+      drawRepeatSlow(x,y,width,height,repeatCountX,repeatCountY);
+      return;
+    }
+    drawRepeat(x,y,repeatCountX,repeatCountY);
+  }
+}

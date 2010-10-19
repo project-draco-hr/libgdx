@@ -1,0 +1,7 @@
+{
+  this.renderer=renderer;
+  this.textures=new HashMap<String,GdxTexture>();
+  this.fontCache=new HashMap<String,BitmapFont>();
+  this.allTextures=new ArrayList<GdxTexture>();
+  valid=true;
+}

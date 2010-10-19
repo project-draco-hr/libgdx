@@ -1,0 +1,45 @@
+{
+  float ctx0=tx0;
+  float cty0=ty0;
+  float ctx1=tx1;
+  float cty1=ty1;
+  if (this.width > 1) {
+    ctx1=ctx0 + width / (float)texture.getWidth();
+  }
+  if (this.height > 1) {
+    cty1=cty0 + height / (float)texture.getHeight();
+  }
+  texCoords.clear();
+  vertices.clear();
+  GL10 gl=Gdx.graphics.getGL10();
+  while (repeatCountY-- > 0) {
+    int y1=y + height;
+    int x0=x;
+    for (int cx=repeatCountX; cx-- > 0; ) {
+      int x1=x0 + width;
+      texCoords.put(ctx0);
+      texCoords.put(cty0);
+      vertices.put(x0);
+      vertices.put(y);
+      texCoords.put(ctx0);
+      texCoords.put(cty1);
+      vertices.put(x0);
+      vertices.put(y1);
+      texCoords.put(ctx1);
+      texCoords.put(cty1);
+      vertices.put(x1);
+      vertices.put(y1);
+      texCoords.put(ctx1);
+      texCoords.put(cty0);
+      vertices.put(x1);
+      vertices.put(y);
+      texCoords.flip();
+      vertices.flip();
+      gl.glVertexPointer(2,GL10.GL_FLOAT,0,vertices);
+      gl.glTexCoordPointer(2,GL10.GL_FLOAT,0,texCoords);
+      gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP,0,4);
+      x0=x1;
+    }
+    y=y1;
+  }
+}

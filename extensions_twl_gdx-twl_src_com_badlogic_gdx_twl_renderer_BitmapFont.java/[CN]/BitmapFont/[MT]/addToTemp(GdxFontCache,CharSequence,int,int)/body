@@ -1,0 +1,77 @@
+{
+  int startX=0, x=0;
+  Glyph lastGlyph=null;
+  while (start < end) {
+    lastGlyph=getGlyph(str.charAt(start++));
+    if (lastGlyph != null) {
+      int left=x + lastGlyph.xoffset;
+      int top=lastGlyph.yoffset;
+      int right=left + lastGlyph.width;
+      int bottom=top + lastGlyph.height;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty1;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty1;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty1;
+      x+=lastGlyph.xadvance;
+      break;
+    }
+  }
+  while (start < end) {
+    char ch=str.charAt(start++);
+    Glyph g=getGlyph(ch);
+    if (g != null) {
+      x+=lastGlyph.getKerning(ch);
+      lastGlyph=g;
+      int left=x + lastGlyph.xoffset;
+      int top=lastGlyph.yoffset;
+      int right=left + lastGlyph.width;
+      int bottom=top + lastGlyph.height;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=top;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty0;
+      temp[tempIndex++]=left;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx0;
+      temp[tempIndex++]=lastGlyph.ty1;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty1;
+      temp[tempIndex++]=right;
+      temp[tempIndex++]=bottom;
+      temp[tempIndex++]=lastGlyph.tx1;
+      temp[tempIndex++]=lastGlyph.ty1;
+      x+=g.xadvance;
+    }
+  }
+  return x;
+}

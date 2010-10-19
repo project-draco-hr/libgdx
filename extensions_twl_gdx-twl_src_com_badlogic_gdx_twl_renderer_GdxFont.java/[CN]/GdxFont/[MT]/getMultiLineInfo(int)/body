@@ -1,0 +1,6 @@
+{
+  if (multiLineInfo == null || multiLineInfo.length < numLines) {
+    multiLineInfo=new int[numLines];
+  }
+  return multiLineInfo;
+}

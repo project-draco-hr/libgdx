@@ -1,0 +1,9 @@
+{
+  String urlString=url.toString();
+  BitmapFont bmFont=fontCache.get(urlString);
+  if (bmFont == null) {
+    bmFont=BitmapFont.loadFont(renderer,url);
+    fontCache.put(urlString,bmFont);
+  }
+  return bmFont;
+}

@@ -1,0 +1,16 @@
+{
+  try {
+    XMLParser xmlp=new XMLParser(url);
+    try {
+      xmlp.require(XmlPullParser.START_DOCUMENT,null,null);
+      xmlp.nextTag();
+      return new BitmapFont(renderer,xmlp,url);
+    }
+  finally {
+      xmlp.close();
+    }
+  }
+ catch (  XmlPullParserException ex) {
+    throw (IOException)(new IOException().initCause(ex));
+  }
+}

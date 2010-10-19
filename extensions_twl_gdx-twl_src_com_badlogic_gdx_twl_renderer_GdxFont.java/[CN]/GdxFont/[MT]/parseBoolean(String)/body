@@ -1,0 +1,6 @@
+{
+  if (valueStr == null) {
+    return false;
+  }
+  return Boolean.parseBoolean(valueStr);
+}

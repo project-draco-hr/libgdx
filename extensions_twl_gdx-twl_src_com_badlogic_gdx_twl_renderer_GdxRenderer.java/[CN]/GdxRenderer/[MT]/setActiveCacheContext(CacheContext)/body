@@ -1,0 +1,16 @@
+{
+  if (cc == null) {
+    throw new NullPointerException();
+  }
+  if (!cc.isValid()) {
+    throw new IllegalStateException("CacheContext is invalid");
+  }
+  if (!(cc instanceof GdxCacheContext)) {
+    throw new IllegalArgumentException("CacheContext object not from this renderer");
+  }
+  GdxCacheContext skorpiosCC=(GdxCacheContext)cc;
+  if (skorpiosCC.renderer != this) {
+    throw new IllegalArgumentException("CacheContext object not from this renderer");
+  }
+  this.cacheContext=skorpiosCC;
+}

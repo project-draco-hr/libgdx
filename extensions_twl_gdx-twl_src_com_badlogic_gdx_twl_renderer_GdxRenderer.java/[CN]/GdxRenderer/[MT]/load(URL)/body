@@ -1,0 +1,7 @@
+{
+  if (textureUrl == null) {
+    throw new NullPointerException("textureUrl");
+  }
+  GdxCacheContext cc=activeCacheContext();
+  return cc.loadTexture(textureUrl);
+}

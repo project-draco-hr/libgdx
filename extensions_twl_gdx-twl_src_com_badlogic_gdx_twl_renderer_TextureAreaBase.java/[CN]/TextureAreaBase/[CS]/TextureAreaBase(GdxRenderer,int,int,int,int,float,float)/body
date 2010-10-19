@@ -1,0 +1,19 @@
+{
+  this.renderer=renderer;
+  this.width=(short)Math.abs(width);
+  this.height=(short)Math.abs(height);
+  float fx=x;
+  float fy=y;
+  if (width == 1) {
+    fx+=0.5f;
+    width=0;
+  }
+  if (height == 1) {
+    fy+=0.5f;
+    height=0;
+  }
+  this.tx0=fx / texWidth;
+  this.ty0=fy / texHeight;
+  this.tx1=tx0 + width / texWidth;
+  this.ty1=ty0 + height / texHeight;
+}

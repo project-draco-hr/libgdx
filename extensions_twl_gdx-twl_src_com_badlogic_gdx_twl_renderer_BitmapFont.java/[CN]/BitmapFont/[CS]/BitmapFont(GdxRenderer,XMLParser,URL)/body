@@ -1,0 +1,95 @@
+{
+  xmlp.require(XmlPullParser.START_TAG,null,"font");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.START_TAG,null,"info");
+  xmlp.ignoreOtherAttributes();
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.END_TAG,null,"info");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.START_TAG,null,"common");
+  lineHeight=xmlp.parseIntFromAttribute("lineHeight");
+  baseLine=xmlp.parseIntFromAttribute("base");
+  if (xmlp.parseIntFromAttribute("pages",1) != 1) {
+    throw new UnsupportedOperationException("multi page fonts not supported");
+  }
+  if (xmlp.parseIntFromAttribute("packed",0) != 0) {
+    throw new UnsupportedOperationException("packed fonts not supported");
+  }
+  xmlp.ignoreOtherAttributes();
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.END_TAG,null,"common");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.START_TAG,null,"pages");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.START_TAG,null,"page");
+  int pageId=Integer.parseInt(xmlp.getAttributeValue(null,"id"));
+  if (pageId != 0) {
+    throw new UnsupportedOperationException("only page id 0 supported");
+  }
+  String textureName=xmlp.getAttributeValue(null,"file");
+  this.texture=renderer.load(new URL(baseUrl,textureName));
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.END_TAG,null,"page");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.END_TAG,null,"pages");
+  xmlp.nextTag();
+  xmlp.require(XmlPullParser.START_TAG,null,"chars");
+  xmlp.ignoreOtherAttributes();
+  xmlp.nextTag();
+  glyphs=new Glyph[PAGES][];
+  while (!xmlp.isEndTag()) {
+    xmlp.require(XmlPullParser.START_TAG,null,"char");
+    int idx=xmlp.parseIntFromAttribute("id");
+    int x=xmlp.parseIntFromAttribute("x");
+    int y=xmlp.parseIntFromAttribute("y");
+    int w=xmlp.parseIntFromAttribute("width");
+    int h=xmlp.parseIntFromAttribute("height");
+    if (xmlp.parseIntFromAttribute("page",0) != 0) {
+      throw xmlp.error("Multiple pages not supported");
+    }
+    int chnl=xmlp.parseIntFromAttribute("chnl",0);
+    Glyph g=new Glyph(renderer,x,y,w,h,texture.getWidth(),texture.getHeight());
+    g.xoffset=Short.parseShort(xmlp.getAttributeNotNull("xoffset"));
+    g.yoffset=Short.parseShort(xmlp.getAttributeNotNull("yoffset"));
+    g.xadvance=Short.parseShort(xmlp.getAttributeNotNull("xadvance"));
+    if (idx <= Character.MAX_VALUE) {
+      Glyph[] page=glyphs[idx / PAGE_SIZE];
+      if (page == null) {
+        glyphs[idx / PAGE_SIZE]=page=new Glyph[PAGE_SIZE];
+      }
+      page[idx & (PAGE_SIZE - 1)]=g;
+    }
+    xmlp.nextTag();
+    xmlp.require(XmlPullParser.END_TAG,null,"char");
+    xmlp.nextTag();
+  }
+  xmlp.require(XmlPullParser.END_TAG,null,"chars");
+  xmlp.nextTag();
+  if (xmlp.isStartTag()) {
+    xmlp.require(XmlPullParser.START_TAG,null,"kernings");
+    xmlp.ignoreOtherAttributes();
+    xmlp.nextTag();
+    while (!xmlp.isEndTag()) {
+      xmlp.require(XmlPullParser.START_TAG,null,"kerning");
+      int first=xmlp.parseIntFromAttribute("first");
+      int second=xmlp.parseIntFromAttribute("second");
+      int amount=xmlp.parseIntFromAttribute("amount");
+      if (first >= 0 && first <= Character.MAX_VALUE && second >= 0 && second <= Character.MAX_VALUE) {
+        Glyph g=getGlyph((char)first);
+        if (g != null) {
+          g.setKerning(second,amount);
+        }
+      }
+      xmlp.nextTag();
+      xmlp.require(XmlPullParser.END_TAG,null,"kerning");
+      xmlp.nextTag();
+    }
+    xmlp.require(XmlPullParser.END_TAG,null,"kernings");
+    xmlp.nextTag();
+  }
+  xmlp.require(XmlPullParser.END_TAG,null,"font");
+  Glyph g=getGlyph(' ');
+  spaceWidth=(g != null) ? g.xadvance + g.width : 1;
+  Glyph gx=getGlyph('x');
+  ex=(gx != null) ? gx.height : 1;
+}

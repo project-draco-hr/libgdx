@@ -1,0 +1,6 @@
+{
+  if (valueStr == null) {
+    return defaultValue;
+  }
+  return Integer.parseInt(valueStr);
+}

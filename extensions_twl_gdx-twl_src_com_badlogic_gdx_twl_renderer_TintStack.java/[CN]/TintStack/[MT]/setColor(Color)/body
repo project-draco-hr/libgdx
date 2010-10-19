@@ -1,0 +1,3 @@
+{
+  Gdx.graphics.getGL10().glColor4f(r * (color.getR() & 255),g * (color.getG() & 255),b * (color.getB() & 255),a * (color.getA() & 255));
+}

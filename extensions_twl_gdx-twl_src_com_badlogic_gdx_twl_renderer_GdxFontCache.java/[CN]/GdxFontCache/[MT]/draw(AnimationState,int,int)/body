@@ -1,0 +1,12 @@
+{
+  GdxFont.FontState fontState=font.evalFontState(as);
+  font.renderer.tintStack.setColor(fontState.color);
+  font.bitmapFont.texture.bind();
+  GL10 gl=Gdx.graphics.getGL10();
+  gl.glPushMatrix();
+  gl.glTranslatef(x + fontState.offsetX,y + fontState.offsetY,0);
+  mesh.render(GL11.GL_TRIANGLE_STRIP);
+  gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+  gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+  gl.glPopMatrix();
+}

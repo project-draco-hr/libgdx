@@ -1,0 +1,6 @@
+{
+  result[0]=tintStack.getR() * (color.getR() & 255);
+  result[1]=tintStack.getG() * (color.getG() & 255);
+  result[2]=tintStack.getB() * (color.getB() & 255);
+  result[3]=tintStack.getA() * (color.getA() & 255);
+}

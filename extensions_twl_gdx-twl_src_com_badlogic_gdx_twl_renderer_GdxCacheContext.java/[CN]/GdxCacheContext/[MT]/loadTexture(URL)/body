@@ -1,0 +1,9 @@
+{
+  String urlString=url.toString();
+  GdxTexture texture=textures.get(urlString);
+  if (texture == null) {
+    texture=createTexture(url);
+    textures.put(urlString,texture);
+  }
+  return texture;
+}

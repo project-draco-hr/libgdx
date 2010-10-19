@@ -1,0 +1,6 @@
+{
+  if (mesh == null || mesh.getNumVertices() < capacity) {
+    if (mesh != null)     mesh.dispose();
+    mesh=new Mesh(true,false,capacity,0,new VertexAttribute(VertexAttributes.Usage.Position,2,null),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,null));
+  }
+}

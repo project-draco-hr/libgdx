@@ -1,0 +1,20 @@
+{
+  int index=start;
+  int width=0;
+  Glyph lastGlyph=null;
+  for (; index < end; index++) {
+    char ch=str.charAt(index);
+    Glyph g=getGlyph(ch);
+    if (g != null) {
+      if (lastGlyph != null) {
+        width+=lastGlyph.getKerning(ch);
+      }
+      lastGlyph=g;
+      if (width + g.width + g.xoffset > availWidth) {
+        break;
+      }
+      width+=g.xadvance;
+    }
+  }
+  return index - start;
+}

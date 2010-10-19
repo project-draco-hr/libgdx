@@ -1,0 +1,20 @@
+{
+  int start=0;
+  int numLines=0;
+  while (start < str.length()) {
+    int lineEnd=TextUtil.indexOf(str,'\n',start);
+    int xoff=0;
+    if (align != HAlignment.LEFT) {
+      int lineWidth=computeTextWidth(str,start,lineEnd);
+      xoff=width - lineWidth;
+      if (align == HAlignment.CENTER) {
+        xoff/=2;
+      }
+    }
+    drawText(x + xoff,y,str,start,lineEnd);
+    start=lineEnd + 1;
+    y+=lineHeight;
+    numLines++;
+  }
+  return numLines;
+}

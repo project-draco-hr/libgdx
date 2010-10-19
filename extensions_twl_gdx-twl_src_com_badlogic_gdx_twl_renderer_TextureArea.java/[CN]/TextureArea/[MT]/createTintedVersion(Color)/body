@@ -1,0 +1,10 @@
+{
+  if (color == null) {
+    throw new NullPointerException("color");
+  }
+  Color newTintColor=tintColor.multiply(color);
+  if (newTintColor.equals(tintColor)) {
+    return this;
+  }
+  return new TextureArea(this,newTintColor);
+}

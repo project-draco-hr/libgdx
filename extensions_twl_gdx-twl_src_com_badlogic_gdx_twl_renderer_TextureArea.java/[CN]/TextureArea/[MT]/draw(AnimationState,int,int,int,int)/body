@@ -1,0 +1,10 @@
+{
+  if (texture.bind(tintColor)) {
+    if (tile) {
+      drawTiled(x,y,w,h);
+    }
+ else {
+      drawQuad(x,y,w,h);
+    }
+  }
+}

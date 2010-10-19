@@ -1,0 +1,6 @@
+{
+  if (cacheContext == null) {
+    setActiveCacheContext(createNewCacheContext());
+  }
+  return cacheContext;
+}

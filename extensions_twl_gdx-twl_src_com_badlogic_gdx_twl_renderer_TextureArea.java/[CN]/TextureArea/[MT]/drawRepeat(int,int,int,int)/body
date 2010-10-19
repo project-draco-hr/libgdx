@@ -1,0 +1,13 @@
+{
+  final int w=width;
+  final int h=height;
+  while (repeatCountY-- > 0) {
+    int curX=x;
+    int cntX=repeatCountX;
+    while (cntX-- > 0) {
+      drawQuad(curX,y,w,h);
+      curX+=w;
+    }
+    y+=h;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  String fileName=parameter.get("filename");
+  if (fileName == null) {
+    throw new IllegalArgumentException("filename parameter required");
+  }
+  URL url=new URL(baseUrl,fileName);
+  BitmapFont bmFont=activeCacheContext().loadBitmapFont(url);
+  return new GdxFont(this,bmFont,parameter,conditionalParameter);
+}
