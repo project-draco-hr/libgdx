@@ -1,6 +1,12 @@
 {
+  if (imageBuffer == null || imageBuffer.capacity() / 4 < image.getWidth() * image.getHeight()) {
+    imageBuffer=ByteBuffer.allocateDirect(image.getWidth() * image.getHeight() * 4);
+    imageBuffer.order(ByteOrder.LITTLE_ENDIAN);
+  }
+  imageBuffer.clear();
   try {
-    imageBuffer=bitmapDecoder.decode(image,imageBuffer);
+    new TextureDataSource(image).decode(imageBuffer);
+    imageBuffer.flip();
     return imageBuffer;
   }
  catch (  IOException e) {

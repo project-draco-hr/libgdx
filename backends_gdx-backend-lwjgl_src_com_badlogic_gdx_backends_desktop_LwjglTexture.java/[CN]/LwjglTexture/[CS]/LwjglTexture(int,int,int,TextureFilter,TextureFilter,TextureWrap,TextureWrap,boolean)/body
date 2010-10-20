@@ -1,7 +1,7 @@
 {
   this.isManaged=managed;
   this.isMipMapped=minFilter == TextureFilter.MipMap;
-  BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_4BYTE_ABGR);
+  BufferedImage image=new BufferedImage(width,height,format);
   loadMipMap(image);
   bind();
   GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL11.GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));

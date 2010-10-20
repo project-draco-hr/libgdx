@@ -8,7 +8,7 @@
   GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
   while (height >= 1 || width >= 1 && level < 4) {
     ByteBuffer imageBuffer=toByteBuffer(image);
-    GL11.glTexImage2D(GL11.GL_TEXTURE_2D,level,GL11.GL_RGBA8,bitmapDecoder.width,bitmapDecoder.height,0,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+    GL11.glTexImage2D(GL11.GL_TEXTURE_2D,level,GL11.GL_RGBA8,width,height,0,GL12.GL_BGRA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
     if (height == 1 || width == 1 || isMipMapped == false) {
       break;
     }

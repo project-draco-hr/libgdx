@@ -40,5 +40,6 @@
   if (keyword.equals(items[34]))   intent=new Intent(this,StageTest.class);
   if (keyword.equals(items[35]))   intent=new Intent(this,WindowedTest.class);
   if (keyword.equals(items[36]))   intent=new Intent(this,FillrateTest.class);
+  if (keyword.equals(items[37]))   intent=new Intent(this,AlphaTest.class);
   startActivity(intent);
 }
