@@ -1,0 +1,4 @@
+{
+  int len=actions.size();
+  for (int i=0; i < len; i++)   actions.get(i).act(delta);
+}

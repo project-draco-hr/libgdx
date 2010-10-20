@@ -1,0 +1,9 @@
+{
+  super(name);
+  this.refX=texture.getWidth() / 2.0f;
+  this.refY=texture.getHeight() / 2.0f;
+  this.width=texture.getWidth();
+  this.height=texture.getHeight();
+  this.pressedRegion=new TextureRegion(texture,0,0,texture.getWidth(),texture.getHeight());
+  this.unpressedRegion=new TextureRegion(texture,0,0,texture.getWidth(),texture.getHeight());
+}

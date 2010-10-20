@@ -1,0 +1,5 @@
+{
+  parent.focus(null);
+  if (clickListener != null)   clickListener.clicked(this);
+  return true;
+}

@@ -1,0 +1,11 @@
+{
+  if (actions.size() == 0) {
+    currAction=1;
+    return;
+  }
+  actions.get(currAction).act(delta);
+  if (actions.get(currAction).isDone()) {
+    currAction++;
+    if (currAction < actions.size())     actions.get(currAction).setTarget(target);
+  }
+}

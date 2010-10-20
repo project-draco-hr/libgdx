@@ -1,5 +1,11 @@
 {
   if (!touchable)   return false;
+  if (focusedActor != null) {
+    point.x=x;
+    point.y=y;
+    focusedActor.toLocalCoordinates(point);
+    focusedActor.touchDragged(point.x,point.y,pointer);
+  }
   int len=children.size() - 1;
   for (int i=len; i >= 0; i--) {
     Actor child=children.get(i);

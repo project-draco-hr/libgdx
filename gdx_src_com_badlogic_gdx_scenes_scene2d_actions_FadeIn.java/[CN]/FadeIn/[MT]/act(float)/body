@@ -1,0 +1,10 @@
+{
+  taken+=delta;
+  if (taken >= duration) {
+    pool.free(this);
+    taken=duration;
+    done=true;
+  }
+  float alpha=taken * invDuration;
+  target.color.a=startAlpha + deltaAlpha * alpha;
+}
