@@ -1,0 +1,17 @@
+{
+  Argument[] args=new Argument[auxArguments.size() + arguments.size()];
+  for (int i=0; i < auxArguments.size(); ++i) {
+    args[i]=auxArguments.elementAt(i);
+  }
+  for (int j=0; j < arguments.size(); ++j) {
+    Command cmd=arguments.elementAt(j);
+    if (cmd.getStatus() >= Command.COMMAND_EXECUTED) {
+      args[auxArguments.size() + j]=cmd.getResult();
+    }
+ else {
+      args=null;
+      break;
+    }
+  }
+  return args;
+}

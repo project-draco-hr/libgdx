@@ -1,0 +1,6 @@
+{
+  if ((name == null) || (pcl == null)) {
+    return;
+  }
+  this.pcSupport.addPropertyChangeListener(name,pcl);
+}

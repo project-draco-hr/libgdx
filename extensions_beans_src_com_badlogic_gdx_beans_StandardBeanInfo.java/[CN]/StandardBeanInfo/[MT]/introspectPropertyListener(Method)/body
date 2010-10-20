@@ -1,0 +1,9 @@
+{
+  String methodName=theMethod.getName();
+  Class<?>[] param=theMethod.getParameterTypes();
+  if (param.length != 1) {
+    return;
+  }
+  if (methodName.equals("addPropertyChangeListener") && param[0].equals(PropertyChangeListener.class))   canAddPropertyChangeListener=true;
+  if (methodName.equals("removePropertyChangeListener") && param[0].equals(PropertyChangeListener.class))   canRemovePropertyChangeListener=true;
+}

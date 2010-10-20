@@ -1,0 +1,19 @@
+{
+  String className=attributes.getValue("class");
+  if (className != null) {
+    try {
+      elem.target=classForName(className);
+    }
+ catch (    ClassNotFoundException e) {
+      listener.exceptionThrown(e);
+    }
+  }
+ else {
+    Elem parent=latestUnclosedElem();
+    if (parent == null) {
+      elem.target=owner;
+      return;
+    }
+    elem.target=execute(parent);
+  }
+}

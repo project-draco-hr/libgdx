@@ -1,0 +1,15 @@
+{
+  Object newInstance=out.get(oldInstance);
+  Class<?> clazz=oldInstance.getClass();
+  if (mutatesTo(oldInstance,newInstance)) {
+    initialize(clazz,oldInstance,newInstance,out);
+  }
+ else {
+    out.remove(oldInstance);
+    out.writeExpression(instantiate(oldInstance,out));
+    newInstance=out.get(oldInstance);
+    if (newInstance != null) {
+      initialize(clazz,oldInstance,newInstance,out);
+    }
+  }
+}

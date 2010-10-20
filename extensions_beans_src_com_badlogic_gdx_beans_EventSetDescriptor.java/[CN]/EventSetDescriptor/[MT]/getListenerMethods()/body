@@ -1,0 +1,14 @@
+{
+  if (listenerMethods != null) {
+    return listenerMethods;
+  }
+  if (listenerMethodDescriptors != null) {
+    listenerMethods=new Method[listenerMethodDescriptors.size()];
+    int index=0;
+    for (    MethodDescriptor md : listenerMethodDescriptors) {
+      listenerMethods[index++]=md.getMethod();
+    }
+    return listenerMethods;
+  }
+  return null;
+}

@@ -1,0 +1,35 @@
+{
+  if (child == null || requestor == null || serviceClass == null || bcsrl == null) {
+    throw new NullPointerException();
+  }
+  BCSSChild bcssChild=null;
+  BeanContextServiceProvider provider=null;
+  Object service=null;
+  boolean isDelegate=false;
+synchronized (globalHierarchyLock) {
+synchronized (children) {
+      bcssChild=(BCSSChild)children.get(child);
+    }
+    if (bcssChild == null) {
+      throw new IllegalArgumentException(Messages.getString("beans.65"));
+    }
+    provider=getLocalServiceProvider(serviceClass);
+    if (provider != null) {
+      service=provider.getService(getBeanContextServicesPeer(),requestor,serviceClass,serviceSelector);
+    }
+    if (service == null && proxy != null) {
+      provider=proxy;
+      service=proxy.getService(getBeanContextServicesPeer(),requestor,serviceClass,serviceSelector,bcsrl);
+      isDelegate=true;
+    }
+  }
+  if (service != null) {
+synchronized (child) {
+      if (bcssChild.serviceRecords == null) {
+        bcssChild.serviceRecords=new ArrayList<ServiceRecord>();
+      }
+      bcssChild.serviceRecords.add(new ServiceRecord(provider,child,requestor,serviceClass,bcsrl,service,isDelegate));
+    }
+  }
+  return service;
+}

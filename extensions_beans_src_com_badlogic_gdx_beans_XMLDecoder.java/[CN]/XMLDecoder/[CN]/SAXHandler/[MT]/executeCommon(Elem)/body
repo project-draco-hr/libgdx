@@ -1,0 +1,43 @@
+{
+  ArrayList<Object> args=new ArrayList<Object>(5);
+  while (readObjs.peek() != elem) {
+    Elem argElem=readObjs.pop();
+    args.add(0,argElem.result);
+  }
+  String method=elem.methodName;
+  if (elem.fromProperty) {
+    method=(args.size() == 0 ? "get" : "set") + capitalize(method);
+  }
+  if (elem.fromIndex) {
+    Integer index=Integer.valueOf(method);
+    args.add(0,index);
+    method=args.size() == 1 ? "get" : "set";
+  }
+  if (elem.fromField) {
+    Field f=((Class<?>)elem.target).getField(method);
+    return (new Expression(f,"get",new Object[]{null})).getValue();
+  }
+  if (elem.fromOwner) {
+    return owner;
+  }
+  if (elem.target == owner) {
+    if ("getOwner".equals(method)) {
+      return owner;
+    }
+    Class<?>[] c=new Class[args.size()];
+    for (int i=0; i < args.size(); i++) {
+      Object arg=args.get(i);
+      c[i]=(arg == null ? null : arg.getClass());
+    }
+    try {
+      Method m=owner.getClass().getMethod(method,c);
+      return m.invoke(owner,args.toArray());
+    }
+ catch (    NoSuchMethodException e) {
+    }
+    Method mostSpecificMethod=findMethod(owner instanceof Class<?> ? (Class<?>)owner : owner.getClass(),method,c);
+    return mostSpecificMethod.invoke(owner,args.toArray());
+  }
+  Expression exp=new Expression(elem.target,method,args.toArray());
+  return exp.getValue();
+}

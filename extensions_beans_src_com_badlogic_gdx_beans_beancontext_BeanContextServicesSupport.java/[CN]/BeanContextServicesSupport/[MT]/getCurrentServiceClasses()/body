@@ -1,0 +1,5 @@
+{
+synchronized (services) {
+    return new BCSIterator(services.keySet().iterator());
+  }
+}

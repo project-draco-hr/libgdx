@@ -1,0 +1,8 @@
+{
+  StandardBeanInfo beanInfo=theCache.get(beanClass);
+  if (beanInfo == null) {
+    beanInfo=getBeanInfoImplAndInit(beanClass,null,USE_ALL_BEANINFO);
+    theCache.put(beanClass,beanInfo);
+  }
+  return beanInfo;
+}

@@ -1,0 +1,13 @@
+{
+  char[] charArray=string.toCharArray();
+  StringBuilder sb=new StringBuilder(charArray.length);
+  for (int index=0; index < charArray.length; index++) {
+    if ('A' <= charArray[index] && charArray[index] <= 'Z') {
+      sb.append((char)(charArray[index] + ('a' - 'A')));
+    }
+ else {
+      sb.append(charArray[index]);
+    }
+  }
+  return sb.toString();
+}

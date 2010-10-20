@@ -1,0 +1,16 @@
+{
+  try {
+    ClassLoader cl=beanClass.getClassLoader();
+    if (cl != null) {
+      return (BeanInfo)Class.forName(beanInfoClassName,true,beanClass.getClassLoader()).newInstance();
+    }
+  }
+ catch (  Exception e) {
+  }
+  try {
+    return (BeanInfo)Class.forName(beanInfoClassName,true,ClassLoader.getSystemClassLoader()).newInstance();
+  }
+ catch (  Exception e) {
+  }
+  return (BeanInfo)Class.forName(beanInfoClassName,true,Thread.currentThread().getContextClassLoader()).newInstance();
+}

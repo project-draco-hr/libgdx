@@ -1,0 +1,19 @@
+{
+  if (null == oldExp) {
+    throw new NullPointerException();
+  }
+  boolean oldWritingObject=writingObject;
+  writingObject=true;
+  Object oldValue=expressionValue(oldExp);
+  if (oldValue == null || get(oldValue) != null && (oldWritingObject || oldValue.getClass() != String.class)) {
+    return;
+  }
+  if (!isBasicType(oldValue) || (!oldWritingObject && oldValue.getClass() == String.class)) {
+    recordExpression(oldValue,oldExp);
+  }
+  if (checkDeadLoop(oldValue)) {
+    return;
+  }
+  super.writeExpression(oldExp);
+  writingObject=oldWritingObject;
+}

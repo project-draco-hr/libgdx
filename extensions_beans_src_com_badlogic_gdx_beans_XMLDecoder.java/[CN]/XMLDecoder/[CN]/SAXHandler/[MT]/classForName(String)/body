@@ -1,0 +1,29 @@
+{
+  if ("boolean".equals(className)) {
+    return Boolean.TYPE;
+  }
+ else   if ("byte".equals(className)) {
+    return Byte.TYPE;
+  }
+ else   if ("char".equals(className)) {
+    return Character.TYPE;
+  }
+ else   if ("double".equals(className)) {
+    return Double.TYPE;
+  }
+ else   if ("float".equals(className)) {
+    return Float.TYPE;
+  }
+ else   if ("int".equals(className)) {
+    return Integer.TYPE;
+  }
+ else   if ("long".equals(className)) {
+    return Long.TYPE;
+  }
+ else   if ("short".equals(className)) {
+    return Short.TYPE;
+  }
+ else {
+    return Class.forName(className,true,defaultClassLoader == null ? Thread.currentThread().getContextClassLoader() : defaultClassLoader);
+  }
+}

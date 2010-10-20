@@ -1,0 +1,8 @@
+{
+  for (  MethodDescriptor m : excludeMethods) {
+    if (method.getMethod().equals(m.getMethod())) {
+      return true;
+    }
+  }
+  return false;
+}

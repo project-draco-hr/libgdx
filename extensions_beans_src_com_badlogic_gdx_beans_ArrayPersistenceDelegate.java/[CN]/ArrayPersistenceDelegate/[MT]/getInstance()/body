@@ -1,0 +1,6 @@
+{
+  if (pd == null) {
+    pd=new ArrayPersistenceDelegate();
+  }
+  return pd;
+}

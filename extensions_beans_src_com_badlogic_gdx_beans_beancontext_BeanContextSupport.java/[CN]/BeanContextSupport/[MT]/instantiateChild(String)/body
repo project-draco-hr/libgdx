@@ -1,0 +1,3 @@
+{
+  return Beans.instantiate(getClass().getClassLoader(),beanName,getBeanContextPeer());
+}

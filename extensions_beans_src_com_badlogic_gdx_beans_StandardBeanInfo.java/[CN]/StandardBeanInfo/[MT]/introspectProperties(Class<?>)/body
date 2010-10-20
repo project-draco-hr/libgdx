@@ -1,0 +1,86 @@
+{
+  MethodDescriptor[] methodDescriptors=introspectMethods();
+  if (methodDescriptors == null) {
+    return null;
+  }
+  ArrayList<MethodDescriptor> methodList=new ArrayList<MethodDescriptor>();
+  for (int index=0; index < methodDescriptors.length; index++) {
+    int modifiers=methodDescriptors[index].getMethod().getModifiers();
+    if (!Modifier.isStatic(modifiers)) {
+      methodList.add(methodDescriptors[index]);
+    }
+  }
+  int methodCount=methodList.size();
+  MethodDescriptor[] theMethods=null;
+  if (methodCount > 0) {
+    theMethods=new MethodDescriptor[methodCount];
+    theMethods=methodList.toArray(theMethods);
+  }
+  if (theMethods == null) {
+    return null;
+  }
+  HashMap<String,HashMap> propertyTable=new HashMap<String,HashMap>(theMethods.length);
+  for (int i=0; i < theMethods.length; i++) {
+    introspectGet(theMethods[i].getMethod(),propertyTable);
+    introspectSet(theMethods[i].getMethod(),propertyTable);
+  }
+  fixGetSet(propertyTable);
+  MethodDescriptor[] allMethods=introspectMethods(true);
+  if (stopClass != null) {
+    MethodDescriptor[] excludeMethods=introspectMethods(true,stopClass);
+    if (excludeMethods != null) {
+      ArrayList<MethodDescriptor> tempMethods=new ArrayList<MethodDescriptor>();
+      for (      MethodDescriptor method : allMethods) {
+        if (!isInSuper(method,excludeMethods)) {
+          tempMethods.add(method);
+        }
+      }
+      allMethods=tempMethods.toArray(new MethodDescriptor[0]);
+    }
+  }
+  for (int i=0; i < allMethods.length; i++) {
+    introspectPropertyListener(allMethods[i].getMethod());
+  }
+  ArrayList<PropertyDescriptor> propertyList=new ArrayList<PropertyDescriptor>();
+  for (  Map.Entry<String,HashMap> entry : propertyTable.entrySet()) {
+    String propertyName=entry.getKey();
+    HashMap table=entry.getValue();
+    if (table == null) {
+      continue;
+    }
+    String normalTag=(String)table.get(STR_NORMAL);
+    String indexedTag=(String)table.get(STR_INDEXED);
+    if ((normalTag == null) && (indexedTag == null)) {
+      continue;
+    }
+    Method get=(Method)table.get(STR_NORMAL + PREFIX_GET);
+    Method set=(Method)table.get(STR_NORMAL + PREFIX_SET);
+    Method indexedGet=(Method)table.get(STR_INDEXED + PREFIX_GET);
+    Method indexedSet=(Method)table.get(STR_INDEXED + PREFIX_SET);
+    PropertyDescriptor propertyDesc=null;
+    if (indexedTag == null) {
+      propertyDesc=new PropertyDescriptor(propertyName,get,set);
+    }
+ else {
+      try {
+        propertyDesc=new IndexedPropertyDescriptor(propertyName,get,set,indexedGet,indexedSet);
+      }
+ catch (      IntrospectionException e) {
+        propertyDesc=new IndexedPropertyDescriptor(propertyName,null,null,indexedGet,indexedSet);
+      }
+    }
+    if (canAddPropertyChangeListener && canRemovePropertyChangeListener) {
+      propertyDesc.setBound(true);
+    }
+ else {
+      propertyDesc.setBound(false);
+    }
+    if (table.get(STR_IS_CONSTRAINED) == Boolean.TRUE) {
+      propertyDesc.setConstrained(true);
+    }
+    propertyList.add(propertyDesc);
+  }
+  PropertyDescriptor[] theProperties=new PropertyDescriptor[propertyList.size()];
+  propertyList.toArray(theProperties);
+  return theProperties;
+}

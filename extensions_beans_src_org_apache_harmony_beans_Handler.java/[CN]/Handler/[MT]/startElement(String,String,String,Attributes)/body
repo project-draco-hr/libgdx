@@ -1,0 +1,6 @@
+{
+  Command.printAttrs(tabCount,tagName,attrs);
+  Command cmd=tagName.equals("java") ? new Command(decoder,tagName,Command.parseAttrs(tagName,attrs)) : new Command(tagName,Command.parseAttrs(tagName,attrs));
+  stack.push(cmd);
+  ++tabCount;
+}

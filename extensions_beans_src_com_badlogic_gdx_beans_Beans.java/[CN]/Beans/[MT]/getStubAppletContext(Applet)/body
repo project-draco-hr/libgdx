@@ -1,0 +1,33 @@
+{
+  return new AppletContext(){
+    public AudioClip getAudioClip(    URL url){
+      return null;
+    }
+    public synchronized Image getImage(    URL url){
+      return null;
+    }
+    public Applet getApplet(    String name){
+      return null;
+    }
+    public Enumeration<Applet> getApplets(){
+      Vector<Applet> applets=new Vector<Applet>();
+      applets.addElement(target);
+      return applets.elements();
+    }
+    public void showDocument(    URL url){
+    }
+    public void showDocument(    URL url,    String aTarget){
+    }
+    public void showStatus(    String status){
+    }
+    public void setStream(    String key,    InputStream stream) throws IOException {
+    }
+    public InputStream getStream(    String key){
+      return null;
+    }
+    public Iterator<String> getStreamKeys(){
+      return null;
+    }
+  }
+;
+}

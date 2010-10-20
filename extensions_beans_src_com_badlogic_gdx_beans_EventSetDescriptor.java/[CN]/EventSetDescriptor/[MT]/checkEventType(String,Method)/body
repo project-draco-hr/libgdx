@@ -1,0 +1,11 @@
+{
+  Class<?>[] params=listenerMethod.getParameterTypes();
+  String firstParamTypeName=null;
+  String eventTypeName=prepareEventTypeName(eventSetName);
+  if (params.length > 0) {
+    firstParamTypeName=extractShortClassName(params[0].getName());
+  }
+  if (firstParamTypeName == null || !firstParamTypeName.equals(eventTypeName)) {
+    throw new IntrospectionException(Messages.getString("beans.51",listenerMethod.getName(),eventTypeName));
+  }
+}

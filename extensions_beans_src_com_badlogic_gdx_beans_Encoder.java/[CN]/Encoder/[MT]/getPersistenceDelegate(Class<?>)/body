@@ -1,0 +1,36 @@
+{
+  if (type == null) {
+    return nullPD;
+  }
+  PersistenceDelegate registeredPD=delegates.get(type);
+  if (registeredPD != null) {
+    return registeredPD;
+  }
+  if (java.util.List.class.isAssignableFrom(type)) {
+    return new UtilListPersistenceDelegate();
+  }
+  if (Collection.class.isAssignableFrom(type)) {
+    return new UtilCollectionPersistenceDelegate();
+  }
+  if (Map.class.isAssignableFrom(type)) {
+    return new UtilMapPersistenceDelegate();
+  }
+  if (type.isArray()) {
+    return arrayPD;
+  }
+  if (Proxy.isProxyClass(type)) {
+    return proxyPD;
+  }
+  try {
+    BeanInfo beanInfo=Introspector.getBeanInfo(type);
+    if (beanInfo != null) {
+      PersistenceDelegate pd=(PersistenceDelegate)beanInfo.getBeanDescriptor().getValue("persistenceDelegate");
+      if (pd != null) {
+        return pd;
+      }
+    }
+  }
+ catch (  Exception e) {
+  }
+  return defaultPD;
+}

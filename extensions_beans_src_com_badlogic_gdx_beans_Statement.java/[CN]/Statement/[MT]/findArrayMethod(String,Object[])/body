@@ -1,0 +1,18 @@
+{
+  boolean isGet=BeansUtils.GET.equals(methodName);
+  boolean isSet=BeansUtils.SET.equals(methodName);
+  if (!isGet && !isSet) {
+    throw new NoSuchMethodException(Messages.getString("beans.3C"));
+  }
+ else   if (args.length > 0 && args[0].getClass() != Integer.class) {
+    throw new ClassCastException(Messages.getString("beans.3D"));
+  }
+ else   if (isGet && args.length != 1) {
+    throw new ArrayIndexOutOfBoundsException(Messages.getString("beans.3E"));
+  }
+ else   if (isSet && args.length != 2) {
+    throw new ArrayIndexOutOfBoundsException(Messages.getString("beans.3F"));
+  }
+  Class<?>[] paraTypes=isGet ? new Class<?>[]{Object.class,int.class} : new Class<?>[]{Object.class,int.class,Object.class};
+  return Array.class.getMethod(methodName,paraTypes);
+}

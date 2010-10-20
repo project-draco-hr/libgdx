@@ -1,0 +1,4 @@
+{
+  BeanContextServiceProvider provider=getLocalServiceProvider(serviceClass);
+  return provider == null ? null : new BCSIterator(provider.getCurrentServiceSelectors(getBeanContextServicesPeer(),serviceClass));
+}

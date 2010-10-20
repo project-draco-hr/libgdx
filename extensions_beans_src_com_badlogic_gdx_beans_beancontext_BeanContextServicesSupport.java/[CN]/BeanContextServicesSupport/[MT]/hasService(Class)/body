@@ -1,0 +1,13 @@
+{
+  if (serviceClass == null) {
+    throw new NullPointerException();
+  }
+  boolean has;
+synchronized (services) {
+    has=services.containsKey(serviceClass);
+  }
+  if (!has && getBeanContext() instanceof BeanContextServices) {
+    has=((BeanContextServices)getBeanContext()).hasService(serviceClass);
+  }
+  return has;
+}

@@ -1,0 +1,17 @@
+{
+  if (!inJavaElem) {
+    return;
+  }
+  if ("java".equals(qName)) {
+    inJavaElem=false;
+    return;
+  }
+  Elem toClose=latestUnclosedElem();
+  execute(toClose);
+  toClose.isClosed=true;
+  while (readObjs.pop() != toClose) {
+  }
+  if (toClose.isExpression) {
+    readObjs.push(toClose);
+  }
+}

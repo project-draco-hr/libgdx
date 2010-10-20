@@ -1,0 +1,6 @@
+{
+  if (o == null) {
+    return;
+  }
+  getPersistenceDelegate(o.getClass()).writeObject(o,this);
+}

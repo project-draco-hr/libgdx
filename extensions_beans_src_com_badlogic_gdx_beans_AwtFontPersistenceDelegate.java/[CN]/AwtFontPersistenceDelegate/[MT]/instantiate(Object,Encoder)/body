@@ -1,0 +1,4 @@
+{
+  Font font=(Font)oldInstance;
+  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{font.getFontName(),font.getStyle(),font.getSize()});
+}

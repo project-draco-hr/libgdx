@@ -1,0 +1,40 @@
+{
+synchronized (this) {
+    ArrayList<Object> prePending=objPrePendingCache.get(o);
+    if (prePending == null) {
+      boolean oldWritingObject=writingObject;
+      writingObject=true;
+      try {
+        super.writeObject(o);
+      }
+  finally {
+        writingObject=oldWritingObject;
+      }
+    }
+ else {
+      flushPrePending.clear();
+      flushPrePending.addAll(prePending);
+    }
+    if (!writingObject) {
+      boolean isNotCached=prePending == null;
+      if (isNotCached && o != null) {
+        prePending=new ArrayList<Object>();
+        prePending.addAll(flushPrePending);
+        objPrePendingCache.put(o,prePending);
+      }
+      flushPending.addAll(flushPrePending);
+      flushPendingStat.addAll(flushPrePending);
+      flushPrePending.clear();
+      if (isNotCached && flushPending.contains(o)) {
+        flushPendingStat.remove(o);
+      }
+ else {
+        flushPending.add(o);
+      }
+      if (needOwner) {
+        this.flushPending.remove(owner);
+        this.flushPending.add(0,owner);
+      }
+    }
+  }
+}

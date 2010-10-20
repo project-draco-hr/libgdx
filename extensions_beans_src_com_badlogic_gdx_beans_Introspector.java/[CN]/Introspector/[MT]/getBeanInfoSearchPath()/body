@@ -1,0 +1,5 @@
+{
+  String[] path=new String[searchPath.length];
+  System.arraycopy(searchPath,0,path,0,searchPath.length);
+  return path;
+}

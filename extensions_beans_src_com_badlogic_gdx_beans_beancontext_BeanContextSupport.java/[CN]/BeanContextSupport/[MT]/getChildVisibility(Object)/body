@@ -1,0 +1,8 @@
+{
+  if (child instanceof Visibility) {
+    return (Visibility)child;
+  }
+ else {
+    return null;
+  }
+}

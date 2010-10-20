@@ -1,0 +1,11 @@
+{
+  if (addMethod != null) {
+    Class<?>[] exceptionTypes=addMethod.getExceptionTypes();
+    for (    Class<?> element : exceptionTypes) {
+      if (element.equals(TooManyListenersException.class)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}

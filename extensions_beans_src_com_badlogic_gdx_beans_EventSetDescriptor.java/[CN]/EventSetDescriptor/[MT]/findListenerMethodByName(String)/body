@@ -1,0 +1,17 @@
+{
+  Method result=null;
+  Method[] methods=listenerType.getMethods();
+  for (  Method method : methods) {
+    if (listenerMethodName.equals(method.getName())) {
+      Class<?>[] paramTypes=method.getParameterTypes();
+      if (paramTypes.length == 1 && paramTypes[0].getName().endsWith("Event")) {
+        result=method;
+        break;
+      }
+    }
+  }
+  if (null == result) {
+    throw new IntrospectionException(Messages.getString("beans.31",listenerMethodName,listenerType.getName()));
+  }
+  return result;
+}

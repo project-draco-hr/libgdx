@@ -1,0 +1,14 @@
+{
+  Class<?> theClass=clazz;
+  StringBuilder sb=new StringBuilder();
+  if (theClass.isArray()) {
+    do {
+      sb.append("Array");
+      theClass=theClass.getComponentType();
+    }
+ while (theClass.isArray());
+  }
+  String clazzName=theClass.getName();
+  clazzName=clazzName.substring(clazzName.lastIndexOf('.') + 1);
+  return clazzName + sb.toString();
+}

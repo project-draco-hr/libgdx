@@ -1,0 +1,23 @@
+{
+  boolean origSer=serializing;
+  serializing=true;
+  try {
+    int count=0;
+synchronized (children) {
+      for (Iterator iter=children.values().iterator(); iter.hasNext(); ) {
+        BCSChild bcsc=(BCSChild)iter.next();
+        if (bcsc.child instanceof Serializable && (bcsc.proxyPeer == null || bcsc.proxyPeer instanceof Serializable)) {
+          oos.writeObject(bcsc.child);
+          oos.writeObject(bcsc);
+          count++;
+        }
+      }
+    }
+    if (count != serializable) {
+      throw new IOException(Messages.getString("beans.6F"));
+    }
+  }
+  finally {
+    serializing=origSer;
+  }
+}

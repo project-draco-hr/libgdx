@@ -1,0 +1,9 @@
+{
+  pr(tabCount,tabCount + ">in <" + tagName);
+  for (int i=0; i < attrs.getLength(); ++i) {
+    String attrName=attrs.getQName(i);
+    String attrValue=attrs.getValue(i);
+    pr(" " + attrName + "="+ attrValue);
+  }
+  prn(">");
+}

@@ -1,0 +1,12 @@
+{
+  if (oldStat == null) {
+    throw new NullPointerException();
+  }
+  Statement newStat=createNewStatement(oldStat);
+  try {
+    newStat.execute();
+  }
+ catch (  Exception e) {
+    listener.exceptionThrown(new Exception("failed to write statement: " + oldStat,e));
+  }
+}

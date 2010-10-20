@@ -1,0 +1,8 @@
+{
+  if (child instanceof BeanContextMembershipListener) {
+    return (BeanContextMembershipListener)child;
+  }
+ else {
+    return null;
+  }
+}

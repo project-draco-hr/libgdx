@@ -1,0 +1,6 @@
+{
+  if (stopClass == null) {
+    return getBeanInfo(beanClass);
+  }
+  return getBeanInfoImplAndInit(beanClass,stopClass,USE_ALL_BEANINFO);
+}

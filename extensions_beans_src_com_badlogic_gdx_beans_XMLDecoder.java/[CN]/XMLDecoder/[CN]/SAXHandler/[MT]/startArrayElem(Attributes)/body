@@ -1,0 +1,23 @@
+{
+  Elem elem=new Elem();
+  elem.isExpression=true;
+  elem.id=attributes.getValue("id");
+  try {
+    Class<?> compClass=classForName(attributes.getValue("class"));
+    String lengthValue=attributes.getValue("length");
+    if (lengthValue != null) {
+      int length=Integer.parseInt(attributes.getValue("length"));
+      elem.result=Array.newInstance(compClass,length);
+      elem.isExecuted=true;
+    }
+ else {
+      elem.target=compClass;
+      elem.methodName="newArray";
+      elem.isExecuted=false;
+    }
+  }
+ catch (  Exception e) {
+    listener.exceptionThrown(e);
+  }
+  readObjs.push(elem);
+}

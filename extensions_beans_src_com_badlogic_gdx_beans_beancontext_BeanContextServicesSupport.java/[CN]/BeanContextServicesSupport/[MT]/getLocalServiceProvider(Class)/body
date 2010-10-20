@@ -1,0 +1,9 @@
+{
+synchronized (services) {
+    BCSSServiceProvider bcssProvider=(BCSSServiceProvider)services.get(serviceClass);
+    if (bcssProvider != null) {
+      return bcssProvider.getServiceProvider();
+    }
+    return null;
+  }
+}

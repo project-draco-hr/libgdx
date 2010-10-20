@@ -1,0 +1,224 @@
+{
+  if (propertyTable == null) {
+    return;
+  }
+  for (  Map.Entry<String,HashMap> entry : propertyTable.entrySet()) {
+    HashMap<String,Object> table=entry.getValue();
+    ArrayList<Method> getters=(ArrayList<Method>)table.get(STR_GETTERS);
+    ArrayList<Method> setters=(ArrayList<Method>)table.get(STR_SETTERS);
+    Method normalGetter=null;
+    Method indexedGetter=null;
+    Method normalSetter=null;
+    Method indexedSetter=null;
+    Class<?> normalPropType=null;
+    Class<?> indexedPropType=null;
+    if (getters == null) {
+      getters=new ArrayList<Method>();
+    }
+    if (setters == null) {
+      setters=new ArrayList<Method>();
+    }
+    Class<?>[] paramTypes=null;
+    String methodName=null;
+    for (    Method getter : getters) {
+      paramTypes=getter.getParameterTypes();
+      methodName=getter.getName();
+      if (paramTypes == null || paramTypes.length == 0) {
+        if (normalGetter == null || methodName.startsWith(PREFIX_IS)) {
+          normalGetter=getter;
+        }
+      }
+      if (paramTypes != null && paramTypes.length == 1 && paramTypes[0] == int.class) {
+        if (indexedGetter == null || methodName.startsWith(PREFIX_GET) || (methodName.startsWith(PREFIX_IS) && !indexedGetter.getName().startsWith(PREFIX_GET))) {
+          indexedGetter=getter;
+        }
+      }
+    }
+    if (normalGetter != null) {
+      Class<?> propertyType=normalGetter.getReturnType();
+      for (      Method setter : setters) {
+        if (setter.getParameterTypes().length == 1 && propertyType.equals(setter.getParameterTypes()[0])) {
+          normalSetter=setter;
+          break;
+        }
+      }
+    }
+ else {
+      for (      Method setter : setters) {
+        if (setter.getParameterTypes().length == 1) {
+          normalSetter=setter;
+        }
+      }
+    }
+    if (indexedGetter != null) {
+      Class<?> propertyType=indexedGetter.getReturnType();
+      for (      Method setter : setters) {
+        if (setter.getParameterTypes().length == 2 && setter.getParameterTypes()[0] == int.class && propertyType.equals(setter.getParameterTypes()[1])) {
+          indexedSetter=setter;
+          break;
+        }
+      }
+    }
+ else {
+      for (      Method setter : setters) {
+        if (setter.getParameterTypes().length == 2 && setter.getParameterTypes()[0] == int.class) {
+          indexedSetter=setter;
+        }
+      }
+    }
+    if (normalGetter != null) {
+      normalPropType=normalGetter.getReturnType();
+    }
+ else     if (normalSetter != null) {
+      normalPropType=normalSetter.getParameterTypes()[0];
+    }
+    if (indexedGetter != null) {
+      indexedPropType=indexedGetter.getReturnType();
+    }
+ else     if (indexedSetter != null) {
+      indexedPropType=indexedSetter.getParameterTypes()[1];
+    }
+    if (normalGetter != null && normalGetter.getReturnType().isArray()) {
+    }
+    if (normalGetter != null && normalSetter != null && (indexedGetter == null || indexedSetter == null)) {
+      table.put(STR_NORMAL,STR_VALID);
+      table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+      table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+      table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+      continue;
+    }
+    if ((normalGetter != null || normalSetter != null) && indexedGetter == null && indexedSetter == null) {
+      table.put(STR_NORMAL,STR_VALID);
+      table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+      table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+      table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+      continue;
+    }
+    if ((normalGetter != null || normalSetter != null) && (indexedGetter != null || indexedSetter != null)) {
+      if (normalGetter != null && normalSetter != null && indexedGetter != null && indexedSetter != null) {
+        if (indexedGetter.getName().startsWith(PREFIX_GET)) {
+          table.put(STR_NORMAL,STR_VALID);
+          table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+          table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+          table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+          table.put(STR_INDEXED,STR_VALID);
+          table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+          table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+          table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        }
+ else {
+          if (normalPropType != boolean.class && normalGetter.getName().startsWith(PREFIX_IS)) {
+            table.put(STR_INDEXED,STR_VALID);
+            table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+            table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+          }
+ else {
+            table.put(STR_NORMAL,STR_VALID);
+            table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+            table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+            table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+          }
+        }
+        continue;
+      }
+      if (normalGetter != null && normalSetter == null && indexedGetter != null && indexedSetter != null) {
+        table.put(STR_NORMAL,STR_VALID);
+        table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+        table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+        table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+        table.put(STR_INDEXED,STR_VALID);
+        if (indexedGetter.getName().startsWith(PREFIX_GET)) {
+          table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+        }
+        table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+        table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        continue;
+      }
+      if (normalGetter == null && normalSetter != null && indexedGetter != null && indexedSetter != null) {
+        table.put(STR_INDEXED,STR_VALID);
+        if (indexedGetter.getName().startsWith(PREFIX_GET)) {
+          table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+        }
+        table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+        table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        continue;
+      }
+      if (normalGetter != null && normalSetter == null && indexedGetter != null && indexedSetter == null) {
+        if (indexedGetter.getName().startsWith(PREFIX_GET)) {
+          table.put(STR_NORMAL,STR_VALID);
+          table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+          table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+          table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+          table.put(STR_INDEXED,STR_VALID);
+          table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+          table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+          table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        }
+ else {
+          table.put(STR_NORMAL,STR_VALID);
+          table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+          table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+          table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+        }
+        continue;
+      }
+      if (normalGetter == null && normalSetter != null && indexedGetter != null && indexedSetter == null) {
+        if (indexedGetter.getName().startsWith(PREFIX_GET)) {
+          table.put(STR_NORMAL,STR_VALID);
+          table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+          table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+          table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+          table.put(STR_INDEXED,STR_VALID);
+          table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+          table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+          table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        }
+ else {
+          table.put(STR_NORMAL,STR_VALID);
+          table.put(STR_NORMAL + PREFIX_GET,normalGetter);
+          table.put(STR_NORMAL + PREFIX_SET,normalSetter);
+          table.put(STR_NORMAL + STR_PROPERTY_TYPE,normalPropType);
+        }
+        continue;
+      }
+      if (normalGetter != null && normalSetter == null && indexedGetter == null && indexedSetter != null) {
+        table.put(STR_INDEXED,STR_VALID);
+        table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+        table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+        table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        continue;
+      }
+      if (normalGetter == null && normalSetter != null && indexedGetter == null && indexedSetter != null) {
+        table.put(STR_INDEXED,STR_VALID);
+        table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+        table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+        table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        continue;
+      }
+    }
+    if (normalSetter == null && normalGetter == null && (indexedGetter != null || indexedSetter != null)) {
+      if (indexedGetter != null && indexedGetter.getName().startsWith(PREFIX_IS)) {
+        if (indexedSetter != null) {
+          table.put(STR_INDEXED,STR_VALID);
+          table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+          table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+        }
+        continue;
+      }
+      table.put(STR_INDEXED,STR_VALID);
+      table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+      table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+      table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+      continue;
+    }
+    if ((normalSetter != null || normalGetter != null) && indexedGetter != null && indexedSetter != null) {
+      table.put(STR_INDEXED,STR_VALID);
+      table.put(STR_INDEXED + PREFIX_GET,indexedGetter);
+      table.put(STR_INDEXED + PREFIX_SET,indexedSetter);
+      table.put(STR_INDEXED + STR_PROPERTY_TYPE,indexedPropType);
+      continue;
+    }
+    table.put(STR_NORMAL,STR_INVALID);
+    table.put(STR_INDEXED,STR_INVALID);
+  }
+}

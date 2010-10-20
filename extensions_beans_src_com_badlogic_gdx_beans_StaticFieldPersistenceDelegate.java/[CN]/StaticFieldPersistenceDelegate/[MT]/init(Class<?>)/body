@@ -1,0 +1,15 @@
+{
+  Field[] field=clz.getFields();
+  for (int i=0; i < field.length; i++) {
+    Object value=null;
+    try {
+      value=field[i].get(clz);
+    }
+ catch (    Exception e) {
+      return;
+    }
+    if (value.getClass() == clz) {
+      pairs.put(value,field[i].getName());
+    }
+  }
+}

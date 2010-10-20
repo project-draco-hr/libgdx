@@ -1,0 +1,9 @@
+{
+  Elem elem=new Elem();
+  elem.isBasicType=true;
+  elem.isExpression=true;
+  elem.id=attributes.getValue("id");
+  elem.idref=attributes.getValue("idref");
+  elem.target=tagName;
+  readObjs.push(elem);
+}

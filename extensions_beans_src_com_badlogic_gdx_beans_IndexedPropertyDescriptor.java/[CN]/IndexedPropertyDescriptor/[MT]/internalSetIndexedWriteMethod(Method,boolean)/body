@@ -1,0 +1,29 @@
+{
+  if (indexSetter == null) {
+    if (indexedGetter == null) {
+      if (getPropertyType() != null) {
+        throw new IntrospectionException(Messages.getString("beans.5E"));
+      }
+      indexedPropertyType=null;
+    }
+    this.indexedSetter=null;
+    return;
+  }
+  Class<?>[] indexedSetterArgs=indexSetter.getParameterTypes();
+  if (indexedSetterArgs.length != 2) {
+    throw new IntrospectionException(Messages.getString("beans.5F"));
+  }
+  if (indexedSetterArgs[0] != Integer.TYPE) {
+    throw new IntrospectionException(Messages.getString("beans.60"));
+  }
+  Class<?> indexedWriteType=indexedSetterArgs[1];
+  if (initialize && indexedGetter == null) {
+    indexedPropertyType=indexedWriteType;
+  }
+ else {
+    if (indexedPropertyType != indexedWriteType) {
+      throw new IntrospectionException(Messages.getString("beans.61"));
+    }
+  }
+  this.indexedSetter=indexSetter;
+}

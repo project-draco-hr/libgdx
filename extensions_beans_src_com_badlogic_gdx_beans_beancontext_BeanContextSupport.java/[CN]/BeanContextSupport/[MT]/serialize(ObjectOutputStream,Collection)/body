@@ -1,0 +1,15 @@
+{
+  Object array[]=collection.toArray();
+  int serCount=0;
+  for (int i=0; i < array.length; i++) {
+    if (array[i] instanceof Serializable) {
+      serCount++;
+    }
+  }
+  oos.writeInt(serCount);
+  for (int i=0; i < array.length; i++) {
+    if (array[i] instanceof Serializable) {
+      oos.writeObject(array[i]);
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  elem.methodName=attributes.getValue("method");
+  if (elem.methodName != null) {
+    return;
+  }
+  elem.methodName=attributes.getValue("property");
+  if (elem.methodName != null) {
+    elem.fromProperty=true;
+    return;
+  }
+  elem.methodName=attributes.getValue("index");
+  if (elem.methodName != null) {
+    elem.fromIndex=true;
+    return;
+  }
+  elem.methodName=attributes.getValue("field");
+  if (elem.methodName != null) {
+    elem.fromField=true;
+    return;
+  }
+  elem.methodName=attributes.getValue("owner");
+  if (elem.methodName != null) {
+    elem.fromOwner=true;
+    return;
+  }
+  elem.methodName="new";
+}

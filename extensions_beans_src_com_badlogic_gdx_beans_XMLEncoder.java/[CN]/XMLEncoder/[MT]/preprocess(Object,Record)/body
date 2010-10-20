@@ -1,0 +1,57 @@
+{
+  if (writingObject && isBasicType(obj)) {
+    return;
+  }
+  if (obj instanceof Class<?>) {
+    return;
+  }
+  rec.refCount++;
+  if (rec.refCount > 1) {
+    return;
+  }
+  if (null != rec.exp) {
+    Record targetRec=objRecordMap.get(rec.exp.getTarget());
+    if (targetRec != null && targetRec.exp != null && "getField".equals(targetRec.exp.getMethodName())) {
+      objRecordMap.remove(obj);
+    }
+    Object args[]=rec.exp.getArguments();
+    for (int i=0; i < args.length; i++) {
+      Record argRec=objRecordMap.get(args[i]);
+      if (argRec != null) {
+        preprocess(args[i],argRec);
+      }
+    }
+  }
+  for (Iterator<?> iter=rec.stats.iterator(); iter.hasNext(); ) {
+    Statement subStat=(Statement)iter.next();
+    if (subStat.getClass() == Expression.class) {
+      try {
+        Expression subExp=(Expression)subStat;
+        Record subRec=objRecordMap.get(subExp.getValue());
+        if (subRec == null || subRec.exp == null || subRec.exp != subExp) {
+          iter.remove();
+          continue;
+        }
+        preprocess(subExp.getValue(),subRec);
+        if (subRec.stats.isEmpty()) {
+          if (isGetArrayStat(subExp.getTarget(),subExp.getMethodName(),subExp.getArguments()) || isGetPropertyStat(subExp.getMethodName(),subExp.getArguments())) {
+            iter.remove();
+            continue;
+          }
+        }
+      }
+ catch (      Exception e) {
+        getExceptionListener().exceptionThrown(e);
+        iter.remove();
+      }
+      continue;
+    }
+    Object subStatArgs[]=subStat.getArguments();
+    for (int i=0; i < subStatArgs.length; i++) {
+      Record argRec=objRecordMap.get(subStatArgs[i]);
+      if (argRec != null) {
+        preprocess(subStatArgs[i],argRec);
+      }
+    }
+  }
+}

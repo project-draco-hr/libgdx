@@ -1,0 +1,14 @@
+{
+  super(propertyName,getter,setter);
+  if (indexedGetter != null) {
+    internalSetIndexedReadMethod(indexedGetter);
+    internalSetIndexedWriteMethod(indexedSetter,true);
+  }
+ else {
+    internalSetIndexedWriteMethod(indexedSetter,true);
+    internalSetIndexedReadMethod(indexedGetter);
+  }
+  if (!isCompatible()) {
+    throw new IntrospectionException(Messages.getString("beans.57"));
+  }
+}

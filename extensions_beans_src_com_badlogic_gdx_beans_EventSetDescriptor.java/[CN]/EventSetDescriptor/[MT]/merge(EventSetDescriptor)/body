@@ -1,0 +1,22 @@
+{
+  super.merge(event);
+  if (addListenerMethod == null) {
+    addListenerMethod=event.addListenerMethod;
+  }
+  if (getListenerMethod == null) {
+    getListenerMethod=event.getListenerMethod;
+  }
+  if (listenerMethodDescriptors == null) {
+    listenerMethodDescriptors=event.listenerMethodDescriptors;
+  }
+  if (listenerMethods == null) {
+    listenerMethods=event.listenerMethods;
+  }
+  if (listenerType == null) {
+    listenerType=event.listenerType;
+  }
+  if (removeListenerMethod == null) {
+    removeListenerMethod=event.removeListenerMethod;
+  }
+  inDefaultEventSet&=event.inDefaultEventSet;
+}

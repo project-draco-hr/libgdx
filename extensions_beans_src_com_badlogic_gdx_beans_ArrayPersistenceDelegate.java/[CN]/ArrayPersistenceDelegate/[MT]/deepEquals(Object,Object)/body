@@ -1,0 +1,29 @@
+{
+  if (oldInstance == newInstance) {
+    return true;
+  }
+  if (null == oldInstance || null == newInstance) {
+    return false;
+  }
+  if (oldInstance.getClass().isAssignableFrom(newInstance.getClass()) && oldInstance.equals(newInstance)) {
+    return true;
+  }
+ else   if (oldInstance.getClass().isArray() && newInstance.getClass().isArray()) {
+    int length1=Array.getLength(oldInstance);
+    int length2=Array.getLength(newInstance);
+    if (length1 != length2) {
+      return false;
+    }
+    for (int i=0; i < length1; i++) {
+      Object oldValue=Array.get(oldInstance,i);
+      Object newValue=Array.get(newInstance,i);
+      if (!deepEquals(oldValue,newValue)) {
+        return false;
+      }
+    }
+    return true;
+  }
+ else {
+    return false;
+  }
+}

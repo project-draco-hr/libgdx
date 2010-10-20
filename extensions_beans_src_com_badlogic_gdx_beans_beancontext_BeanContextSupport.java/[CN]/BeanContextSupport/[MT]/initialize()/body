@@ -1,0 +1,12 @@
+{
+  bcmListeners=new ArrayList<BeanContextMembershipListener>();
+  children=new HashMap();
+  serializing=false;
+  inNeedsGui=false;
+  nonSerPCL=new PropertyChangeListener(){
+    public void propertyChange(    PropertyChangeEvent event){
+      BeanContextSupport.this.propertyChange(event);
+    }
+  }
+;
+}

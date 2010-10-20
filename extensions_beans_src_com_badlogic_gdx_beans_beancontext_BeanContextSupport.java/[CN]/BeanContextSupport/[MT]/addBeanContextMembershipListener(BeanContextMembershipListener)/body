@@ -1,0 +1,10 @@
+{
+  if (listener == null) {
+    throw new NullPointerException();
+  }
+synchronized (bcmListeners) {
+    if (!bcmListeners.contains(listener)) {
+      bcmListeners.add(listener);
+    }
+  }
+}

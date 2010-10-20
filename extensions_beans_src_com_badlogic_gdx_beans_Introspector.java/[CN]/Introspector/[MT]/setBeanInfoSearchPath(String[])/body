@@ -1,0 +1,6 @@
+{
+  if (System.getSecurityManager() != null) {
+    System.getSecurityManager().checkPropertiesAccess();
+  }
+  searchPath=path;
+}

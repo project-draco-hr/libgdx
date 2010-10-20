@@ -1,0 +1,31 @@
+{
+  HashMap<String,EventSetDescriptor> subMap=internalAsMap(events);
+  String defaultEventName=null;
+  if (defaultEventIndex >= 0 && defaultEventIndex < events.length) {
+    defaultEventName=events[defaultEventIndex].getName();
+  }
+ else   if (otherDefaultIndex >= 0 && otherDefaultIndex < otherEvents.length) {
+    defaultEventName=otherEvents[otherDefaultIndex].getName();
+  }
+  for (  EventSetDescriptor event : otherEvents) {
+    String eventName=event.getName();
+    EventSetDescriptor subEvent=subMap.get(eventName);
+    if (subEvent == null) {
+      subMap.put(eventName,event);
+    }
+ else {
+      subEvent.merge(event);
+    }
+  }
+  EventSetDescriptor[] theEvents=new EventSetDescriptor[subMap.size()];
+  subMap.values().toArray(theEvents);
+  if (defaultEventName != null && !explicitEvents) {
+    for (int i=0; i < theEvents.length; i++) {
+      if (defaultEventName.equals(theEvents[i].getName())) {
+        defaultEventIndex=i;
+        break;
+      }
+    }
+  }
+  return theEvents;
+}

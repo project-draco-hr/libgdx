@@ -1,0 +1,12 @@
+{
+  try {
+    Method setter=beanClass.getMethod(indexedSetterName,new Class[]{Integer.TYPE,argType});
+    internalSetIndexedWriteMethod(setter,true);
+  }
+ catch (  NoSuchMethodException exception) {
+    throw new IntrospectionException(Messages.getString("beans.5D"));
+  }
+catch (  SecurityException exception) {
+    throw new IntrospectionException(Messages.getString("beans.5C"));
+  }
+}

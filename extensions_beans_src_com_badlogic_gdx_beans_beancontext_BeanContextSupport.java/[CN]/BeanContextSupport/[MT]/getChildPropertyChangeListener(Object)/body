@@ -1,0 +1,8 @@
+{
+  if (child instanceof PropertyChangeListener) {
+    return (PropertyChangeListener)child;
+  }
+ else {
+    return null;
+  }
+}

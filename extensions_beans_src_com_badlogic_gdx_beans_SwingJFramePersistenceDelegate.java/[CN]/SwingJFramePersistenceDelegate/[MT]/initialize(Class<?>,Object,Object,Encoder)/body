@@ -1,0 +1,36 @@
+{
+  super.initialize(type,oldInstance,newInstance,enc);
+  if (type != oldInstance.getClass()) {
+    return;
+  }
+  JFrame frame=(JFrame)oldInstance;
+  Container container=frame.getContentPane();
+  int count=container.getComponentCount();
+  if (count != 0) {
+    Expression getterExp=new Expression(frame,"getContentPane",null);
+    try {
+      Object oldVal=getterExp.getValue();
+      enc.writeExpression(getterExp);
+      Object targetVal=enc.get(oldVal);
+      Object newVal=null;
+      JFrame newFrame=(JFrame)newInstance;
+      newVal=new Expression(newFrame.getContentPane(),newFrame,"getContentPane",null).getValue();
+      if (null == targetVal) {
+        if (null != newVal) {
+          Statement setterStm=new Statement(oldInstance,"setContentPane",new Object[]{null});
+          enc.writeStatement(setterStm);
+        }
+      }
+ else {
+        PersistenceDelegate pd=enc.getPersistenceDelegate(targetVal.getClass());
+        if (!pd.mutatesTo(targetVal,newVal)) {
+          Statement setterStm=new Statement(oldInstance,"setContentPane",new Object[]{oldVal});
+          enc.writeStatement(setterStm);
+        }
+      }
+    }
+ catch (    Exception ex) {
+      enc.getExceptionListener().exceptionThrown(ex);
+    }
+  }
+}

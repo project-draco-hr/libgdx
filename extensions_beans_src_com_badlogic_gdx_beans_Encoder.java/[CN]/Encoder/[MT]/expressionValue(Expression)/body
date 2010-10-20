@@ -1,0 +1,12 @@
+{
+  try {
+    return exp == null ? null : exp.getValue();
+  }
+ catch (  IndexOutOfBoundsException e) {
+    return null;
+  }
+catch (  Exception e) {
+    listener.exceptionThrown(new Exception("failed to excute expression: " + exp,e));
+  }
+  return null;
+}

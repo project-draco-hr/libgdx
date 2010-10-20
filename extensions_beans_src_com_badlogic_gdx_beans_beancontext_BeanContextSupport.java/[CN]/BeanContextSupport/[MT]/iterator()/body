@@ -1,0 +1,5 @@
+{
+synchronized (children) {
+    return new BCSIterator(children.keySet().iterator());
+  }
+}

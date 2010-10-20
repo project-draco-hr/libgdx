@@ -1,0 +1,10 @@
+{
+  if (null == resourceName) {
+    return null;
+  }
+  URL file=getClass().getResource(resourceName);
+  if (file != null) {
+    return Toolkit.getDefaultToolkit().createImage(file);
+  }
+  return null;
+}

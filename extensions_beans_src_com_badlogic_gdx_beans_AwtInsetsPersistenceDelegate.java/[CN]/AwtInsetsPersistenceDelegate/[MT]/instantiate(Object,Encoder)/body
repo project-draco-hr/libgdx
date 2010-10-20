@@ -1,0 +1,4 @@
+{
+  Insets inset=(Insets)oldInstance;
+  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{inset.top,inset.left,inset.bottom,inset.right});
+}

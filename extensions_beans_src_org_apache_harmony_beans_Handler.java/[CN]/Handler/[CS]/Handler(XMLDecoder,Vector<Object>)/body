@@ -1,0 +1,7 @@
+{
+  this.decoder=decoder;
+  this.result=result;
+  this.commands=new Vector<Command>();
+  this.references=new HashMap<String,Command>();
+  this.stack=new Stack<Command>();
+}

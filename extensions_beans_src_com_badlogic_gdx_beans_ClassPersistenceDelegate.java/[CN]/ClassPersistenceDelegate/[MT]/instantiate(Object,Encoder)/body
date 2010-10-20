@@ -1,0 +1,45 @@
+{
+  Class<?> value=(Class<?>)oldInstance;
+  Field fld=null;
+  final String TYPE="TYPE";
+  Expression result;
+  if (value == String.class) {
+    return new Expression(value,"","getClass",null);
+  }
+  try {
+    if (value.equals(Integer.TYPE)) {
+      fld=Integer.class.getField(TYPE);
+    }
+ else     if (value.equals(Short.TYPE)) {
+      fld=Short.class.getField(TYPE);
+    }
+ else     if (value.equals(Long.TYPE)) {
+      fld=Long.class.getField(TYPE);
+    }
+ else     if (value.equals(Float.TYPE)) {
+      fld=Float.class.getField(TYPE);
+    }
+ else     if (value.equals(Double.TYPE)) {
+      fld=Double.class.getField(TYPE);
+    }
+ else     if (value.equals(Byte.TYPE)) {
+      fld=Byte.class.getField(TYPE);
+    }
+ else     if (value.equals(Character.TYPE)) {
+      fld=Character.class.getField(TYPE);
+    }
+ else     if (value.equals(Boolean.TYPE)) {
+      fld=Boolean.class.getField(TYPE);
+    }
+  }
+ catch (  NoSuchFieldException e) {
+    throw new AssertionError(e);
+  }
+  if (fld != null) {
+    result=new Expression(oldInstance,fld,"get",new Object[]{null});
+  }
+ else {
+    result=new Expression(oldInstance,String.class,"forName",new Object[]{value.getName()});
+  }
+  return result;
+}

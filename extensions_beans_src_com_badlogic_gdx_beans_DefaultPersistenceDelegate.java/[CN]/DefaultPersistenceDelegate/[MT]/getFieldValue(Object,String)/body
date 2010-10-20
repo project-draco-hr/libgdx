@@ -1,0 +1,12 @@
+{
+  Class<? extends Object> c=oldInstance.getClass();
+  final Field f=c.getDeclaredField(fieldName);
+  AccessController.doPrivileged(new PrivilegedAction<Object>(){
+    public Object run(){
+      f.setAccessible(true);
+      return null;
+    }
+  }
+);
+  return f.get(oldInstance);
+}

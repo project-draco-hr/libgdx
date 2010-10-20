@@ -1,0 +1,17 @@
+{
+  Record rec=objRecordMap.get(obj);
+  if (rec == null && !isBasicType(obj)) {
+    return;
+  }
+  if (obj == owner && this.needOwner) {
+    flushOwner(obj,rec,indent);
+    this.needOwner=false;
+    return;
+  }
+  if (isBasicType(obj)) {
+    flushBasicObject(obj,indent);
+  }
+ else {
+    flushExpression(obj,rec,indent,flushPendingStat.contains(obj));
+  }
+}

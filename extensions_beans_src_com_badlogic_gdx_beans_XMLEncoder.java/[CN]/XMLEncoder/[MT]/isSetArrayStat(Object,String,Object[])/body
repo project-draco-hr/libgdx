@@ -1,0 +1,3 @@
+{
+  return (BeansUtils.SET.equals(method) && args.length == 2 && args[0] instanceof Integer && target.getClass().isArray());
+}

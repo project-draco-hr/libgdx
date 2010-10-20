@@ -1,0 +1,6 @@
+{
+  checkPropertiesAccess();
+synchronized (Beans.class) {
+    designTime=isDesignTime;
+  }
+}

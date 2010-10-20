@@ -1,0 +1,6 @@
+{
+  if (child instanceof BeanContextServicesListener) {
+    return (BeanContextServicesListener)child;
+  }
+  return null;
+}

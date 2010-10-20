@@ -1,0 +1,41 @@
+{
+  super.initialize(type,oldInstance,newInstance,enc);
+  if (type != oldInstance.getClass()) {
+    return;
+  }
+  Menu menu=(Menu)oldInstance;
+  int count=menu.getItemCount();
+  Expression getterExp=null;
+  for (int i=0; i < count; i++) {
+    getterExp=new Expression(menu.getItem(i),"getLabel",null);
+    try {
+      Object oldVal=getterExp.getValue();
+      enc.writeExpression(getterExp);
+      Object targetVal=enc.get(oldVal);
+      Object newVal=null;
+      try {
+        newVal=new Expression(((Menu)newInstance).getItem(i),"getLabel",null).getValue();
+      }
+ catch (      IndexOutOfBoundsException ex) {
+      }
+      if (null == targetVal) {
+        if (null != newVal) {
+          Statement setterStm=new Statement(oldInstance,"insert",new Object[]{null,i});
+          enc.writeStatement(setterStm);
+        }
+      }
+ else {
+        PersistenceDelegate pd=enc.getPersistenceDelegate(targetVal.getClass());
+        if (!pd.mutatesTo(targetVal,newVal)) {
+          MenuItem menuItem=new MenuItem((String)oldVal);
+          menuItem.setName(menu.getItem(i).getName());
+          Statement setterStm=new Statement(oldInstance,"add",new Object[]{menuItem});
+          enc.writeStatement(setterStm);
+        }
+      }
+    }
+ catch (    Exception ex) {
+      enc.getExceptionListener().exceptionThrown(ex);
+    }
+  }
+}

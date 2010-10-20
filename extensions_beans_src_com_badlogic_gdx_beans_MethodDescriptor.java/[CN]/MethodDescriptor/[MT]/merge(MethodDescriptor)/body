@@ -1,0 +1,9 @@
+{
+  super.merge(anotherMethod);
+  if (method == null) {
+    method=anotherMethod.method;
+  }
+  if (parameterDescriptors == null) {
+    parameterDescriptors=anotherMethod.parameterDescriptors;
+  }
+}

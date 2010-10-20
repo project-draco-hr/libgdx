@@ -1,0 +1,10 @@
+{
+  Object listeners[];
+synchronized (bcsListeners) {
+    listeners=bcsListeners.toArray();
+  }
+  for (int i=0; i < listeners.length; i++) {
+    BeanContextServicesListener l=(BeanContextServicesListener)listeners[i];
+    l.serviceRevoked(event);
+  }
+}

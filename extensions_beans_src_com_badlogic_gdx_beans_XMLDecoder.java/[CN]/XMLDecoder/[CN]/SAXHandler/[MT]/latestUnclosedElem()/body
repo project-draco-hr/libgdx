@@ -1,0 +1,9 @@
+{
+  for (int i=readObjs.size() - 1; i >= 0; i--) {
+    Elem elem=readObjs.get(i);
+    if (!elem.isClosed) {
+      return elem;
+    }
+  }
+  return null;
+}

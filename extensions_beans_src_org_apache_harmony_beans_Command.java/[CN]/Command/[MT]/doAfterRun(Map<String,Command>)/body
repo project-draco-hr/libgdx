@@ -1,0 +1,48 @@
+{
+  if (status == Command.COMMAND_EXECUTED) {
+    Vector<Command> toBeRemoved=new Vector<Command>();
+    try {
+      Statement[] statements=null;
+      for (int i=0; i < operations.size(); ++i) {
+        Command cmd=operations.elementAt(i);
+        if (cmd.isArrayElement()) {
+          if (cmd.isResolved()) {
+            if (statements == null) {
+              statements=new Statement[operations.size()];
+            }
+            statements[i]=new Statement(getResultValue(),"set",new Object[]{Integer.valueOf(i),cmd.getResultValue()});
+            if ((i + 1) == operations.size()) {
+              for (int j=0; j < operations.size(); ++j) {
+                statements[j].execute();
+              }
+              toBeRemoved.addAll(operations);
+            }
+          }
+ else {
+            break;
+          }
+        }
+ else {
+          if (!isArray()) {
+            cmd.setTarget(getResultValue());
+          }
+          cmd.exec(references);
+          if (cmd.isResolved()) {
+            toBeRemoved.add(cmd);
+          }
+ else {
+            break;
+          }
+        }
+      }
+    }
+ catch (    Exception e) {
+      throw new Exception(e);
+    }
+ finally {
+      operations.removeAll(toBeRemoved);
+    }
+    return (operations.size() == 0) ? Command.CHILDREN_PROCESSED : status;
+  }
+  return status;
+}

@@ -1,0 +1,11 @@
+{
+  Elem elem=new Elem();
+  elem.isExpression=true;
+  elem.id=attributes.getValue("id");
+  elem.idref=attributes.getValue("idref");
+  if (elem.idref == null) {
+    obtainTarget(elem,attributes);
+    obtainMethod(elem,attributes);
+  }
+  readObjs.push(elem);
+}

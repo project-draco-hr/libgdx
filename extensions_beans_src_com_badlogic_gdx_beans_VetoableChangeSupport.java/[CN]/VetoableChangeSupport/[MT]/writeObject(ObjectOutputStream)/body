@@ -1,0 +1,11 @@
+{
+  oos.defaultWriteObject();
+  VetoableChangeListener[] copy=new VetoableChangeListener[globalListeners.size()];
+  globalListeners.toArray(copy);
+  for (  VetoableChangeListener listener : copy) {
+    if (listener instanceof Serializable) {
+      oos.writeObject(listener);
+    }
+  }
+  oos.writeObject(null);
+}

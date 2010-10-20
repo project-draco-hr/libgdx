@@ -1,0 +1,22 @@
+{
+  flushIndent(indent);
+  out.print("<array");
+  if (id != null) {
+    out.print(" id=\"");
+    out.print(id);
+    out.print("\"");
+  }
+  out.print(" class=\"");
+  out.print(((Class<?>)stat.getArguments()[0]).getName());
+  out.print("\" length=\"");
+  out.print(stat.getArguments()[1]);
+  out.print("\"");
+  if (subStats.isEmpty()) {
+    out.println("/>");
+    return;
+  }
+  out.println(">");
+  flushSubStatements(subStats,indent);
+  flushIndent(indent);
+  out.println("</array>");
+}

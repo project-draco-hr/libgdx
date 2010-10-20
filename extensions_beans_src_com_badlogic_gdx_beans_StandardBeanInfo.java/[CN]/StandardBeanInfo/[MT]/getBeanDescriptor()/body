@@ -1,0 +1,11 @@
+{
+  if (beanDescriptor == null) {
+    if (explicitBeanInfo != null) {
+      beanDescriptor=explicitBeanInfo.getBeanDescriptor();
+    }
+    if (beanDescriptor == null) {
+      beanDescriptor=new BeanDescriptor(beanClass);
+    }
+  }
+  return beanDescriptor;
+}

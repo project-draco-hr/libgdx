@@ -1,0 +1,23 @@
+{
+  String pathName=beanName.replace('.','/');
+  final String resourceName=serialized ? pathName.concat(".ser") : pathName.concat(".class");
+  URL objectUrl=AccessController.doPrivileged(new PrivilegedAction<URL>(){
+    public URL run(){
+      if (loader == null) {
+        return ClassLoader.getSystemResource(resourceName);
+      }
+      return loader.getResource(resourceName);
+    }
+  }
+);
+  if (objectUrl == null) {
+    applet.setStub(getAppletStub(getStubAppletContext(applet),null,null));
+    return;
+  }
+  String urlString=objectUrl.toExternalForm();
+  int codeURLlength=urlString.length() - resourceName.length();
+  URL codeBase=safeURL(urlString.substring(0,codeURLlength));
+  int docURLlength=urlString.lastIndexOf('/');
+  URL docBase=safeURL(urlString.substring(0,docURLlength + 1));
+  applet.setStub(getAppletStub(getStubAppletContext(applet),codeBase,docBase));
+}

@@ -1,0 +1,16 @@
+{
+  if (beanClass == null) {
+    throw new IntrospectionException(Messages.getString("beans.03"));
+  }
+  if (propertyName == null || propertyName.length() == 0) {
+    throw new IntrospectionException(Messages.getString("beans.04"));
+  }
+  this.setName(propertyName);
+  try {
+    setReadMethod(beanClass,createDefaultMethodName(propertyName,"is"));
+  }
+ catch (  Exception e) {
+    setReadMethod(beanClass,createDefaultMethodName(propertyName,"get"));
+  }
+  setWriteMethod(beanClass,createDefaultMethodName(propertyName,"set"));
+}

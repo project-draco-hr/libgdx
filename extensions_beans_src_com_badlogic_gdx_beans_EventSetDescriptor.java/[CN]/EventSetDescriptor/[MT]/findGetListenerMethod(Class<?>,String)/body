@@ -1,0 +1,8 @@
+{
+  try {
+    return sourceClass.getMethod(methodName);
+  }
+ catch (  Exception e) {
+    return null;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (serializable > 0 && bcsc.child instanceof Serializable && (bcsc.proxyPeer == null || bcsc.proxyPeer instanceof Serializable)) {
+    serializable--;
+  }
+}

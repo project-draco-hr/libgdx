@@ -1,0 +1,20 @@
+{
+  if (serviceClass == null || provider == null) {
+    throw new NullPointerException();
+  }
+synchronized (globalHierarchyLock) {
+synchronized (services) {
+      if (services.containsKey(serviceClass)) {
+        return false;
+      }
+      services.put(serviceClass,createBCSSServiceProvider(serviceClass,provider));
+      if (provider instanceof Serializable) {
+        serializable++;
+      }
+    }
+  }
+  if (fireEvent) {
+    notifyServiceAvailable(new BeanContextServiceAvailableEvent(this,serviceClass));
+  }
+  return true;
+}

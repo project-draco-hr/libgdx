@@ -1,0 +1,5 @@
+{
+  StandardBeanInfo standardBeanInfo=getBeanInfoImpl(beanClass,stopClass,flag);
+  standardBeanInfo.init();
+  return standardBeanInfo;
+}

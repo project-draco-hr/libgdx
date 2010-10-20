@@ -1,0 +1,23 @@
+{
+  if (!inJavaElem) {
+    if ("java".equals(qName)) {
+      inJavaElem=true;
+    }
+ else {
+      listener.exceptionThrown(new Exception(Messages.getString("beans.72",qName)));
+    }
+    return;
+  }
+  if ("object".equals(qName)) {
+    startObjectElem(attributes);
+  }
+ else   if ("array".equals(qName)) {
+    startArrayElem(attributes);
+  }
+ else   if ("void".equals(qName)) {
+    startVoidElem(attributes);
+  }
+ else   if ("boolean".equals(qName) || "byte".equals(qName) || "char".equals(qName)|| "class".equals(qName)|| "double".equals(qName)|| "float".equals(qName)|| "int".equals(qName)|| "long".equals(qName)|| "short".equals(qName)|| "string".equals(qName)|| "null".equals(qName)) {
+    startBasicElem(qName,attributes);
+  }
+}

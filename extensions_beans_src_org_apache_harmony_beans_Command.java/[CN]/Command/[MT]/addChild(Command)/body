@@ -1,0 +1,6 @@
+{
+  if (cmd != null) {
+    cmd.setContext(this);
+    commands.add(cmd);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  String result=null;
+  if (propertyName != null) {
+    String bos=BeansUtils.toASCIIUpperCase(propertyName.substring(0,1));
+    String eos=propertyName.substring(1,propertyName.length());
+    result=prefix + bos + eos;
+  }
+  return result;
+}

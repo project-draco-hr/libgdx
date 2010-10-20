@@ -1,0 +1,21 @@
+{
+synchronized (children) {
+    for (int i=0; i < serializable; i++) {
+      Object child=ois.readObject();
+      BCSChild childBCSC=(BCSChild)ois.readObject();
+      children.put(child,childBCSC);
+      childDeserializedHook(child,childBCSC);
+      BeanContextChild beanContextChild=getChildBeanContextChild(child);
+      if (beanContextChild != null) {
+        try {
+          beanContextChild.setBeanContext(getBeanContextPeer());
+        }
+ catch (        PropertyVetoException e) {
+          throw new IOException(Messages.getString("beans.6B"));
+        }
+        beanContextChild.removePropertyChangeListener("beanContext",nonSerPCL);
+        beanContextChild.addPropertyChangeListener("beanContext",nonSerPCL);
+      }
+    }
+  }
+}

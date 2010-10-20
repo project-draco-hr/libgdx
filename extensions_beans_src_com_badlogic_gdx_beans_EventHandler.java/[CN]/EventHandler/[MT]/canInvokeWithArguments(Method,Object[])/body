@@ -1,0 +1,16 @@
+{
+  Class<?>[] parameterTypes=method.getParameterTypes();
+  if (parameterTypes.length != arguments.length) {
+    return false;
+  }
+  for (int index=0; index < arguments.length; index++) {
+    Class<?> argumentType=(arguments[index] == null) ? null : arguments[index].getClass();
+    if (argumentType == null || BeansUtils.isPrimitiveWrapper(argumentType,parameterTypes[index])) {
+      continue;
+    }
+    if (!argumentType.isAssignableFrom(parameterTypes[index])) {
+      return false;
+    }
+  }
+  return true;
+}

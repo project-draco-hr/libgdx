@@ -1,0 +1,49 @@
+{
+  Class<?>[] argTypes=getTypes(args);
+  Method[] methods=null;
+  if (classMethodsCache.containsKey(clazz)) {
+    methods=classMethodsCache.get(clazz);
+  }
+ else {
+    methods=clazz.getMethods();
+    classMethodsCache.put(clazz,methods);
+  }
+  ArrayList<Method> fitMethods=new ArrayList<Method>();
+  for (  Method method : methods) {
+    if (methodName.equals(method.getName())) {
+      if (!isStatic || Modifier.isStatic(method.getModifiers())) {
+        if (match(argTypes,method.getParameterTypes())) {
+          fitMethods.add(method);
+        }
+      }
+    }
+  }
+  int fitSize=fitMethods.size();
+  if (fitSize == 0) {
+    throw new NoSuchMethodException(Messages.getString("beans.41",methodName));
+  }
+  if (fitSize == 1) {
+    return fitMethods.get(0);
+  }
+  MethodComparator comparator=new MethodComparator(methodName,argTypes);
+  Method[] fitMethodArray=fitMethods.toArray(new Method[fitSize]);
+  Method onlyMethod=fitMethodArray[0];
+  Class<?> onlyReturnType, fitReturnType;
+  int difference;
+  for (int i=1; i < fitMethodArray.length; i++) {
+    if ((difference=comparator.compare(onlyMethod,fitMethodArray[i])) == 0) {
+      onlyReturnType=onlyMethod.getReturnType();
+      fitReturnType=fitMethodArray[i].getReturnType();
+      if (onlyReturnType == fitReturnType) {
+        throw new NoSuchMethodException(Messages.getString("beans.62",methodName));
+      }
+      if (onlyReturnType.isAssignableFrom(fitReturnType)) {
+        onlyMethod=fitMethodArray[i];
+      }
+    }
+    if (difference > 0) {
+      onlyMethod=fitMethodArray[i];
+    }
+  }
+  return onlyMethod;
+}

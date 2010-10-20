@@ -1,0 +1,3 @@
+{
+  return isPrimitive() || !isStaticMethod() && !isMethod() && !isProperty()&& !isField()&& !isArray()&& !isReference();
+}

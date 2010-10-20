@@ -1,0 +1,33 @@
+{
+  flushIndent(indent);
+  out.print("<object");
+  Object target=stat.getTarget();
+  if (target instanceof Class<?>) {
+    out.print(" class=\"");
+    out.print(((Class<?>)target).getName());
+    out.print("\"");
+  }
+  Field field=null;
+  if (target instanceof Class<?> && stat.getArguments().length == 1 && stat.getArguments()[0] instanceof String) {
+    try {
+      field=((Class<?>)target).getField((String)stat.getArguments()[0]);
+    }
+ catch (    Exception e) {
+    }
+  }
+  if (field != null && Modifier.isStatic(field.getModifiers())) {
+    out.print(" field=\"");
+    out.print(stat.getArguments()[0]);
+    out.print("\"");
+    out.println("/>");
+  }
+ else {
+    out.print(" method=\"");
+    out.print(stat.getMethodName());
+    out.print("\"");
+    out.println(">");
+    flushObject(stat.getArguments()[0],indent + INDENT_UNIT);
+    flushIndent(indent);
+    out.println("</object>");
+  }
+}

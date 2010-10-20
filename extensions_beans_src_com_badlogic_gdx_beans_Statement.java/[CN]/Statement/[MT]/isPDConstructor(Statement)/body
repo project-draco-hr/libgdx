@@ -1,0 +1,25 @@
+{
+  Object target=stmt.getTarget();
+  String methodName=stmt.getMethodName();
+  Object[] args=stmt.getArguments();
+  String[] sig=new String[pdConstructorSignatures[0].length];
+  if (target == null || methodName == null || args == null || args.length == 0) {
+    return false;
+  }
+  sig[0]=target.getClass().getName();
+  sig[1]=methodName;
+  for (int i=2; i < sig.length; i++) {
+    if (args.length > i - 2) {
+      sig[i]=args[i - 2] != null ? args[i - 2].getClass().getName() : "null";
+    }
+ else {
+      sig[i]="";
+    }
+  }
+  for (  String[] element : pdConstructorSignatures) {
+    if (Arrays.equals(sig,element)) {
+      return true;
+    }
+  }
+  return false;
+}

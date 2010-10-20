@@ -1,0 +1,36 @@
+{
+  super.initialize(type,oldInstance,newInstance,enc);
+  Map map=(Map)oldInstance;
+  Set keySet=map.keySet();
+  for (Iterator i=keySet.iterator(); i.hasNext(); ) {
+    Object key=i.next();
+    Expression getterExp=new Expression(oldInstance,"get",new Object[]{key});
+    try {
+      Object oldVal=getterExp.getValue();
+      enc.writeExpression(getterExp);
+      Object targetVal=enc.get(oldVal);
+      Object newVal=null;
+      try {
+        newVal=new Expression(newInstance,"get",new Object[]{key}).getValue();
+      }
+ catch (      ArrayIndexOutOfBoundsException ex) {
+      }
+      if (null == targetVal) {
+        if (null != newVal) {
+          Statement setterStm=new Statement(oldInstance,"put",new Object[]{key,null});
+          enc.writeStatement(setterStm);
+        }
+      }
+ else {
+        PersistenceDelegate pd=enc.getPersistenceDelegate(targetVal.getClass());
+        if (!pd.mutatesTo(targetVal,newVal)) {
+          Statement setterStm=new Statement(oldInstance,"put",new Object[]{key,oldVal});
+          enc.writeStatement(setterStm);
+        }
+      }
+    }
+ catch (    Exception ex) {
+      enc.getExceptionListener().exceptionThrown(ex);
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  Class<?> result=null;
+  if (className.equals("boolean")) {
+    result=boolean.class;
+  }
+ else   if (className.equals("byte")) {
+    result=byte.class;
+  }
+ else   if (className.equals("char")) {
+    result=char.class;
+  }
+ else   if (className.equals("short")) {
+    result=short.class;
+  }
+ else   if (className.equals("int")) {
+    result=int.class;
+  }
+ else   if (className.equals("long")) {
+    result=long.class;
+  }
+ else   if (className.equals("float")) {
+    result=float.class;
+  }
+ else   if (className.equals("double")) {
+    result=double.class;
+  }
+ else   if (className.equals("string")) {
+    result=String.class;
+  }
+  return result;
+}

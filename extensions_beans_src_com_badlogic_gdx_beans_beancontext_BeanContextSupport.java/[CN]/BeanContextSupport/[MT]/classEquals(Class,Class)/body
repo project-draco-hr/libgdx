@@ -1,0 +1,6 @@
+{
+  if (clz1 == null || clz2 == null) {
+    throw new NullPointerException();
+  }
+  return clz1 == clz2 || clz1.getName().equals(clz2.getName());
+}

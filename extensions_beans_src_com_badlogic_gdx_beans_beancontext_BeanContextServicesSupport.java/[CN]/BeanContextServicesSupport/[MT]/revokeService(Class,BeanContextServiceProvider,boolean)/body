@@ -1,0 +1,22 @@
+{
+  if (serviceClass == null || serviceProvider == null) {
+    throw new NullPointerException();
+  }
+synchronized (globalHierarchyLock) {
+synchronized (services) {
+      BCSSServiceProvider bcssProvider=(BCSSServiceProvider)services.get(serviceClass);
+      if (bcssProvider == null) {
+        return;
+      }
+      if (bcssProvider.getServiceProvider() != serviceProvider) {
+        throw new IllegalArgumentException(Messages.getString("beans.66"));
+      }
+      services.remove(serviceClass);
+      if (serviceProvider instanceof Serializable) {
+        serializable--;
+      }
+    }
+  }
+  fireServiceRevoked(serviceClass,revokeCurrentServicesNow);
+  notifyServiceRevokedToServiceUsers(serviceClass,serviceProvider,revokeCurrentServicesNow);
+}

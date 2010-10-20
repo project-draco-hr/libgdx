@@ -1,0 +1,7 @@
+{
+  super.initialize();
+  services=new HashMap<Class,BCSSServiceProvider>();
+  serializable=0;
+  proxy=null;
+  bcsListeners=new ArrayList<BeanContextServicesListener>();
+}

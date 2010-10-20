@@ -1,0 +1,6 @@
+{
+  if (old == null || old.getClass() == String.class) {
+    return old;
+  }
+  return oldNewMap.get(old);
+}

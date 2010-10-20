@@ -1,0 +1,3 @@
+{
+  return super.hashCode() + BeansUtils.getHashCode(indexedPropertyType) + BeansUtils.getHashCode(indexedGetter)+ BeansUtils.getHashCode(indexedSetter);
+}

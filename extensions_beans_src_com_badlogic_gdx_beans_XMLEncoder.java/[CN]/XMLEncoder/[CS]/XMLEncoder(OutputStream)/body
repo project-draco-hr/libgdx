@@ -1,0 +1,9 @@
+{
+  if (null != out) {
+    try {
+      this.out=new PrintWriter(new OutputStreamWriter(out,DEFAULT_ENCODING),true);
+    }
+ catch (    UnsupportedEncodingException e) {
+    }
+  }
+}

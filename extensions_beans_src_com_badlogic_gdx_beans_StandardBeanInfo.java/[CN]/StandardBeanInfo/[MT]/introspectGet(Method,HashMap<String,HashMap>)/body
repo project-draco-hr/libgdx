@@ -1,0 +1,49 @@
+{
+  String methodName=theMethod.getName();
+  int prefixLength=0;
+  String propertyName;
+  Class propertyType;
+  Class[] paramTypes;
+  HashMap table;
+  ArrayList<Method> getters;
+  if (methodName == null) {
+    return;
+  }
+  if (methodName.startsWith(PREFIX_GET)) {
+    prefixLength=PREFIX_GET.length();
+  }
+  if (methodName.startsWith(PREFIX_IS)) {
+    prefixLength=PREFIX_IS.length();
+  }
+  if (prefixLength == 0) {
+    return;
+  }
+  propertyName=decapitalize(methodName.substring(prefixLength));
+  if (!isValidProperty(propertyName)) {
+    return;
+  }
+  propertyType=theMethod.getReturnType();
+  if (propertyType == null || propertyType == void.class) {
+    return;
+  }
+  if (prefixLength == 2) {
+    if (!(propertyType == boolean.class)) {
+      return;
+    }
+  }
+  paramTypes=theMethod.getParameterTypes();
+  if (paramTypes.length > 1 || (paramTypes.length == 1 && paramTypes[0] != int.class)) {
+    return;
+  }
+  table=propertyTable.get(propertyName);
+  if (table == null) {
+    table=new HashMap();
+    propertyTable.put(propertyName,table);
+  }
+  getters=(ArrayList<Method>)table.get(STR_GETTERS);
+  if (getters == null) {
+    getters=new ArrayList<Method>();
+    table.put(STR_GETTERS,getters);
+  }
+  getters.add(theMethod);
+}

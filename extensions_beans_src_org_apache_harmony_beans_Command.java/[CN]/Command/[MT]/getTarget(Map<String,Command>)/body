@@ -1,0 +1,44 @@
+{
+  if (target == null) {
+    if (isReference()) {
+      Command cmd=references.get(getAttr("idref"));
+      target=(cmd != null) ? cmd.getResultValue() : null;
+    }
+ else     if (isExecutable()) {
+      String className=null;
+      if (isPrimitive()) {
+        className=getPrimitiveClassName(tagName);
+      }
+ else       if (isTag("class")) {
+        className=getPrimitiveClassName(tagName);
+      }
+ else       if (isConstructor() || isStaticMethod() || isField()) {
+        className=getAttr("class");
+      }
+ else       if (isArray()) {
+        className=getAttr("class");
+        Class<?> componentType=isPrimitiveClassName(className) ? getPrimitiveClass(className) : Class.forName(className,true,Thread.currentThread().getContextClassLoader());
+        className=Array.newInstance(componentType,0).getClass().getName();
+      }
+      if (className != null) {
+        try {
+          target=Class.forName(className,true,Thread.currentThread().getContextClassLoader());
+        }
+ catch (        ClassNotFoundException e) {
+          target=Class.forName(className);
+        }
+        if (isField()) {
+          String fieldName=getAttr("field");
+          target=((Class<?>)target).getField(fieldName);
+        }
+      }
+ else {
+        throw new Exception(Messages.getString("beans.42",className));
+      }
+    }
+ else     if (ctx.isArray()) {
+      target=Class.forName("java.lang.reflect.Array");
+    }
+  }
+  return target;
+}

@@ -1,0 +1,7 @@
+{
+  Elem elem=new Elem();
+  elem.id=attributes.getValue("id");
+  obtainTarget(elem,attributes);
+  obtainMethod(elem,attributes);
+  readObjs.push(elem);
+}

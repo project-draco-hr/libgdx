@@ -1,0 +1,50 @@
+{
+  if (type == boolean.class) {
+    boolean[] destination=(boolean[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Boolean)src[index]).booleanValue();
+    }
+  }
+ else   if (type == short.class) {
+    short[] destination=(short[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Short)src[index]).shortValue();
+    }
+  }
+ else   if (type == byte.class) {
+    byte[] destination=(byte[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Byte)src[index]).byteValue();
+    }
+  }
+ else   if (type == char.class) {
+    char[] destination=(char[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Character)src[index]).charValue();
+    }
+  }
+ else   if (type == int.class) {
+    int[] destination=(int[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Integer)src[index]).intValue();
+    }
+  }
+ else   if (type == long.class) {
+    long[] destination=(long[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Long)src[index]).longValue();
+    }
+  }
+ else   if (type == float.class) {
+    float[] destination=(float[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Float)src[index]).floatValue();
+    }
+  }
+ else   if (type == double.class) {
+    double[] destination=(double[])dest;
+    for (int index=0; index < length; index++) {
+      destination[index]=((Double)src[index]).doubleValue();
+    }
+  }
+}

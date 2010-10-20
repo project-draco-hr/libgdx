@@ -1,0 +1,7 @@
+{
+  Class<?>[] types=new Class[arguments.length];
+  for (int index=0; index < arguments.length; ++index) {
+    types[index]=(arguments[index] == null) ? null : arguments[index].getClass();
+  }
+  return types;
+}

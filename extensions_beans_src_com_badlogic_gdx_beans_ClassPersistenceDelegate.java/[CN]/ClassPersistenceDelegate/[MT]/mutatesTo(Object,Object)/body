@@ -1,0 +1,11 @@
+{
+  if (oldInstance instanceof Class<?> && newInstance instanceof Class<?>) {
+    Class<?> c1=(Class<?>)oldInstance;
+    Class<?> c2=(Class<?>)newInstance;
+    if (c1.getName().equals(c2.getName())) {
+      return true;
+    }
+    return false;
+  }
+  return super.mutatesTo(oldInstance,newInstance);
+}

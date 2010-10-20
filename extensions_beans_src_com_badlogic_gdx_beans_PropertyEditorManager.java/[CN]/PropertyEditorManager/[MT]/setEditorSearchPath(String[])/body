@@ -1,0 +1,9 @@
+{
+  SecurityManager sm=System.getSecurityManager();
+  if (sm != null) {
+    sm.checkPropertiesAccess();
+  }
+synchronized (PropertyEditorManager.class) {
+    path=(apath == null) ? new String[0] : apath;
+  }
+}

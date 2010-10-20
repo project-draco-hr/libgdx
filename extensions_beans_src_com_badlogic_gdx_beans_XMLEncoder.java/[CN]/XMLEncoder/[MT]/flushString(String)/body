@@ -1,0 +1,24 @@
+{
+  char c;
+  for (int i=0; i < s.length(); i++) {
+    c=s.charAt(i);
+    if (c == '<') {
+      out.print("&lt;");
+    }
+ else     if (c == '>') {
+      out.print("&gt;");
+    }
+ else     if (c == '&') {
+      out.print("&amp;");
+    }
+ else     if (c == '\'') {
+      out.print("&apos;");
+    }
+ else     if (c == '"') {
+      out.print("&quot;");
+    }
+ else {
+      out.print(c);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  if (initializer != null) {
+    initializer.initialize(applet,context);
+  }
+ else {
+    setStub(applet,loader,deserialized,name);
+  }
+  if (!deserialized) {
+    applet.init();
+  }
+  if (initializer != null) {
+    initializer.activate(applet);
+  }
+}

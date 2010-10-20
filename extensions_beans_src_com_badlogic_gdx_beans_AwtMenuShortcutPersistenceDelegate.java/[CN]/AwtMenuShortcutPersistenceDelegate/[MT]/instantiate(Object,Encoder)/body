@@ -1,0 +1,6 @@
+{
+  MenuShortcut shortcut=(MenuShortcut)oldInstance;
+  int keyCode=shortcut.getKey();
+  boolean useShiftModifier=shortcut.usesShiftModifier();
+  return new Expression(shortcut,shortcut.getClass(),BeansUtils.NEW,new Object[]{keyCode,useShiftModifier});
+}

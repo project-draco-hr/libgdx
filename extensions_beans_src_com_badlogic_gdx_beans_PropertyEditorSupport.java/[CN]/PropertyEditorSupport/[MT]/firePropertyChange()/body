@@ -1,0 +1,14 @@
+{
+  if (listeners.isEmpty()) {
+    return;
+  }
+  List<PropertyChangeListener> copy=new ArrayList<PropertyChangeListener>(listeners.size());
+synchronized (listeners) {
+    copy.addAll(listeners);
+  }
+  PropertyChangeEvent changeAllEvent=new PropertyChangeEvent(source,null,null,null);
+  for (Iterator<PropertyChangeListener> listenersItr=copy.iterator(); listenersItr.hasNext(); ) {
+    PropertyChangeListener listna=listenersItr.next();
+    listna.propertyChange(changeAllEvent);
+  }
+}

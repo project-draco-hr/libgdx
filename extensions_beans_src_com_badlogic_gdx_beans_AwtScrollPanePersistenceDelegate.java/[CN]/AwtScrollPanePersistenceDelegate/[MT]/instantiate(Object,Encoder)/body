@@ -1,0 +1,3 @@
+{
+  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{((ScrollPane)oldInstance).getScrollbarDisplayPolicy()});
+}

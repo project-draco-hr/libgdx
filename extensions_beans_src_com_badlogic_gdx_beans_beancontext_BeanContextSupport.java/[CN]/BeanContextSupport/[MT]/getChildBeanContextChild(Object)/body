@@ -1,0 +1,15 @@
+{
+  if (child instanceof BeanContextChild) {
+    if (child instanceof BeanContextProxy) {
+      throw new IllegalArgumentException(Messages.getString("beans.6C"));
+    }
+    return (BeanContextChild)child;
+  }
+  if (child instanceof BeanContextProxy) {
+    if (child instanceof BeanContextChild) {
+      throw new IllegalArgumentException(Messages.getString("beans.6C"));
+    }
+    return ((BeanContextProxy)child).getBeanContextProxy();
+  }
+  return null;
+}

@@ -1,0 +1,11 @@
+{
+  if (inputStream == null) {
+    return;
+  }
+  try {
+    inputStream.close();
+  }
+ catch (  Exception e) {
+    listener.exceptionThrown(e);
+  }
+}

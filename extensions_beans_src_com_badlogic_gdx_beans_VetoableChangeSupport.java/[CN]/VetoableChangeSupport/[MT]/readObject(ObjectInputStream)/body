@@ -1,0 +1,13 @@
+{
+  ois.defaultReadObject();
+  this.globalListeners=new ArrayList<VetoableChangeListener>();
+  if (null == this.children) {
+    this.children=new Hashtable<String,VetoableChangeSupport>();
+  }
+  Object listener;
+  do {
+    listener=ois.readObject();
+    addVetoableChangeListener((VetoableChangeListener)listener);
+  }
+ while (listener != null);
+}

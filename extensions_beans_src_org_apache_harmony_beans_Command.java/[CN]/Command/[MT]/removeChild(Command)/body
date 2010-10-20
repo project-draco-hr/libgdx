@@ -1,0 +1,5 @@
+{
+  if ((cmd != null) && commands.remove(cmd)) {
+    cmd.setContext(null);
+  }
+}

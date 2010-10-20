@@ -1,0 +1,11 @@
+{
+  super.bcsPreDeserializationHook(ois);
+synchronized (services) {
+    serializable=ois.readInt();
+    for (int i=0; i < serializable; i++) {
+      Object serviceClass=ois.readObject();
+      Object bcssProvider=ois.readObject();
+      services.put((Class)serviceClass,(BCSSServiceProvider)bcssProvider);
+    }
+  }
+}

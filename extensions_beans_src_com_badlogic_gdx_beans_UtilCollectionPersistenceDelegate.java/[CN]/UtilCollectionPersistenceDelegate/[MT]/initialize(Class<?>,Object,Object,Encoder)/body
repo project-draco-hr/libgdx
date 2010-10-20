@@ -1,0 +1,33 @@
+{
+  Collection<?> oldList=(Collection<?>)oldInstance;
+  Collection<?> newList=(Collection<?>)newInstance;
+  Iterator<?> oldIterator=oldList.iterator(), newIterator=newList.iterator();
+  for (; oldIterator.hasNext(); ) {
+    Expression getterExp=new Expression(oldIterator,"next",null);
+    try {
+      Object oldVal=getterExp.getValue();
+      Object newVal=null;
+      try {
+        newVal=new Expression(newIterator,"next",null).getValue();
+      }
+ catch (      ArrayIndexOutOfBoundsException ex) {
+      }
+      if (null == oldVal) {
+        if (null != newVal) {
+          Statement setterStm=new Statement(oldInstance,"add",new Object[]{null});
+          enc.writeStatement(setterStm);
+        }
+      }
+ else {
+        PersistenceDelegate pd=enc.getPersistenceDelegate(oldVal.getClass());
+        if (!pd.mutatesTo(oldVal,newVal)) {
+          Statement setterStm=new Statement(oldInstance,"add",new Object[]{oldVal});
+          enc.writeStatement(setterStm);
+        }
+      }
+    }
+ catch (    Exception ex) {
+      enc.getExceptionListener().exceptionThrown(ex);
+    }
+  }
+}

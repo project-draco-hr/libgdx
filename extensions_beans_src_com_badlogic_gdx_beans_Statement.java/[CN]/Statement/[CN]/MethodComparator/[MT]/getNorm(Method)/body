@@ -1,0 +1,21 @@
+{
+  String methodName=m.getName();
+  Class<?>[] argumentTypes=m.getParameterTypes();
+  int totalNorm=0;
+  if (!referenceMethodName.equals(methodName) || referenceMethodArgumentTypes.length != argumentTypes.length) {
+    return INFINITY;
+  }
+  for (int i=0; i < referenceMethodArgumentTypes.length; i++) {
+    if (referenceMethodArgumentTypes[i] == null) {
+      continue;
+    }
+    if (referenceMethodArgumentTypes[i].isPrimitive()) {
+      referenceMethodArgumentTypes[i]=getPrimitiveWrapper(referenceMethodArgumentTypes[i]);
+    }
+    if (argumentTypes[i].isPrimitive()) {
+      argumentTypes[i]=getPrimitiveWrapper(argumentTypes[i]);
+    }
+    totalNorm+=getDistance(referenceMethodArgumentTypes[i],argumentTypes[i]);
+  }
+  return totalNorm;
+}

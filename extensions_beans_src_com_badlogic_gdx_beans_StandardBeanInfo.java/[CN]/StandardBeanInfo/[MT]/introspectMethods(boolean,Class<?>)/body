@@ -1,0 +1,19 @@
+{
+  Method[] basicMethods=includeSuper ? introspectorClass.getMethods() : introspectorClass.getDeclaredMethods();
+  if (basicMethods == null || basicMethods.length == 0)   return null;
+  ArrayList<MethodDescriptor> methodList=new ArrayList<MethodDescriptor>(basicMethods.length);
+  for (int i=0; i < basicMethods.length; i++) {
+    int modifiers=basicMethods[i].getModifiers();
+    if (Modifier.isPublic(modifiers)) {
+      MethodDescriptor theDescriptor=new MethodDescriptor(basicMethods[i]);
+      methodList.add(theDescriptor);
+    }
+  }
+  int methodCount=methodList.size();
+  MethodDescriptor[] theMethods=null;
+  if (methodCount > 0) {
+    theMethods=new MethodDescriptor[methodCount];
+    theMethods=methodList.toArray(theMethods);
+  }
+  return theMethods;
+}

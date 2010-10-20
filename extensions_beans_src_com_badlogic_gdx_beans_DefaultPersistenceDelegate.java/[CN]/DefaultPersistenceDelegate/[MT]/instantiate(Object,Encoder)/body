@@ -1,0 +1,29 @@
+{
+  Object[] args=null;
+  if (this.propertyNames.length > 0) {
+    BeanInfo info=null;
+    HashMap<String,PropertyDescriptor> proDscMap=null;
+    try {
+      info=Introspector.getBeanInfo(oldInstance.getClass(),Introspector.IGNORE_ALL_BEANINFO);
+      proDscMap=internalAsMap(info.getPropertyDescriptors());
+    }
+ catch (    IntrospectionException ex) {
+      enc.getExceptionListener().exceptionThrown(ex);
+      throw new Error(ex);
+    }
+    args=new Object[this.propertyNames.length];
+    for (int i=0; i < this.propertyNames.length; i++) {
+      String propertyName=propertyNames[i];
+      if (null == propertyName || 0 == propertyName.length()) {
+        continue;
+      }
+      try {
+        args[i]=getPropertyValue(proDscMap,oldInstance,this.propertyNames[i]);
+      }
+ catch (      Exception ex) {
+        enc.getExceptionListener().exceptionThrown(ex);
+      }
+    }
+  }
+  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,args);
+}

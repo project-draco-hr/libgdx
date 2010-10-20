@@ -1,0 +1,29 @@
+{
+  String type=PREFIX_GET;
+  String methodName=theMethod.getName();
+  if (methodName == null) {
+    return;
+  }
+  if (!((methodName.startsWith(type)) && (methodName.endsWith(SUFFIX_LISTEN + "s")))) {
+    return;
+  }
+  String listenerName=methodName.substring(type.length(),methodName.length() - 1);
+  String eventName=listenerName.substring(0,listenerName.lastIndexOf(SUFFIX_LISTEN));
+  if ((eventName == null) || (eventName.length() == 0)) {
+    return;
+  }
+  Class[] paramTypes=theMethod.getParameterTypes();
+  if ((paramTypes == null) || (paramTypes.length != 0)) {
+    return;
+  }
+  Class returnType=theMethod.getReturnType();
+  if ((returnType.getComponentType() == null) || (!returnType.getComponentType().getName().endsWith(listenerName))) {
+    return;
+  }
+  HashMap table=methodsTable.get(eventName);
+  if (table == null) {
+    table=new HashMap();
+  }
+  table.put(type,theMethod);
+  methodsTable.put(eventName,table);
+}

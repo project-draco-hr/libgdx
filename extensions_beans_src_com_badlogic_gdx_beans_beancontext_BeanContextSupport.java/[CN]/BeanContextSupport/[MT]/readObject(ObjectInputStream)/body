@@ -1,0 +1,11 @@
+{
+  ois.defaultReadObject();
+  initialize();
+  bcsPreDeserializationHook(ois);
+  if (this == getBeanContextPeer()) {
+    readChildren(ois);
+  }
+synchronized (bcmListeners) {
+    deserialize(ois,bcmListeners);
+  }
+}

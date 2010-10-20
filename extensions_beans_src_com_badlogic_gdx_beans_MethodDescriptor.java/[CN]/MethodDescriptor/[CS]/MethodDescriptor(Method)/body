@@ -1,0 +1,8 @@
+{
+  super();
+  if (method == null) {
+    throw new NullPointerException();
+  }
+  this.method=method;
+  setName(method.getName());
+}

@@ -1,0 +1,15 @@
+{
+  if (status == Command.INITIALIZED) {
+    for (int i=0; i < commands.size(); ++i) {
+      Command cmd=commands.elementAt(i);
+      if (cmd.isExecutable()) {
+        arguments.add(cmd);
+      }
+ else {
+        operations.add(cmd);
+      }
+    }
+    return Command.CHILDREN_FILTERED;
+  }
+  return status;
+}

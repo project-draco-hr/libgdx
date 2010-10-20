@@ -1,0 +1,15 @@
+{
+  if (child == null || requestor == null || service == null) {
+    throw new NullPointerException();
+  }
+synchronized (globalHierarchyLock) {
+    BCSSChild bcssChild;
+synchronized (children) {
+      bcssChild=(BCSSChild)children.get(child);
+    }
+    if (bcssChild == null) {
+      throw new IllegalArgumentException(Messages.getString("beans.65"));
+    }
+    releaseServiceWithoutCheck(child,bcssChild,requestor,service,false);
+  }
+}

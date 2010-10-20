@@ -1,0 +1,37 @@
+{
+  if (force || !explicitProperties) {
+    PropertyDescriptor[] superDescs=beanInfo.getPropertyDescriptors();
+    if (superDescs != null) {
+      if (getPropertyDescriptors() != null) {
+        properties=mergeProps(superDescs,beanInfo.getDefaultPropertyIndex());
+      }
+ else {
+        properties=superDescs;
+        defaultPropertyIndex=beanInfo.getDefaultPropertyIndex();
+      }
+    }
+  }
+  if (force || !explicitMethods) {
+    MethodDescriptor[] superMethods=beanInfo.getMethodDescriptors();
+    if (superMethods != null) {
+      if (methods != null) {
+        methods=mergeMethods(superMethods);
+      }
+ else {
+        methods=superMethods;
+      }
+    }
+  }
+  if (force || !explicitEvents) {
+    EventSetDescriptor[] superEvents=beanInfo.getEventSetDescriptors();
+    if (superEvents != null) {
+      if (events != null) {
+        events=mergeEvents(superEvents,beanInfo.getDefaultEventIndex());
+      }
+ else {
+        events=superEvents;
+        defaultEventIndex=beanInfo.getDefaultEventIndex();
+      }
+    }
+  }
+}

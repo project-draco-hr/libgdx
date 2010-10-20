@@ -1,0 +1,33 @@
+{
+  String beanInfoClassName=beanClass.getName() + "BeanInfo";
+  try {
+    return loadBeanInfo(beanInfoClassName,beanClass);
+  }
+ catch (  Exception e) {
+  }
+  int index=beanInfoClassName.lastIndexOf('.');
+  String beanInfoName=index >= 0 ? beanInfoClassName.substring(index + 1) : beanInfoClassName;
+  BeanInfo theBeanInfo=null;
+  BeanDescriptor beanDescriptor=null;
+  for (int i=0; i < searchPath.length; i++) {
+    beanInfoClassName=searchPath[i] + "." + beanInfoName;
+    try {
+      theBeanInfo=loadBeanInfo(beanInfoClassName,beanClass);
+    }
+ catch (    Exception e) {
+      continue;
+    }
+    beanDescriptor=theBeanInfo.getBeanDescriptor();
+    if (beanDescriptor != null && beanClass == beanDescriptor.getBeanClass()) {
+      return theBeanInfo;
+    }
+  }
+  if (BeanInfo.class.isAssignableFrom(beanClass)) {
+    try {
+      return loadBeanInfo(beanClass.getName(),beanClass);
+    }
+ catch (    Exception e) {
+    }
+  }
+  return null;
+}

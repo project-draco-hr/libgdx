@@ -1,0 +1,6 @@
+{
+  if (type == null || delegate == null) {
+    throw new NullPointerException();
+  }
+  delegates.put(type,delegate);
+}

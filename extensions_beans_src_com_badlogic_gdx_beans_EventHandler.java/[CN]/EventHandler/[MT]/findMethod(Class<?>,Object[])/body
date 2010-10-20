@@ -1,0 +1,9 @@
+{
+  Method[] methods=type.getMethods();
+  for (  Method method : methods) {
+    if (action.equals(method.getName()) && canInvokeWithArguments(method,args)) {
+      return method;
+    }
+  }
+  return null;
+}

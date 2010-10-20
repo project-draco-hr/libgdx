@@ -1,0 +1,13 @@
+{
+  String shortClassName=null;
+  if (data.equals("int")) {
+    shortClassName="Integer";
+  }
+ else   if (data.equals("char")) {
+    shortClassName="Character";
+  }
+ else {
+    shortClassName=data.substring(0,1).toUpperCase() + data.substring(1,data.length());
+  }
+  return "java.lang." + shortClassName;
+}

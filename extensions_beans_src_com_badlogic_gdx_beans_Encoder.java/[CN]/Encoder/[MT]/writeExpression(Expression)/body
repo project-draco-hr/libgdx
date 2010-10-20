@@ -1,0 +1,21 @@
+{
+  if (oldExp == null) {
+    throw new NullPointerException();
+  }
+  try {
+    Object oldValue=expressionValue(oldExp);
+    if (oldValue == null || get(oldValue) != null) {
+      return;
+    }
+    Expression newExp=(Expression)createNewStatement(oldExp);
+    try {
+      oldNewMap.put(oldValue,newExp.getValue());
+    }
+ catch (    IndexOutOfBoundsException e) {
+    }
+    writeObject(oldValue);
+  }
+ catch (  Exception e) {
+    listener.exceptionThrown(new Exception("failed to write expression: " + oldExp,e));
+  }
+}

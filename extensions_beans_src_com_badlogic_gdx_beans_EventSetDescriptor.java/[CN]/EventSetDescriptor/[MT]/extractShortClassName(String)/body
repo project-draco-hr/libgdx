@@ -1,0 +1,5 @@
+{
+  int k=fullClassName.lastIndexOf('$');
+  k=(k == -1 ? fullClassName.lastIndexOf('.') : k);
+  return fullClassName.substring(k + 1);
+}

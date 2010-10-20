@@ -1,0 +1,8 @@
+{
+  if ((propertyName != null) && (listener != null)) {
+    VetoableChangeSupport listeners=children.get(propertyName);
+    if (listeners != null) {
+      listeners.removeVetoableChangeListener(listener);
+    }
+  }
+}
