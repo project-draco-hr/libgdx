@@ -9,9 +9,7 @@
     atlas.addRegion("rotate",64,0,64,32);
     atlas.addRegion("scale",64,32,64,32);
     Image img1=new Image("image1",atlas.getRegion("blend"));
-    img1.action(MoveTo.$(100,100,2));
-    img1.action(RotateTo.$(360,2));
-    img1.action(ScaleTo.$(0.5f,0.5f,2));
+    img1.action(Sequence.$(MoveTo.$(100,100,1),ScaleTo.$(0.5f,0.5f,1),FadeOut.$(0.5f),Delay.$(Parallel.$(RotateTo.$(360,1),FadeIn.$(1),ScaleTo.$(1,1,1)),1)));
     ui.addActor(img1);
   }
 }
