@@ -1,0 +1,9 @@
+{
+  texture=Gdx.graphics.newTexture(file,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  if (width == -1)   width=texture.getWidth();
+  if (height == -1)   height=texture.getHeight();
+  setBounds(0,0,width,height);
+  setTextureBounds(0,0,width,height);
+  setColor(1,1,1,1);
+  flip(false,true);
+}

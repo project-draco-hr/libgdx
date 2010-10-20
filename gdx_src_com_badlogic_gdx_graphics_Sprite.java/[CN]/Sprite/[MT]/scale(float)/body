@@ -1,0 +1,10 @@
+{
+  vertices[X1]=vertices[X6]=originX + (vertices[X1] - originX) * scale;
+  vertices[Y1]=vertices[Y6]=originY + (vertices[Y1] - originY) * scale;
+  vertices[X2]=originX + (vertices[X2] - originX) * scale;
+  vertices[Y2]=originY + (vertices[Y2] - originY) * scale;
+  vertices[X3]=vertices[X4]=originX + (vertices[X3] - originX) * scale;
+  vertices[Y3]=vertices[Y4]=originY + (vertices[Y3] - originY) * scale;
+  vertices[X5]=originX + (vertices[X5] - originX) * scale;
+  vertices[Y5]=originY + (vertices[Y5] - originY) * scale;
+}

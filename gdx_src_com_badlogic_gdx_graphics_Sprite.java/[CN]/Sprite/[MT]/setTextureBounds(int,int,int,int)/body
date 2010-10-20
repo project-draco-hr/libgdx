@@ -1,0 +1,20 @@
+{
+  float invTexWidth=1.0f / texture.getWidth();
+  float invTexHeight=1.0f / texture.getHeight();
+  float u=srcX * invTexWidth;
+  float v=(srcY + srcHeight) * invTexHeight;
+  float u2=(srcX + srcWidth) * invTexWidth;
+  float v2=srcY * invTexHeight;
+  vertices[U1]=u;
+  vertices[V1]=v;
+  vertices[U2]=u;
+  vertices[V2]=v2;
+  vertices[U3]=u2;
+  vertices[V3]=v2;
+  vertices[U4]=u2;
+  vertices[V4]=v2;
+  vertices[U5]=u2;
+  vertices[V5]=v;
+  vertices[U6]=u;
+  vertices[V6]=v;
+}
