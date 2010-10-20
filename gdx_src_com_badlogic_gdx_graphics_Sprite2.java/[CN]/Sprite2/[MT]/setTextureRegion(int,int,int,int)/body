@@ -1,0 +1,24 @@
+{
+  this.srcX=srcX;
+  this.srcY=srcY;
+  this.srcWidth=srcWidth;
+  this.srcHeight=srcHeight;
+  final float invTexWidth=1.0f / texture.getWidth();
+  final float invTexHeight=1.0f / texture.getHeight();
+  final float u=srcX * invTexWidth;
+  final float v=(srcY + srcHeight) * invTexHeight;
+  final float u2=(srcX + srcWidth) * invTexWidth;
+  final float v2=srcY * invTexHeight;
+  vertices[U1]=u;
+  vertices[V1]=v;
+  vertices[U2]=u;
+  vertices[V2]=v2;
+  vertices[U3]=u2;
+  vertices[V3]=v2;
+  vertices[U4]=u2;
+  vertices[V4]=v2;
+  vertices[U5]=u2;
+  vertices[V5]=v;
+  vertices[U6]=u;
+  vertices[V6]=v;
+}

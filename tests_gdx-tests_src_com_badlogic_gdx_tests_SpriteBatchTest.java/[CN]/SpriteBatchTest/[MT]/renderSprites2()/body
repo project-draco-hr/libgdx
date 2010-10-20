@@ -10,17 +10,35 @@
   long start=System.nanoTime();
   spriteBatch.begin();
   begin=(System.nanoTime() - start) / 1000000000.0f;
+  float angleInc=ROTATION_SPEED * Gdx.graphics.getDeltaTime();
+  scale+=SCALE_SPEED * Gdx.graphics.getDeltaTime();
+  if (scale < 0.5f) {
+    scale=0.5f;
+    SCALE_SPEED=1;
+  }
+  if (scale > 1.0f) {
+    scale=1.0f;
+    SCALE_SPEED=-1;
+  }
   start=System.nanoTime();
-  spriteBatch.draw(texture,sprites,Color.WHITE);
+  for (int i=0; i < SPRITES; i++) {
+    if (angleInc != 0)     sprites4[i].rotate(angleInc);
+    if (scale != 1)     sprites4[i].setScale(scale);
+    spriteBatch.draw(sprites4[i]);
+  }
   draw1=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
-  spriteBatch.draw(texture2,sprites2,Color.WHITE);
+  for (int i=SPRITES; i < SPRITES << 1; i++) {
+    if (angleInc != 0)     sprites4[i].rotate(angleInc);
+    if (scale != 1)     sprites4[i].setScale(scale);
+    spriteBatch.draw(sprites4[i]);
+  }
   draw2=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
   spriteBatch.drawText(font,"Question?",100,300,Color.RED);
   spriteBatch.drawText(font,"and another this is a test",200,100,Color.WHITE);
   spriteBatch.drawText(font,"all hail and another this is a test",200,200,Color.WHITE);
-  spriteBatch.drawText(font,"array fps: " + Gdx.graphics.getFramesPerSecond(),10,40,Color.RED);
+  spriteBatch.drawText(font,"Sprite2 fps: " + Gdx.graphics.getFramesPerSecond(),10,30,Color.RED);
   drawText=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
   spriteBatch.end();

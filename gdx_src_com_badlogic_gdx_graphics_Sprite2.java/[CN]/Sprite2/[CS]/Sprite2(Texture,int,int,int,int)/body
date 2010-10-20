@@ -1,0 +1,14 @@
+{
+  this.texture=texture;
+  setTextureRegion(srcX,srcY,srcWidth,srcHeight);
+  color=new Color(1,1,1,1);
+  setColor(color);
+  width=srcWidth;
+  height=srcHeight;
+  originX=width / 2;
+  originY=height / 2;
+  scaleX=1;
+  scaleY=1;
+  rotation=0;
+  dirty=true;
+}

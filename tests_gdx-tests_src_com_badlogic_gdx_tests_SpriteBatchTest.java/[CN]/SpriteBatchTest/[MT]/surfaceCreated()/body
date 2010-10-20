@@ -1,7 +1,7 @@
 {
   if (spriteBatch == null)   spriteBatch=new SpriteBatch(10000);
   Pixmap pixmap=Gdx.graphics.newPixmap(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal));
-  texture=Gdx.graphics.newUnmanagedTexture(32,32,Format.RGB565,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture=Gdx.graphics.newUnmanagedTexture(32,32,Format.RGB565,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   texture.draw(pixmap,0,0);
   pixmap.dispose();
   pixmap=Gdx.graphics.newPixmap(32,32,Format.RGBA8888);
@@ -25,9 +25,15 @@
     sprites2[i + 5]=32;
   }
   for (int i=0; i < SPRITES * 2; i++) {
+    int x=(int)(Math.random() * (Gdx.graphics.getWidth() - 32));
+    int y=(int)(Math.random() * (Gdx.graphics.getHeight() - 32));
     sprites3[i]=new Sprite(texture,0,0,32,32);
-    sprites3[i].setBounds((int)(Math.random() * (Gdx.graphics.getWidth() - 32)),(int)(Math.random() * (Gdx.graphics.getHeight() - 32)),32,32);
+    sprites3[i].setBounds(x,y,32,32);
+    sprites3[i].flip(false,true);
     if (i >= SPRITES)     sprites3[i].texture=texture2;
+    sprites4[i]=new Sprite2(texture);
+    sprites4[i].setBounds(x,y,32,32);
+    if (i >= SPRITES)     sprites4[i].texture=texture2;
   }
   Gdx.input.addInputListener(this);
 }

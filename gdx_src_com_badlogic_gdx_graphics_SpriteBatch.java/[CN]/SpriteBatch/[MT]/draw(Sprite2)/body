@@ -1,0 +1,13 @@
+{
+  if (!drawing)   throw new IllegalStateException("you have to call SpriteBatch.begin() first");
+  if (sprite.texture != lastTexture) {
+    renderMesh();
+    lastTexture=sprite.texture;
+    invTexWidth=1.0f / sprite.texture.getWidth();
+    invTexHeight=1.0f / sprite.texture.getHeight();
+  }
+  useTextBlend=false;
+  sprite.computeVertices(vertices,idx);
+  idx+=30;
+  if (idx == vertices.length)   renderMesh();
+}
