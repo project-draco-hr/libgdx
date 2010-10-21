@@ -12,7 +12,8 @@
  else {
     useVBO=Gdx.graphics.isGL11Available() == true || Gdx.graphics.isGL20Available() == true;
     if (useVBO) {
-      isDirect=true;
+      if (Gdx.app.getVersion() < 5)       isDirect=false;
+ else       isDirect=true;
     }
  else     isDirect=true;
   }
@@ -27,14 +28,17 @@
     indices=buffer.asShortBuffer();
   }
  else {
-    ByteBuffer buffer=ByteBuffer.allocate(maxVertices * this.attributes.vertexSize);
-    buffer.order(ByteOrder.nativeOrder());
-    vertices=buffer;
-    verticesFixed=buffer.asIntBuffer();
-    verticesFloat=buffer.asFloatBuffer();
-    buffer=ByteBuffer.allocateDirect(maxIndices * 2);
-    buffer.order(ByteOrder.nativeOrder());
-    indices=buffer.asShortBuffer();
+    if (useFixedPoint) {
+      verticesFixed=IntBuffer.allocate(maxVertices * this.attributes.vertexSize / 4);
+      verticesFloat=null;
+      vertices=verticesFixed;
+    }
+ else {
+      verticesFloat=FloatBuffer.allocate(maxVertices * this.attributes.vertexSize / 4);
+      verticesFixed=null;
+      vertices=verticesFloat;
+    }
+    indices=ShortBuffer.allocate(maxIndices);
   }
   bufferCreatedFirstTime=false;
   if (managed)   meshes.add(this);

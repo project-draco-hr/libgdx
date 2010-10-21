@@ -10,8 +10,6 @@
     this.verticesFloat.put(vertices,offset,count);
     this.verticesFloat.limit(count);
     this.verticesFloat.position(0);
-    this.vertices.limit(verticesFloat.limit() << 2);
-    this.vertices.position(0);
   }
   dirty=true;
 }

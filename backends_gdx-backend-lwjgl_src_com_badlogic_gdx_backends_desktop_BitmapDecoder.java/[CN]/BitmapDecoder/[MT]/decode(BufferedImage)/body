@@ -5,7 +5,7 @@
   WritableRaster raster;
   if (tempImage == null || tempImage.getWidth() < width || tempImage.getHeight() < height) {
     raster=Raster.createInterleavedRaster(DataBuffer.TYPE_BYTE,width,height,4,null);
-    tempImage=new BufferedImage(rgbaColorModel,raster,false,new Hashtable());
+    tempImage=new BufferedImage(rgbaColorModel,raster,true,new Hashtable());
   }
  else   raster=tempImage.getRaster();
   Graphics2D g=(Graphics2D)tempImage.getGraphics();
