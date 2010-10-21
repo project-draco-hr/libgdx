@@ -23,14 +23,14 @@
   start=System.nanoTime();
   for (int i=0; i < SPRITES; i++) {
     if (angleInc != 0)     sprites3[i].rotate(angleInc);
-    if (scale != 1)     sprites3[i].scale(scale);
+    if (scale != 1)     sprites3[i].setScale(scale);
     spriteBatch.draw(sprites3[i]);
   }
   draw1=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
   for (int i=SPRITES; i < SPRITES << 1; i++) {
     if (angleInc != 0)     sprites3[i].rotate(angleInc);
-    if (scale != 1)     sprites3[i].scale(scale);
+    if (scale != 1)     sprites3[i].setScale(scale);
     spriteBatch.draw(sprites3[i]);
   }
   draw2=(System.nanoTime() - start) / 1000000000.0f;
