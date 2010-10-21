@@ -8,8 +8,13 @@
     atlas.addRegion("!blend",0,32,64,32);
     atlas.addRegion("rotate",64,0,64,32);
     atlas.addRegion("scale",64,32,64,32);
+    atlas.addRegion("button",0,64,64,32);
+    atlas.addRegion("buttonDown",-2,62,64,32);
     Image img1=new Image("image1",atlas.getRegion("blend"));
-    img1.action(Sequence.$(MoveTo.$(100,100,1),ScaleTo.$(0.5f,0.5f,1),FadeOut.$(0.5f),Delay.$(Parallel.$(RotateTo.$(360,1),FadeIn.$(1),ScaleTo.$(1,1,1)),1)));
+    img1.action(Sequence.$(Delay.$(MoveTo.$(100,100,1),2),ScaleTo.$(0.5f,0.5f,1),FadeOut.$(0.5f),Delay.$(Parallel.$(RotateTo.$(360,1),FadeIn.$(1),ScaleTo.$(1,1,1)),1)));
     ui.addActor(img1);
+    Button button=new Button("button",atlas.getRegion("button"),atlas.getRegion("buttonDown"));
+    button.x=100;
+    ui.addActor(button);
   }
 }
