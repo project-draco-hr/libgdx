@@ -1,7 +1,6 @@
 {
   super();
   loadLibraries();
-  this.application=application;
   GLCapabilities caps=new GLCapabilities();
   caps.setRedBits(8);
   caps.setGreenBits(8);

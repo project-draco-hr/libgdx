@@ -9,7 +9,6 @@
   if (image != null) {
     this.texWidth=image.getWidth();
     this.texHeight=image.getHeight();
-    this.format=image.getConfig();
   }
   this.gl10=gl;
   if (minFilter == TextureFilter.MipMap)   isMipMap=true;

@@ -1,4 +1,4 @@
 {
-  AppletApplication app=new AppletApplication(this,false,false);
+  new AppletApplication(this,false,false);
   Gdx.graphics.setRenderListener(this);
 }

@@ -1,5 +1,5 @@
 {
   iter();
-  T v=null;
+  @SuppressWarnings("unused") T v=null;
   while ((v=next()) != null)   remove();
 }
