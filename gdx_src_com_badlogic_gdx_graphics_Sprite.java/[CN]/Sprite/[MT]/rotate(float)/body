@@ -4,18 +4,18 @@
   float x, y;
   x=vertices[X1] - originX;
   y=vertices[Y1] - originY;
-  vertices[X1]=vertices[X6]=x * cos - y * sin + originX;
-  vertices[Y1]=vertices[Y6]=y * cos + x * sin + originY;
+  vertices[X1]=x * cos - y * sin + originX;
+  vertices[Y1]=y * cos + x * sin + originY;
   x=vertices[X2] - originX;
   y=vertices[Y2] - originY;
   vertices[X2]=x * cos - y * sin + originX;
   vertices[Y2]=y * cos + x * sin + originY;
   x=vertices[X3] - originX;
   y=vertices[Y3] - originY;
-  vertices[X3]=vertices[X4]=x * cos - y * sin + originX;
-  vertices[Y3]=vertices[Y4]=y * cos + x * sin + originY;
-  x=vertices[X5] - originX;
-  y=vertices[Y5] - originY;
-  vertices[X5]=x * cos - y * sin + originX;
-  vertices[Y5]=y * cos + x * sin + originY;
+  vertices[X3]=x * cos - y * sin + originX;
+  vertices[Y3]=y * cos + x * sin + originY;
+  x=vertices[X4] - originX;
+  y=vertices[Y4] - originY;
+  vertices[X4]=x * cos - y * sin + originX;
+  vertices[Y4]=y * cos + x * sin + originY;
 }

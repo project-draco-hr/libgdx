@@ -6,8 +6,6 @@
     vertices[U2]=u2;
     vertices[U3]=u;
     vertices[U4]=u;
-    vertices[U5]=u;
-    vertices[U6]=u2;
   }
   if (y) {
     float v=vertices[V1];
@@ -15,8 +13,6 @@
     vertices[V1]=v2;
     vertices[V2]=v;
     vertices[V3]=v;
-    vertices[V4]=v;
-    vertices[V5]=v2;
-    vertices[V6]=v2;
+    vertices[V4]=v2;
   }
 }

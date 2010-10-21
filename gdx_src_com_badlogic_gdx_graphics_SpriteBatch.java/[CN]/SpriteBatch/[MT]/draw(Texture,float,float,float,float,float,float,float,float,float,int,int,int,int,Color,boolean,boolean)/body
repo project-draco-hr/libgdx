@@ -95,20 +95,10 @@
   vertices[idx++]=color;
   vertices[idx++]=u2;
   vertices[idx++]=v2;
-  vertices[idx++]=x3;
-  vertices[idx++]=y3;
-  vertices[idx++]=color;
-  vertices[idx++]=u2;
-  vertices[idx++]=v2;
   vertices[idx++]=x4;
   vertices[idx++]=y4;
   vertices[idx++]=color;
   vertices[idx++]=u2;
-  vertices[idx++]=v;
-  vertices[idx++]=x1;
-  vertices[idx++]=y1;
-  vertices[idx++]=color;
-  vertices[idx++]=u;
   vertices[idx++]=v;
   if (idx == vertices.length)   renderMesh();
 }

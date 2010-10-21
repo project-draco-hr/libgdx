@@ -8,6 +8,6 @@
   }
   useTextBlend=false;
   sprite.computeVertices(vertices,idx);
-  idx+=30;
+  idx+=20;
   if (idx == vertices.length)   renderMesh();
 }

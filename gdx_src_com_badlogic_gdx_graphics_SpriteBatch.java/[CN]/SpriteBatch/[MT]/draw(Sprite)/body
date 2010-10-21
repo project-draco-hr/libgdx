@@ -7,7 +7,7 @@
     invTexHeight=1.0f / sprite.texture.getHeight();
   }
   useTextBlend=false;
-  System.arraycopy(sprite.vertices,0,vertices,idx,30);
-  idx+=30;
+  System.arraycopy(sprite.vertices,0,vertices,idx,20);
+  idx+=20;
   if (idx == vertices.length)   renderMesh();
 }

@@ -1,5 +1,5 @@
 {
-  if (spriteBatch == null)   spriteBatch=new SpriteBatch(10000);
+  if (spriteBatch == null)   spriteBatch=new SpriteBatch(1000);
   Pixmap pixmap=Gdx.graphics.newPixmap(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal));
   texture=Gdx.graphics.newUnmanagedTexture(32,32,Format.RGB565,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   texture.draw(pixmap,0,0);
