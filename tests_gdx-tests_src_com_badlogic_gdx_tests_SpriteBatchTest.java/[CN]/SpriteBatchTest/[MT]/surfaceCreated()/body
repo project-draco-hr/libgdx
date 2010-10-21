@@ -31,9 +31,6 @@
  else     sprites3[i]=new Sprite(texture,32,32);
     sprites3[i].setPosition(x,y);
     sprites3[i].setOrigin(16,16);
-    sprites4[i]=new Sprite2(texture);
-    sprites4[i].setBounds(x,y,32,32);
-    if (i >= SPRITES)     sprites4[i].texture=texture2;
   }
   Gdx.input.addInputListener(this);
 }

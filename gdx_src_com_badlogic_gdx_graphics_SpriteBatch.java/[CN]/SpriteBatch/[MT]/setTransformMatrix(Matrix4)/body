@@ -1,0 +1,4 @@
+{
+  if (drawing)   throw new GdxRuntimeException("Can't set the matrix within begin()/end() block");
+  transformMatrix.set(transform);
+}
