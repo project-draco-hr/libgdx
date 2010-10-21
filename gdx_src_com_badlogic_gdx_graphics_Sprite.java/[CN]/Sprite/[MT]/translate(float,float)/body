@@ -1,6 +1,7 @@
 {
   x+=xAmount;
   y+=yAmount;
+  if (dirty)   return;
   float[] vertices=this.vertices;
   vertices[X1]+=xAmount;
   vertices[Y1]+=yAmount;

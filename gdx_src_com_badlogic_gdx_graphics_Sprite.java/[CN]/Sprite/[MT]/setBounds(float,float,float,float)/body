@@ -3,6 +3,7 @@
   this.y=y;
   this.width=width;
   this.height=height;
+  if (dirty)   return;
   float x2=x + width;
   float y2=y + height;
   float[] vertices=this.vertices;
