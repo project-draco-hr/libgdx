@@ -1,11 +1,21 @@
 {
   if (dirty) {
+    final float x=this.x;
+    final float y=this.y;
+    final float originX=this.originX;
+    final float originY=this.originY;
+    final float width=this.width;
+    final float height=this.height;
+    final float scaleX=this.scaleX;
+    final float scaleY=this.scaleY;
+    final float rotation=this.rotation;
+    final float[] vertices=this.vertices;
     final float worldOriginX=x + originX;
     final float worldOriginY=y + originY;
-    float fx=x - worldOriginX;
-    float fy=y - worldOriginY;
-    float fx2=x + width - worldOriginX;
-    float fy2=y + height - worldOriginY;
+    float fx=-originX;
+    float fy=-originY;
+    float fx2=width - originX;
+    float fy2=height - originY;
     if (scaleX != 1 || scaleY != 1) {
       fx*=scaleX;
       fy*=scaleY;

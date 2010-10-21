@@ -1,8 +1,7 @@
 {
   this.texture=texture;
   setTextureRegion(srcX,srcY,srcWidth,srcHeight);
-  color=new Color(1,1,1,1);
-  setColor(color);
+  setColor(1,1,1,1);
   width=srcWidth;
   height=srcHeight;
   originX=width / 2;

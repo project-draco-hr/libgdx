@@ -1,6 +1,9 @@
 {
-  this.color.set(r,g,b,a);
-  float c=color.toFloatBits();
+  this.r=r;
+  this.g=g;
+  this.b=b;
+  this.a=a;
+  float c=Color.toFloatBits(r,g,b,a);
   vertices[C1]=c;
   vertices[C2]=c;
   vertices[C3]=c;
