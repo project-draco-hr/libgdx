@@ -1,6 +1,6 @@
 {
   if (useFixedPoint && Gdx.graphics.getType() == GraphicsType.JoglGL)   return;
-  if (Gdx.graphics.isGL11Available() == false && Gdx.graphics.isGL20Available() == false)   return;
+  if (!useVBO)   return;
   if (Gdx.graphics.isGL20Available())   constructBufferObjects(Gdx.graphics.getGL20());
  else   constructBufferObjects(Gdx.graphics.getGL11());
 }

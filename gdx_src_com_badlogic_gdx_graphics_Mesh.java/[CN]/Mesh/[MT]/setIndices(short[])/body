@@ -1,5 +1,6 @@
 {
   this.indices.put(indices);
+  this.indices.limit(indices.length);
   this.indices.position(0);
   dirty=true;
 }
