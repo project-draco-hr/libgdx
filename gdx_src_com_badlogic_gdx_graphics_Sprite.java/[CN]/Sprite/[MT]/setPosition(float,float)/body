@@ -1,12 +1,3 @@
 {
-  float x2=x + width;
-  float y2=y + height;
-  vertices[X1]=x;
-  vertices[Y1]=y;
-  vertices[X2]=x;
-  vertices[Y2]=y2;
-  vertices[X3]=x2;
-  vertices[Y3]=y2;
-  vertices[X4]=x2;
-  vertices[Y4]=y;
+  translate(x - this.x,y - this.y);
 }

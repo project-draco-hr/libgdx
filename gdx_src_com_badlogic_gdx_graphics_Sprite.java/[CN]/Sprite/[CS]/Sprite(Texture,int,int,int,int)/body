@@ -1,6 +1,7 @@
 {
   this.texture=texture;
-  setTextureBounds(srcX,srcY,srcWidth,srcHeight);
+  setTextureRegion(srcX,srcY,srcWidth,srcHeight);
   setColor(1,1,1,1);
-  flip(false,true);
+  setBounds(0,0,srcWidth,srcHeight);
+  setOrigin(srcWidth / 2,srcHeight / 2);
 }

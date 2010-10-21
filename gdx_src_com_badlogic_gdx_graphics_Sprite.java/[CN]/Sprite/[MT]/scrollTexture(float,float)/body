@@ -1,4 +1,5 @@
 {
+  float[] vertices=this.vertices;
   if (xAmount > 0) {
     float u=(vertices[2] + xAmount) % 1;
     float u2=u + width / texture.getWidth();
