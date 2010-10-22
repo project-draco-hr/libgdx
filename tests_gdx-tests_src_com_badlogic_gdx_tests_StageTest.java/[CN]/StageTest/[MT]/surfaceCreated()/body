@@ -9,8 +9,8 @@
       Group group=new Group("group" + i);
       group.x=(float)Math.random() * (stage.width() - NUM_SPRITES * (32 + SPACING));
       group.y=(float)Math.random() * (stage.height() - NUM_SPRITES * (32 + SPACING));
-      group.refX=loc;
-      group.refY=loc;
+      group.originX=loc;
+      group.originY=loc;
       fillGroup(group,texture);
       stage.addActor(group);
     }

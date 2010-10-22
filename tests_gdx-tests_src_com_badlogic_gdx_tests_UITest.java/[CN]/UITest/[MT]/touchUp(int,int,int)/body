@@ -1,12 +1,14 @@
 {
   if (!ui.touchUp(x,y,pointer)) {
     Actor actor=ui.findActor("image1");
-    ui.toStageCoordinates(x,y,point);
-    actor.clearActions();
-    actor.action(MoveTo.$(point.x,point.y,2));
-    actor.action(RotateTo.$(actor.rotation + 90,2));
-    if (actor.scaleX == 1.0f)     actor.action(ScaleTo.$(0.5f,0.5f,2));
- else     actor.action(ScaleTo.$(1f,1f,2));
+    if (actor != null) {
+      ui.toStageCoordinates(x,y,point);
+      actor.clearActions();
+      actor.action(MoveTo.$(point.x,point.y,2));
+      actor.action(RotateTo.$(actor.rotation + 90,2));
+      if (actor.scaleX == 1.0f)       actor.action(ScaleTo.$(0.5f,0.5f,2));
+ else       actor.action(ScaleTo.$(1f,1f,2));
+    }
   }
   return false;
 }

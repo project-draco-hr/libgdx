@@ -12,9 +12,26 @@
     atlas.addRegion("buttonDown",-2,62,64,32);
     Image img1=new Image("image1",atlas.getRegion("blend"));
     img1.action(Sequence.$(Delay.$(MoveTo.$(100,100,1),2),ScaleTo.$(0.5f,0.5f,1),FadeOut.$(0.5f),Delay.$(Parallel.$(RotateTo.$(360,1),FadeIn.$(1),ScaleTo.$(1,1,1)),1)));
-    ui.addActor(img1);
+    Group group=new Group("group");
+    group.rotation=700;
+    group.width=64;
+    group.height=32 * 3;
+    group.originX=group.width / 2;
+    group.originY=group.height / 2;
+    group.x=100;
+    group.y=150;
     Button button=new Button("button",atlas.getRegion("button"),atlas.getRegion("buttonDown"));
-    button.x=100;
-    ui.addActor(button);
+    group.addActor(button);
+    ui.addActor(group);
+    LinearGroup linear=new LinearGroup("linear",64,32 * 3,LinearGroupLayout.Vertical);
+    linear.x=200;
+    linear.y=150;
+    linear.scaleX=linear.scaleY=1;
+    linear.addActor(new Button("blend",atlas.getRegion("blend")));
+    linear.addActor(new Button("scale",atlas.getRegion("scale")));
+    linear.addActor(new Button("rotate",atlas.getRegion("rotate")));
+    linear.action(Parallel.$(RotateTo.$(720,2)));
+    ui.addActor(linear);
+    Group.enableDebugging("data/debug.png");
   }
 }

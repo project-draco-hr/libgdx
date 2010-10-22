@@ -41,7 +41,7 @@
   for (int i=0; i < len; i++) {
     renderer.color(1,0,0,1);
     Group group=stage.getRoot().getGroups().get(i);
-    renderer.vertex(group.x + group.refX,group.y + group.refY,0);
+    renderer.vertex(group.x + group.originX,group.y + group.originY,0);
   }
   renderer.end();
   Gdx.graphics.getGL10().glPointSize(4);
