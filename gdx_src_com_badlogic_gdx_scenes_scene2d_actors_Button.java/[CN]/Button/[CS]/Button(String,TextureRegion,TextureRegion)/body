@@ -1,7 +1,7 @@
 {
   super(name);
-  this.refX=unpressedRegion.width / 2.0f;
-  this.refY=unpressedRegion.height / 2.0f;
+  this.originX=unpressedRegion.width / 2.0f;
+  this.originY=unpressedRegion.height / 2.0f;
   this.width=unpressedRegion.width;
   this.height=unpressedRegion.height;
   this.unpressedRegion=new TextureRegion(unpressedRegion.texture,unpressedRegion.x,unpressedRegion.y,unpressedRegion.width,unpressedRegion.height);

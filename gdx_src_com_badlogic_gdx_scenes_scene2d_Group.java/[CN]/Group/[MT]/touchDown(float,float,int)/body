@@ -1,5 +1,6 @@
 {
   if (!touchable)   return false;
+  if (debug)   Gdx.app.log("Group",name + ": " + x+ ", "+ y);
   if (focusedActor != null) {
     point.x=x;
     point.y=y;

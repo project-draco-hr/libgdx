@@ -1,0 +1,12 @@
+{
+  int len=getActors().size();
+  float x=0;
+  float y=0;
+  for (int i=0; i < len; i++) {
+    Actor actor=getActors().get(i);
+    actor.x=x;
+    actor.y=y;
+    if (layout == LinearGroupLayout.Horizontal)     x+=actor.width;
+ else     y+=actor.height;
+  }
+}

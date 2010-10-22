@@ -1,7 +1,7 @@
 {
   super(name);
-  this.refX=region.width / 2.0f;
-  this.refY=region.height / 2.0f;
+  this.originX=region.width / 2.0f;
+  this.originY=region.height / 2.0f;
   this.width=region.width;
   this.height=region.height;
   this.region=new TextureRegion(region.texture,region.x,region.y,region.width,region.height);

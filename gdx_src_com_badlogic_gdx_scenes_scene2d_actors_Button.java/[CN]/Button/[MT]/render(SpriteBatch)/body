@@ -2,6 +2,6 @@
   TextureRegion region=pressed ? pressedRegion : unpressedRegion;
   if (region.texture != null) {
     if (scaleX == 0 && scaleY == 0 && rotation == 0)     batch.draw(region.texture,x,y,width,height,region.x,region.y,region.width,region.height,color,false,false);
- else     batch.draw(region.texture,x,y,refX,refY,width,height,scaleX,scaleY,rotation,region.x,region.y,region.width,region.height,color,false,false);
+ else     batch.draw(region.texture,x,y,originX,originY,width,height,scaleX,scaleY,rotation,region.x,region.y,region.width,region.height,color,false,false);
   }
 }

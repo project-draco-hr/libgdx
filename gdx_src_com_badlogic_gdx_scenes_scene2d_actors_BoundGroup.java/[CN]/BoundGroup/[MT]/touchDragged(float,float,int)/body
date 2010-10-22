@@ -1,0 +1,9 @@
+{
+  if (focusedActor != null) {
+    return super.touchDragged(x,y,pointer);
+  }
+ else {
+    if (!(x > 0 && y > 0 && x < width && y < height))     return false;
+    return super.touchDragged(x,y,pointer);
+  }
+}
