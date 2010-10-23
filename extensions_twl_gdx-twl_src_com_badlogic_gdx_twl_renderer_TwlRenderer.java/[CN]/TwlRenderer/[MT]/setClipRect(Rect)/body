@@ -1,6 +1,6 @@
 {
   if (rect == null) {
-    Gdx.graphics.getGL10().glDisable(GL11.GL_SCISSOR_TEST);
+    Gdx.graphics.getGL10().glDisable(GL10.GL_SCISSOR_TEST);
     hasScissor=false;
   }
  else {
