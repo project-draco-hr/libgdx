@@ -1,5 +1,4 @@
 {
-  int startX=x;
   Glyph lastGlyph=null;
   while (start < end) {
     lastGlyph=getGlyph(str.charAt(start++));

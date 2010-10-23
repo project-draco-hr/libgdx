@@ -1,6 +1,5 @@
 {
   this.texture=texture;
-  vertices=new float[glyphCount * 20];
   invTexWidth=1.0f / texture.getWidth();
   invTexHeight=1.0f / texture.getHeight();
 }

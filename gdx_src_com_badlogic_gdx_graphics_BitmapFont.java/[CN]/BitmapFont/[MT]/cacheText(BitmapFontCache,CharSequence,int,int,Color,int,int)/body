@@ -1,9 +1,7 @@
 {
-  if (cache == null)   cache=new BitmapFontCache(texture,end - start);
- else   cache.reset(end - start);
+  cache.reset(end - start);
   y+=capHeight;
   addToCache(cache,str,x,y,color,start,end);
   cache.width=x;
   cache.height=lineHeight;
-  return cache;
 }
