@@ -3,6 +3,9 @@
   Action action;
   while ((action=actions.next()) != null) {
     action.act(delta);
-    if (action.isDone())     actions.remove();
+    if (action.isDone()) {
+      action.finish();
+      actions.remove();
+    }
   }
 }

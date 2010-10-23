@@ -1,0 +1,7 @@
+{
+  Repeat repeat=pool.newObject();
+  repeat.action=action;
+  repeat.times=times;
+  repeat.finishedTimes=0;
+  return repeat;
+}

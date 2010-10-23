@@ -1,0 +1,9 @@
+{
+  action.act(delta);
+  if (action.isDone()) {
+    Action oldAction=action;
+    action=action.copy();
+    oldAction.finish();
+    action.setTarget(target);
+  }
+}

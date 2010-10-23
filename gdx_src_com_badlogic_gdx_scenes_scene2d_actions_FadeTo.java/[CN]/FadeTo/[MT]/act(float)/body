@@ -1,7 +1,6 @@
 {
   taken+=delta;
   if (taken >= duration) {
-    pool.free(this);
     taken=duration;
     done=true;
   }

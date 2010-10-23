@@ -1,0 +1,5 @@
+{
+  Forever forever=pool.newObject();
+  forever.action=action;
+  return forever;
+}

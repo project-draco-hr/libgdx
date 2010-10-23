@@ -1,5 +1,3 @@
 {
-  boolean done=currAction == actions.size();
-  if (done)   pool.free(this);
-  return done;
+  return currAction == actions.size();
 }
