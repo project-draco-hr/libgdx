@@ -3,7 +3,6 @@
   if (taken >= duration) {
     pool.free(this);
     taken=duration;
-    target.rotation=rotation;
     done=true;
     return;
   }

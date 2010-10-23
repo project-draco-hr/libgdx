@@ -1,4 +1,5 @@
 {
   this.target=actor;
   if (actions.size() > 0)   actions.get(0).setTarget(target);
+  this.currAction=0;
 }
