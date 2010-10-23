@@ -1,0 +1,12 @@
+{
+  taken+=delta;
+  if (taken >= duration) {
+    pool.free(this);
+    taken=duration;
+    target.rotation=rotation;
+    done=true;
+    return;
+  }
+  float alpha=taken * invDuration;
+  target.rotation=startRotation + deltaRotation * alpha;
+}

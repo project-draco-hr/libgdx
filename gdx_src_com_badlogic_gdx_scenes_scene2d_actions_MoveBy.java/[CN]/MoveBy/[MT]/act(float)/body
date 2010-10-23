@@ -1,0 +1,11 @@
+{
+  taken+=delta;
+  if (taken >= duration) {
+    pool.free(this);
+    taken=duration;
+    done=true;
+  }
+  float alpha=taken * invDuration;
+  target.x=startX + deltaX * alpha;
+  target.y=startY + deltaY * alpha;
+}

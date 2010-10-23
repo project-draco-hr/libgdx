@@ -2,8 +2,8 @@
   this.target=actor;
   this.startX=target.x;
   this.startY=target.y;
-  this.deltaX=x - target.x;
-  this.deltaY=y - target.y;
+  this.deltaX=x;
+  this.deltaY=y;
   this.taken=0;
   this.done=false;
 }
