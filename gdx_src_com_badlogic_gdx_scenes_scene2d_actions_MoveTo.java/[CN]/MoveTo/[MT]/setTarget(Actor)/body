@@ -6,4 +6,6 @@
   this.startY=target.y;
   this.deltaX=x - target.x;
   this.deltaY=y - target.y;
+  this.taken=0;
+  this.done=false;
 }

@@ -2,4 +2,6 @@
   this.target=actor;
   this.startRotation=target.rotation;
   this.deltaRotation=rotation - target.rotation;
+  this.taken=0;
+  this.done=false;
 }
