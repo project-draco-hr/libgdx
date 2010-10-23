@@ -1,0 +1,12 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(4);
+  buffer.order(ByteOrder.nativeOrder());
+  IntBuffer intBuffer=buffer.asIntBuffer();
+  Gdx.gl.glGenTextures(1,intBuffer);
+  textureHandle=intBuffer.get(0);
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,getTextureFilter(magFilter));
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_S,getTextureWrap(uWrap));
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_T,getTextureWrap(vWrap));
+}

@@ -1,8 +1,7 @@
 {
   if (isManaged)   throw new GdxRuntimeException("Can't draw to a managed texture!");
   if (isManaged && invalidated)   rebuild();
-  if (gl10 != null)   gl10.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
- else   gl20.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,textureHandle);
   Bitmap bitmap=(Bitmap)bmp.getNativePixmap();
   int level=0;
   int height=bitmap.getHeight();

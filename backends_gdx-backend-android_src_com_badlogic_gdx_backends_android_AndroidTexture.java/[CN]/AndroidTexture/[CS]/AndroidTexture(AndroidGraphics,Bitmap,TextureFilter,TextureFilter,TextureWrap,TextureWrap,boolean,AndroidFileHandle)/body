@@ -10,12 +10,11 @@
     this.texWidth=image.getWidth();
     this.texHeight=image.getHeight();
   }
-  this.gl20=gl;
   if (minFilter == TextureFilter.MipMap)   isMipMap=true;
  else   isMipMap=false;
-  createTexture(gl);
-  buildMipmap(gl);
-  gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
-  if (bitmap != null)   bitmap=null;
+  createTexture();
+  buildMipmap();
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
+  bitmap=null;
   if (isManaged)   textures.add(this);
 }

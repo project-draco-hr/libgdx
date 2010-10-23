@@ -1,11 +1,5 @@
 {
-  if (gl10 != null) {
-    createTexture(gl10);
-    buildMipmap(gl10);
-  }
- else {
-    createTexture(gl20);
-    buildMipmap(gl20);
-  }
+  createTexture();
+  buildMipmap();
   invalidated=false;
 }
