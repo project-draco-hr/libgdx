@@ -1,7 +1,7 @@
 {
   if (uiTexture == null) {
     Gdx.input.addInputListener(this);
-    uiTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/uitexture.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+    uiTexture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/ui.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
     ui=new Stage(480,320,false);
     atlas=new TextureAtlas(uiTexture);
     atlas.addRegion("blend",0,0,64,32);
