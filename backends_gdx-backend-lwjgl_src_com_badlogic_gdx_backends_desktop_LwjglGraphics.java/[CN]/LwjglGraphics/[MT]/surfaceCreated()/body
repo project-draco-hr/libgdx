@@ -4,6 +4,7 @@
   int minor=Integer.parseInt("" + version.charAt(2));
   if (useGL2 && major >= 2) {
     gl20=new LwjglGL20();
+    gl=gl20;
   }
  else {
     if (major == 1 && minor < 5) {
@@ -13,6 +14,7 @@
       gl11=new LwjglGL11();
       gl10=gl11;
     }
+    gl=gl10;
   }
   lastTime=System.nanoTime();
 }

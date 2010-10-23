@@ -26,12 +26,16 @@
         out.y=tox * -sin + toy * cos;
       }
  else {
-        float refX=-sin * child.originX + cos * child.originY;
-        float refY=cos * child.originX + sin * child.originY;
-        float px=child.x + child.originX - refX;
-        float py=child.y + child.originY - refY;
-        float tox=x - px;
-        float toy=y - py;
+        final float worldOriginX=child.x + child.originX;
+        final float worldOriginY=child.y + child.originY;
+        float fx=-child.originX;
+        float fy=-child.originY;
+        float x1=cos * fx - sin * fy;
+        float y1=sin * fx + cos * fy;
+        x1+=worldOriginX;
+        y1+=worldOriginY;
+        float tox=x - x1;
+        float toy=y - y1;
         out.x=tox * cos + toy * sin;
         out.y=tox * -sin + toy * cos;
       }
@@ -46,14 +50,18 @@
         out.y/=child.scaleY;
       }
  else {
-        float srefX=child.originX * child.scaleY;
-        float srefY=child.originY * child.scaleX;
-        float refX=-sin * srefX + cos * srefY;
-        float refY=cos * srefX + sin * srefY;
-        float px=child.x + child.originX - refX;
-        float py=child.y + child.originY - refY;
-        float tox=x - px;
-        float toy=y - py;
+        float srefX=child.originX * child.scaleX;
+        float srefY=child.originY * child.scaleY;
+        final float worldOriginX=child.x + srefX;
+        final float worldOriginY=child.y + srefY;
+        float fx=-srefX;
+        float fy=-srefY;
+        float x1=cos * fx - sin * fy;
+        float y1=sin * fx + cos * fy;
+        x1+=worldOriginX;
+        y1+=worldOriginY;
+        float tox=x - x1;
+        float toy=y - y1;
         out.x=tox * cos + toy * sin;
         out.y=tox * -sin + toy * cos;
         out.x/=child.scaleX;
