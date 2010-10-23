@@ -1,17 +1,8 @@
 {
+  y=Gdx.graphics.getHeight() - y;
   FontState fontState=evalFontState(as);
   x+=fontState.offsetX;
   y+=fontState.offsetY;
-  int width;
-  if (!bitmapFont.prepare()) {
-    return 0;
-  }
-  try {
-    renderer.tintStack.setColor(fontState.color);
-    width=bitmapFont.drawText(x,y,str,start,end);
-  }
-  finally {
-    bitmapFont.cleanup();
-  }
-  return width;
+  com.badlogic.gdx.graphics.Color color=renderer.getColor(fontState.color);
+  return bitmapFont.draw(renderer.spriteBatch,str,x,y,color);
 }

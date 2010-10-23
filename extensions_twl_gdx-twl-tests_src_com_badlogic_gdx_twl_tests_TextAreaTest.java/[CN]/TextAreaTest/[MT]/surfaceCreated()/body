@@ -10,16 +10,7 @@
   layout.setTheme("");
   layout.setHorizontalGroup(layout.createParallelGroup().addWidgets(scrollPane,fpsCounter));
   layout.setVerticalGroup(layout.createSequentialGroup().addWidget(scrollPane).addGap(5).addWidget(fpsCounter).addGap(5));
-  GdxRenderer renderer=new GdxRenderer();
-  gui=new GUI(layout,renderer,null);
-  URL themeURL=getClass().getResource("/widgets.xml");
-  try {
-    gui.applyTheme(ThemeManager.createThemeManager(themeURL,renderer));
-  }
- catch (  IOException ex) {
-    throw new GdxRuntimeException("Error loading theme: " + themeURL,ex);
-  }
-  Gdx.input.addInputListener(new GdxInputListener(gui));
+  gui=TwlRenderer.createGUI(layout,Gdx.files.getFileHandle("data/widgets.xml",FileType.Internal));
   textArea.addCallback(new TextArea.Callback(){
     Timer timer;
     int speed=8, size=256;

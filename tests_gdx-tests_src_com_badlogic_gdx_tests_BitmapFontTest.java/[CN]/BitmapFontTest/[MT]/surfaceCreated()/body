@@ -1,0 +1,21 @@
+{
+  if (spriteBatch != null)   return;
+  spriteBatch=new SpriteBatch();
+  logoSprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  logoSprite.setColor(1,1,1,0.5f);
+  font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal));
+  Gdx.input.addInputListener(new InputAdapter(){
+    public boolean touchDown(    int x,    int y,    int pointer){
+      renderMode=(renderMode + 1) % 2;
+      return false;
+    }
+  }
+);
+  cache1=font.cacheText(null,"(cached)",10,76,Color.WHITE);
+  String text="Sphinx of black quartz,\njudge my vow.";
+  cache2=font.cacheMultiLineText(null,text,5,310,Color.RED,470,BitmapFont.HAlignment.LEFT);
+  text="How quickly\ndaft jumping zebras vex.";
+  cache3=font.cacheMultiLineText(null,text,5,210,blue,470,BitmapFont.HAlignment.CENTER);
+  text="Kerning: LYA moo";
+  cache4=font.cacheText(null,text,210,76,Color.WHITE,0,text.length() - 3);
+}

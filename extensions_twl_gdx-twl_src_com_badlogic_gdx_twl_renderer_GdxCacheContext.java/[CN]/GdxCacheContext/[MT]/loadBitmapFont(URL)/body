@@ -1,9 +1,18 @@
 {
-  String urlString=url.toString();
-  BitmapFont bmFont=fontCache.get(urlString);
-  if (bmFont == null) {
-    bmFont=BitmapFont.loadFont(renderer,url);
-    fontCache.put(urlString,bmFont);
+  String urlString=url.toExternalForm();
+  BitmapFont bitmapFont=fonts.get(urlString);
+  if (bitmapFont == null) {
+    String fontFile;
+    try {
+      fontFile=new File(url.toURI().getPath()).toString();
+    }
+ catch (    URISyntaxException ex) {
+      throw new GdxRuntimeException(ex);
+    }
+    if (fontFile.startsWith(File.separator))     fontFile=fontFile.substring(1);
+    String textureFile=fontFile.endsWith(".fnt") ? fontFile.substring(0,fontFile.length() - 3) + "png" : fontFile + ".png";
+    bitmapFont=new BitmapFont(Gdx.files.getFileHandle(fontFile,FileType.Internal),Gdx.files.getFileHandle(textureFile,FileType.Internal));
+    fonts.put(urlString,bitmapFont);
   }
-  return bmFont;
+  return bitmapFont;
 }

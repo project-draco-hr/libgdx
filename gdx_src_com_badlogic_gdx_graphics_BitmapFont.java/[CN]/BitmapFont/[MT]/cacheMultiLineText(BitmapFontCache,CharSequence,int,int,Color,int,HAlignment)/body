@@ -1,0 +1,24 @@
+{
+  int length=str.length();
+  if (cache == null)   cache=new BitmapFontCache(texture,length);
+ else   cache.reset(length);
+  int startY=y;
+  int start=0;
+  int numLines=0;
+  while (start < length) {
+    int lineEnd=indexOf(str,'\n',start);
+    int xOffset=0;
+    if (alignment != HAlignment.LEFT) {
+      int lineWidth=computeTextWidth(str,start,lineEnd);
+      xOffset=alignmentWidth - lineWidth;
+      if (alignment == HAlignment.CENTER)       xOffset/=2;
+    }
+    addToCache(cache,str,x + xOffset,y,color,start,lineEnd);
+    start=lineEnd + 1;
+    y-=lineHeight;
+    numLines++;
+  }
+  cache.width=alignmentWidth;
+  cache.height=start - y;
+  return cache;
+}

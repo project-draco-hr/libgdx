@@ -1,0 +1,9 @@
+{
+  font.draw(spriteBatch,"(normal)",10,76,Color.WHITE);
+  String text="Sphinx of black quartz,\njudge my vow.";
+  font.drawMultiLineText(spriteBatch,text,5,310,Color.RED);
+  text="How quickly\ndaft jumping zebras vex.";
+  font.drawMultiLineText(spriteBatch,text,5,210,blue,470,BitmapFont.HAlignment.CENTER);
+  text="Kerning: LYA moo";
+  font.draw(spriteBatch,text,210,76,Color.WHITE,0,text.length() - 3);
+}

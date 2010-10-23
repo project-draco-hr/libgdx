@@ -1,0 +1,8 @@
+{
+  y=Gdx.graphics.getHeight() - y;
+  GdxFont.FontState fontState=font.evalFontState(as);
+  TwlRenderer renderer=font.renderer;
+  setColor(renderer.getColor(fontState.color));
+  setPosition(x + fontState.offsetX,y + fontState.offsetY);
+  draw(renderer.spriteBatch);
+}

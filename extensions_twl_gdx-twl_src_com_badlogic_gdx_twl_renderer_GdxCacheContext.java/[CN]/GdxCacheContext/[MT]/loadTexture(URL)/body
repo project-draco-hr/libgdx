@@ -2,7 +2,18 @@
   String urlString=url.toString();
   GdxTexture texture=textures.get(urlString);
   if (texture == null) {
-    texture=createTexture(url);
+    if (!valid)     throw new IllegalStateException("CacheContext has been destroyed.");
+    String path;
+    try {
+      path=new File(url.toURI()).getPath();
+    }
+ catch (    Exception ex) {
+      path=new File(url.getPath()).getPath();
+    }
+    if (path.startsWith(File.separator))     path=path.substring(1);
+    int index=path.indexOf('!');
+    if (index != -1)     path=path.substring(index + 1);
+    texture=new GdxTexture(renderer,path);
     textures.put(urlString,texture);
   }
   return texture;

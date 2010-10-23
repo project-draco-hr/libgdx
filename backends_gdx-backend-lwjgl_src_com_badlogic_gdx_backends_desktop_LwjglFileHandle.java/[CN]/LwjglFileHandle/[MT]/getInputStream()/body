@@ -1,0 +1,8 @@
+{
+  try {
+    return new FileInputStream(file);
+  }
+ catch (  FileNotFoundException ex) {
+    throw new GdxRuntimeException("Error reading file: " + file);
+  }
+}

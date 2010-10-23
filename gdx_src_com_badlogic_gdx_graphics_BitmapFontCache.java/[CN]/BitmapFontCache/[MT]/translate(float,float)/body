@@ -1,0 +1,10 @@
+{
+  if (xAmount == 0 && yAmount == 0)   return;
+  x+=xAmount;
+  y+=yAmount;
+  float[] vertices=this.vertices;
+  for (int i=0, n=idx; i < n; i+=5) {
+    vertices[i]+=xAmount;
+    vertices[i + 1]+=yAmount;
+  }
+}

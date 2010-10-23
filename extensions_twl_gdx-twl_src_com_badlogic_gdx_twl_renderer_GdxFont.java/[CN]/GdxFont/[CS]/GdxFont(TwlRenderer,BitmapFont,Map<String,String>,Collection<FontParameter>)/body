@@ -1,0 +1,12 @@
+{
+  this.bitmapFont=bitmapFont;
+  this.renderer=renderer;
+  ArrayList<FontState> states=new ArrayList<FontState>();
+  for (  FontParameter p : condParams) {
+    HashMap<String,String> effective=new HashMap<String,String>(params);
+    effective.putAll(p.getParams());
+    states.add(new FontState(p.getCondition(),effective));
+  }
+  states.add(new FontState(null,params));
+  this.fontStates=states.toArray(new FontState[states.size()]);
+}

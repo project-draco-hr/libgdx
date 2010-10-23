@@ -1,0 +1,7 @@
+{
+  spriteBatch.end();
+  if (hasScissor) {
+    Gdx.graphics.getGL10().glDisable(GL11.GL_SCISSOR_TEST);
+    hasScissor=false;
+  }
+}

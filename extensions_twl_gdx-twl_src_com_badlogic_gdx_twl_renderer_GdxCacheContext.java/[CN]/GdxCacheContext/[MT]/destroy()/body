@@ -1,16 +1,11 @@
 {
   try {
-    for (    GdxTexture t : allTextures) {
-      t.destroy();
-    }
-    for (    BitmapFont f : fontCache.values()) {
-      f.destroy();
-    }
+    for (    GdxTexture texture : textures.values())     texture.destroy();
+    for (    BitmapFont bitmapFont : fonts.values())     bitmapFont.dispose();
   }
   finally {
     textures.clear();
-    fontCache.clear();
-    allTextures.clear();
+    fonts.clear();
     valid=false;
   }
 }

@@ -1,0 +1,7 @@
+{
+  final float color=tint.toFloatBits();
+  if (color == this.color)   return;
+  this.color=color;
+  float[] vertices=this.vertices;
+  for (int i=2, n=idx; i < n; i+=5)   vertices[i]=color;
+}

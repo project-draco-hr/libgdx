@@ -1,0 +1,24 @@
+{
+  y+=capHeight;
+  int startX=x;
+  Glyph lastGlyph=null;
+  while (start < end) {
+    lastGlyph=getGlyph(str.charAt(start++));
+    if (lastGlyph != null) {
+      spriteBatch.draw(texture,x + lastGlyph.xoffset,y - lastGlyph.yoffset,lastGlyph.x,lastGlyph.y,lastGlyph.width,lastGlyph.height,color);
+      x+=lastGlyph.xadvance;
+      break;
+    }
+  }
+  while (start < end) {
+    char ch=str.charAt(start++);
+    Glyph g=getGlyph(ch);
+    if (g != null) {
+      x+=lastGlyph.getKerning(ch);
+      lastGlyph=g;
+      spriteBatch.draw(texture,x + lastGlyph.xoffset,y - lastGlyph.yoffset,lastGlyph.x,lastGlyph.y,lastGlyph.width,lastGlyph.height,color);
+      x+=g.xadvance;
+    }
+  }
+  return x - startX;
+}

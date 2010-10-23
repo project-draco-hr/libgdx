@@ -1,0 +1,13 @@
+{
+  TwlRenderer renderer=new TwlRenderer();
+  GUI gui=new GUI(root,renderer,null);
+  try {
+    URL themeURL=new URL("file","",themeFile.toString());
+    gui.applyTheme(ThemeManager.createThemeManager(themeURL,renderer));
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error loading theme: " + themeFile,ex);
+  }
+  Gdx.input.addInputListener(new TwlInputListener(gui));
+  return gui;
+}
