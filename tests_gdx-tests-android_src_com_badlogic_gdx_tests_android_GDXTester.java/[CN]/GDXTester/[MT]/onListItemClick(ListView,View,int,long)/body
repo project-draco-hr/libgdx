@@ -1,0 +1,10 @@
+{
+  super.onListItemClick(l,v,position,id);
+  Object o=this.getListAdapter().getItem(position);
+  String testName=o.toString();
+  Bundle bundle=new Bundle();
+  bundle.putString("test",testName);
+  Intent intent=new Intent(this,GdxTestActivity.class);
+  intent.putExtras(bundle);
+  startActivity(intent);
+}
