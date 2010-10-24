@@ -3,5 +3,5 @@
   x+=fontState.offsetX;
   y+=fontState.offsetY + yOffset;
   com.badlogic.gdx.graphics.Color color=renderer.getColor(fontState.color);
-  return bitmapFont.drawMultiLineText(renderer.spriteBatch,str,x,y,color,width,HAlignment.values()[align.ordinal()]);
+  return bitmapFont.drawMultiLineText(renderer.spriteBatch,str,x,y,color,width,gdxAlignment[align.ordinal()]);
 }

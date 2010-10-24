@@ -1,6 +1,6 @@
 {
   if (cache == null)   cache=new GdxFontCache();
   BitmapFontCache bitmapCache=((GdxFontCache)cache).bitmapCache;
-  bitmapFont.cacheMultiLineText(bitmapCache,str,0,yOffset,com.badlogic.gdx.graphics.Color.WHITE,width,HAlignment.values()[align.ordinal()]);
+  bitmapFont.cacheMultiLineText(bitmapCache,str,0,yOffset,com.badlogic.gdx.graphics.Color.WHITE,width,gdxAlignment[align.ordinal()]);
   return cache;
 }

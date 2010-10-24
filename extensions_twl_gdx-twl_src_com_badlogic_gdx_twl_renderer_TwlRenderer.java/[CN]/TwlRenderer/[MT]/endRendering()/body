@@ -1,4 +1,5 @@
 {
+  rendering=false;
   spriteBatch.end();
   if (hasScissor) {
     Gdx.gl.glDisable(GL10.GL_SCISSOR_TEST);
