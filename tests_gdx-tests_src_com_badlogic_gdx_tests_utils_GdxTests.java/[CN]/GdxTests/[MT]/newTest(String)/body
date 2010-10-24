@@ -1,0 +1,9 @@
+{
+  try {
+    Class clazz=Class.forName("com.badlogic.gdx.tests." + testName);
+    return (GdxTest)clazz.newInstance();
+  }
+ catch (  Exception ex) {
+    return null;
+  }
+}

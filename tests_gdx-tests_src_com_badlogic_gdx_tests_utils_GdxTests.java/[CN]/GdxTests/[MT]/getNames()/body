@@ -1,0 +1,5 @@
+{
+  List<String> names=new ArrayList<String>();
+  for (  Class clazz : tests)   names.add(clazz.getSimpleName());
+  return names.toArray(new String[names.size()]);
+}
