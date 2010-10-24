@@ -1,4 +1,8 @@
 {
+  red.a=alpha;
+  cache5.setColor(red);
+  cache5.draw(spriteBatch);
+  if (alpha > 0.66f)   return;
   cache1.draw(spriteBatch);
   cache2.draw(spriteBatch);
   cache3.draw(spriteBatch);

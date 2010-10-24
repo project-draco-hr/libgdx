@@ -4,11 +4,19 @@
   int start=0;
   int numLines=0;
   while (start < length) {
-    int lineEnd=indexOf(str,'\n',start);
+    int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    if (lineEnd < length) {
+      while (lineEnd > start) {
+        char ch=str.charAt(lineEnd);
+        if (ch == ' ' || ch == '\n')         break;
+        lineEnd--;
+      }
+    }
+    if (lineEnd == start)     lineEnd++;
     int xOffset=0;
     if (alignment != HAlignment.LEFT) {
       int lineWidth=computeTextWidth(str,start,lineEnd);
-      xOffset=alignmentWidth - lineWidth;
+      xOffset=wrapWidth - lineWidth;
       if (alignment == HAlignment.CENTER)       xOffset/=2;
     }
     addToCache(cache,str,x + xOffset,y,color,start,lineEnd);
@@ -16,6 +24,6 @@
     y-=lineHeight;
     numLines++;
   }
-  cache.width=alignmentWidth;
+  cache.width=wrapWidth;
   cache.height=start - y;
 }

@@ -15,11 +15,14 @@
   cache2=font.newCache();
   cache3=font.newCache();
   cache4=font.newCache();
+  cache5=font.newCache();
   font.cacheText(cache1,"(cached)",10,76,Color.WHITE);
   String text="Sphinx of black quartz,\njudge my vow.";
   font.cacheMultiLineText(cache2,text,5,310,Color.RED,470,BitmapFont.HAlignment.LEFT);
   text="How quickly\ndaft jumping zebras vex.";
-  font.cacheMultiLineText(cache3,text,5,210,blue,470,BitmapFont.HAlignment.CENTER);
+  font.cacheMultiLineText(cache3,text,5,210,Color.BLUE,470,BitmapFont.HAlignment.CENTER);
   text="Kerning: LYA moo";
   font.cacheText(cache4,text,210,76,Color.WHITE,0,text.length() - 3);
+  text="Forsaking monastic tradition, twelve jovial friars gave\nup their vocation for a questionable existence on the flying trapeze.";
+  font.cacheWrappedText(cache5,text,0,310,red,480,HAlignment.CENTER);
 }
