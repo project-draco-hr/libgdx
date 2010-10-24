@@ -2,16 +2,9 @@
   String urlString=url.toExternalForm();
   BitmapFont bitmapFont=fonts.get(urlString);
   if (bitmapFont == null) {
-    String fontFile;
-    try {
-      fontFile=new File(url.toURI().getPath()).toString();
-    }
- catch (    URISyntaxException ex) {
-      throw new GdxRuntimeException(ex);
-    }
-    if (fontFile.startsWith(File.separator))     fontFile=fontFile.substring(1);
-    String textureFile=fontFile.endsWith(".fnt") ? fontFile.substring(0,fontFile.length() - 3) + "png" : fontFile + ".png";
-    bitmapFont=new BitmapFont(Gdx.files.getFileHandle(fontFile,FileType.Internal),Gdx.files.getFileHandle(textureFile,FileType.Internal),true);
+    FileHandle fontFile=(FileHandle)url.getContent();
+    FileHandle textureFile=(FileHandle)new URL(url,url.getPath().replace(".fnt",".png")).getContent();
+    bitmapFont=new BitmapFont(fontFile,textureFile,true);
     fonts.put(urlString,bitmapFont);
   }
   return bitmapFont;

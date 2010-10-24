@@ -1,0 +1,11 @@
+{
+  String relativePath;
+  try {
+    relativePath=new File(url.toURI()).getPath();
+  }
+ catch (  Exception ex) {
+    relativePath=new File(url.getPath()).getPath();
+  }
+  if (relativePath.startsWith(File.separator))   relativePath=relativePath.substring(1);
+  return null;
+}

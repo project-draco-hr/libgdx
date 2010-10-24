@@ -1,5 +1,0 @@
-{
-  this.renderer=renderer;
-  if (path.charAt(0) == '/')   path=path.substring(1);
-  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle(path,FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-}

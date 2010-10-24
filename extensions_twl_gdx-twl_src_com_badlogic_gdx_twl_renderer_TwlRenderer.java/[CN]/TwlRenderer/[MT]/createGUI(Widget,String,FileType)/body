@@ -1,14 +1,21 @@
 {
   TwlRenderer renderer=new TwlRenderer();
   GUI gui=new GUI(root,renderer,null);
+  File file=new File(themeFile);
+  final String themeRoot=file.getParent() + "/";
+  String themeFileName=file.getName();
   try {
-    URL themeURL=new URL("testenv","local",80,themeFile.toString(),new URLStreamHandler(){
-      protected URLConnection openConnection(      URL url) throws IOException {
+    URL themeURL=new URL("gdx-twl","local",80,themeFileName,new URLStreamHandler(){
+      protected URLConnection openConnection(      final URL url) throws IOException {
+        final FileHandle fileHandle=Gdx.files.getFileHandle(themeRoot + url.getPath(),fileType);
         return new URLConnection(url){
           public void connect() throws IOException {
           }
+          public Object getContent() throws IOException {
+            return fileHandle;
+          }
           public InputStream getInputStream() throws IOException {
-            return themeFile.getInputStream();
+            return fileHandle.getInputStream();
           }
         }
 ;
