@@ -1,9 +1,0 @@
-{
-  AudioDevice device=new JoglAudioDevice(true);
-  AudioRecorder recorder=new JoglAudioRecorder(44100,true);
-  short[] samples=new short[1024];
-  while (true) {
-    recorder.read(samples,0,samples.length);
-    device.writeSamples(samples,0,samples.length);
-  }
-}
