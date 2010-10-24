@@ -2,7 +2,6 @@
   final float color=tint.toFloatBits();
   cache.reset(end - start);
   y+=yOffset;
-  addToCache(cache,str,x,y,color,start,end);
-  cache.width=x;
+  cache.width=addToCache(cache,str,x,y,color,start,end);
   cache.height=lineHeight;
 }

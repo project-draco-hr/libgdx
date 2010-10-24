@@ -2,7 +2,19 @@
   TwlRenderer renderer=new TwlRenderer();
   GUI gui=new GUI(root,renderer,null);
   try {
-    URL themeURL=new URL("file","",themeFile.toString());
+    URL themeURL=new URL("testenv","local",80,themeFile.toString(),new URLStreamHandler(){
+      protected URLConnection openConnection(      URL url) throws IOException {
+        return new URLConnection(url){
+          public void connect() throws IOException {
+          }
+          public InputStream getInputStream() throws IOException {
+            return themeFile.getInputStream();
+          }
+        }
+;
+      }
+    }
+);
     gui.applyTheme(ThemeManager.createThemeManager(themeURL,renderer));
   }
  catch (  IOException ex) {
