@@ -1,0 +1,21 @@
+{
+  setLayout(new BorderLayout());
+  final JList list=new JList(GdxTests.getNames());
+  JButton button=new JButton("Run Test");
+  JScrollPane pane=new JScrollPane(list);
+  DefaultListSelectionModel m=new DefaultListSelectionModel();
+  m.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+  m.setLeadAnchorNotificationEnabled(false);
+  list.setSelectionModel(m);
+  button.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      String testName=(String)list.getSelectedValue();
+      GdxTest test=GdxTests.newTest(testName);
+      LwjglApplication app=new LwjglApplication(testName,480,320,test.needsGL20());
+      app.getGraphics().setRenderListener(test);
+    }
+  }
+);
+  add(pane,BorderLayout.CENTER);
+  add(button,BorderLayout.SOUTH);
+}
