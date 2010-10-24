@@ -1,0 +1,31 @@
+{
+  x+=glyph.xoffset;
+  y+=glyph.yoffset;
+  final float x2=x + glyph.width;
+  final float y2=y + glyph.height;
+  final float u=glyph.u;
+  final float u2=glyph.u2;
+  final float v=glyph.v;
+  final float v2=glyph.v2;
+  float[] vertices=this.vertices;
+  vertices[idx++]=x;
+  vertices[idx++]=y;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx++]=v;
+  vertices[idx++]=x;
+  vertices[idx++]=y2;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx++]=v2;
+  vertices[idx++]=x2;
+  vertices[idx++]=y2;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx++]=v2;
+  vertices[idx++]=x2;
+  vertices[idx++]=y;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx++]=v;
+}

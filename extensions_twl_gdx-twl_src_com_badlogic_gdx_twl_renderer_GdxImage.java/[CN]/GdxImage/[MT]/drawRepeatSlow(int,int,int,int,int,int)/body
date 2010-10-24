@@ -1,0 +1,16 @@
+{
+  while (repeatCountY > 0) {
+    int rowHeight=height / repeatCountY;
+    int cx=0;
+    int xi=0;
+    while (xi < repeatCountX) {
+      int nx=++xi * width / repeatCountX;
+      sprite.setBounds(x + cx,y,nx - cx,rowHeight);
+      sprite.draw(renderer.spriteBatch);
+      cx=nx;
+    }
+    y+=rowHeight;
+    height-=rowHeight;
+    repeatCountY--;
+  }
+}

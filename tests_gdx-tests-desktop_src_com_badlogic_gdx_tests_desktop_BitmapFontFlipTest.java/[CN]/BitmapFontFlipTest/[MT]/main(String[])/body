@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("BitmapFont Flip Test",480,320,false);
+  app.getGraphics().setRenderListener(new com.badlogic.gdx.tests.BitmapFontFlipTest());
+}

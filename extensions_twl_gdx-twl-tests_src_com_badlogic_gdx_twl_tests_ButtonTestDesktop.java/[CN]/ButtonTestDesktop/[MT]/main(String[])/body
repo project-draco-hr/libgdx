@@ -1,0 +1,4 @@
+{
+  JoglApplication app=new JoglApplication("Button Test",480,320,false);
+  app.getGraphics().setRenderListener(new ButtonTest());
+}

@@ -1,0 +1,6 @@
+{
+  if (color == null)   throw new IllegalArgumentException("color cannot be null.");
+  color=tintColor.multiply(color);
+  if (tintColor.equals(color))   return this;
+  return new GdxImage(this,color);
+}

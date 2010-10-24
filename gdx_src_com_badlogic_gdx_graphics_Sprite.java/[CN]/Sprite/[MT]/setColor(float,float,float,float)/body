@@ -1,4 +1,8 @@
 {
+  color.r=r;
+  color.g=g;
+  color.b=b;
+  color.a=a;
   int intBits=((int)(255 * a) << 24) | ((int)(255 * b) << 16) | ((int)(255 * g) << 8)| ((int)(255 * r));
   float color=Float.intBitsToFloat(intBits);
   float[] vertices=this.vertices;

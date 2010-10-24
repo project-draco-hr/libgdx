@@ -11,7 +11,7 @@
     }
     if (fontFile.startsWith(File.separator))     fontFile=fontFile.substring(1);
     String textureFile=fontFile.endsWith(".fnt") ? fontFile.substring(0,fontFile.length() - 3) + "png" : fontFile + ".png";
-    bitmapFont=new BitmapFont(Gdx.files.getFileHandle(fontFile,FileType.Internal),Gdx.files.getFileHandle(textureFile,FileType.Internal));
+    bitmapFont=new BitmapFont(Gdx.files.getFileHandle(fontFile,FileType.Internal),Gdx.files.getFileHandle(textureFile,FileType.Internal),true);
     fonts.put(urlString,bitmapFont);
   }
   return bitmapFont;

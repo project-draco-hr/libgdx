@@ -42,5 +42,6 @@
   if (keyword.equals(items[36]))   intent=new Intent(this,FillrateTest.class);
   if (keyword.equals(items[37]))   intent=new Intent(this,AlphaTest.class);
   if (keyword.equals(items[38]))   intent=new Intent(this,BitmapFontTest.class);
+  if (keyword.equals(items[39]))   intent=new Intent(this,BitmapFontFlipTest.class);
   startActivity(intent);
 }

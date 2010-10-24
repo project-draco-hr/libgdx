@@ -1,8 +1,7 @@
 {
-  y=Gdx.graphics.getHeight() - y;
   FontState fontState=evalFontState(as);
   x+=fontState.offsetX;
-  y+=fontState.offsetY;
+  y+=fontState.offsetY + yOffset;
   com.badlogic.gdx.graphics.Color color=renderer.getColor(fontState.color);
   return bitmapFont.drawMultiLineText(renderer.spriteBatch,str,x,y,color,width,HAlignment.values()[align.ordinal()]);
 }

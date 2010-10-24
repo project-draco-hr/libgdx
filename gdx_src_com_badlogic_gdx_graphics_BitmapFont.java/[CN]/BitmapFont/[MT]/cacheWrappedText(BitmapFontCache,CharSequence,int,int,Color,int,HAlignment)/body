@@ -1,4 +1,6 @@
 {
+  final float color=tint.toFloatBits();
+  y+=yOffset;
   int length=str.length();
   cache.reset(length);
   int start=0;
@@ -21,7 +23,7 @@
     }
     addToCache(cache,str,x + xOffset,y,color,start,lineEnd);
     start=lineEnd + 1;
-    y-=lineHeight;
+    y+=lineHeight * down;
     numLines++;
   }
   cache.width=wrapWidth;

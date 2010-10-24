@@ -12,7 +12,7 @@
     }
     draw(spriteBatch,str,x + xOffset,y,color,start,lineEnd);
     start=lineEnd + 1;
-    y-=lineHeight;
+    y+=lineHeight * down;
     numLines++;
   }
   return numLines * lineHeight;

@@ -1,0 +1,14 @@
+{
+  final int w=width;
+  final int h=height;
+  while (repeatCountY-- > 0) {
+    int curX=x;
+    int cntX=repeatCountX;
+    while (cntX-- > 0) {
+      sprite.setBounds(curX,y,w,h);
+      sprite.draw(renderer.spriteBatch);
+      curX+=w;
+    }
+    y+=h;
+  }
+}

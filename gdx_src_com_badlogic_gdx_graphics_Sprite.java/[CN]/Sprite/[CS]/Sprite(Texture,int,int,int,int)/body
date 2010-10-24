@@ -3,6 +3,6 @@
   this.texture=texture;
   setTextureRegion(srcX,srcY,srcWidth,srcHeight);
   setColor(1,1,1,1);
-  setBounds(0,0,srcWidth,srcHeight);
-  setOrigin(srcWidth / 2,srcHeight / 2);
+  setBounds(0,0,Math.abs(srcWidth),Math.abs(srcHeight));
+  setOrigin(width / 2,height / 2);
 }

@@ -1,5 +1,4 @@
 {
-  y=Gdx.graphics.getHeight() - y;
   GdxFont.FontState fontState=evalFontState(as);
   bitmapCache.setColor(renderer.getColor(fontState.color));
   bitmapCache.setPosition(x + fontState.offsetX,y + fontState.offsetY);

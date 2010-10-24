@@ -1,6 +1,0 @@
-{
-  super(texture.renderer,x,y,width,height,texture.getWidth(),texture.getHeight());
-  this.texture=texture;
-  this.tintColor=(tintColor == null) ? Color.WHITE : tintColor;
-  this.tile=tile;
-}

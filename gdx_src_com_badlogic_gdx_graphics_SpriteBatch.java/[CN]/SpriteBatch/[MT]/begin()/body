@@ -1,7 +1,7 @@
 {
   renderCalls=0;
   if (Gdx.graphics.isGL20Available() == false) {
-    GL10 gl=Gdx.graphics.getGL10();
+    GL10 gl=Gdx.gl10;
     gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     gl.glDisable(GL10.GL_LIGHTING);
     gl.glDisable(GL10.GL_DEPTH_TEST);
@@ -15,7 +15,7 @@
   }
  else {
     combinedMatrix.set(projectionMatrix).mul(transformMatrix);
-    GL20 gl=Gdx.graphics.getGL20();
+    GL20 gl=Gdx.gl20;
     gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     gl.glDisable(GL20.GL_DEPTH_TEST);
     gl.glDisable(GL20.GL_CULL_FACE);

@@ -1,0 +1,10 @@
+{
+  sprite.setColor(tintColor.getRedFloat(),tintColor.getGreenFloat(),tintColor.getBlueFloat(),tintColor.getAlphaFloat());
+  if (tile) {
+    drawTiled(x,y,width,height);
+  }
+ else {
+    sprite.setBounds(x,y,width,height);
+    sprite.draw(renderer.spriteBatch);
+  }
+}

@@ -1,13 +1,12 @@
 {
   if (rect == null) {
-    Gdx.graphics.getGL10().glDisable(GL10.GL_SCISSOR_TEST);
+    Gdx.gl.glDisable(GL10.GL_SCISSOR_TEST);
     hasScissor=false;
   }
  else {
-    GL10 gl=Gdx.graphics.getGL10();
-    gl.glScissor(rect.getX(),Gdx.graphics.getHeight() - rect.getBottom(),rect.getWidth(),rect.getHeight());
+    Gdx.gl.glScissor(rect.getX(),Gdx.graphics.getHeight() - rect.getBottom(),rect.getWidth(),rect.getHeight());
     if (!hasScissor) {
-      gl.glEnable(GL10.GL_SCISSOR_TEST);
+      Gdx.gl.glEnable(GL10.GL_SCISSOR_TEST);
       hasScissor=true;
     }
   }

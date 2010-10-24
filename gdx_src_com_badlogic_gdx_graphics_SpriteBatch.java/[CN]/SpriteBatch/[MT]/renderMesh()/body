@@ -5,33 +5,33 @@
   mesh.setVertices(vertices,0,idx);
   if (Gdx.graphics.isGL20Available()) {
     if (useTextBlend) {
-      Gdx.graphics.getGL20().glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
-      Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
+      GL20 gl20=Gdx.gl20;
+      gl20.glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
+      gl20.glEnable(GL20.GL_BLEND);
+    }
+ else     if (blendingDisabled) {
+      Gdx.gl20.glDisable(GL20.GL_BLEND);
     }
  else {
-      if (blendingDisabled) {
-        Gdx.graphics.getGL20().glDisable(GL20.GL_BLEND);
-      }
- else {
-        Gdx.graphics.getGL20().glEnable(GL20.GL_BLEND);
-        Gdx.graphics.getGL20().glBlendFunc(blendSrcFunc,blendDstFunc);
-      }
+      GL20 gl20=Gdx.gl20;
+      gl20.glEnable(GL20.GL_BLEND);
+      gl20.glBlendFunc(blendSrcFunc,blendDstFunc);
     }
     mesh.render(shader,GL10.GL_TRIANGLES,0,idx / 20 * 6);
   }
  else {
     if (useTextBlend) {
-      Gdx.graphics.getGL10().glBlendFunc(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
-      Gdx.graphics.getGL10().glEnable(GL10.GL_BLEND);
+      GL10 gl10=Gdx.gl10;
+      gl10.glBlendFunc(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
+      gl10.glEnable(GL10.GL_BLEND);
+    }
+ else     if (blendingDisabled) {
+      Gdx.gl10.glDisable(GL10.GL_BLEND);
     }
  else {
-      if (blendingDisabled) {
-        Gdx.graphics.getGL10().glDisable(GL10.GL_BLEND);
-      }
- else {
-        Gdx.graphics.getGL10().glEnable(GL10.GL_BLEND);
-        Gdx.graphics.getGL10().glBlendFunc(blendSrcFunc,blendDstFunc);
-      }
+      GL10 gl10=Gdx.gl10;
+      gl10.glEnable(GL10.GL_BLEND);
+      gl10.glBlendFunc(blendSrcFunc,blendDstFunc);
     }
     mesh.render(GL10.GL_TRIANGLES,0,idx / 20 * 6);
   }
