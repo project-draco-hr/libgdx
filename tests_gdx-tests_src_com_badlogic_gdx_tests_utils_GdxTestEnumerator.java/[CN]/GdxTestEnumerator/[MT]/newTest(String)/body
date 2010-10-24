@@ -1,0 +1,9 @@
+{
+  try {
+    Class clazz=Class.forName("com.badlogic.gdx.tests." + name);
+    return (GdxTest)clazz.newInstance();
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("couldn't load test");
+  }
+}

@@ -1,0 +1,5 @@
+{
+  String[] tests=GdxTestEnumerator.getTestNames();
+  System.out.println(tests.length + " tests");
+  System.out.println(Arrays.toString(tests));
+}
