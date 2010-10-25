@@ -6,9 +6,9 @@ synchronized (editor.effect) {
     int insertIndex=editIndex + direction;
     Object name=emitterTableModel.getValueAt(editIndex,0);
     emitterTableModel.removeRow(editIndex);
-    ParticleEmitter particles=emitters.remove(editIndex);
+    ParticleEmitter emitter=emitters.remove(editIndex);
     emitterTableModel.insertRow(insertIndex,new Object[]{name});
-    emitters.add(insertIndex,particles);
+    emitters.add(insertIndex,emitter);
     editIndex=insertIndex;
   }
   emitterTable.getSelectionModel().setSelectionInterval(editIndex,editIndex);

@@ -8,7 +8,7 @@
   lastDir=dir;
 synchronized (editor.effect) {
     int index=0;
-    for (    ParticleEmitter particles : editor.effect.getEmitters())     particles.setName((String)emitterTableModel.getValueAt(index++,0));
+    for (    ParticleEmitter emitter : editor.effect.getEmitters())     emitter.setName((String)emitterTableModel.getValueAt(index++,0));
     try {
       editor.effect.save(new File(dir,file));
     }
