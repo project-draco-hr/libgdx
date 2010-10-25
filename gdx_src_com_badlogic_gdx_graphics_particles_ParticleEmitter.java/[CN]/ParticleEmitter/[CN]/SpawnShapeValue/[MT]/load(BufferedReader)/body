@@ -1,0 +1,9 @@
+{
+  super.load(reader);
+  if (!active)   return;
+  shape=SpawnShape.valueOf(readString(reader,"shape"));
+  if (shape == SpawnShape.ellipse) {
+    edges=readBoolean(reader,"edges");
+    side=SpawnEllipseSide.valueOf(readString(reader,"side"));
+  }
+}

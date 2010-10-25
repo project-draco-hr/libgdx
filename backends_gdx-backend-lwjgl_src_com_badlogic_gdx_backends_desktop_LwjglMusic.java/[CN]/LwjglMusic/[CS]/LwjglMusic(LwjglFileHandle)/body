@@ -8,7 +8,7 @@
   buffer=new byte[10000 * ain.getFormat().getFrameSize()];
   ain.close();
   ain=null;
-  thread=new Thread(this);
+  thread=new Thread(this,"LWJGL Music");
   thread.setDaemon(true);
   thread.start();
 }

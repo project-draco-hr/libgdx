@@ -1,0 +1,15 @@
+{
+  final String imagePath=emitter.getImagePath();
+  try {
+    emitter.setTexture(Gdx.graphics.newTexture(Gdx.files.getFileHandle(imagePath,FileType.Absolute),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  }
+ catch (  GdxRuntimeException ex) {
+    EventQueue.invokeLater(new Runnable(){
+      public void run(){
+        JOptionPane.showMessageDialog(ParticleEditor.this,"Error loading image:\n" + imagePath);
+      }
+    }
+);
+    emitter.setImagePath(null);
+  }
+}

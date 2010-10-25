@@ -1,0 +1,20 @@
+{
+  this.texture=texture;
+  initialize();
+  durationValue.setLow(3,3);
+  emissionValue.setHigh(10,10);
+  lifeValue.setHigh(1,1);
+  sizeValue.setHigh(32,32);
+  rotationValue.setLow(1,360);
+  rotationValue.setHigh(180,180);
+  rotationValue.setTimeline(new float[]{0,1});
+  rotationValue.setScaling(new float[]{0,1});
+  rotationValue.setRelative(true);
+  angleValue.setHigh(1,360);
+  angleValue.setActive(true);
+  velocityValue.setHigh(80,80);
+  velocityValue.setActive(true);
+  transparencyValue.setHigh(1,1);
+  transparencyValue.setTimeline(new float[]{0,0.2f,0.8f,1});
+  transparencyValue.setScaling(new float[]{0,1,1,0});
+}

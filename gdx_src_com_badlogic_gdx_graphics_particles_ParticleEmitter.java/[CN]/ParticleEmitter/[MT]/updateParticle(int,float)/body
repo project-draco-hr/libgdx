@@ -1,0 +1,33 @@
+{
+  Particle particle=particles[index];
+  float life=particle.currentLife - delta;
+  if (life <= 0)   return false;
+  particle.currentLife=life;
+  float percent=1 - particle.currentLife / particle.life;
+  particle.setScale(particle.size + particle.sizeDiff * sizeValue.getScale(percent));
+  float angle=particle.angle + particle.angleDiff * angleValue.getScale(percent);
+  if (rotationValue.active) {
+    float rotation=particle.rotation + particle.rotationDiff * rotationValue.getScale(percent);
+    if (aligned)     rotation+=angle;
+    rotation-=particle.currentRotation;
+    if (rotation != 0) {
+      particle.currentRotation+=rotation;
+      particle.rotate(rotation);
+    }
+  }
+  if (velocityValue.active) {
+    float velocity=(particle.velocity + particle.velocityDiff * velocityValue.getScale(percent)) * delta;
+    float velocityX=velocity;
+    float velocityY=velocity;
+    if (angleValue.active) {
+      velocityX*=MathUtils.cosDeg(angle);
+      velocityY*=MathUtils.sinDeg(angle);
+    }
+    if (windValue.active)     velocityX+=(particle.wind + particle.windDiff * windValue.getScale(percent)) * delta;
+    if (gravityValue.active)     velocityY+=(particle.gravity + particle.gravityDiff * gravityValue.getScale(percent)) * delta;
+    particle.translate(velocityX,velocityY);
+  }
+  float[] color=tintValue.getColor(percent);
+  particle.setColor(color[0],color[1],color[2],particle.transparency + particle.transparencyDiff * transparencyValue.getScale(percent));
+  return true;
+}

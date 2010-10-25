@@ -1,6 +1,6 @@
 {
   File file=null;
-  if (type == FileType.Absolut || type == FileType.Internal)   file=new File(filename);
+  if (type == FileType.Absolute || type == FileType.Internal)   file=new File(filename);
  else   file=new File(this.externalPath + filename);
   if (file.exists() == false)   throw new GdxRuntimeException("File '" + filename + "' doesn't exist");
  else   return new LwjglFileHandle(file);

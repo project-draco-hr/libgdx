@@ -1,0 +1,4 @@
+{
+  this.hasAdvanced=hasAdvanced;
+  advancedButton.setVisible(hasAdvanced && (value.isActive() || value.isAlwaysActive()));
+}

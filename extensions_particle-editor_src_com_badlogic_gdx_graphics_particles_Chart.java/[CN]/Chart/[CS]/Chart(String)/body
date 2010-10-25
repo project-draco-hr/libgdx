@@ -1,0 +1,80 @@
+{
+  this.title=title;
+  setLayout(new GridBagLayout());
+  addMouseListener(new MouseAdapter(){
+    public void mousePressed(    MouseEvent event){
+      movingIndex=overIndex;
+    }
+    public void mouseReleased(    MouseEvent event){
+      movingIndex=-1;
+    }
+    public void mouseClicked(    MouseEvent event){
+      if (event.getClickCount() == 2) {
+        if (overIndex <= 0)         return;
+        points.remove(overIndex);
+        pointsChanged();
+        repaint();
+        return;
+      }
+      if (movingIndex != -1)       return;
+      if (overIndex != -1)       return;
+      int mouseX=event.getX();
+      int mouseY=event.getY();
+      if (mouseX < chartX || mouseX > chartX + chartWidth)       return;
+      if (mouseY < chartY || mouseY > chartY + chartHeight)       return;
+      Point newPoint=pixelToPoint(mouseX,mouseY);
+      int i=0;
+      Point lastPoint=null;
+      for (      Point point : points) {
+        if (point.x > newPoint.x) {
+          if (Math.abs(point.x - newPoint.x) < 0.001f)           return;
+          if (lastPoint != null && Math.abs(lastPoint.x - newPoint.x) < 0.001f)           return;
+          points.add(i,newPoint);
+          overIndex=i;
+          pointsChanged();
+          repaint();
+          return;
+        }
+        lastPoint=point;
+        i++;
+      }
+      overIndex=points.size();
+      points.add(newPoint);
+      pointsChanged();
+      repaint();
+    }
+  }
+);
+  addMouseMotionListener(new MouseMotionListener(){
+    public void mouseDragged(    MouseEvent event){
+      if (movingIndex == -1)       return;
+      float nextX=movingIndex == points.size() - 1 ? maxX : points.get(movingIndex + 1).x - 0.001f;
+      if (movingIndex == 0)       nextX=0;
+      float prevX=movingIndex == 0 ? 0 : points.get(movingIndex - 1).x + 0.001f;
+      Point point=points.get(movingIndex);
+      point.x=Math.min(nextX,Math.max(prevX,(event.getX() - chartX) / (float)chartWidth * maxX));
+      point.y=Math.min(maxY,Math.max(0,chartHeight - (event.getY() - chartY)) / (float)chartHeight * maxY);
+      pointsChanged();
+      repaint();
+    }
+    public void mouseMoved(    MouseEvent event){
+      int mouseX=event.getX();
+      int mouseY=event.getY();
+      int oldIndex=overIndex;
+      overIndex=-1;
+      int pointSize=isExpanded ? POINT_SIZE_EXPANDED : POINT_SIZE;
+      int i=0;
+      for (      Point point : points) {
+        int x=chartX + (int)(chartWidth * (point.x / (float)maxX));
+        int y=chartY + chartHeight - (int)(chartHeight * (point.y / (float)maxY));
+        if (Math.abs(x - mouseX) <= pointSize && Math.abs(y - mouseY) <= pointSize) {
+          overIndex=i;
+          break;
+        }
+        i++;
+      }
+      if (overIndex != oldIndex)       repaint();
+    }
+  }
+);
+}

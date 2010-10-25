@@ -1,0 +1,6 @@
+{
+  this.maxParticleCount=maxParticleCount;
+  active=new BitSet(maxParticleCount);
+  activeCount=0;
+  particles=new Particle[maxParticleCount];
+}

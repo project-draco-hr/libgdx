@@ -17,7 +17,7 @@
  else     mul=1;
     add=0;
   }
-  float invDiv=1 / (((x < y) ? y : x) * INV_ATAN2_DIM_MINUS_1);
+  float invDiv=1 / ((x < y ? y : x) * INV_ATAN2_DIM_MINUS_1);
   int xi=(int)(x * invDiv);
   int yi=(int)(y * invDiv);
   return (atan2[yi * ATAN2_DIM + xi] + add) * mul;

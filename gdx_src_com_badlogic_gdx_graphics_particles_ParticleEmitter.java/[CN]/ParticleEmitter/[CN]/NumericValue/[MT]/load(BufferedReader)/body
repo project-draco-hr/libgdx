@@ -1,0 +1,5 @@
+{
+  super.load(reader);
+  if (!active)   return;
+  value=readFloat(reader,"value");
+}

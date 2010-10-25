@@ -1,0 +1,11 @@
+{
+  imagesDir=imagesDir.replace('\\','/');
+  if (!imagesDir.endsWith("/"))   imagesDir+='/';
+  for (int i=0, n=emitters.size(); i < n; i++) {
+    ParticleEmitter emitter=emitters.get(i);
+    String imagePath=emitter.getImagePath();
+    if (imagePath == null)     continue;
+    imagePath=imagesDir + new File(imagePath).getName();
+    emitter.setTexture(Gdx.graphics.newTexture(Gdx.files.getFileHandle(imagePath,fileType),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  }
+}

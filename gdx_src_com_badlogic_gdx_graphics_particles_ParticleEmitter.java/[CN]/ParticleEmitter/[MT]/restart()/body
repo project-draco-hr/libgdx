@@ -1,0 +1,21 @@
+{
+  delay=delayValue.active ? delayValue.newLowValue() : 0;
+  delayTimer=0;
+  durationTimer-=duration;
+  duration=durationValue.newLowValue();
+  emission=emissionValue.newLowValue();
+  emissionDiff=emissionValue.newHighValue();
+  if (!emissionValue.isRelative())   emissionDiff-=emission;
+  life=lifeValue.newLowValue();
+  lifeDiff=lifeValue.newHighValue();
+  if (!lifeValue.isRelative())   lifeDiff-=life;
+  lifeOffset=lifeOffsetValue.active ? lifeOffsetValue.newLowValue() : 0;
+  lifeOffsetDiff=lifeOffsetValue.newHighValue();
+  if (!lifeOffsetValue.isRelative())   lifeOffsetDiff-=lifeOffset;
+  spawnWidth=(int)spawnWidthValue.newLowValue();
+  spawnWidthDiff=(int)spawnWidthValue.newHighValue();
+  if (!spawnWidthValue.isRelative())   spawnWidthDiff-=spawnWidth;
+  spawnHeight=(int)spawnHeightValue.newLowValue();
+  spawnHeightDiff=(int)spawnHeightValue.newHighValue();
+  if (!spawnHeightValue.isRelative())   spawnHeightDiff-=spawnHeight;
+}

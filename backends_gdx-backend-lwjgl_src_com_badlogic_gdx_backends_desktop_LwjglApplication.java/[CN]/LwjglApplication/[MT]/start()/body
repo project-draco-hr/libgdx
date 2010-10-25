@@ -1,10 +1,8 @@
 {
   gameThread=Thread.currentThread();
   setupDisplay();
-  for (  RenderListener listener : listeners) {
-    listener.surfaceCreated();
-    listener.surfaceChanged(getWidth(),getHeight());
-  }
+  for (  RenderListener listener : listeners)   listener.surfaceCreated();
+  setSize(width,height);
   for (  RenderListener listener : listeners)   listener.render();
   while (running && !Display.isCloseRequested()) {
     if (Keyboard.isCreated()) {

@@ -1,0 +1,22 @@
+{
+  super("Count",null);
+  initializeComponents();
+  maxSpinner.setValue(editor.getEmitter().getMaxParticleCount());
+  maxSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+synchronized (editor.effect) {
+        editor.getEmitter().setMaxParticleCount((Integer)maxSpinner.getValue());
+      }
+    }
+  }
+);
+  minSpinner.setValue(editor.getEmitter().getMinParticleCount());
+  minSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+synchronized (editor.effect) {
+        editor.getEmitter().setMinParticleCount((Integer)minSpinner.getValue());
+      }
+    }
+  }
+);
+}

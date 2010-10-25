@@ -1,4 +1,4 @@
 {
-  if (type == FileType.Absolut || type == FileType.External)   return null;
+  if (type == FileType.Absolute || type == FileType.External)   return null;
  else   return new AppletFileHandle(fileName).getInputStream();
 }

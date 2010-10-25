@@ -1,0 +1,100 @@
+{
+  super(name,value);
+  this.value=value;
+  initializeComponents(chartTitle);
+  lowMinSpinner.setValue(value.getLowMin());
+  lowMaxSpinner.setValue(value.getLowMax());
+  highMinSpinner.setValue(value.getHighMin());
+  highMaxSpinner.setValue(value.getHighMax());
+  chart.setValues(value.getTimeline(),value.getScaling());
+  relativeCheckBox.setSelected(value.isRelative());
+  lowMinSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setLowMin((Float)lowMinSpinner.getValue());
+      if (!lowMaxSpinner.isVisible())       value.setLowMax((Float)lowMinSpinner.getValue());
+    }
+  }
+);
+  lowMaxSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setLowMax((Float)lowMaxSpinner.getValue());
+    }
+  }
+);
+  highMinSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setHighMin((Float)highMinSpinner.getValue());
+      if (!highMaxSpinner.isVisible())       value.setHighMax((Float)highMinSpinner.getValue());
+    }
+  }
+);
+  highMaxSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setHighMax((Float)highMaxSpinner.getValue());
+    }
+  }
+);
+  relativeCheckBox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      value.setRelative(relativeCheckBox.isSelected());
+    }
+  }
+);
+  lowRangeButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      boolean visible=!lowMaxSpinner.isVisible();
+      lowMaxSpinner.setVisible(visible);
+      lowRangeButton.setText(visible ? "<" : ">");
+      GridBagLayout layout=(GridBagLayout)formPanel.getLayout();
+      GridBagConstraints constraints=layout.getConstraints(lowRangeButton);
+      constraints.gridx=visible ? 5 : 4;
+      layout.setConstraints(lowRangeButton,constraints);
+      JSpinner spinner=visible ? lowMaxSpinner : lowMinSpinner;
+      value.setLowMax((Float)spinner.getValue());
+    }
+  }
+);
+  highRangeButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      boolean visible=!highMaxSpinner.isVisible();
+      highMaxSpinner.setVisible(visible);
+      highRangeButton.setText(visible ? "<" : ">");
+      GridBagLayout layout=(GridBagLayout)formPanel.getLayout();
+      GridBagConstraints constraints=layout.getConstraints(highRangeButton);
+      constraints.gridx=visible ? 5 : 4;
+      layout.setConstraints(highRangeButton,constraints);
+      JSpinner spinner=visible ? highMaxSpinner : highMinSpinner;
+      value.setHighMax((Float)spinner.getValue());
+    }
+  }
+);
+  expandButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      chart.setExpanded(!chart.isExpanded());
+      boolean expanded=chart.isExpanded();
+      GridBagLayout layout=(GridBagLayout)getContentPanel().getLayout();
+      GridBagConstraints chartConstraints=layout.getConstraints(chart);
+      GridBagConstraints expandButtonConstraints=layout.getConstraints(expandButton);
+      if (expanded) {
+        chart.setPreferredSize(new Dimension(150,200));
+        expandButton.setText("?");
+        chartConstraints.weightx=1;
+        expandButtonConstraints.weightx=0;
+      }
+ else {
+        chart.setPreferredSize(new Dimension(150,30));
+        expandButton.setText("+");
+        chartConstraints.weightx=0;
+        expandButtonConstraints.weightx=1;
+      }
+      layout.setConstraints(chart,chartConstraints);
+      layout.setConstraints(expandButton,expandButtonConstraints);
+      relativeCheckBox.setVisible(!expanded);
+      formPanel.setVisible(!expanded);
+      chart.revalidate();
+    }
+  }
+);
+  if (value.getLowMin() == value.getLowMax())   lowRangeButton.doClick(0);
+  if (value.getHighMin() == value.getHighMax())   highRangeButton.doClick(0);
+}

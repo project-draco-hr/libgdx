@@ -1,0 +1,8 @@
+{
+  super.load(reader);
+  if (!active)   return;
+  colors=new float[readInt(reader,"colorsCount")];
+  for (int i=0; i < colors.length; i++)   colors[i]=readFloat(reader,"colors" + i);
+  timeline=new float[readInt(reader,"timelineCount")];
+  for (int i=0; i < timeline.length; i++)   timeline[i]=readFloat(reader,"timeline" + i);
+}

@@ -1,0 +1,101 @@
+{
+  setLayout(new GridBagLayout());
+{
+    JPanel sideButtons=new JPanel(new GridBagLayout());
+    add(sideButtons,new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0),0,0));
+{
+      JButton newButton=new JButton("New");
+      sideButtons.add(newButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      newButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          newEmitter("Untitled",true);
+        }
+      }
+);
+    }
+{
+      JButton deleteButton=new JButton("Delete");
+      sideButtons.add(deleteButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      deleteButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          deleteEmitter();
+        }
+      }
+);
+    }
+{
+      sideButtons.add(new JSeparator(JSeparator.HORIZONTAL),new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+    }
+{
+      JButton saveButton=new JButton("Save");
+      sideButtons.add(saveButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      saveButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          saveEffect();
+        }
+      }
+);
+    }
+{
+      JButton openButton=new JButton("Open");
+      sideButtons.add(openButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      openButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          openEffect();
+        }
+      }
+);
+    }
+{
+      JButton upButton=new JButton("Up");
+      sideButtons.add(upButton,new GridBagConstraints(0,-1,1,1,0,1,GridBagConstraints.SOUTH,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      upButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          move(-1);
+        }
+      }
+);
+    }
+{
+      JButton downButton=new JButton("Down");
+      sideButtons.add(downButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,0,0),0,0));
+      downButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          move(1);
+        }
+      }
+);
+    }
+  }
+{
+    JScrollPane scroll=new JScrollPane();
+    add(scroll,new GridBagConstraints(0,0,1,1,1,1,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,6),0,0));
+{
+      emitterTable=new JTable(){
+        public Class getColumnClass(        int column){
+          return column == 1 ? Boolean.class : super.getColumnClass(column);
+        }
+      }
+;
+      emitterTable.getTableHeader().setReorderingAllowed(false);
+      emitterTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+      scroll.setViewportView(emitterTable);
+      emitterTableModel=new DefaultTableModel(new String[0][0],new String[]{"Emitter",""});
+      emitterTable.setModel(emitterTableModel);
+      emitterTable.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+        public void valueChanged(        ListSelectionEvent event){
+          if (event.getValueIsAdjusting())           return;
+          emitterSelected();
+        }
+      }
+);
+      emitterTableModel.addTableModelListener(new TableModelListener(){
+        public void tableChanged(        TableModelEvent event){
+          if (event.getColumn() != 1)           return;
+          emitterChecked(event.getFirstRow(),(Boolean)emitterTable.getValueAt(event.getFirstRow(),1));
+        }
+      }
+);
+    }
+  }
+}

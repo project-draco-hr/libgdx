@@ -1,0 +1,13 @@
+{
+  this.texture=texture;
+  if (texture == null)   return;
+  imageAspectRatio=texture.getHeight() / (float)texture.getWidth();
+  float originX=texture.getWidth() / 2;
+  float originY=texture.getHeight() / 2;
+  for (int i=0, n=particles.length; i < n; i++) {
+    Particle particle=particles[i];
+    if (particle == null)     break;
+    particle.setTexture(texture);
+    particle.setOrigin(originX,originY);
+  }
+}

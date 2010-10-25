@@ -12,7 +12,7 @@
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
   Gdx.files=this.getFiles();
-  new Thread("LWJGL"){
+  new Thread("LWJGL Application"){
     public void run(){
       try {
         LwjglApplication.this.start();

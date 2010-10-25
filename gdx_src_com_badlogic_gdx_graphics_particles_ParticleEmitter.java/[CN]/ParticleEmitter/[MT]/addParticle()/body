@@ -1,0 +1,9 @@
+{
+  int activeCount=this.activeCount;
+  if (activeCount == maxParticleCount)   return;
+  BitSet active=this.active;
+  int index=active.nextClearBit(0);
+  activateParticle(index);
+  active.set(index);
+  this.activeCount=activeCount + 1;
+}

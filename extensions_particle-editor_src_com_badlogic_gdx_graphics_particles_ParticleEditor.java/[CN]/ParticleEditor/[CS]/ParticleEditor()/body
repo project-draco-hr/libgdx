@@ -1,0 +1,31 @@
+{
+  super("GDX Particle Editor");
+  glCanvas=new Canvas(){
+    private final Dimension minSize=new Dimension();
+    public final void addNotify(){
+      super.addNotify();
+      app=new LwjglApplication("ParticleEditor",200,200,false){
+        protected void setupDisplay() throws LWJGLException {
+          try {
+            Display.setParent(glCanvas);
+          }
+ catch (          LWJGLException ex) {
+            throw new GdxRuntimeException("Error setting display parent.",ex);
+          }
+          super.setupDisplay();
+        }
+      }
+;
+      app.getGraphics().setRenderListener(ParticleEditor.this);
+    }
+    public Dimension getMinimumSize(){
+      return minSize;
+    }
+  }
+;
+  initializeComponents();
+  setSize(950,950);
+  setLocationRelativeTo(null);
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  setVisible(true);
+}

@@ -1,0 +1,46 @@
+{
+  super("Spawn",null);
+  initializeComponents();
+  edgesCheckbox.setSelected(spawnShapeValue.isEdges());
+  sideCombo.setSelectedItem(spawnShapeValue.getShape());
+  shapeCombo.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      SpawnShape shape=(SpawnShape)shapeCombo.getSelectedItem();
+      spawnShapeValue.setShape(shape);
+switch (shape) {
+case line:
+case square:
+        setEdgesVisible(false);
+      editor.setVisible("Spawn Width",true);
+    editor.setVisible("Spawn Height",true);
+  break;
+case ellipse:
+setEdgesVisible(true);
+editor.setVisible("Spawn Width",true);
+editor.setVisible("Spawn Height",true);
+break;
+case point:
+setEdgesVisible(false);
+editor.setVisible("Spawn Width",false);
+editor.setVisible("Spawn Height",false);
+break;
+}
+}
+}
+);
+edgesCheckbox.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent event){
+spawnShapeValue.setEdges(edgesCheckbox.isSelected());
+setEdgesVisible(true);
+}
+}
+);
+sideCombo.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent event){
+SpawnEllipseSide side=(SpawnEllipseSide)sideCombo.getSelectedItem();
+spawnShapeValue.setSide(side);
+}
+}
+);
+shapeCombo.setSelectedItem(spawnShapeValue.getShape());
+}

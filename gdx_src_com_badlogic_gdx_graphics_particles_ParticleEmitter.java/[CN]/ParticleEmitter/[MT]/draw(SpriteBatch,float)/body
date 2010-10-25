@@ -1,0 +1,45 @@
+{
+  delta=Math.min(delta,0.250f);
+  if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
+  BitSet active=this.active;
+  int activeCount=this.activeCount;
+  int index=0;
+  while (true) {
+    index=active.nextSetBit(index);
+    if (index == -1)     break;
+    if (updateParticle(index,delta))     particles[index].draw(spriteBatch);
+ else {
+      active.clear(index);
+      activeCount--;
+    }
+    index++;
+  }
+  this.activeCount=activeCount;
+  if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  if (delayTimer < delay) {
+    delayTimer+=delta;
+    return;
+  }
+  if (firstUpdate) {
+    firstUpdate=false;
+    addParticle();
+  }
+  if (durationTimer < duration)   durationTimer+=delta;
+ else {
+    if (!continuous)     return;
+    restart();
+  }
+  emissionDelta+=delta;
+  float emissionTime=emission + emissionDiff * emissionValue.getScale(durationTimer / (float)duration);
+  if (emissionTime > 0) {
+    emissionTime=1 / emissionTime;
+    if (emissionDelta >= emissionTime) {
+      int emitCount=(int)(emissionDelta / emissionTime);
+      emitCount=Math.min(emitCount,maxParticleCount - activeCount);
+      emissionDelta-=emitCount * emissionTime;
+      emissionDelta%=emissionTime;
+      addParticles(emitCount);
+    }
+  }
+  if (activeCount < minParticleCount)   addParticles(minParticleCount - activeCount);
+}

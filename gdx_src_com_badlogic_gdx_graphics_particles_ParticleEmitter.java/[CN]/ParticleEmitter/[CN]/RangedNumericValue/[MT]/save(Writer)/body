@@ -1,0 +1,6 @@
+{
+  super.save(output);
+  if (!active)   return;
+  output.write("lowMin: " + lowMin + "\n");
+  output.write("lowMax: " + lowMax + "\n");
+}
