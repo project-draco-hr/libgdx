@@ -1,6 +1,0 @@
-{
-  if (fpMesh == null) {
-    fpMesh=ModelLoader.loadObj(Gdx.files.readFile("data/heavysphere.obj",FileType.Internal),false);
-    flMesh=ModelLoader.loadObj(Gdx.files.readFile("data/heavysphere.obj",FileType.Internal),false);
-  }
-}
