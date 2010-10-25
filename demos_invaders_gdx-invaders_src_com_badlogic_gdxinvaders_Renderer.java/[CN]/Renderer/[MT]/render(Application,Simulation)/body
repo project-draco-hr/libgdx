@@ -19,14 +19,16 @@
   renderExplosions(gl,simulation.explosions);
   gl.glDisable(GL10.GL_CULL_FACE);
   gl.glDisable(GL10.GL_DEPTH_TEST);
-  spriteBatch.begin(viewMatrix,transformMatrix);
+  spriteBatch.setProjectionMatrix(viewMatrix);
+  spriteBatch.setTransformMatrix(transformMatrix);
+  spriteBatch.begin();
   if (simulation.ship.lives != lastLives || simulation.score != lastScore || simulation.wave != lastWave) {
     status="lives: " + simulation.ship.lives + " wave: "+ simulation.wave+ " score: "+ simulation.score;
     lastLives=simulation.ship.lives;
     lastScore=simulation.score;
     lastWave=simulation.wave;
   }
-  spriteBatch.drawText(font,status,0,320,Color.WHITE);
+  spriteBatch.drawText(font,status,0,320 - font.getLineHeight(),Color.WHITE);
   spriteBatch.end();
   invaderAngle+=app.getGraphics().getDeltaTime() * 90;
   if (invaderAngle > 360)   invaderAngle-=360;
