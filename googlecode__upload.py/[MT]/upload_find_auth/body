@@ -6,7 +6,6 @@ def upload_find_auth(file_path, project_name, summary, labels=None, user_name=No
             sys.stdout.write('Please enter your googlecode.com username: ')
             sys.stdout.flush()
             user_name = sys.stdin.readline().rstrip()
-        print ('trie: ' + tries)
         (status, reason, url) = upload(file_path, project_name, user_name, password, summary, labels)
         if (status in [httplib.FORBIDDEN, httplib.UNAUTHORIZED]):
             user_name = password = None
