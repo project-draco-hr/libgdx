@@ -19,8 +19,7 @@ def main():
         labels = options.labels.split(',')
     else:
         labels = None
-    password = options.password
-    (status, reason, url) = upload_find_auth(file_path, options.project, options.summary, labels, options.user, password)
+    (status, reason, url) = upload_find_auth(file_path, options.project, options.summary, labels, options.user, options.password)
     if url:
         print 'The file was uploaded successfully.'
         print ('URL: %s' % url)
