@@ -16,7 +16,13 @@
         }
       }
 ;
-      app.getGraphics().setRenderListener(ParticleEditor.this);
+      app.getGraphics().setRenderListener(new Renderer());
+      addWindowListener(new WindowAdapter(){
+        public void windowClosed(        WindowEvent event){
+          app.stop();
+        }
+      }
+);
     }
     public Dimension getMinimumSize(){
       return minSize;

@@ -3,5 +3,7 @@
   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   frame.setContentPane(new TestList());
   frame.pack();
+  frame.setSize(frame.getWidth(),600);
+  frame.setLocationRelativeTo(null);
   frame.setVisible(true);
 }

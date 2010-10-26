@@ -1,0 +1,10 @@
+{
+  GL10 gl=Gdx.graphics.getGL10();
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  spriteBatch.begin();
+  effect.draw(spriteBatch,Gdx.graphics.getDeltaTime());
+  font.draw(spriteBatch,Gdx.graphics.getFramesPerSecond() + " fps",5,40,Color.WHITE);
+  int activeCount=emitters.get(emitterIndex).getActiveCount();
+  font.draw(spriteBatch,activeCount + "/" + particleCount+ " particles",5,Gdx.graphics.getHeight() - 5,Color.WHITE);
+  spriteBatch.end();
+}
