@@ -1,0 +1,6 @@
+{
+  Renderer renderer=gui.getRenderer();
+  if (!(renderer instanceof TwlRenderer))   throw new IllegalArgumentException("gui's renderer must be a TwlRenderer.");
+  ((TwlRenderer)renderer).spriteBatch.getProjectionMatrix().setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  gui.setSize();
+}

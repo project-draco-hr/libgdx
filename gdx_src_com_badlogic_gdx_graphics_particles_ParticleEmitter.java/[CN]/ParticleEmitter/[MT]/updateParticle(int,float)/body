@@ -4,30 +4,26 @@
   if (life <= 0)   return false;
   particle.currentLife=life;
   float percent=1 - particle.currentLife / particle.life;
-  particle.setScale(particle.size + particle.sizeDiff * sizeValue.getScale(percent));
-  float angle=particle.angle + particle.angleDiff * angleValue.getScale(percent);
-  if (rotationValue.active) {
+  int updateFlags=this.updateFlags;
+  if ((updateFlags & UPDATE_SCALE) != 0)   particle.setScale(particle.scale + particle.scaleDiff * scaleValue.getScale(percent));
+  float angle=particle.angle;
+  if ((updateFlags & UPDATE_ANGLE) != 0)   angle+=particle.angleDiff * angleValue.getScale(percent);
+  if ((updateFlags & UPDATE_ROTATION) != 0) {
     float rotation=particle.rotation + particle.rotationDiff * rotationValue.getScale(percent);
     if (aligned)     rotation+=angle;
-    rotation-=particle.currentRotation;
-    if (rotation != 0) {
-      particle.currentRotation+=rotation;
-      particle.rotate(rotation);
-    }
+    if (rotation != 0)     particle.setRotation(rotation);
   }
-  if (velocityValue.active) {
+  if ((updateFlags & UPDATE_VELOCITY) != 0) {
     float velocity=(particle.velocity + particle.velocityDiff * velocityValue.getScale(percent)) * delta;
-    float velocityX=velocity;
-    float velocityY=velocity;
-    if (angleValue.active) {
-      velocityX*=MathUtils.cosDeg(angle);
-      velocityY*=MathUtils.sinDeg(angle);
-    }
-    if (windValue.active)     velocityX+=(particle.wind + particle.windDiff * windValue.getScale(percent)) * delta;
-    if (gravityValue.active)     velocityY+=(particle.gravity + particle.gravityDiff * gravityValue.getScale(percent)) * delta;
+    float velocityX=velocity * MathUtils.cosDeg(angle);
+    float velocityY=velocity * MathUtils.sinDeg(angle);
+    if ((updateFlags & UPDATE_WIND) != 0)     velocityX+=(particle.wind + particle.windDiff * windValue.getScale(percent)) * delta;
+    if ((updateFlags & UPDATE_GRAVITY) != 0)     velocityY+=(particle.gravity + particle.gravityDiff * gravityValue.getScale(percent)) * delta;
     particle.translate(velocityX,velocityY);
   }
-  float[] color=tintValue.getColor(percent);
+  float[] color;
+  if ((updateFlags & UPDATE_TINT) != 0)   color=tintValue.getColor(percent);
+ else   color=particle.tint;
   particle.setColor(color[0],color[1],color[2],particle.transparency + particle.transparencyDiff * transparencyValue.getScale(percent));
   return true;
 }

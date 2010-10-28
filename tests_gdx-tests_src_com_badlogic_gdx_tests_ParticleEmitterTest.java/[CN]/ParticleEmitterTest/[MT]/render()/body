@@ -1,10 +1,14 @@
 {
+  float delta=Gdx.graphics.getDeltaTime();
   GL10 gl=Gdx.graphics.getGL10();
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   spriteBatch.begin();
-  effect.draw(spriteBatch,Gdx.graphics.getDeltaTime());
-  font.draw(spriteBatch,Gdx.graphics.getFramesPerSecond() + " fps",5,40,Color.WHITE);
-  int activeCount=emitters.get(emitterIndex).getActiveCount();
-  font.draw(spriteBatch,activeCount + "/" + particleCount+ " particles",5,Gdx.graphics.getHeight() - 5,Color.WHITE);
+  effect.draw(spriteBatch,delta);
   spriteBatch.end();
+  fpsCounter+=delta;
+  if (fpsCounter > 3) {
+    fpsCounter=0;
+    int activeCount=emitters.get(emitterIndex).getActiveCount();
+    System.out.println(activeCount + "/" + particleCount+ " particles, FPS: "+ Gdx.graphics.getFramesPerSecond());
+  }
 }

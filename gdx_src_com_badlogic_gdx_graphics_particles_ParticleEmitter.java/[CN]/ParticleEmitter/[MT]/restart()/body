@@ -18,4 +18,12 @@
   spawnHeight=(int)spawnHeightValue.newLowValue();
   spawnHeightDiff=(int)spawnHeightValue.newHighValue();
   if (!spawnHeightValue.isRelative())   spawnHeightDiff-=spawnHeight;
+  updateFlags=0;
+  if (angleValue.active && angleValue.timeline.length > 1)   updateFlags|=UPDATE_ANGLE;
+  if (velocityValue.active && velocityValue.active)   updateFlags|=UPDATE_VELOCITY;
+  if (scaleValue.timeline.length > 1)   updateFlags|=UPDATE_SCALE;
+  if (rotationValue.active && rotationValue.timeline.length > 1)   updateFlags|=UPDATE_ROTATION;
+  if (windValue.active && windValue.timeline.length > 1)   updateFlags|=UPDATE_WIND;
+  if (gravityValue.active && gravityValue.timeline.length > 1)   updateFlags|=UPDATE_GRAVITY;
+  if (tintValue.timeline.length > 1)   updateFlags|=UPDATE_TINT;
 }

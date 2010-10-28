@@ -1,7 +1,6 @@
 {
   if (spriteBatch != null)   return;
   spriteBatch=new SpriteBatch();
-  font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal),false);
   effect=new ParticleEffect();
   effect.load(Gdx.files.getFileHandle("data/test.p",FileType.Internal),"data",FileType.Internal);
   effect.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
@@ -30,13 +29,17 @@
       ParticleEmitter emitter=emitters.get(emitterIndex);
       if (keycode == Input.Keys.KEYCODE_DPAD_UP)       particleCount+=5;
  else       if (keycode == Input.Keys.KEYCODE_DPAD_DOWN)       particleCount-=5;
- else       if (keycode == Input.Keys.KEYCODE_SPACE)       emitterIndex=(emitterIndex + 1) % emitters.size();
+ else       if (keycode == Input.Keys.KEYCODE_SPACE) {
+        emitterIndex=(emitterIndex + 1) % emitters.size();
+        emitter=emitters.get(emitterIndex);
+        particleCount=(int)(emitter.getEmission().getHighMax() * emitter.getLife().getHighMax());
+      }
  else       return false;
       particleCount=Math.max(0,particleCount);
       if (particleCount > emitter.getMaxParticleCount())       emitter.setMaxParticleCount(particleCount * 2);
       emitter.getEmission().setHigh(particleCount / emitter.getLife().getHighMax());
       effect.getEmitters().clear();
-      effect.getEmitters().add(emitters.get(emitterIndex));
+      effect.getEmitters().add(emitter);
       return false;
     }
   }

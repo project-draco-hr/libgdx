@@ -5,6 +5,7 @@
     particle.flip(flipX,flipY);
   }
   float percent=durationTimer / (float)duration;
+  int updateFlags=this.updateFlags;
   float offsetTime=lifeOffset + lifeOffsetDiff * lifeOffsetValue.getScale(percent);
   particle.life=particle.currentLife=life + lifeDiff * lifeValue.getScale(percent);
   if (velocityValue.active) {
@@ -15,13 +16,16 @@
   particle.angle=angleValue.newLowValue();
   particle.angleDiff=angleValue.newHighValue();
   if (!angleValue.isRelative())   particle.angleDiff-=particle.angle;
-  particle.size=sizeValue.newLowValue() / texture.getWidth();
-  particle.sizeDiff=sizeValue.newHighValue() / texture.getWidth();
-  if (!sizeValue.isRelative())   particle.sizeDiff-=particle.size;
+  if ((updateFlags & UPDATE_ANGLE) == 0)   particle.angle=particle.angle + particle.angleDiff * angleValue.getScale(0);
+  particle.scale=scaleValue.newLowValue() / texture.getWidth();
+  particle.scaleDiff=scaleValue.newHighValue() / texture.getWidth();
+  if (!scaleValue.isRelative())   particle.scaleDiff-=particle.scale;
+  if ((updateFlags & UPDATE_SCALE) == 0)   particle.setScale(particle.scale + particle.scaleDiff * scaleValue.getScale(0));
   if (rotationValue.active) {
-    particle.rotation=particle.currentRotation=rotationValue.newLowValue();
+    particle.rotation=rotationValue.newLowValue();
     particle.rotationDiff=rotationValue.newHighValue();
     if (!rotationValue.isRelative())     particle.rotationDiff-=particle.rotation;
+    if ((updateFlags & UPDATE_ROTATION) == 0)     particle.setRotation(particle.rotation + particle.rotationDiff * rotationValue.getScale(0));
   }
   if (windValue.active) {
     particle.wind=windValue.newLowValue();
@@ -32,6 +36,14 @@
     particle.gravity=gravityValue.newLowValue();
     particle.gravityDiff=gravityValue.newHighValue();
     if (!gravityValue.isRelative())     particle.gravityDiff-=particle.gravity;
+  }
+  if ((updateFlags & UPDATE_TINT) == 0) {
+    float[] color=particle.tint;
+    if (color == null)     particle.tint=color=new float[3];
+    float[] temp=tintValue.getColor(0);
+    color[0]=temp[0];
+    color[1]=temp[1];
+    color[2]=temp[2];
   }
   particle.transparency=transparencyValue.newLowValue();
   particle.transparencyDiff=transparencyValue.newHighValue() - particle.transparency;
@@ -98,7 +110,5 @@ y+=lineX * (height / (float)width);
 break;
 }
 }
-particle.setRotation(particle.currentRotation);
 particle.setBounds(x - texture.getWidth() / 2,y - texture.getHeight() / 2,texture.getWidth(),texture.getHeight());
-updateParticle(index,offsetTime);
 }

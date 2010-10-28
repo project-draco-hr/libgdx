@@ -16,7 +16,7 @@ synchronized (effect) {
         addRow(new SpawnPanel(emitter.getSpawnShape(),ParticleEditor.this));
         addRow(new ScaledNumericPanel("Spawn Width","Duration",emitter.getSpawnWidth()));
         addRow(new ScaledNumericPanel("Spawn Height","Duration",emitter.getSpawnHeight()));
-        addRow(new ScaledNumericPanel("Size","Life",emitter.getSize()));
+        addRow(new ScaledNumericPanel("Size","Life",emitter.getScale()));
         addRow(new ScaledNumericPanel("Velocity","Life",emitter.getVelocity()));
         addRow(new ScaledNumericPanel("Angle","Life",emitter.getAngle()));
         addRow(new ScaledNumericPanel("Rotation","Life",emitter.getRotation()));
