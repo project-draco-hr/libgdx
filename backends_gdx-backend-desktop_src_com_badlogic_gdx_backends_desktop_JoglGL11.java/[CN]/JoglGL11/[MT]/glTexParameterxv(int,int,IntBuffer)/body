@@ -1,6 +1,0 @@
-{
-  if (tmpFloat.length < params.capacity())   tmpFloat=new float[params.capacity()];
-  int i=0;
-  while (params.hasRemaining())   tmpFloat[i]=FIXED_TO_FLOAT * params.get();
-  gl.glTexParameterfv(target,pname,tmpFloat,0);
-}

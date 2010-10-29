@@ -1,5 +1,0 @@
-{
-  if (tmpFloat.length < params.length)   tmpFloat=new float[params.length];
-  for (int i=0; i < params.length; i++)   tmpFloat[i]=params[i];
-  gl.glTexParameterfv(target,pname,tmpFloat,offset);
-}

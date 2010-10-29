@@ -1,5 +1,0 @@
-{
-  if (params.length > tmp.length)   tmp=new float[params.length];
-  for (int i=0; i + offset < params.length; i++)   tmp[i]=FIXED_TO_FLOAT * params[i + offset];
-  glLightModelfv(pname,tmp,0);
-}

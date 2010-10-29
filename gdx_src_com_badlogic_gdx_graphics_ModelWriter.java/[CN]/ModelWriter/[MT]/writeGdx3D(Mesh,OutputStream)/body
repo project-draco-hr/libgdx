@@ -10,20 +10,12 @@
       dout.writeInt(bytes.length);
       dout.write(bytes);
     }
-    dout.writeBoolean(mesh.usesFixedPoint());
     dout.writeInt(mesh.getNumVertices());
     dout.writeInt(mesh.getNumVertices() * mesh.getVertexSize() / 4);
     dout.writeInt(mesh.getNumIndices());
-    if (mesh.usesFixedPoint()) {
-      int[] vertices=new int[mesh.getNumVertices() * mesh.getVertexSize() / 4];
-      mesh.getVertices(vertices);
-      for (int i=0; i < vertices.length; i++)       dout.writeInt(vertices[i]);
-    }
- else {
-      float[] vertices=new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
-      mesh.getVertices(vertices);
-      for (int i=0; i < vertices.length; i++)       dout.writeFloat(vertices[i]);
-    }
+    float[] vertices=new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
+    mesh.getVertices(vertices);
+    for (int i=0; i < vertices.length; i++)     dout.writeFloat(vertices[i]);
     dout.flush();
     if (mesh.getNumIndices() > 0) {
       short[] indices=new short[mesh.getNumIndices()];

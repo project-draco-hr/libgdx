@@ -1,12 +1,6 @@
 {
-  if (type == GL10.GL_FIXED) {
-    convertFixedToFloatbuffer(pointer,normalBuffer,stride);
-    GL11.glNormalPointer(stride,normalBuffer);
-  }
- else {
-    if (pointer instanceof FloatBuffer && type == GL11.GL_FLOAT)     GL11.glNormalPointer(stride,(FloatBuffer)pointer);
- else     if (pointer instanceof ByteBuffer && type == GL11.GL_FLOAT)     GL11.glNormalPointer(stride,((ByteBuffer)pointer).asFloatBuffer());
- else     if (pointer instanceof ByteBuffer && type == GL11.GL_BYTE)     GL11.glNormalPointer(stride,(ByteBuffer)pointer);
- else     throw new GdxRuntimeException("Can't use " + pointer.getClass().getName() + " with this method. GL10.GL_SHORT not supported. Use FloatBuffer instead. Blame LWJGL");
-  }
+  if (pointer instanceof FloatBuffer && type == GL11.GL_FLOAT)   GL11.glNormalPointer(stride,(FloatBuffer)pointer);
+ else   if (pointer instanceof ByteBuffer && type == GL11.GL_FLOAT)   GL11.glNormalPointer(stride,((ByteBuffer)pointer).asFloatBuffer());
+ else   if (pointer instanceof ByteBuffer && type == GL11.GL_BYTE)   GL11.glNormalPointer(stride,(ByteBuffer)pointer);
+ else   throw new GdxRuntimeException("Can't use " + pointer.getClass().getName() + " with this method. GL10.GL_SHORT not supported. Use FloatBuffer instead. Blame LWJGL");
 }

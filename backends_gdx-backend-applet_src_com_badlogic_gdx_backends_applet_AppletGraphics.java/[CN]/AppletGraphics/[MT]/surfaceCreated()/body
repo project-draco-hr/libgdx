@@ -8,10 +8,10 @@
   }
  else {
     if (major == 1 && minor < 5) {
-      gl10=new AppletGL10(graphicPanel.getGL(),allowFixedPoint);
+      gl10=new AppletGL10(graphicPanel.getGL());
     }
  else {
-      gl11=new AppletGL11(graphicPanel.getGL(),allowFixedPoint);
+      gl11=new AppletGL11(graphicPanel.getGL());
       gl10=gl11;
     }
     gl=gl10;
