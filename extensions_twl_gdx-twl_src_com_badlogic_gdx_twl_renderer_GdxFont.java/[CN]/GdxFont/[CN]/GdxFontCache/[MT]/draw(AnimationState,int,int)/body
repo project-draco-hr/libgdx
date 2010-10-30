@@ -1,6 +1,7 @@
 {
+  y+=bitmapFont.getCapHeight();
   GdxFont.FontState fontState=evalFontState(as);
-  bitmapCache.setColor(renderer.getColor(fontState.color));
-  bitmapCache.setPosition(x + fontState.offsetX,y + fontState.offsetY);
-  bitmapCache.draw(renderer.spriteBatch);
+  setColor(renderer.getColor(fontState.color));
+  setPosition(x + fontState.offsetX,y + fontState.offsetY);
+  draw(renderer.spriteBatch);
 }
