@@ -1,0 +1,25 @@
+{
+  BitmapFont font=this.font;
+  int length=str.length();
+  reset(length);
+  final float color=tint.toFloatBits();
+  y+=font.yOffset;
+  int down=font.down;
+  int start=0;
+  int numLines=0;
+  while (start < length) {
+    int lineEnd=BitmapFont.indexOf(str,'\n',start);
+    int xOffset=0;
+    if (alignment != HAlignment.LEFT) {
+      int lineWidth=font.computeTextWidth(str,start,lineEnd);
+      xOffset=alignmentWidth - lineWidth;
+      if (alignment == HAlignment.CENTER)       xOffset/=2;
+    }
+    addToCache(str,x + xOffset,y,color,start,lineEnd);
+    start=lineEnd + 1;
+    y+=down;
+    numLines++;
+  }
+  width=alignmentWidth;
+  height=start - y;
+}

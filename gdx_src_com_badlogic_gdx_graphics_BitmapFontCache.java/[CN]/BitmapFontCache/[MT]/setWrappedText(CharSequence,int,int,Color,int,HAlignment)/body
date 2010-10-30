@@ -1,12 +1,14 @@
 {
-  final float color=tint.toFloatBits();
-  y+=yOffset;
+  BitmapFont font=this.font;
   int length=str.length();
-  cache.reset(length);
+  reset(length);
+  final float color=tint.toFloatBits();
+  y+=font.yOffset;
+  int down=font.down;
   int start=0;
   int numLines=0;
   while (start < length) {
-    int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    int lineEnd=start + font.computeVisibleGlpyhs(str,start,BitmapFont.indexOf(str,'\n',start),wrapWidth);
     if (lineEnd < length) {
       while (lineEnd > start) {
         char ch=str.charAt(lineEnd);
@@ -17,15 +19,15 @@
     if (lineEnd == start)     lineEnd++;
     int xOffset=0;
     if (alignment != HAlignment.LEFT) {
-      int lineWidth=computeTextWidth(str,start,lineEnd);
+      int lineWidth=font.computeTextWidth(str,start,lineEnd);
       xOffset=wrapWidth - lineWidth;
       if (alignment == HAlignment.CENTER)       xOffset/=2;
     }
-    addToCache(cache,str,x + xOffset,y,color,start,lineEnd);
+    addToCache(str,x + xOffset,y,color,start,lineEnd);
     start=lineEnd + 1;
-    y+=lineHeight * down;
+    y+=down;
     numLines++;
   }
-  cache.width=wrapWidth;
-  cache.height=start - y;
+  width=wrapWidth;
+  height=start - y;
 }

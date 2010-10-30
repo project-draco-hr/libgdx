@@ -39,7 +39,7 @@
       tokens.nextToken();
       glyph.xoffset=Integer.parseInt(tokens.nextToken());
       tokens.nextToken();
-      if (flip)       glyph.yoffset=Integer.parseInt(tokens.nextToken()) - lineHeight + baseLine;
+      if (flip)       glyph.yoffset=Integer.parseInt(tokens.nextToken());
  else       glyph.yoffset=-(glyph.height + Integer.parseInt(tokens.nextToken()));
       tokens.nextToken();
       glyph.xadvance=Integer.parseInt(tokens.nextToken());
@@ -76,8 +76,8 @@
     xHeight=g != null ? g.height : 1;
     g=getGlyph('M');
     capHeight=g != null ? g.height : 1;
-    yOffset=flip ? 0 : lineHeight - baseLine;
-    down=flip ? 1 : -1;
+    yOffset=flip ? -baseLine : baseLine;
+    down=flip ? lineHeight : -lineHeight;
   }
  catch (  Exception ex) {
     throw new GdxRuntimeException("Error loading font file: " + fontFile,ex);

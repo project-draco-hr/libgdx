@@ -1,20 +1,21 @@
 {
+  BitmapFont font=this.font;
   Glyph lastGlyph=null;
   while (start < end) {
-    lastGlyph=getGlyph(str.charAt(start++));
+    lastGlyph=font.getGlyph(str.charAt(start++));
     if (lastGlyph != null) {
-      cache.addGlyph(lastGlyph,x,y,color);
+      addGlyph(lastGlyph,x,y,color);
       x+=lastGlyph.xadvance;
       break;
     }
   }
   while (start < end) {
     char ch=str.charAt(start++);
-    Glyph g=getGlyph(ch);
+    Glyph g=font.getGlyph(ch);
     if (g != null) {
       x+=lastGlyph.getKerning(ch);
       lastGlyph=g;
-      cache.addGlyph(lastGlyph,x,y,color);
+      addGlyph(lastGlyph,x,y,color);
       x+=g.xadvance;
     }
   }

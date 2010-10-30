@@ -14,12 +14,11 @@
   while (start < end) {
     char ch=str.charAt(start++);
     Glyph g=getGlyph(ch);
-    if (g != null) {
-      x+=lastGlyph.getKerning(ch);
-      lastGlyph=g;
-      spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2,color);
-      x+=g.xadvance;
-    }
+    if (g == null)     continue;
+    x+=lastGlyph.getKerning(ch);
+    lastGlyph=g;
+    spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2,color);
+    x+=g.xadvance;
   }
   return x - startX;
 }
