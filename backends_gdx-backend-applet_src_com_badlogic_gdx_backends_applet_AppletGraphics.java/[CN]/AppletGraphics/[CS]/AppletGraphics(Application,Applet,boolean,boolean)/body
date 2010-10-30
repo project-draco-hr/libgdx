@@ -1,9 +1,0 @@
-{
-  graphicPanel=new AppletPanel(application);
-  applet.setLayout(new BorderLayout());
-  applet.add(graphicPanel,BorderLayout.CENTER);
-  useGL2=useGL2IfAvailable;
-  graphicPanel.addGraphicListener(this);
-  graphicPanel.requestFocusInWindow();
-  this.allowFixedPoint=allowFixedPoint;
-}

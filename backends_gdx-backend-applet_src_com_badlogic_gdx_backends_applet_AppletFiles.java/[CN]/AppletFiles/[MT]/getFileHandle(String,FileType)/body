@@ -1,4 +1,0 @@
-{
-  if (type == FileType.Absolute || type == FileType.External)   return null;
- else   return new AppletFileHandle(filename);
-}

@@ -1,4 +1,0 @@
-{
-  Pixmap pixmap=newPixmap(file);
-  return new AppletTexture((BufferedImage)pixmap.getNativePixmap(),minFilter,magFilter,uWrap,vWrap,true);
-}

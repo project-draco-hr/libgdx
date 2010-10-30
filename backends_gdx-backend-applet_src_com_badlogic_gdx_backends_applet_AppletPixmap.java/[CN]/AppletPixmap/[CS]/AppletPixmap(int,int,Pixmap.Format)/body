@@ -1,5 +1,0 @@
-{
-  int internalformat=getInternalFormat(format);
-  pixmap=new BufferedImage(width,height,internalformat);
-  composite=AlphaComposite.Src;
-}

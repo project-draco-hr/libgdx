@@ -1,9 +1,0 @@
-{
-  SwingUtilities.invokeLater(new Runnable(){
-    @Override public void run(){
-      AppletInput.this.text=JOptionPane.showInputDialog(null,title,text);
-      if (AppletInput.this.text != null)       textListener=listener;
-    }
-  }
-);
-}

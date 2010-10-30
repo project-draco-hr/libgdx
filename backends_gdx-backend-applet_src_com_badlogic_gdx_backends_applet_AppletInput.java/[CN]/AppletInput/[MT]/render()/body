@@ -1,7 +1,0 @@
-{
-  multiplexer.processEvents();
-  if (textListener != null) {
-    textListener.input(text);
-    textListener=null;
-  }
-}
