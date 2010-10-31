@@ -1,5 +1,6 @@
 {
-  if (!managed)   return;
-  if (invalidated)   compileShaders(vertexShaderSource,fragmentShaderSource);
-  invalidated=false;
+  if (invalidated) {
+    compileShaders(vertexShaderSource,fragmentShaderSource);
+    invalidated=false;
+  }
 }

@@ -1,0 +1,21 @@
+{
+  GL20 gl=Gdx.gl20;
+  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,bufferHandle);
+  if (isDirty) {
+    gl.glBufferData(GL20.GL_ARRAY_BUFFER,byteBuffer.limit(),null,usage);
+    gl.glBufferData(GL20.GL_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);
+    isDirty=false;
+  }
+  int numAttributes=attributes.size();
+  for (int i=0; i < numAttributes; i++) {
+    VertexAttribute attribute=attributes.get(i);
+    shader.enableVertexAttribute(attribute.alias);
+    int colorType=GL20.GL_FLOAT;
+    boolean normalize=false;
+    if (attribute.usage == Usage.ColorPacked) {
+      colorType=GL20.GL_UNSIGNED_BYTE;
+      normalize=true;
+    }
+    shader.setVertexAttribute(attribute.alias,attribute.numComponents,colorType,normalize,attributes.vertexSize,attribute.offset);
+  }
+}
