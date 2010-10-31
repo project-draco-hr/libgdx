@@ -21,6 +21,5 @@
   paddleMesh.render(GL10.GL_TRIANGLE_FAN);
   gl.glPopMatrix();
   spriteBatch.begin();
-  spriteBatch.drawText(font,score,Gdx.graphics.getWidth() / 2 - font.getStringWidth(score) / 2,Gdx.graphics.getHeight() - font.getLineHeight(),Color.WHITE);
   spriteBatch.end();
 }

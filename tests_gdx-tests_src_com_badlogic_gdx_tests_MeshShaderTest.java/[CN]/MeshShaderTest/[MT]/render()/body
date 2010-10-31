@@ -12,6 +12,5 @@
   mesh.render(shader,GL10.GL_TRIANGLES);
   shader.end();
   spriteBatch.begin();
-  spriteBatch.drawText(font,"This is a test",100,100,Color.RED);
   spriteBatch.end();
 }

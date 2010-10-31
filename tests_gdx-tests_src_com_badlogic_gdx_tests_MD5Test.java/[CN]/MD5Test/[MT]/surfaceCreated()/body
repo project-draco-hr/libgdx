@@ -15,7 +15,6 @@
     camera.setFar(1000);
     camera.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     batch=new SpriteBatch();
-    font=Gdx.graphics.newFont("Arial",12,FontStyle.Plain);
     Gdx.graphics.getGL10().glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     Gdx.input.addInputListener(this);
   }

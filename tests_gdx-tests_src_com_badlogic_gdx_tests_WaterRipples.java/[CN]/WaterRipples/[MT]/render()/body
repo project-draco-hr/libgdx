@@ -28,6 +28,5 @@
   texture.bind();
   mesh.render(GL10.GL_TRIANGLES);
   batch.begin();
-  batch.drawText(font,"fps: " + Gdx.graphics.getFramesPerSecond(),10,20,Color.WHITE);
   batch.end();
 }

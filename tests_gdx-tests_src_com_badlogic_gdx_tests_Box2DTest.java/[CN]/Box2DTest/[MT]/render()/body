@@ -27,6 +27,5 @@
   renderer.end();
   gl.glPointSize(1);
   batch.begin();
-  batch.drawText(font,"fps: " + Gdx.graphics.getFramesPerSecond() + " update time: "+ updateTime,0,Gdx.graphics.getHeight(),Color.RED);
   batch.end();
 }

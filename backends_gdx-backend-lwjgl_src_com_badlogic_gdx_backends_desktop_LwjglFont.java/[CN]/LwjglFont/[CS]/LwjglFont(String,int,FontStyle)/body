@@ -1,8 +1,0 @@
-{
-  super();
-  font=new java.awt.Font(fontName,getJavaFontStyle(style),size);
-  Graphics g=tmpBitmap.getGraphics();
-  g.setFont(font);
-  metrics=g.getFontMetrics();
-  g.dispose();
-}

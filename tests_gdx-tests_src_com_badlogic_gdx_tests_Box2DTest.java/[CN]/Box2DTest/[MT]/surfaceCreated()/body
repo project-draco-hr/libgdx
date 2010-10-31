@@ -4,7 +4,6 @@
   camera.getPosition().set(0,16,0);
   renderer=new ImmediateModeRenderer();
   batch=new SpriteBatch();
-  font=Gdx.graphics.newFont("Arial",12,FontStyle.Plain);
   createPhysicsWorld();
   Gdx.input.addInputListener(this);
 }

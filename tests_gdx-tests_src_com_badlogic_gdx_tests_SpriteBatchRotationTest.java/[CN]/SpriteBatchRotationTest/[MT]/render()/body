@@ -8,7 +8,6 @@
   spriteBatch.draw(texture,64,58,16,16,32,32,scale,scale,0,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
   spriteBatch.draw(texture,112,58,16,16,32,32,scale,scale,angle,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
   spriteBatch.draw(texture,160,58,0,0,32,32,scale,scale,angle,0,0,texture.getWidth(),texture.getHeight(),Color.WHITE,false,false);
-  spriteBatch.drawText(font,"Test",208,10,Color.WHITE);
   spriteBatch.end();
   Gdx.graphics.getGL10().glFlush();
   angle+=20 * Gdx.graphics.getDeltaTime();

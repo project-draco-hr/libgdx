@@ -12,6 +12,5 @@
     mesh.setIndices(new short[]{0,1,2});
     texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
     spriteBatch=new SpriteBatch();
-    font=Gdx.graphics.newFont("Arial",12,FontStyle.Plain);
   }
 }

@@ -2,7 +2,6 @@
   if (stage == null) {
     Gdx.input.addInputListener(this);
     texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-    font=Gdx.graphics.newFont("DroidSans",12,FontStyle.Plain);
     stage=new Stage(480,320,true);
     float loc=(NUM_SPRITES * (32 + SPACING) - SPACING) / 2;
     for (int i=0; i < NUM_GROUPS; i++) {
@@ -27,9 +26,6 @@
     ui.addActor(blend);
     ui.addActor(rotate);
     ui.addActor(scale);
-    Label fps=new Label("fps",font,"fps: 0");
-    fps.color.set(0,1,0,1);
-    ui.addActor(fps);
     Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
     renderer=new ImmediateModeRenderer();
   }

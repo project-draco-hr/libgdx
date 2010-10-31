@@ -23,6 +23,5 @@
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);
   batch.begin();
-  batch.drawText(font,"fps: " + Gdx.graphics.getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java"),10,20,Color.WHITE);
   batch.end();
 }

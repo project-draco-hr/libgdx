@@ -4,7 +4,6 @@
   AndroidTexture.invalidateAllTextures();
   ShaderProgram.invalidateAllShaderPrograms();
   FrameBuffer.invalidateAllFrameBuffers();
-  Font.invalidateAllFonts();
   Display display=app.getWindowManager().getDefaultDisplay();
   this.width=display.getWidth();
   this.height=display.getHeight();

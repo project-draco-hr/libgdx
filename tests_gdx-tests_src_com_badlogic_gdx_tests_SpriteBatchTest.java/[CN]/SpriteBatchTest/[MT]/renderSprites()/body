@@ -35,10 +35,6 @@
   }
   draw2=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
-  spriteBatch.drawText(font,"Question?",100,300,Color.RED);
-  spriteBatch.drawText(font,"and another this is a test",200,100,Color.WHITE);
-  spriteBatch.drawText(font,"all hail and another this is a test",200,200,Color.WHITE);
-  spriteBatch.drawText(font,"Sprite fps: " + Gdx.graphics.getFramesPerSecond(),10,30,Color.RED);
   drawText=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
   spriteBatch.end();
