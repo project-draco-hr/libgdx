@@ -7,7 +7,7 @@
     gl.glDeleteBuffers(1,tmpHandle);
     bufferHandle=0;
   }
- else {
+ else   if (Gdx.gl11 != null) {
     tmpHandle.clear();
     tmpHandle.put(bufferHandle);
     GL11 gl=Gdx.gl11;

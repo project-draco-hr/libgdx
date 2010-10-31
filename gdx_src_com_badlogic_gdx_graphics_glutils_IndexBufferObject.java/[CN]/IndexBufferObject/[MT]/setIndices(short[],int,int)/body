@@ -11,7 +11,7 @@
       gl.glBufferData(GL11.GL_ELEMENT_ARRAY_BUFFER,byteBuffer.limit(),null,usage);
       gl.glBufferData(GL11.GL_ELEMENT_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);
     }
- else {
+ else     if (Gdx.gl11 != null) {
       GL20 gl=Gdx.gl20;
       gl.glBufferData(GL20.GL_ELEMENT_ARRAY_BUFFER,byteBuffer.limit(),null,usage);
       gl.glBufferData(GL20.GL_ELEMENT_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);

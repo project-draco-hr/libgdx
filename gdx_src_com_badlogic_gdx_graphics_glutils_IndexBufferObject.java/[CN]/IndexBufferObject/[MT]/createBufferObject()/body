@@ -1,5 +1,11 @@
 {
-  if (Gdx.gl20 != null)   Gdx.gl20.glGenBuffers(1,tmpHandle);
- else   Gdx.gl11.glGenBuffers(1,tmpHandle);
-  return tmpHandle.get(0);
+  if (Gdx.gl20 != null) {
+    Gdx.gl20.glGenBuffers(1,tmpHandle);
+    return tmpHandle.get(0);
+  }
+ else   if (Gdx.gl11 != null) {
+    Gdx.gl11.glGenBuffers(1,tmpHandle);
+    return tmpHandle.get(0);
+  }
+  return 0;
 }

@@ -8,7 +8,7 @@
       isDirty=false;
     }
   }
- else   if (Gdx.gl20 != null) {
+ else {
     GL20 gl=Gdx.gl20;
     gl.glBindBuffer(GL20.GL_ELEMENT_ARRAY_BUFFER,bufferHandle);
     if (isDirty) {
