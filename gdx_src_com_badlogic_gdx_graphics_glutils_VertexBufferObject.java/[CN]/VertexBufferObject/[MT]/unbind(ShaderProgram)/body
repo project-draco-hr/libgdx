@@ -6,4 +6,5 @@
     shader.disableVertexAttribute(attribute.alias);
   }
   gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
+  isBound=false;
 }

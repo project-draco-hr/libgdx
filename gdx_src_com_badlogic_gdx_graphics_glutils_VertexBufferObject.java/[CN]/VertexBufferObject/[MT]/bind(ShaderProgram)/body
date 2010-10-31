@@ -18,4 +18,5 @@
     }
     shader.setVertexAttribute(attribute.alias,attribute.numComponents,colorType,normalize,attributes.vertexSize,attribute.offset);
   }
+  isBound=true;
 }
