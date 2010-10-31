@@ -1,5 +1,0 @@
-{
-  if (!useVBO)   return;
-  if (Gdx.graphics.isGL20Available())   constructBufferObjects(Gdx.graphics.getGL20());
- else   constructBufferObjects(Gdx.graphics.getGL11());
-}

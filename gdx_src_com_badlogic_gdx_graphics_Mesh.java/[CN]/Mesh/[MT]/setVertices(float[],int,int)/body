@@ -1,14 +1,3 @@
 {
-  if (isDirect) {
-    BufferUtils.copy(vertices,this.vertices,count,offset);
-    this.verticesFloat.limit(this.vertices.limit() >> 2);
-    this.verticesFloat.position(0);
-  }
- else {
-    this.verticesFloat.clear();
-    this.verticesFloat.put(vertices,offset,count);
-    this.verticesFloat.limit(count);
-    this.verticesFloat.position(0);
-  }
-  dirty=true;
+  this.vertices.setVertices(vertices,offset,count);
 }

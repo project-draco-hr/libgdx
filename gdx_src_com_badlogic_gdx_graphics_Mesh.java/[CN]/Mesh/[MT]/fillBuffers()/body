@@ -1,6 +1,0 @@
-{
-  dirty=false;
-  if (Gdx.graphics.isGL11Available() == false && Gdx.graphics.isGL20Available() == false)   return;
-  if (Gdx.graphics.isGL20Available())   fillBuffers(Gdx.graphics.getGL20());
- else   fillBuffers(Gdx.graphics.getGL11());
-}

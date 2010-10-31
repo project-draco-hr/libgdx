@@ -1,0 +1,5 @@
+{
+  if (Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 2.0");
+  vertices.bind();
+  if (!isVertexArray && indices.getNumIndices() > 0)   indices.bind();
+}

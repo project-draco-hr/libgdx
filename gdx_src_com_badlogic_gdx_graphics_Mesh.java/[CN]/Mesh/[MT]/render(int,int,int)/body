@@ -1,6 +1,18 @@
 {
   if (Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 2.0");
-  checkManagedAndDirty();
-  if (vertexBufferObjectHandle != 0)   renderVBO(primitiveType,offset,count);
- else   renderVA(primitiveType,offset,count);
+  if (autoBind)   bind();
+  if (isVertexArray) {
+    if (indices.getNumIndices() > 0) {
+      int oldPosition=indices.getBuffer().position();
+      indices.getBuffer().position(offset);
+      Gdx.gl10.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,indices.getBuffer());
+      indices.getBuffer().position(oldPosition);
+    }
+ else     Gdx.gl10.glDrawArrays(primitiveType,offset,count);
+  }
+ else {
+    if (indices.getNumIndices() > 0)     Gdx.gl11.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset);
+ else     Gdx.gl11.glDrawArrays(primitiveType,offset,count);
+  }
+  if (autoBind)   unbind();
 }

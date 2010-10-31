@@ -1,7 +1,3 @@
 {
-  this.indices.clear();
-  this.indices.put(indices);
-  this.indices.limit(indices.length);
-  this.indices.position(0);
-  dirty=true;
+  this.indices.setIndices(indices,0,indices.length);
 }

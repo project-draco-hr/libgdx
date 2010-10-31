@@ -12,6 +12,7 @@
     gl.glLoadMatrixf(projectionMatrix.val,0);
     gl.glMatrixMode(GL10.GL_MODELVIEW);
     gl.glLoadMatrixf(transformMatrix.val,0);
+    mesh.bind();
   }
  else {
     combinedMatrix.set(projectionMatrix).mul(transformMatrix);
@@ -24,6 +25,7 @@
     shader.begin();
     shader.setUniformMatrix("u_projectionViewMatrix",combinedMatrix);
     shader.setUniformi("u_texture",0);
+    mesh.bind(shader);
   }
   idx=0;
   lastTexture=null;

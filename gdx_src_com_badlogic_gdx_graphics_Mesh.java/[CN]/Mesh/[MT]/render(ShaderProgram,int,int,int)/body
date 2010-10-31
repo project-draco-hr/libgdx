@@ -1,34 +1,7 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
-  checkManagedAndDirty();
-  GL20 gl=Gdx.graphics.getGL20();
-  gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,vertexBufferObjectHandle);
-  int numAttributes=attributes.size();
-  int type=GL11.GL_FLOAT;
-  int textureUnit=0;
-  for (int i=0; i < numAttributes; i++) {
-    VertexAttribute attribute=attributes.get(i);
-    shader.enableVertexAttribute(attribute.alias);
-    int colorType=type;
-    boolean normalize=false;
-    if (attribute.usage == Usage.ColorPacked) {
-      colorType=GL20.GL_UNSIGNED_BYTE;
-      normalize=true;
-    }
-    shader.setVertexAttribute(attribute.alias,attribute.numComponents,colorType,normalize,attributes.vertexSize,attribute.offset);
-  }
-  if (maxIndices > 0) {
-    gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,indexBufferObjectHandle);
-    gl.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset * 2);
-  }
- else {
-    gl.glDrawArrays(primitiveType,offset,count);
-  }
-  textureUnit--;
-  for (int i=0; i < numAttributes; i++) {
-    VertexAttribute attribute=attributes.get(i);
-    shader.disableVertexAttribute(attribute.alias);
-  }
-  gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
-  if (maxIndices > 0)   gl.glBindBuffer(GL20.GL_ELEMENT_ARRAY_BUFFER,0);
+  if (autoBind)   bind(shader);
+  if (indices.getNumIndices() > 0)   Gdx.gl20.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset);
+ else   Gdx.gl20.glDrawArrays(primitiveType,offset,count);
+  if (autoBind)   unbind(shader);
 }

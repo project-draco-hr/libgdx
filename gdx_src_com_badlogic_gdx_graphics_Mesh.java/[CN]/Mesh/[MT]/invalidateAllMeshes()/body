@@ -1,6 +1,8 @@
 {
   for (int i=0; i < meshes.size(); i++) {
-    meshes.get(i).invalidated=true;
-    meshes.get(i).checkManagedAndDirty();
+    if (meshes.get(i).vertices instanceof VertexBufferObject) {
+      ((VertexBufferObject)meshes.get(i).vertices).invalidate();
+      meshes.get(i).indices.invalidate();
+    }
   }
 }
