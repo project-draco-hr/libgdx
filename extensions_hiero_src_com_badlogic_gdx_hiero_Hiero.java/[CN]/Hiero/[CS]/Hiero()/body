@@ -1,0 +1,52 @@
+{
+  super("Hiero v2.0 - Bitmap Font Tool");
+  Splash splash=new Splash(this,"/splash.jpg",2000);
+  initialize();
+  splash.close();
+  prefs=Preferences.userNodeForPackage(Hiero.class);
+  java.awt.Color backgroundColor=EffectUtil.fromString(prefs.get("background","000000"));
+  backgroundColorLabel.setIcon(getColorIcon(backgroundColor));
+  renderingBackgroundColor=new Color(backgroundColor.getRed() / 255f,backgroundColor.getGreen() / 255f,backgroundColor.getBlue() / 255f,1);
+  fontList.setSelectedValue(prefs.get("system.font","Arial"),true);
+  fontFileText.setText(prefs.get("font.file",""));
+  java.awt.Color foregroundColor=EffectUtil.fromString(prefs.get("foreground","ffffff"));
+  colorEffect=new ColorEffect();
+  colorEffect.setColor(foregroundColor);
+  effectsListModel.addElement(colorEffect);
+  effectsListModel.addElement(new GradientEffect());
+  effectsListModel.addElement(new OutlineEffect());
+  effectsListModel.addElement(new OutlineWobbleEffect());
+  effectsListModel.addElement(new OutlineZigzagEffect());
+  effectsListModel.addElement(new ShadowEffect());
+  new EffectPanel(colorEffect);
+  gamePanel.add(glCanvas=new Canvas(){
+    private final Dimension minSize=new Dimension();
+    public final void addNotify(){
+      super.addNotify();
+      app=new LwjglApplication("Hiero",200,200,false){
+        protected void setupDisplay() throws LWJGLException {
+          try {
+            Display.setParent(glCanvas);
+          }
+ catch (          LWJGLException ex) {
+            throw new GdxRuntimeException("Error setting display parent.",ex);
+          }
+          super.setupDisplay();
+        }
+      }
+;
+      app.getGraphics().setRenderListener(new Renderer());
+      addWindowListener(new WindowAdapter(){
+        public void windowClosed(        WindowEvent event){
+          app.stop();
+        }
+      }
+);
+    }
+    public Dimension getMinimumSize(){
+      return minSize;
+    }
+  }
+);
+  setVisible(true);
+}

@@ -1,0 +1,72 @@
+{
+  try {
+    BufferedReader reader=new BufferedReader(new InputStreamReader(Gdx.files.readFile(hieroFileRef,FileType.Absolute)));
+    while (true) {
+      String line=reader.readLine();
+      if (line == null)       break;
+      line=line.trim();
+      if (line.length() == 0)       continue;
+      String[] pieces=line.split("=",2);
+      String name=pieces[0].trim();
+      String value=pieces[1];
+      if (name.equals("font.size")) {
+        fontSize=Integer.parseInt(value);
+      }
+ else       if (name.equals("font.bold")) {
+        bold=Boolean.parseBoolean(value);
+      }
+ else       if (name.equals("font.italic")) {
+        italic=Boolean.parseBoolean(value);
+      }
+ else       if (name.equals("pad.top")) {
+        paddingTop=Integer.parseInt(value);
+      }
+ else       if (name.equals("pad.right")) {
+        paddingRight=Integer.parseInt(value);
+      }
+ else       if (name.equals("pad.bottom")) {
+        paddingBottom=Integer.parseInt(value);
+      }
+ else       if (name.equals("pad.left")) {
+        paddingLeft=Integer.parseInt(value);
+      }
+ else       if (name.equals("pad.advance.x")) {
+        paddingAdvanceX=Integer.parseInt(value);
+      }
+ else       if (name.equals("pad.advance.y")) {
+        paddingAdvanceY=Integer.parseInt(value);
+      }
+ else       if (name.equals("glyph.page.width")) {
+        glyphPageWidth=Integer.parseInt(value);
+      }
+ else       if (name.equals("glyph.page.height")) {
+        glyphPageHeight=Integer.parseInt(value);
+      }
+ else       if (name.equals("effect.class")) {
+        try {
+          effects.add(Class.forName(value).newInstance());
+        }
+ catch (        Throwable ex) {
+          throw new GdxRuntimeException("Unable to create effect instance: " + value,ex);
+        }
+      }
+ else       if (name.startsWith("effect.")) {
+        name=name.substring(7);
+        ConfigurableEffect effect=(ConfigurableEffect)effects.get(effects.size() - 1);
+        List values=effect.getValues();
+        for (Iterator iter=values.iterator(); iter.hasNext(); ) {
+          Value effectValue=(Value)iter.next();
+          if (effectValue.getName().equals(name)) {
+            effectValue.setString(value);
+            break;
+          }
+        }
+        effect.setValues(values);
+      }
+    }
+    reader.close();
+  }
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException("Unable to load Hiero font file: " + hieroFileRef,ex);
+  }
+}

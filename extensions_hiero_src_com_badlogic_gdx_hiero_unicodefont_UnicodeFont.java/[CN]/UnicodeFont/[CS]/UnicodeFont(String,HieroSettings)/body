@@ -1,0 +1,6 @@
+{
+  this.ttfFileRef=ttfFileRef;
+  Font font=createFont(ttfFileRef);
+  initializeFont(font,settings.getFontSize(),settings.isBold(),settings.isItalic());
+  loadSettings(settings);
+}

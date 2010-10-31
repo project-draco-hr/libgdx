@@ -1,0 +1,11 @@
+{
+  glEnable(GL_SCISSOR_TEST);
+  glEnable(GL_TEXTURE_2D);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glClearColor(0,0,0,0);
+  glClearDepth(1);
+  glDisable(GL_LIGHTING);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+}

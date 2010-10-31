@@ -1,0 +1,22 @@
+{
+  if (glyphCode < 0 || glyphCode >= MAX_GLYPH_CODE) {
+    return new Glyph(codePoint,bounds,vector,index,this){
+      public boolean isMissing(){
+        return true;
+      }
+    }
+;
+  }
+  int pageIndex=glyphCode / PAGE_SIZE;
+  int glyphIndex=glyphCode & (PAGE_SIZE - 1);
+  Glyph glyph=null;
+  Glyph[] page=glyphs[pageIndex];
+  if (page != null) {
+    glyph=page[glyphIndex];
+    if (glyph != null)     return glyph;
+  }
+ else   page=glyphs[pageIndex]=new Glyph[PAGE_SIZE];
+  glyph=page[glyphIndex]=new Glyph(codePoint,bounds,vector,index,this);
+  queuedGlyphs.add(glyph);
+  return glyph;
+}

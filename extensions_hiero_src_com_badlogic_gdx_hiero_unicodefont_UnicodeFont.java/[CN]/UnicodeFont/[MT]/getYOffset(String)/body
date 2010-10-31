@@ -1,0 +1,15 @@
+{
+  if (text == null)   throw new IllegalArgumentException("text cannot be null.");
+  DisplayList displayList=null;
+  if (displayListCaching) {
+    displayList=(DisplayList)displayLists.get(text);
+    if (displayList != null && displayList.yOffset != null)     return displayList.yOffset.intValue();
+  }
+  int index=text.indexOf('\n');
+  if (index != -1)   text=text.substring(0,index);
+  char[] chars=text.toCharArray();
+  GlyphVector vector=font.layoutGlyphVector(GlyphPage.renderContext,chars,0,chars.length,Font.LAYOUT_LEFT_TO_RIGHT);
+  int yOffset=ascent + vector.getPixelBounds(null,0,0).y;
+  if (displayList != null)   displayList.yOffset=new Short((short)yOffset);
+  return yOffset;
+}

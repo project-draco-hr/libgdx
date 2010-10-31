@@ -1,0 +1,32 @@
+{
+  if (queuedGlyphs.isEmpty())   return false;
+  if (effects.isEmpty())   throw new IllegalStateException("The UnicodeFont must have at least one effect before any glyphs can be loaded.");
+  for (Iterator iter=queuedGlyphs.iterator(); iter.hasNext(); ) {
+    Glyph glyph=(Glyph)iter.next();
+    int codePoint=glyph.getCodePoint();
+    if (glyph.getWidth() == 0 || codePoint == ' ') {
+      iter.remove();
+      continue;
+    }
+    if (glyph.isMissing()) {
+      if (missingGlyph != null) {
+        if (glyph != missingGlyph)         iter.remove();
+        continue;
+      }
+      missingGlyph=glyph;
+    }
+  }
+  Collections.sort(queuedGlyphs,heightComparator);
+  for (Iterator iter=glyphPages.iterator(); iter.hasNext(); ) {
+    GlyphPage glyphPage=(GlyphPage)iter.next();
+    maxGlyphsToLoad-=glyphPage.loadGlyphs(queuedGlyphs,maxGlyphsToLoad);
+    if (maxGlyphsToLoad == 0 || queuedGlyphs.isEmpty())     return true;
+  }
+  while (!queuedGlyphs.isEmpty()) {
+    GlyphPage glyphPage=new GlyphPage(this,glyphPageWidth,glyphPageHeight);
+    glyphPages.add(glyphPage);
+    maxGlyphsToLoad-=glyphPage.loadGlyphs(queuedGlyphs,maxGlyphsToLoad);
+    if (maxGlyphsToLoad == 0)     return true;
+  }
+  return true;
+}

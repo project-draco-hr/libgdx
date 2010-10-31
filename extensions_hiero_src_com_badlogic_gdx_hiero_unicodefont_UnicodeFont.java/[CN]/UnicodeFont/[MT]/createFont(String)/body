@@ -1,0 +1,11 @@
+{
+  try {
+    return Font.createFont(Font.TRUETYPE_FONT,Gdx.files.readFile(ttfFileRef,FileType.Absolute));
+  }
+ catch (  FontFormatException ex) {
+    throw new GdxRuntimeException("Invalid font: " + ttfFileRef,ex);
+  }
+catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading font: " + ttfFileRef,ex);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (color == null)   throw new IllegalArgumentException("color cannot be null.");
+  String r=Integer.toHexString(color.getRed());
+  if (r.length() == 1)   r="0" + r;
+  String g=Integer.toHexString(color.getGreen());
+  if (g.length() == 1)   g="0" + g;
+  String b=Integer.toHexString(color.getBlue());
+  if (b.length() == 1)   b="0" + b;
+  return r + g + b;
+}

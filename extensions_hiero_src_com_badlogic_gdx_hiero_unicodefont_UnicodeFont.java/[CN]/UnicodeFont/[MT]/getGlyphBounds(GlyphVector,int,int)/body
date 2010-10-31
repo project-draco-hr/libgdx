@@ -1,0 +1,5 @@
+{
+  Rectangle bounds=vector.getGlyphPixelBounds(index,GlyphPage.renderContext,0,0);
+  if (codePoint == ' ')   bounds.width=spaceWidth;
+  return bounds;
+}
