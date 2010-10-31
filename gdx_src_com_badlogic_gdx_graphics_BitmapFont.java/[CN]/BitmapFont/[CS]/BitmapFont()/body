@@ -1,0 +1,19 @@
+{
+  this(new FileHandle(){
+    @Override public String getFileName(){
+      return "/com/badlogic/gdx/utils/arial-15.fnt";
+    }
+    @Override public InputStream getInputStream(){
+      return BitmapFont.class.getResourceAsStream(getFileName());
+    }
+  }
+,new FileHandle(){
+    @Override public String getFileName(){
+      return "/com/badlogic/gdx/utils/arial-15.png";
+    }
+    @Override public InputStream getInputStream(){
+      return BitmapFont.class.getResourceAsStream(getFileName());
+    }
+  }
+,false);
+}
