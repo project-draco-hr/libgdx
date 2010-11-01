@@ -79,28 +79,27 @@ class KerningPair {
     }
   }
   out.close();
+  int width=unicodeFont.getGlyphPageWidth();
+  int height=unicodeFont.getGlyphPageHeight();
+  IntBuffer buffer=BufferUtils.createIntBuffer(width * height);
+  BufferedImage pageImage=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+  int[] row=new int[width];
   pageIndex=0;
   for (Iterator pageIter=unicodeFont.getGlyphPages().iterator(); pageIter.hasNext(); ) {
     GlyphPage page=(GlyphPage)pageIter.next();
     String fileName;
     if (pageIndex == 0 && !pageIter.hasNext())     fileName=outputName + ".png";
  else     fileName=outputName + (pageIndex + 1) + ".png";
+    page.getTexture().bind();
+    buffer.clear();
+    GL11.glGetTexImage(GL11.GL_TEXTURE_2D,0,GL12.GL_BGRA,GL11.GL_UNSIGNED_BYTE,buffer);
+    WritableRaster raster=pageImage.getRaster();
+    for (int y=0; y < height; y++) {
+      buffer.get(row);
+      raster.setDataElements(0,y,width,1,row);
+    }
     File imageOutputFile=new File(outputDir,fileName);
-    FileOutputStream imageOutput=new FileOutputStream(imageOutputFile);
-    try {
-    }
-  finally {
-      imageOutput.close();
-    }
-    Image image=new ImageIcon(imageOutputFile.getAbsolutePath()).getImage();
-    BufferedImage bufferedImage=new BufferedImage(image.getWidth(null),image.getHeight(null),BufferedImage.TYPE_INT_ARGB);
-    Graphics g=bufferedImage.getGraphics();
-    g.drawImage(image,0,0,null);
-    AffineTransform tx=AffineTransform.getScaleInstance(1,-1);
-    tx.translate(0,-image.getHeight(null));
-    AffineTransformOp op=new AffineTransformOp(tx,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-    bufferedImage=op.filter(bufferedImage,null);
-    ImageIO.write(bufferedImage,"png",imageOutputFile);
+    ImageIO.write(pageImage,"png",imageOutputFile);
     pageIndex++;
   }
 }
