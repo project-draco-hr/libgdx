@@ -1,0 +1,10 @@
+{
+  LwjglNativesLoader.load();
+  mainLoopThread=new Thread("LWJGL Application"){
+    public void run(){
+      LwjglApplication.this.mainLoop();
+    }
+  }
+;
+  mainLoopThread.start();
+}
