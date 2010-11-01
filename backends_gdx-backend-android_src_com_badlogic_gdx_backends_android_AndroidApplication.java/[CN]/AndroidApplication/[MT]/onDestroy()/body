@@ -1,5 +1,4 @@
 {
-  super.onDestroy();
-  if (listener != null)   listener.destroy();
   audio.dispose();
+  super.onDestroy();
 }

@@ -1,9 +1,0 @@
-{
-  SwingUtilities.invokeLater(new Runnable(){
-    @Override public void run(){
-      JoglInput.this.text=JOptionPane.showInputDialog(null,title,text);
-      if (JoglInput.this.text != null)       textListener=listener;
-    }
-  }
-);
-}

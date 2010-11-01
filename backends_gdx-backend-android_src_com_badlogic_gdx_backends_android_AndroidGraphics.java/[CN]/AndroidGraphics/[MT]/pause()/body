@@ -1,0 +1,12 @@
+{
+synchronized (synch) {
+    running=false;
+    pause=true;
+  }
+  boolean cond=false;
+  while (!cond) {
+synchronized (synch) {
+      cond=!pause;
+    }
+  }
+}

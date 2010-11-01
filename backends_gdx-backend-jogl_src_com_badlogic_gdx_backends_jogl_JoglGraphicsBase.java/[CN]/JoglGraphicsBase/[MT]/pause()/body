@@ -1,0 +1,6 @@
+{
+synchronized (this) {
+    paused=true;
+  }
+  animator.stop();
+}

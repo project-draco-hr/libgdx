@@ -1,0 +1,10 @@
+{
+synchronized (this) {
+    KeyEvent event=freeKeyEvents.newObject();
+    event.keyChar=0;
+    event.keyCode=translateKeyCode(e.getKeyCode());
+    event.type=KeyEvent.KEY_UP;
+    keyEvents.add(event);
+    keys.remove(event.keyCode);
+  }
+}

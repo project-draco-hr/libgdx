@@ -1,0 +1,29 @@
+{
+  graphics.getCanvas().setPreferredSize(new Dimension(width,height));
+  frame=new JFrame(title);
+  frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);
+  frame.add(graphics.getCanvas(),BorderLayout.CENTER);
+  frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  frame.setLocationRelativeTo(null);
+  frame.addWindowListener(new WindowAdapter(){
+    @Override public void windowOpened(    WindowEvent arg0){
+      graphics.getCanvas().requestFocus();
+      graphics.getCanvas().requestFocusInWindow();
+    }
+    @Override public void windowIconified(    WindowEvent arg0){
+      graphics.pause();
+    }
+    @Override public void windowDeiconified(    WindowEvent arg0){
+      graphics.resume();
+    }
+    @Override public void windowClosing(    WindowEvent arg0){
+      graphics.pause();
+      graphics.destroy();
+      frame.remove(graphics.getCanvas());
+    }
+  }
+);
+  frame.pack();
+  frame.setVisible(true);
+  graphics.create();
+}

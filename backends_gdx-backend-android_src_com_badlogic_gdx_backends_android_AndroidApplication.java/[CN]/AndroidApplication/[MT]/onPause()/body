@@ -1,13 +1,15 @@
 {
-  super.onPause();
+  Log.d("Test","activity pause");
+  graphics.pause();
   if (isFinishing()) {
-    graphics.disposeRenderListener();
+    Log.d("Test","activity destroyed");
     graphics.clearManagedCaches();
+    graphics.destroy();
   }
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
   }
   if (audio != null)   audio.pause();
-  if (listener != null)   listener.pause();
+  super.onPause();
 }

@@ -1,0 +1,7 @@
+{
+  spriteBatch=new SpriteBatch();
+  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/test.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  ByteBuffer buffer=ByteBuffer.allocateDirect(4);
+  buffer.order(ByteOrder.nativeOrder());
+  pixelBuffer=buffer.asIntBuffer();
+}

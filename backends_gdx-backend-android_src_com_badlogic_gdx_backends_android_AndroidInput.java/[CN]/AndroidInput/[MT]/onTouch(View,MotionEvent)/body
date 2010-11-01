@@ -4,13 +4,13 @@
     view.requestFocusFromTouch();
     requestFocus=false;
   }
-  touchHandler.onTouch(event,this);
-  if (sleepTime != 0) {
-    try {
-      Thread.sleep(sleepTime);
-    }
- catch (    InterruptedException e) {
-    }
+synchronized (this) {
+    touchHandler.onTouch(event,this);
+  }
+  if (sleepTime != 0)   try {
+    Thread.sleep(sleepTime);
+  }
+ catch (  InterruptedException e) {
   }
   return true;
 }

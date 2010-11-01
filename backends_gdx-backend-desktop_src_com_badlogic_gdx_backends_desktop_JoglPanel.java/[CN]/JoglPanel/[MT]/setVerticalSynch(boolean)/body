@@ -1,5 +1,0 @@
-{
-  this.vSynch=v_synch;
-  if (v_synch)   GLContext.getCurrent().getGL().setSwapInterval(1);
- else   GLContext.getCurrent().getGL().setSwapInterval(0);
-}

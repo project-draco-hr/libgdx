@@ -1,3 +1,4 @@
 {
   tests[testIndex].render();
+  Gdx.input.processEvents(this);
 }

@@ -1,0 +1,46 @@
+{
+  spriteBatch=new SpriteBatch();
+  effect=new ParticleEffect();
+  effect.load(Gdx.files.getFileHandle("data/test.p",FileType.Internal),"data",FileType.Internal);
+  effect.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
+  emitters=new ArrayList(effect.getEmitters());
+  effect.getEmitters().clear();
+  effect.getEmitters().add(emitters.get(0));
+  inputProcessor=new InputProcessor(){
+    public boolean touchUp(    int x,    int y,    int pointer){
+      return false;
+    }
+    public boolean touchDragged(    int x,    int y,    int pointer){
+      effect.setPosition(x,Gdx.graphics.getHeight() - y);
+      return false;
+    }
+    public boolean touchDown(    int x,    int y,    int pointer){
+      effect.setPosition(x,Gdx.graphics.getHeight() - y);
+      return false;
+    }
+    public boolean keyUp(    int keycode){
+      return false;
+    }
+    public boolean keyTyped(    char character){
+      return false;
+    }
+    public boolean keyDown(    int keycode){
+      ParticleEmitter emitter=emitters.get(emitterIndex);
+      if (keycode == Input.Keys.KEYCODE_DPAD_UP)       particleCount+=5;
+ else       if (keycode == Input.Keys.KEYCODE_DPAD_DOWN)       particleCount-=5;
+ else       if (keycode == Input.Keys.KEYCODE_SPACE) {
+        emitterIndex=(emitterIndex + 1) % emitters.size();
+        emitter=emitters.get(emitterIndex);
+        particleCount=(int)(emitter.getEmission().getHighMax() * emitter.getLife().getHighMax());
+      }
+ else       return false;
+      particleCount=Math.max(0,particleCount);
+      if (particleCount > emitter.getMaxParticleCount())       emitter.setMaxParticleCount(particleCount * 2);
+      emitter.getEmission().setHigh(particleCount / emitter.getLife().getHighMax());
+      effect.getEmitters().clear();
+      effect.getEmitters().add(emitter);
+      return false;
+    }
+  }
+;
+}

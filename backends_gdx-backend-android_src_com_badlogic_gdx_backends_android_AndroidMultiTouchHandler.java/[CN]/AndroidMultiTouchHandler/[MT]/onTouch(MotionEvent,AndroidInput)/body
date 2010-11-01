@@ -8,7 +8,7 @@ case MotionEvent.ACTION_DOWN:
 case MotionEvent.ACTION_POINTER_DOWN:
     x=(int)event.getX(pointerIndex);
   y=(int)event.getY(pointerIndex);
-postTouchEvent(input,EventType.MouseDown,x,y,pointerId);
+postTouchEvent(input,TouchEvent.TOUCH_DOWN,x,y,pointerId);
 input.touchX[pointerId]=x;
 input.touchY[pointerId]=y;
 input.touched[pointerId]=true;
@@ -19,7 +19,7 @@ case MotionEvent.ACTION_OUTSIDE:
 case MotionEvent.ACTION_CANCEL:
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
-postTouchEvent(input,EventType.MouseUp,x,y,pointerId);
+postTouchEvent(input,TouchEvent.TOUCH_UP,x,y,pointerId);
 input.touchX[pointerId]=x;
 input.touchY[pointerId]=y;
 input.touched[pointerId]=false;
@@ -31,7 +31,7 @@ pointerIndex=i;
 pointerId=event.getPointerId(pointerIndex);
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
-postTouchEvent(input,EventType.MouseDragged,x,y,pointerId);
+postTouchEvent(input,TouchEvent.TOUCH_DRAGGED,x,y,pointerId);
 input.touchX[pointerId]=x;
 input.touchY[pointerId]=y;
 }

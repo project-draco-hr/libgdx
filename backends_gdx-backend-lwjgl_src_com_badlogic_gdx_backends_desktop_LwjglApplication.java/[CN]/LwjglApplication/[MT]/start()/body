@@ -1,7 +1,7 @@
 {
   gameThread=Thread.currentThread();
   setupDisplay();
-  for (  RenderListener listener : listeners)   listener.surfaceCreated();
+  for (  RenderListener listener : listeners)   listener.created();
   setSize(width,height);
   graphics.lastTime=System.nanoTime();
   for (  RenderListener listener : listeners)   listener.render();

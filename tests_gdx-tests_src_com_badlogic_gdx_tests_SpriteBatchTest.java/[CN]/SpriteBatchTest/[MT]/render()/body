@@ -2,4 +2,5 @@
   if (renderMethod == 0)   renderNormal();
   ;
   if (renderMethod == 1)   renderSprites();
+  Gdx.input.processEvents(this);
 }

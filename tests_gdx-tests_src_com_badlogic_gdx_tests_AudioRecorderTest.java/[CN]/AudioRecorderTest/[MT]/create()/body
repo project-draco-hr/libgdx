@@ -1,0 +1,16 @@
+{
+  device=Gdx.audio.newAudioDevice(true);
+  recorder=Gdx.audio.newAudioRecoder(44100,true);
+  renderer=new ImmediateModeRenderer();
+  Thread t=new Thread(new Runnable(){
+    @Override public void run(){
+      while (true) {
+        recorder.read(samples,0,samples.length);
+        device.writeSamples(samples,0,samples.length);
+      }
+    }
+  }
+);
+  t.setDaemon(true);
+  t.start();
+}

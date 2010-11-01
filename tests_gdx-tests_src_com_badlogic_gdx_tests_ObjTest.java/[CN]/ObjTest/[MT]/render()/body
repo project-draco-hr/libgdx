@@ -14,10 +14,5 @@
   gl.glRotatef(angleX,1,0,0);
   texture.bind();
   mesh.render(GL10.GL_TRIANGLES);
-  if (System.nanoTime() - frameStart > 1000000000) {
-    Gdx.app.log("Obj Test","fps: " + frames);
-    frames=0;
-    frameStart=System.nanoTime();
-  }
-  frames++;
+  Gdx.input.processEvents(this);
 }

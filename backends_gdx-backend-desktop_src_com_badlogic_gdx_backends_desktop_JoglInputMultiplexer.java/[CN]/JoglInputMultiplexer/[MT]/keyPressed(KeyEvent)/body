@@ -1,7 +1,0 @@
-{
-synchronized (eventQueue) {
-    Event event=freeEvents.get(freeEventIndex++);
-    event.set(EventType.KeyDown,0,0,translateKeyCode(e.getKeyCode()),'\0');
-    eventQueue.add(event);
-  }
-}

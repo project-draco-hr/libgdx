@@ -1,0 +1,9 @@
+{
+synchronized (this) {
+    if (!paused) {
+      updateTimes();
+      listener.render();
+    }
+  }
+  Gdx.input.processEvents(null);
+}

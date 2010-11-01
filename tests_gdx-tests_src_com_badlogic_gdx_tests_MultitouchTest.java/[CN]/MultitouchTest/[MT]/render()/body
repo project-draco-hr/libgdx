@@ -17,4 +17,5 @@
     renderer.vertex(x - size,y - size,0);
   }
   renderer.end();
+  Gdx.input.processEvents(this);
 }

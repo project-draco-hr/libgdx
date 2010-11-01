@@ -29,4 +29,5 @@
   mesh.render(GL10.GL_TRIANGLES);
   batch.begin();
   batch.end();
+  Gdx.input.processEvents(this);
 }

@@ -1,0 +1,31 @@
+{
+  if (spriteBatch != null)   return;
+  spriteBatch=new SpriteBatch();
+  spriteBatch.setProjectionMatrix(new Matrix4().setToOrtho(0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),0,0,1));
+  logoSprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  logoSprite.flip(false,true);
+  logoSprite.setPosition(0,320 - 256);
+  logoSprite.setColor(1,1,1,0.5f);
+  font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal),true);
+  inputProcessor=new InputAdapter(){
+    public boolean touchDown(    int x,    int y,    int pointer){
+      renderMode=(renderMode + 1) % 2;
+      return false;
+    }
+  }
+;
+  cache1=new BitmapFontCache(font);
+  cache2=new BitmapFontCache(font);
+  cache3=new BitmapFontCache(font);
+  cache4=new BitmapFontCache(font);
+  cache5=new BitmapFontCache(font);
+  cache1.setText("(cached)",10,320 - 36,Color.WHITE);
+  String text="Sphinx of black quartz,\njudge my vow.";
+  cache2.setMultiLineText(text,5,320 - 270,Color.RED);
+  text="How quickly\ndaft jumping zebras vex.";
+  cache3.setMultiLineText(text,5,320 - 170,Color.BLUE,470,BitmapFont.HAlignment.CENTER);
+  text="Kerning: LYA moo";
+  cache4.setText(text,210,320 - 36,Color.WHITE,0,text.length() - 3);
+  text="Forsaking monastic tradition, twelve jovial friars gave\nup their vocation for a questionable existence on the flying trapeze.";
+  cache5.setWrappedText(text,0,320 - 270,red,480,HAlignment.CENTER);
+}

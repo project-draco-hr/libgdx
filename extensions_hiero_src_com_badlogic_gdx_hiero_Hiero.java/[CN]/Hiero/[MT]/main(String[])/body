@@ -1,14 +1,3 @@
 {
-  LookAndFeelInfo[] lookAndFeels=UIManager.getInstalledLookAndFeels();
-  for (int i=0, n=lookAndFeels.length; i < n; i++) {
-    if ("Nimbus".equals(lookAndFeels[i].getName())) {
-      try {
-        UIManager.setLookAndFeel(lookAndFeels[i].getClassName());
-      }
- catch (      Throwable ignored) {
-      }
-      break;
-    }
-  }
   new Hiero();
 }

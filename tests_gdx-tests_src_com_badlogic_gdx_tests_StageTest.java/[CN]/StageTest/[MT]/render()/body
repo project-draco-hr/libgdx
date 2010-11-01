@@ -46,4 +46,5 @@
   renderer.end();
   Gdx.graphics.getGL10().glPointSize(4);
   ui.render();
+  Gdx.input.processEvents(this);
 }

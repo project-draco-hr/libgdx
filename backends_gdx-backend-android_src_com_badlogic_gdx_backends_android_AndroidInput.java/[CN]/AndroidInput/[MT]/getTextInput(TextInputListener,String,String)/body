@@ -1,6 +1,6 @@
 {
   handle.post(new Runnable(){
-    public void run(){
+    @SuppressWarnings("synthetic-access") public void run(){
       AlertDialog.Builder alert=new AlertDialog.Builder(AndroidInput.this.app);
       alert.setTitle(title);
       final EditText input=new EditText(AndroidInput.this.app);
@@ -9,8 +9,7 @@
       alert.setView(input);
       alert.setPositiveButton("Ok",new DialogInterface.OnClickListener(){
         public void onClick(        DialogInterface dialog,        int whichButton){
-          AndroidInput.this.text=input.getText().toString();
-          textListener=listener;
+          listener.input(input.getText().toString());
         }
       }
 );

@@ -1,0 +1,10 @@
+{
+  initializeGLInstances(drawable);
+  if (!created) {
+    listener.create();
+synchronized (this) {
+      paused=false;
+    }
+    created=true;
+  }
+}

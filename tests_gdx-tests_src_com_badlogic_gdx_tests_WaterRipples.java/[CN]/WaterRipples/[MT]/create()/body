@@ -1,0 +1,18 @@
+{
+  camera=new PerspectiveCamera();
+  camera.getPosition().set((WIDTH) / 2.0f,(HEIGHT) / 2.0f,WIDTH / 2.0f);
+  camera.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getWidth());
+  camera.setFov(90);
+  camera.setNear(0.1f);
+  camera.setFar(1000);
+  last=new float[WIDTH + 1][HEIGHT + 1];
+  curr=new float[WIDTH + 1][HEIGHT + 1];
+  intp=new float[WIDTH + 1][HEIGHT + 1];
+  vertices=new float[(WIDTH + 1) * (HEIGHT + 1) * 5];
+  mesh=new Mesh(false,(WIDTH + 1) * (HEIGHT + 1),WIDTH * HEIGHT * 6,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_Position"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords"));
+  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/stones.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  createIndices();
+  updateVertices(curr);
+  initialized=true;
+  batch=new SpriteBatch();
+}

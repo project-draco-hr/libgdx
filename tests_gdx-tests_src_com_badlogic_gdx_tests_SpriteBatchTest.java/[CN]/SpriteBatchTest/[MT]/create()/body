@@ -1,0 +1,34 @@
+{
+  spriteBatch=new SpriteBatch(1000);
+  Pixmap pixmap=Gdx.graphics.newPixmap(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal));
+  texture=Gdx.graphics.newUnmanagedTexture(32,32,Format.RGB565,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture.draw(pixmap,0,0);
+  pixmap.dispose();
+  pixmap=Gdx.graphics.newPixmap(32,32,Format.RGBA8888);
+  pixmap.setColor(1,1,0,0.5f);
+  pixmap.fill();
+  texture2=Gdx.graphics.newUnmanagedTexture(pixmap,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  pixmap.dispose();
+  for (int i=0; i < sprites.length; i+=6) {
+    sprites[i]=(int)(Math.random() * (Gdx.graphics.getWidth() - 32));
+    sprites[i + 1]=(int)(Math.random() * (Gdx.graphics.getHeight() - 32));
+    sprites[i + 2]=0;
+    sprites[i + 3]=0;
+    sprites[i + 4]=32;
+    sprites[i + 5]=32;
+    sprites2[i]=(int)(Math.random() * (Gdx.graphics.getWidth() - 32));
+    sprites2[i + 1]=(int)(Math.random() * (Gdx.graphics.getHeight() - 32));
+    sprites2[i + 2]=0;
+    sprites2[i + 3]=0;
+    sprites2[i + 4]=32;
+    sprites2[i + 5]=32;
+  }
+  for (int i=0; i < SPRITES * 2; i++) {
+    int x=(int)(Math.random() * (Gdx.graphics.getWidth() - 32));
+    int y=(int)(Math.random() * (Gdx.graphics.getHeight() - 32));
+    if (i >= SPRITES)     sprites3[i]=new Sprite(texture2,32,32);
+ else     sprites3[i]=new Sprite(texture,32,32);
+    sprites3[i].setPosition(x,y);
+    sprites3[i].setOrigin(16,16);
+  }
+}

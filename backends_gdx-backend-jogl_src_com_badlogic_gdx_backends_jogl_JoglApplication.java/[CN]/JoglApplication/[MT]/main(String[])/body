@@ -1,0 +1,21 @@
+{
+  ApplicationListener listener=new ApplicationListener(){
+    @Override public void resume(){
+      System.out.println("resumed");
+    }
+    @Override public void render(){
+      System.out.println("render");
+    }
+    @Override public void pause(){
+      System.out.println("paused");
+    }
+    @Override public void destroy(){
+      System.out.println("destroy");
+    }
+    @Override public void create(){
+      System.out.println("created");
+    }
+  }
+;
+  new JoglApplication(listener,"Jogl Application Test",480,320,false);
+}

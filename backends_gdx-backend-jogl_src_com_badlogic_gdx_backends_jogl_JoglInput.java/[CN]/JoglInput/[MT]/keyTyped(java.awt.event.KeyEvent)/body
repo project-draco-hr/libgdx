@@ -1,0 +1,9 @@
+{
+synchronized (this) {
+    KeyEvent event=freeKeyEvents.newObject();
+    event.keyChar=e.getKeyChar();
+    event.keyCode=0;
+    event.type=KeyEvent.KEY_TYPED;
+    keyEvents.add(event);
+  }
+}

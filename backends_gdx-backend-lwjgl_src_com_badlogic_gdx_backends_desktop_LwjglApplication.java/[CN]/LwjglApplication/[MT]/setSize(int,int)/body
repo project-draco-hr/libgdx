@@ -1,5 +1,5 @@
 {
   this.width=width;
   this.height=height;
-  for (  RenderListener listener : listeners)   listener.surfaceChanged(getWidth(),getHeight());
+  for (  RenderListener listener : listeners)   listener.resized(getWidth(),getHeight());
 }

@@ -25,4 +25,5 @@
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java"),10,20,Color.WHITE);
   batch.end();
+  Gdx.input.processEvents(this);
 }

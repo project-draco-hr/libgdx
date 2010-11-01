@@ -1,9 +1,0 @@
-{
-  Gdx.input.removeInputListener(this);
-  renderer.dispose();
-  world.dispose();
-  renderer=null;
-  world=null;
-  mouseJoint=null;
-  hitBody=null;
-}
