@@ -23,7 +23,7 @@
     private final Dimension minSize=new Dimension();
     public final void addNotify(){
       super.addNotify();
-      app=new LwjglApplicationNew(new Renderer(),"Hiero",200,200,false,glCanvas);
+      app=new LwjglApplication(new Renderer(),"Hiero",200,200,false,glCanvas);
       addWindowListener(new WindowAdapter(){
         public void windowClosed(        WindowEvent event){
           app.stop();
