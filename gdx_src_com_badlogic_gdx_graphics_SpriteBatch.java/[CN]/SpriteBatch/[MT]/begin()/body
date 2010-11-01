@@ -1,4 +1,5 @@
 {
+  if (drawing)   throw new IllegalStateException("you have to call SpriteBatch.end() first");
   renderCalls=0;
   if (Gdx.graphics.isGL20Available() == false) {
     GL10 gl=Gdx.gl10;

@@ -1,4 +1,5 @@
 {
+  if (!drawing)   throw new IllegalStateException("you have to call SpriteBatch.begin() first");
   if (idx > 0)   renderMesh();
   lastTexture=null;
   idx=0;

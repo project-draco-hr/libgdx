@@ -35,6 +35,7 @@
       }
       if (timer.isRunning())       return;
       timer.start();
+      System.out.println();
       speed=-speed;
     }
   }

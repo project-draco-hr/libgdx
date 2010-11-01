@@ -1,5 +1,6 @@
 {
   delta=Math.min(delta,0.250f);
+  int deltaMillis=(int)(delta * 1000);
   if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
   BitSet active=this.active;
   int activeCount=this.activeCount;
@@ -7,7 +8,7 @@
   while (true) {
     index=active.nextSetBit(index);
     if (index == -1)     break;
-    if (updateParticle(index,delta))     particles[index].draw(spriteBatch);
+    if (updateParticle(index,delta,deltaMillis))     particles[index].draw(spriteBatch);
  else {
       active.clear(index);
       activeCount--;
@@ -17,22 +18,22 @@
   this.activeCount=activeCount;
   if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
   if (delayTimer < delay) {
-    delayTimer+=delta;
+    delayTimer+=deltaMillis;
     return;
   }
   if (firstUpdate) {
     firstUpdate=false;
     addParticle();
   }
-  if (durationTimer < duration)   durationTimer+=delta;
+  if (durationTimer < duration)   durationTimer+=deltaMillis;
  else {
     if (!continuous)     return;
     restart();
   }
-  emissionDelta+=delta;
+  emissionDelta+=deltaMillis;
   float emissionTime=emission + emissionDiff * emissionValue.getScale(durationTimer / (float)duration);
   if (emissionTime > 0) {
-    emissionTime=1 / emissionTime;
+    emissionTime=1000 / emissionTime;
     if (emissionDelta >= emissionTime) {
       int emitCount=(int)(emissionDelta / emissionTime);
       emitCount=Math.min(emitCount,maxParticleCount - activeCount);

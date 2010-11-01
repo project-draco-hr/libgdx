@@ -3,6 +3,7 @@
   setupDisplay();
   for (  RenderListener listener : listeners)   listener.surfaceCreated();
   setSize(width,height);
+  graphics.lastTime=System.nanoTime();
   for (  RenderListener listener : listeners)   listener.render();
   while (running && !Display.isCloseRequested()) {
     if (Keyboard.isCreated()) {
