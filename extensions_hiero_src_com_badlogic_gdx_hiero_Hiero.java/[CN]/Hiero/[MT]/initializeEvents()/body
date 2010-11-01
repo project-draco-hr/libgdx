@@ -47,6 +47,8 @@ class FontUpdateListener implements ChangeListener, ActionListener {
   boldCheckBox.addActionListener(listener);
   italicCheckBox.addActionListener(listener);
   resetCacheButton.addActionListener(listener);
+  javaRadio.addActionListener(listener);
+  nativeRadio.addActionListener(listener);
   sampleTextRadio.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent evt){
       glyphCachePanel.setVisible(false);

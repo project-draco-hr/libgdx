@@ -42,12 +42,14 @@
   int extraX=0, extraY=ascent;
   boolean startNewLine=false;
   Texture lastBind=null;
+  int offsetX=0;
   for (int glyphIndex=0, n=vector.getNumGlyphs(); glyphIndex < n; glyphIndex++) {
     int charIndex=vector.getGlyphCharIndex(glyphIndex);
     if (charIndex < startIndex)     continue;
     if (charIndex > endIndex)     break;
     int codePoint=text.codePointAt(charIndex);
     Rectangle bounds=getGlyphBounds(vector,glyphIndex,codePoint);
+    bounds.x+=offsetX;
     Glyph glyph=getGlyph(vector.getGlyphCode(glyphIndex),codePoint,bounds,vector,glyphIndex);
     if (startNewLine && codePoint != '\n') {
       extraX=-bounds.x;
@@ -85,6 +87,7 @@
       lines++;
       totalHeight=0;
     }
+ else     if (nativeRendering)     offsetX+=bounds.width;
   }
   if (lastBind != null)   GL11.glEnd();
   if (displayList != null) {

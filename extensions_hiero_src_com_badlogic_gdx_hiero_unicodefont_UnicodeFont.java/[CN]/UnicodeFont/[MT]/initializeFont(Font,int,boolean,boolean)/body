@@ -9,7 +9,7 @@
  catch (  Throwable ignored) {
   }
   font=baseFont.deriveFont(attributes);
-  FontMetrics metrics=GlyphPage.scratchGraphics.getFontMetrics(font);
+  metrics=GlyphPage.scratchGraphics.getFontMetrics(font);
   ascent=metrics.getAscent();
   descent=metrics.getDescent();
   leading=metrics.getLeading();

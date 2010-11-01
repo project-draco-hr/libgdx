@@ -29,6 +29,7 @@
   unicodeFont.setPaddingAdvanceY(((Integer)padAdvanceYSpinner.getValue()).intValue());
   unicodeFont.setGlyphPageWidth(((Integer)glyphPageWidthCombo.getSelectedItem()).intValue());
   unicodeFont.setGlyphPageHeight(((Integer)glyphPageHeightCombo.getSelectedItem()).intValue());
+  unicodeFont.setNativeRendering(nativeRadio.isSelected());
   for (Iterator iter=effectPanels.iterator(); iter.hasNext(); ) {
     EffectPanel panel=(EffectPanel)iter.next();
     unicodeFont.getEffects().add(panel.getEffect());
