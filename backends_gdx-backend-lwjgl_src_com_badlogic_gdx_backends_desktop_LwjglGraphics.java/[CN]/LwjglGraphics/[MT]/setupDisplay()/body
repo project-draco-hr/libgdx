@@ -1,0 +1,21 @@
+{
+  if (canvas != null)   Display.setParent(canvas);
+  Display.setDisplayMode(new DisplayMode(width,height));
+  Display.setFullscreen(false);
+  Display.setTitle(title);
+  int samples=0;
+  try {
+    Display.create(new PixelFormat(8,8,0,samples));
+  }
+ catch (  Exception ex) {
+    Display.destroy();
+    try {
+      Display.create(new PixelFormat(8,8,0));
+    }
+ catch (    Exception ex2) {
+      Display.destroy();
+      Display.create(new PixelFormat());
+    }
+  }
+  initiateGLInstances();
+}

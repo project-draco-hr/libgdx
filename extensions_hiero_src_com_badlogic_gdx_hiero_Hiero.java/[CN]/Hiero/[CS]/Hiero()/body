@@ -23,19 +23,7 @@
     private final Dimension minSize=new Dimension();
     public final void addNotify(){
       super.addNotify();
-      app=new LwjglApplication("Hiero",200,200,false){
-        protected void setupDisplay() throws LWJGLException {
-          try {
-            Display.setParent(glCanvas);
-          }
- catch (          LWJGLException ex) {
-            throw new GdxRuntimeException("Error setting display parent.",ex);
-          }
-          super.setupDisplay();
-        }
-      }
-;
-      app.getGraphics().setRenderListener(new Renderer());
+      app=new LwjglApplicationNew(new Renderer(),"Hiero",200,200,false,glCanvas);
       addWindowListener(new WindowAdapter(){
         public void windowClosed(        WindowEvent event){
           app.stop();

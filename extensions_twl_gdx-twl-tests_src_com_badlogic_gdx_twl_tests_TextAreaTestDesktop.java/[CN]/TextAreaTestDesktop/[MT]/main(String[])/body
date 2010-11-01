@@ -1,4 +1,3 @@
 {
-  JoglApplication app=new JoglApplication("Twl Test",480,320,false);
-  app.getGraphics().setRenderListener(new TextAreaTest());
+  new JoglApplication(new TextAreaTest(),"Twl Test",480,320,false);
 }

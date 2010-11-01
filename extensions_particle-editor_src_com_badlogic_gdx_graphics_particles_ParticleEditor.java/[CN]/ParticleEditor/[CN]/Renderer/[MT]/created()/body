@@ -1,7 +1,0 @@
-{
-  if (spriteBatch != null)   return;
-  spriteBatch=new SpriteBatch();
-  font=new BitmapFont(Gdx.files.getFileHandle("data/default.fnt",FileType.Internal),Gdx.files.getFileHandle("data/default.png",FileType.Internal),true);
-  effectPanel.newEmitter("Untitled",true);
-  Gdx.input.addInputListener(this);
-}

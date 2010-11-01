@@ -17,8 +17,7 @@
     @Override public void actionPerformed(    ActionEvent e){
       String testName=(String)list.getSelectedValue();
       GdxTest test=GdxTests.newTest(testName);
-      LwjglApplication app=new LwjglApplication(testName,480,320,test.needsGL20());
-      app.getGraphics().setRenderListener(test);
+      new LwjglApplicationNew(test,testName,480,320,test.needsGL20());
     }
   }
 );

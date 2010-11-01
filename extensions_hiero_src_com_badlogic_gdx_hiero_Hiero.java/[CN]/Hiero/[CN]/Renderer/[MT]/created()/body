@@ -8,4 +8,13 @@
   glDisable(GL_LIGHTING);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+  int width=Gdx.graphics.getWidth();
+  int height=Gdx.graphics.getHeight();
+  glViewport(0,0,width,height);
+  glScissor(0,0,width,height);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(0,width,height,0,1,-1);
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
 }

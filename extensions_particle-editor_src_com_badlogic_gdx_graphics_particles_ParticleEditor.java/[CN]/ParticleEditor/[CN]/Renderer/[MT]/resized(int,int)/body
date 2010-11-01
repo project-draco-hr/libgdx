@@ -1,8 +1,0 @@
-{
-  int viewWidth=Gdx.graphics.getWidth();
-  int viewHeight=Gdx.graphics.getHeight();
-  spriteBatch.getProjectionMatrix().setToOrtho(0,viewWidth,viewHeight,0,0,1);
-synchronized (effect) {
-    effect.setPosition(viewWidth / 2,viewHeight / 2);
-  }
-}

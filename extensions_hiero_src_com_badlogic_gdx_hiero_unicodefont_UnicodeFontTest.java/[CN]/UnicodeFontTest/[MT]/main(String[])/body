@@ -1,4 +1,3 @@
 {
-  LwjglApplication app=new LwjglApplication("UnicodeFont Test",800,600,false);
-  app.getGraphics().setRenderListener(new UnicodeFontTest());
+  new LwjglApplicationNew(new UnicodeFontTest(),"UnicodeFont Test",800,600,false);
 }
