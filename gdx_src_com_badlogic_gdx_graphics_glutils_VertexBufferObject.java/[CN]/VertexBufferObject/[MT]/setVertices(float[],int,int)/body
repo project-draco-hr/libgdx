@@ -15,12 +15,10 @@
   if (isBound) {
     if (Gdx.gl20 != null) {
       GL20 gl=Gdx.gl20;
-      gl.glBufferData(GL20.GL_ARRAY_BUFFER,byteBuffer.limit(),null,usage);
       gl.glBufferData(GL20.GL_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);
     }
  else {
       GL11 gl=Gdx.gl11;
-      gl.glBufferData(GL11.GL_ARRAY_BUFFER,byteBuffer.limit(),null,usage);
       gl.glBufferData(GL11.GL_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);
     }
     isDirty=false;
