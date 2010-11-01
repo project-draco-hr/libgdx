@@ -8,7 +8,6 @@
     gl.glDepthMask(true);
     gl.glDisable(GL10.GL_BLEND);
     gl.glDisable(GL10.GL_TEXTURE_2D);
-    mesh.unbind();
   }
  else {
     shader.end();
@@ -16,6 +15,5 @@
     gl.glDepthMask(true);
     gl.glDisable(GL20.GL_BLEND);
     gl.glDisable(GL20.GL_TEXTURE_2D);
-    mesh.unbind(shader);
   }
 }
