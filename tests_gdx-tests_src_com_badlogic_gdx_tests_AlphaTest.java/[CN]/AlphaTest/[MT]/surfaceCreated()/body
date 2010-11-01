@@ -1,6 +1,6 @@
 {
   Pixmap pixmap=Gdx.graphics.newPixmap(256,256,Format.RGBA8888);
-  pixmap.setColor(1,0,0,0.7f);
+  pixmap.setColor(0,1,0,0.7f);
   pixmap.fill();
   texture=Gdx.graphics.newUnmanagedTexture(pixmap,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   batch=new SpriteBatch();
