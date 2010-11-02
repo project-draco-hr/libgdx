@@ -1,7 +1,5 @@
 {
-  if (!initialized) {
-    font=new BitmapFont();
-    texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-    spriteBatch=new SpriteBatch();
-  }
+  font=new BitmapFont();
+  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  spriteBatch=new SpriteBatch();
 }
