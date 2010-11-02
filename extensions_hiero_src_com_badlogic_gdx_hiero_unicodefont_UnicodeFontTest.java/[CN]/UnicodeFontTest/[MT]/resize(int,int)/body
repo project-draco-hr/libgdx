@@ -1,5 +1,12 @@
 {
+  glViewport(0,0,width,height);
+  glScissor(0,0,width,height);
   glEnable(GL_SCISSOR_TEST);
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+  glOrtho(0,width,height,0,1,-1);
+  glMatrixMode(GL_MODELVIEW);
+  glLoadIdentity();
   glEnable(GL_TEXTURE_2D);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   glEnableClientState(GL_VERTEX_ARRAY);

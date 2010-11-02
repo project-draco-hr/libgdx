@@ -1,0 +1,6 @@
+{
+  spriteBatch.getProjectionMatrix().setToOrtho(0,width,height,0,0,1);
+synchronized (effect) {
+    effect.setPosition(width / 2,height / 2);
+  }
+}
