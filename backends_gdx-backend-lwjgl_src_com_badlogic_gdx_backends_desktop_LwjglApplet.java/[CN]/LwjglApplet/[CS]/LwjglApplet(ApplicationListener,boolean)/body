@@ -1,9 +1,18 @@
 {
-  lwjglCanvas=new LwjglCanvas(listener,useGL2);
-  Canvas canvas=lwjglCanvas.getCanvas();
+  canvas=new Canvas(){
+    public final void addNotify(){
+      super.addNotify();
+      app=new LwjglApplication(listener,useGL2,canvas);
+    }
+    public final void removeNotify(){
+      app.stop();
+      super.removeNotify();
+    }
+  }
+;
   setLayout(new BorderLayout());
+  canvas.setIgnoreRepaint(true);
   add(canvas);
   canvas.setFocusable(true);
   canvas.requestFocus();
-  setVisible(true);
 }
