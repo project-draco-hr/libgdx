@@ -6,6 +6,8 @@
   layout.setTheme("");
   layout.setHorizontalGroup(layout.createParallelGroup().addWidgets(button,fpsCounter));
   layout.setVerticalGroup(layout.createSequentialGroup().addWidget(button).addGap(5).addWidget(fpsCounter).addGap(5));
-  gui=TwlRenderer.createGUI(layout,"data/widgets.xml",FileType.Internal);
-  guiInputListener=new TwlInputListener(gui);
+  twl=new TwlRenderer();
+  gui=new GUI(layout,twl,null);
+  twl.applyTheme(gui,"data/widgets.xml",FileType.Internal);
+  guiInputListener=new TwlInputProcessor(gui);
 }

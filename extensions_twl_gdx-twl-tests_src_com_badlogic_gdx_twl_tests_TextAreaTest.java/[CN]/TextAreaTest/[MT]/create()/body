@@ -10,7 +10,9 @@
   layout.setTheme("");
   layout.setHorizontalGroup(layout.createParallelGroup().addWidgets(scrollPane,fpsCounter));
   layout.setVerticalGroup(layout.createSequentialGroup().addWidget(scrollPane).addGap(5).addWidget(fpsCounter).addGap(5));
-  gui=TwlRenderer.createGUI(layout,"data/widgets.xml",FileType.Internal);
+  twl=new TwlRenderer();
+  gui=new GUI(layout,twl,null);
+  twl.applyTheme(gui,"data/widgets.xml",FileType.Internal);
   textArea.addCallback(new TextArea.Callback(){
     Timer timer;
     int speed=8, size=256;
@@ -40,5 +42,5 @@
     }
   }
 );
-  guiInputListener=new TwlInputListener(gui);
+  guiInputListener=new TwlInputProcessor(gui);
 }
