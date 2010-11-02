@@ -7,7 +7,7 @@
   bind();
   while (height >= 1 || width >= 1 && level < 4) {
     ByteBuffer imageBuffer=toByteBuffer(image);
-    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D,level,x,y,width,height,GL11.GL_RGBA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
+    GL11.glTexSubImage2D(GL11.GL_TEXTURE_2D,level,x,y,width,height,GL12.GL_BGRA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
     if (height == 1 || width == 1 || isMipMapped == false) {
       break;
     }

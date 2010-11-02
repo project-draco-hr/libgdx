@@ -1,0 +1,49 @@
+{
+  try {
+    pngDecoder.decodeHeader(file.readFile());
+    texWidth=pngDecoder.getWidth();
+    texHeight=pngDecoder.getHeight();
+    int stride=texWidth * 4;
+    int bufferSize=stride * texHeight;
+    if (buffer == null || buffer.capacity() < bufferSize)     buffer=BufferUtils.createByteBuffer(bufferSize);
+ else     buffer.clear();
+    Format pngFormat=pngDecoder.decideTextureFormat(PNGDecoder.Format.RGBA);
+    int glFormat, glInternalFormat;
+switch (pngFormat) {
+case ALPHA:
+      glFormat=GL11.GL_ALPHA;
+    glInternalFormat=GL11.GL_ALPHA8;
+  break;
+case LUMINANCE:
+glFormat=GL11.GL_LUMINANCE;
+glInternalFormat=GL11.GL_LUMINANCE8;
+break;
+case LUMINANCE_ALPHA:
+glFormat=GL11.GL_LUMINANCE_ALPHA;
+glInternalFormat=GL11.GL_LUMINANCE8_ALPHA8;
+break;
+case RGB:
+glFormat=GL11.GL_RGB;
+glInternalFormat=GL11.GL_RGB8;
+break;
+case RGBA:
+glFormat=GL11.GL_RGBA;
+glInternalFormat=GL11.GL_RGBA8;
+break;
+case BGRA:
+glFormat=GL12.GL_BGRA;
+glInternalFormat=GL12.GL_BGRA;
+break;
+default :
+throw new UnsupportedOperationException("PNG format not handled: " + pngFormat);
+}
+pngDecoder.decode(buffer,stride,pngFormat);
+buffer.flip();
+textureID=GL11.glGenTextures();
+GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
+GL11.glTexImage2D(GL11.GL_TEXTURE_2D,0,glInternalFormat,texWidth,texHeight,0,glFormat,GL11.GL_UNSIGNED_BYTE,buffer);
+}
+ catch (IOException ex) {
+throw new GdxRuntimeException("Error loading image file: " + file,ex);
+}
+}

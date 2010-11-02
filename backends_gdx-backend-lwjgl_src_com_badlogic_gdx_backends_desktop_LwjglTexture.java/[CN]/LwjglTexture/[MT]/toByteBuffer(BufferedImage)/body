@@ -1,9 +1,24 @@
 {
-  try {
-    imageBuffer=BitmapDecoder.decode(image);
-    return imageBuffer;
+  int width=image.getWidth();
+  int height=image.getHeight();
+  int bufferSize=width * height * 4;
+  if (buffer == null || buffer.capacity() < bufferSize) {
+    buffer=ByteBuffer.allocateDirect(bufferSize);
+    ByteBuffer temp=buffer.slice();
+    temp.order(ByteOrder.LITTLE_ENDIAN);
+    intBuffer=temp.asIntBuffer();
   }
- catch (  IOException e) {
-    throw new GdxRuntimeException("Couldn't decode image",e);
+ else {
+    buffer.clear();
+    intBuffer.clear();
   }
+  Raster raster=image.getRaster();
+  if (image.getType() == BufferedImage.TYPE_INT_ARGB)   intBuffer.put(((DataBufferInt)raster.getDataBuffer()).getData(),0,width * height);
+ else {
+    ColorModel colorModel=image.getColorModel();
+    Object data=raster.getDataElements(0,0,null);
+    for (int y=0; y < height; y++)     for (int x=0; x < width; x++)     intBuffer.put(colorModel.getRGB(raster.getDataElements(x,y,data)));
+  }
+  buffer.limit(intBuffer.position() * 4);
+  return buffer;
 }

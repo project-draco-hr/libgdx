@@ -1,8 +1,11 @@
 {
   this.isManaged=managed;
   this.isMipMapped=minFilter == TextureFilter.MipMap;
-  BufferedImage image=(BufferedImage)Gdx.graphics.newPixmap(file).getNativePixmap();
-  loadMipMap(image);
+  if (file.getPath().endsWith(".png"))   loadPNG(file);
+ else {
+    BufferedImage image=(BufferedImage)Gdx.graphics.newPixmap(file).getNativePixmap();
+    loadMipMap(image);
+  }
   bind();
   GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL11.GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));
   GL11.glTexParameteri(GL11.GL_TEXTURE_2D,GL11.GL_TEXTURE_MAG_FILTER,getTextureFilter(maxFilter));
