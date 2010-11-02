@@ -2,7 +2,7 @@
   AndroidFileHandle aHandle=(AndroidFileHandle)file;
   if (aHandle.isAsset()) {
     try {
-      AssetFileDescriptor descriptor=aHandle.getAssetManager().openFd(aHandle.getFileName());
+      AssetFileDescriptor descriptor=aHandle.getAssetManager().openFd(aHandle.getPath());
       AndroidSound sound=new AndroidSound(soundPool,manager,soundPool.load(descriptor,1));
       descriptor.close();
       return sound;
@@ -13,7 +13,7 @@
   }
  else {
     try {
-      return new AndroidSound(soundPool,manager,soundPool.load(aHandle.getFileName(),1));
+      return new AndroidSound(soundPool,manager,soundPool.load(aHandle.getPath(),1));
     }
  catch (    Exception e) {
       throw new GdxRuntimeException("Couldn't load Sound from file '" + file + "'",e);

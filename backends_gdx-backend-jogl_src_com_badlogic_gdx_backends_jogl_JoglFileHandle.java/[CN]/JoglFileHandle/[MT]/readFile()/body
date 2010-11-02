@@ -1,0 +1,12 @@
+{
+  if (type == FileType.Internal) {
+    InputStream input=JoglFileHandle.class.getResourceAsStream("/" + file);
+    if (input != null)     return input;
+  }
+  try {
+    return new FileInputStream(file);
+  }
+ catch (  FileNotFoundException ex) {
+    throw new GdxRuntimeException("Error reading file: " + file,ex);
+  }
+}

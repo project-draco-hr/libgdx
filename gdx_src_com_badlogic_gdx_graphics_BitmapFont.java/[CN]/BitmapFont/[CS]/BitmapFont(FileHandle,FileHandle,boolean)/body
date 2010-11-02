@@ -2,7 +2,7 @@
   texture=Gdx.graphics.newTexture(imageFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   float invTexWidth=1.0f / texture.getWidth();
   float invTexHeight=1.0f / texture.getHeight();
-  BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.getInputStream()),512);
+  BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.readFile()),512);
   try {
     reader.readLine();
     String[] common=reader.readLine().split(" ",4);

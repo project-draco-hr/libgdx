@@ -1,4 +1,8 @@
 {
+  if (type == FileType.Internal) {
+    InputStream input=LwjglFileHandle.class.getResourceAsStream("/" + file);
+    if (input != null)     return input;
+  }
   try {
     return new FileInputStream(file);
   }

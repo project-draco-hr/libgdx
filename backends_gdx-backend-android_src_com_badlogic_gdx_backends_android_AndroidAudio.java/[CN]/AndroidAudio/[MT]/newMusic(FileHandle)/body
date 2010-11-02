@@ -3,7 +3,7 @@
   MediaPlayer mediaPlayer=new MediaPlayer();
   if (aHandle.isAsset()) {
     try {
-      AssetFileDescriptor descriptor=aHandle.getAssetManager().openFd(aHandle.getFileName());
+      AssetFileDescriptor descriptor=aHandle.getAssetManager().openFd(aHandle.getPath());
       mediaPlayer.setDataSource(descriptor.getFileDescriptor(),descriptor.getStartOffset(),descriptor.getLength());
       descriptor.close();
       mediaPlayer.prepare();
@@ -17,7 +17,7 @@
   }
  else {
     try {
-      mediaPlayer.setDataSource(aHandle.getFileName());
+      mediaPlayer.setDataSource(aHandle.getPath());
       mediaPlayer.prepare();
       AndroidMusic music=new AndroidMusic(this,mediaPlayer);
       musics.add(music);

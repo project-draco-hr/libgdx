@@ -4,5 +4,5 @@
  else   file=new File(this.externalPath + filename);
   if (!file.exists())   file=new File("resources/" + filename);
   if (file.exists() == false)   throw new GdxRuntimeException("File '" + filename + "' doesn't exist");
- else   return new LwjglFileHandle(file);
+ else   return new LwjglFileHandle(file,type);
 }
