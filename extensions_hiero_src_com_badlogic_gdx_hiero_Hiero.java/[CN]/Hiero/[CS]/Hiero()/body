@@ -20,5 +20,11 @@
   effectsListModel.addElement(new OutlineZigzagEffect());
   effectsListModel.addElement(new ShadowEffect());
   new EffectPanel(colorEffect);
+  addWindowListener(new WindowAdapter(){
+    public void windowClosed(    WindowEvent event){
+      System.exit(0);
+    }
+  }
+);
   setVisible(true);
 }
