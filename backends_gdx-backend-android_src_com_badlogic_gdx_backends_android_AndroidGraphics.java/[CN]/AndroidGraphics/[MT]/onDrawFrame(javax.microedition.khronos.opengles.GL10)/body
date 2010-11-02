@@ -16,7 +16,7 @@ synchronized (synch) {
       running=true;
     }
     if (destroy) {
-      app.listener.destroy();
+      app.listener.dispose();
       destroy=false;
     }
   }

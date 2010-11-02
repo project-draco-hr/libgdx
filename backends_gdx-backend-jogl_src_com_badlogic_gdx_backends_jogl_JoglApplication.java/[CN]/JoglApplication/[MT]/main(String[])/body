@@ -9,7 +9,7 @@
     @Override public void pause(){
       System.out.println("paused");
     }
-    @Override public void destroy(){
+    @Override public void dispose(){
       System.out.println("destroy");
     }
     @Override public void create(){

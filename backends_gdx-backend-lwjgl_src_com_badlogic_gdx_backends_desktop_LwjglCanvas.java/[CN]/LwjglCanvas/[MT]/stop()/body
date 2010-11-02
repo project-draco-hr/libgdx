@@ -1,10 +1,9 @@
 {
-  running=false;
   timer.cancel();
   SwingUtilities.invokeLater(new Runnable(){
     public void run(){
       listener.pause();
-      listener.destroy();
+      listener.dispose();
       Display.destroy();
     }
   }

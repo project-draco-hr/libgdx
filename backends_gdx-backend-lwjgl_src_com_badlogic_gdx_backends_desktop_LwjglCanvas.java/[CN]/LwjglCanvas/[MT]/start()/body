@@ -8,7 +8,7 @@
   Keyboard.enableRepeatEvents(true);
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
-  updateRunnable=new Runnable(){
+  final Runnable runnable=new Runnable(){
     int lastWidth=graphics.getWidth();
     int lastHeight=graphics.getHeight();
     public void run(){
@@ -29,7 +29,7 @@
   timer.schedule(new TimerTask(){
     public void run(){
       try {
-        EventQueue.invokeAndWait(updateRunnable);
+        EventQueue.invokeAndWait(runnable);
       }
  catch (      Exception ex) {
         throw new GdxRuntimeException(ex);

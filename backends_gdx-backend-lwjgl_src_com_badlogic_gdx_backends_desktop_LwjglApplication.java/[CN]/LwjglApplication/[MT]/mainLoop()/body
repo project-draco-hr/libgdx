@@ -33,6 +33,6 @@
     Display.sync(60);
   }
   listener.pause();
-  listener.destroy();
+  listener.dispose();
   Display.destroy();
 }
