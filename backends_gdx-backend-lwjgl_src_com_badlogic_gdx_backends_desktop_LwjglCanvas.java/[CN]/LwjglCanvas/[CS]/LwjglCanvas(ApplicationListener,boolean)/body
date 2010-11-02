@@ -11,11 +11,16 @@
       }
 );
     }
+    public final void removeNotify(){
+      stop();
+      super.removeNotify();
+    }
     public Dimension getMinimumSize(){
       return minSize;
     }
   }
 ;
+  canvas.setIgnoreRepaint(true);
   graphics=new LwjglGraphics(canvas,useGL2);
   audio=new LwjglAudio();
   files=new LwjglFiles();

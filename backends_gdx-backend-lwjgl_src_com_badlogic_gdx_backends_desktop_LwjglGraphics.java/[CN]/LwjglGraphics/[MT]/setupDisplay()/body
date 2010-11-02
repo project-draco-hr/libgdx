@@ -1,8 +1,6 @@
 {
   if (canvas != null) {
     Display.setParent(canvas);
-    Display.setDisplayMode(new DisplayMode(canvas.getWidth(),canvas.getHeight()));
-    Display.setFullscreen(false);
   }
  else {
     Display.setDisplayMode(new DisplayMode(width,height));

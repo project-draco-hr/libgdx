@@ -1,7 +1,8 @@
 {
-  timer.cancel();
-  SwingUtilities.invokeLater(new Runnable(){
+  EventQueue.invokeLater(new Runnable(){
     public void run(){
+      if (!running)       return;
+      running=false;
       listener.pause();
       listener.dispose();
       Display.destroy();

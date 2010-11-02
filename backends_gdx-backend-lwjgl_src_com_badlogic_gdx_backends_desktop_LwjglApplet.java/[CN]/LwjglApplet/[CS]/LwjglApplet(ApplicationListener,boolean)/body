@@ -1,0 +1,9 @@
+{
+  lwjglCanvas=new LwjglCanvas(listener,useGL2);
+  Canvas canvas=lwjglCanvas.getCanvas();
+  setLayout(new BorderLayout());
+  add(canvas);
+  canvas.setFocusable(true);
+  canvas.requestFocus();
+  setVisible(true);
+}

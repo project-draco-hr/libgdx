@@ -12,6 +12,7 @@
     int lastWidth=graphics.getWidth();
     int lastHeight=graphics.getHeight();
     public void run(){
+      if (!running)       return;
       graphics.updateTime();
       input.update();
       if (lastWidth != graphics.getWidth() || lastHeight != graphics.getHeight()) {
@@ -26,15 +27,17 @@
     }
   }
 ;
-  timer.schedule(new TimerTask(){
+  new Thread("LWJGL Canvas"){
     public void run(){
-      try {
-        EventQueue.invokeAndWait(runnable);
-      }
- catch (      Exception ex) {
-        throw new GdxRuntimeException(ex);
+      while (running && !Display.isCloseRequested()) {
+        try {
+          EventQueue.invokeAndWait(runnable);
+        }
+ catch (        Exception ex) {
+          throw new GdxRuntimeException(ex);
+        }
       }
     }
   }
-,0,16);
+.start();
 }
