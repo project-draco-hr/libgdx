@@ -5,7 +5,6 @@
   if (viewWidth != glCanvas.getWidth() || viewHeight != glCanvas.getHeight()) {
     viewWidth=Math.max(1,glCanvas.getWidth());
     viewHeight=Math.max(1,glCanvas.getHeight());
-    app.setSize(viewWidth,viewHeight);
   }
   if (newUnicodeFont != null) {
     if (unicodeFont != null)     unicodeFont.destroy();

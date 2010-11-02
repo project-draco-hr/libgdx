@@ -5,7 +5,6 @@ synchronized (effect) {
     if (viewWidth != glCanvas.getWidth() || viewHeight != glCanvas.getHeight()) {
       viewWidth=Math.max(1,glCanvas.getWidth());
       viewHeight=Math.max(1,glCanvas.getHeight());
-      app.setSize(viewWidth,viewHeight);
     }
     float delta=Gdx.graphics.getDeltaTime();
     Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
