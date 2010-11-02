@@ -1,5 +1,4 @@
 {
   super.onCreate(savedInstanceState);
-  initialize(false);
-  getGraphics().setRenderListener(new HelloWorld());
+  initialize(new HelloWorld(),false);
 }
