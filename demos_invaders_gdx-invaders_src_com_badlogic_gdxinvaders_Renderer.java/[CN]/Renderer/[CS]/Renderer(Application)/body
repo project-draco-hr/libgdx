@@ -2,22 +2,22 @@
   try {
     spriteBatch=new SpriteBatch();
     InputStream in=app.getFiles().readFile("data/ship.obj",FileType.Internal);
-    shipMesh=ModelLoader.loadObj(in,true);
+    shipMesh=ModelLoader.loadObj(in);
     in.close();
     in=app.getFiles().readFile("data/invader.obj",FileType.Internal);
-    invaderMesh=ModelLoader.loadObj(in,true);
+    invaderMesh=ModelLoader.loadObj(in);
     in.close();
     in=app.getFiles().readFile("data/block.obj",FileType.Internal);
-    blockMesh=ModelLoader.loadObj(in,true);
+    blockMesh=ModelLoader.loadObj(in);
     in.close();
     in=app.getFiles().readFile("data/shot.obj",FileType.Internal);
-    shotMesh=ModelLoader.loadObj(in,true);
+    shotMesh=ModelLoader.loadObj(in);
     in.close();
     shipTexture=app.getGraphics().newTexture(app.getFiles().getFileHandle("data/ship.png",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
     invaderTexture=app.getGraphics().newTexture(app.getFiles().getFileHandle("data/invader.png",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
     backgroundTexture=app.getGraphics().newTexture(app.getFiles().getFileHandle("data/planet.jpg",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
     explosionTexture=app.getGraphics().newTexture(app.getFiles().getFileHandle("data/explode.png",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-    explosionMesh=new Mesh(true,false,4 * 16,0,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoord"));
+    explosionMesh=new Mesh(true,4 * 16,0,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoord"));
     float[] vertices=new float[4 * 16 * (3 + 2)];
     int idx=0;
     for (int row=0; row < 4; row++) {
@@ -45,7 +45,6 @@
       }
     }
     explosionMesh.setVertices(vertices);
-    font=app.getGraphics().newFont(app.getFiles().getFileHandle("data/font.ttf",FileType.Internal),10,FontStyle.Plain);
     camera=new PerspectiveCamera();
     camera.setFov(67);
     camera.setViewport(480,320);

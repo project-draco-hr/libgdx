@@ -9,10 +9,6 @@
   spriteBatch.enableBlending();
   spriteBatch.draw(logo,0,320 - 128,480,128,0,256,512,256,Color.WHITE,false,false);
   String text="It's the end my friend.";
-  float width=font.getStringWidth(text);
-  spriteBatch.drawText(font,text,240 - width / 2,128,Color.WHITE);
   text="Touch to continue!";
-  width=font.getStringWidth(text);
-  spriteBatch.drawText(font,text,240 - width / 2,100,Color.WHITE);
   spriteBatch.end();
 }

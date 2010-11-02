@@ -28,7 +28,6 @@
     lastScore=simulation.score;
     lastWave=simulation.wave;
   }
-  spriteBatch.drawText(font,status,0,320 - font.getLineHeight(),Color.WHITE);
   spriteBatch.end();
   invaderAngle+=app.getGraphics().getDeltaTime() * 90;
   if (invaderAngle > 360)   invaderAngle-=360;

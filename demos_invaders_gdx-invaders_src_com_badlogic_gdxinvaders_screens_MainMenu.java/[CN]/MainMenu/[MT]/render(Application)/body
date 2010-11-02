@@ -9,7 +9,5 @@
   spriteBatch.enableBlending();
   spriteBatch.draw(logo,0,320 - 128,480,128,0,0,512,256,Color.WHITE,false,false);
   String text="Touch screen to start!";
-  float width=font.getStringWidth(text);
-  spriteBatch.drawText(font,text,240 - width / 2,128,Color.WHITE);
   spriteBatch.end();
 }
