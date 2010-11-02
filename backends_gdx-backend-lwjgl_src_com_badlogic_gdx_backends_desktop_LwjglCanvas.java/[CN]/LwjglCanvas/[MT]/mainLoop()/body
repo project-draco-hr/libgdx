@@ -1,0 +1,56 @@
+{
+  Keyboard.enableRepeatEvents(true);
+  try {
+    SwingUtilities.invokeAndWait(new Runnable(){
+      public void run(){
+        listener.create();
+        listener.resize(graphics.getWidth(),graphics.getHeight());
+      }
+    }
+);
+  }
+ catch (  Exception e1) {
+    throw new GdxRuntimeException(e1);
+  }
+  Runnable runnable=new Runnable(){
+    int lastWidth=graphics.getWidth();
+    int lastHeight=graphics.getHeight();
+    @Override public void run(){
+      graphics.updateTime();
+      input.update();
+      if (lastWidth != graphics.getWidth() || lastHeight != graphics.getHeight()) {
+        lastWidth=graphics.getWidth();
+        lastHeight=graphics.getHeight();
+        try {
+          Display.setDisplayMode(new DisplayMode(lastWidth,lastHeight));
+        }
+ catch (        LWJGLException e) {
+          throw new GdxRuntimeException(e);
+        }
+        listener.resize(lastWidth,lastHeight);
+      }
+      listener.render();
+      input.processEvents(null);
+      Display.update();
+      Display.sync(60);
+    }
+  }
+;
+  while (running) {
+    SwingUtilities.invokeLater(runnable);
+    try {
+      Thread.sleep(16);
+    }
+ catch (    InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+  SwingUtilities.invokeLater(new Runnable(){
+    public void run(){
+      listener.pause();
+      listener.destroy();
+      Display.destroy();
+    }
+  }
+);
+}

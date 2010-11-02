@@ -1,0 +1,27 @@
+{
+  LwjglNativesLoader.load();
+  canvas=new Canvas(){
+    private final Dimension minSize=new Dimension();
+    public final void addNotify(){
+      super.addNotify();
+      try {
+        graphics.setupDisplay();
+        start();
+      }
+ catch (      LWJGLException e) {
+        throw new GdxRuntimeException(e);
+      }
+    }
+    public Dimension getMinimumSize(){
+      return minSize;
+    }
+  }
+;
+  canvas.setSize(100,100);
+  canvas.setMinimumSize(new Dimension(2,2));
+  graphics=new LwjglGraphics(canvas,useGL2);
+  audio=new LwjglAudio();
+  files=new LwjglFiles();
+  input=new LwjglInput();
+  this.listener=listener;
+}

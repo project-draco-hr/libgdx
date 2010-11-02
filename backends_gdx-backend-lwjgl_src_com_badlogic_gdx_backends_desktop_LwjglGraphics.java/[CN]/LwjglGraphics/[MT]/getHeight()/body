@@ -1,3 +1,4 @@
 {
-  return height;
+  if (canvas != null)   return canvas.getHeight();
+ else   return height;
 }

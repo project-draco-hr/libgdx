@@ -1,3 +1,13 @@
 {
-  this(listener,title,width,height,useGL2,null);
+  graphics=new LwjglGraphics(title,width,height,useGL2);
+  audio=new LwjglAudio();
+  files=new LwjglFiles();
+  input=new LwjglInput();
+  this.listener=listener;
+  Gdx.app=this;
+  Gdx.graphics=graphics;
+  Gdx.audio=audio;
+  Gdx.files=files;
+  Gdx.input=input;
+  initialize();
 }

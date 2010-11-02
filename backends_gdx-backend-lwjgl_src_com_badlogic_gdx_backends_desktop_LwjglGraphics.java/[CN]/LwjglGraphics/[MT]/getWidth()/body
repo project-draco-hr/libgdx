@@ -1,3 +1,4 @@
 {
-  return width;
+  if (canvas != null)   return canvas.getWidth();
+ else   return width;
 }

@@ -1,8 +1,14 @@
 {
-  if (canvas != null)   Display.setParent(canvas);
-  Display.setDisplayMode(new DisplayMode(width,height));
-  Display.setFullscreen(false);
-  Display.setTitle(title);
+  if (canvas != null) {
+    Display.setParent(canvas);
+    Display.setDisplayMode(new DisplayMode(canvas.getWidth(),canvas.getHeight()));
+    Display.setFullscreen(false);
+  }
+ else {
+    Display.setDisplayMode(new DisplayMode(width,height));
+    Display.setFullscreen(false);
+    Display.setTitle(title);
+  }
   int samples=0;
   try {
     Display.create(new PixelFormat(8,8,0,samples));
