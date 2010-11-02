@@ -34,7 +34,7 @@
 {
       JPanel spacer=new JPanel(new BorderLayout());
       leftSplit.add(spacer,JSplitPane.TOP);
-      spacer.add(glCanvas);
+      spacer.add(lwjglCanvas.getCanvas());
       spacer.setBorder(BorderFactory.createEmptyBorder(0,0,0,4));
     }
 {

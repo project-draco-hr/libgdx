@@ -1,22 +1,12 @@
 {
   super("GDX Particle Editor");
-  glCanvas=new Canvas(){
-    private final Dimension minSize=new Dimension();
-    public final void addNotify(){
-      super.addNotify();
-      app=new LwjglApplication(new Renderer(),"ParticleEditor",200,200,false,glCanvas);
-      addWindowListener(new WindowAdapter(){
-        public void windowClosed(        WindowEvent event){
-          app.stop();
-        }
-      }
-);
-    }
-    public Dimension getMinimumSize(){
-      return minSize;
+  lwjglCanvas=new LwjglCanvas(new Renderer(),false);
+  addWindowListener(new WindowAdapter(){
+    public void windowClosed(    WindowEvent event){
+      System.exit(0);
     }
   }
-;
+);
   initializeComponents();
   setSize(950,950);
   setLocationRelativeTo(null);

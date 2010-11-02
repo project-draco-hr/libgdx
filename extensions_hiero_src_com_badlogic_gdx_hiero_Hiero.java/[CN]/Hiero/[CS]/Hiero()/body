@@ -3,8 +3,7 @@
   Splash splash=new Splash(this,"/splash.jpg",2000);
   initialize();
   splash.close();
-  LwjglCanvas lwjglCanvas=new LwjglCanvas(new Renderer(),false);
-  gamePanel.add(lwjglCanvas.getCanvas());
+  gamePanel.add(new LwjglCanvas(new Renderer(),false).getCanvas());
   prefs=Preferences.userNodeForPackage(Hiero.class);
   java.awt.Color backgroundColor=EffectUtil.fromString(prefs.get("background","000000"));
   backgroundColorLabel.setIcon(getColorIcon(backgroundColor));

@@ -1,8 +1,12 @@
 {
   running=false;
-  try {
-    mainLoopThread.join();
+  timer.cancel();
+  SwingUtilities.invokeLater(new Runnable(){
+    public void run(){
+      listener.pause();
+      listener.destroy();
+      Display.destroy();
+    }
   }
- catch (  Exception ex) {
-  }
+);
 }

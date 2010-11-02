@@ -4,13 +4,12 @@
     private final Dimension minSize=new Dimension();
     public final void addNotify(){
       super.addNotify();
-      try {
-        graphics.setupDisplay();
-        start();
+      EventQueue.invokeLater(new Runnable(){
+        public void run(){
+          start();
+        }
       }
- catch (      LWJGLException e) {
-        throw new GdxRuntimeException(e);
-      }
+);
     }
     public Dimension getMinimumSize(){
       return minSize;
@@ -24,4 +23,9 @@
   files=new LwjglFiles();
   input=new LwjglInput();
   this.listener=listener;
+  Gdx.app=this;
+  Gdx.graphics=graphics;
+  Gdx.audio=audio;
+  Gdx.files=files;
+  Gdx.input=input;
 }

@@ -1,10 +1,40 @@
 {
-  LwjglNativesLoader.load();
-  mainLoopThread=new Thread("LWJGL Application"){
-    @SuppressWarnings("synthetic-access") public void run(){
-      LwjglCanvas.this.mainLoop();
+  try {
+    graphics.setupDisplay();
+  }
+ catch (  LWJGLException e) {
+    throw new GdxRuntimeException(e);
+  }
+  Keyboard.enableRepeatEvents(true);
+  listener.create();
+  listener.resize(graphics.getWidth(),graphics.getHeight());
+  updateRunnable=new Runnable(){
+    int lastWidth=graphics.getWidth();
+    int lastHeight=graphics.getHeight();
+    public void run(){
+      graphics.updateTime();
+      input.update();
+      if (lastWidth != graphics.getWidth() || lastHeight != graphics.getHeight()) {
+        lastWidth=graphics.getWidth();
+        lastHeight=graphics.getHeight();
+        listener.resize(lastWidth,lastHeight);
+      }
+      listener.render();
+      input.processEvents(null);
+      Display.update();
+      Display.sync(60);
     }
   }
 ;
-  mainLoopThread.start();
+  timer.schedule(new TimerTask(){
+    public void run(){
+      try {
+        EventQueue.invokeAndWait(updateRunnable);
+      }
+ catch (      Exception ex) {
+        throw new GdxRuntimeException(ex);
+      }
+    }
+  }
+,0,16);
 }

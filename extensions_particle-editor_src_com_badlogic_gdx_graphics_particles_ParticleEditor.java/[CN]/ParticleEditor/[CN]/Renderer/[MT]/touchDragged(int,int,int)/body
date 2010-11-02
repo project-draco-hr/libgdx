@@ -1,6 +1,4 @@
 {
-synchronized (effect) {
-    effect.setPosition(x,y);
-  }
+  effect.setPosition(x,y);
   return false;
 }
