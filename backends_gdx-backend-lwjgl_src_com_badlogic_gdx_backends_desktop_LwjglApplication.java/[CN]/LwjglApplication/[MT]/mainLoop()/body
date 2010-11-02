@@ -8,9 +8,16 @@
   Keyboard.enableRepeatEvents(true);
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
+  int lastWidth=graphics.getWidth();
+  int lastHeight=graphics.getHeight();
   while (running && !Display.isCloseRequested()) {
     graphics.updateTime();
     input.update();
+    if (lastWidth != graphics.getWidth() || lastHeight != graphics.getHeight()) {
+      lastWidth=graphics.getWidth();
+      lastHeight=graphics.getHeight();
+      listener.resize(lastWidth,lastHeight);
+    }
     listener.render();
     input.processEvents(null);
     Display.update();
