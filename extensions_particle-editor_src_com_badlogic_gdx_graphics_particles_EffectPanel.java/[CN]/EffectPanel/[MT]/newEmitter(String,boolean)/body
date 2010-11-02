@@ -19,15 +19,13 @@
   emitter.setFlip(false,true);
   emitter.setMaxParticleCount(15);
   emitter.setImagePath("data/particle.png");
-synchronized (editor.effect) {
-    ArrayList<ParticleEmitter> emitters=editor.effect.getEmitters();
-    if (emitters.isEmpty())     emitter.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
+  ArrayList<ParticleEmitter> emitters=editor.effect.getEmitters();
+  if (emitters.isEmpty())   emitter.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
  else {
-      ParticleEmitter p=emitters.get(0);
-      emitter.setPosition(p.getX(),p.getY());
-    }
-    emitters.add(emitter);
+    ParticleEmitter p=emitters.get(0);
+    emitter.setPosition(p.getX(),p.getY());
   }
+  emitters.add(emitter);
   emitterTableModel.addRow(new Object[]{name,true});
   if (select) {
     editor.reloadRows();

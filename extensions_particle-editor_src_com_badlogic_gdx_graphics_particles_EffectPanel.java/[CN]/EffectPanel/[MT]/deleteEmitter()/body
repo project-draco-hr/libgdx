@@ -1,15 +1,13 @@
 {
-synchronized (editor.effect) {
-    if (editor.effect.getEmitters().size() == 1)     return;
-    int row=emitterTable.getSelectedRow();
-    if (row == -1)     return;
-    if (row <= editIndex) {
-      int oldEditIndex=editIndex;
-      editIndex=Math.max(0,editIndex - 1);
-      if (oldEditIndex == row)       editor.reloadRows();
-    }
-    editor.effect.getEmitters().remove(row);
-    emitterTableModel.removeRow(row);
+  if (editor.effect.getEmitters().size() == 1)   return;
+  int row=emitterTable.getSelectedRow();
+  if (row == -1)   return;
+  if (row <= editIndex) {
+    int oldEditIndex=editIndex;
+    editIndex=Math.max(0,editIndex - 1);
+    if (oldEditIndex == row)     editor.reloadRows();
   }
+  editor.effect.getEmitters().remove(row);
+  emitterTableModel.removeRow(row);
   emitterTable.getSelectionModel().setSelectionInterval(editIndex,editIndex);
 }

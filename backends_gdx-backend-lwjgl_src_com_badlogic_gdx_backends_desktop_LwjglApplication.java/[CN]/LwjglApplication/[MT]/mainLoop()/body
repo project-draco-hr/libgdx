@@ -10,6 +10,7 @@
   listener.resize(graphics.getWidth(),graphics.getHeight());
   int lastWidth=graphics.getWidth();
   int lastHeight=graphics.getHeight();
+  graphics.lastTime=System.nanoTime();
   while (running && !Display.isCloseRequested()) {
     graphics.updateTime();
     input.update();

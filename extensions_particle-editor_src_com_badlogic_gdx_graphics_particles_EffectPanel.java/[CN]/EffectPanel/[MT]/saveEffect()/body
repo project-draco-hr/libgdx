@@ -6,16 +6,14 @@
   String dir=dialog.getDirectory();
   if (dir == null || file == null || file.trim().length() == 0)   return;
   lastDir=dir;
-synchronized (editor.effect) {
-    int index=0;
-    for (    ParticleEmitter emitter : editor.effect.getEmitters())     emitter.setName((String)emitterTableModel.getValueAt(index++,0));
-    try {
-      editor.effect.save(new File(dir,file));
-    }
- catch (    Exception ex) {
-      System.out.println("Error saving effect: " + new File(dir,file).getAbsolutePath());
-      ex.printStackTrace();
-      JOptionPane.showMessageDialog(editor,"Error saving effect.");
-    }
+  int index=0;
+  for (  ParticleEmitter emitter : editor.effect.getEmitters())   emitter.setName((String)emitterTableModel.getValueAt(index++,0));
+  try {
+    editor.effect.save(new File(dir,file));
+  }
+ catch (  Exception ex) {
+    System.out.println("Error saving effect: " + new File(dir,file).getAbsolutePath());
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(editor,"Error saving effect.");
   }
 }

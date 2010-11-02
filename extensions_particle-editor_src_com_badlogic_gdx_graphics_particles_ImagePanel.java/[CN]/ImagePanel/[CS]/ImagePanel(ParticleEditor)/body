@@ -15,16 +15,14 @@
         lastDir=dir;
         try {
           ImageIcon icon=new ImageIcon(new File(dir,file).toURI().toURL());
-synchronized (editor.effect) {
-            final ParticleEmitter emitter=editor.getEmitter();
-            editor.setIcon(emitter,icon);
-            imageLabel.setIcon(icon);
-            widthLabel.setText("Width: " + icon.getIconWidth());
-            heightLabel.setText("Height: " + icon.getIconHeight());
-            revalidate();
-            emitter.setImagePath(new File(dir,file).getAbsolutePath());
-            emitter.setTexture(null);
-          }
+          final ParticleEmitter emitter=editor.getEmitter();
+          editor.setIcon(emitter,icon);
+          imageLabel.setIcon(icon);
+          widthLabel.setText("Width: " + icon.getIconWidth());
+          heightLabel.setText("Height: " + icon.getIconHeight());
+          revalidate();
+          emitter.setImagePath(new File(dir,file).getAbsolutePath());
+          emitter.setTexture(null);
         }
  catch (        Exception ex) {
           ex.printStackTrace();
