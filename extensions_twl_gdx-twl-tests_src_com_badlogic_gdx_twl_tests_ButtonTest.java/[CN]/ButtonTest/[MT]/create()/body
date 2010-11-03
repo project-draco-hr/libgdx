@@ -1,13 +1,10 @@
 {
-  if (gui != null)   return;
   Button button=new Button("Click Me");
   FPSCounter fpsCounter=new FPSCounter(4,2);
-  DialogLayout layout=new DialogLayout();
-  layout.setTheme("");
-  layout.setHorizontalGroup(layout.createParallelGroup().addWidgets(button,fpsCounter));
-  layout.setVerticalGroup(layout.createSequentialGroup().addWidget(button).addGap(5).addWidget(fpsCounter).addGap(5));
-  twl=new TwlRenderer();
-  gui=new GUI(layout,twl,null);
-  twl.applyTheme(gui,"data/widgets.xml",FileType.Internal);
-  guiInputListener=new TwlInputProcessor(gui);
+  Layout layout=new Layout();
+  layout.horizontal().sequence(0).parallel(button,fpsCounter).end().gap();
+  layout.vertical().sequence(0,button,5,fpsCounter,0);
+  twl=new TWL("data/widgets.xml",FileType.Internal,layout);
+  input.addProcessor(twl);
+  input.addProcessor(this);
 }

@@ -1,0 +1,12 @@
+{
+  for (int i=0, n=widgets.length; i < n; i++) {
+    Object object=widgets[i];
+    if (object instanceof Integer) {
+      int size=(Integer)object;
+      if (size == 0)       dialogGroup.addGap();
+ else       dialogGroup.addGap(size);
+    }
+ else     dialogGroup.addWidget((Widget)object);
+  }
+  return this;
+}

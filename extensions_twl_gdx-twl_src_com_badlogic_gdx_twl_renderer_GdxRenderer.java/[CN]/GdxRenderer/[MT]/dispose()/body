@@ -1,0 +1,7 @@
+{
+  if (cacheContext != null) {
+    cacheContext.destroy();
+    cacheContext=null;
+  }
+  spriteBatch.dispose();
+}

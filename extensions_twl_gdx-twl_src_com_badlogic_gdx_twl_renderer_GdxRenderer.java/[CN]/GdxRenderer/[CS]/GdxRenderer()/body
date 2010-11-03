@@ -1,0 +1,11 @@
+{
+  spriteBatch.getProjectionMatrix().setToOrtho(0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),0,0,1);
+  Widget root=new Widget(){
+    protected void layout(){
+      layoutChildrenFullInnerArea();
+    }
+  }
+;
+  root.setTheme("");
+  new GUI(root,this,null);
+}

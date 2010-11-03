@@ -1,4 +1,5 @@
 {
-  this.screen.dispose();
+  if (this.screen != null)   this.screen.hide();
   this.screen=screen;
+  screen.show();
 }

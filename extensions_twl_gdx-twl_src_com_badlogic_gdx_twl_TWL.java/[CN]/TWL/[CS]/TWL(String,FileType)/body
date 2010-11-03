@@ -1,0 +1,16 @@
+{
+  Widget root=new Widget(){
+    protected void layout(){
+      layoutChildrenFullInnerArea();
+    }
+  }
+;
+  root.setTheme("");
+  gui=new GUI(root,renderer,null);
+  try {
+    gui.applyTheme(ThemeManager.createThemeManager(getThemeURL(themeFile,fileType),renderer));
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error loading theme: " + themeFile + " ("+ fileType+ ")",ex);
+  }
+}

@@ -1,5 +1,5 @@
 {
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  Gdx.input.processEvents(guiInputListener);
-  gui.update();
+  Gdx.input.processEvents(input);
+  twl.render();
 }

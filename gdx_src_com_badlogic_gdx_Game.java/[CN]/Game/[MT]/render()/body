@@ -1,3 +1,3 @@
 {
-  screen.render(Gdx.graphics.getDeltaTime());
+  if (screen != null)   screen.render(Gdx.graphics.getDeltaTime());
 }

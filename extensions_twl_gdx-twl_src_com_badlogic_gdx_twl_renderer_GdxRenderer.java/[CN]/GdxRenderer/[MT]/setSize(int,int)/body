@@ -1,0 +1,5 @@
+{
+  this.width=width;
+  this.height=height;
+  spriteBatch.getProjectionMatrix().setToOrtho(0,width,height,0,0,1);
+}
