@@ -1,0 +1,8 @@
+{
+  float delta=Gdx.graphics.getDeltaTime();
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_W))   camera.getPosition().add(camera.getDirection().tmp().mul(80 * delta));
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_S))   camera.getPosition().add(camera.getDirection().tmp().mul(-80 * delta));
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_A))   angle-=90 * delta;
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_D))   angle+=90 * delta;
+  camera.getDirection().set((float)Math.cos(Math.toRadians(angle)),0,(float)Math.sin(Math.toRadians(angle)));
+}

@@ -1,0 +1,10 @@
+{
+  camera=new PerspectiveCamera();
+  camera.setNear(1);
+  camera.setFar(2000);
+  camera.setFov(67);
+  camera.getDirection().set(0,0,-1);
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  load();
+}
