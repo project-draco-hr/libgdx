@@ -4,5 +4,13 @@
   if (Gdx.input.isKeyPressed(Keys.KEYCODE_S))   camera.getPosition().add(camera.getDirection().tmp().mul(-80 * delta));
   if (Gdx.input.isKeyPressed(Keys.KEYCODE_A))   angle-=90 * delta;
   if (Gdx.input.isKeyPressed(Keys.KEYCODE_D))   angle+=90 * delta;
+  if (Gdx.input.isTouched()) {
+    float x=Gdx.input.getX();
+    float y=Gdx.input.getY();
+    if (x > Gdx.graphics.getWidth() / 2 + Gdx.graphics.getWidth() / 4)     angle+=90 * delta;
+    if (x < Gdx.graphics.getWidth() / 2 - Gdx.graphics.getWidth() / 4)     angle-=90 * delta;
+    if (y > Gdx.graphics.getHeight() / 2 + Gdx.graphics.getHeight() / 4)     camera.getPosition().add(camera.getDirection().tmp().mul(80 * delta));
+    if (y < Gdx.graphics.getHeight() / 2 - Gdx.graphics.getHeight() / 4)     camera.getPosition().add(camera.getDirection().tmp().mul(-80 * delta));
+  }
   camera.getDirection().set((float)Math.cos(Math.toRadians(angle)),0,(float)Math.sin(Math.toRadians(angle)));
 }
