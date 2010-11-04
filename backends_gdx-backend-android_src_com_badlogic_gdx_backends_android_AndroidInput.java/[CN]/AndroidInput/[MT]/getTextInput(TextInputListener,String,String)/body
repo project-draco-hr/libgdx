@@ -1,6 +1,6 @@
 {
   handle.post(new Runnable(){
-    @SuppressWarnings("synthetic-access") public void run(){
+    public void run(){
       AlertDialog.Builder alert=new AlertDialog.Builder(AndroidInput.this.app);
       alert.setTitle(title);
       final EditText input=new EditText(AndroidInput.this.app);
