@@ -4,7 +4,7 @@
     in=assets.open(fileName);
   }
  catch (  Exception ex) {
-    throw new GdxRuntimeException("Couldn't load file '" + fileName + "'",ex);
+    throw new GdxRuntimeException("Unable to read file: " + fileName + " ("+ FileType.Internal+ ")",ex);
   }
   return in;
 }

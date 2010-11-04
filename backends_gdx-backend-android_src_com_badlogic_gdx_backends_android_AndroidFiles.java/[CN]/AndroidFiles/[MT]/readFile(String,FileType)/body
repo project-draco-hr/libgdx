@@ -1,5 +1,5 @@
 {
   if (type == FileType.Internal)   return readInternalFile(fileName);
   if (type == FileType.External)   return readExternalFile(fileName);
- else   return readAbsolutFile(fileName);
+ else   return readAbsoluteFile(fileName);
 }

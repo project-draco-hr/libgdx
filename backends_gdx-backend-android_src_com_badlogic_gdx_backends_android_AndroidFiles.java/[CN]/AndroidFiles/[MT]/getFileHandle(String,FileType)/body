@@ -8,15 +8,15 @@
  catch (    Exception ex) {
       exists=false;
     }
-    if (!exists)     throw new GdxRuntimeException("Couldn't open file '" + filename + "'");
+    if (!exists)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
  else     return new AndroidFileHandle(assets,filename);
   }
   if (type == FileType.External) {
-    if (new File(sdcard + filename).exists() == false)     throw new GdxRuntimeException("Couldn't open file '" + filename + "'");
+    if (new File(sdcard + filename).exists() == false)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
  else     return new AndroidFileHandle(null,sdcard + filename);
   }
  else {
-    if (new File(filename).exists() == false)     throw new GdxRuntimeException("Couldn't open file '" + filename + "'");
+    if (new File(filename).exists() == false)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
  else     return new AndroidFileHandle(null,filename);
   }
 }

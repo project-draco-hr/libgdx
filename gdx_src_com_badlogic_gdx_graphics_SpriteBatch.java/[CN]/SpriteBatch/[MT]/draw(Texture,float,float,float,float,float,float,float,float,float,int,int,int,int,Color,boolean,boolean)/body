@@ -6,7 +6,6 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
-  useTextBlend=false;
   final float worldOriginX=x + originX;
   final float worldOriginY=y + originY;
   float fx=-originX;

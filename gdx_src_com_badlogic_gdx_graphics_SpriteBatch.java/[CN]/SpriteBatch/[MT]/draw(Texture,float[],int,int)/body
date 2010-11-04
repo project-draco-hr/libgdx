@@ -6,7 +6,6 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
-  useTextBlend=false;
   if (idx + length >= vertices.length)   renderMesh();
   System.arraycopy(spriteVertices,offset,vertices,idx,length);
   idx+=length;

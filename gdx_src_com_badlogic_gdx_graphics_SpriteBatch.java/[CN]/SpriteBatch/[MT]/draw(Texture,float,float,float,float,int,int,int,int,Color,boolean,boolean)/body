@@ -6,7 +6,6 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
-  useTextBlend=false;
   float u=srcX * invTexWidth;
   float v=(srcY + srcHeight) * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;

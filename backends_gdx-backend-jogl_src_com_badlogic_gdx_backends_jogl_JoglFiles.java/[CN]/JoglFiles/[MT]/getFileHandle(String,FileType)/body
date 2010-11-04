@@ -1,6 +1,6 @@
 {
   if (type == FileType.External)   fileName=this.externalPath + fileName;
   File file=new File(fileName);
-  if (JoglFileHandle.class.getResource("/" + fileName) == null && file.exists() == false)   throw new GdxRuntimeException("File '" + fileName + "' doesn't exist");
+  if (JoglFileHandle.class.getResource("/" + fileName) == null && file.exists() == false)   throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
  else   return new JoglFileHandle(file,type);
 }

@@ -1,12 +1,12 @@
 {
   if (type == FileType.Internal)   return null;
   File file=null;
-  if (type == FileType.Absolute)   file=new File(filename);
- else   file=new File(this.externalPath + filename);
+  if (type == FileType.Absolute)   file=new File(fileName);
+ else   file=new File(this.externalPath + fileName);
   try {
     return new FileOutputStream(file);
   }
  catch (  FileNotFoundException e) {
-    throw new GdxRuntimeException("File '" + file + "' does not exist");
+    throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
   }
 }

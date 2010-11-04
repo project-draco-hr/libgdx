@@ -4,12 +4,7 @@
   lastTexture.bind();
   mesh.setVertices(vertices,0,idx);
   if (Gdx.graphics.isGL20Available()) {
-    if (useTextBlend) {
-      GL20 gl20=Gdx.gl20;
-      gl20.glBlendFunc(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
-      gl20.glEnable(GL20.GL_BLEND);
-    }
- else     if (blendingDisabled) {
+    if (blendingDisabled) {
       Gdx.gl20.glDisable(GL20.GL_BLEND);
     }
  else {
@@ -20,12 +15,7 @@
     mesh.render(shader,GL10.GL_TRIANGLES,0,idx / 20 * 6);
   }
  else {
-    if (useTextBlend) {
-      GL10 gl10=Gdx.gl10;
-      gl10.glBlendFunc(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
-      gl10.glEnable(GL10.GL_BLEND);
-    }
- else     if (blendingDisabled) {
+    if (blendingDisabled) {
       Gdx.gl10.glDisable(GL10.GL_BLEND);
     }
  else {

@@ -6,7 +6,6 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
-  useTextBlend=false;
   final float fx2=x + srcWidth;
   final float fy2=y + srcHeight;
   vertices[idx++]=x;

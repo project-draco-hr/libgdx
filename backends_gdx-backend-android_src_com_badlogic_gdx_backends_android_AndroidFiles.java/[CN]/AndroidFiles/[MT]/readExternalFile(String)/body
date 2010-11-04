@@ -4,7 +4,7 @@
     in=new FileInputStream(sdcard + fileName);
   }
  catch (  FileNotFoundException ex) {
-    throw new GdxRuntimeException("Couldn't open file '" + fileName + "'",ex);
+    throw new GdxRuntimeException("File not found: " + fileName + " ("+ FileType.External+ ")",ex);
   }
   return in;
 }
