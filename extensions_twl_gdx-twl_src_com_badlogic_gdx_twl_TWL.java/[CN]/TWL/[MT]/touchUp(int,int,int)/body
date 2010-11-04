@@ -1,3 +1,5 @@
 {
-  return gui.handleMouse(x,y,pointer,false);
+  boolean handled=gui.handleMouse(x,y,pointer,false);
+  gui.handleMouse(-9999,-9999,-1,true);
+  return handled;
 }

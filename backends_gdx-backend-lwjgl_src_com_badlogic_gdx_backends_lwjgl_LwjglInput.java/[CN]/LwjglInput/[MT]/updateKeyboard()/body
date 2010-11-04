@@ -2,7 +2,7 @@
   if (Keyboard.isCreated()) {
     while (Keyboard.next()) {
       if (Keyboard.getEventKeyState()) {
-        int keyCode=getKeyCode(Keyboard.getEventKey());
+        int keyCode=getGdxKeyCode(Keyboard.getEventKey());
         char keyChar=Keyboard.getEventCharacter();
         KeyEvent event=freeKeyEvents.newObject();
         event.keyCode=keyCode;
@@ -17,7 +17,7 @@
         pressedKeys++;
       }
  else {
-        int keyCode=LwjglInput.getKeyCode(Keyboard.getEventKey());
+        int keyCode=LwjglInput.getGdxKeyCode(Keyboard.getEventKey());
         KeyEvent event=freeKeyEvents.newObject();
         event.keyCode=keyCode;
         event.keyChar=0;

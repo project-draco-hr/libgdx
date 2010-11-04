@@ -1,5 +1,5 @@
 {
   Widget root=gui.getRootPane();
   root.removeAllChildren();
-  root.add(widget);
+  if (widget != null)   root.add(widget);
 }
