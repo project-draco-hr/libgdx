@@ -1,7 +1,6 @@
 {
-  File file=null;
-  if (type == FileType.Absolute || type == FileType.Internal)   file=new File(filename);
- else   file=new File(this.externalPath + filename);
-  if (file.exists() == false)   throw new GdxRuntimeException("File '" + filename + "' doesn't exist");
+  if (type == FileType.External)   fileName=this.externalPath + fileName;
+  File file=new File(fileName);
+  if (JoglFileHandle.class.getResource("/" + fileName) == null && file.exists() == false)   throw new GdxRuntimeException("File '" + fileName + "' doesn't exist");
  else   return new JoglFileHandle(file,type);
 }

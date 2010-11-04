@@ -1,13 +1,13 @@
 {
-  File file=null;
-  InputStream in=null;
-  if (type == FileType.Absolute || type == FileType.Internal)   file=new File(fileName);
- else   file=new File(this.externalPath + fileName);
+  if (type == FileType.External)   fileName=this.externalPath + fileName;
+ else   if (type == FileType.Internal) {
+    InputStream input=LwjglFileHandle.class.getResourceAsStream("/" + fileName);
+    if (input != null)     return input;
+  }
   try {
-    in=new FileInputStream(file);
+    return new FileInputStream(fileName);
   }
- catch (  FileNotFoundException e) {
-    throw new GdxRuntimeException("File '" + file + "' does not exist");
+ catch (  FileNotFoundException ex) {
+    throw new GdxRuntimeException("Error reading file: " + fileName);
   }
-  return in;
 }

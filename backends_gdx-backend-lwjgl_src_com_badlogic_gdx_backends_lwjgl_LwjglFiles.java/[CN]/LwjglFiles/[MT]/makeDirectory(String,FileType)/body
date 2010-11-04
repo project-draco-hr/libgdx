@@ -1,6 +1,6 @@
 {
-  File file=null;
   if (type == FileType.Internal)   return false;
+  File file=null;
   if (type == FileType.Absolute)   file=new File(directory);
  else   file=new File(this.externalPath + directory);
   return file.mkdirs();
