@@ -1,6 +1,6 @@
 {
-  graphics.getCanvas().setPreferredSize(new Dimension(width,height));
   frame=new JFrame(title);
+  graphics.getCanvas().setPreferredSize(new Dimension(width,height));
   frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);
   frame.add(graphics.getCanvas(),BorderLayout.CENTER);
   frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
