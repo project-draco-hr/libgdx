@@ -2,7 +2,8 @@
   int NUM_SAMPLES=44100 * 2;
   float[] buffer=new float[NUM_SAMPLES];
   byte[] bytes=new byte[2 * NUM_SAMPLES];
-  while (true) {
+  run=true;
+  while (run) {
     int samplesToWrite=line.available() / 2;
     if (samplesToWrite > 0) {
       fillBuffer(buffer,bytes,samplesToWrite);
