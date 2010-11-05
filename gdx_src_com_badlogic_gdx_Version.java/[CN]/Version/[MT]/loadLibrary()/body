@@ -1,3 +1,11 @@
 {
-  System.loadLibrary("gdx");
+  String os=System.getProperty("os.name");
+  String arch=System.getProperty("os.arch");
+  if (!arch.equals("amd64") || os.contains("Mac")) {
+    System.loadLibrary("gdx");
+  }
+ else {
+    if (arch.contains("Windows"))     throw new UnsupportedOperationException("Libgdx applications only work with 32-bit VMs on Windows at the moment!");
+ else     System.loadLibrary("gdx-64");
+  }
 }
