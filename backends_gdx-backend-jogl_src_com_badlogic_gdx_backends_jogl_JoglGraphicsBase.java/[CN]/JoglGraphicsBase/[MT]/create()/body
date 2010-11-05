@@ -3,6 +3,6 @@
   lastFrameTime=frameStart;
   deltaTime=0;
   mean.clear();
-  animator=new Animator(canvas);
+  animator=new JoglAnimator(canvas);
   animator.start();
 }

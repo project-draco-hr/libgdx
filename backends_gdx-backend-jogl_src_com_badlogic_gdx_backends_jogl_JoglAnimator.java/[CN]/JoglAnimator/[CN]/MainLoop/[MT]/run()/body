@@ -1,0 +1,28 @@
+{
+  try {
+    while (!shouldStop) {
+      if (drawables.size() == 0) {
+synchronized (JoglAnimator.this) {
+          while (drawables.size() == 0 && !shouldStop) {
+            try {
+              JoglAnimator.this.wait();
+            }
+ catch (            InterruptedException e) {
+            }
+          }
+        }
+      }
+      display();
+      if (!runAsFastAsPossible) {
+        Thread.yield();
+      }
+    }
+  }
+  finally {
+    shouldStop=false;
+synchronized (JoglAnimator.this) {
+      thread=null;
+      JoglAnimator.this.notify();
+    }
+  }
+}

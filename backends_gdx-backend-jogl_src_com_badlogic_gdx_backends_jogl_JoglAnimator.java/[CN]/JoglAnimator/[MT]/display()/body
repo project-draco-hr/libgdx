@@ -1,0 +1,33 @@
+{
+  Iterator iter=drawableIterator();
+  while (iter.hasNext()) {
+    GLAutoDrawable drawable=(GLAutoDrawable)iter.next();
+    if (drawable instanceof JComponent) {
+      lightweights.add(drawable);
+    }
+ else {
+      try {
+        drawable.display();
+      }
+ catch (      RuntimeException e) {
+        if (ignoreExceptions) {
+          if (printExceptions) {
+            e.printStackTrace();
+          }
+        }
+ else {
+          throw (e);
+        }
+      }
+    }
+  }
+  if (lightweights.size() > 0) {
+    try {
+      SwingUtilities.invokeAndWait(drawWithRepaintManagerRunnable);
+    }
+ catch (    Exception e) {
+      e.printStackTrace();
+    }
+    lightweights.clear();
+  }
+}

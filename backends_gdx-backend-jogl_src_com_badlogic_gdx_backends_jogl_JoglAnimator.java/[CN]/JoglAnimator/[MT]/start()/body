@@ -1,0 +1,10 @@
+{
+  if (thread != null) {
+    throw new GLException("Already started");
+  }
+  if (runnable == null) {
+    runnable=new MainLoop();
+  }
+  thread=new Thread(runnable);
+  thread.start();
+}

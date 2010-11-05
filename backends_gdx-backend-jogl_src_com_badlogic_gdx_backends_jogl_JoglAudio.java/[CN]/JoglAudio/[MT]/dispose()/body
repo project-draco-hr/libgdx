@@ -1,0 +1,8 @@
+{
+  run=false;
+  try {
+    thread.join();
+  }
+ catch (  InterruptedException e) {
+  }
+}
