@@ -2,7 +2,6 @@
   if (nativesLoaded)   return;
   NativeLibLoader.disableLoading();
   com.sun.gluegen.runtime.NativeLibLoader.disableLoading();
-  System.loadLibrary("jawt");
   loadLibrary("gluegen-rt");
   loadLibrary("jogl_awt");
   loadLibrary("jogl");

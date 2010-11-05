@@ -1,4 +1,14 @@
 {
+  JoglNativesLoader.loadLibraries();
+  graphics=new JoglGraphics(listener,title,width,height,useGL20);
+  input=new JoglInput(graphics.getCanvas());
+  audio=new JoglAudio();
+  files=new JoglFiles();
+  Gdx.app=JoglApplication.this;
+  Gdx.graphics=JoglApplication.this.getGraphics();
+  Gdx.input=JoglApplication.this.getInput();
+  Gdx.audio=JoglApplication.this.getAudio();
+  Gdx.files=JoglApplication.this.getFiles();
   frame=new JFrame(title);
   graphics.getCanvas().setPreferredSize(new Dimension(width,height));
   frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);

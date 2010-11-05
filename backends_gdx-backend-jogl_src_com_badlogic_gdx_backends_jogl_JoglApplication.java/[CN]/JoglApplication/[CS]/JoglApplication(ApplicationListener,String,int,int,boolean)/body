@@ -1,23 +1,18 @@
 {
-  try {
-    SwingUtilities.invokeAndWait(new Runnable(){
-      public void run(){
-        JoglNativesLoader.loadLibraries();
-        graphics=new JoglGraphics(listener,title,width,height,useGL20IfAvailable);
-        input=new JoglInput(graphics.getCanvas());
-        audio=new JoglAudio();
-        files=new JoglFiles();
-        Gdx.app=JoglApplication.this;
-        Gdx.graphics=JoglApplication.this.getGraphics();
-        Gdx.input=JoglApplication.this.getInput();
-        Gdx.audio=JoglApplication.this.getAudio();
-        Gdx.files=JoglApplication.this.getFiles();
-        initialize(title,width,height);
+  if (!SwingUtilities.isEventDispatchThread()) {
+    try {
+      SwingUtilities.invokeAndWait(new Runnable(){
+        public void run(){
+          initialize(listener,title,width,height,useGL20IfAvailable);
+        }
       }
-    }
 );
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Creating window failed",e);
+    }
   }
- catch (  Exception e) {
-    throw new GdxRuntimeException("Creating window failed");
+ else {
+    initialize(listener,title,width,height,useGL20IfAvailable);
   }
 }
