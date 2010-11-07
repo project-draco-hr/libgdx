@@ -16,6 +16,8 @@
     for (Iterator iter=unicodeFont.getEffects().iterator(); iter.hasNext(); )     ((Effect)iter.next()).draw(scratchImage,scratchGraphics,unicodeFont,glyph);
     glyph.setShape(null);
   }
+  width=Math.min(width,texture.getWidth());
+  height=Math.min(height,texture.getHeight());
   WritableRaster raster=scratchImage.getRaster();
   int[] row=new int[width];
   for (int y=0; y < height; y++) {
