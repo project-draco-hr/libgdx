@@ -1,4 +1,5 @@
 {
+  System.out.println(glyph.getCodePoint());
   scratchGraphics.setComposite(AlphaComposite.Clear);
   scratchGraphics.fillRect(0,0,MAX_GLYPH_SIZE,MAX_GLYPH_SIZE);
   scratchGraphics.setComposite(AlphaComposite.SrcOver);

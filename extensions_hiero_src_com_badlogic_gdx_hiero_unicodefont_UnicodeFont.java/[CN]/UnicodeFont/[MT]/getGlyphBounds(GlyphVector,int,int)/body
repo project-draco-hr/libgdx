@@ -1,6 +1,9 @@
 {
   Rectangle bounds;
-  if (nativeRendering)   bounds=metrics.getStringBounds("" + (char)codePoint,GlyphPage.scratchGraphics).getBounds();
+  if (nativeRendering) {
+    if (codePoint == '\n')     bounds=new Rectangle();
+ else     bounds=metrics.getStringBounds("" + (char)codePoint,GlyphPage.scratchGraphics).getBounds();
+  }
  else   bounds=vector.getGlyphPixelBounds(index,GlyphPage.renderContext,0,0);
   if (codePoint == ' ')   bounds.width=spaceWidth;
   return bounds;
