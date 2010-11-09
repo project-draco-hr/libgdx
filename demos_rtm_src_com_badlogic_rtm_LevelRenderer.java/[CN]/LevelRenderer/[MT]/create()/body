@@ -7,4 +7,5 @@
   batch=new SpriteBatch();
   font=new BitmapFont();
   load();
+  Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
 }
