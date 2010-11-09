@@ -2,7 +2,7 @@
   this.isManaged=managed;
   try {
     BufferedImage image=ImageIO.read(in);
-    texture=com.sun.opengl.util.texture.TextureIO.newTexture(image,minFilter == TextureFilter.MipMap ? true : false);
+    texture=com.sun.opengl.util.texture.TextureIO.newTexture(image,TextureFilter.isMipMap(minFilter) ? true : false);
   }
  catch (  Exception ex) {
     throw new GdxRuntimeException("Couldn load Texture",ex);

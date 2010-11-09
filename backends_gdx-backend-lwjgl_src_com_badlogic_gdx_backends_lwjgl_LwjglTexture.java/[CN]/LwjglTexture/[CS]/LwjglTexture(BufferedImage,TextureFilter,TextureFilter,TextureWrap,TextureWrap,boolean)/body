@@ -1,6 +1,6 @@
 {
   this.isManaged=managed;
-  this.isMipMapped=minFilter == TextureFilter.MipMap;
+  this.isMipMapped=TextureFilter.isMipMap(minFilter);
   BufferedImage img=new BufferedImage(image.getWidth(),image.getHeight(),BufferedImage.TYPE_4BYTE_ABGR);
   loadMipMap(img);
   this.draw(Gdx.graphics.newPixmap(image),0,0);

@@ -1,6 +1,6 @@
 {
   this.isManaged=managed;
-  this.isMipMapped=minFilter == TextureFilter.MipMap;
+  this.isMipMapped=TextureFilter.isMipMap(minFilter);
   BufferedImage image=new BufferedImage(width,height,format);
   loadMipMap(image);
   bind();

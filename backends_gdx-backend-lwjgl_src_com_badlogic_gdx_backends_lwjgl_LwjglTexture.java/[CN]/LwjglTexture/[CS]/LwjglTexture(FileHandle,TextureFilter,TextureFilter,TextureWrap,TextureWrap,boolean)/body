@@ -1,6 +1,6 @@
 {
   this.isManaged=managed;
-  this.isMipMapped=minFilter == TextureFilter.MipMap;
+  this.isMipMapped=TextureFilter.isMipMap(minFilter);
   if (file.getPath().endsWith(".png"))   loadPNG(file);
  else {
     BufferedImage image=(BufferedImage)Gdx.graphics.newPixmap(file).getNativePixmap();

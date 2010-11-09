@@ -10,7 +10,7 @@
     this.texWidth=image.getWidth();
     this.texHeight=image.getHeight();
   }
-  if (minFilter == TextureFilter.MipMap)   isMipMap=true;
+  if (TextureFilter.isMipMap(minFilter))   isMipMap=true;
  else   isMipMap=false;
   createTexture();
   buildMipmap();

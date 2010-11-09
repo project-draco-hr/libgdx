@@ -1,5 +1,10 @@
 {
   if (filter == TextureFilter.Linear)   return GL11.GL_LINEAR;
  else   if (filter == TextureFilter.Nearest)   return GL11.GL_NEAREST;
+ else   if (filter == TextureFilter.MipMap)   return GL11.GL_LINEAR_MIPMAP_LINEAR;
+ else   if (filter == TextureFilter.MipMapNearestNearest)   return GL11.GL_NEAREST_MIPMAP_NEAREST;
+ else   if (filter == TextureFilter.MipMapNearestLinear)   return GL11.GL_NEAREST_MIPMAP_LINEAR;
+ else   if (filter == TextureFilter.MipMapLinearNearest)   return GL11.GL_LINEAR_MIPMAP_NEAREST;
+ else   if (filter == TextureFilter.MipMapLinearLinear)   return GL11.GL_LINEAR_MIPMAP_LINEAR;
  else   return GL11.GL_LINEAR_MIPMAP_LINEAR;
 }
