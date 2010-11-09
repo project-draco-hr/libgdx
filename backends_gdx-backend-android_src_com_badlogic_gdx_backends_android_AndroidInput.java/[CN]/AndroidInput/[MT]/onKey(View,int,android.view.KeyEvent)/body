@@ -23,7 +23,7 @@ event.keyChar=character;
 event.keyCode=0;
 event.type=KeyEvent.KEY_TYPED;
 keyEvents.add(event);
-keys.remove(event.keyCode);
+keys.remove(e.getKeyCode());
 }
 }
 if (catchBack && keyCode == android.view.KeyEvent.KEYCODE_BACK) return true;
