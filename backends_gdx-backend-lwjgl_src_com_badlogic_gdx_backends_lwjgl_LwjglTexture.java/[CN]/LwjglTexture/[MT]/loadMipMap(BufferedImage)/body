@@ -4,14 +4,12 @@
   int width=image.getWidth();
   texWidth=width;
   texHeight=height;
-  textureID=GL11.glGenTextures();
-  GL11.glBindTexture(GL11.GL_TEXTURE_2D,textureID);
+  textureID=glGenTextures();
+  glBindTexture(GL_TEXTURE_2D,textureID);
   while (height >= 1 || width >= 1 && level < 4) {
     ByteBuffer imageBuffer=toByteBuffer(image);
-    GL11.glTexImage2D(GL11.GL_TEXTURE_2D,level,GL11.GL_RGBA8,width,height,0,GL12.GL_BGRA,GL11.GL_UNSIGNED_BYTE,imageBuffer);
-    if (height == 1 || width == 1 || isMipMapped == false) {
-      break;
-    }
+    glTexImage2D(GL_TEXTURE_2D,level,GL_RGBA8,width,height,0,GL_BGRA,GL_UNSIGNED_BYTE,imageBuffer);
+    if (height == 1 || width == 1 || isMipMapped == false)     break;
     level++;
     if (height > 1)     height/=2;
     if (width > 1)     width/=2;

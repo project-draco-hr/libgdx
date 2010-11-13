@@ -3,15 +3,14 @@
   this.isManaged=managed;
   this.bitmap=image;
   this.minFilter=minFilter;
-  this.magFilter=maxFilter;
+  this.magFilter=magFilter;
   this.uWrap=uWrap;
   this.vWrap=vWrap;
+  isMipMap=TextureFilter.isMipMap(minFilter);
   if (image != null) {
     this.texWidth=image.getWidth();
     this.texHeight=image.getHeight();
   }
-  if (TextureFilter.isMipMap(minFilter))   isMipMap=true;
- else   isMipMap=false;
   createTexture();
   buildMipmap();
   Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,0);

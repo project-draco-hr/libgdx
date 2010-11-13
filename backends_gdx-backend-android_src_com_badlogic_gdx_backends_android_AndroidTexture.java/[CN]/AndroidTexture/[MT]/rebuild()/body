@@ -1,5 +1,6 @@
 {
   createTexture();
-  buildMipmap();
+  if (textureData != null)   textureData.load();
+ else   buildMipmap();
   invalidated=false;
 }

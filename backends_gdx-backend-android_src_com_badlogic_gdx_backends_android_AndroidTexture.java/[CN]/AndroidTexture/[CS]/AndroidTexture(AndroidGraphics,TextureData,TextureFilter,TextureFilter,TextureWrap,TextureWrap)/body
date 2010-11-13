@@ -1,0 +1,13 @@
+{
+  this.minFilter=minFilter;
+  this.magFilter=magFilter;
+  this.uWrap=uWrap;
+  this.vWrap=vWrap;
+  isMipMap=TextureFilter.isMipMap(minFilter);
+  createTexture();
+  textureData.load();
+  texWidth=textureData.getWidth();
+  texHeight=textureData.getHeight();
+  isManaged=true;
+  textures.add(this);
+}

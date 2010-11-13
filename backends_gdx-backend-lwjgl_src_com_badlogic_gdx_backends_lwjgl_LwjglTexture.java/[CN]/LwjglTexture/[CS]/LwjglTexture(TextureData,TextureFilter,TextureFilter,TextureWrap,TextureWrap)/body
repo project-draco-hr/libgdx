@@ -1,13 +1,14 @@
 {
-  this.isManaged=managed;
+  isManaged=false;
   this.isMipMapped=TextureFilter.isMipMap(minFilter);
-  BufferedImage img=new BufferedImage(image.getWidth(),image.getHeight(),BufferedImage.TYPE_4BYTE_ABGR);
-  loadMipMap(img);
-  this.draw(Gdx.graphics.newPixmap(image),0,0);
+  textureID=glGenTextures();
   bind();
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));
-  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,getTextureFilter(maxFilter));
+  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,getTextureFilter(magFilter));
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,getTextureWrap(uWrap));
   glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,getTextureWrap(vWrap));
+  textureData.load();
+  texWidth=textureData.getWidth();
+  texHeight=textureData.getHeight();
   textures++;
 }

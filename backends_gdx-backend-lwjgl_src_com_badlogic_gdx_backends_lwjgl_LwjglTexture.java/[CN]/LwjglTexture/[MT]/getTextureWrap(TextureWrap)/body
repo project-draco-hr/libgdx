@@ -1,4 +1,4 @@
 {
-  if (wrap == TextureWrap.ClampToEdge)   return GL11.GL_CLAMP;
- else   return GL11.GL_REPEAT;
+  if (wrap == TextureWrap.ClampToEdge)   return GL_CLAMP;
+ else   return GL_REPEAT;
 }
