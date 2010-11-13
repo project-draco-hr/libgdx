@@ -1,7 +1,7 @@
 {
   LwjglNativesLoader.load();
   canvas=new Canvas(){
-    private final Dimension minSize=new Dimension();
+    private final Dimension minSize=new Dimension(0,0);
     public final void addNotify(){
       super.addNotify();
       EventQueue.invokeLater(new Runnable(){
