@@ -1,5 +1,3 @@
 {
-synchronized (this) {
-    if (state == State.Playing)     state=State.Paused;
-  }
+  state.compareAndSet(Playing,Paused);
 }

@@ -1,6 +1,6 @@
 {
   String[] libNames=null;
-  if (is64Bit)   libNames=new String[]{"OpenAL64.dll","lwjgl64.dll","jinput-raw_64.dll","jinput-dx8_64.dll"};
- else   libNames=new String[]{"OpenAL32.dll","lwjgl.dll","jinput-raw.dll","jinput-dx8.dll"};
-  for (  String libName : libNames)   loadLibrary(libName,"/native/windows/");
+  if (is64Bit)   libNames=new String[]{"OpenAL64.dll","lwjgl64.dll"};
+ else   libNames=new String[]{"OpenAL32.dll","lwjgl.dll"};
+  for (  String libName : libNames)   loadLibrary(libName,"/native/windows/",System.getProperty("java.io.tmpdir") + File.separator);
 }

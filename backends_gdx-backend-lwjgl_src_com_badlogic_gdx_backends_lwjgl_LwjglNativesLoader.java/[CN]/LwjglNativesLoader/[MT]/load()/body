@@ -8,5 +8,5 @@
   if (os.contains("Windows"))   loadLibrariesWindows(is64Bit);
   if (os.contains("Linux"))   loadLibrariesLinux(is64Bit);
   if (os.contains("Mac"))   loadLibrariesMac();
-  System.setProperty("org.lwjgl.librarypath",new File("").getAbsolutePath());
+  System.setProperty("org.lwjgl.librarypath",new File(System.getProperty("java.io.tmpdir")).getAbsolutePath());
 }
