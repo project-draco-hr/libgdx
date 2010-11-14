@@ -1,0 +1,23 @@
+{
+  VertexAttribute[] attributes={new VertexAttribute(Usage.Position,3,"a_pos")};
+  vbo=new VertexBufferObject(false,TRIANGLES * 3,attributes);
+  vbosd=new VertexBufferObjectSubData(false,TRIANGLES * 3,attributes);
+  va=new VertexArray(TRIANGLES * 3,attributes);
+  vertices=new float[TRIANGLES * 3 * 3];
+  int len=vertices.length;
+  float col=Color.WHITE.toFloatBits();
+  for (int i=0; i < len; i+=9) {
+    float x=(float)Math.random() * 2 - 1f;
+    float y=(float)Math.random() * 2 - 1f;
+    vertices[i + 0]=-.01f + x;
+    vertices[i + 1]=-.01f + y;
+    vertices[i + 2]=0;
+    vertices[i + 3]=.01f + x;
+    vertices[i + 4]=-.01f + y;
+    vertices[i + 5]=0;
+    vertices[i + 6]=0f + x;
+    vertices[i + 7]=.01f + y;
+    vertices[i + 8]=0;
+  }
+  startTime=System.nanoTime();
+}
