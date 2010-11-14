@@ -1,0 +1,8 @@
+{
+  byteBuffer=ByteBuffer.allocateDirect(maxIndices * 2);
+  byteBuffer.order(ByteOrder.nativeOrder());
+  this.isDirect=true;
+  usage=GL11.GL_STATIC_DRAW;
+  buffer=byteBuffer.asShortBuffer();
+  bufferHandle=createBufferObject();
+}
