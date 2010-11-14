@@ -1,4 +1,5 @@
 {
+  if (new File(outputPath + libName).exists())   return;
   InputStream in=null;
   BufferedOutputStream out=null;
   try {
