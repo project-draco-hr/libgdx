@@ -2,8 +2,12 @@
   VertexAttribute[] attributes={new VertexAttribute(Usage.Position,3,"a_pos")};
   vbo=new VertexBufferObject(false,TRIANGLES * 3,attributes);
   vbosd=new VertexBufferObjectSubData(false,TRIANGLES * 3,attributes);
+  ibo=new IndexBufferObject(false,TRIANGLES * 3);
+  ibosd=new IndexBufferObjectSubData(false,TRIANGLES * 3);
+  vaibo=new IndexBufferObject(false,TRIANGLES * 3);
   va=new VertexArray(TRIANGLES * 3,attributes);
   vertices=new float[TRIANGLES * 3 * 3];
+  indices=new short[TRIANGLES * 3];
   int len=vertices.length;
   float col=Color.WHITE.toFloatBits();
   for (int i=0; i < len; i+=9) {
@@ -18,6 +22,10 @@
     vertices[i + 6]=0f + x;
     vertices[i + 7]=.01f + y;
     vertices[i + 8]=0;
+  }
+  len=indices.length;
+  for (int i=0; i < len; i++) {
+    indices[i]=(short)i;
   }
   startTime=System.nanoTime();
 }
