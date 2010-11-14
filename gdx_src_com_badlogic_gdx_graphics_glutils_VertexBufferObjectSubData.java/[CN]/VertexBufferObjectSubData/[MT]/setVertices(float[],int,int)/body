@@ -1,0 +1,26 @@
+{
+  isDirty=true;
+  if (isDirect) {
+    BufferUtils.copy(vertices,byteBuffer,count,offset);
+    buffer.position(0);
+    buffer.limit(count);
+  }
+ else {
+    buffer.clear();
+    buffer.put(vertices,offset,count);
+    buffer.flip();
+    byteBuffer.position(0);
+    byteBuffer.limit(buffer.limit() << 2);
+  }
+  if (isBound) {
+    if (Gdx.gl20 != null) {
+      GL20 gl=Gdx.gl20;
+      gl.glBufferSubData(GL20.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
+    }
+ else {
+      GL11 gl=Gdx.gl11;
+      gl.glBufferSubData(GL11.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
+    }
+    isDirty=false;
+  }
+}
