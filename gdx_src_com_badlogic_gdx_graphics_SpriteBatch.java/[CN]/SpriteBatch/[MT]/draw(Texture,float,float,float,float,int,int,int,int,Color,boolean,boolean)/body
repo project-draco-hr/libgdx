@@ -6,6 +6,7 @@
     invTexWidth=1.0f / texture.getWidth();
     invTexHeight=1.0f / texture.getHeight();
   }
+ else   if (idx == vertices.length)   renderMesh();
   float u=srcX * invTexWidth;
   float v=(srcY + srcHeight) * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;
@@ -43,5 +44,4 @@
   vertices[idx++]=color;
   vertices[idx++]=u2;
   vertices[idx++]=v;
-  if (idx == vertices.length)   renderMesh();
 }

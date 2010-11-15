@@ -1,0 +1,4 @@
+{
+  renderMethod=(renderMethod + 1) % 2;
+  return false;
+}

@@ -1,0 +1,5 @@
+{
+  Cache cache=new Cache(offset,textures.toArray(new Texture[textures.size()]),new int[counts.size()]);
+  for (int i=0, n=counts.size(); i < n; i++)   cache.counts[i]=counts.get(i);
+  return cache;
+}

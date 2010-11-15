@@ -1,0 +1,24 @@
+{
+  if (!drawing)   throw new IllegalStateException("SpriteCache.begin must be called before draw.");
+  int offset=cache.offset;
+  Texture[] textures=cache.textures;
+  int[] counts=cache.counts;
+  if (Gdx.graphics.isGL20Available()) {
+    for (int i=0, n=textures.length; i < n; i++) {
+      Texture texture=textures[i];
+      int count=counts[i];
+      texture.bind();
+      mesh.render(shader,GL10.GL_TRIANGLES,offset,count);
+      offset+=count;
+    }
+  }
+ else {
+    for (int i=0, n=textures.length; i < n; i++) {
+      Texture texture=textures[i];
+      int count=counts[i];
+      texture.bind();
+      mesh.render(GL10.GL_TRIANGLES,offset,count);
+      offset+=count;
+    }
+  }
+}

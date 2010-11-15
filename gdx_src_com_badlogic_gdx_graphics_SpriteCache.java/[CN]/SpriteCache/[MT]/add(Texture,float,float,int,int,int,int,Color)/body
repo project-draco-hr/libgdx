@@ -1,0 +1,32 @@
+{
+  float invTexWidth=1.0f / texture.getWidth();
+  float invTexHeight=1.0f / texture.getHeight();
+  final float u=srcX * invTexWidth;
+  final float v=(srcY + srcHeight) * invTexHeight;
+  final float u2=(srcX + srcWidth) * invTexWidth;
+  final float v2=srcY * invTexHeight;
+  final float fx2=x + srcWidth;
+  final float fy2=y + srcHeight;
+  final float color=tint.toFloatBits();
+  tempVertices[0]=x;
+  tempVertices[1]=y;
+  tempVertices[2]=color;
+  tempVertices[3]=u;
+  tempVertices[4]=v;
+  tempVertices[5]=x;
+  tempVertices[6]=fy2;
+  tempVertices[7]=color;
+  tempVertices[8]=u;
+  tempVertices[9]=v2;
+  tempVertices[10]=fx2;
+  tempVertices[11]=fy2;
+  tempVertices[12]=color;
+  tempVertices[13]=u2;
+  tempVertices[14]=v2;
+  tempVertices[15]=fx2;
+  tempVertices[16]=y;
+  tempVertices[17]=color;
+  tempVertices[18]=u2;
+  tempVertices[19]=v;
+  add(texture,tempVertices,0,20);
+}
