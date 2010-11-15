@@ -11,11 +11,6 @@ synchronized (synch) {
       app.listener.pause();
       pause=false;
     }
-    if (resume) {
-      app.listener.resume();
-      resume=false;
-      running=true;
-    }
     if (destroy) {
       app.listener.dispose();
       destroy=false;

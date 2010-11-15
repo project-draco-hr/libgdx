@@ -18,4 +18,9 @@ synchronized (this) {
       running=true;
     }
   }
+ else {
+    app.listener.resume();
+    running=false;
+    resume=true;
+  }
 }
