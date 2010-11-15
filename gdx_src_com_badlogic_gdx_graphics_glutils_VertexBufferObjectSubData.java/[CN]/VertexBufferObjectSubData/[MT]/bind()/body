@@ -2,6 +2,7 @@
   GL11 gl=Gdx.gl11;
   gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,bufferHandle);
   if (isDirty) {
+    byteBuffer.limit(buffer.limit() * 4);
     gl.glBufferSubData(GL11.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
     isDirty=false;
   }

@@ -2,6 +2,7 @@
   GL10 gl=Gdx.gl10;
   int textureUnit=0;
   int numAttributes=attributes.size();
+  byteBuffer.limit(buffer.limit() * 4);
   for (int i=0; i < numAttributes; i++) {
     VertexAttribute attribute=attributes.get(i);
 switch (attribute.usage) {

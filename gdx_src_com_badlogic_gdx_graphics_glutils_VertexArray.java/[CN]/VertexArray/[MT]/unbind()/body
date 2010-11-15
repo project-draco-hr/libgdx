@@ -23,5 +23,6 @@ default :
 throw new GdxRuntimeException("unkown vertex attribute type: " + attribute.usage);
 }
 }
+byteBuffer.position(0);
 isBound=false;
 }
