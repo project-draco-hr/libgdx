@@ -2,5 +2,6 @@
   if (builder == null)   throw new IllegalStateException("beginCache mustbe called before endCache.");
   Cache cache=builder.finish();
   builder=null;
+  mesh.getVerticesBuffer().flip();
   return cache;
 }

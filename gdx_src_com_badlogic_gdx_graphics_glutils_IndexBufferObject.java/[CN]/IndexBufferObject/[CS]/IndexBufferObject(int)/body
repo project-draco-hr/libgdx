@@ -3,6 +3,8 @@
   byteBuffer.order(ByteOrder.nativeOrder());
   this.isDirect=true;
   buffer=byteBuffer.asShortBuffer();
+  buffer.flip();
+  byteBuffer.flip();
   bufferHandle=createBufferObject();
   usage=GL11.GL_STATIC_DRAW;
 }

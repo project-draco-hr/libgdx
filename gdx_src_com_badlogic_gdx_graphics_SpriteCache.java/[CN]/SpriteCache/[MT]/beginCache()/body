@@ -1,4 +1,5 @@
 {
   if (builder != null)   throw new IllegalStateException("endCache must be called before begin.");
-  builder=new CacheBuidler(mesh.getNumVertices() / 6);
+  builder=new CacheBuidler(mesh.getNumVertices() / 2 * 6);
+  mesh.getVerticesBuffer().compact();
 }

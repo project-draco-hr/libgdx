@@ -4,5 +4,7 @@
   this.isDirect=true;
   usage=GL11.GL_STATIC_DRAW;
   buffer=byteBuffer.asShortBuffer();
+  buffer.flip();
+  byteBuffer.flip();
   bufferHandle=createBufferObject();
 }
