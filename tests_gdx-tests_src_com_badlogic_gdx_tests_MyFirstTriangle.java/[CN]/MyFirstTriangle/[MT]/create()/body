@@ -1,0 +1,7 @@
+{
+  if (mesh == null) {
+    mesh=new Mesh(true,3,3,new VertexAttribute(Usage.Position,3,"a_position"));
+    mesh.setVertices(new float[]{-0.5f,-0.5f,0,0.5f,-0.5f,0,0,0.5f,0});
+    mesh.setIndices(new short[]{0,1,2});
+  }
+}
