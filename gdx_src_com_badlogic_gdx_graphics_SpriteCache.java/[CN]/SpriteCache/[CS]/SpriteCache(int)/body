@@ -1,5 +1,6 @@
 {
-  this.mesh=new Mesh(true,size * 4,size * 6,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  mesh=new Mesh(true,size * 4,size * 6,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  mesh.setAutoBind(false);
   short[] indices=new short[size * 6];
   int len=size * 6;
   short j=0;
