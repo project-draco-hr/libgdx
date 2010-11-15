@@ -12,5 +12,4 @@
     int activeCount=emitters.get(emitterIndex).getActiveCount();
     System.out.println(activeCount + "/" + particleCount+ " particles, FPS: "+ Gdx.graphics.getFramesPerSecond());
   }
-  Gdx.input.processEvents(inputProcessor);
 }

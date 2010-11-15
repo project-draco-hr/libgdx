@@ -29,5 +29,4 @@
     lastOut=System.nanoTime();
     if (Gdx.graphics.getFramesPerSecond() < 60)     numFills--;
   }
-  Gdx.input.processEvents(this);
 }

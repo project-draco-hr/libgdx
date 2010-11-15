@@ -40,6 +40,7 @@
   spriteBatch.end();
   end=(System.nanoTime() - start) / 1000000000.0f;
   if (System.nanoTime() - startTime > 1000000000) {
+    Gdx.app.log("SpriteBatch","fps: " + frames + ", render calls: "+ spriteBatch.renderCalls+ ", "+ begin+ ", "+ draw1+ ", "+ draw2+ ", "+ drawText+ ", "+ end);
     frames=0;
     startTime=System.nanoTime();
   }

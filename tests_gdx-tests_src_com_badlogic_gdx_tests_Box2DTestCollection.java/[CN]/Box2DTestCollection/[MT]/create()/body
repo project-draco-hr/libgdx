@@ -4,4 +4,5 @@
     Box2DTest test=tests[testIndex];
     test.create();
   }
+  Gdx.input.setInputProcessor(this);
 }

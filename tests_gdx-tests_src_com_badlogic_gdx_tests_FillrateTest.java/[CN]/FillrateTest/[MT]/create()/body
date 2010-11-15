@@ -22,4 +22,5 @@
   short[] indices={0,1,2,2,3,0};
   mesh.setVertices(vertices);
   mesh.setIndices(indices);
+  Gdx.input.setInputProcessor(this);
 }

@@ -16,6 +16,7 @@
     }
   }
 ;
+  Gdx.input.setInputProcessor(inputProcessor);
   cache1=new BitmapFontCache(font);
   cache2=new BitmapFontCache(font);
   cache3=new BitmapFontCache(font);

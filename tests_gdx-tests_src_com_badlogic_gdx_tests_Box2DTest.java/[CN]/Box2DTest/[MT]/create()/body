@@ -6,4 +6,5 @@
   batch=new SpriteBatch();
   font=new BitmapFont();
   createPhysicsWorld();
+  Gdx.input.setInputProcessor(this);
 }

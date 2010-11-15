@@ -5,6 +5,7 @@
   mean.addValue(deltaTime);
 synchronized (synch) {
     if (running) {
+      ((AndroidInput)Gdx.input).processEvents();
       app.listener.render();
     }
     if (pause) {
@@ -21,7 +22,6 @@ synchronized (synch) {
       destroy=false;
     }
   }
-  Gdx.input.processEvents(null);
   if (time - frameStart > 1000000000) {
     fps=frames;
     frames=0;

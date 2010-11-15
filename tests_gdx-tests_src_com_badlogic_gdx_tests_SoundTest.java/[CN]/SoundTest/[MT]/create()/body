@@ -3,4 +3,5 @@
   music=Gdx.audio.newMusic(Gdx.files.getFileHandle("data/cloudconnected.ogg",FileType.Internal));
   music.play();
   music.setLooping(true);
+  Gdx.input.setInputProcessor(this);
 }

@@ -2,8 +2,8 @@
 synchronized (this) {
     if (!paused) {
       updateTimes();
+      ((JoglInput)Gdx.input).processEvents();
       listener.render();
     }
   }
-  Gdx.input.processEvents(null);
 }

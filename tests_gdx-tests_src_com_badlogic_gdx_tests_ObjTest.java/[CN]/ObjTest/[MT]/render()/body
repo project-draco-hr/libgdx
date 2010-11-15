@@ -14,5 +14,4 @@
   gl.glRotatef(angleX,1,0,0);
   texture.bind();
   mesh.render(GL10.GL_TRIANGLES);
-  Gdx.input.processEvents(this);
 }

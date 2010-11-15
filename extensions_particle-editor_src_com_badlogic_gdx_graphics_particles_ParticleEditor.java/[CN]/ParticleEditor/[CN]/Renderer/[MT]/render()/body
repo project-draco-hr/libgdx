@@ -34,5 +34,4 @@
   font.draw(spriteBatch,"Max: " + lastMaxActive,10,50,Color.WHITE);
   font.draw(spriteBatch,(int)(getEmitter().getPercentComplete() * 100) + "%",10,70,Color.WHITE);
   spriteBatch.end();
-  Gdx.input.processEvents(this);
 }

@@ -7,4 +7,5 @@
   twl=new TWL("data/widgets.xml",FileType.Internal,layout);
   input.addProcessor(twl);
   input.addProcessor(this);
+  Gdx.input.setInputProcessor(input);
 }

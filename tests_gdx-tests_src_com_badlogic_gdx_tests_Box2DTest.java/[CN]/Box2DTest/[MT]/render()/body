@@ -29,5 +29,4 @@
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + " update time: "+ updateTime,0,20,Color.RED);
   batch.end();
-  Gdx.input.processEvents(this);
 }

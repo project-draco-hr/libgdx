@@ -1,4 +1,6 @@
 {
   Gdx.app.log("Input Test","touch dragged: " + x + ", "+ y);
+  long startTime=System.nanoTime();
+  while (System.nanoTime() - startTime < 1000000000 / 30)   ;
   return false;
 }

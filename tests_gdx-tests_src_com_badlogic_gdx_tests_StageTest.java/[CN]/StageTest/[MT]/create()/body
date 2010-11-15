@@ -26,4 +26,5 @@
   ui.addActor(scale);
   Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
   renderer=new ImmediateModeRenderer();
+  Gdx.input.setInputProcessor(this);
 }

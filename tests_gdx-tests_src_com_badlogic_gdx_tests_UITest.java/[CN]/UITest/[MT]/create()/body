@@ -47,4 +47,5 @@
   linearh.addActor(new Button("rotateh",atlas.getRegion("rotate"),atlas.getRegion("rotateDown")));
   linearh.action(MoveTo.$(100,10,1.5f));
   ui.addActor(linearh);
+  Gdx.input.setInputProcessor(this);
 }

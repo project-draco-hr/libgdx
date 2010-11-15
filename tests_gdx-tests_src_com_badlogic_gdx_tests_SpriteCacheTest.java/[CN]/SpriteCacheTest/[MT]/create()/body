@@ -53,4 +53,5 @@
     spriteCache.add(sprites3[i]);
   }
   spritesCache=spriteCache.endCache();
+  Gdx.input.setInputProcessor(this);
 }

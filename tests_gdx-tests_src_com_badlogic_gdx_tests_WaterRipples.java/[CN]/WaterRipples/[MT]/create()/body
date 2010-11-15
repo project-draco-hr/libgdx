@@ -15,4 +15,5 @@
   updateVertices(curr);
   initialized=true;
   batch=new SpriteBatch();
+  Gdx.input.setInputProcessor(this);
 }

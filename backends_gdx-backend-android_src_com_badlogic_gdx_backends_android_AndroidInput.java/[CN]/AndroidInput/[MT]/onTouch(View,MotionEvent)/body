@@ -4,9 +4,7 @@
     view.requestFocusFromTouch();
     requestFocus=false;
   }
-synchronized (this) {
-    touchHandler.onTouch(event,this);
-  }
+  touchHandler.onTouch(event,this);
   if (sleepTime != 0)   try {
     Thread.sleep(sleepTime);
   }

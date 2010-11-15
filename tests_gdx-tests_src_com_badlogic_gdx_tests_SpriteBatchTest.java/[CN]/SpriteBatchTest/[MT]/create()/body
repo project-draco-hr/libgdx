@@ -31,4 +31,5 @@
     sprites3[i].setPosition(x,y);
     sprites3[i].setOrigin(16,16);
   }
+  Gdx.input.setInputProcessor(this);
 }
