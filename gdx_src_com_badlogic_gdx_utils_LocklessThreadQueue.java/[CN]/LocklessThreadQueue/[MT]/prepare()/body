@@ -1,0 +1,6 @@
+{
+  int currHead=head.get();
+  int nextHead=(currHead + 1) % queueSize;
+  if (nextHead == tail.get())   return null;
+  return queueBuffer.get(currHead);
+}
