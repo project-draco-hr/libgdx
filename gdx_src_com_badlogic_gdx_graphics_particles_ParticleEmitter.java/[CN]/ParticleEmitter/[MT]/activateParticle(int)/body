@@ -115,5 +115,7 @@ y+=lineX * (height / (float)width);
 break;
 }
 }
-particle.setBounds(x - texture.getWidth() / 2,y - texture.getHeight() / 2,texture.getWidth(),texture.getHeight());
+int texWidth=texture.getWidth();
+int texHeight=texture.getHeight();
+particle.setBounds(x - texWidth / 2,y - texHeight / 2,texWidth,texHeight);
 }
