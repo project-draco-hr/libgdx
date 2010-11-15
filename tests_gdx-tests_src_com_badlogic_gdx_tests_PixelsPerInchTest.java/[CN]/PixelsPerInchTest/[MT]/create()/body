@@ -1,0 +1,5 @@
+{
+  font=new BitmapFont();
+  batch=new SpriteBatch();
+  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/ui.png",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+}

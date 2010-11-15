@@ -1,5 +1,6 @@
 {
   this.width=width;
   this.height=height;
+  updatePpi();
   app.listener.resize(width,height);
 }
