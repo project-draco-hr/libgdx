@@ -1,6 +1,11 @@
 {
   try {
-    return manager.open(filename);
+    if (manager != null) {
+      return manager.open(filename);
+    }
+ else {
+      return new FileInputStream(filename);
+    }
   }
  catch (  IOException ex) {
     throw new GdxRuntimeException("Error reading file: " + filename);
