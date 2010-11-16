@@ -1,0 +1,17 @@
+{
+  mesh=new Mesh(true,size * 4,size * 6,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  mesh.setAutoBind(false);
+  int length=size * 6;
+  short[] indices=new short[length];
+  short j=0;
+  for (int i=0; i < length; i+=6, j+=4) {
+    indices[i + 0]=(short)(j + 0);
+    indices[i + 1]=(short)(j + 1);
+    indices[i + 2]=(short)(j + 2);
+    indices[i + 3]=(short)(j + 2);
+    indices[i + 4]=(short)(j + 3);
+    indices[i + 5]=(short)(j + 0);
+  }
+  mesh.setIndices(indices);
+  projectionMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+}

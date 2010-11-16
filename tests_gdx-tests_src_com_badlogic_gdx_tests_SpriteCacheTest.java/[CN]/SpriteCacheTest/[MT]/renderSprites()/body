@@ -11,7 +11,7 @@
   spriteCache.begin();
   begin=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
-  spriteCache.draw(spritesCache);
+  spriteCache.draw(spriteCacheID);
   draw1=(System.nanoTime() - start) / 1000000000.0f;
   start=System.nanoTime();
   spriteCache.end();

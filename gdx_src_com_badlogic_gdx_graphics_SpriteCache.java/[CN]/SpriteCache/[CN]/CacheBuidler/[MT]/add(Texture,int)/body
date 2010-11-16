@@ -1,9 +1,0 @@
-{
-  count*=6;
-  int lastIndex=textures.size() - 1;
-  if (lastIndex < 0 || textures.get(lastIndex) != texture) {
-    textures.add(texture);
-    counts.add(count);
-  }
- else   counts.set(lastIndex,counts.get(lastIndex) + count);
-}

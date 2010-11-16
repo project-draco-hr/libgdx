@@ -1,5 +1,11 @@
 {
-  if (builder == null)   throw new IllegalStateException("beginCache mustbe called before add.");
-  builder.add(texture,vertices.length / Sprite.SPRITE_SIZE);
+  if (!caching)   throw new IllegalStateException("beginCache must be called before add.");
+  int count=vertices.length / Sprite.SPRITE_SIZE * 6;
+  int lastIndex=textures.size() - 1;
+  if (lastIndex < 0 || textures.get(lastIndex) != texture) {
+    textures.add(texture);
+    counts.add(count);
+  }
+ else   counts.set(lastIndex,counts.get(lastIndex) + count);
   mesh.getVerticesBuffer().put(vertices);
 }

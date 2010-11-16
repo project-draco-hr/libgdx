@@ -1,7 +1,11 @@
 {
-  if (builder == null)   throw new IllegalStateException("beginCache mustbe called before endCache.");
-  Cache cache=builder.finish();
-  builder=null;
+  if (!caching)   throw new IllegalStateException("beginCache must be called before endCache.");
+  caching=false;
+  Cache cache=new Cache(offset,textures.toArray(new Texture[textures.size()]),new int[counts.size()]);
+  for (int i=0, n=counts.size(); i < n; i++)   cache.counts[i]=counts.get(i);
+  caches.add(cache);
   mesh.getVerticesBuffer().flip();
-  return cache;
+  textures.clear();
+  counts.clear();
+  return caches.size() - 1;
 }

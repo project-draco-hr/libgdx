@@ -1,5 +1,6 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteCache.begin must be called before draw.");
+  Cache cache=caches.get(cacheID);
   int offset=cache.offset;
   Texture[] textures=cache.textures;
   int[] counts=cache.counts;
