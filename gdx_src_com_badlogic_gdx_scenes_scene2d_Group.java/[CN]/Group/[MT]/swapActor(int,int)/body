@@ -1,0 +1,7 @@
+{
+  int maxIndex=children.size();
+  if (first < 0 || first >= maxIndex)   return false;
+  if (second < 0 || second >= maxIndex)   return false;
+  Collections.swap(children,first,second);
+  return true;
+}
