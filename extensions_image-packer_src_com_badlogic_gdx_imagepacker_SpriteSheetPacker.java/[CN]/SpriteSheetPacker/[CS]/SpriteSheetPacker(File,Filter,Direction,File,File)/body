@@ -1,0 +1,38 @@
+{
+  this.inputDir=inputDir;
+  this.filter=filter;
+  this.direction=direction;
+  ArrayList<File> files=getFiles(inputDir,filter,direction);
+  if (files == null)   return;
+  for (  File file : files) {
+    if (file.isDirectory())     continue;
+    Image image=squeeze(file);
+    if (image != null)     images.add(image);
+  }
+  if (images.isEmpty())   return;
+  System.out.println(inputDir);
+  if (filter != rgba8888)   System.out.println("Format: " + filter.name);
+  if (direction != null)   System.out.println("Direction: " + direction);
+  for (  Image image : images)   System.out.println("Packing... " + image.file.getName());
+  Collections.sort(images,new Comparator<Image>(){
+    public int compare(    Image image1,    Image image2){
+      return image1.getWidth() * image1.getHeight() - image2.getWidth() * image2.getHeight();
+    }
+  }
+);
+  xPadding=images.size() > 1 && direction != Direction.x && direction != Direction.xy ? padding : 0;
+  yPadding=images.size() > 1 && direction != Direction.y && direction != Direction.xy ? padding : 0;
+  outputDir.mkdirs();
+  String prefix=inputDir.getParentFile().getName();
+  writer=new FileWriter(packFile,true);
+  try {
+    while (!images.isEmpty())     writePage(prefix,outputDir);
+    if (writer != null) {
+      System.out.println("Pixels eliminated: " + (1 - compressedSize / (float)uncompressedSize) * 100 + "%");
+      System.out.println();
+    }
+  }
+  finally {
+    writer.close();
+  }
+}

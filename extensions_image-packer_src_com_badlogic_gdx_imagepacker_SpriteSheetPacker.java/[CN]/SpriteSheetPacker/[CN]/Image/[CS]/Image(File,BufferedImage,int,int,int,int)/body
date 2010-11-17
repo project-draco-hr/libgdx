@@ -1,0 +1,8 @@
+{
+  super(src.getColorModel(),src.getRaster().createWritableChild(left,top,newWidth,newHeight,0,0,null),src.getColorModel().isAlphaPremultiplied(),null);
+  this.file=file;
+  offsetX=left;
+  offsetY=top;
+  originalWidth=src.getWidth();
+  originalHeight=src.getHeight();
+}

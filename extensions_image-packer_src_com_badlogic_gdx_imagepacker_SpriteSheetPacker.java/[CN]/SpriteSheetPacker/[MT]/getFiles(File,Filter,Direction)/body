@@ -1,0 +1,23 @@
+{
+  ArrayList<File> files=new ArrayList();
+  files.addAll(Arrays.asList(inputDir.listFiles(filter)));
+  for (Iterator<File> iter=files.iterator(); iter.hasNext(); ) {
+    File file=iter.next();
+    String name=file.getName();
+switch (direction) {
+case none:
+      if (name.contains("_x") || name.contains("_y"))       iter.remove();
+    break;
+case x:
+  if (!name.contains("_x") || name.contains("_xy"))   iter.remove();
+break;
+case y:
+if (!name.contains("_y")) iter.remove();
+break;
+case xy:
+if (!name.contains("_xy")) iter.remove();
+break;
+}
+}
+return files;
+}

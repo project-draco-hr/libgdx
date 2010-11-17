@@ -1,0 +1,96 @@
+{
+  int imageNumber=1;
+  File outputFile=new File(outputDir,prefix + imageNumber + ".png");
+  while (outputFile.exists())   outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
+  writer.write("\n" + prefix + imageNumber+ ".png\n");
+  writer.write(direction + "\n");
+  Comparator bestComparator=null;
+  Comparator secondBestComparator=imageComparators.get(0);
+  int maxWidth=1024, maxHeight=1024;
+  int bestWidth=99999, bestHeight=99999;
+  int secondBestWidth=99999, secondBestHeight=99999;
+  int bestUsedPixels=0;
+  int width=64, height=64;
+  int grownPixels=0, grownPixels2=0;
+  int i=0, ii=0;
+  while (true) {
+    if (width > maxWidth && height > maxHeight)     break;
+    for (    Comparator comparator : imageComparators) {
+      Collections.sort(images,comparator);
+      int usedPixels=insert(null,new ArrayList(images),width,height);
+      if (usedPixels > bestUsedPixels) {
+        secondBestComparator=comparator;
+        secondBestWidth=width;
+        secondBestHeight=height;
+      }
+      if (usedPixels == -1) {
+        if (width * height < bestWidth * bestHeight) {
+          bestComparator=comparator;
+          bestWidth=width;
+          bestHeight=height;
+        }
+      }
+    }
+    if (bestComparator != null)     break;
+    if (pot) {
+      if (i % 3 == 0) {
+        width*=2;
+        i++;
+      }
+ else       if (i % 3 == 1) {
+        width/=2;
+        height*=2;
+        i++;
+      }
+ else {
+        width*=2;
+        i++;
+      }
+    }
+ else {
+      if (i % 3 == 0) {
+        width++;
+        grownPixels++;
+        if (width == MathUtils.nextPowerOfTwo(width)) {
+          width-=grownPixels;
+          grownPixels=0;
+          i++;
+        }
+      }
+ else       if (i % 3 == 1) {
+        height++;
+        grownPixels++;
+        if (height == MathUtils.nextPowerOfTwo(height)) {
+          height-=grownPixels;
+          grownPixels=0;
+          i++;
+        }
+      }
+ else {
+        if (width == MathUtils.nextPowerOfTwo(width) && height == MathUtils.nextPowerOfTwo(height))         ii++;
+        if (ii % 2 == 1)         width++;
+ else         height++;
+        i++;
+      }
+    }
+  }
+  if (bestComparator != null) {
+    Collections.sort(images,bestComparator);
+  }
+ else {
+    Collections.sort(images,secondBestComparator);
+    bestWidth=secondBestWidth;
+    bestHeight=secondBestHeight;
+  }
+  width=bestWidth;
+  height=bestHeight;
+  if (pot) {
+    width=MathUtils.nextPowerOfTwo(width);
+    height=MathUtils.nextPowerOfTwo(height);
+  }
+  BufferedImage canvas=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+  insert(canvas,images,bestWidth,bestHeight);
+  System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
+  ImageIO.write(canvas,"png",outputFile);
+  compressedSize+=canvas.getWidth() * canvas.getHeight();
+}

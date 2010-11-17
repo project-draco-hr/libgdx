@@ -1,0 +1,23 @@
+{
+  if (canvas == null)   return;
+  String imageName=image.file.getAbsolutePath().substring(inputDir.getAbsolutePath().length()) + "\n";
+  if (imageName.startsWith("/") || imageName.startsWith("\\"))   imageName=imageName.substring(1);
+  int dotIndex=imageName.lastIndexOf('.');
+  if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
+  if (imageName.endsWith("_4444"))   imageName=imageName.substring(0,imageName.length() - 5);
+  if (imageName.endsWith("_565"))   imageName=imageName.substring(0,imageName.length() - 4);
+  if (imageName.endsWith("_a"))   imageName=imageName.substring(0,imageName.length() - 2);
+  if (imageName.endsWith("_pre"))   imageName=imageName.substring(0,imageName.length() - 2);
+  writer.write(imageName.replace("\\","/") + "\n");
+  writer.write(left + "\n");
+  writer.write(top + "\n");
+  writer.write(image.getWidth() + "\n");
+  writer.write(image.getHeight() + "\n");
+  writer.write(image.offsetX + "\n");
+  writer.write(image.offsetY + "\n");
+  writer.write(image.originalWidth + "\n");
+  writer.write(image.originalHeight + "\n");
+  Matcher matcher=numberedImagePattern.matcher(imageName);
+  if (matcher.matches())   writer.write(Integer.parseInt(matcher.group(1)) + "\n");
+ else   writer.write("0\n");
+}

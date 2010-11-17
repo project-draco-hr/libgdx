@@ -1,0 +1,27 @@
+{
+  if (debug && canvas != null) {
+    Graphics g=canvas.getGraphics();
+    g.setColor(Color.green);
+    g.drawRect(0,0,width - 1,height - 1);
+  }
+  if (direction != Direction.x && direction != Direction.xy)   width+=xPadding;
+  if (direction != Direction.y && direction != Direction.xy)   height+=yPadding;
+  Node root=new Node(0,0,width,height);
+  int usedPixels=0;
+  for (int i=images.size() - 1; i >= 0; i--) {
+    Image image=images.get(i);
+    Node node=root.insert(image,canvas);
+    if (node == null)     continue;
+    usedPixels+=image.getWidth() * image.getHeight();
+    images.remove(i);
+    if (canvas != null) {
+      Graphics g=canvas.getGraphics();
+      g.drawImage(image,node.left,node.top,null);
+      if (debug) {
+        g.setColor(Color.magenta);
+        g.drawRect(node.left,node.top,image.getWidth() - 1,image.getHeight() - 1);
+      }
+    }
+  }
+  return images.isEmpty() ? -1 : usedPixels;
+}
