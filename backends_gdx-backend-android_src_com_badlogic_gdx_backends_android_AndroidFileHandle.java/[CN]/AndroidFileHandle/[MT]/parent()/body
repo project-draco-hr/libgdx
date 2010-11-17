@@ -1,7 +1,7 @@
 {
   File parent=file.getParentFile();
   if (parent == null) {
-    if (type == FileType.Absolute)     parent=new File("/");
+    if (type == FileType.Classpath || type == FileType.Absolute)     parent=new File("/");
  else     parent=new File(".");
   }
   return new AndroidFileHandle(assets,parent,type);

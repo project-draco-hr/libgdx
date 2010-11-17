@@ -4,6 +4,7 @@
       String[] relativePaths=assets.list(file.getPath());
       FileHandle[] handles=new FileHandle[relativePaths.length];
       for (int i=0, n=handles.length; i < n; i++)       handles[i]=new AndroidFileHandle(assets,new File(file,relativePaths[i]),type);
+      return handles;
     }
  catch (    Exception ex) {
       throw new GdxRuntimeException("Error listing children: " + file + " ("+ type+ ")",ex);

@@ -1,3 +1,4 @@
 {
+  if (type == FileType.Classpath || type == FileType.Internal)   return true;
   return file.exists();
 }

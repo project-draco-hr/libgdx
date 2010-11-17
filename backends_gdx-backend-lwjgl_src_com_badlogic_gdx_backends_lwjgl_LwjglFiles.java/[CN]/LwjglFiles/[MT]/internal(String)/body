@@ -1,3 +1,3 @@
 {
-  return getFileHandle(path,FileType.Internal);
+  return new LwjglFileHandle(path,FileType.Internal);
 }

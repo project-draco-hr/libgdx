@@ -1,4 +1,4 @@
 {
-  if (type == FileType.Internal)   return false;
+  if (type == FileType.Classpath)   return false;
   return file.isDirectory();
 }

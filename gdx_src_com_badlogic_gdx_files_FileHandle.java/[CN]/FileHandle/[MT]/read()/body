@@ -1,8 +1,10 @@
 {
-  if (type == FileType.Internal) {
-    InputStream input=FileHandle.class.getResourceAsStream("/" + file.getPath());
-    if (input != null)     return input;
+  if (type == FileType.Classpath) {
+    InputStream input=FileHandle.class.getResourceAsStream(file.getPath().replace('\\','/'));
+    if (input == null)     throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")");
+    return input;
   }
+  if (type == FileType.Internal && !file.exists())   throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")");
   try {
     return new FileInputStream(file);
   }

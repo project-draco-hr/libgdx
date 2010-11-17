@@ -1,4 +1,5 @@
 {
+  if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot mkdirs with a classpath file: " + file);
   if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot mkdirs with an internal file: " + file);
   file.mkdirs();
 }

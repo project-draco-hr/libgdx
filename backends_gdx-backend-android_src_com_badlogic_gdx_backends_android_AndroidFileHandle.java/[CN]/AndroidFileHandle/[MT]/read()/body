@@ -1,7 +1,5 @@
 {
   if (type == FileType.Internal) {
-    InputStream input=FileHandle.class.getResourceAsStream("/" + file.getPath());
-    if (input != null)     return input;
     try {
       return assets.open(file.getPath());
     }

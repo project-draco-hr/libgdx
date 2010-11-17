@@ -1,4 +1,18 @@
 {
-  super(file,type);
   this.assets=manager;
+  this.file=file;
+  this.type=type;
+switch (type) {
+case Classpath:
+    if (FileHandle.class.getResourceAsStream(file.getPath().replace('\\','/')) == null)     throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")");
+  break;
+case Internal:
+try {
+  assets.open(file.getPath()).close();
+}
+ catch (Exception ex) {
+  throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")",ex);
+}
+break;
+}
 }

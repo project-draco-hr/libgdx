@@ -1,3 +1,3 @@
 {
-  return getFileHandle(path,FileType.Absolute);
+  return new AndroidFileHandle(null,path,FileType.Absolute);
 }
