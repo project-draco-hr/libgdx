@@ -1,13 +1,12 @@
 {
   this.type=type;
 switch (type) {
-case Classpath:
-    if (FileHandle.class.getResourceAsStream("/" + fileName) == null)     throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
-  file=new File("/" + fileName);
-break;
 case Internal:
-file=new File(fileName);
-if (!file.exists()) throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")");
+    file=new File(fileName);
+  if (file.exists())   break;
+case Classpath:
+if (FileHandle.class.getResourceAsStream("/" + fileName) == null) throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
+file=new File("/" + fileName);
 break;
 case External:
 file=new File(Gdx.files.getExternalStoragePath() + fileName);

@@ -1,8 +1,18 @@
 {
   File parent=file.getParentFile();
   if (parent == null) {
-    if (type == FileType.Classpath || type == FileType.Absolute)     parent=new File("/");
- else     parent=new File(".");
-  }
-  return new JoglFileHandle(parent,type);
+switch (type) {
+case Classpath:
+case Absolute:
+      parent=new File("/");
+    break;
+case Internal:
+  parent=new File("");
+break;
+case External:
+parent=new File(Gdx.files.getExternalStoragePath());
+break;
+}
+}
+return new JoglFileHandle(parent,type);
 }
