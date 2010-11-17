@@ -1,6 +1,0 @@
-{
-  if (type == FileType.External)   directory=this.externalPath + directory;
-  File file=new File(directory);
-  if (file.exists() == false)   throw new GdxRuntimeException("Directory not found: " + directory + " ("+ type+ ")");
-  return file.list();
-}
