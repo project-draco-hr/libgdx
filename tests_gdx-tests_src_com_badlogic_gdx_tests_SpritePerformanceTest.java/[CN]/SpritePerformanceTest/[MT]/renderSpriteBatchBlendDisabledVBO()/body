@@ -1,0 +1,8 @@
+{
+  vaBatch.disableBlending();
+  vaBatch.begin();
+  for (int i=0; i < SPRITES; i++) {
+    sprites[i].draw(vaBatch);
+  }
+  vaBatch.end();
+}

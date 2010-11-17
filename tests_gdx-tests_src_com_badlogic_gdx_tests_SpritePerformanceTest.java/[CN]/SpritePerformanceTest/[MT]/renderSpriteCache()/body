@@ -1,0 +1,6 @@
+{
+  Gdx.gl.glEnable(GL10.GL_BLEND);
+  cache.begin();
+  cache.draw(spritesHandle);
+  cache.end();
+}
