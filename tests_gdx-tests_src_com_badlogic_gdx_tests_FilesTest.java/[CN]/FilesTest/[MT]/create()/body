@@ -2,25 +2,25 @@
   font=new BitmapFont();
   batch=new SpriteBatch();
   if (Gdx.files.isExternalStorageAvailable()) {
-    message+="external storage available\n";
-    message+="external storage path: " + Gdx.files.getExternalStoragePath() + "\n";
+    message+="External storage available\n";
+    message+="External storage path: " + Gdx.files.getExternalStoragePath() + "\n";
     try {
-      InputStream in=Gdx.files.readFile("data/cube.obj",FileType.Internal);
+      InputStream in=Gdx.files.internal("data/cube.obj").read();
       try {
         in.close();
       }
  catch (      IOException e) {
       }
-      message+="open internal success\n";
+      message+="Open internal success\n";
     }
  catch (    Throwable e) {
       message+="Couldn't open internal data/cube.obj\n" + e.getMessage() + "\n";
     }
     BufferedWriter out=null;
     try {
-      out=new BufferedWriter(new OutputStreamWriter(Gdx.files.writeFile("test.txt",FileType.External)));
+      out=new BufferedWriter(new OutputStreamWriter(Gdx.files.external("test.txt").write(false)));
       out.write("test");
-      message+="write external success\n";
+      message+="Write external success\n";
     }
  catch (    GdxRuntimeException ex) {
       message+="Couldn't open externalstorage/test.txt\n";
@@ -38,7 +38,7 @@ catch (    IOException e) {
       }
     }
     try {
-      InputStream in=Gdx.files.readFile("test.txt",FileType.External);
+      InputStream in=Gdx.files.external("test.txt").read();
       try {
         in.close();
       }
@@ -51,7 +51,7 @@ catch (    IOException e) {
     }
     BufferedReader in=null;
     try {
-      in=new BufferedReader(new InputStreamReader(Gdx.files.readFile("test.txt",FileType.External)));
+      in=new BufferedReader(new InputStreamReader(Gdx.files.external("test.txt").read()));
       if (!in.readLine().equals("test"))       message+="Read result wrong\n";
  else       message+="Read external success\n";
     }
@@ -62,17 +62,18 @@ catch (    IOException e) {
       message+="Couldn't read externalstorage/test.txt\n";
     }
  finally {
-      if (out != null) {
+      if (in != null) {
         try {
-          out.close();
+          in.close();
         }
  catch (        IOException e) {
         }
       }
     }
-    if (!new File(Gdx.files.getExternalStoragePath() + "test.txt").delete())     message+="couldn't delete externalstorage/test.txt";
+    if (!Gdx.files.external("test.txt").delete())     message+="Couldn't delete externalstorage/test.txt";
   }
  else {
     message+="External storage not available";
   }
+  testWriteRead("meow",FileType.External);
 }

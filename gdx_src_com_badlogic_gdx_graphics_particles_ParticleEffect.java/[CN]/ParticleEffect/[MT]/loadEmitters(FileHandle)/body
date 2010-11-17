@@ -1,6 +1,5 @@
 {
-  InputStream input=file.readFile();
-  if (input == null)   throw new GdxRuntimeException("Effect file not found: " + file);
+  InputStream input=file.read();
   emitters.clear();
   BufferedReader reader=null;
   try {

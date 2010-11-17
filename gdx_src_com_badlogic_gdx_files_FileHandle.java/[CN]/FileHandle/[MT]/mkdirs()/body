@@ -1,0 +1,4 @@
+{
+  if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot mkdirs with an internal file: " + file);
+  file.mkdirs();
+}

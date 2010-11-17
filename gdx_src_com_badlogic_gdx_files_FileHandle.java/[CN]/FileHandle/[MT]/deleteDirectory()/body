@@ -1,0 +1,4 @@
+{
+  if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot delete an internal file: " + file);
+  return deleteDirectory(file);
+}

@@ -1,7 +1,7 @@
 {
   this.isManaged=managed;
   this.isMipMapped=TextureFilter.isMipMap(minFilter);
-  if (!isMipMapped && file.getPath().endsWith(".png")) {
+  if (!isMipMapped && file.path().endsWith(".png")) {
     loadPNG(file);
   }
  else {

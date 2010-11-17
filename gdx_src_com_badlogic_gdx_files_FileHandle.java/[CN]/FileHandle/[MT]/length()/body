@@ -1,0 +1,18 @@
+{
+  if (type == FileType.Internal) {
+    try {
+      InputStream input=read();
+      long length=input.available();
+      try {
+        input.close();
+      }
+ catch (      Exception ignored) {
+      }
+      return length;
+    }
+ catch (    Exception ignored) {
+    }
+    return 0;
+  }
+  return file.length();
+}

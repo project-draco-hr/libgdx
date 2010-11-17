@@ -1,0 +1,4 @@
+{
+  if (type == FileType.Internal)   return false;
+  return file.isDirectory();
+}

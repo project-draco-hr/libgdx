@@ -1,6 +1,9 @@
 {
-  if (type == FileType.External)   fileName=this.externalPath + fileName;
-  File file=new File(fileName);
-  if (LwjglFileHandle.class.getResource("/" + fileName) == null && file.exists() == false)   throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
- else   return new LwjglFileHandle(file,type);
+  File file;
+  if (type == FileType.External)   file=new File(this.externalPath + fileName);
+ else   if (type == FileType.Internal) {
+    file=new File(fileName);
+    if (FileHandle.class.getResourceAsStream("/" + fileName) == null && !file.exists())     throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
+  }
+  return new LwjglFileHandle(new File(fileName),type);
 }

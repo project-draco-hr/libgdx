@@ -1,6 +1,6 @@
 {
   try {
-    pngDecoder.decodeHeader(file.readFile());
+    pngDecoder.decodeHeader(file.read());
     texWidth=pngDecoder.getWidth();
     texHeight=pngDecoder.getHeight();
     int stride=texWidth * 4;

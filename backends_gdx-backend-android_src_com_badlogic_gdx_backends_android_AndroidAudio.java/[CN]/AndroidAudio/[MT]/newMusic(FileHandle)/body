@@ -1,9 +1,9 @@
 {
   AndroidFileHandle aHandle=(AndroidFileHandle)file;
   MediaPlayer mediaPlayer=new MediaPlayer();
-  if (aHandle.isAsset()) {
+  if (aHandle.type() == FileType.Internal) {
     try {
-      AssetFileDescriptor descriptor=aHandle.getAssetManager().openFd(aHandle.getPath());
+      AssetFileDescriptor descriptor=aHandle.assets.openFd(aHandle.path());
       mediaPlayer.setDataSource(descriptor.getFileDescriptor(),descriptor.getStartOffset(),descriptor.getLength());
       descriptor.close();
       mediaPlayer.prepare();
@@ -12,19 +12,19 @@
       return music;
     }
  catch (    Exception ex) {
-      throw new GdxRuntimeException("Couldn't load Music from file '" + file + "'",ex);
+      throw new GdxRuntimeException("Error loading audio file: " + file + "\nNote: Internal audio files must be placed in the assets directory.",ex);
     }
   }
  else {
     try {
-      mediaPlayer.setDataSource(aHandle.getPath());
+      mediaPlayer.setDataSource(aHandle.path());
       mediaPlayer.prepare();
       AndroidMusic music=new AndroidMusic(this,mediaPlayer);
       musics.add(music);
       return music;
     }
  catch (    Exception ex) {
-      throw new GdxRuntimeException("Couldn't load music from file '" + file + "'",ex);
+      throw new GdxRuntimeException("Error loading audio file: " + file,ex);
     }
   }
 }

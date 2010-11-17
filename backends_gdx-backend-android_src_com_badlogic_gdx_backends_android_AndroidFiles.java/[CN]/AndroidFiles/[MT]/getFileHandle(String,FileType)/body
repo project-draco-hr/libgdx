@@ -1,22 +1,19 @@
 {
+  File file;
   if (type == FileType.Internal) {
-    boolean exists=true;
-    try {
-      InputStream in=assets.open(filename);
-      in.close();
+    file=new File(fileName);
+    if (FileHandle.class.getResourceAsStream("/" + fileName) == null) {
+      try {
+        InputStream in=assets.open(fileName);
+        in.close();
+      }
+ catch (      Exception ignored) {
+      }
     }
- catch (    Exception ex) {
-      exists=false;
-    }
-    if (!exists)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
- else     return new AndroidFileHandle(assets,filename);
-  }
-  if (type == FileType.External) {
-    if (new File(sdcard + filename).exists() == false)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
- else     return new AndroidFileHandle(null,sdcard + filename);
   }
  else {
-    if (new File(filename).exists() == false)     throw new GdxRuntimeException("File not found: " + filename + " ("+ type+ ")");
- else     return new AndroidFileHandle(null,filename);
+    if (type == FileType.External)     file=new File(sdcard + fileName);
+ else     file=new File(fileName);
   }
+  return new AndroidFileHandle(assets,file,type);
 }
