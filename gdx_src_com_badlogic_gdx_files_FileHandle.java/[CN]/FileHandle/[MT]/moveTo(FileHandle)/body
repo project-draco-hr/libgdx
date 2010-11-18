@@ -1,4 +1,6 @@
 {
+  if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot move a classpath file: " + file);
+  if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot move an internal file: " + file);
   copyTo(dest);
   delete();
 }

@@ -1,0 +1,13 @@
+{
+  try {
+    assets.open(fileName).close();
+  }
+ catch (  Exception ex) {
+    try {
+      if (assets.list(fileName).length == 0)       throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")",ex);
+    }
+ catch (    Exception ex2) {
+      throw new GdxRuntimeException("Error locating file: " + fileName + " ("+ type+ ")",ex2);
+    }
+  }
+}

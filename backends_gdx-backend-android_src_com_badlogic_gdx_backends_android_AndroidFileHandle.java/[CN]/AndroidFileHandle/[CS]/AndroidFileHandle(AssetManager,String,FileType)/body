@@ -7,12 +7,7 @@ case Classpath:
   file=new File("/" + fileName);
 break;
 case Internal:
-try {
-assets.open(fileName).close();
-}
- catch (Exception ex) {
-throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")",ex);
-}
+ensureInternalFileExists(fileName);
 file=new File(fileName);
 break;
 case External:

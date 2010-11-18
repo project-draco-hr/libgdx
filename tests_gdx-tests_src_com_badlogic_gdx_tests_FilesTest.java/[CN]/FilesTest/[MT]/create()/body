@@ -75,5 +75,11 @@ catch (    IOException e) {
  else {
     message+="External storage not available";
   }
-  testWriteRead("meow",FileType.External);
+  try {
+    testInternal();
+    testExternal();
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
 }

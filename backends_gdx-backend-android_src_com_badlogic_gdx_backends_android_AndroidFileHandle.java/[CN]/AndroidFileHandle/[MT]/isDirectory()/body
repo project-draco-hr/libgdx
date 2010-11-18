@@ -1,10 +1,9 @@
 {
   if (type == FileType.Internal) {
     try {
-      assets.list(file.getPath());
-      return true;
+      return assets.list(file.getPath()).length > 0;
     }
- catch (    Exception ex) {
+ catch (    IOException ex) {
       return false;
     }
   }
