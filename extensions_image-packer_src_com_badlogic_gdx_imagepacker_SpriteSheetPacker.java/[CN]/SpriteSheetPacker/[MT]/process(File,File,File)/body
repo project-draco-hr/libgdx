@@ -1,6 +1,6 @@
 {
   if (outputDir.exists()) {
-    String prefix=inputDir.getParentFile().getName();
+    String prefix=inputDir.getName();
     for (    File file : outputDir.listFiles())     if (file.getName().startsWith(prefix))     file.delete();
   }
   Direction[] directions=Direction.values();

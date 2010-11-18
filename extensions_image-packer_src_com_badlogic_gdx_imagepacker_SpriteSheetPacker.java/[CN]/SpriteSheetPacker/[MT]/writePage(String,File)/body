@@ -3,10 +3,10 @@
   File outputFile=new File(outputDir,prefix + imageNumber + ".png");
   while (outputFile.exists())   outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
   writer.write("\n" + prefix + imageNumber+ ".png\n");
-  writer.write(direction + "\n");
+  writer.write("repeat: " + direction + "\n");
+  writer.write("filter: Linear,Linear\n");
   Comparator bestComparator=null;
   Comparator secondBestComparator=imageComparators.get(0);
-  int maxWidth=1024, maxHeight=1024;
   int bestWidth=99999, bestHeight=99999;
   int secondBestWidth=99999, secondBestHeight=99999;
   int bestUsedPixels=0;

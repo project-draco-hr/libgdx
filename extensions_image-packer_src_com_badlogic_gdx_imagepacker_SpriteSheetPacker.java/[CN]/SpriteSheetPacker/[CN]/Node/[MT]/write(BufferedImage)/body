@@ -9,15 +9,12 @@
   if (imageName.endsWith("_a"))   imageName=imageName.substring(0,imageName.length() - 2);
   if (imageName.endsWith("_pre"))   imageName=imageName.substring(0,imageName.length() - 2);
   writer.write(imageName.replace("\\","/") + "\n");
-  writer.write(left + "\n");
-  writer.write(top + "\n");
-  writer.write(image.getWidth() + "\n");
-  writer.write(image.getHeight() + "\n");
-  writer.write(image.offsetX + "\n");
-  writer.write(image.offsetY + "\n");
-  writer.write(image.originalWidth + "\n");
-  writer.write(image.originalHeight + "\n");
+  writer.write("  rotate: " + image.rotate + "\n");
+  writer.write("  xy: " + left + ", "+ top+ "\n");
+  writer.write("  size: " + image.getWidth() + ", "+ image.getHeight()+ "\n");
+  writer.write("  orig: " + image.originalWidth + ", "+ image.originalHeight+ "\n");
+  writer.write("  offset: " + image.offsetX + ", "+ image.offsetY+ "\n");
   Matcher matcher=numberedImagePattern.matcher(imageName);
-  if (matcher.matches())   writer.write(Integer.parseInt(matcher.group(1)) + "\n");
- else   writer.write("0\n");
+  if (matcher.matches())   writer.write("offset: " + Integer.parseInt(matcher.group(1)) + "\n");
+ else   writer.write("offset: 0\n");
 }

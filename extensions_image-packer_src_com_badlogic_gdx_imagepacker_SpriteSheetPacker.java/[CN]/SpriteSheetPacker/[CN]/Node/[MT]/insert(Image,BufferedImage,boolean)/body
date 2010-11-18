@@ -1,15 +1,23 @@
 {
   if (this.image != null)   return null;
   if (child1 != null) {
-    Node newNode=child1.insert(image,canvas);
+    Node newNode=child1.insert(image,canvas,rotate);
     if (newNode != null)     return newNode;
-    return child2.insert(image,canvas);
+    return child2.insert(image,canvas,rotate);
   }
-  int neededWidth=image.getWidth() + xPadding;
-  int neededHeight=image.getHeight() + yPadding;
+  int imageWidth=image.getWidth();
+  int imageHeight=image.getHeight();
+  if (rotate) {
+    int temp=imageWidth;
+    imageWidth=imageHeight;
+    imageHeight=temp;
+  }
+  int neededWidth=imageWidth + xPadding;
+  int neededHeight=imageHeight + yPadding;
   if (neededWidth > width || neededHeight > height)   return null;
   if (neededWidth == width && neededHeight == height) {
     this.image=image;
+    image.rotate=rotate;
     write(canvas);
     return this;
   }
@@ -23,5 +31,5 @@
     child1=new Node(left,top,width,neededHeight);
     child2=new Node(left,top + neededHeight,width,height - neededHeight);
   }
-  return child1.insert(image,canvas);
+  return child1.insert(image,canvas,rotate);
 }

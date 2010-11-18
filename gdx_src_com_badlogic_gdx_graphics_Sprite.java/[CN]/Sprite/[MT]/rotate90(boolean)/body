@@ -1,0 +1,27 @@
+{
+  float[] vertices=this.vertices;
+  float temp=width;
+  width=height;
+  height=temp;
+  temp=vertices[X1];
+  vertices[X1]=vertices[X4];
+  vertices[X4]=vertices[X3];
+  vertices[X3]=vertices[X2];
+  vertices[X2]=temp;
+  temp=vertices[Y1];
+  vertices[Y1]=vertices[Y4];
+  vertices[Y4]=vertices[Y3];
+  vertices[Y3]=vertices[Y2];
+  vertices[Y2]=temp;
+  temp=vertices[V1];
+  vertices[V1]=vertices[V4];
+  vertices[V4]=vertices[V3];
+  vertices[V3]=vertices[V2];
+  vertices[V2]=temp;
+  temp=vertices[U1];
+  vertices[U1]=vertices[U4];
+  vertices[U4]=vertices[U3];
+  vertices[U3]=vertices[U2];
+  vertices[U2]=temp;
+  if (rotation != 0 || scaleX != 1 || scaleY != 1)   dirty=true;
+}

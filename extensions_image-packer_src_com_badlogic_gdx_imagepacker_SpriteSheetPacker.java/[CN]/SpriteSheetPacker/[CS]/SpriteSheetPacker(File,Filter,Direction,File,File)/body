@@ -13,17 +13,10 @@
   System.out.println(inputDir);
   if (filter != rgba8888)   System.out.println("Format: " + filter.name);
   if (direction != null)   System.out.println("Direction: " + direction);
-  for (  Image image : images)   System.out.println("Packing... " + image.file.getName());
-  Collections.sort(images,new Comparator<Image>(){
-    public int compare(    Image image1,    Image image2){
-      return image1.getWidth() * image1.getHeight() - image2.getWidth() * image2.getHeight();
-    }
-  }
-);
   xPadding=images.size() > 1 && direction != Direction.x && direction != Direction.xy ? padding : 0;
   yPadding=images.size() > 1 && direction != Direction.y && direction != Direction.xy ? padding : 0;
   outputDir.mkdirs();
-  String prefix=inputDir.getParentFile().getName();
+  String prefix=inputDir.getName();
   writer=new FileWriter(packFile,true);
   try {
     while (!images.isEmpty())     writePage(prefix,outputDir);

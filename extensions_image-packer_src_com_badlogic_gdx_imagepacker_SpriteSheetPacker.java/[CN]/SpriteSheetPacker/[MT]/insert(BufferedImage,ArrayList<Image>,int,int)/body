@@ -10,16 +10,35 @@
   int usedPixels=0;
   for (int i=images.size() - 1; i >= 0; i--) {
     Image image=images.get(i);
-    Node node=root.insert(image,canvas);
-    if (node == null)     continue;
+    Node node=root.insert(image,canvas,false);
+    if (node == null) {
+      if (rotate)       node=root.insert(image,canvas,true);
+      if (node == null)       continue;
+    }
     usedPixels+=image.getWidth() * image.getHeight();
     images.remove(i);
     if (canvas != null) {
-      Graphics g=canvas.getGraphics();
+      System.out.println("Packing... " + image.file.getName());
+      Graphics2D g=(Graphics2D)canvas.getGraphics();
+      if (image.rotate) {
+        g.translate(node.left,node.top);
+        g.rotate(-90 * MathUtils.degreesToRadians);
+        g.translate(-node.left,-node.top);
+        g.translate(-image.getWidth(),0);
+      }
       g.drawImage(image,node.left,node.top,null);
+      if (image.rotate) {
+        g.translate(image.getWidth(),0);
+        g.translate(node.left,node.top);
+        g.rotate(90 * MathUtils.degreesToRadians);
+        g.translate(-node.left,-node.top);
+      }
       if (debug) {
         g.setColor(Color.magenta);
-        g.drawRect(node.left,node.top,image.getWidth() - 1,image.getHeight() - 1);
+        int imageWidth=image.getWidth();
+        int imageHeight=image.getHeight();
+        if (image.rotate)         g.drawRect(node.left,node.top,imageHeight - 1,imageWidth - 1);
+ else         g.drawRect(node.left,node.top,imageWidth - 1,imageHeight - 1);
       }
     }
   }
