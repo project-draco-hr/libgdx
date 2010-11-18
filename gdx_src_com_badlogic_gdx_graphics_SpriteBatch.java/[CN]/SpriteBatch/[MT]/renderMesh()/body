@@ -26,4 +26,9 @@
     mesh.render(GL10.GL_TRIANGLES,0,idx / 20 * 6);
   }
   idx=0;
+  currBufferIdx++;
+  if (currBufferIdx == buffers.length) {
+    currBufferIdx=0;
+  }
+  mesh=buffers[currBufferIdx];
 }

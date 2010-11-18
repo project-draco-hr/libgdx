@@ -1,5 +1,8 @@
 {
-  this.mesh=new Mesh(type,false,size * 4,size * 6,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  this.buffers=new Mesh[buffers];
+  for (int i=0; i < buffers; i++) {
+    this.buffers[i]=new Mesh(type,false,size * 4,size * 6,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  }
   projectionMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   vertices=new float[size * Sprite.SPRITE_SIZE];
   int len=size * 6;
@@ -13,6 +16,9 @@
     indices[i + 4]=(short)(j + 3);
     indices[i + 5]=(short)(j + 0);
   }
-  mesh.setIndices(indices);
+  for (int i=0; i < buffers; i++) {
+    this.buffers[i].setIndices(indices);
+  }
+  mesh=this.buffers[0];
   if (Gdx.graphics.isGL20Available())   createShader();
 }
