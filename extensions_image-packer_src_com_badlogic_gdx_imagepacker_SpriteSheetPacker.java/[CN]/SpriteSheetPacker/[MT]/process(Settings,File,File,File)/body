@@ -1,0 +1,41 @@
+{
+  if (outputDir.exists()) {
+    String prefix=inputDir.getName();
+    for (    File file : outputDir.listFiles())     if (file.getName().startsWith(prefix))     file.delete();
+  }
+  ArrayList<TextureFilter> filters=new ArrayList();
+  filters.add(null);
+  filters.addAll(Arrays.asList(TextureFilter.values()));
+  ArrayList<Format> formats=new ArrayList();
+  formats.add(null);
+  formats.addAll(Arrays.asList(Format.values()));
+  for (int i=0, n=formats.size(); i < n; i++) {
+    Format format=formats.get(i);
+    for (int ii=0, nn=filters.size(); ii < nn; ii++) {
+      TextureFilter min=filters.get(ii);
+      for (int iii=ii; iii < nn; iii++) {
+        TextureFilter mag=filters.get(iii);
+        if ((min == null && mag != null) || (min != null && mag == null))         continue;
+        Filter filter=new Filter(settings,Direction.none,format,-1,-1,min,mag);
+        new SpriteSheetPacker(settings,inputDir,filter,outputDir,packFile);
+        for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
+          filter=new Filter(settings,Direction.x,format,width,-1,min,mag);
+          new SpriteSheetPacker(settings,inputDir,filter,outputDir,packFile);
+        }
+        for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
+          filter=new Filter(settings,Direction.y,format,-1,height,min,mag);
+          new SpriteSheetPacker(settings,inputDir,filter,outputDir,packFile);
+        }
+        for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
+          for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
+            filter=new Filter(settings,Direction.xy,format,width,height,min,mag);
+            new SpriteSheetPacker(settings,inputDir,filter,outputDir,packFile);
+          }
+        }
+      }
+    }
+  }
+  File[] files=inputDir.listFiles();
+  if (files == null)   return;
+  for (  File file : files)   if (file.isDirectory())   process(settings,file,new File(outputDir,file.getName()),packFile);
+}

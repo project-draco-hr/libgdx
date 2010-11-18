@@ -4,10 +4,9 @@
   if (imageName.startsWith("/") || imageName.startsWith("\\"))   imageName=imageName.substring(1);
   int dotIndex=imageName.lastIndexOf('.');
   if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
-  if (imageName.endsWith("_4444"))   imageName=imageName.substring(0,imageName.length() - 5);
-  if (imageName.endsWith("_565"))   imageName=imageName.substring(0,imageName.length() - 4);
-  if (imageName.endsWith("_a"))   imageName=imageName.substring(0,imageName.length() - 2);
-  if (imageName.endsWith("_pre"))   imageName=imageName.substring(0,imageName.length() - 2);
+  imageName=imageName.replace("_" + filter.format,"");
+  imageName=imageName.replace("_" + filter.direction,"");
+  imageName=imageName.replace("_" + filterToAbbrev.get(filter.minFilter) + ","+ filterToAbbrev.get(filter.magFilter),"");
   writer.write(imageName.replace("\\","/") + "\n");
   writer.write("  rotate: " + image.rotate + "\n");
   writer.write("  xy: " + left + ", "+ top+ "\n");
@@ -15,6 +14,6 @@
   writer.write("  orig: " + image.originalWidth + ", "+ image.originalHeight+ "\n");
   writer.write("  offset: " + image.offsetX + ", "+ image.offsetY+ "\n");
   Matcher matcher=numberedImagePattern.matcher(imageName);
-  if (matcher.matches())   writer.write("offset: " + Integer.parseInt(matcher.group(1)) + "\n");
- else   writer.write("offset: 0\n");
+  if (matcher.matches())   writer.write("  index: " + Integer.parseInt(matcher.group(1)) + "\n");
+ else   writer.write("  index: 0\n");
 }

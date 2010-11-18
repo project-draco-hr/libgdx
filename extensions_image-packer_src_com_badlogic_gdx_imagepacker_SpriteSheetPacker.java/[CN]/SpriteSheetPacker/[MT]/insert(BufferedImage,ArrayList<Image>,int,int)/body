@@ -1,18 +1,18 @@
 {
-  if (debug && canvas != null) {
+  if (settings.debug && canvas != null) {
     Graphics g=canvas.getGraphics();
     g.setColor(Color.green);
     g.drawRect(0,0,width - 1,height - 1);
   }
-  if (direction != Direction.x && direction != Direction.xy)   width+=xPadding;
-  if (direction != Direction.y && direction != Direction.xy)   height+=yPadding;
+  if (filter.direction != Direction.x && filter.direction != Direction.xy)   width+=xPadding;
+  if (filter.direction != Direction.y && filter.direction != Direction.xy)   height+=yPadding;
   Node root=new Node(0,0,width,height);
   int usedPixels=0;
   for (int i=images.size() - 1; i >= 0; i--) {
     Image image=images.get(i);
     Node node=root.insert(image,canvas,false);
     if (node == null) {
-      if (rotate)       node=root.insert(image,canvas,true);
+      if (settings.rotate)       node=root.insert(image,canvas,true);
       if (node == null)       continue;
     }
     usedPixels+=image.getWidth() * image.getHeight();
@@ -33,7 +33,7 @@
         g.rotate(90 * MathUtils.degreesToRadians);
         g.translate(-node.left,-node.top);
       }
-      if (debug) {
+      if (settings.debug) {
         g.setColor(Color.magenta);
         int imageWidth=image.getWidth();
         int imageHeight=image.getHeight();

@@ -3,14 +3,24 @@
   File outputFile=new File(outputDir,prefix + imageNumber + ".png");
   while (outputFile.exists())   outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
   writer.write("\n" + prefix + imageNumber+ ".png\n");
-  writer.write("repeat: " + direction + "\n");
-  writer.write("filter: Linear,Linear\n");
+  Format format;
+  if (filter.format != null) {
+    writer.write("format: " + filter.format + "\n");
+    format=filter.format;
+  }
+ else {
+    writer.write("format: " + settings.defaultFormat + "\n");
+    format=settings.defaultFormat;
+  }
+  if (filter.minFilter == null || filter.magFilter == null)   writer.write("filter: " + settings.defaultFilterMin + ","+ settings.defaultFilterMag+ "\n");
+ else   writer.write("filter: " + filter.minFilter + ","+ filter.magFilter+ "\n");
+  writer.write("repeat: " + filter.direction + "\n");
   Comparator bestComparator=null;
   Comparator secondBestComparator=imageComparators.get(0);
   int bestWidth=99999, bestHeight=99999;
   int secondBestWidth=99999, secondBestHeight=99999;
   int bestUsedPixels=0;
-  int width=64, height=64;
+  int width=minWidth, height=minHeight;
   int grownPixels=0, grownPixels2=0;
   int i=0, ii=0;
   while (true) {
@@ -32,7 +42,7 @@
       }
     }
     if (bestComparator != null)     break;
-    if (pot) {
+    if (settings.pot) {
       if (i % 3 == 0) {
         width*=2;
         i++;
@@ -84,13 +94,28 @@
   }
   width=bestWidth;
   height=bestHeight;
-  if (pot) {
+  if (settings.pot) {
     width=MathUtils.nextPowerOfTwo(width);
     height=MathUtils.nextPowerOfTwo(height);
   }
-  BufferedImage canvas=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-  insert(canvas,images,bestWidth,bestHeight);
-  System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
-  ImageIO.write(canvas,"png",outputFile);
-  compressedSize+=canvas.getWidth() * canvas.getHeight();
+  int type;
+switch (format) {
+case RGBA8888:
+case RGBA4444:
+    type=BufferedImage.TYPE_INT_ARGB;
+  break;
+case RGB565:
+type=BufferedImage.TYPE_INT_RGB;
+break;
+case Alpha:
+type=BufferedImage.TYPE_BYTE_GRAY;
+break;
+default :
+throw new RuntimeException();
+}
+BufferedImage canvas=new BufferedImage(width,height,type);
+insert(canvas,images,bestWidth,bestHeight);
+System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
+ImageIO.write(canvas,"png",outputFile);
+compressedSize+=canvas.getWidth() * canvas.getHeight();
 }

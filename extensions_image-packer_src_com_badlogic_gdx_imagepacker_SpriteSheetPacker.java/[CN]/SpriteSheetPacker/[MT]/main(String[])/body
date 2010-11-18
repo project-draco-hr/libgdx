@@ -1,7 +1,10 @@
 {
+  String input, output;
   if (args.length != 2) {
     System.out.println("Usage: INPUTDIR OUTPUTDIR");
     return;
   }
-  process(args[0],args[1]);
+  input=args[0];
+  output=args[1];
+  process(new Settings(),input,output);
 }

@@ -9,6 +9,10 @@
       if (line.trim().length() == 0)       pageImage=null;
  else       if (pageImage == null) {
         FileHandle file=imagesDir.child(line);
+        Format format=Format.valueOf(readValue(reader));
+        readTuple(reader);
+        TextureFilter min=TextureFilter.valueOf(tuple[0]);
+        TextureFilter max=TextureFilter.valueOf(tuple[1]);
         String direction=readValue(reader);
         TextureWrap repeatX=ClampToEdge;
         TextureWrap repeatY=ClampToEdge;
@@ -18,9 +22,6 @@
           repeatX=Repeat;
           repeatY=Repeat;
         }
-        readTuple(reader);
-        TextureFilter min=TextureFilter.valueOf(tuple[0]);
-        TextureFilter max=TextureFilter.valueOf(tuple[1]);
         Texture texture=Gdx.graphics.newTexture(file,min,max,repeatX,repeatY);
         textures.add(texture);
         pageImage=new Sprite(texture);

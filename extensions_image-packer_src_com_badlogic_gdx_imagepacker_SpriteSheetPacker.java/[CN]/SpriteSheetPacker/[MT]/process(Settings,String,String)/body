@@ -1,0 +1,11 @@
+{
+  File inputDir=new File(input);
+  File outputDir=new File(output);
+  if (!inputDir.isDirectory()) {
+    System.out.println("Not a directory: " + inputDir);
+    return;
+  }
+  File packFile=new File(outputDir,"pack");
+  packFile.delete();
+  process(settings,inputDir,outputDir,packFile);
+}
