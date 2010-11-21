@@ -1,0 +1,13 @@
+{
+  super.flip(x,y);
+  if (x) {
+    float xPosition=getX();
+    offsetX=(int)(originalWidth - offsetX - getWidth());
+    setPosition(xPosition,getY());
+  }
+  if (y) {
+    float yPosition=getY();
+    offsetY=(int)(originalHeight - offsetY - getHeight());
+    setPosition(getX(),yPosition);
+  }
+}

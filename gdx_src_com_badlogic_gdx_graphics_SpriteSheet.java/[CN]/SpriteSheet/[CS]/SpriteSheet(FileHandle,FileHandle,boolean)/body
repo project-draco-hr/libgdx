@@ -34,6 +34,16 @@
         readTuple(reader);
         int width=Integer.parseInt(tuple[0]);
         int height=Integer.parseInt(tuple[1]);
+        if (flip) {
+          if (rotate) {
+            left+=height;
+            height=-height;
+          }
+ else {
+            top+=height;
+            height=-height;
+          }
+        }
         PackedSprite sprite;
         if (rotate) {
           sprite=new PackedSprite(pageImage,left,top,height,width);
@@ -50,7 +60,6 @@
         sprite.setPosition(sprite.offsetX,sprite.offsetY);
         sprite.index=Integer.parseInt(readValue(reader));
         if (sprite.index == -1)         sprite.index=Integer.MAX_VALUE;
-        if (flip)         sprite.flip(false,true);
         sortedSprites.add(sprite);
       }
     }
