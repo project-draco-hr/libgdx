@@ -23,7 +23,7 @@
   if (velocityValue.active && velocityValue.active)   updateFlags|=UPDATE_VELOCITY;
   if (scaleValue.timeline.length > 1)   updateFlags|=UPDATE_SCALE;
   if (rotationValue.active && rotationValue.timeline.length > 1)   updateFlags|=UPDATE_ROTATION;
-  if (windValue.active && windValue.timeline.length > 1)   updateFlags|=UPDATE_WIND;
-  if (gravityValue.active && gravityValue.timeline.length > 1)   updateFlags|=UPDATE_GRAVITY;
+  if (windValue.active)   updateFlags|=UPDATE_WIND;
+  if (gravityValue.active)   updateFlags|=UPDATE_GRAVITY;
   if (tintValue.timeline.length > 1)   updateFlags|=UPDATE_TINT;
 }

@@ -1,20 +1,4 @@
 {
-  int imageNumber=1;
-  File outputFile=new File(outputDir,prefix + imageNumber + ".png");
-  while (outputFile.exists())   outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
-  writer.write("\n" + prefix + imageNumber+ ".png\n");
-  Format format;
-  if (filter.format != null) {
-    writer.write("format: " + filter.format + "\n");
-    format=filter.format;
-  }
- else {
-    writer.write("format: " + settings.defaultFormat + "\n");
-    format=settings.defaultFormat;
-  }
-  if (filter.minFilter == null || filter.magFilter == null)   writer.write("filter: " + settings.defaultFilterMin + ","+ settings.defaultFilterMag+ "\n");
- else   writer.write("filter: " + filter.minFilter + ","+ filter.magFilter+ "\n");
-  writer.write("repeat: " + filter.direction + "\n");
   Comparator bestComparator=null;
   Comparator secondBestComparator=imageComparators.get(0);
   int bestWidth=99999, bestHeight=99999;
@@ -24,7 +8,6 @@
   int grownPixels=0, grownPixels2=0;
   int i=0, ii=0;
   while (true) {
-    if (width > maxWidth && height > maxHeight)     break;
     for (    Comparator comparator : imageComparators) {
       Collections.sort(images,comparator);
       int usedPixels=insert(null,new ArrayList(images),width,height);
@@ -41,20 +24,16 @@
         }
       }
     }
+    if (width == maxWidth && height == maxHeight)     break;
     if (bestComparator != null)     break;
     if (settings.pot) {
-      if (i % 3 == 0) {
-        width*=2;
-        i++;
-      }
- else       if (i % 3 == 1) {
-        width/=2;
+      grownPixels+=width;
+      width*=2;
+      if (width > maxWidth) {
+        width-=grownPixels;
+        grownPixels=0;
         height*=2;
-        i++;
-      }
- else {
         width*=2;
-        i++;
       }
     }
  else {
@@ -83,6 +62,8 @@
         i++;
       }
     }
+    width=Math.min(maxWidth,width);
+    height=Math.min(maxHeight,height);
   }
   if (bestComparator != null) {
     Collections.sort(images,bestComparator);
@@ -99,7 +80,7 @@
     height=MathUtils.nextPowerOfTwo(height);
   }
   int type;
-switch (format) {
+switch (filter.format != null ? filter.format : settings.defaultFormat) {
 case RGBA8888:
 case RGBA4444:
     type=BufferedImage.TYPE_INT_ARGB;
@@ -113,6 +94,22 @@ break;
 default :
 throw new RuntimeException();
 }
+int imageNumber=1;
+File outputFile=new File(outputDir,prefix + imageNumber + ".png");
+while (outputFile.exists()) outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
+writer.write("\n" + outputFile.getName() + "\n");
+Format format;
+if (filter.format != null) {
+writer.write("format: " + filter.format + "\n");
+format=filter.format;
+}
+ else {
+writer.write("format: " + settings.defaultFormat + "\n");
+format=settings.defaultFormat;
+}
+if (filter.minFilter == null || filter.magFilter == null) writer.write("filter: " + settings.defaultFilterMin + ","+ settings.defaultFilterMag+ "\n");
+ else writer.write("filter: " + filter.minFilter + ","+ filter.magFilter+ "\n");
+writer.write("repeat: " + filter.direction + "\n");
 BufferedImage canvas=new BufferedImage(width,height,type);
 insert(canvas,images,bestWidth,bestHeight);
 System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);

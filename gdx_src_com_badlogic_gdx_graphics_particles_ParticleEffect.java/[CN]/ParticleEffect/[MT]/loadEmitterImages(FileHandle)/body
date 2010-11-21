@@ -4,6 +4,6 @@
     String imagePath=emitter.getImagePath();
     if (imagePath == null)     continue;
     String imageName=new File(imagePath.replace('\\','/')).getName();
-    emitter.setTexture(loadTexture(imagesDir.child(imageName)));
+    emitter.setSprite(new Sprite(loadTexture(imagesDir.child(imageName))));
   }
 }

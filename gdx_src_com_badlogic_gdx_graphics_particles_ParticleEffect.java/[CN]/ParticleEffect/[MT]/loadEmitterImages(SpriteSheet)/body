@@ -1,0 +1,13 @@
+{
+  for (int i=0, n=emitters.size(); i < n; i++) {
+    ParticleEmitter emitter=emitters.get(i);
+    String imagePath=emitter.getImagePath();
+    if (imagePath == null)     continue;
+    String imageName=new File(imagePath.replace('\\','/')).getName();
+    int lastDotIndex=imageName.lastIndexOf('.');
+    if (lastDotIndex != -1)     imageName=imageName.substring(0,lastDotIndex);
+    Sprite sprite=spriteSheet.get(imageName);
+    if (sprite == null)     throw new IllegalArgumentException("SpriteSheet missing image: " + imageName);
+    emitter.setSprite(sprite);
+  }
+}

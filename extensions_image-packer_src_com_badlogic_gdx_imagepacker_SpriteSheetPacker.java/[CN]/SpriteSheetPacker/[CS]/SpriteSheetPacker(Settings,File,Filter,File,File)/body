@@ -2,12 +2,6 @@
   this.settings=settings;
   this.inputDir=inputDir;
   this.filter=filter;
-  minWidth=filter.width != -1 ? filter.width : settings.minWidth;
-  minHeight=filter.height != -1 ? filter.height : settings.minHeight;
-  maxWidth=filter.width != -1 ? filter.width : settings.maxWidth;
-  maxHeight=filter.height != -1 ? filter.height : settings.maxHeight;
-  xPadding=images.size() > 1 && filter.direction != Direction.x && filter.direction != Direction.xy ? settings.padding : 0;
-  yPadding=images.size() > 1 && filter.direction != Direction.y && filter.direction != Direction.xy ? settings.padding : 0;
   File[] files=inputDir.listFiles(filter);
   if (files == null)   return;
   for (  File file : files) {
@@ -16,6 +10,12 @@
     if (image != null)     images.add(image);
   }
   if (images.isEmpty())   return;
+  minWidth=filter.width != -1 ? filter.width : settings.minWidth;
+  minHeight=filter.height != -1 ? filter.height : settings.minHeight;
+  maxWidth=filter.width != -1 ? filter.width : settings.maxWidth;
+  maxHeight=filter.height != -1 ? filter.height : settings.maxHeight;
+  xPadding=images.size() > 1 && !filter.direction.isX() ? settings.padding : 0;
+  yPadding=images.size() > 1 && !filter.direction.isY() ? settings.padding : 0;
   System.out.println(inputDir);
   if (filter.format != null)   System.out.println("Format: " + filter.format);
  else   System.out.println("Format: " + settings.defaultFormat + " (default)");

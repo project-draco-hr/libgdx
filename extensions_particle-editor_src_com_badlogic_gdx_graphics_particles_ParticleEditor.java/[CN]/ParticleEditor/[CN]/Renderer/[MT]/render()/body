@@ -11,15 +11,18 @@
     bgImage.draw(spriteBatch);
   }
   activeCount=0;
+  boolean complete=true;
   for (  ParticleEmitter emitter : effect.getEmitters()) {
-    if (emitter.getTexture() == null && emitter.getImagePath() != null)     loadImage(emitter);
+    if (emitter.getSprite() == null && emitter.getImagePath() != null)     loadImage(emitter);
     boolean enabled=isEnabled(emitter);
     if (enabled) {
-      if (emitter.getTexture() != null)       emitter.draw(spriteBatch,delta);
+      if (emitter.getSprite() != null)       emitter.draw(spriteBatch,delta);
       activeCount+=emitter.getActiveCount();
+      if (emitter.isContinuous())       complete=false;
+      if (!emitter.isComplete())       complete=false;
     }
   }
-  if (effect.isComplete())   effect.start();
+  if (complete)   effect.start();
   maxActive=Math.max(maxActive,activeCount);
   maxActiveTimer+=delta;
   if (maxActiveTimer > 3) {

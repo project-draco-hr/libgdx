@@ -1,5 +1,5 @@
 {
-  InputStream input=file.read();
+  InputStream input=effectFile.read();
   emitters.clear();
   BufferedReader reader=null;
   try {
@@ -7,14 +7,14 @@
     while (true) {
       ParticleEmitter emitter=new ParticleEmitter(reader);
       reader.readLine();
-      emitter.setImagePath(ParticleEmitter.readString(reader,"Image Path"));
+      emitter.setImagePath(reader.readLine());
       emitters.add(emitter);
       if (reader.readLine() == null)       break;
       if (reader.readLine() == null)       break;
     }
   }
  catch (  IOException ex) {
-    throw new GdxRuntimeException("Error loading effect: " + file,ex);
+    throw new GdxRuntimeException("Error loading effect: " + effectFile,ex);
   }
  finally {
     try {

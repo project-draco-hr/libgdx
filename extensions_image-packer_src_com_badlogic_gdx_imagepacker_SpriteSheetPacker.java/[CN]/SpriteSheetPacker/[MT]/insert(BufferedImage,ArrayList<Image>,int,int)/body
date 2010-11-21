@@ -4,8 +4,8 @@
     g.setColor(Color.green);
     g.drawRect(0,0,width - 1,height - 1);
   }
-  if (filter.direction != Direction.x && filter.direction != Direction.xy)   width+=xPadding;
-  if (filter.direction != Direction.y && filter.direction != Direction.xy)   height+=yPadding;
+  if (!filter.direction.isX())   width+=xPadding;
+  if (!filter.direction.isY())   height+=yPadding;
   Node root=new Node(0,0,width,height);
   int usedPixels=0;
   for (int i=images.size() - 1; i >= 0; i--) {

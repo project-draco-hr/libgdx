@@ -22,7 +22,7 @@
  else {
       velocityX=velocity * particle.angleCos;
       velocityY=velocity * particle.angleSin;
-      if ((updateFlags & UPDATE_ROTATION) != 0) {
+      if (aligned || (updateFlags & UPDATE_ROTATION) != 0) {
         float rotation=particle.rotation + particle.rotationDiff * rotationValue.getScale(percent);
         if (aligned)         rotation+=particle.angle;
         particle.setRotation(rotation);
