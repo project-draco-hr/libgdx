@@ -1,4 +1,5 @@
 {
+  final Texture texture=sprite.getTexture();
   final float color=tint.toFloatBits();
   y+=yOffset;
   int startX=x;

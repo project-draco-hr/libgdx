@@ -1,7 +1,11 @@
 {
-  this.texture=texture;
-  float invTexWidth=1.0f / texture.getWidth();
-  float invTexHeight=1.0f / texture.getHeight();
+  this.sprite=sprite;
+  float invTexWidth=1.0f / sprite.getWidth();
+  float invTexHeight=1.0f / sprite.getHeight();
+  float uSprite=sprite.getTextureRegionX();
+  float vSprite=sprite.getTextureRegionY();
+  float u2Sprite=uSprite + sprite.getTextureRegionWidth();
+  float v2Sprite=vSprite + sprite.getTextureRegionHeight();
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
     reader.readLine();
@@ -43,8 +47,8 @@
  else       glyph.yoffset=-(glyph.height + Integer.parseInt(tokens.nextToken()));
       tokens.nextToken();
       glyph.xadvance=Integer.parseInt(tokens.nextToken());
-      glyph.u=srcX * invTexWidth;
-      glyph.u2=(srcX + glyph.width) * invTexWidth;
+      glyph.u=uSprite + srcX * invTexWidth;
+      glyph.u2=uSprite + (srcX + glyph.width) * invTexWidth;
       if (flip) {
         glyph.v=srcY * invTexHeight;
         glyph.v2=(srcY + glyph.height) * invTexHeight;

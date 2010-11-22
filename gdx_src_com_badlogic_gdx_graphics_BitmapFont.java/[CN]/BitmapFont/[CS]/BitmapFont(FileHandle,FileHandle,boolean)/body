@@ -1,4 +1,4 @@
 {
-  texture=Gdx.graphics.newTexture(imageFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-  init(fontFile,texture,flip);
+  sprite=new Sprite(Gdx.graphics.newTexture(imageFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  init(fontFile,sprite,flip);
 }
