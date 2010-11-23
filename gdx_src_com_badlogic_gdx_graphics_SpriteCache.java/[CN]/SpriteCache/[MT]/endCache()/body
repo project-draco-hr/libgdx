@@ -23,5 +23,5 @@
   currentCache=null;
   textures.clear();
   counts.clear();
-  return caches.size() - 1;
+  return cache.id;
 }
