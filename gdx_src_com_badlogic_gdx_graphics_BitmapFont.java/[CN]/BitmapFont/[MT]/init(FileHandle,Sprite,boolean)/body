@@ -1,7 +1,7 @@
 {
   this.sprite=sprite;
-  float invTexWidth=1.0f / sprite.getWidth();
-  float invTexHeight=1.0f / sprite.getHeight();
+  float invTexWidth=1.0f / sprite.getTexture().getWidth();
+  float invTexHeight=1.0f / sprite.getTexture().getHeight();
   float uSprite=sprite.getTextureRegionX();
   float vSprite=sprite.getTextureRegionY();
   float u2Sprite=uSprite + sprite.getTextureRegionWidth();
@@ -50,12 +50,12 @@
       glyph.u=uSprite + srcX * invTexWidth;
       glyph.u2=uSprite + (srcX + glyph.width) * invTexWidth;
       if (flip) {
-        glyph.v=srcY * invTexHeight;
-        glyph.v2=(srcY + glyph.height) * invTexHeight;
+        glyph.v=vSprite + srcY * invTexHeight;
+        glyph.v2=vSprite + (srcY + glyph.height) * invTexHeight;
       }
  else {
-        glyph.v2=srcY * invTexHeight;
-        glyph.v=(srcY + glyph.height) * invTexHeight;
+        glyph.v2=vSprite + srcY * invTexHeight;
+        glyph.v=vSprite + (srcY + glyph.height) * invTexHeight;
       }
     }
     while (true) {

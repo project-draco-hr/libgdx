@@ -1,0 +1,5 @@
+{
+  if (currentCache != null)   throw new IllegalStateException("endCache must be called before begin.");
+  currentCache=caches.get(cacheID);
+  mesh.getVerticesBuffer().position(currentCache.offset);
+}

@@ -1,5 +1,5 @@
 {
-  if (!caching)   throw new IllegalStateException("beginCache must be called before add.");
+  if (currentCache == null)   throw new IllegalStateException("beginCache must be called before add.");
   int count=vertices.length / Sprite.SPRITE_SIZE * 6;
   int lastIndex=textures.size() - 1;
   if (lastIndex < 0 || textures.get(lastIndex) != texture) {

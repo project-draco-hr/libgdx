@@ -9,8 +9,8 @@
   pixmap.fill();
   texture2=Gdx.graphics.newUnmanagedTexture(pixmap,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   pixmap.dispose();
-  float sprites[]=new float[SPRITES * 6];
-  float sprites2[]=new float[SPRITES * 6];
+  sprites=new float[SPRITES * 6];
+  sprites2=new float[SPRITES * 6];
   Sprite[] sprites3=new Sprite[SPRITES * 2];
   for (int i=0; i < sprites.length; i+=6) {
     sprites[i]=(int)(Math.random() * (Gdx.graphics.getWidth() - 32));
