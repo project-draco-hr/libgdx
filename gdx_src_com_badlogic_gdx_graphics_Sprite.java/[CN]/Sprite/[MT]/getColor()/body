@@ -1,9 +1,10 @@
 {
-  int intBits=Float.floatToIntBits(vertices[C1]);
+  float floatBits=vertices[C1];
+  int intBits=Float.isNaN(floatBits) ? -1 : Float.floatToIntBits(vertices[C1]);
   Color color=this.color;
   color.r=(intBits & 0xff) / 255f;
-  color.g=(intBits >> 8 & 0xff) / 255f;
-  color.b=(intBits >> 16 & 0xff) / 255f;
-  color.a=(intBits >> 24) / 255f;
+  color.g=((intBits >>> 8) & 0xff) / 255f;
+  color.b=((intBits >>> 16) & 0xff) / 255f;
+  color.a=((intBits >>> 24) & 0xff) / 255f;
   return color;
 }

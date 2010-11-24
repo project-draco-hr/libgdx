@@ -1,3 +1,12 @@
 {
-  add(sprite.getTexture(),sprite.getVertices(),0,20);
+  if (mesh.getNumIndices() > 0) {
+    add(sprite.getTexture(),sprite.getVertices(),0,SPRITE_SIZE);
+    return;
+  }
+  float[] spriteVertices=sprite.getVertices();
+  System.arraycopy(spriteVertices,0,tempVertices,0,3 * VERTEX_SIZE);
+  System.arraycopy(spriteVertices,2 * VERTEX_SIZE,tempVertices,3 * VERTEX_SIZE,VERTEX_SIZE);
+  System.arraycopy(spriteVertices,3 * VERTEX_SIZE,tempVertices,4 * VERTEX_SIZE,VERTEX_SIZE);
+  System.arraycopy(spriteVertices,0,tempVertices,5 * VERTEX_SIZE,VERTEX_SIZE);
+  add(sprite.getTexture(),tempVertices,0,30);
 }
