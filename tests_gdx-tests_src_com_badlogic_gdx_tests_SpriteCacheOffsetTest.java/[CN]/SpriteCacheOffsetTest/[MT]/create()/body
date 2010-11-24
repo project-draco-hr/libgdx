@@ -1,0 +1,14 @@
+{
+  Sprite sprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.internal("data/badlogicsmall.jpg"),Linear,Linear,ClampToEdge,ClampToEdge));
+  sprite.setSize(tileSize,tileSize);
+  cache=new SpriteCache(1000);
+  for (int y=0; y < tileMapHeight; y++) {
+    cache.beginCache();
+    for (int x=0; x < tileMapWidth; x++) {
+      sprite.setPosition(x * tileSize,y * tileSize);
+      cache.add(sprite);
+    }
+    cache.endCache();
+    sprite.rotate(90);
+  }
+}
