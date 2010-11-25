@@ -1,5 +1,5 @@
 {
-  super("GDX Particle Editor");
+  super("Particle Editor");
   lwjglCanvas=new LwjglCanvas(new Renderer(),false);
   addWindowListener(new WindowAdapter(){
     public void windowClosed(    WindowEvent event){
