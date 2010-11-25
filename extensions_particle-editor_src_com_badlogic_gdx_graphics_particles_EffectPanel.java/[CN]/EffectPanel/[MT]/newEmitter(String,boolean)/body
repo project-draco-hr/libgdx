@@ -18,7 +18,7 @@
   emitter.getTransparency().setScaling(new float[]{0,1,1,0});
   emitter.setFlip(false,true);
   emitter.setMaxParticleCount(15);
-  emitter.setImagePath("data/particle.png");
+  emitter.setImagePath("particle.png");
   ArrayList<ParticleEmitter> emitters=editor.effect.getEmitters();
   if (emitters.isEmpty())   emitter.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
  else {
