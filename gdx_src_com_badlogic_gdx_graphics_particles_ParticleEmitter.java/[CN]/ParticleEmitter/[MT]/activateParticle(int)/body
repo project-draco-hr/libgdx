@@ -57,9 +57,9 @@
   }
   particle.transparency=transparencyValue.newLowValue();
   particle.transparencyDiff=transparencyValue.newHighValue() - particle.transparency;
-  int x=this.x;
+  float x=this.x;
   if (xOffsetValue.active)   x+=(int)xOffsetValue.newLowValue();
-  int y=this.y;
+  float y=this.y;
   if (yOffsetValue.active)   y+=(int)yOffsetValue.newLowValue();
 switch (spawnShapeValue.shape) {
 case square:

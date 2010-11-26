@@ -80,8 +80,12 @@
     xHeight=g != null ? g.height : 1;
     g=getGlyph('M');
     capHeight=g != null ? g.height : 1;
-    yOffset=flip ? -baseLine : baseLine;
-    down=flip ? lineHeight : -lineHeight;
+    yOffset=baseLine - capHeight;
+    down=-lineHeight;
+    if (flip) {
+      yOffset=-yOffset;
+      down=-down;
+    }
   }
  catch (  Exception ex) {
     throw new GdxRuntimeException("Error loading font file: " + fontFile,ex);

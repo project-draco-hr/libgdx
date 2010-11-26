@@ -1,0 +1,17 @@
+{
+  if (attached) {
+    float xAmount=x - this.x;
+    float yAmount=y - this.y;
+    BitSet active=this.active;
+    int index=0;
+    while (true) {
+      index=active.nextSetBit(index);
+      if (index == -1)       break;
+      Particle particle=particles[index];
+      particle.translate(xAmount,yAmount);
+      index++;
+    }
+  }
+  this.x=x;
+  this.y=y;
+}

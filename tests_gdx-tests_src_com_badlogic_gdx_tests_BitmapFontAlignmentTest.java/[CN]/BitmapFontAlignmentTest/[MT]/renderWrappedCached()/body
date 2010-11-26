@@ -1,0 +1,12 @@
+{
+  String text="Wrapped Cached Wrapped Cached";
+  float x=logoSprite.getX();
+  float y=logoSprite.getY();
+  float width=logoSprite.getWidth();
+  float height=logoSprite.getHeight();
+  cache.setWrappedText(text,0,0,Color.WHITE,width);
+  x+=width / 2 - cache.getWidth() / 2;
+  y+=height / 2 + cache.getHeight() / 2;
+  cache.setPosition(x,y);
+  cache.draw(spriteBatch);
+}

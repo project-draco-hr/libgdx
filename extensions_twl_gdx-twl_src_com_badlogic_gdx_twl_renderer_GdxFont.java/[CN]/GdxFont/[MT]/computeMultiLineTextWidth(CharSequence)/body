@@ -1,3 +1,3 @@
 {
-  return bitmapFont.computeMultiLineTextWidth(str);
+  return bitmapFont.getMultiLineBounds(str).width;
 }

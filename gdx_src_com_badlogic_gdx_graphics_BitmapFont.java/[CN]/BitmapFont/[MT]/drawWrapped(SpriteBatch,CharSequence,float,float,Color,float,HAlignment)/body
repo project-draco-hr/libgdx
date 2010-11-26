@@ -1,0 +1,28 @@
+{
+  int down=this.down;
+  int start=0;
+  int numLines=0;
+  int length=str.length();
+  while (start < length) {
+    int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    if (lineEnd < length) {
+      while (lineEnd > start) {
+        char ch=str.charAt(lineEnd);
+        if (ch == ' ' || ch == '\n')         break;
+        lineEnd--;
+      }
+    }
+    if (lineEnd == start)     lineEnd++;
+    float xOffset=0;
+    if (alignment != HAlignment.LEFT) {
+      int lineWidth=getBounds(str,start,lineEnd).width;
+      xOffset=wrapWidth - lineWidth;
+      if (alignment == HAlignment.CENTER)       xOffset/=2;
+    }
+    draw(spriteBatch,str,x + xOffset,y,color,start,lineEnd);
+    start=lineEnd + 1;
+    y+=down;
+    numLines++;
+  }
+  return capHeight + (numLines - 1) * lineHeight;
+}

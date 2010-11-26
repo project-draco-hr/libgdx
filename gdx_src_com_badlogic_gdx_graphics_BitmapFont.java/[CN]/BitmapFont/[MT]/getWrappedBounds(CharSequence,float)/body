@@ -1,0 +1,24 @@
+{
+  int start=0;
+  int maxWidth=0;
+  int numLines=0;
+  int length=str.length();
+  while (start < length) {
+    int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    if (lineEnd < length) {
+      while (lineEnd > start) {
+        char ch=str.charAt(lineEnd);
+        if (ch == ' ' || ch == '\n')         break;
+        lineEnd--;
+      }
+    }
+    if (lineEnd == start)     lineEnd++;
+    int lineWidth=getBounds(str,start,lineEnd).width;
+    maxWidth=Math.max(maxWidth,lineWidth);
+    start=lineEnd + 1;
+    numLines++;
+  }
+  textBounds.width=maxWidth;
+  textBounds.height=capHeight + (numLines - 1) * lineHeight;
+  return textBounds;
+}

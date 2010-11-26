@@ -1,0 +1,7 @@
+{
+  final float color=tint.toFloatBits();
+  reset(end - start);
+  y+=font.yOffset;
+  width=addToCache(str,x,y,color,start,end);
+  height=font.capHeight;
+}

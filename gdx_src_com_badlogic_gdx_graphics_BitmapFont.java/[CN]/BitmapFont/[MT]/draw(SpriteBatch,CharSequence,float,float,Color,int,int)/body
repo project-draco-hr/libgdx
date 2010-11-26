@@ -1,0 +1,25 @@
+{
+  final Texture texture=sprite.getTexture();
+  final float color=tint.toFloatBits();
+  y+=yOffset;
+  float startX=x;
+  Glyph lastGlyph=null;
+  while (start < end) {
+    lastGlyph=getGlyph(str.charAt(start++));
+    if (lastGlyph != null) {
+      spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2,color);
+      x+=lastGlyph.xadvance;
+      break;
+    }
+  }
+  while (start < end) {
+    char ch=str.charAt(start++);
+    Glyph g=getGlyph(ch);
+    if (g == null)     continue;
+    x+=lastGlyph.getKerning(ch);
+    lastGlyph=g;
+    spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2,color);
+    x+=g.xadvance;
+  }
+  return (int)(x - startX);
+}

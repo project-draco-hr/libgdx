@@ -1,0 +1,13 @@
+{
+  String text="Multi Line\nCached";
+  int lines=2;
+  float x=logoSprite.getX();
+  float y=logoSprite.getY();
+  float width=logoSprite.getWidth();
+  float height=logoSprite.getHeight();
+  cache.setMultiLineText(text,0,0,Color.WHITE);
+  x+=width / 2 - cache.getWidth() / 2;
+  y+=height / 2 + cache.getHeight() / 2;
+  cache.setPosition(x,y);
+  cache.draw(spriteBatch);
+}
