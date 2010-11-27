@@ -17,7 +17,6 @@
     in=null;
   }
  catch (  Throwable t) {
-    throw new GdxRuntimeException("Couldn't load lwjgl native, " + libName,t);
   }
  finally {
     if (out != null)     try {
