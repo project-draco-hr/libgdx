@@ -4,9 +4,9 @@
   float y=logoSprite.getY();
   float width=logoSprite.getWidth();
   float height=logoSprite.getHeight();
-  cache.setMultiLineText(text,0,0,Color.WHITE);
-  x+=width / 2 - cache.getWidth() / 2;
-  y+=height / 2 + cache.getHeight() / 2;
+  TextBounds bounds=cache.setMultiLineText(text,0,0);
+  x+=width / 2 - bounds.width / 2;
+  y+=height / 2 + bounds.height / 2;
   cache.setPosition(x,y);
   cache.draw(spriteBatch);
 }

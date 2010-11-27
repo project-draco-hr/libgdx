@@ -7,5 +7,5 @@
   TextBounds bounds=font.getMultiLineBounds(text);
   x+=width / 2 - bounds.width / 2;
   y+=height / 2 + bounds.height / 2;
-  font.drawMultiLine(spriteBatch,text,x,y,Color.WHITE);
+  font.drawMultiLine(spriteBatch,text,x,y);
 }

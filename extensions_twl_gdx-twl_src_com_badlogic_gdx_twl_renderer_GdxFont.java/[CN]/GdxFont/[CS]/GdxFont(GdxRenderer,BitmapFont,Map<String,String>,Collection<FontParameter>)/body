@@ -1,7 +1,7 @@
 {
   this.bitmapFont=bitmapFont;
   this.renderer=renderer;
-  yOffset=bitmapFont.getLineHeight() - bitmapFont.getCapHeight() - bitmapFont.getBaseLine();
+  yOffset=-bitmapFont.getCapHeight();
   ArrayList<FontState> states=new ArrayList<FontState>();
   for (  FontParameter p : condParams) {
     HashMap<String,String> effective=new HashMap<String,String>(params);

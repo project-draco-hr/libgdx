@@ -1,13 +1,17 @@
 {
   String text="Forsaking monastic tradition, twelve jovial friars gave\nup their vocation for a questionable existence on the flying trapeze.";
-  red.a=alpha;
-  font.drawWrapped(spriteBatch,text,0,300,red,480,HAlignment.CENTER);
-  font.draw(spriteBatch,"(normal)",10,66,Color.WHITE);
-  if (alpha > 0.6f)   return;
+  font.setColor(red);
+  font.drawWrapped(spriteBatch,text,0,300,480,HAlignment.CENTER);
+  font.setColor(Color.WHITE);
+  font.draw(spriteBatch,"(normal)",10,66);
+  if (red.a > 0.6f)   return;
   text="Sphinx of black quartz,\njudge my vow.";
-  font.drawMultiLine(spriteBatch,text,5,300,Color.RED);
+  font.setColor(Color.RED);
+  font.drawMultiLine(spriteBatch,text,5,300);
   text="How quickly\ndaft jumping zebras vex.";
-  font.drawMultiLine(spriteBatch,text,5,200,Color.BLUE,470,BitmapFont.HAlignment.RIGHT);
+  font.setColor(Color.BLUE);
+  font.drawMultiLine(spriteBatch,text,5,200,470,BitmapFont.HAlignment.RIGHT);
   text="Kerning: LYA moo";
-  font.draw(spriteBatch,text,210,66,Color.WHITE,0,text.length() - 3);
+  font.setColor(Color.WHITE);
+  font.draw(spriteBatch,text,210,66,0,text.length() - 3);
 }

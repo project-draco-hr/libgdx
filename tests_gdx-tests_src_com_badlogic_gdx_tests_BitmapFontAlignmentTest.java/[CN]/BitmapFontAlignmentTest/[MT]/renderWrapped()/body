@@ -7,5 +7,5 @@
   TextBounds bounds=font.getWrappedBounds(text,width);
   x+=width / 2 - bounds.width / 2;
   y+=height / 2 + bounds.height / 2;
-  font.drawWrapped(spriteBatch,text,x,y,Color.WHITE,width);
+  font.drawWrapped(spriteBatch,text,x,y,width);
 }

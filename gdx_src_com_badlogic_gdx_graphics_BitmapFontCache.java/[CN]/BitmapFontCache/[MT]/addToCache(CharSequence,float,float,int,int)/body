@@ -1,0 +1,24 @@
+{
+  float startX=x;
+  BitmapFont font=this.font;
+  Glyph lastGlyph=null;
+  while (start < end) {
+    lastGlyph=font.getGlyph(str.charAt(start++));
+    if (lastGlyph != null) {
+      addGlyph(lastGlyph,x,y);
+      x+=lastGlyph.xadvance;
+      break;
+    }
+  }
+  while (start < end) {
+    char ch=str.charAt(start++);
+    Glyph g=font.getGlyph(ch);
+    if (g != null) {
+      x+=lastGlyph.getKerning(ch);
+      lastGlyph=g;
+      addGlyph(lastGlyph,x,y);
+      x+=g.xadvance;
+    }
+  }
+  return (int)(x - startX);
+}

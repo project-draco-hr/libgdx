@@ -19,13 +19,16 @@
   cache3=new BitmapFontCache(font);
   cache4=new BitmapFontCache(font);
   cache5=new BitmapFontCache(font);
-  cache1.setText("(cached)",10,320 - 66,Color.WHITE);
+  cache1.setText("(cached)",10,320 - 66);
   String text="Sphinx of black quartz,\njudge my vow.";
-  cache2.setMultiLineText(text,5,320 - 300,Color.RED);
+  cache2.setColor(Color.RED);
+  cache2.setMultiLineText(text,5,320 - 300);
   text="How quickly\ndaft jumping zebras vex.";
-  cache3.setMultiLineText(text,5,320 - 200,Color.BLUE,470,BitmapFont.HAlignment.CENTER);
+  cache3.setColor(Color.BLUE);
+  cache3.setMultiLineText(text,5,320 - 200,470,BitmapFont.HAlignment.CENTER);
   text="Kerning: LYA moo";
-  cache4.setText(text,210,320 - 66,Color.WHITE,0,text.length() - 3);
+  cache4.setText(text,210,320 - 66,0,text.length() - 3);
   text="Forsaking monastic tradition, twelve jovial friars gave\nup their vocation for a questionable existence on the flying trapeze.";
-  cache5.setWrappedText(text,0,320 - 300,red,480,HAlignment.CENTER);
+  cache5.setColor(red);
+  cache5.setWrappedText(text,0,320 - 300,480,HAlignment.CENTER);
 }

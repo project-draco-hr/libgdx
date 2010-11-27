@@ -5,6 +5,7 @@
   renderer=new ImmediateModeRenderer();
   batch=new SpriteBatch();
   font=new BitmapFont();
+  font.setColor(Color.RED);
   createPhysicsWorld();
   Gdx.input.setInputProcessor(this);
 }

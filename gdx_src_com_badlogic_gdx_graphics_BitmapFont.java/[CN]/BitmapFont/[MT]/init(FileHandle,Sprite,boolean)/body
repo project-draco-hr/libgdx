@@ -4,8 +4,6 @@
   float invTexHeight=1.0f / sprite.getTexture().getHeight();
   float uSprite=sprite.getTextureRegionX();
   float vSprite=sprite.getTextureRegionY();
-  float u2Sprite=uSprite + sprite.getTextureRegionWidth();
-  float v2Sprite=vSprite + sprite.getTextureRegionHeight();
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
     reader.readLine();
@@ -14,7 +12,7 @@
     if (!common[1].startsWith("lineHeight="))     throw new GdxRuntimeException("Invalid font file: " + fontFile);
     lineHeight=Integer.parseInt(common[1].substring(11));
     if (!common[2].startsWith("base="))     throw new GdxRuntimeException("Invalid font file: " + fontFile);
-    baseLine=Integer.parseInt(common[2].substring(5));
+    int baseLine=Integer.parseInt(common[2].substring(5));
     reader.readLine();
     while (true) {
       String line=reader.readLine();
@@ -29,7 +27,7 @@
       if (ch <= Character.MAX_VALUE) {
         Glyph[] page=glyphs[ch / PAGE_SIZE];
         if (page == null)         glyphs[ch / PAGE_SIZE]=page=new Glyph[PAGE_SIZE];
-        page[ch & (PAGE_SIZE - 1)]=glyph;
+        page[ch & PAGE_SIZE - 1]=glyph;
       }
  else       continue;
       tokens.nextToken();
@@ -37,7 +35,7 @@
       tokens.nextToken();
       float srcY=Integer.parseInt(tokens.nextToken());
       tokens.nextToken();
-      glyph.width=(Integer.parseInt(tokens.nextToken()));
+      glyph.width=Integer.parseInt(tokens.nextToken());
       tokens.nextToken();
       glyph.height=Integer.parseInt(tokens.nextToken());
       tokens.nextToken();
@@ -75,7 +73,7 @@
       glyph.setKerning(second,amount);
     }
     Glyph g=getGlyph(' ');
-    spaceWidth=(g != null) ? g.xadvance + g.width : 1;
+    spaceWidth=g != null ? g.xadvance + g.width : 1;
     g=getGlyph('x');
     xHeight=g != null ? g.height : 1;
     g=getGlyph('M');

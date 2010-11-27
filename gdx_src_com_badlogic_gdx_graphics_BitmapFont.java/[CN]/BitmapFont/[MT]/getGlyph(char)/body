@@ -1,5 +1,5 @@
 {
   Glyph[] page=glyphs[ch / PAGE_SIZE];
-  if (page != null)   return page[ch & (PAGE_SIZE - 1)];
+  if (page != null)   return page[ch & PAGE_SIZE - 1];
   return null;
 }

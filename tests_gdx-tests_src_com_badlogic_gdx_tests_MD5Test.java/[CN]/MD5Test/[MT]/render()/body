@@ -23,6 +23,6 @@
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);
   batch.begin();
-  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java")+ ", render time: "+ renderTime+ ", skin time: "+ skinTime,10,20,Color.WHITE);
+  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java")+ ", render time: "+ renderTime+ ", skin time: "+ skinTime,10,20);
   batch.end();
 }

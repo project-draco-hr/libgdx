@@ -2,6 +2,6 @@
   FontState fontState=evalFontState(as);
   x+=fontState.offsetX;
   y+=fontState.offsetY + yOffset;
-  com.badlogic.gdx.graphics.Color color=renderer.getColor(fontState.color);
-  return bitmapFont.drawMultiLine(renderer.spriteBatch,str,x,y,color,width,gdxAlignment[align.ordinal()]);
+  bitmapFont.setColor(renderer.getColor(fontState.color));
+  return bitmapFont.drawMultiLine(renderer.spriteBatch,str,x,y,width,gdxAlignment[align.ordinal()]).width;
 }
