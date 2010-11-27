@@ -1,5 +1,6 @@
 {
-  for (  Body body : world.getBodies()) {
+  for (Iterator<Body> iter=world.getBodies(); iter.hasNext(); ) {
+    Body body=iter.next();
     Transform transform=body.getTransform();
     int len=body.getFixtureList().size();
     List<Fixture> fixtures=body.getFixtureList();
@@ -12,7 +13,10 @@
  else       drawShape(fixture,transform,SHAPE_AWAKE);
     }
   }
-  for (  Joint joint : world.getJoints())   drawJoint(joint);
+  for (Iterator<Joint> iter=world.getJoints(); iter.hasNext(); ) {
+    Joint joint=iter.next();
+    drawJoint(joint);
+  }
   int len=world.getContactList().size();
   for (int i=0; i < len; i++)   drawContact(world.getContactList().get(i));
 }

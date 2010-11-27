@@ -1,0 +1,8 @@
+{
+  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
+  float[] items=this.items;
+  float took=items[index];
+  size--;
+  items[index]=items[size];
+  return took;
+}

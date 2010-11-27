@@ -1,0 +1,5 @@
+{
+  int index=key & mask;
+  for (Entry e=table[index]; e != null; e=e.next)   if (e.key == key)   return true;
+  return false;
+}

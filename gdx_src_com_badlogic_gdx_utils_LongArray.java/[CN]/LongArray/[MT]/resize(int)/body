@@ -1,0 +1,5 @@
+{
+  long[] newItems=new long[Math.max(newSize,8)];
+  System.arraycopy(items,0,newItems,0,Math.min(items.length,newItems.length));
+  items=newItems;
+}

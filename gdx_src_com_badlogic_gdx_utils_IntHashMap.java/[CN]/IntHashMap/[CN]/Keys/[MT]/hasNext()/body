@@ -1,0 +1,13 @@
+{
+  if (entry != null && entry.next != null) {
+    entry=entry.next;
+    return true;
+  }
+  while (true) {
+    index++;
+    if (index >= table.length)     return false;
+    if (table[index] == null)     continue;
+    entry=table[index];
+    return true;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  size=bag.size;
+  items=new long[size];
+  System.arraycopy(bag.items,0,items,0,size);
+}

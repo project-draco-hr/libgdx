@@ -1,0 +1,6 @@
+{
+  float[] items=this.items;
+  int i=size - 1;
+  while (i >= 0)   if (items[i--] == value)   return true;
+  return false;
+}

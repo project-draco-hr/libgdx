@@ -2,12 +2,9 @@
   if (initialCapacity > 1 << 30)   throw new IllegalArgumentException("initialCapacity is too large.");
   if (initialCapacity < 0)   throw new IllegalArgumentException("initialCapacity must be greater than zero.");
   if (loadFactor <= 0)   throw new IllegalArgumentException("initialCapacity must be greater than zero.");
-  capacity=1;
-  while (capacity < initialCapacity) {
-    capacity<<=1;
-  }
+  capacity=MathUtils.nextPowerOfTwo(initialCapacity);
   this.loadFactor=loadFactor;
-  this.threshold=(int)(capacity * loadFactor);
-  this.table=new Entry[capacity];
-  this.mask=capacity - 1;
+  threshold=(int)(capacity * loadFactor);
+  table=new Entry[capacity];
+  mask=capacity - 1;
 }
