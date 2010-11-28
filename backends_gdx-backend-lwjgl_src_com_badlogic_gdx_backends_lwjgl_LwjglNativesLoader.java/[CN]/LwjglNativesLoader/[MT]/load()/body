@@ -1,6 +1,7 @@
 {
   System.setProperty("org.lwjgl.input.Mouse.allowNegativeMouseCoords","true");
   Version.loadLibrary();
+  if (!load)   return;
   String os=System.getProperty("os.name");
   String arch=System.getProperty("os.arch");
   boolean is64Bit=false;
@@ -8,4 +9,5 @@
   if (os.contains("Windows"))   loadLibrariesWindows(is64Bit);
   if (os.contains("Linux"))   loadLibrariesLinux(is64Bit);
   if (os.contains("Mac"))   loadLibrariesMac();
+  System.setProperty("org.lwjgl.librarypath",new File(System.getProperty("java.io.tmpdir")).getAbsolutePath());
 }
