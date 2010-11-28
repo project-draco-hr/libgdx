@@ -1,5 +1,5 @@
 {
   int color=(a << 24) | (b << 16) | (g << 8)| r;
-  float floatColor=Float.intBitsToFloat(color);
+  float floatColor=Float.intBitsToFloat(color & 0xfeffffff);
   return floatColor;
 }
