@@ -10,14 +10,6 @@
   logoSprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
   logoSprite.setColor(1,1,1,0.5f);
   font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal),false);
-  inputProcessor=new InputAdapter(){
-    public boolean touchDown(    int x,    int y,    int pointer){
-      renderMode=(renderMode + 1) % 2;
-      return false;
-    }
-  }
-;
-  Gdx.input.setInputProcessor(inputProcessor);
   cache1=new BitmapFontCache(font);
   cache2=new BitmapFontCache(font);
   cache3=new BitmapFontCache(font);

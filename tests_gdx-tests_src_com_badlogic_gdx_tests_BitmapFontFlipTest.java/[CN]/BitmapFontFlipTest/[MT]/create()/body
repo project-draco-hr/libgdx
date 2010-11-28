@@ -1,4 +1,11 @@
 {
+  Gdx.input.setInputProcessor(new InputAdapter(){
+    public boolean touchDown(    int x,    int y,    int pointer){
+      renderMode=(renderMode + 1) % 2;
+      return false;
+    }
+  }
+);
   spriteBatch=new SpriteBatch();
   spriteBatch.setProjectionMatrix(new Matrix4().setToOrtho(0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),0,0,1));
   logoSprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/badlogic.jpg",FileType.Internal),TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
@@ -6,14 +13,6 @@
   logoSprite.setPosition(0,320 - 256);
   logoSprite.setColor(1,1,1,0.5f);
   font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal),true);
-  inputProcessor=new InputAdapter(){
-    public boolean touchDown(    int x,    int y,    int pointer){
-      renderMode=(renderMode + 1) % 2;
-      return false;
-    }
-  }
-;
-  Gdx.input.setInputProcessor(inputProcessor);
   cache1=new BitmapFontCache(font);
   cache2=new BitmapFontCache(font);
   cache3=new BitmapFontCache(font);
