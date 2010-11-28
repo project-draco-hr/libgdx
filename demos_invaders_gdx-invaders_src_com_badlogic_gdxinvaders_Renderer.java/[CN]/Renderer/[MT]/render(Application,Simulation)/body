@@ -28,6 +28,9 @@
     lastScore=simulation.score;
     lastWave=simulation.wave;
   }
+  spriteBatch.enableBlending();
+  spriteBatch.setBlendFunction(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  font.draw(spriteBatch,status,0,320);
   spriteBatch.end();
   invaderAngle+=app.getGraphics().getDeltaTime() * 90;
   if (invaderAngle > 360)   invaderAngle-=360;

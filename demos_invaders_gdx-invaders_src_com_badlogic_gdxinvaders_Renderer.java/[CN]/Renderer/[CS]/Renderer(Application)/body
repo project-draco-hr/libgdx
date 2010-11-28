@@ -45,6 +45,7 @@
       }
     }
     explosionMesh.setVertices(vertices);
+    font=new BitmapFont(Gdx.files.internal("data/font10.fnt"),Gdx.files.internal("data/font10.png"),false);
     camera=new PerspectiveCamera();
     camera.setFov(67);
     camera.setViewport(480,320);
