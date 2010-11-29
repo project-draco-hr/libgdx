@@ -6,14 +6,25 @@
   int maxWidth=0;
   while (start < length) {
     int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    int nextLineStart;
     if (lineEnd < length) {
+      int originalLineEnd=lineEnd;
       while (lineEnd > start) {
         char ch=str.charAt(lineEnd);
         if (ch == ' ' || ch == '\n')         break;
         lineEnd--;
       }
+      if (lineEnd == start) {
+        lineEnd=originalLineEnd;
+        if (lineEnd == start)         lineEnd++;
+        nextLineStart=lineEnd;
+      }
+ else       nextLineStart=lineEnd + 1;
     }
-    if (lineEnd == start)     lineEnd++;
+ else {
+      if (lineEnd == start)       lineEnd++;
+      nextLineStart=length;
+    }
     float xOffset=0;
     if (alignment != HAlignment.LEFT) {
       int lineWidth=getBounds(str,start,lineEnd).width;
@@ -22,7 +33,7 @@
     }
     int lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);
-    start=lineEnd + 1;
+    start=nextLineStart;
     y+=down;
     numLines++;
   }
