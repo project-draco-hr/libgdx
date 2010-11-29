@@ -1,9 +1,4 @@
 {
-  this.sprite=sprite;
-  float invTexWidth=1.0f / sprite.getTexture().getWidth();
-  float invTexHeight=1.0f / sprite.getTexture().getHeight();
-  float uSprite=sprite.getTextureRegionX();
-  float vSprite=sprite.getTextureRegionY();
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
     reader.readLine();
@@ -13,7 +8,18 @@
     lineHeight=Integer.parseInt(common[1].substring(11));
     if (!common[2].startsWith("base="))     throw new GdxRuntimeException("Invalid font file: " + fontFile);
     int baseLine=Integer.parseInt(common[2].substring(5));
-    reader.readLine();
+    if (sprite != null)     reader.readLine();
+ else {
+      String[] page=reader.readLine().split(" ",4);
+      if (!page[2].startsWith("file="))       throw new GdxRuntimeException("Invalid font file: " + fontFile);
+      FileHandle imageFile=fontFile.parent().child(page[2].substring(5));
+      sprite=new Sprite(Gdx.graphics.newTexture(imageFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+    }
+    this.sprite=sprite;
+    float invTexWidth=1.0f / sprite.getTexture().getWidth();
+    float invTexHeight=1.0f / sprite.getTexture().getHeight();
+    float uSprite=sprite.getTextureRegionX();
+    float vSprite=sprite.getTextureRegionY();
     while (true) {
       String line=reader.readLine();
       if (line == null)       break;
