@@ -4,9 +4,7 @@
     texWidth=pngDecoder.getWidth();
     texHeight=pngDecoder.getHeight();
     int stride=texWidth * 4;
-    int bufferSize=stride * texHeight;
-    if (buffer == null || buffer.capacity() < bufferSize)     buffer=BufferUtils.createByteBuffer(bufferSize);
- else     buffer.clear();
+    ensureBufferSize(stride * texHeight);
     Format pngFormat=pngDecoder.decideTextureFormat(PNGDecoder.Format.RGBA);
     int glFormat, glInternalFormat;
 switch (pngFormat) {
