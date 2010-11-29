@@ -78,10 +78,10 @@
     xHeight=g != null ? g.height : 1;
     g=getGlyph('M');
     capHeight=g != null ? g.height : 1;
-    yOffset=baseLine - capHeight;
+    ascent=baseLine - capHeight;
     down=-lineHeight;
     if (flip) {
-      yOffset=-yOffset;
+      ascent=-ascent;
       down=-down;
     }
   }

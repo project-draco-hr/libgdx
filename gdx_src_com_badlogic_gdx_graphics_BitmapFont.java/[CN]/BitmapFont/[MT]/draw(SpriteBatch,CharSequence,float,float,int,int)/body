@@ -1,6 +1,6 @@
 {
   final Texture texture=sprite.getTexture();
-  y+=yOffset;
+  y+=ascent;
   float startX=x;
   Glyph lastGlyph=null;
   while (start < end) {

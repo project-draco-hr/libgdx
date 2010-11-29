@@ -2,7 +2,7 @@
   BitmapFont font=this.font;
   int length=str.length();
   reset(length);
-  y+=font.yOffset;
+  y+=font.ascent;
   int down=font.down;
   int maxWidth=0;
   int start=0;
