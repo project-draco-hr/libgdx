@@ -1,0 +1,4 @@
+{
+  if (isRetracted())   return;
+  renderer.drawLine(x1,y1,x2,y2,redColorComponent(DEFAULT_WALL_RED),greenColorComponent(DEFAULT_WALL_GREEN),blueColorComponent(DEFAULT_WALL_BLUE));
+}

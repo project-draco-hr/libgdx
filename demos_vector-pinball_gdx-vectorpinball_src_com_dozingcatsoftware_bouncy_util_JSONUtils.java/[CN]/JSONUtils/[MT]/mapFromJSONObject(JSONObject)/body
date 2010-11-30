@@ -1,0 +1,14 @@
+{
+  Map result=new HashMap();
+  try {
+    for (Iterator ki=jsonObject.keys(); ki.hasNext(); ) {
+      String key=(String)ki.next();
+      Object value=objectFromJSONItem(jsonObject.get(key));
+      result.put(key,value);
+    }
+  }
+ catch (  JSONException ex) {
+    throw new RuntimeException(ex);
+  }
+  return result;
+}

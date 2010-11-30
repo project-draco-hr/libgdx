@@ -1,0 +1,9 @@
+{
+  if (this.kick <= 0.01f)   return null;
+  Vector2 ballpos=ball.getWorldCenter();
+  float ix=ballpos.x - this.cx;
+  float iy=ballpos.y - this.cy;
+  float mag=(float)Math.sqrt(ix * ix + iy * iy);
+  float scale=this.kick / mag;
+  return new Vector2(ix * scale,iy * scale);
+}

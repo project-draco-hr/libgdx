@@ -1,0 +1,16 @@
+{
+  try {
+    InputStream fin=Gdx.files.internal("data/field_layout.json").read();
+    BufferedReader br=new BufferedReader(new InputStreamReader(fin));
+    StringBuilder buffer=new StringBuilder();
+    String line;
+    while ((line=br.readLine()) != null) {
+      buffer.append(line);
+    }
+    fin.close();
+    _layoutArray=JSONUtils.listFromJSONString(buffer.toString());
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

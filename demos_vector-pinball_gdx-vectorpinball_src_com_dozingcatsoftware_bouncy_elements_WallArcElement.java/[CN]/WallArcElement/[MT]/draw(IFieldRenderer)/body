@@ -1,0 +1,7 @@
+{
+  int len=lineSegments.size();
+  for (int i=0; i < len; i++) {
+    float[] segment=lineSegments.get(i);
+    renderer.drawLine(segment[0],segment[1],segment[2],segment[3],redColorComponent(DEFAULT_WALL_RED),greenColorComponent(DEFAULT_WALL_GREEN),blueColorComponent(DEFAULT_WALL_BLUE));
+  }
+}

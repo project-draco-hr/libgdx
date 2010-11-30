@@ -1,0 +1,6 @@
+{
+  if (active != this.isFlipperEngaged()) {
+    float speed=(active) ? upspeed : -downspeed;
+    setEffectiveMotorSpeed(speed);
+  }
+}

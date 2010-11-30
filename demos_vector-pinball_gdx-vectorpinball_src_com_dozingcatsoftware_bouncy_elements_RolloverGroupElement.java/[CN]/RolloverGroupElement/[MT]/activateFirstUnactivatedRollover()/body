@@ -1,0 +1,10 @@
+{
+  int len=rollovers.size();
+  for (int i=0; i < len; i++) {
+    Rollover rollover=rollovers.get(i);
+    if (!activeRollovers.contains(rollover)) {
+      activeRollovers.add(rollover);
+      break;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (retracted != this.isRetracted()) {
+    wallBody.setActive(!retracted);
+  }
+}

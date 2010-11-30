@@ -1,0 +1,10 @@
+{
+  List<Number> position=layout.getLaunchPosition();
+  List<Float> velocity=layout.getLaunchVelocity();
+  float radius=layout.getBallRadius();
+  Body ball=Box2DFactory.createCircle(world,position.get(0).floatValue(),position.get(1).floatValue(),radius,false);
+  ball.setBullet(true);
+  ball.setLinearVelocity(new Vector2(velocity.get(0),velocity.get(1)));
+  this.balls.add(ball);
+  return ball;
+}

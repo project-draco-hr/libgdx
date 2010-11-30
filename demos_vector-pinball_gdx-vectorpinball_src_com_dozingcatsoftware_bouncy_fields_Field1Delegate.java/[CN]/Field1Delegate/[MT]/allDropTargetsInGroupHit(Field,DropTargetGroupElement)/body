@@ -1,0 +1,18 @@
+{
+  String id=targetGroup.getElementID();
+  if ("DropTargetLeftSave".equals(id)) {
+    ((WallElement)field.getFieldElementByID("BallSaver-left")).setRetracted(false);
+    field.showGameMessage("Left Save Enabled",1500);
+  }
+ else   if ("DropTargetRightSave".equals(id)) {
+    ((WallElement)field.getFieldElementByID("BallSaver-right")).setRetracted(false);
+    field.showGameMessage("Right Save Enabled",1500);
+  }
+  RolloverGroupElement extraBallRollovers=(RolloverGroupElement)field.getFieldElementByID("ExtraBallRollovers");
+  if (!extraBallRollovers.allRolloversActive()) {
+    extraBallRollovers.activateFirstUnactivatedRollover();
+    if (extraBallRollovers.allRolloversActive()) {
+      field.showGameMessage("Shoot Ramp for Extra Ball",1500);
+    }
+  }
+}

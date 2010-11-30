@@ -1,0 +1,21 @@
+{
+  int len=balls.size();
+  for (int i=0; i < len; i++) {
+    Body ball=balls.get(i);
+    if (ball.getUserData() == null)     continue;
+    List<Fixture> fixtures=(List<Fixture>)ball.getUserData();
+    int len2=fixtures.size();
+    for (int j=0; j < len2; j++) {
+      Fixture f=fixtures.get(j);
+      FieldElement element=bodyToFieldElement.get(f.getBody());
+      if (element != null) {
+        element.handleCollision(ball,f.getBody(),this);
+        if (delegate != null) {
+          delegate.processCollision(this,element,f.getBody(),ball);
+        }
+        this.gameState.addScore(element.getScore());
+      }
+    }
+    fixtures.clear();
+  }
+}

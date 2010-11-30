@@ -1,0 +1,17 @@
+{
+  try {
+    if (params.containsKey("class")) {
+      String className=(String)params.get("class");
+      if (className.indexOf('.') == -1) {
+        className="com.dozingcatsoftware.bouncy.elements." + className;
+      }
+      defaultClass=Class.forName(className);
+    }
+    FieldElement self=(FieldElement)defaultClass.newInstance();
+    self.initialize(params,world);
+    return self;
+  }
+ catch (  Exception ex) {
+    throw new RuntimeException(ex);
+  }
+}

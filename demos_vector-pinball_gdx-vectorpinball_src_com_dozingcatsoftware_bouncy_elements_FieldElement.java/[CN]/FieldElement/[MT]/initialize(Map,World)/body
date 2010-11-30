@@ -1,0 +1,13 @@
+{
+  this.parameters=params;
+  this.box2dWorld=world;
+  this.elementID=(String)params.get("id");
+  List<Integer> colorList=(List<Integer>)params.get("color");
+  if (colorList != null) {
+    this.color=new int[]{colorList.get(0),colorList.get(1),colorList.get(2)};
+  }
+  if (params.containsKey("score")) {
+    this.score=((Number)params.get("score")).longValue();
+  }
+  this.finishCreate(params,world);
+}

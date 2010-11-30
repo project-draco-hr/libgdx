@@ -1,0 +1,16 @@
+{
+  if (this.kick <= 0.01f)   return null;
+  float ix=this.y2 - this.y1;
+  float iy=this.x1 - this.x2;
+  float mag=(float)Math.sqrt(ix * ix + iy * iy);
+  float scale=this.kick / mag;
+  ix*=scale;
+  iy*=scale;
+  Vector2 balldiff=ball.getWorldCenter().cpy().sub(this.x1,this.y1);
+  float dotprod=balldiff.x * ix + balldiff.y * iy;
+  if (dotprod < 0) {
+    ix=-ix;
+    iy=-iy;
+  }
+  return new Vector2(ix,iy);
+}

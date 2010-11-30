@@ -1,0 +1,4 @@
+{
+  if (map.containsKey(key))   return (List)map.get(key);
+  return Collections.EMPTY_LIST;
+}

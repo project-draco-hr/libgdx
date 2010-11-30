@@ -1,0 +1,12 @@
+{
+  if (jsonItem == JSONObject.NULL) {
+    return null;
+  }
+  if (jsonItem instanceof JSONArray) {
+    return listFromJSONArray((JSONArray)jsonItem);
+  }
+  if (jsonItem instanceof JSONObject) {
+    return mapFromJSONObject((JSONObject)jsonItem);
+  }
+  return jsonItem;
+}

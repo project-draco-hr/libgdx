@@ -1,0 +1,18 @@
+{
+  if (multiplierHeld) {
+    multiplierHeld=false;
+  }
+ else {
+    scoreMultiplier=1;
+    bonusMultiplier=1;
+  }
+  if (extraBalls > 0) {
+    --extraBalls;
+  }
+ else   if (ballNumber < totalBalls) {
+    ++ballNumber;
+  }
+ else {
+    gameInProgress=false;
+  }
+}

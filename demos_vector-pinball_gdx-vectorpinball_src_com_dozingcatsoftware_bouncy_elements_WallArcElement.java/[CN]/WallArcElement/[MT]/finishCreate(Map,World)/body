@@ -1,0 +1,29 @@
+{
+  List centerPos=(List)params.get("center");
+  float cx=asFloat(centerPos.get(0));
+  float cy=asFloat(centerPos.get(1));
+  float xradius, yradius;
+  if (params.containsKey("radius")) {
+    xradius=yradius=asFloat(params.get("radius"));
+  }
+ else {
+    xradius=asFloat(params.get("xradius"));
+    yradius=asFloat(params.get("yradius"));
+  }
+  Number segments=(Number)params.get("segments");
+  int numsegments=(segments != null) ? segments.intValue() : 5;
+  float minangle=toRadians(asFloat(params.get("minangle")));
+  float maxangle=toRadians(asFloat(params.get("maxangle")));
+  float diff=maxangle - minangle;
+  for (int i=0; i < numsegments; i++) {
+    float angle1=minangle + i * diff / numsegments;
+    float angle2=minangle + (i + 1) * diff / numsegments;
+    float x1=cx + xradius * (float)Math.cos(angle1);
+    float y1=cy + yradius * (float)Math.sin(angle1);
+    float x2=cx + xradius * (float)Math.cos(angle2);
+    float y2=cy + yradius * (float)Math.sin(angle2);
+    Body wall=Box2DFactory.createThinWall(world,x1,y1,x2,y2,0f);
+    this.wallBodies.add(wall);
+    lineSegments.add(new float[]{x1,y1,x2,y2});
+  }
+}

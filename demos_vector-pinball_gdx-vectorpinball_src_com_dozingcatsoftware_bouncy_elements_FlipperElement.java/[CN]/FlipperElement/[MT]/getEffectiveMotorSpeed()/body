@@ -1,0 +1,4 @@
+{
+  float speed=joint.getMotorSpeed();
+  return (isReversed()) ? -speed : speed;
+}

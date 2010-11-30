@@ -1,0 +1,21 @@
+{
+  if (params.containsKey("center") && params.containsKey("radius")) {
+    this.circular=true;
+    List centerPos=(List)params.get("center");
+    this.cx=asFloat(centerPos.get(0));
+    this.cy=asFloat(centerPos.get(1));
+    float radius=asFloat(params.get("radius"));
+    this.radiusSquared=radius * radius;
+    this.xmin=this.cx - radius / 2;
+    this.xmax=this.cx + radius / 2;
+    this.ymin=this.cy - radius / 2;
+    this.ymax=this.cy + radius / 2;
+  }
+ else {
+    List rectPos=(List)params.get("rect");
+    this.xmin=asFloat(rectPos.get(0));
+    this.ymin=asFloat(rectPos.get(1));
+    this.xmax=asFloat(rectPos.get(2));
+    this.ymax=asFloat(rectPos.get(3));
+  }
+}

@@ -1,0 +1,6 @@
+{
+  field.removeDeadBalls();
+  if (field.getBalls().size() == 0)   field.launchBall();
+  field.setAllFlippersEngaged(false);
+  return false;
+}

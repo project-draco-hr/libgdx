@@ -1,0 +1,4 @@
+{
+  if (this.gameTime < 500)   return true;
+  return this.getBalls().size() > 0;
+}

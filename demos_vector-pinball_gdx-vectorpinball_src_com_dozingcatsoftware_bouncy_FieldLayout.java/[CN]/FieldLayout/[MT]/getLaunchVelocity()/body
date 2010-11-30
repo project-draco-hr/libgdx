@@ -1,0 +1,12 @@
+{
+  Map launchMap=(Map)allParameters.get("launch");
+  List<Number> velocity=(List<Number>)launchMap.get("velocity");
+  float vx=velocity.get(0).floatValue();
+  float vy=velocity.get(1).floatValue();
+  if (launchMap.containsKey("random_velocity")) {
+    List<Number> delta=(List<Number>)launchMap.get("random_velocity");
+    if (delta.get(0).floatValue() > 0)     vx+=delta.get(0).floatValue() * RAND.nextFloat();
+    if (delta.get(1).floatValue() > 0)     vy+=delta.get(1).floatValue() * RAND.nextFloat();
+  }
+  return Arrays.asList(vx,vy);
+}

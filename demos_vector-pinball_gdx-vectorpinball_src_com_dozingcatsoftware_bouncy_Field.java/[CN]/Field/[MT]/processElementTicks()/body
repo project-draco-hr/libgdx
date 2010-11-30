@@ -1,0 +1,6 @@
+{
+  int size=fieldElementsToTick.length;
+  for (int i=0; i < size; i++) {
+    fieldElementsToTick[i].tick(this);
+  }
+}

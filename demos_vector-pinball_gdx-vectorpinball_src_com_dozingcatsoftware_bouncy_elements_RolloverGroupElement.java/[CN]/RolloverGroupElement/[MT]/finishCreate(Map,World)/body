@@ -1,0 +1,20 @@
+{
+  this.canToggleOff=Boolean.TRUE.equals(params.get("toggleOff"));
+  this.cycleOnFlipper=Boolean.TRUE.equals(params.get("cycleOnFlipper"));
+  this.ignoreBall=Boolean.TRUE.equals(params.get("ignoreBall"));
+  this.defaultRadius=asFloat(params.get("radius"));
+  this.defaultResetDelay=asFloat(params.get("reset"));
+  List<Map> rolloverMaps=(List<Map>)params.get("rollovers");
+  for (  Map rmap : rolloverMaps) {
+    Rollover rollover=new Rollover();
+    rollovers.add(rollover);
+    List pos=(List)rmap.get("position");
+    rollover.cx=asFloat(pos.get(0));
+    rollover.cy=asFloat(pos.get(1));
+    rollover.radius=(rmap.containsKey("radius")) ? asFloat(rmap.get("radius")) : this.defaultRadius;
+    rollover.color=(List<Integer>)rmap.get("color");
+    rollover.score=(rmap.containsKey("score")) ? ((Number)rmap.get("score")).longValue() : this.score;
+    rollover.resetDelay=(rmap.containsKey("reset")) ? asFloat(rmap.get("reset")) : this.defaultResetDelay;
+    rollover.radiusSquared=rollover.radius * rollover.radius;
+  }
+}

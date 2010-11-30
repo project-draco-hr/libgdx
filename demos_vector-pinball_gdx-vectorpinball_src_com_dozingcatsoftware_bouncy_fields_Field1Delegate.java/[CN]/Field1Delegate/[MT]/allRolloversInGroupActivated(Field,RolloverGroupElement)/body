@@ -1,0 +1,13 @@
+{
+  rolloverGroup.setAllRolloversActivated(false);
+  field.getGameState().incrementScoreMultiplier();
+  field.showGameMessage(field.getGameState().getScoreMultiplier() + "x Multiplier",1500);
+  if ("RampRollovers".equals(rolloverGroup.getElementID())) {
+    RolloverGroupElement extraBallRollovers=(RolloverGroupElement)field.getFieldElementByID("ExtraBallRollovers");
+    if (extraBallRollovers.allRolloversActive()) {
+      field.showGameMessage("Extra Ball!",2000);
+      field.getGameState().addExtraBall();
+      extraBallRollovers.setAllRolloversActivated(false);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  if (this.ignoreBall)   return;
+  boolean allActivePrevious=this.allRolloversActive();
+  List<Rollover> hitRollovers=rolloversHitByBalls(field.getBalls());
+  int len=hitRollovers.size();
+  for (int i=0; i < len; i++) {
+    final Rollover rollover=hitRollovers.get(i);
+    if (rolloversHitOnPreviousTick.contains(rollover))     continue;
+    if (!activeRollovers.contains(rollover)) {
+      activeRollovers.add(rollover);
+      field.addScore(rollover.score);
+      if (rollover.resetDelay > 0) {
+        field.scheduleAction((long)(rollover.resetDelay * 1000),new Runnable(){
+          public void run(){
+            activeRollovers.remove(rollover);
+          }
+        }
+);
+      }
+    }
+ else     if (this.canToggleOff) {
+      activeRollovers.remove(rollover);
+      field.addScore(rollover.score);
+    }
+  }
+  rolloversHitOnPreviousTick.clear();
+  for (int i=0; i < hitRollovers.size(); i++) {
+    rolloversHitOnPreviousTick.add(hitRollovers.get(i));
+  }
+  if (!allActivePrevious && allRolloversActive()) {
+    field.getDelegate().allRolloversInGroupActivated(field,this);
+  }
+}

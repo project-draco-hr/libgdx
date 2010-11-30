@@ -1,0 +1,12 @@
+{
+  while (true) {
+    ScheduledAction nextAction=scheduledActions.peek();
+    if (nextAction != null && gameTime >= nextAction.actionTime) {
+      scheduledActions.poll();
+      nextAction.action.run();
+    }
+ else {
+      break;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  if (retractWhenHit) {
+    this.setRetracted(true);
+  }
+  if (killBall) {
+    field.removeBall(ball);
+  }
+ else {
+    Vector2 impulse=this.impulseForBall(ball);
+    if (impulse != null) {
+      ball.applyLinearImpulse(impulse,ball.getWorldCenter());
+      flashForFrames(3);
+    }
+  }
+}

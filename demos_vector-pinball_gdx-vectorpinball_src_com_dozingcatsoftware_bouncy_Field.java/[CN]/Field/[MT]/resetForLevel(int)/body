@@ -1,0 +1,43 @@
+{
+  Vector2 gravity=new Vector2(0.0f,-1.0f);
+  boolean doSleep=true;
+  world=new World(gravity,doSleep);
+  world.setContactListener(this);
+  layout=FieldLayout.layoutForLevel(level,world);
+  world.setGravity(new Vector2(0.0f,-layout.getGravity()));
+  balls=new ArrayList<Body>();
+  ballsAtTargets=new ArrayList<Body>();
+  scheduledActions=new PriorityQueue<ScheduledAction>();
+  gameTime=0;
+  bodyToFieldElement=new HashMap<Body,FieldElement>();
+  fieldElements=new HashMap<String,FieldElement>();
+  List<FieldElement> tickElements=new ArrayList<FieldElement>();
+  for (  FieldElement element : layout.getFieldElements()) {
+    if (element.getElementID() != null) {
+      fieldElements.put(element.getElementID(),element);
+    }
+    for (    Body body : element.getBodies()) {
+      bodyToFieldElement.put(body,element);
+    }
+    if (element.shouldCallTick()) {
+      tickElements.add(element);
+    }
+  }
+  fieldElementsToTick=tickElements.toArray(new FieldElement[0]);
+  delegate=null;
+  String delegateClass=layout.getDelegateClassName();
+  if (delegateClass != null) {
+    if (delegateClass.indexOf('.') == -1) {
+      delegateClass="com.dozingcatsoftware.bouncy.fields." + delegateClass;
+    }
+    try {
+      delegate=(Delegate)Class.forName(delegateClass).newInstance();
+    }
+ catch (    Exception ex) {
+      throw new RuntimeException(ex);
+    }
+  }
+ else {
+    delegate=new BaseFieldDelegate();
+  }
+}

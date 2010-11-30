@@ -1,0 +1,11 @@
+{
+  Vector2 bpos=ball.getPosition();
+  if (bpos.x < xmin || bpos.x > xmax || bpos.y < ymin || bpos.y > ymax) {
+    return false;
+  }
+  if (this.circular) {
+    float distSquared=(bpos.x - this.cx) * (bpos.x - this.cx) + (bpos.y - this.cy) * (bpos.y - this.cy);
+    if (distSquared > this.radiusSquared)     return false;
+  }
+  return true;
+}

@@ -1,0 +1,4 @@
+{
+  if (obj instanceof Number)   return ((Number)obj).floatValue();
+  return defvalue;
+}

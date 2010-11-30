@@ -1,0 +1,9 @@
+{
+  super.tick(field);
+  if (getEffectiveMotorSpeed() > 0.5f) {
+    float topAngle=(isReversed()) ? jointDef.lowerAngle : jointDef.upperAngle;
+    if (Math.abs(topAngle - joint.getJointAngle()) < 0.05) {
+      setEffectiveMotorSpeed(0.5f);
+    }
+  }
+}

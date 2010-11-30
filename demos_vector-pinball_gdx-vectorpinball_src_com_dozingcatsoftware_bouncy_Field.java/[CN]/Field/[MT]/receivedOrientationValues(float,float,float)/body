@@ -1,0 +1,7 @@
+{
+  double angle=roll - Math.PI / 2;
+  float gravity=layout.getGravity();
+  float gx=(float)(gravity * Math.cos(angle));
+  float gy=-Math.abs((float)(gravity * Math.sin(angle)));
+  world.setGravity(new Vector2(gx,gy));
+}

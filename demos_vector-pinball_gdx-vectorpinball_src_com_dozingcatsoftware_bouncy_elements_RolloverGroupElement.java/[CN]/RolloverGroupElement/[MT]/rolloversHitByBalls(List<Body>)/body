@@ -1,0 +1,24 @@
+{
+  int len=rollovers.size();
+  hitRollovers.clear();
+  for (int i=0; i < len; i++) {
+    Rollover rollover=rollovers.get(i);
+    boolean hit=false;
+    int len2=balls.size();
+    for (int j=0; j < len2; j++) {
+      Body ball=balls.get(j);
+      Vector2 position=ball.getPosition();
+      float xdiff=position.x - rollover.cx;
+      float ydiff=position.y - rollover.cy;
+      float distanceSquared=xdiff * xdiff + ydiff * ydiff;
+      if (distanceSquared <= rollover.radiusSquared) {
+        hit=true;
+        break;
+      }
+    }
+    if (hit) {
+      hitRollovers.add(rollover);
+    }
+  }
+  return hitRollovers;
+}

@@ -1,0 +1,8 @@
+{
+  Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+  cam=new OrthographicCamera();
+  renderer=new GLFieldRenderer();
+  field=new Field();
+  field.resetForLevel(level);
+  Gdx.input.setInputProcessor(this);
+}

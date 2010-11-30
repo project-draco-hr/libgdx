@@ -1,0 +1,11 @@
+{
+  Vector2 position=anchorBody.getPosition();
+  float angle=joint.getJointAngle();
+  if (angle < jointDef.lowerAngle)   angle=jointDef.lowerAngle;
+  if (angle > jointDef.upperAngle)   angle=jointDef.upperAngle;
+  float x1=position.x;
+  float y1=position.y;
+  float x2=position.x + flipperLength * (float)Math.cos(angle);
+  float y2=position.y + flipperLength * (float)Math.sin(angle);
+  renderer.drawLine(x1,y1,x2,y2,redColorComponent(0),greenColorComponent(255),blueColorComponent(0));
+}

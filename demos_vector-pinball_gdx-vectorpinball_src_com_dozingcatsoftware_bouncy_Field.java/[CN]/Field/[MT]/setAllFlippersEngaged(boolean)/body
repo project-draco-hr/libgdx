@@ -1,0 +1,13 @@
+{
+  boolean allFlippersPreviouslyActive=true;
+  for (  FlipperElement flipper : this.getFlipperElements()) {
+    if (allFlippersPreviouslyActive && !flipper.isFlipperEngaged())     allFlippersPreviouslyActive=false;
+    flipper.setFlipperEngaged(engaged);
+  }
+  if (engaged && !allFlippersPreviouslyActive) {
+    for (    FieldElement element : this.getFieldElements()) {
+      element.flipperActivated(this);
+    }
+    getDelegate().flipperActivated(this);
+  }
+}

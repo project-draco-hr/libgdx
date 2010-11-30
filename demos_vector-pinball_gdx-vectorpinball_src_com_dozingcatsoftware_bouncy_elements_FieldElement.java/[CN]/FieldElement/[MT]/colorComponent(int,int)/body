@@ -1,0 +1,5 @@
+{
+  int value=defvalue;
+  if (this.color != null)   value=this.color[index];
+  return (flashCounter > 0) ? 255 - value : value;
+}

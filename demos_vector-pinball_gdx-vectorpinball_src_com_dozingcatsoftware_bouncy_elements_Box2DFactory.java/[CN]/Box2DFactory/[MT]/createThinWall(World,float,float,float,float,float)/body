@@ -1,0 +1,7 @@
+{
+  float cx=(x1 + x2) / 2;
+  float cy=(y1 + y2) / 2;
+  float angle=(float)Math.atan2(y2 - y1,x2 - x1);
+  float mag=(float)Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  return createWall(world,cx - mag / 2,cy - 0.05f,cx + mag / 2,cy + 0.05f,angle,restitution);
+}

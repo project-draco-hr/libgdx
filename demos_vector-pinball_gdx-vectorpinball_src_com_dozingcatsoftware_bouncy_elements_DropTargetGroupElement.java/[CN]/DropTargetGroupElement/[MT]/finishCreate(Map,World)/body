@@ -1,0 +1,10 @@
+{
+  List<List> positions=(List<List>)params.get("positions");
+  for (  List pos : positions) {
+    float[] parray=new float[]{asFloat(pos.get(0)),asFloat(pos.get(1)),asFloat(pos.get(2)),asFloat(pos.get(3))};
+    float restitution=0f;
+    Body wallBody=Box2DFactory.createThinWall(world,parray[0],parray[1],parray[2],parray[3],restitution);
+    allBodies.add(wallBody);
+    bodyPositions.put(wallBody,parray);
+  }
+}

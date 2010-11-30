@@ -1,0 +1,11 @@
+{
+  try {
+    if (_layoutArray == null)     readLayoutArray();
+    Map layoutMap=(Map)_layoutArray.get(level - 1);
+    return new FieldLayout(layoutMap,world);
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+    return null;
+  }
+}

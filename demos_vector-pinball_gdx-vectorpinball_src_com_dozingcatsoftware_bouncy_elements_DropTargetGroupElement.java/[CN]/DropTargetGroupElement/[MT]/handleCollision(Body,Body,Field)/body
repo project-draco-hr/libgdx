@@ -1,0 +1,15 @@
+{
+  bodyHit.setActive(false);
+  if (allTargetsHit()) {
+    field.getDelegate().allDropTargetsInGroupHit(field,this);
+    float restoreTime=asFloat(this.parameters.get("reset"));
+    if (restoreTime > 0) {
+      field.scheduleAction((long)(restoreTime * 1000),new Runnable(){
+        public void run(){
+          makeAllTargetsVisible(field);
+        }
+      }
+);
+    }
+  }
+}

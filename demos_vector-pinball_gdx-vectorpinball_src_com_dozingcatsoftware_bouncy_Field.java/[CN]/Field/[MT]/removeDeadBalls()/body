@@ -1,0 +1,15 @@
+{
+  int len=balls.size();
+  deadBalls.clear();
+  for (int i=0; i < len; i++) {
+    Body ball=this.balls.get(i);
+    if (ball.getPosition().y < 1) {
+      world.destroyBody(ball);
+      deadBalls.add(ball);
+    }
+  }
+  len=deadBalls.size();
+  for (int i=0; i < len; i++) {
+    this.balls.remove(deadBalls.get(i));
+  }
+}

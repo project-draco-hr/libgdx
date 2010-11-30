@@ -1,0 +1,10 @@
+{
+  List elements=new ArrayList();
+  for (  Object obj : listForKey(layoutMap,key)) {
+    if (!(obj instanceof Map))     continue;
+    Map params=(Map)obj;
+    elements.add(FieldElement.createFromParameters(params,world,defaultClass));
+  }
+  fieldElements.addAll(elements);
+  return elements;
+}

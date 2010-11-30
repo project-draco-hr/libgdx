@@ -1,0 +1,26 @@
+{
+  List pos=(List)params.get("position");
+  this.cx=asFloat(pos.get(0));
+  this.cy=asFloat(pos.get(1));
+  this.flipperLength=asFloat(params.get("length"));
+  this.minangle=toRadians(asFloat(params.get("minangle")));
+  this.maxangle=toRadians(asFloat(params.get("maxangle")));
+  this.upspeed=asFloat(params.get("upspeed"));
+  this.downspeed=asFloat(params.get("downspeed"));
+  this.anchorBody=Box2DFactory.createCircle(world,this.cx,this.cy,0.05f,true);
+  float ext=(this.flipperLength > 0) ? -0.05f : +0.05f;
+  this.flipperBody=Box2DFactory.createWall(world,cx + ext,cy - 0.12f,cx + flipperLength,cy + 0.12f,0f);
+  flipperBody.setType(BodyDef.BodyType.DynamicBody);
+  flipperBody.setBullet(true);
+  flipperBody.getFixtureList().get(0).setDensity(5.0f);
+  jointDef=new RevoluteJointDef();
+  jointDef.initialize(anchorBody,flipperBody,new Vector2(this.cx,this.cy));
+  jointDef.enableLimit=true;
+  jointDef.enableMotor=true;
+  jointDef.lowerAngle=(this.flipperLength > 0) ? this.minangle : -this.maxangle;
+  jointDef.upperAngle=(this.flipperLength > 0) ? this.maxangle : -this.minangle;
+  jointDef.maxMotorTorque=1000f;
+  this.joint=(RevoluteJoint)world.createJoint(jointDef);
+  flipperBodySet=Collections.singleton(flipperBody);
+  this.setEffectiveMotorSpeed(-this.downspeed);
+}

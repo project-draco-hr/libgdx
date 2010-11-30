@@ -1,0 +1,9 @@
+{
+  List<Integer> color=layout.getBallColor();
+  int len=balls.size();
+  for (int i=0; i < len; i++) {
+    Body ball=balls.get(i);
+    CircleShape shape=(CircleShape)ball.getFixtureList().get(0).getShape();
+    renderer.fillCircle(ball.getPosition().x,ball.getPosition().y,shape.getRadius(),color.get(0),color.get(1),color.get(2));
+  }
+}

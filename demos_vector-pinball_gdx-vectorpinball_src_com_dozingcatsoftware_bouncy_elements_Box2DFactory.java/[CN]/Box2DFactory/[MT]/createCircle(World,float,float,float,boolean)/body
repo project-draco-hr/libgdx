@@ -1,0 +1,21 @@
+{
+  CircleShape sd=new CircleShape();
+  sd.setRadius(radius);
+  FixtureDef fdef=new FixtureDef();
+  fdef.shape=sd;
+  fdef.density=1.0f;
+  fdef.friction=0.3f;
+  fdef.restitution=0.6f;
+  BodyDef bd=new BodyDef();
+  bd.allowSleep=true;
+  bd.position.set(x,y);
+  Body body=world.createBody(bd);
+  body.createFixture(fdef);
+  if (isStatic) {
+    body.setType(BodyDef.BodyType.StaticBody);
+  }
+ else {
+    body.setType(BodyDef.BodyType.DynamicBody);
+  }
+  return body;
+}

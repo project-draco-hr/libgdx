@@ -1,0 +1,13 @@
+{
+  int r=redColorComponent(0);
+  int g=greenColorComponent(255);
+  int b=blueColorComponent(0);
+  int len=allBodies.size();
+  for (int i=0; i < len; i++) {
+    Body body=allBodies.get(i);
+    if (body.isActive()) {
+      float[] parray=bodyPositions.get(body);
+      renderer.drawLine(parray[0],parray[1],parray[2],parray[3],r,g,b);
+    }
+  }
+}

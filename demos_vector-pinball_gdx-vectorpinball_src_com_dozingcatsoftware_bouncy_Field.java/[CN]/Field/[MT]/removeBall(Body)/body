@@ -1,0 +1,7 @@
+{
+  world.destroyBody(ball);
+  this.balls.remove(ball);
+  if (this.balls.size() == 0) {
+    this.doBallLost();
+  }
+}

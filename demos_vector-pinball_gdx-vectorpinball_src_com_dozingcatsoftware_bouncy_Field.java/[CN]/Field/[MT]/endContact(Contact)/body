@@ -1,0 +1,19 @@
+{
+  Body ball=null;
+  Fixture fixture=null;
+  if (balls.contains(contact.getFixtureA().getBody())) {
+    ball=contact.getFixtureA().getBody();
+    fixture=contact.getFixtureB();
+  }
+  if (balls.contains(contact.getFixtureB().getBody())) {
+    ball=contact.getFixtureB().getBody();
+    fixture=contact.getFixtureA();
+  }
+  if (ball != null) {
+    List<Fixture> fixtures=(List<Fixture>)ball.getUserData();
+    if (fixtures == null) {
+      ball.setUserData(fixtures=new ArrayList<Fixture>());
+    }
+    fixtures.add(fixture);
+  }
+}
