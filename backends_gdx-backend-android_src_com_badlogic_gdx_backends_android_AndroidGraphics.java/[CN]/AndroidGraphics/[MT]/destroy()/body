@@ -3,10 +3,5 @@ synchronized (synch) {
     running=false;
     destroy=true;
   }
-  boolean cond=false;
-  while (!cond) {
-synchronized (synch) {
-      cond=!destroy;
-    }
-  }
+  while (destroy)   ;
 }

@@ -12,16 +12,19 @@ synchronized (synch) {
     lpause=pause;
     ldestroy=destroy;
     lresume=resume;
+    if (resume) {
+      resume=false;
+    }
     if (pause) {
       pause=false;
     }
     if (destroy) {
       destroy=false;
     }
-    if (resume) {
-      resume=false;
-      running=true;
-    }
+  }
+  if (lresume) {
+    app.listener.resume();
+    Gdx.app.log("AndroidGraphics","resumed");
   }
   if (lrunning) {
     ((AndroidInput)Gdx.input).processEvents();
@@ -29,12 +32,11 @@ synchronized (synch) {
   }
   if (lpause) {
     app.listener.pause();
-  }
-  if (lresume) {
-    app.listener.resume();
+    Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
     app.listener.dispose();
+    Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {
     fps=frames;
