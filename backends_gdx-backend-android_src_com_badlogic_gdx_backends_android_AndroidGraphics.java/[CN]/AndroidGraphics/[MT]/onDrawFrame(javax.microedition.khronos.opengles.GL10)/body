@@ -3,24 +3,38 @@
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
   mean.addValue(deltaTime);
+  boolean lrunning=false;
+  boolean lpause=false;
+  boolean ldestroy=false;
+  boolean lresume=false;
 synchronized (synch) {
-    if (running) {
-      ((AndroidInput)Gdx.input).processEvents();
-      app.listener.render();
-    }
+    lrunning=running;
+    lpause=pause;
+    ldestroy=destroy;
+    lresume=resume;
     if (pause) {
-      app.listener.pause();
       pause=false;
     }
+    if (destroy) {
+      destroy=false;
+    }
     if (resume) {
-      app.listener.resume();
       resume=false;
       running=true;
     }
-    if (destroy) {
-      app.listener.dispose();
-      destroy=false;
-    }
+  }
+  if (lrunning) {
+    ((AndroidInput)Gdx.input).processEvents();
+    app.listener.render();
+  }
+  if (lpause) {
+    app.listener.pause();
+  }
+  if (lresume) {
+    app.listener.resume();
+  }
+  if (ldestroy) {
+    app.listener.dispose();
   }
   if (time - frameStart > 1000000000) {
     fps=frames;

@@ -1,12 +1,11 @@
 {
+  long startTime=System.nanoTime();
 synchronized (synch) {
     running=false;
     pause=true;
   }
-  boolean cond=false;
-  while (!cond) {
-synchronized (synch) {
-      cond=!pause;
-    }
-  }
+  Gdx.app.log("AndroidGraphics","synch took: " + (System.nanoTime() - startTime) / 1000000000.0f);
+  startTime=System.nanoTime();
+  while (pause)   ;
+  Gdx.app.log("AndroidGraphics","wait took: " + (System.nanoTime() - startTime) / 1000000000.0f);
 }
