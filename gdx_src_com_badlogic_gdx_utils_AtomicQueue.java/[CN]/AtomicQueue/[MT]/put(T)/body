@@ -1,0 +1,11 @@
+{
+  int widx=wptr.get();
+  int ridx=rptr.get();
+  int wnxt=next(widx);
+  if (wnxt == ridx) {
+    return false;
+  }
+  queue.set(widx,o);
+  wptr.set(wnxt);
+  return true;
+}
