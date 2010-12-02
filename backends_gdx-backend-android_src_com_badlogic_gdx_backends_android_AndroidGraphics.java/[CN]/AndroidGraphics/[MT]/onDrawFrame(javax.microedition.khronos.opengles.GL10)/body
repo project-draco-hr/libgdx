@@ -17,9 +17,11 @@ synchronized (synch) {
     }
     if (pause) {
       pause=false;
+      synch.notifyAll();
     }
     if (destroy) {
       destroy=false;
+      synch.notifyAll();
     }
   }
   if (lresume) {
@@ -27,7 +29,7 @@ synchronized (synch) {
     Gdx.app.log("AndroidGraphics","resumed");
   }
   if (lrunning) {
-    ((AndroidInput)Gdx.input).processEvents();
+    app.input.processEvents();
     app.listener.render();
   }
   if (lpause) {

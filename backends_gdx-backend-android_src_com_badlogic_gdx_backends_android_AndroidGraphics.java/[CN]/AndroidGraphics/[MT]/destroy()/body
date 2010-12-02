@@ -2,6 +2,12 @@
 synchronized (synch) {
     running=false;
     destroy=true;
+    while (destroy) {
+      try {
+        synch.wait();
+      }
+ catch (      InterruptedException ex) {
+      }
+    }
   }
-  while (destroy)   ;
 }
