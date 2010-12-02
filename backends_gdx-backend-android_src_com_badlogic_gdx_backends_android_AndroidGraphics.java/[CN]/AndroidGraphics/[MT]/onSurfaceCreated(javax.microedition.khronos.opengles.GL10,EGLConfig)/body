@@ -1,5 +1,6 @@
 {
   setupGL(gl);
+  logConfig(config);
   updatePpi();
   Mesh.invalidateAllMeshes();
   AndroidTexture.invalidateAllTextures();
