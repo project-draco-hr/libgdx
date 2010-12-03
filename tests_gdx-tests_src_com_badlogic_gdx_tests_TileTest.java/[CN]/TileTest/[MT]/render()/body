@@ -1,0 +1,19 @@
+{
+  GL10 gl=Gdx.gl10;
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  cam.update();
+  gl.glEnable(GL10.GL_BLEND);
+  for (int i=0; i < LAYERS; i++) {
+    SpriteCache cache=caches[i];
+    cache.setProjectionMatrix(cam.getCombinedMatrix());
+    cache.begin();
+    for (int j=0; j < TILES_PER_LAYER; j+=BLOCK_TILES) {
+      cache.draw(layers[i],j,BLOCK_TILES);
+    }
+    cache.end();
+  }
+  if (System.nanoTime() - startTime >= 1000000000) {
+    Gdx.app.log("TileTest","fps: " + Gdx.graphics.getFramesPerSecond());
+    startTime=System.nanoTime();
+  }
+}
