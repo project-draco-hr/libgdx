@@ -1,5 +1,5 @@
 {
-  if (!drawing)   throw new IllegalStateException("you have to call SpriteBatch.begin() first");
+  if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
   if (texture != lastTexture) {
     renderMesh();
     lastTexture=texture;

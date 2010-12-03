@@ -1,5 +1,5 @@
 {
-  final Texture texture=sprite.getTexture();
+  final Texture texture=region.getTexture();
   y+=ascent;
   float startX=x;
   Glyph lastGlyph=null;

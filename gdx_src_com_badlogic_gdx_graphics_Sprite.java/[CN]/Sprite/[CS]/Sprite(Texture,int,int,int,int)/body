@@ -1,7 +1,7 @@
 {
   if (texture == null)   throw new IllegalArgumentException("texture cannot be null.");
-  this.texture=texture;
-  setTextureRegion(srcX,srcY,srcWidth,srcHeight);
+  region.texture=texture;
+  region.set(srcX,srcY,srcWidth,srcHeight);
   setColor(1,1,1,1);
   setSize(Math.abs(srcWidth),Math.abs(srcHeight));
   setOrigin(width / 2,height / 2);

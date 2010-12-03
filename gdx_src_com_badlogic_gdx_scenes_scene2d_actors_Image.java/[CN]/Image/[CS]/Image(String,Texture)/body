@@ -4,5 +4,5 @@
   this.originY=texture.getHeight() / 2.0f;
   this.width=texture.getWidth();
   this.height=texture.getHeight();
-  this.region=new TextureRegion(texture,0,0,texture.getWidth(),texture.getHeight());
+  this.region=new TextureRegion(texture);
 }

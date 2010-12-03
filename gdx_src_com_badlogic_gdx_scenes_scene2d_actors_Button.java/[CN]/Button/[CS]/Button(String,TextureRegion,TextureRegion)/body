@@ -1,9 +1,9 @@
 {
   super(name);
-  this.originX=unpressedRegion.width / 2.0f;
-  this.originY=unpressedRegion.height / 2.0f;
-  this.width=unpressedRegion.width;
-  this.height=unpressedRegion.height;
-  this.unpressedRegion=new TextureRegion(unpressedRegion.texture,unpressedRegion.x,unpressedRegion.y,unpressedRegion.width,unpressedRegion.height);
-  this.pressedRegion=new TextureRegion(pressedRegion.texture,pressedRegion.x,pressedRegion.y,pressedRegion.width,pressedRegion.height);
+  width=unpressedRegion.getWidth();
+  height=unpressedRegion.getHeight();
+  originX=width / 2.0f;
+  originY=height / 2.0f;
+  this.unpressedRegion=new TextureRegion(unpressedRegion);
+  this.pressedRegion=new TextureRegion(pressedRegion);
 }

@@ -1,5 +1,5 @@
 {
-  super.flip(x,y);
+  getTextureRegion().flip(x,y);
   if (x) {
     float xPosition=getX();
     offsetX=(int)(originalWidth - offsetX - getWidth());

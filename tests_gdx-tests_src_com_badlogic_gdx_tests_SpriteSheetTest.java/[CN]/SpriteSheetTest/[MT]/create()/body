@@ -7,5 +7,6 @@
   badlogic.setPosition(50,50);
   badlogicSmall.setPosition(10,10);
   star.setPosition(10,70);
+  font=new BitmapFont(Gdx.files.internal("data/font.fnt"),spriteSheet.get("font").getTextureRegion(),false);
   Gdx.gl.glClearColor(0,1,0,1);
 }

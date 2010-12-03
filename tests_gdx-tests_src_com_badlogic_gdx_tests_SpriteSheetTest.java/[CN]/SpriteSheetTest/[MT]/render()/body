@@ -4,5 +4,6 @@
   badlogicSmall.draw(batch);
   badlogic.draw(batch);
   star.draw(batch);
+  font.draw(batch,"This font was packed!",26,65);
   batch.end();
 }
