@@ -38,8 +38,8 @@
       int type=Integer.parseInt(reader.readLine());
       String textureId=reader.readLine();
       TextureRegion region=atlas.getRegion(textureId);
-      float u=region.x / 256.0f;
-      float v=region.y / 256.0f;
+      float u=region.getX() / 256.0f;
+      float v=region.getY() / 256.0f;
       floorVertices[j - 2]=u + uSize;
       floorVertices[j - 1]=v;
       floorVertices[j - 2 - 5]=u + uSize;
@@ -72,8 +72,8 @@
         int type=Integer.parseInt(reader.readLine());
         String textureId=reader.readLine();
         TextureRegion region=atlas.getRegion(textureId);
-        float u=region.x / 256.0f;
-        float v=region.y / 256.0f;
+        float u=region.getX() / 256.0f;
+        float v=region.getY() / 256.0f;
         wallVertices[j - 2]=u + uSize;
         wallVertices[j - 1]=v;
         wallVertices[j - 2 - 5]=u + vSize;
