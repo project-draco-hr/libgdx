@@ -1,0 +1,4 @@
+{
+  String arch=System.getProperty("os.arch");
+  return arch.toLowerCase().contains("amd64");
+}

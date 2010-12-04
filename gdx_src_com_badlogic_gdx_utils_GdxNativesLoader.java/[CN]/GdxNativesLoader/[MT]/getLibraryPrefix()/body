@@ -1,0 +1,5 @@
+{
+  String os=System.getProperty("os.name");
+  if (os.contains("Windows"))   return "";
+ else   return "lib";
+}
