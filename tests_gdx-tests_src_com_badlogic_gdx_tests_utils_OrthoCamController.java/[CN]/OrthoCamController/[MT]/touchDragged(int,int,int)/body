@@ -1,0 +1,10 @@
+{
+  camera.getScreenToWorld(x,y,curr);
+  if (!(last.x == -1 && last.y == -1)) {
+    camera.getScreenToWorld(last.x,last.y,delta);
+    delta.sub(curr);
+    camera.getPosition().add(delta.x,delta.y,0);
+  }
+  last.set(x,y);
+  return false;
+}
