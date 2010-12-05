@@ -1,0 +1,5 @@
+{
+  super.setScale(scaleX,scaleY);
+  region.offsetX*=scaleX;
+  region.offsetY*=scaleY;
+}

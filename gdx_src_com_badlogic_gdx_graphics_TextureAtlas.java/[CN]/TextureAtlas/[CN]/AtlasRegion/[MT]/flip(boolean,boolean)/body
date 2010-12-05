@@ -1,0 +1,5 @@
+{
+  super.flip(x,y);
+  if (x)   offsetX=(int)(originalWidth - offsetX - packedWidth);
+  if (y)   offsetY=(int)(originalHeight - offsetY - packedHeight);
+}

@@ -1,0 +1,4 @@
+{
+  for (int i=0, n=regions.length; i < n; i++)   if (regions[i].name.equals(name))   return newSprite(regions[i]);
+  return null;
+}

@@ -1,0 +1,7 @@
+{
+  float unscaledOffsetX=region.offsetX / getScaleX();
+  float unscaledOffsetY=region.offsetY / getScaleY();
+  super.scale(amount);
+  region.offsetX=unscaledOffsetX * getScaleX();
+  region.offsetY=unscaledOffsetY * getScaleY();
+}

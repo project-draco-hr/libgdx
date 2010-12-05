@@ -1,5 +1,0 @@
-{
-  ArrayList<PackedSprite> matched=new ArrayList();
-  for (int i=0, n=images.length; i < n; i++)   if (images[i].name.equals(name))   matched.add(images[i]);
-  return matched;
-}

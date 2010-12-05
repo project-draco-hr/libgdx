@@ -1,0 +1,4 @@
+{
+  if (region.packedWidth == region.originalWidth && region.packedHeight == region.originalHeight)   return new Sprite(region);
+  return new AtlasSprite(region);
+}
