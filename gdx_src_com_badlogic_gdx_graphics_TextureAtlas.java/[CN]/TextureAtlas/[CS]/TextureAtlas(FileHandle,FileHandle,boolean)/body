@@ -33,16 +33,6 @@
         readTuple(reader);
         int width=Integer.parseInt(tuple[0]);
         int height=Integer.parseInt(tuple[1]);
-        if (flip) {
-          if (rotate) {
-            left+=height;
-            height=-height;
-          }
- else {
-            top+=height;
-            height=-height;
-          }
-        }
         AtlasRegion region=new AtlasRegion(pageImage,left,top,width,height);
         region.name=line;
         region.rotate=rotate;
@@ -54,6 +44,7 @@
         region.offsetY=Integer.parseInt(tuple[1]);
         region.index=Integer.parseInt(readValue(reader));
         if (region.index == -1)         region.index=Integer.MAX_VALUE;
+        if (flip)         region.flip(false,true);
         sortedRegions.add(region);
       }
     }
