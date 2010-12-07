@@ -1,11 +1,8 @@
 {
   this.region=region;
-  widthScale=region.packedWidth / (float)region.originalWidth;
-  heightScale=region.packedHeight / (float)region.originalHeight;
-  getRegion().texture=region.texture;
-  getRegion().set(region.getX(),region.getY(),region.getWidth(),region.getHeight());
+  setRegion(region);
   if (region.rotate)   rotate90(true);
   setOrigin(region.originalWidth / 2,region.originalHeight / 2);
-  super.setBounds(region.offsetX,region.offsetY,Math.abs(region.getWidth()),Math.abs(region.getHeight()));
+  super.setBounds(region.offsetX,region.offsetY,Math.abs(region.getRegionWidth()),Math.abs(region.getRegionHeight()));
   setColor(1,1,1,1);
 }

@@ -1,7 +1,6 @@
 {
-  this.region.texture=region.texture;
-  this.region.set(region,srcX,srcY,srcWidth,srcHeight);
+  setRegion(region,srcX,srcY,srcWidth,srcHeight);
   setColor(1,1,1,1);
-  setSize(Math.abs(region.getWidth()),Math.abs(region.getHeight()));
+  setSize(Math.abs(region.getRegionWidth()),Math.abs(region.getRegionHeight()));
   setOrigin(width / 2,height / 2);
 }

@@ -1,7 +1,7 @@
 {
   if (sprite == null)   throw new IllegalArgumentException("sprite cannot be null.");
   System.arraycopy(sprite.vertices,0,vertices,0,SPRITE_SIZE);
-  region.texture=sprite.region.texture;
+  texture=sprite.texture;
   x=sprite.x;
   y=sprite.y;
   width=sprite.width;
@@ -11,6 +11,5 @@
   rotation=sprite.rotation;
   scaleX=sprite.scaleX;
   scaleY=sprite.scaleY;
-  color.set(sprite.color);
   dirty=sprite.dirty;
 }

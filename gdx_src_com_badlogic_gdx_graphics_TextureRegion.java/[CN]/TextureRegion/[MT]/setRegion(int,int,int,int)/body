@@ -1,0 +1,5 @@
+{
+  float invTexWidth=1f / texture.getWidth();
+  float invTexHeight=1f / texture.getHeight();
+  setRegion(x * invTexWidth,y * invTexHeight,(x + width) * invTexWidth,(y + height) * invTexHeight);
+}

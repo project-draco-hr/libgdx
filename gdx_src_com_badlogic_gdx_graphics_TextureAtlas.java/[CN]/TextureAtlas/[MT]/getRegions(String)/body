@@ -1,5 +1,5 @@
 {
   ArrayList<AtlasRegion> matched=new ArrayList();
-  for (int i=0, n=regions.length; i < n; i++)   if (regions[i].name.equals(name))   matched.add(regions[i]);
+  for (int i=0, n=regions.length; i < n; i++)   if (regions[i].name.equals(name))   matched.add(new AtlasRegion(regions[i]));
   return matched;
 }

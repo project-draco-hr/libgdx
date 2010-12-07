@@ -7,7 +7,7 @@
   for (int i=0, n=particles.length; i < n; i++) {
     Particle particle=particles[i];
     if (particle == null)     break;
-    particle.getRegion().setTexture(texture);
+    particle.setTexture(texture);
     particle.setOrigin(originX,originY);
   }
 }

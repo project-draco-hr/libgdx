@@ -1,6 +1,3 @@
 {
-  AtlasRegion region=this.region;
-  region.offsetX*=width / getWidth();
-  region.offsetY*=height / getHeight();
-  super.setBounds(x + region.offsetX,y + region.offsetY,width * widthScale,height * heightScale);
+  super.setBounds(x + region.offsetX,y + region.offsetY,width,height);
 }

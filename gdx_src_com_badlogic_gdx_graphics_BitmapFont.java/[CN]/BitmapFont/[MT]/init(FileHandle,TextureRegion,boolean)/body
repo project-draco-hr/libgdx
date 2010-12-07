@@ -18,8 +18,8 @@
     this.region=region;
     float invTexWidth=1.0f / region.getTexture().getWidth();
     float invTexHeight=1.0f / region.getTexture().getHeight();
-    float u=region.getU();
-    float v=region.getV();
+    float u=region.u;
+    float v=region.v;
     while (true) {
       String line=reader.readLine();
       if (line == null)       break;

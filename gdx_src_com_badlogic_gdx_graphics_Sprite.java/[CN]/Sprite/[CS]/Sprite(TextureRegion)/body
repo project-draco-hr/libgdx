@@ -1,6 +1,6 @@
 {
-  this.region.set(region);
+  setRegion(region);
   setColor(1,1,1,1);
-  setSize(Math.abs(region.getWidth()),Math.abs(region.getHeight()));
+  setSize(Math.abs(region.getRegionWidth()),Math.abs(region.getRegionHeight()));
   setOrigin(width / 2,height / 2);
 }

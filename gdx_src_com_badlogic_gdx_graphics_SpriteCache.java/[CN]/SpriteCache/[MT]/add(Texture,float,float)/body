@@ -1,0 +1,45 @@
+{
+  final float fx2=x + texture.getWidth();
+  final float fy2=y + texture.getHeight();
+  tempVertices[0]=x;
+  tempVertices[1]=y;
+  tempVertices[2]=color;
+  tempVertices[3]=0;
+  tempVertices[4]=1;
+  tempVertices[5]=x;
+  tempVertices[6]=fy2;
+  tempVertices[7]=color;
+  tempVertices[8]=0;
+  tempVertices[9]=0;
+  tempVertices[10]=fx2;
+  tempVertices[11]=fy2;
+  tempVertices[12]=color;
+  tempVertices[13]=1;
+  tempVertices[14]=0;
+  if (mesh.getNumIndices() > 0) {
+    tempVertices[15]=fx2;
+    tempVertices[16]=y;
+    tempVertices[17]=color;
+    tempVertices[18]=1;
+    tempVertices[19]=1;
+    add(texture,tempVertices,0,20);
+  }
+ else {
+    tempVertices[15]=fx2;
+    tempVertices[16]=fy2;
+    tempVertices[17]=color;
+    tempVertices[18]=1;
+    tempVertices[19]=0;
+    tempVertices[20]=fx2;
+    tempVertices[21]=y;
+    tempVertices[22]=color;
+    tempVertices[23]=1;
+    tempVertices[24]=1;
+    tempVertices[25]=x;
+    tempVertices[26]=y;
+    tempVertices[27]=color;
+    tempVertices[28]=0;
+    tempVertices[29]=1;
+    add(texture,tempVertices,0,30);
+  }
+}
