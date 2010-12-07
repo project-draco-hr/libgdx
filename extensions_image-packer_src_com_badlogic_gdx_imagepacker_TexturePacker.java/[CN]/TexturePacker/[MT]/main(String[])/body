@@ -6,4 +6,6 @@
   }
   input=args[0];
   output=args[1];
+  Settings settings=new Settings();
+  process(settings,input,output);
 }

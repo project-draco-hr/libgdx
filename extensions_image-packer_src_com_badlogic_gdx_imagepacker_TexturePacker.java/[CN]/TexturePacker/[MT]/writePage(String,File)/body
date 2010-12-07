@@ -24,16 +24,33 @@
         }
       }
     }
+    System.out.println(width + "x" + height);
     if (width == maxWidth && height == maxHeight)     break;
     if (bestComparator != null)     break;
     if (settings.pot) {
-      grownPixels+=width;
-      width*=2;
-      if (width > maxWidth) {
-        width-=grownPixels;
-        grownPixels=0;
-        height*=2;
-        width*=2;
+      if (i % 3 == 0) {
+        grownPixels+=MathUtils.nextPowerOfTwo(width + 1) - width;
+        width=MathUtils.nextPowerOfTwo(width + 1);
+        if (width > maxWidth) {
+          i++;
+          width-=grownPixels;
+          grownPixels=0;
+        }
+      }
+ else       if (i % 3 == 1) {
+        grownPixels+=MathUtils.nextPowerOfTwo(height + 1) - height;
+        height=MathUtils.nextPowerOfTwo(height + 1);
+        if (height > maxHeight) {
+          i++;
+          height-=grownPixels;
+          grownPixels=0;
+        }
+      }
+ else {
+        ii++;
+        if (ii % 2 == 1)         width=MathUtils.nextPowerOfTwo(width + 1);
+ else         height=MathUtils.nextPowerOfTwo(height + 1);
+        i++;
       }
     }
  else {

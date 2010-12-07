@@ -1,19 +1,21 @@
 {
   if (canvas == null)   return;
-  String imageName=image.file.getAbsolutePath().substring(inputDir.getAbsolutePath().length()) + "\n";
-  if (imageName.startsWith("/") || imageName.startsWith("\\"))   imageName=imageName.substring(1);
-  int dotIndex=imageName.lastIndexOf('.');
-  if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
+  String imageName=image.name;
   imageName=imageName.replace("_" + formatToAbbrev.get(filter.format),"");
   imageName=imageName.replace("_" + filter.direction,"");
   imageName=imageName.replace("_" + filterToAbbrev.get(filter.minFilter) + ","+ filterToAbbrev.get(filter.magFilter),"");
-  writer.write(imageName.replace("\\","/") + "\n");
+  imageName=imageName.replace("\\","/");
+  Matcher matcher=numberedImagePattern.matcher(imageName);
+  int index=-1;
+  if (matcher.matches()) {
+    imageName=matcher.group(1);
+    index=Integer.parseInt(matcher.group(2));
+  }
+  writer.write(imageName + "\n");
   writer.write("  rotate: " + image.rotate + "\n");
   writer.write("  xy: " + left + ", "+ top+ "\n");
   writer.write("  size: " + image.getWidth() + ", "+ image.getHeight()+ "\n");
   writer.write("  orig: " + image.originalWidth + ", "+ image.originalHeight+ "\n");
   writer.write("  offset: " + image.offsetX + ", "+ image.offsetY+ "\n");
-  Matcher matcher=numberedImagePattern.matcher(imageName);
-  if (matcher.matches())   writer.write("  index: " + Integer.parseInt(matcher.group(1)) + "\n");
- else   writer.write("  index: 0\n");
+  writer.write("  index: " + index + "\n");
 }

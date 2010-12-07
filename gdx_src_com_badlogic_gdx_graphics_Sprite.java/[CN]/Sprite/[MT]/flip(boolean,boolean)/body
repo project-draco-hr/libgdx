@@ -1,8 +1,11 @@
 {
+  super.flip(x,y);
   float[] vertices=Sprite.this.vertices;
   if (x) {
     float u=vertices[U1];
     float u2=vertices[U3];
+    this.u=u;
+    this.u2=u2;
     vertices[U1]=u2;
     vertices[U2]=u2;
     vertices[U3]=u;
@@ -11,6 +14,8 @@
   if (y) {
     float v=vertices[V2];
     float v2=vertices[V1];
+    this.v=v;
+    this.v2=v2;
     vertices[V1]=v;
     vertices[V2]=v2;
     vertices[V3]=v2;
