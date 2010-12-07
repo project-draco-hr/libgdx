@@ -76,8 +76,10 @@ catch (    IOException e) {
     message+="External storage not available";
   }
   try {
+    testClasspath();
     testInternal();
     testExternal();
+    testAbsolute();
   }
  catch (  IOException ex) {
     throw new RuntimeException(ex);
