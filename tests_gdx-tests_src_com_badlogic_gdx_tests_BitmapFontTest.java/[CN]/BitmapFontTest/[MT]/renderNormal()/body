@@ -10,7 +10,7 @@
   font.drawMultiLine(spriteBatch,text,5,300);
   text="How quickly\ndaft jumping zebras vex.";
   font.setColor(Color.BLUE);
-  font.drawMultiLine(spriteBatch,text,5,200,470,BitmapFont.HAlignment.RIGHT);
+  font.drawMultiLine(spriteBatch,text,5,200,470,HAlignment.RIGHT);
   text="Kerning: LYA moo";
   font.setColor(Color.WHITE);
   font.draw(spriteBatch,text,210,66,0,text.length() - 3);

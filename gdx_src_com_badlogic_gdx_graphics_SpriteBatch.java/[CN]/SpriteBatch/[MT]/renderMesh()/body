@@ -1,6 +1,8 @@
 {
   if (idx == 0)   return;
   renderCalls++;
+  int spritesInBatch=idx / 20;
+  if (spritesInBatch > maxSpritesInBatch)   maxSpritesInBatch=spritesInBatch;
   lastTexture.bind();
   mesh.setVertices(vertices,0,idx);
   if (Gdx.graphics.isGL20Available()) {
@@ -12,7 +14,7 @@
       gl20.glEnable(GL20.GL_BLEND);
       gl20.glBlendFunc(blendSrcFunc,blendDstFunc);
     }
-    mesh.render(shader,GL10.GL_TRIANGLES,0,idx / 20 * 6);
+    mesh.render(shader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
   }
  else {
     if (blendingDisabled) {
@@ -23,14 +25,10 @@
       gl10.glEnable(GL10.GL_BLEND);
       gl10.glBlendFunc(blendSrcFunc,blendDstFunc);
     }
-    mesh.render(GL10.GL_TRIANGLES,0,idx / 20 * 6);
+    mesh.render(GL10.GL_TRIANGLES,0,spritesInBatch * 6);
   }
-  int spritesInBatch=idx / 20 / 6;
-  if (spritesInBatch > maxSpritesInBatch)   spritesInBatch=maxSpritesInBatch;
   idx=0;
   currBufferIdx++;
-  if (currBufferIdx == buffers.length) {
-    currBufferIdx=0;
-  }
+  if (currBufferIdx == buffers.length)   currBufferIdx=0;
   mesh=buffers[currBufferIdx];
 }

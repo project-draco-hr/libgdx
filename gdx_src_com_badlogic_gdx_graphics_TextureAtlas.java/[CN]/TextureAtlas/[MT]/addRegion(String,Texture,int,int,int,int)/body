@@ -1,0 +1,10 @@
+{
+  textures.add(texture);
+  AtlasRegion region=new AtlasRegion(texture,x,y,width,height);
+  region.name=name;
+  region.originalWidth=width;
+  region.originalHeight=height;
+  region.index=Integer.MAX_VALUE;
+  regions.add(region);
+  return region;
+}

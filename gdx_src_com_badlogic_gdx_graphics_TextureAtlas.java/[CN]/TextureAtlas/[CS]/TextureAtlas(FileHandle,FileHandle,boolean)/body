@@ -60,6 +60,6 @@
     }
   }
   int n=sortedRegions.size();
-  regions=new AtlasRegion[n];
-  for (int i=0; i < n; i++)   regions[i]=sortedRegions.poll();
+  regions=new ArrayList(n);
+  for (int i=0; i < n; i++)   regions.add(sortedRegions.poll());
 }
