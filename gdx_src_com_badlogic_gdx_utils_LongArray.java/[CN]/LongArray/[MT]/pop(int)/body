@@ -3,6 +3,6 @@
   long[] items=this.items;
   long value=items[index];
   size--;
-  if (index < size)   System.arraycopy(items,index + 1,items,index,size);
+  System.arraycopy(items,index + 1,items,index,size - index);
   return value;
 }
