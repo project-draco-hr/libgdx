@@ -6,6 +6,6 @@
   float ub=((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / d;
   if (ua < 0 || ua > 1)   return false;
   if (ub < 0 || ub > 1)   return false;
-  intersection.set(x1 + (x2 - x1) * ua,y1 + (y2 - y1) * ua);
+  if (intersection != null)   intersection.set(x1 + (x2 - x1) * ua,y1 + (y2 - y1) * ua);
   return true;
 }

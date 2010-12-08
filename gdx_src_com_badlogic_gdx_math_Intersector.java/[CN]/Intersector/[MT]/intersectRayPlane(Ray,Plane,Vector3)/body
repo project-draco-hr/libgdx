@@ -3,11 +3,11 @@
   if (denom != 0) {
     float t=-(ray.origin.dot(plane.getNormal()) + plane.getD()) / denom;
     if (t < 0)     return false;
-    intersection.set(ray.origin).add(ray.direction.tmp().mul(t));
+    if (intersection != null)     intersection.set(ray.origin).add(ray.direction.tmp().mul(t));
     return true;
   }
  else   if (plane.testPoint(ray.origin) == Plane.PlaneSide.OnPlane) {
-    intersection.set(ray.origin);
+    if (intersection != null)     intersection.set(ray.origin);
     return true;
   }
  else   return false;

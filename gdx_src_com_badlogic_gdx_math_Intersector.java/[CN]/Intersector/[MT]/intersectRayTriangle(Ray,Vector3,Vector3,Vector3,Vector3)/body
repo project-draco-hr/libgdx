@@ -14,7 +14,7 @@
   float u=(dot11 * dot02 - dot01 * dot12) / denom;
   float v=(dot00 * dot12 - dot01 * dot02) / denom;
   if (u >= 0 && v >= 0 && u + v <= 1) {
-    intersection.set(i);
+    if (intersection != null)     intersection.set(i);
     return true;
   }
  else {
