@@ -1,4 +1,5 @@
 {
+  int[] items=this.items;
   if (size == items.length)   resize((int)(size * 1.75f));
   items[size++]=value;
 }
