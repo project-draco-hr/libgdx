@@ -1,16 +1,12 @@
 {
   if (canvas == null)   return;
   String imageName=image.name;
-  imageName=imageName.replace("_" + formatToAbbrev.get(filter.format),"");
-  imageName=imageName.replace("_" + filter.direction,"");
-  imageName=imageName.replace("_" + filterToAbbrev.get(filter.minFilter) + ","+ filterToAbbrev.get(filter.magFilter),"");
   imageName=imageName.replace("\\","/");
-  Matcher matcher=numberedImagePattern.matcher(imageName);
+  Matcher matcher=indexPattern.matcher(imageName);
   int index=-1;
-  if (matcher.matches()) {
-    imageName=matcher.group(1);
-    index=Integer.parseInt(matcher.group(2));
-  }
+  if (matcher.matches())   index=Integer.parseInt(matcher.group(1));
+  int underscoreIndex=imageName.indexOf('_');
+  if (underscoreIndex != -1)   imageName=imageName.substring(0,underscoreIndex);
   writer.write(imageName + "\n");
   writer.write("  rotate: " + image.rotate + "\n");
   writer.write("  xy: " + left + ", "+ top+ "\n");
