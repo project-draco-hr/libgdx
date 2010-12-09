@@ -4,7 +4,7 @@
   region.name=name;
   region.originalWidth=width;
   region.originalHeight=height;
-  region.index=Integer.MAX_VALUE;
+  region.index=-1;
   regions.add(region);
   return region;
 }

@@ -1,5 +1,11 @@
 {
   setRegion(region);
+  index=region.index;
+  name=region.name;
+  offsetX=region.offsetX;
+  offsetY=region.offsetY;
   packedWidth=region.packedWidth;
   packedHeight=region.packedHeight;
+  originalWidth=region.originalWidth;
+  originalHeight=region.originalHeight;
 }

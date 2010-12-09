@@ -43,7 +43,6 @@
         region.offsetX=Integer.parseInt(tuple[0]);
         region.offsetY=Integer.parseInt(tuple[1]);
         region.index=Integer.parseInt(readValue(reader));
-        if (region.index == -1)         region.index=Integer.MAX_VALUE;
         if (flip)         region.flip(false,true);
         sortedRegions.add(region);
       }
