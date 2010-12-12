@@ -1,5 +1,5 @@
 {
-  viewport=new Rectangle();
+  Rectangle viewport=new Rectangle();
   if (Gdx.graphics.getWidth() > Gdx.graphics.getHeight()) {
     float aspect=(float)Gdx.graphics.getHeight() / HEIGHT;
     viewport.width=WIDTH * aspect;
@@ -14,4 +14,5 @@
     viewport.x=0;
     viewport.y=Gdx.graphics.getHeight() / 2 - viewport.height / 2;
   }
+  return viewport;
 }
