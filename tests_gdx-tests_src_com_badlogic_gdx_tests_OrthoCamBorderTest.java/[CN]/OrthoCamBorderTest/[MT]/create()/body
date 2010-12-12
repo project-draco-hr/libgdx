@@ -5,5 +5,5 @@
   cam=new OrthographicCamera();
   cam.setViewport(WIDTH,HEIGHT);
   cam.getPosition().set(WIDTH / 2,HEIGHT / 2,0);
-  viewport=calculateViewport(WIDTH,HEIGHT);
+  glViewport=calculateGLViewport(WIDTH,HEIGHT);
 }
