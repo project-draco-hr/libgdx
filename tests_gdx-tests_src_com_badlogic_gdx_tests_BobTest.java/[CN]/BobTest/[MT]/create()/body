@@ -1,0 +1,11 @@
+{
+  bobTexture=Gdx.graphics.newTexture(Gdx.files.internal("data/bobargb8888-32x32.png"),TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  bobModel=new Mesh(true,4,6,new VertexAttribute(Usage.Position,2,"a_pos"),new VertexAttribute(Usage.TextureCoordinates,2,"a_tex"));
+  bobModel.setVertices(new float[]{-16,-16,0,1,16,-16,1,1,16,16,1,0,-16,16,0,0},0,16);
+  bobModel.setIndices(new short[]{0,1,2,2,3,0},0,6);
+  bobModel.setAutoBind(false);
+  bobs=new Bob[100];
+  for (int i=0; i < 100; i++) {
+    bobs[i]=new Bob();
+  }
+}

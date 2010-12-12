@@ -1,0 +1,9 @@
+{
+  mesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,2,"a_pos"),new VertexAttribute(Usage.Color,4,"a_col"));
+  mesh.setVertices(new float[]{0,0,1,0,0,1,WIDTH,0,0,1,0,1,WIDTH,HEIGHT,0,0,1,1,0,HEIGHT,1,0,1,1});
+  mesh.setIndices(new short[]{0,1,2,2,3,0});
+  cam=new OrthographicCamera();
+  cam.setViewport(WIDTH,HEIGHT);
+  cam.getPosition().set(WIDTH / 2,HEIGHT / 2,0);
+  calculateViewport();
+}
