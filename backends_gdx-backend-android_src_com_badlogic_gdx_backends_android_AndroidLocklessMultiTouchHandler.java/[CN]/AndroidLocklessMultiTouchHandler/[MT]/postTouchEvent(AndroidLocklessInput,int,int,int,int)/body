@@ -1,0 +1,10 @@
+{
+  TouchEvent event=input.freeTouchEvents.poll();
+  if (event == null)   event=new TouchEvent();
+  event.timeStamp=System.nanoTime();
+  event.pointer=pointer;
+  event.x=x;
+  event.y=y;
+  event.type=type;
+  input.touchEvents.put(event);
+}

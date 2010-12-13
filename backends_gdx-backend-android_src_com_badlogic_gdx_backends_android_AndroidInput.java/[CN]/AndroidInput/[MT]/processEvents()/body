@@ -36,7 +36,8 @@ freeTouchEvents.free(e);
  else {
 int len=touchEvents.size();
 for (int i=0; i < len; i++) {
-freeTouchEvents.free(touchEvents.get(i));
+TouchEvent e=touchEvents.get(i);
+freeTouchEvents.free(e);
 }
 len=keyEvents.size();
 for (int i=0; i < len; i++) {

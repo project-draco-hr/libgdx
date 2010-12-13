@@ -1,0 +1,36 @@
+{
+  char character=(char)e.getUnicodeChar();
+  if (keyCode == 67)   character='\b';
+  KeyEvent event=null;
+switch (e.getAction()) {
+case android.view.KeyEvent.ACTION_DOWN:
+    event=freeKeyEvents.poll();
+  if (event == null)   event=new KeyEvent();
+event.keyChar=0;
+event.keyCode=e.getKeyCode();
+event.type=KeyEvent.KEY_DOWN;
+keyEvents.put(event);
+synchronized (this) {
+keys.add(event.keyCode);
+}
+break;
+case android.view.KeyEvent.ACTION_UP:
+event=freeKeyEvents.poll();
+if (event == null) event=new KeyEvent();
+event.keyChar=0;
+event.keyCode=e.getKeyCode();
+event.type=KeyEvent.KEY_UP;
+keyEvents.put(event);
+event=freeKeyEvents.poll();
+if (event == null) event=new KeyEvent();
+event.keyChar=character;
+event.keyCode=0;
+event.type=KeyEvent.KEY_TYPED;
+keyEvents.put(event);
+synchronized (this) {
+keys.remove(e.getKeyCode());
+}
+}
+if (catchBack && keyCode == android.view.KeyEvent.KEYCODE_BACK) return true;
+return false;
+}

@@ -1,6 +1,8 @@
 {
+  long timeStamp=System.nanoTime();
 synchronized (input) {
     TouchEvent event=input.freeTouchEvents.newObject();
+    event.timeStamp=timeStamp;
     event.pointer=0;
     event.x=x;
     event.y=y;
