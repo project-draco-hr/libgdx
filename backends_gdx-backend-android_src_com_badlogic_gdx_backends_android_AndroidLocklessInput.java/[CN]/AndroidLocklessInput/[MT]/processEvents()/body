@@ -36,7 +36,6 @@ freeTouchEvents.put(te);
  else {
 TouchEvent e=null;
 while ((e=touchEvents.poll()) != null) {
-Log.d("AndroidInput","lockless touch: " + (System.nanoTime() - e.timeStamp) / 1000000.0f);
 freeTouchEvents.put(e);
 }
 KeyEvent ke=null;
