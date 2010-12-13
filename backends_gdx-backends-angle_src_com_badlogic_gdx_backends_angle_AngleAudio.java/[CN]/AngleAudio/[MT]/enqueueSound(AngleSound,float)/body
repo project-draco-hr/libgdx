@@ -1,0 +1,10 @@
+{
+  try {
+synchronized (this) {
+      buffers.add(new AngleSoundBuffer(sound,volume));
+    }
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

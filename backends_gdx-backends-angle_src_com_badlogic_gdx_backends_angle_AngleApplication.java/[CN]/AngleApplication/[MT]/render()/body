@@ -1,0 +1,9 @@
+{
+  if (!created) {
+    listener.create();
+    listener.resume();
+    created=true;
+  }
+  input.processEvents();
+  listener.render();
+}

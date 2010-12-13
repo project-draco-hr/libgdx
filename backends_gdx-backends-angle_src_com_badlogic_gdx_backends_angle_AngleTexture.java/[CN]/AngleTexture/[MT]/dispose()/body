@@ -1,0 +1,8 @@
+{
+  GL20 gl=Gdx.graphics.getGL20();
+  IntBuffer buffer=BufferUtils.newIntBuffer(1);
+  buffer.put(textureID);
+  buffer.flip();
+  gl.glDeleteTextures(1,buffer);
+  textures--;
+}

@@ -1,0 +1,19 @@
+{
+synchronized (this) {
+    KeyEvent event=freeKeyEvents.newObject();
+    event.keyChar=(char)uniCode;
+    event.keyCode=translateKey(key);
+switch (action) {
+case ESLoop.ES_KEY_DOWN:
+      event.type=KeyEvent.KEY_DOWN;
+    break;
+case ESLoop.ES_KEY_UP:
+  event.type=KeyEvent.KEY_UP;
+break;
+case ESLoop.ES_KEY_TYPED:
+event.type=KeyEvent.KEY_TYPED;
+break;
+}
+keyEvents.add(event);
+}
+}

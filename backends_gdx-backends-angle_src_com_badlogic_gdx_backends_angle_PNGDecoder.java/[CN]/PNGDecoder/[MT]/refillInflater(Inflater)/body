@@ -1,0 +1,8 @@
+{
+  while (chunkRemaining == 0) {
+    closeChunk();
+    openChunk(IDAT);
+  }
+  int read=readChunk(buffer,0,buffer.length);
+  inflater.setInput(buffer,0,read);
+}

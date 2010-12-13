@@ -1,0 +1,30 @@
+{
+  this.audio=audio;
+  InputStream fin=new BufferedInputStream(file.read());
+  AudioInputStream ain=AudioSystem.getAudioInputStream(fin);
+  AudioFormat baseFormat=ain.getFormat();
+  AudioFormat decodedFormat=new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,baseFormat.getSampleRate(),16,baseFormat.getChannels(),baseFormat.getChannels() * 2,baseFormat.getSampleRate(),false);
+  ain=AudioSystem.getAudioInputStream(decodedFormat,ain);
+  ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+  byte[] buffer=new byte[1024 * 10];
+  int readBytes=ain.read(buffer);
+  while (readBytes != -1) {
+    bytes.write(buffer,0,readBytes);
+    readBytes=ain.read(buffer);
+  }
+  ain.close();
+  System.out.println(decodedFormat);
+  format=decodedFormat;
+  originalSamples=bytes.toByteArray();
+  ByteBuffer tmpBuffer=ByteBuffer.wrap(originalSamples);
+  tmpBuffer.order(ByteOrder.LITTLE_ENDIAN);
+  ShortBuffer shorts=tmpBuffer.asShortBuffer();
+  samples=new float[originalSamples.length / 2];
+  for (int i=0; i < samples.length; i++) {
+    float value=shorts.get(i) / (float)Short.MAX_VALUE;
+    if (value < -1)     value=-1;
+    if (value > 1)     value=1;
+    samples[i]=value;
+  }
+  samples=resample(samples,decodedFormat.getSampleRate(),decodedFormat.getChannels() == 1);
+}

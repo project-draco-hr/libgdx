@@ -1,0 +1,20 @@
+{
+  if (button != 1)   return;
+synchronized (this) {
+    TouchEvent event=freeTouchEvents.newObject();
+    event.x=x;
+    event.y=y;
+    event.pointer=0;
+switch (action) {
+case ESLoop.ES_MOUSE_DOWN:
+      event.type=TouchEvent.TOUCH_DOWN;
+    break;
+case ESLoop.ES_MOUSE_UP:
+  event.type=TouchEvent.TOUCH_UP;
+break;
+case ESLoop.ES_MOUSE_MOVE:
+event.type=TouchEvent.TOUCH_DRAGGED;
+break;
+}
+}
+}

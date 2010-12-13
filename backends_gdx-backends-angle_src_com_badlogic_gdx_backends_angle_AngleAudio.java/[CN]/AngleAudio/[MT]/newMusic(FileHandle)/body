@@ -1,0 +1,9 @@
+{
+  try {
+    AngleMusic music=new AngleMusic(((AngleFileHandle)file));
+    return music;
+  }
+ catch (  Throwable e) {
+    throw new GdxRuntimeException("Couldn't create Music instance from file '" + file + "'",e);
+  }
+}

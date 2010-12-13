@@ -1,0 +1,5 @@
+{
+  if (chunkLength != expected) {
+    throw new IOException("Chunk has wrong size");
+  }
+}

@@ -1,0 +1,8 @@
+{
+  BufferedImage scaled=new BufferedImage(image.getWidth() / 2,image.getHeight() / 2,BufferedImage.TYPE_4BYTE_ABGR_PRE);
+  Graphics2D g=scaled.createGraphics();
+  g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+  g.drawImage(image,0,0,scaled.getWidth(),scaled.getHeight(),null);
+  g.dispose();
+  return scaled;
+}

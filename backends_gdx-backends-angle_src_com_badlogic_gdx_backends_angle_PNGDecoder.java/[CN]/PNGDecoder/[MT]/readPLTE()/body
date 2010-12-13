@@ -1,0 +1,8 @@
+{
+  int paletteEntries=chunkLength / 3;
+  if (paletteEntries < 1 || paletteEntries > 256 || (chunkLength % 3) != 0) {
+    throw new IOException("PLTE chunk has wrong length");
+  }
+  palette=new byte[paletteEntries * 3];
+  readChunk(palette,0,palette.length);
+}

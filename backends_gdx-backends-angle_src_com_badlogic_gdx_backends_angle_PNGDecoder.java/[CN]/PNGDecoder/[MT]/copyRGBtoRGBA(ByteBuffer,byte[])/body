@@ -1,0 +1,22 @@
+{
+  if (transPixel != null) {
+    byte tr=transPixel[1];
+    byte tg=transPixel[3];
+    byte tb=transPixel[5];
+    for (int i=1, n=curLine.length; i < n; i+=3) {
+      byte r=curLine[i];
+      byte g=curLine[i + 1];
+      byte b=curLine[i + 2];
+      byte a=(byte)0xFF;
+      if (r == tr && g == tg && b == tb) {
+        a=0;
+      }
+      buffer.put(r).put(g).put(b).put(a);
+    }
+  }
+ else {
+    for (int i=1, n=curLine.length; i < n; i+=3) {
+      buffer.put(curLine[i]).put(curLine[i + 1]).put(curLine[i + 2]).put((byte)0xFF);
+    }
+  }
+}

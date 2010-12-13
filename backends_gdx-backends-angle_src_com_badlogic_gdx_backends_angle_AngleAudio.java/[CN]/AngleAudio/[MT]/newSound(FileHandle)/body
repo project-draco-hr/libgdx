@@ -1,0 +1,9 @@
+{
+  try {
+    AngleSound sound=new AngleSound(this,((AngleFileHandle)file));
+    return sound;
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't create Sound instance from file '" + file + "'",e);
+  }
+}

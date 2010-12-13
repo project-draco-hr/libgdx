@@ -1,0 +1,9 @@
+{
+  while (amount > 0) {
+    long skipped=input.skip(amount);
+    if (skipped < 0) {
+      throw new EOFException();
+    }
+    amount-=skipped;
+  }
+}

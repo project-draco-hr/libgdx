@@ -1,0 +1,6 @@
+{
+  openChunk();
+  if (chunkType != expected) {
+    throw new IOException("Expected chunk: " + Integer.toHexString(expected));
+  }
+}

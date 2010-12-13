@@ -1,0 +1,22 @@
+{
+  final int bpp=this.bytesPerPixel;
+  int i;
+  for (i=1; i <= bpp; ++i) {
+    curLine[i]+=prevLine[i];
+  }
+  for (int n=curLine.length; i < n; ++i) {
+    int a=curLine[i - bpp] & 255;
+    int b=prevLine[i] & 255;
+    int c=prevLine[i - bpp] & 255;
+    int p=a + b - c;
+    int pa=p - a;
+    if (pa < 0)     pa=-pa;
+    int pb=p - b;
+    if (pb < 0)     pb=-pb;
+    int pc=p - c;
+    if (pc < 0)     pc=-pc;
+    if (pa <= pb && pa <= pc)     c=a;
+ else     if (pb <= pc)     c=b;
+    curLine[i]+=(byte)c;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  int width=image.getWidth();
+  int height=image.getHeight();
+  ensureBufferSize(width * height * 4);
+  Raster raster=image.getRaster();
+  if (image.getType() == BufferedImage.TYPE_INT_ARGB)   intBuffer.put(((DataBufferInt)raster.getDataBuffer()).getData(),0,width * height);
+ else {
+    ColorModel colorModel=image.getColorModel();
+    Object data=raster.getDataElements(0,0,null);
+    for (int y=0; y < height; y++)     for (int x=0; x < width; x++)     intBuffer.put(colorModel.getRGB(raster.getDataElements(x,y,data)));
+  }
+  buffer.limit(intBuffer.position() * 4);
+  return buffer;
+}
