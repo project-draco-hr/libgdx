@@ -1,0 +1,14 @@
+{
+  if (size == items.length) {
+    resize((int)(size * 1.75f));
+    T item=newObject();
+    items[size++]=item;
+    return item;
+  }
+  T item=(T)items[size];
+  if (item == null)   item=newObject();
+  System.arraycopy(items,index,items,index + 1,size - index);
+  size++;
+  items[index]=item;
+  return item;
+}

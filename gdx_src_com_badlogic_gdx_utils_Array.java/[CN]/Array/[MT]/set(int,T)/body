@@ -1,0 +1,4 @@
+{
+  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
+  items[index]=value;
+}

@@ -1,0 +1,6 @@
+{
+  Object[] newItems=new Object[Math.max(newSize,8)];
+  Object[] items=this.items;
+  System.arraycopy(items,0,newItems,0,Math.min(items.length,newItems.length));
+  this.items=(T[])newItems;
+}
