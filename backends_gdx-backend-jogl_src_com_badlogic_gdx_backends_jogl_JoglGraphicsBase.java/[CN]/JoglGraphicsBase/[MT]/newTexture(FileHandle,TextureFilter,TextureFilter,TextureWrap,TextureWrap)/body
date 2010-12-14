@@ -1,5 +1,5 @@
 {
   Pixmap pixmap=newPixmap(file);
-  if (!isPowerOfTwo(pixmap.getHeight()) || !isPowerOfTwo(pixmap.getWidth()))   throw new GdxRuntimeException("Texture dimensions must be a power of two");
+  if (gl != gl20 && (!isPowerOfTwo(pixmap.getWidth()) || !isPowerOfTwo(pixmap.getHeight())))   throw new GdxRuntimeException("Texture dimensions must be a power of two");
   return new JoglTexture((BufferedImage)pixmap.getNativePixmap(),minFilter,magFilter,uWrap,vWrap,false);
 }

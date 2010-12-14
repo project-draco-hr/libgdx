@@ -1,5 +1,5 @@
 {
-  if (!isPowerOfTwo(width) || !isPowerOfTwo(height))   throw new GdxRuntimeException("Dimensions have to be a power of two");
+  if (gl != gl20 && (!MathUtils.isPowerOfTwo(width) || !MathUtils.isPowerOfTwo(height)))   throw new GdxRuntimeException("Dimensions have to be a power of two");
   Bitmap.Config config=AndroidPixmap.getInternalFormat(format);
   Bitmap bitmap=Bitmap.createBitmap(width,height,config);
   Texture texture=null;

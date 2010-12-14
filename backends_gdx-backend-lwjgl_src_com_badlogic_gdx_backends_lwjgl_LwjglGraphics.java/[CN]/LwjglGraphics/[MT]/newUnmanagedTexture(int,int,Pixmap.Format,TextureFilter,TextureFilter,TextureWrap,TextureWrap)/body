@@ -1,5 +1,5 @@
 {
-  if (!MathUtils.isPowerOfTwo(width) || !MathUtils.isPowerOfTwo(height))   throw new GdxRuntimeException("Texture dimensions must be a power of two: " + width + "x"+ height);
+  if (gl != gl20 && (!MathUtils.isPowerOfTwo(height) || !MathUtils.isPowerOfTwo(height)))   throw new GdxRuntimeException("Texture dimensions must be a power of two: " + width + "x"+ height);
   if (format == Format.Alpha)   return new LwjglTexture(width,height,BufferedImage.TYPE_BYTE_GRAY,minFilter,magFilter,uWrap,vWrap,false);
  else   return new LwjglTexture(width,height,BufferedImage.TYPE_4BYTE_ABGR,minFilter,magFilter,uWrap,vWrap,false);
 }

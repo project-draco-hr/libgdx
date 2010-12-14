@@ -1,5 +1,3 @@
 {
-  Pixmap pixmap=newPixmap(file);
-  if (!MathUtils.isPowerOfTwo(pixmap.getHeight()) || !MathUtils.isPowerOfTwo(pixmap.getWidth()))   throw new GdxRuntimeException("Texture dimensions must be a power of two: " + file + " ("+ pixmap.getWidth()+ "x"+ pixmap.getHeight()+ ")");
   return new AngleTexture(file,minFilter,magFilter,uWrap,vWrap,false);
 }
