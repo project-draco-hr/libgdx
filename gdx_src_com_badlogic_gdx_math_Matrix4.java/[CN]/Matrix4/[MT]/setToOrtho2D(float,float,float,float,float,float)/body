@@ -1,4 +1,4 @@
 {
-  setToOrtho(0,width,0,height,near,far);
+  setToOrtho(x,x + width,y,y + height,near,far);
   return this;
 }
