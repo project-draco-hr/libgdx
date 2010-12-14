@@ -5,7 +5,7 @@
     items[size++]=item;
     return item;
   }
-  T item=(T)items[size];
+  T item=items[size];
   if (item == null)   item=newObject();
   System.arraycopy(items,index,items,index + 1,size - index);
   size++;

@@ -1,0 +1,5 @@
+{
+  this((Class<T>)array.items.getClass().getComponentType(),array.size);
+  size=array.size;
+  System.arraycopy(array.items,0,items,0,size);
+}

@@ -5,7 +5,7 @@
     items[size++]=item;
     return item;
   }
-  T item=(T)items[size];
+  T item=items[size];
   if (item == null)   item=newObject();
   items[size++]=item;
   return item;
