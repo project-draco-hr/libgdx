@@ -1,4 +1,9 @@
 {
-  if (type == FileType.Classpath || type == FileType.Internal)   return true;
-  return file.exists();
+switch (type) {
+case Internal:
+    if (file.exists())     return true;
+case Classpath:
+  return FileHandle.class.getResourceAsStream("/" + file.getPath().replace('\\','/')) != null;
+}
+return file().exists();
 }

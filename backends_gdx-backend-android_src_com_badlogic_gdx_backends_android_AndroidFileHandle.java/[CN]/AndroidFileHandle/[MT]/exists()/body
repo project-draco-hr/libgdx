@@ -1,0 +1,18 @@
+{
+  if (type == FileType.Internal) {
+    String fileName=file.getPath();
+    try {
+      assets.open(fileName).close();
+      return true;
+    }
+ catch (    Exception ex) {
+      try {
+        return assets.list(fileName).length > 0;
+      }
+ catch (      Exception ignored) {
+        return false;
+      }
+    }
+  }
+  return super.exists();
+}

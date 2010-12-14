@@ -1,20 +1,4 @@
 {
   this.type=type;
-switch (type) {
-case Internal:
-    file=new File(fileName);
-  if (file.exists())   break;
-case Classpath:
-if (FileHandle.class.getResourceAsStream("/" + fileName) == null) throw new GdxRuntimeException("File not found: " + fileName + " ("+ type+ ")");
-file=new File("/" + fileName);
-break;
-case External:
-file=new File(Gdx.files.getExternalStoragePath() + fileName);
-break;
-case Absolute:
-file=new File(fileName);
-break;
-default :
-throw new IllegalArgumentException("Unknown type: " + type);
-}
+  file=new File(fileName);
 }

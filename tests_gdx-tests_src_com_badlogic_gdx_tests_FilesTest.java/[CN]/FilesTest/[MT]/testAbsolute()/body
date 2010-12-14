@@ -1,5 +1,5 @@
 {
-  String path=new File("meow").getAbsolutePath();
+  String path=new File(Gdx.files.getExternalStoragePath(),"meow").getAbsolutePath();
   FileHandle handle=Gdx.files.absolute(path);
   handle.delete();
   if (handle.exists())   fail();

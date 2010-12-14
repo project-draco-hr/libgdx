@@ -1,18 +1,8 @@
 {
   File parent=file.getParentFile();
   if (parent == null) {
-switch (type) {
-case Classpath:
-case Absolute:
-      parent=new File("/");
-    break;
-case Internal:
-  parent=new File("");
-break;
-case External:
-parent=new File(Gdx.files.getExternalStoragePath());
-break;
-}
-}
-return new LwjglFileHandle(parent,type);
+    if (type == FileType.Absolute)     parent=new File("/");
+ else     parent=new File("");
+  }
+  return new LwjglFileHandle(parent,type);
 }

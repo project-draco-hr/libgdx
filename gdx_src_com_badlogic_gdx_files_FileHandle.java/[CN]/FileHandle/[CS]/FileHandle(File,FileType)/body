@@ -1,11 +1,4 @@
 {
   this.file=file;
   this.type=type;
-switch (type) {
-case Internal:
-    if (file.exists())     break;
-case Classpath:
-  if (FileHandle.class.getResourceAsStream(file.getPath().replace('\\','/')) == null)   throw new GdxRuntimeException("File not found: " + file + " ("+ type+ ")");
-break;
-}
 }
