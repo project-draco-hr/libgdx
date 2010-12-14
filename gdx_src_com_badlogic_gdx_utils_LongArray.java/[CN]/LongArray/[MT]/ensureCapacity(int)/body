@@ -1,4 +1,4 @@
 {
   int sizeNeeded=size + additionalCapacity;
-  if (sizeNeeded >= items.length)   resize(sizeNeeded);
+  if (sizeNeeded >= items.length)   resize(sizeNeeded,false);
 }

@@ -1,0 +1,5 @@
+{
+  if (iterator == null)   iterator=new ItemIterator();
+  iterator.index=0;
+  return iterator;
+}

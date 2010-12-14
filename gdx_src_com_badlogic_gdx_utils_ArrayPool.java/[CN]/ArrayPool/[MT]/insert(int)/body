@@ -1,6 +1,6 @@
 {
   if (size == items.length) {
-    resize((int)(size * 1.75f));
+    resize((int)(size * 1.75f),false);
     T item=newObject();
     items[size++]=item;
     return item;

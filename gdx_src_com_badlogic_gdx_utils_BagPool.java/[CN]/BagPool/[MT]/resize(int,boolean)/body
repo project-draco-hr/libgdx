@@ -1,0 +1,7 @@
+{
+  if (!exact && newSize < 8)   newSize=8;
+  T[] newItems=(T[])java.lang.reflect.Array.newInstance(items.getClass().getComponentType(),newSize);
+  T[] items=this.items;
+  System.arraycopy(items,0,newItems,0,Math.min(items.length,newItems.length));
+  this.items=newItems;
+}
