@@ -88,9 +88,11 @@
             mesh.vertices[idx++]=parseFloat(tokens.get(4));
             mesh.vertices[idx++]=parseFloat(tokens.get(6));
             mesh.vertices[idx++]=parseFloat(tokens.get(7));
-            mesh.vertices[idx++]=0.f;
-            mesh.vertices[idx++]=0.f;
-            mesh.vertices[idx++]=0.f;
+            if (allocateNormals) {
+              mesh.vertices[idx++]=0.f;
+              mesh.vertices[idx++]=0.f;
+              mesh.vertices[idx++]=0.f;
+            }
           }
           if (tokens.get(0).equals("tri")) {
             triIndex=parseInt(tokens.get(1));
