@@ -1,11 +1,9 @@
 {
-  int widx=wptr.get();
-  int ridx=rptr.get();
-  int wnxt=next(widx);
-  if (wnxt == ridx) {
-    return false;
-  }
-  queue.set(widx,o);
-  wptr.set(wnxt);
+  int write=writeIndex.get();
+  int read=readIndex.get();
+  int next=next(write);
+  if (next == read)   return false;
+  queue.set(write,value);
+  writeIndex.set(next);
   return true;
 }

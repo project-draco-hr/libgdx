@@ -1,10 +1,8 @@
 {
-  int ridx=rptr.get();
-  int widx=wptr.get();
-  if (ridx == widx) {
-    return null;
-  }
-  T o=queue.get(ridx);
-  rptr.set(next(ridx));
-  return o;
+  int read=readIndex.get();
+  int write=writeIndex.get();
+  if (read == write)   return null;
+  T value=queue.get(read);
+  readIndex.set(next(read));
+  return value;
 }

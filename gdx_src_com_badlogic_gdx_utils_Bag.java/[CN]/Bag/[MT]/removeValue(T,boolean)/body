@@ -1,0 +1,20 @@
+{
+  Object[] items=this.items;
+  if (identity || value == null) {
+    for (int i=0, n=size; i < n; i++) {
+      if (items[i] == value) {
+        removeIndex(i);
+        return true;
+      }
+    }
+  }
+ else {
+    for (int i=0, n=size; i < n; i++) {
+      if (value.equals(items[i])) {
+        removeIndex(i);
+        return true;
+      }
+    }
+  }
+  return false;
+}

@@ -15,14 +15,5 @@
   out.println("glyph.page.width=" + glyphPageWidth);
   out.println("glyph.page.height=" + glyphPageHeight);
   out.println();
-  for (Iterator iter=effects.iterator(); iter.hasNext(); ) {
-    ConfigurableEffect effect=(ConfigurableEffect)iter.next();
-    out.println("effect.class=" + effect.getClass().getName());
-    for (Iterator iter2=effect.getValues().iterator(); iter2.hasNext(); ) {
-      Value value=(Value)iter2.next();
-      out.println("effect." + value.getName() + "="+ value.getString());
-    }
-    out.println();
-  }
   out.close();
 }
