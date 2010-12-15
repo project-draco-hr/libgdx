@@ -1,13 +1,8 @@
 {
   this.isManaged=managed;
   this.isMipMapped=TextureFilter.isMipMap(minFilter);
-  if (!isMipMapped && file.path().endsWith(".png")) {
-    loadPNG(file);
-  }
- else {
-    BufferedImage image=(BufferedImage)Gdx.graphics.newPixmap(file).getNativePixmap();
-    loadMipMap(image);
-  }
+  BufferedImage image=(BufferedImage)Gdx.graphics.newPixmap(file).getNativePixmap();
+  loadMipMap(image);
   bind();
   GL20 gl=Gdx.graphics.getGL20();
   gl.glTexParameteri(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,getTextureFilter(minFilter));

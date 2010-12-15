@@ -5,7 +5,7 @@
     texHeight=pngDecoder.getHeight();
     int stride=texWidth * 4;
     ensureBufferSize(stride * texHeight);
-    Format pngFormat=pngDecoder.decideTextureFormat(PNGDecoder.Format.RGBA);
+    Format pngFormat=pngDecoder.decideTextureFormat(PNGDecoder.Format.BGRA);
     int glFormat, glInternalFormat;
 switch (pngFormat) {
 case ALPHA:

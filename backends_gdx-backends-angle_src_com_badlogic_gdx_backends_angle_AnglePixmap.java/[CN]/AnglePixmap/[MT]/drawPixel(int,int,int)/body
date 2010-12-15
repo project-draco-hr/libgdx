@@ -1,0 +1,6 @@
+{
+  Graphics2D g=pixmap.createGraphics();
+  g.setColor(new Color(color,true));
+  g.drawRect(x,y,1,1);
+  g.dispose();
+}

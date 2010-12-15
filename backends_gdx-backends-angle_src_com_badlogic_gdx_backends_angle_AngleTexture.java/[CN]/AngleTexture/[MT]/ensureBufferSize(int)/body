@@ -2,7 +2,7 @@
   if (buffer == null || buffer.capacity() < size) {
     buffer=BufferUtils.newByteBuffer(size);
     ByteBuffer temp=buffer.slice();
-    temp.order(ByteOrder.LITTLE_ENDIAN);
+    temp.order(ByteOrder.BIG_ENDIAN);
     intBuffer=temp.asIntBuffer();
   }
  else {
