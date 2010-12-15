@@ -1,0 +1,15 @@
+{
+  if (mAnimator != null) {
+    mAnimator.update(dt);
+    if (mAnimator.hasAnimation()) {
+      Keyframe ikf=mAnimator.getInterpolatedKeyframe();
+      for (int i=0; i < mNumMeshes; i++) {
+        mTarget[i].setVertices(ikf.Vertices[i]);
+        if (!ikf.IndicesSent) {
+          mTarget[i].setIndices(ikf.Indices[i]);
+        }
+      }
+      ikf.IndicesSent=true;
+    }
+  }
+}

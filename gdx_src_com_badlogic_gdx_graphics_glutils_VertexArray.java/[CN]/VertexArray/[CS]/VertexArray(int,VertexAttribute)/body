@@ -1,8 +1,3 @@
 {
-  this.attributes=new VertexAttributes(attributes);
-  byteBuffer=ByteBuffer.allocateDirect(this.attributes.vertexSize * numVertices);
-  byteBuffer.order(ByteOrder.nativeOrder());
-  buffer=byteBuffer.asFloatBuffer();
-  buffer.flip();
-  byteBuffer.flip();
+  this(numVertices,new VertexAttributes(attributes));
 }

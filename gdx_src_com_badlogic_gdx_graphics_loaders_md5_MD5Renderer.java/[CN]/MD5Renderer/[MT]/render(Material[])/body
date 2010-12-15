@@ -1,0 +1,13 @@
+{
+  for (int i=0; i < model.meshes.length; i++) {
+    if (materials[i] != null) {
+      if (materials[i].Texture != null) {
+        materials[i].Texture.bind();
+      }
+      materials[i].set(GL10.GL_FRONT);
+    }
+    this.mesh.setIndices(indices[i]);
+    this.mesh.setVertices(vertices[i]);
+    this.mesh.render(GL10.GL_TRIANGLES,0,indices[i].length);
+  }
+}

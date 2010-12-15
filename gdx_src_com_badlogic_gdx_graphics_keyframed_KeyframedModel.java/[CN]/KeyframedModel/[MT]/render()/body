@@ -1,0 +1,12 @@
+{
+  for (int i=0; i < mNumMeshes; i++) {
+    Material mat=mMaterials[i];
+    if (mat != null) {
+      if (mat.Texture != null) {
+        mat.Texture.bind();
+      }
+      mat.set(GL10.GL_FRONT);
+    }
+    mTarget[i].render(GL10.GL_TRIANGLES,0,mTarget[i].getNumIndices());
+  }
+}

@@ -1,0 +1,13 @@
+{
+  if (Gdx.gl20 != null || Gdx.gl11 != null || Mesh.forceVBO) {
+    vertices=new VertexBufferObject(isStatic,maxVertices,attributes);
+    indices=new IndexBufferObject(isStatic,maxIndices);
+    isVertexArray=false;
+  }
+ else {
+    vertices=new VertexArray(maxVertices,attributes);
+    indices=new IndexBufferObject(maxIndices);
+    isVertexArray=true;
+  }
+  meshes.add(this);
+}

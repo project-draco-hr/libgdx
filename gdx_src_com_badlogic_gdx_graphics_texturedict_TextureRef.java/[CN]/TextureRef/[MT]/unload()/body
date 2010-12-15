@@ -1,0 +1,8 @@
+{
+  if (--mRefCount == 0) {
+    mTexture.dispose();
+    mTexture=null;
+    TextureDict.removeTexture(Name);
+  }
+  return mRefCount;
+}

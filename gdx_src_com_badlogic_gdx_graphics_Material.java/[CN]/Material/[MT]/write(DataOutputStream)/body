@@ -1,0 +1,20 @@
+{
+  o.writeUTF(Name);
+  String filename=Texture.Name.substring(Texture.Name.lastIndexOf("\\") + 1);
+  o.writeUTF(filename);
+  o.writeBoolean(Ambient != null);
+  if (Ambient != null) {
+    o.writeFloat(Ambient.r);
+    o.writeFloat(Ambient.g);
+    o.writeFloat(Ambient.b);
+    o.writeFloat(Ambient.a);
+  }
+  o.writeBoolean(Diffuse != null);
+  if (Diffuse != null) {
+    o.writeFloat(Diffuse.r);
+    o.writeFloat(Diffuse.g);
+    o.writeFloat(Diffuse.b);
+    o.writeFloat(Diffuse.a);
+  }
+  return true;
+}

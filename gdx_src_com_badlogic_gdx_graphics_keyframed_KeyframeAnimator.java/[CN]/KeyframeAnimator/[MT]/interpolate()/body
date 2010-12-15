@@ -1,0 +1,39 @@
+{
+  float t=mFrameDelta * mInvSampleRate;
+  for (int i=0; i < mNumMeshes; i++) {
+    for (int n=0; n < A.Vertices[i].length; n+=sStride) {
+      float Ax=A.Vertices[i][n];
+      float Bx=B.Vertices[i][n];
+      float Rx=Ax + (Bx - Ax) * t;
+      float Ay=A.Vertices[i][n + 1];
+      float By=B.Vertices[i][n + 1];
+      float Ry=Ay + (By - Ay) * t;
+      float Az=A.Vertices[i][n + 2];
+      float Bz=B.Vertices[i][n + 2];
+      float Rz=Az + (Bz - Az) * t;
+      R.Vertices[i][n]=Rx;
+      R.Vertices[i][n + 1]=Ry;
+      R.Vertices[i][n + 2]=Rz;
+      R.Vertices[i][n + 3]=A.Vertices[i][n + 3];
+      R.Vertices[i][n + 4]=A.Vertices[i][n + 4];
+      Ax=A.Vertices[i][n + 5];
+      Bx=B.Vertices[i][n + 5];
+      Rx=Ax + (Bx - Ax) * t;
+      Ay=A.Vertices[i][n + 6];
+      By=B.Vertices[i][n + 6];
+      Ry=Ay + (By - Ay) * t;
+      Az=A.Vertices[i][n + 7];
+      Bz=B.Vertices[i][n + 7];
+      Rz=Az + (Bz - Az) * t;
+      R.Vertices[i][n + 5]=Rx;
+      R.Vertices[i][n + 6]=Ry;
+      R.Vertices[i][n + 7]=Rz;
+    }
+    if (!R.IndicesSet) {
+      for (int n=0; n < A.Indices[i].length; n++) {
+        R.Indices[i][n]=A.Indices[i][n];
+      }
+    }
+  }
+  R.IndicesSet=true;
+}

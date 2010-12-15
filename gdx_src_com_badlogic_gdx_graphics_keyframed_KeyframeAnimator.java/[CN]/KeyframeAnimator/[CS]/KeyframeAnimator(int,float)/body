@@ -1,0 +1,7 @@
+{
+  mNumMeshes=numMeshes;
+  R=new Keyframe();
+  R.Vertices=new float[mNumMeshes][];
+  R.Indices=new short[mNumMeshes][];
+  mInvSampleRate=1.f / sampleRate;
+}

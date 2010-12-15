@@ -1,12 +1,3 @@
 {
-  this.isStatic=isStatic;
-  this.attributes=new VertexAttributes(attributes);
-  byteBuffer=ByteBuffer.allocateDirect(this.attributes.vertexSize * numVertices);
-  byteBuffer.order(ByteOrder.nativeOrder());
-  isDirect=true;
-  buffer=byteBuffer.asFloatBuffer();
-  buffer.flip();
-  byteBuffer.flip();
-  bufferHandle=createBufferObject();
-  usage=isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW;
+  this(isStatic,numVertices,new VertexAttributes(attributes));
 }

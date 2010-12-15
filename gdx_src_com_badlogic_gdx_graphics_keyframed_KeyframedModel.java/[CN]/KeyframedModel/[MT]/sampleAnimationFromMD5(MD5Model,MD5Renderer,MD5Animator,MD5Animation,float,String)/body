@@ -1,0 +1,41 @@
+{
+  animator.setAnimation(animation,false);
+  float len=animation.frames.length * animation.secondsPerFrame;
+  int numSamples=(int)(len / sampleRate) + 1;
+  mNumMeshes=model.meshes.length;
+  if (mAnimator == null) {
+    mAnimator=new KeyframeAnimator(mNumMeshes,sampleRate);
+    mTarget=new Mesh[mNumMeshes];
+  }
+  KeyframeAnimation a=new KeyframeAnimation(animation.name,numSamples,len);
+  animator.update(0);
+  renderer.setSkeleton(animator.getSkeleton());
+  int i=0;
+  int numVertices=0, numIndices=0;
+  for (float t=0; t < len; t+=sampleRate) {
+    Keyframe k=new Keyframe();
+    k.Vertices=new float[mNumMeshes][];
+    k.Indices=new short[mNumMeshes][];
+    for (int m=0; m < mNumMeshes; m++) {
+      float vertices[]=renderer.getVertices(m);
+      short indices[]=renderer.getIndices(m);
+      numVertices=vertices.length;
+      numIndices=indices.length;
+      k.Vertices[m]=new float[vertices.length];
+      k.Vertices[m]=vertices.clone();
+      k.Indices[m]=new short[indices.length];
+      k.Indices[m]=indices.clone();
+      if (mTarget[m] == null) {
+        mAnimator.setKeyframeDimensions(m,numVertices,numIndices);
+        VertexAttributes attribs=renderer.getMesh().getVertexAttributes();
+        mTarget[m]=new Mesh(false,numVertices,numIndices,attribs);
+        if (mTarget[m].getVertexSize() / 4 != KeyframeAnimator.sStride)         throw new GdxRuntimeException("Mesh vertexattributes != 8 - is this a valid MD5 source mesh?");
+      }
+    }
+    a.mKeyframes[i]=k;
+    animator.update(sampleRate);
+    renderer.setSkeleton(animator.getSkeleton());
+    i++;
+  }
+  mAnimations.put(animKey,a);
+}

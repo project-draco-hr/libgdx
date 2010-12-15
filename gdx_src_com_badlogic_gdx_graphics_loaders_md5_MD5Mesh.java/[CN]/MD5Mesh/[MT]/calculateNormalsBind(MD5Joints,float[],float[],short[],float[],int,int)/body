@@ -1,0 +1,121 @@
+{
+  for (int vertexOffset=2, k=0; vertexOffset < vertices.length; vertexOffset+=vstride) {
+    float finalX=0;
+    float finalY=0;
+    float finalZ=0;
+    int weightOffset=(int)vertices[vertexOffset];
+    int weightCount=(int)vertices[vertexOffset + 1];
+    weightOffset=weightOffset * wstride;
+    for (int j=0; j < weightCount; j++) {
+      int jointOffset=(int)weights[weightOffset++] << 3;
+      float bias=weights[weightOffset++];
+      float vx=weights[weightOffset++];
+      float vy=weights[weightOffset++];
+      float vz=weights[weightOffset++];
+      weightOffset+=3;
+      float qx=skeleton.joints[jointOffset + 4];
+      float qy=skeleton.joints[jointOffset + 5];
+      float qz=skeleton.joints[jointOffset + 6];
+      float qw=skeleton.joints[jointOffset + 7];
+      float ix=-qx, iy=-qy, iz=-qz, iw=qw;
+      float tw=-qx * vx - qy * vy - qz * vz;
+      float tx=qw * vx + qy * vz - qz * vy;
+      float ty=qw * vy + qz * vx - qx * vz;
+      float tz=qw * vz + qx * vy - qy * vx;
+      vx=tx * iw + tw * ix + ty * iz - tz * iy;
+      vy=ty * iw + tw * iy + tz * ix - tx * iz;
+      vz=tz * iw + tw * iz + tx * iy - ty * ix;
+      finalX+=(skeleton.joints[jointOffset + 1] + vx) * bias;
+      finalY+=(skeleton.joints[jointOffset + 2] + vy) * bias;
+      finalZ+=(skeleton.joints[jointOffset + 3] + vz) * bias;
+    }
+    verts[k++]=finalX;
+    verts[k++]=finalY;
+    verts[k++]=finalZ;
+    k+=2;
+    k+=3;
+  }
+  for (int i=0; i < indices.length; i+=3) {
+    short i1=indices[i];
+    short i2=indices[i + 1];
+    short i3=indices[i + 2];
+    int vo1=i1 * 8;
+    int vo2=i2 * 8;
+    int vo3=i3 * 8;
+    Vector3 v1=new Vector3(verts[vo1],verts[vo1 + 1],verts[vo1 + 2]);
+    Vector3 v2=new Vector3(verts[vo2],verts[vo2 + 1],verts[vo2 + 2]);
+    Vector3 v3=new Vector3(verts[vo3],verts[vo3 + 1],verts[vo3 + 2]);
+    Vector3 fn=calcNor(v1,v2,v3);
+    int ovo1=i1 * 7;
+    int ovo2=i2 * 7;
+    int ovo3=i3 * 7;
+    vertices[ovo1 + 4]+=fn.x;
+    vertices[ovo1 + 5]+=fn.y;
+    vertices[ovo1 + 6]+=fn.z;
+    vertices[ovo2 + 4]+=fn.x;
+    vertices[ovo2 + 5]+=fn.y;
+    vertices[ovo2 + 6]+=fn.z;
+    vertices[ovo3 + 4]+=fn.x;
+    vertices[ovo3 + 5]+=fn.y;
+    vertices[ovo3 + 6]+=fn.z;
+  }
+  for (int i=0; i < indices.length; i+=3) {
+    short i1=indices[i];
+    short i2=indices[i + 1];
+    short i3=indices[i + 2];
+    int ovo1=i1 * 7;
+    int ovo2=i2 * 7;
+    int ovo3=i3 * 7;
+    vn.set(vertices[ovo1 + 4],vertices[ovo1 + 5],vertices[ovo1 + 6]);
+    vn.nor();
+    vertices[ovo1 + 4]=vn.x;
+    vertices[ovo1 + 5]=vn.y;
+    vertices[ovo1 + 6]=vn.z;
+    vn.set(vertices[ovo2 + 4],vertices[ovo2 + 5],vertices[ovo2 + 6]);
+    vn.nor();
+    vertices[ovo2 + 4]=vn.x;
+    vertices[ovo2 + 5]=vn.y;
+    vertices[ovo2 + 6]=vn.z;
+    vn.set(vertices[ovo3 + 4],vertices[ovo3 + 5],vertices[ovo3 + 6]);
+    vn.nor();
+    vertices[ovo3 + 4]=vn.x;
+    vertices[ovo3 + 5]=vn.y;
+    vertices[ovo3 + 6]=vn.z;
+  }
+  for (int vertexOffset=2, k=0; vertexOffset < vertices.length; vertexOffset+=vstride) {
+    int weightOffset=(int)vertices[vertexOffset];
+    int weightCount=(int)vertices[vertexOffset + 1];
+    weightOffset=weightOffset * wstride;
+    for (int j=0; j < weightCount; j++) {
+      int jointOffset=(int)weights[weightOffset++] << 3;
+      float bias=weights[weightOffset++];
+      float vx=weights[weightOffset++];
+      float vy=weights[weightOffset++];
+      float vz=weights[weightOffset++];
+      float qx=skeleton.joints[jointOffset + 4];
+      float qy=skeleton.joints[jointOffset + 5];
+      float qz=skeleton.joints[jointOffset + 6];
+      float qw=skeleton.joints[jointOffset + 7];
+      float vnx=vertices[vertexOffset + 2];
+      float vny=vertices[vertexOffset + 3];
+      float vnz=vertices[vertexOffset + 4];
+      vn.set(vnx,vny,vnz);
+      quat.x=qx;
+      quat.y=qy;
+      quat.z=qz;
+      quat.w=qw;
+      quat.invert();
+      quat.rotate(vn);
+      weights[weightOffset++]+=vn.x;
+      weights[weightOffset++]+=vn.y;
+      weights[weightOffset++]+=vn.z;
+    }
+  }
+  for (int i=0; i < weights.length; i+=wstride) {
+    vn.set(weights[i + 5],weights[i + 6],weights[i + 7]);
+    vn.nor();
+    weights[i + 5]=vn.x;
+    weights[i + 6]=vn.y;
+    weights[i + 7]=vn.z;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  _A=v2.cpy();
+  _A.sub(v1);
+  _B=v3.cpy();
+  _B.sub(v2);
+  _n=_A.crs(_B).nor();
+  return _n;
+}

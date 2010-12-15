@@ -1,0 +1,10 @@
+{
+  mCurrentAnim=anim;
+  mAnimLoop=loop;
+  if (mCurrentAnim != null) {
+    mAnimLen=mCurrentAnim.getLength();
+    mAnimPos=mFrameDelta=0.f;
+    mCurrentFrameIdx=0;
+    mNextFrameIdx=1;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  if (sDictionary.containsKey(path)) {
+    TextureRef ref=sDictionary.get(path);
+    ref.addRef();
+    return ref;
+  }
+  FileHandle texFile=Gdx.app.getFiles().getFileHandle(path,FileType.Internal);
+  Texture newTex=Gdx.graphics.newTexture(texFile,near,far,uwrap,vwrap);
+  TextureRef ref=new TextureRef(path,newTex);
+  sDictionary.put(path,ref);
+  return ref;
+}

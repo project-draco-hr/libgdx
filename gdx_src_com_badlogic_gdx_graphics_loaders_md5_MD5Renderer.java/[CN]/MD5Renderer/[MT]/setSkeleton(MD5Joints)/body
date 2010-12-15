@@ -1,7 +1,17 @@
 {
+  mBBox.clr();
   for (int i=0; i < model.meshes.length; i++) {
     MD5Mesh mesh=model.meshes[i];
-    if (useJni)     mesh.calculateVerticesJni(skeleton,vertices[i]);
- else     mesh.calculateVertices(skeleton,vertices[i]);
+    if (useJni) {
+      mesh.calculateVerticesJni(skeleton,vertices[i]);
+    }
+ else {
+      if (useNormals) {
+        mesh.calculateVerticesN(skeleton,vertices[i],mBBox);
+      }
+ else {
+        mesh.calculateVertices(skeleton,vertices[i],mBBox);
+      }
+    }
   }
 }
