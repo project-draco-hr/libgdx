@@ -10,21 +10,31 @@
   int usedPixels=0;
   for (int i=images.size() - 1; i >= 0; i--) {
     Image image=images.get(i);
-    Node node=root.insert(image,canvas,false);
+    Node node=root.insert(image,false);
     if (node == null) {
-      if (settings.rotate)       node=root.insert(image,canvas,true);
+      if (settings.rotate)       node=root.insert(image,true);
       if (node == null)       continue;
     }
     usedPixels+=image.getWidth() * image.getHeight();
     images.remove(i);
     if (canvas != null) {
       System.out.println("Packing... " + image.name);
+      node.writePackEntry();
       Graphics2D g=(Graphics2D)canvas.getGraphics();
       if (image.rotate) {
         g.translate(node.left,node.top);
         g.rotate(-90 * MathUtils.degreesToRadians);
         g.translate(-node.left,-node.top);
         g.translate(-image.getWidth(),0);
+      }
+      if (settings.duplicatePadding) {
+        int amount=settings.padding / 2;
+        int imageWidth=image.getWidth();
+        int imageHeight=image.getHeight();
+        g.drawImage(image,node.left,node.top - amount,node.left + imageWidth,node.top,0,0,imageWidth,1,null);
+        g.drawImage(image,node.left,node.top + imageHeight,node.left + imageWidth,node.top + imageHeight + amount,0,imageHeight - 1,imageWidth,imageHeight,null);
+        g.drawImage(image,node.left - amount,node.top,node.left,node.top + imageHeight,0,0,1,imageHeight,null);
+        g.drawImage(image,node.left + imageWidth,node.top,node.left + imageWidth + amount,node.top + imageHeight,imageWidth - 1,0,imageWidth,imageHeight,null);
       }
       g.drawImage(image,node.left,node.top,null);
       if (image.rotate) {

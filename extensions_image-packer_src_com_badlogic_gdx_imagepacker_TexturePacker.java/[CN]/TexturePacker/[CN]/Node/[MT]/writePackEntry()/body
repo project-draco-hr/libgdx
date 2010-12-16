@@ -1,5 +1,4 @@
 {
-  if (canvas == null)   return;
   String imageName=image.name;
   imageName=imageName.replace("\\","/");
   Matcher matcher=indexPattern.matcher(imageName);
