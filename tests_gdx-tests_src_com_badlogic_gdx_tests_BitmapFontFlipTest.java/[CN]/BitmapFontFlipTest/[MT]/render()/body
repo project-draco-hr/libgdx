@@ -6,10 +6,20 @@
   logoSprite.draw(spriteBatch);
 switch (renderMode) {
 case 0:
-    renderNormal();
-  break;
+    font.setScale(1);
+  renderNormal("normal");
+break;
 case 1:
+font.setScale(1);
 renderCached();
+break;
+case 2:
+font.setScale(red.a + 0.5f);
+renderNormal("normal scaled");
+break;
+case 3:
+font.setScale(1);
+renderCachedScaled();
 break;
 }
 spriteBatch.end();

@@ -3,7 +3,7 @@
   int length=str.length();
   reset(length);
   y+=font.ascent;
-  int down=font.down;
+  float down=font.down;
   int maxWidth=0;
   int start=0;
   int numLines=0;
@@ -30,6 +30,6 @@
     numLines++;
   }
   textBounds.width=maxWidth;
-  textBounds.height=font.capHeight + (numLines - 1) * font.lineHeight;
+  textBounds.height=(int)(font.capHeight + (numLines - 1) * font.lineHeight);
   return textBounds;
 }

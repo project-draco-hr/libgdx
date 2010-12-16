@@ -4,24 +4,46 @@
   y+=ascent;
   float startX=x;
   Glyph lastGlyph=null;
-  while (start < end) {
-    lastGlyph=getGlyph(str.charAt(start++));
-    if (lastGlyph != null) {
+  if (scaleX == 1 && scaleY == 1) {
+    while (start < end) {
+      lastGlyph=getGlyph(str.charAt(start++));
+      if (lastGlyph != null) {
+        spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
+        x+=lastGlyph.xadvance;
+        break;
+      }
+    }
+    while (start < end) {
+      char ch=str.charAt(start++);
+      Glyph g=getGlyph(ch);
+      if (g == null)       continue;
+      x+=lastGlyph.getKerning(ch);
+      lastGlyph=g;
       spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
-      x+=lastGlyph.xadvance;
-      break;
+      x+=g.xadvance;
     }
   }
-  while (start < end) {
-    char ch=str.charAt(start++);
-    Glyph g=getGlyph(ch);
-    if (g == null)     continue;
-    x+=lastGlyph.getKerning(ch);
-    lastGlyph=g;
-    spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
-    x+=g.xadvance;
+ else {
+    float scaleX=this.scaleX, scaleY=this.scaleY;
+    while (start < end) {
+      lastGlyph=getGlyph(str.charAt(start++));
+      if (lastGlyph != null) {
+        spriteBatch.draw(texture,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
+        x+=lastGlyph.xadvance * scaleX;
+        break;
+      }
+    }
+    while (start < end) {
+      char ch=str.charAt(start++);
+      Glyph g=getGlyph(ch);
+      if (g == null)       continue;
+      x+=lastGlyph.getKerning(ch) * scaleX;
+      lastGlyph=g;
+      spriteBatch.draw(texture,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
+      x+=g.xadvance * scaleX;
+    }
   }
   textBounds.width=(int)(x - startX);
-  textBounds.height=capHeight;
+  textBounds.height=(int)capHeight;
   return textBounds;
 }

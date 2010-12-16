@@ -1,8 +1,6 @@
 {
-  x+=glyph.xoffset;
-  y+=glyph.yoffset;
-  final float x2=x + glyph.width;
-  final float y2=y + glyph.height;
+  final float x2=x + width;
+  final float y2=y + height;
   final float u=glyph.u;
   final float u2=glyph.u2;
   final float v=glyph.v;

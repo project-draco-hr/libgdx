@@ -2,6 +2,6 @@
   reset(end - start);
   y+=font.ascent;
   textBounds.width=addToCache(str,x,y,start,end);
-  textBounds.height=font.capHeight;
+  textBounds.height=(int)font.capHeight;
   return textBounds;
 }

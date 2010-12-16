@@ -1,7 +1,7 @@
 {
   Gdx.input.setInputProcessor(new InputAdapter(){
     public boolean touchDown(    int x,    int y,    int pointer){
-      renderMode=(renderMode + 1) % 2;
+      renderMode=(renderMode + 1) % 4;
       return false;
     }
   }
@@ -18,16 +18,12 @@
   cache3=new BitmapFontCache(font);
   cache4=new BitmapFontCache(font);
   cache5=new BitmapFontCache(font);
-  cache1.setText("(cached)",10,320 - 66);
-  String text="Sphinx of black quartz,\njudge my vow.";
-  cache2.setColor(Color.RED);
-  cache2.setMultiLineText(text,5,320 - 300);
-  text="How quickly\ndaft jumping zebras vex.";
-  cache3.setColor(Color.BLUE);
-  cache3.setMultiLineText(text,5,320 - 200,470,BitmapFont.HAlignment.CENTER);
-  text="Kerning: LYA moo";
-  cache4.setText(text,210,320 - 66,0,text.length() - 3);
-  text="Forsaking monastic tradition, twelve jovial friars gave\nup their vocation for a questionable existence on the flying trapeze.";
-  cache5.setColor(red);
-  cache5.setWrappedText(text,0,320 - 300,480,HAlignment.CENTER);
+  createCaches("cached",cache1,cache2,cache3,cache4,cache5);
+  font.setScale(1.33f);
+  cacheScaled1=new BitmapFontCache(font);
+  cacheScaled2=new BitmapFontCache(font);
+  cacheScaled3=new BitmapFontCache(font);
+  cacheScaled4=new BitmapFontCache(font);
+  cacheScaled5=new BitmapFontCache(font);
+  createCaches("cache scaled",cacheScaled1,cacheScaled2,cacheScaled3,cacheScaled4,cacheScaled5);
 }

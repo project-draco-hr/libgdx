@@ -24,13 +24,12 @@
       if (lineEnd == start)       lineEnd++;
       nextLineStart=length;
     }
-    float xOffset=0;
     int lineWidth=getBounds(str,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);
     start=nextLineStart;
     numLines++;
   }
   textBounds.width=maxWidth;
-  textBounds.height=capHeight + (numLines - 1) * lineHeight;
+  textBounds.height=(int)(capHeight + (numLines - 1) * lineHeight);
   return textBounds;
 }
