@@ -1,0 +1,8 @@
+{
+  pixelPtr=newPixmap(nativeData,width,height,format);
+  if (pixelPtr == null)   throw new IllegalArgumentException("couldn't load pixmap");
+  this.basePtr=nativeData[0];
+  this.width=(int)nativeData[1];
+  this.height=(int)nativeData[2];
+  this.format=(int)nativeData[3];
+}
