@@ -1,4 +1,5 @@
 {
+  float batchColor=spriteBatch.getColor().toFloatBits();
   spriteBatch.setColor(color);
   final Texture texture=region.getTexture();
   y+=ascent;
@@ -43,6 +44,7 @@
       x+=g.xadvance * scaleX;
     }
   }
+  spriteBatch.setColor(batchColor);
   textBounds.width=(int)(x - startX);
   textBounds.height=(int)capHeight;
   return textBounds;
