@@ -1,7 +1,7 @@
 {
+  long[] items=this.items;
   if (size == items.length) {
-    resize((int)(size * 1.75f),false);
-    items[size++]=value;
+    resize((int)(size * 1.75f),false)[size++]=value;
     return;
   }
   System.arraycopy(items,index,items,index + 1,size - index);

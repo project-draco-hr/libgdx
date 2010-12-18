@@ -4,4 +4,5 @@
   long[] items=this.items;
   System.arraycopy(items,0,newItems,0,Math.min(items.length,newItems.length));
   this.items=newItems;
+  return newItems;
 }
