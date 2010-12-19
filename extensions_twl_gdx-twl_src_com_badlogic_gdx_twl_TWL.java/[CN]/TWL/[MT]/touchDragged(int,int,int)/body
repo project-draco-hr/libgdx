@@ -1,5 +1,8 @@
 {
-  boolean handled=gui.handleMouse(x,y,-1,true);
-  System.out.println(handled);
-  return handled;
+  if (mouseDown && !lastPressConsumed) {
+    ignoreMouse=true;
+    gui.clearMouseState();
+    return false;
+  }
+  return gui.handleMouse(x,y,-1,true);
 }

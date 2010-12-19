@@ -1,4 +1,3 @@
 {
-  boolean handled=gui.handleKey(0,character,true);
-  return gui.handleKey(0,character,false) || handled;
+  return gui.handleKey(0,character,true);
 }

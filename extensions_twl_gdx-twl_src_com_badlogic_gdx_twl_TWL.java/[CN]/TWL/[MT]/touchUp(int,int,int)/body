@@ -1,5 +1,10 @@
 {
+  mouseDown=false;
+  if (ignoreMouse) {
+    ignoreMouse=false;
+    return false;
+  }
   boolean handled=gui.handleMouse(x,y,pointer,false);
-  gui.handleMouse(-9999,-9999,-1,true);
+  gui.handleMouse(-9999,-9999,-1,false);
   return handled;
 }

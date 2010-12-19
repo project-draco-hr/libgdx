@@ -112,7 +112,6 @@ case Keys.KEYCODE_SPACE:
 return Event.KEY_SPACE;
 case Keys.KEYCODE_TAB:
 return Event.KEY_TAB;
-default :
-return Event.KEY_NONE;
 }
+return Event.KEY_NONE;
 }
