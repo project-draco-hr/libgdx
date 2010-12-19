@@ -1,4 +1,5 @@
 {
+  if (pointer != 0)   return false;
   mouseDown=false;
   if (ignoreMouse) {
     ignoreMouse=false;
