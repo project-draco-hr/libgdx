@@ -1,7 +1,7 @@
 {
   if (size == 0)   return "[]";
   int[] items=this.items;
-  StringBuilder buffer=new StringBuilder(32);
+  StringBuilder buffer=new StringBuilder(size * 4);
   buffer.append('[');
   buffer.append(items[0]);
   for (int i=1; i < size; i++) {
