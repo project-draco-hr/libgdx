@@ -1,0 +1,6 @@
+{
+  int buttonValue=Awesomium.AWE_LEFT_BUTTON;
+  if (button == MouseButton.Right)   buttonValue=Awesomium.AWE_RIGHT_BUTTON;
+  if (button == MouseButton.Middle)   buttonValue=Awesomium.AWE_MIDDLE_BUTTON;
+  Awesomium.INSTANCE.awe_WebView_injectMouseDown(webView,buttonValue);
+}

@@ -1,0 +1,5 @@
+{
+  Pointer renderBuffer=Awesomium.INSTANCE.awe_WebView_render(webView);
+  if (Pointer.nativeValue(renderBuffer) == 0)   return null;
+  return new RenderBuffer(renderBuffer);
+}

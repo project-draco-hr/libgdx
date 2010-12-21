@@ -1,0 +1,5 @@
+{
+  int height=Awesomium.INSTANCE.awe_RenderBuffer_height(renderBuffer);
+  int rowSpan=Awesomium.INSTANCE.awe_RenderBuffer_rowSpan(renderBuffer);
+  return Awesomium.INSTANCE.awe_RenderBuffer_buffer(renderBuffer).getByteBuffer(0,height * rowSpan);
+}

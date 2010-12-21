@@ -1,0 +1,11 @@
+{
+  update();
+  GLCommon gl=Gdx.gl;
+  gl.glClearColor(0.6f,0.6f,0.6f,1);
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  gl.glEnable(GL10.GL_TEXTURE_2D);
+  texture.bind();
+  cam.setMatrices();
+  Gdx.gl10.glLoadMatrixf(matrix.getValues(),0);
+  mesh.render(GL10.GL_TRIANGLES);
+}
