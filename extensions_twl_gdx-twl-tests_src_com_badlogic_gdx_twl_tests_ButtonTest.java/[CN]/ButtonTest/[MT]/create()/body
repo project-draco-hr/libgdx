@@ -4,7 +4,8 @@
   Layout layout=new Layout();
   layout.horizontal().sequence(0).parallel(button,fpsCounter).end().gap();
   layout.vertical().sequence(0,button,5,fpsCounter,0);
-  twl=new TWL("data/widgets.xml",FileType.Internal,layout);
+  SpriteBatch batch=new SpriteBatch();
+  twl=new TWL(batch,"data/widgets.xml",FileType.Internal,layout);
   input.addProcessor(twl);
   input.addProcessor(this);
   Gdx.input.setInputProcessor(input);

@@ -95,6 +95,10 @@
     width=MathUtils.nextPowerOfTwo(width);
     height=MathUtils.nextPowerOfTwo(height);
   }
+  if (width > maxWidth || height > maxHeight) {
+    System.out.println("ERROR: Images do not fit on max size: " + maxWidth + "x"+ maxHeight);
+    return false;
+  }
   int type;
 switch (filter.format != null ? filter.format : settings.defaultFormat) {
 case RGBA8888:
@@ -131,4 +135,5 @@ insert(canvas,images,bestWidth,bestHeight);
 System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
 ImageIO.write(canvas,"png",outputFile);
 compressedSize+=canvas.getWidth() * canvas.getHeight();
+return true;
 }

@@ -6,7 +6,7 @@
     int cntX=repeatCountX;
     while (cntX-- > 0) {
       sprite.setBounds(curX,y,w,h);
-      sprite.draw(renderer.spriteBatch);
+      sprite.draw(renderer.batch);
       curX+=w;
     }
     y+=h;

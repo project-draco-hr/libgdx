@@ -1,5 +1,5 @@
 {
-  float batchColor=spriteBatch.getColor().toFloatBits();
+  float batchColor=spriteBatch.color;
   float down=this.down;
   int start=0;
   int numLines=0;

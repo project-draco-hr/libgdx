@@ -5,6 +5,6 @@
   }
  else {
     sprite.setBounds(x,y,width,height);
-    sprite.draw(renderer.spriteBatch);
+    sprite.draw(renderer.batch);
   }
 }

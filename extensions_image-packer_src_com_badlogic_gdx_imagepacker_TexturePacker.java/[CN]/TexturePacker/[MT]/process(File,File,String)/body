@@ -9,7 +9,7 @@
   outputDir.mkdirs();
   writer=new FileWriter(packFile,true);
   try {
-    while (!images.isEmpty())     writePage(prefix,outputDir);
+    while (!images.isEmpty())     if (!writePage(prefix,outputDir))     break;
     if (writer != null) {
       System.out.println("Pixels eliminated: " + (1 - compressedSize / (float)uncompressedSize) * 100 + "%");
       System.out.println();

@@ -8,7 +8,8 @@
   Layout layout=new Layout();
   layout.horizontal().parallel(scrollPane,fpsCounter);
   layout.vertical().sequence(scrollPane,5,fpsCounter,5);
-  twl=new TWL("data/widgets.xml",FileType.Internal,layout);
+  SpriteBatch batch=new SpriteBatch();
+  twl=new TWL(batch,"data/widgets.xml",FileType.Internal,layout);
   textArea.addCallback(new TextArea.Callback(){
     Timer timer;
     int speed=8, size=256;

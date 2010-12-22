@@ -1,5 +1,5 @@
 {
-  float batchColor=spriteBatch.getColor().toFloatBits();
+  float batchColor=spriteBatch.color;
   spriteBatch.setColor(color);
   final Texture texture=region.getTexture();
   y+=ascent;

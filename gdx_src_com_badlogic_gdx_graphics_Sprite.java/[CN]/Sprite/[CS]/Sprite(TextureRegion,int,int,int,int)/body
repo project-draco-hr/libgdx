@@ -1,6 +1,6 @@
 {
   setRegion(region,srcX,srcY,srcWidth,srcHeight);
   setColor(1,1,1,1);
-  setSize(Math.abs(region.getRegionWidth()),Math.abs(region.getRegionHeight()));
+  setSize(Math.abs(srcWidth),Math.abs(srcHeight));
   setOrigin(width / 2,height / 2);
 }

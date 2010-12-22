@@ -3,5 +3,5 @@
   x+=fontState.offsetX;
   y+=fontState.offsetY + yOffset;
   bitmapFont.setColor(renderer.getColor(fontState.color));
-  return bitmapFont.drawMultiLine(renderer.spriteBatch,str,x,y,width,gdxAlignment[align.ordinal()]).width;
+  return bitmapFont.drawMultiLine(renderer.batch,str,x,y,width,gdxAlignment[align.ordinal()]).width;
 }

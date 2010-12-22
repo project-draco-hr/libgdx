@@ -3,5 +3,5 @@
   x+=fontState.offsetX;
   y+=fontState.offsetY + yOffset;
   bitmapFont.setColor(renderer.getColor(fontState.color));
-  return bitmapFont.draw(renderer.spriteBatch,str,x,y,start,end).width;
+  return bitmapFont.draw(renderer.batch,str,x,y,start,end).width;
 }
