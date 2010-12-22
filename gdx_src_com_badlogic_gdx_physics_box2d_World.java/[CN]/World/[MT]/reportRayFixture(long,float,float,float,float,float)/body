@@ -1,0 +1,4 @@
+{
+  if (rayCastCallback != null)   return rayCastCallback.reportRayFixture(fixtures.get(addr),rayPoint.set(pX,pY),rayNormal.set(nX,nY),fraction);
+ else   return 0.0f;
+}

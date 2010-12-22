@@ -1,0 +1,20 @@
+{
+  final ArrayList<Vector2> triangles=new ArrayList<Vector2>();
+  final ArrayList<Vector2> vertices=new ArrayList<Vector2>(pVertices.size());
+  vertices.addAll(pVertices);
+  if (vertices.size() == 3) {
+    triangles.addAll(vertices);
+    return triangles;
+  }
+  while (vertices.size() >= 3) {
+    final int vertexTypes[]=this.classifyVertices(vertices);
+    final int vertexCount=vertices.size();
+    for (int index=0; index < vertexCount; index++) {
+      if (this.isEarTip(vertices,index,vertexTypes)) {
+        this.cutEarTip(vertices,index,triangles);
+        break;
+      }
+    }
+  }
+  return triangles;
+}

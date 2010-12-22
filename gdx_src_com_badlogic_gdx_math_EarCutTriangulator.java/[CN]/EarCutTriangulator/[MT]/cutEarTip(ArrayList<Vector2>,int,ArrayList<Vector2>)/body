@@ -1,0 +1,13 @@
+{
+  final int previousIndex=EarCutTriangulator.computePreviousIndex(pVertices,pEarTipIndex);
+  final int nextIndex=EarCutTriangulator.computeNextIndex(pVertices,pEarTipIndex);
+  if (!EarCutTriangulator.isCollinear(pVertices,previousIndex,pEarTipIndex,nextIndex)) {
+    pTriangles.add(new Vector2(pVertices.get(previousIndex)));
+    pTriangles.add(new Vector2(pVertices.get(pEarTipIndex)));
+    pTriangles.add(new Vector2(pVertices.get(nextIndex)));
+  }
+  pVertices.remove(pEarTipIndex);
+  if (pVertices.size() >= 3) {
+    EarCutTriangulator.removeCollinearNeighborEarsAfterRemovingEarTip(pVertices,pEarTipIndex);
+  }
+}
