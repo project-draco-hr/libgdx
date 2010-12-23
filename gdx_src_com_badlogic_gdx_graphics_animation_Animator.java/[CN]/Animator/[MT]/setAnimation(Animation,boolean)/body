@@ -4,7 +4,7 @@
   if (mCurrentAnim != null) {
     mAnimLen=mCurrentAnim.getLength();
     mAnimPos=mFrameDelta=0.f;
-    mCurrentFrameIdx=0;
-    mNextFrameIdx=1;
+    mCurrentFrameIdx=-1;
+    mNextFrameIdx=-1;
   }
 }

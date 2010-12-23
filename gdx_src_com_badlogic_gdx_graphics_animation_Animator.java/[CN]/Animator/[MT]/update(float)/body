@@ -13,7 +13,6 @@
     int numFrames=mCurrentAnim.getNumFrames();
     int currentFrameIdx=Math.min(numFrames - 1,(int)(animPos * (float)numFrames));
     if (currentFrameIdx != mCurrentFrameIdx) {
-      int nextFrame=0;
       if (currentFrameIdx < numFrames - 1) {
         mNextFrameIdx=currentFrameIdx + 1;
       }
