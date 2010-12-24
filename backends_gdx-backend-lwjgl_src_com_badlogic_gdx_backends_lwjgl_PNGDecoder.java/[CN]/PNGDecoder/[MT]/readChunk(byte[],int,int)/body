@@ -1,9 +1,0 @@
-{
-  if (length > chunkRemaining) {
-    length=chunkRemaining;
-  }
-  readFully(buffer,offset,length);
-  crc.update(buffer,offset,length);
-  chunkRemaining-=length;
-  return length;
-}
