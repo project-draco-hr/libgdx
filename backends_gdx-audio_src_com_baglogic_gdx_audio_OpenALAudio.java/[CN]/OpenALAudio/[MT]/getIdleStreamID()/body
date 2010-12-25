@@ -1,0 +1,8 @@
+{
+  for (int i=0, n=streams.length; i < n; i++) {
+    int streamID=streams[i];
+    int state=alGetSourcei(streamID,AL_SOURCE_STATE);
+    if (state != AL_PLAYING && state != AL_PAUSED)     return streamID;
+  }
+  return -1;
+}

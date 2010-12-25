@@ -1,0 +1,5 @@
+{
+  String extension=file.extension();
+  if (extension.equals("ogg"))   return new OggMusic(this,file);
+  throw new GdxRuntimeException("Unknown file extension for music: " + file);
+}

@@ -1,0 +1,5 @@
+{
+  audio.music.removeValue(this,true);
+  stop();
+  alDeleteBuffers(buffers);
+}

@@ -1,0 +1,10 @@
+{
+  if (streamID == -1)   return;
+  int buffers=alGetSourcei(streamID,AL_BUFFERS_PROCESSED);
+  while (buffers-- > 0) {
+    int bufferID=alSourceUnqueueBuffers(streamID);
+    if (bufferID == AL_INVALID_VALUE)     break;
+    if (!fill(bufferID))     return;
+    alSourceQueueBuffers(streamID,bufferID);
+  }
+}
