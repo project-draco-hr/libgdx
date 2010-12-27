@@ -1,0 +1,14 @@
+{
+  long[] keyTable=this.keyTable;
+  int index=(int)(key & mask);
+  while (true) {
+    long existingKey=keyTable[index];
+    if (existingKey == EMPTY || existingKey == key)     break;
+    index++;
+  }
+  keyTable[index]=key;
+  V oldValue=valueTable[index];
+  valueTable[index]=value;
+  if (size++ >= threshold || keyTable[keyTable.length - 1] != EMPTY)   resize(capacity << 1);
+  return oldValue;
+}

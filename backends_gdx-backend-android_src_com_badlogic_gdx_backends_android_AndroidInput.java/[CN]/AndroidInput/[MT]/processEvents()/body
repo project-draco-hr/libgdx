@@ -15,7 +15,7 @@ case KeyEvent.KEY_UP:
 case KeyEvent.KEY_TYPED:
   processor.keyTyped(e.keyChar);
 }
-freeKeyEvents.free(e);
+usedKeyEvents.removeValue(e,true);
 }
 len=touchEvents.size();
 for (int i=0; i < len; i++) {
@@ -30,18 +30,18 @@ break;
 case TouchEvent.TOUCH_DRAGGED:
 processor.touchDragged(e.x,e.y,e.pointer);
 }
-freeTouchEvents.free(e);
+usedTouchEvents.removeValue(e,true);
 }
 }
  else {
 int len=touchEvents.size();
 for (int i=0; i < len; i++) {
 TouchEvent e=touchEvents.get(i);
-freeTouchEvents.free(e);
+usedTouchEvents.removeValue(e,true);
 }
 len=keyEvents.size();
 for (int i=0; i < len; i++) {
-freeKeyEvents.free(keyEvents.get(i));
+usedKeyEvents.removeValue(keyEvents.get(i),true);
 }
 }
 keyEvents.clear();

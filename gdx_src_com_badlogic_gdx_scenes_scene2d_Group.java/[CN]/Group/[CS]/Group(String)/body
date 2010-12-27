@@ -5,5 +5,5 @@
   this.immutableChildren=Collections.unmodifiableList(this.children);
   this.groups=new ArrayList<Group>();
   this.immutableGroups=Collections.unmodifiableList(this.groups);
-  this.namesToActors=new HashMap<String,Actor>();
+  this.namesToActors=new ObjectMap<String,Actor>();
 }

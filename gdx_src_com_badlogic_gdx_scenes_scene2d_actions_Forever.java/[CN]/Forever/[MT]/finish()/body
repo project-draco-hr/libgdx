@@ -1,4 +1,4 @@
 {
-  pool.free(this);
+  pool.removeValue(this,true);
   action.finish();
 }

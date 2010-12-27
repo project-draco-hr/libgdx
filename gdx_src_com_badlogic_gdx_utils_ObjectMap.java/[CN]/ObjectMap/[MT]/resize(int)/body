@@ -1,0 +1,29 @@
+{
+  int newMask=newSize - 1;
+  mask=newMask;
+  capacity=newSize;
+  threshold=(int)(newSize * loadFactor);
+  newSize+=EXTRA;
+  K[] newKeyTable=(K[])new Object[newSize];
+  V[] newValueTable=(V[])new Object[newSize];
+  K[] keyTable=this.keyTable;
+  V[] valueTable=this.valueTable;
+  for (int i=0, n=keyTable.length; i < n; i++) {
+    K key=keyTable[i];
+    if (key != null) {
+      int index=key.hashCode() & newMask;
+      while (true) {
+        if (newKeyTable[index] == null)         break;
+        index++;
+      }
+      if (index == newSize) {
+        resize(capacity << 1);
+        return;
+      }
+      newKeyTable[index]=key;
+      newValueTable[index]=valueTable[i];
+    }
+  }
+  this.keyTable=newKeyTable;
+  this.valueTable=newValueTable;
+}

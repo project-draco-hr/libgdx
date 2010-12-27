@@ -1,0 +1,15 @@
+{
+  long[] keyTable=this.keyTable;
+  int index=(int)(key & mask);
+  while (true) {
+    long existingKey=keyTable[index];
+    if (existingKey == EMPTY)     return null;
+    if (existingKey == key) {
+      keyTable[index]=EMPTY;
+      V value=valueTable[index];
+      valueTable[index]=null;
+      return value;
+    }
+    index++;
+  }
+}

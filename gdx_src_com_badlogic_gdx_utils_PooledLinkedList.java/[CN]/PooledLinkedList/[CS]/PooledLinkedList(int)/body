@@ -1,8 +1,8 @@
 {
-  this.pool=new Pool<PooledLinkedList.Item<T>>(new PoolObjectFactory<PooledLinkedList.Item<T>>(){
-    @Override public PooledLinkedList.Item<T> createObject(){
+  this.pool=new BagPool<PooledLinkedList.Item<T>>(16,maxPoolSize){
+    protected Item<T> newObject(){
       return new Item<T>();
     }
   }
-,maxPoolSize);
+;
 }

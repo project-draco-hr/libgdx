@@ -1,0 +1,12 @@
+{
+  if (initialCapacity > 1 << 30)   throw new IllegalArgumentException("initialCapacity is too large.");
+  if (initialCapacity < 0)   throw new IllegalArgumentException("initialCapacity must be greater than zero.");
+  if (loadFactor <= 0)   throw new IllegalArgumentException("initialCapacity must be greater than zero.");
+  capacity=MathUtils.nextPowerOfTwo(initialCapacity);
+  this.loadFactor=loadFactor;
+  threshold=(int)(capacity * loadFactor);
+  keyTable=new int[capacity + EXTRA];
+  for (int i=keyTable.length - 1; i >= 0; i--)   keyTable[i]=EMPTY;
+  valueTable=(V[])new Object[capacity + EXTRA];
+  mask=capacity - 1;
+}

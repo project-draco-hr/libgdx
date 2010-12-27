@@ -1,0 +1,25 @@
+{
+  if (size == 0)   return "[]";
+  StringBuilder buffer=new StringBuilder(32);
+  buffer.append('[');
+  int[] keyTable=this.keyTable;
+  int i=keyTable.length;
+  while (i-- > 0) {
+    int key=keyTable[i];
+    if (key == EMPTY)     continue;
+    buffer.append(key);
+    buffer.append('=');
+    buffer.append(valueTable[i]);
+    break;
+  }
+  while (i-- > 0) {
+    int key=keyTable[i];
+    if (key == EMPTY)     continue;
+    buffer.append(", ");
+    buffer.append(key);
+    buffer.append('=');
+    buffer.append(valueTable[i]);
+  }
+  buffer.append(']');
+  return buffer.toString();
+}

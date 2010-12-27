@@ -1,6 +1,0 @@
-{
-  T object=null;
-  if (freeObjects.size() == 0)   object=factory.createObject();
- else   object=freeObjects.remove(freeObjects.size() - 1);
-  return object;
-}

@@ -1,5 +1,5 @@
 {
-  Item<T> item=pool.newObject();
+  Item<T> item=pool.add();
   item.payload=object;
   item.next=null;
   item.prev=null;

@@ -1,5 +1,5 @@
 {
-  Repeat repeat=pool.newObject();
+  Repeat repeat=pool.add();
   repeat.action=action;
   repeat.times=times;
   repeat.finishedTimes=0;

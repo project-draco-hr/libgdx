@@ -1,5 +1,5 @@
 {
-  Delay delay=pool.newObject();
+  Delay delay=pool.add();
   delay.duration=duration;
   delay.action=action;
   return delay;

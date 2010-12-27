@@ -1,7 +1,0 @@
-{
-  int nextTail=(tail.get() + 1) % queueSize;
-  if (head.get() == nextTail)   return null;
-  T object=queueBuffer.get(nextTail);
-  tail.set(nextTail);
-  return object;
-}

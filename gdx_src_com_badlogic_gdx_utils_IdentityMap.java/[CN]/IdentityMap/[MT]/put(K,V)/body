@@ -1,0 +1,14 @@
+{
+  K[] keyTable=this.keyTable;
+  int index=System.identityHashCode(key) & mask;
+  while (true) {
+    K existingKey=keyTable[index];
+    if (existingKey == null || existingKey == key)     break;
+    index++;
+  }
+  keyTable[index]=key;
+  V oldValue=valueTable[index];
+  valueTable[index]=value;
+  if (size++ >= threshold || keyTable[keyTable.length - 1] != null)   resize(capacity << 1);
+  return oldValue;
+}

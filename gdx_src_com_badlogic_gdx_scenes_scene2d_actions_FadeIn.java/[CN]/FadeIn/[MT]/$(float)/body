@@ -1,5 +1,5 @@
 {
-  FadeIn action=pool.newObject();
+  FadeIn action=pool.add();
   action.duration=duration;
   action.invDuration=1 / duration;
   return action;

@@ -1,5 +1,5 @@
 {
-  ScaleTo action=pool.newObject();
+  ScaleTo action=pool.add();
   action.scaleX=scaleX;
   action.scaleY=scaleY;
   action.duration=duration;

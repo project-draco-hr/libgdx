@@ -4,12 +4,12 @@
       if (Keyboard.getEventKeyState()) {
         int keyCode=getGdxKeyCode(Keyboard.getEventKey());
         char keyChar=Keyboard.getEventCharacter();
-        KeyEvent event=freeKeyEvents.newObject();
+        KeyEvent event=usedKeyEvents.add();
         event.keyCode=keyCode;
         event.keyChar=0;
         event.type=KeyEvent.KEY_DOWN;
         keyEvents.add(event);
-        event=freeKeyEvents.newObject();
+        event=usedKeyEvents.add();
         event.keyCode=0;
         event.keyChar=keyChar;
         event.type=KeyEvent.KEY_TYPED;
@@ -18,7 +18,7 @@
       }
  else {
         int keyCode=LwjglInput.getGdxKeyCode(Keyboard.getEventKey());
-        KeyEvent event=freeKeyEvents.newObject();
+        KeyEvent event=usedKeyEvents.add();
         event.keyCode=keyCode;
         event.keyChar=0;
         event.type=KeyEvent.KEY_UP;

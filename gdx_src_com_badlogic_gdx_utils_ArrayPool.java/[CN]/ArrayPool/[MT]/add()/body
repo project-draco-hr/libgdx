@@ -1,4 +1,5 @@
 {
+  if (size == max)   return newObject();
   T[] items=this.items;
   if (size == items.length) {
     T item=newObject();

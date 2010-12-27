@@ -5,7 +5,7 @@ synchronized (this) {
     KeyEvent event=null;
 switch (e.getAction()) {
 case android.view.KeyEvent.ACTION_DOWN:
-      event=freeKeyEvents.newObject();
+      event=usedKeyEvents.add();
     event.keyChar=0;
   event.keyCode=e.getKeyCode();
 event.type=KeyEvent.KEY_DOWN;
@@ -13,12 +13,12 @@ keyEvents.add(event);
 keys.add(event.keyCode);
 break;
 case android.view.KeyEvent.ACTION_UP:
-event=freeKeyEvents.newObject();
+event=usedKeyEvents.add();
 event.keyChar=0;
 event.keyCode=e.getKeyCode();
 event.type=KeyEvent.KEY_UP;
 keyEvents.add(event);
-event=freeKeyEvents.newObject();
+event=usedKeyEvents.add();
 event.keyChar=character;
 event.keyCode=0;
 event.type=KeyEvent.KEY_TYPED;

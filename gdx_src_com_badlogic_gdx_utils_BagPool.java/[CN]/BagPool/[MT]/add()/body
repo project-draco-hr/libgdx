@@ -1,4 +1,5 @@
 {
+  if (size == max)   return newObject();
   if (size == items.length) {
     T item=newObject();
     resize((int)(size * 1.75f),false)[size++]=item;

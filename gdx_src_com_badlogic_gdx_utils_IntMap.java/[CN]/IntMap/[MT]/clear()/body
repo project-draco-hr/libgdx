@@ -1,0 +1,11 @@
+{
+  int[] keyTable=this.keyTable;
+  V[] valueTable=this.valueTable;
+  for (int i=keyTable.length; i-- > 0; ) {
+    if (keyTable[i] != EMPTY) {
+      keyTable[i]=EMPTY;
+      valueTable[i]=null;
+    }
+  }
+  size=0;
+}

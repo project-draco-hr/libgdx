@@ -1,0 +1,14 @@
+{
+  V[] valueTable=this.valueTable;
+  if (value == null) {
+    int[] keyTable=this.keyTable;
+    for (int i=keyTable.length; i-- > 0; )     if (keyTable[i] != EMPTY && valueTable[i] == null)     return true;
+  }
+ else   if (identity) {
+    for (int i=valueTable.length; i-- > 0; )     if (valueTable[i] == value)     return true;
+  }
+ else {
+    for (int i=valueTable.length; i-- > 0; )     if (value.equals(valueTable[i]))     return true;
+  }
+  return false;
+}

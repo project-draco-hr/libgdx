@@ -1,5 +1,5 @@
 {
-  MoveBy action=pool.newObject();
+  MoveBy action=pool.add();
   action.x=x;
   action.y=y;
   action.duration=duration;

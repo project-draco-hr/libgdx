@@ -6,7 +6,7 @@
       if (isButtonPressed()) {
         if (mousePressed == false) {
           mousePressed=true;
-          TouchEvent event=freeTouchEvents.newObject();
+          TouchEvent event=usedTouchEvents.add();
           event.x=x;
           event.y=y;
           event.pointer=0;
@@ -17,7 +17,7 @@
         }
  else {
           if (mouseX != x || mouseY != y) {
-            TouchEvent event=freeTouchEvents.newObject();
+            TouchEvent event=usedTouchEvents.add();
             event.x=x;
             event.y=y;
             event.pointer=0;
@@ -33,7 +33,7 @@
           mouseX=x;
           mouseY=y;
           mousePressed=false;
-          TouchEvent event=freeTouchEvents.newObject();
+          TouchEvent event=usedTouchEvents.add();
           event.x=x;
           event.y=y;
           event.pointer=0;

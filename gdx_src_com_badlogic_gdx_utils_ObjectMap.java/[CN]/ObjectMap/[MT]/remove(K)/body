@@ -1,0 +1,15 @@
+{
+  K[] keyTable=this.keyTable;
+  int index=key.hashCode() & mask;
+  while (true) {
+    K existingKey=keyTable[index];
+    if (existingKey == null)     return null;
+    if (existingKey.equals(key)) {
+      keyTable[index]=null;
+      V value=valueTable[index];
+      valueTable[index]=null;
+      return value;
+    }
+    index++;
+  }
+}

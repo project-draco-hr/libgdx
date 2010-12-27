@@ -1,5 +1,0 @@
-{
-  int nextHead=(head.get() + 1) % queueSize;
-  if (nextHead == tail.get())   return;
-  head.set(nextHead);
-}

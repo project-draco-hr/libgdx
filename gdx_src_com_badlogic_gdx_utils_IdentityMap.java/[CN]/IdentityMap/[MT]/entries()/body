@@ -1,0 +1,5 @@
+{
+  if (entries == null)   entries=new Entries(this);
+ else   entries.reset();
+  return entries;
+}

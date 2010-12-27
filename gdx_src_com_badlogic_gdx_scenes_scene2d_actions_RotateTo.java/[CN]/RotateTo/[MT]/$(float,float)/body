@@ -1,5 +1,5 @@
 {
-  RotateTo action=pool.newObject();
+  RotateTo action=pool.add();
   action.rotation=rotation;
   action.duration=duration;
   action.invDuration=1 / duration;
