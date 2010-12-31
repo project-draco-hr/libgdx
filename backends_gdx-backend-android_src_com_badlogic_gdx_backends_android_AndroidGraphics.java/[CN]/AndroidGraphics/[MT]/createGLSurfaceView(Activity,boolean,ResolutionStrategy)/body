@@ -1,0 +1,23 @@
+{
+  EGLConfigChooser configChooser=getEglConfigChooser();
+  if (useGL2 && checkGL20()) {
+    GLSurfaceView20 view=new GLSurfaceView20(activity,resolutionStrategy);
+    if (configChooser != null)     view.setEGLConfigChooser(configChooser);
+    view.setRenderer(this);
+    return view;
+  }
+ else {
+    if (Integer.parseInt(android.os.Build.VERSION.SDK) <= 4) {
+      GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(activity,resolutionStrategy);
+      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+      view.setRenderer(this);
+      return view;
+    }
+ else {
+      android.opengl.GLSurfaceView view=new DefaultGLSurfaceView(activity,resolutionStrategy);
+      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+      view.setRenderer(this);
+      return view;
+    }
+  }
+}
