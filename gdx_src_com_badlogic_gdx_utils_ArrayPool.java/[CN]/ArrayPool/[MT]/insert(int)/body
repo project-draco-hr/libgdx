@@ -1,7 +1,7 @@
 {
   if (size == items.length) {
     T item=newObject();
-    resize((int)(size * 1.75f),false)[size++]=item;
+    resize(Math.max(8,(int)(size * 1.75f)))[size++]=item;
     return item;
   }
   T item=items[size];

@@ -3,6 +3,7 @@
   StringBuilder buffer=new StringBuilder(32);
   buffer.append('[');
   K[] keyTable=this.keyTable;
+  V[] valueTable=this.valueTable;
   int i=keyTable.length;
   while (i-- > 0) {
     K key=keyTable[i];

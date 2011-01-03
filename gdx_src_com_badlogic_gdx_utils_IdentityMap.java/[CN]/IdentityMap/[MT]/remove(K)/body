@@ -1,15 +1,28 @@
 {
-  K[] keyTable=this.keyTable;
-  int index=System.identityHashCode(key) & mask;
-  while (true) {
-    K existingKey=keyTable[index];
-    if (existingKey == null)     return null;
-    if (existingKey == key) {
-      keyTable[index]=null;
-      V value=valueTable[index];
-      valueTable[index]=null;
-      return value;
-    }
-    index++;
+  int hashCode=System.identityHashCode(key);
+  int index=hashCode & mask;
+  if (keyTable[index] == key) {
+    keyTable[index]=null;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
   }
+  index=hash2(hashCode);
+  if (keyTable[index] == key) {
+    keyTable[index]=null;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
+  }
+  index=hash3(hashCode);
+  if (keyTable[index] == key) {
+    keyTable[index]=null;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
+  }
+  return removeStash(key);
 }

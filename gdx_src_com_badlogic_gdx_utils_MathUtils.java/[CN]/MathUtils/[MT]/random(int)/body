@@ -1,5 +1,3 @@
 {
-  int seed=randomSeed * 1103515245 + 12345;
-  randomSeed=seed;
-  return (seed >>> 15) * (range + 1) >>> 17;
+  return random.nextInt(range + 1);
 }

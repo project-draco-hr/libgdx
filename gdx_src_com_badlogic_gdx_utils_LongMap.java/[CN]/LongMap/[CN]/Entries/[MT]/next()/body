@@ -1,5 +1,15 @@
 {
-  entry.key=map.keyTable[index];
-  entry.value=(V)map.valueTable[index];
+  if (!hasNext)   throw new NoSuchElementException();
+  long[] keyTable=map.keyTable;
+  if (nextIndex == INDEX_ZERO) {
+    entry.key=0;
+    entry.value=map.zeroValue;
+  }
+ else {
+    entry.key=keyTable[nextIndex];
+    entry.value=map.valueTable[nextIndex];
+  }
+  currentIndex=nextIndex;
+  findNextIndex();
   return entry;
 }

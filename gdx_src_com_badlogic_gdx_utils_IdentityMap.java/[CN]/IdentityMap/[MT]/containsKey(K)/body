@@ -1,10 +1,12 @@
 {
-  K[] keyTable=this.keyTable;
-  int index=System.identityHashCode(key) & mask;
-  while (true) {
-    K existingKey=keyTable[index];
-    if (existingKey == null)     return false;
-    if (existingKey == key)     return true;
-    index++;
+  int hashCode=System.identityHashCode(key);
+  int index=hashCode & mask;
+  if (keyTable[index] != key) {
+    index=hash2(hashCode);
+    if (keyTable[index] != key) {
+      index=hash3(hashCode);
+      if (keyTable[index] != key)       return containsKeyStash(key);
+    }
   }
+  return true;
 }

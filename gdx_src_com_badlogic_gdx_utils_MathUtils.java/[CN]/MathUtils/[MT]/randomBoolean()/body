@@ -1,5 +1,3 @@
 {
-  int seed=randomSeed * 1103515245 + 12345;
-  randomSeed=seed;
-  return seed > 0;
+  return random.nextBoolean();
 }

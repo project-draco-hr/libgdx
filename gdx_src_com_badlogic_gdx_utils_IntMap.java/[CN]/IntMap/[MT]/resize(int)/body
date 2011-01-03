@@ -1,30 +1,19 @@
 {
-  int newMask=newSize - 1;
-  mask=newMask;
+  int oldEndIndex=capacity + stashSize;
   capacity=newSize;
   threshold=(int)(newSize * loadFactor);
-  newSize+=EXTRA;
-  int[] newKeyTable=new int[newSize];
-  for (int i=newSize - 1; i >= 0; i--)   newKeyTable[i]=EMPTY;
-  V[] newValueTable=(V[])new Object[newSize];
-  int[] keyTable=this.keyTable;
-  V[] valueTable=this.valueTable;
-  for (int i=0, n=keyTable.length; i < n; i++) {
-    int key=keyTable[i];
-    if (key != EMPTY) {
-      int index=key & newMask;
-      while (true) {
-        if (newKeyTable[index] == EMPTY)         break;
-        index++;
-      }
-      if (index == newSize) {
-        resize(capacity << 1);
-        return;
-      }
-      newKeyTable[index]=key;
-      newValueTable[index]=valueTable[i];
-    }
+  mask=newSize - 1;
+  hashShift=31 - Integer.numberOfTrailingZeros(newSize);
+  stashCapacity=Math.max(3,(int)Math.ceil(Math.log(newSize)));
+  pushIterations=Math.max(Math.min(capacity,32),(int)Math.sqrt(capacity) / 4);
+  int[] oldKeyTable=keyTable;
+  V[] oldValueTable=valueTable;
+  keyTable=new int[newSize + stashCapacity];
+  valueTable=(V[])new Object[newSize + stashCapacity];
+  size=hasZeroValue ? 1 : 0;
+  stashSize=0;
+  for (int i=0; i < oldEndIndex; i++) {
+    int key=oldKeyTable[i];
+    if (key != EMPTY)     putResize(key,oldValueTable[i]);
   }
-  this.keyTable=newKeyTable;
-  this.valueTable=newValueTable;
 }

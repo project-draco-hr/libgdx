@@ -1,5 +1,0 @@
-{
-  this((Class<T>)bag.items.getClass().getComponentType(),bag.size);
-  size=bag.size;
-  System.arraycopy(bag.items,0,items,0,size);
-}

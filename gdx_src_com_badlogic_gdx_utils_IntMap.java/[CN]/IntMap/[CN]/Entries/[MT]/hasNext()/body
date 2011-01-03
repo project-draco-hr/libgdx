@@ -1,5 +1,3 @@
 {
-  int[] keyTable=map.keyTable;
-  for (int n=keyTable.length; ++index < n; )   if (keyTable[index] != EMPTY)   return true;
-  return false;
+  return hasNext;
 }

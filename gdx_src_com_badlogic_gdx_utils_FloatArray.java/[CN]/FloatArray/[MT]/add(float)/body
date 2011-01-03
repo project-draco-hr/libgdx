@@ -1,5 +1,0 @@
-{
-  float[] items=this.items;
-  if (size == items.length)   items=resize((int)(size * 1.75f),false);
-  items[size++]=value;
-}

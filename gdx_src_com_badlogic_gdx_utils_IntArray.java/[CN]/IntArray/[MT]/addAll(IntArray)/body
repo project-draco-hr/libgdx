@@ -1,7 +1,0 @@
-{
-  int[] items=this.items;
-  int sizeNeeded=size + array.size;
-  if (sizeNeeded >= items.length)   items=resize((int)(sizeNeeded * 1.75f),false);
-  System.arraycopy(array.items,0,items,size,array.size);
-  size=sizeNeeded;
-}

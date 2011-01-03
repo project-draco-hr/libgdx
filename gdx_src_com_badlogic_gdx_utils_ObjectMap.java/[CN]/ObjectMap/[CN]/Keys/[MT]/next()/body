@@ -1,3 +1,6 @@
 {
-  return (K)map.keyTable[index];
+  K key=map.keyTable[nextIndex];
+  currentIndex=nextIndex;
+  findNextIndex();
+  return key;
 }

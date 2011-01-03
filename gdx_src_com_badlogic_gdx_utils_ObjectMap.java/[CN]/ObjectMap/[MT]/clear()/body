@@ -1,11 +1,10 @@
 {
   K[] keyTable=this.keyTable;
   V[] valueTable=this.valueTable;
-  for (int i=keyTable.length; i-- > 0; ) {
-    if (keyTable[i] != null) {
-      keyTable[i]=null;
-      valueTable[i]=null;
-    }
+  for (int i=capacity + stashSize; i-- > 0; ) {
+    keyTable[i]=null;
+    valueTable[i]=null;
   }
   size=0;
+  stashSize=0;
 }

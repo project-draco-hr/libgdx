@@ -1,10 +1,12 @@
 {
-  long[] keyTable=this.keyTable;
+  if (key == 0)   return hasZeroValue;
   int index=(int)(key & mask);
-  while (true) {
-    long existingKey=keyTable[index];
-    if (existingKey == EMPTY)     return false;
-    if (existingKey == key)     return true;
-    index++;
+  if (keyTable[index] != key) {
+    index=hash2(key);
+    if (keyTable[index] != key) {
+      index=hash3(key);
+      if (keyTable[index] != key)       return containsKeyStash(key);
+    }
   }
+  return true;
 }

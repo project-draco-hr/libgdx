@@ -1,15 +1,35 @@
 {
-  int[] keyTable=this.keyTable;
-  int index=key & mask;
-  while (true) {
-    int existingKey=keyTable[index];
-    if (existingKey == EMPTY)     return null;
-    if (existingKey == key) {
-      keyTable[index]=EMPTY;
-      V value=valueTable[index];
-      valueTable[index]=null;
-      return value;
-    }
-    index++;
+  if (key == 0) {
+    if (!hasZeroValue)     return null;
+    V oldValue=zeroValue;
+    zeroValue=null;
+    hasZeroValue=false;
+    size--;
+    return oldValue;
   }
+  int index=key & mask;
+  if (keyTable[index] == key) {
+    keyTable[index]=EMPTY;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
+  }
+  index=hash2(key);
+  if (keyTable[index] == key) {
+    keyTable[index]=EMPTY;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
+  }
+  index=hash3(key);
+  if (keyTable[index] == key) {
+    keyTable[index]=EMPTY;
+    V oldValue=valueTable[index];
+    valueTable[index]=null;
+    size--;
+    return oldValue;
+  }
+  return removeStash(key);
 }

@@ -1,0 +1,18 @@
+{
+  if (stashSize == stashCapacity) {
+    resize(capacity << 1);
+    put(key,value);
+    return;
+  }
+  long[] keyTable=this.keyTable;
+  for (int i=capacity, n=i + stashSize; i < n; i++) {
+    if (keyTable[i] == key) {
+      valueTable[i]=value;
+      return;
+    }
+  }
+  int index=capacity + stashSize;
+  keyTable[index]=key;
+  valueTable[index]=value;
+  stashSize++;
+}

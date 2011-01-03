@@ -1,7 +1,0 @@
-{
-  int[] items=this.items;
-  int sizeNeeded=size + bag.size;
-  if (sizeNeeded >= items.length)   items=resize((int)(sizeNeeded * 1.75f),false);
-  System.arraycopy(bag.items,0,items,size,bag.size);
-  size=sizeNeeded;
-}
