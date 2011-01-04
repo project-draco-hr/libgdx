@@ -4,7 +4,8 @@
     resize(Math.max(8,(int)(size * 1.75f)))[size++]=value;
     return;
   }
-  System.arraycopy(items,index,items,index + 1,size - index);
+  if (ordered)   System.arraycopy(items,index,items,index + 1,size - index);
+ else   items[size]=items[index];
   size++;
   items[index]=value;
 }

@@ -1,9 +1,0 @@
-{
-  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
-  size--;
-  Object[] items=this.items;
-  T value=(T)items[index];
-  items[index]=items[size];
-  items[size]=value;
-  return value;
-}

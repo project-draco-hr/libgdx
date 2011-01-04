@@ -1,3 +1,6 @@
 {
-  super(array);
+  this.ordered=array.ordered;
+  size=array.size;
+  items=new long[size];
+  System.arraycopy(array.items,0,items,0,size);
 }

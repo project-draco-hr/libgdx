@@ -1,8 +1,0 @@
-{
-  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
-  size--;
-  Object[] items=this.items;
-  T old=(T)items[index];
-  System.arraycopy(items,index + 1,items,index,size - index);
-  items[size]=old;
-}

@@ -3,6 +3,7 @@
   float[] items=this.items;
   float value=items[index];
   size--;
-  System.arraycopy(items,index + 1,items,index,size - index);
+  if (ordered)   System.arraycopy(items,index + 1,items,index,size - index);
+ else   items[index]=items[size];
   return value;
 }
