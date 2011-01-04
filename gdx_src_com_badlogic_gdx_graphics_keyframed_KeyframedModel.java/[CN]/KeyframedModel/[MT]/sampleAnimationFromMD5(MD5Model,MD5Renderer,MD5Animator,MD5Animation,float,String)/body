@@ -16,6 +16,10 @@
     Keyframe k=new Keyframe();
     k.Vertices=new float[mNumMeshes][];
     k.Indices=new short[mNumMeshes][];
+    if (mTaggedJointNames.size() > 0) {
+      k.TaggedJointPos=new Vector3[mTaggedJointNames.size()];
+      k.TaggedJoint=new Quaternion[mTaggedJointNames.size()];
+    }
     for (int m=0; m < mNumMeshes; m++) {
       float vertices[]=renderer.getVertices(m);
       short indices[]=renderer.getIndices(m);
@@ -27,9 +31,30 @@
       k.Indices[m]=indices.clone();
       if (mTarget[m] == null) {
         mAnimator.setKeyframeDimensions(m,numVertices,numIndices);
+        mAnimator.setNumTaggedJoints(mTaggedJointNames.size());
         VertexAttributes attribs=renderer.getMesh().getVertexAttributes();
         mTarget[m]=new Mesh(false,numVertices,numIndices,attribs);
         if (mTarget[m].getVertexSize() / 4 != KeyframeAnimator.sStride)         throw new GdxRuntimeException("Mesh vertexattributes != 8 - is this a valid MD5 source mesh?");
+      }
+    }
+    MD5Joints skel=animator.getSkeleton();
+    for (int tj=0; tj < mTaggedJointNames.size(); tj++) {
+      String name=mTaggedJointNames.get(tj);
+      for (int j=0; j < skel.numJoints; j++) {
+        if (name.equals(skel.names[j])) {
+          int idx=j * 8;
+          float p=skel.joints[idx];
+          float x=skel.joints[idx + 1];
+          float y=skel.joints[idx + 2];
+          float z=skel.joints[idx + 3];
+          k.TaggedJointPos[tj]=new Vector3(x,y,z);
+          float qx=skel.joints[idx + 4];
+          float qy=skel.joints[idx + 5];
+          float qz=skel.joints[idx + 6];
+          float qw=skel.joints[idx + 7];
+          k.TaggedJoint[tj]=new Quaternion(qx,qy,qz,qw);
+          break;
+        }
       }
     }
     a.mKeyframes[i]=k;
