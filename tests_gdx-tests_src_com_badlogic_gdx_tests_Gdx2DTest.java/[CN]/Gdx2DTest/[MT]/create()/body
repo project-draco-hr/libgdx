@@ -1,0 +1,9 @@
+{
+  Gdx2DPixmap pixmap=Gdx2DPixmap.newPixmap(Gdx.files.internal("data/badlogic.jpg").read(),Gdx2DPixmap.GDX2D_FORMAT_RGB);
+  texture=Gdx.graphics.newUnmanagedTexture(256,256,Format.RGBA8888,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture.bind();
+  Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,GL10.GL_RGB,pixmap.getWidth(),pixmap.getHeight(),0,GL10.GL_RGB,GL10.GL_UNSIGNED_BYTE,pixmap.getPixels());
+  batch=new SpriteBatch();
+  sprite=new Sprite(texture);
+  sprite.setPosition(100,50);
+}
