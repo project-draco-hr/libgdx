@@ -1,0 +1,13 @@
+{
+  if (size == items.length) {
+    T item=newObject();
+    resize(Math.max(8,(int)(size * 1.75f)))[size++]=item;
+    return item;
+  }
+  T item=items[size];
+  if (item == null)   item=newObject();
+  System.arraycopy(items,index,items,index + 1,size - index);
+  size++;
+  items[index]=item;
+  return item;
+}

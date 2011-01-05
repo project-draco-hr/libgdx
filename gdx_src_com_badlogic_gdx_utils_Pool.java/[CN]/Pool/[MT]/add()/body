@@ -1,0 +1,13 @@
+{
+  if (size == max)   return newObject();
+  T[] items=this.items;
+  if (size == items.length) {
+    T item=newObject();
+    resize(Math.max(8,(int)(size * 1.75f)))[size++]=item;
+    return item;
+  }
+  T item=items[size];
+  if (item == null)   item=newObject();
+  items[size++]=item;
+  return item;
+}
