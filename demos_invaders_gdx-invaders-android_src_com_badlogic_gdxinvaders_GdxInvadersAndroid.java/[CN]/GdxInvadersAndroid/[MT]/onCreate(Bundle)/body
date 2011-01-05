@@ -1,5 +1,5 @@
 {
   super.onCreate(savedInstanceState);
   setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-  initialize(new GdxInvaders(),false,20);
+  initialize(new GdxInvaders(),false,new FillResolutionStrategy(),20);
 }

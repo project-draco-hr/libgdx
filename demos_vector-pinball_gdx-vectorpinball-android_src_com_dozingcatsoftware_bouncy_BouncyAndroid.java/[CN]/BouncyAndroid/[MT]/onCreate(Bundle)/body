@@ -1,4 +1,4 @@
 {
   super.onCreate(savedInstanceState);
-  initialize(new Bouncy(),false,16);
+  initialize(new Bouncy(),false,new FillResolutionStrategy(),16);
 }
