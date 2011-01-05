@@ -1,0 +1,11 @@
+{
+  GL10 gl=Gdx.graphics.getGL10();
+  if (Ambient != null) {
+    setTmpArray(Ambient.r,Ambient.g,Ambient.b,Ambient.a);
+    gl.glMaterialfv(face,GL10.GL_AMBIENT,tmp,0);
+  }
+  if (Diffuse != null) {
+    setTmpArray(Diffuse.r,Diffuse.g,Diffuse.b,Diffuse.a);
+    gl.glMaterialfv(face,GL10.GL_DIFFUSE,tmp,0);
+  }
+}
