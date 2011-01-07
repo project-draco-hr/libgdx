@@ -1,5 +1,5 @@
 {
-  pool.removeValue(this,true);
+  pool.free(this);
   int len=0;
   for (int i=0; i < len; i++) {
     if (!finished[i])     actions.get(i).finish();

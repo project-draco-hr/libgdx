@@ -1,5 +1,5 @@
 {
-  FadeTo action=pool.add();
+  FadeTo action=pool.obtain();
   if (alpha < 0)   alpha=0;
   if (alpha > 1)   alpha=1;
   action.toAlpha=alpha;

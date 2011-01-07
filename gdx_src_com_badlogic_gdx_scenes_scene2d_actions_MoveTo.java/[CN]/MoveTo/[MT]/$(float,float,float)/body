@@ -1,5 +1,5 @@
 {
-  MoveTo action=pool.add();
+  MoveTo action=pool.obtain();
   action.x=x;
   action.y=y;
   action.duration=duration;

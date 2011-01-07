@@ -1,7 +1,7 @@
 {
   if (button != 1)   return;
 synchronized (this) {
-    TouchEvent event=usedTouchEvents.add();
+    TouchEvent event=usedTouchEvents.obtain();
     event.x=x;
     event.y=y;
     event.pointer=0;

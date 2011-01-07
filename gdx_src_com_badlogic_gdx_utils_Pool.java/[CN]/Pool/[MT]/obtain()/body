@@ -1,0 +1,3 @@
+{
+  return freeObjects.size == 0 ? newObject() : freeObjects.pop();
+}

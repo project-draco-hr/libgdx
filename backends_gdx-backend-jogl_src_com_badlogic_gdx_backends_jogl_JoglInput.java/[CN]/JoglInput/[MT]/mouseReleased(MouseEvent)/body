@@ -1,6 +1,6 @@
 {
 synchronized (this) {
-    TouchEvent event=usedTouchEvents.add();
+    TouchEvent event=usedTouchEvents.obtain();
     event.pointer=0;
     event.x=e.getX();
     event.y=e.getY();

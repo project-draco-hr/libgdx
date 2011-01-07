@@ -1,5 +1,5 @@
 {
-  Parallel action=pool.add();
+  Parallel action=pool.obtain();
   action.actions.clear();
   if (action.finished == null || action.finished.length < actions.length)   action.finished=new boolean[actions.length];
   int len=actions.length;

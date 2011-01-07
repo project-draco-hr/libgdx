@@ -1,5 +1,5 @@
 {
-  pool.removeValue(this,true);
+  pool.free(this);
   int len=0;
   if (listener != null)   listener.completed(this);
 }

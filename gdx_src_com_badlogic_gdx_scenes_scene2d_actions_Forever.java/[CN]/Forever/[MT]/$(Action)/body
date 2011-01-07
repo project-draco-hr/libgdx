@@ -1,5 +1,5 @@
 {
-  Forever forever=pool.add();
+  Forever forever=pool.obtain();
   forever.action=action;
   return forever;
 }

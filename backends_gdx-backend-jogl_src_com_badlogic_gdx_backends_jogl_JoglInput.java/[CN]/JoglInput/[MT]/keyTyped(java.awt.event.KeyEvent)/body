@@ -1,6 +1,6 @@
 {
 synchronized (this) {
-    KeyEvent event=usedKeyEvents.add();
+    KeyEvent event=usedKeyEvents.obtain();
     event.keyChar=e.getKeyChar();
     event.keyCode=0;
     event.type=KeyEvent.KEY_TYPED;

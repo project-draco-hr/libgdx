@@ -1,5 +1,5 @@
 {
-  Sequence action=pool.add();
+  Sequence action=pool.obtain();
   action.actions.clear();
   int len=actions.length;
   for (int i=0; i < len; i++)   action.actions.add(actions[i]);

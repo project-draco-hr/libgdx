@@ -1,6 +1,6 @@
 {
 synchronized (this) {
-    KeyEvent event=usedKeyEvents.add();
+    KeyEvent event=usedKeyEvents.obtain();
     event.keyChar=(char)uniCode;
     event.keyCode=translateKey(key);
 switch (action) {
