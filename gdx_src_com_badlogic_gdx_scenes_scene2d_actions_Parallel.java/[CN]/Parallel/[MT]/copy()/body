@@ -2,6 +2,8 @@
   Parallel action=pool.add();
   action.actions.clear();
   int len=actions.size();
+  for (int i=0; i < len; i++)   action.finished[i]=false;
+  len=actions.size();
   for (int i=0; i < len; i++)   action.actions.add(actions.get(i).copy());
   return action;
 }
