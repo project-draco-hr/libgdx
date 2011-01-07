@@ -17,5 +17,7 @@
     float a=i.readFloat();
     Diffuse=new Color(r,g,b,a);
   }
+  BlendSourceFactor=i.readInt();
+  BlendDestFactor=i.readInt();
   return true;
 }

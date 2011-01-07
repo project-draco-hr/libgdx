@@ -5,7 +5,7 @@
     return ref;
   }
   FileHandle texFile=Gdx.app.getFiles().getFileHandle(path,FileType.Internal);
-  Texture newTex=Gdx.graphics.newTexture(texFile,near,far,uwrap,vwrap);
+  Texture newTex=Gdx.graphics.newTexture(texFile,minFilter,magFilter,uwrap,vwrap);
   TextureRef ref=new TextureRef(path,newTex);
   sDictionary.put(path,ref);
   return ref;

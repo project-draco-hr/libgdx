@@ -16,5 +16,7 @@
     o.writeFloat(Diffuse.b);
     o.writeFloat(Diffuse.a);
   }
+  o.writeInt(BlendSourceFactor);
+  o.writeInt(BlendDestFactor);
   return true;
 }

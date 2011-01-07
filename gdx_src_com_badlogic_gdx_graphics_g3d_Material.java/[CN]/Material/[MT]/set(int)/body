@@ -8,4 +8,11 @@
     setTmpArray(Diffuse.r,Diffuse.g,Diffuse.b,Diffuse.a);
     gl.glMaterialfv(face,GL10.GL_DIFFUSE,tmp,0);
   }
+  if (BlendSourceFactor > 0) {
+    gl.glBlendFunc(BlendSourceFactor,BlendDestFactor);
+    gl.glEnable(GL10.GL_BLEND);
+  }
+ else {
+    gl.glDisable(GL10.GL_BLEND);
+  }
 }
