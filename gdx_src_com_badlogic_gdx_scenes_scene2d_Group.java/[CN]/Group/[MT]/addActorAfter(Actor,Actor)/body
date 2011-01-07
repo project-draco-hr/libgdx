@@ -1,0 +1,8 @@
+{
+  int index=children.indexOf(actorAfter);
+  if (index == children.size())   children.add(actor);
+ else   children.add(index + 1,actor);
+  if (actor instanceof Group)   groups.add((Group)actor);
+  namesToActors.put(actor.name,actor);
+  actor.parent=this;
+}
