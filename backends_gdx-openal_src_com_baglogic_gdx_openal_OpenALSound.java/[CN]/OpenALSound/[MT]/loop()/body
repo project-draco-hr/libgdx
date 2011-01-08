@@ -1,0 +1,8 @@
+{
+  streamID=audio.getIdleStreamID();
+  if (streamID == -1)   return;
+  alSourceStop(streamID);
+  alSourcei(streamID,AL_BUFFER,bufferID);
+  alSourcei(streamID,AL_LOOPING,AL_TRUE);
+  alSourcePlay(streamID);
+}

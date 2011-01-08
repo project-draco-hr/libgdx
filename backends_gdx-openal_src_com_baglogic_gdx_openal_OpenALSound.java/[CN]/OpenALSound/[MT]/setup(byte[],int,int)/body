@@ -1,0 +1,9 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(pcm.length);
+  buffer.put(pcm);
+  buffer.flip();
+  if (bufferID == -1) {
+    bufferID=alGenBuffers();
+    alBufferData(bufferID,channels > 1 ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16,buffer,sampleRate);
+  }
+}

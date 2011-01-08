@@ -1,0 +1,21 @@
+{
+  try {
+    AL.create();
+  }
+ catch (  LWJGLException ex) {
+    throw new GdxRuntimeException("Error initializing OpenAL.",ex);
+  }
+  IntArray streams=new IntArray(false,simultaneousStreams);
+  for (int i=0; i < simultaneousStreams; i++) {
+    int streamID=alGenSources();
+    if (alGetError() != AL_NO_ERROR)     break;
+    streams.add(streamID);
+  }
+  this.streams=streams.items;
+  FloatBuffer orientation=(FloatBuffer)BufferUtils.createFloatBuffer(6).put(new float[]{0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f}).flip();
+  alListener(AL_ORIENTATION,orientation);
+  FloatBuffer velocity=(FloatBuffer)BufferUtils.createFloatBuffer(3).put(new float[]{0.0f,0.0f,0.0f}).flip();
+  alListener(AL_VELOCITY,velocity);
+  FloatBuffer position=(FloatBuffer)BufferUtils.createFloatBuffer(3).put(new float[]{0.0f,0.0f,0.0f}).flip();
+  alListener(AL_POSITION,position);
+}

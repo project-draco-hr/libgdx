@@ -1,0 +1,21 @@
+{
+  final OpenALAudio audio=new OpenALAudio(8);
+  Thread thread=new Thread(){
+    public void run(){
+      while (true) {
+        audio.update();
+        try {
+          Thread.sleep(100);
+        }
+ catch (        InterruptedException ignored) {
+        }
+      }
+    }
+  }
+;
+  thread.setDaemon(true);
+  thread.start();
+  String path="C:/Users/Nate/Desktop/reggae/10 - Rainbow In The Sky.mp3";
+  OpenALSound sound=audio.newSound(Gdx.files.absolute(path));
+  sound.play();
+}

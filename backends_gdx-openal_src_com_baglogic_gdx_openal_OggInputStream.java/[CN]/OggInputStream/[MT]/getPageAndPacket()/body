@@ -1,0 +1,66 @@
+{
+  int index=syncState.buffer(4096);
+  buffer=syncState.data;
+  if (buffer == null) {
+    endOfStream=true;
+    return false;
+  }
+  try {
+    bytes=input.read(buffer,index,4096);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Failure reading Vorbis.");
+  }
+  syncState.wrote(bytes);
+  if (syncState.pageout(page) != 1) {
+    if (bytes < 4096)     return false;
+    throw new GdxRuntimeException("Input does not appear to be an Ogg bitstream.");
+  }
+  streamState.init(page.serialno());
+  oggInfo.init();
+  comment.init();
+  if (streamState.pagein(page) < 0) {
+    throw new GdxRuntimeException("Error reading first page of Ogg bitstream.");
+  }
+  if (streamState.packetout(packet) != 1) {
+    throw new GdxRuntimeException("Error reading initial header packet.");
+  }
+  if (oggInfo.synthesis_headerin(comment,packet) < 0) {
+    throw new GdxRuntimeException("Ogg bitstream does not contain Vorbis audio data.");
+  }
+  int i=0;
+  while (i < 2) {
+    while (i < 2) {
+      int result=syncState.pageout(page);
+      if (result == 0)       break;
+      if (result == 1) {
+        streamState.pagein(page);
+        while (i < 2) {
+          result=streamState.packetout(packet);
+          if (result == 0)           break;
+          if (result == -1) {
+            throw new GdxRuntimeException("Corrupt secondary header.");
+          }
+          oggInfo.synthesis_headerin(comment,packet);
+          i++;
+        }
+      }
+    }
+    index=syncState.buffer(4096);
+    buffer=syncState.data;
+    try {
+      bytes=input.read(buffer,index,4096);
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Failed to read Vorbis.");
+    }
+    if (bytes == 0 && i < 2) {
+      throw new GdxRuntimeException("End of file before finding all Vorbis headers.");
+    }
+    syncState.wrote(bytes);
+  }
+  convsize=4096 / oggInfo.channels;
+  dspState.synthesis_init(oggInfo);
+  vorbisBlock.init(dspState);
+  return true;
+}

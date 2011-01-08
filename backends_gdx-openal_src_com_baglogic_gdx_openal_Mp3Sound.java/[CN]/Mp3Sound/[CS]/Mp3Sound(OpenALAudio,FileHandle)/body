@@ -1,0 +1,28 @@
+{
+  super(audio);
+  ByteArrayOutputStream output=new ByteArrayOutputStream(4096);
+  Bitstream bitstream=new Bitstream(file.read());
+  OutputBuffer outputBuffer=new OutputBuffer(2,false);
+  MP3Decoder decoder=new MP3Decoder();
+  decoder.setOutputBuffer(outputBuffer);
+  try {
+    int sampleRate=-1;
+    while (true) {
+      Header header=bitstream.readFrame();
+      if (header == null)       break;
+      if (sampleRate == -1)       sampleRate=header.getSampleRate();
+      try {
+        decoder.decodeFrame(header,bitstream);
+      }
+ catch (      Exception ignored) {
+      }
+      bitstream.closeFrame();
+      output.write(outputBuffer.getBuffer(),0,outputBuffer.reset());
+    }
+    bitstream.close();
+    setup(output.toByteArray(),outputBuffer.isStereo() ? 2 : 1,sampleRate);
+  }
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException("Error reading audio data.",ex);
+  }
+}

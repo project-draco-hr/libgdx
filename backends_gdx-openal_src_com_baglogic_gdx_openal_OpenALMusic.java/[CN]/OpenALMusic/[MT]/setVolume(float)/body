@@ -1,0 +1,4 @@
+{
+  this.volume=volume;
+  if (streamID != -1)   alSourcef(streamID,AL_GAIN,volume);
+}

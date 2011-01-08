@@ -1,0 +1,10 @@
+{
+  this.input=input;
+  try {
+    total=input.available();
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+  init();
+}
