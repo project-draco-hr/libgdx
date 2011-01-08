@@ -1,9 +1,6 @@
 {
   if (inputDir.getName().startsWith("."))   return;
-  if (outputDir.exists()) {
-    String prefix=inputDir.getName();
-    for (    File file : outputDir.listFiles())     if (file.getName().startsWith(prefix))     file.delete();
-  }
+  boolean skip=false;
   if (settings.incremental) {
     File[] files=inputDir.listFiles();
     if (files == null)     return;
@@ -22,40 +19,61 @@
     Long childCountOld=settings.crcs.get(path);
     if (childCountOld == null || childCountNow != childCountOld)     noneHaveChanged=false;
     settings.crcs.put(path,(long)childCountNow);
-    if (noneHaveChanged) {
+    if (outputDir.exists()) {
+      boolean foundPage=false;
+      String prefix=inputDir.getName();
+      for (      File file : outputDir.listFiles()) {
+        if (file.getName().startsWith(prefix)) {
+          foundPage=true;
+          break;
+        }
+      }
+      if (!foundPage)       noneHaveChanged=false;
+    }
+    String section=settings.packSections.get(inputDir.getName());
+    if (noneHaveChanged && section != null) {
+      FileWriter writer=new FileWriter(packFile,true);
+      writer.append(section);
+      writer.close();
       System.out.println(inputDir);
       System.out.println("Skipping unchanged directory.");
       System.out.println();
-      return;
+      skip=true;
     }
   }
-  ArrayList<TextureFilter> filters=new ArrayList();
-  filters.add(null);
-  filters.addAll(Arrays.asList(TextureFilter.values()));
-  ArrayList<Format> formats=new ArrayList();
-  formats.add(null);
-  formats.addAll(Arrays.asList(Format.values()));
-  for (int i=0, n=formats.size(); i < n; i++) {
-    Format format=formats.get(i);
-    for (int ii=0, nn=filters.size(); ii < nn; ii++) {
-      TextureFilter min=filters.get(ii);
-      for (int iii=ii; iii < nn; iii++) {
-        TextureFilter mag=filters.get(iii);
-        if ((min == null && mag != null) || (min != null && mag == null))         continue;
-        Filter filter=new Filter(Direction.none,format,-1,-1,min,mag);
-        new TexturePacker(settings,inputDir,filter,outputDir,packFile);
-        for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
-          filter=new Filter(Direction.x,format,width,-1,min,mag);
+  if (!skip) {
+    if (outputDir.exists()) {
+      String prefix=inputDir.getName();
+      for (      File file : outputDir.listFiles())       if (file.getName().startsWith(prefix))       file.delete();
+    }
+    ArrayList<TextureFilter> filters=new ArrayList();
+    filters.add(null);
+    filters.addAll(Arrays.asList(TextureFilter.values()));
+    ArrayList<Format> formats=new ArrayList();
+    formats.add(null);
+    formats.addAll(Arrays.asList(Format.values()));
+    for (int i=0, n=formats.size(); i < n; i++) {
+      Format format=formats.get(i);
+      for (int ii=0, nn=filters.size(); ii < nn; ii++) {
+        TextureFilter min=filters.get(ii);
+        for (int iii=ii; iii < nn; iii++) {
+          TextureFilter mag=filters.get(iii);
+          if ((min == null && mag != null) || (min != null && mag == null))           continue;
+          Filter filter=new Filter(Direction.none,format,-1,-1,min,mag);
           new TexturePacker(settings,inputDir,filter,outputDir,packFile);
-        }
-        for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
-          filter=new Filter(Direction.y,format,-1,height,min,mag);
-          new TexturePacker(settings,inputDir,filter,outputDir,packFile);
-        }
-        for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
-          for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
-            filter=new Filter(Direction.xy,format,width,height,min,mag);
+          for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
+            filter=new Filter(Direction.x,format,width,-1,min,mag);
             new TexturePacker(settings,inputDir,filter,outputDir,packFile);
+          }
+          for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
+            filter=new Filter(Direction.y,format,-1,height,min,mag);
+            new TexturePacker(settings,inputDir,filter,outputDir,packFile);
+          }
+          for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
+            for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
+              filter=new Filter(Direction.xy,format,width,height,min,mag);
+              new TexturePacker(settings,inputDir,filter,outputDir,packFile);
+            }
           }
         }
       }
