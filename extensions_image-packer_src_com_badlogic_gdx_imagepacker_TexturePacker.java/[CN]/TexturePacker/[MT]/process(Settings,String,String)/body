@@ -7,5 +7,30 @@
   }
   File packFile=new File(outputDir,"pack");
   packFile.delete();
+  File incrmentalFile=null;
+  if (settings.incremental) {
+    settings.crcs.clear();
+    incrmentalFile=new File(System.getProperty("user.home") + "/.texturepacker/" + hash(inputDir.getAbsolutePath()));
+    if (incrmentalFile.exists()) {
+      BufferedReader reader=new BufferedReader(new FileReader(incrmentalFile));
+      while (true) {
+        String path=reader.readLine();
+        if (path == null)         break;
+        String crc=reader.readLine();
+        if (crc == null)         break;
+        settings.crcs.put(path,Long.parseLong(crc));
+      }
+      reader.close();
+    }
+  }
   process(settings,inputDir,outputDir,packFile);
+  if (settings.incremental) {
+    incrmentalFile.getParentFile().mkdirs();
+    FileWriter writer=new FileWriter(incrmentalFile);
+    for (    Entry<String,Long> entry : settings.crcs.entrySet()) {
+      writer.write(entry.getKey() + "\n");
+      writer.write(entry.getValue() + "\n");
+    }
+    writer.close();
+  }
 }

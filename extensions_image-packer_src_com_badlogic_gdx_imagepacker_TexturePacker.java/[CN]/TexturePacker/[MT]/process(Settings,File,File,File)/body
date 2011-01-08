@@ -4,6 +4,31 @@
     String prefix=inputDir.getName();
     for (    File file : outputDir.listFiles())     if (file.getName().startsWith(prefix))     file.delete();
   }
+  if (settings.incremental) {
+    File[] files=inputDir.listFiles();
+    if (files == null)     return;
+    boolean noneHaveChanged=true;
+    int childCountNow=0;
+    for (    File file : files) {
+      if (file.isDirectory())       continue;
+      String path=file.getAbsolutePath();
+      Long crcOld=settings.crcs.get(path);
+      long crcNow=crc(file);
+      if (crcOld == null || crcOld != crcNow)       noneHaveChanged=false;
+      settings.crcs.put(path,crcNow);
+      childCountNow++;
+    }
+    String path=inputDir.getAbsolutePath();
+    Long childCountOld=settings.crcs.get(path);
+    if (childCountOld == null || childCountNow != childCountOld)     noneHaveChanged=false;
+    settings.crcs.put(path,(long)childCountNow);
+    if (noneHaveChanged) {
+      System.out.println(inputDir);
+      System.out.println("Skipping unchanged directory.");
+      System.out.println();
+      return;
+    }
+  }
   ArrayList<TextureFilter> filters=new ArrayList();
   filters.add(null);
   filters.addAll(Arrays.asList(TextureFilter.values()));
