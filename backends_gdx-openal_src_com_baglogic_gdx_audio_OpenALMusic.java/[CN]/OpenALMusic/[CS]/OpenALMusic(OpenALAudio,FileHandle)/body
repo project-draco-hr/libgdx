@@ -1,8 +1,0 @@
-{
-  this.audio=audio;
-  this.file=file;
-  buffers=BufferUtils.createIntBuffer(bufferCount);
-  alGenBuffers(buffers);
-  if (alGetError() != AL_NO_ERROR)   throw new GdxRuntimeException("Unabe to allocate audio buffers.");
-  audio.music.add(this);
-}
