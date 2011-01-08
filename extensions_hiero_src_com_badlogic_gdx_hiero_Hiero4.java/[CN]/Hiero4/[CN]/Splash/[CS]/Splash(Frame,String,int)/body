@@ -1,0 +1,9 @@
+{
+  super(frame);
+  this.minMillis=minMillis;
+  getContentPane().add(new JLabel(new ImageIcon(Splash.class.getResource(imageFile))),BorderLayout.CENTER);
+  pack();
+  setLocationRelativeTo(null);
+  setVisible(true);
+  startTime=System.currentTimeMillis();
+}
