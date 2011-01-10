@@ -1,0 +1,18 @@
+{
+  cam=new OrthographicCamera();
+  cam.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.getPosition().set(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2,0);
+  renderer=new ImmediateModeRenderer();
+  spline=new CatmullRomSpline();
+  float x=0;
+  float y=Gdx.graphics.getHeight() / 2;
+  spline.add(new Vector3(x - 50,y,0));
+  for (int i=0; i < CONTROL_POINTS; i++) {
+    spline.add(new Vector3(x,y,0));
+    x+=Gdx.graphics.getWidth() / (CONTROL_POINTS - 2);
+  }
+  spline.add(new Vector3(Gdx.graphics.getWidth() + 50,y,0));
+  path=new Vector3[(CONTROL_POINTS - 2) * 7 - 1];
+  for (int i=0; i < path.length; i++)   path[i]=new Vector3();
+  spline.getPath(path,5);
+}

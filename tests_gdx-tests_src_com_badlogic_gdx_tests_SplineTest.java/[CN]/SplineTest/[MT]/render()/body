@@ -1,0 +1,32 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  cam.setMatrices();
+  renderer.begin(GL10.GL_TRIANGLES);
+  for (int i=0; i < path.length - 1; i++) {
+    Vector3 point1=path[i];
+    Vector3 point2=path[i + 1];
+    renderer.color(1,1,1,1);
+    renderer.vertex(point1.x,point1.y,0);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point1.x,0,0);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point2.x,point2.y,0);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point2.x,point2.y,0);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point1.x,0,0);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point2.x,0,0);
+  }
+  renderer.end();
+  Gdx.gl10.glPointSize(4);
+  renderer.begin(GL10.GL_POINTS);
+  for (int i=0; i < spline.getControlPoints().size(); i++) {
+    Vector3 point=spline.getControlPoints().get(i);
+    renderer.color(1,0,0,1);
+    renderer.vertex(point.x,point.y,0);
+  }
+  renderer.end();
+  Gdx.gl10.glPointSize(1);
+  processInput();
+}
