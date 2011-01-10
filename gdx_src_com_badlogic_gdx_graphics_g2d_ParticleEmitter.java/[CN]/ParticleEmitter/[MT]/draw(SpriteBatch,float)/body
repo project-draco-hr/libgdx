@@ -27,7 +27,7 @@
   }
   if (durationTimer < duration)   durationTimer+=deltaMillis;
  else {
-    if (!continuous)     return;
+    if (!continuous || allowCompletion)     return;
     restart();
   }
   emissionDelta+=deltaMillis;

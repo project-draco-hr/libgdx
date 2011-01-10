@@ -1,3 +1,3 @@
 {
-  return Gdx.graphics.newTexture(file,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  return Gdx.graphics.newTexture(file,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
 }

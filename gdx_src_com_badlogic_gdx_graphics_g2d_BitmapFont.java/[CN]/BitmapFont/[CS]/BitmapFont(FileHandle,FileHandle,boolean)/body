@@ -1,4 +1,4 @@
 {
-  region=new TextureRegion(Gdx.graphics.newTexture(imageFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
+  region=new TextureRegion(Gdx.graphics.newTexture(imageFile,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge));
   init(fontFile,region,flip);
 }

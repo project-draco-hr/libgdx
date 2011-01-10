@@ -1,4 +1,4 @@
 {
   this.renderer=renderer;
-  texture=Gdx.graphics.newTexture(textureFile,TextureFilter.Linear,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture=Gdx.graphics.newTexture(textureFile,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
 }
