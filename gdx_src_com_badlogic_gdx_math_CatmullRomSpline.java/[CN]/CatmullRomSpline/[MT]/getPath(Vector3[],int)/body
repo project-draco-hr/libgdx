@@ -1,0 +1,23 @@
+{
+  int idx=0;
+  if (controlPoints.size() < 4)   return;
+  for (int i=1; i <= controlPoints.size() - 3; i++) {
+    points[idx++].set(controlPoints.get(i));
+    float increment=1.0f / (numPoints + 1);
+    float t=increment;
+    T1.set(controlPoints.get(i + 1)).sub(controlPoints.get(i - 1)).mul(0.5f);
+    T2.set(controlPoints.get(i + 2)).sub(controlPoints.get(i)).mul(0.5f);
+    for (int j=0; j < numPoints; j++) {
+      float h1=2 * t * t* t - 3 * t * t + 1;
+      float h2=-2 * t * t* t + 3 * t * t;
+      float h3=t * t * t - 2 * t * t + t;
+      float h4=t * t * t - t * t;
+      Vector3 point=points[idx++].set(controlPoints.get(i)).mul(h1);
+      point.add(controlPoints.get(i + 1).tmp().mul(h2));
+      point.add(T1.tmp().mul(h3));
+      point.add(T2.tmp().mul(h4));
+      t+=increment;
+    }
+  }
+  points[idx].set(controlPoints.get(controlPoints.size() - 2));
+}
