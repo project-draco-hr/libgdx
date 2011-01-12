@@ -5,9 +5,11 @@ synchronized (this) {
     event.x=e.getX();
     event.y=e.getY();
     event.type=TouchEvent.TOUCH_DOWN;
+    event.button=toGdxButton(e.getButton());
     touchEvents.add(event);
     touchX=event.x;
     touchY=event.y;
     touchDown=true;
+    pressedButtons.add(event.button);
   }
 }

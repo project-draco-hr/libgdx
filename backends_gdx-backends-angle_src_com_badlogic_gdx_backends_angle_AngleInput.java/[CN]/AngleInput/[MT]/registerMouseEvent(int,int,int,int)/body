@@ -1,5 +1,4 @@
 {
-  if (button != 1)   return;
 synchronized (this) {
     TouchEvent event=usedTouchEvents.obtain();
     event.x=x;
@@ -8,13 +7,16 @@ synchronized (this) {
 switch (action) {
 case ESLoop.ES_MOUSE_DOWN:
       event.type=TouchEvent.TOUCH_DOWN;
-    break;
+    mousePressed=true;
+  break;
 case ESLoop.ES_MOUSE_UP:
-  event.type=TouchEvent.TOUCH_UP;
+event.type=TouchEvent.TOUCH_UP;
+mousePressed=true;
 break;
 case ESLoop.ES_MOUSE_MOVE:
 event.type=TouchEvent.TOUCH_DRAGGED;
 break;
 }
+touchEvents.add(event);
 }
 }

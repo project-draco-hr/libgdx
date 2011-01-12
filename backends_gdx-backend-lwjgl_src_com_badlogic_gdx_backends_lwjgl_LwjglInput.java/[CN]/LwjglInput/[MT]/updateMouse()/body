@@ -1,46 +1,41 @@
 {
+  justTouched=false;
   if (Mouse.isCreated()) {
-    int x=Mouse.getX();
-    int y=Gdx.graphics.getHeight() - Mouse.getY();
     while (Mouse.next()) {
-      if (isButtonPressed()) {
-        if (mousePressed == false) {
-          mousePressed=true;
-          TouchEvent event=usedTouchEvents.obtain();
-          event.x=x;
-          event.y=y;
-          event.pointer=0;
+      int x=Mouse.getEventX();
+      int y=Gdx.graphics.getHeight() - Mouse.getEventY() - 1;
+      int button=Mouse.getEventButton();
+      TouchEvent event=usedTouchEvents.obtain();
+      event.x=x;
+      event.y=y;
+      event.button=toGdxButton(button);
+      event.pointer=0;
+      if (button == -1) {
+        if (Mouse.getEventDWheel() != 0) {
+          event.type=TouchEvent.TOUCH_SCROLLED;
+          event.scrollAmount=(int)-Math.signum(Mouse.getEventDWheel());
+        }
+ else         if (pressedButtons.size() > 0) {
+          event.type=TouchEvent.TOUCH_DRAGGED;
+        }
+ else {
+          event.type=TouchEvent.TOUCH_MOVED;
+        }
+      }
+ else {
+        if (Mouse.getEventButtonState()) {
           event.type=TouchEvent.TOUCH_DOWN;
-          touchEvents.add(event);
-          mouseX=x;
-          mouseY=y;
+          pressedButtons.add(event.button);
+          justTouched=true;
         }
  else {
-          if (mouseX != x || mouseY != y) {
-            TouchEvent event=usedTouchEvents.obtain();
-            event.x=x;
-            event.y=y;
-            event.pointer=0;
-            event.type=TouchEvent.TOUCH_DRAGGED;
-            touchEvents.add(event);
-            mouseX=x;
-            mouseY=y;
-          }
-        }
-      }
- else {
-        if (mousePressed == true) {
-          mouseX=x;
-          mouseY=y;
-          mousePressed=false;
-          TouchEvent event=usedTouchEvents.obtain();
-          event.x=x;
-          event.y=y;
-          event.pointer=0;
           event.type=TouchEvent.TOUCH_UP;
-          touchEvents.add(event);
+          pressedButtons.remove(event.button);
         }
       }
+      touchEvents.add(event);
+      mouseX=event.x;
+      mouseY=event.y;
     }
   }
 }

@@ -8,6 +8,5 @@ synchronized (this) {
     touchEvents.add(event);
     touchX=event.x;
     touchY=event.y;
-    touchDown=true;
   }
 }

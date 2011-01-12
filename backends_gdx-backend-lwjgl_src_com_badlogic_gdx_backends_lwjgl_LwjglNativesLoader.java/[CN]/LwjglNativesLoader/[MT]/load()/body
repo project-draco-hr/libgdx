@@ -1,5 +1,4 @@
 {
-  System.setProperty("org.lwjgl.input.Mouse.allowNegativeMouseCoords","true");
   Version.loadLibrary();
   if (!load)   return;
   String os=System.getProperty("os.name");

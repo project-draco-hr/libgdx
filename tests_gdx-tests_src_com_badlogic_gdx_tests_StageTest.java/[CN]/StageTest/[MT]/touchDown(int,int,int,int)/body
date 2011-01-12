@@ -1,0 +1,12 @@
+{
+  boolean touched=ui.touchDown(x,y,pointer,button);
+  if (touched) {
+    Actor hitActor=ui.getLastTouchedChild();
+    if (hitActor == null)     return touched;
+    if (hitActor.name.startsWith("blend"))     if (stage.getSpriteBatch().isBlendingEnabled())     stage.getSpriteBatch().disableBlending();
+ else     stage.getSpriteBatch().enableBlending();
+    if (hitActor.name.startsWith("rotate"))     rotateSprites=!rotateSprites;
+    if (hitActor.name.startsWith("scale"))     scaleSprites=!scaleSprites;
+  }
+  return touched;
+}

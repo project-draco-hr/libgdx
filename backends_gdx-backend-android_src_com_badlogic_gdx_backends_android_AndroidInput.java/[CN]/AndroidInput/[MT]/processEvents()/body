@@ -1,5 +1,6 @@
 {
 synchronized (this) {
+    justTouched=false;
     if (processor != null) {
       final InputProcessor processor=this.processor;
       int len=keyEvents.size();
@@ -22,10 +23,11 @@ for (int i=0; i < len; i++) {
 TouchEvent e=touchEvents.get(i);
 switch (e.type) {
 case TouchEvent.TOUCH_DOWN:
-processor.touchDown(e.x,e.y,e.pointer);
+processor.touchDown(e.x,e.y,e.pointer,Buttons.LEFT);
+justTouched=true;
 break;
 case TouchEvent.TOUCH_UP:
-processor.touchUp(e.x,e.y,e.pointer);
+processor.touchUp(e.x,e.y,e.pointer,Buttons.LEFT);
 break;
 case TouchEvent.TOUCH_DRAGGED:
 processor.touchDragged(e.x,e.y,e.pointer);
@@ -37,6 +39,7 @@ usedTouchEvents.free(e);
 int len=touchEvents.size();
 for (int i=0; i < len; i++) {
 TouchEvent e=touchEvents.get(i);
+if (e.type == TouchEvent.TOUCH_DOWN) justTouched=true;
 usedTouchEvents.free(e);
 }
 len=keyEvents.size();

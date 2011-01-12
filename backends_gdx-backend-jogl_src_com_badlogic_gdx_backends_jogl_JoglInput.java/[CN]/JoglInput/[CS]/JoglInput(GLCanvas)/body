@@ -1,5 +1,6 @@
 {
   canvas.addMouseListener(this);
   canvas.addMouseMotionListener(this);
+  canvas.addMouseWheelListener(this);
   canvas.addKeyListener(this);
 }

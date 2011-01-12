@@ -4,10 +4,11 @@ synchronized (this) {
     event.pointer=0;
     event.x=e.getX();
     event.y=e.getY();
+    event.button=toGdxButton(e.getButton());
     event.type=TouchEvent.TOUCH_UP;
     touchEvents.add(event);
     touchX=event.x;
     touchY=event.y;
-    touchDown=false;
+    pressedButtons.remove(event.button);
   }
 }

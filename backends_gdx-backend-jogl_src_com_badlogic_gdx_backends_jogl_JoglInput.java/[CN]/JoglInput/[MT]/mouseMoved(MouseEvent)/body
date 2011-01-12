@@ -1,2 +1,12 @@
 {
+synchronized (this) {
+    TouchEvent event=usedTouchEvents.obtain();
+    event.pointer=0;
+    event.x=e.getX();
+    event.y=e.getY();
+    event.type=TouchEvent.TOUCH_MOVED;
+    touchEvents.add(event);
+    touchX=event.x;
+    touchY=event.y;
+  }
 }

@@ -1,0 +1,6 @@
+{
+  if (button == Buttons.LEFT)   return 0;
+  if (button == Buttons.RIGHT)   return 1;
+  if (button == Buttons.MIDDLE)   return 2;
+  return 0;
+}

@@ -1,6 +1,0 @@
-{
-  Gdx.app.log("Input Test","touch up: " + x + ", "+ y);
-  long startTime=System.nanoTime();
-  while (System.nanoTime() - startTime < 1000000000 / 30)   ;
-  return false;
-}

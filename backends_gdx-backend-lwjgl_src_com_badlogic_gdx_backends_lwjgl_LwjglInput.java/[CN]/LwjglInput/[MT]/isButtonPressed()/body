@@ -1,4 +1,0 @@
-{
-  for (int i=0; i < Mouse.getButtonCount(); i++)   if (Mouse.isButtonDown(i))   return true;
-  return false;
-}

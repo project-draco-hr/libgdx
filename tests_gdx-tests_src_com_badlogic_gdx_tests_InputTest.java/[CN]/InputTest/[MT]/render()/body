@@ -1,2 +1,5 @@
 {
+  if (Gdx.input.justTouched()) {
+    Gdx.app.log("Input Test","just touched, button: " + (Gdx.input.isButtonPressed(Buttons.LEFT) ? "left " : "") + (Gdx.input.isButtonPressed(Buttons.MIDDLE) ? "middle " : "")+ (Gdx.input.isButtonPressed(Buttons.RIGHT) ? "right" : ""));
+  }
 }

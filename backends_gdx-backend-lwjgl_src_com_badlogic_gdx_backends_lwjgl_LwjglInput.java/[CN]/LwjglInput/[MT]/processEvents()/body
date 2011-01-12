@@ -22,13 +22,19 @@ for (int i=0; i < len; i++) {
 TouchEvent e=touchEvents.get(i);
 switch (e.type) {
 case TouchEvent.TOUCH_DOWN:
-processor.touchDown(e.x,e.y,e.pointer);
+processor.touchDown(e.x,e.y,e.pointer,e.button);
 break;
 case TouchEvent.TOUCH_UP:
-processor.touchUp(e.x,e.y,e.pointer);
+processor.touchUp(e.x,e.y,e.pointer,e.button);
 break;
 case TouchEvent.TOUCH_DRAGGED:
 processor.touchDragged(e.x,e.y,e.pointer);
+break;
+case TouchEvent.TOUCH_MOVED:
+processor.touchMoved(e.x,e.y);
+break;
+case TouchEvent.TOUCH_SCROLLED:
+processor.scrolled(e.scrollAmount);
 }
 usedTouchEvents.free(e);
 }

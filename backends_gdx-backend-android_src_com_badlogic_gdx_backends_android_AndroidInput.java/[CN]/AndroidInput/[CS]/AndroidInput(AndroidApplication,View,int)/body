@@ -21,4 +21,5 @@
   if (sdkVersion >= 5)   touchHandler=new AndroidMultiTouchHandler();
  else   touchHandler=new AndroidSingleTouchHandler();
   hasMultitouch=touchHandler instanceof AndroidMultiTouchHandler && ((AndroidMultiTouchHandler)touchHandler).supportsMultitouch(activity);
+  vibrator=(Vibrator)activity.getSystemService(Context.VIBRATOR_SERVICE);
 }

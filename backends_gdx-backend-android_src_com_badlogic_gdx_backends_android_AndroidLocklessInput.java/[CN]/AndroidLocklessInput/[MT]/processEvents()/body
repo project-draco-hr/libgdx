@@ -3,6 +3,7 @@
 synchronized (this) {
     processor=this.processor;
   }
+  justTouched=false;
   if (processor != null) {
     KeyEvent e;
     while ((e=keyEvents.poll()) != null) {
@@ -22,10 +23,11 @@ TouchEvent te=null;
 while ((te=touchEvents.poll()) != null) {
 switch (te.type) {
 case TouchEvent.TOUCH_DOWN:
-processor.touchDown(te.x,te.y,te.pointer);
+processor.touchDown(te.x,te.y,te.pointer,Buttons.LEFT);
+justTouched=true;
 break;
 case TouchEvent.TOUCH_UP:
-processor.touchUp(te.x,te.y,te.pointer);
+processor.touchUp(te.x,te.y,te.pointer,Buttons.LEFT);
 break;
 case TouchEvent.TOUCH_DRAGGED:
 processor.touchDragged(te.x,te.y,te.pointer);
@@ -36,6 +38,7 @@ freeTouchEvents.put(te);
  else {
 TouchEvent e=null;
 while ((e=touchEvents.poll()) != null) {
+if (e.type == TouchEvent.TOUCH_DOWN) justTouched=true;
 freeTouchEvents.put(e);
 }
 KeyEvent ke=null;
