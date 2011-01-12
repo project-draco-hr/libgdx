@@ -1,0 +1,10 @@
+{
+  StringBuilder builder=new StringBuilder();
+  builder.append("\nazimuth: ");
+  builder.append((int)Gdx.input.getAzimuth());
+  builder.append("\npitch: ");
+  builder.append((int)Gdx.input.getPitch());
+  builder.append("\nroll: ");
+  builder.append((int)Gdx.input.getRoll());
+  return builder.toString();
+}

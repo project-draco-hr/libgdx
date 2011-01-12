@@ -1,4 +1,9 @@
 {
   super.onCreate(savedInstanceState);
-  setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,GdxTests.getNames()));
+  ArrayList<String> testNames=new ArrayList<String>();
+  for (  String name : GdxTests.getNames()) {
+    testNames.add(name);
+  }
+  testNames.add(MatrixTest.class.getSimpleName());
+  setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,testNames.toArray(new String[0])));
 }

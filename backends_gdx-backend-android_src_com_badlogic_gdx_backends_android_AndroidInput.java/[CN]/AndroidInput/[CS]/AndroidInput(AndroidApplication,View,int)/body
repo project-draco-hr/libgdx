@@ -22,4 +22,14 @@
  else   touchHandler=new AndroidSingleTouchHandler();
   hasMultitouch=touchHandler instanceof AndroidMultiTouchHandler && ((AndroidMultiTouchHandler)touchHandler).supportsMultitouch(activity);
   vibrator=(Vibrator)activity.getSystemService(Context.VIBRATOR_SERVICE);
+  Sensor sensor=manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+  if (sensor != null) {
+    compassAvailable=accelerometerAvailable;
+    if (compassAvailable) {
+      manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_GAME);
+    }
+  }
+ else {
+    compassAvailable=false;
+  }
 }
