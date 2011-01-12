@@ -1,0 +1,13 @@
+{
+  int firstgid=0;
+  int lastgid;
+  for (  TileSet set : map.tileSets) {
+    TileSetLayout layout=new TileSetLayout(set,imageDirHandle);
+    firstgid=set.firstgid;
+    lastgid=firstgid + layout.numTiles - 1;
+    if (tileNum >= firstgid && tileNum <= lastgid) {
+      return layout;
+    }
+  }
+  return null;
+}
