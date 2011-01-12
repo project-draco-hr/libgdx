@@ -1,0 +1,19 @@
+{
+  cam.getPosition().add(camDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(60));
+  if (cam.getPosition().x < 0) {
+    cam.getPosition().x=0;
+    camDirection.x=1;
+  }
+  if (cam.getPosition().x > maxCamPosition.x) {
+    cam.getPosition().x=maxCamPosition.x;
+    camDirection.x=-1;
+  }
+  if (cam.getPosition().y < 0) {
+    cam.getPosition().y=0;
+    camDirection.y=1;
+  }
+  if (cam.getPosition().y > maxCamPosition.y) {
+    cam.getPosition().y=maxCamPosition.y;
+    camDirection.y=-1;
+  }
+}

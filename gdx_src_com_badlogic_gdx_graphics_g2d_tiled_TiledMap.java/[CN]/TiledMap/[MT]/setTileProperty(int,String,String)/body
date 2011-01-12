@@ -1,0 +1,12 @@
+{
+  for (  TileProperty tp : tileProperties) {
+    if (tp.id == id) {
+      tp.propertyMap.put(name,value);
+      return;
+    }
+  }
+  TileProperty tempProperty=new TileProperty();
+  tempProperty.id=id;
+  tempProperty.propertyMap.put(name,value);
+  tileProperties.add(tempProperty);
+}

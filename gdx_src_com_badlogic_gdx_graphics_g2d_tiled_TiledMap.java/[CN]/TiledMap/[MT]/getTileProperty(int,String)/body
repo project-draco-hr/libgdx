@@ -1,0 +1,8 @@
+{
+  for (  TileProperty tp : tileProperties) {
+    if (tp.id == id) {
+      return tp.propertyMap.get(name);
+    }
+  }
+  return null;
+}

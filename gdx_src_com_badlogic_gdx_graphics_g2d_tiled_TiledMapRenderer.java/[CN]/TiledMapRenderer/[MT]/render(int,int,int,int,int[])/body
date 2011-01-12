@@ -1,0 +1,25 @@
+{
+  if (x > pixelsPerMapX || y > pixelsPerMapY)   return;
+  initialRow=(y - overdrawY) / (tilesPerBlockY * tileHeight);
+  initialRow=(initialRow > 0) ? initialRow : 0;
+  initialCol=(x - overdrawX) / (tilesPerBlockX * tileWidth);
+  initialCol=(initialCol > 0) ? initialCol : 0;
+  lastRow=(y + height + overdrawY) / (tilesPerBlockY * tileHeight);
+  lastRow=(lastRow < blocksPerMapY) ? lastRow : blocksPerMapY - 1;
+  lastCol=(x + width + overdrawX) / (tilesPerBlockX * tileWidth);
+  lastCol=(lastCol < blocksPerMapX) ? lastCol : blocksPerMapX - 1;
+  Gdx.gl.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
+  cache.begin();
+  for (currentRow=initialRow; currentRow <= lastRow; currentRow++) {
+    for (currentCol=initialCol; currentCol <= lastCol; currentCol++) {
+      for (currentLayer=0; currentLayer < layers.length; currentLayer++) {
+        Gdx.gl.glDisable(GL10.GL_BLEND);
+        cache.draw(normalCacheId[layers[currentLayer]][currentRow][currentCol]);
+        Gdx.gl.glEnable(GL10.GL_BLEND);
+        cache.draw(blendedCacheId[layers[currentLayer]][currentRow][currentCol]);
+      }
+    }
+  }
+  cache.end();
+  Gdx.gl.glDisable(GL10.GL_BLEND);
+}

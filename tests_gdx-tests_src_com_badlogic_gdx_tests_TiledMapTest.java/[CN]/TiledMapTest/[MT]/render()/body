@@ -1,0 +1,12 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  cam.update();
+  if (automove) {
+    updateCameraPosition();
+  }
+  tiledMapRenderer.getProjectionMatrix().set(cam.getCombinedMatrix());
+  tiledMapRenderer.render((int)cam.getScreenToWorldX(0),tiledMapRenderer.getMapHeightPixels() - (int)cam.getScreenToWorldY(0),Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),layersList);
+  spriteBatch.begin();
+  font.draw(spriteBatch,"FPS: " + Gdx.graphics.getFramesPerSecond(),20,20);
+  spriteBatch.end();
+}

@@ -1,0 +1,34 @@
+{
+  int i;
+  long startTime, endTime;
+  font=new BitmapFont();
+  font.setColor(Color.RED);
+  spriteBatch=new SpriteBatch();
+  FileHandle mapHandle=Gdx.files.internal("data/tiledmap/perspective walls.tmx");
+  FileHandle packfile=Gdx.files.internal("data/tiledmap/perspective walls packfile");
+  FileHandle baseDir=Gdx.files.internal("data/tiledmap");
+  startTime=System.currentTimeMillis();
+  map=TiledLoader.createMap(mapHandle);
+  endTime=System.currentTimeMillis();
+  System.out.println("Loaded map in " + (endTime - startTime) + "mS");
+  atlas=new TileAtlas(map,packfile,baseDir);
+  int blockWidth=SCREEN_WIDTH / 3;
+  int blockHeight=SCREEN_HEIGHT / 3;
+  startTime=System.currentTimeMillis();
+  tiledMapRenderer=new TiledMapRenderer(map,atlas,blockWidth,blockHeight);
+  endTime=System.currentTimeMillis();
+  System.out.println("Created cache in " + (endTime - startTime) + "mS");
+  for (  TiledObjectGroup group : map.objectGroups) {
+    for (    TiledObject object : group.objects) {
+      System.out.println("Object " + object.name + " x,y = "+ object.x+ ","+ object.y+ " width,height = "+ object.width+ ","+ object.height);
+    }
+  }
+  cam=new OrthographicCamera();
+  cam.setViewport(SCREEN_WIDTH,SCREEN_HEIGHT);
+  cam.getPosition().set(tiledMapRenderer.getMapWidthPixels() / 2,tiledMapRenderer.getMapHeightPixels() / 2,0);
+  camController=new OrthoCamController(cam);
+  Gdx.input.setInputProcessor(camController);
+  float maxX=tiledMapRenderer.getMapWidthPixels();
+  float maxY=tiledMapRenderer.getMapHeightPixels();
+  maxCamPosition.set(maxX,maxY);
+}

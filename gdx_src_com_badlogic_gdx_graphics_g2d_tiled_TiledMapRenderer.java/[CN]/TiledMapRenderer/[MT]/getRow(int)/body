@@ -1,0 +1,5 @@
+{
+  if (worldY < 0)   return 0;
+  if (worldY > pixelsPerMapY)   return tileHeight - 1;
+  return worldY / tileHeight;
+}
