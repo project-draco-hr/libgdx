@@ -1,0 +1,4 @@
+{
+  if (index >= array.size)   throw new NoSuchElementException(String.valueOf(index));
+  return array.items[index++];
+}

@@ -6,7 +6,7 @@
   V evictedValue;
   int i=0, pushIterations=this.pushIterations;
   do {
-switch (random.nextInt(3)) {
+switch (MathUtils.random(2)) {
 case 0:
       evictedKey=key1;
     evictedValue=valueTable[index1];

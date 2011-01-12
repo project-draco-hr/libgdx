@@ -1,7 +1,7 @@
 {
   if (initialCapacity < 0)   throw new IllegalArgumentException("initialCapacity must be >= 0: " + initialCapacity);
   if (capacity > 1 << 30)   throw new IllegalArgumentException("initialCapacity is too large: " + initialCapacity);
-  capacity=nextPowerOfTwo(initialCapacity);
+  capacity=MathUtils.nextPowerOfTwo(initialCapacity);
   if (loadFactor <= 0)   throw new IllegalArgumentException("loadFactor must be > 0: " + loadFactor);
   this.loadFactor=loadFactor;
   threshold=(int)(capacity * loadFactor);
