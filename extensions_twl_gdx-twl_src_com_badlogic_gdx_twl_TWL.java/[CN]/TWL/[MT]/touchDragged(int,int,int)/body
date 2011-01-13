@@ -1,5 +1,4 @@
 {
-  if (pointer != 0)   return false;
   if (mouseDown && !lastPressConsumed) {
     ignoreMouse=true;
     gui.clearMouseState();

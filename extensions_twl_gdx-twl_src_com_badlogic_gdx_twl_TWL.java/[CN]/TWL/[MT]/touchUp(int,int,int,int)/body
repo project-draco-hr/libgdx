@@ -1,11 +1,12 @@
 {
-  if (pointer != 0)   return false;
   mouseDown=false;
   if (ignoreMouse) {
     ignoreMouse=false;
     return false;
   }
   boolean handled=gui.handleMouse(x,y,0,false);
-  gui.handleMouse(-9999,-9999,-1,false);
+  if (Gdx.app.getType() == ApplicationType.Android) {
+    gui.handleMouse(-9999,-9999,-1,false);
+  }
   return handled;
 }
