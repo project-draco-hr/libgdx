@@ -1,5 +1,6 @@
 {
-  mName=name;
-  mKeyframes=new Keyframe[frames];
-  mLength=length;
+  this.name=name;
+  this.keyframes=new Keyframe[frames];
+  this.length=length;
+  this.refs=1;
 }

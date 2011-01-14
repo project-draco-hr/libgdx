@@ -1,0 +1,8 @@
+{
+  for (  String key : animationRefs) {
+    KeyframeAnimation anim=animations.get(key);
+    if (anim.removeRef() == 0) {
+      animations.remove(key);
+    }
+  }
+}

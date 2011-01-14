@@ -1,8 +1,8 @@
 {
-  Keyframe kf=mAnimator.getInterpolatedKeyframe();
-  pos.set(kf.TaggedJointPos[tagIndex]);
-  orient.x=kf.TaggedJoint[tagIndex].x;
-  orient.y=kf.TaggedJoint[tagIndex].y;
-  orient.z=kf.TaggedJoint[tagIndex].z;
-  orient.w=kf.TaggedJoint[tagIndex].w;
+  Keyframe kf=animator.getInterpolatedKeyframe();
+  pos.set(kf.taggedJointPos[tagIndex]);
+  orient.x=kf.taggedJoint[tagIndex].x;
+  orient.y=kf.taggedJoint[tagIndex].y;
+  orient.z=kf.taggedJoint[tagIndex].z;
+  orient.w=kf.taggedJoint[tagIndex].w;
 }

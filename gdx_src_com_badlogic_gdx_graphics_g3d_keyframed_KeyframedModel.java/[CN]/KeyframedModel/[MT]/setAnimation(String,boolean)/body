@@ -1,4 +1,4 @@
 {
-  KeyframeAnimation anim=mAnimations.get(animKey);
-  mAnimator.setAnimation(anim,loop);
+  KeyframeAnimation anim=getAnimation(animKey);
+  animator.setAnimation(anim,loop);
 }
