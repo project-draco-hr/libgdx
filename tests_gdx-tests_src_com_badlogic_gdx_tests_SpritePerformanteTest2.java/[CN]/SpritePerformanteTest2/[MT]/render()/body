@@ -4,15 +4,8 @@
   float scale=timePassed > 0.5 ? 1 - timePassed / 2 : 0.5f + timePassed / 2;
   batch.begin();
   batch.disableBlending();
-  for (int i=0; i < SPRITES / 2; i++) {
-    sprites[i].setRotation(sprites[i].getRotation() + elapsed * 45);
-    sprites[i].setScale(scale,scale);
-    sprites[i].draw(batch);
-  }
-  batch.end();
-  batch.begin();
-  batch.enableBlending();
-  for (int i=SPRITES / 2; i < SPRITES; i++) {
+  for (int i=0; i < SPRITES; i++) {
+    if (i == SPRITES / 2)     batch.enableBlending();
     sprites[i].setRotation(sprites[i].getRotation() + elapsed * 45);
     sprites[i].setScale(scale,scale);
     sprites[i].draw(batch);
