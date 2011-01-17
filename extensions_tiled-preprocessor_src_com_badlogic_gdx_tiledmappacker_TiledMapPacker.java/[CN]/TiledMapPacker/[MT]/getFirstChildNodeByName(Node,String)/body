@@ -5,6 +5,7 @@
       return childNodes.item(i);
     }
   }
-  if (childNodes.item(0) != null)   return parent.insertBefore(parent.getOwnerDocument().createElement(child),childNodes.item(0));
- else   return parent.appendChild(parent.getOwnerDocument().createElement(child));
+  Node newNode=parent.getOwnerDocument().createElement(child);
+  if (childNodes.item(0) != null)   return parent.insertBefore(newNode,childNodes.item(0));
+ else   return parent.appendChild(newNode);
 }

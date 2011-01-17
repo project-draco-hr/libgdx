@@ -1,20 +1,17 @@
 {
   this.tileSet=tileSet;
   image=ImageIO.read(baseDir.child(tileSet.imageName).read());
-  numRows=(image.getHeight() - 2 * tileSet.margin) / (tileSet.tileHeight + tileSet.spacing);
-  numCols=(image.getWidth() - 2 * tileSet.margin) / (tileSet.tileWidth + tileSet.spacing);
-  numTiles=numRows * numCols;
-  imageTilePositions=new Vector2[numTiles];
-  int x=tileSet.margin, y=tileSet.margin, tile=0;
-  for (int row=0; row < numRows; row++) {
-    for (int col=0; col < numCols; col++) {
-      imageTilePositions[tile]=new Vector2(x,y);
+  imageTilePositions=new IntMap<Vector2>();
+  int x, y, tile=0;
+  numRows=0;
+  numCols=0;
+  for (y=tileSet.margin; y < image.getHeight() - tileSet.margin; y+=tileSet.tileHeight + tileSet.spacing) {
+    for (x=tileSet.margin; x < image.getWidth() - tileSet.margin; x+=tileSet.tileWidth + tileSet.spacing) {
+      if (y == tileSet.margin)       numCols++;
+      imageTilePositions.put(tile,new Vector2(x,y));
       tile++;
-      x+=tileSet.tileWidth + tileSet.spacing;
-      if (x >= image.getWidth()) {
-        x=tileSet.margin;
-        y+=tileSet.tileHeight + tileSet.spacing;
-      }
     }
+    numRows++;
   }
+  numTiles=numRows * numCols;
 }
