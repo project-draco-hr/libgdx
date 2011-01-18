@@ -10,5 +10,6 @@ synchronized (this) {
     touchX=event.x;
     touchY=event.y;
     pressedButtons.remove(event.button);
+    if (pressedButtons.size() == 0)     touchDown=false;
   }
 }
