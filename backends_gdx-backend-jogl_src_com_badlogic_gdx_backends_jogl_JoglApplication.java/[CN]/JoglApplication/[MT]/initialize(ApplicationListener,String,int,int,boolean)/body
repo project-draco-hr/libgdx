@@ -2,7 +2,7 @@
   JoglNativesLoader.loadLibraries();
   graphics=new JoglGraphics(listener,title,width,height,useGL20);
   input=new JoglInput(graphics.getCanvas());
-  audio=new JoglAudio();
+  audio=new OpenALAudio();
   files=new JoglFiles();
   Gdx.app=JoglApplication.this;
   Gdx.graphics=JoglApplication.this.getGraphics();
