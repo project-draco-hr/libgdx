@@ -1,6 +1,7 @@
 {
+  LwjglNativesLoader.load();
   graphics=new LwjglGraphics(title,width,height,useGL2);
-  audio=new LwjglAudio();
+  audio=new OpenALAudio();
   files=new LwjglFiles();
   input=new LwjglInput();
   this.listener=listener;

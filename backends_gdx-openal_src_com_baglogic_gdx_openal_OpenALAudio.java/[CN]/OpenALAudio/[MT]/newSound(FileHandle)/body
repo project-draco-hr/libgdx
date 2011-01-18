@@ -1,10 +1,13 @@
 {
   String extension=file.extension();
   if (extension.equals("ogg")) {
-    return new OggSound(this,file);
+    return new Ogg.Sound(this,file);
   }
  else   if (extension.equals("mp3")) {
-    return new Mp3Sound(this,file);
+    return new Mp3.Sound(this,file);
+  }
+ else   if (extension.equals("wav")) {
+    return new Wav.Sound(this,file);
   }
   throw new GdxRuntimeException("Unknown file extension for sound: " + file);
 }

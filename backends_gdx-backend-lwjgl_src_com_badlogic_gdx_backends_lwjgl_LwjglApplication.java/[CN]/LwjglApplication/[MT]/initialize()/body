@@ -1,5 +1,4 @@
 {
-  LwjglNativesLoader.load();
   mainLoopThread=new Thread("LWJGL Application"){
     @SuppressWarnings("synthetic-access") public void run(){
       LwjglApplication.this.mainLoop();

@@ -1,0 +1,9 @@
+{
+  if (input == null)   return;
+  try {
+    input.close();
+  }
+ catch (  IOException ignored) {
+  }
+  input=null;
+}

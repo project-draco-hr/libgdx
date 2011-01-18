@@ -25,6 +25,7 @@
     }
     ((LwjglInput)Gdx.input).processEvents();
     listener.render();
+    audio.update();
     Display.update();
     Display.sync(60);
   }

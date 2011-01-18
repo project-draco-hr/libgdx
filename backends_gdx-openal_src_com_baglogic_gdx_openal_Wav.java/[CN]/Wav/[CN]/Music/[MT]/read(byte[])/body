@@ -1,0 +1,14 @@
+{
+  if (input == null) {
+    input=new WavInputStream(file);
+    setup(input.channels,input.sampleRate);
+  }
+  try {
+    int read=input.read(buffer);
+    System.out.println(read);
+    return read;
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading WAV file: " + file,ex);
+  }
+}

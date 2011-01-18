@@ -1,9 +1,0 @@
-{
-  run=false;
-  try {
-    if (thread != null)     thread.join();
-    if (line != null)     line.close();
-  }
- catch (  InterruptedException e) {
-  }
-}
