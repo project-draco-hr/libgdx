@@ -1,5 +1,5 @@
 {
-  String so=System.getProperty("java.io.tmpdir") + "/" + System.nanoTime()+ library;
+  String so=System.getProperty("java.io.tmpdir") + "/" + (stamped ? System.nanoTime() : "")+ library;
   InputStream in=JoglGraphics.class.getResourceAsStream(package_path + library);
   if (in == null)   throw new RuntimeException("couldn't find " + library + " in jar file.");
   try {
@@ -15,7 +15,7 @@
     System.load(so);
   }
  catch (  FileNotFoundException e) {
-    throw new RuntimeException("couldn't write " + library + " to temporary file "+ so);
+    if (stamped)     throw new RuntimeException("couldn't write " + library + " to temporary file "+ so);
   }
 catch (  IOException e) {
     throw new RuntimeException("couldn't write " + library + " to temporary file "+ so);

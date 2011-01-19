@@ -16,5 +16,5 @@
   if (os.contains("Mac")) {
     library="lib" + resource + ".jnilib";
   }
-  load(package_path,library);
+  load(package_path,library,true);
 }
