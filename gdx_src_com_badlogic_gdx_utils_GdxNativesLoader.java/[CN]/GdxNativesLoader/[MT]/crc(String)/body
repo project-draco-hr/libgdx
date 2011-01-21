@@ -14,9 +14,8 @@
     try {
       input.close();
     }
- catch (    Exception e) {
+ catch (    Exception ignored) {
     }
-    ;
   }
-  return "" + crc.getValue();
+  return Long.toString(crc.getValue());
 }

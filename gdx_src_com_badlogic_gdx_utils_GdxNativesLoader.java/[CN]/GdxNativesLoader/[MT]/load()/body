@@ -13,12 +13,11 @@
     }
     if (nativesLoaded)     return;
   }
-  String arch=System.getProperty("os.arch");
-  String os=System.getProperty("os.name");
-  if (!arch.equals("amd64") || os.contains("Mac")) {
+  if (!is64Bit || isMac) {
     System.loadLibrary("gdx");
   }
  else {
     System.loadLibrary("gdx-64");
   }
+  nativesLoaded=true;
 }
