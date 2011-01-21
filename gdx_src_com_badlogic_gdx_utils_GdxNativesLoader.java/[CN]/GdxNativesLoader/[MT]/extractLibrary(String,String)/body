@@ -1,6 +1,6 @@
 {
+  String nativeFileName=is64Bit ? native64 : native32;
   try {
-    String nativeFileName=is64Bit ? native64 : native32;
     InputStream input=GdxNativesLoader.class.getResourceAsStream("/" + nativeFileName);
     if (input == null)     return null;
     nativesDir.mkdirs();
@@ -17,7 +17,7 @@
     return nativeFile.getAbsolutePath();
   }
  catch (  IOException ex) {
-    ex.printStackTrace();
+    new GdxRuntimeException("Error extracting native library: " + nativeFileName,ex).printStackTrace();
     return null;
   }
 }
