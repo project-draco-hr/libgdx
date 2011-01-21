@@ -5,7 +5,9 @@
   }
   actions.get(currAction).act(delta);
   if (actions.get(currAction).isDone()) {
-    actions.get(currAction).finish();
+    OnActionCompleted listener=actions.get(currAction).getCompletionListener();
+    if (listener != null)     listener.completed(actions.get(currAction));
+    actions.get(currAction).setCompletionListener(null);
     currAction++;
     if (currAction < actions.size())     actions.get(currAction).setTarget(target);
   }
