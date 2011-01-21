@@ -1,0 +1,24 @@
+{
+  if (nativesLoaded)   return;
+  String vm=System.getProperty("java.vm.name");
+  if (vm == null || !vm.contains("Dalvik")) {
+    if (isWindows) {
+      nativesLoaded=loadLibrary("gdx.dll","gdx64.dll");
+    }
+ else     if (isMac) {
+      nativesLoaded=loadLibrary("libgdx.dylib","libgdx.dylib");
+    }
+ else     if (isLinux) {
+      nativesLoaded=loadLibrary("libgdx.so","libgdx-64.so");
+    }
+    if (nativesLoaded)     return;
+  }
+  String arch=System.getProperty("os.arch");
+  String os=System.getProperty("os.name");
+  if (!arch.equals("amd64") || os.contains("Mac")) {
+    System.loadLibrary("gdx");
+  }
+ else {
+    System.loadLibrary("gdx-64");
+  }
+}

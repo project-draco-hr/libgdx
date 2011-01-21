@@ -1,12 +1,18 @@
 {
-  Version.loadLibrary();
+  GdxNativesLoader.load();
   if (!load)   return;
-  String os=System.getProperty("os.name");
-  String arch=System.getProperty("os.arch");
-  boolean is64Bit=false;
-  if (arch.equals("amd64"))   is64Bit=true;
-  if (os.contains("Windows"))   loadLibrariesWindows(is64Bit);
-  if (os.contains("Linux"))   loadLibrariesLinux(is64Bit);
-  if (os.contains("Mac"))   loadLibrariesMac();
-  System.setProperty("org.lwjgl.librarypath",new File(System.getProperty("java.io.tmpdir")).getAbsolutePath());
+  if (isWindows) {
+    extractLibrary("OpenAL32.dll","OpenAL64.dll");
+    extractLibrary("lwjgl.dll","lwjgl64.dll");
+  }
+ else   if (isMac) {
+    extractLibrary("openal.dylib","openal.dylib");
+    extractLibrary("liblwjgl.jnilib","liblwjgl.jnilib");
+  }
+ else   if (isLinux) {
+    extractLibrary("libopenal.so","libopenal64.so");
+    extractLibrary("liblwjgl.so","liblwjgl64.so");
+  }
+  System.setProperty("org.lwjgl.librarypath",nativesDir.getAbsolutePath());
+  load=false;
 }

@@ -1,4 +1,10 @@
 {
+  registerSound("ogg",Ogg.Sound.class);
+  registerMusic("ogg",Ogg.Music.class);
+  registerSound("wav",Wav.Sound.class);
+  registerMusic("wav",Wav.Music.class);
+  registerSound("mp3",Mp3.Sound.class);
+  registerMusic("mp3",Mp3.Music.class);
   try {
     AL.create();
   }

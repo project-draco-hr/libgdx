@@ -1,4 +1,0 @@
-{
-  String[] libNames=new String[]{"libopenal.dylib","liblwjgl.jnilib"};
-  for (  String libName : libNames)   loadLibrary(libName,"/native/macosx/",System.getProperty("java.io.tmpdir") + File.separator);
-}

@@ -1,5 +1,5 @@
 {
-  JoglNativesLoader.loadLibraries();
+  JoglNativesLoader.load();
   graphics=new JoglGraphics(listener,title,width,height,useGL20);
   input=new JoglInput(graphics.getCanvas());
   audio=new OpenALAudio();

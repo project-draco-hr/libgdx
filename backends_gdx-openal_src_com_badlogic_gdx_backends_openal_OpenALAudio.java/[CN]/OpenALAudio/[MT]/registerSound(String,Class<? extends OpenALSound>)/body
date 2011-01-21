@@ -1,0 +1,5 @@
+{
+  if (extension == null)   throw new IllegalArgumentException("extension cannot be null.");
+  if (soundClass == null)   throw new IllegalArgumentException("soundClass cannot be null.");
+  extensionToSoundClass.put(extension,soundClass);
+}

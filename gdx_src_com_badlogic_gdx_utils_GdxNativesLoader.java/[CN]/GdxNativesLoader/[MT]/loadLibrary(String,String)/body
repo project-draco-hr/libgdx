@@ -1,0 +1,5 @@
+{
+  String path=extractLibrary(nativeFile32,nativeFile64);
+  if (path != null)   System.load(path);
+  return path != null;
+}

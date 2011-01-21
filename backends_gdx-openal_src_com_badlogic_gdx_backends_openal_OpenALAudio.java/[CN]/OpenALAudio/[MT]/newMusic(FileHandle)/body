@@ -1,13 +1,11 @@
 {
-  String extension=file.extension();
-  if (extension.equals("ogg")) {
-    return new Ogg.Music(this,file);
+  if (file == null)   throw new IllegalArgumentException("file cannot be null.");
+  Class<? extends OpenALMusic> musicClass=extensionToMusicClass.get(file.extension());
+  if (musicClass == null)   throw new GdxRuntimeException("Unknown file extension for music: " + file);
+  try {
+    return musicClass.getConstructor(new Class[]{OpenALAudio.class,FileHandle.class}).newInstance(this,file);
   }
- else   if (extension.equals("mp3")) {
-    return new Mp3.Music(this,file);
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error creating music " + musicClass.getName() + " for file: "+ file);
   }
- else   if (extension.equals("wav")) {
-    return new Wav.Music(this,file);
-  }
-  throw new GdxRuntimeException("Unknown file extension for music: " + file);
 }
