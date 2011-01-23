@@ -1,0 +1,10 @@
+{
+  if (Gdx.input.justTouched()) {
+    guiCam.getScreenToWorld(Gdx.input.getX(),Gdx.input.getY(),touchPoint);
+    if (OverlapTester.pointInRectangle(nextBounds,touchPoint)) {
+      Assets.playSound(Assets.clickSound);
+      game.setScreen(new HelpScreen3(game));
+      return;
+    }
+  }
+}

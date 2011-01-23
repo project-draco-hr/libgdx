@@ -1,0 +1,5 @@
+{
+  if (Gdx.input.justTouched()) {
+    game.setScreen(new MainMenuScreen(game));
+  }
+}

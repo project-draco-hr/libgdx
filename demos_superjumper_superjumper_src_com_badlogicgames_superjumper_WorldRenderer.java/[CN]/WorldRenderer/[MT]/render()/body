@@ -1,0 +1,7 @@
+{
+  if (world.bob.position.y > cam.getPosition().y)   cam.getPosition().y=world.bob.position.y;
+  cam.update();
+  batch.setProjectionMatrix(cam.getCombinedMatrix());
+  renderBackground();
+  renderObjects();
+}

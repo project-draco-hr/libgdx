@@ -1,0 +1,17 @@
+{
+  if (bob.velocity.y > 0)   return;
+  int len=platforms.size();
+  for (int i=0; i < len; i++) {
+    Platform platform=platforms.get(i);
+    if (bob.position.y > platform.position.y) {
+      if (OverlapTester.overlapRectangles(bob.bounds,platform.bounds)) {
+        bob.hitPlatform();
+        listener.jump();
+        if (rand.nextFloat() > 0.5f) {
+          platform.pulverize();
+        }
+        break;
+      }
+    }
+  }
+}

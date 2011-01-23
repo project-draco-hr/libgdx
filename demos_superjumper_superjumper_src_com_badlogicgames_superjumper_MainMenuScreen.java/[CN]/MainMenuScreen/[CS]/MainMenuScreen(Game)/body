@@ -1,0 +1,12 @@
+{
+  super(game);
+  guiCam=new OrthographicCamera();
+  guiCam.setViewport(320,480);
+  guiCam.getPosition().set(320 / 2,480 / 2,0);
+  batcher=new SpriteBatch();
+  soundBounds=new Rectangle(0,0,64,64);
+  playBounds=new Rectangle(160 - 150,200 + 18,300,36);
+  highscoresBounds=new Rectangle(160 - 150,200 - 18,300,36);
+  helpBounds=new Rectangle(160 - 150,200 - 18 - 36,300,36);
+  touchPoint=new Vector2();
+}

@@ -1,0 +1,7 @@
+{
+  int len=squirrels.size();
+  for (int i=0; i < len; i++) {
+    Squirrel squirrel=squirrels.get(i);
+    squirrel.update(deltaTime);
+  }
+}

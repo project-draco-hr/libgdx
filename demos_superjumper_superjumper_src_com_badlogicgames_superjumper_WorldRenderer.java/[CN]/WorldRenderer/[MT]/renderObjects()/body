@@ -1,0 +1,10 @@
+{
+  batch.enableBlending();
+  batch.begin();
+  renderBob();
+  renderPlatforms();
+  renderItems();
+  renderSquirrels();
+  renderCastle();
+  batch.end();
+}

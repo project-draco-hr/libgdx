@@ -1,0 +1,5 @@
+{
+  if (heightSoFar - 7.5f > bob.position.y) {
+    state=WORLD_STATE_GAME_OVER;
+  }
+}

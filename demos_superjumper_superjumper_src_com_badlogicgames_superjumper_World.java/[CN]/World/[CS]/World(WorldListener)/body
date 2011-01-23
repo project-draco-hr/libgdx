@@ -1,0 +1,13 @@
+{
+  this.bob=new Bob(5,1);
+  this.platforms=new ArrayList<Platform>();
+  this.springs=new ArrayList<Spring>();
+  this.squirrels=new ArrayList<Squirrel>();
+  this.coins=new ArrayList<Coin>();
+  this.listener=listener;
+  rand=new Random();
+  generateLevel();
+  this.heightSoFar=0;
+  this.score=0;
+  this.state=WORLD_STATE_RUNNING;
+}

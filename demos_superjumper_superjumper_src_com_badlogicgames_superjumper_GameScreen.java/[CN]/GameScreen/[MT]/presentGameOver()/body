@@ -1,0 +1,5 @@
+{
+  batcher.draw(Assets.gameOver,160 - 160 / 2,240 - 96 / 2,160,96);
+  float scoreWidth=Assets.font.getBounds(scoreString).width;
+  Assets.font.draw(batcher,scoreString,160 - scoreWidth / 2,480 - 20);
+}

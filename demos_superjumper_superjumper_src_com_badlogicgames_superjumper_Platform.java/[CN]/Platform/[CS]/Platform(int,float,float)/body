@@ -1,0 +1,9 @@
+{
+  super(x,y,PLATFORM_WIDTH,PLATFORM_HEIGHT);
+  this.type=type;
+  this.state=PLATFORM_STATE_NORMAL;
+  this.stateTime=0;
+  if (type == PLATFORM_TYPE_MOVING) {
+    velocity.x=PLATFORM_VELOCITY;
+  }
+}

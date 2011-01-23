@@ -1,0 +1,15 @@
+{
+  super(game);
+  guiCam=new OrthographicCamera();
+  guiCam.setViewport(320,480);
+  guiCam.getPosition().set(320 / 2,480 / 2,0);
+  backBounds=new Rectangle(0,0,64,64);
+  touchPoint=new Vector2();
+  batcher=new SpriteBatch();
+  highScores=new String[5];
+  for (int i=0; i < 5; i++) {
+    highScores[i]=(i + 1) + ". " + Settings.highscores[i];
+    xOffset=Math.max(Assets.font.getBounds(highScores[i]).width,xOffset);
+  }
+  xOffset=160 - xOffset / 2 + Assets.font.getSpaceWidth() / 2;
+}

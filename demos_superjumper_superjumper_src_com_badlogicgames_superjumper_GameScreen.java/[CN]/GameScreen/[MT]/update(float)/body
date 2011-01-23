@@ -1,0 +1,20 @@
+{
+  if (deltaTime > 0.1f)   deltaTime=0.1f;
+switch (state) {
+case GAME_READY:
+    updateReady();
+  break;
+case GAME_RUNNING:
+updateRunning(deltaTime);
+break;
+case GAME_PAUSED:
+updatePaused();
+break;
+case GAME_LEVEL_END:
+updateLevelEnd();
+break;
+case GAME_OVER:
+updateGameOver();
+break;
+}
+}

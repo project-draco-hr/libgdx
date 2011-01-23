@@ -1,0 +1,8 @@
+{
+  updateBob(deltaTime,accelX);
+  updatePlatforms(deltaTime);
+  updateSquirrels(deltaTime);
+  updateCoins(deltaTime);
+  if (bob.state != Bob.BOB_STATE_HIT)   checkCollisions();
+  checkGameOver();
+}

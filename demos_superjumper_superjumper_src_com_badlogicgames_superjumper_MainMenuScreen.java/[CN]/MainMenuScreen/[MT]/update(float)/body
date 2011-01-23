@@ -1,0 +1,26 @@
+{
+  if (Gdx.input.justTouched()) {
+    guiCam.getScreenToWorld(Gdx.input.getX(),Gdx.input.getY(),touchPoint);
+    if (OverlapTester.pointInRectangle(playBounds,touchPoint)) {
+      Assets.playSound(Assets.clickSound);
+      game.setScreen(new GameScreen(game));
+      return;
+    }
+    if (OverlapTester.pointInRectangle(highscoresBounds,touchPoint)) {
+      Assets.playSound(Assets.clickSound);
+      game.setScreen(new HighscoresScreen(game));
+      return;
+    }
+    if (OverlapTester.pointInRectangle(helpBounds,touchPoint)) {
+      Assets.playSound(Assets.clickSound);
+      game.setScreen(new HelpScreen(game));
+      return;
+    }
+    if (OverlapTester.pointInRectangle(soundBounds,touchPoint)) {
+      Assets.playSound(Assets.clickSound);
+      Settings.soundEnabled=!Settings.soundEnabled;
+      if (Settings.soundEnabled)       Assets.music.play();
+ else       Assets.music.pause();
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  BufferedWriter out=null;
+  try {
+    out=new BufferedWriter(new OutputStreamWriter(Gdx.files.external(file).write(false)));
+    out.write(Boolean.toString(soundEnabled));
+    for (int i=0; i < 5; i++) {
+      out.write(Integer.toString(highscores[i]));
+    }
+  }
+ catch (  IOException e) {
+  }
+ finally {
+    try {
+      if (out != null)       out.close();
+    }
+ catch (    IOException e) {
+    }
+  }
+}

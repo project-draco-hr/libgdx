@@ -1,0 +1,7 @@
+{
+  int len=coins.size();
+  for (int i=0; i < len; i++) {
+    Coin coin=coins.get(i);
+    coin.update(deltaTime);
+  }
+}
