@@ -8,13 +8,43 @@ switch (action) {
 case ESLoop.ES_MOUSE_DOWN:
       event.type=TouchEvent.TOUCH_DOWN;
     mousePressed=true;
-  break;
+  justTouched=true;
+if ((button & ESLoop.ES_MOUSE_LBUTTON) != 0) {
+  pressedButtons.add(Buttons.LEFT);
+  event.button=Buttons.LEFT;
+}
+if ((button & ESLoop.ES_MOUSE_RBUTTON) != 0) {
+pressedButtons.add(Buttons.RIGHT);
+event.button=Buttons.RIGHT;
+}
+if ((button & ESLoop.ES_MOUSE_MBUTTON) != 0) {
+pressedButtons.add(Buttons.MIDDLE);
+event.button=Buttons.MIDDLE;
+}
+break;
 case ESLoop.ES_MOUSE_UP:
 event.type=TouchEvent.TOUCH_UP;
-mousePressed=true;
+mousePressed=false;
+if ((button & ESLoop.ES_MOUSE_LBUTTON) != 0) {
+pressedButtons.remove(Buttons.LEFT);
+event.button=Buttons.LEFT;
+}
+if ((button & ESLoop.ES_MOUSE_RBUTTON) != 0) {
+pressedButtons.remove(Buttons.RIGHT);
+event.button=Buttons.RIGHT;
+}
+if ((button & ESLoop.ES_MOUSE_MBUTTON) != 0) {
+pressedButtons.remove(Buttons.MIDDLE);
+event.button=Buttons.MIDDLE;
+}
 break;
 case ESLoop.ES_MOUSE_MOVE:
-event.type=TouchEvent.TOUCH_DRAGGED;
+if (!mousePressed) event.type=TouchEvent.TOUCH_MOVED;
+ else event.type=TouchEvent.TOUCH_DRAGGED;
+break;
+case ESLoop.ES_MOUSE_WHEEL:
+event.type=TouchEvent.TOUCH_SCROLL;
+event.scrollAmount=-(int)Math.signum(x);
 break;
 }
 touchEvents.add(event);
