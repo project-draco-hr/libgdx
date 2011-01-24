@@ -3,9 +3,7 @@
     boolean setup=bitstream == null;
     if (setup) {
       bitstream=new Bitstream(file.read());
-      outputBuffer=new OutputBuffer(2,false);
       decoder=new MP3Decoder();
-      decoder.setOutputBuffer(outputBuffer);
     }
     int totalLength=0;
     int minRequiredLength=buffer.length - OutputBuffer.BUFFERSIZE * 2 - 1;
@@ -13,7 +11,10 @@
       Header header=bitstream.readFrame();
       if (header == null)       break;
       if (setup) {
-        setup(outputBuffer.isStereo() ? 2 : 1,header.getSampleRate());
+        int channels=header.mode() == Header.SINGLE_CHANNEL ? 1 : 2;
+        outputBuffer=new OutputBuffer(channels,false);
+        decoder.setOutputBuffer(outputBuffer);
+        setup(channels,header.getSampleRate());
         setup=false;
       }
       try {

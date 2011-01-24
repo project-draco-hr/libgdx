@@ -6,6 +6,6 @@
     return soundClass.getConstructor(new Class[]{OpenALAudio.class,FileHandle.class}).newInstance(this,file);
   }
  catch (  Exception ex) {
-    throw new GdxRuntimeException("Error creating sound " + soundClass.getName() + " for file: "+ file);
+    throw new GdxRuntimeException("Error creating sound " + soundClass.getName() + " for file: "+ file,ex);
   }
 }

@@ -1,7 +1,7 @@
 {
   setLayout(new BorderLayout());
-  final JList list=new JList(GdxTests.getNames());
   final JButton button=new JButton("Run Test");
+  final JList list=new JList(GdxTests.getNames());
   JScrollPane pane=new JScrollPane(list);
   DefaultListSelectionModel m=new DefaultListSelectionModel();
   m.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -13,11 +13,19 @@
     }
   }
 );
+  list.addKeyListener(new KeyAdapter(){
+    public void keyPressed(    KeyEvent e){
+      if (e.getKeyCode() == KeyEvent.VK_ENTER)       button.doClick();
+    }
+  }
+);
+  list.setSelectedValue(Preferences.systemNodeForPackage(GdxTests.class).get("last",null),true);
   button.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
       String testName=(String)list.getSelectedValue();
       GdxTest test=GdxTests.newTest(testName);
       new LwjglApplication(test,testName,480,320,test.needsGL20());
+      Preferences.systemNodeForPackage(GdxTests.class).put("last",testName);
     }
   }
 );
