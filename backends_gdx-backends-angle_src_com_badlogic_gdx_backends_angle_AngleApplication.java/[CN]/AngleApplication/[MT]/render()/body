@@ -1,7 +1,7 @@
 {
+  graphics.updateTime();
   if (!created) {
     listener.create();
-    listener.resume();
     created=true;
   }
   input.processEvents();
