@@ -2,13 +2,15 @@
 synchronized (this) {
     KeyEvent event=usedKeyEvents.obtain();
     event.keyChar=(char)uniCode;
-    event.keyCode=translateKey(key);
+    event.keyCode=toGdxKeyCode(key);
 switch (action) {
 case ESLoop.ES_KEY_DOWN:
       event.type=KeyEvent.KEY_DOWN;
-    break;
+    pressedKeys.add(event.keyCode);
+  break;
 case ESLoop.ES_KEY_UP:
-  event.type=KeyEvent.KEY_UP;
+event.type=KeyEvent.KEY_UP;
+pressedKeys.remove(event.keyCode);
 break;
 case ESLoop.ES_KEY_TYPED:
 event.type=KeyEvent.KEY_TYPED;
