@@ -1,3 +1,10 @@
 {
+  if (bufferID == -1)   return;
+  if (streamID != -1) {
+    alSourceStop(streamID);
+    alSourcei(streamID,AL_BUFFER,0);
+    streamID=-1;
+  }
   alDeleteBuffers(bufferID);
+  bufferID=-1;
 }

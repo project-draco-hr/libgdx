@@ -1,5 +1,12 @@
 {
-  audio.music.removeValue(this,true);
-  stop();
+  if (buffers == null)   return;
+  if (streamID != -1) {
+    reset();
+    audio.music.removeValue(this,true);
+    alSourceStop(streamID);
+    alSourcei(streamID,AL_BUFFER,0);
+    streamID=-1;
+  }
   alDeleteBuffers(buffers);
+  buffers=null;
 }
