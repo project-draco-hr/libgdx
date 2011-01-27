@@ -1,12 +1,14 @@
 {
   if (mCurrentAnim != null) {
-    mAnimPos+=dt;
-    if (mAnimPos > mAnimLen) {
-      if (mAnimLoop) {
-        mAnimPos=0.f;
-      }
- else {
-        mAnimPos=mAnimLen;
+    if (mWrapMode != WrapMode.SingleFrame) {
+      mAnimPos+=dt;
+      if (mAnimPos > mAnimLen) {
+        if (mWrapMode == WrapMode.Loop) {
+          mAnimPos=0.f;
+        }
+ else         if (mWrapMode == WrapMode.Clamp) {
+          mAnimPos=mAnimLen;
+        }
       }
     }
     float animPos=mAnimPos / mAnimLen;
@@ -17,18 +19,21 @@
         mNextFrameIdx=currentFrameIdx + 1;
       }
  else {
-        if (mAnimLoop) {
+switch (mWrapMode) {
+case Loop:
+case SingleFrame:
           mNextFrameIdx=0;
-        }
- else {
-          mNextFrameIdx=currentFrameIdx;
-        }
-      }
-      mFrameDelta=0.f;
-      mCurrentFrameIdx=currentFrameIdx;
-    }
-    mFrameDelta+=dt;
-    setInterpolationFrames();
-    interpolate();
-  }
+        break;
+case Clamp:
+      mNextFrameIdx=currentFrameIdx;
+    break;
+}
+}
+mFrameDelta=0.f;
+mCurrentFrameIdx=currentFrameIdx;
+}
+mFrameDelta+=dt;
+setInterpolationFrames();
+interpolate();
+}
 }

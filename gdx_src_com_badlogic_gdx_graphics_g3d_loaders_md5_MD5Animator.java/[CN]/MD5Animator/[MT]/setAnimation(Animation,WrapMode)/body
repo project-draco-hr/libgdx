@@ -1,5 +1,5 @@
 {
-  super.setAnimation(anim,loop);
+  super.setAnimation(anim,wrapMode);
   if (anim != null) {
     mCurrentFrame=mSkeleton=mNextFrame=((MD5Animation)anim).frames[0];
   }

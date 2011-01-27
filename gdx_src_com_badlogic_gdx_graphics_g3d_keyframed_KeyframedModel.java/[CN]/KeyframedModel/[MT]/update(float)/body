@@ -3,6 +3,7 @@
     animator.update(dt);
     if (animator.hasAnimation()) {
       Keyframe ikf=animator.getInterpolatedKeyframe();
+      if (animator.getCurrentWrapMode() == WrapMode.SingleFrame && ikf.indicesSent)       return;
       for (int i=0; i < numMeshes; i++) {
         target[i].setVertices(ikf.vertices[i]);
         if (!ikf.indicesSent) {

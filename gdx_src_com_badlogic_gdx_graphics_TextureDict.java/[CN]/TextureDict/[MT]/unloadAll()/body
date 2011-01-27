@@ -1,3 +1,6 @@
 {
+  for (  TextureRef tex : sDictionary.values()) {
+    tex.dispose();
+  }
   sDictionary.clear();
 }

@@ -5,4 +5,9 @@
       animations.remove(key);
     }
   }
+  for (  Mesh m : target) {
+    if (m != null) {
+      m.dispose();
+    }
+  }
 }

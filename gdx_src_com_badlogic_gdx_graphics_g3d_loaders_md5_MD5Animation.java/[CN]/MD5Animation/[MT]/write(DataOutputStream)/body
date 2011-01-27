@@ -1,0 +1,18 @@
+{
+  out.writeUTF(name);
+  out.writeInt(frameRate);
+  out.writeFloat(secondsPerFrame);
+  out.writeInt(frames.length);
+  for (int i=0; i < frames.length; i++) {
+    frames[i].write(out);
+  }
+  out.writeInt(bounds.length);
+  for (int i=0; i < bounds.length; i++) {
+    out.writeFloat(bounds[i].min.x);
+    out.writeFloat(bounds[i].min.y);
+    out.writeFloat(bounds[i].min.z);
+    out.writeFloat(bounds[i].max.x);
+    out.writeFloat(bounds[i].max.y);
+    out.writeFloat(bounds[i].max.z);
+  }
+}

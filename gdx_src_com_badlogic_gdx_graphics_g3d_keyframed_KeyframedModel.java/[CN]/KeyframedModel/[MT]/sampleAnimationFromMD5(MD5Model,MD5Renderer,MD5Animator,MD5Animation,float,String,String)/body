@@ -17,11 +17,11 @@
     cached=true;
   }
   animationRefs.add(key);
-  md5animator.setAnimation(md5animation,false);
+  md5animator.setAnimation(md5animation,WrapMode.Clamp);
   float len=md5animation.frames.length * md5animation.secondsPerFrame;
   int numSamples=(int)(len / sampleRate) + 1;
   if (!cached) {
-    a=new KeyframeAnimation(md5animation.name,numSamples,len);
+    a=new KeyframeAnimation(md5animation.name,numSamples,len,sampleRate);
     animations.put(key,a);
   }
   md5animator.update(0.1f);
@@ -89,4 +89,5 @@
   }
  else {
   }
+  return a;
 }

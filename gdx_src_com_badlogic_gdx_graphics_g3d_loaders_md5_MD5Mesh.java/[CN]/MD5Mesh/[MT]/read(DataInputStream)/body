@@ -1,0 +1,20 @@
+{
+  shader=in.readUTF();
+  numVertices=in.readInt();
+  numWeights=in.readInt();
+  numTriangles=in.readInt();
+  floatsPerVertex=in.readInt();
+  floatsPerWeight=in.readInt();
+  vertices=new float[numVertices * floatsPerVertex];
+  indices=new short[numTriangles * 3];
+  weights=new float[numWeights * floatsPerWeight];
+  for (int i=0; i < vertices.length; i++) {
+    vertices[i]=in.readFloat();
+  }
+  for (int i=0; i < indices.length; i++) {
+    indices[i]=in.readShort();
+  }
+  for (int i=0; i < weights.length; i++) {
+    weights[i]=in.readFloat();
+  }
+}
