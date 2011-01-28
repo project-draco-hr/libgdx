@@ -1,5 +1,0 @@
-{
-  Bitmap bitmap=BitmapFactory.decodeStream(in);
-  if (bitmap == null)   throw new GdxRuntimeException("Couldn't load Pixmap from InputStream");
-  return new AndroidPixmap(bitmap);
-}

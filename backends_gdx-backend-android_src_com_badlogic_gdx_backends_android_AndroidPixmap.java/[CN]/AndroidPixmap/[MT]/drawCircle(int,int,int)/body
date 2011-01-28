@@ -1,6 +1,0 @@
-{
-  if (canvas == null)   return;
-  paint.setStyle(Style.STROKE);
-  canvas.drawCircle(x + radius,y + radius,radius,paint);
-  paint.setStyle(Style.FILL);
-}

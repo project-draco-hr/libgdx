@@ -1,0 +1,12 @@
+{
+  this.isManaged=false;
+  this.isMipMap=false;
+  this.file=null;
+  this.textureData=null;
+  glHandle=createGLHandle();
+  Pixmap pixmap=new Pixmap(width,height,format);
+  uploadImageData(pixmap);
+  pixmap.dispose();
+  setFilter(minFilter,magFilter);
+  setWrap(uWrap,vWrap);
+}

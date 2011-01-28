@@ -3,7 +3,7 @@
   logConfig(config);
   updatePpi();
   Mesh.invalidateAllMeshes();
-  AndroidTexture.invalidateAllTextures();
+  Texture.invalidateAllTextures();
   ShaderProgram.invalidateAllShaderPrograms();
   FrameBuffer.invalidateAllFrameBuffers();
   Display display=app.getWindowManager().getDefaultDisplay();

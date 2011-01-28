@@ -9,7 +9,6 @@
   mesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.Color,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
   mesh.setVertices(new float[]{-0.5f,-0.5f,0,1,1,1,1,0,1,0.5f,-0.5f,0,1,1,1,1,1,1,0.5f,0.5f,0,1,1,1,1,1,0,-0.5f,0.5f,0,1,1,1,1,0,0});
   mesh.setIndices(new short[]{0,1,2,2,3,0});
-  Pixmap pixmap=Gdx.graphics.newPixmap(2,1,Format.RGBA8888);
-  texture=Gdx.graphics.newTexture(Gdx.files.getFileHandle("data/bobrgb888-32x32.png",FileType.Internal),TextureFilter.MipMap,TextureFilter.Linear,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture=new Texture(Gdx.files.internal("data/bobrgb888-32x32.png"));
   spriteBatch=new SpriteBatch();
 }

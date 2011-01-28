@@ -1,0 +1,10 @@
+{
+  this.isManaged=false;
+  this.isMipMap=mipmap;
+  this.file=null;
+  this.textureData=null;
+  glHandle=createGLHandle();
+  uploadImageData(pixmap);
+  setFilter(minFilter,magFilter);
+  setWrap(uWrap,vWrap);
+}

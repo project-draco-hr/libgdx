@@ -1,5 +1,5 @@
 {
-  Sprite sprite=new Sprite(Gdx.graphics.newTexture(Gdx.files.internal("data/badlogicsmall.jpg"),Linear,Linear,ClampToEdge,ClampToEdge));
+  Sprite sprite=new Sprite(new Texture(Gdx.files.internal("data/badlogicsmall.jpg")));
   sprite.setSize(tileSize,tileSize);
   cache=new SpriteCache(1000,false);
   for (int y=0; y < tileMapHeight; y++) {

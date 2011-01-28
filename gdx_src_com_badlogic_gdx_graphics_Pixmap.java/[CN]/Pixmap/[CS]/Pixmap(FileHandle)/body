@@ -1,0 +1,19 @@
+{
+  InputStream in=null;
+  try {
+    in=file.read();
+    pixmap=new Gdx2DPixmap(in,0);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("couldn't load file '" + file.name() + "', "+ e.getMessage());
+  }
+ finally {
+    if (in != null)     ;
+    try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+    ;
+  }
+}

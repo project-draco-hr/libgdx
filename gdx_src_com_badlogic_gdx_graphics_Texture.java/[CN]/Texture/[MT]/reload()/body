@@ -1,0 +1,14 @@
+{
+  glHandle=createGLHandle();
+  setFilter(minFilter,magFilter);
+  setWrap(uWrap,vWrap);
+  if (file != null) {
+    Pixmap pixmap=new Pixmap(file);
+    uploadImageData(pixmap);
+    pixmap.dispose();
+  }
+  if (textureData != null) {
+    Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
+    textureData.load();
+  }
+}

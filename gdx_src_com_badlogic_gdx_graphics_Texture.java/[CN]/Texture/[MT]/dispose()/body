@@ -1,0 +1,5 @@
+{
+  buffer.put(0,glHandle);
+  Gdx.gl.glDeleteTextures(1,buffer);
+  if (isManaged)   managedTextures.remove(this);
+}

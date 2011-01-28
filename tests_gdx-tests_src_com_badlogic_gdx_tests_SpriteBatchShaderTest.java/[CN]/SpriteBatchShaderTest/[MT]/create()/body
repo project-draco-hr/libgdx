@@ -1,12 +1,14 @@
 {
   spriteBatch=new SpriteBatch();
-  Pixmap pixmap=Gdx.graphics.newPixmap(Gdx.files.getFileHandle("data/badlogicsmall.jpg",FileType.Internal));
-  texture=Gdx.graphics.newUnmanagedTexture(32,32,Format.RGB565,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  Pixmap pixmap=new Pixmap(Gdx.files.internal("data/badlogicsmall.jpg"));
+  texture=new Texture(32,32,Format.RGB565);
   texture.draw(pixmap,0,0);
-  pixmap=Gdx.graphics.newPixmap(32,32,Format.RGB565);
+  pixmap.dispose();
+  pixmap=new Pixmap(32,32,Format.RGB565);
   pixmap.setColor(1,1,0,0.7f);
   pixmap.fill();
-  texture2=Gdx.graphics.newUnmanagedTexture(pixmap,TextureFilter.Nearest,TextureFilter.Nearest,TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  texture2=new Texture(pixmap);
+  pixmap.dispose();
   for (int i=0; i < coords.length; i+=2) {
     coords[i]=(int)(Math.random() * Gdx.graphics.getWidth());
     coords[i + 1]=(int)(Math.random() * Gdx.graphics.getHeight());

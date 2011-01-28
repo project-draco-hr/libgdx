@@ -1,7 +1,0 @@
-{
-  Pixmap pixmap=Gdx.graphics.newPixmap(file);
-  Bitmap image=(Bitmap)pixmap.getNativePixmap();
-  this.texWidth=image.getWidth();
-  this.texHeight=image.getHeight();
-  return (Bitmap)pixmap.getNativePixmap();
-}

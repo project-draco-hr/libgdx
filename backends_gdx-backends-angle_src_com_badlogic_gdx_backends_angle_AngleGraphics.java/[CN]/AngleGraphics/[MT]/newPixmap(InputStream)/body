@@ -1,9 +1,0 @@
-{
-  try {
-    BufferedImage img=(BufferedImage)ImageIO.read(in);
-    return new AnglePixmap(img);
-  }
- catch (  Exception ex) {
-    throw new GdxRuntimeException("Couldn't load Pixmap from InputStream",ex);
-  }
-}
