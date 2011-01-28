@@ -13,6 +13,12 @@
         }
       }
 );
+      alert.setOnCancelListener(new OnCancelListener(){
+        @Override public void onCancel(        DialogInterface arg0){
+          listener.cancled();
+        }
+      }
+);
       alert.show();
     }
   }

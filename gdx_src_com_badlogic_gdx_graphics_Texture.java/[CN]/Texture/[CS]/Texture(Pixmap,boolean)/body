@@ -5,6 +5,7 @@
   this.textureData=null;
   glHandle=createGLHandle();
   uploadImageData(pixmap);
+  if (mipmap)   minFilter=TextureFilter.MipMap;
   setFilter(minFilter,magFilter);
   setWrap(uWrap,vWrap);
 }
