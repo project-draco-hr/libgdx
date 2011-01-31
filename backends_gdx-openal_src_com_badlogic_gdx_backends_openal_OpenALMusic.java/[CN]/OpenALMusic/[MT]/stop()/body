@@ -1,4 +1,5 @@
 {
+  if (streamID == -1)   return;
   reset();
   alSourceStop(streamID);
   streamID=-1;
