@@ -1,0 +1,6 @@
+{
+  Texture texture=new Texture(Gdx.files.internal(name));
+  TextureRegion region=new TextureRegion(texture,0,0,width,height);
+  region.flip(false,true);
+  return region;
+}

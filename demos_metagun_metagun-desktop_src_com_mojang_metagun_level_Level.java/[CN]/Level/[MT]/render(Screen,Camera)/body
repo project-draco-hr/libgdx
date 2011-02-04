@@ -1,0 +1,51 @@
+{
+  matrix.idt();
+  matrix.setToTranslation(camera.x,camera.y,0);
+  screen.spriteBatch.setTransformMatrix(matrix);
+  screen.spriteBatch.begin();
+  int xo=0;
+  int yo=0;
+  for (int x=xo; x <= xo + camera.width / 10; x++) {
+    for (int y=yo; y <= yo + camera.height / 10; y++) {
+      if (x >= 0 && y >= 0 && x < width && y < height) {
+        int ximg=0;
+        int yimg=0;
+        byte w=walls[x + y * width];
+        if (w == 0)         yimg=1;
+        if (w == 1)         ximg=0;
+        if (w == 2)         ximg=2;
+        if (w == 3)         ximg=1;
+        if (w == 9)         ximg=7;
+        if (w == 8) {
+          ximg=4;
+          yimg=1;
+        }
+        if (w == 5) {
+          ximg=1;
+          yimg=1;
+        }
+        if (w == 6) {
+          ximg=(tick / 4 + x * 2) & 3;
+          yimg=2;
+        }
+        if (w == 7) {
+          ximg=(-tick / 4 + x * 2) & 3;
+          yimg=3;
+        }
+        if (w == 4) {
+          if (walls[x + (y - 1) * width] == 1) {
+            yimg++;
+          }
+          ximg=3;
+        }
+        if (w == 0)         continue;
+        screen.draw(Art.walls[ximg][yimg],x * 10,y * 10);
+      }
+    }
+  }
+  for (int i=entities.size() - 1; i >= 0; i--) {
+    Entity e=entities.get(i);
+    e.render(screen,camera);
+  }
+  screen.spriteBatch.end();
+}

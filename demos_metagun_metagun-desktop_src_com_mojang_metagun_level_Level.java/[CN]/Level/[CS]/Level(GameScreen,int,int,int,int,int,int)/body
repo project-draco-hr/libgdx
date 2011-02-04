@@ -1,9 +1,7 @@
 {
   this.screen=screen;
-  int[] pixels=new int[32 * 24];
   this.xSpawn=xSpawn;
   this.ySpawn=ySpawn;
-  Art.level.getRGB(xo * 31,yo * 23,32,24,pixels,0,32);
   walls=new byte[w * h];
   entityMap=new ArrayList[w * h];
   this.width=w;
@@ -11,7 +9,7 @@
   for (int y=0; y < h; y++) {
     for (int x=0; x < w; x++) {
       entityMap[x + y * w]=new ArrayList<Entity>();
-      int col=pixels[x + y * w] & 0xffffff;
+      int col=(Art.level.getPixel(x + xo * 31,y + yo * 23) & 0xffffff00) >>> 8;
       byte wall=0;
       if (col == 0xffffff)       wall=1;
  else       if (col == 0xFF00FF)       wall=2;

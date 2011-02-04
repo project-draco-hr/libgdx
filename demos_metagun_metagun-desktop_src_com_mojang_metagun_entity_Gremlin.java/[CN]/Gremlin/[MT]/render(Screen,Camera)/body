@@ -1,0 +1,10 @@
+{
+  int xp=(int)x;
+  int yp=(int)y;
+  if (onGround) {
+    g.draw(Art.gremlins[0][power],xp,yp);
+  }
+ else {
+    g.draw(Art.gremlins[ya > 0 ? 2 : 1][power],xp,yp);
+  }
+}

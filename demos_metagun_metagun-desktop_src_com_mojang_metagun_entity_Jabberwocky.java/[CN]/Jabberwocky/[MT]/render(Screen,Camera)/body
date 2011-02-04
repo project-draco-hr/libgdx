@@ -1,0 +1,5 @@
+{
+  int xp=(int)x;
+  int yp=(int)y - 10;
+  g.draw(Art.gremlins[3 + (slamTime / 10 % 5 == 2 ? 1 : 0)][0],xp,yp);
+}

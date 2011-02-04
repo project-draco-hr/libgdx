@@ -1,8 +1,0 @@
-{
-  g.drawImage(Art.bg,-xLevel * 160,-yLevel * 120,null);
-  level.render(g,camera);
-  if (mayRespawn) {
-    String msg="PRESS X TO TRY AGAIN";
-    drawString(msg,g,160 - msg.length() * 3,120 - 3);
-  }
-}

@@ -1,9 +1,0 @@
-{
-  Camera c=new Camera(320,240);
-  double pow=time / (double)TRANSITION_DURATION;
-  g.drawImage(Art.bg,-xLevel * 160 - (int)(xa * 160 * pow),-yLevel * 120 - (int)(ya * 120 * pow),null);
-  g.translate((int)(-xa * 310 * pow),(int)(-ya * 230 * pow));
-  level1.render(g,c);
-  g.translate(xa * 310,ya * 230);
-  level2.render(g,c);
-}

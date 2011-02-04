@@ -1,4 +1,8 @@
 {
+  Art.load();
+  Gdx.input.setInputProcessor(input);
   running=true;
-  setScreen(new TitleScreen());
+  setScreen(new GameScreen());
+  font=new BitmapFont();
+  batch=new SpriteBatch();
 }

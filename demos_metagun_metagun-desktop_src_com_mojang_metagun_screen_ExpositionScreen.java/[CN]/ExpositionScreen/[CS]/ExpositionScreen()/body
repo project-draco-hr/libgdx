@@ -1,6 +1,6 @@
 {
   try {
-    BufferedReader br=new BufferedReader(new InputStreamReader(ExpositionScreen.class.getResourceAsStream("exposition.txt")));
+    BufferedReader br=new BufferedReader(new InputStreamReader(Gdx.files.internal("res/exposition.txt").read()));
     String line="";
     while ((line=br.readLine()) != null) {
       lines.add(line);

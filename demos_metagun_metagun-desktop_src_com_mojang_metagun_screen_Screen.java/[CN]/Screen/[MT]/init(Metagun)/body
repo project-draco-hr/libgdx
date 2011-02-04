@@ -1,3 +1,7 @@
 {
   this.metagun=metagun;
+  Matrix4 projection=new Matrix4();
+  projection.setToOrtho(0,320,240,0,-1,1);
+  spriteBatch=new SpriteBatch(100);
+  spriteBatch.setProjectionMatrix(projection);
 }

@@ -1,0 +1,12 @@
+{
+  spriteBatch.begin();
+  draw(Art.bg,0,0);
+  spriteBatch.end();
+  level.render(this,camera);
+  spriteBatch.begin();
+  if (mayRespawn) {
+    String msg="PRESS X TO TRY AGAIN";
+    drawString(msg,160 - msg.length() * 3,120 - 3);
+  }
+  spriteBatch.end();
+}

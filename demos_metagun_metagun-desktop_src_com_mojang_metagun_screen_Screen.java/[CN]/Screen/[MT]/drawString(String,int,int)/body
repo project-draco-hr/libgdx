@@ -1,0 +1,12 @@
+{
+  string=string.toUpperCase();
+  for (int i=0; i < string.length(); i++) {
+    char ch=string.charAt(i);
+    for (int ys=0; ys < chars.length; ys++) {
+      int xs=chars[ys].indexOf(ch);
+      if (xs >= 0) {
+        draw(Art.guys[xs][ys + 9],x + i * 6,y);
+      }
+    }
+  }
+}

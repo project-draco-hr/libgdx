@@ -19,7 +19,8 @@
         Player player=(Player)e;
         player.hatCount++;
         if (xPos >= 0 && yPos >= 0) {
-          Art.level.setRGB(xPos,yPos,0);
+          Art.level.setColor(0,0,0,0);
+          Art.level.drawPixel(xPos,yPos);
         }
         Sound.gethat.play();
         remove();

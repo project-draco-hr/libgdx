@@ -1,0 +1,10 @@
+{
+  int dir=1;
+  int xp=(int)x - (16 - w) / 2;
+  int yp=(int)y - 2;
+  TextureRegion[][] sheet=dir == 1 ? Art.player1 : Art.player2;
+  int xFrame=(int)(xa * 10);
+  if (xFrame < -1)   xFrame=-1;
+  if (xFrame > +1)   xFrame=+1;
+  g.draw(sheet[1 + xFrame][1],xp,yp);
+}
