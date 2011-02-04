@@ -1,0 +1,5 @@
+{
+  int deathScore=10000 - deaths * 100;
+  if (deathScore < 0)   deathScore=0;
+  return deathScore;
+}

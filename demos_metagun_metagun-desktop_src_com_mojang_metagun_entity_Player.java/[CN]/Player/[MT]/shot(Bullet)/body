@@ -1,0 +1,39 @@
+{
+  Sound.pew.play();
+  xa+=bullet.xa * 0.5;
+  ya+=bullet.ya * 0.5;
+  for (int i=0; i < 4; i++) {
+    double xd=(random.nextDouble() - random.nextDouble()) * 4 - bullet.xa * 3;
+    double yd=(random.nextDouble() - random.nextDouble()) * 4 - bullet.ya * 3;
+    level.add(new Gore(bullet.x,bullet.y,xa + xd,ya + yd));
+  }
+  if (noHurtTime != 0)   return true;
+  if (hatCount > 0) {
+    while (hatCount > 0) {
+      Hat hat=new Hat(x,y);
+      hat.ya-=hatCount * 0.05;
+      hat.xxa=(random.nextFloat() - random.nextFloat()) * (hatCount - 1) * 0.5;
+      hat.time+=hatCount * 6;
+      level.add(hat);
+      hat.tryMove(0,-hatCount * 2);
+      hatCount--;
+    }
+    noHurtTime=20;
+  }
+ else {
+    Sound.oof.play();
+    damage++;
+    noHurtTime=20;
+    if (damage == 4) {
+      Sound.death.play();
+      for (int i=0; i < 16; i++) {
+        level.add(new PlayerGore(x + random.nextDouble() * w,y + random.nextDouble() * h));
+      }
+      remove();
+    }
+ else {
+      level.add(new PlayerGore(bullet.x,bullet.y));
+    }
+  }
+  return true;
+}

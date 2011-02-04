@@ -1,0 +1,73 @@
+{
+  this.screen=screen;
+  int[] pixels=new int[32 * 24];
+  this.xSpawn=xSpawn;
+  this.ySpawn=ySpawn;
+  Art.level.getRGB(xo * 31,yo * 23,32,24,pixels,0,32);
+  walls=new byte[w * h];
+  entityMap=new ArrayList[w * h];
+  this.width=w;
+  this.height=h;
+  for (int y=0; y < h; y++) {
+    for (int x=0; x < w; x++) {
+      entityMap[x + y * w]=new ArrayList<Entity>();
+      int col=pixels[x + y * w] & 0xffffff;
+      byte wall=0;
+      if (col == 0xffffff)       wall=1;
+ else       if (col == 0xFF00FF)       wall=2;
+ else       if (col == 0xffff00)       wall=3;
+ else       if (col == 0xff0000)       wall=4;
+ else       if (col == 0xB7B7B7)       wall=5;
+ else       if (col == 0xFF5050)       wall=6;
+ else       if (col == 0xFF5051)       wall=7;
+ else       if (col == 0x383838)       wall=8;
+ else       if (col == 0xA3FFFF)       wall=9;
+ else       if (col == 0x83FFFF) {
+        BossPart prev=new Boss(x * 10 - 2,y * 10 - 2);
+        int timeOffs=random.nextInt(60);
+        ((Boss)prev).time=timeOffs;
+        add(prev);
+        for (int i=0; i < 10; i++) {
+          BossNeck b=new BossNeck(x * 10 - 1,y * 10 - 1,prev);
+          b.time=i * 10 + timeOffs;
+          prev=b;
+          add(prev);
+        }
+      }
+ else       if (col == 0x80FFFF) {
+        Gremlin g=new Gremlin(0,x * 10 - 10,y * 10 - 20);
+        g.jumpDelay=random.nextInt(50);
+        add(g);
+      }
+ else       if (col == 0x81FFFF) {
+        Gremlin g=new Gremlin(1,x * 10 - 10,y * 10 - 20);
+        g.jumpDelay=random.nextInt(50);
+        add(g);
+      }
+ else       if (col == 0x82FFFF) {
+        Jabberwocky g=new Jabberwocky(x * 10 - 10,y * 10 - 10);
+        g.slamTime=random.nextInt(30);
+        add(g);
+      }
+ else       if (col == 0xFFADF8) {
+        add(new Hat(x * 10 + 1,y * 10 + 5,xo * 31 + x,yo * 23 + y));
+      }
+ else       if ((col & 0x00ffff) == 0x00ff00 && (col & 0xff0000) > 0) {
+        add(new Sign(x * 10,y * 10,(col >> 16) & 0xff));
+      }
+ else       if (col == 0x0000ff) {
+        this.xSpawn=x * 10 + 1;
+        this.ySpawn=y * 10 - 8;
+      }
+ else       if (col == 0x00FFFF) {
+        Gunner e=new Gunner(x * 10 + 2,y * 10 + 10 - 6,0,0);
+        e.chargeTime=random.nextInt(Gunner.CHARGE_DURATION / 2);
+        e.xa=e.ya=0;
+        add(e);
+      }
+      walls[x + y * w]=wall;
+    }
+  }
+  player=new Player(this.xSpawn,this.ySpawn);
+  add(player);
+}

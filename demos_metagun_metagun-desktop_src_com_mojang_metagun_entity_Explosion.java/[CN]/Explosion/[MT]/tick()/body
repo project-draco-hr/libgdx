@@ -1,0 +1,21 @@
+{
+  if (delay > 0) {
+    delay--;
+    return;
+  }
+  if (life++ >= duration)   remove();
+  interactsWithWorld=(life > 10);
+  onGround=false;
+  x+=xa;
+  y+=ya;
+  level.isFree(this,x,y,w,h,0,0);
+  xa*=0.95;
+  ya*=0.95;
+  ya-=Level.GRAVITY * 0.15;
+  if (interactsWithWorld && life < duration * 0.75) {
+    java.util.List<Entity> entities=level.getEntities((int)x,(int)y,1,1);
+    for (int i=0; i < entities.size(); i++) {
+      entities.get(i).explode(this);
+    }
+  }
+}

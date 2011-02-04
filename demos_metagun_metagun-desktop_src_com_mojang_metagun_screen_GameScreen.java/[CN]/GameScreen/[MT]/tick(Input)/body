@@ -1,0 +1,16 @@
+{
+  Stats.instance.time++;
+  if (!input.oldButtons[Input.ESCAPE] && input.buttons[Input.ESCAPE]) {
+    setScreen(new PauseScreen(this));
+    return;
+  }
+  if (!level.player.removed)   level.player.tick(input);
+ else   if (mayRespawn) {
+    if (input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT]) {
+      respawnRoom();
+      mayRespawn=false;
+    }
+  }
+  level.tick();
+  Stats.instance.hats=level.player.hatCount;
+}

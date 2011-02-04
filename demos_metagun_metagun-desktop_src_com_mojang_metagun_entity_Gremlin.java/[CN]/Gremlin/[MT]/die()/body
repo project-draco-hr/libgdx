@@ -1,0 +1,15 @@
+{
+  Sound.death.play();
+  for (int i=0; i < 16; i++) {
+    level.add(new PlayerGore(x + random.nextDouble() * w,y + random.nextDouble() * h));
+  }
+  Sound.boom.play();
+  for (int i=0; i < 32; i++) {
+    double dir=i * Math.PI * 2 / 8.0;
+    double xa=Math.sin(dir);
+    double ya=Math.cos(dir);
+    double dist=((i / 8) + 1);
+    level.add(new Explosion(0,i * 3,x + w / 2 + xa * dist,y + h / 2 + ya * dist,xa,ya));
+  }
+  remove();
+}

@@ -1,0 +1,19 @@
+{
+  onGround=false;
+  tryMove(xa,ya);
+  if ((onGround || sliding != 0) && xa * xa < 0.01) {
+    if (chargeTime++ >= CHARGE_DURATION) {
+      chargeTime=0;
+      double xd=(level.player.x + level.player.w / 2) - (x + w / 2);
+      double yd=(level.player.y + level.player.h / 2) - (y + h / 2);
+      double dd=Math.sqrt(xd * xd + yd * yd);
+      xd/=dd;
+      yd/=dd;
+      Sound.hit.play();
+      level.add(new Bullet(this,x + 2,y + 2,xd,yd));
+    }
+  }
+  xa*=Level.FRICTION;
+  ya*=Level.FRICTION;
+  ya+=Level.GRAVITY;
+}

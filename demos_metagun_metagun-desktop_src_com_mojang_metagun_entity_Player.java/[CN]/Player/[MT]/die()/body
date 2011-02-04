@@ -1,0 +1,13 @@
+{
+  if (removed)   return;
+  if (hatCount > 0) {
+    level.add(new Hat(x,y - hatCount * 2));
+    hatCount--;
+  }
+  Sound.death.play();
+  for (int i=0; i < 16; i++) {
+    level.add(new PlayerGore(x + random.nextDouble() * w,y + random.nextDouble() * h));
+  }
+  Stats.instance.deaths++;
+  remove();
+}

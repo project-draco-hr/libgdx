@@ -1,0 +1,19 @@
+{
+  double xd=enemy.x - x;
+  if (xd < 0) {
+    xd=-0.01;
+  }
+ else   if (xd > 0) {
+    xd=0.01;
+  }
+ else {
+    if (random.nextBoolean()) {
+      xd=-0.01;
+    }
+ else {
+      xd=0.01;
+    }
+  }
+  enemy.xa+=xd;
+  xa-=xd;
+}

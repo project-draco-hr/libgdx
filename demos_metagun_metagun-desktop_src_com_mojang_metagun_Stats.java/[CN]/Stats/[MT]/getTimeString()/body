@@ -1,0 +1,9 @@
+{
+  int seconds=time / 60;
+  int minutes=seconds / 60;
+  seconds%=60;
+  String str=minutes + ":";
+  if (seconds < 10)   str+="0";
+  str+=seconds;
+  return str;
+}

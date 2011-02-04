@@ -1,0 +1,78 @@
+{
+  readSign=onGround && input.buttons[Input.UP] && !input.oldButtons[Input.UP];
+  if (noHurtTime > 0)   noHurtTime--;
+  double speed=0.4;
+  double aimAngle=-0.2;
+  yAim=0;
+  if (input.buttons[Input.UP]) {
+    aimAngle-=0.8;
+    yAim--;
+  }
+  if (input.buttons[Input.DOWN]) {
+    aimAngle+=0.8;
+    yAim++;
+  }
+  boolean walk=false;
+  if (input.buttons[Input.LEFT]) {
+    walk=true;
+    xa-=speed;
+    dir=-1;
+  }
+  if (input.buttons[Input.RIGHT]) {
+    walk=true;
+    xa+=speed;
+    dir=1;
+  }
+  if (walk)   frame++;
+ else   frame=0;
+  if (input.buttons[Input.JUMP] && !input.oldButtons[Input.JUMP] && onGround) {
+    Sound.jump.play();
+    ya-=2 + Math.abs(xa) * 0.5;
+  }
+  tryMove(xa,ya);
+  xa*=0.7;
+  if (ya < 0 && input.buttons[Input.JUMP]) {
+    ya*=0.992;
+    ya+=Level.GRAVITY * 0.5;
+  }
+ else {
+    ya*=Level.FRICTION;
+    ya+=Level.GRAVITY;
+  }
+  boolean shooting=false;
+  if (gunLevel > 0 && input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT])   shooting=true;
+  if (gunLevel > 1 && input.buttons[Input.SHOOT] && (!input.oldButtons[Input.SHOOT] || shootTime > 0)) {
+    shooting=shootTime++ % 3 == 0;
+  }
+ else {
+    shootTime=0;
+  }
+  if (shooting) {
+    double pow=3;
+    Sound.launch.play();
+    double xx=x + w / 2.0 - 2.5 + dir * 7;
+    double yy=y + h / 2.0 - 2.5 + yAim * 2;
+    for (int i=0; i < 4; i++) {
+      double xAim=Math.cos(aimAngle + 0.2) * dir * pow;
+      double yAim=Math.sin(aimAngle + 0.2) * pow;
+      double xxa=xa + xAim * 0.2;
+      double yya=ya + yAim * 0.2;
+      level.add(new Spark(xx,yy + (-2 + i) * 0.5,xxa,yya));
+    }
+    double xAim=Math.cos(aimAngle) * dir * pow;
+    double yAim=Math.sin(aimAngle) * pow;
+    double xxa=xa + xAim;
+    double yya=ya + yAim;
+    if (gunLevel == 2) {
+      xa-=xAim * 0.1;
+      ya-=yAim * 0.1;
+    }
+    xx=x + w / 2.0 - 2.5;
+    Stats.instance.shots++;
+    level.add(new Gunner(xx,yy,xxa,yya));
+  }
+  if (y < 5)   level.transition(0,-1);
+  if (y > 240 - w + 10 - 5)   level.transition(0,1);
+  if (x < 0 + 5)   level.transition(-1,0);
+  if (x > 320 - h + 10 - 5)   level.transition(1,0);
+}

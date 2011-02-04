@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < 4; i++) {
+    xa=(random.nextFloat() - random.nextFloat()) * 6;
+    ya=(random.nextFloat() - random.nextFloat()) * 6;
+    level.add(new Gore(x + random.nextDouble(),y + random.nextDouble() - 1,xa,ya));
+  }
+  remove();
+}

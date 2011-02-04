@@ -1,0 +1,10 @@
+{
+  this.source=source;
+  this.x=x;
+  this.y=y;
+  this.w=1;
+  this.h=1;
+  this.xa=xa + (random.nextDouble() - random.nextDouble()) * 0.1;
+  this.ya=ya + (random.nextDouble() - random.nextDouble()) * 0.1;
+  interactsWithWorld=true;
+}

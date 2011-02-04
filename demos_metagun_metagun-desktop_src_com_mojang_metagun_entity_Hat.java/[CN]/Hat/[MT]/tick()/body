@@ -1,0 +1,29 @@
+{
+  tryMove(xa,ya);
+  if (onGround) {
+    time=0;
+  }
+ else {
+    time++;
+  }
+  xa=xxa + Math.sin(time * 0.05) * 0.2;
+  xxa*=0.95;
+  ya*=0.95;
+  ya+=Level.GRAVITY * 0.1;
+  if (noTakeTime > 0)   noTakeTime--;
+ else {
+    java.util.List<Entity> entities=level.getEntities((int)x,(int)y,w,h);
+    for (int i=0; i < entities.size(); i++) {
+      Entity e=entities.get(i);
+      if (e instanceof Player) {
+        Player player=(Player)e;
+        player.hatCount++;
+        if (xPos >= 0 && yPos >= 0) {
+          Art.level.setRGB(xPos,yPos,0);
+        }
+        Sound.gethat.play();
+        remove();
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  time++;
+  if (time == TRANSITION_DURATION) {
+    setScreen(parent);
+  }
+}

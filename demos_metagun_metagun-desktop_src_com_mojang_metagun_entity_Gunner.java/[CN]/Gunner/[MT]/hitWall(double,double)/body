@@ -1,0 +1,15 @@
+{
+  sliding=0;
+  if (xa != 0) {
+    if (xa > 0) {
+      this.xa=1;
+      sliding=1;
+    }
+    if (xa < 0) {
+      this.xa=-1;
+      sliding=-1;
+    }
+  }
+  this.xa*=0.4;
+  this.ya*=0.4;
+}

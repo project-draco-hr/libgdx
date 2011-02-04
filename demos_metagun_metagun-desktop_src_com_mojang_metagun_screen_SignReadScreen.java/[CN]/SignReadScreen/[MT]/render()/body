@@ -1,0 +1,25 @@
+{
+  parent.render();
+  int xs=0;
+  int ys=signs[id].length + 3;
+  for (int y=0; y < signs[id].length; y++) {
+    int s=signs[id][y].length();
+    if (s > xs)     xs=s;
+  }
+  int xp=160 - xs * 3;
+  int yp=120 - ys * 3;
+  for (int x=0 - 1; x < xs + 1; x++) {
+    for (int y=0 - 1; y < ys + 1; y++) {
+      int xf=1;
+      int yf=12;
+      if (x < 0)       xf--;
+      if (y < 0)       yf--;
+      if (x >= xs)       xf++;
+      if (y >= ys)       yf++;
+    }
+  }
+  for (int y=0; y < signs[id].length; y++) {
+    drawString(signs[id][y],null,xp,yp + y * 6);
+  }
+  if (delay == 0)   drawString("PRESS X",null,xp + (xs - 8) * 6,yp + (signs[id].length + 2) * 6);
+}

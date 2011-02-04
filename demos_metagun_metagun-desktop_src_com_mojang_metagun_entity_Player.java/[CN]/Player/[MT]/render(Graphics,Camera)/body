@@ -1,0 +1,26 @@
+{
+  int xp=(int)x - (16 - w) / 2;
+  int yp=(int)y - 2;
+  int stepFrame=frame / 4 % 4;
+  BufferedImage[][] sheet=dir == 1 ? Art.player1 : Art.player2;
+  if (!onGround) {
+    int yya=(int)Math.round(-ya);
+    stepFrame=4;
+    if (yya < -1)     stepFrame=5;
+    yp+=yya;
+  }
+  g.drawImage(sheet[3 + stepFrame][hatCount > 0 ? 0 : 1],xp,yp,null);
+  yp+=(stepFrame == 3 ? 1 : 0);
+  for (int i=1; i < hatCount; i++) {
+    g.drawImage(sheet[0][1],xp,yp - i * 2,null);
+  }
+  if (gunLevel > 0) {
+    if (!onGround) {
+      int yya=(int)Math.round(-ya);
+      if (yya < -1)       yya=-1;
+      if (yya > 1)       yya=1;
+      yp+=yya;
+    }
+    g.drawImage(sheet[1 + yAim][(gunLevel - 1) * 2],xp,yp,null);
+  }
+}

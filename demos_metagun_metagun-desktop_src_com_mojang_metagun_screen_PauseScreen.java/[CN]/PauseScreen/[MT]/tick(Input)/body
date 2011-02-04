@@ -1,0 +1,29 @@
+{
+  if (!input.oldButtons[Input.ESCAPE] && input.buttons[Input.ESCAPE]) {
+    setScreen(parent);
+    return;
+  }
+  if (input.buttons[Input.UP] && !input.oldButtons[Input.UP]) {
+    selected--;
+    if (selected < 0)     selected+=options.length;
+  }
+  if (input.buttons[Input.DOWN] && !input.oldButtons[Input.DOWN]) {
+    selected++;
+    if (selected >= options.length)     selected-=options.length;
+  }
+  if (input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT]) {
+    if (selected == 0) {
+      setScreen(parent);
+    }
+ else     if (selected == 1) {
+      parent.level.player.die();
+      setScreen(parent);
+    }
+ else     if (selected == 2) {
+      setScreen(new TitleScreen());
+    }
+ else     if (selected == 3) {
+      setScreen(new WinScreen());
+    }
+  }
+}

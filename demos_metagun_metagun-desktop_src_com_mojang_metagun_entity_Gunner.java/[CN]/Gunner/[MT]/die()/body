@@ -1,0 +1,10 @@
+{
+  Sound.splat.play();
+  level.add(new HeadGore(x + 2,y));
+  for (int i=0; i < 10; i++) {
+    double xd=(random.nextDouble() - random.nextDouble()) * 4;
+    double yd=(random.nextDouble() - random.nextDouble()) * 4;
+    level.add(new Gore(x + 2 + random.nextDouble(),y + random.nextDouble() * 6,xa + xd,ya + yd));
+  }
+  remove();
+}

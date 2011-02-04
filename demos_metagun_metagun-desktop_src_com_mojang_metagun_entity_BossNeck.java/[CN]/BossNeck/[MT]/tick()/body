@@ -1,0 +1,19 @@
+{
+  if (dieIn > 0) {
+    if (--dieIn == 0)     die();
+  }
+  time++;
+  rot=Math.sin(time / 40.0) * Math.cos(time / 13.0) * 0.5;
+  rota*=0.9;
+  rot*=0.9;
+  double rr=baseRot + rot;
+  double xa=Math.sin(rr);
+  double ya=Math.cos(rr);
+  child.x=x + xa * 8;
+  child.y=y + ya * 8;
+  child.setRot(rr);
+  java.util.List<Entity> entities=level.getEntities((int)x + 4,(int)y + 4,w - 8,h - 4);
+  for (int i=0; i < entities.size(); i++) {
+    entities.get(i).collideMonster(this);
+  }
+}

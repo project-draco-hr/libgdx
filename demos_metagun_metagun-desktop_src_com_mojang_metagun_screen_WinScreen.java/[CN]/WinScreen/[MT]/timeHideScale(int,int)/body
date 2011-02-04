@@ -1,0 +1,6 @@
+{
+  if (time < 10)   return "";
+  if (time < 0)   time=0;
+  if (time > 60)   time=60;
+  return "+" + val * time / 60;
+}

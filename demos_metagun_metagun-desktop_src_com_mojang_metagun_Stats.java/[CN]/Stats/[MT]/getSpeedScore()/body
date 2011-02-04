@@ -1,0 +1,6 @@
+{
+  int seconds=time / 60;
+  int speedScore=(60 * 10 - seconds) * 100;
+  if (speedScore < 0)   speedScore=0;
+  return speedScore;
+}

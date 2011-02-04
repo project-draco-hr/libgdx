@@ -1,0 +1,9 @@
+{
+  int w=src.getWidth() * scale;
+  int h=src.getHeight() * scale;
+  BufferedImage res=new BufferedImage(w,h,BufferedImage.TYPE_INT_ARGB);
+  Graphics g=res.getGraphics();
+  g.drawImage(src.getScaledInstance(w,h,Image.SCALE_AREA_AVERAGING),0,0,null);
+  g.dispose();
+  return res;
+}

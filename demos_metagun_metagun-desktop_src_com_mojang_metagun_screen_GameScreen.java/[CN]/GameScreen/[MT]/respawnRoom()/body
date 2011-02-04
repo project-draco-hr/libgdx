@@ -1,0 +1,8 @@
+{
+  Level newLevel=new Level(this,32,24,xLevel,yLevel,level.xSpawn,level.ySpawn);
+  this.level=newLevel;
+  level.player.gunLevel=gunLevel;
+  if (hatCount < 1)   hatCount=1;
+  level.player.hatCount=hatCount;
+  level.player.damage=0;
+}

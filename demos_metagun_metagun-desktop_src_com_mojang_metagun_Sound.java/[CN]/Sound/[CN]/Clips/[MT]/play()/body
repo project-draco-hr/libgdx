@@ -1,0 +1,8 @@
+{
+  if (clips == null)   return;
+  clips[p].stop();
+  clips[p].setFramePosition(0);
+  clips[p].start();
+  p++;
+  if (p >= count)   p=0;
+}

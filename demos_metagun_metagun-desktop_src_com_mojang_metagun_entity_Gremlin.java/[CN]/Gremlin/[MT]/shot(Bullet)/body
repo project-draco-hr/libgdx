@@ -1,0 +1,17 @@
+{
+  Sound.pew.play();
+  for (int i=0; i < 4; i++) {
+    double xd=(random.nextDouble() - random.nextDouble()) * 4 - bullet.xa * 3;
+    double yd=(random.nextDouble() - random.nextDouble()) * 4 - bullet.ya * 3;
+    level.add(new Gore(bullet.x,bullet.y,xa + xd,ya + yd));
+  }
+  Sound.oof.play();
+  temperature+=80;
+  if (temperature >= MAX_TEMPERATURE) {
+    die();
+  }
+ else {
+    level.add(new PlayerGore(bullet.x,bullet.y));
+  }
+  return true;
+}

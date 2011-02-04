@@ -1,0 +1,10 @@
+{
+  int xp=(int)x;
+  int yp=(int)y - 10;
+  g.drawImage(Art.gremlins[3 + (slamTime / 10 % 5 == 2 ? 1 : 0)][0],xp,yp,null);
+  g.setColor(Color.BLACK);
+  yp+=10;
+  g.fillRect(xp + 5,yp - 8,20,3);
+  g.setColor(Color.RED);
+  g.fillRect(xp + 5,yp - 8,(20 * temperature / MAX_TEMPERATURE),2);
+}

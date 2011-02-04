@@ -1,0 +1,11 @@
+{
+  this.x=x;
+  this.y=y;
+  this.w=6;
+  this.h=6;
+  xa=ya=0;
+  this.id=id;
+  autoRead=id == 1;
+  if (id == 6)   autoRead=true;
+  if (id == 15)   autoRead=true;
+}

@@ -1,0 +1,9 @@
+{
+  accum+=Gdx.graphics.getDeltaTime();
+  while (accum > 1.0f / 60.0f) {
+    screen.tick(input);
+    input.tick();
+    accum-=1.0f / 60.0f;
+  }
+  screen.render();
+}

@@ -1,0 +1,8 @@
+{
+  time++;
+  if (time > 60 * 7) {
+    if (input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT]) {
+      setScreen(new TitleScreen());
+    }
+  }
+}

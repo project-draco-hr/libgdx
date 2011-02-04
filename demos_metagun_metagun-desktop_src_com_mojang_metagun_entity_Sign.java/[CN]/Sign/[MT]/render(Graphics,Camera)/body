@@ -1,0 +1,13 @@
+{
+  if (id == 6 && level.player.gunLevel >= 1)   return;
+  if (id == 15 && level.player.gunLevel >= 2)   return;
+  if (id == 6) {
+    g.drawImage(Art.walls[5][0],(int)x,(int)y,null);
+  }
+ else   if (id == 15) {
+    g.drawImage(Art.walls[6][0],(int)x,(int)y,null);
+  }
+ else {
+    g.drawImage(Art.walls[4][0],(int)x,(int)y,null);
+  }
+}

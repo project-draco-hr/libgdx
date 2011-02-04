@@ -1,0 +1,37 @@
+{
+  if (temperature > 0) {
+    temperature--;
+    for (int i=0; i < 1; i++) {
+      if (random.nextInt(MAX_TEMPERATURE) <= temperature) {
+        double xd=(random.nextDouble() - random.nextDouble()) * 0.2;
+        double yd=(random.nextDouble() - random.nextDouble()) * 0.2;
+        level.add(new Spark(x + random.nextDouble() * w,y + random.nextDouble() * h,xa * 0.2 + xd,ya * 0.2 + yd));
+      }
+    }
+  }
+  tryMove(xa,ya);
+  xa*=0.4;
+  ya*=Level.FRICTION;
+  ya+=Level.GRAVITY;
+  if (onGround) {
+    if (power == 1 && jumpDelay <= 19) {
+      if (jumpDelay % 2 == 0) {
+        if (jumpDelay % 4 == 0) {
+          Sound.hit.play();
+        }
+        double dir=jumpDelay / 32.0f * Math.PI * 2 + 0.1;
+        double xa=Math.cos(dir);
+        double ya=-Math.sin(dir);
+        level.add(new Bullet(this,x + 15,y + 10,xa,ya));
+      }
+    }
+    if (jumpDelay++ > 60) {
+      ya=-2;
+      jumpDelay=0;
+    }
+  }
+  java.util.List<Entity> entities=level.getEntities((int)x + 4,(int)y + 4,w - 8,h - 4);
+  for (int i=0; i < entities.size(); i++) {
+    entities.get(i).collideMonster(this);
+  }
+}

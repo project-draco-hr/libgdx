@@ -1,0 +1,16 @@
+{
+  if (sign.autoRead || readSign) {
+    sign.autoRead=false;
+    if (sign.id == 6) {
+      sign.remove();
+      gunLevel=1;
+      level.getGun(1);
+    }
+    if (sign.id == 15) {
+      sign.remove();
+      gunLevel=2;
+      level.getGun(2);
+    }
+    level.readSign(sign);
+  }
+}

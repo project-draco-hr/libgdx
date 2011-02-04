@@ -1,0 +1,8 @@
+{
+  if (life-- <= 0)   remove();
+  onGround=false;
+  tryMove(xa,ya);
+  xa*=0.999;
+  ya*=0.999;
+  ya+=Level.GRAVITY * 0.15;
+}
