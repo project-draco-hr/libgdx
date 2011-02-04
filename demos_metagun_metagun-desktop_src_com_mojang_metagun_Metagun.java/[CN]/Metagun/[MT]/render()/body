@@ -7,7 +7,4 @@
     accum-=1.0f / 60.0f;
   }
   screen.render();
-  batch.begin();
-  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),10,30);
-  batch.end();
 }

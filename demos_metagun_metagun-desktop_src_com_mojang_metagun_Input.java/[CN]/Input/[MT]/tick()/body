@@ -1,4 +1,10 @@
 {
+  if (Gdx.input.getAccelerometerY() < -1.2f)   set(Keys.KEYCODE_DPAD_LEFT,true);
+ else   if (Gdx.input.getAccelerometerY() > 1.2f)   set(Keys.KEYCODE_DPAD_RIGHT,true);
+ else {
+    set(Keys.KEYCODE_DPAD_LEFT,false);
+    set(Keys.KEYCODE_DPAD_RIGHT,false);
+  }
   for (int i=0; i < buttons.length; i++) {
     oldButtons[i]=buttons[i];
   }
