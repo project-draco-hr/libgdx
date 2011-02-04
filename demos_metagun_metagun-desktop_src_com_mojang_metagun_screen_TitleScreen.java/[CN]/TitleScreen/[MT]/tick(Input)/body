@@ -1,7 +1,7 @@
 {
   time++;
   if (time > 240) {
-    if (input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT]) {
+    if (input.buttons[Input.SHOOT] && !input.oldButtons[Input.SHOOT] || Gdx.input.isTouched()) {
       Sound.startgame.play();
       setScreen(new GameScreen());
       input.releaseAllKeys();
