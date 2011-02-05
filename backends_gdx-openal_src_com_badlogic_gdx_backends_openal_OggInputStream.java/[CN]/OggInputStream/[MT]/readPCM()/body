@@ -89,7 +89,7 @@
             bytes=input.read(buffer,index,4096);
           }
  catch (          Exception e) {
-            throw new GdxRuntimeException("Error during Vorbis decoding.");
+            throw new GdxRuntimeException("Error during Vorbis decoding.",e);
           }
         }
  else {
