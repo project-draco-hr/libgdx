@@ -10,7 +10,7 @@
   pixmap.setColor(0.0f,1.0f,0.0f,1.0f);
   pixmap.drawLine(100,0,100,100);
   pixmap.setColor(1.0f,1.0f,1.0f,1.0f);
-  pixmap.drawCircle(400,300,16);
+  pixmap.drawCircle(400,300,100);
   texture.draw(pixmap,0,0);
   region=new TextureRegion(texture,0,0,800,480);
   batch=new SpriteBatch();
