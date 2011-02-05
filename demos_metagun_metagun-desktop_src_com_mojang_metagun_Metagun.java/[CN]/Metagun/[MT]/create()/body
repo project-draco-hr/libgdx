@@ -3,5 +3,5 @@
   Sound.load();
   Gdx.input.setInputProcessor(input);
   running=true;
-  setScreen(new TitleScreen());
+  setScreen(new GameScreen());
 }
