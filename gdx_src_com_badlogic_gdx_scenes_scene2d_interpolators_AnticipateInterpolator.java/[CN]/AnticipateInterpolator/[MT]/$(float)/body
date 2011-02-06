@@ -1,0 +1,5 @@
+{
+  AnticipateInterpolator inter=pool.obtain();
+  inter.tension=tension;
+  return inter;
+}

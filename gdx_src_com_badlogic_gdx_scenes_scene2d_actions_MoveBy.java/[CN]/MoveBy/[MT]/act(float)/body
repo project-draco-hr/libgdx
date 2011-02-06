@@ -1,10 +1,11 @@
 {
-  taken+=delta;
-  if (taken >= duration) {
-    taken=duration;
-    done=true;
+  float alpha=createInterpolatedAlpha(delta);
+  if (done) {
+    target.x=x;
+    target.y=y;
   }
-  float alpha=taken * invDuration;
-  target.x=startX + deltaX * alpha;
-  target.y=startY + deltaY * alpha;
+ else {
+    target.x=startX + deltaX * alpha;
+    target.y=startY + deltaY * alpha;
+  }
 }

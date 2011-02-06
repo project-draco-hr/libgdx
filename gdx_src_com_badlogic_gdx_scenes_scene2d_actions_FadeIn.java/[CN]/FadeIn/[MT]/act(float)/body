@@ -1,9 +1,9 @@
 {
-  taken+=delta;
-  if (taken >= duration) {
-    taken=duration;
-    done=true;
+  float alpha=createInterpolatedAlpha(delta);
+  if (done) {
+    target.color.a=1.0f;
   }
-  float alpha=taken * invDuration;
-  target.color.a=startAlpha + deltaAlpha * alpha;
+ else {
+    target.color.a=startAlpha + deltaAlpha * alpha;
+  }
 }

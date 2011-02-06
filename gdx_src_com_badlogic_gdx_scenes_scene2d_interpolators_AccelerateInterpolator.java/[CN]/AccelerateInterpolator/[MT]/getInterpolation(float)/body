@@ -1,0 +1,8 @@
+{
+  if (factor == 1.0f) {
+    return input * input;
+  }
+ else {
+    return (float)Math.pow(input,doubledFactor);
+  }
+}

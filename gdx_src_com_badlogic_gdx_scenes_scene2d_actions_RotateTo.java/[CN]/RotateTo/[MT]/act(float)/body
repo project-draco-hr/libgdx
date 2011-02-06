@@ -1,11 +1,9 @@
 {
-  taken+=delta;
-  if (taken >= duration) {
-    taken=duration;
+  float alpha=createInterpolatedAlpha(delta);
+  if (done) {
     target.rotation=rotation;
-    done=true;
-    return;
   }
-  float alpha=taken * invDuration;
-  target.rotation=startRotation + deltaRotation * alpha;
+ else {
+    target.rotation=startRotation + deltaRotation * alpha;
+  }
 }
