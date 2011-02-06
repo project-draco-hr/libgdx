@@ -1,5 +1,11 @@
 {
-  if (x > 160 - 32 && x < 160)   set(Keys.KEYCODE_DPAD_UP,!buttons[UP]);
-  if (x > 160 && x < 160 + 32)   set(Keys.KEYCODE_DPAD_DOWN,!buttons[DOWN]);
+  if (x > 160 - 32 && x < 160) {
+    set(Keys.KEYCODE_DPAD_UP,!buttons[UP]);
+    if (buttons[UP])     buttons[DOWN]=false;
+  }
+  if (x > 160 && x < 160 + 32) {
+    set(Keys.KEYCODE_DPAD_DOWN,!buttons[DOWN]);
+    if (buttons[DOWN])     buttons[UP]=false;
+  }
   return false;
 }
