@@ -1,3 +1,3 @@
 {
-  return (float)Math.cos(degreesToRadians * deg);
+  return cos[(int)(deg * degToIndex) & SIN_MASK];
 }
