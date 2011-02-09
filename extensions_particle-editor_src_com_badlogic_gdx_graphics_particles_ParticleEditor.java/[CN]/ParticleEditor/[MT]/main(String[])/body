@@ -11,8 +11,8 @@
   }
   EventQueue.invokeLater(new Runnable(){
     public void run(){
+      new ParticleEditor();
     }
   }
 );
-  new ParticleEditor();
 }
