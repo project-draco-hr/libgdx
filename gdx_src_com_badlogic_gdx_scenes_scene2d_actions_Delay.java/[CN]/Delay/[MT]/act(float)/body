@@ -1,4 +1,10 @@
 {
   taken+=delta;
-  if (taken > duration)   action.act(delta);
+  if (taken > duration) {
+    if (!listenerFired && listener != null) {
+      listener.completed(this);
+      listenerFired=true;
+    }
+    action.act(delta);
+  }
 }

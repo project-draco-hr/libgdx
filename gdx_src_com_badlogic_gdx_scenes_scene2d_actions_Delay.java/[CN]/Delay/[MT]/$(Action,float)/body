@@ -3,5 +3,6 @@
   delay.duration=duration;
   delay.action=action;
   delay.listener=null;
+  delay.listenerFired=false;
   return delay;
 }

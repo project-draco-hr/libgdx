@@ -1,4 +1,4 @@
 {
   pool.free(this);
-  if (listener != null)   listener.completed(this);
+  action.finish();
 }
