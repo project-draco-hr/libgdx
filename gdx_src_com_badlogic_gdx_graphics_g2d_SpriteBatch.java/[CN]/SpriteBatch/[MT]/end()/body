@@ -4,17 +4,11 @@
   lastTexture=null;
   idx=0;
   drawing=false;
-  if (Gdx.graphics.isGL20Available() == false) {
-    GL10 gl=Gdx.gl10;
-    gl.glDepthMask(true);
-    gl.glDisable(GL10.GL_BLEND);
-    gl.glDisable(GL10.GL_TEXTURE_2D);
-  }
- else {
+  GLCommon gl=Gdx.gl;
+  gl.glDepthMask(true);
+  if (isBlendingEnabled())   gl.glDisable(GL10.GL_BLEND);
+  gl.glDisable(GL10.GL_TEXTURE_2D);
+  if (Gdx.graphics.isGL20Available()) {
     shader.end();
-    GL20 gl=Gdx.gl20;
-    gl.glDepthMask(true);
-    gl.glDisable(GL20.GL_BLEND);
-    gl.glDisable(GL20.GL_TEXTURE_2D);
   }
 }
