@@ -1,0 +1,23 @@
+{
+  int x=getRegionX();
+  int y=getRegionY();
+  int width=getRegionWidth();
+  int height=getRegionHeight();
+  if (width < 0) {
+    x=x - width;
+    width=-width;
+  }
+  if (height < 0) {
+    y=y - height;
+    height=-height;
+  }
+  int rows=height / tileHeight;
+  int cols=width / tileWidth;
+  TextureRegion[][] tiles=new TextureRegion[rows][cols];
+  for (int row=0; row < rows; row++, y+=tileHeight) {
+    for (int col=0; col < cols; col++, x+=tileWidth) {
+      tiles[row][col]=new TextureRegion(texture,x,y,tileWidth,tileHeight);
+    }
+  }
+  return tiles;
+}

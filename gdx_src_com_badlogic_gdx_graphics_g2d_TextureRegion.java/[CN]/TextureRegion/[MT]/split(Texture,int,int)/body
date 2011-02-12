@@ -1,0 +1,4 @@
+{
+  TextureRegion region=new TextureRegion(texture);
+  return region.split(tileWidth,tileHeight);
+}
