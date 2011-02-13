@@ -12,4 +12,5 @@
   canvas=new GLCanvas(caps);
   canvas.addGLEventListener(this);
   this.useGL2=useGL2;
+  this.glu=new JoglGLU();
 }

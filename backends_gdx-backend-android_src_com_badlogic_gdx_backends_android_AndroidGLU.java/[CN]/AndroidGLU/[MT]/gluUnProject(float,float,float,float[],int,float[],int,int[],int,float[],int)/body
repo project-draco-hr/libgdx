@@ -1,0 +1,4 @@
+{
+  int result=android.opengl.GLU.gluUnProject(winX,winY,winZ,model,modelOffset,project,projectOffset,view,viewOffset,obj,objOffset);
+  return result == GL10.GL_TRUE;
+}

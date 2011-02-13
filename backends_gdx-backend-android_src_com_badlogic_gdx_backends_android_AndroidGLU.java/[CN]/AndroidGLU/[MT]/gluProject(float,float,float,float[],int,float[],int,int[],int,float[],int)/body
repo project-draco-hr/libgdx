@@ -1,0 +1,4 @@
+{
+  int result=android.opengl.GLU.gluProject(objX,objY,objZ,model,modelOffset,project,projectOffset,view,viewOffset,win,winOffset);
+  return result == GL10.GL_TRUE;
+}

@@ -16,6 +16,8 @@
     }
     gl=gl10;
   }
+  glu=new LwjglGLU();
+  Gdx.glu=glu;
   Gdx.gl=gl;
   Gdx.gl10=gl10;
   Gdx.gl11=gl11;
