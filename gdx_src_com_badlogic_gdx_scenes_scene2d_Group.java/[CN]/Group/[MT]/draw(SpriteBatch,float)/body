@@ -7,7 +7,7 @@
   batch.setTransformMatrix(tmp4);
   batch.begin();
   int len=children.size();
-  for (int i=0; i < len; i++)   children.get(i).render(batch);
+  for (int i=0; i < len; i++)   children.get(i).draw(batch,parentAlpha * color.a);
   batch.end();
   batch.setTransformMatrix(oldBatchTransform);
   batch.begin();
