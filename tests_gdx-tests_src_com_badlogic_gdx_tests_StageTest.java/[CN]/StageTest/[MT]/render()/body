@@ -34,7 +34,7 @@
       img.scaleY=1;
     }
   }
-  stage.render();
+  stage.draw();
   Gdx.graphics.getGL10().glPointSize(4);
   renderer.begin(GL10.GL_POINTS);
   len=stage.getRoot().getGroups().size();
@@ -45,5 +45,5 @@
   }
   renderer.end();
   Gdx.graphics.getGL10().glPointSize(4);
-  ui.render();
+  ui.draw();
 }
