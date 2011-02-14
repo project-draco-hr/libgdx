@@ -1,7 +1,6 @@
 {
-  cam=new OrthographicCamera();
-  cam.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  cam.getPosition().set(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2,0);
+  cam=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2,0);
   renderer=new ImmediateModeRenderer();
   spline=new CatmullRomSpline();
   float x=0;

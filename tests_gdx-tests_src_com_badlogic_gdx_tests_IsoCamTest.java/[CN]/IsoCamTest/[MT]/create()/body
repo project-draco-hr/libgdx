@@ -2,8 +2,7 @@
   mesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,"a_pos"));
   mesh.setVertices(new float[]{-1,0,1,1,0,1,1,0,-1,-1,0,-1});
   mesh.setIndices(new short[]{0,1,2,2,3,0});
-  projection=new Matrix4();
-  projection.setToOrtho(-5,5,-5,5,-1,-100);
-  view=new Matrix4();
-  view.setToLookAt(new Vector3(3,3,3),new Vector3(0,0,0),new Vector3(0,1,0));
+  cam=new OrthographicCamera(10,10);
+  cam.position.set(3,3,3);
+  cam.lookAt(0,0,0);
 }
