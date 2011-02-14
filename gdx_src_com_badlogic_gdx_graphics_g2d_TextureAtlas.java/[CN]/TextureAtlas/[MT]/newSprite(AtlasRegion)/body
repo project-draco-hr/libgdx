@@ -1,4 +1,8 @@
 {
-  if (region.packedWidth == region.originalWidth && region.packedHeight == region.originalHeight)   return new Sprite(region);
+  if (region.packedWidth == region.originalWidth && region.packedHeight == region.originalHeight) {
+    Sprite sprite=new Sprite(region);
+    if (region.rotate)     sprite.rotate90(true);
+    return sprite;
+  }
   return new AtlasSprite(region);
 }
