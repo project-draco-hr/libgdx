@@ -1,5 +1,3 @@
 {
-  DialogLayout.Group dialogGroup=createSequentialGroup();
-  this.dialogGroup.addGroup(dialogGroup);
-  return new Group(this,dialogGroup).add(widgets);
+  return sequence(Alignment.FILL,widgets);
 }
