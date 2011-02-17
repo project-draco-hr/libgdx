@@ -1,0 +1,11 @@
+{
+  sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  cam=new PerspectiveCamera(45,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.far=200;
+  Random rand=new Random();
+  for (int i=0; i < positions.length; i++) {
+    positions[i]=new Vector3(rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * -100 - 3);
+  }
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+}

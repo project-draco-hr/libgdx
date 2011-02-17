@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < planes.length; i++) {
+    PlaneSide result=planes[i].testPoint(point);
+    if (result == PlaneSide.Back)     return false;
+  }
+  return true;
+}

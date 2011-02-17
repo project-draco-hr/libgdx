@@ -3,7 +3,7 @@
   Gdx.app.log("ObjTest","obj bounds: " + mesh.calculateBoundingBox());
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
   texture.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
-  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam=new PerspectiveCamera(45,4,4);
   cam.position.set(3,3,3);
   cam.direction.set(-1,-1,-1);
   Gdx.input.setInputProcessor(this);

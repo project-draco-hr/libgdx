@@ -5,7 +5,7 @@
   float z_orth=-2 / (far - near);
   float tx=-(right + left) / (right - left);
   float ty=-(top + bottom) / (top - bottom);
-  float tz=(far + near) / (far - near);
+  float tz=-(far + near) / (far - near);
   val[M00]=x_orth;
   val[M10]=0;
   val[M20]=0;
