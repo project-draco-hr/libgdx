@@ -1,5 +1,7 @@
 {
-  if (iterator == null)   iterator=new ArrayIterator(this);
+  if (iterator == null) {
+    iterator=new ArrayIterator(this);
+  }
   iterator.index=0;
   return iterator;
 }

@@ -1,10 +1,16 @@
 {
-  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
+  if (index >= size) {
+    throw new IndexOutOfBoundsException(String.valueOf(index));
+  }
   Object[] items=this.items;
   T value=(T)items[index];
   size--;
-  if (ordered)   System.arraycopy(items,index + 1,items,index,size - index);
- else   items[index]=items[size];
+  if (ordered) {
+    System.arraycopy(items,index + 1,items,index,size - index);
+  }
+ else {
+    items[index]=items[size];
+  }
   items[size]=null;
   return value;
 }
