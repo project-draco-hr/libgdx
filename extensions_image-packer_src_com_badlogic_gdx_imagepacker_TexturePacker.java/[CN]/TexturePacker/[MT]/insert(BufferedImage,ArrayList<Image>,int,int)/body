@@ -18,7 +18,6 @@
     usedPixels+=image.getWidth() * image.getHeight();
     images.remove(i);
     if (canvas != null) {
-      System.out.println("Packing... " + image.name);
       node.writePackEntry();
       Graphics2D g=(Graphics2D)canvas.getGraphics();
       if (image.rotate) {
