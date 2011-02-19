@@ -1,7 +1,9 @@
 {
   if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
-  size--;
   long[] items=this.items;
+  long value=items[index];
+  size--;
   if (ordered)   System.arraycopy(items,index + 1,items,index,size - index);
  else   items[index]=items[size];
+  return value;
 }
