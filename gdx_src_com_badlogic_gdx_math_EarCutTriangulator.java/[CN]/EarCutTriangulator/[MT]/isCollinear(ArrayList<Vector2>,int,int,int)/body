@@ -1,6 +1,0 @@
-{
-  final Vector2 previousVertex=pVertices.get(pPreviousIndex);
-  final Vector2 vertex=pVertices.get(pIndex);
-  final Vector2 nextVertex=pVertices.get(pNextIndex);
-  return EarCutTriangulator.computeSpannedAreaSign(previousVertex.x,previousVertex.y,vertex.x,vertex.y,nextVertex.x,nextVertex.y) == 0;
-}
