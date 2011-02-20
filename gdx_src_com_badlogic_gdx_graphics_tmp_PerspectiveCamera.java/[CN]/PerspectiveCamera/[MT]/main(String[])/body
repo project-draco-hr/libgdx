@@ -1,5 +1,0 @@
-{
-  PerspectiveCamera cam=new PerspectiveCamera(90,1,1);
-  cam.update();
-  System.out.println(Arrays.toString(cam.frustum.planes));
-}

@@ -1,0 +1,29 @@
+{
+  GL10 gl=Gdx.gl10;
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  gl.glEnable(GL10.GL_DEPTH_TEST);
+  cam.update();
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(cam.projection.val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadMatrixf(cam.view.val,0);
+  Ray pickRay=null;
+  if (Gdx.input.isTouched()) {
+    pickRay=cam.getPickRay(Gdx.input.getX(),Gdx.input.getY());
+    Gdx.app.log("PickingTest","ray: " + pickRay);
+  }
+  for (int i=0; i < positions.length; i++) {
+    if (pickRay != null && Intersector.intersectRaySphere(pickRay,positions[i],1,null)) {
+      gl.glColor4f(1,0,0,1);
+    }
+ else {
+      gl.glColor4f(1,1,1,1);
+    }
+    gl.glPushMatrix();
+    gl.glTranslatef(positions[i].x,positions[i].y,positions[i].z);
+    sphere.render(GL10.GL_TRIANGLES);
+    gl.glPopMatrix();
+  }
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_A))   cam.rotate(20 * Gdx.graphics.getDeltaTime(),0,1,0);
+  if (Gdx.input.isKeyPressed(Keys.KEYCODE_D))   cam.rotate(-20 * Gdx.graphics.getDeltaTime(),0,1,0);
+}
