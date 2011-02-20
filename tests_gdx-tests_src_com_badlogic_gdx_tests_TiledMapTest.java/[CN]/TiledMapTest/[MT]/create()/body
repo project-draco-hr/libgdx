@@ -4,8 +4,8 @@
   font=new BitmapFont();
   font.setColor(Color.RED);
   spriteBatch=new SpriteBatch();
-  FileHandle mapHandle=Gdx.files.internal("data/tiledmap/perspective walls.tmx");
-  FileHandle packfile=Gdx.files.internal("data/tiledmap/perspective walls packfile");
+  FileHandle mapHandle=Gdx.files.internal("data/tiledmap/margin spacing doctype test.tmx");
+  FileHandle packfile=Gdx.files.internal("data/tiledmap/margin spacing doctype test packfile");
   FileHandle baseDir=Gdx.files.internal("data/tiledmap");
   startTime=System.currentTimeMillis();
   map=TiledLoader.createMap(mapHandle);

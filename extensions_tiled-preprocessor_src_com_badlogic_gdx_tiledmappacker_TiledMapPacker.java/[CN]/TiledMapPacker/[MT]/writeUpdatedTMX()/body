@@ -6,6 +6,11 @@
     docBuilder=docFactory.newDocumentBuilder();
     doc=docBuilder.parse(tmxFileHandle.read());
     Node map=doc.getFirstChild();
+    while (map.getNodeType() != Node.ELEMENT_NODE || map.getNodeName() != "map") {
+      if ((map=map.getNextSibling()) == null) {
+        throw new GdxRuntimeException("Couldn't find map node!");
+      }
+    }
     setProperty(doc,map,"blended tiles",toCSV(blendedTiles));
     setProperty(doc,map,"tile count",String.valueOf(tileCount));
     TransformerFactory transformerFactory=TransformerFactory.newInstance();
