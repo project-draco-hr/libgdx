@@ -1,4 +1,0 @@
-{
-  for (int i=0; i < planes.size(); i++)   if (planes.get(i).distance(center) < -radius)   return false;
-  return true;
-}
