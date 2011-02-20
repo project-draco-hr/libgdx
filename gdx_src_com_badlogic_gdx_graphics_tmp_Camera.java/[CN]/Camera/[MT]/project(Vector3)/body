@@ -1,0 +1,6 @@
+{
+  vec.prj(combined);
+  vec.x=Gdx.graphics.getWidth() * (vec.x + 1) / 2;
+  vec.y=Gdx.graphics.getHeight() * (vec.y + 1) / 2;
+  vec.z=(vec.z + 1) / 2;
+}
