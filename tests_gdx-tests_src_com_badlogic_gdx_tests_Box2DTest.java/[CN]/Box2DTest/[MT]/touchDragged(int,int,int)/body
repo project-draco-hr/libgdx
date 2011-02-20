@@ -1,7 +1,7 @@
 {
   if (mouseJoint != null) {
-    camera.getScreenToWorld(x,y,target);
-    mouseJoint.setTarget(target);
+    camera.unproject(testPoint.set(x,y,0));
+    mouseJoint.setTarget(target.set(testPoint.x,testPoint.y));
   }
   return false;
 }

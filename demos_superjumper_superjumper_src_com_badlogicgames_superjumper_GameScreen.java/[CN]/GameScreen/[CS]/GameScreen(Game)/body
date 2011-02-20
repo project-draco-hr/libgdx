@@ -1,10 +1,9 @@
 {
   super(game);
   state=GAME_READY;
-  guiCam=new OrthographicCamera();
-  guiCam.setViewport(320,480);
-  guiCam.getPosition().set(320 / 2,480 / 2,0);
-  touchPoint=new Vector2();
+  guiCam=new OrthographicCamera(320,480);
+  guiCam.position.set(320 / 2,480 / 2,0);
+  touchPoint=new Vector3();
   batcher=new SpriteBatch();
   worldListener=new WorldListener(){
     @Override public void jump(){

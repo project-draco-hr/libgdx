@@ -1,22 +1,22 @@
 {
   if (Gdx.input.justTouched()) {
-    guiCam.getScreenToWorld(Gdx.input.getX(),Gdx.input.getY(),touchPoint);
-    if (OverlapTester.pointInRectangle(playBounds,touchPoint)) {
+    guiCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    if (OverlapTester.pointInRectangle(playBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       game.setScreen(new GameScreen(game));
       return;
     }
-    if (OverlapTester.pointInRectangle(highscoresBounds,touchPoint)) {
+    if (OverlapTester.pointInRectangle(highscoresBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       game.setScreen(new HighscoresScreen(game));
       return;
     }
-    if (OverlapTester.pointInRectangle(helpBounds,touchPoint)) {
+    if (OverlapTester.pointInRectangle(helpBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       game.setScreen(new HelpScreen(game));
       return;
     }
-    if (OverlapTester.pointInRectangle(soundBounds,touchPoint)) {
+    if (OverlapTester.pointInRectangle(soundBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       Settings.soundEnabled=!Settings.soundEnabled;
       if (Settings.soundEnabled)       Assets.music.play();

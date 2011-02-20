@@ -1,6 +1,5 @@
 {
-  cam=new OrthographicCamera();
-  cam.setViewport(480,320);
+  cam=new OrthographicCamera(480,320);
   camController=new OrthoCamController(cam);
   Gdx.input.setInputProcessor(camController);
   renderer=new ImmediateModeRenderer();

@@ -1,7 +1,7 @@
 {
   if (Gdx.input.justTouched()) {
-    guiCam.getScreenToWorld(Gdx.input.getX(),Gdx.input.getY(),touchPoint);
-    if (OverlapTester.pointInRectangle(nextBounds,touchPoint)) {
+    guiCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    if (OverlapTester.pointInRectangle(nextBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       game.setScreen(new HelpScreen2(game));
       return;

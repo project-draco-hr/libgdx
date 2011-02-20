@@ -1,4 +1,0 @@
-{
-  screenX=screenX / Gdx.graphics.getWidth() * viewportWidth;
-  return (screenX * scale) - (viewportWidth * scale) / 2 + position.x;
-}

@@ -1,6 +1,6 @@
 {
   batch.disableBlending();
   batch.begin();
-  batch.draw(Assets.backgroundRegion,cam.getPosition().x - FRUSTUM_WIDTH / 2,cam.getPosition().y - FRUSTUM_HEIGHT / 2,FRUSTUM_WIDTH,FRUSTUM_HEIGHT);
+  batch.draw(Assets.backgroundRegion,cam.position.x - FRUSTUM_WIDTH / 2,cam.position.y - FRUSTUM_HEIGHT / 2,FRUSTUM_WIDTH,FRUSTUM_HEIGHT);
   batch.end();
 }

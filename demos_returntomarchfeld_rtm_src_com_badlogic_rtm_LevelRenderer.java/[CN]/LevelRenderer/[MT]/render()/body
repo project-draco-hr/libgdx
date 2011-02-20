@@ -4,8 +4,8 @@
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   gl.glEnable(GL10.GL_DEPTH_TEST);
   gl.glEnable(GL10.GL_TEXTURE_2D);
-  camera.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  camera.setMatrices();
+  camera.update();
+  camera.apply(gl);
   tiles.bind();
   gl.glColor4f(1,1,1,1);
   floorMesh.render(GL10.GL_TRIANGLES);

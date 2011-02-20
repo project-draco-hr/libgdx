@@ -1,5 +1,6 @@
 {
-  camera.getScreenToWorld(x,y,testPoint);
+  testPoint.set(x,y,0);
+  camera.unproject(testPoint);
   hitBody=null;
   world.QueryAABB(callback,testPoint.x - 0.1f,testPoint.y - 0.1f,testPoint.x + 0.1f,testPoint.y + 0.1f);
   if (hitBody != null) {
@@ -7,7 +8,7 @@
     def.bodyA=groundBody;
     def.bodyB=hitBody;
     def.collideConnected=true;
-    def.target.set(testPoint);
+    def.target.set(testPoint.x,testPoint.y);
     def.maxForce=1000.0f * hitBody.getMass();
     mouseJoint=(MouseJoint)world.createJoint(def);
     hitBody.setAwake(true);

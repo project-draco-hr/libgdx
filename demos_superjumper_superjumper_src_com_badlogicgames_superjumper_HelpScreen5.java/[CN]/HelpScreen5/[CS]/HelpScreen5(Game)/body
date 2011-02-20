@@ -1,10 +1,9 @@
 {
   super(game);
-  guiCam=new OrthographicCamera();
-  guiCam.setViewport(320,480);
-  guiCam.getPosition().set(320 / 2,480 / 2,0);
+  guiCam=new OrthographicCamera(320,480);
+  guiCam.position.set(320 / 2,480 / 2,0);
   nextBounds=new Rectangle(320 - 64,0,64,64);
-  touchPoint=new Vector2();
+  touchPoint=new Vector3();
   batcher=new SpriteBatch();
   helpImage=Assets.loadTexture("data/help5.png");
   helpRegion=new TextureRegion(helpImage,0,0,320,480);

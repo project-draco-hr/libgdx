@@ -1,5 +1,0 @@
-{
-  screenX=screenX / Gdx.graphics.getWidth() * viewportWidth;
-  screenY=screenY / Gdx.graphics.getHeight() * viewportHeight;
-  world.set((screenX * scale) - (viewportWidth * scale) / 2 + position.x,((viewportHeight - screenY) * scale) - (viewportHeight * scale) / 2 + position.y);
-}

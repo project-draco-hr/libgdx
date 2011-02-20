@@ -4,7 +4,7 @@
   gl.glEnable(GL10.GL_TEXTURE_2D);
   renderer.render();
   guiCam.update();
-  batcher.setProjectionMatrix(guiCam.getCombinedMatrix());
+  batcher.setProjectionMatrix(guiCam.combined);
   batcher.enableBlending();
   batcher.begin();
 switch (state) {

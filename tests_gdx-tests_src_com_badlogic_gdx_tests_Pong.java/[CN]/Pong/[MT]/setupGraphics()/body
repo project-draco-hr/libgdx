@@ -5,6 +5,5 @@
   ballMesh.setVertices(new float[]{-5,-5,5,-5,5,5,-5,5});
   score="0 : 0";
   spriteBatch=new SpriteBatch();
-  camera=new OrthographicCamera();
-  camera.setViewport(480,320);
+  camera=new OrthographicCamera(480,320);
 }

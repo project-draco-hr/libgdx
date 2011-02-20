@@ -1,7 +1,6 @@
 {
-  cam=new OrthographicCamera();
-  cam.setViewport(480,320);
-  cam.getPosition().set(WIDTH * 32 / 2,HEIGHT * 32 / 2,0);
+  cam=new OrthographicCamera(480,320);
+  cam.position.set(WIDTH * 32 / 2,HEIGHT * 32 / 2,0);
   camController=new OrthoCamController(cam);
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/tiles.png"));

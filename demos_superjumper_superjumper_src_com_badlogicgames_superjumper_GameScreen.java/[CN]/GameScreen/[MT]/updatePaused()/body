@@ -1,12 +1,12 @@
 {
   if (Gdx.input.justTouched()) {
-    guiCam.getScreenToWorld(Gdx.input.getX(),Gdx.input.getY(),touchPoint);
-    if (OverlapTester.pointInRectangle(resumeBounds,touchPoint)) {
+    guiCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    if (OverlapTester.pointInRectangle(resumeBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       state=GAME_RUNNING;
       return;
     }
-    if (OverlapTester.pointInRectangle(quitBounds,touchPoint)) {
+    if (OverlapTester.pointInRectangle(quitBounds,touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       game.setScreen(new MainMenuScreen(game));
       return;

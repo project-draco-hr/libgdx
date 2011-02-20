@@ -7,11 +7,9 @@
   mesh=new Mesh(true,chunk.vertices.length / 3,chunk.indices.length,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_position"),new VertexAttribute(VertexAttributes.Usage.ColorPacked,4,"a_color"));
   mesh.setVertices(chunk.vertices);
   mesh.setIndices(chunk.indices);
-  camera=new PerspectiveCamera();
-  camera.getPosition().set(0,5,5);
-  camera.getDirection().set(0,0,0).sub(camera.getPosition()).nor();
-  camera.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  camera.setNear(0.5f);
-  camera.setFar(300);
-  camera.setFov(67);
+  camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.position.set(0,5,5);
+  camera.direction.set(0,0,0).sub(camera.position).nor();
+  camera.near=0.5f;
+  camera.far=300;
 }

@@ -7,12 +7,10 @@
   animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
   renderer=new MD5Renderer(model,false,true);
   renderer.setSkeleton(model.baseSkeleton);
-  camera=new PerspectiveCamera();
-  camera.getPosition().set(0,25,100);
-  camera.setFov(60);
-  camera.setNear(1);
-  camera.setFar(1000);
-  camera.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera=new PerspectiveCamera(60,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.position.set(0,25,100);
+  camera.near=1;
+  camera.far=1000;
   batch=new SpriteBatch();
   font=new BitmapFont();
   Gdx.graphics.getGL10().glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());

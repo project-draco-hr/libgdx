@@ -1,19 +1,19 @@
 {
-  cam.getPosition().add(camDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(60));
-  if (cam.getPosition().x < 0) {
-    cam.getPosition().x=0;
+  cam.position.add(camDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(60));
+  if (cam.position.x < 0) {
+    cam.position.x=0;
     camDirection.x=1;
   }
-  if (cam.getPosition().x > maxCamPosition.x) {
-    cam.getPosition().x=maxCamPosition.x;
+  if (cam.position.x > maxCamPosition.x) {
+    cam.position.x=maxCamPosition.x;
     camDirection.x=-1;
   }
-  if (cam.getPosition().y < 0) {
-    cam.getPosition().y=0;
+  if (cam.position.y < 0) {
+    cam.position.y=0;
     camDirection.y=1;
   }
-  if (cam.getPosition().y > maxCamPosition.y) {
-    cam.getPosition().y=maxCamPosition.y;
+  if (cam.position.y > maxCamPosition.y) {
+    cam.position.y=maxCamPosition.y;
     camDirection.y=-1;
   }
 }

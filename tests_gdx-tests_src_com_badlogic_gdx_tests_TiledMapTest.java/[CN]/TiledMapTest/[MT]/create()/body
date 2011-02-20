@@ -23,9 +23,8 @@
       System.out.println("Object " + object.name + " x,y = "+ object.x+ ","+ object.y+ " width,height = "+ object.width+ ","+ object.height);
     }
   }
-  cam=new OrthographicCamera();
-  cam.setViewport(SCREEN_WIDTH,SCREEN_HEIGHT);
-  cam.getPosition().set(tiledMapRenderer.getMapWidthPixels() / 2,tiledMapRenderer.getMapHeightPixels() / 2,0);
+  cam=new OrthographicCamera(SCREEN_WIDTH,SCREEN_HEIGHT);
+  cam.position.set(tiledMapRenderer.getMapWidthPixels() / 2,tiledMapRenderer.getMapHeightPixels() / 2,0);
   camController=new OrthoCamController(cam);
   Gdx.input.setInputProcessor(camController);
   float maxX=tiledMapRenderer.getMapWidthPixels();

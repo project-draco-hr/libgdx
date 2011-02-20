@@ -1,7 +1,6 @@
 {
-  camera=new OrthographicCamera();
-  camera.setViewport(480,320);
-  camera.getPosition().set(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2,0);
+  camera=new OrthographicCamera(480,320);
+  camera.position.set(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2,0);
   Pixmap pixmap=new Pixmap(Gdx.files.internal("data/badlogic.jpg"));
   texture=new Texture(pixmap);
   pixmap.dispose();
