@@ -1,0 +1,23 @@
+{
+  final int vertexCount=pVertices.size();
+  final int[] vertexTypes=new int[vertexCount];
+  this.concaveVertexCount=0;
+  if (!EarClippingTriangulator.areVerticesClockwise(pVertices)) {
+    Collections.reverse(pVertices);
+  }
+  for (int index=0; index < vertexCount; index++) {
+    final int previousIndex=EarClippingTriangulator.computePreviousIndex(pVertices,index);
+    final int nextIndex=EarClippingTriangulator.computeNextIndex(pVertices,index);
+    final Vector2 previousVertex=pVertices.get(previousIndex);
+    final Vector2 currentVertex=pVertices.get(index);
+    final Vector2 nextVertex=pVertices.get(nextIndex);
+    if (EarClippingTriangulator.isTriangleConvex(previousVertex.x,previousVertex.y,currentVertex.x,currentVertex.y,nextVertex.x,nextVertex.y)) {
+      vertexTypes[index]=CONVEX;
+    }
+ else {
+      vertexTypes[index]=CONCAVE;
+      this.concaveVertexCount++;
+    }
+  }
+  return vertexTypes;
+}

@@ -1,0 +1,16 @@
+{
+  if (this.concaveVertexCount != 0) {
+    final Vector2 previousVertex=pVertices.get(EarClippingTriangulator.computePreviousIndex(pVertices,pEarTipIndex));
+    final Vector2 currentVertex=pVertices.get(pEarTipIndex);
+    final Vector2 nextVertex=pVertices.get(EarClippingTriangulator.computeNextIndex(pVertices,pEarTipIndex));
+    if (EarClippingTriangulator.isAnyVertexInTriangle(pVertices,pVertexTypes,previousVertex.x,previousVertex.y,currentVertex.x,currentVertex.y,nextVertex.x,nextVertex.y)) {
+      return false;
+    }
+ else {
+      return true;
+    }
+  }
+ else {
+    return true;
+  }
+}

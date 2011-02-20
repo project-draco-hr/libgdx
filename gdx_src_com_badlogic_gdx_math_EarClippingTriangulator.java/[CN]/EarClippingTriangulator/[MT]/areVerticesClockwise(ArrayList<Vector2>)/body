@@ -1,0 +1,15 @@
+{
+  final int vertexCount=pVertices.size();
+  float area=0;
+  for (int i=0; i < vertexCount; i++) {
+    final Vector2 p1=pVertices.get(i);
+    final Vector2 p2=pVertices.get(EarClippingTriangulator.computeNextIndex(pVertices,i));
+    area+=p1.x * p2.y - p2.x * p1.y;
+  }
+  if (area < 0) {
+    return true;
+  }
+ else {
+    return false;
+  }
+}

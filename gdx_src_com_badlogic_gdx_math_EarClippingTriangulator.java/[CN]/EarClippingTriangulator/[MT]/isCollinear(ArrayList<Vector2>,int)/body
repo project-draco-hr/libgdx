@@ -1,0 +1,5 @@
+{
+  final int previousIndex=EarClippingTriangulator.computePreviousIndex(pVertices,pIndex);
+  final int nextIndex=EarClippingTriangulator.computeNextIndex(pVertices,pIndex);
+  return EarClippingTriangulator.isCollinear(pVertices,previousIndex,pIndex,nextIndex);
+}
