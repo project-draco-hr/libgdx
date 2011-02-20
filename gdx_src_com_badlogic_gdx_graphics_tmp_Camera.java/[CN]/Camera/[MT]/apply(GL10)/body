@@ -1,0 +1,6 @@
+{
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(projection.val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadMatrixf(view.val,0);
+}
