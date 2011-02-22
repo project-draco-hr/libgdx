@@ -11,7 +11,7 @@
   if (key == Keys.KEYCODE_A)   button=JUMP;
   if (key == Keys.KEYCODE_S)   button=SHOOT;
   if (key == Keys.KEYCODE_D)   button=JUMP;
-  if (key == Keys.KEYCODE_ESCAPE)   button=ESCAPE;
+  if (key == Keys.KEYCODE_ESCAPE || key == Keys.KEYCODE_MENU)   button=ESCAPE;
   if (button >= 0) {
     buttons[button]=down;
   }

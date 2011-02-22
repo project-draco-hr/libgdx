@@ -1,4 +1,5 @@
 {
+  x=(int)(x / (float)Gdx.graphics.getWidth() * 320);
   if (x > 160 - 32 && x < 160) {
     set(Keys.KEYCODE_DPAD_UP,!buttons[UP]);
     if (buttons[UP])     buttons[DOWN]=false;
@@ -7,5 +8,6 @@
     set(Keys.KEYCODE_DPAD_DOWN,!buttons[DOWN]);
     if (buttons[DOWN])     buttons[UP]=false;
   }
+  System.out.println("buttons: " + buttons[UP] + ", "+ buttons[DOWN]);
   return false;
 }

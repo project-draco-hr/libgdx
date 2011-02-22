@@ -1,5 +1,6 @@
 {
   for (int i=0; i < buttons.length; i++) {
+    if (i == UP || i == DOWN)     continue;
     buttons[i]=false;
   }
 }
