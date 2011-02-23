@@ -5,6 +5,7 @@
     audio.music.removeValue(this,true);
     alSourceStop(streamID);
     alSourcei(streamID,AL_BUFFER,0);
+    audio.freeStream(streamID);
     streamID=-1;
   }
   alDeleteBuffers(buffers);

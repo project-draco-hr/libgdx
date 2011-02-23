@@ -1,4 +1,4 @@
 {
   if (streamID == -1)   return false;
-  return alGetSourcei(streamID,AL_SOURCE_STATE) == AL_PLAYING;
+  return isPlaying;
 }

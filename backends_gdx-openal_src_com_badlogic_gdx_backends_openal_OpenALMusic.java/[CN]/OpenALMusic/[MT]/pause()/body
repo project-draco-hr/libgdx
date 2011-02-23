@@ -1,3 +1,4 @@
 {
   if (streamID != -1)   alSourcePause(streamID);
+  isPlaying=false;
 }

@@ -1,2 +1,6 @@
 {
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  batch.begin();
+  font.draw(batch,"Position: " + music.getPosition(),30,146);
+  batch.end();
 }

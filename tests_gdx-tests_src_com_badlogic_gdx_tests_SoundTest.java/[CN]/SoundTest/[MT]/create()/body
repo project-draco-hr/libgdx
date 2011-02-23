@@ -5,4 +5,6 @@
   music.play();
   music.setLooping(true);
   Gdx.input.setInputProcessor(this);
+  batch=new SpriteBatch();
+  font=new BitmapFont(Gdx.files.internal("data/verdana39.fnt"),Gdx.files.internal("data/verdana39.png"),false);
 }

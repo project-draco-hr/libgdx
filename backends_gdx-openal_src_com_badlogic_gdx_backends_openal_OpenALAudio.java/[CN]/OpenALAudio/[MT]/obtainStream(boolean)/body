@@ -1,0 +1,11 @@
+{
+  for (int i=0, n=idleStreams.size; i < n; i++) {
+    int streamID=idleStreams.get(i);
+    int state=alGetSourcei(streamID,AL_SOURCE_STATE);
+    if (state != AL_PLAYING && state != AL_PAUSED) {
+      if (isMusic)       idleStreams.removeIndex(i);
+      return streamID;
+    }
+  }
+  return -1;
+}

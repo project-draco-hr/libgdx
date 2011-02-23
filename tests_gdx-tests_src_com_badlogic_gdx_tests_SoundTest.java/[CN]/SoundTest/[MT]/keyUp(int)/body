@@ -1,3 +1,6 @@
 {
+  if (keycode != Input.Keys.KEYCODE_SPACE)   return false;
+  if (music.isPlaying())   music.pause();
+ else   music.play();
   return false;
 }

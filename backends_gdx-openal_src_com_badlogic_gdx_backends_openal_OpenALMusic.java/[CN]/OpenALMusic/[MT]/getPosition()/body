@@ -1,0 +1,4 @@
+{
+  if (streamID == -1)   return 0;
+  return renderedSeconds + alGetSourcef(streamID,AL11.AL_SEC_OFFSET);
+}
