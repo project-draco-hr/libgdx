@@ -1,0 +1,5 @@
+{
+  Editor edit=this.sharedPrefs.edit();
+  edit.putBoolean(key,val);
+  edit.commit();
+}
