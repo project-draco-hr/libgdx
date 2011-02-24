@@ -1,8 +1,7 @@
 {
-  Sequence action=pool.obtain();
-  action.actions.clear();
+  Sequence sequence=pool.obtain();
+  sequence.actions.clear();
   int len=actions.length;
-  for (int i=0; i < len; i++)   action.actions.add(actions[i]);
-  action.listener=null;
-  return action;
+  for (int i=0; i < len; i++)   sequence.actions.add(actions[i]);
+  return sequence;
 }

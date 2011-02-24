@@ -1,4 +1,5 @@
 {
   pool.free(this);
   action.finish();
+  super.finish();
 }

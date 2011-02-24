@@ -1,9 +1,10 @@
 {
-  Parallel action=pool.obtain();
-  action.actions.clear();
-  if (action.finished == null || action.finished.length < actions.length)   action.finished=new boolean[actions.length];
+  Parallel parallel=pool.obtain();
+  parallel.actions.clear();
+  if (parallel.finished == null || parallel.finished.length < actions.length)   parallel.finished=new boolean[actions.length];
   int len=actions.length;
-  for (int i=0; i < len; i++)   action.actions.add(actions[i]);
-  action.listener=null;
-  return action;
+  for (int i=0; i < len; i++)   parallel.finished[i]=false;
+  len=actions.length;
+  for (int i=0; i < len; i++)   parallel.actions.add(actions[i]);
+  return parallel;
 }

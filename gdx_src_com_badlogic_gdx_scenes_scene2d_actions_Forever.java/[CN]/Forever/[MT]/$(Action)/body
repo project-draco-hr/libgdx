@@ -1,6 +1,5 @@
 {
   Forever forever=pool.obtain();
   forever.action=action;
-  forever.listener=null;
   return forever;
 }

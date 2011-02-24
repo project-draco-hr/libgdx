@@ -1,5 +1,5 @@
 {
   pool.free(this);
   action.finish();
-  if (listener != null)   listener.completed(this);
+  super.finish();
 }
