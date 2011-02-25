@@ -1,2 +1,4 @@
 {
+  font.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  font.draw(batch,text,x,y);
 }
