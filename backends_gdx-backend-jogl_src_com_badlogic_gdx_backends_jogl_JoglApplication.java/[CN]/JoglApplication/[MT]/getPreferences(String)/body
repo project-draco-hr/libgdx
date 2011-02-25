@@ -1,3 +1,10 @@
 {
-  return new JoglPreferences(name);
+  if (preferences.containsKey(name)) {
+    return preferences.get(name);
+  }
+ else {
+    Preferences prefs=new JoglPreferences(name);
+    preferences.put(name,prefs);
+    return prefs;
+  }
 }
