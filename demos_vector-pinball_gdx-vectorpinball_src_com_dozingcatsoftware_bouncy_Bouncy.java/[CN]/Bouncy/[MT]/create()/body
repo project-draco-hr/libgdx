@@ -1,6 +1,6 @@
 {
   Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-  cam=new OrthographicCamera();
+  cam=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   renderer=new GLFieldRenderer();
   field=new Field();
   field.resetForLevel(level);
