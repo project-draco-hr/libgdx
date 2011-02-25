@@ -1,0 +1,10 @@
+{
+  float rad=angle * MathUtils.degreesToRadians;
+  float cos=(float)Math.cos(rad);
+  float sin=(float)Math.sin(rad);
+  float newX=this.x * cos - this.y * sin;
+  float newY=this.x * sin + this.y * cos;
+  this.x=newX;
+  this.y=newY;
+  return this;
+}
