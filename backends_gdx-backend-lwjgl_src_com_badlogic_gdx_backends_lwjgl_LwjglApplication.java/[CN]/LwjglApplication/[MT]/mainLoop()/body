@@ -29,7 +29,7 @@ synchronized (runnables) {
         listener.resize(lastWidth,lastHeight);
       }
     }
-    ((LwjglInput)Gdx.input).processEvents();
+    input.processEvents();
     listener.render();
     audio.update();
     Display.update();
