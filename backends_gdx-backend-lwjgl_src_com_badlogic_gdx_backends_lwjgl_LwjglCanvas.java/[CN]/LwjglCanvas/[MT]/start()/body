@@ -5,7 +5,6 @@
  catch (  LWJGLException e) {
     throw new GdxRuntimeException(e);
   }
-  Keyboard.enableRepeatEvents(true);
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
   final Runnable runnable=new Runnable(){
