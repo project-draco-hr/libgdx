@@ -1,7 +1,10 @@
 {
   if (player.isPlaying())   return;
   try {
-    if (!isPrepared)     player.prepare();
+    if (!isPrepared) {
+      player.prepare();
+      isPrepared=true;
+    }
     player.start();
   }
  catch (  IllegalStateException e) {
