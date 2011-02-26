@@ -4,6 +4,12 @@
     listener.create();
     created=true;
   }
+synchronized (runnables) {
+    for (int i=0; i < runnables.size(); i++) {
+      runnables.get(i).run();
+    }
+    runnables.clear();
+  }
   input.processEvents();
   listener.render();
   input.justTouched=false;
