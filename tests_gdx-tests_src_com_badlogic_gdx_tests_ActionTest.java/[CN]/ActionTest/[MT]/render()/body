@@ -1,5 +1,5 @@
 {
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  stage.act(Gdx.graphics.getDeltaTime());
+  stage.act(Math.min(Gdx.graphics.getDeltaTime(),1 / 30f));
   stage.draw();
 }

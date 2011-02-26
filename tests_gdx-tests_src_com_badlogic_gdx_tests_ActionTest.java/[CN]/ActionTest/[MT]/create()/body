@@ -7,18 +7,6 @@
   img.originX=50;
   img.originY=50;
   img.x=img.y=100;
-  Action actionMoveBy=MoveBy.$(30,0,0.5f).setCompletionListener(new OnActionCompleted(){
-    @Override public void completed(    Action action){
-      System.out.println("move by complete");
-    }
-  }
-);
-  Action actionDelay=Delay.$(actionMoveBy,1).setCompletionListener(new OnActionCompleted(){
-    @Override public void completed(    Action action){
-      System.out.println("delay complete");
-    }
-  }
-);
-  img.action(actionDelay);
+  img.action(Repeat.$(Sequence.$(MoveBy.$(50,0,1),MoveBy.$(0,50,1),MoveBy.$(-50,0,1),MoveBy.$(0,-50,1)),3));
   stage.addActor(img);
 }
