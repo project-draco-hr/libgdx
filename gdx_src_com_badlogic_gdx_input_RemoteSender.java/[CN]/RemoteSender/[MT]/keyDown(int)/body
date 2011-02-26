@@ -1,0 +1,10 @@
+{
+  try {
+    out.writeInt(KEY_DOWN);
+    out.writeInt(keycode);
+  }
+ catch (  Throwable t) {
+    connected=false;
+  }
+  return false;
+}

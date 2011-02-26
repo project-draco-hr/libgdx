@@ -1,0 +1,10 @@
+{
+  try {
+    out.writeInt(KEY_TYPED);
+    out.writeChar(character);
+  }
+ catch (  Throwable t) {
+    connected=false;
+  }
+  return false;
+}

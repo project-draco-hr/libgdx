@@ -1,0 +1,55 @@
+{
+  justTouched=false;
+  if (processor != null) {
+    if (touchEvent != null) {
+      touchX[touchEvent.pointer]=touchEvent.x;
+      touchY[touchEvent.pointer]=touchEvent.y;
+switch (touchEvent.type) {
+case TouchEvent.TOUCH_DOWN:
+        processor.touchDown(touchEvent.x,touchEvent.y,touchEvent.pointer,Input.Buttons.LEFT);
+      isTouched[touchEvent.pointer]=true;
+    justTouched=true;
+  break;
+case TouchEvent.TOUCH_UP:
+processor.touchUp(touchEvent.x,touchEvent.y,touchEvent.pointer,Input.Buttons.LEFT);
+isTouched[touchEvent.pointer]=false;
+break;
+case TouchEvent.TOUCH_DRAGGED:
+processor.touchDragged(touchEvent.x,touchEvent.y,touchEvent.pointer);
+break;
+}
+}
+if (keyEvent != null) {
+switch (keyEvent.type) {
+case KeyEvent.KEY_DOWN:
+processor.keyDown(keyEvent.keyCode);
+keys.add(keyEvent.keyCode);
+break;
+case KeyEvent.KEY_UP:
+processor.keyUp(keyEvent.keyCode);
+keys.remove(keyEvent.keyCode);
+break;
+case KeyEvent.KEY_TYPED:
+processor.keyTyped(keyEvent.keyChar);
+break;
+}
+}
+}
+ else {
+if (touchEvent != null) {
+touchX[touchEvent.pointer]=touchEvent.x;
+touchY[touchEvent.pointer]=touchEvent.y;
+if (touchEvent.type == TouchEvent.TOUCH_DOWN) {
+isTouched[touchEvent.pointer]=true;
+justTouched=true;
+}
+if (touchEvent.type == TouchEvent.TOUCH_UP) {
+isTouched[touchEvent.pointer]=false;
+}
+}
+if (keyEvent != null) {
+if (keyEvent.type == KeyEvent.KEY_DOWN) keys.add(keyEvent.keyCode);
+if (keyEvent.type == KeyEvent.KEY_UP) keys.remove(keyEvent.keyCode);
+}
+}
+}

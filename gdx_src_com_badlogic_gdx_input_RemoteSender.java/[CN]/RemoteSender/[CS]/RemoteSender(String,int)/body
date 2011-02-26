@@ -1,0 +1,14 @@
+{
+  try {
+    Socket socket=new Socket(ip,port);
+    socket.setTcpNoDelay(true);
+    socket.setSoTimeout(3000);
+    out=new DataOutputStream(socket.getOutputStream());
+    out.writeBoolean(Gdx.input.supportsMultitouch());
+    connected=true;
+    Gdx.input.setInputProcessor(this);
+  }
+ catch (  Exception e) {
+    throw new RuntimeException("That didn't work, " + e.getMessage());
+  }
+}

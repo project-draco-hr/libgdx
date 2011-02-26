@@ -1,0 +1,17 @@
+{
+  try {
+    this.port=port;
+    serverSocket=new ServerSocket(port);
+    Thread thread=new Thread(this);
+    thread.setDaemon(true);
+    thread.start();
+    InetAddress[] allByName=InetAddress.getAllByName(InetAddress.getLocalHost().getHostName());
+    ips=new String[allByName.length];
+    for (int i=0; i < allByName.length; i++) {
+      ips[i]=allByName[i].getHostAddress();
+    }
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't open listening socket at port '" + port + "'",e);
+  }
+}
