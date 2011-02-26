@@ -1,7 +1,7 @@
 {
   RemoteInput receiver=new RemoteInput();
-  ips=Arrays.toString(receiver.getIPs());
   Gdx.input=receiver;
+  ips=Arrays.toString(receiver.getIPs());
   Gdx.input.setInputProcessor(this);
   batch=new SpriteBatch();
   font=new BitmapFont();
