@@ -1,0 +1,6 @@
+{
+  music=Gdx.audio.newMusic(Gdx.files.internal("data/threeofaperfectpair.mp3"));
+  buttons=new TextureRegion(new Texture(Gdx.files.internal("data/playback.png")));
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+}

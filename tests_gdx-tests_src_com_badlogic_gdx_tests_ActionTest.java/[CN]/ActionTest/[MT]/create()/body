@@ -7,6 +7,6 @@
   img.originX=50;
   img.originY=50;
   img.x=img.y=100;
-  img.action(Repeat.$(Sequence.$(MoveBy.$(50,0,1),MoveBy.$(0,50,1),MoveBy.$(-50,0,1),MoveBy.$(0,-50,1)),3));
+  img.action(Sequence.$(FadeOut.$(1),FadeIn.$(1),Delay.$(MoveTo.$(100,100,1),2),ScaleTo.$(0.5f,0.5f,1),FadeOut.$(0.5f),Delay.$(Parallel.$(RotateTo.$(360,1),FadeIn.$(1),ScaleTo.$(1,1,1)),1)));
   stage.addActor(img);
 }
