@@ -1,0 +1,4 @@
+{
+  Object object=opt(index);
+  return object != null ? object.toString() : defaultValue;
+}

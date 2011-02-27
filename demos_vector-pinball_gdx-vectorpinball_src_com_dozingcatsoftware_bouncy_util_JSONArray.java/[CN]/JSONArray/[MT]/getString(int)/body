@@ -1,0 +1,4 @@
+{
+  Object object=get(index);
+  return object == JSONObject.NULL ? null : object.toString();
+}
