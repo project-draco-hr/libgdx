@@ -82,16 +82,12 @@
     vertices[ovo3 + 5]=vn.y;
     vertices[ovo3 + 6]=vn.z;
   }
-  for (int vertexOffset=2, k=0; vertexOffset < vertices.length; vertexOffset+=vstride) {
+  for (int vertexOffset=2; vertexOffset < vertices.length; vertexOffset+=vstride) {
     int weightOffset=(int)vertices[vertexOffset];
     int weightCount=(int)vertices[vertexOffset + 1];
     weightOffset=weightOffset * wstride;
     for (int j=0; j < weightCount; j++) {
       int jointOffset=(int)weights[weightOffset++] << 3;
-      float bias=weights[weightOffset++];
-      float vx=weights[weightOffset++];
-      float vy=weights[weightOffset++];
-      float vz=weights[weightOffset++];
       float qx=skeleton.joints[jointOffset + 4];
       float qy=skeleton.joints[jointOffset + 5];
       float qz=skeleton.joints[jointOffset + 6];
