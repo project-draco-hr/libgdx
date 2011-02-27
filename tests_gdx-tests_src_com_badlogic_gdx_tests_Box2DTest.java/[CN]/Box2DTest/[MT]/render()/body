@@ -7,10 +7,15 @@
   camera.update();
   camera.apply(gl);
   renderBox(gl,groundBody,50,1);
+  batch.getProjectionMatrix().set(camera.combined);
+  batch.begin();
   for (int i=0; i < boxes.size(); i++) {
     Body box=boxes.get(i);
-    renderBox(gl,box,1,1);
+    Vector2 position=box.getPosition();
+    float angle=MathUtils.radiansToDegrees * box.getAngle();
+    batch.draw(textureRegion,position.x - 1,position.y - 1,1f,1f,2,2,1,1,angle);
   }
+  batch.end();
   gl.glPointSize(4);
   renderer.begin(GL10.GL_POINTS);
   for (int i=0; i < world.getContactCount(); i++) {
@@ -27,6 +32,7 @@
   }
   renderer.end();
   gl.glPointSize(1);
+  batch.getProjectionMatrix().setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + " update time: "+ updateTime,0,20);
   batch.end();

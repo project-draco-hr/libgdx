@@ -5,6 +5,7 @@
   batch=new SpriteBatch();
   font=new BitmapFont();
   font.setColor(Color.RED);
+  textureRegion=new TextureRegion(new Texture(Gdx.files.internal("data/badlogicsmall.jpg")));
   createPhysicsWorld();
   Gdx.input.setInputProcessor(this);
 }
