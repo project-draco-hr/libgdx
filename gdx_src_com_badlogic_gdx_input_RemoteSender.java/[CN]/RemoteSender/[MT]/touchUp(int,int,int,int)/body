@@ -1,4 +1,7 @@
 {
+synchronized (this) {
+    if (!connected)     return false;
+  }
   try {
     out.writeInt(TOUCH_UP);
     out.writeInt(x);
@@ -6,7 +9,9 @@
     out.writeInt(pointer);
   }
  catch (  Throwable t) {
-    connected=false;
+synchronized (this) {
+      connected=false;
+    }
   }
   return false;
 }

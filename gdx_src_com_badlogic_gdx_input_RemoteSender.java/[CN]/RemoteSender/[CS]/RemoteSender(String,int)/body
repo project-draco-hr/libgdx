@@ -9,6 +9,6 @@
     Gdx.input.setInputProcessor(this);
   }
  catch (  Exception e) {
-    throw new RuntimeException("That didn't work, " + e.getMessage());
+    Gdx.app.log("RemoteSender","couldn't connect to " + ip + ":"+ port);
   }
 }

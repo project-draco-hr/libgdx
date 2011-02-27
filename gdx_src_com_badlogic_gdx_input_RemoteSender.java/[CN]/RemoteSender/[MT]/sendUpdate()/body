@@ -1,4 +1,7 @@
 {
+synchronized (this) {
+    if (!connected)     return;
+  }
   try {
     out.writeInt(ACCEL);
     out.writeFloat(Gdx.input.getAccelerometerX());
