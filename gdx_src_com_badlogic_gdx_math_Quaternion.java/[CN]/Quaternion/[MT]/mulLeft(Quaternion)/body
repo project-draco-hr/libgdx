@@ -1,0 +1,11 @@
+{
+  float newX=q.w * x + q.x * w + q.y * z - q.z * y;
+  float newY=q.w * y + q.y * w + q.z * x - q.x * z;
+  float newZ=q.w * z + q.z * w + q.x * y - q.y * x;
+  float newW=q.w * w - q.x * x - q.y * y - q.z * z;
+  x=newX;
+  y=newY;
+  z=newZ;
+  w=newW;
+  return this;
+}

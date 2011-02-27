@@ -4,6 +4,7 @@
   this.file=null;
   this.textureData=null;
   glHandle=createGLHandle();
+  format=pixmap.getFormat();
   uploadImageData(pixmap);
   if (mipmap)   minFilter=TextureFilter.MipMap;
   setFilter(minFilter,magFilter);

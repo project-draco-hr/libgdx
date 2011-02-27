@@ -5,6 +5,7 @@
   this.textureData=null;
   glHandle=createGLHandle();
   Pixmap pixmap=new Pixmap(file);
+  format=pixmap.getFormat();
   uploadImageData(pixmap);
   pixmap.dispose();
   if (mipmap)   minFilter=TextureFilter.MipMap;

@@ -1,0 +1,8 @@
+{
+  tmp2.set(this);
+  tmp2.conjugate();
+  tmp2.mulLeft(tmp1.set(v.x,v.y,v.z,0)).mulLeft(this);
+  v.x=tmp2.x;
+  v.y=tmp2.y;
+  v.z=tmp2.z;
+}

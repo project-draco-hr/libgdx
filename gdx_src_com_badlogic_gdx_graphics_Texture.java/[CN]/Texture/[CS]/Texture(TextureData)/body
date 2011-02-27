@@ -8,6 +8,7 @@
   setFilter(minFilter,magFilter);
   setWrap(uWrap,vWrap);
   textureData.load();
+  format=Format.RGBA8888;
   this.width=textureData.getWidth();
   this.height=textureData.getHeight();
   managedTextures.add(this);

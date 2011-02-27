@@ -1,0 +1,6 @@
+{
+  float l_ang=angle * MathUtils.degreesToRadians;
+  float l_sin=MathUtils.sin(l_ang / 2);
+  float l_cos=MathUtils.cos(l_ang / 2);
+  return this.set(x * l_sin,y * l_sin,z * l_sin,l_cos).nor();
+}
