@@ -50,7 +50,7 @@
     }
     explosionMesh.setVertices(vertices);
     font=new BitmapFont(Gdx.files.internal("data/font10.fnt"),Gdx.files.internal("data/font10.png"),false);
-    camera=new PerspectiveCamera(67,480,320);
+    camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   }
  catch (  Exception ex) {
     ex.printStackTrace();
