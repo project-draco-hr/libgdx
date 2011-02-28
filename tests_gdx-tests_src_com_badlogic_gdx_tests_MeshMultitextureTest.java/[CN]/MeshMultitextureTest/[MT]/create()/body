@@ -1,5 +1,7 @@
 {
-  mesh=new Mesh(true,3,0,new VertexAttribute(VertexAttributes.Usage.Color,4,"a_Color"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords1"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords2"),new VertexAttribute(VertexAttributes.Usage.Position,3,"a_Position"));
-  mesh.setVertices(new float[]{1,1,1,1,0,1,0,1,-0.5f,-0.5f,0,1,1,1,1,1,1,1,1,0.5f,-0.5f,0,1,1,1,1,0.5f,0,0.5f,0,0,0.5f,0});
-  initUnmanaged();
+  mesh=new Mesh(true,4,6,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_Position"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords1"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords2"));
+  mesh.setVertices(new float[]{-0.5f,-0.5f,0,0,1,0,1,0.5f,-0.5f,0,1,1,1,1,0.5f,0.5f,0,1,0,1,0,-0.5f,0.5f,0,0,0,0,0});
+  mesh.setIndices(new short[]{0,1,2,2,3,0});
+  tex1=new Texture(Gdx.files.internal("data/planet_earth.png"));
+  tex2=new Texture(Gdx.files.internal("data/planet_heavyclouds.png"));
 }

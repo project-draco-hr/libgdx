@@ -2,10 +2,13 @@
   GL10 gl=Gdx.graphics.getGL10();
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  gl.glEnable(GL10.GL_TEXTURE_2D);
   gl.glActiveTexture(GL10.GL_TEXTURE0);
+  gl.glEnable(GL10.GL_TEXTURE_2D);
   tex1.bind();
   gl.glActiveTexture(GL10.GL_TEXTURE1);
+  gl.glEnable(GL10.GL_TEXTURE_2D);
   tex2.bind();
+  Gdx.gl11.glTexEnvi(GL10.GL_TEXTURE_ENV,GL10.GL_TEXTURE_ENV_MODE,GL11.GL_COMBINE);
+  Gdx.gl11.glTexEnvi(GL10.GL_TEXTURE_ENV,GL11.GL_COMBINE_RGB,GL11.GL_ADD);
   mesh.render(GL10.GL_TRIANGLES);
 }
