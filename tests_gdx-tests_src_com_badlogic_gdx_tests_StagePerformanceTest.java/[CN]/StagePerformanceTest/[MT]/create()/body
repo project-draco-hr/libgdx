@@ -3,7 +3,9 @@
   font=new BitmapFont();
   stage=new Stage(24,12,true);
   regions=new TextureRegion[8 * 8];
-  Texture tex=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  sprites=new Sprite[24 * 12];
+  Texture tex=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
+  tex.setFilter(TextureFilter.MipMap,TextureFilter.Nearest);
   for (int y=0; y < 8; y++) {
     for (int x=0; x < 8; x++) {
       regions[x + y * 8]=new TextureRegion(tex,x * 32,y * 32,32,32);
@@ -18,6 +20,10 @@
       img.width=1;
       img.height=1;
       stage.addActor(img);
+      sprites[i]=new Sprite(regions[rand.nextInt(8 * 8)]);
+      sprites[i].setPosition(x,y);
+      sprites[i].setSize(1,1);
+      i++;
     }
   }
 }
