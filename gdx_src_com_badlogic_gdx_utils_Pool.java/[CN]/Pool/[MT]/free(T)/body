@@ -1,3 +1,4 @@
 {
+  if (object == null)   throw new IllegalArgumentException("object cannot be null.");
   if (freeObjects.size < max)   freeObjects.add(object);
 }
