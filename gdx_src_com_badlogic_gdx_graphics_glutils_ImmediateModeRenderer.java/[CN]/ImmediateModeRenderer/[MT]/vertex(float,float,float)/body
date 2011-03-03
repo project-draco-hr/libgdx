@@ -2,7 +2,7 @@
   positions[idxPos++]=x;
   positions[idxPos++]=y;
   positions[idxPos++]=z;
-  if (idxCols > 0)   idxCols+=4;
-  if (idxNors > 0)   idxNors+=3;
-  if (idxTexCoords > 0)   idxTexCoords+=2;
+  if (hasCols)   idxCols+=4;
+  if (hasNors)   idxNors+=3;
+  if (hasTexCoords)   idxTexCoords+=2;
 }
