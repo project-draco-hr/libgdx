@@ -1,3 +1,6 @@
 {
+  for (  AndroidMusic music : musics) {
+    music.dispose();
+  }
   soundPool.release();
 }
