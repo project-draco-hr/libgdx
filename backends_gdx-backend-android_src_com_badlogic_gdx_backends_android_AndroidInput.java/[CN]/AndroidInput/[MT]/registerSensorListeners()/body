@@ -1,0 +1,21 @@
+{
+  manager=(SensorManager)app.getSystemService(Context.SENSOR_SERVICE);
+  if (manager.getSensorList(Sensor.TYPE_ACCELEROMETER).size() == 0) {
+    accelerometerAvailable=false;
+  }
+ else {
+    Sensor accelerometer=manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
+    accelerometerAvailable=manager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME);
+  }
+  Sensor sensor=manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+  if (sensor != null) {
+    compassAvailable=accelerometerAvailable;
+    if (compassAvailable) {
+      compassAvailable=manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_GAME);
+    }
+  }
+ else {
+    compassAvailable=false;
+  }
+  Gdx.app.log("AndroidInput","sensor listener setup");
+}

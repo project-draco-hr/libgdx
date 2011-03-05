@@ -1,16 +1,16 @@
 {
   graphics.pause();
-  if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
-    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
-  }
+  if (audio != null)   audio.pause();
+  input.unregisterSensorListeners();
   if (isFinishing()) {
-    input.unregisterListeners();
     graphics.clearManagedCaches();
     graphics.destroy();
     audio.dispose();
     audio=null;
   }
-  if (audio != null)   audio.pause();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
+  }
   super.onPause();
 }

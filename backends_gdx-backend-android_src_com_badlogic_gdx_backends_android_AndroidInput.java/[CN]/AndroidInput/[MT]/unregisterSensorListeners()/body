@@ -1,0 +1,5 @@
+{
+  manager.unregisterListener(this);
+  manager=null;
+  Gdx.app.log("AndroidInput","sensor listener tear down");
+}

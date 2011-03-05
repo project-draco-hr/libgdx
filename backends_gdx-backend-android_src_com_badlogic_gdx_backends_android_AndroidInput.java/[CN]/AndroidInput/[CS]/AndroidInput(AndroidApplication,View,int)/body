@@ -5,15 +5,6 @@
   view.setFocusableInTouchMode(true);
   view.requestFocus();
   view.requestFocusFromTouch();
-  manager=(SensorManager)activity.getSystemService(Context.SENSOR_SERVICE);
-  if (manager.getSensorList(Sensor.TYPE_ACCELEROMETER).size() == 0) {
-    accelerometerAvailable=false;
-  }
- else {
-    Sensor accelerometer=manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
-    if (!manager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME))     accelerometerAvailable=false;
- else     accelerometerAvailable=true;
-  }
   handle=new Handler();
   this.app=activity;
   this.sleepTime=sleepTime;
@@ -22,14 +13,4 @@
  else   touchHandler=new AndroidSingleTouchHandler();
   hasMultitouch=touchHandler instanceof AndroidMultiTouchHandler && ((AndroidMultiTouchHandler)touchHandler).supportsMultitouch(activity);
   vibrator=(Vibrator)activity.getSystemService(Context.VIBRATOR_SERVICE);
-  Sensor sensor=manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-  if (sensor != null) {
-    compassAvailable=accelerometerAvailable;
-    if (compassAvailable) {
-      manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_GAME);
-    }
-  }
- else {
-    compassAvailable=false;
-  }
 }
