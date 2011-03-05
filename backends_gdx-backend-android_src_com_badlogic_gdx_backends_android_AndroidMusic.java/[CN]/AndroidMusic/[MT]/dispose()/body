@@ -1,5 +1,7 @@
 {
+  if (player == null)   return;
   if (player.isPlaying())   player.stop();
   player.release();
+  player=null;
   audio.musics.remove(this);
 }
