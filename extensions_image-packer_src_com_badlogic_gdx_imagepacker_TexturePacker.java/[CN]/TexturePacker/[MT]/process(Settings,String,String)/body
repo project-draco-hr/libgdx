@@ -7,7 +7,7 @@
   }
   File packFile=new File(outputDir,"pack");
   File incrmentalFile=null;
-  if (settings.incremental) {
+  if (settings.incremental && packFile.exists()) {
     settings.crcs.clear();
     incrmentalFile=new File(System.getProperty("user.home") + "/.texturepacker/" + hash(inputDir.getAbsolutePath()));
     if (incrmentalFile.exists()) {
@@ -46,7 +46,7 @@
   }
   packFile.delete();
   process(settings,inputDir,outputDir,packFile);
-  if (settings.incremental) {
+  if (incrmentalFile != null) {
     incrmentalFile.getParentFile().mkdirs();
     FileWriter writer=new FileWriter(incrmentalFile);
     for (    Entry<String,Long> entry : settings.crcs.entrySet()) {
