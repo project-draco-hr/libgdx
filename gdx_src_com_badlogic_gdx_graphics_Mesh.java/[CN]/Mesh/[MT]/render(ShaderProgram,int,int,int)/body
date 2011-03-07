@@ -1,6 +1,5 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
-  if (!visible)   return;
   if (autoBind)   bind(shader);
   if (indices.getNumIndices() > 0)   Gdx.gl20.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset * 2);
  else   Gdx.gl20.glDrawArrays(primitiveType,offset,count);

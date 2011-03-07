@@ -7,6 +7,6 @@
       }
       mat.set(GL10.GL_FRONT);
     }
-    target[i].render(GL10.GL_TRIANGLES,0,target[i].getNumIndices());
+    if (visible[i])     target[i].render(GL10.GL_TRIANGLES,0,target[i].getNumIndices());
   }
 }

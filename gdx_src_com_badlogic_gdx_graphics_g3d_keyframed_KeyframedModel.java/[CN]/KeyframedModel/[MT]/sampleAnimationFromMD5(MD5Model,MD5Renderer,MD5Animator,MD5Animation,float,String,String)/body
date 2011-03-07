@@ -5,6 +5,10 @@
   if (animator == null) {
     animator=new KeyframeAnimator(numMeshes,sampleRate);
     target=new Mesh[numMeshes];
+    visible=new boolean[numMeshes];
+    for (int i=0; i < visible.length; i++) {
+      visible[i]=true;
+    }
   }
   if (animations == null) {
     animations=new ObjectMap<String,KeyframeAnimation>();
