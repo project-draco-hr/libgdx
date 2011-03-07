@@ -1,0 +1,4 @@
+{
+  emitters=new Array(effect.emitters.size);
+  for (int i=0, n=effect.emitters.size; i < n; i++)   emitters.add(new ParticleEmitter(effect.emitters.items[i]));
+}
