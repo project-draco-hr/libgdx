@@ -1,5 +1,5 @@
 {
-  streamID=audio.obtainStream(false);
+  int streamID=audio.obtainStream(false);
   if (streamID == -1)   return;
   alSourceStop(streamID);
   alSourcei(streamID,AL_BUFFER,0);
