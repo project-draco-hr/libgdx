@@ -1,7 +1,7 @@
 {
   String version=drawable.getGL().glGetString(GL.GL_VERSION);
-  int major=Integer.parseInt("" + version.charAt(0));
-  int minor=Integer.parseInt("" + version.charAt(2));
+  major=Integer.parseInt("" + version.charAt(0));
+  minor=Integer.parseInt("" + version.charAt(2));
   if (useGL2 && major >= 2) {
     gl20=new JoglGL20(drawable.getGL());
     gl=gl20;

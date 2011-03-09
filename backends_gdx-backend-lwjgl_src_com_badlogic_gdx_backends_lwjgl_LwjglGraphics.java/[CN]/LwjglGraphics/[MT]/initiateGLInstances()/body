@@ -1,7 +1,7 @@
 {
   String version=org.lwjgl.opengl.GL11.glGetString(GL11.GL_VERSION);
-  int major=Integer.parseInt("" + version.charAt(0));
-  int minor=Integer.parseInt("" + version.charAt(2));
+  major=Integer.parseInt("" + version.charAt(0));
+  minor=Integer.parseInt("" + version.charAt(2));
   if (useGL2 && major >= 2) {
     gl20=new LwjglGL20();
     gl=gl20;
