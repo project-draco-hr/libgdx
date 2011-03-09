@@ -4,6 +4,8 @@
     int state=alGetSourcei(streamID,AL_SOURCE_STATE);
     if (state != AL_PLAYING && state != AL_PAUSED) {
       if (isMusic)       idleStreams.removeIndex(i);
+      alSourceStop(streamID);
+      alSourcei(streamID,AL_BUFFER,0);
       return streamID;
     }
   }

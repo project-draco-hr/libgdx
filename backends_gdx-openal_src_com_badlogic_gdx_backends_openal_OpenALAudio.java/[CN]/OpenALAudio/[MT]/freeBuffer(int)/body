@@ -1,0 +1,6 @@
+{
+  for (int i=0, n=idleStreams.size; i < n; i++) {
+    int streamID=idleStreams.get(i);
+    if (alGetSourcei(streamID,AL_BUFFER) == bufferID)     alSourcei(streamID,AL_BUFFER,0);
+  }
+}
