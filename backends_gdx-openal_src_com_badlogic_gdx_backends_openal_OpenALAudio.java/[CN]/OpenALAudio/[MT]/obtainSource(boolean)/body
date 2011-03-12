@@ -1,0 +1,13 @@
+{
+  for (int i=0, n=idleSources.size; i < n; i++) {
+    int sourceID=idleSources.get(i);
+    int state=alGetSourcei(sourceID,AL_SOURCE_STATE);
+    if (state != AL_PLAYING && state != AL_PAUSED) {
+      if (isMusic)       idleSources.removeIndex(i);
+      alSourceStop(sourceID);
+      alSourcei(sourceID,AL_BUFFER,0);
+      return sourceID;
+    }
+  }
+  return -1;
+}

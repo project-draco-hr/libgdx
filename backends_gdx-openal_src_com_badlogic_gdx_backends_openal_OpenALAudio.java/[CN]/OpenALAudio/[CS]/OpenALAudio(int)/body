@@ -11,13 +11,13 @@
  catch (  LWJGLException ex) {
     throw new GdxRuntimeException("Error initializing OpenAL.",ex);
   }
-  allStreams=new IntArray(false,simultaneousStreams);
-  for (int i=0; i < simultaneousStreams; i++) {
-    int streamID=alGenSources();
+  allSources=new IntArray(false,simultaneousSources);
+  for (int i=0; i < simultaneousSources; i++) {
+    int sourceID=alGenSources();
     if (alGetError() != AL_NO_ERROR)     break;
-    allStreams.add(streamID);
+    allSources.add(sourceID);
   }
-  idleStreams=new IntArray(allStreams);
+  idleSources=new IntArray(allSources);
   FloatBuffer orientation=(FloatBuffer)BufferUtils.createFloatBuffer(6).put(new float[]{0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f}).flip();
   alListener(AL_ORIENTATION,orientation);
   FloatBuffer velocity=(FloatBuffer)BufferUtils.createFloatBuffer(3).put(new float[]{0.0f,0.0f,0.0f}).flip();

@@ -1,7 +1,7 @@
 {
-  int streamID=audio.obtainStream(false);
-  if (streamID == -1)   return;
-  alSourcei(streamID,AL_BUFFER,bufferID);
-  alSourcei(streamID,AL_LOOPING,AL_TRUE);
-  alSourcePlay(streamID);
+  int sourceID=audio.obtainSource(false);
+  if (sourceID == -1)   return;
+  alSourcei(sourceID,AL_BUFFER,bufferID);
+  alSourcei(sourceID,AL_LOOPING,AL_TRUE);
+  alSourcePlay(sourceID);
 }

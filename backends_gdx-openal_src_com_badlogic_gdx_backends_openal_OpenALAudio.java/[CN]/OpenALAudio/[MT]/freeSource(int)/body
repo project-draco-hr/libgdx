@@ -1,0 +1,5 @@
+{
+  alSourceStop(sourceID);
+  alSourcei(sourceID,AL_BUFFER,0);
+  idleSources.add(sourceID);
+}

@@ -1,12 +1,12 @@
 {
-  if (streamID == -1)   return;
-  if (isPlaying && alGetSourcei(streamID,AL_SOURCE_STATE) != AL_PLAYING)   alSourcePlay(streamID);
-  int buffers=alGetSourcei(streamID,AL_BUFFERS_PROCESSED);
+  if (sourceID == -1)   return;
+  if (isPlaying && alGetSourcei(sourceID,AL_SOURCE_STATE) != AL_PLAYING)   alSourcePlay(sourceID);
+  int buffers=alGetSourcei(sourceID,AL_BUFFERS_PROCESSED);
   while (buffers-- > 0) {
-    int bufferID=alSourceUnqueueBuffers(streamID);
+    int bufferID=alSourceUnqueueBuffers(sourceID);
     if (bufferID == AL_INVALID_VALUE)     break;
     renderedSeconds+=secondsPerBuffer;
     if (!fill(bufferID))     return;
-    alSourceQueueBuffers(streamID,bufferID);
+    alSourceQueueBuffers(sourceID,bufferID);
   }
 }

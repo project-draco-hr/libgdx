@@ -1,4 +1,4 @@
 {
   this.volume=volume;
-  if (streamID != -1)   alSourcef(streamID,AL_GAIN,volume);
+  if (sourceID != -1)   alSourcef(sourceID,AL_GAIN,volume);
 }
