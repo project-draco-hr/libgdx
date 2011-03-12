@@ -1,3 +1,5 @@
 {
-  return $(rotation,duration);
+  RotateBy rotateBy=$(rotation,duration);
+  rotateBy.setInterpolator(interpolator.copy());
+  return rotateBy;
 }

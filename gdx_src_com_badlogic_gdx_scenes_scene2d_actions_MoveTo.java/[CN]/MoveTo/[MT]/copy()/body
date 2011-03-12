@@ -1,3 +1,5 @@
 {
-  return $(x,y,duration);
+  MoveTo moveTo=$(x,y,duration);
+  moveTo.setInterpolator(interpolator.copy());
+  return moveTo;
 }

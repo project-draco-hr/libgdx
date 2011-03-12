@@ -1,3 +1,5 @@
 {
-  return $(scaleX,scaleY,duration);
+  ScaleTo scaleTo=$(scaleX,scaleY,duration);
+  scaleTo.setInterpolator(interpolator.copy());
+  return scaleTo;
 }

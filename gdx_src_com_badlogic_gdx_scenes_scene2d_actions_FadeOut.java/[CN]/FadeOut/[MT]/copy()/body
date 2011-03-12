@@ -1,3 +1,5 @@
 {
-  return $(duration);
+  FadeOut fadeOut=$(duration);
+  fadeOut.setInterpolator(interpolator.copy());
+  return fadeOut;
 }

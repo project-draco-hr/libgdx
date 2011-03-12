@@ -1,3 +1,5 @@
 {
-  return $(rotation,duration);
+  RotateTo rotateTo=$(rotation,duration);
+  rotateTo.setInterpolator(interpolator.copy());
+  return rotateTo;
 }

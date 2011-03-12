@@ -1,3 +1,5 @@
 {
-  return $(deltaX,deltaY,duration);
+  MoveBy moveBy=$(deltaX,deltaY,duration);
+  moveBy.setInterpolator(interpolator.copy());
+  return moveBy;
 }

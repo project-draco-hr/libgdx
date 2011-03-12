@@ -1,3 +1,5 @@
 {
-  return $(toAlpha,duration);
+  FadeTo fadeTo=$(toAlpha,duration);
+  fadeTo.setInterpolator(interpolator.copy());
+  return fadeTo;
 }
