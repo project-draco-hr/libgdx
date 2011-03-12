@@ -1,3 +1,5 @@
 {
+  alSourceStop(streamID);
+  alSourcei(streamID,AL_BUFFER,0);
   idleStreams.add(streamID);
 }
