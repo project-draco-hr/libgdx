@@ -1,5 +1,5 @@
 {
   ScaleTo scaleTo=$(scaleX,scaleY,duration);
-  scaleTo.setInterpolator(interpolator.copy());
+  if (interpolator != null)   scaleTo.setInterpolator(interpolator.copy());
   return scaleTo;
 }
