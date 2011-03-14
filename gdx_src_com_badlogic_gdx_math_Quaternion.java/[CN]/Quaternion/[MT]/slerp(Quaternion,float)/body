@@ -1,0 +1,24 @@
+{
+  if (this.equals(end)) {
+    return this;
+  }
+  float result=dot(end);
+  if (result < 0.0) {
+    end.mul(-1);
+    result=-result;
+  }
+  float scale0=1 - alpha;
+  float scale1=alpha;
+  if ((1 - result) > 0.1) {
+    final double theta=Math.acos(result);
+    final double invSinTheta=1f / Math.sin(theta);
+    scale0=(float)(Math.sin((1 - alpha) * theta) * invSinTheta);
+    scale1=(float)(Math.sin((alpha * theta)) * invSinTheta);
+  }
+  final float x=(scale0 * this.x) + (scale1 * end.x);
+  final float y=(scale0 * this.y) + (scale1 * end.y);
+  final float z=(scale0 * this.z) + (scale1 * end.z);
+  final float w=(scale0 * this.w) + (scale1 * end.w);
+  set(x,y,z,w);
+  return this;
+}

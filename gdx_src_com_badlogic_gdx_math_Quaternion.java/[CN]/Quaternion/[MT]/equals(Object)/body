@@ -1,0 +1,10 @@
+{
+  if (this == o) {
+    return true;
+  }
+  if (!(o instanceof Quaternion)) {
+    return false;
+  }
+  final Quaternion comp=(Quaternion)o;
+  return this.x == comp.x && this.y == comp.y && this.z == comp.z && this.w == comp.w;
+}
