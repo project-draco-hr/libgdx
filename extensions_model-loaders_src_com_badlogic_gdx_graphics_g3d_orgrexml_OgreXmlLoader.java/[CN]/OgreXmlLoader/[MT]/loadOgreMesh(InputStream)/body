@@ -1,0 +1,8 @@
+{
+  JAXBContext context=JAXBContext.newInstance(Mesh.class);
+  Unmarshaller unmarshaller=context.createUnmarshaller();
+  long start=System.nanoTime();
+  Mesh mesh=(Mesh)unmarshaller.unmarshal(in);
+  System.out.println("took: " + (System.nanoTime() - start) / 1000000000.0f);
+  return mesh;
+}

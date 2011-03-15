@@ -1,0 +1,6 @@
+{
+  if (texcoord == null) {
+    texcoord=new ArrayList<Texcoord>();
+  }
+  return this.texcoord;
+}

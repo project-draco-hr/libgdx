@@ -1,0 +1,17 @@
+{
+  InputStream in=null;
+  try {
+    in=file.read();
+    return loadMesh(in);
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("Couldn't load file '" + file.name() + "'",t);
+  }
+ finally {
+    if (in != null)     try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+}

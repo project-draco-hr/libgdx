@@ -1,0 +1,6 @@
+{
+  skeleton.setBindPose();
+  for (int i=0; i < subMeshes.length; i++) {
+    skin(subMeshes[i],skeleton.combinedMatrices);
+  }
+}

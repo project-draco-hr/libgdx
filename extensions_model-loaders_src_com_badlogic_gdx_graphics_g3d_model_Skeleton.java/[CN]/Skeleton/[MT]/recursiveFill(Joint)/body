@@ -1,0 +1,22 @@
+{
+  joint.index=bindPoseJoints.size;
+  joint.parentIndex=joint.parent != null ? joint.parent.index : -1;
+  JointKeyframe keyFrame=new JointKeyframe();
+  keyFrame.position.set(joint.position);
+  keyFrame.scale.set(joint.scale);
+  keyFrame.rotation.set(joint.rotation);
+  keyFrame.parentIndex=joint.parentIndex;
+  jointNames.add(joint.name);
+  namesToIndices.put(joint.name,joint.index);
+  bindPoseJoints.add(keyFrame);
+  JointKeyframe animKeyframe=new JointKeyframe();
+  animKeyframe.parentIndex=joint.parentIndex;
+  animPoseJoints.add(animKeyframe);
+  offsetMatrices.add(new Matrix4());
+  sceneMatrices.add(new Matrix4());
+  combinedMatrices.add(new Matrix4());
+  int len=joint.children.size;
+  for (int i=0; i < len; i++) {
+    recursiveFill(joint.children.get(i));
+  }
+}

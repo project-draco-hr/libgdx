@@ -1,0 +1,15 @@
+{
+  for (int i=0; i < joints.size; i++) {
+    JointKeyframe joint=joints.get(i);
+    Matrix4 sceneMatrix=sceneMatrices.get(i);
+    Matrix4 parentMatrix=joint.parentIndex != -1 ? sceneMatrices.get(joint.parentIndex) : IDENTITY;
+    Matrix4 combinedMatrix=combinedMatrices.get(i);
+    joint.rotation.toMatrix(rotMatrix.val);
+    rotMatrix.trn(joint.position);
+    rotMatrix.scl(joint.scale);
+    sceneMatrix.set(parentMatrix);
+    sceneMatrix.mul(rotMatrix);
+    combinedMatrix.set(sceneMatrix);
+    combinedMatrix.mul(offsetMatrices.get(i));
+  }
+}

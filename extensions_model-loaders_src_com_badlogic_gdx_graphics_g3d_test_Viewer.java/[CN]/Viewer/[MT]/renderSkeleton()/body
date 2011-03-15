@@ -1,0 +1,14 @@
+{
+  renderer.begin(GL10.GL_LINES);
+  for (int i=0; i < model.skeleton.sceneMatrices.size; i++) {
+    JointKeyframe joint=model.skeleton.bindPoseJoints.get(i);
+    if (joint.parentIndex == -1)     continue;
+    point1.set(0,0,0).mul(model.skeleton.sceneMatrices.get(i));
+    point2.set(0,0,0).mul(model.skeleton.sceneMatrices.get(joint.parentIndex));
+    renderer.color(1,1,1,1);
+    renderer.vertex(point1);
+    renderer.color(1,1,1,1);
+    renderer.vertex(point2);
+  }
+  renderer.end();
+}

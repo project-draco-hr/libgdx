@@ -1,0 +1,10 @@
+{
+  int len=subMeshes.length;
+  for (int i=0; i < len; i++) {
+    SubMesh subMesh=subMeshes[i];
+    for (int j=0; j < subMesh.textures.length; j++) {
+      subMesh.textures[j].bind();
+    }
+    subMesh.mesh.render(subMesh.primitiveType);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  try {
+    Model model=new Model();
+    Mesh ogreMesh=loadOgreMesh(in);
+    SubMesh[] meshes=generateSubMeshes(ogreMesh);
+    model.subMeshes=meshes;
+    return model;
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("Couldn't load model",t);
+  }
+}

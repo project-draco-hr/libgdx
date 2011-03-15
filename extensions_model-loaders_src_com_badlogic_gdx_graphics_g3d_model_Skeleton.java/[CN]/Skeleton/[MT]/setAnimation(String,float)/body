@@ -1,0 +1,29 @@
+{
+  SkeletonAnimation anim=animations.get(name);
+  if (anim == null)   throw new IllegalArgumentException("Animation with name '" + name + "' does not exist");
+  if (time < 0 || time > anim.duration)   throw new IllegalArgumentException("time must be 0 < time < animation duration");
+  int len=anim.perJointkeyFrames.length;
+  for (int i=0; i < len; i++) {
+    JointKeyframe[] jointTrack=anim.perJointkeyFrames[i];
+    int idx=0;
+    int len2=jointTrack.length;
+    for (int j=0; j < len2; j++) {
+      JointKeyframe jointFrame=jointTrack[j];
+      if (jointFrame.timeStamp >= time) {
+        idx=Math.max(0,j - 1);
+        break;
+      }
+    }
+    JointKeyframe startFrame=jointTrack[idx];
+    JointKeyframe endFrame=idx + 1 == len2 ? startFrame : jointTrack[idx + 1];
+    float alpha=0;
+    if (startFrame != endFrame) {
+      alpha=Math.min(1,(time - startFrame.timeStamp) / (endFrame.timeStamp - startFrame.timeStamp));
+    }
+    JointKeyframe animFrame=animPoseJoints.get(i);
+    animFrame.position.set(startFrame.position).lerp(endFrame.position,alpha);
+    animFrame.scale.set(startFrame.scale).lerp(endFrame.scale,alpha);
+    animFrame.rotation.set(startFrame.rotation).slerp(endFrame.rotation,alpha);
+  }
+  calculateMatrices(animPoseJoints);
+}

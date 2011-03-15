@@ -1,0 +1,82 @@
+{
+  List<Bone> bones=ogreSkel.getBones().getBone();
+  List<Joint> joints=new ArrayList<Joint>();
+  Map<String,Joint> nameToJoint=new HashMap<String,Joint>();
+  for (int i=0; i < bones.size(); i++) {
+    Bone bone=bones.get(i);
+    Joint joint=new Joint();
+    joint.name=bone.name;
+    joint.position.set(bone.position.x,bone.position.y,bone.position.z);
+    joint.rotation.setFromAxis(bone.rotation.axis.x,bone.rotation.axis.x,bone.rotation.axis.x,MathUtils.radiansToDegrees * bone.rotation.angle);
+    if (bone.scale != null) {
+      if (bone.scale.factor == 0)       joint.scale.set(bone.scale.x,bone.scale.y,bone.scale.z);
+ else       joint.scale.set(bone.scale.factor,bone.scale.factor,bone.scale.factor);
+    }
+    joints.add(joint);
+    nameToJoint.put(joint.name,joint);
+  }
+  List<Boneparent> hierarchy=ogreSkel.getBonehierarchy().getBoneparent();
+  for (int i=0; i < hierarchy.size(); i++) {
+    Boneparent link=hierarchy.get(i);
+    Joint joint=nameToJoint.get(link.getBone());
+    Joint parent=nameToJoint.get(link.getParent());
+    parent.children.add(joint);
+    joint.parent=parent;
+  }
+  Skeleton skel=new Skeleton();
+  for (int i=0; i < joints.size(); i++) {
+    Joint joint=joints.get(i);
+    if (joint.parent == null)     skel.hierarchy.add(joint);
+  }
+  skel.buildFromHierarchy();
+  List<Animation> animations=ogreSkel.getAnimations().getAnimation();
+  for (int i=0; i < animations.size(); i++) {
+    Animation animation=animations.get(i);
+    SkeletonAnimation skelAnim=new SkeletonAnimation();
+    skelAnim.duration=animation.length;
+    skelAnim.perJointkeyFrames=new JointKeyframe[skel.bindPoseJoints.size][];
+    List<Track> tracks=animation.getTracks().getTrack();
+    if (tracks.size() != skelAnim.perJointkeyFrames.length)     throw new IllegalArgumentException("Number of tracks does not equal number of joints");
+    Matrix4 rotation=new Matrix4();
+    Matrix4 transform=new Matrix4();
+    for (int j=0; j < tracks.size(); j++) {
+      Track track=tracks.get(j);
+      String jointName=track.getBone();
+      int jointIndex=skel.namesToIndices.get(jointName);
+      if (skelAnim.perJointkeyFrames[jointIndex] != null)       throw new IllegalArgumentException("Track for bone " + jointName + " in animation "+ animation.name+ " already defined!");
+      JointKeyframe[] jointKeyFrames=new JointKeyframe[track.getKeyframes().getKeyframe().size()];
+      skelAnim.perJointkeyFrames[jointIndex]=jointKeyFrames;
+      for (int k=0; k < track.getKeyframes().getKeyframe().size(); k++) {
+        Keyframe keyFrame=track.getKeyframes().getKeyframe().get(k);
+        JointKeyframe jointKeyframe=new JointKeyframe();
+        jointKeyframe.timeStamp=keyFrame.time;
+        jointKeyframe.position.set(keyFrame.translate.x,keyFrame.translate.y,keyFrame.translate.z);
+        if (keyFrame.scale != null) {
+          if (keyFrame.scale.factor == 0)           jointKeyframe.scale.set(keyFrame.scale.x,keyFrame.scale.y,keyFrame.scale.z);
+ else           jointKeyframe.scale.set(keyFrame.scale.factor,keyFrame.scale.factor,keyFrame.scale.factor);
+        }
+        jointKeyframe.rotation.setFromAxis(keyFrame.rotate.axis.x,keyFrame.rotate.axis.y,keyFrame.rotate.axis.z,MathUtils.radiansToDegrees * keyFrame.rotate.angle).mulLeft(skel.bindPoseJoints.get(jointIndex).rotation).nor();
+        jointKeyframe.parentIndex=skel.bindPoseJoints.get(jointIndex).parentIndex;
+        jointKeyFrames[k]=jointKeyframe;
+        rotation.set(jointKeyframe.rotation);
+        rotation.trn(jointKeyframe.position);
+        transform.set(skel.sceneMatrices.get(jointIndex));
+        transform.mul(rotation);
+        if (jointKeyframe.parentIndex != -1) {
+          rotation.set(skel.offsetMatrices.get(jointKeyframe.parentIndex)).mul(transform);
+          transform.set(rotation);
+        }
+        transform.getTranslation(jointKeyframe.position);
+        transform.getRotation(jointKeyframe.rotation);
+        jointKeyframe.rotation.x*=-1;
+        jointKeyframe.rotation.y*=-1;
+        jointKeyframe.rotation.z*=-1;
+      }
+    }
+    for (int j=0; j < skelAnim.perJointkeyFrames.length; j++) {
+      if (skelAnim.perJointkeyFrames[i] == null)       throw new IllegalArgumentException("No track for bone " + skel.jointNames.get(j));
+    }
+    skel.animations.put(animation.name,skelAnim);
+  }
+  return skel;
+}

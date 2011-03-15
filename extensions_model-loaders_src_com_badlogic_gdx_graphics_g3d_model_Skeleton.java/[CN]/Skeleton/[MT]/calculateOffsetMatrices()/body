@@ -1,0 +1,5 @@
+{
+  for (int i=0; i < offsetMatrices.size; i++) {
+    offsetMatrices.get(i).set(sceneMatrices.get(i)).inv();
+  }
+}

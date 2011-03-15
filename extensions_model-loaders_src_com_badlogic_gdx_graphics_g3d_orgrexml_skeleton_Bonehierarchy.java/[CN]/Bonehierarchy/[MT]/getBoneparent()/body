@@ -1,0 +1,6 @@
+{
+  if (boneparent == null) {
+    boneparent=new ArrayList<Boneparent>();
+  }
+  return this.boneparent;
+}

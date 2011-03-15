@@ -1,0 +1,13 @@
+{
+  jointNames.clear();
+  namesToIndices.clear();
+  bindPoseJoints.clear();
+  animPoseJoints.clear();
+  offsetMatrices.clear();
+  sceneMatrices.clear();
+  for (int i=0; i < hierarchy.size; i++) {
+    recursiveFill(hierarchy.get(i));
+  }
+  calculateMatrices(bindPoseJoints);
+  calculateOffsetMatrices();
+}

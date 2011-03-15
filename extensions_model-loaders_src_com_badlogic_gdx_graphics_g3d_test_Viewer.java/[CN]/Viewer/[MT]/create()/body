@@ -1,0 +1,17 @@
+{
+  Texture[] textures=new Texture[]{new Texture(Gdx.files.internal("data/nskingr.jpg"))};
+  model=new OgreXmlLoader().load(Gdx.files.internal("data/ninja.mesh.xml"),Gdx.files.internal("data/ninja.skeleton.xml"));
+  model.subMeshes[0].textures=textures;
+  model.subMeshes[1].textures=textures;
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  BoundingBox bounds=model.subMeshes[0].mesh.calculateBoundingBox();
+  cam.position.set(bounds.getCenter().cpy().add(100,100,100));
+  cam.lookAt(bounds.getCenter().x,bounds.getCenter().y,bounds.getCenter().z);
+  cam.near=0.1f;
+  cam.far=1000;
+  renderer=new ImmediateModeRenderer();
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  for (  String name : model.skeleton.animations.keys())   animNames.add(name);
+  animation=animNames.get(0);
+}
