@@ -44,6 +44,7 @@ synchronized (app.runnables) {
   }
   if (ldestroy) {
     app.listener.dispose();
+    ((AndroidApplication)app).audio.dispose();
     Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {

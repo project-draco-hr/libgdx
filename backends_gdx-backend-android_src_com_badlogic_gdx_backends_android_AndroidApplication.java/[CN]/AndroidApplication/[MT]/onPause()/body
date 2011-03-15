@@ -11,7 +11,6 @@
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
   }
   if (isFinishing()) {
-    audio.dispose();
     audio=null;
   }
   super.onPause();
