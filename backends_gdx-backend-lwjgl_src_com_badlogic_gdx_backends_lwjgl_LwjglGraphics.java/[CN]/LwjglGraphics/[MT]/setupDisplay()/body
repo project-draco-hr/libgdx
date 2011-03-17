@@ -18,7 +18,12 @@
     }
  catch (    Exception ex2) {
       Display.destroy();
-      Display.create(new PixelFormat());
+      try {
+        Display.create(new PixelFormat());
+      }
+ catch (      Exception ex3) {
+        if (ex3.getMessage().contains("Pixel format not accelerated"))         throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex3);
+      }
     }
   }
   initiateGLInstances();

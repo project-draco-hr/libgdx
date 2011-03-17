@@ -1,4 +1,5 @@
 {
-  font.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  font.draw(batch,text,x,y);
+  cache.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  cache.setPosition(x,y);
+  cache.draw(batch);
 }

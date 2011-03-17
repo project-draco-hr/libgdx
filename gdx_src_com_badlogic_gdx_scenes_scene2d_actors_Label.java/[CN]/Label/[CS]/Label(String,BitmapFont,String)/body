@@ -1,5 +1,5 @@
 {
   super(name);
-  this.font=font;
-  this.text=text;
+  cache=new BitmapFontCache(font);
+  setText(text);
 }

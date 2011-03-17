@@ -1,5 +1,5 @@
 {
   children.remove(actor);
   if (actor instanceof Group)   groups.remove((Group)actor);
-  namesToActors.remove(actor.name);
+  if (actor.name != null)   namesToActors.remove(actor.name);
 }
