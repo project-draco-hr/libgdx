@@ -1,0 +1,8 @@
+{
+  this.background=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  this.background.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  this.bgTR=new TextureRegion(this.background,0,0,256,256);
+  this.sprBg=new Sprite(this.background,0,0,640,400);
+  this.batcher=new SpriteBatch();
+  this.renderer=new ImmediateModeRenderer();
+}
