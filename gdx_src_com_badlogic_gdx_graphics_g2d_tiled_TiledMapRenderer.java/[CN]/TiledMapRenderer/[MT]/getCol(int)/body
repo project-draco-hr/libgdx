@@ -1,5 +1,5 @@
 {
   if (worldX < 0)   return 0;
-  if (worldX > pixelsPerMapX)   return tileWidth - 1;
+  if (worldX > pixelsPerMapX)   return pixelsPerMapX / tileWidth;
   return worldX / tileWidth;
 }
