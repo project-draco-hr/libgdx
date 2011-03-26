@@ -7,6 +7,8 @@
   img.originX=50;
   img.originY=50;
   img.x=img.y=100;
-  img.action(Forever.$(Sequence.$(Parallel.$(RotateBy.$(180,2),ScaleTo.$(1.4f,1.4f,2),FadeTo.$(0.7f,2)),Parallel.$(RotateBy.$(180,2),ScaleTo.$(1.0f,1.0f,2),FadeTo.$(1.0f,2)))));
+  Action action=Repeat.$(Sequence.$(MoveBy.$(8,0,0.03f),MoveBy.$(-16,0,0.03f),MoveBy.$(8,8,0.03f),MoveBy.$(0,-8,0.03f)),20);
+  Action action2=action.copy();
+  img.action(action2);
   stage.addActor(img);
 }

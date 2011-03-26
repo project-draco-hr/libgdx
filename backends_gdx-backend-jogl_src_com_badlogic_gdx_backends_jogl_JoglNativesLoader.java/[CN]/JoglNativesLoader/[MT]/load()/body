@@ -1,5 +1,6 @@
 {
   GdxNativesLoader.load();
+  if (GdxNativesLoader.disableNativesLoading)   return;
   if (nativesLoaded)   return;
   NativeLibLoader.disableLoading();
   com.sun.gluegen.runtime.NativeLibLoader.disableLoading();
