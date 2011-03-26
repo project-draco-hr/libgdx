@@ -7,7 +7,7 @@
   Pixmap pixmap=new Pixmap(width,height,format);
   pixmap.setColor(0,0,0,0);
   pixmap.fill();
-  format=pixmap.getFormat();
+  this.format=pixmap.getFormat();
   uploadImageData(pixmap);
   pixmap.dispose();
   setFilter(minFilter,magFilter);

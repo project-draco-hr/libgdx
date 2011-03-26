@@ -1,4 +1,14 @@
 {
+  boolean disposePixmap=false;
+  if (this.format != pixmap.getFormat()) {
+    Pixmap tmp=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),this.format);
+    Blending blend=Pixmap.getBlending();
+    Pixmap.setBlending(Blending.None);
+    tmp.drawPixmap(pixmap,0,0,0,0,pixmap.getWidth(),pixmap.getHeight());
+    Pixmap.setBlending(blend);
+    pixmap=tmp;
+    disposePixmap=true;
+  }
   this.width=pixmap.getWidth();
   this.height=pixmap.getHeight();
   if (Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(width) || !MathUtils.isPowerOfTwo(height)))   throw new GdxRuntimeException("texture width and height must be powers of two");
@@ -12,7 +22,7 @@
     while (width > 0 && height > 0) {
       Pixmap tmp=new Pixmap(width,height,pixmap.getFormat());
       tmp.drawPixmap(pixmap,0,0,pixmap.getWidth(),pixmap.getHeight(),0,0,width,height);
-      if (level > 1)       pixmap.dispose();
+      if (level > 1 || disposePixmap)       pixmap.dispose();
       pixmap=tmp;
       Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,level,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
       width=pixmap.getWidth() / 2;
@@ -20,5 +30,8 @@
       level++;
     }
     pixmap.dispose();
+  }
+ else {
+    if (disposePixmap)     pixmap.dispose();
   }
 }

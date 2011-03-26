@@ -1,0 +1,15 @@
+{
+  this.isManaged=true;
+  this.isMipMap=mipmap;
+  this.file=file;
+  this.textureData=null;
+  glHandle=createGLHandle();
+  Pixmap pixmap=new Pixmap(file);
+  this.format=format;
+  uploadImageData(pixmap);
+  pixmap.dispose();
+  if (mipmap)   minFilter=TextureFilter.MipMap;
+  setFilter(minFilter,magFilter);
+  setWrap(uWrap,vWrap);
+  managedTextures.add(this);
+}

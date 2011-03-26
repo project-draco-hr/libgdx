@@ -1,3 +1,4 @@
 {
+  Pixmap.blending=blending;
   Gdx2DPixmap.setBlend(blending == Blending.None ? 0 : 1);
 }
