@@ -1,10 +1,6 @@
 {
-  cam=new PerspectiveCamera();
-  cam.setFov(67);
-  cam.setNear(0.1f);
-  cam.setFar(100);
-  cam.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  cam.getPosition().z=2;
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.z=2;
   mesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,2,"a_pos"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
   mesh.setVertices(new float[]{-1,-1,0,1,1,-1,1,1,1,1,1,0,-1,1,0,0});
   mesh.setIndices(new short[]{0,1,2,2,3,0});
