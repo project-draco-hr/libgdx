@@ -3,7 +3,7 @@
   Integer location;
   if ((location=uniforms.get(name)) == null) {
     location=gl.glGetUniformLocation(program,name);
-    if (location == -1 && strictUniformChecks)     throw new IllegalArgumentException("no uniform with name '" + name + "' in shader");
+    if (location == -1 && pedantic)     throw new IllegalArgumentException("no uniform with name '" + name + "' in shader");
     uniforms.put(name,location);
   }
   return location;

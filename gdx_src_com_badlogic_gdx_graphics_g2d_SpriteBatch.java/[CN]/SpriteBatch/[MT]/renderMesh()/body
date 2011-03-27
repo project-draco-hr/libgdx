@@ -14,7 +14,8 @@
       gl20.glEnable(GL20.GL_BLEND);
       gl20.glBlendFunc(blendSrcFunc,blendDstFunc);
     }
-    mesh.render(shader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
+    if (customShader != null)     mesh.render(customShader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
+ else     mesh.render(shader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
   }
  else {
     if (blendingDisabled) {

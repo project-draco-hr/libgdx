@@ -1,0 +1,20 @@
+{
+  ShaderProgram.pedantic=false;
+  shader=new ShaderProgram(Gdx.files.internal("data/default.vert").readString(),Gdx.files.internal("data/default.frag").readString());
+  if (!shader.isCompiled()) {
+    Gdx.app.log("EdgeDetectionTest",shader.getLog());
+  }
+  batchShader=new ShaderProgram(Gdx.files.internal("data/batch.vert").readString(),Gdx.files.internal("data/batch.frag").readString());
+  if (!batchShader.isCompiled()) {
+    Gdx.app.log("EdgeDetectionTest",batchShader.getLog());
+  }
+  mesh=ObjLoader.loadObj(Gdx.files.internal("data/cube.obj").read());
+  fbo=new FrameBuffer(Format.RGB565,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(0,0,5);
+  batch=new SpriteBatch();
+  batch.setShader(batchShader);
+  fboRegion=new TextureRegion(fbo.getColorBufferTexture());
+  fboRegion.flip(false,true);
+  logger=new FPSLogger();
+}

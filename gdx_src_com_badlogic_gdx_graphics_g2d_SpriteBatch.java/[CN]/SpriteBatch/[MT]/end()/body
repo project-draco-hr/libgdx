@@ -9,6 +9,7 @@
   if (isBlendingEnabled())   gl.glDisable(GL10.GL_BLEND);
   gl.glDisable(GL10.GL_TEXTURE_2D);
   if (Gdx.graphics.isGL20Available()) {
-    shader.end();
+    if (customShader != null)     customShader.end();
+ else     shader.end();
   }
 }
