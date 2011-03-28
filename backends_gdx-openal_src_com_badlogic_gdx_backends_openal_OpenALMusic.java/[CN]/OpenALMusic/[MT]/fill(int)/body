@@ -8,10 +8,7 @@
       length=read(tempBytes);
       if (length <= 0)       return false;
     }
- else {
-      stop();
-      return false;
-    }
+ else     return false;
   }
   tempBuffer.put(tempBytes,0,length).flip();
   alBufferData(bufferID,format,tempBuffer,sampleRate);

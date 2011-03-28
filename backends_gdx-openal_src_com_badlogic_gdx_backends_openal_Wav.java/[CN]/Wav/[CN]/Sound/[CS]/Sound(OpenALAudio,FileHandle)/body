@@ -4,11 +4,9 @@
   ByteArrayOutputStream output=new ByteArrayOutputStream(4096);
   try {
     byte[] buffer=new byte[2048];
-    while (input.dataLength > 0) {
-      int length=input.read(buffer);
+    while (true) {
+      int length=input.readData(buffer);
       if (length == -1)       break;
-      length=Math.min(length,input.dataLength);
-      input.dataLength-=length;
       output.write(buffer,0,length);
     }
   }
