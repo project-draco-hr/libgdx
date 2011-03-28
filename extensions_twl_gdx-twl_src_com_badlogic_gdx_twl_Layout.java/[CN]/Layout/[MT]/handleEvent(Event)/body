@@ -1,3 +1,4 @@
 {
-  return eatEvents;
+  boolean handled=super.handleEvent(evt);
+  return eatEvents ? true : handled;
 }

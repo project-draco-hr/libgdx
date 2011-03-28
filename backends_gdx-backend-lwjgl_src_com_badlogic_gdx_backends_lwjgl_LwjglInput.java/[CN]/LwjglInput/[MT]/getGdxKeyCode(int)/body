@@ -81,7 +81,7 @@ return Input.Keys.KEYCODE_BACKSLASH;
 case Keyboard.KEY_COMMA:
 return Input.Keys.KEYCODE_COMMA;
 case Keyboard.KEY_DELETE:
-return Input.Keys.KEYCODE_DEL;
+return Input.Keys.KEYCODE_FORWARD_DEL;
 case Keyboard.KEY_LEFT:
 return Input.Keys.KEYCODE_DPAD_LEFT;
 case Keyboard.KEY_RIGHT:
@@ -124,6 +124,8 @@ case Keyboard.KEY_INSERT:
 return Input.Keys.KEYCODE_INSERT;
 case Keyboard.KEY_NUMPAD5:
 return Input.Keys.KEYCODE_DPAD_CENTER;
+case Keyboard.KEY_BACK:
+return Input.Keys.KEYCODE_DEL;
 default :
 return Input.Keys.KEYCODE_UNKNOWN;
 }
