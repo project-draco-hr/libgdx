@@ -1,10 +1,10 @@
 {
   List<Bone> bones=ogreSkel.getBones().getBone();
-  List<Joint> joints=new ArrayList<Joint>();
-  Map<String,Joint> nameToJoint=new HashMap<String,Joint>();
+  List<SkeletonJoint> joints=new ArrayList<SkeletonJoint>();
+  Map<String,SkeletonJoint> nameToJoint=new HashMap<String,SkeletonJoint>();
   for (int i=0; i < bones.size(); i++) {
     Bone bone=bones.get(i);
-    Joint joint=new Joint();
+    SkeletonJoint joint=new SkeletonJoint();
     joint.name=bone.name;
     joint.position.set(bone.position.x,bone.position.y,bone.position.z);
     joint.rotation.setFromAxis(bone.rotation.axis.x,bone.rotation.axis.x,bone.rotation.axis.x,MathUtils.radiansToDegrees * bone.rotation.angle);
@@ -18,14 +18,14 @@
   List<Boneparent> hierarchy=ogreSkel.getBonehierarchy().getBoneparent();
   for (int i=0; i < hierarchy.size(); i++) {
     Boneparent link=hierarchy.get(i);
-    Joint joint=nameToJoint.get(link.getBone());
-    Joint parent=nameToJoint.get(link.getParent());
+    SkeletonJoint joint=nameToJoint.get(link.getBone());
+    SkeletonJoint parent=nameToJoint.get(link.getParent());
     parent.children.add(joint);
     joint.parent=parent;
   }
   Skeleton skel=new Skeleton();
   for (int i=0; i < joints.size(); i++) {
-    Joint joint=joints.get(i);
+    SkeletonJoint joint=joints.get(i);
     if (joint.parent == null)     skel.hierarchy.add(joint);
   }
   skel.buildFromHierarchy();
@@ -34,7 +34,7 @@
     Animation animation=animations.get(i);
     SkeletonAnimation skelAnim=new SkeletonAnimation();
     skelAnim.duration=animation.length;
-    skelAnim.perJointkeyFrames=new JointKeyframe[skel.bindPoseJoints.size][];
+    skelAnim.perJointkeyFrames=new SkeletonKeyframe[skel.bindPoseJoints.size][];
     List<Track> tracks=animation.getTracks().getTrack();
     if (tracks.size() != skelAnim.perJointkeyFrames.length)     throw new IllegalArgumentException("Number of tracks does not equal number of joints");
     Matrix4 rotation=new Matrix4();
@@ -44,11 +44,11 @@
       String jointName=track.getBone();
       int jointIndex=skel.namesToIndices.get(jointName);
       if (skelAnim.perJointkeyFrames[jointIndex] != null)       throw new IllegalArgumentException("Track for bone " + jointName + " in animation "+ animation.name+ " already defined!");
-      JointKeyframe[] jointKeyFrames=new JointKeyframe[track.getKeyframes().getKeyframe().size()];
+      SkeletonKeyframe[] jointKeyFrames=new SkeletonKeyframe[track.getKeyframes().getKeyframe().size()];
       skelAnim.perJointkeyFrames[jointIndex]=jointKeyFrames;
       for (int k=0; k < track.getKeyframes().getKeyframe().size(); k++) {
         Keyframe keyFrame=track.getKeyframes().getKeyframe().get(k);
-        JointKeyframe jointKeyframe=new JointKeyframe();
+        SkeletonKeyframe jointKeyframe=new SkeletonKeyframe();
         jointKeyframe.timeStamp=keyFrame.time;
         jointKeyframe.position.set(keyFrame.translate.x,keyFrame.translate.y,keyFrame.translate.z);
         if (keyFrame.scale != null) {

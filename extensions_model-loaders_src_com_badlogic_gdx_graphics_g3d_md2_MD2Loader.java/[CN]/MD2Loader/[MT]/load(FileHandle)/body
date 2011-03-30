@@ -1,0 +1,14 @@
+{
+  InputStream in=fileHandle.read();
+  try {
+    return load(in);
+  }
+  finally {
+    if (in != null)     try {
+      in.close();
+    }
+ catch (    IOException e) {
+    }
+    ;
+  }
+}

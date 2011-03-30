@@ -1,0 +1,23 @@
+{
+  MD2Header header=new MD2Header();
+  LittleEndianInputStream in=new LittleEndianInputStream(new ByteArrayInputStream(bytes));
+  header.ident=in.readInt();
+  header.version=in.readInt();
+  header.skinWidth=in.readInt();
+  header.skinHeight=in.readInt();
+  header.frameSize=in.readInt();
+  header.numSkins=in.readInt();
+  header.numVertices=in.readInt();
+  header.numSt=in.readInt();
+  header.numTris=in.readInt();
+  header.numGlcmds=in.readInt();
+  header.numFrames=in.readInt();
+  header.offsetSkins=in.readInt();
+  header.offsetSt=in.readInt();
+  header.offsetTris=in.readInt();
+  header.offsetFrames=in.readInt();
+  header.offsetGlcmds=in.readInt();
+  header.offsetEnd=in.readInt();
+  in.close();
+  return header;
+}

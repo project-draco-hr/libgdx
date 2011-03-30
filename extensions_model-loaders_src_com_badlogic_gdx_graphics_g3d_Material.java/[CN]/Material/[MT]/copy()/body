@@ -1,0 +1,7 @@
+{
+  MaterialAttribute[] attributes=new MaterialAttribute[this.attributes.length];
+  for (int i=0; i < attributes.length; i++) {
+    attributes[i]=this.attributes[i].copy();
+  }
+  return new Material(name,attributes);
+}

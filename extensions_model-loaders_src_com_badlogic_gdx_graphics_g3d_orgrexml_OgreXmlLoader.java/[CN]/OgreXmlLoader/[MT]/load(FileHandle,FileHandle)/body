@@ -1,5 +1,5 @@
 {
-  Model model=loadMesh(mesh);
+  SkeletonModel model=loadMesh(mesh);
   Skeleton skel=loadSkeleton(skeleton);
   model.skeleton=skel;
   return model;

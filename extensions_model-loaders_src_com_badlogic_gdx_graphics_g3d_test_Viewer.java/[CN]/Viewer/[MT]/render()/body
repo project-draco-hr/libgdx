@@ -11,12 +11,16 @@
   Gdx.gl10.glLightfv(GL10.GL_LIGHT0,GL10.GL_DIFFUSE,lightColor,0);
   Gdx.gl10.glLightfv(GL10.GL_LIGHT0,GL10.GL_POSITION,lightPosition,0);
   angle+=45 * Gdx.graphics.getDeltaTime();
-  Gdx.gl10.glRotatef(angle,0,1,0);
-  model.render();
+  long processingTime=0;
+  for (int i=0; i < NUM_INSTANCES; i++) {
+    model.setAnimation(animation,time);
+    model.render();
+  }
   Gdx.gl.glDisable(GL10.GL_LIGHTING);
   Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
   Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
   renderSkeleton();
+  Gdx.app.log("Skinning","took: " + processingTime / 1000000000.0f + " secs");
   batch.begin();
   font.draw(batch,"Touch to switch Animation, Animation: " + animation + ", FPS: "+ Gdx.graphics.getFramesPerSecond(),10,30);
   batch.end();
@@ -26,9 +30,8 @@
     animation=animNames.get(currAnimIdx);
     time=0;
   }
-  time+=Gdx.graphics.getDeltaTime();
+  time+=Gdx.graphics.getDeltaTime() / 10;
   if (time > model.skeleton.animations.get(animation).duration) {
     time=0;
   }
-  model.setAnimation(animation,time);
 }
