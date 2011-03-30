@@ -1,0 +1,7 @@
+{
+  Element child=new Element(name);
+  Element parent=current;
+  if (parent != null)   parent.addChild(child);
+  elements.add(child);
+  current=child;
+}

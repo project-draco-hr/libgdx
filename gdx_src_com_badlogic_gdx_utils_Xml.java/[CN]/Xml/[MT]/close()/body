@@ -1,0 +1,5 @@
+{
+  int size=elements.size();
+  root=elements.remove(size - 1);
+  current=size > 1 ? elements.get(size - 2) : null;
+}

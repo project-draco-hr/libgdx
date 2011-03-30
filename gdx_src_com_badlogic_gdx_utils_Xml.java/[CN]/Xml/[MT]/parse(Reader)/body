@@ -1,0 +1,15 @@
+{
+  char[] data=new char[1024];
+  int offset=0;
+  while (true) {
+    int length=reader.read(data,offset,data.length - offset);
+    if (length == -1)     break;
+    if (length == 0) {
+      char[] newData=new char[data.length * 2];
+      System.arraycopy(data,0,newData,0,data.length);
+      data=newData;
+    }
+ else     offset+=length;
+  }
+  return parse(data,0,offset);
+}

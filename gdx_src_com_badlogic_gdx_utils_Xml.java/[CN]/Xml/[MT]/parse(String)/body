@@ -1,0 +1,4 @@
+{
+  char[] data=xml.toCharArray();
+  return parse(data,0,data.length);
+}
