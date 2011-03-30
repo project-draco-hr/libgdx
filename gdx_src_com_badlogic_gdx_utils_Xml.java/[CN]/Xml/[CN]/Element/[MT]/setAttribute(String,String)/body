@@ -1,4 +1,4 @@
 {
-  if (attributes == null)   attributes=new HashMap(8);
+  if (attributes == null)   attributes=new ObjectMap(8);
   attributes.put(name,value);
 }
