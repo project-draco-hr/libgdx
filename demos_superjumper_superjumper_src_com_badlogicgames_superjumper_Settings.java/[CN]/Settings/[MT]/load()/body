@@ -7,7 +7,7 @@
       highscores[i]=Integer.parseInt(in.readLine());
     }
   }
- catch (  Exception e) {
+ catch (  Throwable e) {
   }
  finally {
     try {
