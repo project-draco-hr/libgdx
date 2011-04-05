@@ -6,4 +6,6 @@
   BodyDef bodyDef=new BodyDef();
   groundBody=world.createBody(bodyDef);
   createWorld(world);
+  batch=new SpriteBatch();
+  font=new BitmapFont();
 }
