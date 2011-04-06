@@ -2,10 +2,6 @@
   final ArrayList<Vector2> triangles=new ArrayList<Vector2>();
   final ArrayList<Vector2> vertices=new ArrayList<Vector2>(polygon.size());
   vertices.addAll(polygon);
-  if (vertices.size() == 3) {
-    triangles.addAll(vertices);
-    return triangles;
-  }
   while (vertices.size() >= 3) {
     final int vertexTypes[]=this.classifyVertices(vertices);
     final int vertexCount=vertices.size();
@@ -15,6 +11,9 @@
         break;
       }
     }
+  }
+  if (vertices.size() == 3) {
+    triangles.addAll(vertices);
   }
   return triangles;
 }
