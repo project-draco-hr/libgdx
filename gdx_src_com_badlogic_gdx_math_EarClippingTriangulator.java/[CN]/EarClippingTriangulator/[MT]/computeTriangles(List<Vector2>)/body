@@ -2,7 +2,7 @@
   final ArrayList<Vector2> triangles=new ArrayList<Vector2>();
   final ArrayList<Vector2> vertices=new ArrayList<Vector2>(polygon.size());
   vertices.addAll(polygon);
-  while (vertices.size() >= 3) {
+  while (vertices.size() > 3) {
     final int vertexTypes[]=this.classifyVertices(vertices);
     final int vertexCount=vertices.size();
     for (int index=0; index < vertexCount; index++) {
