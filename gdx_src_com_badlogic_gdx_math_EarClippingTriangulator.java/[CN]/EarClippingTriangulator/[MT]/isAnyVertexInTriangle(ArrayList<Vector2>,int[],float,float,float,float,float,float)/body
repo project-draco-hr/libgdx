@@ -6,7 +6,6 @@
       final Vector2 currentVertex=pVertices.get(i);
       final float currentVertexX=currentVertex.x;
       final float currentVertexY=currentVertex.y;
-      if ((currentVertexX == pX1 && currentVertexY == pY1) || (currentVertexX == pX2 && currentVertexY == pY2) || (currentVertexX == pX3 && currentVertexY == pY3))       break;
       final int areaSign1=EarClippingTriangulator.computeSpannedAreaSign(pX1,pY1,pX2,pY2,currentVertexX,currentVertexY);
       final int areaSign2=EarClippingTriangulator.computeSpannedAreaSign(pX2,pY2,pX3,pY3,currentVertexX,currentVertexY);
       final int areaSign3=EarClippingTriangulator.computeSpannedAreaSign(pX3,pY3,pX1,pY1,currentVertexX,currentVertexY);
