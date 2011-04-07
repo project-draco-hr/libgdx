@@ -1,4 +1,5 @@
 {
+  flipped=flip;
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
     reader.readLine();
