@@ -1,0 +1,4 @@
+{
+  if (wrapType == WrapType.wrapped && lastWidth != width)   setWrappedText(text,halignment);
+  lastWidth=width;
+}

@@ -1,0 +1,14 @@
+{
+  cache=new BitmapFontCache(font);
+switch (wrapType) {
+case singleLine:
+    setText(text);
+  break;
+case multiLine:
+setMultiLineText(text);
+break;
+case wrapped:
+setWrappedText(text,halignment);
+break;
+}
+}

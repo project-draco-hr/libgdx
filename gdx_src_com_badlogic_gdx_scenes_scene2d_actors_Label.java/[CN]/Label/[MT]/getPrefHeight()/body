@@ -1,0 +1,10 @@
+{
+switch (wrapType) {
+case singleLine:
+    return cache.getFont().getBounds(text).height;
+case multiLine:
+  return cache.getFont().getMultiLineBounds(text).width;
+case wrapped:
+}
+return 0;
+}

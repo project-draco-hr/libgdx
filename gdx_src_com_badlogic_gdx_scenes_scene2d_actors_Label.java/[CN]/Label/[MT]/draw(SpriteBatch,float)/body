@@ -1,5 +1,15 @@
 {
   cache.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  cache.setPosition(x,y);
-  cache.draw(batch);
+switch (valignment) {
+case TOP:
+    cache.setPosition(x,y + height - bounds.height);
+  break;
+case CENTER:
+cache.setPosition(x,y + (height - bounds.height) / 2);
+break;
+case BOTTOM:
+cache.setPosition(x,y);
+break;
+}
+cache.draw(batch);
 }
