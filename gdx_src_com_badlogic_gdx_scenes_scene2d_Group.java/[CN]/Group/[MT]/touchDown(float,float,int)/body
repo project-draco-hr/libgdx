@@ -1,11 +1,11 @@
 {
   if (!touchable)   return false;
   if (debug)   Gdx.app.log("Group",name + ": " + x+ ", "+ y);
-  if (focusedActor != null) {
+  if (focusedActor[pointer] != null) {
     point.x=x;
     point.y=y;
-    focusedActor.toLocalCoordinates(point);
-    focusedActor.touchDown(point.x,point.y,pointer);
+    focusedActor[pointer].toLocalCoordinates(point);
+    focusedActor[pointer].touchDown(point.x,point.y,pointer);
     return true;
   }
   int len=children.size() - 1;

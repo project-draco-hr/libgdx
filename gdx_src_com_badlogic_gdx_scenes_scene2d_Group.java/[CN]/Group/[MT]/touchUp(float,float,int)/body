@@ -3,8 +3,8 @@
   if (focusedActor != null) {
     point.x=x;
     point.y=y;
-    focusedActor.toLocalCoordinates(point);
-    focusedActor.touchUp(point.x,point.y,pointer);
+    focusedActor[pointer].toLocalCoordinates(point);
+    focusedActor[pointer].touchUp(point.x,point.y,pointer);
     return true;
   }
   int len=children.size() - 1;
