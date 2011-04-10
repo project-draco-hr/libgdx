@@ -1,7 +1,7 @@
 {
   this.text=text;
-  this.halignment=alignment;
+  this.halign=halign;
   wrapType=WrapType.wrapped;
-  bounds=cache.getFont().getWrappedBounds(text,width);
-  cache.setWrappedText(text,0,cache.getFont().isFlipped() ? 0 : bounds.height,width,alignment);
+  bounds.set(cache.getFont().getWrappedBounds(text,width));
+  cache.setWrappedText(text,0,cache.getFont().isFlipped() ? 0 : bounds.height,width,halign);
 }
