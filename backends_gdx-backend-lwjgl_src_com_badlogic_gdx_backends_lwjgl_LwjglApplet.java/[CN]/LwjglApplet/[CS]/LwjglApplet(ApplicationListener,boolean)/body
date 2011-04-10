@@ -3,7 +3,7 @@
   canvas=new Canvas(){
     public final void addNotify(){
       super.addNotify();
-      app=new LwjglApplication(listener,useGL2,canvas);
+      app=new LwjglAppletApplication(listener,useGL2,canvas);
     }
     public final void removeNotify(){
       app.stop();
