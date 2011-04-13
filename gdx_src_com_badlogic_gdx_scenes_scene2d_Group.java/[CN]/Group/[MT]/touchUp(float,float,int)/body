@@ -1,6 +1,6 @@
 {
   if (!touchable)   return false;
-  if (focusedActor != null) {
+  if (focusedActor[pointer] != null) {
     point.x=x;
     point.y=y;
     focusedActor[pointer].toLocalCoordinates(point);
