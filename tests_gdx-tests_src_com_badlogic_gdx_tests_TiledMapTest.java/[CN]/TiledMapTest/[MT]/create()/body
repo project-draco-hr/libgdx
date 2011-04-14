@@ -4,18 +4,19 @@
   font=new BitmapFont();
   font.setColor(Color.RED);
   spriteBatch=new SpriteBatch();
-  FileHandle mapHandle=Gdx.files.internal("data/tiledmap/margin spacing doctype test.tmx");
-  FileHandle packfile=Gdx.files.internal("data/tiledmap/margin spacing doctype test packfile");
-  FileHandle baseDir=Gdx.files.internal("data/tiledmap");
+  final String path="data/tiledmap/";
+  final String mapname="tilemap csv";
+  FileHandle mapHandle=Gdx.files.internal(path + mapname + ".tmx");
+  FileHandle baseDir=Gdx.files.internal(path);
   startTime=System.currentTimeMillis();
   map=TiledLoader.createMap(mapHandle);
   endTime=System.currentTimeMillis();
   System.out.println("Loaded map in " + (endTime - startTime) + "mS");
-  atlas=new TileAtlas(map,packfile,baseDir);
-  int blockWidth=SCREEN_WIDTH / 3;
-  int blockHeight=SCREEN_HEIGHT / 3;
+  atlas=new TileAtlas(map,baseDir);
+  int blockWidth=10;
+  int blockHeight=12;
   startTime=System.currentTimeMillis();
-  tiledMapRenderer=new TiledMapRenderer(map,atlas,blockWidth,blockHeight);
+  tileMapRenderer=new TileMapRenderer(map,atlas,blockWidth,blockHeight);
   endTime=System.currentTimeMillis();
   System.out.println("Created cache in " + (endTime - startTime) + "mS");
   for (  TiledObjectGroup group : map.objectGroups) {
@@ -24,10 +25,10 @@
     }
   }
   cam=new OrthographicCamera(SCREEN_WIDTH,SCREEN_HEIGHT);
-  cam.position.set(tiledMapRenderer.getMapWidthPixels() / 2,tiledMapRenderer.getMapHeightPixels() / 2,0);
+  cam.position.set(map.width * map.tileWidth / 2,map.height * map.tileHeight / 2,0);
   camController=new OrthoCamController(cam);
   Gdx.input.setInputProcessor(camController);
-  float maxX=tiledMapRenderer.getMapWidthPixels();
-  float maxY=tiledMapRenderer.getMapHeightPixels();
+  float maxX=map.width * map.tileWidth;
+  float maxY=map.height * map.tileHeight;
   maxCamPosition.set(maxX,maxY);
 }

@@ -4,11 +4,14 @@
   if (automove) {
     updateCameraPosition();
   }
-  tiledMapRenderer.getProjectionMatrix().set(cam.combined);
+  tileMapRenderer.getProjectionMatrix().set(cam.combined);
   tmp.set(0,0,0);
   cam.unproject(tmp);
-  tiledMapRenderer.render((int)tmp.x,tiledMapRenderer.getMapHeightPixels() - (int)tmp.y,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),layersList);
+  tileMapRenderer.render(tmp.x,tmp.y,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   spriteBatch.begin();
   font.draw(spriteBatch,"FPS: " + Gdx.graphics.getFramesPerSecond(),20,20);
+  font.draw(spriteBatch,"InitialCol, LastCol: " + tileMapRenderer.getInitialCol() + ","+ tileMapRenderer.getLastCol(),20,40);
+  font.draw(spriteBatch,"InitialRow, LastRow: " + tileMapRenderer.getInitialRow() + ","+ tileMapRenderer.getLastRow(),20,60);
+  font.draw(spriteBatch,"Location: " + (int)tmp.x + ","+ (map.height * map.tileHeight - (int)tmp.y),20,80);
   spriteBatch.end();
 }
