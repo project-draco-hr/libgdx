@@ -1,9 +1,0 @@
-{
-  IntArray list=new IntArray(false,(values.length() + 1) / 2);
-  StringTokenizer st=new StringTokenizer(values,",");
-  while (st.hasMoreTokens()) {
-    list.add(Integer.parseInt(st.nextToken()));
-  }
-  list.shrink();
-  return list;
-}

@@ -1,0 +1,16 @@
+{
+  regionsMap=new IntMap<AtlasRegion>();
+  TextureAtlas textureAtlas;
+  List<AtlasRegion> atlasRegions;
+  int j;
+  TileSet set;
+  for (int i=0; i < map.tileSets.size(); i++) {
+    set=map.tileSets.get(i);
+    textureAtlas=new TextureAtlas(inputDir.child(removeExtension(set.imageName) + " packfile"),inputDir,false);
+    atlasRegions=(List<AtlasRegion>)textureAtlas.findRegions(removeExtension(set.imageName));
+    for (j=0; j < atlasRegions.size(); j++) {
+      regionsMap.put(atlasRegions.get(j).index + set.firstgid,atlasRegions.get(j));
+      if (!textures.contains(atlasRegions.get(j).getTexture()))       textures.add(atlasRegions.get(j).getTexture());
+    }
+  }
+}
