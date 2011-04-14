@@ -2,7 +2,7 @@
   int firstgid=0;
   int lastgid;
   for (  TileSet set : map.tileSets) {
-    TileSetLayout layout=new TileSetLayout(set,imageDirHandle);
+    TileSetLayout layout=new TileSetLayout(set,inputDirHandle);
     firstgid=set.firstgid;
     lastgid=firstgid + layout.numTiles - 1;
     if (tileNum >= firstgid && tileNum <= lastgid) {

@@ -12,7 +12,6 @@
       }
     }
     setProperty(doc,map,"blended tiles",toCSV(blendedTiles));
-    setProperty(doc,map,"tile count",String.valueOf(tileCount));
     TransformerFactory transformerFactory=TransformerFactory.newInstance();
     Transformer transformer=transformerFactory.newTransformer();
     DOMSource source=new DOMSource(doc);

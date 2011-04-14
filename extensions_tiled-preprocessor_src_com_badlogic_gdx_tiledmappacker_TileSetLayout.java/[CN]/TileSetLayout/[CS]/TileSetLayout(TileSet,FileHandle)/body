@@ -1,5 +1,5 @@
 {
-  this.tileSet=tileSet;
+  super(tileSet);
   image=ImageIO.read(baseDir.child(tileSet.imageName).read());
   imageTilePositions=new IntMap<Vector2>();
   int x, y, tile=0;

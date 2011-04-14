@@ -1,0 +1,17 @@
+{
+  BufferedImage tile;
+  Vector2 tileLocation;
+  TileSetLayout packerTileSet;
+  Graphics g;
+  packer=new TexturePacker(settings);
+  TileSetLayout layout=new TileSetLayout(set,inputDirHandle);
+  for (int gid=layout.firstgid, i=0; i < layout.numTiles; gid++, i++) {
+    tileLocation=layout.getLocation(gid);
+    tile=new BufferedImage(layout.tileWidth,layout.tileHeight,BufferedImage.TYPE_4BYTE_ABGR);
+    g=tile.createGraphics();
+    g.drawImage(layout.image,0,0,layout.tileWidth,layout.tileHeight,(int)tileLocation.x,(int)tileLocation.y,(int)tileLocation.x + layout.tileWidth,(int)tileLocation.y + layout.tileHeight,null);
+    if (isBlended(tile))     setBlended(gid);
+    packer.addImage(tile,removeExtension(set.imageName) + "_" + i);
+  }
+  packer.process(outputDir,new File(outputDir,removeExtension(set.imageName) + " packfile"),removeExtension(set.imageName));
+}
