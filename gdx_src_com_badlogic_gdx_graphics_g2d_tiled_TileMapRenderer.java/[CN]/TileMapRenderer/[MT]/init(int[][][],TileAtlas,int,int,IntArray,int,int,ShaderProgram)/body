@@ -1,0 +1,34 @@
+{
+  this.atlas=atlas;
+  this.tileWidth=tileWidth;
+  this.tileHeight=tileHeight;
+  this.blendedTiles=blendedTiles;
+  this.tilesPerBlockX=tilesPerBlockX;
+  this.tilesPerBlockY=tilesPerBlockY;
+  int layer, row, col;
+  int maxCacheSize=0;
+  int maxHeight=0;
+  for (layer=0; layer < map.length; layer++) {
+    if (map[layer].length > maxHeight)     maxHeight=map[layer].length;
+    for (row=0; row < map[layer].length; row++) {
+      maxCacheSize+=map[layer].length * map[layer][row].length;
+    }
+  }
+  mapHeightPixels=maxHeight * tileHeight;
+  if (shader == null)   cache=new SpriteCache(maxCacheSize,false);
+ else   cache=new SpriteCache(maxCacheSize,shader,false);
+  normalCacheId=new int[map.length][][];
+  blendedCacheId=new int[map.length][][];
+  for (layer=0; layer < map.length; layer++) {
+    normalCacheId[layer]=new int[(int)Math.ceil((float)map[layer].length / tilesPerBlockY)][];
+    blendedCacheId[layer]=new int[(int)Math.ceil((float)map[layer].length / tilesPerBlockY)][];
+    for (row=0; row < normalCacheId[layer].length; row++) {
+      normalCacheId[layer][row]=new int[(int)Math.ceil(map[layer][row].length / tilesPerBlockX)];
+      blendedCacheId[layer][row]=new int[(int)Math.ceil(map[layer][row].length / tilesPerBlockX)];
+      for (col=0; col < normalCacheId[layer][row].length; col++) {
+        normalCacheId[layer][row][col]=addBlock(map[layer],layer,row,col,false);
+        blendedCacheId[layer][row][col]=addBlock(map[layer],layer,row,col,true);
+      }
+    }
+  }
+}

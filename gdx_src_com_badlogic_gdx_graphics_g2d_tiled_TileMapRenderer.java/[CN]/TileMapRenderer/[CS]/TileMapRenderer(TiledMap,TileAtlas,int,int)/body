@@ -1,0 +1,11 @@
+{
+  int[][][] tileMap=new int[map.layers.size()][][];
+  for (int i=0; i < map.layers.size(); i++) {
+    tileMap[i]=map.layers.get(i).tiles;
+  }
+  for (int i=0; i < map.tileSets.size(); i++) {
+    if (map.tileSets.get(i).tileHeight - map.tileHeight > overdrawY)     overdrawY=map.tileSets.get(i).tileHeight - map.tileHeight;
+    if (map.tileSets.get(i).tileWidth - map.tileWidth > overdrawX)     overdrawX=map.tileSets.get(i).tileWidth - map.tileWidth;
+  }
+  init(tileMap,atlas,map.tileWidth,map.tileHeight,createFromCSV(map.properties.get("blended tiles")),tilesPerBlockX,tilesPerBlockY,null);
+}

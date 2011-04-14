@@ -1,0 +1,6 @@
+{
+  if (normalCacheId == null)   return 0;
+  if (normalCacheId[layer] == null)   return 0;
+  if (normalCacheId[layer][row] == null)   return 0;
+  return normalCacheId[layer][row].length;
+}
