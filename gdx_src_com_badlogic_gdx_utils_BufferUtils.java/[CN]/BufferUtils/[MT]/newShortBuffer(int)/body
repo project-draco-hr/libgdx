@@ -1,5 +1,5 @@
 {
-  ByteBuffer buffer=ByteBuffer.allocateDirect(numShorts * Short.SIZE / 8);
+  ByteBuffer buffer=ByteBuffer.allocateDirect(numShorts * 2);
   buffer.order(ByteOrder.nativeOrder());
   return buffer.asShortBuffer();
 }

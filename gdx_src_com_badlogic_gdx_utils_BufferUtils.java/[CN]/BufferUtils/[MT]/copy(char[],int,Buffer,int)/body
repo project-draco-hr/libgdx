@@ -1,0 +1,4 @@
+{
+  copyJni(src,srcOffset << 1,dst,positionInBytes(dst),numElements << 1);
+  dst.limit(dst.position() + bytesToElements(dst,numElements << 1));
+}

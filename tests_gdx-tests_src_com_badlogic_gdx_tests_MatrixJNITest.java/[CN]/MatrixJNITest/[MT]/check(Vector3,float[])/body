@@ -1,0 +1,3 @@
+{
+  if (vec.x != fvec[0] || vec.y != fvec[1] || vec.z != fvec[2])   throw new GdxRuntimeException("vectors are not equal");
+}

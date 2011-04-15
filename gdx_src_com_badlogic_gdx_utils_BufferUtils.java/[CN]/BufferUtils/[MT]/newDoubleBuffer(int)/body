@@ -1,0 +1,5 @@
+{
+  ByteBuffer buffer=ByteBuffer.allocateDirect(numDoubles * 8);
+  buffer.order(ByteOrder.nativeOrder());
+  return buffer.asDoubleBuffer();
+}
