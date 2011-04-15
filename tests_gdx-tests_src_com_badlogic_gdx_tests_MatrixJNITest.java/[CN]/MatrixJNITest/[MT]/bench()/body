@@ -1,0 +1,14 @@
+{
+  Matrix4 mata=new Matrix4();
+  Matrix4 matb=new Matrix4();
+  long start=System.nanoTime();
+  for (int i=0; i < 1000000; i++) {
+    mata.mul(matb);
+  }
+  Gdx.app.log("MatrixJNITest","java mul took: " + (System.nanoTime() - start) / 1000000000.0f);
+  start=System.nanoTime();
+  for (int i=0; i < 1000000; i++) {
+    Matrix4.mulJNI(mata.val,matb.val);
+  }
+  Gdx.app.log("MatrixJNITest","jni mul took: " + (System.nanoTime() - start) / 1000000000.0f);
+}
