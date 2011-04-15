@@ -1,0 +1,29 @@
+{
+  FloatBuffer fb=BufferUtils.newFloatBuffer(1024 * 1024 / 4);
+  float[] floats=new float[1024 * 1024 / 4];
+  int len=floats.length;
+  long start=System.nanoTime();
+  for (int j=0; j < NUM_MB; j++) {
+    fb.clear();
+    for (int i=0; i < len; i++)     fb.put(floats[i]);
+  }
+  Gdx.app.log("BufferUtilsTest","FloatBuffer relative put: " + (System.nanoTime() - start) / 1000000000.0f);
+  start=System.nanoTime();
+  for (int j=0; j < NUM_MB; j++) {
+    fb.clear();
+    for (int i=0; i < len; i++)     fb.put(i,floats[i]);
+  }
+  Gdx.app.log("BufferUtilsTest","FloatBuffer absolute put: " + (System.nanoTime() - start) / 1000000000.0f);
+  start=System.nanoTime();
+  for (int j=0; j < NUM_MB; j++) {
+    fb.clear();
+    fb.put(floats);
+  }
+  Gdx.app.log("BufferUtilsTest","FloatBuffer bulk put: " + (System.nanoTime() - start) / 1000000000.0f);
+  start=System.nanoTime();
+  for (int j=0; j < NUM_MB; j++) {
+    fb.clear();
+    BufferUtils.copy(floats,0,fb,len);
+  }
+  Gdx.app.log("BufferUtilsTest","FloatBuffer native bulk put: " + (System.nanoTime() - start) / 1000000000.0f);
+}

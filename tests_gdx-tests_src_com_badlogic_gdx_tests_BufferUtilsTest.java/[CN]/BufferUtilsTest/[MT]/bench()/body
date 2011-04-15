@@ -1,30 +1,8 @@
 {
-  ByteBuffer bb=BufferUtils.newByteBuffer(1024 * 1024);
-  byte[] bytes=new byte[1024 * 1024];
-  int len=bytes.length;
-  final int NUM_MB=5;
-  long start=System.nanoTime();
-  for (int j=0; j < NUM_MB; j++) {
-    bb.clear();
-    for (int i=0; i < len; i++)     bb.put(bytes[i]);
-  }
-  Gdx.app.log("BufferUtilsTest","relative put: " + (System.nanoTime() - start) / 1000000000.0f);
-  start=System.nanoTime();
-  for (int j=0; j < NUM_MB; j++) {
-    bb.clear();
-    for (int i=0; i < len; i++)     bb.put(i,bytes[i]);
-  }
-  Gdx.app.log("BufferUtilsTest","absolute put: " + (System.nanoTime() - start) / 1000000000.0f);
-  start=System.nanoTime();
-  for (int j=0; j < NUM_MB; j++) {
-    bb.clear();
-    bb.put(bytes);
-  }
-  Gdx.app.log("BufferUtilsTest","bulk put: " + (System.nanoTime() - start) / 1000000000.0f);
-  start=System.nanoTime();
-  for (int j=0; j < NUM_MB; j++) {
-    bb.clear();
-    BufferUtils.copy(bytes,0,bb,len);
-  }
-  Gdx.app.log("BufferUtilsTest","bulk put: " + (System.nanoTime() - start) / 1000000000.0f);
+  benchByte();
+  benchShort();
+  benchInt();
+  benchLong();
+  benchFloat();
+  benchDouble();
 }
