@@ -1,0 +1,6 @@
+{
+  OvershootInterpolator inter=pool.obtain();
+  inter.factor=factor;
+  inter.doubledFactor=factor * 2;
+  return inter;
+}
