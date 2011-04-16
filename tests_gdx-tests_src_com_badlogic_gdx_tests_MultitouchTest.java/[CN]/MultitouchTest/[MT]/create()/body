@@ -1,5 +1,5 @@
 {
-  Gdx.app.log("Multitouch","multitouch supported: " + Gdx.input.supportsMultitouch());
+  Gdx.app.log("Multitouch","multitouch supported: " + Gdx.input.isPeripheralAvailable(Peripheral.MultitouchScreen));
   renderer=new ImmediateModeRenderer();
   camera=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   camera.position.set(Gdx.graphics.getWidth() / 2.0f,Gdx.graphics.getHeight() / 2.0f,0);

@@ -24,7 +24,7 @@
   button.action(Parallel.$(Sequence.$(FadeOut.$(2),FadeIn.$(2)),Sequence.$(ScaleTo.$(0.1f,0.1f,1.5f),ScaleTo.$(1.0f,1.0f,1.5f))));
   button.clickListener=new ClickListener(){
     @Override public void clicked(    Button button){
-      if (Gdx.input.supportsOnscreenKeyboard())       Gdx.input.setOnscreenKeyboardVisible(true);
+      if (Gdx.input.isPeripheralAvailable(Peripheral.OnscreenKeyboard))       Gdx.input.setOnscreenKeyboardVisible(true);
     }
   }
 ;
