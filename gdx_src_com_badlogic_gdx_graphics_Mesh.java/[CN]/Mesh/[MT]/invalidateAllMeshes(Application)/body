@@ -1,0 +1,10 @@
+{
+  List<Mesh> meshesList=meshes.get(app);
+  if (meshesList == null)   return;
+  for (int i=0; i < meshesList.size(); i++) {
+    if (meshesList.get(i).vertices instanceof VertexBufferObject) {
+      ((VertexBufferObject)meshesList.get(i).vertices).invalidate();
+      meshesList.get(i).indices.invalidate();
+    }
+  }
+}

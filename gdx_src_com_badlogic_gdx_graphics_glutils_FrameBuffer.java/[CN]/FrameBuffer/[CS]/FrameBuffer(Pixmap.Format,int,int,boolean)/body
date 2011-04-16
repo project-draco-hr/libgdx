@@ -3,5 +3,5 @@
   this.height=height;
   this.format=format;
   build();
-  buffers.add(this);
+  addManagedFrameBuffer(Gdx.app,this);
 }

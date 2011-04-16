@@ -2,7 +2,6 @@
   frameStart=System.nanoTime();
   lastFrameTime=frameStart;
   deltaTime=0;
-  mean.clear();
   animator=new JoglAnimator(canvas);
   animator.start();
 }

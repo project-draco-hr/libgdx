@@ -1,0 +1,11 @@
+{
+  StringBuilder builder=new StringBuilder();
+  int i=0;
+  builder.append("Managed buffers/app: { ");
+  for (  Application app : buffers.keySet()) {
+    builder.append(buffers.get(app).size());
+    builder.append(" ");
+  }
+  builder.append("}");
+  return builder.toString();
+}

@@ -11,5 +11,5 @@
   if (mipmap)   minFilter=TextureFilter.MipMap;
   setFilter(minFilter,magFilter);
   setWrap(uWrap,vWrap);
-  managedTextures.add(this);
+  addManagedTexture(Gdx.app,this);
 }

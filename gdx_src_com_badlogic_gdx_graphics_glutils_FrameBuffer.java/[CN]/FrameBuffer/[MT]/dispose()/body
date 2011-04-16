@@ -10,5 +10,5 @@
   handle.put(framebufferHandle);
   handle.flip();
   gl.glDeleteFramebuffers(1,handle);
-  buffers.remove(this);
+  if (buffers.get(Gdx.app) != null)   buffers.get(Gdx.app).remove(this);
 }

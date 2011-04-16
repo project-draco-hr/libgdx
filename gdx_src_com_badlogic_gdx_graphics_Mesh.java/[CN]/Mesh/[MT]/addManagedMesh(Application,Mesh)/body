@@ -1,0 +1,6 @@
+{
+  List<Mesh> managedResources=meshes.get(app);
+  if (managedResources == null)   managedResources=new ArrayList<Mesh>();
+  managedResources.add(mesh);
+  meshes.put(app,managedResources);
+}

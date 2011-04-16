@@ -1,5 +1,5 @@
 {
-  meshes.remove(this);
+  if (meshes.get(Gdx.app) != null)   meshes.get(Gdx.app).remove(this);
   vertices.dispose();
   indices.dispose();
 }

@@ -11,5 +11,5 @@
   format=Format.RGBA8888;
   this.width=textureData.getWidth();
   this.height=textureData.getHeight();
-  managedTextures.add(this);
+  addManagedTexture(Gdx.app,this);
 }

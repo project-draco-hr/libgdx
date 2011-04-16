@@ -1,0 +1,8 @@
+{
+  if (Gdx.graphics.getGL20() == null)   return;
+  List<FrameBuffer> bufferList=buffers.get(app);
+  if (bufferList == null)   return;
+  for (int i=0; i < bufferList.size(); i++) {
+    bufferList.get(i).build();
+  }
+}

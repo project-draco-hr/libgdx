@@ -15,5 +15,5 @@
     indices=new IndexBufferObject(maxIndices);
     isVertexArray=true;
   }
-  meshes.add(this);
+  addManagedMesh(Gdx.app,this);
 }

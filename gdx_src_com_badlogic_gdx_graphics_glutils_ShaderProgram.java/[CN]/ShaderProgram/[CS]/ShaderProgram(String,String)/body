@@ -7,5 +7,5 @@
   ByteBuffer buffer=ByteBuffer.allocateDirect(4 * 16);
   buffer.order(ByteOrder.nativeOrder());
   matrix=buffer.asFloatBuffer();
-  shaders.add(this);
+  addManagedShader(Gdx.app,this);
 }

@@ -1,0 +1,8 @@
+{
+  List<Texture> managedTexureList=managedTextures.get(app);
+  if (managedTexureList == null)   return;
+  for (int i=0; i < managedTexureList.size(); i++) {
+    Texture texture=managedTexureList.get(i);
+    texture.reload();
+  }
+}

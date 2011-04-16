@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < managedTextures.size(); i++) {
-    Texture texture=managedTextures.get(i);
-    texture.reload();
-  }
-}
