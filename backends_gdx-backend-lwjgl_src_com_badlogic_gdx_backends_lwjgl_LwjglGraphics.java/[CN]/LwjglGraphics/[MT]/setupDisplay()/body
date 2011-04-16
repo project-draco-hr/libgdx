@@ -3,7 +3,7 @@
     Display.setParent(canvas);
   }
  else {
-    Display.setDisplayMode(new DisplayMode(width,height));
+    Display.setDisplayMode(new org.lwjgl.opengl.DisplayMode(width,height));
     Display.setFullscreen(false);
     Display.setTitle(title);
   }

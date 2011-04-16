@@ -1,0 +1,3 @@
+{
+  return !(x > rectangle.x + rectangle.width || x + width < rectangle.x || y > rectangle.y + rectangle.height || y + height < rectangle.y);
+}
