@@ -22,7 +22,7 @@
           repeatX=Repeat;
           repeatY=Repeat;
         }
-        pageImage=new Texture(file,TextureFilter.isMipMap(min) || TextureFilter.isMipMap(max) ? true : false);
+        pageImage=new Texture(file,format,TextureFilter.isMipMap(min) || TextureFilter.isMipMap(max) ? true : false);
         pageImage.setFilter(min,max);
         pageImage.setWrap(repeatX,repeatY);
         textures.add(pageImage);
