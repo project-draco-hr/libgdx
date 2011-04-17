@@ -16,8 +16,9 @@
   }
  catch (  Exception ignored) {
   }
-  FileHandle dir=Gdx.files.internal("data");
-  if (!dir.path().equals("data"))   fail();
+  FileHandle dir;
+  if (Gdx.app.getType() == ApplicationType.Android)   dir=Gdx.files.internal("data");
+ else   dir=Gdx.files.internal("../gdx-tests-android/assets/data");
   if (!dir.exists())   fail();
   if (!dir.isDirectory())   fail();
   if (dir.list().length == 0)   fail();
