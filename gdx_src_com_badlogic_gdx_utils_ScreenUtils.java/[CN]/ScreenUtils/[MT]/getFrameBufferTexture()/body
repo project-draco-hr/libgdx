@@ -1,0 +1,5 @@
+{
+  final int w=Gdx.graphics.getWidth();
+  final int h=Gdx.graphics.getHeight();
+  return getFrameBufferTexture(0,0,w,h);
+}

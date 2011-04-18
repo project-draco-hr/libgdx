@@ -1,0 +1,5 @@
+{
+  spriteBatch.dispose();
+  triangle.dispose();
+  if (screenCap != null)   screenCap.getTexture().dispose();
+}

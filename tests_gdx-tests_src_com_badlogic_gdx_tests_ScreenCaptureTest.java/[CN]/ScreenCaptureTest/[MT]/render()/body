@@ -1,0 +1,31 @@
+{
+  GL10 gl=Gdx.graphics.getGL10();
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  gl.glViewport(0,0,400,480);
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(camera.combined.val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+  rotation+=rotation >= 360 ? -360 + Gdx.graphics.getDeltaTime() * 45f : Gdx.graphics.getDeltaTime() * 45f;
+  gl.glPushMatrix();
+  gl.glColor4f(1,0,0,1);
+  gl.glRotatef(rotation,1,0,0);
+  triangle.render(GL10.GL_TRIANGLES);
+  gl.glPopMatrix();
+  gl.glPushMatrix();
+  gl.glColor4f(0,1,0,1);
+  gl.glRotatef(rotation,0,1,0);
+  triangle.render(GL10.GL_TRIANGLES);
+  gl.glPopMatrix();
+  gl.glPushMatrix();
+  gl.glColor4f(0,0,1,1);
+  gl.glRotatef(rotation,0,0,1);
+  triangle.render(GL10.GL_TRIANGLES);
+  gl.glPopMatrix();
+  gl.glViewport(400,0,800,480);
+  if (screenCap != null) {
+    spriteBatch.begin();
+    spriteBatch.draw(screenCap,0,0);
+    spriteBatch.end();
+  }
+}

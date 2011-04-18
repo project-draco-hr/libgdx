@@ -1,0 +1,11 @@
+{
+  final int potW=MathUtils.nextPowerOfTwo(w);
+  final int potH=MathUtils.nextPowerOfTwo(h);
+  final Pixmap pixmap=new Pixmap(potW,potH,Format.RGBA8888);
+  ByteBuffer pixels=pixmap.getPixels();
+  Gdx.gl.glReadPixels(x,y,potW,potH,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixels);
+  Texture texture=new Texture(pixmap);
+  TextureRegion textureRegion=new TextureRegion(texture,0,h,w,-h);
+  pixmap.dispose();
+  return textureRegion;
+}
