@@ -10,6 +10,9 @@
       pixels.get(lines,i * numBytesPerLine,numBytesPerLine);
     }
   }
-  BufferUtils.copy(lines,0,pixels.position(0),numBytes);
+ else {
+    pixels.clear();
+    pixels.get(lines);
+  }
   return lines;
 }
