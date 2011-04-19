@@ -1,3 +1,7 @@
 {
-  GL11.glGetInteger(pname,toBuffer(params,offset));
+  GL11.glGetInteger(pname,getBuffer);
+  for (int i=offset, j=0; i < params.length; i++, j++) {
+    if (j == getBuffer.capacity())     return;
+    params[i]=getBuffer.get(j);
+  }
 }
