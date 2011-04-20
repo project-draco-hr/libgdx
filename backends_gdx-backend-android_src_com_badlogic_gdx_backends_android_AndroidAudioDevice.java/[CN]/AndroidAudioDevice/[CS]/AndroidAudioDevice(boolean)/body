@@ -1,7 +1,0 @@
-{
-  this.isMono=isMono;
-  int minSize=AudioTrack.getMinBufferSize(44100,isMono ? AudioFormat.CHANNEL_CONFIGURATION_MONO : AudioFormat.CHANNEL_CONFIGURATION_STEREO,AudioFormat.ENCODING_PCM_16BIT);
-  track=new AudioTrack(AudioManager.STREAM_MUSIC,44100,isMono ? AudioFormat.CHANNEL_CONFIGURATION_MONO : AudioFormat.CHANNEL_CONFIGURATION_STEREO,AudioFormat.ENCODING_PCM_16BIT,minSize,AudioTrack.MODE_STREAM);
-  track.play();
-  latency=minSize / (isMono ? 1 : 2);
-}

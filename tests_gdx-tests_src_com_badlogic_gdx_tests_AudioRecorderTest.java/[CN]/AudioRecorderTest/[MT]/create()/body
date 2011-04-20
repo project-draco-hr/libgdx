@@ -1,5 +1,5 @@
 {
-  device=Gdx.audio.newAudioDevice(true);
+  device=Gdx.audio.newAudioDevice(44100,true);
   recorder=Gdx.audio.newAudioRecoder(44100,true);
   renderer=new ImmediateModeRenderer();
   Thread t=new Thread(new Runnable(){
