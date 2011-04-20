@@ -11,7 +11,7 @@
     if (alignment != HAlignment.LEFT) {
       int lineWidth=getBounds(str,start,lineEnd).width;
       xOffset=alignmentWidth - lineWidth;
-      if (alignment == HAlignment.CENTER)       xOffset/=2;
+      if (alignment == HAlignment.CENTER)       xOffset=(int)(xOffset / 2);
     }
     int lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);

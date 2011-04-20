@@ -6,7 +6,7 @@
   int length=str.length();
   int maxWidth=0;
   while (start < length) {
-    int lineEnd=start + computeVisibleGlpyhs(str,start,indexOf(str,'\n',start),wrapWidth);
+    int lineEnd=start + computeVisibleGlyphs(str,start,indexOf(str,'\n',start),wrapWidth);
     int nextLineStart;
     if (lineEnd < length) {
       int originalLineEnd=lineEnd;
@@ -30,7 +30,7 @@
     if (alignment != HAlignment.LEFT) {
       int lineWidth=getBounds(str,start,lineEnd).width;
       xOffset=wrapWidth - lineWidth;
-      if (alignment == HAlignment.CENTER)       xOffset/=2;
+      if (alignment == HAlignment.CENTER)       xOffset=(int)(xOffset/=2);
     }
     int lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);
