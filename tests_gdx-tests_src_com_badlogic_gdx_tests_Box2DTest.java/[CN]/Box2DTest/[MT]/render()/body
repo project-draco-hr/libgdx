@@ -21,7 +21,7 @@
   for (int i=0; i < world.getContactCount(); i++) {
     Contact contact=world.getContactList().get(i);
     if (contact.isTouching()) {
-      WorldManifold manifold=contact.GetWorldManifold();
+      WorldManifold manifold=contact.getWorldManifold();
       int numContactPoints=manifold.getNumberOfContactPoints();
       for (int j=0; j < numContactPoints; j++) {
         Vector2 point=manifold.getPoints()[j];
