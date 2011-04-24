@@ -1,5 +1,5 @@
 {
   contact.addr=contactAddr;
-  contact.GetWorldManifold();
+  contact.getWorldManifold();
   if (contactListener != null)   contactListener.endContact(contact);
 }
