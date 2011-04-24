@@ -1,0 +1,75 @@
+{
+  ArrayList<VertexIndices> vertCombos=new ArrayList<VertexIndices>();
+  short[] indices=new short[triangles.length * 3];
+  int idx=0;
+  short vertIdx=0;
+  for (int i=0; i < triangles.length; i++) {
+    MD2Triangle triangle=triangles[i];
+    for (int j=0; j < 3; j++) {
+      VertexIndices vert=null;
+      boolean contains=false;
+      for (int k=0; k < vertCombos.size(); k++) {
+        VertexIndices vIdx=vertCombos.get(k);
+        if (vIdx.vIdx == triangle.vertices[j] && vIdx.tIdx == triangle.texCoords[j]) {
+          vert=vIdx;
+          contains=true;
+          break;
+        }
+      }
+      if (!contains) {
+        vert=new VertexIndices(triangle.vertices[j],triangle.texCoords[j],vertIdx);
+        vertCombos.add(vert);
+        vertIdx++;
+      }
+      indices[idx++]=vert.nIdx;
+    }
+  }
+  idx=0;
+  float[] uvs=new float[vertCombos.size() * 2];
+  for (int i=0; i < vertCombos.size(); i++) {
+    VertexIndices vtI=vertCombos.get(i);
+    uvs[idx++]=texCoords[vtI.tIdx * 2];
+    uvs[idx++]=texCoords[vtI.tIdx * 2 + 1];
+  }
+  for (int i=0; i < frames.length; i++) {
+    MD2Frame frame=frames[i];
+    idx=0;
+    float[] newVerts=new float[vertCombos.size() * 3];
+    for (int j=0; j < vertCombos.size(); j++) {
+      VertexIndices vIdx=vertCombos.get(j);
+      newVerts[idx++]=frame.vertices[vIdx.vIdx * 3];
+      newVerts[idx++]=frame.vertices[vIdx.vIdx * 3 + 1];
+      newVerts[idx++]=frame.vertices[vIdx.vIdx * 3 + 2];
+    }
+    frame.vertices=newVerts;
+  }
+  header.numVertices=vertCombos.size();
+  SubMesh subMesh=new SubMesh();
+  KeyframedAnimation animation=new KeyframedAnimation();
+  animation.duration=frames.length * 0.2f;
+  animation.keyframes=new Keyframe[frames.length];
+  for (int frameNum=0; frameNum < frames.length; frameNum++) {
+    MD2Frame frame=frames[frameNum];
+    float[] vertices=new float[header.numVertices * 5];
+    idx=0;
+    int idxV=0;
+    int idxT=0;
+    for (int i=0; i < header.numVertices; i++) {
+      vertices[idx++]=frame.vertices[idxV++];
+      vertices[idx++]=frame.vertices[idxV++];
+      vertices[idx++]=frame.vertices[idxV++];
+      vertices[idx++]=uvs[idxT++];
+      vertices[idx++]=uvs[idxT++];
+    }
+    Keyframe keyFrame=new Keyframe();
+    keyFrame.timeStamp=0;
+    keyFrame.vertices=vertices;
+    animation.keyframes[frameNum]=keyFrame;
+  }
+  subMesh.mesh=new Mesh(false,header.numTriangles * 3,indices.length,new VertexAttribute(Usage.Position,3,"a_pos"),new VertexAttribute(Usage.TextureCoordinates,2,"a_tex0"));
+  subMesh.mesh.setIndices(indices);
+  subMesh.animations.put("all",animation);
+  KeyframedModel model=new KeyframedModel();
+  model.subMeshes=new SubMesh[]{subMesh};
+  return model;
+}
