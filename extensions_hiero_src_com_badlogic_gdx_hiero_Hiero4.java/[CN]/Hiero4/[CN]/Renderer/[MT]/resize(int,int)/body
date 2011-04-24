@@ -1,3 +1,4 @@
 {
-  batch.getProjectionMatrix().setToOrtho(0,Gdx.graphics.getWidth(),0,Gdx.graphics.getHeight(),0,1);
+  GL11.glViewport(0,0,width,height);
+  batch.getProjectionMatrix().setToOrtho(0,width,0,height,0,1);
 }
