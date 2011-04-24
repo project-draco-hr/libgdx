@@ -21,5 +21,7 @@
   }
   centerX=width / 2;
   centerY=height / 2;
-  projection.setToOrtho2D(0,0,this.width,this.height);
+  camera.position.set(centerX,centerY,0);
+  camera.viewportWidth=this.width;
+  camera.viewportHeight=this.height;
 }

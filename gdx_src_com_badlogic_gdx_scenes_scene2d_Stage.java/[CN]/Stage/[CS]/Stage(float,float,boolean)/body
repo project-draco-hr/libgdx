@@ -4,7 +4,6 @@
   this.stretch=stretch;
   this.root=new Group("root");
   this.batch=new SpriteBatch();
-  this.projection=new Matrix4();
-  this.identity=new Matrix4();
+  this.camera=new OrthographicCamera();
   setViewport(width,height,stretch);
 }

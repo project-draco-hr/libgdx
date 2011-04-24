@@ -1,6 +1,6 @@
 {
-  batch.setProjectionMatrix(projection);
-  batch.setTransformMatrix(identity);
+  camera.update();
+  batch.setProjectionMatrix(camera.combined);
   batch.begin();
   root.draw(batch,1);
   batch.end();

@@ -1,5 +1,5 @@
 {
-  out.y=(Gdx.graphics.getHeight() - 1) - y;
-  out.x=(float)x / Gdx.graphics.getWidth() * width;
-  out.y=out.y / Gdx.graphics.getHeight() * height;
+  camera.unproject(tmp.set(x,y,0));
+  out.x=tmp.x;
+  out.y=tmp.y;
 }
