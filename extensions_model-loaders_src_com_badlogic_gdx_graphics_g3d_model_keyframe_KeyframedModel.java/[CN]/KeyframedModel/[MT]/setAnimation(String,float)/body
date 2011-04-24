@@ -1,0 +1,9 @@
+{
+  int len=subMeshes.length;
+  for (int i=0; i < len; i++) {
+    KeyframedSubMesh subMesh=subMeshes[i];
+    KeyframedAnimation anim=subMesh.animations.get(animation);
+    if (anim == null)     throw new IllegalArgumentException("No animation with name '" + animation + "' in submesh #"+ i);
+    subMesh.mesh.setVertices(anim.keyframes[0].vertices);
+  }
+}

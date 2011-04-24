@@ -2,7 +2,7 @@
   try {
     SkeletonModel model=new SkeletonModel();
     Mesh ogreMesh=loadOgreMesh(in);
-    SubMesh[] meshes=generateSubMeshes(ogreMesh);
+    SkeletonSubMesh[] meshes=generateSubMeshes(ogreMesh);
     model.subMeshes=meshes;
     return model;
   }

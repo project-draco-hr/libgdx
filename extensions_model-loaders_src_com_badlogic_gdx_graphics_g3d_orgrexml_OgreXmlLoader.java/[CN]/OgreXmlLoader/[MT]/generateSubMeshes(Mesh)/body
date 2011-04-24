@@ -1,6 +1,6 @@
 {
   List<Submesh> ogreSubmeshes=ogreMesh.getSubmeshes().getSubmesh();
-  SubMesh[] submeshes=new SubMesh[ogreSubmeshes.size()];
+  SkeletonSubMesh[] submeshes=new SkeletonSubMesh[ogreSubmeshes.size()];
   for (int i=0; i < ogreSubmeshes.size(); i++) {
     Submesh ogreSubmesh=ogreSubmeshes.get(i);
     boolean usesTriangleList=false;
@@ -187,7 +187,7 @@ float weight=assignment.weight;
 boneAssignments.get(vertexIndex).add(boneIndex);
 boneWeights.get(vertexIndex).add(weight);
 }
-SubMesh subMesh=new SubMesh();
+SkeletonSubMesh subMesh=new SkeletonSubMesh();
 subMesh.mesh=mesh;
 subMesh.vertices=vertices;
 subMesh.skinnedVertices=new float[vertices.length];

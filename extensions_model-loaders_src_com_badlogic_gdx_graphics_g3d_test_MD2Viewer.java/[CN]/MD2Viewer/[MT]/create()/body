@@ -1,6 +1,7 @@
 {
   model=new MD2Loader().load(Gdx.files.internal("data/knight.md2").read());
-  texture=new Texture(Gdx.files.internal("data/knight.jpg"));
+  Material material=new Material("knight",new TextureAttribute(new Texture("data/knight.jpg"),0,"a_tex0"));
+  model.setMaterial(material);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.far=300;
   cam.position.set(0,12,50);

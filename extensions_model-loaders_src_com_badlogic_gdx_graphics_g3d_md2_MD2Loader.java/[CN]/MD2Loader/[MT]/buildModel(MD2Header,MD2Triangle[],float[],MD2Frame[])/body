@@ -44,7 +44,7 @@
     frame.vertices=newVerts;
   }
   header.numVertices=vertCombos.size();
-  SubMesh subMesh=new SubMesh();
+  KeyframedSubMesh subMesh=new KeyframedSubMesh();
   KeyframedAnimation animation=new KeyframedAnimation();
   animation.duration=frames.length * 0.2f;
   animation.keyframes=new Keyframe[frames.length];
@@ -69,7 +69,9 @@
   subMesh.mesh=new Mesh(false,header.numTriangles * 3,indices.length,new VertexAttribute(Usage.Position,3,"a_pos"),new VertexAttribute(Usage.TextureCoordinates,2,"a_tex0"));
   subMesh.mesh.setIndices(indices);
   subMesh.animations.put("all",animation);
+  subMesh.primitiveType=GL10.GL_TRIANGLES;
   KeyframedModel model=new KeyframedModel();
-  model.subMeshes=new SubMesh[]{subMesh};
+  model.subMeshes=new KeyframedSubMesh[]{subMesh};
+  model.setAnimation("all",0);
   return model;
 }
