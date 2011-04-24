@@ -1,4 +1,5 @@
 {
+  if (wakeLock != null)   wakeLock.release();
   graphics.pause();
   if (audio != null)   audio.pause();
   input.unregisterSensorListeners();

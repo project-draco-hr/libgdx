@@ -1,4 +1,5 @@
 {
+  if (wakeLock != null)   wakeLock.acquire();
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();

@@ -1,6 +1,6 @@
 {
-  graphics=new AndroidGraphics(this,useGL2IfAvailable,resolutionStrategy);
-  input=new AndroidInput(this,graphics.view,sleepTime);
+  graphics=new AndroidGraphics(this,config.useGL20,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  input=new AndroidInput(this,graphics.view,config);
   audio=new AndroidAudio(this);
   files=new AndroidFiles(this.getAssets());
   this.listener=listener;
@@ -14,4 +14,5 @@
   getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
   getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
   setContentView(graphics.getView(),createLayoutParams());
+  createWakeLock(config);
 }

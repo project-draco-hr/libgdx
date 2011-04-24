@@ -1,6 +1,6 @@
 {
-  graphics=new AndroidGraphics(this,useGL2IfAvailable,resolutionStrategy);
-  input=new AndroidInput(this,graphics.view,sleepTime);
+  graphics=new AndroidGraphics(this,config.useGL20,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  input=new AndroidInput(this,graphics.view,config);
   audio=new AndroidAudio(this);
   files=new AndroidFiles(this.getAssets());
   this.listener=listener;
@@ -10,5 +10,6 @@
   Gdx.audio=this.getAudio();
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
+  createWakeLock(config);
   return graphics.getView();
 }

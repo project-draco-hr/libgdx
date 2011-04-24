@@ -3,5 +3,7 @@
   Bundle extras=getIntent().getExtras();
   String testName=(String)extras.get("test");
   GdxTest test=GdxTests.newTest(testName);
-  initialize(test,test.needsGL20());
+  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
+  config.useGL20=test.needsGL20();
+  initialize(test,config);
 }

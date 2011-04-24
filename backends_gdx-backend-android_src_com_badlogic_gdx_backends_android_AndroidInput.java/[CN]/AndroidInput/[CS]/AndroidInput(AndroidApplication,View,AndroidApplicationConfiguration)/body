@@ -5,9 +5,10 @@
   view.setFocusableInTouchMode(true);
   view.requestFocus();
   view.requestFocusFromTouch();
+  this.config=config;
   handle=new Handler();
   this.app=activity;
-  this.sleepTime=sleepTime;
+  this.sleepTime=config.touchSleepTime;
   int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
   if (sdkVersion >= 5)   touchHandler=new AndroidMultiTouchHandler();
  else   touchHandler=new AndroidSingleTouchHandler();
