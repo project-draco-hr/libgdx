@@ -1,6 +1,5 @@
 {
-  int byte1=in.read();
-  int byte2=in.read();
-  if (byte2 == -1)   throw new EOFException();
-  return (short)(((byte2 << 24) >>> 16) + (byte1 << 24) >>> 24);
+  int low=din.read();
+  int high=din.read();
+  return (short)((high << 8) | (low & 0xff));
 }
