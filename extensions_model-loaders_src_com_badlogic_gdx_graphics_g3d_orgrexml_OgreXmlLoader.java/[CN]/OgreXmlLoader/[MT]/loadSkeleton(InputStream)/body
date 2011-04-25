@@ -1,9 +1,0 @@
-{
-  try {
-    com.badlogic.gdx.graphics.g3d.orgrexml.skeleton.Skeleton ogreSkel=loadOgreSkeleton(in);
-    return generateSkeleton(ogreSkel);
-  }
- catch (  Throwable t) {
-    throw new GdxRuntimeException("Couldn't load model",t);
-  }
-}

@@ -1,8 +1,0 @@
-{
-  JAXBContext context=JAXBContext.newInstance(com.badlogic.gdx.graphics.g3d.orgrexml.skeleton.Skeleton.class);
-  Unmarshaller unmarshaller=context.createUnmarshaller();
-  long start=System.nanoTime();
-  com.badlogic.gdx.graphics.g3d.orgrexml.skeleton.Skeleton skel=(com.badlogic.gdx.graphics.g3d.orgrexml.skeleton.Skeleton)unmarshaller.unmarshal(in);
-  System.out.println("took: " + (System.nanoTime() - start) / 1000000000.0f);
-  return skel;
-}
