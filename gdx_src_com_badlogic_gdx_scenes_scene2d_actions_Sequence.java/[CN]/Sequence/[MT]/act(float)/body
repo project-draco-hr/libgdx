@@ -3,6 +3,7 @@
     currAction=1;
     return;
   }
+  actions.get(currAction).act(delta);
   if (actions.get(currAction).isDone()) {
     OnActionCompleted listener=actions.get(currAction).getCompletionListener();
     if (listener != null)     listener.completed(actions.get(currAction));
@@ -10,5 +11,4 @@
     currAction++;
     if (currAction < actions.size())     actions.get(currAction).setTarget(target);
   }
-  if (currAction < actions.size())   actions.get(currAction).act(delta);
 }
