@@ -7,13 +7,13 @@
   lastCol=(int)((x + width + overdrawX) / (tilesPerBlockX * tileWidth));
   Gdx.gl.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
   cache.begin();
-  for (currentLayer=0; (layers == null) ? (currentLayer < normalCacheId.length) : (currentLayer < layers.length); currentLayer++) {
+  for (currentLayer=0; currentLayer < layers.length; currentLayer++) {
     for (currentRow=initialRow; currentRow <= lastRow && currentRow < getLayerHeightInBlocks(currentLayer); currentRow++) {
       for (currentCol=initialCol; currentCol <= lastCol && currentCol < getLayerWidthInBlocks(currentLayer,currentRow); currentCol++) {
         Gdx.gl.glDisable(GL10.GL_BLEND);
-        cache.draw(normalCacheId[currentLayer][currentRow][currentCol]);
+        cache.draw(normalCacheId[layers[currentLayer]][currentRow][currentCol]);
         Gdx.gl.glEnable(GL10.GL_BLEND);
-        cache.draw(blendedCacheId[currentLayer][currentRow][currentCol]);
+        cache.draw(blendedCacheId[layers[currentLayer]][currentRow][currentCol]);
       }
     }
   }

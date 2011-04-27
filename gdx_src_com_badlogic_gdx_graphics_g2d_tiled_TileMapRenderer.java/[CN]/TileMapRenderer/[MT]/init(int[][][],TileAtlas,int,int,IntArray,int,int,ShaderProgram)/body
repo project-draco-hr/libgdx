@@ -6,9 +6,11 @@
   this.tilesPerBlockX=tilesPerBlockX;
   this.tilesPerBlockY=tilesPerBlockY;
   int layer, row, col;
+  allLayers=new int[map.length];
   int maxCacheSize=0;
   int maxHeight=0;
   for (layer=0; layer < map.length; layer++) {
+    allLayers[layer]=layer;
     if (map[layer].length > maxHeight)     maxHeight=map[layer].length;
     for (row=0; row < map[layer].length; row++) {
       for (col=0; col < map[layer][row].length; col++)       if (map[layer][row][col] != 0)       maxCacheSize++;
