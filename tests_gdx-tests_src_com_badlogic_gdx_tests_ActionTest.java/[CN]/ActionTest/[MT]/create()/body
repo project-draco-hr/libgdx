@@ -7,8 +7,18 @@
   img.originX=50;
   img.originY=50;
   img.x=img.y=100;
-  Action action=Repeat.$(Sequence.$(MoveBy.$(8,0,0.03f),MoveBy.$(-16,0,0.03f),MoveBy.$(8,8,0.03f),MoveBy.$(0,-8,0.03f)),20);
-  Action action2=action.copy();
-  img.action(action2);
+  float scale=1;
+  float showDuration=1;
+  ScaleTo scaleCountdown=ScaleTo.$(scale * 1.0f,scale * 1.0f,1.0f);
+  scaleCountdown.setInterpolator(DecelerateInterpolator.$(3.0f));
+  Parallel parallel=Parallel.$(scaleCountdown);
+  Sequence cdAnim=Sequence.$(Delay.$(parallel,showDuration),Remove.$());
+  cdAnim.setCompletionListener(new OnActionCompleted(){
+    @Override public void completed(    Action action){
+      System.out.println("completed Action: " + action);
+    }
+  }
+);
+  img.action(cdAnim);
   stage.addActor(img);
 }
