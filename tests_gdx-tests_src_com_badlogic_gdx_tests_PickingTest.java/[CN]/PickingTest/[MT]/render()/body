@@ -21,6 +21,6 @@
     sphere.render(GL10.GL_TRIANGLES);
     gl.glPopMatrix();
   }
-  if (Gdx.input.isKeyPressed(Keys.KEYCODE_A))   cam.rotate(20 * Gdx.graphics.getDeltaTime(),0,1,0);
-  if (Gdx.input.isKeyPressed(Keys.KEYCODE_D))   cam.rotate(-20 * Gdx.graphics.getDeltaTime(),0,1,0);
+  if (Gdx.input.isKeyPressed(Keys.A))   cam.rotate(20 * Gdx.graphics.getDeltaTime(),0,1,0);
+  if (Gdx.input.isKeyPressed(Keys.D))   cam.rotate(-20 * Gdx.graphics.getDeltaTime(),0,1,0);
 }

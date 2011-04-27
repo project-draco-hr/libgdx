@@ -1,17 +1,17 @@
 {
   int button=-1;
-  if (key == Keys.KEYCODE_DPAD_UP)   button=UP;
-  if (key == Keys.KEYCODE_DPAD_LEFT)   button=LEFT;
-  if (key == Keys.KEYCODE_DPAD_DOWN)   button=DOWN;
-  if (key == Keys.KEYCODE_DPAD_RIGHT)   button=RIGHT;
-  if (key == Keys.KEYCODE_Y)   button=JUMP;
-  if (key == Keys.KEYCODE_Z)   button=JUMP;
-  if (key == Keys.KEYCODE_X)   button=SHOOT;
-  if (key == Keys.KEYCODE_C)   button=JUMP;
-  if (key == Keys.KEYCODE_A)   button=JUMP;
-  if (key == Keys.KEYCODE_S)   button=SHOOT;
-  if (key == Keys.KEYCODE_D)   button=JUMP;
-  if (key == Keys.KEYCODE_ESCAPE || key == Keys.KEYCODE_MENU)   button=ESCAPE;
+  if (key == Keys.DPAD_UP)   button=UP;
+  if (key == Keys.DPAD_LEFT)   button=LEFT;
+  if (key == Keys.DPAD_DOWN)   button=DOWN;
+  if (key == Keys.DPAD_RIGHT)   button=RIGHT;
+  if (key == Keys.Y)   button=JUMP;
+  if (key == Keys.Z)   button=JUMP;
+  if (key == Keys.X)   button=SHOOT;
+  if (key == Keys.C)   button=JUMP;
+  if (key == Keys.A)   button=JUMP;
+  if (key == Keys.S)   button=SHOOT;
+  if (key == Keys.D)   button=JUMP;
+  if (key == Keys.ESCAPE || key == Keys.MENU)   button=ESCAPE;
   if (button >= 0) {
     buttons[button]=down;
   }

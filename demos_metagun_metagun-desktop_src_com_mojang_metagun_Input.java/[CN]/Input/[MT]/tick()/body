@@ -11,25 +11,25 @@
       int x=(int)((Gdx.input.getX(i) / (float)Gdx.graphics.getWidth()) * 320);
       if (!Gdx.input.isTouched(i))       continue;
       if (x < 32) {
-        set(Keys.KEYCODE_DPAD_LEFT,true);
+        set(Keys.DPAD_LEFT,true);
         left|=true;
       }
       if (x > 32 && x < 90) {
-        set(Keys.KEYCODE_DPAD_RIGHT,true);
+        set(Keys.DPAD_RIGHT,true);
         right|=true;
       }
       if (x > 320 - 64 && x < 320 - 32) {
-        set(Keys.KEYCODE_Z,true);
+        set(Keys.Z,true);
         z|=true;
       }
       if (x > 320 - 32 && x < 320) {
-        set(Keys.KEYCODE_X,true);
+        set(Keys.X,true);
         s|=true;
       }
     }
-    if (left == false)     set(Keys.KEYCODE_DPAD_LEFT,false);
-    if (right == false)     set(Keys.KEYCODE_DPAD_RIGHT,false);
-    if (z == false)     set(Keys.KEYCODE_Z,false);
-    if (s == false)     set(Keys.KEYCODE_X,false);
+    if (left == false)     set(Keys.DPAD_LEFT,false);
+    if (right == false)     set(Keys.DPAD_RIGHT,false);
+    if (z == false)     set(Keys.Z,false);
+    if (s == false)     set(Keys.X,false);
   }
 }
