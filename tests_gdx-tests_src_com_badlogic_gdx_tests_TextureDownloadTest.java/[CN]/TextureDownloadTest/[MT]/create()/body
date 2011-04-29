@@ -1,0 +1,12 @@
+{
+  potTexture=new Texture(new URLHandle("http://libgdx.badlogicgames.com/bob.png"));
+  Pixmap pixmap=new Pixmap(new URLHandle("http://libgdx.badlogicgames.com/libgdx.png"));
+  int width=MathUtils.nextPowerOfTwo(pixmap.getWidth());
+  int height=MathUtils.nextPowerOfTwo(pixmap.getHeight());
+  Pixmap potPixmap=new Pixmap(width,height,pixmap.getFormat());
+  potPixmap.drawPixmap(pixmap,0,0,0,0,pixmap.getWidth(),pixmap.getHeight());
+  nonPotTexture=new TextureRegion(new Texture(potPixmap),0,0,pixmap.getWidth(),pixmap.getHeight());
+  pixmap.dispose();
+  potPixmap.dispose();
+  batch=new SpriteBatch();
+}
