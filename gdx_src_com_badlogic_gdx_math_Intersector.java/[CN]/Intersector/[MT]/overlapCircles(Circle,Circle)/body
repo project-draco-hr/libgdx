@@ -1,0 +1,7 @@
+{
+  float x=c1.x - c2.x;
+  float y=c1.y - c2.y;
+  float distance=x * x + y * y;
+  float radiusSum=c1.radius + c2.radius;
+  return distance <= radiusSum * radiusSum;
+}

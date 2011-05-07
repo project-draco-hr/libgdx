@@ -1,0 +1,5 @@
+{
+  float x=this.x - point.x;
+  float y=this.y - point.y;
+  return Math.sqrt(x * x + y * y) <= 0;
+}
