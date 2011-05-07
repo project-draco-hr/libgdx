@@ -1,6 +1,3 @@
 {
-  unproject(ray.origin.set(x,y,0));
-  unproject(ray.direction.set(x,y,1));
-  ray.direction.sub(ray.origin).nor();
-  return ray;
+  return getPickRay(x,y,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 }

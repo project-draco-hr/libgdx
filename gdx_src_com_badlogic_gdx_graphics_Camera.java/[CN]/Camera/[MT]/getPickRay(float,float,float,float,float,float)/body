@@ -1,0 +1,6 @@
+{
+  unproject(ray.origin.set(x,y,0),viewportX,viewportY,viewportWidth,viewportHeight);
+  unproject(ray.direction.set(x,y,1),viewportX,viewportY,viewportWidth,viewportHeight);
+  ray.direction.sub(ray.origin).nor();
+  return ray;
+}

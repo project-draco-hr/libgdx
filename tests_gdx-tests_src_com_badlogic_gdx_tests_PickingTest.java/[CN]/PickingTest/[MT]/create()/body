@@ -1,10 +1,15 @@
 {
+  VP_WIDTH=Gdx.graphics.getWidth() - 4 * BORDER;
+  VP_HEIGHT=Gdx.graphics.getHeight() - 4 * BORDER;
   sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
-  cam=new PerspectiveCamera(45,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam=new PerspectiveCamera(45,VP_WIDTH,VP_HEIGHT);
   cam.far=200;
+  batch=new SpriteBatch();
+  logo=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
   Random rand=new Random();
   for (int i=0; i < positions.length; i++) {
-    positions[i]=new Vector3(rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * -100 - 3);
+    positions[i]=new Vector3(rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100);
   }
   positions[0].set(0,0,-10);
+  renderer=new ImmediateModeRenderer();
 }

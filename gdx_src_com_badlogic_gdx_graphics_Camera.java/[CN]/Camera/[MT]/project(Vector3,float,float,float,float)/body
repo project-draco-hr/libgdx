@@ -1,0 +1,6 @@
+{
+  vec.prj(combined);
+  vec.x=viewportWidth * (vec.x + 1) / 2 + viewportX;
+  vec.y=viewportHeight * (vec.y + 1) / 2 + viewportY;
+  vec.z=(vec.z + 1) / 2;
+}

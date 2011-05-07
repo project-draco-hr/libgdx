@@ -1,3 +1,4 @@
 {
   Gdx.app.log("Test","Thread=" + Thread.currentThread().getId() + ", app created: "+ Gdx.graphics.getWidth()+ "x"+ Gdx.graphics.getHeight());
+  System.exit(0);
 }
