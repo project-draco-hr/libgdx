@@ -6,7 +6,7 @@
     throw new GdxRuntimeException(e);
   }
   listener.create();
-  listener.resize(graphics.getWidth(),graphics.getHeight());
+  listener.resize(Math.max(1,graphics.getWidth()),Math.max(1,graphics.getHeight()));
   final Runnable runnable=new Runnable(){
     int lastWidth=Math.max(1,graphics.getWidth());
     int lastHeight=Math.max(1,graphics.getHeight());
