@@ -1,5 +1,4 @@
 {
-  this.outputDir=outputDir;
   FileHandle inputDirHandle=Gdx.files.absolute(inputDir.getAbsolutePath());
   File[] files=inputDir.listFiles(new TmxFilter());
   for (  File file : files) {
@@ -7,9 +6,9 @@
     for (    TileSet set : map.tileSets) {
       if (!processedTileSets.contains(set.imageName)) {
         processedTileSets.add(set.imageName);
-        packTileSet(set,inputDirHandle,settings);
+        packTileSet(set,inputDirHandle,outputDir,settings);
       }
     }
-    writeUpdatedTMX(map.tmxFile);
+    writeUpdatedTMX(outputDir,map.tmxFile);
   }
 }

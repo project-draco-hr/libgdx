@@ -3,8 +3,6 @@
   Settings settings=new Settings();
   settings.padding=2;
   settings.duplicatePadding=true;
-  settings.incremental=true;
-  settings.alias=true;
   new JoglApplication(new ApplicationListener(){
     @Override public void create(){
     }

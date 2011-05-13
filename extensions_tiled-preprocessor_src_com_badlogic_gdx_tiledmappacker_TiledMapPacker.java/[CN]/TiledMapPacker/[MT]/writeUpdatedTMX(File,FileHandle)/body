@@ -15,6 +15,7 @@
     TransformerFactory transformerFactory=TransformerFactory.newInstance();
     Transformer transformer=transformerFactory.newTransformer();
     DOMSource source=new DOMSource(doc);
+    outputDir.mkdirs();
     StreamResult result=new StreamResult(new File(outputDir,tmxFileHandle.name()));
     transformer.transform(source,result);
   }

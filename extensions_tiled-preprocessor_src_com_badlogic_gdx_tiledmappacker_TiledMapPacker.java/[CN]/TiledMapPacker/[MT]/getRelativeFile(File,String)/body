@@ -1,0 +1,13 @@
+{
+  if (relativePath.trim().isEmpty())   return path;
+  File child=path;
+  StringTokenizer tokenizer=new StringTokenizer(relativePath,"\\/");
+  while (tokenizer.hasMoreElements()) {
+    String token=tokenizer.nextToken();
+    if (token.equals(".."))     child=child.getParentFile();
+ else {
+      child=new File(child,token);
+    }
+  }
+  return child;
+}
