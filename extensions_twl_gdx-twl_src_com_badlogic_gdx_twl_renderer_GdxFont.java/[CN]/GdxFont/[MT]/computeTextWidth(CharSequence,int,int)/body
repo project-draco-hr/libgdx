@@ -1,3 +1,3 @@
 {
-  return bitmapFont.getBounds(str,start,end).width;
+  return MathUtils.ceilPositive(bitmapFont.getBounds(str,start,end).width);
 }

@@ -45,7 +45,7 @@
     }
   }
   spriteBatch.setColor(batchColor);
-  textBounds.width=(int)(x - startX);
-  textBounds.height=(int)capHeight;
+  textBounds.width=x - startX;
+  textBounds.height=capHeight;
   return textBounds;
 }

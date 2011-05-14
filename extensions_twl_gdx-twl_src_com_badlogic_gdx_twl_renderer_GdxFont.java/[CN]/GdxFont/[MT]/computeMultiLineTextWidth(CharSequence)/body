@@ -1,3 +1,3 @@
 {
-  return bitmapFont.getMultiLineBounds(str).width;
+  return MathUtils.ceilPositive(bitmapFont.getMultiLineBounds(str).width);
 }

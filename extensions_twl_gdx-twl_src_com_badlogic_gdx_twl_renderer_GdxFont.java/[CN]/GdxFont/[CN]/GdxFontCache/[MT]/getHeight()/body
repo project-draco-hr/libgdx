@@ -1,3 +1,3 @@
 {
-  return getBounds().height;
+  return MathUtils.ceilPositive(getBounds().height);
 }

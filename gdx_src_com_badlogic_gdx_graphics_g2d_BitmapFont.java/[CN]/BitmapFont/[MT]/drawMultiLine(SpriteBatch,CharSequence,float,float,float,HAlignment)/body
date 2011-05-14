@@ -4,16 +4,16 @@
   int start=0;
   int numLines=0;
   int length=str.length();
-  int maxWidth=0;
+  float maxWidth=0;
   while (start < length) {
     int lineEnd=indexOf(str,'\n',start);
     float xOffset=0;
     if (alignment != HAlignment.LEFT) {
-      int lineWidth=getBounds(str,start,lineEnd).width;
+      float lineWidth=getBounds(str,start,lineEnd).width;
       xOffset=alignmentWidth - lineWidth;
-      if (alignment == HAlignment.CENTER)       xOffset=(int)(xOffset / 2);
+      if (alignment == HAlignment.CENTER)       xOffset=xOffset / 2;
     }
-    int lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
+    float lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);
     start=lineEnd + 1;
     y+=down;
@@ -21,6 +21,6 @@
   }
   spriteBatch.setColor(batchColor);
   textBounds.width=maxWidth;
-  textBounds.height=(int)(capHeight + (numLines - 1) * lineHeight);
+  textBounds.height=capHeight + (numLines - 1) * lineHeight;
   return textBounds;
 }

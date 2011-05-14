@@ -4,7 +4,7 @@
   int start=0;
   int numLines=0;
   int length=str.length();
-  int maxWidth=0;
+  float maxWidth=0;
   while (start < length) {
     int lineEnd=start + computeVisibleGlyphs(str,start,indexOf(str,'\n',start),wrapWidth);
     int nextLineStart;
@@ -28,11 +28,11 @@
     }
     float xOffset=0;
     if (alignment != HAlignment.LEFT) {
-      int lineWidth=getBounds(str,start,lineEnd).width;
+      float lineWidth=getBounds(str,start,lineEnd).width;
       xOffset=wrapWidth - lineWidth;
-      if (alignment == HAlignment.CENTER)       xOffset=(int)(xOffset/=2);
+      if (alignment == HAlignment.CENTER)       xOffset/=2;
     }
-    int lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
+    float lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
     maxWidth=Math.max(maxWidth,lineWidth);
     start=nextLineStart;
     y+=down;
@@ -40,6 +40,6 @@
   }
   spriteBatch.setColor(batchColor);
   textBounds.width=maxWidth;
-  textBounds.height=(int)(capHeight + (numLines - 1) * lineHeight);
+  textBounds.height=capHeight + (numLines - 1) * lineHeight;
   return textBounds;
 }
