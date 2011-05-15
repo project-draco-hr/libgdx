@@ -1,5 +1,6 @@
 {
 synchronized (synch) {
+    if (!running)     return;
     running=false;
     pause=true;
     while (pause) {
