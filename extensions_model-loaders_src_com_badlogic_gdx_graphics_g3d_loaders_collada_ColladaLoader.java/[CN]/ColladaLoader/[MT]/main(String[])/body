@@ -1,0 +1,5 @@
+{
+  Xml xml=new Xml();
+  Element element=xml.parse(new FileInputStream("data/goblin.dae"));
+  System.out.println(element);
+}

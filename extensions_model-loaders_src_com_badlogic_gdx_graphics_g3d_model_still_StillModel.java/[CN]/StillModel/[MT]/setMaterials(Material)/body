@@ -1,0 +1,7 @@
+{
+  if (materials.length != subMeshes.length)   throw new UnsupportedOperationException("number of materials must equal number of sub-meshes");
+  int len=materials.length;
+  for (int i=0; i < len; i++) {
+    subMeshes[i].material=materials[i];
+  }
+}

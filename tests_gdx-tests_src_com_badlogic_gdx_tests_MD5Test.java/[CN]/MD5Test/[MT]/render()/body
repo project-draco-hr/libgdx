@@ -9,7 +9,7 @@
   long start=0;
   float renderTime=0;
   float skinTime=0;
-  for (int z=0; z < 50; z+=50) {
+  for (int z=0; z < 100; z+=50) {
     gl.glPushMatrix();
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);
@@ -26,5 +26,6 @@
   gl.glDisable(GL10.GL_DEPTH_TEST);
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond() + (renderer.isJniUsed() ? ", jni" : ", java")+ ", render time: "+ renderTime+ ", skin time: "+ skinTime,10,20);
+  font.draw(batch,"#triangles: " + model.getNumTriangles() + ", #vertices: "+ model.getNumVertices(),10,40);
   batch.end();
 }

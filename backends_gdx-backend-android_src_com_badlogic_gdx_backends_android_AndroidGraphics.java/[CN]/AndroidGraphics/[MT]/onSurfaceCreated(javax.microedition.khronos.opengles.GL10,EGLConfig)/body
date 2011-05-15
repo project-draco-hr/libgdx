@@ -16,11 +16,4 @@
   mean=new WindowedMean(5);
   this.lastFrameTime=System.nanoTime();
   gl.glViewport(0,0,this.width,this.height);
-  if (created == false) {
-    app.listener.create();
-    created=true;
-synchronized (this) {
-      running=true;
-    }
-  }
 }
