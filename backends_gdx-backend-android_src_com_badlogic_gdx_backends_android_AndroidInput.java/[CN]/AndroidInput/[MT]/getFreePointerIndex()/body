@@ -1,0 +1,7 @@
+{
+  int len=realId.length;
+  for (int i=0; i < len; i++) {
+    if (realId[i] == -1)     return i;
+  }
+  return -1;
+}

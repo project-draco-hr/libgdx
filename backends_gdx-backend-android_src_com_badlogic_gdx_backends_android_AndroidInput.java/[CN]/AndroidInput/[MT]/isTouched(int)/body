@@ -1,3 +1,5 @@
 {
-  return touched[pointer];
+synchronized (realId) {
+    return touched[pointer];
+  }
 }

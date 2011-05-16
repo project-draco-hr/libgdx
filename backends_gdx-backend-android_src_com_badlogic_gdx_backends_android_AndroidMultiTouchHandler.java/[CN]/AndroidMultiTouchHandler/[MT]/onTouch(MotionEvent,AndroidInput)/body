@@ -3,26 +3,32 @@
   int pointerIndex=(event.getAction() & MotionEvent.ACTION_POINTER_ID_MASK) >> MotionEvent.ACTION_POINTER_ID_SHIFT;
   int pointerId=event.getPointerId(pointerIndex);
   int x=0, y=0;
+  int realPointerIndex=0;
+synchronized (input.realId) {
 switch (action) {
 case MotionEvent.ACTION_DOWN:
 case MotionEvent.ACTION_POINTER_DOWN:
-    x=(int)event.getX(pointerIndex);
-  y=(int)event.getY(pointerIndex);
-postTouchEvent(input,TouchEvent.TOUCH_DOWN,x,y,pointerId);
-input.touchX[pointerId]=x;
-input.touchY[pointerId]=y;
-input.touched[pointerId]=true;
+      realPointerIndex=input.getFreePointerIndex();
+    input.realId[realPointerIndex]=pointerId;
+  x=(int)event.getX(pointerIndex);
+y=(int)event.getY(pointerIndex);
+postTouchEvent(input,TouchEvent.TOUCH_DOWN,x,y,realPointerIndex);
+input.touchX[realPointerIndex]=x;
+input.touchY[realPointerIndex]=y;
+input.touched[realPointerIndex]=true;
 break;
 case MotionEvent.ACTION_UP:
 case MotionEvent.ACTION_POINTER_UP:
 case MotionEvent.ACTION_OUTSIDE:
 case MotionEvent.ACTION_CANCEL:
+realPointerIndex=input.lookUpPointerIndex(pointerId);
+input.realId[realPointerIndex]=-1;
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
-postTouchEvent(input,TouchEvent.TOUCH_UP,x,y,pointerId);
-input.touchX[pointerId]=x;
-input.touchY[pointerId]=y;
-input.touched[pointerId]=false;
+postTouchEvent(input,TouchEvent.TOUCH_UP,x,y,realPointerIndex);
+input.touchX[realPointerIndex]=x;
+input.touchY[realPointerIndex]=y;
+input.touched[realPointerIndex]=false;
 break;
 case MotionEvent.ACTION_MOVE:
 int pointerCount=event.getPointerCount();
@@ -31,10 +37,12 @@ pointerIndex=i;
 pointerId=event.getPointerId(pointerIndex);
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
-postTouchEvent(input,TouchEvent.TOUCH_DRAGGED,x,y,pointerId);
-input.touchX[pointerId]=x;
-input.touchY[pointerId]=y;
+realPointerIndex=input.lookUpPointerIndex(pointerId);
+postTouchEvent(input,TouchEvent.TOUCH_DRAGGED,x,y,realPointerIndex);
+input.touchX[realPointerIndex]=x;
+input.touchY[realPointerIndex]=y;
 }
 break;
+}
 }
 }

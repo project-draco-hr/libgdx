@@ -1,3 +1,5 @@
 {
-  return touchX[0];
+synchronized (realId) {
+    return touchX[0];
+  }
 }
