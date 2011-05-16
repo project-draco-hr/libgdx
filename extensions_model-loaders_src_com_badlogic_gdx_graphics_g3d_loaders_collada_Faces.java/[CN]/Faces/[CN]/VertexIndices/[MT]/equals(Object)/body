@@ -1,0 +1,8 @@
+{
+  if (this == obj)   return true;
+  if (obj == null)   return false;
+  if (getClass() != obj.getClass())   return false;
+  VertexIndices other=(VertexIndices)obj;
+  if (!Arrays.equals(indices,other.indices))   return false;
+  return true;
+}

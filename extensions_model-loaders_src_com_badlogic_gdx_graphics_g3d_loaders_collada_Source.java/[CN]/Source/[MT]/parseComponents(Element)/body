@@ -1,0 +1,16 @@
+{
+  Element floatArray=source.getChildByName("float_array");
+  Element technique=source.getChildByName("technique_common");
+  if (floatArray == null)   throw new GdxRuntimeException("no <float_array> element in source '" + id + "'");
+  if (technique == null)   throw new GdxRuntimeException("no <technique_common> element in source '" + id + "'");
+  Element accessor=technique.getChildByName("accessor");
+  if (accessor == null)   throw new GdxRuntimeException("no <accessor> element in source '" + id + "'");
+  data=new float[Integer.parseInt(floatArray.getAttribute("count"))];
+  count=Integer.parseInt(accessor.getAttribute("count"));
+  components=Integer.parseInt(accessor.getAttribute("stride"));
+  String[] tokens=floatArray.getText().split("\\s+");
+  for (int i=0; i < tokens.length; i++) {
+    data[i]=Float.parseFloat(tokens[i]);
+  }
+  System.out.println(id + ": " + Arrays.toString(data));
+}

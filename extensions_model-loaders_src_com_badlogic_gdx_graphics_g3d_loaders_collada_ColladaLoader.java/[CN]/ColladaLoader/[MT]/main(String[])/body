@@ -1,5 +1,4 @@
 {
-  Xml xml=new Xml();
-  Element element=xml.parse(new FileInputStream("data/goblin.dae"));
-  System.out.println(element);
+  loadStillModel(new FileInputStream("data/cubes.dae"));
+  loadStillModel(new FileInputStream("data/cubes_poly.dae"));
 }

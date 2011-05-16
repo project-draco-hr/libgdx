@@ -1,0 +1,16 @@
+{
+  Element colladaGeoLibrary=root.getChildByName("library_geometries");
+  if (colladaGeoLibrary == null)   throw new GdxRuntimeException("not <library_geometries> element in file");
+  Array<Element> colladaGeos=colladaGeoLibrary.getChildrenByName("geometry");
+  if (colladaGeos.size == 0)   throw new GdxRuntimeException("no <geometry> elements in file");
+  Array<Geometry> geometries=new Array<Geometry>();
+  for (int i=0; i < colladaGeos.size; i++) {
+    try {
+      geometries.add(new Geometry(colladaGeos.get(i)));
+    }
+ catch (    GdxRuntimeException e) {
+      System.out.println("warning: " + e.getMessage());
+    }
+  }
+  return geometries;
+}

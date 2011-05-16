@@ -1,0 +1,7 @@
+{
+  Array<Mesh> meshes=new Array<Mesh>();
+  for (int i=0; i < geos.size; i++) {
+    meshes.add(geos.get(i).getMesh());
+  }
+  return meshes;
+}

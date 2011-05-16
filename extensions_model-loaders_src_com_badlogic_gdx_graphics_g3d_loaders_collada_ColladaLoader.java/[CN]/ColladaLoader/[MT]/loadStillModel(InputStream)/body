@@ -1,0 +1,13 @@
+{
+  Xml xml=new Xml();
+  Element root=null;
+  try {
+    root=xml.parse(in);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load Collada model",e);
+  }
+  Array<Geometry> geos=readGeometries(root);
+  Array<Mesh> meshes=createMeshes(geos);
+  return null;
+}

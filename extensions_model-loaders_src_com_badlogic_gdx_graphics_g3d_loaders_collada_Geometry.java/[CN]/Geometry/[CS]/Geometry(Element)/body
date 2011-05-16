@@ -1,0 +1,31 @@
+{
+  id=colladaGeo.getAttribute("id");
+  Element colladaMesh=colladaGeo.getChildByName("mesh");
+  if (colladaMesh == null)   throw new GdxRuntimeException("no <mesh> in <geometry> '" + id + "'");
+  Array<Element> colladaSources=colladaMesh.getChildrenByName("source");
+  Map<String,Source> sources=new HashMap<String,Source>();
+  for (int j=0; j < colladaSources.size; j++) {
+    Element colladaSource=colladaSources.get(j);
+    sources.put(colladaSource.getAttribute("id"),new Source(colladaSource));
+  }
+  Map<String,String> mappings=new HashMap<String,String>();
+  Element vertices=colladaMesh.getChildByName("vertices");
+  if (vertices != null) {
+    Array<Element> inputs=vertices.getChildrenByName("input");
+    for (int j=0; j < inputs.size; j++) {
+      Element input=inputs.get(j);
+      if (!input.getAttribute("semantic").equals("POSITION"))       continue;
+      mappings.put(vertices.getAttribute("id"),input.getAttribute("source").substring(1));
+    }
+  }
+  Element colladaFaces=null;
+  if ((colladaFaces=colladaMesh.getChildByName("triangles")) != null) {
+    faces=new Faces(colladaFaces,mappings,sources);
+  }
+ else   if ((colladaFaces=colladaMesh.getChildByName("polylist")) != null) {
+    faces=new Faces(colladaFaces,mappings,sources);
+  }
+ else {
+    throw new GdxRuntimeException("no <triangles>/<polylist> element in geometry '" + colladaGeo.getAttribute("id") + "'");
+  }
+}
