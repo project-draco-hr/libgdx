@@ -4,7 +4,7 @@
   int pointerId=event.getPointerId(pointerIndex);
   int x=0, y=0;
   int realPointerIndex=0;
-synchronized (input.realId) {
+synchronized (input) {
 switch (action) {
 case MotionEvent.ACTION_DOWN:
 case MotionEvent.ACTION_POINTER_DOWN:

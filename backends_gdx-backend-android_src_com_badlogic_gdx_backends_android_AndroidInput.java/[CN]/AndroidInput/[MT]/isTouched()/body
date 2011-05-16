@@ -1,3 +1,5 @@
 {
-  return touched[0];
+synchronized (this) {
+    return touched[0];
+  }
 }
