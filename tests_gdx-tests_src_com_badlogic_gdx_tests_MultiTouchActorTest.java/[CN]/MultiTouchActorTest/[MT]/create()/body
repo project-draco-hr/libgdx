@@ -1,0 +1,11 @@
+{
+  Gdx.input.setInputProcessor(this);
+  stage=new Stage(480,320,true);
+  texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
+  LogButton buttonA=new LogButton("A",texture);
+  buttonB=new LogButton("B",texture);
+  buttonA.width=buttonA.height=buttonB.width=buttonB.height=100;
+  buttonB.x=480 - buttonB.width;
+  stage.addActor(buttonA);
+  stage.addActor(buttonB);
+}

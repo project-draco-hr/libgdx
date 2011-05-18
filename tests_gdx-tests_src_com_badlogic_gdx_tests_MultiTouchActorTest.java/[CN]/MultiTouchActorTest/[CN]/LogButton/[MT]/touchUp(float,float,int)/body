@@ -1,0 +1,5 @@
+{
+  boolean result=super.touchUp(x,y,pointer);
+  if (result)   Gdx.app.log("MultiTouchActorTest","button '" + name + "', touch up, pointer "+ pointer);
+  return result;
+}
