@@ -18,7 +18,12 @@
       byte[] data;
       int dataCounter=0, row, col;
       @Override public void startElement(      String uri,      String name,      String qName,      Attributes attr){
-        currentBranch.push(qName);
+        if ("".equals(qName)) {
+          currentBranch.push(name);
+        }
+ else {
+          currentBranch.push(qName);
+        }
         try {
           if ("layer".equals(qName) | "layer".equals(name)) {
             String layerName=attr.getValue("name");
