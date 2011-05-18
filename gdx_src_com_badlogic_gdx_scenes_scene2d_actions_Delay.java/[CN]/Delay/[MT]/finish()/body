@@ -1,5 +1,5 @@
 {
   pool.free(this);
   action.finish();
-  if (!listenerFired)   super.finish();
+  super.finish();
 }

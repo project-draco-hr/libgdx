@@ -7,13 +7,5 @@
   img.originX=50;
   img.originY=50;
   img.x=img.y=100;
-  Delay delay=Delay.$(MoveBy.$(100,100,1),1);
-  delay.setCompletionListener(new OnActionCompleted(){
-    @Override public void completed(    Action action){
-      System.out.println("completed Action: " + action);
-    }
-  }
-);
-  img.action(delay);
   stage.addActor(img);
 }
