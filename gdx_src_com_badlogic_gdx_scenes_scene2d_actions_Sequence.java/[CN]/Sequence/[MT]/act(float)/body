@@ -3,6 +3,9 @@
     currAction=1;
     return;
   }
+  if (currAction >= actions.size()) {
+    return;
+  }
   actions.get(currAction).act(delta);
   if (actions.get(currAction).isDone()) {
     actions.get(currAction).callActionCompletedListener();
