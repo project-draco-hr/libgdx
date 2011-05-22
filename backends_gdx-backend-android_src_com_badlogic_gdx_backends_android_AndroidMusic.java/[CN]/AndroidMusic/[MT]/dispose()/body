@@ -9,6 +9,8 @@
   }
  finally {
     player=null;
-    audio.musics.remove(this);
+synchronized (audio.musics) {
+      audio.musics.remove(this);
+    }
   }
 }

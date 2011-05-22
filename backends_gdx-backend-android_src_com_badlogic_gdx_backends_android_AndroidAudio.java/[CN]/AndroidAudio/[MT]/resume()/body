@@ -1,5 +1,7 @@
 {
-  for (int i=0; i < musics.size(); i++) {
-    if (wasPlaying.get(i))     musics.get(i).play();
+synchronized (musics) {
+    for (int i=0; i < musics.size(); i++) {
+      if (wasPlaying.get(i))       musics.get(i).play();
+    }
   }
 }

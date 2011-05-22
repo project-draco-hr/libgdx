@@ -1,6 +1,8 @@
 {
-  for (  AndroidMusic music : musics) {
-    music.dispose();
+synchronized (musics) {
+    for (    AndroidMusic music : musics) {
+      music.dispose();
+    }
   }
   soundPool.release();
 }
