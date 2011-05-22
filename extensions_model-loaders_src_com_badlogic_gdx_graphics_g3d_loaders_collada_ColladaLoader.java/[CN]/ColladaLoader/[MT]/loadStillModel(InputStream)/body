@@ -8,6 +8,8 @@
     throw new GdxRuntimeException("Couldn't load Collada model",e);
   }
   Array<Geometry> geos=readGeometries(root);
-  Array<Mesh> meshes=createMeshes(geos);
-  return null;
+  StillSubMesh[] meshes=createMeshes(geos);
+  StillModel model=new StillModel();
+  model.subMeshes=meshes;
+  return model;
 }

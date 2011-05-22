@@ -4,20 +4,24 @@
   if (colladaPolys == null)   throw new GdxRuntimeException("<polylist> does not contain <vcount> element");
   String[] tokens=colladaPolys.getText().split("\\s+");
   int[] polys=new int[tokens.length];
+  int vertexCount=0;
   for (int i=0; i < tokens.length; i++) {
-    polys[i]=Integer.parseInt(tokens[i]);
+    int verts=Integer.parseInt(tokens[i]);
+    polys[i]=verts;
+    vertexCount+=verts;
   }
-  Array<VertexIndices> newVertices=new Array<VertexIndices>();
+  Array<VertexIndices> newVertices=new Array<VertexIndices>(vertexCount);
   int idx=0;
   for (int i=0; i < polys.length; i++) {
     int numVertices=polys[i];
-    VertexIndices baseVertex=vertices.get(idx++);
+    VertexIndices baseVertex=triangles.get(idx++);
     for (int j=1; j < numVertices - 1; j++) {
       newVertices.add(baseVertex);
-      newVertices.add(vertices.get(idx));
-      newVertices.add(vertices.get(idx + 1));
+      newVertices.add(triangles.get(idx));
+      newVertices.add(triangles.get(idx + 1));
       idx++;
     }
+    idx++;
   }
-  vertices=newVertices;
+  triangles=newVertices;
 }

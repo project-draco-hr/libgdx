@@ -1,11 +1,12 @@
 {
-  this.sources=sources;
+  this.sourcesMap=sources;
   this.mappings=mappings;
   parseVertices(faces);
   triangulate(faces);
-  for (  VertexIndices v : vertices) {
+  this.numIndices=triangles.size;
+  for (  VertexIndices v : triangles) {
     System.out.println(v);
   }
-  System.out.println("vertices: " + uniqueVertices);
-  System.out.println("indices: " + vertices.size);
+  System.out.println("vertices: " + numVertices);
+  System.out.println("indices: " + numIndices);
 }

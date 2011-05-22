@@ -1,0 +1,7 @@
+{
+  bbox.inf();
+  for (int i=0; i < subMeshes.length; i++) {
+    subMeshes[i].mesh.calculateBoundingBox(tmpBox);
+    bbox.ext(tmpBox);
+  }
+}

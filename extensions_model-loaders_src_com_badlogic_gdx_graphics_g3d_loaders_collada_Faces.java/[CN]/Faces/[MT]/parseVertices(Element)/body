@@ -3,6 +3,7 @@
   if (inputs == null)   throw new GdxRuntimeException("no <input> elements in <triangles>/<polylist>");
   int[] offsets=new int[inputs.size];
   int stride=0;
+  sources=new Source[inputs.size];
   for (int i=0; i < inputs.size; i++) {
     Element input=inputs.get(i);
     String source=input.getAttribute("source").substring(1);
@@ -13,7 +14,8 @@
       input.setAttribute("source",source);
     }
     source=input.getAttribute("source");
-    if (!sources.containsKey(source))     throw new GdxRuntimeException("source '" + source + "'  not in mesh> but in <triangle>");
+    if (!sourcesMap.containsKey(source))     throw new GdxRuntimeException("source '" + source + "'  not in mesh> but in <triangle>");
+    sources[i]=sourcesMap.get(source);
     offsets[i]=Integer.parseInt(input.getAttribute("offset"));
     stride=Math.max(offsets[i],stride);
   }
@@ -25,6 +27,7 @@
   }
   Map<VertexIndices,VertexIndices> indicesSet=new HashMap<VertexIndices,VertexIndices>();
   VertexIndices vertex=new VertexIndices(inputs.size);
+  triangles=new Array<VertexIndices>(indices.length / stride);
   vertices=new Array<VertexIndices>(indices.length / stride);
   int index=0;
   for (int i=0; i < indices.length; i+=stride) {
@@ -34,14 +37,15 @@
     }
     VertexIndices lookup=indicesSet.get(vertex);
     if (lookup != null) {
-      vertices.add(lookup);
+      triangles.add(lookup);
     }
  else {
+      triangles.add(vertex);
       vertices.add(vertex);
       indicesSet.put(vertex,vertex);
       vertex=new VertexIndices(inputs.size);
       index++;
     }
   }
-  uniqueVertices=index;
+  numVertices=index;
 }

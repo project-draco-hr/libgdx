@@ -1,0 +1,6 @@
+{
+  if (attribute.equals(VERTEX))   return Usage.Position;
+  if (attribute.equals(TEXCOORD))   return Usage.TextureCoordinates;
+  if (attribute.equals(NORMAL))   return Usage.Normal;
+  return Usage.Generic;
+}

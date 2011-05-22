@@ -1,0 +1,15 @@
+{
+  VertexAttribute[] attributes=new VertexAttribute[inputs.size];
+  int texUnit=0;
+  for (int i=0; i < inputs.size; i++) {
+    Element input=inputs.get(i);
+    String semantic=input.getAttribute("semantic");
+    Source source=sourcesMap.get(input.getAttribute("source"));
+    int usage=getVertexAttributeUsage(semantic);
+    int components=source.components;
+    String alias=getVertexAttributeAlias(semantic);
+    if (alias.equals("a_tex"))     alias+=texUnit++;
+    attributes[i]=new VertexAttribute(usage,components,alias);
+  }
+  return attributes;
+}
