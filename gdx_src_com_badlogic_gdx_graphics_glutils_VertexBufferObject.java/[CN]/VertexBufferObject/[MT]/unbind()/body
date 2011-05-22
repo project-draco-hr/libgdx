@@ -20,7 +20,6 @@ gl.glDisableClientState(GL11.GL_TEXTURE_COORD_ARRAY);
 textureUnit++;
 break;
 default :
-throw new GdxRuntimeException("unkown vertex attribute type: " + attribute.usage);
 }
 }
 gl.glBindBuffer(GL11.GL_ARRAY_BUFFER,0);

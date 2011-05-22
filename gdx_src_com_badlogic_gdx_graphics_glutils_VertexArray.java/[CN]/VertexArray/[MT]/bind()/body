@@ -32,7 +32,6 @@ gl.glTexCoordPointer(attribute.numComponents,GL10.GL_FLOAT,attributes.vertexSize
 textureUnit++;
 break;
 default :
-throw new GdxRuntimeException("unkown vertex attribute type: " + attribute.usage);
 }
 }
 isBound=true;
