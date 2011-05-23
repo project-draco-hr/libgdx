@@ -1,0 +1,5 @@
+{
+  data.add((byte)(s >>> 8));
+  data.add((byte)s);
+  adjustLength(+2);
+}

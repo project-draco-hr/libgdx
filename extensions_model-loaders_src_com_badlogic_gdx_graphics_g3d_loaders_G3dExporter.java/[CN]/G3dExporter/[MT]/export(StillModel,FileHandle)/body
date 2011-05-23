@@ -1,0 +1,35 @@
+{
+  Chunk g3dRoot=new Chunk((short)0x0000);
+  Chunk activeChunk=g3dRoot.addChild(new Chunk(VERSION_INFO));
+  activeChunk.append(MAJOR_VERSION);
+  activeChunk.append(MINOR_VERSION);
+  activeChunk=g3dRoot.addChild(new Chunk(STILL_MODEL));
+  activeChunk.append(model.subMeshes.length);
+  for (  StillSubMesh submesh : model.subMeshes) {
+    activeChunk=activeChunk.addChild(new Chunk(STILL_SUBMESH));
+    activeChunk.append(submesh.name);
+    VertexAttributes attribs=submesh.mesh.getVertexAttributes();
+    int numAttribs=attribs.size();
+    activeChunk=activeChunk.addChild(new Chunk(VERTEX_ATTRIBUTES));
+    activeChunk.append(numAttribs);
+    for (int i=0; i < numAttribs; i++) {
+      VertexAttribute attrib=attribs.get(i);
+      activeChunk=activeChunk.addChild(new Chunk(VERTEX_ATTRIBUTE));
+      activeChunk.append(attrib.usage);
+      activeChunk.append(attrib.numComponents);
+      activeChunk.append(attrib.alias);
+      activeChunk=activeChunk.getParent();
+    }
+    activeChunk=activeChunk.getParent();
+    activeChunk=activeChunk.addChild(new Chunk(VERTEX_LIST));
+    FloatBuffer verts=submesh.mesh.getVerticesBuffer();
+    int numFloats=verts.capacity();
+    activeChunk.append(numFloats);
+    for (int i=0; i < numFloats; i++)     activeChunk.append(verts.get(i));
+    activeChunk=activeChunk.getParent();
+    activeChunk=activeChunk.getParent();
+  }
+  DataOutputStream out=new DataOutputStream(new BufferedOutputStream(file.write(false)));
+  writeChunk(g3dRoot,out);
+  return true;
+}
