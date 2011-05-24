@@ -1,0 +1,9 @@
+{
+  lineNum++;
+  String[] tokens=read(in).split(",");
+  int len=tokens.length;
+  array.clear();
+  for (int i=0; i < len; i++) {
+    array.add(Float.parseFloat(tokens[i].trim()));
+  }
+}

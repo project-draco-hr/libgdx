@@ -1,0 +1,20 @@
+{
+  int numFaces=readInt(in);
+  IntArray faceIndices=new IntArray();
+  IntArray triangles=new IntArray();
+  IntArray indices=new IntArray();
+  for (int face=0; face < numFaces; face++) {
+    readIntArray(in,faceIndices);
+    int numIndices=faceIndices.get(0);
+    triangles.clear();
+    int baseIndex=faceIndices.get(1);
+    for (int i=2; i < numIndices; i++) {
+      triangles.add(baseIndex);
+      triangles.add(faceIndices.items[i]);
+      triangles.add(faceIndices.items[i + 1]);
+    }
+    indices.addAll(triangles);
+  }
+  indices.shrink();
+  return indices.items;
+}
