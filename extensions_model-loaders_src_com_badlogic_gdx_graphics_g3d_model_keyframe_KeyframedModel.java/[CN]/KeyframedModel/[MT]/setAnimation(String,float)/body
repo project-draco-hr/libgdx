@@ -4,6 +4,17 @@
     KeyframedSubMesh subMesh=subMeshes[i];
     KeyframedAnimation anim=subMesh.animations.get(animation);
     if (anim == null)     throw new IllegalArgumentException("No animation with name '" + animation + "' in submesh #"+ i);
-    subMesh.mesh.setVertices(anim.keyframes[0].vertices);
+    Keyframe keyframe=anim.keyframes[9];
+    float[] src=keyframe.vertices;
+    int numComponents=keyframe.animatedComponents;
+    int srcLen=numComponents * subMesh.mesh.getNumVertices();
+    float[] dst=subMesh.blendedVertices;
+    int dstInc=subMesh.mesh.getVertexSize() / 4 - numComponents;
+    for (int srcIdx=0, dstIdx=0; srcIdx < srcLen; dstIdx+=dstInc) {
+      for (int j=0; j < numComponents; j++) {
+        dst[dstIdx++]=src[srcIdx++];
+      }
+    }
+    subMesh.mesh.setVertices(dst);
   }
 }

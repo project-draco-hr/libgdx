@@ -1,0 +1,6 @@
+{
+  for (  KeyframedSubMesh mesh : model.subMeshes) {
+    if (mesh.mesh.getVertexAttribute(Usage.Normal) == null)     return false;
+  }
+  return true;
+}

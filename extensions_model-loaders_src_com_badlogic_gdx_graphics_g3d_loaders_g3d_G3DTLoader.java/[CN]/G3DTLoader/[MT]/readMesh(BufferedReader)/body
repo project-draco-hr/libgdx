@@ -1,6 +1,6 @@
 {
   String name=readString(in);
-  int[] indices=readFaces(in);
+  IntArray indices=readFaces(in);
   int numVertices=readInt(in);
   int numAttributes=readInt(in);
   if (!readString(in).equals("position"))   throw new GdxRuntimeException("first attribute must be position.");
@@ -18,8 +18,9 @@
     }
   }
   int animatedComponents=hasNormals ? 6 : 3;
+  VertexAttribute[] vertexAttributes=createVertexAttributes(hasNormals,uvSets.size);
   int numAnimations=readInt(in);
-  KeyframedAnimation[] animations=new KeyframedAnimation[numAnimations];
+  ObjectMap<String,KeyframedAnimation> animations=new ObjectMap<String,KeyframedAnimation>(numAnimations);
   for (int i=0; i < numAnimations; i++) {
     String animationName=readString(in);
     int numKeyframes=readInt(in);
@@ -45,7 +46,15 @@
     animation.name=animationName;
     animation.frameDuration=frameDuration;
     animation.keyframes=keyframes;
-    animations[i]=animation;
+    animations.put(animationName,animation);
   }
-  return null;
+  KeyframedSubMesh mesh=new KeyframedSubMesh();
+  mesh.animations=animations;
+  mesh.name=name;
+  mesh.primitiveType=GL10.GL_TRIANGLES;
+  mesh.blendedVertices=buildVertices(numVertices,hasNormals,uvSets);
+  mesh.mesh=new Mesh(false,numVertices,indices.size,createVertexAttributes(hasNormals,uvSets.size));
+  mesh.mesh.setIndices(convertToShortArray(indices));
+  mesh.mesh.setVertices(mesh.blendedVertices);
+  return mesh;
 }

@@ -1,0 +1,7 @@
+{
+  short[] shortArray=new short[array.size];
+  for (int i=0; i < array.size; i++) {
+    shortArray[i]=(short)array.items[i];
+  }
+  return shortArray;
+}

@@ -1,0 +1,10 @@
+{
+  VertexAttribute[] attributes=new VertexAttribute[1 + (hasNormals ? 1 : 0) + uvs];
+  int idx=0;
+  attributes[idx++]=new VertexAttribute(Usage.Position,3,"a_pos");
+  if (hasNormals)   attributes[idx++]=new VertexAttribute(Usage.Normal,3,"a_nor");
+  for (int i=0; i < uvs; i++) {
+    attributes[idx++]=new VertexAttribute(Usage.TextureCoordinates,2,"a_tex" + i);
+  }
+  return attributes;
+}

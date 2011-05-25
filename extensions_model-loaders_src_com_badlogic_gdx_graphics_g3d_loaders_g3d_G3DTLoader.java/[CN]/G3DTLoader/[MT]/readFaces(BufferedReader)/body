@@ -16,5 +16,5 @@
     indices.addAll(triangles);
   }
   indices.shrink();
-  return indices.items;
+  return indices;
 }

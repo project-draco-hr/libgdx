@@ -1,0 +1,21 @@
+{
+  float[] vertices=new float[numVertices * (3 + (hasNormals ? 3 : 0) + uvSets.size * 2)];
+  int idx=0;
+  int idxUv=0;
+  for (int i=0; i < numVertices; i++) {
+    vertices[idx++]=0;
+    vertices[idx++]=0;
+    vertices[idx++]=0;
+    if (hasNormals) {
+      vertices[idx++]=0;
+      vertices[idx++]=0;
+      vertices[idx++]=0;
+    }
+    for (int j=0; j < uvSets.size; j++) {
+      vertices[idx++]=uvSets.get(j).get(idxUv);
+      vertices[idx++]=uvSets.get(j).get(idxUv + 1);
+    }
+    idxUv+=2;
+  }
+  return vertices;
+}
