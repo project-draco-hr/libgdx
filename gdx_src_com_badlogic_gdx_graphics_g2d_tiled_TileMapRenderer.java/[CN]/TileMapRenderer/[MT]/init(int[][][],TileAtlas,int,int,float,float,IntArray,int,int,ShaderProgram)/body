@@ -7,6 +7,8 @@
   this.blendedTiles=blendedTiles;
   this.tilesPerBlockX=tilesPerBlockX;
   this.tilesPerBlockY=tilesPerBlockY;
+  unitsPerBlockX=unitsPerTileX * tilesPerBlockX;
+  unitsPerBlockY=unitsPerTileY * tilesPerBlockY;
   int layer, row, col;
   allLayers=new int[map.length];
   int maxCacheSize=0;
