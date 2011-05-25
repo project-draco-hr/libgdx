@@ -1,18 +1,33 @@
 {
   int len=subMeshes.length;
   for (int i=0; i < len; i++) {
-    KeyframedSubMesh subMesh=subMeshes[i];
-    KeyframedAnimation anim=subMesh.animations.get(animation);
+    final KeyframedSubMesh subMesh=subMeshes[i];
+    final KeyframedAnimation anim=subMesh.animations.get(animation);
     if (anim == null)     throw new IllegalArgumentException("No animation with name '" + animation + "' in submesh #"+ i);
-    Keyframe keyframe=anim.keyframes[(int)time];
-    float[] src=keyframe.vertices;
-    int numComponents=keyframe.animatedComponents;
-    int srcLen=numComponents * subMesh.mesh.getNumVertices();
-    float[] dst=subMesh.blendedVertices;
-    int dstInc=subMesh.mesh.getVertexSize() / 4 - numComponents;
-    for (int srcIdx=0, dstIdx=0; srcIdx < srcLen; dstIdx+=dstInc) {
-      for (int j=0; j < numComponents; j++) {
-        dst[dstIdx++]=src[srcIdx++];
+    final int startIndex=(int)Math.floor((time / anim.frameDuration));
+    final Keyframe startFrame=anim.keyframes[startIndex];
+    final Keyframe endFrame=anim.keyframes[anim.keyframes.length - 1 == startIndex ? startIndex : startIndex + 1];
+    final int numComponents=startFrame.animatedComponents;
+    final float[] src=startFrame.vertices;
+    final int srcLen=numComponents * subMesh.mesh.getNumVertices();
+    final float[] dst=subMesh.blendedVertices;
+    final int dstInc=subMesh.mesh.getVertexSize() / 4 - numComponents;
+    if (startFrame == endFrame) {
+      for (int srcIdx=0, dstIdx=0; srcIdx < srcLen; dstIdx+=dstInc) {
+        for (int j=0; j < numComponents; j++) {
+          dst[dstIdx++]=src[srcIdx++];
+        }
+      }
+    }
+ else {
+      float[] src2=endFrame.vertices;
+      float alpha=(time - (startIndex * anim.frameDuration)) / anim.frameDuration;
+      for (int srcIdx=0, dstIdx=0; srcIdx < srcLen; dstIdx+=dstInc) {
+        for (int j=0; j < numComponents; j++) {
+          final float valSrc=src[srcIdx];
+          final float valSrc2=src2[srcIdx++];
+          dst[dstIdx++]=valSrc + (valSrc2 - valSrc) * alpha;
+        }
       }
     }
     subMesh.mesh.setVertices(dst);

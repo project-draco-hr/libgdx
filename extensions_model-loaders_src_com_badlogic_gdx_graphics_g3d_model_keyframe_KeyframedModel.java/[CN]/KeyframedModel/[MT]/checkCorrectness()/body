@@ -1,0 +1,14 @@
+{
+  for (int i=0; i < subMeshes.length; i++) {
+    if (subMeshes[i].animations.size != animations.length)     throw new GdxRuntimeException("number of animations in subMesh[0] is not the same in subMesh[" + i + "]. All sub-meshes must have the same animations and number of frames");
+  }
+  for (int i=0; i < animations.length; i++) {
+    KeyframedAnimation anim=animations[i];
+    for (int j=0; j < subMeshes.length; j++) {
+      KeyframedAnimation otherAnim=subMeshes[j].animations.get(anim.name);
+      if (otherAnim == null)       throw new GdxRuntimeException("animation '" + anim.name + "' missing in subMesh["+ j+ "]");
+      if (otherAnim.frameDuration != anim.frameDuration)       throw new GdxRuntimeException("animation '" + anim.name + "' in subMesh["+ j+ "] has different frame duration than the same animation in subMesh[0]");
+      if (otherAnim.keyframes.length != anim.keyframes.length)       throw new GdxRuntimeException("animation '" + anim.name + "' in subMesh["+ j+ "] has different number of keyframes than the same animation in subMesh[0]");
+    }
+  }
+}
