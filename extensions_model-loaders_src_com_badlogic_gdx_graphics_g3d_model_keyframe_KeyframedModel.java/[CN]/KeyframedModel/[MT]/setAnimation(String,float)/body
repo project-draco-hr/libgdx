@@ -4,7 +4,7 @@
     KeyframedSubMesh subMesh=subMeshes[i];
     KeyframedAnimation anim=subMesh.animations.get(animation);
     if (anim == null)     throw new IllegalArgumentException("No animation with name '" + animation + "' in submesh #"+ i);
-    Keyframe keyframe=anim.keyframes[9];
+    Keyframe keyframe=anim.keyframes[(int)time];
     float[] src=keyframe.vertices;
     int numComponents=keyframe.animatedComponents;
     int srcLen=numComponents * subMesh.mesh.getNumVertices();
