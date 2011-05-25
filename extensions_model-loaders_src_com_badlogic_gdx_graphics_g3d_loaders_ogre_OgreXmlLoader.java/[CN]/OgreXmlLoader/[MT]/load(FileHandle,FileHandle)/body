@@ -1,6 +1,5 @@
 {
-  SkeletonModel model=loadMesh(mesh);
+  SkeletonSubMesh[] meshes=loadMeshes(mesh);
   Skeleton skel=loadSkeleton(skeleton);
-  model.skeleton=skel;
-  return model;
+  return new SkeletonModel(skel,meshes);
 }

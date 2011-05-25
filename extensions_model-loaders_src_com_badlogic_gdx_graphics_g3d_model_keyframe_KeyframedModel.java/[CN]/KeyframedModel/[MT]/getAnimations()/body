@@ -1,10 +1,3 @@
 {
-  if (animations == null || animations.length != subMeshes[0].animations.size) {
-    Array<KeyframedAnimation> meshAnims=subMeshes[0].animations.values().toArray();
-    animations=new KeyframedAnimation[meshAnims.size];
-    for (int i=0; i < animations.length; i++) {
-      animations[i]=meshAnims.get(i);
-    }
-  }
   return animations;
 }

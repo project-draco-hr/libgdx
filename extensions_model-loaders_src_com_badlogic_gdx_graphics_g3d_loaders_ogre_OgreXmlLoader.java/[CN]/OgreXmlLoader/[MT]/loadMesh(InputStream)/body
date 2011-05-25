@@ -1,12 +1,10 @@
 {
   try {
-    SkeletonModel model=new SkeletonModel();
     Mesh ogreMesh=loadOgreMesh(in);
     SkeletonSubMesh[] meshes=generateSubMeshes(ogreMesh);
-    model.subMeshes=meshes;
-    return model;
+    return meshes;
   }
  catch (  Throwable t) {
-    throw new GdxRuntimeException("Couldn't load model",t);
+    throw new GdxRuntimeException("Couldn't load meshes",t);
   }
 }

@@ -32,20 +32,18 @@
   List<Animation> animations=ogreSkel.getAnimations().getAnimation();
   for (int i=0; i < animations.size(); i++) {
     Animation animation=animations.get(i);
-    SkeletonAnimation skelAnim=new SkeletonAnimation();
-    skelAnim.totalDuration=animation.length;
-    skelAnim.perJointkeyFrames=new SkeletonKeyframe[skel.bindPoseJoints.size][];
+    SkeletonKeyframe[][] perJointkeyFrames=new SkeletonKeyframe[skel.bindPoseJoints.size][];
     List<Track> tracks=animation.getTracks().getTrack();
-    if (tracks.size() != skelAnim.perJointkeyFrames.length)     throw new IllegalArgumentException("Number of tracks does not equal number of joints");
+    if (tracks.size() != perJointkeyFrames.length)     throw new IllegalArgumentException("Number of tracks does not equal number of joints");
     Matrix4 rotation=new Matrix4();
     Matrix4 transform=new Matrix4();
     for (int j=0; j < tracks.size(); j++) {
       Track track=tracks.get(j);
       String jointName=track.getBone();
       int jointIndex=skel.namesToIndices.get(jointName);
-      if (skelAnim.perJointkeyFrames[jointIndex] != null)       throw new IllegalArgumentException("Track for bone " + jointName + " in animation "+ animation.name+ " already defined!");
+      if (perJointkeyFrames[jointIndex] != null)       throw new IllegalArgumentException("Track for bone " + jointName + " in animation "+ animation.name+ " already defined!");
       SkeletonKeyframe[] jointKeyFrames=new SkeletonKeyframe[track.getKeyframes().getKeyframe().size()];
-      skelAnim.perJointkeyFrames[jointIndex]=jointKeyFrames;
+      perJointkeyFrames[jointIndex]=jointKeyFrames;
       for (int k=0; k < track.getKeyframes().getKeyframe().size(); k++) {
         Keyframe keyFrame=track.getKeyframes().getKeyframe().get(k);
         SkeletonKeyframe jointKeyframe=new SkeletonKeyframe();
@@ -73,10 +71,10 @@
         jointKeyframe.rotation.z*=-1;
       }
     }
-    for (int j=0; j < skelAnim.perJointkeyFrames.length; j++) {
-      if (skelAnim.perJointkeyFrames[i] == null)       throw new IllegalArgumentException("No track for bone " + skel.jointNames.get(j));
+    for (int j=0; j < perJointkeyFrames.length; j++) {
+      if (perJointkeyFrames[i] == null)       throw new IllegalArgumentException("No track for bone " + skel.jointNames.get(j));
     }
-    skel.animations.put(animation.name,skelAnim);
+    skel.animations.put(animation.name,new SkeletonAnimation(animation.name,animation.length,perJointkeyFrames));
   }
   return skel;
 }
