@@ -1,3 +1,3 @@
 {
-  return worldY / tileHeight;
+  return (int)(worldY / unitsPerTileY);
 }

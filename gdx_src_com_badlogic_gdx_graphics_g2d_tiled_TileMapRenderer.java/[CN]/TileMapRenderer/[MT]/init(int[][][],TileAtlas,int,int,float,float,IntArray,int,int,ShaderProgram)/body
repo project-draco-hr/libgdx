@@ -2,6 +2,8 @@
   this.atlas=atlas;
   this.tileWidth=tileWidth;
   this.tileHeight=tileHeight;
+  this.unitsPerTileX=unitsPerTileX;
+  this.unitsPerTileY=unitsPerTileY;
   this.blendedTiles=blendedTiles;
   this.tilesPerBlockX=tilesPerBlockX;
   this.tilesPerBlockY=tilesPerBlockY;
@@ -9,14 +11,17 @@
   allLayers=new int[map.length];
   int maxCacheSize=0;
   int maxHeight=0;
+  int maxWidth=0;
   for (layer=0; layer < map.length; layer++) {
     allLayers[layer]=layer;
     if (map[layer].length > maxHeight)     maxHeight=map[layer].length;
     for (row=0; row < map[layer].length; row++) {
+      if (map[layer][row].length > maxWidth)       maxWidth=map[layer][row].length;
       for (col=0; col < map[layer][row].length; col++)       if (map[layer][row][col] != 0)       maxCacheSize++;
     }
   }
-  mapHeightPixels=maxHeight * tileHeight;
+  mapHeightUnits=(int)(maxHeight * unitsPerTileY);
+  mapWidthUnits=(int)(maxWidth * unitsPerTileX);
   if (shader == null)   cache=new SpriteCache(maxCacheSize,false);
  else   cache=new SpriteCache(maxCacheSize,shader,false);
   normalCacheId=new int[map.length][][];

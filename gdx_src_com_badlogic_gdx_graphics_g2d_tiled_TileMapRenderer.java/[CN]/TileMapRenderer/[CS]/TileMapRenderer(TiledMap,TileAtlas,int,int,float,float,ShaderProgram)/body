@@ -1,0 +1,19 @@
+{
+  int[][][] tileMap=new int[map.layers.size()][][];
+  for (int i=0; i < map.layers.size(); i++) {
+    tileMap[i]=map.layers.get(i).tiles;
+  }
+  for (int i=0; i < map.tileSets.size(); i++) {
+    if (map.tileSets.get(i).tileHeight - map.tileHeight > overdrawY * unitsPerTileY)     overdrawY=(map.tileSets.get(i).tileHeight - map.tileHeight) / unitsPerTileY;
+    if (map.tileSets.get(i).tileWidth - map.tileWidth > overdrawX * unitsPerTileX)     overdrawX=(map.tileSets.get(i).tileWidth - map.tileWidth) / unitsPerTileX;
+  }
+  String blendedTiles=map.properties.get("blended tiles");
+  IntArray blendedTilesArray;
+  if (blendedTiles != null) {
+    blendedTilesArray=createFromCSV(blendedTiles);
+  }
+ else {
+    blendedTilesArray=new IntArray(0);
+  }
+  init(tileMap,atlas,map.tileWidth,map.tileHeight,unitsPerTileX,unitsPerTileY,blendedTilesArray,tilesPerBlockX,tilesPerBlockY,shader);
+}

@@ -1,5 +1,5 @@
 {
-  if (relativePath.trim().isEmpty())   return path;
+  if (relativePath.trim().length() == 0)   return path;
   File child=path;
   StringTokenizer tokenizer=new StringTokenizer(relativePath,"\\/");
   while (tokenizer.hasMoreElements()) {

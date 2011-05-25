@@ -1,0 +1,6 @@
+{
+  getProjectionMatrix().set(cam.combined);
+  tmp.set(0,0,0);
+  cam.unproject(tmp);
+  render(tmp.x,tmp.y,cam.viewportWidth,cam.viewportHeight,layers);
+}

@@ -15,9 +15,9 @@
         if (blended == blendedTiles.contains(tile)) {
           region=atlas.getRegion(tile);
           if (region != null) {
-            y=(layer.length - row) * tileHeight - (region.packedHeight + region.offsetY);
-            x=col * tileWidth + region.offsetX;
-            cache.add(region,x,y);
+            y=((layer.length - row) - (region.packedHeight + region.offsetY) / tileHeight) * unitsPerTileY;
+            x=(col + region.offsetX / tileWidth) * unitsPerTileX;
+            cache.add(region,x,y,unitsPerTileX,unitsPerTileY);
           }
         }
       }

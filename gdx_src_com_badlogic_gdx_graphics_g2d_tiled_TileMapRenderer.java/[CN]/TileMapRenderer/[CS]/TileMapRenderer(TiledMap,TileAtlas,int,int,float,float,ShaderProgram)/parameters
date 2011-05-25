@@ -1,8 +1,7 @@
-int[][][] map
+TiledMap map
 TileAtlas atlas
-int tileWidth
-int tileHeight
-IntArray blendedTiles
 int tilesPerBlockX
 int tilesPerBlockY
+float unitsPerTileX
+float unitsPerTileY
 ShaderProgram shader

@@ -1,10 +1,10 @@
 {
-  lastRow=(int)((mapHeightPixels - (y - height + overdrawY)) / (tilesPerBlockY * tileHeight));
-  initialRow=(int)((mapHeightPixels - (y - overdrawY)) / (tilesPerBlockY * tileHeight));
+  lastRow=(int)((mapHeightUnits - (y - height + overdrawY)) / (tilesPerBlockY * unitsPerTileY));
+  initialRow=(int)((mapHeightUnits - (y - overdrawY)) / (tilesPerBlockY * unitsPerTileY));
   initialRow=(initialRow > 0) ? initialRow : 0;
-  initialCol=(int)((x - overdrawX) / (tilesPerBlockX * tileWidth));
+  initialCol=(int)((x - overdrawX) / (tilesPerBlockX * unitsPerTileX));
   initialCol=(initialCol > 0) ? initialCol : 0;
-  lastCol=(int)((x + width + overdrawX) / (tilesPerBlockX * tileWidth));
+  lastCol=(int)((x + width + overdrawX) / (tilesPerBlockX * unitsPerTileX));
   Gdx.gl.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
   cache.begin();
   for (currentLayer=0; currentLayer < layers.length; currentLayer++) {

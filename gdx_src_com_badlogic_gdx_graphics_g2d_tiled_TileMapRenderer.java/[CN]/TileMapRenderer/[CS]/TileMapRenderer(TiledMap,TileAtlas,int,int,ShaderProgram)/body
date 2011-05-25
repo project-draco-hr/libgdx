@@ -1,7 +1,3 @@
 {
-  int[][][] tileMap=new int[map.layers.size()][][];
-  for (int i=0; i < map.layers.size(); i++) {
-    tileMap[i]=map.layers.get(i).tiles;
-  }
-  init(tileMap,atlas,map.tileWidth,map.tileHeight,createFromCSV(map.properties.get("blended tiles")),tilesPerBlockX,tilesPerBlockY,shader);
+  this(map,atlas,tilesPerBlockX,tilesPerBlockY,map.tileWidth,map.tileHeight,shader);
 }
