@@ -85,6 +85,13 @@
       glyph.setKerning(second,amount);
     }
     Glyph g=getGlyph(' ');
+    if (g == null) {
+      g=new Glyph();
+      g.xadvance=getGlyph('l').xadvance;
+      Glyph[] page=glyphs[' ' / PAGE_SIZE];
+      if (page == null)       glyphs[' ' / PAGE_SIZE]=page=new Glyph[PAGE_SIZE];
+      page[' ' & PAGE_SIZE - 1]=g;
+    }
     spaceWidth=g != null ? g.xadvance + g.width : 1;
     g=getGlyph('x');
     xHeight=g != null ? g.height : 1;
