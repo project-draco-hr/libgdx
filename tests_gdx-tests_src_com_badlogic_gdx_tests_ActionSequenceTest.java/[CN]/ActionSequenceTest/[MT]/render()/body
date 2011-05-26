@@ -1,0 +1,8 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  img.action(Sequence.$());
+  img2.action(Parallel.$(Sequence.$(),MoveBy.$(0,0,1)));
+  img3.action(Sequence.$(Parallel.$(MoveBy.$(0,0,2))));
+  stage.act(Math.min(Gdx.graphics.getDeltaTime(),1 / 30f));
+  stage.draw();
+}
