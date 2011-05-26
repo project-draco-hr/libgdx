@@ -1,11 +1,11 @@
 {
-  data.add((byte)(l >>> 56));
-  data.add((byte)(l >>> 48));
-  data.add((byte)(l >>> 40));
-  data.add((byte)(l >>> 32));
-  data.add((byte)(l >>> 24));
-  data.add((byte)(l >>> 16));
-  data.add((byte)(l >>> 8));
-  data.add((byte)l);
+  data.write((byte)(l >>> 56));
+  data.write((byte)(l >>> 48));
+  data.write((byte)(l >>> 40));
+  data.write((byte)(l >>> 32));
+  data.write((byte)(l >>> 24));
+  data.write((byte)(l >>> 16));
+  data.write((byte)(l >>> 8));
+  data.write((byte)l);
   adjustLength(+8);
 }

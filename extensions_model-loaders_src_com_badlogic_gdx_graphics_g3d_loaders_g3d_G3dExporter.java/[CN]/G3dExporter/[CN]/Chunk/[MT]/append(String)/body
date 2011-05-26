@@ -1,4 +1,4 @@
 {
   for (  byte b : s.getBytes())   append(b);
-  append((short)0x0000);
+  append((byte)0x00);
 }

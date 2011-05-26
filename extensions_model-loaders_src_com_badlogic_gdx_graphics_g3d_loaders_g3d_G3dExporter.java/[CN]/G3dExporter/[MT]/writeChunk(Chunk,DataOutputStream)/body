@@ -3,7 +3,7 @@
     if (chunk.parent == null)     out.writeInt(G3D_HEADER);
  else     out.writeShort(chunk.uID);
     out.writeInt(chunk.length);
-    for (    byte b : chunk.data)     out.writeByte(b);
+    chunk.data.writeTo(out);
     for (    Chunk child : chunk.children)     writeChunk(child,out);
     if (chunk.parent == null)     out.close();
   }

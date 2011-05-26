@@ -1,4 +1,5 @@
 {
+  long nanos=System.nanoTime();
   Chunk g3dRoot=new Chunk((short)0x0000);
   Chunk activeChunk=g3dRoot.addChild(new Chunk(VERSION_INFO));
   activeChunk.append(MAJOR_VERSION);
@@ -31,5 +32,7 @@
   }
   DataOutputStream out=new DataOutputStream(new BufferedOutputStream(file.write(false)));
   writeChunk(g3dRoot,out);
+  nanos=System.nanoTime() - nanos;
+  System.out.println("Export took " + (nanos / 1000000) + " ms");
   return true;
 }
