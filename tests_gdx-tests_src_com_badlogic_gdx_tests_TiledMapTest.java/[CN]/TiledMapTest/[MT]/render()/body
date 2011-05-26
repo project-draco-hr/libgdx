@@ -3,6 +3,7 @@
   if (automove) {
     updateCameraPosition();
   }
+  cam.zoom=0.9f;
   cam.update();
   tileMapRenderer.render(cam);
   spriteBatch.begin();
@@ -11,6 +12,6 @@
   font.draw(spriteBatch,"InitialRow, LastRow: " + tileMapRenderer.getInitialRow() + ","+ tileMapRenderer.getLastRow(),20,60);
   tmp.set(0,0,0);
   cam.unproject(tmp);
-  font.draw(spriteBatch,"Location: " + (int)tmp.x + ","+ (int)(tileMapRenderer.getMapHeightUnits() - tmp.y),20,80);
+  font.draw(spriteBatch,"Location: " + (int)tmp.x + ","+ (int)tmp.y,20,80);
   spriteBatch.end();
 }

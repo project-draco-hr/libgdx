@@ -1,5 +1,5 @@
 {
-  cam.position.add(camDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(60));
+  cam.position.add(camDirection.tmp().mul(Gdx.graphics.getDeltaTime()).mul(5 * tileMapRenderer.getUnitsPerTileX()));
   if (cam.position.x < 0) {
     cam.position.x=0;
     camDirection.x=1;
