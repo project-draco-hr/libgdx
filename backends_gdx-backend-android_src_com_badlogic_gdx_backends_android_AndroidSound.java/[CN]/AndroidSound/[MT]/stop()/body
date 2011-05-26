@@ -1,3 +1,3 @@
 {
-  soundPool.stop(soundId);
+  for (int i=0, n=streamIds.size; i < n; i++)   soundPool.stop(streamIds.get(i));
 }

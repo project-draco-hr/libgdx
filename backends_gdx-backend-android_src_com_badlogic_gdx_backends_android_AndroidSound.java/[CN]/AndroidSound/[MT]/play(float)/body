@@ -1,3 +1,4 @@
 {
-  soundPool.play(soundId,volume,volume,1,0,1);
+  if (streamIds.size == 8)   streamIds.pop();
+  streamIds.add(soundPool.play(soundId,volume,volume,1,0,1));
 }
