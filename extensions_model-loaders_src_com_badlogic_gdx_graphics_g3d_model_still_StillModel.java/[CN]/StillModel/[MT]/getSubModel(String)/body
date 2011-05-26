@@ -1,3 +1,6 @@
 {
+  ArrayList<SubMesh> subMeshes=new ArrayList<SubMesh>();
+  for (  String name : subMeshNames)   for (  StillSubMesh subMesh : this.subMeshes)   if (name.equals(subMesh.name))   subMeshes.add(subMesh);
+  if (subMeshes.size() > 0)   return new StillModel(subMeshes.toArray(new StillSubMesh[subMeshes.size()]));
   return null;
 }

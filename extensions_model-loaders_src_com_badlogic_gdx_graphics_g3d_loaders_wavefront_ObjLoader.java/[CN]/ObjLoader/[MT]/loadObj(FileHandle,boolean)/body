@@ -73,8 +73,7 @@
   }
   if (groups.size() < 1)   return null;
   final int numGroups=groups.size();
-  final StillModel model=new StillModel();
-  model.subMeshes=new StillSubMesh[numGroups];
+  final StillModel model=new StillModel(new StillSubMesh[numGroups]);
   for (int g=0; g < numGroups; g++) {
     Group group=groups.get(g);
     ArrayList<Integer> faces=group.faces;
@@ -107,11 +106,8 @@
     if (hasUVs)     attributes.add(new VertexAttribute(Usage.TextureCoordinates,2,"a_TexCoord"));
     mesh=new Mesh(true,numFaces * 3,0,attributes.toArray(new VertexAttribute[attributes.size()]));
     mesh.setVertices(finalVerts);
-    StillSubMesh subMesh=new StillSubMesh();
-    subMesh.name=group.name;
-    subMesh.primitiveType=GL10.GL_TRIANGLES;
+    StillSubMesh subMesh=new StillSubMesh(group.name,mesh,GL10.GL_TRIANGLES);
     subMesh.material=new Material("default");
-    subMesh.mesh=mesh;
     model.subMeshes[g]=subMesh;
   }
   if (verts.size() > 0)   verts.clear();
