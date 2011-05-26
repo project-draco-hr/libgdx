@@ -1,0 +1,10 @@
+{
+  float acc=100;
+  float decayRate=0.1f;
+  for (float i=0; i < fps * seconds; i++) {
+    float decay=acc * decayRate;
+    acc=acc - decay * (1.0f / fps);
+    System.out.println("frame #" + i + ": "+ acc);
+  }
+  return acc;
+}

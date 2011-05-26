@@ -19,14 +19,17 @@
   }
   angle+=45 * Gdx.graphics.getDeltaTime();
   animTime+=Gdx.graphics.getDeltaTime();
-  if (animTime > anim.totalDuration) {
+  if (animTime > anim.totalDuration - anim.frameDuration) {
     animTime=0;
   }
-  model.setAnimation(anim.name,animTime);
+  model.setAnimation(anim.name,animTime,true);
   model.render();
   Gdx.gl10.glTranslatef(0,0,7);
-  modelHigh.setAnimation(anim.name,animTime);
+  modelHigh.setAnimation(anim.name,animTime,true);
   modelHigh.render();
+  Gdx.gl10.glTranslatef(0,0,7);
+  modelLow.setAnimation(anim.name,animTime,true);
+  modelLow.render();
   if (texture != null) {
     Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
   }

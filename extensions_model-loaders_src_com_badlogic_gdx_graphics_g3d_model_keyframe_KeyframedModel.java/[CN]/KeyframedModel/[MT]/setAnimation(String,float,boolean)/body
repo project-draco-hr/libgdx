@@ -6,7 +6,7 @@
     if (anim == null)     throw new IllegalArgumentException("No animation with name '" + animation + "' in submesh #"+ i);
     final int startIndex=(int)Math.floor((time / anim.frameDuration));
     final Keyframe startFrame=anim.keyframes[startIndex];
-    final Keyframe endFrame=anim.keyframes[anim.keyframes.length - 1 == startIndex ? startIndex : startIndex + 1];
+    final Keyframe endFrame=anim.keyframes[anim.keyframes.length - 1 == startIndex ? loop ? 0 : startIndex : startIndex + 1];
     final int numComponents=startFrame.animatedComponents;
     final float[] src=startFrame.vertices;
     final int srcLen=numComponents * subMesh.mesh.getNumVertices();

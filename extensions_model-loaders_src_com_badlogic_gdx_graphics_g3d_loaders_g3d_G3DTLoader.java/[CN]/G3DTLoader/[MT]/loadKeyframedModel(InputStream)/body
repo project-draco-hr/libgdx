@@ -10,7 +10,7 @@
       subMeshes[i]=readMesh(in);
     }
     KeyframedModel model=new KeyframedModel(subMeshes);
-    model.setAnimation(model.getAnimations()[0].name,0);
+    model.setAnimation(model.getAnimations()[0].name,0,false);
     return model;
   }
  catch (  Throwable e) {

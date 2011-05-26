@@ -13,7 +13,7 @@
   angle+=45 * Gdx.graphics.getDeltaTime();
   long processingTime=0;
   for (int i=0; i < NUM_INSTANCES; i++) {
-    model.setAnimation(animation,time);
+    model.setAnimation(animation,time,true);
     model.render();
   }
   Gdx.gl.glDisable(GL10.GL_LIGHTING);
