@@ -1,11 +1,8 @@
 {
   StillSubMesh[] meshes=new StillSubMesh[geos.size];
   for (int i=0; i < geos.size; i++) {
-    StillSubMesh subMesh=new StillSubMesh();
-    subMesh.name=geos.get(i).id;
+    StillSubMesh subMesh=new StillSubMesh(geos.get(i).id,geos.get(i).getMesh(),GL10.GL_TRIANGLES);
     subMesh.material=new Material("Null Material");
-    subMesh.primitiveType=GL10.GL_TRIANGLES;
-    subMesh.mesh=geos.get(i).getMesh();
     meshes[i]=subMesh;
   }
   return meshes;

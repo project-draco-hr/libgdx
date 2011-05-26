@@ -12,7 +12,6 @@
   for (  StillSubMesh mesh : meshes) {
     System.out.println(mesh.mesh.getNumVertices());
   }
-  StillModel model=new StillModel();
-  model.subMeshes=meshes;
+  StillModel model=new StillModel(meshes);
   return model;
 }
