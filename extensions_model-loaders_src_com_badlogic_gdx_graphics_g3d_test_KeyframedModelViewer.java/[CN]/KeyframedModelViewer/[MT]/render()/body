@@ -24,12 +24,6 @@
   }
   model.setAnimation(anim.name,animTime,true);
   model.render();
-  Gdx.gl10.glTranslatef(0,0,7);
-  modelHigh.setAnimation(anim.name,animTime,true);
-  modelHigh.render();
-  Gdx.gl10.glTranslatef(0,0,7);
-  modelLow.setAnimation(anim.name,animTime,true);
-  modelLow.render();
   if (texture != null) {
     Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
   }
