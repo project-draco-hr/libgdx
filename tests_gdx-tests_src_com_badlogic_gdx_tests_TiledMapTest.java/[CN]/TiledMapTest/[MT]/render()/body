@@ -12,6 +12,6 @@
   font.draw(spriteBatch,"InitialRow, LastRow: " + tileMapRenderer.getInitialRow() + ","+ tileMapRenderer.getLastRow(),20,60);
   tmp.set(0,0,0);
   cam.unproject(tmp);
-  font.draw(spriteBatch,"Location: " + (int)tmp.x + ","+ (int)tmp.y,20,80);
+  font.draw(spriteBatch,"Location: " + tmp.x + ","+ tmp.y,20,80);
   spriteBatch.end();
 }
