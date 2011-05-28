@@ -1,0 +1,17 @@
+{
+  if (size == 0) {
+    ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+    byte[] buffer=new byte[10 * 1024];
+    int readBytes=0;
+    while ((readBytes=in.read(buffer)) != -1) {
+      bytes.write(buffer,0,readBytes);
+    }
+    return bytes.toByteArray();
+  }
+ else {
+    byte[] bytes=new byte[size];
+    DataInputStream din=new DataInputStream(in);
+    din.readFully(bytes);
+    return bytes;
+  }
+}

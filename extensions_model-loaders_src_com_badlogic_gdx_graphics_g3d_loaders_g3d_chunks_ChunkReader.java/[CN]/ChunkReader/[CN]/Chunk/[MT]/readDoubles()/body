@@ -1,0 +1,13 @@
+{
+  try {
+    int len=in.readInt();
+    double[] v=new double[len];
+    for (int i=0; i < len; i++) {
+      v[i]=in.readDouble();
+    }
+    return v;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't read payload, " + e.getMessage(),e);
+  }
+}

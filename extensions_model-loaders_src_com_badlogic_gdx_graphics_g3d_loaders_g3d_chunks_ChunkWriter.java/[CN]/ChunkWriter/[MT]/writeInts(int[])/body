@@ -1,0 +1,10 @@
+{
+  try {
+    currChunk.out.writeInt(v.length);
+    for (int i=0; i < v.length; i++) {
+      currChunk.out.writeInt(v[i]);
+    }
+  }
+ catch (  IOException e) {
+  }
+}

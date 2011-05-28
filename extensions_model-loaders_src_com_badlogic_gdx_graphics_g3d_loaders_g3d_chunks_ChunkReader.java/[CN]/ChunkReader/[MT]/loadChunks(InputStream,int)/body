@@ -1,0 +1,5 @@
+{
+  byte[] bytes=readStream(in,fileSize);
+  CountingDataInputStream din=new CountingDataInputStream(new ByteArrayInputStream(bytes));
+  return loadChunk(din,bytes);
+}

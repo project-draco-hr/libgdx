@@ -1,0 +1,35 @@
+{
+  ChunkWriter writer=new ChunkWriter();
+  writer.newChunk(VERSION_INFO);
+  writer.writeByte(MAJOR_VERSION);
+  writer.writeByte(MINOR_VERSION);
+  writer.endChunk();
+  writer.newChunk(STILL_MODEL);
+  writer.writeInt(1);
+  writer.newChunk(STILL_SUBMESH);
+  writer.writeString("triangle");
+  writer.newChunk(VERTEX_ATTRIBUTES);
+  writer.writeInt(1);
+  writer.newChunk(VERTEX_ATTRIBUTE);
+  writer.writeInt(Usage.Position);
+  writer.writeInt(2);
+  writer.writeString("a_pos");
+  writer.endChunk();
+  writer.endChunk();
+  writer.newChunk(VERTEX_LIST);
+  writer.writeInt(6);
+  writer.writeFloats(new float[]{-1,-1,0,1,1,-1});
+  writer.endChunk();
+  writer.newChunk(INDEX_LIST);
+  writer.writeInt(0);
+  writer.endChunk();
+  writer.endChunk();
+  writer.endChunk();
+  ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+  writer.writeToStream(bytes);
+  System.out.println("bytes: " + bytes.toByteArray().length);
+  Chunk root=ChunkReader.readChunks(new ByteArrayInputStream(bytes.toByteArray()));
+  printChunks(root,0);
+  Chunk version=root.getChild(VERSION_INFO);
+  Chunk stillModel=root.getChild(STILL_MODEL);
+}

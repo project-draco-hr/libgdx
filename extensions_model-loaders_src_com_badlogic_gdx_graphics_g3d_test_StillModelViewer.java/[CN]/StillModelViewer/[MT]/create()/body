@@ -1,11 +1,13 @@
 {
   if (fileName.endsWith(".dae"))   model=ColladaLoader.loadStillModel(Gdx.files.internal(fileName));
+ else   if (fileName.endsWith(".obj"))   model=new ObjLoader().loadObj(Gdx.files.internal(fileName));
  else   throw new GdxRuntimeException("Unknown file format '" + fileName + "'");
   if (textureFileName != null)   texture=new Texture(Gdx.files.internal(textureFileName));
   hasNormals=hasNormals();
   model.getBoundingBox(bounds);
   float len=bounds.getDimensions().len();
   System.out.println("bounds: " + bounds);
+  new G3dExporter().export(model,Gdx.files.absolute(fileName + ".g3d"));
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(bounds.getCenter().cpy().add(len,len,len));
   cam.lookAt(bounds.getCenter().x,bounds.getCenter().y,bounds.getCenter().z);

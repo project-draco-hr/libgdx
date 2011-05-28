@@ -1,0 +1,9 @@
+{
+  try {
+    byte[] bytes=v.getBytes("UTF-8");
+    currChunk.out.writeInt(bytes.length);
+    currChunk.out.write(bytes);
+  }
+ catch (  IOException e) {
+  }
+}

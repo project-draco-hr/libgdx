@@ -1,0 +1,11 @@
+{
+  try {
+    int len=in.readInt();
+    byte[] bytes=new byte[len];
+    in.readFully(bytes);
+    return new String(bytes,"UTF-8");
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't read payload, " + e.getMessage(),e);
+  }
+}

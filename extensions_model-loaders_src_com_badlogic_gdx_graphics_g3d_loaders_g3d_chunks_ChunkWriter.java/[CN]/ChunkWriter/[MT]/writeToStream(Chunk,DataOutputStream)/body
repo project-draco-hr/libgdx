@@ -1,0 +1,10 @@
+{
+  out.writeInt(chunk.id);
+  out.writeInt(chunk.payload.size());
+  out.writeInt(chunk.children.size);
+  out.write(chunk.payload.toByteArray());
+  for (int i=0; i < chunk.children.size; i++) {
+    Chunk child=chunk.children.get(i);
+    writeToStream(child,out);
+  }
+}

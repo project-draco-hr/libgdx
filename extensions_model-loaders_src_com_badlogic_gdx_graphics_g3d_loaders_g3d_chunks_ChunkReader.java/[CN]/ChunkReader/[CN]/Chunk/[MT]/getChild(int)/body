@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < children.size; i++) {
+    Chunk child=children.get(i);
+    if (child.getId() == id)     return child;
+  }
+  return null;
+}

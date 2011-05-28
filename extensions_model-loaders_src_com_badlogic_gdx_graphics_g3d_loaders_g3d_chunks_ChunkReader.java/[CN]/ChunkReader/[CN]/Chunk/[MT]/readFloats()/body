@@ -1,0 +1,13 @@
+{
+  try {
+    int len=in.readInt();
+    float[] v=new float[len];
+    for (int i=0; i < len; i++) {
+      v[i]=in.readFloat();
+    }
+    return v;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't read payload, " + e.getMessage(),e);
+  }
+}

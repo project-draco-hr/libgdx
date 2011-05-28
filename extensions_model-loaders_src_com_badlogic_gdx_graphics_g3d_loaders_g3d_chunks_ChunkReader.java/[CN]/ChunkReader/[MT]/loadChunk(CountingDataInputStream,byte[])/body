@@ -1,0 +1,13 @@
+{
+  int id=din.readInt();
+  int payloadSize=din.readInt();
+  int numChildren=din.readInt();
+  din.skipBytes(payloadSize);
+  Chunk chunk=new Chunk(id,null,bytes,din.getReadBytes(),payloadSize);
+  for (int i=0; i < numChildren; i++) {
+    Chunk child=loadChunk(din,bytes);
+    child.parent=chunk;
+    chunk.children.add(child);
+  }
+  return chunk;
+}
