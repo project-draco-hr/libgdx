@@ -15,6 +15,11 @@
     state=FIXED;
     return;
   }
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || controlButton) && state == FIXED && stateTime > 0.5f) {
+    stateTime=0;
+    state=CONTROLLED;
+    return;
+  }
   if ((Gdx.input.isKeyPressed(Keys.SPACE) || followButton) && state == FIXED && stateTime > 0.5f) {
     stateTime=0;
     state=FOLLOW;
