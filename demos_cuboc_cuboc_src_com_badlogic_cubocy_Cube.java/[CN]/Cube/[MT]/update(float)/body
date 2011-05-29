@@ -6,6 +6,7 @@
     if (map.bob.dir == Bob.LEFT)     target.x++;
     target.y+=0.2f;
     vel.set(target).sub(pos).mul(Math.min(4,pos.dst(target)) * deltaTime);
+    if (vel.len() > MAX_VELOCITY)     vel.nor().mul(MAX_VELOCITY);
     tryMove();
   }
   if (state == CONTROLLED) {
