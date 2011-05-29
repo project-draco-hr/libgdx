@@ -1,0 +1,14 @@
+{
+  for (int i=0; i < map.rockets.size; i++) {
+    Rocket rocket=map.rockets.get(i);
+    if (rocket.state == Rocket.FLYING) {
+      TextureRegion frame=this.rocket.getKeyFrame(rocket.stateTime,true);
+      batch.draw(frame,rocket.pos.x,rocket.pos.y,0.5f,0.5f,1,1,1,1,rocket.vel.angle());
+    }
+ else {
+      TextureRegion frame=this.rocketExplosion.getKeyFrame(rocket.stateTime,false);
+      batch.draw(frame,rocket.pos.x,rocket.pos.y,1,1);
+    }
+    batch.draw(rocketPad,rocket.startPos.x,rocket.startPos.y,1,1);
+  }
+}

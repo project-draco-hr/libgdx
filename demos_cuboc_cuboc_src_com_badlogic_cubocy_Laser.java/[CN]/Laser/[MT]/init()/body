@@ -1,0 +1,44 @@
+{
+  int ix=(int)pos.x;
+  int iy=map.tiles[0].length - 1 - (int)pos.y;
+  int left=map.tiles[ix - 1][iy];
+  int right=map.tiles[ix + 1][iy];
+  int top=map.tiles[ix][iy - 1];
+  int bottom=map.tiles[ix][iy + 1];
+  if (left == Map.TILE) {
+    angle=-90;
+    for (int x=ix; x < map.tiles.length; x++) {
+      if (map.tiles[x][iy] == Map.TILE) {
+        endPoint.set(x,pos.y);
+        break;
+      }
+    }
+  }
+  if (right == Map.TILE) {
+    angle=90;
+    for (int x=ix; x >= 0; x--) {
+      if (map.tiles[x][iy] == Map.TILE) {
+        endPoint.set(x,pos.y);
+        break;
+      }
+    }
+  }
+  if (top == Map.TILE) {
+    angle=180;
+    for (int y=iy; y < map.tiles[0].length; y++) {
+      if (map.tiles[ix][y] == Map.TILE) {
+        endPoint.set(pos.x,map.tiles[0].length - y - 1);
+        break;
+      }
+    }
+  }
+  if (bottom == Map.TILE) {
+    angle=0;
+    for (int y=iy; y >= 0; y--) {
+      if (map.tiles[ix][y] == Map.TILE) {
+        endPoint.set(pos.x,map.tiles[0].length - y - 1);
+        break;
+      }
+    }
+  }
+}

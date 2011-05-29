@@ -1,0 +1,6 @@
+{
+  if (state == FOLLOW) {
+    state=CONTROLLED;
+    stateTime=0;
+  }
+}

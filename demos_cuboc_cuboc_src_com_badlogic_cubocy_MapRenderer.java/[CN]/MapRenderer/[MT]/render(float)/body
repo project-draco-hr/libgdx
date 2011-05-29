@@ -1,0 +1,31 @@
+{
+  if (map.cube.state != Cube.CONTROLLED)   cam.position.lerp(lerpTarget.set(map.bob.pos.x,map.bob.pos.y,0),2f * deltaTime);
+ else   cam.position.lerp(lerpTarget.set(map.cube.pos.x,map.cube.pos.y,0),2f * deltaTime);
+  cam.update();
+  renderLaserBeams();
+  cache.setProjectionMatrix(cam.combined);
+  Gdx.gl.glDisable(GL10.GL_BLEND);
+  cache.begin();
+  int b=0;
+  for (int blockY=0; blockY < 4; blockY++) {
+    for (int blockX=0; blockX < 6; blockX++) {
+      cache.draw(blocks[blockX][blockY]);
+      b++;
+    }
+  }
+  cache.end();
+  Gdx.app.log("Cubocy","blocks: " + b);
+  stateTime+=deltaTime;
+  batch.setProjectionMatrix(cam.combined);
+  batch.begin();
+  renderDispensers();
+  if (map.endDoor != null)   batch.draw(endDoor,map.endDoor.bounds.x,map.endDoor.bounds.y,1,1);
+  renderLasers();
+  renderMovingSpikes();
+  renderBob();
+  renderCube();
+  renderRockets();
+  batch.end();
+  renderLaserBeams();
+  fps.log();
+}

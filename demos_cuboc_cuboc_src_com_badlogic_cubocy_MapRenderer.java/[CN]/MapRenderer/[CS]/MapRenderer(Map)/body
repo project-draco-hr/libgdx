@@ -1,0 +1,9 @@
+{
+  this.map=map;
+  this.cam=new OrthographicCamera(24,16);
+  this.cam.position.set(map.bob.pos.x,map.bob.pos.y,0);
+  this.cache=new SpriteCache(this.map.tiles.length * this.map.tiles[0].length,false);
+  this.blocks=new int[(int)Math.ceil(this.map.tiles.length / 24.0f)][(int)Math.ceil(this.map.tiles[0].length / 16.0f)];
+  createAnimations();
+  createBlocks();
+}

@@ -1,0 +1,23 @@
+{
+  if (state == FLYING) {
+    vel.set(map.bob.pos);
+    vel.sub(pos).nor().mul(VELOCITY);
+    pos.add(vel.x * deltaTime,vel.y * deltaTime);
+    bounds.x=pos.x + 0.2f;
+    bounds.y=pos.y + 0.2f;
+    if (checkHit()) {
+      state=EXPLODING;
+      stateTime=0;
+    }
+  }
+  if (state == EXPLODING) {
+    if (stateTime > 0.6f) {
+      state=FLYING;
+      stateTime=0;
+      pos.set(startPos);
+      bounds.x=pos.x + 0.2f;
+      bounds.y=pos.y + 0.2f;
+    }
+  }
+  stateTime+=deltaTime;
+}

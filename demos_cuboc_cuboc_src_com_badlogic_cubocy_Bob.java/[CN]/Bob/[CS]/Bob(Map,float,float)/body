@@ -1,0 +1,11 @@
+{
+  this.map=map;
+  pos.x=x;
+  pos.y=y;
+  bounds.width=0.6f;
+  bounds.height=0.8f;
+  bounds.x=pos.x + 0.2f;
+  bounds.y=pos.y;
+  state=SPAWN;
+  stateTime=0;
+}

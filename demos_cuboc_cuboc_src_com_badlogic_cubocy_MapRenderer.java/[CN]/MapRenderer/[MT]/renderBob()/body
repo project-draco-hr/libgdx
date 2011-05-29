@@ -1,0 +1,25 @@
+{
+  Animation anim=null;
+  boolean loop=true;
+  if (map.bob.state == Bob.RUN) {
+    if (map.bob.dir == Bob.LEFT)     anim=bobLeft;
+ else     anim=bobRight;
+  }
+  if (map.bob.state == Bob.IDLE) {
+    if (map.bob.dir == Bob.LEFT)     anim=bobIdleLeft;
+ else     anim=bobIdleRight;
+  }
+  if (map.bob.state == Bob.JUMP) {
+    if (map.bob.dir == Bob.LEFT)     anim=bobJumpLeft;
+ else     anim=bobJumpRight;
+  }
+  if (map.bob.state == Bob.SPAWN) {
+    anim=spawn;
+    loop=false;
+  }
+  if (map.bob.state == Bob.DYING) {
+    anim=dying;
+    loop=false;
+  }
+  batch.draw(anim.getKeyFrame(map.bob.stateTime,loop),map.bob.pos.x,map.bob.pos.y,1,1);
+}

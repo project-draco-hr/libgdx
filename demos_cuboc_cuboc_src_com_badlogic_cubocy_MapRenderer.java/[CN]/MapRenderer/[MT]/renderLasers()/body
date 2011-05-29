@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < map.lasers.size; i++) {
+    Laser laser=map.lasers.get(i);
+    batch.draw(this.laser,laser.pos.x,laser.pos.y,0.5f,0.5f,1,1,1,1,laser.angle);
+  }
+}

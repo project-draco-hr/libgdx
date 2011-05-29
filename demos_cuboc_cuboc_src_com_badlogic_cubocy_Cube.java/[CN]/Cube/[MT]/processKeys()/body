@@ -1,0 +1,48 @@
+{
+  float x0=(Gdx.input.getX(0) / (float)Gdx.graphics.getWidth()) * 480;
+  float x1=(Gdx.input.getX(1) / (float)Gdx.graphics.getWidth()) * 480;
+  float y0=320 - (Gdx.input.getY(0) / (float)Gdx.graphics.getHeight()) * 320;
+  float y1=320 - (Gdx.input.getY(1) / (float)Gdx.graphics.getHeight()) * 320;
+  boolean cubeButton=(Gdx.input.isTouched(0) && cubeButtonRect.contains(x0,y0)) || (Gdx.input.isTouched(1) && cubeButtonRect.contains(x1,y1));
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || cubeButton) && state == FOLLOW && stateTime > 0.5f) {
+    stateTime=0;
+    state=CONTROLLED;
+    return;
+  }
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || cubeButton) && state == CONTROLLED && stateTime > 0.5f) {
+    stateTime=0;
+    state=FIXED;
+    return;
+  }
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || cubeButton) && state == FIXED && stateTime > 0.5f) {
+    stateTime=0;
+    state=FOLLOW;
+    return;
+  }
+  boolean touch0=Gdx.input.isTouched(0);
+  boolean touch1=Gdx.input.isTouched(1);
+  boolean left=(touch0 && x0 < 60) || (touch1 && x1 < 60);
+  boolean right=(touch0 && (x0 > 80 && x0 < 128)) || (touch1 && (x1 > 80 && x1 < 128));
+  boolean down=(touch0 && (y0 < 60)) || (touch1 && (y1 < 60));
+  boolean up=(touch0 && (y0 > 80 && x0 < 128)) || (touch1 && (y1 > 80 && y1 < 128));
+  if (state == CONTROLLED) {
+    if (Gdx.input.isKeyPressed(Keys.A) || left) {
+      accel.x=-ACCELERATION;
+    }
+ else     if (Gdx.input.isKeyPressed(Keys.D) || right) {
+      accel.x=ACCELERATION;
+    }
+ else {
+      accel.x=0;
+    }
+    if (Gdx.input.isKeyPressed(Keys.W) || up) {
+      accel.y=ACCELERATION;
+    }
+ else     if (Gdx.input.isKeyPressed(Keys.S) || down) {
+      accel.y=-ACCELERATION;
+    }
+ else {
+      accel.y=0;
+    }
+  }
+}

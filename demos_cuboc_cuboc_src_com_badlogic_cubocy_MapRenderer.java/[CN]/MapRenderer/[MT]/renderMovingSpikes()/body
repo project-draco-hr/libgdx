@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < map.movingSpikes.size; i++) {
+    MovingSpikes spikes=map.movingSpikes.get(i);
+    batch.draw(movingSpikes,spikes.pos.x,spikes.pos.y,0.5f,0.5f,1,1,1,1,spikes.angle);
+  }
+}

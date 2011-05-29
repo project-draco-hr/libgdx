@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < map.dispensers.size; i++) {
+    Dispenser dispenser=map.dispensers.get(i);
+    batch.draw(this.dispenser,dispenser.bounds.x,dispenser.bounds.y,1,1);
+  }
+}

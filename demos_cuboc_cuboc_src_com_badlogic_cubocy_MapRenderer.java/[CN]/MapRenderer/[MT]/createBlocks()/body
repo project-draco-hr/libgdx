@@ -1,0 +1,21 @@
+{
+  int width=map.tiles.length;
+  int height=map.tiles[0].length;
+  for (int blockY=0; blockY < blocks[0].length; blockY++) {
+    for (int blockX=0; blockX < blocks.length; blockX++) {
+      cache.beginCache();
+      for (int y=blockY * 16; y < blockY * 16 + 16; y++) {
+        for (int x=blockX * 24; x < blockX * 24 + 24; x++) {
+          if (x > width)           continue;
+          if (y > height)           continue;
+          int posX=x;
+          int posY=height - y - 1;
+          if (map.tiles[x][y] == Map.TILE)           cache.add(tile,posX,posY,1,1);
+          if (map.tiles[x][y] == Map.SPIKES)           cache.add(spikes,posX,posY,1,1);
+        }
+      }
+      blocks[blockX][blockY]=cache.endCache();
+    }
+  }
+  System.out.println("blocks created");
+}

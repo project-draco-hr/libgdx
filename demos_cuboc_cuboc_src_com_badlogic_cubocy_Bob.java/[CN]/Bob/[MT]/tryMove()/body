@@ -1,0 +1,28 @@
+{
+  bounds.x+=vel.x;
+  fetchCollidableRects();
+  for (int i=0; i < r.length; i++) {
+    Rectangle rect=r[i];
+    if (bounds.overlaps(rect)) {
+      if (vel.x < 0)       bounds.x=rect.x + rect.width + 0.01f;
+ else       bounds.x=rect.x - bounds.width - 0.01f;
+      vel.x=0;
+    }
+  }
+  bounds.y+=vel.y;
+  fetchCollidableRects();
+  for (int i=0; i < r.length; i++) {
+    Rectangle rect=r[i];
+    if (bounds.overlaps(rect)) {
+      if (vel.y < 0) {
+        bounds.y=rect.y + rect.height + 0.01f;
+        grounded=true;
+        if (state != DYING && state != SPAWN)         state=Math.abs(accel.x) > 0.1f ? RUN : IDLE;
+      }
+ else       bounds.y=rect.y - bounds.height - 0.01f;
+      vel.y=0;
+    }
+  }
+  pos.x=bounds.x - 0.2f;
+  pos.y=bounds.y;
+}

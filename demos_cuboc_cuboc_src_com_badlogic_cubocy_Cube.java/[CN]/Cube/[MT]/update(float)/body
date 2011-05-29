@@ -1,0 +1,27 @@
+{
+  processKeys();
+  if (state == FOLLOW) {
+    target.set(map.bob.pos);
+    if (map.bob.dir == Bob.RIGHT)     target.x--;
+    if (map.bob.dir == Bob.LEFT)     target.x++;
+    target.y+=0.2f;
+    vel.set(target).sub(pos).mul(Math.min(4,pos.dst(target)) * deltaTime);
+    tryMove();
+  }
+  if (state == CONTROLLED) {
+    accel.mul(deltaTime);
+    vel.add(accel.x,accel.y);
+    if (accel.x == 0)     vel.x*=DAMP;
+    if (accel.y == 0)     vel.y*=DAMP;
+    if (vel.x > MAX_VELOCITY)     vel.x=MAX_VELOCITY;
+    if (vel.x < -MAX_VELOCITY)     vel.x=-MAX_VELOCITY;
+    if (vel.y > MAX_VELOCITY)     vel.y=MAX_VELOCITY;
+    if (vel.y < -MAX_VELOCITY)     vel.y=-MAX_VELOCITY;
+    vel.mul(deltaTime);
+    tryMove();
+    vel.mul(1.0f / deltaTime);
+  }
+  if (state == FIXED) {
+  }
+  stateTime+=deltaTime;
+}

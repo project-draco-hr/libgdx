@@ -1,0 +1,28 @@
+{
+  int ix=(int)pos.x;
+  int iy=(int)pos.y;
+  int left=map.tiles[ix - 1][map.tiles[0].length - 1 - iy];
+  int right=map.tiles[ix + 1][map.tiles[0].length - 1 - iy];
+  int top=map.tiles[ix][map.tiles[0].length - 1 - iy- 1];
+  int bottom=map.tiles[ix][map.tiles[0].length - 1 - iy + 1];
+  if (left == Map.TILE) {
+    vel.x=FORWARD_VEL;
+    angle=-90;
+    fx=1;
+  }
+  if (right == Map.TILE) {
+    vel.x=-FORWARD_VEL;
+    angle=90;
+    bx=1;
+  }
+  if (top == Map.TILE) {
+    vel.y=-FORWARD_VEL;
+    angle=180;
+    by=-1;
+  }
+  if (bottom == Map.TILE) {
+    vel.y=FORWARD_VEL;
+    angle=0;
+    fy=-1;
+  }
+}

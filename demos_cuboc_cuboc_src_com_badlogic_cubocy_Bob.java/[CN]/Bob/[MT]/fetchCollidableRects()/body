@@ -1,0 +1,34 @@
+{
+  int p1x=(int)bounds.x;
+  int p1y=(int)Math.floor(bounds.y);
+  int p2x=(int)(bounds.x + bounds.width);
+  int p2y=(int)Math.floor(bounds.y);
+  int p3x=(int)(bounds.x + bounds.width);
+  int p3y=(int)(bounds.y + bounds.height);
+  int p4x=(int)bounds.x;
+  int p4y=(int)(bounds.y + bounds.height);
+  int[][] tiles=map.tiles;
+  int tile1=tiles[p1x][map.tiles[0].length - 1 - p1y];
+  int tile2=tiles[p2x][map.tiles[0].length - 1 - p2y];
+  int tile3=tiles[p3x][map.tiles[0].length - 1 - p3y];
+  int tile4=tiles[p4x][map.tiles[0].length - 1 - p4y];
+  if (state != DYING && (map.isDeadly(tile1) || map.isDeadly(tile2) || map.isDeadly(tile3)|| map.isDeadly(tile4))) {
+    state=DYING;
+    stateTime=0;
+  }
+  if (tile1 == Map.TILE)   r[0].set(p1x,p1y,1,1);
+ else   r[0].set(-1,-1,0,0);
+  if (tile2 == Map.TILE)   r[1].set(p2x,p2y,1,1);
+ else   r[1].set(-1,-1,0,0);
+  if (tile3 == Map.TILE)   r[2].set(p3x,p3y,1,1);
+ else   r[2].set(-1,-1,0,0);
+  if (tile4 == Map.TILE)   r[3].set(p4x,p4y,1,1);
+ else   r[3].set(-1,-1,0,0);
+  if (map.cube.state == Cube.FIXED) {
+    r[4].x=map.cube.bounds.x;
+    r[4].y=map.cube.bounds.y;
+    r[4].width=map.cube.bounds.width;
+    r[4].height=map.cube.bounds.height;
+  }
+ else   r[4].set(-1,-1,0,0);
+}

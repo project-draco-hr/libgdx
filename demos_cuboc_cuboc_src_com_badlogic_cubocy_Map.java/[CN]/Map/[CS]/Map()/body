@@ -1,0 +1,44 @@
+{
+  Pixmap pixmap=new Pixmap(Gdx.files.internal("data/levels.png"));
+  tiles=new int[pixmap.getWidth()][pixmap.getHeight()];
+  for (int y=0; y < pixmap.getHeight(); y++) {
+    for (int x=0; x < pixmap.getWidth(); x++) {
+      int pix=pixmap.getPixel(x,y) >>> 8;
+      if (pix == START) {
+        Dispenser dispenser=new Dispenser(x,pixmap.getHeight() - 1 - y);
+        dispensers.add(dispenser);
+        activeDispenser=dispenser;
+        bob=new Bob(this,activeDispenser.bounds.x,activeDispenser.bounds.y);
+        bob.state=Bob.SPAWN;
+        cube=new Cube(this,activeDispenser.bounds.x,activeDispenser.bounds.y);
+        cube.state=Cube.DEAD;
+      }
+ else       if (pix == DISPENSER) {
+        Dispenser dispenser=new Dispenser(x,pixmap.getHeight() - 1 - y);
+        dispensers.add(dispenser);
+      }
+ else       if (pix == ROCKET) {
+        Rocket rocket=new Rocket(this,x,pixmap.getHeight() - 1 - y);
+        rockets.add(rocket);
+      }
+ else       if (pix == MOVING_SPIKES) {
+        movingSpikes.add(new MovingSpikes(this,x,pixmap.getHeight() - 1 - y));
+      }
+ else       if (pix == LASER) {
+        lasers.add(new Laser(this,x,pixmap.getHeight() - 1 - y));
+      }
+ else       if (pix == END) {
+        endDoor=new EndDoor(x,pixmap.getHeight() - 1 - y);
+      }
+ else {
+        tiles[x][y]=pix;
+      }
+    }
+  }
+  for (int i=0; i < movingSpikes.size; i++) {
+    movingSpikes.get(i).init();
+  }
+  for (int i=0; i < lasers.size; i++) {
+    lasers.get(i).init();
+  }
+}

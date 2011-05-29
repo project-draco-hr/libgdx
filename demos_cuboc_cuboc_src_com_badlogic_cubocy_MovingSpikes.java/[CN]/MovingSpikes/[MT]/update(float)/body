@@ -1,0 +1,30 @@
+{
+  pos.add(vel.x * deltaTime,vel.y * deltaTime);
+  boolean change=false;
+  if (state == FORWARD) {
+    change=map.tiles[(int)pos.x + fx][map.tiles[0].length - 1 - (int)pos.y + fy] == Map.TILE;
+  }
+ else {
+    change=map.tiles[(int)pos.x + bx][map.tiles[0].length - 1 - (int)pos.y + by] == Map.TILE;
+  }
+  if (change) {
+    pos.x-=vel.x * deltaTime;
+    pos.y-=vel.y * deltaTime;
+    state=-state;
+    vel.mul(-1);
+    if (state == FORWARD)     vel.nor().mul(FORWARD_VEL);
+    if (state == BACKWARD)     vel.nor().mul(BACKWARD_VEL);
+  }
+  bounds.x=pos.x;
+  bounds.y=pos.y;
+  if (map.bob.bounds.overlaps(bounds)) {
+    if (map.bob.state != Bob.DYING) {
+      map.bob.state=Bob.DYING;
+      map.bob.stateTime=0;
+    }
+  }
+  if (map.cube.bounds.overlaps(bounds)) {
+    map.cube.state=Cube.DEAD;
+    map.cube.stateTime=0;
+  }
+}
