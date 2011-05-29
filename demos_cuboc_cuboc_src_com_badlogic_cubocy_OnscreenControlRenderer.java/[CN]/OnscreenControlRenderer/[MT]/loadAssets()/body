@@ -4,7 +4,8 @@
   left=buttons[0];
   right=buttons[1];
   jump=buttons[2];
-  cube=buttons[3];
+  cubeControl=buttons[3];
+  cubeFollow=TextureRegion.split(texture,64,64)[1][2];
   dpad=new TextureRegion(texture,0,64,128,128);
   batch=new SpriteBatch();
   batch.getProjectionMatrix().setToOrtho2D(0,0,480,320);
