@@ -1,4 +1,5 @@
 {
+  this.target=actor;
   int len=actions.size();
   for (int i=0; i < len; i++)   actions.get(i).setTarget(actor);
 }
