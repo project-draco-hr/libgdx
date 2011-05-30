@@ -4,6 +4,7 @@
     return;
   }
   if (currAction >= actions.size()) {
+    callActionCompletedListener();
     return;
   }
   actions.get(currAction).act(delta);
