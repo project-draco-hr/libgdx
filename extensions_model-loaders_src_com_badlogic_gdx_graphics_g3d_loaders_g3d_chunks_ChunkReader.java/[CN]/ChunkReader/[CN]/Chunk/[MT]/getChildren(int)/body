@@ -1,0 +1,9 @@
+{
+  Array<Chunk> meshes=new Array<Chunk>(true,16,Chunk.class);
+  for (int i=0; i < children.size; i++) {
+    Chunk child=children.get(i);
+    if (child.getId() == id)     meshes.add(child);
+  }
+  meshes.shrink();
+  return meshes.items;
+}

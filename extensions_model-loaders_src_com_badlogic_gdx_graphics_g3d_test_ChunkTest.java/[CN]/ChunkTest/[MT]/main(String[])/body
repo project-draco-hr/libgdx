@@ -30,7 +30,7 @@
   writer.writeToStream(bytes);
   System.out.println("bytes: " + bytes.toByteArray().length);
   Chunk root=ChunkReader.readChunks(new ByteArrayInputStream(bytes.toByteArray()));
-  printChunks(root,0);
+  ChunkReader.printChunks(root);
   Chunk version=root.getChild(VERSION_INFO);
   Chunk stillModel=root.getChild(STILL_MODEL);
 }

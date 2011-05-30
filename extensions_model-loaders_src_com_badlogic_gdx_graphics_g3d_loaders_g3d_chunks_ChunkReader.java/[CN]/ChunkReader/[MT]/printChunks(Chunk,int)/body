@@ -18,7 +18,7 @@ payload=rep("   ",level + 1) + "#submeshes: " + subMeshes;
 break;
 case STILL_SUBMESH:
 id="STILL_SUBMESH";
-payload=rep("   ",level + 1) + "name: " + chunk.readString();
+payload=rep("   ",level + 1) + "name: " + chunk.readString()+ ", primitive type: "+ chunk.readInt();
 break;
 case VERTEX_ATTRIBUTE:
 id="VERTEX_ATTRIBUTE";
@@ -34,13 +34,15 @@ payload=rep("   ",level + 1) + "#attributes: " + numAttributes;
 break;
 case VERTEX_LIST:
 id="VERTEX_LIST";
+int numVertices=chunk.readInt();
 float[] vertices=chunk.readFloats();
-payload=rep("   ",level + 1) + Arrays.toString(vertices);
+payload=rep("   ",level + 1) + "#vertices: " + numVertices+ ": "+ Arrays.toString(vertices).substring(0,400);
 break;
 case INDEX_LIST:
 id="INDEX_LIST";
+int numIndices=chunk.readInt();
 short[] indices=chunk.readShorts();
-payload=rep("   ",level + 1) + Arrays.toString(indices);
+payload=rep("   ",level + 1) + "#indices: " + numIndices+ ": "+ Arrays.toString(indices).substring(0,400);
 break;
 default :
 id="unknown [" + id + "]";
