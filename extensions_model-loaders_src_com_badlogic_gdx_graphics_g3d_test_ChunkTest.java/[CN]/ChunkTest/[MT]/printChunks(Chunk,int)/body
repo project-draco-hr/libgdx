@@ -18,6 +18,7 @@ payload=rep("   ",level + 1) + "#submeshes: " + subMeshes;
 break;
 case STILL_SUBMESH:
 id="STILL_SUBMESH";
+payload=rep("   ",level + 1) + "name: " + chunk.readString();
 break;
 case VERTEX_ATTRIBUTE:
 id="VERTEX_ATTRIBUTE";
