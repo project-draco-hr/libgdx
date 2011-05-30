@@ -1,0 +1,8 @@
+{
+  super.onCreate(savedInstanceState);
+  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
+  config.useAccelerometer=false;
+  config.useCompass=false;
+  config.useWakelock=true;
+  initialize(new QbobViewer(),config);
+}
