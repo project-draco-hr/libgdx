@@ -8,5 +8,8 @@
       oldAction.finish();
       action.setTarget(target);
     }
+ else {
+      callActionCompletedListener();
+    }
   }
 }
