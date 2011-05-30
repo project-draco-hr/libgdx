@@ -1,0 +1,33 @@
+{
+  Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1.0f);
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+  cam.update();
+  cam.apply(Gdx.gl10);
+  Gdx.gl.glEnable(GL10.GL_CULL_FACE);
+  Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0);
+  Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
+  diffuse.bind();
+  Gdx.gl.glActiveTexture(GL10.GL_TEXTURE1);
+  Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
+  for (int i=0; i < 4; i++) {
+    Gdx.gl10.glPushMatrix();
+    if (i == 0 || i == 1) {
+      Gdx.gl10.glTranslatef(i * 14 * 12f,0,0);
+    }
+ else {
+      Gdx.gl10.glTranslatef((i - 2) * 14 * 12f,11 * 12f,0);
+    }
+    lightMaps[i].bind();
+    model[i].render();
+    Gdx.gl10.glPopMatrix();
+  }
+  Gdx.gl.glActiveTexture(GL10.GL_TEXTURE1);
+  Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
+  Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0);
+  Gdx.gl.glDisable(GL10.GL_CULL_FACE);
+  batch.begin();
+  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),10,20);
+  batch.end();
+  fps.log();
+}
