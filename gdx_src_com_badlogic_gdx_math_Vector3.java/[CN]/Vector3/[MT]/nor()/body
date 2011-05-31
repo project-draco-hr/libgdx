@@ -1,4 +1,9 @@
 {
-  if (x == 0 && y == 0 && z == 0)   return this;
- else   return this.div(this.len());
+  float len=this.len();
+  if (len == 0) {
+    return this;
+  }
+ else {
+    return this.div(len);
+  }
 }
