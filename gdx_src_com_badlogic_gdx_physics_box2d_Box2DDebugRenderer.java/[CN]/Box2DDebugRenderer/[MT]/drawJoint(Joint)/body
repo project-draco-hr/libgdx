@@ -19,6 +19,7 @@
     drawSegment(s1,s2,JOINT_COLOR);
   }
  else   if (joint.getType() == JointType.MouseJoint) {
+    drawSegment(joint.getAnchorA(),joint.getAnchorB(),JOINT_COLOR);
   }
  else {
     drawSegment(x1,p1,JOINT_COLOR);
