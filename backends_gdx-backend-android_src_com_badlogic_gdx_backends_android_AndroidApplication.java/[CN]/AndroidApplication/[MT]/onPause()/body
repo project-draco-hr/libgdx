@@ -3,6 +3,8 @@
   graphics.pause();
   if (audio != null)   audio.pause();
   input.unregisterSensorListeners();
+  int[] realId=input.realId;
+  for (int i=0; i < realId.length; i++)   realId[i]=-1;
   if (isFinishing()) {
     graphics.clearManagedCaches();
     graphics.destroy();
