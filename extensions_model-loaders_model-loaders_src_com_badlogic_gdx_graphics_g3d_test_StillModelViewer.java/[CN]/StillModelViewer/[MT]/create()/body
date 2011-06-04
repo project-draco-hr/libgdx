@@ -22,4 +22,6 @@
   cam.near=0.1f;
   cam.far=1000;
   renderer=new ImmediateModeRenderer();
+  batch=new SpriteBatch();
+  font=new BitmapFont();
 }

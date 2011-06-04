@@ -1,5 +1,0 @@
-{
-  long start=System.nanoTime();
-  KeyframedModel loadKeyframedModel=G3DTLoader.loadKeyframedModel(new FileInputStream("data/cylinder.g3dt"));
-  System.out.println("took " + (System.nanoTime() - start) / 1000000000.0f);
-}

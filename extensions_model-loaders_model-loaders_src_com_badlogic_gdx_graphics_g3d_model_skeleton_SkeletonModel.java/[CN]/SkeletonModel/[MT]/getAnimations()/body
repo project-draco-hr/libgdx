@@ -1,3 +1,10 @@
 {
-  return null;
+  if (animations == null || animations.length != skeleton.animations.size) {
+    animations=new SkeletonAnimation[skeleton.animations.size];
+    int i=0;
+    for (    SkeletonAnimation anim : skeleton.animations.values()) {
+      animations[i]=anim;
+    }
+  }
+  return animations;
 }

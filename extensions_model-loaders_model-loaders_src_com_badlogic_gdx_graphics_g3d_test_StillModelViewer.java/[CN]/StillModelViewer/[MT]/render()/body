@@ -2,9 +2,6 @@
   Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1.0f);
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
-  cam.position.set(0,6,85f);
-  cam.direction.set(0,0,-1);
-  cam.up.set(0,1,0);
   cam.update();
   cam.apply(Gdx.gl10);
   drawAxes();
@@ -28,5 +25,8 @@
   if (hasNormals) {
     Gdx.gl.glDisable(GL10.GL_LIGHTING);
   }
+  batch.begin();
+  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);
+  batch.end();
   fps.log();
 }

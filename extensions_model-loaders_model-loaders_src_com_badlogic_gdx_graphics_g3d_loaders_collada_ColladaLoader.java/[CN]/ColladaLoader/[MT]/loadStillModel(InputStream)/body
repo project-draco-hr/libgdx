@@ -9,9 +9,6 @@
   }
   Array<Geometry> geos=readGeometries(root);
   StillSubMesh[] meshes=createMeshes(geos);
-  for (  StillSubMesh mesh : meshes) {
-    System.out.println(mesh.mesh.getNumVertices());
-  }
   StillModel model=new StillModel(meshes);
   return model;
 }
