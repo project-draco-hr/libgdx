@@ -37,7 +37,6 @@
       Keyframe keyframe=new Keyframe(time,animatedComponents,vertices);
       keyframes[frame]=keyframe;
       time+=frameDuration;
-      System.out.println("finished frame" + frame);
     }
     KeyframedAnimation animation=new KeyframedAnimation(animationName,frameDuration,keyframes);
     animations.put(animationName,animation);

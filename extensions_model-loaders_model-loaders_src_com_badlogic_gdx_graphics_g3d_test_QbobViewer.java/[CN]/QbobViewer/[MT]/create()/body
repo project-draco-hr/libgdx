@@ -1,4 +1,8 @@
 {
+  animModel=G3DTLoader.loadKeyframedModel(Gdx.files.internal("data/boy.g3dt"),true);
+  anim=animModel.getAnimations()[0];
+  Material material=new Material("default",new TextureAttribute(new Texture(Gdx.files.internal("data/boy.png")),0,"tex0"));
+  animModel.setMaterial(material);
   model[0]=G3dLoader.loadStillModel(Gdx.files.internal("data/qbob/test_section_01.dae.g3d"));
   lightMaps[0]=new Texture(Gdx.files.internal("data/qbob/world_blobbie_lm_01.jpg"),true);
   model[1]=G3dLoader.loadStillModel(Gdx.files.internal("data/qbob/test_section_02.dae.g3d"));
@@ -12,7 +16,7 @@
   cam.position.set(30,10,85f);
   cam.direction.set(0,0,-1);
   cam.up.set(0,1,0);
-  cam.near=0.1f;
+  cam.near=10f;
   cam.far=1000;
   controller=new PerspectiveCamController(cam);
   Gdx.input.setInputProcessor(controller);

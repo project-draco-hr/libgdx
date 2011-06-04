@@ -18,8 +18,4 @@
     renderer.vertex(x - size,y - size,0);
   }
   renderer.end();
-  if (System.nanoTime() - startTime > 1000000000l) {
-    Gdx.app.log("MultiTouhTest","fps:" + Gdx.graphics.getFramesPerSecond());
-    startTime=System.nanoTime();
-  }
 }
