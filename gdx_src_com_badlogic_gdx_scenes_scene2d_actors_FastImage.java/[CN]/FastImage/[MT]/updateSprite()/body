@@ -1,5 +1,4 @@
 {
-  if (updated)   return;
   if (sX != x || sY != y) {
     sprite.setPosition(x,y);
     sX=x;
@@ -25,5 +24,4 @@
     sHeight=height;
   }
   sprite.setRegion(region);
-  updated=true;
 }
