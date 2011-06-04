@@ -7,6 +7,6 @@
     numVisible+=((CullableActor)actors.get(i)).visible ? 1 : 0;
   }
   batch.begin();
-  font.draw(batch,"Visible: " + numVisible,20,30);
+  font.draw(batch,"Visible: " + numVisible + ", fps: "+ Gdx.graphics.getFramesPerSecond(),20,30);
   batch.end();
 }
