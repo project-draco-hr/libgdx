@@ -1,0 +1,4 @@
+{
+  if (isCulled())   return;
+  super.draw(batch,parentAlpha);
+}
