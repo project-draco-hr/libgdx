@@ -1,7 +1,7 @@
 {
   InputStream in=fileHandle.read();
   try {
-    return load(in);
+    return load(in,frameDuration);
   }
   finally {
     if (in != null)     try {

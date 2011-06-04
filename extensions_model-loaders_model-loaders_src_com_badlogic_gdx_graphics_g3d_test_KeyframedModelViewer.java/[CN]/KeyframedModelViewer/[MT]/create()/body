@@ -1,5 +1,6 @@
 {
   if (fileName.endsWith(".g3dt"))   model=G3DTLoader.loadKeyframedModel(Gdx.files.internal(fileName));
+ else   if (fileName.endsWith(".md2"))   model=new MD2Loader().load(Gdx.files.internal(fileName),1 / 7f);
  else   throw new GdxRuntimeException("Unknown file format '" + fileName + "'");
   if (textureFileName != null)   texture=new Texture(Gdx.files.internal(textureFileName));
   hasNormals=hasNormals();

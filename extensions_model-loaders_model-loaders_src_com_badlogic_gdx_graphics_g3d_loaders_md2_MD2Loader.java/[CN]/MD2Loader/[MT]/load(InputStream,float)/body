@@ -5,7 +5,7 @@
     float[] texCoords=loadTexCoords(header,bytes);
     MD2Triangle[] triangles=loadTriangles(header,bytes);
     MD2Frame[] frames=loadFrames(header,bytes);
-    return buildModel(header,triangles,texCoords,frames);
+    return buildModel(header,triangles,texCoords,frames,frameDuration);
   }
  catch (  Exception ex) {
     ex.printStackTrace();
