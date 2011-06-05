@@ -1,5 +1,5 @@
 {
-  animModel=G3DTLoader.loadKeyframedModel(Gdx.files.internal("data/boy.g3dt"),true);
+  animModel=G3dtLoader.loadKeyframedModel(Gdx.files.internal("data/boy.g3dt"),true);
   anim=animModel.getAnimations()[0];
   Material material=new Material("default",new TextureAttribute(new Texture(Gdx.files.internal("data/boy.png")),0,"tex0"));
   animModel.setMaterial(material);

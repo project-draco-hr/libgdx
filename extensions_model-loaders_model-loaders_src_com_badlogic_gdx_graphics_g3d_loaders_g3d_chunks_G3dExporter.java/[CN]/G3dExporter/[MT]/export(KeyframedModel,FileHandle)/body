@@ -1,0 +1,9 @@
+{
+  ChunkWriter writer=new ChunkWriter();
+  writer.newChunk(G3dConstants.VERSION_INFO);
+  writer.writeByte(G3dConstants.MAJOR_VERSION);
+  writer.writeByte(G3dConstants.MINOR_VERSION);
+  writer.endChunk();
+  writer.newChunk(G3dConstants.KEYFRAMED_MODEL);
+  writer.writeInt(model.subMeshes.length);
+}

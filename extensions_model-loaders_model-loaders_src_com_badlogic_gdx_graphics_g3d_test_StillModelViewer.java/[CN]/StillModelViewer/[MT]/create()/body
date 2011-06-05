@@ -3,8 +3,12 @@
   if (fileName.endsWith(".dae"))   model=ColladaLoader.loadStillModel(Gdx.files.internal(fileName));
  else   if (fileName.endsWith(".obj"))   model=new ObjLoader().loadObj(Gdx.files.internal(fileName));
  else   if (fileName.endsWith(".g3d"))   model=G3dLoader.loadStillModel(Gdx.files.internal(fileName));
+ else   if (fileName.endsWith(".g3dt"))   model=G3dtLoader.loadStillModel(Gdx.files.internal(fileName),true);
  else   throw new GdxRuntimeException("Unknown file format '" + fileName + "'");
   Gdx.app.log("StillModelViewer","loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  for (  StillSubMesh mesh : model.subMeshes) {
+    mesh.mesh.scale(0.1f,0.1f,0.1f);
+  }
   if (!fileName.endsWith(".g3d")) {
     G3dExporter.export(model,Gdx.files.absolute(fileName + ".g3d"));
     start=System.nanoTime();

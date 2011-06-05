@@ -1,0 +1,38 @@
+{
+  String name=readString(in);
+  IntArray indices=readFaces(in);
+  int numVertices=readInt(in);
+  int numAttributes=readInt(in);
+  if (!readString(in).equals("position"))   throw new GdxRuntimeException("first attribute must be position.");
+  int numUvs=0;
+  boolean hasNormals=false;
+  for (int i=1; i < numAttributes; i++) {
+    String attributeType=readString(in);
+    if (!attributeType.equals("normal") && !attributeType.equals("uv"))     throw new GdxRuntimeException("attribute name must be normal or uv");
+    if (attributeType.equals("normal")) {
+      if (i != 1)       throw new GdxRuntimeException("attribute normal must be second attribute");
+      hasNormals=true;
+    }
+    if (attributeType.equals("uv")) {
+      numUvs++;
+    }
+  }
+  VertexAttribute[] vertexAttributes=createVertexAttributes(hasNormals,numUvs);
+  int vertexSize=new VertexAttributes(vertexAttributes).vertexSize / 4;
+  float[] vertices=new float[numVertices * vertexSize];
+  int idx=0;
+  int uvOffset=hasNormals ? 6 : 3;
+  for (int i=0; i < numVertices; i++) {
+    readFloatArray(in,vertices,idx);
+    if (flipV) {
+      for (int j=idx + uvOffset + 1; j < idx + uvOffset + numUvs * 2; j+=2) {
+        vertices[j]=1 - vertices[j];
+      }
+    }
+    idx+=vertexSize;
+  }
+  Mesh mesh=new Mesh(true,numVertices,indices.size,vertexAttributes);
+  mesh.setVertices(vertices);
+  mesh.setIndices(convertToShortArray(indices));
+  return new StillSubMesh(name,mesh,GL10.GL_TRIANGLES);
+}
