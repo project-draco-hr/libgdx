@@ -97,6 +97,8 @@
     xHeight=g != null ? g.height : 1;
     g=getGlyph('M');
     capHeight=g != null ? g.height : 1;
+    g=getGlyph('g');
+    descent=g != null ? baseLine + g.yoffset : 0;
     ascent=baseLine - capHeight;
     down=-lineHeight;
     if (flip) {
