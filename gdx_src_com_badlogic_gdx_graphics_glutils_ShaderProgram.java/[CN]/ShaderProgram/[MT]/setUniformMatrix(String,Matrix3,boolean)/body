@@ -2,7 +2,8 @@
   GL20 gl=Gdx.graphics.getGL20();
   checkManaged();
   int location=fetchUniformLocation(name);
-  this.matrix.put(matrix.getValues());
-  this.matrix.position(0);
+  float[] vals=matrix.getValues();
+  this.matrix.clear();
+  BufferUtils.copy(vals,this.matrix,vals.length,0);
   gl.glUniformMatrix3fv(location,1,transpose,this.matrix);
 }
