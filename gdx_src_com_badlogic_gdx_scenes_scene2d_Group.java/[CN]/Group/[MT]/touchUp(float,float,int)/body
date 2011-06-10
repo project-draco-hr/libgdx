@@ -3,7 +3,7 @@
   if (focusedActor[pointer] != null) {
     point.x=x;
     point.y=y;
-    focusedActor[pointer].toLocalCoordinates(point);
+    toChildCoordinates(focusedActor[pointer],x,y,point);
     focusedActor[pointer].touchUp(point.x,point.y,pointer);
     return true;
   }
