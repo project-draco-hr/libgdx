@@ -4,8 +4,7 @@
   if (focusedActor[pointer] != null) {
     point.x=x;
     point.y=y;
-    toChildCoordinates(focusedActor[pointer],x,y,point);
-    focusedActor[pointer].touchDown(point.x,point.y,pointer);
+    focusedActor[pointer].toLocalCoordinates(point);
     return true;
   }
   int len=children.size() - 1;

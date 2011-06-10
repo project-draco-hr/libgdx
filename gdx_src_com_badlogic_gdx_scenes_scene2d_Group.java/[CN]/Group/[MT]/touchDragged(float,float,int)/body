@@ -3,7 +3,7 @@
   if (focusedActor[pointer] != null) {
     point.x=x;
     point.y=y;
-    toChildCoordinates(focusedActor[pointer],x,y,point);
+    focusedActor[pointer].toLocalCoordinates(point);
     focusedActor[pointer].touchDragged(point.x,point.y,pointer);
     return true;
   }
