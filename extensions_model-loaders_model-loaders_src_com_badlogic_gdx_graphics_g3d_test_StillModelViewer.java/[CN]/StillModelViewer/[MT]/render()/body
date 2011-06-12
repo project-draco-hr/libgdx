@@ -12,21 +12,39 @@
     Gdx.gl10.glLightfv(GL10.GL_LIGHT0,GL10.GL_DIFFUSE,lightColor,0);
     Gdx.gl10.glLightfv(GL10.GL_LIGHT0,GL10.GL_POSITION,lightPosition,0);
   }
-  if (texture != null) {
-    Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
-    texture.bind();
-  }
-  angle+=45 * Gdx.graphics.getDeltaTime();
-  Gdx.gl10.glRotatef(angle,0,1,0);
-  model.render();
-  if (texture != null) {
-    Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
-  }
-  if (hasNormals) {
-    Gdx.gl.glDisable(GL10.GL_LIGHTING);
-  }
-  batch.begin();
-  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);
-  batch.end();
-  fps.log();
+  if (textures != null) {
+    for (int i=0; i < textures.length; i++) {
+      Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0 + i);
+      Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
+      textures[i].bind();
+      if (i > 0) {
+switch (i) {
+case 1:
+          setCombiners(GL11.GL_ADD_SIGNED);
+        break;
+case 2:
+      setCombiners(GL10.GL_MODULATE);
+    break;
+default :
+  setCombiners(GL10.GL_MODULATE);
+}
+}
+}
+}
+angle+=45 * Gdx.graphics.getDeltaTime();
+Gdx.gl10.glRotatef(angle,0,1,0);
+model.render();
+if (textures != null) {
+for (int i=0; i < textures.length; i++) {
+Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0 + i);
+Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
+}
+}
+if (hasNormals) {
+Gdx.gl.glDisable(GL10.GL_LIGHTING);
+}
+batch.begin();
+font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);
+batch.end();
+fps.log();
 }

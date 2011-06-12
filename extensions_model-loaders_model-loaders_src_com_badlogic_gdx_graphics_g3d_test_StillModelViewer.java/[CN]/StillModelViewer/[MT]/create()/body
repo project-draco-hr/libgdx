@@ -15,13 +15,18 @@
     model=G3dLoader.loadStillModel(Gdx.files.absolute(fileName + ".g3d"));
     Gdx.app.log("StillModelViewer","loading binary took: " + (System.nanoTime() - start) / 1000000000.0f);
   }
-  if (textureFileName != null)   texture=new Texture(Gdx.files.internal(textureFileName),true);
+  if (textureFileNames.length != 0) {
+    textures=new Texture[textureFileNames.length];
+    for (int i=0; i < textureFileNames.length; i++) {
+      textures[i]=new Texture(Gdx.files.internal(textureFileNames[i]),i > 0 ? false : true);
+    }
+  }
   hasNormals=hasNormals();
   model.getBoundingBox(bounds);
   float len=bounds.getDimensions().len();
   System.out.println("bounds: " + bounds);
   cam=new PerspectiveCamera(60,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  cam.position.set(bounds.getCenter().cpy().add(len,len,len));
+  cam.position.set(bounds.getCenter().cpy().add(len / 2,len / 2,len / 2));
   cam.lookAt(bounds.getCenter().x,bounds.getCenter().y,bounds.getCenter().z);
   cam.near=0.1f;
   cam.far=1000;
