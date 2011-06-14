@@ -1,0 +1,39 @@
+{
+  glyphAdvances.clear();
+  glyphPositions.clear();
+  int index=0;
+  int end=str.length();
+  int width=0;
+  Glyph lastGlyph=null;
+  if (scaleX == 1) {
+    for (; index < end; index++) {
+      char ch=str.charAt(index);
+      Glyph g=getGlyph(ch);
+      if (g != null) {
+        if (lastGlyph != null)         width+=lastGlyph.getKerning(ch);
+        lastGlyph=g;
+        glyphAdvances.add(g.xadvance);
+        glyphPositions.add(width);
+        width+=g.xadvance;
+      }
+    }
+    glyphAdvances.add(0);
+    glyphPositions.add(width);
+  }
+ else {
+    float scaleX=this.scaleX;
+    for (; index < end; index++) {
+      char ch=str.charAt(index);
+      Glyph g=getGlyph(ch);
+      if (g != null) {
+        if (lastGlyph != null)         width+=lastGlyph.getKerning(ch) * scaleX;
+        lastGlyph=g;
+        glyphAdvances.add(g.xadvance * scaleX);
+        glyphPositions.add(width);
+        width+=g.xadvance;
+      }
+    }
+    glyphAdvances.add(0);
+    glyphPositions.add(width);
+  }
+}
