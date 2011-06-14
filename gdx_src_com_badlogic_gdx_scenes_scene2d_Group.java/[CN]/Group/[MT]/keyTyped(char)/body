@@ -1,0 +1,4 @@
+{
+  if (keyboardFocusedActor != null)   return keyboardFocusedActor.keyTyped(character);
+ else   return false;
+}

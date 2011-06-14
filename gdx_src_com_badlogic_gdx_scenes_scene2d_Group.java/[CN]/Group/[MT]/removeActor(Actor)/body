@@ -2,4 +2,5 @@
   children.remove(actor);
   if (actor instanceof Group)   groups.remove((Group)actor);
   if (actor.name != null)   namesToActors.remove(actor.name);
+  unfocusAll(actor);
 }

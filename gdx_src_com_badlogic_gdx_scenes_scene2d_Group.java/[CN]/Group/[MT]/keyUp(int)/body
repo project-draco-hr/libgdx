@@ -1,0 +1,4 @@
+{
+  if (keyboardFocusedActor != null)   return keyboardFocusedActor.keyUp(keycode);
+ else   return false;
+}
