@@ -16,6 +16,8 @@
     batch.draw(textureRegion,position.x - 1,position.y - 1,1f,1f,2,2,1,1,angle);
   }
   batch.end();
+  camera.apply(Gdx.gl10);
+  debugRenderer.render(world);
   gl.glPointSize(4);
   renderer.begin(GL10.GL_POINTS);
   for (int i=0; i < world.getContactCount(); i++) {
