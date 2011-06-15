@@ -1,0 +1,10 @@
+{
+  postRunnable(new Runnable(){
+    @Override public void run(){
+      JoglApplication.this.graphics.listener.pause();
+      JoglApplication.this.graphics.listener.dispose();
+      System.exit(-1);
+    }
+  }
+);
+}

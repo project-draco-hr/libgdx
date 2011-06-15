@@ -1,0 +1,10 @@
+{
+  postRunnable(new Runnable(){
+    @Override public void run(){
+      LwjglApplication.this.listener.pause();
+      LwjglApplication.this.listener.dispose();
+      System.exit(-1);
+    }
+  }
+);
+}
