@@ -3,7 +3,7 @@
     public void run(){
       String output=JOptionPane.showInputDialog(null,title,text);
       if (output != null)       listener.input(output);
- else       listener.cancled();
+ else       listener.canceled();
     }
   }
 );
