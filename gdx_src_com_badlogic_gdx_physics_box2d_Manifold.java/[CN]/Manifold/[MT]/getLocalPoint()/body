@@ -1,0 +1,5 @@
+{
+  jniGetLocalPoint(addr,tmpFloat);
+  localPoint.set(tmpFloat[0],tmpFloat[1]);
+  return localPoint;
+}

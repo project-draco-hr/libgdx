@@ -1,0 +1,5 @@
+{
+  contact.addr=contactAddr;
+  impulse.addr=impulseAddr;
+  if (contactListener != null)   contactListener.postSolve(contact,impulse);
+}
