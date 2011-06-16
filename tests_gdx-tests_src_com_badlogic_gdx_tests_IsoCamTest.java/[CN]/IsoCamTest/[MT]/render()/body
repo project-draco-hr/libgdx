@@ -10,16 +10,5 @@
     }
   }
   batch.end();
-  if (Gdx.input.justTouched()) {
-    Ray pickRay=cam.getPickRay(Gdx.input.getX(),Gdx.input.getY());
-    Intersector.intersectRayPlane(pickRay,xzPlane,intersection);
-    int x=(int)intersection.x;
-    int z=(int)intersection.z;
-    if (x >= 0 && x < 10 && z >= 0 && z < 10) {
-      if (lastSelectedTile != null)       lastSelectedTile.setColor(1,1,1,1);
-      Sprite sprite=sprites[x][z];
-      sprite.setColor(1,0,0,1);
-      lastSelectedTile=sprite;
-    }
-  }
+  checkTileTouched();
 }
