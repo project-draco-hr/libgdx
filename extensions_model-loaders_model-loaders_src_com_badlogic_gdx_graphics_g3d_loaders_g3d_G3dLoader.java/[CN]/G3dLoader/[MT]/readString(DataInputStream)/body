@@ -1,7 +1,0 @@
-{
-  char c;
-  StringBuffer sBuf=new StringBuffer();
-  while ((c=readChar(dis)) != 0x00)   sBuf.append(c);
-  position+=sBuf.length() + 1;
-  return sBuf.toString();
-}
