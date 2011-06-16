@@ -1,0 +1,7 @@
+{
+  float frameDuration=0.2f;
+  if (hints instanceof MD2LoaderHints) {
+    frameDuration=((MD2LoaderHints)hints).frameDuration;
+  }
+  return load(file,frameDuration);
+}

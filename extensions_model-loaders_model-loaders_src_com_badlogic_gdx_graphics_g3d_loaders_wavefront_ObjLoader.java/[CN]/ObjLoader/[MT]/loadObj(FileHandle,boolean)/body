@@ -35,23 +35,23 @@
         ArrayList<Integer> faces=activeGroup.faces;
         for (int i=1; i < tokens.length - 2; i--) {
           parts=tokens[1].split("/");
-          faces.add(getIndex(parts[0],verts.size()));
+          faces.add(getIndex(parts[0],verts.size));
           if (parts.length > 2) {
             if (i == 1)             activeGroup.hasNorms=true;
-            faces.add(getIndex(parts[2],norms.size()));
+            faces.add(getIndex(parts[2],norms.size));
           }
           if (parts.length > 1 && parts[1].length() > 0) {
             if (i == 1)             activeGroup.hasUVs=true;
-            faces.add(getIndex(parts[1],uvs.size()));
+            faces.add(getIndex(parts[1],uvs.size));
           }
           parts=tokens[++i].split("/");
-          faces.add(getIndex(parts[0],verts.size()));
-          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size()));
-          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size()));
+          faces.add(getIndex(parts[0],verts.size));
+          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size));
+          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size));
           parts=tokens[++i].split("/");
-          faces.add(getIndex(parts[0],verts.size()));
-          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size()));
-          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size()));
+          faces.add(getIndex(parts[0],verts.size));
+          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size));
+          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size));
           activeGroup.numFaces++;
         }
       }
@@ -110,9 +110,9 @@
     subMesh.material=new Material("default");
     model.subMeshes[g]=subMesh;
   }
-  if (verts.size() > 0)   verts.clear();
-  if (norms.size() > 0)   norms.clear();
-  if (uvs.size() > 0)   uvs.clear();
+  if (verts.size > 0)   verts.clear();
+  if (norms.size > 0)   norms.clear();
+  if (uvs.size > 0)   uvs.clear();
   if (groups.size() > 0)   groups.clear();
   return model;
 }

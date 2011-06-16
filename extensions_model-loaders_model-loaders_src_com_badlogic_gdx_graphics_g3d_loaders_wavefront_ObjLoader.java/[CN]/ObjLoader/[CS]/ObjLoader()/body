@@ -1,6 +1,6 @@
 {
-  verts=new ArrayList<Float>(300);
-  norms=new ArrayList<Float>(300);
-  uvs=new ArrayList<Float>(200);
+  verts=new FloatArray(300);
+  norms=new FloatArray(300);
+  uvs=new FloatArray(200);
   groups=new ArrayList<Group>(10);
 }

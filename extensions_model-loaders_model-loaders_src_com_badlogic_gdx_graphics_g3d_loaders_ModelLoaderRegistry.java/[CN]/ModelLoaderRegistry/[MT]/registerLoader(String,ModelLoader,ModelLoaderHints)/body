@@ -1,0 +1,14 @@
+{
+  Array<ModelLoader> loaders=ModelLoaderRegistry.loaders.get(extension);
+  if (loaders == null) {
+    loaders=new Array<ModelLoader>();
+    ModelLoaderRegistry.loaders.put(extension.toLowerCase(),loaders);
+  }
+  loaders.add(loader);
+  Array<ModelLoaderHints> hints=ModelLoaderRegistry.defaultHints.get(extension);
+  if (hints == null) {
+    hints=new Array<ModelLoaderHints>();
+    ModelLoaderRegistry.defaultHints.put(extension.toLowerCase(),hints);
+  }
+  hints.add(defaultHints);
+}
