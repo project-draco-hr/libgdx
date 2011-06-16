@@ -1,8 +1,18 @@
 {
-  mesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,"a_pos"));
-  mesh.setVertices(new float[]{-1,0,1,1,0,1,1,0,-1,-1,0,-1});
-  mesh.setIndices(new short[]{0,1,2,2,3,0});
-  cam=new OrthographicCamera(10,10);
-  cam.position.set(3,3,3);
-  cam.lookAt(0,0,0);
+  texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
+  cam=new OrthographicCamera(10,10 * (Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth()));
+  cam.position.set(5,5,10);
+  cam.direction.set(-1,-1,-1);
+  cam.near=1;
+  cam.far=100;
+  matrix.setToRotation(new Vector3(1,0,0),90);
+  for (int z=0; z < 10; z++) {
+    for (int x=0; x < 10; x++) {
+      sprites[x][z]=new Sprite(texture);
+      sprites[x][z].setPosition(x,z);
+      sprites[x][z].setSize(1,1);
+    }
+  }
+  batch=new SpriteBatch();
+  Gdx.input.setInputProcessor(this);
 }
