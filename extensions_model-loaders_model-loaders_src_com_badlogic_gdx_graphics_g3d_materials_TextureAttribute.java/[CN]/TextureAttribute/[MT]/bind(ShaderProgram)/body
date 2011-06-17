@@ -1,4 +1,8 @@
 {
   texture.bind(unit);
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,texture.getTextureFilter(minFilter));
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,texture.getTextureFilter(magFilter));
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_S,uWrap == TextureWrap.ClampToEdge ? GL10.GL_CLAMP_TO_EDGE : GL10.GL_REPEAT);
+  Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_T,vWrap == TextureWrap.ClampToEdge ? GL10.GL_CLAMP_TO_EDGE : GL10.GL_REPEAT);
   program.setUniformi(name,unit);
 }

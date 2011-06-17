@@ -1,0 +1,4 @@
+{
+  right.set(direction).crs(up).nor();
+  up.set(right).crs(direction).nor();
+}
