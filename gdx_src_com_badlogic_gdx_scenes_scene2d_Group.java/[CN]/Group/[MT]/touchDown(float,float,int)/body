@@ -5,6 +5,7 @@
     point.x=x;
     point.y=y;
     focusedActor[pointer].toLocalCoordinates(point);
+    focusedActor[pointer].touchDown(point.x,point.y,pointer);
     return true;
   }
   int len=children.size() - 1;
