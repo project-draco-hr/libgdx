@@ -1,0 +1,24 @@
+{
+  long start=0;
+  words.clear();
+  start=System.nanoTime();
+  readWordStringBuilder();
+  Gdx.app.log("FastTexReadingTest","StringBuilder loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  Gdx.app.log("FastTexReadingTest","words: " + words.size);
+  words.clear();
+  start=System.nanoTime();
+  readWordIntArrayISO();
+  Gdx.app.log("FastTexReadingTest","IntArrayISO loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  Gdx.app.log("FastTexReadingTest","words: " + words.size);
+  words.clear();
+  start=System.nanoTime();
+  readWordIntArrayISOMethod();
+  Gdx.app.log("FastTexReadingTest","IntArrayISOMethod loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  Gdx.app.log("FastTexReadingTest","words: " + words.size);
+  words.clear();
+  start=System.nanoTime();
+  readWordStringBuilder();
+  Gdx.app.log("FastTexReadingTest","StringBuilder loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  Gdx.app.log("FastTexReadingTest","words: " + words.size);
+  Gdx.app.log("FastTexReadingTest","contains boobies: " + words.containsKey("boobies"));
+}

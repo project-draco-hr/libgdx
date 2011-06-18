@@ -1,0 +1,32 @@
+{
+  InputStream in=new BufferedInputStream(Gdx.files.internal("data/words.txt").read());
+  try {
+    byte[] buffer=new byte[1024 * 20];
+    int[] word=new int[100];
+    int charIdx=0;
+    int readBytes=0;
+    while ((readBytes=in.read(buffer)) != -1) {
+      for (int i=0; i < readBytes; i++) {
+        byte c=(byte)buffer[i];
+        if (c == '\n') {
+          String wordStr=new String(word,0,charIdx);
+          words.put(wordStr,wordStr);
+          charIdx=0;
+        }
+ else {
+          word[charIdx++]=c;
+        }
+      }
+    }
+  }
+ catch (  Exception e) {
+  }
+ finally {
+    try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+    ;
+  }
+}
