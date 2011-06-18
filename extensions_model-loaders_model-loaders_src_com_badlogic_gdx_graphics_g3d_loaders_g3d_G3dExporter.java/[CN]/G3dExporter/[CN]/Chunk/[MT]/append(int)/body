@@ -1,7 +1,0 @@
-{
-  data.write((byte)(i >>> 24));
-  data.write((byte)(i >>> 16));
-  data.write((byte)(i >>> 8));
-  data.write((byte)i);
-  adjustLength(+4);
-}
