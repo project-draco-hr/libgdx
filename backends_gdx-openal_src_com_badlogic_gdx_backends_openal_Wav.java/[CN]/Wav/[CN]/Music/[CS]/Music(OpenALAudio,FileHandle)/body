@@ -1,3 +1,5 @@
 {
   super(audio,file);
+  input=new WavInputStream(file);
+  setup(input.channels,input.sampleRate);
 }
