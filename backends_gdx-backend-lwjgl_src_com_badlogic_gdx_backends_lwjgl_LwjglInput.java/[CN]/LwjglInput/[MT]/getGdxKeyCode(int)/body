@@ -72,9 +72,9 @@ case Keyboard.KEY_Y:
 return Input.Keys.Y;
 case Keyboard.KEY_Z:
 return Input.Keys.Z;
-case Keyboard.KEY_LMETA:
+case Keyboard.KEY_LMENU:
 return Input.Keys.ALT_LEFT;
-case Keyboard.KEY_RMETA:
+case Keyboard.KEY_RMENU:
 return Input.Keys.ALT_RIGHT;
 case Keyboard.KEY_BACKSLASH:
 return Input.Keys.BACKSLASH;
@@ -126,6 +126,10 @@ case Keyboard.KEY_NUMPAD5:
 return Input.Keys.DPAD_CENTER;
 case Keyboard.KEY_BACK:
 return Input.Keys.DEL;
+case Keyboard.KEY_SUBTRACT:
+return Input.Keys.MINUS;
+case Keyboard.KEY_APOSTROPHE:
+return Input.Keys.APOSTROPHE;
 default :
 return Input.Keys.UNKNOWN;
 }
