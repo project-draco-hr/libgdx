@@ -1,5 +1,5 @@
 {
-  InputStream in=new BufferedInputStream(Gdx.files.internal("data/words.txt").read());
+  InputStream in=new BufferedInputStream(Gdx.files.internal("data/words.png").read());
   try {
     byte[] buffer=new byte[1024 * 10];
     int readBytes=0;
@@ -19,6 +19,8 @@
     }
   }
  catch (  Exception e) {
+    e.printStackTrace();
+    Gdx.app.log("FastTextReadingText","boom goes the app: " + e.getMessage());
   }
  finally {
     try {
