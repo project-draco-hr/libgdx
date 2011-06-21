@@ -9,6 +9,9 @@ case android.view.KeyEvent.ACTION_DOWN:
     event.keyChar=0;
   event.keyCode=e.getKeyCode();
 event.type=KeyEvent.KEY_DOWN;
+if (keyCode == android.view.KeyEvent.KEYCODE_BACK && e.isAltPressed()) {
+keyCode=Keys.BUTTON_CIRCLE;
+}
 keyEvents.add(event);
 keys.add(event.keyCode);
 break;
@@ -17,6 +20,9 @@ event=usedKeyEvents.obtain();
 event.keyChar=0;
 event.keyCode=e.getKeyCode();
 event.type=KeyEvent.KEY_UP;
+if (keyCode == android.view.KeyEvent.KEYCODE_BACK && e.isAltPressed()) {
+keyCode=Keys.BUTTON_CIRCLE;
+}
 keyEvents.add(event);
 event=usedKeyEvents.obtain();
 event.keyChar=character;
