@@ -1,6 +1,7 @@
 {
 synchronized (musics) {
-    for (    AndroidMusic music : musics) {
+    ArrayList<AndroidMusic> musicsCopy=new ArrayList<AndroidMusic>(musics);
+    for (    AndroidMusic music : musicsCopy) {
       music.dispose();
     }
   }
