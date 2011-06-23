@@ -1,0 +1,10 @@
+{
+  texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
+  mesh=new Mesh(true,3,0,new VertexAttribute(Usage.Position,3,"a_pos"),new VertexAttribute(Usage.TextureCoordinates,2,"a_tex"));
+  mesh.setVertices(new float[]{-1,-1,0,0,1,0,1,0,0.5f,0,1,-1,0,1,1});
+  DisplayMode[] modes=Gdx.graphics.getDisplayModes();
+  for (  DisplayMode mode : modes) {
+    System.out.println(mode);
+  }
+  Gdx.graphics.setDisplayMode(800,600,true);
+}

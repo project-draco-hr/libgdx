@@ -1,7 +1,7 @@
 {
-  useGL2=useGL2IfAvailable;
-  this.title="";
-  this.width=canvas.getWidth();
-  this.height=canvas.getHeight();
+  this.config=new LwjglApplicationConfiguration();
+  config.width=canvas.getWidth();
+  config.height=canvas.getHeight();
+  config.useGL20=useGL2IfAvailable;
   this.canvas=canvas;
 }

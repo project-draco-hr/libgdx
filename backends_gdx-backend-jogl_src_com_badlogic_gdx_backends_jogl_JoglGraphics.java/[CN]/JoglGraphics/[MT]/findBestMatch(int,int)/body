@@ -1,0 +1,12 @@
+{
+  DisplayMode[] modes=getDisplayModes();
+  int maxBitDepth=0;
+  DisplayMode best=null;
+  for (  DisplayMode mode : modes) {
+    if (mode.width == width && mode.height == height && mode.bitsPerPixel == desktopMode.bitsPerPixel) {
+      maxBitDepth=mode.bitsPerPixel;
+      best=mode;
+    }
+  }
+  return (JoglDisplayMode)best;
+}

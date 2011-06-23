@@ -1,3 +1,5 @@
 {
-  return false;
+  GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
+  GraphicsDevice device=genv.getDefaultScreenDevice();
+  return device.isFullScreenSupported() && (Gdx.app instanceof JoglApplication);
 }

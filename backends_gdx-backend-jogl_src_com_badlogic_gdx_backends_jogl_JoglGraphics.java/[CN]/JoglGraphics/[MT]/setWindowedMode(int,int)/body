@@ -1,0 +1,48 @@
+{
+  GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
+  GraphicsDevice device=genv.getDefaultScreenDevice();
+  if (device.isDisplayChangeSupported()) {
+    device.setDisplayMode(desktopMode.mode);
+    device.setFullScreenWindow(null);
+    final JFrame frame=findJFrame();
+    if (frame == null)     return false;
+    super.pause();
+    GLCanvas newCanvas=new GLCanvas(canvas.getChosenGLCapabilities(),null,canvas.getContext(),device);
+    newCanvas.setBackground(Color.BLACK);
+    newCanvas.setPreferredSize(new Dimension(width,height));
+    newCanvas.addGLEventListener(this);
+    JFrame newframe=new JFrame(frame.getTitle());
+    newframe.setUndecorated(false);
+    newframe.setResizable(true);
+    newframe.setSize(width + newframe.getInsets().left + newframe.getInsets().right,newframe.getInsets().top + newframe.getInsets().bottom + height);
+    newframe.add(newCanvas,BorderLayout.CENTER);
+    newframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    newframe.setLocationRelativeTo(null);
+    newframe.pack();
+    newframe.setVisible(true);
+    initializeGLInstances(canvas);
+    this.canvas=newCanvas;
+    ((JoglInput)Gdx.input).setListeners(canvas);
+    canvas.requestFocus();
+    newframe.addWindowListener(((JoglApplication)Gdx.app).windowListener);
+    ((JoglApplication)Gdx.app).frame=newframe;
+    resume();
+    Gdx.app.postRunnable(new Runnable(){
+      public void run(){
+        SwingUtilities.invokeLater(new Runnable(){
+          @Override public void run(){
+            frame.dispose();
+          }
+        }
+);
+      }
+    }
+);
+  }
+ else {
+    final JFrame frame=findJFrame();
+    if (frame == null)     return false;
+    frame.setSize(width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + height);
+  }
+  return true;
+}

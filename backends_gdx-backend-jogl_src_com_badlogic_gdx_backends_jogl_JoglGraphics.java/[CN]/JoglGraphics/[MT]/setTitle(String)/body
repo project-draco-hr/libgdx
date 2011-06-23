@@ -1,2 +1,10 @@
 {
+  Container parent=canvas.getParent();
+  while (parent != null) {
+    if (parent instanceof JFrame) {
+      ((JFrame)parent).setTitle(title);
+      return;
+    }
+    parent=parent.getParent();
+  }
 }

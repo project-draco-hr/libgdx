@@ -1,3 +1,4 @@
 {
-  new JoglApplication(new com.badlogic.gdx.tests.MusicTest(),"Debug Test",480,320,false);
+  JoglApplicationConfiguration config=new JoglApplicationConfiguration();
+  new JoglApplication(new com.badlogic.gdx.tests.CullTest(),config);
 }

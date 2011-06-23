@@ -1,0 +1,18 @@
+{
+  GLCapabilities caps=new GLCapabilities();
+  caps.setRedBits(config.r);
+  caps.setGreenBits(config.g);
+  caps.setBlueBits(config.b);
+  caps.setAlphaBits(config.a);
+  caps.setDepthBits(config.depth);
+  caps.setStencilBits(config.stencil);
+  caps.setNumSamples(config.numSamples);
+  caps.setSampleBuffers(config.numSamples > 0);
+  caps.setDoubleBuffered(true);
+  canvas=new GLCanvas(caps);
+  canvas.setBackground(Color.BLACK);
+  canvas.addGLEventListener(this);
+  this.useGL2=config.useGL20;
+  this.glu=new JoglGLU();
+  Gdx.glu=glu;
+}

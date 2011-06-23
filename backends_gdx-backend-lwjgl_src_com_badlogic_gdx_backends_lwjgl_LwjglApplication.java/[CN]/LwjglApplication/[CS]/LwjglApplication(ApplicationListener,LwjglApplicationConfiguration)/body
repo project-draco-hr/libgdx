@@ -1,0 +1,14 @@
+{
+  LwjglNativesLoader.load();
+  graphics=new LwjglGraphics(config);
+  audio=new OpenALAudio();
+  files=new LwjglFiles();
+  input=new LwjglInput();
+  this.listener=listener;
+  Gdx.app=this;
+  Gdx.graphics=graphics;
+  Gdx.audio=audio;
+  Gdx.files=files;
+  Gdx.input=input;
+  initialize();
+}

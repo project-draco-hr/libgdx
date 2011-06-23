@@ -1,0 +1,55 @@
+{
+  JoglNativesLoader.load();
+  graphics=new JoglGraphics(listener,config);
+  input=new JoglInput(graphics.getCanvas());
+  audio=new OpenALAudio();
+  files=new JoglFiles();
+  Gdx.app=JoglApplication.this;
+  Gdx.graphics=JoglApplication.this.getGraphics();
+  Gdx.input=JoglApplication.this.getInput();
+  Gdx.audio=JoglApplication.this.getAudio();
+  Gdx.files=JoglApplication.this.getFiles();
+  if (!config.fullscreen) {
+    frame=new JFrame(config.title);
+    graphics.getCanvas().setPreferredSize(new Dimension(config.width,config.height));
+    frame.setSize(config.width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + config.height);
+    frame.add(graphics.getCanvas(),BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setLocationRelativeTo(null);
+    frame.addWindowListener(windowListener);
+    frame.pack();
+    frame.setVisible(true);
+    graphics.create();
+  }
+ else {
+    GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice device=genv.getDefaultScreenDevice();
+    frame=new JFrame(config.title);
+    graphics.getCanvas().setPreferredSize(new Dimension(config.width,config.height));
+    frame.setSize(config.width + frame.getInsets().left + frame.getInsets().right,frame.getInsets().top + frame.getInsets().bottom + config.height);
+    frame.add(graphics.getCanvas(),BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    frame.setLocationRelativeTo(null);
+    frame.addWindowListener(windowListener);
+    frame.setUndecorated(true);
+    frame.setResizable(false);
+    frame.pack();
+    frame.setVisible(true);
+    java.awt.DisplayMode desktopMode=device.getDisplayMode();
+    try {
+      device.setFullScreenWindow(frame);
+      JoglDisplayMode mode=graphics.findBestMatch(config.width,config.height);
+      if (mode == null)       throw new GdxRuntimeException("Couldn't set fullscreen mode " + config.width + "x"+ config.height);
+      device.setDisplayMode(mode.mode);
+    }
+ catch (    Throwable e) {
+      e.printStackTrace();
+      device.setDisplayMode(desktopMode);
+      device.setFullScreenWindow(null);
+      frame.dispose();
+      audio.dispose();
+      System.exit(-1);
+    }
+    graphics.create();
+  }
+}

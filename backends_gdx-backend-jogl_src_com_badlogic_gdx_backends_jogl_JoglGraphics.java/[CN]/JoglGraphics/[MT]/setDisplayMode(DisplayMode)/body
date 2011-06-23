@@ -1,3 +1,39 @@
 {
-  return false;
+  if (!supportsDisplayModeChange())   return false;
+  GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
+  GraphicsDevice device=genv.getDefaultScreenDevice();
+  final JFrame frame=findJFrame();
+  if (frame == null)   return false;
+  super.pause();
+  GLCanvas newCanvas=new GLCanvas(canvas.getChosenGLCapabilities(),null,canvas.getContext(),device);
+  newCanvas.addGLEventListener(this);
+  JFrame newframe=new JFrame(frame.getTitle());
+  newframe.setUndecorated(true);
+  newframe.setResizable(false);
+  newframe.add(newCanvas,BorderLayout.CENTER);
+  newframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+  newframe.setLocationRelativeTo(null);
+  newframe.pack();
+  newframe.setVisible(true);
+  device.setFullScreenWindow(newframe);
+  device.setDisplayMode(((JoglDisplayMode)displayMode).mode);
+  initializeGLInstances(canvas);
+  this.canvas=newCanvas;
+  ((JoglInput)Gdx.input).setListeners(canvas);
+  canvas.requestFocus();
+  newframe.addWindowListener(((JoglApplication)Gdx.app).windowListener);
+  ((JoglApplication)Gdx.app).frame=newframe;
+  resume();
+  Gdx.app.postRunnable(new Runnable(){
+    public void run(){
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          frame.dispose();
+        }
+      }
+);
+    }
+  }
+);
+  return true;
 }

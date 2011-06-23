@@ -1,3 +1,19 @@
 {
-  return false;
+  org.lwjgl.opengl.DisplayMode mode=((LwjglDisplayMode)displayMode).mode;
+  try {
+    if (!mode.isFullscreenCapable()) {
+      Display.setDisplayMode(mode);
+    }
+ else {
+      Display.setDisplayModeAndFullscreen(mode);
+    }
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,displayMode.width,displayMode.height);
+    config.width=displayMode.width;
+    config.height=displayMode.height;
+    resize=true;
+    return true;
+  }
+ catch (  LWJGLException e) {
+    return false;
+  }
 }

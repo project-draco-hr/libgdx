@@ -22,6 +22,6 @@
   if (Gdx.input.isKeyPressed(Keys.D))   cam.rotate(-20 * Gdx.graphics.getDeltaTime(),0,1,0);
   gl.glDisable(GL10.GL_DEPTH_TEST);
   batch.begin();
-  font.draw(batch,"visible: " + visible + "/100",0,20);
+  font.draw(batch,"visible: " + visible + "/100"+ ", fps: "+ Gdx.graphics.getFramesPerSecond(),0,20);
   batch.end();
 }

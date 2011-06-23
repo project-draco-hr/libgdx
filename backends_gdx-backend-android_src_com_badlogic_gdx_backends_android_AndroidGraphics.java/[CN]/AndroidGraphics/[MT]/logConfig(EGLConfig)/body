@@ -10,4 +10,5 @@
   Gdx.app.log("AndroidGraphics","framebuffer: (" + r + ", "+ g+ ", "+ b+ ", "+ a+ ")");
   Gdx.app.log("AndroidGraphics","depthbuffer: (" + d + ")");
   Gdx.app.log("AndroidGraphics","stencilbuffer: (" + s + ")");
+  bufferFormat=new BufferFormat(r,g,b,a,d,s,0);
 }

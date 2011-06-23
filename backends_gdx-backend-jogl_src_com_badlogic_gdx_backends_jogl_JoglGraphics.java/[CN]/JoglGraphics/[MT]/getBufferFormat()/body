@@ -1,0 +1,4 @@
+{
+  GLCapabilities caps=canvas.getChosenGLCapabilities();
+  return new BufferFormat(caps.getRedBits(),caps.getGreenBits(),caps.getBlueBits(),caps.getAlphaBits(),caps.getDepthBits(),caps.getStencilBits(),caps.getNumSamples());
+}

@@ -1,3 +1,4 @@
 {
-  new LwjglApplication(new com.badlogic.gdx.tests.VBOVATest(),"UI Test",480,320,false);
+  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+  new LwjglApplication(new com.badlogic.gdx.tests.CullTest(),config);
 }

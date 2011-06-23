@@ -1,0 +1,18 @@
+{
+  if (!SwingUtilities.isEventDispatchThread()) {
+    try {
+      SwingUtilities.invokeAndWait(new Runnable(){
+        public void run(){
+          initialize(listener,config);
+        }
+      }
+);
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Creating window failed",e);
+    }
+  }
+ else {
+    initialize(listener,config);
+  }
+}

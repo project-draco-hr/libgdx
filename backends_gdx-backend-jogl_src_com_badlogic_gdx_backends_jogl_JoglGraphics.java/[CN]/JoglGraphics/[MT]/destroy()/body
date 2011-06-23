@@ -1,4 +1,7 @@
 {
   canvas.getContext().makeCurrent();
   listener.dispose();
+  GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
+  GraphicsDevice device=genv.getDefaultScreenDevice();
+  device.setFullScreenWindow(null);
 }

@@ -7,11 +7,16 @@
   }
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
+  graphics.resize=false;
   int lastWidth=graphics.getWidth();
   int lastHeight=graphics.getHeight();
   graphics.lastTime=System.nanoTime();
   while (running && !Display.isCloseRequested()) {
     graphics.updateTime();
+    if (graphics.resize) {
+      graphics.resize=false;
+      listener.resize(graphics.getWidth(),graphics.getHeight());
+    }
 synchronized (runnables) {
       for (int i=0; i < runnables.size(); i++) {
         runnables.get(i).run();
@@ -32,7 +37,9 @@ synchronized (runnables) {
     listener.render();
     audio.update();
     Display.update();
-    if (graphics.vsync)     Display.sync(60);
+    if (graphics.vsync && graphics.config.useCPUSynch) {
+      Display.sync(60);
+    }
   }
   listener.pause();
   listener.dispose();

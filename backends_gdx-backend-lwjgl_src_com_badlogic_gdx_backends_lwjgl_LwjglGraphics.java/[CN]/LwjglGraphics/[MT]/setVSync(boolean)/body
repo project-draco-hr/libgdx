@@ -1,0 +1,5 @@
+{
+  this.vsync=vsync;
+  if (vsync && !config.useCPUSynch == false)   Display.setVSyncEnabled(true);
+  if (!vsync && !config.useCPUSynch == false)   Display.setVSyncEnabled(false);
+}

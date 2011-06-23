@@ -1,9 +1,14 @@
 {
+  final JoglApplicationConfiguration config=new JoglApplicationConfiguration();
+  config.title=title;
+  config.width=width;
+  config.height=height;
+  config.useGL20=useGL20IfAvailable;
   if (!SwingUtilities.isEventDispatchThread()) {
     try {
       SwingUtilities.invokeAndWait(new Runnable(){
         public void run(){
-          initialize(listener,title,width,height,useGL20IfAvailable);
+          initialize(listener,config);
         }
       }
 );
@@ -13,6 +18,7 @@
     }
   }
  else {
-    initialize(listener,title,width,height,useGL20IfAvailable);
+    config.useGL20=useGL20IfAvailable;
+    initialize(listener,config);
   }
 }

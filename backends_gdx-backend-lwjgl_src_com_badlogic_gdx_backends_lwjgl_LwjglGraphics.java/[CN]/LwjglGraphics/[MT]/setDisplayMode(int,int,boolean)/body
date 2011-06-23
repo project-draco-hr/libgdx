@@ -1,0 +1,43 @@
+{
+  if ((Display.getDisplayMode().getWidth() == width) && (Display.getDisplayMode().getHeight() == height) && (Display.isFullscreen() == fullscreen)) {
+    return true;
+  }
+  try {
+    org.lwjgl.opengl.DisplayMode targetDisplayMode=null;
+    if (fullscreen) {
+      org.lwjgl.opengl.DisplayMode[] modes=Display.getAvailableDisplayModes();
+      int freq=0;
+      for (int i=0; i < modes.length; i++) {
+        org.lwjgl.opengl.DisplayMode current=modes[i];
+        if ((current.getWidth() == width) && (current.getHeight() == height)) {
+          if ((targetDisplayMode == null) || (current.getFrequency() >= freq)) {
+            if ((targetDisplayMode == null) || (current.getBitsPerPixel() > targetDisplayMode.getBitsPerPixel())) {
+              targetDisplayMode=current;
+              freq=targetDisplayMode.getFrequency();
+            }
+          }
+          if ((current.getBitsPerPixel() == Display.getDesktopDisplayMode().getBitsPerPixel()) && (current.getFrequency() == Display.getDesktopDisplayMode().getFrequency())) {
+            targetDisplayMode=current;
+            break;
+          }
+        }
+      }
+    }
+ else {
+      targetDisplayMode=new org.lwjgl.opengl.DisplayMode(width,height);
+    }
+    if (targetDisplayMode == null) {
+      return false;
+    }
+    Display.setDisplayMode(targetDisplayMode);
+    Display.setFullscreen(fullscreen);
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,targetDisplayMode.getWidth(),targetDisplayMode.getHeight());
+    config.width=targetDisplayMode.getWidth();
+    config.height=targetDisplayMode.getHeight();
+    resize=true;
+    return true;
+  }
+ catch (  LWJGLException e) {
+    return false;
+  }
+}
