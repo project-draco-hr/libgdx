@@ -1,11 +1,11 @@
 {
   GL10 gl=Gdx.gl10;
-  gl.glViewport(VP_Y,VP_X,VP_WIDTH,VP_HEIGHT);
   gl.glClearColor(0.2f,0.2f,0.2f,1.0f);
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   gl.glEnable(GL10.GL_DEPTH_TEST);
   cam.update();
   cam.apply(gl);
+  gl.glViewport(VP_X,VP_Y,VP_WIDTH,VP_HEIGHT);
   Ray pickRay=null;
   if (Gdx.input.isTouched()) {
     pickRay=cam.getPickRay(Gdx.input.getX(),Gdx.input.getY(),VP_X,VP_Y,VP_WIDTH,VP_HEIGHT);

@@ -6,7 +6,7 @@
   cam.far=200;
   batch=new SpriteBatch();
   logo=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
-  Random rand=new Random();
+  Random rand=new Random(10);
   for (int i=0; i < positions.length; i++) {
     positions[i]=new Vector3(rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100);
   }
