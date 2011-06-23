@@ -10,12 +10,14 @@
     if (Integer.parseInt(android.os.Build.VERSION.SDK) <= 4) {
       GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(activity,resolutionStrategy);
       if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+ else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
       view.setRenderer(this);
       return view;
     }
  else {
       android.opengl.GLSurfaceView view=new DefaultGLSurfaceView(activity,resolutionStrategy);
       if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+ else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
       view.setRenderer(this);
       return view;
     }

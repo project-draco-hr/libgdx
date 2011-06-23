@@ -1,0 +1,7 @@
+{
+  this.config=config;
+  view=createGLSurfaceView(activity,config.useGL20,resolutionStrategy);
+  view.setFocusable(true);
+  view.setFocusableInTouchMode(true);
+  this.app=activity;
+}

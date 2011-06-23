@@ -9,4 +9,5 @@
   batch=new SpriteBatch();
   font=new BitmapFont();
   Gdx.graphics.setVSync(true);
+  Gdx.app.log("CullTest","" + Gdx.graphics.getBufferFormat().toString());
 }
