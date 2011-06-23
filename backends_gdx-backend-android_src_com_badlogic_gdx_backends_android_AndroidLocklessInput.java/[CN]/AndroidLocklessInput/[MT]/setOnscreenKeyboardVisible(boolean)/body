@@ -1,9 +1,0 @@
-{
-  InputMethodManager manager=(InputMethodManager)app.getSystemService(Context.INPUT_METHOD_SERVICE);
-  if (visible) {
-    manager.showSoftInput(((AndroidGraphics)app.getGraphics()).getView(),0);
-  }
- else {
-    manager.hideSoftInputFromWindow(((AndroidGraphics)app.getGraphics()).getView().getWindowToken(),0);
-  }
-}

@@ -15,4 +15,12 @@
  else   touchHandler=new AndroidSingleTouchHandler();
   hasMultitouch=touchHandler instanceof AndroidMultiTouchHandler && ((AndroidMultiTouchHandler)touchHandler).supportsMultitouch(activity);
   vibrator=(Vibrator)activity.getSystemService(Context.VIBRATOR_SERVICE);
+  int rotation=getRotation();
+  DisplayMode mode=app.graphics.getDesktopDisplayMode();
+  if (((rotation == 0 || rotation == 180) && (mode.width >= mode.height)) || ((rotation == 90 || rotation == 270) && (mode.width <= mode.height))) {
+    nativeOrientation=Orientation.Landscape;
+  }
+ else {
+    nativeOrientation=Orientation.Portrait;
+  }
 }
