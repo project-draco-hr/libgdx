@@ -1,5 +1,5 @@
 {
-  Container parent=canvas.getParent();
+  Container parent=component.getParent();
   while (parent != null) {
     if (parent instanceof JFrame) {
       return (JFrame)parent;

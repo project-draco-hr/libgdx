@@ -6,7 +6,10 @@ synchronized (this) {
     event.y=e.getY();
     event.type=TouchEvent.TOUCH_MOVED;
     touchEvents.add(event);
+    deltaX=event.x - touchX;
+    deltaY=event.y - touchY;
     touchX=event.x;
     touchY=event.y;
+    checkCatched(e);
   }
 }

@@ -4,6 +4,7 @@
     canvas.removeMouseMotionListener(this);
     canvas.removeMouseWheelListener(this);
     canvas.removeKeyListener(this);
+    JFrame frame=JoglGraphics.findJFrame(canvas);
   }
   canvas.addMouseListener(this);
   canvas.addMouseMotionListener(this);

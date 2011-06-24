@@ -47,6 +47,12 @@ for (int i=0; i < len; i++) {
 usedKeyEvents.free(keyEvents.get(i));
 }
 }
+if (touchEvents.size() == 0) {
+for (int i=0; i < deltaX.length; i++) {
+deltaX[0]=0;
+deltaY[0]=0;
+}
+}
 keyEvents.clear();
 touchEvents.clear();
 }

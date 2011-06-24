@@ -7,6 +7,8 @@ synchronized (this) {
     event.button=toGdxButton(e.getButton());
     event.type=TouchEvent.TOUCH_UP;
     touchEvents.add(event);
+    deltaX=event.x - touchX;
+    deltaY=event.y - touchY;
     touchX=event.x;
     touchY=event.y;
     pressedButtons.remove(event.button);

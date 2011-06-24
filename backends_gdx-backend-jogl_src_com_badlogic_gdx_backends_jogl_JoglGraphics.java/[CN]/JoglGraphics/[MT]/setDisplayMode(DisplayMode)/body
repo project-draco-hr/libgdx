@@ -2,7 +2,7 @@
   if (!supportsDisplayModeChange())   return false;
   GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
   GraphicsDevice device=genv.getDefaultScreenDevice();
-  final JFrame frame=findJFrame();
+  final JFrame frame=findJFrame(canvas);
   if (frame == null)   return false;
   super.pause();
   GLCanvas newCanvas=new GLCanvas(canvas.getChosenGLCapabilities(),null,canvas.getContext(),device);
