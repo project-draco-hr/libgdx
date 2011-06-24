@@ -1,0 +1,7 @@
+{
+  this.addr=addr;
+  this.userData=null;
+  for (int i=0; i < fixtures.size(); i++)   this.world.freeFixtures.free(fixtures.get(i));
+  fixtures.clear();
+  this.joints.clear();
+}

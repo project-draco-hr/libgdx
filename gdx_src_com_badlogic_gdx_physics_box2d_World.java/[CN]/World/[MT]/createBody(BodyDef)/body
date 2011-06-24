@@ -1,5 +1,7 @@
 {
-  Body body=new Body(this,jniCreateBody(addr,def.type.getValue(),def.position.x,def.position.y,def.angle,def.linearVelocity.x,def.linearVelocity.y,def.angularVelocity,def.linearDamping,def.angularDamping,def.allowSleep,def.awake,def.fixedRotation,def.bullet,def.active,def.inertiaScale));
+  long bodyAddr=jniCreateBody(addr,def.type.getValue(),def.position.x,def.position.y,def.angle,def.linearVelocity.x,def.linearVelocity.y,def.angularVelocity,def.linearDamping,def.angularDamping,def.allowSleep,def.awake,def.fixedRotation,def.bullet,def.active,def.inertiaScale);
+  Body body=freeBodies.obtain();
+  body.reset(bodyAddr);
   this.bodies.put(body.addr,body);
   return body;
 }
