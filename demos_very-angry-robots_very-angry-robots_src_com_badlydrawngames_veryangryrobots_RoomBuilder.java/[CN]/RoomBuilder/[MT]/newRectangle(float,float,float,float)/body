@@ -1,0 +1,8 @@
+{
+  Rectangle r=rectanglePool.obtain();
+  r.x=x;
+  r.y=y;
+  r.width=w;
+  r.height=h;
+  return r;
+}

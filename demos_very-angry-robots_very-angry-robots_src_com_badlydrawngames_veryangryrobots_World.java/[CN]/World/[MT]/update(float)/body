@@ -1,0 +1,23 @@
+{
+  if (!isPaused) {
+    now+=delta;
+    stateTime+=delta;
+switch (state) {
+case RESETTING:
+      updateResetting();
+    break;
+case ENTERED_ROOM:
+  updateEnteredRoom();
+break;
+case PLAYING:
+updatePlaying(delta);
+break;
+case PLAYER_DEAD:
+updatePlayerDead(delta);
+break;
+}
+}
+ else {
+pausedTime+=delta;
+}
+}

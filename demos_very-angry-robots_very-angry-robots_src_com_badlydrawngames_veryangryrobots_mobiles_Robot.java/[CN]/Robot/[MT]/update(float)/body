@@ -1,0 +1,9 @@
+{
+  stateTime+=delta;
+  moveRobot(delta);
+  if (fireCommand != null && canFire(delta) && canSeePlayer()) {
+    firingDirection.set(player.x - x,player.y - y);
+    firingDirection.nor();
+    fireCommand.fire(this,firingDirection.x,firingDirection.y);
+  }
+}

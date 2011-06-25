@@ -1,0 +1,26 @@
+{
+switch (world.getState()) {
+case World.RESETTING:
+    resetCaches();
+  break;
+case World.ENTERED_ROOM:
+if (world.getStateTime() == 0.0f) {
+  createMazeContent();
+  particleAdapter.setRobotColor(world.getRobotColor());
+}
+updatePanning();
+drawWallsAndDoors();
+drawMobiles();
+break;
+case World.PLAYING:
+if (world.getStateTime() == 0.0f) {
+cacheTransform.idt();
+spriteCache.setTransformMatrix(cacheTransform);
+spriteBatch.setTransformMatrix(cacheTransform);
+}
+case World.PLAYER_DEAD:
+drawWallsAndDoors();
+drawMobiles();
+break;
+}
+}

@@ -1,0 +1,8 @@
+{
+  playerWalkingRightAnimation=new Animation(PLAYER_FRAME_DURATION,Assets.playerWalkingRight1,Assets.playerWalkingRight2);
+  playerWalkingLeftAnimation=new Animation(PLAYER_FRAME_DURATION,Assets.playerWalkingLeft1,Assets.playerWalkingLeft2);
+  robotWalkingLeftAnimation=new Animation(ROBOT_FRAME_DURATION,robotLeft1,robotLeft2,robotLeft3,robotLeft4,robotLeft3,robotLeft2);
+  robotWalkingRightAnimation=new Animation(ROBOT_FRAME_DURATION,robotRight1,robotRight2,robotRight3,robotRight4,robotRight3,robotRight2);
+  robotScanningAnimation=new Animation(ROBOT_FRAME_DURATION,robotScan1,robotScan2,robotScan3,robotScan4,robotScan3,robotScan2);
+  nemesisAnimation=new Animation(CAPTAIN_FRAME_DURATION,nemesis1,nemesis2);
+}

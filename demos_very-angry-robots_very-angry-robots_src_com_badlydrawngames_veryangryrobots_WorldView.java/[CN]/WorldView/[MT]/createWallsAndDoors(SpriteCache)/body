@@ -1,0 +1,17 @@
+{
+  sc.clear();
+  sc.beginCache();
+  sc.setColor(Color.BLUE);
+  Array<Rectangle> rects=world.getWallRects();
+  for (int i=0; i < rects.size; i++) {
+    Rectangle rect=rects.get(i);
+    sc.add(Assets.pureWhiteTextureRegion,rect.x,rect.y,rect.width,rect.height);
+  }
+  sc.setColor(1,1,0,1);
+  rects=world.getDoorRects();
+  for (int i=0; i < rects.size; i++) {
+    Rectangle rect=rects.get(i);
+    sc.add(Assets.pureWhiteTextureRegion,rect.x,rect.y,rect.width,rect.height);
+  }
+  return sc.endCache();
+}

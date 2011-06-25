@@ -1,0 +1,5 @@
+{
+  notifier.onPlayerHit();
+  setState(PLAYER_DEAD);
+  playingTime=now + PLAYER_DEAD_INTERVAL;
+}

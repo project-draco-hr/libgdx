@@ -1,0 +1,11 @@
+{
+  FileHandle textureDir=Gdx.files.internal("data/textures");
+  FileHandle[] availableDensities=textureDir.list();
+  FloatArray densities=new FloatArray(availableDensities.length);
+  for (int i=0; i < availableDensities.length; i++) {
+    float density=Float.parseFloat(availableDensities[i].name());
+    densities.add(density);
+  }
+  densities.sort();
+  return CameraHelper.bestDensity(VIRTUAL_WIDTH,VIRTUAL_HEIGHT,densities.items);
+}

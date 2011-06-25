@@ -1,0 +1,5 @@
+{
+  for (  PlayerShot shot : world.getPlayerShots()) {
+    draw(shot,Assets.playerShot);
+  }
+}

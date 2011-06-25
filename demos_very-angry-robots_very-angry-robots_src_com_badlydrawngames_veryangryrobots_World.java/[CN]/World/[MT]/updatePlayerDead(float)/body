@@ -1,0 +1,8 @@
+{
+  updateMobiles(delta);
+  checkForCollisions();
+  if (now >= playingTime) {
+    resetRoom();
+    setState(PLAYING);
+  }
+}

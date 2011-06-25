@@ -1,0 +1,6 @@
+{
+  stateTime+=delta;
+  float n=shotSpeed * delta;
+  x+=dx * n;
+  y+=dy * n;
+}

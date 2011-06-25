@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < rects.size && !go.inCollision; i++) {
+    Rectangle r=rects.get(i);
+    if (go.intersects(r)) {
+      callback.onCollision(go,r);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  Player player=world.getPlayer();
+switch (player.state) {
+case Player.WALKING_LEFT:
+    draw(player,Assets.playerWalkingLeftAnimation.getKeyFrame(player.stateTime,true));
+  break;
+case Player.WALKING_RIGHT:
+draw(player,Assets.playerWalkingRightAnimation.getKeyFrame(player.stateTime,true));
+break;
+case Player.FACING_LEFT:
+draw(player,Assets.playerWalkingLeft2);
+break;
+case Player.FACING_RIGHT:
+draw(player,Assets.playerWalkingRight2);
+break;
+}
+}

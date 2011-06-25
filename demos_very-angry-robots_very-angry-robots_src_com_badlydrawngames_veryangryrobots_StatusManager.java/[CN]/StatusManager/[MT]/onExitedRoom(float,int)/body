@@ -1,0 +1,32 @@
+{
+  gameRoomsExited++;
+  if (robots == 0) {
+    chickenRooms=0;
+    cleanRooms++;
+    gameCleanRooms++;
+    if (cleanRooms == CLEAN_ROOMS) {
+      achievement(Achievements.PERFECTIONIST);
+    }
+ else     if (robotsShot == 0) {
+      achievement(Achievements.PACIFICIST);
+    }
+  }
+ else {
+    cleanRooms=0;
+    chickenRooms++;
+    gameChickenRooms++;
+    if (chickenRooms == CHICKEN_ROOMS) {
+      achievement(Achievements.COWARD);
+    }
+  }
+  if (playerHits == 0) {
+    gameRoomsWithoutDying++;
+    if (gameRoomsWithoutDying == LUCKY_JIM_ROOMS) {
+      achievement(Achievements.LUCKY_JIM);
+    }
+  }
+ else {
+    gameRoomsWithoutDying=0;
+  }
+  Gdx.app.log("Metrics","FPS = " + Gdx.graphics.getFramesPerSecond());
+}

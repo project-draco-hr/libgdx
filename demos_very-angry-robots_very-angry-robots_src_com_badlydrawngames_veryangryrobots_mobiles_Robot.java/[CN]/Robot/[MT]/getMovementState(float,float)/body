@@ -1,0 +1,17 @@
+{
+  if (dx == 0.0f && dy == 0.0f) {
+    return SCANNING;
+  }
+ else   if (dx > 0) {
+    return (dy == 0) ? WALKING_RIGHT : WALKING_RIGHT_DIAGONAL;
+  }
+ else   if (dx < 0) {
+    return (dy == 0) ? WALKING_LEFT : WALKING_LEFT_DIAGONAL;
+  }
+ else   if (dy < 0) {
+    return WALKING_DOWN;
+  }
+ else {
+    return WALKING_UP;
+  }
+}

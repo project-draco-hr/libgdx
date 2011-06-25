@@ -1,0 +1,19 @@
+{
+  robotPos.set(x1,y1);
+  playerPos.set(x2,y2);
+  for (int i=0; i < walls.size; i++) {
+    Rectangle wall=walls.get(i);
+    if (wall.width > wall.height) {
+      lineStart.set(wall.x,wall.y + wall.height / 2);
+      lineEnd.set(wall.x + wall.width,lineStart.y);
+    }
+ else {
+      lineStart.set(wall.x + wall.width / 2,wall.y);
+      lineEnd.set(lineStart.x,wall.y + wall.height);
+    }
+    if (Intersector.intersectSegments(robotPos,playerPos,lineStart,lineEnd,null)) {
+      return false;
+    }
+  }
+  return true;
+}

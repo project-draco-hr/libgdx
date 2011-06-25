@@ -1,0 +1,44 @@
+{
+  float boundsMinX=worldMinX + World.OUTER_WALL_ADJUST + World.WALL_HEIGHT;
+  float boundsMaxX=worldMaxX - World.OUTER_WALL_ADJUST - World.WALL_HEIGHT;
+  float boundsMinY=worldMinY + World.OUTER_WALL_ADJUST + World.WALL_HEIGHT;
+  float boundsMaxY=worldMaxY - World.OUTER_WALL_ADJUST - World.WALL_HEIGHT;
+  float maxX=go.x + go.width;
+  if (maxX < boundsMinX)   return;
+  float minX=go.x;
+  if (minX > boundsMaxX)   return;
+  float maxY=go.y + go.height;
+  if (maxY < boundsMinY)   return;
+  float minY=go.y;
+  if (minY > boundsMaxY)   return;
+  float x=go.x;
+  float y=go.y;
+  int srcX=region.getRegionX();
+  int srcY=region.getRegionY();
+  int srcWidth=region.getRegionWidth();
+  int srcHeight=region.getRegionHeight();
+  if (minX < boundsMinX) {
+    float n=(boundsMinX - minX);
+    x+=n;
+    n*=(srcWidth / go.width);
+    srcX+=n;
+    srcWidth-=n;
+  }
+ else   if (maxX > boundsMaxX) {
+    float n=(maxX - boundsMaxX);
+    srcWidth-=n * (srcWidth / go.width);
+  }
+  if (minY < boundsMinY) {
+    float n=(boundsMinY - minY);
+    y+=n;
+    srcHeight-=n * (srcHeight / go.height);
+  }
+ else   if (maxY > boundsMaxY) {
+    float n=(maxY - boundsMaxY) * (srcHeight / go.height);
+    srcHeight-=n;
+    srcY+=n;
+  }
+  float width=go.width * srcWidth / region.getRegionWidth();
+  float height=go.height * srcHeight / region.getRegionHeight();
+  spriteBatch.draw(region.getTexture(),x,y,width,height,srcX,srcY,srcWidth,srcHeight,false,false);
+}

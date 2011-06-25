@@ -1,0 +1,11 @@
+{
+  this.hcells=hcells;
+  this.vcells=vcells;
+  mazeGenerator=new MazeGenerator(hcells,vcells);
+  rectanglePool=new Pool<Rectangle>(MAX_RECTANGLES){
+    @Override protected Rectangle newObject(){
+      return new Rectangle();
+    }
+  }
+;
+}

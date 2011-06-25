@@ -1,0 +1,6 @@
+{
+  SpriteCache tempCache=prevSpriteCache;
+  prevSpriteCache=spriteCache;
+  spriteCache=tempCache;
+  prevCacheId=cacheId;
+}

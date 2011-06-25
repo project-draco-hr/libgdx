@@ -1,0 +1,24 @@
+{
+  float viewportWidth=virtualWidth;
+  float viewportHeight=virtualHeight;
+  float physicalWidth=Gdx.graphics.getWidth();
+  float physicalHeight=Gdx.graphics.getHeight();
+  if (viewportMode == ViewportMode.PIXEL_PERFECT) {
+    float widthAtDensity=viewportWidth * density;
+    float heightAtDensity=viewportHeight * density;
+    viewportWidth*=(physicalWidth / widthAtDensity);
+    viewportHeight*=(physicalHeight / heightAtDensity);
+  }
+ else   if (viewportMode == ViewportMode.STRETCH_TO_ASPECT) {
+    float aspect=virtualWidth / virtualHeight;
+    if (physicalWidth / physicalHeight >= aspect) {
+      viewportHeight=virtualHeight;
+      viewportWidth=viewportHeight * physicalWidth / physicalHeight;
+    }
+ else {
+      viewportWidth=virtualWidth;
+      viewportHeight=viewportWidth * physicalHeight / physicalWidth;
+    }
+  }
+  return new Vector2(viewportWidth,viewportHeight);
+}

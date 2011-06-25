@@ -1,0 +1,6 @@
+{
+  scoreNotifier=new ScoreNotifier();
+  achievementsNotifier=new AchievementsNotifier();
+  scoringEventNotifier=new ScoringEventNotifier();
+  achieved=EnumSet.noneOf(Achievements.class);
+}

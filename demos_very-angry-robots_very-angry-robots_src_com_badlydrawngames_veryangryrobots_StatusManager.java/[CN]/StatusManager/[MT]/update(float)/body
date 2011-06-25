@@ -1,0 +1,7 @@
+{
+  now+=delta;
+  if (daredevilTime != 0.0f && now >= daredevilTime) {
+    achievement(Achievements.DAREDEVIL);
+    daredevilTime=0.0f;
+  }
+}

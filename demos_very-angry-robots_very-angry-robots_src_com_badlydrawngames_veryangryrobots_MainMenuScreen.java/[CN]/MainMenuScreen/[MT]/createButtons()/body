@@ -1,0 +1,18 @@
+{
+  playButton=createPlayButton();
+  playButton.setWidth(VIRTUAL_WIDTH / 4);
+  playButton.setHeight(VIRTUAL_HEIGHT / 4);
+  if (game.canShowScores()) {
+    scoresButton=createShowScoresButton();
+    scoresButton.setWidth(VIRTUAL_WIDTH / 4);
+    scoresButton.setHeight(VIRTUAL_HEIGHT / 4);
+    scoresButton.rightOn(VIRTUAL_WIDTH);
+    scoresButton.bottomOn(1.0f);
+    playButton.leftOn(0);
+    playButton.bottomOn(1.0f);
+  }
+ else {
+    playButton.bottomOn(1.0f);
+    playButton.centerHorizontallyOn(VIRTUAL_WIDTH / 2);
+  }
+}

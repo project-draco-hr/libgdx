@@ -1,0 +1,26 @@
+{
+  float dx=(player.x + player.width / 2) - (x + width / 2);
+  float dy=(player.y + player.height / 2) - (y + height / 2);
+  dx=abs(dx) >= 2 ? sgn(dx) : 0.0f;
+  dy=abs(dy) >= 2 ? sgn(dy) : 0.0f;
+  float ax=0.0f;
+  float ay=0.0f;
+  if (!wouldHitWall(dx,dy)) {
+    ax=dx;
+    ay=dy;
+  }
+ else   if (dx != 0 && !wouldHitWall(dx,0)) {
+    ax=dx;
+  }
+ else   if (dy != 0 && !wouldHitWall(0,dy)) {
+    ay=dy;
+  }
+  dx=ax * WALKING_SPEED;
+  dy=ay * WALKING_SPEED;
+  x+=dx * delta;
+  y+=dy * delta;
+  int newState=getMovementState(dx,dy);
+  if (newState != state) {
+    setState(newState);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  spriteBatch.setColor(world.getRobotColor());
+  for (  Robot robot : world.getRobots()) {
+    drawRobot(robot);
+  }
+  spriteBatch.setColor(Color.WHITE);
+}

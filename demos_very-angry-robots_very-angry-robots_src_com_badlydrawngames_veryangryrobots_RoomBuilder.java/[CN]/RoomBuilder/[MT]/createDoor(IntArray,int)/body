@@ -1,0 +1,6 @@
+{
+  int x1=doorDefs.get(i);
+  int y1=doorDefs.get(i + 1);
+  int x2=doorDefs.get(i + 2);
+  return (x1 == x2) ? createVDoor(x1,y1) : createHDoor(x1,y1);
+}

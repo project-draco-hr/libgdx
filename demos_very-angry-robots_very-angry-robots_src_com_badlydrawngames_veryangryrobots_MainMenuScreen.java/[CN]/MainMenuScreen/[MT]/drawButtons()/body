@@ -1,0 +1,6 @@
+{
+  playButton.draw(spriteBatch);
+  if (game.canShowScores()) {
+    scoresButton.draw(spriteBatch);
+  }
+}

@@ -1,0 +1,14 @@
+{
+  now+=delta;
+  spriteBatch.begin();
+  if (!world.isPaused()) {
+    drawPauseButton();
+    drawScore();
+    drawAchievements();
+    drawLives();
+  }
+ else {
+    drawPaused();
+  }
+  spriteBatch.end();
+}

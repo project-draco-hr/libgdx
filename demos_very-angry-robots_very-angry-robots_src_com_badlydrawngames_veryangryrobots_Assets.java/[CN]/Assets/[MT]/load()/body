@@ -1,0 +1,11 @@
+{
+  pixelDensity=calculatePixelDensity();
+  String textureDir="data/textures/" + (int)pixelDensity;
+  String textureFile=textureDir + "/pack";
+  atlas=new TextureAtlas(Gdx.files.internal(textureFile),Gdx.files.internal(textureDir));
+  loadTextures();
+  createAnimations();
+  loadFonts();
+  loadSounds();
+  initialiseGeometries();
+}

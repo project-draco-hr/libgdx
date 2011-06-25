@@ -1,0 +1,12 @@
+{
+  super(game);
+  scoreCam=CameraHelper.createCamera2(ViewportMode.PIXEL_PERFECT,VIRTUAL_WIDTH,VIRTUAL_HEIGHT,Assets.pixelDensity);
+  spriteBatch=new SpriteBatch();
+  spriteBatch.setProjectionMatrix(scoreCam.combined);
+  scoreString=new ScoreString();
+  topScoreString=new ScoreString();
+  preferences=Gdx.app.getPreferences(VERY_ANGRY_ROBOTS);
+  topScore=preferences.getInteger(TOP_SCORE_PREF,1000);
+  topScoreString.setScore(topScore);
+  stateTime=0.0f;
+}

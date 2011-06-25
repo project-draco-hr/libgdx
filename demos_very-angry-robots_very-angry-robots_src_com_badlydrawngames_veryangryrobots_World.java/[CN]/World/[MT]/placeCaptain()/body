@@ -1,0 +1,25 @@
+{
+  captain.inCollision=false;
+  captain.setState(Captain.LURKING);
+  captain.activateAfter(max(CAPTAIN_MIN_DELAY,CAPTAIN_LURK_MULTIPLIER * robots.size));
+  captain.setPlayer(player);
+switch (doorPosition) {
+case DoorPositions.MIN_X:
+    captain.x=minX - 2 * captain.width;
+  captain.y=(maxY + minY) / 2 - captain.height / 2;
+break;
+case DoorPositions.MAX_X:
+captain.x=maxX + captain.width;
+captain.y=(maxY + minY) / 2 - captain.height / 2;
+break;
+case DoorPositions.MAX_Y:
+captain.x=(maxX + minX) / 2 - captain.width / 2;
+captain.y=maxY + captain.height;
+break;
+case DoorPositions.MIN_Y:
+default :
+captain.x=(maxX + minX) / 2 - captain.width / 2;
+captain.y=minY - 2 * captain.height;
+break;
+}
+}

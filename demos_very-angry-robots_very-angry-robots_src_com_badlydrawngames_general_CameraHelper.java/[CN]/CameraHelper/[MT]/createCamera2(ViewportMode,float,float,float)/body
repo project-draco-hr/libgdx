@@ -1,0 +1,11 @@
+{
+  Vector2 viewportSize=sizeToDensity(viewportMode,virtualWidth,virtualHeight,density);
+  float viewportWidth=viewportSize.x;
+  float viewportHeight=viewportSize.y;
+  OrthographicCamera camera=new OrthographicCamera(viewportWidth,viewportHeight);
+  float xOrg=(viewportWidth - virtualWidth) / 2;
+  float yOrg=(viewportHeight - virtualHeight) / 2;
+  camera.position.set(viewportWidth / 2 - xOrg,viewportHeight / 2 - yOrg,0);
+  camera.update();
+  return camera;
+}

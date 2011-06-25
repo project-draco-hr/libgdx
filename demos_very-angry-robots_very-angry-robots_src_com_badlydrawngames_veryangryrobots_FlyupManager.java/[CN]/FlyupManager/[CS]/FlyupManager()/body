@@ -1,0 +1,7 @@
+{
+  flyups=new Array<Flyup>(MAX_FLYUPS);
+  for (int i=0; i < MAX_FLYUPS; i++) {
+    flyups.add(new Flyup());
+  }
+  index=0;
+}

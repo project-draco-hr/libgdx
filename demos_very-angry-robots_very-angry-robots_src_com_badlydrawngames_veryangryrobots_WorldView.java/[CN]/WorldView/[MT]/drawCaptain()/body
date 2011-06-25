@@ -1,0 +1,6 @@
+{
+  Captain captain=world.getCaptain();
+  if (captain.state == Captain.CHASING) {
+    drawClipped(captain,Assets.nemesisAnimation.getKeyFrame(captain.stateTime,true));
+  }
+}

@@ -1,0 +1,12 @@
+{
+  doorPosition=doorPos;
+  setRandomSeedFromRoom();
+  createMaze();
+  placePlayer();
+  createRobots();
+  placeCaptain();
+  createPlayerShots();
+  createRobotShots();
+  setState(ENTERED_ROOM);
+  notifier.onEnteredRoom(now,numRobots);
+}

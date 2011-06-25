@@ -1,0 +1,10 @@
+{
+  int oldScore=score;
+  setScore(score + inc);
+  if (oldScore < EXTRA_LIFE_SCORE_1 && score >= EXTRA_LIFE_SCORE_1) {
+    addLives(1);
+  }
+ else   if (oldScore < EXTRA_LIFE_SCORE_2 && score >= EXTRA_LIFE_SCORE_2) {
+    addLives(1);
+  }
+}

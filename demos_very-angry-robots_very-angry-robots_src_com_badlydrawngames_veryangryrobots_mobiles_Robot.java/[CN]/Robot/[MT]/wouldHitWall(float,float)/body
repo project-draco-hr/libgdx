@@ -1,0 +1,13 @@
+{
+  float x1=x + width / 2;
+  float y1=y + height / 2;
+  float x2=x1 + dx * distance;
+  float y2=y1 + dy * distance;
+  for (int i=0; i < walls.size; i++) {
+    Rectangle wall=walls.get(i);
+    if (doesLineHitWall(wall,x1,y1,x2,y2)) {
+      return true;
+    }
+  }
+  return false;
+}

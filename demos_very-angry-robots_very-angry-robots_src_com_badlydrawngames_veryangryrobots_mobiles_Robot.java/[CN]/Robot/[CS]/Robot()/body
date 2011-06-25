@@ -1,0 +1,12 @@
+{
+  width=Assets.robotWidth;
+  height=Assets.robotHeight;
+  distance=max(width,height);
+  fudge=distance * 0.25f;
+  setState(INACTIVE);
+  firingDirection=new Vector2();
+  robotPos=new Vector2();
+  playerPos=new Vector2();
+  lineStart=new Vector2();
+  lineEnd=new Vector2();
+}

@@ -1,0 +1,10 @@
+{
+  addHWall(0,width / 2,0);
+  addHWall(width / 2 + 1,width,0);
+  addHWall(0,width / 2,height);
+  addHWall(width / 2 + 1,width,height);
+  addVWall(0,0,height / 2);
+  addVWall(0,height / 2 + 1,height);
+  addVWall(width,0,height / 2);
+  addVWall(width,height / 2 + 1,height);
+}

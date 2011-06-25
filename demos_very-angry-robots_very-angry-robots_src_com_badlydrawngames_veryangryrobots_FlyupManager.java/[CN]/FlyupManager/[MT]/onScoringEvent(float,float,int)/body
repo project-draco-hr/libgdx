@@ -1,0 +1,6 @@
+{
+  flyups.get(index).spawn(x,y,points);
+  if (++index == MAX_FLYUPS) {
+    index=0;
+  }
+}

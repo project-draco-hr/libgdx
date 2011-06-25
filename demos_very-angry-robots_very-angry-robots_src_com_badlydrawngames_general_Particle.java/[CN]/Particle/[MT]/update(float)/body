@@ -1,0 +1,12 @@
+{
+  x+=dx * delta;
+  y+=dy * delta;
+  dx*=(1.0 - DECAY * delta * 0.5f);
+  dy*=(1.0 - DECAY * delta * 0.5f);
+  a*=(1.0 - DECAY * delta);
+  color.a=min(1.0f,a);
+  color.r=min(1.0f,r + max(0,(a - 1.0f)));
+  color.g=min(1.0f,g + max(0,(a - 1.0f)));
+  color.b=min(1.0f,b + max(0,(a - 1.0f)));
+  active=active && a > 0.1f;
+}

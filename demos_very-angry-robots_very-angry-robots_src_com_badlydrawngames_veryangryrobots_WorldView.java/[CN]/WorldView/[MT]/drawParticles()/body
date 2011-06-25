@@ -1,0 +1,10 @@
+{
+  spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
+  for (  Particle particle : particleManager.getParticles()) {
+    if (particle.active) {
+      spriteBatch.setColor(particle.color);
+      spriteBatch.draw(Assets.pureWhiteTextureRegion,particle.x,particle.y,particle.size,particle.size);
+    }
+  }
+  spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+}

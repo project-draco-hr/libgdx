@@ -1,0 +1,17 @@
+{
+  if (achievement != null) {
+    float elapsed=now - achievementTime;
+    if (elapsed < ACHIEVEMENT_DISPLAY_TIME) {
+      if (elapsed % ACHIEVEMENT_FLASH_CYCLE < ACHIEVEMENT_FLASH_ON_TIME) {
+        String summary=achievement.summary();
+        float x=VIRTUAL_WIDTH * 0.5f;
+        float w=VIRTUAL_WIDTH - x - (Assets.playerWalkingRight1.getRegionHeight() / Assets.pixelDensity) * 4;
+        float y=VIRTUAL_HEIGHT - 1 + Assets.textFont.getCapHeight() / 2;
+        Assets.textFont.drawWrapped(spriteBatch,summary,x,y,w,HAlignment.LEFT);
+      }
+    }
+ else {
+      achievement=null;
+    }
+  }
+}

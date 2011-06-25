@@ -1,0 +1,13 @@
+{
+  Colliders.collide(player,robots,gameObjectCollisionHandler);
+  Colliders.collide(player,robotShots,gameObjectCollisionHandler);
+  Colliders.collide(captain,player,captainGameObjectCollisionHandler);
+  Colliders.collide(playerShots,robots,shotRobotCollisionHandler);
+  Colliders.collide(playerShots,robotShots,gameObjectCollisionHandler);
+  Colliders.collide(robots,robotRobotCollisionHandler);
+  Colliders.collide(robotShots,robots,gameObjectCollisionHandler);
+  Colliders.collide(robotShots,gameObjectCollisionHandler);
+  Colliders.collide(captain,robots,captainGameObjectCollisionHandler);
+  Colliders.collide(captain,playerShots,captainGameObjectCollisionHandler);
+  Colliders.collide(captain,robotShots,captainGameObjectCollisionHandler);
+}

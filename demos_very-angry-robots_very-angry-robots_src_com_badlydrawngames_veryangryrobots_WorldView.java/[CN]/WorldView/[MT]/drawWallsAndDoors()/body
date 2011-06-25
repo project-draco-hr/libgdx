@@ -1,0 +1,10 @@
+{
+  if (world.getState() == World.ENTERED_ROOM && prevCacheId != -1) {
+    prevSpriteCache.begin();
+    prevSpriteCache.draw(prevCacheId);
+    prevSpriteCache.end();
+  }
+  spriteCache.begin();
+  spriteCache.draw(cacheId);
+  spriteCache.end();
+}

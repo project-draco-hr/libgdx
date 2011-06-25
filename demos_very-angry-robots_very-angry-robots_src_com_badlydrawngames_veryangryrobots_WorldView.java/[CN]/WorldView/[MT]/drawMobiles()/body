@@ -1,0 +1,13 @@
+{
+  spriteBatch.setProjectionMatrix(worldCam.combined);
+  spriteBatch.begin();
+  spriteBatch.setColor(Color.WHITE);
+  drawPlayersShots();
+  drawRobotsShots();
+  drawRobots();
+  drawCaptain();
+  drawPlayer();
+  drawParticles();
+  drawFlyups();
+  spriteBatch.end();
+}

@@ -1,0 +1,8 @@
+{
+  particles=new Array<Particle>(maxParticles);
+  this.maxParticles=maxParticles;
+  for (int i=0; i < maxParticles; i++) {
+    particles.add(new Particle(size));
+  }
+  index=0;
+}

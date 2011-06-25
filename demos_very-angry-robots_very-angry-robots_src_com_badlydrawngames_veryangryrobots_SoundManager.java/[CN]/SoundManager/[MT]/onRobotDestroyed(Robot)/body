@@ -1,0 +1,6 @@
+{
+  if (lastRobotHitTime != now) {
+    Assets.playSound(Assets.killRobotSound);
+    lastRobotHitTime=now;
+  }
+}

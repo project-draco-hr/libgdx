@@ -1,0 +1,5 @@
+{
+  stateTime+=delta;
+  active=stateTime < LIFE_TIME;
+  y+=SPEED * delta;
+}

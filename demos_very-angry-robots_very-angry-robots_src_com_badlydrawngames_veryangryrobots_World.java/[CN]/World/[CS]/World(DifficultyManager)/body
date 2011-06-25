@@ -1,0 +1,32 @@
+{
+  this.difficultyManager=difficultyManager;
+  notifier=new WorldNotifier();
+  minX=0;
+  maxX=WALL_WIDTH * HCELLS;
+  minY=0;
+  maxY=WALL_WIDTH * VCELLS;
+  roomBounds=new Rectangle(minX,minY,maxX - minX,maxY - minY);
+  player=new Player();
+  captain=new Captain();
+  playerPos=new Vector2();
+  roomBuilder=new RoomBuilder(HCELLS,VCELLS);
+  roomGrid=new Grid(HCELLS * 2,VCELLS * 2,maxX,maxY);
+  shotPool=new Pool<PlayerShot>(MAX_PLAYER_SHOTS,MAX_PLAYER_SHOTS){
+    @Override protected PlayerShot newObject(){
+      return new PlayerShot();
+    }
+  }
+;
+  robotPool=new Pool<Robot>(MAX_ROBOTS,MAX_ROBOTS){
+    @Override protected Robot newObject(){
+      return new Robot();
+    }
+  }
+;
+  robotShotPool=new Pool<RobotShot>(MAX_ROBOT_SHOTS,MAX_ROBOT_SHOTS){
+    @Override protected RobotShot newObject(){
+      return new RobotShot();
+    }
+  }
+;
+}

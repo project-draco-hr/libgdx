@@ -1,0 +1,19 @@
+{
+  Color oldColor=font.getColor();
+  if (down) {
+    spriteBatch.setColor(Color.RED);
+  }
+ else {
+    spriteBatch.setColor(Color.BLUE);
+  }
+  spriteBatch.draw(Assets.pureWhiteTextureRegion,x,y,w,h);
+  spriteBatch.setColor(Color.WHITE);
+  if (down) {
+    font.setColor(oldColor.r / 2,oldColor.g / 2,oldColor.b / 2,oldColor.a);
+  }
+  float textX=x;
+  float textY=y + h;
+  textY-=(h - textHeight) / 2;
+  font.drawWrapped(spriteBatch,text,textX,textY,w,alignment);
+  font.setColor(oldColor);
+}

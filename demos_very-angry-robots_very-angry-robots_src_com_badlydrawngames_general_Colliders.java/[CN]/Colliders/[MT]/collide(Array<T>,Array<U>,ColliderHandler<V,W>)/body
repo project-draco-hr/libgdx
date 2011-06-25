@@ -1,0 +1,11 @@
+{
+  if (a != b) {
+    for (int i=a.size - 1; i >= 0; i--) {
+      T go=a.get(i);
+      collide(go,b,callback);
+    }
+  }
+ else {
+    collide(a,(ColliderHandler<V,V>)callback);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  float dx=player.x - x;
+  float dy=player.y - y;
+  float angle=atan2(dy,dx);
+  float sd=speed * delta;
+  x+=cos(angle) * sd;
+  y+=sin(angle) * sd;
+  if (sin(t) > 0) {
+    y+=BOUNCE_SIZE * delta;
+  }
+ else {
+    y-=BOUNCE_SIZE * delta;
+  }
+  t+=delta * BOUNCE_FREQUENCY;
+}

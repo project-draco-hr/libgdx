@@ -1,0 +1,13 @@
+{
+  float minX=bounds.x;
+  float maxX=minX + bounds.width;
+  float minY=bounds.y;
+  float maxY=minY + bounds.height;
+  for (int i=gos.size - 1; i >= 0; i--) {
+    T go=gos.get(i);
+    if (go.x >= maxX || go.x + go.width <= minX || go.y >= maxY || go.y + go.height <= minY) {
+      gos.removeIndex(i);
+      pool.free(go);
+    }
+  }
+}

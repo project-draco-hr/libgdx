@@ -1,0 +1,7 @@
+{
+  int x1=wallDefs.get(i);
+  int y1=wallDefs.get(i + 1);
+  int x2=wallDefs.get(i + 2);
+  int y2=wallDefs.get(i + 3);
+  return (x1 == x2) ? createVWall(x1,y1,y2) : createHWall(x1,x2,y1);
+}

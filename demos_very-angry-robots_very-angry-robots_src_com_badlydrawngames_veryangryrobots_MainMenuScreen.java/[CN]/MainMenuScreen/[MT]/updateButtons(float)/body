@@ -1,0 +1,11 @@
+{
+  touchPoint=screenToViewport(Gdx.input.getX(),Gdx.input.getY());
+  boolean justTouched=Gdx.input.justTouched();
+  boolean isTouched=Gdx.input.isTouched();
+  boolean justReleased=wasTouched && !isTouched;
+  wasTouched=isTouched;
+  playButton.update(delta,justTouched,isTouched,justReleased,touchPoint.x,touchPoint.y);
+  if (game.canShowScores()) {
+    scoresButton.update(delta,justTouched,isTouched,justReleased,touchPoint.x,touchPoint.y);
+  }
+}

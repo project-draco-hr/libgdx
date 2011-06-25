@@ -1,0 +1,6 @@
+{
+  Player player=world.getPlayer();
+  float x=player.x + player.width / 2;
+  float y=player.y + player.height / 2;
+  particleManager.add(x,y,2 * PARTICLES,Color.WHITE);
+}

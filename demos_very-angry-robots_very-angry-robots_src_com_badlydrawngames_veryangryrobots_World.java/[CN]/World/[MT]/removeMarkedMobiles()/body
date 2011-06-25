@@ -1,0 +1,7 @@
+{
+  Colliders.removeOutOfBounds(shotPool,playerShots,roomBounds);
+  Colliders.removeOutOfBounds(robotShotPool,robotShots,roomBounds);
+  Colliders.removeMarkedCollisions(shotPool,playerShots,shotRemovalHandler);
+  Colliders.removeMarkedCollisions(robotPool,robots,robotRemovalHandler);
+  Colliders.removeMarkedCollisions(robotShotPool,robotShots,shotRemovalHandler);
+}

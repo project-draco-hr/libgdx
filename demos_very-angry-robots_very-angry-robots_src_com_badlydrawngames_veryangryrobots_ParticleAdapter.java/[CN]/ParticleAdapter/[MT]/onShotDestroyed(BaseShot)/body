@@ -1,0 +1,5 @@
+{
+  float x=shot.x + shot.width / 2;
+  float y=shot.y + shot.height / 2;
+  particleManager.add(x,y,PARTICLES / 8,shotExplosionColor);
+}

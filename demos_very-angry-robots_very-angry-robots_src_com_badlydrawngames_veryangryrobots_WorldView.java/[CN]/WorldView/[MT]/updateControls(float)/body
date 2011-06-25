@@ -1,0 +1,29 @@
+{
+  presenter.setController(0.0f,0.0f);
+  if (Gdx.input.justTouched()) {
+    worldCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    if (world.isPaused()) {
+      presenter.resume();
+    }
+ else     if (touchPoint.y >= worldMaxY) {
+      presenter.pause();
+    }
+  }
+ else   if (Gdx.input.isTouched()) {
+    worldCam.unproject(dragPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    float dx=dragPoint.x - touchPoint.x;
+    float dy=dragPoint.y - touchPoint.y;
+    joystick.set(dx,dy).mul(JOYSTICK_DISTANCE_MULTIPLIER);
+    float len=joystick.len();
+    if (len > 1) {
+      joystick.nor();
+    }
+    if (presenter != null) {
+      presenter.setController(joystick.x,joystick.y);
+      if (len >= FIRING_DEAD_ZONE) {
+        joystick.nor();
+        presenter.setFiringController(joystick.x,joystick.y);
+      }
+    }
+  }
+}

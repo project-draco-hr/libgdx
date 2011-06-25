@@ -1,0 +1,9 @@
+{
+  stateTime+=delta;
+  if (state == LURKING) {
+    updateLurking(delta);
+  }
+ else   if (state == CHASING) {
+    updateChasing(delta);
+  }
+}

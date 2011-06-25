@@ -1,0 +1,12 @@
+{
+  if (!boundsIntersect(go)) {
+    return false;
+  }
+  if (geometry == null) {
+    return go.geometry == null || go.geometryIntersects(bounds());
+  }
+ else   if (go.geometry == null) {
+    return geometryIntersects(go.bounds());
+  }
+  return geometryIntersects(go);
+}

@@ -1,0 +1,22 @@
+{
+  int newDoor=-1;
+  if (player.x + player.width / 2 < minX) {
+    roomX--;
+    newDoor=DoorPositions.MAX_X;
+  }
+ else   if (player.x + player.width / 2 > maxX) {
+    roomX++;
+    newDoor=DoorPositions.MIN_X;
+  }
+ else   if (player.y + player.height / 2 < minY) {
+    roomY--;
+    newDoor=DoorPositions.MAX_Y;
+  }
+ else   if (player.y + player.height / 2 > maxY) {
+    roomY++;
+    newDoor=DoorPositions.MIN_Y;
+  }
+  if (newDoor != -1) {
+    doLeftRoom(newDoor);
+  }
+}

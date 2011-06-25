@@ -1,0 +1,9 @@
+{
+  IntArray doorDefs=mazeGenerator.getDoors();
+  int n=doorDefs.size / 4;
+  doorRects=Pools.makeArrayFromPool(doorRects,rectanglePool,MAX_DOORS);
+  for (int i=0, j=0; i < n; i++, j+=4) {
+    Rectangle doorRect=createDoor(doorDefs,j);
+    doorRects.add(doorRect);
+  }
+}

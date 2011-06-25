@@ -1,0 +1,6 @@
+{
+  if (lives - 1 == this.lives) {
+    Assets.playSound(Assets.extraLifeSound);
+  }
+  this.lives=lives;
+}

@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < gos.size; i++) {
+    T go=gos.get(i);
+    Colliders.collide(go,roomGrid.get(go.bounds()),handler);
+  }
+}

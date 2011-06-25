@@ -1,0 +1,5 @@
+{
+  if (stateTime >= activateTime) {
+    setState(Captain.CHASING);
+  }
+}

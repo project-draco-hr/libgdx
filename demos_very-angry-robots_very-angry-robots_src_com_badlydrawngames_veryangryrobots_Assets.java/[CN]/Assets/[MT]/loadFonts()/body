@@ -1,0 +1,9 @@
+{
+  String fontDir="data/fonts/" + (int)pixelDensity + "/";
+  scoreFont=new BitmapFont(Gdx.files.internal(fontDir + SCORE_FONT),false);
+  textFont=new BitmapFont(Gdx.files.internal(fontDir + TEXT_FONT),false);
+  flyupFont=new BitmapFont(Gdx.files.internal(fontDir + FLYUP_FONT),false);
+  scoreFont.setScale(1.0f / pixelDensity);
+  textFont.setScale(1.0f / pixelDensity);
+  flyupFont.setScale(1.0f / pixelDensity);
+}

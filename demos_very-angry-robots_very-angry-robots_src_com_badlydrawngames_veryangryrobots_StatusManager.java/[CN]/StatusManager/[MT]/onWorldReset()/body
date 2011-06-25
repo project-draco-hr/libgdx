@@ -1,0 +1,21 @@
+{
+  numGames++;
+  achieved.clear();
+  if (numGames == ADDICT_GAMES) {
+    achievement(Achievements.ADDICT);
+  }
+  gameRobotsShot=0;
+  gameRobotsDestroyed=0;
+  gameRoomsEntered=0;
+  gameRoomsExited=0;
+  gamePlayerHits=0;
+  gameCleanRooms=0;
+  gameChickenRooms=0;
+  gameRoomsWithoutDying=0;
+  cleanRooms=0;
+  chickenRooms=0;
+  isPlayerHit=false;
+  now=0.0f;
+  setLives(INITIAL_LIVES);
+  setScore(0);
+}

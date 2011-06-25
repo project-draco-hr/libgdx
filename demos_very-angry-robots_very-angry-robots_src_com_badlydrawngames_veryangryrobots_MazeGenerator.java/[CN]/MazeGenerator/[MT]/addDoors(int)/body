@@ -1,0 +1,14 @@
+{
+  if ((doorPos & DoorPositions.MIN_Y) == DoorPositions.MIN_Y) {
+    addHDoor(width / 2,0);
+  }
+  if ((doorPos & DoorPositions.MAX_Y) == DoorPositions.MAX_Y) {
+    addHDoor(width / 2,height);
+  }
+  if ((doorPos & DoorPositions.MIN_X) == DoorPositions.MIN_X) {
+    addVDoor(0,height / 2);
+  }
+  if ((doorPos & DoorPositions.MAX_X) == DoorPositions.MAX_X) {
+    addVDoor(width,height / 2);
+  }
+}

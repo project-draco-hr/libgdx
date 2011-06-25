@@ -1,0 +1,25 @@
+{
+  final float w=worldWidth;
+  final float h=worldHeight;
+  float time=min(1.0f,world.getStateTime() / World.ROOM_TRANSITION_TIME);
+switch (world.getDoorPosition()) {
+case DoorPositions.MIN_Y:
+    prevCacheTransform.idt().trn(0.0f,-h * time,0.0f);
+  cacheTransform.idt().trn(0.0f,h - h * time,0.0f);
+break;
+case DoorPositions.MAX_Y:
+prevCacheTransform.idt().trn(0.0f,h * time,0.0f);
+cacheTransform.idt().trn(0.0f,-h + h * time,0.0f);
+break;
+case DoorPositions.MIN_X:
+prevCacheTransform.idt().trn(-w * time,0.0f,0.0f);
+cacheTransform.idt().trn(w - w * time,0.0f,0.0f);
+break;
+case DoorPositions.MAX_X:
+prevCacheTransform.idt().trn(w * time,0.0f,0.0f);
+cacheTransform.idt().trn(-w + w * time,0.0f,0.0f);
+}
+prevSpriteCache.setTransformMatrix(prevCacheTransform);
+spriteCache.setTransformMatrix(cacheTransform);
+spriteBatch.setTransformMatrix(cacheTransform);
+}

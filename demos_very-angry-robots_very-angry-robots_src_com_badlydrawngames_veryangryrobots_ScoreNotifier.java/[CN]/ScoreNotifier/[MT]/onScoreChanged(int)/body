@@ -1,0 +1,5 @@
+{
+  for (  ScoreListener listener : listeners) {
+    listener.onScoreChanged(score);
+  }
+}

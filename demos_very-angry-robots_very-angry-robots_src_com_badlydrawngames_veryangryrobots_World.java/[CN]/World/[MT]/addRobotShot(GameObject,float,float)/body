@@ -1,0 +1,13 @@
+{
+  if (state == PLAYING && robotShots.size < numRobotShots && stateTime >= FIRING_AMNESTY_INTERVAL) {
+    RobotShot shot=robotShotPool.obtain();
+    shot.inCollision=false;
+    shot.setOwner(firer);
+    shot.setShotSpeed(robotShotSpeed);
+    float x=firer.x + firer.width / 2 - shot.width / 2;
+    float y=firer.y + firer.height / 2 - shot.height / 2;
+    shot.fire(x,y,dx,dy);
+    robotShots.add(shot);
+    notifier.onRobotFired((Robot)firer);
+  }
+}

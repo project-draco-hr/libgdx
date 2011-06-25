@@ -1,0 +1,11 @@
+{
+  if (state == PLAYING && playerShots.size < MAX_PLAYER_SHOTS) {
+    PlayerShot shot=shotPool.obtain();
+    shot.inCollision=false;
+    float x=player.x + player.width / 2 - shot.width / 2;
+    float y=player.y + player.height / 2 - shot.height / 2;
+    shot.fire(x,y,dx,dy);
+    playerShots.add(shot);
+    notifier.onPlayerFired();
+  }
+}

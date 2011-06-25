@@ -1,0 +1,22 @@
+{
+  float viewportWidth;
+  float viewportHeight;
+  if (isStretched) {
+    viewportWidth=virtualWidth;
+    viewportHeight=virtualHeight;
+  }
+ else {
+    float aspect=virtualWidth / virtualHeight;
+    float physicalWidth=Gdx.graphics.getWidth();
+    float physicalHeight=Gdx.graphics.getHeight();
+    if (physicalWidth / physicalHeight >= aspect) {
+      viewportHeight=virtualHeight;
+      viewportWidth=viewportHeight * physicalWidth / physicalHeight;
+    }
+ else {
+      viewportWidth=virtualWidth;
+      viewportHeight=viewportWidth * physicalHeight / physicalWidth;
+    }
+  }
+  return new Vector2(viewportWidth,viewportHeight);
+}

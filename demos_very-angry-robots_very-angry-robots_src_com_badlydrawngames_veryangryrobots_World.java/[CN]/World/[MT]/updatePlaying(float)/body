@@ -1,0 +1,6 @@
+{
+  player.update(delta);
+  updateMobiles(delta);
+  checkForCollisions();
+  checkForLeavingRoom();
+}

@@ -1,0 +1,11 @@
+{
+  if (array == null) {
+    T t=pool.obtain();
+    array=new Array<T>(false,size,(Class<T>)t.getClass());
+    pool.free(t);
+  }
+ else {
+    freeArrayToPool(array,pool);
+  }
+  return array;
+}

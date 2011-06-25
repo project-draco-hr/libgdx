@@ -1,0 +1,18 @@
+{
+  wasPressed=false;
+  if (justTouched && inBounds(x,y)) {
+    activated=true;
+    down=true;
+  }
+ else   if (isTouched) {
+    down=activated && inBounds(x,y);
+  }
+ else   if (justReleased) {
+    wasPressed=activated && inBounds(x,y);
+    activated=false;
+    down=false;
+  }
+ else {
+    activated=false;
+  }
+}

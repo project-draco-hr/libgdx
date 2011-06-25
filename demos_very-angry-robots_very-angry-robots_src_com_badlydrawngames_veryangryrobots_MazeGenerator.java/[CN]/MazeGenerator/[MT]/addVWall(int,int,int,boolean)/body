@@ -1,0 +1,12 @@
+{
+  int length=y2 - y1;
+  if (length < 2)   return;
+  if (!solid) {
+    int y=random(y1,y2 - 1);
+    addVWall(x,y1,y);
+    addVWall(x,y + 1,y2);
+  }
+ else {
+    addVWall(x,y1,y2);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  float bestDensity=densities[0];
+  float physicalWidth=Gdx.graphics.getWidth();
+  float physicalHeight=Gdx.graphics.getHeight();
+  for (int i=1; i < densities.length; i++) {
+    float density=densities[i];
+    float widthAtDensity=density * virtualWidth;
+    float heightAtDensity=density * virtualHeight;
+    if (widthAtDensity > physicalWidth || heightAtDensity > physicalHeight) {
+      break;
+    }
+    bestDensity=density;
+  }
+  return bestDensity;
+}

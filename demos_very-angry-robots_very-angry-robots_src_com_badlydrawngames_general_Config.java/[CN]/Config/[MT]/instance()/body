@@ -1,0 +1,21 @@
+{
+  if (null == properties) {
+    properties=new Properties();
+    FileHandle fh=Gdx.files.internal(PROPERTIES_FILE);
+    InputStream inStream=fh.read();
+    try {
+      properties.load(inStream);
+      inStream.close();
+    }
+ catch (    IOException e) {
+      if (inStream != null) {
+        try {
+          inStream.close();
+        }
+ catch (        IOException ex) {
+        }
+      }
+    }
+  }
+  return properties;
+}

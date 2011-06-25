@@ -1,0 +1,12 @@
+{
+  boolean result=false;
+  for (int i=0; i < runs.size; i++) {
+    Rectangle run=runs.get(i);
+    setRectangle(r,x + run.x,y + run.y,run.width,run.height);
+    if (other.intersects(r,otherX,otherY)) {
+      result=true;
+      break;
+    }
+  }
+  return result;
+}

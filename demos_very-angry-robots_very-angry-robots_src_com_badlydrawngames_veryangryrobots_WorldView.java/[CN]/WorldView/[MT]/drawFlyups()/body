@@ -1,0 +1,13 @@
+{
+  BitmapFont font=Assets.flyupFont;
+  float scale=font.getScaleX();
+  font.setScale(1.0f / Assets.pixelDensity);
+  spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
+  for (  Flyup flyup : flyupManager.flyups) {
+    if (flyup.active) {
+      font.draw(spriteBatch,flyup.scoreString,flyup.x,flyup.y);
+    }
+  }
+  spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  font.setScale(scale);
+}

@@ -1,0 +1,6 @@
+{
+  for (int n=start, i=0; i < score.length; n/=10, i++) {
+    int j=(v / n) % 10;
+    score[i]=(char)('0' + j);
+  }
+}

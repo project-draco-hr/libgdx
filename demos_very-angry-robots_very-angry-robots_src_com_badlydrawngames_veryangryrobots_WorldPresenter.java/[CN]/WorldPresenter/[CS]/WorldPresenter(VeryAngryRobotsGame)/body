@@ -1,0 +1,18 @@
+{
+  super(game);
+  difficultyManager=new ScoreBasedDifficultyManager();
+  world=new World(difficultyManager);
+  statusManager=new StatusManager();
+  worldView=new WorldView(world,statusManager,this);
+  statusView=new StatusView(world);
+  soundManager=new SoundManager();
+  statusManager.addScoreListener(statusView);
+  statusManager.addScoreListener(this);
+  statusManager.addScoreListener(difficultyManager);
+  statusManager.addScoreListener(soundManager);
+  statusManager.addAchievementsListener(statusView);
+  statusManager.addAchievementsListener(soundManager);
+  statusManager.addAchievementsListener(game);
+  world.addWorldListener(soundManager);
+  world.addWorldListener(statusManager);
+}

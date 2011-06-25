@@ -1,0 +1,29 @@
+{
+  Animation robotAnimation=null;
+switch (robot.state) {
+case Robot.SCANNING:
+    robotAnimation=Assets.robotScanningAnimation;
+  break;
+case Robot.WALKING_DOWN:
+robotAnimation=Assets.robotWalkingLeftAnimation;
+break;
+case Robot.WALKING_LEFT:
+robotAnimation=Assets.robotWalkingLeftAnimation;
+break;
+case Robot.WALKING_LEFT_DIAGONAL:
+robotAnimation=Assets.robotWalkingLeftAnimation;
+break;
+case Robot.WALKING_RIGHT:
+robotAnimation=Assets.robotWalkingRightAnimation;
+break;
+case Robot.WALKING_RIGHT_DIAGONAL:
+robotAnimation=Assets.robotWalkingRightAnimation;
+break;
+case Robot.WALKING_UP:
+robotAnimation=Assets.robotWalkingRightAnimation;
+break;
+default :
+robotAnimation=Assets.robotScanningAnimation;
+}
+draw(robot,robotAnimation.getKeyFrame(robot.stateTime,true));
+}

@@ -1,0 +1,7 @@
+{
+  float w=Assets.pauseButton.getRegionWidth() / Assets.pixelDensity;
+  float h=Assets.pauseButton.getRegionHeight() / Assets.pixelDensity;
+  float y=VIRTUAL_HEIGHT - h;
+  float x=0.0f;
+  spriteBatch.draw(Assets.pauseButton,x,y,w,h);
+}

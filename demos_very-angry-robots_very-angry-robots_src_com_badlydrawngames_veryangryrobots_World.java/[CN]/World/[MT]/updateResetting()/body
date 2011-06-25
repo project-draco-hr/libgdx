@@ -1,0 +1,7 @@
+{
+  notifier.onWorldReset();
+  roomSeed=System.currentTimeMillis();
+  roomX=0;
+  roomY=0;
+  populateRoom(DoorPositions.MIN_Y);
+}

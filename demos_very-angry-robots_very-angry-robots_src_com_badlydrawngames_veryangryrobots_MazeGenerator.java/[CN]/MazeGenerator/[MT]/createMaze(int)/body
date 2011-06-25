@@ -1,0 +1,7 @@
+{
+  walls.clear();
+  doors.clear();
+  addOuterWalls();
+  addDoors(doorPos);
+  subdivideChamber(0,0,width,height);
+}

@@ -1,0 +1,5 @@
+{
+  float x=robot.x + robot.width / 2;
+  float y=robot.y + robot.height / 2;
+  particleManager.add(x,y,PARTICLES,robotColor);
+}

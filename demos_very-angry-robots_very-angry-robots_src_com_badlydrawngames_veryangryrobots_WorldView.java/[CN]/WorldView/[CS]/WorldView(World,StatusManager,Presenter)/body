@@ -1,0 +1,30 @@
+{
+  this.world=world;
+  this.presenter=presenter;
+  Rectangle bounds=world.getRoomBounds();
+  worldMinX=bounds.x;
+  worldMinY=bounds.y;
+  worldWidth=bounds.width;
+  worldHeight=bounds.height;
+  worldMaxX=worldMinX + worldWidth;
+  worldMaxY=worldMinY + worldHeight;
+  worldCam=CameraHelper.createCamera2(ViewportMode.PIXEL_PERFECT,VIRTUAL_WIDTH,VIRTUAL_HEIGHT,Assets.pixelDensity);
+  worldCam.update();
+  spriteBatch=new SpriteBatch();
+  spriteCache=new SpriteCache(SPRITE_CACHE_SIZE,true);
+  spriteBatch.setProjectionMatrix(worldCam.combined);
+  spriteCache.setProjectionMatrix(worldCam.combined);
+  prevSpriteCache=new SpriteCache(SPRITE_CACHE_SIZE,true);
+  prevSpriteCache.setProjectionMatrix(worldCam.combined);
+  cacheTransform=new Matrix4();
+  prevCacheTransform=new Matrix4();
+  touchPoint=new Vector3();
+  dragPoint=new Vector3();
+  joystick=new Vector2();
+  particleManager=new ParticleManager(MAX_PARTICLES,PARTICLE_SIZE);
+  particleAdapter=new ParticleAdapter(world,particleManager);
+  world.addWorldListener(particleAdapter);
+  flyupManager=new FlyupManager();
+  statusManager.addScoringEventListener(flyupManager);
+  resetCaches();
+}

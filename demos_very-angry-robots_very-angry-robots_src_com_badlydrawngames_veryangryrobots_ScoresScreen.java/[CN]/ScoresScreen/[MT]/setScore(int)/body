@@ -1,0 +1,9 @@
+{
+  scoreString.setScore(score);
+  if (score > topScore) {
+    topScore=score;
+    preferences.putInteger(TOP_SCORE_PREF,topScore);
+    preferences.flush();
+    topScoreString.setScore(score);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  if (world.getPausedTime() % 1.0f < 0.5f) {
+    float y=VIRTUAL_HEIGHT - 1 + Assets.scoreFont.getCapHeight() / 2;
+    Assets.textFont.setColor(1.0f,1.0f,1.0f,1.0f);
+    Assets.textFont.drawWrapped(spriteBatch,RESUME_TEXT,0.0f,y,VIRTUAL_WIDTH,HAlignment.CENTER);
+  }
+}

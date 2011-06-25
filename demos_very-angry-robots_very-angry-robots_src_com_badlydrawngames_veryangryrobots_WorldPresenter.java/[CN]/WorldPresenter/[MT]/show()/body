@@ -1,0 +1,6 @@
+{
+  Gdx.input.setCatchBackKey(true);
+  wasBackPressed=false;
+  world.reset();
+  world.resume();
+}

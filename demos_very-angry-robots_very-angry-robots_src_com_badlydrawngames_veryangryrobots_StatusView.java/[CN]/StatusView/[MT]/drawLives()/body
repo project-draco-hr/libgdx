@@ -1,0 +1,10 @@
+{
+  float h=Assets.playerWalkingRight1.getRegionHeight() / Assets.pixelDensity;
+  float y=VIRTUAL_HEIGHT - h;
+  float w=Assets.playerWalkingRight1.getRegionWidth() / Assets.pixelDensity;
+  float x=VIRTUAL_WIDTH - w;
+  for (int i=0; i < lives - 1; i++) {
+    spriteBatch.draw(Assets.playerWalkingRight1,x,y,w,h);
+    x-=w;
+  }
+}

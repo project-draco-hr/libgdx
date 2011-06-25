@@ -1,0 +1,14 @@
+{
+  this.active=true;
+  this.x=x - halfSize;
+  this.y=y - halfSize;
+  color.set(c);
+  r=c.r;
+  g=c.g;
+  b=c.b;
+  a=3.0f;
+  float direction=random((float)-PI,PI);
+  float speed=random(MIN_SPEED,MAX_SPEED);
+  dx=cos(direction) * speed;
+  dy=sin(direction) * speed;
+}

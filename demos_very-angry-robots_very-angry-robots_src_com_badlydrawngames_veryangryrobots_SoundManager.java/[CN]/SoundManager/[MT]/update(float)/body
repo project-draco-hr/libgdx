@@ -1,0 +1,8 @@
+{
+  now+=delta;
+  if (canTaunt && now >= nextTauntTime) {
+    Sound[] sounds=isChicken ? Assets.chickenTaunts : Assets.standardTaunts;
+    Assets.playSound(sounds[random(sounds.length - 1)]);
+    scheduleTaunt();
+  }
+}

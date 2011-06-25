@@ -1,0 +1,26 @@
+{
+  robotColor=difficultyManager.getRobotColor();
+  numRobots=difficultyManager.getNumberOfRobots();
+  numRobotShots=difficultyManager.getNumberOfRobotShots();
+  robotShotSpeed=difficultyManager.getRobotShotSpeed();
+  final float minXSpawn=minX + WALL_HEIGHT;
+  final float minYSpawn=minY + WALL_HEIGHT;
+  final float maxXSpawn=maxX - WALL_HEIGHT;
+  final float maxYSpawn=maxY - WALL_HEIGHT;
+  robots=Pools.makeArrayFromPool(robots,robotPool,MAX_ROBOTS);
+  playerPos.set(player.x,player.y);
+  for (int i=0; i < numRobots; i++) {
+    Robot robot=robotPool.obtain();
+    robot.inCollision=false;
+    do {
+      robot.x=random(minXSpawn,maxXSpawn - robot.width);
+      robot.y=random(minYSpawn,maxYSpawn - robot.height);
+    }
+ while (!canSpawnHere(robot));
+    robot.setRespawnPoint(robot.x,robot.y);
+    robot.setPlayer(player);
+    robot.setWalls(wallRects);
+    robot.setFireCommand(fireRobotShot);
+    robots.add(robot);
+  }
+}

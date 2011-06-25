@@ -1,0 +1,9 @@
+{
+  FileHandle dh=Gdx.files.internal("data/sounds/" + dir);
+  FileHandle[] fhs=dh.list();
+  Sound[] sounds=new Sound[fhs.length];
+  for (int i=0; i < fhs.length; i++) {
+    sounds[i]=loadSound(dir + "/" + fhs[i].name());
+  }
+  return sounds;
+}

@@ -1,0 +1,8 @@
+{
+  float x=coordMinusHalfHeight(x1,hcells);
+  float y=coordMinusHalfHeight(y1,vcells);
+  float t=coordMinusHalfHeight(x2,hcells);
+  float w=(t - x) + WALL_HEIGHT;
+  float h=WALL_HEIGHT;
+  return newRectangle(x,y,w,h);
+}

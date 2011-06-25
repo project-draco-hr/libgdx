@@ -1,0 +1,13 @@
+{
+  robotsDestroyed++;
+  gameRobotsDestroyed++;
+  int robotScore=ROBOT_SCORE;
+  if (robotsDestroyed == numRobots) {
+    robotScore+=ROBOT_BONUS_SCORE;
+  }
+  addScore(robotScore);
+  scoringEventNotifier.onScoringEvent(robot.x + robot.width / 2,robot.y + robot.height / 2,robotScore);
+  if (gameRobotsDestroyed == ROBOCIDE_ROBOTS) {
+    achievement(Achievements.ROBOCIDE);
+  }
+}

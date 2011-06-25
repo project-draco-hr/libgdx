@@ -1,0 +1,8 @@
+{
+  checkMobileMobileCollisions();
+  checkMobileSceneryCollisions();
+  removeMarkedMobiles();
+  if (state == PLAYING && player.inCollision) {
+    doPlayerHit();
+  }
+}

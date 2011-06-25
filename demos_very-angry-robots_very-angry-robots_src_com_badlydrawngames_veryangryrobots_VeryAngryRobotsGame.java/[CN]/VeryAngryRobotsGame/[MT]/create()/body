@@ -1,0 +1,7 @@
+{
+  Assets.load();
+  mainMenuScreen=new MainMenuScreen(this);
+  playingScreen=new WorldPresenter(this);
+  scoresScreen=new ScoresScreen(this);
+  setScreen(mainMenuScreen);
+}

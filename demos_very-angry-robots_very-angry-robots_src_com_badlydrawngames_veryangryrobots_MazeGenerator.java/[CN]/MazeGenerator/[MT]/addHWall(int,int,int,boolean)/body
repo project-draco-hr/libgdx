@@ -1,0 +1,12 @@
+{
+  int length=x2 - x1;
+  if (length < 2)   return;
+  if (!solid) {
+    int x=random(x1,x2 - 1);
+    addHWall(x1,x,y);
+    addHWall(x + 1,x2,y);
+  }
+ else {
+    addHWall(x1,x2,y);
+  }
+}

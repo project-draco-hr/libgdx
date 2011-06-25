@@ -1,0 +1,10 @@
+{
+  for (int i=gos.size - 1; i >= 0; i--) {
+    U go=gos.get(i);
+    if (go.inCollision) {
+      handler.onRemove(go);
+      gos.removeIndex(i);
+      pool.free(go);
+    }
+  }
+}

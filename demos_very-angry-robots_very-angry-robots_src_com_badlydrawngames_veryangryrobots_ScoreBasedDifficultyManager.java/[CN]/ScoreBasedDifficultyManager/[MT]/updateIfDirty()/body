@@ -1,0 +1,73 @@
+{
+  if (!dirty)   return;
+  dirty=false;
+  Color lastRobotColor=robotColor;
+  if (score < LEVEL_1_SCORE) {
+    robotColor=DARK_YELLOW;
+    numRobotShots=LEVEL_0_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_2_SCORE) {
+    robotColor=RED;
+    numRobotShots=LEVEL_1_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_3_SCORE) {
+    robotColor=DARK_CYAN;
+    numRobotShots=LEVEL_2_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_4_SCORE) {
+    robotColor=GREEN;
+    numRobotShots=LEVEL_3_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_5_SCORE) {
+    robotColor=DARK_PURPLE;
+    numRobotShots=LEVEL_4_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_6_SCORE) {
+    robotColor=LIGHT_YELLOW;
+    numRobotShots=LEVEL_5_ROBOT_SHOTS;
+    robotShotSpeed=SLOW_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_7_SCORE) {
+    robotColor=WHITE;
+    numRobotShots=LEVEL_6_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_8_SCORE) {
+    robotColor=DARK_CYAN;
+    numRobotShots=LEVEL_7_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_9_SCORE) {
+    robotColor=LIGHT_PURPLE;
+    numRobotShots=LEVEL_8_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_10_SCORE) {
+    robotColor=GREY;
+    numRobotShots=LEVEL_9_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+ else   if (score < LEVEL_11_SCORE) {
+    robotColor=DARK_YELLOW;
+    numRobotShots=LEVEL_10_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+ else {
+    robotColor=RED;
+    numRobotShots=LEVEL_11_ROBOT_SHOTS;
+    robotShotSpeed=FAST_SHOT_SPEED;
+  }
+  if (lastRobotColor == robotColor && score >= LEVEL_1_SCORE) {
+    if (numRobots < MAX_ROBOTS) {
+      numRobots+=ROBOT_INCREMENT;
+    }
+  }
+ else {
+    numRobots=INITIAL_ROBOTS;
+  }
+}

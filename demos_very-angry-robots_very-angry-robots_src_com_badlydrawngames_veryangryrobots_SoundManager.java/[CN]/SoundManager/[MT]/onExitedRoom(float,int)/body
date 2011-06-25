@@ -1,0 +1,7 @@
+{
+  isChicken=robots > 0;
+  if (isChicken) {
+    Assets.playSound(Assets.exitRoomAsChickenSpeech);
+  }
+  canTaunt=false;
+}

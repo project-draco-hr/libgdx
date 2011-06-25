@@ -1,0 +1,11 @@
+{
+  float minY=min(y1,y2);
+  if (minY >= rect.y + rect.height + fudge)   return false;
+  float maxY=max(y1,y2);
+  if (maxY < rect.y - fudge)   return false;
+  float minX=min(x1,x2);
+  if (minX >= rect.x + rect.width + fudge)   return false;
+  float maxX=max(x1,x2);
+  if (maxX < rect.x - fudge)   return false;
+  return true;
+}

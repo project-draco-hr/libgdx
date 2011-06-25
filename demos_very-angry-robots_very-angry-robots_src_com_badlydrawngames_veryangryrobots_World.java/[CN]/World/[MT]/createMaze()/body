@@ -1,0 +1,12 @@
+{
+  roomBuilder.build(doorPosition);
+  wallRects=roomBuilder.getWalls();
+  doorRects=roomBuilder.getDoors();
+  roomGrid.clear();
+  for (  Rectangle r : wallRects) {
+    roomGrid.add(r);
+  }
+  for (  Rectangle r : doorRects) {
+    roomGrid.add(r);
+  }
+}

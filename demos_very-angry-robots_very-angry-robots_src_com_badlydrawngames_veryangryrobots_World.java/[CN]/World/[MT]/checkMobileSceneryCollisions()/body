@@ -1,0 +1,6 @@
+{
+  Colliders.collide(player,roomGrid.get(player.bounds()),playerSceneryHandler);
+  markSceneryCollisions(robots,gameObjectSceneryHandler);
+  markSceneryCollisions(playerShots,gameObjectSceneryHandler);
+  markSceneryCollisions(robotShots,gameObjectSceneryHandler);
+}

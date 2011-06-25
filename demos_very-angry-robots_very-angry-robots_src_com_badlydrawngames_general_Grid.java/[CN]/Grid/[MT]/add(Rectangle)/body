@@ -1,0 +1,13 @@
+{
+  int minX=max(0,cellX(r.x));
+  int maxX=min(cols - 1,cellX(r.x + r.width));
+  int minY=max(0,cellY(r.y));
+  int maxY=min(rows - 1,cellY(r.y + r.height));
+  for (int y=minY; y <= maxY; y++) {
+    for (int x=minX; x <= maxX; x++) {
+      int shv=getGridCell(x,y);
+      Array<Rectangle> values=grid.get(shv);
+      values.add(r);
+    }
+  }
+}

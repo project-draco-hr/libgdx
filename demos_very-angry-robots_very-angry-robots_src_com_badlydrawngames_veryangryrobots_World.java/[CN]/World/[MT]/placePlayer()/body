@@ -1,0 +1,24 @@
+{
+  player.inCollision=false;
+switch (doorPosition) {
+case DoorPositions.MIN_X:
+    player.x=minX + player.width / 2;
+  player.y=(maxY + minY) / 2 - player.height / 2;
+break;
+case DoorPositions.MAX_X:
+player.x=maxX - player.width - player.width / 2;
+player.y=(maxY + minY) / 2 - player.height / 2;
+break;
+case DoorPositions.MAX_Y:
+player.x=(maxX + minX) / 2 - player.width / 2;
+player.y=maxY - player.height - player.height / 4;
+break;
+case DoorPositions.MIN_Y:
+default :
+player.x=(maxX + minX) / 2 - player.width / 2;
+player.y=minY + player.height / 4;
+break;
+}
+player.setState(Player.FACING_RIGHT);
+notifier.onPlayerSpawned();
+}

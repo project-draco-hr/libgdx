@@ -1,0 +1,5 @@
+{
+  for (  WorldListener listener : listeners) {
+    listener.onWorldReset();
+  }
+}

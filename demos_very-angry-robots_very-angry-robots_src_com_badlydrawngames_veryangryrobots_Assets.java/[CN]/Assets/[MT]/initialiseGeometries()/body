@@ -1,0 +1,32 @@
+{
+  playerWidth=toWidth(playerWalkingRight1);
+  playerHeight=toHeight(playerWalkingRight1);
+  robotWidth=toWidth(robotRight1);
+  robotHeight=toHeight(robotRight1);
+  captainWidth=toWidth(nemesis1);
+  captainHeight=toHeight(nemesis1);
+  playerShotWidth=toWidth(playerShot);
+  playerShotHeight=toHeight(playerShot);
+  robotShotWidth=toWidth(robotShot);
+  robotShotHeight=toHeight(robotShot);
+  particleWidth=PARTICLE_SIZE;
+  particleHeight=PARTICLE_SIZE;
+  Array<Rectangle> playerRectangles=new Array<Rectangle>();
+  Rectangle r=new Rectangle();
+  float x=(playerWidth * PLAYER_BORDER_WIDTH / 100.0f) / 2.0f;
+  float y=(playerHeight * PLAYER_BORDER_HEIGHT / 100.0f) / 2.0f;
+  float w=playerWidth - 2 * x;
+  float h=playerHeight - 2 * y;
+  setRectangle(r,x,y,w,h);
+  playerRectangles.add(r);
+  playerGeometry=new CollisionGeometry(playerRectangles);
+  Array<Rectangle> captainRectangles=new Array<Rectangle>();
+  r=new Rectangle();
+  x=(captainWidth * CAPTAIN_BORDER_WIDTH / 100.0f) / 2.0f;
+  y=(captainHeight * CAPTAIN_BORDER_HEIGHT / 100.0f) / 2.0f;
+  w=captainWidth - 2 * x;
+  h=captainHeight - 2 * y;
+  setRectangle(r,x,y,w,h);
+  captainRectangles.add(r);
+  captainGeometry=new CollisionGeometry(captainRectangles);
+}

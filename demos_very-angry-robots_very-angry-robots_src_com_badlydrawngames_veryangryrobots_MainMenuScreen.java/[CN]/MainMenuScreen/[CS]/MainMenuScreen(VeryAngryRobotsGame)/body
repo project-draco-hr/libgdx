@@ -1,0 +1,8 @@
+{
+  super(game);
+  menuCam=CameraHelper.createCamera2(ViewportMode.PIXEL_PERFECT,VIRTUAL_WIDTH,VIRTUAL_HEIGHT,Assets.pixelDensity);
+  spriteBatch=new SpriteBatch();
+  spriteBatch.setProjectionMatrix(menuCam.combined);
+  touchPoint=new Vector3();
+  createButtons();
+}
