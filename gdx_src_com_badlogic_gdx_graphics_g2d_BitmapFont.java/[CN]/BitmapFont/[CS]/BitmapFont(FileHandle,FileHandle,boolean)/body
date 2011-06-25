@@ -1,4 +1,3 @@
 {
-  region=new TextureRegion(new Texture(imageFile,false));
-  init(fontFile,region,flip);
+  this(fontFile,imageFile,flip,true);
 }

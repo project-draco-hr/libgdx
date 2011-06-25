@@ -1,0 +1,9 @@
+{
+  font=new BitmapFont();
+  singleLineCache=new BitmapFontCache(font,true);
+  multiLineCache=new BitmapFontCache(font,true);
+  singleLineCacheNonInteger=new BitmapFontCache(font,false);
+  multiLineCacheNonInteger=new BitmapFontCache(font,false);
+  batch=new SpriteBatch();
+  fillCaches();
+}
