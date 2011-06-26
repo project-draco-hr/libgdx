@@ -1,0 +1,12 @@
+{
+  final BitmapFont font=style.font;
+  final Color fontColor=style.fontColor;
+  final NinePatch downPatch=style.down;
+  final NinePatch upPatch=style.up;
+  if (invalidated)   layout();
+  if (isPressed)   downPatch.draw(batch,x,y,width,height,parentAlpha);
+ else   upPatch.draw(batch,x,y,width,height,parentAlpha);
+  float textY=(int)(height * 0.5f) + (int)(bounds.height * 0.5f);
+  font.setColor(fontColor);
+  font.drawMultiLine(batch,text,x + (int)(width * 0.5f),y + textY,0,HAlignment.CENTER);
+}

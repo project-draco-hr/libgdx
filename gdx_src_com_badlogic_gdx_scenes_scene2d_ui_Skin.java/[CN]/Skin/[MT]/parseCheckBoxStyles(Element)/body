@@ -1,0 +1,15 @@
+{
+  for (  Element style : styles.getChildrenByName("checkbox")) {
+    String name=style.getAttribute("name");
+    BitmapFont font=getFont(style.getAttribute("font"));
+    Color fontColor=getColor(style.getAttribute("fontColor"));
+    TextureRegion checked=getRegion(style.getAttribute("checked"));
+    TextureRegion unchecked=getRegion(style.getAttribute("unchecked"));
+    if (name == null)     error("No name given for checkbox style",style);
+    if (font == null)     error("No 'font' given for checkbox style",style);
+    if (fontColor == null)     error("No 'fontColor' given for checkbox style",style);
+    if (checked == null)     error("No 'checked' region given for checkbox style",style);
+    if (unchecked == null)     error("No 'unchecked' region given for checkbox style",style);
+    checkBoxStyles.put(name,new CheckBoxStyle(font,fontColor,checked,unchecked));
+  }
+}

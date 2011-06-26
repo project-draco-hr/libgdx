@@ -1,0 +1,10 @@
+{
+  final NinePatch downPatch=style.down;
+  final NinePatch upPatch=style.up;
+  if (invalidated)   layout();
+  if (isPressed)   downPatch.draw(batch,x,y,width,height,parentAlpha);
+ else   upPatch.draw(batch,x,y,width,height,parentAlpha);
+  float imageX=(width - bounds.width) * 0.5f;
+  float imageY=(height - bounds.height) * 0.5f;
+  batch.draw(image,x + imageX,y + imageY);
+}

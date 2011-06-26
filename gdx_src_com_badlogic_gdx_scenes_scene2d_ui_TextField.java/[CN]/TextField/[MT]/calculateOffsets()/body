@@ -1,0 +1,41 @@
+{
+  final NinePatch background=style.background;
+  float position=glyphPositions.get(cursor);
+  float distance=position - Math.abs(renderOffset);
+  float visibleWidth=width - background.getLeftWidth() - background.getRightWidth();
+  if (distance <= 0) {
+    if (cursor > 0)     renderOffset=-glyphPositions.get(cursor - 1);
+ else     renderOffset=0;
+  }
+ else {
+    if (distance > visibleWidth) {
+      renderOffset-=distance - visibleWidth;
+    }
+  }
+  visibleTextStart=0;
+  textOffset=0;
+  float start=Math.abs(renderOffset);
+  int len=glyphPositions.size;
+  float startPos=0;
+  for (int i=0; i < len; i++) {
+    if (glyphPositions.items[i] >= start) {
+      visibleTextStart=i;
+      startPos=glyphPositions.items[i];
+      textOffset=glyphPositions.items[visibleTextStart] - start;
+      break;
+    }
+  }
+  visibleTextEnd=Math.min(text.length(),cursor + 1);
+  for (; visibleTextEnd <= text.length(); visibleTextEnd++) {
+    if (glyphPositions.items[visibleTextEnd] - startPos > visibleWidth)     break;
+  }
+  visibleTextEnd=Math.max(0,visibleTextEnd - 1);
+  if (hasSelection) {
+    int minIndex=Math.min(cursor,selectionStart);
+    int maxIndex=Math.max(cursor,selectionStart);
+    float minX=Math.max(glyphPositions.get(minIndex),glyphPositions.get(visibleTextStart));
+    float maxX=Math.min(glyphPositions.get(maxIndex),glyphPositions.get(visibleTextEnd));
+    selectionX=minX;
+    selectionWidth=maxX - minX;
+  }
+}

@@ -1,0 +1,395 @@
+{
+  char[] data=(input + "  ").toCharArray();
+  int cs, p=0, pe=data.length, eof=pe, top=0;
+  int[] stack=new int[4];
+  int s=0;
+  String name=null;
+  String widgetLayoutString=null;
+  String className=null;
+  int columnDefaultCount=0;
+  ArrayList<String> values=new ArrayList(4);
+  ArrayList<Object> parents=new ArrayList(8);
+  Cell cell=null, rowDefaults=null, columnDefaults=null;
+  Object parent=table, widget=null;
+  RuntimeException parseRuntimeEx=null;
+  boolean hasColon=false;
+  boolean debug=false;
+  if (debug)   System.out.println();
+  try {
+{
+      cs=tableLayout_start;
+      top=0;
+    }
+{
+      int _klen;
+      int _trans=0;
+      int _acts;
+      int _nacts;
+      int _keys;
+      int _goto_targ=0;
+      _goto:       while (true) {
+switch (_goto_targ) {
+case 0:
+          if (p == pe) {
+            _goto_targ=4;
+            continue _goto;
+          }
+        if (cs == 0) {
+          _goto_targ=5;
+          continue _goto;
+        }
+case 1:
+      _match:       do {
+        _keys=_tableLayout_key_offsets[cs];
+        _trans=_tableLayout_index_offsets[cs];
+        _klen=_tableLayout_single_lengths[cs];
+        if (_klen > 0) {
+          int _lower=_keys;
+          int _mid;
+          int _upper=_keys + _klen - 1;
+          while (true) {
+            if (_upper < _lower)             break;
+            _mid=_lower + ((_upper - _lower) >> 1);
+            if (data[p] < _tableLayout_trans_keys[_mid])             _upper=_mid - 1;
+ else             if (data[p] > _tableLayout_trans_keys[_mid])             _lower=_mid + 1;
+ else {
+              _trans+=(_mid - _keys);
+              break _match;
+            }
+          }
+          _keys+=_klen;
+          _trans+=_klen;
+        }
+        _klen=_tableLayout_range_lengths[cs];
+        if (_klen > 0) {
+          int _lower=_keys;
+          int _mid;
+          int _upper=_keys + (_klen << 1) - 2;
+          while (true) {
+            if (_upper < _lower)             break;
+            _mid=_lower + (((_upper - _lower) >> 1) & ~1);
+            if (data[p] < _tableLayout_trans_keys[_mid])             _upper=_mid - 2;
+ else             if (data[p] > _tableLayout_trans_keys[_mid + 1])             _lower=_mid + 2;
+ else {
+              _trans+=((_mid - _keys) >> 1);
+              break _match;
+            }
+          }
+          _trans+=_klen;
+        }
+      }
+ while (false);
+    cs=_tableLayout_trans_targs[_trans];
+  if (_tableLayout_trans_actions[_trans] != 0) {
+    _acts=_tableLayout_trans_actions[_trans];
+    _nacts=(int)_tableLayout_actions[_acts++];
+    while (_nacts-- > 0) {
+switch (_tableLayout_actions[_acts++]) {
+case 0:
+{
+          s=p;
+        }
+      break;
+case 1:
+{
+      name=new String(data,s,p - s);
+      s=p;
+    }
+  break;
+case 2:
+{
+  values.add(new String(data,s,p - s));
+}
+break;
+case 3:
+{
+if (debug) System.out.println("tableProperty: " + name + " = "+ values);
+((BaseTableLayout)parent).setTableProperty(name,values);
+values.clear();
+name=null;
+}
+break;
+case 4:
+{
+if (debug) System.out.println("cellDefaultProperty: " + name + " = "+ values);
+table.setCellProperty(((BaseTableLayout)parent).cellDefaults,name,values);
+values.clear();
+name=null;
+}
+break;
+case 5:
+{
+columnDefaults=((BaseTableLayout)parent).getColumnDefaults(columnDefaultCount++);
+}
+break;
+case 6:
+{
+if (debug) System.out.println("columnDefaultProperty: " + name + " = "+ values);
+table.setCellProperty(columnDefaults,name,values);
+values.clear();
+name=null;
+}
+break;
+case 7:
+{
+if (debug) System.out.println("startRow");
+rowDefaults=((BaseTableLayout)parent).startRow();
+}
+break;
+case 8:
+{
+if (debug) System.out.println("rowDefaultValue: " + name + " = "+ values);
+table.setCellProperty(rowDefaults,name,values);
+values.clear();
+name=null;
+}
+break;
+case 9:
+{
+if (debug) System.out.println("cellProperty: " + name + " = "+ values);
+table.setCellProperty(cell,name,values);
+values.clear();
+name=null;
+}
+break;
+case 10:
+{
+if (debug) System.out.println("widgetLayoutString: " + new String(data,s,p - s).trim());
+widgetLayoutString=new String(data,s,p - s).trim();
+}
+break;
+case 11:
+{
+className=new String(data,s,p - s);
+}
+break;
+case 12:
+{
+if (debug) System.out.println("newWidget, name:" + name + " class:"+ className+ " widget:"+ widget);
+if (widget != null) {
+if (name != null && name.length() > 0) table.register(name,widget);
+}
+ else if (className == null) {
+if (name.length() > 0) {
+if (hasColon) {
+widget=table.wrap(null);
+table.register(name,widget);
+}
+ else {
+widget=table.getWidget(name);
+if (widget == null) {
+try {
+widget=table.newWidget(name);
+}
+ catch (RuntimeException ex) {
+throw new IllegalArgumentException("Widget not found with name: " + name);
+}
+}
+}
+}
+ else widget=table.wrap(null);
+}
+ else {
+widget=table.newWidget(className);
+if (name.length() > 0) table.register(name,widget);
+}
+name=null;
+className=null;
+}
+break;
+case 13:
+{
+if (debug) System.out.println("newLabel: " + new String(data,s,p - s));
+widget=table.wrap(new String(data,s,p - s));
+}
+break;
+case 14:
+{
+if (debug) System.out.println("startTable, name:" + name);
+parents.add(parent);
+BaseTableLayout parentTable=null;
+for (int i=parents.size() - 1; i >= 0; i--) {
+Object object=parents.get(i);
+if (object instanceof BaseTableLayout) {
+parentTable=(BaseTableLayout)object;
+break;
+}
+}
+if (parentTable == null) parentTable=table;
+parent=parentTable.newTableLayout();
+if (name != null) {
+table.register(name,((BaseTableLayout)parent).getTable());
+name=null;
+}
+cell=null;
+widget=null;
+{
+if (top == stack.length) {
+int[] newStack=new int[stack.length * 2];
+System.arraycopy(stack,0,newStack,0,stack.length);
+stack=newStack;
+}
+{
+stack[top++]=cs;
+cs=62;
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+}
+break;
+case 15:
+{
+widget=parent;
+if (!parents.isEmpty()) {
+if (debug) System.out.println("endTable");
+parent=parents.remove(parents.size() - 1);
+{
+cs=stack[--top];
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+}
+break;
+case 16:
+{
+if (debug) System.out.println("startStack, name:" + name);
+parents.add(parent);
+parent=table.newStack();
+if (name != null) {
+table.register(name,parent);
+name=null;
+}
+cell=null;
+widget=null;
+{
+if (top == stack.length) {
+int[] newStack=new int[stack.length * 2];
+System.arraycopy(stack,0,newStack,0,stack.length);
+stack=newStack;
+}
+{
+stack[top++]=cs;
+cs=91;
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+}
+break;
+case 17:
+{
+if (debug) System.out.println("endStack");
+widget=parent;
+parent=parents.remove(parents.size() - 1);
+{
+cs=stack[--top];
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+break;
+case 18:
+{
+if (debug) System.out.println("startWidgetSection");
+parents.add(parent);
+parent=widget;
+widget=null;
+{
+if (top == stack.length) {
+int[] newStack=new int[stack.length * 2];
+System.arraycopy(stack,0,newStack,0,stack.length);
+stack=newStack;
+}
+{
+stack[top++]=cs;
+cs=68;
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+}
+break;
+case 19:
+{
+if (debug) System.out.println("endWidgetSection");
+widget=parent;
+parent=parents.remove(parents.size() - 1);
+{
+cs=stack[--top];
+_goto_targ=2;
+if (true) continue _goto;
+}
+}
+break;
+case 20:
+{
+if (debug) System.out.println("addCell");
+cell=((BaseTableLayout)parent).addCell(table.wrap(widget));
+}
+break;
+case 21:
+{
+if (debug) System.out.println("addWidget");
+table.addChild(parent,table.wrap(widget),widgetLayoutString);
+widgetLayoutString=null;
+}
+break;
+case 22:
+{
+if (debug) System.out.println("widgetProperty: " + name + " = "+ values);
+table.setProperty(parent,name,values);
+values.clear();
+name=null;
+}
+break;
+case 23:
+{
+widget=null;
+hasColon=false;
+}
+break;
+case 24:
+{
+hasColon=true;
+}
+break;
+}
+}
+}
+case 2:
+if (cs == 0) {
+_goto_targ=5;
+continue _goto;
+}
+if (++p != pe) {
+_goto_targ=1;
+continue _goto;
+}
+case 4:
+case 5:
+}
+break;
+}
+}
+}
+ catch (RuntimeException ex) {
+parseRuntimeEx=ex;
+}
+if (p < pe) {
+int lineNumber=1;
+int lineStartOffset=0;
+for (int i=0; i < p; i++) {
+if (data[i] == '\n') {
+lineNumber++;
+lineStartOffset=i;
+}
+}
+ParseException ex=new ParseException("Error parsing layout on line " + lineNumber + ":"+ (p - lineStartOffset)+ " near: "+ new String(data,p,Math.min(64,pe - p)),parseRuntimeEx);
+ex.line=lineNumber;
+ex.column=p - lineStartOffset;
+throw ex;
+}
+ else if (top > 0) throw new ParseException("Error parsing layout (possibly an unmatched brace or quote): " + new String(data,0,Math.min(64,pe)),parseRuntimeEx);
+}

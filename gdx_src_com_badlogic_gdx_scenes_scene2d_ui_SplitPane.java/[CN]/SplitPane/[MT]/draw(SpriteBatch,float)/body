@@ -1,0 +1,13 @@
+{
+  NinePatch handle=style.handle;
+  setupTransform(batch);
+  calculateBoundsAndPositions(batch.getTransformMatrix());
+  for (int i=0; i < children.size(); i++) {
+    ScissorStack.pushScissors(scissors[i]);
+    drawChild(children.get(i),batch,parentAlpha);
+    ScissorStack.popScissors();
+  }
+  handle.draw(batch,handleBounds.x,handleBounds.y,handleBounds.width,handleBounds.height,parentAlpha);
+  if (invalidated)   layout();
+  resetTransform(batch);
+}

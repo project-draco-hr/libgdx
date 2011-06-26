@@ -1,0 +1,23 @@
+{
+  final NinePatch background=style.background;
+  final NinePatch hScrollKnob=style.hScrollKnob;
+  final NinePatch hScroll=style.hScroll;
+  final NinePatch vScrollKnob=style.vScrollKnob;
+  final NinePatch vScroll=style.vScroll;
+  setupTransform(batch);
+  if (invalidated)   layout();
+  calculateBoundsAndPositions(batch.getTransformMatrix());
+  background.draw(batch,0,0,width,height);
+  ScissorStack.pushScissors(scissorBounds);
+  drawChildren(batch,parentAlpha);
+  ScissorStack.popScissors();
+  if (hasHScroll) {
+    hScroll.draw(batch,hScrollBounds.x,hScrollBounds.y,hScrollBounds.width,hScrollBounds.height);
+    hScrollKnob.draw(batch,hScrollKnobBounds.x,hScrollKnobBounds.y,hScrollKnobBounds.width,hScrollKnobBounds.height);
+  }
+  if (hasVScroll) {
+    vScroll.draw(batch,vScrollBounds.x,vScrollBounds.y,vScrollBounds.width,vScrollBounds.height);
+    vScrollKnob.draw(batch,vScrollKnobBounds.x,vScrollKnobBounds.y,vScrollKnobBounds.width,vScrollKnobBounds.height);
+  }
+  resetTransform(batch);
+}

@@ -1,0 +1,9 @@
+{
+  if (move) {
+    this.x+=(x - initial.x);
+    this.y+=(y - initial.y);
+    return true;
+  }
+  if (parent.focusedActor[0] == this)   return true;
+  return super.touchDragged(x,y,pointer) || isModal;
+}

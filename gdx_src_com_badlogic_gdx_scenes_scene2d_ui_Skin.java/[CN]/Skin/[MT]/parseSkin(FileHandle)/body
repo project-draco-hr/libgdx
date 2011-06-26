@@ -1,0 +1,6 @@
+{
+  Xml xml=new Xml();
+  Element skin=xml.parse(skinFile);
+  parseLibrary(skin);
+  parseWidgetStyles(skin.getChildByName("widgetStyles"));
+}

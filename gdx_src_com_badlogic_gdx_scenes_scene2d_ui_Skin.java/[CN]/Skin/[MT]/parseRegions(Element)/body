@@ -1,0 +1,5 @@
+{
+  for (  Element region : library.getChildrenByName("region")) {
+    regions.put(region.getAttribute("name"),parseRegion(region));
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (firstWidget instanceof Layout)   ((Layout)firstWidget).invalidate();
+  if (secondWidget instanceof Layout)   ((Layout)secondWidget).invalidate();
+  invalidated=true;
+}

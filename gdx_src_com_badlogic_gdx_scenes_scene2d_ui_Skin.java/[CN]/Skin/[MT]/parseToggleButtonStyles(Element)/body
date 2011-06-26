@@ -1,0 +1,15 @@
+{
+  for (  Element style : styles.getChildrenByName("togglebutton")) {
+    String name=style.getAttribute("name");
+    NinePatch down=getNinePatch(style.getAttribute("down"));
+    NinePatch up=getNinePatch(style.getAttribute("up"));
+    BitmapFont font=getFont(style.getAttribute("font"));
+    Color fontColor=getColor(style.getAttribute("fontColor"));
+    if (name == null)     error("No name given for togglebutton style",style);
+    if (down == null)     error("No 'down' nine-patch given for togglebutton style",style);
+    if (up == null)     error("No 'up' nine-patch given for togglebutton style",style);
+    if (font == null)     error("No 'font' given for togglebutton style",style);
+    if (fontColor == null)     error("No 'fontColor' given for togglebutton style",style);
+    toggleButtonStyles.put(name,new ToggleButtonStyle(font,fontColor,down,up));
+  }
+}

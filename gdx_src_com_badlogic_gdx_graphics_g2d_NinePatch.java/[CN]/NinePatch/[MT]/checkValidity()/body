@@ -1,0 +1,14 @@
+{
+  if (patches[BOTTOM_LEFT].getRegionWidth() != patches[TOP_LEFT].getRegionWidth() || patches[BOTTOM_LEFT].getRegionWidth() != patches[MIDDLE_LEFT].getRegionWidth()) {
+    throw new GdxRuntimeException("Left side patches must have the same width");
+  }
+  if (patches[BOTTOM_RIGHT].getRegionWidth() != patches[TOP_RIGHT].getRegionWidth() || patches[BOTTOM_RIGHT].getRegionWidth() != patches[MIDDLE_RIGHT].getRegionWidth()) {
+    throw new GdxRuntimeException("Right side patches must have the same width");
+  }
+  if (patches[BOTTOM_LEFT].getRegionHeight() != patches[BOTTOM_CENTER].getRegionHeight() || patches[BOTTOM_LEFT].getRegionHeight() != patches[BOTTOM_RIGHT].getRegionHeight()) {
+    throw new GdxRuntimeException("Bottom patches must have the same height");
+  }
+  if (patches[TOP_LEFT].getRegionHeight() != patches[TOP_CENTER].getRegionHeight() || patches[TOP_LEFT].getRegionHeight() != patches[TOP_RIGHT].getRegionHeight()) {
+    throw new GdxRuntimeException("Top patches must have the same height");
+  }
+}

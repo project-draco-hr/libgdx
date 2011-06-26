@@ -1,0 +1,8 @@
+{
+  tmp.set(point.x,point.y,0);
+  tmp.mul(transformMatrix);
+  camera.project(tmp);
+  tmp.y=Gdx.graphics.getHeight() - tmp.y;
+  point.x=tmp.x;
+  point.y=tmp.y;
+}

@@ -1,0 +1,10 @@
+{
+  final BitmapFont font=style.font;
+  bounds.set(font.getMultiLineBounds(label));
+  bounds.height-=font.getDescent();
+  prefWidth=bounds.width;
+  prefHeight=bounds.height;
+  textPos.x=0;
+  textPos.y=prefHeight;
+  invalidated=false;
+}

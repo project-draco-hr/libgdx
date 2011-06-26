@@ -1,0 +1,6 @@
+{
+  for (  Element color : library.getChildrenByName("color")) {
+    Color col=new Color(color.getFloatAttribute("r"),color.getFloatAttribute("g"),color.getFloatAttribute("b"),color.getFloatAttribute("a"));
+    colors.put(color.getAttribute("name"),col);
+  }
+}

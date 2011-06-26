@@ -1,0 +1,10 @@
+{
+  if (pointer != 0)   return false;
+  if (touchScrollH || touchScrollV) {
+    focus(null,0);
+    touchScrollH=false;
+    touchScrollV=false;
+    return true;
+  }
+ else   return super.touchUp(x,y,pointer);
+}

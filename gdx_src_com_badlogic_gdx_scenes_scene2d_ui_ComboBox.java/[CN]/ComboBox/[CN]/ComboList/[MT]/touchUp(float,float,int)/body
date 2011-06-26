@@ -1,0 +1,7 @@
+{
+  if (firstUp) {
+    stage.removeActor(this);
+  }
+ else   firstUp=true;
+  return true;
+}

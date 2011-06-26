@@ -1,0 +1,13 @@
+{
+  super(name);
+  this.stage=stage;
+  this.style=style;
+  this.firstWidget=firstWidget;
+  this.secondWidget=secondWidget;
+  this.prefWidth=this.width=prefWidth;
+  this.prefHeight=this.height=prefHeight;
+  this.vertical=vertical;
+  this.addActor(firstWidget);
+  this.addActor(secondWidget);
+  layout();
+}

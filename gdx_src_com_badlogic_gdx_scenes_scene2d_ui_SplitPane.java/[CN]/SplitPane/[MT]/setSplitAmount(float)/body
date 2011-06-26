@@ -1,0 +1,4 @@
+{
+  this.splitAmount=Math.max(Math.min(maxAmount,split),minAmount);
+  invalidate();
+}

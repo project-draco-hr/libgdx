@@ -1,0 +1,11 @@
+{
+  for (  Element style : styles.getChildrenByName("imagebutton")) {
+    String name=style.getAttribute("name");
+    NinePatch down=getNinePatch(style.getAttribute("down"));
+    NinePatch up=getNinePatch(style.getAttribute("up"));
+    if (name == null)     error("No name given for button style",style);
+    if (down == null)     error("No 'down' nine-patch given for button style",style);
+    if (up == null)     error("No 'up' nine-patch given for button style",style);
+    imageButtonStyles.put(name,new ImageButtonStyle(down,up));
+  }
+}

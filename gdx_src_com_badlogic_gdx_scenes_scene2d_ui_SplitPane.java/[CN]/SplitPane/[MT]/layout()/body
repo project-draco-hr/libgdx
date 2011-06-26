@@ -1,0 +1,15 @@
+{
+  if (firstWidget instanceof Layout) {
+    Layout layout=(Layout)firstWidget;
+    layout.layout();
+    firstWidget.width=layout.getPrefWidth();
+    firstWidget.height=layout.getPrefHeight();
+  }
+  if (secondWidget instanceof Layout) {
+    Layout layout=(Layout)secondWidget;
+    layout.layout();
+    secondWidget.width=layout.getPrefWidth();
+    secondWidget.height=layout.getPrefHeight();
+  }
+  invalidated=false;
+}

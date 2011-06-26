@@ -1,0 +1,34 @@
+{
+  NinePatch handle=style.handle;
+  if (pointer != 0)   return false;
+  if (touchDrag) {
+    if (!vertical) {
+      float delta=x - lastPoint.x;
+      float availWidth=width - handle.getTotalWidth();
+      float dragX=handlePos.x + delta;
+      handlePos.x=dragX;
+      dragX=Math.max(0,dragX);
+      dragX=Math.min(availWidth,dragX);
+      splitAmount=dragX / availWidth;
+      if (splitAmount < minAmount)       splitAmount=minAmount;
+      if (splitAmount > maxAmount)       splitAmount=maxAmount;
+      invalidate();
+      lastPoint.set(x,y);
+    }
+ else {
+      float delta=y - lastPoint.y;
+      float availHeight=height - handle.getTotalHeight();
+      float dragY=handlePos.y + delta;
+      handlePos.y=dragY;
+      dragY=Math.max(0,dragY);
+      dragY=Math.min(availHeight,dragY);
+      splitAmount=1 - (dragY / availHeight);
+      if (splitAmount < minAmount)       splitAmount=minAmount;
+      if (splitAmount > maxAmount)       splitAmount=maxAmount;
+      invalidate();
+      lastPoint.set(x,y);
+    }
+    return true;
+  }
+ else   return super.touchDragged(x,y,pointer);
+}

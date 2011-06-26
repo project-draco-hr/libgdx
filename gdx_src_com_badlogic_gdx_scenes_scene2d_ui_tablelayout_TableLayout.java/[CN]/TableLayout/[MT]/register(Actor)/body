@@ -1,0 +1,4 @@
+{
+  if (actor.name == null)   throw new IllegalArgumentException("Actor must have a name: " + actor.getClass());
+  return register(actor.name,actor);
+}

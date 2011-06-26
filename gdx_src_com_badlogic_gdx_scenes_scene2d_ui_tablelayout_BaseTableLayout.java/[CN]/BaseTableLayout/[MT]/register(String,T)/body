@@ -1,0 +1,6 @@
+{
+  name=name.toLowerCase();
+  if (nameToWidget.containsKey(name))   throw new IllegalArgumentException("Name is already used: " + name);
+  nameToWidget.put(name,widget);
+  return widget;
+}

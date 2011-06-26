@@ -1,0 +1,11 @@
+{
+  final NinePatch background=style.background;
+  background.draw(batch,x,y,width,height);
+  setupTransform(batch);
+  applyLayout();
+  calculateScissors(batch.getTransformMatrix());
+  ScissorStack.pushScissors(scissors);
+  super.drawChildren(batch,parentAlpha);
+  resetTransform(batch);
+  ScissorStack.popScissors();
+}

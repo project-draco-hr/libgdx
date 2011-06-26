@@ -1,0 +1,8 @@
+{
+  super.invalidate();
+  for (  Actor child : children) {
+    if (child instanceof Layout) {
+      ((Layout)child).invalidate();
+    }
+  }
+}

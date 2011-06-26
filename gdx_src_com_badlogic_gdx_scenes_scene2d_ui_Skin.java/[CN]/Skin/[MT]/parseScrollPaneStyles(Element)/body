@@ -1,0 +1,17 @@
+{
+  for (  Element style : styles.getChildrenByName("scrollpane")) {
+    String name=style.getAttribute("name");
+    NinePatch background=getNinePatch(style.getAttribute("background"));
+    NinePatch hScroll=getNinePatch(style.getAttribute("hScroll"));
+    NinePatch hScrollKnob=getNinePatch(style.getAttribute("hScrollKnob"));
+    NinePatch vScroll=getNinePatch(style.getAttribute("vScroll"));
+    NinePatch vScrollKnob=getNinePatch(style.getAttribute("vScrollKnob"));
+    if (name == null)     error("No name given for scrollpane style",style);
+    if (background == null)     error("No 'background' given for scrollpane style",style);
+    if (hScroll == null)     error("No 'hScroll' given for scrollpane style",style);
+    if (hScrollKnob == null)     error("No 'hScrollKnob' given for scrollpane style",style);
+    if (vScroll == null)     error("No 'vScroll' given for scrollpane style",style);
+    if (vScrollKnob == null)     error("No 'vScrollKnob' given for scrollpane style",style);
+    scrollPaneStyles.put(name,new ScrollPaneStyle(background,hScroll,hScrollKnob,vScroll,vScrollKnob));
+  }
+}

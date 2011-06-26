@@ -1,0 +1,4 @@
+{
+  if (layout.needsLayout)   layout.layout();
+  super.draw(batch,parentAlpha);
+}

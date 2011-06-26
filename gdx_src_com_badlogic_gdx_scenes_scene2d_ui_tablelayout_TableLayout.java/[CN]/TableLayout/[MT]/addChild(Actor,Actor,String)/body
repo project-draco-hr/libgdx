@@ -1,0 +1,4 @@
+{
+  if (child.parent != null)   child.remove();
+  ((Group)parent).addActor(child);
+}

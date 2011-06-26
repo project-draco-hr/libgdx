@@ -1,0 +1,5 @@
+{
+  for (  Element ninePatch : library.getChildrenByName("ninepatch")) {
+    ninePatches.put(ninePatch.getAttribute("name"),parseNinePatch(ninePatch));
+  }
+}

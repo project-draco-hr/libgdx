@@ -1,0 +1,16 @@
+{
+  float widthTopBottom=width - (patches[TOP_LEFT].getRegionWidth() + patches[TOP_RIGHT].getRegionWidth());
+  float heightLeftRight=height - (patches[TOP_LEFT].getRegionHeight() + patches[BOTTOM_LEFT].getRegionHeight());
+  float widthCenter=widthTopBottom;
+  batch.draw(patches[BOTTOM_LEFT],x,y,patches[BOTTOM_LEFT].getRegionWidth(),patches[BOTTOM_LEFT].getRegionHeight());
+  batch.draw(patches[BOTTOM_CENTER],x + patches[BOTTOM_LEFT].getRegionWidth(),y,widthCenter,patches[BOTTOM_CENTER].getRegionHeight());
+  batch.draw(patches[BOTTOM_RIGHT],x + patches[BOTTOM_LEFT].getRegionWidth() + widthTopBottom,y,patches[BOTTOM_RIGHT].getRegionWidth(),patches[BOTTOM_RIGHT].getRegionHeight());
+  y+=patches[BOTTOM_LEFT].getRegionHeight();
+  batch.draw(patches[MIDDLE_LEFT],x,y,patches[MIDDLE_LEFT].getRegionWidth(),heightLeftRight);
+  batch.draw(patches[MIDDLE_CENTER],x + patches[MIDDLE_LEFT].getRegionWidth(),y,widthCenter,heightLeftRight);
+  batch.draw(patches[MIDDLE_RIGHT],x + patches[MIDDLE_LEFT].getRegionWidth() + widthTopBottom,y,patches[MIDDLE_RIGHT].getRegionWidth(),heightLeftRight);
+  y+=heightLeftRight;
+  batch.draw(patches[TOP_LEFT],x,y,patches[TOP_LEFT].getRegionWidth(),patches[TOP_LEFT].getRegionHeight());
+  batch.draw(patches[TOP_CENTER],x + patches[TOP_LEFT].getRegionWidth(),y,widthCenter,patches[TOP_CENTER].getRegionHeight());
+  batch.draw(patches[TOP_RIGHT],x + patches[TOP_LEFT].getRegionWidth() + widthTopBottom,y,patches[TOP_RIGHT].getRegionWidth(),patches[TOP_RIGHT].getRegionHeight());
+}

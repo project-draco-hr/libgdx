@@ -1,0 +1,7 @@
+{
+  long time=System.nanoTime();
+  if ((time - lastBlink) / 1000000000.0f > blinkTime) {
+    cursorOn=!cursorOn;
+    lastBlink=time;
+  }
+}

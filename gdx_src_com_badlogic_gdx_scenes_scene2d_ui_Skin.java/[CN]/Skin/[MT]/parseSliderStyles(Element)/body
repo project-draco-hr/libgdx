@@ -1,0 +1,11 @@
+{
+  for (  Element style : styles.getChildrenByName("slider")) {
+    String name=style.getAttribute("name");
+    NinePatch sliderPatch=getNinePatch(style.getAttribute("slider"));
+    TextureRegion knobPatch=getRegion(style.getAttribute("knob"));
+    if (name == null)     error("No name given for slider style",style);
+    if (sliderPatch == null)     error("No 'slider' nine-patch given for slider style",style);
+    if (knobPatch == null)     error("No 'knob' region given for slider style",style);
+    sliderStyles.put(name,new SliderStyle(sliderPatch,knobPatch));
+  }
+}

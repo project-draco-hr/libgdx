@@ -1,0 +1,18 @@
+{
+  for (int i=cells.size() - 1; i >= 0; i--)   removeChild(getTable(),(T)cells.get(i).widget);
+  cells.clear();
+  columnDefaults.clear();
+  nameToWidget.clear();
+  widgetToCell.clear();
+  cellDefaults.set(Cell.defaults());
+  debug=null;
+  rows=0;
+  columns=0;
+  rowDefaults=null;
+  padTop=null;
+  padLeft=null;
+  padBottom=null;
+  padRight=null;
+  align=CENTER;
+  if (debug != null)   clearDebugRectangles();
+}

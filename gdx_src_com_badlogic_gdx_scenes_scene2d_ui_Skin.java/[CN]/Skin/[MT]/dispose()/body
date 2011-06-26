@@ -1,0 +1,6 @@
+{
+  texture.dispose();
+  for (  BitmapFont font : fonts.values()) {
+    font.dispose();
+  }
+}

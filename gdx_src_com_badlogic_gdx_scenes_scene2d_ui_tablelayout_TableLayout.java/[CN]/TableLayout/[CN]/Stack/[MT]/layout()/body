@@ -1,0 +1,14 @@
+{
+  if (!needsLayout)   return;
+  needsLayout=false;
+  for (int i=0, n=children.size(); i < n; i++) {
+    Actor actor=children.get(i);
+    actor.width=width;
+    actor.height=height;
+    if (actor instanceof Layout) {
+      Layout layout=(Layout)actor;
+      layout.invalidate();
+      layout.layout();
+    }
+  }
+}

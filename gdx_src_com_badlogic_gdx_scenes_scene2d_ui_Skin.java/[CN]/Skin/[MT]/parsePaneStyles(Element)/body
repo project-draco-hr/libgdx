@@ -1,0 +1,9 @@
+{
+  for (  Element style : styles.getChildrenByName("pane")) {
+    String name=style.getAttribute("name");
+    NinePatch patch=getNinePatch(style.getAttribute("background"));
+    if (name == null)     error("No name given for pane style",style);
+    if (patch == null)     error("No 'background' given for pane style",style);
+    paneStyles.put(name,new PaneStyle(patch));
+  }
+}

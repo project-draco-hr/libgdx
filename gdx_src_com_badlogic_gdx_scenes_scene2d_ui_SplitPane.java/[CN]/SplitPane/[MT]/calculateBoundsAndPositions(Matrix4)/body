@@ -1,0 +1,32 @@
+{
+  if (oldSplitAmount != splitAmount) {
+    oldSplitAmount=splitAmount;
+    invalidate();
+  }
+  if (!vertical)   calculateHorizBoundsAndPositions();
+ else   calculateVertBoundsAndPositions();
+  boolean layoutFirst=false;
+  boolean layoutSecond=false;
+  if (firstWidget.width != firstWidgetBounds.width || firstWidget.height != firstWidgetBounds.height) {
+    layoutFirst=true;
+  }
+  if (secondWidget.width != secondWidgetBounds.width || secondWidget.height != secondWidgetBounds.height) {
+    layoutSecond=true;
+  }
+  firstWidget.x=firstWidgetBounds.x;
+  firstWidget.y=firstWidgetBounds.y;
+  firstWidget.width=firstWidgetBounds.width;
+  firstWidget.height=firstWidgetBounds.height;
+  secondWidget.x=secondWidgetBounds.x;
+  secondWidget.y=secondWidgetBounds.y;
+  secondWidget.width=secondWidgetBounds.width;
+  secondWidget.height=secondWidgetBounds.height;
+  if (layoutFirst && firstWidget instanceof Layout) {
+    ((Layout)firstWidget).invalidate();
+  }
+  if (layoutSecond && secondWidget instanceof Layout) {
+    ((Layout)secondWidget).invalidate();
+  }
+  ScissorStack.calculateScissors(stage.getCamera(),transform,firstWidgetBounds,scissors[0]);
+  ScissorStack.calculateScissors(stage.getCamera(),transform,secondWidgetBounds,scissors[1]);
+}

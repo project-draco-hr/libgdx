@@ -1,0 +1,37 @@
+{
+  final NinePatch background=style.background;
+  final NinePatch hScrollKnob=style.hScrollKnob;
+  final NinePatch vScrollKnob=style.vScrollKnob;
+  float areaWidth=width - background.getLeftWidth() - background.getRightWidth();
+  float areaHeight=height - background.getTopHeight() - background.getBottomHeight();
+  hasHScroll=false;
+  hasVScroll=false;
+  if (widget.width > areaWidth)   hasHScroll=true;
+  if (widget.height > areaHeight)   hasVScroll=true;
+  if (hasVScroll && (widget.width > areaWidth - vScrollKnob.getTotalWidth())) {
+    hasHScroll=true;
+    areaWidth-=vScrollKnob.getTotalWidth();
+  }
+  if (hasHScroll && (widget.height > areaHeight - hScrollKnob.getTotalHeight())) {
+    hasVScroll=true;
+    areaHeight-=hScrollKnob.getTotalHeight();
+  }
+  if (hasHScroll) {
+    hScrollBounds.set(background.getLeftWidth(),background.getBottomHeight(),areaWidth,hScrollKnob.getTotalHeight());
+    hScrollKnobBounds.width=Math.max(hScrollKnob.getTotalWidth(),(int)(hScrollBounds.width * areaWidth / widget.width));
+    hScrollKnobBounds.height=hScrollKnob.getTotalHeight();
+    hScrollKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hScrollKnobBounds.width) * hScrollAmount);
+    hScrollKnobBounds.y=hScrollBounds.y;
+  }
+  if (hasVScroll) {
+    vScrollBounds.set(width - background.getRightWidth() - vScrollKnob.getTotalWidth(),height - background.getTopHeight() - areaHeight,vScrollKnob.getTotalWidth(),areaHeight);
+    vScrollKnobBounds.width=vScrollKnob.getTotalWidth();
+    vScrollKnobBounds.height=Math.max(vScrollKnob.getTotalHeight(),(int)(vScrollBounds.height * areaHeight / widget.height));
+    vScrollKnobBounds.x=vScrollBounds.x;
+    vScrollKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vScrollKnobBounds.height) * (1 - vScrollAmount));
+  }
+  widgetAreaBounds.set(background.getLeftWidth(),background.getBottomHeight() + (hasHScroll ? hScrollKnob.getTotalHeight() : 0),areaWidth,areaHeight);
+  widget.y=widgetAreaBounds.y - (!hasVScroll ? (int)(widget.height - areaHeight) : 0) - (hasVScroll ? (int)((widget.height - areaHeight) * (1 - vScrollAmount)) : 0);
+  widget.x=widgetAreaBounds.x - (hasHScroll ? (int)((widget.width - areaWidth) * hScrollAmount) : 0);
+  ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
+}
