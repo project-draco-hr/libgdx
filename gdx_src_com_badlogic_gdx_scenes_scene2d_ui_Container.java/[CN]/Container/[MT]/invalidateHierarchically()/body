@@ -1,5 +1,5 @@
 {
-  if (this instanceof Layout)   invalidate();
+  invalidate();
   Group parent=this.parent;
   while (parent != null) {
     if (parent instanceof Layout)     ((Layout)parent).invalidate();
