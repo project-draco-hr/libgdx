@@ -1,4 +1,0 @@
-{
-  Awesomium.INSTANCE.awe_getKeyIdentifierFromVirtualKeyCode(virtualKeyCode,identifierPointer);
-  Awesomium.INSTANCE.awe_WebView_injectKeyboardEventArgs(webView,Awesomium.AWE_TYPE_KEY_DOWN,modifiers,virtualKeyCode,virtualKeyCode,identifierBuffer,text,unmodifiedText,isSystemKey ? -1 : 0);
-}

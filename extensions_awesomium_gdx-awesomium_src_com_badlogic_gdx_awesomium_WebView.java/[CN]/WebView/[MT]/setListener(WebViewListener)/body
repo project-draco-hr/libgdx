@@ -1,4 +1,0 @@
-{
-  WebViewListenerC listenerC=new WebViewListenerC(new WebViewListenerCStub(listener));
-  Awesomium.INSTANCE.awe_WebView_setListener(webView,listenerC);
-}
