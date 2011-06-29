@@ -11,9 +11,6 @@
   gl.glGetProgramiv(program,GL20.GL_LINK_STATUS,intbuf);
   int linked=intbuf.get(0);
   if (linked == 0) {
-    gl.glGetProgramiv(program,GL20.GL_INFO_LOG_LENGTH,intbuf);
-    int infoLogLength=intbuf.get(0);
-    if (infoLogLength > 1)     log+=gl.glGetProgramInfoLog(program);
     return -1;
   }
   return program;
