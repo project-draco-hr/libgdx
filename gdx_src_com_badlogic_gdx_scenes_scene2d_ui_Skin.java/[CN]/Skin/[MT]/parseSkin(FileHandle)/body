@@ -1,6 +1,11 @@
 {
-  Xml xml=new Xml();
-  Element skin=xml.parse(skinFile);
-  parseLibrary(skin);
-  parseWidgetStyles(skin.getChildByName("widgetStyles"));
+  try {
+    Xml xml=new Xml();
+    Element skin=xml.parse(skinFile);
+    parseLibrary(skin);
+    parseWidgetStyles(skin.getChildByName("widgetStyles"));
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't parse skinFile",e);
+  }
 }

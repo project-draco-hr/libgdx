@@ -1,10 +1,5 @@
 {
   texture=new Texture(textureFile);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
-  try {
-    parseSkin(skinFile);
-  }
- catch (  IOException e) {
-    throw new GdxRuntimeException("Couldn't parse skinFile",e);
-  }
+  parseSkin(skinFile);
 }
