@@ -1,0 +1,8 @@
+{
+  for (int i=cells.size() - 1; i >= 0; i--)   removeChild(getTable(),(T)cells.get(i).widget);
+  cells.clear();
+  nameToWidget.clear();
+  widgetToCell.clear();
+  rows=0;
+  columns=0;
+}
