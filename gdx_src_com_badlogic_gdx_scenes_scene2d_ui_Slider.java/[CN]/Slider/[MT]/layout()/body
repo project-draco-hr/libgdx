@@ -1,4 +1,4 @@
 {
-  prefHeight=style.knob.getRegionHeight();
+  prefHeight=Math.max(style.knob.getRegionHeight(),style.slider.getTotalHeight());
   invalidated=false;
 }

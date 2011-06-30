@@ -5,6 +5,7 @@
   sliderPos=value / (max - min) * (width - knob.getRegionWidth());
   sliderPos=Math.max(0,sliderPos);
   sliderPos=Math.min(width - knob.getRegionWidth(),sliderPos);
-  slider.draw(batch,x,y,width,height);
-  batch.draw(knob,x + sliderPos,y);
+  float maxHeight=Math.max(knob.getRegionHeight(),slider.getTotalHeight());
+  slider.draw(batch,x,y + (int)((maxHeight - slider.getTotalHeight()) * 0.5f),width,slider.getTotalHeight());
+  batch.draw(knob,x + sliderPos,y + (int)((maxHeight - knob.getRegionHeight()) * 0.5f));
 }
