@@ -1,0 +1,10 @@
+{
+  setupScene();
+  setupShadowMap();
+  setupUI();
+  camController=new PerspectiveCamController(cam);
+  multiplexer=new InputMultiplexer();
+  multiplexer.addProcessor(ui);
+  multiplexer.addProcessor(camController);
+  Gdx.input.setInputProcessor(multiplexer);
+}

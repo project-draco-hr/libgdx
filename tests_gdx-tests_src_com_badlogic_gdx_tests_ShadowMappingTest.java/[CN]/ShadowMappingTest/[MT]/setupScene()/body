@@ -1,0 +1,14 @@
+{
+  plane=new Mesh(true,4,4,new VertexAttribute(Usage.Position,3,"a_Position"));
+  plane.setVertices(new float[]{-10,-1,10,10,-1,10,10,-1,-10,-10,-1,-10});
+  plane.setIndices(new short[]{3,2,1,0});
+  cube=ModelLoaderOld.loadObj(Gdx.files.internal("data/cube.obj").read());
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(0,0,10);
+  cam.lookAt(0,0,0);
+  cam.update();
+  currCam=cam;
+  flatShader=new ShaderProgram(Gdx.files.internal("data/shaders/flat-vert.glsl").readString(),Gdx.files.internal("data/shaders/flat-frag.glsl").readString());
+  if (!flatShader.isCompiled())   throw new GdxRuntimeException("Couldn't compile flat shader: " + flatShader.getLog());
+  currShader=flatShader;
+}

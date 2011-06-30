@@ -1,0 +1,11 @@
+{
+  shadowMap=new FrameBuffer(Format.RGBA8888,512,512,true);
+  lightCam=new PerspectiveCamera(67,shadowMap.getWidth(),shadowMap.getHeight());
+  lightCam.position.set(-10,10,0);
+  lightCam.lookAt(0,0,0);
+  lightCam.update();
+  shadowGenShader=new ShaderProgram(Gdx.files.internal("data/shaders/shadowgen-vert.glsl").readString(),Gdx.files.internal("data/shaders/shadowgen-frag.glsl").readString());
+  if (!shadowGenShader.isCompiled())   throw new GdxRuntimeException("Couldn't compile shadow gen shader: " + shadowGenShader.getLog());
+  shadowMapShader=new ShaderProgram(Gdx.files.internal("data/shaders/shadowmap-vert.glsl").readString(),Gdx.files.internal("data/shaders/shadowmap-frag.glsl").readString());
+  if (!shadowMapShader.isCompiled())   throw new GdxRuntimeException("Couldn't compile shadow map shader: " + shadowMapShader.getLog());
+}

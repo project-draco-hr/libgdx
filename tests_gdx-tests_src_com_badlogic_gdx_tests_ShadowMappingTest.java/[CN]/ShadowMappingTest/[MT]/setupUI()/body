@@ -1,0 +1,33 @@
+{
+  ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.xml"),Gdx.files.internal("data/uiskin.png"));
+  Label label=skin.newLabel("label","Camera:");
+  ComboBox cameraCombo=skin.newComboBox("cameraCombo",new String[]{"Scene","Light"},ui);
+  Label label2=skin.newLabel("label2","Shader");
+  ComboBox shaderCombo=skin.newComboBox("shaderCombo",new String[]{"flat","shadow-gen","shadow-map"},ui);
+  Label fpsLabel=skin.newLabel("fps","fps:");
+  Container container=new Container("toolbar",Gdx.graphics.getWidth(),100);
+  container.add(label).spacingRight(5);
+  container.add(cameraCombo).spacingRight(5);
+  container.add(label2).spacingRight(5);
+  container.add(shaderCombo).spacingRight(5);
+  container.add(fpsLabel).spacingRight(5);
+  container.y=ui.top() - 100;
+  ui.addActor(container);
+  cameraCombo.setSelectionListener(new ComboBox.SelectionListener(){
+    @Override public void selected(    ComboBox comboBox,    int selectionIndex,    String selection){
+      if (selectionIndex == 0)       currCam=cam;
+ else       currCam=lightCam;
+      camController.cam=currCam;
+    }
+  }
+);
+  shaderCombo.setSelectionListener(new ComboBox.SelectionListener(){
+    @Override public void selected(    ComboBox comboBox,    int selectionIndex,    String selection){
+      if (selectionIndex == 0)       currShader=flatShader;
+ else       if (selectionIndex == 1)       currShader=shadowGenShader;
+ else       currShader=shadowMapShader;
+    }
+  }
+);
+}
