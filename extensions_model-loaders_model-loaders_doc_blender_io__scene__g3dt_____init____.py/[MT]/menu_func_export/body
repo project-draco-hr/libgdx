@@ -1,0 +1,2 @@
+def menu_func_export(self, context):
+    self.layout.operator(ExportG3DTStill.bl_idname, text='G3DT Stillmodel (.g3dt)')

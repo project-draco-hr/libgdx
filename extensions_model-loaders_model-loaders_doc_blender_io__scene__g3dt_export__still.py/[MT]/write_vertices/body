@@ -1,0 +1,24 @@
+def write_vertices(file, faces, use_normals, use_face_normals, use_uvs, use_invert_uvs, use_y_up):
+    for face in faces:
+        for vertex in face:
+            position = vertex[0]
+            if use_face_normals:
+                normal = vertex[2]
+            else:
+                normal = vertex[1]
+            if use_y_up:
+                file.write(('%f,%f,%f' % (position.y, position.z, position.x)))
+            else:
+                file.write(('%f,%f,%f' % (position.x, position.y, position.z)))
+            if use_normals:
+                if use_y_up:
+                    file.write((',%f,%f,%f' % (normal.x, normal.z, normal.y)))
+                else:
+                    file.write((',%f,%f,%f' % (normal.x, normal.y, normal.z)))
+            if use_uvs:
+                for i in range(3, len(vertex)):
+                    if use_invert_uvs:
+                        file.write((',%f,%f' % (vertex[i][0], (1.0 - vertex[i][1]))))
+                    else:
+                        file.write((',%f,%f' % (vertex[i][0], vertex[i][1])))
+            file.write('\n')

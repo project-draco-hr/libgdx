@@ -1,0 +1,12 @@
+def write_vertex_attributes(file, faces, use_normals, use_uvs):
+    attribCount = 1
+    if use_normals:
+        attribCount += 1
+    if use_uvs:
+        attribCount += (len(faces[0][0]) - 3)
+    file.write(('%i\n' % attribCount))
+    file.write('position\n')
+    if use_normals:
+        file.write('normal\n')
+    for i in range((len(faces[0][0]) - 3)):
+        file.write('uv\n')

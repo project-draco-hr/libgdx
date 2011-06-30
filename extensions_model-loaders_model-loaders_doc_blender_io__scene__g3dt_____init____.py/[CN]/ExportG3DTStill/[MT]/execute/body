@@ -1,0 +1,7 @@
+def execute(self, context):
+    import io_scene_g3dt
+    import io_scene_g3dt.export_still
+    import imp
+    imp.reload(io_scene_g3dt)
+    imp.reload(io_scene_g3dt.export_still)
+    return io_scene_g3dt.export_still.save(self, context, **self.as_keywords(ignore=('check_existing', 'filter_glob')))

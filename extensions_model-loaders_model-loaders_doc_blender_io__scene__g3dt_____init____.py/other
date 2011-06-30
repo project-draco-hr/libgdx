@@ -1,0 +1,12 @@
+if ('bpy' in locals()):
+    import imp
+    if ('export_still' in locals()):
+        imp.reload(export_still)
+import bpy
+from bpy.props import BoolProperty, FloatProperty, StringProperty, EnumProperty
+import io_utils
+from io_utils import ExportHelper, ImportHelper
+from . import *
+bl_info = {'name': 'G3DT Exporter', 'description': 'Exports Meshes to the G3DT format.', 'author': 'Mario Zechner', 'version': (1, 0), 'blender': (2, 5, 3), 'api': 31236, 'location': 'File > Export', 'warning': '', 'category': 'Import-Export', }
+if (__name__ == '__main__'):
+    register()

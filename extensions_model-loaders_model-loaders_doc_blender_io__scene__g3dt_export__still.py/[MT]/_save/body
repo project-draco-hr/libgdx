@@ -1,0 +1,27 @@
+def _save(filepath='c:\\gdx-workspace\\gdx\\extensions\\model-loaders\\model-loaders\\data\\test.g3dt', use_selection=False, use_apply_modifiers=True, use_normals=True, use_face_normals=True, use_uvs=True, use_invert_uvs=False, use_y_up=True):
+    print 'exporting G3DT Stillmodel'
+    print ('G3DT Stillmodel Export path: %r' % filepath)
+    version = 'g3dt-still-1.0'
+    file = open(filepath, 'w', encoding='utf8', newline='\n')
+    file.write((version + '\n'))
+    if use_selection:
+        objects = bpy.context.selected_objects
+    else:
+        objects = bpy.data.objects
+    tmp = []
+    for obj in objects:
+        if (obj.type != 'MESH'):
+            continue
+        tmp.append(obj)
+    objects = tmp
+    file.write((str(len(objects)) + '\n'))
+    for obj in objects:
+        print (("exporting mesh '" + obj.name) + "'")
+        mesh = obj.to_mesh(bpy.context.scene, use_apply_modifiers, 'PREVIEW')
+        file.write((obj.name + '\n'))
+        faces = collect_faces(mesh)
+        write_faces_info(file, faces)
+        write_vertex_attributes(file, faces, use_normals, use_uvs)
+        write_vertices(file, faces, use_normals, use_face_normals, use_uvs, use_invert_uvs, use_y_up)
+    file.close()
+    return {'FINISHED'}

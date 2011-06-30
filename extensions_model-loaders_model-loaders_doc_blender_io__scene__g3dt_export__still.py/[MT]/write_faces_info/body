@@ -1,0 +1,10 @@
+def write_faces_info(file, faces):
+    file.write(('%i\n' % len(faces)))
+    numVertices = 0
+    for face in faces:
+        file.write(str(len(face)))
+        for vertex in face:
+            file.write((',%i' % numVertices))
+            numVertices += 1
+        file.write('\n')
+    file.write(('%i\n' % numVertices))

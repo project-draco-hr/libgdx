@@ -1,0 +1,3 @@
+def save(self, context, filepath='c:\\gdx-workspace\\gdx\\extensions\\model-loaders\\model-loaders\\data\\test.g3dt', use_selection=False, use_apply_modifiers=True, use_normals=True, use_face_normals=True, use_uvs=True, use_invert_uvs=False, use_y_up=True):
+    return _save(filepath, use_selection, use_apply_modifiers, use_normals, use_face_normals, use_uvs, use_invert_uvs, use_y_up)
+    return {'FINISHED'}
