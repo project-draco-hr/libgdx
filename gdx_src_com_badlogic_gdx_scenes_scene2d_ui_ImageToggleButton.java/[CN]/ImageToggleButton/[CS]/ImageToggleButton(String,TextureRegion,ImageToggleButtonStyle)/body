@@ -2,6 +2,8 @@
   super(name,0,0);
   this.style=style;
   this.image=image;
+  this.imageWidth=image.getRegionWidth();
+  this.imageHeight=image.getRegionHeight();
   layout();
   this.width=prefWidth;
   this.height=prefHeight;

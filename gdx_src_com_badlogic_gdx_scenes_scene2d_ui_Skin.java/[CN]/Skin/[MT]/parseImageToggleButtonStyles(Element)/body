@@ -1,5 +1,5 @@
 {
-  for (  Element style : styles.getChildrenByName("togglebutton")) {
+  for (  Element style : styles.getChildrenByName("imagetogglebutton")) {
     String name=style.getAttribute("name");
     NinePatch down=getNinePatch(style.getAttribute("down"));
     NinePatch up=getNinePatch(style.getAttribute("up"));

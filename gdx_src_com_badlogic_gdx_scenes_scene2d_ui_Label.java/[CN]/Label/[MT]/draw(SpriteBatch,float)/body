@@ -3,5 +3,5 @@
   final Color fontColor=style.fontColor;
   if (invalidated)   layout();
   font.setColor(fontColor);
-  font.drawMultiLine(batch,label,x + textPos.x,y + textPos.y);
+  font.drawMultiLine(batch,label,x + textPos.x,y + height);
 }

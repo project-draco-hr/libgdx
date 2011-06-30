@@ -1,6 +1,6 @@
 {
   final NinePatch downPatch=style.down;
-  bounds.set(0,0,image.getRegionWidth(),image.getRegionHeight());
+  bounds.set(0,0,imageWidth,imageHeight);
   prefHeight=downPatch.getBottomHeight() + downPatch.getTopHeight() + bounds.height;
   prefWidth=downPatch.getLeftWidth() + downPatch.getRightWidth() + bounds.width;
   invalidated=false;
