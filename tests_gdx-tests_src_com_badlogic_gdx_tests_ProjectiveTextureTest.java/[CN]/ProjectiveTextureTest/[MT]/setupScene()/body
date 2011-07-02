@@ -3,8 +3,8 @@
   plane.setVertices(new float[]{-10,-1,10,0,1,0,10,-1,10,0,1,0,10,-1,-10,0,1,0,-10,-1,-10,0,1,0});
   plane.setIndices(new short[]{3,2,1,1,0,3});
   cube=ModelLoaderOld.loadObj(Gdx.files.internal("data/cube.obj").read());
-  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
-  texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),Format.RGB565,true);
+  texture.setFilter(TextureFilter.MipMap,TextureFilter.Nearest);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(0,5,10);
   cam.lookAt(0,0,0);
