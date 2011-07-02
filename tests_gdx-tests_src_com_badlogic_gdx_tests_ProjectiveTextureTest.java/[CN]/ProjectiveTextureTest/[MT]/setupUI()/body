@@ -1,0 +1,25 @@
+{
+  ui=new Stage(480,320,false);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.xml"),Gdx.files.internal("data/uiskin.png"));
+  Button reload=skin.newButton("reload","Reload Shaders");
+  ComboBox camera=skin.newComboBox("camera",new String[]{"Camera","Light"},ui);
+  Label fps=skin.newLabel("fps","fps: ");
+  Container container=new Container("container",Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  container.add(reload).spacingRight(5);
+  container.add(camera).spacingRight(5);
+  container.add(fps);
+  ui.addActor(container);
+  reload.setClickListener(new ClickListener(){
+    @Override public void click(    Button button){
+      ShaderProgram prog=new ShaderProgram(Gdx.files.internal("data/shaders/projtex-vert.glsl").readString(),Gdx.files.internal("data/shaders/projtex-frag.glsl").readString());
+      if (prog.isCompiled() == false) {
+        Gdx.app.log("GLSL ERROR","Couldn't reload shaders:\n" + prog.getLog());
+      }
+ else {
+        projTexShader.dispose();
+        projTexShader=prog;
+      }
+    }
+  }
+);
+}
