@@ -1,0 +1,14 @@
+{
+  VertexAttribute[] attribs=buildVertexAttributes(hasNormals,hasColors,numTexCoords);
+  mesh=new Mesh(false,maxVertices,0,attribs);
+  String vertexShader=createVertexShader(hasNormals,hasColors,numTexCoords);
+  String fragmentShader=createFragmentShader(hasNormals,hasColors,numTexCoords);
+  defaultShader=new ShaderProgram(vertexShader,fragmentShader);
+  if (!defaultShader.isCompiled())   throw new GdxRuntimeException("Couldn't compile immediate mode default shader!\n" + defaultShader.getLog());
+  this.numTexCoords=numTexCoords;
+  vertices=new float[maxVertices * (mesh.getVertexAttributes().vertexSize / 4)];
+  vertexSize=mesh.getVertexAttributes().vertexSize / 4;
+  normalOffset=mesh.getVertexAttribute(Usage.Normal) != null ? mesh.getVertexAttribute(Usage.Normal).offset / 4 : 0;
+  colorOffset=mesh.getVertexAttribute(Usage.ColorPacked) != null ? mesh.getVertexAttribute(Usage.ColorPacked).offset / 4 : 0;
+  texCoordOffset=mesh.getVertexAttribute(Usage.TextureCoordinates) != null ? mesh.getVertexAttribute(Usage.TextureCoordinates).offset / 4 : 0;
+}

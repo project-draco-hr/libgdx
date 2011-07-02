@@ -1,0 +1,6 @@
+{
+  final int idx=vertexIdx + texCoordOffset;
+  vertices[idx]=u;
+  vertices[idx + 1]=v;
+  numSetTexCoords+=2;
+}
