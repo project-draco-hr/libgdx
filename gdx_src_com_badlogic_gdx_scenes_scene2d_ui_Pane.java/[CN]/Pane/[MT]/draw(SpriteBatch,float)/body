@@ -1,5 +1,6 @@
 {
   final NinePatch background=style.background;
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,x,y,width,height);
   setupTransform(batch);
   applyLayout();

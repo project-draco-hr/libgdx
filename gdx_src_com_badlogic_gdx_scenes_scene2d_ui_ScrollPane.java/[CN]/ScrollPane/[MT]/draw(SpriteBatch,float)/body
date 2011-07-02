@@ -7,10 +7,12 @@
   setupTransform(batch);
   if (invalidated)   layout();
   calculateBoundsAndPositions(batch.getTransformMatrix());
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,0,0,width,height);
   ScissorStack.pushScissors(scissorBounds);
   drawChildren(batch,parentAlpha);
   ScissorStack.popScissors();
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (hasHScroll) {
     hScroll.draw(batch,hScrollBounds.x,hScrollBounds.y,hScrollBounds.width,hScrollBounds.height);
     hScrollKnob.draw(batch,hScrollKnobBounds.x,hScrollKnobBounds.y,hScrollKnobBounds.width,hScrollKnobBounds.height);

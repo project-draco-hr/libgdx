@@ -5,9 +5,10 @@
   final TextureRegion selection=style.selection;
   final NinePatch cursorPatch=style.cursor;
   if (invalidated)   layout();
-  background.draw(batch,x,y,width,height,parentAlpha);
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  background.draw(batch,x,y,width,height);
   float textY=(int)(height / 2) + (int)(textBounds.height / 2);
-  font.setColor(fontColor);
+  font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
   calculateOffsets();
   if (hasSelection) {
     batch.draw(selection,x + selectionX + background.getLeftWidth()+ renderOffset,y + textY - textBounds.height,selectionWidth,textBounds.height);
