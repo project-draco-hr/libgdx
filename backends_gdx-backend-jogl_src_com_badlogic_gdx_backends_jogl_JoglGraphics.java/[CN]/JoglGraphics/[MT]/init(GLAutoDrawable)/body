@@ -1,5 +1,6 @@
 {
   initializeGLInstances(drawable);
+  setVSync(config.vSyncEnabled);
   if (!created) {
     listener.create();
 synchronized (this) {

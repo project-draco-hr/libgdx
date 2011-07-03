@@ -1,6 +1,7 @@
 {
   mainLoopThread=new Thread("LWJGL Application"){
     @SuppressWarnings("synthetic-access") public void run(){
+      graphics.setVSync(graphics.config.vSyncEnabled);
       LwjglApplication.this.mainLoop();
     }
   }

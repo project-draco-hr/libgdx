@@ -2,5 +2,6 @@
   initialize(config);
   if (listener == null)   throw new GdxRuntimeException("RenderListener must not be null");
   this.listener=listener;
+  this.config=config;
   desktopMode=(JoglDisplayMode)JoglApplicationConfiguration.getDesktopDisplayMode();
 }
