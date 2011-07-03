@@ -1,0 +1,5 @@
+{
+  camera=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  lineMesh=new Mesh(false,MAX_LINES * 2,0,new VertexAttribute(Usage.Position,2,"a_pos"));
+  lineVertices=new float[MAX_LINES * 2 * 2];
+}

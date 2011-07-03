@@ -1,0 +1,19 @@
+{
+  Gdx.gl.glClearColor(0.5f,0.5f,0.5f,0.5f);
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.update();
+  camera.apply(Gdx.gl10);
+  if (vertexIndex >= 4)   lineMesh.render(GL10.GL_LINE_STRIP);
+  if (Gdx.input.isTouched()) {
+    unprojectedVertex.set(Gdx.input.getX(),Gdx.input.getY(),0);
+    camera.unproject(unprojectedVertex);
+    if (vertexIndex == 0 || unprojectedVertex.dst(lineVertices[vertexIndex - 2],lineVertices[vertexIndex - 1],0) > 10) {
+      lineVertices[vertexIndex++]=unprojectedVertex.x;
+      lineVertices[vertexIndex++]=unprojectedVertex.y;
+      lineMesh.setVertices(lineVertices,0,vertexIndex);
+    }
+  }
+ else {
+    vertexIndex=0;
+  }
+}
