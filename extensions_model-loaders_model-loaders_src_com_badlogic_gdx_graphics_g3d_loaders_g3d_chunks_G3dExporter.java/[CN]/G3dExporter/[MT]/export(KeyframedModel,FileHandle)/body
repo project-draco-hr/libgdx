@@ -6,4 +6,67 @@
   writer.endChunk();
   writer.newChunk(G3dConstants.KEYFRAMED_MODEL);
   writer.writeInt(model.subMeshes.length);
+  for (  KeyframedSubMesh mesh : model.subMeshes) {
+    writer.newChunk(G3dConstants.KEYFRAMED_SUBMESH);
+    writer.writeString(mesh.name == null ? "" : mesh.name);
+    writer.writeInt(mesh.primitiveType);
+    writer.writeInt(mesh.animatedComponents);
+    writer.writeInt(mesh.animations.size);
+    writer.newChunk(G3dConstants.VERTEX_ATTRIBUTES);
+    writer.writeInt(mesh.mesh.getVertexAttributes().size());
+    for (int i=0; i < mesh.mesh.getVertexAttributes().size(); i++) {
+      VertexAttribute attribute=mesh.mesh.getVertexAttributes().get(i);
+      writer.newChunk(G3dConstants.VERTEX_ATTRIBUTE);
+      writer.writeInt(attribute.usage);
+      writer.writeInt(attribute.numComponents);
+      writer.writeString(attribute.alias);
+      writer.endChunk();
+    }
+    writer.endChunk();
+    writer.newChunk(G3dConstants.VERTEX_LIST);
+    int numFloats=mesh.mesh.getNumVertices() * mesh.mesh.getVertexSize() / 4;
+    float[] vertices=new float[numFloats];
+    mesh.mesh.getVertices(vertices);
+    writer.writeInt(mesh.mesh.getNumVertices());
+    writer.writeFloats(vertices);
+    writer.endChunk();
+    writer.newChunk(G3dConstants.INDEX_LIST);
+    int numShorts=mesh.mesh.getNumIndices();
+    short[] indices=new short[numShorts];
+    mesh.mesh.getIndices(indices);
+    writer.writeInt(mesh.mesh.getNumIndices());
+    writer.writeShorts(indices);
+    writer.endChunk();
+    for (    String animationName : mesh.animations.keys()) {
+      KeyframedAnimation animation=mesh.animations.get(animationName);
+      writer.newChunk(G3dConstants.KEYFRAMED_ANIMATION);
+      writer.writeString(animation.name);
+      writer.writeFloat(animation.frameDuration);
+      writer.writeInt(animation.keyframes.length);
+      for (      Keyframe keyframe : animation.keyframes) {
+        writer.newChunk(G3dConstants.KEYFRAMED_FRAME);
+        writer.writeFloat(keyframe.timeStamp);
+        writer.writeFloats(keyframe.vertices);
+        writer.endChunk();
+      }
+      writer.endChunk();
+    }
+    writer.endChunk();
+  }
+  writer.endChunk();
+  OutputStream out=null;
+  try {
+    out=file.write(false);
+    writer.writeToStream(out);
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("An error occured while exporting the still model, " + e.getMessage(),e);
+  }
+ finally {
+    if (out != null)     try {
+      out.close();
+    }
+ catch (    IOException e) {
+    }
+  }
 }

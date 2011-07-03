@@ -8,7 +8,7 @@
     final int startIndex=(int)Math.floor((time / anim.frameDuration));
     final Keyframe startFrame=anim.keyframes[startIndex];
     final Keyframe endFrame=anim.keyframes[anim.keyframes.length - 1 == startIndex ? loop ? 0 : startIndex : startIndex + 1];
-    final int numComponents=startFrame.animatedComponents;
+    final int numComponents=subMesh.animatedComponents;
     final float[] src=startFrame.vertices;
     final int srcLen=numComponents * subMesh.mesh.getNumVertices();
     final float[] dst=subMesh.blendedVertices;
