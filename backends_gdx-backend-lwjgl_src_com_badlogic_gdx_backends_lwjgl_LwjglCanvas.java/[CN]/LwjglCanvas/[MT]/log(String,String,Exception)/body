@@ -1,4 +1,6 @@
 {
-  System.out.println(tag + ": " + message);
-  exception.printStackTrace();
+  if (logLevel >= LOG_INFO) {
+    System.out.println(tag + ":" + message);
+    exception.printStackTrace(System.out);
+  }
 }

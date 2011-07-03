@@ -1,0 +1,5 @@
+{
+  if (logLevel >= LOG_ERROR) {
+    System.err.println(tag + ":" + message);
+  }
+}
