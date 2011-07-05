@@ -61,7 +61,9 @@
       mesh.setVertices(vertexData);
       mesh.setIndices(indexData);
     }
-    return new KeyframedModel(meshes);
+    KeyframedModel model=new KeyframedModel(meshes);
+    model.setMaterial(new Material("default"));
+    return model;
   }
  catch (  IOException e) {
     throw new GdxRuntimeException("Couldn't load still model from '" + handle.name() + "', "+ e.getMessage(),e);

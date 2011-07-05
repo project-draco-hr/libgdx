@@ -41,7 +41,9 @@
       mesh.material=new Material("default");
       meshes[i]=mesh;
     }
-    return new StillModel(meshes);
+    StillModel model=new StillModel(meshes);
+    model.setMaterial(new Material("default"));
+    return model;
   }
  catch (  IOException e) {
     throw new GdxRuntimeException("Couldn't load still model from '" + handle.name() + "', "+ e.getMessage(),e);

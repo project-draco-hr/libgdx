@@ -1,9 +1,3 @@
 {
-  super(name);
-  this.texture=texture;
-  this.unit=unit;
-  this.uWrap=uWrap;
-  this.vWrap=vWrap;
-  this.minFilter=minFilter;
-  this.magFilter=magFilter;
+  this(texture,unit,name,texture.getTextureFilter(minFilter),texture.getTextureFilter(magFilter),uWrap == TextureWrap.ClampToEdge ? GL10.GL_CLAMP_TO_EDGE : GL10.GL_REPEAT,vWrap == TextureWrap.ClampToEdge ? GL10.GL_CLAMP_TO_EDGE : GL10.GL_REPEAT);
 }
