@@ -9,7 +9,7 @@
       Log.w(TAG,String.format("  %s: %d\n",name,value[0]));
     }
  else {
-      while (egl.eglGetError() != EGL10.EGL_SUCCESS)       ;
+      egl.eglGetError();
     }
   }
 }

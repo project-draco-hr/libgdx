@@ -7,8 +7,6 @@
   }
   EGLConfig[] configs=new EGLConfig[numConfigs];
   egl.eglChooseConfig(display,mConfigAttribs,configs,numConfigs,num_config);
-  printConfigs(egl,display,configs);
   EGLConfig config=chooseConfig(egl,display,configs);
-  printConfigs(egl,display,new EGLConfig[]{config});
   return config;
 }

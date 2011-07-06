@@ -11,15 +11,16 @@
     int a=findConfigAttrib(egl,display,config,EGL10.EGL_ALPHA_SIZE,0);
     if (best == null && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
       best=config;
+      if (mNumSamples == 0) {
+        break;
+      }
     }
     int hasSampleBuffers=findConfigAttrib(egl,display,config,EGL10.EGL_SAMPLE_BUFFERS,0);
-    int numSamples=findConfigAttrib(egl,display,config,EGL10.EGL_SAMPLE_BUFFERS,0);
+    int numSamples=findConfigAttrib(egl,display,config,EGL10.EGL_SAMPLES,0);
     if (bestAA == null && hasSampleBuffers == 1 && numSamples >= mNumSamples && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
       bestAA=config;
       continue;
     }
-    hasSampleBuffers=findConfigAttrib(egl,display,config,EGL_COVERAGE_BUFFERS_NV,0);
-    numSamples=findConfigAttrib(egl,display,config,EGL_COVERAGE_SAMPLES_NV,0);
     if (bestAA == null && hasSampleBuffers == 1 && numSamples >= mNumSamples && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
       bestAA=config;
       continue;
