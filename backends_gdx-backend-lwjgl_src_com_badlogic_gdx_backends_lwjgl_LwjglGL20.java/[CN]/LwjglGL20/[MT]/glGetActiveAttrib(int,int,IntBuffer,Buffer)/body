@@ -1,3 +1,6 @@
 {
-  throw new UnsupportedOperationException("not implemented");
+  IntBuffer typeTmp=BufferUtils.createIntBuffer(2);
+  String name=GL20.glGetActiveAttrib(program,index,256,typeTmp);
+  if (type instanceof IntBuffer)   ((IntBuffer)type).put(typeTmp.get(0));
+  return name;
 }

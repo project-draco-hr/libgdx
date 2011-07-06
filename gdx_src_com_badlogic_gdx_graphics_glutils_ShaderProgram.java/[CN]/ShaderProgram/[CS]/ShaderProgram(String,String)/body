@@ -3,9 +3,9 @@
   if (fragmentShader == null)   throw new IllegalArgumentException("fragment shader must not be null");
   this.vertexShaderSource=vertexShader;
   this.fragmentShaderSource=fragmentShader;
+  this.matrix=BufferUtils.newFloatBuffer(16);
   compileShaders(vertexShader,fragmentShader);
-  ByteBuffer buffer=ByteBuffer.allocateDirect(4 * 16);
-  buffer.order(ByteOrder.nativeOrder());
-  matrix=buffer.asFloatBuffer();
-  addManagedShader(Gdx.app,this);
+  if (isCompiled()) {
+    addManagedShader(Gdx.app,this);
+  }
 }

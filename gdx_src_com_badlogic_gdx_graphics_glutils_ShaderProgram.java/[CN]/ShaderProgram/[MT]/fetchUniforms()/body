@@ -1,0 +1,13 @@
+{
+  params.clear();
+  Gdx.gl20.glGetProgramiv(program,GL20.GL_ACTIVE_UNIFORMS,params);
+  int numAttributes=params.get(0);
+  for (int i=0; i < numAttributes; i++) {
+    params.clear();
+    params.put(0,256);
+    type.clear();
+    String name=Gdx.gl20.glGetActiveUniform(program,i,params,type);
+    int location=Gdx.gl20.glGetUniformLocation(program,name);
+    uniforms.put(name,location);
+  }
+}
