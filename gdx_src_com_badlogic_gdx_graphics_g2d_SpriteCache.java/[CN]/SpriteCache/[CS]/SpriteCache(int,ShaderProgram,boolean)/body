@@ -1,6 +1,6 @@
 {
   this.shader=shader;
-  mesh=new Mesh(true,size * (useIndices ? 4 : 6),useIndices ? size * 6 : 0,new VertexAttribute(Usage.Position,2,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"),new VertexAttribute(Usage.TextureCoordinates,2,"a_texCoords"));
+  mesh=new Mesh(true,size * (useIndices ? 4 : 6),useIndices ? size * 6 : 0,new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.ColorPacked,4,ShaderProgram.COLOR_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORDS_ATTRIBUTE + "0"));
   mesh.setAutoBind(false);
   if (useIndices) {
     int length=size * 6;

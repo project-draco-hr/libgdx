@@ -6,6 +6,8 @@
   this.matrix=BufferUtils.newFloatBuffer(16);
   compileShaders(vertexShader,fragmentShader);
   if (isCompiled()) {
+    fetchAttributes();
+    fetchUniforms();
     addManagedShader(Gdx.app,this);
   }
 }
