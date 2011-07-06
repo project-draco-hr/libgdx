@@ -15,9 +15,9 @@
     this.vertices[i]=model.meshes[i].createVertexArray(stride);
   }
   if (useNormals) {
-    this.mesh=new Mesh(false,maxVertices,maxIndices,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_position"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords"),new VertexAttribute(VertexAttributes.Usage.Normal,3,"a_normal"));
+    this.mesh=new Mesh(false,maxVertices,maxIndices,new VertexAttribute(VertexAttributes.Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,ShaderProgram.TEXCOORDS_ATTRIBUTE + "0"),new VertexAttribute(VertexAttributes.Usage.Normal,3,ShaderProgram.NORMAL_ATTRIBUTE));
   }
  else {
-    this.mesh=new Mesh(false,maxVertices,maxIndices,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_position"),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,"a_texCoords"));
+    this.mesh=new Mesh(false,maxVertices,maxIndices,new VertexAttribute(VertexAttributes.Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(VertexAttributes.Usage.TextureCoordinates,2,ShaderProgram.TEXCOORDS_ATTRIBUTE + "0"));
   }
 }
