@@ -1,0 +1,30 @@
+{
+  EGLConfig best=null;
+  EGLConfig bestAA=null;
+  for (  EGLConfig config : configs) {
+    int d=findConfigAttrib(egl,display,config,EGL10.EGL_DEPTH_SIZE,0);
+    int s=findConfigAttrib(egl,display,config,EGL10.EGL_STENCIL_SIZE,0);
+    if (d < mDepthSize || s < mStencilSize)     continue;
+    int r=findConfigAttrib(egl,display,config,EGL10.EGL_RED_SIZE,0);
+    int g=findConfigAttrib(egl,display,config,EGL10.EGL_GREEN_SIZE,0);
+    int b=findConfigAttrib(egl,display,config,EGL10.EGL_BLUE_SIZE,0);
+    int a=findConfigAttrib(egl,display,config,EGL10.EGL_ALPHA_SIZE,0);
+    if (best == null && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
+      best=config;
+    }
+    int hasSampleBuffers=findConfigAttrib(egl,display,config,EGL10.EGL_SAMPLE_BUFFERS,0);
+    int numSamples=findConfigAttrib(egl,display,config,EGL10.EGL_SAMPLE_BUFFERS,0);
+    if (bestAA == null && hasSampleBuffers == 1 && numSamples >= mNumSamples && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
+      bestAA=config;
+      continue;
+    }
+    hasSampleBuffers=findConfigAttrib(egl,display,config,EGL_COVERAGE_BUFFERS_NV,0);
+    numSamples=findConfigAttrib(egl,display,config,EGL_COVERAGE_SAMPLES_NV,0);
+    if (bestAA == null && hasSampleBuffers == 1 && numSamples >= mNumSamples && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
+      bestAA=config;
+      continue;
+    }
+  }
+  if (bestAA != null)   return bestAA;
+ else   return best;
+}

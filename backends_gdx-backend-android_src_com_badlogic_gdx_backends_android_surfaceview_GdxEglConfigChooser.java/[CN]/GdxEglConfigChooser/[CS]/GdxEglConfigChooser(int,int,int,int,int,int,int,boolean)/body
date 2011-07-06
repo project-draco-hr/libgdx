@@ -1,0 +1,16 @@
+{
+  mRedSize=r;
+  mGreenSize=g;
+  mBlueSize=b;
+  mAlphaSize=a;
+  mDepthSize=depth;
+  mStencilSize=stencil;
+  mNumSamples=numSamples;
+  mUseGL20=useGL20;
+  if (useGL20) {
+    mConfigAttribs=new int[]{EGL10.EGL_RED_SIZE,4,EGL10.EGL_GREEN_SIZE,4,EGL10.EGL_BLUE_SIZE,4,EGL10.EGL_RENDERABLE_TYPE,EGL_OPENGL_ES2_BIT,EGL10.EGL_NONE};
+  }
+ else {
+    mConfigAttribs=new int[]{EGL10.EGL_RED_SIZE,4,EGL10.EGL_GREEN_SIZE,4,EGL10.EGL_BLUE_SIZE,4,EGL10.EGL_NONE};
+  }
+}
