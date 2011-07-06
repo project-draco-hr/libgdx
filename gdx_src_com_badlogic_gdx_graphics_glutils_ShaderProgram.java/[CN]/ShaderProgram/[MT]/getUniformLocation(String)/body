@@ -1,0 +1,5 @@
+{
+  Integer location=uniforms.get(name);
+  if (location == null)   return -1;
+ else   return location;
+}
