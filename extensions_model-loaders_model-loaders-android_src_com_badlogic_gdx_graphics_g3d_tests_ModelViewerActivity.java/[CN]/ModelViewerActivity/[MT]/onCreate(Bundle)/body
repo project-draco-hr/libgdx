@@ -4,5 +4,5 @@
   config.useAccelerometer=false;
   config.useCompass=false;
   config.useWakelock=true;
-  initialize(new QbobViewer(),config);
+  initialize(new KeyframedModelViewer("data/knight.g3d","data/knight.jpg"),config);
 }
