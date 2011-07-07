@@ -1,0 +1,15 @@
+{
+  if (Gdx.graphics.isGL20Available() && (Gdx.graphics.supportsExtension("GL_ARB_framebuffer_object") || Gdx.graphics.supportsExtension("GL_EXT_framebuffer_object"))) {
+    Gdx.gl.glTexImage2D(GL20.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
+    Gdx.gl20.glGenerateMipmap(GL20.GL_TEXTURE_2D);
+    if (disposePixmap)     pixmap.dispose();
+  }
+ else   if (Gdx.graphics.supportsExtension("GL_SGIS_generate_mipmap")) {
+    Gdx.gl.glTexParameterf(GL20.GL_TEXTURE_2D,GLCommon.GL_GENERATE_MIPMAP,GL10.GL_TRUE);
+    Gdx.gl.glTexImage2D(GL20.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
+    if (disposePixmap)     pixmap.dispose();
+  }
+ else {
+    generateMipMapCPU(pixmap,disposePixmap);
+  }
+}

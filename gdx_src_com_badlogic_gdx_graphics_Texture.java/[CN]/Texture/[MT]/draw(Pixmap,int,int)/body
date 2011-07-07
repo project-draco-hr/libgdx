@@ -3,18 +3,6 @@
   Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
   Gdx.gl.glTexSubImage2D(GL10.GL_TEXTURE_2D,0,x,y,pixmap.getWidth(),pixmap.getHeight(),pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
   if (isMipMap) {
-    int level=1;
-    int height=pixmap.getHeight();
-    int width=pixmap.getWidth();
-    while (height > 0 && width > 0) {
-      Pixmap tmp=new Pixmap(width,height,pixmap.getFormat());
-      tmp.drawPixmap(pixmap,0,0,pixmap.getWidth(),pixmap.getHeight(),0,0,width,height);
-      if (level > 1)       pixmap.dispose();
-      pixmap=tmp;
-      Gdx.gl.glTexSubImage2D(GL10.GL_TEXTURE_2D,level,x,y,pixmap.getWidth(),pixmap.getHeight(),pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
-      width=pixmap.getWidth() / 2;
-      height=pixmap.getHeight() / 2;
-      level++;
-    }
+    generateMipMap(pixmap,false);
   }
 }

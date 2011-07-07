@@ -1,0 +1,9 @@
+{
+  if (Gdx.app.getType() == ApplicationType.Android) {
+    if (Gdx.graphics.isGL20Available())     generateMipMapGLES20(pixmap,disposePixmap);
+ else     generateMipMapCPU(pixmap,disposePixmap);
+  }
+ else {
+    generateMipMapDesktop(pixmap,disposePixmap);
+  }
+}

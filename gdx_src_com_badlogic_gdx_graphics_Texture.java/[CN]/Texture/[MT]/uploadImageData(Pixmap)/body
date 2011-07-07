@@ -13,25 +13,11 @@
   this.height=pixmap.getHeight();
   if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(width) || !MathUtils.isPowerOfTwo(height)))   throw new GdxRuntimeException("texture width and height must be powers of two");
   Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
-  Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
   if (isMipMap) {
-    if (!(Gdx.gl20 == null) && width != height)     throw new GdxRuntimeException("texture width and height must be square when using mipmapping in OpenGL ES 1.x");
-    int width=pixmap.getWidth() / 2;
-    int height=pixmap.getHeight() / 2;
-    int level=1;
-    while (width > 0 && height > 0) {
-      Pixmap tmp=new Pixmap(width,height,pixmap.getFormat());
-      tmp.drawPixmap(pixmap,0,0,pixmap.getWidth(),pixmap.getHeight(),0,0,width,height);
-      if (level > 1 || disposePixmap)       pixmap.dispose();
-      pixmap=tmp;
-      Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,level,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
-      width=pixmap.getWidth() / 2;
-      height=pixmap.getHeight() / 2;
-      level++;
-    }
-    pixmap.dispose();
+    generateMipMap(pixmap,disposePixmap);
   }
  else {
+    Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
     if (disposePixmap)     pixmap.dispose();
   }
 }
