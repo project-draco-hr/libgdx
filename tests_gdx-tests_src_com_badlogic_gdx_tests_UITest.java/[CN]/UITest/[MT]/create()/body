@@ -45,5 +45,11 @@
     }
   }
 );
+  slider.setValueChangedListener(new ValueChangedListener(){
+    @Override public void changed(    Slider slider,    float value){
+      Gdx.app.log("UITest","slider: " + value);
+    }
+  }
+);
   ui.addActor(window);
 }
