@@ -1,0 +1,20 @@
+{
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.xml"),Gdx.files.internal("data/uiskin.png"));
+  ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+  String[] filters=new String[TextureFilter.values().length];
+  int idx=0;
+  for (  TextureFilter filter : TextureFilter.values()) {
+    filters[idx++]=filter.toString();
+  }
+  hwMipMap=skin.newCheckBox("hardware","Hardware Mips");
+  minFilter=skin.newComboBox("minfilter",filters,ui);
+  magFilter=skin.newComboBox("magfilter",new String[]{"Nearest","Linear"},ui);
+  Container container=new Container("container",(int)ui.width(),30);
+  container.y=ui.height() - container.height;
+  container.add(hwMipMap).spacingRight(5);
+  container.add(skin.newLabel("lbl1","Min Filter")).spacingRight(5);
+  container.add(minFilter).spacingRight(5);
+  container.add(skin.newLabel("lbl1","Mag Filter")).spacingRight(5);
+  container.add(magFilter);
+  ui.addActor(container);
+}
