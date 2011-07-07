@@ -8,9 +8,11 @@
   int d=getAttrib(egl,display,config,EGL10.EGL_DEPTH_SIZE,0);
   int s=getAttrib(egl,display,config,EGL10.EGL_STENCIL_SIZE,0);
   int samples=Math.max(getAttrib(egl,display,config,EGL10.EGL_SAMPLES,0),getAttrib(egl,display,config,GdxEglConfigChooser.EGL_COVERAGE_SAMPLES_NV,0));
+  boolean coverageSample=getAttrib(egl,display,config,GdxEglConfigChooser.EGL_COVERAGE_SAMPLES_NV,0) != 0;
   Gdx.app.log("AndroidGraphics","framebuffer: (" + r + ", "+ g+ ", "+ b+ ", "+ a+ ")");
   Gdx.app.log("AndroidGraphics","depthbuffer: (" + d + ")");
   Gdx.app.log("AndroidGraphics","stencilbuffer: (" + s + ")");
   Gdx.app.log("AndroidGraphics","samples: (" + samples + ")");
-  bufferFormat=new BufferFormat(r,g,b,a,d,s,samples);
+  Gdx.app.log("AndroidGraphics","coverage sampling: (" + coverageSample + ")");
+  bufferFormat=new BufferFormat(r,g,b,a,d,s,samples,coverageSample);
 }

@@ -3,5 +3,5 @@
   mesh.setVertices(new float[]{-0.5f,-0.5f,0,0,1,0,1,0.5f,-0.5f,0,1,1,1,1,0.5f,0.5f,0,1,0,1,0,-0.5f,0.5f,0,0,0,0,0});
   mesh.setIndices(new short[]{0,1,2,2,3,0});
   tex1=new Texture(Gdx.files.internal("data/planet_earth.png"));
-  tex2=new Texture(Gdx.files.internal("data/planet_heavyclouds.png"));
+  tex2=new Texture(Gdx.files.internal("data/planet_heavyclouds.jpg"));
 }

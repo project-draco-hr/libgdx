@@ -1,4 +1,6 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  new LwjglApplication(new com.badlogic.gdx.tests.InputTest(),config);
+  config.useGL20=true;
+  config.samples=0;
+  new LwjglApplication(new ShadowMappingTest(),config);
 }

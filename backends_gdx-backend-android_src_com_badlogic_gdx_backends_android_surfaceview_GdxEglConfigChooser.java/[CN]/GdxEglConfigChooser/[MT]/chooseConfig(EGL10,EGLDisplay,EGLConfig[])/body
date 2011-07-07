@@ -21,6 +21,8 @@
       bestAA=config;
       continue;
     }
+    hasSampleBuffers=findConfigAttrib(egl,display,config,EGL_COVERAGE_BUFFERS_NV,0);
+    numSamples=findConfigAttrib(egl,display,config,EGL_COVERAGE_SAMPLES_NV,0);
     if (bestAA == null && hasSampleBuffers == 1 && numSamples >= mNumSamples && r == mRedSize && g == mGreenSize && b == mBlueSize && a == mAlphaSize) {
       bestAA=config;
       continue;
