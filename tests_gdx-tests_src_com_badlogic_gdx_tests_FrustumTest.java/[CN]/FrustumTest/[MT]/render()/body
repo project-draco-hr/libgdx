@@ -1,0 +1,14 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+  camera.update();
+  camera2.update();
+  camera3.update();
+  camera.apply(Gdx.gl10);
+  Gdx.gl10.glColor4f(1,0,0,1);
+  plane.render(GL10.GL_TRIANGLE_FAN);
+  Gdx.gl10.glColor4f(0,1,0,1);
+  sphere.render(GL10.GL_TRIANGLES);
+  renderFrustum(renderer,camera2.frustum);
+  renderFrustum(renderer,camera3.frustum);
+}

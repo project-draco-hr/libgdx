@@ -1,0 +1,23 @@
+{
+  camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.position.set(0,2,3).nor().mul(10);
+  camera.lookAt(0,0,0);
+  camera2=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera2.position.set(-3,2,0);
+  camera2.lookAt(0,0,0);
+  camera2.near=0.5f;
+  camera2.far=6;
+  float aspect=Gdx.graphics.getWidth() / (float)Gdx.graphics.getHeight();
+  camera3=new OrthographicCamera(2 * aspect,2);
+  camera3.position.set(3,2,0);
+  camera3.lookAt(0,0,0);
+  camera3.near=0.5f;
+  camera3.far=6;
+  controller=new PerspectiveCamController(camera);
+  Gdx.input.setInputProcessor(controller);
+  plane=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE));
+  plane.setVertices(new float[]{-10,-1,10,10,-1,10,10,-1,-10,-10,-1,-10});
+  plane.setIndices(new short[]{3,2,1,1,0,3});
+  sphere=ModelLoaderOld.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  renderer=new ImmediateModeRenderer();
+}
