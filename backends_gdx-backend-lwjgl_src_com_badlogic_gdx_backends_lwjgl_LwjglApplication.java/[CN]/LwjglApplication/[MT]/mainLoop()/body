@@ -48,4 +48,5 @@ synchronized (runnables) {
   listener.dispose();
   Display.destroy();
   audio.dispose();
+  if (graphics.config.forceExit)   System.exit(-1);
 }
