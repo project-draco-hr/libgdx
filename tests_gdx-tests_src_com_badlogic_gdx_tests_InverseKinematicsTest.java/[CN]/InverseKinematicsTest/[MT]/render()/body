@@ -1,0 +1,8 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.update();
+  camera.apply(Gdx.gl10);
+  if (Gdx.input.isTouched())   camera.unproject(globalCoords.set(Gdx.input.getX(),Gdx.input.getY(),0));
+  solveFakeIK(globalCoords);
+  renderBones();
+}
