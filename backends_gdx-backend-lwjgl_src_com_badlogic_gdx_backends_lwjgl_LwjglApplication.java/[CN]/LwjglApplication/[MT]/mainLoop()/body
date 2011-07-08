@@ -11,7 +11,10 @@
   int lastWidth=graphics.getWidth();
   int lastHeight=graphics.getHeight();
   graphics.lastTime=System.nanoTime();
-  while (running && !Display.isCloseRequested()) {
+  while (running) {
+    if (Display.isCloseRequested()) {
+      exit();
+    }
     graphics.updateTime();
     if (graphics.resize) {
       graphics.resize=false;
