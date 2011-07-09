@@ -1,6 +1,6 @@
 {
   Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
-  if (!(Gdx.gl20 == null) && width != height)   throw new GdxRuntimeException("texture width and height must be square when using mipmapping in OpenGL ES 1.x");
+  if ((Gdx.gl20 == null) && width != height)   throw new GdxRuntimeException("texture width and height must be square when using mipmapping in OpenGL ES 1.x");
   int width=pixmap.getWidth() / 2;
   int height=pixmap.getHeight() / 2;
   int level=1;
