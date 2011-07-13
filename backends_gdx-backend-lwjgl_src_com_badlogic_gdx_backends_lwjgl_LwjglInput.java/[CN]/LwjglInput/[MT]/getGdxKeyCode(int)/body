@@ -154,6 +154,8 @@ case Keyboard.KEY_F11:
 return Input.Keys.F11;
 case Keyboard.KEY_F12:
 return Input.Keys.F12;
+case Keyboard.KEY_COLON:
+return Input.Keys.COLON;
 default :
 return Input.Keys.UNKNOWN;
 }
