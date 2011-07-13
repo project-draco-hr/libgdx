@@ -11,7 +11,9 @@
       listSelection.draw(batch,x,y + posY - entryHeight,width,entryHeight);
     }
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
+    font.setScale(ComboBox.this.parent.scaleX,ComboBox.this.parent.scaleY);
     font.draw(batch,entries[i],x + textOffsetX,y + posY - textOffsetY);
+    font.setScale(1,1);
     posY-=entryHeight;
   }
   if (screenCoords.x != oldScreenCoords.x || screenCoords.y != oldScreenCoords.y) {
