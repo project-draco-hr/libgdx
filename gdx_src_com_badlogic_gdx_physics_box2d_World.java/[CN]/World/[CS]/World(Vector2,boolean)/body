@@ -1,4 +1,6 @@
 {
   addr=newWorld(gravity.x,gravity.y,doSleep);
-  for (int i=0; i < 200; i++)   freeContacts.add(new Contact(this,0));
+  contacts.ensureCapacity(contactAddrs.length);
+  freeContacts.ensureCapacity(contactAddrs.length);
+  for (int i=0; i < contactAddrs.length; i++)   freeContacts.add(new Contact(this,0));
 }
