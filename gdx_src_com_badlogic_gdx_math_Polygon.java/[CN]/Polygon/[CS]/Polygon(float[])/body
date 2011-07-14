@@ -1,0 +1,4 @@
+{
+  if (vertices.length < 6)   throw new IllegalArgumentException("polygons must contain at least 3 points.");
+  this.vertices=vertices;
+}
