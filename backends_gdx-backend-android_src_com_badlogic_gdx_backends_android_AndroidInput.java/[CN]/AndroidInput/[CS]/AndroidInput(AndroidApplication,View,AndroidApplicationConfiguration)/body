@@ -13,7 +13,7 @@
   int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
   if (sdkVersion >= 5)   touchHandler=new AndroidMultiTouchHandler();
  else   touchHandler=new AndroidSingleTouchHandler();
-  hasMultitouch=touchHandler instanceof AndroidMultiTouchHandler && ((AndroidMultiTouchHandler)touchHandler).supportsMultitouch(activity);
+  hasMultitouch=touchHandler.supportsMultitouch(app);
   vibrator=(Vibrator)activity.getSystemService(Context.VIBRATOR_SERVICE);
   int rotation=getRotation();
   DisplayMode mode=app.graphics.getDesktopDisplayMode();
