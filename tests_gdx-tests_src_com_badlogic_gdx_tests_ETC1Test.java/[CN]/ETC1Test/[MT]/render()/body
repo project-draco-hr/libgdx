@@ -1,0 +1,6 @@
+{
+  batch.begin();
+  batch.draw(img1,0,0);
+  batch.draw(img2,img1.getWidth() + 10,0);
+  batch.end();
+}

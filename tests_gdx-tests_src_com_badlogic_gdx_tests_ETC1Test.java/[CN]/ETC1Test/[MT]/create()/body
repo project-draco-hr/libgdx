@@ -1,0 +1,24 @@
+{
+  Pixmap pixmap565=new Pixmap(32,32,Format.RGB565);
+  pixmap565.setColor(1,0,0,1);
+  pixmap565.fill();
+  pixmap565.setColor(0,1,0,1);
+  pixmap565.drawLine(0,0,32,32);
+  pixmap565.drawLine(0,32,32,0);
+  Pixmap pixmap888=new Pixmap(Gdx.files.internal("data/badlogic.jpg"));
+  ETC1Data encodedImage565=ETC1.encodeImage(pixmap565);
+  ETC1Data encodedImage888=ETC1.encodeImagePKM(pixmap888);
+  Gdx.app.log("ETC1Test","rgb565: " + encodedImage565);
+  Gdx.app.log("ETC1Test","rgb888: " + encodedImage888);
+  pixmap565.dispose();
+  pixmap888.dispose();
+  pixmap565=ETC1.decodeImage(encodedImage888,Format.RGB565);
+  pixmap888=ETC1.decodeImage(encodedImage565,Format.RGB888);
+  encodedImage565.dispose();
+  encodedImage888.dispose();
+  img1=new Texture(pixmap565);
+  img2=new Texture(pixmap888);
+  batch=new SpriteBatch();
+  pixmap565.dispose();
+  pixmap888.dispose();
+}

@@ -1,0 +1,5 @@
+{
+  int pixelSize=getPixelSize(pixmap.getFormat());
+  ByteBuffer compressedData=encodeImage(pixmap.getPixels(),0,pixmap.getWidth(),pixmap.getHeight(),pixelSize);
+  return new ETC1Data(pixmap.getWidth(),pixmap.getHeight(),compressedData,0);
+}
