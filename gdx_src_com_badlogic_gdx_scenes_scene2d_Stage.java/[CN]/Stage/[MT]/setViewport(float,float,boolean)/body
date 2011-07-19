@@ -1,6 +1,6 @@
 {
   if (!stretch) {
-    if (width > height) {
+    if (width > height && width / (float)Gdx.graphics.getWidth() <= height / (float)Gdx.graphics.getHeight()) {
       float toDeviceSpace=Gdx.graphics.getHeight() / height;
       float toViewportSpace=height / Gdx.graphics.getHeight();
       float deviceWidth=width * toDeviceSpace;
