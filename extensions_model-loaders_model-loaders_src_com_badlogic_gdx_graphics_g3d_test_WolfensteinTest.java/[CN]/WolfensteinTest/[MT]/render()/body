@@ -1,0 +1,17 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+  Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
+  camera.update();
+  camera.apply(Gdx.gl10);
+  model.render();
+  Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
+  Gdx.gl10.glPointSize(5);
+  renderer.begin(GL10.GL_POINTS);
+  renderer.color(1,0,0,1);
+  renderer.vertex(intersection);
+  renderer.end();
+  Gdx.gl10.glPointSize(1);
+  Gdx.gl10.glColor4f(1,1,1,1);
+  processInput();
+}

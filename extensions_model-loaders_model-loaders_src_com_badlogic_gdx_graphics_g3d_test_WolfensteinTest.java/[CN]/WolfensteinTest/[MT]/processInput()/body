@@ -1,0 +1,22 @@
+{
+  movement.set(0,0,0);
+  if (Gdx.input.isKeyPressed(Keys.W)) {
+    movement.add(camera.direction.tmp().mul(Gdx.graphics.getDeltaTime()));
+  }
+  if (Gdx.input.isKeyPressed(Keys.S)) {
+    movement.add(camera.direction.tmp().mul(-Gdx.graphics.getDeltaTime()));
+  }
+  if (Gdx.input.isKeyPressed(Keys.A)) {
+    camera.rotate(20 * Gdx.graphics.getDeltaTime(),0,1,0);
+  }
+  if (Gdx.input.isKeyPressed(Keys.D)) {
+    camera.rotate(-20 * Gdx.graphics.getDeltaTime(),0,1,0);
+  }
+  movement.mul(2);
+  camera.position.add(movement);
+  ray.origin.set(camera.position);
+  ray.direction.set(camera.direction);
+  if (Intersector.intersectRayTriangles(ray,triangles,indices,model.subMeshes[0].mesh.getVertexSize() / 4,intersection)) {
+    Gdx.app.log("wolf","intersected wall: " + intersection);
+  }
+}

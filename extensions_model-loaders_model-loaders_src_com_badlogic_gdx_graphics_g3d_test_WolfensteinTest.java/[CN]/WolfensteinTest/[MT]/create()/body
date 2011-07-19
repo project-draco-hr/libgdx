@@ -1,0 +1,13 @@
+{
+  model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/level.g3dt"));
+  texture=new Texture(Gdx.files.internal("data/wall.png"),true);
+  texture.setWrap(TextureWrap.Repeat,TextureWrap.Repeat);
+  model.setMaterial(new Material("mat",new TextureAttribute(texture,0,"a_texCoord")));
+  triangles=new float[model.subMeshes[0].mesh.getNumVertices() * model.subMeshes[0].mesh.getVertexSize() / 4];
+  indices=new short[model.subMeshes[0].mesh.getNumIndices()];
+  model.subMeshes[0].mesh.getVertices(triangles);
+  model.subMeshes[0].mesh.getIndices(indices);
+  camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.position.y=1;
+  renderer=new ImmediateModeRenderer();
+}
