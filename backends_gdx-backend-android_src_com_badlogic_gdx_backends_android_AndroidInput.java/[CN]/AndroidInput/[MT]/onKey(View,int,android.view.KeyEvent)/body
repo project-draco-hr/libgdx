@@ -33,5 +33,6 @@ keys.remove(e.getKeyCode());
 }
 }
 if (catchBack && keyCode == android.view.KeyEvent.KEYCODE_BACK) return true;
+if (catchMenu && keyCode == android.view.KeyEvent.KEYCODE_MENU) return true;
 return false;
 }
