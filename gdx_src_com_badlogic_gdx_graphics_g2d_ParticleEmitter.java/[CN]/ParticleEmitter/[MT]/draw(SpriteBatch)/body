@@ -1,0 +1,15 @@
+{
+  if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
+  Particle[] particles=this.particles;
+  BitSet active=this.active;
+  int activeCount=this.activeCount;
+  int index=0;
+  while (true) {
+    index=active.nextSetBit(index);
+    if (index == -1)     break;
+    particles[index].draw(spriteBatch);
+    index++;
+  }
+  this.activeCount=activeCount;
+  if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+}
