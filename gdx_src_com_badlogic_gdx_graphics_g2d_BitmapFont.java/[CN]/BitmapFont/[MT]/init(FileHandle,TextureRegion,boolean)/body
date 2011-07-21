@@ -101,10 +101,18 @@
       page[' ' & PAGE_SIZE - 1]=g;
     }
     spaceWidth=g != null ? g.xadvance + g.width : 1;
-    g=getGlyph('x');
-    xHeight=g != null ? g.height : 1;
-    g=getGlyph('M');
-    capHeight=g != null ? g.height : 1;
+    for (int i=0; i < xChars.length; i++) {
+      g=getGlyph(xChars[i]);
+      if (g == null)       continue;
+      xHeight=g.height;
+      break;
+    }
+    for (int i=0; i < capChars.length; i++) {
+      g=getGlyph(capChars[i]);
+      if (g == null)       continue;
+      capHeight=g.height;
+      break;
+    }
     ascent=baseLine - capHeight;
     down=-lineHeight;
     if (flip) {
