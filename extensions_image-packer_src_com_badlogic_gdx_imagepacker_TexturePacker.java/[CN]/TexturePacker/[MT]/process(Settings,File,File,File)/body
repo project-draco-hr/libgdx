@@ -56,7 +56,7 @@
       Format format=formats.get(i);
       for (int ii=0, nn=filters.size(); ii < nn; ii++) {
         TextureFilter min=filters.get(ii);
-        for (int iii=ii; iii < nn; iii++) {
+        for (int iii=0; iii < nn; iii++) {
           TextureFilter mag=filters.get(iii);
           if ((min == null && mag != null) || (min != null && mag == null))           continue;
           Filter filter=new Filter(Direction.none,format,-1,-1,min,mag);
