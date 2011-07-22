@@ -1,0 +1,10 @@
+{
+  hasHScroll=false;
+  hasVScroll=false;
+  if (widget.width > width)   hasHScroll=true;
+  if (widget.height > height)   hasVScroll=true;
+  widgetAreaBounds.set(0,0,width,height);
+  widget.y=-(!hasVScroll ? (int)(widget.height - height) : 0) - (hasVScroll ? (int)((widget.height - height) * (1 - vScrollAmount)) : 0);
+  widget.x=-(hasHScroll ? (int)((widget.width - width) * hScrollAmount) : 0);
+  ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
+}

@@ -1,0 +1,9 @@
+{
+  setupTransform(batch);
+  if (invalidated)   layout();
+  calculateBoundsAndPositions(batch.getTransformMatrix());
+  ScissorStack.pushScissors(scissorBounds);
+  drawChildren(batch,parentAlpha);
+  ScissorStack.popScissors();
+  resetTransform(batch);
+}

@@ -1,0 +1,7 @@
+{
+  if (pointer != 0)   return false;
+  lastPoint.set(x,y);
+  touchScroll=true;
+  focus(this,0);
+  return true;
+}

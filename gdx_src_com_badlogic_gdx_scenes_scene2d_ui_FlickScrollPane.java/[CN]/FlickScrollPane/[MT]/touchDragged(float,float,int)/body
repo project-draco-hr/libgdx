@@ -1,0 +1,18 @@
+{
+  if (pointer != 0)   return false;
+  if (touchScroll) {
+    if (hasHScroll) {
+      hScrollAmount-=(x - lastPoint.x) / width;
+      hScrollAmount=Math.max(0,hScrollAmount);
+      hScrollAmount=Math.min(1,hScrollAmount);
+    }
+    if (hasVScroll) {
+      vScrollAmount+=(y - lastPoint.y) / height;
+      vScrollAmount=Math.max(0,vScrollAmount);
+      vScrollAmount=Math.min(1,vScrollAmount);
+    }
+    lastPoint.set(x,y);
+    return true;
+  }
+ else   return super.touchDragged(x,y,pointer);
+}
