@@ -1,6 +1,9 @@
 {
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
+    widget.width=width;
+    widget.height=height;
+    layout.invalidate();
     widget.width=layout.getPrefWidth();
     widget.height=layout.getPrefHeight();
     layout.invalidate();
