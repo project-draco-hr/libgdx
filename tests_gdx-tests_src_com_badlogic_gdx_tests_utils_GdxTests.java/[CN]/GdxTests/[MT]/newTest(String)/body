@@ -9,6 +9,7 @@
       return (GdxTest)clazz.newInstance();
     }
  catch (    Exception e) {
+      ex.printStackTrace();
       return null;
     }
   }
