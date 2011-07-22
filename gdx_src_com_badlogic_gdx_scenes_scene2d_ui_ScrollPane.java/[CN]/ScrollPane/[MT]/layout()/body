@@ -1,11 +1,9 @@
 {
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
+    widget.width=layout.getPrefWidth();
+    widget.height=layout.getPrefHeight();
     layout.layout();
-    if (!(widget instanceof Table)) {
-      widget.width=layout.getPrefWidth();
-      widget.height=layout.getPrefHeight();
-    }
   }
   invalidated=false;
 }
