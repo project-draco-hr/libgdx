@@ -1,0 +1,11 @@
+{
+  int xSlices=(totalWidth - margin) / (width + spacing);
+  int ySlices=(totalHeight - margin) / (height + spacing);
+  TextureRegion[][] res=new TextureRegion[xSlices][ySlices];
+  for (int x=0; x < xSlices; x++) {
+    for (int y=0; y < ySlices; y++) {
+      res[x][y]=new TextureRegion(texture,margin + x * (width + spacing),margin + y * (height + spacing),width,height);
+    }
+  }
+  return res;
+}

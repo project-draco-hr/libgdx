@@ -1,5 +1,11 @@
 {
-  if (normalCacheId == null)   return 0;
-  if (normalCacheId[layer] == null)   return 0;
-  return normalCacheId[layer].length;
+  int normalCacheHeight=0;
+  if (normalCacheId != null && normalCacheId[layer] != null) {
+    normalCacheHeight=normalCacheId[layer].length;
+  }
+  int blendedCacheHeight=0;
+  if (blendedCacheId != null && blendedCacheId[layer] != null) {
+    blendedCacheHeight=blendedCacheId[layer].length;
+  }
+  return Math.max(normalCacheHeight,blendedCacheHeight);
 }

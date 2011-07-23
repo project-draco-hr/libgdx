@@ -1,9 +1,17 @@
 {
   String temp;
   int index=s.lastIndexOf('\\');
-  if (index != -1)   temp=s.substring(index + 1);
- else   temp=s;
+  if (index != -1) {
+    temp=s.substring(index + 1);
+  }
+ else {
+    temp=s;
+  }
   index=temp.lastIndexOf('/');
-  if (index != -1)   return s.substring(index + 1);
- else   return s;
+  if (index != -1) {
+    return s.substring(index + 1);
+  }
+ else {
+    return s;
+  }
 }

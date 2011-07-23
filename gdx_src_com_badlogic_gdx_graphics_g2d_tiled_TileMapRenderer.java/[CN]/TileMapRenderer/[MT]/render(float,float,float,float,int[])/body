@@ -2,18 +2,30 @@
   lastRow=(int)((mapHeightUnits - (y - height + overdrawY)) / (unitsPerBlockY));
   initialRow=(int)((mapHeightUnits - (y - overdrawY)) / (unitsPerBlockY));
   initialRow=(initialRow > 0) ? initialRow : 0;
+  lastCol=(int)((x + width + overdrawX) / (unitsPerBlockX));
   initialCol=(int)((x - overdrawX) / (unitsPerBlockX));
   initialCol=(initialCol > 0) ? initialCol : 0;
-  lastCol=(int)((x + width + overdrawX) / (unitsPerBlockX));
   Gdx.gl.glBlendFunc(GL11.GL_SRC_ALPHA,GL11.GL_ONE_MINUS_SRC_ALPHA);
   cache.begin();
-  for (currentLayer=0; currentLayer < layers.length; currentLayer++) {
-    for (currentRow=initialRow; currentRow <= lastRow && currentRow < getLayerHeightInBlocks(currentLayer); currentRow++) {
-      for (currentCol=initialCol; currentCol <= lastCol && currentCol < getLayerWidthInBlocks(currentLayer,currentRow); currentCol++) {
-        Gdx.gl.glDisable(GL10.GL_BLEND);
-        cache.draw(normalCacheId[layers[currentLayer]][currentRow][currentCol]);
-        Gdx.gl.glEnable(GL10.GL_BLEND);
-        cache.draw(blendedCacheId[layers[currentLayer]][currentRow][currentCol]);
+  if (isSimpleTileAtlas) {
+    Gdx.gl.glEnable(GL10.GL_BLEND);
+    for (currentLayer=0; currentLayer < layers.length; currentLayer++) {
+      for (currentRow=initialRow; currentRow <= lastRow && currentRow < getLayerHeightInBlocks(currentLayer); currentRow++) {
+        for (currentCol=initialCol; currentCol <= lastCol && currentCol < getLayerWidthInBlocks(currentLayer,currentRow); currentCol++) {
+          cache.draw(blendedCacheId[layers[currentLayer]][currentRow][currentCol]);
+        }
+      }
+    }
+  }
+ else {
+    for (currentLayer=0; currentLayer < layers.length; currentLayer++) {
+      for (currentRow=initialRow; currentRow <= lastRow && currentRow < getLayerHeightInBlocks(currentLayer); currentRow++) {
+        for (currentCol=initialCol; currentCol <= lastCol && currentCol < getLayerWidthInBlocks(currentLayer,currentRow); currentCol++) {
+          Gdx.gl.glDisable(GL10.GL_BLEND);
+          cache.draw(normalCacheId[layers[currentLayer]][currentRow][currentCol]);
+          Gdx.gl.glEnable(GL10.GL_BLEND);
+          cache.draw(blendedCacheId[layers[currentLayer]][currentRow][currentCol]);
+        }
       }
     }
   }

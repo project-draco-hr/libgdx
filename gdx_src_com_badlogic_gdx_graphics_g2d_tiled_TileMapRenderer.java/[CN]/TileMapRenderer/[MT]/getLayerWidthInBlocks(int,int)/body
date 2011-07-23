@@ -1,6 +1,11 @@
 {
-  if (normalCacheId == null)   return 0;
-  if (normalCacheId[layer] == null)   return 0;
-  if (normalCacheId[layer][row] == null)   return 0;
-  return normalCacheId[layer][row].length;
+  int normalCacheWidth=0;
+  if (normalCacheId != null && normalCacheId[layer] != null && normalCacheId[layer][row] != null) {
+    normalCacheWidth=normalCacheId[layer][row].length;
+  }
+  int blendedCacheWidth=0;
+  if (blendedCacheId != null && blendedCacheId[layer] != null && blendedCacheId[layer][row] != null) {
+    blendedCacheWidth=blendedCacheId[layer][row].length;
+  }
+  return Math.max(normalCacheWidth,blendedCacheWidth);
 }

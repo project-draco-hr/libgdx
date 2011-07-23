@@ -1,10 +1,14 @@
 {
-  if (relativePath.trim().length() == 0)   return path;
+  if (relativePath.trim().length() == 0) {
+    return path;
+  }
   FileHandle child=path;
   StringTokenizer tokenizer=new StringTokenizer(relativePath,"\\/");
   while (tokenizer.hasMoreElements()) {
     String token=tokenizer.nextToken();
-    if (token.equals(".."))     child=child.parent();
+    if (token.equals("..")) {
+      child=child.parent();
+    }
  else {
       child=child.child(token);
     }

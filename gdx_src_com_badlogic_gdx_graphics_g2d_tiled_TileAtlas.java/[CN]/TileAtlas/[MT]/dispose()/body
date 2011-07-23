@@ -1,4 +1,6 @@
 {
-  for (  Texture texture : textures)   texture.dispose();
+  for (  Texture texture : textures) {
+    texture.dispose();
+  }
   textures.clear();
 }

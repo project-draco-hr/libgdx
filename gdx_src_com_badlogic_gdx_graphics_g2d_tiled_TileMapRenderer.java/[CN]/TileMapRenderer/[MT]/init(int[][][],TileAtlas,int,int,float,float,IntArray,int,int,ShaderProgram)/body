@@ -9,6 +9,7 @@
   this.tilesPerBlockY=tilesPerBlockY;
   unitsPerBlockX=unitsPerTileX * tilesPerBlockX;
   unitsPerBlockY=unitsPerTileY * tilesPerBlockY;
+  isSimpleTileAtlas=atlas instanceof SimpleTileAtlas;
   int layer, row, col;
   allLayers=new int[map.length];
   int maxCacheSize=0;
@@ -35,8 +36,13 @@
       normalCacheId[layer][row]=new int[(int)MathUtils.ceil((float)map[layer][row].length / tilesPerBlockX)];
       blendedCacheId[layer][row]=new int[(int)MathUtils.ceil((float)map[layer][row].length / tilesPerBlockX)];
       for (col=0; col < normalCacheId[layer][row].length; col++) {
-        normalCacheId[layer][row][col]=addBlock(map[layer],layer,row,col,false);
-        blendedCacheId[layer][row][col]=addBlock(map[layer],layer,row,col,true);
+        if (isSimpleTileAtlas) {
+          blendedCacheId[layer][row][col]=addBlock(map[layer],row,col,false);
+        }
+ else {
+          normalCacheId[layer][row][col]=addBlock(map[layer],row,col,false);
+          blendedCacheId[layer][row][col]=addBlock(map[layer],row,col,true);
+        }
       }
     }
   }
