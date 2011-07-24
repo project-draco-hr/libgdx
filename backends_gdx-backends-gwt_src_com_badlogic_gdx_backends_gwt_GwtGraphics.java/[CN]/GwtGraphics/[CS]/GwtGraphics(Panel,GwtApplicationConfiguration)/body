@@ -3,7 +3,7 @@
   contextAttribs.setStencilEnable(config.stencil);
   contextAttribs.setAntialiasEnable(config.antialiasing);
   surface=new Surface3D(config.width,config.height,contextAttribs);
-  RootPanel.get().add(surface);
+  root.add(surface);
   GL2 gl=surface.getGL();
   if (gl == null) {
     throw new GdxRuntimeException("WebGL not supported");

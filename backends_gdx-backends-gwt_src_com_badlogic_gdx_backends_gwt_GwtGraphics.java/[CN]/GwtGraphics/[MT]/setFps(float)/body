@@ -1,0 +1,6 @@
+{
+  long currTimeStamp=System.currentTimeMillis();
+  deltaTime=(currTimeStamp - lastTimeStamp) / 1000.0f;
+  lastTimeStamp=currTimeStamp;
+  this.fps=fps;
+}

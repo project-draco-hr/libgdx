@@ -1,6 +1,8 @@
 {
   if (log == null) {
-    log=new Label();
-    RootPanel.get().add(log);
+    log=new TextArea();
+    log.setSize(graphics.getWidth() + "px","150px");
+    log.setReadOnly(true);
+    root.add(log);
   }
 }

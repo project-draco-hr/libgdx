@@ -1,7 +1,9 @@
 {
   this.listener=getApplicationListener();
   this.config=getConfig();
-  graphics=new GwtGraphics(config);
+  this.root=config.rootPanel != null ? config.rootPanel : RootPanel.get();
+  graphics=new GwtGraphics(root,config);
+  Gdx.app=this;
   Gdx.graphics=graphics;
   Gdx.gl20=graphics.getGL20();
   Gdx.gl=graphics.getGLCommon();

@@ -2,5 +2,6 @@
   if (logLevel >= LOG_INFO) {
     checkLogLabel();
     log.setText(log.getText() + "\n" + tag+ ": "+ message+ "\n"+ exception.getMessage());
+    log.setCursorPos(log.getText().length() - 1);
   }
 }
