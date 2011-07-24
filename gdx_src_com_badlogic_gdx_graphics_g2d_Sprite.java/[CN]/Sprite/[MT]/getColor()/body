@@ -1,6 +1,6 @@
 {
   float floatBits=vertices[C1];
-  int intBits=Float.floatToRawIntBits(vertices[C1]);
+  int intBits=NumberUtils.floatToRawIntBits(vertices[C1]);
   Color color=this.color;
   color.r=(intBits & 0xff) / 255f;
   color.g=((intBits >>> 8) & 0xff) / 255f;
