@@ -9,6 +9,10 @@
 ,ResizeEvent.getType());
   FpsTimer timer=new FpsTimer(config.fps){
     @Override public void update(){
+      for (int i=0; i < runnables.size(); i++) {
+        runnables.get(i).run();
+      }
+      runnables.clear();
       listener.render();
     }
   }

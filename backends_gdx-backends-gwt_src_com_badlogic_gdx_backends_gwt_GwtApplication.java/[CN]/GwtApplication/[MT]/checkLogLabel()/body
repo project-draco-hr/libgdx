@@ -1,0 +1,6 @@
+{
+  if (log == null) {
+    log=new Label();
+    RootPanel.get().add(log);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (logLevel >= LOG_INFO) {
+    checkLogLabel();
+    log.setText(log.getText() + "\n" + tag+ ": "+ message);
+  }
+}
