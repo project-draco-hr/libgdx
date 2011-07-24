@@ -1,0 +1,3 @@
+{
+  return gl.checkFramebufferStatus(FramebufferTarget.parseFramebufferTarget(target)).getValue();
+}

@@ -1,0 +1,3 @@
+{
+  return new DirectReadWriteFloatBufferAdapter((DirectReadWriteByteBuffer)byteBuffer.slice());
+}

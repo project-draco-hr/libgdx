@@ -1,0 +1,23 @@
+{
+  if ((mask & GL20.GL_COLOR_BUFFER_BIT) != 0 && (mask & GL20.GL_DEPTH_BUFFER_BIT) != 0 && (mask & GL20.GL_STENCIL_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.COLOR_BUFFER_BIT,ClearBufferMask.DEPTH_BUFFER_BIT,ClearBufferMask.STENCIL_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_COLOR_BUFFER_BIT) != 0 && (mask & GL20.GL_DEPTH_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.COLOR_BUFFER_BIT,ClearBufferMask.DEPTH_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_DEPTH_BUFFER_BIT) != 0 && (mask & GL20.GL_STENCIL_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.DEPTH_BUFFER_BIT,ClearBufferMask.STENCIL_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_COLOR_BUFFER_BIT) != 0 && (mask & GL20.GL_STENCIL_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.COLOR_BUFFER_BIT,ClearBufferMask.STENCIL_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_COLOR_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.COLOR_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_DEPTH_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.DEPTH_BUFFER_BIT);
+  }
+  if ((mask & GL20.GL_STENCIL_BUFFER_BIT) != 0) {
+    gl.clear(ClearBufferMask.STENCIL_BUFFER_BIT);
+  }
+}

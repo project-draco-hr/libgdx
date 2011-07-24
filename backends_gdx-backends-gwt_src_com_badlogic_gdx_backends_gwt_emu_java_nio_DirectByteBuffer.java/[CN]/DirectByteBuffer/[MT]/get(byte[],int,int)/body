@@ -1,0 +1,14 @@
+{
+  int length=dest.length;
+  if (off < 0 || len < 0 || (long)off + (long)len > length) {
+    throw new IndexOutOfBoundsException();
+  }
+  if (len > remaining()) {
+    throw new BufferUnderflowException();
+  }
+  for (int i=0; i < len; i++) {
+    dest[i + off]=get(position + i);
+  }
+  position+=len;
+  return this;
+}

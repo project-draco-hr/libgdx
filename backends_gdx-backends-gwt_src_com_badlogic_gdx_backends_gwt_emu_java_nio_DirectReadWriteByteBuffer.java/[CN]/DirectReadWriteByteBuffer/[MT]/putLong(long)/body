@@ -1,0 +1,6 @@
+{
+  int newPosition=position + 8;
+  store(position,value);
+  position=newPosition;
+  return this;
+}

@@ -1,0 +1,17 @@
+{
+  listener.create();
+  listener.resize(graphics.getWidth(),graphics.getHeight());
+  graphics.surface.addHandler(new ResizeHandler(){
+    @Override public void onResize(    ResizeEvent event){
+      GwtApplication.this.listener.resize(event.getWidth(),event.getHeight());
+    }
+  }
+,ResizeEvent.getType());
+  FpsTimer timer=new FpsTimer(config.fps){
+    @Override public void update(){
+      listener.render();
+    }
+  }
+;
+  timer.start();
+}

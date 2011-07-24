@@ -1,0 +1,8 @@
+{
+  DirectReadWriteByteBuffer buf=new DirectReadWriteByteBuffer(other.byteArray.getBuffer(),other.capacity(),other.byteArray.getByteOffset());
+  buf.limit=other.limit();
+  buf.position=other.position();
+  buf.mark=markOfOther;
+  buf.order(other.order());
+  return buf;
+}

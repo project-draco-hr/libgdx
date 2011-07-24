@@ -1,0 +1,13 @@
+{
+  if (target == this) {
+    throw new IllegalArgumentException();
+  }
+  if (remaining() == 0) {
+    return target.remaining() == 0 ? 0 : -1;
+  }
+  int result=Math.min(target.remaining(),remaining());
+  char[] chars=new char[result];
+  get(chars);
+  target.put(chars);
+  return result;
+}

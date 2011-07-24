@@ -1,0 +1,5 @@
+{
+  StringByteBuffer slice=new StringByteBuffer(s,position,limit);
+  slice.order=order;
+  return slice;
+}

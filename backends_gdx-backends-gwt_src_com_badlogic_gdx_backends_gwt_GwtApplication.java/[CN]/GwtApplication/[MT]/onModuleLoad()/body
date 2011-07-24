@@ -1,0 +1,9 @@
+{
+  this.listener=getApplicationListener();
+  this.config=getConfig();
+  graphics=new GwtGraphics(config);
+  Gdx.graphics=graphics;
+  Gdx.gl20=graphics.getGL20();
+  Gdx.gl=graphics.getGLCommon();
+  setupLoop();
+}

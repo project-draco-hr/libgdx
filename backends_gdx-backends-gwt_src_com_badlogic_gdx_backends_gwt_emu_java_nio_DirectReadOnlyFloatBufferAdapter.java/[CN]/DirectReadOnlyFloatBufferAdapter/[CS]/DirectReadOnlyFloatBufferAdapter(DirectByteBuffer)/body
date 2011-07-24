@@ -1,0 +1,6 @@
+{
+  super((byteBuffer.capacity() >> 2));
+  this.byteBuffer=byteBuffer;
+  this.byteBuffer.clear();
+  this.floatArray=Float32Array.create(byteBuffer.byteArray.getBuffer(),byteBuffer.byteArray.getByteOffset(),capacity);
+}

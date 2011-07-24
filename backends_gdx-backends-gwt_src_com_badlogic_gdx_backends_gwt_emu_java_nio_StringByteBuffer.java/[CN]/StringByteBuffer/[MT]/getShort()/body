@@ -1,0 +1,6 @@
+{
+  int newPosition=position + 2;
+  short result=loadShort(position);
+  position=newPosition;
+  return result;
+}

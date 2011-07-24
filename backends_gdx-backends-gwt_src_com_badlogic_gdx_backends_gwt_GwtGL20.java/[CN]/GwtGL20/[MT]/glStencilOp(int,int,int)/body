@@ -1,0 +1,3 @@
+{
+  gl.stencilOp(StencilOp.parseStencilOp(fail),StencilOp.parseStencilOp(zfail),StencilOp.parseStencilOp(zpass));
+}

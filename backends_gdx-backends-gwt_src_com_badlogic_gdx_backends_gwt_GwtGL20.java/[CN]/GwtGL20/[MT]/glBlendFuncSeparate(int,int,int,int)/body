@@ -1,0 +1,3 @@
+{
+  gl.blendFuncSeparate(BlendingFactorSrc.parseBlendingFactorSrc(srcRGB),BlendingFactorDest.parseBlendingFactorDest(dstRGB),BlendingFactorSrc.parseBlendingFactorSrc(srcAlpha),BlendingFactorDest.parseBlendingFactorDest(dstAlpha));
+}

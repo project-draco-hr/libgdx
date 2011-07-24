@@ -1,0 +1,3 @@
+{
+  gl.stencilOpSeparate(CullFaceMode.parseCullFaceMode(face),StencilOp.parseStencilOp(fail),StencilOp.parseStencilOp(zfail),StencilOp.parseStencilOp(zpass));
+}

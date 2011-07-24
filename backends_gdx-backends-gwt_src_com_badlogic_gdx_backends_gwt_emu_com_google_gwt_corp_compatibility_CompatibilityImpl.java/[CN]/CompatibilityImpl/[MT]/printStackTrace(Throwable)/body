@@ -1,0 +1,6 @@
+{
+  System.out.println("" + e);
+  for (  StackTraceElement ste : e.getStackTrace()) {
+    System.out.println(" at " + ste);
+  }
+}

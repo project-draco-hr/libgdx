@@ -1,0 +1,13 @@
+{
+  WebGLContextAttributes contextAttribs=new WebGLContextAttributes();
+  contextAttribs.setStencilEnable(config.stencil);
+  contextAttribs.setAntialiasEnable(config.antialiasing);
+  surface=new Surface3D(config.width,config.height,contextAttribs);
+  RootPanel.get().add(surface);
+  GL2 gl=surface.getGL();
+  if (gl == null) {
+    throw new GdxRuntimeException("WebGL not supported");
+  }
+  this.gl=new GwtGL20(surface);
+  gl.viewport(0,0,surface.getWidth(),surface.getHeight());
+}

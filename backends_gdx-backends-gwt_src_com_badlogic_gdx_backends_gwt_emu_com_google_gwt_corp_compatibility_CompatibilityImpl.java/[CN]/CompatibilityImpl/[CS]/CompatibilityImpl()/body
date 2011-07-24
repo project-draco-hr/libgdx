@@ -1,0 +1,9 @@
+{
+  ConsolePrintStream cps;
+  cps=new ConsolePrintStream();
+  System.setOut(cps);
+  System.setErr(cps);
+  System.out.println("Test for System.out.println()");
+  new Throwable("Exception test").printStackTrace();
+  System.out.println("Did the exception test appear above?");
+}
