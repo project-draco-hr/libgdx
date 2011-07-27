@@ -4,7 +4,9 @@
     if (parent.getActors().size() > 1)     parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
     if (titleBounds.contains(x,y)) {
       focus(this,0);
-      move=true;
+      if (isMovable) {
+        move=true;
+      }
       initial.set(x,y);
     }
  else     if (!super.touchDown(x,y,pointer)) {
