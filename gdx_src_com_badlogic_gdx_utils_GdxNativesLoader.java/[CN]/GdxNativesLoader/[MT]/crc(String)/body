@@ -1,5 +1,4 @@
 {
-  System.out.println("loading /" + nativeFile);
   InputStream input=GdxNativesLoader.class.getResourceAsStream("/" + nativeFile);
   if (input == null)   return Version.VERSION;
   CRC32 crc=new CRC32();
