@@ -6,7 +6,7 @@
     bytes.write(buffer,0,readBytes);
   }
   buffer=bytes.toByteArray();
-  pixelPtr=load(nativeData,buffer,buffer.length,requestedFormat);
+  pixelPtr=load(nativeData,buffer,0,buffer.length,requestedFormat);
   if (pixelPtr == null)   throw new IOException("couldn't load pixmap");
   basePtr=nativeData[0];
   width=(int)nativeData[1];

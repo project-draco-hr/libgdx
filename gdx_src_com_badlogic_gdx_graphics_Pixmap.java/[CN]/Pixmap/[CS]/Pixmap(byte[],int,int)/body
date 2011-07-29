@@ -1,0 +1,8 @@
+{
+  try {
+    pixmap=new Gdx2DPixmap(encodedData,offset,len,0);
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't load pixmap from image data",e);
+  }
+}
