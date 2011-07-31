@@ -2,7 +2,7 @@
   final BitmapFont font=style.font;
   final NinePatch background=style.background;
   textBounds.set(font.getBounds(text));
-  textBounds.height-=font.getDescent();
+  textBounds.height-=font.getDescent() * 2;
   font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
   prefHeight=background.getBottomHeight() + background.getTopHeight() + textBounds.height;
   prefWidth=background.getLeftWidth() + background.getRightWidth() + initialPrefWidth;
