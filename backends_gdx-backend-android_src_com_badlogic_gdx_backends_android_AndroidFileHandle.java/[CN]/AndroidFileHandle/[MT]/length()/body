@@ -1,0 +1,10 @@
+{
+  if (type == FileType.Internal) {
+    try {
+      return assets.openFd(file.getPath()).getLength();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+  return super.length();
+}
