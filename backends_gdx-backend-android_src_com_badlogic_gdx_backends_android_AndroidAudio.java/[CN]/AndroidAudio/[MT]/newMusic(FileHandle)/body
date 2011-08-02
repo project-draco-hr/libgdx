@@ -22,7 +22,9 @@ synchronized (musics) {
       mediaPlayer.setDataSource(aHandle.path());
       mediaPlayer.prepare();
       AndroidMusic music=new AndroidMusic(this,mediaPlayer);
-      musics.add(music);
+synchronized (musics) {
+        musics.add(music);
+      }
       return music;
     }
  catch (    Exception ex) {
