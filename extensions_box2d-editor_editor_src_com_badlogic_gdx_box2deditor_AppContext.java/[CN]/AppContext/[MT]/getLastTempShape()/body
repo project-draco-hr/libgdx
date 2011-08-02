@@ -1,0 +1,4 @@
+{
+  if (tempShapes.isEmpty())   return null;
+  return tempShapes.get(tempShapes.size() - 1);
+}

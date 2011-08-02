@@ -1,0 +1,17 @@
+{
+  BodyDef ballBodyDef=new BodyDef();
+  ballBodyDef.type=BodyType.DynamicBody;
+  CircleShape ballShape=new CircleShape();
+  ballShape.setRadius(BALL_SIZE.x / 2);
+  Random rand=new Random();
+  ballModels=new Body[MAX_BALL_COUNT];
+  for (int i=0; i < MAX_BALL_COUNT; i++) {
+    float tx=rand.nextFloat() * 1.0f - 0.5f;
+    float ty=rand.nextFloat() * WORLD_SIZE.y * 4 + WORLD_SIZE.y / 2 + BALL_SIZE.y;
+    float angle=rand.nextFloat() * MathUtils.PI * 2;
+    ballBodyDef.position.set(tx,ty);
+    ballBodyDef.angle=angle;
+    ballModels[i]=world.createBody(ballBodyDef);
+    ballModels[i].createFixture(ballShape,1);
+  }
+}

@@ -1,0 +1,15 @@
+{
+  AppContext.instance().clearTempObjects();
+  AppContext.instance().setCurrentName(null);
+  App.instance().clearAsset();
+  if (assets_assetList.isSelectionEmpty())   return;
+  int idx=assets_assetList.getSelectedIndex();
+  if (isAssetValid(idx)) {
+    String name=(String)assetsListModel.get(idx);
+    String path=AppContext.instance().getFullPath(name);
+    Vector2 size=App.instance().setAssetByFile(path);
+    AppContext.instance().setCurrentSize(size);
+    AppContext.instance().setCurrentName(name);
+    AppContext.instance().loadCurrentModel();
+  }
+}

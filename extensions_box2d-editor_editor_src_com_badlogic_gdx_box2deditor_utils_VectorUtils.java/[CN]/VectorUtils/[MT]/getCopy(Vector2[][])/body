@@ -1,0 +1,6 @@
+{
+  if (vss == null)   return null;
+  Vector2[][] ret=new Vector2[vss.length][];
+  for (int i=0; i < ret.length; i++)   ret[i]=getCopy(vss[i]);
+  return ret;
+}

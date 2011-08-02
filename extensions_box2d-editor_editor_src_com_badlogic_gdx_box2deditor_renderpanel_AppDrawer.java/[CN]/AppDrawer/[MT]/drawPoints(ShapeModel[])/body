@@ -1,0 +1,11 @@
+{
+  Vector2 np=AppContext.instance().nearestPoint;
+  List<Vector2> sp=AppContext.instance().selectedPoints;
+  float w=10 * camera.zoom;
+  for (  ShapeModel shape : shapes) {
+    for (    Vector2 p : shape.getPoints()) {
+      if (p == np || sp.contains(p))       fillRect(p,w,w,SHAPE_LINE_COLOR);
+      drawRect(p,w,w,SHAPE_LINE_COLOR,2);
+    }
+  }
+}

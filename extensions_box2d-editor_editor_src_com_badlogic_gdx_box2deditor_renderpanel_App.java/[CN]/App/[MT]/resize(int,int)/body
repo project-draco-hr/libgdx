@@ -1,0 +1,7 @@
+{
+  GL10 gl=Gdx.gl10;
+  gl.glViewport(0,0,width,height);
+  camera.viewportWidth=width;
+  camera.viewportHeight=height;
+  camera.update();
+}

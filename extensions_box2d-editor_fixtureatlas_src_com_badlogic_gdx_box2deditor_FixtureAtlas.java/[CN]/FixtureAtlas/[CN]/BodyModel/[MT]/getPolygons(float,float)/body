@@ -1,0 +1,10 @@
+{
+  for (int i=0; i < normalizedPolygons.length; i++) {
+    for (int ii=0; ii < normalizedPolygons[i].length; ii++) {
+      this.polygons[i][ii]=new Vector2(normalizedPolygons[i][ii]);
+      this.polygons[i][ii].x*=width / 100f;
+      this.polygons[i][ii].y*=height / 100f;
+    }
+  }
+  return polygons;
+}

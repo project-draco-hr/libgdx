@@ -1,0 +1,12 @@
+{
+  Random rand=new Random();
+  for (int i=0; i < MAX_BALL_COUNT; i++) {
+    float tx=rand.nextFloat() * 1.0f - 0.5f;
+    float ty=rand.nextFloat() * WORLD_SIZE.y * 4 + WORLD_SIZE.y / 2 + BALL_SIZE.y;
+    float angle=rand.nextFloat() * MathUtils.PI * 2;
+    ballModels[i].setLinearVelocity(0,0);
+    ballModels[i].setAngularVelocity(0);
+    ballModels[i].setTransform(tx,ty,angle);
+    ballModels[i].setAwake(true);
+  }
+}

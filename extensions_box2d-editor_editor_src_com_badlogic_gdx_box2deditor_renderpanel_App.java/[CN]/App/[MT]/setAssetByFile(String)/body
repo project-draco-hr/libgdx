@@ -1,0 +1,18 @@
+{
+  clearAsset();
+  Pixmap tempPm=new Pixmap(Gdx.files.absolute(fullpath));
+  int origW=tempPm.getWidth();
+  int origH=tempPm.getHeight();
+  int w=getNearestPOT(origW);
+  int h=getNearestPOT(origH);
+  assetPixmap=new Pixmap(w,h,tempPm.getFormat());
+  assetPixmap.drawPixmap(tempPm,0,h - origH,0,0,origW,origH);
+  tempPm.dispose();
+  assetTexture=new Texture(assetPixmap);
+  assetTexture.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+  assetSprite=new Sprite(assetTexture);
+  assetSprite.setPosition(0,0);
+  camera.position.set(origW / 2,origH / 2,0);
+  camera.update();
+  return new Vector2(origW,origH);
+}

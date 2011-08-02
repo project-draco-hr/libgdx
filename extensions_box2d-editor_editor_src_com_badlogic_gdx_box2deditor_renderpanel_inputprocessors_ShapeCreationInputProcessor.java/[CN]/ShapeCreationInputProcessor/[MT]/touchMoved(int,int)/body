@@ -1,0 +1,9 @@
+{
+  if (!AppContext.instance().isCurrentModelValid())   return false;
+  Vector2 p=App.instance().screenToWorld(x,y);
+  AppContext.instance().nearestPoint=null;
+  ShapeModel shape=AppContext.instance().getLastTempShape();
+  if (shape != null && !shape.isClosed() && shape.getPointCount() >= 3)   if (shape.getPoint(0).dst(p) < 10 * App.instance().getCamera().zoom)   AppContext.instance().nearestPoint=shape.getPoint(0);
+  AppContext.instance().nextPoint=p;
+  return false;
+}

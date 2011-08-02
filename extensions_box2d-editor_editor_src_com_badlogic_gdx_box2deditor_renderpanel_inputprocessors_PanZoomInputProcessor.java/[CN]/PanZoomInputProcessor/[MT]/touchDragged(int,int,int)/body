@@ -1,0 +1,9 @@
+{
+  if (!Gdx.input.isButtonPressed(Buttons.RIGHT))   return false;
+  OrthographicCamera camera=App.instance().getCamera();
+  Vector2 delta=new Vector2(x,y).sub(lastTouch).mul(camera.zoom);
+  camera.translate(-delta.x,delta.y,0);
+  camera.update();
+  lastTouch.set(x,y);
+  return false;
+}

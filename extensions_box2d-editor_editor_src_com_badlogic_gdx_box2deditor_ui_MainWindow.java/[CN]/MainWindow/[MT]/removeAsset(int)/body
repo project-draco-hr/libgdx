@@ -1,0 +1,7 @@
+{
+  String oldName=(String)assetsListModel.get(idx);
+  AppContext.instance().removeModel(oldName);
+  assetsListModel.remove(idx);
+  if (assetsListModel.size() > idx)   assets_assetList.setSelectedIndex(idx);
+ else   if (assetsListModel.size() > 0)   assets_assetList.setSelectedIndex(idx - 1);
+}

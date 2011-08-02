@@ -1,0 +1,15 @@
+{
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      parseArgs(args);
+      LwjglCanvas glCanvas=new LwjglCanvas(App.instance(),false);
+      MainWindow mw=new MainWindow(glCanvas);
+      mw.setTitle("Box2D Editor");
+      Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+      mw.setSize(Math.min(1200,screenSize.width - 100),Math.min(800,screenSize.height - 100));
+      mw.setLocationRelativeTo(null);
+      mw.setVisible(true);
+    }
+  }
+);
+}

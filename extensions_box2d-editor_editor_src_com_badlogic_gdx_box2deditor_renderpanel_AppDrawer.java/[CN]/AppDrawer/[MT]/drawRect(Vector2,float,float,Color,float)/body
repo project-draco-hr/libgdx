@@ -1,0 +1,15 @@
+{
+  Gdx.gl10.glLineWidth(lineWidth);
+  imr.begin(GL10.GL_LINE_STRIP);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p.x - w / 2,p.y - h / 2,0);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p.x - w / 2,p.y + h / 2,0);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p.x + w / 2,p.y + h / 2,0);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p.x + w / 2,p.y - h / 2,0);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p.x - w / 2,p.y - h / 2,0);
+  imr.end();
+}

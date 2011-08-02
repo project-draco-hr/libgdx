@@ -1,0 +1,7 @@
+{
+  if (!isActive)   return false;
+  if (!AppContext.instance().isCurrentModelValid())   return true;
+  Vector2 p=App.instance().screenToWorld(x,y);
+  AppContext.instance().ballThrowLastPoint=p;
+  return true;
+}

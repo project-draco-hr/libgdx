@@ -1,0 +1,14 @@
+{
+  if (assetPixmap != null) {
+    assetPixmap.dispose();
+    assetPixmap=null;
+  }
+  if (assetTexture != null) {
+    assetTexture.dispose();
+    assetTexture=null;
+  }
+  if (assetSprite != null) {
+    assetSprite=null;
+  }
+  clearBody();
+}

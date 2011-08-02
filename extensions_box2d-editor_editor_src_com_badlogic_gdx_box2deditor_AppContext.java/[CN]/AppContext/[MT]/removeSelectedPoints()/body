@@ -1,0 +1,4 @@
+{
+  for (  ShapeModel shape : tempShapes)   for (  Vector2 p : selectedPoints)   shape.removePoint(p);
+  saveCurrentModel();
+}

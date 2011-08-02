@@ -1,0 +1,5 @@
+{
+  int idx=f.getName().lastIndexOf(".");
+  if (idx < 0 || idx == f.getName().length() - 1)   return "";
+  return f.getName().substring(idx + 1);
+}

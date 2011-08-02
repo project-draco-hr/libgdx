@@ -1,0 +1,11 @@
+{
+  String name=(String)assetsListModel.get(idx);
+  if (name.startsWith(UNKNOWN_PREFIX))   return false;
+  String path=AppContext.instance().getFullPath(name);
+  File file=new File(path);
+  if (!file.exists()) {
+    assetsListModel.set(idx,UNKNOWN_PREFIX + name);
+    return false;
+  }
+  return true;
+}

@@ -1,0 +1,9 @@
+{
+  nVertices=_x.length;
+  x=new float[nVertices];
+  y=new float[nVertices];
+  for (int i=0; i < nVertices; ++i) {
+    x[i]=_x[i];
+    y[i]=_y[i];
+  }
+}

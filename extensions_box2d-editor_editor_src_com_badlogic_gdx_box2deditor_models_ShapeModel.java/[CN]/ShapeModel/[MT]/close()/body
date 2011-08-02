@@ -1,0 +1,4 @@
+{
+  isClosed=true;
+  if (ShapeUtils.isPolygonCCW(points.toArray(new Vector2[points.size()])))   Collections.reverse(points);
+}

@@ -1,0 +1,35 @@
+{
+  float dx0, dy0, dx1, dy1;
+  dx0=dy0=dx1=dy1=0;
+  if (i >= xv.length || i < 0 || xv.length < 3)   return false;
+  int upper=i + 1;
+  int lower=i - 1;
+  if (i == 0) {
+    dx0=xv[0] - xv[xv.length - 1];
+    dy0=yv[0] - yv[yv.length - 1];
+    dx1=xv[1] - xv[0];
+    dy1=yv[1] - yv[0];
+    lower=xv.length - 1;
+  }
+ else   if (i == xv.length - 1) {
+    dx0=xv[i] - xv[i - 1];
+    dy0=yv[i] - yv[i - 1];
+    dx1=xv[0] - xv[i];
+    dy1=yv[0] - yv[i];
+    upper=0;
+  }
+ else {
+    dx0=xv[i] - xv[i - 1];
+    dy0=yv[i] - yv[i - 1];
+    dx1=xv[i + 1] - xv[i];
+    dy1=yv[i + 1] - yv[i];
+  }
+  float cross=dx0 * dy1 - dx1 * dy0;
+  if (cross > 0)   return false;
+  Triangle myTri=new Triangle(xv[i],yv[i],xv[upper],yv[upper],xv[lower],yv[lower]);
+  for (int j=0; j < xv.length; ++j) {
+    if (j == i || j == lower || j == upper)     continue;
+    if (myTri.isInside(xv[j],yv[j]))     return false;
+  }
+  return true;
+}

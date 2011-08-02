@@ -1,0 +1,13 @@
+{
+  DataInputStream is=new DataInputStream(new FileInputStream(inputFile));
+  Map<String,BodyModel> map=new TreeMap<String,BodyModel>();
+  while (is.available() > 0) {
+    String name=is.readUTF();
+    Vector2[][] points=readVecss(is);
+    Vector2[][] polygons=readVecss(is);
+    BodyModel bm=new BodyModel();
+    bm.set(points,polygons);
+    map.put(name,bm);
+  }
+  return map;
+}

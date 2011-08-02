@@ -1,0 +1,7 @@
+{
+  List<Vector2> circledPoints=new ArrayList<Vector2>();
+  Polygon polygon=new Polygon();
+  for (  Vector2 p : polygonPoints)   polygon.addPoint((int)(p.x * 1000),(int)(p.y * 1000));
+  for (  Vector2 p : points)   if (polygon.contains(p.x * 1000,p.y * 1000))   circledPoints.add(p);
+  return circledPoints.toArray(new Vector2[0]);
+}

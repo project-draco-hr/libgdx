@@ -1,0 +1,26 @@
+{
+  for (int i=assetsListModel.getSize() - 1; i >= 0; i--) {
+    String oldName=(String)assetsListModel.get(i);
+    if (oldName.startsWith(UNKNOWN_PREFIX)) {
+      oldName=oldName.substring(UNKNOWN_PREFIX.length());
+      File f=new File(newRoot,oldName);
+      if (f.exists())       assetsListModel.set(i,oldName);
+    }
+ else {
+      String newName=new File(oldRoot,oldName).getPath();
+      newName=AppContext.instance().getPathRelativeToOutputFile(newName);
+      if (newName != null) {
+        assetsListModel.set(i,newName);
+        AppContext.instance().changeModelName(oldName,newName);
+      }
+ else {
+        assetsListModel.set(i,UNKNOWN_PREFIX + oldName);
+      }
+    }
+  }
+  int idx=assets_assetList.getSelectedIndex();
+  if (idx > -1) {
+    assets_assetList.clearSelection();
+    assets_assetList.setSelectedIndex(idx);
+  }
+}

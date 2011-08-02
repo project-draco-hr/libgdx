@@ -1,0 +1,13 @@
+{
+  ShapeModel[] shapes=AppContext.instance().getTempShapes();
+  Vector2[][] polys=AppContext.instance().getTempPolygons();
+  if (AppContext.instance().arePolyDrawn) {
+    drawPolys(polys);
+  }
+  if (AppContext.instance().isShapeDrawn) {
+    drawShapes(shapes);
+    drawPoints(shapes);
+  }
+  drawMousePath();
+  drawBallThrowPath();
+}

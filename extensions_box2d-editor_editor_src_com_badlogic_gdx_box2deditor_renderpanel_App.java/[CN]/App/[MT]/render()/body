@@ -1,0 +1,33 @@
+{
+  if (assetSprite != null)   assetSprite.setColor(1,1,1,AppContext.instance().isAssetDrawnWithOpacity50 ? 0.5f : 1f);
+  if (world != null)   world.step(Gdx.graphics.getDeltaTime(),10,10);
+  GL10 gl=Gdx.gl10;
+  gl.glClearColor(1,1,1,1);
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  float w=Gdx.graphics.getWidth();
+  float h=Gdx.graphics.getHeight();
+  float tw=backgroundTexture.getWidth();
+  float th=backgroundTexture.getHeight();
+  sb.getProjectionMatrix().setToOrtho2D(0,0,w,h);
+  sb.begin();
+  sb.disableBlending();
+  sb.draw(backgroundTexture,0f,0f,w,h,0f,0f,w / tw,h / th);
+  sb.enableBlending();
+  font.draw(sb,"Zoom: " + zoom + "%",5,45);
+  font.draw(sb,"Fps: " + Gdx.graphics.getFramesPerSecond(),5,25);
+  sb.end();
+  sb.setProjectionMatrix(camera.combined);
+  sb.begin();
+  if (assetSprite != null && AppContext.instance().isAssetDrawn)   assetSprite.draw(sb);
+  for (int i=0; i < ballSprites.size(); i++) {
+    Sprite sp=ballSprites.get(i);
+    Vector2 pos=ballModels.get(i).getWorldCenter().mul(PX_PER_METER).sub(sp.getWidth() / 2,sp.getHeight() / 2);
+    float angleDeg=ballModels.get(i).getAngle() * MathUtils.radiansToDegrees;
+    sp.setPosition(pos.x,pos.y);
+    sp.setRotation(angleDeg);
+    sp.draw(sb);
+  }
+  sb.end();
+  camera.apply(gl);
+  drawer.draw();
+}

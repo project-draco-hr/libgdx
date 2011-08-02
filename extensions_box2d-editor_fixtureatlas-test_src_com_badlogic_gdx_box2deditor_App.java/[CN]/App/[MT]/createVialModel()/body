@@ -1,0 +1,8 @@
+{
+  FixtureAtlas atlas=new FixtureAtlas(Gdx.files.internal("data/bodies.bin"));
+  BodyDef vialBodyDef=new BodyDef();
+  vialBodyDef.position.set(VIAL_POS);
+  vialBodyDef.type=BodyType.StaticBody;
+  vialModel=world.createBody(vialBodyDef);
+  atlas.createFixtures(vialModel,"gfx\\test01.png",VIAL_SIZE.x,VIAL_SIZE.y);
+}

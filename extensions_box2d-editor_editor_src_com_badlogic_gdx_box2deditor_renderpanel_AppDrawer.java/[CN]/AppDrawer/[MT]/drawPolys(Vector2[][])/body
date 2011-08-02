@@ -1,0 +1,6 @@
+{
+  for (  Vector2[] poly : polys) {
+    for (int i=1; i < poly.length; i++)     drawLine(poly[i],poly[i - 1],SHAPE_POLY_COLOR,2);
+    if (poly.length > 0)     drawLine(poly[0],poly[poly.length - 1],SHAPE_POLY_COLOR,2);
+  }
+}

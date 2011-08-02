@@ -1,0 +1,46 @@
+{
+  if (vNum < 3)   return null;
+  Triangle[] buffer=new Triangle[vNum];
+  int bufferSize=0;
+  float[] xrem=new float[vNum];
+  float[] yrem=new float[vNum];
+  for (int i=0; i < vNum; ++i) {
+    xrem[i]=xv[i];
+    yrem[i]=yv[i];
+  }
+  while (vNum > 3) {
+    int earIndex=-1;
+    for (int i=0; i < vNum; ++i) {
+      if (isEar(i,xrem,yrem)) {
+        earIndex=i;
+        break;
+      }
+    }
+    if (earIndex == -1)     return null;
+    --vNum;
+    float[] newx=new float[vNum];
+    float[] newy=new float[vNum];
+    int currDest=0;
+    for (int i=0; i < vNum; ++i) {
+      if (currDest == earIndex) {
+        ++currDest;
+      }
+      newx[i]=xrem[currDest];
+      newy[i]=yrem[currDest];
+      ++currDest;
+    }
+    int under=(earIndex == 0) ? (xrem.length - 1) : (earIndex - 1);
+    int over=(earIndex == xrem.length - 1) ? 0 : (earIndex + 1);
+    Triangle toAdd=new Triangle(xrem[earIndex],yrem[earIndex],xrem[over],yrem[over],xrem[under],yrem[under]);
+    buffer[bufferSize]=toAdd;
+    ++bufferSize;
+    xrem=newx;
+    yrem=newy;
+  }
+  Triangle toAdd=new Triangle(xrem[1],yrem[1],xrem[2],yrem[2],xrem[0],yrem[0]);
+  buffer[bufferSize]=toAdd;
+  ++bufferSize;
+  Triangle[] res=new Triangle[bufferSize];
+  System.arraycopy(buffer,0,res,0,bufferSize);
+  return res;
+}

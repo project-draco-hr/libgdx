@@ -1,0 +1,18 @@
+{
+  if (!isActive)   return false;
+  isActive=false;
+  if (!AppContext.instance().isCurrentModelValid())   return true;
+  if (draggedPoint != null) {
+    draggedPoint=null;
+    AppContext.instance().saveCurrentModel();
+  }
+  List<Vector2> mousePath=AppContext.instance().mousePath;
+  if (mousePath.size() > 2) {
+    Vector2[] polygonPoints=mousePath.toArray(new Vector2[mousePath.size()]);
+    Vector2[] testedPoints=getAllShapePoints();
+    Vector2[] result=getPointsInPolygon(polygonPoints,testedPoints);
+    Collections.addAll(AppContext.instance().selectedPoints,result);
+  }
+  mousePath.clear();
+  return true;
+}

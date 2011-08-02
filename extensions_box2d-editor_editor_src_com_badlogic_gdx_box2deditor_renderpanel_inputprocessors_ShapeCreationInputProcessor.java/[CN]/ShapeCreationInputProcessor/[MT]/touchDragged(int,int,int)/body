@@ -1,0 +1,5 @@
+{
+  if (!isActive)   return false;
+  touchMoved(x,y);
+  return true;
+}

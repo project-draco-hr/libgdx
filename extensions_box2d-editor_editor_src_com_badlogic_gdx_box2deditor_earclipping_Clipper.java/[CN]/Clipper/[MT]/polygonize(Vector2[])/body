@@ -1,0 +1,19 @@
+{
+  int vNum=points.length;
+  float[] xv=new float[vNum];
+  float[] yv=new float[vNum];
+  for (int i=0; i < vNum; i++) {
+    xv[i]=points[i].x;
+    yv[i]=points[i].y;
+  }
+  Triangle[] tempTriangles=triangulatePolygon(xv,yv,vNum);
+  Polygon[] tempPolygons=polygonizeTriangles(tempTriangles);
+  if (tempPolygons == null)   return null;
+  Vector2[][] polygons=new Vector2[tempPolygons.length][];
+  for (int i=0; i < tempPolygons.length; i++) {
+    polygons[i]=new Vector2[tempPolygons[i].nVertices];
+    for (int ii=0; ii < tempPolygons[i].nVertices; ii++)     polygons[i][ii]=new Vector2(tempPolygons[i].x[ii],tempPolygons[i].y[ii]);
+  }
+  polygons=updateForBox2D(polygons);
+  return polygons;
+}

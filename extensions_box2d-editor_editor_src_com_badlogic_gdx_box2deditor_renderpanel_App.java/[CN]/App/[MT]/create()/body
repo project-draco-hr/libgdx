@@ -1,0 +1,21 @@
+{
+  sb=new SpriteBatch();
+  font=new BitmapFont();
+  font.setColor(Color.BLACK);
+  camera=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.update();
+  backgroundTexture=new Texture(Gdx.files.classpath("aurelienribon/box2deditor/gfx/transparent.png"));
+  backgroundTexture.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+  rand=new Random();
+  ballTexture=new Texture(Gdx.files.classpath("aurelienribon/box2deditor/gfx/ball.png"));
+  ballModels=new ArrayList<Body>();
+  ballSprites=new ArrayList<Sprite>();
+  drawer=new AppDrawer(camera);
+  InputMultiplexer im=new InputMultiplexer();
+  im.addProcessor(new PanZoomInputProcessor());
+  im.addProcessor(new ShapeCreationInputProcessor());
+  im.addProcessor(new ShapeEditionInputProcessor());
+  im.addProcessor(new BallThrowInputProcessor());
+  Gdx.input.setInputProcessor(im);
+  Gdx.graphics.setVSync(true);
+}

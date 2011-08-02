@@ -1,0 +1,9 @@
+{
+  Gdx.gl10.glLineWidth(lineWidth);
+  imr.begin(GL10.GL_LINES);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p1.x,p1.y,0);
+  imr.color(c.r,c.g,c.b,c.a);
+  imr.vertex(p2.x,p2.y,0);
+  imr.end();
+}

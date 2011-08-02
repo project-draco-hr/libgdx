@@ -1,0 +1,19 @@
+{
+  if (!isActive)   return false;
+  if (!AppContext.instance().isCurrentModelValid())   return true;
+  Vector2 p=App.instance().screenToWorld(x,y);
+  if (draggedPoint != null) {
+    AppContext.instance().clearTempPolygons();
+    float dx=p.x - draggedPoint.x;
+    float dy=p.y - draggedPoint.y;
+    draggedPoint.add(dx,dy);
+    for (int i=0; i < AppContext.instance().selectedPoints.size(); i++) {
+      Vector2 sp=AppContext.instance().selectedPoints.get(i);
+      if (sp != draggedPoint)       sp.add(dx,dy);
+    }
+  }
+ else {
+    AppContext.instance().mousePath.add(p);
+  }
+  return true;
+}

@@ -1,0 +1,5 @@
+{
+  Vector2[] ret=new Vector2[vs.length];
+  for (int i=0; i < ret.length; i++)   ret[i]=mul(vs[i],coeff);
+  return ret;
+}

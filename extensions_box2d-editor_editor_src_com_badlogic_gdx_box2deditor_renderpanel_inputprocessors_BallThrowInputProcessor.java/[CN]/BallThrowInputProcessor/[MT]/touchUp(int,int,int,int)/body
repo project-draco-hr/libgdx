@@ -1,0 +1,14 @@
+{
+  if (!isActive)   return false;
+  isActive=false;
+  if (!AppContext.instance().isCurrentModelValid())   return true;
+  Vector2 p=App.instance().screenToWorld(x,y);
+  AppContext.instance().ballThrowLastPoint=p;
+  if (App.instance().isWorldReady()) {
+    Vector2 delta=new Vector2(AppContext.instance().ballThrowLastPoint).sub(AppContext.instance().ballThrowFirstPoint);
+    App.instance().fireBall(AppContext.instance().ballThrowFirstPoint,delta);
+  }
+  AppContext.instance().ballThrowFirstPoint=null;
+  AppContext.instance().ballThrowLastPoint=null;
+  return true;
+}

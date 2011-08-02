@@ -1,0 +1,26 @@
+{
+  String startupPath=AppContext.instance().getRootDirectory();
+  JFileChooser chooser=new JFileChooser(startupPath);
+  chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+  chooser.setMultiSelectionEnabled(true);
+  chooser.setFileFilter(imageUiFilter);
+  if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+    List<String> assetPaths=new ArrayList<String>();
+    List<File> remainingFiles=new ArrayList<File>();
+    Collections.addAll(remainingFiles,chooser.getSelectedFiles());
+    int deepness=0;
+    int maxDeepness=8;
+    while (!remainingFiles.isEmpty()) {
+      File currentFile=remainingFiles.remove(0);
+      if (currentFile.isFile()) {
+        assetPaths.add(currentFile.getPath());
+      }
+ else       if (deepness < maxDeepness) {
+        deepness+=1;
+        Collections.addAll(remainingFiles,currentFile.listFiles(imageFilter));
+      }
+    }
+    return assetPaths.toArray(new String[assetPaths.size()]);
+  }
+  return null;
+}

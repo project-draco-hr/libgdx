@@ -1,0 +1,25 @@
+{
+  for (int i=0; i < polygons.length; i++) {
+    Vector2[] poly=polygons[i];
+    if (poly.length > 8) {
+      int limit=poly.length < 15 ? poly.length / 2 + 1 : 8;
+      Vector2[] newPoly1=new Vector2[limit];
+      Vector2[] newPoly2=new Vector2[poly.length - limit + 2];
+      System.arraycopy(poly,0,newPoly1,0,limit);
+      System.arraycopy(poly,limit - 1,newPoly2,0,poly.length - limit + 1);
+      newPoly2[newPoly2.length - 1]=poly[0].cpy();
+      Vector2[][] newPolys=new Vector2[polygons.length + 1][];
+      if (i > 0) {
+        System.arraycopy(polygons,0,newPolys,0,i);
+      }
+      if (i < polygons.length - 1) {
+        System.arraycopy(polygons,i + 1,newPolys,i + 2,polygons.length - i - 1);
+      }
+      newPolys[i]=newPoly1;
+      newPolys[i + 1]=newPoly2;
+      polygons=newPolys;
+      i-=1;
+    }
+  }
+  return polygons;
+}

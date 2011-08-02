@@ -1,0 +1,5 @@
+{
+  modelMap.clear();
+  Map<String,BodyModel> map=IO.importFromFile(outputFile);
+  for (  String str : map.keySet())   modelMap.put(str,map.get(str));
+}

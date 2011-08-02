@@ -1,0 +1,8 @@
+{
+  ballModels.clear();
+  ballSprites.clear();
+  if (world != null) {
+    world.dispose();
+    world=null;
+  }
+}

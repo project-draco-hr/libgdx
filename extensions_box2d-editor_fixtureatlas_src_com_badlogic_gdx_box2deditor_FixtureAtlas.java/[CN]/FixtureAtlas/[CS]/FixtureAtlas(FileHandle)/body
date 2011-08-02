@@ -1,0 +1,4 @@
+{
+  if (shapeFile == null)   throw new NullPointerException("shapeFile is null");
+  importFromFile(shapeFile.read());
+}

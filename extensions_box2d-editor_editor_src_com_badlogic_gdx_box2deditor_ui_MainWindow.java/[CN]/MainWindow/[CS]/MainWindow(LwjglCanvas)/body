@@ -1,0 +1,7 @@
+{
+  initComponents();
+  renderPanel.add(glCanvas.getCanvas(),BorderLayout.CENTER);
+  assetsListModel=new DefaultListModel();
+  assets_assetList.setModel(assetsListModel);
+  addComponentListener(componentListener);
+}

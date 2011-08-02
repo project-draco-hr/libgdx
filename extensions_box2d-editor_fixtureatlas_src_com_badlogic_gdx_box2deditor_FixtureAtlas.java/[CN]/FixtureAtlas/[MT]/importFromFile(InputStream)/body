@@ -1,0 +1,23 @@
+{
+  DataInputStream is=null;
+  try {
+    is=new DataInputStream(stream);
+    while (is.available() > 0) {
+      String name=is.readUTF();
+      Vector2[][] points=readVecss(is);
+      Vector2[][] polygons=readVecss(is);
+      BodyModel bm=new BodyModel(polygons);
+      bodyMap.put(name,bm);
+    }
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex.getMessage());
+  }
+ finally {
+    if (is != null)     try {
+      is.close();
+    }
+ catch (    IOException ex) {
+    }
+  }
+}

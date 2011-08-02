@@ -1,0 +1,7 @@
+{
+  modelMap.remove(name);
+  if (name.equals(currentName)) {
+    currentName=null;
+    currentModel=null;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  char separator=(unixSeparator ? UNIX_SEPARATOR : WINDOWS_SEPARATOR);
+  return doNormalize(filename,separator,true);
+}

@@ -1,0 +1,19 @@
+{
+  float radius=rand.nextFloat() * 10 + 5;
+  BodyDef bd=new BodyDef();
+  bd.angularDamping=0.5f;
+  bd.linearDamping=0.5f;
+  bd.type=BodyType.DynamicBody;
+  bd.position.set(orig).mul(1 / PX_PER_METER);
+  bd.angle=rand.nextFloat() * MathUtils.PI;
+  Body b=world.createBody(bd);
+  b.applyLinearImpulse(force.mul(2 / PX_PER_METER),orig);
+  ballModels.add(b);
+  CircleShape shape=new CircleShape();
+  shape.setRadius(radius / PX_PER_METER);
+  b.createFixture(shape,1f);
+  Sprite sp=new Sprite(ballTexture);
+  sp.setSize(radius * 2,radius * 2);
+  sp.setOrigin(sp.getWidth() / 2,sp.getHeight() / 2);
+  ballSprites.add(sp);
+}

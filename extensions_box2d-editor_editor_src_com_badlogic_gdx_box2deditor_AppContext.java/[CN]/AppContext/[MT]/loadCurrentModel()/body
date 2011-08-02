@@ -1,0 +1,18 @@
+{
+  clearTempObjects();
+  Vector2[][] shapes=getCurrentModel().getShapes();
+  Vector2[][] polygons=getCurrentModel().getPolygons();
+  if (shapes != null) {
+    shapes=VectorUtils.mul(shapes,currentSize.x / 100f);
+    for (    Vector2[] shape : shapes) {
+      ShapeModel shapeModel=new ShapeModel(shape);
+      shapeModel.close();
+      tempShapes.add(shapeModel);
+    }
+  }
+  if (polygons != null) {
+    polygons=VectorUtils.mul(polygons,currentSize.x / 100f);
+    tempPolygons.addAll(Arrays.asList(polygons));
+    App.instance().setBody(polygons);
+  }
+}

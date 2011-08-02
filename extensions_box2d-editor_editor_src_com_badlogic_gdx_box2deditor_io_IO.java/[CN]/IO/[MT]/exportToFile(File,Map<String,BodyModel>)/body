@@ -1,0 +1,11 @@
+{
+  DataOutputStream os=new DataOutputStream(new FileOutputStream(outputFile));
+  for (  String name : map.keySet()) {
+    BodyModel bm=map.get(name);
+    if (bm.getShapes() == null || bm.getPolygons() == null)     continue;
+    os.writeUTF(name);
+    writeVecss(os,bm.getShapes());
+    writeVecss(os,bm.getPolygons());
+  }
+  os.close();
+}

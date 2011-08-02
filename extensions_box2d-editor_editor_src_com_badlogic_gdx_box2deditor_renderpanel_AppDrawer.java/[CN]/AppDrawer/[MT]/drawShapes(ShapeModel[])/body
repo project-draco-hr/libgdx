@@ -1,0 +1,15 @@
+{
+  for (  ShapeModel shape : shapes) {
+    Vector2[] points=shape.getPoints();
+    if (points.length > 0) {
+      for (int i=1; i < points.length; i++)       drawLine(points[i],points[i - 1],SHAPE_LINE_COLOR,2);
+      if (shape.isClosed()) {
+        drawLine(points[0],points[points.length - 1],SHAPE_LINE_COLOR,2);
+      }
+ else {
+        Vector2 nextPoint=AppContext.instance().nextPoint;
+        if (nextPoint != null)         drawLine(points[points.length - 1],nextPoint,SHAPE_LASTLINE_COLOR,2);
+      }
+    }
+  }
+}

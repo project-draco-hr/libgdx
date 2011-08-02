@@ -1,0 +1,8 @@
+{
+  List<Vector2[]> ret=new ArrayList<Vector2[]>();
+  for (  Vector2[] shape : shapes) {
+    Vector2[][] polygons=Clipper.polygonize(shape);
+    if (polygons != null)     for (    Vector2[] polygon : polygons)     if (ShapeUtils.getPolygonArea(polygon) > 1)     ret.add(polygon);
+  }
+  return ret.toArray(new Vector2[ret.size()][]);
+}

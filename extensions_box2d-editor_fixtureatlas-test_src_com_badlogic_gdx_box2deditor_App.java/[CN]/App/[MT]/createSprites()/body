@@ -1,0 +1,16 @@
+{
+  vialTexture=new Texture(Gdx.files.internal("data/gfx/vial.png"));
+  vialTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  vialSprite=new Sprite(vialTexture);
+  vialSprite.setSize(VIAL_SIZE.x,VIAL_SIZE.y);
+  Vector2 vialPos=vialModel.getPosition();
+  vialSprite.setPosition(vialPos.x,vialPos.y);
+  ballTexture=new Texture(Gdx.files.internal("data/gfx/ball.png"));
+  ballTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  ballSprites=new Sprite[MAX_BALL_COUNT];
+  for (int i=0; i < MAX_BALL_COUNT; i++) {
+    ballSprites[i]=new Sprite(ballTexture);
+    ballSprites[i].setSize(BALL_SIZE.x,BALL_SIZE.y);
+    ballSprites[i].setOrigin(BALL_SIZE.x / 2,BALL_SIZE.y / 2);
+  }
+}

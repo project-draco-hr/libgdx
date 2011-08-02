@@ -1,0 +1,19 @@
+{
+  List<ShapeModel> closedShapes=new ArrayList<ShapeModel>();
+  for (  ShapeModel shape : tempShapes) {
+    if (shape.isClosed()) {
+      shape.close();
+      closedShapes.add(shape);
+    }
+  }
+  Vector2[][] points=new Vector2[closedShapes.size()][];
+  for (int i=0; i < closedShapes.size(); i++)   points[i]=closedShapes.get(i).getPoints();
+  Vector2[][] normalizedPoints=VectorUtils.mul(points,100f / currentSize.x);
+  Vector2[][] normalizedPolygons=computePolygons(normalizedPoints);
+  BodyModel bm=getCurrentModel();
+  bm.set(normalizedPoints,normalizedPolygons);
+  Vector2[][] polygons=VectorUtils.mul(normalizedPolygons,currentSize.x / 100f);
+  tempPolygons.clear();
+  Collections.addAll(tempPolygons,polygons);
+  App.instance().setBody(polygons);
+}

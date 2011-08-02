@@ -1,0 +1,39 @@
+{
+  Polygon[] polys;
+  int polyIndex=0;
+  if (triangulated == null)   return null;
+  polys=new Polygon[triangulated.length];
+  boolean[] covered=new boolean[triangulated.length];
+  for (int i=0; i < triangulated.length; i++)   covered[i]=false;
+  boolean notDone=true;
+  while (notDone) {
+    int currTri=-1;
+    for (int i=0; i < triangulated.length; i++) {
+      if (!covered[i]) {
+        currTri=i;
+        break;
+      }
+    }
+    if (currTri == -1) {
+      notDone=false;
+    }
+ else {
+      Polygon poly=new Polygon(triangulated[currTri]);
+      covered[currTri]=true;
+      for (int i=0; i < triangulated.length; i++) {
+        if (covered[i])         continue;
+        Polygon newP=poly.add(triangulated[i]);
+        if (newP == null)         continue;
+        if (newP.isConvex()) {
+          poly=newP;
+          covered[i]=true;
+        }
+      }
+      polys[polyIndex]=poly;
+      polyIndex++;
+    }
+  }
+  Polygon[] ret=new Polygon[polyIndex];
+  System.arraycopy(polys,0,ret,0,polyIndex);
+  return ret;
+}

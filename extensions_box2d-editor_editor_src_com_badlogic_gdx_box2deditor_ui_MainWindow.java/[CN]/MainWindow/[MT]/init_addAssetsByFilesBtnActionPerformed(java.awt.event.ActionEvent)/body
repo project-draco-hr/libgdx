@@ -1,0 +1,8 @@
+{
+  if (AppContext.instance().outputFile == null) {
+    JOptionPane.showMessageDialog(this,"Output file has not been set yet.");
+    return;
+  }
+  String[] assets=promptAssetsByFiles();
+  if (assets != null)   for (  String asset : assets)   addAsset(asset,true);
+}

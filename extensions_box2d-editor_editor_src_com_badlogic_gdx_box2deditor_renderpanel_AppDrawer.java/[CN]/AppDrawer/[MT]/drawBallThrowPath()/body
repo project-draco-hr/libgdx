@@ -1,0 +1,9 @@
+{
+  Vector2 v1=AppContext.instance().ballThrowFirstPoint;
+  Vector2 v2=AppContext.instance().ballThrowLastPoint;
+  float w=10 * camera.zoom;
+  if (v1 != null && v2 != null) {
+    drawLine(v1,v2,BALLTHROWPATH_COLOR,3);
+    drawRect(v2,w,w,BALLTHROWPATH_COLOR,3);
+  }
+}

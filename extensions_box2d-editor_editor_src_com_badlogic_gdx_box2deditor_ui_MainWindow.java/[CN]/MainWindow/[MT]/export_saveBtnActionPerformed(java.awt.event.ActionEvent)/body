@@ -1,0 +1,17 @@
+{
+  File outputFile=AppContext.instance().outputFile;
+  if (outputFile == null) {
+    JOptionPane.showMessageDialog(this,"Output file has not been set yet.");
+    return;
+  }
+  try {
+    AppContext.instance().exportToFile();
+    JOptionPane.showMessageDialog(this,"Save successfully done !");
+    int idx=assets_assetList.getSelectedIndex();
+    loadAssets();
+    assets_assetList.setSelectedIndex(idx);
+  }
+ catch (  IOException ex) {
+    JOptionPane.showMessageDialog(this,"Something went wrong while writing the file, sorry :/" + "\n(nah, don't expect more details)");
+  }
+}

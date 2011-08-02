@@ -1,0 +1,14 @@
+{
+  String newName=absolutePath ? AppContext.instance().getPathRelativeToOutputFile(name) : name;
+  if (newName == null)   return;
+  String path=absolutePath ? name : AppContext.instance().getFullPath(name);
+  File file=new File(path);
+  if (file.exists()) {
+    if (!assetsListModel.contains(newName))     assetsListModel.addElement(newName);
+    AppContext.instance().addModel(newName);
+  }
+ else {
+    if (!assetsListModel.contains(UNKNOWN_PREFIX + newName))     assetsListModel.addElement(UNKNOWN_PREFIX + newName);
+    AppContext.instance().addModel(newName);
+  }
+}

@@ -1,0 +1,12 @@
+{
+  BodyModel bm=bodyMap.get(name);
+  if (bm == null)   throw new RuntimeException(name + " does not exist in the fixture list.");
+  Vector2[][] polygons=bm.getPolygons(width,height);
+  if (polygons == null)   throw new RuntimeException(name + " does not declare any polygon. " + "Should not happen. Is your shape file corrupted ?");
+  for (  Vector2[] polygon : polygons) {
+    shape.set(polygon);
+    FixtureDef fd=params == null ? DEFAULT_FIXTURE : params;
+    fd.shape=shape;
+    body.createFixture(fd);
+  }
+}
