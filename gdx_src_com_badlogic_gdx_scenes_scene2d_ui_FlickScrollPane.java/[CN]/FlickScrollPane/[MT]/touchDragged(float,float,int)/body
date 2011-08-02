@@ -1,18 +1,23 @@
 {
-  if (pointer != 0)   return false;
-  if (touchScroll) {
+  if (pointer != 0 || !touchable)   return false;
+  if (scrolling) {
     if (hasHScroll) {
       hScrollAmount-=(x - lastPoint.x) / (widget.width - width);
-      hScrollAmount=Math.max(0,hScrollAmount);
-      hScrollAmount=Math.min(1,hScrollAmount);
+      if (overscrolls) {
+        hScrollAmount=Math.max(0,hScrollAmount);
+        hScrollAmount=Math.min(1,hScrollAmount);
+      }
     }
     if (hasVScroll) {
       vScrollAmount+=(y - lastPoint.y) / (widget.height - height);
-      vScrollAmount=Math.max(0,vScrollAmount);
-      vScrollAmount=Math.min(1,vScrollAmount);
+      if (overscrolls) {
+        vScrollAmount=Math.max(0,vScrollAmount);
+        vScrollAmount=Math.min(1,vScrollAmount);
+      }
     }
     lastPoint.set(x,y);
     return true;
   }
- else   return super.touchDragged(x,y,pointer);
+  Gdx.app.log("","HERE dr!");
+  return false;
 }

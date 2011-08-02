@@ -1,0 +1,33 @@
+{
+  super.act(delta);
+  if (smoothscrolldestx != -1 && smoothscrolldesty != -1) {
+    touchable=false;
+    scrolledtime+=(delta * 1000);
+    float relscrolltime=((float)1f / scrolltime) * scrolledtime;
+    if (smoothscrolldestx > scrollstarth) {
+      hScrollAmount=scrollstarth + (smoothscrolldestx - scrollstarth) * interpolator.getInterpolation(relscrolltime);
+    }
+ else {
+      hScrollAmount=scrollstarth - (scrollstarth - smoothscrolldestx) * interpolator.getInterpolation(relscrolltime);
+    }
+    if (smoothscrolldesty > scrollstartv) {
+      vScrollAmount=scrollstartv + (smoothscrolldesty - scrollstartv) * interpolator.getInterpolation(relscrolltime);
+    }
+ else {
+      vScrollAmount=scrollstartv - (scrollstartv - smoothscrolldesty) * interpolator.getInterpolation(relscrolltime);
+    }
+    Gdx.app.log("",String.format("t %f h %f v %f",relscrolltime,hScrollAmount,vScrollAmount));
+    if (scrolledtime >= scrolltime) {
+      hScrollAmount=smoothscrolldestx;
+      vScrollAmount=smoothscrolldesty;
+      smoothscrolldestx=-1;
+      smoothscrolldesty=-1;
+      touchable=true;
+      scrolledtime=0;
+      Gdx.app.log("","SCROLL OVER");
+      if (listener != null) {
+        listener.onSmoothScrollComplete();
+      }
+    }
+  }
+}

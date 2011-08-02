@@ -1,7 +1,13 @@
 {
-  if (pointer != 0)   return false;
+  if (pointer != 0 || !touchable | hit(x,y) == null) {
+    Gdx.app.log("","HERE d");
+    return false;
+  }
   lastPoint.set(x,y);
-  touchScroll=true;
+  scrolling=true;
+  scrollingStarted=System.currentTimeMillis();
+  scrollStartPoint.x=x;
+  scrollStartPoint.y=y;
   focus(this,0);
   return true;
 }
