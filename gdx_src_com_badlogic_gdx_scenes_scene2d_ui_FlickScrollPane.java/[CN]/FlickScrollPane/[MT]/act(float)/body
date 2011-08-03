@@ -16,7 +16,6 @@
  else {
       vScrollAmount=scrollstartv - (scrollstartv - smoothscrolldesty) * interpolator.getInterpolation(relscrolltime);
     }
-    Gdx.app.log("",String.format("t %f h %f v %f",relscrolltime,hScrollAmount,vScrollAmount));
     if (scrolledtime >= scrolltime) {
       hScrollAmount=smoothscrolldestx;
       vScrollAmount=smoothscrolldesty;
