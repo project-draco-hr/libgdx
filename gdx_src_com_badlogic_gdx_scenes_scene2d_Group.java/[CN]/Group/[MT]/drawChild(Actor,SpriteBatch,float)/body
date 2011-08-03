@@ -1,5 +1,5 @@
 {
-  if (child.visable) {
+  if (child.visible) {
     child.draw(batch,parentAlpha * color.a);
   }
   batch.flush();

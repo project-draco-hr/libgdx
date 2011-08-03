@@ -1,4 +1,5 @@
 {
+  if (!visible)   return;
   setupTransform(batch);
   drawChildren(batch,parentAlpha);
   resetTransform(batch);
