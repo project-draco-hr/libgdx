@@ -1,0 +1,21 @@
+{
+  float start=targetAngle - 5;
+  float end=targetAngle + 5;
+  float mid=targetAngle;
+  int iterations=0;
+  float aMid=0;
+  while (Math.abs(targetAngle - aMid) > epsilon && iterations++ < maxIterations) {
+    aMid=calculateAngle(mid);
+    if (targetAngle < aMid) {
+      end=mid;
+    }
+ else {
+      start=mid;
+    }
+    mid=start + (end - start) / 2;
+  }
+  position.set(calculateDirection(mid));
+  position.y=-position.y;
+  lookAt(0,0,0);
+  normalizeUp();
+}

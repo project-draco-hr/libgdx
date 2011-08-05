@@ -1,0 +1,13 @@
+{
+  Vector3 camPos=calculateDirection(a);
+  position.set(camPos.mul(30));
+  lookAt(0,0,0);
+  normalizeUp();
+  update();
+  Vector3 orig=new Vector3(0,0,0);
+  Vector3 vec=new Vector3(1,0,0);
+  project(orig);
+  project(vec);
+  Vector2 d=new Vector2(vec.x - orig.x,-(vec.y - orig.y));
+  return d.angle();
+}
