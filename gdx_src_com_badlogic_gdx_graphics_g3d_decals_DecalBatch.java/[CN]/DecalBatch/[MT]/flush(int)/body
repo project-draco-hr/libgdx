@@ -1,0 +1,4 @@
+{
+  mesh.setVertices(vertices,0,verticesPosition);
+  mesh.render(GL10.GL_TRIANGLES,0,verticesPosition / 4);
+}

@@ -1,0 +1,29 @@
+{
+  if (first != null) {
+    Node<E> c=first;
+    while (c.n != null && c.n.index <= index) {
+      c=c.n;
+    }
+    if (index > c.index) {
+      c.n=nodePool.obtain(c,c.n,value,index);
+      if (c.n.n != null) {
+        c.n.n.p=c.n;
+      }
+      size++;
+    }
+ else     if (index < c.index) {
+      Node<E> newFirst=nodePool.obtain(null,first,value,index);
+      first.p=newFirst;
+      first=newFirst;
+      size++;
+    }
+ else {
+      c.value=value;
+    }
+  }
+ else {
+    first=nodePool.obtain(null,null,value,index);
+    size++;
+  }
+  return null;
+}

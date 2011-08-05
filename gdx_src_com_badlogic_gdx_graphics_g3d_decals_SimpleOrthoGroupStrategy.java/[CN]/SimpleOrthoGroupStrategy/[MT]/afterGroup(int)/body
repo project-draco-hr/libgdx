@@ -1,0 +1,6 @@
+{
+  if (group == GROUP_BLEND) {
+    Gdx.gl10.glDepthMask(true);
+    Gdx.gl10.glDisable(GL10.GL_BLEND);
+  }
+}

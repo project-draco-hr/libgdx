@@ -1,0 +1,9 @@
+{
+  Decal decal=new Decal();
+  decal.setTextureRegion(textureRegion);
+  decal.setBlending(srcBlendFactor,dstBlendFactor);
+  decal.dimensions.x=width;
+  decal.dimensions.y=height;
+  decal.setColor(1,1,1,1);
+  return decal;
+}

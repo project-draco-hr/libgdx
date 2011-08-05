@@ -1,0 +1,3 @@
+{
+  return newDecal(textureRegion.getRegionWidth(),textureRegion.getRegionHeight(),textureRegion,hasTransparency ? GL10.GL_SRC_ALPHA : DecalMaterial.NO_BLEND,hasTransparency ? GL10.GL_ONE_MINUS_SRC_ALPHA : DecalMaterial.NO_BLEND);
+}

@@ -1,0 +1,11 @@
+{
+  TextureRegion tr=material.textureRegion;
+  vertices[U1]=tr.getU();
+  vertices[V1]=tr.getV();
+  vertices[U2]=tr.getU2();
+  vertices[V2]=tr.getV();
+  vertices[U3]=tr.getU();
+  vertices[V3]=tr.getV2();
+  vertices[U4]=tr.getU2();
+  vertices[V4]=tr.getV2();
+}

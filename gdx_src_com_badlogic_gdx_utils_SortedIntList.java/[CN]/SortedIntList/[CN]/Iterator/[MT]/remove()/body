@@ -1,0 +1,14 @@
+{
+  if (previousPosition != null) {
+    if (previousPosition == first) {
+      first=position;
+    }
+ else {
+      previousPosition.p.n=position;
+      if (position != null) {
+        position.p=previousPosition.p;
+      }
+    }
+    size--;
+  }
+}

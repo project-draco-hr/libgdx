@@ -1,0 +1,19 @@
+{
+  float left=-dimensions.x / 2f;
+  float right=left + dimensions.x;
+  float top=dimensions.y / 2f;
+  float bottom=top - dimensions.y;
+  vertices[X1]=left;
+  vertices[Y1]=top;
+  vertices[Z1]=0;
+  vertices[X2]=right;
+  vertices[Y2]=top;
+  vertices[Z2]=0;
+  vertices[X3]=left;
+  vertices[Y3]=bottom;
+  vertices[Z3]=0;
+  vertices[X4]=right;
+  vertices[Y4]=bottom;
+  vertices[Z4]=0;
+  updated=false;
+}

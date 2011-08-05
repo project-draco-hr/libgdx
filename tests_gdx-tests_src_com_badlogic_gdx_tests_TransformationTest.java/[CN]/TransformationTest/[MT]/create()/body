@@ -1,0 +1,26 @@
+{
+  image=new Texture(Gdx.files.internal("data/sys.png"));
+  image.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+  image.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  float w=100;
+  float h=80;
+  sprite=Decal.newDecal(20,20,new TextureRegion(image),false);
+  batch=new DecalBatch();
+  Gdx.gl.glClearColor(1,1,0,1);
+  float move=100f;
+  float scale=1;
+  float rotate=50;
+  keyActions.put(Input.Keys.W,new TransY(move));
+  keyActions.put(Input.Keys.S,new TransY(-move));
+  keyActions.put(Input.Keys.A,new TransX(-move));
+  keyActions.put(Input.Keys.D,new TransX(move));
+  keyActions.put(Input.Keys.Q,new Scale(scale));
+  keyActions.put(Input.Keys.E,new Scale(-scale));
+  keyActions.put(Input.Keys.J,new RotateZ(rotate));
+  keyActions.put(Input.Keys.U,new RotateY(rotate));
+  keyActions.put(Input.Keys.K,new RotateX(rotate));
+  keyActions.put(Input.Keys.Z,new TransZ(-move));
+  keyActions.put(Input.Keys.X,new TransZ(move));
+  Gdx.input.setInputProcessor(this);
+  Gdx.gl.glDisable(GL10.GL_CULL_FACE);
+}

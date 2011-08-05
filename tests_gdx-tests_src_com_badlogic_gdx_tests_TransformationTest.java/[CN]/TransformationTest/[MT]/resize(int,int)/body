@@ -1,0 +1,7 @@
+{
+  cam=new PerspectiveCamera(45,width,height);
+  cam.near=0.1f;
+  cam.far=1000f;
+  cam.position.set(0,0,100);
+  cam.direction.set(0,0,-1);
+}

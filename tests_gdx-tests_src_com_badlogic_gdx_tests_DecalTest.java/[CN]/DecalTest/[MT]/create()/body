@@ -1,0 +1,17 @@
+{
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+  Gdx.gl10.glDepthFunc(GL10.GL_LESS);
+  egg=new Texture(Gdx.files.internal("data/egg.png"));
+  egg.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+  egg.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  wheel=new Texture(Gdx.files.internal("data/wheel.png"));
+  wheel.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
+  wheel.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  w=Gdx.graphics.getWidth() / 0.8f;
+  h=Gdx.graphics.getHeight() / 0.8f;
+  for (int i=0; i < INITIAL_RENDERED; i++) {
+    toRender.add(makeDecal());
+  }
+  batch=new DecalBatch(strategy);
+  Gdx.gl.glClearColor(1,1,0,1);
+}
