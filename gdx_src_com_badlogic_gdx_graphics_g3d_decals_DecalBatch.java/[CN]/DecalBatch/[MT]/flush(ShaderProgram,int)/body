@@ -1,0 +1,9 @@
+{
+  mesh.setVertices(vertices,0,verticesPosition);
+  if (shader != null) {
+    mesh.render(shader,GL10.GL_TRIANGLES,0,verticesPosition / 4);
+  }
+ else {
+    mesh.render(GL10.GL_TRIANGLES,0,verticesPosition / 4);
+  }
+}

@@ -1,3 +1,5 @@
 {
   groupList.clear();
+  groupPool.free(usedGroups);
+  usedGroups.clear();
 }

@@ -1,15 +1,12 @@
 {
   DecalMaterial material=decal.getMaterial();
   int groupIndex=groupStrategy.decideGroup(decal);
-  ObjectMap<DecalMaterial,Array<Decal>> targetGroup=groupList.get(groupIndex);
+  Array<Decal> targetGroup=groupList.get(groupIndex);
   if (targetGroup == null) {
-    targetGroup=new ObjectMap<DecalMaterial,Array<Decal>>();
+    targetGroup=groupPool.obtain();
+    targetGroup.clear();
+    usedGroups.add(targetGroup);
     groupList.insert(groupIndex,targetGroup);
   }
-  Array<Decal> targetList=targetGroup.get(material);
-  if (targetList == null) {
-    targetList=new Array<Decal>(false,16);
-    targetGroup.put(material,targetList);
-  }
-  targetList.add(decal);
+  targetGroup.add(decal);
 }

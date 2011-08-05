@@ -1,10 +1,9 @@
 {
   groupStrategy.beforeGroups();
-  for (  SortedIntList.Node<ObjectMap<DecalMaterial,Array<Decal>>> group : groupList) {
-    groupStrategy.beforeGroup(group.index,group.value.values());
-    for (    ObjectMap.Entry<DecalMaterial,Array<Decal>> groupEntry : group.value.entries()) {
-      render(groupEntry.key,groupEntry.value);
-    }
+  for (  SortedIntList.Node<Array<Decal>> group : groupList) {
+    groupStrategy.beforeGroup(group.index,group.value);
+    ShaderProgram shader=groupStrategy.getGroupShader(group.index);
+    render(shader,group.value);
     groupStrategy.afterGroup(group.index);
   }
   groupStrategy.afterGroups();

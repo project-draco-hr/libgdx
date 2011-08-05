@@ -1,0 +1,24 @@
+{
+  DecalMaterial lastMaterial=null;
+  int idx=0;
+  for (  Decal decal : decals) {
+    if (lastMaterial == null || !lastMaterial.equals(decal.getMaterial())) {
+      if (idx > 0) {
+        flush(shader,idx);
+        idx=0;
+      }
+      decal.material.set();
+      lastMaterial=decal.material;
+    }
+    decal.update();
+    System.arraycopy(decal.vertices,0,vertices,idx,decal.vertices.length);
+    idx+=decal.vertices.length;
+    if (idx == vertices.length) {
+      flush(shader,idx);
+      idx=0;
+    }
+  }
+  if (idx > 0) {
+    flush(shader,idx);
+  }
+}
