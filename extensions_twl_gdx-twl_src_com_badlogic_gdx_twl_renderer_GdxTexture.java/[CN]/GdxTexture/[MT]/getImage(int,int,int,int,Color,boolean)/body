@@ -1,8 +1,0 @@
-{
-  if (x < 0 || x >= getWidth())   throw new IllegalArgumentException("x");
-  if (y < 0 || y >= getHeight())   throw new IllegalArgumentException("y");
-  if (x + Math.abs(width) > getWidth())   throw new IllegalArgumentException("width");
-  if (y + Math.abs(height) > getHeight())   throw new IllegalArgumentException("height");
-  if (tiled && (width <= 0 || height <= 0))   throw new IllegalArgumentException("Tiled rendering requires positive width & height.");
-  return new GdxImage(renderer,texture,x,y,width,height,tintColor,tiled);
-}

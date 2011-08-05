@@ -1,0 +1,5 @@
+{
+  int dx=x - getCenterX();
+  int dy=y - getCenterY();
+  return dx * dx + dy * dy <= RADIUS * RADIUS;
+}

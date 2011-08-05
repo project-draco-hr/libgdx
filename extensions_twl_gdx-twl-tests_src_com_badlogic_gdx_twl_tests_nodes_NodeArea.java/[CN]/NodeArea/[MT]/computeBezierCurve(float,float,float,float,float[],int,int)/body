@@ -1,0 +1,17 @@
+{
+  float f=cnt - 1;
+  float ff=f * f;
+  float fff=f * ff;
+  float rt1=3.0f * (q1 - q0) / f;
+  float rt2=3.0f * (q0 - 2.0f * q1 + q2) / ff;
+  float rt3=(q3 - q0 + 3.0f * (q1 - q2)) / fff;
+  q1=rt1 + rt2 + rt3;
+  q2=2 * rt2 + 6 * rt3;
+  q3=6 * rt3;
+  for (int i=0; i < cnt; i++) {
+    dst[off + i * 2]=q0;
+    q0+=q1;
+    q1+=q2;
+    q2+=q3;
+  }
+}

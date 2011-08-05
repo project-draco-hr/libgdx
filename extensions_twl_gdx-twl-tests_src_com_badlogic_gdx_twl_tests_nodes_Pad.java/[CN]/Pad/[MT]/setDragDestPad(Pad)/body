@@ -1,0 +1,11 @@
+{
+  if (pad != dragDestinationPad) {
+    if (dragDestinationPad != null) {
+      dragDestinationPad.getAnimationState().setAnimationState(STATE_DRAG_DESTINATION,false);
+    }
+    dragDestinationPad=pad;
+    if (dragDestinationPad != null) {
+      dragDestinationPad.getAnimationState().setAnimationState(STATE_DRAG_DESTINATION,true);
+    }
+  }
+}

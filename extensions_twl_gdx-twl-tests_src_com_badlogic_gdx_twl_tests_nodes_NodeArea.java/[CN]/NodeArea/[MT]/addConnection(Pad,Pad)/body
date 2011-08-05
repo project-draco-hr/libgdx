@@ -1,0 +1,12 @@
+{
+  if (!dest.isInput() || src.isInput() || src.getNode() == dest.getNode()) {
+    return;
+  }
+  Connection c=dest.getInConnection();
+  if (c != null) {
+    connections.remove(c);
+  }
+  c=new Connection(src,dest);
+  connections.add(c);
+  dest.setInConnection(c);
+}

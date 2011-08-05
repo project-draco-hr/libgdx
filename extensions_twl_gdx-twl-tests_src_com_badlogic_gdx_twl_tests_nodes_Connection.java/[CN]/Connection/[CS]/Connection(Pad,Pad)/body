@@ -1,0 +1,10 @@
+{
+  if (source == null) {
+    throw new NullPointerException("source");
+  }
+  if (destination == null) {
+    throw new NullPointerException("dest");
+  }
+  this.source=source;
+  this.destination=destination;
+}

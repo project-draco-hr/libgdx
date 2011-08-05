@@ -1,0 +1,7 @@
+{
+  Pad pad=new Pad(this,input);
+  pad.setTooltipContent(name);
+  pads.add(pad);
+  add(pad);
+  return pad;
+}

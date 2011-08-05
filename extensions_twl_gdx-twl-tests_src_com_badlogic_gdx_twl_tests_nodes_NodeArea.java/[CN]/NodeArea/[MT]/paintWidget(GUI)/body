@@ -1,0 +1,12 @@
+{
+  LineRenderer lineRenderer=gui.getRenderer().getLineRenderer();
+  if (lineRenderer != null) {
+    for (int i=0, n=connections.size(); i < n; i++) {
+      Connection c=connections.get(i);
+      drawCurve(lineRenderer,c.getSource().getCenterX(),c.getSource().getCenterY(),c.getDestination().getCenterX(),c.getDestination().getCenterY(),+1,-1,Color.GRAY);
+    }
+    if (newConnectionPad != null) {
+      drawCurve(lineRenderer,newConnectionPad.getCenterX(),newConnectionPad.getCenterY(),newConnectionX,newConnectionY,newConnectionPad.isInput() ? -1 : +1,newConnectionPad.isInput() ? +1 : -1,Color.RED);
+    }
+  }
+}

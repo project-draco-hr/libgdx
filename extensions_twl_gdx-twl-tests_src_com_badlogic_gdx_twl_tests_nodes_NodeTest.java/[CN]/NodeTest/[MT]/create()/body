@@ -1,0 +1,16 @@
+{
+  nodeArea=new NodeArea(doubleClick);
+  ScrollPane scrollPane=new ScrollPane(nodeArea);
+  scrollPane.setExpandContentSize(true);
+  SpriteBatch batch=new SpriteBatch();
+  twl=new TWL(batch,"data/nodes.xml",FileType.Internal,scrollPane);
+  input.addProcessor(twl);
+  input.addProcessor(this);
+  Gdx.input.setInputProcessor(twl);
+  nodeSource=nodeArea.addNode("Source");
+  Pad nodeSourceColor=nodeSource.addPad("Output 1",false);
+  Pad nodeSourceAlpha=nodeSource.addPad("Alpha",false);
+  nodeSink=nodeArea.addNode("Sink");
+  Pad nodeSinkColor=nodeSink.addPad("Input 1",true);
+  nodeArea.addConnection(nodeSourceColor,nodeSinkColor);
+}
