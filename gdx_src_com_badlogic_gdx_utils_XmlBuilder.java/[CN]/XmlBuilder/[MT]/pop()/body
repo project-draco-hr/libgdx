@@ -1,0 +1,14 @@
+{
+  if (currentElement != null) {
+    writer.write("/>\n");
+    currentElement=null;
+  }
+ else {
+    String name=stack.pop();
+    indent();
+    writer.write("</");
+    writer.write(name);
+    writer.write(">\n");
+  }
+  return this;
+}

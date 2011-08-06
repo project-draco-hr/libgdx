@@ -1,0 +1,8 @@
+{
+  if (currentElement != null) {
+    stack.push(currentElement);
+    currentElement=null;
+    writer.write(">\n");
+  }
+  indent();
+}

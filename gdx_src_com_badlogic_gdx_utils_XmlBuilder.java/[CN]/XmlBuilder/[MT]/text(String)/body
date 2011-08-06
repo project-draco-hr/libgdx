@@ -1,0 +1,6 @@
+{
+  startElementContent();
+  writer.write(text);
+  writer.write('\n');
+  return this;
+}

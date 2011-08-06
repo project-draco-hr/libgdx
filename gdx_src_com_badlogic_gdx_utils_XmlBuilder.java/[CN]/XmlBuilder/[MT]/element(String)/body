@@ -1,0 +1,7 @@
+{
+  startElementContent();
+  writer.write('<');
+  writer.write(name);
+  currentElement=name;
+  return this;
+}
