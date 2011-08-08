@@ -1,13 +1,8 @@
 {
   if (!needsLayout)   return;
   needsLayout=false;
+  setLayoutSize(0,0,(int)table.width,(int)table.height);
   Table table=getTable();
-  float topLeftY=table.height;
-  if (updatesTransform)   setLayoutSize(0,0,(int)table.width,(int)table.height);
- else {
-    setLayoutSize((int)table.x,0,(int)table.width,(int)table.height);
-    topLeftY+=table.y;
-  }
   super.layout();
   List<Cell> cells=getCells();
   for (int i=0, n=cells.size(); i < n; i++) {
@@ -16,7 +11,7 @@
     Actor actor=(Actor)c.getWidget();
     actor.x=c.getWidgetX();
     int widgetHeight=c.getWidgetHeight();
-    actor.y=topLeftY - c.getWidgetY() - widgetHeight;
+    actor.y=table.height - c.getWidgetY() - widgetHeight;
     actor.width=c.getWidgetWidth();
     actor.height=widgetHeight;
     if (actor instanceof Layout) {

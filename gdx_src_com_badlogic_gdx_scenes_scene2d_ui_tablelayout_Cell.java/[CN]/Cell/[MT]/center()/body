@@ -1,4 +1,5 @@
 {
-  align=CENTER;
+  if (align == null)   align=CENTER;
+ else   align|=CENTER;
   return this;
 }
