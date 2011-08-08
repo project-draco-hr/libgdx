@@ -1,26 +1,26 @@
 {
-  red.a=(red.a + Gdx.graphics.getDeltaTime() * 0.1f) % 1;
+  int viewHeight=Gdx.graphics.getHeight();
   GL10 gl=Gdx.graphics.getGL10();
+  gl.glClearColor(1,1,1,1);
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   spriteBatch.begin();
-  logoSprite.draw(spriteBatch);
-switch (renderMode) {
-case 0:
-    font.setScale(1);
-  renderNormal("normal");
-break;
-case 1:
-font.setScale(1);
-renderCached();
-break;
-case 2:
-font.setScale(red.a + 0.5f);
-renderNormal("normal scaled");
-break;
-case 3:
-font.setScale(1);
-renderCachedScaled();
-break;
-}
-spriteBatch.end();
+  String text="Sphinx of black quartz,\njudge my vow.";
+  font.setColor(Color.RED);
+  float x=20, y=20;
+  float alignmentWidth;
+  if (true) {
+    alignmentWidth=0;
+    font.drawMultiLine(spriteBatch,text,200,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
+  }
+  if (false) {
+    TextBounds bounds=font.getMultiLineBounds(text);
+    alignmentWidth=bounds.width;
+    font.drawMultiLine(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
+  }
+  if (true) {
+    alignmentWidth=280;
+    font.drawMultiLine(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
+  }
+  spriteBatch.end();
+  drawRect(x,y,x + alignmentWidth,300);
 }

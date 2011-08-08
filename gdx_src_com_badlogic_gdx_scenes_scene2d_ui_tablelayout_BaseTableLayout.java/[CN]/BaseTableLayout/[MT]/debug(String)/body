@@ -1,0 +1,11 @@
+{
+  debug=0;
+  if (value == null)   return (L)this;
+  if (value.equalsIgnoreCase("true"))   debug|=DEBUG_ALL;
+  if (value.contains("all"))   debug|=DEBUG_ALL;
+  if (value.contains("cell"))   debug|=DEBUG_CELL;
+  if (value.contains("table"))   debug|=DEBUG_TABLE;
+  if (value.contains("widget"))   debug|=DEBUG_WIDGET;
+  if (debug == DEBUG_NONE)   toolkit.clearDebugRectangles(this);
+  return (L)this;
+}

@@ -1,0 +1,9 @@
+{
+  align=0;
+  if (value.contains("center"))   align|=CENTER;
+  if (value.contains("left"))   align|=LEFT;
+  if (value.contains("right"))   align|=RIGHT;
+  if (value.contains("top"))   align|=TOP;
+  if (value.contains("bottom"))   align|=BOTTOM;
+  return this;
+}

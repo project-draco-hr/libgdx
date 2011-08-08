@@ -1,4 +1,6 @@
 {
+  Toolkit toolkit=this.toolkit;
+  ArrayList<Cell> cells=this.cells;
   if (cells.size() > 0 && !cells.get(cells.size() - 1).endRow)   endRow();
   int[] columnMinWidth=new int[columns];
   int[] rowMinHeight=new int[rows];
@@ -8,16 +10,16 @@
   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
     if (c.ignore)     continue;
-    c.padLeftTemp=c.column == 0 ? width(c.padLeft) : width(c.padLeft) + Math.max(0,width(c.spaceLeft) - spaceRightLast);
-    c.padTopTemp=c.cellAboveIndex == -1 ? height(c.padTop) : height(c.padTop) + Math.max(0,height(c.spaceTop) - height(cells.get(c.cellAboveIndex).spaceBottom));
-    int spaceRight=width(c.spaceRight);
-    c.padRightTemp=c.column + c.colspan == columns ? width(c.padRight) : width(c.padRight) + spaceRight;
-    c.padBottomTemp=c.row == rows - 1 ? height(c.padBottom) : height(c.padBottom) + height(c.spaceBottom);
+    c.padLeftTemp=c.column == 0 ? toolkit.width(this,c.padLeft) : toolkit.width(this,c.padLeft) + Math.max(0,toolkit.width(this,c.spaceLeft) - spaceRightLast);
+    c.padTopTemp=c.cellAboveIndex == -1 ? toolkit.height(this,c.padTop) : toolkit.height(this,c.padTop) + Math.max(0,toolkit.height(this,c.spaceTop) - toolkit.height(this,cells.get(c.cellAboveIndex).spaceBottom));
+    int spaceRight=toolkit.width(this,c.spaceRight);
+    c.padRightTemp=c.column + c.colspan == columns ? toolkit.width(this,c.padRight) : toolkit.width(this,c.padRight) + spaceRight;
+    c.padBottomTemp=c.row == rows - 1 ? toolkit.height(this,c.padBottom) : toolkit.height(this,c.padBottom) + toolkit.height(this,c.spaceBottom);
     spaceRightLast=spaceRight;
-    int prefWidth=getWidth((T)c.widget,c.prefWidth);
-    int prefHeight=getHeight((T)c.widget,c.prefHeight);
-    int minWidth=getWidth((T)c.widget,c.minWidth);
-    int minHeight=getHeight((T)c.widget,c.minHeight);
+    int prefWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.prefWidth);
+    int prefHeight=toolkit.getWidgetHeight(this,(C)c.widget,c.prefHeight);
+    int minWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.minWidth);
+    int minHeight=toolkit.getWidgetHeight(this,(C)c.widget,c.minHeight);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     if (c.colspan == 1) {
@@ -41,16 +43,16 @@
     tableMinHeight+=rowMinHeight[i];
     tablePrefHeight+=Math.max(rowMinHeight[i],rowPrefHeight[i]);
   }
-  int hpadding=width(padLeft) + width(padRight);
-  int vpadding=height(padTop) + height(padBottom);
-  int width=width(this.width) - hpadding;
-  int height=height(this.height) - vpadding;
+  int hpadding=toolkit.width(this,padLeft) + toolkit.width(this,padRight);
+  int vpadding=toolkit.height(this,padTop) + toolkit.height(this,padBottom);
+  int width=toolkit.width(this,this.width) - hpadding;
+  int height=toolkit.height(this,this.height) - vpadding;
   tableMinWidth=Math.max(tableMinWidth + hpadding,width);
   tableMinHeight=Math.max(tableMinHeight + vpadding,height);
   tablePrefWidth=Math.max(tablePrefWidth + hpadding,tableMinWidth);
   tablePrefHeight=Math.max(tablePrefHeight + vpadding,tableMinHeight);
   int[] columnMaxWidth;
-  int tableLayoutWidth=this.tableLayoutWidth;
+  int tableLayoutWidth=this.layoutWidth;
   int totalGrowWidth=tablePrefWidth - tableMinWidth;
   if (totalGrowWidth == 0)   columnMaxWidth=columnMinWidth;
  else {
@@ -63,7 +65,7 @@
     }
   }
   int[] rowMaxHeight;
-  int tableLayoutHeight=this.tableLayoutHeight;
+  int tableLayoutHeight=this.layoutHeight;
   int totalGrowHeight=tablePrefHeight - tableMinHeight;
   if (totalGrowHeight == 0)   rowMaxHeight=rowMinHeight;
  else {
@@ -86,20 +88,20 @@
     int spannedCellMaxWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++) {
       spannedCellMaxWidth+=columnMaxWidth[column];
-      if (c.colspan == 1 && c.expandWidth != 0 && expandWidth[column] == 0) {
-        expandWidth[column]=c.expandWidth / (float)c.colspan;
-        totalExpandWidth+=c.expandWidth / (float)c.colspan;
+      if (c.colspan == 1 && c.expandX != 0 && expandWidth[column] == 0) {
+        expandWidth[column]=c.expandX / (float)c.colspan;
+        totalExpandWidth+=c.expandX / (float)c.colspan;
       }
     }
     spannedCellMaxWidth-=c.padLeftTemp + c.padRightTemp;
-    if (c.expandHeight != 0 && expandHeight[c.row] == 0) {
-      expandHeight[c.row]=c.expandHeight;
-      totalExpandHeight+=c.expandHeight;
+    if (c.expandY != 0 && expandHeight[c.row] == 0) {
+      expandHeight[c.row]=c.expandY;
+      totalExpandHeight+=c.expandY;
     }
-    int prefWidth=getWidth((T)c.widget,c.prefWidth);
-    int prefHeight=getHeight((T)c.widget,c.prefHeight);
-    int minWidth=getWidth((T)c.widget,c.minWidth);
-    int minHeight=getHeight((T)c.widget,c.minHeight);
+    int prefWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.prefWidth);
+    int prefHeight=toolkit.getWidgetHeight(this,(C)c.widget,c.prefHeight);
+    int minWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.minWidth);
+    int minHeight=toolkit.getWidgetHeight(this,(C)c.widget,c.minHeight);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     c.widgetWidth=Math.min(spannedCellMaxWidth,prefWidth);
@@ -111,14 +113,14 @@
   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
     if (c.ignore)     continue;
-    if (c.uniformWidth != null)     uniformMaxWidth=Math.max(uniformMaxWidth,columnWidth[c.column]);
-    if (c.uniformHeight != null)     uniformMaxHeight=Math.max(uniformMaxHeight,rowHeight[c.row]);
+    if (c.uniformX != null)     uniformMaxWidth=Math.max(uniformMaxWidth,columnWidth[c.column]);
+    if (c.uniformY != null)     uniformMaxHeight=Math.max(uniformMaxHeight,rowHeight[c.row]);
   }
   if (uniformMaxWidth > 0 || uniformMaxHeight > 0) {
     outer:     for (int i=0, n=cells.size(); i < n; i++) {
       Cell c=cells.get(i);
       if (c.ignore)       continue;
-      if (uniformMaxWidth > 0 && c.uniformWidth != null) {
+      if (uniformMaxWidth > 0 && c.uniformX != null) {
         int diff=uniformMaxWidth - columnWidth[c.column];
         if (diff > 0) {
           columnWidth[c.column]=uniformMaxWidth;
@@ -126,7 +128,7 @@
           tablePrefWidth+=diff;
         }
       }
-      if (uniformMaxHeight > 0 && c.uniformHeight != null) {
+      if (uniformMaxHeight > 0 && c.uniformY != null) {
         int diff=uniformMaxHeight - rowHeight[c.row];
         if (diff > 0) {
           rowHeight[c.row]=uniformMaxHeight;
@@ -165,7 +167,7 @@
     Cell c=cells.get(i);
     if (c.ignore)     continue;
     if (c.colspan == 1)     continue;
-    int minWidth=getWidth((T)c.widget,c.minWidth);
+    int minWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.minWidth);
     int spannedCellWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     int extraWidth=Math.max(0,minWidth - spannedCellWidth) / c.colspan;
@@ -177,10 +179,10 @@
   tableWidth=Math.max(tableWidth + hpadding,width);
   for (int i=0; i < rows; i++)   tableHeight+=rowHeight[i];
   tableHeight=Math.max(tableHeight + vpadding,height);
-  int x=tableLayoutX + width(padLeft);
+  int x=layoutX + toolkit.width(this,padLeft);
   if ((align & RIGHT) != 0)   x+=tableLayoutWidth - tableWidth;
  else   if ((align & LEFT) == 0)   x+=(tableLayoutWidth - tableWidth) / 2;
-  int y=tableLayoutY + height(padTop);
+  int y=layoutY + toolkit.height(this,padTop);
   if ((align & BOTTOM) != 0)   y+=tableLayoutHeight - tableHeight;
  else   if ((align & TOP) == 0)   y+=(tableLayoutHeight - tableHeight) / 2;
   int currentX=x;
@@ -192,14 +194,14 @@
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     spannedCellWidth-=c.padLeftTemp + c.padRightTemp;
     currentX+=c.padLeftTemp;
-    if (c.fillWidth > 0) {
-      c.widgetWidth=(int)(spannedCellWidth * c.fillWidth);
-      int maxWidth=getWidth((T)c.widget,c.maxWidth);
+    if (c.fillX > 0) {
+      c.widgetWidth=(int)(spannedCellWidth * c.fillX);
+      int maxWidth=toolkit.getWidgetWidth(this,(C)c.widget,c.maxWidth);
       if (maxWidth > 0)       c.widgetWidth=Math.min(c.widgetWidth,maxWidth);
     }
-    if (c.fillHeight > 0) {
-      c.widgetHeight=(int)(rowHeight[c.row] * c.fillHeight) - c.padTopTemp - c.padBottomTemp;
-      int maxHeight=getHeight((T)c.widget,c.maxHeight);
+    if (c.fillY > 0) {
+      c.widgetHeight=(int)(rowHeight[c.row] * c.fillY) - c.padTopTemp - c.padBottomTemp;
+      int maxHeight=toolkit.getWidgetHeight(this,(C)c.widget,c.maxHeight);
       if (maxHeight > 0)       c.widgetHeight=Math.min(c.widgetHeight,maxHeight);
     }
     if ((c.align & LEFT) != 0)     c.widgetX=currentX;
@@ -214,23 +216,25 @@
     }
  else     currentX+=spannedCellWidth + c.padRightTemp;
   }
-  if (debug == null)   return;
-  clearDebugRectangles();
+  if (debug == DEBUG_NONE)   return;
+  toolkit.clearDebugRectangles(this);
   currentX=x;
   currentY=y;
-  if (debug.contains(DEBUG_TABLE) || debug.contains(DEBUG_ALL)) {
-    addDebugRectangle(DEBUG_TABLE,tableLayoutX,tableLayoutY,tableLayoutWidth,tableLayoutHeight);
-    addDebugRectangle(DEBUG_TABLE,x,y,tableWidth - hpadding,tableHeight - vpadding);
+  if ((debug & DEBUG_TABLE) != 0 || (debug & DEBUG_ALL) != 0) {
+    toolkit.addDebugRectangle(this,DEBUG_TABLE,layoutX,layoutY,tableLayoutWidth,tableLayoutHeight);
+    toolkit.addDebugRectangle(this,DEBUG_TABLE,x,y,tableWidth - hpadding,tableHeight - vpadding);
   }
   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
     if (c.ignore)     continue;
-    if (debug.contains(DEBUG_WIDGET) || debug.contains(DEBUG_ALL))     addDebugRectangle(DEBUG_WIDGET,c.widgetX,c.widgetY,c.widgetWidth,c.widgetHeight);
+    if ((debug & DEBUG_WIDGET) != 0 || (debug & DEBUG_ALL) != 0)     toolkit.addDebugRectangle(this,DEBUG_WIDGET,c.widgetX,c.widgetY,c.widgetWidth,c.widgetHeight);
     int spannedCellWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     spannedCellWidth-=c.padLeftTemp + c.padRightTemp;
     currentX+=c.padLeftTemp;
-    if (debug.contains(DEBUG_CELL) || debug.contains(DEBUG_ALL))     addDebugRectangle(DEBUG_CELL,currentX,currentY + c.padTopTemp,spannedCellWidth,rowHeight[c.row] - c.padTopTemp - c.padBottomTemp);
+    if ((debug & DEBUG_CELL) != 0 || (debug & DEBUG_ALL) != 0) {
+      toolkit.addDebugRectangle(this,DEBUG_CELL,currentX,currentY + c.padTopTemp,spannedCellWidth,rowHeight[c.row] - c.padTopTemp - c.padBottomTemp);
+    }
     if (c.endRow) {
       currentX=x;
       currentY+=rowHeight[c.row];

@@ -1,11 +1,15 @@
 {
-  super(name,prefWidth,prefHeight);
-  this.style=style;
-  this.title=title;
+  super(name);
   this.stage=stage;
+  this.title=title;
+  width=prefWidth;
+  height=prefHeight;
+  this.style=style;
+  TableLayout layout=getTableLayout();
+  layout.updatesTransform=true;
   final NinePatch background=style.background;
-  layout.padBottom=Integer.toString((int)(background.getBottomHeight()) + 1);
-  layout.padTop=Integer.toString((int)(background.getTopHeight()) + 1);
-  layout.padLeft=Integer.toString((int)(background.getLeftWidth()) + 1);
-  layout.padRight=Integer.toString((int)(background.getRightWidth()) + 1);
+  layout.padBottom(Integer.toString((int)(background.getBottomHeight()) + 1));
+  layout.padTop(Integer.toString((int)(background.getTopHeight()) + 1));
+  layout.padLeft(Integer.toString((int)(background.getLeftWidth()) + 1));
+  layout.padRight(Integer.toString((int)(background.getRightWidth()) + 1));
 }

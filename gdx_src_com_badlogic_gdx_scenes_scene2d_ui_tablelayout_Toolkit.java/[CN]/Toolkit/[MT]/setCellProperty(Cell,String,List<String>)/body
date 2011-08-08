@@ -1,0 +1,183 @@
+{
+  name=name.toLowerCase();
+  for (int i=0, n=values.size(); i < n; i++)   values.set(i,values.get(i).toLowerCase());
+  try {
+    String value;
+    if (name.equals("expand")) {
+switch (values.size()) {
+case 0:
+        c.expandX=c.expandY=1;
+      break;
+case 1:
+    value=values.get(0);
+  if (value.equals("x"))   c.expandX=1;
+ else   if (value.equals("y"))   c.expandY=1;
+ else   c.expandX=c.expandY=Integer.parseInt(value);
+break;
+case 2:
+value=values.get(0);
+if (value.length() > 0) c.expandX=Integer.parseInt(value);
+value=values.get(1);
+if (value.length() > 0) c.expandY=Integer.parseInt(value);
+break;
+}
+}
+ else if (name.equals("fill")) {
+switch (values.size()) {
+case 0:
+c.fillX=c.fillY=1f;
+break;
+case 1:
+value=values.get(0);
+if (value.equals("x")) c.fillX=1f;
+ else if (value.equals("y")) c.fillY=1f;
+ else c.fillX=c.fillY=Integer.parseInt(value) / 100f;
+break;
+case 2:
+value=values.get(0);
+if (value.length() > 0) c.fillX=Integer.parseInt(value) / 100f;
+value=values.get(1);
+if (value.length() > 0) c.fillY=Integer.parseInt(value) / 100f;
+break;
+}
+}
+ else if (name.equals("size")) {
+switch (values.size()) {
+case 2:
+value=values.get(0);
+if (value.length() > 0) c.minWidth=c.prefWidth=validateSize(value);
+value=values.get(1);
+if (value.length() > 0) c.minHeight=c.prefHeight=validateSize(value);
+break;
+case 1:
+value=values.get(0);
+if (value.length() > 0) c.minWidth=c.minHeight=c.prefWidth=c.prefHeight=validateSize(value);
+break;
+default :
+throw new IllegalArgumentException("Invalid number of values (" + values.size() + "): "+ values);
+}
+}
+ else if (name.equals("width") || name.equals("w")) {
+switch (values.size()) {
+case 3:
+value=values.get(2);
+if (value.length() > 0) c.maxWidth=validateSize(value);
+case 2:
+value=values.get(1);
+if (value.length() > 0) c.prefWidth=validateSize(value);
+case 1:
+value=values.get(0);
+if (value.length() > 0) c.minWidth=validateSize(value);
+break;
+default :
+throw new IllegalArgumentException("Invalid number of values (" + values.size() + "): "+ values);
+}
+}
+ else if (name.equals("height") || name.equals("h")) {
+switch (values.size()) {
+case 3:
+value=values.get(2);
+if (value.length() > 0) c.maxHeight=validateSize(value);
+case 2:
+value=values.get(1);
+if (value.length() > 0) c.prefHeight=validateSize(value);
+case 1:
+value=values.get(0);
+if (value.length() > 0) c.minHeight=validateSize(value);
+break;
+default :
+throw new IllegalArgumentException("Invalid number of values (" + values.size() + "): "+ values);
+}
+}
+ else if (name.equals("spacing") || name.equals("space")) {
+switch (values.size()) {
+case 4:
+value=values.get(3);
+if (value.length() > 0) c.spaceRight=validateSize(value);
+case 3:
+value=values.get(2);
+if (value.length() > 0) c.spaceBottom=validateSize(value);
+case 2:
+value=values.get(0);
+if (value.length() > 0) c.spaceTop=validateSize(value);
+value=values.get(1);
+if (value.length() > 0) c.spaceLeft=validateSize(value);
+break;
+case 1:
+c.spaceTop=c.spaceLeft=c.spaceBottom=c.spaceRight=validateSize(values.get(0));
+break;
+default :
+throw new IllegalArgumentException("Invalid number of values (" + values.size() + "): "+ values);
+}
+}
+ else if (name.equals("padding") || name.equals("pad")) {
+switch (values.size()) {
+case 4:
+value=values.get(3);
+if (value.length() > 0) c.padRight=validateSize(value);
+case 3:
+value=values.get(2);
+if (value.length() > 0) c.padBottom=validateSize(value);
+case 2:
+value=values.get(0);
+if (value.length() > 0) c.padTop=validateSize(value);
+value=values.get(1);
+if (value.length() > 0) c.padLeft=validateSize(value);
+break;
+case 1:
+c.padTop=c.padLeft=c.padBottom=c.padRight=validateSize(values.get(0));
+break;
+default :
+throw new IllegalArgumentException("Invalid number of values (" + values.size() + "): "+ values);
+}
+}
+ else if (name.startsWith("padding") || name.startsWith("pad")) {
+name=name.replace("padding","").replace("pad","");
+if (name.equals("top") || name.equals("t")) c.padTop=validateSize(values.get(0));
+ else if (name.equals("left") || name.equals("l")) c.padLeft=validateSize(values.get(0));
+ else if (name.equals("bottom") || name.equals("b")) c.padBottom=validateSize(values.get(0));
+ else if (name.equals("right") || name.equals("r")) c.padRight=validateSize(values.get(0));
+ else throw new IllegalArgumentException("Unknown property.");
+}
+ else if (name.startsWith("spacing") || name.startsWith("space")) {
+name=name.replace("spacing","").replace("space","");
+if (name.equals("top") || name.equals("t")) c.spaceTop=validateSize(values.get(0));
+ else if (name.equals("left") || name.equals("l")) c.spaceLeft=validateSize(values.get(0));
+ else if (name.equals("bottom") || name.equals("b")) c.spaceBottom=validateSize(values.get(0));
+ else if (name.equals("right") || name.equals("r")) c.spaceRight=validateSize(values.get(0));
+ else throw new IllegalArgumentException("Unknown property.");
+}
+ else if (name.equals("align")) {
+c.align=0;
+for (int i=0, n=values.size(); i < n; i++) {
+value=values.get(i);
+if (value.equals("center")) c.align|=CENTER;
+ else if (value.equals("left")) c.align|=LEFT;
+ else if (value.equals("right")) c.align|=RIGHT;
+ else if (value.equals("top")) c.align|=TOP;
+ else if (value.equals("bottom")) c.align|=BOTTOM;
+ else throw new IllegalArgumentException("Invalid value: " + value);
+}
+}
+ else if (name.equals("ignore")) {
+c.ignore=values.size() == 0 ? true : Boolean.valueOf(values.get(0));
+}
+ else if (name.equals("colspan")) {
+c.colspan=Integer.parseInt(values.get(0));
+}
+ else if (name.equals("uniform")) {
+if (values.size() == 0) c.uniformX=c.uniformY=true;
+for (int i=0, n=values.size(); i < n; i++) {
+value=values.get(i);
+if (value.equals("x")) c.uniformX=true;
+ else if (value.equals("y")) c.uniformY=true;
+ else if (value.equals("false")) c.uniformY=c.uniformY=null;
+ else throw new IllegalArgumentException("Invalid value: " + value);
+}
+}
+ else throw new IllegalArgumentException("Unknown cell property.");
+}
+ catch (Exception ex) {
+throw new RuntimeException("Error setting cell property: " + name,ex);
+}
+}

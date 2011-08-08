@@ -1,5 +1,5 @@
 {
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
   chunk=new TerrainChunk(32,32,4);
   Random rand=new Random();
   int len=chunk.vertices.length;

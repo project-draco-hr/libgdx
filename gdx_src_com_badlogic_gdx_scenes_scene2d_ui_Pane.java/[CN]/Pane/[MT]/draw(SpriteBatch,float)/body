@@ -3,7 +3,7 @@
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,x,y,width,height);
   setupTransform(batch);
-  applyLayout();
+  layout();
   calculateScissors(batch.getTransformMatrix());
   ScissorStack.pushScissors(scissors);
   super.drawChildren(batch,parentAlpha);

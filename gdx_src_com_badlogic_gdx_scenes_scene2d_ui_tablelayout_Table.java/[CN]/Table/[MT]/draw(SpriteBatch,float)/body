@@ -1,4 +1,8 @@
 {
+  if (!visible)   return;
   if (layout.needsLayout)   layout.layout();
-  super.draw(batch,parentAlpha);
+  for (int i=0, n=children.size(); i < n; i++) {
+    Actor child=children.get(i);
+    if (child.visible)     child.draw(batch,parentAlpha * color.a);
+  }
 }

@@ -1,0 +1,8 @@
+{
+  GL10 gl=Gdx.gl10;
+  gl.glMatrixMode(GL10.GL_PROJECTION);
+  gl.glLoadMatrixf(projModelView.val,0);
+  gl.glMatrixMode(GL10.GL_MODELVIEW);
+  gl.glLoadIdentity();
+  begin(primitiveType);
+}

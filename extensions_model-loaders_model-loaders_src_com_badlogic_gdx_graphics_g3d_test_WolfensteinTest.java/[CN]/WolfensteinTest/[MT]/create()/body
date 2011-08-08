@@ -9,5 +9,5 @@
   model.subMeshes[0].mesh.getIndices(indices);
   camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   camera.position.y=1;
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
 }

@@ -1,9 +1,0 @@
-{
-  if (currentElement == null)   throw new IllegalStateException();
-  writer.write(' ');
-  writer.write(name);
-  writer.write("=\"");
-  writer.write(value);
-  writer.write('"');
-  return this;
-}

@@ -1,4 +1,5 @@
 {
+  layout.setLayoutSize(0,0,0,0);
   layout.layout();
-  return layout.tablePrefHeight;
+  return layout.getMinHeight();
 }

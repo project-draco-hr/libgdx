@@ -4,11 +4,12 @@
   Button reload=skin.newButton("reload","Reload Shaders");
   ComboBox camera=skin.newComboBox("camera",new String[]{"Camera","Light"},ui);
   Label fps=skin.newLabel("fps","fps: ");
-  Container container=new Container("container",(int)ui.width(),(int)ui.height());
-  container.add(reload).spacingRight(5);
-  container.add(camera).spacingRight(5);
-  container.add(fps);
-  ui.addActor(container);
+  TableLayout layout=new Table("container").getTableLayout();
+  layout.size((int)ui.width(),(int)ui.height());
+  layout.add(reload).spaceRight(5);
+  layout.add(camera).spaceRight(5);
+  layout.add(fps);
+  ui.addActor(layout.getTable());
   reload.setClickListener(new ClickListener(){
     @Override public void click(    Button button){
       ShaderProgram prog=new ShaderProgram(Gdx.files.internal("data/shaders/projtex-vert.glsl").readString(),Gdx.files.internal("data/shaders/projtex-frag.glsl").readString());

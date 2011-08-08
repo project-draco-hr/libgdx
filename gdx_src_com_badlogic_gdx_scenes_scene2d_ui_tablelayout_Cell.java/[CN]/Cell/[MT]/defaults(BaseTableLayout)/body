@@ -1,0 +1,25 @@
+{
+  Cell defaults=new Cell(layout);
+  defaults.minWidth=MIN;
+  defaults.minHeight=MIN;
+  defaults.prefWidth=PREF;
+  defaults.prefHeight=PREF;
+  defaults.maxWidth=MAX;
+  defaults.maxHeight=MAX;
+  defaults.spaceTop=null;
+  defaults.spaceLeft=null;
+  defaults.spaceBottom=null;
+  defaults.spaceRight=null;
+  defaults.padTop=null;
+  defaults.padLeft=null;
+  defaults.padBottom=null;
+  defaults.padRight=null;
+  defaults.fillX=0f;
+  defaults.fillY=0f;
+  defaults.align=CENTER;
+  defaults.expandX=0;
+  defaults.expandY=0;
+  defaults.ignore=false;
+  defaults.colspan=1;
+  return defaults;
+}

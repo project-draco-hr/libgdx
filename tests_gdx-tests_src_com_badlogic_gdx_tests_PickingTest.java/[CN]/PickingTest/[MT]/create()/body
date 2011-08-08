@@ -11,5 +11,5 @@
     positions[i]=new Vector3(rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100,rand.nextFloat() * 100 - rand.nextFloat() * 100);
   }
   positions[0].set(0,0,-10);
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
 }

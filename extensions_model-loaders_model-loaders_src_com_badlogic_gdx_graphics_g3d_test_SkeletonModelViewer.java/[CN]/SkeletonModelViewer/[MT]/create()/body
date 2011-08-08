@@ -16,7 +16,7 @@
   cam.lookAt(bounds.getCenter().x,bounds.getCenter().y,bounds.getCenter().z);
   cam.near=0.1f;
   cam.far=1000;
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
   batch=new SpriteBatch();
   font=new BitmapFont();
 }

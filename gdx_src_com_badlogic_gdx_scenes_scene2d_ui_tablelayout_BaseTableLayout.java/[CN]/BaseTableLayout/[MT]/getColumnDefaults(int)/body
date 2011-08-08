@@ -1,7 +1,7 @@
 {
   Cell cell=columnDefaults.size() > column ? columnDefaults.get(column) : null;
   if (cell == null) {
-    cell=new Cell();
+    cell=new Cell(this);
     cell.set(cellDefaults);
     if (column <= columnDefaults.size()) {
       for (int i=columnDefaults.size(); i < column; i++)       columnDefaults.add(null);

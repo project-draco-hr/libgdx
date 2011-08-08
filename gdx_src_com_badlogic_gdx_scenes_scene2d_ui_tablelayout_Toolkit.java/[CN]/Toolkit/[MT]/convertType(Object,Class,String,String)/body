@@ -1,0 +1,28 @@
+{
+  if (memberType == String.class || memberType == CharSequence.class)   return value;
+  try {
+    if (memberType == int.class || memberType == Integer.class)     return Integer.valueOf(value);
+    if (memberType == float.class || memberType == Float.class)     return Float.valueOf(value);
+    if (memberType == long.class || memberType == Long.class)     return Long.valueOf(value);
+    if (memberType == double.class || memberType == Double.class)     return Double.valueOf(value);
+  }
+ catch (  NumberFormatException ignored) {
+  }
+  if (memberType == boolean.class || memberType == Boolean.class)   return Boolean.valueOf(value);
+  if (memberType == char.class || memberType == Character.class)   return value.charAt(0);
+  if (memberType == short.class || memberType == Short.class)   return Short.valueOf(value);
+  if (memberType == byte.class || memberType == Byte.class)   return Byte.valueOf(value);
+  try {
+    Field field=getField(memberType,value);
+    if (field != null && memberType == field.getType())     return field.get(null);
+  }
+ catch (  Exception ignored) {
+  }
+  try {
+    Field field=getField(parentObject.getClass(),value);
+    if (field != null && memberType == field.getType())     return field.get(null);
+  }
+ catch (  Exception ignored) {
+  }
+  return null;
+}

@@ -6,14 +6,16 @@
   Label label2=skin.newLabel("label2","Shader");
   ComboBox shaderCombo=skin.newComboBox("shaderCombo",new String[]{"flat","shadow-gen","shadow-map"},ui);
   Label fpsLabel=skin.newLabel("fps","fps:");
-  Container container=new Container("toolbar",Gdx.graphics.getWidth(),100);
-  container.add(label).spacingRight(5);
-  container.add(cameraCombo).spacingRight(5);
-  container.add(label2).spacingRight(5);
-  container.add(shaderCombo).spacingRight(5);
-  container.add(fpsLabel).spacingRight(5);
-  container.y=ui.top() - 100;
-  ui.addActor(container);
+  TableLayout layout=new Table("toolbar").getTableLayout();
+  layout.size(Gdx.graphics.getWidth(),100);
+  layout.getDefaults().spaceRight(5);
+  layout.add(label);
+  layout.add(cameraCombo);
+  layout.add(label2);
+  layout.add(shaderCombo);
+  layout.add(fpsLabel);
+  layout.getTable().y=ui.top() - 100;
+  ui.addActor(layout.getTable());
   cameraCombo.setSelectionListener(new ComboBox.SelectionListener(){
     @Override public void selected(    ComboBox comboBox,    int selectionIndex,    String selection){
       if (selectionIndex == 0)       currCam=cam;

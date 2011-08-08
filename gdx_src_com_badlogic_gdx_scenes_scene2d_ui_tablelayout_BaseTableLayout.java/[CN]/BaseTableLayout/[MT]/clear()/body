@@ -1,13 +1,8 @@
 {
-  clearCells();
-  columnDefaults.clear();
-  cellDefaults.set(Cell.defaults());
-  debug=null;
-  rowDefaults=null;
-  padTop=null;
-  padLeft=null;
-  padBottom=null;
-  padRight=null;
-  align=CENTER;
-  if (debug != null)   clearDebugRectangles();
+  for (int i=cells.size() - 1; i >= 0; i--)   toolkit.removeChild(table,(C)cells.get(i).widget);
+  cells.clear();
+  nameToWidget.clear();
+  widgetToCell.clear();
+  rows=0;
+  columns=0;
 }

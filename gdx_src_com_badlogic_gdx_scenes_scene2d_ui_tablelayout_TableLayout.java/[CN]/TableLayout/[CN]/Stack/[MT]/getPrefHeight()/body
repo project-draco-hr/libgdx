@@ -1,5 +1,0 @@
-{
-  float height=0;
-  for (int i=0, n=children.size(); i < n; i++)   height=Math.max(height,TableLayout.this.getPrefHeight(children.get(i)));
-  return height * scaleY;
-}

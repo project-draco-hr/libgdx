@@ -1,8 +1,8 @@
 {
-  if (currentElement != null) {
-    stack.push(currentElement);
-    currentElement=null;
-    writer.write(">\n");
-  }
-  indent();
+  if (currentElement == null)   return false;
+  indent++;
+  stack.push(currentElement);
+  currentElement=null;
+  writer.write(">");
+  return true;
 }

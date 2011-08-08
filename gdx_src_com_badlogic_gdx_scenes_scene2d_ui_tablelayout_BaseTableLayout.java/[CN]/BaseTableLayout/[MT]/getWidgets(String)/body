@@ -1,5 +1,5 @@
 {
-  ArrayList<T> widgets=new ArrayList();
-  for (  Entry<String,T> entry : nameToWidget.entrySet())   if (entry.getKey().startsWith(namePrefix))   widgets.add(entry.getValue());
+  ArrayList<C> widgets=new ArrayList();
+  for (  Entry<String,C> entry : nameToWidget.entrySet())   if (entry.getKey().startsWith(namePrefix))   widgets.add(entry.getValue());
   return widgets;
 }

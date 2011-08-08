@@ -1,0 +1,8 @@
+{
+  invalidate();
+  Actor parent=getTable().parent;
+  while (parent != null) {
+    if (parent instanceof Layout)     ((Layout)parent).invalidate();
+    parent=parent.parent;
+  }
+}

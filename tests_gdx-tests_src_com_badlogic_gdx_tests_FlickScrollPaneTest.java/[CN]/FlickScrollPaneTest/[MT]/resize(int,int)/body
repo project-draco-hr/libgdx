@@ -1,4 +1,4 @@
 {
   stage.setViewport(width,height,false);
-  container.setPrefSize(width,height);
+  container.getTableLayout().size(width,height);
 }

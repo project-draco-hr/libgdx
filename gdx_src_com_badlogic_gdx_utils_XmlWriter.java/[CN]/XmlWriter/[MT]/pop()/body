@@ -4,11 +4,12 @@
     currentElement=null;
   }
  else {
-    String name=stack.pop();
-    indent();
+    indent=Math.max(indent - 1,0);
+    if (indentNextClose)     indent();
     writer.write("</");
-    writer.write(name);
+    writer.write(stack.pop());
     writer.write(">\n");
   }
+  indentNextClose=true;
   return this;
 }

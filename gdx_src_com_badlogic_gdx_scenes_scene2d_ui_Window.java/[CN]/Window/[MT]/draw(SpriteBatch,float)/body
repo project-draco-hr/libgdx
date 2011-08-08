@@ -3,7 +3,7 @@
   final BitmapFont titleFont=style.titleFont;
   final Color titleFontColor=style.titleFontColor;
   setupTransform(batch);
-  applyLayout();
+  layout();
   calculateBoundsAndScissors(batch.getTransformMatrix());
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   backgroundPatch.draw(batch,0,0,width,height);

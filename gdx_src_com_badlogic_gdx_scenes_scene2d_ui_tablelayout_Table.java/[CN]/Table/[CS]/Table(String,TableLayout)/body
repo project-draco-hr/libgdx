@@ -1,5 +1,5 @@
 {
   super(name);
   this.layout=layout;
-  layout.table=this;
+  layout.setTable(this);
 }

@@ -1,0 +1,4 @@
+{
+  if (layout.debugRects == null)   layout.debugRects=new Array();
+  layout.debugRects.add(new DebugRect(type,x,y,w,h));
+}

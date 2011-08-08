@@ -19,5 +19,5 @@
   plane.setVertices(new float[]{-10,-1,10,10,-1,10,10,-1,-10,-10,-1,-10});
   plane.setIndices(new short[]{3,2,1,1,0,3});
   sphere=ModelLoaderOld.loadObj(Gdx.files.internal("data/sphere.obj").read());
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
 }

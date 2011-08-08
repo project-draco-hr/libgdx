@@ -1,0 +1,5 @@
+{
+  this.debug=debug;
+  if (debug == DEBUG_NONE)   toolkit.clearDebugRectangles(this);
+  return (L)this;
+}

@@ -1,7 +1,7 @@
 {
   camera=new OrthographicCamera(48,32);
   camera.position.set(0,16,0);
-  renderer=new ImmediateModeRenderer();
+  renderer=new ImmediateModeRenderer10();
   debugRenderer=new Box2DDebugRenderer();
   batch=new SpriteBatch();
   font=new BitmapFont();

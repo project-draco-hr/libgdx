@@ -1,0 +1,6 @@
+{
+  if (value.equals(MIN))   return getMinWidth(widget);
+  if (value.equals(PREF))   return getPrefWidth(widget);
+  if (value.equals(MAX))   return getMaxWidth(widget);
+  return width(layout,value);
+}

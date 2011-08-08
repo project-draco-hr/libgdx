@@ -1,5 +1,3 @@
 {
-  super(name);
-  layout=new TableLayout();
-  layout.table=this;
+  this(name,new TableLayout());
 }
