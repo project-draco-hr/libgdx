@@ -1,0 +1,23 @@
+{
+  textures.clear();
+  regions.clear();
+  ObjectMap<Page,Texture> pageToTexture=new ObjectMap<Page,Texture>();
+  for (  Page page : data.pages) {
+    Texture texture=new Texture(page.textureFile,page.format,page.useMipMaps);
+    textures.add(texture);
+    pageToTexture.put(page,texture);
+  }
+  for (  Region region : data.regions) {
+    AtlasRegion atlasRegion=new AtlasRegion(pageToTexture.get(region.page),region.left,region.top,region.width,region.height);
+    atlasRegion.index=region.index;
+    atlasRegion.name=region.name;
+    atlasRegion.offsetX=region.offsetX;
+    atlasRegion.offsetY=region.offsetY;
+    atlasRegion.originalHeight=region.originalHeight;
+    atlasRegion.originalWidth=region.originalWidth;
+    atlasRegion.packedHeight=region.packedHeight;
+    atlasRegion.packedWidth=region.packedWidth;
+    atlasRegion.rotate=region.rotate;
+    regions.add(atlasRegion);
+  }
+}

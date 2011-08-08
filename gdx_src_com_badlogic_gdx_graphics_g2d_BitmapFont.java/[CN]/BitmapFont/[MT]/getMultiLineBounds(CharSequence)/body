@@ -11,6 +11,6 @@
     numLines++;
   }
   textBounds.width=maxWidth;
-  textBounds.height=capHeight + (numLines - 1) * lineHeight;
+  textBounds.height=data.capHeight + (numLines - 1) * data.lineHeight;
   return textBounds;
 }

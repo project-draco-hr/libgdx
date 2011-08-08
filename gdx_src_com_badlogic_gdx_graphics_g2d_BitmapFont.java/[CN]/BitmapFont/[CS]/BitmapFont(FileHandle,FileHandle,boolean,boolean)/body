@@ -1,5 +1,3 @@
 {
-  region=new TextureRegion(new Texture(imageFile,false));
-  this.integer=integer;
-  init(fontFile,region,flip);
+  this(new BitmapFontData(fontFile,flip),new TextureRegion(new Texture(imageFile,false)),integer);
 }

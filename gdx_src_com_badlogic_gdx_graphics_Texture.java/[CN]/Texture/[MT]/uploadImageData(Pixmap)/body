@@ -1,7 +1,8 @@
 {
+  if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(data.getWidth()) || !MathUtils.isPowerOfTwo(data.getHeight())))   throw new GdxRuntimeException("texture width and height must be powers of two");
   boolean disposePixmap=false;
-  if (this.format != pixmap.getFormat()) {
-    Pixmap tmp=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),this.format);
+  if (data.getFormat() != pixmap.getFormat()) {
+    Pixmap tmp=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),data.getFormat());
     Blending blend=Pixmap.getBlending();
     Pixmap.setBlending(Blending.None);
     tmp.drawPixmap(pixmap,0,0,0,0,pixmap.getWidth(),pixmap.getHeight());
@@ -9,12 +10,9 @@
     pixmap=tmp;
     disposePixmap=true;
   }
-  this.width=pixmap.getWidth();
-  this.height=pixmap.getHeight();
-  if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(width) || !MathUtils.isPowerOfTwo(height)))   throw new GdxRuntimeException("texture width and height must be powers of two");
   Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
-  if (isMipMap) {
-    generateMipMap(pixmap,disposePixmap);
+  if (data.useMipMaps()) {
+    MipMapGenerator.generateMipMap(pixmap,this,disposePixmap);
   }
  else {
     Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());

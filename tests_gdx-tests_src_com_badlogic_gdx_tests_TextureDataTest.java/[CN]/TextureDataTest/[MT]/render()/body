@@ -1,5 +1,5 @@
 {
   spriteBatch.begin();
-  sprite.draw(spriteBatch);
+  spriteBatch.draw(texture,100,100);
   spriteBatch.end();
 }

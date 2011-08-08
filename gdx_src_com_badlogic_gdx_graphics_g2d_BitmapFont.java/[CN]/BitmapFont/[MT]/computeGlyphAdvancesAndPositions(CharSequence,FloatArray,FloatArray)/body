@@ -5,10 +5,10 @@
   int end=str.length();
   int width=0;
   Glyph lastGlyph=null;
-  if (scaleX == 1) {
+  if (data.scaleX == 1) {
     for (; index < end; index++) {
       char ch=str.charAt(index);
-      Glyph g=getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         if (lastGlyph != null)         width+=lastGlyph.getKerning(ch);
         lastGlyph=g;
@@ -21,10 +21,10 @@
     glyphPositions.add(width);
   }
  else {
-    float scaleX=this.scaleX;
+    float scaleX=this.data.scaleX;
     for (; index < end; index++) {
       char ch=str.charAt(index);
-      Glyph g=getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         if (lastGlyph != null)         width+=lastGlyph.getKerning(ch) * scaleX;
         lastGlyph=g;

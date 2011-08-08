@@ -1,0 +1,29 @@
+{
+  if (loader instanceof SynchronousAssetLoader) {
+    SynchronousAssetLoader syncLoader=(SynchronousAssetLoader)loader;
+    asset=syncLoader.load(assetDesc.fileName,assetDesc.params);
+  }
+ else {
+    AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
+    if (future == null) {
+      future=threadPool.submit(this);
+    }
+ else {
+      if (future.isDone()) {
+        if (!updateOnRenderThread) {
+          try {
+            future.get();
+            updateOnRenderThread=true;
+          }
+ catch (          Exception e) {
+            throw new GdxRuntimeException("Couldn't load asset '" + assetDesc.fileName + "'",e);
+          }
+        }
+ else {
+          asset=asyncLoader.loadSync();
+        }
+      }
+    }
+  }
+  return asset != null;
+}

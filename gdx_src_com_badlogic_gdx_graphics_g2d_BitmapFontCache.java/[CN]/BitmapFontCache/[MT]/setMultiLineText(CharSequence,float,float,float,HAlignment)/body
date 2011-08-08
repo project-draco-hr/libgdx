@@ -2,8 +2,8 @@
   BitmapFont font=this.font;
   int length=str.length();
   reset(length);
-  y+=font.ascent;
-  float down=font.down;
+  y+=font.data.ascent;
+  float down=font.data.down;
   float maxWidth=0;
   float startY=y;
   int start=0;
@@ -23,6 +23,6 @@
     numLines++;
   }
   textBounds.width=maxWidth;
-  textBounds.height=font.capHeight + (numLines - 1) * font.lineHeight;
+  textBounds.height=font.data.capHeight + (numLines - 1) * font.data.lineHeight;
   return textBounds;
 }

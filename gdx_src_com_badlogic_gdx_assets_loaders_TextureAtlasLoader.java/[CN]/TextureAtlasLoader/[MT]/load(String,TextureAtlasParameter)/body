@@ -1,0 +1,4 @@
+{
+  if (parameter != null)   return new TextureAtlas(Gdx.files.internal(fileName),parameter.flip);
+ else   return new TextureAtlas(Gdx.files.internal(fileName),false);
+}

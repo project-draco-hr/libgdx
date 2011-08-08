@@ -1,15 +1,3 @@
 {
-  this.isManaged=true;
-  this.isMipMap=mipmap;
-  this.file=file;
-  this.textureData=null;
-  glHandle=createGLHandle();
-  Pixmap pixmap=new Pixmap(file);
-  format=pixmap.getFormat();
-  uploadImageData(pixmap);
-  pixmap.dispose();
-  if (mipmap)   minFilter=TextureFilter.MipMap;
-  setFilter(minFilter,magFilter);
-  setWrap(uWrap,vWrap);
-  addManagedTexture(Gdx.app,this);
+  this(new FileTextureData(file,null,null,useMipMaps));
 }

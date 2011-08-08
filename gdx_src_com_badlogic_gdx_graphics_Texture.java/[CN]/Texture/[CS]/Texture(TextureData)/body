@@ -1,15 +1,5 @@
 {
-  this.isManaged=true;
-  this.isMipMap=false;
-  this.textureData=data;
-  this.file=null;
   glHandle=createGLHandle();
-  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
-  setFilter(minFilter,magFilter);
-  setWrap(uWrap,vWrap);
-  textureData.load();
-  format=Format.RGBA8888;
-  this.width=textureData.getWidth();
-  this.height=textureData.getHeight();
-  addManagedTexture(Gdx.app,this);
+  load(data);
+  if (data.isManaged())   addManagedTexture(Gdx.app,this);
 }

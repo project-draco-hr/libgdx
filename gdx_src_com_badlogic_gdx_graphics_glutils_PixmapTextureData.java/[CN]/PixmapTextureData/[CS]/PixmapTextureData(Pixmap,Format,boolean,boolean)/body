@@ -1,0 +1,6 @@
+{
+  this.pixmap=pixmap;
+  this.format=format == null ? pixmap.getFormat() : format;
+  this.useMipMaps=useMipMaps;
+  this.disposePixmap=disposePixmap;
+}

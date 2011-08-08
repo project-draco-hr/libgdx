@@ -1,0 +1,9 @@
+{
+  if (texture != null) {
+    texture.load(data);
+    return texture;
+  }
+ else {
+    return new Texture(data);
+  }
+}

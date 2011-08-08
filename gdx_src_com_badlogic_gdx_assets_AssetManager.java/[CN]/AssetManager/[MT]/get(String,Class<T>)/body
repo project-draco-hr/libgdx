@@ -1,0 +1,7 @@
+{
+  ObjectMap<String,Object> assetsByType=assets.get(type);
+  if (assetsByType == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
+  T asset=(T)assetsByType.get(fileName);
+  if (asset == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
+  return asset;
+}

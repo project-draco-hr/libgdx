@@ -1,0 +1,17 @@
+{
+  if (task.update()) {
+    assetTypes.put(task.assetDesc.fileName,task.assetDesc.type);
+    ObjectMap<String,Object> typeToAssets=assets.get(task.assetDesc.type);
+    if (typeToAssets == null) {
+      typeToAssets=new ObjectMap<String,Object>();
+      assets.put(task.assetDesc.type,typeToAssets);
+    }
+    typeToAssets.put(task.assetDesc.fileName,task.getAsset());
+    task=null;
+    loaded++;
+    return true;
+  }
+ else {
+    return false;
+  }
+}

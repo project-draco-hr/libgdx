@@ -1,0 +1,22 @@
+{
+  float invTexWidth=1.0f / region.getTexture().getWidth();
+  float invTexHeight=1.0f / region.getTexture().getHeight();
+  float u=region.u;
+  float v=region.v;
+  for (  Glyph[] glyphs : data.glyphs) {
+    if (glyphs == null)     continue;
+    for (    Glyph glyph : glyphs) {
+      if (glyph == null)       continue;
+      glyph.u=u + glyph.srcX * invTexWidth;
+      glyph.u2=u + (glyph.srcX + glyph.width) * invTexWidth;
+      if (data.flipped) {
+        glyph.v=v + glyph.srcY * invTexHeight;
+        glyph.v2=v + (glyph.srcY + glyph.height) * invTexHeight;
+      }
+ else {
+        glyph.v2=v + glyph.srcY * invTexHeight;
+        glyph.v=v + (glyph.srcY + glyph.height) * invTexHeight;
+      }
+    }
+  }
+}

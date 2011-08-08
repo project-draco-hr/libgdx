@@ -1,8 +1,30 @@
 {
   List<Texture> managedTexureList=managedTextures.get(app);
   if (managedTexureList == null)   return;
-  for (int i=0; i < managedTexureList.size(); i++) {
-    Texture texture=managedTexureList.get(i);
-    texture.reload();
+  if (assetManager == null) {
+    for (int i=0; i < managedTexureList.size(); i++) {
+      Texture texture=managedTexureList.get(i);
+      texture.reload();
+    }
+  }
+ else {
+    List<Texture> textures=new ArrayList<Texture>(managedTexureList);
+    managedTexureList.clear();
+    for (    Texture texture : textures) {
+      String fileName=assetManager.getAssetFileName(texture);
+      if (fileName == null) {
+        texture.reload();
+      }
+ else {
+        TextureParameter params=new TextureParameter();
+        params.format=texture.getTextureData().getFormat();
+        params.genMipMaps=texture.getTextureData().useMipMaps();
+        params.texture=texture;
+        texture.glHandle=Texture.createGLHandle();
+        assetManager.remove(fileName);
+        assetManager.preload(fileName,Texture.class,params);
+      }
+      managedTexureList.add(texture);
+    }
   }
 }

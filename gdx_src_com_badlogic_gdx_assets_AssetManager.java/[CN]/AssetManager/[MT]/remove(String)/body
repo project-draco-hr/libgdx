@@ -1,0 +1,7 @@
+{
+  Class type=assetTypes.get(fileName);
+  if (type == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
+  assetTypes.remove(fileName);
+  Object asset=assets.get(type).remove(fileName);
+  if (asset instanceof Disposable)   ((Disposable)asset).dispose();
+}

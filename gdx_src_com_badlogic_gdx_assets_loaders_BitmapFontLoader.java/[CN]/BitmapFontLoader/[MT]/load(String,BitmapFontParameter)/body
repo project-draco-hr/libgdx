@@ -1,0 +1,5 @@
+{
+  FileHandle handle=Gdx.files.internal(fileName);
+  if (parameter != null)   return new BitmapFont(handle,parameter.flip);
+ else   return new BitmapFont(handle,false);
+}

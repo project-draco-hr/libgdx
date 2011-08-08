@@ -1,0 +1,19 @@
+{
+  if (preloadQueue.size > 0 || task != null) {
+    try {
+      while (!updateTask())       ;
+    }
+ catch (    Throwable t) {
+      handleTaskError(t);
+    }
+    preloadQueue.clear();
+    task=null;
+  }
+  Array<String> assets=assetTypes.keys().toArray();
+  for (  String asset : assets) {
+    remove(asset);
+  }
+  this.assets.clear();
+  this.assetTypes.clear();
+  this.loaded=0;
+}

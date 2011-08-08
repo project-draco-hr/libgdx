@@ -1,0 +1,13 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  manager.update();
+  frame++;
+  if (manager.getQueuedAssets() > 0)   Gdx.app.log("AssetManagerTest","frames: " + frame + ", loaded: "+ manager.getLoadedAssets()+ ", queued: "+ manager.getQueuedAssets());
+  batch.begin();
+  if (manager.isLoaded("data/animation.png"))   batch.draw(manager.get("data/animation.png",Texture.class),100,100);
+  if (manager.isLoaded("data/badlogic.jpg"))   batch.draw(manager.get("data/badlogic.jpg",Texture.class),200,100);
+  if (manager.isLoaded("data/pack"))   batch.draw(manager.get("data/pack",TextureAtlas.class).findRegion("particle-star"),164,100);
+  if (manager.isLoaded("data/verdana39.fnt"))   manager.get("data/verdana39.fnt",BitmapFont.class).draw(batch,"This is a test",100,200);
+  font.draw(batch,"loaded: " + manager.getProgress(),0,30);
+  batch.end();
+}

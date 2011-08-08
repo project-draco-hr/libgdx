@@ -1,10 +1,10 @@
 {
-  spaceWidth=spaceWidth / this.scaleX * scaleX;
-  xHeight=xHeight / this.scaleY * scaleY;
-  capHeight=capHeight / this.scaleY * scaleY;
-  ascent=ascent / this.scaleY * scaleY;
-  descent=descent / this.scaleY * scaleY;
-  down=down / this.scaleY * scaleY;
-  this.scaleX=scaleX;
-  this.scaleY=scaleY;
+  data.spaceWidth=data.spaceWidth / this.data.scaleX * scaleX;
+  data.xHeight=data.xHeight / this.data.scaleY * scaleY;
+  data.capHeight=data.capHeight / this.data.scaleY * scaleY;
+  data.ascent=data.ascent / this.data.scaleY * scaleY;
+  data.descent=data.descent / this.data.scaleY * scaleY;
+  data.down=data.down / this.data.scaleY * scaleY;
+  data.scaleX=scaleX;
+  data.scaleY=scaleY;
 }

@@ -1,0 +1,15 @@
+{
+  Gdx.app.setLogLevel(Application.LOG_ERROR);
+  manager=new AssetManager();
+  manager.setErrorListener(this);
+  manager.preload("data/stones787.jpg",Pixmap.class);
+  manager.preload("data/animation.png",Texture.class);
+  manager.preload("data/badlogic.jpg",Texture.class);
+  manager.preload("data/cloudconnected.ogg",Music.class);
+  manager.preload("data/shotgun.wav",Sound.class);
+  manager.preload("data/pack",TextureAtlas.class);
+  manager.preload("data/verdana39.fnt",BitmapFont.class);
+  Texture.setAssetManager(manager);
+  batch=new SpriteBatch();
+  font=new BitmapFont(Gdx.files.internal("data/font.fnt"),false);
+}

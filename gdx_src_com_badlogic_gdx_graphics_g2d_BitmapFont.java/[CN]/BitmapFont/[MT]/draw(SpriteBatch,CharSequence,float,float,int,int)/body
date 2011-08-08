@@ -2,12 +2,12 @@
   float batchColor=spriteBatch.color;
   spriteBatch.setColor(color);
   final Texture texture=region.getTexture();
-  y+=ascent;
+  y+=data.ascent;
   float startX=x;
   Glyph lastGlyph=null;
-  if (scaleX == 1 && scaleY == 1) {
+  if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
-      lastGlyph=getGlyph(str.charAt(start++));
+      lastGlyph=data.getGlyph(str.charAt(start++));
       if (lastGlyph != null) {
         if (!integer) {
           spriteBatch.draw(texture,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
@@ -21,7 +21,7 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g == null)       continue;
       x+=lastGlyph.getKerning(ch);
       lastGlyph=g;
@@ -35,9 +35,9 @@
     }
   }
  else {
-    float scaleX=this.scaleX, scaleY=this.scaleY;
+    float scaleX=this.data.scaleX, scaleY=this.data.scaleY;
     while (start < end) {
-      lastGlyph=getGlyph(str.charAt(start++));
+      lastGlyph=data.getGlyph(str.charAt(start++));
       if (lastGlyph != null) {
         if (!integer) {
           spriteBatch.draw(texture,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY,lastGlyph.u,lastGlyph.v,lastGlyph.u2,lastGlyph.v2);
@@ -51,7 +51,7 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g == null)       continue;
       x+=lastGlyph.getKerning(ch) * scaleX;
       lastGlyph=g;
@@ -66,6 +66,6 @@
   }
   spriteBatch.setColor(batchColor);
   textBounds.width=x - startX;
-  textBounds.height=capHeight;
+  textBounds.height=data.capHeight;
   return textBounds;
 }

@@ -1,0 +1,16 @@
+{
+  setLoader(BitmapFont.class,new BitmapFontLoader());
+  setLoader(Music.class,new MusicLoader());
+  setLoader(Pixmap.class,new PixmapLoader());
+  setLoader(Sound.class,new SoundLoader());
+  setLoader(TextureAtlas.class,new TextureAtlasLoader());
+  setLoader(Texture.class,new TextureLoader());
+  threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
+    @Override public Thread newThread(    Runnable r){
+      Thread thread=new Thread(r,"AssetManager-Loader-Thread");
+      thread.setDaemon(true);
+      return thread;
+    }
+  }
+);
+}

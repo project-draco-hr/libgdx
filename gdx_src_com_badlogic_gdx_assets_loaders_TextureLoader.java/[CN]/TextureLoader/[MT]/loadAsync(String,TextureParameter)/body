@@ -1,0 +1,13 @@
+{
+  FileHandle handle=Gdx.files.internal(fileName);
+  Pixmap pixmap=new Pixmap(handle);
+  Format format=null;
+  boolean genMipMaps=false;
+  texture=null;
+  if (parameter != null) {
+    format=parameter.format;
+    genMipMaps=parameter.genMipMaps;
+    texture=parameter.texture;
+  }
+  data=new FileTextureData(handle,pixmap,format,genMipMaps);
+}

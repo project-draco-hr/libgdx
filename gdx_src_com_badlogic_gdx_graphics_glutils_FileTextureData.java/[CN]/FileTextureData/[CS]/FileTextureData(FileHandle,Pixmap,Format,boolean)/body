@@ -1,0 +1,11 @@
+{
+  this.file=file;
+  this.pixmap=preloadedPixmap;
+  this.format=format;
+  this.useMipMaps=useMipMaps;
+  if (pixmap != null) {
+    width=pixmap.getWidth();
+    height=pixmap.getHeight();
+    if (format == null)     this.format=pixmap.getFormat();
+  }
+}

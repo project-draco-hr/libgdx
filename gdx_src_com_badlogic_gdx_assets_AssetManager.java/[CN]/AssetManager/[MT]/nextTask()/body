@@ -1,0 +1,6 @@
+{
+  AssetDescriptor assetDesc=preloadQueue.removeIndex(0);
+  AssetLoader loader=loaders.get(assetDesc.type);
+  if (loader == null)   throw new GdxRuntimeException("No loader for type '" + assetDesc.type.getSimpleName() + "'");
+  task=new AssetLoadingTask(assetDesc,loader,threadPool);
+}

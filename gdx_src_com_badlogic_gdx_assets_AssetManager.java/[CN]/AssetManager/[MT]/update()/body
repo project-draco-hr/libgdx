@@ -1,0 +1,12 @@
+{
+  try {
+    if (task == null) {
+      if (preloadQueue.size == 0)       return true;
+      nextTask();
+    }
+    return updateTask() && preloadQueue.size == 0;
+  }
+ catch (  Throwable t) {
+    return handleTaskError(t);
+  }
+}

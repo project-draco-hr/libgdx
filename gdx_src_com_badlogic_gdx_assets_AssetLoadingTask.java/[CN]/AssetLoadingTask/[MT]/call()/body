@@ -1,0 +1,5 @@
+{
+  AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
+  asyncLoader.loadAsync(assetDesc.fileName,assetDesc.params);
+  return null;
+}

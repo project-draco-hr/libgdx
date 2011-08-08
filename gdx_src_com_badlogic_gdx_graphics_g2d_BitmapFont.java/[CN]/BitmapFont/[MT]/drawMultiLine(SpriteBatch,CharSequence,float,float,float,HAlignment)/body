@@ -1,6 +1,6 @@
 {
   float batchColor=spriteBatch.color;
-  float down=this.down;
+  float down=this.data.down;
   int start=0;
   int numLines=0;
   int length=str.length();
@@ -21,6 +21,6 @@
   }
   spriteBatch.setColor(batchColor);
   textBounds.width=maxWidth;
-  textBounds.height=capHeight + (numLines - 1) * lineHeight;
+  textBounds.height=data.capHeight + (numLines - 1) * data.lineHeight;
   return textBounds;
 }
