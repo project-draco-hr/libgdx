@@ -113,14 +113,14 @@ break;
 case 4:
 {
 if (debug) System.out.println("cellDefaultProperty: " + name + " = "+ values);
-toolkit.setCellProperty(((BaseTableLayout)parent).getDefaults(),name,values);
+toolkit.setCellProperty(((BaseTableLayout)parent).defaults(),name,values);
 values.clear();
 name=null;
 }
 break;
 case 5:
 {
-columnDefaults=((BaseTableLayout)parent).getColumnDefaults(columnDefaultCount++);
+columnDefaults=((BaseTableLayout)parent).columnDefaults(columnDefaultCount++);
 }
 break;
 case 6:
