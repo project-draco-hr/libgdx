@@ -1,4 +1,5 @@
 {
+  fix(scissor);
   if (scissors.size == 0) {
     Gdx.gl.glEnable(GL10.GL_SCISSOR_TEST);
   }

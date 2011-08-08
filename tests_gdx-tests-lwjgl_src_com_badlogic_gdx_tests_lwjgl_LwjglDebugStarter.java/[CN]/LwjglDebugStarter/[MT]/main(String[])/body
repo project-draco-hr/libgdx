@@ -1,4 +1,5 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  new LwjglApplication(new AssetManagerTest(),config);
+  config.useGL20=true;
+  new LwjglApplication(new ShadowMappingTest(),config);
 }
