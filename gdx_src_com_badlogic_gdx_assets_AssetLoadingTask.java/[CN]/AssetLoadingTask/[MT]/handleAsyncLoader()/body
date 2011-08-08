@@ -1,0 +1,35 @@
+{
+  AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
+  if (!dependenciesLoaded) {
+    if (depsFuture == null) {
+      depsFuture=threadPool.submit(this);
+    }
+ else {
+      if (depsFuture.isDone()) {
+        try {
+          depsFuture.get();
+        }
+ catch (        Exception e) {
+          throw new GdxRuntimeException("Couldn't load dependencies of asset '" + assetDesc.fileName + "'",e);
+        }
+        dependenciesLoaded=true;
+      }
+    }
+  }
+ else {
+    if (loadFuture == null) {
+      loadFuture=threadPool.submit(this);
+    }
+ else {
+      if (loadFuture.isDone()) {
+        try {
+          loadFuture.get();
+        }
+ catch (        Exception e) {
+          throw new GdxRuntimeException("Couldn't load asset '" + assetDesc.fileName + "'",e);
+        }
+        asset=asyncLoader.loadSync();
+      }
+    }
+  }
+}

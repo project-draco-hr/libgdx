@@ -1,5 +1,5 @@
 {
-  if (preloadQueue.size > 0 || task != null) {
+  if (preloadQueue.size > 0 || tasks.size() != 0) {
     try {
       while (!updateTask())       ;
     }
@@ -7,7 +7,7 @@
       handleTaskError(t);
     }
     preloadQueue.clear();
-    task=null;
+    tasks.clear();
   }
   Array<String> assets=assetTypes.keys().toArray();
   for (  String asset : assets) {

@@ -1,4 +1,5 @@
 {
+  AssetLoadingTask task=tasks.peek();
   if (task.update()) {
     assetTypes.put(task.assetDesc.fileName,task.assetDesc.type);
     ObjectMap<String,Object> typeToAssets=assets.get(task.assetDesc.type);
@@ -9,6 +10,7 @@
     typeToAssets.put(task.assetDesc.fileName,task.getAsset());
     task=null;
     loaded++;
+    tasks.pop();
     return true;
   }
  else {

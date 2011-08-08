@@ -1,5 +1,15 @@
 {
   AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
-  asyncLoader.loadAsync(assetDesc.fileName,assetDesc.params);
+  if (dependenciesLoaded == false) {
+    Array<AssetDescriptor> dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
+    if (dependencies != null) {
+      for (      AssetDescriptor desc : dependencies) {
+        manager.injectTask(desc);
+      }
+    }
+  }
+ else {
+    asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+  }
   return null;
 }

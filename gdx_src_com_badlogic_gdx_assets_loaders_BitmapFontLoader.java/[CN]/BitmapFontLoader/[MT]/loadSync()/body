@@ -1,0 +1,5 @@
+{
+  FileHandle handle=Gdx.files.internal(fileName);
+  TextureRegion region=new TextureRegion(manager.get(data.getImageFile(),Texture.class));
+  return new BitmapFont(data,region,true);
+}

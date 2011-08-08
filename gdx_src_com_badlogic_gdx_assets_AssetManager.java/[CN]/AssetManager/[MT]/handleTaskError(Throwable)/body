@@ -1,4 +1,5 @@
 {
+  AssetLoadingTask task=tasks.pop();
   AssetDescriptor assetDesc=task.assetDesc;
   task=null;
   if (listener != null) {

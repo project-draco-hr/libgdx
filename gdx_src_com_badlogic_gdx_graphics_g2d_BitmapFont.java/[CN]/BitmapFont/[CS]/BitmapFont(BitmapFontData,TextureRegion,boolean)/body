@@ -1,5 +1,5 @@
 {
-  this.region=region == null ? new TextureRegion(new Texture(data.imgFile,false)) : region;
+  this.region=region == null ? new TextureRegion(new Texture(Gdx.files.internal(data.imgFile),false)) : region;
   this.flipped=data.flipped;
   this.integer=integer;
   this.data=data;
