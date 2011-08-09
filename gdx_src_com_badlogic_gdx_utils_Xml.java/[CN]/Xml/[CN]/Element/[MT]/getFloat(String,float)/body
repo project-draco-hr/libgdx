@@ -1,0 +1,5 @@
+{
+  String value=get(name,null);
+  if (value == null)   return defaultValue;
+  return Float.parseFloat(value);
+}

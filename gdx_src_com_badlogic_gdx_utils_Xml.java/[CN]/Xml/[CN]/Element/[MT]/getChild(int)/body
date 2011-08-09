@@ -1,4 +1,4 @@
 {
-  if (children == null)   return null;
+  if (children == null)   throw new GdxRuntimeException("Element has no children: " + name);
   return children.get(i);
 }

@@ -1,0 +1,5 @@
+{
+  String value=get(name,null);
+  if (value == null)   throw new GdxRuntimeException("Element " + this.name + " doesn't have attribute or child: "+ name);
+  return value;
+}
