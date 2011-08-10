@@ -75,6 +75,11 @@
             @Override public boolean isManaged(){
               return true;
             }
+            @Override public TextureDataType getType(){
+              return null;
+            }
+            @Override public void uploadCompressedData(){
+            }
           }
 ));
           renderer.font=new BitmapFont(Gdx.files.absolute("out"),glyphRegion,false);

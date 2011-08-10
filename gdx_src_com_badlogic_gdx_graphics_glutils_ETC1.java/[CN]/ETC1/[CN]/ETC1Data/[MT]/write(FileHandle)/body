@@ -1,0 +1,23 @@
+{
+  DataOutputStream write=new DataOutputStream(file.write(false));
+  byte[] buffer=new byte[10 * 1024];
+  int writtenBytes=0;
+  try {
+    while (writtenBytes != compressedData.capacity()) {
+      int bytesToWrite=writtenBytes + buffer.length > compressedData.capacity() ? compressedData.capacity() - writtenBytes : buffer.length;
+      compressedData.get(buffer,writtenBytes,bytesToWrite);
+      write.write(buffer,0,bytesToWrite);
+      writtenBytes+=bytesToWrite;
+    }
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't write PKM file to '" + file + "'",e);
+  }
+ finally {
+    if (write != null)     try {
+      write.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+}
