@@ -1,4 +1,6 @@
 {
+  refCount--;
+  if (refCount > 0)   return;
   GL20 gl=Gdx.graphics.getGL20();
   gl.glUseProgram(0);
   gl.glDeleteShader(vertexShaderHandle);
