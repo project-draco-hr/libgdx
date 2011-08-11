@@ -5,12 +5,12 @@
     if (disposePixmap)     pixmap.dispose();
   }
  else   if (Gdx.graphics.supportsExtension("GL_SGIS_generate_mipmap")) {
-    if ((Gdx.gl20 == null) && texture.getWidth() != texture.getHeight())     throw new GdxRuntimeException("texture width and height must be square when using mipmapping in OpenGL ES 1.x");
+    if ((Gdx.gl20 == null) && textureWidth != textureHeight)     throw new GdxRuntimeException("texture width and height must be square when using mipmapping in OpenGL ES 1.x");
     Gdx.gl.glTexParameterf(GL20.GL_TEXTURE_2D,GLCommon.GL_GENERATE_MIPMAP,GL10.GL_TRUE);
     Gdx.gl.glTexImage2D(GL20.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
     if (disposePixmap)     pixmap.dispose();
   }
  else {
-    generateMipMapCPU(pixmap,texture,disposePixmap);
+    generateMipMapCPU(pixmap,textureWidth,textureHeight,disposePixmap);
   }
 }

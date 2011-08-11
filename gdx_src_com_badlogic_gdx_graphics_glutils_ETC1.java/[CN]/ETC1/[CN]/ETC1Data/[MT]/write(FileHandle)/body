@@ -1,11 +1,16 @@
 {
-  DataOutputStream write=new DataOutputStream(file.write(false));
+  DataOutputStream write=null;
   byte[] buffer=new byte[10 * 1024];
   int writtenBytes=0;
+  compressedData.position(0);
+  compressedData.limit(compressedData.capacity());
   try {
+    write=new DataOutputStream(new GZIPOutputStream(file.write(false)));
+    write.writeInt(compressedData.capacity());
     while (writtenBytes != compressedData.capacity()) {
-      int bytesToWrite=writtenBytes + buffer.length > compressedData.capacity() ? compressedData.capacity() - writtenBytes : buffer.length;
-      compressedData.get(buffer,writtenBytes,bytesToWrite);
+      int bytesToWrite=Math.min(compressedData.remaining(),buffer.length);
+      System.out.println("writting " + bytesToWrite);
+      compressedData.get(buffer,0,bytesToWrite);
       write.write(buffer,0,bytesToWrite);
       writtenBytes+=bytesToWrite;
     }
@@ -20,4 +25,6 @@
  catch (    Exception e) {
     }
   }
+  compressedData.position(dataOffset);
+  compressedData.limit(compressedData.capacity());
 }

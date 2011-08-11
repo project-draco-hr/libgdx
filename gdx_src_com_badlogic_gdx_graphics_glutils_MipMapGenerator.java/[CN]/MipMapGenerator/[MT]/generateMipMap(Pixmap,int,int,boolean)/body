@@ -1,0 +1,13 @@
+{
+  if (!useHWMipMap) {
+    generateMipMapCPU(pixmap,textureWidth,textureHeight,disposePixmap);
+    return;
+  }
+  if (Gdx.app.getType() == ApplicationType.Android) {
+    if (Gdx.graphics.isGL20Available())     generateMipMapGLES20(pixmap,disposePixmap);
+ else     generateMipMapCPU(pixmap,textureWidth,textureHeight,disposePixmap);
+  }
+ else {
+    generateMipMapDesktop(pixmap,textureWidth,textureHeight,disposePixmap);
+  }
+}
