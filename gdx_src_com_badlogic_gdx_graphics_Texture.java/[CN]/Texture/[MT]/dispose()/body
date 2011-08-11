@@ -1,4 +1,5 @@
 {
+  if (refCount > 0)   return;
   buffer.put(0,glHandle);
   Gdx.gl.glDeleteTextures(1,buffer);
   if (data.isManaged()) {
