@@ -1,4 +1,4 @@
 {
   pixmap=null;
-  pixmap=new Pixmap(Gdx.files.internal(fileName));
+  pixmap=new Pixmap(resolve(fileName));
 }

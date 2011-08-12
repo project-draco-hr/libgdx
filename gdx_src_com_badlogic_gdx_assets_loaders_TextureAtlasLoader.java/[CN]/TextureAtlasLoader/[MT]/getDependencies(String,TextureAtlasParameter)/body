@@ -1,9 +1,11 @@
 {
-  if (parameter != null)   data=new TextureAtlasData(Gdx.files.internal(fileName),Gdx.files.internal(fileName).parent(),parameter.flip);
- else   data=new TextureAtlasData(Gdx.files.internal(fileName),Gdx.files.internal(fileName).parent(),false);
+  FileHandle atlasFile=resolve(fileName);
+  FileHandle imgDir=atlasFile.parent();
+  if (parameter != null)   data=new TextureAtlasData(atlasFile,imgDir,parameter.flip);
+ else   data=new TextureAtlasData(atlasFile,imgDir,false);
   Array<AssetDescriptor> dependencies=new Array<AssetDescriptor>();
   for (  Page page : data.getPages()) {
-    FileHandle handle=page.textureFile;
+    FileHandle handle=resolve(page.textureFile.path());
     TextureParameter params=new TextureParameter();
     params.format=page.format;
     params.genMipMaps=page.useMipMaps;

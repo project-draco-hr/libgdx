@@ -1,11 +1,11 @@
 {
   log.setEnabled(false);
-  setLoader(BitmapFont.class,new BitmapFontLoader());
-  setLoader(Music.class,new MusicLoader());
-  setLoader(Pixmap.class,new PixmapLoader());
-  setLoader(Sound.class,new SoundLoader());
-  setLoader(TextureAtlas.class,new TextureAtlasLoader());
-  setLoader(Texture.class,new TextureLoader());
+  setLoader(BitmapFont.class,new BitmapFontLoader(new InternalFileHandleResolver()));
+  setLoader(Music.class,new MusicLoader(new InternalFileHandleResolver()));
+  setLoader(Pixmap.class,new PixmapLoader(new InternalFileHandleResolver()));
+  setLoader(Sound.class,new SoundLoader(new InternalFileHandleResolver()));
+  setLoader(TextureAtlas.class,new TextureAtlasLoader(new InternalFileHandleResolver()));
+  setLoader(Texture.class,new TextureLoader(new InternalFileHandleResolver()));
   threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
     @Override public Thread newThread(    Runnable r){
       Thread thread=new Thread(r,"AssetManager-Loader-Thread");

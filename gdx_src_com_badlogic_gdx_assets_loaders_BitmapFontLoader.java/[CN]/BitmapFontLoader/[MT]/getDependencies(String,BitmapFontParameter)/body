@@ -1,5 +1,5 @@
 {
-  FileHandle handle=Gdx.files.internal(fileName);
+  FileHandle handle=resolve(fileName);
   data=new BitmapFontData(handle,parameter != null ? parameter.flip : false);
   Array<AssetDescriptor> deps=new Array<AssetDescriptor>();
   deps.add(new AssetDescriptor(data.getImageFile(),Texture.class,null));
