@@ -1,3 +1,13 @@
 {
-  return null;
+  if (parameter != null)   data=new TextureAtlasData(Gdx.files.internal(fileName),Gdx.files.internal(fileName).parent(),parameter.flip);
+ else   data=new TextureAtlasData(Gdx.files.internal(fileName),Gdx.files.internal(fileName).parent(),false);
+  Array<AssetDescriptor> dependencies=new Array<AssetDescriptor>();
+  for (  Page page : data.getPages()) {
+    FileHandle handle=page.textureFile;
+    TextureParameter params=new TextureParameter();
+    params.format=page.format;
+    params.genMipMaps=page.useMipMaps;
+    dependencies.add(new AssetDescriptor(handle.path().replaceAll("\\\\","/"),Texture.class,params));
+  }
+  return dependencies;
 }

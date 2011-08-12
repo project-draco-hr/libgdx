@@ -1,0 +1,15 @@
+{
+  Array<String> dependencies=assetDependencies.get(parent);
+  if (dependencies == null)   return;
+  for (  String dependency : dependencies) {
+    Class type=assetTypes.get(dependency);
+    if (type == null)     throw new GdxRuntimeException("Asset '" + dependency + "' not loaded");
+    Object asset=assets.get(type).get(dependency);
+    if (asset instanceof ReferenceCountedAsset) {
+      ((ReferenceCountedAsset)asset).incRefCount();
+    }
+ else {
+      incrementRefCountedDependencies(dependency);
+    }
+  }
+}

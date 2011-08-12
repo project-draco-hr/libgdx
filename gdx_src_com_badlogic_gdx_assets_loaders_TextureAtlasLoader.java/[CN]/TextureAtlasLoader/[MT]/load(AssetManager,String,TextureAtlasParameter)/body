@@ -1,4 +1,7 @@
 {
-  if (parameter != null)   return new TextureAtlas(Gdx.files.internal(fileName),parameter.flip);
- else   return new TextureAtlas(Gdx.files.internal(fileName),false);
+  for (  Page page : data.getPages()) {
+    Texture texture=assetManager.get(page.textureFile.path().replaceAll("\\\\","/"),Texture.class);
+    page.texture=texture;
+  }
+  return new TextureAtlas(data);
 }

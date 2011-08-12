@@ -8,6 +8,7 @@
       assets.put(task.assetDesc.type,typeToAssets);
     }
     typeToAssets.put(task.assetDesc.fileName,task.getAsset());
+    incrementRefCountedDependencies(task.assetDesc.fileName);
     loaded++;
     tasks.pop();
     return true;
