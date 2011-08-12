@@ -1,0 +1,5 @@
+{
+  refCount--;
+  if (refCount > 0)   return;
+  super.dispose();
+}

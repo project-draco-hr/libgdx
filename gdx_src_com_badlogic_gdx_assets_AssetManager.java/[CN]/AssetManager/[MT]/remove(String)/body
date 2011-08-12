@@ -1,7 +1,17 @@
 {
   Class type=assetTypes.get(fileName);
+  Object asset=assets.get(type).get(fileName);
   if (type == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
-  assetTypes.remove(fileName);
-  Object asset=assets.get(type).remove(fileName);
   if (asset instanceof Disposable)   ((Disposable)asset).dispose();
+  if (asset instanceof ReferenceCountedAsset) {
+    if (((ReferenceCountedAsset)asset).getRefCount() > 0)     return;
+  }
+  assetTypes.remove(fileName);
+  assets.get(type).remove(fileName);
+  Array<String> dependencies=assetDependencies.remove(fileName);
+  if (dependencies != null) {
+    for (    String dependency : dependencies) {
+      remove(dependency);
+    }
+  }
 }

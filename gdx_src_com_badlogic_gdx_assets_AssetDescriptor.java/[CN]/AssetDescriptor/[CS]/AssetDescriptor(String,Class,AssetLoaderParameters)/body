@@ -1,5 +1,5 @@
 {
-  this.fileName=fileName;
+  this.fileName=fileName.replaceAll("\\\\","/");
   this.type=assetType;
   this.params=params;
 }

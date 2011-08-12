@@ -1,0 +1,25 @@
+{
+  StringBuffer buffer=new StringBuffer();
+  for (  String fileName : assetTypes.keys()) {
+    buffer.append(fileName);
+    buffer.append(", ");
+    Class type=assetTypes.get(fileName);
+    Object asset=assets.get(type).get(fileName);
+    Array<String> dependencies=assetDependencies.get(fileName);
+    buffer.append(type.getSimpleName());
+    if (asset instanceof ReferenceCountedAsset) {
+      buffer.append(", refs: ");
+      buffer.append(((ReferenceCountedAsset)asset).getRefCount());
+    }
+    if (dependencies != null) {
+      buffer.append(", deps: [");
+      for (      String dep : dependencies) {
+        buffer.append(dep);
+        buffer.append(",");
+      }
+      buffer.append("]");
+    }
+    buffer.append("\n");
+  }
+  return buffer.toString();
+}

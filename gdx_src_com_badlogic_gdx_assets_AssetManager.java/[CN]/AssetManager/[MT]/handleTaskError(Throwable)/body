@@ -1,10 +1,8 @@
 {
   AssetLoadingTask task=tasks.pop();
   AssetDescriptor assetDesc=task.assetDesc;
-  task=null;
   if (listener != null) {
     listener.error(assetDesc.fileName,assetDesc.type,t);
-    return preloadQueue.size == 0;
   }
  else {
     throw new GdxRuntimeException(t);

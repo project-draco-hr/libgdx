@@ -8,7 +8,7 @@
       return;
     }
     for (    AssetDescriptor desc : dependencies) {
-      manager.injectTask(desc);
+      manager.injectDependency(assetDesc.fileName,desc);
     }
   }
  else {

@@ -6,8 +6,6 @@
  catch (    Throwable t) {
       handleTaskError(t);
     }
-    preloadQueue.clear();
-    tasks.clear();
   }
   Array<String> assets=assetTypes.keys().toArray();
   for (  String asset : assets) {
@@ -15,5 +13,8 @@
   }
   this.assets.clear();
   this.assetTypes.clear();
+  this.assetDependencies.clear();
   this.loaded=0;
+  this.preloadQueue.clear();
+  this.tasks.clear();
 }

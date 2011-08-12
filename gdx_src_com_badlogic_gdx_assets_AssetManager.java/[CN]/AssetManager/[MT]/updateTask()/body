@@ -8,7 +8,6 @@
       assets.put(task.assetDesc.type,typeToAssets);
     }
     typeToAssets.put(task.assetDesc.fileName,task.getAsset());
-    task=null;
     loaded++;
     tasks.pop();
     return true;

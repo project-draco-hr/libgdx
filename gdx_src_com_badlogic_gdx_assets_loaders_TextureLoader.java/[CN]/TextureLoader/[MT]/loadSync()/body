@@ -4,6 +4,6 @@
     return texture;
   }
  else {
-    return new Texture(data);
+    return new ReferenceCountedTexture(data);
   }
 }

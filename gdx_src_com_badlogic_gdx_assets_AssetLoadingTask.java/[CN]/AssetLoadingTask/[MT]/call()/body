@@ -4,7 +4,7 @@
     Array<AssetDescriptor> dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
     if (dependencies != null) {
       for (      AssetDescriptor desc : dependencies) {
-        manager.injectTask(desc);
+        manager.injectDependency(assetDesc.fileName,desc);
       }
     }
   }

@@ -7,6 +7,7 @@
     return updateTask() && preloadQueue.size == 0;
   }
  catch (  Throwable t) {
-    return handleTaskError(t);
+    handleTaskError(t);
+    return preloadQueue.size == 0;
   }
 }
