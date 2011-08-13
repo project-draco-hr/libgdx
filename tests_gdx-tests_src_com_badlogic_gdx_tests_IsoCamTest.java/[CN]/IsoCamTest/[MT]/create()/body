@@ -1,10 +1,12 @@
 {
   texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
-  cam=new OrthographicCamera(10,10 * (Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth()));
-  cam.position.set(5,5,10);
-  cam.direction.set(-1,-1,-1);
+  float unitsOnX=(float)Math.sqrt(2) * TARGET_WIDTH / (UNIT_TO_PIXEL);
+  float pixelsOnX=Gdx.graphics.getWidth() / unitsOnX;
+  float unitsOnY=Gdx.graphics.getHeight() / pixelsOnX;
+  cam=new OrthographicCamera(unitsOnX,unitsOnY,25);
+  cam.position.mul(30);
   cam.near=1;
-  cam.far=100;
+  cam.far=1000;
   matrix.setToRotation(new Vector3(1,0,0),90);
   for (int z=0; z < 10; z++) {
     for (int x=0; x < 10; x++) {
@@ -14,5 +16,5 @@
     }
   }
   batch=new SpriteBatch();
-  Gdx.input.setInputProcessor(this);
+  Gdx.input.setInputProcessor(new IsoCamController(cam));
 }

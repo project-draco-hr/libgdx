@@ -1,7 +1,5 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  config.width=800;
-  config.height=480;
   config.useGL20=true;
-  new LwjglApplication(new AssetManagerTest(),config);
+  new LwjglApplication(new IsoCamTest(),config);
 }
