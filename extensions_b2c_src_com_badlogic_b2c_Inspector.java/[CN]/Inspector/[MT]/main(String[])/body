@@ -1,6 +1,0 @@
-{
-  ClassReader reader=new ClassReader("com/badlogic/b2c/test/SimpleBean");
-  ClassNode node=new ClassNode();
-  reader.accept(node,0);
-  System.out.println(node.toString());
-}
