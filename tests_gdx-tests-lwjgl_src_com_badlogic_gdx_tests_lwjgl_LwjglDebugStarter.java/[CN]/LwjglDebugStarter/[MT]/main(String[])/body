@@ -1,5 +1,5 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.useGL20=true;
-  new LwjglApplication(new IsoCamTest(),config);
+  new LwjglApplication(new FlickScrollPaneTest(),config);
 }
