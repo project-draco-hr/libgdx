@@ -1,0 +1,6 @@
+{
+  header=new FileHandle("data/licence-header.txt").readString();
+  setInputSuffix(".java");
+  setFlattenOutput(false);
+  setRecursive(true);
+}

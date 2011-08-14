@@ -1,0 +1,4 @@
+{
+  HeaderFileProcessor processor=new HeaderFileProcessor();
+  processor.process(new File(directory),new File(directory));
+}
