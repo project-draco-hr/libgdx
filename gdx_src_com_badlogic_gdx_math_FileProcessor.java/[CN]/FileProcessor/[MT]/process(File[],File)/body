@@ -1,0 +1,23 @@
+{
+  outputFiles.clear();
+  HashMap<File,ArrayList<InputFile>> dirToEntries=new HashMap();
+  process(files,outputRoot,outputRoot,dirToEntries,0);
+  ArrayList<InputFile> allInputFiles=new ArrayList();
+  for (  Entry<File,ArrayList<InputFile>> entry : dirToEntries.entrySet()) {
+    ArrayList<InputFile> dirInputFiles=entry.getValue();
+    if (comparator != null)     Collections.sort(dirInputFiles,inputFileComparator);
+    File inputDir=entry.getKey();
+    File newOutputDir=flattenOutput ? outputRoot : dirInputFiles.get(0).outputDir;
+    String outputName=inputDir.getName();
+    if (outputSuffix != null)     outputName+=outputSuffix;
+    InputFile inputFile=new InputFile();
+    inputFile.inputFile=entry.getKey();
+    inputFile.outputDir=newOutputDir;
+    inputFile.outputFile=new File(newOutputDir,outputName);
+    processDir(inputFile,dirInputFiles);
+    allInputFiles.addAll(dirInputFiles);
+  }
+  if (comparator != null)   Collections.sort(allInputFiles,inputFileComparator);
+  for (  InputFile inputFile : allInputFiles)   processFile(inputFile);
+  return outputFiles;
+}

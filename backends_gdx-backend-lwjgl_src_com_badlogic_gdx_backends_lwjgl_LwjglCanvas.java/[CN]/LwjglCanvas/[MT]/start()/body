@@ -7,7 +7,7 @@
   }
   listener.create();
   listener.resize(Math.max(1,graphics.getWidth()),Math.max(1,graphics.getHeight()));
-  final Runnable runnable=new Runnable(){
+  EventQueue.invokeLater(new Runnable(){
     int lastWidth=Math.max(1,graphics.getWidth());
     int lastHeight=Math.max(1,graphics.getHeight());
     public void run(){
@@ -32,20 +32,8 @@ synchronized (runnables) {
       audio.update();
       Display.update();
       if (graphics.vsync)       Display.sync(60);
+      if (running && !Display.isCloseRequested())       EventQueue.invokeLater(this);
     }
   }
-;
-  new Thread("LWJGL Canvas"){
-    public void run(){
-      while (running && !Display.isCloseRequested()) {
-        try {
-          EventQueue.invokeAndWait(runnable);
-        }
- catch (        Exception ex) {
-          throw new GdxRuntimeException(ex);
-        }
-      }
-    }
-  }
-.start();
+);
 }

@@ -1,0 +1,4 @@
+{
+  if (inputFile.isFile())   process(new File[]{inputFile},outputRoot);
+ else   process(inputFile.listFiles(),outputRoot);
+}

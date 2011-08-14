@@ -1,11 +1,11 @@
 {
+  if (!running)   return;
+  running=false;
+  Display.destroy();
   EventQueue.invokeLater(new Runnable(){
     public void run(){
-      if (!running)       return;
-      running=false;
       listener.pause();
       listener.dispose();
-      Display.destroy();
     }
   }
 );
