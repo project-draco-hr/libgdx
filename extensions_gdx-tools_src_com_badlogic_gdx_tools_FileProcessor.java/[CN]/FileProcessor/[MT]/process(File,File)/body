@@ -1,4 +1,4 @@
 {
-  if (inputFile.isFile())   process(new File[]{inputFile},outputRoot);
- else   process(inputFile.listFiles(),outputRoot);
+  if (inputFile.isFile())   return process(new File[]{inputFile},outputRoot);
+ else   return process(inputFile.listFiles(),outputRoot);
 }
