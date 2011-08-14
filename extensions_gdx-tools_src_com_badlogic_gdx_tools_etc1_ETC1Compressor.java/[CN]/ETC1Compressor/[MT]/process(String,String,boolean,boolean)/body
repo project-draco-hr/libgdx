@@ -1,0 +1,7 @@
+{
+  GdxNativesLoader.load();
+  ETC1FileProcessor processor=new ETC1FileProcessor();
+  processor.setRecursive(recursive);
+  processor.setFlattenOutput(flatten);
+  processor.process(new File(inputDirectory),new File(outputDirectory));
+}

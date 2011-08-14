@@ -1,0 +1,9 @@
+{
+  setInputFilter(new FilenameFilter(){
+    @Override public boolean accept(    File dir,    String name){
+      return name.toLowerCase().endsWith(".png") || name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".bmp");
+    }
+  }
+);
+  setOutputSuffix(".etc1");
+}
