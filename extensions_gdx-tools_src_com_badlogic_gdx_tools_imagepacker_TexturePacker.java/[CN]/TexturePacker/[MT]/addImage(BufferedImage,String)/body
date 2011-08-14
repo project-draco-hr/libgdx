@@ -1,0 +1,15 @@
+{
+  Image squeezed=squeeze(image,name);
+  if (squeezed != null) {
+    if (settings.alias) {
+      String crc=hash(squeezed);
+      Image existing=imageCrcs.get(crc);
+      if (existing != null) {
+        existing.aliases.add(squeezed);
+        return;
+      }
+      imageCrcs.put(crc,squeezed);
+    }
+    images.add(squeezed);
+  }
+}

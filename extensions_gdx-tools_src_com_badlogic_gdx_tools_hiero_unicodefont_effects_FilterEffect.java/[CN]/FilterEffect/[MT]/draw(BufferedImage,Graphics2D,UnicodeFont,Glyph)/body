@@ -1,0 +1,5 @@
+{
+  BufferedImage scratchImage=EffectUtil.getScratchImage();
+  filter.filter(image,scratchImage);
+  image.getGraphics().drawImage(scratchImage,0,0,null);
+}

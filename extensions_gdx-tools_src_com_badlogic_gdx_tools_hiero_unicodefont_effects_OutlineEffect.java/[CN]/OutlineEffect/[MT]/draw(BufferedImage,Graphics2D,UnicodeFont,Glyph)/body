@@ -1,0 +1,8 @@
+{
+  g=(Graphics2D)g.create();
+  if (stroke != null)   g.setStroke(stroke);
+ else   g.setStroke(getStroke());
+  g.setColor(color);
+  g.draw(glyph.getShape());
+  g.dispose();
+}

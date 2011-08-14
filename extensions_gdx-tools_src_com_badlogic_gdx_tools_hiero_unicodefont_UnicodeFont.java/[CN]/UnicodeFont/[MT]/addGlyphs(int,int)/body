@@ -1,0 +1,3 @@
+{
+  for (int codePoint=startCodePoint; codePoint <= endCodePoint; codePoint++)   addGlyphs(new String(Character.toChars(codePoint)));
+}

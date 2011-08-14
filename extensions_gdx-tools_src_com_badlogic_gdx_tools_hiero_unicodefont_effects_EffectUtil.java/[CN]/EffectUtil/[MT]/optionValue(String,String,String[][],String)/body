@@ -1,0 +1,27 @@
+{
+  return new DefaultValue(name,currentValue.toString()){
+    public void showDialog(){
+      int selectedIndex=-1;
+      DefaultComboBoxModel model=new DefaultComboBoxModel();
+      for (int i=0; i < options.length; i++) {
+        model.addElement(options[i][0]);
+        if (getValue(i).equals(currentValue))         selectedIndex=i;
+      }
+      JComboBox comboBox=new JComboBox(model);
+      comboBox.setSelectedIndex(selectedIndex);
+      if (showValueDialog(comboBox,description))       value=getValue(comboBox.getSelectedIndex());
+    }
+    private String getValue(    int i){
+      if (options[i].length == 1)       return options[i][0];
+      return options[i][1];
+    }
+    public String toString(){
+      for (int i=0; i < options.length; i++)       if (getValue(i).equals(value))       return options[i][0].toString();
+      return "";
+    }
+    public Object getObject(){
+      return value;
+    }
+  }
+;
+}

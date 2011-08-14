@@ -1,0 +1,16 @@
+{
+  if (orderAscending)   return glyphs.iterator();
+  final ListIterator iter=glyphs.listIterator(glyphs.size());
+  return new Iterator(){
+    public boolean hasNext(){
+      return iter.hasPrevious();
+    }
+    public Object next(){
+      return iter.previous();
+    }
+    public void remove(){
+      iter.remove();
+    }
+  }
+;
+}

@@ -1,0 +1,31 @@
+{
+  super(name,value);
+  this.value=value;
+  initializeComponents();
+  minSpinner.setValue(value.getLowMin());
+  maxSpinner.setValue(value.getLowMax());
+  minSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setLowMin((Float)minSpinner.getValue());
+      if (!maxSpinner.isVisible())       value.setLowMax((Float)minSpinner.getValue());
+    }
+  }
+);
+  maxSpinner.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      value.setLowMax((Float)maxSpinner.getValue());
+    }
+  }
+);
+  rangeButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      boolean visible=!maxSpinner.isVisible();
+      maxSpinner.setVisible(visible);
+      rangeButton.setText(visible ? "<" : ">");
+      JSpinner spinner=visible ? maxSpinner : minSpinner;
+      value.setLowMax((Float)spinner.getValue());
+    }
+  }
+);
+  if (value.getLowMin() == value.getLowMax())   rangeButton.doClick(0);
+}

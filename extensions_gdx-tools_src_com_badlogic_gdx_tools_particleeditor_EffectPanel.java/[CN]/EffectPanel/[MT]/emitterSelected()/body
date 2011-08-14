@@ -1,0 +1,10 @@
+{
+  int row=emitterTable.getSelectedRow();
+  if (row == -1) {
+    row=editIndex;
+    emitterTable.getSelectionModel().setSelectionInterval(row,row);
+  }
+  if (row == editIndex)   return;
+  editIndex=row;
+  editor.reloadRows();
+}

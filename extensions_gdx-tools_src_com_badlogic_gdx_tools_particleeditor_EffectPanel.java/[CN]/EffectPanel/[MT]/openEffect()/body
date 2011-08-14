@@ -1,0 +1,29 @@
+{
+  FileDialog dialog=new FileDialog(editor,"Open Effect",FileDialog.LOAD);
+  if (lastDir != null)   dialog.setDirectory(lastDir);
+  dialog.setVisible(true);
+  final String file=dialog.getFile();
+  final String dir=dialog.getDirectory();
+  if (dir == null || file == null || file.trim().length() == 0)   return;
+  lastDir=dir;
+  ParticleEffect effect=new ParticleEffect();
+  try {
+    effect.loadEmitters(Gdx.files.absolute(new File(dir,file).getAbsolutePath()));
+    editor.effect=effect;
+    emitterTableModel.getDataVector().removeAllElements();
+    editor.particleData.clear();
+  }
+ catch (  Exception ex) {
+    System.out.println("Error loading effect: " + new File(dir,file).getAbsolutePath());
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(editor,"Error opening effect.");
+    return;
+  }
+  for (  ParticleEmitter emitter : effect.getEmitters()) {
+    emitter.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
+    emitterTableModel.addRow(new Object[]{emitter.getName(),true});
+  }
+  editIndex=0;
+  emitterTable.getSelectionModel().setSelectionInterval(editIndex,editIndex);
+  editor.reloadRows();
+}

@@ -1,0 +1,92 @@
+{
+  if (fontData == null || renderer.batch == null)   return;
+  final String text=sampleTextPane.getText();
+  if (!force) {
+    boolean newCharFound=false;
+    remainingSampleChars.clear();
+    remainingSampleChars.addAll(sampleChars);
+    for (int i=text.length() - 1; i >= 0; i--) {
+      Character ch=text.charAt(i);
+      if (sampleChars.add(ch))       newCharFound=true;
+      remainingSampleChars.remove(ch);
+    }
+    if (!newCharFound && remainingSampleChars.isEmpty())     return;
+  }
+  sampleChars.clear();
+  for (int i=text.length() - 1; i >= 0; i--)   sampleChars.add(text.charAt(i));
+  int fontSize=((Integer)fontSizeSpinner.getValue()).intValue();
+  int style=Font.PLAIN;
+  if (boldCheckBox.isSelected()) {
+    style=Font.BOLD;
+    if (italicCheckBox.isSelected())     style|=Font.ITALIC;
+  }
+ else   if (italicCheckBox.isSelected())   style=Font.ITALIC;
+  fontData=fontData.deriveFont(fontSize,style);
+  int sampleFontSize=sampleTextPane.getFont().getSize();
+  if (sampleFontSize < 14)   sampleFontSize=14;
+  sampleTextPane.setFont(fontData.getJavaFont().deriveFont((float)sampleFontSize));
+  final Padding padding=new Padding((Integer)padTopSpinner.getValue(),(Integer)padLeftSpinner.getValue(),(Integer)padBottomSpinner.getValue(),(Integer)padRightSpinner.getValue(),(Integer)padAdvanceXSpinner.getValue());
+  final int width=(Integer)glyphPageWidthCombo.getSelectedItem();
+  final int height=(Integer)glyphPageHeightCombo.getSelectedItem();
+  final GeneratorMethod method;
+  if (vectorRadio.isSelected())   method=GeneratorMethod.AWT_VECTOR;
+ else   if (drawStringRadio.isSelected())   method=GeneratorMethod.AWT_DRAWSTRING;
+ else   method=GeneratorMethod.FREETYPE2;
+  new Thread(){
+    public void run(){
+      fontGenerator=new FontGenerator(fontData,method);
+      CharSet charset=new CharSet();
+      charset.setManualCharacters(text);
+      try {
+        fontGenerator.generate(width,height,charset,padding,new Effect.Renderer[0],true);
+        fontGenerator.write(new File("out"),ExportFormat.TEXT);
+      }
+ catch (      IOException ex) {
+        ex.printStackTrace();
+      }
+      EventQueue.invokeLater(new Runnable(){
+        public void run(){
+          final ByteBuffer buffer=ByteBuffer.allocateDirect(1024 * 1024 * 4);
+          buffer.order(ByteOrder.LITTLE_ENDIAN);
+          fontGenerator.getTextureData(buffer.asIntBuffer());
+          TextureRegion glyphRegion=new TextureRegion(new Texture(new TextureData(){
+            Pixmap pixmap;
+            public int getWidth(){
+              return width;
+            }
+            public int getHeight(){
+              return height;
+            }
+            @Override public Pixmap getPixmap(){
+              this.pixmap=new Pixmap(width,height,Format.RGBA8888);
+              pixmap.getPixels().put(buffer);
+              pixmap.getPixels().rewind();
+              return pixmap;
+            }
+            @Override public boolean disposePixmap(){
+              return true;
+            }
+            @Override public Format getFormat(){
+              return pixmap.getFormat();
+            }
+            @Override public boolean useMipMaps(){
+              return false;
+            }
+            @Override public boolean isManaged(){
+              return true;
+            }
+            @Override public TextureDataType getType(){
+              return null;
+            }
+            @Override public void uploadCompressedData(){
+            }
+          }
+));
+          renderer.font=new BitmapFont(Gdx.files.absolute("out"),glyphRegion,false);
+        }
+      }
+);
+    }
+  }
+.start();
+}

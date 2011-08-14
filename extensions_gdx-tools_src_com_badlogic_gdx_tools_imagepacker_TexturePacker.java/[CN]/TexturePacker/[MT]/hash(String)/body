@@ -1,0 +1,10 @@
+{
+  try {
+    MessageDigest digest=MessageDigest.getInstance("SHA1");
+    digest.update(value.getBytes());
+    return new BigInteger(1,digest.digest()).toString(16);
+  }
+ catch (  NoSuchAlgorithmException ex) {
+    throw new RuntimeException(ex);
+  }
+}

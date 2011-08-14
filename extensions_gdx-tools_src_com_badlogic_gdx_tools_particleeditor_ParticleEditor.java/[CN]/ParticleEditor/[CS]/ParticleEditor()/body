@@ -1,0 +1,15 @@
+{
+  super("Particle Editor");
+  lwjglCanvas=new LwjglCanvas(new Renderer(),false);
+  addWindowListener(new WindowAdapter(){
+    public void windowClosed(    WindowEvent event){
+      System.exit(0);
+    }
+  }
+);
+  initializeComponents();
+  setSize(950,950);
+  setLocationRelativeTo(null);
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  setVisible(true);
+}

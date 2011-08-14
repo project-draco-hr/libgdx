@@ -1,0 +1,19 @@
+{
+  this.paletteColors=paletteColors;
+  setLayout(new GridBagLayout());
+{
+    slider=new JSlider(0,1000,0);
+    slider.setPaintTrack(false);
+    add(slider,new GridBagConstraints(1,0,1,1,1.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,6,0,6),0,0));
+  }
+{
+    colorPicker=new ColorPicker();
+    add(colorPicker,new GridBagConstraints(1,1,1,1,0.0,0.0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,6,0,6),0,0));
+  }
+  slider.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      colorPicked();
+    }
+  }
+);
+}

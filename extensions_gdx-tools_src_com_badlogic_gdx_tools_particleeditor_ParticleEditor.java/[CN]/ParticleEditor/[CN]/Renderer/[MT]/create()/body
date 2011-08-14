@@ -1,0 +1,8 @@
+{
+  if (spriteBatch != null)   return;
+  Texture.setEnforcePotImages(false);
+  spriteBatch=new SpriteBatch();
+  font=new BitmapFont(Gdx.files.getFileHandle("default.fnt",FileType.Internal),Gdx.files.getFileHandle("default.png",FileType.Internal),true);
+  effectPanel.newEmitter("Untitled",true);
+  Gdx.input.setInputProcessor(this);
+}

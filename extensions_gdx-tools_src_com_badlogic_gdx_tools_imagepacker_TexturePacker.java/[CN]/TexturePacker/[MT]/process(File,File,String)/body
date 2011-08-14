@@ -1,0 +1,21 @@
+{
+  if (images.isEmpty())   return;
+  minWidth=filter.width != -1 ? filter.width : settings.minWidth;
+  minHeight=filter.height != -1 ? filter.height : settings.minHeight;
+  maxWidth=filter.width != -1 ? filter.width : settings.maxWidth;
+  maxHeight=filter.height != -1 ? filter.height : settings.maxHeight;
+  xPadding=images.size() > 1 && !filter.direction.isX() ? settings.padding : 0;
+  yPadding=images.size() > 1 && !filter.direction.isY() ? settings.padding : 0;
+  outputDir.mkdirs();
+  writer=new FileWriter(packFile,true);
+  try {
+    while (!images.isEmpty())     if (!writePage(prefix,outputDir))     break;
+    if (writer != null) {
+      System.out.println("Pixels eliminated: " + (1 - compressedSize / (float)uncompressedSize) * 100 + "%");
+      System.out.println();
+    }
+  }
+  finally {
+    writer.close();
+  }
+}
