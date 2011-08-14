@@ -1,0 +1,10 @@
+{
+  for (  Glyph[] page : this.glyphs) {
+    if (page == null)     continue;
+    for (    Glyph glyph : page) {
+      if (glyph == null)       continue;
+      return glyph;
+    }
+  }
+  throw new GdxRuntimeException("No glyphs found!");
+}

@@ -3,9 +3,9 @@
   float invTexHeight=1.0f / region.getTexture().getHeight();
   float u=region.u;
   float v=region.v;
-  for (  Glyph[] glyphs : data.glyphs) {
-    if (glyphs == null)     continue;
-    for (    Glyph glyph : glyphs) {
+  for (  Glyph[] page : data.glyphs) {
+    if (page == null)     continue;
+    for (    Glyph glyph : page) {
       if (glyph == null)       continue;
       glyph.u=u + glyph.srcX * invTexWidth;
       glyph.u2=u + (glyph.srcX + glyph.width) * invTexWidth;
