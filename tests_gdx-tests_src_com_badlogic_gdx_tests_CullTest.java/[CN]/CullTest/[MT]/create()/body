@@ -1,6 +1,7 @@
 {
   sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
-  cam=new PerspectiveCamera(45,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam=new OrthographicCamera(45,45 * (Gdx.graphics.getWidth() / (float)Gdx.graphics.getHeight()));
+  cam.near=1;
   cam.far=200;
   Random rand=new Random();
   for (int i=0; i < positions.length; i++) {
@@ -8,6 +9,4 @@
   }
   batch=new SpriteBatch();
   font=new BitmapFont();
-  Gdx.graphics.setVSync(true);
-  Gdx.app.log("CullTest","" + Gdx.graphics.getBufferFormat().toString());
 }
