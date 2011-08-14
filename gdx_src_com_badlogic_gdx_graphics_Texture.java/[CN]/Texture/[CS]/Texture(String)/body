@@ -1,3 +1,3 @@
 {
-  this(new FileTextureData(Gdx.files.internal(internalPath),null,null,false));
+  this(Gdx.files.internal(internalPath));
 }
