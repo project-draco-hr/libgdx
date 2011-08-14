@@ -1,0 +1,4 @@
+{
+  for (  String suffix : suffixes)   addInputRegex(".*" + Pattern.quote(suffix));
+  return this;
+}

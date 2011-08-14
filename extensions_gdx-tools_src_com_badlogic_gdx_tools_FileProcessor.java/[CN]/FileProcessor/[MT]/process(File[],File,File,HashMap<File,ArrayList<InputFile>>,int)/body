@@ -1,7 +1,16 @@
 {
   for (  File file : files) {
     if (file.isFile()) {
-      if (inputSuffix != null && !file.getName().endsWith(inputSuffix))       continue;
+      if (inputRegex != null) {
+        boolean found=false;
+        for (        Pattern pattern : inputRegex) {
+          if (pattern.matcher(file.getName()).matches()) {
+            found=true;
+            continue;
+          }
+        }
+        if (!found)         continue;
+      }
       File dir=file.getParentFile();
       if (inputFilter != null && !inputFilter.accept(dir,file.getName()))       continue;
       String outputName=file.getName();
