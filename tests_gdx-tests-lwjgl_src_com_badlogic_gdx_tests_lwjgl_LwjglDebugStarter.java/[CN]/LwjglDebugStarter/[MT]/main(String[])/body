@@ -1,5 +1,4 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  config.useGL20=true;
-  new LwjglApplication(new FlickScrollPaneTest(),config);
+  new LwjglApplication(new CullTest(),config);
 }
