@@ -1,7 +1,0 @@
-{
-  float[] hsb=Color.RGBtoHSB(color.getRed(),color.getGreen(),color.getBlue(),null);
-  hueSlider.setPercentage(hsb[0]);
-  saturationSlider.setPercentage(1 - hsb[1]);
-  lightnessSlider.setPercentage(1 - hsb[2]);
-  colorPanel.setBackground(color);
-}

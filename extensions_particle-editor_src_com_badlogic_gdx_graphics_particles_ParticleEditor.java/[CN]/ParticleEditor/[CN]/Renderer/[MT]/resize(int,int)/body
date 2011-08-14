@@ -1,5 +1,0 @@
-{
-  Gdx.gl.glViewport(0,0,width,height);
-  spriteBatch.getProjectionMatrix().setToOrtho(0,width,height,0,0,1);
-  effect.setPosition(width / 2,height / 2);
-}

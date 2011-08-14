@@ -1,5 +1,0 @@
-{
-  ParticleData data=particleData.get(emitter);
-  if (data == null)   return true;
-  return data.enabled;
-}

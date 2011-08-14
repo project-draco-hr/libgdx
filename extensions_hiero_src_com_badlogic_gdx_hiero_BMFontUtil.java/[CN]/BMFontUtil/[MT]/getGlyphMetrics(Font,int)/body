@@ -1,8 +1,0 @@
-{
-  char[] chars=Character.toChars(codePoint);
-  GlyphVector vector=font.layoutGlyphVector(GlyphPage.renderContext,chars,0,chars.length,Font.LAYOUT_LEFT_TO_RIGHT);
-  GlyphMetrics metrics=vector.getGlyphMetrics(0);
-  int xOffset=vector.getGlyphPixelBounds(0,GlyphPage.renderContext,0.5f,0).x - unicodeFont.getPaddingLeft();
-  int xAdvance=(int)(metrics.getAdvanceX() + unicodeFont.getPaddingAdvanceX() + unicodeFont.getPaddingLeft()+ unicodeFont.getPaddingRight());
-  return new int[]{xOffset,xAdvance};
-}
