@@ -1,6 +1,8 @@
 {
   batch=new SpriteBatch();
   atlas=new TextureAtlas(Gdx.files.internal("data/pack"));
+  jumpAtlas=new TextureAtlas(Gdx.files.internal("data/jump.txt"));
+  jumpAnimation=new Animation(0.25f,jumpAtlas.findRegions("ALIEN_JUMP_"));
   badlogic=atlas.createSprite("badlogicslice");
   badlogic.setPosition(50,50);
   badlogicSmall=atlas.createSprite("badlogicsmall");
