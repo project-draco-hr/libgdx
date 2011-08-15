@@ -1,4 +1,5 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  new LwjglApplication(new TextureAtlasTest(),config);
+  config.vSyncEnabled=true;
+  new LwjglApplication(new FlickScrollPaneTest(),config);
 }
