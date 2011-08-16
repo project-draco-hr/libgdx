@@ -6,4 +6,11 @@
     alDeleteSources(sourceID);
   }
   AL.destroy();
+  while (AL.isCreated()) {
+    try {
+      Thread.sleep(10);
+    }
+ catch (    InterruptedException e) {
+    }
+  }
 }
