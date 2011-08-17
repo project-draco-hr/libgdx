@@ -11,6 +11,10 @@
         if (type == null)         throw new SerializationException(ex);
       }
     }
+    Serializer serializer=classToSerializer.get(type);
+    if (serializer != null) {
+      return serializer.read(type,map,this);
+    }
     Object object=null;
     try {
       object=type.newInstance();
@@ -32,13 +36,17 @@ catch (      Exception privateConstructorException) {
       }
       if (object == null)       throw new SerializationException("Error constructing instance of class: " + type.getName(),ex);
     }
+    if (object instanceof Serializable) {
+      ((Serializable)object).read(map,this);
+      return object;
+    }
     ObjectMap<String,Field> fields=typeToFields.get(type);
     if (fields == null)     fields=cacheFields(type);
     for (    Entry<String,Object> entry : map.entries()) {
       Field field=fields.get(entry.key);
       if (field == null)       throw new SerializationException("Unable to find field: " + entry.key + " ("+ type.getName()+ ")");
       try {
-        field.set(object,read(entry.value,field.getType()));
+        field.set(object,readValue(field.getType(),entry.value));
       }
  catch (      Exception ex) {
         throw new SerializationException("Error setting field: " + field.getName() + " ("+ type.getName()+ ")",ex);
@@ -50,18 +58,18 @@ catch (      Exception privateConstructorException) {
     Array array=(Array)value;
     if (type.isAssignableFrom(Array.class)) {
       Array newArray=new Array(array.size);
-      for (int i=0, n=array.size; i < n; i++)       newArray.add(read(array.get(i),String.class));
+      for (int i=0, n=array.size; i < n; i++)       newArray.add(readValue(String.class,array.get(i)));
       return newArray;
     }
     if (type.isAssignableFrom(ArrayList.class)) {
       ArrayList newArray=new ArrayList(array.size);
-      for (int i=0, n=array.size; i < n; i++)       newArray.add(read(array.get(i),String.class));
+      for (int i=0, n=array.size; i < n; i++)       newArray.add(readValue(String.class,array.get(i)));
       return newArray;
     }
     if (type.isArray()) {
       Class componentType=type.getComponentType();
       Object newArray=java.lang.reflect.Array.newInstance(componentType,array.size);
-      for (int i=0, n=array.size; i < n; i++)       java.lang.reflect.Array.set(newArray,i,read(array.get(i),componentType));
+      for (int i=0, n=array.size; i < n; i++)       java.lang.reflect.Array.set(newArray,i,readValue(componentType,array.get(i)));
       return newArray;
     }
     throw new SerializationException("Unable to convert value to required type: " + value + " ("+ type.getName()+ ")");

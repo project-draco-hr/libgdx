@@ -4,52 +4,58 @@
  else     writer.set(name,value);
     return;
   }
-  Class valueClass=value.getClass();
-  if (valueClass.isPrimitive() || valueClass == String.class || valueClass == Integer.class || valueClass == Boolean.class || valueClass == Float.class || valueClass == Long.class || valueClass == Double.class || valueClass == Short.class || valueClass == Byte.class || valueClass == Character.class) {
+  Class actualType=value.getClass();
+  if (actualType.isPrimitive() || actualType == String.class || actualType == Integer.class || actualType == Boolean.class || actualType == Float.class || actualType == Long.class || actualType == Double.class || actualType == Short.class || actualType == Byte.class || actualType == Character.class) {
     if (name == null)     writer.add(value);
  else     writer.set(name,value);
+    return;
+  }
+  if (value instanceof Serializable) {
+    startObject(name,valueType,actualType,writer);
+    ((Serializable)value).write(this,writer);
+    writer.pop();
+    return;
+  }
+  Serializer serializer=classToSerializer.get(actualType);
+  if (serializer != null) {
+    startObject(name,valueType,actualType,writer);
+    serializer.write(value,this,writer);
+    writer.pop();
     return;
   }
   if (value instanceof Collection) {
     if (name == null)     writer.array();
  else     writer.array(name);
-    for (    Object item : (Collection)value)     write(null,null,item,writer);
+    for (    Object item : (Collection)value)     writeValue(null,item,null,writer);
     writer.pop();
     return;
   }
   if (value instanceof Array) {
     if (name == null)     writer.array();
  else     writer.array(name);
-    for (    Object item : (Array)value)     write(null,null,item,writer);
+    for (    Object item : (Array)value)     writeValue(null,item,null,writer);
     writer.pop();
     return;
   }
-  if (valueClass.isArray()) {
+  if (actualType.isArray()) {
     if (name == null)     writer.array();
  else     writer.array(name);
     int length=java.lang.reflect.Array.getLength(value);
-    for (int i=0; i < length; i++)     write(null,null,java.lang.reflect.Array.get(value,i),writer);
+    for (int i=0; i < length; i++)     writeValue(null,java.lang.reflect.Array.get(value,i),null,writer);
     writer.pop();
     return;
   }
-  if (valueClass.isEnum()) {
+  if (actualType.isEnum()) {
     writer.set(name,value);
     return;
   }
-  if (name == null)   writer.object();
- else   writer.object(name);
-  if (valueType == null || valueType != valueClass) {
-    String className=classToTag.get(valueClass);
-    if (className == null)     className=valueClass.getName();
-    writer.set(typeName,className);
-    if (debug)     System.out.println("Writing type: " + valueClass.getName());
-  }
-  ObjectMap<String,Field> fields=typeToFields.get(valueClass);
-  if (fields == null)   fields=cacheFields(valueClass);
+  startObject(name,valueType,actualType,writer);
+  ObjectMap<String,Field> fields=typeToFields.get(actualType);
+  if (fields == null)   fields=cacheFields(actualType);
   for (  Field valueField : fields.values()) {
     try {
       if (debug)       System.out.println("Writing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")");
-      write(valueField.getType(),valueField.getName(),valueField.get(value),writer);
+      writeValue(valueField.getName(),valueField.get(value),valueField.getType(),writer);
     }
  catch (    IllegalAccessException ex) {
       throw new SerializationException("Error accessing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")",ex);

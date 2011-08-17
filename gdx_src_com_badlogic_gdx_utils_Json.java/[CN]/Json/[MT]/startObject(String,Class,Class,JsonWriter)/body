@@ -1,0 +1,10 @@
+{
+  if (name == null)   writer.object();
+ else   writer.object(name);
+  if (valueType == null || valueType != actualType) {
+    String className=classToTag.get(actualType);
+    if (className == null)     className=actualType.getName();
+    writer.set(typeName,className);
+    if (debug)     System.out.println("Writing type: " + actualType.getName());
+  }
+}

@@ -1,3 +1,3 @@
 {
-  return (T)read(new JsonReader().parse(data,offset,length),type);
+  return (T)readValue(type,new JsonReader().parse(data,offset,length));
 }

@@ -1,4 +1,4 @@
 {
   if (!(writer instanceof JsonWriter))   writer=new JsonWriter(writer);
-  write(object.getClass(),null,object,(JsonWriter)writer);
+  writeValue(null,object,object.getClass(),(JsonWriter)writer);
 }
