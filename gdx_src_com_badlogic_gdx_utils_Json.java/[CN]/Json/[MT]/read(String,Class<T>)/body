@@ -1,9 +1,0 @@
-{
-  Object object=new JsonReader(){
-    protected void number(    String name,    String value){
-      string(name,value);
-    }
-  }
-.parse(json);
-  return (T)read(object,type);
-}

@@ -5,7 +5,7 @@
   Array<String> names=new Array(8);
   boolean needsUnescape=false;
   RuntimeException parseRuntimeEx=null;
-  boolean debug=true;
+  boolean debug=false;
   if (debug)   System.out.println();
   try {
 {
@@ -240,7 +240,7 @@ throw new IllegalArgumentException("Error parsing JSON on line " + lineNumber + 
  else if (elements.size != 0) {
 Object element=elements.peek();
 elements.clear();
-if (element instanceof HashMap) throw new IllegalArgumentException("Error parsing JSON, unmatched brace.");
+if (element instanceof ObjectMap) throw new IllegalArgumentException("Error parsing JSON, unmatched brace.");
  else throw new IllegalArgumentException("Error parsing JSON, unmatched bracket.");
 }
 Object root=this.root;
