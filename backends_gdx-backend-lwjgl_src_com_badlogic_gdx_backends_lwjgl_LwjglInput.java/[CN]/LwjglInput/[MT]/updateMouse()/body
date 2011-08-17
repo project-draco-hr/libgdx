@@ -12,6 +12,7 @@
       event.y=y;
       event.button=toGdxButton(button);
       event.pointer=0;
+      event.timeStamp=Mouse.getEventNanoseconds();
       if (button == -1) {
         if (Mouse.getEventDWheel() != 0) {
           event.type=TouchEvent.TOUCH_SCROLLED;

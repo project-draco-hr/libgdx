@@ -5,6 +5,7 @@ synchronized (this) {
       int len=keyEvents.size();
       for (int i=0; i < len; i++) {
         KeyEvent e=keyEvents.get(i);
+        currentEventTimeStamp=e.timeStamp;
 switch (e.type) {
 case KeyEvent.KEY_DOWN:
           processor.keyDown(e.keyCode);
@@ -20,6 +21,7 @@ usedKeyEvents.free(e);
 len=touchEvents.size();
 for (int i=0; i < len; i++) {
 TouchEvent e=touchEvents.get(i);
+currentEventTimeStamp=e.timeStamp;
 switch (e.type) {
 case TouchEvent.TOUCH_DOWN:
 processor.touchDown(e.x,e.y,e.pointer,e.button);

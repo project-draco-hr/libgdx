@@ -4,6 +4,7 @@
   int pointerId=event.getPointerId(pointerIndex);
   int x=0, y=0;
   int realPointerIndex=0;
+  Gdx.app.log("AndroidMultiTouchHandler","history size: " + event.getHistorySize());
 synchronized (input) {
 switch (action) {
 case MotionEvent.ACTION_DOWN:

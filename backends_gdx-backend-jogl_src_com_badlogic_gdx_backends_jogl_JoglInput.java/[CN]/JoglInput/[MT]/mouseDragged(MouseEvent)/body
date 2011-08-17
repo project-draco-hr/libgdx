@@ -5,6 +5,7 @@ synchronized (this) {
     event.x=e.getX();
     event.y=e.getY();
     event.type=TouchEvent.TOUCH_DRAGGED;
+    event.timeStamp=System.nanoTime();
     touchEvents.add(event);
     deltaX=event.x - touchX;
     deltaY=event.y - touchY;

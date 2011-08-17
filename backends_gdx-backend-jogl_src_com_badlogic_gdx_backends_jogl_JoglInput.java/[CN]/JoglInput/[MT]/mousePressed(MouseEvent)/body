@@ -6,6 +6,7 @@ synchronized (this) {
     event.y=e.getY();
     event.type=TouchEvent.TOUCH_DOWN;
     event.button=toGdxButton(e.getButton());
+    event.timeStamp=System.nanoTime();
     touchEvents.add(event);
     deltaX=event.x - touchX;
     deltaY=event.y - touchY;
