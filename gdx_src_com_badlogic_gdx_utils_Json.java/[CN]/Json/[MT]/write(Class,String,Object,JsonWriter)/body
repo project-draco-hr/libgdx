@@ -1,0 +1,65 @@
+{
+  if (value == null) {
+    if (name == null)     writer.add(value);
+ else     writer.set(name,value);
+    return;
+  }
+  Class c=value.getClass();
+  if (c.isPrimitive() || c == String.class || c == Integer.class || c == Boolean.class || c == Float.class || c == Long.class || c == Double.class || c == Short.class || c == Byte.class || c == Character.class) {
+    if (name == null)     writer.add(value);
+ else     writer.set(name,value);
+    return;
+  }
+  if (value instanceof Collection) {
+    if (name == null)     writer.array();
+ else     writer.array(name);
+    for (    Object item : (Collection)value)     write(null,null,item,writer);
+    writer.pop();
+    return;
+  }
+  if (value instanceof Array) {
+    if (name == null)     writer.array();
+ else     writer.array(name);
+    for (    Object item : (Array)value)     write(null,null,item,writer);
+    writer.pop();
+    return;
+  }
+  if (value.getClass().isArray()) {
+    if (name == null)     writer.array();
+ else     writer.array(name);
+    int length=java.lang.reflect.Array.getLength(value);
+    for (int i=0; i < length; i++)     write(null,null,java.lang.reflect.Array.get(value,i),writer);
+    writer.pop();
+    return;
+  }
+  if (name == null)   writer.object();
+ else   writer.object(name);
+  Class type=value.getClass();
+  if (valueType == null || valueType != type) {
+    String className=classToTag.get(type);
+    if (className == null)     className=type.getName();
+    writer.set(typeName,className);
+    if (debug)     System.out.println("Writing type: " + type.getName());
+  }
+  ObjectMap<String,Field> fields=typeToFields.get(type);
+  if (fields == null)   fields=cacheFields(type);
+  for (  Field valueField : fields.values()) {
+    try {
+      if (debug)       System.out.println("Writing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")");
+      write(valueField.getType(),valueField.getName(),valueField.get(value),writer);
+    }
+ catch (    IllegalAccessException ex) {
+      throw new SerializationException("Error accessing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")",ex);
+    }
+catch (    SerializationException ex) {
+      ex.addTrace(valueField + " (" + value.getClass().getName()+ ")");
+      throw ex;
+    }
+catch (    RuntimeException runtimeEx) {
+      SerializationException ex=new SerializationException(runtimeEx);
+      ex.addTrace(valueField + " (" + value.getClass().getName()+ ")");
+      throw ex;
+    }
+  }
+  writer.pop();
+}

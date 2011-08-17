@@ -1,0 +1,5 @@
+{
+  if (current instanceof HashMap)   ((HashMap)current).put(name,value);
+ else   if (current instanceof ArrayList)   ((ArrayList)current).add(value);
+ else   root=value;
+}

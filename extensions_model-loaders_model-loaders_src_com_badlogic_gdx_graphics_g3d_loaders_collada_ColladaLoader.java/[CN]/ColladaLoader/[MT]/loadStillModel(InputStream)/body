@@ -1,5 +1,5 @@
 {
-  Xml xml=new Xml();
+  XmlReader xml=new XmlReader();
   Element root=null;
   try {
     root=xml.parse(in);

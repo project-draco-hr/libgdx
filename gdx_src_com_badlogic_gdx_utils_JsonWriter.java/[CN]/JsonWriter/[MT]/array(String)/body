@@ -1,0 +1,10 @@
+{
+  if (current == null || current.array)   throw new RuntimeException("Current item must be an object.");
+  if (!current.needsComma)   current.needsComma=true;
+ else   writer.write(",");
+  writer.write("\"");
+  writer.write(name);
+  writer.write("\":");
+  stack.push(current=new JsonObject(true));
+  return this;
+}

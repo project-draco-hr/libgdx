@@ -3,7 +3,7 @@
   map=new TiledMap();
   map.tmxFile=tmxFile;
   try {
-    new Xml(){
+    new XmlReader(){
       Stack<String> currBranch=new Stack<String>();
       boolean awaitingData=false;
       TiledLayer currLayer;

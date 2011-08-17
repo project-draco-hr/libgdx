@@ -1,0 +1,9 @@
+{
+  if (current != null) {
+    if (!current.array)     throw new RuntimeException("Current item must be an array.");
+    if (!current.needsComma)     current.needsComma=true;
+ else     writer.write(",");
+  }
+  stack.push(current=new JsonObject(true));
+  return this;
+}

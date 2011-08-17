@@ -1,0 +1,17 @@
+{
+  if (current == null || current.array)   throw new RuntimeException("Current item must be an object.");
+  if (!current.needsComma)   current.needsComma=true;
+ else   writer.write(",");
+  writer.write("\"");
+  writer.write(name);
+  if (value == null || value instanceof Number || value instanceof Boolean) {
+    writer.write("\":");
+    writer.write(String.valueOf(value));
+  }
+ else {
+    writer.write("\":\"");
+    writer.write(value.toString());
+    writer.write("\"");
+  }
+  return this;
+}

@@ -1,0 +1,12 @@
+{
+  if (!current.array)   throw new RuntimeException("Current item must be an array.");
+  if (!current.needsComma)   current.needsComma=true;
+ else   writer.write(",");
+  if (value == null || value instanceof Number || value instanceof Boolean)   writer.write(String.valueOf(value));
+ else {
+    writer.write("\"");
+    writer.write(value.toString());
+    writer.write("\"");
+  }
+  return this;
+}

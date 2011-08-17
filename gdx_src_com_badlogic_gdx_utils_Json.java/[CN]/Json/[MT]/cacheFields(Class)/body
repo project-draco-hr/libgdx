@@ -1,0 +1,27 @@
+{
+  ArrayList<Field> allFields=new ArrayList();
+  Class nextClass=type;
+  while (nextClass != Object.class) {
+    Collections.addAll(allFields,nextClass.getDeclaredFields());
+    nextClass=nextClass.getSuperclass();
+  }
+  ObjectMap<String,Field> nameToField=new ObjectMap();
+  for (int i=0, n=allFields.size(); i < n; i++) {
+    Field field=allFields.get(i);
+    int modifiers=field.getModifiers();
+    if (Modifier.isTransient(modifiers))     continue;
+    if (Modifier.isStatic(modifiers))     continue;
+    if (field.isSynthetic())     continue;
+    if (!field.isAccessible()) {
+      try {
+        field.setAccessible(true);
+      }
+ catch (      AccessControlException ex) {
+        continue;
+      }
+    }
+    nameToField.put(field.getName(),field);
+  }
+  typeToFields.put(type,nameToField);
+  return nameToField;
+}
