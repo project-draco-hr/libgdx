@@ -13,7 +13,7 @@ if (keyCode == android.view.KeyEvent.KEYCODE_BACK && e.isAltPressed()) {
 keyCode=Keys.BUTTON_CIRCLE;
 }
 keyEvents.add(event);
-keys.add(event.keyCode);
+keys.put(event.keyCode,null);
 break;
 case android.view.KeyEvent.ACTION_UP:
 event=usedKeyEvents.obtain();

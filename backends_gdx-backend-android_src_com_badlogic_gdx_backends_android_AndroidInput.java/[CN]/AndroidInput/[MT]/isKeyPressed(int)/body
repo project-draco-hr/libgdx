@@ -1,6 +1,6 @@
 {
 synchronized (this) {
-    if (key == Input.Keys.ANY_KEY)     return keys.size() > 0;
- else     return keys.contains(key);
+    if (key == Input.Keys.ANY_KEY)     return keys.size > 0;
+ else     return keys.containsKey(key);
   }
 }
