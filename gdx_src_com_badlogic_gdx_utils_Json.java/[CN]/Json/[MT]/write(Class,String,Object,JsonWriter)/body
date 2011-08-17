@@ -4,8 +4,8 @@
  else     writer.set(name,value);
     return;
   }
-  Class c=value.getClass();
-  if (c.isPrimitive() || c == String.class || c == Integer.class || c == Boolean.class || c == Float.class || c == Long.class || c == Double.class || c == Short.class || c == Byte.class || c == Character.class) {
+  Class valueClass=value.getClass();
+  if (valueClass.isPrimitive() || valueClass == String.class || valueClass == Integer.class || valueClass == Boolean.class || valueClass == Float.class || valueClass == Long.class || valueClass == Double.class || valueClass == Short.class || valueClass == Byte.class || valueClass == Character.class) {
     if (name == null)     writer.add(value);
  else     writer.set(name,value);
     return;
@@ -24,7 +24,7 @@
     writer.pop();
     return;
   }
-  if (value.getClass().isArray()) {
+  if (valueClass.isArray()) {
     if (name == null)     writer.array();
  else     writer.array(name);
     int length=java.lang.reflect.Array.getLength(value);
@@ -32,17 +32,20 @@
     writer.pop();
     return;
   }
+  if (valueClass.isEnum()) {
+    writer.set(name,value);
+    return;
+  }
   if (name == null)   writer.object();
  else   writer.object(name);
-  Class type=value.getClass();
-  if (valueType == null || valueType != type) {
-    String className=classToTag.get(type);
-    if (className == null)     className=type.getName();
+  if (valueType == null || valueType != valueClass) {
+    String className=classToTag.get(valueClass);
+    if (className == null)     className=valueClass.getName();
     writer.set(typeName,className);
-    if (debug)     System.out.println("Writing type: " + type.getName());
+    if (debug)     System.out.println("Writing type: " + valueClass.getName());
   }
-  ObjectMap<String,Field> fields=typeToFields.get(type);
-  if (fields == null)   fields=cacheFields(type);
+  ObjectMap<String,Field> fields=typeToFields.get(valueClass);
+  if (fields == null)   fields=cacheFields(valueClass);
   for (  Field valueField : fields.values()) {
     try {
       if (debug)       System.out.println("Writing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")");

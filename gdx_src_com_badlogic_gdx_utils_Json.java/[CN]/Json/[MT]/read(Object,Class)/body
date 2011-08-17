@@ -11,12 +11,26 @@
         if (type == null)         throw new SerializationException(ex);
       }
     }
-    Object object;
+    Object object=null;
     try {
       object=type.newInstance();
     }
  catch (    Exception ex) {
-      throw new SerializationException("Error creating instance of class: " + type.getName(),ex);
+      try {
+        Constructor constructor=type.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        object=constructor.newInstance();
+      }
+ catch (      SecurityException ignored) {
+      }
+catch (      NoSuchMethodException ignored) {
+        if (type.isMemberClass() && !Modifier.isStatic(type.getModifiers()))         throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(),ex);
+ else         throw new SerializationException("Class cannot be created (missing no-arg constructor): " + type.getName(),ex);
+      }
+catch (      Exception privateConstructorException) {
+        ex=privateConstructorException;
+      }
+      if (object == null)       throw new SerializationException("Error constructing instance of class: " + type.getName(),ex);
     }
     ObjectMap<String,Field> fields=typeToFields.get(type);
     if (fields == null)     fields=cacheFields(type);

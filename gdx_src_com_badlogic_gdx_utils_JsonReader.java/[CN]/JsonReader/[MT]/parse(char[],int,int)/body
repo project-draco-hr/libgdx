@@ -71,31 +71,30 @@ case 1:
         }
       }
  while (false);
-    _trans=_json_indicies[_trans];
-  cs=_json_trans_targs[_trans];
-if (_json_trans_actions[_trans] != 0) {
-  _acts=_json_trans_actions[_trans];
-  _nacts=(int)_json_actions[_acts++];
-  while (_nacts-- > 0) {
+    cs=_json_trans_targs[_trans];
+  if (_json_trans_actions[_trans] != 0) {
+    _acts=_json_trans_actions[_trans];
+    _nacts=(int)_json_actions[_acts++];
+    while (_nacts-- > 0) {
 switch (_json_actions[_acts++]) {
 case 0:
 {
-        s=p;
-        needsUnescape=false;
-      }
-    break;
+          s=p;
+          needsUnescape=false;
+        }
+      break;
 case 1:
 {
-    needsUnescape=true;
-  }
-break;
+      needsUnescape=true;
+    }
+  break;
 case 2:
 {
-String name=new String(data,s,p - s);
-s=p;
-if (needsUnescape) name=unescape(name);
-if (debug) System.out.println("name: " + name);
-names.add(name);
+  String name=new String(data,s,p - s);
+  s=p;
+  if (needsUnescape)   name=unescape(name);
+  if (debug)   System.out.println("name: " + name);
+  names.add(name);
 }
 break;
 case 3:
@@ -120,11 +119,25 @@ break;
 case 5:
 {
 String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("boolean: " + name + "=true");
+bool(name,true);
+}
+break;
+case 6:
+{
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("boolean: " + name + "=false");
+bool(name,false);
+}
+break;
+case 7:
+{
+String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);
 string(name,null);
 }
 break;
-case 6:
+case 8:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startObject: " + name);
@@ -137,14 +150,14 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=12;
+cs=19;
 _goto_targ=2;
 if (true) continue _goto;
 }
 }
 }
 break;
-case 7:
+case 9:
 {
 if (debug) System.out.println("endObject");
 pop();
@@ -155,7 +168,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 8:
+case 10:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startArray: " + name);
@@ -168,14 +181,14 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=35;
+cs=51;
 _goto_targ=2;
 if (true) continue _goto;
 }
 }
 }
 break;
-case 9:
+case 11:
 {
 if (debug) System.out.println("endArray");
 pop();
@@ -214,6 +227,20 @@ number(name,value);
 }
 break;
 case 5:
+{
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("boolean: " + name + "=true");
+bool(name,true);
+}
+break;
+case 6:
+{
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("boolean: " + name + "=false");
+bool(name,false);
+}
+break;
+case 7:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);
