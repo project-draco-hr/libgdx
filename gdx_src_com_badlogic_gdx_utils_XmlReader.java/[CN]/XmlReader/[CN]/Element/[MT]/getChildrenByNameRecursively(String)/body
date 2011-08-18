@@ -1,0 +1,5 @@
+{
+  Array<Element> result=new Array<Element>();
+  getChildrenByNameRecursively(name,result);
+  return result;
+}
