@@ -13,7 +13,7 @@
     }
     Serializer serializer=classToSerializer.get(type);
     if (serializer != null) {
-      return serializer.read(type,map,this);
+      return serializer.read(this,map,type);
     }
     Object object=null;
     try {
@@ -37,7 +37,7 @@ catch (      Exception privateConstructorException) {
       if (object == null)       throw new SerializationException("Error constructing instance of class: " + type.getName(),ex);
     }
     if (object instanceof Serializable) {
-      ((Serializable)object).read(map,this);
+      ((Serializable)object).read(this,map);
       return object;
     }
     ObjectMap<String,Field> fields=typeToFields.get(type);

@@ -19,7 +19,7 @@
   Serializer serializer=classToSerializer.get(actualType);
   if (serializer != null) {
     startObject(name,valueType,actualType,writer);
-    serializer.write(value,this,writer);
+    serializer.write(this,writer,value);
     writer.pop();
     return;
   }
