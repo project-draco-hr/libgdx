@@ -1,0 +1,10 @@
+{
+  StringWriter buffer=new StringWriter();
+  try {
+    write(object,buffer);
+  }
+ catch (  IOException ex) {
+    throw new SerializationException("Error writing JSON.",ex);
+  }
+  return buffer.toString();
+}

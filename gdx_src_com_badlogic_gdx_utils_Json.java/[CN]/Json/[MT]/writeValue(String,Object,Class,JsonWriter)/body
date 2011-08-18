@@ -40,8 +40,9 @@
   if (actualType.isArray()) {
     if (name == null)     writer.array();
  else     writer.array(name);
+    Class componentType=actualType.getComponentType();
     int length=java.lang.reflect.Array.getLength(value);
-    for (int i=0; i < length; i++)     writeValue(null,java.lang.reflect.Array.get(value,i),null,writer);
+    for (int i=0; i < length; i++)     writeValue(null,java.lang.reflect.Array.get(value,i),componentType,writer);
     writer.pop();
     return;
   }
@@ -50,25 +51,6 @@
     return;
   }
   startObject(name,valueType,actualType,writer);
-  ObjectMap<String,Field> fields=typeToFields.get(actualType);
-  if (fields == null)   fields=cacheFields(actualType);
-  for (  Field valueField : fields.values()) {
-    try {
-      if (debug)       System.out.println("Writing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")");
-      writeValue(valueField.getName(),valueField.get(value),valueField.getType(),writer);
-    }
- catch (    IllegalAccessException ex) {
-      throw new SerializationException("Error accessing field: " + valueField.getName() + " ("+ value.getClass().getName()+ ")",ex);
-    }
-catch (    SerializationException ex) {
-      ex.addTrace(valueField + " (" + value.getClass().getName()+ ")");
-      throw ex;
-    }
-catch (    RuntimeException runtimeEx) {
-      SerializationException ex=new SerializationException(runtimeEx);
-      ex.addTrace(valueField + " (" + value.getClass().getName()+ ")");
-      throw ex;
-    }
-  }
+  writeFields(value,writer);
   writer.pop();
 }
