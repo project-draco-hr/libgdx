@@ -1,5 +1,5 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.vSyncEnabled=true;
-  new LwjglApplication(new FlickScrollPaneTest(),config);
+  new LwjglApplication(new SimpleDecalTest(),config);
 }
