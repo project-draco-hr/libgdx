@@ -12,33 +12,21 @@
       }
     }
     Serializer serializer=classToSerializer.get(type);
-    if (serializer != null) {
-      return serializer.read(this,map,type);
-    }
-    Object object=null;
-    try {
-      object=type.newInstance();
-    }
- catch (    Exception ex) {
-      try {
-        Constructor constructor=type.getDeclaredConstructor();
-        constructor.setAccessible(true);
-        object=constructor.newInstance();
-      }
- catch (      SecurityException ignored) {
-      }
-catch (      NoSuchMethodException ignored) {
-        if (type.isMemberClass() && !Modifier.isStatic(type.getModifiers()))         throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(),ex);
- else         throw new SerializationException("Class cannot be created (missing no-arg constructor): " + type.getName(),ex);
-      }
-catch (      Exception privateConstructorException) {
-        ex=privateConstructorException;
-      }
-      if (object == null)       throw new SerializationException("Error constructing instance of class: " + type.getName(),ex);
-    }
+    if (serializer != null)     return serializer.read(this,map,type);
+    Object object=newInstance(type);
     if (object instanceof Serializable) {
       ((Serializable)object).read(this,map);
       return object;
+    }
+    if (object instanceof ObjectMap) {
+      ObjectMap result=(ObjectMap)object;
+      for (      Entry entry : map.entries())       result.put(entry.key,readValue(String.class,entry.value));
+      return result;
+    }
+    if (object instanceof HashMap) {
+      HashMap result=(HashMap)object;
+      for (      Entry entry : map.entries())       result.put(entry.key,readValue(String.class,entry.value));
+      return result;
     }
     ObjectMap<String,Field> fields=typeToFields.get(type);
     if (fields == null)     fields=cacheFields(type);
@@ -74,6 +62,7 @@ catch (      Exception privateConstructorException) {
     }
     throw new SerializationException("Unable to convert value to required type: " + value + " ("+ type.getName()+ ")");
   }
+  if (value instanceof Float || value instanceof Boolean)   value=String.valueOf(value);
   if (value instanceof String) {
     String string=(String)value;
     if (type == String.class || value == null)     return value;

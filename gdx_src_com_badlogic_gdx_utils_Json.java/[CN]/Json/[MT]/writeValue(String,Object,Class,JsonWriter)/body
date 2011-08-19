@@ -46,6 +46,18 @@
     writer.pop();
     return;
   }
+  if (value instanceof ObjectMap) {
+    startObject(name,valueType,actualType,writer);
+    for (    Entry entry : ((ObjectMap<?,?>)value).entries())     writer.set((String)entry.key,entry.value);
+    writer.pop();
+    return;
+  }
+  if (value instanceof Map) {
+    startObject(name,valueType,actualType,writer);
+    for (    Map.Entry entry : ((Map<?,?>)value).entrySet())     writer.set((String)entry.getKey(),entry.getValue());
+    writer.pop();
+    return;
+  }
   if (actualType.isEnum()) {
     writer.set(name,value);
     return;

@@ -9,7 +9,7 @@
     File inputDir=entry.getKey();
     File newOutputDir=flattenOutput ? outputRoot : dirInputFiles.get(0).outputDir;
     String outputName=inputDir.getName();
-    if (outputSuffix != null)     outputName+=outputSuffix;
+    if (outputSuffix != null)     outputName=outputName.replaceAll("(.*)\\..*","$1") + outputSuffix;
     InputFile inputFile=new InputFile();
     inputFile.inputFile=entry.getKey();
     inputFile.outputDir=newOutputDir;

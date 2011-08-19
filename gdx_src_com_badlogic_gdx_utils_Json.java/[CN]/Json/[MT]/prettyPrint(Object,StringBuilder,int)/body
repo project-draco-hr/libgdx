@@ -1,36 +1,63 @@
 {
   if (object instanceof ObjectMap) {
     ObjectMap<?,?> map=(ObjectMap)object;
-    buffer.append("{\n");
-    int i=0;
-    for (    Entry entry : map.entries()) {
-      indent(indent + 1,buffer);
+    if (map.size == 0) {
+      buffer.append("{}");
+    }
+ else     if (map.size == 1) {
+      buffer.append("{ ");
+      Entry entry=map.entries().next();
       buffer.append('"');
       buffer.append(entry.key);
       buffer.append("\": ");
-      prettyPrint(entry.value,buffer,indent + 2);
-      if (i++ < map.size - 1)       buffer.append(",");
-      buffer.append('\n');
+      prettyPrint(entry.value,buffer,indent + 1);
+      buffer.append(" }");
     }
-    indent(indent - 1,buffer);
-    buffer.append("}");
+ else {
+      buffer.append("{\n");
+      int i=0;
+      for (      Entry entry : map.entries()) {
+        indent(indent,buffer);
+        buffer.append('"');
+        buffer.append(entry.key);
+        buffer.append("\": ");
+        prettyPrint(entry.value,buffer,indent + 1);
+        if (i++ < map.size - 1)         buffer.append(",");
+        buffer.append('\n');
+      }
+      indent(indent - 1,buffer);
+      buffer.append('}');
+    }
   }
  else   if (object instanceof Array) {
-    buffer.append("[\n");
     Array array=(Array)object;
-    for (int i=0, n=array.size; i < n; i++) {
-      indent(indent,buffer);
-      prettyPrint(array.get(i),buffer,indent + 1);
-      if (i < array.size - 1)       buffer.append(",");
-      buffer.append('\n');
+    if (array.size == 0) {
+      buffer.append("[]");
     }
-    indent(indent - 1,buffer);
-    buffer.append("]");
+ else     if (array.size == 1) {
+      buffer.append("[ ");
+      prettyPrint(array.get(0),buffer,indent + 1);
+      buffer.append(" ]");
+    }
+ else {
+      buffer.append("[\n");
+      for (int i=0, n=array.size; i < n; i++) {
+        indent(indent,buffer);
+        prettyPrint(array.get(i),buffer,indent + 1);
+        if (i < array.size - 1)         buffer.append(",");
+        buffer.append('\n');
+      }
+      indent(indent - 1,buffer);
+      buffer.append(']');
+    }
   }
  else   if (object instanceof String) {
     buffer.append('"');
     buffer.append(object);
     buffer.append('"');
+  }
+ else   if (object instanceof Float || object instanceof Boolean) {
+    buffer.append(object);
   }
  else   if (object == null) {
     buffer.append("null");

@@ -1,4 +1,5 @@
 {
+  if (!inputFile.exists())   throw new IllegalArgumentException("Input file does not exist: " + inputFile.getAbsolutePath());
   if (inputFile.isFile())   return process(new File[]{inputFile},outputRoot);
  else   return process(inputFile.listFiles(),outputRoot);
 }
