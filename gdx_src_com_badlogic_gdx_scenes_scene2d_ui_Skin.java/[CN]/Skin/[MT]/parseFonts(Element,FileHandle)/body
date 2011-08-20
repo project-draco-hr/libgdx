@@ -1,0 +1,9 @@
+{
+  for (  Element font : library.getChildrenByName("font")) {
+    String path=font.getAttribute("file");
+    FileHandle file=Gdx.files.internal(path);
+    if (file.exists() == false)     file=skinFile.parent().child(path);
+    BitmapFont bitmapFont=new BitmapFont(file,false);
+    fonts.put(font.getAttribute("name"),bitmapFont);
+  }
+}

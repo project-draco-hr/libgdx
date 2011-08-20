@@ -1,6 +1,0 @@
-{
-  for (  Element font : library.getChildrenByName("font")) {
-    BitmapFont bitmapFont=new BitmapFont(Gdx.files.internal(font.getAttribute("file")),false);
-    fonts.put(font.getAttribute("name"),bitmapFont);
-  }
-}

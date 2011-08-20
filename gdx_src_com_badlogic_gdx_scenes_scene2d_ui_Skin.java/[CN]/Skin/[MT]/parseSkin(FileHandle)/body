@@ -2,7 +2,7 @@
   try {
     XmlReader xml=new XmlReader();
     Element skin=xml.parse(skinFile);
-    parseLibrary(skin);
+    parseLibrary(skin,skinFile);
     parseWidgetStyles(skin.getChildByName("widgetStyles"));
   }
  catch (  Exception e) {
