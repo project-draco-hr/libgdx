@@ -1,6 +1,12 @@
 {
   AssetLoadingTask task=tasks.pop();
   AssetDescriptor assetDesc=task.assetDesc;
+  if (task.dependenciesLoaded) {
+    for (    AssetDescriptor desc : task.dependencies) {
+      remove(desc.fileName);
+    }
+  }
+  tasks.clear();
   if (listener != null) {
     listener.error(assetDesc.fileName,assetDesc.type,t);
   }
