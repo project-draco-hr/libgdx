@@ -1,5 +1,5 @@
 {
-  if (file.name().endsWith(".etc1")) {
+  if (file.name().contains(".etc1")) {
     create(new ETC1TextureData(file,useMipMaps));
   }
  else {
