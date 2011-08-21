@@ -1,6 +1,9 @@
 {
   Gdx.app.setLogLevel(Application.LOG_ERROR);
+  Resolution[] resolutions={new Resolution(320,480,".320480"),new Resolution(480,800,".480800"),new Resolution(480,856,".480854")};
+  ResolutionFileResolver resolver=new ResolutionFileResolver(new InternalFileHandleResolver(),resolutions);
   manager=new AssetManager();
+  manager.setLoader(Texture.class,new TextureLoader(resolver));
   manager.setErrorListener(this);
   manager.preload("data/pack1.png",Texture.class);
   manager.preload("data/pack",TextureAtlas.class);
