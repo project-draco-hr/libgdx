@@ -2,7 +2,7 @@
   SynchronousAssetLoader syncLoader=(SynchronousAssetLoader)loader;
   if (!dependenciesLoaded) {
     dependenciesLoaded=true;
-    Array<AssetDescriptor> dependencies=syncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
+    dependencies=syncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
     if (dependencies == null) {
       asset=syncLoader.load(manager,assetDesc.fileName,assetDesc.params);
       return;

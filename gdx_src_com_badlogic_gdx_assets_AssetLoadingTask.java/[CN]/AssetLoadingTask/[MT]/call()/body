@@ -1,7 +1,7 @@
 {
   AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
   if (dependenciesLoaded == false) {
-    Array<AssetDescriptor> dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
+    dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
     if (dependencies != null) {
       for (      AssetDescriptor desc : dependencies) {
         manager.injectDependency(assetDesc.fileName,desc);

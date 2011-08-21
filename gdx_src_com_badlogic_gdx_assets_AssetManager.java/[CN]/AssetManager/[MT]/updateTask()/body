@@ -11,6 +11,7 @@
     incrementRefCountedDependencies(task.assetDesc.fileName);
     loaded++;
     tasks.pop();
+    if (task.cancel)     remove(task.assetDesc.fileName);
     return true;
   }
  else {
