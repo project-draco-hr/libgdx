@@ -1,0 +1,15 @@
+{
+  Class type=object.getClass();
+  ObjectMap<String,Field> fields=typeToFields.get(type);
+  if (fields == null)   fields=cacheFields(type);
+  for (  Entry<String,Object> entry : map.entries()) {
+    Field field=fields.get(entry.key);
+    if (field == null)     throw new SerializationException("Unable to find field: " + entry.key + " ("+ type.getName()+ ")");
+    try {
+      field.set(object,readValue(field.getType(),entry.value));
+    }
+ catch (    Exception ex) {
+      throw new SerializationException("Error setting field: " + field.getName() + " ("+ type.getName()+ ")",ex);
+    }
+  }
+}
