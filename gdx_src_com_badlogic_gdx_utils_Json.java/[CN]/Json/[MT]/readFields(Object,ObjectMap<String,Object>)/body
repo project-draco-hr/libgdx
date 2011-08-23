@@ -5,6 +5,7 @@
   for (  Entry<String,Object> entry : map.entries()) {
     Field field=fields.get(entry.key);
     if (field == null)     throw new SerializationException("Unable to find field: " + entry.key + " ("+ type.getName()+ ")");
+    if (entry.value == null)     continue;
     try {
       field.set(object,readValue(field.getType(),entry.value));
     }

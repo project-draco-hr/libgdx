@@ -4,8 +4,10 @@
   if (fields == null)   fields=cacheFields(type);
   Field field=fields.get(name);
   if (field == null)   throw new SerializationException("Unable to find field: " + name + " ("+ type.getName()+ ")");
+  Object value=map.get(name);
+  if (value == null)   return;
   try {
-    field.set(object,readValue(field.getType(),map.get(name)));
+    field.set(object,readValue(field.getType(),value));
   }
  catch (  Exception ex) {
     throw new SerializationException("Error setting field: " + field.getName() + " ("+ type.getName()+ ")",ex);
