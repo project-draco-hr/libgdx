@@ -1,12 +1,6 @@
 {
   AssetLoader loader=loaders.get(type);
   if (loader == null)   throw new GdxRuntimeException("No loader for type '" + type.getSimpleName() + "'");
-  if (isLoaded(fileName))   throw new GdxRuntimeException("Asset '" + fileName + "' already loaded");
-  for (  AssetDescriptor desc : preloadQueue) {
-    if (desc.fileName.equals(fileName)) {
-      throw new GdxRuntimeException("Asset '" + fileName + "' already in preload queue");
-    }
-  }
   if (preloadQueue.size == 0) {
     loaded=0;
     toLoad=0;

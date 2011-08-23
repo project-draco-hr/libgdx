@@ -1,7 +1,7 @@
 {
   AssetLoadingTask task=tasks.pop();
   AssetDescriptor assetDesc=task.assetDesc;
-  if (task.dependenciesLoaded) {
+  if (task.dependenciesLoaded && task.dependencies != null) {
     for (    AssetDescriptor desc : task.dependencies) {
       remove(desc.fileName);
     }
