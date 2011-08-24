@@ -56,7 +56,12 @@
     buffer.append(object);
     buffer.append('"');
   }
- else   if (object instanceof Float || object instanceof Boolean) {
+ else   if (object instanceof Float) {
+    Float floatValue=(Float)object;
+    int intValue=floatValue.intValue();
+    buffer.append(floatValue - intValue == 0 ? intValue : object);
+  }
+ else   if (object instanceof Boolean) {
     buffer.append(object);
   }
  else   if (object == null) {
