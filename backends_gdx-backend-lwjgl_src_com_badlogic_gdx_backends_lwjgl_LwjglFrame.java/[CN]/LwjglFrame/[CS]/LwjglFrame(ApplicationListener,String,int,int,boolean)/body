@@ -3,7 +3,7 @@
   setDefaultCloseOperation(EXIT_ON_CLOSE);
   setSize(width,height);
   setLocationRelativeTo(null);
-  final LwjglCanvas lwjglCanvas=new LwjglCanvas(listener,useGL2);
+  lwjglCanvas=new LwjglCanvas(listener,useGL2);
   getContentPane().add(lwjglCanvas.getCanvas());
   addWindowListener(new WindowAdapter(){
     public void windowClosing(    WindowEvent e){
