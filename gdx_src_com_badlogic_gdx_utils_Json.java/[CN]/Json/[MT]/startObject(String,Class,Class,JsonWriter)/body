@@ -1,7 +1,7 @@
 {
   if (name == null)   writer.object();
  else   writer.object(name);
-  if (valueType == null || valueType != actualType) {
+  if ((valueType == null || valueType != actualType) && typeName != null) {
     String className=classToTag.get(actualType);
     if (className == null)     className=actualType.getName();
     writer.set(typeName,className);

@@ -1,7 +1,7 @@
 {
   if (value instanceof ObjectMap) {
     ObjectMap<String,Object> map=(ObjectMap)value;
-    String className=(String)map.remove(typeName);
+    String className=typeName == null ? null : (String)map.remove(typeName);
     if (className != null) {
       try {
         type=Class.forName(className);
