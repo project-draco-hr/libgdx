@@ -1,19 +1,9 @@
 {
   if (value instanceof ObjectMap) {
     ObjectMap<String,Object> map=(ObjectMap)value;
-    String className=typeName == null ? null : (String)map.remove(typeName);
-    if (className != null) {
-      try {
-        type=Class.forName(className);
-      }
- catch (      ClassNotFoundException ex) {
-        type=tagToClass.get(className);
-        if (type == null)         throw new SerializationException(ex);
-      }
-    }
     Serializer serializer=classToSerializer.get(type);
     if (serializer != null)     return serializer.read(this,map,type);
-    Object object=newInstance(type);
+    Object object=newInstance(type,map);
     if (object instanceof Serializable) {
       ((Serializable)object).read(this,map);
       return object;

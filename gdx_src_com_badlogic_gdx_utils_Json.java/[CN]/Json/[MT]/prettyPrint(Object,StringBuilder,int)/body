@@ -4,15 +4,6 @@
     if (map.size == 0) {
       buffer.append("{}");
     }
- else     if (map.size == 1) {
-      buffer.append("{ ");
-      Entry entry=map.entries().next();
-      buffer.append('"');
-      buffer.append(entry.key);
-      buffer.append("\": ");
-      prettyPrint(entry.value,buffer,indent + 1);
-      buffer.append(" }");
-    }
  else {
       buffer.append("{\n");
       int i=0;
@@ -33,11 +24,6 @@
     Array array=(Array)object;
     if (array.size == 0) {
       buffer.append("[]");
-    }
- else     if (array.size == 1) {
-      buffer.append("[ ");
-      prettyPrint(array.get(0),buffer,indent + 1);
-      buffer.append(" ]");
     }
  else {
       buffer.append("[\n");

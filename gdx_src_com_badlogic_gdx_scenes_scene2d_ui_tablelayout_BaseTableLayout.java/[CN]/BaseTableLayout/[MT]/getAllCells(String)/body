@@ -1,5 +1,0 @@
-{
-  ArrayList<Cell> cells=new ArrayList();
-  for (  Cell cell : widgetToCell.values())   if (cell.name.startsWith(namePrefix))   cells.add(cell);
-  return cells;
-}

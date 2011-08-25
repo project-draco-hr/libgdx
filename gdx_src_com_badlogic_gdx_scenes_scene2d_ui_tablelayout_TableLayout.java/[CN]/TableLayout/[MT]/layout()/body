@@ -1,8 +1,8 @@
 {
   if (!needsLayout)   return;
   needsLayout=false;
-  setLayoutSize(0,0,(int)table.width,(int)table.height);
   Table table=getTable();
+  setLayoutSize(0,0,(int)table.width,(int)table.height);
   super.layout();
   List<Cell> cells=getCells();
   for (int i=0, n=cells.size(); i < n; i++) {
