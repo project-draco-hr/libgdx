@@ -18,7 +18,7 @@
   }
   Serializer serializer=classToSerializer.get(actualType);
   if (serializer != null) {
-    serializer.write(this,writer,name,value);
+    serializer.write(this,writer,name,value,valueType);
     return;
   }
   if (value instanceof Collection) {
