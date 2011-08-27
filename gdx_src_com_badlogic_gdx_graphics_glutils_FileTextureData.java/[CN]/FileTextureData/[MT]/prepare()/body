@@ -1,0 +1,10 @@
+{
+  if (isPrepared)   throw new GdxRuntimeException("Already prepared");
+  if (pixmap == null) {
+    pixmap=new Pixmap(file);
+    width=pixmap.getWidth();
+    height=pixmap.getHeight();
+    if (format == null)     format=pixmap.getFormat();
+  }
+  isPrepared=true;
+}

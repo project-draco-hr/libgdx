@@ -1,7 +1,5 @@
 {
-  ETC1Data data=new ETC1Data(file);
-  width=data.width;
-  height=data.height;
+  if (!isPrepared)   throw new GdxRuntimeException("Call prepare() before calling consumeCompressedData()");
   if (Gdx.app.getType() == ApplicationType.Desktop || Gdx.graphics.isGL20Available() == false) {
     Pixmap pixmap=ETC1.decodeImage(data,Format.RGB565);
     Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,pixmap.getGLInternalFormat(),pixmap.getWidth(),pixmap.getHeight(),0,pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
@@ -14,4 +12,6 @@
     if (useMipMaps())     Gdx.gl20.glGenerateMipmap(GL20.GL_TEXTURE_2D);
   }
   data.dispose();
+  data=null;
+  isPrepared=false;
 }

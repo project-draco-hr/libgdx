@@ -1,0 +1,7 @@
+{
+  if (isPrepared)   throw new GdxRuntimeException("Already prepared");
+  data=new ETC1Data(file);
+  width=data.width;
+  height=data.height;
+  isPrepared=true;
+}
