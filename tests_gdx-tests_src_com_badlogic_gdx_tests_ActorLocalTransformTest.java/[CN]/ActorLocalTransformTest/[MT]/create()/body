@@ -1,0 +1,10 @@
+{
+  testbar=new Image("testbar",new Texture(Gdx.files.internal("data/testbar.png")));
+  testbar.x=240 - testbar.originX;
+  testbar.y=160 - testbar.originY;
+  dot=new Image("dot",new Texture(Gdx.files.internal("data/testdot.png")));
+  stage=new Stage(480,320,true);
+  stage.addActor(testbar);
+  stage.addActor(dot);
+  testbar.action(Forever.$(RotateBy.$(20,1)));
+}

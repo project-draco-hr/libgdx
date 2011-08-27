@@ -1,0 +1,10 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  final float d=Gdx.graphics.getDeltaTime();
+  tmp.set(testbar.x,testbar.y);
+  testbar.toLocalCoordinates(tmp);
+  dot.x=testbar.x + tmp.x;
+  dot.y=testbar.y + tmp.y;
+  stage.act(d);
+  stage.draw();
+}
