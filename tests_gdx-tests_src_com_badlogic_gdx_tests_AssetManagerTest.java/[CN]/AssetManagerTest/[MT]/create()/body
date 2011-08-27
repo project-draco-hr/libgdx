@@ -10,6 +10,7 @@
   manager.preload("data/pack",TextureAtlas.class);
   manager.preload("data/verdana39.png",Texture.class);
   manager.preload("data/verdana39.fnt",BitmapFont.class);
+  manager.preload("data/test.etc1",Texture.class);
   Texture.setAssetManager(manager);
   batch=new SpriteBatch();
   font=new BitmapFont(Gdx.files.internal("data/font.fnt"),false);

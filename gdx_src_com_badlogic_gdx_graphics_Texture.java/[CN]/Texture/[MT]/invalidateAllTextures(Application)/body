@@ -8,6 +8,7 @@
     }
   }
  else {
+    while (!assetManager.update())     ;
     List<Texture> textures=new ArrayList<Texture>(managedTexureList);
     managedTexureList.clear();
     for (    Texture texture : textures) {
@@ -17,11 +18,18 @@
       }
  else {
         TextureParameter params=new TextureParameter();
-        params.format=texture.getTextureData().getFormat();
-        params.genMipMaps=texture.getTextureData().useMipMaps();
+        params.textureData=texture.getTextureData();
         params.texture=texture;
-        texture.glHandle=Texture.createGLHandle();
+        int refCount=0;
+        if (texture instanceof ReferenceCountedAsset) {
+          refCount=((ReferenceCountedAsset)texture).getRefCount();
+          ((ReferenceCountedAsset)texture).setRefCount(0);
+        }
         assetManager.remove(fileName);
+        if (texture instanceof ReferenceCountedAsset) {
+          ((ReferenceCountedAsset)texture).setRefCount(refCount);
+        }
+        texture.glHandle=Texture.createGLHandle();
         assetManager.preload(fileName,Texture.class,params);
       }
       managedTexureList.add(texture);

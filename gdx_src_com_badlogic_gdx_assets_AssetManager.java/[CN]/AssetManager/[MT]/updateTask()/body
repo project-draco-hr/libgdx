@@ -9,7 +9,7 @@
     }
     typeToAssets.put(task.assetDesc.fileName,task.getAsset());
     incrementRefCountedDependencies(task.assetDesc.fileName);
-    loaded++;
+    if (tasks.size() == 1)     loaded++;
     tasks.pop();
     if (task.cancel)     remove(task.assetDesc.fileName);
     return true;

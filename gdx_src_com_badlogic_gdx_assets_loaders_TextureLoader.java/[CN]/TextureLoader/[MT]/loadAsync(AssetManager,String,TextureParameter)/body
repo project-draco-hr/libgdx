@@ -1,7 +1,6 @@
 {
   if (parameter == null || (parameter != null && parameter.textureData == null)) {
-    FileHandle handle=resolve(fileName);
-    Pixmap pixmap=new Pixmap(handle);
+    Pixmap pixmap=null;
     Format format=null;
     boolean genMipMaps=false;
     texture=null;
@@ -10,9 +9,17 @@
       genMipMaps=parameter.genMipMaps;
       texture=parameter.texture;
     }
-    data=new FileTextureData(handle,pixmap,format,genMipMaps);
+    FileHandle handle=resolve(fileName);
+    if (!fileName.contains(".etc1")) {
+      pixmap=new Pixmap(handle);
+      data=new FileTextureData(handle,pixmap,format,genMipMaps);
+    }
+ else {
+      data=new ETC1TextureData(handle,genMipMaps);
+    }
   }
  else {
     data=parameter.textureData;
+    texture=parameter.texture;
   }
 }
