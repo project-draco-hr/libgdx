@@ -1,9 +1,10 @@
 {
   try {
     if (tasks.size() == 0) {
-      if (preloadQueue.size == 0)       return true;
-      nextTask();
-      if (preloadQueue.size == 0 && tasks.size() == 0)       return true;
+      while (preloadQueue.size != 0 && tasks.size() == 0) {
+        nextTask();
+      }
+      if (tasks.size() == 0)       return true;
     }
     return updateTask() && preloadQueue.size == 0 && tasks.size() == 0;
   }
