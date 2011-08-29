@@ -4,7 +4,11 @@
   stage.act(Math.min(Gdx.graphics.getDeltaTime(),1 / 30f));
   stage.draw();
   Table.drawDebug(stage);
+  float x=40, y=40;
+  BitmapFont font=skin.getFont("default-font");
   batch.begin();
-  skin.getFont("default-font").draw(batch,"The quick brown fox jumped over the lazy cow.",40,40);
+  font.draw(batch,"The quick brown fox jumped over the lazy cow.",x,y);
   batch.end();
+  drawLine(x,y - font.getDescent(),x + 1000,y - font.getDescent());
+  drawLine(x,y - font.getCapHeight() + font.getDescent(),x + 1000,y - font.getCapHeight() + font.getDescent());
 }
