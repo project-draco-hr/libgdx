@@ -13,7 +13,11 @@
     Actor child=children.get(i);
     if (!child.touchable)     continue;
     toChildCoordinates(child,x,y,point);
+    if (child.hit(point.x,point.y) == null)     continue;
     if (child.touchDown(point.x,point.y,pointer)) {
+      if (focusedActor[pointer] == null) {
+        focus(child,pointer);
+      }
       if (child instanceof Group)       lastTouchedChild=((Group)child).lastTouchedChild;
  else       lastTouchedChild=child;
       return true;

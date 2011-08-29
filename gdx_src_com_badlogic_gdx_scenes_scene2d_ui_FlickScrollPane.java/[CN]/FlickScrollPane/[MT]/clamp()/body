@@ -1,0 +1,16 @@
+{
+  if (bounces) {
+    float bounceX=bounceDistance / (widget.width - width);
+    float bounceY=bounceDistance / (widget.height - height);
+    hScrollAmount=Math.max(-bounceX,hScrollAmount);
+    hScrollAmount=Math.min(1 + bounceX,hScrollAmount);
+    vScrollAmount=Math.max(-bounceY,vScrollAmount);
+    vScrollAmount=Math.min(1 + bounceY,vScrollAmount);
+  }
+ else {
+    hScrollAmount=Math.max(0,hScrollAmount);
+    hScrollAmount=Math.min(1,hScrollAmount);
+    vScrollAmount=Math.max(0,vScrollAmount);
+    vScrollAmount=Math.min(1,vScrollAmount);
+  }
+}

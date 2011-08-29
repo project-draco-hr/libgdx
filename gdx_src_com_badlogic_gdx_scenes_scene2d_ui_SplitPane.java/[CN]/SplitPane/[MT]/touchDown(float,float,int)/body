@@ -4,7 +4,6 @@
     touchDrag=true;
     lastPoint.set(x,y);
     handlePos.set(handleBounds.x,handleBounds.y);
-    focus(this,0);
     return true;
   }
   return super.touchDown(x,y,pointer);

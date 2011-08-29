@@ -2,8 +2,7 @@
   if (move) {
     this.x+=(x - initial.x);
     this.y+=(y - initial.y);
-    return true;
+    return;
   }
-  if (parent.focusedActor[0] == this)   return true;
-  return super.touchDragged(x,y,pointer) || isModal;
+  if (parent.focusedActor[0] != this)   super.touchDragged(x,y,pointer);
 }

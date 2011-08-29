@@ -1,9 +1,10 @@
 {
   super(name,0,0);
   this.style=style;
-  this.label=label;
-  this.touchable=false;
-  layout();
-  this.width=prefWidth;
-  this.height=prefHeight;
+  cache=new BitmapFontCache(style.font);
+  cache.setColor(style.fontColor);
+  setText(text);
+  width=prefWidth;
+  height=prefHeight;
+  touchable=false;
 }

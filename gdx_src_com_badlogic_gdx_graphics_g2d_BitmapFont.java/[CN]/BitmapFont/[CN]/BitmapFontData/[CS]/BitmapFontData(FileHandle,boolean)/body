@@ -1,4 +1,5 @@
 {
+  this.fontFile=fontFile;
   this.flipped=flip;
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
@@ -22,7 +23,7 @@
  else {
       imgFilename=pageLine[2].substring(5,pageLine[2].length());
     }
-    imgFile=fontFile.parent().child(imgFilename).path().replaceAll("\\\\","/");
+    imagePath=fontFile.parent().child(imgFilename).path().replaceAll("\\\\","/");
     descent=0;
     while (true) {
       line=reader.readLine();

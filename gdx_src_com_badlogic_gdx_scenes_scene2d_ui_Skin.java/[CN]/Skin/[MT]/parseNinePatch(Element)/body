@@ -1,9 +1,0 @@
-{
-  TextureRegion[] regions=new TextureRegion[9];
-  Array<Element> patches=ninePatch.getChildrenByName("region");
-  if (regions.length != 9)   error("Nine-patch definition has to have 9 regions",ninePatch);
-  for (int i=0; i < regions.length; i++) {
-    regions[i]=parseRegion(patches.get(i));
-  }
-  return new NinePatch(regions);
-}

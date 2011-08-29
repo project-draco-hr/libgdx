@@ -1,0 +1,5 @@
+{
+  float ratio=originalDistance / currentDistance;
+  camera.zoom=initialScale * ratio;
+  return false;
+}

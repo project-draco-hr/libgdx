@@ -1,0 +1,6 @@
+{
+  focus(null,0);
+  if (!super.touchDown(x,y,0))   return false;
+  super.touchUp(x,y,0);
+  return true;
+}

@@ -1,5 +1,7 @@
 {
-  if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(data.getWidth()) || !MathUtils.isPowerOfTwo(data.getHeight())))   throw new GdxRuntimeException("texture width and height must be powers of two");
+  if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(data.getWidth()) || !MathUtils.isPowerOfTwo(data.getHeight()))) {
+    throw new GdxRuntimeException("Texture width and height must be powers of two: " + data.getWidth() + "x"+ data.getHeight());
+  }
   boolean disposePixmap=false;
   if (data.getFormat() != pixmap.getFormat()) {
     Pixmap tmp=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),data.getFormat());

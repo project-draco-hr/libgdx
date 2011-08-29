@@ -1,0 +1,14 @@
+{
+  batch=new SpriteBatch();
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  skin.getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
+  stage=new Stage(0,0,false);
+  Gdx.input.setInputProcessor(stage);
+  Table table=new Table();
+  stage.addActor(table);
+  table.x=table.y=100;
+  table.getTableLayout().debug();
+  table.add(skin.newLabel(null,"This is regular text."));
+  table.row();
+  table.add(skin.newLabel(null,"This is regular text,\nwith a newline."));
+}

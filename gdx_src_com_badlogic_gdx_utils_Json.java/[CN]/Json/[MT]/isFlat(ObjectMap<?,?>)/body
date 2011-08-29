@@ -1,0 +1,7 @@
+{
+  for (  Entry entry : map.entries()) {
+    if (entry.value instanceof ObjectMap)     return false;
+    if (entry.value instanceof Array)     return false;
+  }
+  return true;
+}

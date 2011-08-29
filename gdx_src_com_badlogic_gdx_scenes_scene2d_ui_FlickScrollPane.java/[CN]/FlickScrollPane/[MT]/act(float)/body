@@ -1,32 +1,46 @@
 {
-  super.act(delta);
-  if (smoothscrolldestx != -1 && smoothscrolldesty != -1) {
-    touchable=false;
-    scrolledtime+=(delta * 1000);
-    float relscrolltime=((float)1f / scrolltime) * scrolledtime;
-    if (smoothscrolldestx > scrollstarth) {
-      hScrollAmount=scrollstarth + (smoothscrolldestx - scrollstarth) * interpolator.getInterpolation(relscrolltime);
+  float bounceX=bounceDistance / (widget.width - width);
+  float bounceY=bounceDistance / (widget.height - height);
+  if (flingTimer > 0) {
+    float alpha=flingTimer / flingTime;
+    alpha=alpha * alpha * alpha;
+    hScrollAmount-=velocityX * alpha * delta;
+    vScrollAmount+=velocityY * alpha * delta;
+    clamp();
+    if (hScrollAmount == -bounceX)     velocityX=0;
+    if (hScrollAmount >= 1 + bounceX)     velocityX=0;
+    if (vScrollAmount == -bounceY)     velocityY=0;
+    if (vScrollAmount >= 1 + bounceY)     velocityY=0;
+    flingTimer-=delta;
+  }
+  if (bounces && !gestureDetector.isPanning()) {
+    if (hScrollAmount < 0) {
+      float overscrollPercent=-hScrollAmount / bounceX;
+      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
+      float bouncePercent=bouncePixels / (widget.width - width);
+      hScrollAmount+=bouncePercent * delta;
+      if (hScrollAmount > 0)       hScrollAmount=0;
     }
- else {
-      hScrollAmount=scrollstarth - (scrollstarth - smoothscrolldestx) * interpolator.getInterpolation(relscrolltime);
+ else     if (hScrollAmount > 1) {
+      float overscrollPercent=-(1 - hScrollAmount) / bounceX;
+      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
+      float bouncePercent=bouncePixels / (widget.width - width);
+      hScrollAmount-=bouncePercent * delta;
+      if (hScrollAmount < 1)       hScrollAmount=1;
     }
-    if (smoothscrolldesty > scrollstartv) {
-      vScrollAmount=scrollstartv + (smoothscrolldesty - scrollstartv) * interpolator.getInterpolation(relscrolltime);
+    if (vScrollAmount < 0) {
+      float overscrollPercent=-vScrollAmount / bounceY;
+      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
+      float bouncePercent=bouncePixels / (widget.height - height);
+      vScrollAmount+=bouncePercent * delta;
+      if (vScrollAmount > 0)       vScrollAmount=0;
     }
- else {
-      vScrollAmount=scrollstartv - (scrollstartv - smoothscrolldesty) * interpolator.getInterpolation(relscrolltime);
-    }
-    if (scrolledtime >= scrolltime) {
-      hScrollAmount=smoothscrolldestx;
-      vScrollAmount=smoothscrolldesty;
-      smoothscrolldestx=-1;
-      smoothscrolldesty=-1;
-      touchable=true;
-      scrolledtime=0;
-      Gdx.app.log("","SCROLL OVER");
-      if (listener != null) {
-        listener.onSmoothScrollComplete();
-      }
+ else     if (vScrollAmount > 1) {
+      float overscrollPercent=-(1 - vScrollAmount) / bounceY;
+      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
+      float bouncePercent=bouncePixels / (widget.height - height);
+      vScrollAmount-=bouncePercent * delta;
+      if (vScrollAmount < 1)       vScrollAmount=1;
     }
   }
 }

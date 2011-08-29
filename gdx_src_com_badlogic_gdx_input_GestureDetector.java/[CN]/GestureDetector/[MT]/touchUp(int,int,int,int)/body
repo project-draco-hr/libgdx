@@ -1,0 +1,23 @@
+{
+  if (pointer > 1)   return false;
+  panning=false;
+  if (inTapSquare & !longPressFired) {
+    if (System.nanoTime() - lastTapTime > tapCountInterval)     tapCount=0;
+    tapCount++;
+    lastTapTime=System.nanoTime();
+    return listener.tap(tapSquareCenterX,tapSquareCenterY,tapCount);
+  }
+ else   if (pinching) {
+    pinching=false;
+    int otherPointer=pointer == 1 ? 0 : 1;
+    tracker.start(Gdx.input.getX(otherPointer),Gdx.input.getY(otherPointer),Gdx.input.getCurrentEventTime());
+  }
+ else {
+    long time=Gdx.input.getCurrentEventTime();
+    if (time - tracker.lastTime < maxFlingDelay) {
+      tracker.update(x,y,time);
+      return listener.fling(tracker.getVelocityX(),tracker.getVelocityY());
+    }
+  }
+  return false;
+}

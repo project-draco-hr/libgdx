@@ -1,0 +1,7 @@
+{
+  Matrix4 newBatchTransform=updateTransform();
+  batch.end();
+  oldBatchTransform.set(batch.getTransformMatrix());
+  batch.setTransformMatrix(newBatchTransform);
+  batch.begin();
+}

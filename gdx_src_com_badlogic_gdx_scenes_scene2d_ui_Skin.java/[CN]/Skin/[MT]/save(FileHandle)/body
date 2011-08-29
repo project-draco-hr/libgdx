@@ -1,0 +1,10 @@
+{
+  String text=json(this,null).prettyPrint(this,true);
+  Writer writer=skinFile.writer(false);
+  try {
+    writer.write(text);
+    writer.close();
+  }
+ catch (  IOException ex) {
+  }
+}

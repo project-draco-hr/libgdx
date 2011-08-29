@@ -1,9 +1,3 @@
 {
-  if (pointer != 0)   return false;
-  if (parent.focusedActor[0] == this) {
-    calculateSliderPosAndValue(x);
-    parent.focus(null,pointer);
-    return true;
-  }
-  return false;
+  calculateSliderPosAndValue(x);
 }

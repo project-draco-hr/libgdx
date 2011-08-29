@@ -1,5 +1,0 @@
-{
-  Object value=map.get(name);
-  if (value == null)   return defaultValue;
-  return (T)readValue(type,value);
-}

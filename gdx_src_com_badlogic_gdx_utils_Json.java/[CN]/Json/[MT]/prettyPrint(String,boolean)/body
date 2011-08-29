@@ -1,0 +1,5 @@
+{
+  StringBuilder buffer=new StringBuilder(512);
+  prettyPrint(new JsonReader().parse(json),buffer,0,fieldsOnSameLine);
+  return buffer.toString();
+}

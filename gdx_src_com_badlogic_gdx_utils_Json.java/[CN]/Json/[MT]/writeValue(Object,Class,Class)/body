@@ -1,0 +1,70 @@
+{
+  if (value == null) {
+    writer.value(null);
+    return;
+  }
+  Class actualType=value.getClass();
+  if (actualType.isPrimitive() || actualType == String.class || actualType == Integer.class || actualType == Boolean.class || actualType == Float.class || actualType == Long.class || actualType == Double.class || actualType == Short.class || actualType == Byte.class || actualType == Character.class) {
+    writer.value(value);
+    return;
+  }
+  if (value instanceof Serializable) {
+    writeObjectStart(knownType,actualType);
+    ((Serializable)value).write(this);
+    writeObjectEnd();
+    return;
+  }
+  Serializer serializer=classToSerializer.get(actualType);
+  if (serializer != null) {
+    serializer.write(this,value,knownType);
+    return;
+  }
+  if (value instanceof Array) {
+    if (actualType != knownType)     throw new SerializationException("Serialization of an Array other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
+    writeArrayStart();
+    Array array=(Array)value;
+    for (int i=0, n=array.size; i < n; i++)     writeValue(array.get(i),elementType,null);
+    writeArrayEnd();
+    return;
+  }
+  if (value instanceof Collection) {
+    if (actualType != knownType)     throw new SerializationException("Serialization of a Collection other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
+    writeArrayStart();
+    for (    Object item : (Collection)value)     writeValue(item,elementType,null);
+    writeArrayEnd();
+    return;
+  }
+  if (actualType.isArray()) {
+    if (elementType == null)     elementType=actualType.getComponentType();
+    int length=java.lang.reflect.Array.getLength(value);
+    writeArrayStart();
+    for (int i=0; i < length; i++)     writeValue(java.lang.reflect.Array.get(value,i),elementType,null);
+    writeArrayEnd();
+    return;
+  }
+  if (value instanceof ObjectMap) {
+    writeObjectStart(actualType,knownType);
+    for (    Entry entry : ((ObjectMap<?,?>)value).entries()) {
+      writer.name((String)entry.key);
+      writeValue(entry.value,elementType,null);
+    }
+    writeObjectEnd();
+    return;
+  }
+  if (value instanceof Map) {
+    writeObjectStart(actualType,knownType);
+    for (    Map.Entry entry : ((Map<?,?>)value).entrySet()) {
+      writer.name((String)entry.getKey());
+      writeValue(entry.getValue(),elementType,null);
+    }
+    writeObjectEnd();
+    return;
+  }
+  if (actualType.isEnum()) {
+    writer.value(value);
+    return;
+  }
+  writeObjectStart(actualType,knownType);
+  writeFields(value);
+  writeObjectEnd();
+}

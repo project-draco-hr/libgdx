@@ -1,9 +1,0 @@
-{
-  super(name);
-  originX=texture.getWidth() / 2.0f;
-  originY=texture.getHeight() / 2.0f;
-  width=texture.getWidth();
-  height=texture.getHeight();
-  pressedRegion=new TextureRegion(texture);
-  unpressedRegion=new TextureRegion(texture);
-}

@@ -1,9 +1,7 @@
 {
-  if (pointer != 0)   return false;
   if (touchDrag) {
-    focus(null,0);
     touchDrag=false;
-    return true;
+    return;
   }
-  return super.touchUp(x,y,pointer);
+  super.touchUp(x,y,pointer);
 }

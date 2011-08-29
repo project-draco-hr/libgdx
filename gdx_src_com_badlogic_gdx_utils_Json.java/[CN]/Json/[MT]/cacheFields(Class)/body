@@ -5,7 +5,7 @@
     Collections.addAll(allFields,nextClass.getDeclaredFields());
     nextClass=nextClass.getSuperclass();
   }
-  ObjectMap<String,Field> nameToField=new ObjectMap();
+  ObjectMap<String,FieldMetadata> nameToField=new ObjectMap();
   for (int i=0, n=allFields.size(); i < n; i++) {
     Field field=allFields.get(i);
     int modifiers=field.getModifiers();
@@ -20,7 +20,7 @@
         continue;
       }
     }
-    nameToField.put(field.getName(),field);
+    nameToField.put(field.getName(),new FieldMetadata(field));
   }
   typeToFields.put(type,nameToField);
   return nameToField;

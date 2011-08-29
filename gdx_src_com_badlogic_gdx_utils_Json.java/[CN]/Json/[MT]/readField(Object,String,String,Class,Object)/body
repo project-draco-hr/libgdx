@@ -1,0 +1,27 @@
+{
+  ObjectMap jsonMap=(ObjectMap)jsonData;
+  Class type=object.getClass();
+  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
+  if (fields == null)   fields=cacheFields(type);
+  FieldMetadata metadata=fields.get(fieldName);
+  Field field=metadata.field;
+  if (field == null)   throw new SerializationException("Unable to find field: " + fieldName + " ("+ type.getName()+ ")");
+  Object jsonValue=jsonMap.get(jsonName);
+  if (jsonValue == null)   return;
+  if (elementType == null)   elementType=metadata.elementType;
+  try {
+    field.set(object,readValue(field.getType(),elementType,jsonValue));
+  }
+ catch (  IllegalAccessException ex) {
+    throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
+  }
+catch (  SerializationException ex) {
+    ex.addTrace(field.getName() + " (" + type.getName()+ ")");
+    throw ex;
+  }
+catch (  RuntimeException runtimeEx) {
+    SerializationException ex=new SerializationException(runtimeEx);
+    ex.addTrace(field.getName() + " (" + type.getName()+ ")");
+    throw ex;
+  }
+}

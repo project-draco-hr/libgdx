@@ -1,6 +1,5 @@
 {
-  setupTransform(batch);
-  if (invalidated)   layout();
+  applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
   ScissorStack.pushScissors(scissorBounds);
   drawChildren(batch,parentAlpha);

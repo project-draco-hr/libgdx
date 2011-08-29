@@ -1,55 +1,5 @@
 {
-  focus(null,0);
-  if (pointer != 0) {
-    return false;
-  }
-  if (scrolling) {
-    scrolling=false;
-    long timetaken=System.currentTimeMillis() - scrollingStarted;
-    float diffx=Math.max(scrollStartPoint.x,x) - Math.min(scrollStartPoint.x,x);
-    float diffy=Math.max(scrollStartPoint.y,y) - Math.min(scrollStartPoint.y,y);
-    System.out.println(String.format("Scrolled for %dms, %f on x, %f on y ",timetaken,diffx,diffy));
-    if (vScrollAmount > 1f) {
-      smoothScrollTo(0,1f);
-      return true;
-    }
- else     if (vScrollAmount < 0f) {
-      smoothScrollTo(0f,0f);
-      return true;
-    }
-    if (diffx < 10 && diffy < 10) {
-      if (timetaken < 190) {
-        System.out.println("User has clicked");
-        Actor hitchild;
-        for (        Actor child : children) {
-          Vector2 point=new Vector2();
-          toChildCoordinates(child,x,y,point);
-          if ((hitchild=child.hit(point.x,point.y)) != null) {
-            hitchild.touchDown(point.x,point.y,pointer);
-            hitchild.touchUp(point.x,point.y,pointer);
-            Gdx.app.log("flick",hitchild.toString());
-            return true;
-          }
-        }
-      }
-    }
- else {
-      float yaccel=diffy / timetaken;
-      float xaccel=diffx / timetaken;
-      System.out.println(String.format("y accel %f x accel %f",yaccel,xaccel));
-      if (yaccel > 1 || xaccel > 1) {
-        System.out.println("fling");
-        if (scrollStartPoint.y > y) {
-          smoothScrollTo(hScrollAmount,(Math.max(vScrollAmount + (1 / widget.height) * -(diffy * 4),0f)),(int)(timetaken * 1.5));
-        }
- else {
-          smoothScrollTo(hScrollAmount,Math.min(vScrollAmount + (1 / widget.height) * (diffy * 4),1f),(int)(timetaken * 1.5));
-        }
-        if (listener != null) {
-          listener.onFlinged();
-        }
-      }
-    }
-  }
-  return super.touchUp(x,y,pointer);
+  clamp();
+  gestureDetector.touchUp((int)x,(int)y,pointer,0);
+  if (focusedActor[pointer] != null)   super.touchUp(x,y,pointer);
 }

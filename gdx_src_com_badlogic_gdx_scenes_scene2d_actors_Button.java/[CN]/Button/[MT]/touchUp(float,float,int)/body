@@ -1,9 +1,0 @@
-{
-  if (!pressed)   return false;
-  if (pointer == this.pointer) {
-    parent.focus(null,pointer);
-  }
-  pressed=false;
-  if (clickListener != null)   clickListener.clicked(this);
-  return true;
-}

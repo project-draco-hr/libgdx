@@ -1,0 +1,10 @@
+{
+  selected=-1;
+  for (int i=0, n=entries.length; i < n; i++) {
+    if (entries[i].equals(entry)) {
+      selected=i;
+      break;
+    }
+  }
+  return selected;
+}

@@ -1,0 +1,5 @@
+{
+  if (screenCoords.x != oldScreenCoords.x || screenCoords.y != oldScreenCoords.y) {
+    stage.removeActor(this);
+  }
+}

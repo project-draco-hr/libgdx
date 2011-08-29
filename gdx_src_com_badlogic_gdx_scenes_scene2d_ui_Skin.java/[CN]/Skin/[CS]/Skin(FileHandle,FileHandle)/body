@@ -1,5 +1,5 @@
 {
   texture=new Texture(textureFile);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
-  parseSkin(skinFile);
+  json(this,skinFile).fromJson(Skin.class,skinFile);
 }

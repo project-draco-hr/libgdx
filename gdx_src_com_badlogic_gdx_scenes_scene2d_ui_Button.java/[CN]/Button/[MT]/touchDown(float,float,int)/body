@@ -1,9 +1,5 @@
 {
   if (pointer != 0)   return false;
-  if (hit(x,y) != null) {
-    isPressed=true;
-    parent.focus(this,pointer);
-    return true;
-  }
-  return false;
+  isPressed=true;
+  return true;
 }

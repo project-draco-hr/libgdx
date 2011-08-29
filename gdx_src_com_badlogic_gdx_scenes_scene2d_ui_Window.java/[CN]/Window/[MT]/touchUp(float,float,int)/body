@@ -1,6 +1,4 @@
 {
-  if (pointer != 0)   return false;
-  if (parent.focusedActor[0] == this)   focus(null,0);
   move=false;
-  return super.touchUp(x,y,pointer) || isModal;
+  if (parent.focusedActor[0] != this)   super.touchUp(x,y,pointer);
 }

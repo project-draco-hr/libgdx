@@ -1,5 +1,14 @@
 {
+  boolean foundFocusedActor=false;
+  for (int i=0, n=root.focusedActor.length; i < n; i++) {
+    if (root.focusedActor[i] != null) {
+      foundFocusedActor=true;
+      break;
+    }
+  }
+  if (!foundFocusedActor)   return false;
   toStageCoordinates(x,y,coords);
   Group.toChildCoordinates(root,coords.x,coords.y,point);
-  return root.touchUp(point.x,point.y,pointer);
+  root.touchUp(point.x,point.y,pointer);
+  return true;
 }

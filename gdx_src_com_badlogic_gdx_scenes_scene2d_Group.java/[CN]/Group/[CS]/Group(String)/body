@@ -1,9 +1,8 @@
 {
   super(name);
-  this.transform=new Matrix3();
-  this.children=new ArrayList<Actor>();
-  this.immutableChildren=Collections.unmodifiableList(this.children);
-  this.groups=new ArrayList<Group>();
-  this.immutableGroups=Collections.unmodifiableList(this.groups);
-  this.namesToActors=new ObjectMap<String,Actor>();
+  children=new ArrayList<Actor>();
+  immutableChildren=Collections.unmodifiableList(children);
+  groups=new ArrayList<Group>();
+  immutableGroups=Collections.unmodifiableList(groups);
+  namesToActors=new ObjectMap<String,Actor>();
 }

@@ -7,6 +7,7 @@
  else     stage.getSpriteBatch().enableBlending();
     if (hitActor.name.startsWith("rotate"))     rotateSprites=!rotateSprites;
     if (hitActor.name.startsWith("scale"))     scaleSprites=!scaleSprites;
+    ui.touchUp(x,y,pointer,button);
   }
   return touched;
 }

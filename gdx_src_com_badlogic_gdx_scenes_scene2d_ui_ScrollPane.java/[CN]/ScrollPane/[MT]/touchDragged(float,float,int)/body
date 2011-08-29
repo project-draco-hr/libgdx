@@ -1,5 +1,4 @@
 {
-  if (pointer != 0)   return false;
   if (touchScrollH) {
     float delta=x - lastPoint.x;
     float scrollH=handlePos + delta;
@@ -8,7 +7,6 @@
     scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hScrollKnobBounds.width,scrollH);
     hScrollAmount=(scrollH - hScrollBounds.x) / (hScrollBounds.width - hScrollKnobBounds.width);
     lastPoint.set(x,y);
-    return true;
   }
  else   if (touchScrollV) {
     float delta=y - lastPoint.y;
@@ -18,7 +16,6 @@
     scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vScrollKnobBounds.height,scrollV);
     vScrollAmount=1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vScrollKnobBounds.height));
     lastPoint.set(x,y);
-    return true;
   }
- else   return super.touchDragged(x,y,pointer);
+ else   super.touchDragged(x,y,pointer);
 }

@@ -150,7 +150,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=19;
+cs=8;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -181,7 +181,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=51;
+cs=42;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -217,6 +217,16 @@ int __acts=_json_eof_actions[cs];
 int __nacts=(int)_json_actions[__acts++];
 while (__nacts-- > 0) {
 switch (_json_actions[__acts++]) {
+case 3:
+{
+String value=new String(data,s,p - s);
+s=p;
+if (needsUnescape) value=unescape(value);
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("string: " + name + "="+ value);
+string(name,value);
+}
+break;
 case 4:
 {
 String value=new String(data,s,p - s);

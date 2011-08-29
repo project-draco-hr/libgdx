@@ -6,7 +6,7 @@
   }
   Table table=getTable();
   Actor parent=table.parent;
-  float x=0, y=0;
+  float x=table.x, y=0;
   while (parent != null) {
     if (parent instanceof Group) {
       x+=parent.x;

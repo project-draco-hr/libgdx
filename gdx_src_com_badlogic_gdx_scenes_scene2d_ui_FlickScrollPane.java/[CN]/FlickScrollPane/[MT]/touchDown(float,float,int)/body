@@ -1,13 +1,5 @@
 {
-  if (pointer != 0 || !touchable | hit(x,y) == null) {
-    Gdx.app.log("","HERE d");
-    return false;
-  }
-  lastPoint.set(x,y);
-  scrolling=true;
-  scrollingStarted=System.currentTimeMillis();
-  scrollStartPoint.x=x;
-  scrollStartPoint.y=y;
-  focus(this,0);
-  return true;
+  if (pointer != 0)   return false;
+  if (emptySpaceOnlyScroll && super.touchDown(x,y,pointer))   return true;
+  return gestureDetector.touchDown((int)x,(int)y,pointer,0);
 }

@@ -1,18 +1,11 @@
 {
-  if (!touchable)   return false;
-  if (focusedActor[pointer] != null) {
-    point.x=x;
-    point.y=y;
-    focusedActor[pointer].toLocalCoordinates(point);
-    focusedActor[pointer].touchUp(point.x,point.y,pointer);
-    return true;
+  if (!touchable)   return;
+  point.x=x;
+  point.y=y;
+  Actor actor=focusedActor[pointer];
+  if (actor != this) {
+    actor.toLocalCoordinates(point);
+    actor.touchUp(point.x,point.y,pointer);
   }
-  int len=children.size() - 1;
-  for (int i=len; i >= 0; i--) {
-    Actor child=children.get(i);
-    if (!child.touchable)     continue;
-    toChildCoordinates(child,x,y,point);
-    if (child.touchUp(point.x,point.y,pointer))     return true;
-  }
-  return false;
+  if (focusedActor[pointer] == actor && actor != null)   actor.parent.focus(null,pointer);
 }

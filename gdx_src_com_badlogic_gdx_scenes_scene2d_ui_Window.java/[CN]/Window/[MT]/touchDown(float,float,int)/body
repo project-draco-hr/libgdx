@@ -1,21 +1,10 @@
 {
   if (pointer != 0)   return false;
-  if (hit(x,y) != null) {
-    if (parent.getActors().size() > 1)     parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
-    if (titleBounds.contains(x,y)) {
-      focus(this,0);
-      if (isMovable) {
-        move=true;
-      }
-      initial.set(x,y);
-    }
- else     if (!super.touchDown(x,y,pointer)) {
-      focus(this,0);
-    }
-    return true;
+  if (parent.getActors().size() > 1)   parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
+  if (titleBounds.contains(x,y)) {
+    if (isMovable)     move=true;
+    initial.set(x,y);
   }
- else {
-    if (isModal && parent.getActors().size() > 1)     parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
-    return isModal;
-  }
+ else   super.touchDown(x,y,pointer);
+  return true;
 }

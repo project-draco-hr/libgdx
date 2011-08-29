@@ -1,0 +1,6 @@
+{
+  flinging=true;
+  velX=camera.zoom * velocityX * 0.5f;
+  velY=camera.zoom * velocityY * 0.5f;
+  return false;
+}

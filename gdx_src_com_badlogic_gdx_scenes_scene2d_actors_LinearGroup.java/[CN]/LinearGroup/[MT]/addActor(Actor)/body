@@ -1,5 +1,0 @@
-{
-  if (actor instanceof Group && !(actor instanceof BoundGroup))   throw new GdxRuntimeException("Can only add Actors and BoundGroup subclasses");
-  super.addActor(actor);
-  layout();
-}

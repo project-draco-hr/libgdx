@@ -1,0 +1,13 @@
+{
+  value=value.replace("\\","\\\\");
+switch (this) {
+case minimal:
+    if (minimalPattern.matcher(value).matches())     return value;
+  return '"' + value + '"';
+case javascript:
+if (javascriptPattern.matcher(value).matches()) return value;
+return '"' + value + '"';
+default :
+return '"' + value + '"';
+}
+}

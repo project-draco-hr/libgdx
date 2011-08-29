@@ -1,23 +1,4 @@
 {
-  if (pointer != 0 || !touchable)   return false;
-  if (scrolling) {
-    if (hasHScroll) {
-      hScrollAmount-=(x - lastPoint.x) / (widget.width - width);
-      if (overscrolls) {
-        hScrollAmount=Math.max(0,hScrollAmount);
-        hScrollAmount=Math.min(1,hScrollAmount);
-      }
-    }
-    if (hasVScroll) {
-      vScrollAmount+=(y - lastPoint.y) / (widget.height - height);
-      if (overscrolls) {
-        vScrollAmount=Math.max(0,vScrollAmount);
-        vScrollAmount=Math.min(1,vScrollAmount);
-      }
-    }
-    lastPoint.set(x,y);
-    return true;
-  }
-  Gdx.app.log("","HERE dr!");
-  return false;
+  gestureDetector.touchDragged((int)x,(int)y,pointer);
+  super.touchDragged(x,y,pointer);
 }

@@ -16,8 +16,8 @@
     }
   }
  else {
-    final float cos=(float)Math.cos((float)Math.toRadians(child.rotation));
-    final float sin=(float)Math.sin((float)Math.toRadians(child.rotation));
+    final float cos=(float)Math.cos(child.rotation * MathUtils.degreesToRadians);
+    final float sin=(float)Math.sin(child.rotation * MathUtils.degreesToRadians);
     if (child.scaleX == 1 && child.scaleY == 1) {
       if (child.originX == 0 && child.originY == 0) {
         float tox=x - child.x;

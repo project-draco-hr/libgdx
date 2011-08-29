@@ -1,10 +1,2 @@
 {
-  if (widget instanceof Layout) {
-    Layout layout=(Layout)widget;
-    widget.width=Math.max(width,layout.getPrefWidth());
-    widget.height=Math.max(height,layout.getPrefHeight());
-    layout.invalidate();
-    layout.layout();
-  }
-  invalidated=false;
 }

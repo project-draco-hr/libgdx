@@ -5,7 +5,6 @@
       lastPoint.set(x,y);
       handlePos=hScrollKnobBounds.x;
       touchScrollH=true;
-      focus(this,0);
     }
  else {
       if (x < hScrollKnobBounds.x) {
@@ -22,7 +21,6 @@
       lastPoint.set(x,y);
       handlePos=vScrollKnobBounds.y;
       touchScrollV=true;
-      focus(this,0);
     }
  else {
       if (y < vScrollKnobBounds.y) {

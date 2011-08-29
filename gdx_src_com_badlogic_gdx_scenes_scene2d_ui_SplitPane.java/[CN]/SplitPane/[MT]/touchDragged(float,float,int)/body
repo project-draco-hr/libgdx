@@ -1,6 +1,5 @@
 {
   NinePatch handle=style.handle;
-  if (pointer != 0)   return false;
   if (touchDrag) {
     if (!vertical) {
       float delta=x - lastPoint.x;
@@ -28,7 +27,6 @@
       invalidate();
       lastPoint.set(x,y);
     }
-    return true;
   }
- else   return super.touchDragged(x,y,pointer);
+ else   super.touchDragged(x,y,pointer);
 }

@@ -1,5 +1,5 @@
 {
   FileHandle handle=resolve(fileName);
-  TextureRegion region=new TextureRegion(manager.get(data.getImageFile(),Texture.class));
+  TextureRegion region=new TextureRegion(manager.get(data.getImagePath(),Texture.class));
   return new BitmapFont(data,region,true);
 }

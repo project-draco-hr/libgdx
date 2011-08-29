@@ -3,12 +3,13 @@
   Object[] values=classToDefaultValues.get(type);
   if (values == null) {
     Object object=newInstance(type);
-    ObjectMap<String,Field> fields=typeToFields.get(type);
+    ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
     if (fields == null)     fields=cacheFields(type);
     values=new Object[fields.size];
     classToDefaultValues.put(type,values);
     int i=0;
-    for (    Field field : fields.values()) {
+    for (    FieldMetadata metadata : fields.values()) {
+      Field field=metadata.field;
       try {
         values[i++]=field.get(object);
       }

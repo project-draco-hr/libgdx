@@ -1,9 +1,0 @@
-{
-  if (!(writer instanceof JsonWriter))   writer=new JsonWriter(writer);
-  try {
-    writeValue(null,object,object.getClass(),(JsonWriter)writer);
-  }
- catch (  IOException ex) {
-    throw new SerializationException("Error writing JSON.",ex);
-  }
-}

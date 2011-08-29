@@ -1,0 +1,6 @@
+{
+  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
+  if (fields == null)   fields=cacheFields(type);
+  FieldMetadata metadata=fields.get(fieldName);
+  metadata.elementType=elementType;
+}

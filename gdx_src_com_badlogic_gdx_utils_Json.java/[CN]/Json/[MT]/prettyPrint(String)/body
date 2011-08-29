@@ -1,6 +1,0 @@
-{
-  JsonReader reader=new JsonReader();
-  StringBuilder buffer=new StringBuilder(512);
-  prettyPrint(reader.parse(json),buffer,0);
-  return buffer.toString();
-}

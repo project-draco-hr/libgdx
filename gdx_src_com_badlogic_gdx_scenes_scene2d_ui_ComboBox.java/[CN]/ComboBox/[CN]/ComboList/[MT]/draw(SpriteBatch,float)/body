@@ -16,7 +16,4 @@
     font.setScale(1,1);
     posY-=entryHeight;
   }
-  if (screenCoords.x != oldScreenCoords.x || screenCoords.y != oldScreenCoords.y) {
-    stage.removeActor(this);
-  }
 }

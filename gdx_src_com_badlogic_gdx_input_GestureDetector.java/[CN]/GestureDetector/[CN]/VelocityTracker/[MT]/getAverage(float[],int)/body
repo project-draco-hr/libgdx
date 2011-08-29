@@ -1,0 +1,8 @@
+{
+  numSamples=Math.min(sampleSize,numSamples);
+  float sum=0;
+  for (int i=0; i < numSamples; i++) {
+    sum+=values[i];
+  }
+  return sum / numSamples;
+}

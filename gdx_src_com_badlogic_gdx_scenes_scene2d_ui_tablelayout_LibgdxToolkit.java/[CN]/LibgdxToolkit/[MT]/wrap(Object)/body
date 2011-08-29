@@ -3,6 +3,10 @@
     if (defaultFont == null)     throw new IllegalStateException("No default font has been set.");
     return new Label(null,defaultFont,(String)object);
   }
-  if (object == null)   return new Group();
+  if (object == null) {
+    Group group=new Group();
+    group.transform=false;
+    return group;
+  }
   return super.wrap(object);
 }

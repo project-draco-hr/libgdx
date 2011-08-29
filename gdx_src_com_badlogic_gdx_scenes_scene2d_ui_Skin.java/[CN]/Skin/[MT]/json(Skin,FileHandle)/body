@@ -1,0 +1,126 @@
+{
+  Json json=new Json();
+  json.setTypeName(null);
+  json.setUsePrototypes(false);
+class AliasSerializer implements Serializer {
+    private final ObjectMap<String,?> map;
+    public AliasSerializer(    ObjectMap<String,?> map){
+      this.map=map;
+    }
+    public void write(    Json json,    Object object,    Class valueType) throws IOException {
+      for (      Entry<String,?> entry : map.entries()) {
+        if (entry.value.equals(object)) {
+          json.writeValue(entry.key);
+          return;
+        }
+      }
+      throw new SerializationException(object.getClass().getSimpleName() + " not found: " + object);
+    }
+    public Object read(    Json json,    Object jsonData,    Class type){
+      Object object=map.get((String)jsonData);
+      if (object == null)       throw new SerializationException("Unable to find " + type.getSimpleName() + ": "+ jsonData);
+      return object;
+    }
+  }
+  json.setSerializer(Skin.class,new Serializer<Skin>(){
+    public void write(    Json json,    Skin skin,    Class valueType) throws IOException {
+      json.writeObjectStart();
+      json.writeObjectStart("library");
+      json.writeField(skin,"colors");
+      json.writeField(skin,"ninePatches");
+      json.writeField(skin,"regions");
+      json.writeField(skin,"fonts");
+      json.writeObjectEnd();
+      json.writeObjectStart("styles");
+      json.setSerializer(TextureRegion.class,new AliasSerializer(skin.regions));
+      json.setSerializer(NinePatch.class,new AliasSerializer(skin.ninePatches));
+      json.setSerializer(Color.class,new AliasSerializer(skin.colors));
+      json.setSerializer(BitmapFont.class,new AliasSerializer(skin.fonts));
+      json.writeField(skin,"buttonStyles","buttons");
+      json.writeField(skin,"checkBoxStyles","checkBoxes");
+      json.writeField(skin,"sliderStyles","sliders");
+      json.writeField(skin,"labelStyles","labels");
+      json.writeField(skin,"toggleButtonStyles","toggleButtons");
+      json.writeField(skin,"listStyles","lists");
+      json.writeField(skin,"paneStyles","panes");
+      json.writeField(skin,"scrollPaneStyles","scrollPanes");
+      json.writeField(skin,"splitPaneStyles","splitPanes");
+      json.writeField(skin,"textFieldStyles","textFields");
+      json.writeField(skin,"comboBoxStyles","comboBoxes");
+      json.writeField(skin,"imageButtonStyles","imageButtons");
+      json.writeField(skin,"imageToggleButtonStyles","imageToggleButtons");
+      json.writeField(skin,"windowStyles","windows");
+      json.writeObjectEnd();
+      json.writeObjectEnd();
+    }
+    public Skin read(    Json json,    Object jsonData,    Class type){
+      ObjectMap map=(ObjectMap)jsonData;
+      Object library=map.get("library");
+      json.readField(skin,"colors",Color.class,library);
+      json.readField(skin,"ninePatches",NinePatch.class,library);
+      json.readField(skin,"regions",TextureRegion.class,library);
+      json.readField(skin,"fonts",BitmapFont.class,library);
+      json.setSerializer(TextureRegion.class,new AliasSerializer(skin.regions));
+      json.setSerializer(NinePatch.class,new AliasSerializer(skin.ninePatches));
+      json.setSerializer(Color.class,new AliasSerializer(skin.colors));
+      json.setSerializer(BitmapFont.class,new AliasSerializer(skin.fonts));
+      Object styles=map.get("styles");
+      json.readField(skin,"buttonStyles","buttons",ButtonStyle.class,styles);
+      json.readField(skin,"checkBoxStyles","checkBoxes",CheckBoxStyle.class,styles);
+      json.readField(skin,"sliderStyles","sliders",SliderStyle.class,styles);
+      json.readField(skin,"labelStyles","labels",LabelStyle.class,styles);
+      json.readField(skin,"toggleButtonStyles","toggleButtons",ToggleButtonStyle.class,styles);
+      json.readField(skin,"listStyles","lists",ListStyle.class,styles);
+      json.readField(skin,"paneStyles","panes",PaneStyle.class,styles);
+      json.readField(skin,"scrollPaneStyles","scrollPanes",ScrollPaneStyle.class,styles);
+      json.readField(skin,"splitPaneStyles","splitPanes",SplitPaneStyle.class,styles);
+      json.readField(skin,"textFieldStyles","textFields",TextFieldStyle.class,styles);
+      json.readField(skin,"comboBoxStyles","comboBoxes",ComboBoxStyle.class,styles);
+      json.readField(skin,"imageButtonStyles","imageButtons",ImageButtonStyle.class,styles);
+      json.readField(skin,"imageToggleButtonStyles","imageToggleButtons",ImageToggleButtonStyle.class,styles);
+      json.readField(skin,"windowStyles","windows",WindowStyle.class,styles);
+      return skin;
+    }
+  }
+);
+  json.setSerializer(TextureRegion.class,new Serializer<TextureRegion>(){
+    public void write(    Json json,    TextureRegion region,    Class valueType) throws IOException {
+      json.writeObjectStart();
+      json.writeValue("x",region.getRegionX());
+      json.writeValue("y",region.getRegionY());
+      json.writeValue("width",region.getRegionWidth());
+      json.writeValue("height",region.getRegionHeight());
+      json.writeObjectEnd();
+    }
+    public TextureRegion read(    Json json,    Object jsonData,    Class type){
+      int x=json.readValue("x",int.class,jsonData);
+      int y=json.readValue("y",int.class,jsonData);
+      int width=json.readValue("width",int.class,jsonData);
+      int height=json.readValue("height",int.class,jsonData);
+      return new TextureRegion(skin.texture,x,y,width,height);
+    }
+  }
+);
+  json.setSerializer(BitmapFont.class,new Serializer<BitmapFont>(){
+    public void write(    Json json,    BitmapFont font,    Class valueType) throws IOException {
+      json.writeValue(font.getData().getFontFile().toString().replace('\\','/'));
+    }
+    public BitmapFont read(    Json json,    Object jsonData,    Class type){
+      String path=json.readValue(String.class,jsonData);
+      FileHandle file=skinFile.parent().child(path);
+      if (!file.exists())       file=Gdx.files.internal(path);
+      return new BitmapFont(file,false);
+    }
+  }
+);
+  json.setSerializer(NinePatch.class,new Serializer<NinePatch>(){
+    public void write(    Json json,    NinePatch ninePatch,    Class valueType) throws IOException {
+      json.writeValue(ninePatch.getPatches());
+    }
+    public NinePatch read(    Json json,    Object jsonData,    Class type){
+      return new NinePatch(json.readValue(TextureRegion[].class,jsonData));
+    }
+  }
+);
+  return json;
+}

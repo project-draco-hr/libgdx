@@ -1,4 +1,5 @@
 {
+  if (named)   throw new IllegalStateException("Expected an object, array, or value since a name was set.");
   stack.pop().close();
   current=stack.peek();
   return this;

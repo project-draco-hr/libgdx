@@ -1,5 +1,8 @@
 {
-  this.label=text;
-  layout();
+  this.text=text;
+  TextBounds bounds=style.font.getMultiLineBounds(text);
+  cache.setMultiLineText(text,0,bounds.height);
+  prefWidth=bounds.width;
+  prefHeight=bounds.height;
   invalidateHierarchy();
 }

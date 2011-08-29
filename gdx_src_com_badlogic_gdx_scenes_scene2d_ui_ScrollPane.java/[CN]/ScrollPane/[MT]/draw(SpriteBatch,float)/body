@@ -4,11 +4,11 @@
   final NinePatch hScroll=style.hScroll;
   final NinePatch vScrollKnob=style.vScrollKnob;
   final NinePatch vScroll=style.vScroll;
-  setupTransform(batch);
-  if (invalidated)   layout();
+  applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,0,0,width,height);
+  batch.flush();
   ScissorStack.pushScissors(scissorBounds);
   drawChildren(batch,parentAlpha);
   ScissorStack.popScissors();
