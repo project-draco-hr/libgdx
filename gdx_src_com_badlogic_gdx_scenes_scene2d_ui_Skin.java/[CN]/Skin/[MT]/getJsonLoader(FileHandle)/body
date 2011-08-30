@@ -1,0 +1,100 @@
+{
+  final Skin skin=this;
+  Json json=new Json();
+  json.setTypeName(null);
+  json.setUsePrototypes(false);
+class AliasSerializer implements Serializer {
+    private final ObjectMap<String,?> map;
+    public AliasSerializer(    ObjectMap<String,?> map){
+      this.map=map;
+    }
+    public void write(    Json json,    Object object,    Class valueType) throws IOException {
+      for (      Entry<String,?> entry : map.entries()) {
+        if (entry.value.equals(object)) {
+          json.writeValue(entry.key);
+          return;
+        }
+      }
+      throw new SerializationException(object.getClass().getSimpleName() + " not found: " + object);
+    }
+    public Object read(    Json json,    Object jsonData,    Class type){
+      Object object=map.get((String)jsonData);
+      if (object == null)       throw new SerializationException("Unable to find " + type.getSimpleName() + ": "+ jsonData);
+      return object;
+    }
+  }
+  json.setSerializer(Skin.class,new Serializer<Skin>(){
+    public void write(    Json json,    Skin skin,    Class valueType) throws IOException {
+      json.writeObjectStart();
+      json.writeField(skin,"resources");
+      for (      Entry<Class,ObjectMap<String,Object>> entry : resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
+      json.writeField(skin,"styles");
+      json.writeObjectEnd();
+    }
+    public Skin read(    Json json,    Object jsonData,    Class ignored){
+      ObjectMap map=(ObjectMap)jsonData;
+      readTypeMap(json,(ObjectMap)map.get("resources"),true);
+      for (      Entry<Class,ObjectMap<String,Object>> entry : resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
+      readTypeMap(json,(ObjectMap)map.get("styles"),false);
+      return skin;
+    }
+    private void readTypeMap(    Json json,    ObjectMap<String,ObjectMap> typeToValueMap,    boolean isResource){
+      if (typeToValueMap == null)       throw new SerializationException("Skin file is missing a \"" + (isResource ? "resources" : "styles") + "\" section.");
+      for (      Entry<String,ObjectMap> typeEntry : typeToValueMap.entries()) {
+        Class type;
+        try {
+          type=Class.forName(typeEntry.key);
+        }
+ catch (        ClassNotFoundException ex) {
+          throw new SerializationException(ex);
+        }
+        ObjectMap<String,ObjectMap> valueMap=(ObjectMap)typeEntry.value;
+        for (        Entry<String,ObjectMap> valueEntry : valueMap.entries()) {
+          if (isResource)           addResource(valueEntry.key,json.readValue(type,valueEntry.value));
+ else           addStyle(valueEntry.key,json.readValue(type,valueEntry.value));
+        }
+      }
+    }
+  }
+);
+  json.setSerializer(TextureRegion.class,new Serializer<TextureRegion>(){
+    public void write(    Json json,    TextureRegion region,    Class valueType) throws IOException {
+      json.writeObjectStart();
+      json.writeValue("x",region.getRegionX());
+      json.writeValue("y",region.getRegionY());
+      json.writeValue("width",region.getRegionWidth());
+      json.writeValue("height",region.getRegionHeight());
+      json.writeObjectEnd();
+    }
+    public TextureRegion read(    Json json,    Object jsonData,    Class type){
+      int x=json.readValue("x",int.class,jsonData);
+      int y=json.readValue("y",int.class,jsonData);
+      int width=json.readValue("width",int.class,jsonData);
+      int height=json.readValue("height",int.class,jsonData);
+      return new TextureRegion(skin.texture,x,y,width,height);
+    }
+  }
+);
+  json.setSerializer(BitmapFont.class,new Serializer<BitmapFont>(){
+    public void write(    Json json,    BitmapFont font,    Class valueType) throws IOException {
+      json.writeValue(font.getData().getFontFile().toString().replace('\\','/'));
+    }
+    public BitmapFont read(    Json json,    Object jsonData,    Class type){
+      String path=json.readValue(String.class,jsonData);
+      FileHandle file=skinFile.parent().child(path);
+      if (!file.exists())       file=Gdx.files.internal(path);
+      return new BitmapFont(file,false);
+    }
+  }
+);
+  json.setSerializer(NinePatch.class,new Serializer<NinePatch>(){
+    public void write(    Json json,    NinePatch ninePatch,    Class valueType) throws IOException {
+      json.writeValue(ninePatch.getPatches());
+    }
+    public NinePatch read(    Json json,    Object jsonData,    Class type){
+      return new NinePatch(json.readValue(TextureRegion[].class,jsonData));
+    }
+  }
+);
+  return json;
+}

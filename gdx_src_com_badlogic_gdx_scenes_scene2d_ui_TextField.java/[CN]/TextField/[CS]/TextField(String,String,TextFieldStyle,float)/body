@@ -1,0 +1,10 @@
+{
+  super(name,prefWidth,0);
+  this.style=style;
+  this.initialPrefWidth=prefWidth;
+  this.clipboard=Clipboard.getDefaultClipboard();
+  layout();
+  this.width=this.prefWidth;
+  this.height=this.prefHeight;
+  setText(text);
+}

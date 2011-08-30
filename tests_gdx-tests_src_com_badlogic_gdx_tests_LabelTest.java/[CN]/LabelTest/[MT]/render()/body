@@ -5,7 +5,7 @@
   stage.draw();
   Table.drawDebug(stage);
   float x=40, y=40;
-  BitmapFont font=skin.getFont("default-font");
+  BitmapFont font=skin.getResource("default-font",BitmapFont.class);
   batch.begin();
   font.draw(batch,"The quick brown fox jumped over the lazy cow.",x,y);
   batch.end();

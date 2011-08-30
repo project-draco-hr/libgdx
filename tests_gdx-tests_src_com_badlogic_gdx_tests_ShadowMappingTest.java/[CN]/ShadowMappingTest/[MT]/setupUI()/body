@@ -1,11 +1,11 @@
 {
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
-  Label label=skin.newLabel("label","Camera:");
-  ComboBox cameraCombo=skin.newComboBox("cameraCombo",new String[]{"Scene","Light"},ui);
-  Label label2=skin.newLabel("label2","Shader");
-  ComboBox shaderCombo=skin.newComboBox("shaderCombo",new String[]{"flat","shadow-gen","shadow-map"},ui);
-  Label fpsLabel=skin.newLabel("fps","fps:");
+  Label label=new Label("label","Camera:",skin.getStyle(LabelStyle.class));
+  ComboBox cameraCombo=new ComboBox("cameraCombo",new String[]{"Scene","Light"},ui,skin.getStyle(ComboBoxStyle.class));
+  Label label2=new Label("label2","Shader",skin.getStyle(LabelStyle.class));
+  ComboBox shaderCombo=new ComboBox("shaderCombo",new String[]{"flat","shadow-gen","shadow-map"},ui,skin.getStyle(ComboBoxStyle.class));
+  Label fpsLabel=new Label("fps","fps:",skin.getStyle(LabelStyle.class));
   Table table=new Table("toolbar",Gdx.graphics.getWidth(),100);
   table.defaults().spaceRight(5);
   table.add(label);

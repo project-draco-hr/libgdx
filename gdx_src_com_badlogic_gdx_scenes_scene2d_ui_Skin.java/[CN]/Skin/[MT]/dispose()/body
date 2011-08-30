@@ -1,6 +1,4 @@
 {
   texture.dispose();
-  for (  BitmapFont font : fonts.values()) {
-    font.dispose();
-  }
+  for (  Object object : resources.values())   if (object instanceof Disposable)   ((Disposable)object).dispose();
 }

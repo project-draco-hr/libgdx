@@ -1,4 +1,5 @@
 {
+  if (widget == null)   return;
   applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
   ScissorStack.pushScissors(scissorBounds);

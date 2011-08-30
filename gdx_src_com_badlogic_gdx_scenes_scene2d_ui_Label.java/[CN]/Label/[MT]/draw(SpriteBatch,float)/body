@@ -1,4 +1,4 @@
 {
-  cache.setPosition(x,y);
+  cache.setPosition(x,y - style.font.getDescent());
   cache.draw(batch,parentAlpha);
 }

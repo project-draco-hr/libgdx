@@ -1,9 +1,9 @@
 {
   ui=new Stage(480,320,false);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
-  Button reload=skin.newButton("reload","Reload Shaders");
-  ComboBox camera=skin.newComboBox("camera",new String[]{"Camera","Light"},ui);
-  Label fps=skin.newLabel("fps","fps: ");
+  Button reload=new Button("reload","Reload Shaders",skin.getStyle(ButtonStyle.class));
+  ComboBox camera=new ComboBox("camera",new String[]{"Camera","Light"},ui,skin.getStyle(ComboBoxStyle.class));
+  Label fps=new Label("fps","fps: ",skin.getStyle(LabelStyle.class));
   Table table=new Table("container",(int)ui.width(),(int)ui.height());
   table.add(reload).spaceRight(5);
   table.add(camera).spaceRight(5);

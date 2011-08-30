@@ -1,5 +1,10 @@
 {
   texture=new Texture(textureFile);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
-  json(this,skinFile).fromJson(Skin.class,skinFile);
+  try {
+    getJsonLoader(skinFile).fromJson(Skin.class,skinFile);
+  }
+ catch (  SerializationException ex) {
+    throw new SerializationException("Error reading file: " + skinFile,ex);
+  }
 }

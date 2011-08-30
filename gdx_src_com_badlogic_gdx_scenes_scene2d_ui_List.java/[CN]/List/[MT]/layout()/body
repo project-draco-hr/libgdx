@@ -8,7 +8,7 @@
     TextBounds bounds=font.getBounds(entry);
     prefWidth=Math.max(bounds.width,prefWidth);
   }
-  entryHeight=font.getLineHeight() - font.getDescent();
+  entryHeight=font.getCapHeight() - font.getDescent() * 2;
   entryHeight+=selectedPatch.getTopHeight() + selectedPatch.getBottomHeight();
   prefWidth+=selectedPatch.getLeftWidth() + selectedPatch.getRightWidth();
   prefHeight=entries.length * entryHeight;

@@ -1,6 +1,4 @@
 {
-  float areaWidth=width;
-  float areaHeight=height;
   float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
@@ -11,12 +9,10 @@
     widgetWidth=widget.width;
     widgetHeight=widget.height;
   }
-  hasHScroll=false;
-  hasVScroll=false;
-  if (widgetWidth > areaWidth)   hasHScroll=true;
-  if (widgetHeight > areaHeight)   hasVScroll=true;
-  widgetWidth=Math.max(areaWidth,widgetWidth);
-  widgetHeight=Math.max(areaHeight,widgetHeight);
+  scrollX=widgetWidth > width || forceScrollX;
+  scrollY=widgetHeight > height || forceScrollY;
+  widgetWidth=Math.max(width,widgetWidth);
+  widgetHeight=Math.max(height,widgetHeight);
   if (widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.width=widgetWidth;
     widget.height=widgetHeight;
@@ -26,8 +22,15 @@
       layout.layout();
     }
   }
-  widgetAreaBounds.set(0,0,areaWidth,areaHeight);
-  widget.y=widgetAreaBounds.y - (!hasVScroll ? (int)(widget.height - areaHeight) : 0) - (hasVScroll ? (int)((widget.height - areaHeight) * (1 - vScrollAmount)) : 0);
-  widget.x=widgetAreaBounds.x - (hasHScroll ? (int)((widget.width - areaWidth) * hScrollAmount) : 0);
+  widgetAreaBounds.set(0,0,width,height);
+  maxX=widget.width - width;
+  maxY=widget.height - height;
+  float widgetY=widgetAreaBounds.y;
+  if (scrollY)   widgetY-=(int)amountY;
+ else   widgetY-=(int)maxY;
+  widget.y=widgetY;
+  float widgetX=widgetAreaBounds.x;
+  if (scrollX)   widgetX-=(int)amountX;
+  widget.x=widgetX;
   ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
 }

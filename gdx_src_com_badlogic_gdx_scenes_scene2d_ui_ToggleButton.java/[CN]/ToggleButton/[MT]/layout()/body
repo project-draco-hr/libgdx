@@ -2,7 +2,8 @@
   final BitmapFont font=style.font;
   final NinePatch downPatch=style.down;
   bounds.set(font.getMultiLineBounds(text));
-  prefHeight=downPatch.getBottomHeight() + downPatch.getTopHeight() + bounds.height+ -font.getDescent() * 2;
+  bounds.height-=font.getDescent();
+  prefHeight=downPatch.getBottomHeight() + downPatch.getTopHeight() + bounds.height+ -font.getDescent();
   prefWidth=downPatch.getLeftWidth() + downPatch.getRightWidth() + bounds.width;
   invalidated=false;
 }

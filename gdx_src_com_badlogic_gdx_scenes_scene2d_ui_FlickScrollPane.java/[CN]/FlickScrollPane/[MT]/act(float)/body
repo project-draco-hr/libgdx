@@ -1,46 +1,40 @@
 {
-  float bounceX=bounceDistance / (widget.width - width);
-  float bounceY=bounceDistance / (widget.height - height);
   if (flingTimer > 0) {
     float alpha=flingTimer / flingTime;
     alpha=alpha * alpha * alpha;
-    hScrollAmount-=velocityX * alpha * delta;
-    vScrollAmount+=velocityY * alpha * delta;
+    amountX-=velocityX * alpha * delta;
+    amountY+=velocityY * alpha * delta;
     clamp();
-    if (hScrollAmount == -bounceX)     velocityX=0;
-    if (hScrollAmount >= 1 + bounceX)     velocityX=0;
-    if (vScrollAmount == -bounceY)     velocityY=0;
-    if (vScrollAmount >= 1 + bounceY)     velocityY=0;
+    if (amountX == -bounceDistance)     velocityX=0;
+    if (amountX >= maxX + bounceDistance)     velocityX=0;
+    if (amountY == -bounceDistance)     velocityY=0;
+    if (amountY >= maxY + bounceDistance)     velocityY=0;
     flingTimer-=delta;
   }
   if (bounces && !gestureDetector.isPanning()) {
-    if (hScrollAmount < 0) {
-      float overscrollPercent=-hScrollAmount / bounceX;
+    if (amountX < 0) {
+      float overscrollPercent=-amountX / bounceDistance;
       float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      float bouncePercent=bouncePixels / (widget.width - width);
-      hScrollAmount+=bouncePercent * delta;
-      if (hScrollAmount > 0)       hScrollAmount=0;
+      amountX+=bouncePixels * delta;
+      if (amountX > 0)       amountX=0;
     }
- else     if (hScrollAmount > 1) {
-      float overscrollPercent=-(1 - hScrollAmount) / bounceX;
+ else     if (amountX > maxX) {
+      float overscrollPercent=-(maxX - amountX) / bounceDistance;
       float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      float bouncePercent=bouncePixels / (widget.width - width);
-      hScrollAmount-=bouncePercent * delta;
-      if (hScrollAmount < 1)       hScrollAmount=1;
+      amountX-=bouncePixels * delta;
+      if (amountX < maxX)       amountX=maxX;
     }
-    if (vScrollAmount < 0) {
-      float overscrollPercent=-vScrollAmount / bounceY;
+    if (amountY < 0) {
+      float overscrollPercent=-amountY / bounceDistance;
       float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      float bouncePercent=bouncePixels / (widget.height - height);
-      vScrollAmount+=bouncePercent * delta;
-      if (vScrollAmount > 0)       vScrollAmount=0;
+      amountY+=bouncePixels * delta;
+      if (amountY > 0)       amountY=0;
     }
- else     if (vScrollAmount > 1) {
-      float overscrollPercent=-(1 - vScrollAmount) / bounceY;
+ else     if (amountY > maxY) {
+      float overscrollPercent=-(maxY - amountY) / bounceDistance;
       float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      float bouncePercent=bouncePixels / (widget.height - height);
-      vScrollAmount-=bouncePercent * delta;
-      if (vScrollAmount < 1)       vScrollAmount=1;
+      amountY-=bouncePixels * delta;
+      if (amountY < maxY)       amountY=maxY;
     }
   }
 }
