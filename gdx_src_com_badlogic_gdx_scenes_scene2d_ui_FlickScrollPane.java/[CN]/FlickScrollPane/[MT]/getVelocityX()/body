@@ -1,0 +1,6 @@
+{
+  if (flingTimer <= 0)   return 0;
+  float alpha=flingTimer / flingTime;
+  alpha=alpha * alpha * alpha;
+  return velocityX * alpha * alpha* alpha;
+}

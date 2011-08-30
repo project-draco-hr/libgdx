@@ -13,27 +13,19 @@
   }
   if (bounces && !gestureDetector.isPanning()) {
     if (amountX < 0) {
-      float overscrollPercent=-amountX / bounceDistance;
-      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      amountX+=bouncePixels * delta;
+      amountX+=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -amountX / bounceDistance) * delta;
       if (amountX > 0)       amountX=0;
     }
  else     if (amountX > maxX) {
-      float overscrollPercent=-(maxX - amountX) / bounceDistance;
-      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      amountX-=bouncePixels * delta;
+      amountX-=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -(maxX - amountX) / bounceDistance) * delta;
       if (amountX < maxX)       amountX=maxX;
     }
     if (amountY < 0) {
-      float overscrollPercent=-amountY / bounceDistance;
-      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      amountY+=bouncePixels * delta;
+      amountY+=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -amountY / bounceDistance) * delta;
       if (amountY > 0)       amountY=0;
     }
  else     if (amountY > maxY) {
-      float overscrollPercent=-(maxY - amountY) / bounceDistance;
-      float bouncePixels=bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * overscrollPercent;
-      amountY-=bouncePixels * delta;
+      amountY-=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -(maxY - amountY) / bounceDistance) * delta;
       if (amountY < maxY)       amountY=maxY;
     }
   }

@@ -16,21 +16,12 @@
   if (widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.width=widgetWidth;
     widget.height=widgetHeight;
-    if (widget instanceof Layout) {
-      Layout layout=(Layout)widget;
-      layout.invalidate();
-      layout.layout();
-    }
+    needsLayout=true;
   }
   widgetAreaBounds.set(0,0,width,height);
   maxX=widget.width - width;
   maxY=widget.height - height;
-  float widgetY=widgetAreaBounds.y;
-  if (scrollY)   widgetY-=(int)amountY;
- else   widgetY-=(int)maxY;
-  widget.y=widgetY;
-  float widgetX=widgetAreaBounds.x;
-  if (scrollX)   widgetX-=(int)amountX;
-  widget.x=widgetX;
+  widget.y=-(int)(scrollY ? amountY : maxY);
+  widget.x=-(int)(scrollX ? amountX : 0);
   ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
 }
