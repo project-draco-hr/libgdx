@@ -1,3 +1,8 @@
 {
-  return parse(file.read());
+  try {
+    return parse(file.read());
+  }
+ catch (  Exception ex) {
+    throw new SerializationException("Error parsing file: " + file,ex);
+  }
 }

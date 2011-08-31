@@ -1,4 +1,5 @@
 {
+  if (!clamp)   return;
   if (bounces) {
     amountX=Math.max(-bounceDistance,amountX);
     amountX=Math.min(maxX + bounceDistance,amountX);

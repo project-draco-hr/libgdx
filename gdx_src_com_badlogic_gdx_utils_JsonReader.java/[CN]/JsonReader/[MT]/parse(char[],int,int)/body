@@ -272,13 +272,13 @@ parseRuntimeEx=ex;
 if (p < pe) {
 int lineNumber=1;
 for (int i=0; i < p; i++) if (data[i] == '\n') lineNumber++;
-throw new IllegalArgumentException("Error parsing JSON on line " + lineNumber + " near: "+ new String(data,p,pe - p),parseRuntimeEx);
+throw new SerializationException("Error parsing JSON on line " + lineNumber + " near: "+ new String(data,p,pe - p),parseRuntimeEx);
 }
  else if (elements.size != 0) {
 Object element=elements.peek();
 elements.clear();
-if (element instanceof ObjectMap) throw new IllegalArgumentException("Error parsing JSON, unmatched brace.");
- else throw new IllegalArgumentException("Error parsing JSON, unmatched bracket.");
+if (element instanceof ObjectMap) throw new SerializationException("Error parsing JSON, unmatched brace.");
+ else throw new SerializationException("Error parsing JSON, unmatched bracket.");
 }
 Object root=this.root;
 this.root=null;

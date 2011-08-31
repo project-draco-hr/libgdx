@@ -52,5 +52,5 @@
  else   if (object == null) {
     buffer.append("null");
   }
- else   throw new IllegalArgumentException("Unknown object type: " + object.getClass());
+ else   throw new SerializationException("Unknown object type: " + object.getClass());
 }
