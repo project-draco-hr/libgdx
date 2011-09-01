@@ -27,14 +27,14 @@ class AliasSerializer implements Serializer {
     public void write(    Json json,    Skin skin,    Class valueType) throws IOException {
       json.writeObjectStart();
       json.writeField(skin,"resources");
-      for (      Entry<Class,ObjectMap<String,Object>> entry : resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
+      for (      Entry<Class,ObjectMap<String,Object>> entry : data.resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
       json.writeField(skin,"styles");
       json.writeObjectEnd();
     }
     public Skin read(    Json json,    Object jsonData,    Class ignored){
       ObjectMap map=(ObjectMap)jsonData;
       readTypeMap(json,(ObjectMap)map.get("resources"),true);
-      for (      Entry<Class,ObjectMap<String,Object>> entry : resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
+      for (      Entry<Class,ObjectMap<String,Object>> entry : data.resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
       readTypeMap(json,(ObjectMap)map.get("styles"),false);
       return skin;
     }
@@ -71,7 +71,7 @@ class AliasSerializer implements Serializer {
       int y=json.readValue("y",int.class,jsonData);
       int width=json.readValue("width",int.class,jsonData);
       int height=json.readValue("height",int.class,jsonData);
-      return new TextureRegion(skin.texture,x,y,width,height);
+      return new TextureRegion(skin.data.texture,x,y,width,height);
     }
   }
 );

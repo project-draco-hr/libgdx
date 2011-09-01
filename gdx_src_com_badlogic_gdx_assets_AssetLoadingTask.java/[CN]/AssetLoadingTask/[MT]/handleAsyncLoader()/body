@@ -28,7 +28,7 @@
  catch (        Exception e) {
           throw new GdxRuntimeException("Couldn't load asset '" + assetDesc.fileName + "'",e);
         }
-        asset=asyncLoader.loadSync();
+        asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
       }
     }
   }
