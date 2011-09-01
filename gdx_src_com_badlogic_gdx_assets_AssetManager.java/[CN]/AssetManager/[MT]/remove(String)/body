@@ -1,28 +1,24 @@
 {
-  Class type=assetTypes.get(fileName);
-  if (type == null) {
-    if (tasks.size() > 0) {
-      AssetLoadingTask currAsset=tasks.firstElement();
-      if (currAsset.assetDesc.fileName.equals(fileName)) {
-        currAsset.cancel=true;
-        return;
-      }
+  int foundIndex=-1;
+  for (int i=0; i < preloadQueue.size; i++) {
+    if (preloadQueue.get(i).fileName.equals(fileName)) {
+      foundIndex=i;
+      break;
     }
-    int foundIndex=-1;
-    for (int i=0; i < preloadQueue.size; i++) {
-      if (preloadQueue.get(i).fileName.equals(fileName)) {
-        foundIndex=i;
-        break;
-      }
-    }
-    if (foundIndex == -1) {
-      throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
-    }
- else {
-      preloadQueue.removeIndex(foundIndex);
+  }
+  if (foundIndex != -1) {
+    preloadQueue.removeIndex(foundIndex);
+    return;
+  }
+  if (tasks.size() > 0) {
+    AssetLoadingTask currAsset=tasks.firstElement();
+    if (currAsset.assetDesc.fileName.equals(fileName)) {
+      currAsset.cancel=true;
       return;
     }
   }
+  Class type=assetTypes.get(fileName);
+  if (type == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
   Object asset=assets.get(type).get(fileName);
   if (asset instanceof Disposable)   ((Disposable)asset).dispose();
   if (asset instanceof ReferenceCountedAsset) {
