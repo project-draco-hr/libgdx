@@ -7,8 +7,9 @@
   dependencies.add(dependendAssetDesc.fileName);
   if (isLoaded(dependendAssetDesc.fileName)) {
     Class type=assetTypes.get(dependendAssetDesc.fileName);
-    Object asset=assets.get(type).get(dependendAssetDesc.fileName);
-    if (asset instanceof ReferenceCountedAsset)     ((ReferenceCountedAsset)asset).incRefCount();
+    RefCountedContainer assetRef=assets.get(type).get(dependendAssetDesc.fileName);
+    assetRef.incRefCount();
+    incrementRefCountedDependencies(dependendAssetDesc.fileName);
   }
  else {
     addTask(dependendAssetDesc);

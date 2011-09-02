@@ -5,12 +5,7 @@
   manager=new AssetManager();
   manager.setLoader(Texture.class,new TextureLoader(resolver));
   manager.setErrorListener(this);
-  manager.preload("data/animation.png",Texture.class);
-  manager.preload("data/pack1.png",Texture.class);
-  manager.preload("data/pack",TextureAtlas.class);
-  manager.preload("data/verdana39.png",Texture.class);
-  manager.preload("data/verdana39.fnt",BitmapFont.class);
-  manager.preload("data/test.etc1",Texture.class);
+  load();
   Texture.setAssetManager(manager);
   batch=new SpriteBatch();
   font=new BitmapFont(Gdx.files.internal("data/font.fnt"),false);

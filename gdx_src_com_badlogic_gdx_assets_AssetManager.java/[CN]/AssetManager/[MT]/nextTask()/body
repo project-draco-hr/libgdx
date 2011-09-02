@@ -1,9 +1,10 @@
 {
-  AssetDescriptor assetDesc=preloadQueue.removeIndex(0);
+  AssetDescriptor assetDesc=loadQueue.removeIndex(0);
   if (isLoaded(assetDesc.fileName)) {
     Class type=assetTypes.get(assetDesc.fileName);
-    Object asset=assets.get(type).get(assetDesc.fileName);
-    if (asset instanceof ReferenceCountedAsset)     ((ReferenceCountedAsset)asset).incRefCount();
+    RefCountedContainer assetRef=assets.get(type).get(assetDesc.fileName);
+    assetRef.incRefCount();
+    incrementRefCountedDependencies(assetDesc.fileName);
   }
  else {
     addTask(assetDesc);

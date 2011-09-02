@@ -1,5 +1,5 @@
 {
-  if (preloadQueue.size > 0 || tasks.size() != 0) {
+  if (loadQueue.size > 0 || tasks.size() != 0) {
     try {
       while (!updateTask())       ;
     }
@@ -9,12 +9,12 @@
   }
   Array<String> assets=assetTypes.keys().toArray();
   for (  String asset : assets) {
-    remove(asset);
+    unload(asset);
   }
   this.assets.clear();
   this.assetTypes.clear();
   this.assetDependencies.clear();
   this.loaded=0;
-  this.preloadQueue.clear();
+  this.loadQueue.clear();
   this.tasks.clear();
 }

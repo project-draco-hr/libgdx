@@ -3,7 +3,7 @@
   AssetDescriptor assetDesc=task.assetDesc;
   if (task.dependenciesLoaded && task.dependencies != null) {
     for (    AssetDescriptor desc : task.dependencies) {
-      remove(desc.fileName);
+      unload(desc.fileName);
     }
   }
   tasks.clear();

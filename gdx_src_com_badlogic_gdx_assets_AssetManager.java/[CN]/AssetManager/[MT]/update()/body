@@ -1,15 +1,15 @@
 {
   try {
     if (tasks.size() == 0) {
-      while (preloadQueue.size != 0 && tasks.size() == 0) {
+      while (loadQueue.size != 0 && tasks.size() == 0) {
         nextTask();
       }
       if (tasks.size() == 0)       return true;
     }
-    return updateTask() && preloadQueue.size == 0 && tasks.size() == 0;
+    return updateTask() && loadQueue.size == 0 && tasks.size() == 0;
   }
  catch (  Throwable t) {
     handleTaskError(t);
-    return preloadQueue.size == 0;
+    return loadQueue.size == 0;
   }
 }

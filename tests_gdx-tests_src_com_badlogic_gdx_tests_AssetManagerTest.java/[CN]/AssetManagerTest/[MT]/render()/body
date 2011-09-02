@@ -2,8 +2,12 @@
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   boolean result=manager.update();
   if (result & !diagnosed) {
-    Gdx.app.log("AssetManagerTest","\n" + manager.getDiagonistics());
+    Gdx.app.log("AssetManagerTest","\n" + manager.getDiagonistics() + "\n"+ Texture.getManagedStatus());
     diagnosed=false;
+    invalidateTexture(manager.get("data/animation.png",Texture.class));
+    invalidateTexture(manager.get("data/pack1.png",Texture.class));
+    invalidateTexture(manager.get("data/verdana39.png",Texture.class));
+    invalidateTexture(manager.get("data/test.etc1",Texture.class));
     Texture.invalidateAllTextures(Gdx.app);
     reloads++;
   }

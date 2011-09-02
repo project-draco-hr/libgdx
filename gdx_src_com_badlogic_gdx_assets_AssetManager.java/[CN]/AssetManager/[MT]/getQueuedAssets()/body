@@ -1,3 +1,3 @@
 {
-  return preloadQueue.size + (tasks.size());
+  return loadQueue.size + (tasks.size());
 }

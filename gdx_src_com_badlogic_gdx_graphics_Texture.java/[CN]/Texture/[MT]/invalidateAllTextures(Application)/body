@@ -8,32 +8,32 @@
     }
   }
  else {
-    while (!assetManager.update())     ;
+    assetManager.finishLoading();
     List<Texture> textures=new ArrayList<Texture>(managedTexureList);
-    managedTexureList.clear();
     for (    Texture texture : textures) {
       String fileName=assetManager.getAssetFileName(texture);
       if (fileName == null) {
         texture.reload();
       }
  else {
-        TextureParameter params=new TextureParameter();
+        final int refCount=assetManager.getReferenceCount(fileName);
+        assetManager.setReferenceCount(fileName,0);
         texture.glHandle=0;
+        TextureParameter params=new TextureParameter();
         params.textureData=texture.getTextureData();
         params.texture=texture;
-        int refCount=0;
-        if (texture instanceof ReferenceCountedAsset) {
-          refCount=((ReferenceCountedAsset)texture).getRefCount();
-          ((ReferenceCountedAsset)texture).setRefCount(0);
+        params.loadedCallback=new LoadedCallback(){
+          @Override public void finishedLoading(          AssetManager assetManager,          String fileName,          Class type){
+            assetManager.setReferenceCount(fileName,refCount);
+          }
         }
-        assetManager.remove(fileName);
-        if (texture instanceof ReferenceCountedAsset) {
-          ((ReferenceCountedAsset)texture).setRefCount(refCount);
-        }
+;
+        assetManager.unload(fileName);
         texture.glHandle=Texture.createGLHandle();
-        assetManager.preload(fileName,Texture.class,params);
+        assetManager.load(fileName,Texture.class,params);
       }
-      managedTexureList.add(texture);
     }
+    managedTexureList.clear();
+    managedTexureList.addAll(textures);
   }
 }

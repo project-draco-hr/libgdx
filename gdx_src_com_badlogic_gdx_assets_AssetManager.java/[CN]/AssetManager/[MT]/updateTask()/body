@@ -2,16 +2,22 @@
   AssetLoadingTask task=tasks.peek();
   if (task.update()) {
     assetTypes.put(task.assetDesc.fileName,task.assetDesc.type);
-    ObjectMap<String,Object> typeToAssets=assets.get(task.assetDesc.type);
+    ObjectMap<String,RefCountedContainer> typeToAssets=assets.get(task.assetDesc.type);
     if (typeToAssets == null) {
-      typeToAssets=new ObjectMap<String,Object>();
+      typeToAssets=new ObjectMap<String,RefCountedContainer>();
       assets.put(task.assetDesc.type,typeToAssets);
     }
-    typeToAssets.put(task.assetDesc.fileName,task.getAsset());
-    incrementRefCountedDependencies(task.assetDesc.fileName);
+    typeToAssets.put(task.assetDesc.fileName,new RefCountedContainer(task.getAsset()));
     if (tasks.size() == 1)     loaded++;
     tasks.pop();
-    if (task.cancel)     remove(task.assetDesc.fileName);
+    if (task.cancel) {
+      unload(task.assetDesc.fileName);
+    }
+ else {
+      if (task.assetDesc.params != null && task.assetDesc.params.loadedCallback != null) {
+        task.assetDesc.params.loadedCallback.finishedLoading(this,task.assetDesc.fileName,task.assetDesc.type);
+      }
+    }
     return true;
   }
  else {

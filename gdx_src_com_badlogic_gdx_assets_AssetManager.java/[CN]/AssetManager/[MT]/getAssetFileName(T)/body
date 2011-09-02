@@ -1,8 +1,8 @@
 {
   for (  Class assetType : assets.keys()) {
-    ObjectMap<String,Object> typedAssets=assets.get(assetType);
+    ObjectMap<String,RefCountedContainer> typedAssets=assets.get(assetType);
     for (    String fileName : typedAssets.keys()) {
-      Object otherAsset=typedAssets.get(fileName);
+      T otherAsset=(T)typedAssets.get(fileName).getObject(Object.class);
       if (otherAsset == asset || asset.equals(otherAsset))       return fileName;
     }
   }

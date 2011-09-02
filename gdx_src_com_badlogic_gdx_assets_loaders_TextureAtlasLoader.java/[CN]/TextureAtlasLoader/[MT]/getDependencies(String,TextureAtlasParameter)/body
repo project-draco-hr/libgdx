@@ -1,5 +1,4 @@
 {
-  if (parameter == null)   throw new IllegalArgumentException("Missing TextureAtlasParameter: " + fileName);
   FileHandle atlasFile=resolve(fileName);
   FileHandle imgDir=atlasFile.parent();
   if (parameter != null)   data=new TextureAtlasData(atlasFile,imgDir,parameter.flip);
