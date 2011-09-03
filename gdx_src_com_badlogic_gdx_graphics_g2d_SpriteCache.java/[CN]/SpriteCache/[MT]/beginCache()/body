@@ -1,7 +1,7 @@
 {
   if (currentCache != null)   throw new IllegalStateException("endCache must be called before begin.");
   int verticesPerImage=mesh.getNumIndices() > 0 ? 4 : 6;
-  currentCache=new Cache(caches.size(),mesh.getNumVertices() / verticesPerImage * 6);
+  currentCache=new Cache(caches.size(),mesh.getVerticesBuffer().limit());
   caches.add(currentCache);
   mesh.getVerticesBuffer().compact();
 }

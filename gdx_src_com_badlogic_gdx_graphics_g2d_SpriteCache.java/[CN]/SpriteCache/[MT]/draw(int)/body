@@ -1,7 +1,8 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteCache.begin must be called before draw.");
   Cache cache=caches.get(cacheID);
-  int offset=cache.offset;
+  int verticesPerImage=mesh.getNumIndices() > 0 ? 4 : 6;
+  int offset=cache.offset / (verticesPerImage * VERTEX_SIZE) * 6;
   Texture[] textures=cache.textures;
   int[] counts=cache.counts;
   if (Gdx.graphics.isGL20Available()) {
