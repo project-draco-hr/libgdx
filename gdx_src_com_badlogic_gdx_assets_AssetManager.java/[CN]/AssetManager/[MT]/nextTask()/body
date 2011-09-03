@@ -5,6 +5,7 @@
     RefCountedContainer assetRef=assets.get(type).get(assetDesc.fileName);
     assetRef.incRefCount();
     incrementRefCountedDependencies(assetDesc.fileName);
+    loaded++;
   }
  else {
     addTask(assetDesc);

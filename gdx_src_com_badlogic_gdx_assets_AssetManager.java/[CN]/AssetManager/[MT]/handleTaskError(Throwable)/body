@@ -1,4 +1,5 @@
 {
+  if (tasks.isEmpty())   throw new GdxRuntimeException(t);
   AssetLoadingTask task=tasks.pop();
   AssetDescriptor assetDesc=task.assetDesc;
   if (task.dependenciesLoaded && task.dependencies != null) {

@@ -9,6 +9,7 @@
   this.assetTypes.clear();
   this.assetDependencies.clear();
   this.loaded=0;
+  this.toLoad=0;
   this.loadQueue.clear();
   this.tasks.clear();
 }

@@ -26,7 +26,7 @@ class AliasSerializer implements Serializer {
   json.setSerializer(Skin.class,new Serializer<Skin>(){
     public void write(    Json json,    Skin skin,    Class valueType) throws IOException {
       json.writeObjectStart();
-      json.writeField(skin,"resources");
+      json.writeValue("resources",skin.data.resources);
       for (      Entry<Class,ObjectMap<String,Object>> entry : data.resources.entries())       json.setSerializer(entry.key,new AliasSerializer(entry.value));
       json.writeField(skin,"styles");
       json.writeObjectEnd();
