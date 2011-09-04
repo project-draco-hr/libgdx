@@ -1,3 +1,3 @@
 {
-  return x >= 0 && x < Math.max(prefWidth,width) && y >= 0 && y < prefHeight ? this : null;
+  return x >= 0 && x < width && y >= 0 && y < height ? this : null;
 }

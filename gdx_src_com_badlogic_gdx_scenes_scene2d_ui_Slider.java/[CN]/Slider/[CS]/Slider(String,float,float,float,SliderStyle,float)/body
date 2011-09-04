@@ -1,6 +1,6 @@
 {
   super(name,prefWidth,0);
-  this.style=style;
+  setStyle(style);
   if (min > max)   throw new IllegalArgumentException("min must be > max");
   if (steps < 0)   throw new IllegalArgumentException("unit must be > 0");
   this.min=min;

@@ -1,7 +1,7 @@
 {
   super(name,0,0);
   this.entries=entries;
-  this.style=style;
+  setStyle(style);
   this.stage=stage;
   layout();
   this.width=prefWidth;

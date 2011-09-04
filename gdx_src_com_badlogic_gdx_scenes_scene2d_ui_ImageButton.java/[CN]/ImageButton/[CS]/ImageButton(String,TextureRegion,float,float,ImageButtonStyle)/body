@@ -1,6 +1,6 @@
 {
   super(name,0,0);
-  this.style=style;
+  setStyle(style);
   this.image=image;
   this.imageWidth=imageWidth;
   this.imageHeight=imageHeight;

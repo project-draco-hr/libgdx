@@ -1,6 +1,6 @@
 {
   super(name,prefWidth,0);
-  this.style=style;
+  setStyle(style);
   this.initialPrefWidth=prefWidth;
   this.clipboard=Clipboard.getDefaultClipboard();
   layout();
