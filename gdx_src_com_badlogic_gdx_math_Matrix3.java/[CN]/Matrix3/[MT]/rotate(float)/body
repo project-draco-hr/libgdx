@@ -1,5 +1,5 @@
 {
-  if (angle == 0)   return;
+  if (angle == 0)   return this;
   angle=DEGREE_TO_RAD * angle;
   float cos=(float)Math.cos(angle);
   float sin=(float)Math.sin(angle);
@@ -13,4 +13,5 @@
   tmp[7]=0;
   tmp[8]=1;
   mul(vals,tmp);
+  return this;
 }

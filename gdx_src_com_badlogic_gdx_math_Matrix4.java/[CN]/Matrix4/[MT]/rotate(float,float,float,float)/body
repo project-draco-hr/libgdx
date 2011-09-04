@@ -1,5 +1,5 @@
 {
-  if (angle == 0)   return;
+  if (angle == 0)   return this;
   quat.set(tmpV.set(axisX,axisY,axisZ),angle);
   Quaternion quaternion=quat;
   float l_xx=quaternion.x * quaternion.x;
@@ -28,4 +28,5 @@
   tmp[M32]=0;
   tmp[M33]=1;
   mul(val,tmp);
+  return this;
 }

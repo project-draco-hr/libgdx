@@ -16,4 +16,5 @@
   tmp[M32]=0;
   tmp[M33]=1;
   mul(val,tmp);
+  return this;
 }
