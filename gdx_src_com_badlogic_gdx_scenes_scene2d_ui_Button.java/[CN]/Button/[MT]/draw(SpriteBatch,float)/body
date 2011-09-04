@@ -9,5 +9,6 @@
  else   upPatch.draw(batch,x,y,width,height);
   float textY=(int)(height * 0.5f) + (int)(bounds.height * 0.5f);
   font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-  font.drawMultiLine(batch,text,x + (int)(width * 0.5f),y + textY,0,HAlignment.CENTER);
+  if (isPressed)   font.drawMultiLine(batch,text,x + (int)(width * 0.5f) + style.pressedOffsetX,y + textY + style.pressedOffsetY,0,HAlignment.CENTER);
+ else   font.drawMultiLine(batch,text,x + (int)(width * 0.5f),y + textY,0,HAlignment.CENTER);
 }
