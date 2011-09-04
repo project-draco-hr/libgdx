@@ -1,6 +1,6 @@
 {
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  config.useGL20=true;
+  config.useGL20=false;
   config.vSyncEnabled=true;
-  new LwjglApplication(new AssetManagerTest(),config);
+  new LwjglApplication(new ShapeRendererTest(),config);
 }

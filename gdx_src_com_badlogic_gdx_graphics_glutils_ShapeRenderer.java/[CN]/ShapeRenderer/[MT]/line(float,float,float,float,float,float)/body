@@ -1,0 +1,7 @@
+{
+  if (currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Line)");
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x,y,z);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x2,y2,z2);
+}

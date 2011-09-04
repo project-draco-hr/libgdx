@@ -1,0 +1,20 @@
+{
+  float v00=mata[0] * matb[0] + mata[3] * matb[1] + mata[6] * matb[2];
+  float v01=mata[0] * matb[3] + mata[3] * matb[4] + mata[6] * matb[5];
+  float v02=mata[0] * matb[6] + mata[3] * matb[7] + mata[6] * matb[8];
+  float v10=mata[1] * matb[0] + mata[4] * matb[1] + mata[7] * matb[2];
+  float v11=mata[1] * matb[3] + mata[4] * matb[4] + mata[7] * matb[5];
+  float v12=mata[1] * matb[6] + mata[4] * matb[7] + mata[7] * matb[8];
+  float v20=mata[2] * matb[0] + mata[5] * matb[1] + mata[8] * matb[2];
+  float v21=mata[2] * matb[3] + mata[5] * matb[4] + mata[8] * matb[5];
+  float v22=mata[2] * matb[6] + mata[5] * matb[7] + mata[8] * matb[8];
+  mata[0]=v00;
+  mata[1]=v10;
+  mata[2]=v20;
+  mata[3]=v01;
+  mata[4]=v11;
+  mata[5]=v21;
+  mata[6]=v02;
+  mata[7]=v12;
+  mata[8]=v22;
+}

@@ -5,7 +5,7 @@
   skeleton=new MD5Joints();
   skeleton.joints=new float[anim.frames[0].joints.length];
   animInfo=new MD5AnimationInfo(anim.frames.length,anim.secondsPerFrame);
-  renderer=new MD5Renderer(model,false,true);
+  renderer=new MD5Renderer(model,true,false);
   renderer.setSkeleton(model.baseSkeleton);
   camera=new PerspectiveCamera(60,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   camera.position.set(0,25,100);

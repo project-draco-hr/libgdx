@@ -1,0 +1,19 @@
+{
+  tmp[M00]=1;
+  tmp[M01]=0;
+  tmp[M02]=0;
+  tmp[M03]=x;
+  tmp[M10]=0;
+  tmp[M11]=1;
+  tmp[M12]=0;
+  tmp[M13]=y;
+  tmp[M20]=0;
+  tmp[M21]=0;
+  tmp[M22]=1;
+  tmp[M23]=z;
+  tmp[M30]=0;
+  tmp[M31]=0;
+  tmp[M32]=0;
+  tmp[M33]=1;
+  mul(val,tmp);
+}

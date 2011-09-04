@@ -1,0 +1,13 @@
+{
+  if (currType != null)   throw new GdxRuntimeException("Call end() before beginning a new shape batch");
+  currType=type;
+  if (renderer instanceof ImmediateModeRenderer10) {
+    Gdx.gl10.glMatrixMode(GL10.GL_PROJECTION);
+    Gdx.gl10.glLoadMatrixf(projView.val,0);
+    Gdx.gl10.glMatrixMode(GL10.GL_MODELVIEW);
+    Gdx.gl10.glLoadIdentity();
+  }
+ else {
+    ((ImmediateModeRenderer20)renderer).begin(projView,currType.getGlType());
+  }
+}

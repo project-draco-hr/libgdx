@@ -1,0 +1,4 @@
+{
+  if (Gdx.graphics.isGL20Available())   renderer=new ImmediateModeRenderer20(false,true,0);
+ else   renderer=new ImmediateModeRenderer10();
+}
