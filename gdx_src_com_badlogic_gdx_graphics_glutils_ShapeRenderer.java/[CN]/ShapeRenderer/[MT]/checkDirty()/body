@@ -1,0 +1,6 @@
+{
+  if (!matrixDirty)   return;
+  ShapeType type=currType;
+  end();
+  begin(type);
+}

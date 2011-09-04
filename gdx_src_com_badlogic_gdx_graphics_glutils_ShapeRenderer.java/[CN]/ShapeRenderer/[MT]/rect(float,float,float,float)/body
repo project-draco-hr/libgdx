@@ -1,4 +1,7 @@
 {
+  if (currType != ShapeType.Rectangle)   throw new GdxRuntimeException("Must call begin(ShapeType.Rectangle)");
+  checkDirty();
+  checkFlush(8);
   renderer.color(color.r,color.g,color.b,color.a);
   renderer.vertex(x,y,0);
   renderer.color(color.r,color.g,color.b,color.a);

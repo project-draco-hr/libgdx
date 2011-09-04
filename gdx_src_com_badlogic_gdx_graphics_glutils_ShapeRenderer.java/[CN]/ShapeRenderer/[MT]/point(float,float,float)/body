@@ -1,5 +1,7 @@
 {
   if (currType != ShapeType.Point)   throw new GdxRuntimeException("Must call begin(ShapeType.Point)");
+  checkDirty();
+  checkFlush(1);
   renderer.color(color.r,color.g,color.b,color.a);
   renderer.vertex(x,y,z);
 }

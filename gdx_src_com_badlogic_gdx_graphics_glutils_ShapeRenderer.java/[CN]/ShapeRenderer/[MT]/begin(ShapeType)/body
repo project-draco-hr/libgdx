@@ -1,13 +1,19 @@
 {
   if (currType != null)   throw new GdxRuntimeException("Call end() before beginning a new shape batch");
   currType=type;
+  if (matrixDirty) {
+    combined.set(projView);
+    Matrix4.mul(combined.val,transform.val);
+    matrixDirty=false;
+  }
   if (renderer instanceof ImmediateModeRenderer10) {
     Gdx.gl10.glMatrixMode(GL10.GL_PROJECTION);
-    Gdx.gl10.glLoadMatrixf(projView.val,0);
+    Gdx.gl10.glLoadMatrixf(combined.val,0);
     Gdx.gl10.glMatrixMode(GL10.GL_MODELVIEW);
     Gdx.gl10.glLoadIdentity();
+    ((ImmediateModeRenderer10)renderer).begin(currType.getGlType());
   }
  else {
-    ((ImmediateModeRenderer20)renderer).begin(projView,currType.getGlType());
+    ((ImmediateModeRenderer20)renderer).begin(combined,currType.getGlType());
   }
 }
