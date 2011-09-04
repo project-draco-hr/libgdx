@@ -1,4 +1,5 @@
 {
+  this.maxVertices=maxVertices;
   if (Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("ImmediateModeRenderer can only be used with OpenGL ES 1.0/1.1");
   this.positions=new float[3 * maxVertices];
   this.positionsBuffer=allocateBuffer(3 * maxVertices);

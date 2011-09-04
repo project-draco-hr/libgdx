@@ -1,4 +1,5 @@
 {
+  this.maxVertices=maxVertices;
   VertexAttribute[] attribs=buildVertexAttributes(hasNormals,hasColors,numTexCoords);
   mesh=new Mesh(false,maxVertices,0,attribs);
   String vertexShader=createVertexShader(hasNormals,hasColors,numTexCoords);
