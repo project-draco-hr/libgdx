@@ -1,4 +1,0 @@
-{
-  if (key == Keys.ANY_KEY)   return pressedKeys.size() > 0;
- else   return pressedKeys.contains(key);
-}

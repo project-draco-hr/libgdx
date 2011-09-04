@@ -1,9 +1,0 @@
-{
-  SwingUtilities.invokeLater(new Runnable(){
-    public void run(){
-      String output=JOptionPane.showInputDialog(null,title,text);
-      listener.input(output);
-    }
-  }
-);
-}

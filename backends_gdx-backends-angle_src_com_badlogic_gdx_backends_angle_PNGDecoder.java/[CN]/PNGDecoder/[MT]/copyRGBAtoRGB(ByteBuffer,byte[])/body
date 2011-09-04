@@ -1,5 +1,0 @@
-{
-  for (int i=1, n=curLine.length; i < n; i+=4) {
-    buffer.put(curLine[i]).put(curLine[i + 1]).put(curLine[i + 2]);
-  }
-}

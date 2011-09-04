@@ -1,6 +1,0 @@
-{
-  final int bpp=this.bytesPerPixel;
-  for (int i=bpp + 1, n=curLine.length; i < n; ++i) {
-    curLine[i]+=curLine[i - bpp];
-  }
-}
