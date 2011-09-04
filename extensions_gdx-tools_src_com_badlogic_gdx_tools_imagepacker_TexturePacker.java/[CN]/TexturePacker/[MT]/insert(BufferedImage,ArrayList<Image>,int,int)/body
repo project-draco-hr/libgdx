@@ -5,13 +5,19 @@
     g.drawRect(0,0,width - 1,height - 1);
   }
   int x=0, y=0;
-  if (!filter.direction.isX()) {
-    x=xPadding;
-    width-=xPadding;
+  if (settings.edgePadding) {
+    if (!filter.direction.isX()) {
+      x=xPadding;
+      width-=xPadding;
+    }
+    if (!filter.direction.isY()) {
+      y=yPadding;
+      height-=yPadding;
+    }
   }
-  if (!filter.direction.isY()) {
-    y=yPadding;
-    height-=yPadding;
+ else {
+    if (!filter.direction.isX())     width+=xPadding;
+    if (!filter.direction.isY())     height+=yPadding;
   }
   Node root=new Node(x,y,width,height);
   int usedPixels=0;

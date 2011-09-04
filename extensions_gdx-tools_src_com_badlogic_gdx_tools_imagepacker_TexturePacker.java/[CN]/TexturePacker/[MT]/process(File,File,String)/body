@@ -4,8 +4,14 @@
   minHeight=filter.height != -1 ? filter.height : settings.minHeight;
   maxWidth=filter.width != -1 ? filter.width : settings.maxWidth;
   maxHeight=filter.height != -1 ? filter.height : settings.maxHeight;
-  xPadding=!filter.direction.isX() ? settings.padding : 0;
-  yPadding=!filter.direction.isY() ? settings.padding : 0;
+  if (settings.edgePadding) {
+    xPadding=!filter.direction.isX() ? settings.padding : 0;
+    yPadding=!filter.direction.isY() ? settings.padding : 0;
+  }
+ else {
+    xPadding=images.size() > 1 && !filter.direction.isX() ? settings.padding : 0;
+    yPadding=images.size() > 1 && !filter.direction.isY() ? settings.padding : 0;
+  }
   outputDir.mkdirs();
   writer=new FileWriter(packFile,true);
   try {
