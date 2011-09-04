@@ -1,7 +1,10 @@
 {
   super.flip(x,y);
+  float oldOriginX=getOriginX();
+  float oldOriginY=getOriginY();
   float oldOffsetX=region.offsetX;
   float oldOffsetY=region.offsetY;
   region.flip(x,y);
   translate(region.offsetX - oldOffsetX,region.offsetY - oldOffsetY);
+  setOrigin(oldOriginX,oldOriginY);
 }
