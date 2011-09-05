@@ -7,7 +7,7 @@
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   camera.update();
   camera.apply(gl);
-  renderer.render(world);
+  renderer.render(world,camera.combined);
   float renderTime=(System.nanoTime() - startTime) / 1000000000.0f;
   batch.begin();
   font.draw(batch,"fps:" + Gdx.graphics.getFramesPerSecond() + ", update: "+ updateTime+ ", render: "+ renderTime,0,20);

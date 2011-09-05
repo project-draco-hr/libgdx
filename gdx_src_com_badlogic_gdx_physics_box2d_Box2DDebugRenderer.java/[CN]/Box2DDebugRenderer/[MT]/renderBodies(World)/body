@@ -1,4 +1,5 @@
 {
+  renderer.begin(ShapeType.Line);
   for (Iterator<Body> iter=world.getBodies(); iter.hasNext(); ) {
     Body body=iter.next();
     Transform transform=body.getTransform();
@@ -17,6 +18,11 @@
     Joint joint=iter.next();
     drawJoint(joint);
   }
+  renderer.end();
+  if (Gdx.gl10 != null)   Gdx.gl10.glPointSize(3);
+  renderer.begin(ShapeType.Point);
   int len=world.getContactList().size();
   for (int i=0; i < len; i++)   drawContact(world.getContactList().get(i));
+  renderer.end();
+  if (Gdx.gl10 != null)   Gdx.gl10.glPointSize(1);
 }

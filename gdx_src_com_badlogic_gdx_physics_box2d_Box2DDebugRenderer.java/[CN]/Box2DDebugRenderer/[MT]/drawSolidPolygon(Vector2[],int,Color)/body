@@ -1,9 +1,14 @@
 {
-  renderer.begin(GL10.GL_LINE_LOOP);
+  renderer.setColor(color.r,color.g,color.b,color.a);
   for (int i=0; i < vertexCount; i++) {
     Vector2 v=vertices[i];
-    renderer.color(color.r,color.g,color.b,color.a);
-    renderer.vertex(v.x,v.y,0);
+    if (i == 0) {
+      lv.set(v);
+      f.set(v);
+      continue;
+    }
+    renderer.line(lv.x,lv.y,v.x,v.y);
+    lv.set(v);
   }
-  renderer.end();
+  renderer.line(f.x,f.y,lv.x,lv.y);
 }
