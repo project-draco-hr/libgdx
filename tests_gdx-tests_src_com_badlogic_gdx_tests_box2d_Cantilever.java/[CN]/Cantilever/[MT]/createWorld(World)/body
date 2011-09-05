@@ -3,8 +3,8 @@
 {
     BodyDef bd=new BodyDef();
     ground=world.createBody(bd);
-    PolygonShape shape=new PolygonShape();
-    shape.setAsEdge(new Vector2(-40,0),new Vector2(40,0));
+    EdgeShape shape=new EdgeShape();
+    shape.set(new Vector2(-40,0),new Vector2(40,0));
     ground.createFixture(shape,0);
     shape.dispose();
   }
@@ -41,7 +41,7 @@
       BodyDef bd=new BodyDef();
       bd.type=BodyType.DynamicBody;
       bd.position.set(-14.5f + 1.0f * i,15.0f);
-      bd.inertiaScale=10.0f;
+      bd.gravityScale=10.0f;
       Body body=world.createBody(bd);
       body.createFixture(fd);
       Vector2 anchor=new Vector2(-15.0f + 1.0f * i,15.0f);
@@ -86,7 +86,7 @@
       BodyDef bd=new BodyDef();
       bd.type=BodyType.DynamicBody;
       bd.position.set(5.5f + 1.0f * i,10.0f);
-      bd.inertiaScale=10.0f;
+      bd.gravityScale=10.0f;
       Body body=world.createBody(bd);
       body.createFixture(fd);
       if (i > 0) {

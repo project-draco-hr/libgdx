@@ -9,6 +9,4 @@
   lengthB=anchorB.dst(groundAnchorB);
   this.ratio=ratio;
   float C=lengthA + ratio * lengthB;
-  maxLengthA=C - ratio * minPulleyLength;
-  maxLengthB=(C - minPulleyLength) / ratio;
 }

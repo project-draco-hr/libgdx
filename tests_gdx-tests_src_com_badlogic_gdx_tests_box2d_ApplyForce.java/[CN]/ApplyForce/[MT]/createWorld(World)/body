@@ -6,18 +6,18 @@
     BodyDef bd=new BodyDef();
     bd.position.set(0,20);
     ground=world.createBody(bd);
-    PolygonShape shape=new PolygonShape();
+    EdgeShape shape=new EdgeShape();
     FixtureDef sd=new FixtureDef();
     sd.shape=shape;
     sd.density=0;
     sd.restitution=k_restitution;
-    shape.setAsEdge(new Vector2(-20,-20),new Vector2(-20,20));
+    shape.set(new Vector2(-20,-20),new Vector2(-20,20));
     ground.createFixture(sd);
-    shape.setAsEdge(new Vector2(20,-20),new Vector2(20,20));
+    shape.set(new Vector2(20,-20),new Vector2(20,20));
     ground.createFixture(sd);
-    shape.setAsEdge(new Vector2(-20,20),new Vector2(20,20));
+    shape.set(new Vector2(-20,20),new Vector2(20,20));
     ground.createFixture(sd);
-    shape.setAsEdge(new Vector2(-20,-20),new Vector2(20,-20));
+    shape.set(new Vector2(-20,-20),new Vector2(20,-20));
     ground.createFixture(sd);
     shape.dispose();
   }

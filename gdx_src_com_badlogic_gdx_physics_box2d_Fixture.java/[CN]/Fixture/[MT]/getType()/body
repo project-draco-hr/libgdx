@@ -1,5 +1,15 @@
 {
   int type=jniGetType(addr);
-  if (type == 0)   return Type.Circle;
- else   return Type.Polygon;
+switch (type) {
+case 0:
+    return Type.Circle;
+case 1:
+  return Type.Edge;
+case 2:
+return Type.Polygon;
+case 3:
+return Type.Chain;
+default :
+throw new GdxRuntimeException("Unknown shape type!");
+}
 }

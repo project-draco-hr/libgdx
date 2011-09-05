@@ -1,6 +1,6 @@
 {
   long start=System.nanoTime();
-  world.step(Gdx.graphics.getDeltaTime(),3,3);
+  world.step(Gdx.graphics.getDeltaTime(),8,3);
   float updateTime=(System.nanoTime() - start) / 1000000000.0f;
   GL10 gl=Gdx.graphics.getGL10();
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);

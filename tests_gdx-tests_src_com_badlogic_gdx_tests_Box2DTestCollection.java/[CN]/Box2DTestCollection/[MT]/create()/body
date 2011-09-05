@@ -4,5 +4,8 @@
     Box2DTest test=tests[testIndex];
     test.create();
   }
-  Gdx.input.setInputProcessor(this);
+  InputMultiplexer multiplexer=new InputMultiplexer();
+  multiplexer.addProcessor(this);
+  multiplexer.addProcessor(new GestureDetector(this));
+  Gdx.input.setInputProcessor(multiplexer);
 }

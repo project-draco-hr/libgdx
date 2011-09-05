@@ -3,6 +3,6 @@
   this.bodyB=bodyB;
   localAnchorA.set(bodyA.getLocalPoint(anchor));
   localAnchorB.set(bodyB.getLocalPoint(anchor));
-  localAxis1.set(bodyA.getLocalVector(axis));
+  localAxisA.set(bodyA.getLocalVector(axis));
   referenceAngle=bodyB.getAngle() - bodyA.getAngle();
 }

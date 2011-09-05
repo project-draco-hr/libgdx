@@ -2,8 +2,8 @@
 {
     BodyDef bd=new BodyDef();
     Body ground=world.createBody(bd);
-    PolygonShape shape=new PolygonShape();
-    shape.setAsEdge(new Vector2(-20.0f,0),new Vector2(20.0f,0f));
+    EdgeShape shape=new EdgeShape();
+    shape.set(new Vector2(-20.0f,0),new Vector2(20.0f,0f));
     ground.createFixture(shape,0);
     shape.dispose();
   }

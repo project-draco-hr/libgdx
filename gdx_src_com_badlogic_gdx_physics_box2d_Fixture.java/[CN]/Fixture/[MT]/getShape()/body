@@ -2,8 +2,22 @@
   if (shape == null) {
     long shapeAddr=jniGetShape(addr);
     int type=Shape.jniGetType(shapeAddr);
-    if (type == 0)     shape=new CircleShape(shapeAddr);
- else     shape=new PolygonShape(shapeAddr);
-  }
-  return shape;
+switch (type) {
+case 0:
+      shape=new CircleShape(shapeAddr);
+    break;
+case 1:
+  shape=new EdgeShape(shapeAddr);
+break;
+case 2:
+shape=new PolygonShape(shapeAddr);
+break;
+case 3:
+shape=new ChainShape(shapeAddr);
+break;
+default :
+throw new GdxRuntimeException("Unknown shape type!");
+}
+}
+return shape;
 }
