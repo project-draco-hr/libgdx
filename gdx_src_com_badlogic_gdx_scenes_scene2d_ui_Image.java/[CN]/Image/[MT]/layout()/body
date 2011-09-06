@@ -1,0 +1,42 @@
+{
+  if (!invalidated)   return;
+  invalidated=false;
+  float regionWidth=region.getRegionWidth();
+  float regionHeight=region.getRegionHeight();
+switch (scaling) {
+case fill:
+{
+      float widgetRatio=height / width;
+      float regionRatio=regionHeight / regionWidth;
+      float scale=regionRatio > widgetRatio ? width / regionWidth : height / regionHeight;
+      imageWidth=regionWidth * scale;
+      imageHeight=regionHeight * scale;
+      imageX=width / 2 - imageWidth / 2;
+      imageY=height / 2 - imageHeight / 2;
+      break;
+    }
+case fit:
+{
+    float widgetRatio=height / width;
+    float regionRatio=regionHeight / regionWidth;
+    float scale=regionRatio < widgetRatio ? width / regionWidth : height / regionHeight;
+    imageWidth=regionWidth * scale;
+    imageHeight=regionHeight * scale;
+    imageX=width / 2 - imageWidth / 2;
+    imageY=height / 2 - imageHeight / 2;
+    break;
+  }
+case stretch:
+imageX=0;
+imageY=0;
+imageWidth=width;
+imageHeight=height;
+break;
+case none:
+imageWidth=regionWidth;
+imageHeight=regionHeight;
+imageX=width / 2 - imageWidth / 2;
+imageY=height / 2 - imageHeight / 2;
+break;
+}
+}
