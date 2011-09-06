@@ -1,0 +1,10 @@
+{
+  if (!prefSizeInvalid)   return;
+  prefSizeInvalid=false;
+  layout.setLayoutSize(0,0,0,0);
+  layout.invalidate();
+  layout.layout();
+  prefWidth=layout.getMinWidth();
+  prefHeight=layout.getMinHeight();
+  layout.invalidate();
+}

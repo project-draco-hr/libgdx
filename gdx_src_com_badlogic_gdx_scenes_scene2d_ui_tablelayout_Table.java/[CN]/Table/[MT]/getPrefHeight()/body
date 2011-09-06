@@ -1,5 +1,4 @@
 {
-  layout.setLayoutSize(0,0,0,0);
-  layout.layout();
-  return layout.getMinHeight();
+  if (prefSizeInvalid)   computePrefSize();
+  return prefHeight;
 }
