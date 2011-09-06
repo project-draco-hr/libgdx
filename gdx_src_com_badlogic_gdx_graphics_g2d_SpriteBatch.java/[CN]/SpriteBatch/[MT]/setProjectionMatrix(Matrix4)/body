@@ -1,4 +1,5 @@
 {
-  if (drawing)   throw new GdxRuntimeException("Can't set the matrix within begin()/end() block");
+  if (drawing)   flush();
   projectionMatrix.set(projection);
+  if (drawing)   setupMatrices();
 }
