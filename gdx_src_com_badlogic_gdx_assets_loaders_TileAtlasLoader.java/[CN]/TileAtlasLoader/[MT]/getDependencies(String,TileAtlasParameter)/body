@@ -1,0 +1,6 @@
+{
+  if (parameter == null)   throw new IllegalArgumentException("Missing TileAtlasParameter: " + fileName);
+  Array<AssetDescriptor> deps=new Array<AssetDescriptor>();
+  deps.add(new AssetDescriptor(parameter.tileMapFile,TiledMap.class));
+  return deps;
+}

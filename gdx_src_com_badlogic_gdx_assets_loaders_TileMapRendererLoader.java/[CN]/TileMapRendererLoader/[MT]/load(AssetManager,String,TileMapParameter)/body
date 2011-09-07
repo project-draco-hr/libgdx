@@ -1,0 +1,6 @@
+{
+  TiledMap map=TiledLoader.createMap(resolve(fileName));
+  TileAtlas atlas=new TileAtlas(map,resolve(parameter.imageDirectory));
+  if (parameter.unitsPerTileX == 0 || parameter.unitsPerTileY == 0)   return new TileMapRenderer(map,atlas,parameter.tilesPerBlockX,parameter.tilesPerBlockY);
+ else   return new TileMapRenderer(map,atlas,parameter.tilesPerBlockX,parameter.tilesPerBlockY,parameter.unitsPerTileX,parameter.unitsPerTileY);
+}

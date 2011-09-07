@@ -16,4 +16,5 @@
     blendedTilesArray=new IntArray(0);
   }
   init(tileMap,atlas,map.tileWidth,map.tileHeight,unitsPerTileX,unitsPerTileY,blendedTilesArray,tilesPerBlockX,tilesPerBlockY,shader);
+  this.map=map;
 }
