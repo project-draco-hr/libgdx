@@ -4,11 +4,6 @@
   if (result & !diagnosed) {
     Gdx.app.log("AssetManagerTest","\n" + manager.getDiagonistics() + "\n"+ Texture.getManagedStatus());
     diagnosed=false;
-    invalidateTexture(manager.get("data/animation.png",Texture.class));
-    invalidateTexture(manager.get("data/pack1.png",Texture.class));
-    invalidateTexture(manager.get("data/verdana39.png",Texture.class));
-    invalidateTexture(manager.get("data/test.etc1",Texture.class));
-    Texture.invalidateAllTextures(Gdx.app);
     reloads++;
   }
   frame++;
@@ -18,6 +13,7 @@
   if (manager.isLoaded("data/verdana39.png"))   batch.draw(manager.get("data/verdana39.png",Texture.class),300,100);
   if (manager.isLoaded("data/pack"))   batch.draw(manager.get("data/pack",TextureAtlas.class).findRegion("particle-star"),164,100);
   if (manager.isLoaded("data/verdana39.fnt"))   manager.get("data/verdana39.fnt",BitmapFont.class).draw(batch,"This is a test",100,200);
+  if (manager.isLoaded("data/tiledmap/tilemap csv.tmx"))   manager.get("data/tiledmap/tilemap csv.tmx",TileMapRenderer.class).render();
   font.draw(batch,"loaded: " + manager.getProgress() + ", reloads: "+ reloads,0,30);
   batch.end();
   if (Gdx.input.justTouched()) {
