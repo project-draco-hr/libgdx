@@ -1,0 +1,25 @@
+{
+  int hashCode=key.hashCode();
+  int index=hashCode & mask;
+  if (key.equals(keyTable[index])) {
+    keyTable[index]=null;
+    int oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  index=hash2(hashCode);
+  if (key.equals(keyTable[index])) {
+    keyTable[index]=null;
+    int oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  index=hash3(hashCode);
+  if (key.equals(keyTable[index])) {
+    keyTable[index]=null;
+    int oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  return removeStash(key,defaultValue);
+}

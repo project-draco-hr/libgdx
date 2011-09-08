@@ -1,0 +1,11 @@
+{
+  if (currentIndex < 0)   throw new IllegalStateException("next must be called before remove.");
+  if (currentIndex >= map.capacity) {
+    map.removeStashIndex(currentIndex);
+  }
+ else {
+    map.keyTable[currentIndex]=null;
+  }
+  currentIndex=-1;
+  map.size--;
+}
