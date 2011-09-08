@@ -1,7 +1,7 @@
 {
   loadQueue.clear();
   while (!update())   ;
-  HashMap<String,Integer> dependencyCount=new HashMap<String,Integer>();
+  ObjectIntMap<String> dependencyCount=new ObjectIntMap<String>();
   while (assetTypes.size > 0) {
     dependencyCount.clear();
     Array<String> assets=assetTypes.keys().toArray();
@@ -12,13 +12,13 @@
       Array<String> dependencies=assetDependencies.get(asset);
       if (dependencies == null)       continue;
       for (      String dependency : dependencies) {
-        int count=dependencyCount.get(dependency);
+        int count=dependencyCount.get(dependency,0);
         count++;
         dependencyCount.put(dependency,count);
       }
     }
     for (    String asset : assets) {
-      if (dependencyCount.get(asset) == 0) {
+      if (dependencyCount.get(asset,0) == 0) {
         unload(asset);
       }
     }
