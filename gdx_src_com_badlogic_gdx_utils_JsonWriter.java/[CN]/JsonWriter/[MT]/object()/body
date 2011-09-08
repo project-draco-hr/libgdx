@@ -9,6 +9,6 @@
       named=false;
     }
   }
-  stack.push(current=new JsonObject(false));
+  stack.add(current=new JsonObject(false));
   return this;
 }
