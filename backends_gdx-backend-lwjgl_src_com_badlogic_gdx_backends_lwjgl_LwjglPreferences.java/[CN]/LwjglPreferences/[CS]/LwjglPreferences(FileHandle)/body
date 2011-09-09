@@ -1,0 +1,23 @@
+{
+  this.name=file.name();
+  InputStream in=null;
+  try {
+    in=new BufferedInputStream(file.read());
+    properties.loadFromXML(in);
+  }
+ catch (  Throwable t) {
+  }
+ finally {
+    if (in != null)     try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    @Override public void run(){
+      flush();
+    }
+  }
+);
+}
