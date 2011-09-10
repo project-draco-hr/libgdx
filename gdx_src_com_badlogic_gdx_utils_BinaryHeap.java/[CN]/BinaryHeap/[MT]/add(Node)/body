@@ -1,0 +1,11 @@
+{
+  if (size == nodes.length) {
+    Node[] newNodes=new Node[size << 1];
+    System.arraycopy(nodes,0,newNodes,0,size);
+    nodes=newNodes;
+  }
+  node.index=size;
+  nodes[size]=node;
+  up(size++);
+  return node;
+}

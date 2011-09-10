@@ -1,0 +1,8 @@
+{
+  Node[] nodes=this.nodes;
+  Node popped=nodes[0];
+  nodes[0]=nodes[--size];
+  nodes[size]=null;
+  if (size > 0)   down(0);
+  return popped;
+}
