@@ -1,5 +1,7 @@
 {
   this.region=new AtlasRegion(region);
+  originalOffsetX=region.offsetX;
+  originalOffsetY=region.offsetY;
   setRegion(region);
   setOrigin(region.originalWidth / 2f,region.originalHeight / 2f);
   int width=Math.abs(region.getRegionWidth());

@@ -1,3 +1,7 @@
 {
-  super.setBounds(x + region.offsetX,y + region.offsetY,width * region.packedWidth / region.originalWidth,height * region.packedHeight / region.originalHeight);
+  float widthRatio=width / region.originalWidth;
+  float heightRatio=height / region.originalHeight;
+  region.offsetX=originalOffsetX * widthRatio;
+  region.offsetY=originalOffsetY * heightRatio;
+  super.setBounds(x + region.offsetX,y + region.offsetY,region.packedWidth * widthRatio,region.packedHeight * heightRatio);
 }
