@@ -1,0 +1,5 @@
+{
+  this(ordered,array.length);
+  size=array.length;
+  System.arraycopy(array,0,items,0,size);
+}

@@ -1,5 +1,3 @@
 {
-  StringWriter buffer=new StringWriter();
-  toJson(object,buffer);
-  return buffer.toString();
+  return toJson(object,object == null ? null : object.getClass(),(Class)null);
 }

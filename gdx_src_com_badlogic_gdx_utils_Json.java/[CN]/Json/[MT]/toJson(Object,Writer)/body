@@ -1,12 +1,3 @@
 {
-  if (!(writer instanceof JsonWriter)) {
-    this.writer=new JsonWriter(writer);
-    ((JsonWriter)this.writer).setOutputType(outputType);
-  }
-  try {
-    writeValue(object,object.getClass(),null);
-  }
- catch (  IOException ex) {
-    throw new SerializationException("Error writing JSON.",ex);
-  }
+  toJson(object,object == null ? null : object.getClass(),null,writer);
 }
