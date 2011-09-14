@@ -1,0 +1,8 @@
+{
+  if (yDown) {
+    up.set(0,-1,0);
+    direction.set(0,0,1);
+  }
+  position.set(viewportWidth / 2.0f,viewportHeight / 2.0f,0);
+  update();
+}
