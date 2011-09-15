@@ -1,0 +1,10 @@
+{
+  renderer=new ShapeRenderer();
+  batch=new SpriteBatch();
+  mLower=new Vector2();
+  mUpper=new Vector2();
+  for (int i=0; i < vertices.length; i++)   vertices[i]=new Vector2();
+  mDrawBodies=drawBodies;
+  mDrawJoints=drawJoints;
+  mDrawAABBs=drawAABBs;
+}

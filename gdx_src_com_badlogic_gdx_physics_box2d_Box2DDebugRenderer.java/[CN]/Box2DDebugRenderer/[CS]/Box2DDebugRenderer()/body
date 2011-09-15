@@ -1,5 +1,3 @@
 {
-  renderer=new ShapeRenderer();
-  batch=new SpriteBatch();
-  for (int i=0; i < vertices.length; i++)   vertices[i]=new Vector2();
+  this(true,true,false);
 }
