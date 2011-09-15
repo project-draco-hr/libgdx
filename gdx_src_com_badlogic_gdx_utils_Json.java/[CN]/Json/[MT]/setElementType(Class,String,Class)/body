@@ -2,5 +2,6 @@
   ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
   if (fields == null)   fields=cacheFields(type);
   FieldMetadata metadata=fields.get(fieldName);
+  if (metadata == null)   throw new SerializationException("Field not found: " + fieldName + " ("+ type.getName()+ ")");
   metadata.elementType=elementType;
 }

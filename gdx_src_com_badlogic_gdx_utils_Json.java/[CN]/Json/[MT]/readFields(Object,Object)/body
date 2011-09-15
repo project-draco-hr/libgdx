@@ -8,7 +8,7 @@
     if (ignoreUnknownFields) {
       if (debug)       System.out.println("Ignoring unknown field: " + entry.key + " ("+ type.getName()+ ")");
     }
- else     if (metadata == null)     throw new SerializationException("Unable to find field: " + entry.key + " ("+ type.getName()+ ")");
+ else     if (metadata == null)     throw new SerializationException("Field not found: " + entry.key + " ("+ type.getName()+ ")");
     Field field=metadata.field;
     if (entry.value == null)     continue;
     try {
