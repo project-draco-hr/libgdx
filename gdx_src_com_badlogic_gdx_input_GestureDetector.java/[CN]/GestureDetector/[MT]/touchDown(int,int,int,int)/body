@@ -2,13 +2,20 @@
   if (pointer > 1)   return false;
   if (pointer == 0) {
     firstPointer.set(x,y);
-    inTapSquare=true;
-    pinching=false;
-    longPressFired=false;
-    tapSquareCenterX=x;
-    tapSquareCenterY=y;
     gestureStartTime=Gdx.input.getCurrentEventTime();
     tracker.start(x,y,gestureStartTime);
+    if (Gdx.input.isTouched(1)) {
+      inTapSquare=false;
+      pinching=true;
+      initialDistance=firstPointer.dst(secondPointer);
+    }
+ else {
+      inTapSquare=true;
+      pinching=false;
+      longPressFired=false;
+      tapSquareCenterX=x;
+      tapSquareCenterY=y;
+    }
   }
  else {
     secondPointer.set(x,y);

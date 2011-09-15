@@ -9,6 +9,7 @@
   }
  else   if (pinching) {
     pinching=false;
+    panning=true;
     if (pointer == 0) {
       tracker.start((int)secondPointer.x,(int)secondPointer.y,Gdx.input.getCurrentEventTime());
     }
