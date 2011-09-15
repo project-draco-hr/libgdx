@@ -9,8 +9,12 @@
   }
  else   if (pinching) {
     pinching=false;
-    int otherPointer=pointer == 1 ? 0 : 1;
-    tracker.start(Gdx.input.getX(otherPointer),Gdx.input.getY(otherPointer),Gdx.input.getCurrentEventTime());
+    if (pointer == 0) {
+      tracker.start((int)secondPointer.x,(int)secondPointer.y,Gdx.input.getCurrentEventTime());
+    }
+ else {
+      tracker.start((int)firstPointer.x,(int)firstPointer.y,Gdx.input.getCurrentEventTime());
+    }
   }
  else {
     long time=Gdx.input.getCurrentEventTime();
