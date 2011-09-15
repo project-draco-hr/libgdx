@@ -11,6 +11,7 @@ case android.view.KeyEvent.ACTION_DOWN:
 event.type=KeyEvent.KEY_DOWN;
 if (keyCode == android.view.KeyEvent.KEYCODE_BACK && e.isAltPressed()) {
 keyCode=Keys.BUTTON_CIRCLE;
+event.keyCode=keyCode;
 }
 keyEvents.add(event);
 keys.put(event.keyCode,null);
@@ -22,6 +23,7 @@ event.keyCode=e.getKeyCode();
 event.type=KeyEvent.KEY_UP;
 if (keyCode == android.view.KeyEvent.KEYCODE_BACK && e.isAltPressed()) {
 keyCode=Keys.BUTTON_CIRCLE;
+event.keyCode=keyCode;
 }
 keyEvents.add(event);
 event=usedKeyEvents.obtain();
@@ -29,9 +31,11 @@ event.keyChar=character;
 event.keyCode=0;
 event.type=KeyEvent.KEY_TYPED;
 keyEvents.add(event);
-keys.remove(e.getKeyCode());
+if (keyCode == Keys.BUTTON_CIRCLE) keys.remove(Keys.BUTTON_CIRCLE);
+ else keys.remove(e.getKeyCode());
 }
 }
+if (keyCode == Keys.BUTTON_CIRCLE) return true;
 if (catchBack && keyCode == android.view.KeyEvent.KEYCODE_BACK) return true;
 if (catchMenu && keyCode == android.view.KeyEvent.KEYCODE_MENU) return true;
 return false;
