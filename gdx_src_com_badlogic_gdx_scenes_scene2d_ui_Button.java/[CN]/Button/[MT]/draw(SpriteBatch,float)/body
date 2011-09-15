@@ -1,14 +1,25 @@
 {
-  final BitmapFont font=style.font;
-  final Color fontColor=style.fontColor;
-  final NinePatch downPatch=style.down;
-  final NinePatch upPatch=style.up;
-  if (invalidated)   layout();
-  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  if (isPressed)   downPatch.draw(batch,x,y,width,height);
- else   upPatch.draw(batch,x,y,width,height);
-  float textY=(int)(height * 0.5f) + (int)(bounds.height * 0.5f);
-  font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-  if (isPressed)   font.drawMultiLine(batch,text,x + (int)(width * 0.5f) + style.pressedOffsetX,y + textY + style.pressedOffsetY,0,HAlignment.CENTER);
- else   font.drawMultiLine(batch,text,x + (int)(width * 0.5f) + style.unpressedOffsetX,y + textY + style.unpressedOffsetY,0,HAlignment.CENTER);
+  float offsetX=0, offsetY=0;
+  if (isPressed) {
+    setBackground(style.down);
+    offsetX=style.pressedOffsetX;
+    offsetY=style.pressedOffsetY;
+  }
+ else {
+    if (style.checked == null)     setBackground(style.up);
+ else     setBackground(isChecked ? style.checked : style.up);
+    offsetX=style.unpressedOffsetX;
+    offsetY=style.unpressedOffsetY;
+  }
+  for (int i=0; i < children.size(); i++) {
+    Actor child=children.get(i);
+    child.x+=offsetX;
+    child.y+=offsetY;
+  }
+  super.draw(batch,parentAlpha);
+  for (int i=0; i < children.size(); i++) {
+    Actor child=children.get(i);
+    child.x-=offsetX;
+    child.y-=offsetY;
+  }
 }

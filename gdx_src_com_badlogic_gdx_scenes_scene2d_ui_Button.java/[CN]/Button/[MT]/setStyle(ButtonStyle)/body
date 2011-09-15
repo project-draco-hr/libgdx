@@ -1,4 +1,4 @@
 {
   this.style=style;
-  invalidateHierarchy();
+  setBackground(isPressed ? style.down : style.up);
 }

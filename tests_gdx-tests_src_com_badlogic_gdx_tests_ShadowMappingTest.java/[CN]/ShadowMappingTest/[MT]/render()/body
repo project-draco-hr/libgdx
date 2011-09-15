@@ -46,4 +46,5 @@
   Label fps=(Label)ui.findActor("fps");
   fps.setText("fps: " + Gdx.graphics.getFramesPerSecond());
   ui.draw();
+  Table.drawDebug(ui);
 }

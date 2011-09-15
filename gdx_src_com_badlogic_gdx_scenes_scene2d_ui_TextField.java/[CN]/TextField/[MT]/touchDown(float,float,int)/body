@@ -7,8 +7,9 @@
     float pos=glyphPositions.items[i];
     if (pos > x) {
       cursor=Math.max(0,i - 1);
-      break;
+      return true;
     }
   }
+  cursor=Math.max(0,glyphPositions.size - 1);
   return true;
 }

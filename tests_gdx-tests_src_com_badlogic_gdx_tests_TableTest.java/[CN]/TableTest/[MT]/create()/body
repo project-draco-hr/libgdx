@@ -1,0 +1,25 @@
+{
+  stage=new Stage(0,0,false);
+  Gdx.input.setInputProcessor(stage);
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  TextureRegion region=new TextureRegion(new Texture(Gdx.files.internal("data/badlogic.jpg")));
+  NinePatch patch=skin.getResource("default-round",NinePatch.class);
+  Label label=new Label("This is some text.",skin);
+  root=new Table();
+  stage.addActor(root);
+  Table table=new Table();
+  table.setBackground(patch);
+  table.enableClipping(stage);
+  table.size(75,75);
+  table.add(label);
+  table.setClickListener(new ClickListener(){
+    public void click(    Actor actor){
+      System.out.println("click!");
+    }
+  }
+);
+  root.add(new Button("Text Button",skin));
+  root.add(new Button("Toggle Button",skin.getStyle("toggle",ButtonStyle.class)));
+  root.add(new CheckBox("meow",skin));
+  root.add(new Button(new Image(region),skin));
+}

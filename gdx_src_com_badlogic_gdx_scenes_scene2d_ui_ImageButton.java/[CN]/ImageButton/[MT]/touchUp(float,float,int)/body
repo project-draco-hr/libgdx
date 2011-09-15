@@ -1,8 +1,0 @@
-{
-  if (hit(x,y) != null) {
-    if (listener != null)     listener.click(this);
-    isPressed=false;
-    return;
-  }
-  isPressed=false;
-}

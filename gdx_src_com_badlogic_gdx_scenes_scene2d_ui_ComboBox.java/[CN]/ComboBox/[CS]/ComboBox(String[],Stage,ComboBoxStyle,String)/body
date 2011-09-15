@@ -1,0 +1,9 @@
+{
+  super(0,0,name);
+  this.entries=entries;
+  setStyle(style);
+  this.stage=stage;
+  layout();
+  this.width=prefWidth;
+  this.height=prefHeight;
+}

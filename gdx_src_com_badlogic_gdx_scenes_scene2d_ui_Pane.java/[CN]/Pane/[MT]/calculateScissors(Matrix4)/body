@@ -1,8 +1,0 @@
-{
-  final NinePatch background=style.background;
-  widgetBounds.x=background.getLeftWidth();
-  widgetBounds.y=background.getBottomHeight();
-  widgetBounds.width=width - background.getLeftWidth() - background.getRightWidth();
-  widgetBounds.height=height - background.getTopHeight() - background.getBottomHeight();
-  ScissorStack.calculateScissors(stage.getCamera(),transform,widgetBounds,scissors);
-}

@@ -1,0 +1,4 @@
+{
+  super.click();
+  image.setRegion(isChecked ? ((CheckBoxStyle)style).checkboxOn : ((CheckBoxStyle)style).checkboxOff);
+}

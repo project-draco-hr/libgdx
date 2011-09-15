@@ -1,3 +1,5 @@
 {
-  return layout.getMinWidth();
+  int minWidth=layout.getMinWidth();
+  if (backgroundPatch != null)   minWidth+=backgroundPatch.getLeftWidth() + backgroundPatch.getRightWidth();
+  return minWidth;
 }

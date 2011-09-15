@@ -1,4 +1,6 @@
 {
   this.style=style;
-  invalidateHierarchy();
+  cache=new BitmapFontCache(style.font);
+  cache.setColor(style.fontColor);
+  setText(text);
 }

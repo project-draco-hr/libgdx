@@ -1,6 +1,0 @@
-{
-  if (pointer != 0)   return false;
-  isPressed=!isPressed;
-  if (listener != null)   listener.click(this,isPressed);
-  return true;
-}

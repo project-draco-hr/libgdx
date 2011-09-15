@@ -1,3 +1,5 @@
 {
-  return layout.getMinHeight();
+  int minHeight=layout.getMinHeight();
+  if (backgroundPatch != null)   minHeight+=backgroundPatch.getTopHeight() + backgroundPatch.getBottomHeight();
+  return minHeight;
 }

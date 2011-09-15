@@ -10,7 +10,7 @@
   stage.addActor(table);
   table.x=table.y=100;
   table.debug();
-  table.add(new Label(null,"This is regular text.",skin.getStyle("default",LabelStyle.class)));
+  table.add(new Label("This is regular text.",skin.getStyle("default",LabelStyle.class)));
   table.row();
-  table.add(new Label(null,"This is regular text\nwith a newline.",skin.getStyle("default",LabelStyle.class)));
+  table.add(new Label("This is regular text\nwith a newline.",skin.getStyle("default",LabelStyle.class)));
 }

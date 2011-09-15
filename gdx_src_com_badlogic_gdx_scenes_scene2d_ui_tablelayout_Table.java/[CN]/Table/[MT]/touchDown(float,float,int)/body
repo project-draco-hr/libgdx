@@ -1,0 +1,6 @@
+{
+  if (super.touchDown(x,y,pointer))   return true;
+  if (pointer != 0)   return false;
+  isPressed=true;
+  return true;
+}

@@ -1,3 +1,4 @@
 {
-  this(null,text,skin.getStyle(ButtonStyle.class));
+  this(skin.getStyle(ButtonStyle.class),null);
+  setText(text);
 }
