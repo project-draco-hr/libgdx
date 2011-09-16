@@ -1,7 +1,7 @@
 {
   float offsetX=0, offsetY=0;
   if (isPressed) {
-    setBackground(style.down);
+    setBackground(style.down == null ? style.up : style.down);
     offsetX=style.pressedOffsetX;
     offsetY=style.pressedOffsetY;
   }

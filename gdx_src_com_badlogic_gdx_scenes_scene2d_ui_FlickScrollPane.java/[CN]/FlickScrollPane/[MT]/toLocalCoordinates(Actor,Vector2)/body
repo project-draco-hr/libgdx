@@ -1,0 +1,5 @@
+{
+  if (actor.parent == this)   return;
+  toLocalCoordinates(actor.parent,point);
+  Group.toChildCoordinates(actor,point.x,point.y,point);
+}

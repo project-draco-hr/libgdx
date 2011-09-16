@@ -1,3 +1,3 @@
 {
-  return patches[BOTTOM_RIGHT].getRegionHeight();
+  return patches[BOTTOM_RIGHT] == null ? 0 : patches[BOTTOM_RIGHT].getRegionHeight();
 }

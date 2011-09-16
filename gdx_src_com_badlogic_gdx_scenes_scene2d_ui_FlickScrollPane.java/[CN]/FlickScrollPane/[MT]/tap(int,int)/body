@@ -1,6 +1,8 @@
 {
   focus(null,0);
   if (!super.touchDown(x,y,0))   return false;
-  super.touchUp(x,y,0);
+  Actor actor=focusedActor[0];
+  toLocalCoordinates(actor,point);
+  actor.touchUp(point.x,point.y,0);
   return true;
 }

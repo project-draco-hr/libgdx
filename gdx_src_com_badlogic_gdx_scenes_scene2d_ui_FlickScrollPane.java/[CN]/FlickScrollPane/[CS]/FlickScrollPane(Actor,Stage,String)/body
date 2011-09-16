@@ -6,7 +6,7 @@
   gestureDetector=new GestureDetector(new GestureListener(){
     public boolean pan(    int x,    int y,    int deltaX,    int deltaY){
       amountX-=deltaX;
-      amountY-=deltaY;
+      amountY+=deltaY;
       clamp();
       return false;
     }

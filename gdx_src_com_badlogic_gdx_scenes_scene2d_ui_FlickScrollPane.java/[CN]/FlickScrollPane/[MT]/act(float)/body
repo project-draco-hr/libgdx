@@ -3,7 +3,7 @@
     float alpha=flingTimer / flingTime;
     alpha=alpha * alpha * alpha;
     amountX-=velocityX * alpha * delta;
-    amountY+=velocityY * alpha * delta;
+    amountY-=velocityY * alpha * delta;
     clamp();
     if (amountX == -bounceDistance)     velocityX=0;
     if (amountX >= maxX + bounceDistance)     velocityX=0;

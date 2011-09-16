@@ -1,8 +1,16 @@
 {
   if (!invalidated)   return;
   invalidated=false;
-  float regionWidth=region.getRegionWidth();
-  float regionHeight=region.getRegionHeight();
+  float regionWidth, regionHeight;
+  if (patch != null) {
+    regionWidth=patch.getTotalWidth();
+    regionHeight=patch.getTotalHeight();
+  }
+ else   if (region != null) {
+    regionWidth=region.getRegionWidth();
+    regionHeight=region.getRegionHeight();
+  }
+ else   return;
 switch (scaling) {
 case fill:
 {

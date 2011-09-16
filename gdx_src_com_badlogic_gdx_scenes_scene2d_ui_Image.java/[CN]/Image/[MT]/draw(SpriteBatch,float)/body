@@ -1,5 +1,6 @@
 {
   if (invalidated)   layout();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  batch.draw(region,x + imageX,y + imageY,imageWidth,imageHeight);
+  if (patch != null)   patch.draw(batch,x + imageX,y + imageY,imageWidth,imageHeight);
+ else   if (region != null)   batch.draw(region,x + imageX,y + imageY,imageWidth,imageHeight);
 }

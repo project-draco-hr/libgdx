@@ -3,7 +3,6 @@
   if (layout.needsLayout)   layout.layout();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (backgroundPatch != null)   backgroundPatch.draw(batch,x,y,width,height);
- else   if (backgroundRegion != null)   batch.draw(backgroundRegion,x,y,width,height);
   if (stage != null) {
     applyTransform(batch);
     calculateScissors(batch.getTransformMatrix());

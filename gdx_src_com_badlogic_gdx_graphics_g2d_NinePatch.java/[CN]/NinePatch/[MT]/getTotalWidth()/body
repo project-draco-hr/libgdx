@@ -1,3 +1,5 @@
 {
-  return getLeftWidth() + getRightWidth() + patches[MIDDLE_CENTER].getRegionWidth();
+  float totalWidth=getLeftWidth() + getRightWidth();
+  if (patches[MIDDLE_CENTER] != null)   totalWidth+=patches[MIDDLE_CENTER].getRegionWidth();
+  return totalWidth;
 }

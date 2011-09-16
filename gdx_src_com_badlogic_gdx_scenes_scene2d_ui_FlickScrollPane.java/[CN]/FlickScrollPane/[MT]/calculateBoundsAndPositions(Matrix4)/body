@@ -21,7 +21,7 @@
   widgetAreaBounds.set(0,0,width,height);
   maxX=widget.width - width;
   maxY=widget.height - height;
-  widget.y=-(int)(scrollY ? amountY : maxY);
+  widget.y=(int)(scrollY ? amountY : maxY) - widget.height + height;
   widget.x=-(int)(scrollX ? amountX : 0);
   ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
 }

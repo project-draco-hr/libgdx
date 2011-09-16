@@ -1,5 +1,4 @@
 {
-  super(name);
-  setStyle(style);
+  this(style,name);
   setText(text);
 }
