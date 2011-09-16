@@ -1,3 +1,4 @@
 {
+  if (actor instanceof Layout)   return (int)((Layout)actor).getMaxWidth();
   return 0;
 }
