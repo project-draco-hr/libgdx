@@ -1,3 +1,7 @@
 {
-  return fileName;
+  StringBuffer buffer=new StringBuffer();
+  buffer.append(fileName);
+  buffer.append(", ");
+  buffer.append(type.getSimpleName());
+  return buffer.toString();
 }
