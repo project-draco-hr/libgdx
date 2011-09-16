@@ -3,18 +3,17 @@
   final NinePatch selectedPatch=style.selectedPatch;
   final Color fontColorSelected=style.fontColorSelected;
   final Color fontColorUnselected=style.fontColorUnselected;
-  if (invalidated)   layout();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   float posY=height;
-  for (int i=0; i < entries.length; i++) {
+  for (int i=0; i < items.length; i++) {
     if (selected == i) {
-      selectedPatch.draw(batch,x,y + posY - entryHeight,Math.max(prefWidth,width),entryHeight);
+      selectedPatch.draw(batch,x,y + posY - itemHeight,Math.max(prefWidth,width),itemHeight);
       font.setColor(fontColorSelected.r,fontColorSelected.g,fontColorSelected.b,fontColorSelected.a * parentAlpha);
     }
  else {
       font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
     }
-    font.draw(batch,entries[i],x + textOffsetX,y + posY - textOffsetY);
-    posY-=entryHeight;
+    font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
+    posY-=itemHeight;
   }
 }

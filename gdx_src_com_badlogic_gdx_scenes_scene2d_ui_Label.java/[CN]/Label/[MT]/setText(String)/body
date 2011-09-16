@@ -4,5 +4,4 @@
   cache.setMultiLineText(text,0,bounds.height);
   prefWidth=bounds.width;
   prefHeight=bounds.height - style.font.getDescent() * 2;
-  invalidateHierarchy();
 }

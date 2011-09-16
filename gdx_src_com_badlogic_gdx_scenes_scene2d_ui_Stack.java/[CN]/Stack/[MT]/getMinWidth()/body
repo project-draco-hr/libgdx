@@ -1,0 +1,5 @@
+{
+  float width=0;
+  for (int i=0, n=children.size(); i < n; i++)   width=Math.max(width,LibgdxToolkit.instance.getMinWidth(children.get(i)));
+  return width * scaleX;
+}

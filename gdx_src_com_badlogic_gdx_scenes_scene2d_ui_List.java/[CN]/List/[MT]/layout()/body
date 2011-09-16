@@ -1,18 +1,2 @@
 {
-  final BitmapFont font=style.font;
-  final NinePatch selectedPatch=style.selectedPatch;
-  prefWidth=0;
-  prefHeight=0;
-  for (int i=0; i < entries.length; i++) {
-    String entry=entries[i];
-    TextBounds bounds=font.getBounds(entry);
-    prefWidth=Math.max(bounds.width,prefWidth);
-  }
-  entryHeight=font.getCapHeight() - font.getDescent() * 2;
-  entryHeight+=selectedPatch.getTopHeight() + selectedPatch.getBottomHeight();
-  prefWidth+=selectedPatch.getLeftWidth() + selectedPatch.getRightWidth();
-  prefHeight=entries.length * entryHeight;
-  textOffsetX=selectedPatch.getLeftWidth();
-  textOffsetY=selectedPatch.getTopHeight() - font.getDescent();
-  invalidated=false;
 }

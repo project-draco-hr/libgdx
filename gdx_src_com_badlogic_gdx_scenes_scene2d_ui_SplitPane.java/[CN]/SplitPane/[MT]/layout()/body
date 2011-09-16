@@ -1,4 +1,6 @@
 {
+  if (!invalidated)   return;
+  invalidated=false;
   if (firstWidget instanceof Layout) {
     Layout layout=(Layout)firstWidget;
     layout.layout();
@@ -11,5 +13,4 @@
     secondWidget.width=layout.getPrefWidth();
     secondWidget.height=layout.getPrefHeight();
   }
-  invalidated=false;
 }

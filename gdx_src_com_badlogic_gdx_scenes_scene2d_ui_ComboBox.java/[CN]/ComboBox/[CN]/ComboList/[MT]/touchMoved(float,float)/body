@@ -1,8 +1,8 @@
 {
   if (hit(x,y) != null) {
-    selected=(int)((height - y) / entryHeight);
+    selected=(int)((height - y) / itemHeight);
     selected=Math.max(0,selected);
-    selected=Math.min(entries.length - 1,selected);
+    selected=Math.min(items.length - 1,selected);
   }
   return true;
 }

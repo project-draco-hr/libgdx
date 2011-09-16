@@ -1,6 +1,5 @@
 {
-  super(region.getRegionWidth(),region.getRegionHeight(),name);
-  this.region=region;
+  setRegion(region);
   this.scaling=scaling;
   this.align=align;
 }

@@ -1,6 +1,0 @@
-{
-  if (entries == null)   throw new IllegalArgumentException("entries must not be null");
-  this.entries=entries;
-  selected=0;
-  invalidateHierarchy();
-}

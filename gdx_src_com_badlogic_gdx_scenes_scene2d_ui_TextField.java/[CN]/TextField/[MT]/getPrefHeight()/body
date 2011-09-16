@@ -1,0 +1,4 @@
+{
+  NinePatch background=style.background;
+  return background.getBottomHeight() + background.getTopHeight() + textBounds.height;
+}

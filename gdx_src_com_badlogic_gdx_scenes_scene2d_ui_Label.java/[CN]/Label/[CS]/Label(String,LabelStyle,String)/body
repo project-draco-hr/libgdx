@@ -1,8 +1,6 @@
 {
-  super(0,0,name);
+  super(name);
   this.text=text;
   setStyle(style);
-  width=prefWidth;
-  height=prefHeight;
   touchable=false;
 }

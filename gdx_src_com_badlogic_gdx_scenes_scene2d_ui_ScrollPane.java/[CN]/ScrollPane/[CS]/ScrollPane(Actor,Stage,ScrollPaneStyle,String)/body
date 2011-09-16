@@ -1,0 +1,8 @@
+{
+  super(name);
+  this.widget=widget;
+  this.stage=stage;
+  this.style=style;
+  addActor(widget);
+  layout();
+}

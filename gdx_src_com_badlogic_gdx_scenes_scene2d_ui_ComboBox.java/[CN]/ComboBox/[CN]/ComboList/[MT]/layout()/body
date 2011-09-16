@@ -3,16 +3,16 @@
   final NinePatch listSelection=style.listSelection;
   float prefWidth=0;
   float prefHeight=0;
-  for (int i=0; i < entries.length; i++) {
-    String entry=entries[i];
-    TextBounds bounds=font.getBounds(entry);
+  for (int i=0; i < items.length; i++) {
+    String item=items[i];
+    TextBounds bounds=font.getBounds(item);
     prefWidth=Math.max(bounds.width,prefWidth);
   }
-  entryHeight=font.getCapHeight() + -font.getDescent() * 2;
-  entryHeight+=listSelection.getTopHeight() + listSelection.getBottomHeight();
-  entryHeight*=ComboBox.this.parent.scaleY;
+  itemHeight=font.getCapHeight() + -font.getDescent() * 2;
+  itemHeight+=listSelection.getTopHeight() + listSelection.getBottomHeight();
+  itemHeight*=ComboBox.this.parent.scaleY;
   prefWidth+=listSelection.getLeftWidth() + listSelection.getRightWidth();
-  prefHeight=entries.length * entryHeight;
+  prefHeight=items.length * itemHeight;
   textOffsetX=listSelection.getLeftWidth();
   textOffsetY=listSelection.getTopHeight() + -font.getDescent();
   width=Math.max(prefWidth,ComboBox.this.width);

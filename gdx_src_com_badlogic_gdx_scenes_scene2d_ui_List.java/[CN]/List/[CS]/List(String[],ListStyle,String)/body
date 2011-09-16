@@ -1,8 +1,6 @@
 {
-  super(0,0,name);
+  super(name);
   setStyle(style);
-  this.entries=entries;
+  setItems(items);
   layout();
-  this.width=prefWidth;
-  this.height=prefHeight;
 }

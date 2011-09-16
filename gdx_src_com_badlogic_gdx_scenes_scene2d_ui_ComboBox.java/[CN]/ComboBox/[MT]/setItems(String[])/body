@@ -1,0 +1,12 @@
+{
+  if (items == null)   throw new IllegalArgumentException("items cannot be null.");
+  this.items=items;
+  NinePatch background=style.background;
+  BitmapFont font=style.font;
+  prefHeight=Math.max(background.getTopHeight() + background.getBottomHeight() + font.getCapHeight() - font.getDescent() * 2,background.getTotalHeight());
+  float max=0;
+  for (int i=0; i < items.length; i++)   max=Math.max(font.getBounds(items[i]).width,max);
+  prefWidth=background.getLeftWidth() + background.getRightWidth() + max;
+  width=prefWidth;
+  height=prefHeight;
+}

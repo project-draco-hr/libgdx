@@ -1,9 +1,11 @@
 {
-  final BitmapFont font=style.font;
   if (text == null)   throw new IllegalArgumentException("text must not be null");
+  BitmapFont font=style.font;
   this.text=text;
   this.cursor=0;
   this.hasSelection=false;
   font.computeGlyphAdvancesAndPositions(text,this.glyphAdvances,this.glyphPositions);
-  invalidateHierarchy();
+  textBounds.set(font.getBounds(text));
+  textBounds.height-=font.getDescent() * 2;
+  font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
 }

@@ -1,4 +1,4 @@
 {
-  if (prefSizeInvalid)   computePrefSize();
-  return prefHeight;
+  if (sizeInvalid)   computeSize();
+  return layout.getPrefHeight();
 }

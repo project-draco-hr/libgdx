@@ -6,14 +6,14 @@
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   listBackground.draw(batch,x,y,width,height);
   float posY=height;
-  for (int i=0; i < entries.length; i++) {
+  for (int i=0; i < items.length; i++) {
     if (selected == i) {
-      listSelection.draw(batch,x,y + posY - entryHeight,width,entryHeight);
+      listSelection.draw(batch,x,y + posY - itemHeight,width,itemHeight);
     }
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
     font.setScale(ComboBox.this.parent.scaleX,ComboBox.this.parent.scaleY);
-    font.draw(batch,entries[i],x + textOffsetX,y + posY - textOffsetY);
+    font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
     font.setScale(1,1);
-    posY-=entryHeight;
+    posY-=itemHeight;
   }
 }
