@@ -24,7 +24,7 @@ catch (    SerializationException ex) {
       ex.addTrace(field + " (" + type.getName()+ ")");
       throw ex;
     }
-catch (    RuntimeException runtimeEx) {
+catch (    Exception runtimeEx) {
       SerializationException ex=new SerializationException(runtimeEx);
       ex.addTrace(field + " (" + type.getName()+ ")");
       throw ex;

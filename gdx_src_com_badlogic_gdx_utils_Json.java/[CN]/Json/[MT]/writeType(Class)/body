@@ -2,6 +2,11 @@
   if (typeName == null)   return;
   String className=classToTag.get(type);
   if (className == null)   className=type.getName();
-  writer.set(typeName,className);
+  try {
+    writer.set(typeName,className);
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
   if (debug)   System.out.println("Writing type: " + type.getName());
 }

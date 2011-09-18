@@ -1,4 +1,9 @@
 {
-  writer.name(name);
+  try {
+    writer.name(name);
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
   writeValue(value,value.getClass(),null);
 }

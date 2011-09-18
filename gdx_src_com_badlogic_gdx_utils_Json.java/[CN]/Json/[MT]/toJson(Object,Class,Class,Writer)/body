@@ -3,10 +3,5 @@
     this.writer=new JsonWriter(writer);
     ((JsonWriter)this.writer).setOutputType(outputType);
   }
-  try {
-    writeValue(object,knownType,elementType);
-  }
- catch (  IOException ex) {
-    throw new SerializationException("Error writing JSON.",ex);
-  }
+  writeValue(object,knownType,elementType);
 }
