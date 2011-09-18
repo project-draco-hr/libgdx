@@ -10,6 +10,13 @@
   fixtureDef.filter.groupIndex=0;
   groundBody.createFixture(fixtureDef);
   groundPoly.dispose();
+  ChainShape chainShape=new ChainShape();
+  chainShape.createLoop(new Vector2[]{new Vector2(-10,10),new Vector2(-5,12),new Vector2(-3,9),new Vector2(-4,8),new Vector2(-7,6),new Vector2(-8,9)});
+  BodyDef chainBodyDef=new BodyDef();
+  chainBodyDef.type=BodyType.StaticBody;
+  Body chainBody=world.createBody(chainBodyDef);
+  chainBody.createFixture(chainShape,0);
+  chainShape.dispose();
   createBoxes();
   world.setContactListener(new ContactListener(){
     @Override public void beginContact(    Contact contact){
