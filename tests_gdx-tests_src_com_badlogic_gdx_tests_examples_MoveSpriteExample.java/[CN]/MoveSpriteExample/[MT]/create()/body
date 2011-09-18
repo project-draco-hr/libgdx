@@ -1,0 +1,6 @@
+{
+  batch=new SpriteBatch();
+  texture=new Texture(Gdx.files.internal("data/bobargb8888-32x32.png"));
+  camera=new OrthographicCamera();
+  camera.setToOrtho(false);
+}
