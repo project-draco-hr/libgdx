@@ -3,6 +3,9 @@
   Box box=new Box(intArray[0],intArray[1],intArray[2],intArray[3]);
   if (box.x0 == 0 && box.y0 == 0 && box.x1 == 0 && box.y1 == 0)   return null;
   Pixmap pixmap=new Pixmap(box.x1 - box.x0,box.y1 - box.y0,Format.Alpha);
-  StbTrueType.makeCodepointBitmap(addr,pixmap.getPixels(),pixmap.getWidth(),pixmap.getHeight(),0,scaleX,scaleY,codePoint);
-  return new Bitmap(pixmap,box);
+  StbTrueType.makeCodepointBitmap(addr,pixmap.getPixels(),pixmap.getWidth(),pixmap.getHeight(),pixmap.getWidth(),scaleX,scaleY,codePoint);
+  Pixmap pixmapRGBA=new Pixmap(box.x1 - box.x0,box.y1 - box.y0,Format.RGBA8888);
+  pixmapRGBA.drawPixmap(pixmap,0,0,0,0,pixmap.getWidth(),pixmap.getHeight());
+  pixmap.dispose();
+  return new Bitmap(pixmapRGBA,box);
 }
