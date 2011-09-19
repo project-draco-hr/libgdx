@@ -1,0 +1,4 @@
+{
+  StbTrueType.getCodepointHMetrics(addr,codePoint,intArray);
+  return new HMetrics(intArray[0],intArray[1]);
+}

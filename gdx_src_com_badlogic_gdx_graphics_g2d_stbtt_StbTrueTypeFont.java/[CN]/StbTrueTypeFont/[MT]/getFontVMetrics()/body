@@ -1,0 +1,4 @@
+{
+  StbTrueType.getFontVMetrics(addr,intArray);
+  return new FontVMetrics(intArray[0],intArray[1],intArray[2]);
+}
