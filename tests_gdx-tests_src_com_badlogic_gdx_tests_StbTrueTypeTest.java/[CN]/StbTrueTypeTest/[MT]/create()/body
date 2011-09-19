@@ -1,7 +1,7 @@
 {
   batch=new SpriteBatch();
-  StbTrueTypeFont font=new StbTrueTypeFont(Gdx.files.internal("data/arial.ttf"));
-  float scale=font.scaleForPixelHeight(17);
+  StbTrueTypeFont font=new StbTrueTypeFont(Gdx.files.internal("data/DroidSerif-Regular.ttf"));
+  float scale=font.scaleForPixelHeight(32);
   System.out.println(font.getCodePointBox('e'));
   Bitmap glyphBitmap=font.makeCodepointBitmap(scale,scale,'e');
   glyphBitmap.dispose();
@@ -11,5 +11,4 @@
   texture.bind();
   glyphBitmap.dispose();
   font.dispose();
-  this.font=new BitmapFont();
 }
