@@ -1,14 +1,15 @@
 {
   batch=new SpriteBatch();
   StbTrueTypeFont font=new StbTrueTypeFont(Gdx.files.internal("data/arial.ttf"));
-  float scale=font.scaleForPixelHeight(32);
-  System.out.println(font.getCodePointBox('T'));
-  Bitmap glyphBitmap=font.makeCodepointBitmap(scale,scale,'T');
+  float scale=font.scaleForPixelHeight(17);
+  System.out.println(font.getCodePointBox('e'));
+  Bitmap glyphBitmap=font.makeCodepointBitmap(scale,scale,'e');
   glyphBitmap.dispose();
-  int glyphIndex=font.findGlyphIndex('T');
+  int glyphIndex=font.findGlyphIndex('e');
   glyphBitmap=font.makeGlyphBitmap(scale,scale,0,0,glyphIndex);
   texture=new Texture(glyphBitmap.pixmap);
   texture.bind();
   glyphBitmap.dispose();
   font.dispose();
+  this.font=new BitmapFont();
 }

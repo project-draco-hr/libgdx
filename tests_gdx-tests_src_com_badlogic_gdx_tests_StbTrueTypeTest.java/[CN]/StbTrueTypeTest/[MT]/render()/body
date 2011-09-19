@@ -5,5 +5,7 @@
   batch.setColor(1,0,0,1);
   batch.setBlendFunction(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
   batch.draw(texture,100,100);
+  font.setColor(1,0,0,1);
+  font.draw(batch,"e",130,100);
   batch.end();
 }
