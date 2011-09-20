@@ -5,7 +5,7 @@
   System.out.println(font.getCodePointBox('e'));
   Bitmap glyphBitmap=font.makeCodepointBitmap(scale,scale,'e');
   glyphBitmap.dispose();
-  int glyphIndex=font.findGlyphIndex('e');
+  int glyphIndex=font.findGlyphIndex('T');
   glyphBitmap=font.makeGlyphBitmap(scale,scale,0,0,glyphIndex);
   texture=new Texture(glyphBitmap.pixmap);
   texture.bind();
