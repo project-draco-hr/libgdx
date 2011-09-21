@@ -2,14 +2,6 @@
   Texture.setEnforcePotImages(false);
   new FileHandle(packedDir).deleteDirectory();
   final ObjectMap<String,int[]> nameToSplits=new ObjectMap();
-  Settings settings=new Settings();
-  settings.alias=true;
-  settings.defaultFilterMag=TextureFilter.Linear;
-  settings.defaultFilterMin=TextureFilter.Linear;
-  settings.padding=2;
-  settings.pot=false;
-  settings.duplicatePadding=false;
-  settings.stripWhitespace=false;
   final TexturePacker texturePacker=new TexturePacker(settings);
   FileProcessor regionProcessor=new FileProcessor(){
     protected void processFile(    InputFile inputFile) throws Exception {

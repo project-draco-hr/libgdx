@@ -2,5 +2,10 @@
   File inputDir=new File("C:/Users/Nate/Desktop/skin");
   File packedDir=new File("C:/Users/Nate/Desktop/skin/packed");
   File skinFile=new File("C:/Users/Nate/Desktop/skin/old-skin.json");
-  process(inputDir,packedDir,skinFile);
+  Settings settings=new Settings();
+  settings.defaultFilterMag=TextureFilter.Linear;
+  settings.defaultFilterMin=TextureFilter.Linear;
+  settings.duplicatePadding=false;
+  settings.pot=false;
+  process(settings,inputDir,packedDir,skinFile);
 }
