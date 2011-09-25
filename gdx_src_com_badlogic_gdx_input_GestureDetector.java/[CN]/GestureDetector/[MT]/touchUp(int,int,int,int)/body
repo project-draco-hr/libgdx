@@ -5,6 +5,7 @@
     if (System.nanoTime() - lastTapTime > tapCountInterval)     tapCount=0;
     tapCount++;
     lastTapTime=System.nanoTime();
+    gestureStartTime=0;
     return listener.tap(tapSquareCenterX,tapSquareCenterY,tapCount);
   }
  else   if (pinching) {
@@ -18,6 +19,7 @@
     }
   }
  else {
+    gestureStartTime=0;
     long time=Gdx.input.getCurrentEventTime();
     if (time - tracker.lastTime < maxFlingDelay) {
       tracker.update(x,y,time);
