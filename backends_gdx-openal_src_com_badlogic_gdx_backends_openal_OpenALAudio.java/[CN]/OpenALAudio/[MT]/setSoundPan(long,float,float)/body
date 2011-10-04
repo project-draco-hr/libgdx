@@ -1,0 +1,5 @@
+{
+  if (!soundIdToSource.containsKey(soundId))   return;
+  int sourceId=soundIdToSource.get(soundId);
+  AL10.alSource3f(sourceId,AL10.AL_POSITION,-pan,0,0);
+}
