@@ -1,0 +1,5 @@
+{
+  long streamId=play(volume);
+  soundPool.setLoop((int)streamId,-1);
+  return streamId;
+}

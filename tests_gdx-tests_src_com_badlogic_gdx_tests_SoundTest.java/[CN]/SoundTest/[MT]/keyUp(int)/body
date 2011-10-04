@@ -1,6 +1,0 @@
-{
-  if (keycode != Input.Keys.SPACE)   return false;
-  if (music.isPlaying())   music.pause();
- else   music.play();
-  return false;
-}

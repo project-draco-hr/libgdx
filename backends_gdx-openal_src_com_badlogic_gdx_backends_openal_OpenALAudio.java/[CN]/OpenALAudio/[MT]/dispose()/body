@@ -5,6 +5,8 @@
     if (state != AL_STOPPED)     alSourceStop(sourceID);
     alDeleteSources(sourceID);
   }
+  sourceToSoundId.clear();
+  soundIdToSource.clear();
   AL.destroy();
   while (AL.isCreated()) {
     try {

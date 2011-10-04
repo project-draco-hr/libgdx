@@ -3,7 +3,7 @@
   if (sourceID == -1)   return -1;
   long soundId=audio.getSoundId(sourceID);
   alSourcei(sourceID,AL_BUFFER,bufferID);
-  alSourcei(sourceID,AL_LOOPING,AL_FALSE);
+  alSourcei(sourceID,AL_LOOPING,AL_TRUE);
   alSourcef(sourceID,AL_GAIN,volume);
   alSourcePlay(sourceID);
   return soundId;
