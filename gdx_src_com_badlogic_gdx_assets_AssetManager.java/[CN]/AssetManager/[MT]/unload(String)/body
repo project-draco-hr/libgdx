@@ -26,10 +26,13 @@
     assetTypes.remove(fileName);
     assets.get(type).remove(fileName);
   }
-  Array<String> dependencies=assetDependencies.remove(fileName);
+  Array<String> dependencies=assetDependencies.get(fileName);
   if (dependencies != null) {
     for (    String dependency : dependencies) {
       unload(dependency);
     }
+  }
+  if (assetRef.getRefCount() <= 0) {
+    assetDependencies.remove(fileName);
   }
 }
