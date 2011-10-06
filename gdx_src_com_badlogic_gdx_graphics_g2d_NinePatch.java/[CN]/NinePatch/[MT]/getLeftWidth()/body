@@ -1,3 +1,6 @@
 {
-  return patches[TOP_LEFT] == null ? 0 : patches[TOP_LEFT].getRegionWidth();
+  if (patches[BOTTOM_LEFT] != null)   return patches[BOTTOM_LEFT].getRegionWidth();
+ else   if (patches[MIDDLE_LEFT] != null)   return patches[MIDDLE_LEFT].getRegionWidth();
+ else   if (patches[TOP_LEFT] != null)   return patches[TOP_LEFT].getRegionWidth();
+  return 0;
 }

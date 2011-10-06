@@ -1,3 +1,6 @@
 {
-  return patches[BOTTOM_RIGHT] == null ? 0 : patches[BOTTOM_RIGHT].getRegionHeight();
+  if (patches[BOTTOM_LEFT] != null)   return patches[BOTTOM_LEFT].getRegionHeight();
+ else   if (patches[BOTTOM_CENTER] != null)   return patches[BOTTOM_CENTER].getRegionHeight();
+ else   if (patches[BOTTOM_RIGHT] != null)   return patches[BOTTOM_RIGHT].getRegionHeight();
+  return 0;
 }
