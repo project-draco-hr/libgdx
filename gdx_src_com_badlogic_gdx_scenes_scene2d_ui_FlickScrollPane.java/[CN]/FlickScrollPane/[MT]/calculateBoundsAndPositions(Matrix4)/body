@@ -9,12 +9,15 @@
     widgetWidth=widget.width;
     widgetHeight=widget.height;
   }
-  scrollX=widgetWidth > width || forceScrollX;
-  scrollY=widgetHeight > height || forceScrollY;
+  scrollX=!disableX && (widgetWidth > width || forceScrollX);
+  scrollY=!disableY && (widgetHeight > height || forceScrollY);
   widgetWidth=Math.max(width,widgetWidth);
-  widgetHeight=Math.max(height,widgetHeight);
-  if (widget.width != widgetWidth || widget.height != widgetHeight) {
+  if (disableX || widget.width != widgetWidth) {
     widget.width=widgetWidth;
+    needsLayout=true;
+  }
+  widgetHeight=Math.max(height,widgetHeight);
+  if (disableY || widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.height=widgetHeight;
     needsLayout=true;
   }

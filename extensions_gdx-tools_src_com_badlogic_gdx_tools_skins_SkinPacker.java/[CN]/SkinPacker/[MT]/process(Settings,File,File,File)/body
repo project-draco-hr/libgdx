@@ -1,15 +1,9 @@
 {
   Texture.setEnforcePotImages(false);
+  final File packedDir=new File("temp-packed");
   new FileHandle(packedDir).deleteDirectory();
+  imageFile.delete();
   final ObjectMap<String,int[]> nameToSplits=new ObjectMap();
-  settings=new Settings();
-  settings.alias=true;
-  settings.defaultFilterMag=TextureFilter.Linear;
-  settings.defaultFilterMin=TextureFilter.Linear;
-  settings.padding=2;
-  settings.pot=false;
-  settings.duplicatePadding=false;
-  settings.stripWhitespace=false;
   final TexturePacker texturePacker=new TexturePacker(settings);
   FileProcessor regionProcessor=new FileProcessor(){
     protected void processFile(    InputFile inputFile) throws Exception {
@@ -37,7 +31,7 @@
     private BufferedImage getSplits(    BufferedImage image,    String name){
       WritableRaster raster=image.getRaster();
       int[] rgba=new int[4];
-      int startX=-1;
+      int startX=1;
       for (int x=1; x < raster.getWidth() - 1; x++) {
         raster.getPixel(x,0,rgba);
         if (rgba[3] == 0)         continue;
@@ -45,7 +39,6 @@
         startX=x;
         break;
       }
-      if (startX == -1)       throw new RuntimeException("Missing marker pixels in first row of pixels: " + name);
       int endX;
       for (endX=startX; endX < raster.getWidth() - 1; endX++) {
         raster.getPixel(endX,0,rgba);
@@ -56,7 +49,7 @@
         raster.getPixel(x,0,rgba);
         if (rgba[3] != 0)         throw new RuntimeException("Unknown pixel " + x + ",0: "+ name);
       }
-      int startY=-1;
+      int startY=1;
       for (int y=1; y < raster.getHeight() - 1; y++) {
         raster.getPixel(0,y,rgba);
         if (rgba[3] == 0)         continue;
@@ -64,7 +57,6 @@
         startY=y;
         break;
       }
-      if (startY == -1)       throw new RuntimeException("Missing marker pixels in first column of pixels: " + name);
       int endY;
       for (endY=startY; endY < raster.getHeight() - 1; endY++) {
         raster.getPixel(0,endY,rgba);
@@ -92,10 +84,16 @@
   ninePatchProcessor.setOutputSuffix("");
   ninePatchProcessor.process(inputDir,inputDir);
   texturePacker.process(packedDir,new File(packedDir,"pack"),"skin");
+  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+  config.forceExit=false;
+  config.width=1;
+  config.height=1;
+  config.title="SkinPacker";
   new LwjglApplication(new ApplicationListener(){
     public void create(){
       Skin skin=new Skin();
       TextureAtlasData atlas=new TextureAtlasData(new FileHandle(new File(packedDir,"pack")),new FileHandle(packedDir),true);
+      if (atlas.getPages().size != 1)       throw new GdxRuntimeException("Skin images could not be packed on to a single image!");
       Texture texture=new Texture(1,1,Format.Alpha);
       for (      Region region : atlas.getRegions()) {
         int[] split=nameToSplits.get(region.name);
@@ -107,21 +105,28 @@
           skin.addResource(region.name,new NinePatch(textureRegion,split[0],region.width - split[1],split[2],region.height - split[3]));
         }
       }
-      FileHandle newSkinFile=new FileHandle(new File(inputDir,"skin"));
+      FileHandle newSkinFile=new FileHandle(new File(inputDir,"temp-skin"));
       skin.save(newSkinFile);
+      atlas.getPages().get(0).textureFile.copyTo(new FileHandle(imageFile));
+      new FileHandle(packedDir).deleteDirectory();
       Json json=new Json();
+      FileHandle oldSkinFile=new FileHandle(skinFile);
       ObjectMap oldSkin=json.fromJson(ObjectMap.class,new FileHandle(skinFile));
       ObjectMap newSkin=json.fromJson(ObjectMap.class,newSkinFile);
-      newSkin.put("styles",oldSkin.get("styles"));
-      Writer writer=newSkinFile.writer(false);
+      ObjectMap oldResources=(ObjectMap)oldSkin.get("resources");
+      ObjectMap newResources=(ObjectMap)newSkin.get("resources");
+      oldResources.put(NinePatch.class.getName(),newResources.get(NinePatch.class.getName()));
+      oldResources.put(TextureRegion.class.getName(),newResources.get(TextureRegion.class.getName()));
+      Writer writer=oldSkinFile.writer(false);
       try {
-        writer.write(json.prettyPrint(newSkin,true));
+        writer.write(json.prettyPrint(oldSkin,true));
         writer.close();
       }
  catch (      IOException ex) {
         throw new RuntimeException(ex);
       }
-      System.exit(0);
+      newSkinFile.delete();
+      Gdx.app.exit();
     }
     public void resume(){
     }
@@ -134,5 +139,5 @@
     public void dispose(){
     }
   }
-,"SkinPacker",1,1,false);
+,config);
 }

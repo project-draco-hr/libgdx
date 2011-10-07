@@ -1,11 +1,10 @@
 {
   File inputDir=new File("C:/Users/Nate/Desktop/skin");
-  File packedDir=new File("C:/Users/Nate/Desktop/skin/packed");
-  File skinFile=new File("C:/Users/Nate/Desktop/skin/old-skin.json");
+  File skinFile=new File("C:/Users/Nate/Desktop/skin/uiskin.json");
+  File imageFile=new File("C:/Users/Nate/Desktop/skin/uiskin.png");
   Settings settings=new Settings();
   settings.defaultFilterMag=TextureFilter.Linear;
   settings.defaultFilterMin=TextureFilter.Linear;
   settings.duplicatePadding=false;
-  settings.pot=false;
-  process(settings,inputDir,packedDir,skinFile);
+  SkinPacker.process(settings,inputDir,skinFile,imageFile);
 }
