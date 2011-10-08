@@ -1,3 +1,5 @@
 {
-  return prefHeight;
+  if (wrap)   return 100;
+  if (invalidated)   layout();
+  return bounds.height - style.font.getDescent() * 2;
 }

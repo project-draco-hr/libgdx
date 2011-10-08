@@ -7,5 +7,5 @@
     actor.toLocalCoordinates(point);
     actor.touchUp(point.x,point.y,pointer);
   }
-  if (focusedActor[pointer] == actor && actor != null)   actor.parent.focus(null,pointer);
+  if (focusedActor[pointer] == actor)   actor.parent.focus(null,pointer);
 }

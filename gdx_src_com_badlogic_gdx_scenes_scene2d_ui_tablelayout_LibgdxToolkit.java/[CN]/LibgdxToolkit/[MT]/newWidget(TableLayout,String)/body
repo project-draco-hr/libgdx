@@ -1,7 +1,7 @@
 {
   if (layout.atlas != null) {
     AtlasRegion region=layout.atlas.findRegion(className);
-    if (region != null)     return new Image(className,region);
+    if (region != null)     return new Image(region);
   }
   return super.newWidget(layout,className);
 }

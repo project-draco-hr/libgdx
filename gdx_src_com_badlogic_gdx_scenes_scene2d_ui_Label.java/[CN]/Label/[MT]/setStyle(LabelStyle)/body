@@ -2,5 +2,5 @@
   this.style=style;
   cache=new BitmapFontCache(style.font);
   cache.setColor(style.fontColor);
-  setText(text);
+  invalidate();
 }

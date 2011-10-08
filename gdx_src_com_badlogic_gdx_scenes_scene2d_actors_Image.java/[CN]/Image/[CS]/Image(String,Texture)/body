@@ -1,8 +1,0 @@
-{
-  super(name);
-  this.originX=texture.getWidth() / 2.0f;
-  this.originY=texture.getHeight() / 2.0f;
-  this.width=texture.getWidth();
-  this.height=texture.getHeight();
-  this.region=new TextureRegion(texture);
-}

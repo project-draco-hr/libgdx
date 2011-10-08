@@ -1,3 +1,5 @@
 {
-  return prefWidth;
+  if (wrap)   return 100;
+  if (invalidated)   layout();
+  return bounds.width;
 }

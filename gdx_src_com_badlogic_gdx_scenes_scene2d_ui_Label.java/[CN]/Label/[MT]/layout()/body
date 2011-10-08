@@ -1,2 +1,23 @@
 {
+  if (!invalidated)   return;
+  invalidated=false;
+  if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,width));
+ else   bounds.set(cache.getFont().getMultiLineBounds(text));
+  float y;
+  if ((align & Align.TOP) != 0) {
+    y=cache.getFont().isFlipped() ? 0 : height - bounds.height;
+    y+=style.font.getDescent();
+  }
+ else   if ((align & Align.BOTTOM) != 0) {
+    y=cache.getFont().isFlipped() ? height - bounds.height : 0;
+    y-=style.font.getDescent();
+  }
+ else   y=(height - bounds.height) / 2;
+  if (!cache.getFont().isFlipped())   y+=bounds.height;
+  HAlignment halign;
+  if ((align & Align.LEFT) != 0)   halign=HAlignment.LEFT;
+ else   if ((align & Align.RIGHT) != 0)   halign=HAlignment.RIGHT;
+ else   halign=HAlignment.CENTER;
+  if (wrap)   cache.setWrappedText(text,0,y,width,halign);
+ else   cache.setMultiLineText(text,0,y,width,halign);
 }

@@ -9,9 +9,10 @@
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,0,0,width,height);
   batch.flush();
-  ScissorStack.pushScissors(scissorBounds);
-  drawChildren(batch,parentAlpha);
-  ScissorStack.popScissors();
+  if (ScissorStack.pushScissors(scissorBounds)) {
+    drawChildren(batch,parentAlpha);
+    ScissorStack.popScissors();
+  }
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (hasHScroll) {
     hScroll.draw(batch,hScrollBounds.x,hScrollBounds.y,hScrollBounds.width,hScrollBounds.height);

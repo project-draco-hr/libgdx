@@ -1,7 +1,7 @@
 {
   if (object instanceof String) {
     if (defaultFont == null)     throw new IllegalStateException("No default font has been set.");
-    return new Label(null,defaultFont,(String)object);
+    return new Label((String)object,new Label.LabelStyle(defaultFont,Color.WHITE));
   }
   if (object == null) {
     Group group=new Group();

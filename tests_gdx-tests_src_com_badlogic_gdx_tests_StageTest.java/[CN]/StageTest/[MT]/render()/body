@@ -33,6 +33,7 @@
       img.scaleX=1;
       img.scaleY=1;
     }
+    img.invalidate();
   }
   stage.draw();
   Gdx.graphics.getGL10().glPointSize(4);

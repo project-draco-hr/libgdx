@@ -1,7 +1,4 @@
 {
-  if (touchDrag) {
-    touchDrag=false;
-    return;
-  }
-  super.touchUp(x,y,pointer);
+  if (touchDrag)   touchDrag=false;
+ else   super.touchUp(x,y,pointer);
 }

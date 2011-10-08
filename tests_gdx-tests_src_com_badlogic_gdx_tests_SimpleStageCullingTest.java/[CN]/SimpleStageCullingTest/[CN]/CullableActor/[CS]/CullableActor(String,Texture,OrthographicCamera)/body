@@ -1,4 +1,4 @@
 {
-  super(name,texture);
+  super(new TextureRegion(texture),Scaling.none,name);
   this.camera=camera;
 }

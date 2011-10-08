@@ -11,6 +11,8 @@
     regionHeight=region.getRegionHeight();
   }
  else   return;
+  float width=this.width * scaleX;
+  float height=this.width * scaleY;
 switch (scaling) {
 case fill:
 {
