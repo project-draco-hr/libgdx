@@ -6,7 +6,7 @@
   Texture[] textures=cache.textures;
   int[] counts=cache.counts;
   if (Gdx.graphics.isGL20Available()) {
-    for (int i=0, n=textures.length; i < n; i++) {
+    for (int i=0, n=cache.textureCount; i < n; i++) {
       int count=counts[i];
       textures[i].bind();
       if (customShader != null)       mesh.render(customShader,GL10.GL_TRIANGLES,offset,count);
@@ -15,7 +15,7 @@
     }
   }
  else {
-    for (int i=0, n=textures.length; i < n; i++) {
+    for (int i=0, n=cache.textureCount; i < n; i++) {
       int count=counts[i];
       textures[i].bind();
       mesh.render(GL10.GL_TRIANGLES,offset,count);
