@@ -63,6 +63,7 @@
   pan.setValueChangedListener(new ValueChangedListener(){
     @Override public void changed(    Slider slider,    float value){
       sound.setPan(soundId,value,volume.getValue());
+      panValue.setText("" + value);
     }
   }
 );
