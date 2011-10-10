@@ -5,15 +5,19 @@
   final Color fontColorUnselected=style.fontColorUnselected;
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   float posY=height;
+  font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
   for (int i=0; i < items.length; i++) {
-    if (selected == i) {
-      selectedPatch.draw(batch,x,y + posY - itemHeight,Math.max(prefWidth,width),itemHeight);
-      font.setColor(fontColorSelected.r,fontColorSelected.g,fontColorSelected.b,fontColorSelected.a * parentAlpha);
+    if (cullingArea == null || posY - itemHeight <= cullingArea.y + cullingArea.height) {
+      if (selected == i) {
+        selectedPatch.draw(batch,x,y + posY - itemHeight,Math.max(prefWidth,width),itemHeight);
+        font.setColor(fontColorSelected.r,fontColorSelected.g,fontColorSelected.b,fontColorSelected.a * parentAlpha);
+      }
+      font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
+      if (selected == i) {
+        font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
+      }
     }
- else {
-      font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
-    }
-    font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
+ else     if (posY < cullingArea.y)     break;
     posY-=itemHeight;
   }
 }
