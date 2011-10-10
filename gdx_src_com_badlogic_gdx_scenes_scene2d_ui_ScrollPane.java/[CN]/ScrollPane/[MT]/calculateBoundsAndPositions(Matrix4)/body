@@ -55,4 +55,11 @@
   widget.y=widgetAreaBounds.y - (!hasVScroll ? (int)(widget.height - areaHeight) : 0) - (hasVScroll ? (int)((widget.height - areaHeight) * (1 - vScrollAmount)) : 0);
   widget.x=widgetAreaBounds.x - (hasHScroll ? (int)((widget.width - areaWidth) * hScrollAmount) : 0);
   ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
+  if (widget instanceof Cullable) {
+    widgetCullingArea.x=-widget.x;
+    widgetCullingArea.y=-widget.y;
+    widgetCullingArea.width=areaWidth;
+    widgetCullingArea.height=areaHeight;
+    ((Cullable)widget).setCullingArea(widgetCullingArea);
+  }
 }
