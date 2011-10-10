@@ -12,6 +12,5 @@
   float max=0;
   for (int i=0; i < items.length; i++)   max=Math.max(font.getBounds(items[i]).width,max);
   prefWidth=background.getLeftWidth() + background.getRightWidth() + max;
-  width=prefWidth;
-  height=prefHeight;
+  invalidateHierarchy();
 }

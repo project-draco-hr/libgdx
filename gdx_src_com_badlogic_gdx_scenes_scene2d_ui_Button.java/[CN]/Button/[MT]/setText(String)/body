@@ -1,6 +1,9 @@
 {
   if (children.isEmpty()) {
-    add(new Label(text,style));
+    Label label=new Label(text,style);
+    label.setAlignment(Align.CENTER);
+    add(label);
+    invalidateHierarchy();
     return;
   }
   for (int i=0; i < children.size(); i++) {

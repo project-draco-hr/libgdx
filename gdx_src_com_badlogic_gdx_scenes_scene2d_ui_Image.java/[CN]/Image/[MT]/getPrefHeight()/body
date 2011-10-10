@@ -1,3 +1,5 @@
 {
-  return region.getRegionHeight();
+  if (region != null)   return region.getRegionHeight();
+  if (patch != null)   return patch.getTotalHeight();
+  return 0;
 }

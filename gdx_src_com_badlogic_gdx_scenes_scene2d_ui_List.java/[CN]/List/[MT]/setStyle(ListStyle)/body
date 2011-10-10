@@ -1,4 +1,5 @@
 {
   this.style=style;
   if (items != null)   setItems(items);
+ else   invalidateHierarchy();
 }

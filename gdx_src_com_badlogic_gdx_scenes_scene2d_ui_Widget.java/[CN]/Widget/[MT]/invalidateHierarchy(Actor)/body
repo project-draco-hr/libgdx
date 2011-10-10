@@ -1,7 +1,6 @@
 {
-  invalidate();
-  pack();
-  Group parent=this.parent;
+  if (actor instanceof Layout)   ((Layout)actor).invalidate();
+  Group parent=actor.parent;
   while (parent != null) {
     if (parent instanceof Layout)     ((Layout)parent).invalidate();
     parent=parent.parent;

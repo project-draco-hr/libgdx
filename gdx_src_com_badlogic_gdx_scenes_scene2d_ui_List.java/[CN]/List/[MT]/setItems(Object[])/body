@@ -22,4 +22,5 @@
   prefHeight=items.length * itemHeight;
   textOffsetX=selectedPatch.getLeftWidth();
   textOffsetY=selectedPatch.getTopHeight() - font.getDescent();
+  invalidateHierarchy();
 }

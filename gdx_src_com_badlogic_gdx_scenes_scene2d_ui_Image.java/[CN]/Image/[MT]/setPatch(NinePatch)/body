@@ -1,5 +1,10 @@
 {
+  if (patch != null) {
+    if (getPrefWidth() != patch.getTotalWidth() || getPrefHeight() != patch.getTotalHeight())     invalidateHierarchy();
+  }
+ else {
+    if (getPrefWidth() != 0 || getPrefHeight() != 0)     invalidateHierarchy();
+  }
   this.patch=patch;
   region=null;
-  invalidate();
 }
