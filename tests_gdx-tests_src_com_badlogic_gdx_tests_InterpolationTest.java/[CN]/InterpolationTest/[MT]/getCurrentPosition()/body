@@ -1,0 +1,7 @@
+{
+  temp.set(targetPosition);
+  temp.sub(position);
+  temp.mul(getInterpolation().apply(Math.min(1,timer / 1f)));
+  temp.add(position);
+  return temp;
+}
