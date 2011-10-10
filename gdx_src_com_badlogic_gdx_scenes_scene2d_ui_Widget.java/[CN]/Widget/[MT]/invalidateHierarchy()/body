@@ -3,7 +3,8 @@
   pack();
   Group parent=this.parent;
   while (parent != null) {
-    if (parent instanceof Layout)     ((Layout)parent).invalidate();
+    if (!(parent instanceof Layout))     break;
+    ((Layout)parent).invalidate();
     parent=parent.parent;
   }
 }

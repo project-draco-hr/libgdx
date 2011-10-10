@@ -4,4 +4,5 @@
   if (actor instanceof Group)   groups.add((Group)actor);
   if (actor.name != null)   namesToActors.put(actor.name,actor);
   actor.parent=this;
+  childrenChanged();
 }
