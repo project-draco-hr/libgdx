@@ -6,14 +6,23 @@
   final NinePatch cursorPatch=style.cursor;
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,x,y,width,height);
-  float textY=(int)(height / 2) + (int)(textBounds.height / 2) + font.getDescent() / 2;
-  font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
+  float textY=(int)(height / 2 + textBounds.height / 2 + font.getDescent());
   calculateOffsets();
   if (hasSelection) {
     batch.draw(selection,x + selectionX + background.getLeftWidth()+ renderOffset,y + textY - textBounds.height - font.getDescent() / 2,selectionWidth,textBounds.height);
   }
-  font.draw(batch,text,x + background.getLeftWidth() + textOffset,y + textY,visibleTextStart,visibleTextEnd);
-  if (parent.keyboardFocusedActor == this) {
+  boolean focused=parent.keyboardFocusedActor == this;
+  if (text.length() == 0) {
+    if (!focused) {
+      font.setColor(0.7f,0.7f,0.7f,parentAlpha);
+      font.draw(batch,messageText,x + background.getLeftWidth(),y + textY);
+    }
+  }
+ else {
+    font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
+    font.draw(batch,text,x + background.getLeftWidth() + textOffset,y + textY,visibleTextStart,visibleTextEnd);
+  }
+  if (focused) {
     blink();
     if (cursorOn) {
       cursorPatch.draw(batch,x + background.getLeftWidth() + glyphPositions.get(cursor)+ renderOffset - 1,y + textY - textBounds.height - font.getDescent(),cursorPatch.getTotalWidth(),textBounds.height + font.getDescent() / 2);
