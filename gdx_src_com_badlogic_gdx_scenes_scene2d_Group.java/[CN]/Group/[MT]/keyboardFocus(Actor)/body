@@ -1,4 +1,9 @@
 {
+  Actor existingActor=keyboardFocusedActor;
+  if (existingActor != null && existingActor.parent != this) {
+    keyboardFocusedActor=null;
+    existingActor.parent.keyboardFocus(null);
+  }
   keyboardFocusedActor=actor;
   if (parent != null)   parent.keyboardFocus(actor);
 }

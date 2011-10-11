@@ -2,6 +2,7 @@
   if (pointer != 0)   return false;
   parent.keyboardFocus(this);
   keyboard.show(true);
+  hasSelection=false;
   x=x - renderOffset;
   for (int i=0; i < glyphPositions.size; i++) {
     float pos=glyphPositions.items[i];

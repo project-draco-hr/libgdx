@@ -1,8 +1,8 @@
 {
   Actor existingActor=focusedActor[pointer];
-  if (existingActor != null) {
+  if (existingActor != null && existingActor.parent != this) {
     focusedActor[pointer]=null;
-    if (existingActor.parent != this)     existingActor.parent.focus(null,pointer);
+    existingActor.parent.focus(null,pointer);
   }
   if (debug)   Gdx.app.log("Group","focus: " + (actor == null ? "null" : actor.name));
   focusedActor[pointer]=actor;
