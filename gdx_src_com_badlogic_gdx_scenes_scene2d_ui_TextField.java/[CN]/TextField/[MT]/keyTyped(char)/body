@@ -1,6 +1,7 @@
 {
   final BitmapFont font=style.font;
   if (parent.keyboardFocusedActor == this) {
+    if (filter != null && !filter.acceptChar(this,character))     return true;
     if (character == 8 && (cursor > 0 || hasSelection)) {
       if (!hasSelection) {
         text=text.substring(0,cursor - 1) + text.substring(cursor);
