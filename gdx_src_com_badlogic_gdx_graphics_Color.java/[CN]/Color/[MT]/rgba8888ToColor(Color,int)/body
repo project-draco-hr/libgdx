@@ -1,0 +1,6 @@
+{
+  color.r=((value & 0xff000000) >>> 24) / 255f;
+  color.g=((value & 0x00ff0000) >>> 16) / 255f;
+  color.b=((value & 0x0000ff00) >>> 8) / 255f;
+  color.a=((value & 0x000000ff)) / 255f;
+}
