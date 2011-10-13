@@ -24,7 +24,7 @@
     protected void processFile(    InputFile inputFile) throws Exception {
       BufferedImage image=ImageIO.read(inputFile.inputFile);
       String name=inputFile.outputFile.getName();
-      name=name.substring(0,name.length());
+      name=name.substring(0,name.length() - 2);
       image=getSplits(image,name);
       texturePacker.addImage(image,name);
     }
@@ -67,12 +67,17 @@
         raster.getPixel(0,y,rgba);
         if (rgba[3] != 0)         throw new RuntimeException("Unknown pixel 0," + y + ": "+ name);
       }
-      if (startX == 1 && endX == 1 && startY == 1 && endY == 1)       return image;
-      int[] splits=new int[4];
+      boolean singleRegion=startX == 1 && endX == 1 && startY == 1 && endY == 1;
+      if (singleRegion) {
+        endX=raster.getWidth();
+        endY=raster.getHeight();
+      }
+      int[] splits=new int[5];
       splits[0]=startX - 1;
       splits[1]=endX - 1;
       splits[2]=startY - 1;
       splits[3]=endY - 1;
+      splits[4]=singleRegion ? 1 : 0;
       nameToSplits.put(name,splits);
       BufferedImage newImage=new BufferedImage(raster.getWidth() - 2,raster.getHeight() - 2,BufferedImage.TYPE_4BYTE_ABGR);
       newImage.getGraphics().drawImage(image,0,0,newImage.getWidth(),newImage.getHeight(),1,1,raster.getWidth() - 1,raster.getHeight() - 1,null);
@@ -99,14 +104,12 @@
       for (      Region region : atlas.getRegions()) {
         int[] split=nameToSplits.get(region.name);
         TextureRegion textureRegion=new TextureRegion(texture,region.left,region.top,region.width,region.height);
-        boolean isNinePatch=region.name.endsWith(".9");
-        if (isNinePatch)         region.name=region.name.substring(0,region.name.length() - 2);
         if (split == null) {
-          if (isNinePatch)           skin.addResource(region.name,new NinePatch(textureRegion));
- else           skin.addResource(region.name,textureRegion);
+          skin.addResource(region.name,textureRegion);
         }
  else {
-          skin.addResource(region.name,new NinePatch(textureRegion,split[0],region.width - split[1],split[2],region.height - split[3]));
+          if (split[4] == 1)           skin.addResource(region.name,new NinePatch(textureRegion));
+ else           skin.addResource(region.name,new NinePatch(textureRegion,split[0],region.width - split[1],split[2],region.height - split[3]));
         }
       }
       FileHandle newSkinFile=new FileHandle(new File(inputDir,"temp-skin"));
