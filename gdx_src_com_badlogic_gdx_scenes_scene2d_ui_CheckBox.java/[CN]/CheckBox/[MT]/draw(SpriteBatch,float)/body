@@ -1,0 +1,7 @@
+{
+  if (isCheckedRegion != isChecked) {
+    isCheckedRegion=isChecked;
+    image.setRegion(isChecked ? ((CheckBoxStyle)style).checkboxOn : ((CheckBoxStyle)style).checkboxOff);
+  }
+  super.draw(batch,parentAlpha);
+}
