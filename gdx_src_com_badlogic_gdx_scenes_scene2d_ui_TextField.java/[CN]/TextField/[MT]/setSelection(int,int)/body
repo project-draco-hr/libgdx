@@ -1,0 +1,8 @@
+{
+  if (selectionStart < 0)   throw new IllegalArgumentException("selectionStart must be >= 0");
+  if (selectionStart >= selectionEnd)   throw new IllegalArgumentException("selectionStart must be < selectionEnd");
+  selectionEnd=Math.min(text.length(),selectionEnd);
+  this.hasSelection=true;
+  this.selectionStart=selectionStart;
+  this.cursor=selectionEnd;
+}

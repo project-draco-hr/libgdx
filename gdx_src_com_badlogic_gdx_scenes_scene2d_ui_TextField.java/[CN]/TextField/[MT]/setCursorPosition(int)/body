@@ -1,0 +1,5 @@
+{
+  if (cursorPosition < 0)   throw new IllegalArgumentException("cursorPosition must be >= 0");
+  this.hasSelection=false;
+  this.cursor=Math.min(cursorPosition,text.length());
+}

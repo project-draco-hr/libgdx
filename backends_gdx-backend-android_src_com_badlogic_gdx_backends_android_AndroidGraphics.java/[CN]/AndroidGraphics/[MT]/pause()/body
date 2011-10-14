@@ -8,6 +8,7 @@ synchronized (synch) {
         synch.wait();
       }
  catch (      InterruptedException ignored) {
+        Gdx.app.log("AndroidGraphics","waiting for pause synchronization failed!");
       }
     }
   }

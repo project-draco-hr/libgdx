@@ -7,6 +7,7 @@ synchronized (synch) {
         synch.wait();
       }
  catch (      InterruptedException ex) {
+        Gdx.app.log("AndroidGraphics","waiting for destroy synchronization failed!");
       }
     }
   }
