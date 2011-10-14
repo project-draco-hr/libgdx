@@ -5,4 +5,14 @@
   layout.layout();
   layout.invalidate();
   sizeInvalid=false;
+  if (backgroundPatch != null) {
+    prefWidth=Math.max(layout.getPrefWidth(),(int)backgroundPatch.getTotalWidth());
+    prefHeight=Math.max(layout.getPrefHeight(),(int)backgroundPatch.getTotalHeight());
+  }
+ else {
+    prefWidth=layout.getPrefWidth();
+    prefHeight=layout.getPrefHeight();
+  }
+  minWidth=layout.getMinWidth();
+  minHeight=layout.getMinHeight();
 }

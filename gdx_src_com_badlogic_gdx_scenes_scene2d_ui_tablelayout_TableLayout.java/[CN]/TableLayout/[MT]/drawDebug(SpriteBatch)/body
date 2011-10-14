@@ -4,23 +4,20 @@
     if (Gdx.graphics.isGL20Available())     debugRenderer=new ImmediateModeRenderer20(64,false,true,0);
  else     debugRenderer=new ImmediateModeRenderer10(64);
   }
-  Table table=getTable();
-  Actor parent=table.parent;
-  float x=table.x, y=0;
+  float x=0, y=0;
+  Actor parent=getTable();
   while (parent != null) {
-    if (parent instanceof Group && ((Group)parent).transform) {
+    if (parent instanceof Group) {
       x+=parent.x;
-      y=parent.y + parent.height - y;
+      y+=parent.y;
     }
     parent=parent.parent;
   }
-  y=table.y + table.height - y;
-  int viewHeight=Gdx.graphics.getHeight();
   debugRenderer.begin(batch.getProjectionMatrix(),GL10.GL_LINES);
   for (int i=0, n=debugRects.size; i < n; i++) {
     DebugRect rect=debugRects.get(i);
     float x1=x + rect.x;
-    float y1=y - rect.y - rect.height;
+    float y1=y + rect.y - rect.height;
     float x2=x1 + rect.width;
     float y2=y1 + rect.height;
     float r=(rect.type & DEBUG_CELL) != 0 ? 1 : 0;

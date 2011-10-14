@@ -12,7 +12,6 @@
     listener.error(assetDesc.fileName,assetDesc.type,t);
   }
  else {
-    t.printStackTrace();
     throw new GdxRuntimeException(t);
   }
 }

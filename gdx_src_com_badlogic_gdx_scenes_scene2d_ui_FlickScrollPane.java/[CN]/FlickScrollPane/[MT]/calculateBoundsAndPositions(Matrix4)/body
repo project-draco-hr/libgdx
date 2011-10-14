@@ -2,6 +2,7 @@
   float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
+    layout.layout();
     widgetWidth=layout.getPrefWidth();
     widgetHeight=layout.getPrefHeight();
   }
@@ -14,12 +15,12 @@
   widgetWidth=Math.max(width,widgetWidth);
   if (disableX || widget.width != widgetWidth) {
     widget.width=widgetWidth;
-    needsLayout=true;
+    if (widget instanceof Layout)     ((Layout)widget).invalidate();
   }
   widgetHeight=Math.max(height,widgetHeight);
   if (disableY || widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.height=widgetHeight;
-    needsLayout=true;
+    if (widget instanceof Layout)     ((Layout)widget).invalidate();
   }
   maxX=widget.width - width;
   maxY=widget.height - height;

@@ -1,9 +1,2 @@
 {
-  if (!needsLayout)   return;
-  needsLayout=false;
-  if (widget instanceof Layout) {
-    Layout layout=(Layout)widget;
-    layout.invalidate();
-    layout.layout();
-  }
 }

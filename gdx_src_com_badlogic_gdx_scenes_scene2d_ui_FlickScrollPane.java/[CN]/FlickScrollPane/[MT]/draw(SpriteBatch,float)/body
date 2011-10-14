@@ -2,7 +2,6 @@
   if (widget == null)   return;
   applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
-  if (needsLayout)   layout();
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
     ScissorStack.popScissors();

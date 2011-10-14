@@ -1,7 +1,3 @@
 {
-  for (int i=0; i < children.size(); i++) {
-    Actor child=children.get(i);
-    if (child instanceof Label)     return ((Label)child).getText();
-  }
-  throw new GdxRuntimeException("No child label was found.");
+  return getLabel().getText();
 }

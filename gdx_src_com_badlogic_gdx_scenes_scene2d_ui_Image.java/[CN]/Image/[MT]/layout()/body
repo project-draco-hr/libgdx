@@ -11,48 +11,13 @@
     regionHeight=region.getRegionHeight();
   }
  else   return;
-  float width=this.width * scaleX;
-  float height=this.height * scaleY;
-switch (scaling) {
-case fill:
-{
-      float widgetRatio=height / width;
-      float regionRatio=regionHeight / regionWidth;
-      float scale=regionRatio > widgetRatio ? width / regionWidth : height / regionHeight;
-      imageWidth=regionWidth * scale;
-      imageHeight=regionHeight * scale;
-      break;
-    }
-case fit:
-{
-    float widgetRatio=height / width;
-    float regionRatio=regionHeight / regionWidth;
-    float scale=regionRatio < widgetRatio ? width / regionWidth : height / regionHeight;
-    imageWidth=regionWidth * scale;
-    imageHeight=regionHeight * scale;
-    break;
-  }
-case stretch:
-imageWidth=width;
-imageHeight=height;
-break;
-case stretchX:
-imageWidth=width;
-imageHeight=regionHeight;
-break;
-case stretchY:
-imageWidth=regionWidth;
-imageHeight=height;
-break;
-case none:
-imageWidth=regionWidth;
-imageHeight=regionHeight;
-break;
-}
-if ((align & Align.LEFT) != 0) imageX=0;
- else if ((align & Align.RIGHT) != 0) imageX=(int)(width - imageWidth);
- else imageX=(int)(width / 2 - imageWidth / 2);
-if ((align & Align.TOP) != 0) imageY=(int)(height - imageHeight);
- else if ((align & Align.BOTTOM) != 0) imageY=0;
- else imageY=(int)(height / 2 - imageHeight / 2);
+  Vector2 size=scaling.apply(regionWidth,regionHeight,width * scaleX,height * scaleY);
+  imageWidth=size.x;
+  imageHeight=size.y;
+  if ((align & Align.LEFT) != 0)   imageX=0;
+ else   if ((align & Align.RIGHT) != 0)   imageX=(int)(width - imageWidth);
+ else   imageX=(int)(width / 2 - imageWidth / 2);
+  if ((align & Align.TOP) != 0)   imageY=(int)(height - imageHeight);
+ else   if ((align & Align.BOTTOM) != 0)   imageY=0;
+ else   imageY=(int)(height / 2 - imageHeight / 2);
 }

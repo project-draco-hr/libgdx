@@ -1,15 +1,11 @@
 {
   if (!clamp)   return;
   if (bounces) {
-    amountX=Math.max(-bounceDistance,amountX);
-    amountX=Math.min(maxX + bounceDistance,amountX);
-    amountY=Math.max(-bounceDistance,amountY);
-    amountY=Math.min(maxY + bounceDistance,amountY);
+    amountX=MathUtils.clamp(amountX,-bounceDistance,maxX + bounceDistance);
+    amountY=MathUtils.clamp(amountY,-bounceDistance,maxY + bounceDistance);
   }
  else {
-    amountX=Math.max(0,amountX);
-    amountX=Math.min(maxX,amountX);
-    amountY=Math.max(0,amountY);
-    amountY=Math.min(maxY,amountY);
+    amountX=MathUtils.clamp(amountX,0,maxX);
+    amountY=MathUtils.clamp(amountY,0,maxY);
   }
 }
