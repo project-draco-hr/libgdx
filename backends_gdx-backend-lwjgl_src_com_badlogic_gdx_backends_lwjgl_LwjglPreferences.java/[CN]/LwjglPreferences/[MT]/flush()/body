@@ -1,4 +1,5 @@
 {
+  if (Gdx.files == null)   return;
   OutputStream out=null;
   try {
     out=new BufferedOutputStream(Gdx.files.external(LwjglPreferences.this.name).write(false));

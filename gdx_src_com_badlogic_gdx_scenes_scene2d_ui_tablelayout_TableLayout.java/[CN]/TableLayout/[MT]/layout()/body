@@ -1,6 +1,4 @@
 {
-  if (!needsLayout)   return;
-  needsLayout=false;
   Table table=getTable();
   setLayoutSize(0,0,(int)table.width,(int)table.height);
   super.layout();
@@ -14,10 +12,6 @@
     actor.y=table.height - c.getWidgetY() - widgetHeight;
     actor.width=c.getWidgetWidth();
     actor.height=widgetHeight;
-    if (actor instanceof Layout) {
-      Layout layout=(Layout)actor;
-      layout.invalidate();
-      layout.layout();
-    }
+    if (actor instanceof Layout)     ((Layout)actor).invalidate();
   }
 }

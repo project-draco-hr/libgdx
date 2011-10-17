@@ -3,6 +3,8 @@
   parent.keyboardFocus(this);
   keyboard.show(true);
   hasSelection=false;
+  lastBlink=0;
+  cursorOn=false;
   x=x - renderOffset;
   for (int i=0; i < glyphPositions.size; i++) {
     float pos=glyphPositions.items[i];

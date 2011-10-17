@@ -1,4 +1,3 @@
 {
-  if (sizeInvalid)   computeSize();
-  return minWidth;
+  return layout.getMinWidth();
 }

@@ -1,6 +1,4 @@
 {
-  if (!invalidated)   return;
-  invalidated=false;
   if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,width));
  else   bounds.set(cache.getFont().getMultiLineBounds(text));
   float y;

@@ -1,5 +1,4 @@
 {
-  if (!touchable)   return false;
   if (super.touchDown(x,y,pointer))   return true;
   if (pointer != 0)   return false;
   if (listener == null)   return false;

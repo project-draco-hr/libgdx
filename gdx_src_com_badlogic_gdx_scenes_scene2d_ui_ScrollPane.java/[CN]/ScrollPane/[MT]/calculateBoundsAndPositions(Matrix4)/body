@@ -31,11 +31,7 @@
   if (widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.width=widgetWidth;
     widget.height=widgetHeight;
-    if (widget instanceof Layout) {
-      Layout layout=(Layout)widget;
-      layout.invalidate();
-      layout.layout();
-    }
+    if (widget instanceof Layout)     ((Layout)widget).invalidate();
   }
   if (hasHScroll) {
     hScrollBounds.set(background.getLeftWidth(),background.getBottomHeight(),areaWidth,hScrollKnob.getTotalHeight());

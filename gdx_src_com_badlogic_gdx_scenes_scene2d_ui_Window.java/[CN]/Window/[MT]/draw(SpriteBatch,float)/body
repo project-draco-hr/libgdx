@@ -2,7 +2,7 @@
   final NinePatch backgroundPatch=style.background;
   final BitmapFont titleFont=style.titleFont;
   final Color titleFontColor=style.titleFontColor;
-  layout();
+  validate();
   applyTransform(batch);
   calculateBoundsAndScissors(batch.getTransformMatrix());
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);

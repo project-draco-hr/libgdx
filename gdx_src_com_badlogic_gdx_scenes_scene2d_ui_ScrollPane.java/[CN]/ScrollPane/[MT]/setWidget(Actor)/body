@@ -1,7 +1,6 @@
 {
-  if (widget == null)   throw new IllegalArgumentException("widget must not be null");
-  this.removeActor(this.widget);
+  if (widget == null)   throw new IllegalArgumentException("widget cannot be null.");
+  if (this.widget != null)   removeActor(this.widget);
   this.widget=widget;
-  this.addActor(widget);
-  invalidate();
+  if (widget != null)   addActor(widget);
 }

@@ -1,4 +1,3 @@
 {
-  if (sizeInvalid)   computeSize();
-  return minHeight;
+  return layout.getMinHeight();
 }

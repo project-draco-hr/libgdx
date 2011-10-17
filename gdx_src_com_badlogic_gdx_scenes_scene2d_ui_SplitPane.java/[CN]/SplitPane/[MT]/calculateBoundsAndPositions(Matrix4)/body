@@ -17,16 +17,12 @@
   firstWidget.y=firstWidgetBounds.y;
   firstWidget.width=firstWidgetBounds.width;
   firstWidget.height=firstWidgetBounds.height;
+  if (layoutFirst && firstWidget instanceof Layout)   ((Layout)firstWidget).invalidate();
   secondWidget.x=secondWidgetBounds.x;
   secondWidget.y=secondWidgetBounds.y;
   secondWidget.width=secondWidgetBounds.width;
   secondWidget.height=secondWidgetBounds.height;
-  if (layoutFirst && firstWidget instanceof Layout) {
-    ((Layout)firstWidget).invalidate();
-  }
-  if (layoutSecond && secondWidget instanceof Layout) {
-    ((Layout)secondWidget).invalidate();
-  }
+  if (layoutSecond && secondWidget instanceof Layout)   ((Layout)secondWidget).invalidate();
   ScissorStack.calculateScissors(stage.getCamera(),transform,firstWidgetBounds,scissors[0]);
   ScissorStack.calculateScissors(stage.getCamera(),transform,secondWidgetBounds,scissors[1]);
 }

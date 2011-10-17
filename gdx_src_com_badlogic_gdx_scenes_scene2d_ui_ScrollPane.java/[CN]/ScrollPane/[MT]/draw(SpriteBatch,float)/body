@@ -1,4 +1,6 @@
 {
+  if (widget == null)   return;
+  validate();
   final NinePatch background=style.background;
   final NinePatch hScrollKnob=style.hScrollKnob;
   final NinePatch hScroll=style.hScroll;

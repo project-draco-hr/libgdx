@@ -1,4 +1,5 @@
 {
+  validate();
   NinePatch handle=style.handle;
   applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
@@ -10,6 +11,5 @@
   }
   batch.setColor(color.r,color.g,color.b,color.a);
   handle.draw(batch,handleBounds.x,handleBounds.y,handleBounds.width,handleBounds.height);
-  if (invalidated)   layout();
   resetTransform(batch);
 }

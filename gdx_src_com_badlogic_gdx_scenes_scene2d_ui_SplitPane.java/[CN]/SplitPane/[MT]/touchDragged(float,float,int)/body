@@ -11,7 +11,6 @@
       splitAmount=dragX / availWidth;
       if (splitAmount < minAmount)       splitAmount=minAmount;
       if (splitAmount > maxAmount)       splitAmount=maxAmount;
-      invalidate();
       lastPoint.set(x,y);
     }
  else {
@@ -24,9 +23,9 @@
       splitAmount=1 - (dragY / availHeight);
       if (splitAmount < minAmount)       splitAmount=minAmount;
       if (splitAmount > maxAmount)       splitAmount=maxAmount;
-      invalidate();
       lastPoint.set(x,y);
     }
+    invalidate();
   }
  else   super.touchDragged(x,y,pointer);
 }
