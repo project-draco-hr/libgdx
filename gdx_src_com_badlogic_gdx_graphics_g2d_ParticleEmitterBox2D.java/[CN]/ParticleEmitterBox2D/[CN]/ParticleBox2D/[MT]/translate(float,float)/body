@@ -1,12 +1,13 @@
 {
-  final float x=getX() + (getTexture().getWidth() >> 1);
-  final float y=getY() + (getTexture().getHeight() >> 1);
+  if (velocityX + velocityY == 0)   return;
+  float x=getX() + (getTexture().getWidth() >> 1);
+  float y=getY() + (getTexture().getHeight() >> 1);
   fraction=1f;
   start.set(x,y);
   end.set(x + velocityX,y + velocityY);
   world.rayCast(ray,start,end);
   if (fraction < 1f) {
-    angle=2f * normal.angle() - angle - 180f;
+    angle=2f * normal - angle - 180f;
     angleCos=MathUtils.cosDeg(angle);
     angleSin=MathUtils.sinDeg(angle);
     velocityX=velocity * angleCos;

@@ -1,0 +1,6 @@
+{
+  boolean old=allowNoneChecked;
+  allowNoneChecked=true;
+  uncheckAllExcept(null);
+  allowNoneChecked=old;
+}

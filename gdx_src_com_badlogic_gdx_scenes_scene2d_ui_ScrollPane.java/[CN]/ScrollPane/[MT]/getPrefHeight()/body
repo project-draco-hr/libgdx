@@ -1,3 +1,4 @@
 {
+  if (widget instanceof Layout)   return ((Layout)widget).getPrefHeight();
   return 150;
 }
