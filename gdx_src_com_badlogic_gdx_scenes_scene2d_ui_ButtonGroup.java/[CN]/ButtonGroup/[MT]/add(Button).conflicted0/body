@@ -1,0 +1,6 @@
+{
+  if (button == null)   throw new IllegalArgumentException("button cannot be null.");
+  button.buttonGroup=this;
+  buttons.add(button);
+  if (button.isChecked() || buttons.size == 0)   button.setChecked(true);
+}

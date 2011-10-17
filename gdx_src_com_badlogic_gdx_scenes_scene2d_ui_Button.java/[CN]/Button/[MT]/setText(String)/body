@@ -6,5 +6,7 @@
     invalidateHierarchy();
     return;
   }
-  getLabel().setText(text);
+  Label label=getLabel();
+  if (label == null)   throw new GdxRuntimeException("No child label was found.");
+  label.setText(text);
 }

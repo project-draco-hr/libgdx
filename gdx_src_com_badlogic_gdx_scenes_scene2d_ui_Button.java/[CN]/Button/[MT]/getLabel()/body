@@ -3,5 +3,5 @@
     Actor child=children.get(i);
     if (child instanceof Label)     return (Label)child;
   }
-  throw new GdxRuntimeException("No child label was found.");
+  return null;
 }

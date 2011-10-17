@@ -1,0 +1,9 @@
+{
+  for (int i=0, n=buttons.size; i < n; i++) {
+    Button button=buttons.get(i);
+    if (text.equals(button.getText())) {
+      button.setChecked(true);
+      return;
+    }
+  }
+}
