@@ -1,5 +1,4 @@
 {
-  Particle particle=particles[index];
   int life=particle.currentLife - deltaMillis;
   if (life <= 0)   return false;
   particle.currentLife=life;

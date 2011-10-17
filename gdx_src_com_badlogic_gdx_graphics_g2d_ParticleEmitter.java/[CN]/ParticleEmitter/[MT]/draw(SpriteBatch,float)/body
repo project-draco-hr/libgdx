@@ -14,7 +14,8 @@
   while (true) {
     index=active.nextSetBit(index);
     if (index == -1)     break;
-    if (updateParticle(index,delta,deltaMillis))     particles[index].draw(spriteBatch);
+    Particle particle=particles[index];
+    if (updateParticle(particle,delta,deltaMillis))     particle.draw(spriteBatch);
  else {
       active.clear(index);
       activeCount--;

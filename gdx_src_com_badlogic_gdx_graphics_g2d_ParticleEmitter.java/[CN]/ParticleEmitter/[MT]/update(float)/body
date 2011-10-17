@@ -9,7 +9,7 @@
   while (true) {
     index=active.nextSetBit(index);
     if (index == -1)     break;
-    if (!updateParticle(index,delta,deltaMillis)) {
+    if (!updateParticle(particles[index],delta,deltaMillis)) {
       active.clear(index);
       activeCount--;
     }
