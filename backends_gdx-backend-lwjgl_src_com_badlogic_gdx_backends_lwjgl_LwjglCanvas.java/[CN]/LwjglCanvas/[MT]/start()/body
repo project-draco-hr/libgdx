@@ -1,12 +1,13 @@
 {
   try {
     graphics.setupDisplay();
+    listener.create();
+    listener.resize(Math.max(1,graphics.getWidth()),Math.max(1,graphics.getHeight()));
   }
- catch (  LWJGLException e) {
-    throw new GdxRuntimeException(e);
+ catch (  Exception ex) {
+    stopped();
+    throw new GdxRuntimeException(ex);
   }
-  listener.create();
-  listener.resize(Math.max(1,graphics.getWidth()),Math.max(1,graphics.getHeight()));
   EventQueue.invokeLater(new Runnable(){
     int lastWidth=Math.max(1,graphics.getWidth());
     int lastHeight=Math.max(1,graphics.getHeight());
@@ -34,6 +35,7 @@ synchronized (runnables) {
       Display.update();
       if (graphics.vsync)       Display.sync(60);
       if (running && !Display.isCloseRequested())       EventQueue.invokeLater(this);
+ else       stopped();
     }
   }
 );

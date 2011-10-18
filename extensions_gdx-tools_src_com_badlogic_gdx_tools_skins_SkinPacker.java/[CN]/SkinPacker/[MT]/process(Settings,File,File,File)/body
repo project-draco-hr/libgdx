@@ -95,6 +95,7 @@
   config.width=1;
   config.height=1;
   config.title="SkinPacker";
+  final CountDownLatch latch=new CountDownLatch(2);
   new LwjglApplication(new ApplicationListener(){
     public void create(){
       Skin skin=new Skin();
@@ -114,7 +115,7 @@
       }
       FileHandle newSkinFile=new FileHandle(new File(inputDir,"temp-skin"));
       skin.save(newSkinFile);
-      atlas.getPages().get(0).textureFile.copyTo(new FileHandle(imageFile));
+      atlas.getPages().get(0).textureFile.moveTo(new FileHandle(imageFile));
       new FileHandle(packedDir).deleteDirectory();
       Json json=new Json();
       if (skinFile != null) {
@@ -139,6 +140,7 @@
       }
       newSkinFile.delete();
       Gdx.app.exit();
+      latch.countDown();
     }
     public void resume(){
     }
@@ -152,4 +154,6 @@
     }
   }
 ,config);
+  latch.countDown();
+  latch.await();
 }
