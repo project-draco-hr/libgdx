@@ -1,0 +1,29 @@
+{
+  InputStream input=null;
+  OutputStream output=null;
+  try {
+    input=source.read();
+    output=dest.write(false);
+    byte[] buffer=new byte[4096];
+    while (true) {
+      int length=input.read(buffer);
+      if (length == -1)       break;
+      output.write(buffer,0,length);
+    }
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error copying source file: " + source.file + " ("+ source.type+ ")\n"+ "To destination: "+ dest.file+ " ("+ dest.type+ ")",ex);
+  }
+ finally {
+    try {
+      if (input != null)       input.close();
+    }
+ catch (    Exception ignored) {
+    }
+    try {
+      if (output != null)       output.close();
+    }
+ catch (    Exception ignored) {
+    }
+  }
+}

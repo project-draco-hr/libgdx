@@ -1,29 +1,16 @@
 {
-  InputStream input=null;
-  OutputStream output=null;
-  try {
-    input=read();
-    output=dest.write(false);
-    byte[] buffer=new byte[4096];
-    while (true) {
-      int length=input.read(buffer);
-      if (length == -1)       break;
-      output.write(buffer,0,length);
-    }
+  if (!isDirectory()) {
+    if (dest.isDirectory())     dest=dest.child(name());
+    copyFile(this,dest);
+    return;
   }
- catch (  Exception ex) {
-    throw new GdxRuntimeException("Error copying source file: " + file + " ("+ type+ ")\n"+ "To destination: "+ dest.file+ " ("+ dest.type+ ")",ex);
+  if (dest.exists()) {
+    if (!dest.isDirectory())     throw new GdxRuntimeException("Destination exists but is not a directory: " + dest);
   }
- finally {
-    try {
-      if (input != null)       input.close();
-    }
- catch (    Exception ignored) {
-    }
-    try {
-      if (output != null)       output.close();
-    }
- catch (    Exception ignored) {
-    }
+ else {
+    dest.mkdirs();
+    if (!dest.isDirectory())     throw new GdxRuntimeException("Destination directory cannot be created: " + dest);
   }
+  dest=dest.child(name());
+  copyDirectory(this,dest);
 }

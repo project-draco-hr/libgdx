@@ -1,11 +1,3 @@
 {
-  if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot write to a classpath file: " + file);
-  if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot write to an internal file: " + file);
-  try {
-    return new FileWriter(file(),append);
-  }
- catch (  IOException ex) {
-    if (file().isDirectory())     throw new GdxRuntimeException("Cannot open a stream to a directory: " + file + " ("+ type+ ")",ex);
-    throw new GdxRuntimeException("Error writing file: " + file + " ("+ type+ ")",ex);
-  }
+  return writer(append,null);
 }
