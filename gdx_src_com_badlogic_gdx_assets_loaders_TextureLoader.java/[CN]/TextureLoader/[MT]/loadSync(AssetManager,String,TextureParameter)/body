@@ -1,9 +1,11 @@
 {
+  Texture texture=this.texture;
   if (texture != null) {
     texture.load(data);
-    return texture;
   }
  else {
-    return new Texture(data);
+    texture=new Texture(data);
   }
+  if (parameter != null)   texture.setFilter(parameter.minFilter,parameter.magFilter);
+  return texture;
 }
