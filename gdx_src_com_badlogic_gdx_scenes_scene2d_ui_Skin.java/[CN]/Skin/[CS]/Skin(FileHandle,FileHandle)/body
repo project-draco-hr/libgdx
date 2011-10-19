@@ -1,6 +1,5 @@
 {
-  data=new SkinData();
-  data.texture=new Texture(textureFile);
+  texture=new Texture(textureFile);
   try {
     getJsonLoader(skinFile).fromJson(Skin.class,skinFile);
   }

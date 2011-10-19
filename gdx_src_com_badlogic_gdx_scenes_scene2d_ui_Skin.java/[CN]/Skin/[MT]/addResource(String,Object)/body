@@ -1,9 +1,9 @@
 {
   if (resource == null)   throw new IllegalArgumentException("resource cannot be null.");
-  ObjectMap<String,Object> typeResources=data.resources.get(resource.getClass());
+  ObjectMap<String,Object> typeResources=resources.get(resource.getClass());
   if (typeResources == null) {
     typeResources=new ObjectMap();
-    data.resources.put(resource.getClass(),typeResources);
+    resources.put(resource.getClass(),typeResources);
   }
   typeResources.put(name,resource);
 }

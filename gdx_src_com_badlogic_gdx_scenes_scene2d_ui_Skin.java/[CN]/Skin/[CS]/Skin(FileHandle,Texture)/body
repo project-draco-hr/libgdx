@@ -1,6 +1,6 @@
 {
-  this.data=data;
-  data.texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  this.texture=texture;
+  texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   try {
     getJsonLoader(skinFile).fromJson(Skin.class,skinFile);
   }

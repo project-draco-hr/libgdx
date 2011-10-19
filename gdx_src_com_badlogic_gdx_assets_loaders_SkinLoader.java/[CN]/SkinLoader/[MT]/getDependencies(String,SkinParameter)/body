@@ -2,20 +2,5 @@
   if (parameter == null)   throw new IllegalArgumentException("Missing SkinParameter: " + fileName);
   Array<AssetDescriptor> deps=new Array();
   deps.add(new AssetDescriptor(parameter.texturePath,Texture.class));
-  ObjectMap<String,ObjectMap> root=(ObjectMap)new JsonReader().parse(resolve(fileName));
-  ObjectMap<String,ObjectMap> resources=root.get("resources");
-  ObjectMap<String,String> bitmapFontMap=null;
-  if (resources != null)   bitmapFontMap=resources.get(BitmapFont.class.getName());
-  skinFile=resolve(fileName);
-  fontPaths=new ObjectMap();
-  if (bitmapFontMap != null) {
-    for (    Entry<String,String> entry : bitmapFontMap.entries()) {
-      FileHandle fontFile=skinFile.parent().child(entry.value);
-      if (!fontFile.exists())       fontFile=Gdx.files.internal(entry.value);
-      AssetDescriptor asset=new AssetDescriptor(fontFile.path(),BitmapFont.class);
-      fontPaths.put(entry.key,asset.fileName);
-      deps.add(asset);
-    }
-  }
   return deps;
 }

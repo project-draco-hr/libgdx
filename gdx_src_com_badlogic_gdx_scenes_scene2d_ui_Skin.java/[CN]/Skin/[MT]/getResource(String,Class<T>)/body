@@ -1,5 +1,5 @@
 {
-  ObjectMap<String,Object> typeResources=data.resources.get(type);
+  ObjectMap<String,Object> typeResources=resources.get(type);
   if (typeResources == null)   throw new GdxRuntimeException("No resources registered with type: " + type.getName());
   Object resource=typeResources.get(name);
   if (resource == null)   throw new GdxRuntimeException("No " + type.getName() + " resource registered with name: "+ name);

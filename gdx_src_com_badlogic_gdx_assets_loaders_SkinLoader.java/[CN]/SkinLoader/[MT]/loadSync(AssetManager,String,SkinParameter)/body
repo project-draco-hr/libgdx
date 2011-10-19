@@ -1,8 +1,4 @@
 {
-  SkinData data=new SkinData();
-  data.texture=manager.get(parameter.texturePath,Texture.class);
-  ObjectMap<String,Object> fonts=new ObjectMap();
-  data.resources.put(BitmapFont.class,fonts);
-  for (  Entry<String,String> entry : fontPaths.entries())   fonts.put(entry.key,manager.get(entry.value,BitmapFont.class));
-  return new Skin(skinFile,data);
+  Texture texture=manager.get(parameter.texturePath,Texture.class);
+  return new Skin(resolve(fileName),texture);
 }

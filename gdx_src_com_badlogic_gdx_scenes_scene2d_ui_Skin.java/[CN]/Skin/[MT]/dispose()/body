@@ -1,4 +1,4 @@
 {
-  data.texture.dispose();
-  for (  Object object : data.resources.values())   if (object instanceof Disposable)   ((Disposable)object).dispose();
+  texture.dispose();
+  for (  Object object : resources.values())   if (object instanceof Disposable)   ((Disposable)object).dispose();
 }
