@@ -1,7 +1,7 @@
 {
   if (currentElement == null)   return false;
   indent++;
-  stack.push(currentElement);
+  stack.add(currentElement);
   currentElement=null;
   writer.write(">");
   return true;
