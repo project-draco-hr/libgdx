@@ -21,7 +21,7 @@ class AliasSerializer implements Serializer {
       String name=(String)jsonData;
       Object object=map.get(name);
       if (object != null)       return object;
-      throw new SerializationException("Skin has a " + type.getSimpleName() + " that could not be found in the resources: "+ jsonData);
+      throw new SerializationException("Skin references a " + type.getSimpleName() + " that could not be found in the resources: "+ jsonData);
     }
   }
   json.setSerializer(Skin.class,new Serializer<Skin>(){

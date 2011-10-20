@@ -1,0 +1,15 @@
+{
+  try {
+    return super.newInstance(layout,className);
+  }
+ catch (  Exception ex) {
+    if (layout.skin != null) {
+      try {
+        return (Actor)Class.forName(className).getConstructor(Skin.class).newInstance(layout.skin);
+      }
+ catch (      Exception ignored) {
+      }
+    }
+    throw ex;
+  }
+}

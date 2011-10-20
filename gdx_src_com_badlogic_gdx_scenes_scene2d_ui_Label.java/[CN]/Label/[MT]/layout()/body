@@ -1,4 +1,5 @@
 {
+  float wrapWidth=this.wrapWidth != 0 ? this.wrapWidth : width;
   if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,width));
  else   bounds.set(cache.getFont().getMultiLineBounds(text));
   float y;
@@ -16,6 +17,6 @@
   if ((align & Align.LEFT) != 0)   halign=HAlignment.LEFT;
  else   if ((align & Align.RIGHT) != 0)   halign=HAlignment.RIGHT;
  else   halign=HAlignment.CENTER;
-  if (wrap)   cache.setWrappedText(text,0,y,width,halign);
+  if (wrap)   cache.setWrappedText(text,0,y,wrapWidth,halign);
  else   cache.setMultiLineText(text,0,y,width,halign);
 }

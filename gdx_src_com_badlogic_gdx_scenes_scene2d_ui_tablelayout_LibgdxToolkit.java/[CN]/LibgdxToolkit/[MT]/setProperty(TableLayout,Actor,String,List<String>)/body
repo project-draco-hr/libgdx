@@ -1,0 +1,24 @@
+{
+  try {
+    super.setProperty(layout,object,name,values);
+  }
+ catch (  RuntimeException ex) {
+    if (layout.skin != null && values.size() == 1 && name.equalsIgnoreCase("style")) {
+      Field field=getField(object.getClass(),"style");
+      if (field != null) {
+        String styleName=values.get(0);
+        Class styleClass=field.getType();
+        if (layout.skin.hasStyle(styleName,styleClass)) {
+          try {
+            Method setStyleMethod=object.getClass().getMethod("setStyle",styleClass);
+            setStyleMethod.invoke(object,layout.skin.getStyle(styleName,styleClass));
+            return;
+          }
+ catch (          Exception ignored) {
+          }
+        }
+      }
+    }
+    throw ex;
+  }
+}

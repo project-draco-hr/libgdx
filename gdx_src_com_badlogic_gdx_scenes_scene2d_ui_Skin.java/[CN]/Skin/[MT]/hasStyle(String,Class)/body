@@ -1,0 +1,7 @@
+{
+  ObjectMap<String,Object> typeStyles=styles.get(type);
+  if (typeStyles == null)   return false;
+  Object style=typeStyles.get(name);
+  if (style == null)   return false;
+  return true;
+}

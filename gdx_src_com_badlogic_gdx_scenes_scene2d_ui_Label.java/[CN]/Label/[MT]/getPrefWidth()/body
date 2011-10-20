@@ -1,5 +1,5 @@
 {
-  if (wrap)   return 100;
+  if (wrap)   return wrapWidth != 0 ? wrapWidth : 100;
   validate();
   return bounds.width;
 }

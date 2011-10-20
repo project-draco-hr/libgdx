@@ -1,0 +1,12 @@
+{
+  if (object instanceof String) {
+    if (layout.skin == null)     throw new IllegalStateException("Label cannot be created, no skin has been set.");
+    return new Label((String)object,layout.skin);
+  }
+  if (object == null) {
+    Group group=new Group();
+    group.transform=false;
+    return group;
+  }
+  return super.wrap(layout,object);
+}

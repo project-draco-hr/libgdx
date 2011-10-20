@@ -8,14 +8,24 @@
   int start=0;
   int numLines=0;
   while (start < length) {
-    int lineEnd=start + font.computeVisibleGlyphs(str,start,BitmapFont.indexOf(str,'\n',start),wrapWidth);
-    if (lineEnd < length) {
+    int newLine=BitmapFont.indexOf(str,'\n',start);
+    int lineEnd=start + font.computeVisibleGlyphs(str,start,newLine,wrapWidth);
+    int nextStart=lineEnd;
+    if (lineEnd < newLine) {
       while (lineEnd > start) {
-        char ch=str.charAt(lineEnd);
-        if (ch == ' ' || ch == '\n')         break;
+        if (BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))         break;
         lineEnd--;
       }
+      if (lineEnd == start)       lineEnd=nextStart;
+ else {
+        nextStart=lineEnd;
+        while (lineEnd > start) {
+          if (!BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))           break;
+          lineEnd--;
+        }
+      }
     }
+ else     nextStart=lineEnd + 1;
     if (lineEnd > start) {
       float xOffset=0;
       if (alignment != HAlignment.LEFT) {
@@ -26,7 +36,7 @@
       float lineWidth=addToCache(str,x + xOffset,y,start,lineEnd);
       maxWidth=Math.max(maxWidth,lineWidth);
     }
-    start=lineEnd + 1;
+    start=nextStart;
     y+=down;
     numLines++;
   }

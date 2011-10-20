@@ -1,5 +1,0 @@
-{
-  BitmapFont font=fonts.get(name);
-  if (font == null)   throw new IllegalArgumentException("Font not found: " + name);
-  return font;
-}
