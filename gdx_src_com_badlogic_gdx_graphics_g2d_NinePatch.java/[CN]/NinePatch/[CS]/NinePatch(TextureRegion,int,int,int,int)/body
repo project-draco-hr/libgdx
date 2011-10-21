@@ -1,5 +1,36 @@
 {
   int middleWidth=region.getRegionWidth() - left - right;
   int middleHeight=region.getRegionHeight() - top - bottom;
-  this.patches=new TextureRegion[]{new TextureRegion(region,0,0,left,top),new TextureRegion(region,left,0,middleWidth,top),new TextureRegion(region,left + middleWidth,0,right,top),new TextureRegion(region,0,top,left,middleHeight),new TextureRegion(region,left,top,middleWidth,middleHeight),new TextureRegion(region,left + middleWidth,top,right,middleHeight),new TextureRegion(region,0,top + middleHeight,left,bottom),new TextureRegion(region,left,top + middleHeight,middleWidth,bottom),new TextureRegion(region,left + middleWidth,top + middleHeight,right,bottom)};
+  patches=new TextureRegion[9];
+  if (top > 0) {
+    if (left > 0)     patches[0]=new TextureRegion(region,0,0,left,top);
+    if (middleWidth > 0)     patches[1]=new TextureRegion(region,left,0,middleWidth,top);
+    if (right > 0)     patches[2]=new TextureRegion(region,left + middleWidth,0,right,top);
+  }
+  if (middleHeight > 0) {
+    if (left > 0)     patches[3]=new TextureRegion(region,0,top,left,middleHeight);
+    if (middleWidth > 0)     patches[4]=new TextureRegion(region,left,top,middleWidth,middleHeight);
+    if (right > 0)     patches[5]=new TextureRegion(region,left + middleWidth,top,right,middleHeight);
+  }
+  if (bottom > 0) {
+    if (left > 0)     patches[6]=new TextureRegion(region,0,top + middleHeight,left,bottom);
+    if (middleWidth > 0)     patches[7]=new TextureRegion(region,left,top + middleHeight,middleWidth,bottom);
+    if (right > 0)     patches[8]=new TextureRegion(region,left + middleWidth,top + middleHeight,right,bottom);
+  }
+  if (left == 0 && middleWidth == 0) {
+    patches[TOP_CENTER]=patches[TOP_RIGHT];
+    patches[MIDDLE_CENTER]=patches[MIDDLE_RIGHT];
+    patches[BOTTOM_CENTER]=patches[BOTTOM_RIGHT];
+    patches[TOP_RIGHT]=null;
+    patches[MIDDLE_RIGHT]=null;
+    patches[BOTTOM_RIGHT]=null;
+  }
+  if (top == 0 && middleHeight == 0) {
+    patches[MIDDLE_LEFT]=patches[BOTTOM_LEFT];
+    patches[MIDDLE_CENTER]=patches[BOTTOM_CENTER];
+    patches[MIDDLE_RIGHT]=patches[BOTTOM_RIGHT];
+    patches[BOTTOM_LEFT]=null;
+    patches[BOTTOM_CENTER]=null;
+    patches[BOTTOM_RIGHT]=null;
+  }
 }

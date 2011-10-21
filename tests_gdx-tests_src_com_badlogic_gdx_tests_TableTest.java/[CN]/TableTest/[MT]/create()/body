@@ -18,8 +18,11 @@
     }
   }
 );
+  root.debug();
+  root.add(new Label("meow meow meow meow meow meow meow meow meow meow meow meow meow ",skin)).colspan(3);
+  root.row();
   root.add(new Button("Text Button",skin));
   root.add(new Button("Toggle Button",skin.getStyle("toggle",ButtonStyle.class)));
   root.add(new CheckBox("meow",skin));
-  root.add(new Button(new Image(region),skin));
+  root.pack();
 }

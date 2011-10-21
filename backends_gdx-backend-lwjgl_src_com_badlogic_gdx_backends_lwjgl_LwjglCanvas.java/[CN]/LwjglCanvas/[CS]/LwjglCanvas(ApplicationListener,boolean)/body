@@ -21,7 +21,23 @@
   }
 ;
   canvas.setIgnoreRepaint(true);
-  graphics=new LwjglGraphics(canvas,useGL2);
+  graphics=new LwjglGraphics(canvas,useGL2){
+    public void setTitle(    String title){
+      super.setTitle(title);
+      LwjglCanvas.this.setTitle(title);
+    }
+    public boolean setDisplayMode(    int width,    int height,    boolean fullscreen){
+      if (!super.setDisplayMode(width,height,fullscreen))       return false;
+      if (!fullscreen)       LwjglCanvas.this.setDisplayMode(width,height);
+      return true;
+    }
+    public boolean setDisplayMode(    DisplayMode displayMode){
+      if (!super.setDisplayMode(displayMode))       return false;
+      LwjglCanvas.this.setDisplayMode(displayMode.width,displayMode.height);
+      return true;
+    }
+  }
+;
   graphics.setVSync(true);
   audio=new OpenALAudio();
   files=new LwjglFiles();

@@ -14,7 +14,8 @@
             setStyleMethod.invoke(object,layout.skin.getStyle(styleName,styleClass));
             return;
           }
- catch (          Exception ignored) {
+ catch (          Exception ex2) {
+            throw new GdxRuntimeException("Unable to set style: " + styleName,ex2);
           }
         }
       }

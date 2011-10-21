@@ -1,7 +1,8 @@
 {
   if (this.backgroundPatch == background)   return;
   this.backgroundPatch=background;
-  if (background != null) {
+  if (background == null)   pad(null);
+ else {
     padBottom((int)background.getBottomHeight());
     padTop((int)background.getTopHeight());
     padLeft((int)background.getLeftWidth());

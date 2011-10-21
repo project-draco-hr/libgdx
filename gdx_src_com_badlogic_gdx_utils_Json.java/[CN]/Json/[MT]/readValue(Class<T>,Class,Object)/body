@@ -1,4 +1,5 @@
 {
+  if (jsonData == null)   return null;
   if (jsonData instanceof ObjectMap) {
     ObjectMap<String,Object> jsonMap=(ObjectMap)jsonData;
     String className=typeName == null ? null : (String)jsonMap.remove(typeName);

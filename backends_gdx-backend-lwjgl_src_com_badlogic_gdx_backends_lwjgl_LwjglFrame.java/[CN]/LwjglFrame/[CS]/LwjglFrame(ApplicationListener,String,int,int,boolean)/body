@@ -7,6 +7,13 @@
     protected void stopped(){
       LwjglFrame.this.dispose();
     }
+    protected void setTitle(    String title){
+      LwjglFrame.this.setTitle(title);
+    }
+    protected void setDisplayMode(    int width,    int height){
+      LwjglFrame.this.getContentPane().setPreferredSize(new Dimension(width,height));
+      LwjglFrame.this.pack();
+    }
   }
 ;
   getContentPane().add(lwjglCanvas.getCanvas());

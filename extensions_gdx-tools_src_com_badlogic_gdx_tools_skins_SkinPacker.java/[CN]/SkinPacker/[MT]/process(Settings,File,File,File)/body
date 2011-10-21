@@ -110,7 +110,9 @@
         }
  else {
           if (split[4] == 1)           skin.addResource(region.name,new NinePatch(textureRegion));
- else           skin.addResource(region.name,new NinePatch(textureRegion,split[0],region.width - split[1],split[2],region.height - split[3]));
+ else {
+            skin.addResource(region.name,new NinePatch(textureRegion,split[0],region.width - split[1],split[2],region.height - split[3]));
+          }
         }
       }
       FileHandle newSkinFile=new FileHandle(new File(inputDir,"temp-skin"));
