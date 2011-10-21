@@ -5,4 +5,5 @@
   label.setAlignment(Align.CENTER);
   add(label);
   invalidateHierarchy();
+  return getCell(label);
 }

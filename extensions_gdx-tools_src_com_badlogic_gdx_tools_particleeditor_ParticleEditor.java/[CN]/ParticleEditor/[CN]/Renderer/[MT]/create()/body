@@ -2,6 +2,14 @@
   if (spriteBatch != null)   return;
   Texture.setEnforcePotImages(false);
   spriteBatch=new SpriteBatch();
+  worldCamera=new OrthographicCamera();
+  textCamera=new OrthographicCamera();
+  pixelsPerMeter=new NumericValue();
+  pixelsPerMeter.setValue(1.0f);
+  pixelsPerMeter.setAlwaysActive(true);
+  zoomLevel=new NumericValue();
+  zoomLevel.setValue(1.0f);
+  zoomLevel.setAlwaysActive(true);
   font=new BitmapFont(Gdx.files.getFileHandle("default.fnt",FileType.Internal),Gdx.files.getFileHandle("default.png",FileType.Internal),true);
   effectPanel.newEmitter("Untitled",true);
   Gdx.input.setInputProcessor(this);
