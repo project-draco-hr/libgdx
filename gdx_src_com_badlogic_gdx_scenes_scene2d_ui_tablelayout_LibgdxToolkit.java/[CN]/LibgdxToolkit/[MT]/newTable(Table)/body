@@ -3,5 +3,6 @@
   TableLayout layout=parent.getTableLayout();
   table.setSkin(layout.skin);
   table.setAssetManager(layout.assetManager);
+  table.setStage(layout.stage);
   return table;
 }

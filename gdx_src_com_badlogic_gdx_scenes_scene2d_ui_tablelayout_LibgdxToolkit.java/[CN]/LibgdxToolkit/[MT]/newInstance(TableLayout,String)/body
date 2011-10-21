@@ -10,6 +10,13 @@
  catch (      Exception ignored) {
       }
     }
+    if (layout.stage != null) {
+      try {
+        return (Actor)Class.forName(className).getConstructor(Stage.class).newInstance(layout.stage);
+      }
+ catch (      Exception ignored) {
+      }
+    }
     throw ex;
   }
 }
