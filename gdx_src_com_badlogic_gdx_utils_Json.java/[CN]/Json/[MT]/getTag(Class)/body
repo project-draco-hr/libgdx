@@ -1,0 +1,5 @@
+{
+  String tag=classToTag.get(type);
+  if (tag != null)   return tag;
+  return type.getName();
+}

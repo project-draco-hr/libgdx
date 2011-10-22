@@ -1,0 +1,10 @@
+{
+  Class type=tagToClass.get(tag);
+  if (type != null)   return type;
+  try {
+    return Class.forName(tag);
+  }
+ catch (  ClassNotFoundException ex) {
+    throw new SerializationException(ex);
+  }
+}
