@@ -1,6 +1,6 @@
 {
   int intBits=((int)(255 * a) << 24) | ((int)(255 * b) << 16) | ((int)(255 * g) << 8)| ((int)(255 * r));
-  float color=NumberUtils.intBitsToFloat((intBits & 0xfeffffff));
+  float color=NumberUtils.intToFloatColor(intBits);
   if (color == this.color)   return;
   this.color=color;
   float[] vertices=this.vertices;

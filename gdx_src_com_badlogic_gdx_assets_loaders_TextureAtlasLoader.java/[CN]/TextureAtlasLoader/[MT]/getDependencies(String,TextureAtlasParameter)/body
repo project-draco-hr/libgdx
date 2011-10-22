@@ -2,7 +2,9 @@
   FileHandle atlasFile=resolve(fileName);
   FileHandle imgDir=atlasFile.parent();
   if (parameter != null)   data=new TextureAtlasData(atlasFile,imgDir,parameter.flip);
- else   data=new TextureAtlasData(atlasFile,imgDir,false);
+ else {
+    data=new TextureAtlasData(atlasFile,imgDir,false);
+  }
   Array<AssetDescriptor> dependencies=new Array<AssetDescriptor>();
   for (  Page page : data.getPages()) {
     FileHandle handle=resolve(page.textureFile.path());
