@@ -1,9 +1,13 @@
 {
   Label label=getLabel();
-  if (label != null)   label.setText(text);
-  label=new Label(text,style);
-  label.setAlignment(Align.CENTER);
-  add(label);
-  invalidateHierarchy();
+  if (label != null) {
+    label.setText(text);
+  }
+ else {
+    label=new Label(text,style);
+    label.setAlignment(Align.CENTER);
+    add(label);
+    invalidateHierarchy();
+  }
   return getCell(label);
 }
