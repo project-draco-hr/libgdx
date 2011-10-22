@@ -1,11 +1,12 @@
 {
   EventQueue.invokeLater(new Runnable(){
     public void run(){
+      editRowsPanel.removeAll();
+      addEditorRow(new NumericPanel("Pixels per meter",pixelsPerMeter));
+      addEditorRow(new NumericPanel("Zoom level",zoomLevel));
       rowsPanel.removeAll();
       ParticleEmitter emitter=getEmitter();
       addRow(new ImagePanel(ParticleEditor.this));
-      addRow(new NumericPanel("Pixels per meter",pixelsPerMeter));
-      addRow(new NumericPanel("Zoom level",zoomLevel));
       addRow(new RangedNumericPanel("Delay",emitter.getDelay()));
       addRow(new RangedNumericPanel("Duration",emitter.getDuration()));
       addRow(new CountPanel(ParticleEditor.this));

@@ -20,7 +20,7 @@
     return;
   }
   for (  ParticleEmitter emitter : effect.getEmitters()) {
-    emitter.setPosition(Gdx.graphics.getWidth() / 2,Gdx.graphics.getHeight() / 2);
+    emitter.setPosition(editor.worldCamera.viewportWidth / 2,editor.worldCamera.viewportHeight / 2);
     emitterTableModel.addRow(new Object[]{emitter.getName(),true});
   }
   editIndex=0;
