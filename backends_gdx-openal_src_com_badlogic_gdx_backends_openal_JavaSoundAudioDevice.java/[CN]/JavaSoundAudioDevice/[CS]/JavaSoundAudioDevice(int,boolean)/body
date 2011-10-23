@@ -3,7 +3,7 @@
   try {
     AudioFormat format=new AudioFormat(samplingRate,16,isMono ? 1 : 2,true,false);
     line=AudioSystem.getSourceDataLine(format);
-    line.open(format,Math.min(2048,samplingRate / 5) * 2);
+    line.open(format,2048 * 10);
     line.start();
   }
  catch (  Exception ex) {

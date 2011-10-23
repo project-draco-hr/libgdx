@@ -1,5 +1,5 @@
 {
   this.audio=audio;
   this.file=file;
-  audio.music.add(this);
+  if (audio != null)   audio.music.add(this);
 }
