@@ -1,0 +1,27 @@
+{
+  int written=Math.min(bufferSize,length);
+  outer:   while (true) {
+    int buffers=alGetSourcei(sourceID,AL_BUFFERS_PROCESSED);
+    while (buffers-- > 0) {
+      int bufferID=alSourceUnqueueBuffers(sourceID);
+      if (bufferID == AL_INVALID_VALUE)       break;
+      renderedSeconds+=secondsPerBuffer;
+      tempBuffer.clear();
+      tempBuffer.put(data,offset,written).flip();
+      alBufferData(bufferID,format,tempBuffer,sampleRate);
+      alSourceQueueBuffers(sourceID,bufferID);
+      break outer;
+    }
+    try {
+      Thread.sleep((long)(1000 * secondsPerBuffer / bufferCount));
+    }
+ catch (    InterruptedException ignored) {
+    }
+  }
+  if (!isPlaying || alGetSourcei(sourceID,AL_SOURCE_STATE) != AL_PLAYING) {
+    System.out.println("underflow!");
+    alSourcePlay(sourceID);
+    isPlaying=true;
+  }
+  return written;
+}

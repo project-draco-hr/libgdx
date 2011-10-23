@@ -1,0 +1,7 @@
+{
+  this.audio=audio;
+  channels=isMono ? 1 : 2;
+  this.format=channels > 1 ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
+  this.sampleRate=sampleRate;
+  secondsPerBuffer=(float)bufferSize / bytesPerSample / channels/ sampleRate;
+}

@@ -1,11 +1,13 @@
 {
   if (Gdx.files == null)   return;
+  FileHandle file=Gdx.files.external(LwjglPreferences.this.name);
   OutputStream out=null;
   try {
-    out=new BufferedOutputStream(Gdx.files.external(LwjglPreferences.this.name).write(false));
+    out=new BufferedOutputStream(file.write(false));
     properties.storeToXML(out,null);
   }
- catch (  Throwable t) {
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error writing preferences: " + file,ex);
   }
  finally {
     if (out != null)     try {
