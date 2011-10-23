@@ -19,7 +19,6 @@
     }
   }
   if (!isPlaying || alGetSourcei(sourceID,AL_SOURCE_STATE) != AL_PLAYING) {
-    System.out.println("underflow!");
     alSourcePlay(sourceID);
     isPlaying=true;
   }
