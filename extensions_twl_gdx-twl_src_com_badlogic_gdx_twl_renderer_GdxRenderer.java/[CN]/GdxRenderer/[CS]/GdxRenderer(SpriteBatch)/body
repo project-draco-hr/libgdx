@@ -1,6 +1,7 @@
 {
   this.batch=batch;
   clipStack=new ClipStack();
+  clipRectTemp=new Rect();
   Widget root=new Widget(){
     protected void layout(){
       layoutChildrenFullInnerArea();
