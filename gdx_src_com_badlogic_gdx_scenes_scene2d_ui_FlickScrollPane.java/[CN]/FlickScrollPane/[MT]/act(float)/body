@@ -1,4 +1,5 @@
 {
+  super.act(delta);
   if (flingTimer > 0) {
     float alpha=flingTimer / flingTime;
     amountX-=velocityX * alpha * delta;
