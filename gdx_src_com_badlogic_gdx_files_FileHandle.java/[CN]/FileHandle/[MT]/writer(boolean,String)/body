@@ -1,6 +1,7 @@
 {
   if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot write to a classpath file: " + file);
   if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot write to an internal file: " + file);
+  parent().mkdirs();
   try {
     FileOutputStream output=new FileOutputStream(file(),append);
     if (charset == null)     return new OutputStreamWriter(output);
