@@ -1,0 +1,5 @@
+{
+  int[] array=new int[size];
+  System.arraycopy(items,0,array,0,size);
+  return array;
+}

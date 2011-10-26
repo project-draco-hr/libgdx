@@ -17,6 +17,13 @@
  catch (      Exception ignored) {
       }
     }
+    if (layout.skin != null && layout.stage != null) {
+      try {
+        return (Actor)Class.forName(className).getConstructor(Stage.class,Skin.class).newInstance(layout.stage,layout.skin);
+      }
+ catch (      Exception ignored) {
+      }
+    }
     throw ex;
   }
 }

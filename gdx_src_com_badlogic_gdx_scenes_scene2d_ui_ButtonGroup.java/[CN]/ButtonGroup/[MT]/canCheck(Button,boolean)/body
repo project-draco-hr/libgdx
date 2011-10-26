@@ -1,0 +1,22 @@
+{
+  if (button.isChecked == newState)   return false;
+  if (!newState) {
+    if (checkedButtons.size <= minCheckCount)     return false;
+    checkedButtons.removeValue(button,true);
+  }
+ else {
+    if (checkedButtons.size >= maxCheckCount) {
+      if (uncheckLast) {
+        int old=minCheckCount;
+        minCheckCount=0;
+        lastChecked.setChecked(false);
+        minCheckCount=old;
+      }
+ else       return false;
+    }
+    checkedButtons.add(button);
+    lastChecked=button;
+  }
+  if (listener != null)   listener.click(button);
+  return true;
+}

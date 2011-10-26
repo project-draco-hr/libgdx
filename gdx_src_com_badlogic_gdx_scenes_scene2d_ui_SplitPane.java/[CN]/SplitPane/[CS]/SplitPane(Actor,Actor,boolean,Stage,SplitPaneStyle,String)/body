@@ -5,8 +5,8 @@
   this.firstWidget=firstWidget;
   this.secondWidget=secondWidget;
   this.vertical=vertical;
-  addActor(firstWidget);
-  addActor(secondWidget);
+  if (firstWidget != null)   addActor(firstWidget);
+  if (secondWidget != null)   addActor(secondWidget);
   width=150;
   height=150;
 }

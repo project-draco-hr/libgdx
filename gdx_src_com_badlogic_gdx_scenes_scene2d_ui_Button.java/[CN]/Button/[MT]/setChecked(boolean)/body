@@ -1,4 +1,4 @@
 {
+  if (buttonGroup != null && !buttonGroup.canCheck(this,isChecked))   return;
   this.isChecked=isChecked;
-  if (buttonGroup != null)   buttonGroup.setChecked(this,isChecked);
 }

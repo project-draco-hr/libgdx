@@ -5,24 +5,22 @@
   }
   if (!vertical)   calculateHorizBoundsAndPositions();
  else   calculateVertBoundsAndPositions();
-  boolean layoutFirst=false;
-  boolean layoutSecond=false;
-  if (firstWidget.width != firstWidgetBounds.width || firstWidget.height != firstWidgetBounds.height) {
-    layoutFirst=true;
+  if (firstWidget != null) {
+    boolean layout=firstWidget.width != firstWidgetBounds.width || firstWidget.height != firstWidgetBounds.height;
+    firstWidget.x=firstWidgetBounds.x;
+    firstWidget.y=firstWidgetBounds.y;
+    firstWidget.width=firstWidgetBounds.width;
+    firstWidget.height=firstWidgetBounds.height;
+    if (layout && firstWidget instanceof Layout)     ((Layout)firstWidget).invalidate();
   }
-  if (secondWidget.width != secondWidgetBounds.width || secondWidget.height != secondWidgetBounds.height) {
-    layoutSecond=true;
+  if (secondWidget != null) {
+    boolean layout=secondWidget.width != secondWidgetBounds.width || secondWidget.height != secondWidgetBounds.height;
+    secondWidget.x=secondWidgetBounds.x;
+    secondWidget.y=secondWidgetBounds.y;
+    secondWidget.width=secondWidgetBounds.width;
+    secondWidget.height=secondWidgetBounds.height;
+    if (layout && secondWidget instanceof Layout)     ((Layout)secondWidget).invalidate();
   }
-  firstWidget.x=firstWidgetBounds.x;
-  firstWidget.y=firstWidgetBounds.y;
-  firstWidget.width=firstWidgetBounds.width;
-  firstWidget.height=firstWidgetBounds.height;
-  if (layoutFirst && firstWidget instanceof Layout)   ((Layout)firstWidget).invalidate();
-  secondWidget.x=secondWidgetBounds.x;
-  secondWidget.y=secondWidgetBounds.y;
-  secondWidget.width=secondWidgetBounds.width;
-  secondWidget.height=secondWidgetBounds.height;
-  if (layoutSecond && secondWidget instanceof Layout)   ((Layout)secondWidget).invalidate();
   ScissorStack.calculateScissors(stage.getCamera(),transform,firstWidgetBounds,scissors[0]);
   ScissorStack.calculateScissors(stage.getCamera(),transform,secondWidgetBounds,scissors[1]);
 }

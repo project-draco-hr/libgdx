@@ -1,6 +1,6 @@
 {
-  boolean old=allowNoneChecked;
-  allowNoneChecked=true;
+  int old=minCheckCount;
+  minCheckCount=0;
   uncheckAllExcept(null);
-  allowNoneChecked=old;
+  minCheckCount=old;
 }
