@@ -1,5 +1,5 @@
 {
   if (size <= newSize)   return;
-  for (int i=size; i < newSize; i++)   items[i]=null;
+  for (int i=newSize; i < size; i++)   items[i]=null;
   size=newSize;
 }

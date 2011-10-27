@@ -7,21 +7,30 @@
       try {
         return (Actor)Class.forName(className).getConstructor(Skin.class).newInstance(layout.skin);
       }
- catch (      Exception ignored) {
+ catch (      InvocationTargetException ex2) {
+        throw new InvocationTargetException(ex2,"Error constructing instance of class: " + className);
+      }
+catch (      Exception ignored) {
       }
     }
     if (layout.stage != null) {
       try {
         return (Actor)Class.forName(className).getConstructor(Stage.class).newInstance(layout.stage);
       }
- catch (      Exception ignored) {
+ catch (      InvocationTargetException ex2) {
+        throw new InvocationTargetException(ex2,"Error constructing instance of class: " + className);
+      }
+catch (      Exception ignored) {
       }
     }
     if (layout.skin != null && layout.stage != null) {
       try {
         return (Actor)Class.forName(className).getConstructor(Stage.class,Skin.class).newInstance(layout.stage,layout.skin);
       }
- catch (      Exception ignored) {
+ catch (      InvocationTargetException ex2) {
+        throw new InvocationTargetException(ex2,"Error constructing instance of class: " + className);
+      }
+catch (      Exception ignored) {
       }
     }
     throw ex;
