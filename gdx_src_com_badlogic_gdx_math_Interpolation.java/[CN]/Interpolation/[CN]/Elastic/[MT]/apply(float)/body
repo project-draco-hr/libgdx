@@ -1,0 +1,9 @@
+{
+  if (a <= 0.5f) {
+    a*=2;
+    return (float)Math.pow(value,power * (a - 1)) * MathUtils.sin(a * 3.14f / 0.157f) * 1.0955f / 2;
+  }
+  a=1 - a;
+  a*=2;
+  return 1 - (float)Math.pow(value,power * (a - 1)) * MathUtils.sin((a) * 3.14f / 0.157f) * 1.0955f / 2;
+}

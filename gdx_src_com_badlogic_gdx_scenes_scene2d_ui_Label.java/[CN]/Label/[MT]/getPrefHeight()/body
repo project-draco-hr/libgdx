@@ -1,5 +1,5 @@
 {
-  if (wrap)   return 100;
+  if (wrap && wrapWidth == 0)   return 100;
   validate();
   return bounds.height - style.font.getDescent() * 2;
 }
