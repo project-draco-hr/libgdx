@@ -1,4 +1,4 @@
 {
   a=1 - a;
-  return (1 - (float)Math.pow(value,power * (a - 1)) * MathUtils.sin((a) * 3.14f / 0.157f) * 1.0955f);
+  return (1 - (float)Math.pow(value,power * (a - 1)) * MathUtils.sin(a * 20) * 1.0955f);
 }

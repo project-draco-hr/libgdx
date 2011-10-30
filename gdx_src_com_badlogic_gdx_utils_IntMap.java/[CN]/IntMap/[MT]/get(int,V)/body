@@ -1,11 +1,11 @@
 {
   if (key == 0)   return zeroValue;
-  int index=(int)(key & mask);
+  int index=key & mask;
   if (keyTable[index] != key) {
     index=hash2(key);
     if (keyTable[index] != key) {
       index=hash3(key);
-      if (keyTable[index] != key)       return getStash(key,null);
+      if (keyTable[index] != key)       return getStash(key,defaultValue);
     }
   }
   return valueTable[index];

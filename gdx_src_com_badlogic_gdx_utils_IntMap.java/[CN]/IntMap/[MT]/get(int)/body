@@ -5,7 +5,7 @@
     index=hash2(key);
     if (keyTable[index] != key) {
       index=hash3(key);
-      if (keyTable[index] != key)       return getStash(key);
+      if (keyTable[index] != key)       return getStash(key,null);
     }
   }
   return valueTable[index];

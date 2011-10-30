@@ -1,0 +1,5 @@
+{
+  if (widths.length != heights.length)   throw new IllegalArgumentException("Must be the same number of widths and heights.");
+  this.widths=widths;
+  this.heights=heights;
+}
