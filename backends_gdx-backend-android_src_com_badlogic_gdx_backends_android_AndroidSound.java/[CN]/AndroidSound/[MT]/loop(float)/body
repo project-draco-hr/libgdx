@@ -1,5 +1,6 @@
 {
-  long streamId=play(volume);
-  soundPool.setLoop((int)streamId,-1);
+  if (streamIds.size == 8)   streamIds.pop();
+  int streamId=soundPool.play(soundId,volume,volume,1,-1,1);
+  streamIds.add(streamId);
   return streamId;
 }
