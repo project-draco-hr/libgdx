@@ -2,9 +2,9 @@
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   Label label=new Label("Camera:",skin.getStyle(LabelStyle.class));
-  ComboBox cameraCombo=new ComboBox(new String[]{"Scene","Light"},ui,skin.getStyle(ComboBoxStyle.class));
+  SelectBox cameraCombo=new SelectBox(new String[]{"Scene","Light"},ui,skin.getStyle(SelectBoxStyle.class));
   Label label2=new Label("Shader",skin.getStyle(LabelStyle.class),"cameraCombo");
-  ComboBox shaderCombo=new ComboBox(new String[]{"flat","shadow-gen","shadow-map"},ui,skin.getStyle(ComboBoxStyle.class),"shaderCombo");
+  SelectBox shaderCombo=new SelectBox(new String[]{"flat","shadow-gen","shadow-map"},ui,skin.getStyle(SelectBoxStyle.class),"shaderCombo");
   Label fpsLabel=new Label("fps:",skin.getStyle(LabelStyle.class),"fps");
   Table table=new Table();
   table.width=Gdx.graphics.getWidth();
@@ -18,16 +18,16 @@
   table.add(fpsLabel);
   table.y=ui.top() - 100;
   ui.addActor(table);
-  cameraCombo.setSelectionListener(new ComboBox.SelectionListener(){
-    @Override public void selected(    ComboBox comboBox,    int selectionIndex,    String selection){
+  cameraCombo.setSelectionListener(new SelectionListener(){
+    @Override public void selected(    Actor comboBox,    int selectionIndex,    String selection){
       if (selectionIndex == 0)       currCam=cam;
  else       currCam=lightCam;
       camController.cam=currCam;
     }
   }
 );
-  shaderCombo.setSelectionListener(new ComboBox.SelectionListener(){
-    @Override public void selected(    ComboBox comboBox,    int selectionIndex,    String selection){
+  shaderCombo.setSelectionListener(new SelectionListener(){
+    @Override public void selected(    Actor comboBox,    int selectionIndex,    String selection){
       if (selectionIndex == 0)       currShader=flatShader;
  else       if (selectionIndex == 1)       currShader=shadowGenShader;
  else       currShader=shadowMapShader;

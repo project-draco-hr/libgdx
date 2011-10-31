@@ -3,24 +3,22 @@
   if (!(objects instanceof String[])) {
     String[] strings=new String[objects.length];
     for (int i=0, n=objects.length; i < n; i++)     strings[i]=String.valueOf(objects[i]);
-    objects=strings;
+    items=strings;
   }
-  this.items=(String[])objects;
+ else   items=(String[])objects;
   selected=0;
   final BitmapFont font=style.font;
   final NinePatch selectedPatch=style.selectedPatch;
-  prefWidth=0;
-  prefHeight=0;
-  for (int i=0; i < items.length; i++) {
-    String item=items[i];
-    TextBounds bounds=font.getBounds(item);
-    prefWidth=Math.max(bounds.width,prefWidth);
-  }
   itemHeight=font.getCapHeight() - font.getDescent() * 2;
   itemHeight+=selectedPatch.getTopHeight() + selectedPatch.getBottomHeight();
   prefWidth+=selectedPatch.getLeftWidth() + selectedPatch.getRightWidth();
-  prefHeight=items.length * itemHeight;
   textOffsetX=selectedPatch.getLeftWidth();
   textOffsetY=selectedPatch.getTopHeight() - font.getDescent();
+  prefWidth=0;
+  for (int i=0; i < items.length; i++) {
+    TextBounds bounds=font.getBounds(items[i]);
+    prefWidth=Math.max(bounds.width,prefWidth);
+  }
+  prefHeight=items.length * itemHeight;
   invalidateHierarchy();
 }

@@ -5,27 +5,27 @@
     amountX-=velocityX * alpha * delta;
     amountY-=velocityY * alpha * delta;
     clamp();
-    if (amountX == -bounceDistance)     velocityX=0;
-    if (amountX >= maxX + bounceDistance)     velocityX=0;
-    if (amountY == -bounceDistance)     velocityY=0;
-    if (amountY >= maxY + bounceDistance)     velocityY=0;
+    if (amountX == -overscrollDistance)     velocityX=0;
+    if (amountX >= maxX + overscrollDistance)     velocityX=0;
+    if (amountY == -overscrollDistance)     velocityY=0;
+    if (amountY >= maxY + overscrollDistance)     velocityY=0;
     flingTimer-=delta;
   }
-  if (bounces && !gestureDetector.isPanning()) {
+  if (overscroll && !gestureDetector.isPanning()) {
     if (amountX < 0) {
-      amountX+=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -amountX / bounceDistance) * delta;
+      amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
       if (amountX > 0)       amountX=0;
     }
  else     if (amountX > maxX) {
-      amountX-=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -(maxX - amountX) / bounceDistance) * delta;
+      amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
       if (amountX < maxX)       amountX=maxX;
     }
     if (amountY < 0) {
-      amountY+=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -amountY / bounceDistance) * delta;
+      amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
       if (amountY > 0)       amountY=0;
     }
  else     if (amountY > maxY) {
-      amountY-=(bounceSpeedMin + (bounceSpeedMax - bounceSpeedMin) * -(maxY - amountY) / bounceDistance) * delta;
+      amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
       if (amountY < maxY)       amountY=maxY;
     }
   }

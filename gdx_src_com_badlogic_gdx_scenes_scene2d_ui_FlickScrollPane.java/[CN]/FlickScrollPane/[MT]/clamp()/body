@@ -1,8 +1,8 @@
 {
   if (!clamp)   return;
-  if (bounces) {
-    amountX=MathUtils.clamp(amountX,-bounceDistance,maxX + bounceDistance);
-    amountY=MathUtils.clamp(amountY,-bounceDistance,maxY + bounceDistance);
+  if (overscroll) {
+    amountX=MathUtils.clamp(amountX,-overscrollDistance,maxX + overscrollDistance);
+    amountY=MathUtils.clamp(amountY,-overscrollDistance,maxY + overscrollDistance);
   }
  else {
     amountX=MathUtils.clamp(amountX,0,maxX);

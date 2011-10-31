@@ -1,0 +1,6 @@
+{
+  if (secondWidget != null)   super.removeActor(secondWidget);
+  secondWidget=widget;
+  if (widget != null)   super.addActor(widget);
+  invalidate();
+}

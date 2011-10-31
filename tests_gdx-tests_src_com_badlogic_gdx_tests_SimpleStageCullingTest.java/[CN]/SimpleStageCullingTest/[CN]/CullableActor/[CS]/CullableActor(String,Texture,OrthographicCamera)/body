@@ -1,4 +1,4 @@
 {
-  super(new TextureRegion(texture),Scaling.none,name);
+  super(new TextureRegion(texture),Scaling.none,Align.CENTER,name);
   this.camera=camera;
 }

@@ -2,7 +2,7 @@
   NinePatch handle=style.handle;
   float availHeight=height - handle.getTotalHeight();
   float topAreaHeight=(int)(availHeight * splitAmount);
-  float bottomAreaHeight=(availHeight - topAreaHeight);
+  float bottomAreaHeight=availHeight - topAreaHeight;
   float handleHeight=handle.getTotalHeight();
   firstWidgetBounds.set(0,height - topAreaHeight,width,topAreaHeight);
   secondWidgetBounds.set(0,0,width,bottomAreaHeight);

@@ -1,5 +1,6 @@
 {
   if (patch != null) {
+    if (this.patch == patch)     return;
     if (getPrefWidth() != patch.getTotalWidth() || getPrefHeight() != patch.getTotalHeight())     invalidateHierarchy();
   }
  else {

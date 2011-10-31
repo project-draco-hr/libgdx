@@ -1,20 +1,20 @@
 {
   if (touchScrollH) {
     float delta=x - lastPoint.x;
-    float scrollH=handlePos + delta;
-    handlePos=scrollH;
+    float scrollH=handlePosition + delta;
+    handlePosition=scrollH;
     scrollH=Math.max(hScrollBounds.x,scrollH);
-    scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hScrollKnobBounds.width,scrollH);
-    hScrollAmount=(scrollH - hScrollBounds.x) / (hScrollBounds.width - hScrollKnobBounds.width);
+    scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hKnobBounds.width,scrollH);
+    setScrollPercentX((scrollH - hScrollBounds.x) / (hScrollBounds.width - hKnobBounds.width));
     lastPoint.set(x,y);
   }
  else   if (touchScrollV) {
     float delta=y - lastPoint.y;
-    float scrollV=handlePos + delta;
-    handlePos=scrollV;
+    float scrollV=handlePosition + delta;
+    handlePosition=scrollV;
     scrollV=Math.max(vScrollBounds.y,scrollV);
-    scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vScrollKnobBounds.height,scrollV);
-    vScrollAmount=1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vScrollKnobBounds.height));
+    scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vKnobBounds.height,scrollV);
+    setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vKnobBounds.height)));
     lastPoint.set(x,y);
   }
  else   super.touchDragged(x,y,pointer);

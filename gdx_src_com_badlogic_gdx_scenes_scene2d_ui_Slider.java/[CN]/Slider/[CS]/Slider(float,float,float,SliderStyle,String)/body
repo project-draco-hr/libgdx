@@ -1,8 +1,8 @@
 {
   super(name);
+  if (min > max)   throw new IllegalArgumentException("min must be > max: " + min + " > "+ max);
+  if (steps < 0)   throw new IllegalArgumentException("steps must be > 0: " + steps);
   setStyle(style);
-  if (min > max)   throw new IllegalArgumentException("min must be > max");
-  if (steps < 0)   throw new IllegalArgumentException("unit must be > 0");
   this.min=min;
   this.max=max;
   this.steps=steps;

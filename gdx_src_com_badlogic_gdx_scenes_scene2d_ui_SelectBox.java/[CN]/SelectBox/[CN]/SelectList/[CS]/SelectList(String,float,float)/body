@@ -1,0 +1,10 @@
+{
+  super(name);
+  this.x=x;
+  this.y=y;
+  this.width=SelectBox.this.width;
+  this.height=100;
+  this.oldScreenCoords.set(screenCoords);
+  stage.getRoot().focus(this,0);
+  layout();
+}

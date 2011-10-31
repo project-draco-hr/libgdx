@@ -1,8 +1,9 @@
 {
   super(name);
+  if (stage == null)   throw new IllegalArgumentException("stage cannot be null.");
   this.stage=stage;
   this.widget=widget;
-  if (widget != null)   addActor(widget);
+  if (widget != null)   setWidget(widget);
   gestureDetector=new GestureDetector(new GestureListener(){
     public boolean pan(    int x,    int y,    int deltaX,    int deltaY){
       amountX-=deltaX;

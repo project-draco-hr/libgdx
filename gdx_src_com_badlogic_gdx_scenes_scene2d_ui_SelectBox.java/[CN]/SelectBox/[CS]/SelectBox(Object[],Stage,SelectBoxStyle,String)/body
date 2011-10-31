@@ -1,0 +1,8 @@
+{
+  super(name);
+  if (stage == null)   throw new IllegalArgumentException("stage cannot be null.");
+  this.stage=stage;
+  setStyle(style);
+  setItems(items);
+  pack();
+}

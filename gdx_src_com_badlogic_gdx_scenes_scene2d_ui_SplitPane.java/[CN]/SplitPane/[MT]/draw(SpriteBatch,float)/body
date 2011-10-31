@@ -2,10 +2,18 @@
   validate();
   NinePatch handle=style.handle;
   applyTransform(batch);
-  calculateBoundsAndPositions(batch.getTransformMatrix());
-  for (int i=0; i < children.size(); i++) {
-    if (ScissorStack.pushScissors(scissors[i])) {
-      drawChild(children.get(i),batch,parentAlpha);
+  Matrix4 transform=batch.getTransformMatrix();
+  if (firstWidget != null) {
+    ScissorStack.calculateScissors(stage.getCamera(),transform,firstWidgetBounds,firstScissors);
+    if (ScissorStack.pushScissors(firstScissors)) {
+      drawChild(firstWidget,batch,parentAlpha);
+      ScissorStack.popScissors();
+    }
+  }
+  if (secondWidget != null) {
+    ScissorStack.calculateScissors(stage.getCamera(),transform,secondWidgetBounds,secondScissors);
+    if (ScissorStack.pushScissors(secondScissors)) {
+      drawChild(secondWidget,batch,parentAlpha);
       ScissorStack.popScissors();
     }
   }

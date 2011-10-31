@@ -1,9 +1,9 @@
 {
-  final NinePatch background=style.background;
+  final NinePatch bg=style.background;
   final NinePatch hScrollKnob=style.hScrollKnob;
   final NinePatch vScrollKnob=style.vScrollKnob;
-  float areaWidth=width - background.getLeftWidth() - background.getRightWidth();
-  float areaHeight=height - background.getTopHeight() - background.getBottomHeight();
+  float areaWidth=width - bg.getLeftWidth() - bg.getRightWidth();
+  float areaHeight=height - bg.getTopHeight() - bg.getBottomHeight();
   float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
@@ -14,42 +14,44 @@
     widgetWidth=widget.width;
     widgetHeight=widget.height;
   }
-  hasHScroll=false;
-  hasVScroll=false;
-  if (widgetWidth > areaWidth)   hasHScroll=true;
-  if (widgetHeight > areaHeight)   hasVScroll=true;
-  if (hasVScroll && (widgetWidth > areaWidth - vScrollKnob.getTotalWidth())) {
-    hasHScroll=true;
+  scrollX=false;
+  scrollY=false;
+  if (!disableX && widgetWidth > areaWidth)   scrollX=true;
+  if (!disableY && widgetHeight > areaHeight)   scrollY=true;
+  if (!disableX && scrollY && widgetWidth > areaWidth - vScrollKnob.getTotalWidth()) {
+    scrollX=true;
     areaWidth-=vScrollKnob.getTotalWidth();
   }
-  if (hasHScroll && (widgetHeight > areaHeight - hScrollKnob.getTotalHeight())) {
-    hasVScroll=true;
+  if (!disableY && scrollX && widgetHeight > areaHeight - hScrollKnob.getTotalHeight()) {
+    scrollY=true;
     areaHeight-=hScrollKnob.getTotalHeight();
   }
-  widgetWidth=Math.max(areaWidth,widgetWidth);
-  widgetHeight=Math.max(areaHeight,widgetHeight);
+  widgetAreaBounds.set(bg.getLeftWidth(),bg.getBottomHeight() + (scrollX ? hScrollKnob.getTotalHeight() : 0),areaWidth,areaHeight);
+  amountX=MathUtils.clamp(amountX,0,widgetAreaBounds.x);
+  amountY=MathUtils.clamp(amountY,0,widgetAreaBounds.y);
+  widgetWidth=disableX ? width : Math.max(areaWidth,widgetWidth);
+  widgetHeight=disableY ? height : Math.max(areaHeight,widgetHeight);
   if (widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.width=widgetWidth;
     widget.height=widgetHeight;
     if (widget instanceof Layout)     ((Layout)widget).invalidate();
   }
-  if (hasHScroll) {
-    hScrollBounds.set(background.getLeftWidth(),background.getBottomHeight(),areaWidth,hScrollKnob.getTotalHeight());
-    hScrollKnobBounds.width=Math.max(hScrollKnob.getTotalWidth(),(int)(hScrollBounds.width * areaWidth / widget.width));
-    hScrollKnobBounds.height=hScrollKnob.getTotalHeight();
-    hScrollKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hScrollKnobBounds.width) * hScrollAmount);
-    hScrollKnobBounds.y=hScrollBounds.y;
+  if (scrollX) {
+    hScrollBounds.set(bg.getLeftWidth(),bg.getBottomHeight(),areaWidth,hScrollKnob.getTotalHeight());
+    hKnobBounds.width=Math.max(hScrollKnob.getTotalWidth(),(int)(hScrollBounds.width * areaWidth / widget.width));
+    hKnobBounds.height=hScrollKnob.getTotalHeight();
+    hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
+    hKnobBounds.y=hScrollBounds.y;
   }
-  if (hasVScroll) {
-    vScrollBounds.set(width - background.getRightWidth() - vScrollKnob.getTotalWidth(),height - background.getTopHeight() - areaHeight,vScrollKnob.getTotalWidth(),areaHeight);
-    vScrollKnobBounds.width=vScrollKnob.getTotalWidth();
-    vScrollKnobBounds.height=Math.max(vScrollKnob.getTotalHeight(),(int)(vScrollBounds.height * areaHeight / widget.height));
-    vScrollKnobBounds.x=vScrollBounds.x;
-    vScrollKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vScrollKnobBounds.height) * (1 - vScrollAmount));
+  if (scrollY) {
+    vScrollBounds.set(width - bg.getRightWidth() - vScrollKnob.getTotalWidth(),height - bg.getTopHeight() - areaHeight,vScrollKnob.getTotalWidth(),areaHeight);
+    vKnobBounds.width=vScrollKnob.getTotalWidth();
+    vKnobBounds.height=Math.max(vScrollKnob.getTotalHeight(),(int)(vScrollBounds.height * areaHeight / widget.height));
+    vKnobBounds.x=vScrollBounds.x;
+    vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
   }
-  widgetAreaBounds.set(background.getLeftWidth(),background.getBottomHeight() + (hasHScroll ? hScrollKnob.getTotalHeight() : 0),areaWidth,areaHeight);
-  widget.y=widgetAreaBounds.y - (!hasVScroll ? (int)(widget.height - areaHeight) : 0) - (hasVScroll ? (int)((widget.height - areaHeight) * (1 - vScrollAmount)) : 0);
-  widget.x=widgetAreaBounds.x - (hasHScroll ? (int)((widget.width - areaWidth) * hScrollAmount) : 0);
+  widget.y=widgetAreaBounds.y - (!scrollY ? (int)(widget.height - areaHeight) : 0) - (scrollY ? (int)((widget.height - areaHeight) * (1 - getScrollPercentY())) : 0);
+  widget.x=widgetAreaBounds.x - (scrollX ? (int)((widget.width - areaWidth) * getScrollPercentX()) : 0);
   ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
   if (widget instanceof Cullable) {
     widgetCullingArea.x=-widget.x + widgetAreaBounds.x;

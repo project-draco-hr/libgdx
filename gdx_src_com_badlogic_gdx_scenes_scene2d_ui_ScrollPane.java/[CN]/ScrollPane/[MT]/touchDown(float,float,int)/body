@@ -1,33 +1,33 @@
 {
   if (pointer != 0)   return false;
-  if (hasHScroll && hScrollBounds.contains(x,y)) {
-    if (hScrollKnobBounds.contains(x,y)) {
+  if (scrollX && hScrollBounds.contains(x,y)) {
+    if (hKnobBounds.contains(x,y)) {
       lastPoint.set(x,y);
-      handlePos=hScrollKnobBounds.x;
+      handlePosition=hKnobBounds.x;
       touchScrollH=true;
     }
  else {
-      if (x < hScrollKnobBounds.x) {
-        hScrollAmount=Math.max(0,hScrollAmount - 0.1f);
+      if (x < hKnobBounds.x) {
+        setScrollPercentX(Math.max(0,getScrollPercentX() - 0.1f));
       }
  else {
-        hScrollAmount=Math.min(1,hScrollAmount + 0.1f);
+        setScrollPercentX(Math.min(1,getScrollPercentX() + 0.1f));
       }
     }
     return true;
   }
- else   if (hasVScroll && vScrollBounds.contains(x,y)) {
-    if (vScrollKnobBounds.contains(x,y)) {
+ else   if (scrollY && vScrollBounds.contains(x,y)) {
+    if (vKnobBounds.contains(x,y)) {
       lastPoint.set(x,y);
-      handlePos=vScrollKnobBounds.y;
+      handlePosition=vKnobBounds.y;
       touchScrollV=true;
     }
  else {
-      if (y < vScrollKnobBounds.y) {
-        vScrollAmount=Math.min(1,vScrollAmount + 0.1f);
+      if (y < vKnobBounds.y) {
+        setScrollPercentY(Math.max(0,getScrollPercentY() + 0.1f));
       }
  else {
-        vScrollAmount=Math.max(0,vScrollAmount - 0.1f);
+        setScrollPercentY(Math.min(1,getScrollPercentY() - 0.1f));
       }
     }
     return true;

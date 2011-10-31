@@ -1,4 +1,5 @@
 {
+  if (text == null)   throw new IllegalArgumentException("text cannot be null.");
   for (int i=0, n=buttons.size; i < n; i++) {
     Button button=buttons.get(i);
     if (text.equals(button.getText())) {

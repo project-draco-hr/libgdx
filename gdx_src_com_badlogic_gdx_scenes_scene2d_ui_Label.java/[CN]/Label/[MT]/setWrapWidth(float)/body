@@ -1,4 +1,5 @@
 {
-  setWrap(true);
+  setWrap(wrapWidth != 0);
   this.wrapWidth=wrapWidth;
+  invalidateHierarchy();
 }

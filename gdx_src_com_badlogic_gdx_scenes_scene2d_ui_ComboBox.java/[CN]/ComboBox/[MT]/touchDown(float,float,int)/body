@@ -1,8 +1,0 @@
-{
-  if (pointer != 0)   return false;
-  if (list != null)   stage.removeActor(list);
-  stage.toStageCoordinates((int)screenCoords.x,(int)screenCoords.y,stageCoords);
-  list=new ComboList(this.name + "-list",stageCoords.x,stageCoords.y);
-  stage.addActor(list);
-  return true;
-}

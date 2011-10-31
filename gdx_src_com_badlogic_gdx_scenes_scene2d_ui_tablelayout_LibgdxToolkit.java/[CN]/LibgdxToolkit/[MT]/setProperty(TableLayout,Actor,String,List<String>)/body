@@ -4,10 +4,9 @@
   }
  catch (  RuntimeException ex) {
     if (layout.skin != null && values.size() == 1 && name.equalsIgnoreCase("style")) {
-      Field field=getField(object.getClass(),"style");
-      if (field != null) {
+      try {
         String styleName=values.get(0);
-        Class styleClass=field.getType();
+        Class styleClass=Class.forName(object.getClass().getName() + "Style");
         if (layout.skin.hasStyle(styleName,styleClass)) {
           try {
             Method setStyleMethod=object.getClass().getMethod("setStyle",styleClass);
@@ -18,6 +17,8 @@
             throw new GdxRuntimeException("Unable to set style: " + styleName,ex2);
           }
         }
+      }
+ catch (      ClassNotFoundException ignored) {
       }
     }
     throw ex;

@@ -3,7 +3,7 @@
   if (handleBounds.contains(x,y)) {
     touchDrag=true;
     lastPoint.set(x,y);
-    handlePos.set(handleBounds.x,handleBounds.y);
+    handlePosition.set(handleBounds.x,handleBounds.y);
     return true;
   }
   return super.touchDown(x,y,pointer);
