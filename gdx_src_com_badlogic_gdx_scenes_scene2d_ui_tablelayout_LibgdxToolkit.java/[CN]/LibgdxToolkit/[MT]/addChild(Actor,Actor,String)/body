@@ -2,6 +2,7 @@
   if (child.parent != null)   child.remove();
   try {
     parent.getClass().getMethod("setWidget",Actor.class).invoke(parent,child);
+    return;
   }
  catch (  InvocationTargetException ex) {
     throw new RuntimeException("Error calling setWidget.",ex);
