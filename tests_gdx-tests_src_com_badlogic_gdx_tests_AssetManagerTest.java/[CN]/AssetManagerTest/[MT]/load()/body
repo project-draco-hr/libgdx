@@ -1,4 +1,14 @@
 {
+  start=System.nanoTime();
+  tex1=new Texture("data/animation.png");
+  tex2=new TextureAtlas(Gdx.files.internal("data/pack"));
+  font2=new BitmapFont(Gdx.files.internal("data/verdana39.fnt"),false);
+  tex3=new Texture("data/test.etc1");
+  map=TiledLoader.createMap(Gdx.files.internal("data/tiledmap/tilemap csv.tmx"));
+  atlas=new TileAtlas(map,Gdx.files.internal("data/tiledmap/"));
+  renderer=new TileMapRenderer(map,atlas,8,8);
+  System.out.println("plain took: " + (System.nanoTime() - start) / 1000000000.0f);
+  start=System.nanoTime();
   manager.load("data/animation.png",Texture.class);
   manager.load("data/pack1.png",Texture.class);
   manager.load("data/pack",TextureAtlas.class);

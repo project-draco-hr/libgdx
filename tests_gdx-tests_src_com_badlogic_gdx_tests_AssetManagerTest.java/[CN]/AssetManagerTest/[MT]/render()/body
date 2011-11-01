@@ -2,7 +2,10 @@
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   boolean result=manager.update();
   if (result & !diagnosed) {
-    Gdx.app.log("AssetManagerTest","\n" + manager.getDiagnostics() + "\n"+ Texture.getManagedStatus());
+    diagnosed=true;
+    System.out.println("took: " + (System.nanoTime() - start) / 1000000000.0f);
+    unload();
+    load();
     diagnosed=false;
     reloads++;
   }
@@ -16,8 +19,4 @@
   if (manager.isLoaded("data/tiledmap/tilemap csv.tmx"))   manager.get("data/tiledmap/tilemap csv.tmx",TileMapRenderer.class).render();
   font.draw(batch,"loaded: " + manager.getProgress() + ", reloads: "+ reloads,0,30);
   batch.end();
-  if (Gdx.input.justTouched()) {
-    Texture.invalidateAllTextures(Gdx.app);
-    diagnosed=false;
-  }
 }

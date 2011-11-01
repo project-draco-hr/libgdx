@@ -1,4 +1,10 @@
 {
+  tex1.dispose();
+  tex2.dispose();
+  font2.dispose();
+  tex3.dispose();
+  atlas.dispose();
+  renderer.dispose();
   manager.unload("data/animation.png");
   manager.unload("data/pack1.png");
   manager.unload("data/pack");
