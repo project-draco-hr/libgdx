@@ -1,3 +1,3 @@
 {
-  return Float.intBitsToFloat(value);
+  return Float.intBitsToFloat(value & 0xfeffffff);
 }
