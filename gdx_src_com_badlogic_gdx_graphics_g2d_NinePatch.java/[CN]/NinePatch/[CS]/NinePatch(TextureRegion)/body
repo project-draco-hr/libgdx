@@ -1,5 +1,5 @@
 {
-  if (patches.length != 9)   throw new IllegalArgumentException("NinePatch needs nine TextureRegions");
+  if (patches == null || patches.length != 9)   throw new IllegalArgumentException("NinePatch needs nine TextureRegions");
   this.patches=patches;
   checkValidity();
 }

@@ -1,4 +1,5 @@
 {
+  if (region == null)   throw new IllegalArgumentException("region cannot be null.");
   int middleWidth=region.getRegionWidth() - left - right;
   int middleHeight=region.getRegionHeight() - top - bottom;
   patches=new TextureRegion[9];

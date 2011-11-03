@@ -1,0 +1,5 @@
+{
+  this.patches=new TextureRegion[9];
+  System.arraycopy(ninePatch.patches,0,patches,0,9);
+  this.color=color;
+}
