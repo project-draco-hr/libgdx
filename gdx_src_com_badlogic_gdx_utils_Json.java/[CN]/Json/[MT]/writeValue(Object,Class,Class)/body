@@ -43,8 +43,19 @@
       writeArrayEnd();
       return;
     }
+    if (value instanceof OrderedMap) {
+      if (knownType == null)       knownType=OrderedMap.class;
+      writeObjectStart(actualType,knownType);
+      OrderedMap map=(OrderedMap)value;
+      for (      Object key : map.orderedKeys()) {
+        writer.name(convertToString(key));
+        writeValue(map.get(key),elementType,null);
+      }
+      writeObjectEnd();
+      return;
+    }
     if (value instanceof ObjectMap) {
-      if (knownType == null)       knownType=ObjectMap.class;
+      if (knownType == null)       knownType=OrderedMap.class;
       writeObjectStart(actualType,knownType);
       for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
         writer.name(convertToString(entry.key));
@@ -54,7 +65,7 @@
       return;
     }
     if (value instanceof Map) {
-      if (knownType == null)       knownType=ObjectMap.class;
+      if (knownType == null)       knownType=OrderedMap.class;
       writeObjectStart(actualType,knownType);
       for (      Map.Entry entry : ((Map<?,?>)value).entrySet()) {
         writer.name(convertToString(entry.getKey()));

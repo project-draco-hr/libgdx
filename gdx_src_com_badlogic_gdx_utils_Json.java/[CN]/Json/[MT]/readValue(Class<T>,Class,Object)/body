@@ -1,7 +1,7 @@
 {
   if (jsonData == null)   return null;
-  if (jsonData instanceof ObjectMap) {
-    ObjectMap<String,Object> jsonMap=(ObjectMap)jsonData;
+  if (jsonData instanceof OrderedMap) {
+    OrderedMap<String,Object> jsonMap=(OrderedMap)jsonData;
     String className=typeName == null ? null : (String)jsonMap.remove(typeName);
     if (className != null) {
       try {
@@ -27,10 +27,10 @@
         return (T)result;
       }
     }
- else     object=new ObjectMap();
+ else     object=new OrderedMap();
     if (object instanceof ObjectMap) {
       ObjectMap result=(ObjectMap)object;
-      for (      Entry entry : jsonMap.entries())       result.put(entry.key,readValue(elementType,null,entry.value));
+      for (      String key : jsonMap.orderedKeys())       result.put(key,readValue(elementType,null,jsonMap.get(key)));
       return (T)result;
     }
     readFields(object,jsonMap);

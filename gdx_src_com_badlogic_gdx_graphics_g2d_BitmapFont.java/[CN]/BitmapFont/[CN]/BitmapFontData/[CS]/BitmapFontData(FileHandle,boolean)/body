@@ -91,8 +91,16 @@
       capGlyph=getGlyph(capChars[i]);
       if (capGlyph != null)       break;
     }
-    if (capGlyph == null)     capGlyph=getFirstGlyph();
-    capHeight=capGlyph.height;
+    if (capGlyph == null) {
+      for (      Glyph[] page : this.glyphs) {
+        if (page == null)         continue;
+        for (        Glyph glyph : page) {
+          if (glyph == null || glyph.height == 0 || glyph.width == 0)           continue;
+          capHeight=Math.max(capHeight,glyph.height);
+        }
+      }
+    }
+ else     capHeight=capGlyph.height;
     ascent=baseLine - capHeight;
     down=-lineHeight;
     if (flip) {

@@ -1,5 +1,5 @@
 {
-  String text=getJsonLoader(null).prettyPrint(this,true);
+  String text=getJsonLoader(null).prettyPrint(this,130);
   Writer writer=skinFile.writer(false);
   try {
     writer.write(text);

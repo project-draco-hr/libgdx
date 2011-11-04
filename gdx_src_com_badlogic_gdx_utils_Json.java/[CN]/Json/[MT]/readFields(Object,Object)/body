@@ -1,5 +1,5 @@
 {
-  ObjectMap<String,Object> jsonMap=(ObjectMap)jsonData;
+  OrderedMap<String,Object> jsonMap=(OrderedMap)jsonData;
   Class type=object.getClass();
   ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
   if (fields == null)   fields=cacheFields(type);

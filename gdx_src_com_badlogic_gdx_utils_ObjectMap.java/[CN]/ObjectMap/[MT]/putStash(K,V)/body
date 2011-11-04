@@ -1,7 +1,7 @@
 {
   if (stashSize == stashCapacity) {
     resize(capacity << 1);
-    put(key,value);
+    put_internal(key,value);
     return;
   }
   K[] keyTable=this.keyTable;

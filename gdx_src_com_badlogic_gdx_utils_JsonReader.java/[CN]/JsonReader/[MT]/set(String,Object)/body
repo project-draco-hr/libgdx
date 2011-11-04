@@ -1,5 +1,5 @@
 {
-  if (current instanceof ObjectMap)   ((ObjectMap)current).put(name,value);
+  if (current instanceof OrderedMap)   ((OrderedMap)current).put(name,value);
  else   if (current instanceof Array)   ((Array)current).add(value);
  else   root=value;
 }

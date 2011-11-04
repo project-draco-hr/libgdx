@@ -1,0 +1,18 @@
+{
+  return new Entries(this){
+    void advance(){
+      nextIndex++;
+      hasNext=nextIndex < map.size;
+    }
+    public Entry next(){
+      entry.key=keys.get(nextIndex);
+      entry.value=map.get(entry.key);
+      advance();
+      return entry;
+    }
+    public void remove(){
+      map.remove(entry.key);
+    }
+  }
+;
+}

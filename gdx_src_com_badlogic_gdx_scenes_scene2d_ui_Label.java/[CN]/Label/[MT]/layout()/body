@@ -3,20 +3,22 @@
   if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,wrapWidth));
  else   bounds.set(cache.getFont().getMultiLineBounds(text));
   float y;
-  if ((align & Align.TOP) != 0) {
+  if ((labelAlign & Align.TOP) != 0) {
     y=cache.getFont().isFlipped() ? 0 : height - bounds.height;
     y+=style.font.getDescent();
   }
- else   if ((align & Align.BOTTOM) != 0) {
+ else   if ((labelAlign & Align.BOTTOM) != 0) {
     y=cache.getFont().isFlipped() ? height - bounds.height : 0;
     y-=style.font.getDescent();
   }
  else   y=(height - bounds.height) / 2;
   if (!cache.getFont().isFlipped())   y+=bounds.height;
-  HAlignment halign;
-  if ((align & Align.LEFT) != 0)   halign=HAlignment.LEFT;
- else   if ((align & Align.RIGHT) != 0)   halign=HAlignment.RIGHT;
- else   halign=HAlignment.CENTER;
-  if (wrap)   cache.setWrappedText(text,0,y,wrapWidth,halign);
- else   cache.setMultiLineText(text,0,y,width,halign);
+  float x;
+  if ((labelAlign & Align.LEFT) != 0)   x=0;
+ else   if ((labelAlign & Align.RIGHT) != 0) {
+    x=width - bounds.width;
+  }
+ else   x=(width - bounds.width) / 2;
+  if (wrap)   cache.setWrappedText(text,x,y,wrapWidth,wrapAlign);
+ else   cache.setMultiLineText(text,x,y,width,wrapAlign);
 }

@@ -1,5 +1,5 @@
 {
-  ObjectMap jsonMap=(ObjectMap)jsonData;
+  OrderedMap jsonMap=(OrderedMap)jsonData;
   Object jsonValue=jsonMap.get(name);
   if (jsonValue == null)   return defaultValue;
   return (T)readValue(type,elementType,jsonValue);

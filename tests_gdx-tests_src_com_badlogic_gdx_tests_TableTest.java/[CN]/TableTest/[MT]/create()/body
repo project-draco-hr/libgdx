@@ -13,7 +13,7 @@
   table.size(75,75);
   table.add(label);
   table.setClickListener(new ClickListener(){
-    public void click(    Actor actor){
+    public void click(    Actor actor,    float x,    float y){
       System.out.println("click!");
     }
   }

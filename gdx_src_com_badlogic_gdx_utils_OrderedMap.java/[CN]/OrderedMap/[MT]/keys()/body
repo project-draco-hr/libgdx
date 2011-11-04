@@ -1,0 +1,17 @@
+{
+  return new Keys(this){
+    void advance(){
+      nextIndex++;
+      hasNext=nextIndex < map.size;
+    }
+    public K next(){
+      K key=keys.get(nextIndex);
+      advance();
+      return key;
+    }
+    public void remove(){
+      map.remove(keys.get(nextIndex - 1));
+    }
+  }
+;
+}

@@ -277,7 +277,7 @@ throw new SerializationException("Error parsing JSON on line " + lineNumber + " 
  else if (elements.size != 0) {
 Object element=elements.peek();
 elements.clear();
-if (element instanceof ObjectMap) throw new SerializationException("Error parsing JSON, unmatched brace.");
+if (element instanceof OrderedMap) throw new SerializationException("Error parsing JSON, unmatched brace.");
  else throw new SerializationException("Error parsing JSON, unmatched bracket.");
 }
 Object root=this.root;

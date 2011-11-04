@@ -1,6 +1,6 @@
 {
   V value=map.valueTable[nextIndex];
   currentIndex=nextIndex;
-  findNextIndex();
+  advance();
   return value;
 }

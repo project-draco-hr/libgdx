@@ -1,0 +1,17 @@
+{
+  return new Values(this){
+    void advance(){
+      nextIndex++;
+      hasNext=nextIndex < map.size;
+    }
+    public V next(){
+      V value=(V)map.get(keys.get(nextIndex));
+      advance();
+      return value;
+    }
+    public void remove(){
+      map.remove(keys.get(nextIndex - 1));
+    }
+  }
+;
+}

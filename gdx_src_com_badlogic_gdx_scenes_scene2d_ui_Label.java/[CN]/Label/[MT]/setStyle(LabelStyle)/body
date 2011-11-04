@@ -3,9 +3,6 @@
   if (style.font == null)   throw new IllegalArgumentException("Missing LabelStyle font.");
   this.style=style;
   cache=new BitmapFontCache(style.font);
-  if (style.fontColor != null) {
-    if (style.fontColor.r == 0.51f)     System.out.println();
-    cache.setColor(style.fontColor);
-  }
+  if (style.fontColor != null)   cache.setColor(style.fontColor);
   invalidateHierarchy();
 }
