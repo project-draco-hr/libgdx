@@ -5,7 +5,7 @@
     checkedButtons.removeValue(button,true);
   }
  else {
-    if (checkedButtons.size >= maxCheckCount) {
+    if (maxCheckCount != -1 && checkedButtons.size >= maxCheckCount) {
       if (uncheckLast) {
         int old=minCheckCount;
         minCheckCount=0;
