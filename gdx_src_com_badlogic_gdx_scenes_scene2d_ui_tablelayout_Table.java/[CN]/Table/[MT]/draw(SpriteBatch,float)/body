@@ -1,12 +1,12 @@
 {
-  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  if (backgroundPatch != null)   backgroundPatch.draw(batch,x,y,width,height);
   validate();
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  drawBackground(batch,parentAlpha);
   if (stage != null) {
     applyTransform(batch);
     calculateScissors(batch.getTransformMatrix());
     if (ScissorStack.pushScissors(scissors)) {
-      super.drawChildren(batch,parentAlpha);
+      drawChildren(batch,parentAlpha);
       ScissorStack.popScissors();
     }
     resetTransform(batch);

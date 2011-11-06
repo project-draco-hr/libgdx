@@ -1,0 +1,5 @@
+{
+  super.layout();
+  TextBounds bounds=style.titleFont.getMultiLineBounds(title);
+  titleCache.setMultiLineText(title,width / 2 - bounds.width / 2,height - getTitleBarHeight() / 2 + bounds.height / 2);
+}

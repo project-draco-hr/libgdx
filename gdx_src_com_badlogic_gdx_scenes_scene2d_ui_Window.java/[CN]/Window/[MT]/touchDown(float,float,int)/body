@@ -1,10 +1,11 @@
 {
   if (pointer != 0)   return false;
   if (parent.getActors().size() > 1)   parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
-  if (titleBounds.contains(x,y)) {
-    if (isMovable)     move=true;
-    initial.set(x,y);
+  if (super.touchDown(x,y,pointer))   return true;
+  if (isMovable && height - y <= getTitleBarHeight()) {
+    dragOffset.set(x,y);
+    dragging=true;
   }
- else   super.touchDown(x,y,pointer);
+ else   dragging=false;
   return true;
 }

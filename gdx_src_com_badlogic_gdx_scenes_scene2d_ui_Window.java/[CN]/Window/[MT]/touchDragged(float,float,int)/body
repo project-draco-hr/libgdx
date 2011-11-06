@@ -1,8 +1,5 @@
 {
-  if (move) {
-    this.x+=(x - initial.x);
-    this.y+=(y - initial.y);
-    return;
-  }
-  if (parent.focusedActor[0] != this)   super.touchDragged(x,y,pointer);
+  if (!dragging)   return;
+  this.x+=x - dragOffset.x;
+  this.y+=y - dragOffset.y;
 }

@@ -1,4 +1,5 @@
 {
+  if (stage == null)   throw new IllegalArgumentException("stage cannot be null.");
   this.stage=stage;
   transform=true;
   invalidate();
