@@ -1,4 +1,5 @@
 {
-  NinePatch background=style.background;
-  return background.getBottomHeight() + background.getTopHeight() + textBounds.height;
+  float prefHeight=textBounds.height;
+  if (style.background != null)   prefHeight+=style.background.getBottomHeight() + style.background.getTopHeight();
+  return prefHeight;
 }

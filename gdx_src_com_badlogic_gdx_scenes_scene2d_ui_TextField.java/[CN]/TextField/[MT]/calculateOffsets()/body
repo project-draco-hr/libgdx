@@ -1,8 +1,8 @@
 {
-  final NinePatch background=style.background;
   float position=glyphPositions.get(cursor);
   float distance=position - Math.abs(renderOffset);
-  float visibleWidth=width - background.getLeftWidth() - background.getRightWidth();
+  float visibleWidth=width;
+  if (style.background != null)   visibleWidth-=style.background.getLeftWidth() + style.background.getRightWidth();
   if (distance <= 0) {
     if (cursor > 0)     renderOffset=-glyphPositions.get(cursor - 1);
  else     renderOffset=0;
