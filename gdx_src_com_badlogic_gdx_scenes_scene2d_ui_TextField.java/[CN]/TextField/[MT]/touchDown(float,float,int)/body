@@ -2,7 +2,7 @@
   if (pointer != 0)   return false;
   parent.keyboardFocus(this);
   keyboard.show(true);
-  hasSelection=false;
+  clearSelection();
   lastBlink=0;
   cursorOn=false;
   x=x - renderOffset;

@@ -4,14 +4,12 @@
   StringBuffer buffer=new StringBuffer();
   for (int i=0; i < text.length(); i++) {
     char c=text.charAt(i);
-    if (font.containsCharacter(c)) {
-      buffer.append(c);
-    }
+    if (font.containsCharacter(c))     buffer.append(c);
   }
   this.text=buffer.toString();
-  this.cursor=0;
-  this.hasSelection=false;
-  font.computeGlyphAdvancesAndPositions(text,this.glyphAdvances,this.glyphPositions);
+  cursor=0;
+  clearSelection();
+  font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
   textBounds.set(font.getBounds(text));
   textBounds.height-=font.getDescent() * 2;
   font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);

@@ -1,0 +1,8 @@
+{
+  int minIndex=Math.min(cursor,selectionStart);
+  int maxIndex=Math.max(cursor,selectionStart);
+  text=(minIndex > 0 ? text.substring(0,minIndex) : "") + (maxIndex < text.length() ? text.substring(maxIndex,text.length()) : "");
+  cursor=minIndex;
+  style.font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
+  clearSelection();
+}
