@@ -1,9 +1,4 @@
 {
   texture=new Texture(textureFile);
-  try {
-    getJsonLoader(skinFile).fromJson(Skin.class,skinFile);
-  }
- catch (  SerializationException ex) {
-    throw new SerializationException("Error reading file: " + skinFile,ex);
-  }
+  load(skinFile);
 }
