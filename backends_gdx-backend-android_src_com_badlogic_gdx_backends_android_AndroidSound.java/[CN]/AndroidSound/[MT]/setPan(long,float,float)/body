@@ -2,10 +2,10 @@
   float leftVolume=volume;
   float rightVolume=volume;
   if (pan < 0) {
-    leftVolume*=(1 - Math.abs(pan));
+    rightVolume*=(1 - Math.abs(pan));
   }
  else   if (pan > 0) {
-    rightVolume*=(1 - Math.abs(pan));
+    leftVolume*=(1 - Math.abs(pan));
   }
   soundPool.setVolume((int)soundId,leftVolume,rightVolume);
 }
