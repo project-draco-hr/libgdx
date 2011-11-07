@@ -1,13 +1,6 @@
 {
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   this.style=style;
-  for (int i=0; i < children.size(); i++) {
-    Actor child=children.get(i);
-    if (child instanceof Label) {
-      ((Label)child).setStyle(style);
-      break;
-    }
-  }
   setBackground(isPressed ? style.down : style.up);
   invalidateHierarchy();
 }

@@ -1,8 +1,5 @@
 {
-  if (!(style instanceof CheckBoxStyle))   throw new IllegalArgumentException("Style must be a CheckBoxStyle.");
+  if (!(style instanceof CheckBoxStyle))   throw new IllegalArgumentException("style must be a CheckBoxStyle.");
   super.setStyle(style);
-  if (image != null) {
-    CheckBoxStyle checkBoxStyle=(CheckBoxStyle)style;
-    image.setRegion(isChecked ? checkBoxStyle.checkboxOn : checkBoxStyle.checkboxOff);
-  }
+  this.style=(CheckBoxStyle)style;
 }

@@ -1,0 +1,9 @@
+{
+  if (isPressed) {
+    if (style.downFontColor != null)     label.setColor(style.downFontColor);
+  }
+ else {
+    if (style.fontColor != null)     label.setColor((isChecked && style.downFontColor != null) ? style.downFontColor : style.fontColor);
+  }
+  super.draw(batch,parentAlpha);
+}

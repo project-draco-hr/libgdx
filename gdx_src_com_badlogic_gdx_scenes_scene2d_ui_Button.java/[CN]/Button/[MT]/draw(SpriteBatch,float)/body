@@ -4,20 +4,12 @@
     setBackground(style.down == null ? style.up : style.down);
     offsetX=style.pressedOffsetX;
     offsetY=style.pressedOffsetY;
-    if (style.downFontColor != null) {
-      Label label=getLabel();
-      if (label != null)       label.setColor(style.downFontColor);
-    }
   }
  else {
     if (style.checked == null)     setBackground(style.up);
  else     setBackground(isChecked ? style.checked : style.up);
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
-    if (style.fontColor != null) {
-      Label label=getLabel();
-      if (label != null)       label.setColor((isChecked && style.downFontColor != null) ? style.downFontColor : style.fontColor);
-    }
   }
   for (int i=0; i < children.size(); i++) {
     Actor child=children.get(i);

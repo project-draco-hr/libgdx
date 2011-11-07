@@ -2,8 +2,8 @@
   sound=Gdx.audio.newSound(Gdx.files.getFileHandle("data/shotgun.wav",FileType.Internal));
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
-  Button play=new Button("Play",skin);
-  Button stop=new Button("Stop",skin);
+  TextButton play=new TextButton("Play",skin);
+  TextButton stop=new TextButton("Stop",skin);
   final Slider pitch=new Slider(0.1f,4,0.1f,skin);
   pitch.setValue(1);
   final Label pitchValue=new Label("1.0",skin);

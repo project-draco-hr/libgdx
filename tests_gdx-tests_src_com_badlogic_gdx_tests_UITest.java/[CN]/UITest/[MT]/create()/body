@@ -5,8 +5,8 @@
   TextureRegion image2=new TextureRegion(new Texture(Gdx.files.internal("data/badlogic.jpg")));
   stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
   Gdx.input.setInputProcessor(stage);
-  final Button button=new Button("Single",skin.getStyle(ButtonStyle.class),"button-sl");
-  final Button buttonMulti=new Button("Multi\nLine\nToggle",skin.getStyle("toggle",ButtonStyle.class),"button-ml-tgl");
+  final Button button=new TextButton("Single",skin.getStyle(TextButtonStyle.class),"button-sl");
+  final Button buttonMulti=new TextButton("Multi\nLine\nToggle",skin.getStyle("toggle",TextButtonStyle.class),"button-ml-tgl");
   final Button imgButton=new Button(new Image(image),skin.getStyle(ButtonStyle.class));
   final Button imgToggleButton=new Button(new Image(image),skin.getStyle("toggle",ButtonStyle.class));
   final CheckBox checkBox=new CheckBox("Check me",skin.getStyle(CheckBoxStyle.class),"checkbox");

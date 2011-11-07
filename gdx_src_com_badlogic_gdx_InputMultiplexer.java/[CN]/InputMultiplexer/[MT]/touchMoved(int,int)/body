@@ -1,4 +1,4 @@
 {
-  for (int i=0, n=processors.size(); i < n; i++)   if (processors.get(i).touchMoved(x,y))   return true;
+  for (int i=0, n=processors.size; i < n; i++)   if (processors.get(i).touchMoved(x,y))   return true;
   return false;
 }

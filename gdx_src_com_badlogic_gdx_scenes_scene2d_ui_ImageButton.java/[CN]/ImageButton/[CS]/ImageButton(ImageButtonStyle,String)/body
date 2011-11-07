@@ -1,0 +1,7 @@
+{
+  super(style,name);
+  this.style=style;
+  image=new Image();
+  image.setScaling(Scaling.fit);
+  add(image);
+}
