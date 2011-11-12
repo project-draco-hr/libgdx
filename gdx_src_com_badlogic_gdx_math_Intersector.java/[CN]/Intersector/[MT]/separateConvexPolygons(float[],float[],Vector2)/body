@@ -1,0 +1,29 @@
+{
+  final int length1=verts1.length;
+  final int length2=verts2.length;
+  for (int i=0; i < length1; i+=2) {
+    final int j=(i + 1) % length1;
+    float projX=verts1[j + 1] - verts1[i + 1];
+    float projY=verts1[i] - verts1[j];
+    final float length=(float)Math.sqrt(projX * projX + projY * projY);
+    projX/=length;
+    projY/=length;
+    float min1=Float.POSITIVE_INFINITY, max1=Float.NEGATIVE_INFINITY;
+    for (int k=0; k < length1; k+=2) {
+      final float dot=projX * verts1[k] + projY * verts1[k + 1];
+      if (dot < min1)       min1=dot;
+      if (dot > max1)       max1=dot;
+    }
+    float min2=Float.POSITIVE_INFINITY, max2=Float.NEGATIVE_INFINITY;
+    for (int k=0; k < length2; k+=2) {
+      final float dot=projX * verts2[k] + projY * verts2[k + 1];
+      if (dot < min2)       min2=dot;
+      if (dot > max2)       max2=dot;
+    }
+    if ((max1 < min2) || (max2 < min1)) {
+      if (null != separation)       separation.set(projY,-projX);
+      return true;
+    }
+  }
+  return false;
+}
