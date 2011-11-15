@@ -1,8 +1,4 @@
 {
-  if (touchScrollH || touchScrollV) {
-    touchScrollH=false;
-    touchScrollV=false;
-    return;
-  }
-  if (focusedActor[pointer] != null)   super.touchUp(x,y,pointer);
+  touchScrollH=false;
+  touchScrollV=false;
 }

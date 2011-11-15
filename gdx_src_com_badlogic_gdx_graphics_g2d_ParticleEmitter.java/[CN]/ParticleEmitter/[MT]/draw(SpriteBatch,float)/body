@@ -8,19 +8,17 @@
   accumulator-=deltaMillis;
   if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
   Particle[] particles=this.particles;
-  BitSet active=this.active;
+  boolean[] active=this.active;
   int activeCount=this.activeCount;
-  int index=0;
-  while (true) {
-    index=active.nextSetBit(index);
-    if (index == -1)     break;
-    Particle particle=particles[index];
-    if (updateParticle(particle,delta,deltaMillis))     particle.draw(spriteBatch);
+  for (int i=0, n=active.length; i < n; i++) {
+    if (active[i]) {
+      Particle particle=particles[i];
+      if (updateParticle(particle,delta,deltaMillis))       particle.draw(spriteBatch);
  else {
-      active.clear(index);
-      activeCount--;
+        active[i]=false;
+        activeCount--;
+      }
     }
-    index++;
   }
   this.activeCount=activeCount;
   if (additive)   spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);

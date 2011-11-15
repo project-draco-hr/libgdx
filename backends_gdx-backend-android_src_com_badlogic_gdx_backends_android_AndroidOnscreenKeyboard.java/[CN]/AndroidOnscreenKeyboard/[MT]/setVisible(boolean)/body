@@ -21,7 +21,7 @@
           int[] screenloc=new int[2];
           private int keyboardHeight;
           private boolean keyboardShowing;
-          @SuppressWarnings("synthetic-access") @Override public boolean onPreDraw(){
+          @Override public boolean onPreDraw(){
             content.getLocationOnScreen(screenloc);
             System.out.println(screenloc[1]);
             keyboardHeight=Math.abs(screenloc[1]);

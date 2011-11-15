@@ -1,9 +1,0 @@
-{
-  if (focusedActor[pointer] != null) {
-    if (!touchable)     return;
-    point.x=x;
-    point.y=y;
-    focusedActor[pointer].toLocalCoordinates(point);
-    focusedActor[pointer].touchDragged(point.x,point.y,pointer);
-  }
-}

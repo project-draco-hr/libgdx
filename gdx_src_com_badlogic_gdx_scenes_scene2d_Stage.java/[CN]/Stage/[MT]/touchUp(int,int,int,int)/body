@@ -1,8 +1,9 @@
 {
-  Actor actor=root.focusedActor[pointer];
+  Actor actor=touchFocus[pointer];
   if (actor == null)   return false;
   toStageCoordinates(x,y,coords);
-  Group.toChildCoordinates(root,coords.x,coords.y,point);
-  root.touchUp(point.x,point.y,pointer);
+  actor.toLocalCoordinates(coords);
+  actor.touchUp(coords.x,coords.y,pointer);
+  if (touchFocus[pointer] == actor)   touchFocus[pointer]=null;
   return true;
 }

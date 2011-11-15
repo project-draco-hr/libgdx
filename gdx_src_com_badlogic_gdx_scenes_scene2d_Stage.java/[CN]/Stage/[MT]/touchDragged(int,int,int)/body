@@ -1,14 +1,14 @@
 {
-  boolean foundFocusedActor=false;
-  for (int i=0, n=root.focusedActor.length; i < n; i++) {
-    if (root.focusedActor[i] != null) {
-      foundFocusedActor=true;
-      break;
+  toStageCoordinates(x,y,coords);
+  boolean handled=false;
+  for (int i=0, n=touchFocus.length; i < n; i++) {
+    Actor actor=touchFocus[i];
+    if (actor != null) {
+      point.set(coords);
+      actor.toLocalCoordinates(point);
+      actor.touchDragged(point.x,point.y,pointer);
+      handled=true;
     }
   }
-  if (!foundFocusedActor)   return false;
-  toStageCoordinates(x,y,coords);
-  Group.toChildCoordinates(root,coords.x,coords.y,point);
-  root.touchDragged(point.x,point.y,pointer);
-  return true;
+  return handled;
 }

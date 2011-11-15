@@ -8,9 +8,9 @@
       Glyph g=data.getGlyph(ch);
       if (g != null) {
         if (lastGlyph != null)         width+=lastGlyph.getKerning(ch);
-        lastGlyph=g;
         if (width + g.xadvance > availableWidth)         break;
         width+=g.xadvance;
+        lastGlyph=g;
       }
     }
   }
@@ -21,9 +21,9 @@
       Glyph g=data.getGlyph(ch);
       if (g != null) {
         if (lastGlyph != null)         width+=lastGlyph.getKerning(ch) * scaleX;
-        lastGlyph=g;
         if (width + g.xadvance * scaleX > availableWidth)         break;
         width+=g.xadvance * scaleX;
+        lastGlyph=g;
       }
     }
   }

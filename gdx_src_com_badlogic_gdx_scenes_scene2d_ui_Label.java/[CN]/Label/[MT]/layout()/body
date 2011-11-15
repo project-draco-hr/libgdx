@@ -1,7 +1,5 @@
 {
-  float wrapWidth=this.wrapWidth != 0 ? this.wrapWidth : width;
-  if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,wrapWidth));
- else   bounds.set(cache.getFont().getMultiLineBounds(text));
+  computeBounds();
   float y;
   if ((labelAlign & Align.TOP) != 0) {
     y=cache.getFont().isFlipped() ? 0 : height - bounds.height;
@@ -19,6 +17,6 @@
     x=width - bounds.width;
   }
  else   x=(width - bounds.width) / 2;
-  if (wrap)   cache.setWrappedText(text,x,y,wrapWidth,wrapAlign);
- else   cache.setMultiLineText(text,x,y,width,wrapAlign);
+  if (wrap)   cache.setWrappedText(text,x,y,bounds.width,lineAlign);
+ else   cache.setMultiLineText(text,x,y,bounds.width,lineAlign);
 }

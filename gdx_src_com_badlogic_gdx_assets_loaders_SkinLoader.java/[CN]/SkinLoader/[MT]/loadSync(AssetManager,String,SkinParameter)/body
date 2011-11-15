@@ -1,4 +1,7 @@
 {
-  Texture texture=manager.get(parameter.texturePath,Texture.class);
+  String texturePath;
+  if (parameter == null)   texturePath=Gdx.files.internal(fileName).nameWithoutExtension() + ".png";
+ else   texturePath=parameter.texturePath;
+  Texture texture=manager.get(texturePath,Texture.class);
   return new Skin(resolve(fileName),texture);
 }

@@ -7,7 +7,6 @@
     table=new Table();
   }
   TableLayout layout=parent.getTableLayout();
-  table.setStage(layout.stage);
   table.setSkin(layout.skin);
   table.setAssetManager(layout.assetManager);
   return table;

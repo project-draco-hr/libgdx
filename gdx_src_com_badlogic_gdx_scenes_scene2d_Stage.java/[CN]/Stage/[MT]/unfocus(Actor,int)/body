@@ -1,0 +1,5 @@
+{
+  if (touchFocus[pointer] == actor)   touchFocus[pointer]=null;
+  if (scrollFocus == actor)   scrollFocus=null;
+  if (keyboardFocus == actor)   keyboardFocus=null;
+}

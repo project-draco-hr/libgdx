@@ -1,9 +1,0 @@
-{
-  super(name);
-  transform=false;
-  if (layout == null)   layout=new TableLayout();
-  this.layout=layout;
-  layout.setTable(this);
-  layout.stage=stage;
-  layout.skin=skin;
-}

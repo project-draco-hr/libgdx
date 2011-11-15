@@ -9,7 +9,7 @@
   stage.addActor(root);
   Table table=new Table();
   table.setBackground(patch);
-  table.enableClipping(stage);
+  table.setClip(true);
   table.size(75,75);
   table.add(label);
   table.setClickListener(new ClickListener(){

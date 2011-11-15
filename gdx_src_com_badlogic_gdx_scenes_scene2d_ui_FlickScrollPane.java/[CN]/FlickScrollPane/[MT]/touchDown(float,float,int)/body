@@ -1,5 +1,8 @@
 {
   if (pointer != 0)   return false;
-  if (emptySpaceOnlyScroll && super.touchDown(x,y,pointer))   return true;
-  return gestureDetector.touchDown((int)x,(int)y,pointer,0);
+  super.touchDown(x,y,pointer);
+  touchFocusedChild=stage != null ? stage.getTouchFocus(0) : null;
+  gestureDetector.touchDown((int)x,(int)y,pointer,0);
+  if (stage != null)   stage.setTouchFocus(this,0);
+  return true;
 }

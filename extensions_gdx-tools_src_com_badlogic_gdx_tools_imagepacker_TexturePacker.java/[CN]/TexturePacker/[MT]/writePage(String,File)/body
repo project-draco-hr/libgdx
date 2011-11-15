@@ -53,28 +53,33 @@
       }
     }
  else {
+      int incr=2;
       if (i % 3 == 0) {
-        width++;
-        grownPixels++;
-        if (width == MathUtils.nextPowerOfTwo(width)) {
+        if (width + incr >= MathUtils.nextPowerOfTwo(width)) {
           width-=grownPixels;
           grownPixels=0;
           i++;
         }
+ else {
+          width+=incr;
+          grownPixels+=incr;
+        }
       }
  else       if (i % 3 == 1) {
-        height++;
-        grownPixels++;
-        if (height == MathUtils.nextPowerOfTwo(height)) {
+        if (height + incr >= MathUtils.nextPowerOfTwo(height)) {
           height-=grownPixels;
           grownPixels=0;
           i++;
         }
+ else {
+          height+=incr;
+          grownPixels+=incr;
+        }
       }
  else {
         if (width == MathUtils.nextPowerOfTwo(width) && height == MathUtils.nextPowerOfTwo(height))         ii++;
-        if (ii % 2 == 1)         width++;
- else         height++;
+        if (ii % 2 == 1)         width+=incr;
+ else         height+=incr;
         i++;
       }
     }
@@ -135,6 +140,7 @@ BufferedImage canvas=new BufferedImage(width,height,type);
 insert(canvas,images,bestWidth,bestHeight);
 System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
 ImageIO.write(canvas,"png",outputFile);
+if (!settings.pot) ImageIO.write(squeeze(ImageIO.read(outputFile),"",true),"png",outputFile);
 compressedSize+=canvas.getWidth() * canvas.getHeight();
 return true;
 }

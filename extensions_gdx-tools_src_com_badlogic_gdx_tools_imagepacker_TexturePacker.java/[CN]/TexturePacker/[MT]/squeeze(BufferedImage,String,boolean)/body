@@ -1,0 +1,63 @@
+{
+  if (source == null)   return null;
+  if (!filter.accept(source))   return null;
+  uncompressedSize+=source.getWidth() * source.getHeight();
+  WritableRaster alphaRaster=source.getAlphaRaster();
+  if (alphaRaster == null || !settings.stripWhitespace || name.contains("_ws"))   return new Image(name,source,0,0,source.getWidth(),source.getHeight());
+  final byte[] a=new byte[1];
+  int top=0;
+  int bottom=source.getHeight();
+  if (!filter.direction.isY()) {
+    if (!skipTopLeft) {
+      outer:       for (int y=0; y < source.getHeight(); y++) {
+        for (int x=0; x < source.getWidth(); x++) {
+          alphaRaster.getDataElements(x,y,a);
+          int alpha=a[0];
+          if (alpha < 0)           alpha+=256;
+          if (alpha > settings.alphaThreshold)           break outer;
+        }
+        top++;
+      }
+    }
+    outer:     for (int y=source.getHeight(); --y >= top; ) {
+      for (int x=0; x < source.getWidth(); x++) {
+        alphaRaster.getDataElements(x,y,a);
+        int alpha=a[0];
+        if (alpha < 0)         alpha+=256;
+        if (alpha > settings.alphaThreshold)         break outer;
+      }
+      bottom--;
+    }
+  }
+  int left=0;
+  int right=source.getWidth();
+  if (!filter.direction.isX()) {
+    if (!skipTopLeft) {
+      outer:       for (int x=0; x < source.getWidth(); x++) {
+        for (int y=top; y < bottom; y++) {
+          alphaRaster.getDataElements(x,y,a);
+          int alpha=a[0];
+          if (alpha < 0)           alpha+=256;
+          if (alpha > settings.alphaThreshold)           break outer;
+        }
+        left++;
+      }
+    }
+    outer:     for (int x=source.getWidth(); --x >= left; ) {
+      for (int y=top; y < bottom; y++) {
+        alphaRaster.getDataElements(x,y,a);
+        int alpha=a[0];
+        if (alpha < 0)         alpha+=256;
+        if (alpha > settings.alphaThreshold)         break outer;
+      }
+      right--;
+    }
+  }
+  int newWidth=right - left;
+  int newHeight=bottom - top;
+  if (newWidth <= 0 || newHeight <= 0) {
+    System.out.println("Ignoring blank input image: " + name);
+    return null;
+  }
+  return new Image(name,source,left,top,newWidth,newHeight);
+}

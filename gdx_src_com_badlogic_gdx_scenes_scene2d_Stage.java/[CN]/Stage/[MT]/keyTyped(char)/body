@@ -1,3 +1,4 @@
 {
-  return root.keyTyped(character);
+  if (keyboardFocus == null)   return false;
+  return keyboardFocus.keyTyped(character);
 }

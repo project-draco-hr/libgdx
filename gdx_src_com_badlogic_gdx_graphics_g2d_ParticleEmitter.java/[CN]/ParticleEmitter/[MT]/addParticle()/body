@@ -1,9 +1,13 @@
 {
   int activeCount=this.activeCount;
   if (activeCount == maxParticleCount)   return;
-  BitSet active=this.active;
-  int index=active.nextClearBit(0);
-  activateParticle(index);
-  active.set(index);
-  this.activeCount=activeCount + 1;
+  boolean[] active=this.active;
+  for (int i=0, n=active.length; i < n; i++) {
+    if (!active[i]) {
+      activateParticle(i);
+      active[i]=true;
+      this.activeCount=activeCount + 1;
+      break;
+    }
+  }
 }

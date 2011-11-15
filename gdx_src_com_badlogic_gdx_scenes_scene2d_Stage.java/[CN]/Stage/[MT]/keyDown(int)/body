@@ -1,3 +1,4 @@
 {
-  return root.keyDown(keycode);
+  if (keyboardFocus == null)   return false;
+  return keyboardFocus.keyDown(keycode);
 }

@@ -7,7 +7,7 @@
   stage.addActor(container);
   container.getTableLayout().debug();
   Table table=new Table();
-  FlickScrollPane scroll=new FlickScrollPane(table,stage);
+  FlickScrollPane scroll=new FlickScrollPane(table);
   container.add(scroll).expand().fill();
   table.parse("pad:10 * expand:x space:4");
   for (int i=0; i < 100; i++) {

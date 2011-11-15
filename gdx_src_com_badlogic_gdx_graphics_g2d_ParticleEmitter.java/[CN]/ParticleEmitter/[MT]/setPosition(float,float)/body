@@ -2,15 +2,8 @@
   if (attached) {
     float xAmount=x - this.x;
     float yAmount=y - this.y;
-    BitSet active=this.active;
-    int index=0;
-    while (true) {
-      index=active.nextSetBit(index);
-      if (index == -1)       break;
-      Particle particle=particles[index];
-      particle.translate(xAmount,yAmount);
-      index++;
-    }
+    boolean[] active=this.active;
+    for (int i=0, n=active.length; i < n; i++)     if (active[i])     particles[i].translate(xAmount,yAmount);
   }
   this.x=x;
   this.y=y;

@@ -1,6 +1,8 @@
 {
-  root.keyboardFocus(null);
+  setKeyboardFocus(null);
+  Actor actor=touchFocus[pointer];
+  if (actor == null)   actor=root;
   toStageCoordinates(x,y,coords);
-  Group.toChildCoordinates(root,coords.x,coords.y,point);
-  return root.touchDown(point.x,point.y,pointer);
+  Group.toChildCoordinates(actor,coords.x,coords.y,point);
+  return actor.touchDown(point.x,point.y,pointer);
 }

@@ -1,9 +1,0 @@
-{
-  for (int i=0; i < focusedActor.length; i++) {
-    if (focusedActor[i] == actor) {
-      focus(null,i);
-    }
-  }
-  if (keyboardFocusedActor == actor)   keyboardFocus(null);
-  if (scrollFocusedActor == actor)   scrollFocus(null);
-}

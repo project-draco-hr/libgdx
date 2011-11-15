@@ -1,3 +1,4 @@
 {
-  return root.scrolled(amount);
+  if (scrollFocus == null)   return false;
+  return scrollFocus.scrolled(amount);
 }

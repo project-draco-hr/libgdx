@@ -1,0 +1,5 @@
+{
+  float wrapWidth=this.wrapWidth != 0 ? this.wrapWidth : width;
+  if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,wrapWidth));
+ else   bounds.set(cache.getFont().getMultiLineBounds(text));
+}

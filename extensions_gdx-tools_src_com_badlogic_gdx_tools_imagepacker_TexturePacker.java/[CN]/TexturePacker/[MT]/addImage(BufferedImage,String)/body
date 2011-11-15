@@ -1,5 +1,5 @@
 {
-  Image squeezed=squeeze(image,name);
+  Image squeezed=squeeze(image,name,false);
   if (squeezed != null) {
     if (settings.alias) {
       String crc=hash(squeezed);

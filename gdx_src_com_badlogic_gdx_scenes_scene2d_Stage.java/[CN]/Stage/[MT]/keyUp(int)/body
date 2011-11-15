@@ -1,3 +1,4 @@
 {
-  return root.keyUp(keycode);
+  if (keyboardFocus == null)   return false;
+  return keyboardFocus.keyUp(keycode);
 }

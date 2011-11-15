@@ -3,17 +3,13 @@
   if (accumulator < 1)   return;
   int deltaMillis=(int)accumulator;
   accumulator-=deltaMillis;
-  BitSet active=this.active;
+  boolean[] active=this.active;
   int activeCount=this.activeCount;
-  int index=0;
-  while (true) {
-    index=active.nextSetBit(index);
-    if (index == -1)     break;
-    if (!updateParticle(particles[index],delta,deltaMillis)) {
-      active.clear(index);
+  for (int i=0, n=active.length; i < n; i++) {
+    if (active[i] && !updateParticle(particles[i],delta,deltaMillis)) {
+      active[i]=false;
       activeCount--;
     }
-    index++;
   }
   this.activeCount=activeCount;
   if (delayTimer < delay) {

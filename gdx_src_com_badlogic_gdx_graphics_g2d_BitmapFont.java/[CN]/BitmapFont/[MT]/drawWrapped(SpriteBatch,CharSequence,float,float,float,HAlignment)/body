@@ -1,4 +1,5 @@
 {
+  if (wrapWidth <= 0)   wrapWidth=Integer.MAX_VALUE;
   float batchColor=spriteBatch.color;
   float down=this.data.down;
   int start=0;
@@ -11,7 +12,7 @@
     int nextStart=lineEnd;
     if (lineEnd < newLine) {
       while (lineEnd > start) {
-        if (BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))         break;
+        if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
         lineEnd--;
       }
       if (lineEnd == start)       lineEnd=nextStart;

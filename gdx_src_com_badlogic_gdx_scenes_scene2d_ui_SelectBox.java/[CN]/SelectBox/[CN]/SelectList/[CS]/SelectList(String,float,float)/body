@@ -5,6 +5,6 @@
   this.width=SelectBox.this.width;
   this.height=100;
   this.oldScreenCoords.set(screenCoords);
-  stage.getRoot().focus(this,0);
+  if (stage != null)   stage.setTouchFocus(this,0);
   layout();
 }

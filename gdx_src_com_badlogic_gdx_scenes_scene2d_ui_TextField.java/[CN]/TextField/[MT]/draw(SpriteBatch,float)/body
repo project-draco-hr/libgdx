@@ -11,7 +11,7 @@
   }
   float textY=(int)(height / 2 + textBounds.height / 2 + font.getDescent());
   calculateOffsets();
-  boolean focused=parent.keyboardFocusedActor == this;
+  boolean focused=stage != null && stage.getKeyboardFocus() == this;
   if (focused && hasSelection && selection != null) {
     batch.draw(selection,x + selectionX + bgLeftWidth+ renderOffset,y + textY - textBounds.height - font.getDescent() / 2,selectionWidth,textBounds.height);
   }

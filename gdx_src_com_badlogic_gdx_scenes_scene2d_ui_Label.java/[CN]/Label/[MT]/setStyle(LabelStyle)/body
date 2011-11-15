@@ -4,5 +4,6 @@
   this.style=style;
   cache=new BitmapFontCache(style.font);
   if (style.fontColor != null)   cache.setColor(style.fontColor);
+  computeBounds();
   invalidateHierarchy();
 }

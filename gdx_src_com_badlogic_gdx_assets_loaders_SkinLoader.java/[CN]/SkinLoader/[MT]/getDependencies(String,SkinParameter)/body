@@ -1,6 +1,6 @@
 {
-  if (parameter == null)   throw new IllegalArgumentException("Missing SkinParameter: " + fileName);
   Array<AssetDescriptor> deps=new Array();
-  deps.add(new AssetDescriptor(parameter.texturePath,Texture.class));
+  if (parameter == null)   deps.add(new AssetDescriptor(Gdx.files.internal(fileName).nameWithoutExtension() + ".png",Texture.class));
+ else   deps.add(new AssetDescriptor(parameter.texturePath,Texture.class));
   return deps;
 }

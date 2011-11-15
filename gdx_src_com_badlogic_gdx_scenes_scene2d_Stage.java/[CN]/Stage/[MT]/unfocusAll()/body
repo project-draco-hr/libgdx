@@ -1,3 +1,5 @@
 {
-  root.unfocusAll();
+  for (int i=0, n=touchFocus.length; i < n; i++)   touchFocus[i]=null;
+  scrollFocus=null;
+  keyboardFocus=null;
 }

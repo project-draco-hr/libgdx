@@ -1,7 +1,7 @@
 {
   this.labelAlign=labelAlign;
-  if ((wrapAlign & Align.LEFT) != 0)   this.wrapAlign=HAlignment.LEFT;
- else   if ((wrapAlign & Align.RIGHT) != 0)   this.wrapAlign=HAlignment.RIGHT;
- else   this.wrapAlign=HAlignment.CENTER;
+  if ((lineAlign & Align.LEFT) != 0)   this.lineAlign=HAlignment.LEFT;
+ else   if ((lineAlign & Align.RIGHT) != 0)   this.lineAlign=HAlignment.RIGHT;
+ else   this.lineAlign=HAlignment.CENTER;
   invalidate();
 }

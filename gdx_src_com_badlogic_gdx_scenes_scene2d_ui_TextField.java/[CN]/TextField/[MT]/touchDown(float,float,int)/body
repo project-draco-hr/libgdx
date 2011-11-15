@@ -1,6 +1,6 @@
 {
   if (pointer != 0)   return false;
-  parent.keyboardFocus(this);
+  if (stage != null)   stage.setKeyboardFocus(this);
   keyboard.show(true);
   clearSelection();
   lastBlink=0;

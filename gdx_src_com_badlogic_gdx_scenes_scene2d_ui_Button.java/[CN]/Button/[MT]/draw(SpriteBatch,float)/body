@@ -11,6 +11,7 @@
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
   }
+  validate();
   for (int i=0; i < children.size(); i++) {
     Actor child=children.get(i);
     child.x+=offsetX;

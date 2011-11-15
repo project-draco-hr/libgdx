@@ -1,5 +1,13 @@
 {
   clamp();
-  gestureDetector.touchUp((int)x,(int)y,pointer,0);
-  if (focusedActor[pointer] != null)   super.touchUp(x,y,pointer);
+  if (gestureDetector.touchUp((int)x,(int)y,pointer,0)) {
+    x=Integer.MIN_VALUE;
+    y=Integer.MIN_VALUE;
+  }
+ else   if (touchFocusedChild != null) {
+    point.x=x;
+    point.y=y;
+    toLocalCoordinates(touchFocusedChild,point);
+    touchFocusedChild.touchUp(point.x,point.y,0);
+  }
 }

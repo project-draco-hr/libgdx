@@ -1,5 +1,5 @@
 {
-  super(null,null,null,name);
+  super(null,null,name);
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   setStyle(style);
   super.setClickListener(new ClickListener(){

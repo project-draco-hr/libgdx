@@ -1,13 +1,6 @@
 {
   if (!touchable)   return false;
   if (debug)   Gdx.app.log("Group",name + ": " + x+ ", "+ y);
-  if (focusedActor[pointer] != null) {
-    point.x=x;
-    point.y=y;
-    focusedActor[pointer].toLocalCoordinates(point);
-    focusedActor[pointer].touchDown(point.x,point.y,pointer);
-    return true;
-  }
   int len=children.size() - 1;
   for (int i=len; i >= 0; i--) {
     Actor child=children.get(i);
@@ -16,7 +9,7 @@
     if (child.hit(point.x,point.y) == null)     continue;
     if (child instanceof Group)     ((Group)child).lastTouchedChild=null;
     if (child.touchDown(point.x,point.y,pointer)) {
-      if (focusedActor[pointer] == null)       focus(child,pointer);
+      if (stage != null && stage.getTouchFocus(pointer) == null)       stage.setTouchFocus(child,pointer);
       if (child instanceof Group) {
         lastTouchedChild=((Group)child).lastTouchedChild;
         if (lastTouchedChild == null)         lastTouchedChild=child;

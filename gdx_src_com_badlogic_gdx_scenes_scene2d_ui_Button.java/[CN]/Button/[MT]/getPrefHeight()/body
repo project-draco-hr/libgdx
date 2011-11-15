@@ -1,0 +1,7 @@
+{
+  float height=getTableLayout().getPrefHeight();
+  if (style.up != null)   height=Math.max(height,style.up.getTotalHeight());
+  if (style.down != null)   height=Math.max(height,style.down.getTotalHeight());
+  if (style.checked != null)   height=Math.max(height,style.checked.getTotalHeight());
+  return height;
+}

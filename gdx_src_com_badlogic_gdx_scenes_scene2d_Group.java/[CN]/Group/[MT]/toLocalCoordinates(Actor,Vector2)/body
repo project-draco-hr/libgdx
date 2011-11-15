@@ -1,0 +1,5 @@
+{
+  if (descendant.parent == null)   throw new IllegalArgumentException("Child was not a descendant.");
+  if (descendant.parent != this)   toLocalCoordinates(descendant.parent,point);
+  Group.toChildCoordinates(descendant,point.x,point.y,point);
+}

@@ -1,0 +1,7 @@
+{
+  float width=getTableLayout().getPrefWidth();
+  if (style.up != null)   width=Math.max(width,style.up.getTotalWidth());
+  if (style.down != null)   width=Math.max(width,style.down.getTotalWidth());
+  if (style.checked != null)   width=Math.max(width,style.checked.getTotalWidth());
+  return width;
+}

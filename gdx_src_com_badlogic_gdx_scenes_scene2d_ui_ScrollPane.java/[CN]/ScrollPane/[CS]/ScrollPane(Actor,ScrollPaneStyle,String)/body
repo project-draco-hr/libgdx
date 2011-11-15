@@ -1,0 +1,9 @@
+{
+  super(name);
+  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  this.widget=widget;
+  this.style=style;
+  setWidget(widget);
+  width=150;
+  height=150;
+}
