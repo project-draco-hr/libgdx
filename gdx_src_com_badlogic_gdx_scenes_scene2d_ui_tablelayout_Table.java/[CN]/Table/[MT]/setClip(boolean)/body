@@ -1,5 +1,4 @@
 {
-  if (stage == null)   throw new IllegalArgumentException("stage cannot be null.");
   clip=enabled;
   transform=enabled;
   invalidate();
