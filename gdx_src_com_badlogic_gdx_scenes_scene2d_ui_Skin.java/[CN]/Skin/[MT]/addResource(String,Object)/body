@@ -1,4 +1,5 @@
 {
+  if (name == null)   throw new IllegalArgumentException("name cannot be null.");
   if (resource == null)   throw new IllegalArgumentException("resource cannot be null.");
   ObjectMap<String,Object> typeResources=resources.get(resource.getClass());
   if (typeResources == null) {

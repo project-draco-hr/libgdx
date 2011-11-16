@@ -1,4 +1,5 @@
 {
+  if (name == null)   throw new IllegalArgumentException("name cannot be null.");
   ObjectMap<String,Object> typeResources=resources.get(type);
   if (typeResources == null)   throw new GdxRuntimeException("No " + type.getName() + " resource registered with name: "+ name);
   Object resource=typeResources.get(name);

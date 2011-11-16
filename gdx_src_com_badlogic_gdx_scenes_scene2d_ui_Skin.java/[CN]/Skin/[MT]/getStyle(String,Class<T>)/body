@@ -1,4 +1,5 @@
 {
+  if (name == null)   throw new IllegalArgumentException("name cannot be null.");
   ObjectMap<String,Object> typeStyles=styles.get(type);
   if (typeStyles == null)   throw new GdxRuntimeException("No styles registered with type: " + type.getName());
   Object style=typeStyles.get(name);
