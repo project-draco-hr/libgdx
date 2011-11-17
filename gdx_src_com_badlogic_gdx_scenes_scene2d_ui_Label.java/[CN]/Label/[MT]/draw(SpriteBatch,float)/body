@@ -1,5 +1,5 @@
 {
   validate();
   cache.setPosition(x,y);
-  cache.draw(batch,parentAlpha);
+  cache.draw(batch,color.a * parentAlpha);
 }
