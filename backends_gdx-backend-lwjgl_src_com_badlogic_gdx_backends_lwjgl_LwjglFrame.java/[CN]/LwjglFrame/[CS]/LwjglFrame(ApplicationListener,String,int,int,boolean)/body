@@ -18,11 +18,12 @@
   }
 ;
   getContentPane().add(lwjglCanvas.getCanvas());
-  addWindowListener(new WindowAdapter(){
-    public void windowClosing(    WindowEvent e){
-      lwjglCanvas.stop();
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    public void run(){
+      Runtime.getRuntime().halt(0);
     }
   }
 );
   setVisible(true);
+  lwjglCanvas.getCanvas().requestFocus();
 }

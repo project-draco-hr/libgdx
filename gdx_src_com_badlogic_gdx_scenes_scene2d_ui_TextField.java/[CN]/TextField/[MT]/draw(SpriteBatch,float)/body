@@ -27,7 +27,15 @@
   }
  else {
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,text,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
+    if (passwordMode && font.containsCharacter(BULLET)) {
+      if (passwordBuffer == null)       passwordBuffer=new StringBuilder(text.length());
+      if (passwordBuffer.length() > text.length())       passwordBuffer.setLength(text.length());
+ else {
+        for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)         passwordBuffer.append(BULLET);
+      }
+      font.draw(batch,passwordBuffer,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
+    }
+ else     font.draw(batch,text,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
   }
   if (focused) {
     blink();
