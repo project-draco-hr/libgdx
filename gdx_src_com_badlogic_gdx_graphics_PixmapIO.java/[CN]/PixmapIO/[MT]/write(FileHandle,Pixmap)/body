@@ -1,7 +1,6 @@
 {
   DataOutputStream out=null;
   try {
-    long start=System.nanoTime();
     out=new DataOutputStream(new DeflaterOutputStream(new BufferedOutputStream(file.write(false))));
     out.writeInt(pixmap.getWidth());
     out.writeInt(pixmap.getHeight());
@@ -21,7 +20,6 @@ synchronized (writeBuffer) {
     }
     pixelBuf.position(0);
     pixelBuf.limit(pixelBuf.capacity());
-    Gdx.app.log("PixmapIO","write (" + file.name() + "):"+ (System.nanoTime() - start) / 1000000000.0f + ", " + Thread.currentThread().getName());
   }
  catch (  Exception e) {
     throw new GdxRuntimeException("Couldn't write Pixmap to file '" + file + "'",e);
