@@ -1,0 +1,22 @@
+{
+  FileHandleResolver resolver=null;
+  if (useExternaInternalResolver)   resolver=new ExternalInternalFileHandleResolver();
+ else   resolver=new InternalFileHandleResolver();
+  log.setEnabled(false);
+  setLoader(BitmapFont.class,new BitmapFontLoader(resolver));
+  setLoader(Music.class,new MusicLoader(resolver));
+  setLoader(Pixmap.class,new PixmapLoader(resolver));
+  setLoader(Sound.class,new SoundLoader(resolver));
+  setLoader(TextureAtlas.class,new TextureAtlasLoader(resolver));
+  setLoader(Texture.class,new TextureLoader(resolver));
+  setLoader(Skin.class,new SkinLoader(resolver));
+  setLoader(TileMapRenderer.class,new TileMapRendererLoader(resolver));
+  threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
+    @Override public Thread newThread(    Runnable r){
+      Thread thread=new Thread(r,"AssetManager-Loader-Thread");
+      thread.setDaemon(true);
+      return thread;
+    }
+  }
+);
+}

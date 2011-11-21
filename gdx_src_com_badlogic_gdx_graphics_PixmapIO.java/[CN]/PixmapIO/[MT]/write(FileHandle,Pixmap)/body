@@ -1,0 +1,35 @@
+{
+  DataOutputStream out=null;
+  try {
+    long start=System.nanoTime();
+    out=new DataOutputStream(new DeflaterOutputStream(new BufferedOutputStream(file.write(false))));
+    out.writeInt(pixmap.getWidth());
+    out.writeInt(pixmap.getHeight());
+    out.writeInt(Format.toGdx2DPixmapFormat(pixmap.getFormat()));
+    ByteBuffer pixelBuf=pixmap.getPixels();
+    byte[] buffer=new byte[BUFFER_SIZE];
+    pixelBuf.position(0);
+    pixelBuf.limit(pixelBuf.capacity());
+    int remainingBytes=pixelBuf.capacity() % BUFFER_SIZE;
+    int iterations=pixelBuf.capacity() / BUFFER_SIZE;
+    for (int i=0; i < iterations; i++) {
+      pixelBuf.get(buffer);
+      out.write(buffer);
+    }
+    pixelBuf.get(buffer,0,remainingBytes);
+    out.write(buffer,0,remainingBytes);
+    pixelBuf.position(0);
+    pixelBuf.limit(pixelBuf.capacity());
+    Gdx.app.log("PixmapIO","write:" + (System.nanoTime() - start) / 1000000000.0f + ", " + Thread.currentThread().getName());
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't write Pixmap to file '" + file + "'",e);
+  }
+ finally {
+    if (out != null)     try {
+      out.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+}

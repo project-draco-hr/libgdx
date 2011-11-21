@@ -1,19 +1,3 @@
 {
-  log.setEnabled(false);
-  setLoader(BitmapFont.class,new BitmapFontLoader(new InternalFileHandleResolver()));
-  setLoader(Music.class,new MusicLoader(new InternalFileHandleResolver()));
-  setLoader(Pixmap.class,new PixmapLoader(new InternalFileHandleResolver()));
-  setLoader(Sound.class,new SoundLoader(new InternalFileHandleResolver()));
-  setLoader(TextureAtlas.class,new TextureAtlasLoader(new InternalFileHandleResolver()));
-  setLoader(Texture.class,new TextureLoader(new InternalFileHandleResolver()));
-  setLoader(Skin.class,new SkinLoader(new InternalFileHandleResolver()));
-  setLoader(TileMapRenderer.class,new TileMapRendererLoader(new InternalFileHandleResolver()));
-  threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
-    @Override public Thread newThread(    Runnable r){
-      Thread thread=new Thread(r,"AssetManager-Loader-Thread");
-      thread.setDaemon(true);
-      return thread;
-    }
-  }
-);
+  this(false);
 }
