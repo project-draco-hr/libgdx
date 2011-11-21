@@ -7,13 +7,14 @@
     int height=in.readInt();
     Format format=Format.fromGdx2DPixmapFormat(in.readInt());
     Pixmap pixmap=new Pixmap(width,height,format);
-    byte[] buffer=new byte[BUFFER_SIZE];
     ByteBuffer pixelBuf=pixmap.getPixels();
     pixelBuf.position(0);
     pixelBuf.limit(pixelBuf.capacity());
-    int readBytes=0;
-    while ((readBytes=in.read(buffer)) > 0) {
-      pixelBuf.put(buffer,0,readBytes);
+synchronized (readBuffer) {
+      int readBytes=0;
+      while ((readBytes=in.read(readBuffer)) > 0) {
+        pixelBuf.put(readBuffer,0,readBytes);
+      }
     }
     pixelBuf.position(0);
     pixelBuf.limit(pixelBuf.capacity());

@@ -13,15 +13,21 @@
           throw new GdxRuntimeException("Couldn't load dependencies of asset '" + assetDesc.fileName + "'",e);
         }
         dependenciesLoaded=true;
+        if (asyncDone) {
+          asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+        }
       }
     }
   }
  else {
-    if (loadFuture == null) {
+    if (loadFuture == null && !asyncDone) {
       loadFuture=threadPool.submit(this);
     }
  else {
-      if (loadFuture.isDone()) {
+      if (asyncDone) {
+        asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+      }
+ else       if (loadFuture.isDone()) {
         try {
           loadFuture.get();
         }

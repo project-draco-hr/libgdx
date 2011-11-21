@@ -7,6 +7,10 @@
         manager.injectDependency(assetDesc.fileName,desc);
       }
     }
+ else {
+      asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+      asyncDone=true;
+    }
   }
  else {
     asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
