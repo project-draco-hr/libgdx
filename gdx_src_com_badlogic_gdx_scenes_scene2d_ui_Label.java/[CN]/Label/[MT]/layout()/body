@@ -1,5 +1,12 @@
 {
   computeBounds();
+  if (wrap) {
+    float prefHeight=getPrefHeight();
+    if (prefHeight != lastPrefHeight) {
+      lastPrefHeight=prefHeight;
+      invalidateHierarchy();
+    }
+  }
   float y;
   if ((labelAlign & Align.TOP) != 0) {
     y=cache.getFont().isFlipped() ? 0 : height - bounds.height;

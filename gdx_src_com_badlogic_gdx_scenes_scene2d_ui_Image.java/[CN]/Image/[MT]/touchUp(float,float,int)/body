@@ -1,2 +1,4 @@
 {
+  if (hit(x,y) == null)   return;
+  if (clickListener != null)   clickListener.click(this,x,y);
 }

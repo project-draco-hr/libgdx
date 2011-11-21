@@ -1,4 +1,3 @@
 {
-  if (wrap && wrapWidth == 0)   return 100;
   return bounds.height - style.font.getDescent() * 2;
 }

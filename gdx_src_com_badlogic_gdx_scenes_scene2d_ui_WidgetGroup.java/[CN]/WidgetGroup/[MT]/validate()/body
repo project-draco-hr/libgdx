@@ -1,5 +1,5 @@
 {
   if (!needsLayout)   return;
-  layout();
   needsLayout=false;
+  layout();
 }
