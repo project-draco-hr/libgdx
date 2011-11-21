@@ -1,7 +1,4 @@
 {
-  FileHandleResolver resolver=null;
-  if (useExternaInternalResolver)   resolver=new ExternalInternalFileHandleResolver();
- else   resolver=new InternalFileHandleResolver();
   log.setEnabled(false);
   setLoader(BitmapFont.class,new BitmapFontLoader(resolver));
   setLoader(Music.class,new MusicLoader(resolver));

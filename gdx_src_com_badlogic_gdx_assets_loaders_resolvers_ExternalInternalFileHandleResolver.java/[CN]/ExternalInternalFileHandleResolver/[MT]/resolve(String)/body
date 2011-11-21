@@ -1,5 +1,0 @@
-{
-  FileHandle external=Gdx.files.external(fileName);
-  if (external.exists())   return external;
- else   return Gdx.files.internal(fileName);
-}

@@ -1,11 +1,13 @@
 {
   this.name=file.name();
+  this.file=file;
   InputStream in=null;
   try {
     in=new BufferedInputStream(file.read());
     properties.loadFromXML(in);
   }
  catch (  Throwable t) {
+    System.out.println(t.getMessage());
   }
  finally {
     if (in != null)     try {

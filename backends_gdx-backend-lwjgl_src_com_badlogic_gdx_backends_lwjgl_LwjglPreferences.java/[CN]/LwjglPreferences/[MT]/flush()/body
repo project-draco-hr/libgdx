@@ -1,6 +1,4 @@
 {
-  if (Gdx.files == null)   return;
-  FileHandle file=Gdx.files.external(".prefs/" + name);
   OutputStream out=null;
   try {
     out=new BufferedOutputStream(file.write(false));
