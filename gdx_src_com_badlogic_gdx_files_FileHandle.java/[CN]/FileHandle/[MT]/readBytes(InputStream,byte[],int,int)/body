@@ -1,0 +1,22 @@
+{
+  InputStream input=in;
+  int position=0;
+  try {
+    while (true) {
+      int count=input.read(bytes,offset + position,size - position);
+      if (count <= 0)       break;
+      position+=count;
+    }
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading file",ex);
+  }
+ finally {
+    try {
+      if (input != null)       input.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+  return position - offset;
+}
