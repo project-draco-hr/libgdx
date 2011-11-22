@@ -1,5 +1,5 @@
 {
   if (logLevel >= LOG_INFO) {
-    System.out.println(tag + ":" + message);
+    System.out.println(tag + ": " + message);
   }
 }
