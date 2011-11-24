@@ -1,4 +1,7 @@
 {
   texture.dispose();
-  for (  Object object : resources.values())   if (object instanceof Disposable)   ((Disposable)object).dispose();
+  for (  Entry<Class,ObjectMap<String,Object>> entry : resources.entries()) {
+    if (!Disposable.class.isAssignableFrom(entry.key))     continue;
+    for (    Object resource : entry.value.values())     ((Disposable)resource).dispose();
+  }
 }

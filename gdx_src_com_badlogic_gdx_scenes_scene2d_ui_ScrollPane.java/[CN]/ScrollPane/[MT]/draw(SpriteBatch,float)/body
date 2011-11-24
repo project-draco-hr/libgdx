@@ -4,7 +4,9 @@
   applyTransform(batch);
   calculateBoundsAndPositions(batch.getTransformMatrix());
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  style.background.draw(batch,0,0,width,height);
+  if (style.background != null) {
+    style.background.draw(batch,0,0,width,height);
+  }
   batch.flush();
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
