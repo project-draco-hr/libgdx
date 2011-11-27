@@ -1,5 +1,5 @@
 {
-  sprite.setColor(tintColor.getRedFloat(),tintColor.getGreenFloat(),tintColor.getBlueFloat(),tintColor.getAlphaFloat());
+  sprite.setColor(renderer.getColor(tintColor));
   if (tile) {
     drawTiled(x,y,width,height);
   }
