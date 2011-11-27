@@ -10,5 +10,6 @@
   canvas.addMouseMotionListener(this);
   canvas.addMouseWheelListener(this);
   canvas.addKeyListener(this);
+  canvas.setFocusTraversalKeysEnabled(false);
   this.canvas=canvas;
 }
