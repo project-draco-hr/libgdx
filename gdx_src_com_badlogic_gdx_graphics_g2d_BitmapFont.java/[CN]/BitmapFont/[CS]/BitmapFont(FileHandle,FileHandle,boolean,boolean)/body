@@ -1,3 +1,4 @@
 {
   this(new BitmapFontData(fontFile,flip),new TextureRegion(new Texture(imageFile,false)),integer);
+  ownsTexture=true;
 }
