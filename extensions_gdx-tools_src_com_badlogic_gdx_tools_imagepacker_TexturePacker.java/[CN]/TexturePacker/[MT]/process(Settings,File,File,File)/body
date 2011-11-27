@@ -44,7 +44,7 @@
   if (!skip) {
     if (outputDir.exists()) {
       String prefix=inputDir.getName();
-      for (      File file : outputDir.listFiles())       if (file.getName().startsWith(prefix))       file.delete();
+      for (      File file : outputDir.listFiles())       if (file.getName().startsWith(prefix) && file.getName().endsWith(".png"))       file.delete();
     }
     ArrayList<TextureFilter> filters=new ArrayList();
     filters.add(null);
