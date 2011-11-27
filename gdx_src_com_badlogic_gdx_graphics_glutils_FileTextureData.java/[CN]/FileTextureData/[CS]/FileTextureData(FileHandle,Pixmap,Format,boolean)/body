@@ -4,6 +4,7 @@
   this.format=format;
   this.useMipMaps=useMipMaps;
   if (pixmap != null) {
+    pixmap=ensurePot(pixmap);
     width=pixmap.getWidth();
     height=pixmap.getHeight();
     if (format == null)     this.format=pixmap.getFormat();
