@@ -1,0 +1,5 @@
+{
+  int id=nextRenderBufferId++;
+  renderBuffers.put(id,renderBuffer);
+  return id;
+}

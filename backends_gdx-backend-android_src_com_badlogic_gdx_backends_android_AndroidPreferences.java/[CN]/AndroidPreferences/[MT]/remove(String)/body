@@ -1,0 +1,5 @@
+{
+  Editor edit=sharedPrefs.edit();
+  edit.remove(key);
+  edit.commit();
+}

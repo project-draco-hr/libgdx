@@ -1,3 +1,10 @@
 {
-  throw new GdxRuntimeException("glGetShader not supported by GWT WebGL backend");
+  if (pname == GL20.GL_COMPILE_STATUS || pname == GL20.GL_DELETE_STATUS) {
+    boolean result=gl.getShaderParameterb(shaders.get(shader),ShaderParameter.parseShaderParameter(pname));
+    params.put(result ? GL20.GL_TRUE : GL20.GL_FALSE);
+  }
+ else {
+    int result=gl.getShaderParameteri(shaders.get(shader),ShaderParameter.parseShaderParameter(pname));
+    params.put(result);
+  }
 }

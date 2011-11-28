@@ -1,0 +1,5 @@
+{
+  int id=nextProgramId++;
+  programs.put(id,program);
+  return id;
+}
