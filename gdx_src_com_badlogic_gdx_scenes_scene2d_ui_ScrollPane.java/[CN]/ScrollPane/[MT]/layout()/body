@@ -1,0 +1,7 @@
+{
+  if (widget instanceof Layout) {
+    Layout layout=(Layout)widget;
+    layout.invalidate();
+    layout.validate();
+  }
+}
