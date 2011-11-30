@@ -6,7 +6,8 @@
     }
  else {
       Sensor accelerometer=manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
-      accelerometerAvailable=manager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_GAME);
+      accelerometerListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues);
+      accelerometerAvailable=manager.registerListener(accelerometerListener,accelerometer,SensorManager.SENSOR_DELAY_GAME);
     }
   }
  else   accelerometerAvailable=false;
@@ -16,7 +17,8 @@
     if (sensor != null) {
       compassAvailable=accelerometerAvailable;
       if (compassAvailable) {
-        compassAvailable=manager.registerListener(this,sensor,SensorManager.SENSOR_DELAY_GAME);
+        compassListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues);
+        compassAvailable=manager.registerListener(compassListener,sensor,SensorManager.SENSOR_DELAY_GAME);
       }
     }
  else {
