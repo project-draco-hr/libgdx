@@ -92,16 +92,16 @@ class AliasWriter implements Serializer {
     public BitmapFont read(    Json json,    Object jsonData,    Class type){
       if (jsonData instanceof String)       return getResource((String)jsonData,BitmapFont.class);
       String path=json.readValue("file",String.class,jsonData);
-      FileHandle file=skinFile.parent().child(path);
-      if (!file.exists())       file=Gdx.files.internal(path);
-      if (!file.exists())       throw new SerializationException("Font file not found: " + file);
-      TextureRegion region=null;
-      if (skin.hasResource(file.nameWithoutExtension(),TextureRegion.class))       region=skin.getResource(file.nameWithoutExtension(),TextureRegion.class);
+      FileHandle fontFile=skinFile.parent().child(path);
+      if (!fontFile.exists())       fontFile=Gdx.files.internal(path);
+      if (!fontFile.exists())       throw new SerializationException("Font file not found: " + fontFile);
+      String regionName=fontFile.nameWithoutExtension();
       try {
-        return new BitmapFont(file,region,false);
+        if (skin.hasResource(regionName,TextureRegion.class))         return new BitmapFont(fontFile,skin.getResource(regionName,TextureRegion.class),false);
+ else         return new BitmapFont(fontFile,fontFile.parent().child(regionName + ".png"),false);
       }
  catch (      RuntimeException ex) {
-        throw new SerializationException("Error loading bitmap font: " + file,ex);
+        throw new SerializationException("Error loading bitmap font: " + fontFile,ex);
       }
     }
   }

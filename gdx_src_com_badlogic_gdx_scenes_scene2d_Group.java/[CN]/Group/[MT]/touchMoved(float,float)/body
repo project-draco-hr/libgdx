@@ -1,9 +1,9 @@
 {
-  if (!touchable)   return false;
+  if (!touchable || !visible)   return false;
   int len=children.size() - 1;
   for (int i=len; i >= 0; i--) {
     Actor child=children.get(i);
-    if (!child.touchable)     continue;
+    if (!child.touchable || !child.touchable)     continue;
     toChildCoordinates(child,x,y,point);
     if (child.touchMoved(point.x,point.y))     return true;
   }
