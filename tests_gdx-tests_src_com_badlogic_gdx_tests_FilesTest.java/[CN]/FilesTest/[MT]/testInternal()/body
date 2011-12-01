@@ -35,8 +35,6 @@
   if (copy.length() != 68465)   fail();
   copy.delete();
   if (copy.exists())   fail();
-  InputStream input=handle.read();
-  byte[] bytes=new byte[70000];
-  if (input.read(bytes) != 68465)   fail();
-  input.close();
+  handle.read().close();
+  if (handle.readBytes().length != handle.length())   fail();
 }

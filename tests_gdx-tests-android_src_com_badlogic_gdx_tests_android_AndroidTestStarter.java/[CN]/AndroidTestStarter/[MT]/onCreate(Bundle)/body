@@ -6,4 +6,6 @@
   }
   testNames.add(MatrixTest.class.getSimpleName());
   setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,testNames.toArray(new String[0])));
+  prefs=getSharedPreferences("libgdx-tests",Context.MODE_PRIVATE);
+  getListView().setSelectionFromTop(prefs.getInt("index",0),prefs.getInt("top",0));
 }
