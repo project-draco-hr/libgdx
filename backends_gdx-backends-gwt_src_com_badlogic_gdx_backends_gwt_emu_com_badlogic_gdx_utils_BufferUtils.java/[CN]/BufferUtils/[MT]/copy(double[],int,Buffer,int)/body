@@ -1,0 +1,10 @@
+{
+  DoubleBuffer buffer=null;
+  if (dst instanceof ByteBuffer)   buffer=((ByteBuffer)dst).asDoubleBuffer();
+ else   if (dst instanceof DoubleBuffer)   buffer=(DoubleBuffer)dst;
+  if (buffer == null)   throw new GdxRuntimeException("dst must be a ByteBuffer or DoubleBuffer");
+  int oldPosition=buffer.position();
+  buffer.put(src,srcOffset,numElements);
+  buffer.position(oldPosition);
+  buffer.limit(oldPosition + numElements);
+}

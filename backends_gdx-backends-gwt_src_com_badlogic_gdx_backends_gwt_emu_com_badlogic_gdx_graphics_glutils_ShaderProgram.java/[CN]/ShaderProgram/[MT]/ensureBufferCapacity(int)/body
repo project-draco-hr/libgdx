@@ -1,0 +1,7 @@
+{
+  if (buffer == null || buffer.capacity() != numBytes) {
+    buffer=BufferUtils.newByteBuffer(numBytes);
+    floatBuffer=buffer.asFloatBuffer();
+    intBuffer=buffer.asIntBuffer();
+  }
+}

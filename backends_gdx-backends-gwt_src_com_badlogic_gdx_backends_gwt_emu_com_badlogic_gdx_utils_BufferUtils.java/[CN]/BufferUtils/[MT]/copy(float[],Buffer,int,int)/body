@@ -1,0 +1,17 @@
+{
+  FloatBuffer floatBuffer=null;
+  if (dst instanceof ByteBuffer) {
+    floatBuffer=((ByteBuffer)dst).asFloatBuffer();
+  }
+ else   if (dst instanceof FloatBuffer) {
+    floatBuffer=(FloatBuffer)dst;
+  }
+ else {
+    throw new GdxRuntimeException("dst must be a ByteBuffer or FloatBuffer");
+  }
+  dst.position(0);
+  floatBuffer.put(src,offset,numFloats);
+  dst.position(0);
+  if (dst instanceof ByteBuffer)   dst.limit(numFloats << 2);
+ else   dst.limit(numFloats);
+}

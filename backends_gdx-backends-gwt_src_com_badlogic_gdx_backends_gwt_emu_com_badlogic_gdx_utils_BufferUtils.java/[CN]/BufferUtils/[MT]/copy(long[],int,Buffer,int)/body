@@ -1,0 +1,10 @@
+{
+  LongBuffer buffer=null;
+  if (dst instanceof ByteBuffer)   buffer=((ByteBuffer)dst).asLongBuffer();
+ else   if (dst instanceof LongBuffer)   buffer=(LongBuffer)dst;
+  if (buffer == null)   throw new GdxRuntimeException("dst must be a ByteBuffer or LongBuffer");
+  int oldPosition=buffer.position();
+  buffer.put(src,srcOffset,numElements);
+  buffer.position(oldPosition);
+  buffer.limit(oldPosition + numElements);
+}

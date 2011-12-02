@@ -1,0 +1,10 @@
+{
+  FloatBuffer buffer=null;
+  if (dst instanceof ByteBuffer)   buffer=((ByteBuffer)dst).asFloatBuffer();
+ else   if (dst instanceof FloatBuffer)   buffer=(FloatBuffer)dst;
+  if (buffer == null)   throw new GdxRuntimeException("dst must be a ByteBuffer or FloatBuffer");
+  int oldPosition=buffer.position();
+  buffer.put(src,srcOffset,numElements);
+  buffer.position(oldPosition);
+  buffer.limit(oldPosition + numElements);
+}

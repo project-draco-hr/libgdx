@@ -1,0 +1,6 @@
+{
+  --size;
+  T item=items[size];
+  items[size]=null;
+  return item;
+}

@@ -1,0 +1,10 @@
+{
+  ShortBuffer buffer=null;
+  if (dst instanceof ByteBuffer)   buffer=((ByteBuffer)dst).asShortBuffer();
+ else   if (dst instanceof ShortBuffer)   buffer=(ShortBuffer)dst;
+  if (buffer == null)   throw new GdxRuntimeException("dst must be a ByteBuffer or ShortBuffer");
+  int oldPosition=buffer.position();
+  buffer.put(src,srcOffset,numElements);
+  buffer.position(oldPosition);
+  buffer.limit(oldPosition + numElements);
+}

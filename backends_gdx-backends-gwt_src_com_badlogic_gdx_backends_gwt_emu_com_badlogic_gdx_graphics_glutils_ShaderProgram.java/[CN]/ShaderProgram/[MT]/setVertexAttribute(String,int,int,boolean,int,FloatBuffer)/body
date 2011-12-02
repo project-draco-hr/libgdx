@@ -1,0 +1,6 @@
+{
+  GL20 gl=Gdx.graphics.getGL20();
+  checkManaged();
+  int location=fetchAttributeLocation(name);
+  gl.glVertexAttribPointer(location,size,type,normalize,stride,buffer);
+}

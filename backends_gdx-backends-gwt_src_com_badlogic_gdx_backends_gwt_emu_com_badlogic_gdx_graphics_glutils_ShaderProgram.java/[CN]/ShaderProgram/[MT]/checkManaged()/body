@@ -1,0 +1,6 @@
+{
+  if (invalidated) {
+    compileShaders(vertexShaderSource,fragmentShaderSource);
+    invalidated=false;
+  }
+}

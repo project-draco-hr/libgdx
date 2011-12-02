@@ -1,0 +1,8 @@
+{
+  if (!(dst instanceof ByteBuffer))   throw new GdxRuntimeException("dst must be a ByteBuffer");
+  ByteBuffer byteBuffer=(ByteBuffer)dst;
+  int oldPosition=byteBuffer.position();
+  byteBuffer.put(src,srcOffset,numElements);
+  byteBuffer.position(oldPosition);
+  byteBuffer.limit(oldPosition + numElements);
+}

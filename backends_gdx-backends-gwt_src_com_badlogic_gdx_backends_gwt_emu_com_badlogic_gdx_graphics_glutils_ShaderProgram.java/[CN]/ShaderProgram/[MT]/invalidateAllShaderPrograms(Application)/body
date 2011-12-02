@@ -1,0 +1,9 @@
+{
+  if (Gdx.graphics.getGL20() == null)   return;
+  List<ShaderProgram> shaderList=shaders.get(app);
+  if (shaderList == null)   return;
+  for (int i=0; i < shaderList.size(); i++) {
+    shaderList.get(i).invalidated=true;
+    shaderList.get(i).checkManaged();
+  }
+}
