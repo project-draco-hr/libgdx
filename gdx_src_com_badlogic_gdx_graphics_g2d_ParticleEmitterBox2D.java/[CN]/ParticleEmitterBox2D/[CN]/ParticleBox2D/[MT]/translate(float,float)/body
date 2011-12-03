@@ -1,7 +1,7 @@
 {
-  if (velocityX + velocityY == 0)   return;
-  float x=getX() + (getTexture().getWidth() >> 1);
-  float y=getY() + (getTexture().getHeight() >> 1);
+  if (velocityX == 0 && velocityY == 0)   return;
+  final float x=getX() + getWidth() / 2f;
+  final float y=getY() + getHeight() / 2f;
   fraction=1f;
   start.set(x,y);
   end.set(x + velocityX,y + velocityY);
