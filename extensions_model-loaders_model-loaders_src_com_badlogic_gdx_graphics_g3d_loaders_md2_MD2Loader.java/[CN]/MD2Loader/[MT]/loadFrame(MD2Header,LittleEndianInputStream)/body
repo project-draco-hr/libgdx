@@ -1,6 +1,7 @@
 {
   MD2Frame frame=new MD2Frame();
   frame.vertices=new float[header.numVertices * 3];
+  frame.normalIndices=new int[header.numVertices];
   float scaleX=in.readFloat(), scaleY=in.readFloat(), scaleZ=in.readFloat();
   float transX=in.readFloat(), transY=in.readFloat(), transZ=in.readFloat();
   in.read(charBuffer);
@@ -18,7 +19,7 @@
     frame.vertices[vertIdx++]=y;
     frame.vertices[vertIdx++]=z;
     frame.vertices[vertIdx++]=x;
-    in.read();
+    frame.normalIndices[i]=in.read();
   }
   return frame;
 }
