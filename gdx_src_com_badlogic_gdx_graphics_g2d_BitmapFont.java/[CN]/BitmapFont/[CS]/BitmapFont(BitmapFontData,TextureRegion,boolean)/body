@@ -4,5 +4,5 @@
   this.integer=integer;
   this.data=data;
   load(data);
-  ownsTexture=true;
+  ownsTexture=region != null;
 }
