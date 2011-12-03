@@ -1,4 +1,5 @@
 {
+  if (stage == null)   return;
   TextField textField=findNextTextField(stage.getActors(),null,up);
   if (textField != null)   stage.setKeyboardFocus(textField);
  else   Gdx.input.setOnscreenKeyboardVisible(false);

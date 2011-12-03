@@ -1,0 +1,24 @@
+{
+  stage=new Stage(0,0,false);
+  Gdx.input.setInputProcessor(stage);
+  Table mytable=new Table();
+  mytable.debug();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  FlickScrollPane pane=new FlickScrollPane(mytable);
+  pane.setScrollingDisabled(true,false);
+  if (false) {
+    pane.pack();
+    pane.height=Gdx.graphics.getHeight();
+  }
+ else {
+    pane.width=300;
+    pane.height=Gdx.graphics.getHeight();
+  }
+  stage.addActor(pane);
+}
