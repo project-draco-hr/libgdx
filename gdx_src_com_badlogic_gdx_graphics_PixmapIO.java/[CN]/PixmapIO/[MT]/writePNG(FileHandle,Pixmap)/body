@@ -1,0 +1,8 @@
+{
+  try {
+    file.writeBytes(PNG.write(pixmap),false);
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error writing PNG: " + file,ex);
+  }
+}

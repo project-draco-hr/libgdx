@@ -11,7 +11,7 @@
     }
     FileHandle handle=resolve(fileName);
     if (!fileName.contains(".etc1")) {
-      if (fileName.contains(".cim"))       pixmap=PixmapIO.read(handle);
+      if (fileName.contains(".cim"))       pixmap=PixmapIO.readCIM(handle);
  else       pixmap=new Pixmap(handle);
       data=new FileTextureData(handle,pixmap,format,genMipMaps);
     }

@@ -1,0 +1,22 @@
+{
+  int width=pixmap.getWidth();
+  int height=pixmap.getHeight();
+  int dest=0;
+  byte[] raw=new byte[4 * width * height + height];
+  for (int y=0; y < height; y++) {
+    raw[dest++]=0;
+    for (int x=0; x < width; x++) {
+      int pixel=pixmap.getPixel(x,y);
+      int mask=pixel & 0xFFFFFFFF;
+      int rr=mask >> 24 & 0xff;
+      int gg=mask >> 16 & 0xff;
+      int bb=mask >> 8 & 0xff;
+      int aa=mask & 0xff;
+      raw[dest++]=(byte)rr;
+      raw[dest++]=(byte)gg;
+      raw[dest++]=(byte)bb;
+      raw[dest++]=(byte)aa;
+    }
+  }
+  return toChunk("IDAT",toZLIB(raw));
+}

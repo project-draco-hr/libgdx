@@ -1,0 +1,8 @@
+{
+  zlib.writeByte((byte)(last ? 1 : 0));
+  zlib.writeByte((byte)(len & 0xFF));
+  zlib.writeByte((byte)((len & 0xFF00) >> 8));
+  zlib.writeByte((byte)(~len & 0xFF));
+  zlib.writeByte((byte)((~len & 0xFF00) >> 8));
+  zlib.write(raw,off,len);
+}

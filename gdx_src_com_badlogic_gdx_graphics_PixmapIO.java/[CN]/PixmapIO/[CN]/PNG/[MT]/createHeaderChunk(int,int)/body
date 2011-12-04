@@ -1,0 +1,12 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream(13);
+  DataOutputStream chunk=new DataOutputStream(baos);
+  chunk.writeInt(width);
+  chunk.writeInt(height);
+  chunk.writeByte(8);
+  chunk.writeByte(6);
+  chunk.writeByte(0);
+  chunk.writeByte(0);
+  chunk.writeByte(0);
+  return toChunk("IHDR",baos.toByteArray());
+}

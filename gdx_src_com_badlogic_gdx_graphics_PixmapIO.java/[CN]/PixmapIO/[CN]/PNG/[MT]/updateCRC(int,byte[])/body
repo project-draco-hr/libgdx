@@ -1,0 +1,5 @@
+{
+  if (crcTable == null)   createCRCTable();
+  for (  byte element : raw)   crc=crcTable[(crc ^ element) & 0xFF] ^ crc >>> 8;
+  return crc;
+}

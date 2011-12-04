@@ -1,0 +1,15 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream(raw.length + 6 + raw.length / ZLIB_BLOCK_SIZE * 5);
+  DataOutputStream zlib=new DataOutputStream(baos);
+  byte tmp=(byte)8;
+  zlib.writeByte(tmp);
+  zlib.writeByte((31 - (tmp << 8) % 31) % 31);
+  int pos=0;
+  while (raw.length - pos > ZLIB_BLOCK_SIZE) {
+    writeUncompressedDeflateBlock(zlib,false,raw,pos,(char)ZLIB_BLOCK_SIZE);
+    pos+=ZLIB_BLOCK_SIZE;
+  }
+  writeUncompressedDeflateBlock(zlib,true,raw,pos,(char)(raw.length - pos));
+  zlib.writeInt(calcADLER32(raw));
+  return baos.toByteArray();
+}

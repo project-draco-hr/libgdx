@@ -1,0 +1,16 @@
+{
+  ByteArrayOutputStream baos=new ByteArrayOutputStream(raw.length + 12);
+  DataOutputStream chunk=new DataOutputStream(baos);
+  chunk.writeInt(raw.length);
+  byte[] bid=new byte[4];
+  for (int i=0; i < 4; i++) {
+    bid[i]=(byte)id.charAt(i);
+  }
+  chunk.write(bid);
+  chunk.write(raw);
+  int crc=0xFFFFFFFF;
+  crc=updateCRC(crc,bid);
+  crc=updateCRC(crc,raw);
+  chunk.writeInt(~crc);
+  return baos.toByteArray();
+}

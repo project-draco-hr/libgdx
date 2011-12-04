@@ -1,0 +1,12 @@
+{
+  byte[] signature=new byte[]{(byte)137,(byte)80,(byte)78,(byte)71,(byte)13,(byte)10,(byte)26,(byte)10};
+  byte[] header=PNG.createHeaderChunk(pixmap.getWidth(),pixmap.getHeight());
+  byte[] data=PNG.createDataChunk(pixmap);
+  byte[] trailer=PNG.createTrailerChunk();
+  ByteArrayOutputStream png=new ByteArrayOutputStream(signature.length + header.length + data.length+ trailer.length);
+  png.write(signature);
+  png.write(header);
+  png.write(data);
+  png.write(trailer);
+  return png.toByteArray();
+}
