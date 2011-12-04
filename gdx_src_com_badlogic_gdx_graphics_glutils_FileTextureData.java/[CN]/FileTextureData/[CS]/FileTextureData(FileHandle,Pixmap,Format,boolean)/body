@@ -4,9 +4,9 @@
   this.format=format;
   this.useMipMaps=useMipMaps;
   if (pixmap != null) {
-    pixmap=ensurePot(pixmap);
     width=pixmap.getWidth();
     height=pixmap.getHeight();
+    pixmap=ensurePot(pixmap);
     if (format == null)     this.format=pixmap.getFormat();
   }
 }
