@@ -1,4 +1,5 @@
 {
+  actor.remove();
   int index=children.indexOf(actorAfter);
   if (index == children.size())   children.add(actor);
  else   children.add(index + 1,actor);
