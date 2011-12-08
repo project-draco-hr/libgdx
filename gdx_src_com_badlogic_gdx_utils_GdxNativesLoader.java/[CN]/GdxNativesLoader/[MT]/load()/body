@@ -11,6 +11,13 @@
     }
  else     if (isMac) {
       nativesLoaded=loadLibrary("libgdx.dylib","libgdx.dylib");
+      if (!nativesLoaded) {
+        File file=new File(System.getProperty("java.library.path"),"libgdx.dylib");
+        if (file.exists()) {
+          System.load(file.getAbsolutePath());
+          nativesLoaded=true;
+        }
+      }
     }
  else     if (isLinux) {
       nativesLoaded=loadLibrary("libgdx.so","libgdx-64.so");
