@@ -3,5 +3,6 @@
   setRegion(region);
   this.scaling=scaling;
   this.align=align;
-  pack();
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

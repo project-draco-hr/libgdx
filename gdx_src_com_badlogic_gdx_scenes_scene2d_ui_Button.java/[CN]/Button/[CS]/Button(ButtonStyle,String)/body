@@ -1,13 +1,7 @@
 {
   super(null,null,name);
-  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  initialize();
   setStyle(style);
-  super.setClickListener(new ClickListener(){
-    public void click(    Actor actor,    float x,    float y){
-      boolean newChecked=!isChecked;
-      setChecked(newChecked);
-      if (newChecked == isChecked && listener != null)       listener.click(actor,x,y);
-    }
-  }
-);
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

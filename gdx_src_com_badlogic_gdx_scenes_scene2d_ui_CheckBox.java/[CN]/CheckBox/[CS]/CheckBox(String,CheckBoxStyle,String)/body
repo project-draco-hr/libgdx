@@ -3,5 +3,6 @@
   clear();
   add(image=new Image(style.checkboxOff));
   add(getLabel());
-  pack();
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

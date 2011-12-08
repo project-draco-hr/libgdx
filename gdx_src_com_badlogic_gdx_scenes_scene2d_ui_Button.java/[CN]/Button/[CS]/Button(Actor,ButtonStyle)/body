@@ -1,5 +1,7 @@
 {
-  this(style,null);
+  initialize();
   add(child);
-  pack();
+  setStyle(style);
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

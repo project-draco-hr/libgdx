@@ -3,5 +3,6 @@
   setPatch(patch);
   this.scaling=scaling;
   this.align=align;
-  pack();
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

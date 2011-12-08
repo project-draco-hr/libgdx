@@ -1,4 +1,6 @@
 {
-  this(style,null);
-  pack();
+  initialize();
+  setStyle(style);
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

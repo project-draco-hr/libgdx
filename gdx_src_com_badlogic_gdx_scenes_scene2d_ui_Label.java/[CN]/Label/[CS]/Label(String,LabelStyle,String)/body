@@ -3,5 +3,6 @@
   if (text == null)   text="";
   this.text=text;
   setStyle(style);
-  touchable=false;
+  width=getPrefWidth();
+  height=getPrefHeight();
 }

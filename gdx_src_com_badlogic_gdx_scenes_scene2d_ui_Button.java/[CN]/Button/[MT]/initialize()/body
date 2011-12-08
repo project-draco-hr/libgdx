@@ -1,0 +1,10 @@
+{
+  super.setClickListener(new ClickListener(){
+    public void click(    Actor actor,    float x,    float y){
+      boolean newChecked=!isChecked;
+      setChecked(newChecked);
+      if (newChecked == isChecked && listener != null)       listener.click(actor,x,y);
+    }
+  }
+);
+}
