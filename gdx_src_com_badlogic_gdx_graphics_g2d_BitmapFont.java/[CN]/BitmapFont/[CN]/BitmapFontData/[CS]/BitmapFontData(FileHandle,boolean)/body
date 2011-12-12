@@ -52,7 +52,7 @@
  else       glyph.yoffset=-(glyph.height + Integer.parseInt(tokens.nextToken()));
       tokens.nextToken();
       glyph.xadvance=Integer.parseInt(tokens.nextToken());
-      descent=Math.min(baseLine + glyph.yoffset,descent);
+      if (glyph.width > 0 && glyph.height > 0)       descent=Math.min(baseLine + glyph.yoffset,descent);
     }
     while (true) {
       line=reader.readLine();

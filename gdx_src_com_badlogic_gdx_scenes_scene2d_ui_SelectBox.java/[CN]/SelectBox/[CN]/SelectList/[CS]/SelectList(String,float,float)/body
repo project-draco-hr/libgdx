@@ -1,10 +1,11 @@
 {
   super(name);
   this.x=x;
-  this.y=y;
-  this.width=SelectBox.this.width;
-  this.height=100;
+  width=SelectBox.this.width;
+  height=100;
   this.oldScreenCoords.set(screenCoords);
-  if (stage != null)   stage.setTouchFocus(this,0);
   layout();
+  Stage stage=SelectBox.this.getStage();
+  if (y - height < 0 && y + SelectBox.this.height + height < SelectBox.this.getStage().getCamera().viewportHeight)   this.y=y + SelectBox.this.height;
+ else   this.y=y - height;
 }
