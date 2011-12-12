@@ -1,0 +1,9 @@
+{
+  this.x+=xAmount;
+  if (dirty)   return;
+  float[] vertices=this.vertices;
+  vertices[X1]+=xAmount;
+  vertices[X2]+=xAmount;
+  vertices[X3]+=xAmount;
+  vertices[X4]+=xAmount;
+}

@@ -1,0 +1,9 @@
+{
+  y+=yAmount;
+  if (dirty)   return;
+  float[] vertices=this.vertices;
+  vertices[Y1]+=yAmount;
+  vertices[Y2]+=yAmount;
+  vertices[Y3]+=yAmount;
+  vertices[Y4]+=yAmount;
+}

@@ -1,0 +1,5 @@
+{
+  if (Gdx.graphics.isGL20Available())   renderer=new ImmediateModeRenderer20(maxVertices,false,true,0);
+ else   renderer=new ImmediateModeRenderer10(maxVertices);
+  projView.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+}
