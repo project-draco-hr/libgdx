@@ -1,5 +1,5 @@
 {
   Class type=assetTypes.get(fileName);
-  if (type == null)   throw new GdxRuntimeException("Asset not loaded");
+  if (type == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
   assets.get(type).get(fileName).setRefCount(refCount);
 }

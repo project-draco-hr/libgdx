@@ -1,5 +1,4 @@
 {
-  log.setEnabled(false);
   setLoader(BitmapFont.class,new BitmapFontLoader(resolver));
   setLoader(Music.class,new MusicLoader(resolver));
   setLoader(Pixmap.class,new PixmapLoader(resolver));

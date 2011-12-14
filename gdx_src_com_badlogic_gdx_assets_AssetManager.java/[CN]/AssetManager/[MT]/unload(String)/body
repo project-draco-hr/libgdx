@@ -8,17 +8,20 @@
   }
   if (foundIndex != -1) {
     loadQueue.removeIndex(foundIndex);
+    log.debug("Unload (from queue): " + fileName);
     return;
   }
   if (tasks.size() > 0) {
     AssetLoadingTask currAsset=tasks.firstElement();
     if (currAsset.assetDesc.fileName.equals(fileName)) {
       currAsset.cancel=true;
+      log.debug("Unload (from tasks): " + fileName);
       return;
     }
   }
   Class type=assetTypes.get(fileName);
-  if (type == null)   throw new GdxRuntimeException("Asset '" + fileName + "' not loaded");
+  if (type == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
+  log.debug("Unload: " + fileName);
   RefCountedContainer assetRef=assets.get(type).get(fileName);
   assetRef.decRefCount();
   if (assetRef.getRefCount() <= 0) {

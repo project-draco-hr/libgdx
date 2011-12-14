@@ -1,6 +1,7 @@
 {
   AssetDescriptor assetDesc=loadQueue.removeIndex(0);
   if (isLoaded(assetDesc.fileName)) {
+    log.debug("Already loaded: " + assetDesc);
     Class type=assetTypes.get(assetDesc.fileName);
     RefCountedContainer assetRef=assets.get(type).get(assetDesc.fileName);
     assetRef.incRefCount();
@@ -8,6 +9,7 @@
     loaded++;
   }
  else {
+    log.info("Loading: " + assetDesc);
     addTask(assetDesc);
   }
 }

@@ -1,6 +1,6 @@
 {
   AssetLoader loader=loaders.get(type);
-  if (loader == null)   throw new GdxRuntimeException("No loader for type '" + type.getSimpleName() + "'");
+  if (loader == null)   throw new GdxRuntimeException("No loader for type: " + type.getSimpleName());
   if (loadQueue.size == 0) {
     loaded=0;
     toLoad=0;
@@ -18,5 +18,5 @@
   toLoad++;
   AssetDescriptor assetDesc=new AssetDescriptor(fileName,type,parameter);
   loadQueue.add(assetDesc);
-  log.log("Added asset '" + assetDesc + "' to preload queue");
+  log.debug("Queued: " + assetDesc);
 }

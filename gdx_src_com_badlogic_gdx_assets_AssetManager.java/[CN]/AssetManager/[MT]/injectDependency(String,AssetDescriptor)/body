@@ -6,13 +6,14 @@
   }
   dependencies.add(dependendAssetDesc.fileName);
   if (isLoaded(dependendAssetDesc.fileName)) {
+    log.debug("Dependency already loaded: " + dependendAssetDesc);
     Class type=assetTypes.get(dependendAssetDesc.fileName);
     RefCountedContainer assetRef=assets.get(type).get(dependendAssetDesc.fileName);
     assetRef.incRefCount();
     incrementRefCountedDependencies(dependendAssetDesc.fileName);
   }
  else {
+    log.info("Loading dependency: " + dependendAssetDesc);
     addTask(dependendAssetDesc);
   }
-  log.log("Injected dependency '" + dependendAssetDesc + "' for asset '"+ parentAssetFilename+ "'");
 }
