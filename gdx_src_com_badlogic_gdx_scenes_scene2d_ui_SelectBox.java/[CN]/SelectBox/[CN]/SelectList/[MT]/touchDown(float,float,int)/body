@@ -1,4 +1,5 @@
 {
+  ownsTouch=true;
   if (pointer != 0 || hit(x,y) == null)   return false;
   selected=(int)((height - y) / itemHeight);
   selected=Math.max(0,selected);

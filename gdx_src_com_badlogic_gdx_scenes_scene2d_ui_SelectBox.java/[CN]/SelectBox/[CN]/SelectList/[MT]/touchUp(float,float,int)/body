@@ -1,3 +1,4 @@
 {
-  if (stage != null)   stage.removeActor(this);
+  if (stage != null && ownsTouch)   stage.removeActor(this);
+  ownsTouch=false;
 }
