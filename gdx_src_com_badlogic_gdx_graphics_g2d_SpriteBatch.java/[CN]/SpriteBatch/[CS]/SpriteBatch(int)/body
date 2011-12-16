@@ -1,20 +1,3 @@
 {
-  this.buffers=new Mesh[1];
-  this.buffers[0]=new Mesh(VertexDataType.VertexArray,false,size * 4,size * 6,new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.ColorPacked,4,ShaderProgram.COLOR_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
-  projectionMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  vertices=new float[size * Sprite.SPRITE_SIZE];
-  int len=size * 6;
-  short[] indices=new short[len];
-  short j=0;
-  for (int i=0; i < len; i+=6, j+=4) {
-    indices[i + 0]=(short)(j + 0);
-    indices[i + 1]=(short)(j + 1);
-    indices[i + 2]=(short)(j + 2);
-    indices[i + 3]=(short)(j + 2);
-    indices[i + 4]=(short)(j + 3);
-    indices[i + 5]=(short)(j + 0);
-  }
-  buffers[0].setIndices(indices);
-  mesh=buffers[0];
-  if (Gdx.graphics.isGL20Available())   createShader();
+  this(size,null);
 }

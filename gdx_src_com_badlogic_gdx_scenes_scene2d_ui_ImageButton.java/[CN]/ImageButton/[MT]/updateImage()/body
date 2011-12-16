@@ -1,0 +1,8 @@
+{
+  if (isPressed && style.regionDown != null)   image.setRegion(style.regionDown);
+ else   if (isPressed && style.patchDown != null)   image.setPatch(style.patchDown);
+ else   if (isChecked && style.regionChecked != null)   image.setRegion(style.regionChecked);
+ else   if (isChecked && style.patchChecked != null)   image.setPatch(style.patchChecked);
+ else   if (style.regionUp != null)   image.setRegion(style.regionUp);
+ else   if (style.patchUp != null)   image.setPatch(style.patchUp);
+}

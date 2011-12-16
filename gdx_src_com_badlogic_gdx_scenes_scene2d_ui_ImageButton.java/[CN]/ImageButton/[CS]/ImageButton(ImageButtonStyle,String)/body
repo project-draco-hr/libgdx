@@ -1,9 +1,9 @@
 {
   super(style,name);
-  this.style=style;
   image=new Image();
   image.setScaling(Scaling.fit);
   add(image);
+  setStyle(style);
   width=getPrefWidth();
   height=getPrefHeight();
 }
