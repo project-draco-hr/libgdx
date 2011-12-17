@@ -1,0 +1,17 @@
+{
+  if (currType != ShapeType.Triangle)   throw new GdxRuntimeException("Must call begin(ShapeType.Triangle)");
+  checkDirty();
+  checkFlush(6);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x1,y1,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x2,y2,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x2,y2,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x3,y3,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x3,y3,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x1,y1,0);
+}
