@@ -1,0 +1,9 @@
+{
+  for (int i=0, n=pads.size(); i < n; i++) {
+    Pad pad=pads.get(i);
+    if (pad.isInside(x,y)) {
+      return pad;
+    }
+  }
+  return null;
+}

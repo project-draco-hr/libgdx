@@ -1,0 +1,15 @@
+{
+  if (rendering)   batch.flush();
+  final Rect rect=clipRectTemp;
+  if (clipStack.getClipRect(rect)) {
+    Gdx.gl.glScissor(rect.getX(),Gdx.graphics.getHeight() - rect.getBottom(),rect.getWidth(),rect.getHeight());
+    if (!hasScissor) {
+      Gdx.gl.glEnable(GL10.GL_SCISSOR_TEST);
+      hasScissor=true;
+    }
+  }
+ else   if (hasScissor) {
+    Gdx.gl.glDisable(GL10.GL_SCISSOR_TEST);
+    hasScissor=false;
+  }
+}

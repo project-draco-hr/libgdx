@@ -1,0 +1,6 @@
+{
+  float xM=Math.abs(x1 - x0) * 0.5f;
+  computeBezierCurve(x0,x0 + xM * dir0,x1 + xM * dir1,x1,bezierPoints,0,NUM_BEZIER_POINTS);
+  computeBezierCurve(y0,y0,y1,y1,bezierPoints,1,NUM_BEZIER_POINTS);
+  lineRenderer.drawLine(bezierPoints,NUM_BEZIER_POINTS,2.0f,color,false);
+}

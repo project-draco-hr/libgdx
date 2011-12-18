@@ -1,0 +1,8 @@
+{
+  if (!mouseDown)   lastPressConsumed=false;
+  mouseDown=true;
+  if (ignoreMouse)   return false;
+  boolean handled=gui.handleMouse(x,y,button,true);
+  if (handled)   lastPressConsumed=true;
+  return handled;
+}

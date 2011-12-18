@@ -1,0 +1,11 @@
+{
+  this.condition=condition;
+  String colorStr=params.get("color");
+  if (colorStr == null)   throw new IllegalArgumentException("Color must be defined.");
+  color=Color.parserColor(colorStr);
+  if (color == null)   throw new IllegalArgumentException("Unknown color name: " + colorStr);
+  String value=params.get("offsetX");
+  offsetX=value == null ? 0 : Integer.parseInt(value);
+  value=params.get("offsetY");
+  offsetY=value == null ? 0 : Integer.parseInt(value);
+}

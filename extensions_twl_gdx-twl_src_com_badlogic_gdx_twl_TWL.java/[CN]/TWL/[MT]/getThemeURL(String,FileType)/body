@@ -1,0 +1,23 @@
+{
+  File file=new File(themeFile);
+  final File themeRoot=file.getParentFile();
+  return new URL("gdx-twl","local",80,file.getName(),new URLStreamHandler(){
+    protected URLConnection openConnection(    URL url) throws IOException {
+      final String path=new File(themeRoot,url.getPath()).getPath();
+      final FileHandle fileHandle=Gdx.files.getFileHandle(path,fileType);
+      return new URLConnection(url){
+        public void connect(){
+        }
+        public Object getContent(){
+          return fileHandle;
+        }
+        public InputStream getInputStream(){
+          if (!path.endsWith(".xml"))           return null;
+          return fileHandle.read();
+        }
+      }
+;
+    }
+  }
+);
+}

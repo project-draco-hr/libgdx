@@ -1,0 +1,10 @@
+{
+  this.renderer=renderer;
+  width=Math.abs(srcWidth);
+  height=Math.abs(srcHeight);
+  this.tintColor=color == null ? Color.WHITE : color;
+  this.tile=tile;
+  sprite=new Sprite(texture,srcX,srcY,srcWidth,srcHeight);
+  sprite.flip(false,true);
+  sprite.setRotation(rotation);
+}

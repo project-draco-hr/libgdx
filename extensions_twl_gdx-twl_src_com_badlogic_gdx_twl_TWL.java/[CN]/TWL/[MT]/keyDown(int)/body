@@ -1,0 +1,4 @@
+{
+  keycode=getTwlKeyCode(keycode);
+  return gui.handleKey(keycode,(char)0,true);
+}

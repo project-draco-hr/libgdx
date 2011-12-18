@@ -1,0 +1,11 @@
+{
+  String urlString=url.toExternalForm();
+  BitmapFont bitmapFont=fonts.get(urlString);
+  if (bitmapFont == null) {
+    FileHandle fontFile=(FileHandle)url.getContent();
+    FileHandle textureFile=(FileHandle)new URL(url,url.getPath().replace(".fnt",".png")).getContent();
+    bitmapFont=new BitmapFont(fontFile,textureFile,true);
+    fonts.put(urlString,bitmapFont);
+  }
+  return bitmapFont;
+}

@@ -1,0 +1,8 @@
+{
+  if (mouseDown && !lastPressConsumed) {
+    ignoreMouse=true;
+    gui.clearMouseState();
+    return false;
+  }
+  return gui.handleMouse(x,y,-1,true);
+}

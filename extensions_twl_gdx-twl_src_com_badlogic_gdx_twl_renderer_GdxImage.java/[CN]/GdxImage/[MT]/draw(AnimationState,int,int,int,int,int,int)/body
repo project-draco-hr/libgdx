@@ -1,0 +1,5 @@
+{
+  sprite.setColor(renderer.getColor(tintColor));
+  if (repeatCountX * this.width != width || repeatCountY * this.height != height)   drawRepeatSlow(x,y,width,height,repeatCountX,repeatCountY);
+ else   drawRepeat(x,y,repeatCountX,repeatCountY);
+}
