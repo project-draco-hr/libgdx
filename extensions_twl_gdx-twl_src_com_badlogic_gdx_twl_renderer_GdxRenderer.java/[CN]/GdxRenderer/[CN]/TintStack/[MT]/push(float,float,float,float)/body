@@ -1,8 +1,0 @@
-{
-  TintStack next=new TintStack(this);
-  next.r=this.r * r;
-  next.g=this.g * g;
-  next.b=this.b * b;
-  next.a=this.a * a;
-  return next;
-}

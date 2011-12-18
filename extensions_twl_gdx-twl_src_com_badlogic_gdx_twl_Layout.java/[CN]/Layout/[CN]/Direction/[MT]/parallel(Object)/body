@@ -1,6 +1,0 @@
-{
-  DialogLayout.Group dialogGroup=createParallelGroup();
-  if (horizontal)   setHorizontalGroup(dialogGroup);
- else   setVerticalGroup(dialogGroup);
-  return new Group(null,dialogGroup).add(widgets);
-}

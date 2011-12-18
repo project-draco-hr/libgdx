@@ -1,6 +1,0 @@
-{
-  GdxFont.FontState fontState=evalFontState(as);
-  setColor(renderer.getColor(fontState.color));
-  setPosition(x + fontState.offsetX,y + fontState.offsetY);
-  draw(renderer.batch);
-}

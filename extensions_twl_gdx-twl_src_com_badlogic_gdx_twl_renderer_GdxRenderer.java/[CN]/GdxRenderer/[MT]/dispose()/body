@@ -1,7 +1,0 @@
-{
-  if (cacheContext != null) {
-    cacheContext.destroy();
-    cacheContext=null;
-  }
-  batch.dispose();
-}
