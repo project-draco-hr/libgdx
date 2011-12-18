@@ -1,8 +1,0 @@
-{
-  if ((propertyName != null) && (listener != null)) {
-    PropertyChangeSupport listeners=children.get(propertyName);
-    if (listeners != null) {
-      listeners.removePropertyChangeListener(listener);
-    }
-  }
-}

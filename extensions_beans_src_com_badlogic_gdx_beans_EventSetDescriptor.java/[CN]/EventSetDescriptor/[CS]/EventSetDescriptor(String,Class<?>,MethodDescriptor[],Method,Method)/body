@@ -1,9 +1,0 @@
-{
-  this(eventSetName,listenerType,null,addListenerMethod,removeListenerMethod,null);
-  if (listenerMethodDescriptors != null) {
-    this.listenerMethodDescriptors=new ArrayList<MethodDescriptor>();
-    for (    MethodDescriptor element : listenerMethodDescriptors) {
-      this.listenerMethodDescriptors.add(element);
-    }
-  }
-}

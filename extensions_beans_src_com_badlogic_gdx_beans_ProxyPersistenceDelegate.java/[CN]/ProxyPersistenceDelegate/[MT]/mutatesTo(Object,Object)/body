@@ -1,6 +1,0 @@
-{
-  if ((oldInstance instanceof Proxy) && (newInstance instanceof Proxy)) {
-    return super.mutatesTo(oldInstance,newInstance);
-  }
-  return false;
-}

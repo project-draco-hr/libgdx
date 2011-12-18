@@ -1,8 +1,0 @@
-{
-  if (listener == null) {
-    throw new NullPointerException();
-  }
-synchronized (bcsListeners) {
-    bcsListeners.remove(listener);
-  }
-}

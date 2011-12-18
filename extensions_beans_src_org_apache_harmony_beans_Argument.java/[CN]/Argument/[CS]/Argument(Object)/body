@@ -1,7 +1,0 @@
-{
-  this.value=value;
-  if (this.value != null) {
-    this.type=value.getClass();
-    this.interfaces=this.type.getInterfaces();
-  }
-}

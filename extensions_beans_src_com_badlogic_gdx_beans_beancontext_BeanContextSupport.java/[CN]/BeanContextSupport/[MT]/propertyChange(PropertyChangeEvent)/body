@@ -1,5 +1,0 @@
-{
-  if (contains(event.getSource()) && "beanContext".equals(event.getPropertyName()) && event.getOldValue() == getBeanContextPeer()) {
-    remove(event.getSource(),false);
-  }
-}

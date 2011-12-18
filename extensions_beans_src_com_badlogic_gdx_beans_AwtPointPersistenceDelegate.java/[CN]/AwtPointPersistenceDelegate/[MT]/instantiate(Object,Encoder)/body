@@ -1,4 +1,0 @@
-{
-  Point point=(Point)oldInstance;
-  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{point.x,point.y});
-}

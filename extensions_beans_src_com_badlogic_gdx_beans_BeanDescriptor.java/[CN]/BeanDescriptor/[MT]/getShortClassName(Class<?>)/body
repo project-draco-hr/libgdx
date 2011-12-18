@@ -1,8 +1,0 @@
-{
-  if (leguminaClass == null) {
-    return null;
-  }
-  String beanClassName=leguminaClass.getName();
-  int lastIndex=beanClassName.lastIndexOf(".");
-  return (lastIndex == -1) ? beanClassName : beanClassName.substring(lastIndex + 1);
-}

@@ -1,7 +1,0 @@
-{
-  if ((name == null) || (vcl == null)) {
-    return;
-  }
-  this.vcSupport.addVetoableChangeListener(name,vcl);
-  this.lastVetoedContext=null;
-}

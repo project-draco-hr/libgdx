@@ -1,8 +1,0 @@
-{
-  super.initialize(type,oldInstance,newInstance,enc);
-  writeProperty(oldInstance,newInstance,enc,"Background");
-  writeProperty(oldInstance,newInstance,enc,"Foreground");
-  writeProperty(oldInstance,newInstance,enc,"Font");
-  writeProperty(oldInstance,newInstance,enc,"Bounds");
-  writeProperty(oldInstance,newInstance,enc,"Name");
-}

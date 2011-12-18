@@ -1,7 +1,0 @@
-{
-  if (!(obj instanceof IndexedPropertyDescriptor)) {
-    return false;
-  }
-  IndexedPropertyDescriptor other=(IndexedPropertyDescriptor)obj;
-  return (super.equals(other) && (indexedPropertyType == null ? other.indexedPropertyType == null : indexedPropertyType.equals(other.indexedPropertyType)) && (indexedGetter == null ? other.indexedGetter == null : indexedGetter.equals(other.indexedGetter))&& (indexedSetter == null ? other.indexedSetter == null : indexedSetter.equals(other.indexedSetter)));
-}

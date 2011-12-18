@@ -1,9 +1,0 @@
-{
-  try {
-    Method readMethod=beanClass.getMethod(getterName,new Class[]{});
-    setReadMethod(readMethod);
-  }
- catch (  Exception e) {
-    throw new IntrospectionException(e.getLocalizedMessage());
-  }
-}

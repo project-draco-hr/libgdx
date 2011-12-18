@@ -1,8 +1,0 @@
-{
-  if (child instanceof Serializable) {
-    return (Serializable)child;
-  }
- else {
-    return null;
-  }
-}

@@ -1,6 +1,0 @@
-{
-  if (oldInstance instanceof String && newInstance instanceof String) {
-    return newInstance.equals(oldInstance);
-  }
-  return super.mutatesTo(oldInstance,newInstance);
-}

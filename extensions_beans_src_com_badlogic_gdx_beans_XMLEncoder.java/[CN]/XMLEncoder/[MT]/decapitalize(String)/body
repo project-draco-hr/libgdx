@@ -1,5 +1,0 @@
-{
-  StringBuffer buf=new StringBuffer(s);
-  buf.setCharAt(0,Character.toLowerCase(buf.charAt(0)));
-  return buf;
-}

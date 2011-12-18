@@ -1,7 +1,0 @@
-{
-  Class<?> c=type.getSuperclass();
-  if (null != c) {
-    PersistenceDelegate pd=enc.getPersistenceDelegate(c);
-    pd.initialize(c,oldInstance,newInstance,enc);
-  }
-}

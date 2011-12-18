@@ -1,8 +1,0 @@
-{
-synchronized (children) {
-    for (Iterator iter=bcsChildren(); iter.hasNext(); ) {
-      BCSSChild bcssChild=(BCSSChild)iter.next();
-      notifyServiceRevokedToServiceUsers(serviceClass,serviceProvider,revokeCurrentServicesNow,bcssChild);
-    }
-  }
-}

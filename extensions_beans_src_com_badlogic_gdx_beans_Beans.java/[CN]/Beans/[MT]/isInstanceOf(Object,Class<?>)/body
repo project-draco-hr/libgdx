@@ -1,6 +1,0 @@
-{
-  if (bean == null) {
-    throw new NullPointerException(Messages.getString("beans.1D"));
-  }
-  return targetType == null ? false : targetType.isInstance(bean);
-}

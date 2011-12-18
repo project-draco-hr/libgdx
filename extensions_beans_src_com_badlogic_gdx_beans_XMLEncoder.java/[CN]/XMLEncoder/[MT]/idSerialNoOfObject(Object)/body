@@ -1,8 +1,0 @@
-{
-  Class<?> clazz=obj.getClass();
-  Integer serialNo=(Integer)clazzCounterMap.get(clazz);
-  serialNo=serialNo == null ? 0 : serialNo;
-  String id=BeansUtils.idOfClass(obj.getClass()) + serialNo;
-  clazzCounterMap.put(clazz,++serialNo);
-  return id;
-}

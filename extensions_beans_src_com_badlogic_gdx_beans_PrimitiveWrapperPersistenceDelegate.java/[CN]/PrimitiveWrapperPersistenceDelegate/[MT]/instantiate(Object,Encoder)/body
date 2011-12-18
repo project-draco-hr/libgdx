@@ -1,6 +1,0 @@
-{
-  if (oldInstance instanceof Character) {
-    return new Expression(oldInstance,oldInstance.toString(),"charAt",new Object[]{Integer.valueOf(0)});
-  }
-  return new Expression(oldInstance,oldInstance.getClass(),"new",new Object[]{oldInstance.toString()});
-}

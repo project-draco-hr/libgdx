@@ -1,8 +1,0 @@
-{
-  if (child instanceof VetoableChangeListener) {
-    return (VetoableChangeListener)child;
-  }
- else {
-    return null;
-  }
-}

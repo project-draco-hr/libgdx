@@ -1,6 +1,0 @@
-{
-  if (action == null || target == null || listenerInterface == null) {
-    throw new NullPointerException();
-  }
-  return (T)Proxy.newProxyInstance(target.getClass().getClassLoader(),new Class[]{listenerInterface},new EventHandler(target,action,eventPropertyName,listenerMethodName));
-}

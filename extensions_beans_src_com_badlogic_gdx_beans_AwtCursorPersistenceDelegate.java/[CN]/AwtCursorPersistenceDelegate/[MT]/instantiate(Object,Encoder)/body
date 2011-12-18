@@ -1,4 +1,0 @@
-{
-  Cursor cursor=(Cursor)oldInstance;
-  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{cursor.getType()});
-}

@@ -1,9 +1,0 @@
-{
-  Iterator<Command> i=arguments.iterator();
-  while (i.hasNext()) {
-    Command cmd=i.next();
-    cmd.status=Command.CHILDREN_FILTERED;
-    operations.add(cmd);
-  }
-  arguments.clear();
-}

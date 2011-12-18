@@ -1,7 +1,0 @@
-{
-  if (Character.isUpperCase(string.charAt(0))) {
-    return string;
-  }
-  String initial=string.substring(0,1).toUpperCase();
-  return initial.concat(string.substring(1));
-}

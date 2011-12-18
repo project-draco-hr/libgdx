@@ -1,9 +1,0 @@
-{
-  if (null == oldStat) {
-    System.err.println("java.lang.Exception: XMLEncoder: discarding statement null");
-    System.err.println("Continuing...");
-    return;
-  }
-  recordStatement(oldStat);
-  super.writeStatement(oldStat);
-}

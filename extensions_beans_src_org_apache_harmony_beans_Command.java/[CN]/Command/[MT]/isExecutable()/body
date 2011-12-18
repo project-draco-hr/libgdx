@@ -1,4 +1,0 @@
-{
-  boolean result=isTag("object") || isTag("void") && hasAttr("class") && hasAttr("method") || isTag("array") || isPrimitive() || isTag("class") || isTag("null");
-  return result;
-}

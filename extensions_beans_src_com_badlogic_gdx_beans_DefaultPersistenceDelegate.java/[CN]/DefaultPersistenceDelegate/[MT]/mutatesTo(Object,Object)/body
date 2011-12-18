@@ -1,8 +1,0 @@
-{
-  if (this.propertyNames.length > 0) {
-    if (BeansUtils.declaredEquals(o1.getClass())) {
-      return o1.equals(o2);
-    }
-  }
-  return super.mutatesTo(o1,o2);
-}

@@ -1,4 +1,0 @@
-{
-  Dimension dimension=(Dimension)oldInstance;
-  return new Expression(dimension,dimension.getClass(),BeansUtils.NEW,new Object[]{dimension.width,dimension.height});
-}

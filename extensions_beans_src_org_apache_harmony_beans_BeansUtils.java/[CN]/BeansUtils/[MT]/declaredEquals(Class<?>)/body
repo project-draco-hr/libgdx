@@ -1,8 +1,0 @@
-{
-  for (  Method declaredMethod : clazz.getDeclaredMethods()) {
-    if (EQUALS_METHOD.equals(declaredMethod.getName()) && Arrays.equals(declaredMethod.getParameterTypes(),EQUALS_PARAMETERS)) {
-      return true;
-    }
-  }
-  return false;
-}

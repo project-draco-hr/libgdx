@@ -1,8 +1,0 @@
-{
-  HashMap<String,MethodDescriptor> map=new HashMap<String,MethodDescriptor>();
-  for (int i=0; i < theDescs.length; i++) {
-    String qualifiedName=getQualifiedName(theDescs[i].getMethod());
-    map.put(qualifiedName,theDescs[i]);
-  }
-  return map;
-}

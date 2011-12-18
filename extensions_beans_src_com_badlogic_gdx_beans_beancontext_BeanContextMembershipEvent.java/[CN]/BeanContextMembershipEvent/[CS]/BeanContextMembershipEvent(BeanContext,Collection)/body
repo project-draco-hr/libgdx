@@ -1,7 +1,0 @@
-{
-  super(bc);
-  if (changes == null) {
-    throw new NullPointerException(Messages.getString("beans.0E"));
-  }
-  this.children=changes;
-}

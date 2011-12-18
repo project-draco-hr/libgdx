@@ -1,3 +1,0 @@
-{
-  return BeansUtils.getHashCode(getter) + BeansUtils.getHashCode(setter) + BeansUtils.getHashCode(getPropertyType())+ BeansUtils.getHashCode(getPropertyEditorClass())+ BeansUtils.getHashCode(isBound())+ BeansUtils.getHashCode(isConstrained());
-}

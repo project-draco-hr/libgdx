@@ -1,6 +1,0 @@
-{
-  if (flags == USE_ALL_BEANINFO) {
-    return getBeanInfo(beanClass);
-  }
-  return getBeanInfoImplAndInit(beanClass,null,flags);
-}

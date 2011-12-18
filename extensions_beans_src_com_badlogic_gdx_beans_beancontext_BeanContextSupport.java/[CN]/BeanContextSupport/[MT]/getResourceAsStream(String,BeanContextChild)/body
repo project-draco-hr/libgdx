@@ -1,9 +1,0 @@
-{
-  if (resourceName == null || child == null) {
-    throw new NullPointerException();
-  }
-  if (!contains(child)) {
-    throw new IllegalArgumentException(Messages.getString("beans.6D"));
-  }
-  return ClassLoader.getSystemResourceAsStream(resourceName);
-}

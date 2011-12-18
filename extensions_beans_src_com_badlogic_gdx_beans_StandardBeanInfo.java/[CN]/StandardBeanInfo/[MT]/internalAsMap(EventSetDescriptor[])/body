@@ -1,7 +1,0 @@
-{
-  HashMap<String,EventSetDescriptor> map=new HashMap<String,EventSetDescriptor>();
-  for (int i=0; i < theDescs.length; i++) {
-    map.put(theDescs[i].getName(),theDescs[i]);
-  }
-  return map;
-}

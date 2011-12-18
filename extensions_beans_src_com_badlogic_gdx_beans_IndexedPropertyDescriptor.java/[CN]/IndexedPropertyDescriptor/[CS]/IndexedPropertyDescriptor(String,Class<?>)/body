@@ -1,4 +1,0 @@
-{
-  super(propertyName,beanClass);
-  setIndexedByName(beanClass,"get".concat(initialUpperCase(propertyName)),"set".concat(initialUpperCase(propertyName)));
-}

@@ -1,6 +1,0 @@
-{
-  this.beanContextChildPeer=(bcc == null ? this : bcc);
-  pcSupport=new PropertyChangeSupport(this.beanContextChildPeer);
-  vcSupport=new VetoableChangeSupport(this.beanContextChildPeer);
-  this.rejectedSetBCOnce=false;
-}

@@ -1,9 +1,0 @@
-{
-  super();
-  if (method == null) {
-    throw new NullPointerException();
-  }
-  this.method=method;
-  this.parameterDescriptors=parameterDescriptors;
-  setName(method.getName());
-}

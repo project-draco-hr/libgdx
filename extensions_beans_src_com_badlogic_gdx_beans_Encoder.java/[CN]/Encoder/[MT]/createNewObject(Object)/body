@@ -1,8 +1,0 @@
-{
-  Object nu=get(old);
-  if (nu == null) {
-    writeObject(old);
-    nu=get(old);
-  }
-  return nu;
-}

@@ -1,7 +1,0 @@
-{
-synchronized (children) {
-    for (Iterator iter=bcsChildren(); iter.hasNext(); ) {
-      releaseServicesForChild((BCSSChild)iter.next(),true);
-    }
-  }
-}

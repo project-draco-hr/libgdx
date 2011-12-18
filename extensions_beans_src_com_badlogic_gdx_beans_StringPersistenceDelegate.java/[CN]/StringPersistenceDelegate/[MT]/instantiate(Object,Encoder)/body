@@ -1,4 +1,0 @@
-{
-  String value=(String)oldInstance;
-  return new Expression(oldInstance,String.class,"new",new Object[]{value});
-}

@@ -1,4 +1,0 @@
-{
-  Date date=(Date)oldInstance;
-  return new Expression(oldInstance,oldInstance.getClass(),BeansUtils.NEW,new Object[]{date.getTime()});
-}

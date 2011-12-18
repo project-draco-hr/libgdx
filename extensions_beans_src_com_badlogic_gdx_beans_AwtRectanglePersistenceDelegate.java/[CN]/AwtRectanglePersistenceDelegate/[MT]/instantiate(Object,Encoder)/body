@@ -1,4 +1,0 @@
-{
-  Rectangle rect=(Rectangle)oldInstance;
-  return new Expression(rect,rect.getClass(),BeansUtils.NEW,new Object[]{rect.x,rect.y,rect.width,rect.height});
-}

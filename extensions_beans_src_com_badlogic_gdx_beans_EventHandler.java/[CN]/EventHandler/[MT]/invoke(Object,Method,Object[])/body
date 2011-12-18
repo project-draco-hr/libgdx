@@ -1,8 +1,0 @@
-{
-  return AccessController.doPrivileged(new PrivilegedAction<Object>(){
-    public Object run(){
-      return invokeImpl(proxy,method,arguments);
-    }
-  }
-,context);
-}
