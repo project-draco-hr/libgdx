@@ -1,0 +1,4 @@
+{
+  chip8.mem[addr++]=(byte)(highByte & 0xff);
+  chip8.mem[addr++]=(byte)(lowByte & 0xff);
+}

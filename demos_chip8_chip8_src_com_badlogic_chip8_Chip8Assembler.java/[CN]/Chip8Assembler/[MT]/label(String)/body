@@ -1,0 +1,4 @@
+{
+  if (labels.containsKey(label))   throw new RuntimeException("label '" + label + "' already defined");
+  labels.put(label,addr);
+}

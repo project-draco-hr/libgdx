@@ -1,0 +1,14 @@
+{
+  int addr=0;
+  for (int y=0; y < FBUF_HEIGHT; y++) {
+    for (int x=0; x < FBUF_WIDTH; x++) {
+      System.out.print(fbuf[addr++]);
+    }
+    System.out.println();
+  }
+  System.out.println("pc: " + pc);
+  System.out.println("sp: " + sp);
+  System.out.println("dt: " + dt);
+  System.out.println("st: " + st);
+  System.out.println("v[]: " + Arrays.toString(v));
+}

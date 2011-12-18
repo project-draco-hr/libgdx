@@ -1,0 +1,16 @@
+{
+  v[0xF]=0;
+  int spriteWidth=8;
+  int spriteHeight=(numBytes & 0x000F);
+  if (spriteHeight == 0)   spriteHeight=16;
+  int fbufAddr=vx + vy << FBUF_ROW_SHIFT;
+  for (int y=0; y < spriteHeight; y++, addr++) {
+    byte pixelData=mem[addr];
+    for (int x=0; x < spriteWidth; x++, fbufAddr++) {
+      if ((pixelData & (0x80 >> x)) != 0) {
+        byte pixel=(byte)((fbuf[fbufAddr] ^ 1) & 0xff);
+        if (pixel == 0)         v[0xf]=pixel;
+      }
+    }
+  }
+}

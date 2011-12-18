@@ -1,0 +1,4 @@
+{
+  System.arraycopy(rom,0,mem,0x200,Math.min(mem.length,rom.length));
+  initDefaultSprites();
+}
