@@ -1,6 +1,6 @@
 {
-  point.x=actor.x;
-  point.y=actor.y;
+  point.x+=actor.x;
+  point.y+=actor.y;
   Actor parent=actor.parent;
   while (parent != null) {
     if (parent instanceof Group) {
