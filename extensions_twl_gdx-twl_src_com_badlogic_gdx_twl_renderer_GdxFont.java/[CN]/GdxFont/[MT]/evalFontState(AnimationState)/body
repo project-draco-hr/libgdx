@@ -1,5 +1,0 @@
-{
-  int i=0;
-  for (int n=fontStates.length - 1; i < n; i++)   if (fontStates[i].condition.evaluate(animationState))   break;
-  return fontStates[i];
-}

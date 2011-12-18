@@ -1,9 +1,0 @@
-{
-  Color tempColor=this.tempColor;
-  TintStack tintStack=this.tintStack;
-  tempColor.r=tintStack.r * (color.getR() & 255);
-  tempColor.g=tintStack.g * (color.getG() & 255);
-  tempColor.b=tintStack.b * (color.getB() & 255);
-  tempColor.a=tintStack.a * (color.getA() & 255);
-  return tempColor;
-}

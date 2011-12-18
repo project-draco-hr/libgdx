@@ -1,4 +1,0 @@
-{
-  if (url == null)   throw new IllegalArgumentException("url cannot be null.");
-  return getActiveCacheContext().loadTexture(url);
-}

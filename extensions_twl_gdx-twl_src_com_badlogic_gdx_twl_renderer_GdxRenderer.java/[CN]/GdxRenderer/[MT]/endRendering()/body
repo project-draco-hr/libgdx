@@ -1,8 +1,0 @@
-{
-  rendering=false;
-  batch.end();
-  if (hasScissor) {
-    Gdx.gl.glDisable(GL10.GL_SCISSOR_TEST);
-    hasScissor=false;
-  }
-}

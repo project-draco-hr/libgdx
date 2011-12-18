@@ -1,6 +1,0 @@
-{
-  int hash=7;
-  hash=79 * hash + System.identityHashCode(this.source);
-  hash=79 * hash + System.identityHashCode(this.destination);
-  return hash;
-}

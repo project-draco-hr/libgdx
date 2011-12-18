@@ -1,8 +1,0 @@
-{
-  this.doubleClick=doubleClick;
-  this.nodes=new ArrayList<Node>();
-  this.connections=new ArrayList<Connection>();
-  this.bezierPoints=new float[NUM_BEZIER_POINTS * 2];
-  this.infoText=new Label((doubleClick ? "Double click" : "Click") + " to create new nodes, then drag pads onto other pads to make connections");
-  add(infoText);
-}

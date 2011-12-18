@@ -1,7 +1,0 @@
-{
-  if (cacheContext == null)   throw new IllegalArgumentException("cacheContext cannot be null.");
-  if (!cacheContext.isValid())   throw new IllegalStateException("cacheContext is invalid.");
-  if (!(cacheContext instanceof GdxCacheContext))   throw new IllegalArgumentException("cacheContext is not from this renderer.");
-  if (((GdxCacheContext)cacheContext).renderer != this)   throw new IllegalArgumentException("cacheContext is not from this renderer.");
-  this.cacheContext=(GdxCacheContext)cacheContext;
-}
