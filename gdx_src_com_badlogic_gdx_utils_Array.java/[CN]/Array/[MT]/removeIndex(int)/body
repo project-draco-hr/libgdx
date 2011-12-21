@@ -1,6 +1,6 @@
 {
   if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
-  Object[] items=this.items;
+  T[] items=this.items;
   T value=(T)items[index];
   size--;
   if (ordered)   System.arraycopy(items,index + 1,items,index,size - index);

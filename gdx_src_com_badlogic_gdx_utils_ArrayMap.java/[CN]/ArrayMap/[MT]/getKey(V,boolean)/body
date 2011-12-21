@@ -1,0 +1,11 @@
+{
+  Object[] values=this.values;
+  int i=size - 1;
+  if (identity || values == null) {
+    for (; i >= 0; i--)     if (values[i] == values)     return keys[i];
+  }
+ else {
+    for (; i >= 0; i--)     if (values.equals(values[i]))     return keys[i];
+  }
+  return null;
+}

@@ -1,0 +1,6 @@
+{
+  this(array.ordered,array.size,(Class<K>)array.keys.getClass().getComponentType(),(Class<V>)array.values.getClass().getComponentType());
+  size=array.size;
+  System.arraycopy(array.keys,0,keys,0,size);
+  System.arraycopy(array.values,0,values,0,size);
+}

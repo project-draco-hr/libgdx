@@ -1,0 +1,8 @@
+{
+  if (size <= newSize)   return;
+  for (int i=newSize; i < size; i++) {
+    keys[i]=null;
+    values[i]=null;
+  }
+  size=newSize;
+}

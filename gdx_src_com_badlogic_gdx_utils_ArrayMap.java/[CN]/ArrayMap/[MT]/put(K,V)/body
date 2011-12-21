@@ -1,0 +1,5 @@
+{
+  if (size == keys.length)   resize(Math.max(8,(int)(size * 1.75f)));
+  keys[size]=key;
+  values[size++]=value;
+}

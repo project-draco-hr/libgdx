@@ -1,0 +1,4 @@
+{
+  int sizeNeeded=size + additionalCapacity;
+  if (sizeNeeded >= keys.length)   resize(Math.max(8,sizeNeeded));
+}

@@ -1,5 +1,5 @@
 {
   if (!data.isManaged())   throw new GdxRuntimeException("Tried to reload unmanaged Texture");
-  createGLHandle();
+  glHandle=createGLHandle();
   load(data);
 }

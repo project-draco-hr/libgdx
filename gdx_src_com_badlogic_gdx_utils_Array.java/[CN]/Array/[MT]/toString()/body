@@ -1,6 +1,6 @@
 {
   if (size == 0)   return "[]";
-  Object[] items=this.items;
+  T[] items=this.items;
   StringBuilder buffer=new StringBuilder(32);
   buffer.append('[');
   buffer.append(items[0]);
