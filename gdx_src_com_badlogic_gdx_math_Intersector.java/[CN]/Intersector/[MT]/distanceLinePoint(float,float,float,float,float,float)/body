@@ -1,0 +1,4 @@
+{
+  float normalLength=(float)Math.sqrt((endX - startX) * (endX - startX) + (endY - startY) * (endY - startY));
+  return Math.abs((pointX - startX) * (endY - startY) - (pointY - startY) * (endX - startX)) / normalLength;
+}
