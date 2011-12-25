@@ -1,7 +1,0 @@
-{
-  String file=message.substring(0,message.indexOf(".cpp"));
-  String className=file.substring(file.lastIndexOf('.') + 1).replace('.','/');
-  FileHandle child=srcDir.child(className + ".java");
-  String content=child.readString();
-  return "";
-}
