@@ -1,0 +1,14 @@
+{
+  Array<CMethod> methods=new Array<CMethod>();
+  final String methodMarker=C_METHOD_MARKER;
+  int index=headerFile.indexOf(methodMarker);
+  if (index == -1)   return null;
+  while (index >= 0) {
+    CMethod method=parseCMethod(headerFile,index);
+    if (method == null)     throw new RuntimeException("Couldn't parse method");
+    System.out.println(method);
+    methods.add(method);
+    index=headerFile.indexOf(methodMarker,method.endIndex);
+  }
+  return methods;
+}

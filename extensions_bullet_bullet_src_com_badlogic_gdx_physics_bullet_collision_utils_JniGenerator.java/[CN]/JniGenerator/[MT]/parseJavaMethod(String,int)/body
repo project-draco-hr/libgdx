@@ -1,0 +1,52 @@
+{
+  int nameStart=0;
+  int nameEnd=classFile.indexOf('(',start);
+  boolean hitNonWhitespace=false;
+  for (int i=nameEnd - 1; i > 0; i--) {
+    char c=classFile.charAt(i);
+    if (Character.isWhitespace(c) && hitNonWhitespace) {
+      nameStart=i + 1;
+      break;
+    }
+ else {
+      hitNonWhitespace=true;
+    }
+  }
+  String name=classFile.substring(nameStart,nameEnd).trim();
+  Array<Argument> arguments=new Array<Argument>();
+  int artListStart=nameEnd + 1;
+  int argListEnd=classFile.indexOf(')',nameEnd);
+  String[] args=classFile.substring(artListStart,argListEnd).split(",");
+  for (  String arg : args) {
+    int argNameStart=arg.lastIndexOf(' ') + 1;
+    String argName=arg.substring(argNameStart);
+    String argTypeName=arg.substring(0,argNameStart).trim();
+    ArgumentType argType=ArgumentType.PlainOldDatatype;
+    if (argTypeName.contains("["))     argType=ArgumentType.Array;
+ else     if (argTypeName.contains("Buffer"))     argType=ArgumentType.DirectBuffer;
+ else     if (argTypeName.equals("String"))     argType=ArgumentType.String;
+    arguments.add(new Argument(argType,argName));
+  }
+  int nativeCodeStart=classFile.indexOf(';',argListEnd) + 1;
+  boolean foundNativeCode=false;
+  for (int i=nativeCodeStart; i < classFile.length(); i++) {
+    char c=classFile.charAt(i);
+    if (Character.isWhitespace(c))     continue;
+    if (c == '/') {
+      if (classFile.charAt(i + 1) == '*') {
+        nativeCodeStart=i + 3;
+        foundNativeCode=true;
+        break;
+      }
+    }
+ else {
+      break;
+    }
+  }
+  int nativeCodeEnd=classFile.indexOf("*/",nativeCodeStart);
+  if (nativeCodeEnd < 0)   foundNativeCode=false;
+  String nativeCode="";
+  if (foundNativeCode)   nativeCode=classFile.substring(nativeCodeStart,nativeCodeEnd);
+  int end=foundNativeCode ? nativeCodeEnd : argListEnd;
+  return new JavaMethod(name,nativeCode,arguments,start,end);
+}

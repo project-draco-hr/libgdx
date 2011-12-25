@@ -1,0 +1,19 @@
+{
+  FileHandle[] files=dir.list();
+  for (  FileHandle file : files) {
+    if (file.isDirectory() && !file.path().contains(".svn")) {
+      processDirectory(file);
+    }
+ else {
+      if (file.extension().equals("java") && !file.name().contains("JniGenerator")) {
+        String javaContent=file.readString();
+        if (javaContent.contains(JAVA_METHOD_MARKER)) {
+          generateHFile(file);
+          FileHandle hFile=new FileHandle(jniDir.path() + "/" + file.nameWithoutExtension()+ ".h");
+          FileHandle cppFile=new FileHandle(jniDir + "/" + file.nameWithoutExtension()+ ".cpp");
+          generateCppFile(javaContent,hFile,cppFile);
+        }
+      }
+    }
+  }
+}

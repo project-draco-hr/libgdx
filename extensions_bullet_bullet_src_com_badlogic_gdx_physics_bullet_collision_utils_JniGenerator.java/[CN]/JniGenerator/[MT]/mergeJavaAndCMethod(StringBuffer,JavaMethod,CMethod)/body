@@ -1,0 +1,53 @@
+{
+  buffer.append(cMethod.head);
+  buffer.append("\n(JNIEnv* env, jclass clazz, ");
+  for (int i=0; i < javaMethod.arguments.size; i++) {
+    Argument javaArg=javaMethod.arguments.get(i);
+    buffer.append(cMethod.arguments[i + 2]);
+    buffer.append(" ");
+    if (javaArg.type != ArgumentType.PlainOldDatatype)     buffer.append(NON_POD_PREFIX);
+    buffer.append(javaArg.name);
+    if (i < javaMethod.arguments.size - 1)     buffer.append(", ");
+  }
+  buffer.append(") {\n");
+  if (javaMethod.hasArrayOrBuffer) {
+    for (    Argument arg : javaMethod.arguments) {
+      if (arg.type == ArgumentType.DirectBuffer) {
+        buffer.append("\tchar* " + arg.name + " = (char*)env->GetDirectBufferAddress("+ NON_POD_PREFIX+ arg.name+ ");\n");
+      }
+    }
+    for (    Argument arg : javaMethod.arguments) {
+      if (arg.type == ArgumentType.String) {
+        buffer.append("char* " + arg.name + " = (char*)env->GetStringUTFChars("+ NON_POD_PREFIX+ arg.name+ ", 0);");
+      }
+    }
+    for (int i=0; i < javaMethod.arguments.size; i++) {
+      Argument arg=javaMethod.arguments.get(i);
+      if (arg.type == ArgumentType.Array) {
+        String pointerType=getCArrayPointerType(cMethod.arguments[i + 2]);
+        buffer.append("\t" + pointerType + "* "+ arg.name+ " = ("+ pointerType+ "*)env->GetPrimitiveArrayCritical("+ NON_POD_PREFIX+ arg.name+ ", 0);\n");
+      }
+    }
+  }
+  String[] lines=javaMethod.nativeCode.split("\n");
+  for (  String line : lines) {
+    if (line.length() > 0) {
+      if (line.charAt(0) == '\t' && line.length() > 1)       line=line.substring(1);
+      buffer.append(line);
+    }
+    buffer.append("\n");
+  }
+  if (javaMethod.hasArrayOrBuffer) {
+    for (    Argument arg : javaMethod.arguments) {
+      if (arg.type == ArgumentType.Array) {
+        buffer.append("\tenv->ReleasePrimitiveArrayCritical(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ", 0);\n");
+      }
+    }
+    for (    Argument arg : javaMethod.arguments) {
+      if (arg.type == ArgumentType.String) {
+        buffer.append("\tenv->ReleaseStringUTFChars(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ");\n");
+      }
+    }
+  }
+  buffer.append("}");
+}

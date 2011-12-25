@@ -1,0 +1,14 @@
+{
+  this.name=name;
+  this.nativeCode=nativeCode;
+  this.arguments=arguments;
+  this.startIndex=startIndex;
+  this.endIndex=endIndex;
+  for (  Argument arg : arguments) {
+    if (arg.type == ArgumentType.Array || arg.type == ArgumentType.DirectBuffer) {
+      hasArrayOrBuffer=true;
+      return;
+    }
+  }
+  hasArrayOrBuffer=false;
+}

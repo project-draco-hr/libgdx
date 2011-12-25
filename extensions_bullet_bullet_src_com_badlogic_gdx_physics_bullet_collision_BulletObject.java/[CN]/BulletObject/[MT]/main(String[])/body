@@ -1,0 +1,4 @@
+{
+  BulletNativesLoader.load();
+  BulletObject.disposeJni(0,BufferUtils.newByteBuffer(1),new float[]{1234.567f},new byte[]{123},"Oh God it works");
+}
