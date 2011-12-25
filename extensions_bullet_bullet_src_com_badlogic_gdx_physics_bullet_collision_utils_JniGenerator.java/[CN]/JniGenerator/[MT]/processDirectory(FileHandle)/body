@@ -9,8 +9,9 @@
         String javaContent=file.readString();
         if (javaContent.contains(JAVA_METHOD_MARKER)) {
           generateHFile(file);
-          FileHandle hFile=new FileHandle(jniDir.path() + "/" + file.nameWithoutExtension()+ ".h");
-          FileHandle cppFile=new FileHandle(jniDir + "/" + file.nameWithoutExtension()+ ".cpp");
+          String className=getFullyQualifiedClassName(file);
+          FileHandle hFile=new FileHandle(jniDir.path() + "/" + className+ ".h");
+          FileHandle cppFile=new FileHandle(jniDir + "/" + className+ ".cpp");
           generateCppFile(javaContent,hFile,cppFile);
         }
       }

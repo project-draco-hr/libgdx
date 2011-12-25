@@ -1,13 +1,18 @@
 {
   new JniGenerator().generate(new FileHandle(args[0]),new FileHandle(args[1]),new FileHandle(args[2]));
   Process process=Runtime.getRuntime().exec("ant.bat -f build-win32home.xml -v",null,new File("jni"));
-  final InputStream errorStream=process.getInputStream();
+  final InputStream stream=process.getInputStream();
   Thread t=new Thread(new Runnable(){
     @Override public void run(){
       int c=0;
       try {
-        while ((c=errorStream.read()) != -1) {
-          System.out.print((char)c);
+        BufferedReader reader=new BufferedReader(new InputStreamReader(stream));
+        String line=reader.readLine();
+        while (line != null) {
+          System.out.println(line);
+          if (line.contains("error:")) {
+          }
+          line=reader.readLine();
         }
       }
  catch (      IOException e) {

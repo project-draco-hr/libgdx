@@ -1,7 +1,6 @@
 {
-  String className=file.path().replace(srcDir.path(),"").replace('\\','.').replace('/','.').replace(".java","");
-  if (className.startsWith("."))   className=className.substring(1);
-  String command="javah -classpath " + classDir.path() + " -o "+ jniDir.path()+ "/"+ file.nameWithoutExtension()+ ".h "+ className;
+  String className=getFullyQualifiedClassName(file);
+  String command="javah -classpath " + classDir.path() + " -o "+ jniDir.path()+ "/"+ className+ ".h "+ className;
   System.out.println(command);
   Process process=Runtime.getRuntime().exec(command);
   process.waitFor();
