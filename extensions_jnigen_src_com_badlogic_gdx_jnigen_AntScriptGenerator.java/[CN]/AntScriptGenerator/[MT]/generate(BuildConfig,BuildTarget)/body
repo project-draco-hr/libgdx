@@ -23,10 +23,13 @@
     }
     System.out.println(buildFile);
     String buildFileName="build-" + target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32")+ ".xml";
+    if (target.buildFileName != null)     buildFileName=target.buildFileName;
     config.jniDir.child(buildFileName).writeString(buildFile,false);
-    buildFiles.add(buildFileName);
-    sharedLibFiles.add(getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName));
-    libsDirs.add("../" + libsDir.path().replace('\\','/'));
+    if (!target.excludeFromMasterBuildFile) {
+      buildFiles.add(buildFileName);
+      sharedLibFiles.add(getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName));
+      libsDirs.add("../" + libsDir.path().replace('\\','/'));
+    }
   }
   String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-template.xml",FileType.Classpath).readString();
   StringBuffer clean=new StringBuffer();
