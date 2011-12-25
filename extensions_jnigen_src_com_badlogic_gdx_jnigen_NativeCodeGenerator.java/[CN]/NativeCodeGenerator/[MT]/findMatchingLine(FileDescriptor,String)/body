@@ -1,0 +1,7 @@
+{
+  String file=message.substring(0,message.indexOf(".cpp"));
+  String className=file.substring(file.lastIndexOf('.') + 1).replace('.','/');
+  FileDescriptor child=srcDir.child(className + ".java");
+  String javaContent=child.readString();
+  return "";
+}

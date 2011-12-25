@@ -1,0 +1,4 @@
+{
+  if (type == FileType.Classpath)   throw new RuntimeException("Cannot delete a classpath file: " + file);
+  return file().delete();
+}

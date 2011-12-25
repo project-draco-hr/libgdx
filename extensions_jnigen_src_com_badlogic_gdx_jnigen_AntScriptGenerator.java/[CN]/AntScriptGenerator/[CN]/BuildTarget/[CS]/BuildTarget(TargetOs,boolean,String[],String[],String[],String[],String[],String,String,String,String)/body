@@ -1,0 +1,23 @@
+{
+  if (targetType == null)   throw new IllegalArgumentException("targetType must not be null");
+  if (cIncludes == null)   cIncludes=new String[0];
+  if (cExcludes == null)   cExcludes=new String[0];
+  if (cppIncludes == null)   cppIncludes=new String[0];
+  if (cppExcludes == null)   cppExcludes=new String[0];
+  if (headerDirs == null)   headerDirs=new String[0];
+  if (compilerPrefix == null)   compilerPrefix="";
+  if (cFlags == null)   cFlags="";
+  if (cppFlags == null)   cppFlags="";
+  if (linkerFlags == null)   linkerFlags="";
+  this.os=targetType;
+  this.is64Bit=is64Bit;
+  this.cIncludes=cIncludes;
+  this.cExcludes=cExcludes;
+  this.cppIncludes=cppIncludes;
+  this.cppExcludes=cppExcludes;
+  this.headerDirs=headerDirs;
+  this.compilerPrefix=compilerPrefix;
+  this.cFlags=cFlags;
+  this.cppFlags=cppFlags;
+  this.linkerFlags=linkerFlags;
+}

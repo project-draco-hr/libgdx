@@ -1,0 +1,19 @@
+{
+  if (type == FileType.Classpath || !file.exists()) {
+    InputStream input=read();
+    try {
+      return input.available();
+    }
+ catch (    Exception ignored) {
+    }
+ finally {
+      try {
+        input.close();
+      }
+ catch (      IOException ignored) {
+      }
+    }
+    return 0;
+  }
+  return file().length();
+}

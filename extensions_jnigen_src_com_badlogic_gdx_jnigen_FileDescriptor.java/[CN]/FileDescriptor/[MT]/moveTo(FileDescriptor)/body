@@ -1,0 +1,5 @@
+{
+  if (type == FileType.Classpath)   throw new RuntimeException("Cannot move a classpath file: " + file);
+  copyTo(dest);
+  delete();
+}

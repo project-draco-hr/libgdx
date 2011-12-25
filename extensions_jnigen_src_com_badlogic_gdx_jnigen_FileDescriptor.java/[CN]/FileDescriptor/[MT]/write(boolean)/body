@@ -1,0 +1,11 @@
+{
+  if (type == FileType.Classpath)   throw new RuntimeException("Cannot write to a classpath file: " + file);
+  parent().mkdirs();
+  try {
+    return new FileOutputStream(file(),append);
+  }
+ catch (  FileNotFoundException ex) {
+    if (file().isDirectory())     throw new RuntimeException("Cannot open a stream to a directory: " + file + " ("+ type+ ")",ex);
+    throw new RuntimeException("Error writing file: " + file + " ("+ type+ ")",ex);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    return new InputStreamReader(read(),charset);
+  }
+ catch (  UnsupportedEncodingException ex) {
+    throw new RuntimeException("Error reading file: " + this,ex);
+  }
+}

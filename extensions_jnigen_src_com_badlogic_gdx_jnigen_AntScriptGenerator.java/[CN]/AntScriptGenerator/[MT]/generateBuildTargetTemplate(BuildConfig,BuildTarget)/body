@@ -1,0 +1,40 @@
+{
+  String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-target-template.xml",FileType.Classpath).readString();
+  String libName=getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName);
+  String jniPlatform=getJniPlatform(target.os);
+  StringBuffer cIncludes=new StringBuffer();
+  for (  String cInclude : target.cIncludes) {
+    cIncludes.append("\t\t<include name=\"" + cInclude + "\"/>\n");
+  }
+  StringBuffer cppIncludes=new StringBuffer();
+  for (  String cppInclude : target.cppIncludes) {
+    cppIncludes.append("\t\t<include name=\"" + cppInclude + "\"/>\n");
+  }
+  StringBuffer cExcludes=new StringBuffer();
+  for (  String cExclude : target.cExcludes) {
+    cExcludes.append("\t\t<exclude name=\"" + cExclude + "\"/>\n");
+  }
+  StringBuffer cppExcludes=new StringBuffer();
+  for (  String cppExclude : target.cppExcludes) {
+    cppExcludes.append("\t\t<exclude name=\"" + cppExclude + "\"/>\n");
+  }
+  StringBuffer headerDirs=new StringBuffer();
+  for (  String headerDir : target.headerDirs) {
+    headerDirs.append("\t\t\t<arg value=\"" + headerDir + "\"/>\n");
+  }
+  template=template.replace("%projectName%",config.sharedLibName + "-" + target.os+ "-"+ (target.is64Bit ? "64" : "32"));
+  template=template.replace("%buildDir%",config.buildDir.child(target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32")).path().replace('\\','/'));
+  template=template.replace("%libsDir%","../" + getLibsDirectory(config,target));
+  template=template.replace("%libName%",libName);
+  template=template.replace("%jniPlatform%",jniPlatform);
+  template=template.replace("%compilerPrefix%",target.compilerPrefix);
+  template=template.replace("%cFlags%",target.cFlags);
+  template=template.replace("%cppFlags%",target.cppFlags);
+  template=template.replace("%linkerFlags%",target.linkerFlags);
+  template=template.replace("%cIncludes%",cIncludes);
+  template=template.replace("%cExcludes%",cExcludes);
+  template=template.replace("%cppIncludes%",cppIncludes);
+  template=template.replace("%cppExcludes%",cppExcludes);
+  template=template.replace("%headerDirs%",headerDirs);
+  return template;
+}

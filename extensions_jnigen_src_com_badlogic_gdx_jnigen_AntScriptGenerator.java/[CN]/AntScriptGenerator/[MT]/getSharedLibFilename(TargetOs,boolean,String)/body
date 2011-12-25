@@ -1,0 +1,16 @@
+{
+  String libPrefix="";
+  String libSuffix="";
+  if (os == TargetOs.Windows) {
+    libSuffix=(is64Bit ? "64" : "") + ".dll";
+  }
+  if (os == TargetOs.Linux || os == TargetOs.Android) {
+    libPrefix="lib";
+    libSuffix=(is64Bit ? "64" : "") + ".so";
+  }
+  if (os == TargetOs.MacOsX) {
+    libPrefix="lib";
+    libSuffix=".dylib";
+  }
+  return libPrefix + sharedLibName + libSuffix;
+}

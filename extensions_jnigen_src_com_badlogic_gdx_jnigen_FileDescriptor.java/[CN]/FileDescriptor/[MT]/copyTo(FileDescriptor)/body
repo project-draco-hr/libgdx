@@ -1,0 +1,16 @@
+{
+  if (!isDirectory()) {
+    if (dest.isDirectory())     dest=dest.child(name());
+    copyFile(this,dest);
+    return;
+  }
+  if (dest.exists()) {
+    if (!dest.isDirectory())     throw new RuntimeException("Destination exists but is not a directory: " + dest);
+  }
+ else {
+    dest.mkdirs();
+    if (!dest.isDirectory())     throw new RuntimeException("Destination directory cannot be created: " + dest);
+  }
+  dest=dest.child(name());
+  copyDirectory(this,dest);
+}

@@ -1,0 +1,4 @@
+{
+  if (file.getPath().length() == 0)   return new FileDescriptor(new File(name),type);
+  return new FileDescriptor(new File(file,name),type);
+}

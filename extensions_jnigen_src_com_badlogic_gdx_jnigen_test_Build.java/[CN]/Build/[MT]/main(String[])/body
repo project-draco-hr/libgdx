@@ -1,0 +1,7 @@
+{
+  new NativeCodeGenerator().generate("src","bin","jni");
+  BuildTarget win32=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
+  win32.compilerPrefix="";
+  new AntScriptGenerator().generate(new BuildConfig("test"),win32);
+  AntScriptExecutor.execute("jni/build.xml","-v");
+}

@@ -1,0 +1,22 @@
+{
+  InputStream input=read();
+  int position=0;
+  try {
+    while (true) {
+      int count=input.read(bytes,offset + position,size - position);
+      if (count <= 0)       break;
+      position+=count;
+    }
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("Error reading file: " + this,ex);
+  }
+ finally {
+    try {
+      if (input != null)       input.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+  return position - offset;
+}

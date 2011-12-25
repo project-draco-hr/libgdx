@@ -1,0 +1,8 @@
+{
+  int headEnd=headerFile.indexOf('(',start);
+  String head=headerFile.substring(start,headEnd).trim();
+  int argsStart=headEnd + 1;
+  int argsEnd=headerFile.indexOf(')',argsStart);
+  String[] args=headerFile.substring(argsStart,argsEnd).split(",");
+  return new CMethod(head,args,start,argsEnd + 1);
+}

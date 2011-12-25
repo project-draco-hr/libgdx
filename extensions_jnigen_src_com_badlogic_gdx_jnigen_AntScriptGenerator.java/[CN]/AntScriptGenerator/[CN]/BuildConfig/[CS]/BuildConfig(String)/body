@@ -1,0 +1,6 @@
+{
+  this.sharedLibName=sharedLibName;
+  this.buildDir=new FileDescriptor("target");
+  this.libsDir=new FileDescriptor("libs");
+  this.jniDir=new FileDescriptor("jni");
+}

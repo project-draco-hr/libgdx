@@ -1,0 +1,16 @@
+{
+  OutputStream output=write(append);
+  try {
+    output.write(bytes);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("Error writing file: " + file + " ("+ type+ ")",ex);
+  }
+ finally {
+    try {
+      output.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+}

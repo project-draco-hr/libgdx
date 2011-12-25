@@ -1,0 +1,8 @@
+{
+  if (type == FileType.Classpath)   throw new RuntimeException("Cannot list a classpath directory: " + file);
+  String[] relativePaths=file().list();
+  if (relativePaths == null)   return new FileDescriptor[0];
+  FileDescriptor[] handles=new FileDescriptor[relativePaths.length];
+  for (int i=0, n=relativePaths.length; i < n; i++)   handles[i]=child(relativePaths[i]);
+  return handles;
+}

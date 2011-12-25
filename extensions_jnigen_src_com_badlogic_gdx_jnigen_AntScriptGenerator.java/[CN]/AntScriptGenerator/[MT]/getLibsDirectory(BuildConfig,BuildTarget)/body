@@ -1,0 +1,3 @@
+{
+  return config.libsDir.child(target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32")).path().replace('\\','/');
+}
