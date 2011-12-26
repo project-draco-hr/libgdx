@@ -29,25 +29,30 @@
       }
     }
   }
-  String[] lines=javaMethod.nativeCode.split("\n");
-  for (  String line : lines) {
-    if (line.length() > 0) {
-      if (line.charAt(0) == '\t' && line.length() > 1)       line=line.substring(1);
-      buffer.append(line);
-    }
-    buffer.append("\n");
-  }
+  StringBuffer cleanup=new StringBuffer();
   if (javaMethod.hasArrayListOrBuffer) {
     for (    Argument arg : javaMethod.arguments) {
       if (arg.type == ArgumentType.ArrayList) {
-        buffer.append("\tenv->ReleasePrimitiveArrayCritical(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ", 0);\n");
+        cleanup.append("\tenv->ReleasePrimitiveArrayCritical(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ", 0);\n");
       }
     }
     for (    Argument arg : javaMethod.arguments) {
       if (arg.type == ArgumentType.String) {
-        buffer.append("\tenv->ReleaseStringUTFChars(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ");\n");
+        cleanup.append("\tenv->ReleaseStringUTFChars(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ");\n");
       }
     }
+  }
+  String[] lines=javaMethod.nativeCode.split("\n");
+  for (  String line : lines) {
+    if (line.length() > 0) {
+      if (line.charAt(0) == '\t' && line.length() > 1)       line=line.substring(1);
+      line=line.replace(CLEANUP_MARKER,cleanup);
+      buffer.append(line);
+    }
+    buffer.append("\n");
+  }
+  if (!javaMethod.nativeCode.contains("return")) {
+    buffer.append(cleanup);
   }
   buffer.append("}");
 }
