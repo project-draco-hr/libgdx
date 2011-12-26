@@ -6,7 +6,6 @@
   while (index >= 0) {
     JavaMethod method=parseJavaMethod(classFile,index);
     if (method == null)     throw new RuntimeException("Couldn't parse method");
-    System.out.println(method);
     methods.add(method);
     index=classFile.indexOf(methodMarker,method.endIndex);
   }

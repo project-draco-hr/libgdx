@@ -8,11 +8,13 @@
       if (file.extension().equals("java") && !file.name().contains("NativeCodeGenerator")) {
         String javaContent=file.readString();
         if (javaContent.contains(JAVA_METHOD_MARKER)) {
+          System.out.print("Generating C/C++ for '" + file + "'...");
           generateHFile(file);
           String className=getFullyQualifiedClassName(file);
           FileDescriptor hFile=new FileDescriptor(jniDir.path() + "/" + className+ ".h");
           FileDescriptor cppFile=new FileDescriptor(jniDir + "/" + className+ ".cpp");
           generateCppFile(javaContent,hFile,cppFile);
+          System.out.println("done");
         }
       }
     }

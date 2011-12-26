@@ -19,6 +19,5 @@
     mergeJavaAndCMethod(buffer,javaMethods.get(i),cMethods.get(i));
     buffer.append("\n");
   }
-  System.out.println(buffer.toString());
   cppFile.writeString(buffer.toString(),false);
 }
