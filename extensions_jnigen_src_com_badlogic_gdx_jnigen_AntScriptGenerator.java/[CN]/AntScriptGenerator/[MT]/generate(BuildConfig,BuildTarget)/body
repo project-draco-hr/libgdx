@@ -24,7 +24,7 @@
       libsDirs.add("../" + libsDir.path().replace('\\','/'));
     }
   }
-  String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-template.xml",FileType.Classpath).readString();
+  String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build.xml.template",FileType.Classpath).readString();
   StringBuffer clean=new StringBuffer();
   StringBuffer compile=new StringBuffer();
   StringBuffer pack=new StringBuffer();
