@@ -13,8 +13,8 @@
   for (  String include : target.cppIncludes)   includes[idx++]=include;
   idx=0;
   String[] excludes=new String[target.cExcludes.length + target.cppExcludes.length];
-  for (  String exclude : target.cExcludes)   excludes[idx++]=exclude;
-  for (  String exclude : target.cppExcludes)   excludes[idx++]=exclude;
+  for (  String exclude : target.cExcludes)   excludes[idx++]=config.jniDir + "/" + exclude;
+  for (  String exclude : target.cppExcludes)   excludes[idx++]=config.jniDir + "/" + exclude;
   gatherSourceFiles(config.jniDir,includes,excludes,files);
   FileDescriptor manifest=config.jniDir.parent();
   if (manifest.path().equals("/") || manifest.path().equals("\\"))   manifest=new FileDescriptor("AndroidManifest.xml");
