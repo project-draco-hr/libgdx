@@ -24,7 +24,7 @@
   }
   StringBuffer headerDirs=new StringBuffer();
   for (  String headerDir : target.headerDirs) {
-    headerDirs.append("\t\t\t<arg value=\"" + headerDir + "\"/>\n");
+    headerDirs.append("\t\t\t<arg value=\"-I" + headerDir + "\"/>\n");
   }
   template=template.replace("%projectName%",config.sharedLibName + "-" + target.os+ "-"+ (target.is64Bit ? "64" : "32"));
   template=template.replace("%buildDir%",config.buildDir.child(target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32")).path().replace('\\','/'));
