@@ -1,10 +1,6 @@
 {
   try {
-    FileDescriptor build=new FileDescriptor(buildFile);
-    String ant=System.getProperty("os.name").contains("Windows") ? "ant.bat" : "ant";
-    String command=ant + " -f " + build.name()+ " "+ params;
-    System.out.println("Executing '" + command + "'");
-    final Process process=Runtime.getRuntime().exec(command,null,build.parent().file());
+    final Process process=Runtime.getRuntime().exec(command,null,directory);
     Thread t=new Thread(new Runnable(){
       @Override public void run(){
         BufferedReader reader=new BufferedReader(new InputStreamReader(process.getInputStream()));

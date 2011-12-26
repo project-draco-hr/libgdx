@@ -1,0 +1,5 @@
+{
+  FileDescriptor build=new FileDescriptor(directory);
+  String command="ndk-build";
+  startProcess(command,build.file());
+}
