@@ -1,0 +1,12 @@
+{
+  String fileName=file.path().replace('\\','/');
+  if (file.isDirectory()) {
+    if (match(fileName,excludes))     return;
+    for (    FileDescriptor child : file.list()) {
+      gatherSourceFiles(child,includes,excludes,files);
+    }
+  }
+ else {
+    if (match(fileName,includes))     files.add(file);
+  }
+}
