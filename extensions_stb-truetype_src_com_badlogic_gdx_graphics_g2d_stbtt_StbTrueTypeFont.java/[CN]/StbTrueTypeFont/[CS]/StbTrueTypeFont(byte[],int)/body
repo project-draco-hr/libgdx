@@ -1,4 +1,5 @@
 {
+  new SharedLibraryLoader().load("stbtruetype");
   this.addr=StbTrueType.initFont(data,offset);
   if (this.addr == 0)   throw new GdxRuntimeException("Couldn't load truetype font");
 }
