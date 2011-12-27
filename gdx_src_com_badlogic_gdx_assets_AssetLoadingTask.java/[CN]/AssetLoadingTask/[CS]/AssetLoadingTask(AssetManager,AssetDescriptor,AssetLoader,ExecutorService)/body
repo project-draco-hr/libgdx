@@ -3,4 +3,5 @@
   this.assetDesc=assetDesc;
   this.loader=loader;
   this.threadPool=threadPool;
+  startTime=manager.log.getLevel() == Logger.DEBUG ? System.nanoTime() : 0;
 }
