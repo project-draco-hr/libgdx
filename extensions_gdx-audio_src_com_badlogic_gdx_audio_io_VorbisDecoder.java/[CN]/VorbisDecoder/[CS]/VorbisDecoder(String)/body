@@ -1,0 +1,4 @@
+{
+  handle=openFile(filename);
+  if (handle == 0)   throw new IllegalArgumentException("couldn't open file '" + filename + "'");
+}

@@ -1,0 +1,4 @@
+{
+  float scale=1.0f / Short.MAX_VALUE;
+  for (int i=offsetSrc, ii=offsetDst; i < numBytes; i++, ii++)   dst[i]=src[ii] * scale;
+}

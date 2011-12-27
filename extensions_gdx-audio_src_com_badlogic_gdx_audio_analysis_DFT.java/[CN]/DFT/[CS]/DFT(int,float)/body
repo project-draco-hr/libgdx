@@ -1,0 +1,5 @@
+{
+  super(timeSize,sampleRate);
+  if (timeSize % 2 != 0)   throw new IllegalArgumentException("DFT: timeSize must be even.");
+  buildTrigTables();
+}

@@ -1,0 +1,42 @@
+{
+  for (int i=0; i < spectrum.length; i++) {
+    spectrum[i]=(float)Math.sqrt(real[i] * real[i] + imag[i] * imag[i]);
+  }
+  if (whichAverage == LINAVG) {
+    int avgWidth=(int)spectrum.length / averages.length;
+    for (int i=0; i < averages.length; i++) {
+      float avg=0;
+      int j;
+      for (j=0; j < avgWidth; j++) {
+        int offset=j + i * avgWidth;
+        if (offset < spectrum.length) {
+          avg+=spectrum[offset];
+        }
+ else {
+          break;
+        }
+      }
+      avg/=j + 1;
+      averages[i]=avg;
+    }
+  }
+ else   if (whichAverage == LOGAVG) {
+    for (int i=0; i < octaves; i++) {
+      float lowFreq, hiFreq, freqStep;
+      if (i == 0) {
+        lowFreq=0;
+      }
+ else {
+        lowFreq=(sampleRate / 2) / (float)Math.pow(2,octaves - i);
+      }
+      hiFreq=(sampleRate / 2) / (float)Math.pow(2,octaves - i - 1);
+      freqStep=(hiFreq - lowFreq) / avgPerOctave;
+      float f=lowFreq;
+      for (int j=0; j < avgPerOctave; j++) {
+        int offset=j + i * avgPerOctave;
+        averages[offset]=calcAvg(f,f + freqStep);
+        f+=freqStep;
+      }
+    }
+  }
+}

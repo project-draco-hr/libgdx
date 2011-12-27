@@ -1,0 +1,8 @@
+{
+  if (buffer.length - startAt < timeSize) {
+    throw new IllegalArgumentException("FourierTransform.forward: not enough samples in the buffer between " + startAt + " and "+ buffer.length+ " to perform a transform.");
+  }
+  float[] section=new float[timeSize];
+  System.arraycopy(buffer,startAt,section,0,section.length);
+  forward(section);
+}
