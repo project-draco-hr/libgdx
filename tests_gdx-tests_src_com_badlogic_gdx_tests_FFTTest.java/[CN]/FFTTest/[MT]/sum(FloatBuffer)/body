@@ -1,5 +1,0 @@
-{
-  float sum=0;
-  for (int i=1; i < SAMPLES / 2 + 1; i++)   sum+=buffer.get(i) * 2 / SAMPLES;
-  return sum;
-}
