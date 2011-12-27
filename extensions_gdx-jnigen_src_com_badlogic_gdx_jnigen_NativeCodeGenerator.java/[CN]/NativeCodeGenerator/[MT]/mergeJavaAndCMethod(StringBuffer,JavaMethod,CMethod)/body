@@ -10,7 +10,7 @@
     if (i < javaMethod.arguments.size() - 1)     buffer.append(", ");
   }
   buffer.append(") {\n");
-  if (javaMethod.hasArrayListOrBuffer) {
+  if (javaMethod.hasDisposableArgument) {
     for (    Argument arg : javaMethod.arguments) {
       if (arg.type == ArgumentType.DirectBuffer) {
         buffer.append("\tchar* " + arg.name + " = (char*)env->GetDirectBufferAddress("+ NON_POD_PREFIX+ arg.name+ ");\n");
@@ -30,7 +30,7 @@
     }
   }
   StringBuffer cleanup=new StringBuffer();
-  if (javaMethod.hasArrayListOrBuffer) {
+  if (javaMethod.hasDisposableArgument) {
     for (    Argument arg : javaMethod.arguments) {
       if (arg.type == ArgumentType.ArrayList) {
         cleanup.append("\tenv->ReleasePrimitiveArrayCritical(" + NON_POD_PREFIX + arg.name+ ", "+ arg.name+ ", 0);\n");
