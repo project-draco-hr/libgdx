@@ -2,7 +2,9 @@
   File nativesDir=new File(System.getProperty("java.io.tmpdir") + "/jnigen/" + crc(sharedLibName));
   File nativeFile=new File(nativesDir,sharedLibName);
   try {
-    InputStream input=SharedLibraryLoader.class.getResourceAsStream("/" + sharedLibName);
+    InputStream input=null;
+    if (nativesJar == null)     input=SharedLibraryLoader.class.getResourceAsStream("/" + sharedLibName);
+ else     input=getFromJar(nativesJar,sharedLibName);
     if (input == null)     return null;
     nativesDir.mkdirs();
     FileOutputStream output=new FileOutputStream(nativeFile);
@@ -16,6 +18,8 @@
     output.close();
   }
  catch (  IOException ex) {
+    ex.printStackTrace();
+    throw new RuntimeException(ex);
   }
   return nativeFile.exists() ? nativeFile.getAbsolutePath() : null;
 }
