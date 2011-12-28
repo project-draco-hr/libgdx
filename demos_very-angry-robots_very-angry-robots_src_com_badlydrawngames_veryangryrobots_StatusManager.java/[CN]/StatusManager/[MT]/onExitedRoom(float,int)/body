@@ -1,9 +1,7 @@
 {
-  gameRoomsExited++;
   if (robots == 0) {
     chickenRooms=0;
     cleanRooms++;
-    gameCleanRooms++;
     if (cleanRooms == CLEAN_ROOMS) {
       achievement(Achievements.PERFECTIONIST);
     }
@@ -14,7 +12,6 @@
  else {
     cleanRooms=0;
     chickenRooms++;
-    gameChickenRooms++;
     if (chickenRooms == CHICKEN_ROOMS) {
       achievement(Achievements.COWARD);
     }

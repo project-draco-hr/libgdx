@@ -1,6 +1,5 @@
 {
   robotsShot++;
-  gameRobotsShot++;
   if (robotsShot == numRobots) {
     achievement(Achievements.PERFECT_SHOT);
   }
