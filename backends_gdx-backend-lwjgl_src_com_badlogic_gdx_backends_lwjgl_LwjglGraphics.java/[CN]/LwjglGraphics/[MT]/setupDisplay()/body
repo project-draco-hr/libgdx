@@ -6,6 +6,7 @@
     if (!setDisplayMode(config.width,config.height,config.fullscreen))     throw new GdxRuntimeException("Couldn't set display mode " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
   }
   Display.setTitle(config.title);
+  Display.setResizable(config.resizable);
   createDisplayPixelFormat();
   initiateGLInstances();
 }
