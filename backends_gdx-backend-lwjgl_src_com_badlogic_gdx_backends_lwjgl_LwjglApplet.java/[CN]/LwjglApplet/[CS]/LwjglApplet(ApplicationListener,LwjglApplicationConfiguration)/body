@@ -1,0 +1,19 @@
+{
+  LwjglNativesLoader.load=false;
+  canvas=new Canvas(){
+    public final void addNotify(){
+      super.addNotify();
+      app=new LwjglAppletApplication(listener,canvas,config);
+    }
+    public final void removeNotify(){
+      app.stop();
+      super.removeNotify();
+    }
+  }
+;
+  setLayout(new BorderLayout());
+  canvas.setIgnoreRepaint(true);
+  add(canvas);
+  canvas.setFocusable(true);
+  canvas.requestFocus();
+}
