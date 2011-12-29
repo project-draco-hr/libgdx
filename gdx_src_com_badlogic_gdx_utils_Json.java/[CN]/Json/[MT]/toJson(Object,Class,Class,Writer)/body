@@ -1,7 +1,9 @@
 {
   if (!(writer instanceof JsonWriter)) {
-    this.writer=new JsonWriter(writer);
-    ((JsonWriter)this.writer).setOutputType(outputType);
+    writer=new JsonWriter(writer);
   }
+  ((JsonWriter)writer).setOutputType(outputType);
+  this.writer=(JsonWriter)writer;
   writeValue(object,knownType,elementType);
+  this.writer=null;
 }
