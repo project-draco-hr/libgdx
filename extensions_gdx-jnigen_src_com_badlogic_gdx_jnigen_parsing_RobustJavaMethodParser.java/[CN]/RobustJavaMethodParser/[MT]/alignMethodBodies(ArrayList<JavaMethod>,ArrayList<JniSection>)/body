@@ -1,0 +1,10 @@
+{
+  for (  JavaMethod method : methods) {
+    for (    JniSection section : methodBodies) {
+      if (method.getEndIndex() == section.getStartIndex()) {
+        method.setNativeCode(section.getNativeCode());
+        break;
+      }
+    }
+  }
+}

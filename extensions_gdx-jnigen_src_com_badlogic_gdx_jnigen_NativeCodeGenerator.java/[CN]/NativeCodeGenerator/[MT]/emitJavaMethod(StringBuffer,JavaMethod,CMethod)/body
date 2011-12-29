@@ -1,0 +1,32 @@
+{
+  if (javaMethod.hasDisposableArgument() && javaMethod.getNativeCode().contains("return")) {
+    StringBuffer jniSetupCode=new StringBuffer();
+    StringBuffer jniCleanupCode=new StringBuffer();
+    StringBuffer additionalArgs=new StringBuffer();
+    StringBuffer wrapperArgs=new StringBuffer();
+    emitJniSetupCode(jniSetupCode,javaMethod,additionalArgs,wrapperArgs);
+    emitJniCleanupCode(jniCleanupCode,javaMethod,cMethod);
+    String wrappedMethodName=emitMethodSignature(buffer,javaMethod,cMethod,additionalArgs.toString());
+    emitMethodBody(buffer,javaMethod);
+    buffer.append("}\n\n");
+    emitMethodSignature(buffer,javaMethod,cMethod,null);
+    buffer.append(jniSetupCode);
+    buffer.append("\t" + cMethod.getReturnType() + JNI_RETURN_VALUE+ " = "+ wrappedMethodName+ "("+ wrapperArgs.toString()+ ");\n\n");
+    buffer.append(jniCleanupCode);
+    buffer.append("\treturn " + JNI_RETURN_VALUE + ";\n");
+    buffer.append("}\n\n");
+  }
+ else {
+    StringBuffer jniSetupCode=new StringBuffer();
+    StringBuffer jniCleanupCode=new StringBuffer();
+    StringBuffer additionalArgs=new StringBuffer();
+    StringBuffer wrapperArgs=new StringBuffer();
+    emitJniSetupCode(jniSetupCode,javaMethod,additionalArgs,wrapperArgs);
+    emitJniCleanupCode(jniCleanupCode,javaMethod,cMethod);
+    emitMethodSignature(buffer,javaMethod,cMethod,null);
+    buffer.append(jniSetupCode);
+    emitMethodBody(buffer,javaMethod);
+    buffer.append(jniCleanupCode);
+    buffer.append("}\n\n");
+  }
+}

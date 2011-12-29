@@ -1,23 +1,19 @@
 {
   String headerFileContent=hFile.readString();
-  ArrayList<JavaMethod> javaMethods=parseJavaMethods(javaFileContent);
-  ArrayList<CMethod> cMethods=parseCMethods(headerFileContent);
+  ArrayList<JavaSegment> javaSegments=javaMethodParser.parse(javaFileContent);
+  ArrayList<CMethod> cMethods=cMethodParser.parse(headerFileContent).getMethods();
   StringBuffer buffer=new StringBuffer();
   buffer.append("#include <" + hFile.name() + ">\n");
-  int index=javaFileContent.indexOf(JAVA_JNI_MARKER,0);
-  while (index != -1) {
-    int endIndex=javaFileContent.indexOf("*/",index);
-    if (endIndex == -1)     break;
-    String jniSection=javaFileContent.substring(index + JAVA_JNI_MARKER.length(),endIndex);
-    String[] lines=jniSection.split("\n");
-    for (    String line : lines) {
-      buffer.append(line);
+  for (  JavaSegment segment : javaSegments) {
+    if (segment instanceof JniSection) {
+      emitJniSection(buffer,(JniSection)segment);
     }
-    index=javaFileContent.indexOf(JAVA_JNI_MARKER,endIndex);
-  }
-  for (int i=0; i < javaMethods.size(); i++) {
-    mergeJavaAndCMethod(buffer,javaMethods.get(i),cMethods.get(i));
-    buffer.append("\n");
+    if (segment instanceof JavaMethod) {
+      JavaMethod javaMethod=(JavaMethod)segment;
+      CMethod cMethod=findCMethod(javaMethod,cMethods);
+      if (cMethod == null)       throw new RuntimeException("Couldn't find C method for Java method '" + javaMethod.getClassName() + "#"+ javaMethod.getName()+ "'");
+      emitJavaMethod(buffer,javaMethod,cMethod);
+    }
   }
   cppFile.writeString(buffer.toString(),false,"UTF-8");
 }

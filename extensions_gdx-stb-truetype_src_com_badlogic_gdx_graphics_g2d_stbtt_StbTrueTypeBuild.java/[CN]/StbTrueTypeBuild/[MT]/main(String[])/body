@@ -1,5 +1,5 @@
 {
-  new NativeCodeGenerator().generate("src","bin","jni");
+  new NativeCodeGenerator().generate();
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   win32home.compilerPrefix="";
   win32home.buildFileName="build-windows32home.xml";

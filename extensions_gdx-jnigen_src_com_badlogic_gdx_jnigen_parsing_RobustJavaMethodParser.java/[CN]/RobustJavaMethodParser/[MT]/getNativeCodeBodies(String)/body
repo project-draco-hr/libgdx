@@ -1,0 +1,9 @@
+{
+  ArrayList<JniSection> sections=getComments(classFile);
+  Iterator<JniSection> iter=sections.iterator();
+  while (iter.hasNext()) {
+    JniSection section=iter.next();
+    if (section.getNativeCode().startsWith("JNI"))     iter.remove();
+  }
+  return sections;
+}

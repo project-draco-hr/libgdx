@@ -1,0 +1,4 @@
+{
+  emitLineMarker(buffer,section.getStartIndex());
+  buffer.append(section.getNativeCode().replace("\r",""));
+}

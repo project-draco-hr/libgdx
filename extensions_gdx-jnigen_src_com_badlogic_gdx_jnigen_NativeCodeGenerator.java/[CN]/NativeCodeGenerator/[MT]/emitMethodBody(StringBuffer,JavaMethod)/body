@@ -1,0 +1,5 @@
+{
+  emitLineMarker(buffer,javaMethod.getEndIndex());
+  buffer.append(javaMethod.getNativeCode());
+  buffer.append("\n");
+}

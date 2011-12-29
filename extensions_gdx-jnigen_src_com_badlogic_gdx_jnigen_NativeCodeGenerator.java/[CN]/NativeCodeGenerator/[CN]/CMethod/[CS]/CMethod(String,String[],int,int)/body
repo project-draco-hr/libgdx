@@ -1,9 +1,0 @@
-{
-  this.head=head;
-  this.arguments=arguments;
-  this.startIndex=startIndex;
-  this.endIndex=endIndex;
-  for (int i=0; i < arguments.length; i++) {
-    arguments[i]=arguments[i].trim();
-  }
-}

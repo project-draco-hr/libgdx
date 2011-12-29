@@ -1,0 +1,10 @@
+{
+  for (  CMethod cMethod : cMethods) {
+    if (cMethod.getHead().contains(javaMethod.getClassName() + "_" + javaMethod.getName())) {
+      if (cMethod.getArgumentTypes().length - 2 == javaMethod.getArguments().size()) {
+        return cMethod;
+      }
+    }
+  }
+  return null;
+}

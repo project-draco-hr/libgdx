@@ -1,0 +1,17 @@
+{
+  this.className=className;
+  this.name=name;
+  this.isStatic=isStatic;
+  this.returnType=returnType;
+  this.nativeCode=nativeCode;
+  this.arguments=arguments;
+  this.startIndex=startIndex;
+  this.endIndex=endIndex;
+  for (  Argument arg : arguments) {
+    if (arg.type.isArray() || arg.type.isBuffer() || arg.type.isString()) {
+      hasDisposableArgument=true;
+      return;
+    }
+  }
+  hasDisposableArgument=false;
+}

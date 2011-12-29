@@ -1,0 +1,46 @@
+{
+  for (  Argument arg : javaMethod.getArguments()) {
+    if (!arg.getType().isPlainOldDataType() && !arg.getType().isObject()) {
+      wrapperArgs.append(JNI_ARG_PREFIX);
+    }
+    wrapperArgs.append(arg.getName());
+    wrapperArgs.append(", ");
+  }
+  for (  Argument arg : javaMethod.getArguments()) {
+    if (arg.getType().isBuffer()) {
+      String type=arg.getType().getBufferCType();
+      buffer.append("\t" + type + " "+ arg.getName()+ " = ("+ type+ ")env->GetDirectBufferAddress("+ JNI_ARG_PREFIX+ arg.getName()+ ");\n");
+      additionalArgs.append(", ");
+      additionalArgs.append(type);
+      additionalArgs.append(" ");
+      additionalArgs.append(arg.getName());
+      wrapperArgs.append(", ");
+      wrapperArgs.append(arg.getName());
+    }
+  }
+  for (  Argument arg : javaMethod.getArguments()) {
+    if (arg.getType().isString()) {
+      String type="char*";
+      buffer.append("\t" + type + " "+ arg.getName()+ " = ("+ type+ ")env->GetStringUTFChars("+ JNI_ARG_PREFIX+ arg.getName()+ ", 0);\n");
+      additionalArgs.append(", ");
+      additionalArgs.append(type);
+      additionalArgs.append(" ");
+      additionalArgs.append(arg.getName());
+      wrapperArgs.append(", ");
+      wrapperArgs.append(arg.getName());
+    }
+  }
+  for (  Argument arg : javaMethod.getArguments()) {
+    if (arg.getType().isArray()) {
+      String type=arg.getType().getArrayCType();
+      buffer.append("\t" + type + " "+ arg.getName()+ " = ("+ type+ ")env->GetPrimitiveArrayCritical("+ JNI_ARG_PREFIX+ arg.getName()+ ", 0);\n");
+      additionalArgs.append(", ");
+      additionalArgs.append(type);
+      additionalArgs.append(" ");
+      additionalArgs.append(arg.getName());
+      wrapperArgs.append(", ");
+      wrapperArgs.append(arg.getName());
+    }
+  }
+  buffer.append("\n");
+}
