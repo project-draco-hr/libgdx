@@ -1,4 +1,5 @@
 {
+  Gdx.gl.glPixelStorei(GL10.GL_PACK_ALIGNMENT,1);
   final int potW=MathUtils.nextPowerOfTwo(w);
   final int potH=MathUtils.nextPowerOfTwo(h);
   final Pixmap pixmap=new Pixmap(potW,potH,Format.RGBA8888);

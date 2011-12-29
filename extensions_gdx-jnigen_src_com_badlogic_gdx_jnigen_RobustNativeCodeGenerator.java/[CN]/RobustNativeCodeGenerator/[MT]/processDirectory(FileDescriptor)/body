@@ -1,0 +1,14 @@
+{
+  FileDescriptor[] files=dir.list();
+  for (  FileDescriptor file : files) {
+    if (file.isDirectory() && !file.path().contains(".svn")) {
+      processDirectory(file);
+    }
+ else {
+      if (file.extension().equals("java") && !file.name().contains("NativeCodeGenerator")) {
+        CompilationUnit cu=JavaParser.parse(file.read());
+        System.out.println(cu.toString());
+      }
+    }
+  }
+}

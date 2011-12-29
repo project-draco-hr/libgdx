@@ -1,4 +1,5 @@
 {
+  Gdx.gl.glPixelStorei(GL10.GL_PACK_ALIGNMENT,1);
   final ByteBuffer pixels=BufferUtils.newByteBuffer(w * h * 4);
   Gdx.gl.glReadPixels(x,y,w,h,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixels);
   final int numBytes=w * h * 4;
