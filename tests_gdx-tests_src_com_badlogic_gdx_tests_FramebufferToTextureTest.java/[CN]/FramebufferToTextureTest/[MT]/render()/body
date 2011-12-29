@@ -14,10 +14,12 @@
   mesh.render(GL10.GL_TRIANGLES);
   gl.glPopMatrix();
   if (Gdx.input.justTouched() || fbTexture == null) {
+    if (fbTexture != null)     fbTexture.getTexture().dispose();
+    fbTexture=ScreenUtils.getFrameBufferTexture();
   }
   batch.begin();
   if (fbTexture != null) {
-    batch.draw(fbTexture,0,Gdx.graphics.getHeight() - 100,100,100,0,0,fbTexture.getWidth(),fbTexture.getHeight(),false,true);
+    batch.draw(fbTexture,0,0,100,100);
   }
   font.draw(batch,"Touch screen to take a snapshot",10,40);
   batch.end();
