@@ -3,6 +3,7 @@
   if (action.isDone()) {
     Action oldAction=action;
     action=action.copy();
+    action.setCompletionListener(oldAction.getCompletionListener());
     oldAction.finish();
     action.setTarget(target);
   }
