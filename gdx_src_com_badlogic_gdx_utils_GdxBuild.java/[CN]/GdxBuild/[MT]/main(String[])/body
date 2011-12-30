@@ -10,7 +10,7 @@
   includes=new String[]{"**/Gdx2DPixmap.java"};
   new NativeCodeGenerator().generate("src","bin",JNI_DIR + "/gdx2d/",includes,null);
   String[] headerDirs={"./","etc1/","gdx2d/"};
-  BuildConfig config=new BuildConfig("gdx","native",LIBS_DIR,JNI_DIR);
+  BuildConfig config=new BuildConfig("gdx","../target/native",LIBS_DIR,JNI_DIR);
   BuildTarget target=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   target.compilerPrefix="";
   target.excludeFromMasterBuildFile=true;
