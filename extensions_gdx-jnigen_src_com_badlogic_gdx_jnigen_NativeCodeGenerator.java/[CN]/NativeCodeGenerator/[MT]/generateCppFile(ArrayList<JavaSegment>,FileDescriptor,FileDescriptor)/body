@@ -1,6 +1,5 @@
 {
   String headerFileContent=hFile.readString();
-  ArrayList<JavaSegment> javaSegments=javaMethodParser.parse(javaFileContent);
   ArrayList<CMethod> cMethods=cMethodParser.parse(headerFileContent).getMethods();
   StringBuffer buffer=new StringBuffer();
   buffer.append("#include <" + hFile.name() + ">\n");

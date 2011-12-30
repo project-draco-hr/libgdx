@@ -1,5 +1,5 @@
 {
-  new NativeCodeGenerator().generate("src","bin","jni",null,new String[]{"**/BulletBuild.java"});
+  new NativeCodeGenerator().generate("src","bin","jni");
   String[] excludes={"src/BulletMultiThreaded/GpuSoftBodySolvers/**"};
   String[] headers={"src/"};
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);

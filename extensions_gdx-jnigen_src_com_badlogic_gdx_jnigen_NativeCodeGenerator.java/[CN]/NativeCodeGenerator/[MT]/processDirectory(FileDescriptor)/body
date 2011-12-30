@@ -20,9 +20,14 @@
         }
         String javaContent=file.readString();
         if (javaContent.contains(JNI_METHOD_MARKER)) {
+          ArrayList<JavaSegment> javaSegments=javaMethodParser.parse(javaContent);
+          if (javaSegments.size() == 0) {
+            System.out.println("Skipping '" + file + "', no JNI code found.");
+            continue;
+          }
           System.out.print("Generating C/C++ for '" + file + "'...");
           generateHFile(file);
-          generateCppFile(javaContent,hFile,cppFile);
+          generateCppFile(javaSegments,hFile,cppFile);
           System.out.println("done");
         }
       }
