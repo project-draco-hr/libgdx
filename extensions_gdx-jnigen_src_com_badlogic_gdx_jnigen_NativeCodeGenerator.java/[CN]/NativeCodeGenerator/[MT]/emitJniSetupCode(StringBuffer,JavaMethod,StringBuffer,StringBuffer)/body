@@ -38,7 +38,7 @@
     }
   }
   for (  Argument arg : javaMethod.getArguments()) {
-    if (arg.getType().isArray()) {
+    if (arg.getType().isPrimitiveArray()) {
       String type=arg.getType().getArrayCType();
       buffer.append("\t" + type + " "+ arg.getName()+ " = ("+ type+ ")env->GetPrimitiveArrayCritical("+ JNI_ARG_PREFIX+ arg.getName()+ ", 0);\n");
       additionalArgs.append(", ");

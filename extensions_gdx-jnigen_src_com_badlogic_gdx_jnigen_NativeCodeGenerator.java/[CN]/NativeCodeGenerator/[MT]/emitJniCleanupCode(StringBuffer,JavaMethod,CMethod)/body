@@ -1,6 +1,6 @@
 {
   for (  Argument arg : javaMethod.getArguments()) {
-    if (arg.getType().isArray()) {
+    if (arg.getType().isPrimitiveArray()) {
       buffer.append("\tenv->ReleasePrimitiveArrayCritical(" + JNI_ARG_PREFIX + arg.getName()+ ", "+ arg.getName()+ ", 0);\n");
     }
   }
