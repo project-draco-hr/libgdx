@@ -1,0 +1,20 @@
+{
+  String JNI_DIR="jni-new";
+  String LIBS_DIR="libs-new";
+  String[] includes={"**/MD5Jni.java"};
+  new NativeCodeGenerator().generate("src","bin",JNI_DIR + "/",includes,null);
+  includes=new String[]{"**/Matrix4.java"};
+  new NativeCodeGenerator().generate("src","bin",JNI_DIR + "/",includes,null);
+  includes=new String[]{"**/ETC1.java"};
+  new NativeCodeGenerator().generate("src","bin",JNI_DIR + "/etc1/",includes,null);
+  includes=new String[]{"**/Gdx2DPixmap.java"};
+  new NativeCodeGenerator().generate("src","bin",JNI_DIR + "/gdx2d/",includes,null);
+  String[] headerDirs={"./","etc1/","gdx2d/"};
+  BuildConfig config=new BuildConfig("gdx","native",LIBS_DIR,JNI_DIR);
+  BuildTarget target=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
+  target.compilerPrefix="";
+  target.excludeFromMasterBuildFile=true;
+  target.headerDirs=headerDirs;
+  new AntScriptGenerator().generate(config,target);
+  BuildExecutor.executeAnt(JNI_DIR + "/build-windows32.xml","clean link -v");
+}
