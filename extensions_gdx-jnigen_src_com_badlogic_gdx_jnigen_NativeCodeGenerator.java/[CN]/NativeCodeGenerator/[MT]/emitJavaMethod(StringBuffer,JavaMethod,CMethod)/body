@@ -11,7 +11,7 @@
     buffer.append("}\n\n");
     emitMethodSignature(buffer,javaMethod,cMethod,null);
     buffer.append(jniSetupCode);
-    buffer.append("\t" + cMethod.getReturnType() + JNI_RETURN_VALUE+ " = "+ wrappedMethodName+ "("+ wrapperArgs.toString()+ ");\n\n");
+    buffer.append("\t" + cMethod.getReturnType() + " "+ JNI_RETURN_VALUE+ " = "+ wrappedMethodName+ "("+ wrapperArgs.toString()+ ");\n\n");
     buffer.append(jniCleanupCode);
     buffer.append("\treturn " + JNI_RETURN_VALUE + ";\n");
     buffer.append("}\n\n");
