@@ -1,5 +1,5 @@
 {
-  new NativeCodeGenerator().generate("src","bin","jni");
+  new NativeCodeGenerator().generate("src","bin","jni",null,new String[]{"**/BulletBuild.java"});
   String[] excludes={"src/BulletMultiThreaded/GpuSoftBodySolvers/**"};
   String[] headers={"src/"};
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
@@ -28,6 +28,6 @@
   BuildTarget android=BuildTarget.newDefaultTarget(TargetOs.Android,false);
   android.cExcludes=android.cppExcludes=excludes;
   android.headerDirs=headers;
-  new AntScriptGenerator().generate(new BuildConfig("bullet"),win32home,win32,win64,lin32,lin64,mac,android);
+  new AntScriptGenerator().generate(new BuildConfig("gdx-bullet"),win32home,win32,win64,lin32,lin64,mac,android);
   BuildExecutor.executeAnt("jni/build-windows32home.xml","-v");
 }
