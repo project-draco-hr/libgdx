@@ -12,6 +12,5 @@
       throw new Exception("Couldn't create JNI directory '" + jniDir + "'");
     }
   }
-  copyJniHeaders(jniDir);
   processDirectory(this.sourceDir);
 }

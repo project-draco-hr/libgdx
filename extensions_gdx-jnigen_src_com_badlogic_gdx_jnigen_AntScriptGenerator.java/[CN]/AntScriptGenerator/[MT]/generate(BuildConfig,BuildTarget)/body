@@ -5,6 +5,7 @@
   if (!config.jniDir.exists()) {
     if (!config.jniDir.mkdirs())     throw new RuntimeException("Couldn't create native code directory '" + config.jniDir + "'");
   }
+  copyJniHeaders(config.jniDir.path());
   ArrayList<String> buildFiles=new ArrayList<String>();
   ArrayList<String> libsDirs=new ArrayList<String>();
   ArrayList<String> sharedLibFiles=new ArrayList<String>();
