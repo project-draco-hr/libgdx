@@ -1,11 +1,11 @@
 {
-  new NativeCodeGenerator().generate("src","bin","jni",new String[]{"**/JniGenTest.java"},null);
+  new NativeCodeGenerator().generate("src","bin","jni",new String[]{"**/MyJniClass.java"},null);
   BuildConfig buildConfig=new BuildConfig("test");
   BuildTarget win32=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   win32.compilerPrefix="";
   win32.cppFlags+=" -g";
   new AntScriptGenerator().generate(buildConfig,win32);
-  BuildExecutor.executeAnt("jni/build.xml","-v");
+  BuildExecutor.executeAnt("jni/build.xml","clean all -v");
   new SharedLibraryLoader("libs/test-natives.jar").load("test");
   ByteBuffer buffer=ByteBuffer.allocateDirect(1);
   buffer.put(0,(byte)8);

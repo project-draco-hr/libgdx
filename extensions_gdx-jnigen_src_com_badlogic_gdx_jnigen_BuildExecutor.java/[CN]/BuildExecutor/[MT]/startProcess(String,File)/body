@@ -2,8 +2,6 @@
   try {
     final Process process=Runtime.getRuntime().exec(command,null,directory);
     Thread t=new Thread(new Runnable(){
-      Pattern pattern=null;
-      Matcher matcher=null;
       @Override public void run(){
         BufferedReader reader=new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line=null;
