@@ -20,7 +20,7 @@
   }
   for (  Argument arg : javaMethod.getArguments()) {
     if (arg.getType().isString()) {
-      String type="char*";
+      String type="unsigned char*";
       buffer.append("\t" + type + " "+ arg.getName()+ " = ("+ type+ ")env->GetStringUTFChars("+ JNI_ARG_PREFIX+ arg.getName()+ ", 0);\n");
       additionalArgs.append(", ");
       additionalArgs.append(type);
