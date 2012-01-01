@@ -1,8 +1,8 @@
 {
   new NativeCodeGenerator().generate("src","bin","jni",new String[]{"**/AudioTools.java","**/KissFFT.java","**/VorbisDecoder.java"},new String[]{"**/Mpg123Decoder.java"});
-  String[] headerDirs=new String[]{"kissfft","vorbis","soundtouch/include"};
+  String[] headerDirs=new String[]{"kissfft","vorbis","soundtouch/include","soundtouch/source/SoundTouch/"};
   String[] cIncludes=new String[]{"kissfft/*.c","vorbis/*.c"};
-  String[] cppIncludes=new String[]{"**/*AudioTools.cpp","**/*KissFFT.cpp","**/*VorbisDecoder.cpp","soundtouch/source/SoundTouch/**.cpp"};
+  String[] cppIncludes=new String[]{"**/*AudioTools.cpp","**/*KissFFT.cpp","**/*VorbisDecoder.cpp","soundtouch/source/SoundTouch/*.cpp"};
   String[] cppExcludes=new String[]{"**/cpu_detect_x86_win.cpp"};
   String precompileTask="<copy failonerror=\"true\" tofile=\"soundtouch\\include\\STTypes.h\" verbose=\"true\" overwrite=\"true\" file=\"STTypes.h.patched\"/>";
   BuildConfig buildConfig=new BuildConfig("gdx-audio");
@@ -56,5 +56,5 @@
   android.cppExcludes=cppExcludes;
   android.preCompileTask=precompileTask;
   new AntScriptGenerator().generate(buildConfig,win32home,win32,win64,lin32,lin64,android);
-  BuildExecutor.executeAnt("jni/build-windows32home.xml"," -v");
+  BuildExecutor.executeAnt("jni/build-windows32home.xml","-v");
 }
