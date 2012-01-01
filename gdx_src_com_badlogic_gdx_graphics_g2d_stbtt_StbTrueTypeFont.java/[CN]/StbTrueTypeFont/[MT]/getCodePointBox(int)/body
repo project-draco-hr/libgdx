@@ -1,5 +1,0 @@
-{
-  int glyphFound=StbTrueType.getCodePointBox(addr,codePoint,intArray);
-  if (glyphFound == 0)   return new Box(0,0,0,0);
-  return new Box(intArray[0],intArray[1],intArray[2],intArray[3]);
-}
