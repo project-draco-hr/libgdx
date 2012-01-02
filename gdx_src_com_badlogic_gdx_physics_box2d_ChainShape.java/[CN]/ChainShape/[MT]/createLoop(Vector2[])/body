@@ -4,5 +4,5 @@
     verts[i]=vertices[j].x;
     verts[i + 1]=vertices[j].y;
   }
-  jniCreateLoop(addr,verts);
+  jniCreateLoop(addr,verts,verts.length);
 }
