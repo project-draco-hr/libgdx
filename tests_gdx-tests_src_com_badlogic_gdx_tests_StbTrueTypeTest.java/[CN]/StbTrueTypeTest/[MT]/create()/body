@@ -1,0 +1,14 @@
+{
+  batch=new SpriteBatch();
+  StbTrueTypeFont font=new StbTrueTypeFont(Gdx.files.internal("data/DroidSerif-Regular.ttf"));
+  float scale=font.scaleForPixelHeight(32);
+  System.out.println(font.getCodePointBox('e'));
+  Bitmap glyphBitmap=font.makeCodepointBitmap(scale,scale,'e');
+  glyphBitmap.dispose();
+  int glyphIndex=font.findGlyphIndex('T');
+  glyphBitmap=font.makeGlyphBitmap(scale,scale,0,0,glyphIndex);
+  texture=new Texture(glyphBitmap.pixmap);
+  texture.bind();
+  glyphBitmap.dispose();
+  font.dispose();
+}
