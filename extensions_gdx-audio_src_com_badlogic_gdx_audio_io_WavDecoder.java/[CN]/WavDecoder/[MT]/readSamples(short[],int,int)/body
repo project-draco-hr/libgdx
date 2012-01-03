@@ -1,0 +1,19 @@
+{
+  int read=0;
+  int total=0;
+  if (buffer.length < samples.length * 2)   buffer=new byte[samples.length * 2];
+  numSamples*=2;
+  try {
+    while ((read=in.read(buffer,total,numSamples - total)) > 0) {
+      for (int j=0; j < read; j+=2) {
+        samples[offset++]=(short)(((buffer[j + 1] << 8) & 0xff00) | (buffer[j] & 0xff));
+      }
+      total+=read;
+    }
+  }
+ catch (  IOException e) {
+    return 0;
+  }
+  total=total / 2;
+  return total;
+}

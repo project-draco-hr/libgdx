@@ -1,0 +1,4 @@
+{
+  if (file.type() != FileType.External && file.type() != FileType.Absolute)   throw new IllegalArgumentException("File must be absolute or external!");
+  handle=openFile(file.file().getAbsolutePath());
+}
