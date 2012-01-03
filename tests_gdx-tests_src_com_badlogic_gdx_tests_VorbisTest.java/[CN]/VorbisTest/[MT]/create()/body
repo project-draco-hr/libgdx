@@ -1,2 +1,21 @@
 {
+  FileHandle externalFile=Gdx.files.external("tmp/test.ogg");
+  Gdx.files.internal(FILE).copyTo(externalFile);
+  decoder=new VorbisDecoder(externalFile.file().getAbsolutePath());
+  Gdx.app.log("Vorbis","channels: " + decoder.getNumChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
+  buffer=AudioTools.allocateShortBuffer(2048,2);
+  device=Gdx.audio.newAudioDevice(decoder.getRate(),decoder.getNumChannels() == 1 ? true : false);
+  Thread playbackThread=new Thread(new Runnable(){
+    @Override public void run(){
+      int readSamples=0;
+      short[] samples=new short[buffer.capacity()];
+      while ((readSamples=decoder.readSamples(buffer)) > 0) {
+        buffer.get(samples);
+        device.writeSamples(samples,0,readSamples);
+      }
+    }
+  }
+);
+  playbackThread.setDaemon(true);
+  playbackThread.start();
 }

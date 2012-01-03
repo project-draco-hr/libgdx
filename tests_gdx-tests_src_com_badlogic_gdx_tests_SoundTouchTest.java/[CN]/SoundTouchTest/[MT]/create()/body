@@ -1,0 +1,28 @@
+{
+  FileHandle externalFile=Gdx.files.external("tmp/test.ogg");
+  Gdx.files.internal(FILE).copyTo(externalFile);
+  decoder=new VorbisDecoder(externalFile.file().getAbsolutePath());
+  Gdx.app.log("SoundTouchTest","channels: " + decoder.getNumChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
+  buffer=AudioTools.allocateShortBuffer(1024 * 4,2);
+  device=Gdx.audio.newAudioDevice(decoder.getRate(),decoder.getNumChannels() == 1 ? true : false);
+  soundTouch=new SoundTouch();
+  soundTouch.setChannels(decoder.getNumChannels());
+  soundTouch.setSampleRate(decoder.getRate());
+  soundTouch.setPitchSemiTones(2);
+  Thread playbackThread=new Thread(new Runnable(){
+    @Override public void run(){
+      short[] samples=new short[buffer.capacity()];
+      int readSamples=0;
+      while ((readSamples=decoder.readSamples(buffer)) > 0) {
+        buffer.get(samples);
+        soundTouch.putSamples(samples,0,readSamples / decoder.getNumChannels());
+      }
+      while ((readSamples=soundTouch.receiveSamples(samples,0,samples.length / decoder.getNumChannels())) > 0) {
+        device.writeSamples(samples,0,readSamples * decoder.getNumChannels());
+      }
+    }
+  }
+);
+  playbackThread.setDaemon(true);
+  playbackThread.start();
+}
