@@ -1,5 +1,6 @@
 {
   if (pointer != 0)   return false;
+  isDragging=true;
   calculatePositionAndValue(x);
   return true;
 }

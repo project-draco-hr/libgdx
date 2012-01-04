@@ -1,0 +1,16 @@
+{
+  if (available == 0)   return 0;
+  int total=count=Math.min(available,count);
+  int copy=Math.min(buffer.length - readPosition,total);
+  System.arraycopy(buffer,readPosition,data,offset,copy);
+  readPosition=(readPosition + copy) % buffer.length;
+  available-=copy;
+  count-=copy;
+  if (count > 0 && available > 0) {
+    copy=Math.min(buffer.length - available,count);
+    System.arraycopy(buffer,readPosition,data,offset,copy);
+    readPosition=(readPosition + copy) % buffer.length;
+    available-=copy;
+  }
+  return total;
+}

@@ -1,4 +1,4 @@
 {
   if (canvas != null)   return canvas.getHeight();
- else   return config.height;
+ else   return Display.getHeight();
 }

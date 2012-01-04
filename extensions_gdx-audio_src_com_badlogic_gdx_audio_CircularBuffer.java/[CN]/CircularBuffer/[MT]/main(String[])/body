@@ -1,0 +1,9 @@
+{
+  CircularBuffer buffer=new CircularBuffer(5);
+  short[] write={1,2,3,4,5,6,7};
+  short[] read=new short[3];
+  buffer.write(write,0,write.length);
+  buffer.dump();
+  System.out.println(buffer.read(read,0,read.length) + " read\n");
+  buffer.dump();
+}

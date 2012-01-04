@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < length; i++) {
+    int destIndex=destPos + i;
+    short a=src[srcPos + i];
+    short b=dest[destIndex];
+    dest[destIndex]=MathUtils.clamp((short)(a + b - a * b / Short.MAX_VALUE),(short)0,Short.MAX_VALUE);
+  }
+}

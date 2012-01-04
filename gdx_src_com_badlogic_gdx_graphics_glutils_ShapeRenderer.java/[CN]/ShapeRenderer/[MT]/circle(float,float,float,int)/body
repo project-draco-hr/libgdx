@@ -7,7 +7,7 @@
   float cos=MathUtils.cos(angle);
   float sin=MathUtils.sin(angle);
   float cx=radius, cy=0;
-  for (int i=0; i <= segments; i++) {
+  for (int i=0; i < segments; i++) {
     renderer.color(color.r,color.g,color.b,color.a);
     renderer.vertex(x + cx,y + cy,0);
     float temp=cx;
@@ -16,4 +16,11 @@
     renderer.color(color.r,color.g,color.b,color.a);
     renderer.vertex(x + cx,y + cy,0);
   }
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,0);
+  float temp=cx;
+  cx=radius;
+  cy=0;
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,0);
 }

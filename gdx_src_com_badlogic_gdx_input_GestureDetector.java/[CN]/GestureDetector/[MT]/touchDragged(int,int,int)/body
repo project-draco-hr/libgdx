@@ -3,7 +3,10 @@
   if (pinching) {
     if (pointer == 0)     firstPointer.set(x,y);
  else     secondPointer.set(x,y);
-    if (listener != null)     return listener.zoom(initialDistance,firstPointer.dst(secondPointer));
+    if (listener != null) {
+      boolean result=listener.pinch(initialFirstPointer,initialSecondPointer,firstPointer,secondPointer);
+      return listener.zoom(initialFirstPointer.dst(initialSecondPointer),firstPointer.dst(secondPointer)) || result;
+    }
     return false;
   }
   tracker.update(x,y,Gdx.input.getCurrentEventTime());

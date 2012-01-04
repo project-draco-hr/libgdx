@@ -8,6 +8,7 @@
   float cos=MathUtils.cos(angle);
   float sin=MathUtils.sin(angle);
   float cx=radius, cy=0;
+  segments--;
   for (int i=0; i < segments; i++) {
     renderer.color(color.r,color.g,color.b,color.a);
     renderer.vertex(x,y,0);
@@ -19,4 +20,12 @@
     renderer.color(color.r,color.g,color.b,color.a);
     renderer.vertex(x + cx,y + cy,0);
   }
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x,y,0);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,0);
+  cx=radius;
+  cy=0;
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,0);
 }
