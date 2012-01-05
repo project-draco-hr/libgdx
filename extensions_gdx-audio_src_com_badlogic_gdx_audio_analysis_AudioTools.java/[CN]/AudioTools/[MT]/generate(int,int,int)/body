@@ -1,0 +1,10 @@
+{
+  short[] samples=new short[numSamples];
+  float increment=(float)(2 * Math.PI) * frequency / (float)samplingRate;
+  float angle=0;
+  for (int i=0; i < numSamples; i++) {
+    samples[i]=(short)(Math.sin(angle) * Short.MAX_VALUE);
+    angle+=increment;
+  }
+  return samples;
+}

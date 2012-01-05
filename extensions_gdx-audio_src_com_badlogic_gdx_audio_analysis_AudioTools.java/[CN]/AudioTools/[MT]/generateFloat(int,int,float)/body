@@ -1,0 +1,4 @@
+{
+  int numSamples=(int)(samplingRate * length);
+  return generateFloat(samplingRate,frequency,numSamples);
+}

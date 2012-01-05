@@ -1,0 +1,14 @@
+{
+  new SharedLibraryLoader("../../extensions/gdx-audio/libs/gdx-audio-natives.jar").load("gdx-audio");
+  short[] samples=AudioTools.generate(44100,440,SAMPLES);
+  float[] samplesFloat=AudioTools.generateFloat(44100,440,SAMPLES);
+  FFT fft=new FFT(SAMPLES,44100);
+  fft.forward(samplesFloat);
+  float[] spectrum=fft.getSpectrum();
+  System.out.println(Arrays.toString(spectrum));
+  spectrum=new float[SAMPLES / 2 + 1];
+  KissFFT kfft=new KissFFT(SAMPLES);
+  kfft.spectrum(samples,spectrum);
+  System.out.println(Arrays.toString(spectrum));
+  kfft.dispose();
+}

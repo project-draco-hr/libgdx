@@ -1,0 +1,10 @@
+{
+  float[] samples=new float[numSamples];
+  float increment=(float)(2 * Math.PI) * frequency / (float)samplingRate;
+  float angle=0;
+  for (int i=0; i < numSamples; i++) {
+    samples[i]=(float)Math.sin(angle);
+    angle+=increment;
+  }
+  return samples;
+}
