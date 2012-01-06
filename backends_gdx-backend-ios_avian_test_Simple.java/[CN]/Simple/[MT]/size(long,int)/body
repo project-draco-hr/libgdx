@@ -1,0 +1,5 @@
+{
+  int size=0;
+  for (long n=v; n != 0; n/=radix)   ++size;
+  return size;
+}

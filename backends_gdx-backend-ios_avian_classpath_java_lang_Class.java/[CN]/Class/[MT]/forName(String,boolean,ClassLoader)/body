@@ -1,0 +1,11 @@
+{
+  if (loader == null) {
+    loader=Class.class.vmClass.loader;
+  }
+  Class c=loader.loadClass(name);
+  Classes.link(c.vmClass,loader);
+  if (initialize) {
+    Classes.initialize(c.vmClass);
+  }
+  return c;
+}

@@ -1,0 +1,11 @@
+{
+  if (!isOpen())   return -1;
+  if (b.remaining() == 0)   return 0;
+  byte[] array=b.array();
+  if (array == null)   throw new NullPointerException();
+  int r=natRead(socket,array,b.arrayOffset() + b.position(),b.remaining(),blocking);
+  if (r > 0) {
+    b.position(b.position() + r);
+  }
+  return r;
+}

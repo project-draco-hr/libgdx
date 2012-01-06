@@ -1,0 +1,6 @@
+{
+  if (!(trace instanceof StackTraceElement[])) {
+    trace=resolveTrace(trace);
+  }
+  return (StackTraceElement[])trace;
+}

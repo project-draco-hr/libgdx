@@ -1,0 +1,10 @@
+{
+  if (pattern.pattern().equals(input.toString())) {
+    start=0;
+    end=input.length();
+    return true;
+  }
+ else {
+    return false;
+  }
+}

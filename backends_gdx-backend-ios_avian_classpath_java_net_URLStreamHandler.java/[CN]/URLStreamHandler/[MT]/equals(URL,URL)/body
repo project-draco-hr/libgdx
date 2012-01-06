@@ -1,0 +1,3 @@
+{
+  return equals(a.getHost(),b.getHost()) && (a.getPort() == b.getPort()) && equals(a.getFile(),b.getFile());
+}

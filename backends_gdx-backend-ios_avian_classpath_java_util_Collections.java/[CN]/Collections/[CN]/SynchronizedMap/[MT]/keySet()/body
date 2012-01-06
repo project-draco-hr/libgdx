@@ -1,0 +1,5 @@
+{
+synchronized (lock) {
+    return new SynchronizedSet<K>(lock,map.keySet());
+  }
+}

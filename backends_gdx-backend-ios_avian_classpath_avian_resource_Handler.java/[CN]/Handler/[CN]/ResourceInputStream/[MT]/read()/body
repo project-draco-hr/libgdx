@@ -1,0 +1,12 @@
+{
+  if (peer != 0) {
+    int c=read(peer,position);
+    if (c >= 0) {
+      ++position;
+    }
+    return c;
+  }
+ else {
+    throw new IOException();
+  }
+}

@@ -1,0 +1,11 @@
+{
+  if (array != null) {
+    while (nextCell == null && ++nextIndex < array.length) {
+      if (array[nextIndex] != null) {
+        nextCell=array[nextIndex];
+        return true;
+      }
+    }
+  }
+  return nextCell != null;
+}

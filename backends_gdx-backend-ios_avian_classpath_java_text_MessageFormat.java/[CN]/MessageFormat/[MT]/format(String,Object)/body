@@ -1,0 +1,3 @@
+{
+  return new MessageFormat(pattern).format(args,new StringBuffer(),new FieldPosition(0)).toString();
+}

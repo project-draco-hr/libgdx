@@ -1,0 +1,13 @@
+{
+  try {
+    if (predicate) {
+      return false;
+    }
+  }
+  finally {
+synchronized (this) {
+      notifyAll();
+    }
+  }
+  return true;
+}

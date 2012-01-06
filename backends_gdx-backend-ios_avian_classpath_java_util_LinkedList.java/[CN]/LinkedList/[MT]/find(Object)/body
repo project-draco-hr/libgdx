@@ -1,0 +1,8 @@
+{
+  for (Cell<T> c=front; c != null; c=c.next) {
+    if (equal(c.value,element)) {
+      return c;
+    }
+  }
+  return null;
+}

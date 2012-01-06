@@ -1,0 +1,9 @@
+{
+synchronized (lock) {
+    if (!woken) {
+      woken=true;
+      natWakeup(state);
+    }
+  }
+  return this;
+}

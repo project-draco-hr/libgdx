@@ -1,0 +1,14 @@
+{
+  if (parent != null) {
+    parent.uncaughtException(t,e);
+  }
+ else {
+    Thread.UncaughtExceptionHandler deh=Thread.getDefaultUncaughtExceptionHandler();
+    if (deh != null) {
+      deh.uncaughtException(t,e);
+    }
+ else     if (!(e instanceof ThreadDeath)) {
+      e.printStackTrace();
+    }
+  }
+}

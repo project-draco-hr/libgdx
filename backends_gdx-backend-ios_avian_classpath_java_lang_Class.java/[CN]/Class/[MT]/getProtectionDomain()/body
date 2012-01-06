@@ -1,0 +1,5 @@
+{
+  Permissions p=new Permissions();
+  p.add(new AllPermission());
+  return new ProtectionDomain(null,p);
+}

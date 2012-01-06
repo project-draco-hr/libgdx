@@ -1,0 +1,14 @@
+{
+  int length=sequence.length();
+  if (start < 0 || start > end || end >= length) {
+    throw new IndexOutOfBoundsException();
+  }
+  int count=0;
+  for (int i=start; i < end; ++i) {
+    if (isHighSurrogate(sequence.charAt(i)) && (i + 1) < end && isLowSurrogate(sequence.charAt(i + 1))) {
+      ++i;
+    }
+    ++count;
+  }
+  return count;
+}

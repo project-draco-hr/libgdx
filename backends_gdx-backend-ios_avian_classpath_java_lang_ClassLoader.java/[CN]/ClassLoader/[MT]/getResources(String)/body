@@ -1,0 +1,4 @@
+{
+  Collection<URL> resources=collectResources(name);
+  return Collections.enumeration(resources);
+}

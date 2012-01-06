@@ -1,0 +1,4 @@
+{
+  VMClass c=findLoadedVMClass(name);
+  return c == null ? null : getClass(c);
+}

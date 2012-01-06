@@ -1,0 +1,10 @@
+{
+  if (rear != null) {
+    T v=rear.value;
+    remove(rear);
+    return v;
+  }
+ else {
+    throw new NoSuchElementException();
+  }
+}

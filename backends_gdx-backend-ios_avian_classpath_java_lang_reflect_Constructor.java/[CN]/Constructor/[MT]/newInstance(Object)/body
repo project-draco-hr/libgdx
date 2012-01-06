@@ -1,0 +1,5 @@
+{
+  T v=(T)make(method.getDeclaringClass().vmClass);
+  method.invoke(v,arguments);
+  return v;
+}

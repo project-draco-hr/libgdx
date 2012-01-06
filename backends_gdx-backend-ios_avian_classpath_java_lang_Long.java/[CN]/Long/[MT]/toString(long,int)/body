@@ -1,0 +1,28 @@
+{
+  if (radix < 1 || radix > 36) {
+    throw new IllegalArgumentException("radix " + radix + " not in [1,36]");
+  }
+  if (v == 0) {
+    return "0";
+  }
+  boolean negative=v < 0;
+  int size=(negative ? 1 : 0);
+  for (long n=v; n != 0; n/=radix)   ++size;
+  char[] array=new char[size];
+  int i=size - 1;
+  for (long n=v; n != 0; n/=radix) {
+    long digit=n % radix;
+    if (negative)     digit=-digit;
+    if (digit >= 0 && digit <= 9) {
+      array[i]=(char)('0' + digit);
+    }
+ else {
+      array[i]=(char)('a' + (digit - 10));
+    }
+    --i;
+  }
+  if (negative) {
+    array[i]='-';
+  }
+  return new String(array,0,size,false);
+}

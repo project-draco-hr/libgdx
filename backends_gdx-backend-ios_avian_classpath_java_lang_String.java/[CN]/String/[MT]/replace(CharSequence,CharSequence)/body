@@ -1,0 +1,17 @@
+{
+  if (target.length() == 0) {
+    return this.infuse(replace.toString());
+  }
+  String targetString=target.toString();
+  String replaceString=replace.toString();
+  int targetSize=target.length();
+  StringBuilder returnValue=new StringBuilder();
+  String unhandled=this;
+  int index=-1;
+  while ((index=unhandled.indexOf(targetString)) != -1) {
+    returnValue.append(unhandled.substring(0,index)).append(replaceString);
+    unhandled=unhandled.substring(index + targetSize,unhandled.length());
+  }
+  returnValue.append(unhandled);
+  return returnValue.toString();
+}

@@ -1,0 +1,10 @@
+{
+  Cell<T> c=find(element);
+  if (c == null) {
+    return false;
+  }
+ else {
+    remove(c);
+    return true;
+  }
+}

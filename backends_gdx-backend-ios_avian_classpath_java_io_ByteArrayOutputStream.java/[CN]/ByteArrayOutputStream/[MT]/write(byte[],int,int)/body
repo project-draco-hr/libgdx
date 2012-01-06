@@ -1,0 +1,18 @@
+{
+  if (b == null) {
+    throw new NullPointerException();
+  }
+  if (offset < 0 || offset + length > b.length) {
+    throw new ArrayIndexOutOfBoundsException();
+  }
+  if (length == 0)   return;
+  if (buffer != null && length <= buffer.length - position) {
+    System.arraycopy(b,offset,buffer,position,length);
+    position+=length;
+  }
+ else {
+    flushBuffer();
+    chain=new Cell(copy(b,offset,length),0,length,chain);
+  }
+  this.length+=length;
+}

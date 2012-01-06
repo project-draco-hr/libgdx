@@ -1,0 +1,15 @@
+{
+  Constructor c=null;
+  Constructor[] constructors=getDeclaredConstructors();
+  for (int i=0; i < constructors.length; ++i) {
+    if (match(parameterTypes,constructors[i].getParameterTypes())) {
+      c=constructors[i];
+    }
+  }
+  if (c == null) {
+    throw new NoSuchMethodException();
+  }
+ else {
+    return c;
+  }
+}

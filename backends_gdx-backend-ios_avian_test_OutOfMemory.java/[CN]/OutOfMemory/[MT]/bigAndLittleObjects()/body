@@ -1,0 +1,10 @@
+{
+  byte[] padding=new byte[Padding];
+  Node root=null;
+  while (true) {
+    Node x=new Node();
+    x.value=new Object[1024 * 1024];
+    x.next=root;
+    root=x;
+  }
+}

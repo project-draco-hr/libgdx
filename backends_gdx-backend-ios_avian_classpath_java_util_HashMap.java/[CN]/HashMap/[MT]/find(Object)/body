@@ -1,0 +1,11 @@
+{
+  if (array != null) {
+    int index=helper.hash(key) & (array.length - 1);
+    for (Cell<K,V> c=array[index]; c != null; c=c.next()) {
+      if (helper.equal(key,c.getKey())) {
+        return c;
+      }
+    }
+  }
+  return null;
+}

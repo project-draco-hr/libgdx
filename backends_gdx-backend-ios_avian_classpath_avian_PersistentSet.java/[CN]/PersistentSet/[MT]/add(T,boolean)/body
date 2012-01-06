@@ -1,0 +1,12 @@
+{
+  Path<T> p=find(value);
+  if (!p.fresh) {
+    if (replaceExisting) {
+      return p.replaceWith(value);
+    }
+ else {
+      return this;
+    }
+  }
+  return add(p);
+}

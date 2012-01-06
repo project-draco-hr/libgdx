@@ -1,0 +1,13 @@
+{
+  byte[] bytes=new byte[(int)file.length()];
+  FileInputStream in=new FileInputStream(file);
+  try {
+    if (in.read(bytes) != (int)file.length()) {
+      throw new RuntimeException();
+    }
+    return bytes;
+  }
+  finally {
+    in.close();
+  }
+}

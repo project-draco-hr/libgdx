@@ -1,0 +1,9 @@
+{
+  if (b == null) {
+    throw new NullPointerException();
+  }
+  if (offset < 0 || offset > length || offset + length > b.length) {
+    throw new IndexOutOfBoundsException();
+  }
+  return avian.SystemClassLoader.getClass(avian.Classes.defineVMClass(this,b,offset,length));
+}

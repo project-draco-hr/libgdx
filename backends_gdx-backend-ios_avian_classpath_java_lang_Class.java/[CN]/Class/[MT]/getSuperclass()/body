@@ -1,0 +1,3 @@
+{
+  return (vmClass.super_ == null ? null : SystemClassLoader.getClass(vmClass.super_));
+}

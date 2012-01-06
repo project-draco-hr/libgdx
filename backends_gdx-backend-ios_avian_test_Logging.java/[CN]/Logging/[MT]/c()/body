@@ -1,0 +1,9 @@
+{
+  log.warning("Started c()");
+  try {
+    d();
+  }
+ catch (  Exception ex) {
+    log.log(Level.SEVERE,"Exception caught in c",ex);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  Collection<URL> urls=parent != null ? parent.collectResources(name) : new ArrayList<URL>(5);
+  URL url=findResource(name);
+  if (url != null) {
+    urls.add(url);
+  }
+  return urls;
+}

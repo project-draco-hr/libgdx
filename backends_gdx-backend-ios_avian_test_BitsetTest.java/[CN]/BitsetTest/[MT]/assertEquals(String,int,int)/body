@@ -1,0 +1,8 @@
+{
+  if (expected == actual) {
+    System.out.println(msg + " : OK. [" + actual+ ']');
+  }
+ else {
+    throw new RuntimeException("Error:" + msg + " expected:"+ expected+ ", actual:"+ actual);
+  }
+}

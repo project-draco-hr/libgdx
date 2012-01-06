@@ -1,0 +1,4 @@
+{
+  Class c=new MyClassLoader(LazyLoading.class.getClassLoader()).loadClass("LazyLoading$Test");
+  c.getMethod("test").invoke(null);
+}

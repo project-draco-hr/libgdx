@@ -1,0 +1,5 @@
+{
+  int localHeader=localHeader(w,p);
+  final int LocalHeaderSize=30;
+  return localHeader + LocalHeaderSize + localFileNameLength(w,localHeader)+ localExtraFieldLength(w,localHeader);
+}

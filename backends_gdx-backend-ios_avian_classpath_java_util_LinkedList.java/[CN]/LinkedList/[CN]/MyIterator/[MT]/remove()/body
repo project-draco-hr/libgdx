@@ -1,0 +1,10 @@
+{
+  if (toRemove != null) {
+    current=toRemove.prev;
+    LinkedList.this.remove(toRemove);
+    toRemove=null;
+  }
+ else {
+    throw new IllegalStateException();
+  }
+}

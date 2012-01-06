@@ -1,0 +1,9 @@
+{
+  int count=0;
+  for (VMClass c=vmClass; c != null; c=c.super_) {
+    if (c.addendum != null && c.addendum.annotationTable != null) {
+      count+=((Object[])c.addendum.annotationTable).length;
+    }
+  }
+  return count;
+}

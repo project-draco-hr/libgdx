@@ -1,0 +1,17 @@
+{
+  InputStream in=loader.getResourceAsStream(replace('.','/',name) + ".properties");
+  if (in != null) {
+    try {
+      ResourceBundle r=new PropertyResourceBundle(in);
+      r.name=name;
+      r.parent=parent;
+      return r;
+    }
+  finally {
+      in.close();
+    }
+  }
+ else {
+    return null;
+  }
+}

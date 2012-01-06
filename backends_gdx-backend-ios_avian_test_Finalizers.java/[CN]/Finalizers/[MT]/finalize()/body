@@ -1,0 +1,6 @@
+{
+synchronized (lock) {
+    finalized=true;
+    lock.notifyAll();
+  }
+}

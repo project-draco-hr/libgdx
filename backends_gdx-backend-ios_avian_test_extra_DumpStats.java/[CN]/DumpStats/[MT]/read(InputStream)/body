@@ -1,0 +1,50 @@
+{
+  boolean done=false;
+  boolean popped=false;
+  int size=0;
+  int last=0;
+  Map<Integer,Record> map=new HashMap();
+  while (!done) {
+    int flag=in.read();
+switch (flag) {
+case Root:
+{
+        last=readInt(in);
+        popped=false;
+      }
+    break;
+case ClassName:
+{
+    record(map,last).name=readString(in);
+  }
+break;
+case Push:
+{
+last=readInt(in);
+if (!popped) {
+  Record r=record(map,last);
+  r.footprint+=size;
+  ++r.count;
+}
+popped=false;
+}
+break;
+case Pop:
+{
+popped=true;
+}
+break;
+case Size:
+{
+size=readInt(in);
+}
+break;
+case -1:
+done=true;
+break;
+default :
+throw new RuntimeException("bad flag: " + flag);
+}
+}
+return map;
+}

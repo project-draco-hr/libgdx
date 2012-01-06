@@ -1,0 +1,4 @@
+{
+  if (readOnly)   throw new ReadOnlyBufferException();
+  if (position < 0 || position + amount > limit)   throw new IndexOutOfBoundsException();
+}

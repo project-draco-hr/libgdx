@@ -1,0 +1,29 @@
+{
+  long start=System.currentTimeMillis();
+  try {
+    final Process p=Runtime.getRuntime().exec("sleep 10");
+    new Thread(){
+      public void run(){
+        try {
+          Thread.sleep(100);
+        }
+ catch (        InterruptedException e) {
+        }
+        p.destroy();
+      }
+    }
+.start();
+    try {
+      p.waitFor();
+    }
+ catch (    InterruptedException e) {
+    }
+    long stop=System.currentTimeMillis();
+    if (stop - start > 5000) {
+      throw new RuntimeException("test failed; we didn't kill the process...");
+    }
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

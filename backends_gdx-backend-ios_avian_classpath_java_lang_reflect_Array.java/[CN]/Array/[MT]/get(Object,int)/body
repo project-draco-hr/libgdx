@@ -1,0 +1,29 @@
+{
+  String className=array.getClass().getName();
+  if (!className.startsWith("[")) {
+    throw new IllegalArgumentException();
+  }
+switch (className.charAt(1)) {
+case 'B':
+    return Byte.valueOf(((byte[])array)[index]);
+case 'C':
+  return Character.valueOf(((char[])array)[index]);
+case 'D':
+return Double.valueOf(((double[])array)[index]);
+case 'F':
+return Float.valueOf(((float[])array)[index]);
+case 'I':
+return Integer.valueOf(((int[])array)[index]);
+case 'J':
+return Long.valueOf(((long[])array)[index]);
+case 'S':
+return Short.valueOf(((short[])array)[index]);
+case 'Z':
+return Boolean.valueOf(((boolean[])array)[index]);
+case 'L':
+case '[':
+return ((Object[])array)[index];
+default :
+throw new Error();
+}
+}

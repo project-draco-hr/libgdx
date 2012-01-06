@@ -1,0 +1,25 @@
+{
+  try {
+    try {
+switch (path) {
+case 1:
+        return new Object();
+case 2:
+{
+        int a=42;
+        return Integer.valueOf(a);
+      }
+case 3:
+    throw new DummyException();
+}
+}
+  finally {
+System.gc();
+}
+return null;
+}
+ catch (DummyException e) {
+e.printStackTrace();
+return null;
+}
+}

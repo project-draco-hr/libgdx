@@ -1,0 +1,11 @@
+{
+  ++size;
+  if (front == null) {
+    front=rear=c;
+  }
+ else {
+    c.prev=rear;
+    rear.next=c;
+    rear=c;
+  }
+}

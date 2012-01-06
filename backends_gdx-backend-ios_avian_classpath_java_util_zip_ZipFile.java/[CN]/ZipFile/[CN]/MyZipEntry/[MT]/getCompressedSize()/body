@@ -1,0 +1,8 @@
+{
+  try {
+    return compressedSize(window,pointer);
+  }
+ catch (  IOException e) {
+    return 0;
+  }
+}

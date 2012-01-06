@@ -1,0 +1,7 @@
+{
+  int pos=longPosition(index);
+  if (pos < bits.length) {
+    return (bits[pos] & bitPosition(index)) != 0;
+  }
+  return false;
+}

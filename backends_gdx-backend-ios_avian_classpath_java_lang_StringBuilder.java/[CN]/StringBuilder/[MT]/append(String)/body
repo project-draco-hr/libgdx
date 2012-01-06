@@ -1,0 +1,19 @@
+{
+  if (s == null) {
+    return append("null");
+  }
+ else {
+    if (s.length() > 0) {
+      if (buffer != null && s.length() <= buffer.length - position) {
+        s.getChars(0,s.length(),buffer,position);
+        position+=s.length();
+      }
+ else {
+        flush();
+        chain=new Cell(s,chain);
+      }
+      length+=s.length();
+    }
+    return this;
+  }
+}

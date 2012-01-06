@@ -1,0 +1,6 @@
+{
+  if (a[0] == null) {
+    a[0]=Proxy.newProxyInstance(vmField.class_.loader,new Class[]{(Class)a[1]},new AnnotationInvocationHandler(a));
+  }
+  return (Annotation)a[0];
+}

@@ -1,0 +1,13 @@
+{
+  if (a.length == b.length) {
+    for (int i=0; i < a.length; ++i) {
+      if (!a[i].isAssignableFrom(b[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+ else {
+    return false;
+  }
+}

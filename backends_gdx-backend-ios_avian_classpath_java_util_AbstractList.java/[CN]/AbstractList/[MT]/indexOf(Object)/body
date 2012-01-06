@@ -1,0 +1,15 @@
+{
+  int i=0;
+  for (  T v : this) {
+    if (o == null) {
+      if (v == null) {
+        return i;
+      }
+    }
+ else     if (o.equals(v)) {
+      return i;
+    }
+    ++i;
+  }
+  return -1;
+}

@@ -1,0 +1,9 @@
+{
+  if (this.length == 0)   return -1;
+  if (length > this.length)   length=this.length;
+  file.seek(this.offset);
+  file.readFully(b,offset,length);
+  this.offset+=length;
+  this.length-=length;
+  return length;
+}

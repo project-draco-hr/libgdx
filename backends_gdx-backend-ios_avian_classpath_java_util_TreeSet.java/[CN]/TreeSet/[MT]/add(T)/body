@@ -1,0 +1,9 @@
+{
+  PersistentSet.Path<Cell<T>> p=set.find(new Cell(value,null));
+  if (p.fresh()) {
+    set=p.add();
+    ++size;
+    return true;
+  }
+  return false;
+}

@@ -1,0 +1,15 @@
+{
+  if (s.length == 0)   return start;
+  for (int i=start; i < length - s.length + 1; ++i) {
+    int j=0;
+    for (; j < s.length; ++j) {
+      if (charAt(i + j) != s.charAt(j)) {
+        break;
+      }
+    }
+    if (j == s.length) {
+      return i;
+    }
+  }
+  return -1;
+}

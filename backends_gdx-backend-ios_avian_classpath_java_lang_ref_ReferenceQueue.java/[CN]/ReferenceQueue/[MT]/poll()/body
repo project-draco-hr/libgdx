@@ -1,0 +1,12 @@
+{
+  Reference<? extends T> r=front;
+  if (front != null) {
+    if (front == front.jNext) {
+      front=null;
+    }
+ else {
+      front=front.jNext;
+    }
+  }
+  return r;
+}

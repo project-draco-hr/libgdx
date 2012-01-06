@@ -1,0 +1,6 @@
+{
+  Cell<T> c=find(index);
+  T old=c.value;
+  c.value=value;
+  return old;
+}

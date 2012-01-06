@@ -1,0 +1,55 @@
+{
+  try {
+    try {
+switch (path1) {
+case 1:
+        return new Object();
+case 2:
+{
+        int a=42;
+        return Integer.valueOf(a);
+      }
+case 3:
+    throw new DummyException();
+}
+}
+  finally {
+try {
+switch (path2) {
+case 1:
+    return new Object();
+case 2:
+{
+    int a=42;
+    return Integer.valueOf(a);
+  }
+case 3:
+throw new DummyException();
+}
+}
+  finally {
+try {
+switch (path3) {
+case 1:
+return new Object();
+case 2:
+{
+int a=42;
+return Integer.valueOf(a);
+}
+case 3:
+throw new DummyException();
+}
+}
+  finally {
+System.gc();
+}
+}
+}
+return null;
+}
+ catch (DummyException e) {
+e.printStackTrace();
+return null;
+}
+}

@@ -1,0 +1,5 @@
+{
+  if (array == null || size >= array.length * 2) {
+    resize(array == null ? MinimumCapacity : array.length * 2);
+  }
+}

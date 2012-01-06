@@ -1,0 +1,8 @@
+{
+  if (index >= 0 && index < size) {
+    return (T)array[index];
+  }
+ else {
+    throw new IndexOutOfBoundsException(index + " not in [0, " + size+ ")");
+  }
+}

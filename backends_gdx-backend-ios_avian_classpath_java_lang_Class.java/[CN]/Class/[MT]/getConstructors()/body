@@ -1,0 +1,13 @@
+{
+  Constructor[] array=new Constructor[countConstructors(true)];
+  if (vmClass.methodTable != null) {
+    Classes.link(vmClass);
+    int index=0;
+    for (int i=0; i < vmClass.methodTable.length; ++i) {
+      if (((vmClass.methodTable[i].flags & Modifier.PUBLIC) != 0) && Method.getName(vmClass.methodTable[i]).equals("<init>")) {
+        array[index++]=new Constructor(new Method(vmClass.methodTable[i]));
+      }
+    }
+  }
+  return array;
+}

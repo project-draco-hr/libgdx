@@ -1,0 +1,33 @@
+{
+  skipSpace();
+switch (r.read()) {
+case 'a':
+    return deserializeArray(map);
+case 'l':
+  return deserializeObject(map);
+case 'r':
+return map.get((int)readLongToken());
+case 'n':
+return null;
+case 'z':
+return (readLongToken() != 0);
+case 'b':
+return (byte)readLongToken();
+case 'c':
+return (char)readLongToken();
+case 's':
+return (short)readLongToken();
+case 'i':
+return (int)readLongToken();
+case 'j':
+return readLongToken();
+case 'f':
+return (float)readDoubleToken();
+case 'd':
+return readDoubleToken();
+case -1:
+throw new EOFException();
+default :
+throw new StreamCorruptedException();
+}
+}

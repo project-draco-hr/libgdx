@@ -1,0 +1,6 @@
+{
+  checkGet(2);
+  short s=(short)(get() << 8);
+  s|=get() & 0xff;
+  return s;
+}

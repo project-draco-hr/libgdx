@@ -1,0 +1,18 @@
+{
+  if (!connected) {
+    while (!readyToConnect) {
+      Selector selector=Selector.open();
+      SelectionKey key=register(selector,SelectionKey.OP_CONNECT,null);
+      if (blocking) {
+        selector.select();
+      }
+ else {
+        selector.selectNow();
+        break;
+      }
+    }
+    natFinishConnect(socket);
+    connected=readyToConnect;
+  }
+  return connected;
+}

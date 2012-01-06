@@ -1,0 +1,10 @@
+{
+  try {
+    return Proxy.getProxyClass(loader,interfaces).getConstructor(new Class[]{InvocationHandler.class}).newInstance(new Object[]{handler});
+  }
+ catch (  Exception e) {
+    AssertionError error=new AssertionError();
+    error.initCause(e);
+    throw error;
+  }
+}

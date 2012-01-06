@@ -1,0 +1,21 @@
+{
+  try {
+    if (name.startsWith("[")) {
+      return forName(name,true,loader);
+    }
+ else     if (name.startsWith("L")) {
+      return forName(name.substring(1,name.length() - 1),true,loader);
+    }
+ else {
+      if (name.length() == 1) {
+        return SystemClassLoader.getClass(Classes.primitiveClass(name.charAt(0)));
+      }
+ else {
+        throw new ClassNotFoundException(name);
+      }
+    }
+  }
+ catch (  ClassNotFoundException e) {
+    throw new RuntimeException(e);
+  }
+}

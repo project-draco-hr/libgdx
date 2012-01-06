@@ -1,0 +1,31 @@
+{
+  List<PoolEntry> pool=new ArrayList();
+  int[] interfaceIndexes=new int[interfaces.length];
+  for (int i=0; i < interfaces.length; ++i) {
+    interfaceIndexes[i]=ConstantPool.addClass(pool,interfaces[i].getName());
+  }
+  Map<String,avian.VMMethod> virtualMap=new HashMap();
+  for (  Class c : interfaces) {
+    avian.VMMethod[] ivtable=c.vmClass.virtualTable;
+    if (ivtable != null) {
+      for (      avian.VMMethod m : ivtable) {
+        virtualMap.put(Method.getName(m) + Method.getSpec(m),m);
+      }
+    }
+  }
+  MethodData[] methodTable=new MethodData[virtualMap.size() + 1];
+{
+    int i=0;
+    for (    avian.VMMethod m : virtualMap.values()) {
+      methodTable[i]=new MethodData(0,ConstantPool.addUtf8(pool,Method.getName(m)),ConstantPool.addUtf8(pool,Method.getSpec(m)),makeInvokeCode(pool,name,m.spec,m.parameterCount,m.parameterFootprint,i));
+      ++i;
+    }
+    methodTable[i++]=new MethodData(0,ConstantPool.addUtf8(pool,"<init>"),ConstantPool.addUtf8(pool,"(Ljava/lang/reflect/InvocationHandler;)V"),makeConstructorCode(pool));
+  }
+  int nameIndex=ConstantPool.addClass(pool,name);
+  int superIndex=ConstantPool.addClass(pool,"java/lang/reflect/Proxy");
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  Assembler.writeClass(out,pool,nameIndex,superIndex,interfaceIndexes,methodTable);
+  byte[] classData=out.toByteArray();
+  return avian.SystemClassLoader.getClass(avian.Classes.defineVMClass(loader,classData,0,classData.length));
+}

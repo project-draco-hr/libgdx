@@ -1,0 +1,4 @@
+{
+  Object o=gimmeNull();
+  return (o == null ? default_ : o);
+}

@@ -1,0 +1,20 @@
+{
+  try {
+    if (predicate) {
+      Object a=null;
+    }
+ else {
+      Object a=null;
+    }
+    try {
+      int a=42;
+      throw new DummyException();
+    }
+  finally {
+      System.gc();
+    }
+  }
+ catch (  DummyException e) {
+    e.toString();
+  }
+}

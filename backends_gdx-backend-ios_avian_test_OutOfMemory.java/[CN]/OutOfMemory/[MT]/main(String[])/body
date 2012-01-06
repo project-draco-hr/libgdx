@@ -1,0 +1,23 @@
+{
+  try {
+    bigObjects();
+    throw new RuntimeException();
+  }
+ catch (  OutOfMemoryError e) {
+    e.printStackTrace();
+  }
+  try {
+    littleObjects();
+    throw new RuntimeException();
+  }
+ catch (  OutOfMemoryError e) {
+    e.printStackTrace();
+  }
+  try {
+    bigAndLittleObjects();
+    throw new RuntimeException();
+  }
+ catch (  OutOfMemoryError e) {
+    e.printStackTrace();
+  }
+}

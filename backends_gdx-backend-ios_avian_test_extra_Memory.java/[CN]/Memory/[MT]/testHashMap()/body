@@ -1,0 +1,25 @@
+{
+  traceFunc("testHashMap()");
+  HashMap<Integer,Item> items=new HashMap<Integer,Item>();
+  for (int iter=0; iter < ITERATION_COUNT; iter++) {
+    for (int i=0; i < 1000; i++) {
+      items.put(i,new Item(1));
+    }
+    for (int i=0; i < 500; i++) {
+      items.put(i + 1000,new Item(4));
+    }
+    for (int i=0; i < 250; i++) {
+      items.put(i + 1500,new Item(9));
+    }
+    expect(runningSum(items.values()) == (1000 * 1 + 500 * 4 + 250 * 9));
+    for (int i=900; i < 1200; i++) {
+      items.remove(i);
+    }
+    expect(runningSum(items.values()) == (900 * 1 + 300 * 4 + 250 * 9));
+    for (int i=900; i < 1200; i++) {
+      items.put(i,new Item(i < 1000 ? 1 : 4));
+    }
+    expect(runningSum(items.values()) == (1000 * 1 + 500 * 4 + 250 * 9));
+    items.clear();
+  }
+}

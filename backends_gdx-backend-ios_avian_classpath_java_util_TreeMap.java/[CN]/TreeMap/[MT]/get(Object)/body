@@ -1,0 +1,4 @@
+{
+  MyEntry<K,V> e=set.find(new MyEntry(key,null));
+  return e == null ? null : e.value;
+}

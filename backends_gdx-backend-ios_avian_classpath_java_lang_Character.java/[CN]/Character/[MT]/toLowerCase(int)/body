@@ -1,0 +1,8 @@
+{
+  if (isSupplementaryCodePoint(codePoint)) {
+    return codePoint;
+  }
+ else {
+    return toLowerCase((char)codePoint);
+  }
+}

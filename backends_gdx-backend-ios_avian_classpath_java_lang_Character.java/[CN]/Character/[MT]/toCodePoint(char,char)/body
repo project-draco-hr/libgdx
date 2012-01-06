@@ -1,0 +1,3 @@
+{
+  return (((high & 0x3FF) << 10) | (low & 0x3FF)) + 0x10000;
+}

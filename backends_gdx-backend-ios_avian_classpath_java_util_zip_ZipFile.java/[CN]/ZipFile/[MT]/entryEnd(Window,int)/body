@@ -1,0 +1,4 @@
+{
+  final int HeaderSize=46;
+  return p + HeaderSize + fileNameLength(w,p)+ extraFieldLength(w,p)+ commentFieldLength(w,p);
+}

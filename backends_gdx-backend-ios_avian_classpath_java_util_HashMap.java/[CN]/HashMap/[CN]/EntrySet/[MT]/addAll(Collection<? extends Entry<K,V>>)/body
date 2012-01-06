@@ -1,0 +1,5 @@
+{
+  boolean change=false;
+  for (  Entry<K,V> e : collection)   if (add(e))   change=true;
+  return change;
+}

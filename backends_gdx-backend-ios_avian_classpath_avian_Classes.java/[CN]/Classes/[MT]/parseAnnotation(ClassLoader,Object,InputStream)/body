@@ -1,0 +1,11 @@
+{
+  byte[] typeName=(byte[])Singleton.getObject(pool,read2(in) - 1);
+  Object[] annotation=new Object[(read2(in) + 1) * 2];
+  annotation[1]=SystemClassLoader.getClass(loadVMClass(loader,typeName,1,typeName.length - 3));
+  for (int i=2; i < annotation.length; i+=2) {
+    byte[] name=(byte[])Singleton.getObject(pool,read2(in) - 1);
+    annotation[i]=new String(name,0,name.length - 1);
+    annotation[i + 1]=parseAnnotationValue(loader,pool,in);
+  }
+  return annotation;
+}

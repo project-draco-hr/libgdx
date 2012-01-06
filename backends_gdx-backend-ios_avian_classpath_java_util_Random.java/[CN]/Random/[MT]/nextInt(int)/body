@@ -1,0 +1,16 @@
+{
+  if (limit <= 0) {
+    throw new IllegalArgumentException();
+  }
+  if ((limit & -limit) == limit) {
+    return (int)((limit * (long)next(31)) >> 31);
+  }
+  int bits;
+  int value;
+  do {
+    bits=next(31);
+    value=bits % limit;
+  }
+ while (bits - value + (limit - 1) < 0);
+  return value;
+}

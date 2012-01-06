@@ -1,0 +1,10 @@
+{
+  before.run();
+  if (exception != null) {
+    continuation.handleException(exception);
+  }
+ else {
+    continuation.handleResult(result);
+  }
+  throw new AssertionError();
+}

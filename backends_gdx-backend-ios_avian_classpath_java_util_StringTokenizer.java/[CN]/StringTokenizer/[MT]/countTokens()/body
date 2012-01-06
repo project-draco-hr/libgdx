@@ -1,0 +1,22 @@
+{
+  int count=0;
+  boolean sawNonDelimiter=false;
+  for (int i=position; i < in.length(); ++i) {
+    if (isDelimiter(in.charAt(i))) {
+      if (sawNonDelimiter) {
+        sawNonDelimiter=false;
+        ++count;
+      }
+      if (includeDelimiters) {
+        ++count;
+      }
+    }
+ else {
+      sawNonDelimiter=true;
+    }
+  }
+  if (sawNonDelimiter) {
+    ++count;
+  }
+  return count;
+}

@@ -1,0 +1,6 @@
+{
+  peer=open(path);
+  if (peer == 0) {
+    throw new FileNotFoundException(path);
+  }
+}

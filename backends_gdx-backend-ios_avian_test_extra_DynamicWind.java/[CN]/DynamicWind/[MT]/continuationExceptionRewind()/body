@@ -1,0 +1,13 @@
+{
+  rewindTest(new Callable<Integer>(){
+    public Integer call() throws Exception {
+      throw new MyException(0);
+    }
+  }
+,new Runnable(){
+    public void run(){
+      continuationReference.handleException(new MyException(1));
+    }
+  }
+);
+}

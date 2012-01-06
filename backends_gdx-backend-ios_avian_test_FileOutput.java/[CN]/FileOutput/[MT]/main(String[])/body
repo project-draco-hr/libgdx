@@ -1,0 +1,5 @@
+{
+  expect(new File("nonexistent-file").length() == 0);
+  test(false);
+  test(true);
+}

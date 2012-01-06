@@ -1,0 +1,19 @@
+{
+  Class c=findLoadedClass(name);
+  if (c == null) {
+    if (parent != null) {
+      try {
+        c=parent.loadClass(name);
+      }
+ catch (      ClassNotFoundException ok) {
+      }
+    }
+    if (c == null) {
+      c=findClass(name);
+    }
+  }
+  if (resolve) {
+    resolveClass(c);
+  }
+  return c;
+}

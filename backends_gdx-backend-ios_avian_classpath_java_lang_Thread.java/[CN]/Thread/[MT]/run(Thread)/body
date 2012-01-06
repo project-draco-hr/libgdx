@@ -1,0 +1,24 @@
+{
+  try {
+    t.run();
+  }
+ catch (  Throwable e) {
+    UncaughtExceptionHandler eh=t.exceptionHandler;
+    UncaughtExceptionHandler deh=defaultExceptionHandler;
+    if (eh != null) {
+      eh.uncaughtException(t,e);
+    }
+ else     if (deh != null) {
+      deh.uncaughtException(t,e);
+    }
+ else {
+      throw e;
+    }
+  }
+ finally {
+synchronized (t) {
+      t.state=(byte)State.TERMINATED.ordinal();
+      t.notifyAll();
+    }
+  }
+}

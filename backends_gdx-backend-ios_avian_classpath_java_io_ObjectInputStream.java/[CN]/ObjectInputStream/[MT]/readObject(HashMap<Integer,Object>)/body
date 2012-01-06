@@ -1,0 +1,15 @@
+{
+  skipSpace();
+switch (r.read()) {
+case 'a':
+    return deserializeArray(map);
+case 'l':
+  return deserializeObject(map);
+case 'n':
+return null;
+case -1:
+throw new EOFException();
+default :
+throw new StreamCorruptedException();
+}
+}

@@ -1,0 +1,17 @@
+{
+  int index=cell.hashCode() & (array.length - 1);
+  Cell<K,V> p=null;
+  for (Cell<K,V> c=array[index]; c != null; c=c.next()) {
+    if (c == cell) {
+      if (p == null) {
+        array[index]=c.next();
+      }
+ else {
+        p.setNext(c.next());
+      }
+      --size;
+      break;
+    }
+  }
+  shrink();
+}

@@ -1,0 +1,17 @@
+{
+  Node<T> n=new Node(value,null);
+  while (true) {
+    Node<T> t=tail;
+    Node<T> next=tail.next;
+    if (t == tail) {
+      if (next != null) {
+        Atomic.compareAndSwapObject(this,QueueTail,t,next);
+      }
+ else       if (Atomic.compareAndSwapObject(tail,NodeNext,null,n)) {
+        Atomic.compareAndSwapObject(this,QueueTail,t,n);
+        break;
+      }
+    }
+  }
+  return true;
+}

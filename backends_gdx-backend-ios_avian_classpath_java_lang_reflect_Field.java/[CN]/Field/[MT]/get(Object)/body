@@ -1,0 +1,34 @@
+{
+  Object target;
+  if ((vmField.flags & Modifier.STATIC) != 0) {
+    target=vmField.class_.staticTable;
+  }
+ else   if (Class.isInstance(vmField.class_,instance)) {
+    target=instance;
+  }
+ else {
+    throw new IllegalArgumentException();
+  }
+switch (vmField.code) {
+case ByteField:
+    return Byte.valueOf((byte)getPrimitive(target,vmField.code,vmField.offset));
+case BooleanField:
+  return Boolean.valueOf(getPrimitive(target,vmField.code,vmField.offset) != 0);
+case CharField:
+return Character.valueOf((char)getPrimitive(target,vmField.code,vmField.offset));
+case ShortField:
+return Short.valueOf((short)getPrimitive(target,vmField.code,vmField.offset));
+case IntField:
+return Integer.valueOf((int)getPrimitive(target,vmField.code,vmField.offset));
+case LongField:
+return Long.valueOf((int)getPrimitive(target,vmField.code,vmField.offset));
+case FloatField:
+return Float.valueOf(Float.intBitsToFloat((int)getPrimitive(target,vmField.code,vmField.offset)));
+case DoubleField:
+return Double.valueOf(Double.longBitsToDouble(getPrimitive(target,vmField.code,vmField.offset)));
+case ObjectField:
+return getObject(target,vmField.offset);
+default :
+throw new Error();
+}
+}

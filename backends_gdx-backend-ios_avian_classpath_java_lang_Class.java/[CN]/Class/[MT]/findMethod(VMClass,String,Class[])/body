@@ -1,0 +1,14 @@
+{
+  if (vmClass.methodTable != null) {
+    Classes.link(vmClass);
+    if (parameterTypes == null) {
+      parameterTypes=new Class[0];
+    }
+    for (int i=0; i < vmClass.methodTable.length; ++i) {
+      if (Method.getName(vmClass.methodTable[i]).equals(name) && match(parameterTypes,Method.getParameterTypes(vmClass.methodTable[i]))) {
+        return new Method(vmClass.methodTable[i]);
+      }
+    }
+  }
+  return null;
+}

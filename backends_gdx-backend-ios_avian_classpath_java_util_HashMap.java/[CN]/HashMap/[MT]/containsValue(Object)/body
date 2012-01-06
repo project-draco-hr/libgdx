@@ -1,0 +1,12 @@
+{
+  if (array != null) {
+    for (int i=0; i < array.length; ++i) {
+      for (Cell<K,V> c=array[i]; c != null; c=c.next()) {
+        if (helper.equal(value,c.getValue())) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}

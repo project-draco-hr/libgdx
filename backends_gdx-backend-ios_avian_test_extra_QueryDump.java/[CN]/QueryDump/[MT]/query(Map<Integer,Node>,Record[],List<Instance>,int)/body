@@ -1,0 +1,29 @@
+{
+  Node node=nodes.get(peek(stack,index).key);
+  if (node != null) {
+    int base=node.index();
+    for (int i=base + 1; i < query.length; ++i) {
+      int peek=index + i - base;
+      if (peek < stack.size()) {
+        Instance instance=peek(stack,peek);
+        if (query[i] == instance.record) {
+          TreeNode next=(TreeNode)nodes.get(instance);
+          if (next == null) {
+            nodes.put(instance.key,next=new TreeNode(instance,i));
+          }
+          next.children.add(node);
+          node=next;
+        }
+ else {
+          return;
+        }
+      }
+ else {
+        return;
+      }
+    }
+    if (index + query.length - base < stack.size()) {
+      nodes(peek(stack,index + query.length - base).record).add(node);
+    }
+  }
+}

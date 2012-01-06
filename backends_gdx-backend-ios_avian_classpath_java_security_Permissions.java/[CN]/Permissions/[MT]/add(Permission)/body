@@ -1,0 +1,12 @@
+{
+  Class c=p.getClass();
+  PermissionCollection pc=collections.get(c);
+  if (pc == null) {
+    pc=p.newPermissionCollection();
+    if (pc == null) {
+      pc=new MyPermissionCollection();
+    }
+    collections.put(c,pc);
+  }
+  pc.add(p);
+}

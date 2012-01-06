@@ -1,0 +1,7 @@
+{
+  Class c=getClass();
+  while (c.getSuperclass() != Enum.class) {
+    c=c.getSuperclass();
+  }
+  return c;
+}

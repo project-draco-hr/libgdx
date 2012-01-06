@@ -1,0 +1,13 @@
+{
+  for (Property p=properties; p != null; p=p.next) {
+    if (p.name.equals(name)) {
+      return p.value;
+    }
+  }
+  boolean[] found=new boolean[1];
+  String value=getProperty(name,found);
+  if (found[0])   return value;
+  value=getVMProperty(name,found);
+  if (found[0])   return value;
+  return null;
+}

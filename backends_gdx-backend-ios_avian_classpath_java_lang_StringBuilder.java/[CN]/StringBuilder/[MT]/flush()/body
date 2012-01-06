@@ -1,0 +1,7 @@
+{
+  if (position > 0) {
+    chain=new Cell(new String(buffer,0,position,false),chain);
+    buffer=null;
+    position=0;
+  }
+}

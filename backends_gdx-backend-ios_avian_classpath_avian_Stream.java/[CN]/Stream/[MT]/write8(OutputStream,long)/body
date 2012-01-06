@@ -1,0 +1,4 @@
+{
+  write4(out,(int)(v >>> 32) & 0xFFFFFFFF);
+  write4(out,(int)(v) & 0xFFFFFFFF);
+}

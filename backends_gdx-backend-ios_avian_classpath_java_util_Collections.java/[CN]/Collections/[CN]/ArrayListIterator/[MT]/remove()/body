@@ -1,0 +1,10 @@
+{
+  if (toRemove != -1) {
+    list.remove(toRemove);
+    index=toRemove - 1;
+    toRemove=-1;
+  }
+ else {
+    throw new IllegalStateException();
+  }
+}

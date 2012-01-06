@@ -1,0 +1,19 @@
+{
+  if (hasNext()) {
+    if (currentCell != null) {
+      if (currentCell.next() != null) {
+        previousCell=currentCell;
+      }
+ else {
+        previousCell=null;
+      }
+    }
+    currentCell=nextCell;
+    currentIndex=nextIndex;
+    nextCell=nextCell.next();
+    return currentCell;
+  }
+ else {
+    throw new NoSuchElementException();
+  }
+}

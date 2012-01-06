@@ -1,0 +1,4 @@
+{
+  if (interval < 0)   throw new IllegalArgumentException();
+  return doSelect(interval);
+}

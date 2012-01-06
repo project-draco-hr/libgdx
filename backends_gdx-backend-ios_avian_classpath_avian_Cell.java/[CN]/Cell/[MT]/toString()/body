@@ -1,0 +1,12 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("(");
+  for (Cell c=this; c != null; c=c.next) {
+    sb.append(value);
+    if (c.next != null) {
+      sb.append(" ");
+    }
+  }
+  sb.append(")");
+  return sb.toString();
+}

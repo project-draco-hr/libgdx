@@ -1,0 +1,17 @@
+{
+  try {
+    Socket.init();
+  }
+ catch (  IOException e) {
+    UnknownHostException uhe=new UnknownHostException(name);
+    uhe.initCause(e);
+    throw uhe;
+  }
+  int address=ipv4AddressForName(name);
+  if (address == 0) {
+    throw new UnknownHostException(name);
+  }
+ else {
+    return new InetAddress(ipv4AddressToString(address));
+  }
+}

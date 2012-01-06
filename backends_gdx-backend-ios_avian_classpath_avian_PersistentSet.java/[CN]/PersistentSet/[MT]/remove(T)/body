@@ -1,0 +1,7 @@
+{
+  Path<T> p=find(value);
+  if (!p.fresh) {
+    return remove(p);
+  }
+  return this;
+}

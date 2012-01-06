@@ -1,0 +1,10 @@
+{
+  long total=0;
+  for (int i=offset; i < offset + length; ++i) {
+    total+=write(srcs[i]);
+    if (srcs[i].hasRemaining()) {
+      return total;
+    }
+  }
+  return total;
+}

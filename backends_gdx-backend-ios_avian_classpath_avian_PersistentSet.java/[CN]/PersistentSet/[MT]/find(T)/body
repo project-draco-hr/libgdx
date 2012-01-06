@@ -1,0 +1,23 @@
+{
+  Node<T> newRoot=new Node(root);
+  Cell<Node<T>> ancestors=null;
+  Node<T> old=root;
+  Node<T> new_=newRoot;
+  while (old != NullNode) {
+    ancestors=new Cell(new_,ancestors);
+    int difference=comparator.compare(value,old.value);
+    if (difference < 0) {
+      old=old.left;
+      new_=new_.left=new Node(old);
+    }
+ else     if (difference > 0) {
+      old=old.right;
+      new_=new_.right=new Node(old);
+    }
+ else {
+      return new Path(false,new_,new PersistentSet(newRoot,comparator,size),ancestors.next);
+    }
+  }
+  new_.value=value;
+  return new Path(true,new_,new PersistentSet(newRoot,comparator,size),ancestors);
+}

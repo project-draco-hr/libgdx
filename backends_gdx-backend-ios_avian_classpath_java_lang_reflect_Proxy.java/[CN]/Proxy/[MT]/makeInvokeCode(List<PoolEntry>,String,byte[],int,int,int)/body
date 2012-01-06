@@ -1,0 +1,171 @@
+{
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  write2(out,8);
+  write2(out,parameterFootprint);
+  write4(out,0);
+  write1(out,aload_0);
+  write1(out,getfield);
+  write2(out,ConstantPool.addFieldRef(pool,"java/lang/reflect/Proxy","h","Ljava/lang/reflect/InvocationHandler;") + 1);
+  write1(out,aload_0);
+  write1(out,new_);
+  write2(out,ConstantPool.addClass(pool,"java/lang/reflect/Method") + 1);
+  write1(out,dup);
+  write1(out,ldc_w);
+  write2(out,ConstantPool.addClass(pool,className) + 1);
+  write1(out,getfield);
+  write2(out,ConstantPool.addFieldRef(pool,"java/lang/Class","vmClass","Lavian/VMClass;") + 1);
+  write1(out,getfield);
+  write2(out,ConstantPool.addFieldRef(pool,"avian/VMClass","methodTable","[Lavian/VMMethod;") + 1);
+  write1(out,ldc_w);
+  write2(out,ConstantPool.addInteger(pool,index) + 1);
+  write1(out,aaload);
+  write1(out,invokespecial);
+  write2(out,ConstantPool.addMethodRef(pool,"java/lang/reflect/Method","<init>","(Lavian/VMMethod;)V") + 1);
+  write1(out,ldc_w);
+  write2(out,ConstantPool.addInteger(pool,parameterCount) + 1);
+  write1(out,anewarray);
+  write2(out,ConstantPool.addClass(pool,"java/lang/Object") + 1);
+  int ai=0;
+  int si;
+  for (si=1; spec[si] != ')'; ++si) {
+    write1(out,dup);
+    write1(out,ldc_w);
+    write2(out,ConstantPool.addInteger(pool,ai) + 1);
+switch (spec[si]) {
+case 'L':
+      ++si;
+    while (spec[si] != ';')     ++si;
+  write1(out,aload);
+write1(out,ai + 1);
+break;
+case '[':
+++si;
+while (spec[si] == '[') ++si;
+switch (spec[si]) {
+case 'L':
+++si;
+while (spec[si] != ';') ++si;
+break;
+default :
+break;
+}
+write1(out,aload);
+write1(out,ai + 1);
+break;
+case 'Z':
+write1(out,iload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Boolean","valueOf","(Z)Ljava/lang/Boolean;") + 1);
+break;
+case 'B':
+write1(out,iload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Byte","valueOf","(B)Ljava/lang/Byte;") + 1);
+break;
+case 'S':
+write1(out,iload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Short","valueOf","(S)Ljava/lang/Short;") + 1);
+break;
+case 'C':
+write1(out,iload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Character","valueOf","(C)Ljava/lang/Character;") + 1);
+break;
+case 'I':
+write1(out,iload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Integer","valueOf","(I)Ljava/lang/Integer;") + 1);
+break;
+case 'F':
+write1(out,fload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Float","valueOf","(F)Ljava/lang/Float;") + 1);
+break;
+case 'J':
+write1(out,lload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Long","valueOf","(J)Ljava/lang/Long;") + 1);
+++ai;
+break;
+case 'D':
+write1(out,dload);
+write1(out,ai + 1);
+write1(out,invokestatic);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Double","valueOf","(D)Ljava/lang/Double;") + 1);
+++ai;
+break;
+default :
+throw new IllegalArgumentException();
+}
+write1(out,aastore);
+++ai;
+}
+write1(out,invokeinterface);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/reflect/InvocationHandler","invoke","(Ljava/lang/Object;" + "Ljava/lang/reflect/Method;" + "[Ljava/lang/Object;)"+ "Ljava/lang/Object;") + 1);
+write2(out,0);
+switch (spec[si + 1]) {
+case 'L':
+case '[':
+write1(out,areturn);
+break;
+case 'Z':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Boolean","booleanValue","()Z") + 1);
+write1(out,ireturn);
+break;
+case 'B':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Byte","byteValue","()B") + 1);
+write1(out,ireturn);
+break;
+case 'C':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Character","charValue","()C") + 1);
+write1(out,ireturn);
+break;
+case 'S':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Short","shortValue","()S") + 1);
+write1(out,ireturn);
+break;
+case 'I':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Integer","intValue","()I") + 1);
+write1(out,ireturn);
+break;
+case 'F':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Float","floatValue","()F") + 1);
+write1(out,freturn);
+break;
+case 'J':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Long","longValue","()J") + 1);
+write1(out,lreturn);
+break;
+case 'D':
+write1(out,invokevirtual);
+write2(out,ConstantPool.addMethodRef(pool,"java/lang/Double","doubleValue","()D") + 1);
+write1(out,dreturn);
+break;
+case 'V':
+write1(out,pop);
+write1(out,return_);
+break;
+default :
+throw new IllegalArgumentException();
+}
+write2(out,0);
+write2(out,0);
+byte[] result=out.toByteArray();
+set4(result,4,result.length - 12);
+return result;
+}

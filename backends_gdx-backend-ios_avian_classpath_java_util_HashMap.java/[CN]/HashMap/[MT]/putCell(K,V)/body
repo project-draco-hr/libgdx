@@ -1,0 +1,10 @@
+{
+  Cell<K,V> c=find(key);
+  if (c == null) {
+    insert(helper.make(key,value,null));
+  }
+ else {
+    c.setValue(value);
+  }
+  return c;
+}

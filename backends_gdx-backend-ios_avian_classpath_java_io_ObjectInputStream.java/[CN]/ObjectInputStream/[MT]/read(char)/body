@@ -1,0 +1,12 @@
+{
+  skipSpace();
+  int c=r.read();
+  if (c != v) {
+    if (c == -1) {
+      throw new EOFException();
+    }
+ else {
+      throw new StreamCorruptedException();
+    }
+  }
+}

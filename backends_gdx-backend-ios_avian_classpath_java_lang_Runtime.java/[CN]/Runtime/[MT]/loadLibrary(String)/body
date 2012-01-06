@@ -1,0 +1,8 @@
+{
+  if (path != null) {
+    load(path,true);
+  }
+ else {
+    throw new NullPointerException();
+  }
+}

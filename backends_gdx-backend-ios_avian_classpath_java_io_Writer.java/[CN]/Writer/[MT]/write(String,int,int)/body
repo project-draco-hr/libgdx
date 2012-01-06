@@ -1,0 +1,5 @@
+{
+  char[] b=new char[length];
+  s.getChars(offset,offset + length,b,0);
+  write(b);
+}

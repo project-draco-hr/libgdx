@@ -1,0 +1,15 @@
+{
+  Map<ThreadLocal,Object> map=Thread.currentThread().locals();
+  Object o=map.get(this);
+  if (o == null) {
+    o=initialValue();
+    if (o == null) {
+      o=Null;
+    }
+    map.put(this,o);
+  }
+  if (o == Null) {
+    o=null;
+  }
+  return (T)o;
+}

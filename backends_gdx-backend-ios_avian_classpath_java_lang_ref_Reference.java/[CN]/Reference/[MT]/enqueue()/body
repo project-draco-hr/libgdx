@@ -1,0 +1,10 @@
+{
+  if (queue != null) {
+    queue.add(this);
+    queue=null;
+    return true;
+  }
+ else {
+    return false;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  System.out.println("produce \"a\"");
+  consumer.consume('a');
+  System.out.println("produce \"b\"");
+  consumer.consume('b');
+  System.out.println("produce \"c\"");
+  consumer.consume('c');
+}

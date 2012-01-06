@@ -1,0 +1,29 @@
+{
+  valueOf(1000);
+  Object[] array=new Object[1024 * 1024];
+  array[0]=new Object();
+  small();
+  array[1]=new Object();
+  medium();
+  array[2]=new Object();
+  large();
+  array[0].toString();
+  array[1].toString();
+  array[2].toString();
+  stackMap1(true);
+  stackMap1(false);
+  stackMap2(true);
+  stackMap2(false);
+  stackMap3(true);
+  stackMap3(false);
+  stackMap4(true);
+  stackMap4(false);
+  stackMap5(true);
+  stackMap5(false);
+  stackMap6(true);
+  stackMap6(false);
+  stackMap7(true);
+  stackMap7(false);
+  stackMap8(true);
+  stackMap8(false);
+}

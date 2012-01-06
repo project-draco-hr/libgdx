@@ -1,0 +1,12 @@
+{
+  if (predicate) {
+    noop();
+  }
+  if (predicate) {
+    noop();
+  }
+ else {
+    Object a=null;
+  }
+  System.gc();
+}

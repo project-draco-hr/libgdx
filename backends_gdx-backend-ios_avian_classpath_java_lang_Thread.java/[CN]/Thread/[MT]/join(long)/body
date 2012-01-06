@@ -1,0 +1,8 @@
+{
+  long then=System.currentTimeMillis();
+  long remaining=milliseconds;
+  while (remaining > 0 && getState() != State.TERMINATED) {
+    wait(remaining);
+    remaining=milliseconds - (System.currentTimeMillis() - then);
+  }
+}

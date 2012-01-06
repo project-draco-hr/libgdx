@@ -1,0 +1,13 @@
+{
+  if (Enum.class.isAssignableFrom(this)) {
+    try {
+      return (T[])getMethod("values").invoke(null);
+    }
+ catch (    Exception e) {
+      throw new Error();
+    }
+  }
+ else {
+    return null;
+  }
+}

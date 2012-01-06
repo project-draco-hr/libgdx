@@ -1,0 +1,45 @@
+{
+  if (args.length < 3) {
+    usageAndExit();
+  }
+  Map<Integer,Record> map=read(new BufferedInputStream(new FileInputStream(args[0])),copy(args,2,args.length - 2));
+  for (Iterator<Record> it=map.values().iterator(); it.hasNext(); ) {
+    final Record r=it.next();
+    if (r.nodes == null) {
+      it.remove();
+    }
+ else {
+      visitLeaves(r.nodes,new LeafVisitor(){
+        private Set<Instance> set=new HashSet();
+        public void visit(        LeafNode node){
+          if (!set.contains(node.instance)) {
+            r.footprint+=node.instance.size;
+            ++r.count;
+          }
+          set.add(node.instance);
+        }
+      }
+);
+    }
+  }
+  Record[] array=map.values().toArray(new Record[map.size()]);
+  Arrays.sort(array,new Comparator<Record>(){
+    public int compare(    Record a,    Record b){
+      return b.footprint - a.footprint;
+    }
+  }
+);
+  int wordSize=Integer.parseInt(args[1]);
+  int footprint=0;
+  int count=0;
+  for (  Record r : array) {
+    if (r.name == null) {
+      r.name=String.valueOf(r.key);
+    }
+    System.out.println(r.name + ": " + (r.footprint * wordSize)+ " "+ r.count);
+    footprint+=r.footprint;
+    count+=r.count;
+  }
+  System.out.println();
+  System.out.println("total: " + (footprint * wordSize) + " "+ count);
+}

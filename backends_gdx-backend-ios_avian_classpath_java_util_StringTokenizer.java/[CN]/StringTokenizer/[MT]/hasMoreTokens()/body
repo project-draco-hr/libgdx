@@ -1,0 +1,14 @@
+{
+  for (int i=position; i < in.length(); ++i) {
+    if (isDelimiter(in.charAt(i))) {
+      if (includeDelimiters) {
+        return true;
+      }
+    }
+ else {
+      position=i;
+      return true;
+    }
+  }
+  return false;
+}

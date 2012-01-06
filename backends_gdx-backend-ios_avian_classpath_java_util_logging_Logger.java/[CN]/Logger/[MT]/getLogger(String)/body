@@ -1,0 +1,6 @@
+{
+  if (name.equals(""))   return rootLogger;
+  Logger logger=new Logger(name);
+  logger.parent=rootLogger;
+  return logger;
+}

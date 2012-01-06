@@ -1,0 +1,6 @@
+{
+  write1(out,CONSTANT_Utf8);
+  byte[] bytes=data.getBytes();
+  write2(out,bytes.length);
+  out.write(bytes);
+}

@@ -1,0 +1,11 @@
+{
+  if (current == null) {
+    if (key == null) {
+      current=key=new StringBuilder();
+    }
+ else {
+      current=value=new StringBuilder();
+    }
+  }
+  current.append((char)c);
+}

@@ -1,0 +1,7 @@
+{
+  this.path=path;
+  if (path != null) {
+    cell=path.value();
+    nextPath=path.successor();
+  }
+}

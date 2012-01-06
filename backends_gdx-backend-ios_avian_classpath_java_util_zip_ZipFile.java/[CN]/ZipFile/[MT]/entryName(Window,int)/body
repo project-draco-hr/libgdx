@@ -1,0 +1,4 @@
+{
+  int length=entryNameLength(w,p);
+  return new String(w.data,w.seek(p + 46,length),length);
+}

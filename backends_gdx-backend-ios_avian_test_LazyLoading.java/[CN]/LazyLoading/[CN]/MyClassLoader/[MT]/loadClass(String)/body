@@ -1,0 +1,16 @@
+{
+  if ("LazyLoading$Test".equals(name)) {
+    return findClass(name);
+  }
+ else   if ("LazyLoading$Lazy".equals(name) || "LazyLoading$Interface".equals(name)) {
+    if (loadLazy) {
+      return findClass(name);
+    }
+ else {
+      throw new ClassNotFoundException();
+    }
+  }
+ else {
+    return super.loadClass(name);
+  }
+}

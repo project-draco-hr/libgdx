@@ -1,0 +1,11 @@
+{
+synchronized (lock) {
+    if (woken) {
+      woken=false;
+      return true;
+    }
+ else {
+      return false;
+    }
+  }
+}

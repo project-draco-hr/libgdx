@@ -1,0 +1,23 @@
+{
+  Cell<K,V> old=null;
+  if (array != null) {
+    int index=helper.hash(key) & (array.length - 1);
+    Cell<K,V> p=null;
+    for (Cell<K,V> c=array[index]; c != null; c=c.next()) {
+      if (helper.equal(key,c.getKey())) {
+        old=c;
+        if (p == null) {
+          array[index]=c.next();
+        }
+ else {
+          p.setNext(c.next());
+        }
+        --size;
+        break;
+      }
+      p=c;
+    }
+    shrink();
+  }
+  return old;
+}

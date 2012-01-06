@@ -1,0 +1,7 @@
+{
+  int c;
+  while ((c=r.read()) != -1 && Character.isWhitespace((char)c))   ;
+  if (c != -1) {
+    r.unread(c);
+  }
+}

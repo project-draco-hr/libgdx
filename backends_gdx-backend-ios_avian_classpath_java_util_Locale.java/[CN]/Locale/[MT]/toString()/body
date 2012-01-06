@@ -1,0 +1,7 @@
+{
+  boolean hasLanguage=language != "";
+  boolean hasCountry=country != "";
+  boolean hasVariant=variant != "";
+  if (!hasLanguage && !hasCountry)   return "";
+  return language + (hasCountry || hasVariant ? '_' + country : "") + (hasVariant ? '_' + variant : "");
+}

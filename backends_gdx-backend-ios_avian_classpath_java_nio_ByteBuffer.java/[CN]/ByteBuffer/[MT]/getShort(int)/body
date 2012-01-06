@@ -1,0 +1,5 @@
+{
+  checkGet(position,2);
+  int p=arrayOffset + position;
+  return (short)(((array[p] & 0xFF) << 8) | ((array[p + 1] & 0xFF)));
+}

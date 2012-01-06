@@ -1,0 +1,18 @@
+{
+  if (currentCell != null) {
+    if (previousCell == null) {
+      array[currentIndex]=currentCell.next();
+    }
+ else {
+      previousCell.setNext(currentCell.next());
+      if (previousCell.next() == null) {
+        previousCell=null;
+      }
+    }
+    currentCell=null;
+    --size;
+  }
+ else {
+    throw new IllegalStateException();
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (useCustomHandler) {
+    Logger root=Logger.getLogger("");
+    root.addHandler(new MyHandler());
+    for (    Handler h : root.getHandlers())     root.removeHandler(h);
+    root.addHandler(new MyHandler());
+  }
+  Logging me=new Logging();
+  me.run();
+}

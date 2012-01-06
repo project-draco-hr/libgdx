@@ -1,0 +1,11 @@
+{
+  String prefix=resourceURLPrefix(name);
+  if (prefix != null) {
+    try {
+      return new URL(prefix + name);
+    }
+ catch (    MalformedURLException ignored) {
+    }
+  }
+  return null;
+}

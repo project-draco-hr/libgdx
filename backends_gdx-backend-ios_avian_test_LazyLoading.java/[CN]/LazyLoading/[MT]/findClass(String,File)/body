@@ -1,0 +1,16 @@
+{
+  for (  File file : directory.listFiles()) {
+    if (file.isFile()) {
+      if (file.getName().equals(name + ".class")) {
+        return file;
+      }
+    }
+ else     if (file.isDirectory()) {
+      File result=findClass(name,file);
+      if (result != null) {
+        return result;
+      }
+    }
+  }
+  return null;
+}

@@ -1,0 +1,19 @@
+{
+  Trace trace=new Trace();
+  Thread thread=new Thread(trace);
+synchronized (trace) {
+    thread.start();
+    trace.wait();
+    int count=0;
+    while (trace.alive) {
+      thread.getStackTrace();
+      ++count;
+      if (count % 100 == 0) {
+        trace.wait();
+        System.out.print("t");
+        System.out.flush();
+      }
+    }
+    System.out.println("\ngot " + count + " traces");
+  }
+}

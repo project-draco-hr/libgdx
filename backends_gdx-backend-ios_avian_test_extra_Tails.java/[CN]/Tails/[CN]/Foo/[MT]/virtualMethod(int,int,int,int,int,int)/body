@@ -1,0 +1,8 @@
+{
+  if (n < Limit) {
+    return staticMethod(this,n + 1);
+  }
+ else {
+    return leafMethod(n);
+  }
+}

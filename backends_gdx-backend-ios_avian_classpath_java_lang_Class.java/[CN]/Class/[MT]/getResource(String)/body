@@ -1,0 +1,10 @@
+{
+  if (!path.startsWith("/")) {
+    String name=new String(vmClass.name,0,vmClass.name.length - 1,false);
+    int index=name.lastIndexOf('/');
+    if (index >= 0) {
+      path=name.substring(0,index) + "/" + path;
+    }
+  }
+  return getClassLoader().getResource(path);
+}

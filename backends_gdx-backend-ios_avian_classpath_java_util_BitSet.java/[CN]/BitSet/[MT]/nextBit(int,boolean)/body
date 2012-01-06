@@ -1,0 +1,29 @@
+{
+  int pos=longPosition(fromIndex);
+  if (pos >= bits.length) {
+    return -1;
+  }
+  int current=fromIndex;
+  do {
+    long currValue=bits[pos];
+    if (currValue == 0) {
+      pos++;
+      current=pos << BITS_PER_LONG_SHIFT;
+    }
+ else {
+      do {
+        long bitPos=bitPosition(current);
+        if (((currValue & bitPos) != 0) ^ bitClear) {
+          return current;
+        }
+ else {
+          current++;
+        }
+      }
+ while (current % BITS_PER_LONG != 0);
+    }
+    pos++;
+  }
+ while (pos < bits.length);
+  return -1;
+}

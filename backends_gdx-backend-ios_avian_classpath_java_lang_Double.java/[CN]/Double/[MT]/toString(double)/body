@@ -1,0 +1,5 @@
+{
+  byte[] buffer=new byte[20];
+  int numChars=fillBufferWithDouble(v,buffer,20);
+  return new String(buffer,0,numChars,false);
+}

@@ -1,0 +1,25 @@
+{
+  if (o == null) {
+    out.print("n");
+  }
+ else {
+    Integer id=map.get(o);
+    if (id == null) {
+      map.put(o,nextId[0]);
+      Class c=o.getClass();
+      if (c.isArray()) {
+        serializeArray(o,map,nextId);
+      }
+ else       if (Serializable.class.isAssignableFrom(c)) {
+        serializeObject(o,map,nextId);
+      }
+ else {
+        throw new NotSerializableException(c.getName());
+      }
+    }
+ else {
+      out.print("r");
+      out.print(id.intValue());
+    }
+  }
+}

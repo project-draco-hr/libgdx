@@ -1,0 +1,15 @@
+{
+  int i=2;
+  if (predicate) {
+    Object a=null;
+  }
+ else {
+    Object a=null;
+  }
+  do {
+    System.gc();
+    int a=42;
+    --i;
+  }
+ while (i >= 0);
+}

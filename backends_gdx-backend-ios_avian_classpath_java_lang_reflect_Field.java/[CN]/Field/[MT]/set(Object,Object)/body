@@ -1,0 +1,48 @@
+{
+  Object target;
+  if ((vmField.flags & Modifier.STATIC) != 0) {
+    target=vmField.class_.staticTable;
+  }
+ else   if (Class.isInstance(vmField.class_,instance)) {
+    target=instance;
+  }
+ else {
+    throw new IllegalArgumentException();
+  }
+switch (vmField.code) {
+case ByteField:
+    setPrimitive(target,vmField.code,vmField.offset,(Byte)value);
+  break;
+case BooleanField:
+setPrimitive(target,vmField.code,vmField.offset,((Boolean)value) ? 1 : 0);
+break;
+case CharField:
+setPrimitive(target,vmField.code,vmField.offset,(Character)value);
+break;
+case ShortField:
+setPrimitive(target,vmField.code,vmField.offset,(Short)value);
+break;
+case IntField:
+setPrimitive(target,vmField.code,vmField.offset,(Integer)value);
+break;
+case LongField:
+setPrimitive(target,vmField.code,vmField.offset,(Long)value);
+break;
+case FloatField:
+setPrimitive(target,vmField.code,vmField.offset,Float.floatToRawIntBits((Float)value));
+break;
+case DoubleField:
+setPrimitive(target,vmField.code,vmField.offset,Double.doubleToRawLongBits((Double)value));
+break;
+case ObjectField:
+if (value == null || getType().isInstance(value)) {
+setObject(target,vmField.offset,value);
+}
+ else {
+throw new IllegalArgumentException("needed " + getType() + ", got "+ value.getClass().getName()+ " when setting "+ Class.getName(vmField.class_)+ "."+ getName());
+}
+break;
+default :
+throw new Error();
+}
+}

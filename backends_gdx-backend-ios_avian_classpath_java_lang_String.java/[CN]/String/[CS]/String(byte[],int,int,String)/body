@@ -1,0 +1,6 @@
+{
+  this(bytes,offset,length);
+  if (!(charsetName.equalsIgnoreCase(UTF_8_ENCODING) || charsetName.equalsIgnoreCase(ISO_8859_1_ENCODING))) {
+    throw new UnsupportedEncodingException(charsetName);
+  }
+}

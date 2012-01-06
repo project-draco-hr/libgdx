@@ -1,0 +1,18 @@
+{
+  if ((vmClass.vmFlags & PrimitiveFlag) != 0) {
+    return getName();
+  }
+ else   if (isArray()) {
+    return getComponentType().getSimpleName() + "[]";
+  }
+ else {
+    String name=getCanonicalName();
+    int index=name.lastIndexOf('.');
+    if (index >= 0) {
+      return name.substring(index + 1);
+    }
+ else {
+      return name;
+    }
+  }
+}

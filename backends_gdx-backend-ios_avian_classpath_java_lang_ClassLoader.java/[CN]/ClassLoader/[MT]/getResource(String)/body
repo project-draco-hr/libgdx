@@ -1,0 +1,10 @@
+{
+  URL url=null;
+  if (parent != null) {
+    url=parent.getResource(path);
+  }
+  if (url == null) {
+    url=findResource(path);
+  }
+  return url;
+}

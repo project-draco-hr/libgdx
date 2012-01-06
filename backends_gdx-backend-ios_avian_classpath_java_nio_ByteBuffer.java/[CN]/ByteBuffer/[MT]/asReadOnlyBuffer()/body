@@ -1,0 +1,6 @@
+{
+  ByteBuffer b=new ByteBuffer(array,arrayOffset,capacity,true);
+  b.position(position());
+  b.limit(limit());
+  return b;
+}

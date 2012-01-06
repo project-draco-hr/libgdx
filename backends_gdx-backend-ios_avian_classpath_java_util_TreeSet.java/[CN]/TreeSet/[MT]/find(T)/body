@@ -1,0 +1,4 @@
+{
+  PersistentSet.Path<Cell<T>> p=set.find(new Cell(value,null));
+  return p.fresh() ? null : p.value().value;
+}

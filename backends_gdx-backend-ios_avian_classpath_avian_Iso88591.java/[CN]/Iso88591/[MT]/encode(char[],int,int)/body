@@ -1,0 +1,7 @@
+{
+  ByteArrayOutputStream buf=new ByteArrayOutputStream();
+  for (int i=offset; i < offset + length; ++i) {
+    buf.write(s16[i]);
+  }
+  return buf.toByteArray();
+}

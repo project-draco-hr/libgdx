@@ -1,0 +1,17 @@
+{
+  new Finalizers();
+  expect(!finalized);
+synchronized (lock) {
+    System.gc();
+    lock.wait(5000);
+  }
+  expect(finalized);
+  new Finalizers2();
+  finalized=false;
+  expect(!finalized);
+synchronized (lock) {
+    System.gc();
+    lock.wait(5000);
+  }
+  expect(finalized);
+}

@@ -1,0 +1,4 @@
+{
+  if (isEmpty())   throw new NoSuchElementException();
+  return set.last().value().value;
+}

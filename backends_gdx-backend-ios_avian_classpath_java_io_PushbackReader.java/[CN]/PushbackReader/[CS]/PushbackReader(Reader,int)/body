@@ -1,0 +1,7 @@
+{
+  if (bufferSize > 1) {
+    throw new IllegalArgumentException(bufferSize + " > 1");
+  }
+  this.in=in;
+  this.hasSavedChar=false;
+}

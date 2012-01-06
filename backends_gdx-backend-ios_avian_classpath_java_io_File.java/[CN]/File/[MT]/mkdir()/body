@@ -1,0 +1,9 @@
+{
+  try {
+    mkdir(path);
+    return true;
+  }
+ catch (  IOException e) {
+    return false;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  int i=0;
+  for (  PoolEntry existing : pool) {
+    if (existing.equals(e)) {
+      return i;
+    }
+ else {
+      ++i;
+    }
+  }
+  pool.add(e);
+  return pool.size() - 1;
+}

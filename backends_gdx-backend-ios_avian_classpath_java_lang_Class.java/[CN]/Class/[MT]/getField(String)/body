@@ -1,0 +1,9 @@
+{
+  for (VMClass c=vmClass; c != null; c=c.super_) {
+    Field f=findField(c,name);
+    if (f != null) {
+      return f;
+    }
+  }
+  throw new NoSuchFieldException(name);
+}

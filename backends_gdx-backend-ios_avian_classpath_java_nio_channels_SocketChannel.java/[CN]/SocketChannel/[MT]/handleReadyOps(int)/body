@@ -1,0 +1,5 @@
+{
+  if ((ops & SelectionKey.OP_CONNECT) != 0) {
+    readyToConnect=true;
+  }
+}

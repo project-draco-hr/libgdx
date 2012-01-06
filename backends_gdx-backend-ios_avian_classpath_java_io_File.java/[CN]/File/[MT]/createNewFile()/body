@@ -1,0 +1,9 @@
+{
+  try {
+    createNewFile(path);
+    return true;
+  }
+ catch (  IOException e) {
+    return false;
+  }
+}

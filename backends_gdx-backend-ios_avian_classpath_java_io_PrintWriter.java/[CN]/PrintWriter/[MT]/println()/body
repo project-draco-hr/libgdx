@@ -1,0 +1,8 @@
+{
+  try {
+    out.write(newline);
+    if (autoFlush)     flush();
+  }
+ catch (  IOException e) {
+  }
+}

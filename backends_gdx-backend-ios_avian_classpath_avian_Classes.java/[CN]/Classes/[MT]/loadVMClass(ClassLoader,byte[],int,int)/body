@@ -1,0 +1,16 @@
+{
+  byte[] spec=new byte[length + 1];
+  System.arraycopy(nameBytes,offset,spec,0,length);
+  try {
+    VMClass c=resolveVMClass(loader,spec);
+    if (c == null) {
+      throw new NoClassDefFoundError();
+    }
+    return c;
+  }
+ catch (  ClassNotFoundException e) {
+    NoClassDefFoundError error=new NoClassDefFoundError(new String(nameBytes,offset,length));
+    error.initCause(e);
+    throw error;
+  }
+}

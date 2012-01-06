@@ -1,0 +1,7 @@
+{
+  Object[] table=new Object[read2(in)];
+  for (int i=0; i < table.length; ++i) {
+    table[i]=parseAnnotation(loader,pool,in);
+  }
+  return table;
+}

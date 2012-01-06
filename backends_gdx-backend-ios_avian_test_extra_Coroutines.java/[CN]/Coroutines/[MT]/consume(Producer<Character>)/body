@@ -1,0 +1,11 @@
+{
+  char v=producer.produce();
+  System.out.println("consume \"" + v + "\"");
+  expect(v == 'a');
+  v=producer.produce();
+  System.out.println("consume \"" + v + "\"");
+  expect(v == 'b');
+  v=producer.produce();
+  System.out.println("consume \"" + v + "\"");
+  expect(v == 'c');
+}

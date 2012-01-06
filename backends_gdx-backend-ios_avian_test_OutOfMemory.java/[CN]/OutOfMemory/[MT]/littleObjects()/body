@@ -1,0 +1,9 @@
+{
+  byte[] padding=new byte[Padding];
+  Node root=null;
+  while (true) {
+    Node x=new Node();
+    x.next=root;
+    root=x;
+  }
+}

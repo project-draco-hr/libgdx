@@ -1,0 +1,51 @@
+{
+  boolean done=false;
+  boolean popped=false;
+  int level=0;
+  while (!done) {
+    int flag=in.read();
+switch (flag) {
+case Root:
+{
+        out.print("\nroot " + readInt(in));
+        popped=false;
+      }
+    break;
+case ClassName:
+{
+    out.print(" class " + readString(in));
+  }
+break;
+case Push:
+{
+++level;
+out.println();
+indent(out,level);
+if (!popped) {
+  out.print("first ");
+}
+out.print("child " + readInt(in));
+popped=false;
+}
+break;
+case Pop:
+{
+--level;
+popped=true;
+}
+break;
+case Size:
+{
+out.print(" size " + readInt(in));
+}
+break;
+case -1:
+out.println();
+out.flush();
+done=true;
+break;
+default :
+throw new RuntimeException("bad flag: " + flag);
+}
+}
+}

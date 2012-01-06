@@ -1,0 +1,9 @@
+{
+  URL url=getResource(path);
+  try {
+    return (url == null ? null : url.openStream());
+  }
+ catch (  IOException e) {
+    return null;
+  }
+}

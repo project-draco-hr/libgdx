@@ -1,0 +1,27 @@
+{
+  final int zlibResult=0;
+  final int inputCount=1;
+  final int outputCount=2;
+  if (peer == 0) {
+    throw new IllegalStateException();
+  }
+  if (input == null || output == null) {
+    throw new NullPointerException();
+  }
+  int[] results=new int[3];
+  inflate(peer,input,this.offset,this.length,output,offset,length,results);
+  if (results[zlibResult] < 0) {
+    throw new DataFormatException();
+  }
+switch (results[zlibResult]) {
+case Z_NEED_DICT:
+    needDictionary=true;
+  break;
+case Z_STREAM_END:
+finished=true;
+break;
+}
+this.offset+=results[inputCount];
+this.length-=results[inputCount];
+return results[outputCount];
+}

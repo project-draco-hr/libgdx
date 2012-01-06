@@ -1,0 +1,6 @@
+{
+  if (!c.isAssignableFrom(this)) {
+    throw new ClassCastException();
+  }
+  return (Class<? extends T>)this;
+}

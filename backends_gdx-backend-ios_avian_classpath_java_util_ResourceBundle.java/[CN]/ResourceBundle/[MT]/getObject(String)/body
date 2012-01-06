@@ -1,0 +1,9 @@
+{
+  for (ResourceBundle b=this; b != null; b=b.parent) {
+    Object value=b.handleGetObject(key);
+    if (value != null) {
+      return value;
+    }
+  }
+  throw new MissingResourceException(key,name,key);
+}

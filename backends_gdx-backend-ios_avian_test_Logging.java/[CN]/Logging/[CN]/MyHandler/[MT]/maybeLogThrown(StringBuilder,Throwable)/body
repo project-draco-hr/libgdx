@@ -1,0 +1,22 @@
+{
+  if (t != null) {
+    sb.append("\nCaused by: ");
+    sb.append(t.getClass().getName());
+    sb.append(": ");
+    sb.append(t.getMessage());
+    sb.append('\n');
+    for (    StackTraceElement elt : t.getStackTrace()) {
+      sb.append('\t');
+      sb.append(elt.getClassName());
+      sb.append('.');
+      sb.append(elt.getMethodName());
+      sb.append('(');
+      sb.append(elt.getFileName());
+      sb.append(':');
+      sb.append(elt.getLineNumber());
+      sb.append(')');
+      sb.append('\n');
+    }
+    maybeLogThrown(sb,t.getCause());
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (front != null) {
+    T v=front.value;
+    remove(front);
+    return v;
+  }
+ else {
+    throw new NoSuchElementException();
+  }
+}

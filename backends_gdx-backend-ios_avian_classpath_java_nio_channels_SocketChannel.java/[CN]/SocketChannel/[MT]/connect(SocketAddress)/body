@@ -1,0 +1,12 @@
+{
+  InetSocketAddress a;
+  try {
+    a=(InetSocketAddress)address;
+  }
+ catch (  ClassCastException e) {
+    throw new UnsupportedAddressTypeException();
+  }
+  socket=doConnect(a.getHostName(),a.getPort());
+  configureBlocking(blocking);
+  return connected;
+}

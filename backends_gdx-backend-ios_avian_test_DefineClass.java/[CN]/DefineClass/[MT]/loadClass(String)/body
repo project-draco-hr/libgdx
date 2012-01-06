@@ -1,0 +1,3 @@
+{
+  return new MyClassLoader(DefineClass.class.getClassLoader()).defineClass(name,read(findClass(name,new File(System.getProperty("user.dir")))));
+}

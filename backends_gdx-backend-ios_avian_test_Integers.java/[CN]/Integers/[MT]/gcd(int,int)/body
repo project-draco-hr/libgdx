@@ -1,0 +1,16 @@
+{
+  int temp;
+  m=Math.abs(m);
+  n=Math.abs(n);
+  if (m < n) {
+    temp=m;
+    m=n;
+    n=temp;
+  }
+  while (n != 0) {
+    temp=m;
+    m=n;
+    n=temp % n;
+  }
+  return m;
+}

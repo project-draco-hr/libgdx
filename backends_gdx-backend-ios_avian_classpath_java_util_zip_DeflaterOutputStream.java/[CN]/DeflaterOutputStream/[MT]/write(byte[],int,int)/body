@@ -1,0 +1,21 @@
+{
+  if (deflater.finished()) {
+    throw new IOException("Already at end of stream");
+  }
+ else   if (offset < 0) {
+    throw new IndexOutOfBoundsException("Offset can't be less than zero");
+  }
+ else   if (length < 0) {
+    throw new IndexOutOfBoundsException("Length can't be less than zero");
+  }
+ else   if (b.length - (offset + length) < 0) {
+    throw new IndexOutOfBoundsException("Offset + Length is larger than the input byte array");
+  }
+ else   if (length == 0) {
+    return;
+  }
+  deflater.setInput(b,offset,length);
+  while (deflater.getRemaining() > 0) {
+    deflate();
+  }
+}

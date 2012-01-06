@@ -1,0 +1,6 @@
+{
+  if (capacity > 0) {
+    array=new Cell[nextPowerOfTwo(capacity)];
+  }
+  this.helper=helper;
+}

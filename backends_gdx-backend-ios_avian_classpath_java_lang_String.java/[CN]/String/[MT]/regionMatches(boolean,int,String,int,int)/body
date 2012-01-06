@@ -1,0 +1,10 @@
+{
+  String a=substring(thisOffset,thisOffset + length);
+  String b=match.substring(matchOffset,matchOffset + length);
+  if (ignoreCase) {
+    return a.equalsIgnoreCase(b);
+  }
+ else {
+    return a.equals(b);
+  }
+}

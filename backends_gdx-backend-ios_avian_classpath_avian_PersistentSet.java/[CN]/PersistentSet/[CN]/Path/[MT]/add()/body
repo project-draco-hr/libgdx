@@ -1,0 +1,4 @@
+{
+  if (!fresh)   throw new IllegalStateException();
+  return root.add(this);
+}

@@ -1,0 +1,14 @@
+{
+  ByteArrayOutputStream out=new ByteArrayOutputStream();
+  write2(out,2);
+  write2(out,2);
+  write4(out,6);
+  write1(out,aload_0);
+  write1(out,aload_1);
+  write1(out,putfield);
+  write2(out,ConstantPool.addFieldRef(pool,"java/lang/reflect/Proxy","h","Ljava/lang/reflect/InvocationHandler;") + 1);
+  write1(out,return_);
+  write2(out,0);
+  write2(out,0);
+  return out.toByteArray();
+}

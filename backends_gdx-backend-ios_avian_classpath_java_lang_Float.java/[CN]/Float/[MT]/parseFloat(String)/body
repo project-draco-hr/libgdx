@@ -1,0 +1,10 @@
+{
+  int[] numRead=new int[1];
+  float f=floatFromString(s,numRead);
+  if (numRead[0] == 1) {
+    return f;
+  }
+ else {
+    throw new NumberFormatException(s);
+  }
+}

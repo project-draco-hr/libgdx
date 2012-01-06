@@ -1,0 +1,16 @@
+{
+  if (predicate) {
+    int a=42;
+  }
+ else {
+    Object a=null;
+  }
+  if (predicate) {
+    noop();
+  }
+ else {
+    Object a=null;
+  }
+  noop();
+  System.gc();
+}

@@ -1,0 +1,6 @@
+{
+  if (peer != 0) {
+    close(peer);
+    peer=0;
+  }
+}

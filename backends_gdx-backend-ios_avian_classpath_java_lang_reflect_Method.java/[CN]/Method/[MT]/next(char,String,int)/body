@@ -1,0 +1,6 @@
+{
+  for (int i=start; i < s.length(); ++i) {
+    if (s.charAt(i) == c)     return i;
+  }
+  throw new RuntimeException();
+}

@@ -1,0 +1,8 @@
+{
+  checkPut(position,4);
+  array[arrayOffset + position]=(byte)((val >> 24) & 0xff);
+  array[arrayOffset + position + 1]=(byte)((val >> 16) & 0xff);
+  array[arrayOffset + position + 2]=(byte)((val >> 8) & 0xff);
+  array[arrayOffset + position + 3]=(byte)((val) & 0xff);
+  return this;
+}

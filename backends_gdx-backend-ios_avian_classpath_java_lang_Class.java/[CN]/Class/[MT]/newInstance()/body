@@ -1,0 +1,11 @@
+{
+  try {
+    return (T)getConstructor().newInstance();
+  }
+ catch (  NoSuchMethodException e) {
+    throw new RuntimeException(e);
+  }
+catch (  InvocationTargetException e) {
+    throw new RuntimeException(e);
+  }
+}

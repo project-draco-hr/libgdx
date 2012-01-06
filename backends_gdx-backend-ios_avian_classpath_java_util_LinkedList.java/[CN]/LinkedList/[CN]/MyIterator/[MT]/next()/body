@@ -1,0 +1,15 @@
+{
+  if (hasNext()) {
+    if (current == null) {
+      current=front;
+    }
+ else {
+      current=current.next;
+    }
+    toRemove=current;
+    return current.value;
+  }
+ else {
+    throw new NoSuchElementException();
+  }
+}

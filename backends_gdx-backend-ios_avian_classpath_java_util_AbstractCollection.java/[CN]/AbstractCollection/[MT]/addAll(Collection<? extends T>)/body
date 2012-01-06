@@ -1,0 +1,7 @@
+{
+  boolean result=false;
+  for (  T obj : collection) {
+    result|=add(obj);
+  }
+  return result;
+}

@@ -1,0 +1,16 @@
+{
+  UnwindResult result=dynamicWind2(before,thunk,after);
+  if (result.continuation != null) {
+    after.run();
+    if (result.exception != null) {
+      result.continuation.handleException(result.exception);
+    }
+ else {
+      result.continuation.handleResult(result.result);
+    }
+    throw new AssertionError();
+  }
+ else {
+    return (T)result.result;
+  }
+}

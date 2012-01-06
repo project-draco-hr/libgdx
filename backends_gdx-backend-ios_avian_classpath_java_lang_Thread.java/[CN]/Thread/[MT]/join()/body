@@ -1,0 +1,5 @@
+{
+  while (getState() != State.TERMINATED) {
+    wait();
+  }
+}

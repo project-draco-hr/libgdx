@@ -1,0 +1,6 @@
+{
+  if (priority < MIN_PRIORITY || priority > MAX_PRIORITY) {
+    throw new IllegalArgumentException();
+  }
+  this.priority=(byte)priority;
+}

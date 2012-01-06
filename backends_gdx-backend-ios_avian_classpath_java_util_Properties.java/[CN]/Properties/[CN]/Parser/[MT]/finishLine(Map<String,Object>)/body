@@ -1,0 +1,6 @@
+{
+  if (key != null) {
+    map.put(key.toString(),(value == null ? "" : value.toString().trim()));
+  }
+  key=value=current=null;
+}

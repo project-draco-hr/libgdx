@@ -1,0 +1,7 @@
+{
+  int result=floatToRawIntBits(value);
+  if (((result & EXP_BIT_MASK) == EXP_BIT_MASK) && (result & SIGNIF_BIT_MASK) != 0) {
+    result=0x7fc00000;
+  }
+  return result;
+}

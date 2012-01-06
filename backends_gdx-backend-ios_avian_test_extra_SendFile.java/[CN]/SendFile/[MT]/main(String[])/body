@@ -1,0 +1,13 @@
+{
+  if (args.length != 2) {
+    System.out.println("Usage:  SendFile file host");
+  }
+ else {
+    try {
+      sendFile(args[0],args[1],8988);
+    }
+ catch (    Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+}

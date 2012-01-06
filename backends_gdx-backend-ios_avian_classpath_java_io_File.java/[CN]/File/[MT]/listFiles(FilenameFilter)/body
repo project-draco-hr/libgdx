@@ -1,0 +1,8 @@
+{
+  String[] list=list(filter);
+  File[] result=new File[list.length];
+  for (int i=0; i < list.length; ++i) {
+    result[i]=new File(this,list[i]);
+  }
+  return result;
+}

@@ -1,0 +1,29 @@
+{
+  if (i < 0 || i > length) {
+    throw new IndexOutOfBoundsException();
+  }
+  if (i == length) {
+    append(s);
+  }
+ else {
+    flush();
+    int index=length;
+    for (Cell c=chain; c != null; c=c.next) {
+      int start=index - c.value.length();
+      index=start;
+      if (i >= start) {
+        if (i == start) {
+          c.next=new Cell(s,c.next);
+        }
+ else {
+          String v=c.value;
+          c.value=v.substring(i - start,v.length());
+          c.next=new Cell(s,new Cell(v.substring(0,i - start),c.next));
+        }
+        break;
+      }
+    }
+    length+=s.length();
+  }
+  return this;
+}

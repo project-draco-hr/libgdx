@@ -1,0 +1,13 @@
+{
+  if (root == NullNode)   return null;
+  Node<T> newRoot=new Node(root);
+  Cell<Node<T>> ancestors=null;
+  Node<T> old=root;
+  Node<T> new_=newRoot;
+  while (old.right != NullNode) {
+    ancestors=new Cell(new_,ancestors);
+    old=old.right;
+    new_=new_.right=new Node(old);
+  }
+  return new Path(true,new_,new PersistentSet(newRoot,comparator,size),ancestors);
+}

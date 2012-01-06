@@ -1,0 +1,6 @@
+{
+  checkPut(src.remaining());
+  put(src.array,src.arrayOffset + src.position,src.remaining());
+  src.position+=src.remaining();
+  return this;
+}

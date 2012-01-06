@@ -1,0 +1,6 @@
+{
+  if (getDeclaringClass() != other.getDeclaringClass()) {
+    throw new ClassCastException();
+  }
+  return ordinal - other.ordinal;
+}

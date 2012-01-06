@@ -1,0 +1,9 @@
+{
+  if (o instanceof FieldRefPoolEntry) {
+    FieldRefPoolEntry other=(FieldRefPoolEntry)o;
+    return other.classIndex == classIndex && other.nameAndTypeIndex == nameAndTypeIndex;
+  }
+ else {
+    return false;
+  }
+}

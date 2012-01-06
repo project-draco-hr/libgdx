@@ -1,0 +1,12 @@
+{
+  if (this == o) {
+    return true;
+  }
+ else   if (o instanceof String) {
+    String s=(String)o;
+    return s.length == length && compareToIgnoreCase(s) == 0;
+  }
+ else {
+    return false;
+  }
+}

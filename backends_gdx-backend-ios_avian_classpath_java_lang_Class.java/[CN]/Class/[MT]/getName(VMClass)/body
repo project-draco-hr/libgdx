@@ -1,0 +1,40 @@
+{
+  if (c.name == null) {
+    if ((c.vmFlags & PrimitiveFlag) != 0) {
+      if (c == Classes.primitiveClass('V')) {
+        c.name="void\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('Z')) {
+        c.name="boolean\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('B')) {
+        c.name="byte\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('C')) {
+        c.name="char\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('S')) {
+        c.name="short\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('I')) {
+        c.name="int\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('F')) {
+        c.name="float\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('J')) {
+        c.name="long\0".getBytes();
+      }
+ else       if (c == Classes.primitiveClass('D')) {
+        c.name="double\0".getBytes();
+      }
+ else {
+        throw new AssertionError();
+      }
+    }
+ else {
+      throw new AssertionError();
+    }
+  }
+  return new String(replace('/','.',c.name,0,c.name.length - 1),0,c.name.length - 1,false);
+}

@@ -1,0 +1,11 @@
+{
+  if (peer != 0) {
+    throw new IllegalStateException("thread already started");
+  }
+  state=(byte)State.RUNNABLE.ordinal();
+  peer=doStart();
+  if (peer == 0) {
+    state=(byte)State.NEW.ordinal();
+    throw new RuntimeException("unable to start native thread");
+  }
+}

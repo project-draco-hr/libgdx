@@ -1,0 +1,9 @@
+{
+  Cell<Node<T>> s=successor(p.node,p.ancestors);
+  if (s == null) {
+    return null;
+  }
+ else {
+    return new Path(false,s.value,p.root,s.next);
+  }
+}

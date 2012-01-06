@@ -1,0 +1,5 @@
+{
+  int pos=longPosition(index);
+  enlarge(pos);
+  bits[pos]|=bitPosition(index);
+}

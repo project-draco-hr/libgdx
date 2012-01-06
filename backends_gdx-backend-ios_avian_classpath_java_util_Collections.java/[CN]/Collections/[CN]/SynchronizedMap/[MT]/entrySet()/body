@@ -1,0 +1,5 @@
+{
+synchronized (lock) {
+    return new SynchronizedSet<java.util.Map.Entry<K,V>>(lock,map.entrySet());
+  }
+}

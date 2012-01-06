@@ -1,0 +1,8 @@
+{
+  for (int i=start; i < length; ++i) {
+    if (charAt(i) == c) {
+      return i;
+    }
+  }
+  return -1;
+}

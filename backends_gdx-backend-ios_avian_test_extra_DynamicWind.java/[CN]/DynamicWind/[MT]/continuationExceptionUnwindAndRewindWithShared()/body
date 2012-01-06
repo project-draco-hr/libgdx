@@ -1,0 +1,9 @@
+{
+  unwindTest(new Callable<Integer>(){
+    public Integer call() throws Exception {
+      new DynamicWind().continuationExceptionUnwindAndRewind();
+      return 42;
+    }
+  }
+);
+}

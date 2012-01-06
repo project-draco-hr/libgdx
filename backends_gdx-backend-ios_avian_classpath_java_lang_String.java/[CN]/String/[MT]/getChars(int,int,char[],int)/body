@@ -1,0 +1,16 @@
+{
+  if (srcOffset < 0 || srcEnd > length) {
+    throw new IndexOutOfBoundsException();
+  }
+  int srcLength=srcEnd - srcOffset;
+  if (data instanceof char[]) {
+    char[] src=(char[])data;
+    System.arraycopy(src,offset + srcOffset,dst,dstOffset,srcLength);
+  }
+ else {
+    byte[] src=(byte[])data;
+    for (int i=0; i < srcLength; ++i) {
+      dst[i + dstOffset]=(char)src[i + offset + srcOffset];
+    }
+  }
+}

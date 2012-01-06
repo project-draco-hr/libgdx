@@ -1,0 +1,15 @@
+{
+  if (bufferLength == 0) {
+    return 0;
+  }
+  if (position >= limit) {
+    return -1;
+  }
+  int remaining=limit - position;
+  if (remaining < bufferLength) {
+    bufferLength=remaining;
+  }
+  System.arraycopy(array,position,buffer,offset,bufferLength);
+  position+=bufferLength;
+  return bufferLength;
+}

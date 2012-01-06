@@ -1,0 +1,11 @@
+{
+  if ((vmClass.vmFlags & PrimitiveFlag) != 0) {
+    return getName();
+  }
+ else   if (isArray()) {
+    return getComponentType().getCanonicalName() + "[]";
+  }
+ else {
+    return getName().replace('$','.');
+  }
+}

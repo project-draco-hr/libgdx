@@ -1,0 +1,6 @@
+{
+  if (pid != 0) {
+    throw new IllegalThreadStateException();
+  }
+  return exitCode;
+}

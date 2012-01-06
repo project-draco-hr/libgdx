@@ -1,0 +1,8 @@
+{
+  if (c >= 'a' && c <= 'z') {
+    return (char)((c - 'a') + 'A');
+  }
+ else {
+    return c;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (length > buffer.length - position) {
+    drain();
+    out.write(b,offset,length);
+  }
+ else {
+    System.arraycopy(b,offset,buffer,position,length);
+    position+=length;
+  }
+}

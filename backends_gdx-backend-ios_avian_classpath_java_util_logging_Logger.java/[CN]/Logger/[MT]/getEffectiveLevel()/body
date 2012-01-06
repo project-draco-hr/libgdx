@@ -1,0 +1,7 @@
+{
+  Logger logger=this;
+  while (logger.levelValue == null) {
+    logger=logger.getParent();
+  }
+  return logger.getLevel();
+}

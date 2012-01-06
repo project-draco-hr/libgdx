@@ -1,0 +1,9 @@
+{
+  if (predicate) {
+    int a=42;
+  }
+ else {
+    Object a=null;
+  }
+  System.gc();
+}

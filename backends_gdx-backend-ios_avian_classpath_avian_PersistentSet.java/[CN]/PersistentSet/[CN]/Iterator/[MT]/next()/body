@@ -1,0 +1,5 @@
+{
+  PersistentSet.Path<T> p=path;
+  path=path.successor();
+  return p.value();
+}

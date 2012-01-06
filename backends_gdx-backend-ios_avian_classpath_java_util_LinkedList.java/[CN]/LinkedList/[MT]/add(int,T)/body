@@ -1,0 +1,10 @@
+{
+  if (index == 0) {
+    addFirst(element);
+  }
+ else {
+    Cell<T> cell=find(index);
+    Cell<T> newCell=new Cell(element,cell.prev,cell);
+    cell.prev.next=newCell;
+  }
+}

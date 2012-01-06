@@ -1,0 +1,11 @@
+{
+  InetSocketAddress a;
+  try {
+    a=(InetSocketAddress)address;
+  }
+ catch (  ClassCastException e) {
+    throw new IllegalArgumentException();
+  }
+  channel.socket=doListen(a.getHostName(),a.getPort());
+  channel.configureBlocking(channel.isBlocking());
+}

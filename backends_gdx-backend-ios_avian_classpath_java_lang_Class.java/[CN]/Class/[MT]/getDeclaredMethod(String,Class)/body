@@ -1,0 +1,12 @@
+{
+  if (name.startsWith("<")) {
+    throw new NoSuchMethodException(name);
+  }
+  Method m=findMethod(vmClass,name,parameterTypes);
+  if (m == null) {
+    throw new NoSuchMethodException(name);
+  }
+ else {
+    return m;
+  }
+}

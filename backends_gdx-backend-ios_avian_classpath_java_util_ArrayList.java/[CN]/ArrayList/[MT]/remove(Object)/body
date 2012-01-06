@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < size; ++i) {
+    if (equal(element,array[i])) {
+      remove(i);
+      return true;
+    }
+  }
+  return false;
+}

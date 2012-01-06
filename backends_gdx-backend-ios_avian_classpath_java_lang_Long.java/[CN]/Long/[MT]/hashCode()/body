@@ -1,0 +1,3 @@
+{
+  return (int)((value >> 32) ^ (value & 0xFF));
+}

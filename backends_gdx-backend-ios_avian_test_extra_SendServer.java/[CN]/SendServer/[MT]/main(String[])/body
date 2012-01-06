@@ -1,0 +1,11 @@
+{
+  try {
+    System.out.println("Starting server");
+    if (args.length > 0) {
+      new SendServer().runMainLoop();
+    }
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+}

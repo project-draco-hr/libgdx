@@ -1,0 +1,8 @@
+{
+  Map<ThreadLocal,Object> map=Thread.currentThread().locals();
+  Object o=value;
+  if (o == null) {
+    o=Null;
+  }
+  map.put(this,o);
+}

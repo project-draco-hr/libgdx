@@ -1,0 +1,6 @@
+{
+  int len=end - start;
+  char[] buf=new char[len];
+  getChars(start,end,buf,0);
+  return new String(buf,0,len,false);
+}

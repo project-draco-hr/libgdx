@@ -1,0 +1,11 @@
+{
+  if (buffer == null) {
+    buffer=new byte[BufferSize];
+  }
+ else   if (position >= buffer.length) {
+    flushBuffer();
+    buffer=new byte[BufferSize];
+  }
+  buffer[position++]=(byte)(c & 0xFF);
+  ++length;
+}

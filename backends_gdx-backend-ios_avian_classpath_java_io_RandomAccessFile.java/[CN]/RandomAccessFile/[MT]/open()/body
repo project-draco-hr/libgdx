@@ -1,0 +1,6 @@
+{
+  long[] result=new long[2];
+  open(file.getPath(),result);
+  peer=result[0];
+  length=result[1];
+}

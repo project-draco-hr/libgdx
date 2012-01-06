@@ -1,0 +1,8 @@
+{
+  if (length >= s.length) {
+    return substring(length - s.length).compareTo(s) == 0;
+  }
+ else {
+    return false;
+  }
+}

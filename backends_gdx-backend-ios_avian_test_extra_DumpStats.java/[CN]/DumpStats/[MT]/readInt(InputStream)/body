@@ -1,0 +1,8 @@
+{
+  int b1=in.read();
+  int b2=in.read();
+  int b3=in.read();
+  int b4=in.read();
+  if (b4 == -1)   throw new EOFException();
+  return (int)((b1 << 24) | (b2 << 16) | (b3 << 8)| (b4));
+}

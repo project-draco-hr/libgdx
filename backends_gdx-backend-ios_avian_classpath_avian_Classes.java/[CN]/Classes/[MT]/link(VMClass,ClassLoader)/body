@@ -1,0 +1,37 @@
+{
+  acquireClassLock();
+  try {
+    if ((c.vmFlags & LinkFlag) == 0) {
+      if (c.super_ != null) {
+        link(c.super_,loader);
+      }
+      parseAnnotationTable(loader,c.addendum);
+      if (c.interfaceTable != null) {
+        int stride=((c.flags & Modifier.INTERFACE) != 0 ? 1 : 2);
+        for (int i=0; i < c.interfaceTable.length; i+=stride) {
+          link((VMClass)c.interfaceTable[i],loader);
+        }
+      }
+      if (c.methodTable != null) {
+        for (int i=0; i < c.methodTable.length; ++i) {
+          VMMethod m=c.methodTable[i];
+          for (int j=1; j < m.spec.length; ) {
+            j=resolveSpec(loader,m.spec,j);
+          }
+          parseAnnotationTable(loader,m.addendum);
+        }
+      }
+      if (c.fieldTable != null) {
+        for (int i=0; i < c.fieldTable.length; ++i) {
+          VMField f=c.fieldTable[i];
+          resolveSpec(loader,f.spec,0);
+          parseAnnotationTable(loader,f.addendum);
+        }
+      }
+      c.vmFlags|=LinkFlag;
+    }
+  }
+  finally {
+    releaseClassLock();
+  }
+}

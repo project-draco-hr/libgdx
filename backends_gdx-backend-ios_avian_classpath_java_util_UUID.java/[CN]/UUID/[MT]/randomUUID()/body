@@ -1,0 +1,9 @@
+{
+  byte[] array=new byte[16];
+  new Random().nextBytes(array);
+  array[6]&=0x0f;
+  array[6]|=0x40;
+  array[8]&=0x3f;
+  array[8]|=0x80;
+  return new UUID(array);
+}

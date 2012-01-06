@@ -1,0 +1,9 @@
+{
+  if (cause == null) {
+    cause=e;
+    return this;
+  }
+ else {
+    throw new IllegalStateException();
+  }
+}

@@ -1,0 +1,17 @@
+{
+  for (  File file : directory.listFiles()) {
+    if (file.isFile()) {
+      if (file.getName().endsWith(".jar")) {
+        System.out.println("found " + file.getAbsolutePath() + " length "+ file.length());
+        return file.getAbsolutePath();
+      }
+    }
+ else     if (file.isDirectory()) {
+      String result=findJar(file);
+      if (result != null) {
+        return result;
+      }
+    }
+  }
+  return null;
+}

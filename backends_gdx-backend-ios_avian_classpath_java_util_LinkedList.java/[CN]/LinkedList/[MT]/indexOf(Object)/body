@@ -1,0 +1,10 @@
+{
+  int i=0;
+  for (Cell<T> c=front; c != null; c=c.next) {
+    if (equal(c.value,element)) {
+      return i;
+    }
+    ++i;
+  }
+  return -1;
+}

@@ -1,0 +1,8 @@
+{
+  checkGet(4);
+  int i=get() << 24;
+  i|=(get() & 0xff) << 16;
+  i|=(get() & 0xff) << 8;
+  i|=(get() & 0xff);
+  return i;
+}

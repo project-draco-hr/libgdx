@@ -1,0 +1,4 @@
+{
+  UncaughtExceptionHandler eh=exceptionHandler;
+  return (eh == null ? group : eh);
+}

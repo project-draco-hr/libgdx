@@ -1,0 +1,7 @@
+{
+  Record r=map.get(key);
+  if (r == null) {
+    map.put(key,r=new Record(key));
+  }
+  return r;
+}

@@ -1,0 +1,8 @@
+{
+  try {
+    return defineClass(name,read(LazyLoading.findClass(name,new File(System.getProperty("user.dir")))));
+  }
+ catch (  IOException e) {
+    throw new RuntimeException(e);
+  }
+}

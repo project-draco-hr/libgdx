@@ -1,0 +1,8 @@
+{
+  if (locale == Locale.ENGLISH) {
+    return toLowerCase();
+  }
+ else {
+    throw new UnsupportedOperationException("toLowerCase(" + locale + ')');
+  }
+}
