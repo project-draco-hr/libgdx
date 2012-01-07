@@ -21,6 +21,11 @@
         texture.glHandle=0;
         TextureParameter params=new TextureParameter();
         params.textureData=texture.getTextureData();
+        params.minFilter=texture.getMinFilter();
+        params.magFilter=texture.getMagFilter();
+        params.wrapU=texture.getUWrap();
+        params.wrapV=texture.getVWrap();
+        params.genMipMaps=texture.data.useMipMaps();
         params.texture=texture;
         params.loadedCallback=new LoadedCallback(){
           @Override public void finishedLoading(          AssetManager assetManager,          String fileName,          Class type){
