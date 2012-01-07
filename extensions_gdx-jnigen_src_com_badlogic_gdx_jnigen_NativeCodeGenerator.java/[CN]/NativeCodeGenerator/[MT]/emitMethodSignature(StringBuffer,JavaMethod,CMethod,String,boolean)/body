@@ -1,0 +1,37 @@
+{
+  String wrappedMethodName=null;
+  if (additionalArguments != null) {
+    String[] tokens=cMethod.getHead().replace("\r\n","").replace("\n","").split(" ");
+    wrappedMethodName=JNI_WRAPPER_PREFIX + tokens[3];
+    buffer.append("static inline ");
+    buffer.append(tokens[1]);
+    buffer.append(" ");
+    buffer.append(wrappedMethodName);
+    buffer.append("\n");
+  }
+ else {
+    buffer.append(cMethod.getHead());
+  }
+  if (javaMethod.isStatic()) {
+    buffer.append("(JNIEnv* env, jclass clazz");
+  }
+ else {
+    buffer.append("(JNIEnv* env, jobject object");
+  }
+  if (javaMethod.getArguments().size() > 0)   buffer.append(", ");
+  for (int i=0; i < javaMethod.getArguments().size(); i++) {
+    buffer.append(cMethod.getArgumentTypes()[i + 2]);
+    buffer.append(" ");
+    Argument javaArg=javaMethod.getArguments().get(i);
+    if (!javaArg.getType().isPlainOldDataType() && !javaArg.getType().isObject() && appendPrefix) {
+      buffer.append(JNI_ARG_PREFIX);
+    }
+    buffer.append(javaArg.getName());
+    if (i < javaMethod.getArguments().size() - 1)     buffer.append(", ");
+  }
+  if (additionalArguments != null) {
+    buffer.append(additionalArguments);
+  }
+  buffer.append(") {\n");
+  return wrappedMethodName;
+}
