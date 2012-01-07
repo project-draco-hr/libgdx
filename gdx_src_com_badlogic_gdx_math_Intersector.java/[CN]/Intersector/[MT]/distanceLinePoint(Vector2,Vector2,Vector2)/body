@@ -1,6 +1,6 @@
 {
   tmp.set(end.x,end.y,0);
-  float l2=tmp.sub(start.y,start.y,0).len2();
+  float l2=tmp.sub(start.x,start.y,0).len2();
   if (l2 == 0.0f)   return point.dst(start);
   tmp.set(point.x,point.y,0);
   tmp.sub(start.x,start.y,0);
