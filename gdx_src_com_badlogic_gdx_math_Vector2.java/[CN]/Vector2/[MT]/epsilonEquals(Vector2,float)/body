@@ -1,0 +1,6 @@
+{
+  if (obj == null)   return false;
+  if (Math.abs(obj.x - x) > epsilon)   return false;
+  if (Math.abs(obj.y - y) > epsilon)   return false;
+  return true;
+}
