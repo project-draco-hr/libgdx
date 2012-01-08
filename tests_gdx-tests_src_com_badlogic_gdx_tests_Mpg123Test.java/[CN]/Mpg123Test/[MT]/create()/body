@@ -2,7 +2,7 @@
   FileHandle externalFile=Gdx.files.external("tmp/test.mp3");
   Gdx.files.internal(FILE).copyTo(externalFile);
   decoder=new Mpg123Decoder(externalFile);
-  Gdx.app.log("Vorbis","channels: " + decoder.getChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
+  Gdx.app.log("Mp3","channels: " + decoder.getChannels() + ", rate: "+ decoder.getRate()+ ", length: "+ decoder.getLength());
   device=Gdx.audio.newAudioDevice(decoder.getRate(),decoder.getChannels() == 1 ? true : false);
   Thread playbackThread=new Thread(new Runnable(){
     @Override public void run(){
