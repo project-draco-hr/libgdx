@@ -1,3 +1,4 @@
 {
-  return 0;
+  int read=readSamples(handle,samples,offset,numSamples);
+  return read;
 }
