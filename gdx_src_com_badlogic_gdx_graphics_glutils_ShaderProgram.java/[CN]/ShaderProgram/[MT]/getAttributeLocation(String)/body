@@ -1,5 +1,5 @@
 {
-  Integer location=attributes.get(name);
-  if (location == null)   return -1;
+  int location=attributes.get(name,-1);
+  if (location == -1)   return -1;
  else   return location;
 }

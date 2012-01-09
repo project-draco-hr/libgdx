@@ -1,7 +1,7 @@
 {
   GL20 gl=Gdx.graphics.getGL20();
-  Integer location;
-  if ((location=attributes.get(name)) == null) {
+  int location;
+  if ((location=attributes.get(name,-1)) == -1) {
     location=gl.glGetAttribLocation(program,name);
     if (location != -1)     attributes.put(name,location);
   }
