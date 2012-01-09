@@ -1,6 +1,4 @@
 {
   if (backgroundPatch != null) {
-    batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-    backgroundPatch.draw(batch,x,y,width,height);
   }
 }
