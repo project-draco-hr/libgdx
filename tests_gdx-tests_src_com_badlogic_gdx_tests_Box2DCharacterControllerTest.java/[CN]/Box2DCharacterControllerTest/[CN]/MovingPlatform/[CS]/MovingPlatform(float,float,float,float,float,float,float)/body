@@ -1,0 +1,11 @@
+{
+  platform=createBox(BodyType.KinematicBody,width,height,1);
+  pos.x=x;
+  pos.y=y;
+  dir.x=dx;
+  dir.y=dy;
+  this.maxDist=maxDist;
+  platform.setTransform(pos,0);
+  platform.getFixtureList().get(0).setUserData("p");
+  platform.setUserData(this);
+}

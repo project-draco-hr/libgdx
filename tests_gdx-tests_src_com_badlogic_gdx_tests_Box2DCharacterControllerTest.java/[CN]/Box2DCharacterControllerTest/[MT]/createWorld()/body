@@ -1,0 +1,19 @@
+{
+  float y1=1;
+  float y2=y1;
+  for (int i=0; i < 50; i++) {
+    Body ground=createEdge(BodyType.StaticBody,-50 + i * 2,y1,-50 + i * 2 + 2,y2,0);
+    y1=y2;
+    y2=1;
+  }
+  Body box=createBox(BodyType.StaticBody,1,1,0);
+  box.setTransform(30,3,0);
+  box=createBox(BodyType.StaticBody,1.2f,1.2f,0);
+  box.setTransform(5,2.4f,0);
+  player=createPlayer();
+  player.setTransform(10.0f,4.0f,0);
+  player.setFixedRotation(true);
+  platforms.add(new MovingPlatform(-2,3,2,0.5f,2,0,4));
+  platforms.add(new MovingPlatform(17,3,5,0.5f,0,2,5));
+  platforms.add(new MovingPlatform(-7,5,2,0.5f,-2,2,8));
+}
