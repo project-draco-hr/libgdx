@@ -1,17 +1,8 @@
 {
   isDirty=true;
-  if (isDirect) {
-    BufferUtils.copy(vertices,byteBuffer,count,offset);
-    buffer.position(0);
-    buffer.limit(count);
-  }
- else {
-    buffer.clear();
-    buffer.put(vertices,offset,count);
-    buffer.flip();
-    byteBuffer.position(0);
-    byteBuffer.limit(buffer.limit() << 2);
-  }
+  BufferUtils.copy(vertices,byteBuffer,count,offset);
+  buffer.position(0);
+  buffer.limit(count);
   if (isBound) {
     if (Gdx.gl20 != null) {
       GL20 gl=Gdx.gl20;

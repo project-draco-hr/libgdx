@@ -3,7 +3,6 @@
   this.attributes=attributes;
   byteBuffer=ByteBuffer.allocateDirect(this.attributes.vertexSize * numVertices);
   byteBuffer.order(ByteOrder.nativeOrder());
-  isDirect=true;
   buffer=byteBuffer.asFloatBuffer();
   buffer.flip();
   byteBuffer.flip();

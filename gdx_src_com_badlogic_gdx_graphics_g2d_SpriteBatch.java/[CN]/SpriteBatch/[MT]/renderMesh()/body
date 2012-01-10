@@ -1,31 +1,23 @@
 {
   if (idx == 0)   return;
   renderCalls++;
+  totalRenderCalls++;
   int spritesInBatch=idx / 20;
   if (spritesInBatch > maxSpritesInBatch)   maxSpritesInBatch=spritesInBatch;
   lastTexture.bind();
   mesh.setVertices(vertices,0,idx);
-  if (Gdx.graphics.isGL20Available()) {
-    if (blendingDisabled) {
-      Gdx.gl20.glDisable(GL20.GL_BLEND);
-    }
+  if (blendingDisabled) {
+    Gdx.gl.glDisable(GL20.GL_BLEND);
+  }
  else {
-      GL20 gl20=Gdx.gl20;
-      gl20.glEnable(GL20.GL_BLEND);
-      gl20.glBlendFunc(blendSrcFunc,blendDstFunc);
-    }
+    Gdx.gl.glEnable(GL20.GL_BLEND);
+    Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
+  }
+  if (Gdx.graphics.isGL20Available()) {
     if (customShader != null)     mesh.render(customShader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
  else     mesh.render(shader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);
   }
  else {
-    if (blendingDisabled) {
-      Gdx.gl10.glDisable(GL10.GL_BLEND);
-    }
- else {
-      GL10 gl10=Gdx.gl10;
-      gl10.glEnable(GL10.GL_BLEND);
-      gl10.glBlendFunc(blendSrcFunc,blendDstFunc);
-    }
     mesh.render(GL10.GL_TRIANGLES,0,spritesInBatch * 6);
   }
   idx=0;

@@ -2,10 +2,12 @@
   if (drawing)   throw new IllegalStateException("you have to call SpriteBatch.end() first");
   renderCalls=0;
   Gdx.gl.glDepthMask(false);
-  Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
   if (Gdx.graphics.isGL20Available()) {
     if (customShader != null)     customShader.begin();
  else     shader.begin();
+  }
+ else {
+    Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
   }
   setupMatrices();
   idx=0;

@@ -7,9 +7,11 @@
   GLCommon gl=Gdx.gl;
   gl.glDepthMask(true);
   if (isBlendingEnabled())   gl.glDisable(GL10.GL_BLEND);
-  gl.glDisable(GL10.GL_TEXTURE_2D);
   if (Gdx.graphics.isGL20Available()) {
     if (customShader != null)     customShader.end();
  else     shader.end();
+  }
+ else {
+    gl.glDisable(GL10.GL_TEXTURE_2D);
   }
 }
