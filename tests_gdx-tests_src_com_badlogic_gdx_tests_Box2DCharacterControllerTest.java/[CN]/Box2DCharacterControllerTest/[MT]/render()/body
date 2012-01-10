@@ -42,6 +42,11 @@
       player.applyLinearImpulse(0,-24,pos.x,pos.y);
     }
   }
+  List<Contact> contacts=world.getContactList();
+  for (int i=0; i < world.getContactCount(); i++) {
+    Contact contact=contacts.get(i);
+    contact.resetFriction();
+  }
   if (Gdx.input.isKeyPressed(Keys.A) && vel.x > -MAX_VELOCITY) {
     player.applyLinearImpulse(-2f,0,pos.x,pos.y);
   }

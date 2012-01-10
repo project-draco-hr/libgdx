@@ -13,6 +13,14 @@
   player=createPlayer();
   player.setTransform(10.0f,4.0f,0);
   player.setFixedRotation(true);
+  for (int i=0; i < 20; i++) {
+    box=createBox(BodyType.DynamicBody,(float)Math.random(),(float)Math.random(),3);
+    box.setTransform((float)Math.random() * 10f - (float)Math.random() * 10f,(float)Math.random() * 10 + 6,(float)(Math.random() * 2 * Math.PI));
+  }
+  for (int i=0; i < 20; i++) {
+    Body circle=createCircle(BodyType.DynamicBody,(float)Math.random() * 0.5f,3);
+    circle.setTransform((float)Math.random() * 10f - (float)Math.random() * 10f,(float)Math.random() * 10 + 6,(float)(Math.random() * 2 * Math.PI));
+  }
   platforms.add(new MovingPlatform(-2,3,2,0.5f,2,0,4));
   platforms.add(new MovingPlatform(17,3,5,0.5f,0,2,5));
   platforms.add(new MovingPlatform(-7,5,2,0.5f,-2,2,8));
