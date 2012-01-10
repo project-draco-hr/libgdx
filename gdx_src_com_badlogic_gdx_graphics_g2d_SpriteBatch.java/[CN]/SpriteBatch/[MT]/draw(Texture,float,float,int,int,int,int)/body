@@ -1,10 +1,7 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
   if (texture != lastTexture) {
-    renderMesh();
-    lastTexture=texture;
-    invTexWidth=1.0f / texture.getWidth();
-    invTexHeight=1.0f / texture.getHeight();
+    switchTexture(texture);
   }
  else   if (idx == vertices.length)   renderMesh();
   final float u=srcX * invTexWidth;
