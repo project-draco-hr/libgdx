@@ -1,0 +1,14 @@
+{
+  actor.parent=null;
+  actor.stage=null;
+  if (actor instanceof Group) {
+    Group group=(Group)actor;
+    for (    Actor child : group.children) {
+      clearActor(child);
+    }
+    group.children.clear();
+    group.groups.clear();
+    group.namesToActors.clear();
+    group.childrenChanged();
+  }
+}
