@@ -5,25 +5,23 @@
     shader.begin();
     shader.setUniformi("u_texture",0);
     shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
-    mesh.bind(shader);
   }
  else {
     cam.apply(Gdx.gl10);
     Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
-    mesh.bind();
   }
   for (int i=0; i < positions.size; i++) {
     float x=positions.get(i).x;
     float y=positions.get(i).y;
+    if (i % 2 == 0)     tex1.bind();
+ else     tex2.bind();
     if (Gdx.graphics.isGL20Available())     mesh.render(shader,GL10.GL_TRIANGLES);
  else     mesh.render(GL10.GL_TRIANGLES);
   }
   if (Gdx.graphics.isGL20Available()) {
-    mesh.unbind(shader);
     shader.end();
   }
  else {
-    mesh.unbind();
   }
   Gdx.app.log("TextureBindTest","fps: " + Gdx.graphics.getFramesPerSecond());
   Gdx.app.log("TextureBindTest","gl2: " + Gdx.graphics.isGL20Available());
