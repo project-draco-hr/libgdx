@@ -1,0 +1,5 @@
+{
+  Joint joint=new Joint(createJointJni(addr,bodyA.addr));
+  objects.put(joint.addr,joint);
+  return joint;
+}

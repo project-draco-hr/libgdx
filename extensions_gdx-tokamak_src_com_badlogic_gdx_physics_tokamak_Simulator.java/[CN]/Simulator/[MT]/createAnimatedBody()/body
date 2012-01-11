@@ -1,0 +1,5 @@
+{
+  AnimatedBody body=new AnimatedBody(createAnimatedBodyJni(this.addr));
+  objects.put(body.addr,body);
+  return body;
+}

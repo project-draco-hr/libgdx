@@ -1,0 +1,7 @@
+{
+  getGravityJni(addr,tmpFloat);
+  gravity.x=tmpFloat[0];
+  gravity.y=tmpFloat[1];
+  gravity.z=tmpFloat[2];
+  return gravity;
+}

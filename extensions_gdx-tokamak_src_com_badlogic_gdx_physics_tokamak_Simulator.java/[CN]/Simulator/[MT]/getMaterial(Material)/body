@@ -1,0 +1,6 @@
+{
+  boolean result=getMaterialJni(addr,material.index,tmpFloat);
+  material.friction=tmpFloat[0];
+  material.restitution=tmpFloat[1];
+  return result;
+}

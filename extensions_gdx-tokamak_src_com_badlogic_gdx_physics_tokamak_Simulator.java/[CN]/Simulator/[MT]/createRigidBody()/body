@@ -1,0 +1,5 @@
+{
+  RigidBody body=new RigidBody(createRigidBodyJni(this.addr));
+  objects.put(body.addr,body);
+  return body;
+}
