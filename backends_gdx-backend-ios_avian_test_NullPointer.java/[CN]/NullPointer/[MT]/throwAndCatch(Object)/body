@@ -1,9 +1,0 @@
-{
-  try {
-    o.toString();
-    throw new RuntimeException();
-  }
- catch (  NullPointerException e) {
-    e.printStackTrace();
-  }
-}

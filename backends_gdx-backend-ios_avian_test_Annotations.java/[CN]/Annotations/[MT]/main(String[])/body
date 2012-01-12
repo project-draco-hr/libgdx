@@ -1,7 +1,0 @@
-{
-  Method m=Annotations.class.getMethod("foo");
-  expect(m.isAnnotationPresent(Test.class));
-  expect(((Test)m.getAnnotation(Test.class)).value().equals("couscous"));
-  expect(((TestEnum)m.getAnnotation(TestEnum.class)).value().equals(Color.Red));
-  expect(((TestInteger)m.getAnnotation(TestInteger.class)).value() == 42);
-}

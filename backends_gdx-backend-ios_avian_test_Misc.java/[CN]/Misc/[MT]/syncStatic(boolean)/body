@@ -1,9 +1,0 @@
-{
-  byte[] array=new byte[123];
-  if (throw_) {
-    throw new RuntimeException();
-  }
- else {
-    return array[42];
-  }
-}

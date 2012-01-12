@@ -1,8 +1,0 @@
-{
-  try {
-    return cache[i];
-  }
- catch (  ArrayIndexOutOfBoundsException e) {
-    return (i == Integer.MAX_VALUE) ? MAX_INT_OBJ : new Integer(i);
-  }
-}

@@ -1,6 +1,0 @@
-{
-  checkPut(len);
-  System.arraycopy(arr,offset,array,arrayOffset + position,len);
-  position+=len;
-  return this;
-}

@@ -1,8 +1,0 @@
-{
-  if (bitLength % BITS_PER_LONG == 0) {
-    enlarge(longPosition(bitLength));
-  }
- else {
-    enlarge(longPosition(bitLength) + 1);
-  }
-}

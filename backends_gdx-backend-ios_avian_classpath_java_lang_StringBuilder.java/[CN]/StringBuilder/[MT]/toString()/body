@@ -1,5 +1,0 @@
-{
-  char[] array=new char[length];
-  getChars(0,length,array,0);
-  return new String(array,0,length,false);
-}

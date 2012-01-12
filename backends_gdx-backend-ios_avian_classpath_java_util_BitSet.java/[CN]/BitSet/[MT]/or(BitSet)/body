@@ -1,8 +1,0 @@
-{
-  int max=Math.max(bits.length,otherBits.bits.length);
-  enlarge(max);
-  int min=Math.min(bits.length,otherBits.bits.length);
-  for (int i=0; i < min; i++) {
-    bits[i]|=otherBits.bits[i];
-  }
-}

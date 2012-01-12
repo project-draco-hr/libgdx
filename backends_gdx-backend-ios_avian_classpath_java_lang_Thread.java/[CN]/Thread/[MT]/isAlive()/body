@@ -1,9 +1,0 @@
-{
-switch (getState()) {
-case NEW:
-case TERMINATED:
-    return false;
-default :
-  return true;
-}
-}

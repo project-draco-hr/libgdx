@@ -1,8 +1,0 @@
-{
-  set=new TreeSet(new Comparator<MyEntry<K,V>>(){
-    public int compare(    MyEntry<K,V> a,    MyEntry<K,V> b){
-      return comparator.compare(a.key,b.key);
-    }
-  }
-);
-}

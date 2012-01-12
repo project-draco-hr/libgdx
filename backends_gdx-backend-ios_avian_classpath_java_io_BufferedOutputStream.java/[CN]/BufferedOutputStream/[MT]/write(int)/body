@@ -1,6 +1,0 @@
-{
-  if (position >= buffer.length) {
-    drain();
-  }
-  buffer[position++]=(byte)(c & 0xFF);
-}

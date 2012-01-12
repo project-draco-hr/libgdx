@@ -1,7 +1,0 @@
-{
-  int c=stream.read(b.array(),b.arrayOffset() + b.position(),b.remaining());
-  if (c > 0) {
-    b.position(b.position() + c);
-  }
-  return c;
-}

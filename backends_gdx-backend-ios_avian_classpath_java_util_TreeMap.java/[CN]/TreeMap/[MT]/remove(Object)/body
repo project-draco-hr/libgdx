@@ -1,4 +1,0 @@
-{
-  MyEntry<K,V> e=set.removeAndReturn(new MyEntry(key,null));
-  return e == null ? null : e.value;
-}

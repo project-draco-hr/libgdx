@@ -1,7 +1,0 @@
-{
-  if (level.intValue() < getEffectiveLevel().intValue()) {
-    return;
-  }
-  LogRecord r=new LogRecord(name,caller == null ? "<unknown>" : Method.getName(caller),level,message,exception);
-  publish(r);
-}

@@ -1,9 +1,0 @@
-{
-  if (position > 0) {
-    byte[] b=buffer;
-    int p=position;
-    buffer=null;
-    position=0;
-    chain=new Cell(b,0,p,chain);
-  }
-}

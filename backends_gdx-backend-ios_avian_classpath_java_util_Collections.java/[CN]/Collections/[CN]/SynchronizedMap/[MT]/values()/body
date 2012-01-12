@@ -1,5 +1,0 @@
-{
-synchronized (lock) {
-    return new SynchronizedCollection<V>(lock,map.values());
-  }
-}

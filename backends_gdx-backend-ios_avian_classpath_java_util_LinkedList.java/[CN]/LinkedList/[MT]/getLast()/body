@@ -1,8 +1,0 @@
-{
-  if (rear != null) {
-    return rear.value;
-  }
- else {
-    throw new NoSuchElementException();
-  }
-}

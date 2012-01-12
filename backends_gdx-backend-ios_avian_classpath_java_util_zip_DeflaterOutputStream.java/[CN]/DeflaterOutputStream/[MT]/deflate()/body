@@ -1,6 +1,0 @@
-{
-  int len=deflater.deflate(buffer,0,buffer.length);
-  if (len > 0) {
-    out.write(buffer,0,len);
-  }
-}

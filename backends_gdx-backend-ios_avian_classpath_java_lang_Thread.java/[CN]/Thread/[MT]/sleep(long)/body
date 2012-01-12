@@ -1,9 +1,0 @@
-{
-  Thread t=currentThread();
-  if (t.sleepLock == null) {
-    t.sleepLock=new Object();
-  }
-synchronized (t.sleepLock) {
-    t.sleepLock.wait(milliseconds);
-  }
-}

@@ -1,8 +1,0 @@
-{
-  if (position < limit) {
-    return array[position++] & 0xff;
-  }
- else {
-    return -1;
-  }
-}

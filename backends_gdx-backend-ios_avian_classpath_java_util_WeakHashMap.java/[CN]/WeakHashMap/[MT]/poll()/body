@@ -1,5 +1,0 @@
-{
-  for (MyCell<K,V> c=(MyCell<K,V>)queue.poll(); c != null; c=(MyCell<K,V>)queue.poll()) {
-    map.remove(c);
-  }
-}

@@ -1,5 +1,0 @@
-{
-  if (!mode.equals("r"))   throw new IllegalArgumentException();
-  file=new File(name);
-  open();
-}

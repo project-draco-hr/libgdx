@@ -1,9 +1,0 @@
-{
-  Method m=findMethod(vmClass,"<init>",parameterTypes);
-  if (m == null) {
-    throw new NoSuchMethodException();
-  }
- else {
-    return new Constructor(m);
-  }
-}

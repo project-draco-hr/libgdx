@@ -1,8 +1,0 @@
-{
-  while (true) {
-    int s=natDoAccept(channel.socket);
-    if (s != -1) {
-      return s;
-    }
-  }
-}

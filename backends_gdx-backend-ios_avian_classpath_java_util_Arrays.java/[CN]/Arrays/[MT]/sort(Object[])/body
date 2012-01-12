@@ -1,8 +1,0 @@
-{
-  sort(array,new Comparator(){
-    public int compare(    Object a,    Object b){
-      return ((Comparable)a).compareTo(b);
-    }
-  }
-);
-}

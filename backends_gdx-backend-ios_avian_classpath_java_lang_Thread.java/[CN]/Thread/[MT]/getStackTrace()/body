@@ -1,7 +1,0 @@
-{
-  long p=peer;
-  if (p == 0) {
-    return new StackTraceElement[0];
-  }
-  return Throwable.resolveTrace(getStackTrace(p));
-}

@@ -1,9 +1,0 @@
-{
-  int index=path.lastIndexOf(FileSeparator);
-  if (index >= 0) {
-    return path.substring(index + 1);
-  }
- else {
-    return path;
-  }
-}

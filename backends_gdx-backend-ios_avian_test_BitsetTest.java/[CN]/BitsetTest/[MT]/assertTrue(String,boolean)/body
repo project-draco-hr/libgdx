@@ -1,8 +1,0 @@
-{
-  if (flag) {
-    System.out.println(msg + " : OK.");
-  }
- else {
-    throw new RuntimeException("Error:" + msg);
-  }
-}

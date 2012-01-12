@@ -1,9 +1,0 @@
-{
-  if (hasNext()) {
-    toRemove=++index;
-    return list.get(index);
-  }
- else {
-    throw new NoSuchElementException();
-  }
-}

@@ -1,7 +1,0 @@
-{
-  String[] copy=new String[length];
-  if (length > 0) {
-    System.arraycopy(array,offset,copy,0,length);
-  }
-  return copy;
-}

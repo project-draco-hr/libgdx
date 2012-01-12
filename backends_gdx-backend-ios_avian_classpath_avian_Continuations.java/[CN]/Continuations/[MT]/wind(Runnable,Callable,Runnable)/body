@@ -1,9 +1,0 @@
-{
-  before.run();
-  try {
-    return new UnwindResult(null,thunk.call(),null);
-  }
-  finally {
-    after.run();
-  }
-}

@@ -1,8 +1,0 @@
-{
-  if (locale == Locale.ENGLISH) {
-    return toUpperCase();
-  }
- else {
-    throw new UnsupportedOperationException("toUpperCase(" + locale + ')');
-  }
-}

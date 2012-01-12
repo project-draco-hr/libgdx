@@ -1,9 +1,0 @@
-{
-  if (o instanceof StackTraceElement) {
-    StackTraceElement e=(StackTraceElement)o;
-    return class_.equals(e.class_) && method.equals(e.method) && line == e.line;
-  }
- else {
-    return false;
-  }
-}

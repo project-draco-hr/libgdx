@@ -1,9 +1,0 @@
-{
-  continuationUnwindTest(new CallbackReceiver<Integer>(){
-    public Integer receive(    final Callback<Integer> continuation){
-      continuation.handleResult(42);
-      throw new AssertionError();
-    }
-  }
-);
-}

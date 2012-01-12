@@ -1,8 +1,0 @@
-{
-  byte[] array=new byte[length];
-  for (int i=0; i < length; ++i) {
-    byte c=s[i];
-    array[i]=(byte)(c == a ? b : c);
-  }
-  return array;
-}

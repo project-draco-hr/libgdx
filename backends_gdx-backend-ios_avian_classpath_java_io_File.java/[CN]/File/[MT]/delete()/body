@@ -1,9 +1,0 @@
-{
-  try {
-    delete(path);
-    return true;
-  }
- catch (  IOException e) {
-    return false;
-  }
-}

@@ -1,6 +1,0 @@
-{
-  this(m.size());
-  for (  Entry<? extends K,? extends V> entry : m.entrySet()) {
-    put(entry.getKey(),entry.getValue());
-  }
-}

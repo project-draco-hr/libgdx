@@ -1,7 +1,0 @@
-{
-  this.parent=parent;
-  this.name=name;
-synchronized (parent) {
-    parent.subgroups=new Cell(this,subgroups);
-  }
-}

@@ -1,8 +1,0 @@
-{
-  while (n.left != NullNode) {
-    n.left=new Node(n.left);
-    ancestors=new Cell(n,ancestors);
-    n=n.left;
-  }
-  return new Cell(n,ancestors);
-}

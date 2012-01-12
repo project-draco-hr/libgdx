@@ -1,8 +1,0 @@
-{
-  unwindTest(new Callable<Integer>(){
-    public Integer call() throws Exception {
-      throw new MyException();
-    }
-  }
-);
-}

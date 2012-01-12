@@ -1,8 +1,0 @@
-{
-  if ("\\".equals(FileSeparator)) {
-    return path.replace('/','\\');
-  }
- else {
-    return path;
-  }
-}

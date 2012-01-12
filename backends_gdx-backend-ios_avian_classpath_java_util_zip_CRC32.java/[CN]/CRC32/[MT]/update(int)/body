@@ -1,3 +1,0 @@
-{
-  remainder=table[reflect(b,8) ^ (remainder >>> (Width - 8))] ^ (remainder << 8);
-}

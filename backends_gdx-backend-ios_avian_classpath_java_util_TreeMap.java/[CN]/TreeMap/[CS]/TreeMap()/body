@@ -1,8 +1,0 @@
-{
-  this(new Comparator<K>(){
-    public int compare(    K a,    K b){
-      return ((Comparable)a).compareTo(b);
-    }
-  }
-);
-}

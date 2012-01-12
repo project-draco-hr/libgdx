@@ -1,8 +1,0 @@
-{
-  if (front != null) {
-    return front.value;
-  }
- else {
-    throw new NoSuchElementException();
-  }
-}

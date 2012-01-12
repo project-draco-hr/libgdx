@@ -1,7 +1,0 @@
-{
-  if (level < 0 || level > 9) {
-    throw new IllegalArgumentException("Valid compression levels are 0-9");
-  }
-  dispose(peer);
-  peer=make(nowrap,level);
-}

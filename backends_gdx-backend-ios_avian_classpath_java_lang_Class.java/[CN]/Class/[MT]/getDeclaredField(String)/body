@@ -1,9 +1,0 @@
-{
-  Field f=findField(vmClass,name);
-  if (f == null) {
-    throw new NoSuchFieldException(name);
-  }
- else {
-    return f;
-  }
-}

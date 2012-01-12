@@ -1,9 +1,0 @@
-{
-  if (o instanceof NameAndTypePoolEntry) {
-    NameAndTypePoolEntry other=(NameAndTypePoolEntry)o;
-    return other.nameIndex == nameIndex && other.typeIndex == typeIndex;
-  }
- else {
-    return false;
-  }
-}

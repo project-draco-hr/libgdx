@@ -1,7 +1,0 @@
-{
-  ++size;
-  grow();
-  int index=cell.hashCode() & (array.length - 1);
-  cell.setNext(array[index]);
-  array[index]=cell;
-}

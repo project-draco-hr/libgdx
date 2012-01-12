@@ -1,7 +1,0 @@
-{
-  this.pattern=pattern;
-  this.patternFlags=flags;
-  if (!trivial(pattern)) {
-    throw new UnsupportedOperationException("only trivial regular expressions are supported so far");
-  }
-}

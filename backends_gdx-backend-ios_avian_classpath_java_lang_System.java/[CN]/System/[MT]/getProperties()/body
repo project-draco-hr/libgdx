@@ -1,7 +1,0 @@
-{
-  Properties prop=new Properties();
-  for (Property p=properties; p != null; p=p.next) {
-    prop.put(p.name,p.value);
-  }
-  return prop;
-}

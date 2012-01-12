@@ -1,9 +1,0 @@
-{
-  expect(Suit.CLUBS.ordinal() == 0);
-  expect(Suit.valueOf("DIAMONDS") == Suit.DIAMONDS);
-  System.out.println(Suit.SPADES);
-  expect(Suit.values()[1] == Suit.HEARTS);
-  expect(!checkFaceCard(Rank.FIVE));
-  expect(checkFaceCard(Rank.KING));
-  expect(Person.Mike.getAge() == 5);
-}

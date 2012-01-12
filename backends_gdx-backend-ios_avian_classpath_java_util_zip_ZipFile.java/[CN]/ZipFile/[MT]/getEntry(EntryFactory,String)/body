@@ -1,7 +1,0 @@
-{
-  while (name.startsWith("/")) {
-    name=name.substring(1);
-  }
-  Integer pointer=index.get(name);
-  return (pointer == null ? null : factory.makeEntry(window,pointer));
-}

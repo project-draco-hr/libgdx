@@ -1,8 +1,0 @@
-{
-  deflater.finish();
-  while (!deflater.finished()) {
-    deflate();
-  }
-  out.close();
-  deflater.dispose();
-}

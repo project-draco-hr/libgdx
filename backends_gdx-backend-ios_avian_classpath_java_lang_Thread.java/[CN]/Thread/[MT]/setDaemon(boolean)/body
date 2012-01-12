@@ -1,6 +1,0 @@
-{
-  if (getState() != State.NEW) {
-    throw new IllegalStateException();
-  }
-  daemon=v;
-}

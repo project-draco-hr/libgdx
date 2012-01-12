@@ -1,5 +1,0 @@
-{
-  byte[] buffer=new byte[1];
-  buffer[0]=(byte)(b & 0xff);
-  write(buffer,0,1);
-}

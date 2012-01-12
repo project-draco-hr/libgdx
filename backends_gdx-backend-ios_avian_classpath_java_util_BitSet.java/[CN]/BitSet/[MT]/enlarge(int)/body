@@ -1,9 +1,0 @@
-{
-  if (bits == null || bits.length < newSize) {
-    long[] newBits=new long[newSize + 1];
-    if (bits != null) {
-      System.arraycopy(bits,0,newBits,0,bits.length);
-    }
-    bits=newBits;
-  }
-}

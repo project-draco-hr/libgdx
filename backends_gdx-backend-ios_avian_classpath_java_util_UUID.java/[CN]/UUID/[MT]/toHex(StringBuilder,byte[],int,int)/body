@@ -1,6 +1,0 @@
-{
-  for (int i=offset; i < offset + length; ++i) {
-    sb.append(toHex((array[i] >> 4) & 0xf));
-    sb.append(toHex((array[i]) & 0xf));
-  }
-}

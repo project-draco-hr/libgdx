@@ -1,7 +1,0 @@
-{
-  StringBuilder builder=new StringBuilder();
-  builder.append(domain);
-  builder.append("/");
-  builder.append(file);
-  url=new URL(builder.toString());
-}

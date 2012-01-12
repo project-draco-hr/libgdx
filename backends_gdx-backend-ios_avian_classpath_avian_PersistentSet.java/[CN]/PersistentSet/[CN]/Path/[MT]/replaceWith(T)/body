@@ -1,6 +1,0 @@
-{
-  if (fresh)   throw new IllegalStateException();
-  if (root.comparator.compare(node.value,value) != 0)   throw new IllegalArgumentException();
-  node.value=value;
-  return root;
-}

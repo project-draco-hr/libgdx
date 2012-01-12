@@ -1,8 +1,0 @@
-{
-  try {
-    return getBytes(DEFAULT_ENCODING);
-  }
- catch (  java.io.UnsupportedEncodingException ex) {
-    throw new RuntimeException("Default '" + DEFAULT_ENCODING + "' encoding not handled",ex);
-  }
-}

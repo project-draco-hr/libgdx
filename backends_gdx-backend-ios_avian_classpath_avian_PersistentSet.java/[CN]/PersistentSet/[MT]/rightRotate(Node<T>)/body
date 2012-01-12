@@ -1,6 +1,0 @@
-{
-  Node<T> child=new Node(n.left);
-  n.left=child.right;
-  child.right=n;
-  return child;
-}

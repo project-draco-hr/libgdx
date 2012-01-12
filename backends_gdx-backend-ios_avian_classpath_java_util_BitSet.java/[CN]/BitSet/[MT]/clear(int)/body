@@ -1,6 +1,0 @@
-{
-  int pos=longPosition(index);
-  if (pos < bits.length) {
-    bits[pos]&=(MASK ^ bitPosition(index));
-  }
-}

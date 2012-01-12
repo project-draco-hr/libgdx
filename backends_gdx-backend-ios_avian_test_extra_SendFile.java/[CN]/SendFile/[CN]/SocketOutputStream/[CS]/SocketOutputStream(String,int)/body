@@ -1,7 +1,0 @@
-{
-  channel=SocketChannel.open();
-  channel.connect(new InetSocketAddress(host,port));
-  channel.configureBlocking(false);
-  selector=Selector.open();
-  channel.register(selector,SelectionKey.OP_WRITE,null);
-}

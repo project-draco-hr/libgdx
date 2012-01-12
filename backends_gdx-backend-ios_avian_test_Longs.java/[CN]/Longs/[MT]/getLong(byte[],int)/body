@@ -1,3 +1,0 @@
-{
-  return ((long)getInt(src,offset) << 32) | ((long)getInt(src,offset + 4) & 0xffffffffL);
-}

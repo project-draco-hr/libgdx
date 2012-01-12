@@ -1,7 +1,0 @@
-{
-  System.out.println("put " + val);
-  dst[offset]=(byte)((val >> 24) & 0xff);
-  dst[offset + 1]=(byte)((val >> 16) & 0xff);
-  dst[offset + 2]=(byte)((val >> 8) & 0xff);
-  dst[offset + 3]=(byte)((val) & 0xff);
-}

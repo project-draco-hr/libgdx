@@ -1,9 +1,0 @@
-{
-  if (b == null) {
-    throw new NullPointerException();
-  }
-  if (offset < 0 || offset + length > b.length) {
-    throw new ArrayIndexOutOfBoundsException();
-  }
-  return read(fd,b,offset,length);
-}

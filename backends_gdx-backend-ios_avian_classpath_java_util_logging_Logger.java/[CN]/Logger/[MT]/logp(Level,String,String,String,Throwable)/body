@@ -1,6 +1,0 @@
-{
-  if (!isLoggable(level)) {
-    return;
-  }
-  publish(new LogRecord(name,sourceMethod,level,msg,thrown));
-}

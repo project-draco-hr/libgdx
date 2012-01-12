@@ -1,9 +1,0 @@
-{
-  set=new PersistentSet(new Comparator<Cell<T>>(){
-    public int compare(    Cell<T> a,    Cell<T> b){
-      return comparator.compare(a.value,b.value);
-    }
-  }
-);
-  size=0;
-}

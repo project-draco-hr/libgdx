@@ -1,4 +1,0 @@
-{
-  putInt((int)(val >> 32),dst,offset);
-  putInt((int)val,dst,offset + 4);
-}

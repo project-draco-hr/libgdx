@@ -1,8 +1,0 @@
-{
-  Collection<URL> urls=new ArrayList(1);
-  URL url=findResource(name);
-  if (url != null) {
-    urls.add(url);
-  }
-  return Collections.enumeration(urls);
-}

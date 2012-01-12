@@ -1,9 +1,0 @@
-{
-  try {
-    out.write(s.getBytes());
-    out.write(Static.newline);
-    if (autoFlush)     flush();
-  }
- catch (  IOException e) {
-  }
-}

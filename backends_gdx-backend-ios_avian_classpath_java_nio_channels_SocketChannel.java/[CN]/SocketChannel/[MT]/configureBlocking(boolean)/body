@@ -1,7 +1,0 @@
-{
-  blocking=v;
-  if (socket != InvalidSocket) {
-    configureBlocking(socket,v);
-  }
-  return this;
-}

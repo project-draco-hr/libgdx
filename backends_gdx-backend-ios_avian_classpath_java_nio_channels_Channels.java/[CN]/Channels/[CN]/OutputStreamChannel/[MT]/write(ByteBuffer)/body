@@ -1,6 +1,0 @@
-{
-  stream.write(b.array(),b.arrayOffset() + b.position(),b.remaining());
-  int c=b.remaining();
-  b.position(b.limit());
-  return c;
-}

@@ -1,8 +1,0 @@
-{
-  for (int i=size - 1; i >= 0; --i) {
-    if (equal(element,array[i])) {
-      return i;
-    }
-  }
-  return -1;
-}

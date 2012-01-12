@@ -1,6 +1,0 @@
-{
-  SocketChannel c=new SocketChannel();
-  c.socket=doAccept();
-  c.connected=true;
-  return c;
-}

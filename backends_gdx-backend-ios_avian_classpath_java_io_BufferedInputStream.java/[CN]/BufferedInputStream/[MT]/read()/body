@@ -1,9 +1,0 @@
-{
-  if (position >= limit) {
-    fill();
-    if (limit == -1) {
-      return -1;
-    }
-  }
-  return buffer[position++] & 0xFF;
-}

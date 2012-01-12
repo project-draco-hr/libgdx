@@ -1,6 +1,0 @@
-{
-  checkPut(2);
-  put((byte)((val >> 8) & 0xff));
-  put((byte)(val & 0xff));
-  return this;
-}

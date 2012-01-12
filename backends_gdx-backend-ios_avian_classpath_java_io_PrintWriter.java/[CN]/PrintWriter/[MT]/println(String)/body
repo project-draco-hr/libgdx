@@ -1,9 +1,0 @@
-{
-  try {
-    out.write(s.toCharArray());
-    out.write(newline);
-    if (autoFlush)     flush();
-  }
- catch (  IOException e) {
-  }
-}

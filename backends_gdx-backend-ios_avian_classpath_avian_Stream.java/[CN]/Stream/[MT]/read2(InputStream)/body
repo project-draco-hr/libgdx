@@ -1,6 +1,0 @@
-{
-  int b1=in.read();
-  int b2=in.read();
-  if (b2 == -1)   throw new EOFException();
-  return ((b1 << 8) | (b2 & 0xFF));
-}

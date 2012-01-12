@@ -1,5 +1,0 @@
-{
-  ArrayList<Field> fields=new ArrayList<Field>();
-  getAllFields(vmClass,fields);
-  return fields.toArray(new Field[fields.size()]);
-}

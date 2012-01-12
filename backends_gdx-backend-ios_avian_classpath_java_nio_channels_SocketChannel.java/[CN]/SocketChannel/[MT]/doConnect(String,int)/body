@@ -1,7 +1,0 @@
-{
-  if (host == null)   throw new NullPointerException();
-  boolean b[]=new boolean[1];
-  int s=natDoConnect(host,port,blocking,b);
-  connected=b[0];
-  return s;
-}

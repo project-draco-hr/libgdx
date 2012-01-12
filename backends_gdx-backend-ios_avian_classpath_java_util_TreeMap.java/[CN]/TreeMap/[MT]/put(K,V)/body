@@ -1,4 +1,0 @@
-{
-  MyEntry<K,V> e=set.addAndReplace(new MyEntry(key,value));
-  return e == null ? null : e.value;
-}

@@ -1,8 +1,0 @@
-{
-  byte[] buffer=new byte[length];
-  int c=in.read(buffer);
-  if (c <= 0)   return c;
-  char[] buffer16=Utf8.decode16(buffer,0,c);
-  System.arraycopy(buffer16,0,b,offset,buffer16.length);
-  return buffer16.length;
-}

@@ -1,6 +1,0 @@
-{
-  checkGet(length);
-  System.arraycopy(array,arrayOffset + position,dst,offset,length);
-  position+=length;
-  return this;
-}
