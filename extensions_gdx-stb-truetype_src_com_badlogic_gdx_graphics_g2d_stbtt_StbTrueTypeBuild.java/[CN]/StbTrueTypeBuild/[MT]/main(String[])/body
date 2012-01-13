@@ -12,4 +12,5 @@
   BuildTarget android=BuildTarget.newDefaultTarget(TargetOs.Android,false);
   new AntScriptGenerator().generate(new BuildConfig("gdx-stb-truetype"),win32home,win32,win64,lin32,lin64,mac,android);
   BuildExecutor.executeAnt("jni/build-windows32home.xml","-v");
+  BuildExecutor.executeAnt("jni/build.xml","pack-natives -v");
 }
