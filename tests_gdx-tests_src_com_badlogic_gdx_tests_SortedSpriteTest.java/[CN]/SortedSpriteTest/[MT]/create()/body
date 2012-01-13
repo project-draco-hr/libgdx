@@ -1,0 +1,11 @@
+{
+  batch=new SpriteBatch();
+  Texture texture=new Texture("data/badlogicsmall.jpg");
+  for (int i=0; i < 100; i++) {
+    MySprite sprite=new MySprite(texture);
+    sprite.setPosition(MathUtils.random() * Gdx.graphics.getWidth(),MathUtils.random() * Gdx.graphics.getHeight());
+    sprite.z=MathUtils.random();
+    sprite.setColor(sprite.z,0,0,1);
+    sprites.add(sprite);
+  }
+}
