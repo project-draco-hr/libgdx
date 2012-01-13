@@ -1,0 +1,11 @@
+{
+  int vs=compileShader(vertexShader,true);
+  int fs=compileShader(fragmentShader,false);
+  int program=Gdx.gl20.glCreateProgram();
+  Gdx.gl20.glAttachShader(program,vs);
+  Gdx.gl20.glAttachShader(program,fs);
+  Gdx.gl20.glLinkProgram(program);
+  IntBuffer buffer=BufferUtils.newIntBuffer(1);
+  Gdx.gl20.glGetProgramiv(program,GL20.GL_LINK_STATUS,buffer);
+  System.out.println(buffer.get(0));
+}
