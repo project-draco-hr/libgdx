@@ -1,0 +1,22 @@
+{
+  short[] out=new short[(int)Math.ceil(getLength() * getRate() * getChannels())];
+  short[] buffer=new short[1024 * 5];
+  int readSamples=0;
+  int totalSamples=0;
+  int offset=0;
+  while ((readSamples=readSamples(buffer,0,buffer.length)) > 0) {
+    if (readSamples + offset >= out.length) {
+      short[] tmp=new short[readSamples + offset];
+      System.arraycopy(out,0,tmp,0,totalSamples);
+      out=tmp;
+    }
+    System.arraycopy(buffer,0,out,totalSamples,readSamples);
+    totalSamples+=readSamples;
+  }
+  if (out.length != totalSamples) {
+    short[] tmp=new short[totalSamples];
+    System.arraycopy(out,0,tmp,0,totalSamples);
+    out=tmp;
+  }
+  return out;
+}
