@@ -1,5 +1,7 @@
 {
-  StringBuilder output=new StringBuilder(512);
+  int fileLength=(int)length();
+  if (fileLength == 0)   fileLength=512;
+  StringBuilder output=new StringBuilder(fileLength);
   InputStreamReader reader=null;
   try {
     if (charset == null)     reader=new InputStreamReader(read());
