@@ -1,7 +1,7 @@
 {
   this.isStatic=isStatic;
   this.attributes=new VertexAttributes(attributes);
-  byteBuffer=BufferUtils.newByteBuffer(this.attributes.vertexSize * numVertices);
+  byteBuffer=BufferUtils.newDisposableByteBuffer(this.attributes.vertexSize * numVertices);
   isDirect=true;
   usage=isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW;
   buffer=byteBuffer.asFloatBuffer();

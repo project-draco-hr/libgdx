@@ -1,6 +1,6 @@
 {
   this.attributes=attributes;
-  byteBuffer=BufferUtils.newByteBuffer(this.attributes.vertexSize * numVertices);
+  byteBuffer=BufferUtils.newDisposableByteBuffer(this.attributes.vertexSize * numVertices);
   buffer=byteBuffer.asFloatBuffer();
   buffer.flip();
   byteBuffer.flip();
