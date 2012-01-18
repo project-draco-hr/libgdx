@@ -4,9 +4,7 @@
   colorTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   colorTexture.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
   GL20 gl=Gdx.graphics.getGL20();
-  ByteBuffer tmp=ByteBuffer.allocateDirect(4);
-  tmp.order(ByteOrder.nativeOrder());
-  IntBuffer handle=tmp.asIntBuffer();
+  IntBuffer handle=BufferUtils.newIntBuffer(1);
   gl.glGenFramebuffers(1,handle);
   framebufferHandle=handle.get(0);
   if (hasDepth) {
