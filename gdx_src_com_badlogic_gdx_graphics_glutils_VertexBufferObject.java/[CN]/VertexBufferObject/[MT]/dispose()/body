@@ -1,5 +1,4 @@
 {
-  BufferUtils.freeMemory(byteBuffer);
   if (Gdx.gl20 != null) {
     tmpHandle.clear();
     tmpHandle.put(bufferHandle);

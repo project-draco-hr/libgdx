@@ -1,7 +1,6 @@
 {
   if (buffer == null || buffer.capacity() != numBytes) {
-    if (buffer != null)     BufferUtils.freeMemory(buffer);
-    buffer=BufferUtils.newDisposableByteBuffer(numBytes);
+    buffer=BufferUtils.newByteBuffer(numBytes);
     floatBuffer=buffer.asFloatBuffer();
     intBuffer=buffer.asIntBuffer();
   }

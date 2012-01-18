@@ -1,5 +1,5 @@
 {
-  byteBuffer=BufferUtils.newDisposableByteBuffer(maxIndices * 2);
+  byteBuffer=BufferUtils.newByteBuffer(maxIndices * 2);
   isDirect=true;
   buffer=byteBuffer.asShortBuffer();
   buffer.flip();
