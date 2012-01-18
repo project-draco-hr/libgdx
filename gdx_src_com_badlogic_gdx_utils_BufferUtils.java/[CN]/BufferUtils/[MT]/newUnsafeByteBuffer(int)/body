@@ -1,0 +1,5 @@
+{
+  ByteBuffer buffer=newDisposableByteBuffer(numBytes);
+  buffer.order(ByteOrder.nativeOrder());
+  return buffer;
+}
