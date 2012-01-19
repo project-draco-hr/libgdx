@@ -1,6 +1,5 @@
 {
   byteBuffer=BufferUtils.newUnsafeByteBuffer(maxIndices * 2);
-  byteBuffer.order(ByteOrder.nativeOrder());
   isDirect=true;
   buffer=byteBuffer.asShortBuffer();
   buffer.flip();
