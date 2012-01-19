@@ -13,7 +13,7 @@
   }
  else {
     try {
-      return new AndroidSound(soundPool,manager,soundPool.load(aHandle.path(),1));
+      return new AndroidSound(soundPool,manager,soundPool.load(aHandle.file().getPath(),1));
     }
  catch (    Exception ex) {
       throw new GdxRuntimeException("Error loading audio file: " + file,ex);

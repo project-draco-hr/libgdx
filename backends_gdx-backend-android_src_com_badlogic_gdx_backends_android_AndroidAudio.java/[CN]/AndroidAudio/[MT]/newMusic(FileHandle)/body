@@ -19,7 +19,7 @@ synchronized (musics) {
   }
  else {
     try {
-      mediaPlayer.setDataSource(aHandle.path());
+      mediaPlayer.setDataSource(aHandle.file().getPath());
       mediaPlayer.prepare();
       AndroidMusic music=new AndroidMusic(this,mediaPlayer);
 synchronized (musics) {
