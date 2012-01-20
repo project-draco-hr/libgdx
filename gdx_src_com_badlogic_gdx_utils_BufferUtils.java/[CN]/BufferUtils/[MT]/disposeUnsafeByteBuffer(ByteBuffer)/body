@@ -1,0 +1,9 @@
+{
+  int size=0;
+synchronized (unsafeBuffers) {
+    size=unsafeBuffers.remove(buffer,-1);
+  }
+  if (size == -1)   throw new IllegalArgumentException("buffer not allocated with newUnsafeByteBuffer or already disposed");
+  allocatedUnsafe-=size;
+  freeMemory(buffer);
+}

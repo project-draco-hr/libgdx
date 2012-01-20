@@ -1,5 +1,9 @@
 {
   ByteBuffer buffer=newDisposableByteBuffer(numBytes);
   buffer.order(ByteOrder.nativeOrder());
+  allocatedUnsafe+=numBytes;
+synchronized (unsafeBuffers) {
+    unsafeBuffers.put(buffer,numBytes);
+  }
   return buffer;
 }
