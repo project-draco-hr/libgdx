@@ -3,7 +3,7 @@
   buffer.order(ByteOrder.nativeOrder());
   allocatedUnsafe+=numBytes;
 synchronized (unsafeBuffers) {
-    unsafeBuffers.put(buffer,numBytes);
+    unsafeBuffers.add(buffer);
   }
   return buffer;
 }
