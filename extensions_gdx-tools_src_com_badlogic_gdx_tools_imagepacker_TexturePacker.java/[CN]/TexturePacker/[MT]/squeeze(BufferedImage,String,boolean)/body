@@ -56,7 +56,7 @@
   int newWidth=right - left;
   int newHeight=bottom - top;
   if (newWidth <= 0 || newHeight <= 0) {
-    System.out.println("Ignoring blank input image: " + name);
+    log("Ignoring blank input image: " + name);
     return null;
   }
   return new Image(name,source,left,top,newWidth,newHeight);

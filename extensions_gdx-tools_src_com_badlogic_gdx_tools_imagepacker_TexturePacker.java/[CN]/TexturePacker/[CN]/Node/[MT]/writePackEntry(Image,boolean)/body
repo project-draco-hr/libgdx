@@ -1,7 +1,7 @@
 {
   String imageName=image.name;
   imageName=imageName.replace("\\","/");
-  System.out.println("Packing... " + imageName + (alias ? " (alias)" : ""));
+  log("Packing... " + imageName + (alias ? " (alias)" : ""));
   Matcher matcher=indexPattern.matcher(imageName);
   int index=-1;
   if (matcher.matches())   index=Integer.parseInt(matcher.group(1));

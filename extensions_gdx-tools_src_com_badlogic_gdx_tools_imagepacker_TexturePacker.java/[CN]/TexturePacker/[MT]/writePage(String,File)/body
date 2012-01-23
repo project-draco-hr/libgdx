@@ -138,7 +138,7 @@ if (filter.minFilter == null || filter.magFilter == null) writer.write("filter: 
 writer.write("repeat: " + filter.direction + "\n");
 BufferedImage canvas=new BufferedImage(width,height,type);
 insert(canvas,images,bestWidth,bestHeight);
-System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
+log("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
 ImageIO.write(canvas,"png",outputFile);
 if (!settings.pot) ImageIO.write(squeeze(ImageIO.read(outputFile),"",true),"png",outputFile);
 compressedSize+=canvas.getWidth() * canvas.getHeight();

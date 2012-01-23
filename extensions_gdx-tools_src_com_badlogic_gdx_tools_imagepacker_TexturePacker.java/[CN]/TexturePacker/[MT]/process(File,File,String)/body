@@ -17,8 +17,8 @@
   try {
     while (!images.isEmpty())     if (!writePage(prefix,outputDir))     break;
     if (writer != null) {
-      System.out.println("Pixels eliminated: " + (1 - compressedSize / (float)uncompressedSize) * 100 + "%");
-      System.out.println();
+      log("Pixels eliminated: " + (1 - compressedSize / (float)uncompressedSize) * 100 + "%");
+      log("");
     }
   }
   finally {

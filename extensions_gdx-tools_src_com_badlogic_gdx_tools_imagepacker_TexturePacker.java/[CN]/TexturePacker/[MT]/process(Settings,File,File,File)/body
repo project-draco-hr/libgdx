@@ -35,9 +35,9 @@
       FileWriter writer=new FileWriter(packFile,true);
       writer.append(section);
       writer.close();
-      System.out.println(inputDir);
-      System.out.println("Skipping unchanged directory.");
-      System.out.println();
+      log(inputDir.toString());
+      log("Skipping unchanged directory.");
+      log("");
       skip=true;
     }
   }
