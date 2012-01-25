@@ -1,0 +1,4 @@
+{
+  if (type == FileType.External)   return new File(LwjglFiles.externalPath,file.getPath());
+  return file;
+}

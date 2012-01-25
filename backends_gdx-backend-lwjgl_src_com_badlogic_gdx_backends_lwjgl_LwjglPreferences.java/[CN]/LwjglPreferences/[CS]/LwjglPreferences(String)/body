@@ -1,3 +1,3 @@
 {
-  this(Gdx.files.external(".prefs/" + name));
+  this(new LwjglFileHandle(new File(name),FileType.External));
 }
