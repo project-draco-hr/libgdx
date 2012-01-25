@@ -1,0 +1,7 @@
+{
+  FileHandle src=Gdx.files.internal("data/8.12.mp3");
+  FileHandle dst=Gdx.files.external("8.12.mp3");
+  src.copyTo(dst);
+  Music music=Gdx.audio.newMusic(dst);
+  music.play();
+}
