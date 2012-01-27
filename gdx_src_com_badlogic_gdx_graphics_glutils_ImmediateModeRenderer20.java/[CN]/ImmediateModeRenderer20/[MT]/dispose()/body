@@ -1,4 +1,4 @@
 {
-  if (defaultShader != null)   defaultShader.dispose();
+  if (ownsShader && shader != null)   shader.dispose();
   mesh.dispose();
 }

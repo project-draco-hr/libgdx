@@ -1,20 +1,10 @@
 {
-  if (customShader != null) {
-    customShader.begin();
-    mesh.setVertices(vertices,0,vertexIdx);
-    mesh.render(customShader,primitiveType);
-    customShader.end();
-  }
- else {
-    defaultShader.begin();
-    defaultShader.setUniformMatrix("u_projModelView",projModelView);
-    for (int i=0; i < numTexCoords; i++) {
-      defaultShader.setUniformi("u_sampler" + i,i);
-    }
-    mesh.setVertices(vertices,0,vertexIdx);
-    mesh.render(defaultShader,primitiveType);
-    defaultShader.end();
-  }
+  shader.begin();
+  shader.setUniformMatrix("u_projModelView",projModelView);
+  for (int i=0; i < numTexCoords; i++)   shader.setUniformi("u_sampler" + i,i);
+  mesh.setVertices(vertices,0,vertexIdx);
+  mesh.render(shader,primitiveType);
+  shader.end();
   numSetTexCoords=0;
   vertexIdx=0;
   numVertices=0;

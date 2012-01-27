@@ -1,3 +1,4 @@
 {
-  this(5000,hasNormals,hasColors,numTexCoords);
+  this(5000,hasNormals,hasColors,numTexCoords,createDefaultShader(hasNormals,hasColors,numTexCoords));
+  ownsShader=true;
 }
