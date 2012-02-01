@@ -1,0 +1,16 @@
+{
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  textBuffer=new SimpleCharSequence();
+  Gdx.input.setInputProcessor(new InputAdapter(){
+    @Override public boolean keyTyped(    char character){
+      if (character == '\r')       character='\n';
+      if (character == '\b' && textBuffer.length() > 0) {
+        textBuffer.delete();
+      }
+      textBuffer.add(character);
+      return true;
+    }
+  }
+);
+}
