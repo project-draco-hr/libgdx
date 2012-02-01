@@ -8,7 +8,7 @@
       inTapSquare=false;
       pinching=true;
       initialFirstPointer.set(firstPointer);
-      initialSecondPointer.set(firstPointer);
+      initialSecondPointer.set(secondPointer);
     }
  else {
       inTapSquare=true;
@@ -23,7 +23,7 @@
     inTapSquare=false;
     pinching=true;
     initialFirstPointer.set(firstPointer);
-    initialSecondPointer.set(firstPointer);
+    initialSecondPointer.set(secondPointer);
   }
   return listener.touchDown(x,y,pointer);
 }
