@@ -1,7 +1,18 @@
 {
+  float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
-    layout.invalidate();
-    layout.validate();
+    widgetWidth=layout.getPrefWidth();
+    widgetHeight=layout.getPrefHeight();
   }
+ else {
+    widgetWidth=widget.width;
+    widgetHeight=widget.height;
+  }
+  scrollX=!disableX && (widgetWidth > width || forceOverscrollX);
+  scrollY=!disableY && (widgetHeight > height || forceOverscrollY);
+  widget.width=disableX ? width : Math.max(width,widgetWidth);
+  widget.height=disableY ? height : Math.max(height,widgetHeight);
+  maxX=widget.width - width;
+  maxY=widget.height - height;
 }

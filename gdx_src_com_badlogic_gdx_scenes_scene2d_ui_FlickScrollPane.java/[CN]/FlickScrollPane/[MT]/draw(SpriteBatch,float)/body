@@ -2,7 +2,17 @@
   if (widget == null)   return;
   validate();
   applyTransform(batch);
-  calculateBoundsAndPositions(batch.getTransformMatrix());
+  widget.y=(int)(scrollY ? amountY : maxY) - widget.height + height;
+  widget.x=-(int)(scrollX ? amountX : 0);
+  if (widget instanceof Cullable) {
+    widgetCullingArea.x=-widget.x;
+    widgetCullingArea.y=-widget.y;
+    widgetCullingArea.width=width;
+    widgetCullingArea.height=height;
+    ((Cullable)widget).setCullingArea(widgetCullingArea);
+  }
+  widgetAreaBounds.set(0,0,width,height);
+  ScissorStack.calculateScissors(stage.getCamera(),batch.getTransformMatrix(),widgetAreaBounds,scissorBounds);
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
     ScissorStack.popScissors();
