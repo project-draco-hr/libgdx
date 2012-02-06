@@ -7,5 +7,6 @@
   this.maxDist=maxDist;
   platform.setTransform(pos,0);
   platform.getFixtureList().get(0).setUserData("p");
+  platform.setAngularVelocity(da);
   platform.setUserData(this);
 }

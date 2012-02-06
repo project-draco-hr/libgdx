@@ -11,7 +11,7 @@
   box=createBox(BodyType.StaticBody,1.2f,1.2f,0);
   box.setTransform(5,2.4f,0);
   player=createPlayer();
-  player.setTransform(10.0f,4.0f,0);
+  player.setTransform(-40.0f,4.0f,0);
   player.setFixedRotation(true);
   for (int i=0; i < 20; i++) {
     box=createBox(BodyType.DynamicBody,(float)Math.random(),(float)Math.random(),3);
@@ -21,7 +21,8 @@
     Body circle=createCircle(BodyType.DynamicBody,(float)Math.random() * 0.5f,3);
     circle.setTransform((float)Math.random() * 10f - (float)Math.random() * 10f,(float)Math.random() * 10 + 6,(float)(Math.random() * 2 * Math.PI));
   }
-  platforms.add(new MovingPlatform(-2,3,2,0.5f,2,0,4));
-  platforms.add(new MovingPlatform(17,3,5,0.5f,0,2,5));
-  platforms.add(new MovingPlatform(-7,5,2,0.5f,-2,2,8));
+  platforms.add(new CirclePlatform(-24,-5,10,(float)Math.PI / 4));
+  platforms.add(new MovingPlatform(-2,3,2,0.5f,2,0,(float)Math.PI / 10f,4));
+  platforms.add(new MovingPlatform(17,2,5,0.5f,2,0,0,5));
+  platforms.add(new MovingPlatform(-7,5,2,0.5f,-2,2,0,8));
 }

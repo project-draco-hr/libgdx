@@ -1,0 +1,7 @@
+{
+  platform=createCircle(BodyType.KinematicBody,radius,1);
+  platform.setTransform(x,y,0);
+  platform.getFixtureList().get(0).setUserData("p");
+  platform.setAngularVelocity(da);
+  platform.setUserData(this);
+}

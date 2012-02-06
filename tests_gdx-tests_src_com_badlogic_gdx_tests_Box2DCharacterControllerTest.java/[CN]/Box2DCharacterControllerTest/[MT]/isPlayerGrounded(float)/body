@@ -12,10 +12,10 @@
       }
       if (below) {
         if (contact.getFixtureA().getUserData() != null && contact.getFixtureA().getUserData().equals("p")) {
-          groundedPlatform=(MovingPlatform)contact.getFixtureA().getBody().getUserData();
+          groundedPlatform=(Platform)contact.getFixtureA().getBody().getUserData();
         }
         if (contact.getFixtureB().getUserData() != null && contact.getFixtureB().getUserData().equals("p")) {
-          groundedPlatform=(MovingPlatform)contact.getFixtureB().getBody().getUserData();
+          groundedPlatform=(Platform)contact.getFixtureB().getBody().getUserData();
         }
         return true;
       }

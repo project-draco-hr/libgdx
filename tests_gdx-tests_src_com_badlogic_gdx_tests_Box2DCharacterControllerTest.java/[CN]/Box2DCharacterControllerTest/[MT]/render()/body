@@ -31,14 +31,14 @@
   }
  else {
     if (!Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D) && stillTime > 0.2) {
-      playerPhysicsFixture.setFriction(100f);
-      playerSensorFixture.setFriction(100f);
+      playerPhysicsFixture.setFriction(1000f);
+      playerSensorFixture.setFriction(1000f);
     }
  else {
       playerPhysicsFixture.setFriction(0.2f);
       playerSensorFixture.setFriction(0.2f);
     }
-    if (groundedPlatform != null && groundedPlatform.dist == 0) {
+    if (groundedPlatform != null && groundedPlatform instanceof MovingPlatform && ((MovingPlatform)groundedPlatform).dist == 0) {
       player.applyLinearImpulse(0,-24,pos.x,pos.y);
     }
   }
@@ -59,12 +59,12 @@
       player.setLinearVelocity(vel.x,0);
       System.out.println("jump before: " + player.getLinearVelocity());
       player.setTransform(pos.x,pos.y + 0.01f,0);
-      player.applyLinearImpulse(0,30,pos.x,pos.y);
+      player.applyLinearImpulse(0,40,pos.x,pos.y);
       System.out.println("jump, " + player.getLinearVelocity());
     }
   }
   for (int i=0; i < platforms.size; i++) {
-    MovingPlatform platform=platforms.get(i);
+    Platform platform=platforms.get(i);
     platform.update(Math.max(1 / 30.0f,Gdx.graphics.getDeltaTime()));
   }
   world.step(Gdx.graphics.getDeltaTime(),4,4);
