@@ -7,5 +7,7 @@
     Gdx.gl11.glGenBuffers(1,tmpHandle);
     return tmpHandle.get(0);
   }
-  return 0;
+ else {
+    throw new GdxRuntimeException("Can not use IndexBufferObject with GLES 1.0, need 1.1 or 2.0");
+  }
 }

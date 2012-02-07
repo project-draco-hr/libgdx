@@ -1,7 +1,22 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
   if (autoBind)   bind(shader);
-  if (indices.getNumIndices() > 0)   Gdx.gl20.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset * 2);
- else   Gdx.gl20.glDrawArrays(primitiveType,offset,count);
+  if (isVertexArray) {
+    if (indices.getNumIndices() > 0) {
+      ShortBuffer buffer=indices.getBuffer();
+      int oldPosition=buffer.position();
+      int oldLimit=buffer.limit();
+      buffer.position(offset);
+      buffer.limit(offset + count);
+      Gdx.gl20.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,buffer);
+      buffer.position(oldPosition);
+      buffer.limit(oldLimit);
+    }
+ else     Gdx.gl10.glDrawArrays(primitiveType,offset,count);
+  }
+ else {
+    if (indices.getNumIndices() > 0)     Gdx.gl20.glDrawElements(primitiveType,count,GL10.GL_UNSIGNED_SHORT,offset * 2);
+ else     Gdx.gl20.glDrawArrays(primitiveType,offset,count);
+  }
   if (autoBind)   unbind(shader);
 }

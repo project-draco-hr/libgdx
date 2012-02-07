@@ -1,5 +1,5 @@
 {
-  if (bufferHandle == 0)   throw new GdxRuntimeException("buuh");
+  if (bufferHandle == 0)   throw new GdxRuntimeException("No buffer allocated!");
   if (Gdx.gl11 != null) {
     GL11 gl=Gdx.gl11;
     gl.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,bufferHandle);

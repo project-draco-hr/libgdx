@@ -1,0 +1,6 @@
+{
+  byteBuffer=BufferUtils.newUnsafeByteBuffer(maxIndices * 2);
+  buffer=byteBuffer.asShortBuffer();
+  buffer.flip();
+  byteBuffer.flip();
+}
