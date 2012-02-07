@@ -1,5 +1,4 @@
 {
-  if (type == VertexDataType.VertexArray && Gdx.graphics.isGL20Available())   type=VertexDataType.VertexBufferObject;
   if (type == VertexDataType.VertexBufferObject) {
     vertices=new VertexBufferObject(isStatic,maxVertices,attributes);
     indices=new IndexBufferObject(isStatic,maxIndices);
