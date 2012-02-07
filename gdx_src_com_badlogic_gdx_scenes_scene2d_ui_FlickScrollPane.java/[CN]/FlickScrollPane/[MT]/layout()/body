@@ -1,4 +1,5 @@
 {
+  if (widget == null)   return;
   float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;

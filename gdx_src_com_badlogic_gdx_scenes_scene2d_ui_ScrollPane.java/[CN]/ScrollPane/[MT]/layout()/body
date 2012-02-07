@@ -8,6 +8,7 @@
   float bgBottomHeight=bg == null ? 0 : bg.getTopHeight();
   areaWidth=width - bgLeftWidth - bgRightWidth;
   areaHeight=height - bgTopHeight - bgBottomHeight;
+  if (widget == null)   return;
   float widgetWidth, widgetHeight;
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;
