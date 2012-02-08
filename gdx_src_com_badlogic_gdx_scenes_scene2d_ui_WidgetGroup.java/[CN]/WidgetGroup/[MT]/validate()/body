@@ -1,4 +1,20 @@
 {
+  if (fillParent && parent != null) {
+    float parentWidth, parentHeight;
+    if (stage != null && parent == stage.getRoot()) {
+      parentWidth=stage.width();
+      parentHeight=stage.height();
+    }
+ else {
+      parentWidth=parent.width;
+      parentHeight=parent.height;
+    }
+    if (width != parentWidth || height != parentHeight) {
+      width=parentWidth;
+      height=parentHeight;
+      invalidate();
+    }
+  }
   if (!needsLayout)   return;
   needsLayout=false;
   layout();

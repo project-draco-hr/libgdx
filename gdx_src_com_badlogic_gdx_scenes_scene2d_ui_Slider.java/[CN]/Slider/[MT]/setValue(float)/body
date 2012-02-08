@@ -1,5 +1,4 @@
 {
   if (value < min || value > max)   throw new IllegalArgumentException("value must be >= min and <= max: " + value);
   this.value=value;
-  if (listener != null)   listener.changed(this,getValue());
 }
