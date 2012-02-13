@@ -3,11 +3,11 @@
 switch (this) {
 case minimal:
     if (minimalPattern.matcher(value).matches())     return value;
-  return '"' + value + '"';
+  return '"' + value.replace("\"","\\\"") + '"';
 case javascript:
 if (javascriptPattern.matcher(value).matches()) return value;
-return '"' + value + '"';
+return '"' + value.replace("\"","\\\"") + '"';
 default :
-return '"' + value + '"';
+return '"' + value.replace("\"","\\\"") + '"';
 }
 }
