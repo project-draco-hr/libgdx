@@ -1,5 +1,6 @@
 {
-  if (!isDirectory()) {
+  boolean sourceDir=isDirectory();
+  if (!sourceDir) {
     if (dest.isDirectory())     dest=dest.child(name());
     copyFile(this,dest);
     return;
@@ -11,6 +12,6 @@
     dest.mkdirs();
     if (!dest.isDirectory())     throw new GdxRuntimeException("Destination directory cannot be created: " + dest);
   }
-  dest=dest.child(name());
+  if (!sourceDir)   dest=dest.child(name());
   copyDirectory(this,dest);
 }
