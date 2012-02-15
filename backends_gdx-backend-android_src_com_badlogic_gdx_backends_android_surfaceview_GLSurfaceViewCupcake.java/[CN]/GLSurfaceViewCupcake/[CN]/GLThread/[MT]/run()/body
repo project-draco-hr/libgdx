@@ -1,16 +1,11 @@
 {
   try {
-    try {
-      sEglSemaphore.acquire();
+synchronized (sEglLock) {
+      guardedRun();
     }
- catch (    InterruptedException e) {
-      return;
-    }
-    guardedRun();
   }
  catch (  InterruptedException e) {
   }
  finally {
-    sEglSemaphore.release();
   }
 }
