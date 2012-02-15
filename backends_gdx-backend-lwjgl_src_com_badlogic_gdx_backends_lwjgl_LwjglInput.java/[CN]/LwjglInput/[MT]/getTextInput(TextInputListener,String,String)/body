@@ -1,9 +1,19 @@
 {
   SwingUtilities.invokeLater(new Runnable(){
     public void run(){
-      String output=JOptionPane.showInputDialog(null,title,text);
-      if (output != null)       listener.input(output);
- else       listener.canceled();
+      final String output=JOptionPane.showInputDialog(null,title,text);
+      if (output != null)       Gdx.app.postRunnable(new Runnable(){
+        @Override public void run(){
+          listener.input(output);
+        }
+      }
+);
+ else       Gdx.app.postRunnable(new Runnable(){
+        @Override public void run(){
+          listener.canceled();
+        }
+      }
+);
     }
   }
 );

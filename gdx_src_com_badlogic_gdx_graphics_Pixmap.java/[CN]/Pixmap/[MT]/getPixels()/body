@@ -1,3 +1,4 @@
 {
+  if (disposed)   throw new GdxRuntimeException("Pixmap already disposed");
   return pixmap.getPixels();
 }

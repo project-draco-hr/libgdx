@@ -1,4 +1,5 @@
 {
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
   Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
   if (shader != null) {
     shader.begin();
