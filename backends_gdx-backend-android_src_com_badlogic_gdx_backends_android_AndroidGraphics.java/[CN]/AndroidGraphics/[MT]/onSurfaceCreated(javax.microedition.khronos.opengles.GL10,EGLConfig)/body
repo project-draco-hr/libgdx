@@ -1,4 +1,5 @@
 {
+  eglContext=((EGL10)EGLContext.getEGL()).eglGetCurrentContext();
   setupGL(gl);
   logConfig(config);
   updatePpi();

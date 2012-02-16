@@ -1,5 +1,7 @@
 {
   if (wakeLock != null)   wakeLock.release();
+  boolean isContinuous=graphics.isContinuousRendering();
+  graphics.setContinuousRendering(true);
   graphics.pause();
   input.unregisterSensorListeners();
   int[] realId=input.realId;
@@ -8,6 +10,7 @@
     graphics.clearManagedCaches();
     graphics.destroy();
   }
+  graphics.setContinuousRendering(isContinuous);
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();

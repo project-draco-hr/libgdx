@@ -11,7 +11,9 @@
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
   }
-  if (!firstResume)   graphics.resume();
+  if (!firstResume) {
+    graphics.resume();
+  }
  else   firstResume=false;
   super.onResume();
 }

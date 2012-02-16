@@ -54,4 +54,5 @@ input.touchY[realPointerIndex]=y;
 break;
 }
 }
+Gdx.app.getGraphics().requestRendering();
 }

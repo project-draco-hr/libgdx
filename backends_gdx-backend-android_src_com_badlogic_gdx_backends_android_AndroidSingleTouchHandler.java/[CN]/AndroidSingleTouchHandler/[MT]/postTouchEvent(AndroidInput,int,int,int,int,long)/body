@@ -8,4 +8,5 @@ synchronized (input) {
     event.type=type;
     input.touchEvents.add(event);
   }
+  Gdx.app.getGraphics().requestRendering();
 }
