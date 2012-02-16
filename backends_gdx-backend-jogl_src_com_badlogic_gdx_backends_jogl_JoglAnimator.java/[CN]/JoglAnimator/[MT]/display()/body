@@ -1,5 +1,19 @@
 {
   Iterator iter=drawableIterator();
+  if (!isContinuous) {
+    boolean needToWait=true;
+    while (needToWait) {
+      try {
+synchronized (contMonitor) {
+          contMonitor.wait();
+        }
+        needToWait=false;
+      }
+ catch (      InterruptedException e) {
+        needToWait=false;
+      }
+    }
+  }
   while (iter.hasNext()) {
     GLAutoDrawable drawable=(GLAutoDrawable)iter.next();
     if (drawable instanceof JComponent) {

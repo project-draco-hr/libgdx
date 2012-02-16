@@ -6,5 +6,6 @@ synchronized (this) {
     event.scrollAmount=e.getWheelRotation();
     event.timeStamp=System.nanoTime();
     touchEvents.add(event);
+    Gdx.graphics.requestRendering();
   }
 }

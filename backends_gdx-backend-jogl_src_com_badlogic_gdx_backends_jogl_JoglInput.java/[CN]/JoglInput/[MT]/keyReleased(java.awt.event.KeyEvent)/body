@@ -7,5 +7,6 @@ synchronized (this) {
     event.timeStamp=System.nanoTime();
     keyEvents.add(event);
     keys.remove(event.keyCode);
+    Gdx.graphics.requestRendering();
   }
 }

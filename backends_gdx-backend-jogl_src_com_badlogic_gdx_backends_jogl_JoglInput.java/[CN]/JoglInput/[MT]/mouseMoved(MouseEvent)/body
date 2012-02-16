@@ -12,5 +12,6 @@ synchronized (this) {
     touchX=event.x;
     touchY=event.y;
     checkCatched(e);
+    Gdx.graphics.requestRendering();
   }
 }

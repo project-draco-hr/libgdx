@@ -6,5 +6,6 @@ synchronized (this) {
     event.type=KeyEvent.KEY_TYPED;
     event.timeStamp=System.nanoTime();
     keyEvents.add(event);
+    Gdx.graphics.requestRendering();
   }
 }

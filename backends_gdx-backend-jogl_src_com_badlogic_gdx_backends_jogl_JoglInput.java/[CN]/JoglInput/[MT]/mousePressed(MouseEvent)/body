@@ -14,5 +14,6 @@ synchronized (this) {
     touchY=event.y;
     touchDown=true;
     pressedButtons.add(event.button);
+    Gdx.graphics.requestRendering();
   }
 }
