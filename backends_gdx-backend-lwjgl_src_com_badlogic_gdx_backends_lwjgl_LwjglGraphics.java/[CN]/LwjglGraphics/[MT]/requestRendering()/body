@@ -1,2 +1,5 @@
 {
+synchronized (this) {
+    requestRendering=true;
+  }
 }
