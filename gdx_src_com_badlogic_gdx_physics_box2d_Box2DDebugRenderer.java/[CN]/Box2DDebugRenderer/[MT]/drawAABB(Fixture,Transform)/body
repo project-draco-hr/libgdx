@@ -4,32 +4,32 @@
     float radius=shape.getRadius();
     vertices[0].set(shape.getPosition());
     vertices[0].rotate(transform.getRotation()).add(transform.getPosition());
-    mLower.set(vertices[0].x - radius,vertices[0].y - radius);
-    mUpper.set(vertices[0].x + radius,vertices[0].y + radius);
-    vertices[0].set(mLower.x,mLower.y);
-    vertices[1].set(mUpper.x,mLower.y);
-    vertices[2].set(mUpper.x,mUpper.y);
-    vertices[3].set(mLower.x,mUpper.y);
+    lower.set(vertices[0].x - radius,vertices[0].y - radius);
+    upper.set(vertices[0].x + radius,vertices[0].y + radius);
+    vertices[0].set(lower.x,lower.y);
+    vertices[1].set(upper.x,lower.y);
+    vertices[2].set(upper.x,upper.y);
+    vertices[3].set(lower.x,upper.y);
     drawSolidPolygon(vertices,4,AABB_COLOR);
   }
  else   if (fixture.getType() == Type.Polygon) {
     PolygonShape shape=(PolygonShape)fixture.getShape();
     int vertexCount=shape.getVertexCount();
     shape.getVertex(0,vertices[0]);
-    mLower.set(transform.mul(vertices[0]));
-    mUpper.set(mLower);
+    lower.set(transform.mul(vertices[0]));
+    upper.set(lower);
     for (int i=1; i < vertexCount; i++) {
       shape.getVertex(i,vertices[i]);
       transform.mul(vertices[i]);
-      mLower.x=Math.min(mLower.x,vertices[i].x);
-      mLower.y=Math.min(mLower.y,vertices[i].y);
-      mUpper.x=Math.max(mUpper.x,vertices[i].x);
-      mUpper.y=Math.max(mUpper.y,vertices[i].y);
+      lower.x=Math.min(lower.x,vertices[i].x);
+      lower.y=Math.min(lower.y,vertices[i].y);
+      upper.x=Math.max(upper.x,vertices[i].x);
+      upper.y=Math.max(upper.y,vertices[i].y);
     }
-    vertices[0].set(mLower.x,mLower.y);
-    vertices[1].set(mUpper.x,mLower.y);
-    vertices[2].set(mUpper.x,mUpper.y);
-    vertices[3].set(mLower.x,mUpper.y);
+    vertices[0].set(lower.x,lower.y);
+    vertices[1].set(upper.x,lower.y);
+    vertices[2].set(upper.x,upper.y);
+    vertices[3].set(lower.x,upper.y);
     drawSolidPolygon(vertices,4,AABB_COLOR);
   }
 }
