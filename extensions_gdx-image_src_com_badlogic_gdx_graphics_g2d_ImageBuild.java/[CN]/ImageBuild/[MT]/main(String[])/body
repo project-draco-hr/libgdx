@@ -1,0 +1,15 @@
+{
+  String[] excludes={};
+  String[] headers={"libjpeg/"};
+  BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
+  win32home.compilerPrefix="";
+  win32home.buildFileName="build-windows32home.xml";
+  win32home.excludeFromMasterBuildFile=true;
+  win32home.cExcludes=win32home.cppExcludes=excludes;
+  win32home.headerDirs=headers;
+  BuildTarget android=BuildTarget.newDefaultTarget(TargetOs.Android,false);
+  android.cExcludes=android.cppExcludes=excludes;
+  android.headerDirs=headers;
+  new AntScriptGenerator().generate(new BuildConfig("gdx-bullet"),win32home,android);
+  BuildExecutor.executeAnt("jni/build-windows32home.xml","-v");
+}
