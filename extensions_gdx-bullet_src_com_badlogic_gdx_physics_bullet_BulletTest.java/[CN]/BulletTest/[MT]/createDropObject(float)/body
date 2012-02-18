@@ -7,5 +7,6 @@
   btBoxShape shape=new btBoxShape(new Vector3(0.5f,0.5f,0.5f));
   shape.calculateLocalInertia(mass,localInertia);
   btRigidBody body=new btRigidBody(mass,new btDefaultMotionState(startTransform),shape,localInertia);
+  startTransform.delete();
   return body;
 }
