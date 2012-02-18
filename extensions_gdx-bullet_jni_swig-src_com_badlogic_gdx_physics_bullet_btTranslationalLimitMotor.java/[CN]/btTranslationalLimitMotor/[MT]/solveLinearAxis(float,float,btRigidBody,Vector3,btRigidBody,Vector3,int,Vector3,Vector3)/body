@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btTranslationalLimitMotor_solveLinearAxis(swigCPtr,this,timeStep,jacDiagABInv,btRigidBody.getCPtr(body1),body1,pointInA,btRigidBody.getCPtr(body2),body2,pointInB,limit_index,axis_normal_on_a,anchorPos);
+}

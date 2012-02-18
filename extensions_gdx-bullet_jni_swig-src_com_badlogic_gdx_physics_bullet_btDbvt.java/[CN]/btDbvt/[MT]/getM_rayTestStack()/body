@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btDbvt_m_rayTestStack_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_btAlignedObjectArrayT_btDbvtNode_const_p_t(cPtr,false);
+}

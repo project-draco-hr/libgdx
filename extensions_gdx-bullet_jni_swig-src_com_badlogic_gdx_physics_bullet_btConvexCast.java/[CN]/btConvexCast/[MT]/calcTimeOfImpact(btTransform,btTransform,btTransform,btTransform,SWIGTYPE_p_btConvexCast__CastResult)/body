@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btConvexCast_calcTimeOfImpact(swigCPtr,this,btTransform.getCPtr(fromA),fromA,btTransform.getCPtr(toA),toA,btTransform.getCPtr(fromB),fromB,btTransform.getCPtr(toB),toB,SWIGTYPE_p_btConvexCast__CastResult.getCPtr(result));
+}

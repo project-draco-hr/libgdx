@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btMeshPartData_m_vertices3d_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3DoubleData(cPtr,false);
+}

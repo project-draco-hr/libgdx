@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btUniformScalingShape(btConvexShape.getCPtr(convexChildShape),convexChildShape,uniformScalingFactor),true);
+}

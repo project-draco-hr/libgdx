@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btTypedConstraint_getUserConstraintPtr(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr,false);
+}

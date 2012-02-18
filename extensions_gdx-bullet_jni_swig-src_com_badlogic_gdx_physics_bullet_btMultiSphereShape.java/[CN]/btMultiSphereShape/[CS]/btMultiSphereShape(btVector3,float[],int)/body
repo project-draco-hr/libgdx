@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btMultiSphereShape(btVector3.getCPtr(positions),positions,radi,numSpheres),true);
+}

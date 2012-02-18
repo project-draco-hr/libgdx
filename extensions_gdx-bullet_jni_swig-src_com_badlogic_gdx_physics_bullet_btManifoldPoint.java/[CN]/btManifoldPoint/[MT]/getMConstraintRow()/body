@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btManifoldPoint_mConstraintRow_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btConstraintRow(cPtr,false);
+}

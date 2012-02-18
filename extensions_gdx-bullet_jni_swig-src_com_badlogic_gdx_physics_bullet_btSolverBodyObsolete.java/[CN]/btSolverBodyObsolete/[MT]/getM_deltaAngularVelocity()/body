@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSolverBodyObsolete_m_deltaAngularVelocity_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3(cPtr,false);
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSliderConstraintData_m_rbAFrame_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btTransformFloatData(cPtr,false);
+}

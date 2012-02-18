@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btGeneric6DofSpringConstraintData_m_6dofData_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btGeneric6DofConstraintData(cPtr,false);
+}

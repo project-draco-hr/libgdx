@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btGeneric6DofConstraint_getTranslationalLimitMotor(swigCPtr,this);
+  return (cPtr == 0) ? null : new btTranslationalLimitMotor(cPtr,false);
+}

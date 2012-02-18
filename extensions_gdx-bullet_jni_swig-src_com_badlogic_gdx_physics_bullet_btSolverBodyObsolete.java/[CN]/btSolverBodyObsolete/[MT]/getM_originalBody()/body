@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSolverBodyObsolete_m_originalBody_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btRigidBody(cPtr,false);
+}

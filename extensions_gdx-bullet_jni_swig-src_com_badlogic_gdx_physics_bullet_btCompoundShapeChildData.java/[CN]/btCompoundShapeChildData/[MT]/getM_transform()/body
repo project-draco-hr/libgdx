@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btCompoundShapeChildData_m_transform_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btTransformFloatData(cPtr,false);
+}

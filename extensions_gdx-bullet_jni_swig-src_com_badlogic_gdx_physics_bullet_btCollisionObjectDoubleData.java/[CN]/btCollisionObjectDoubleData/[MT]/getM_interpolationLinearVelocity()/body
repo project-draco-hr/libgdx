@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btCollisionObjectDoubleData_m_interpolationLinearVelocity_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3DoubleData(cPtr,false);
+}

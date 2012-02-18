@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btSphereBoxCollisionAlgorithm(btPersistentManifold.getCPtr(mf),mf,btCollisionAlgorithmConstructionInfo.getCPtr(ci),ci,btCollisionObject.getCPtr(col0),col0,btCollisionObject.getCPtr(col1),col1,isSwapped),true);
+}

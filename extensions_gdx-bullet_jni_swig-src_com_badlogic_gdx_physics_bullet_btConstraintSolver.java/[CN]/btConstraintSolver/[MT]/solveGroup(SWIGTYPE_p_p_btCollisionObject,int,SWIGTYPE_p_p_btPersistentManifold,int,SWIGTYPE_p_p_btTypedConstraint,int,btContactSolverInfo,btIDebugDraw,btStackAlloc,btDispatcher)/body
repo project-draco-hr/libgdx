@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btConstraintSolver_solveGroup(swigCPtr,this,SWIGTYPE_p_p_btCollisionObject.getCPtr(bodies),numBodies,SWIGTYPE_p_p_btPersistentManifold.getCPtr(manifold),numManifolds,SWIGTYPE_p_p_btTypedConstraint.getCPtr(constraints),numConstraints,btContactSolverInfo.getCPtr(info),info,btIDebugDraw.getCPtr(debugDrawer),debugDrawer,btStackAlloc.getCPtr(stackAlloc),stackAlloc,btDispatcher.getCPtr(dispatcher),dispatcher);
+}

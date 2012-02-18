@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btGjkConvexCast(btConvexShape.getCPtr(convexA),convexA,btConvexShape.getCPtr(convexB),convexB,SWIGTYPE_p_btSimplexSolverInterface.getCPtr(simplexSolver)),true);
+}

@@ -1,0 +1,10 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      gdxBulletJNI.delete_GrahamVector2(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+  super.delete();
+}

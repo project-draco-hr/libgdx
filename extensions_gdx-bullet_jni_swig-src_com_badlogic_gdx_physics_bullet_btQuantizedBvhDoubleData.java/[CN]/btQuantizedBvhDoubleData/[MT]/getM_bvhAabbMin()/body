@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btQuantizedBvhDoubleData_m_bvhAabbMin_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3DoubleData(cPtr,false);
+}

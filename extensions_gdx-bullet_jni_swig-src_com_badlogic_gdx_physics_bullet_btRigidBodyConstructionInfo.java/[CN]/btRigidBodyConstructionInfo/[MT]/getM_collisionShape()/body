@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btRigidBodyConstructionInfo_m_collisionShape_get(swigCPtr,this);
+  return (cPtr == 0) ? null : btCollisionShape.newDerivedObject(cPtr,false);
+}

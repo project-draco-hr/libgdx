@@ -1,0 +1,9 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      gdxBulletJNI.delete_CProfileManager(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btStackAlloc_beginBlock(swigCPtr,this);
+  return (cPtr == 0) ? null : new btBlock(cPtr,false);
+}

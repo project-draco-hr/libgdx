@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.SphereTriangleDetector_collide(swigCPtr,this,sphereCenter,point,resultNormal,SWIGTYPE_p_float.getCPtr(depth),SWIGTYPE_p_float.getCPtr(timeOfImpact),contactBreakingThreshold);
+}

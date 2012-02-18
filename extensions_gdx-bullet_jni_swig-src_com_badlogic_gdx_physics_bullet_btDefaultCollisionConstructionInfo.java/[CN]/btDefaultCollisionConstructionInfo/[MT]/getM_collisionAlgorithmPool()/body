@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btDefaultCollisionConstructionInfo_m_collisionAlgorithmPool_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btPoolAllocator(cPtr,false);
+}

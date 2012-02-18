@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btCollisionWorld(btDispatcher.getCPtr(dispatcher),dispatcher,btBroadphaseInterface.getCPtr(broadphasePairCache),broadphasePairCache,btCollisionConfiguration.getCPtr(collisionConfiguration),collisionConfiguration),true);
+}

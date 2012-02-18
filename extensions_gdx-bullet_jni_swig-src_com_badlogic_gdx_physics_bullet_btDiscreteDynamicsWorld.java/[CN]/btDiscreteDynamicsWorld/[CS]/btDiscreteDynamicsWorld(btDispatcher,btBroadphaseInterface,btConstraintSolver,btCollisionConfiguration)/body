@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btDiscreteDynamicsWorld(btDispatcher.getCPtr(dispatcher),dispatcher,btBroadphaseInterface.getCPtr(pairCache),pairCache,btConstraintSolver.getCPtr(constraintSolver),constraintSolver,btCollisionConfiguration.getCPtr(collisionConfiguration),collisionConfiguration),true);
+}

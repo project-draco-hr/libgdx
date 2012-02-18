@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btDbvt_insert(swigCPtr,this,btDbvtAabbMm.getCPtr(box),box,SWIGTYPE_p_void.getCPtr(data));
+  return (cPtr == 0) ? null : new btDbvtNode(cPtr,false);
+}

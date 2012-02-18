@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btTriangle_m_vertex0_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3(cPtr,false);
+}

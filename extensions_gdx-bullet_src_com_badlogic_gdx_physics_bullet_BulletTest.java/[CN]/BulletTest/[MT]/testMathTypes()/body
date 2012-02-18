@@ -1,0 +1,28 @@
+{
+  Matrix3 m=new Matrix3();
+  m.idt();
+  m.vals[0]=1;
+  m.vals[1]=2;
+  m.vals[2]=3;
+  m.vals[3]=4;
+  m.vals[4]=5;
+  m.vals[5]=6;
+  m.vals[6]=7;
+  m.vals[7]=8;
+  m.vals[8]=9;
+  Quaternion q=new Quaternion(Quaternion.idt());
+  btTransform t=new btTransform();
+  t.setIdentity();
+  System.out.println(t.getOrigin());
+  System.out.println(t.getBasis());
+  System.out.println();
+  t.setOrigin(new Vector3(1,2,3));
+  t.setBasis(m);
+  System.out.println(t.getOrigin());
+  System.out.println(t.getBasis());
+  System.out.println();
+  System.out.println(t.getRotation());
+  t.setRotation(q);
+  System.out.println(t.getRotation());
+  t.delete();
+}

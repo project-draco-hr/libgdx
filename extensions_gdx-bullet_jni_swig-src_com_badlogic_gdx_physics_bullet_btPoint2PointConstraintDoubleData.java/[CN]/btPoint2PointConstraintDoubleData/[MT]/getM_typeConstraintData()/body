@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btPoint2PointConstraintDoubleData_m_typeConstraintData_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btTypedConstraintData(cPtr,false);
+}

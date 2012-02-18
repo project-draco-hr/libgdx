@@ -1,0 +1,6 @@
+{
+  btTransform t=body.getWorldTransform();
+  Vector3 v=t.getOrigin();
+  System.out.println(v.z);
+  t.delete();
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btDbvtBroadphase_m_sets_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btDbvt(cPtr,false);
+}

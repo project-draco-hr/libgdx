@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.HullResult_m_Indices_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_btAlignedObjectArrayT_unsigned_int_t(cPtr,false);
+}

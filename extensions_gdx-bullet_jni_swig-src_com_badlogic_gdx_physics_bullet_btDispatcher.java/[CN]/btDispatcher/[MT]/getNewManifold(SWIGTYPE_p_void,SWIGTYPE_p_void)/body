@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btDispatcher_getNewManifold(swigCPtr,this,SWIGTYPE_p_void.getCPtr(body0),SWIGTYPE_p_void.getCPtr(body1));
+  return (cPtr == 0) ? null : new btPersistentManifold(cPtr,false);
+}

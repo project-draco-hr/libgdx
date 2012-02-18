@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btPolyhedralContactClipping_findSeparatingAxis(btConvexPolyhedron.getCPtr(hullA),hullA,btConvexPolyhedron.getCPtr(hullB),hullB,btTransform.getCPtr(transA),transA,btTransform.getCPtr(transB),transB,sep);
+}

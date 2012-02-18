@@ -1,0 +1,9 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      gdxBulletJNI.delete_bt32BitAxisSweep3(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+}

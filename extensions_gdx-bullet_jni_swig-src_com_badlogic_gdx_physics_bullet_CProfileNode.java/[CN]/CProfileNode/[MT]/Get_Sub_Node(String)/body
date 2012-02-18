@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.CProfileNode_Get_Sub_Node(swigCPtr,this,name);
+  return (cPtr == 0) ? null : new CProfileNode(cPtr,false);
+}

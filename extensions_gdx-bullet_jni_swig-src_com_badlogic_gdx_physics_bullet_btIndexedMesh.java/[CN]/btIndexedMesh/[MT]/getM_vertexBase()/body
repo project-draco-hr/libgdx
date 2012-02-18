@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btIndexedMesh_m_vertexBase_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr,false);
+}

@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btRayAabb(rayFrom,rayTo,aabbMin,aabbMax,SWIGTYPE_p_float.getCPtr(param),normal);
+}

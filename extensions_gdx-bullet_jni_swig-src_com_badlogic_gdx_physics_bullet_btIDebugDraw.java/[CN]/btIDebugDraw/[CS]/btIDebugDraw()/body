@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_btIDebugDraw(),true);
+  gdxBulletJNI.btIDebugDraw_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

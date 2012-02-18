@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btCollisionObjectArray_at__SWIG_0(swigCPtr,this,n);
+  return (cPtr == 0) ? null : new btCollisionObject(cPtr,false);
+}
