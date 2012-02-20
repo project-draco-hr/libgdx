@@ -27,11 +27,11 @@
   }
  else {
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    if (passwordMode && font.containsCharacter(BULLET)) {
+    if (passwordMode && font.containsCharacter(passwordCharacter)) {
       if (passwordBuffer == null)       passwordBuffer=new StringBuilder(text.length());
       if (passwordBuffer.length() > text.length())       passwordBuffer.setLength(text.length());
  else {
-        for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)         passwordBuffer.append(BULLET);
+        for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)         passwordBuffer.append(passwordCharacter);
       }
       font.draw(batch,passwordBuffer,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
     }
