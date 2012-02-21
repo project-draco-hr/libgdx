@@ -1,0 +1,13 @@
+{
+  char[] characters=fontCharacters.toCharArray();
+  int nCharacters=characters.length;
+  Bitmap[] glyphBitmaps=new Bitmap[nCharacters];
+  for (int i=0; i < nCharacters; i++) {
+    int glyphCode=stbTrueTypeFont.findGlyphIndex(characters[i]);
+    if (glyphCode == 0) {
+      continue;
+    }
+    glyphBitmaps[i]=stbTrueTypeFont.makeGlyphBitmap(fontScaleW,fontScaleH,0,0,glyphCode);
+  }
+  return glyphBitmaps;
+}

@@ -1,0 +1,71 @@
+{
+  char[] characters=fontCharacters.toCharArray();
+  int nCharacters=characters.length;
+  int fontTextureSizeW=minFontTextureSize;
+  int fontTextureSizeH=minFontTextureSize;
+  PTNode root=new PTNode();
+  root.rL=0;
+  root.rT=0;
+  root.rR=fontTextureSizeW;
+  root.rB=fontTextureSizeH;
+  for (int imageID=0; imageID < nCharacters; imageID++) {
+    final Bitmap glyphBitmap=glyphBitmaps[imageID];
+    if (glyphBitmap == null) {
+      continue;
+    }
+    int glyphWidth=glyphBitmap.pixmap.getWidth() + padding * 2;
+    int glyphHeight=glyphBitmap.pixmap.getHeight() + padding * 2;
+    int[] glyphPos=root.insertImage(imageID,glyphWidth,glyphHeight);
+    if (glyphPos == null) {
+      if (fontTextureSizeW >= maxFontTextureSizeW && fontTextureSizeH >= maxFontTextureSizeH) {
+        if (!ignoreGlyphOverflow) {
+          for (int t=0; t < glyphBitmaps.length; t++) {
+            if (glyphBitmaps[t] != null) {
+              glyphBitmaps[t].dispose();
+            }
+          }
+          stbTrueTypeFont.dispose();
+          throw new GdxRuntimeException("Character \'" + characters[imageID] + "\' did not fit inside font texture.");
+        }
+ else {
+          continue;
+        }
+      }
+      root=new PTNode();
+      root.rL=0;
+      root.rT=0;
+      if ((minFilter == TextureFilter.Linear || minFilter == TextureFilter.Nearest) && (magFilter == TextureFilter.Linear || magFilter == TextureFilter.Nearest)) {
+        if (fontTextureSizeH > fontTextureSizeW && fontTextureSizeW < maxFontTextureSizeW) {
+          fontTextureSizeW*=2;
+        }
+ else {
+          fontTextureSizeH*=2;
+        }
+      }
+ else {
+        fontTextureSizeH*=2;
+        fontTextureSizeW*=2;
+      }
+      root.rR=fontTextureSizeW;
+      root.rB=fontTextureSizeH;
+      imageID=-1;
+      continue;
+    }
+    final Box glyphBox=glyphBitmap.box;
+    CharacterRegion cRR=new CharacterRegion(glyphPos[0] + padding,glyphPos[1] + padding,glyphWidth - 2 * padding,glyphHeight - 2 * padding,glyphBox.x0,glyphBox.y0,(int)((stbTrueTypeFont.getCodepointHMetrics(characters[imageID]).advance * fontScale) + 0.5f));
+    characterRegions.put(characters[imageID],cRR);
+  }
+  Texture fontTexture=new Texture(root.getTextureWidth(),root.getTextureHeight(),Format.RGBA4444);
+  fontTexture.setFilter(minFilter,magFilter);
+  Set<Character> keySet=characterRegions.keySet();
+  for (  Character KEY : keySet) {
+    for (int i=0; i < nCharacters; i++) {
+      if (characters[i] == KEY) {
+        CharacterRegion cR=characterRegions.get(KEY);
+        fontTexture.draw(glyphBitmaps[i].pixmap,cR.x,cR.y);
+        break;
+      }
+    }
+  }
+  return fontTexture;
+}

@@ -1,0 +1,21 @@
+{
+  final Character[] keys=new Character[characterRegions.size()];
+  characterRegions.keySet().toArray(keys);
+  final int n=keys.length;
+  for (int i=0; i < n; i++) {
+    final char I=keys[i];
+    for (int j=i; j < n; j++) {
+      final char J=keys[j];
+      int kerning=stbTrueTypeFont.getCodepointKernAdvance(I,J);
+      kerning=(int)(kerning * fontScale + 0.5f);
+      if (kerning != 0) {
+        kernings.put(new Character[]{I,J},kerning);
+      }
+      kerning=stbTrueTypeFont.getCodepointKernAdvance(J,I);
+      kerning=(int)(kerning * fontScale + 0.5f);
+      if (kerning != 0) {
+        kernings.put(new Character[]{J,I},kerning);
+      }
+    }
+  }
+}

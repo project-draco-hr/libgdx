@@ -1,0 +1,12 @@
+{
+  float fontSizeDeviceW;
+  float fontSizeDeviceH;
+  fontSizeDeviceW=deviceWidth * fontPixelsHeight / worldWidth;
+  fontSizeDeviceH=deviceHeight * fontPixelsHeight / worldHeight;
+  float[] retValues=new float[4];
+  retValues[0]=stbTrueTypeFont.scaleForPixelHeight(fontSizeDeviceW);
+  retValues[1]=stbTrueTypeFont.scaleForPixelHeight(fontSizeDeviceH);
+  retValues[2]=fontSizeDeviceW / fontPixelsHeight;
+  retValues[3]=fontSizeDeviceH / fontPixelsHeight;
+  return retValues;
+}

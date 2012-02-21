@@ -1,0 +1,12 @@
+StbTrueTypeFont stbTrueTypeFont
+float fontScale
+Bitmap[] glyphBitmaps
+HashMap<Character,CharacterRegion> characterRegions
+String fontCharacters
+int padding
+int minFontTextureSize
+boolean ignoreGlyphOverflow
+float maxFontTextureSizeW
+float maxFontTextureSizeH
+TextureFilter minFilter
+TextureFilter magFilter
