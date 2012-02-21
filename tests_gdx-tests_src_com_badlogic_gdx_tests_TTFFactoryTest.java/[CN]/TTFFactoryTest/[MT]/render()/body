@@ -1,0 +1,13 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  orthographicCamera.update();
+  spriteBatch.setProjectionMatrix(orthographicCamera.combined);
+  spriteBatch.begin();
+  spriteBatch.setBlendFunction(GL10.GL_ONE,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  float fontPosXWorld=0.5f;
+  float fontPosYWorld=WORLD_HEIGHT / 2f;
+  float wRatio=Gdx.graphics.getWidth() / WORLD_WIDTH;
+  float hRatio=Gdx.graphics.getHeight() / WORLD_HEIGHT;
+  fontAtlasDroid.drawMultiLine(spriteBatch,text,(int)(fontPosXWorld * wRatio + 0.5f),(int)(fontPosYWorld * hRatio + 0.5f));
+  spriteBatch.end();
+}
