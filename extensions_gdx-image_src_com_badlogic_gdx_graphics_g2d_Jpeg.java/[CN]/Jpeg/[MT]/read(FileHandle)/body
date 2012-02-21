@@ -1,0 +1,7 @@
+{
+  byte[] bytes=file.readBytes();
+  long[] out=new long[4];
+  ByteBuffer pixels=read(bytes,0,bytes.length,out);
+  if (pixels == null)   throw new GdxRuntimeException("Couldn't load jpeg '" + file + "'");
+  return new Pixmap(new Gdx2DPixmap(pixels,out));
+}

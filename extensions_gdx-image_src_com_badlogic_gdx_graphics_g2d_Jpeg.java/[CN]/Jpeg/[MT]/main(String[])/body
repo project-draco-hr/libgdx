@@ -1,0 +1,12 @@
+{
+  ImageBuild.main(new String[0]);
+  GdxNativesLoader.load();
+  new SharedLibraryLoader("libs/gdx-image-natives.jar").load("gdx-image");
+  byte[] bytes=new FileHandle("test/43kJgl.jpg").readBytes();
+  Pixmap pixmap=Jpeg.read(new FileHandle("test/43kJgl.jpg"));
+  System.out.println(pixmap.getWidth() + ", " + pixmap.getHeight()+ ", "+ pixmap.getFormat());
+  pixmap.dispose();
+  pixmap=Jpeg.read(bytes,0,bytes.length);
+  System.out.println(pixmap.getWidth() + ", " + pixmap.getHeight()+ ", "+ pixmap.getFormat());
+  pixmap.dispose();
+}
