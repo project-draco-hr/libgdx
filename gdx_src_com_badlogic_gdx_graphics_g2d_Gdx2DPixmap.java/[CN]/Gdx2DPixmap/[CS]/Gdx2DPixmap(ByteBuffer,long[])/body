@@ -1,0 +1,7 @@
+{
+  this.pixelPtr=pixelPtr;
+  this.basePtr=nativeData[0];
+  this.width=(int)nativeData[1];
+  this.height=(int)nativeData[2];
+  this.format=(int)nativeData[3];
+}
