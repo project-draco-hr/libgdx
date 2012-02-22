@@ -1,5 +1,5 @@
 {
-  if ((Display.getDisplayMode().getWidth() == width) && (Display.getDisplayMode().getHeight() == height) && (Display.isFullscreen() == fullscreen)) {
+  if (getWidth() == width && getHeight() == height && Display.isFullscreen() == fullscreen) {
     return true;
   }
   try {
