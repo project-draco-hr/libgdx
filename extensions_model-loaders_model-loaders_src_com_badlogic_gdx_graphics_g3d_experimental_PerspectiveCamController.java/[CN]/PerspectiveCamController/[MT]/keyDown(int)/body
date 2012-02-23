@@ -1,0 +1,7 @@
+{
+  if (keycode == Keys.A)   A=true;
+ else   if (keycode == Keys.D)   D=true;
+ else   if (keycode == Keys.S)   S=true;
+ else   if (keycode == Keys.W)   W=true;
+  return false;
+}

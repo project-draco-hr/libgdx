@@ -1,0 +1,42 @@
+{
+  Gdx.graphics.setVSync(false);
+  for (int i=0; i < LIGHTS_NUM; i++) {
+    lightsPos[3 * i + 0]=2 - MathUtils.random() * 5;
+    lightsPos[3 * i + 1]=MathUtils.random() * 5;
+    ;
+    lightsPos[3 * i + 2]=1 - MathUtils.random() * 8;
+    lightsCol[3 * i + 0]=MathUtils.random();
+    lightsCol[3 * i + 1]=MathUtils.random();
+    lightsCol[3 * i + 2]=MathUtils.random();
+    lightsInt[i]=LIGHT_INTESITY;
+  }
+  lightShader=ShaderLoader.createShader("light","light");
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.near=0.1f;
+  cam.far=64f;
+  cam.position.set(0,0.5f,1.5f);
+  cam.update();
+  camController=new PerspectiveCamController(cam);
+  Gdx.input.setInputProcessor(camController);
+  texture=new Texture(Gdx.files.internal("data/multipleuvs_1.png"),null,true);
+  texture.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
+  texture2=new Texture(Gdx.files.internal("data/wall.png"),null,true);
+  texture2.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
+  texture2.setWrap(TextureWrap.Repeat,TextureWrap.Repeat);
+  try {
+    InputStream in=Gdx.files.internal("data/smoothsphere.obj").read();
+    mesh=ObjLoader.loadObj(in);
+    in.close();
+    in=Gdx.files.internal("data/basicscene.obj").read();
+    mesh2=ObjLoader.loadObj(in);
+    in.close();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  mesh2.scale(1.25f,1.25f,1.25f);
+  mesh.getVertexAttribute(Usage.Position).alias="a_position";
+  mesh.getVertexAttribute(Usage.Normal).alias="a_normal";
+  mesh2.getVertexAttribute(Usage.Position).alias="a_position";
+  mesh2.getVertexAttribute(Usage.Normal).alias="a_normal";
+}

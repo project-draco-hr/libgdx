@@ -1,0 +1,6 @@
+{
+  ClassLoader classLoader=Thread.currentThread().getContextClassLoader();
+  InputStream in=classLoader.getResourceAsStream(path);
+  if (in == null)   throw new RuntimeException("couldnt find stream for " + path);
+  return in;
+}

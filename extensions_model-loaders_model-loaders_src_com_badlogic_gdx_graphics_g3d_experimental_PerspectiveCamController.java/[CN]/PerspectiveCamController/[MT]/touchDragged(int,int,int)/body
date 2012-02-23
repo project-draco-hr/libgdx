@@ -1,0 +1,14 @@
+{
+  angleX+=(lastX - x) * MOUSE_SENSITIVITY;
+  lastX=x;
+  angleY+=(lastY - y) * -MOUSE_SENSITIVITY;
+  lastY=y;
+  if (angleY > NINETY_DEGREE)   angleY=NINETY_DEGREE;
+ else   if (angleY < -NINETY_DEGREE)   angleY=-NINETY_DEGREE;
+  final float cos=MathUtils.cosDeg(angleY);
+  cam.direction.x=MathUtils.cosDeg(angleX) * cos;
+  cam.direction.y=MathUtils.sinDeg(angleY) * 1f;
+  cam.direction.z=MathUtils.sinDeg(angleX) * cos;
+  cam.update(false);
+  return true;
+}
