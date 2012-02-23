@@ -1,0 +1,38 @@
+{
+  long start=System.nanoTime();
+  model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal(fileName));
+  Gdx.app.log("StillModelViewer","loading took: " + (System.nanoTime() - start) / 1000000000.0f);
+  for (  StillSubMesh mesh : model.subMeshes) {
+    mesh.mesh.scale(0.1f,0.1f,0.1f);
+  }
+  if (!fileName.endsWith(".g3d")) {
+    G3dExporter.export(model,Gdx.files.absolute(fileName + ".g3d"));
+    start=System.nanoTime();
+    model=G3dLoader.loadStillModel(Gdx.files.absolute(fileName + ".g3d"));
+    Gdx.app.log("StillModelViewer","loading binary took: " + (System.nanoTime() - start) / 1000000000.0f);
+  }
+  if (textureFileNames.length != 0) {
+    textures=new Texture[textureFileNames.length];
+    for (int i=0; i < textureFileNames.length; i++) {
+      textures[i]=new Texture(Gdx.files.internal(textureFileNames[i]),i > 0 ? false : true);
+    }
+  }
+  hasNormals=hasNormals();
+  System.out.println("hasNormal: " + hasNormals);
+  model.getBoundingBox(bounds);
+  float len=bounds.getDimensions().len();
+  System.out.println("bounds: " + bounds);
+  cam=new PerspectiveCamera(60,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(bounds.getCenter().cpy().add(len / 2,len / 2,len / 2));
+  cam.lookAt(bounds.getCenter().x,bounds.getCenter().y,bounds.getCenter().z);
+  cam.near=0.1f;
+  cam.far=1000;
+  renderer=new ImmediateModeRenderer20(false,true,16);
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  shader=new ShaderProgram(Gdx.files.internal("data/modelshader.vertex").readString(),Gdx.files.internal("data/modelshader.fragment").readString());
+  System.out.println("shader" + shader.isCompiled());
+  for (  StillSubMesh mesh : model.subMeshes) {
+    System.out.println(mesh.material.name);
+  }
+}

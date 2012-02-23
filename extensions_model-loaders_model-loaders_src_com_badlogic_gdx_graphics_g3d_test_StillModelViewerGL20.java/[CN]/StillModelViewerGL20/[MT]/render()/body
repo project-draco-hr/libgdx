@@ -1,0 +1,18 @@
+{
+  Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1.0f);
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+  angle+=Gdx.graphics.getDeltaTime();
+  cam.update();
+  shader.begin();
+  shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
+  shader.setUniformi("u_texture0",0);
+  shader.setUniformi("u_texture1",1);
+  textures[0].bind(0);
+  textures[1].bind(1);
+  model.render(shader);
+  batch.begin();
+  font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);
+  batch.end();
+  fps.log();
+}

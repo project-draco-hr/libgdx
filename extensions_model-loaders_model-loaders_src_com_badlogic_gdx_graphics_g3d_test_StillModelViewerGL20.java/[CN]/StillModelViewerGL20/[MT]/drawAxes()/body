@@ -1,0 +1,17 @@
+{
+  float len=bounds.getDimensions().len();
+  renderer.begin(cam.combined,GL10.GL_LINES);
+  renderer.color(1,0,0,1);
+  renderer.vertex(0,0,0);
+  renderer.color(1,0,0,1);
+  renderer.vertex(len,0,0);
+  renderer.color(0,1,0,1);
+  renderer.vertex(0,0,0);
+  renderer.color(0,1,0,1);
+  renderer.vertex(0,len,0);
+  renderer.color(0,0,1,1);
+  renderer.vertex(0,0,0);
+  renderer.color(0,0,1,1);
+  renderer.vertex(0,0,len);
+  renderer.end();
+}
