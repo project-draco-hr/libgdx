@@ -14,7 +14,7 @@
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.near=0.1f;
   cam.far=64f;
-  cam.position.set(0,0.5f,1.5f);
+  cam.position.set(0,0.5f,-2f);
   cam.update();
   camController=new PerspectiveCamController(cam);
   Gdx.input.setInputProcessor(camController);
