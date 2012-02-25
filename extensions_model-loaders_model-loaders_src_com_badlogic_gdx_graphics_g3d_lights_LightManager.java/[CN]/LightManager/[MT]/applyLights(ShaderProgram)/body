@@ -1,0 +1,5 @@
+{
+  shader.setUniform3fv("lightsPos",positions,0,maxLightsPerModel * 3);
+  shader.setUniform3fv("lightsCol",colors,0,maxLightsPerModel * 3);
+  shader.setUniform1fv("lightsInt",intensities,0,maxLightsPerModel);
+}

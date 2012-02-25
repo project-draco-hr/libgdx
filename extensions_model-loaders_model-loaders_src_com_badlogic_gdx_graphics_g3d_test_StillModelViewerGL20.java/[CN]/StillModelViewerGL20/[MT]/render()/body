@@ -7,10 +7,10 @@
   shader.begin();
   shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
   shader.setUniformi("u_texture0",0);
-  shader.setUniformi("u_texture1",1);
   textures[0].bind(0);
-  textures[1].bind(1);
-  model.render(shader);
+  protoRenderer.begin();
+  protoRenderer.draw(model,instance);
+  protoRenderer.end();
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);
   batch.end();
