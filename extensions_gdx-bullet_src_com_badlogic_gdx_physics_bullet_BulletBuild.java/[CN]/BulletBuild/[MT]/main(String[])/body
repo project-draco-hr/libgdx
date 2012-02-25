@@ -3,6 +3,7 @@
   String cppFlags="";
   cppFlags+=" -fno-strict-aliasing";
   cppFlags+=" -fno-rtti";
+  cppFlags+=" -DBT_NO_PROFILE";
   String[] excludes={"src/BulletMultiThreaded/GpuSoftBodySolvers/**"};
   String[] headers={"src/"};
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
