@@ -2,7 +2,8 @@
   Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1.0f);
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
-  instance.getTransform().rotate(0,1,0,45 * Gdx.graphics.getDeltaTime());
+  instance.getTransform().rotate(0,1,0,55 * Gdx.graphics.getDeltaTime());
+  instance2.getTransform().rotate(0,1,0,-45 * Gdx.graphics.getDeltaTime());
   cam.update();
   shader.begin();
   shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
@@ -10,6 +11,7 @@
   textures[0].bind(0);
   protoRenderer.begin();
   protoRenderer.draw(model,instance);
+  protoRenderer.draw(model,instance2);
   protoRenderer.end();
   batch.begin();
   font.draw(batch,"fps: " + Gdx.graphics.getFramesPerSecond(),20,30);

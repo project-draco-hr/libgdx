@@ -1,4 +1,5 @@
 {
+  Gdx.graphics.setVSync(false);
   long start=System.nanoTime();
   model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal(fileName));
   Gdx.app.log("StillModelViewer","loading took: " + (System.nanoTime() - start) / 1000000000.0f);
@@ -32,7 +33,8 @@
   font=new BitmapFont();
   shader=ShaderLoader.createShader("light","light");
   lightManager=new LightManager(8);
-  for (int i=0; i < 16; i++) {
+  lightManager.ambientLight.set(0.1f,0.1f,0.1f,0);
+  for (int i=0; i < 32; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(16) - 8,MathUtils.random(6) - 2,-MathUtils.random(16) + 2);
     l.color.r=MathUtils.random();
@@ -45,6 +47,9 @@
   protoRenderer.setShader(shader);
   protoRenderer.setLightManager(lightManager);
   instance=new Instance();
+  instance.getTransform().translate(-6,0,1);
+  instance2=new Instance();
+  instance2.getTransform().translate(6,0,-5);
   for (  StillSubMesh mesh : model.subMeshes) {
     System.out.println(mesh.material.name);
   }
