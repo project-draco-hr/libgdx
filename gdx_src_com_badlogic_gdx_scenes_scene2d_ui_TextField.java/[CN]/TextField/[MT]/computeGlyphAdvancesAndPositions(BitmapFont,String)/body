@@ -1,0 +1,10 @@
+{
+  if (!passwordMode) {
+    font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
+  }
+ else {
+    hiddenText.delete(0,hiddenText.length());
+    for (int i=0; i < text.length(); i++)     hiddenText.append(passwordCharacter);
+    font.computeGlyphAdvancesAndPositions(hiddenText,glyphAdvances,glyphPositions);
+  }
+}

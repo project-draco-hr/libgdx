@@ -9,8 +9,8 @@
   this.text=buffer.toString();
   cursor=0;
   clearSelection();
-  font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
+  computeGlyphAdvancesAndPositions(font,text);
   textBounds.set(font.getBounds(text));
   textBounds.height-=font.getDescent() * 2;
-  font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
+  computeGlyphAdvancesAndPositions(font,text);
 }

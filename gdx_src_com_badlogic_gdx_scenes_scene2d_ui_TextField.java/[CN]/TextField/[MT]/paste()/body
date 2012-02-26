@@ -9,6 +9,6 @@
     content=builder.toString();
     text=text.substring(0,cursor) + content + text.substring(cursor,text.length());
     cursor+=content.length();
-    style.font.computeGlyphAdvancesAndPositions(text,glyphAdvances,glyphPositions);
+    computeGlyphAdvancesAndPositions(style.font,text);
   }
 }
