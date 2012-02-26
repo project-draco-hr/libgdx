@@ -1,7 +1,8 @@
 {
+  modelMatrix2.translate(0,3,-3);
   lightShader=ShaderLoader.createShader("light","light");
   lightManager=new LightManager(8);
-  for (int i=0; i < 32; i++) {
+  for (int i=0; i < 12; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(16) - 8,MathUtils.random(6) - 2,-MathUtils.random(16) + 2);
     l.color.r=MathUtils.random();
@@ -33,7 +34,7 @@
     InputStream in=Gdx.files.internal("data/smoothsphere.obj").read();
     mesh=ObjLoader.loadObj(in);
     in.close();
-    in=Gdx.files.internal("data/basicscene.obj").read();
+    in=Gdx.files.internal("data/basicscene_unwrapped.obj").read();
     mesh2=ObjLoader.loadObj(in);
     in.close();
   }

@@ -10,14 +10,15 @@
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   texture.bind(0);
   lightShader.begin();
-  lightShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
+  lightShader.setUniformMatrix("u_modelMatrix",modelMatrix2,false);
   lightShader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
-  lightManager.calculateLights(0,0,0);
-  lightManager.applyLights(lightShader);
   lightShader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
   lightShader.setUniformi("u_texture0",0);
+  lightManager.calculateLights(0,3,3);
+  lightManager.applyLights(lightShader);
   mesh.render(lightShader,GL10.GL_TRIANGLES);
   texture2.bind(0);
+  lightShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
   lightManager.calculateLights(0,0,0);
   lightManager.applyLights(lightShader);
   mesh2.render(lightShader,GL10.GL_TRIANGLES);
