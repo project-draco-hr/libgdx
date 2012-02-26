@@ -3,7 +3,7 @@
   final PointLight lights[]=pointLights.items;
   if (maxSize > maxLightsPerModel) {
     for (int i=0; i < maxSize; i++) {
-      lights[i].distance=lights[i].position.dst2(x,y,z) / lights[i].range;
+      lights[i].priority=lights[i].position.dst(x,y,z) / lights[i].intensity;
     }
     pointLights.sort();
   }
@@ -18,7 +18,7 @@
     colors[3 * i + 0]=col.r;
     colors[3 * i + 1]=col.g;
     colors[3 * i + 2]=col.b;
-    intensities[i]=l.range;
+    intensities[i]=l.intensity;
   }
   for (int i=size; i < maxLightsPerModel; i++) {
     intensities[i]=0;

@@ -14,7 +14,7 @@
   lightShader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
   lightShader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
   lightShader.setUniformi("u_texture0",0);
-  lightManager.calculateLights(0,3,3);
+  lightManager.calculateLights(0,2,-8);
   lightManager.applyLights(lightShader);
   mesh.render(lightShader,GL10.GL_TRIANGLES);
   texture2.bind(0);
