@@ -1,6 +1,7 @@
 {
   model=ModelLoaderRegistry.loadKeyframedModel(Gdx.files.internal(fileName));
   if (textureFileName != null)   texture=new Texture(Gdx.files.internal(textureFileName),Format.RGB565,true);
+  model.setMaterial(new Material("default",new TextureAttribute(texture,0,"skin")));
   hasNormals=hasNormals();
   anim=(KeyframedAnimation)model.getAnimations()[0];
   model.getBoundingBox(bounds);

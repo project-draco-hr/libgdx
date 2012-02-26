@@ -26,18 +26,16 @@
   camController=new PerspectiveCamController(cam);
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/multipleuvs_1.png"),null,true);
-  texture.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
+  texture.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
   texture2=new Texture(Gdx.files.internal("data/wall.png"),null,true);
-  texture2.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
-  texture2.setWrap(TextureWrap.Repeat,TextureWrap.Repeat);
+  texture2.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
   texture3=new Texture(Gdx.files.internal("data/texture2UV1S.png"),null,true);
-  texture3.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
-  texture3.setWrap(TextureWrap.Repeat,TextureWrap.Repeat);
+  texture3.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
   try {
-    InputStream in=Gdx.files.internal("data/smoothsphere.obj").read();
+    InputStream in=Gdx.files.internal("data/models/sphere.obj").read();
     mesh=ObjLoader.loadObj(in);
     in.close();
-    in=Gdx.files.internal("data/basicscene_unwrapped.obj").read();
+    in=Gdx.files.internal("data/models/basicscene.obj").read();
     mesh2=ObjLoader.loadObj(in);
     in.close();
   }
