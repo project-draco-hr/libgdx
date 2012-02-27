@@ -1,8 +1,8 @@
 {
   modelMatrix2.translate(0,2,-8);
-  lightShader=ShaderLoader.createShader("light","light");
+  lightShader=ShaderLoader.createShader("vertexpath","vertexpath");
   lightManager=new LightManager(LIGHTS_NUM);
-  for (int i=0; i < 4; i++) {
+  for (int i=0; i < 8; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(16) - 8,MathUtils.random(6) - 2,-MathUtils.random(16) + 2);
     l.color.r=MathUtils.random();
