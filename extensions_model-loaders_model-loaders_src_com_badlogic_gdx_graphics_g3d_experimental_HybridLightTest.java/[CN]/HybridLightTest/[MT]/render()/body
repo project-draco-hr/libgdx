@@ -2,6 +2,11 @@
   logger.log();
   final float delta=Gdx.graphics.getDeltaTime();
   camController.update(delta);
+  for (int i=0; i < lightManager.pointLights.size; i++) {
+    Vector3 v=lightManager.pointLights.get(i).position;
+    v.x+=MathUtils.sin(timer) * 0.01f;
+    v.z+=MathUtils.cos(timer) * 0.01f;
+  }
   Gdx.gl.glEnable(GL10.GL_CULL_FACE);
   Gdx.gl.glCullFace(GL10.GL_BACK);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
@@ -19,7 +24,6 @@
   lightManager.applyLights(lightShader);
   mesh.render(lightShader,GL10.GL_TRIANGLES);
   texture2.bind(0);
-  texture3.bind(1);
   lightShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
   lightManager.calculateLights(0,0,0);
   lightManager.applyLights(lightShader);

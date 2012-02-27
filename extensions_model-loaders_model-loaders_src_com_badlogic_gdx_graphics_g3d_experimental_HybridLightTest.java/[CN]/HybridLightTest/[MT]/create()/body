@@ -2,7 +2,7 @@
   modelMatrix2.translate(0,2,-8);
   lightShader=ShaderLoader.createShader("light","light");
   lightManager=new LightManager(LIGHTS_NUM);
-  for (int i=0; i < 16; i++) {
+  for (int i=0; i < 4; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(16) - 8,MathUtils.random(6) - 2,-MathUtils.random(16) + 2);
     l.color.r=MathUtils.random();
@@ -11,13 +11,6 @@
     l.intensity=LIGHT_INTESITY;
     lightManager.addLigth(l);
   }
-  for (int i=0; i < 1000; i++) {
-    lightManager.calculateLights(0,0,0);
-    lightManager.pointLights.shuffle();
-  }
-  long time=System.nanoTime();
-  lightManager.calculateLights(0,0,0);
-  System.out.println("Time to sort lights pwe model: " + (System.nanoTime() - time) + " ns");
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.near=0.1f;
   cam.far=64f;
@@ -26,11 +19,9 @@
   camController=new PerspectiveCamController(cam);
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/multipleuvs_1.png"),null,true);
-  texture.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
+  texture.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   texture2=new Texture(Gdx.files.internal("data/wall.png"),null,true);
-  texture2.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
-  texture3=new Texture(Gdx.files.internal("data/texture2UV1S.png"),null,true);
-  texture3.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
+  texture2.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   try {
     InputStream in=Gdx.files.internal("data/models/sphere.obj").read();
     mesh=ObjLoader.loadObj(in);
