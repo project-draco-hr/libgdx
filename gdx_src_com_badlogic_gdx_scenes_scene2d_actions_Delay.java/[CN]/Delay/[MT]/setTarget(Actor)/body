@@ -1,4 +1,5 @@
 {
-  action.setTarget(actor);
+  if (action != null)   action.setTarget(actor);
+  this.target=actor;
   this.taken=0;
 }

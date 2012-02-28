@@ -2,7 +2,9 @@
   taken+=delta;
   if (taken > duration) {
     callActionCompletedListener();
-    action.act(delta);
-    if (action.isDone())     action.callActionCompletedListener();
+    if (action != null) {
+      action.act(delta);
+      if (action.isDone())       action.callActionCompletedListener();
+    }
   }
 }

@@ -1,0 +1,6 @@
+{
+  Delay delay=pool.obtain();
+  delay.duration=duration;
+  delay.action=null;
+  return delay;
+}
