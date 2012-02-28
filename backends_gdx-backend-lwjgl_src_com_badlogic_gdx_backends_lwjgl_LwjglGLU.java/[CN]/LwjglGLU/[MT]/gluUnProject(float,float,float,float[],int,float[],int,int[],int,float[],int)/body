@@ -1,10 +1,13 @@
 {
   modelb.clear();
   modelb.put(model,modelOffset,16);
+  modelb.rewind();
   projectb.clear();
   projectb.put(project,projectOffset,16);
+  projectb.rewind();
   viewb.clear();
   viewb.put(view,viewOffset,4);
+  viewb.rewind();
   winb.clear();
   boolean result=org.lwjgl.util.glu.GLU.gluUnProject(winX,winY,winZ,modelb,projectb,viewb,winb);
   obj[objOffset]=winb.get(0);
