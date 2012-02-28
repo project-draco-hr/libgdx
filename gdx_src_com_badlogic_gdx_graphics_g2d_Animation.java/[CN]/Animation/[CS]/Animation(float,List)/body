@@ -1,5 +1,6 @@
 {
   this.frameDuration=frameDuration;
+  this.animationDuration=frameDuration * keyFrames.size();
   this.keyFrames=new TextureRegion[keyFrames.size()];
   for (int i=0, n=keyFrames.size(); i < n; i++) {
     this.keyFrames[i]=(TextureRegion)keyFrames.get(i);
