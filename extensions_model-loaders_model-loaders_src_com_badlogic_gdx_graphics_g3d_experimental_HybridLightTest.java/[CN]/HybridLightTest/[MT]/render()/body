@@ -16,6 +16,7 @@
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   texture.bind(0);
   lightShader.begin();
+  lightManager.applyGlobalLights(lightShader);
   lightShader.setUniformMatrix("u_modelMatrix",modelMatrix2,false);
   lightShader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
   lightShader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
