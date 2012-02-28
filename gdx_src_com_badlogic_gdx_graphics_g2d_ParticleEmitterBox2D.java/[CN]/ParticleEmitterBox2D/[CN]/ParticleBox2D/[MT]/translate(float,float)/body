@@ -1,13 +1,13 @@
 {
-  if (velocityX == 0 && velocityY == 0)   return;
+  if ((velocityX * velocityX + velocityY * velocityY) < EPSILON)   return;
   final float x=getX() + getWidth() / 2f;
   final float y=getY() + getHeight() / 2f;
-  fraction=1f;
-  start.set(x,y);
-  end.set(x + velocityX,y + velocityY);
-  world.rayCast(ray,start,end);
-  if (fraction < 1f) {
-    angle=2f * normal - angle - 180f;
+  particleCollided=false;
+  startPoint.set(x,y);
+  endPoint.set(x + velocityX,y + velocityY);
+  if (world != null)   world.rayCast(rayCallBack,startPoint,endPoint);
+  if (!particleCollided) {
+    angle=2f * normalAngle - angle - 180f;
     angleCos=MathUtils.cosDeg(angle);
     angleSin=MathUtils.sinDeg(angle);
     velocityX=velocity * angleCos;
