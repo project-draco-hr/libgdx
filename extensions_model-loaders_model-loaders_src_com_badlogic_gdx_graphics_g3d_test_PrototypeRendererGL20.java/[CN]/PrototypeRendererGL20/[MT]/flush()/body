@@ -4,7 +4,7 @@
   for (int i=0; i < stillModelQueue.size; i++) {
     final StillModelInstance instance=stillModelInstances.items[i];
     shader.setUniformMatrix("u_modelMatrix",instance.getTransform(),false);
-    lightManager.calculateAndApplyLightsToModel(instance,shader);
+    lightManager.calculateAndApplyLightsToModel(instance.getSortCenter(),shader);
     stillModelQueue.items[i].render(shader);
   }
   stillModelQueue.clear();

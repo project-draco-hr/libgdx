@@ -1,6 +1,6 @@
 {
   modelMatrix2.translate(0,2,-8);
-  lightShader=ShaderLoader.createShader("vertexpath","vertexpath");
+  lightShader=ShaderLoader.createShader("light","light");
   lightManager=new LightManager(LIGHTS_NUM);
   for (int i=0; i < 4; i++) {
     PointLight l=new PointLight();
