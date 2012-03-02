@@ -1,4 +1,5 @@
 {
+  final BitmapFont font=style.font;
   if (stage != null && stage.getKeyboardFocus() == this) {
     if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
       if (keycode == Keys.V)       paste();

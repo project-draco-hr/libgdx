@@ -1,0 +1,12 @@
+{
+  if (passwordMode && style.font.containsCharacter(passwordCharacter)) {
+    if (passwordBuffer == null)     passwordBuffer=new StringBuilder(text.length());
+    if (passwordBuffer.length() > text.length())     passwordBuffer.setLength(text.length());
+ else {
+      for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)       passwordBuffer.append(passwordCharacter);
+    }
+    displayText=passwordBuffer;
+  }
+ else   displayText=text;
+  style.font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
+}

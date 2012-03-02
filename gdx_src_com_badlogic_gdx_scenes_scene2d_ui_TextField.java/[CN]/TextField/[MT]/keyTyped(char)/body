@@ -4,8 +4,8 @@
     if (character == BACKSPACE && (cursor > 0 || hasSelection)) {
       if (!hasSelection) {
         text=text.substring(0,cursor - 1) + text.substring(cursor);
+        updateDisplayText();
         cursor--;
-        computeGlyphAdvancesAndPositions(font,text);
       }
  else {
         delete();
@@ -15,7 +15,7 @@
       if (cursor < text.length() || hasSelection) {
         if (!hasSelection) {
           text=text.substring(0,cursor) + text.substring(cursor + 1);
-          computeGlyphAdvancesAndPositions(font,text);
+          updateDisplayText();
         }
  else {
           delete();
@@ -30,8 +30,8 @@
     if (font.containsCharacter(character)) {
       if (!hasSelection) {
         text=text.substring(0,cursor) + character + text.substring(cursor,text.length());
+        updateDisplayText();
         cursor++;
-        computeGlyphAdvancesAndPositions(font,text);
       }
  else {
         int minIndex=Math.min(cursor,selectionStart);
@@ -39,8 +39,8 @@
         text=(minIndex > 0 ? text.substring(0,minIndex) : "") + (maxIndex < text.length() ? text.substring(maxIndex,text.length()) : "");
         cursor=minIndex;
         text=text.substring(0,cursor) + character + text.substring(cursor,text.length());
+        updateDisplayText();
         cursor++;
-        computeGlyphAdvancesAndPositions(font,text);
         clearSelection();
       }
     }

@@ -7,10 +7,10 @@
     if (font.containsCharacter(c))     buffer.append(c);
   }
   this.text=buffer.toString();
+  updateDisplayText();
   cursor=0;
   clearSelection();
-  computeGlyphAdvancesAndPositions(font,text);
-  textBounds.set(font.getBounds(text));
+  textBounds.set(font.getBounds(displayText));
   textBounds.height-=font.getDescent() * 2;
-  computeGlyphAdvancesAndPositions(font,text);
+  font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
 }

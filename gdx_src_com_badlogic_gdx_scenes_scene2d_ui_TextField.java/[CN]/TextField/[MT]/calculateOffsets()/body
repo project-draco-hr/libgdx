@@ -25,8 +25,8 @@
       break;
     }
   }
-  visibleTextEnd=Math.min(text.length(),cursor + 1);
-  for (; visibleTextEnd <= text.length(); visibleTextEnd++) {
+  visibleTextEnd=Math.min(displayText.length(),cursor + 1);
+  for (; visibleTextEnd <= displayText.length(); visibleTextEnd++) {
     if (glyphPositions.items[visibleTextEnd] - startPos > visibleWidth)     break;
   }
   visibleTextEnd=Math.max(0,visibleTextEnd - 1);

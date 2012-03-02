@@ -15,7 +15,7 @@
   if (focused && hasSelection && selection != null) {
     batch.draw(selection,x + selectionX + bgLeftWidth+ renderOffset,y + textY - textBounds.height - font.getDescent() / 2,selectionWidth,textBounds.height);
   }
-  if (text.length() == 0) {
+  if (displayText.length() == 0) {
     if (!focused && messageText != null) {
       if (style.messageFontColor != null) {
         font.setColor(style.messageFontColor.r,style.messageFontColor.g,style.messageFontColor.b,style.messageFontColor.a * parentAlpha);
@@ -27,15 +27,7 @@
   }
  else {
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    if (passwordMode && font.containsCharacter(passwordCharacter)) {
-      if (passwordBuffer == null)       passwordBuffer=new StringBuilder(text.length());
-      if (passwordBuffer.length() > text.length())       passwordBuffer.setLength(text.length());
- else {
-        for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)         passwordBuffer.append(passwordCharacter);
-      }
-      font.draw(batch,passwordBuffer,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
-    }
- else     font.draw(batch,text,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
+    font.draw(batch,displayText,x + bgLeftWidth + textOffset,y + textY,visibleTextStart,visibleTextEnd);
   }
   if (focused) {
     blink();
