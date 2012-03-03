@@ -1,0 +1,9 @@
+def __init__(self, name_list, master_table_name):
+    self.names = name_list
+    self.master_table = master_table_name
+    self.indices = {}
+    index = 0
+    for name in name_list:
+        self.indices[name] = index
+        index += (len(name) + 1)
+    self.total = index

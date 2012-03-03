@@ -1,0 +1,15 @@
+def toc_dump(self, toc_filename=None, index_filename=None):
+    output = None
+    if toc_filename:
+        output = open_output(toc_filename)
+    self.toc_enter()
+    for chap in self.processor.chapters:
+        self.toc_chapter_enter(chap)
+        for section in chap.sections:
+            self.toc_section_enter(section)
+            self.toc_section_exit(section)
+        self.toc_chapter_exit(chap)
+    self.toc_index(index_filename)
+    self.toc_exit()
+    if output:
+        close_output(output)

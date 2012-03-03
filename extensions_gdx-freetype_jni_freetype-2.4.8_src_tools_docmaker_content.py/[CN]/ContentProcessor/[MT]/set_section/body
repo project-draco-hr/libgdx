@@ -1,0 +1,8 @@
+def set_section(self, section_name):
+    'set current section during parsing'
+    if (not self.sections.has_key(section_name)):
+        section = DocSection(section_name)
+        self.sections[section_name] = section
+        self.section = section
+    else:
+        self.section = self.sections[section_name]

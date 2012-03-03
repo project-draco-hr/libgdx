@@ -1,0 +1,4 @@
+def index_name_enter(self, name):
+    block = self.identifiers[name]
+    url = self.make_block_url(block)
+    self.index_items[name] = url

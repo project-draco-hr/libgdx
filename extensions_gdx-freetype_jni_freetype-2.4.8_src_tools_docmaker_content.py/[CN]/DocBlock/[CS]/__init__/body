@@ -1,0 +1,50 @@
+def __init__(self, source, follow, processor):
+    processor.reset()
+    self.source = source
+    self.code = []
+    self.type = 'ERRTYPE'
+    self.name = 'ERRNAME'
+    self.section = processor.section
+    self.markups = processor.process_content(source.content)
+    try:
+        self.type = self.markups[0].tag
+    except:
+        pass
+    try:
+        markup = self.markups[0]
+        para = markup.fields[0].items[0]
+        name = para.words[0]
+        m = re_identifier.match(name)
+        if m:
+            name = m.group(1)
+        self.name = name
+    except:
+        pass
+    if (self.type == 'section'):
+        processor.set_section(self.name)
+        processor.section.add_def(self)
+    elif (self.type == 'chapter'):
+        processor.add_chapter(self)
+    else:
+        processor.section.add_block(self)
+    source = []
+    for b in follow:
+        if b.format:
+            break
+        for l in b.lines:
+            m = re_header_macro.match(l)
+            if m:
+                processor.headers[m.group(2)] = m.group(1)
+            if re_source_sep.match(l):
+                break
+            source.append(l)
+    start = 0
+    end = (len(source) - 1)
+    while ((start < end) and (not string.strip(source[start]))):
+        start = (start + 1)
+    while ((start < end) and (not string.strip(source[end]))):
+        end = (end - 1)
+    if ((start == end) and (not string.strip(source[start]))):
+        self.code = []
+    else:
+        self.code = source[start:(end + 1)]

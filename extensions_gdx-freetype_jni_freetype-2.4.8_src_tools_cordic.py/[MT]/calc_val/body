@@ -1,0 +1,5 @@
+def calc_val(x):
+    global units, shrink
+    angle = math.atan(x)
+    shrink = (shrink * math.cos(angle))
+    return ((angle / math.pi) * units)

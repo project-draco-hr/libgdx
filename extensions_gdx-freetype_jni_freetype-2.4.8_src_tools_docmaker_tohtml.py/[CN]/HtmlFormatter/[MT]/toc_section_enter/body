@@ -1,0 +1,4 @@
+def toc_section_enter(self, section):
+    print '<tr valign=top><td class="left">'
+    print (((('<a href="' + self.make_section_url(section)) + '">') + section.title) + '</a></td><td>')
+    print self.make_html_para(section.abstract)

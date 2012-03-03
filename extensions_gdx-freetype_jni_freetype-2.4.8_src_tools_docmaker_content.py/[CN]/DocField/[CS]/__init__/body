@@ -1,0 +1,42 @@
+def __init__(self, name, lines):
+    self.name = name
+    self.items = []
+    mode_none = 0
+    mode_code = 1
+    mode_para = 3
+    margin = (-1)
+    cur_lines = []
+    start = 0
+    mode = mode_none
+    for l in lines:
+        if (mode == mode_code):
+            m = re_code_end.match(l)
+            if (m and (len(m.group(1)) <= margin)):
+                code = DocCode(0, cur_lines)
+                self.items.append(code)
+                margin = (-1)
+                cur_lines = []
+                mode = mode_none
+            else:
+                cur_lines.append(l[margin:])
+        else:
+            m = re_code_start.match(l)
+            if m:
+                if cur_lines:
+                    para = DocPara(cur_lines)
+                    self.items.append(para)
+                    cur_lines = []
+                margin = len(m.group(1))
+                mode = mode_code
+            elif ((not string.split(l)) and cur_lines):
+                para = DocPara(cur_lines)
+                self.items.append(para)
+                cur_lines = []
+            else:
+                cur_lines.append(l)
+    if (mode == mode_code):
+        code = DocCode(margin, cur_lines)
+        self.items.append(code)
+    elif cur_lines:
+        para = DocPara(cur_lines)
+        self.items.append(para)

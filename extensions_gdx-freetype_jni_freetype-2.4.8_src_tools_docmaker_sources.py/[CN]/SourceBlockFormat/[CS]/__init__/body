@@ -1,0 +1,6 @@
+def __init__(self, id, start, column, end):
+    'create a block pattern, used to recognize special documentation blocks'
+    self.id = id
+    self.start = re.compile(start, re.VERBOSE)
+    self.column = re.compile(column, re.VERBOSE)
+    self.end = re.compile(end, re.VERBOSE)

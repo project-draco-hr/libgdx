@@ -1,0 +1,7 @@
+def __init__(self, margin, lines):
+    self.lines = []
+    self.words = None
+    for l in lines:
+        if (string.strip(l[:margin]) == ''):
+            l = l[margin:]
+        self.lines.append(l)

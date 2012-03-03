@@ -1,0 +1,16 @@
+def __init__(self, processor):
+    self.processor = processor
+    self.identifiers = {}
+    self.chapters = processor.chapters
+    self.sections = processor.sections.values()
+    self.block_index = []
+    self.blocks = []
+    for section in self.sections:
+        for block in section.blocks.values():
+            self.add_identifier(block.name, block)
+            for markup in block.markups:
+                if (markup.tag == 'values'):
+                    for field in markup.fields:
+                        self.add_identifier(field.name, block)
+    self.block_index = self.identifiers.keys()
+    self.block_index.sort(index_sort)

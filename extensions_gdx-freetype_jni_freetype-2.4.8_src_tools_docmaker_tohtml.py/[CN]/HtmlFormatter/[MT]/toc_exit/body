@@ -1,0 +1,3 @@
+def toc_exit(self):
+    print (((toc_footer_start + self.file_prefix) + 'index.html') + toc_footer_end)
+    print self.html_footer

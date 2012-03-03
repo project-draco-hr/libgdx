@@ -1,0 +1,10 @@
+def dump(self, prefix=''):
+    if self.field:
+        print ((prefix + self.field) + ' ::')
+        prefix = (prefix + '----')
+    first = 1
+    for p in self.items:
+        if (not first):
+            print ''
+        p.dump(prefix)
+        first = 0

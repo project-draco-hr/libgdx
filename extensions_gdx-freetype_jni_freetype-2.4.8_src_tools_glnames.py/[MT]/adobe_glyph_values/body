@@ -1,0 +1,13 @@
+def adobe_glyph_values():
+    'return the list of glyph names and their unicode values'
+    lines = string.split(adobe_glyph_list, '\n')
+    glyphs = []
+    values = []
+    for line in lines:
+        if line:
+            fields = string.split(line, ';')
+            subfields = string.split(fields[1], ' ')
+            if (len(subfields) == 1):
+                glyphs.append(fields[0])
+                values.append(fields[1])
+    return (glyphs, values)

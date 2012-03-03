@@ -1,0 +1,8 @@
+def dump_html_code(lines, prefix=''):
+    l = len(self.lines)
+    while ((l > 0) and (string.strip(self.lines[(l - 1)]) == '')):
+        l = (l - 1)
+    print (prefix + code_header),
+    for line in self.lines[0:(l + 1)]:
+        print (('\n' + prefix) + html_quote(line)),
+    print (prefix + code_footer),

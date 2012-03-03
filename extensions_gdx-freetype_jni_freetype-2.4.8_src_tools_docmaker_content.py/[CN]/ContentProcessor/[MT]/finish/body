@@ -1,0 +1,20 @@
+def finish(self):
+    for sec in self.sections.values():
+        sec.process()
+    for chap in self.chapters:
+        for sec in chap.order:
+            if self.sections.has_key(sec):
+                section = self.sections[sec]
+                section.chapter = chap
+                section.reorder()
+                chap.sections.append(section)
+            else:
+                sys.stderr.write((((((("WARNING: chapter '" + chap.name) + "' in ") + chap.block.location()) + " lists unknown section '") + sec) + "'\n"))
+    others = []
+    for sec in self.sections.values():
+        if (not sec.chapter):
+            others.append(sec)
+    if others:
+        chap = DocChapter(None)
+        chap.sections = others
+        self.chapters.append(chap)

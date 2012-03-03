@@ -1,0 +1,6 @@
+def get_markup(self, tag_name):
+    'return the DocMarkup corresponding to a given tag in a block'
+    for m in self.markups:
+        if (m.tag == string.lower(tag_name)):
+            return m
+    return None

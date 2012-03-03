@@ -1,0 +1,11 @@
+def index_dump(self, index_filename=None):
+    output = None
+    if index_filename:
+        output = open_output(index_filename)
+    self.index_enter()
+    for name in self.block_index:
+        self.index_name_enter(name)
+        self.index_name_exit(name)
+    self.index_exit()
+    if output:
+        close_output(output)

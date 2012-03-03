@@ -1,0 +1,18 @@
+import fileinput, re, sys, os, string
+start = "\n  \\s*      # any number of whitespace\n  /\\*{2,}/ # followed by '/' and at least two asterisks then '/'\n  \\s*$     # probably followed by whitespace\n"
+column = "\n  \\s*      # any number of whitespace\n  /\\*{1}   # followed by '/' and precisely one asterisk\n  ([^*].*) # followed by anything (group 1)\n  \\*{1}/   # followed by one asterisk and a '/'\n  \\s*$     # probably followed by whitespace\n"
+re_source_block_format1 = SourceBlockFormat(1, start, column, start)
+start = "\n  \\s*     # any number of whitespace\n  /\\*{2,} # followed by '/' and at least two asterisks\n  \\s*$    # probably followed by whitespace\n"
+column = "\n  \\s*        # any number of whitespace\n  \\*{1}(?!/) # followed by precisely one asterisk not followed by `/'\n  (.*)       # then anything (group1)\n"
+end = "\n  \\s*  # any number of whitespace\n  \\*+/ # followed by at least one asterisk, then '/'\n"
+re_source_block_format2 = SourceBlockFormat(2, start, column, end)
+re_source_block_formats = [re_source_block_format1, re_source_block_format2]
+re_markup_tag1 = re.compile('\\s*<(\\w*)>')
+re_markup_tag2 = re.compile('\\s*@(\\w*):')
+re_markup_tags = [re_markup_tag1, re_markup_tag2]
+re_crossref = re.compile('@(\\w*)(.*)')
+re_italic = re.compile("_(\\w(\\w|')*)_(.*)")
+re_bold = re.compile("\\*(\\w(\\w|')*)\\*(.*)")
+re_source_sep = re.compile('\\s*/\\*\\s*\\*/')
+re_source_crossref = re.compile('(\\W*)(\\w*)')
+re_source_keywords = re.compile('\\b ( typedef   |\n                                          struct    |\n                                          enum      |\n                                          union     |\n                                          const     |\n                                          char      |\n                                          int       |\n                                          short     |\n                                          long      |\n                                          void      |\n                                          signed    |\n                                          unsigned  |\n                                          \\#include |\n                                          \\#define  |\n                                          \\#undef   |\n                                          \\#if      |\n                                          \\#ifdef   |\n                                          \\#ifndef  |\n                                          \\#else    |\n                                          \\#endif   ) \\b', re.VERBOSE)

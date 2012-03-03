@@ -1,0 +1,18 @@
+def block_enter(self, block):
+    print block_header
+    if block.name:
+        print (((('<h4><a name="' + block.name) + '">') + block.name) + '</a></h4>')
+    if block.code:
+        header = ''
+        for f in self.headers.keys():
+            if (block.source.filename.find(f) >= 0):
+                header = (((self.headers[f] + ' (') + f) + ')')
+                break
+        if header:
+            print header_location_header
+            print (('Defined in ' + header) + '.')
+            print header_location_footer
+        print source_header
+        for l in block.code:
+            print self.html_source_quote(l, block.name)
+        print source_footer

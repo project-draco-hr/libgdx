@@ -1,0 +1,10 @@
+def file_exists(pathname):
+    'checks that a given file exists'
+    result = 1
+    try:
+        file = open(pathname, 'r')
+        file.close()
+    except:
+        result = None
+        sys.stderr.write((pathname + " couldn't be accessed\n"))
+    return result

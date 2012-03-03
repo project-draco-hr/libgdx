@@ -1,0 +1,11 @@
+def __init__(self, block):
+    self.block = block
+    self.sections = []
+    if block:
+        self.name = block.name
+        self.title = block.get_markup_words('title')
+        self.order = block.get_markup_words('sections')
+    else:
+        self.name = 'Other'
+        self.title = string.split('Miscellaneous')
+        self.order = []

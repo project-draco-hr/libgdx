@@ -1,0 +1,12 @@
+def print_html_field_list(self, fields):
+    print '<p></p>'
+    print '<table cellpadding=3 border=0>'
+    for field in fields:
+        if (len(field.name) > 22):
+            print (('<tr valign=top><td colspan=0><b>' + field.name) + '</b></td></tr>')
+            print '<tr valign=top><td></td><td>'
+        else:
+            print (('<tr valign=top><td><b>' + field.name) + '</b></td><td>')
+        self.print_html_items(field.items)
+        print '</td></tr>'
+    print '</table>'

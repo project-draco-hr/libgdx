@@ -1,0 +1,2 @@
+def __cmp__(self, other):
+    return (ord(self.letter[0]) - ord(other.letter[0]))

@@ -1,0 +1,7 @@
+def add_block_lines(self):
+    'add the current accumulated lines and create a new block'
+    if (self.lines != []):
+        block = SourceBlock(self, self.filename, self.lineno, self.lines)
+        self.blocks.append(block)
+        self.format = None
+        self.lines = []

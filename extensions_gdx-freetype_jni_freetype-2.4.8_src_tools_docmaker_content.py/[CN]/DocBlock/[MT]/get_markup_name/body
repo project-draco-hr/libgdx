@@ -1,0 +1,7 @@
+def get_markup_name(self, tag_name):
+    'return the name of a given primary markup in a block'
+    try:
+        m = self.get_markup(tag_name)
+        return m.get_name()
+    except:
+        return None

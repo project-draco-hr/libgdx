@@ -1,0 +1,13 @@
+def print_val(n, x):
+    global comma
+    lo = int(x)
+    hi = (lo + 1)
+    alo = math.atan(lo)
+    ahi = math.atan(hi)
+    ax = math.atan((2.0 ** n))
+    errlo = abs((alo - ax))
+    errhi = abs((ahi - ax))
+    if (errlo < errhi):
+        hi = lo
+    sys.stdout.write((comma + repr(int(hi))))
+    comma = ', '

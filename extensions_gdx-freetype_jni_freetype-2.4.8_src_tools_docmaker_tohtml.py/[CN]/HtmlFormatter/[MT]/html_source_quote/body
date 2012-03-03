@@ -1,0 +1,22 @@
+def html_source_quote(self, line, block_name=None):
+    result = ''
+    while line:
+        m = re_source_crossref.match(line)
+        if m:
+            name = m.group(2)
+            prefix = html_quote(m.group(1))
+            length = len(m.group(0))
+            if (name == block_name):
+                result = ((((result + prefix) + '<b>') + name) + '</b>')
+            elif re_source_keywords.match(name):
+                result = ((((result + prefix) + keyword_prefix) + name) + keyword_suffix)
+            elif self.identifiers.has_key(name):
+                block = self.identifiers[name]
+                result = ((((((result + prefix) + '<a href="') + self.make_block_url(block)) + '">') + name) + '</a>')
+            else:
+                result = (result + html_quote(line[:length]))
+            line = line[length:]
+        else:
+            result = (result + html_quote(line))
+            line = []
+    return result

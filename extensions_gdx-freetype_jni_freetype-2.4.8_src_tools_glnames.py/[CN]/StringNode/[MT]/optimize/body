@@ -1,0 +1,12 @@
+def optimize(self):
+    children = self.children.values()
+    self.children = {}
+    for child in children:
+        self.children[child.letter[0]] = child.optimize()
+    if ((self.value != 0) or (not children) or (len(children) > 1)):
+        return self
+    child = children[0]
+    self.letter += child.letter
+    self.value = child.value
+    self.children = child.children
+    return self

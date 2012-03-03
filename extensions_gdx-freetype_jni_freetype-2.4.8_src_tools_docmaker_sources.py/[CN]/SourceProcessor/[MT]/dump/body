@@ -1,0 +1,4 @@
+def dump(self):
+    'print all blocks in a processor'
+    for b in self.blocks:
+        b.dump()

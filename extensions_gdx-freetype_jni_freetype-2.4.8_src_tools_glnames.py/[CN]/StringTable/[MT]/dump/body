@@ -1,0 +1,10 @@
+def dump(self, file):
+    write = file.write
+    write((((('  static const char  ' + self.master_table) + '[') + repr(self.total)) + '] =\n'))
+    write('  {\n')
+    line = ''
+    for name in self.names:
+        line += "    '"
+        line += string.join(re.findall('.', name), "','")
+        line += "', 0,\n"
+    write((line + '  };\n\n\n'))

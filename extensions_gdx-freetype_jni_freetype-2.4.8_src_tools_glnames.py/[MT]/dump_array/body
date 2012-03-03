@@ -1,0 +1,19 @@
+def dump_array(the_array, write, array_name):
+    'dumps a given encoding'
+    write((((('  static const unsigned char  ' + array_name) + '[') + repr(len(the_array))) + 'L] =\n'))
+    write('  {\n')
+    line = ''
+    comma = '    '
+    col = 0
+    for value in the_array:
+        line += comma
+        line += ('%3d' % ord(value))
+        comma = ','
+        col += 1
+        if (col == 16):
+            col = 0
+            comma = ',\n    '
+        if (len(line) > 1024):
+            write(line)
+            line = ''
+    write((line + '\n  };\n\n\n'))

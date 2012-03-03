@@ -1,0 +1,6 @@
+def print_html_field(self, field):
+    if field.name:
+        print (('<table><tr valign=top><td><b>' + field.name) + '</b></td><td>')
+    print self.make_html_items(field.items)
+    if field.name:
+        print '</td></tr></table>'

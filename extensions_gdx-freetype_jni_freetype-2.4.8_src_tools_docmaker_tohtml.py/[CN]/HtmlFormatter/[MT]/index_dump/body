@@ -1,0 +1,4 @@
+def index_dump(self, index_filename=None):
+    if (index_filename == None):
+        index_filename = (self.file_prefix + 'index.html')
+    Formatter.index_dump(self, index_filename)

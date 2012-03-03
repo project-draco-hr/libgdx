@@ -1,0 +1,9 @@
+def process(self):
+    for block in self.defs:
+        title = block.get_markup_text('title')
+        if title:
+            self.title = title
+            self.abstract = block.get_markup_words('abstract')
+            self.description = block.get_markup_items('description')
+            self.order = block.get_markup_words('order')
+            return

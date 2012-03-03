@@ -1,0 +1,9 @@
+def check_output():
+    global output_dir
+    if output_dir:
+        if (output_dir != ''):
+            if (not os.path.isdir(output_dir)):
+                sys.stderr.write((((('argument' + " '") + output_dir) + "' ") + 'is not a valid directory'))
+                sys.exit(2)
+        else:
+            output_dir = None

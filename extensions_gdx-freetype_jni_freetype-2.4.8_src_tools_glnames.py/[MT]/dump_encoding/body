@@ -1,0 +1,18 @@
+def dump_encoding(file, encoding_name, encoding_list):
+    'dump a given encoding'
+    write = file.write
+    write('  /* the following are indices into the SID name table */\n')
+    write((((('  static const unsigned short  ' + encoding_name) + '[') + repr(len(encoding_list))) + '] =\n'))
+    write('  {\n')
+    line = '    '
+    comma = ''
+    col = 0
+    for value in encoding_list:
+        line += comma
+        line += ('%3d' % value)
+        comma = ','
+        col += 1
+        if (col == 16):
+            col = 0
+            comma = ',\n    '
+    write((line + '\n  };\n\n\n'))

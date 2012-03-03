@@ -1,0 +1,13 @@
+def dump_debug(self, write, margin):
+    line = (margin + '+-')
+    if (len(self.letter) == 0):
+        line += '<NOLETTER>'
+    else:
+        line += self.letter
+    if self.value:
+        line += (' => ' + repr(self.value))
+    write((line + '\n'))
+    if self.children:
+        margin += '| '
+        for child in self.children.values():
+            child.dump_debug(write, margin)

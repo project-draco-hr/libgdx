@@ -1,0 +1,10 @@
+def make_html_para(self, words):
+    ' convert words of a paragraph into tagged HTML text, handle xrefs '
+    line = ''
+    if words:
+        line = self.make_html_word(words[0])
+        for word in words[1:]:
+            line = ((line + ' ') + self.make_html_word(word))
+        line = re.sub("(^|\\W)`(.*?)'(\\W|$)", '\\1&lsquo;\\2&rsquo;\\3', line)
+        line = string.replace(line, '~', '&nbsp;')
+    return ((para_header + line) + para_footer)

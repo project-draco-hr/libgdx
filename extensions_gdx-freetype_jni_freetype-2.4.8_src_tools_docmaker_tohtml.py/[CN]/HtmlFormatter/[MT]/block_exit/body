@@ -1,0 +1,2 @@
+def block_exit(self, block):
+    print ((((((block_footer_start + self.file_prefix) + 'index.html') + block_footer_middle) + self.file_prefix) + 'toc.html') + block_footer_end)

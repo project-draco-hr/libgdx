@@ -1,0 +1,8 @@
+def get_start(self):
+    try:
+        result = ''
+        for word in self.fields[0].items[0].words:
+            result = ((result + ' ') + word)
+        return result[1:]
+    except:
+        return 'ERROR'

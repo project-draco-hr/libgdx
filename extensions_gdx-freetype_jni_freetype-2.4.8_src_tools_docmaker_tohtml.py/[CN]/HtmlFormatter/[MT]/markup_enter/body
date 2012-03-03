@@ -1,0 +1,6 @@
+def markup_enter(self, markup, block):
+    if (markup.tag == 'description'):
+        print description_header
+    else:
+        print ((marker_header + markup.tag) + marker_inter)
+    self.print_html_markup(markup)

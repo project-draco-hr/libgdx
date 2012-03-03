@@ -1,0 +1,22 @@
+import sys
+import string
+if (len(sys.argv) == 1):
+    for asc_line in sys.stdin.readlines():
+        mpw_line = string.replace(asc_line, '\\xA5', '\xa5')
+        mpw_line = string.replace(mpw_line, '\\xB6', '\xb6')
+        mpw_line = string.replace(mpw_line, '\\xC4', '\xc4')
+        mpw_line = string.replace(mpw_line, '\\xC5', '\xc5')
+        mpw_line = string.replace(mpw_line, '\\xFF', '\xff')
+        mpw_line = string.replace(mpw_line, '\n', '\r')
+        mpw_line = string.replace(mpw_line, '\\n', '\n')
+        sys.stdout.write(mpw_line)
+elif (sys.argv[1] == '-r'):
+    for mpw_line in sys.stdin.readlines():
+        asc_line = string.replace(mpw_line, '\n', '\\n')
+        asc_line = string.replace(asc_line, '\r', '\n')
+        asc_line = string.replace(asc_line, '\xa5', '\\xA5')
+        asc_line = string.replace(asc_line, '\xb6', '\\xB6')
+        asc_line = string.replace(asc_line, '\xc4', '\\xC4')
+        asc_line = string.replace(asc_line, '\xc5', '\\xC5')
+        asc_line = string.replace(asc_line, '\xff', '\\xFF')
+        sys.stdout.write(asc_line)

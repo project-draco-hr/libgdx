@@ -1,0 +1,14 @@
+def beautify_block(block):
+    if block.content:
+        content_processor.reset()
+        markups = content_processor.process_content(block.content)
+        text = []
+        first = 1
+        for markup in markups:
+            text.extend(markup.beautify(first))
+            first = 0
+        lines = [' /*************************************************************************']
+        for l in text:
+            lines.append(('  *' + l))
+        lines.append('  */')
+        block.lines = lines

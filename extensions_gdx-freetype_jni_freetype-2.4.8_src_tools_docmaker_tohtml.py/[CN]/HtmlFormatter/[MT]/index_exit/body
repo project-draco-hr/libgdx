@@ -1,0 +1,20 @@
+def index_exit(self):
+    count = len(self.block_index)
+    rows = (((count + self.columns) - 1) / self.columns)
+    print '<table align=center border=0 cellpadding=0 cellspacing=0>'
+    for r in range(rows):
+        line = '<tr>'
+        for c in range(self.columns):
+            i = (r + (c * rows))
+            if (i < count):
+                bname = self.block_index[(r + (c * rows))]
+                url = self.index_items[bname]
+                line = (((((line + '<td><a href="') + url) + '">') + bname) + '</a></td>')
+            else:
+                line = (line + '<td></td>')
+        line = (line + '</tr>')
+        print line
+    print '</table>'
+    print (((index_footer_start + self.file_prefix) + 'toc.html') + index_footer_end)
+    print self.html_footer
+    self.index_items = {}

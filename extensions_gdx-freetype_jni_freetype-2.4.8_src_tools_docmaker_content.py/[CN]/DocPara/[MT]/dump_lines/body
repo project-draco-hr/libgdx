@@ -1,0 +1,20 @@
+def dump_lines(self, margin=0, width=60):
+    cur = ''
+    col = 0
+    result = []
+    for word in self.words:
+        ln = len(word)
+        if (col > 0):
+            ln = (ln + 1)
+        if ((col + ln) > width):
+            result.append(((' ' * margin) + cur))
+            cur = word
+            col = len(word)
+        else:
+            if (col > 0):
+                cur = (cur + ' ')
+            cur = (cur + word)
+            col = (col + ln)
+    if (col > 0):
+        result.append(((' ' * margin) + cur))
+    return result

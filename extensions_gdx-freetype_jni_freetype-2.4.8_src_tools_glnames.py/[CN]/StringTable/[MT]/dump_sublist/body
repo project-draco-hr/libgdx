@@ -1,0 +1,18 @@
+def dump_sublist(self, file, table_name, macro_name, sublist):
+    write = file.write
+    write((((('#define ' + macro_name) + '  ') + repr(len(sublist))) + '\n\n'))
+    write((('  /* Values are offsets into the `' + self.master_table) + "' table */\n\n"))
+    write((((('  static const short  ' + table_name) + '[') + macro_name) + '] =\n'))
+    write('  {\n')
+    line = '    '
+    comma = ''
+    col = 0
+    for name in sublist:
+        line += comma
+        line += ('%4d' % self.indices[name])
+        col += 1
+        comma = ','
+        if (col == 14):
+            col = 0
+            comma = ',\n    '
+    write((line + '\n  };\n\n\n'))

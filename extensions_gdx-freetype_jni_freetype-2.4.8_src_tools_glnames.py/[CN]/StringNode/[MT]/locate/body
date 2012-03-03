@@ -1,0 +1,14 @@
+def locate(self, index):
+    self.index = index
+    if (len(self.letter) > 0):
+        index += (len(self.letter) + 1)
+    else:
+        index += 2
+    if (self.value != 0):
+        index += 2
+    children = self.children.values()
+    children.sort()
+    index += (2 * len(children))
+    for child in children:
+        index = child.locate(index)
+    return index

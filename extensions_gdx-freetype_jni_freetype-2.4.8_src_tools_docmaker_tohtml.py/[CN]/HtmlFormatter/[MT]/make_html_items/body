@@ -1,0 +1,9 @@
+def make_html_items(self, items):
+    " convert a field's content into some valid HTML "
+    lines = []
+    for item in items:
+        if item.lines:
+            lines.append(self.make_html_code(item.lines))
+        else:
+            lines.append(self.make_html_para(item.words))
+    return string.join(lines, '\n')

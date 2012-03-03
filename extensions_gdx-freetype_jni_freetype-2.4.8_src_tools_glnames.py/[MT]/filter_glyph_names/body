@@ -1,0 +1,10 @@
+def filter_glyph_names(alist, filter):
+    "filter `alist' by taking _out_ all glyph names that are in `filter'"
+    count = 0
+    extras = []
+    for name in alist:
+        try:
+            filtered_index = filter.index(name)
+        except:
+            extras.append(name)
+    return extras

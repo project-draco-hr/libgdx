@@ -1,0 +1,8 @@
+from sources import *
+from utils import *
+import string, re
+re_code_start = re.compile('(\\s*){\\s*$')
+re_code_end = re.compile('(\\s*)}\\s*$')
+re_identifier = re.compile('(\\w*)')
+re_header_macro = re.compile('^#define\\s{1,}(\\w{1,}_H)\\s{1,}<(.*)>')
+re_field = re.compile('\\s*(\\w*|\\w(\\w|\\.)*\\w)\\s*::')

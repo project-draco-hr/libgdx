@@ -1,0 +1,12 @@
+def add(self, word, value):
+    if (len(word) == 0):
+        self.value = value
+        return
+    letter = word[0]
+    word = word[1:]
+    if self.children.has_key(letter):
+        child = self.children[letter]
+    else:
+        child = StringNode(letter, 0)
+        self.children[letter] = child
+    child.add(word, value)

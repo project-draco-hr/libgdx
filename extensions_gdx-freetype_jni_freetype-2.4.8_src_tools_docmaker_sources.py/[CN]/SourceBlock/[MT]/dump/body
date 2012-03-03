@@ -1,0 +1,12 @@
+def dump(self):
+    if self.content:
+        print '{{{content start---'
+        for l in self.content:
+            print l
+        print '---content end}}}'
+        return
+    fmt = ''
+    if self.format:
+        fmt = (repr(self.format.id) + ' ')
+    for line in self.lines:
+        print line

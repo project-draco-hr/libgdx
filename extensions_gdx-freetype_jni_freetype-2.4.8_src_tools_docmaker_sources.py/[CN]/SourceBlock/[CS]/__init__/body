@@ -1,0 +1,22 @@
+def __init__(self, processor, filename, lineno, lines):
+    self.processor = processor
+    self.filename = filename
+    self.lineno = lineno
+    self.lines = lines[:]
+    self.format = processor.format
+    self.content = []
+    if (self.format == None):
+        return
+    words = []
+    lines = []
+    for line0 in self.lines:
+        m = self.format.column.match(line0)
+        if m:
+            lines.append(m.group(1))
+    for l in lines:
+        l = string.strip(l)
+        if (len(l) > 0):
+            for tag in re_markup_tags:
+                if tag.match(l):
+                    self.content = lines
+                    return

@@ -1,0 +1,6 @@
+def get_markup_items(self, tag_name):
+    try:
+        m = self.get_markup(tag_name)
+        return m.fields[0].items
+    except:
+        return None

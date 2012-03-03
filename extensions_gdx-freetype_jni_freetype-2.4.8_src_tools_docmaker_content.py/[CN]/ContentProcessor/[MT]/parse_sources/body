@@ -1,0 +1,12 @@
+def parse_sources(self, source_processor):
+    blocks = source_processor.blocks
+    count = len(blocks)
+    for n in range(count):
+        source = blocks[n]
+        if source.content:
+            follow = []
+            m = (n + 1)
+            while ((m < count) and (not blocks[m].content)):
+                follow.append(blocks[m])
+                m = (m + 1)
+            doc_block = DocBlock(source, follow, self)

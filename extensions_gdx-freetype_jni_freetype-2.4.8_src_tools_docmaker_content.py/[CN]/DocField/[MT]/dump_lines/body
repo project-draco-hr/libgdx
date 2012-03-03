@@ -1,0 +1,9 @@
+def dump_lines(self, margin=0, width=60):
+    result = []
+    nl = None
+    for p in self.items:
+        if nl:
+            result.append('')
+        result.extend(p.dump_lines(margin, width))
+        nl = 1
+    return result

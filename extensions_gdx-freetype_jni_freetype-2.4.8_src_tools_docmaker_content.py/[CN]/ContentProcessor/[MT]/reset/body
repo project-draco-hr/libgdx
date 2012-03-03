@@ -1,0 +1,5 @@
+def reset(self):
+    'reset the content processor for a new block'
+    self.markups = []
+    self.markup = None
+    self.markup_lines = []

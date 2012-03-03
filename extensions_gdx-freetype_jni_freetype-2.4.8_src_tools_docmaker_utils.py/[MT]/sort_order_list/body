@@ -1,0 +1,6 @@
+def sort_order_list(input_list, order_list):
+    new_list = order_list[:]
+    for id in input_list:
+        if (not (id in order_list)):
+            new_list.append(id)
+    return new_list

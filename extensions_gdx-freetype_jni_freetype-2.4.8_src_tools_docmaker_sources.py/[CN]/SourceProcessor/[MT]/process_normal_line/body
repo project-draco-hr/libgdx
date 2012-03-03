@@ -1,0 +1,8 @@
+def process_normal_line(self, line):
+    'process a normal line and check whether it is the start of a new block'
+    for f in re_source_block_formats:
+        if f.start.match(line):
+            self.add_block_lines()
+            self.format = f
+            self.lineno = fileinput.filelineno()
+    self.lines.append(line)

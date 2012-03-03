@@ -1,0 +1,3 @@
+def toc_chapter_enter(self, chapter):
+    print ((chapter_header + string.join(chapter.title)) + chapter_inter)
+    print '<table cellpadding=5>'

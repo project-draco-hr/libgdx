@@ -1,0 +1,22 @@
+def store(self, storage):
+    l = len(self.letter)
+    if (l == 0):
+        storage += struct.pack('B', 0)
+    else:
+        for n in range(l):
+            val = ord(self.letter[n])
+            if (n < (l - 1)):
+                val += 128
+            storage += struct.pack('B', val)
+    children = self.children.values()
+    children.sort()
+    count = len(children)
+    if (self.value != 0):
+        storage += struct.pack('!BH', (count + 128), self.value)
+    else:
+        storage += struct.pack('B', count)
+    for child in children:
+        storage += struct.pack('!H', child.index)
+    for child in children:
+        storage = child.store(storage)
+    return storage

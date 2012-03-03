@@ -1,0 +1,5 @@
+def dump_lines(self, margin=0, width=60):
+    result = []
+    for l in self.lines:
+        result.append(((' ' * margin) + l))
+    return result
