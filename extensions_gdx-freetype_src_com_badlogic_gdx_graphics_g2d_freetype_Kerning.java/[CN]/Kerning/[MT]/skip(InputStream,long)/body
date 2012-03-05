@@ -1,0 +1,8 @@
+{
+  while (skip > 0) {
+    long skipped=input.skip(skip);
+    if (skipped <= 0)     break;
+    bytePosition+=skipped;
+    skip-=skipped;
+  }
+}
