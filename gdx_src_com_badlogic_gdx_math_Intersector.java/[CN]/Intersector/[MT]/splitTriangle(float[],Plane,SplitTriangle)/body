@@ -1,0 +1,67 @@
+{
+  int stride=triangle.length / 3;
+  boolean r1=plane.testPoint(triangle[0],triangle[1],triangle[2]) == PlaneSide.Back;
+  boolean r2=plane.testPoint(triangle[0 + stride],triangle[1 + stride],triangle[2 + stride]) == PlaneSide.Back;
+  boolean r3=plane.testPoint(triangle[0 + stride * 2],triangle[1 + stride * 2],triangle[2 + stride * 2]) == PlaneSide.Back;
+  split.reset();
+  if ((r1 == r2) && (r2 == r3)) {
+    split.total=1;
+    if (r1) {
+      split.numBack=1;
+      System.arraycopy(triangle,0,split.back,0,triangle.length);
+    }
+ else {
+      split.numFront=1;
+      System.arraycopy(triangle,0,split.front,0,triangle.length);
+    }
+    return;
+  }
+  split.total=3;
+  split.numFront=(r1 ? 1 : 0) + (r2 ? 1 : 0) + (r3 ? 1 : 0);
+  split.numBack=split.total - split.numFront;
+  split.setSide(r1);
+  int first=0;
+  int second=stride;
+  if (r1 != r2) {
+    splitEdge(triangle,first,second,stride,plane,split.edgeSplit,0);
+    split.add(triangle,first,stride);
+    split.add(split.edgeSplit,0,stride);
+    split.setSide(!split.getSide());
+    split.add(split.edgeSplit,0,stride);
+  }
+ else {
+    split.add(triangle,first,stride);
+  }
+  first=stride;
+  second=stride + stride;
+  if (r2 != r3) {
+    splitEdge(triangle,first,second,stride,plane,split.edgeSplit,0);
+    split.add(triangle,first,stride);
+    split.add(split.edgeSplit,0,stride);
+    split.setSide(!split.getSide());
+    split.add(split.edgeSplit,0,stride);
+  }
+ else {
+    split.add(triangle,first,stride);
+  }
+  first=stride + stride;
+  second=0;
+  if (r3 != r1) {
+    splitEdge(triangle,first,second,stride,plane,split.edgeSplit,0);
+    split.add(triangle,first,stride);
+    split.add(split.edgeSplit,0,stride);
+    split.setSide(!split.getSide());
+    split.add(split.edgeSplit,0,stride);
+  }
+ else {
+    split.add(triangle,first,stride);
+  }
+  if (split.numFront == 2) {
+    System.arraycopy(split.front,stride * 2,split.front,stride * 3,stride * 2);
+    System.arraycopy(split.front,0,split.front,stride * 5,stride);
+  }
+ else {
+    System.arraycopy(split.back,stride * 2,split.back,stride * 3,stride * 2);
+    System.arraycopy(split.back,0,split.back,stride * 5,stride);
+  }
+}
