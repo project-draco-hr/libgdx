@@ -1,0 +1,5 @@
+{
+  long address=newMemoryFace(library.address,data,dataSize,faceIndex);
+  if (address == 0)   throw new GdxRuntimeException("Couldn't load font");
+ else   return new Face(address);
+}

@@ -1,20 +1,25 @@
 {
   new SharedLibraryLoader("libs/gdx-freetype-natives.jar").load("gdx-freetype");
-  long library=FreeType.initFreeType();
-  byte[] font=new FileHandle("Roboto-Condensed.ttf").readBytes();
-  long face=FreeType.newMemoryFace(library,font,font.length,0);
-  System.out.println(FreeType.setPixelSizes(face,32,32));
-  char left=40;
-  char right=74;
-  int kerning=FreeType.getKerning(face,FreeType.getCharIndex(face,left),FreeType.getCharIndex(face,right),0);
-  System.out.println(FreeType.hasKerning(face) + ", " + left+ ", "+ right+ ", "+ kerning);
-  System.out.println(FreeType.getCharIndex(face,'('));
+  String chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890\"!`?'.,;:()[]{}<>|/@\\^$-%+=#_&~*????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????";
+  Library library=FreeType.initFreeType();
+  Face face=FreeType.newFace(library,new FileHandle("arial.ttf"),0);
+  FreeType.setPixelSizes(face,0,15);
+  SizeMetrics faceMetrics=face.getSize().getMetrics();
+  System.out.println(round26_6(faceMetrics.getAscender()) + ", " + round26_6(faceMetrics.getDescender())+ ", "+ round26_6(faceMetrics.getHeight()));
+  for (int i=0; i < chars.length(); i++) {
+    if (!FreeType.loadGlyph(face,FreeType.getCharIndex(face,chars.charAt(i)),0))     continue;
+    if (!FreeType.renderGlyph(face.getGlyph(),FT_RENDER_MODE_NORMAL))     continue;
+    Bitmap bitmap=face.getGlyph().getBitmap();
+    GlyphMetrics glyphMetrics=face.getGlyph().getMetrics();
+    System.out.println(round26_6(glyphMetrics.getWidth()) + ", " + round26_6(glyphMetrics.getHeight())+ ", "+ round26_6(glyphMetrics.getHoriAdvance()));
+    System.out.println(bitmap.getWidth() + ", " + bitmap.getRows()+ ", "+ bitmap.getPitch()+ ", "+ bitmap.getNumGray());
+    for (int y=0; y < bitmap.getRows(); y++) {
+      for (int x=0; x < bitmap.getWidth(); x++) {
+        System.out.print(bitmap.getBuffer().get(x + bitmap.getPitch() * y) != 0 ? "X" : " ");
+      }
+      System.out.println();
+    }
+  }
   FreeType.doneFace(face);
   FreeType.doneFreeType(library);
-  Kerning kern=new Kerning();
-  kern.load(new ByteArrayInputStream(font),Face.getHeight(face) >> 7);
-  int[] values=kern.getValues(FreeType.getCharIndex(face,'('));
-  for (int i=0; i < values.length; i++) {
-    System.out.println("" + (char)(values[i] & 0xffff) + ", "+ (values[i] >> 16));
-  }
 }

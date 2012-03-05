@@ -1,0 +1,4 @@
+{
+  if (value < 0)   return (int)((value - 32) >> 6);
+ else   return (int)((value + 32) >> 6);
+}
