@@ -1,7 +1,6 @@
 {
   FreeTypeBitmapFontData data=new FreeTypeBitmapFontData();
   if (!FreeType.setPixelSizes(face,0,size))   throw new GdxRuntimeException("Couldn't set size for font");
-  new FileHandle("glyphs").mkdirs();
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   data.flipped=flip;
   data.ascent=FreeType.toInt(fontMetrics.getAscender());
@@ -46,7 +45,6 @@
     GlyphMetrics metrics=slot.getMetrics();
     Bitmap bitmap=slot.getBitmap();
     Pixmap pixmap=bitmap.getPixmap(Format.RGBA8888);
-    PixmapIO.writePNG(new FileHandle("glyphs/" + i + ".png"),pixmap);
     Rectangle rect=atlas.insertImage("" + c,pixmap);
     Glyph glyph=new Glyph();
     glyph.width=pixmap.getWidth();
