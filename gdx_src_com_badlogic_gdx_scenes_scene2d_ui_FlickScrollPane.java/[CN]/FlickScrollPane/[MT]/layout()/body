@@ -16,4 +16,9 @@
   widget.height=disableY ? height : Math.max(height,widgetHeight);
   maxX=widget.width - width;
   maxY=widget.height - height;
+  if (widget instanceof Layout) {
+    Layout layout=(Layout)widget;
+    layout.invalidate();
+    layout.validate();
+  }
 }

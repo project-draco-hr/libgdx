@@ -39,7 +39,6 @@
   if (widget.width != widgetWidth || widget.height != widgetHeight) {
     widget.width=widgetWidth;
     widget.height=widgetHeight;
-    if (widget instanceof Layout)     ((Layout)widget).invalidate();
   }
   if (scrollX) {
     hScrollBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,hScrollKnob.getTotalHeight());

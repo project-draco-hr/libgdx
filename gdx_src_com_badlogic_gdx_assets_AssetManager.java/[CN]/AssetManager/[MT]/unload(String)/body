@@ -21,13 +21,16 @@
   }
   Class type=assetTypes.get(fileName);
   if (type == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
-  log.debug("Unload: " + fileName);
   RefCountedContainer assetRef=assets.get(type).get(fileName);
   assetRef.decRefCount();
   if (assetRef.getRefCount() <= 0) {
+    log.debug("Unload (dispose): " + fileName);
     if (assetRef.getObject(Object.class) instanceof Disposable)     ((Disposable)assetRef.getObject(Object.class)).dispose();
     assetTypes.remove(fileName);
     assets.get(type).remove(fileName);
+  }
+ else {
+    log.debug("Unload (decrement): " + fileName);
   }
   Array<String> dependencies=assetDependencies.get(fileName);
   if (dependencies != null) {
