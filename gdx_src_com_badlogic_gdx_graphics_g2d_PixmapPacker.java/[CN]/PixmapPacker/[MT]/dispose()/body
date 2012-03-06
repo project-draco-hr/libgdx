@@ -2,8 +2,5 @@
   for (  Page page : pages) {
     page.image.dispose();
   }
-  if (atlas != null) {
-    atlas.dispose();
-  }
   disposed=true;
 }

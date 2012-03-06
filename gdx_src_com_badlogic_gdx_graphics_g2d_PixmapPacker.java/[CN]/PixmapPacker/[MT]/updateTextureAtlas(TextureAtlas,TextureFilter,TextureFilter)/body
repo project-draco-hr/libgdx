@@ -8,7 +8,7 @@
           }
         }
 ;
-        page.texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+        page.texture.setFilter(minFilter,magFilter);
         for (        String name : page.addedRects) {
           Rectangle rect=page.rects.get(name);
           TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);

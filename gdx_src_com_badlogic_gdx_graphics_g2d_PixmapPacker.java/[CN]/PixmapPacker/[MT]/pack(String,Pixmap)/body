@@ -8,7 +8,7 @@
   Node node=insert(currPage.root,rect);
   if (node == null) {
     newPage();
-    return insertImage(name,image);
+    return pack(name,image);
   }
   node.leaveName=name;
   rect=new Rectangle(node.rect);
