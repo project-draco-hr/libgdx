@@ -1,0 +1,7 @@
+{
+  library=FreeType.initFreeType();
+  if (library == null)   throw new GdxRuntimeException("Couldn't initialize FreeType");
+  face=FreeType.newFace(library,font,0);
+  if (face == null)   throw new GdxRuntimeException("Couldn't create face for font '" + font + "'");
+  if (!FreeType.setPixelSizes(face,0,15))   throw new GdxRuntimeException("Couldn't set size for font '" + font + "'");
+}

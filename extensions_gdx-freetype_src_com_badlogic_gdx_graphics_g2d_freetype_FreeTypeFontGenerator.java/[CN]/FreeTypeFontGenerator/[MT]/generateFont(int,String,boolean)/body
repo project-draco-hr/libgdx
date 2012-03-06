@@ -1,0 +1,4 @@
+{
+  FreeTypeBitmapFontData data=generateData(size,characters,flip);
+  return new BitmapFont(data,data.getTextureRegion(),false);
+}

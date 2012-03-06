@@ -1,6 +1,0 @@
-{
-  bytePosition++;
-  int b=input.read();
-  if (b == -1)   throw new EOFException("Unexpected end of file.");
-  return b;
-}

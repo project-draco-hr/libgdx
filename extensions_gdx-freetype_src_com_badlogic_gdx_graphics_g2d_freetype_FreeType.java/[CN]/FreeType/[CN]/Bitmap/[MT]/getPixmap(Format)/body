@@ -1,7 +1,11 @@
 {
   Pixmap pixmap=new Pixmap(getWidth(),getRows(),Format.Alpha);
-  BufferUtils.copy(getBuffer(address),pixmap.getPixels(),pixmap.getPixels().capacity());
+  BufferUtils.copy(getBuffer(),pixmap.getPixels(),pixmap.getPixels().capacity());
   Pixmap converted=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),format);
+  Blending blending=Pixmap.getBlending();
+  Pixmap.setBlending(Blending.None);
   converted.drawPixmap(pixmap,0,0);
+  Pixmap.setBlending(blending);
+  pixmap.dispose();
   return converted;
 }
