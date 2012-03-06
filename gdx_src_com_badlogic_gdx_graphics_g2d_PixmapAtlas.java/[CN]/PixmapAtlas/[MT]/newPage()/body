@@ -1,0 +1,8 @@
+{
+  Page page=new Page();
+  page.image=new Pixmap(pageWidth,pageHeight,pageFormat);
+  page.root=new Node(0,0,pageWidth,pageHeight,null,null,null);
+  page.rects=new OrderedMap<String,Rectangle>();
+  pages.add(page);
+  currPage=page;
+}

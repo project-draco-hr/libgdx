@@ -1,0 +1,9 @@
+{
+  Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1);
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  batch.begin();
+  font.setColor(Color.RED);
+  font.drawMultiLine(batch,"This is a test\nAnd another line",100,112);
+  ftFont.drawMultiLine(batch,"This is a test\nAnd another line",100,112);
+  batch.end();
+}

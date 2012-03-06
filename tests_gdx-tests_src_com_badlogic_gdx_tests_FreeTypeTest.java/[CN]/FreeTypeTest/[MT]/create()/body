@@ -1,0 +1,16 @@
+{
+  boolean flip=true;
+  batch=new SpriteBatch();
+  if (flip) {
+    OrthographicCamera cam=new OrthographicCamera();
+    cam.setToOrtho(flip);
+    cam.update();
+    batch.setProjectionMatrix(cam.combined);
+  }
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),flip);
+  FileHandle fontFile=Gdx.files.internal("data/arial.ttf");
+  FreeTypeFontGenerator generator=new FreeTypeFontGenerator(fontFile);
+  FreeTypeBitmapFontData fontData=generator.generateData(15,FreeTypeFontGenerator.DEFAULT_CHARS,flip);
+  generator.dispose();
+  ftFont=new BitmapFont(fontData,fontData.getTextureRegion(),false);
+}

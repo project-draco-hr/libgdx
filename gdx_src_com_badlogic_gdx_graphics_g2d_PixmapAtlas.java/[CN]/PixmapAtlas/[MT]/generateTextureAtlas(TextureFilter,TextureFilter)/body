@@ -1,0 +1,21 @@
+{
+  TextureAtlas atlas=new TextureAtlas();
+  for (  Page page : pages) {
+    if (page.rects.size != 0) {
+      Texture texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),true)){
+        @Override public void dispose(){
+          super.dispose();
+        }
+      }
+;
+      texture.setFilter(minFilter,magFilter);
+      Keys<String> names=page.rects.keys();
+      for (      String name : names) {
+        Rectangle rect=page.rects.get(name);
+        TextureRegion region=new TextureRegion(texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
+        atlas.addRegion(name,region);
+      }
+    }
+  }
+  return atlas;
+}

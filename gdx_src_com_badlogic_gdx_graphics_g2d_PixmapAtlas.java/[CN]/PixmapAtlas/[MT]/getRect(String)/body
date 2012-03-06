@@ -1,0 +1,7 @@
+{
+  for (  Page page : pages) {
+    Rectangle rect=page.rects.get(name);
+    if (rect != null)     return rect;
+  }
+  return null;
+}

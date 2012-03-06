@@ -1,0 +1,37 @@
+{
+  if (disposed)   return null;
+  if (getRect(name) != null)   throw new RuntimeException("Key with name '" + name + "' is already in map");
+  int borderPixels=padding + (duplicateBorder ? 1 : 0);
+  borderPixels<<=1;
+  if (image.getWidth() >= pageWidth + borderPixels || image.getHeight() >= pageHeight + borderPixels)   throw new GdxRuntimeException("page size for '" + name + "' to small");
+  Rectangle rect=new Rectangle(0,0,image.getWidth() + borderPixels,image.getHeight() + borderPixels);
+  Node node=insert(currPage.root,rect);
+  if (node == null) {
+    newPage();
+    return insertImage(name,image);
+  }
+  node.leaveName=name;
+  rect=new Rectangle(node.rect);
+  rect.width-=borderPixels;
+  rect.height-=borderPixels;
+  borderPixels>>=1;
+  rect.x+=borderPixels;
+  rect.y+=borderPixels;
+  currPage.rects.put(name,rect);
+  Blending blending=Pixmap.getBlending();
+  Pixmap.setBlending(Blending.None);
+  this.currPage.image.drawPixmap(image,(int)rect.x,(int)rect.y);
+  Pixmap.setBlending(blending);
+  if (duplicateBorder) {
+    this.currPage.image.drawPixmap(image,(int)rect.x,(int)rect.y - 1,(int)rect.x + (int)rect.width,(int)rect.y,0,0,image.getWidth(),1);
+    this.currPage.image.drawPixmap(image,(int)rect.x,(int)rect.y + (int)rect.height,(int)rect.x + (int)rect.width,(int)rect.y + (int)rect.height + 1,0,image.getHeight() - 1,image.getWidth(),image.getHeight());
+    this.currPage.image.drawPixmap(image,(int)rect.x - 1,(int)rect.y,(int)rect.x,(int)rect.y + (int)rect.height,0,0,1,image.getHeight());
+    this.currPage.image.drawPixmap(image,(int)rect.x + (int)rect.width,(int)rect.y,(int)rect.x + (int)rect.width + 1,(int)rect.y + (int)rect.height,image.getWidth() - 1,0,image.getWidth(),image.getHeight());
+    this.currPage.image.drawPixmap(image,(int)rect.x - 1,(int)rect.y - 1,(int)rect.x,(int)rect.y,0,0,1,1);
+    this.currPage.image.drawPixmap(image,(int)rect.x + (int)rect.width,(int)rect.y - 1,(int)rect.x + (int)rect.width + 1,(int)rect.y,image.getWidth() - 1,0,image.getWidth(),1);
+    this.currPage.image.drawPixmap(image,(int)rect.x - 1,(int)rect.y + (int)rect.height,(int)rect.x,(int)rect.y + (int)rect.height + 1,0,image.getHeight() - 1,1,image.getHeight());
+    this.currPage.image.drawPixmap(image,(int)rect.x + (int)rect.width,(int)rect.y + (int)rect.height,(int)rect.x + (int)rect.width + 1,(int)rect.y + (int)rect.height + 1,image.getWidth() - 1,image.getHeight() - 1,image.getWidth(),image.getHeight());
+  }
+  currPage.addedRects.add(name);
+  return rect;
+}

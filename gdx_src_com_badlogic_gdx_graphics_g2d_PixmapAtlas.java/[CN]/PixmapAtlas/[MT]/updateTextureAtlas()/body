@@ -1,0 +1,33 @@
+{
+  for (  Page page : pages) {
+    if (page.texture == null) {
+      if (page.rects.size != 0 && page.addedRects.size > 0) {
+        page.texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),false)){
+          @Override public void dispose(){
+            super.dispose();
+          }
+        }
+;
+        page.texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+        for (        String name : page.addedRects) {
+          Rectangle rect=page.rects.get(name);
+          TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
+          atlas.addRegion(name,region);
+        }
+        page.addedRects.clear();
+      }
+    }
+ else {
+      if (page.addedRects.size > 0) {
+        page.texture.load(page.texture.getTextureData());
+        for (        String name : page.addedRects) {
+          Rectangle rect=page.rects.get(name);
+          TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
+          atlas.addRegion(name,region);
+        }
+        page.addedRects.clear();
+        return;
+      }
+    }
+  }
+}
