@@ -1,5 +1,6 @@
 {
   super(audio,file);
   input=new WavInputStream(file);
+  if (audio.noDevice)   return;
   setup(input.channels,input.sampleRate);
 }

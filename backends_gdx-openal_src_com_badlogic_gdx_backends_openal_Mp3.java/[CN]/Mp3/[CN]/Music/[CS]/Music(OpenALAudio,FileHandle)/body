@@ -1,5 +1,6 @@
 {
   super(audio,file);
+  if (audio.noDevice)   return;
   bitstream=new Bitstream(file.read());
   decoder=new MP3Decoder();
   try {

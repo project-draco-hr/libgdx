@@ -1,4 +1,5 @@
 {
+  if (audio.noDevice)   return 0;
   int sourceID=audio.obtainSource(false);
   if (sourceID == -1)   return -1;
   long soundId=audio.getSoundId(sourceID);

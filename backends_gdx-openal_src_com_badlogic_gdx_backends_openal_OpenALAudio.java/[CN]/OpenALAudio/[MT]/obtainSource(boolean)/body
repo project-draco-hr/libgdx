@@ -1,4 +1,5 @@
 {
+  if (noDevice)   return 0;
   for (int i=0, n=idleSources.size; i < n; i++) {
     int sourceId=idleSources.get(i);
     int state=alGetSourcei(sourceId,AL_SOURCE_STATE);

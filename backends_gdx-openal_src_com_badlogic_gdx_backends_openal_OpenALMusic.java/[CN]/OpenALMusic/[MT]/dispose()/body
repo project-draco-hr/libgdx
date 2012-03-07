@@ -1,4 +1,5 @@
 {
+  if (audio.noDevice)   return;
   if (buffers == null)   return;
   if (sourceID != -1) {
     reset();

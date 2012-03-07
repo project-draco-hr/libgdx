@@ -9,7 +9,8 @@
     AL.create();
   }
  catch (  LWJGLException ex) {
-    throw new GdxRuntimeException("Error initializing OpenAL.",ex);
+    noDevice=true;
+    return;
   }
   allSources=new IntArray(false,simultaneousSources);
   for (int i=0; i < simultaneousSources; i++) {

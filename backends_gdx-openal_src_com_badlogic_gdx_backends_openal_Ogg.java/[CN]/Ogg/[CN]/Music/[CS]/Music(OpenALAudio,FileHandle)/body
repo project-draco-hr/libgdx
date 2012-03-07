@@ -1,5 +1,6 @@
 {
   super(audio,file);
+  if (audio.noDevice)   return;
   input=new OggInputStream(file.read());
   setup(input.getChannels(),input.getSampleRate());
 }

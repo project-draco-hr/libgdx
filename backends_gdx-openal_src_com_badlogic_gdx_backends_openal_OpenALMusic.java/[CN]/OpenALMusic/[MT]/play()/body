@@ -1,4 +1,5 @@
 {
+  if (audio.noDevice)   return;
   if (sourceID == -1) {
     sourceID=audio.obtainSource(true);
     if (sourceID == -1)     return;
