@@ -9,7 +9,9 @@
  catch (  Exception expected) {
   }
   if (handle.list().length != 0)   fail();
-  if (!handle.parent().exists())   fail();
+  if (Gdx.app.getType() != ApplicationType.Android) {
+    if (!handle.parent().exists())     fail();
+  }
   try {
     handle.read().close();
     fail();
@@ -19,14 +21,18 @@
   FileHandle dir;
   if (Gdx.app.getType() == ApplicationType.Android)   dir=Gdx.files.internal("data");
  else   dir=Gdx.files.internal("../gdx-tests-android/assets/data");
-  if (!dir.exists())   fail();
+  if (Gdx.app.getType() != ApplicationType.Android) {
+    if (!dir.exists())     fail();
+  }
   if (!dir.isDirectory())   fail();
   if (dir.list().length == 0)   fail();
   FileHandle child=dir.child("badlogic.jpg");
   if (!child.name().equals("badlogic.jpg"))   fail();
   if (!child.nameWithoutExtension().equals("badlogic"))   fail();
   if (!child.extension().equals("jpg"))   fail();
-  if (!child.parent().exists())   fail();
+  if (Gdx.app.getType() != ApplicationType.Android) {
+    if (!child.parent().exists())     fail();
+  }
   FileHandle copy=Gdx.files.external("badlogic.jpg-copy");
   copy.delete();
   if (copy.exists())   fail();
