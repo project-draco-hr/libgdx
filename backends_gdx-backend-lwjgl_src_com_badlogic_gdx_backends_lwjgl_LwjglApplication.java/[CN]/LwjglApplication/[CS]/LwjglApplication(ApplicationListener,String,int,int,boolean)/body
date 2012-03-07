@@ -7,7 +7,7 @@
   config.useGL20=useGL2;
   config.vSyncEnabled=true;
   graphics=new LwjglGraphics(config);
-  audio=new OpenALAudio();
+  audio=new OpenALAudio(config.audioDeviceBufferCount,config.audioDeviceBufferSize);
   files=new LwjglFiles();
   input=new LwjglInput();
   this.listener=listener;
