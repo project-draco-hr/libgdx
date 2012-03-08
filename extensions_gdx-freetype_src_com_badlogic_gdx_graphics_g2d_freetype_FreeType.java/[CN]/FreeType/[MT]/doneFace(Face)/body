@@ -1,3 +1,8 @@
 {
   doneFace(face.address);
+  ByteBuffer buffer=face.library.fontData.get(face.address);
+  if (buffer != null) {
+    face.library.fontData.remove(face.address);
+    BufferUtils.disposeUnsafeByteBuffer(buffer);
+  }
 }
