@@ -16,5 +16,5 @@
     }
   }
 ;
-  return new OpenALAudioDevice(this,sampleRate,isMono);
+  return new OpenALAudioDevice(this,sampleRate,isMono,deviceBufferSize,deviceBufferCount);
 }

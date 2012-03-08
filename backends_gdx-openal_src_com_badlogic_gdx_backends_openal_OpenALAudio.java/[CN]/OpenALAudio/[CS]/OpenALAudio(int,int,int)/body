@@ -1,4 +1,6 @@
 {
+  this.deviceBufferSize=deviceBufferSize;
+  this.deviceBufferCount=deviceBufferCount;
   registerSound("ogg",Ogg.Sound.class);
   registerMusic("ogg",Ogg.Music.class);
   registerSound("wav",Wav.Sound.class);
