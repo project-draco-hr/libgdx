@@ -1,0 +1,13 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  camera.update();
+  batch.setProjectionMatrix(camera.combined);
+  batch.begin();
+  batch.draw(region,20,100);
+  font.draw(batch,"This is a test",270,100);
+  batch.draw(atlas.findRegion("badlogicsmall"),360,100);
+  font.draw(batch,Gdx.input.getX() + ", " + Gdx.input.getY(),0,0);
+  batch.end();
+  stage.act(Gdx.graphics.getDeltaTime());
+  stage.draw();
+}

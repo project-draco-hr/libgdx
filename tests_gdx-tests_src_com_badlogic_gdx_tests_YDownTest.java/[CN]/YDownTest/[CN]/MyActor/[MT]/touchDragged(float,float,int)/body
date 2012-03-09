@@ -1,0 +1,7 @@
+{
+  if (pointer != 0)   return;
+  this.x+=(x - lastX);
+  this.y+=(y - lastY);
+  lastX=x - (x - lastX);
+  lastY=y - (y - lastY);
+}
