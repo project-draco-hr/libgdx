@@ -1,3 +1,4 @@
 {
-  throw new GdxRuntimeException("not implemented");
+  WebGLUniformLocation location=gl.getUniformLocation(programs.get(program),name);
+  return allocateUniformLocationId(program,location);
 }

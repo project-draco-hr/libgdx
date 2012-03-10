@@ -1,0 +1,8 @@
+{
+  this.isStatic=false;
+  this.attributes=attributes;
+  buffer=BufferUtils.newFloatBuffer(this.attributes.vertexSize / 4 * numVertices);
+  buffer.flip();
+  bufferHandle=createBufferObject();
+  usage=isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW;
+}

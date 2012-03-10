@@ -1,3 +1,3 @@
 {
-  gl.stencilMaskSeparate(CullFaceMode.parseCullFaceMode(face),mask);
+  gl.stencilMaskSeparate(face,mask);
 }

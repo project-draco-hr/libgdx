@@ -1,8 +1,0 @@
-{
-  GL2 gl=surface.getGL();
-  WebGLShader shader=gl.createShader(isVS ? ShaderType.VERTEX_SHADER : ShaderType.FRAGMENT_SHADER);
-  gl.shaderSource(shader,source);
-  gl.compileShader(shader);
-  boolean result=gl.getShaderParameterb(shader,ShaderParameter.COMPILE_STATUS);
-  return shader;
-}

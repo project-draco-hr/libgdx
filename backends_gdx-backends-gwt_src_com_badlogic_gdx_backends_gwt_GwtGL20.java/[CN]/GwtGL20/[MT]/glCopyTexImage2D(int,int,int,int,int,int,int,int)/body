@@ -1,3 +1,3 @@
 {
-  gl.copyTexImage2D(TextureTarget.parseTextureTarget(target),level,PixelInternalFormat.parsePixelInternalFormat(internalformat),x,y,width,height,border);
+  gl.copyTexImage2D(target,level,internalformat,x,y,width,height,border);
 }

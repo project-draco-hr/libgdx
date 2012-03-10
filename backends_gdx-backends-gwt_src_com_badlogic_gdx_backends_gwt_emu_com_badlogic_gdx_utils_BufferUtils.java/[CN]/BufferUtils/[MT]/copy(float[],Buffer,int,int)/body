@@ -9,6 +9,7 @@
  else {
     throw new GdxRuntimeException("dst must be a ByteBuffer or FloatBuffer");
   }
+  floatBuffer.clear();
   dst.position(0);
   floatBuffer.put(src,offset,numFloats);
   dst.position(0);

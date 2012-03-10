@@ -1,3 +1,3 @@
 {
-  gl.renderbufferStorage(RenderbufferTarget.parseRenderbufferTarget(target),RenderbufferInternalFormat.parseRenderbufferInternalFormat(internalformat),width,height);
+  gl.renderbufferStorage(target,internalformat,width,height);
 }

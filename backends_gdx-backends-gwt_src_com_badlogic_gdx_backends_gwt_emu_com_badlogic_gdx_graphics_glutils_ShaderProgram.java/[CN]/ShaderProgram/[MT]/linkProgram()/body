@@ -5,12 +5,11 @@
   gl.glAttachShader(program,vertexShaderHandle);
   gl.glAttachShader(program,fragmentShaderHandle);
   gl.glLinkProgram(program);
-  ByteBuffer tmp=ByteBuffer.allocateDirect(4);
-  tmp.order(ByteOrder.nativeOrder());
-  IntBuffer intbuf=tmp.asIntBuffer();
+  intbuf.clear();
   gl.glGetProgramiv(program,GL20.GL_LINK_STATUS,intbuf);
   int linked=intbuf.get(0);
   if (linked == 0) {
+    log=Gdx.gl20.glGetProgramInfoLog(program);
     return -1;
   }
   return program;

@@ -1,5 +1,5 @@
 {
   WebGLProgram glProgram=programs.get(program);
-  WebGLShader glShader=shaders.get(program);
+  WebGLShader glShader=shaders.get(shader);
   gl.attachShader(glProgram,glShader);
 }

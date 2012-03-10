@@ -3,6 +3,8 @@
   this.config=getConfig();
   this.root=config.rootPanel != null ? config.rootPanel : RootPanel.get();
   graphics=new GwtGraphics(root,config);
+  lastWidth=graphics.getWidth();
+  lastHeight=graphics.getHeight();
   Gdx.app=this;
   Gdx.graphics=graphics;
   Gdx.gl20=graphics.getGL20();

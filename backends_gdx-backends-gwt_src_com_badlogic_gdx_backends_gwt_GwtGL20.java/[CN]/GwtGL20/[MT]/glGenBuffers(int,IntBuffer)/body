@@ -1,3 +1,5 @@
 {
-  throw new GdxRuntimeException("not implemented");
+  WebGLBuffer buffer=gl.createBuffer();
+  int id=allocateBufferId(buffer);
+  buffers.put(id);
 }

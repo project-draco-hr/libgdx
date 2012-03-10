@@ -1,3 +1,3 @@
 {
-  gl.hint(HintTarget.parseHintTarget(target),HintMode.parseHintMode(mode));
+  gl.hint(target,mode);
 }

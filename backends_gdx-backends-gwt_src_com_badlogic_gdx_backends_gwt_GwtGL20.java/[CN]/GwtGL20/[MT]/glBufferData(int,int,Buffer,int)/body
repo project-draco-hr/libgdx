@@ -1,3 +1,6 @@
 {
-  throw new GdxRuntimeException("not implemented");
+  if (data instanceof FloatBuffer) {
+    gl.bufferData(target,Float32Array.create(((FloatBuffer)data).array()),usage);
+  }
+ else   throw new GdxRuntimeException("Can only cope with FloatBuffer at the moment");
 }

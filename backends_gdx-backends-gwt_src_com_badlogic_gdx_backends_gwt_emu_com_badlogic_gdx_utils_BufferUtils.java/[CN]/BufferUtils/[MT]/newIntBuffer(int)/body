@@ -1,5 +1,3 @@
 {
-  ByteBuffer buffer=ByteBuffer.allocateDirect(numInts * 4);
-  buffer.order(ByteOrder.nativeOrder());
-  return buffer.asIntBuffer();
+  return IntBuffer.wrap(new int[numInts]);
 }

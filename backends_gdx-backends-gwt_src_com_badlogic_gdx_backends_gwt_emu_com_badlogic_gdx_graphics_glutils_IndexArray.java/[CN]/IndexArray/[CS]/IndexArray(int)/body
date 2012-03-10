@@ -1,0 +1,7 @@
+{
+  isDirect=true;
+  buffer=BufferUtils.newShortBuffer(maxIndices);
+  buffer.flip();
+  bufferHandle=createBufferObject();
+  usage=GL11.GL_DYNAMIC_DRAW;
+}

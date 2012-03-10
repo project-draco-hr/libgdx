@@ -1,0 +1,8 @@
+{
+  gl.bindFramebuffer(FRAMEBUFFER,fbuf);
+  gl.clear(COLOR_BUFFER_BIT | DEPTH_BUFFER_BIT);
+  gl.bindTexture(TEXTURE_2D,birdTexture);
+  drawQuad();
+  gl.bindTexture(TEXTURE_2D,null);
+  gl.bindFramebuffer(FRAMEBUFFER,null);
+}

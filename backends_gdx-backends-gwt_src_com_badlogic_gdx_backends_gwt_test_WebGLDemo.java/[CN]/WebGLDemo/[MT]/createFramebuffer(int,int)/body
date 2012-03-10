@@ -1,0 +1,14 @@
+{
+  WebGLTexture tex=createTexture();
+  fbuf=gl.createFramebuffer();
+  gl.texImage2D(TEXTURE_2D,0,RGBA,width,height,0,RGBA,UNSIGNED_BYTE,null);
+  WebGLRenderbuffer rbuf=gl.createRenderbuffer();
+  gl.bindRenderbuffer(RENDERBUFFER,rbuf);
+  gl.renderbufferStorage(RENDERBUFFER,RGBA4,width,height);
+  gl.framebufferTexture2D(FRAMEBUFFER,COLOR_ATTACHMENT0,TEXTURE_2D,tex,0);
+  gl.framebufferRenderbuffer(FRAMEBUFFER,DEPTH_ATTACHMENT,RENDERBUFFER,rbuf);
+  gl.bindTexture(TEXTURE_2D,null);
+  gl.bindRenderbuffer(RENDERBUFFER,null);
+  gl.bindFramebuffer(FRAMEBUFFER,null);
+  return fbuf;
+}

@@ -1,5 +1,3 @@
 {
-  ByteBuffer buffer=ByteBuffer.allocateDirect(numLongs * 8);
-  buffer.order(ByteOrder.nativeOrder());
-  return buffer.asLongBuffer();
+  return LongBuffer.wrap(new long[numLongs]);
 }

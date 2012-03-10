@@ -1,9 +1,0 @@
-{
-  int shader=Gdx.gl20.glCreateShader(isVS ? GL20.GL_VERTEX_SHADER : GL20.GL_FRAGMENT_SHADER);
-  Gdx.gl20.glShaderSource(shader,source);
-  Gdx.gl20.glCompileShader(shader);
-  IntBuffer buffer=BufferUtils.newIntBuffer(1);
-  Gdx.gl20.glGetProgramiv(shader,GL20.GL_COMPILE_STATUS,buffer);
-  System.out.println(buffer.get(0));
-  return shader;
-}

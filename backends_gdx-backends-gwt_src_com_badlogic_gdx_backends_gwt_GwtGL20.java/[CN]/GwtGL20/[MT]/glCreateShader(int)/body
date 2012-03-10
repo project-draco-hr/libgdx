@@ -1,4 +1,4 @@
 {
-  WebGLShader shader=gl.createShader(ShaderType.parseShaderType(type));
+  WebGLShader shader=gl.createShader(type);
   return allocateShaderId(shader);
 }

@@ -1,0 +1,14 @@
+{
+  buffer=gl.createBuffer();
+  gl.bindBuffer(ARRAY_BUFFER,buffer);
+  gl.bufferData(ARRAY_BUFFER,(12 + 8) * Float32Array.BYTES_PER_ELEMENT,STATIC_DRAW);
+  float z=0f;
+  float[] positions=new float[]{-42 / 2f,-42 / 2f,z,42 / 2f,-42 / 2f,z,-42 / 2f,42 / 2f,z,42 / 2f,42 / 2f,z};
+  gl.bufferSubData(ARRAY_BUFFER,0,Float32Array.create(positions));
+  float[] texCoords=new float[]{0.0f,1.0f,1.0f,1.0f,0.0f,0.0f,1.0f,0.0f};
+  gl.bufferSubData(ARRAY_BUFFER,12 * Float32Array.BYTES_PER_ELEMENT,Float32Array.create(texCoords));
+  int[] indices=new int[]{0,1,2,3};
+  indexBuffer=gl.createBuffer();
+  gl.bindBuffer(ELEMENT_ARRAY_BUFFER,indexBuffer);
+  gl.bufferData(ELEMENT_ARRAY_BUFFER,Int32Array.create(indices),STREAM_DRAW);
+}

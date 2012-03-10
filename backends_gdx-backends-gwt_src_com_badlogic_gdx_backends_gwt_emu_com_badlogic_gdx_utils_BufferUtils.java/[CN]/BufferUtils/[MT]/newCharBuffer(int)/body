@@ -1,5 +1,3 @@
 {
-  ByteBuffer buffer=ByteBuffer.allocateDirect(numChars * 2);
-  buffer.order(ByteOrder.nativeOrder());
-  return buffer.asCharBuffer();
+  throw new GdxRuntimeException("not implemented");
 }

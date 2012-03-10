@@ -1,15 +1,14 @@
 {
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
-  graphics.surface.addHandler(new ResizeHandler(){
-    @Override public void onResize(    ResizeEvent event){
-      GwtApplication.this.listener.resize(event.getWidth(),event.getHeight());
-    }
-  }
-,ResizeEvent.getType());
-  FpsTimer timer=new FpsTimer(config.fps){
-    @Override public void update(){
-      graphics.setFps(this.getFps());
+  new Timer(){
+    @Override public void run(){
+      graphics.setFps(0);
+      if (Gdx.graphics.getWidth() != lastWidth || Gdx.graphics.getHeight() != lastHeight) {
+        GwtApplication.this.listener.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        lastWidth=graphics.getWidth();
+        lastHeight=graphics.getHeight();
+      }
       for (int i=0; i < runnables.size(); i++) {
         runnables.get(i).run();
       }
@@ -17,6 +16,5 @@
       listener.render();
     }
   }
-;
-  timer.start();
+.scheduleRepeating(config.fps);
 }
