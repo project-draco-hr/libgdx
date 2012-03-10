@@ -1,9 +1,9 @@
 {
-  a=(color >>> 24) & 0xff;
+  a=((color >>> 24) & 0xff) / 255f;
   r=(color >>> 16) & 0xff;
   g=(color >>> 8) & 0xff;
-  g=(color & 0xff);
-  this.color=CssColor.make(r,g,b);
+  b=(color & 0xff);
+  this.color=make(r,g,b,a);
   context.setFillStyle(this.color);
   context.setStrokeStyle(this.color);
 }

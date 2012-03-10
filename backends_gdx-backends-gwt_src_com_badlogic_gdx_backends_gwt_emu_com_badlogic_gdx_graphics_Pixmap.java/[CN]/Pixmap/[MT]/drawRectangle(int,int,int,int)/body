@@ -1,3 +1,6 @@
 {
+  context.beginPath();
   context.rect(x,y,width,height);
+  context.stroke();
+  context.closePath();
 }

@@ -1,4 +1,7 @@
 {
+  context.beginPath();
   context.moveTo(x,y);
   context.lineTo(x2,y2);
+  context.stroke();
+  context.closePath();
 }

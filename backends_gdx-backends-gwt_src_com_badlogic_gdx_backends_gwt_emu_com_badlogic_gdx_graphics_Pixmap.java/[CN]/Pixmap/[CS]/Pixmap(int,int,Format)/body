@@ -1,13 +1,13 @@
 {
   this.width=width;
   this.height=height;
-  this.format=format;
+  this.format=Format.RGBA8888;
   canvas=Canvas.createIfSupported();
   canvas.getCanvasElement().setWidth(width);
   canvas.getCanvasElement().setHeight(height);
   context=canvas.getContext2d();
-  context.setFillStyle("blue");
-  context.fillRect(10,10,10,10);
+  System.out.println(context.getGlobalCompositeOperation());
+  context.setGlobalCompositeOperation(Composite.SOURCE_OVER);
   buffer=BufferUtils.newIntBuffer(1);
   id=nextId++;
   buffer.put(0,id);
