@@ -6,6 +6,14 @@
   shader.begin();
   shader.setUniformMatrix("u_projView",matrix);
   shader.setUniformi("u_texture",0);
-  mesh.render(shader,GL20.GL_TRIANGLES);
+  for (int i=0; i < 100; i++) {
+    mesh.render(shader,GL20.GL_TRIANGLES);
+  }
   shader.end();
+  batch.begin();
+  for (  Vector2 position : positions) {
+    batch.draw(texture,position.x,position.y);
+  }
+  batch.end();
+  label.setText("fps:" + Gdx.graphics.getFramesPerSecond() + ", delta: "+ Gdx.graphics.getDeltaTime());
 }

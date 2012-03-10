@@ -1,6 +1,11 @@
 {
   if (data instanceof FloatBuffer) {
-    gl.bufferSubData(target,offset,Float32Array.create(((FloatBuffer)data).array()));
+    gl.bufferSubData(target,offset,Float32Array.create(((FloatBuffer)data).array(),data.position(),data.limit() - data.position()));
   }
- else   throw new GdxRuntimeException("Can only cope with FloatBuffer at the moment");
+ else   if (data instanceof ShortBuffer) {
+    gl.bufferSubData(target,offset,Uint16Array.create(((ShortBuffer)data).array(),data.position(),data.limit() - data.position()));
+  }
+ else {
+    throw new GdxRuntimeException("Can only cope with FloatBuffer and ShortBuffer at the moment");
+  }
 }

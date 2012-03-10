@@ -1,0 +1,7 @@
+{
+  JsArrayInteger jsan=(JsArrayInteger)JsArrayInteger.createArray();
+  for (int i=0; i < len; i++) {
+    jsan.set(i,data[offset + i]);
+  }
+  return jsan;
+}
