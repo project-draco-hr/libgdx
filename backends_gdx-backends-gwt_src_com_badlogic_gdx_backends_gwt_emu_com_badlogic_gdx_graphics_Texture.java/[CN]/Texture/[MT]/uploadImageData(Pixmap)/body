@@ -1,0 +1,5 @@
+{
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
+  Gdx.gl.glPixelStorei(GL10.GL_UNPACK_ALIGNMENT,1);
+  Gdx.gl.glTexImage2D(GL10.GL_TEXTURE_2D,0,GL10.GL_RGBA,pixmap.getWidth(),pixmap.getHeight(),0,GL10.GL_RGBA,GL10.GL_UNSIGNED_BYTE,pixmap.getPixels());
+}

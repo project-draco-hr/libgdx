@@ -1,0 +1,11 @@
+{
+  this.data=data;
+  if (data.getType() == TextureDataType.Pixmap) {
+    Pixmap pixmap=data.consumePixmap();
+    uploadImageData(pixmap);
+    if (data.disposePixmap())     pixmap.dispose();
+    setFilter(minFilter,magFilter);
+    setWrap(uWrap,vWrap);
+  }
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,0);
+}

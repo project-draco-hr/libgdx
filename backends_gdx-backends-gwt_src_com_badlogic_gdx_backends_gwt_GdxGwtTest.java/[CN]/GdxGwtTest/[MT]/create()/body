@@ -1,8 +1,10 @@
 {
-  String vertexShader="attribute vec4 a_position;\n" + "uniform mat4 u_projView;\n" + "varying vec4 v_color;\n"+ "void main() {\n"+ "v_color = vec4(1, 0, 0, 1);\n"+ "gl_Position = u_projView * a_position;\n"+ "}\n";
-  String fragmentShader="#ifdef GL_ES\n" + "precision mediump float;\n" + "#endif\n"+ "varying vec4 v_color;\n"+ "void main() {\n"+ "gl_FragColor = v_color;\n"+ "}\n";
+  String vertexShader="attribute vec4 a_position;\n" + "attribute vec2 a_texCoord0;\n" + "uniform mat4 u_projView;\n"+ "varying vec4 v_color;\n"+ "varying vec2 v_texCoord;\n"+ "void main() {\n"+ "v_color = vec4(1, 1, 1, 1);\n"+ "v_texCoord = a_texCoord0;\n"+ "gl_Position = u_projView * a_position;\n"+ "}\n";
+  String fragmentShader="#ifdef GL_ES\n" + "precision mediump float;\n" + "#endif\n"+ "uniform sampler2D u_texture;\n"+ "varying vec2 v_texCoord;\n"+ "varying vec4 v_color;\n"+ "void main() {\n"+ "gl_FragColor = v_color * texture2D(u_texture, v_texCoord);\n"+ "}\n";
   shader=new ShaderProgram(vertexShader,fragmentShader);
   if (!shader.isCompiled())   throw new GdxRuntimeException(shader.getLog());
-  mesh=new Mesh(VertexDataType.VertexBufferObject,true,6,0,VertexAttribute.Position());
-  mesh.setVertices(new float[]{-0.5f,-0.5f,0,0.5f,-0.5f,0,0.5f,0.5f,0,0.5f,0.5f,0,-0.5f,0.5f,0,-0.5f,-0.5f,0});
+  mesh=new Mesh(VertexDataType.VertexBufferObject,true,6,0,VertexAttribute.Position(),VertexAttribute.TexCoords(0));
+  mesh.setVertices(new float[]{-0.5f,-0.5f,0,0,1,0.5f,-0.5f,0,1,1,0.5f,0.5f,0,1,0,0.5f,0.5f,0,1,0,-0.5f,0.5f,0,0,0,-0.5f,-0.5f,0,0,1});
+  Pixmap pixmap=new Pixmap(512,512,Format.RGBA8888);
+  texture=new Texture(pixmap);
 }

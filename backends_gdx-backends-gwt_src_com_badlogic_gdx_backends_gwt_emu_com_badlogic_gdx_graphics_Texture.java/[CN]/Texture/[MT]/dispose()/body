@@ -1,2 +1,8 @@
 {
+  if (glHandle == 0)   return;
+  buffer.clear();
+  buffer.put(glHandle);
+  buffer.flip();
+  Gdx.gl.glDeleteTextures(1,buffer);
+  glHandle=0;
 }

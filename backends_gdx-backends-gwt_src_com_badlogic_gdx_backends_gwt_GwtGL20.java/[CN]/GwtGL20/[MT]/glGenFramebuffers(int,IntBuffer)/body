@@ -1,3 +1,7 @@
 {
-  throw new GdxRuntimeException("not implemented");
+  for (int i=0; i < n; i++) {
+    WebGLFramebuffer fb=gl.createFramebuffer();
+    int id=allocateFrameBufferId(fb);
+    framebuffers.put(id);
+  }
 }

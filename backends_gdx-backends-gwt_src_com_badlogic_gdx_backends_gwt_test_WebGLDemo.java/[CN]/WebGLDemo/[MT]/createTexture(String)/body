@@ -1,7 +1,7 @@
 {
   final WebGLTexture tex=gl.createTexture();
   final ImageElement img=createImage();
-  img.setSrc(url);
+  img.setSrc(Shaders.INSTANCE.sky().getSafeUri().asString());
   hookOnLoad(img,new EventHandler(){
     @Override public void onEvent(    NativeEvent e){
       gl.bindTexture(TEXTURE_2D,tex);
