@@ -1,0 +1,4 @@
+{
+  this(img.getWidth(),img.getHeight(),Format.RGBA8888);
+  context.drawImage(img,0,0);
+}

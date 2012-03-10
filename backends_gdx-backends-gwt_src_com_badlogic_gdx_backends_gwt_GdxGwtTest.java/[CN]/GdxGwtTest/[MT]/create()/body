@@ -16,6 +16,21 @@
   texture=new Texture(pixmap);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   pixmap.dispose();
+  final ImageElement img=createImage();
+  img.setSrc(GWT.getHostPageBaseURL() + "badlogic.jpg");
+  hookOnLoad(img,new EventHandler(){
+    @Override public void onEvent(    NativeEvent e){
+      texture.dispose();
+      Pixmap pixmap=new Pixmap(img);
+      texture=new Texture(pixmap);
+      texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+      pixmap.dispose();
+      sprite=new Sprite(texture);
+      sprite.setSize(64,64);
+      sprite.setOrigin(32,32);
+    }
+  }
+);
   batch=new SpriteBatch();
   positions=new ArrayList<Vector2>();
   for (int i=0; i < 100; i++) {
