@@ -14,6 +14,7 @@
     sprite.setPosition(position.x,position.y);
     sprite.draw(batch);
   }
+  batch.draw(atlas.findRegion("font"),100,100);
   font.draw(batch,"fps:" + Gdx.graphics.getFramesPerSecond() + ", delta: "+ Gdx.graphics.getDeltaTime(),0,30);
   cache.setPosition(200,200);
   cache.draw(batch);
