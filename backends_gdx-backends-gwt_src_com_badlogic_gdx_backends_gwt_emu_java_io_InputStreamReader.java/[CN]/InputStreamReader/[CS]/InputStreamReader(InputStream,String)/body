@@ -1,0 +1,6 @@
+{
+  this(in);
+  if (!encoding.equals("UTF-8")) {
+    throw new UnsupportedEncodingException(encoding);
+  }
+}

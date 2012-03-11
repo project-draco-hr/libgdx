@@ -1,3 +1,8 @@
 {
-  throw new GdxRuntimeException("Not implemented");
+  try {
+    return new InputStreamReader(read(),charset);
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw new GdxRuntimeException("Encoding '" + charset + "' not supported",e);
+  }
 }

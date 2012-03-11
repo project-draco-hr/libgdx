@@ -1,4 +1,3 @@
 {
-  if (!preloader.isDirectory(file))   throw new GdxRuntimeException("Can't create a child from a file name");
-  return new GwtFileHandle(preloader,file + "/" + name,FileType.Internal);
+  return new GwtFileHandle(preloader,file + (file.endsWith("/") ? "" : "/") + name,FileType.Internal);
 }
