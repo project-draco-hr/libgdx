@@ -1,5 +1,5 @@
 {
-  shader=new ShaderProgram(Gdx.files.internal("data/shader-vs.glsl"),Gdx.files.internal("data/shader-fs.glsl"));
+  shader=new ShaderProgram(Gdx.files.internal("data/shaders/shader-vs.glsl"),Gdx.files.internal("data/shaders/shader-fs.glsl"));
   if (!shader.isCompiled())   throw new GdxRuntimeException(shader.getLog());
   mesh=new Mesh(VertexDataType.VertexBufferObject,true,6,0,VertexAttribute.Position(),VertexAttribute.TexCoords(0));
   mesh.setVertices(new float[]{-0.5f,-0.5f,0,0,1,0.5f,-0.5f,0,1,1,0.5f,0.5f,0,1,0,0.5f,0.5f,0,1,0,-0.5f,0.5f,0,0,0,-0.5f,-0.5f,0,0,1});
