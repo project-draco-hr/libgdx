@@ -1,0 +1,14 @@
+{
+  if (len != newLength) {
+    consolidate();
+    if (data.length() > newLength) {
+      data=data.substring(0,(int)newLength);
+      len=(int)newLength;
+    }
+ else {
+      while (len < newLength) {
+        write(0);
+      }
+    }
+  }
+}

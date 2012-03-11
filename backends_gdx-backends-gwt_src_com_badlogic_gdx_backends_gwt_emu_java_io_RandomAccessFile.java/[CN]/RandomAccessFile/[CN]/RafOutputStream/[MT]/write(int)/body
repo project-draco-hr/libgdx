@@ -1,0 +1,18 @@
+{
+  if (!writeable) {
+    throw new IOException("not writeable");
+  }
+  if (newData == null) {
+    newDataPos=pos;
+    newData=new StringBuilder();
+  }
+ else   if (newDataPos + newData.length() != pos) {
+    consolidate();
+    newDataPos=pos;
+    newData=new StringBuilder();
+  }
+  newData.append((char)(b & 255));
+  pos++;
+  len=Math.max(pos,len);
+  dirty=true;
+}

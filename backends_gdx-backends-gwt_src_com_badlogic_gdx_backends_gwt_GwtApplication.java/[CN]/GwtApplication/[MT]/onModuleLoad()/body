@@ -9,5 +9,17 @@
   Gdx.graphics=graphics;
   Gdx.gl20=graphics.getGL20();
   Gdx.gl=graphics.getGLCommon();
-  setupLoop();
+  preloader=new Preloader();
+  preloader.preload("assets.txt",new PreloaderCallback(){
+    @Override public void loaded(    String file,    int loaded,    int total){
+      System.out.println("loaded " + file + ","+ loaded+ ","+ total);
+    }
+    @Override public void error(    String file){
+      System.out.println("error: " + file);
+    }
+    @Override public void done(){
+      setupLoop();
+    }
+  }
+);
 }

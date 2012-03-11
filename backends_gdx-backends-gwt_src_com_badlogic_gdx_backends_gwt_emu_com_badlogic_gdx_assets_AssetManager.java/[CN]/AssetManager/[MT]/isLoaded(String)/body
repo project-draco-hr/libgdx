@@ -1,0 +1,4 @@
+{
+  if (fileName == null)   return false;
+  return assetTypes.containsKey(fileName);
+}

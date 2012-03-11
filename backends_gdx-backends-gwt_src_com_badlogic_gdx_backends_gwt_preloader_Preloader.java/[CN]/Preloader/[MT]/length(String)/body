@@ -1,0 +1,12 @@
+{
+  if (texts.containsKey(url)) {
+    return texts.get(url).getBytes().length;
+  }
+  if (images.containsKey(url)) {
+    return 1;
+  }
+  if (binaries.containsKey(url)) {
+    throw new GdxRuntimeException("Not implemented");
+  }
+  return 0;
+}

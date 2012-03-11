@@ -1,0 +1,8 @@
+{
+  if (!dirty) {
+    return;
+  }
+  consolidate();
+  LocalStorage.setItem(name,btoa(data));
+  dirty=false;
+}

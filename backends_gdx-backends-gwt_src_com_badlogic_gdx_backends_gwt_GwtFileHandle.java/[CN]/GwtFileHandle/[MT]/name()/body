@@ -1,0 +1,6 @@
+{
+  int index=file.lastIndexOf('/');
+  index=Math.max(index,file.lastIndexOf('\\'));
+  if (index < 0)   return file;
+  return file.substring(index + 1);
+}

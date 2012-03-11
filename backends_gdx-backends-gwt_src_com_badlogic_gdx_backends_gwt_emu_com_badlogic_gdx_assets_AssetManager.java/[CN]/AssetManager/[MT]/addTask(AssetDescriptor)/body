@@ -1,0 +1,4 @@
+{
+  AssetLoader loader=loaders.get(assetDesc.type);
+  if (loader == null)   throw new GdxRuntimeException("No loader for type: " + assetDesc.type.getName());
+}

@@ -1,0 +1,4 @@
+{
+  if (event.getType().equals("error"))   callback.error();
+ else   callback.success(image);
+}

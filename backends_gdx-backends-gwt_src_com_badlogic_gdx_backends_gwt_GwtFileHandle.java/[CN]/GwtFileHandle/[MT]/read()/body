@@ -1,0 +1,5 @@
+{
+  InputStream in=preloader.read(file);
+  if (in == null)   throw new GdxRuntimeException(file + " does not exist");
+  return in;
+}

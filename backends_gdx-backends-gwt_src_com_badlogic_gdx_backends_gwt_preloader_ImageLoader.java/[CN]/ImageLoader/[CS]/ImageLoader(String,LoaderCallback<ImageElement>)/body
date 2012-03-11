@@ -1,0 +1,6 @@
+{
+  this.callback=callback;
+  this.image=createImage();
+  this.image.setSrc(url);
+  hookOnLoad(image,this);
+}

@@ -1,5 +1,5 @@
 {
-  V[] result=(V[])java.lang.reflect.Array.newInstance(type,size);
+  V[] result=(V[])new Object[size];
   System.arraycopy(items,0,result,0,size);
   return result;
 }

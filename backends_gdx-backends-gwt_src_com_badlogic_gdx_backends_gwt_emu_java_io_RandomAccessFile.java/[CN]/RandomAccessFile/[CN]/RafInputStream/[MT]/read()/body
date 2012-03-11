@@ -1,0 +1,9 @@
+{
+  if (pos >= len) {
+    return -1;
+  }
+ else {
+    consolidate();
+    return data.charAt(pos++);
+  }
+}

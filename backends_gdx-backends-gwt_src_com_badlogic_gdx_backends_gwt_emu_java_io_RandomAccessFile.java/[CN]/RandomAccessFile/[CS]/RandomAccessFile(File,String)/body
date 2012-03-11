@@ -1,0 +1,30 @@
+{
+  name=file.getCanonicalPath();
+  mode=mode.toLowerCase();
+  if (!mode.equals("r") && !mode.equals("rw")) {
+    throw new IllegalArgumentException("mode: '" + mode + "'");
+  }
+  writeable=mode.equals("rw");
+  if (file.exists()) {
+    try {
+      data=atob(LocalStorage.getItem(name));
+      len=data.length();
+    }
+ catch (    IOException e) {
+      throw new FileNotFoundException("" + e);
+    }
+  }
+ else   if (writeable) {
+    data="";
+    dirty=true;
+    try {
+      flush();
+    }
+ catch (    IOException e) {
+      throw new FileNotFoundException("" + e);
+    }
+  }
+ else {
+    throw new FileNotFoundException(name);
+  }
+}

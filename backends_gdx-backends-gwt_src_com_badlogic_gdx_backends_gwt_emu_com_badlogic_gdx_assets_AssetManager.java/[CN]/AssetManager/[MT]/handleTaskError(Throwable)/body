@@ -1,0 +1,17 @@
+{
+  if (tasks.isEmpty())   throw new GdxRuntimeException(t);
+  AssetLoadingTask task=tasks.pop();
+  AssetDescriptor assetDesc=task.assetDesc;
+  if (task.dependenciesLoaded && task.dependencies != null) {
+    for (    AssetDescriptor desc : task.dependencies) {
+      unload(desc.fileName);
+    }
+  }
+  tasks.clear();
+  if (listener != null) {
+    listener.error(assetDesc.fileName,assetDesc.type,t);
+  }
+ else {
+    throw new GdxRuntimeException(t);
+  }
+}

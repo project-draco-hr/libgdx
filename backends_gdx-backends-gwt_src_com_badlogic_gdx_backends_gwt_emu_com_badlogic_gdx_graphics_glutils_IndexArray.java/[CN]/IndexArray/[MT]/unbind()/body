@@ -1,9 +1,0 @@
-{
-  if (Gdx.gl11 != null) {
-    Gdx.gl11.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,0);
-  }
- else   if (Gdx.gl20 != null) {
-    Gdx.gl20.glBindBuffer(GL11.GL_ELEMENT_ARRAY_BUFFER,0);
-  }
-  isBound=false;
-}

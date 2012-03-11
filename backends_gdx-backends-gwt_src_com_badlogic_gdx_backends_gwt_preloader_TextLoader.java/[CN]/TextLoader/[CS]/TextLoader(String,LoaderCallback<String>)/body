@@ -1,0 +1,18 @@
+{
+  this.callback=callback;
+  RequestBuilder builder=new RequestBuilder(RequestBuilder.GET,url);
+  try {
+    builder.sendRequest(null,new RequestCallback(){
+      @Override public void onResponseReceived(      Request request,      Response response){
+        TextLoader.this.callback.success(response.getText());
+      }
+      @Override public void onError(      Request request,      Throwable exception){
+        TextLoader.this.callback.error();
+      }
+    }
+);
+  }
+ catch (  RequestException e) {
+    callback.error();
+  }
+}

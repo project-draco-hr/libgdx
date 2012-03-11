@@ -1,0 +1,4 @@
+{
+  if (preloader.isText(file))   return preloader.texts.get(file);
+  throw new GdxRuntimeException("reading from a non-text file not supported");
+}

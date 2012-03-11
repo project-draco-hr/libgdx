@@ -1,0 +1,5 @@
+{
+  if (type == null)   throw new IllegalArgumentException("type cannot be null.");
+  if (loader == null)   throw new IllegalArgumentException("loader cannot be null.");
+  loaders.put(type,loader);
+}

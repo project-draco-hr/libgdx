@@ -1,0 +1,21 @@
+{
+  new TextLoader(GWT.getHostPageBaseURL() + assetFileUrl,new LoaderCallback<String>(){
+    @Override public void success(    String result){
+      String[] lines=result.split("\n");
+      Array<Asset> assets=new Array<Asset>();
+      for (      String line : lines) {
+        String[] tokens=line.split(":");
+        if (tokens.length != 2)         continue;
+        AssetType type=AssetType.Text;
+        if (tokens[0].equals("i"))         type=AssetType.Image;
+        if (tokens[0].equals("b"))         type=AssetType.Binary;
+        assets.add(new Asset(tokens[1].trim(),type));
+      }
+      loadNextAsset(assets,0,callback);
+    }
+    @Override public void error(){
+      callback.error(assetFileUrl);
+    }
+  }
+);
+}

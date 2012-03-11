@@ -1,0 +1,12 @@
+{
+  try {
+    if (!exists()) {
+      return false;
+    }
+    LocalStorage.removeItem(getCanonicalPath());
+    return true;
+  }
+ catch (  IOException e) {
+    return false;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  int foundIndex=-1;
+  for (int i=0; i < loadQueue.size(); i++) {
+    if (loadQueue.get(i).fileName.equals(fileName)) {
+      foundIndex=i;
+      break;
+    }
+  }
+  if (foundIndex != -1) {
+    loadQueue.remove(foundIndex);
+    return;
+  }
+  if (tasks.size() > 0) {
+    AssetLoadingTask currAsset=tasks.firstElement();
+    if (currAsset.assetDesc.fileName.equals(fileName)) {
+      currAsset.cancel=true;
+      return;
+    }
+  }
+  Class type=assetTypes.get(fileName);
+  if (type == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
+  RefCountedContainer assetRef=assets.get(type).get(fileName);
+  assetRef.decRefCount();
+  if (assetRef.getRefCount() <= 0) {
+    if (assetRef.getObject(Object.class) instanceof Disposable)     ((Disposable)assetRef.getObject(Object.class)).dispose();
+    assetTypes.remove(fileName);
+    assets.get(type).remove(fileName);
+  }
+ else {
+  }
+  Array<String> dependencies=assetDependencies.get(fileName);
+  if (dependencies != null) {
+    for (    String dependency : dependencies) {
+      unload(dependency);
+    }
+  }
+  if (assetRef.getRefCount() <= 0) {
+    assetDependencies.remove(fileName);
+  }
+}

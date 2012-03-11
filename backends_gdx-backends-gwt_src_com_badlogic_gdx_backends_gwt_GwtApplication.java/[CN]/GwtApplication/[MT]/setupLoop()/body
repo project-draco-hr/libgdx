@@ -1,4 +1,5 @@
 {
+  Gdx.files=new GwtFiles(preloader);
   listener.create();
   listener.resize(graphics.getWidth(),graphics.getHeight());
   new Timer(){

@@ -1,0 +1,13 @@
+{
+  AssetDescriptor assetDesc=loadQueue.remove(0);
+  if (isLoaded(assetDesc.fileName)) {
+    Class type=assetTypes.get(assetDesc.fileName);
+    RefCountedContainer assetRef=assets.get(type).get(assetDesc.fileName);
+    assetRef.incRefCount();
+    incrementRefCountedDependencies(assetDesc.fileName);
+    loaded++;
+  }
+ else {
+    addTask(assetDesc);
+  }
+}

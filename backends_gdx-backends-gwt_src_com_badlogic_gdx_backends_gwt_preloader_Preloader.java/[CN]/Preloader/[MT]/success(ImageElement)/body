@@ -1,0 +1,5 @@
+{
+  images.put(asset.url,result);
+  callback.loaded(asset.url,next + 1,assets.size);
+  loadNextAsset(assets,next + 1,callback);
+}

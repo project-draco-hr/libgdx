@@ -1,0 +1,8 @@
+{
+  try {
+    setItemImpl(key,value);
+  }
+ catch (  JavaScriptException e) {
+    throw new IOException("" + e);
+  }
+}
