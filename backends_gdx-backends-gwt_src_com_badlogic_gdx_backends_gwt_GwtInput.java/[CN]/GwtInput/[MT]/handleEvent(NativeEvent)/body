@@ -34,4 +34,18 @@
     this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
     if (processor != null)     processor.touchUp(mouseX,mouseY,0,getButton(e.getButton()));
   }
+  if (e.getType().equals("keydown")) {
+    int code=keyForCode(e.getKeyCode());
+    this.pressedKeys.add(code);
+    if (processor != null)     processor.keyDown(code);
+  }
+  if (e.getType().equals("keypress")) {
+    char c=(char)e.getCharCode();
+    if (processor != null)     processor.keyTyped(c);
+  }
+  if (e.getType().equals("keyup")) {
+    int code=keyForCode(e.getKeyCode());
+    this.pressedKeys.remove(code);
+    if (processor != null)     processor.keyUp(code);
+  }
 }
