@@ -26,7 +26,7 @@
           lastWidth=graphics.getWidth();
           lastHeight=graphics.getHeight();
         }
-        for (int i=0; i < runnables.size(); i++) {
+        for (int i=0; i < runnables.size; i++) {
           runnables.get(i).run();
         }
         runnables.clear();
