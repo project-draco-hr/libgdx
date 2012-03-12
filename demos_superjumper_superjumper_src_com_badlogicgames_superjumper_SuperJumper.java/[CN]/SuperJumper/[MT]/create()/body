@@ -1,5 +1,5 @@
 {
   Settings.load();
   Assets.load();
-  super.create();
+  setScreen(new MainMenuScreen(this));
 }
