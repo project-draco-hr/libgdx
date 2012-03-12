@@ -5,6 +5,7 @@
   root.add(canvasWidget);
   canvas.setWidth(config.width);
   canvas.setHeight(config.height);
+  this.config=config;
   WebGLContextAttributes attributes=WebGLContextAttributes.create();
   attributes.setAntialias(config.antialiasing);
   attributes.setStencil(config.stencil);
