@@ -1,0 +1,5 @@
+{
+  if (buffer.remaining() > floatBuffer.getLength()) {
+    floatBuffer=Float32Array.create(buffer.remaining());
+  }
+}

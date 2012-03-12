@@ -1,9 +1,9 @@
 {
   if (data instanceof FloatBuffer) {
-    gl.bufferData(target,Float32Array.create(((FloatBuffer)data).array(),data.position(),data.limit() - data.position()),usage);
+    gl.bufferData(target,copy((FloatBuffer)data),usage);
   }
  else   if (data instanceof ShortBuffer) {
-    gl.bufferData(target,Uint16Array.create(((ShortBuffer)data).array(),data.position(),data.limit() - data.position()),usage);
+    gl.bufferData(target,copy((ShortBuffer)data),usage);
   }
  else {
     throw new GdxRuntimeException("Can only cope with FloatBuffer and ShortBuffer at the moment");

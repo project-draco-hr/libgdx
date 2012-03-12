@@ -1,5 +1,6 @@
 {
   JsArrayNumber jsan=(JsArrayNumber)JsArrayNumber.createArray();
+  jsan.setLength(len);
   for (int i=0; i < len; i++) {
     jsan.set(i,data[i + offset]);
   }
