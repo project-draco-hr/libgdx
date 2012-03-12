@@ -1,0 +1,18 @@
+{
+  this.minProgress=minProgress;
+  this.maxProgress=maxProgress;
+  this.curProgress=curProgress;
+  setTextFormatter(textFormatter);
+  setElement(DOM.createDiv());
+  DOM.setStyleAttribute(getElement(),"position","relative");
+  setStyleName("gwt-ProgressBar-shell");
+  barElement=DOM.createDiv();
+  DOM.appendChild(getElement(),barElement);
+  DOM.setStyleAttribute(barElement,"height","100%");
+  setBarStyleName("gwt-ProgressBar-bar");
+  textElement=DOM.createDiv();
+  DOM.appendChild(getElement(),textElement);
+  DOM.setStyleAttribute(textElement,"position","absolute");
+  DOM.setStyleAttribute(textElement,"top","0px");
+  setProgress(curProgress);
+}

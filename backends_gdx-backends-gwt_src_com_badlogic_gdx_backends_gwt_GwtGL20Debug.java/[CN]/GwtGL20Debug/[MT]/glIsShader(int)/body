@@ -1,0 +1,5 @@
+{
+  boolean res=super.glIsShader(shader);
+  checkError();
+  return res;
+}

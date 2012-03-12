@@ -1,0 +1,5 @@
+{
+  String uniform=super.glGetActiveUniform(program,index,size,type);
+  checkError();
+  return uniform;
+}

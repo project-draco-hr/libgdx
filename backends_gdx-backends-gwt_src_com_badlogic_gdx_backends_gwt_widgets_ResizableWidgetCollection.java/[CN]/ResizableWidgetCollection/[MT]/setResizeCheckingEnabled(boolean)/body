@@ -1,0 +1,22 @@
+{
+  if (enabled && !resizeCheckingEnabled) {
+    resizeCheckingEnabled=true;
+    if (windowHandler == null) {
+      windowHandler=Window.addResizeHandler(new ResizeHandler(){
+        public void onResize(        ResizeEvent event){
+          onWindowResized(event.getWidth(),event.getHeight());
+        }
+      }
+);
+    }
+    resizeCheckTimer.schedule(resizeCheckDelay);
+  }
+ else   if (!enabled && resizeCheckingEnabled) {
+    resizeCheckingEnabled=false;
+    if (windowHandler != null) {
+      windowHandler.removeHandler();
+      windowHandler=null;
+    }
+    resizeCheckTimer.cancel();
+  }
+}

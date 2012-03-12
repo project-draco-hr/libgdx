@@ -1,0 +1,11 @@
+{
+  for (  Map.Entry<ResizableWidget,ResizableWidgetInfo> entry : widgets.entrySet()) {
+    ResizableWidget widget=entry.getKey();
+    ResizableWidgetInfo info=entry.getValue();
+    if (info.updateSizes()) {
+      if (info.getOffsetWidth() > 0 && info.getOffsetHeight() > 0 && widget.isAttached()) {
+        widget.onResize(info.getOffsetWidth(),info.getOffsetHeight());
+      }
+    }
+  }
+}

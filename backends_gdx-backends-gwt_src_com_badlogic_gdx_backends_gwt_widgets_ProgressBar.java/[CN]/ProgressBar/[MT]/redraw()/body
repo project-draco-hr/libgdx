@@ -1,0 +1,7 @@
+{
+  if (isAttached()) {
+    int width=DOM.getElementPropertyInt(getElement(),"clientWidth");
+    int height=DOM.getElementPropertyInt(getElement(),"clientHeight");
+    onResize(width,height);
+  }
+}

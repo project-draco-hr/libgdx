@@ -1,0 +1,8 @@
+{
+  this.curProgress=Math.max(minProgress,Math.min(maxProgress,curProgress));
+  int percent=(int)(100 * getPercent());
+  DOM.setStyleAttribute(barElement,"width",percent + "%");
+  DOM.setElementProperty(textElement,"innerHTML",generateText(curProgress));
+  updateTextStyle(percent);
+  redraw();
+}

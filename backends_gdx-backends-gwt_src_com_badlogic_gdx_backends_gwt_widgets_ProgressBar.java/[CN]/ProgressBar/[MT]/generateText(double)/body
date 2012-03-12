@@ -1,0 +1,8 @@
+{
+  if (textFormatter != null) {
+    return textFormatter.getText(this,curProgress);
+  }
+ else {
+    return (int)(100 * getPercent()) + "%";
+  }
+}

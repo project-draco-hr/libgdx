@@ -1,0 +1,5 @@
+{
+  boolean res=super.glIsBuffer(buffer);
+  checkError();
+  return res;
+}

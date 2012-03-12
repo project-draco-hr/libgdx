@@ -1,0 +1,5 @@
+{
+  DOM.setStyleAttribute(getElement(),"position","relative");
+  ResizableWidgetCollection.get().add(this);
+  redraw();
+}

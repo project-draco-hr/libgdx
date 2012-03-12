@@ -1,0 +1,8 @@
+{
+  if (percent < 50) {
+    DOM.setElementProperty(textElement,"className",textClassName + " " + textFirstHalfClassName);
+  }
+ else {
+    DOM.setElementProperty(textElement,"className",textClassName + " " + textSecondHalfClassName);
+  }
+}

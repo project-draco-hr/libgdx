@@ -1,0 +1,5 @@
+{
+  int loc=super.glGetAttribLocation(program,name);
+  checkError();
+  return loc;
+}

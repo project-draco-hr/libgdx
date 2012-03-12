@@ -1,0 +1,4 @@
+{
+  super.glCopyTexImage2D(target,level,internalformat,x,y,width,height,border);
+  checkError();
+}

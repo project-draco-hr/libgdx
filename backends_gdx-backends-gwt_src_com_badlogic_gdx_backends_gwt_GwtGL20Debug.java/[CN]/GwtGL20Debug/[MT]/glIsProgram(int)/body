@@ -1,0 +1,5 @@
+{
+  boolean res=super.glIsProgram(program);
+  checkError();
+  return res;
+}

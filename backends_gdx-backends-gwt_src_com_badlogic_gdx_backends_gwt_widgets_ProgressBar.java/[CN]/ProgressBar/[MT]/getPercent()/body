@@ -1,0 +1,7 @@
+{
+  if (maxProgress <= minProgress) {
+    return 0.0;
+  }
+  double percent=(curProgress - minProgress) / (maxProgress - minProgress);
+  return Math.max(0.0,Math.min(1.0,percent));
+}

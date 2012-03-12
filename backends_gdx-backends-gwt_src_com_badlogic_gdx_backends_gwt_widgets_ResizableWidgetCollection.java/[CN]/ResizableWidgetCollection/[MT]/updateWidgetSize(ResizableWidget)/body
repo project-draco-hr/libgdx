@@ -1,0 +1,9 @@
+{
+  if (!widget.isAttached()) {
+    return;
+  }
+  ResizableWidgetInfo info=widgets.get(widget);
+  if (info != null) {
+    info.updateSizes();
+  }
+}

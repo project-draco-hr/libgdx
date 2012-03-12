@@ -1,0 +1,5 @@
+{
+  this.maxProgress=maxProgress;
+  curProgress=Math.min(curProgress,maxProgress);
+  resetProgress();
+}

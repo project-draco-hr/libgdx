@@ -1,0 +1,6 @@
+{
+  if (staticCollection == null) {
+    staticCollection=new ResizableWidgetCollection();
+  }
+  return staticCollection;
+}

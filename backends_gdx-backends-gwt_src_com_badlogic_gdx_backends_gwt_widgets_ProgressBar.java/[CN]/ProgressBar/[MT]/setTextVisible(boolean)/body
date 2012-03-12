@@ -1,0 +1,10 @@
+{
+  this.textVisible=textVisible;
+  if (this.textVisible) {
+    DOM.setStyleAttribute(textElement,"display","");
+    redraw();
+  }
+ else {
+    DOM.setStyleAttribute(textElement,"display","none");
+  }
+}

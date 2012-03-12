@@ -1,0 +1,5 @@
+{
+  String attrib=super.glGetActiveAttrib(program,index,size,type);
+  checkError();
+  return attrib;
+}

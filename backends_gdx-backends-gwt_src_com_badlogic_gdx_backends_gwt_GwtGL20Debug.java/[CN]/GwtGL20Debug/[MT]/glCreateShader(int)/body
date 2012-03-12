@@ -1,0 +1,5 @@
+{
+  int shader=super.glCreateShader(type);
+  checkError();
+  return shader;
+}

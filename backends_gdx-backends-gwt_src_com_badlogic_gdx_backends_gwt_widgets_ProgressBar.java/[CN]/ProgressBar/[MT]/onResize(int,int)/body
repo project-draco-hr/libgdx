@@ -1,0 +1,7 @@
+{
+  if (textVisible) {
+    int textWidth=DOM.getElementPropertyInt(textElement,"offsetWidth");
+    int left=(width / 2) - (textWidth / 2);
+    DOM.setStyleAttribute(textElement,"left",left + "px");
+  }
+}

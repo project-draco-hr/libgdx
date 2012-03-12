@@ -1,0 +1,5 @@
+{
+  String info=super.glGetShaderInfoLog(shader);
+  checkError();
+  return info;
+}
