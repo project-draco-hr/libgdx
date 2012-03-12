@@ -1,4 +1,7 @@
 {
+  Preferences pref=Gdx.app.getPreferences("test");
+  boolean resultb=pref.getBoolean("test");
+  int resulti=pref.getInteger("test");
   shader=new ShaderProgram(Gdx.files.internal("data/shaders/shader-vs.glsl"),Gdx.files.internal("data/shaders/shader-fs.glsl"));
   if (!shader.isCompiled())   throw new GdxRuntimeException(shader.getLog());
   mesh=new Mesh(VertexDataType.VertexBufferObject,true,6,0,VertexAttribute.Position(),VertexAttribute.TexCoords(0));

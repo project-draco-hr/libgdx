@@ -1,12 +1,13 @@
 {
   if (!supportsDisplayModeChange())   return false;
   if (!fullscreen) {
-    setWindowedMode(width,height);
+    isFullscreen=false;
+    return setWindowedMode(width,height);
   }
  else {
     DisplayMode mode=findBestMatch(width,height);
     if (mode == null)     return false;
-    setDisplayMode(mode);
+    isFullscreen=true;
+    return setDisplayMode(mode);
   }
-  return false;
 }
