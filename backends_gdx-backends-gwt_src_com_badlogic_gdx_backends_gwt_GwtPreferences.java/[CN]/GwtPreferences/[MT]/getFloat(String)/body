@@ -1,3 +1,4 @@
 {
-  return (Float)values.get(key);
+  Float v=(Float)values.get(key);
+  return v == null ? 0 : v;
 }

@@ -1,3 +1,4 @@
 {
-  return (Boolean)values.get(key);
+  Boolean v=(Boolean)values.get(key);
+  return v == null ? false : v;
 }

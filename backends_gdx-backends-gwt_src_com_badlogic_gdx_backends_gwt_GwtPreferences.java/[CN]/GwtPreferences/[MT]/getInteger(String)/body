@@ -1,3 +1,4 @@
 {
-  return (Integer)values.get(key);
+  Integer v=(Integer)values.get(key);
+  return v == null ? 0 : v;
 }
