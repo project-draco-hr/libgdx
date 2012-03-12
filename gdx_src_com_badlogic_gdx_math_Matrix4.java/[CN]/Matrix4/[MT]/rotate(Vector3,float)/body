@@ -1,5 +1,5 @@
 {
   if (angle == 0)   return this;
-  quat.set(tmpV.set(axisX,axisY,axisZ),angle);
+  quat.set(axis,angle);
   return rotate(quat);
 }
