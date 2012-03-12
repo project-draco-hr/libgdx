@@ -7,7 +7,6 @@
   shader.setUniformi("u_texture",0);
   mesh.render(shader,GL20.GL_TRIANGLES);
   shader.end();
-  System.out.println(Gdx.graphics.getFramesPerSecond());
   batch.begin();
   batch.draw(atlas.findRegion("font"),0,100);
   sprite.rotate(Gdx.graphics.getDeltaTime() * 45);
@@ -15,7 +14,7 @@
     sprite.setPosition(position.x,position.y);
     sprite.draw(batch);
   }
-  font.draw(batch,"fps:" + Gdx.graphics.getFramesPerSecond() + ", delta: "+ Gdx.graphics.getDeltaTime(),0,30);
+  font.draw(batch,"fps:" + Gdx.graphics.getFramesPerSecond() + ", delta: "+ Gdx.graphics.getDeltaTime()+ ", #sprites: "+ numSprites,0,30);
   cache.setPosition(200,200);
   cache.draw(batch);
   batch.end();
