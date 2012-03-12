@@ -1,0 +1,6 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  renderer.begin(ShapeType.FilledRectangle);
+  renderer.filledRect(Gdx.input.getX(),Gdx.input.getY(),30,30);
+  renderer.end();
+}
