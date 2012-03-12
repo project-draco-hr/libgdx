@@ -1,0 +1,9 @@
+{
+  addEventListener(canvas,"mousedown",this,true);
+  addEventListener(Document.get(),"mousedown",this,true);
+  addEventListener(canvas,"mouseup",this,true);
+  addEventListener(Document.get(),"mouseup",this,true);
+  addEventListener(canvas,"mousemove",this,true);
+  addEventListener(Document.get(),"mousemove",this,true);
+  addEventListener(canvas,getMouseWheelEvent(),this,true);
+}

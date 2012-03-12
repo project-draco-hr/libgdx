@@ -1,4 +1,5 @@
 {
+  this.agentInfo=computeAgentInfo();
   this.listener=getApplicationListener();
   this.config=getConfig();
   this.root=config.rootPanel != null ? config.rootPanel : RootPanel.get();

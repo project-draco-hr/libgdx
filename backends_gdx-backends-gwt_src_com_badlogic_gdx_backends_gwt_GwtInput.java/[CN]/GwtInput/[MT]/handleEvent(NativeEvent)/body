@@ -1,0 +1,37 @@
+{
+  if (e.getType().equals("mousedown")) {
+    if (!e.getEventTarget().equals(canvas))     return;
+    this.justTouched=true;
+    this.touched=true;
+    this.pressedButtons.add(getButton(e.getButton()));
+    this.deltaX=0;
+    this.deltaY=0;
+    this.mouseX=(int)getRelativeX(e,canvas);
+    this.mouseY=(int)getRelativeY(e,canvas);
+    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    if (processor != null)     processor.touchDown(mouseX,mouseY,0,getButton(e.getButton()));
+  }
+  if (e.getType().equals("mousemove")) {
+    if (!e.getEventTarget().equals(canvas) && !touched)     return;
+    this.deltaX=(int)getRelativeX(e,canvas) - mouseX;
+    this.deltaY=(int)getRelativeY(e,canvas) - mouseY;
+    this.mouseX=(int)getRelativeX(e,canvas);
+    this.mouseY=(int)getRelativeY(e,canvas);
+    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    if (processor != null) {
+      if (touched)       processor.touchDragged(mouseX,mouseY,0);
+ else       processor.touchMoved(mouseX,mouseY);
+    }
+  }
+  if (e.getType().equals("mouseup")) {
+    if (!e.getEventTarget().equals(canvas) && !touched)     return;
+    this.pressedButtons.remove(getButton(e.getButton()));
+    this.touched=pressedButtons.size() > 0;
+    this.deltaX=(int)getRelativeX(e,canvas) - mouseX;
+    this.deltaY=(int)getRelativeY(e,canvas) - mouseY;
+    this.mouseX=(int)getRelativeX(e,canvas);
+    this.mouseY=(int)getRelativeY(e,canvas);
+    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    if (processor != null)     processor.touchUp(mouseX,mouseY,0,getButton(e.getButton()));
+  }
+}

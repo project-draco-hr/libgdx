@@ -7,6 +7,7 @@
   Gdx.gl20=graphics.getGL20();
   Gdx.gl=graphics.getGLCommon();
   Gdx.files=new GwtFiles(preloader);
+  Gdx.input=new GwtInput(graphics.canvas);
   try {
     listener.create();
     listener.resize(graphics.getWidth(),graphics.getHeight());
@@ -29,6 +30,7 @@
         }
         runnables.clear();
         listener.render();
+        ((GwtInput)Gdx.input).justTouched=false;
       }
  catch (      Throwable t) {
         t.printStackTrace();
