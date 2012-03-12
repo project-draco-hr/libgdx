@@ -1,0 +1,4 @@
+{
+  Integer res=(Integer)values.get(key);
+  return res == null ? defValue : res;
+}

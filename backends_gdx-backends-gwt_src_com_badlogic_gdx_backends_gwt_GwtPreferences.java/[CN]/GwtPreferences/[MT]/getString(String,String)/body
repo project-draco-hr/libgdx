@@ -1,0 +1,4 @@
+{
+  String res=(String)values.get(key);
+  return res == null ? defValue : res;
+}

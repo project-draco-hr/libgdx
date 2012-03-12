@@ -1,0 +1,4 @@
+{
+  Float res=(Float)values.get(key);
+  return res == null ? defValue : res;
+}

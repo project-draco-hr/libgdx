@@ -1,0 +1,4 @@
+{
+  Boolean res=(Boolean)values.get(key);
+  return res == null ? defValue : res;
+}

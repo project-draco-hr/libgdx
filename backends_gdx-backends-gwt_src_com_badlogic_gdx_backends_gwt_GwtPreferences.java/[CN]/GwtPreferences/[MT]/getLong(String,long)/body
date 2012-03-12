@@ -1,0 +1,4 @@
+{
+  Long res=(Long)values.get(key);
+  return res == null ? defValue : res;
+}
