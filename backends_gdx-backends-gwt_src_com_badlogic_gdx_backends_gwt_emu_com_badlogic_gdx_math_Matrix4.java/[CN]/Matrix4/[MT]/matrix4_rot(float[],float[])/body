@@ -1,0 +1,8 @@
+{
+  float x=vec[0] * mat[M00] + vec[1] * mat[M01] + vec[2] * mat[M02];
+  float y=vec[0] * mat[M10] + vec[1] * mat[M11] + vec[2] * mat[M12];
+  float z=vec[0] * mat[M20] + vec[1] * mat[M21] + vec[2] * mat[M22];
+  vec[0]=x;
+  vec[1]=y;
+  vec[2]=z;
+}

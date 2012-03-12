@@ -1,0 +1,6 @@
+{
+  tmpVec.set(target).sub(position);
+  setToLookAt(tmpVec,up);
+  this.mul(tmpMat.setToTranslation(position.tmp().mul(-1)));
+  return this;
+}

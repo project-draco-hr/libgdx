@@ -8,6 +8,7 @@
   Gdx.gl=graphics.getGLCommon();
   Gdx.files=new GwtFiles(preloader);
   Gdx.input=new GwtInput(graphics.canvas);
+  Gdx.audio=new GwtAudio();
   try {
     listener.create();
     listener.resize(graphics.getWidth(),graphics.getHeight());
