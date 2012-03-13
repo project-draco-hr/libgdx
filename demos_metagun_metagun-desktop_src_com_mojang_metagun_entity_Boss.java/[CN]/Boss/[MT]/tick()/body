@@ -13,8 +13,8 @@
     }
   }
  else   if (time % 60 > 20 && time % 60 < 40 && time % 4 == 0) {
-    double xd=(level.player.x + level.player.w / 2) - (x + w / 2);
-    double yd=(level.player.y + level.player.h / 2) - (y + h / 2);
+    double xd=level.player.x + level.player.w / 2 - (x + w / 2);
+    double yd=level.player.y + level.player.h / 2 - (y + h / 2);
     double dd=Math.sqrt(xd * xd + yd * yd);
     xd/=dd;
     yd/=dd;

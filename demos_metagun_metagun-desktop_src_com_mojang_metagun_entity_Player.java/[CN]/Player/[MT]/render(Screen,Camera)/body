@@ -10,7 +10,7 @@
     yp+=yya;
   }
   g.draw(sheet[3 + stepFrame][hatCount > 0 ? 0 : 1],xp,yp);
-  yp+=(stepFrame == 3 ? 1 : 0);
+  yp+=stepFrame == 3 ? 1 : 0;
   for (int i=1; i < hatCount; i++) {
     g.draw(sheet[0][1],xp,yp - i * 2);
   }

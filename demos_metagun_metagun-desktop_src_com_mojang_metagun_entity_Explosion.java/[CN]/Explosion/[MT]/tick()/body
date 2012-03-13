@@ -4,7 +4,7 @@
     return;
   }
   if (life++ >= duration)   remove();
-  interactsWithWorld=(life > 10);
+  interactsWithWorld=life > 10;
   onGround=false;
   x+=xa;
   y+=ya;

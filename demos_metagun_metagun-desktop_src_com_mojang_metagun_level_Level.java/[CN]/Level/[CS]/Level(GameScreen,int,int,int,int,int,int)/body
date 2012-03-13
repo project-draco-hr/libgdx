@@ -51,7 +51,7 @@
         add(new Hat(x * 10 + 1,y * 10 + 5,xo * 31 + x,yo * 23 + y));
       }
  else       if ((col & 0x00ffff) == 0x00ff00 && (col & 0xff0000) > 0) {
-        add(new Sign(x * 10,y * 10,(col >> 16) & 0xff));
+        add(new Sign(x * 10,y * 10,col >> 16 & 0xff));
       }
  else       if (col == 0x0000ff) {
         this.xSpawn=x * 10 + 1;

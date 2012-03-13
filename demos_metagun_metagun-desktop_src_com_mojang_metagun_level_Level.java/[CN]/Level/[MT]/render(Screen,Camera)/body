@@ -25,11 +25,11 @@
           yimg=1;
         }
         if (w == 6) {
-          ximg=(tick / 4 + x * 2) & 3;
+          ximg=tick / 4 + x * 2 & 3;
           yimg=2;
         }
         if (w == 7) {
-          ximg=(-tick / 4 + x * 2) & 3;
+          ximg=-tick / 4 + x * 2 & 3;
           yimg=3;
         }
         if (w == 4) {

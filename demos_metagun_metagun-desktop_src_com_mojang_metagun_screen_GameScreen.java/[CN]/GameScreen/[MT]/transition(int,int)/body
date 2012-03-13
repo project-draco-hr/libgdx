@@ -10,7 +10,7 @@
   level.player.y-=ya * 220;
   hatCount=level.player.hatCount;
   if (ya != 0)   level.player.y-=10;
-  Level newLevel=new Level(this,32,24,xLevel,yLevel,(int)(level.player.x),(int)(level.player.y + ya * 5));
+  Level newLevel=new Level(this,32,24,xLevel,yLevel,(int)level.player.x,(int)(level.player.y + ya * 5));
   newLevel.player.remove();
   newLevel.player=level.player;
   newLevel.add(newLevel.player);

@@ -4,7 +4,7 @@
   this.w=1;
   this.h=1;
   bounce=0.2;
-  this.xa=(xa + (random.nextDouble() - random.nextDouble()) * 0.2);
-  this.ya=(ya + (random.nextDouble() - random.nextDouble()) * 0.2);
+  this.xa=xa + (random.nextDouble() - random.nextDouble()) * 0.2;
+  this.ya=ya + (random.nextDouble() - random.nextDouble()) * 0.2;
   life=random.nextInt(20) + 10;
 }
