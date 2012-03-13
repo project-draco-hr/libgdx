@@ -1,3 +1,4 @@
 {
+  Gdx.app.setLogLevel(Application.LOG_DEBUG);
   new LwjglApplication(new Cubocy(),"Cubocy",480,320,true);
 }
