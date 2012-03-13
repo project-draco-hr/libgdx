@@ -3,15 +3,18 @@
   this.listener=getApplicationListener();
   this.config=getConfig();
   this.root=config.rootPanel != null ? config.rootPanel : RootPanel.get();
+  final PreloaderCallback callback=getPreloaderCallback();
   preloader=new Preloader();
   preloader.preload("assets.txt",new PreloaderCallback(){
     @Override public void loaded(    String file,    int loaded,    int total){
-      System.out.println("loaded " + file + ","+ loaded+ ","+ total);
+      callback.loaded(file,loaded,total);
     }
     @Override public void error(    String file){
-      System.out.println("error: " + file);
+      callback.error(file);
     }
     @Override public void done(){
+      callback.done();
+      root.clear();
       setupLoop();
     }
   }
