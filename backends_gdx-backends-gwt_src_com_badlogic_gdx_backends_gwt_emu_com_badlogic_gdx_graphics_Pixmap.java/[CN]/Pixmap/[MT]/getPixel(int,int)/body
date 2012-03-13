@@ -1,3 +1,9 @@
 {
-  return 0;
+  if (pixels == null)   pixels=context.getImageData(0,0,width,height).getData();
+  int i=x * 4 + y * width * 4;
+  int r=pixels.get(i + 0);
+  int g=pixels.get(i + 1);
+  int b=pixels.get(i + 2);
+  int a=pixels.get(i + 3);
+  return (a << 24) | (r << 16) | (g << 8)| (b);
 }

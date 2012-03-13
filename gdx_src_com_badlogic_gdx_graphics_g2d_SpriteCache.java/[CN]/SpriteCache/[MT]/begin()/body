@@ -14,7 +14,6 @@
     combinedMatrix.set(projectionMatrix).mul(transformMatrix);
     GL20 gl=Gdx.gl20;
     gl.glDepthMask(false);
-    gl.glEnable(GL20.GL_TEXTURE_2D);
     if (customShader != null) {
       customShader.begin();
       customShader.setUniformMatrix("u_proj",projectionMatrix);
