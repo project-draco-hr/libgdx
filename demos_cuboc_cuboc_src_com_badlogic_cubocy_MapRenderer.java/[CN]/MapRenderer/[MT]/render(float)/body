@@ -14,7 +14,7 @@
     }
   }
   cache.end();
-  Gdx.app.log("Cubocy","blocks: " + b);
+  Gdx.app.debug("Cubocy","blocks: " + b);
   stateTime+=deltaTime;
   batch.setProjectionMatrix(cam.combined);
   batch.begin();

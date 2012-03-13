@@ -17,5 +17,5 @@
       blocks[blockX][blockY]=cache.endCache();
     }
   }
-  System.out.println("blocks created");
+  Gdx.app.debug("Cubocy","blocks created");
 }
