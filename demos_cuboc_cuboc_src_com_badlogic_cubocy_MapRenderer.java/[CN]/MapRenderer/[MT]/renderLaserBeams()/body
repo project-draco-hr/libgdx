@@ -1,6 +1,6 @@
 {
-  cam.apply(Gdx.gl10);
-  renderer.begin(GL10.GL_LINES);
+  cam.update(false);
+  renderer.begin(cam.combined,GL10.GL_LINES);
   for (int i=0; i < map.lasers.size; i++) {
     Laser laser=map.lasers.get(i);
     float sx=laser.startPoint.x, sy=laser.startPoint.y;
