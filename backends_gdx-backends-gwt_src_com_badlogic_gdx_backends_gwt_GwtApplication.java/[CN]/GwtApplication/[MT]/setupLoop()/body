@@ -16,14 +16,8 @@
   Gdx.files=new GwtFiles(preloader);
   Gdx.input=new GwtInput(graphics.canvas);
   Gdx.audio=new GwtAudio();
-  try {
-    listener.create();
-    listener.resize(graphics.getWidth(),graphics.getHeight());
-  }
- catch (  Throwable t) {
-    t.printStackTrace();
-    System.out.println(t.getMessage());
-  }
+  listener.create();
+  listener.resize(graphics.getWidth(),graphics.getHeight());
   new Timer(){
     @Override public void run(){
       try {
@@ -41,6 +35,7 @@
         ((GwtInput)Gdx.input).justTouched=false;
       }
  catch (      Throwable t) {
+        error("GwtApplication","exception: " + t.getMessage(),t);
         t.printStackTrace();
       }
     }

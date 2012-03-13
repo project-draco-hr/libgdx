@@ -1,2 +1,9 @@
 {
+  if (logLevel >= LOG_DEBUG) {
+    checkLogLabel();
+    log.setText(log.getText() + "\n" + tag+ ": "+ message+ "\n"+ exception.getMessage()+ "\n");
+    log.setCursorPos(log.getText().length() - 1);
+    System.out.println(tag + ": " + message+ "\n"+ exception.getMessage());
+    System.out.println(getStackTrace(exception));
+  }
 }

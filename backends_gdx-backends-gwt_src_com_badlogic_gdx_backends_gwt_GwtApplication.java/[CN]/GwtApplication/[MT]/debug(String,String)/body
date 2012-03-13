@@ -1,2 +1,8 @@
 {
+  if (logLevel >= LOG_DEBUG) {
+    checkLogLabel();
+    log.setText(log.getText() + "\n" + tag+ ": "+ message+ "\n");
+    log.setCursorPos(log.getText().length() - 1);
+    System.out.println(tag + ": " + message+ "\n");
+  }
 }
