@@ -1,6 +1,6 @@
 {
   if (!isInitialized) {
-    screen=new MainMenu(Gdx.app);
+    setScreen(new MainMenu());
     Music music=Gdx.audio.newMusic(Gdx.files.getFileHandle("data/8.12.mp3",FileType.Internal));
     music.setLooping(true);
     music.play();

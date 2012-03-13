@@ -1,0 +1,10 @@
+{
+  if (ship.isExploding)   return;
+  shipTexture.bind();
+  gl.glPushMatrix();
+  gl.glTranslatef(ship.position.x,ship.position.y,ship.position.z);
+  gl.glRotatef(45 * (-Gdx.input.getAccelerometerY() / 5),0,0,1);
+  gl.glRotatef(180,0,1,0);
+  shipMesh.render(GL10.GL_TRIANGLES);
+  gl.glPopMatrix();
+}

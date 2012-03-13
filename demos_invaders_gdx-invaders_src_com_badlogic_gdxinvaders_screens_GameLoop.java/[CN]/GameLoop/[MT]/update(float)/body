@@ -1,0 +1,9 @@
+{
+  simulation.update(delta);
+  float accelerometerY=Gdx.input.getAccelerometerY();
+  if (accelerometerY < 0)   simulation.moveShipLeft(delta,Math.abs(accelerometerY) / 10);
+ else   simulation.moveShipRight(delta,Math.abs(accelerometerY) / 10);
+  if (Gdx.input.isKeyPressed(Keys.DPAD_LEFT))   simulation.moveShipLeft(delta,0.5f);
+  if (Gdx.input.isKeyPressed(Keys.DPAD_RIGHT))   simulation.moveShipRight(delta,0.5f);
+  if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.SPACE))   simulation.shot();
+}
