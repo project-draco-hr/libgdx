@@ -1,0 +1,3 @@
+{
+  return blending == Blending.None ? Composite.COPY : Composite.SOURCE_OVER;
+}

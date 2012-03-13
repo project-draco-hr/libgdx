@@ -6,7 +6,7 @@
   canvas.getCanvasElement().setWidth(width);
   canvas.getCanvasElement().setHeight(height);
   context=canvas.getContext2d();
-  context.setGlobalCompositeOperation(Composite.SOURCE_OVER);
+  context.setGlobalCompositeOperation(getComposite());
   buffer=BufferUtils.newIntBuffer(1);
   id=nextId++;
   buffer.put(0,id);

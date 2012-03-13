@@ -1,3 +1,7 @@
 {
   Pixmap.blending=blending;
+  Composite composite=getComposite();
+  for (  Pixmap pixmap : pixmaps.values()) {
+    pixmap.context.setGlobalCompositeOperation(composite);
+  }
 }
