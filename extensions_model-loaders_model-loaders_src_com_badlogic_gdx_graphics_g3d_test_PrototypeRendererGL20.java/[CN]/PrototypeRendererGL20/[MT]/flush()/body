@@ -1,14 +1,27 @@
 {
   drawing=false;
   lightManager.applyGlobalLights(shader);
-  for (int i=0; i < stillModelQueue.size; i++) {
-    final StillModelInstance instance=stillModelInstances.items[i];
-    shader.setUniformMatrix("u_modelMatrix",instance.getTransform(),false);
-    lightManager.calculateAndApplyLightsToModel(instance.getSortCenter(),shader);
-    stillModelQueue.items[i].render(shader);
+  for (int i=0; i < animatedModelQueue.size; i++) {
+    final AnimatedModelInstance instance=animatedModelInstances.items[i];
+    final String name=instance.getAnimation();
+    final float time=instance.getAnimationTime();
+    boolean looping=instance.isLooping();
+    final AnimatedModel model=animatedModelQueue.items[i];
+    model.setAnimation(name,time,looping);
+    modelQueue.add(model);
   }
-  stillModelQueue.clear();
-  stillModelInstances.clear();
   animatedModelQueue.clear();
   animatedModelInstances.clear();
+  shader.begin();
+  for (int i=0; i < modelQueue.size; i++) {
+    final StillModelInstance instance=stillModelInstances.items[i];
+    final Matrix4 modelMatrix=instance.getTransform();
+    shader.setUniformMatrix("u_normalMatrix",normalMatrix.set(modelMatrix),false);
+    shader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
+    lightManager.calculateAndApplyLightsToModel(instance.getSortCenter(),shader);
+    modelQueue.items[i].render(shader);
+  }
+  shader.end();
+  modelQueue.clear();
+  stillModelInstances.clear();
 }

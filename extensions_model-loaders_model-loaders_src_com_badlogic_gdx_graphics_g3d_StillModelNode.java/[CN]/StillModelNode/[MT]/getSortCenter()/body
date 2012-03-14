@@ -1,0 +1,10 @@
+{
+  vec3[0]=origin.x;
+  vec3[1]=origin.y;
+  vec3[2]=origin.z;
+  Matrix4.mulVec(matrix.val,vec3);
+  transformedPosition.x=vec3[0];
+  transformedPosition.y=vec3[1];
+  transformedPosition.z=vec3[2];
+  return transformedPosition;
+}

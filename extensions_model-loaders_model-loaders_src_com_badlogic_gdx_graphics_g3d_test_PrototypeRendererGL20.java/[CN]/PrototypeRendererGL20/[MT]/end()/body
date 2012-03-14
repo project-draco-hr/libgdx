@@ -1,3 +1,19 @@
 {
+  if (cam != null) {
+    for (int i=modelQueue.size - 1; i >= 0; i--) {
+      final StillModelInstance instance=stillModelInstances.items[i];
+      if (!cam.frustum.sphereInFrustum(instance.getSortCenter(),instance.getBoundingSphereRadius())) {
+        stillModelInstances.removeIndex(i);
+        modelQueue.removeIndex(i);
+      }
+    }
+    for (int i=animatedModelInstances.size - 1; i >= 0; i--) {
+      final StillModelInstance instance=animatedModelInstances.items[i];
+      if (!cam.frustum.sphereInFrustum(instance.getSortCenter(),instance.getBoundingSphereRadius())) {
+        animatedModelInstances.removeIndex(i);
+        animatedModelQueue.removeIndex(i);
+      }
+    }
+  }
   flush();
 }
