@@ -1,0 +1,16 @@
+{
+  this.prefix=prefix + ":";
+  int prefixLength=this.prefix.length();
+  try {
+    for (int i=0; i < LocalStorage.length(); i++) {
+      String key=LocalStorage.key(i);
+      if (key.startsWith(prefix)) {
+        String value=LocalStorage.getItem(key);
+        values.put(key.substring(prefixLength,key.length() - 1),toObject(key,value));
+      }
+    }
+  }
+ catch (  Exception e) {
+    values.clear();
+  }
+}

@@ -1,7 +1,7 @@
 {
   Preferences pref=prefs.get(name);
   if (pref == null) {
-    pref=new GwtPreferences();
+    pref=new GwtPreferences(name);
     prefs.put(name,pref);
   }
   return pref;
