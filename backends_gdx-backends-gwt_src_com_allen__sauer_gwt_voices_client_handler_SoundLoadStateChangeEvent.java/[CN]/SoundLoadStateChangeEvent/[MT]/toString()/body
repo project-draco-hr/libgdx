@@ -1,0 +1,4 @@
+{
+  Sound sound=(Sound)getSource();
+  return StringUtil.getSimpleName(SoundLoadStateChangeEvent.class) + ": " + sound+ "; "+ loadState.name();
+}

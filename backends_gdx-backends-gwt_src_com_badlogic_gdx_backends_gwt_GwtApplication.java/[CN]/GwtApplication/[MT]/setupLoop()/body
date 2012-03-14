@@ -16,8 +16,15 @@
   Gdx.files=new GwtFiles(preloader);
   Gdx.input=new GwtInput(graphics.canvas);
   Gdx.audio=new GwtAudio();
-  listener.create();
-  listener.resize(graphics.getWidth(),graphics.getHeight());
+  try {
+    listener.create();
+    listener.resize(graphics.getWidth(),graphics.getHeight());
+  }
+ catch (  Throwable t) {
+    error("GwtApplication","exception: " + t.getMessage(),t);
+    t.printStackTrace();
+    throw new RuntimeException(t);
+  }
   new Timer(){
     @Override public void run(){
       try {
@@ -36,7 +43,7 @@
       }
  catch (      Throwable t) {
         error("GwtApplication","exception: " + t.getMessage(),t);
-        t.printStackTrace();
+        throw new RuntimeException(t);
       }
     }
   }

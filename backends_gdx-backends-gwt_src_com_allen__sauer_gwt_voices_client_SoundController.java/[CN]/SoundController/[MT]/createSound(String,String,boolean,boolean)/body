@@ -1,0 +1,5 @@
+{
+  Sound sound=createSoundImpl(mimeType,url,streaming,crossOrigin);
+  sound.setVolume(defaultVolume);
+  return sound;
+}

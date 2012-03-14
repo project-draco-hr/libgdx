@@ -1,0 +1,36 @@
+{
+  Sound sound=null;
+  for (  SoundType c : preferredSoundTypes) {
+switch (c) {
+case HTML5:
+      sound=createSoundImplHtml5(mimeType,url,streaming,crossOrigin);
+    break;
+case FLASH:
+  sound=createSoundImplFlash(mimeType,url,streaming,crossOrigin);
+break;
+case NATIVE:
+sound=createSoundImplWebAudio(mimeType,url,streaming,crossOrigin);
+break;
+case WEB_AUDIO:
+sound=createSoundImplWebAudio(mimeType,url,streaming,crossOrigin);
+break;
+}
+if (sound != null) {
+return sound;
+}
+}
+sound=createSoundImplWebAudio(mimeType,url,streaming,crossOrigin);
+if (sound != null) {
+return sound;
+}
+sound=createSoundImplFlash(mimeType,url,streaming,crossOrigin);
+if (sound != null) {
+return sound;
+}
+sound=createSoundImplHtml5(mimeType,url,streaming,crossOrigin);
+if (sound != null) {
+return sound;
+}
+sound=new NativeSound(mimeType,url,streaming,crossOrigin,soundContainer);
+return sound;
+}

@@ -1,0 +1,14 @@
+{
+  AudioElement elem=audio.getAudioElement();
+  elem.pause();
+  try {
+    elem.setCurrentTime(0);
+  }
+ catch (  Exception ignore) {
+  }
+  if (elem.getCurrentTime() != 0) {
+    createAudioElement();
+  }
+  elem.play();
+  return true;
+}

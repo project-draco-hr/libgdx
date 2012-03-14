@@ -1,0 +1,5 @@
+{
+  String url=((GwtApplication)Gdx.app).getBaseUrl() + file.path();
+  String mimeType=getMimeType(file.extension());
+  sound=soundController.createSound(mimeType,url,false,false);
+}

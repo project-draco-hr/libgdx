@@ -1,0 +1,8 @@
+{
+  if (flashSupport == MIME_TYPE_SUPPORT_READY) {
+    doCreateSound(flashSound);
+  }
+ else {
+    unitializedSoundList.add(flashSound);
+  }
+}

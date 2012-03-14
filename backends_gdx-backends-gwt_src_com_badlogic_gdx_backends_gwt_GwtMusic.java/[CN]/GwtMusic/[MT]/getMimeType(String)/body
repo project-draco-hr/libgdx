@@ -1,0 +1,6 @@
+{
+  if (extension.toLowerCase().equals("wav"))   return Sound.MIME_TYPE_AUDIO_WAV_PCM;
+  if (extension.toLowerCase().equals("ogg"))   return Sound.MIME_TYPE_AUDIO_OGG_VORBIS;
+  if (extension.toLowerCase().equals("mp3"))   return Sound.MIME_TYPE_AUDIO_MPEG_MP3;
+  return Sound.MIME_TYPE_AUDIO_WAV_UNKNOWN;
+}

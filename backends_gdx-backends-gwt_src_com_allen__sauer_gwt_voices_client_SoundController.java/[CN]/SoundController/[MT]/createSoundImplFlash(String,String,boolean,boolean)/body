@@ -1,0 +1,14 @@
+{
+  if (url.startsWith("data:")) {
+    return null;
+  }
+  if (FlashMovie.isExternalInterfaceSupported()) {
+    VoicesMovie vm=getVoicesMovie();
+    MimeTypeSupport mimeTypeSupport=vm.getMimeTypeSupport(mimeType);
+    if (mimeTypeSupport == MimeTypeSupport.MIME_TYPE_SUPPORT_READY || mimeTypeSupport == MimeTypeSupport.MIME_TYPE_SUPPORT_NOT_READY) {
+      FlashSound sound=new FlashSound(mimeType,url,streaming,crossOrigin,vm);
+      return sound;
+    }
+  }
+  return null;
+}

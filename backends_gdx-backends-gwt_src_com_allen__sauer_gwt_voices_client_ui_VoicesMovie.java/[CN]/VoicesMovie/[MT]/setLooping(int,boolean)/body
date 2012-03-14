@@ -1,0 +1,5 @@
+{
+  if (flashSupport == MIME_TYPE_SUPPORT_READY) {
+    callSetLooping(id,looping ? Integer.MAX_VALUE : 0);
+  }
+}

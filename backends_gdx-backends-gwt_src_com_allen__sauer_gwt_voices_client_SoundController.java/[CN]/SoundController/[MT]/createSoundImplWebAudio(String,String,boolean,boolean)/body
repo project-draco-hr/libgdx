@@ -1,0 +1,6 @@
+{
+  if (WebAudioSound.getMimeTypeSupport(mimeType) == MimeTypeSupport.MIME_TYPE_SUPPORT_READY) {
+    return new WebAudioSound(mimeType,url,streaming,crossOrigin);
+  }
+  return null;
+}

@@ -1,3 +1,5 @@
 {
+  sound.play();
+  sound.setVolume(((int)volume * 100));
   return 0;
 }

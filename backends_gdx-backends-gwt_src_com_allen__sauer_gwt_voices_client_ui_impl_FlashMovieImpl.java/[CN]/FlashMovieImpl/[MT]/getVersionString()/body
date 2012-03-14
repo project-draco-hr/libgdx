@@ -1,0 +1,4 @@
+{
+  String rawVersionString=getRawVersionString();
+  return rawVersionString == null ? null : rawVersionString.replaceAll("\\D*(\\d+)","$1,").replaceFirst(",$","");
+}

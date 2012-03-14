@@ -1,0 +1,6 @@
+{
+  if (!soundRegistered) {
+    voicesMovie.registerSound(this);
+    soundRegistered=true;
+  }
+}

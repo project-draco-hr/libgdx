@@ -1,0 +1,4 @@
+{
+  String versionString=getVersionString();
+  return versionString == null ? 0 : Integer.parseInt(versionString.replaceFirst(",.*",""));
+}

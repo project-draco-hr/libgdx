@@ -1,0 +1,6 @@
+{
+  if (Html5Sound.getMimeTypeSupport(mimeType) == MimeTypeSupport.MIME_TYPE_SUPPORT_READY) {
+    return new Html5Sound(mimeType,url,streaming,crossOrigin);
+  }
+  return null;
+}

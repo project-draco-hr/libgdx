@@ -1,0 +1,5 @@
+{
+  if (!StringUtil.contains(MIME_TYPES_BGSOUND_NO_VOLUME_CONTROL,mimeType)) {
+    super.preload(soundControllerElement,mimeType,url);
+  }
+}

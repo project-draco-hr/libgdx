@@ -1,0 +1,6 @@
+{
+  System.out.println(text);
+  if (!GWT.isProdMode()) {
+    consoleDebug(text);
+  }
+}

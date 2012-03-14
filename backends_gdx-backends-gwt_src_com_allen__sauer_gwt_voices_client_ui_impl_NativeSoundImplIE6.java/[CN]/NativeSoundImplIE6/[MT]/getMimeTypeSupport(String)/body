@@ -1,0 +1,3 @@
+{
+  return StringUtil.contains(BGSOUND_SUPPORTED_MIME_TYPES,mimeType) ? MIME_TYPE_SUPPORT_READY : MIME_TYPE_NOT_SUPPORTED;
+}
