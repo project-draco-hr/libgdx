@@ -1,3 +1,4 @@
 {
   this.gl=gl;
+  this.gl.pixelStorei(WebGLRenderingContext.UNPACK_PREMULTIPLY_ALPHA_WEBGL,0);
 }
