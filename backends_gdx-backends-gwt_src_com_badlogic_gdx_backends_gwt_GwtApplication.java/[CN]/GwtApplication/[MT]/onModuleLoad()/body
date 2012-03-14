@@ -6,16 +6,24 @@
     this.root=config.rootPanel;
   }
  else {
-    BodyElement body=Document.get().getBody();
-    for (int i=0; i < body.getChildCount(); i++) {
-      System.out.println(body.getChild(i).getNodeName());
-    }
     Element element=Document.get().getElementById("embed-" + GWT.getModuleName());
     if (element == null) {
-      root=RootPanel.get();
+      VerticalPanel panel=new VerticalPanel();
+      panel.setWidth("" + config.width + "px");
+      panel.setHeight("" + config.height + "px");
+      panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+      panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+      RootPanel.get().add(panel);
+      RootPanel.get().setWidth("" + config.width + "px");
+      RootPanel.get().setHeight("" + config.height + "px");
+      this.root=panel;
     }
  else {
-      Panel panel=new VerticalPanel();
+      VerticalPanel panel=new VerticalPanel();
+      panel.setWidth("" + config.width + "px");
+      panel.setHeight("" + config.height + "px");
+      panel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+      panel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
       element.appendChild(panel.getElement());
       root=panel;
     }
