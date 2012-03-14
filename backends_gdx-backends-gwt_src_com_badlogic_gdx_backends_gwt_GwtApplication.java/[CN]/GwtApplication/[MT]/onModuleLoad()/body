@@ -2,7 +2,24 @@
   this.agentInfo=computeAgentInfo();
   this.listener=getApplicationListener();
   this.config=getConfig();
-  this.root=config.rootPanel != null ? config.rootPanel : RootPanel.get();
+  if (config.rootPanel != null) {
+    this.root=config.rootPanel;
+  }
+ else {
+    BodyElement body=Document.get().getBody();
+    for (int i=0; i < body.getChildCount(); i++) {
+      System.out.println(body.getChild(i).getNodeName());
+    }
+    Element element=Document.get().getElementById("embed-" + GWT.getModuleName());
+    if (element == null) {
+      root=RootPanel.get();
+    }
+ else {
+      Panel panel=new VerticalPanel();
+      element.appendChild(panel.getElement());
+      root=panel;
+    }
+  }
   final PreloaderCallback callback=getPreloaderCallback();
   preloader=new Preloader();
   preloader.preload("assets.txt",new PreloaderCallback(){
