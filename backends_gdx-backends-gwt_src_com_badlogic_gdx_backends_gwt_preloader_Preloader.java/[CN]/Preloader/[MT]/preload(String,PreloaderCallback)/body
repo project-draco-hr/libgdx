@@ -1,5 +1,5 @@
 {
-  new TextLoader(GWT.getHostPageBaseURL() + assetFileUrl,new LoaderCallback<String>(){
+  new TextLoader(baseUrl + assetFileUrl,new LoaderCallback<String>(){
     @Override public void success(    String result){
       String[] lines=result.split("\n");
       Array<Asset> assets=new Array<Asset>();
