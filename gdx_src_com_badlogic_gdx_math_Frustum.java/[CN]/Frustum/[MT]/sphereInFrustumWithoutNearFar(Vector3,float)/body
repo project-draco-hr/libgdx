@@ -1,4 +1,4 @@
 {
-  for (int i=2; i < planes.length; i++)   if (planes[i].distance(center) < -radius)   return false;
+  for (int i=2; i < 6; i++)   if ((planes[i].normal.x * center.x + planes[i].normal.y * center.y + planes[i].normal.z * center.z) < (-radius - planes[i].d))   return false;
   return true;
 }
