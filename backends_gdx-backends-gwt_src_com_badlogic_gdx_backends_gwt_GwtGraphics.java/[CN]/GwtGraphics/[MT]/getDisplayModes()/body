@@ -1,3 +1,5 @@
 {
-  return null;
+  return new DisplayMode[]{new DisplayMode(getScreenWidthJSNI(),getScreenHeightJSNI(),60,8){
+  }
+};
 }

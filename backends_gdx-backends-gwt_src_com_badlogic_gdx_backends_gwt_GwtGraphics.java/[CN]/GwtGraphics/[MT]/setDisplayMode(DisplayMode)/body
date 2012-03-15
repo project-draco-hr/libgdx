@@ -1,3 +1,4 @@
 {
-  return false;
+  if (displayMode.width != getScreenWidthJSNI() && displayMode.height != getScreenHeightJSNI())   return false;
+  return setFullscreenJSNI(this,canvas);
 }

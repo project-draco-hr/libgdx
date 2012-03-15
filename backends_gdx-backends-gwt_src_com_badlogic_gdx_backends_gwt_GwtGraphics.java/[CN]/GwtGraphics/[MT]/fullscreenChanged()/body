@@ -1,0 +1,6 @@
+{
+  if (!isFullscreen()) {
+    canvas.setWidth(config.width);
+    canvas.setHeight(config.height);
+  }
+}

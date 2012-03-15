@@ -1,5 +1,5 @@
 {
-  return new DisplayMode(config.width,config.height,60,8){
+  return new DisplayMode(getScreenWidthJSNI(),getScreenHeightJSNI(),60,8){
   }
 ;
 }
