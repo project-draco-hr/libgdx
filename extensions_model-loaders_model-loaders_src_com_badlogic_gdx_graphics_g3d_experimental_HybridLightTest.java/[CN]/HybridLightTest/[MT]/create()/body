@@ -1,10 +1,9 @@
 {
-  modelMatrix2.translate(0,2,-8);
-  lightShader=ShaderLoader.createShader("light","light");
-  lightManager=new LightManager(LIGHTS_NUM);
+  lightManager=new LightManager(LIGHTS_NUM,LightQuality.VERTEX);
+  shader=ShaderFactory.createShader(null,lightManager);
   for (int i=0; i < 4; i++) {
     PointLight l=new PointLight();
-    l.position.set(MathUtils.random(16) - 8,MathUtils.random(6) - 2,-MathUtils.random(16) + 2);
+    l.position.set(MathUtils.random(32) - 16,MathUtils.random(8) - 2,-MathUtils.random(32) + 16);
     l.color.r=MathUtils.random();
     l.color.b=MathUtils.random();
     l.color.g=MathUtils.random();
@@ -12,7 +11,7 @@
     lightManager.addLigth(l);
   }
   lightManager.dirLight=new DirectionalLight();
-  lightManager.dirLight.color.set(0.038f,0.04f,0.09f,0);
+  lightManager.dirLight.color.set(1f,0.1f,0.09f,0);
   lightManager.dirLight.direction.set(-.1f,-1,0.03f).nor();
   lightManager.ambientLight.set(0.02f,0.02f,0.02f,0f);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -24,22 +23,17 @@
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/multipleuvs_1.png"),null,true);
   texture.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
-  texture2=new Texture(Gdx.files.internal("data/wall.png"),null,true);
-  texture2.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
-  try {
-    InputStream in=Gdx.files.internal("data/models/sphere.obj").read();
-    mesh=ObjLoader.loadObj(in);
-    in.close();
-    in=Gdx.files.internal("data/models/basicscene.obj").read();
-    mesh2=ObjLoader.loadObj(in);
-    in.close();
-  }
- catch (  IOException e) {
-    e.printStackTrace();
-  }
-  mesh2.scale(1.25f,1.25f,1.25f);
-  mesh.getVertexAttribute(Usage.Position).alias="a_position";
-  mesh.getVertexAttribute(Usage.Normal).alias="a_normal";
-  mesh2.getVertexAttribute(Usage.Position).alias="a_position";
-  mesh2.getVertexAttribute(Usage.Normal).alias="a_normal";
+  model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/sphere.obj"));
+  model2=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/basicscene.obj"));
+  instance=new StillModelNode();
+  instance.getTransform().translate(0,3,-4);
+  instance2=new StillModelNode();
+  BoundingBox box=new BoundingBox();
+  model.getBoundingBox(box);
+  instance.radius=box.getDimensions().len() / 2;
+  model2.getBoundingBox(box);
+  instance2.radius=box.getDimensions().len() / 2;
+  protoRenderer=new PrototypeRendererGL20();
+  protoRenderer.setLightManager(lightManager);
+  protoRenderer.setShader(shader);
 }

@@ -1,0 +1,6 @@
+{
+  super(name);
+  this.color.set(color);
+  this.colorType=colorType;
+  this.type=colorType.ordinal();
+}

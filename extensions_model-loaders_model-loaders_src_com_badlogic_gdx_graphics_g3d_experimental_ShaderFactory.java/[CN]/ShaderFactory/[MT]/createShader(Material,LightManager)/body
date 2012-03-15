@@ -1,0 +1,23 @@
+{
+  final StringBuilder flags=new StringBuilder(128);
+  flags.append(lightsNum);
+  flags.append(lights.maxLightsPerModel);
+  flags.append("\n");
+  if (material != null) {
+    for (int i=0; i < material.attributes.length; i++) {
+      flags.append(define);
+      flags.append(material.attributes[i].getShaderFlag());
+      flags.append("\n");
+    }
+  }
+  String fileName;
+  if (lights.quality == LightQuality.FRAGMENT)   fileName="light";
+ else {
+    fileName="vertexpath";
+  }
+  final String vertexShader=Gdx.files.internal("data/shaders/" + fileName + ".vertex.glsl").readString();
+  final String fragmentShader=Gdx.files.internal("data/shaders/" + fileName + ".fragment.glsl").readString();
+  ShaderProgram.pedantic=false;
+  final ShaderProgram shader=new ShaderProgram(flags + vertexShader,flags + fragmentShader);
+  return shader;
+}
