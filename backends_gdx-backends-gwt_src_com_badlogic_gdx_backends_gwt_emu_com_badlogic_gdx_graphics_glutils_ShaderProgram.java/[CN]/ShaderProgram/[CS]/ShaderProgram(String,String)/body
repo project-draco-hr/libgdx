@@ -4,6 +4,7 @@
   this.vertexShaderSource=vertexShader;
   this.fragmentShaderSource=fragmentShader;
   this.matrix=BufferUtils.newFloatBuffer(16);
+  this.matrix3=BufferUtils.newFloatBuffer(9);
   compileShaders(vertexShader,fragmentShader);
   if (isCompiled()) {
     fetchAttributes();

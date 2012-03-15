@@ -3,7 +3,7 @@
   checkManaged();
   int location=fetchUniformLocation(name);
   float[] vals=matrix.getValues();
-  this.matrix.clear();
-  BufferUtils.copy(vals,this.matrix,vals.length,0);
-  gl.glUniformMatrix3fv(location,1,transpose,this.matrix);
+  this.matrix3.clear();
+  BufferUtils.copy(vals,this.matrix3,vals.length,0);
+  gl.glUniformMatrix3fv(location,1,transpose,this.matrix3);
 }
