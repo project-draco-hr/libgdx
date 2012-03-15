@@ -1,12 +1,17 @@
 {
   if (texts.containsKey(url)) {
-    return new ByteArrayInputStream(texts.get(url).getBytes());
+    try {
+      return new ByteArrayInputStream(texts.get(url).getBytes("UTF-8"));
+    }
+ catch (    UnsupportedEncodingException e) {
+      return null;
+    }
   }
   if (images.containsKey(url)) {
     return new ByteArrayInputStream(new byte[1]);
   }
   if (binaries.containsKey(url)) {
-    throw new GdxRuntimeException("Not implemented");
+    return binaries.get(url).read();
   }
   return null;
 }

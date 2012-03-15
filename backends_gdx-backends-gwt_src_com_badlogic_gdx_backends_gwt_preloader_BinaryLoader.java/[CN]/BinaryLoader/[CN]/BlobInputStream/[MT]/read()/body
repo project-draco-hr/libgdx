@@ -1,0 +1,4 @@
+{
+  if (pos == blob.length())   return -1;
+  return blob.get(pos++);
+}

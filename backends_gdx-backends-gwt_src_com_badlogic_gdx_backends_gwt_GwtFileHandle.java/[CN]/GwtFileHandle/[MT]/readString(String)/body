@@ -1,4 +1,9 @@
 {
   if (preloader.isText(file))   return preloader.texts.get(file);
-  throw new GdxRuntimeException("reading from a non-text file not supported");
+  try {
+    return new String(readBytes(),"UTF-8");
+  }
+ catch (  UnsupportedEncodingException e) {
+    return null;
+  }
 }

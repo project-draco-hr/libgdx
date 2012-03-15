@@ -6,7 +6,7 @@
     return 1;
   }
   if (binaries.containsKey(url)) {
-    throw new GdxRuntimeException("Not implemented");
+    return binaries.get(url).length();
   }
   return 0;
 }

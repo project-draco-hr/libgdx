@@ -1,0 +1,21 @@
+{
+  this.callback=callback;
+  XMLHttpRequest request=XMLHttpRequest.create();
+  request.setOnReadyStateChange(new ReadyStateChangeHandler(){
+    @Override public void onReadyStateChange(    XMLHttpRequest xhr){
+      if (xhr.getReadyState() == 4) {
+        int status=xhr.getStatus();
+        if (status != 200) {
+          BinaryLoader.this.callback.error();
+        }
+ else {
+          BinaryLoader.this.callback.success(new Blob(xhr.getResponseText()));
+        }
+      }
+    }
+  }
+);
+  overrideMimeType(request,"text/plain; charset=x-user-defined");
+  request.open("GET",url);
+  request.send();
+}
