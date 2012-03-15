@@ -1,6 +1,14 @@
 {
   if (e.getType().equals("mousedown")) {
-    if (!e.getEventTarget().equals(canvas) || touched)     return;
+    if (!e.getEventTarget().equals(canvas) || touched) {
+      float mouseX=(int)getRelativeX(e,canvas);
+      float mouseY=(int)getRelativeY(e,canvas);
+      if (mouseX < 0 || mouseX > Gdx.graphics.getWidth() || mouseY < 0 || mouseY > Gdx.graphics.getHeight()) {
+        hasFocus=false;
+      }
+      return;
+    }
+    hasFocus=true;
     this.justTouched=true;
     this.touched=true;
     this.pressedButtons.add(getButton(e.getButton()));
@@ -34,16 +42,19 @@
     this.touched=false;
     if (processor != null)     processor.touchUp(mouseX,mouseY,0,getButton(e.getButton()));
   }
-  if (e.getType().equals("keydown")) {
+  if (e.getType().equals("keydown") && hasFocus) {
+    System.out.println("keydown");
     int code=keyForCode(e.getKeyCode());
     this.pressedKeys.add(code);
     if (processor != null)     processor.keyDown(code);
   }
-  if (e.getType().equals("keypress")) {
+  if (e.getType().equals("keypress") && hasFocus) {
+    System.out.println("keypress");
     char c=(char)e.getCharCode();
     if (processor != null)     processor.keyTyped(c);
   }
-  if (e.getType().equals("keyup")) {
+  if (e.getType().equals("keyup") && hasFocus) {
+    System.out.println("keyup");
     int code=keyForCode(e.getKeyCode());
     this.pressedKeys.remove(code);
     if (processor != null)     processor.keyUp(code);

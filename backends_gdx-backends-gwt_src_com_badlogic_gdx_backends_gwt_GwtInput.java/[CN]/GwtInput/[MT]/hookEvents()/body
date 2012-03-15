@@ -6,7 +6,7 @@
   addEventListener(canvas,"mousemove",this,true);
   addEventListener(Document.get(),"mousemove",this,true);
   addEventListener(canvas,getMouseWheelEvent(),this,true);
-  addEventListener(canvas,"keydown",this,true);
-  addEventListener(canvas,"keyup",this,true);
-  addEventListener(canvas,"keypress",this,true);
+  addEventListener(Document.get(),"keydown",this,false);
+  addEventListener(Document.get(),"keyup",this,false);
+  addEventListener(Document.get(),"keypress",this,false);
 }
