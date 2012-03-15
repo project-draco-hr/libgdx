@@ -13,5 +13,10 @@
   String text="Touch screen to start!";
   float width=font.getBounds(text).width;
   font.draw(spriteBatch,text,240 - width / 2,128);
+  if (Gdx.app.getType() == ApplicationType.WebGL) {
+    text="Press Enter for Fullscreen Mode";
+    width=font.getBounds(text).width;
+    font.draw(spriteBatch,"Press Enter for Fullscreen Mode",240 - width / 2,128 - font.getLineHeight());
+  }
   spriteBatch.end();
 }
