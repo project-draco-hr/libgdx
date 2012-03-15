@@ -1,0 +1,17 @@
+{
+  if (ship.isExploding)   return;
+  shipTexture.bind();
+  lightTexShader.begin();
+  lightTexShader.setUniformi("u_diffuse",0);
+  transform.set(camera.combined);
+  transform.translate(ship.position.x,ship.position.y,ship.position.z);
+  transform.rotate(0,0,1,45 * (-Gdx.input.getAccelerometerY() / 5));
+  transform.rotate(0,1,0,180);
+  lightTexShader.setUniformMatrix("u_projView",transform);
+  normal.idt();
+  normal.rotate(0,1,0,180);
+  normal3.set(normal.toNormalMatrix());
+  lightTexShader.setUniformMatrix("u_normal",normal3);
+  shipMesh.render(lightTexShader,GL10.GL_TRIANGLES);
+  lightTexShader.end();
+}

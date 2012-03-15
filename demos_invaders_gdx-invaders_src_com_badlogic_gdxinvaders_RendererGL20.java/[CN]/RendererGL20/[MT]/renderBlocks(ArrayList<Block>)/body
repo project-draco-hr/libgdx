@@ -1,0 +1,15 @@
+{
+  Gdx.gl.glEnable(GL10.GL_BLEND);
+  Gdx.gl.glBlendFunc(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  colorShader.begin();
+  colorShader.setUniformf("u_color",0,0,1,0.5f);
+  for (int i=0; i < blocks.size(); i++) {
+    Block block=blocks.get(i);
+    transform.set(camera.combined);
+    transform.translate(block.position.x,block.position.y,block.position.z);
+    colorShader.setUniformMatrix("u_projView",transform);
+    blockMesh.render(colorShader,GL10.GL_TRIANGLES);
+  }
+  colorShader.end();
+  Gdx.gl.glDisable(GL10.GL_BLEND);
+}

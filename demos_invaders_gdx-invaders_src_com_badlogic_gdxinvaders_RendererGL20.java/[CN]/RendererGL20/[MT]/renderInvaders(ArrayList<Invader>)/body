@@ -1,0 +1,17 @@
+{
+  lightTexShader.begin();
+  normal.idt();
+  normal.rotate(0,1,0,invaderAngle);
+  normal3.set(normal.toNormalMatrix());
+  lightTexShader.setUniformMatrix("u_normal",normal3);
+  invaderTexture.bind();
+  for (int i=0; i < invaders.size(); i++) {
+    Invader invader=invaders.get(i);
+    transform.set(camera.combined);
+    transform.translate(invader.position.x,invader.position.y,invader.position.z);
+    transform.rotate(0,1,0,invaderAngle);
+    lightTexShader.setUniformMatrix("u_projView",transform);
+    invaderMesh.render(lightTexShader,GL10.GL_TRIANGLES);
+  }
+  lightTexShader.end();
+}

@@ -1,0 +1,12 @@
+{
+  colorShader.begin();
+  colorShader.setUniformf("u_color",1,1,0,1f);
+  for (int i=0; i < shots.size(); i++) {
+    Shot shot=shots.get(i);
+    transform.set(camera.combined);
+    transform.translate(shot.position.x,shot.position.y,shot.position.z);
+    colorShader.setUniformMatrix("u_projView",transform);
+    shotMesh.render(colorShader,GL10.GL_TRIANGLES);
+  }
+  colorShader.end();
+}

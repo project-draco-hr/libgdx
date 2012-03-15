@@ -1,7 +1,7 @@
 {
   simulation=new Simulation();
   simulation.listener=this;
-  renderer=new Renderer();
+  renderer=Gdx.graphics.isGL20Available() ? new RendererGL20() : new RendererGL10();
   explosion=Gdx.audio.newSound(Gdx.files.internal("data/explosion.ogg"));
   shot=Gdx.audio.newSound(Gdx.files.internal("data/shot.ogg"));
 }

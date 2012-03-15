@@ -2,16 +2,16 @@
   try {
     spriteBatch=new SpriteBatch();
     InputStream in=Gdx.files.internal("data/ship.obj").read();
-    shipMesh=ModelLoaderOld.loadObj(in);
+    shipMesh=ObjLoader.loadObj(in);
     in.close();
     in=Gdx.files.internal("data/invader.obj").read();
-    invaderMesh=ModelLoaderOld.loadObj(in);
+    invaderMesh=ObjLoader.loadObj(in);
     in.close();
     in=Gdx.files.internal("data/block.obj").read();
-    blockMesh=ModelLoaderOld.loadObj(in);
+    blockMesh=ObjLoader.loadObj(in);
     in.close();
     in=Gdx.files.internal("data/shot.obj").read();
-    shotMesh=ModelLoaderOld.loadObj(in);
+    shotMesh=ObjLoader.loadObj(in);
     in.close();
     shipTexture=new Texture(Gdx.files.internal("data/ship.png"),Format.RGB565,true);
     shipTexture.setFilter(TextureFilter.MipMap,TextureFilter.Linear);

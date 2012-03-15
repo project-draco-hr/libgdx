@@ -1,3 +1,7 @@
 {
-  new JoglApplication(new GdxInvaders(),"Gdx Invaders",800,480,false);
+  JoglApplicationConfiguration config=new JoglApplicationConfiguration();
+  config.title="Gdx Invaders";
+  config.vSyncEnabled=true;
+  config.useGL20=true;
+  new JoglApplication(new GdxInvaders(),config);
 }

@@ -1,0 +1,28 @@
+{
+  GLCommon gl=Gdx.gl;
+  gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  renderBackground();
+  gl.glEnable(GL10.GL_DEPTH_TEST);
+  gl.glEnable(GL10.GL_CULL_FACE);
+  setProjectionAndCamera(simulation.ship);
+  renderShip(simulation.ship);
+  renderInvaders(simulation.invaders);
+  renderBlocks(simulation.blocks);
+  renderShots(simulation.shots);
+  renderExplosions(simulation.explosions);
+  gl.glDisable(GL10.GL_CULL_FACE);
+  gl.glDisable(GL10.GL_DEPTH_TEST);
+  spriteBatch.setProjectionMatrix(viewMatrix);
+  spriteBatch.begin();
+  if (simulation.ship.lives != lastLives || simulation.score != lastScore || simulation.wave != lastWave) {
+    status="lives: " + simulation.ship.lives + " wave: "+ simulation.wave+ " score: "+ simulation.score;
+    lastLives=simulation.ship.lives;
+    lastScore=simulation.score;
+    lastWave=simulation.wave;
+  }
+  spriteBatch.enableBlending();
+  font.draw(spriteBatch,status,0,320);
+  spriteBatch.end();
+  invaderAngle+=delta * 90;
+  if (invaderAngle > 360)   invaderAngle-=360;
+}
