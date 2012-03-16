@@ -1,0 +1,22 @@
+{
+  x%=TWOPI;
+  while (x < 0) {
+    x+=TWOPI;
+  }
+  if (Settings.SINCOS_LUT_LERP) {
+    x/=Settings.SINCOS_LUT_PRECISION;
+    final int index=(int)x;
+    if (index != 0) {
+      x%=index;
+    }
+    if (index == Settings.SINCOS_LUT_LENGTH - 1) {
+      return ((1 - x) * sinLUT[index] + x * sinLUT[0]);
+    }
+ else {
+      return ((1 - x) * sinLUT[index] + x * sinLUT[index + 1]);
+    }
+  }
+ else {
+    return sinLUT[MathUtils.round(x / Settings.SINCOS_LUT_PRECISION) % Settings.SINCOS_LUT_LENGTH];
+  }
+}

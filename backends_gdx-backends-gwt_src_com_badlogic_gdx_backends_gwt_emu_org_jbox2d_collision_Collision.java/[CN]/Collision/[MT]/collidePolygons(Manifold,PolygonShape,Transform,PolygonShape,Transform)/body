@@ -1,0 +1,82 @@
+{
+  manifold.pointCount=0;
+  float totalRadius=polyA.m_radius + polyB.m_radius;
+  findMaxSeparation(results1,polyA,xfA,polyB,xfB);
+  if (results1.separation > totalRadius) {
+    return;
+  }
+  findMaxSeparation(results2,polyB,xfB,polyA,xfA);
+  if (results2.separation > totalRadius) {
+    return;
+  }
+  final PolygonShape poly1;
+  final PolygonShape poly2;
+  Transform xf1, xf2;
+  int edge1;
+  boolean flip;
+  final float k_relativeTol=0.98f;
+  final float k_absoluteTol=0.001f;
+  if (results2.separation > k_relativeTol * results1.separation + k_absoluteTol) {
+    poly1=polyB;
+    poly2=polyA;
+    xf1=xfB;
+    xf2=xfA;
+    edge1=results2.edgeIndex;
+    manifold.type=ManifoldType.FACE_B;
+    flip=true;
+  }
+ else {
+    poly1=polyA;
+    poly2=polyB;
+    xf1=xfA;
+    xf2=xfB;
+    edge1=results1.edgeIndex;
+    manifold.type=ManifoldType.FACE_A;
+    flip=false;
+  }
+  findIncidentEdge(incidentEdge,poly1,xf1,edge1,poly2,xf2);
+  int count1=poly1.m_count;
+  final Vec2[] vertices1=poly1.m_vertices;
+  final int iv1=edge1;
+  final int iv2=edge1 + 1 < count1 ? edge1 + 1 : 0;
+  v11.set(vertices1[iv1]);
+  v12.set(vertices1[iv2]);
+  localTangent.set(v12).subLocal(v11);
+  localTangent.normalize();
+  Vec2.crossToOutUnsafe(localTangent,1f,localNormal);
+  planePoint.set(v11).addLocal(v12).mulLocal(.5f);
+  Rot.mulToOutUnsafe(xf1.q,localTangent,tangent);
+  Vec2.crossToOutUnsafe(tangent,1f,normal);
+  Transform.mulToOut(xf1,v11,v11);
+  Transform.mulToOut(xf1,v12,v12);
+  float frontOffset=Vec2.dot(normal,v11);
+  float sideOffset1=-Vec2.dot(tangent,v11) + totalRadius;
+  float sideOffset2=Vec2.dot(tangent,v12) + totalRadius;
+  int np;
+  tangent.negateLocal();
+  np=clipSegmentToLine(clipPoints1,incidentEdge,tangent,sideOffset1,iv1);
+  tangent.negateLocal();
+  if (np < 2) {
+    return;
+  }
+  np=clipSegmentToLine(clipPoints2,clipPoints1,tangent,sideOffset2,iv2);
+  if (np < 2) {
+    return;
+  }
+  manifold.localNormal.set(localNormal);
+  manifold.localPoint.set(planePoint);
+  int pointCount=0;
+  for (int i=0; i < Settings.maxManifoldPoints; ++i) {
+    float separation=Vec2.dot(normal,clipPoints2[i].v) - frontOffset;
+    if (separation <= totalRadius) {
+      ManifoldPoint cp=manifold.points[pointCount];
+      Transform.mulTransToOut(xf2,clipPoints2[i].v,cp.localPoint);
+      cp.id.set(clipPoints2[i].id);
+      if (flip) {
+        cp.id.flip();
+      }
+      ++pointCount;
+    }
+  }
+  manifold.pointCount=pointCount;
+}

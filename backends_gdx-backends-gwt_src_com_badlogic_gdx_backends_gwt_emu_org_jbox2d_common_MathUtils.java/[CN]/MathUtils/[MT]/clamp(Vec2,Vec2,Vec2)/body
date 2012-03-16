@@ -1,0 +1,8 @@
+{
+  final Vec2 min=new Vec2();
+  min.x=a.x < high.x ? a.x : high.x;
+  min.y=a.y < high.y ? a.y : high.y;
+  min.x=low.x > min.x ? low.x : min.x;
+  min.y=low.y > min.y ? low.y : min.y;
+  return min;
+}

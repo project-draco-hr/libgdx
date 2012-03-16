@@ -1,0 +1,23 @@
+{
+  intStack.reset();
+  intStack.push(m_root);
+  while (intStack.getCount() > 0) {
+    int nodeId=intStack.pop();
+    if (nodeId == TreeNode.NULL_NODE) {
+      continue;
+    }
+    final TreeNode node=m_nodes[nodeId];
+    if (AABB.testOverlap(node.aabb,aabb)) {
+      if (node.isLeaf()) {
+        boolean proceed=callback.treeCallback(nodeId);
+        if (!proceed) {
+          return;
+        }
+      }
+ else {
+        intStack.push(node.child1);
+        intStack.push(node.child2);
+      }
+    }
+  }
+}

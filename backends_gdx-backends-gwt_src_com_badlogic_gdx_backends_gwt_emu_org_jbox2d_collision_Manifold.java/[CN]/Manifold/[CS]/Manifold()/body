@@ -1,0 +1,9 @@
+{
+  points=new ManifoldPoint[Settings.maxManifoldPoints];
+  for (int i=0; i < Settings.maxManifoldPoints; i++) {
+    points[i]=new ManifoldPoint();
+  }
+  localNormal=new Vec2();
+  localPoint=new Vec2();
+  pointCount=0;
+}

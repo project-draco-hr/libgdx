@@ -1,0 +1,33 @@
+{
+  axis.type=EPAxis.Type.UNKNOWN;
+  axis.index=-1;
+  axis.separation=Float.MIN_VALUE;
+  perp.set(-m_normal.y,m_normal.x);
+  for (int i=0; i < m_polygonB.count; ++i) {
+    n.set(m_polygonB.normals[i]).negateLocal();
+    float s1=Vec2.dot(n,temp.set(m_polygonB.vertices[i]).subLocal(m_v1));
+    float s2=Vec2.dot(n,temp.set(m_polygonB.vertices[i]).subLocal(m_v2));
+    float s=MathUtils.min(s1,s2);
+    if (s > m_radius) {
+      axis.type=EPAxis.Type.EDGE_B;
+      axis.index=i;
+      axis.separation=s;
+      return;
+    }
+    if (Vec2.dot(n,perp) >= 0.0f) {
+      if (Vec2.dot(temp.set(n).subLocal(m_upperLimit),m_normal) < -Settings.angularSlop) {
+        continue;
+      }
+    }
+ else {
+      if (Vec2.dot(temp.set(n).subLocal(m_lowerLimit),m_normal) < -Settings.angularSlop) {
+        continue;
+      }
+    }
+    if (s > axis.separation) {
+      axis.type=EPAxis.Type.EDGE_B;
+      axis.index=i;
+      axis.separation=s;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  m_positionConstraints=new ContactPositionConstraint[INITIAL_NUM_CONSTRAINTS];
+  m_velocityConstraints=new ContactVelocityConstraint[INITIAL_NUM_CONSTRAINTS];
+  for (int i=0; i < INITIAL_NUM_CONSTRAINTS; i++) {
+    m_positionConstraints[i]=new ContactPositionConstraint();
+    m_velocityConstraints[i]=new ContactVelocityConstraint();
+  }
+}

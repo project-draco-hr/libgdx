@@ -1,0 +1,42 @@
+{
+  final Vec2 p1=pool1;
+  final Vec2 p2=pool2;
+  final Vec2 d=pool3;
+  final Vec2 temp=pool4;
+  p1.set(input.p1).subLocal(xf.p);
+  Rot.mulTrans(xf.q,p1,p1);
+  p2.set(input.p2).subLocal(xf.p);
+  Rot.mulTrans(xf.q,p2,p2);
+  d.set(p2).subLocal(p1);
+  float lower=0, upper=input.maxFraction;
+  int index=-1;
+  for (int i=0; i < m_count; ++i) {
+    temp.set(m_vertices[i]).subLocal(p1);
+    final float numerator=Vec2.dot(m_normals[i],temp);
+    final float denominator=Vec2.dot(m_normals[i],d);
+    if (denominator == 0.0f) {
+      if (numerator < 0.0f) {
+        return false;
+      }
+    }
+ else {
+      if (denominator < 0.0f && numerator < lower * denominator) {
+        lower=numerator / denominator;
+        index=i;
+      }
+ else       if (denominator > 0.0f && numerator < upper * denominator) {
+        upper=numerator / denominator;
+      }
+    }
+    if (upper < lower) {
+      return false;
+    }
+  }
+  assert(0.0f <= lower && lower <= input.maxFraction);
+  if (index >= 0) {
+    output.fraction=lower;
+    Rot.mulToOutUnsafe(xf.q,m_normals[index],output.normal);
+    return true;
+  }
+  return false;
+}

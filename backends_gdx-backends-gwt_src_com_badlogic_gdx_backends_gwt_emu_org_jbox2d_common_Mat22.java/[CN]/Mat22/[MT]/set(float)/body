@@ -1,0 +1,7 @@
+{
+  final float c=MathUtils.cos(angle), s=MathUtils.sin(angle);
+  ex.x=c;
+  ey.x=-s;
+  ex.y=s;
+  ey.y=c;
+}

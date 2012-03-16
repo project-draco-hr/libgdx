@@ -1,0 +1,22 @@
+{
+  final Vec2 w1=m_v1.w;
+  final Vec2 w2=m_v2.w;
+  e12.set(w2).subLocal(w1);
+  float d12_2=-Vec2.dot(w1,e12);
+  if (d12_2 <= 0.0f) {
+    m_v1.a=1.0f;
+    m_count=1;
+    return;
+  }
+  float d12_1=Vec2.dot(w2,e12);
+  if (d12_1 <= 0.0f) {
+    m_v2.a=1.0f;
+    m_count=1;
+    m_v1.set(m_v2);
+    return;
+  }
+  float inv_d12=1.0f / (d12_1 + d12_2);
+  m_v1.a=d12_1 * inv_d12;
+  m_v2.a=d12_2 * inv_d12;
+  m_count=2;
+}

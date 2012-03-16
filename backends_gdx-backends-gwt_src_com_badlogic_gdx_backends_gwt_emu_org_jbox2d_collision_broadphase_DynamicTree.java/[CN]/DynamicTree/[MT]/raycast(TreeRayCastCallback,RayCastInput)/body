@@ -1,0 +1,51 @@
+{
+  final Vec2 p1=input.p1;
+  final Vec2 p2=input.p2;
+  r.set(p2).subLocal(p1);
+  assert(r.lengthSquared() > 0f);
+  r.normalize();
+  Vec2.crossToOutUnsafe(1f,r,v);
+  absV.set(v).absLocal();
+  float maxFraction=input.maxFraction;
+  final AABB segAABB=aabb;
+  temp.set(p2).subLocal(p1).mulLocal(maxFraction).addLocal(p1);
+  Vec2.minToOut(p1,temp,segAABB.lowerBound);
+  Vec2.maxToOut(p1,temp,segAABB.upperBound);
+  intStack.push(m_root);
+  while (intStack.getCount() > 0) {
+    int nodeId=intStack.pop();
+    if (nodeId == TreeNode.NULL_NODE) {
+      continue;
+    }
+    final TreeNode node=m_nodes[nodeId];
+    if (!AABB.testOverlap(node.aabb,segAABB)) {
+      continue;
+    }
+    node.aabb.getCenterToOut(c);
+    node.aabb.getExtentsToOut(h);
+    temp.set(p1).subLocal(c);
+    float separation=MathUtils.abs(Vec2.dot(v,temp)) - Vec2.dot(absV,h);
+    if (separation > 0.0f) {
+      continue;
+    }
+    if (node.isLeaf()) {
+      subInput.p1.set(input.p1);
+      subInput.p2.set(input.p2);
+      subInput.maxFraction=maxFraction;
+      float value=callback.raycastCallback(subInput,nodeId);
+      if (value == 0.0f) {
+        return;
+      }
+      if (value > 0.0f) {
+        maxFraction=value;
+        t.set(p2).subLocal(p1).mulLocal(maxFraction).addLocal(p1);
+        Vec2.minToOut(p1,t,segAABB.lowerBound);
+        Vec2.maxToOut(p1,t,segAABB.upperBound);
+      }
+    }
+ else {
+      intStack.push(node.child1);
+      intStack.push(node.child2);
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  final float px=v.x - T.p.x;
+  final float py=v.y - T.p.y;
+  final float tempy=(-T.q.s * px + T.q.c * py);
+  out.x=(T.q.c * px + T.q.s * py);
+  out.y=tempy;
+}

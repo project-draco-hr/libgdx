@@ -1,0 +1,10 @@
+{
+  theta%=TWOPI;
+  if (abs(theta) > PI) {
+    theta=theta - TWOPI;
+  }
+  if (abs(theta) > HALF_PI) {
+    theta=PI - theta;
+  }
+  return theta;
+}

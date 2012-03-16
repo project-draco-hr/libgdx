@@ -1,0 +1,5 @@
+{
+  unbufferMove(proxyId);
+  --m_proxyCount;
+  m_tree.destroyProxy(proxyId);
+}

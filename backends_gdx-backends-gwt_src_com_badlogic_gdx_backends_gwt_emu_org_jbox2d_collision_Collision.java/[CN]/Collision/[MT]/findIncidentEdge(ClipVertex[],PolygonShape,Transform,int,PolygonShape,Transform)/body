@@ -1,0 +1,31 @@
+{
+  int count1=poly1.m_count;
+  final Vec2[] normals1=poly1.m_normals;
+  int count2=poly2.m_count;
+  final Vec2[] vertices2=poly2.m_vertices;
+  final Vec2[] normals2=poly2.m_normals;
+  assert(0 <= edge1 && edge1 < count1);
+  Rot.mulToOutUnsafe(xf1.q,normals1[edge1],normal1);
+  Rot.mulTrans(xf2.q,normal1,normal1);
+  int index=0;
+  float minDot=Float.MAX_VALUE;
+  for (int i=0; i < count2; ++i) {
+    float dot=Vec2.dot(normal1,normals2[i]);
+    if (dot < minDot) {
+      minDot=dot;
+      index=i;
+    }
+  }
+  int i1=index;
+  int i2=i1 + 1 < count2 ? i1 + 1 : 0;
+  Transform.mulToOutUnsafe(xf2,vertices2[i1],c[0].v);
+  c[0].id.indexA=(byte)edge1;
+  c[0].id.indexB=(byte)i1;
+  c[0].id.typeA=(byte)ContactID.Type.FACE.ordinal();
+  c[0].id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
+  Transform.mulToOutUnsafe(xf2,vertices2[i2],c[1].v);
+  c[1].id.indexA=(byte)edge1;
+  c[1].id.indexB=(byte)i2;
+  c[1].id.typeA=(byte)ContactID.Type.FACE.ordinal();
+  c[1].id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
+}

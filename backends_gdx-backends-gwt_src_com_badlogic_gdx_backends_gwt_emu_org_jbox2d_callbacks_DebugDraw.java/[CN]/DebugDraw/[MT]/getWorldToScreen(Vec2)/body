@@ -1,0 +1,5 @@
+{
+  Vec2 screen=new Vec2();
+  viewportTransform.getWorldToScreen(argWorld,screen);
+  return screen;
+}

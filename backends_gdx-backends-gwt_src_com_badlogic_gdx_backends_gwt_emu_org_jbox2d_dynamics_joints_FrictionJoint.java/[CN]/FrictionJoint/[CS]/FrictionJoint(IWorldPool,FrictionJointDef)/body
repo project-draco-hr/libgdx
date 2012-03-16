@@ -1,0 +1,9 @@
+{
+  super(argWorldPool,def);
+  m_localAnchorA=new Vec2(def.localAnchorA);
+  m_localAnchorB=new Vec2(def.localAnchorB);
+  m_linearImpulse=new Vec2();
+  m_angularImpulse=0.0f;
+  m_maxForce=def.maxForce;
+  m_maxTorque=def.maxTorque;
+}

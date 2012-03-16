@@ -1,0 +1,39 @@
+{
+  if (leaf == m_root) {
+    m_root=NULL_NODE;
+    return;
+  }
+  int parent=m_nodes[leaf].parent;
+  int grandParent=m_nodes[parent].parent;
+  int sibling;
+  if (m_nodes[parent].child1 == leaf) {
+    sibling=m_nodes[parent].child2;
+  }
+ else {
+    sibling=m_nodes[parent].child1;
+  }
+  if (grandParent != NULL_NODE) {
+    if (m_nodes[grandParent].child1 == parent) {
+      m_nodes[grandParent].child1=sibling;
+    }
+ else {
+      m_nodes[grandParent].child2=sibling;
+    }
+    m_nodes[sibling].parent=grandParent;
+    freeNode(parent);
+    int index=grandParent;
+    while (index != NULL_NODE) {
+      index=balance(index);
+      int child1=m_nodes[index].child1;
+      int child2=m_nodes[index].child2;
+      m_nodes[index].aabb.combine(m_nodes[child1].aabb,m_nodes[child2].aabb);
+      m_nodes[index].height=1 + MathUtils.max(m_nodes[child1].height,m_nodes[child2].height);
+      index=m_nodes[index].parent;
+    }
+  }
+ else {
+    m_root=sibling;
+    m_nodes[sibling].parent=NULL_NODE;
+    freeNode(parent);
+  }
+}

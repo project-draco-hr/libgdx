@@ -1,0 +1,7 @@
+{
+  assert(out != A);
+  assert(out != B);
+  Rot.mulTransUnsafe(A.q,B.q,out.q);
+  pool.set(B.p).subLocal(A.p);
+  Rot.mulTransUnsafe(A.q,pool,out.p);
+}

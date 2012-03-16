@@ -1,0 +1,99 @@
+{
+  assert(iA != NULL_NODE);
+  TreeNode A=m_nodes[iA];
+  if (A.isLeaf() || A.height < 2) {
+    return iA;
+  }
+  int iB=A.child1;
+  int iC=A.child2;
+  assert(0 <= iB && iB < m_nodeCapacity);
+  assert(0 <= iC && iC < m_nodeCapacity);
+  TreeNode B=m_nodes[iB];
+  TreeNode C=m_nodes[iC];
+  int balance=C.height - B.height;
+  if (balance > 1) {
+    int iF=C.child1;
+    int iG=C.child2;
+    TreeNode F=m_nodes[iF];
+    TreeNode G=m_nodes[iG];
+    assert(0 <= iF && iF < m_nodeCapacity);
+    assert(0 <= iG && iG < m_nodeCapacity);
+    C.child1=iA;
+    C.parent=A.parent;
+    A.parent=iC;
+    if (C.parent != NULL_NODE) {
+      if (m_nodes[C.parent].child1 == iA) {
+        m_nodes[C.parent].child1=iC;
+      }
+ else {
+        assert(m_nodes[C.parent].child2 == iA);
+        m_nodes[C.parent].child2=iC;
+      }
+    }
+ else {
+      m_root=iC;
+    }
+    if (F.height > G.height) {
+      C.child2=iF;
+      A.child2=iG;
+      G.parent=iA;
+      A.aabb.combine(B.aabb,G.aabb);
+      C.aabb.combine(A.aabb,F.aabb);
+      A.height=1 + MathUtils.max(B.height,G.height);
+      C.height=1 + MathUtils.max(A.height,F.height);
+    }
+ else {
+      C.child2=iG;
+      A.child2=iF;
+      F.parent=iA;
+      A.aabb.combine(B.aabb,F.aabb);
+      C.aabb.combine(A.aabb,G.aabb);
+      A.height=1 + MathUtils.max(B.height,F.height);
+      C.height=1 + MathUtils.max(A.height,G.height);
+    }
+    return iC;
+  }
+  if (balance < -1) {
+    int iD=B.child1;
+    int iE=B.child2;
+    TreeNode D=m_nodes[iD];
+    TreeNode E=m_nodes[iE];
+    assert(0 <= iD && iD < m_nodeCapacity);
+    assert(0 <= iE && iE < m_nodeCapacity);
+    B.child1=iA;
+    B.parent=A.parent;
+    A.parent=iB;
+    if (B.parent != NULL_NODE) {
+      if (m_nodes[B.parent].child1 == iA) {
+        m_nodes[B.parent].child1=iB;
+      }
+ else {
+        assert(m_nodes[B.parent].child2 == iA);
+        m_nodes[B.parent].child2=iB;
+      }
+    }
+ else {
+      m_root=iB;
+    }
+    if (D.height > E.height) {
+      B.child2=iD;
+      A.child1=iE;
+      E.parent=iA;
+      A.aabb.combine(C.aabb,E.aabb);
+      B.aabb.combine(A.aabb,D.aabb);
+      A.height=1 + MathUtils.max(C.height,E.height);
+      B.height=1 + MathUtils.max(A.height,D.height);
+    }
+ else {
+      B.child2=iE;
+      A.child1=iD;
+      D.parent=iA;
+      A.aabb.combine(C.aabb,D.aabb);
+      B.aabb.combine(A.aabb,E.aabb);
+      A.height=1 + MathUtils.max(C.height,D.height);
+      B.height=1 + MathUtils.max(A.height,E.height);
+    }
+    return iB;
+  }
+  return iA;
+}

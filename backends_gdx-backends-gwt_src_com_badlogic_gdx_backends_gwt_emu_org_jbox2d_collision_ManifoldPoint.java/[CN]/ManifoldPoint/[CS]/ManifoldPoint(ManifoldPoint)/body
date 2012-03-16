@@ -1,0 +1,6 @@
+{
+  localPoint=cp.localPoint.clone();
+  normalImpulse=cp.normalImpulse;
+  tangentImpulse=cp.tangentImpulse;
+  id=new ContactID(cp.id);
+}

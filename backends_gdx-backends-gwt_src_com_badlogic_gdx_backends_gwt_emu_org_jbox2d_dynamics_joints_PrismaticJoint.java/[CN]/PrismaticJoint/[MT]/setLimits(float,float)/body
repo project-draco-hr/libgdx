@@ -1,0 +1,10 @@
+{
+  assert(lower <= upper);
+  if (lower != m_lowerTranslation || upper != m_upperTranslation) {
+    m_bodyA.setAwake(true);
+    m_bodyB.setAwake(true);
+    m_lowerTranslation=lower;
+    m_upperTranslation=upper;
+    m_impulse.z=0.0f;
+  }
+}

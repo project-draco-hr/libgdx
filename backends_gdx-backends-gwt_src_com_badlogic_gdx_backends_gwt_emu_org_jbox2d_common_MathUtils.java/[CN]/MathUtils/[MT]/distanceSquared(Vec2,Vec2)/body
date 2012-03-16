@@ -1,0 +1,5 @@
+{
+  float dx=(v1.x - v2.x);
+  float dy=(v1.y - v2.y);
+  return dx * dx + dy * dy;
+}

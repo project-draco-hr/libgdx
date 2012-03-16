@@ -1,0 +1,6 @@
+{
+  assert(out != A);
+  Rot.mulTrans(A.q,B.q,out.q);
+  pool.set(B.p).subLocal(A.p);
+  Rot.mulTrans(A.q,pool,out.p);
+}

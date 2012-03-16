@@ -1,0 +1,9 @@
+{
+  m_vertices=new Vec2[Settings.maxPolygonVertices];
+  for (int i=0; i < m_vertices.length; i++) {
+    m_vertices[i]=new Vec2();
+  }
+  m_buffer=new Vec2[2];
+  m_count=0;
+  m_radius=0f;
+}

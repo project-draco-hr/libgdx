@@ -1,0 +1,76 @@
+{
+  for (int i=0; i < m_count; ++i) {
+    ContactVelocityConstraint vc=m_velocityConstraints[i];
+    ContactPositionConstraint pc=m_positionConstraints[i];
+    float radiusA=pc.radiusA;
+    float radiusB=pc.radiusB;
+    Manifold manifold=m_contacts[vc.contactIndex].getManifold();
+    int indexA=vc.indexA;
+    int indexB=vc.indexB;
+    float mA=vc.invMassA;
+    float mB=vc.invMassB;
+    float iA=vc.invIA;
+    float iB=vc.invIB;
+    Vec2 localCenterA=pc.localCenterA;
+    Vec2 localCenterB=pc.localCenterB;
+    Vec2 cA=m_positions[indexA].c;
+    float aA=m_positions[indexA].a;
+    Vec2 vA=m_velocities[indexA].v;
+    float wA=m_velocities[indexA].w;
+    Vec2 cB=m_positions[indexB].c;
+    float aB=m_positions[indexB].a;
+    Vec2 vB=m_velocities[indexB].v;
+    float wB=m_velocities[indexB].w;
+    assert(manifold.pointCount > 0);
+    xfA.q.set(aA);
+    xfB.q.set(aB);
+    Rot.mulToOutUnsafe(xfA.q,localCenterA,temp);
+    xfA.p.set(cA).subLocal(temp);
+    Rot.mulToOutUnsafe(xfB.q,localCenterB,temp);
+    xfB.p.set(cB).subLocal(temp);
+    worldManifold.initialize(manifold,xfA,radiusA,xfB,radiusB);
+    vc.normal.set(worldManifold.normal);
+    int pointCount=vc.pointCount;
+    for (int j=0; j < pointCount; ++j) {
+      VelocityConstraintPoint vcp=vc.points[j];
+      vcp.rA.set(worldManifold.points[j]).subLocal(cA);
+      vcp.rB.set(worldManifold.points[j]).subLocal(cB);
+      float rnA=Vec2.cross(vcp.rA,vc.normal);
+      float rnB=Vec2.cross(vcp.rB,vc.normal);
+      float kNormal=mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+      vcp.normalMass=kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
+      Vec2.crossToOutUnsafe(vc.normal,1.0f,tangent);
+      float rtA=Vec2.cross(vcp.rA,tangent);
+      float rtB=Vec2.cross(vcp.rB,tangent);
+      float kTangent=mA + mB + iA * rtA * rtA + iB * rtB * rtB;
+      vcp.tangentMass=kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
+      vcp.velocityBias=0.0f;
+      Vec2.crossToOutUnsafe(wB,vcp.rB,temp1);
+      Vec2.crossToOutUnsafe(wA,vcp.rA,temp2);
+      temp.set(vB).addLocal(temp1).subLocal(vA).subLocal(temp2);
+      float vRel=Vec2.dot(vc.normal,temp);
+      if (vRel < -Settings.velocityThreshold) {
+        vcp.velocityBias=-vc.restitution * vRel;
+      }
+    }
+    if (vc.pointCount == 2) {
+      VelocityConstraintPoint vcp1=vc.points[0];
+      VelocityConstraintPoint vcp2=vc.points[1];
+      float rn1A=Vec2.cross(vcp1.rA,vc.normal);
+      float rn1B=Vec2.cross(vcp1.rB,vc.normal);
+      float rn2A=Vec2.cross(vcp2.rA,vc.normal);
+      float rn2B=Vec2.cross(vcp2.rB,vc.normal);
+      float k11=mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
+      float k22=mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
+      float k12=mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
+      if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12)) {
+        vc.K.ex.set(k11,k12);
+        vc.K.ey.set(k12,k22);
+        vc.K.invertToOut(vc.normalMass);
+      }
+ else {
+        vc.pointCount=1;
+      }
+    }
+  }
+}

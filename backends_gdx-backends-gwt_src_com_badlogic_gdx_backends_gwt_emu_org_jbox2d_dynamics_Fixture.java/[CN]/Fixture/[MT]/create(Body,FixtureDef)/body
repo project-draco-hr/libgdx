@@ -1,0 +1,34 @@
+{
+  m_userData=def.userData;
+  m_friction=def.friction;
+  m_restitution=def.restitution;
+  m_body=body;
+  m_next=null;
+  m_filter.set(def.filter);
+  m_isSensor=def.isSensor;
+  m_shape=def.shape.clone();
+  int childCount=m_shape.getChildCount();
+  if (m_proxies == null) {
+    m_proxies=new FixtureProxy[childCount];
+    for (int i=0; i < childCount; i++) {
+      m_proxies[i]=new FixtureProxy();
+      m_proxies[i].fixture=null;
+      m_proxies[i].proxyId=BroadPhase.NULL_PROXY;
+    }
+  }
+  if (m_proxies.length < childCount) {
+    FixtureProxy[] old=m_proxies;
+    int newLen=MathUtils.max(old.length * 2,childCount);
+    m_proxies=new FixtureProxy[newLen];
+    System.arraycopy(old,0,m_proxies,0,old.length);
+    for (int i=0; i < newLen; i++) {
+      if (i >= old.length) {
+        m_proxies[i]=new FixtureProxy();
+      }
+      m_proxies[i].fixture=null;
+      m_proxies[i].proxyId=BroadPhase.NULL_PROXY;
+    }
+  }
+  m_proxyCount=0;
+  m_density=def.density;
+}

@@ -1,0 +1,23 @@
+{
+  final Vec2 pLocal=pool1;
+  final Vec2 temp=pool2;
+  pLocal.set(p).subLocal(xf.p);
+  Rot.mulTransUnsafe(xf.q,pLocal,temp);
+  pLocal.set(temp);
+  if (m_debug) {
+    System.out.println("--testPoint debug--");
+    System.out.println("Vertices: ");
+    for (int i=0; i < m_count; ++i) {
+      System.out.println(m_vertices[i]);
+    }
+    System.out.println("pLocal: " + pLocal);
+  }
+  for (int i=0; i < m_count; ++i) {
+    temp.set(pLocal).subLocal(m_vertices[i]);
+    final float dot=Vec2.dot(m_normals[i],temp);
+    if (dot > 0.0f) {
+      return false;
+    }
+  }
+  return true;
+}

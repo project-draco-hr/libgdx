@@ -1,0 +1,6 @@
+{
+  for (Body body=m_bodyList; body != null; body=body.getNext()) {
+    body.m_force.setZero();
+    body.m_torque=0.0f;
+  }
+}

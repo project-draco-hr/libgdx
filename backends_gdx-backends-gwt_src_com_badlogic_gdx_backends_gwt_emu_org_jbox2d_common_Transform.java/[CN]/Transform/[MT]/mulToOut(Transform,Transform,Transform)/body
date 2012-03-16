@@ -1,0 +1,6 @@
+{
+  assert(out != A);
+  Rot.mul(A.q,B.q,out.q);
+  Rot.mulToOut(A.q,B.p,out.p);
+  out.p.addLocal(A.p);
+}

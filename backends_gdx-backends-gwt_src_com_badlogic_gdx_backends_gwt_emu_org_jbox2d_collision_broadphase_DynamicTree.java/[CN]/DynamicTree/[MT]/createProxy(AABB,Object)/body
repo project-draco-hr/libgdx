@@ -1,0 +1,11 @@
+{
+  int proxyId=allocateNode();
+  final TreeNode node=m_nodes[proxyId];
+  node.aabb.lowerBound.x=aabb.lowerBound.x - Settings.aabbExtension;
+  node.aabb.lowerBound.y=aabb.lowerBound.y - Settings.aabbExtension;
+  node.aabb.upperBound.x=aabb.upperBound.x + Settings.aabbExtension;
+  node.aabb.upperBound.y=aabb.upperBound.y + Settings.aabbExtension;
+  node.userData=userData;
+  insertLeaf(proxyId);
+  return proxyId;
+}

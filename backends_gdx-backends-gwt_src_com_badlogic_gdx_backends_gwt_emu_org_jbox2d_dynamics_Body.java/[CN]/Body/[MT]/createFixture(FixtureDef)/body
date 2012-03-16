@@ -1,0 +1,21 @@
+{
+  assert(m_world.isLocked() == false);
+  if (m_world.isLocked() == true) {
+    return null;
+  }
+  Fixture fixture=new Fixture();
+  fixture.create(this,def);
+  if ((m_flags & e_activeFlag) == e_activeFlag) {
+    BroadPhase broadPhase=m_world.m_contactManager.m_broadPhase;
+    fixture.createProxies(broadPhase,m_xf);
+  }
+  fixture.m_next=m_fixtureList;
+  m_fixtureList=fixture;
+  ++m_fixtureCount;
+  fixture.m_body=this;
+  if (fixture.m_density > 0.0f) {
+    resetMassData();
+  }
+  m_world.m_flags|=World.NEW_FIXTURE;
+  return fixture;
+}

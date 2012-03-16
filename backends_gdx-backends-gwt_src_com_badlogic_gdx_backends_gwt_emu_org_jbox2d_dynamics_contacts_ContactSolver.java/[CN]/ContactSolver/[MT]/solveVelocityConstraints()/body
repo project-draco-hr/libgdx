@@ -1,0 +1,178 @@
+{
+  for (int i=0; i < m_count; ++i) {
+    final ContactVelocityConstraint vc=m_velocityConstraints[i];
+    int indexA=vc.indexA;
+    int indexB=vc.indexB;
+    float mA=vc.invMassA;
+    float mB=vc.invMassB;
+    float iA=vc.invIA;
+    float iB=vc.invIB;
+    int pointCount=vc.pointCount;
+    Vec2 vA=m_velocities[indexA].v;
+    float wA=m_velocities[indexA].w;
+    Vec2 vB=m_velocities[indexB].v;
+    float wB=m_velocities[indexB].w;
+    Vec2 normal=vc.normal;
+    tangent.x=1.0f * vc.normal.y;
+    tangent.y=-1.0f * vc.normal.x;
+    final float friction=vc.friction;
+    assert(pointCount == 1 || pointCount == 2);
+    for (int j=0; j < pointCount; ++j) {
+      final VelocityConstraintPoint vcp=vc.points[j];
+      final Vec2 a=vcp.rA;
+      dv.x=-wB * vcp.rB.y + vB.x - vA.x + wA * a.y;
+      dv.y=wB * vcp.rB.x + vB.y - vA.y - wA * a.x;
+      final float vt=dv.x * tangent.x + dv.y * tangent.y - vc.tangentSpeed;
+      float lambda=vcp.tangentMass * (-vt);
+      final float maxFriction=friction * vcp.normalImpulse;
+      final float newImpulse=MathUtils.clamp(vcp.tangentImpulse + lambda,-maxFriction,maxFriction);
+      lambda=newImpulse - vcp.tangentImpulse;
+      vcp.tangentImpulse=newImpulse;
+      final float Px=tangent.x * lambda;
+      final float Py=tangent.y * lambda;
+      vA.x-=Px * mA;
+      vA.y-=Py * mA;
+      wA-=iA * (vcp.rA.x * Py - vcp.rA.y * Px);
+      vB.x+=Px * mB;
+      vB.y+=Py * mB;
+      wB+=iB * (vcp.rB.x * Py - vcp.rB.y * Px);
+    }
+    if (vc.pointCount == 1) {
+      final VelocityConstraintPoint vcp=vc.points[0];
+      Vec2 a1=vcp.rA;
+      dv.x=-wB * vcp.rB.y + vB.x - vA.x + wA * a1.y;
+      dv.y=wB * vcp.rB.x + vB.y - vA.y - wA * a1.x;
+      final float vn=dv.x * normal.x + dv.y * normal.y;
+      float lambda=-vcp.normalMass * (vn - vcp.velocityBias);
+      float a=vcp.normalImpulse + lambda;
+      final float newImpulse=(a > 0.0f ? a : 0.0f);
+      lambda=newImpulse - vcp.normalImpulse;
+      vcp.normalImpulse=newImpulse;
+      float Px=normal.x * lambda;
+      float Py=normal.y * lambda;
+      vA.x-=Px * mA;
+      vA.y-=Py * mA;
+      wA-=iA * (vcp.rA.x * Py - vcp.rA.y * Px);
+      vB.x+=Px * mB;
+      vB.y+=Py * mB;
+      wB+=iB * (vcp.rB.x * Py - vcp.rB.y * Px);
+    }
+ else {
+      final VelocityConstraintPoint cp1=vc.points[0];
+      final VelocityConstraintPoint cp2=vc.points[1];
+      a.x=cp1.normalImpulse;
+      a.y=cp2.normalImpulse;
+      assert(a.x >= 0.0f && a.y >= 0.0f);
+      dv1.x=-wB * cp1.rB.y + vB.x - vA.x + wA * cp1.rA.y;
+      dv1.y=wB * cp1.rB.x + vB.y - vA.y - wA * cp1.rA.x;
+      dv2.x=-wB * cp2.rB.y + vB.x - vA.x + wA * cp2.rA.y;
+      dv2.y=wB * cp2.rB.x + vB.y - vA.y - wA * cp2.rA.x;
+      float vn1=dv1.x * normal.x + dv1.y * normal.y;
+      float vn2=dv2.x * normal.x + dv2.y * normal.y;
+      b.x=vn1 - cp1.velocityBias;
+      b.y=vn2 - cp2.velocityBias;
+      Mat22 R=vc.K;
+      b.x-=R.ex.x * a.x + R.ey.x * a.y;
+      b.y-=R.ex.y * a.x + R.ey.y * a.y;
+      for (; ; ) {
+        Mat22.mulToOutUnsafe(vc.normalMass,b,x);
+        x.mulLocal(-1);
+        if (x.x >= 0.0f && x.y >= 0.0f) {
+          d.set(x).subLocal(a);
+          P1.set(normal).mulLocal(d.x);
+          P2.set(normal).mulLocal(d.y);
+          temp1.set(P1).addLocal(P2);
+          temp2.set(temp1).mulLocal(mA);
+          vA.subLocal(temp2);
+          temp2.set(temp1).mulLocal(mB);
+          vB.addLocal(temp2);
+          wA-=iA * (Vec2.cross(cp1.rA,P1) + Vec2.cross(cp2.rA,P2));
+          wB+=iB * (Vec2.cross(cp1.rB,P1) + Vec2.cross(cp2.rB,P2));
+          cp1.normalImpulse=x.x;
+          cp2.normalImpulse=x.y;
+          if (DEBUG_SOLVER) {
+            Vec2 dv1=vB.add(Vec2.cross(wB,cp1.rB).subLocal(vA).subLocal(Vec2.cross(wA,cp1.rA)));
+            Vec2 dv2=vB.add(Vec2.cross(wB,cp2.rB).subLocal(vA).subLocal(Vec2.cross(wA,cp2.rA)));
+            vn1=Vec2.dot(dv1,normal);
+            vn2=Vec2.dot(dv2,normal);
+            assert(MathUtils.abs(vn1 - cp1.velocityBias) < k_errorTol);
+            assert(MathUtils.abs(vn2 - cp2.velocityBias) < k_errorTol);
+          }
+          break;
+        }
+        x.x=-cp1.normalMass * b.x;
+        x.y=0.0f;
+        vn1=0.0f;
+        vn2=vc.K.ex.y * x.x + b.y;
+        if (x.x >= 0.0f && vn2 >= 0.0f) {
+          d.set(x).subLocal(a);
+          P1.set(normal).mulLocal(d.x);
+          P2.set(normal).mulLocal(d.y);
+          temp1.set(P1).addLocal(P2);
+          temp2.set(temp1).mulLocal(mA);
+          vA.subLocal(temp2);
+          temp2.set(temp1).mulLocal(mB);
+          vB.addLocal(temp2);
+          wA-=iA * (Vec2.cross(cp1.rA,P1) + Vec2.cross(cp2.rA,P2));
+          wB+=iB * (Vec2.cross(cp1.rB,P1) + Vec2.cross(cp2.rB,P2));
+          cp1.normalImpulse=x.x;
+          cp2.normalImpulse=x.y;
+          if (DEBUG_SOLVER) {
+            Vec2 dv1=vB.add(Vec2.cross(wB,cp1.rB).subLocal(vA).subLocal(Vec2.cross(wA,cp1.rA)));
+            vn1=Vec2.dot(dv1,normal);
+            assert(MathUtils.abs(vn1 - cp1.velocityBias) < k_errorTol);
+          }
+          break;
+        }
+        x.x=0.0f;
+        x.y=-cp2.normalMass * b.y;
+        vn1=vc.K.ey.x * x.y + b.x;
+        vn2=0.0f;
+        if (x.y >= 0.0f && vn1 >= 0.0f) {
+          d.set(x).subLocal(a);
+          P1.set(normal).mulLocal(d.x);
+          P2.set(normal).mulLocal(d.y);
+          temp1.set(P1).addLocal(P2);
+          temp2.set(temp1).mulLocal(mA);
+          vA.subLocal(temp2);
+          temp2.set(temp1).mulLocal(mB);
+          vB.addLocal(temp2);
+          wA-=iA * (Vec2.cross(cp1.rA,P1) + Vec2.cross(cp2.rA,P2));
+          wB+=iB * (Vec2.cross(cp1.rB,P1) + Vec2.cross(cp2.rB,P2));
+          cp1.normalImpulse=x.x;
+          cp2.normalImpulse=x.y;
+          if (DEBUG_SOLVER) {
+            Vec2 dv2=vB.add(Vec2.cross(wB,cp2.rB).subLocal(vA).subLocal(Vec2.cross(wA,cp2.rA)));
+            vn2=Vec2.dot(dv2,normal);
+            assert(MathUtils.abs(vn2 - cp2.velocityBias) < k_errorTol);
+          }
+          break;
+        }
+        x.x=0.0f;
+        x.y=0.0f;
+        vn1=b.x;
+        vn2=b.y;
+        if (vn1 >= 0.0f && vn2 >= 0.0f) {
+          d.set(x).subLocal(a);
+          P1.set(normal).mulLocal(d.x);
+          P2.set(normal).mulLocal(d.y);
+          temp1.set(P1).addLocal(P2);
+          temp2.set(temp1).mulLocal(mA);
+          vA.subLocal(temp2);
+          temp2.set(temp1).mulLocal(mB);
+          vB.addLocal(temp2);
+          wA-=iA * (Vec2.cross(cp1.rA,P1) + Vec2.cross(cp2.rA,P2));
+          wB+=iB * (Vec2.cross(cp1.rB,P1) + Vec2.cross(cp2.rB,P2));
+          cp1.normalImpulse=x.x;
+          cp2.normalImpulse=x.y;
+          break;
+        }
+        break;
+      }
+    }
+    m_velocities[indexA].v.set(vA);
+    m_velocities[indexA].w=wA;
+    m_velocities[indexB].v.set(vB);
+    m_velocities[indexB].w=wB;
+  }
+}

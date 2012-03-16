@@ -1,0 +1,11 @@
+{
+  axis.type=EPAxis.Type.EDGE_A;
+  axis.index=m_front ? 0 : 1;
+  axis.separation=Float.MAX_VALUE;
+  for (int i=0; i < m_polygonB.count; ++i) {
+    float s=Vec2.dot(m_normal,temp.set(m_polygonB.vertices[i]).subLocal(m_v1));
+    if (s < axis.separation) {
+      axis.separation=s;
+    }
+  }
+}

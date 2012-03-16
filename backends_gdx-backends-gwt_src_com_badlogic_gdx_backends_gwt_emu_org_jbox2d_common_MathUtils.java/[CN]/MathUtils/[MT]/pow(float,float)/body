@@ -1,0 +1,10 @@
+{
+  float x=NumberUtils.floatToRawIntBits(a);
+  x*=1.0f / (1 << 23);
+  x=x - 127;
+  float y=x - MathUtils.floor(x);
+  b*=x + (y - y * y) * 0.346607f;
+  y=b - MathUtils.floor(b);
+  y=(y - y * y) * 0.33971f;
+  return NumberUtils.intBitsToFloat((int)((b + 127 - y) * (1 << 23)));
+}

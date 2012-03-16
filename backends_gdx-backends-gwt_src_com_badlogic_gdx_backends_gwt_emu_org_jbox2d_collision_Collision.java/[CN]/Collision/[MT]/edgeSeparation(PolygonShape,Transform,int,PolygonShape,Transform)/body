@@ -1,0 +1,28 @@
+{
+  final int count1=poly1.m_count;
+  final Vec2[] vertices1=poly1.m_vertices;
+  final Vec2[] normals1=poly1.m_normals;
+  final int count2=poly2.m_count;
+  final Vec2[] vertices2=poly2.m_vertices;
+  assert(0 <= edge1 && edge1 < count1);
+  Rot.mulToOutUnsafe(xf1.q,normals1[edge1],normal1World);
+  Rot.mulTransUnsafe(xf2.q,normal1World,normal1);
+  final float normal1x=normal1.x;
+  final float normal1y=normal1.y;
+  final float normal1Worldx=normal1World.x;
+  final float normal1Worldy=normal1World.y;
+  int index=0;
+  float minDot=Float.MAX_VALUE;
+  for (int i=0; i < count2; ++i) {
+    final Vec2 a=vertices2[i];
+    final float dot=a.x * normal1x + a.y * normal1y;
+    if (dot < minDot) {
+      minDot=dot;
+      index=i;
+    }
+  }
+  Transform.mulToOut(xf1,vertices1[edge1],v1);
+  Transform.mulToOut(xf2,vertices2[index],v2);
+  float separation=Vec2.dot(v2.subLocal(v1),normal1World);
+  return separation;
+}

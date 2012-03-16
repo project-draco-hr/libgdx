@@ -1,0 +1,43 @@
+{
+  Contact c=m_contactList;
+  while (c != null) {
+    Fixture fixtureA=c.getFixtureA();
+    Fixture fixtureB=c.getFixtureB();
+    int indexA=c.getChildIndexA();
+    int indexB=c.getChildIndexB();
+    Body bodyA=fixtureA.getBody();
+    Body bodyB=fixtureB.getBody();
+    if ((c.m_flags & Contact.FILTER_FLAG) == Contact.FILTER_FLAG) {
+      if (bodyB.shouldCollide(bodyA) == false) {
+        Contact cNuke=c;
+        c=cNuke.getNext();
+        destroy(cNuke);
+        continue;
+      }
+      if (m_contactFilter != null && m_contactFilter.shouldCollide(fixtureA,fixtureB) == false) {
+        Contact cNuke=c;
+        c=cNuke.getNext();
+        destroy(cNuke);
+        continue;
+      }
+      c.m_flags&=~Contact.FILTER_FLAG;
+    }
+    boolean activeA=bodyA.isAwake() && bodyA.m_type != BodyType.STATIC;
+    boolean activeB=bodyB.isAwake() && bodyB.m_type != BodyType.STATIC;
+    if (activeA == false && activeB == false) {
+      c=c.getNext();
+      continue;
+    }
+    int proxyIdA=fixtureA.m_proxies[indexA].proxyId;
+    int proxyIdB=fixtureB.m_proxies[indexB].proxyId;
+    boolean overlap=m_broadPhase.testOverlap(proxyIdA,proxyIdB);
+    if (overlap == false) {
+      Contact cNuke=c;
+      c=cNuke.getNext();
+      destroy(cNuke);
+      continue;
+    }
+    c.update(m_contactListener);
+    c=c.getNext();
+  }
+}

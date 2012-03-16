@@ -1,0 +1,5 @@
+{
+  massData.mass=density * Settings.PI * m_radius* m_radius;
+  massData.center.set(m_p);
+  massData.I=massData.mass * (0.5f * m_radius * m_radius + Vec2.dot(m_p,m_p));
+}

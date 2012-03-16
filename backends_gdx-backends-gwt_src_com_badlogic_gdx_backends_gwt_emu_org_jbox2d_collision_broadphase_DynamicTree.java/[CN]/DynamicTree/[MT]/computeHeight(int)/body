@@ -1,0 +1,10 @@
+{
+  assert(0 <= nodeId && nodeId < m_nodeCapacity);
+  final TreeNode node=m_nodes[nodeId];
+  if (node.isLeaf()) {
+    return 0;
+  }
+  int height1=computeHeight(node.child1);
+  int height2=computeHeight(node.child2);
+  return 1 + MathUtils.max(height1,height2);
+}

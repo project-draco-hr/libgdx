@@ -1,0 +1,89 @@
+{
+  GJK_CALLS++;
+  final DistanceProxy proxyA=input.proxyA;
+  final DistanceProxy proxyB=input.proxyB;
+  Transform transformA=input.transformA;
+  Transform transformB=input.transformB;
+  simplex.readCache(cache,proxyA,transformA,proxyB,transformB);
+  SimplexVertex[] vertices=simplex.vertices;
+  int saveCount=0;
+  simplex.getClosestPoint(closestPoint);
+  float distanceSqr1=closestPoint.lengthSquared();
+  float distanceSqr2=distanceSqr1;
+  int iter=0;
+  while (iter < GJK_MAX_ITERS) {
+    saveCount=simplex.m_count;
+    for (int i=0; i < saveCount; i++) {
+      saveA[i]=vertices[i].indexA;
+      saveB[i]=vertices[i].indexB;
+    }
+switch (simplex.m_count) {
+case 1:
+      break;
+case 2:
+    simplex.solve2();
+  break;
+case 3:
+simplex.solve3();
+break;
+default :
+assert(false);
+}
+if (simplex.m_count == 3) {
+break;
+}
+simplex.getClosestPoint(closestPoint);
+distanceSqr2=closestPoint.lengthSquared();
+if (distanceSqr2 >= distanceSqr1) {
+}
+distanceSqr1=distanceSqr2;
+simplex.getSearchDirection(d);
+if (d.lengthSquared() < Settings.EPSILON * Settings.EPSILON) {
+break;
+}
+SimplexVertex vertex=vertices[simplex.m_count];
+Rot.mulTransUnsafe(transformA.q,d.negateLocal(),temp);
+vertex.indexA=proxyA.getSupport(temp);
+Transform.mulToOutUnsafe(transformA,proxyA.getVertex(vertex.indexA),vertex.wA);
+Rot.mulTransUnsafe(transformB.q,d.negateLocal(),temp);
+vertex.indexB=proxyB.getSupport(temp);
+Transform.mulToOutUnsafe(transformB,proxyB.getVertex(vertex.indexB),vertex.wB);
+vertex.w.set(vertex.wB).subLocal(vertex.wA);
+++iter;
+++GJK_ITERS;
+boolean duplicate=false;
+for (int i=0; i < saveCount; ++i) {
+if (vertex.indexA == saveA[i] && vertex.indexB == saveB[i]) {
+duplicate=true;
+break;
+}
+}
+if (duplicate) {
+break;
+}
+++simplex.m_count;
+}
+GJK_MAX_ITERS=MathUtils.max(GJK_MAX_ITERS,iter);
+simplex.getWitnessPoints(output.pointA,output.pointB);
+output.distance=MathUtils.distance(output.pointA,output.pointB);
+output.iterations=iter;
+simplex.writeCache(cache);
+if (input.useRadii) {
+float rA=proxyA.m_radius;
+float rB=proxyB.m_radius;
+if (output.distance > rA + rB && output.distance > Settings.EPSILON) {
+output.distance-=rA + rB;
+normal.set(output.pointB).subLocal(output.pointA);
+normal.normalize();
+temp.set(normal).mulLocal(rA);
+output.pointA.addLocal(temp);
+temp.set(normal).mulLocal(rB);
+output.pointB.subLocal(temp);
+}
+ else {
+output.pointA.addLocal(output.pointB).mulLocal(.5f);
+output.pointB.set(output.pointA);
+output.distance=0.0f;
+}
+}
+}

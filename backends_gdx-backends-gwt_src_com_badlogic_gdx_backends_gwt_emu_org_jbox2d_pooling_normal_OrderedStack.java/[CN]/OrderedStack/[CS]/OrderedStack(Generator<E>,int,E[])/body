@@ -1,0 +1,9 @@
+{
+  size=argStackSize;
+  pool=new Object[argStackSize];
+  for (int i=0; i < argStackSize; i++) {
+    pool[i]=gen.gen();
+  }
+  index=0;
+  this.container=container;
+}

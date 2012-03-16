@@ -1,0 +1,10 @@
+{
+  m_count=2;
+  m_vertices[0].set(v1);
+  m_vertices[1].set(v2);
+  m_centroid.set(v1).addLocal(v2).mulLocal(0.5f);
+  m_normals[0].set(v2).subLocal(v1);
+  Vec2.crossToOut(m_normals[0],1f,m_normals[0]);
+  m_normals[0].normalize();
+  m_normals[1].set(m_normals[0]).negateLocal();
+}

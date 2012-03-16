@@ -1,0 +1,7 @@
+{
+  assert(out != B);
+  assert(out != A);
+  Rot.mulUnsafe(A.q,B.q,out.q);
+  Rot.mulToOutUnsafe(A.q,B.p,out.p);
+  out.p.addLocal(A.p);
+}

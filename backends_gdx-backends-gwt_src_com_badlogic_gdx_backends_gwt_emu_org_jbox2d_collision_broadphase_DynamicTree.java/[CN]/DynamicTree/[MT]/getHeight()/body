@@ -1,0 +1,6 @@
+{
+  if (m_root == NULL_NODE) {
+    return 0;
+  }
+  return m_nodes[m_root].height;
+}

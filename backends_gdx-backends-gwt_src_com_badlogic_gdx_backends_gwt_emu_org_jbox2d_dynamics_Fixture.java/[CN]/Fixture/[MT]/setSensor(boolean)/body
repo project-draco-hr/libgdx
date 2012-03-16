@@ -1,0 +1,6 @@
+{
+  if (sensor != m_isSensor) {
+    m_body.setAwake(true);
+    m_isSensor=sensor;
+  }
+}

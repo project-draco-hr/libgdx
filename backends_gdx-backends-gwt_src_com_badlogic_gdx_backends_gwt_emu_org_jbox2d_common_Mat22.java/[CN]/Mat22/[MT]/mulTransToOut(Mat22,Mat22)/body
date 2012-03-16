@@ -1,0 +1,10 @@
+{
+  final float x1=this.ex.x * B.ex.x + this.ex.y * B.ex.y;
+  final float y1=this.ey.x * B.ex.x + this.ey.y * B.ex.y;
+  final float x2=this.ex.x * B.ey.x + this.ex.y * B.ey.y;
+  final float y2=this.ey.x * B.ey.x + this.ey.y * B.ey.y;
+  out.ex.x=x1;
+  out.ey.x=x2;
+  out.ex.y=y1;
+  out.ey.y=y2;
+}

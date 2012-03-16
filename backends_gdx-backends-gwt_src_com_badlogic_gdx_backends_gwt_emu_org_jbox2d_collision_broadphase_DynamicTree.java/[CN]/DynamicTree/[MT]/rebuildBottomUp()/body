@@ -1,0 +1,53 @@
+{
+  int[] nodes=new int[m_nodeCount];
+  int count=0;
+  for (int i=0; i < m_nodeCapacity; ++i) {
+    if (m_nodes[i].height < 0) {
+      continue;
+    }
+    if (m_nodes[i].isLeaf()) {
+      m_nodes[i].parent=NULL_NODE;
+      nodes[count]=i;
+      ++count;
+    }
+ else {
+      freeNode(i);
+    }
+  }
+  AABB b=new AABB();
+  while (count > 1) {
+    float minCost=Float.MAX_VALUE;
+    int iMin=-1, jMin=-1;
+    for (int i=0; i < count; ++i) {
+      AABB aabbi=m_nodes[nodes[i]].aabb;
+      for (int j=i + 1; j < count; ++j) {
+        AABB aabbj=m_nodes[nodes[j]].aabb;
+        b.combine(aabbi,aabbj);
+        float cost=b.getPerimeter();
+        if (cost < minCost) {
+          iMin=i;
+          jMin=j;
+          minCost=cost;
+        }
+      }
+    }
+    int index1=nodes[iMin];
+    int index2=nodes[jMin];
+    TreeNode child1=m_nodes[index1];
+    TreeNode child2=m_nodes[index2];
+    int parentIndex=allocateNode();
+    TreeNode parent=m_nodes[parentIndex];
+    parent.child1=index1;
+    parent.child2=index2;
+    parent.height=1 + MathUtils.max(child1.height,child2.height);
+    parent.aabb.combine(child1.aabb,child2.aabb);
+    parent.parent=NULL_NODE;
+    child1.parent=parentIndex;
+    child2.parent=parentIndex;
+    nodes[jMin]=nodes[count - 1];
+    nodes[iMin]=parentIndex;
+    --count;
+  }
+  m_root=nodes[0];
+  validate();
+}

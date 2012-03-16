@@ -1,0 +1,59 @@
+{
+  oldManifold.set(m_manifold);
+  m_flags|=ENABLED_FLAG;
+  boolean touching=false;
+  boolean wasTouching=(m_flags & TOUCHING_FLAG) == TOUCHING_FLAG;
+  boolean sensorA=m_fixtureA.isSensor();
+  boolean sensorB=m_fixtureB.isSensor();
+  boolean sensor=sensorA || sensorB;
+  Body bodyA=m_fixtureA.getBody();
+  Body bodyB=m_fixtureB.getBody();
+  Transform xfA=bodyA.getTransform();
+  Transform xfB=bodyB.getTransform();
+  if (sensor) {
+    Shape shapeA=m_fixtureA.getShape();
+    Shape shapeB=m_fixtureB.getShape();
+    touching=pool.getCollision().testOverlap(shapeA,m_indexA,shapeB,m_indexB,xfA,xfB);
+    m_manifold.pointCount=0;
+  }
+ else {
+    evaluate(m_manifold,xfA,xfB);
+    touching=m_manifold.pointCount > 0;
+    for (int i=0; i < m_manifold.pointCount; ++i) {
+      ManifoldPoint mp2=m_manifold.points[i];
+      mp2.normalImpulse=0.0f;
+      mp2.tangentImpulse=0.0f;
+      ContactID id2=mp2.id;
+      for (int j=0; j < oldManifold.pointCount; ++j) {
+        ManifoldPoint mp1=oldManifold.points[j];
+        if (mp1.id.isEqual(id2)) {
+          mp2.normalImpulse=mp1.normalImpulse;
+          mp2.tangentImpulse=mp1.tangentImpulse;
+          break;
+        }
+      }
+    }
+    if (touching != wasTouching) {
+      bodyA.setAwake(true);
+      bodyB.setAwake(true);
+    }
+  }
+  if (touching) {
+    m_flags|=TOUCHING_FLAG;
+  }
+ else {
+    m_flags&=~TOUCHING_FLAG;
+  }
+  if (listener == null) {
+    return;
+  }
+  if (wasTouching == false && touching == true) {
+    listener.beginContact(this);
+  }
+  if (wasTouching == true && touching == false) {
+    listener.endContact(this);
+  }
+  if (sensor == false && touching) {
+    listener.preSolve(this,oldManifold);
+  }
+}

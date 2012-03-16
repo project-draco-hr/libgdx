@@ -1,0 +1,28 @@
+{
+  m_pairCount=0;
+  for (int i=0; i < m_moveCount; ++i) {
+    m_queryProxyId=m_moveBuffer[i];
+    if (m_queryProxyId == NULL_PROXY) {
+      continue;
+    }
+    final AABB fatAABB=m_tree.getFatAABB(m_queryProxyId);
+    m_tree.query(this,fatAABB);
+  }
+  m_moveCount=0;
+  Arrays.sort(m_pairBuffer,0,m_pairCount);
+  int i=0;
+  while (i < m_pairCount) {
+    Pair primaryPair=m_pairBuffer[i];
+    Object userDataA=m_tree.getUserData(primaryPair.proxyIdA);
+    Object userDataB=m_tree.getUserData(primaryPair.proxyIdB);
+    callback.addPair(userDataA,userDataB);
+    ++i;
+    while (i < m_pairCount) {
+      Pair pair=m_pairBuffer[i];
+      if (pair.proxyIdA != primaryPair.proxyIdA || pair.proxyIdB != primaryPair.proxyIdB) {
+        break;
+      }
+      ++i;
+    }
+  }
+}

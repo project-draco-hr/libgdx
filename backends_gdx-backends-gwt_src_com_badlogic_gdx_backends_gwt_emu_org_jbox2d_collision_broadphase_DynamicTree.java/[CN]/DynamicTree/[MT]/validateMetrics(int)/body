@@ -1,0 +1,27 @@
+{
+  if (index == NULL_NODE) {
+    return;
+  }
+  final TreeNode node=m_nodes[index];
+  int child1=node.child1;
+  int child2=node.child2;
+  if (node.isLeaf()) {
+    assert(child1 == NULL_NODE);
+    assert(child2 == NULL_NODE);
+    assert(node.height == 0);
+    return;
+  }
+  assert(0 <= child1 && child1 < m_nodeCapacity);
+  assert(0 <= child2 && child2 < m_nodeCapacity);
+  int height1=m_nodes[child1].height;
+  int height2=m_nodes[child2].height;
+  int height;
+  height=1 + MathUtils.max(height1,height2);
+  assert(node.height == height);
+  AABB aabb=new AABB();
+  aabb.combine(m_nodes[child1].aabb,m_nodes[child2].aabb);
+  assert(aabb.lowerBound.equals(node.aabb.lowerBound));
+  assert(aabb.upperBound.equals(node.aabb.upperBound));
+  validateMetrics(child1);
+  validateMetrics(child2);
+}

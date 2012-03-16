@@ -1,0 +1,17 @@
+{
+  manifold.pointCount=0;
+  Transform.mulToOut(xfA,circle1.m_p,pA);
+  Transform.mulToOut(xfB,circle2.m_p,pB);
+  d.set(pB).subLocal(pA);
+  float distSqr=d.x * d.x + d.y * d.y;
+  final float radius=circle1.m_radius + circle2.m_radius;
+  if (distSqr > radius * radius) {
+    return;
+  }
+  manifold.type=ManifoldType.CIRCLES;
+  manifold.localPoint.set(circle1.m_p);
+  manifold.localNormal.setZero();
+  manifold.pointCount=1;
+  manifold.points[0].localPoint.set(circle2.m_p);
+  manifold.points[0].id.zero();
+}

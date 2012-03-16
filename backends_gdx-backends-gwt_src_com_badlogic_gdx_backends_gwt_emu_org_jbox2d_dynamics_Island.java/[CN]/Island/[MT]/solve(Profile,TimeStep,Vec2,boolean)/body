@@ -1,0 +1,122 @@
+{
+  float h=step.dt;
+  for (int i=0; i < m_bodyCount; ++i) {
+    final Body b=m_bodies[i];
+    final Vec2 c=b.m_sweep.c;
+    float a=b.m_sweep.a;
+    final Vec2 v=b.m_linearVelocity;
+    float w=b.m_angularVelocity;
+    b.m_sweep.c0.set(b.m_sweep.c);
+    b.m_sweep.a0=b.m_sweep.a;
+    if (b.m_type == BodyType.DYNAMIC) {
+      v.x+=h * (b.m_gravityScale * gravity.x + b.m_invMass * b.m_force.x);
+      v.y+=h * (b.m_gravityScale * gravity.y + b.m_invMass * b.m_force.y);
+      w+=h * b.m_invI * b.m_torque;
+      v.mulLocal(MathUtils.clamp(1.0f - h * b.m_linearDamping,0.0f,1.0f));
+      w*=MathUtils.clamp(1.0f - h * b.m_angularDamping,0.0f,1.0f);
+    }
+    m_positions[i].c.set(c);
+    m_positions[i].a=a;
+    m_velocities[i].v.set(v);
+    m_velocities[i].w=w;
+  }
+  timer.reset();
+  solverData.step=step;
+  solverData.positions=m_positions;
+  solverData.velocities=m_velocities;
+  solverDef.step=step;
+  solverDef.contacts=m_contacts;
+  solverDef.count=m_contactCount;
+  solverDef.positions=m_positions;
+  solverDef.velocities=m_velocities;
+  contactSolver.init(solverDef);
+  contactSolver.initializeVelocityConstraints();
+  if (step.warmStarting) {
+    contactSolver.warmStart();
+  }
+  for (int i=0; i < m_jointCount; ++i) {
+    m_joints[i].initVelocityConstraints(solverData);
+  }
+  profile.solveInit=timer.getMilliseconds();
+  timer.reset();
+  for (int i=0; i < step.velocityIterations; ++i) {
+    for (int j=0; j < m_jointCount; ++j) {
+      m_joints[j].solveVelocityConstraints(solverData);
+    }
+    contactSolver.solveVelocityConstraints();
+  }
+  contactSolver.storeImpulses();
+  profile.solveVelocity=timer.getMilliseconds();
+  for (int i=0; i < m_bodyCount; ++i) {
+    final Vec2 c=m_positions[i].c;
+    float a=m_positions[i].a;
+    final Vec2 v=m_velocities[i].v;
+    float w=m_velocities[i].w;
+    translation.x=v.x * h;
+    translation.y=v.y * h;
+    if (Vec2.dot(translation,translation) > Settings.maxTranslationSquared) {
+      float ratio=Settings.maxTranslation / translation.length();
+      v.x*=ratio;
+      v.y*=ratio;
+    }
+    float rotation=h * w;
+    if (rotation * rotation > Settings.maxRotationSquared) {
+      float ratio=Settings.maxRotation / MathUtils.abs(rotation);
+      w*=ratio;
+    }
+    c.x+=h * v.x;
+    c.y+=h * v.y;
+    a+=h * w;
+    m_positions[i].a=a;
+    m_velocities[i].w=w;
+  }
+  timer.reset();
+  boolean positionSolved=false;
+  for (int i=0; i < step.positionIterations; ++i) {
+    boolean contactsOkay=contactSolver.solvePositionConstraints();
+    boolean jointsOkay=true;
+    for (int j=0; j < m_jointCount; ++j) {
+      boolean jointOkay=m_joints[j].solvePositionConstraints(solverData);
+      jointsOkay=jointsOkay && jointOkay;
+    }
+    if (contactsOkay && jointsOkay) {
+      positionSolved=true;
+      break;
+    }
+  }
+  for (int i=0; i < m_bodyCount; ++i) {
+    Body body=m_bodies[i];
+    body.m_sweep.c.set(m_positions[i].c);
+    body.m_sweep.a=m_positions[i].a;
+    body.m_linearVelocity.set(m_velocities[i].v);
+    body.m_angularVelocity=m_velocities[i].w;
+    body.synchronizeTransform();
+  }
+  profile.solvePosition=timer.getMilliseconds();
+  report(contactSolver.m_velocityConstraints);
+  if (allowSleep) {
+    float minSleepTime=Float.MAX_VALUE;
+    final float linTolSqr=Settings.linearSleepTolerance * Settings.linearSleepTolerance;
+    final float angTolSqr=Settings.angularSleepTolerance * Settings.angularSleepTolerance;
+    for (int i=0; i < m_bodyCount; ++i) {
+      Body b=m_bodies[i];
+      if (b.getType() == BodyType.STATIC) {
+        continue;
+      }
+      if ((b.m_flags & Body.e_autoSleepFlag) == 0 || b.m_angularVelocity * b.m_angularVelocity > angTolSqr || Vec2.dot(b.m_linearVelocity,b.m_linearVelocity) > linTolSqr) {
+        b.m_sleepTime=0.0f;
+        minSleepTime=0.0f;
+      }
+ else {
+        b.m_sleepTime+=h;
+        minSleepTime=MathUtils.min(minSleepTime,b.m_sleepTime);
+      }
+    }
+    if (minSleepTime >= Settings.timeToSleep && positionSolved) {
+      for (int i=0; i < m_bodyCount; ++i) {
+        Body b=m_bodies[i];
+        b.setAwake(false);
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  assert(B != out);
+  assert(this != out);
+  out.ex.x=this.ex.x * B.ex.x + this.ex.y * B.ex.y;
+  out.ey.x=this.ex.x * B.ey.x + this.ex.y * B.ey.y;
+  out.ex.y=this.ey.x * B.ex.x + this.ey.y * B.ex.y;
+  out.ey.y=this.ey.x * B.ey.x + this.ey.y * B.ey.y;
+}

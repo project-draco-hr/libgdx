@@ -1,0 +1,9 @@
+{
+  final Vec2 p=pool1;
+  Rot.mulToOutUnsafe(transform.q,m_p,p);
+  p.addLocal(transform.p);
+  aabb.lowerBound.x=p.x - m_radius;
+  aabb.lowerBound.y=p.y - m_radius;
+  aabb.upperBound.x=p.x + m_radius;
+  aabb.upperBound.y=p.y + m_radius;
+}

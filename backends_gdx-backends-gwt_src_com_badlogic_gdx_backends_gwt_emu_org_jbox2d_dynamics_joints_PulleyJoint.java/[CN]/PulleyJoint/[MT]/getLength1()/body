@@ -1,0 +1,8 @@
+{
+  final Vec2 p=pool.popVec2();
+  m_bodyA.getWorldPointToOut(m_localAnchorA,p);
+  p.subLocal(m_groundAnchorA);
+  float len=p.length();
+  pool.pushVec2(1);
+  return len;
+}

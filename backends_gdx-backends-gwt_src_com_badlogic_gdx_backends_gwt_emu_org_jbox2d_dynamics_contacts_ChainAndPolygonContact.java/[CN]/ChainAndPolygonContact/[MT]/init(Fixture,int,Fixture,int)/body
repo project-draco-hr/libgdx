@@ -1,0 +1,5 @@
+{
+  super.init(fA,indexA,fB,indexB);
+  assert(m_fixtureA.getType() == ShapeType.CHAIN);
+  assert(m_fixtureB.getType() == ShapeType.POLYGON);
+}

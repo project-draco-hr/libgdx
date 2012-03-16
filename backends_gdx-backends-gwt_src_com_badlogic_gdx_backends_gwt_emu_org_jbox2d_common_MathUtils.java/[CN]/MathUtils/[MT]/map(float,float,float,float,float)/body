@@ -1,0 +1,5 @@
+{
+  final float mult=(val - fromMin) / (fromMax - fromMin);
+  final float res=toMin + mult * (toMax - toMin);
+  return res;
+}

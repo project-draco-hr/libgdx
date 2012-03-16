@@ -1,0 +1,12 @@
+{
+  assert(childIndex < m_count);
+  final EdgeShape edgeShape=pool0;
+  int i1=childIndex;
+  int i2=childIndex + 1;
+  if (i2 == m_count) {
+    i2=0;
+  }
+  edgeShape.m_vertex1.set(m_vertices[i1]);
+  edgeShape.m_vertex2.set(m_vertices[i2]);
+  return edgeShape.raycast(output,input,xf,0);
+}

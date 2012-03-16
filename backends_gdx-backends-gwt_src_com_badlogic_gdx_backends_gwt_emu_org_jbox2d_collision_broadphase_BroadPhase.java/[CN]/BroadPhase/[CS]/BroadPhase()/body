@@ -1,0 +1,14 @@
+{
+  m_proxyCount=0;
+  m_pairCapacity=16;
+  m_pairCount=0;
+  m_pairBuffer=new Pair[m_pairCapacity];
+  for (int i=0; i < m_pairCapacity; i++) {
+    m_pairBuffer[i]=new Pair();
+  }
+  m_moveCapacity=16;
+  m_moveCount=0;
+  m_moveBuffer=new int[m_moveCapacity];
+  m_tree=new DynamicTree();
+  m_queryProxyId=NULL_PROXY;
+}

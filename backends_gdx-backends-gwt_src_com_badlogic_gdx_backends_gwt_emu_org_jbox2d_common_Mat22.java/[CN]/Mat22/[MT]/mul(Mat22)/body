@@ -1,0 +1,8 @@
+{
+  final Mat22 C=new Mat22();
+  C.ex.x=ex.x * R.ex.x + ey.x * R.ex.y;
+  C.ex.y=ex.y * R.ex.x + ey.y * R.ex.y;
+  C.ey.x=ex.x * R.ey.x + ey.x * R.ey.y;
+  C.ey.y=ex.y * R.ey.x + ey.y * R.ey.y;
+  return C;
+}

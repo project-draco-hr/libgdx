@@ -1,0 +1,16 @@
+{
+  if (m_root == NULL_NODE) {
+    return 0.0f;
+  }
+  final TreeNode root=m_nodes[m_root];
+  float rootArea=root.aabb.getPerimeter();
+  float totalArea=0.0f;
+  for (int i=0; i < m_nodeCapacity; ++i) {
+    final TreeNode node=m_nodes[i];
+    if (node.height < 0) {
+      continue;
+    }
+    totalArea+=node.aabb.getPerimeter();
+  }
+  return totalArea / rootArea;
+}

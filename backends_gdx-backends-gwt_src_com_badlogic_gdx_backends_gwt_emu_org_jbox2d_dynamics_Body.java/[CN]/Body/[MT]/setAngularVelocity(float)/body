@@ -1,0 +1,9 @@
+{
+  if (m_type == BodyType.STATIC) {
+    return;
+  }
+  if (w * w > 0f) {
+    setAwake(true);
+  }
+  m_angularVelocity=w;
+}

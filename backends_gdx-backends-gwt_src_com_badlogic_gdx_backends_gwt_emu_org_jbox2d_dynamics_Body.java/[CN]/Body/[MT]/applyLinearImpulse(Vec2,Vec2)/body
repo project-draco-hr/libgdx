@@ -1,0 +1,11 @@
+{
+  if (m_type != BodyType.DYNAMIC) {
+    return;
+  }
+  if (isAwake() == false) {
+    setAwake(true);
+  }
+  m_linearVelocity.x+=impulse.x * m_invMass;
+  m_linearVelocity.y+=impulse.y * m_invMass;
+  m_angularVelocity+=m_invI * ((point.x - m_sweep.c.x) * impulse.y - (point.y - m_sweep.c.y) * impulse.x);
+}

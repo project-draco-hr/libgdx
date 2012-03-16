@@ -1,0 +1,13 @@
+{
+  if (m_type != BodyType.DYNAMIC && other.m_type != BodyType.DYNAMIC) {
+    return false;
+  }
+  for (JointEdge jn=m_jointList; jn != null; jn=jn.next) {
+    if (jn.other == other) {
+      if (jn.joint.m_collideConnected == false) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

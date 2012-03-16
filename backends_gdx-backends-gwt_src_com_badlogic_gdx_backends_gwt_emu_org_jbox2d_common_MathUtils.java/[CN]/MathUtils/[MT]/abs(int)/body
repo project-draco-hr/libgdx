@@ -1,0 +1,4 @@
+{
+  int y=x >> 31;
+  return (x ^ y) - y;
+}

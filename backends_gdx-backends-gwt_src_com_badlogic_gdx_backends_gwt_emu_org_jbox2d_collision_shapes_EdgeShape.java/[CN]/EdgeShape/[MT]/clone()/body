@@ -1,0 +1,11 @@
+{
+  EdgeShape edge=new EdgeShape();
+  edge.m_radius=this.m_radius;
+  edge.m_hasVertex0=this.m_hasVertex0;
+  edge.m_hasVertex3=this.m_hasVertex3;
+  edge.m_vertex0.set(this.m_vertex0);
+  edge.m_vertex1.set(this.m_vertex1);
+  edge.m_vertex2.set(this.m_vertex2);
+  edge.m_vertex3.set(this.m_vertex3);
+  return edge;
+}

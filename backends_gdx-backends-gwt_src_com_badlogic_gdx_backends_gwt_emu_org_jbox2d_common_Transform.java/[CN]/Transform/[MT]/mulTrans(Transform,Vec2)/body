@@ -1,0 +1,5 @@
+{
+  final float px=v.x - T.p.x;
+  final float py=v.y - T.p.y;
+  return new Vec2((T.q.c * px + T.q.s * py),(-T.q.s * px + T.q.c * py));
+}

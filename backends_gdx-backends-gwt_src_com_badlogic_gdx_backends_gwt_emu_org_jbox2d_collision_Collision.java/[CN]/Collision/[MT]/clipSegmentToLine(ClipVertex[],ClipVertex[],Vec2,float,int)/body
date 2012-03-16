@@ -1,0 +1,21 @@
+{
+  int numOut=0;
+  float distance0=Vec2.dot(normal,vIn[0].v) - offset;
+  float distance1=Vec2.dot(normal,vIn[1].v) - offset;
+  if (distance0 <= 0.0f) {
+    vOut[numOut++].set(vIn[0]);
+  }
+  if (distance1 <= 0.0f) {
+    vOut[numOut++].set(vIn[1]);
+  }
+  if (distance0 * distance1 < 0.0f) {
+    float interp=distance0 / (distance0 - distance1);
+    vOut[numOut].v.set(vIn[1].v).subLocal(vIn[0].v).mulLocal(interp).addLocal(vIn[0].v);
+    vOut[numOut].id.indexA=(byte)vertexIndexA;
+    vOut[numOut].id.indexB=vIn[0].id.indexB;
+    vOut[numOut].id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
+    vOut[numOut].id.typeB=(byte)ContactID.Type.FACE.ordinal();
+    ++numOut;
+  }
+  return numOut;
+}

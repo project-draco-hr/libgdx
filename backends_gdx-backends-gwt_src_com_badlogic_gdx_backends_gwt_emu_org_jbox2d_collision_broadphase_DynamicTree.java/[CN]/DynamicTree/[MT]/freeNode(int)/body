@@ -1,0 +1,8 @@
+{
+  assert(nodeId != NULL_NODE);
+  assert(0 < m_nodeCount);
+  m_nodes[nodeId].parent=m_freeList;
+  m_nodes[nodeId].height=-1;
+  m_freeList=nodeId;
+  m_nodeCount--;
+}

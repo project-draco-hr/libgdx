@@ -1,0 +1,23 @@
+{
+  if (m_body == null) {
+    return;
+  }
+  ContactEdge edge=m_body.getContactList();
+  while (edge != null) {
+    Contact contact=edge.contact;
+    Fixture fixtureA=contact.getFixtureA();
+    Fixture fixtureB=contact.getFixtureB();
+    if (fixtureA == this || fixtureB == this) {
+      contact.flagForFiltering();
+    }
+    edge=edge.next;
+  }
+  World world=m_body.getWorld();
+  if (world == null) {
+    return;
+  }
+  BroadPhase broadPhase=world.m_contactManager.m_broadPhase;
+  for (int i=0; i < m_proxyCount; ++i) {
+    broadPhase.touchProxy(m_proxies[i].proxyId);
+  }
+}

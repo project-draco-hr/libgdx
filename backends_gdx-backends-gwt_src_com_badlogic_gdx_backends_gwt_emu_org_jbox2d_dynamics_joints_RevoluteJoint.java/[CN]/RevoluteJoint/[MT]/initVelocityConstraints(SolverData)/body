@@ -1,0 +1,92 @@
+{
+  m_indexA=m_bodyA.m_islandIndex;
+  m_indexB=m_bodyB.m_islandIndex;
+  m_localCenterA.set(m_bodyA.m_sweep.localCenter);
+  m_localCenterB.set(m_bodyB.m_sweep.localCenter);
+  m_invMassA=m_bodyA.m_invMass;
+  m_invMassB=m_bodyB.m_invMass;
+  m_invIA=m_bodyA.m_invI;
+  m_invIB=m_bodyB.m_invI;
+  float aA=data.positions[m_indexA].a;
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  float aB=data.positions[m_indexB].a;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  final Rot qA=pool.popRot();
+  final Rot qB=pool.popRot();
+  final Vec2 temp=pool.popVec2();
+  qA.set(aA);
+  qB.set(aB);
+  Rot.mulToOutUnsafe(qA,temp.set(m_localAnchorA).subLocal(m_localCenterA),m_rA);
+  Rot.mulToOutUnsafe(qB,temp.set(m_localAnchorB).subLocal(m_localCenterB),m_rB);
+  float mA=m_invMassA, mB=m_invMassB;
+  float iA=m_invIA, iB=m_invIB;
+  boolean fixedRotation=(iA + iB == 0.0f);
+  m_mass.ex.x=mA + mB + m_rA.y * m_rA.y * iA + m_rB.y * m_rB.y * iB;
+  m_mass.ey.x=-m_rA.y * m_rA.x * iA - m_rB.y * m_rB.x * iB;
+  m_mass.ez.x=-m_rA.y * iA - m_rB.y * iB;
+  m_mass.ex.y=m_mass.ey.x;
+  m_mass.ey.y=mA + mB + m_rA.x * m_rA.x * iA + m_rB.x * m_rB.x * iB;
+  m_mass.ez.y=m_rA.x * iA + m_rB.x * iB;
+  m_mass.ex.z=m_mass.ez.x;
+  m_mass.ey.z=m_mass.ez.y;
+  m_mass.ez.z=iA + iB;
+  m_motorMass=iA + iB;
+  if (m_motorMass > 0.0f) {
+    m_motorMass=1.0f / m_motorMass;
+  }
+  if (m_enableMotor == false || fixedRotation) {
+    m_motorImpulse=0.0f;
+  }
+  if (m_enableLimit && fixedRotation == false) {
+    float jointAngle=aB - aA - m_referenceAngle;
+    if (MathUtils.abs(m_upperAngle - m_lowerAngle) < 2.0f * Settings.angularSlop) {
+      m_limitState=LimitState.EQUAL;
+    }
+ else     if (jointAngle <= m_lowerAngle) {
+      if (m_limitState != LimitState.AT_LOWER) {
+        m_impulse.z=0.0f;
+      }
+      m_limitState=LimitState.AT_LOWER;
+    }
+ else     if (jointAngle >= m_upperAngle) {
+      if (m_limitState != LimitState.AT_UPPER) {
+        m_impulse.z=0.0f;
+      }
+      m_limitState=LimitState.AT_UPPER;
+    }
+ else {
+      m_limitState=LimitState.INACTIVE;
+      m_impulse.z=0.0f;
+    }
+  }
+ else {
+    m_limitState=LimitState.INACTIVE;
+  }
+  if (data.step.warmStarting) {
+    final Vec2 P=pool.popVec2();
+    m_impulse.x*=data.step.dtRatio;
+    m_impulse.y*=data.step.dtRatio;
+    m_motorImpulse*=data.step.dtRatio;
+    P.x=m_impulse.x;
+    P.y=m_impulse.y;
+    vA.x-=mA * P.x;
+    vA.y-=mA * P.y;
+    wA-=iA * (Vec2.cross(m_rA,P) + m_motorImpulse + m_impulse.z);
+    vB.x+=mB * P.x;
+    vB.y+=mB * P.y;
+    wB+=iB * (Vec2.cross(m_rB,P) + m_motorImpulse + m_impulse.z);
+    pool.pushVec2(1);
+  }
+ else {
+    m_impulse.setZero();
+    m_motorImpulse=0.0f;
+  }
+  data.velocities[m_indexA].v.set(vA);
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].v.set(vB);
+  data.velocities[m_indexB].w=wB;
+  pool.pushVec2(1);
+  pool.pushRot(2);
+}

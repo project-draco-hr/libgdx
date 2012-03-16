@@ -1,0 +1,64 @@
+{
+  if (manifold.pointCount == 0) {
+    return;
+  }
+switch (manifold.type) {
+case CIRCLES:
+{
+      final Vec2 pointA=pool3;
+      final Vec2 pointB=pool4;
+      normal.x=1;
+      normal.y=0;
+      Transform.mulToOut(xfA,manifold.localPoint,pointA);
+      Transform.mulToOut(xfB,manifold.points[0].localPoint,pointB);
+      if (MathUtils.distanceSquared(pointA,pointB) > Settings.EPSILON * Settings.EPSILON) {
+        normal.x=pointB.x - pointA.x;
+        normal.y=pointB.y - pointA.y;
+        normal.normalize();
+      }
+      final float cAx=normal.x * radiusA + pointA.x;
+      final float cAy=normal.y * radiusA + pointA.y;
+      final float cBx=-normal.x * radiusB + pointB.x;
+      final float cBy=-normal.y * radiusB + pointB.y;
+      points[0].x=(cAx + cBx) * .5f;
+      points[0].y=(cAy + cBy) * .5f;
+    }
+  break;
+case FACE_A:
+{
+  final Vec2 planePoint=pool3;
+  Rot.mulToOutUnsafe(xfA.q,manifold.localNormal,normal);
+  Transform.mulToOut(xfA,manifold.localPoint,planePoint);
+  final Vec2 clipPoint=pool4;
+  for (int i=0; i < manifold.pointCount; i++) {
+    Transform.mulToOut(xfB,manifold.points[i].localPoint,clipPoint);
+    final float scalar=radiusA - ((clipPoint.x - planePoint.x) * normal.x + (clipPoint.y - planePoint.y) * normal.y);
+    final float cAx=normal.x * scalar + clipPoint.x;
+    final float cAy=normal.y * scalar + clipPoint.y;
+    final float cBx=-normal.x * radiusB + clipPoint.x;
+    final float cBy=-normal.y * radiusB + clipPoint.y;
+    points[i].x=(cAx + cBx) * .5f;
+    points[i].y=(cAy + cBy) * .5f;
+  }
+}
+break;
+case FACE_B:
+final Vec2 planePoint=pool3;
+Rot.mulToOutUnsafe(xfB.q,manifold.localNormal,normal);
+Transform.mulToOut(xfB,manifold.localPoint,planePoint);
+final Vec2 clipPoint=pool4;
+for (int i=0; i < manifold.pointCount; i++) {
+Transform.mulToOut(xfA,manifold.points[i].localPoint,clipPoint);
+final float scalar=radiusB - ((clipPoint.x - planePoint.x) * normal.x + (clipPoint.y - planePoint.y) * normal.y);
+final float cBx=normal.x * scalar + clipPoint.x;
+final float cBy=normal.y * scalar + clipPoint.y;
+final float cAx=-normal.x * radiusA + clipPoint.x;
+final float cAy=-normal.y * radiusA + clipPoint.y;
+points[i].x=(cAx + cBx) * .5f;
+points[i].y=(cAy + cBy) * .5f;
+}
+normal.x=-normal.x;
+normal.y=-normal.y;
+break;
+}
+}

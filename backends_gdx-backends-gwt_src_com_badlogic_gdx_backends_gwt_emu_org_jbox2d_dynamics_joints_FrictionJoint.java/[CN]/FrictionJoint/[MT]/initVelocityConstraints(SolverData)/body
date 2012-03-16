@@ -1,0 +1,62 @@
+{
+  m_indexA=m_bodyA.m_islandIndex;
+  m_indexB=m_bodyB.m_islandIndex;
+  m_localCenterA.set(m_bodyA.m_sweep.localCenter);
+  m_localCenterB.set(m_bodyB.m_sweep.localCenter);
+  m_invMassA=m_bodyA.m_invMass;
+  m_invMassB=m_bodyB.m_invMass;
+  m_invIA=m_bodyA.m_invI;
+  m_invIB=m_bodyB.m_invI;
+  float aA=data.positions[m_indexA].a;
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  float aB=data.positions[m_indexB].a;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  final Vec2 temp=pool.popVec2();
+  final Rot qA=pool.popRot();
+  final Rot qB=pool.popRot();
+  qA.set(aA);
+  qB.set(aB);
+  Rot.mulToOutUnsafe(qA,temp.set(m_localAnchorA).subLocal(m_localCenterA),m_rA);
+  Rot.mulToOutUnsafe(qB,temp.set(m_localAnchorB).subLocal(m_localCenterB),m_rB);
+  float mA=m_invMassA, mB=m_invMassB;
+  float iA=m_invIA, iB=m_invIB;
+  final Mat22 K=pool.popMat22();
+  K.ex.x=mA + mB + iA * m_rA.y * m_rA.y + iB * m_rB.y * m_rB.y;
+  K.ex.y=-iA * m_rA.x * m_rA.y - iB * m_rB.x * m_rB.y;
+  K.ey.x=K.ex.y;
+  K.ey.y=mA + mB + iA * m_rA.x * m_rA.x + iB * m_rB.x * m_rB.x;
+  K.invertToOut(m_linearMass);
+  m_angularMass=iA + iB;
+  if (m_angularMass > 0.0f) {
+    m_angularMass=1.0f / m_angularMass;
+  }
+  if (data.step.warmStarting) {
+    m_linearImpulse.mulLocal(data.step.dtRatio);
+    m_angularImpulse*=data.step.dtRatio;
+    final Vec2 P=pool.popVec2();
+    P.set(m_linearImpulse);
+    temp.set(P).mulLocal(mA);
+    vA.subLocal(temp);
+    wA-=iA * (Vec2.cross(m_rA,P) + m_angularImpulse);
+    temp.set(P).mulLocal(mB);
+    vB.addLocal(temp);
+    wB+=iB * (Vec2.cross(m_rB,P) + m_angularImpulse);
+    pool.pushVec2(1);
+  }
+ else {
+    m_linearImpulse.setZero();
+    m_angularImpulse=0.0f;
+  }
+  data.velocities[m_indexA].v.set(vA);
+  if (data.velocities[m_indexA].w != wA) {
+    assert(data.velocities[m_indexA].w != wA);
+  }
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].v.set(vB);
+  data.velocities[m_indexB].w=wB;
+  pool.pushRot(2);
+  pool.pushVec2(1);
+  pool.pushMat22(1);
+}

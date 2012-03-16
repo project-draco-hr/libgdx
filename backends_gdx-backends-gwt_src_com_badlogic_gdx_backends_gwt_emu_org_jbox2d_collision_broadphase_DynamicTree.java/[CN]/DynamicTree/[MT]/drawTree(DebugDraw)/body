@@ -1,0 +1,7 @@
+{
+  if (m_root == NULL_NODE) {
+    return;
+  }
+  int height=computeHeight();
+  drawTree(argDraw,m_root,0,height);
+}

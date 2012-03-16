@@ -1,0 +1,10 @@
+{
+  super(argWorld,def);
+  m_localAnchorA=new Vec2(def.localAnchorA);
+  m_localAnchorB=new Vec2(def.localAnchorB);
+  m_referenceAngle=def.referenceAngle;
+  m_frequencyHz=def.frequencyHz;
+  m_dampingRatio=def.dampingRatio;
+  m_impulse=new Vec3();
+  m_impulse.setZero();
+}

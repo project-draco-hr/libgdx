@@ -1,0 +1,55 @@
+{
+  m_mass=0.0f;
+  m_invMass=0.0f;
+  m_I=0.0f;
+  m_invI=0.0f;
+  m_sweep.localCenter.setZero();
+  if (m_type == BodyType.STATIC || m_type == BodyType.KINEMATIC) {
+    m_sweep.c0.set(m_xf.p);
+    m_sweep.c.set(m_xf.p);
+    m_sweep.a0=m_sweep.a;
+    return;
+  }
+  assert(m_type == BodyType.DYNAMIC);
+  final Vec2 localCenter=m_world.getPool().popVec2();
+  localCenter.setZero();
+  final Vec2 temp=m_world.getPool().popVec2();
+  final MassData massData=pmd;
+  for (Fixture f=m_fixtureList; f != null; f=f.m_next) {
+    if (f.m_density == 0.0f) {
+      continue;
+    }
+    f.getMassData(massData);
+    m_mass+=massData.mass;
+    temp.set(massData.center).mulLocal(massData.mass);
+    localCenter.addLocal(temp);
+    m_I+=massData.I;
+  }
+  if (m_mass > 0.0f) {
+    m_invMass=1.0f / m_mass;
+    localCenter.mulLocal(m_invMass);
+  }
+ else {
+    m_mass=1.0f;
+    m_invMass=1.0f;
+  }
+  if (m_I > 0.0f && (m_flags & e_fixedRotationFlag) == 0) {
+    m_I-=m_mass * Vec2.dot(localCenter,localCenter);
+    assert(m_I > 0.0f);
+    m_invI=1.0f / m_I;
+  }
+ else {
+    m_I=0.0f;
+    m_invI=0.0f;
+  }
+  Vec2 oldCenter=m_world.getPool().popVec2();
+  oldCenter.set(m_sweep.c);
+  m_sweep.localCenter.set(localCenter);
+  Transform.mulToOutUnsafe(m_xf,m_sweep.localCenter,m_sweep.c0);
+  m_sweep.c.set(m_sweep.c0);
+  temp.set(m_sweep.c).subLocal(oldCenter);
+  final Vec2 temp2=oldCenter;
+  Vec2.crossToOutUnsafe(m_angularVelocity,temp,temp2);
+  m_linearVelocity.addLocal(temp2);
+  m_world.getPool().pushVec2(3);
+}

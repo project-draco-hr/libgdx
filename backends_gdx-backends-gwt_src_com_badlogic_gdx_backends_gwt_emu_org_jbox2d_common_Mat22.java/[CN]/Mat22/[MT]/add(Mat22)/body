@@ -1,0 +1,8 @@
+{
+  Mat22 m=new Mat22();
+  m.ex.x=ex.x + B.ex.x;
+  m.ex.y=ex.y + B.ex.y;
+  m.ey.x=ey.x + B.ey.x;
+  m.ey.y=ey.y + B.ey.y;
+  return m;
+}

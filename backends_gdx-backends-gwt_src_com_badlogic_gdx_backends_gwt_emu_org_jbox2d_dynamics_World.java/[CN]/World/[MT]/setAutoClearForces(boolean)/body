@@ -1,0 +1,8 @@
+{
+  if (flag) {
+    m_flags|=CLEAR_FORCES;
+  }
+ else {
+    m_flags&=~CLEAR_FORCES;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  if (m_type != BodyType.DYNAMIC) {
+    return;
+  }
+  if (isAwake() == false) {
+    setAwake(true);
+  }
+  m_torque+=torque;
+}

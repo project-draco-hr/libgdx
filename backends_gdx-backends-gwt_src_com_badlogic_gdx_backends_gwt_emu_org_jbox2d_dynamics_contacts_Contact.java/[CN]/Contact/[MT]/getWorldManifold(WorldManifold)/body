@@ -1,0 +1,7 @@
+{
+  final Body bodyA=m_fixtureA.getBody();
+  final Body bodyB=m_fixtureB.getBody();
+  final Shape shapeA=m_fixtureA.getShape();
+  final Shape shapeB=m_fixtureB.getShape();
+  worldManifold.initialize(m_manifold,bodyA.getTransform(),shapeA.m_radius,bodyB.getTransform(),shapeB.m_radius);
+}

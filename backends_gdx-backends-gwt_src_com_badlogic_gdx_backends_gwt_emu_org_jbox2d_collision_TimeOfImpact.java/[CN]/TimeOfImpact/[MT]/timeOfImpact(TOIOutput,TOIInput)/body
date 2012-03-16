@@ -1,0 +1,114 @@
+{
+  ++toiCalls;
+  output.state=TOIOutputState.UNKNOWN;
+  output.t=input.tMax;
+  final DistanceProxy proxyA=input.proxyA;
+  final DistanceProxy proxyB=input.proxyB;
+  sweepA.set(input.sweepA);
+  sweepB.set(input.sweepB);
+  sweepA.normalize();
+  sweepB.normalize();
+  float tMax=input.tMax;
+  float totalRadius=proxyA.m_radius + proxyB.m_radius;
+  float target=MathUtils.max(Settings.linearSlop,totalRadius - 3.0f * Settings.linearSlop);
+  float tolerance=0.25f * Settings.linearSlop;
+  assert(target > tolerance);
+  float t1=0f;
+  int iter=0;
+  cache.count=0;
+  distanceInput.proxyA=input.proxyA;
+  distanceInput.proxyB=input.proxyB;
+  distanceInput.useRadii=false;
+  for (; ; ) {
+    sweepA.getTransform(xfA,t1);
+    sweepB.getTransform(xfB,t1);
+    distanceInput.transformA=xfA;
+    distanceInput.transformB=xfB;
+    pool.getDistance().distance(distanceOutput,cache,distanceInput);
+    if (distanceOutput.distance <= 0f) {
+      output.state=TOIOutputState.OVERLAPPED;
+      output.t=0f;
+      break;
+    }
+    if (distanceOutput.distance < target + tolerance) {
+      output.state=TOIOutputState.TOUCHING;
+      output.t=t1;
+      break;
+    }
+    fcn.initialize(cache,proxyA,sweepA,proxyB,sweepB,t1);
+    boolean done=false;
+    float t2=tMax;
+    int pushBackIter=0;
+    for (; ; ) {
+      float s2=fcn.findMinSeparation(indexes,t2);
+      if (s2 > target + tolerance) {
+        output.state=TOIOutputState.SEPARATED;
+        output.t=tMax;
+        done=true;
+        break;
+      }
+      if (s2 > target - tolerance) {
+        t1=t2;
+        break;
+      }
+      float s1=fcn.evaluate(indexes[0],indexes[1],t1);
+      if (s1 < target - tolerance) {
+        output.state=TOIOutputState.FAILED;
+        output.t=t1;
+        done=true;
+        break;
+      }
+      if (s1 <= target + tolerance) {
+        output.state=TOIOutputState.TOUCHING;
+        output.t=t1;
+        done=true;
+        break;
+      }
+      int rootIterCount=0;
+      float a1=t1, a2=t2;
+      for (; ; ) {
+        float t;
+        if ((rootIterCount & 1) == 1) {
+          t=a1 + (target - s1) * (a2 - a1) / (s2 - s1);
+        }
+ else {
+          t=0.5f * (a1 + a2);
+        }
+        float s=fcn.evaluate(indexes[0],indexes[1],t);
+        if (MathUtils.abs(s - target) < tolerance) {
+          t2=t;
+          break;
+        }
+        if (s > target) {
+          a1=t;
+          s1=s;
+        }
+ else {
+          a2=t;
+          s2=s;
+        }
+        ++rootIterCount;
+        ++toiRootIters;
+        if (rootIterCount == 50) {
+          break;
+        }
+      }
+      toiMaxRootIters=MathUtils.max(toiMaxRootIters,rootIterCount);
+      ++pushBackIter;
+      if (pushBackIter == Settings.maxPolygonVertices) {
+        break;
+      }
+    }
+    ++iter;
+    ++toiIters;
+    if (done) {
+      break;
+    }
+    if (iter == MAX_ITERATIONS) {
+      output.state=TOIOutputState.FAILED;
+      output.t=t1;
+      break;
+    }
+  }
+  toiMaxIters=MathUtils.max(toiMaxIters,iter);
+}

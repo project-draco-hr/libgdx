@@ -1,0 +1,26 @@
+{
+  final Vec2 position=pool1;
+  final Vec2 s=pool2;
+  final Vec2 r=pool3;
+  Rot.mulToOutUnsafe(transform.q,m_p,position);
+  position.addLocal(transform.p);
+  s.set(input.p1).subLocal(position);
+  final float b=Vec2.dot(s,s) - m_radius * m_radius;
+  r.set(input.p2).subLocal(input.p1);
+  final float c=Vec2.dot(s,r);
+  final float rr=Vec2.dot(r,r);
+  final float sigma=c * c - rr * b;
+  if (sigma < 0.0f || rr < Settings.EPSILON) {
+    return false;
+  }
+  float a=-(c + MathUtils.sqrt(sigma));
+  if (0.0f <= a && a <= input.maxFraction * rr) {
+    a/=rr;
+    output.fraction=a;
+    output.normal.set(r).mulLocal(a);
+    output.normal.addLocal(s);
+    output.normal.normalize();
+    return true;
+  }
+  return false;
+}

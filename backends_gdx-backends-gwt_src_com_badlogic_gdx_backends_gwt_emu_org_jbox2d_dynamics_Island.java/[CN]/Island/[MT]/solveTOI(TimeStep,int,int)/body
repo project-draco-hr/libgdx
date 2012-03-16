@@ -1,0 +1,62 @@
+{
+  assert(toiIndexA < m_bodyCount);
+  assert(toiIndexB < m_bodyCount);
+  for (int i=0; i < m_bodyCount; ++i) {
+    Body b=m_bodies[i];
+    m_positions[i].c.set(b.m_sweep.c);
+    m_positions[i].a=b.m_sweep.a;
+    m_velocities[i].v.set(b.m_linearVelocity);
+    m_velocities[i].w=b.m_angularVelocity;
+  }
+  toiSolverDef.contacts=m_contacts;
+  toiSolverDef.count=m_contactCount;
+  toiSolverDef.step=subStep;
+  toiSolverDef.positions=m_positions;
+  toiSolverDef.velocities=m_velocities;
+  toiContactSolver.init(toiSolverDef);
+  for (int i=0; i < subStep.positionIterations; ++i) {
+    boolean contactsOkay=toiContactSolver.solveTOIPositionConstraints(toiIndexA,toiIndexB);
+    if (contactsOkay) {
+      break;
+    }
+  }
+  m_bodies[toiIndexA].m_sweep.c0.set(m_positions[toiIndexA].c);
+  m_bodies[toiIndexA].m_sweep.a0=m_positions[toiIndexA].a;
+  m_bodies[toiIndexB].m_sweep.c0.set(m_positions[toiIndexB].c);
+  m_bodies[toiIndexB].m_sweep.a0=m_positions[toiIndexB].a;
+  toiContactSolver.initializeVelocityConstraints();
+  for (int i=0; i < subStep.velocityIterations; ++i) {
+    toiContactSolver.solveVelocityConstraints();
+  }
+  float h=subStep.dt;
+  for (int i=0; i < m_bodyCount; ++i) {
+    Vec2 c=m_positions[i].c;
+    float a=m_positions[i].a;
+    Vec2 v=m_velocities[i].v;
+    float w=m_velocities[i].w;
+    translation.set(v).mulLocal(h);
+    if (Vec2.dot(translation,translation) > Settings.maxTranslationSquared) {
+      float ratio=Settings.maxTranslation / translation.length();
+      v.mulLocal(ratio);
+    }
+    float rotation=h * w;
+    if (rotation * rotation > Settings.maxRotationSquared) {
+      float ratio=Settings.maxRotation / MathUtils.abs(rotation);
+      w*=ratio;
+    }
+    c.x+=v.x * h;
+    c.y+=v.y * h;
+    a+=h * w;
+    m_positions[i].c.set(c);
+    m_positions[i].a=a;
+    m_velocities[i].v.set(v);
+    m_velocities[i].w=w;
+    Body body=m_bodies[i];
+    body.m_sweep.c.set(c);
+    body.m_sweep.a=a;
+    body.m_linearVelocity.set(v);
+    body.m_angularVelocity=w;
+    body.synchronizeTransform();
+  }
+  report(toiContactSolver.m_velocityConstraints);
+}

@@ -1,0 +1,5 @@
+{
+  Vec2 out=new Vec2();
+  getLinearVelocityFromWorldPointToOut(worldPoint,out);
+  return out;
+}

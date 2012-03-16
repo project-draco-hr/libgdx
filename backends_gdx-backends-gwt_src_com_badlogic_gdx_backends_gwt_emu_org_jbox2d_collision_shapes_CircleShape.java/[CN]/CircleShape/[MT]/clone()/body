@@ -1,0 +1,6 @@
+{
+  CircleShape shape=new CircleShape();
+  shape.m_p.set(m_p);
+  shape.m_radius=m_radius;
+  return shape;
+}

@@ -1,0 +1,10 @@
+{
+  points=new ManifoldPoint[Settings.maxManifoldPoints];
+  localNormal=other.localNormal.clone();
+  localPoint=other.localPoint.clone();
+  pointCount=other.pointCount;
+  type=other.type;
+  for (int i=0; i < Settings.maxManifoldPoints; i++) {
+    points[i]=new ManifoldPoint(other.points[i]);
+  }
+}

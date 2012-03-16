@@ -1,0 +1,13 @@
+{
+  validateStructure(m_root);
+  validateMetrics(m_root);
+  int freeCount=0;
+  int freeIndex=m_freeList;
+  while (freeIndex != NULL_NODE) {
+    assert(0 <= freeIndex && freeIndex < m_nodeCapacity);
+    freeIndex=m_nodes[freeIndex].parent;
+    ++freeCount;
+  }
+  assert(getHeight() == computeHeight());
+  assert(m_nodeCount + freeCount == m_nodeCapacity);
+}

@@ -1,0 +1,17 @@
+{
+  assert(m_world.isLocked() == false);
+  if (m_world.isLocked() == true) {
+    return;
+  }
+  m_xf.q.set(angle);
+  m_xf.p.set(position);
+  Transform.mulToOutUnsafe(m_xf,m_sweep.localCenter,m_sweep.c);
+  m_sweep.a=angle;
+  m_sweep.c0.set(m_sweep.c);
+  m_sweep.a0=m_sweep.a;
+  BroadPhase broadPhase=m_world.m_contactManager.m_broadPhase;
+  for (Fixture f=m_fixtureList; f != null; f=f.m_next) {
+    f.synchronize(broadPhase,m_xf,m_xf);
+  }
+  m_world.m_contactManager.findNewContacts();
+}

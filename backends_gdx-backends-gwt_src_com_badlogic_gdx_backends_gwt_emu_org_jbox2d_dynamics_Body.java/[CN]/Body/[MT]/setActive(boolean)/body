@@ -1,0 +1,27 @@
+{
+  assert(m_world.isLocked() == false);
+  if (flag == isActive()) {
+    return;
+  }
+  if (flag) {
+    m_flags|=e_activeFlag;
+    BroadPhase broadPhase=m_world.m_contactManager.m_broadPhase;
+    for (Fixture f=m_fixtureList; f != null; f=f.m_next) {
+      f.createProxies(broadPhase,m_xf);
+    }
+  }
+ else {
+    m_flags&=~e_activeFlag;
+    BroadPhase broadPhase=m_world.m_contactManager.m_broadPhase;
+    for (Fixture f=m_fixtureList; f != null; f=f.m_next) {
+      f.destroyProxies(broadPhase);
+    }
+    ContactEdge ce=m_contactList;
+    while (ce != null) {
+      ContactEdge ce0=ce;
+      ce=ce.next;
+      m_world.m_contactManager.destroy(ce0.contact);
+    }
+    m_contactList=null;
+  }
+}

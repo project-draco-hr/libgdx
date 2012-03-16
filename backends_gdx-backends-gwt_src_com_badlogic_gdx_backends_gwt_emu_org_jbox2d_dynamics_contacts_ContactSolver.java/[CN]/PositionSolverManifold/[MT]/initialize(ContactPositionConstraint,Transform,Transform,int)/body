@@ -1,0 +1,37 @@
+{
+  assert(pc.pointCount > 0);
+switch (pc.type) {
+case CIRCLES:
+{
+      Transform.mulToOutUnsafe(xfA,pc.localPoint,pointA);
+      Transform.mulToOutUnsafe(xfB,pc.localPoints[0],pointB);
+      normal.set(pointB).subLocal(pointA);
+      normal.normalize();
+      point.set(pointA).addLocal(pointB).mulLocal(.5f);
+      temp.set(pointB).subLocal(pointA);
+      separation=Vec2.dot(temp,normal) - pc.radiusA - pc.radiusB;
+      break;
+    }
+case FACE_A:
+{
+    Rot.mulToOutUnsafe(xfA.q,pc.localNormal,normal);
+    Transform.mulToOutUnsafe(xfA,pc.localPoint,planePoint);
+    Transform.mulToOutUnsafe(xfB,pc.localPoints[index],clipPoint);
+    temp.set(clipPoint).subLocal(planePoint);
+    separation=Vec2.dot(temp,normal) - pc.radiusA - pc.radiusB;
+    point.set(clipPoint);
+    break;
+  }
+case FACE_B:
+{
+  Rot.mulToOutUnsafe(xfB.q,pc.localNormal,normal);
+  Transform.mulToOutUnsafe(xfB,pc.localPoint,planePoint);
+  Transform.mulToOutUnsafe(xfA,pc.localPoints[index],clipPoint);
+  temp.set(clipPoint).subLocal(planePoint);
+  separation=Vec2.dot(temp,normal) - pc.radiusA - pc.radiusB;
+  point.set(clipPoint);
+  normal.negateLocal();
+}
+break;
+}
+}

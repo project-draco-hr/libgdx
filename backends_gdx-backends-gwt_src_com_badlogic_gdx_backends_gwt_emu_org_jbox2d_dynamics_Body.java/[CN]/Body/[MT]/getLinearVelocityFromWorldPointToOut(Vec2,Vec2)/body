@@ -1,0 +1,5 @@
+{
+  out.set(worldPoint).subLocal(m_sweep.c);
+  Vec2.crossToOut(m_angularVelocity,out,out);
+  out.addLocal(m_linearVelocity);
+}

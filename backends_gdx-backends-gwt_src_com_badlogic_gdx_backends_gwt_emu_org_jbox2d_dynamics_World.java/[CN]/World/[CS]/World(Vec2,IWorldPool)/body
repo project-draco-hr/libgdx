@@ -1,0 +1,20 @@
+{
+  pool=argPool;
+  m_destructionListener=null;
+  m_debugDraw=null;
+  m_bodyList=null;
+  m_jointList=null;
+  m_bodyCount=0;
+  m_jointCount=0;
+  m_warmStarting=true;
+  m_continuousPhysics=true;
+  m_subStepping=false;
+  m_stepComplete=true;
+  m_allowSleep=true;
+  m_gravity.set(gravity);
+  m_flags=CLEAR_FORCES;
+  m_inv_dt0=0f;
+  m_contactManager=new ContactManager(this);
+  m_profile=new Profile();
+  initializeRegisters();
+}

@@ -1,0 +1,5 @@
+{
+  float outx=v.x * R.ex.x + v.y * R.ex.y;
+  out.y=v.x * R.ey.x + v.y * R.ey.y;
+  out.x=outx;
+}

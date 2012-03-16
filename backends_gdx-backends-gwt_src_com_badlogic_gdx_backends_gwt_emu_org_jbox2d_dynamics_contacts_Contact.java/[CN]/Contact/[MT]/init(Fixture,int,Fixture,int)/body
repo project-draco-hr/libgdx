@@ -1,0 +1,22 @@
+{
+  m_flags=0;
+  m_fixtureA=fA;
+  m_fixtureB=fB;
+  m_indexA=indexA;
+  m_indexB=indexB;
+  m_manifold.pointCount=0;
+  m_prev=null;
+  m_next=null;
+  m_nodeA.contact=null;
+  m_nodeA.prev=null;
+  m_nodeA.next=null;
+  m_nodeA.other=null;
+  m_nodeB.contact=null;
+  m_nodeB.prev=null;
+  m_nodeB.next=null;
+  m_nodeB.other=null;
+  m_toiCount=0;
+  m_friction=Contact.mixFriction(fA.m_friction,fB.m_friction);
+  m_restitution=Contact.mixRestitution(fA.m_restitution,fB.m_restitution);
+  m_tangentSpeed=0;
+}

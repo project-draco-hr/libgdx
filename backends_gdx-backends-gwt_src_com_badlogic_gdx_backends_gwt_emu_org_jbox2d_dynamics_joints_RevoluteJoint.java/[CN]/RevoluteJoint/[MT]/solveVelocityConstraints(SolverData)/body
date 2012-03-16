@@ -1,0 +1,103 @@
+{
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  float mA=m_invMassA, mB=m_invMassB;
+  float iA=m_invIA, iB=m_invIB;
+  boolean fixedRotation=(iA + iB == 0.0f);
+  if (m_enableMotor && m_limitState != LimitState.EQUAL && fixedRotation == false) {
+    float Cdot=wB - wA - m_motorSpeed;
+    float impulse=-m_motorMass * Cdot;
+    float oldImpulse=m_motorImpulse;
+    float maxImpulse=data.step.dt * m_maxMotorTorque;
+    m_motorImpulse=MathUtils.clamp(m_motorImpulse + impulse,-maxImpulse,maxImpulse);
+    impulse=m_motorImpulse - oldImpulse;
+    wA-=iA * impulse;
+    wB+=iB * impulse;
+  }
+  final Vec2 temp=pool.popVec2();
+  if (m_enableLimit && m_limitState != LimitState.INACTIVE && fixedRotation == false) {
+    final Vec2 Cdot1=pool.popVec2();
+    final Vec3 Cdot=pool.popVec3();
+    Vec2.crossToOutUnsafe(wA,m_rA,temp);
+    Vec2.crossToOutUnsafe(wB,m_rB,Cdot1);
+    Cdot1.addLocal(vB).subLocal(vA).subLocal(temp);
+    float Cdot2=wB - wA;
+    Cdot.set(Cdot1.x,Cdot1.y,Cdot2);
+    Vec3 impulse=pool.popVec3();
+    m_mass.solve33ToOut(Cdot,impulse);
+    impulse.negateLocal();
+    if (m_limitState == LimitState.EQUAL) {
+      m_impulse.addLocal(impulse);
+    }
+ else     if (m_limitState == LimitState.AT_LOWER) {
+      float newImpulse=m_impulse.z + impulse.z;
+      if (newImpulse < 0.0f) {
+        final Vec2 rhs=pool.popVec2();
+        rhs.set(m_mass.ez.x,m_mass.ez.y).mulLocal(m_impulse.z).subLocal(Cdot1);
+        m_mass.solve22ToOut(rhs,temp);
+        impulse.x=temp.x;
+        impulse.y=temp.y;
+        impulse.z=-m_impulse.z;
+        m_impulse.x+=temp.x;
+        m_impulse.y+=temp.y;
+        m_impulse.z=0.0f;
+        pool.pushVec2(1);
+      }
+ else {
+        m_impulse.addLocal(impulse);
+      }
+    }
+ else     if (m_limitState == LimitState.AT_UPPER) {
+      float newImpulse=m_impulse.z + impulse.z;
+      if (newImpulse > 0.0f) {
+        final Vec2 rhs=pool.popVec2();
+        rhs.set(m_mass.ez.x,m_mass.ez.y).mulLocal(m_impulse.z).subLocal(Cdot1);
+        m_mass.solve22ToOut(rhs,temp);
+        impulse.x=temp.x;
+        impulse.y=temp.y;
+        impulse.z=-m_impulse.z;
+        m_impulse.x+=temp.x;
+        m_impulse.y+=temp.y;
+        m_impulse.z=0.0f;
+        pool.pushVec2(1);
+      }
+ else {
+        m_impulse.addLocal(impulse);
+      }
+    }
+    final Vec2 P=pool.popVec2();
+    P.set(impulse.x,impulse.y);
+    vA.x-=mA * P.x;
+    vA.y-=mA * P.y;
+    wA-=iA * (Vec2.cross(m_rA,P) + impulse.z);
+    vB.x+=mB * P.x;
+    vB.y+=mB * P.y;
+    wB+=iB * (Vec2.cross(m_rB,P) + impulse.z);
+    pool.pushVec2(2);
+    pool.pushVec3(2);
+  }
+ else {
+    Vec2 Cdot=pool.popVec2();
+    Vec2 impulse=pool.popVec2();
+    Vec2.crossToOutUnsafe(wA,m_rA,temp);
+    Vec2.crossToOutUnsafe(wB,m_rB,Cdot);
+    Cdot.addLocal(vB).subLocal(vA).subLocal(temp);
+    m_mass.solve22ToOut(Cdot.negateLocal(),impulse);
+    m_impulse.x+=impulse.x;
+    m_impulse.y+=impulse.y;
+    vA.x-=mA * impulse.x;
+    vA.y-=mA * impulse.y;
+    wA-=iA * Vec2.cross(m_rA,impulse);
+    vB.x+=mB * impulse.x;
+    vB.y+=mB * impulse.y;
+    wB+=iB * Vec2.cross(m_rB,impulse);
+    pool.pushVec2(2);
+  }
+  data.velocities[m_indexA].v.set(vA);
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].v.set(vB);
+  data.velocities[m_indexB].w=wB;
+  pool.pushVec2(1);
+}

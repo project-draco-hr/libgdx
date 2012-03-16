@@ -1,0 +1,7 @@
+{
+  Transform C=new Transform();
+  Rot.mulTransUnsafe(A.q,B.q,C.q);
+  pool.set(B.p).subLocal(A.p);
+  Rot.mulTransUnsafe(A.q,pool,C.p);
+  return C;
+}

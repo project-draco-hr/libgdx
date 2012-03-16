@@ -1,0 +1,40 @@
+{
+  stepTimer.reset();
+  if ((m_flags & NEW_FIXTURE) == NEW_FIXTURE) {
+    m_contactManager.findNewContacts();
+    m_flags&=~NEW_FIXTURE;
+  }
+  m_flags|=LOCKED;
+  step.dt=dt;
+  step.velocityIterations=velocityIterations;
+  step.positionIterations=positionIterations;
+  if (dt > 0.0f) {
+    step.inv_dt=1.0f / dt;
+  }
+ else {
+    step.inv_dt=0.0f;
+  }
+  step.dtRatio=m_inv_dt0 * dt;
+  step.warmStarting=m_warmStarting;
+  tempTimer.reset();
+  m_contactManager.collide();
+  m_profile.collide=tempTimer.getMilliseconds();
+  if (m_stepComplete && step.dt > 0.0f) {
+    tempTimer.reset();
+    solve(step);
+    m_profile.solve=tempTimer.getMilliseconds();
+  }
+  if (m_continuousPhysics && step.dt > 0.0f) {
+    tempTimer.reset();
+    solveTOI(step);
+    m_profile.solveTOI=tempTimer.getMilliseconds();
+  }
+  if (step.dt > 0.0f) {
+    m_inv_dt0=step.inv_dt;
+  }
+  if ((m_flags & CLEAR_FORCES) == CLEAR_FORCES) {
+    clearForces();
+  }
+  m_flags&=~LOCKED;
+  m_profile.step=stepTimer.getMilliseconds();
+}

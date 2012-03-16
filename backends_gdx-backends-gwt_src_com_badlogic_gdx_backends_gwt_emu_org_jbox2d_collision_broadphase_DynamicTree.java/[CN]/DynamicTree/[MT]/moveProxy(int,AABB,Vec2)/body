@@ -1,0 +1,35 @@
+{
+  assert(0 <= proxyId && proxyId < m_nodeCapacity);
+  final TreeNode node=m_nodes[proxyId];
+  assert(node.isLeaf());
+  if (node.aabb.contains(aabb)) {
+    return false;
+  }
+  removeLeaf(proxyId);
+  final Vec2 lowerBound=aabb.lowerBound;
+  final Vec2 upperBound=aabb.upperBound;
+  lowerBound.x-=Settings.aabbExtension;
+  lowerBound.y-=Settings.aabbExtension;
+  upperBound.x+=Settings.aabbExtension;
+  upperBound.y+=Settings.aabbExtension;
+  final float dx=displacement.x * Settings.aabbMultiplier;
+  final float dy=displacement.y * Settings.aabbMultiplier;
+  if (dx < 0.0f) {
+    lowerBound.x+=dx;
+  }
+ else {
+    upperBound.x+=dx;
+  }
+  if (dy < 0.0f) {
+    lowerBound.y+=dy;
+  }
+ else {
+    upperBound.y+=dy;
+  }
+  node.aabb.lowerBound.x=lowerBound.x;
+  node.aabb.lowerBound.y=lowerBound.y;
+  node.aabb.upperBound.x=upperBound.x;
+  node.aabb.upperBound.y=upperBound.y;
+  insertLeaf(proxyId);
+  return true;
+}

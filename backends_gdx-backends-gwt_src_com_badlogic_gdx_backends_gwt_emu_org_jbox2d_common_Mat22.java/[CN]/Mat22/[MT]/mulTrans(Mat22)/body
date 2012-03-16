@@ -1,0 +1,8 @@
+{
+  final Mat22 C=new Mat22();
+  C.ex.x=Vec2.dot(this.ex,B.ex);
+  C.ex.y=Vec2.dot(this.ey,B.ex);
+  C.ey.x=Vec2.dot(this.ex,B.ey);
+  C.ey.y=Vec2.dot(this.ey,B.ey);
+  return C;
+}

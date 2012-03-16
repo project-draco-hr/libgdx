@@ -1,0 +1,7 @@
+{
+  bodyA=bA;
+  bodyB=bB;
+  bodyA.getLocalPointToOut(anchor,localAnchorA);
+  bodyB.getLocalPointToOut(anchor,localAnchorB);
+  referenceAngle=bodyB.getAngle() - bodyA.getAngle();
+}

@@ -1,0 +1,9 @@
+{
+  argScreen.set(argWorld);
+  argScreen.subLocal(box.center);
+  box.R.mulToOut(argScreen,argScreen);
+  if (yFlip) {
+    yFlipMat.mulToOut(argScreen,argScreen);
+  }
+  argScreen.addLocal(box.extents);
+}

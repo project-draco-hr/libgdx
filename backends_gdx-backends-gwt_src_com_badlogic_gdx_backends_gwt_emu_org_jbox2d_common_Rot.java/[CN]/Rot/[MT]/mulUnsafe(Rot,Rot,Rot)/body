@@ -1,0 +1,6 @@
+{
+  assert(r != out);
+  assert(q != out);
+  out.s=q.s * r.c + q.c * r.s;
+  out.c=q.c * r.c - q.s * r.s;
+}

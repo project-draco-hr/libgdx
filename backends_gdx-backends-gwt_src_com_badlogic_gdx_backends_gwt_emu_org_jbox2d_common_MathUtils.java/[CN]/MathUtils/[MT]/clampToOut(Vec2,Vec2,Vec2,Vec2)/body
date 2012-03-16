@@ -1,0 +1,6 @@
+{
+  dest.x=a.x < high.x ? a.x : high.x;
+  dest.y=a.y < high.y ? a.y : high.y;
+  dest.x=low.x > dest.x ? low.x : dest.x;
+  dest.y=low.y > dest.y ? low.y : dest.y;
+}

@@ -1,0 +1,62 @@
+{
+  int count1=poly1.m_count;
+  final Vec2[] normals1=poly1.m_normals;
+  Transform.mulToOutUnsafe(xf2,poly2.m_centroid,d);
+  Transform.mulToOutUnsafe(xf1,poly1.m_centroid,temp);
+  d.subLocal(temp);
+  Rot.mulTransUnsafe(xf1.q,d,dLocal1);
+  final float dLocal1x=dLocal1.x;
+  final float dLocal1y=dLocal1.y;
+  int edge=0;
+  float dot;
+  float maxDot=Float.MIN_VALUE;
+  for (int i=0; i < count1; i++) {
+    final Vec2 normal=normals1[i];
+    dot=normal.x * dLocal1x + normal.y * dLocal1y;
+    if (dot > maxDot) {
+      maxDot=dot;
+      edge=i;
+    }
+  }
+  float s=edgeSeparation(poly1,xf1,edge,poly2,xf2);
+  int prevEdge=edge - 1 >= 0 ? edge - 1 : count1 - 1;
+  float sPrev=edgeSeparation(poly1,xf1,prevEdge,poly2,xf2);
+  int nextEdge=edge + 1 < count1 ? edge + 1 : 0;
+  float sNext=edgeSeparation(poly1,xf1,nextEdge,poly2,xf2);
+  int bestEdge;
+  float bestSeparation;
+  int increment;
+  if (sPrev > s && sPrev > sNext) {
+    increment=-1;
+    bestEdge=prevEdge;
+    bestSeparation=sPrev;
+  }
+ else   if (sNext > s) {
+    increment=1;
+    bestEdge=nextEdge;
+    bestSeparation=sNext;
+  }
+ else {
+    results.edgeIndex=edge;
+    results.separation=s;
+    return;
+  }
+  for (; ; ) {
+    if (increment == -1) {
+      edge=bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+    }
+ else {
+      edge=bestEdge + 1 < count1 ? bestEdge + 1 : 0;
+    }
+    s=edgeSeparation(poly1,xf1,edge,poly2,xf2);
+    if (s > bestSeparation) {
+      bestEdge=edge;
+      bestSeparation=s;
+    }
+ else {
+      break;
+    }
+  }
+  results.edgeIndex=bestEdge;
+  results.separation=bestSeparation;
+}

@@ -1,0 +1,71 @@
+{
+  final Rot qA=pool.popRot();
+  final Rot qB=pool.popRot();
+  Vec2 cA=data.positions[m_indexA].c;
+  float aA=data.positions[m_indexA].a;
+  Vec2 cB=data.positions[m_indexB].c;
+  float aB=data.positions[m_indexB].a;
+  qA.set(aA);
+  qB.set(aB);
+  float angularError=0.0f;
+  float positionError=0.0f;
+  boolean fixedRotation=(m_invIA + m_invIB == 0.0f);
+  if (m_enableLimit && m_limitState != LimitState.INACTIVE && fixedRotation == false) {
+    float angle=aB - aA - m_referenceAngle;
+    float limitImpulse=0.0f;
+    if (m_limitState == LimitState.EQUAL) {
+      float C=MathUtils.clamp(angle - m_lowerAngle,-Settings.maxAngularCorrection,Settings.maxAngularCorrection);
+      limitImpulse=-m_motorMass * C;
+      angularError=MathUtils.abs(C);
+    }
+ else     if (m_limitState == LimitState.AT_LOWER) {
+      float C=angle - m_lowerAngle;
+      angularError=-C;
+      C=MathUtils.clamp(C + Settings.angularSlop,-Settings.maxAngularCorrection,0.0f);
+      limitImpulse=-m_motorMass * C;
+    }
+ else     if (m_limitState == LimitState.AT_UPPER) {
+      float C=angle - m_upperAngle;
+      angularError=C;
+      C=MathUtils.clamp(C - Settings.angularSlop,0.0f,Settings.maxAngularCorrection);
+      limitImpulse=-m_motorMass * C;
+    }
+    aA-=m_invIA * limitImpulse;
+    aB+=m_invIB * limitImpulse;
+  }
+{
+    qA.set(aA);
+    qB.set(aB);
+    final Vec2 rA=pool.popVec2();
+    final Vec2 rB=pool.popVec2();
+    final Vec2 C=pool.popVec2();
+    final Vec2 impulse=pool.popVec2();
+    Rot.mulToOutUnsafe(qA,C.set(m_localAnchorA).subLocal(m_localCenterA),rA);
+    Rot.mulToOutUnsafe(qB,C.set(m_localAnchorB).subLocal(m_localCenterB),rB);
+    C.set(cB).addLocal(rB).subLocal(cA).subLocal(rA);
+    positionError=C.length();
+    float mA=m_invMassA, mB=m_invMassB;
+    float iA=m_invIA, iB=m_invIB;
+    final Mat22 K=pool.popMat22();
+    K.ex.x=mA + mB + iA * rA.y * rA.y + iB * rB.y * rB.y;
+    K.ex.y=-iA * rA.x * rA.y - iB * rB.x * rB.y;
+    K.ey.x=K.ex.y;
+    K.ey.y=mA + mB + iA * rA.x * rA.x + iB * rB.x * rB.x;
+    K.solveToOut(C,impulse);
+    impulse.negateLocal();
+    cA.x-=mA * impulse.x;
+    cA.y-=mA * impulse.y;
+    aA-=iA * Vec2.cross(rA,impulse);
+    cB.x+=mB * impulse.x;
+    cB.y+=mB * impulse.y;
+    aB+=iB * Vec2.cross(rB,impulse);
+    pool.pushVec2(4);
+    pool.pushMat22(1);
+  }
+  data.positions[m_indexA].c.set(cA);
+  data.positions[m_indexA].a=aA;
+  data.positions[m_indexB].c.set(cB);
+  data.positions[m_indexB].a=aB;
+  pool.pushRot(2);
+  return positionError <= Settings.linearSlop && angularError <= Settings.angularSlop;
+}

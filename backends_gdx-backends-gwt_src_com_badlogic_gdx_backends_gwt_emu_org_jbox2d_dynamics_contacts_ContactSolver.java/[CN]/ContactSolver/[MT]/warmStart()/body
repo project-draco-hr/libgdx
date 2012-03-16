@@ -1,0 +1,29 @@
+{
+  for (int i=0; i < m_count; ++i) {
+    final ContactVelocityConstraint vc=m_velocityConstraints[i];
+    int indexA=vc.indexA;
+    int indexB=vc.indexB;
+    float mA=vc.invMassA;
+    float iA=vc.invIA;
+    float mB=vc.invMassB;
+    float iB=vc.invIB;
+    int pointCount=vc.pointCount;
+    Vec2 vA=m_velocities[indexA].v;
+    float wA=m_velocities[indexA].w;
+    Vec2 vB=m_velocities[indexB].v;
+    float wB=m_velocities[indexB].w;
+    Vec2 normal=vc.normal;
+    Vec2.crossToOutUnsafe(normal,1.0f,tangent);
+    for (int j=0; j < pointCount; ++j) {
+      VelocityConstraintPoint vcp=vc.points[j];
+      temp.set(normal).mulLocal(vcp.normalImpulse);
+      P.set(tangent).mulLocal(vcp.tangentImpulse).addLocal(temp);
+      wA-=iA * Vec2.cross(vcp.rA,P);
+      vA.subLocal(temp.set(P).mulLocal(mA));
+      wB+=iB * Vec2.cross(vcp.rB,P);
+      vB.addLocal(temp.set(P).mulLocal(mB));
+    }
+    m_velocities[indexA].w=wA;
+    m_velocities[indexB].w=wB;
+  }
+}

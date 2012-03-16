@@ -1,0 +1,10 @@
+{
+  float x=NumberUtils.floatToRawIntBits(a);
+  x*=INV_SHIFT23;
+  x-=127;
+  float y=x - (x >= 0 ? (int)x : (int)x - 1);
+  b*=x + (y - y * y) * 0.346607f;
+  y=b - (b >= 0 ? (int)b : (int)b - 1);
+  y=(y - y * y) * 0.33971f;
+  return NumberUtils.intBitsToFloat((int)((b + 127 - y) * SHIFT23));
+}

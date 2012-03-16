@@ -1,0 +1,21 @@
+{
+  final ShapeType type1=fixtureA.getType();
+  final ShapeType type2=fixtureB.getType();
+  final ContactRegister reg=contactStacks[type1.ordinal()][type2.ordinal()];
+  final IDynamicStack<Contact> creator=reg.creator;
+  if (creator != null) {
+    if (reg.primary) {
+      Contact c=creator.pop();
+      c.init(fixtureA,indexA,fixtureB,indexB);
+      return c;
+    }
+ else {
+      Contact c=creator.pop();
+      c.init(fixtureB,indexB,fixtureA,indexA);
+      return c;
+    }
+  }
+ else {
+    return null;
+  }
+}

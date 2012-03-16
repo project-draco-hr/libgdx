@@ -1,0 +1,5 @@
+{
+  final float tempy=ex.y * v.x + ey.y * v.y;
+  out.x=ex.x * v.x + ey.x * v.y;
+  out.y=tempy;
+}

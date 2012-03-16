@@ -1,0 +1,8 @@
+{
+  wrcwrapper.broadPhase=m_contactManager.m_broadPhase;
+  wrcwrapper.callback=callback;
+  input.maxFraction=1.0f;
+  input.p1.set(point1);
+  input.p2.set(point2);
+  m_contactManager.m_broadPhase.raycast(wrcwrapper,input);
+}

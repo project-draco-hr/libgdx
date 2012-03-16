@@ -1,0 +1,89 @@
+{
+  m_insertionCount++;
+  if (m_root == NULL_NODE) {
+    m_root=leaf;
+    m_nodes[m_root].parent=NULL_NODE;
+    return;
+  }
+  AABB leafAABB=m_nodes[leaf].aabb;
+  int index=m_root;
+  while (m_nodes[index].isLeaf() == false) {
+    final TreeNode node=m_nodes[index];
+    int child1=node.child1;
+    int child2=node.child2;
+    float area=node.aabb.getPerimeter();
+    combinedAABB.combine(node.aabb,leafAABB);
+    float combinedArea=combinedAABB.getPerimeter();
+    float cost=2.0f * combinedArea;
+    float inheritanceCost=2.0f * (combinedArea - area);
+    float cost1;
+    if (m_nodes[child1].isLeaf()) {
+      combinedAABB.combine(leafAABB,m_nodes[child1].aabb);
+      cost1=combinedAABB.getPerimeter() + inheritanceCost;
+    }
+ else {
+      combinedAABB.combine(leafAABB,m_nodes[child1].aabb);
+      float oldArea=m_nodes[child1].aabb.getPerimeter();
+      float newArea=combinedAABB.getPerimeter();
+      cost1=(newArea - oldArea) + inheritanceCost;
+    }
+    float cost2;
+    if (m_nodes[child2].isLeaf()) {
+      combinedAABB.combine(leafAABB,m_nodes[child2].aabb);
+      cost2=combinedAABB.getPerimeter() + inheritanceCost;
+    }
+ else {
+      combinedAABB.combine(leafAABB,m_nodes[child2].aabb);
+      float oldArea=m_nodes[child2].aabb.getPerimeter();
+      float newArea=combinedAABB.getPerimeter();
+      cost2=newArea - oldArea + inheritanceCost;
+    }
+    if (cost < cost1 && cost < cost2) {
+      break;
+    }
+    if (cost1 < cost2) {
+      index=child1;
+    }
+ else {
+      index=child2;
+    }
+  }
+  int sibling=index;
+  int oldParent=m_nodes[sibling].parent;
+  int newParentId=allocateNode();
+  final TreeNode newParent=m_nodes[newParentId];
+  newParent.parent=oldParent;
+  newParent.userData=null;
+  newParent.aabb.combine(leafAABB,m_nodes[sibling].aabb);
+  newParent.height=m_nodes[sibling].height + 1;
+  if (oldParent != NULL_NODE) {
+    if (m_nodes[oldParent].child1 == sibling) {
+      m_nodes[oldParent].child1=newParentId;
+    }
+ else {
+      m_nodes[oldParent].child2=newParentId;
+    }
+    m_nodes[newParentId].child1=sibling;
+    m_nodes[newParentId].child2=leaf;
+    m_nodes[sibling].parent=newParentId;
+    m_nodes[leaf].parent=newParentId;
+  }
+ else {
+    m_nodes[newParentId].child1=sibling;
+    m_nodes[newParentId].child2=leaf;
+    m_nodes[sibling].parent=newParentId;
+    m_nodes[leaf].parent=newParentId;
+    m_root=newParentId;
+  }
+  index=m_nodes[leaf].parent;
+  while (index != NULL_NODE) {
+    index=balance(index);
+    int child1=m_nodes[index].child1;
+    int child2=m_nodes[index].child2;
+    assert(child1 != NULL_NODE);
+    assert(child2 != NULL_NODE);
+    m_nodes[index].height=1 + MathUtils.max(m_nodes[child1].height,m_nodes[child2].height);
+    m_nodes[index].aabb.combine(m_nodes[child1].aabb,m_nodes[child2].aabb);
+    index=m_nodes[index].parent;
+  }
+}

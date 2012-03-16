@@ -1,0 +1,5 @@
+{
+  assert(v != out);
+  out.x=R.ex.x * v.x + R.ey.x * v.y;
+  out.y=R.ex.y * v.x + R.ey.y * v.y;
+}

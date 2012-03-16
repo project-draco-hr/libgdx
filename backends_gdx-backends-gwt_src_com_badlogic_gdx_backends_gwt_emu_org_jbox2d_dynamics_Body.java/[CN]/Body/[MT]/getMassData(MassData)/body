@@ -1,0 +1,6 @@
+{
+  data.mass=m_mass;
+  data.I=m_I + m_mass * (m_sweep.localCenter.x * m_sweep.localCenter.x + m_sweep.localCenter.y * m_sweep.localCenter.y);
+  data.center.x=m_sweep.localCenter.x;
+  data.center.y=m_sweep.localCenter.y;
+}

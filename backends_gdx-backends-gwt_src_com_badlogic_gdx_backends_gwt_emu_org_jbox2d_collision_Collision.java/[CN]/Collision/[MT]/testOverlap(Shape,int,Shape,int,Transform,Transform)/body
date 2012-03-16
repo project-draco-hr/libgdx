@@ -1,0 +1,10 @@
+{
+  input.proxyA.set(shapeA,indexA);
+  input.proxyB.set(shapeB,indexB);
+  input.transformA.set(xfA);
+  input.transformB.set(xfB);
+  input.useRadii=true;
+  cache.count=0;
+  pool.getDistance().distance(output,cache,input);
+  return output.distance < 10.0f * Settings.EPSILON;
+}

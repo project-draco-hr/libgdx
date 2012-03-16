@@ -1,0 +1,33 @@
+{
+  Body bA=m_bodyA;
+  Body bB=m_bodyB;
+  Vec2[] pc=pool.popVec2(9);
+  Vec2 temp=pc[0];
+  Vec2 rA=pc[1];
+  Vec2 rB=pc[2];
+  Vec2 p1=pc[3];
+  Vec2 p2=pc[4];
+  Vec2 d=pc[5];
+  Vec2 axis=pc[6];
+  Vec2 temp2=pc[7];
+  Vec2 temp3=pc[8];
+  temp.set(m_localAnchorA).subLocal(bA.m_sweep.localCenter);
+  Rot.mulToOutUnsafe(bA.m_xf.q,temp,rA);
+  temp.set(m_localAnchorB).subLocal(bB.m_sweep.localCenter);
+  Rot.mulToOutUnsafe(bB.m_xf.q,temp,rB);
+  p1.set(bA.m_sweep.c).addLocal(rA);
+  p2.set(bB.m_sweep.c).addLocal(rB);
+  d.set(p2).subLocal(p1);
+  Rot.mulToOutUnsafe(bA.m_xf.q,m_localXAxisA,axis);
+  Vec2 vA=bA.m_linearVelocity;
+  Vec2 vB=bB.m_linearVelocity;
+  float wA=bA.m_angularVelocity;
+  float wB=bB.m_angularVelocity;
+  Vec2.crossToOutUnsafe(wA,axis,temp);
+  Vec2.crossToOutUnsafe(wB,rB,temp2);
+  Vec2.crossToOutUnsafe(wA,rA,temp3);
+  temp2.addLocal(vB).subLocal(vA).subLocal(temp3);
+  float speed=Vec2.dot(d,temp) + Vec2.dot(axis,temp2);
+  pool.pushVec2(9);
+  return speed;
+}
