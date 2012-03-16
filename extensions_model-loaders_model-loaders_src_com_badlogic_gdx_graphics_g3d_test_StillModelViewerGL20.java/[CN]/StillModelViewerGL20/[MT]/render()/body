@@ -1,5 +1,8 @@
 {
   ShaderProgram shader=shader2;
+  if (Gdx.input.isTouched()) {
+    shader=shader1;
+  }
   protoRenderer.setShader(shader);
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);

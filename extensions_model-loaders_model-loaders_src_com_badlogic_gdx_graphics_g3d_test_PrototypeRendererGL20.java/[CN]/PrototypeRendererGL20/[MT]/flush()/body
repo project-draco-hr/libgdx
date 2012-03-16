@@ -1,6 +1,5 @@
 {
   drawing=false;
-  lightManager.applyGlobalLights(shader);
   for (int i=0; i < animatedModelQueue.size; i++) {
     final AnimatedModelInstance instance=animatedModelInstances.items[i];
     final String name=instance.getAnimation();
@@ -13,6 +12,7 @@
   animatedModelQueue.clear();
   animatedModelInstances.clear();
   shader.begin();
+  lightManager.applyGlobalLights(shader);
   for (int i=0; i < modelQueue.size; i++) {
     final StillModelInstance instance=stillModelInstances.items[i];
     final Matrix4 modelMatrix=instance.getTransform();
