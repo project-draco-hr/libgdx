@@ -1,0 +1,19 @@
+{
+  if (!dependenciesLoaded) {
+    Array<AssetDescriptor> dependencies=loader.getDependencies(assetDesc.fileName,assetDesc.params);
+    if (dependencies != null) {
+      for (      AssetDescriptor desc : dependencies) {
+        manager.injectDependency(assetDesc.fileName,desc);
+      }
+      dependenciesLoaded=true;
+    }
+ else {
+      loader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+      asset=loader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+    }
+  }
+ else {
+    loader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+    asset=loader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+  }
+}

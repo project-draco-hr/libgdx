@@ -1,0 +1,5 @@
+{
+  Throwable cause=ex.getCause();
+  if (cause == null || cause == ex)   return false;
+  return false;
+}

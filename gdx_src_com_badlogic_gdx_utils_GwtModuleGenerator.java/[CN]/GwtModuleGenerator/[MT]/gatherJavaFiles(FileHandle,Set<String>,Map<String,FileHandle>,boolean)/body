@@ -1,0 +1,17 @@
+{
+  if (dir.name().equals(".svn"))   return;
+  FileHandle[] files=dir.list();
+  for (  FileHandle file : files) {
+    if (file.isDirectory() && recursive) {
+      gatherJavaFiles(file,names,fileHandles,recursive);
+    }
+ else {
+      if (file.extension().equals("java")) {
+        System.out.println(file.name());
+        if (names.contains(file.name()))         System.out.println(file.name() + " duplicate!");
+        names.add(file.name());
+        fileHandles.put(file.name(),file);
+      }
+    }
+  }
+}

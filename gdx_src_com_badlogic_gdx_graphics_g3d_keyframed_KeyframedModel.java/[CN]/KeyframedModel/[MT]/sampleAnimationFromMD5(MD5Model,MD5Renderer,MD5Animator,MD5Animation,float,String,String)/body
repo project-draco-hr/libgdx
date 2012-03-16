@@ -49,10 +49,8 @@
       numVertices=vertices.length;
       numIndices=indices.length;
       if (!cached) {
-        k.vertices[m]=new float[vertices.length];
-        k.vertices[m]=vertices.clone();
-        k.indices[m]=new short[indices.length];
-        k.indices[m]=indices.clone();
+        k.vertices[m]=clone(vertices);
+        k.indices[m]=clone(indices);
       }
       if (target[m] == null) {
         animator.setKeyframeDimensions(m,numVertices,numIndices);

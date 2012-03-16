@@ -15,8 +15,8 @@
     renderer.end();
   }
   handleInput(Gdx.input,Gdx.graphics.getDeltaTime());
-  if (System.nanoTime() - lastTime > 1000000000) {
+  if (TimeUtils.nanoTime() - lastTime > 1000000000) {
     Gdx.app.log("TerrainTest","fps: " + Gdx.graphics.getFramesPerSecond());
-    lastTime=System.nanoTime();
+    lastTime=TimeUtils.nanoTime();
   }
 }

@@ -1,0 +1,14 @@
+{
+  Texture texture=this.texture;
+  if (texture != null) {
+    texture.load(data);
+  }
+ else {
+    texture=new Texture(data);
+  }
+  if (parameter != null) {
+    texture.setFilter(parameter.minFilter,parameter.magFilter);
+    texture.setWrap(parameter.wrapU,parameter.wrapV);
+  }
+  return texture;
+}

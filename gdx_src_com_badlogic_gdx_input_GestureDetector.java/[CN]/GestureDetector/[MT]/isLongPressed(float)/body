@@ -1,4 +1,4 @@
 {
   if (gestureStartTime == 0)   return false;
-  return System.nanoTime() - gestureStartTime > (long)(duration * 1000000000l);
+  return TimeUtils.nanoTime() - gestureStartTime > (long)(duration * 1000000000l);
 }

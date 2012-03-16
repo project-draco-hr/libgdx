@@ -1,10 +1,7 @@
 {
   spriteBatch=new SpriteBatch();
-  Pixmap pixmap=new Pixmap(Gdx.files.internal("data/badlogicsmall.jpg"));
-  texture=new Texture(32,32,Format.RGB565);
-  texture.draw(pixmap,0,0);
-  pixmap.dispose();
-  pixmap=new Pixmap(32,32,Format.RGB565);
+  texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
+  Pixmap pixmap=new Pixmap(32,32,Format.RGB565);
   pixmap.setColor(1,1,0,0.7f);
   pixmap.fill();
   texture2=new Texture(pixmap);

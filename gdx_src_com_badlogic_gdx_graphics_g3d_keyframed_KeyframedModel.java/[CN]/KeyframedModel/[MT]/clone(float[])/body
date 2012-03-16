@@ -1,0 +1,5 @@
+{
+  float[] tmp=new float[vertices.length];
+  System.arraycopy(vertices,0,tmp,0,vertices.length);
+  return tmp;
+}

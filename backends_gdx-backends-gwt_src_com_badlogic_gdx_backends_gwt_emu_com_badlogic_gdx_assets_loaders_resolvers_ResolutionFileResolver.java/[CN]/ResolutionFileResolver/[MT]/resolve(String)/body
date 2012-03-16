@@ -1,0 +1,7 @@
+{
+  Resolution bestDesc=choose(descriptors);
+  FileHandle originalHandle=new GwtFileHandle(fileName);
+  FileHandle handle=baseResolver.resolve(resolve(originalHandle,bestDesc.suffix));
+  if (!handle.exists())   handle=baseResolver.resolve(fileName);
+  return handle;
+}

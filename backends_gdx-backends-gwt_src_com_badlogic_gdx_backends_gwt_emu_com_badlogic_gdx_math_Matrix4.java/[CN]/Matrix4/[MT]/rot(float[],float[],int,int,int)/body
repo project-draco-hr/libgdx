@@ -1,2 +1,6 @@
 {
+  for (int i=0; i < numVecs; i++) {
+    matrix4_rot(mat,vecs,offset);
+    offset+=stride;
+  }
 }

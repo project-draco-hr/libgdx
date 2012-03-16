@@ -22,11 +22,11 @@
   mean+=numFills;
   frames++;
   if (Gdx.graphics.getDeltaTime() < 1 / 60f)   numFills++;
-  if (System.nanoTime() - lastOut >= 1000000000) {
+  if (TimeUtils.nanoTime() - lastOut >= 1000000000) {
     Gdx.app.log("FillrateTest","fills: " + mean / frames + ", fps: " + frames + ", mode" + mode);
     mean=0;
     frames=0;
-    lastOut=System.nanoTime();
+    lastOut=TimeUtils.nanoTime();
     if (Gdx.graphics.getFramesPerSecond() < 60)     numFills--;
   }
 }

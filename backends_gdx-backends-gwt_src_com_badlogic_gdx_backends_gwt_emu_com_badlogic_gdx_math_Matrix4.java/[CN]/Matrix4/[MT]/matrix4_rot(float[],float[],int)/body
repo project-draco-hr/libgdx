@@ -1,0 +1,8 @@
+{
+  float x=vec[offset + 0] * mat[M00] + vec[offset + 1] * mat[M01] + vec[offset + 2] * mat[M02];
+  float y=vec[offset + 0] * mat[M10] + vec[offset + 1] * mat[M11] + vec[offset + 2] * mat[M12];
+  float z=vec[offset + 0] * mat[M20] + vec[offset + 1] * mat[M21] + vec[offset + 2] * mat[M22];
+  vec[offset + 0]=x;
+  vec[offset + 1]=y;
+  vec[offset + 2]=z;
+}

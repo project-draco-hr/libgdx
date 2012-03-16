@@ -1,0 +1,21 @@
+{
+  if (parameter == null || (parameter != null && parameter.textureData == null)) {
+    Pixmap pixmap=null;
+    Format format=null;
+    boolean genMipMaps=false;
+    texture=null;
+    if (parameter != null) {
+      format=parameter.format;
+      genMipMaps=parameter.genMipMaps;
+      texture=parameter.texture;
+    }
+    FileHandle handle=resolve(fileName);
+    pixmap=new Pixmap(handle);
+    data=new FileTextureData(handle,pixmap,format,genMipMaps);
+  }
+ else {
+    data=parameter.textureData;
+    if (!data.isPrepared())     data.prepare();
+    texture=parameter.texture;
+  }
+}

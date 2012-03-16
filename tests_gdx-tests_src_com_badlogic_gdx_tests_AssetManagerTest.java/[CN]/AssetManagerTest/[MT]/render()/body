@@ -3,7 +3,7 @@
   boolean result=manager.update();
   if (result & !diagnosed) {
     diagnosed=true;
-    System.out.println("took: " + (System.nanoTime() - start) / 1000000000.0f);
+    System.out.println("took: " + (TimeUtils.nanoTime() - start) / 1000000000.0f);
     unload();
     load();
     diagnosed=false;
@@ -11,12 +11,10 @@
   }
   frame++;
   batch.begin();
-  if (manager.isLoaded("data/test.etc1"))   batch.draw(manager.get("data/test.etc1",Texture.class),0,0);
   if (manager.isLoaded("data/animation.png"))   batch.draw(manager.get("data/animation.png",Texture.class),100,100);
   if (manager.isLoaded("data/verdana39.png"))   batch.draw(manager.get("data/verdana39.png",Texture.class),300,100);
   if (manager.isLoaded("data/pack"))   batch.draw(manager.get("data/pack",TextureAtlas.class).findRegion("particle-star"),164,100);
   if (manager.isLoaded("data/verdana39.fnt"))   manager.get("data/verdana39.fnt",BitmapFont.class).draw(batch,"This is a test",100,200);
-  if (manager.isLoaded("data/tiledmap/tilemap csv.tmx"))   manager.get("data/tiledmap/tilemap csv.tmx",TileMapRenderer.class).render();
   font.draw(batch,"loaded: " + manager.getProgress() + ", reloads: "+ reloads,0,30);
   batch.end();
 }

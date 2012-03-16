@@ -1,18 +1,14 @@
 {
-  renderer.begin(GL10.GL_LINES);
+  renderer.begin(ShapeType.Line);
+  renderer.setColor(0,1,0,1);
   for (int i=0; i < bones.length - 1; i++) {
-    renderer.color(0,1,0,1);
-    renderer.vertex(bones[i].position);
-    renderer.color(0,1,0,1);
-    renderer.vertex(bones[i + 1].position);
+    renderer.line(bones[i].position.x,bones[i].position.y,bones[i + 1].position.x,bones[i + 1].position.y);
   }
   renderer.end();
-  Gdx.gl10.glPointSize(5);
-  renderer.begin(GL10.GL_POINTS);
+  renderer.begin(ShapeType.Point);
+  renderer.setColor(1,0,0,1);
   for (int i=0; i < bones.length; i++) {
-    renderer.color(1,0,0,1);
-    renderer.vertex(bones[i].position);
+    renderer.point(bones[i].position.x,bones[i].position.y,0);
   }
   renderer.end();
-  Gdx.gl10.glPointSize(1);
 }

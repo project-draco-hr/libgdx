@@ -1,0 +1,58 @@
+{
+  Set<String> excludes=new HashSet<String>();
+  Map<String,FileHandle> excludesHandles=new HashMap<String,FileHandle>();
+  System.out.println("Excludes -------------------------------------------------");
+  gatherJavaFiles(new FileHandle("../backends/gdx-backends-gwt/src/com/badlogic/gdx/backends/gwt/emu/com/badlogic/gdx"),excludes,excludesHandles,true);
+  System.out.println("#" + excludes.size());
+  excludes.add("GdxBuild.java");
+  excludes.add("GdxNativesLoader.java");
+  excludes.add("GwtModuleGenerator.java");
+  excludes.add("SharedLibraryLoader.java");
+  excludes.add("Gdx2DPixmap.java");
+  excludes.add("PixmapIO.java");
+  excludes.add("ETC1.java");
+  excludes.add("ETC1TextureData.java");
+  excludes.add("ScreenUtils.java");
+  excludes.add("ResolutionFileResolver.java");
+  excludes.add("SkinLoader.java");
+  excludes.add("RemoteInput.java");
+  excludes.add("RemoteSender.java");
+  excludes.add("ParticleEmitterBox2D.java");
+  gatherJavaFiles(new FileHandle("src/com/badlogic/gdx/physics/box2d"),excludes,excludesHandles,true);
+  excludes.add("TiledLoader.java");
+  excludes.add("TileMapRendererLoader.java");
+  excludes.add("AtomicQueue.java");
+  excludes.add("LittleEndianInputStream.java");
+  excludes.add("PauseableThread.java");
+  excludes.add("Json.java");
+  excludes.add("JsonWriter.java");
+  gatherJavaFiles(new FileHandle("src/com/badlogic/gdx/scenes/scene2d/ui"),excludes,excludesHandles,true);
+  Set<String> includes=new HashSet<String>();
+  Map<String,FileHandle> includesHandles=new TreeMap<String,FileHandle>();
+  System.out.println("Includes -------------------------------------------------");
+  gatherJavaFiles(new FileHandle("src"),includes,includesHandles,true);
+  System.out.println("#" + includes.size());
+  for (  String include : includes) {
+    if (!excludes.contains(include))     continue;
+    FileHandle includeFile=includesHandles.get(include);
+    FileHandle excludeFile=excludesHandles.get(include);
+    includesHandles.remove(include);
+    System.out.println("excluded '" + include + "'");
+  }
+  System.out.println("diff: " + includesHandles.size());
+  StringWriter writer=new StringWriter();
+  writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+  XmlWriter builder=new XmlWriter(writer);
+  builder.element("module").attribute("rename-to","com.badlogic.gdx");
+  builder.element("source").attribute("path","gdx");
+  for (  String include : includesHandles.keySet()) {
+    String name=includesHandles.get(include).path().replace("\\","/").replace("src/com/badlogic/gdx/","");
+    builder.element("include").attribute("name",name).pop();
+  }
+  builder.element("include").attribute("name","graphics/g2d/Animation.java").pop();
+  builder.element("include").attribute("name","graphics/g3d/Animation.java").pop();
+  builder.pop();
+  builder.pop();
+  System.out.println(writer);
+  new FileHandle("src/com/badlogic/gdx.gwt.xml").writeString(writer.toString(),false);
+}

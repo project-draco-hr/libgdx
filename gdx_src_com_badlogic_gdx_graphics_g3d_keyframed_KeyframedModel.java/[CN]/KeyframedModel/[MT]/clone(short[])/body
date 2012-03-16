@@ -1,0 +1,5 @@
+{
+  short[] tmp=new short[indices.length];
+  System.arraycopy(indices,0,tmp,0,indices.length);
+  return tmp;
+}

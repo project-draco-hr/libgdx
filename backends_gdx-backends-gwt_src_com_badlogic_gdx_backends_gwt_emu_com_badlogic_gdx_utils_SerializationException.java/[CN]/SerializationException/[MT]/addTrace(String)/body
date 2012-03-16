@@ -1,0 +1,6 @@
+{
+  if (info == null)   throw new IllegalArgumentException("info cannot be null.");
+  if (trace == null)   trace=new StringBuffer(512);
+  trace.append('\n');
+  trace.append(info);
+}

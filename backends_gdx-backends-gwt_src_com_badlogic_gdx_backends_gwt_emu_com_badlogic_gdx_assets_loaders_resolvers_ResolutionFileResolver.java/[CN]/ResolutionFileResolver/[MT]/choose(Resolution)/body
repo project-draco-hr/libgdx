@@ -1,0 +1,25 @@
+{
+  int width=0;
+  if (Gdx.graphics.getWidth() > Gdx.graphics.getHeight()) {
+    width=Gdx.graphics.getHeight();
+  }
+ else {
+    width=Gdx.graphics.getWidth();
+  }
+  Resolution bestDesc=null;
+  int best=Integer.MAX_VALUE;
+  for (int i=0, n=descriptors.length; i < n; i++) {
+    if (descriptors[i].portraitWidth < best) {
+      best=descriptors[i].portraitWidth;
+      bestDesc=descriptors[i];
+    }
+  }
+  best=Integer.MAX_VALUE;
+  for (int i=0, n=descriptors.length; i < n; i++) {
+    if (descriptors[i].portraitWidth <= width) {
+      best=descriptors[i].portraitWidth;
+      bestDesc=descriptors[i];
+    }
+  }
+  return bestDesc;
+}

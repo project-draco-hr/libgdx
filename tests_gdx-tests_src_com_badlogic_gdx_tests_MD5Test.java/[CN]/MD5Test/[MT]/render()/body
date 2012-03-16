@@ -14,13 +14,13 @@
     gl.glTranslatef(0,0,-z);
     gl.glRotatef(angle,0,1,0);
     gl.glRotatef(-90,1,0,0);
-    start=System.nanoTime();
+    start=TimeUtils.nanoTime();
     MD5Animation.interpolate(anim.frames[animInfo.getCurrentFrame()],anim.frames[animInfo.getNextFrame()],skeleton,animInfo.getInterpolation());
     renderer.setSkeleton(skeleton);
-    skinTime=(System.nanoTime() - start) / 1000000000.0f;
-    start=System.nanoTime();
+    skinTime=(TimeUtils.nanoTime() - start) / 1000000000.0f;
+    start=TimeUtils.nanoTime();
     renderer.render();
-    renderTime=(System.nanoTime() - start) / 1000000000.0f;
+    renderTime=(TimeUtils.nanoTime() - start) / 1000000000.0f;
     gl.glPopMatrix();
   }
   gl.glDisable(GL10.GL_DEPTH_TEST);

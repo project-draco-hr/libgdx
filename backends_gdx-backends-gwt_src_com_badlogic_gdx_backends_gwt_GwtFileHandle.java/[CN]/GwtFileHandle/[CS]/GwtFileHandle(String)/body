@@ -1,0 +1,5 @@
+{
+  this.type=FileType.Internal;
+  this.preloader=((GwtApplication)Gdx.app).getPreloader();
+  this.file=path;
+}

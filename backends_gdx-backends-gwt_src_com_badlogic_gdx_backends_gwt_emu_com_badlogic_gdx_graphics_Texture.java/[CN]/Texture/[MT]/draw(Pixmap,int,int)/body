@@ -1,3 +1,5 @@
 {
-  throw new GdxRuntimeException("can't draw to a managed texture");
+  if (data.isManaged())   throw new GdxRuntimeException("can't draw to a managed texture");
+  Gdx.gl.glBindTexture(GL10.GL_TEXTURE_2D,glHandle);
+  Gdx.gl.glTexSubImage2D(GL10.GL_TEXTURE_2D,0,x,y,pixmap.getWidth(),pixmap.getHeight(),pixmap.getGLFormat(),pixmap.getGLType(),pixmap.getPixels());
 }

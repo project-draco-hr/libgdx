@@ -7,18 +7,18 @@
   float draw1=0;
   float draw2=0;
   float drawText=0;
-  long start=System.nanoTime();
+  long start=TimeUtils.nanoTime();
   spriteCache.begin();
-  begin=(System.nanoTime() - start) / 1000000000.0f;
-  start=System.nanoTime();
+  begin=(TimeUtils.nanoTime() - start) / 1000000000.0f;
+  start=TimeUtils.nanoTime();
   spriteCache.draw(spriteCacheID);
-  draw1=(System.nanoTime() - start) / 1000000000.0f;
-  start=System.nanoTime();
+  draw1=(TimeUtils.nanoTime() - start) / 1000000000.0f;
+  start=TimeUtils.nanoTime();
   spriteCache.end();
-  end=(System.nanoTime() - start) / 1000000000.0f;
-  if (System.nanoTime() - startTime > 1000000000) {
+  end=(TimeUtils.nanoTime() - start) / 1000000000.0f;
+  if (TimeUtils.nanoTime() - startTime > 1000000000) {
     frames=0;
-    startTime=System.nanoTime();
+    startTime=TimeUtils.nanoTime();
   }
   frames++;
 }

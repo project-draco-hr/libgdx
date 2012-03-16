@@ -16,7 +16,7 @@
     this.deltaY=0;
     this.mouseX=(int)getRelativeX(e,canvas);
     this.mouseY=(int)getRelativeY(e,canvas);
-    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    this.currentEventTimeStamp=TimeUtils.nanoTime();
     if (processor != null)     processor.touchDown(mouseX,mouseY,0,getButton(e.getButton()));
   }
   if (e.getType().equals("mousemove")) {
@@ -24,7 +24,7 @@
     this.deltaY=(int)getRelativeY(e,canvas) - mouseY;
     this.mouseX=(int)getRelativeX(e,canvas);
     this.mouseY=(int)getRelativeY(e,canvas);
-    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    this.currentEventTimeStamp=TimeUtils.nanoTime();
     if (processor != null) {
       if (touched)       processor.touchDragged(mouseX,mouseY,0);
  else       processor.touchMoved(mouseX,mouseY);
@@ -38,7 +38,7 @@
     this.deltaY=(int)getRelativeY(e,canvas) - mouseY;
     this.mouseX=(int)getRelativeX(e,canvas);
     this.mouseY=(int)getRelativeY(e,canvas);
-    this.currentEventTimeStamp=System.currentTimeMillis() * 1000;
+    this.currentEventTimeStamp=TimeUtils.nanoTime();
     this.touched=false;
     if (processor != null)     processor.touchUp(mouseX,mouseY,0,getButton(e.getButton()));
   }

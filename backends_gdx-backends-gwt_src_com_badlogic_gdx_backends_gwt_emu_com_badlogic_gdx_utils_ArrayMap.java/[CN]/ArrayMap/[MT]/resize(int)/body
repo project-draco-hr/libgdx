@@ -1,0 +1,8 @@
+{
+  K[] newKeys=(K[])new Object[newSize];
+  System.arraycopy(keys,0,newKeys,0,Math.min(keys.length,newKeys.length));
+  this.keys=newKeys;
+  V[] newValues=(V[])new Object[newSize];
+  System.arraycopy(values,0,newValues,0,Math.min(values.length,newValues.length));
+  this.values=newValues;
+}

@@ -1,6 +1,6 @@
 {
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
-  Gdx.gl10.glDepthFunc(GL10.GL_LESS);
+  Gdx.gl.glDepthFunc(GL10.GL_LESS);
   egg=new Texture(Gdx.files.internal("data/egg.png"));
   egg.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
   egg.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
@@ -12,6 +12,11 @@
   for (int i=0; i < INITIAL_RENDERED; i++) {
     toRender.add(makeDecal());
   }
-  batch=new DecalBatch(strategy);
+  cam=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.near=0.1f;
+  cam.far=10f;
+  cam.position.set(0,0,0.1f);
+  cam.direction.set(0,0,-1f);
+  batch=new DecalBatch(new CameraGroupStrategy(cam));
   Gdx.gl.glClearColor(1,1,0,1);
 }

@@ -1,9 +1,0 @@
-{
-  renderer.begin(GL10.GL_LINE_STRIP);
-  renderer.vertex(x1,y1,0);
-  renderer.vertex(x1,y2,0);
-  renderer.vertex(x2,y2,0);
-  renderer.vertex(x2,y1,0);
-  renderer.vertex(x1,y1,0);
-  renderer.end();
-}
