@@ -1,0 +1,4 @@
+{
+  world=new org.jbox2d.dynamics.World(tmp.set(gravity.x,gravity.y));
+  world.setAllowSleep(doSleep);
+}

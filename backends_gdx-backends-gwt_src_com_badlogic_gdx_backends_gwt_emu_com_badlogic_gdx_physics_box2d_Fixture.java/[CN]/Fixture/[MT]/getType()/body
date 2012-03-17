@@ -1,0 +1,8 @@
+{
+  ShapeType type=fixture.getType();
+  if (type == ShapeType.CIRCLE)   return Type.Circle;
+  if (type == ShapeType.EDGE)   return Type.Edge;
+  if (type == ShapeType.POLYGON)   return Type.Polygon;
+  if (type == ShapeType.CHAIN)   return Type.Chain;
+  return Type.Circle;
+}

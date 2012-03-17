@@ -1,0 +1,7 @@
+{
+  this.bodyA=bodyA;
+  this.bodyB=bodyB;
+  this.localAnchorA.set(bodyA.getLocalPoint(anchorA));
+  this.localAnchorB.set(bodyB.getLocalPoint(anchorB));
+  this.length=anchorA.dst(anchorB);
+}

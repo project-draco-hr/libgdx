@@ -1,0 +1,5 @@
+{
+  Vec2 lc=body.getLocalCenter();
+  localCenter.set(lc.x,lc.y);
+  return localCenter;
+}

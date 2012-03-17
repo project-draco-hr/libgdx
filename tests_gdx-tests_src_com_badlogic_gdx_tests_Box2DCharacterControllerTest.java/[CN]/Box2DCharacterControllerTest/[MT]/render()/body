@@ -7,10 +7,10 @@
   Vector2 pos=player.getPosition();
   boolean grounded=isPlayerGrounded(Gdx.graphics.getDeltaTime());
   if (grounded) {
-    lastGroundTime=System.nanoTime();
+    lastGroundTime=TimeUtils.nanoTime();
   }
  else {
-    if (System.nanoTime() - lastGroundTime < 100000000) {
+    if (TimeUtils.nanoTime() - lastGroundTime < 100000000) {
       grounded=true;
     }
   }

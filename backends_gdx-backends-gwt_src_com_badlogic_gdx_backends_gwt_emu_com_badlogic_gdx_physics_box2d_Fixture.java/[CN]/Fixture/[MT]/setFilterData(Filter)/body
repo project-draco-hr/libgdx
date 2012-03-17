@@ -1,0 +1,7 @@
+{
+  org.jbox2d.dynamics.Filter f=new Filter();
+  f.categoryBits=filter.categoryBits;
+  f.groupIndex=filter.groupIndex;
+  f.maskBits=filter.maskBits;
+  fixture.setFilterData(f);
+}

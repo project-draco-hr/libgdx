@@ -1,0 +1,8 @@
+{
+  org.jbox2d.common.Transform trans=body.getTransform();
+  transform.vals[Transform.POS_X]=trans.p.x;
+  transform.vals[Transform.POS_Y]=trans.p.y;
+  transform.vals[Transform.COS]=trans.q.c;
+  transform.vals[Transform.SIN]=trans.q.s;
+  return transform;
+}

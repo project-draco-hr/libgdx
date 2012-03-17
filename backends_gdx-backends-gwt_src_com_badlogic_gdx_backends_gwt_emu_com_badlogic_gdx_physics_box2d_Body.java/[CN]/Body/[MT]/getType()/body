@@ -1,0 +1,7 @@
+{
+  org.jbox2d.dynamics.BodyType type=body.getType();
+  if (type == org.jbox2d.dynamics.BodyType.DYNAMIC)   return BodyType.DynamicBody;
+  if (type == org.jbox2d.dynamics.BodyType.KINEMATIC)   return BodyType.KinematicBody;
+  if (type == org.jbox2d.dynamics.BodyType.STATIC)   return BodyType.StaticBody;
+  return BodyType.DynamicBody;
+}

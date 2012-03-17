@@ -1,0 +1,7 @@
+{
+  Filter f=fixture.getFilterData();
+  filter.categoryBits=f.categoryBits;
+  filter.maskBits=f.maskBits;
+  filter.groupIndex=f.groupIndex;
+  return filter;
+}

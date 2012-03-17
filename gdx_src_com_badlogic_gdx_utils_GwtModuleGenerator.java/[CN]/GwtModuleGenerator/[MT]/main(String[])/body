@@ -17,8 +17,6 @@
   excludes.add("SkinLoader.java");
   excludes.add("RemoteInput.java");
   excludes.add("RemoteSender.java");
-  excludes.add("ParticleEmitterBox2D.java");
-  gatherJavaFiles(new FileHandle("src/com/badlogic/gdx/physics/box2d"),excludes,excludesHandles,true);
   excludes.add("TiledLoader.java");
   excludes.add("TileMapRendererLoader.java");
   excludes.add("AtomicQueue.java");

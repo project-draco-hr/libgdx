@@ -1,0 +1,11 @@
+{
+  if (shape == null) {
+    org.jbox2d.collision.shapes.Shape shape2=fixture.getShape();
+    ShapeType type=shape2.getType();
+    if (type == ShapeType.CHAIN)     shape=new ChainShape((org.jbox2d.collision.shapes.ChainShape)shape2);
+    if (type == ShapeType.CIRCLE)     shape=new CircleShape((org.jbox2d.collision.shapes.CircleShape)shape2);
+    if (type == ShapeType.EDGE)     shape=new EdgeShape((org.jbox2d.collision.shapes.EdgeShape)shape2);
+    if (type == ShapeType.POLYGON)     shape=new PolygonShape((org.jbox2d.collision.shapes.PolygonShape)shape2);
+  }
+  return shape;
+}

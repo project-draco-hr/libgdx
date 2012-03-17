@@ -1,0 +1,7 @@
+{
+  Vec2[] v=new Vec2[vertices.length];
+  for (int i=0; i < vertices.length; i++) {
+    v[i]=new Vec2(vertices[i].x,vertices[i].y);
+  }
+  shape.createLoop(v,v.length);
+}

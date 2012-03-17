@@ -1,0 +1,7 @@
+{
+  body.getMassData(massData2);
+  massData.center.set(massData2.center.x,massData2.center.y);
+  massData.I=massData2.I;
+  massData.mass=massData2.mass;
+  return massData;
+}

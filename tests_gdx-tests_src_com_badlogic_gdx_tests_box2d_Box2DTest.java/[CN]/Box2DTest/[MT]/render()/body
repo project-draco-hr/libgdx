@@ -1,14 +1,14 @@
 {
-  long startTime=System.nanoTime();
+  long startTime=TimeUtils.nanoTime();
   world.step(Gdx.app.getGraphics().getDeltaTime(),3,3);
-  float updateTime=(System.nanoTime() - startTime) / 1000000000.0f;
-  startTime=System.nanoTime();
+  float updateTime=(TimeUtils.nanoTime() - startTime) / 1000000000.0f;
+  startTime=TimeUtils.nanoTime();
   GL10 gl=Gdx.app.getGraphics().getGL10();
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   camera.update();
   camera.apply(gl);
   renderer.render(world,camera.combined);
-  float renderTime=(System.nanoTime() - startTime) / 1000000000.0f;
+  float renderTime=(TimeUtils.nanoTime() - startTime) / 1000000000.0f;
   batch.begin();
   font.draw(batch,"fps:" + Gdx.graphics.getFramesPerSecond() + ", update: "+ updateTime+ ", render: "+ renderTime,0,20);
   batch.end();

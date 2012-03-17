@@ -1,0 +1,7 @@
+{
+  normal.set(manifold.normal.x,manifold.normal.y);
+  for (int i=0; i < manifold.points.length; i++) {
+    points[i].set(manifold.points[i].x,manifold.points[i].y);
+  }
+  numContactPoints=manifold.points.length;
+}
