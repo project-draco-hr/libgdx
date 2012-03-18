@@ -1,2 +1,13 @@
 {
+  if (filter != null) {
+    world.setContactFilter(new org.jbox2d.callbacks.ContactFilter(){
+      @Override public boolean shouldCollide(      org.jbox2d.dynamics.Fixture fixtureA,      org.jbox2d.dynamics.Fixture fixtureB){
+        return filter.shouldCollide(fixtures.get(fixtureA),fixtures.get(fixtureB));
+      }
+    }
+);
+  }
+ else {
+    world.setContactFilter(new org.jbox2d.callbacks.ContactFilter());
+  }
 }

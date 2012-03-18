@@ -1,2 +1,11 @@
 {
+  aabb.lowerBound.set(lowerX,lowerY);
+  aabb.upperBound.set(upperX,upperY);
+  world.queryAABB(new org.jbox2d.callbacks.QueryCallback(){
+    @Override public boolean reportFixture(    org.jbox2d.dynamics.Fixture f){
+      Fixture fixture=fixtures.get(f);
+      return callback.reportFixture(fixture);
+    }
+  }
+,aabb);
 }

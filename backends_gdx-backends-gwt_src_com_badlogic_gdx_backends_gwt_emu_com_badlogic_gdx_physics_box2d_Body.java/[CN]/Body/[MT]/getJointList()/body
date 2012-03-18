@@ -1,3 +1,10 @@
 {
-  return null;
+  org.jbox2d.dynamics.joints.JointEdge jointEdge=body.getJointList();
+  joints.clear();
+  while (jointEdge != null) {
+    JointEdge edge=new JointEdge(world.bodies.get(jointEdge.other),world.joints.get(jointEdge.joint));
+    joints.add(edge);
+    jointEdge=jointEdge.next;
+  }
+  return joints;
 }

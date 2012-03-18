@@ -1,10 +1,10 @@
 {
   camera=new OrthographicCamera(48,32);
   camera.position.set(0,16,0);
-  renderer=new ImmediateModeRenderer10();
+  renderer=new ShapeRenderer();
   debugRenderer=new Box2DDebugRenderer();
   batch=new SpriteBatch();
-  font=new BitmapFont();
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   font.setColor(Color.RED);
   textureRegion=new TextureRegion(new Texture(Gdx.files.internal("data/badlogicsmall.jpg")));
   createPhysicsWorld();

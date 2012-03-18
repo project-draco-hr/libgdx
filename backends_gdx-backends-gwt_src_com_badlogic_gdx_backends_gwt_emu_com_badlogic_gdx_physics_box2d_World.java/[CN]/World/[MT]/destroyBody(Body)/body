@@ -1,2 +1,11 @@
 {
+  world.destroyBody(body.body);
+  bodies.remove(body.body);
+  for (  Fixture fixture : body.fixtures) {
+    fixtures.remove(fixture.fixture);
+  }
+  JointEdge jointEdge=body.body.getJointList();
+  while (jointEdge != null) {
+    joints.remove(jointEdge.joint);
+  }
 }

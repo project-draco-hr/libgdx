@@ -1,3 +1,4 @@
 {
-  shape=new org.jbox2d.collision.shapes.PolygonShape();
+  super(new org.jbox2d.collision.shapes.PolygonShape());
+  shape=(org.jbox2d.collision.shapes.PolygonShape)super.shape;
 }

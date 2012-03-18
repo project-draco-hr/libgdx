@@ -1,3 +1,22 @@
 {
-  return null;
+  org.jbox2d.dynamics.BodyDef bd=new org.jbox2d.dynamics.BodyDef();
+  bd.active=def.active;
+  bd.allowSleep=def.allowSleep;
+  bd.angle=def.angle;
+  bd.angularDamping=def.angularDamping;
+  bd.angularVelocity=def.angularVelocity;
+  bd.awake=def.awake;
+  bd.bullet=def.bullet;
+  bd.fixedRotation=def.fixedRotation;
+  bd.gravityScale=def.gravityScale;
+  bd.linearDamping=def.linearDamping;
+  bd.linearVelocity.set(def.linearVelocity.x,def.linearVelocity.y);
+  bd.position.set(def.position.x,def.position.y);
+  if (def.type == BodyType.DynamicBody)   bd.type=org.jbox2d.dynamics.BodyType.DYNAMIC;
+  if (def.type == BodyType.StaticBody)   bd.type=org.jbox2d.dynamics.BodyType.STATIC;
+  if (def.type == BodyType.KinematicBody)   bd.type=org.jbox2d.dynamics.BodyType.KINEMATIC;
+  org.jbox2d.dynamics.Body b=world.createBody(bd);
+  Body body=new Body(this,b);
+  bodies.put(b,body);
+  return body;
 }

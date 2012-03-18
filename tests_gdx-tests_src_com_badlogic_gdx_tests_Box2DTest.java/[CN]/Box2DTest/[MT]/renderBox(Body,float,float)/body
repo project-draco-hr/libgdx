@@ -1,0 +1,11 @@
+{
+  Vector2 pos=body.getWorldCenter();
+  float angle=body.getAngle();
+  transform.setToTranslation(pos.x,pos.y,0);
+  transform.rotate(0,0,1,(float)Math.toDegrees(angle));
+  renderer.begin(ShapeType.Rectangle);
+  renderer.setTransformMatrix(transform);
+  renderer.setColor(1,1,1,1);
+  renderer.rect(-halfWidth,-halfHeight,halfWidth * 2,halfHeight * 2);
+  renderer.end();
+}

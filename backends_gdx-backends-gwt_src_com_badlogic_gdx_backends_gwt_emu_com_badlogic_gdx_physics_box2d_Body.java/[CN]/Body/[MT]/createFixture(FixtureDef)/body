@@ -1,3 +1,8 @@
 {
-  return null;
+  org.jbox2d.dynamics.FixtureDef fd=def.toJBox2d();
+  org.jbox2d.dynamics.Fixture f=body.createFixture(fd);
+  Fixture fixture=new Fixture(this,f);
+  fixtures.add(fixture);
+  world.fixtures.put(f,fixture);
+  return fixture;
 }

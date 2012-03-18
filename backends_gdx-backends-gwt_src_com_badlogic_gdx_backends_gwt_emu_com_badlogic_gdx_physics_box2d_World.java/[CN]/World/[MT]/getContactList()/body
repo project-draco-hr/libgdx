@@ -1,3 +1,10 @@
 {
-  return null;
+  org.jbox2d.dynamics.contacts.Contact contactList=world.getContactList();
+  contacts.clear();
+  while (contactList != null) {
+    Contact contact=new Contact(this,contactList);
+    contacts.add(contact);
+    contactList=contactList.m_next;
+  }
+  return contacts;
 }

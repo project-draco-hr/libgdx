@@ -1,2 +1,28 @@
 {
+  if (listener != null) {
+    world.setContactListener(new org.jbox2d.callbacks.ContactListener(){
+      @Override public void beginContact(      org.jbox2d.dynamics.contacts.Contact contact){
+        tmpContact.contact=contact;
+        listener.beginContact(tmpContact);
+      }
+      @Override public void endContact(      org.jbox2d.dynamics.contacts.Contact contact){
+        tmpContact.contact=contact;
+        listener.endContact(tmpContact);
+      }
+      @Override public void preSolve(      org.jbox2d.dynamics.contacts.Contact contact,      org.jbox2d.collision.Manifold oldManifold){
+        tmpContact.contact=contact;
+        tmpManifold.manifold=oldManifold;
+        listener.preSolve(tmpContact,tmpManifold);
+      }
+      @Override public void postSolve(      org.jbox2d.dynamics.contacts.Contact contact,      org.jbox2d.callbacks.ContactImpulse impulse){
+        tmpContact.contact=contact;
+        tmpImpulse.impulse=impulse;
+        listener.postSolve(tmpContact,tmpImpulse);
+      }
+    }
+);
+  }
+ else {
+    world.setContactListener(null);
+  }
 }

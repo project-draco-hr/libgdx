@@ -25,6 +25,7 @@ synchronized (synch) {
     }
   }
   if (lresume) {
+    ((AndroidApplication)app).audio.resume();
     app.listener.resume();
     Gdx.app.log("AndroidGraphics","resumed");
   }

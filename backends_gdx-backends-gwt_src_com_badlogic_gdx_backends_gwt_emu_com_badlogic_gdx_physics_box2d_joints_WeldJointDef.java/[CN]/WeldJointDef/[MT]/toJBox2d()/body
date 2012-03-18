@@ -1,0 +1,13 @@
+{
+  org.jbox2d.dynamics.joints.WeldJointDef jd=new org.jbox2d.dynamics.joints.WeldJointDef();
+  jd.bodyA=bodyA.body;
+  jd.bodyB=bodyB.body;
+  jd.collideConnected=collideConnected;
+  jd.dampingRatio=0;
+  jd.frequencyHz=0;
+  jd.localAnchorA.set(localAnchorA.x,localAnchorA.y);
+  jd.localAnchorB.set(localAnchorB.x,localAnchorB.y);
+  jd.referenceAngle=referenceAngle;
+  jd.type=org.jbox2d.dynamics.joints.JointType.WELD;
+  return jd;
+}

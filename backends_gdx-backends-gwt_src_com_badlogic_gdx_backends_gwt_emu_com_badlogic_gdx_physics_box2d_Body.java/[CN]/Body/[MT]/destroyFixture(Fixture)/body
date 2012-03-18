@@ -1,2 +1,5 @@
 {
+  body.destroyFixture(fixture.fixture);
+  fixtures.remove(fixture);
+  world.fixtures.remove(fixture.fixture);
 }
