@@ -13,7 +13,6 @@
   shader.begin();
   shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
   shader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
-  shader.setUniformi("u_texture0",0);
   shader.end();
   textures[0].bind(0);
   protoRenderer.begin();

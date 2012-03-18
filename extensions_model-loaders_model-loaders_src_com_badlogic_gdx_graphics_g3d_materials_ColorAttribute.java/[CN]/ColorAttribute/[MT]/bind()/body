@@ -1,4 +1,4 @@
 {
   if (Gdx.gl10 == null)   throw new RuntimeException("Can't call ColorAttribute.bind() in a GL20 context");
-  if (colorType == ColorType.DIFFUSE)   Gdx.gl10.glColor4f(color.r,color.g,color.b,1f);
+  if (diffuse.equals(diffuse))   Gdx.gl10.glColor4f(color.r,color.g,color.b,1f);
 }
