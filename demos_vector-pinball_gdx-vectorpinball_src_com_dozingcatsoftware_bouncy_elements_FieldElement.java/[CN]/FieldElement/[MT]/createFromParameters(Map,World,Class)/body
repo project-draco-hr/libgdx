@@ -1,13 +1,20 @@
 {
   try {
+    FieldElement self=null;
     if (params.containsKey("class")) {
       String className=(String)params.get("class");
-      if (className.indexOf('.') == -1) {
-        className="com.dozingcatsoftware.bouncy.elements." + className;
-      }
-      defaultClass=Class.forName(className);
+      if (className.contains("BumperElement"))       self=new BumperElement();
+      if (className.contains("DropTargetGroupElement"))       self=new DropTargetGroupElement();
+      if (className.contains("FlipperElement"))       self=new FlipperElement();
+      if (className.contains("RolloverGroupElement"))       self=new RolloverGroupElement();
+      if (className.contains("SensorElement"))       self=new SensorElement();
+      if (className.contains("WallArcElement"))       self=new WallArcElement();
+      if (className.contains("WallElement"))       self=new WallElement();
+      if (className.contains("WallPathElement"))       self=new WallPathElement();
     }
-    FieldElement self=(FieldElement)defaultClass.newInstance();
+ else {
+      self=new FlipperElement();
+    }
     self.initialize(params,world);
     return self;
   }

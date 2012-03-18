@@ -1,11 +1,3 @@
 {
-  renderer=new ImmediateModeRenderer10();
-  float angle=0;
-  float angleInc=360.0f / CIRCLE_VERTICES;
-  for (int i=0, j=0; i < CIRCLE_VERTICES; i++, angle+=angleInc) {
-    float x=(float)Math.cos(Math.toRadians(angle));
-    float y=(float)Math.sin(Math.toRadians(angle));
-    circleVerts[j++]=x;
-    circleVerts[j++]=y;
-  }
+  renderer=new ShapeRenderer(500);
 }

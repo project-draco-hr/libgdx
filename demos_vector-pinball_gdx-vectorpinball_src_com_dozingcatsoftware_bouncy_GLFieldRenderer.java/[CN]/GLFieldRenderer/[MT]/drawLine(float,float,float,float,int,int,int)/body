@@ -2,8 +2,6 @@
   float fr=r / 255f;
   float fg=g / 255f;
   float fb=b / 255f;
-  renderer.color(fr,fg,fb,1);
-  renderer.vertex(x1,y1,0);
-  renderer.color(fr,fg,fb,1);
-  renderer.vertex(x2,y2,0);
+  renderer.setColor(fr,fg,fb,1);
+  renderer.line(x1,y1,x2,y2);
 }
