@@ -21,8 +21,6 @@
   excludes.add("AtomicQueue.java");
   excludes.add("LittleEndianInputStream.java");
   excludes.add("PauseableThread.java");
-  excludes.add("Json.java");
-  excludes.add("JsonWriter.java");
   gatherJavaFiles(new FileHandle("src/com/badlogic/gdx/scenes/scene2d/ui"),excludes,excludesHandles,true);
   Set<String> includes=new HashSet<String>();
   Map<String,FileHandle> includesHandles=new TreeMap<String,FileHandle>();
