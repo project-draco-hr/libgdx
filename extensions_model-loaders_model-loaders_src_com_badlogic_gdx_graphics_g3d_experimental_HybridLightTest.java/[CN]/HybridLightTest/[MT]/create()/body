@@ -1,6 +1,6 @@
 {
   lightManager=new LightManager(LIGHTS_NUM,LightQuality.FRAGMENT);
-  for (int i=0; i < 4; i++) {
+  for (int i=0; i < LIGHTS_NUM; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(8) - 4,MathUtils.random(6),MathUtils.random(8) - 4);
     l.color.r=MathUtils.random();
@@ -22,7 +22,7 @@
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/multipleuvs_1.png"),null,true);
   texture.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
-  texture2=new Texture(Gdx.files.internal("data/multipleuvs_2.png"),null,true);
+  texture2=new Texture(Gdx.files.internal("data/texture2UV1S.png"),null,true);
   texture2.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/sphere.obj"));
   model2=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/basicscene.obj"));
@@ -34,18 +34,15 @@
   instance.radius=box.getDimensions().len() / 2;
   model2.getBoundingBox(box);
   instance2.radius=box.getDimensions().len() / 2;
-  protoRenderer=new PrototypeRendererGL20();
-  protoRenderer.setLightManager(lightManager);
+  protoRenderer=new PrototypeRendererGL20(lightManager);
+  protoRenderer.cam=cam;
   MaterialAttribute c2=new ColorAttribute(new Color(0.95f,0.95f,0.95f,1.0f),ColorAttribute.diffuse);
   MaterialAttribute c1=new ColorAttribute(new Color(0.52f,1.00f,0.51f,1.0f),ColorAttribute.specular);
   MaterialAttribute c3=new ColorAttribute(new Color(0.01f,0.05f,0.05f,1.0f),ColorAttribute.emissive);
   MaterialAttribute t1=new TextureAttribute(texture,0,TextureAttribute.diffuseTexture);
-  MaterialAttribute t2=new TextureAttribute(texture2,1,TextureAttribute.lightmapTexture);
-  Material material=new Material("basic",c1,c2,c3,t1,t2);
+  Material material=new Material("basic",c1,c2,c3,t1);
   model2.setMaterial(material);
-  MaterialAttribute c4=new ColorAttribute(new Color(0.3f,0.15f,0.05f,1.0f),ColorAttribute.emissive);
+  c4=new ColorAttribute(new Color(0.5f,0.25f,0.15f,1.0f),ColorAttribute.emissive);
   Material material2=new Material("shiningBall",c1,c2,c4);
   model.setMaterial(material2);
-  shader=ShaderFactory.createShader(material,lightManager);
-  protoRenderer.setShader(shader);
 }

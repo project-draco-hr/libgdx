@@ -1,20 +1,10 @@
 {
-  ShaderProgram shader=shader2;
-  if (Gdx.input.isTouched()) {
-    shader=shader1;
-  }
-  protoRenderer.setShader(shader);
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
   Gdx.gl.glEnable(GL10.GL_CULL_FACE);
   instance.getTransform().rotate(0,1,-0.1f,35 * Gdx.graphics.getDeltaTime());
   instance2.getTransform().rotate(0,1,0.1f,-15 * Gdx.graphics.getDeltaTime());
   cam.update();
-  shader.begin();
-  shader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
-  shader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
-  shader.end();
-  textures[0].bind(0);
   protoRenderer.begin();
   protoRenderer.draw(model,instance);
   protoRenderer.draw(model,instance2);

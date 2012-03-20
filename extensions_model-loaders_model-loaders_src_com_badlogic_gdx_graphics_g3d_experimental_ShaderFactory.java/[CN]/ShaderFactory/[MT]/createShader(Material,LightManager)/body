@@ -19,6 +19,5 @@
   final String fragmentShader=Gdx.files.internal("data/shaders/" + fileName + ".fragment.glsl").readString();
   ShaderProgram.pedantic=false;
   final ShaderProgram shader=new ShaderProgram(flags + vertexShader,flags + fragmentShader);
-  System.out.println(flags);
   return shader;
 }

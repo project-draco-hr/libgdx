@@ -11,17 +11,30 @@
   }
   animatedModelQueue.clear();
   animatedModelInstances.clear();
-  shader.begin();
-  lightManager.applyGlobalLights(shader);
   for (int i=0; i < modelQueue.size; i++) {
     final StillModelInstance instance=stillModelInstances.items[i];
     final Matrix4 modelMatrix=instance.getTransform();
-    shader.setUniformMatrix("u_normalMatrix",normalMatrix.set(modelMatrix),false);
-    shader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
-    lightManager.calculateAndApplyLightsToModel(instance.getSortCenter(),shader);
-    modelQueue.items[i].render(shader);
+    final Vector3 center=instance.getSortCenter();
+    final Model model=modelQueue.items[i];
+    final SubMesh subMeshes[]=model.getSubMeshes();
+    final Material materials[]=instance.getMaterials();
+    final int len=subMeshes.length;
+    for (int j=0; j < len; j++) {
+      final SubMesh subMesh=subMeshes[j];
+      final Material material=materials != null ? materials[j] : subMesh.material;
+      bindShader(material,modelMatrix,center);
+      if (material != currentMaterial) {
+        currentMaterial=material;
+        currentMaterial.bind(currentShader);
+      }
+      subMesh.getMesh().render(currentShader,subMesh.primitiveType);
+    }
   }
-  shader.end();
+  currentMaterial=null;
+  if (currentShader != null) {
+    currentShader.end();
+    currentShader=null;
+  }
   modelQueue.clear();
   stillModelInstances.clear();
 }
