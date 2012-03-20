@@ -1,0 +1,8 @@
+{
+  try {
+    writer.pop();
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
+}

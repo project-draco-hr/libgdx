@@ -1,0 +1,131 @@
+{
+  name=name.toLowerCase();
+  for (int i=0, n=values.size(); i < n; i++)   values.set(i,values.get(i).toLowerCase());
+  try {
+    String value;
+    if (name.equals("size")) {
+switch (values.size()) {
+case 2:
+        value=values.get(0);
+      if (value.length() > 0)       layout.width=validateSize(value);
+    value=values.get(1);
+  if (value.length() > 0)   layout.height=validateSize(value);
+return;
+case 1:
+value=values.get(0);
+if (value.length() > 0) {
+value=validateSize(value);
+layout.width=value;
+layout.height=value;
+}
+return;
+}
+}
+ else if (name.equals("width") || name.equals("w")) {
+if (values.size() == 1) {
+value=values.get(0);
+if (value.length() > 0) layout.width=validateSize(value);
+return;
+}
+}
+ else if (name.equals("height") || name.equals("h")) {
+if (values.size() == 1) {
+value=values.get(0);
+if (value.length() > 0) layout.height=validateSize(value);
+return;
+}
+}
+ else if (name.equals("padding") || name.equals("pad")) {
+switch (values.size()) {
+case 4:
+value=values.get(0);
+if (value.length() > 0) layout.padTop=validateSize(value);
+value=values.get(1);
+if (value.length() > 0) layout.padLeft=validateSize(value);
+value=values.get(2);
+if (value.length() > 0) layout.padBottom=validateSize(value);
+value=values.get(3);
+if (value.length() > 0) layout.padRight=validateSize(value);
+return;
+case 1:
+value=values.get(0);
+if (value.length() > 0) layout.padTop=layout.padLeft=layout.padBottom=layout.padRight=validateSize(value);
+return;
+}
+}
+ else if (name.startsWith("padding") || name.startsWith("pad")) {
+name=name.replace("padding","").replace("pad","");
+if (values.size() == 1 && values.get(0).length() > 0) {
+value=validateSize(values.get(0));
+if (name.equals("top") || name.equals("t")) layout.padTop=value;
+ else if (name.equals("left") || name.equals("l")) layout.padLeft=value;
+ else if (name.equals("bottom") || name.equals("b")) layout.padBottom=value;
+ else if (name.equals("right") || name.equals("r")) layout.padRight=value;
+ else throw new IllegalArgumentException("Unknown table padding property: " + name);
+return;
+}
+}
+ else if (name.equals("center")) {
+if (values.size() == 0) {
+layout.align|=CENTER;
+return;
+}
+}
+ else if (name.equals("left")) {
+if (values.size() == 0) {
+layout.align|=LEFT;
+return;
+}
+}
+ else if (name.equals("right")) {
+if (values.size() == 0) {
+layout.align|=RIGHT;
+return;
+}
+}
+ else if (name.equals("top")) {
+if (values.size() == 0) {
+layout.align|=TOP;
+return;
+}
+}
+ else if (name.equals("bottom")) {
+if (values.size() == 0) {
+layout.align|=BOTTOM;
+return;
+}
+}
+ else if (name.equals("align")) {
+layout.align=0;
+for (int i=0, n=values.size(); i < n; i++) {
+value=values.get(i);
+if (value.equals("center") || value.equals("c")) layout.align|=CENTER;
+ else if (value.equals("left") || value.equals("l")) layout.align|=LEFT;
+ else if (value.equals("right") || value.equals("r")) layout.align|=RIGHT;
+ else if (value.equals("top") || value.equals("t")) layout.align|=TOP;
+ else if (value.equals("bottom") || value.equals("b")) layout.align|=BOTTOM;
+ else throw new IllegalArgumentException("Invalid table align value: " + value);
+}
+if (values.size() > 0) return;
+}
+ else if (name.equals("debug")) {
+layout.debug=0;
+if (values.size() == 0) layout.debug=DEBUG_ALL;
+for (int i=0, n=values.size(); i < n; i++) {
+value=values.get(i);
+if (value.equalsIgnoreCase("all")) layout.debug|=DEBUG_ALL;
+ else if (value.equalsIgnoreCase("cell")) layout.debug|=DEBUG_CELL;
+ else if (value.equalsIgnoreCase("table")) layout.debug|=DEBUG_TABLE;
+ else if (value.equalsIgnoreCase("widget")) layout.debug|=DEBUG_WIDGET;
+ else if (value.equalsIgnoreCase("none")) layout.debug=DEBUG_NONE;
+ else throw new IllegalArgumentException("Invalid table debug value: " + value);
+}
+return;
+}
+ else throw new IllegalArgumentException("Unknown table property: " + name);
+throw new IllegalArgumentException("Invalid number of table property values (" + values.size() + "): "+ values);
+}
+ catch (Exception ex) {
+throw new RuntimeException("Error setting table property: " + name,ex);
+}
+}

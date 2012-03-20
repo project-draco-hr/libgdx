@@ -1,0 +1,8 @@
+{
+  this.logger=logger;
+  this.context=context;
+  this.type=type;
+  this.packageName=type.getPackage().getName();
+  this.simpleName=type.getSimpleSourceName() + "Generated";
+  logger.log(Type.INFO,type.getQualifiedSourceName());
+}

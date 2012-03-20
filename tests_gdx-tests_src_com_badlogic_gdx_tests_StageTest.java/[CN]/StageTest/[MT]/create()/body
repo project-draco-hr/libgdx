@@ -57,7 +57,6 @@
   fps.y=30;
   fps.color.set(0,1,0,1);
   ui.addActor(fps);
-  Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
   renderer=new ImmediateModeRenderer10();
   Gdx.input.setInputProcessor(this);
 }

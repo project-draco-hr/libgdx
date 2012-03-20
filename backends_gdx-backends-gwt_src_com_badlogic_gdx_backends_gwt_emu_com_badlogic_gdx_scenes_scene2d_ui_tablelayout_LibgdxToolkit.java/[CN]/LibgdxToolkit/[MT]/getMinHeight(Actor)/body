@@ -1,0 +1,4 @@
+{
+  if (actor instanceof Layout)   return (int)((Layout)actor).getMinHeight();
+  return (int)actor.height;
+}

@@ -1,0 +1,10 @@
+{
+  return new Clipboard(){
+    @Override public String getContents(){
+      return null;
+    }
+    @Override public void setContents(    String content){
+    }
+  }
+;
+}

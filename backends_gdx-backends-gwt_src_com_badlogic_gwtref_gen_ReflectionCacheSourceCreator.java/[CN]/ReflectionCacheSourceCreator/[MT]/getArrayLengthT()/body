@@ -1,0 +1,9 @@
+{
+  p("public int getArrayLength(Type type, Object obj) {");
+  for (  JType type : types) {
+    if (!(type instanceof JArrayType))     continue;
+    p("   if(type.getName().equals(\"" + type.getQualifiedSourceName() + "\")) return (("+ type.getQualifiedSourceName()+ ")obj).length;");
+  }
+  p("	return 0;");
+  p("}");
+}

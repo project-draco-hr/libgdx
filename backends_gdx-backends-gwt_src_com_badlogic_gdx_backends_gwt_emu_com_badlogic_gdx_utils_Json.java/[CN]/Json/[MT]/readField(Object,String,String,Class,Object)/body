@@ -1,0 +1,27 @@
+{
+  OrderedMap jsonMap=(OrderedMap)jsonData;
+  Type type=ReflectionCache.getType(object.getClass());
+  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
+  if (fields == null)   fields=cacheFields(type);
+  FieldMetadata metadata=fields.get(fieldName);
+  if (metadata == null)   throw new SerializationException("Field not found: " + fieldName + " ("+ type.getName()+ ")");
+  Field field=metadata.field;
+  Object jsonValue=jsonMap.get(jsonName);
+  if (jsonValue == null)   return;
+  if (elementType == null)   elementType=metadata.elementType;
+  try {
+    field.set(object,readValue(field.getType().getClassOfType(),elementType,jsonValue));
+  }
+ catch (  IllegalAccessException ex) {
+    throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
+  }
+catch (  SerializationException ex) {
+    ex.addTrace(field.getName() + " (" + type.getName()+ ")");
+    throw ex;
+  }
+catch (  RuntimeException runtimeEx) {
+    SerializationException ex=new SerializationException(runtimeEx);
+    ex.addTrace(field.getName() + " (" + type.getName()+ ")");
+    throw ex;
+  }
+}

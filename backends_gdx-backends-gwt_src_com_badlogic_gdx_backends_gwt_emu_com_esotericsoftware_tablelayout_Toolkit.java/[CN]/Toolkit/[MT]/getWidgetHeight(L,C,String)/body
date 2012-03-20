@@ -1,0 +1,6 @@
+{
+  if (value.equals(MIN))   return getMinHeight(widget);
+  if (value.equals(PREF))   return getPrefHeight(widget);
+  if (value.equals(MAX))   return getMaxHeight(widget);
+  return height(layout,value);
+}

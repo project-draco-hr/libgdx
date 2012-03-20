@@ -1,0 +1,6 @@
+{
+  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  ObjectMap<String,Object> typeStyles=styles.get(style.getClass());
+  if (typeStyles == null)   return null;
+  return typeStyles.findKey(style,true);
+}

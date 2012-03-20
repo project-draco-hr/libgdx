@@ -1,0 +1,10 @@
+{
+  Type type=tagToClass.get(tag);
+  if (type != null)   return type;
+  try {
+    return ReflectionCache.forName(tag);
+  }
+ catch (  ClassNotFoundException ex) {
+    throw new SerializationException(ex);
+  }
+}

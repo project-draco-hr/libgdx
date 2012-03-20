@@ -1,0 +1,10 @@
+{
+  if (name == null)   throw new IllegalArgumentException("name cannot be null.");
+  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  ObjectMap<String,Object> typeStyles=styles.get(style.getClass());
+  if (typeStyles == null) {
+    typeStyles=new ObjectMap();
+    styles.put(style.getClass(),typeStyles);
+  }
+  typeStyles.put(name,style);
+}

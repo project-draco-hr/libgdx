@@ -1,0 +1,105 @@
+{
+  if (jsonData == null)   return null;
+  Type type=ReflectionCache.getType(clazz);
+  if (jsonData instanceof OrderedMap) {
+    OrderedMap<String,Object> jsonMap=(OrderedMap)jsonData;
+    String className=typeName == null ? null : (String)jsonMap.remove(typeName);
+    if (className != null) {
+      try {
+        type=ReflectionCache.forName(className);
+      }
+ catch (      ClassNotFoundException ex) {
+        type=tagToClass.get(className);
+        if (type == null)         throw new SerializationException(ex);
+      }
+    }
+    Object object;
+    if (type != null) {
+      Serializer serializer=classToSerializer.get(type);
+      if (serializer != null)       return (T)serializer.read(this,jsonMap,type.getClassOfType());
+      object=newInstance(type);
+      if (object instanceof Serializable) {
+        ((Serializable)object).read(this,jsonMap);
+        return (T)object;
+      }
+      if (object instanceof HashMap) {
+        HashMap result=(HashMap)object;
+        for (        Entry entry : jsonMap.entries())         result.put(entry.key,readValue(elementType,null,entry.value));
+        return (T)result;
+      }
+    }
+ else     object=new OrderedMap();
+    if (object instanceof ObjectMap) {
+      ObjectMap result=(ObjectMap)object;
+      for (      String key : jsonMap.orderedKeys())       result.put(key,readValue(elementType,null,jsonMap.get(key)));
+      return (T)result;
+    }
+    readFields(object,jsonMap);
+    return (T)object;
+  }
+  if (type != null) {
+    Serializer serializer=classToSerializer.get(type);
+    if (serializer != null)     return (T)serializer.read(this,jsonData,type.getClassOfType());
+  }
+  if (jsonData instanceof Array) {
+    Array array=(Array)jsonData;
+    if (type == null || type.isAssignableFrom(ReflectionCache.getType(Array.class))) {
+      Array newArray=new Array(array.size);
+      for (int i=0, n=array.size; i < n; i++)       newArray.add(readValue(elementType,null,array.get(i)));
+      return (T)newArray;
+    }
+    if (type.isAssignableFrom(ReflectionCache.getType(ArrayList.class))) {
+      ArrayList newArray=new ArrayList(array.size);
+      for (int i=0, n=array.size; i < n; i++)       newArray.add(readValue(elementType,null,array.get(i)));
+      return (T)newArray;
+    }
+    if (type.isArray()) {
+      Class componentType=type.getComponentType();
+      if (elementType == null)       elementType=componentType;
+      Object newArray=ReflectionCache.newArray(componentType,array.size);
+      Type arrayType=ReflectionCache.getType(newArray.getClass());
+      for (int i=0, n=array.size; i < n; i++)       arrayType.setArrayElement(newArray,i,readValue(elementType,null,array.get(i)));
+      return (T)newArray;
+    }
+    throw new SerializationException("Unable to convert value to required type: " + jsonData + " ("+ type.getName()+ ")");
+  }
+  Class t=type.getClassOfType();
+  if (jsonData instanceof Float) {
+    Float floatValue=(Float)jsonData;
+    try {
+      if (t == null || t == float.class || t == Float.class)       return (T)(Float)floatValue;
+      if (t == int.class || t == Integer.class)       return (T)(Integer)floatValue.intValue();
+      if (t == long.class || t == Long.class)       return (T)(Long)floatValue.longValue();
+      if (t == double.class || t == Double.class)       return (T)(Double)floatValue.doubleValue();
+      if (t == short.class || t == Short.class)       return (T)(Short)floatValue.shortValue();
+      if (t == byte.class || t == Byte.class)       return (T)(Byte)floatValue.byteValue();
+    }
+ catch (    NumberFormatException ignored) {
+    }
+    jsonData=String.valueOf(jsonData);
+  }
+  if (jsonData instanceof Boolean)   jsonData=String.valueOf(jsonData);
+  if (jsonData instanceof String) {
+    String string=(String)jsonData;
+    if (type == null || t == String.class)     return (T)jsonData;
+    try {
+      if (t == int.class || t == Integer.class)       return (T)Integer.valueOf(string);
+      if (t == float.class || t == Float.class)       return (T)Float.valueOf(string);
+      if (t == long.class || t == Long.class)       return (T)Long.valueOf(string);
+      if (t == double.class || t == Double.class)       return (T)Double.valueOf(string);
+      if (t == short.class || t == Short.class)       return (T)Short.valueOf(string);
+      if (t == byte.class || t == Byte.class)       return (T)Byte.valueOf(string);
+    }
+ catch (    NumberFormatException ignored) {
+    }
+    if (t == boolean.class || t == Boolean.class)     return (T)Boolean.valueOf(string);
+    if (t == char.class || t == Character.class)     return (T)(Character)string.charAt(0);
+    if (type.isEnum()) {
+      Object[] constants=type.getEnumConstants();
+      for (int i=0, n=constants.length; i < n; i++)       if (string.equals(constants[i].toString()))       return (T)constants[i];
+    }
+    if (t == CharSequence.class)     return (T)string;
+    throw new SerializationException("Unable to convert value to required type: " + jsonData + " ("+ type.getName()+ ")");
+  }
+  return null;
+}

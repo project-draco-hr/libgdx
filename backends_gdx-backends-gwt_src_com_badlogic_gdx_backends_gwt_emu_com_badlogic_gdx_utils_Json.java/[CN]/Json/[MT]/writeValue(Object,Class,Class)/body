@@ -1,0 +1,100 @@
+{
+  try {
+    if (value == null) {
+      writer.value(null);
+      return;
+    }
+    Type knownType=ReflectionCache.getType(knownClass);
+    Type actualType=ReflectionCache.getType(value.getClass());
+    if (actualType.isPrimitive() || actualType.getClassOfType() == String.class || actualType.getClassOfType() == Integer.class || actualType.getClassOfType() == Boolean.class || actualType.getClassOfType() == Float.class || actualType.getClassOfType() == Long.class || actualType.getClassOfType() == Double.class || actualType.getClassOfType() == Short.class || actualType.getClassOfType() == Byte.class || actualType.getClassOfType() == Character.class) {
+      writer.value(value);
+      return;
+    }
+    if (value instanceof Serializable) {
+      writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+      ((Serializable)value).write(this);
+      writeObjectEnd();
+      return;
+    }
+    Serializer serializer=classToSerializer.get(actualType);
+    if (serializer != null) {
+      serializer.write(this,value,knownType.getClassOfType());
+      return;
+    }
+    if (value instanceof Array) {
+      if (knownType != null && actualType != knownType)       throw new SerializationException("Serialization of an Array other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
+      writeArrayStart();
+      Array array=(Array)value;
+      for (int i=0, n=array.size; i < n; i++)       writeValue(array.get(i),elementType,null);
+      writeArrayEnd();
+      return;
+    }
+    if (value instanceof Collection) {
+      if (knownType != null && actualType != knownType)       throw new SerializationException("Serialization of a Collection other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
+      writeArrayStart();
+      for (      Object item : (Collection)value)       writeValue(item,elementType,null);
+      writeArrayEnd();
+      return;
+    }
+    if (actualType.isArray()) {
+      if (elementType == null)       elementType=actualType.getComponentType();
+      int length=actualType.getArrayLength(value);
+      writeArrayStart();
+      for (int i=0; i < length; i++)       writeValue(actualType.getArrayElement(value,i),elementType,null);
+      writeArrayEnd();
+      return;
+    }
+    if (value instanceof OrderedMap) {
+      if (knownType == null)       knownType=ReflectionCache.getType(OrderedMap.class);
+      writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+      OrderedMap map=(OrderedMap)value;
+      for (      Object key : map.orderedKeys()) {
+        writer.name(convertToString(key));
+        writeValue(map.get(key),elementType,null);
+      }
+      writeObjectEnd();
+      return;
+    }
+    if (value instanceof ArrayMap) {
+      if (knownType == null)       knownType=ReflectionCache.getType(ArrayMap.class);
+      writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+      ArrayMap map=(ArrayMap)value;
+      for (int i=0, n=map.size; i < n; i++) {
+        writer.name(convertToString(map.keys[i]));
+        writeValue(map.values[i],elementType,null);
+      }
+      writeObjectEnd();
+      return;
+    }
+    if (value instanceof ObjectMap) {
+      if (knownType == null)       knownType=ReflectionCache.getType(OrderedMap.class);
+      writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+      for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
+        writer.name(convertToString(entry.key));
+        writeValue(entry.value,elementType,null);
+      }
+      writeObjectEnd();
+      return;
+    }
+    if (value instanceof Map) {
+      if (knownType == null)       knownType=ReflectionCache.getType(OrderedMap.class);
+      writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+      for (      Map.Entry entry : ((Map<?,?>)value).entrySet()) {
+        writer.name(convertToString(entry.getKey()));
+        writeValue(entry.getValue(),elementType,null);
+      }
+      writeObjectEnd();
+      return;
+    }
+    if (actualType.isEnum()) {
+      writer.value(value);
+      return;
+    }
+    writeObjectStart(actualType.getClassOfType(),knownType.getClassOfType());
+    writeFields(value);
+    writeObjectEnd();
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
+}

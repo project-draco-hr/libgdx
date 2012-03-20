@@ -1,0 +1,9 @@
+{
+  try {
+    writer.object();
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
+  if (knownType == null || knownType != actualType)   writeType(actualType);
+}

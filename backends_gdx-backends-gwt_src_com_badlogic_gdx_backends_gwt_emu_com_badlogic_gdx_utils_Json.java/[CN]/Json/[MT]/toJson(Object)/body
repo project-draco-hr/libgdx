@@ -1,0 +1,3 @@
+{
+  return toJson(object,object == null ? null : object.getClass(),(Class)null);
+}

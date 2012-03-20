@@ -1,0 +1,28 @@
+{
+  if (memberType.getClassOfType() == String.class || memberType.getClassOfType() == CharSequence.class)   return value;
+  try {
+    if (memberType.getClassOfType() == int.class || memberType.getClassOfType() == Integer.class)     return Integer.valueOf(value);
+    if (memberType.getClassOfType() == float.class || memberType.getClassOfType() == Float.class)     return Float.valueOf(value);
+    if (memberType.getClassOfType() == long.class || memberType.getClassOfType() == Long.class)     return Long.valueOf(value);
+    if (memberType.getClassOfType() == double.class || memberType.getClassOfType() == Double.class)     return Double.valueOf(value);
+  }
+ catch (  NumberFormatException ignored) {
+  }
+  if (memberType.getClassOfType() == boolean.class || memberType.getClassOfType() == Boolean.class)   return Boolean.valueOf(value);
+  if (memberType.getClassOfType() == char.class || memberType.getClassOfType() == Character.class)   return value.charAt(0);
+  if (memberType.getClassOfType() == short.class || memberType.getClassOfType() == Short.class)   return Short.valueOf(value);
+  if (memberType.getClassOfType() == byte.class || memberType.getClassOfType() == Byte.class)   return Byte.valueOf(value);
+  try {
+    Field field=getField(memberType,value);
+    if (field != null && memberType == field.getType())     return field.get(null);
+  }
+ catch (  Exception ignored) {
+  }
+  try {
+    Field field=getField(ReflectionCache.getType(parentObject.getClass()),value);
+    if (field != null && memberType == field.getType())     return field.get(null);
+  }
+ catch (  Exception ignored) {
+  }
+  return null;
+}

@@ -1,0 +1,19 @@
+{
+  p("public Object newInstance (Type type) {");
+  for (  JType type : types) {
+    if (type instanceof JClassType) {
+      JClassType clazzType=(JClassType)type;
+      if (clazzType.isDefaultInstantiable() && !(clazzType instanceof JArrayType) && !(clazzType instanceof JEnumType)) {
+        p("if(type.getName().equals(\"" + type.getErasedType().getQualifiedSourceName() + "\")) return new "+ type.getErasedType().getQualifiedSourceName()+ "();");
+      }
+ else {
+        logger.log(Type.INFO,"No public default constructor for '" + type.getQualifiedSourceName() + "', or type is an array, enum, abstract class or interface type");
+      }
+    }
+ else {
+      logger.log(Type.INFO,"No public default constructor for primitive type '" + type.getQualifiedSourceName() + "'");
+    }
+  }
+  p("return null;");
+  p("}");
+}

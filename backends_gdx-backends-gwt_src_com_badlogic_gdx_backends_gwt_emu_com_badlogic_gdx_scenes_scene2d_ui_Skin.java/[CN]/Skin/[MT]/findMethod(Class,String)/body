@@ -1,0 +1,8 @@
+{
+  Method[] methods=ReflectionCache.getType(type).getMethods();
+  for (int i=0, n=methods.length; i < n; i++) {
+    Method method=methods[i];
+    if (method.getName().equals(name))     return method;
+  }
+  return null;
+}

@@ -1,0 +1,58 @@
+{
+  boolean strip;
+  if (limit < 0) {
+    strip=false;
+    limit=Integer.MAX_VALUE;
+  }
+ else   if (limit == 0) {
+    strip=true;
+    limit=Integer.MAX_VALUE;
+  }
+ else {
+    strip=false;
+  }
+  List<CharSequence> list=new LinkedList();
+  int index=0;
+  int trailing=0;
+  int patternLength=pattern.length();
+  while (index < input.length() && list.size() < limit - 1) {
+    int i;
+    if (patternLength == 0) {
+      if (list.size() == 0) {
+        i=0;
+      }
+ else {
+        i=index + 1;
+      }
+    }
+ else {
+      i=indexOf(input,pattern,index);
+    }
+    if (i >= 0) {
+      if (patternLength != 0 && i == index) {
+        ++trailing;
+      }
+ else {
+        trailing=0;
+      }
+      list.add(input.subSequence(index,i));
+      index=i + patternLength;
+    }
+ else {
+      break;
+    }
+  }
+  if (strip && index > 0 && index == input.length()) {
+    ++trailing;
+  }
+ else {
+    trailing=0;
+  }
+  list.add(input.subSequence(index,input.length()));
+  String[] result=new String[list.size() - trailing];
+  int i=0;
+  for (Iterator<CharSequence> it=list.iterator(); it.hasNext() && i < result.length; ++i) {
+    result[i]=it.next().toString();
+  }
+  return result;
+}

@@ -1,0 +1,3 @@
+{
+  return "Method [name=" + name + ", enclosingType="+ enclosingType+ ", returnType="+ returnType+ ", isAbstract="+ isAbstract+ ", isFinal="+ isFinal+ ", isStatic="+ isStatic+ ", isNative="+ isNative+ ", isDefaultAccess="+ isDefaultAccess+ ", isPrivate="+ isPrivate+ ", isProtected="+ isProtected+ ", isPublic="+ isPublic+ ", isVarArgs="+ isVarArgs+ ", isMethod="+ isMethod+ ", isConstructor="+ isConstructor+ ", parameters="+ Arrays.toString(parameters)+ ", accessible="+ accessible+ "]";
+}

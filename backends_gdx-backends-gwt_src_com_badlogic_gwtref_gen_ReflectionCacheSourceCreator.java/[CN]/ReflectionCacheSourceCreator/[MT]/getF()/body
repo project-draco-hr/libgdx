@@ -1,0 +1,9 @@
+{
+  p("public Object get(Field field, Object obj) throws IllegalAccessException {");
+  for (  SetterGetterStub stub : setterGetterStubs) {
+    if (stub.enclosingType == null || stub.type == null || stub.unused)     continue;
+    p("   if(field.getter.equals(\"" + stub.getter + "\")) return "+ stub.getter+ "(("+ stub.enclosingType+ ")obj);");
+  }
+  p("   return null;");
+  p("}");
+}

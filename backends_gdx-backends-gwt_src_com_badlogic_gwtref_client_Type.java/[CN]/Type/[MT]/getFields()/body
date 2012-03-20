@@ -1,0 +1,14 @@
+{
+  ArrayList<Field> allFields=new ArrayList<Field>();
+  Type t=this;
+  while (t != null) {
+    Field[] declFields=t.getDeclaredFields();
+    if (declFields != null) {
+      for (      Field f : declFields) {
+        if (f.isPublic)         allFields.add(f);
+      }
+    }
+    t=t.getSuperclass();
+  }
+  return allFields.toArray(new Field[allFields.size()]);
+}

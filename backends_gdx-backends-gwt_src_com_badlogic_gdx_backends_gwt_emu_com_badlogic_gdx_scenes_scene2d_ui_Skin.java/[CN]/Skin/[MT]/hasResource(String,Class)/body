@@ -1,0 +1,7 @@
+{
+  ObjectMap<String,Object> typeResources=resources.get(type);
+  if (typeResources == null)   return false;
+  Object resource=typeResources.get(name);
+  if (resource == null)   return false;
+  return true;
+}

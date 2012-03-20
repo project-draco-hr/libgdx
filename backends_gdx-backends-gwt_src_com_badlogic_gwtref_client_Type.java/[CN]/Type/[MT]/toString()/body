@@ -1,0 +1,3 @@
+{
+  return "Type [name=" + name + ",\n clazz="+ clazz+ ",\n superClass="+ superClass+ ",\n assignables="+ assignables+ ",\n isAbstract="+ isAbstract+ ",\n isInterface="+ isInterface+ ",\n isPrimitive="+ isPrimitive+ ",\n isEnum="+ isEnum+ ",\n isArray="+ isArray+ ",\n isMemberClass="+ isMemberClass+ ",\n isStatic="+ isStatic+ ",\n fields="+ Arrays.toString(fields)+ ",\n methods="+ Arrays.toString(methods)+ ",\n constructor="+ constructor+ ",\n componentType="+ componentType+ ",\n enumConstants="+ Arrays.toString(enumConstants)+ "]";
+}

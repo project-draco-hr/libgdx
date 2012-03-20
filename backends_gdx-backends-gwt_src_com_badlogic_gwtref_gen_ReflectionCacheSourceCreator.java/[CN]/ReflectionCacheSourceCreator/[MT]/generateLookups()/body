@@ -1,0 +1,45 @@
+{
+  p("Map<String, Type> types = new HashMap<String, Type>();");
+  TypeOracle typeOracle=context.getTypeOracle();
+  JPackage[] packages=typeOracle.getPackages();
+  for (  JPackage p : packages) {
+    for (    JClassType t : p.getTypes()) {
+      gatherTypes(t.getErasedType(),types);
+    }
+  }
+  gatherTypes(typeOracle.findType("java.util.ArrayList").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.util.HashMap").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.util.Map").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.String").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Boolean").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Byte").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Character").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Short").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Integer").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Float").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Double").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Object").getErasedType(),types);
+  int id=0;
+  for (  JType t : types) {
+    String typeGen=createTypeGenerator(t);
+    p("public void c" + (id++) + "() {");
+    p(typeGen);
+    p("}\n");
+  }
+  p("public " + simpleName + "() {");
+  for (int i=0; i < id; i++) {
+    p("c" + i + "();");
+  }
+  p("}");
+  for (  SetterGetterStub stub : setterGetterStubs) {
+    String stubSource=generateSetterGetterStub(stub);
+    if (stubSource.equals(""))     stub.unused=true;
+    p(stubSource);
+  }
+  for (  MethodStub stub : methodStubs) {
+    String stubSource=generateMethodStub(stub);
+    if (stubSource.equals(""))     stub.unused=true;
+    p(stubSource);
+  }
+  logger.log(Type.INFO,types.size() + " types reflected");
+}

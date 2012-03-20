@@ -1,0 +1,15 @@
+{
+  p("public Object newArray (Class componentType, int size) {");
+  for (  JType type : types) {
+    if (type.getQualifiedSourceName().equals("void"))     continue;
+    if (type.getQualifiedSourceName().endsWith("Void"))     continue;
+    String arrayType=type.getErasedType().getQualifiedSourceName() + "[size]";
+    if (arrayType.contains("[]")) {
+      arrayType=type.getErasedType().getQualifiedSourceName();
+      arrayType=arrayType.replaceFirst("\\[\\]","[size]") + "[]";
+    }
+    p("   if(componentType.getName().equals(\"" + type.getQualifiedSourceName() + "\")) return new "+ arrayType+ ";");
+  }
+  p("	return null;");
+  p("}");
+}

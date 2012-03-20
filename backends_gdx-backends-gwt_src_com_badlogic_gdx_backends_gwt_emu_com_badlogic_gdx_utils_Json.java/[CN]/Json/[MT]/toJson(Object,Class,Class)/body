@@ -1,0 +1,5 @@
+{
+  StringWriter buffer=new StringWriter();
+  toJson(object,knownType,elementType,buffer);
+  return buffer.toString();
+}

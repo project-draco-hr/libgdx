@@ -1,0 +1,8 @@
+{
+  removeChild((T)layout.table,(C)cell.widget);
+  layout.widgetToCell.remove(cell.widget);
+  cell.widget=widget;
+  if (cell.name != null)   layout.nameToWidget.put(cell.name,widget);
+  layout.widgetToCell.put(widget,cell);
+  addChild((T)layout.table,widget,null);
+}

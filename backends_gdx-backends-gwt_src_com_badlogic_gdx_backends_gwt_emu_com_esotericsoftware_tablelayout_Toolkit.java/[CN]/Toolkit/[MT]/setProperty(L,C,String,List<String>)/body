@@ -1,0 +1,21 @@
+{
+  try {
+    invokeMethod(layout,object,name,values);
+  }
+ catch (  NoSuchMethodException ex1) {
+    try {
+      invokeMethod(layout,object,"set" + Character.toUpperCase(name.charAt(0)) + name.substring(1),values);
+    }
+ catch (    NoSuchMethodException ex2) {
+      try {
+        Field field=ReflectionCache.getType(object.getClass()).getField(name);
+        Object value=convertType(layout,object,field.getType(),name,values.get(0));
+        if (value != null)         field.set(object,value);
+ else         throw ex1;
+      }
+ catch (      Exception ex3) {
+        throw new RuntimeException("No method, bean property, or field found: " + name + "\nClass: "+ object.getClass()+ "\nValues: "+ values);
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  p("public void set(Field field, Object obj, Object value) throws IllegalAccessException {");
+  for (  SetterGetterStub stub : setterGetterStubs) {
+    if (stub.enclosingType == null || stub.type == null || stub.isFinal || stub.unused)     continue;
+    p("   if(field.setter.equals(\"" + stub.setter + "\")) "+ stub.setter+ "(("+ stub.enclosingType+ ")obj, value);");
+  }
+  p("}");
+}

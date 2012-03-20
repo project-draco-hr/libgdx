@@ -1,0 +1,9 @@
+{
+  try {
+    writer.name(name);
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
+  writeValue(value,knownType,elementType);
+}

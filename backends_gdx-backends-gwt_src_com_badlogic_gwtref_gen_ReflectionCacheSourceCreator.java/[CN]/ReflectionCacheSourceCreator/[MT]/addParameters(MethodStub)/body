@@ -1,0 +1,12 @@
+{
+  pn("(" + stub.enclosingType + ")obj"+ (stub.parameterTypes.size() > 0 ? "," : ""));
+  for (int i=0; i < stub.parameterTypes.size(); i++) {
+    String paramType=stub.parameterTypes.get(i);
+    if (isPrimitive(paramType)) {
+      pn(castPrimitive(paramType,"params[" + i + "]") + (i < stub.parameterTypes.size() - 1 ? ", " : ""));
+    }
+ else {
+      pn("(" + stub.parameterTypes.get(i) + ")params["+ i+ "]"+ (i < stub.parameterTypes.size() - 1 ? ", " : ""));
+    }
+  }
+}

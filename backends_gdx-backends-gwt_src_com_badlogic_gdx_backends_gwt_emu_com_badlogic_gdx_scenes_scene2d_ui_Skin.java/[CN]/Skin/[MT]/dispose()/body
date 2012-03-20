@@ -1,0 +1,7 @@
+{
+  texture.dispose();
+  for (  Entry<Class,ObjectMap<String,Object>> entry : resources.entries()) {
+    if (!ReflectionCache.getType(entry.key).isAssignableFrom(ReflectionCache.getType(Disposable.class)))     continue;
+    for (    Object resource : entry.value.values())     ((Disposable)resource).dispose();
+  }
+}

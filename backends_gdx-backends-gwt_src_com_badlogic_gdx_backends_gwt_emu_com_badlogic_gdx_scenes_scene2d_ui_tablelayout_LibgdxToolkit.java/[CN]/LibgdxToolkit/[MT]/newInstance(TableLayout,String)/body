@@ -1,0 +1,10 @@
+{
+  try {
+    return super.newInstance(layout,className);
+  }
+ catch (  Exception ex) {
+    if (layout.skin != null) {
+    }
+    throw ex;
+  }
+}

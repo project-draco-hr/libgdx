@@ -1,0 +1,14 @@
+{
+  ArrayList<Method> allMethods=new ArrayList<Method>();
+  Type t=this;
+  while (t != null) {
+    Method[] declMethods=t.getDeclaredMethods();
+    if (declMethods != null) {
+      for (      Method m : declMethods) {
+        if (m.isPublic() && m.match(name,parameterTypes))         return m;
+      }
+    }
+    t=t.getSuperclass();
+  }
+  throw new NoSuchMethodException();
+}

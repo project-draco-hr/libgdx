@@ -1,0 +1,15 @@
+{
+  p("public void setArrayElement(Type type, Object obj, int i, Object value) {");
+  for (  JType type : types) {
+    if (!(type instanceof JArrayType))     continue;
+    String value=((JArrayType)type).getComponentType().getErasedType().getQualifiedSourceName();
+    if (isPrimitive(value)) {
+      value=castPrimitive(value,"value");
+    }
+ else {
+      value="(" + value + ")value";
+    }
+    p("   if(type.getName().equals(\"" + type.getQualifiedSourceName() + "\")) (("+ type.getQualifiedSourceName()+ ")obj)[i] = "+ value+ ";");
+  }
+  p("}");
+}

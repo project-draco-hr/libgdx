@@ -21,7 +21,8 @@
   excludes.add("AtomicQueue.java");
   excludes.add("LittleEndianInputStream.java");
   excludes.add("PauseableThread.java");
-  gatherJavaFiles(new FileHandle("src/com/badlogic/gdx/scenes/scene2d/ui"),excludes,excludesHandles,true);
+  excludes.add("DesktopClipboard.java");
+  excludes.add("AndroidClipboard.java");
   Set<String> includes=new HashSet<String>();
   Map<String,FileHandle> includesHandles=new TreeMap<String,FileHandle>();
   System.out.println("Includes -------------------------------------------------");
@@ -39,6 +40,7 @@
   writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
   XmlWriter builder=new XmlWriter(writer);
   builder.element("module").attribute("rename-to","com.badlogic.gdx");
+  builder.element("inherits").attribute("name","com.esotericsoftware.tablelayout").pop();
   builder.element("source").attribute("path","gdx");
   for (  String include : includesHandles.keySet()) {
     String name=includesHandles.get(include).path().replace("\\","/").replace("src/com/badlogic/gdx/","");

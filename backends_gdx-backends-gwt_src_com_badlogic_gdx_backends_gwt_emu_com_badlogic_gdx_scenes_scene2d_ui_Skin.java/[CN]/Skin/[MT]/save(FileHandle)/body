@@ -1,0 +1,11 @@
+{
+  String text=getJsonLoader(null).prettyPrint(this,130);
+  Writer writer=skinFile.writer(false);
+  try {
+    writer.write(text);
+    writer.close();
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+}

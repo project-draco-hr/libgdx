@@ -1,0 +1,14 @@
+{
+  try {
+    Field field=type.getField(name);
+    if (field != null)     return field;
+  }
+ catch (  Exception ignored) {
+  }
+  while (type != null && type.getClassOfType() != Object.class) {
+    Field[] fields=type.getDeclaredFields();
+    for (int i=0, n=fields.length; i < n; i++)     if (fields[i].getName().equalsIgnoreCase(name))     return fields[i];
+    type=type.getSuperclass();
+  }
+  return null;
+}

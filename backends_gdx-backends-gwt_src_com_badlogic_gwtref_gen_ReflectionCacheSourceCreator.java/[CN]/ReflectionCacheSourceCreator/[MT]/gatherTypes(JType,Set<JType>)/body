@@ -1,0 +1,64 @@
+{
+  nesting++;
+  if (type == null) {
+    nesting--;
+    return;
+  }
+  if (type.getQualifiedSourceName().contains("-")) {
+    nesting--;
+    return;
+  }
+  if (!isVisible(type)) {
+    nesting--;
+    return;
+  }
+  String name=type.getQualifiedSourceName();
+  if (!(name.contains("com.badlogic.gdx.scenes.scene2d.ui") || name.contains("com.badlogic.gdx.graphics.g2d.TextureRegion") || name.contains("com.badlogic.gdx.graphics.g2d.BitmapFont")|| name.contains("com.badlogic.gdx.graphics.g2d.NinePatch")|| name.contains("com.badlogic.gdx.graphics.Color")|| name.contains("com.badlogic.gdx.utils.Array")|| name.contains("com.badlogic.gdx.utils.ObjectMap")|| name.contains("com.badlogic.gdx.utils.OrderedMap")|| name.contains("java.util.ArrayList")|| name.contains("java.util.Map")|| name.contains("java.util.HashMap")|| name.contains("java.lang.String")|| name.contains("java.lang.Boolean")|| name.contains("java.lang.Byte")|| name.contains("java.lang.Short")|| name.contains("java.lang.Character")|| name.contains("java.lang.Integer")|| name.contains("java.lang.Float")|| name.contains("java.lang.Double")|| name.contains("java.lang.Object")|| !name.contains("."))) {
+    nesting--;
+    return;
+  }
+  if (types.contains(type.getErasedType())) {
+    nesting--;
+    return;
+  }
+  types.add(type.getErasedType());
+  out(type.getErasedType().getQualifiedSourceName(),nesting);
+  if (type instanceof JPrimitiveType) {
+    nesting--;
+    return;
+  }
+ else {
+    JClassType c=(JClassType)type;
+    JField[] fields=c.getFields();
+    if (fields != null) {
+      for (      JField field : fields) {
+        gatherTypes(field.getType().getErasedType(),types);
+      }
+    }
+    gatherTypes(c.getSuperclass(),types);
+    JClassType[] interfaces=c.getImplementedInterfaces();
+    if (interfaces != null) {
+      for (      JClassType i : interfaces) {
+        gatherTypes(i.getErasedType(),types);
+      }
+    }
+    JMethod[] methods=c.getMethods();
+    if (methods != null) {
+      for (      JMethod m : methods) {
+        gatherTypes(m.getReturnType().getErasedType(),types);
+        if (m.getParameterTypes() != null) {
+          for (          JType p : m.getParameterTypes()) {
+            gatherTypes(p.getErasedType(),types);
+          }
+        }
+      }
+    }
+    JClassType[] inner=c.getNestedTypes();
+    if (inner != null) {
+      for (      JClassType i : inner) {
+        gatherTypes(i.getErasedType(),types);
+      }
+    }
+  }
+  nesting--;
+}

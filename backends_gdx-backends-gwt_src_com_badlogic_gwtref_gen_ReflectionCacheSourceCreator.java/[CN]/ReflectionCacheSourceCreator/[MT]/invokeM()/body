@@ -1,0 +1,32 @@
+{
+  p("public Object invoke(Method m, Object obj, Object[] params) {");
+  for (  MethodStub stub : methodStubs) {
+    if (stub.enclosingType == null)     continue;
+    if (stub.enclosingType.contains("[]"))     continue;
+    if (stub.returnType == null)     continue;
+    if (stub.unused)     continue;
+    boolean paramsOk=true;
+    for (    String paramType : stub.parameterTypes) {
+      if (paramType == null) {
+        paramsOk=false;
+        break;
+      }
+    }
+    if (!paramsOk)     continue;
+    p("   if(m.methodId.equals(\"" + stub.methodId + "\")) {");
+    if (stub.returnType.equals("void")) {
+      pn("      " + stub.methodId + "(");
+      addParameters(stub);
+      p(");");
+      p("      return null;");
+    }
+ else {
+      pn("      return " + stub.methodId + "(");
+      addParameters(stub);
+      pn(");");
+    }
+    p("   }");
+  }
+  p("   return null;");
+  p("}");
+}

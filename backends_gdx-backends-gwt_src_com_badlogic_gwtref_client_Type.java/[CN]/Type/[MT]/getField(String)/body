@@ -1,0 +1,13 @@
+{
+  Type t=this;
+  while (t != null) {
+    Field[] declFields=t.getDeclaredFields();
+    if (declFields != null) {
+      for (      Field f : declFields) {
+        if (f.isPublic && f.name.equals(name))         return f;
+      }
+    }
+    t=t.getSuperclass();
+  }
+  return null;
+}
