@@ -1,12 +1,11 @@
 {
   if (material.shader == null)   material.shader=materialShaderHandler.getShader(material);
-  if (material.shader == currentShader)   return;
+  if (material.shader == currentShader)   return false;
   currentShader=material.shader;
   currentShader.begin();
   lightManager.applyGlobalLights(currentShader);
-  lightManager.calculateAndApplyLightsToModel(center,currentShader);
+  lightManager.applyLights(currentShader);
   currentShader.setUniformMatrix("u_projectionViewMatrix",cam.combined);
   currentShader.setUniformf("camPos",cam.position.x,cam.position.y,cam.position.z);
-  currentShader.setUniformMatrix("u_normalMatrix",normalMatrix.set(matrix),false);
-  currentShader.setUniformMatrix("u_modelMatrix",matrix,false);
+  return true;
 }

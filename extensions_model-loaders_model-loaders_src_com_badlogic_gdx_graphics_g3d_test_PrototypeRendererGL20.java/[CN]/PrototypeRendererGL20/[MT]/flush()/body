@@ -1,20 +1,10 @@
 {
-  drawing=false;
-  for (int i=0; i < animatedModelQueue.size; i++) {
-    final AnimatedModelInstance instance=animatedModelInstances.items[i];
-    final String name=instance.getAnimation();
-    final float time=instance.getAnimationTime();
-    boolean looping=instance.isLooping();
-    final AnimatedModel model=animatedModelQueue.items[i];
-    model.setAnimation(name,time,looping);
-    modelQueue.add(model);
-  }
-  animatedModelQueue.clear();
-  animatedModelInstances.clear();
   for (int i=0; i < modelQueue.size; i++) {
-    final StillModelInstance instance=stillModelInstances.items[i];
+    final StillModelInstance instance=modelInstances.items[i];
     final Matrix4 modelMatrix=instance.getTransform();
     final Vector3 center=instance.getSortCenter();
+    lightManager.calculateLights(center.x,center.y,center.z);
+    boolean matrixChanged=true;
     final Model model=modelQueue.items[i];
     final SubMesh subMeshes[]=model.getSubMeshes();
     final Material materials[]=instance.getMaterials();
@@ -22,7 +12,10 @@
     for (int j=0; j < len; j++) {
       final SubMesh subMesh=subMeshes[j];
       final Material material=materials != null ? materials[j] : subMesh.material;
-      bindShader(material,modelMatrix,center);
+      if (bindShader(material) || matrixChanged) {
+        currentShader.setUniformMatrix("u_normalMatrix",normalMatrix.set(modelMatrix),false);
+        currentShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
+      }
       if (material != currentMaterial) {
         currentMaterial=material;
         currentMaterial.bind(currentShader);
@@ -36,5 +29,6 @@
     currentShader=null;
   }
   modelQueue.clear();
-  stillModelInstances.clear();
+  modelInstances.clear();
+  drawing=false;
 }

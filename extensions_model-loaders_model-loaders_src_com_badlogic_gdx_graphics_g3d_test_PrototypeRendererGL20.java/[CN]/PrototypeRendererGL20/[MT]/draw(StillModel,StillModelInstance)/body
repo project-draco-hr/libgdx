@@ -1,4 +1,5 @@
 {
+  if (cam != null)   if (!cam.frustum.sphereInFrustum(instance.getSortCenter(),instance.getBoundingSphereRadius()))   return;
   modelQueue.add(model);
-  stillModelInstances.add(instance);
+  modelInstances.add(instance);
 }
