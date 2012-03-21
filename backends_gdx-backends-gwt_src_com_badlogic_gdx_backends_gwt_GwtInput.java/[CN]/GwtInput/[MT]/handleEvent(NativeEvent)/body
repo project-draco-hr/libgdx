@@ -59,4 +59,5 @@
     this.pressedKeys.remove(code);
     if (processor != null)     processor.keyUp(code);
   }
+  if (hasFocus)   e.stopPropagation();
 }

@@ -1,3 +1,3 @@
 {
-  Gdx.app.log("Test","Thread=" + Thread.currentThread().getId() + ", app resized: "+ width+ "x"+ height+ ", Graphics says: "+ Gdx.graphics.getWidth()+ "x"+ Gdx.graphics.getHeight());
+  Gdx.app.log("Test","app resized: " + width + "x"+ height+ ", Graphics says: "+ Gdx.graphics.getWidth()+ "x"+ Gdx.graphics.getHeight());
 }

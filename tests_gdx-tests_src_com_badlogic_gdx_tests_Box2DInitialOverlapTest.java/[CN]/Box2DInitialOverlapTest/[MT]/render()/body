@@ -1,7 +1,0 @@
-{
-  if (i < 30) {
-    world.step(1.0f / 75.0f,3,3);
-    System.out.println("b1 (" + b1.getWorldCenter().x + ","+ b1.getWorldCenter().y+ ")"+ " b2 ("+ b2.getWorldCenter().x+ ","+ b2.getWorldCenter().y+ ")");
-    ++i;
-  }
-}

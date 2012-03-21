@@ -1,11 +1,10 @@
 {
   batch=new SpriteBatch();
-  renderer=new ImmediateModeRenderer10();
+  renderer=new ShapeRenderer();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   skin.getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
   stage=new Stage(0,0,false);
   Gdx.input.setInputProcessor(stage);
-  Gdx.gl10.glColor4f(1,0,0,0);
   Table table=new Table();
   stage.addActor(table);
   table.x=200;

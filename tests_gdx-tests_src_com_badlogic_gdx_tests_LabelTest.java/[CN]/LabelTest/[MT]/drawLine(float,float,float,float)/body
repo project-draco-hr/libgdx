@@ -1,6 +1,6 @@
 {
-  renderer.begin(batch.getProjectionMatrix(),GL10.GL_LINES);
-  renderer.vertex(x1,y1,0);
-  renderer.vertex(x2,y2,0);
+  renderer.setProjectionMatrix(batch.getProjectionMatrix());
+  renderer.begin(ShapeType.Line);
+  renderer.line(x1,y1,x2,y2);
   renderer.end();
 }

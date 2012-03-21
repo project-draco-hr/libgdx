@@ -7,5 +7,5 @@
   groundBody=world.createBody(bodyDef);
   createWorld(world);
   batch=new SpriteBatch();
-  font=new BitmapFont();
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
 }

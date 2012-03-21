@@ -4,11 +4,11 @@
   new SharedLibraryLoader("../../extensions/gdx-stb-truetype/libs/gdx-stb-truetype-natives.jar").load("gdx-stb-truetype");
   new SharedLibraryLoader("../../extensions/gdx-image/libs/gdx-image-natives.jar").load("gdx-image");
   new SharedLibraryLoader("../../extensions/gdx-freetype/libs/gdx-freetype-natives.jar").load("gdx-freetype");
-  GdxTest test=new Box2DTest();
+  GdxTest test=new Box2DTestCollection();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.width=800;
   config.height=480;
-  config.useGL20=test.needsGL20();
+  config.useGL20=true;
   config.vSyncEnabled=true;
   config.resizable=true;
   new LwjglApplication(test,config);

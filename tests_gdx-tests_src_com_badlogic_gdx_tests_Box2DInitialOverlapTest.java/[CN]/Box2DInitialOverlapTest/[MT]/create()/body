@@ -1,7 +1,0 @@
-{
-  world=new World(new Vector2(0,0),true);
-  world.step(1.0f / 75.0f,3,3);
-  b1=makeBody();
-  b2=makeBody();
-  b1.setTransform(new Vector2(0.1f,0f),0);
-}
