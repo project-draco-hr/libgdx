@@ -3,7 +3,7 @@ switch (type) {
 case Internal:
     if (file.exists())     return true;
 case Classpath:
-  return Thread.currentThread().getContextClassLoader().getResource("/" + file.getPath().replace('\\','/')) != null;
+  return FileHandle.class.getResource("/" + file.getPath().replace('\\','/')) != null;
 }
 return file().exists();
 }
