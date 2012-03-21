@@ -1,6 +1,4 @@
 {
-  refCount--;
-  if (refCount > 0)   return;
   if (meshes.get(Gdx.app) != null)   meshes.get(Gdx.app).remove(this);
   vertices.dispose();
   indices.dispose();
