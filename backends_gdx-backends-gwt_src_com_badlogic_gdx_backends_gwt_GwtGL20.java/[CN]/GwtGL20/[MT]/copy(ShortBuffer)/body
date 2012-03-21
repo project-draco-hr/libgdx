@@ -4,5 +4,5 @@
   for (int i=buffer.position(), j=0; i < buffer.limit(); i++, j++) {
     shortBuffer.set(j,array[i]);
   }
-  return shortBuffer;
+  return shortBuffer.subarray(0,buffer.remaining());
 }
