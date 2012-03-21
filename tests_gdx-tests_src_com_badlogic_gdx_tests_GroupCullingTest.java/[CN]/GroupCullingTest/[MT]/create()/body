@@ -3,7 +3,7 @@
   Gdx.input.setInputProcessor(stage);
   root=new Table();
   stage.addActor(root);
-  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   Table labels=new Table();
   root.add(new ScrollPane(labels,skin)).expand().fill();
   root.row();

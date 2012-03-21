@@ -8,7 +8,8 @@
 );
   spriteBatch=new SpriteBatch();
   spriteBatch.setProjectionMatrix(new Matrix4().setToOrtho(0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),0,0,1));
-  logoSprite=new Sprite(new Texture(Gdx.files.internal("data/badlogic.jpg")));
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  logoSprite=new Sprite(texture);
   logoSprite.flip(false,true);
   logoSprite.setPosition(0,320 - 256);
   logoSprite.setColor(1,1,1,0.5f);

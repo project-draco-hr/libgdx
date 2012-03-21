@@ -1,6 +1,6 @@
 {
   stage=new Stage(480,320,true);
-  Texture texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),false);
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),false);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   img=new Image(new TextureRegion(texture));
   img.width=img.height=100;
@@ -20,4 +20,7 @@
   stage.addActor(img);
   stage.addActor(img2);
   stage.addActor(img3);
+  img.action(Sequence.$());
+  img2.action(Parallel.$(Sequence.$(),MoveBy.$(100,0,1)));
+  img3.action(Sequence.$(Parallel.$(MoveBy.$(100,200,2))));
 }

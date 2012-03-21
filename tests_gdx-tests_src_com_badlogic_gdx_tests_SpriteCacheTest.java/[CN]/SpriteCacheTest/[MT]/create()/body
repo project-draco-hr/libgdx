@@ -1,6 +1,6 @@
 {
   spriteCache=new SpriteCache(1000,true);
-  Texture texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
+  texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   Pixmap pixmap=new Pixmap(32,32,Format.RGBA8888);
   pixmap.setColor(1,1,0,0.5f);

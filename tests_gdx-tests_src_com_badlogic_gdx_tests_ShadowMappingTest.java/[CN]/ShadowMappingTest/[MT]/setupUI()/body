@@ -1,6 +1,6 @@
 {
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
-  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   Label label=new Label("Camera:",skin.getStyle(LabelStyle.class));
   SelectBox cameraCombo=new SelectBox(new String[]{"Scene","Light"},skin.getStyle(SelectBoxStyle.class));
   Label label2=new Label("Shader",skin.getStyle(LabelStyle.class),"cameraCombo");

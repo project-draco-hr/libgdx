@@ -1,6 +1,6 @@
 {
   skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
-  TextureRegion image2=new TextureRegion(new Texture(Gdx.files.internal("data/badlogic.jpg")));
+  image2=new TextureRegion(new Texture(Gdx.files.internal("data/badlogic.jpg")));
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
   Gdx.input.setInputProcessor(ui);
   root=new Table();

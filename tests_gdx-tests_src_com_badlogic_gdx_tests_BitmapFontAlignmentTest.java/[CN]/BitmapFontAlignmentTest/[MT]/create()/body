@@ -7,7 +7,8 @@
   }
 );
   spriteBatch=new SpriteBatch();
-  logoSprite=new Sprite(new Texture(Gdx.files.internal("data/badlogic.jpg"),false));
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  logoSprite=new Sprite(texture);
   logoSprite.setColor(1,1,1,0.6f);
   logoSprite.setBounds(50,100,400,100);
   font=new BitmapFont(Gdx.files.getFileHandle("data/verdana39.fnt",FileType.Internal),Gdx.files.getFileHandle("data/verdana39.png",FileType.Internal),false);

@@ -1,7 +1,7 @@
 {
   stage=new Stage(480,320,true);
   Action complexAction=Forever.$(Sequence.$(Parallel.$(RotateBy.$(180,2),ScaleTo.$(1.4f,1.4f,2),FadeTo.$(0.7f,2)),Parallel.$(RotateBy.$(180,2),ScaleTo.$(1.0f,1.0f,2),FadeTo.$(1.0f,2))));
-  Texture texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),false);
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),false);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   final Image img1=new Image(new TextureRegion(texture));
   img1.width=img1.height=100;

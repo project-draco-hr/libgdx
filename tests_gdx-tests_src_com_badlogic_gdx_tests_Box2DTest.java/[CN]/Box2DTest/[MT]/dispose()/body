@@ -1,3 +1,7 @@
 {
   world.dispose();
+  renderer.dispose();
+  debugRenderer.dispose();
+  font.dispose();
+  textureRegion.getTexture().dispose();
 }
