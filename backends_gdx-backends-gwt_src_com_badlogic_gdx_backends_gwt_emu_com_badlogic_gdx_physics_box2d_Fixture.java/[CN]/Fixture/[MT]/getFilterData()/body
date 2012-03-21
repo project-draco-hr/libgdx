@@ -1,7 +1,7 @@
 {
-  Filter f=fixture.getFilterData();
-  filter.categoryBits=f.categoryBits;
-  filter.maskBits=f.maskBits;
-  filter.groupIndex=f.groupIndex;
+  org.jbox2d.dynamics.Filter f=fixture.getFilterData();
+  filter.categoryBits=(short)f.categoryBits;
+  filter.maskBits=(short)f.maskBits;
+  filter.groupIndex=(short)f.groupIndex;
   return filter;
 }

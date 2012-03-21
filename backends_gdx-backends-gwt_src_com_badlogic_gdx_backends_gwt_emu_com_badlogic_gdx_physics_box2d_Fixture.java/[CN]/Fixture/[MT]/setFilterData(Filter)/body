@@ -1,5 +1,5 @@
 {
-  org.jbox2d.dynamics.Filter f=new Filter();
+  org.jbox2d.dynamics.Filter f=new org.jbox2d.dynamics.Filter();
   f.categoryBits=filter.categoryBits;
   f.groupIndex=filter.groupIndex;
   f.maskBits=filter.maskBits;
