@@ -1,0 +1,5 @@
+{
+  multiplexer.removeProcessor(lastProcessor);
+  multiplexer.addProcessor(processor);
+  lastProcessor=processor;
+}

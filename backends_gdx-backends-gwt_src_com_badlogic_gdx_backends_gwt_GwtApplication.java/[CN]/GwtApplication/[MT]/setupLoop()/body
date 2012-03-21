@@ -14,7 +14,8 @@
   Gdx.gl20=graphics.getGL20();
   Gdx.gl=graphics.getGLCommon();
   Gdx.files=new GwtFiles(preloader);
-  Gdx.input=new GwtInput(graphics.canvas);
+  this.input=new GwtInput(graphics.canvas);
+  Gdx.input=this.input;
   Gdx.audio=new GwtAudio();
   try {
     listener.create();
@@ -40,7 +41,7 @@
         }
         runnables.clear();
         listener.render();
-        ((GwtInput)Gdx.input).justTouched=false;
+        input.justTouched=false;
       }
  catch (      Throwable t) {
         error("GwtApplication","exception: " + t.getMessage(),t);

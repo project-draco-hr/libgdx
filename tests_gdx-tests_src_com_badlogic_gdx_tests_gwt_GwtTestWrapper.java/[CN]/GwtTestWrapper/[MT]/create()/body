@@ -1,0 +1,38 @@
+{
+  ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
+  container=new Table();
+  ui.addActor(container);
+  container.getTableLayout().debug();
+  Table table=new Table();
+  FlickScrollPane scroll=new FlickScrollPane(table);
+  container.add(scroll).expand().fill();
+  table.parse("pad:10 * expand:x space:4");
+  for (  final Instancer instancer : tests) {
+    table.row();
+    TextButton button=new TextButton(instancer.instance().getClass().getName(),skin);
+    button.setClickListener(new ClickListener(){
+      @Override public void click(      Actor actor,      float x,      float y){
+        ((InputWrapper)Gdx.input).multiplexer.removeProcessor(ui);
+        test=instancer.instance();
+        test.create();
+        test.resize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+      }
+    }
+);
+    table.add(button).expandX().fillX();
+  }
+  container.getTableLayout().row();
+  container.getTableLayout().add(new Label("Click on a test to start it, press ESC to close it.",new LabelStyle(font,Color.WHITE))).pad(5,5,5,5);
+  Gdx.input=new InputWrapper(Gdx.input){
+    @Override public boolean keyUp(    int keycode){
+      if (keycode == Keys.ESCAPE) {
+        dispose=true;
+      }
+      return false;
+    }
+  }
+;
+  ((InputWrapper)Gdx.input).multiplexer.addProcessor(ui);
+}

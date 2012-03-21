@@ -1,0 +1,6 @@
+{
+  this.input=input;
+  this.multiplexer=new InputMultiplexer();
+  this.multiplexer.addProcessor(this);
+  input.setInputProcessor(multiplexer);
+}
