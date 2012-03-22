@@ -1,3 +1,10 @@
 {
-  return DoubleBuffer.wrap(new double[numDoubles]);
+  if (GWT.isProdMode()) {
+    ByteBuffer buffer=ByteBuffer.allocateDirect(numDoubles * 8);
+    buffer.order(ByteOrder.nativeOrder());
+    return buffer.asDoubleBuffer();
+  }
+ else {
+    return DoubleBuffer.wrap(new double[numDoubles]);
+  }
 }

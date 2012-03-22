@@ -1,5 +1,5 @@
 {
   if (buffer.remaining() > shortBuffer.getLength()) {
-    shortBuffer=Uint16Array.create(buffer.remaining());
+    shortBuffer=Int16Array.create(buffer.remaining());
   }
 }

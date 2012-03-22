@@ -1,4 +1,9 @@
 {
   WebGLUniformLocation loc=getUniformLocation(location);
-  gl.uniformMatrix2fv(loc,transpose,value.array());
+  if (GWT.isProdMode()) {
+    gl.uniformMatrix2fv(loc,transpose,((Float32Array)((HasArrayBufferView)value).getTypedArray()).subarray(value.position(),value.remaining()));
+  }
+ else {
+    gl.uniformMatrix2fv(loc,transpose,value.array());
+  }
 }

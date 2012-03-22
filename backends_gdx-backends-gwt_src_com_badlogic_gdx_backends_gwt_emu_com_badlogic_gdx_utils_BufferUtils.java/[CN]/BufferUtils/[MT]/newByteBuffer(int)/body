@@ -1,3 +1,10 @@
 {
-  return ByteBuffer.wrap(new byte[numBytes]);
+  if (GWT.isProdMode()) {
+    ByteBuffer buffer=ByteBuffer.allocateDirect(numBytes);
+    buffer.order(ByteOrder.nativeOrder());
+    return buffer;
+  }
+ else {
+    return ByteBuffer.wrap(new byte[numBytes]);
+  }
 }

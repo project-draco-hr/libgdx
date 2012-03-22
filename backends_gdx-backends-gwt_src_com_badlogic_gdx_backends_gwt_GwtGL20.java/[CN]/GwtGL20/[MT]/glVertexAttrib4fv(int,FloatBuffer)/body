@@ -1,3 +1,8 @@
 {
-  gl.vertexAttrib4fv(indx,values.array());
+  if (GWT.isProdMode()) {
+    gl.vertexAttrib4fv(indx,((Float32Array)((HasArrayBufferView)values).getTypedArray()).subarray(values.position(),values.remaining()));
+  }
+ else {
+    gl.vertexAttrib4fv(indx,values.array());
+  }
 }

@@ -1,8 +1,13 @@
 {
-  ensureCapacity(buffer);
-  short[] array=buffer.array();
-  for (int i=buffer.position(), j=0; i < buffer.limit(); i++, j++) {
-    shortBuffer.set(j,array[i]);
+  if (GWT.isProdMode()) {
+    return ((Int16Array)((HasArrayBufferView)buffer).getTypedArray()).subarray(buffer.position(),buffer.remaining());
   }
-  return shortBuffer.subarray(0,buffer.remaining());
+ else {
+    ensureCapacity(buffer);
+    short[] array=buffer.array();
+    for (int i=buffer.position(), j=0; i < buffer.limit(); i++, j++) {
+      shortBuffer.set(j,array[i]);
+    }
+    return shortBuffer.subarray(0,buffer.remaining());
+  }
 }
