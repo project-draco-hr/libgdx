@@ -1,6 +1,0 @@
-{
-  PlaybackCompleteEvent event=new PlaybackCompleteEvent(sender);
-  for (  SoundHandler handler : this) {
-    handler.onPlaybackComplete(event);
-  }
-}

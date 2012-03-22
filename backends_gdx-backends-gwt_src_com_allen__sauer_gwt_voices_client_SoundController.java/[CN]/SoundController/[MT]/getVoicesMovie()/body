@@ -1,7 +1,0 @@
-{
-  if (voicesWrapper == null) {
-    voicesWrapper=new VoicesMovie(DOMUtil.getUniqueId(),gwtVoicesSwfBaseUrl);
-    DOM.appendChild(soundContainer,voicesWrapper.getElement());
-  }
-  return voicesWrapper;
-}

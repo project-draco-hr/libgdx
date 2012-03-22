@@ -1,6 +1,0 @@
-{
-  soundHandlerCollection.add(handler);
-  if (loadState != INITIAL_LOAD_STATE) {
-    handler.onSoundLoadStateChange(new SoundLoadStateChangeEvent(this));
-  }
-}

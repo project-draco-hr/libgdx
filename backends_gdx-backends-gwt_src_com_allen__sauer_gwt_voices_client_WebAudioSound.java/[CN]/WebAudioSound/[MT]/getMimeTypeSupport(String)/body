@@ -1,6 +1,0 @@
-{
-  if (audioContext == null) {
-    return MimeTypeSupport.MIME_TYPE_NOT_SUPPORTED;
-  }
-  return Html5Sound.getMimeTypeSupport(mimeType);
-}

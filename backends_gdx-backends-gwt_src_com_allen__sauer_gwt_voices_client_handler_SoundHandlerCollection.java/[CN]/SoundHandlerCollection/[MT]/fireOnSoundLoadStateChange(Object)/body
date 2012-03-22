@@ -1,6 +1,0 @@
-{
-  SoundLoadStateChangeEvent event=new SoundLoadStateChangeEvent(sender);
-  for (  SoundHandler handler : this) {
-    handler.onSoundLoadStateChange(event);
-  }
-}

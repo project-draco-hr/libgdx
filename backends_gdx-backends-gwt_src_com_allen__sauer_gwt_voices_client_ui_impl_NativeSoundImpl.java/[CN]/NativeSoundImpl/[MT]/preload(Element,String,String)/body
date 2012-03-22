@@ -1,7 +1,0 @@
-{
-  if (mimeTypeSupportsVolume(mimeType)) {
-    Element elem=createElement(url);
-    setVolume(elem,0);
-    play(soundControllerElement,elem,mimeType);
-  }
-}

@@ -1,3 +1,0 @@
-{
-  return getSoundType() + "(\"" + mimeType+ "\", \""+ url+ "\", "+ (isStreaming() ? "streaming" : "not streaming")+ ", "+ (isCrossOrigin() ? "cross origin" : "same origin")+ ")";
-}

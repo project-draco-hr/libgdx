@@ -1,7 +1,0 @@
-{
-  registerSound();
-  if (getLoadState() == LOAD_STATE_SUPPORTED_AND_READY) {
-    return voicesMovie.playSound(soundNumber);
-  }
-  return false;
-}

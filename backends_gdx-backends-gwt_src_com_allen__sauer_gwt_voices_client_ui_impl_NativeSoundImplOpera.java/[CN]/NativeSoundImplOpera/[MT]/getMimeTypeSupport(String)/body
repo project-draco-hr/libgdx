@@ -1,6 +1,0 @@
-{
-  if (StringUtil.contains(SUPPORTED_WITHOUT_PLUGINS_MIME_TYPES,mimeType)) {
-    return MIME_TYPE_SUPPORT_READY;
-  }
-  return operaGetMimeTypeSupport(mimeType);
-}

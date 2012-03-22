@@ -1,8 +1,0 @@
-{
-  flashSupport=MIME_TYPE_SUPPORT_READY;
-  for (Iterator<FlashSound> iterator=unitializedSoundList.iterator(); iterator.hasNext(); ) {
-    FlashSound flashSound=iterator.next();
-    doCreateSound(flashSound);
-    iterator.remove();
-  }
-}

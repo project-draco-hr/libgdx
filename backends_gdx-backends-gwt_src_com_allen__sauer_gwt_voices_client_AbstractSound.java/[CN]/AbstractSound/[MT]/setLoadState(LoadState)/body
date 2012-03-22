@@ -1,8 +1,0 @@
-{
-  if (loadState != this.loadState) {
-    this.loadState=loadState;
-    if (loadState != INITIAL_LOAD_STATE) {
-      soundHandlerCollection.fireOnSoundLoadStateChange(this);
-    }
-  }
-}
