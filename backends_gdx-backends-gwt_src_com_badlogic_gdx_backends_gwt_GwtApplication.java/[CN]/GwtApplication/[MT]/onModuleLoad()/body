@@ -28,6 +28,7 @@
       root=panel;
     }
   }
+  Gdx.audio=new GwtAudio();
   final PreloaderCallback callback=getPreloaderCallback();
   preloader=new Preloader();
   preloader.preload("assets.txt",new PreloaderCallback(){
