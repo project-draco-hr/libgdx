@@ -1,6 +1,7 @@
 {
   super(name);
   this.texture=texture;
+  if (unit > MAX_TEXTURE_UNITS)   throw new RuntimeException(MAX_TEXTURE_UNITS + " is max texture units supported");
   this.unit=unit;
   this.uWrap=uWrap;
   this.vWrap=vWrap;

@@ -1,12 +1,12 @@
 {
+  Material currentMaterial=null;
   for (int i=0; i < modelQueue.size; i++) {
     final StillModelInstance instance=modelInstances.items[i];
     final Vector3 center=instance.getSortCenter();
     lightManager.calculateLights(center.x,center.y,center.z);
     final Matrix4 modelMatrix=instance.getTransform();
     normalMatrix.set(modelMatrix);
-    final Model model=modelQueue.items[i];
-    final SubMesh subMeshes[]=model.getSubMeshes();
+    final SubMesh subMeshes[]=modelQueue.items[i].getSubMeshes();
     final Material materials[]=instance.getMaterials();
     boolean matrixChanged=true;
     for (int j=0; j < subMeshes.length; j++) {
@@ -15,16 +15,35 @@
       if (bindShader(material) || matrixChanged) {
         currentShader.setUniformMatrix("u_normalMatrix",normalMatrix,false);
         currentShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
+        currentMaterial=null;
       }
-      if (material != currentMaterial) {
+      if ((material != null) && (material != currentMaterial)) {
         currentMaterial=material;
-        currentMaterial.bind(currentShader);
+        for (int k=0, len=currentMaterial.attributes.length; k < len; k++) {
+          final MaterialAttribute atrib=currentMaterial.attributes[k];
+          if (atrib instanceof TextureAttribute) {
+            final TextureAttribute texAtrib=(TextureAttribute)atrib;
+            if (!texAtrib.equals(lastTexture[texAtrib.unit])) {
+              lastTexture[texAtrib.unit]=texAtrib;
+              texAtrib.texture.bind(texAtrib.unit);
+              Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,texAtrib.minFilter);
+              Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,texAtrib.magFilter);
+              Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_S,texAtrib.uWrap);
+              Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_T,texAtrib.vWrap);
+            }
+            currentShader.setUniformi(texAtrib.name,texAtrib.unit);
+          }
+ else {
+            atrib.bind(currentShader);
+          }
+        }
       }
       subMesh.getMesh().render(currentShader,subMesh.primitiveType);
     }
-    currentShader.end();
-    currentShader=null;
   }
+  currentShader.end();
+  currentShader=null;
+  for (int i=0, len=TextureAttribute.MAX_TEXTURE_UNITS; i < len; i++)   lastTexture[i]=null;
   modelQueue.clear();
   modelInstances.clear();
   drawing=false;
