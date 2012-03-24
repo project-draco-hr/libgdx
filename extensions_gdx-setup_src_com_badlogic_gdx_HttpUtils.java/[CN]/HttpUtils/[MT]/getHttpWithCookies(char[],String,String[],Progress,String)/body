@@ -1,0 +1,52 @@
+{
+  HttpURLConnection conn=null;
+  String data=encodeParameters(parameters);
+  if (data == null)   return null;
+  try {
+    long start=System.nanoTime();
+    URL commandURL=new URL(url + "?" + data);
+    conn=(HttpURLConnection)commandURL.openConnection();
+    conn.setDoInput(true);
+    conn.setDoOutput(false);
+    conn.setUseCaches(true);
+    conn.setRequestProperty("user-agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11");
+    conn.setRequestProperty("Accept-Charset","utf-8");
+    conn.setRequestMethod("GET");
+    for (    String cookie : cookies) {
+      conn.setRequestProperty("cookie",URLDecoder.decode(cookie,"UTF-8"));
+    }
+    if (progress != null)     progress.setProgress(0.1f);
+    conn.connect();
+    InputStream bis=conn.getInputStream();
+    InputStreamReader isr=new InputStreamReader(bis,"UTF-8");
+    int total=conn.getContentLength();
+    int readChars=0;
+    while (true) {
+      int length=isr.read(out,readChars,out.length - readChars);
+      if (length == -1)       break;
+      if (length == 0)       throw new RuntimeException("Buffer to small for downloading content");
+      readChars+=length;
+      if (progress != null)       progress.setProgress(readChars / (total / 2f));
+    }
+    if (progress != null)     progress.setProgress(1);
+    if (isr != null)     isr.close();
+    HttpResponse resp=new HttpResponse();
+    for (    String key : conn.getHeaderFields().keySet()) {
+      if (key == null)       continue;
+      if (key.equalsIgnoreCase("set-cookie")) {
+        for (        String cookie : conn.getHeaderFields().get(key)) {
+          resp.cookies.add(cookie);
+        }
+        break;
+      }
+    }
+    resp.responseCode=conn.getResponseCode();
+    resp.readChars=readChars;
+    return resp;
+  }
+ catch (  Exception e) {
+    if (progress != null)     progress.setProgress(0);
+    e.printStackTrace();
+    return null;
+  }
+}

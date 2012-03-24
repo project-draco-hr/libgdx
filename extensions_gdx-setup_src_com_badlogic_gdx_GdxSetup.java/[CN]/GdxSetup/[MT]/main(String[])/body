@@ -1,0 +1,5 @@
+{
+  Map<String,String> parsedArgs=parseArgs(args);
+  GdxSetup setup=new GdxSetup(parsedArgs.get("-workspace"),parsedArgs.get("-project"),parsedArgs.get("-package"),parsedArgs.get("-mainclass"));
+  setup.create();
+}

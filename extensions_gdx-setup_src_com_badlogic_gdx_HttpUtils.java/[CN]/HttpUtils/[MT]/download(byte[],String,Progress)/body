@@ -1,0 +1,21 @@
+{
+  HttpURLConnection conn=null;
+  try {
+    conn=(HttpURLConnection)new URL(url).openConnection();
+    conn.setDoInput(true);
+    conn.setDoOutput(false);
+    conn.setUseCaches(true);
+    conn.setRequestProperty("user-agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11");
+    if (progress != null)     progress.setProgress(0.01f);
+    conn.connect();
+    int length=conn.getContentLength();
+    InputStream bis=conn.getInputStream();
+    int len=readBytes(out,bis,length,progress);
+    return len;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    if (progress != null)     progress.setProgress(0);
+    return 0;
+  }
+}

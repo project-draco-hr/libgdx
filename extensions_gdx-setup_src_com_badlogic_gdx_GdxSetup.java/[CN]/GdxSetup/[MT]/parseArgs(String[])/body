@@ -1,0 +1,33 @@
+{
+  Map<String,String> parsedArgs=new HashMap<String,String>();
+  for (int i=0; i < args.length; ) {
+    String token=args[i];
+    boolean known=false;
+    for (    String knownArg : knownArgs) {
+      if (token.equals(knownArg)) {
+        if (args.length == i + 1) {
+          log("expected value for argument '" + knownArg + "'");
+          printUsage();
+          System.exit(-1);
+        }
+        parsedArgs.put(knownArg,args[i + 1]);
+        known=true;
+        i+=2;
+        break;
+      }
+    }
+    if (!known) {
+      log("Unkown argument " + token);
+      printUsage();
+      System.exit(-1);
+    }
+  }
+  for (  String arg : knownArgs) {
+    if (!parsedArgs.containsKey(arg)) {
+      log("missing argument " + arg);
+      printUsage();
+      System.exit(-1);
+    }
+  }
+  return parsedArgs;
+}

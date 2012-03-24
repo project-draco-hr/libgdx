@@ -1,0 +1,6 @@
+{
+  log("Downloading " + source + " to "+ target);
+  File targetFile=new File(target);
+  if (targetFile.isDirectory())   throw new RuntimeException("Target file " + target + " is a directory");
+  HttpUtils.downloadFile(source,targetFile);
+}
