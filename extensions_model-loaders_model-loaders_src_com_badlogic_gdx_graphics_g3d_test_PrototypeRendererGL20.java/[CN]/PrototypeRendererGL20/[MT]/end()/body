@@ -1,3 +1,5 @@
 {
-  flush();
+  if (Gdx.graphics.isGL20Available())   flush();
+ else {
+  }
 }
