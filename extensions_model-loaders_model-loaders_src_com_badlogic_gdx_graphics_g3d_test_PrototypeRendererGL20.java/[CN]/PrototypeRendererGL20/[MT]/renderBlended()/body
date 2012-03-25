@@ -1,0 +1,49 @@
+{
+  Gdx.gl.glEnable(GL10.GL_BLEND);
+  Gdx.gl.glDepthMask(false);
+  blendQueue.sort();
+  Material currentMaterial=null;
+  int lastSrcBlend=-1;
+  int lastDstBlend=-1;
+  for (int i=0; i < blendQueue.size; i++) {
+    final BlendedMesh instance=blendQueue.get(i);
+    final Material material=instance.material;
+    lightManager.calculateLights(instance.center.x,instance.center.y,instance.center.z);
+    normalMatrix.set(instance.modelMatrix);
+    final boolean shaderChanged=bindShader(material);
+    if (shaderChanged)     currentMaterial=null;
+    currentShader.setUniformMatrix("u_normalMatrix",normalMatrix,false);
+    currentShader.setUniformMatrix("u_modelMatrix",instance.modelMatrix,false);
+    if ((material != null) && (material != currentMaterial)) {
+      currentMaterial=material;
+      for (int k=0, len=currentMaterial.attributes.length; k < len; k++) {
+        final MaterialAttribute atrib=currentMaterial.attributes[k];
+        if (atrib instanceof BlendingAttribute) {
+          final BlendingAttribute blending=(BlendingAttribute)atrib;
+          if (blending.blendSrcFunc != lastSrcBlend || blending.blendDstFunc != lastDstBlend) {
+            atrib.bind(currentShader);
+            lastSrcBlend=blending.blendSrcFunc;
+            lastDstBlend=blending.blendDstFunc;
+          }
+        }
+ else         if (atrib instanceof TextureAttribute) {
+          final TextureAttribute texAtrib=(TextureAttribute)atrib;
+          if (!texAtrib.texturePortionEquals(lastTexture[texAtrib.unit])) {
+            lastTexture[texAtrib.unit]=texAtrib;
+            texAtrib.bind(currentShader);
+          }
+ else {
+            currentShader.setUniformi(texAtrib.name,texAtrib.unit);
+          }
+        }
+ else {
+          atrib.bind(currentShader);
+        }
+      }
+    }
+    instance.subMesh.getMesh().render(currentShader,instance.subMesh.primitiveType);
+  }
+  Gdx.gl.glDepthMask(true);
+  Gdx.gl.glDisable(GL10.GL_BLEND);
+  blendQueue.clear();
+}

@@ -45,12 +45,13 @@
       subMesh.getMesh().render(currentShader,subMesh.primitiveType);
     }
   }
+  modelQueue.clear();
+  modelInstances.clear();
+  if (blendQueue.size > 0)   renderBlended();
   if (currentShader != null) {
     currentShader.end();
     currentShader=null;
   }
-  modelQueue.clear();
-  modelInstances.clear();
   for (int i=0, len=TextureAttribute.MAX_TEXTURE_UNITS; i < len; i++)   lastTexture[i]=null;
   drawing=false;
 }

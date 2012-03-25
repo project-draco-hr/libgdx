@@ -1,0 +1,7 @@
+{
+  this.material=material;
+  this.subMesh=subMesh;
+  this.modelMatrix=modelMatrix;
+  this.center=center;
+  distance=(int)(PRIORITY_DISCRETE_STEPS * center.dst(cam.position));
+}
