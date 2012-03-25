@@ -1,4 +1,5 @@
 {
+  if (numVertices == 0)   return;
   shader.begin();
   shader.setUniformMatrix("u_projModelView",projModelView);
   for (int i=0; i < numTexCoords; i++)   shader.setUniformi("u_sampler" + i,i);
