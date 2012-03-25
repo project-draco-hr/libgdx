@@ -1,5 +1,6 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new IllegalStateException("can't use this render method with OpenGL ES 1.x");
+  if (count == 0)   return;
   if (autoBind)   bind(shader);
   if (isVertexArray) {
     if (indices.getNumIndices() > 0) {
