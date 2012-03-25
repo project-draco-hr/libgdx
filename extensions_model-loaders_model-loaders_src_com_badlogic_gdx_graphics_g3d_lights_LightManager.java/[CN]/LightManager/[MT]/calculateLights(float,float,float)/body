@@ -1,24 +1,24 @@
 {
   final int maxSize=pointLights.size;
-  final PointLight lights[]=pointLights.items;
   if (maxSize > maxLightsPerModel) {
     for (int i=0; i < maxSize; i++) {
-      lights[i].priority=lights[i].intensity / lights[i].position.dst(x,y,z);
+      final PointLight light=pointLights.get(i);
+      light.priority=light.intensity / light.position.dst(x,y,z);
     }
     pointLights.sort();
   }
   final int size=maxLightsPerModel > maxSize ? maxSize : maxLightsPerModel;
   for (int i=0; i < size; i++) {
-    final PointLight l=lights[i];
-    final Vector3 pos=l.position;
+    final PointLight light=pointLights.get(i);
+    final Vector3 pos=light.position;
     positions[3 * i + 0]=pos.x;
     positions[3 * i + 1]=pos.y;
     positions[3 * i + 2]=pos.z;
-    final Color col=l.color;
+    final Color col=light.color;
     colors[3 * i + 0]=col.r;
     colors[3 * i + 1]=col.g;
     colors[3 * i + 2]=col.b;
-    intensities[i]=l.intensity;
+    intensities[i]=light.intensity;
   }
   for (int i=size; i < maxLightsPerModel; i++) {
     intensities[i]=0;

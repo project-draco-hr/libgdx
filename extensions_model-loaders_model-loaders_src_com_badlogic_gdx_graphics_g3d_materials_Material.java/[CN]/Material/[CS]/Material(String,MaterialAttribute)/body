@@ -1,4 +1,9 @@
 {
   this.name=name;
   this.attributes=attributes;
+  boolean blendingNeeded=false;
+  for (int i=0; i < attributes.length; i++) {
+    if (attributes[i] instanceof BlendingAttribute)     blendingNeeded=true;
+  }
+  this.needBlending=blendingNeeded;
 }

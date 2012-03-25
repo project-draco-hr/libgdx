@@ -1,17 +1,21 @@
 {
   Material currentMaterial=null;
   for (int i=0; i < modelQueue.size; i++) {
-    final StillModelInstance instance=modelInstances.items[i];
+    final StillModelInstance instance=modelInstances.get(i);
     final Vector3 center=instance.getSortCenter();
     lightManager.calculateLights(center.x,center.y,center.z);
     final Matrix4 modelMatrix=instance.getTransform();
     normalMatrix.set(modelMatrix);
-    final SubMesh subMeshes[]=modelQueue.items[i].getSubMeshes();
+    final SubMesh subMeshes[]=modelQueue.get(i).getSubMeshes();
     final Material materials[]=instance.getMaterials();
     boolean matrixChanged=true;
     for (int j=0; j < subMeshes.length; j++) {
       final SubMesh subMesh=subMeshes[j];
       final Material material=materials != null ? materials[j] : subMesh.material;
+      if (material.needBlending) {
+        addTranparentQueu(material,subMesh,modelMatrix,center);
+        continue;
+      }
       final boolean shaderChanged=bindShader(material);
       if (shaderChanged)       currentMaterial=null;
       if (shaderChanged || matrixChanged) {
