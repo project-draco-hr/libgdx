@@ -1,4 +1,4 @@
 {
-  baseUrl=GWT.getModuleBaseURL().replace(GWT.getModuleName() + "/","");
+  baseUrl=GWT.getModuleBaseURL().replace(GWT.getModuleName() + "/","") + "assets/";
   GWT.create(PreloaderBundle.class);
 }

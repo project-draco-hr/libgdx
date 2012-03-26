@@ -28,21 +28,29 @@
       root=panel;
     }
   }
-  Gdx.audio=new GwtAudio();
-  final PreloaderCallback callback=getPreloaderCallback();
-  preloader=new Preloader();
-  preloader.preload("assets.txt",new PreloaderCallback(){
-    @Override public void loaded(    String file,    int loaded,    int total){
-      callback.loaded(file,loaded,total);
-    }
-    @Override public void error(    String file){
-      callback.error(file);
-    }
-    @Override public void done(){
-      callback.done();
-      root.clear();
-      setupLoop();
+  SoundManager.init(GWT.getModuleBaseURL(),9);
+  new Timer(){
+    @Override public void run(){
+      if (SoundManager.swfLoaded()) {
+        final PreloaderCallback callback=getPreloaderCallback();
+        preloader=new Preloader();
+        preloader.preload("assets.txt",new PreloaderCallback(){
+          @Override public void loaded(          String file,          int loaded,          int total){
+            callback.loaded(file,loaded,total);
+          }
+          @Override public void error(          String file){
+            callback.error(file);
+          }
+          @Override public void done(){
+            callback.done();
+            root.clear();
+            setupLoop();
+          }
+        }
+);
+        cancel();
+      }
     }
   }
-);
+.scheduleRepeating(100);
 }

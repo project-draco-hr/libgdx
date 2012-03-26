@@ -10,6 +10,7 @@
   lastWidth=graphics.getWidth();
   lastHeight=graphics.getHeight();
   Gdx.app=this;
+  Gdx.audio=new GwtAudio();
   Gdx.graphics=graphics;
   Gdx.gl20=graphics.getGL20();
   Gdx.gl=graphics.getGLCommon();
