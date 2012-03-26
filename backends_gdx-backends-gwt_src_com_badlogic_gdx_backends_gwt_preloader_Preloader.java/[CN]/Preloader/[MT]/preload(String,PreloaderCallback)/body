@@ -9,6 +9,8 @@
         AssetType type=AssetType.Text;
         if (tokens[0].equals("i"))         type=AssetType.Image;
         if (tokens[0].equals("b"))         type=AssetType.Binary;
+        if (tokens[0].equals("a"))         type=AssetType.Audio;
+        if (tokens[0].equals("d"))         type=AssetType.Directory;
         assets.add(new Asset(tokens[1].trim(),type));
       }
       loadNextAsset(assets,0,callback);

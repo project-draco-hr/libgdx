@@ -46,4 +46,21 @@
     }
 );
   }
+  if (asset.type == AssetType.Audio) {
+    new AudioLoader(baseUrl + asset.url,new LoaderCallback<Void>(){
+      @Override public void success(      Void result){
+        audio.put(asset.url,null);
+        callback.loaded(asset.url,next + 1,assets.size);
+        loadNextAsset(assets,next + 1,callback);
+      }
+      @Override public void error(){
+        callback.error(asset.url);
+        loadNextAsset(assets,next + 1,callback);
+      }
+    }
+);
+  }
+  if (asset.type == AssetType.Directory) {
+    loadNextAsset(assets,next + 1,callback);
+  }
 }

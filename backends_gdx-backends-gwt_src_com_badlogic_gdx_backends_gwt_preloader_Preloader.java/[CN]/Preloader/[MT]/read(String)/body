@@ -13,5 +13,8 @@
   if (binaries.containsKey(url)) {
     return binaries.get(url).read();
   }
+  if (audio.containsKey(url)) {
+    return new ByteArrayInputStream(new byte[1]);
+  }
   return null;
 }
