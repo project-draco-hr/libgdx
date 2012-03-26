@@ -1,0 +1,26 @@
+{
+  String assetPath=getAssetPath(context);
+  AssetFilter assetFilter=getAssetFilter(context);
+  System.out.println(new File(assetPath).getAbsolutePath());
+  System.out.println("Copying resources from " + assetPath + " to war/");
+  FileWrapper source=new FileWrapper(assetPath);
+  if (!source.exists())   throw new RuntimeException("assets path '" + assetPath + "' does not exist. Check your gdx.assetpath property in your GWT project's module gwt.xml file");
+  if (!source.isDirectory())   throw new RuntimeException("assets path '" + assetPath + "' is not a directory. Check your gdx.assetpath property in your GWT project's module gwt.xml file");
+  FileWrapper target=new FileWrapper("");
+  if (target.exists()) {
+    if (!target.deleteDirectory())     throw new RuntimeException("Couldn't clean target path '" + target + "'");
+  }
+  Array<Asset> assets=new Array<Asset>();
+  copyDirectory(source,target,assetFilter,assets);
+  StringBuffer buffer=new StringBuffer();
+  for (  Asset asset : assets) {
+    String path=asset.file.path().replace('\\','/');
+    buffer.append(asset.type.code);
+    buffer.append(":");
+    buffer.append(path);
+    buffer.append("\n");
+  }
+  new FileWrapper("assets.txt").writeString(buffer.toString(),false);
+  System.out.println(buffer.toString());
+  return createDummyClass(logger,context);
+}

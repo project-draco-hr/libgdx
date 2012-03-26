@@ -1,0 +1,4 @@
+{
+  if (file.getPath().length() == 0)   return new FileWrapper(new File(name),type);
+  return new FileWrapper(new File(file,name),type);
+}

@@ -1,0 +1,10 @@
+{
+  if (filter.accept(dest.path(),false))   ;
+  try {
+    assets.add(new Asset(dest,filter.getType(dest.path())));
+    dest.write(source.read(),false);
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error copying source file: " + source + "\n"+ "To destination: "+ dest,ex);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  if (type == FileType.External)   return new File(Gdx.files.getExternalStoragePath(),file.getPath());
+  return file;
+}

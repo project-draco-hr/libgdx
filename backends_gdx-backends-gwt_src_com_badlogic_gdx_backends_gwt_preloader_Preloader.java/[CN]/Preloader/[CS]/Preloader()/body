@@ -1,3 +1,4 @@
 {
   baseUrl=GWT.getModuleBaseURL().replace(GWT.getModuleName() + "/","");
+  GWT.create(PreloaderBundle.class);
 }

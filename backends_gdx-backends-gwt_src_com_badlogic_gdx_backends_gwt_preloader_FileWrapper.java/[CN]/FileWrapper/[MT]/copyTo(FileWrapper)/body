@@ -1,0 +1,17 @@
+{
+  boolean sourceDir=isDirectory();
+  if (!sourceDir) {
+    if (dest.isDirectory())     dest=dest.child(name());
+    copyFile(this,dest);
+    return;
+  }
+  if (dest.exists()) {
+    if (!dest.isDirectory())     throw new GdxRuntimeException("Destination exists but is not a directory: " + dest);
+  }
+ else {
+    dest.mkdirs();
+    if (!dest.isDirectory())     throw new GdxRuntimeException("Destination directory cannot be created: " + dest);
+  }
+  if (!sourceDir)   dest=dest.child(name());
+  copyDirectory(this,dest);
+}

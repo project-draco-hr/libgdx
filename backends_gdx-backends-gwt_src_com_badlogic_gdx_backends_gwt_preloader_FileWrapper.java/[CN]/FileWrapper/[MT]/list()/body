@@ -1,0 +1,8 @@
+{
+  if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot list a classpath directory: " + file);
+  String[] relativePaths=file().list();
+  if (relativePaths == null)   return new FileWrapper[0];
+  FileWrapper[] handles=new FileWrapper[relativePaths.length];
+  for (int i=0, n=relativePaths.length; i < n; i++)   handles[i]=child(relativePaths[i]);
+  return handles;
+}

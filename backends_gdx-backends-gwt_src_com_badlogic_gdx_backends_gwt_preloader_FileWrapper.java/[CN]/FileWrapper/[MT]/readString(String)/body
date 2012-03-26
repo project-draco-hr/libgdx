@@ -1,0 +1,27 @@
+{
+  int fileLength=(int)length();
+  if (fileLength == 0)   fileLength=512;
+  StringBuilder output=new StringBuilder(fileLength);
+  InputStreamReader reader=null;
+  try {
+    if (charset == null)     reader=new InputStreamReader(read());
+ else     reader=new InputStreamReader(read(),charset);
+    char[] buffer=new char[256];
+    while (true) {
+      int length=reader.read(buffer);
+      if (length == -1)       break;
+      output.append(buffer,0,length);
+    }
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading layout file: " + this,ex);
+  }
+ finally {
+    try {
+      if (reader != null)       reader.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+  return output.toString();
+}

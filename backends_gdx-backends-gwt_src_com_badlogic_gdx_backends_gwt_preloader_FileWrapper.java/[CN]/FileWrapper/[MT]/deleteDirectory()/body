@@ -1,0 +1,5 @@
+{
+  if (type == FileType.Classpath)   throw new GdxRuntimeException("Cannot delete a classpath file: " + file);
+  if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot delete an internal file: " + file);
+  return deleteDirectory(file());
+}

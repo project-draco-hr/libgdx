@@ -1,0 +1,4 @@
+{
+  if (isDirectory && file.endsWith(".svn"))   return false;
+  return true;
+}

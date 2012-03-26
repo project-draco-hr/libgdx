@@ -1,0 +1,13 @@
+{
+  ConfigurationProperty assetPathProperty=null;
+  try {
+    assetPathProperty=context.getPropertyOracle().getConfigurationProperty("gdx.assetpath");
+  }
+ catch (  BadPropertyValueException e) {
+    throw new RuntimeException("No gdx.assetpath defined. Add <set-configuration-property name=\"gdx.assetpath\" value=\"relative/path/to/assets/\"/> to your GWT projects gwt.xml file");
+  }
+  if (assetPathProperty.getValues().size() == 0) {
+    throw new RuntimeException("No gdx.assetpath defined. Add <set-configuration-property name=\"gdx.assetpath\" value=\"relative/path/to/assets/\"/> to your GWT projects gwt.xml file");
+  }
+  return assetPathProperty.getValues().get(0);
+}
