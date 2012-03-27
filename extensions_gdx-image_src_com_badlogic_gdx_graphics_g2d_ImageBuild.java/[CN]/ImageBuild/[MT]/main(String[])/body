@@ -34,6 +34,5 @@
   android.headerDirs=headers;
   android.cFlags+=" -DHAVE_CONFIG_H";
   new AntScriptGenerator().generate(new BuildConfig("gdx-image"),win32home,android,win32,win64,lin32,lin64,mac);
-  BuildExecutor.executeAnt("jni/build-windows32home.xml","-v");
   BuildExecutor.executeAnt("jni/build.xml","pack-natives -v");
 }
