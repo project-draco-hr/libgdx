@@ -1,8 +1,0 @@
-{
-  try {
-    return url.openStream();
-  }
- catch (  IOException e) {
-    throw new GdxRuntimeException("Couldn't read URL '" + url.toString() + "'");
-  }
-}
