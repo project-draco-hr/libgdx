@@ -1,0 +1,17 @@
+{
+  File src=new File(tmpDst,cfg.getCommonPrjName());
+  File dst=new File(cfg.getDestinationPath());
+  FileUtils.copyDirectoryToDirectory(src,dst);
+  if (cfg.isDesktopIncluded) {
+    src=new File(tmpDst,cfg.getDesktopPrjName());
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+  if (cfg.isAndroidIncluded) {
+    src=new File(tmpDst,cfg.getAndroidPrjName());
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+  if (cfg.isHtmlIncluded) {
+    src=new File(tmpDst,cfg.getHtmlPrjName());
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+}

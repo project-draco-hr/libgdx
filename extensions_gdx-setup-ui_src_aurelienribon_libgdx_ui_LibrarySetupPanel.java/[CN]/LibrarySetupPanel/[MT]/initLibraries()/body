@@ -1,0 +1,12 @@
+{
+  for (  File file : new File(".").listFiles()) {
+    if (!file.isFile())     continue;
+    for (    String libraryName : cfg.getLibraryNames()) {
+      LibraryDef def=cfg.getLibraryDef(libraryName);
+      String stableName=FilenameUtils.getName(def.stableUrl);
+      String latestName=FilenameUtils.getName(def.latestUrl);
+      if (file.getName().equals(latestName))       select(libraryName,file);
+ else       if (file.getName().equals(stableName))       select(libraryName,file);
+    }
+  }
+}

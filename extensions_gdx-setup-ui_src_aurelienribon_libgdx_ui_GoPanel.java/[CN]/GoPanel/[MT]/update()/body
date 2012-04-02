@@ -1,0 +1,17 @@
+{
+  ProjectConfiguration cfg=AppContext.inst().getConfig();
+  if (cfg.isValid()) {
+    goBtn.setEnabled(true);
+    errorLabel.setText("<html>Your configuration is valid.");
+    Style.unregister(errorLabel);
+    Style.registerCssClasses(errorLabel,".libraryFoundLabel");
+    Style.apply(errorLabel,new Style(Res.class.getResource("style-dynamic.css")));
+  }
+ else {
+    goBtn.setEnabled(false);
+    errorLabel.setText("<html>" + cfg.getErrorMessage());
+    Style.unregister(errorLabel);
+    Style.registerCssClasses(errorLabel,".libraryNotFoundLabel");
+    Style.apply(errorLabel,new Style(Res.class.getResource("style-dynamic.css")));
+  }
+}

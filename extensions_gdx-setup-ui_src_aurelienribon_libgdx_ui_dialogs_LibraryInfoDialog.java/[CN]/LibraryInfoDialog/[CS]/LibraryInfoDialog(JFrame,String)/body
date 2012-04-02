@@ -1,0 +1,14 @@
+{
+  super(parent,true);
+  initComponents();
+  def=AppContext.inst().getConfig().getLibraryDef(libraryName);
+  nameLabel.setText(def.name);
+  descriptionLabel.setText("<html>" + def.description);
+  homepageLabel.setText(def.homepage);
+  homepageLabel.addMouseListener(urlMouseListener);
+  Style.registerCssClasses(rootPanel,".rootPanel");
+  Style.registerCssClasses(nameLabel,".titleLabel");
+  Style.registerCssClasses(descriptionLabel,".libInfoDescLabel");
+  Style.registerCssClasses(homepageLabel,".libInfoHomepageLabel");
+  Style.apply(getContentPane(),new Style(Res.class.getResource("style.css")));
+}

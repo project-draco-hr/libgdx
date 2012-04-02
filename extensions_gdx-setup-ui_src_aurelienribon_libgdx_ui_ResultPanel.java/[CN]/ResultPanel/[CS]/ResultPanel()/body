@@ -1,0 +1,7 @@
+{
+  initComponents();
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  jScrollPane1.setOpaque(false);
+  jScrollPane1.getViewport().setOpaque(false);
+}

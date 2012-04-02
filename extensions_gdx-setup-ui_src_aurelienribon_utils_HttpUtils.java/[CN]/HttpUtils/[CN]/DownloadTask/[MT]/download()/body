@@ -1,0 +1,46 @@
+{
+  OutputStream os=null;
+  InputStream is=null;
+  IOException ex=null;
+  try {
+    HttpURLConnection connection=(HttpURLConnection)input.openConnection();
+    connection.setDoInput(true);
+    connection.setDoOutput(false);
+    connection.setUseCaches(true);
+    connection.setRequestProperty("user-agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11");
+    connection.setConnectTimeout(3000);
+    connection.connect();
+    is=new BufferedInputStream(connection.getInputStream(),4096);
+    os=output;
+    byte[] data=new byte[4096];
+    int length=connection.getContentLength();
+    int total=0;
+    int count;
+    while (run && (count=is.read(data)) != -1) {
+      total+=count;
+      os.write(data,0,count);
+      if (callback != null)       callback.updated(total,length);
+    }
+  }
+ catch (  IOException ex1) {
+    ex=ex1;
+  }
+ finally {
+    if (os != null)     try {
+      os.flush();
+      os.close();
+    }
+ catch (    IOException ex1) {
+    }
+    if (is != null)     try {
+      is.close();
+    }
+ catch (    IOException ex1) {
+    }
+    if (callback != null) {
+      if (ex != null)       callback.error(ex);
+ else       if (run == true)       callback.completed();
+ else       callback.canceled();
+    }
+  }
+}

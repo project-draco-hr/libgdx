@@ -1,0 +1,10 @@
+{
+  cfg.setProjectName(nameField.getText());
+  cfg.setPackageName(packageField.getText());
+  cfg.setMainClassName(mainClassField.getText());
+  cfg.setDestinationPath(destinationField.getText());
+  cfg.isDesktopIncluded=genDesktopPrjChk.isSelected();
+  cfg.isAndroidIncluded=genAndroidPrjChk.isSelected();
+  cfg.isHtmlIncluded=genHtmlPrjChk.isSelected();
+  AppContext.inst().fireConfigChangedEvent();
+}

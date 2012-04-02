@@ -1,0 +1,5 @@
+{
+  String input=cfg.getLibraryDef(libraryName).stableUrl;
+  String output=FilenameUtils.getName(input);
+  getFile(libraryName,input,output);
+}

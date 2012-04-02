@@ -1,0 +1,20 @@
+{
+  initComponents();
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  AppContext.inst().addListener(new AppContext.Listener(){
+    @Override public void configChanged(){
+      update();
+    }
+  }
+);
+  goBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(GoPanel.this);
+      GoDialog dialog=new GoDialog(frame);
+      dialog.setLocationRelativeTo(frame);
+      dialog.setVisible(true);
+    }
+  }
+);
+}

@@ -1,0 +1,15 @@
+{
+  setBorder(new EmptyBorder(5,5,5,5));
+  setRootVisible(false);
+  setShowsRootHandles(true);
+  setCellRenderer(treeCellRenderer);
+  setOpaque(false);
+  AppContext.inst().addListener(new AppContext.Listener(){
+    @Override public void configChanged(){
+      update();
+    }
+  }
+);
+  build();
+  update();
+}

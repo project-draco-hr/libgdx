@@ -1,0 +1,12 @@
+{
+  this.name=parseBlock(input,"name");
+  this.description=parseBlock(input,"description").replaceAll("\\s+"," ");
+  this.homepage=parseBlock(input,"homepage");
+  this.stableVersion=parseBlock(input,"stable-version");
+  this.stableUrl=parseBlock(input,"stable-url");
+  this.latestUrl=parseBlock(input,"latest-url");
+  this.libsCommon=parseBlockAsList(input,"libs-common");
+  this.libsDesktop=parseBlockAsList(input,"libs-desktop");
+  this.libsAndroid=parseBlockAsList(input,"libs-android");
+  this.libsHtml=parseBlockAsList(input,"libs-html");
+}

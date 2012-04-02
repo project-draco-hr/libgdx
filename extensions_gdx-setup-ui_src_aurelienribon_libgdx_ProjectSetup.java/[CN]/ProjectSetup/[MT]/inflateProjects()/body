@@ -1,0 +1,20 @@
+{
+  FileUtils.forceMkdir(tmpDst);
+  FileUtils.cleanDirectory(tmpDst);
+  InputStream is=Res.getStream("projects.zip");
+  ZipInputStream zis=new ZipInputStream(is);
+  ZipEntry entry;
+  while ((entry=zis.getNextEntry()) != null) {
+    File file=new File(tmpDst,entry.getName());
+    if (entry.isDirectory()) {
+      FileUtils.forceMkdir(file);
+    }
+ else {
+      OutputStream os=new FileOutputStream(file);
+      IOUtils.copy(zis,os);
+      os.close();
+    }
+  }
+  zis.close();
+  postProcessInflate();
+}

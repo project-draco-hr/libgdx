@@ -1,0 +1,11 @@
+{
+  File file=selectedFiles.get(libraryName);
+  String path=file != null ? file.getPath() : ".";
+  JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
+  JFileChooser chooser=new JFileChooser(new File(path));
+  chooser.setFileFilter(new FileNameExtensionFilter("Zip files (*.zip)","zip"));
+  chooser.setDialogTitle("Please select the zip archive for \"" + libraryName + "\"");
+  if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+    select(libraryName,chooser.getSelectedFile());
+  }
+}

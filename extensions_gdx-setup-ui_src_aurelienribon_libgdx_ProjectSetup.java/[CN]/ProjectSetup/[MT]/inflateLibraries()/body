@@ -1,0 +1,22 @@
+{
+  File commonPrjLibsDir=new File(FilenameUtils.normalize(tmpDst.getPath() + "/" + cfg.getCommonPrjName()+ "/libs"));
+  File desktopPrjLibsDir=new File(FilenameUtils.normalize(tmpDst.getPath() + "/" + cfg.getDesktopPrjName()+ "/libs"));
+  File androidPrjLibsDir=new File(FilenameUtils.normalize(tmpDst.getPath() + "/" + cfg.getAndroidPrjName()+ "/libs"));
+  File htmlPrjLibsDir=new File(FilenameUtils.normalize(tmpDst.getPath() + "/" + cfg.getHtmlPrjName()+ "/war/WEB-INF/lib"));
+  for (  String libraryName : cfg.getLibraryNames()) {
+    String libraryPath=cfg.getLibraryPath(libraryName);
+    LibraryDef libraryDef=cfg.getLibraryDef(libraryName);
+    InputStream is=new FileInputStream(libraryPath);
+    ZipInputStream zis=new ZipInputStream(is);
+    ZipEntry entry;
+    while ((entry=zis.getNextEntry()) != null) {
+      if (entry.isDirectory())       continue;
+      String name=entry.getName();
+      for (      String libElem : libraryDef.libsCommon)       if (name.endsWith(libElem))       copyEntry(zis,libElem,commonPrjLibsDir);
+      for (      String libElem : libraryDef.libsDesktop)       if (name.endsWith(libElem))       copyEntry(zis,libElem,desktopPrjLibsDir);
+      for (      String libElem : libraryDef.libsAndroid)       if (name.endsWith(libElem))       copyEntry(zis,libElem,androidPrjLibsDir);
+      for (      String libElem : libraryDef.libsHtml)       if (name.endsWith(libElem))       copyEntry(zis,libElem,htmlPrjLibsDir);
+    }
+    zis.close();
+  }
+}

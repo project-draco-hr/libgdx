@@ -1,0 +1,16 @@
+{
+  String parentPath=(String)parentNode.getUserObject();
+  String[] names=path.split("/");
+  for (int i=0; i < names.length; i++) {
+    if (i == 0)     names[i]=parentPath + "/" + names[i];
+ else     names[i]=names[i - 1] + "/" + names[i];
+    if (i == names.length - 1)     names[i]=names[i].replaceFirst("#DIR#","");
+    DefaultMutableTreeNode node=nodes.get(names[i]);
+    if (node == null) {
+      node=new DefaultMutableTreeNode(names[i]);
+      nodes.put(names[i],node);
+      if (i == 0)       parentNode.add(node);
+ else       nodes.get(names[i - 1]).add(node);
+    }
+  }
+}

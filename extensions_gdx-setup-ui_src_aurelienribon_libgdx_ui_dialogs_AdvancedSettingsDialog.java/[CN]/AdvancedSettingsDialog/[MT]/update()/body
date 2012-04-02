@@ -1,0 +1,9 @@
+{
+  cfg.commonSuffix=commonSuffixField.getText();
+  cfg.desktopSuffix=desktopSuffixField.getText();
+  cfg.androidSuffix=androidSuffixField.getText();
+  cfg.androidMinSdkVersion=androidMinSdkField.getText();
+  cfg.androidMaxSdkVersion=androidMaxSdkField.getText();
+  cfg.androidTargetSdkVersion=androidTargetSdkField.getText();
+  AppContext.inst().fireConfigChangedEvent();
+}

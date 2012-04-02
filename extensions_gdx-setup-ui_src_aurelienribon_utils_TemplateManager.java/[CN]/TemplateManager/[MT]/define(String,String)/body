@@ -1,0 +1,5 @@
+{
+  Matcher m=Pattern.compile(varPattern).matcher(variable);
+  if (!m.matches())   throw new RuntimeException("Variable '" + variable + "' contains invalid characters");
+  replacements.put(variable,replacement);
+}

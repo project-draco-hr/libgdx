@@ -1,0 +1,13 @@
+{
+  final File zipFile=new File(output);
+  DownloadDialog.Callback callback=new DownloadDialog.Callback(){
+    @Override public void completed(){
+      select(libraryName,zipFile);
+    }
+  }
+;
+  JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
+  DownloadDialog dialog=new DownloadDialog(frame,callback,input,output);
+  dialog.setLocationRelativeTo(frame);
+  dialog.setVisible(true);
+}

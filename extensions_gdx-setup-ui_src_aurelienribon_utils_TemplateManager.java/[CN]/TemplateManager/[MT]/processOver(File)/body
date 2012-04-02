@@ -1,0 +1,4 @@
+{
+  String input=FileUtils.readFileToString(file);
+  FileUtils.writeStringToFile(file,process(input));
+}

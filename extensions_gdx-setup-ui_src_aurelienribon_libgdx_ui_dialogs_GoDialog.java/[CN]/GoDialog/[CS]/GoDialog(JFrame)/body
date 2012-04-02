@@ -1,0 +1,51 @@
+{
+  super(parent,true);
+  initComponents();
+  Style.registerCssClasses(rootPanel,".rootPanel");
+  Style.registerCssClasses(title1,".titleLabel");
+  Style.registerCssClasses(title2,".titleLabel");
+  Style.registerCssClasses(importQuestion,".questionLabel");
+  Style.registerCssClasses(fixHtmlQuestion,".questionLabel");
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  Style.registerCssClasses(progressArea,".progressArea");
+  Style.apply(getContentPane(),new Style(Res.class.getResource("style.css")));
+  importQuestion.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      ImportHelpDialog dialog=new ImportHelpDialog(null);
+      dialog.setLocationRelativeTo(GoDialog.this);
+      dialog.pack();
+      dialog.setVisible(true);
+    }
+  }
+);
+  fixHtmlQuestion.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      FixHtmlHelpDialog dialog=new FixHtmlHelpDialog(null);
+      dialog.setLocationRelativeTo(GoDialog.this);
+      dialog.pack();
+      dialog.setVisible(true);
+    }
+  }
+);
+  ProjectConfiguration cfg=AppContext.inst().getConfig();
+  setup=new ProjectSetup(cfg);
+  new Thread(new Runnable(){
+    @Override public void run(){
+      try {
+        report("Decompressing projects...");
+        setup.inflateProjects();
+        report(" done\nDecompressing libraries...");
+        setup.inflateLibraries();
+        report(" done\nCopying projects...");
+        setup.copy();
+        report(" done\nCleaning...");
+        setup.clean();
+        report(" done\nAll done!");
+      }
+ catch (      final IOException ex) {
+        report("\n[error] " + ex.getMessage());
+      }
+    }
+  }
+).start();
+}

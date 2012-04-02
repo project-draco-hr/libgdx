@@ -1,0 +1,33 @@
+{
+  super(parent,true);
+  initComponents();
+  commonSuffixField.setText(cfg.commonSuffix);
+  desktopSuffixField.setText(cfg.desktopSuffix);
+  androidSuffixField.setText(cfg.androidSuffix);
+  htmlSuffixField.setText(cfg.htmlSuffix);
+  androidMinSdkField.setText(cfg.androidMinSdkVersion);
+  androidTargetSdkField.setText(cfg.androidTargetSdkVersion);
+  androidMaxSdkField.setText(cfg.androidMaxSdkVersion);
+  commonSuffixField.addMouseListener(selectOnFocusMouseListener);
+  desktopSuffixField.addMouseListener(selectOnFocusMouseListener);
+  androidSuffixField.addMouseListener(selectOnFocusMouseListener);
+  htmlSuffixField.addMouseListener(selectOnFocusMouseListener);
+  androidMinSdkField.addMouseListener(selectOnFocusMouseListener);
+  androidTargetSdkField.addMouseListener(selectOnFocusMouseListener);
+  androidMaxSdkField.addMouseListener(selectOnFocusMouseListener);
+  commonSuffixField.addKeyListener(updateOnTypeKeyListener);
+  desktopSuffixField.addKeyListener(updateOnTypeKeyListener);
+  androidSuffixField.addKeyListener(updateOnTypeKeyListener);
+  htmlSuffixField.addKeyListener(updateOnTypeKeyListener);
+  androidMinSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidTargetSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidMaxSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidMinSdkField.addKeyListener(numbersOnlyKeyListener);
+  androidTargetSdkField.addKeyListener(numbersOnlyKeyListener);
+  androidMaxSdkField.addKeyListener(numbersOnlyKeyListener);
+  Style.registerCssClasses(rootPanel,".rootPanel");
+  Style.registerCssClasses(title1,".titleLabel");
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  Style.registerCssClasses(paintedPanel2,".optionGroupPanel");
+  Style.apply(getContentPane(),new Style(Res.class.getResource("style.css")));
+}

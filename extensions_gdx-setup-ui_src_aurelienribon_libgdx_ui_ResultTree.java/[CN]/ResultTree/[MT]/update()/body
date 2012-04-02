@@ -1,0 +1,14 @@
+{
+  DefaultMutableTreeNode commonPrjNode=nodes.get("#DIR#prj-common");
+  DefaultMutableTreeNode desktopPrjNode=nodes.get("#DIR#prj-desktop");
+  DefaultMutableTreeNode androidPrjNode=nodes.get("#DIR#prj-android");
+  DefaultMutableTreeNode htmlPrjNode=nodes.get("#DIR#prj-html");
+  rootNode.removeAllChildren();
+  rootNode.add(commonPrjNode);
+  if (cfg.isDesktopIncluded)   rootNode.add(desktopPrjNode);
+  if (cfg.isAndroidIncluded)   rootNode.add(androidPrjNode);
+  if (cfg.isHtmlIncluded)   rootNode.add(htmlPrjNode);
+  updateSrc();
+  updateLibs();
+  setModel(new DefaultTreeModel(rootNode));
+}
