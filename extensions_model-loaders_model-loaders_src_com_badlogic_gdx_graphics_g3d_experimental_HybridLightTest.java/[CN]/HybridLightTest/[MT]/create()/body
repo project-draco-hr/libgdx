@@ -3,16 +3,16 @@
   for (int i=0; i < LIGHTS_NUM; i++) {
     PointLight l=new PointLight();
     l.position.set(MathUtils.random(8) - 4,MathUtils.random(6),MathUtils.random(8) - 4);
-    l.color.r=MathUtils.random();
-    l.color.b=MathUtils.random();
-    l.color.g=MathUtils.random();
-    l.intensity=LIGHT_INTESITY;
+    l.color.r=0.5f + 0.5f * MathUtils.random();
+    l.color.b=0.5f + 0.5f * MathUtils.random();
+    l.color.g=0.5f + 0.5f * MathUtils.random();
+    l.intensity=1 + MathUtils.random() * LIGHT_INTESITY;
     lightManager.addLigth(l);
   }
   lightManager.dirLight=new DirectionalLight();
-  lightManager.dirLight.color.set(0.075f,0.075f,0.08f,1);
+  lightManager.dirLight.color.set(0.15f,0.15f,0.15f,1);
   lightManager.dirLight.direction.set(-.4f,-1,0.03f).nor();
-  lightManager.ambientLight.set(.14f,0.09f,0.09f,0f);
+  lightManager.ambientLight.set(.1f,0.09f,0.09f,0f);
   cam=new PerspectiveCamera(45,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.near=0.1f;
   cam.far=64f;
@@ -27,7 +27,7 @@
   model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/sphere.obj"));
   model2=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/models/basicscene.obj"));
   instance=new StillModelNode();
-  instance.getTransform().translate(0,0,-5);
+  instance.getTransform().translate(2,0,-5);
   instance2=new StillModelNode();
   BoundingBox box=new BoundingBox();
   model.getBoundingBox(box);
@@ -36,13 +36,25 @@
   instance2.radius=box.getDimensions().len() / 2;
   protoRenderer=new PrototypeRendererGL20(lightManager);
   protoRenderer.cam=cam;
-  MaterialAttribute c1=new ColorAttribute(new Color(0.5f,0.35f,0.95f,0.6f),ColorAttribute.diffuse);
-  MaterialAttribute c2=new ColorAttribute(new Color(0.25f,0.5f,0.75f,0.35f),ColorAttribute.specular);
+  MaterialAttribute c1=new ColorAttribute(new Color(0.75f,0.75f,0.75f,0.6f),ColorAttribute.diffuse);
+  MaterialAttribute c2=new ColorAttribute(new Color(0.35f,0.35f,0.35f,0.35f),ColorAttribute.specular);
   MaterialAttribute t1=new TextureAttribute(texture,0,TextureAttribute.diffuseTexture);
   MaterialAttribute t2=new TextureAttribute(texture2,1,TextureAttribute.specularTexture);
-  MaterialAttribute b=new BlendingAttribute(BlendingAttribute.translucent);
-  Material material2=new Material("basic",c1,c2,t1,t2);
+  Material material2=new Material("basic",c2,t1,t2);
   model2.setMaterial(material2);
-  Material material=new Material("shiningBall",c1,c2,b);
+  Material material=new Material("shiningBall",c1,c2);
   model.setMaterial(material);
+  model3=ModelLoaderRegistry.loadKeyframedModel(Gdx.files.internal("data/models/knight.md2"));
+  animInstance=new AnimatedModelNode();
+  animInstance.animation=model3.getAnimations()[0].name;
+  animInstance.looping=true;
+  model3.getBoundingBox(box);
+  animInstance.radius=box.getDimensions().len() / 2;
+  animInstance.getTransform().trn(-1.75f,0f,-5.5f);
+  animInstance.getTransform().scale(0.05f,0.05f,0.05f);
+  texture3=new Texture(Gdx.files.internal("data/models/knight.jpg"),Format.RGB565,true);
+  texture3.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
+  MaterialAttribute t3=new TextureAttribute(texture3,0,TextureAttribute.diffuseTexture);
+  Material material3=new Material("",c2,t3,t2);
+  model3.setMaterial(material3);
 }

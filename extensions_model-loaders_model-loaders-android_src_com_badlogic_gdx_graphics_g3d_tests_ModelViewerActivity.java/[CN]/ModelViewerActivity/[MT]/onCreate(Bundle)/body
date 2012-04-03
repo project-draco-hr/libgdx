@@ -4,5 +4,6 @@
   config.useAccelerometer=false;
   config.useCompass=false;
   config.useWakelock=true;
-  initialize(new HybridLightTest(),true);
+  config.useGL20=true;
+  initialize(new HybridLightTest(),config);
 }

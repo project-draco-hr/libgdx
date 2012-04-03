@@ -1,7 +1,7 @@
 {
-  Texture texture=new Texture(Gdx.files.internal("data/ninja.jpg"));
-  Material mat=new Material("mat",new TextureAttribute(texture,0,"s_tex"));
-  model=new OgreXmlLoader().load(Gdx.files.internal("data/ninja.mesh.xml"),Gdx.files.internal("data/ninja.skeleton.xml"));
+  Texture texture=new Texture(Gdx.files.internal("data/models/ninja.jpg"));
+  Material mat=new Material("mat",new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(Color.CYAN,ColorAttribute.diffuse));
+  model=new OgreXmlLoader().load(Gdx.files.internal("data/models/ninja.mesh.xml"),Gdx.files.internal("data/models/ninja.skeleton.xml"));
   model.setMaterial(mat);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   BoundingBox bounds=model.subMeshes[0].mesh.calculateBoundingBox();
