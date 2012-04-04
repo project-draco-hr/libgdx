@@ -1,0 +1,16 @@
+{
+  final StillModelNode copy=new StillModelNode();
+  if (materials != null) {
+    final int len=materials.length;
+    Material[] mats=new Material[len];
+    for (int i=0; i < len; i++) {
+      mats[i]=materials[i].copy();
+    }
+    copy.materials=mats;
+  }
+  copy.matrix.set(matrix.val);
+  copy.origin.set(origin);
+  copy.radius=radius;
+  copy.transformedPosition.set(transformedPosition);
+  return copy;
+}
