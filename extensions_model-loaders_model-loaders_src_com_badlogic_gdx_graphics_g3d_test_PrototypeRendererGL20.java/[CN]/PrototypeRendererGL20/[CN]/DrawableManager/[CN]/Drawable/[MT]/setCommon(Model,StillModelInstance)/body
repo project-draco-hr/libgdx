@@ -1,10 +1,11 @@
 {
   this.model=model;
-  transform.set(instance.getTransform());
+  transform.set(instance.getTransform().val);
   sortCenter.set(instance.getSortCenter());
   boundingSphereRadius=instance.getBoundingSphereRadius();
   if (instance.getMaterials() != null) {
     for (    Material material : instance.getMaterials()) {
+      if (material.shader == null)       material.shader=materialShaderHandler.getShader(material);
       Material copy=materialPool.obtain();
       copy.setPooled(material);
       materials.add(copy);
@@ -12,8 +13,11 @@
   }
  else {
     for (    SubMesh subMesh : model.getSubMeshes()) {
+      final Material material=subMesh.material;
+      if (material.shader == null)       material.shader=materialShaderHandler.getShader(material);
       Material copy=materialPool.obtain();
-      copy.setPooled(subMesh.material);
+      copy.setPooled(material);
+      materials.add(copy);
     }
   }
 }

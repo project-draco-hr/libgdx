@@ -1,6 +1,4 @@
 {
   if (cam != null)   if (!cam.frustum.sphereInFrustum(instance.getSortCenter(),instance.getBoundingSphereRadius()))   return;
-  model.setAnimation(instance.getAnimation(),instance.getAnimationTime(),instance.isLooping());
-  modelQueue.add(model);
-  modelInstances.add(instance);
+  drawableManager.add(model,instance);
 }

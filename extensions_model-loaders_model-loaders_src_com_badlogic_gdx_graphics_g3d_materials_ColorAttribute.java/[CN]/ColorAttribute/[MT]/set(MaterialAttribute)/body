@@ -1,5 +1,9 @@
 {
   ColorAttribute colAttr=(ColorAttribute)attr;
-  colAttr.name=name;
-  colAttr.color.set(color);
+  name=colAttr.name;
+  final Color c=colAttr.color;
+  color.r=c.r;
+  color.g=c.g;
+  color.b=c.b;
+  color.a=c.a;
 }

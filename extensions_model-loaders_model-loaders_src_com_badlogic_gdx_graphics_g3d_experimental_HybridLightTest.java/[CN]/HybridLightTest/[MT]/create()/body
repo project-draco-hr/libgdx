@@ -43,7 +43,7 @@
   Material material2=new Material("basic",c2,t1,t2);
   model2.setMaterial(material2);
   MaterialAttribute b=new BlendingAttribute(BlendingAttribute.translucent);
-  Material material=new Material("shiningBall",c1,c2,b);
+  Material material=new Material("shiningBall",c1,c2);
   model.setMaterial(material);
   model3=ModelLoaderRegistry.loadKeyframedModel(Gdx.files.internal("data/models/knight.md2"));
   animInstance=new AnimatedModelNode();
@@ -57,6 +57,6 @@
   texture3=new Texture(Gdx.files.internal("data/models/knight.jpg"),Format.RGB565,true);
   texture3.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   MaterialAttribute t3=new TextureAttribute(texture3,0,TextureAttribute.diffuseTexture);
-  Material material3=new Material("",c2,t3,t2);
+  Material material3=new Material("s",c2,t3,t2);
   model3.setMaterial(material3);
 }

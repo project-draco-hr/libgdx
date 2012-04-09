@@ -1,5 +1,6 @@
 {
   name=material.name;
+  shader=material.shader;
   attributes.clear();
   for (  MaterialAttribute attr : material.attributes) {
     if (attr instanceof BlendingAttribute)     needBlending=true;

@@ -1,6 +1,6 @@
 {
   BlendingAttribute blendAttr=(BlendingAttribute)attr;
-  blendAttr.name=name;
-  blendAttr.blendDstFunc=blendDstFunc;
-  blendAttr.blendSrcFunc=blendSrcFunc;
+  name=blendAttr.name;
+  blendDstFunc=blendAttr.blendDstFunc;
+  blendSrcFunc=blendAttr.blendSrcFunc;
 }

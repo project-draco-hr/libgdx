@@ -1,14 +1,14 @@
 {
-  for (  Drawable drawable : drawables) {
-    for (    Material material : drawable.materials) {
-      for (      MaterialAttribute attr : material.attributes) {
-        attr.free();
+  while (drawables.size > 0) {
+    final Drawable drawable=drawables.pop();
+    while (drawable.materials.size > 0) {
+      final Material material=drawable.materials.pop();
+      while (material.attributes.size > 0) {
+        material.attributes.pop().free();
       }
-      material.attributes.clear();
       material.shader=null;
       materialPool.free(material);
     }
-    drawable.materials.clear();
     drawablePool.free(drawable);
   }
 }

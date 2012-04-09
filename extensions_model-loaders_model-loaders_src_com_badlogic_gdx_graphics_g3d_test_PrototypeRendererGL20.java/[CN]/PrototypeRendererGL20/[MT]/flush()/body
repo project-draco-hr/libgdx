@@ -1,17 +1,16 @@
 {
   Material currentMaterial=null;
-  for (int i=0; i < modelQueue.size; i++) {
-    final StillModelInstance instance=modelInstances.get(i);
-    final Vector3 center=instance.getSortCenter();
+  for (  Drawable drawable : drawableManager.drawables) {
+    final Vector3 center=drawable.sortCenter;
     lightManager.calculateLights(center.x,center.y,center.z);
-    final Matrix4 modelMatrix=instance.getTransform();
+    final Matrix4 modelMatrix=drawable.transform;
     normalMatrix.set(modelMatrix);
-    final SubMesh subMeshes[]=modelQueue.get(i).getSubMeshes();
-    final Material materials[]=instance.getMaterials();
+    if (drawable.isAnimated)     ((AnimatedModel)(drawable.model)).setAnimation(drawable.animation,drawable.animationTime,drawable.isLooping);
+    final SubMesh subMeshes[]=drawable.model.getSubMeshes();
     boolean matrixChanged=true;
     for (int j=0; j < subMeshes.length; j++) {
       final SubMesh subMesh=subMeshes[j];
-      final Material material=materials != null ? materials[j] : subMesh.material;
+      final Material material=drawable.materials.get(j);
       if (material.needBlending) {
         addTranparentQueu(material,subMesh,modelMatrix,center);
         continue;
@@ -45,8 +44,6 @@
       subMesh.getMesh().render(currentShader,subMesh.primitiveType);
     }
   }
-  modelQueue.clear();
-  modelInstances.clear();
   if (blendQueue.size > 0)   renderBlended();
   if (currentShader != null) {
     currentShader.end();
@@ -54,4 +51,5 @@
   }
   for (int i=0, len=TextureAttribute.MAX_TEXTURE_UNITS; i < len; i++)   lastTexture[i]=null;
   drawing=false;
+  drawableManager.clear();
 }
