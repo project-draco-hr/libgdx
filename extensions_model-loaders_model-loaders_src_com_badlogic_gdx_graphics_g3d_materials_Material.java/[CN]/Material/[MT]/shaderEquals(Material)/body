@@ -1,13 +1,13 @@
 {
   if (this == other)   return true;
-  int len=this.attributes.length;
-  if (len != other.attributes.length)   return false;
+  int len=this.attributes.size;
+  if (len != other.attributes.size)   return false;
   for (int i=0; i < len; i++) {
-    final String str=this.attributes[i].name;
+    final String str=this.attributes.get(i).name;
     if (str == null)     return false;
     boolean matchFound=false;
     for (int j=0; j < len; j++) {
-      if (str.equals(other.attributes[j].name)) {
+      if (str.equals(other.attributes.get(j).name)) {
         matchFound=true;
         break;
       }

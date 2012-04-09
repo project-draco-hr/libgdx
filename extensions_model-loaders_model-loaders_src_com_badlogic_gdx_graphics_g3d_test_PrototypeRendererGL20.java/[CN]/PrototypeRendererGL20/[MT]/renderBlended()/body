@@ -16,8 +16,8 @@
     currentShader.setUniformMatrix("u_modelMatrix",instance.modelMatrix,false);
     if ((material != null) && (material != currentMaterial)) {
       currentMaterial=material;
-      for (int k=0, len=currentMaterial.attributes.length; k < len; k++) {
-        final MaterialAttribute atrib=currentMaterial.attributes[k];
+      for (int k=0, len=currentMaterial.attributes.size; k < len; k++) {
+        final MaterialAttribute atrib=currentMaterial.attributes.get(k);
         if (atrib instanceof BlendingAttribute) {
           final BlendingAttribute blending=(BlendingAttribute)atrib;
           if (blending.blendSrcFunc != lastSrcBlend || blending.blendDstFunc != lastDstBlend) {

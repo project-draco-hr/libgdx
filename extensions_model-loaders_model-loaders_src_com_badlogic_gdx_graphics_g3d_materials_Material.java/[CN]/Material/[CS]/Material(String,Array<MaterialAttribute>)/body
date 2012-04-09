@@ -1,6 +1,6 @@
 {
   this.name=name;
-  this.attributes=new Array<MaterialAttribute>(attributes);
+  this.attributes=attributes;
   boolean blendingNeeded=false;
   for (int i=0; i < this.attributes.size; i++) {
     if (this.attributes.get(i) instanceof BlendingAttribute)     blendingNeeded=true;
