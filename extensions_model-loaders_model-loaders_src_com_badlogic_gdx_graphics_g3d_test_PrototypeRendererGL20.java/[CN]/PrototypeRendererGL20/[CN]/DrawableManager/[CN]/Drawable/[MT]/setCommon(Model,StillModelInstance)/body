@@ -1,6 +1,6 @@
 {
   this.model=model;
-  transform.set(instance.getTransform().val);
+  System.arraycopy(instance.getTransform().val,0,transform.val,0,16);
   sortCenter.set(instance.getSortCenter());
   boundingSphereRadius=instance.getBoundingSphereRadius();
   if (instance.getMaterials() != null) {

@@ -40,10 +40,10 @@
   MaterialAttribute c2=new ColorAttribute(new Color(0.35f,0.35f,0.35f,0.35f),ColorAttribute.specular);
   MaterialAttribute t1=new TextureAttribute(texture,0,TextureAttribute.diffuseTexture);
   MaterialAttribute t2=new TextureAttribute(texture2,1,TextureAttribute.specularTexture);
+  MaterialAttribute b=new BlendingAttribute(BlendingAttribute.translucent);
   Material material2=new Material("basic",c2,t1,t2);
   model2.setMaterial(material2);
-  MaterialAttribute b=new BlendingAttribute(BlendingAttribute.translucent);
-  Material material=new Material("shiningBall",c1,c2);
+  Material material=new Material("shiningBall",c1,c2,b);
   model.setMaterial(material);
   model3=ModelLoaderRegistry.loadKeyframedModel(Gdx.files.internal("data/models/knight.md2"));
   animInstance=new AnimatedModelNode();

@@ -1,6 +1,7 @@
 {
   Material currentMaterial=null;
-  for (  Drawable drawable : drawableManager.drawables) {
+  for (int i=0, size=drawableManager.drawables.size; i < size; i++) {
+    final Drawable drawable=drawableManager.drawables.get(i);
     final Vector3 center=drawable.sortCenter;
     lightManager.calculateLights(center.x,center.y,center.z);
     final Matrix4 modelMatrix=drawable.transform;

@@ -1,5 +1,4 @@
 {
-  if (material.shader == null)   material.shader=materialShaderHandler.getShader(material);
   if (material.shader == currentShader)   return false;
   currentShader=material.shader;
   currentShader.begin();
