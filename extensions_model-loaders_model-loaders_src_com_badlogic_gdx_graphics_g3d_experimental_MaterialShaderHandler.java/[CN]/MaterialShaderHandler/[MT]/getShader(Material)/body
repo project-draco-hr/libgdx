@@ -1,7 +1,7 @@
 {
   for (int i=0; i < materialsWithShader.size; i++) {
-    if (material.shaderEquals(materialsWithShader.items[i])) {
-      material.shader=materialsWithShader.items[i].shader;
+    if (material.shaderEquals(materialsWithShader.get(i))) {
+      material.shader=materialsWithShader.get(i).shader;
       return material.shader;
     }
   }
