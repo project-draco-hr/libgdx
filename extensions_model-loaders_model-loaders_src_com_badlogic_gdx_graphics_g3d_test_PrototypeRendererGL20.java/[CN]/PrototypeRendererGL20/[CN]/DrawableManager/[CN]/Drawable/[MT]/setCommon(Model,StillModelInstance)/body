@@ -1,0 +1,19 @@
+{
+  this.model=model;
+  transform.set(instance.getTransform());
+  sortCenter.set(instance.getSortCenter());
+  boundingSphereRadius=instance.getBoundingSphereRadius();
+  if (instance.getMaterials() != null) {
+    for (    Material material : instance.getMaterials()) {
+      Material copy=materialPool.obtain();
+      copy.setPooled(material);
+      materials.add(copy);
+    }
+  }
+ else {
+    for (    SubMesh subMesh : model.getSubMeshes()) {
+      Material copy=materialPool.obtain();
+      copy.setPooled(subMesh.material);
+    }
+  }
+}

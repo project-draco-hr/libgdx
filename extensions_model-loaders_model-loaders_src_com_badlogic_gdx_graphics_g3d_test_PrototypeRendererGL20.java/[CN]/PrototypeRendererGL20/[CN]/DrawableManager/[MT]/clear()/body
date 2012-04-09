@@ -1,0 +1,14 @@
+{
+  for (  Drawable drawable : drawables) {
+    for (    Material material : drawable.materials) {
+      for (      MaterialAttribute attr : material.attributes) {
+        attr.free();
+      }
+      material.attributes.clear();
+      material.shader=null;
+      materialPool.free(material);
+    }
+    drawable.materials.clear();
+    drawablePool.free(drawable);
+  }
+}

@@ -1,0 +1,8 @@
+{
+  name=material.name;
+  attributes.clear();
+  for (  MaterialAttribute attr : material.attributes) {
+    if (attr instanceof BlendingAttribute)     needBlending=true;
+    attributes.add(attr.pooledCopy());
+  }
+}
