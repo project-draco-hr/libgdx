@@ -3,11 +3,11 @@
   final float delta=Gdx.graphics.getDeltaTime();
   camController.update(delta);
   timer+=delta;
-  for (int i=0; i < lightManager.pointLights.size; i++) {
+  for (int i=0; i < 1 && i < lightManager.pointLights.size; i++) {
     final Vector3 v=lightManager.pointLights.get(i).position;
-    v.x+=MathUtils.sin(timer) * 0.01f;
-    v.z+=MathUtils.cos(timer) * 0.01f;
-    lightManager.pointLights.get(i).color.b=MathUtils.sin(timer) * 0.25f + 0.25f;
+    v.set(animInstance.getSortCenter());
+    v.x+=MathUtils.sin(timer);
+    v.z+=MathUtils.cos(timer);
   }
   animInstance.time+=delta;
   if (Gdx.input.justTouched()) {
@@ -24,7 +24,6 @@
   Gdx.gl.glCullFace(GL10.GL_FRONT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
   Gdx.gl.glDepthMask(true);
-  Gdx.gl.glClearColor(0,0.1f,0.2f,0);
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT | (Gdx.graphics.getBufferFormat().coverageSampling ? GL20.GL_COVERAGE_BUFFER_BIT_NV : 0));
   protoRenderer.begin();
   protoRenderer.draw(model3,animInstance);
