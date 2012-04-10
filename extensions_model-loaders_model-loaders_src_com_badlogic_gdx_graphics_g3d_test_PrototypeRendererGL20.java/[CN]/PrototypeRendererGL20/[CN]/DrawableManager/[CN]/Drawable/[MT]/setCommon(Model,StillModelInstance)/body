@@ -3,21 +3,33 @@
   System.arraycopy(instance.getTransform().val,0,transform.val,0,16);
   sortCenter.set(instance.getSortCenter());
   boundingSphereRadius=instance.getBoundingSphereRadius();
+  Material lastMat=null;
+  Material lastCopy=null;
   if (instance.getMaterials() != null) {
     for (    Material material : instance.getMaterials()) {
       if (material.shader == null)       material.shader=materialShaderHandler.getShader(material);
-      Material copy=materialPool.obtain();
-      copy.setPooled(material);
-      materials.add(copy);
+      if (material == lastMat)       materials.add(lastCopy);
+ else {
+        final Material copy=materialPool.obtain();
+        copy.setPooled(material);
+        materials.add(copy);
+        lastMat=material;
+        lastCopy=copy;
+      }
     }
   }
  else {
     for (    SubMesh subMesh : model.getSubMeshes()) {
       final Material material=subMesh.material;
       if (material.shader == null)       material.shader=materialShaderHandler.getShader(material);
-      Material copy=materialPool.obtain();
-      copy.setPooled(material);
-      materials.add(copy);
+      if (material == lastMat)       materials.add(lastCopy);
+ else {
+        final Material copy=materialPool.obtain();
+        copy.setPooled(material);
+        materials.add(copy);
+        lastMat=material;
+        lastCopy=copy;
+      }
     }
   }
 }
