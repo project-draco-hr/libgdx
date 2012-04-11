@@ -56,7 +56,7 @@
         }
         animations.put(animationName,new KeyframedAnimation(animationName,frameDuration,keyframes));
       }
-      Mesh mesh=new Mesh(false,numVertices,numIndices,vertAttribs);
+      Mesh mesh=new Mesh(VertexDataType.VertexArray,false,numVertices,numIndices,vertAttribs);
       meshes[i]=new KeyframedSubMesh(meshName,mesh,vertexData,animations,animatedComponents,primitiveType);
       mesh.setVertices(vertexData);
       mesh.setIndices(indexData);
