@@ -39,10 +39,11 @@
   protoRenderer.cam=cam;
   MaterialAttribute c1=new ColorAttribute(new Color(0.75f,0.75f,0.75f,0.6f),ColorAttribute.diffuse);
   MaterialAttribute c2=new ColorAttribute(new Color(0.35f,0.35f,0.35f,0.35f),ColorAttribute.specular);
+  MaterialAttribute c3=new ColorAttribute(new Color(0.2f,0.15f,0.15f,1.0f),ColorAttribute.rim);
   MaterialAttribute t1=new TextureAttribute(texture,0,TextureAttribute.diffuseTexture);
   MaterialAttribute t2=new TextureAttribute(texture2,1,TextureAttribute.specularTexture);
   MaterialAttribute b=new BlendingAttribute(BlendingAttribute.translucent);
-  Material material2=new Material("basic",c2,t1,t2);
+  Material material2=new Material("basic",c2,t1);
   model2.setMaterial(material2);
   Material material=new Material("shiningBall",c1,c2);
   model.setMaterial(material);
@@ -58,6 +59,6 @@
   texture3=new Texture(Gdx.files.internal("data/models/knight.jpg"),Format.RGB565,true);
   texture3.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   MaterialAttribute t3=new TextureAttribute(texture3,0,TextureAttribute.diffuseTexture);
-  Material material3=new Material("s",c2,t3,t2);
+  Material material3=new Material("s",t2,t3,c3);
   model3.setMaterial(material3);
 }
