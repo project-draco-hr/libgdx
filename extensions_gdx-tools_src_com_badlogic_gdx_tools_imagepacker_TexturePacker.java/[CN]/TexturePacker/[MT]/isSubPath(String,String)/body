@@ -1,0 +1,5 @@
+{
+  if (subPath.length() < path.length())   return false;
+  String subPathSubString=subPath.substring(0,path.length());
+  return subPathSubString.equals(path);
+}

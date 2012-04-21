@@ -6,12 +6,18 @@
     if (files == null)     return;
     boolean noneHaveChanged=true;
     int childCountNow=0;
+    boolean useAbsolutePaths=true;
+    if (settings.incrementalFilePath != null)     useAbsolutePaths=false;
     for (    File file : files) {
       if (file.isDirectory())       continue;
       String path=file.getAbsolutePath();
       Long crcOld=settings.crcs.get(path);
       long crcNow=crc(file);
       if (crcOld == null || crcOld != crcNow)       noneHaveChanged=false;
+      if (!useAbsolutePaths) {
+        String rootFolderAbsolutePath=rootDir.getAbsolutePath();
+        if (isSubPath(rootFolderAbsolutePath,path))         path=removeSubPath(rootFolderAbsolutePath,path);
+      }
       settings.crcs.put(path,crcNow);
       childCountNow++;
     }
@@ -81,5 +87,5 @@
   }
   File[] files=inputDir.listFiles();
   if (files == null)   return;
-  for (  File file : files)   if (file.isDirectory())   process(settings,file,outputDir,packFile);
+  for (  File file : files)   if (file.isDirectory())   process(settings,rootDir,file,outputDir,packFile);
 }

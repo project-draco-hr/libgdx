@@ -10,7 +10,9 @@
     File incrmentalFile=null;
     if (settings.incremental && packFile.exists()) {
       settings.crcs.clear();
-      incrmentalFile=new File(System.getProperty("user.home") + "/.texturepacker/" + hash(inputDir.getAbsolutePath()));
+      String incrementalFilePath=settings.incrementalFilePath;
+      if (incrementalFilePath == null)       incrementalFilePath=System.getProperty("user.home") + "/.texturepacker/" + hash(inputDir.getAbsolutePath());
+      incrmentalFile=new File(incrementalFilePath);
       if (incrmentalFile.exists()) {
         BufferedReader reader=new BufferedReader(new FileReader(incrmentalFile));
         while (true) {
@@ -46,7 +48,7 @@
       reader.close();
     }
     packFile.delete();
-    process(settings,inputDir,outputDir,packFile);
+    process(settings,inputDir,inputDir,outputDir,packFile);
     if (incrmentalFile != null) {
       incrmentalFile.getParentFile().mkdirs();
       FileWriter writer=new FileWriter(incrmentalFile);
