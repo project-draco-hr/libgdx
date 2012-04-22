@@ -2,7 +2,7 @@
   for (  Page page : pages) {
     if (page.texture == null) {
       if (page.rects.size != 0 && page.addedRects.size > 0) {
-        page.texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),false)){
+        page.texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),useMipMaps)){
           @Override public void dispose(){
             super.dispose();
           }

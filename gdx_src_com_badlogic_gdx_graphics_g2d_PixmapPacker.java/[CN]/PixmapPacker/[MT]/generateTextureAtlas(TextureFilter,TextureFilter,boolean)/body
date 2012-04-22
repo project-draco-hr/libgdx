@@ -2,7 +2,7 @@
   TextureAtlas atlas=new TextureAtlas();
   for (  Page page : pages) {
     if (page.rects.size != 0) {
-      Texture texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),true)){
+      Texture texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),useMipMaps)){
         @Override public void dispose(){
           super.dispose();
         }
