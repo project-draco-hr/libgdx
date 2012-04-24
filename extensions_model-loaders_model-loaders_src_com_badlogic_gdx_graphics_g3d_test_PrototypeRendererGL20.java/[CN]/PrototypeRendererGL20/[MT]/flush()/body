@@ -1,5 +1,4 @@
 {
-  Material currentMaterial=null;
   for (int i=0, size=drawableManager.drawables.size; i < size; i++) {
     final Drawable drawable=drawableManager.drawables.get(i);
     final Vector3 center=drawable.sortCenter;
@@ -12,21 +11,19 @@
     for (int j=0; j < subMeshes.length; j++) {
       final SubMesh subMesh=subMeshes[j];
       final Material material=drawable.materials.get(j);
-      if (material.needBlending) {
+      if (material.isNeedBlending()) {
         addTranparentQueu(material,subMesh,modelMatrix,center);
         continue;
       }
       final boolean shaderChanged=bindShader(material);
-      if (shaderChanged)       currentMaterial=null;
       if (shaderChanged || matrixChanged) {
         currentShader.setUniformMatrix("u_normalMatrix",normalMatrix,false);
         currentShader.setUniformMatrix("u_modelMatrix",modelMatrix,false);
         matrixChanged=false;
       }
-      if ((material != null) && (material != currentMaterial)) {
-        currentMaterial=material;
-        for (int k=0, len=currentMaterial.attributes.size; k < len; k++) {
-          final MaterialAttribute atrib=currentMaterial.attributes.get(k);
+      if ((material != null)) {
+        for (int k=0, len=material.attributes.size; k < len; k++) {
+          final MaterialAttribute atrib=material.attributes.get(k);
           if (atrib instanceof TextureAttribute) {
             final TextureAttribute texAtrib=(TextureAttribute)atrib;
             if (!texAtrib.texturePortionEquals(lastTexture[texAtrib.unit])) {

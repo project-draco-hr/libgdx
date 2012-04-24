@@ -1,6 +1,7 @@
 {
-  if (material.shader == currentShader)   return false;
-  currentShader=material.shader;
+  ShaderProgram shader=material.getShader();
+  if (shader == currentShader)   return false;
+  currentShader=shader;
   currentShader.begin();
   lightManager.applyGlobalLights(currentShader);
   lightManager.applyLights(currentShader);

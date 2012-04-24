@@ -2,7 +2,6 @@
   Gdx.gl.glEnable(GL10.GL_BLEND);
   Gdx.gl.glDepthMask(false);
   blendQueue.sort();
-  Material currentMaterial=null;
   int lastSrcBlend=-1;
   int lastDstBlend=-1;
   for (int i=0; i < blendQueue.size; i++) {
@@ -11,13 +10,11 @@
     lightManager.calculateLights(instance.center.x,instance.center.y,instance.center.z);
     normalMatrix.set(instance.modelMatrix);
     final boolean shaderChanged=bindShader(material);
-    if (shaderChanged)     currentMaterial=null;
     currentShader.setUniformMatrix("u_normalMatrix",normalMatrix,false);
     currentShader.setUniformMatrix("u_modelMatrix",instance.modelMatrix,false);
-    if ((material != null) && (material != currentMaterial)) {
-      currentMaterial=material;
-      for (int k=0, len=currentMaterial.attributes.size; k < len; k++) {
-        final MaterialAttribute atrib=currentMaterial.attributes.get(k);
+    if ((material != null)) {
+      for (int k=0, len=material.attributes.size; k < len; k++) {
+        final MaterialAttribute atrib=material.attributes.get(k);
         if (atrib instanceof BlendingAttribute) {
           final BlendingAttribute blending=(BlendingAttribute)atrib;
           if (blending.blendSrcFunc != lastSrcBlend || blending.blendDstFunc != lastDstBlend) {

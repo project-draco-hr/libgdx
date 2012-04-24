@@ -1,11 +1,9 @@
 {
   for (int i=0; i < materialsWithShader.size; i++) {
     if (material.shaderEquals(materialsWithShader.get(i))) {
-      material.shader=materialsWithShader.get(i).shader;
-      return material.shader;
+      return materialsWithShader.get(i).getShader();
     }
   }
-  material.shader=ShaderFactory.createShader(material,lightManager);
   materialsWithShader.add(material);
-  return material.shader;
+  return ShaderFactory.createShader(material,lightManager);
 }

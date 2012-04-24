@@ -1,8 +1,8 @@
 {
   for (int i=0; i < materialsWithShader.size; i++) {
-    if (materialsWithShader.get(i).shader != null) {
-      materialsWithShader.get(i).shader.dispose();
-      materialsWithShader.get(i).shader=null;
+    if (materialsWithShader.get(i).getShader() != null) {
+      materialsWithShader.get(i).getShader().dispose();
+      materialsWithShader.get(i).resetShader();
     }
   }
 }

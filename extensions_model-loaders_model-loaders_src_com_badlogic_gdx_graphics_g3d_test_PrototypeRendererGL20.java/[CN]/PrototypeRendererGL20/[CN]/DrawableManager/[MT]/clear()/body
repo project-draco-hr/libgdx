@@ -6,7 +6,7 @@
       while (material.attributes.size > 0) {
         material.attributes.pop().free();
       }
-      material.shader=null;
+      material.resetShader();
       materialPool.free(material);
     }
     drawablePool.free(drawable);
