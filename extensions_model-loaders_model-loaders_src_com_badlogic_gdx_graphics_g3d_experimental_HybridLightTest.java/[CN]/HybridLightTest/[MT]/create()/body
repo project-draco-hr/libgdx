@@ -37,7 +37,7 @@
   instance2.matrix.scale(2,1,2);
   protoRenderer=new PrototypeRendererGL20(lightManager);
   protoRenderer.cam=cam;
-  MaterialAttribute c1=new ColorAttribute(new Color(0.75f,0.75f,0.75f,0.6f),ColorAttribute.diffuse);
+  MaterialAttribute c1=new ColorAttribute(new Color(0.75f,0.75f,0.75f,0.3f),ColorAttribute.diffuse);
   MaterialAttribute c2=new ColorAttribute(new Color(0.35f,0.35f,0.35f,0.35f),ColorAttribute.specular);
   MaterialAttribute c3=new ColorAttribute(new Color(0.2f,1f,0.15f,1.0f),ColorAttribute.rim);
   MaterialAttribute t1=new TextureAttribute(texture,0,TextureAttribute.diffuseTexture);
@@ -59,6 +59,6 @@
   texture3=new Texture(Gdx.files.internal("data/models/knight.jpg"),Format.RGB565,true);
   texture3.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
   MaterialAttribute t3=new TextureAttribute(texture3,0,TextureAttribute.diffuseTexture);
-  Material material3=new Material("s",t2,t3,c3);
+  Material material3=new Material("s",t2,t3);
   model3.setMaterial(material3);
 }

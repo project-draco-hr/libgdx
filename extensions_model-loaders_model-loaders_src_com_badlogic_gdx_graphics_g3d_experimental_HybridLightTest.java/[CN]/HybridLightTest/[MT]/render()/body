@@ -38,5 +38,7 @@
   Gdx.gl.glCullFace(GL10.GL_BACK);
   protoRenderer.begin();
   protoRenderer.draw(model2,instance2);
+  protoRenderer.draw(model,instance2);
+  protoRenderer.draw(model,instance);
   protoRenderer.end();
 }

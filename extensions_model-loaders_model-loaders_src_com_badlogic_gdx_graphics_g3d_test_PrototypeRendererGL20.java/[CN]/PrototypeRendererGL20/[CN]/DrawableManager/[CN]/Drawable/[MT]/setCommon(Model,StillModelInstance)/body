@@ -2,6 +2,7 @@
   this.model=model;
   System.arraycopy(instance.getTransform().val,0,transform.val,0,16);
   sortCenter.set(instance.getSortCenter());
+  distance=(int)(PRIORITY_DISCRETE_STEPS * sortCenter.dst(cam.position));
   boundingSphereRadius=instance.getBoundingSphereRadius();
   if (instance.getMaterials() != null) {
     for (    Material material : instance.getMaterials()) {
@@ -18,6 +19,13 @@
       final Material copy=materialPool.obtain();
       copy.setPooled(material);
       materials.add(copy);
+    }
+  }
+  blending=false;
+  for (  Material mat : materials) {
+    if (mat.isNeedBlending()) {
+      blending=true;
+      break;
     }
   }
 }

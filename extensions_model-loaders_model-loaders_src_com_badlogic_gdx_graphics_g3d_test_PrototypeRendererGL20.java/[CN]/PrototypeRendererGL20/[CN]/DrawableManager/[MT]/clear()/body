@@ -1,14 +1,4 @@
 {
-  while (drawables.size > 0) {
-    final Drawable drawable=drawables.pop();
-    while (drawable.materials.size > 0) {
-      final Material material=drawable.materials.pop();
-      while (material.attributes.size > 0) {
-        material.attributes.pop().free();
-      }
-      material.resetShader();
-      materialPool.free(material);
-    }
-    drawablePool.free(drawable);
-  }
+  clear(drawables);
+  clear(drawablesBlended);
 }
