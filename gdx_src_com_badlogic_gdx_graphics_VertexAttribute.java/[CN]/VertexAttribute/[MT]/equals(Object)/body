@@ -1,0 +1,8 @@
+{
+  if (obj == null)   return false;
+  if (!(obj instanceof VertexAttribute)) {
+    return false;
+  }
+  final VertexAttribute other=(VertexAttribute)obj;
+  return this.usage == other.usage && this.numComponents == other.numComponents && this.alias.equals(other.alias);
+}
