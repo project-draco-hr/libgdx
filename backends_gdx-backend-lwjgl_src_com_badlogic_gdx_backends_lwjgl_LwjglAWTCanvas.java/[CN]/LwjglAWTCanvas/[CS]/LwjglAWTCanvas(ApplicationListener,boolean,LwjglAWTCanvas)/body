@@ -50,11 +50,14 @@
  else {
     audio=null;
   }
-  files=new LwjglFiles();
+  if (Gdx.files == null) {
+    files=new LwjglFiles();
+    Gdx.files=files;
+  }
+ else {
+    files=null;
+  }
   input=new LwjglAWTInput(canvas);
   this.listener=listener;
-  Gdx.app=this;
-  Gdx.graphics=graphics;
-  Gdx.files=files;
-  Gdx.input=input;
+  setGlobals();
 }

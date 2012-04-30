@@ -1,7 +1,7 @@
 {
   Gdx.app=this;
-  Gdx.audio=audio;
-  Gdx.files=files;
+  if (audio != null)   Gdx.audio=audio;
+  if (files != null)   Gdx.files=files;
   Gdx.graphics=graphics;
   Gdx.input=input;
 }
