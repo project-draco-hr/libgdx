@@ -1,9 +1,9 @@
 {
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   Container container=getContentPane();
-  LwjglAWTCanvas canvas1=new LwjglAWTCanvas(new GlListener(),false);
-  LwjglAWTCanvas canvas2=new LwjglAWTCanvas(new GlListener(),false,canvas1);
-  LwjglAWTCanvas canvas3=new LwjglAWTCanvas(new GlListener(),false,canvas1);
+  LwjglAWTCanvas canvas1=new LwjglAWTCanvas(new ObjTest(),false);
+  LwjglAWTCanvas canvas2=new LwjglAWTCanvas(new UITest(),false,canvas1);
+  LwjglAWTCanvas canvas3=new LwjglAWTCanvas(new SpriteBatchTest(),false,canvas1);
   canvas1.getCanvas().setSize(200,480);
   canvas2.getCanvas().setSize(200,480);
   canvas3.getCanvas().setSize(200,480);
