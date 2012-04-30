@@ -1,0 +1,60 @@
+{
+  LwjglNativesLoader.load();
+  AWTGLCanvas sharedDrawable=sharedContextCanvas != null ? sharedContextCanvas.canvas : null;
+  try {
+    canvas=new AWTGLCanvas(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice(),new PixelFormat(),sharedDrawable){
+      private final Dimension minSize=new Dimension(0,0);
+      public Dimension getMinimumSize(){
+        return minSize;
+      }
+      @Override public void initGL(){
+        start();
+      }
+      @Override public void paintGL(){
+        try {
+          LwjglAWTCanvas.this.render();
+          swapBuffers();
+          repaint();
+        }
+ catch (        LWJGLException ex) {
+          throw new GdxRuntimeException(ex);
+        }
+      }
+    }
+;
+  }
+ catch (  LWJGLException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+  graphics=new LwjglGraphics(canvas,useGL2){
+    public void setTitle(    String title){
+      super.setTitle(title);
+      LwjglAWTCanvas.this.setTitle(title);
+    }
+    public boolean setDisplayMode(    int width,    int height,    boolean fullscreen){
+      if (!super.setDisplayMode(width,height,fullscreen))       return false;
+      if (!fullscreen)       LwjglAWTCanvas.this.setDisplayMode(width,height);
+      return true;
+    }
+    public boolean setDisplayMode(    DisplayMode displayMode){
+      if (!super.setDisplayMode(displayMode))       return false;
+      LwjglAWTCanvas.this.setDisplayMode(displayMode.width,displayMode.height);
+      return true;
+    }
+  }
+;
+  if (Gdx.audio == null) {
+    audio=new OpenALAudio();
+    Gdx.audio=audio;
+  }
+ else {
+    audio=null;
+  }
+  files=new LwjglFiles();
+  input=new LwjglInput();
+  this.listener=listener;
+  Gdx.app=this;
+  Gdx.graphics=graphics;
+  Gdx.files=files;
+  Gdx.input=input;
+}

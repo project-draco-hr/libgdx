@@ -1,0 +1,7 @@
+{
+  if (!running)   return;
+  running=false;
+  Gdx.graphics=graphics;
+  listener.pause();
+  listener.dispose();
+}

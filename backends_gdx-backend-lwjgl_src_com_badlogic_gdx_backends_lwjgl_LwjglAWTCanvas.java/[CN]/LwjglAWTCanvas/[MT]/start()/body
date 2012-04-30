@@ -1,0 +1,14 @@
+{
+  try {
+    Gdx.graphics=graphics;
+    graphics.initiateGLInstances();
+    listener.create();
+    lastWidth=Math.max(1,graphics.getWidth());
+    lastHeight=Math.max(1,graphics.getHeight());
+    listener.resize(lastWidth,lastHeight);
+  }
+ catch (  Exception ex) {
+    stopped();
+    throw new GdxRuntimeException(ex);
+  }
+}

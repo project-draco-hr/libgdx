@@ -1,0 +1,16 @@
+{
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  Container container=getContentPane();
+  LwjglAWTCanvas canvas1=new LwjglAWTCanvas(new GlListener(),false);
+  LwjglAWTCanvas canvas2=new LwjglAWTCanvas(new GlListener(),false,canvas1);
+  LwjglAWTCanvas canvas3=new LwjglAWTCanvas(new GlListener(),false,canvas1);
+  canvas1.getCanvas().setSize(200,480);
+  canvas2.getCanvas().setSize(200,480);
+  canvas3.getCanvas().setSize(200,480);
+  container.add(canvas1.getCanvas(),BorderLayout.LINE_START);
+  container.add(canvas2.getCanvas(),BorderLayout.CENTER);
+  container.add(canvas3.getCanvas(),BorderLayout.LINE_END);
+  pack();
+  setVisible(true);
+  setSize(800,480);
+}
