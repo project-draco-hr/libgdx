@@ -1,6 +1,6 @@
 {
   try {
-    Gdx.graphics=graphics;
+    setGlobals();
     graphics.initiateGLInstances();
     listener.create();
     lastWidth=Math.max(1,graphics.getWidth());

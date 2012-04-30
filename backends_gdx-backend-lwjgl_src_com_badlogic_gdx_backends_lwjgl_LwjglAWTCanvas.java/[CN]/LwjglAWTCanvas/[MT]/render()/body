@@ -1,6 +1,5 @@
 {
-  Gdx.graphics=graphics;
-  Gdx.input=input;
+  setGlobals();
   canvas.setCursor(null);
   graphics.updateTime();
 synchronized (runnables) {
