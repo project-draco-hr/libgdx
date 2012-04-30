@@ -1,0 +1,6 @@
+{
+  touchX=e.getX();
+  touchY=e.getY();
+  checkCatched(e);
+  Gdx.graphics.requestRendering();
+}

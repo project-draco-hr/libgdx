@@ -1,0 +1,11 @@
+{
+synchronized (this) {
+    KeyEvent event=usedKeyEvents.obtain();
+    event.keyChar=e.getKeyChar();
+    event.keyCode=0;
+    event.type=KeyEvent.KEY_TYPED;
+    event.timeStamp=System.nanoTime();
+    keyEvents.add(event);
+    Gdx.graphics.requestRendering();
+  }
+}

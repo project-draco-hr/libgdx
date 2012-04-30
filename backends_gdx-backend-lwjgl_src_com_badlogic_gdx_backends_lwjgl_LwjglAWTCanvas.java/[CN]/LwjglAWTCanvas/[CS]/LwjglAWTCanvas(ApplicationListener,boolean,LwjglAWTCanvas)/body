@@ -51,7 +51,7 @@
     audio=null;
   }
   files=new LwjglFiles();
-  input=new LwjglInput();
+  input=new LwjglAWTInput(canvas);
   this.listener=listener;
   Gdx.app=this;
   Gdx.graphics=graphics;
