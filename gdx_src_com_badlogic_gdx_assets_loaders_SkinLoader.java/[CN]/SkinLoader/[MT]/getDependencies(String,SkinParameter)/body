@@ -3,7 +3,7 @@
   TextureParameter textureParam=new TextureParameter();
   textureParam.minFilter=TextureFilter.Linear;
   textureParam.magFilter=TextureFilter.Linear;
-  if (parameter == null)   deps.add(new AssetDescriptor(Gdx.files.internal(fileName).nameWithoutExtension() + ".png",Texture.class,textureParam));
+  if (parameter == null)   deps.add(new AssetDescriptor(Gdx.files.internal(fileName).pathWithoutExtension() + ".png",Texture.class,textureParam));
  else   deps.add(new AssetDescriptor(parameter.texturePath,Texture.class,textureParam));
   return deps;
 }
