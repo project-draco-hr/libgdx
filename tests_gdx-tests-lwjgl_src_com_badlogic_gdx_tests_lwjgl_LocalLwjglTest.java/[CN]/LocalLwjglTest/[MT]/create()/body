@@ -1,16 +1,11 @@
 {
-  float[] vertices=new float[]{0,0,0,-0.5f,-0.5f,0,0.5f,-0.5f,0,0,0.5f,0};
-  if (mesh == null) {
-    mesh=new Mesh(true,3,3,new VertexAttribute(Usage.Position,3,"a_position"));
-    mesh.setVertices(vertices,3,3 * 3);
-    mesh.setIndices(new short[]{0,1,2});
-    float[] testv=new float[12];
-    mesh.getVertices(testv);
-    int i=0;
-    while (i < testv.length) {
-      System.out.print(i + ":" + testv[i++]);
-      System.out.print(" " + i + ":"+ testv[i++]);
-      System.out.print(" " + i + ":"+ testv[i++]+ "\n");
-    }
+  renderer=new ShapeRenderer();
+  camera=new OrthographicCamera(10,10);
+  camera.position.set(0,0,0);
+  camera.update();
+  List<Vector2> poly=new ArrayList<Vector2>();
+  for (int i=0; i < coords.length; i+=2) {
+    poly.add(new Vector2(coords[i],coords[i + 1]));
   }
+  triangles=new EarClippingTriangulator().computeTriangles(poly);
 }
