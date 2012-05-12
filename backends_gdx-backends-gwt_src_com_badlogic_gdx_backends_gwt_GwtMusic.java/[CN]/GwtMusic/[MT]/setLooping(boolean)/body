@@ -1,4 +1,4 @@
 {
-  sound.loops(isLooping ? 100000 : 1);
+  sound.loops(isLooping ? 999 : 0);
   this.isLooping=isLooping;
 }

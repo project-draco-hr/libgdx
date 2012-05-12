@@ -1,3 +1,4 @@
 {
+  isPlaying&=sound.playState() == 1;
   return isPlaying;
 }
