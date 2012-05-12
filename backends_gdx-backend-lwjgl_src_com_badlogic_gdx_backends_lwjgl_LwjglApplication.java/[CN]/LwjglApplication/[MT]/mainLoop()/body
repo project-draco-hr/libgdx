@@ -63,6 +63,9 @@ synchronized (runnables) {
         Display.sync(60);
       }
     }
+ else {
+      Display.sync(60);
+    }
   }
   listener.pause();
   listener.dispose();
