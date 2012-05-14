@@ -1,0 +1,8 @@
+{
+  log("Updating core project");
+  String corePath=workspace + projectName;
+  String androidPath=workspace + projectName + "-android";
+  executeTasks(new Task[]{new Download(NIGHTLIES + "gdx.jar",corePath + "/lib/gdx.jar"),new Download(NIGHTLIES + "gdx-natives.jar",corePath + "/lib/gdx-natives.jar"),new Download(NIGHTLIES + "/sources/gdx-sources.jar",corePath + "/lib/gdx-sources.jar"),new Download(NIGHTLIES + "gdx-backend-lwjgl.jar",corePath + "/lib/gdx-backend-lwjgl.jar"),new Download(NIGHTLIES + "gdx-backend-lwjgl-natives.jar",corePath + "/lib/gdx-backend-lwjgl-natives.jar"),new Download(NIGHTLIES + "gdx-backend-android.jar",corePath + "/lib/gdx-backend-android.jar"),new Download(NIGHTLIES + "gdx-backend-gwt.jar",corePath + "/lib/gdx-backend-gwt.jar"),new Download(NIGHTLIES + "/sources/gdx-backend-gwt-sources.jar",corePath + "/lib/gdx-backend-gwt-sources.jar")});
+  log("Updating android project");
+  executeTasks(new Task[]{new Download(NIGHTLIES + "/armeabi/libgdx.so",androidPath + "/libs/armeabi/libgdx.so"),new Download(NIGHTLIES + "/armeabi/libandroidgl20.so",androidPath + "/libs/armeabi/libandroidgl20.so"),new Download(NIGHTLIES + "/armeabi-v7a/libgdx.so",androidPath + "/libs/armeabi-v7a/libgdx.so"),new Download(NIGHTLIES + "/armeabi-v7a/libandroidgl20.so",androidPath + "/libs/armeabi-v7a/libandroidgl20.so")});
+}

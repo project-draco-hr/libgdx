@@ -1,33 +1,70 @@
 {
   Map<String,String> parsedArgs=new HashMap<String,String>();
-  for (int i=0; i < args.length; ) {
-    String token=args[i];
-    boolean known=false;
-    for (    String knownArg : knownArgs) {
-      if (token.equals(knownArg)) {
-        if (args.length == i + 1) {
-          log("expected value for argument '" + knownArg + "'");
-          printUsage();
-          System.exit(-1);
+  if (args.length > 0 && args[0].equals("create")) {
+    for (int i=1; i < args.length; ) {
+      String token=args[i];
+      boolean known=false;
+      for (      String knownArg : knownArgsCreate) {
+        if (token.equals(knownArg)) {
+          if (args.length == i + 1) {
+            log("expected value for argument '" + knownArg + "'");
+            printUsage();
+            System.exit(-1);
+          }
+          parsedArgs.put(knownArg,args[i + 1]);
+          known=true;
+          i+=2;
+          break;
         }
-        parsedArgs.put(knownArg,args[i + 1]);
-        known=true;
-        i+=2;
-        break;
+      }
+      if (!known) {
+        log("Unkown argument " + token);
+        printUsage();
+        System.exit(-1);
       }
     }
-    if (!known) {
-      log("Unkown argument " + token);
-      printUsage();
-      System.exit(-1);
+    for (    String arg : knownArgsCreate) {
+      if (!parsedArgs.containsKey(arg)) {
+        log("missing argument " + arg);
+        printUsage();
+        System.exit(-1);
+      }
     }
   }
-  for (  String arg : knownArgs) {
-    if (!parsedArgs.containsKey(arg)) {
-      log("missing argument " + arg);
-      printUsage();
-      System.exit(-1);
+ else   if (args.length > 0 && args[0].equals("update")) {
+    for (int i=1; i < args.length; ) {
+      String token=args[i];
+      boolean known=false;
+      for (      String knownArg : knownArgsUpdate) {
+        if (token.equals(knownArg)) {
+          if (args.length == i + 1) {
+            log("expected value for argument '" + knownArg + "'");
+            printUsage();
+            System.exit(-1);
+          }
+          parsedArgs.put(knownArg,args[i + 1]);
+          known=true;
+          i+=2;
+          break;
+        }
+      }
+      if (!known) {
+        log("Unkown argument " + token);
+        printUsage();
+        System.exit(-1);
+      }
     }
+    for (    String arg : knownArgsUpdate) {
+      if (!parsedArgs.containsKey(arg)) {
+        log("missing argument " + arg);
+        printUsage();
+        System.exit(-1);
+      }
+    }
+  }
+ else {
+    printUsage();
+    System.exit(-1);
   }
   return parsedArgs;
 }

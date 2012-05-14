@@ -1,8 +1,14 @@
 {
-  log("Usage: java -jar gdx-setup.jar <arg1> <arg2> ...");
-  log("Arguments (all are mandatory): ");
-  log("   -workspace <path-to-workspace> ... the workspace directory to create the projects in.");
-  log("   -project <project-name>        ... the name of the project");
-  log("   -package <package-name>        ... the package name");
-  log("   -mainclass <main-class-name>   ... the name of the main class ");
+  log("Usage: java -jar gdx-setup.jar COMMAND [...]");
+  log("COMMANDs are: ");
+  log("    create");
+  log("      Mandatory arguments:");
+  log("        -workspace <path-to-workspace> ... the workspace directory to create the projects in.");
+  log("        -project <project-name>        ... the name of the project");
+  log("        -package <package-name>        ... the package name");
+  log("        -mainclass <main-class-name>   ... the name of the main class ");
+  log("    update");
+  log("      Mandatory arguments:");
+  log("        -workspace <path-to-workspace> ... the workspace directory to update the projects in.");
+  log("        -project <project-name>        ... the name of the project to update");
 }
