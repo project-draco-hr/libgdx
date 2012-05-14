@@ -1,5 +1,4 @@
 {
-  Editor edit=this.sharedPrefs.edit();
-  edit.putInt(key,val);
-  edit.commit();
+  edit();
+  editor.putInt(key,val);
 }

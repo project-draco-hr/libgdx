@@ -1,2 +1,6 @@
 {
+  if (editor != null) {
+    editor.commit();
+    editor=null;
+  }
 }
