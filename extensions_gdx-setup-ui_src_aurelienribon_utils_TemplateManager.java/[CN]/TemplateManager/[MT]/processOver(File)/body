@@ -1,6 +1,4 @@
 {
-  if (!file.getName().endsWith(".png")) {
-    String input=FileUtils.readFileToString(file);
-    FileUtils.writeStringToFile(file,process(input));
-  }
+  String input=FileUtils.readFileToString(file);
+  FileUtils.writeStringToFile(file,process(input));
 }

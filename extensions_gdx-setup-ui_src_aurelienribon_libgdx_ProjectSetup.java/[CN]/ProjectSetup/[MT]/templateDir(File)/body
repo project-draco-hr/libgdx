@@ -1,12 +1,18 @@
 {
+  String[] filteredExts=new String[]{".jar",".zip",".png"};
   for (  File file : dir.listFiles()) {
     if (file.isDirectory()) {
       templateDir(file);
     }
  else {
-      if (file.getName().endsWith(".jar"))       continue;
-      if (file.getName().endsWith(".zip"))       continue;
-      templateManager.processOver(file);
+      boolean isValid=true;
+      for (      String filter : filteredExts) {
+        if (file.getName().endsWith(filter)) {
+          isValid=false;
+          break;
+        }
+      }
+      if (isValid)       templateManager.processOver(file);
     }
   }
 }

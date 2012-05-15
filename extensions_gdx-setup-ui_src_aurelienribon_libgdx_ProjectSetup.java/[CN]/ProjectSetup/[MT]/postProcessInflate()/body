@@ -22,7 +22,7 @@
   if (cfg.isHtmlIncluded) {
     src=new File(tmpDst,"prj-html");
     dst=new File(tmpDst,cfg.getHtmlPrjName());
-    move(src,"src/MyGame.gwt.xml","src/" + cfg.getPackageName().replace('.','/') + "/"+ cfg.getMainClassName()+ ".gwt.xml");
+    move(src,"src/GwtDefinition.gwt.xml","src/" + cfg.getPackageName().replace('.','/') + "/GwtDefinition.gwt.xml");
     move(src,"src/client","src/" + cfg.getPackageName().replace('.','/') + "/client");
     templateDir(src);
     FileUtils.moveDirectory(src,dst);
