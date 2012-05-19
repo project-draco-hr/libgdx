@@ -1,0 +1,23 @@
+{
+  int width=0;
+  Glyph lastGlyph=null;
+  while (start < end) {
+    lastGlyph=data.getGlyph(str.charAt(start++));
+    if (lastGlyph != null) {
+      width=lastGlyph.xadvance;
+      break;
+    }
+  }
+  while (start < end) {
+    char ch=str.charAt(start++);
+    Glyph g=data.getGlyph(ch);
+    if (g != null) {
+      width+=lastGlyph.getKerning(ch);
+      lastGlyph=g;
+      width+=g.xadvance;
+    }
+  }
+  textBounds.width=width * data.scaleX;
+  textBounds.height=data.capHeight;
+  return textBounds;
+}
