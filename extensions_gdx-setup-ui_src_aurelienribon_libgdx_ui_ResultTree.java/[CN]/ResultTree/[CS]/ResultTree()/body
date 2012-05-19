@@ -4,7 +4,7 @@
   setShowsRootHandles(true);
   setCellRenderer(treeCellRenderer);
   setOpaque(false);
-  AppContext.inst().addListener(new AppContext.Listener(){
+  Ctx.listeners.add(new Ctx.Listener(){
     @Override public void configChanged(){
       update();
     }

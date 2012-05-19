@@ -1,28 +1,13 @@
 {
   initComponents();
-  versionlabel.setText("v1.0.1");
-  versionlabel.addMouseListener(new MouseAdapter(){
-    @Override public void mousePressed(    MouseEvent e){
-      if (Desktop.isDesktopSupported()) {
-        try {
-          URI uri=new URI("http://code.google.com/p/libgdx/");
-          Desktop.getDesktop().browse(uri);
-        }
- catch (        IOException ex) {
-        }
-catch (        URISyntaxException ex) {
-        }
-      }
-    }
-  }
-);
   Style.registerCssClasses(this,".rootPanel");
   Style.registerCssClasses(librarySetupPanel,".groupPanel","#librarySetupPanel");
   Style.registerCssClasses(configPanel,".groupPanel","#configPanel");
   Style.registerCssClasses(resultPanel,".groupPanel","#resultPanel");
   Style.registerCssClasses(goPanel,".groupPanel","#goPanel");
-  Style.registerCssClasses(versionlabel,"#versionLabel");
-  Style.apply(this,new Style(Res.class.getResource("style.css")));
+  Style.registerCssClasses(versionLabel,"#versionLabel");
+  Style.apply(this,new Style(Res.getUrl("css/style.css")));
   librarySetupPanel.init();
   goPanel.init();
+  checkUpdates();
 }

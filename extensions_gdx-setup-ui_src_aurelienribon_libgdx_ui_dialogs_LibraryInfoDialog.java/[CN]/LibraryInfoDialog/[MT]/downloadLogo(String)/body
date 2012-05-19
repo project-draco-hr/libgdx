@@ -1,0 +1,21 @@
+{
+  new Thread(new Runnable(){
+    @Override public void run(){
+      try {
+        final BufferedImage img=ImageIO.read(new URL(url));
+        SwingUtilities.invokeLater(new Runnable(){
+          @Override public void run(){
+            logoLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+            logoLabel.setIcon(new ImageIcon(img));
+          }
+        }
+);
+      }
+ catch (      MalformedURLException ex) {
+      }
+catch (      IOException ex) {
+      }
+    }
+  }
+).start();
+}

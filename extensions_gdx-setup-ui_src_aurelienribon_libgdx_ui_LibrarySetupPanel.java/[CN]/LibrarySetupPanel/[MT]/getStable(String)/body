@@ -1,5 +1,5 @@
 {
-  String input=cfg.getLibraryDef(libraryName).stableUrl;
+  String input=Ctx.cfg.libs.getDef(libraryName).stableUrl;
   String output=FilenameUtils.getName(input);
   getFile(libraryName,input,output);
 }

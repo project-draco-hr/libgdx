@@ -1,12 +1,16 @@
 {
-  this.name=parseBlock(input,"name");
-  this.description=parseBlock(input,"description").replaceAll("\\s+"," ");
-  this.homepage=parseBlock(input,"homepage");
-  this.stableVersion=parseBlock(input,"stable-version");
-  this.stableUrl=parseBlock(input,"stable-url");
-  this.latestUrl=parseBlock(input,"latest-url");
-  this.libsCommon=parseBlockAsList(input,"libs-common");
-  this.libsDesktop=parseBlockAsList(input,"libs-desktop");
-  this.libsAndroid=parseBlockAsList(input,"libs-android");
-  this.libsHtml=parseBlockAsList(input,"libs-html");
+  this.name=ParseUtils.parseBlock(content,"name","<unknown>");
+  this.author=ParseUtils.parseBlock(content,"author","<unknown>");
+  this.authorWebsite=ParseUtils.parseBlock(content,"author-website",null);
+  this.description=ParseUtils.parseBlock(content,"description","").replaceAll("\\s+"," ");
+  this.homepage=ParseUtils.parseBlock(content,"homepage",null);
+  this.logo=ParseUtils.parseBlock(content,"logo",null);
+  this.gwtModuleName=ParseUtils.parseBlock(content,"gwt",null);
+  this.stableVersion=ParseUtils.parseBlock(content,"stable-version","<unknown>");
+  this.stableUrl=ParseUtils.parseBlock(content,"stable-url",null);
+  this.latestUrl=ParseUtils.parseBlock(content,"latest-url",null);
+  this.libsCommon=ParseUtils.parseBlockAsList(content,"libs-common");
+  this.libsDesktop=ParseUtils.parseBlockAsList(content,"libs-desktop");
+  this.libsAndroid=ParseUtils.parseBlockAsList(content,"libs-android");
+  this.libsHtml=ParseUtils.parseBlockAsList(content,"libs-html");
 }

@@ -1,0 +1,10 @@
+{
+  if (!Desktop.isDesktopSupported())   return;
+  try {
+    Desktop.getDesktop().browse(new URI(url));
+  }
+ catch (  IOException ex) {
+  }
+catch (  URISyntaxException ex) {
+  }
+}

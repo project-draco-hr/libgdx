@@ -1,0 +1,23 @@
+{
+  dlManager.downloadLibraryDef(libraryName,new DownloadManager.Callback(){
+    @Override public void completed(){
+      System.out.println("Successfully retrieved definition for library '" + libraryName + "'");
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          registerLibrary(libraryName);
+        }
+      }
+);
+    }
+    @Override public void error(){
+      System.err.println("[warning] Cannot download definition for library '" + libraryName + "'");
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          registerLibrary(null);
+        }
+      }
+);
+    }
+  }
+);
+}

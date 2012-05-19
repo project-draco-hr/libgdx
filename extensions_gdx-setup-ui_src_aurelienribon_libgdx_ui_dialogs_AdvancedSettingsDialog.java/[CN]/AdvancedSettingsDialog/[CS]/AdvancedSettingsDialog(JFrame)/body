@@ -1,13 +1,13 @@
 {
   super(parent,true);
   initComponents();
-  commonSuffixField.setText(cfg.commonSuffix);
-  desktopSuffixField.setText(cfg.desktopSuffix);
-  androidSuffixField.setText(cfg.androidSuffix);
-  htmlSuffixField.setText(cfg.htmlSuffix);
-  androidMinSdkField.setText(cfg.androidMinSdkVersion);
-  androidTargetSdkField.setText(cfg.androidTargetSdkVersion);
-  androidMaxSdkField.setText(cfg.androidMaxSdkVersion);
+  commonSuffixField.setText(Ctx.cfg.commonSuffix);
+  desktopSuffixField.setText(Ctx.cfg.desktopSuffix);
+  androidSuffixField.setText(Ctx.cfg.androidSuffix);
+  htmlSuffixField.setText(Ctx.cfg.htmlSuffix);
+  androidMinSdkField.setText(Ctx.cfg.androidMinSdkVersion);
+  androidTargetSdkField.setText(Ctx.cfg.androidTargetSdkVersion);
+  androidMaxSdkField.setText(Ctx.cfg.androidMaxSdkVersion);
   commonSuffixField.addMouseListener(selectOnFocusMouseListener);
   desktopSuffixField.addMouseListener(selectOnFocusMouseListener);
   androidSuffixField.addMouseListener(selectOnFocusMouseListener);
@@ -29,5 +29,5 @@
   Style.registerCssClasses(title1,".titleLabel");
   Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
   Style.registerCssClasses(paintedPanel2,".optionGroupPanel");
-  Style.apply(getContentPane(),new Style(Res.class.getResource("style.css")));
+  Style.apply(getContentPane(),new Style(Res.getUrl("css/style.css")));
 }

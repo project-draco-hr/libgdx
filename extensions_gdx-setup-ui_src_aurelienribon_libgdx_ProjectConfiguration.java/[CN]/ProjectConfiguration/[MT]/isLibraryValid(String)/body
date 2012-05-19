@@ -1,7 +1,0 @@
-{
-  String path=getLibraryPath(libraryName);
-  if (path == null)   return false;
-  if (!path.endsWith(".zip"))   return false;
-  if (!new File(path).isFile())   return false;
-  return true;
-}

@@ -5,8 +5,8 @@
   DefaultMutableTreeNode commonSrcAppGwtNode=nodes.get("prj-common/src/MyGame.gwt.xml");
   commonSrcNode.removeAllChildren();
   previousNode=commonSrcNode;
-  if (!cfg.getPackageName().trim().equals("")) {
-    String[] paths=cfg.getPackageName().split("\\.");
+  if (!Ctx.cfg.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfg.packageName.split("\\.");
     for (    String path : paths) {
       DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-common/src/" + path);
       previousNode.add(node);
@@ -23,8 +23,8 @@
   DefaultMutableTreeNode desktopSrcMainNode=nodes.get("prj-desktop/src/Main.java");
   desktopSrcNode.removeAllChildren();
   previousNode=desktopSrcNode;
-  if (!cfg.getPackageName().trim().equals("")) {
-    String[] paths=cfg.getPackageName().split("\\.");
+  if (!Ctx.cfg.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfg.packageName.split("\\.");
     for (    String path : paths) {
       DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-desktop/src/" + path);
       previousNode.add(node);
@@ -39,8 +39,8 @@
   DefaultMutableTreeNode androidSrcActivityNode=nodes.get("prj-android/src/MainActivity.java");
   androidSrcNode.removeAllChildren();
   previousNode=androidSrcNode;
-  if (!cfg.getPackageName().trim().equals("")) {
-    String[] paths=cfg.getPackageName().split("\\.");
+  if (!Ctx.cfg.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfg.packageName.split("\\.");
     for (    String path : paths) {
       DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-android/src/" + path);
       previousNode.add(node);
@@ -56,8 +56,8 @@
   DefaultMutableTreeNode htmlSrcClientDirNode=nodes.get("#DIR#prj-html/src/client");
   htmlSrcNode.removeAllChildren();
   previousNode=htmlSrcNode;
-  if (!cfg.getPackageName().trim().equals("")) {
-    String[] paths=cfg.getPackageName().split("\\.");
+  if (!Ctx.cfg.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfg.packageName.split("\\.");
     for (    String path : paths) {
       DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-html/src/" + path);
       previousNode.add(node);

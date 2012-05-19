@@ -1,5 +1,5 @@
 {
-  File file=selectedFiles.get(libraryName);
+  File file=libsSelectedFiles.get(libraryName);
   String path=file != null ? file.getPath() : ".";
   JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
   JFileChooser chooser=new JFileChooser(new File(path));

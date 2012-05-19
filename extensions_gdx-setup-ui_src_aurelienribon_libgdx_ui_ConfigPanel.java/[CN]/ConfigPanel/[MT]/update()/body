@@ -1,10 +1,10 @@
 {
-  cfg.setProjectName(nameField.getText());
-  cfg.setPackageName(packageField.getText());
-  cfg.setMainClassName(mainClassField.getText());
-  cfg.setDestinationPath(destinationField.getText());
-  cfg.isDesktopIncluded=genDesktopPrjChk.isSelected();
-  cfg.isAndroidIncluded=genAndroidPrjChk.isSelected();
-  cfg.isHtmlIncluded=genHtmlPrjChk.isSelected();
-  AppContext.inst().fireConfigChangedEvent();
+  Ctx.cfg.projectName=nameField.getText();
+  Ctx.cfg.packageName=packageField.getText();
+  Ctx.cfg.mainClassName=mainClassField.getText();
+  Ctx.cfg.destinationPath=destinationField.getText();
+  Ctx.cfg.isDesktopIncluded=genDesktopPrjChk.isSelected();
+  Ctx.cfg.isAndroidIncluded=genAndroidPrjChk.isSelected();
+  Ctx.cfg.isHtmlIncluded=genHtmlPrjChk.isSelected();
+  Ctx.fireConfigChanged();
 }

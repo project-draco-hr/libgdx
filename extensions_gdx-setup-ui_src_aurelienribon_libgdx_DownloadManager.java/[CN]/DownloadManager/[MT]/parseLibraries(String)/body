@@ -1,0 +1,15 @@
+{
+  List<String> lines=ParseUtils.parseBlockAsList(str,"libraries");
+  for (  String line : lines) {
+    String[] parts=line.split("=",2);
+    if (parts.length != 2)     continue;
+    String name=parts[0].trim();
+    libraries.add(name);
+    try {
+      URL url=new URL(parts[1].trim());
+      librariesUrls.put(name,url);
+    }
+ catch (    MalformedURLException ex) {
+    }
+  }
+}

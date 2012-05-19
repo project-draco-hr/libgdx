@@ -1,0 +1,14 @@
+{
+  Matcher m=Pattern.compile("\\[" + name + "\\](.*?)(\\[|$)",Pattern.DOTALL).matcher(input);
+  if (m.find()) {
+    String str=m.group(1).trim();
+    List<String> lines=new ArrayList<String>(Arrays.asList(str.split("\n")));
+    for (int i=lines.size() - 1; i >= 0; i--) {
+      String line=lines.get(i).trim();
+      lines.set(i,line);
+      if (line.equals(""))       lines.remove(i);
+    }
+    return Collections.unmodifiableList(lines);
+  }
+  return Collections.unmodifiableList(new ArrayList<String>());
+}

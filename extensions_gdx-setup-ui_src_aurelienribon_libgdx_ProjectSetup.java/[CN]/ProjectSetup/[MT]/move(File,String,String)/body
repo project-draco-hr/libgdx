@@ -1,6 +1,8 @@
 {
+  if (path1.equals(path2))   return;
   File file1=new File(base,FilenameUtils.normalize(path1));
   File file2=new File(base,FilenameUtils.normalize(path2));
+  FileUtils.deleteQuietly(file2);
   if (file1.isDirectory())   FileUtils.moveDirectory(file1,file2);
  else   FileUtils.moveFile(file1,file2);
 }

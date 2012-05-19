@@ -1,11 +1,7 @@
 {
-  selectedFiles.put(libraryName,zipFile);
-  cfg.setLibraryPath(libraryName,zipFile.getPath());
-  if (libraryName.equals("libgdx")) {
-    libgdxLabel.setToolTipText("Archive successfully found under \"" + zipFile.getPath() + "\"");
-    Style.unregister(libgdxLabel);
-    Style.registerCssClasses(libgdxLabel,".libraryFoundLabel");
-    Style.apply(libgdxLabel,new Style(Res.class.getResource("style-dynamic.css")));
-  }
-  AppContext.inst().fireConfigChangedEvent();
+  libsSelectedFiles.put(libraryName,zipFile);
+  Ctx.cfg.libs.setPath(libraryName,zipFile.getPath());
+  libsNamesCmps.get(libraryName).setToolTipText("Using archive: \"" + zipFile.getPath() + "\"");
+  libsNamesCmps.get(libraryName).setForeground(LIB_FOUND_COLOR);
+  Ctx.fireConfigChanged();
 }

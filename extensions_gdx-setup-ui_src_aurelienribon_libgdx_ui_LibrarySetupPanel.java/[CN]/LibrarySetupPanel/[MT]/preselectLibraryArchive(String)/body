@@ -1,0 +1,11 @@
+{
+  LibraryDef def=Ctx.cfg.libs.getDef(libraryName);
+  String stableName=FilenameUtils.getName(def.stableUrl);
+  String latestName=FilenameUtils.getName(def.latestUrl);
+  for (  File file : new File(".").listFiles()) {
+    if (file.isFile()) {
+      if (file.getName().equals(latestName))       select(libraryName,file);
+ else       if (file.getName().equals(stableName))       select(libraryName,file);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  String path=cfg.getDestinationPath();
+  String path=Ctx.cfg.destinationPath;
   JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
   JFileChooser chooser=new JFileChooser(new File(path));
   chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

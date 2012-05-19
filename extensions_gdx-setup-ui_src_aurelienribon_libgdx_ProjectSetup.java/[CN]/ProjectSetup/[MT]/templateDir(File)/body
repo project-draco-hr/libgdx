@@ -1,18 +1,12 @@
 {
-  String[] filteredExts=new String[]{".jar",".zip",".png"};
+  if (dir.getName().equals("libs"))   return;
   for (  File file : dir.listFiles()) {
     if (file.isDirectory()) {
       templateDir(file);
     }
  else {
-      boolean isValid=true;
-      for (      String filter : filteredExts) {
-        if (file.getName().endsWith(filter)) {
-          isValid=false;
-          break;
-        }
-      }
-      if (isValid)       templateManager.processOver(file);
+      if (endsWidth(file.getName(),".jar",".zip",".png"))       continue;
+      templateManager.processOver(file);
     }
   }
 }

@@ -2,7 +2,7 @@
   initComponents();
   Style.registerCssClasses(headerPanel,".header");
   Style.registerCssClasses(numberLabel,".headerNumber");
-  AppContext.inst().addListener(new AppContext.Listener(){
+  Ctx.listeners.add(new Ctx.Listener(){
     @Override public void configChanged(){
       update();
     }

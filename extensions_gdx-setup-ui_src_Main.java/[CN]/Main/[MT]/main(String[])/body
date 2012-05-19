@@ -1,4 +1,5 @@
 {
+  parseArgs(args);
   SwingUtilities.invokeLater(new Runnable(){
     @Override public void run(){
       try {
@@ -13,7 +14,7 @@ catch (      IllegalAccessException ex) {
 catch (      UnsupportedLookAndFeelException ex) {
       }
       SwingStyle.init();
-      AruiStyle.init();
+      ArStyle.init();
       JFrame frame=new JFrame("LibGDX Project Setup");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setContentPane(new MainPanel());

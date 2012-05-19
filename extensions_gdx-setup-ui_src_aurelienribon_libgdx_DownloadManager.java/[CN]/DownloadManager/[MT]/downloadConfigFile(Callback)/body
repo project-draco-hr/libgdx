@@ -1,0 +1,16 @@
+{
+  libraries.clear();
+  librariesUrls.clear();
+  librariesDefs.clear();
+  final ByteArrayOutputStream output=new ByteArrayOutputStream();
+  HttpUtils.downloadAsync(configUrl,output,new HttpUtils.Callback(){
+    @Override public void completed(){
+      parseLibraries(output.toString());
+      callback.completed();
+    }
+    @Override public void error(    IOException ex){
+      callback.error();
+    }
+  }
+);
+}

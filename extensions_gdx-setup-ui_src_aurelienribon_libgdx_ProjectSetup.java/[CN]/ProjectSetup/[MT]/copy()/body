@@ -1,17 +1,17 @@
 {
-  File src=new File(tmpDst,cfg.getCommonPrjName());
-  File dst=new File(cfg.getDestinationPath());
+  File src=new File(tmpDst,cfg.projectName + cfg.commonSuffix);
+  File dst=new File(cfg.destinationPath);
   FileUtils.copyDirectoryToDirectory(src,dst);
   if (cfg.isDesktopIncluded) {
-    src=new File(tmpDst,cfg.getDesktopPrjName());
+    src=new File(tmpDst,cfg.projectName + cfg.desktopSuffix);
     FileUtils.copyDirectoryToDirectory(src,dst);
   }
   if (cfg.isAndroidIncluded) {
-    src=new File(tmpDst,cfg.getAndroidPrjName());
+    src=new File(tmpDst,cfg.projectName + cfg.androidSuffix);
     FileUtils.copyDirectoryToDirectory(src,dst);
   }
   if (cfg.isHtmlIncluded) {
-    src=new File(tmpDst,cfg.getHtmlPrjName());
+    src=new File(tmpDst,cfg.projectName + cfg.htmlSuffix);
     FileUtils.copyDirectoryToDirectory(src,dst);
   }
 }
