@@ -3,6 +3,7 @@
   running=false;
   try {
     Display.destroy();
+    audio.dispose();
   }
  catch (  Throwable ignored) {
   }
