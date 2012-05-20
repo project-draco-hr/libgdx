@@ -1,5 +1,5 @@
 {
-  String path=file.getPath().replace("\\","/");
+  String path=file.getPath().replace('\\','/');
   int dotIndex=path.lastIndexOf('.');
   if (dotIndex == -1)   return path;
   return path.substring(0,dotIndex);
