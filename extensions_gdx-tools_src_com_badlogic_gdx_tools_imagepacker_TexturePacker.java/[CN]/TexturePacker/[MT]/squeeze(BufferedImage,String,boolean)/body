@@ -56,8 +56,13 @@
   int newWidth=right - left;
   int newHeight=bottom - top;
   if (newWidth <= 0 || newHeight <= 0) {
-    log("Ignoring blank input image: " + name);
-    return null;
+    if (settings.ignoreBlankImages) {
+      log("Ignoring blank input image: " + name);
+      return null;
+    }
+ else {
+      return new Image(name,emptyImage,0,0,1,1);
+    }
   }
   return new Image(name,source,left,top,newWidth,newHeight);
 }
