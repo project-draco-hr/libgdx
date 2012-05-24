@@ -1,12 +1,11 @@
 {
 synchronized (musics) {
-    wasPlaying.clear();
     for (    AndroidMusic music : musics) {
       if (music.isPlaying()) {
+        music.wasPlaying=true;
         music.pause();
-        wasPlaying.add(true);
       }
- else       wasPlaying.add(false);
+ else       music.wasPlaying=false;
     }
   }
 }
