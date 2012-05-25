@@ -6,6 +6,11 @@
       return true;
     }
  catch (    Exception ex) {
+      try {
+        return assets.list(fileName).length > 0;
+      }
+ catch (      Exception ignored) {
+      }
       return false;
     }
   }
