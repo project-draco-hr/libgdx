@@ -1,4 +1,0 @@
-{
-  h*=PRIME2;
-  return (int)((h ^ h >>> hashShift) & mask);
-}
