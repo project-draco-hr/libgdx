@@ -1,5 +1,5 @@
 {
-  final String version="2.0.0";
+  final String version="2.0.1";
   versionLabel.setText("v" + version + " (...)");
   URL tmpUrl;
   try {
@@ -30,12 +30,5 @@
     }
   }
 ;
-  Timer timer=new Timer(2000,new ActionListener(){
-    @Override public void actionPerformed(    ActionEvent e){
-      HttpUtils.downloadAsync(url,stream,callback);
-    }
-  }
-);
-  timer.setRepeats(false);
-  timer.start();
+  HttpUtils.downloadAsync(url,stream,callback);
 }
