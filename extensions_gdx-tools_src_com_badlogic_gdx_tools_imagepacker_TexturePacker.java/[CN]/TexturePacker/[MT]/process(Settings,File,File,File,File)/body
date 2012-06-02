@@ -54,7 +54,7 @@
   if (!skip) {
     if (outputDir.exists()) {
       String prefix=inputDir.getName();
-      for (      File file : outputDir.listFiles())       if (file.getName().startsWith(prefix) && file.getName().endsWith(".png"))       file.delete();
+      for (      File file : outputDir.listFiles())       if (file.getName().startsWith(prefix) && file.getName().endsWith("." + getFileExtension(settings.defaultFileFormat)))       file.delete();
     }
     ArrayList<TextureFilter> filters=new ArrayList();
     filters.add(null);
@@ -69,19 +69,19 @@
         for (int iii=0; iii < nn; iii++) {
           TextureFilter mag=filters.get(iii);
           if ((min == null && mag != null) || (min != null && mag == null))           continue;
-          Filter filter=new Filter(Direction.none,format,-1,-1,min,mag);
+          Filter filter=new Filter(Direction.none,settings.defaultFileFormat,format,-1,-1,min,mag);
           new TexturePacker(settings,inputDir,filter,outputDir,packFile);
           for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
-            filter=new Filter(Direction.x,format,width,-1,min,mag);
+            filter=new Filter(Direction.x,settings.defaultFileFormat,format,width,-1,min,mag);
             new TexturePacker(settings,inputDir,filter,outputDir,packFile);
           }
           for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
-            filter=new Filter(Direction.y,format,-1,height,min,mag);
+            filter=new Filter(Direction.y,settings.defaultFileFormat,format,-1,height,min,mag);
             new TexturePacker(settings,inputDir,filter,outputDir,packFile);
           }
           for (int width=settings.minWidth; width <= settings.maxWidth; width<<=1) {
             for (int height=settings.minHeight; height <= settings.maxHeight; height<<=1) {
-              filter=new Filter(Direction.xy,format,width,height,min,mag);
+              filter=new Filter(Direction.xy,settings.defaultFileFormat,format,width,height,min,mag);
               new TexturePacker(settings,inputDir,filter,outputDir,packFile);
             }
           }

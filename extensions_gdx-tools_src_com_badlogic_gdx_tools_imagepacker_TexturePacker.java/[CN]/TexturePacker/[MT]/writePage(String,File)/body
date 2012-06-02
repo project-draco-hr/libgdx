@@ -120,9 +120,17 @@ break;
 default :
 throw new RuntimeException("Luminance Alpha format is not supported.");
 }
+FileFormat fileFormat;
+if (filter.fileFormat != null) {
+fileFormat=filter.fileFormat;
+}
+ else {
+fileFormat=settings.defaultFileFormat;
+}
+float imageQuality=settings.defaultImageQuality;
 int imageNumber=1;
-File outputFile=new File(outputDir,prefix + imageNumber + ".png");
-while (outputFile.exists()) outputFile=new File(outputDir,prefix + ++imageNumber + ".png");
+File outputFile=new File(outputDir,prefix + imageNumber + "."+ getFileExtension(fileFormat));
+while (outputFile.exists()) outputFile=new File(outputDir,prefix + ++imageNumber + "."+ getFileExtension(fileFormat));
 writer.write("\n" + outputFile.getName() + "\n");
 Format format;
 if (filter.format != null) {
@@ -139,8 +147,25 @@ writer.write("repeat: " + filter.direction + "\n");
 BufferedImage canvas=new BufferedImage(width,height,type);
 insert(canvas,images,bestWidth,bestHeight);
 log("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
-ImageIO.write(canvas,"png",outputFile);
-if (!settings.pot) ImageIO.write(squeeze(ImageIO.read(outputFile),"",true),"png",outputFile);
+if (fileFormat == FileFormat.JPEG) {
+Iterator<ImageWriter> writers=ImageIO.getImageWritersByFormatName("jpg");
+ImageWriter writer=(ImageWriter)writers.next();
+ImageWriteParam param=writer.getDefaultWriteParam();
+param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+param.setCompressionQuality(imageQuality);
+ImageOutputStream ios=ImageIO.createImageOutputStream(outputFile);
+writer.setOutput(ios);
+writer.write(null,new IIOImage(canvas,null,null),param);
+if (!settings.pot) {
+ios=ImageIO.createImageOutputStream(outputFile);
+writer.setOutput(ios);
+writer.write(null,new IIOImage(canvas,null,null),param);
+}
+}
+ else {
+ImageIO.write(canvas,getFileExtension(fileFormat),outputFile);
+if (!settings.pot) ImageIO.write(squeeze(ImageIO.read(outputFile),"",true),getFileExtension(fileFormat),outputFile);
+}
 compressedSize+=canvas.getWidth() * canvas.getHeight();
 return true;
 }

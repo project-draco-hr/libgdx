@@ -30,7 +30,7 @@
         String imageName=reader.readLine();
         if (imageName == null)         break;
         if (imageName.length() == 0)         continue;
-        String pageName=imageName.replaceAll("\\d+.png$","");
+        String pageName=imageName.replaceAll("\\d+." + getFileExtension(settings.defaultFileFormat) + "$","");
         String section=settings.packSections.get(pageName);
         if (section != null)         buffer.append(section);
         buffer.append('\n');

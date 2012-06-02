@@ -1,0 +1,12 @@
+{
+  String retVal="";
+switch (fileFormat) {
+case PNG:
+    retVal="png";
+  break;
+case JPEG:
+retVal="jpg";
+break;
+}
+return retVal;
+}
