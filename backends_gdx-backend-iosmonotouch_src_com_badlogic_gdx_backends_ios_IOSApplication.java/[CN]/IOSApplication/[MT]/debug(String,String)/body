@@ -1,2 +1,5 @@
 {
+  if (logLevel >= LOG_DEBUG) {
+    Console.WriteLine("[debug] " + tag + ": "+ message);
+  }
 }

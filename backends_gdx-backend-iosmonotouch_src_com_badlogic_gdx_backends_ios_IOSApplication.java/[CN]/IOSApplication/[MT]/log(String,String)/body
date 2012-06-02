@@ -1,3 +1,5 @@
 {
-  System.out.println(message);
+  if (logLevel > LOG_NONE) {
+    Console.WriteLine("[info] " + tag + ": "+ message);
+  }
 }
