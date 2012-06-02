@@ -1,4 +1,14 @@
 {
   this.uiApp=uiApp;
   this.listener=listener;
+  Gdx.app=this;
+  RectangleF bounds=UIScreen.get_MainScreen().get_Bounds();
+  this.graphics=new IOSGraphics(bounds,this);
+  this.audio=null;
+  this.files=null;
+  this.input=null;
+  this.uiWindow=new UIWindow(bounds);
+  this.uiWindow.Add(graphics);
+  this.graphics.Run();
+  this.uiWindow.MakeKeyAndVisible();
 }
