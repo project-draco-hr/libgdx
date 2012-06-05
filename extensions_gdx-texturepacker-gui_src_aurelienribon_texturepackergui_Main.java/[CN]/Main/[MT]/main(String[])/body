@@ -1,0 +1,49 @@
+{
+  Parameters params=new Parameters(args);
+  Project project=params.project;
+  if (project == null) {
+    String str="";
+    str+="input=" + params.input + "\n";
+    str+="output=" + params.output + "\n";
+    str+=params.settings;
+    project=Project.fromString(str);
+  }
+  if (params.silent) {
+    if (project.input.equals("") || project.output.equals("")) {
+      System.err.println("Input and output directories have to be set");
+    }
+ else {
+      try {
+        project.pack();
+      }
+ catch (      GdxRuntimeException ex) {
+        System.err.println("Packing unsuccessful. " + ex.getMessage());
+      }
+    }
+    return;
+  }
+  final Project prj=project;
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      }
+ catch (      ClassNotFoundException ex) {
+      }
+catch (      InstantiationException ex) {
+      }
+catch (      IllegalAccessException ex) {
+      }
+catch (      UnsupportedLookAndFeelException ex) {
+      }
+      Canvas canvas=new Canvas();
+      LwjglCanvas glCanvas=new LwjglCanvas(canvas,true);
+      MainWindow mw=new MainWindow(prj,canvas,glCanvas.getCanvas());
+      Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+      mw.setSize(Math.min(1100,screenSize.width - 100),Math.min(670,screenSize.height - 100));
+      mw.setLocationRelativeTo(null);
+      mw.setVisible(true);
+    }
+  }
+);
+}

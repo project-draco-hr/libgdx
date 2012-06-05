@@ -1,0 +1,21 @@
+{
+  input=get(args,"-input","");
+  output=get(args,"-output","");
+  packName=get(args,"-packName","pack");
+  silent=check(args,"-silent");
+  try {
+    String projectPath=get(args,"-project",null);
+    if (projectPath != null)     project=Project.fromFile(new File(projectPath));
+  }
+ catch (  IOException ex) {
+    System.err.println("Cannot read the specified project file.");
+  }
+  try {
+    String settingsPath=get(args,"-settings",null);
+    if (settingsPath != null)     settings=FileUtils.readFileToString(new File(settingsPath));
+ else     settings="";
+  }
+ catch (  IOException ex) {
+    System.err.println("Cannot read the specified settings file.");
+  }
+}

@@ -1,0 +1,19 @@
+{
+  if (zoomLevel == zoomLevels[0] && amount < 0) {
+    zoomLevel=zoomLevels[1];
+  }
+ else   if (zoomLevel == zoomLevels[zoomLevels.length - 1] && amount > 0) {
+    zoomLevel=zoomLevels[zoomLevels.length - 2];
+  }
+ else {
+    for (int i=1; i < zoomLevels.length - 1; i++) {
+      if (zoomLevels[i] == zoomLevel) {
+        zoomLevel=amount > 0 ? zoomLevels[i - 1] : zoomLevels[i + 1];
+        break;
+      }
+    }
+  }
+  canvas.getCamera().zoom=100f / zoomLevel;
+  canvas.getCamera().update();
+  return false;
+}

@@ -1,0 +1,20 @@
+{
+  File dir=new File(project.input);
+  if (!dir.isDirectory())   dir=new File(".");
+  JFileChooser chooser=new JFileChooser(dir);
+  chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+  chooser.setFileFilter(new FileFilter(){
+    @Override public boolean accept(    File f){
+      return f.isDirectory();
+    }
+    @Override public String getDescription(){
+      return "Directories";
+    }
+  }
+);
+  if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+    File selectedDir=chooser.getSelectedFile();
+    project.input=selectedDir.getPath();
+    inputField.setText(project.input);
+  }
+}

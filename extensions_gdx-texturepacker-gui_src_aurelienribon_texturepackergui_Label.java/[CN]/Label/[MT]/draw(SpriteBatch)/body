@@ -1,0 +1,20 @@
+{
+  tweenManager.update(Gdx.graphics.getDeltaTime());
+  float sw=Gdx.graphics.getWidth();
+  float sh=Gdx.graphics.getHeight();
+  float x=isAnchorLeft() ? offsetX : sw - w - offsetX;
+  float bgX=isAnchorLeft() ? x - w / 10 : x;
+  float textH=font.getBounds(text).height;
+  bg.setPosition(bgX,sh - y);
+  bg.draw(batch);
+  if (icon != null) {
+    icon.setPosition(x + 10,sh - y + h / 2 - icon.getHeight() / 2);
+    icon.draw(batch);
+    font.setColor(Color.WHITE);
+    font.draw(batch,text,x + 10 + icon.getWidth()+ 10,sh - y + h / 2 + textH / 2);
+  }
+ else {
+    font.setColor(Color.WHITE);
+    font.draw(batch,text,x + 10,sh - y + h / 2 + textH / 2);
+  }
+}

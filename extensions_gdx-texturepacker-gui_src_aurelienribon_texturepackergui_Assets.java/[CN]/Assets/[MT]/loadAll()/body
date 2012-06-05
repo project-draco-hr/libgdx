@@ -1,0 +1,7 @@
+{
+  manager=new AssetManager();
+  String[] textures=new String[]{"res/data/transparent-light.png","res/data/transparent-dark.png","res/data/white.png"};
+  for (  String tex : textures)   manager.load(tex,Texture.class);
+  while (!manager.update()) {
+  }
+}

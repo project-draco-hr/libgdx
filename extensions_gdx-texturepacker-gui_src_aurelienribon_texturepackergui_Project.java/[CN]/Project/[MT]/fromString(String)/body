@@ -1,0 +1,11 @@
+{
+  try {
+    Project prj=load(str);
+    if (!prj.input.equals(""))     prj.input=new File(System.getProperty("user.dir"),prj.input).getCanonicalPath();
+    if (!prj.output.equals(""))     prj.output=new File(System.getProperty("user.dir"),prj.output).getCanonicalPath();
+    return prj;
+  }
+ catch (  IOException ex) {
+    return null;
+  }
+}

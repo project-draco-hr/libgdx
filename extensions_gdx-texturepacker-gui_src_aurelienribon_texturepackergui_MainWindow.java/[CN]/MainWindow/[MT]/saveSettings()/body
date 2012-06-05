@@ -1,0 +1,24 @@
+{
+  project.input=inputField.getText();
+  project.output=outputField.getText();
+  project.packName=packFileNameField.getText();
+  project.settings.alias=opt_alias_chk.isSelected();
+  project.settings.alphaThreshold=(Integer)opt_alphaThreashold_nud.getValue();
+  project.settings.debug=opt_debug_chk.isSelected();
+  project.settings.defaultFileFormat=TexturePacker.FileFormat.valueOf((String)opt_defaultFileFormat_cbox.getSelectedItem());
+  project.settings.defaultFilterMag=TextureFilter.valueOf((String)opt_defaultMagFilter_cbox.getSelectedItem());
+  project.settings.defaultFilterMin=TextureFilter.valueOf((String)opt_defaultMinFilter_cbox.getSelectedItem());
+  project.settings.defaultFormat=Format.valueOf((String)opt_defaultImgFormat_cbox.getSelectedItem());
+  project.settings.defaultImageQuality=(Float)opt_jpgQuality_nud.getValue();
+  project.settings.duplicatePadding=opt_duplicatePadding_chk.isSelected();
+  project.settings.edgePadding=opt_edgePadding_chk.isSelected();
+  project.settings.incremental=opt_incremental_chk.isSelected();
+  project.settings.maxHeight=(Integer)opt_maxPageHeight_nud.getValue();
+  project.settings.maxWidth=(Integer)opt_maxPageWidth_nud.getValue();
+  project.settings.minHeight=(Integer)opt_minPageHeight_nud.getValue();
+  project.settings.minWidth=(Integer)opt_minPageWidth_nud.getValue();
+  project.settings.padding=(Integer)opt_padding_nud.getValue();
+  project.settings.pot=opt_outputPoT_chk.isSelected();
+  project.settings.rotate=opt_allowRotations_chk.isSelected();
+  project.settings.stripWhitespace=opt_stripWhitespace_chk.isSelected();
+}

@@ -1,0 +1,14 @@
+{
+  y=Gdx.graphics.getHeight() - y - 1;
+  if (isOver(x,y) && !isTouchOver && state == State.SHOWN) {
+    isTouchOver=true;
+    tiltOn();
+    if (callback != null)     callback.touchEnter(this);
+  }
+ else   if (!isOver(x,y) && isTouchOver) {
+    isTouchOver=false;
+    tiltOff();
+    if (callback != null)     callback.touchExit(this);
+  }
+  return isOver(x,y);
+}

@@ -1,0 +1,20 @@
+{
+  if (project.output.equals("") || project.input.equals(".")) {
+    JOptionPane.showMessageDialog(this,"Select the input and ouput paths first");
+    return;
+  }
+  String dir=projectFile != null ? projectFile.getParent() : "";
+  JFileChooser chooser=new JFileChooser(dir);
+  chooser.setDialogTitle("Select your project file");
+  if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+    try {
+      saveSettings();
+      projectFile=chooser.getSelectedFile();
+      project.save(projectFile);
+    }
+ catch (    IOException ex) {
+      String msg="Cannot save your project, sorry.\n" + "Check if the project file can be written correctly.";
+      JOptionPane.showMessageDialog(this,msg);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  StringBuilder sb=new StringBuilder();
+  sb.append("alias=").append(settings.alias).append("\n");
+  sb.append("alphaThreshold=").append(settings.alphaThreshold).append("\n");
+  sb.append("debug=").append(settings.debug).append("\n");
+  sb.append("defaultFileFormat=").append(settings.defaultFileFormat).append("\n");
+  sb.append("defaultFilterMag=").append(settings.defaultFilterMag).append("\n");
+  sb.append("defaultFilterMin=").append(settings.defaultFilterMin).append("\n");
+  sb.append("defaultFormat=").append(settings.defaultFormat).append("\n");
+  sb.append("defaultImageQuality=").append(settings.defaultImageQuality).append("\n");
+  sb.append("duplicatePadding=").append(settings.duplicatePadding).append("\n");
+  sb.append("edgePadding=").append(settings.edgePadding).append("\n");
+  sb.append("ignoreBlankImages=").append(settings.ignoreBlankImages).append("\n");
+  sb.append("incremental=").append(settings.incremental).append("\n");
+  sb.append("incrementalFilePath=").append(settings.incrementalFilePath == null ? "" : settings.incrementalFilePath).append("\n");
+  sb.append("maxHeight=").append(settings.maxHeight).append("\n");
+  sb.append("maxWidth=").append(settings.maxWidth).append("\n");
+  sb.append("minHeight=").append(settings.minHeight).append("\n");
+  sb.append("minWidth=").append(settings.minWidth).append("\n");
+  sb.append("padding=").append(settings.padding).append("\n");
+  sb.append("pot=").append(settings.pot).append("\n");
+  sb.append("rotate=").append(settings.rotate).append("\n");
+  sb.append("stripWhitespace=").append(settings.stripWhitespace).append("\n");
+  return sb.toString();
+}

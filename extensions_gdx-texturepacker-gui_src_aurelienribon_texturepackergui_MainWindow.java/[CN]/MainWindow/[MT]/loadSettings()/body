@@ -1,0 +1,23 @@
+{
+  inputField.setText(project.input);
+  outputField.setText(project.output);
+  packFileNameField.setText(project.packName);
+  opt_alias_chk.setSelected(project.settings.alias);
+  opt_alphaThreashold_nud.setValue(project.settings.alphaThreshold);
+  opt_debug_chk.setSelected(project.settings.debug);
+  opt_defaultMagFilter_cbox.setSelectedItem(project.settings.defaultFilterMag.toString());
+  opt_defaultMinFilter_cbox.setSelectedItem(project.settings.defaultFilterMin.toString());
+  opt_defaultImgFormat_cbox.setSelectedItem(project.settings.defaultFormat.toString());
+  opt_jpgQuality_nud.setValue(project.settings.defaultImageQuality);
+  opt_duplicatePadding_chk.setSelected(project.settings.duplicatePadding);
+  opt_incremental_chk.setSelected(project.settings.incremental);
+  opt_maxPageHeight_nud.setValue(project.settings.maxHeight);
+  opt_maxPageWidth_nud.setValue(project.settings.maxWidth);
+  opt_minPageHeight_nud.setValue(project.settings.minHeight);
+  opt_minPageWidth_nud.setValue(project.settings.minWidth);
+  opt_padding_nud.setValue(project.settings.padding);
+  opt_outputPoT_chk.setSelected(project.settings.pot);
+  opt_allowRotations_chk.setSelected(project.settings.rotate);
+  opt_stripWhitespace_chk.setSelected(project.settings.stripWhitespace);
+  opt_edgePadding_chk.setSelected(project.settings.edgePadding);
+}

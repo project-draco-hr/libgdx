@@ -1,0 +1,5 @@
+{
+  packReloadRequested=true;
+  if (packPath != null)   packFile=Gdx.files.absolute(packPath);
+ else   packFile=null;
+}

@@ -1,0 +1,16 @@
+{
+  if (project.output.equals("") || project.input.equals("")) {
+    JOptionPane.showMessageDialog(this,"Please first choose the input and output paths");
+    return;
+  }
+  saveSettings();
+  try {
+    project.pack();
+    canvas.requestPackReload(project.output + "/" + project.packName);
+    JOptionPane.showMessageDialog(this,"Pack successful !");
+  }
+ catch (  GdxRuntimeException ex) {
+    String msg="Pack unsuccessful... " + ex.getMessage();
+    JOptionPane.showMessageDialog(this,msg);
+  }
+}

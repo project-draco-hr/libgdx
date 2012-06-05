@@ -1,0 +1,36 @@
+{
+  Assets.loadAll();
+  Texture.setEnforcePotImages(false);
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  camera=new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.update();
+  infoLabel=new Sprite(Assets.getWhiteTex());
+  infoLabel.setPosition(0,0);
+  infoLabel.setSize(140,80);
+  infoLabel.setColor(new Color(0x2A / 255f,0x3B / 255f,0x56 / 255f,180 / 255f));
+  int lblH=25;
+  Color lblC=new Color(0x2A / 255f,0x6B / 255f,0x56 / 255f,180 / 255f);
+  lblNextPage=new Label(10 + lblH,120,lblH,"Next page",font,lblC,Anchor.TOP_RIGHT);
+  lblPreviousPage=new Label(15 + lblH * 2,120,lblH,"Previous page",font,lblC,Anchor.TOP_RIGHT);
+  lblNextPage.setCallback(new Label.TouchCallback(){
+    @Override public void touchDown(    Label source){
+      nextPageRequested=true;
+    }
+  }
+);
+  lblPreviousPage.setCallback(new Label.TouchCallback(){
+    @Override public void touchDown(    Label source){
+      previousPageRequested=true;
+    }
+  }
+);
+  lblNextPage.show();
+  lblPreviousPage.show();
+  bgTex=Assets.getTransparentLightTex();
+  bgTex.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+  inputMultiplexer=new InputMultiplexer();
+  inputMultiplexer.addProcessor(new PanZoomInputProcessor(this));
+  inputMultiplexer.addProcessor(buttonsInputProcessor);
+  Gdx.input.setInputProcessor(inputMultiplexer);
+}

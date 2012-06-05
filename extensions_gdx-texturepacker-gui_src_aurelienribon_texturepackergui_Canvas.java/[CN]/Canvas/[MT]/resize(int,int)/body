@@ -1,0 +1,6 @@
+{
+  Gdx.gl.glViewport(0,0,width,height);
+  camera.viewportWidth=width;
+  camera.viewportHeight=height;
+  camera.update();
+}

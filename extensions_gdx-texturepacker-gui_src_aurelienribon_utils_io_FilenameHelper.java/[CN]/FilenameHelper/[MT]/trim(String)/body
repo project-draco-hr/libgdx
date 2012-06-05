@@ -1,0 +1,4 @@
+{
+  while (path.startsWith("\"") && path.endsWith("\""))   path=path.substring(1,path.length() - 1);
+  return path;
+}

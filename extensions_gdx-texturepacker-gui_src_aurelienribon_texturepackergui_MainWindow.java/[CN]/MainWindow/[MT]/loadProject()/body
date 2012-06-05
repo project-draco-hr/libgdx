@@ -1,0 +1,16 @@
+{
+  String dir=projectFile != null ? projectFile.getParent() : ".";
+  JFileChooser chooser=new JFileChooser(dir);
+  chooser.setDialogTitle("Select your project file");
+  if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+    try {
+      projectFile=chooser.getSelectedFile();
+      project=Project.fromFile(projectFile);
+      loadSettings();
+      canvas.requestPackReload(project.output + "/" + project.packName);
+    }
+ catch (    IOException ex) {
+      JOptionPane.showMessageDialog(this,"Project file cannot be read.");
+    }
+  }
+}

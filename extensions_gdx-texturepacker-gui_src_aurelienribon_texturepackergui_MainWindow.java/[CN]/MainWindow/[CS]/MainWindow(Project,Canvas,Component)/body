@@ -1,0 +1,53 @@
+{
+  this.project=project;
+  this.canvas=canvas;
+  canvas.setCallback(new Canvas.Callback(){
+    @Override public void atlasError(){
+      JOptionPane.showMessageDialog(MainWindow.this,"Impossible to create the atlas in ligdx canvas, sorry.");
+    }
+  }
+);
+  setContentPane(new PaintedPanel());
+  getContentPane().setLayout(new BorderLayout());
+  initComponents();
+  renderPanel.add(canvasCmp,BorderLayout.CENTER);
+  loadSettings();
+  browseInputBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      browseInput();
+    }
+  }
+);
+  browseOutputBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      browseOutput();
+    }
+  }
+);
+  loadProjectBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      loadProject();
+    }
+  }
+);
+  saveProjectBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      saveProject();
+    }
+  }
+);
+  launchPackBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      launchPack();
+    }
+  }
+);
+  SwingStyle.init();
+  ArStyle.init();
+  Style.registerCssClasses(getContentPane(),".rootPanel");
+  Style.registerCssClasses(projectPanel,".titledPanel","#projectPanel");
+  Style.registerCssClasses(settingsPanel,".titledPanel","#settingsPanel");
+  Style.registerCssClasses(renderPanel,".titledPanel","#renderPanel");
+  Style.registerCssClasses(launchPackBtn,".centerText");
+  Style.apply(getContentPane(),new Style(Res.getUrl("css/style.css")));
+}

@@ -1,0 +1,14 @@
+{
+  Project prj=new Project();
+  prj.input="";
+  prj.output="";
+  prj.packName="pack";
+  prj.settings=loadSettings(str);
+  String lines[]=str.split("\n");
+  for (  String line : lines) {
+    if (line.startsWith("input="))     prj.input=FilenameHelper.trim(line.substring("input=".length()));
+    if (line.startsWith("output="))     prj.output=FilenameHelper.trim(line.substring("output=".length()));
+    if (line.startsWith("packName="))     prj.packName=FilenameHelper.trim(line.substring("packName=".length()));
+  }
+  return prj;
+}

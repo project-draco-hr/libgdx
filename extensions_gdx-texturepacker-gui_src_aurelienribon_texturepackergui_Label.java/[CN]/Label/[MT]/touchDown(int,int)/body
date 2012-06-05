@@ -1,0 +1,5 @@
+{
+  y=Gdx.graphics.getHeight() - y - 1;
+  if (isOver(x,y) && callback != null)   callback.touchDown(this);
+  return isOver(x,y);
+}

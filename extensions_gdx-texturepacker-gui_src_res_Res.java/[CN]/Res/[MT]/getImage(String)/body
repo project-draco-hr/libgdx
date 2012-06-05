@@ -1,0 +1,8 @@
+{
+  if (!imageIcons.containsKey(name)) {
+    URL url=Res.class.getResource(name);
+    if (url == null)     throw new RuntimeException("File not found: " + name);
+    imageIcons.put(name,new ImageIcon(url));
+  }
+  return imageIcons.get(name);
+}

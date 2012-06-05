@@ -1,0 +1,47 @@
+{
+  if (basePath == null || basePath.equals(""))   return targetPath;
+  if (targetPath == null || targetPath.equals(""))   return "";
+  String pathSeparator=File.separator;
+  String normalizedTargetPath=FilenameUtils.normalizeNoEndSeparator(targetPath);
+  String normalizedBasePath=FilenameUtils.normalizeNoEndSeparator(basePath);
+  if (basePath.equals(targetPath))   return "";
+  if (pathSeparator.equals("/")) {
+    normalizedTargetPath=FilenameUtils.separatorsToUnix(normalizedTargetPath);
+    normalizedBasePath=FilenameUtils.separatorsToUnix(normalizedBasePath);
+  }
+ else   if (pathSeparator.equals("\\")) {
+    normalizedTargetPath=FilenameUtils.separatorsToWindows(normalizedTargetPath);
+    normalizedBasePath=FilenameUtils.separatorsToWindows(normalizedBasePath);
+  }
+ else {
+    throw new IllegalArgumentException("Unrecognised dir separator '" + pathSeparator + "'");
+  }
+  String[] base=normalizedBasePath.split(Pattern.quote(pathSeparator));
+  String[] target=normalizedTargetPath.split(Pattern.quote(pathSeparator));
+  StringBuilder common=new StringBuilder();
+  int commonIndex=0;
+  while (commonIndex < target.length && commonIndex < base.length && target[commonIndex].equals(base[commonIndex])) {
+    common.append(target[commonIndex]).append(pathSeparator);
+    commonIndex++;
+  }
+  if (commonIndex == 0) {
+    return targetPath;
+  }
+  boolean baseIsFile=true;
+  File baseResource=new File(normalizedBasePath);
+  if (baseResource.exists()) {
+    baseIsFile=baseResource.isFile();
+  }
+ else   if (basePath.endsWith(pathSeparator)) {
+    baseIsFile=false;
+  }
+  StringBuilder relative=new StringBuilder();
+  if (base.length != commonIndex) {
+    int numDirsUp=baseIsFile ? base.length - commonIndex - 1 : base.length - commonIndex;
+    for (int i=0; i < numDirsUp; i++) {
+      relative.append("..").append(pathSeparator);
+    }
+  }
+  relative.append(normalizedTargetPath.substring(common.length()));
+  return relative.toString();
+}

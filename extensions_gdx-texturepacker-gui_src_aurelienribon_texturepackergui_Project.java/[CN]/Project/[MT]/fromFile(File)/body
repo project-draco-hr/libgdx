@@ -1,0 +1,6 @@
+{
+  Project prj=load(FileUtils.readFileToString(file));
+  if (!prj.input.equals(""))   prj.input=new File(file.getParent(),prj.input).getCanonicalPath();
+  if (!prj.output.equals(""))   prj.output=new File(file.getParent(),prj.output).getCanonicalPath();
+  return prj;
+}

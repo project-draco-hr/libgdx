@@ -1,0 +1,4 @@
+{
+  String str="input=\"" + FilenameHelper.getRelativePath(input,projectFile.getParent()) + "\"\n"+ "output=\""+ FilenameHelper.getRelativePath(output,projectFile.getParent())+ "\"\n"+ "packName=\""+ packName+ "\"\n\n"+ saveSettings(settings);
+  FileUtils.writeStringToFile(projectFile,str);
+}

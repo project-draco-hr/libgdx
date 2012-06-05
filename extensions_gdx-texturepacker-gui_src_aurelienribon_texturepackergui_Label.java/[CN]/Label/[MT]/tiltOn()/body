@@ -1,0 +1,16 @@
+{
+  float tx;
+switch (state) {
+case SHOWN:
+    tx=w / 10;
+  break;
+case HIDDEN_SEMI:
+tx=-w + w / 10 + w / 10;
+break;
+default :
+return;
+}
+tweenManager.killTarget(this);
+Tween.to(this,Accessor.ALPHA,0.2f).target(1).start(tweenManager);
+Tween.to(this,Accessor.OFFSET_X,0.2f).target(tx).start(tweenManager);
+}
