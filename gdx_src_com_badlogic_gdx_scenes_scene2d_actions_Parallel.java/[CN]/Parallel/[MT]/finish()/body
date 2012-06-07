@@ -1,8 +1,4 @@
 {
   pool.free(this);
-  int len=actions.size();
-  for (int i=0; i < len; i++) {
-    if (!finished[i])     actions.get(i).finish();
-  }
   super.finish();
 }

@@ -10,7 +10,6 @@
     }
  else {
       if (!finished[i]) {
-        action.finish();
         finished[i]=true;
         allDone&=finished[i];
       }

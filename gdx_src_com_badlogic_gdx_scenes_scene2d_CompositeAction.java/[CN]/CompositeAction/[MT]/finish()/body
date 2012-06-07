@@ -1,0 +1,6 @@
+{
+  for (  Action action : actions) {
+    action.finish();
+  }
+  super.finish();
+}
