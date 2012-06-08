@@ -1,5 +1,7 @@
 {
   super(bounds);
+  width=(int)bounds.get_Width();
+  height=(int)bounds.get_Height();
   app.log("IOSGraphics",bounds.get_Width() + "x" + bounds.get_Height()+ ", "+ UIScreen.get_MainScreen().get_Scale());
   this.app=app;
   set_LayerRetainsBacking(false);
