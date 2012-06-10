@@ -1,3 +1,8 @@
 {
+  actions.iter();
+  Action action=null;
+  while ((action=actions.next()) != null) {
+    action.finish();
+  }
   actions.clear();
 }
