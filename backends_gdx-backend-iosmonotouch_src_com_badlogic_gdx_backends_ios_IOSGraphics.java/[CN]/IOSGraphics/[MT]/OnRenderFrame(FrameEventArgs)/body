@@ -1,5 +1,14 @@
 {
   super.OnRenderFrame(arg0);
+  long time=System.nanoTime();
+  deltaTime=(time - lastFrameTime) / 1000000000.0f;
+  lastFrameTime=time;
+  fps++;
+  if (time - framesStart >= 1000000000l) {
+    framesStart=time;
+    fps=frames;
+    frames=0;
+  }
   MakeCurrent();
   app.listener.render();
   SwapBuffers();

@@ -13,4 +13,6 @@
   gl20=new IOSGLES20();
   Gdx.gl=gl20;
   Gdx.gl20=gl20;
+  lastFrameTime=System.nanoTime();
+  framesStart=lastFrameTime;
 }
