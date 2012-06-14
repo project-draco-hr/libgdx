@@ -1,3 +1,4 @@
 {
-  return super.getHeight() / region.packedHeight * region.originalHeight;
+  float packedHeight=region.rotate ? region.packedWidth : region.packedHeight;
+  return super.getHeight() / packedHeight * region.originalHeight;
 }
