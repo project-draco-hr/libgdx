@@ -1,0 +1,38 @@
+{
+  if (src == null || dest == null) {
+    throw new NullPointerException();
+  }
+  Class<?> srcType=src.getClass();
+  Class<?> destType=dest.getClass();
+  if (!srcType.isArray() || !destType.isArray()) {
+    throw new ArrayStoreException("Must be array types");
+  }
+  Class<?> srcComp=srcType.getComponentType();
+  Class<?> destComp=destType.getComponentType();
+  if (srcComp.modifiers != destComp.modifiers || (srcComp.isPrimitive() && !srcComp.equals(destComp))) {
+    throw new ArrayStoreException("Array types must match");
+  }
+  int srclen=getArrayLength(src);
+  int destlen=getArrayLength(dest);
+  if (srcOfs < 0 || destOfs < 0 || len < 0 || srcOfs + len > srclen || destOfs + len > destlen) {
+    throw new IndexOutOfBoundsException();
+  }
+  if ((!srcComp.isPrimitive() || srcComp.isArray()) && !srcType.equals(destType)) {
+    Object[] srcArray=(Object[])src;
+    Object[] destArray=(Object[])dest;
+    if (src == dest && srcOfs < destOfs) {
+      srcOfs+=len;
+      for (int destEnd=destOfs + len; destEnd-- > destOfs; ) {
+        destArray[destEnd]=srcArray[--srcOfs];
+      }
+    }
+ else {
+      for (int destEnd=destOfs + len; destOfs < destEnd; ) {
+        destArray[destOfs++]=srcArray[srcOfs++];
+      }
+    }
+  }
+ else {
+    nativeArraycopy(src,srcOfs,dest,destOfs,len);
+  }
+}
