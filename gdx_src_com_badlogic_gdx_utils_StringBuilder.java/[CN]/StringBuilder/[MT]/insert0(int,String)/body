@@ -1,0 +1,16 @@
+{
+  if (0 <= index && index <= length) {
+    if (string == null) {
+      string="null";
+    }
+    int min=string.length();
+    if (min != 0) {
+      move(min,index);
+      string.getChars(0,min,chars,index);
+      length+=min;
+    }
+  }
+ else {
+    throw new StringIndexOutOfBoundsException(index);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  if (length < chars.length) {
+    char[] newValue=new char[length];
+    System.arraycopy(chars,0,newValue,0,length);
+    chars=newValue;
+  }
+}

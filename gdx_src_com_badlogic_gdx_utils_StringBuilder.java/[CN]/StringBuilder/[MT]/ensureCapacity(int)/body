@@ -1,0 +1,6 @@
+{
+  if (min > chars.length) {
+    int twice=(chars.length << 1) + 2;
+    enlargeBuffer(twice > min ? twice : min);
+  }
+}

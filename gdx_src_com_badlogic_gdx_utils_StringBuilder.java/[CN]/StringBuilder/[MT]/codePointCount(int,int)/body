@@ -1,0 +1,6 @@
+{
+  if (beginIndex < 0 || endIndex > length || beginIndex > endIndex) {
+    throw new StringIndexOutOfBoundsException();
+  }
+  return Character.codePointCount(chars,beginIndex,endIndex - beginIndex);
+}

@@ -1,0 +1,6 @@
+{
+  if (length == chars.length) {
+    enlargeBuffer(length + 1);
+  }
+  chars[length++]=ch;
+}

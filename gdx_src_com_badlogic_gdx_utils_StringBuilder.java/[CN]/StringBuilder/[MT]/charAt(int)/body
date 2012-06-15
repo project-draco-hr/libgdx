@@ -1,0 +1,6 @@
+{
+  if (index < 0 || index >= length) {
+    throw new StringIndexOutOfBoundsException(index);
+  }
+  return chars[index];
+}

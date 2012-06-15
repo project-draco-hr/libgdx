@@ -1,0 +1,14 @@
+{
+  if (offset > value.length || offset < 0) {
+    throw new ArrayIndexOutOfBoundsException("Offset out of bounds: " + offset);
+  }
+  if (length < 0 || value.length - offset < length) {
+    throw new ArrayIndexOutOfBoundsException("Length out of bounds: " + length);
+  }
+  int newSize=length + length;
+  if (newSize > value.length) {
+    enlargeBuffer(newSize);
+  }
+  System.arraycopy(value,offset,value,length,length);
+  length=newSize;
+}

@@ -1,0 +1,10 @@
+{
+  if (0 > index || index > length) {
+    throw new StringIndexOutOfBoundsException(index);
+  }
+  if (value.length != 0) {
+    move(value.length,index);
+    System.arraycopy(value,0,value,index,value.length);
+    length+=value.length;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  if (newLength < 0) {
+    throw new StringIndexOutOfBoundsException(newLength);
+  }
+  if (newLength > chars.length) {
+    enlargeBuffer(newLength);
+  }
+ else {
+    if (length < newLength) {
+      Arrays.fill(chars,length,newLength,(char)0);
+    }
+  }
+  length=newLength;
+}

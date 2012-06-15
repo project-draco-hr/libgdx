@@ -1,0 +1,8 @@
+{
+  int newSize=length + value.length;
+  if (newSize > value.length) {
+    enlargeBuffer(newSize);
+  }
+  System.arraycopy(value,0,value,length,value.length);
+  length=newSize;
+}

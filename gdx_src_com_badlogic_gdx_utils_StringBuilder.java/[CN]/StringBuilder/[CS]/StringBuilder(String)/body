@@ -1,0 +1,5 @@
+{
+  length=string.length();
+  chars=new char[length + INITIAL_CAPACITY];
+  string.getChars(0,length,chars,0);
+}

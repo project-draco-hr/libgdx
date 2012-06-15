@@ -1,0 +1,6 @@
+{
+  if (start > length || end > length || start > end) {
+    throw new StringIndexOutOfBoundsException();
+  }
+  System.arraycopy(chars,start,dest,destStart,end - start);
+}

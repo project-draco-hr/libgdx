@@ -1,0 +1,9 @@
+{
+  if (0 <= start && start <= length) {
+    if (start == length) {
+      return "";
+    }
+    return new String(chars,start,length - start);
+  }
+  throw new StringIndexOutOfBoundsException(start);
+}

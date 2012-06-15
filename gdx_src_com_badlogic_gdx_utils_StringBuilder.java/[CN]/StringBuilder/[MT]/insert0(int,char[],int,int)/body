@@ -1,0 +1,14 @@
+{
+  if (0 <= index && index <= length) {
+    if (start >= 0 && 0 <= length && length <= value.length - start) {
+      if (length != 0) {
+        move(length,index);
+        System.arraycopy(value,start,value,index,length);
+        length+=length;
+      }
+      return;
+    }
+    throw new StringIndexOutOfBoundsException("offset " + start + ", length "+ length+ ", char[].length "+ value.length);
+  }
+  throw new StringIndexOutOfBoundsException(index);
+}
