@@ -1,11 +1,5 @@
 {
-  Table table;
-  try {
-    table=super.newTable(parent);
-  }
- catch (  Exception ex) {
-    table=new Table();
-  }
+  Table table=new Table();
   TableLayout layout=parent.getTableLayout();
   table.setSkin(layout.skin);
   table.setAssetManager(layout.assetManager);
