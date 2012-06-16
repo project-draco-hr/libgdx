@@ -1,5 +1,6 @@
 {
   this.frameDuration=frameDuration;
+  this.animationDuration=keyFrames.length * frameDuration;
   this.keyFrames=keyFrames;
-  this.animationDuration=frameDuration * keyFrames.length;
+  this.playMode=NORMAL;
 }

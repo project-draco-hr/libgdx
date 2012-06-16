@@ -1,10 +1,11 @@
 {
-  int frameNumber=(int)(stateTime / frameDuration);
-  if (!looping) {
-    frameNumber=Math.min(keyFrames.length - 1,frameNumber);
+  if (looping && (playMode == NORMAL || playMode == REVERSED)) {
+    if (playMode == NORMAL)     playMode=LOOP;
+ else     playMode=LOOP_REVERSED;
   }
- else {
-    frameNumber=frameNumber % keyFrames.length;
+ else   if (!looping && !(playMode == NORMAL || playMode == REVERSED)) {
+    if (playMode == LOOP_REVERSED)     playMode=REVERSED;
+ else     playMode=LOOP;
   }
-  return keyFrames[frameNumber];
+  return getKeyFrame(stateTime);
 }
