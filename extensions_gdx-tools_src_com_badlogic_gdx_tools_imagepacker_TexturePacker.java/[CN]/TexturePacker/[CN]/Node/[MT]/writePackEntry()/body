@@ -1,4 +1,4 @@
 {
-  writePackEntry(image,false);
-  for (  Image alias : image.aliases)   writePackEntry(alias,true);
+  writePackEntry(image,null);
+  for (  Image alias : image.aliases)   writePackEntry(alias,image);
 }
