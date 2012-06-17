@@ -2,4 +2,5 @@
   Gdx.app.log("IOSApplication","paused");
   graphics.MakeCurrent();
   listener.pause();
+  Gdx.gl.glFlush();
 }
