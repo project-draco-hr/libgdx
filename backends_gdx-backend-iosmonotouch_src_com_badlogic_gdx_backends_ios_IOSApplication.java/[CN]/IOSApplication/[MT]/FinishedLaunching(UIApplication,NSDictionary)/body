@@ -1,7 +1,5 @@
 {
   this.uiApp=uiApp;
-  this.listener=listener;
-  Gdx.app=this;
   RectangleF bounds=UIScreen.get_MainScreen().get_Bounds();
   this.graphics=new IOSGraphics(bounds,this);
   this.files=new IOSFiles();
@@ -15,4 +13,6 @@
   this.uiWindow.Add(graphics);
   this.graphics.Run();
   this.uiWindow.MakeKeyAndVisible();
+  Gdx.app.log("IOSApplication","created");
+  return true;
 }
