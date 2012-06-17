@@ -1,3 +1,5 @@
 {
   Gdx.app.log("IOSApplication","disposed");
+  graphics.MakeCurrent();
+  listener.dispose();
 }

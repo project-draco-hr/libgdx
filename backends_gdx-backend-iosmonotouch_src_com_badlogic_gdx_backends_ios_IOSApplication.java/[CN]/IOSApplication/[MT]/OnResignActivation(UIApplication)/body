@@ -1,3 +1,5 @@
 {
   Gdx.app.log("IOSApplication","paused");
+  graphics.MakeCurrent();
+  listener.pause();
 }
