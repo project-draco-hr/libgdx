@@ -1,0 +1,6 @@
+{
+  ReleaseMFStream();
+  WriteEndMarker(nowPos & _posStateMask);
+  _rangeEncoder.FlushData();
+  _rangeEncoder.FlushStream();
+}

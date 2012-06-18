@@ -1,0 +1,5 @@
+{
+  if (numFastBytes < 5 || numFastBytes > Base.kMatchMaxLen)   return false;
+  _numFastBytes=numFastBytes;
+  return true;
+}

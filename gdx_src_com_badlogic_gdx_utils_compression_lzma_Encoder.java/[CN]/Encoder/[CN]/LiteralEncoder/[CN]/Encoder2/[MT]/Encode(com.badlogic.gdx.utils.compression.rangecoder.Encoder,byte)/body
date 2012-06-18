@@ -1,0 +1,8 @@
+{
+  int context=1;
+  for (int i=7; i >= 0; i--) {
+    int bit=((symbol >> i) & 1);
+    rangeEncoder.Encode(m_Encoders,context,bit);
+    context=(context << 1) | bit;
+  }
+}

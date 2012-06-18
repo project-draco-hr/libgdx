@@ -1,0 +1,20 @@
+{
+  BaseInit();
+  _rangeEncoder.Init();
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isMatch);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isRep0Long);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isRep);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isRepG0);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isRepG1);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_isRepG2);
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_posEncoders);
+  _literalEncoder.Init();
+  for (int i=0; i < Base.kNumLenToPosStates; i++)   _posSlotEncoder[i].Init();
+  _lenEncoder.Init(1 << _posStateBits);
+  _repMatchLenEncoder.Init(1 << _posStateBits);
+  _posAlignEncoder.Init();
+  _longestMatchWasFound=false;
+  _optimumEndIndex=0;
+  _optimumCurrentIndex=0;
+  _additionalOffset=0;
+}

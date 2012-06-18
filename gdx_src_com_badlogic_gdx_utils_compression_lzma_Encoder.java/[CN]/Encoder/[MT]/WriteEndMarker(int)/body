@@ -1,0 +1,15 @@
+{
+  if (!_writeEndMark)   return;
+  _rangeEncoder.Encode(_isMatch,(_state << Base.kNumPosStatesBitsMax) + posState,1);
+  _rangeEncoder.Encode(_isRep,_state,0);
+  _state=Base.StateUpdateMatch(_state);
+  int len=Base.kMatchMinLen;
+  _lenEncoder.Encode(_rangeEncoder,len - Base.kMatchMinLen,posState);
+  int posSlot=(1 << Base.kNumPosSlotBits) - 1;
+  int lenToPosState=Base.GetLenToPosState(len);
+  _posSlotEncoder[lenToPosState].Encode(_rangeEncoder,posSlot);
+  int footerBits=30;
+  int posReduced=(1 << footerBits) - 1;
+  _rangeEncoder.EncodeDirectBits(posReduced >> Base.kNumAlignBits,footerBits - Base.kNumAlignBits);
+  _posAlignEncoder.ReverseEncode(_rangeEncoder,posReduced & Base.kAlignMask);
+}

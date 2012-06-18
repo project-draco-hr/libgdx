@@ -1,0 +1,10 @@
+{
+  int lenRes=0;
+  _numDistancePairs=_matchFinder.GetMatches(_matchDistances);
+  if (_numDistancePairs > 0) {
+    lenRes=_matchDistances[_numDistancePairs - 2];
+    if (lenRes == _numFastBytes)     lenRes+=_matchFinder.GetMatchLen((int)lenRes - 1,_matchDistances[_numDistancePairs - 1],Base.kMatchMaxLen - lenRes);
+  }
+  _additionalOffset++;
+  return lenRes;
+}

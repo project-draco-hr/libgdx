@@ -1,0 +1,9 @@
+{
+  int kDicLogSizeMaxCompress=29;
+  if (dictionarySize < (1 << Base.kDicLogSizeMin) || dictionarySize > (1 << kDicLogSizeMaxCompress))   return false;
+  _dictionarySize=dictionarySize;
+  int dicLogSize;
+  for (dicLogSize=0; dictionarySize > (1 << dicLogSize); dicLogSize++)   ;
+  _distTableSize=dicLogSize * 2;
+  return true;
+}

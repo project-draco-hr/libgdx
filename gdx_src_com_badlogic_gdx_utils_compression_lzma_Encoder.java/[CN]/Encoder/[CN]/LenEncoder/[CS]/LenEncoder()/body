@@ -1,0 +1,6 @@
+{
+  for (int posState=0; posState < Base.kNumPosStatesEncodingMax; posState++) {
+    _lowCoder[posState]=new BitTreeEncoder(Base.kNumLowLenBits);
+    _midCoder[posState]=new BitTreeEncoder(Base.kNumMidLenBits);
+  }
+}

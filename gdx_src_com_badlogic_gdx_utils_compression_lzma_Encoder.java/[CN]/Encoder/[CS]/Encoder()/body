@@ -1,0 +1,4 @@
+{
+  for (int i=0; i < kNumOpts; i++)   _optimum[i]=new Optimal();
+  for (int i=0; i < Base.kNumLenToPosStates; i++)   _posSlotEncoder[i]=new BitTreeEncoder(Base.kNumPosSlotBits);
+}

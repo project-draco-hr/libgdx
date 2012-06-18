@@ -1,0 +1,6 @@
+{
+  for (; m_NumPosStates < numPosStates; m_NumPosStates++) {
+    m_LowCoder[m_NumPosStates]=new BitTreeDecoder(Base.kNumLowLenBits);
+    m_MidCoder[m_NumPosStates]=new BitTreeDecoder(Base.kNumMidLenBits);
+  }
+}

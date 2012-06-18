@@ -1,0 +1,23 @@
+{
+  int price=0;
+  int context=1;
+  int i=7;
+  if (matchMode) {
+    for (; i >= 0; i--) {
+      int matchBit=(matchByte >> i) & 1;
+      int bit=(symbol >> i) & 1;
+      price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice(m_Encoders[((1 + matchBit) << 8) + context],bit);
+      context=(context << 1) | bit;
+      if (matchBit != bit) {
+        i--;
+        break;
+      }
+    }
+  }
+  for (; i >= 0; i--) {
+    int bit=(symbol >> i) & 1;
+    price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice(m_Encoders[context],bit);
+    context=(context << 1) | bit;
+  }
+  return price;
+}

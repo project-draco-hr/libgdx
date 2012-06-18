@@ -1,0 +1,15 @@
+{
+  int context=1;
+  boolean same=true;
+  for (int i=7; i >= 0; i--) {
+    int bit=((symbol >> i) & 1);
+    int state=context;
+    if (same) {
+      int matchBit=((matchByte >> i) & 1);
+      state+=((1 + matchBit) << 8);
+      same=(matchBit == bit);
+    }
+    rangeEncoder.Encode(m_Encoders,state,bit);
+    context=(context << 1) | bit;
+  }
+}

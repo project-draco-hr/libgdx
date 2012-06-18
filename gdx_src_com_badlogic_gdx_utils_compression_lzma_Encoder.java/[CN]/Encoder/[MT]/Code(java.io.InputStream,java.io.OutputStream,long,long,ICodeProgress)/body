@@ -1,0 +1,16 @@
+{
+  _needReleaseMFStream=false;
+  try {
+    SetStreams(inStream,outStream,inSize,outSize);
+    while (true) {
+      CodeOneBlock(processedInSize,processedOutSize,finished);
+      if (finished[0])       return;
+      if (progress != null) {
+        progress.SetProgress(processedInSize[0],processedOutSize[0]);
+      }
+    }
+  }
+  finally {
+    ReleaseStreams();
+  }
+}

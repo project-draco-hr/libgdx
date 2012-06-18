@@ -1,0 +1,4 @@
+{
+  int price=_repMatchLenEncoder.GetPrice(len - Base.kMatchMinLen,posState);
+  return price + GetPureRepPrice(repIndex,state,posState);
+}

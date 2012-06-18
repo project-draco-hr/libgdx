@@ -1,0 +1,20 @@
+{
+  for (int i=Base.kStartPosModelIndex; i < Base.kNumFullDistances; i++) {
+    int posSlot=GetPosSlot(i);
+    int footerBits=(int)((posSlot >> 1) - 1);
+    int baseVal=((2 | (posSlot & 1)) << footerBits);
+    tempPrices[i]=BitTreeEncoder.ReverseGetPrice(_posEncoders,baseVal - posSlot - 1,footerBits,i - baseVal);
+  }
+  for (int lenToPosState=0; lenToPosState < Base.kNumLenToPosStates; lenToPosState++) {
+    int posSlot;
+    BitTreeEncoder encoder=_posSlotEncoder[lenToPosState];
+    int st=(lenToPosState << Base.kNumPosSlotBits);
+    for (posSlot=0; posSlot < _distTableSize; posSlot++)     _posSlotPrices[st + posSlot]=encoder.GetPrice(posSlot);
+    for (posSlot=Base.kEndPosModelIndex; posSlot < _distTableSize; posSlot++)     _posSlotPrices[st + posSlot]+=((((posSlot >> 1) - 1) - Base.kNumAlignBits) << com.badlogic.gdx.utils.compression.rangecoder.Encoder.kNumBitPriceShiftBits);
+    int st2=lenToPosState * Base.kNumFullDistances;
+    int i;
+    for (i=0; i < Base.kStartPosModelIndex; i++)     _distancesPrices[st2 + i]=_posSlotPrices[st + i];
+    for (; i < Base.kNumFullDistances; i++)     _distancesPrices[st2 + i]=_posSlotPrices[st + GetPosSlot(i)] + tempPrices[i];
+  }
+  _matchPriceCount=0;
+}

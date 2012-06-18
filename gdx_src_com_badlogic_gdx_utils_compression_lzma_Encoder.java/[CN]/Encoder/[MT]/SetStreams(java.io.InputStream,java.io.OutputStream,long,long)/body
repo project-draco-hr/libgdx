@@ -1,0 +1,16 @@
+{
+  _inStream=inStream;
+  _finished=false;
+  Create();
+  SetOutStream(outStream);
+  Init();
+{
+    FillDistancesPrices();
+    FillAlignPrices();
+  }
+  _lenEncoder.SetTableSize(_numFastBytes + 1 - Base.kMatchMinLen);
+  _lenEncoder.UpdateTables(1 << _posStateBits);
+  _repMatchLenEncoder.SetTableSize(_numFastBytes + 1 - Base.kMatchMinLen);
+  _repMatchLenEncoder.UpdateTables(1 << _posStateBits);
+  nowPos64=0;
+}

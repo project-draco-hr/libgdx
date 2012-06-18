@@ -1,0 +1,9 @@
+{
+  int m=1;
+  for (int i=0; i < NumBitLevels; i++) {
+    int bit=symbol & 1;
+    rangeEncoder.Encode(Models,m,bit);
+    m=(m << 1) | bit;
+    symbol>>=1;
+  }
+}

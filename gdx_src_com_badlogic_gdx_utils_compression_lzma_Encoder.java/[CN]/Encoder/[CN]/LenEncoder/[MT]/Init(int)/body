@@ -1,0 +1,8 @@
+{
+  com.badlogic.gdx.utils.compression.rangecoder.Encoder.InitBitModels(_choice);
+  for (int posState=0; posState < numPosStates; posState++) {
+    _lowCoder[posState].Init();
+    _midCoder[posState].Init();
+  }
+  _highCoder.Init();
+}

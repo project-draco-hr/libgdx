@@ -1,0 +1,8 @@
+{
+  if (_streamEndWasReached)   if ((_pos + index) + limit > _streamPos)   limit=_streamPos - (_pos + index);
+  distance++;
+  int pby=_bufferOffset + _pos + index;
+  int i;
+  for (i=0; i < limit && _bufferBase[pby + i] == _bufferBase[pby + i - distance]; i++)   ;
+  return i;
+}

@@ -1,0 +1,18 @@
+{
+  if (symbol < Base.kNumLowLenSymbols) {
+    rangeEncoder.Encode(_choice,0,0);
+    _lowCoder[posState].Encode(rangeEncoder,symbol);
+  }
+ else {
+    symbol-=Base.kNumLowLenSymbols;
+    rangeEncoder.Encode(_choice,0,1);
+    if (symbol < Base.kNumMidLenSymbols) {
+      rangeEncoder.Encode(_choice,1,0);
+      _midCoder[posState].Encode(rangeEncoder,symbol);
+    }
+ else {
+      rangeEncoder.Encode(_choice,1,1);
+      _highCoder.Encode(rangeEncoder,symbol - Base.kNumMidLenSymbols);
+    }
+  }
+}

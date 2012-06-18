@@ -1,0 +1,6 @@
+{
+  if (_matchFinder != null && _needReleaseMFStream) {
+    _matchFinder.ReleaseStream();
+    _needReleaseMFStream=false;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  int kDif=7;
+  return (smallDist < (1 << (32 - kDif)) && bigDist >= (smallDist << kDif));
+}

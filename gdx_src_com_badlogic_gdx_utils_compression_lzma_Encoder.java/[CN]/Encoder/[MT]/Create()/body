@@ -1,0 +1,14 @@
+{
+  if (_matchFinder == null) {
+    com.badlogic.gdx.utils.compression.lz.BinTree bt=new com.badlogic.gdx.utils.compression.lz.BinTree();
+    int numHashBytes=4;
+    if (_matchFinderType == EMatchFinderTypeBT2)     numHashBytes=2;
+    bt.SetType(numHashBytes);
+    _matchFinder=bt;
+  }
+  _literalEncoder.Create(_numLiteralPosStateBits,_numLiteralContextBits);
+  if (_dictionarySize == _dictionarySizePrev && _numFastBytesPrev == _numFastBytes)   return;
+  _matchFinder.Create(_dictionarySize,kNumOpts,_numFastBytes,Base.kMatchMaxLen + 1);
+  _dictionarySizePrev=_dictionarySize;
+  _numFastBytesPrev=_numFastBytes;
+}

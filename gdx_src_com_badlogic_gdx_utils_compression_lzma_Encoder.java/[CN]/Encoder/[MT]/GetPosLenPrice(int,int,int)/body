@@ -1,0 +1,7 @@
+{
+  int price;
+  int lenToPosState=Base.GetLenToPosState(len);
+  if (pos < Base.kNumFullDistances)   price=_distancesPrices[(lenToPosState * Base.kNumFullDistances) + pos];
+ else   price=_posSlotPrices[(lenToPosState << Base.kNumPosSlotBits) + GetPosSlot2(pos)] + _alignPrices[pos & Base.kAlignMask];
+  return price + _lenEncoder.GetPrice(len - Base.kMatchMinLen,posState);
+}

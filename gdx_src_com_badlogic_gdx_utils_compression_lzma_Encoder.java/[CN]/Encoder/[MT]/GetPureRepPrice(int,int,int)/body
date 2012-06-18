@@ -1,0 +1,16 @@
+{
+  int price;
+  if (repIndex == 0) {
+    price=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice0(_isRepG0[state]);
+    price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice1(_isRep0Long[(state << Base.kNumPosStatesBitsMax) + posState]);
+  }
+ else {
+    price=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice1(_isRepG0[state]);
+    if (repIndex == 1)     price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice0(_isRepG1[state]);
+ else {
+      price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice1(_isRepG1[state]);
+      price+=com.badlogic.gdx.utils.compression.rangecoder.Encoder.GetPrice(_isRepG2[state],repIndex - 2);
+    }
+  }
+  return price;
+}

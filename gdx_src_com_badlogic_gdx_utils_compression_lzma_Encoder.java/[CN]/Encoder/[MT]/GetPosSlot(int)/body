@@ -1,0 +1,5 @@
+{
+  if (pos < (1 << 11))   return g_FastPos[pos];
+  if (pos < (1 << 21))   return (g_FastPos[pos >> 10] + 20);
+  return (g_FastPos[pos >> 20] + 40);
+}

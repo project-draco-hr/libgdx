@@ -1,0 +1,27 @@
+{
+  _optimumEndIndex=cur;
+  int posMem=_optimum[cur].PosPrev;
+  int backMem=_optimum[cur].BackPrev;
+  do {
+    if (_optimum[cur].Prev1IsChar) {
+      _optimum[posMem].MakeAsChar();
+      _optimum[posMem].PosPrev=posMem - 1;
+      if (_optimum[cur].Prev2) {
+        _optimum[posMem - 1].Prev1IsChar=false;
+        _optimum[posMem - 1].PosPrev=_optimum[cur].PosPrev2;
+        _optimum[posMem - 1].BackPrev=_optimum[cur].BackPrev2;
+      }
+    }
+    int posPrev=posMem;
+    int backCur=backMem;
+    backMem=_optimum[posPrev].BackPrev;
+    posMem=_optimum[posPrev].PosPrev;
+    _optimum[posPrev].BackPrev=backCur;
+    _optimum[posPrev].PosPrev=cur;
+    cur=posPrev;
+  }
+ while (cur > 0);
+  backRes=_optimum[0].BackPrev;
+  _optimumCurrentIndex=_optimum[0].PosPrev;
+  return _optimumCurrentIndex;
+}

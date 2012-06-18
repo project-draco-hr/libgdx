@@ -1,0 +1,4 @@
+{
+  super.Encode(rangeEncoder,symbol,posState);
+  if (--_counters[posState] == 0)   UpdateTable(posState);
+}

@@ -1,0 +1,8 @@
+{
+  if (lp < 0 || lp > Base.kNumLitPosStatesBitsEncodingMax || lc < 0 || lc > Base.kNumLitContextBitsMax || pb < 0 || pb > Base.kNumPosStatesBitsEncodingMax)   return false;
+  _numLiteralPosStateBits=lp;
+  _numLiteralContextBits=lc;
+  _posStateBits=pb;
+  _posStateMask=((1) << _posStateBits) - 1;
+  return true;
+}
