@@ -1,2 +1,9 @@
 {
+  String input=getTextInputJSNI(title,text);
+  if (input != null) {
+    listener.input(input);
+  }
+ else {
+    listener.canceled();
+  }
 }

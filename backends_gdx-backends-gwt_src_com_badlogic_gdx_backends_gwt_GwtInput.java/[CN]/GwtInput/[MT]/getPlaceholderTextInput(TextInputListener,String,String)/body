@@ -1,2 +1,14 @@
 {
+  String input=getTextInputJSNI(title,placeholder);
+  if (input != null) {
+    if (input.equals(placeholder)) {
+      listener.input(input);
+    }
+ else {
+      listener.canceled();
+    }
+  }
+ else {
+    listener.canceled();
+  }
 }
