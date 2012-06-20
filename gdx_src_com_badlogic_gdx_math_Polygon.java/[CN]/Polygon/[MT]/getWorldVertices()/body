@@ -1,5 +1,5 @@
 {
-  if (!dirty)   return localVertices;
+  if (!dirty)   return worldVertices;
   dirty=false;
   final float[] localVertices=this.localVertices;
   if (worldVertices == null || worldVertices.length < localVertices.length)   worldVertices=new float[localVertices.length];
