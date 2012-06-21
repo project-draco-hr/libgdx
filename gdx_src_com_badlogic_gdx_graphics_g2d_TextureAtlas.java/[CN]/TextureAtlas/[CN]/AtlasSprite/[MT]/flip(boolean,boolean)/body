@@ -4,7 +4,13 @@
   float oldOriginY=getOriginY();
   float oldOffsetX=region.offsetX;
   float oldOffsetY=region.offsetY;
+  float widthRatio=getWidth() / region.originalWidth;
+  float heightRatio=getHeight() / region.originalHeight;
+  region.offsetX/=widthRatio;
+  region.offsetY/=heightRatio;
   region.flip(x,y);
+  region.offsetX*=widthRatio;
+  region.offsetY*=heightRatio;
   translate(region.offsetX - oldOffsetX,region.offsetY - oldOffsetY);
   setOrigin(oldOriginX,oldOriginY);
 }
