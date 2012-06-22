@@ -33,4 +33,5 @@
   button.setPosition(100,100);
   stage.addActor(button);
   meow.setDuration(2);
+  actor.addAction(parallel(moveBy(0,250,2),moveBy(250,0,2)));
 }
