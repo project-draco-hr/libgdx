@@ -6,6 +6,7 @@
     objects=strings;
   }
   this.items=(String[])objects;
+  selection=0;
   NinePatch bg=style.background;
   BitmapFont font=style.font;
   prefHeight=Math.max(bg.getTopHeight() + bg.getBottomHeight() + font.getCapHeight() - font.getDescent() * 2,bg.getTotalHeight());
