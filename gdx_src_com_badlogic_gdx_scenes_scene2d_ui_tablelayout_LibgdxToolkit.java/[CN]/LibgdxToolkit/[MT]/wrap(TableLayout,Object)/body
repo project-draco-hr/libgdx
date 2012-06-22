@@ -6,7 +6,7 @@
   if (object == null) {
     return new Actor(){
 {
-        visible=false;
+        setVisible(false);
       }
       public void draw(      SpriteBatch batch,      float parentAlpha){
       }

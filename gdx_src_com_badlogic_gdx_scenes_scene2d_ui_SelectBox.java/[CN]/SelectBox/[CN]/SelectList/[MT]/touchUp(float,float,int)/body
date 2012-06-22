@@ -1,4 +1,5 @@
 {
-  if (stage != null && ownsTouch)   stage.removeActor(this);
+  if (ownsTouch)   remove();
   ownsTouch=false;
+  super.touchUp(x,y,pointer);
 }

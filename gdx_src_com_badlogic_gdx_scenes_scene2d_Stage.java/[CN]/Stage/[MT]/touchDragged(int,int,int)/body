@@ -1,14 +1,7 @@
 {
-  toStageCoordinates(x,y,coords);
-  boolean handled=false;
-  for (int i=0, n=touchFocus.length; i < n; i++) {
-    Actor actor=touchFocus[i];
-    if (actor != null) {
-      point.set(coords);
-      actor.toLocalCoordinates(point);
-      actor.touchDragged(point.x,point.y,pointer);
-      handled=true;
-    }
-  }
-  return handled;
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setPointer(pointer);
+  event.setButton(Gdx.input.getButton());
+  Vector2 stageCoords=toStageCoordinates(screenX,screenY);
+  return fireTouch(event,ActorEvent.Type.touchDragged,stageCoords.x,stageCoords.y);
 }

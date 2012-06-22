@@ -3,7 +3,7 @@
   this.widget=widget;
   if (widget != null)   setWidget(widget);
   gestureDetector=new GestureDetector(new GestureListener(){
-    public boolean pan(    int x,    int y,    int deltaX,    int deltaY){
+    public boolean pan(    float x,    float y,    float deltaX,    float deltaY){
       amountX-=deltaX;
       amountY+=deltaY;
       clamp();
@@ -23,11 +23,11 @@
       }
       return flingTimer > 0;
     }
-    public boolean touchDown(    int x,    int y,    int pointer){
+    public boolean touchDown(    float x,    float y,    int pointer){
       flingTimer=0;
       return true;
     }
-    public boolean tap(    int x,    int y,    int count){
+    public boolean tap(    float x,    float y,    int count){
       return false;
     }
     public boolean zoom(    float originalDistance,    float currentDistance){
@@ -36,11 +36,11 @@
     public boolean pinch(    Vector2 initialFirstPointer,    Vector2 initialSecondPointer,    Vector2 firstPointer,    Vector2 secondPointer){
       return false;
     }
-    public boolean longPress(    int x,    int y){
+    public boolean longPress(    float x,    float y){
       return false;
     }
   }
 );
-  width=150;
-  height=150;
+  setWidth(150);
+  setHeight(150);
 }

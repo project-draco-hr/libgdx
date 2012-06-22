@@ -1,6 +1,7 @@
 {
   float deltaTime=Gdx.graphics.getDeltaTime();
   ball.add(ballSpeed * ballDirection.x * deltaTime,ballSpeed * ballDirection.y * deltaTime);
+  System.out.println(ball);
   if (ball.x < -240) {
     ball.set(0,0);
     ballSpeed=BALL_SPEED;

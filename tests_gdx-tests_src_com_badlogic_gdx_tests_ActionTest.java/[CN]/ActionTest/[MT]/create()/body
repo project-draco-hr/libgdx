@@ -3,9 +3,8 @@
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),false);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   final Image img=new Image(new TextureRegion(texture));
-  img.width=img.height=100;
-  img.originX=50;
-  img.originY=50;
-  img.x=img.y=100;
+  img.setSize(100,100);
+  img.setOrigin(50,50);
+  img.setPosition(100,100);
   stage.addActor(img);
 }

@@ -1,5 +1,6 @@
 {
   final BitmapFont font=style.font;
+  Stage stage=getStage();
   if (stage != null && stage.getKeyboardFocus() == this) {
     if (character == BACKSPACE && (cursor > 0 || hasSelection)) {
       if (!hasSelection) {

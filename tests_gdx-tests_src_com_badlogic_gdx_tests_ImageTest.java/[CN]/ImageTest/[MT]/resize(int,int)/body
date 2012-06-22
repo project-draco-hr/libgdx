@@ -1,5 +1,4 @@
 {
   ui.setViewport(width,height,false);
-  root.width=width;
-  root.height=height;
+  root.setSize(width,height);
 }

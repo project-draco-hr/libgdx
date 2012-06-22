@@ -1,8 +1,0 @@
-{
-  if (action != null) {
-    return $(action.copy(),duration);
-  }
- else {
-    return $(duration);
-  }
-}

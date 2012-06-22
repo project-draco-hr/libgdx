@@ -1,0 +1,11 @@
+{
+  event.setType(type);
+  event.setStageX(stageX);
+  event.setStageY(stageY);
+  Actor target=hit(stageX,stageY);
+  while (target != null && (!target.isTouchable() || !target.isVisible()))   target=target.getParent();
+  if (target == null)   target=root;
+  boolean handled=target.fire(event);
+  Pools.free(event);
+  return handled;
+}

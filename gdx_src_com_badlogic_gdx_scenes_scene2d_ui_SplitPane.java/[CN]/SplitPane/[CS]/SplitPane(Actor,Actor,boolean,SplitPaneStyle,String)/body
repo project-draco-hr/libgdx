@@ -6,6 +6,6 @@
   setStyle(style);
   setFirstWidget(firstWidget);
   setSecondWidget(secondWidget);
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

@@ -3,6 +3,6 @@
   if (text == null)   text="";
   this.text=text;
   setStyle(style);
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

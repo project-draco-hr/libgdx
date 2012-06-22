@@ -1,0 +1,8 @@
+{
+  if (task.repeatCount != CANCELLED)   throw new IllegalArgumentException("The same task may not be scheduled twice.");
+  task.delaySeconds=delaySeconds;
+  task.intervalSeconds=intervalSeconds;
+  task.repeatCount=repeatCount;
+  tasks.add(task);
+  postRunnable();
+}

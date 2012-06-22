@@ -1,0 +1,41 @@
+{
+  super(null,name,description);
+  initializeComponents();
+  attachedCheckBox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      editor.getEmitter().setAttached(attachedCheckBox.isSelected());
+    }
+  }
+);
+  continuousCheckbox.setSelected(editor.getEmitter().isContinuous());
+  continuousCheckbox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
+      editor.getEmitter().setContinuous(continuousCheckbox.isSelected());
+    }
+  }
+);
+  alignedCheckbox.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      editor.getEmitter().setAligned(alignedCheckbox.isSelected());
+    }
+  }
+);
+  additiveCheckbox.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      editor.getEmitter().setAdditive(additiveCheckbox.isSelected());
+    }
+  }
+);
+  behindCheckbox.addChangeListener(new ChangeListener(){
+    public void stateChanged(    ChangeEvent event){
+      editor.getEmitter().setBehind(behindCheckbox.isSelected());
+    }
+  }
+);
+  ParticleEmitter emitter=editor.getEmitter();
+  attachedCheckBox.setSelected(emitter.isAttached());
+  continuousCheckbox.setSelected(emitter.isContinuous());
+  alignedCheckbox.setSelected(emitter.isAligned());
+  additiveCheckbox.setSelected(emitter.isAdditive());
+  behindCheckbox.setSelected(emitter.isBehind());
+}

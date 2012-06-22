@@ -1,9 +1,10 @@
 {
-  if (children.isEmpty())   return 0;
+  Array<Actor> children=getActors();
+  if (children.size == 0)   return 0;
   float height=0;
-  for (int i=0, n=children.size(); i < n; i++) {
+  for (int i=0, n=children.size; i < n; i++) {
     int maxHeight=LibgdxToolkit.instance.getMaxHeight(children.get(i));
     if (maxHeight > 0)     height=height == 0 ? maxHeight : Math.min(height,maxHeight);
   }
-  return height * scaleY;
+  return height * getScaleY();
 }

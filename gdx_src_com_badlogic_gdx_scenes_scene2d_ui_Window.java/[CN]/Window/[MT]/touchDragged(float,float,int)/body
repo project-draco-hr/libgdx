@@ -1,5 +1,4 @@
 {
   if (!dragging)   return;
-  this.x+=x - dragOffset.x;
-  this.y+=y - dragOffset.y;
+  translate(x - dragOffset.x,y - dragOffset.y);
 }

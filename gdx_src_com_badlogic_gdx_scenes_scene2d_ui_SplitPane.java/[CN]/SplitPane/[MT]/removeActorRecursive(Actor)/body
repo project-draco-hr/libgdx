@@ -1,8 +1,0 @@
-{
-  if (actor == firstWidget)   setFirstWidget(null);
- else   if (actor == firstWidget)   setSecondWidget(null);
- else {
-    if (firstWidget instanceof Group)     ((Group)firstWidget).removeActorRecursive(actor);
-    if (secondWidget instanceof Group)     ((Group)secondWidget).removeActorRecursive(actor);
-  }
-}

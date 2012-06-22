@@ -1,11 +1,12 @@
 {
   super(name);
-  this.x=x;
-  width=SelectBox.this.width;
-  height=100;
+  setX(x);
+  setWidth(SelectBox.this.getWidth());
+  setHeight(100);
   this.oldScreenCoords.set(screenCoords);
   layout();
   Stage stage=SelectBox.this.getStage();
-  if (y - height < 0 && y + SelectBox.this.height + height < SelectBox.this.getStage().getCamera().viewportHeight)   this.y=y + SelectBox.this.height;
- else   this.y=y - height;
+  float height=getHeight();
+  if (y - height < 0 && y + SelectBox.this.getHeight() + height < SelectBox.this.getStage().getCamera().viewportHeight)   setY(y + SelectBox.this.getHeight());
+ else   setY(y - height);
 }

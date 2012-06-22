@@ -1,9 +1,17 @@
 {
   validate();
+  Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  float x=getX();
+  float y=getY();
+  float scaleX=getScaleX();
+  float scaleY=getScaleY();
   if (patch != null)   patch.draw(batch,x + imageX,y + imageY,imageWidth * scaleX,imageHeight * scaleY);
  else   if (region != null) {
+    float rotation=getRotation();
     if (scaleX == 1 && scaleY == 1 && rotation == 0)     batch.draw(region,x + imageX,y + imageY,imageWidth,imageHeight);
- else     batch.draw(region,x + imageX,y + imageY,originX - imageX,originY - imageY,imageWidth,imageHeight,scaleX,scaleY,rotation);
+ else {
+      batch.draw(region,x + imageX,y + imageY,getOriginX() - imageX,getOriginY() - imageY,imageWidth,imageHeight,scaleX,scaleY,rotation);
+    }
   }
 }

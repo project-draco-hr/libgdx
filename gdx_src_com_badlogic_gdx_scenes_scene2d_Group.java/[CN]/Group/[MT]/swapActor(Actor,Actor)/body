@@ -1,7 +1,7 @@
 {
-  int firstIndex=children.indexOf(first);
-  int secondIndex=children.indexOf(second);
+  int firstIndex=children.indexOf(first,true);
+  int secondIndex=children.indexOf(second,true);
   if (firstIndex == -1 || secondIndex == -1)   return false;
-  Collections.swap(children,firstIndex,secondIndex);
+  children.swap(firstIndex,secondIndex);
   return true;
 }

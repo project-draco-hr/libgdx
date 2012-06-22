@@ -1,9 +1,9 @@
 {
-  children.remove(actor);
-  if (actor instanceof Group)   groups.remove((Group)actor);
-  if (actor.name != null)   namesToActors.remove(actor.name);
+  if (!children.removeValue(actor,true))   return false;
+  Stage stage=getStage();
   if (stage != null)   stage.unfocus(actor);
-  actor.parent=null;
-  setStage(actor,null);
+  actor.setParent(null);
+  actor.setStage(null);
   childrenChanged();
+  return true;
 }

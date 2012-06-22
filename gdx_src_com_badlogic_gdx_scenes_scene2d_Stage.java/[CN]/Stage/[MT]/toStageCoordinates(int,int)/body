@@ -1,0 +1,7 @@
+{
+  camera.unproject(Vector3.tmp.set(screenX,screenY,0));
+  Vector2 stageCoords=Vector2.tmp;
+  stageCoords.x=Vector3.tmp.x;
+  stageCoords.y=Vector3.tmp.y;
+  return stageCoords;
+}

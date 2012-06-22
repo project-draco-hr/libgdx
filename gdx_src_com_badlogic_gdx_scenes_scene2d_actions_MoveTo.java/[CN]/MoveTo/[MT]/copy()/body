@@ -1,5 +1,0 @@
-{
-  MoveTo moveTo=$(x,y,duration);
-  if (interpolator != null)   moveTo.setInterpolator(interpolator.copy());
-  return moveTo;
-}

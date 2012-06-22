@@ -7,6 +7,6 @@
   this.max=max;
   this.steps=steps;
   this.value=min;
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

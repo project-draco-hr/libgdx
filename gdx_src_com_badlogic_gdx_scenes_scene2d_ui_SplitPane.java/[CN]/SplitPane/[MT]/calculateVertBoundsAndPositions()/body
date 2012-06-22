@@ -1,5 +1,7 @@
 {
   NinePatch handle=style.handle;
+  float width=getWidth();
+  float height=getHeight();
   float availHeight=height - handle.getTotalHeight();
   float topAreaHeight=(int)(availHeight * splitAmount);
   float bottomAreaHeight=availHeight - topAreaHeight;

@@ -1,0 +1,10 @@
+{
+  if (down) {
+    down=false;
+    if (event.getCurrentTarget().hit(x,y) != null) {
+      clicked(event,x,y);
+      return true;
+    }
+  }
+  return false;
+}

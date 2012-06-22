@@ -1,5 +1,6 @@
 {
   final TextureRegion knob=style.knob;
+  float width=getWidth();
   sliderPos=x - knob.getRegionWidth() / 2;
   sliderPos=Math.max(0,sliderPos);
   sliderPos=Math.min(width - knob.getRegionWidth(),sliderPos);

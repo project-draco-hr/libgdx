@@ -1,0 +1,31 @@
+{
+  event.stage=getStage();
+  if (event.stage == null)   return false;
+  event.target=this;
+  Array<Group> ancestors=Pools.obtain(Array.class);
+  Group parent=getParent();
+  while (parent != null) {
+    ancestors.add(parent);
+    parent=parent.getParent();
+  }
+  try {
+    for (int i=ancestors.size - 1; i >= 0; i--) {
+      Group currentTarget=ancestors.get(i);
+      currentTarget.notify(event,true);
+      if (event.isStopped())       return event.isHandled();
+    }
+    notify(event,true);
+    if (event.isStopped())     return event.isHandled();
+    notify(event,false);
+    if (!event.getBubbles())     return event.isHandled();
+    if (event.isStopped())     return event.isHandled();
+    for (int i=0, n=ancestors.size; i < n; i++) {
+      ancestors.get(i).notify(event,false);
+      if (event.isStopped())       return event.isHandled();
+    }
+    return event.isHandled();
+  }
+  finally {
+    Pools.free(Array.class);
+  }
+}

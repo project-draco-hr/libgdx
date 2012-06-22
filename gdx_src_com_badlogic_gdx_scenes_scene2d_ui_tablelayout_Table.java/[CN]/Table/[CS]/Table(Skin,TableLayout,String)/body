@@ -1,8 +1,19 @@
 {
   super(name);
-  transform=false;
+  setTransform(false);
   if (layout == null)   layout=new TableLayout();
   this.layout=layout;
   layout.setTable(this);
   layout.skin=skin;
+  addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (pointer == 0)       isPressed=true;
+      return false;
+    }
+    public boolean exit(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (isPressed)       isPressed=false;
+      return false;
+    }
+  }
+);
 }

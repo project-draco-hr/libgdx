@@ -1,30 +1,3 @@
 {
-  if (pointer > 1)   return false;
-  panning=false;
-  if (inTapSquare & !longPressFired) {
-    if (TimeUtils.nanoTime() - lastTapTime > tapCountInterval)     tapCount=0;
-    tapCount++;
-    lastTapTime=TimeUtils.nanoTime();
-    gestureStartTime=0;
-    return listener.tap(tapSquareCenterX,tapSquareCenterY,tapCount);
-  }
- else   if (pinching) {
-    pinching=false;
-    panning=true;
-    if (pointer == 0) {
-      tracker.start((int)secondPointer.x,(int)secondPointer.y,Gdx.input.getCurrentEventTime());
-    }
- else {
-      tracker.start((int)firstPointer.x,(int)firstPointer.y,Gdx.input.getCurrentEventTime());
-    }
-  }
- else {
-    gestureStartTime=0;
-    long time=Gdx.input.getCurrentEventTime();
-    if (time - tracker.lastTime < maxFlingDelay) {
-      tracker.update(x,y,time);
-      return listener.fling(tracker.getVelocityX(),tracker.getVelocityY());
-    }
-  }
-  return false;
+  return touchUp((float)x,(float)y,pointer,button);
 }

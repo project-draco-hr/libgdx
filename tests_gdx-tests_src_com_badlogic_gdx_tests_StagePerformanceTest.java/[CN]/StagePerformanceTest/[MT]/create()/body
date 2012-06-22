@@ -14,10 +14,7 @@
   for (int y=0, i=0; y < 12; y++) {
     for (int x=0; x < 24; x++) {
       Image img=new Image(regions[rand.nextInt(8 * 8)]);
-      img.x=x;
-      img.y=y;
-      img.width=1;
-      img.height=1;
+      img.setBounds(x,y,1,1);
       stage.addActor(img);
       sprites[i]=new Sprite(regions[rand.nextInt(8 * 8)]);
       sprites[i].setPosition(x,y);

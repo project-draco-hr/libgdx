@@ -1,17 +1,19 @@
 {
+  Group parent=getParent();
   if (fillParent && parent != null) {
+    Stage stage=getStage();
     float parentWidth, parentHeight;
     if (stage != null && parent == stage.getRoot()) {
-      parentWidth=stage.width();
-      parentHeight=stage.height();
+      parentWidth=stage.getWidth();
+      parentHeight=stage.getHeight();
     }
  else {
-      parentWidth=parent.width;
-      parentHeight=parent.height;
+      parentWidth=parent.getWidth();
+      parentHeight=parent.getHeight();
     }
-    if (width != parentWidth || height != parentHeight) {
-      width=parentWidth;
-      height=parentHeight;
+    if (getWidth() != parentWidth || getHeight() != parentHeight) {
+      setWidth(parentWidth);
+      setHeight(parentHeight);
       invalidate();
     }
   }

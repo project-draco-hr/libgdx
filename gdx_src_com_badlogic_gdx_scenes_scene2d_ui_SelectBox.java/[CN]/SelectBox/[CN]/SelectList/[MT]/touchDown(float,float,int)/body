@@ -1,12 +1,12 @@
 {
   if (pointer != 0)   return false;
   ownsTouch=true;
-  if (x > 0 && x < width && y > 0 && y < height) {
-    selected=(int)((height - y) / itemHeight);
+  if (x > 0 && x < getWidth() && y > 0 && y < getHeight()) {
+    selected=(int)((getHeight() - y) / itemHeight);
     selected=Math.max(0,selected);
     selected=Math.min(items.length - 1,selected);
     selection=selected;
     if (items.length > 0 && listener != null)     listener.selected(SelectBox.this,selected,items[selected]);
   }
-  return true;
+  return super.touchDown(x,y,pointer);
 }

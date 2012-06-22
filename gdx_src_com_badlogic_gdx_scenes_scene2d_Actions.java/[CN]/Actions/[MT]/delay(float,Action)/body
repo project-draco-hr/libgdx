@@ -1,0 +1,6 @@
+{
+  DelayAction action=action(DelayAction.class);
+  action.setDuration(duration);
+  action.setAction(delayedAction);
+  return action;
+}

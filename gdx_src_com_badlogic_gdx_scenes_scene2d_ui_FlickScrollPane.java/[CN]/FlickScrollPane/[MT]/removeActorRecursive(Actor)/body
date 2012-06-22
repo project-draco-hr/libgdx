@@ -1,4 +1,0 @@
-{
-  if (actor == widget)   setWidget(null);
- else   if (widget instanceof Group)   ((Group)widget).removeActorRecursive(actor);
-}

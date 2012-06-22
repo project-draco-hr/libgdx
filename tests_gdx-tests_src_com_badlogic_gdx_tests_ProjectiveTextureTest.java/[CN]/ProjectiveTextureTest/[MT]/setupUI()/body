@@ -5,15 +5,14 @@
   SelectBox camera=new SelectBox(new String[]{"Camera","Light"},skin.getStyle(SelectBoxStyle.class),"camera");
   Label fps=new Label("fps: ",skin.getStyle(LabelStyle.class),"fps");
   Table table=new Table();
-  table.width=ui.width();
-  table.height=ui.height();
+  table.setFillParent(true);
   table.top().padTop(15);
   table.add(reload).spaceRight(5);
   table.add(camera).spaceRight(5);
   table.add(fps);
   ui.addActor(table);
-  reload.setClickListener(new ClickListener(){
-    @Override public void click(    Actor button,    float x,    float y){
+  reload.addListener(new ClickListener(){
+    @Override public void clicked(    Actor button,    float x,    float y){
       ShaderProgram prog=new ShaderProgram(Gdx.files.internal("data/shaders/projtex-vert.glsl").readString(),Gdx.files.internal("data/shaders/projtex-frag.glsl").readString());
       if (prog.isCompiled() == false) {
         Gdx.app.log("GLSL ERROR","Couldn't reload shaders:\n" + prog.getLog());

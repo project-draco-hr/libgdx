@@ -1,0 +1,6 @@
+{
+  if (isButtonPressed(Buttons.LEFT))   return Buttons.LEFT;
+  if (isButtonPressed(Buttons.RIGHT))   return Buttons.RIGHT;
+  if (isButtonPressed(Buttons.MIDDLE))   return Buttons.MIDDLE;
+  return -1;
+}

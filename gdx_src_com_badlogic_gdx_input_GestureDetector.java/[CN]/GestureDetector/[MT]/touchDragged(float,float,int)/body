@@ -1,0 +1,23 @@
+{
+  if (pointer > 1)   return false;
+  if (pinching) {
+    if (pointer == 0)     pointer1.set(x,y);
+ else     pointer2.set(x,y);
+    if (listener != null) {
+      boolean result=listener.pinch(initialPointer1,initialPointer2,pointer1,pointer2);
+      return listener.zoom(initialPointer1.dst(initialPointer2),pointer1.dst(pointer2)) || result;
+    }
+    return false;
+  }
+  tracker.update(x,y,Gdx.input.getCurrentEventTime());
+  if (inTapSquare && (Math.abs(x - tapSquareCenterX) >= tapSquareSize || Math.abs(y - tapSquareCenterY) >= tapSquareSize)) {
+    longPressTask.cancel();
+    inTapSquare=false;
+  }
+  if (!inTapSquare) {
+    inTapSquare=false;
+    panning=true;
+    return listener.pan(tracker.lastX,tracker.lastY,tracker.deltaX,tracker.deltaY);
+  }
+  return false;
+}

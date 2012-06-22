@@ -1,19 +1,22 @@
 {
   validate();
+  Color color=getColor();
   NinePatch handle=style.handle;
   applyTransform(batch);
   Matrix4 transform=batch.getTransformMatrix();
   if (firstWidget != null) {
-    ScissorStack.calculateScissors(stage.getCamera(),transform,firstWidgetBounds,firstScissors);
+    ScissorStack.calculateScissors(getStage().getCamera(),transform,firstWidgetBounds,firstScissors);
     if (ScissorStack.pushScissors(firstScissors)) {
-      drawChild(firstWidget,batch,parentAlpha);
+      if (firstWidget.isVisible())       firstWidget.draw(batch,parentAlpha * color.a);
+      batch.flush();
       ScissorStack.popScissors();
     }
   }
   if (secondWidget != null) {
-    ScissorStack.calculateScissors(stage.getCamera(),transform,secondWidgetBounds,secondScissors);
+    ScissorStack.calculateScissors(getStage().getCamera(),transform,secondWidgetBounds,secondScissors);
     if (ScissorStack.pushScissors(secondScissors)) {
-      drawChild(secondWidget,batch,parentAlpha);
+      if (secondWidget.isVisible())       secondWidget.draw(batch,parentAlpha * color.a);
+      batch.flush();
       ScissorStack.popScissors();
     }
   }

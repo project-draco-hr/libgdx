@@ -1,0 +1,8 @@
+{
+  if (snapshot == null)   return;
+  if (snapshot != items) {
+    recycled=snapshot;
+    for (int i=0, n=recycled.length; i < n; i++)     recycled[i]=null;
+  }
+  snapshot=null;
+}

@@ -6,10 +6,9 @@
   float loc=(NUM_SPRITES * (32 + SPACING) - SPACING) / 2;
   for (int i=0; i < NUM_GROUPS; i++) {
     Group group=new Group("group" + i);
-    group.x=(float)Math.random() * (stage.width() - NUM_SPRITES * (32 + SPACING));
-    group.y=(float)Math.random() * (stage.height() - NUM_SPRITES * (32 + SPACING));
-    group.originX=loc;
-    group.originY=loc;
+    group.setX((float)Math.random() * (stage.getWidth() - NUM_SPRITES * (32 + SPACING)));
+    group.setY((float)Math.random() * (stage.getHeight() - NUM_SPRITES * (32 + SPACING)));
+    group.setOrigin(loc,loc);
     fillGroup(group,texture);
     stage.addActor(group);
   }
@@ -24,9 +23,7 @@
     }
   }
 ;
-  blend.width=blend.getPrefWidth();
-  blend.height=blend.getPrefHeight();
-  blend.y=ui.height() - 64;
+  blend.setY(ui.getHeight() - 64);
   Image rotate=new Image(new TextureRegion(uiTexture,64,0,64,32),Scaling.none,Align.CENTER,"rotate"){
     public boolean touchDown(    float x,    float y,    int pointer){
       rotateSprites=!rotateSprites;
@@ -34,10 +31,7 @@
     }
   }
 ;
-  rotate.width=rotate.getPrefWidth();
-  rotate.height=rotate.getPrefHeight();
-  rotate.y=blend.y;
-  rotate.x=64;
+  rotate.setPosition(64,blend.getY());
   Image scale=new Image(new TextureRegion(uiTexture,64,32,64,32),Scaling.none,Align.CENTER,"scale"){
     public boolean touchDown(    float x,    float y,    int pointer){
       scaleSprites=!scaleSprites;
@@ -45,17 +39,13 @@
     }
   }
 ;
-  scale.width=scale.getPrefWidth();
-  scale.height=scale.getPrefHeight();
-  scale.y=blend.y;
-  scale.x=128;
+  scale.setPosition(128,blend.getY());
   ui.addActor(blend);
   ui.addActor(rotate);
   ui.addActor(scale);
   Label fps=new Label("fps: 0",new Label.LabelStyle(font,Color.WHITE),"fps");
-  fps.x=10;
-  fps.y=30;
-  fps.color.set(0,1,0,1);
+  fps.setPosition(10,30);
+  fps.setColor(0,1,0,1);
   ui.addActor(fps);
   renderer=new ShapeRenderer();
   Gdx.input.setInputProcessor(this);

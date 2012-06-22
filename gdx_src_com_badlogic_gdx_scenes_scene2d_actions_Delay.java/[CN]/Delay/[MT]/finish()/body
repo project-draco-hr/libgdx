@@ -1,5 +1,0 @@
-{
-  pool.free(this);
-  if (action != null)   action.finish();
-  super.finish();
-}

@@ -1,11 +1,10 @@
 {
   this.width=width;
   this.height=height;
-  this.stretch=stretch;
-  this.root=new Group("root");
-  root.stage=this;
-  this.batch=new SpriteBatch();
-  this.ownsBatch=true;
-  this.camera=new OrthographicCamera();
+  ownsBatch=true;
+  batch=new SpriteBatch();
+  root=new Group("root");
+  root.setStage(this);
+  camera=new OrthographicCamera();
   setViewport(width,height,stretch);
 }

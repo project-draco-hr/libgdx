@@ -1,0 +1,5 @@
+{
+  if (object == null)   return;
+  ReflectionPool pool=typePools.get(object.getClass());
+  if (pool != null)   pool.free(object);
+}

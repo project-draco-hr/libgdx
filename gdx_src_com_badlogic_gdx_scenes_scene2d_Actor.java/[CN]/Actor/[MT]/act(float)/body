@@ -1,11 +1,11 @@
 {
-  actions.iter();
-  Action action;
-  while ((action=actions.next()) != null) {
-    action.act(delta);
-    if (action.isDone()) {
-      action.finish();
-      actions.remove();
+  for (int i=0, n=actions.size; i < n; i++) {
+    Action action=actions.get(i);
+    if (action.act(delta)) {
+      actions.removeIndex(i);
+      action.setActor(null);
+      i--;
+      n--;
     }
   }
 }

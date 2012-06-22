@@ -1,8 +1,9 @@
 {
   validate();
+  Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   drawBackground(batch,parentAlpha);
-  if (transform) {
+  if (isTransform()) {
     applyTransform(batch);
     if (clip) {
       calculateScissors(batch.getTransformMatrix());

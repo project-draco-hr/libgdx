@@ -1,9 +1,7 @@
 {
-  Actor actor=touchFocus[pointer];
-  if (actor == null)   return false;
-  toStageCoordinates(x,y,coords);
-  actor.toLocalCoordinates(coords);
-  actor.touchUp(coords.x,coords.y,pointer);
-  if (touchFocus[pointer] == actor)   touchFocus[pointer]=null;
-  return true;
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setPointer(pointer);
+  event.setButton(button);
+  Vector2 stageCoords=toStageCoordinates(screenX,screenY);
+  return fireTouch(event,ActorEvent.Type.touchUp,stageCoords.x,stageCoords.y);
 }

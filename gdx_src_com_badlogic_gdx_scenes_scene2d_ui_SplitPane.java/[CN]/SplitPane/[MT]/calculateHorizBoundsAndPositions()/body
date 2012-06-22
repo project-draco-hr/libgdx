@@ -1,6 +1,7 @@
 {
   NinePatch handle=style.handle;
-  float availWidth=width - handle.getTotalWidth();
+  float height=getHeight();
+  float availWidth=getWidth() - handle.getTotalWidth();
   float leftAreaWidth=(int)(availWidth * splitAmount);
   float rightAreaWidth=availWidth - leftAreaWidth;
   float handleWidth=handle.getTotalWidth();

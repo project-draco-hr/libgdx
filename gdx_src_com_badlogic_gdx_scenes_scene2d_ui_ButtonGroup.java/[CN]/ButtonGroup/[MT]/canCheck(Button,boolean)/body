@@ -17,6 +17,6 @@
     checkedButtons.add(button);
     lastChecked=button;
   }
-  if (listener != null)   listener.click(button,0,0);
+  if (listener != null)   listener.clicked(button,0,0);
   return true;
 }

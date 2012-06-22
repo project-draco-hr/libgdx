@@ -13,14 +13,13 @@
   table.setClip(true);
   table.size(75,75);
   table.add(label);
-  table.setClickListener(new ClickListener(){
-    public void click(    Actor actor,    float x,    float y){
+  table.addListener(new ClickListener(){
+    public void clicked(    Actor actor,    float x,    float y){
       System.out.println("click!");
     }
   }
 );
-  root.x=10;
-  root.y=10;
+  root.setPosition(10,10);
   root.debug();
   root.add(new Label("meow meow meow meow meow meow meow meow meow meow meow meow",skin)).colspan(3);
   root.row();

@@ -1,0 +1,7 @@
+{
+  MoveByAction action=action(MoveByAction.class);
+  action.setAmount(amountX,amountY);
+  action.setDuration(duration);
+  action.setInterpolation(interpolation);
+  return action;
+}

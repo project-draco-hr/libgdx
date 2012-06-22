@@ -1,12 +1,7 @@
 {
   super.act(delta);
-  for (int i=0; i < children.size(); i++) {
-    Actor child=children.get(i);
-    child.act(delta);
-    if (child.isMarkedToRemove()) {
-      child.markToRemove(false);
-      removeActor(child);
-      i--;
-    }
-  }
+  DelayedRemovalArray<Actor> children=this.children;
+  children.begin();
+  for (int i=0, n=children.size; i < n; i++)   children.get(i).act(delta);
+  children.end();
 }

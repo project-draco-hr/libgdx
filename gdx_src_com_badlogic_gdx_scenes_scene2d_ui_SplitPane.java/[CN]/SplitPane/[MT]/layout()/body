@@ -1,22 +1,16 @@
 {
   if (!vertical)   calculateHorizBoundsAndPositions();
  else   calculateVertBoundsAndPositions();
-  if (firstWidget != null && firstWidget.width != firstWidgetBounds.width || firstWidget.height != firstWidgetBounds.height) {
-    firstWidget.x=firstWidgetBounds.x;
-    firstWidget.y=firstWidgetBounds.y;
-    firstWidget.width=firstWidgetBounds.width;
-    firstWidget.height=firstWidgetBounds.height;
+  if (firstWidget != null && firstWidget.getWidth() != firstWidgetBounds.width || firstWidget.getHeight() != firstWidgetBounds.height) {
+    firstWidget.setBounds(firstWidgetBounds.x,firstWidgetBounds.y,firstWidgetBounds.width,firstWidgetBounds.height);
     if (firstWidget instanceof Layout) {
       Layout layout=(Layout)firstWidget;
       layout.invalidate();
       layout.validate();
     }
   }
-  if (secondWidget != null && secondWidget.width != secondWidgetBounds.width || secondWidget.height != secondWidgetBounds.height) {
-    secondWidget.x=secondWidgetBounds.x;
-    secondWidget.y=secondWidgetBounds.y;
-    secondWidget.width=secondWidgetBounds.width;
-    secondWidget.height=secondWidgetBounds.height;
+  if (secondWidget != null && secondWidget.getWidth() != secondWidgetBounds.width || secondWidget.getHeight() != secondWidgetBounds.height) {
+    secondWidget.setBounds(secondWidgetBounds.x,secondWidgetBounds.y,secondWidgetBounds.width,secondWidgetBounds.height);
     if (secondWidget instanceof Layout) {
       Layout layout=(Layout)secondWidget;
       layout.invalidate();

@@ -1,4 +1,9 @@
 {
   if (keyboardFocus == null)   return false;
-  return keyboardFocus.keyDown(keycode);
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setType(ActorEvent.Type.keyDown);
+  event.setKeyCode(keyCode);
+  boolean handled=keyboardFocus.fire(event);
+  Pools.free(event);
+  return handled;
 }

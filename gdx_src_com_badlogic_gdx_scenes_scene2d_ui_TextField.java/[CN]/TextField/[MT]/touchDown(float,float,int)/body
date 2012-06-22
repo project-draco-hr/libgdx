@@ -1,5 +1,6 @@
 {
   if (pointer != 0)   return false;
+  Stage stage=getStage();
   if (stage != null)   stage.setKeyboardFocus(this);
   keyboard.show(true);
   clearSelection();

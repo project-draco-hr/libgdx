@@ -4,6 +4,6 @@
   this.clipboard=Clipboard.getDefaultClipboard();
   setText(text);
   this.messageText=messageText;
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

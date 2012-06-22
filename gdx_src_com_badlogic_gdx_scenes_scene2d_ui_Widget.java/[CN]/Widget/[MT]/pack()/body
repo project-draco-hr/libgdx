@@ -1,9 +1,9 @@
 {
   float newWidth=getPrefWidth();
   float newHeight=getPrefHeight();
-  if (newWidth != width || newHeight != height) {
-    width=newWidth;
-    height=newHeight;
+  if (newWidth != getWidth() || newHeight != getHeight()) {
+    setWidth(newWidth);
+    setHeight(newHeight);
     invalidate();
     validate();
   }

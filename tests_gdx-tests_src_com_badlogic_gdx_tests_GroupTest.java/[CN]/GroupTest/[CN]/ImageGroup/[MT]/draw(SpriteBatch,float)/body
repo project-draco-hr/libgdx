@@ -1,0 +1,5 @@
+{
+  batch.setColor(getColor());
+  batch.draw(region,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight(),getScaleX(),getScaleY(),getRotation());
+  super.draw(batch,parentAlpha);
+}

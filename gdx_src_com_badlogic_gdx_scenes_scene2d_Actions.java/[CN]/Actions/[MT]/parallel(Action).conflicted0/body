@@ -1,0 +1,5 @@
+{
+  ParallelAction action=action(ParallelAction.class);
+  action.addAction(action1);
+  return action;
+}

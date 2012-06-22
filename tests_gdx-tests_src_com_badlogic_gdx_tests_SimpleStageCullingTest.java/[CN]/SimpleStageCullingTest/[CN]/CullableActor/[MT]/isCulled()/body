@@ -1,13 +1,13 @@
 {
-  float stageX=x;
-  float stageY=y;
-  Actor parent=this.parent;
+  float stageX=getX();
+  float stageY=getY();
+  Actor parent=this.getParent();
   while (parent != null) {
-    stageX+=parent.x;
-    stageY+=parent.y;
-    parent=parent.parent;
+    stageX+=parent.getX();
+    stageY+=parent.getY();
+    parent=parent.getParent();
   }
-  actorRect.set(stageX,stageY,width,height);
+  actorRect.set(stageX,stageY,getWidth(),getHeight());
   camRect.set(camera.position.x - camera.viewportWidth / 2.0f,camera.position.y - camera.viewportHeight / 2.0f,camera.viewportWidth,camera.viewportHeight);
   visible=camRect.overlaps(actorRect);
   return !visible;

@@ -15,11 +15,11 @@
   pane.setScrollingDisabled(true,false);
   if (false) {
     pane.pack();
-    pane.height=Gdx.graphics.getHeight();
+    pane.setHeight(Gdx.graphics.getHeight());
   }
  else {
-    pane.width=300;
-    pane.height=Gdx.graphics.getHeight();
+    pane.setWidth(300);
+    pane.setHeight(Gdx.graphics.getHeight());
   }
   stage.addActor(pane);
 }

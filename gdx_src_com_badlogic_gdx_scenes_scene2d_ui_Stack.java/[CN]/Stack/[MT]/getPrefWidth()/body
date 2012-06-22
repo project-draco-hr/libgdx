@@ -1,5 +1,6 @@
 {
   float width=0;
-  for (int i=0, n=children.size(); i < n; i++)   width=Math.max(width,LibgdxToolkit.instance.getPrefWidth(children.get(i)));
-  return width * scaleX;
+  Array<Actor> children=getActors();
+  for (int i=0, n=children.size; i < n; i++)   width=Math.max(width,LibgdxToolkit.instance.getPrefWidth(children.get(i)));
+  return width * getScaleX();
 }

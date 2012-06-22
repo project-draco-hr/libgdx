@@ -1,15 +1,20 @@
 {
   Matrix3 temp=worldTransform;
+  float originX=getOriginX();
+  float originY=getOriginY();
+  float rotation=getRotation();
+  float scaleX=getScaleX();
+  float scaleY=getScaleY();
   if (originX != 0 || originY != 0)   localTransform.setToTranslation(originX,originY);
  else   localTransform.idt();
   if (rotation != 0)   localTransform.mul(temp.setToRotation(rotation));
   if (scaleX != 1 || scaleY != 1)   localTransform.mul(temp.setToScaling(scaleX,scaleY));
   if (originX != 0 || originY != 0)   localTransform.mul(temp.setToTranslation(-originX,-originY));
-  localTransform.trn(x,y);
-  Group parentGroup=parent;
+  localTransform.trn(getX(),getY());
+  Group parentGroup=getParent();
   while (parentGroup != null) {
     if (parentGroup.transform)     break;
-    parentGroup=parentGroup.parent;
+    parentGroup=parentGroup.getParent();
   }
   if (parentGroup != null) {
     worldTransform.set(parentGroup.worldTransform);
@@ -19,5 +24,4 @@
     worldTransform.set(localTransform);
   }
   batchTransform.set(worldTransform);
-  return batchTransform;
 }

@@ -2,6 +2,6 @@
   super(null,null,name);
   initialize();
   setStyle(style);
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

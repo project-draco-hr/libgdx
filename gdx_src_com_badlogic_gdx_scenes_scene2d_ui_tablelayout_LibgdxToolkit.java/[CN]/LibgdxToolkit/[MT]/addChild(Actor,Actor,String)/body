@@ -1,5 +1,5 @@
 {
-  if (child.parent != null)   child.remove();
+  child.remove();
   try {
     parent.getClass().getMethod("setWidget",Actor.class).invoke(parent,child);
     return;

@@ -1,5 +1,5 @@
 {
   this.region=region;
-  this.width=region.getRegionWidth();
-  this.height=-region.getRegionHeight();
+  setWidth(region.getRegionWidth());
+  setHeight(-region.getRegionHeight());
 }

@@ -2,6 +2,11 @@
   final NinePatch background=style.background;
   final BitmapFont font=style.font;
   final Color fontColor=style.fontColor;
+  Color color=getColor();
+  float x=getX();
+  float y=getY();
+  float width=getWidth();
+  float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,x,y,width,height);
   if (items.length > 0) {
@@ -12,5 +17,5 @@
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
     font.draw(batch,items[selection],x + background.getLeftWidth(),y + textY,0,numGlyphs);
   }
-  ScissorStack.toWindowCoordinates(stage.getCamera(),batch.getTransformMatrix(),screenCoords.set(x,y));
+  ScissorStack.toWindowCoordinates(getStage().getCamera(),batch.getTransformMatrix(),screenCoords.set(x,y));
 }

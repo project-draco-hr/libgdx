@@ -1,0 +1,5 @@
+{
+  StringBuilder buffer=new StringBuilder(128);
+  graphToString(buffer,this,0);
+  return buffer.toString();
+}

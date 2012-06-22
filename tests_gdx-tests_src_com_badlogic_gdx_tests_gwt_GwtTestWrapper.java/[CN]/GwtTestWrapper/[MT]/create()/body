@@ -12,8 +12,8 @@
   for (  final Instancer instancer : tests) {
     table.row();
     TextButton button=new TextButton(instancer.instance().getClass().getName(),skin);
-    button.setClickListener(new ClickListener(){
-      @Override public void click(      Actor actor,      float x,      float y){
+    button.addListener(new ClickListener(){
+      @Override public void clicked(      ActorEvent event,      float x,      float y){
         ((InputWrapper)Gdx.input).multiplexer.removeProcessor(ui);
         test=instancer.instance();
         test.create();

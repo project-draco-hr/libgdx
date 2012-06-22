@@ -5,6 +5,6 @@
   Label label=getLabel();
   add(label);
   label.setAlignment(Align.LEFT);
-  width=getPrefWidth();
-  height=getPrefHeight();
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

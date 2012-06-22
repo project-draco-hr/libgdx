@@ -1,28 +1,3 @@
 {
-  if (pointer > 1)   return false;
-  if (pinching) {
-    if (pointer == 0)     firstPointer.set(x,y);
- else     secondPointer.set(x,y);
-    if (listener != null) {
-      boolean result=listener.pinch(initialFirstPointer,initialSecondPointer,firstPointer,secondPointer);
-      return listener.zoom(initialFirstPointer.dst(initialSecondPointer),firstPointer.dst(secondPointer)) || result;
-    }
-    return false;
-  }
-  tracker.update(x,y,Gdx.input.getCurrentEventTime());
-  if (!(inTapSquare && Math.abs(x - tapSquareCenterX) < tapSquareSize && Math.abs(y - tapSquareCenterY) < tapSquareSize)) {
-    inTapSquare=false;
-  }
-  if (!inTapSquare) {
-    inTapSquare=false;
-    panning=true;
-    return listener.pan(tracker.lastX,tracker.lastY,tracker.deltaX,tracker.deltaY);
-  }
- else {
-    if (!longPressFired && Gdx.input.getCurrentEventTime() - gestureStartTime > longPressDuration) {
-      longPressFired=true;
-      return listener.longPress(x,y);
-    }
-  }
-  return false;
+  return touchDragged((float)x,(float)y,pointer);
 }

@@ -1,5 +1,5 @@
 {
   if (parent == null)   return;
-  parent.toLocalCoordinates(point);
-  Group.toChildCoordinates(this,point.x,point.y,point);
+  parent.toLocalCoordinates(stageCoords);
+  Group.toChildCoordinates(this,stageCoords.x,stageCoords.y,stageCoords);
 }

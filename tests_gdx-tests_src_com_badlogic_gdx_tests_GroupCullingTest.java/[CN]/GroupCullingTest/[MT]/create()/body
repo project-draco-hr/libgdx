@@ -2,6 +2,7 @@
   stage=new Stage(0,0,true);
   Gdx.input.setInputProcessor(stage);
   root=new Table();
+  root.setFillParent(true);
   stage.addActor(root);
   skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   Table labels=new Table();

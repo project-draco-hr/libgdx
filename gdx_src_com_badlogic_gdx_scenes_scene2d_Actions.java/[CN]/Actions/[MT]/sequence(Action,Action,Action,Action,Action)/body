@@ -1,0 +1,9 @@
+{
+  SequenceAction action=action(SequenceAction.class);
+  action.addAction(action1);
+  action.addAction(action2);
+  action.addAction(action3);
+  action.addAction(action4);
+  action.addAction(action5);
+  return action;
+}

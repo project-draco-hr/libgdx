@@ -7,7 +7,7 @@
   if (touchFocusedChild != null && isDescendant(touchFocusedChild)) {
     point.x=x;
     point.y=y;
-    toLocalCoordinates(touchFocusedChild,point);
+    toDescendantCoordinates(touchFocusedChild,point);
     touchFocusedChild.touchUp(point.x,point.y,0);
     touchFocusedChild=null;
   }

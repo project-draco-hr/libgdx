@@ -1,0 +1,4 @@
+{
+  super.setActor(actor);
+  if (action != null)   action.setActor(actor);
+}

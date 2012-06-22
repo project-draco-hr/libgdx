@@ -3,6 +3,11 @@
   final Color fontColor=style.fontColor;
   final TextureRegion selection=style.selection;
   final NinePatch cursorPatch=style.cursor;
+  Color color=getColor();
+  float x=getX();
+  float y=getY();
+  float width=getWidth();
+  float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   float bgLeftWidth=0;
   if (style.background != null) {
@@ -11,6 +16,7 @@
   }
   float textY=(int)(height / 2 + textBounds.height / 2 + font.getDescent());
   calculateOffsets();
+  Stage stage=getStage();
   boolean focused=stage != null && stage.getKeyboardFocus() == this;
   if (focused && hasSelection && selection != null) {
     batch.draw(selection,x + selectionX + bgLeftWidth+ renderOffset,y + textY - textBounds.height - font.getDescent() / 2,selectionWidth,textBounds.height);

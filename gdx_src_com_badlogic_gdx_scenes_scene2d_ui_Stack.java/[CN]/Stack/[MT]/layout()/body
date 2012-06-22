@@ -1,10 +1,8 @@
 {
-  for (int i=0, n=children.size(); i < n; i++) {
+  Array<Actor> children=getActors();
+  for (int i=0, n=children.size; i < n; i++) {
     Actor child=children.get(i);
-    child.x=0;
-    child.y=0;
-    child.width=width;
-    child.height=height;
+    child.setBounds(0,0,getWidth(),getHeight());
     if (child instanceof Layout) {
       Layout layout=(Layout)child;
       layout.invalidate();

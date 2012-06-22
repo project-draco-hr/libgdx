@@ -1,0 +1,9 @@
+{
+  for (int i=0, n=remove.size; i < n; i++) {
+    if (index < remove.get(i)) {
+      remove.insert(i,index);
+      return;
+    }
+  }
+  remove.add(index);
+}

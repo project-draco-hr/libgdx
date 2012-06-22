@@ -1,0 +1,6 @@
+{
+  ActorGestureListener.listener=this;
+  ActorGestureListener.event=event;
+  detector.touchUp(x,y,pointer,0);
+  return true;
+}

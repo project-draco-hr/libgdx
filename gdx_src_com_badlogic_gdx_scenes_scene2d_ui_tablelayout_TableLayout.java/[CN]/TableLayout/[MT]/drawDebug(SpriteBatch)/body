@@ -8,10 +8,10 @@
   Actor parent=getTable();
   while (parent != null) {
     if (parent instanceof Group) {
-      x+=parent.x;
-      y+=parent.y;
+      x+=parent.getX();
+      y+=parent.getY();
     }
-    parent=parent.parent;
+    parent=parent.getParent();
   }
   debugRenderer.begin(batch.getProjectionMatrix(),GL10.GL_LINES);
   for (int i=0, n=debugRects.size; i < n; i++) {

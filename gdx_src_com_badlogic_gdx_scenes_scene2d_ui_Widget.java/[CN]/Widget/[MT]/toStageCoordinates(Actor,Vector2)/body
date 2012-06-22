@@ -1,0 +1,12 @@
+{
+  point.x+=actor.getX();
+  point.y+=actor.getY();
+  Actor parent=actor.getParent();
+  while (parent != null) {
+    if (parent instanceof Group) {
+      point.x+=parent.getX();
+      point.y+=parent.getY();
+    }
+    parent=parent.getParent();
+  }
+}

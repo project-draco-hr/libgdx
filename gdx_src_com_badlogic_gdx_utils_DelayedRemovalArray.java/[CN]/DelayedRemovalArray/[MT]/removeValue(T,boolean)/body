@@ -1,0 +1,9 @@
+{
+  if (iterating) {
+    int index=indexOf(value,identity);
+    if (index == -1)     return false;
+    remove(index);
+    return true;
+  }
+  return super.removeValue(value,identity);
+}

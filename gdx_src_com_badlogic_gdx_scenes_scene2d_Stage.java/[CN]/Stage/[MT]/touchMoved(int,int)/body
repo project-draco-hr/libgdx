@@ -1,5 +1,5 @@
 {
-  toStageCoordinates(x,y,coords);
-  Group.toChildCoordinates(root,coords.x,coords.y,point);
-  return root.touchMoved(point.x,point.y);
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  Vector2 stageCoords=toStageCoordinates(screenX,screenY);
+  return fireTouch(event,ActorEvent.Type.touchMoved,stageCoords.x,stageCoords.y);
 }

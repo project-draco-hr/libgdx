@@ -1,7 +1,7 @@
 {
   float position=glyphPositions.get(cursor);
   float distance=position - Math.abs(renderOffset);
-  float visibleWidth=width;
+  float visibleWidth=getWidth();
   if (style.background != null)   visibleWidth-=style.background.getLeftWidth() + style.background.getRightWidth();
   if (distance <= 0) {
     if (cursor > 0)     renderOffset=-glyphPositions.get(cursor - 1);

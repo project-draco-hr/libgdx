@@ -4,20 +4,19 @@
   applyTransform(batch);
   if (scrollX)   hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
   if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
-  widget.y=widgetAreaBounds.y - (!scrollY ? (int)(widget.height - areaHeight) : 0) - (scrollY ? (int)((widget.height - areaHeight) * (1 - getScrollPercentY())) : 0);
-  widget.x=widgetAreaBounds.x - (scrollX ? (int)((widget.width - areaWidth) * getScrollPercentX()) : 0);
+  widget.setY(widgetAreaBounds.y - (!scrollY ? (int)(widget.getHeight() - areaHeight) : 0) - (scrollY ? (int)((widget.getHeight() - areaHeight) * (1 - getScrollPercentY())) : 0));
+  widget.setX(widgetAreaBounds.x - (scrollX ? (int)((widget.getWidth() - areaWidth) * getScrollPercentX()) : 0));
   if (widget instanceof Cullable) {
-    widgetCullingArea.x=-widget.x + widgetAreaBounds.x;
-    widgetCullingArea.y=-widget.y + widgetAreaBounds.y;
+    widgetCullingArea.x=-widget.getX() + widgetAreaBounds.x;
+    widgetCullingArea.y=-widget.getY() + widgetAreaBounds.y;
     widgetCullingArea.width=areaWidth;
     widgetCullingArea.height=areaHeight;
     ((Cullable)widget).setCullingArea(widgetCullingArea);
   }
-  ScissorStack.calculateScissors(stage.getCamera(),batchTransform,widgetAreaBounds,scissorBounds);
+  ScissorStack.calculateScissors(getStage().getCamera(),batch.getTransformMatrix(),widgetAreaBounds,scissorBounds);
+  Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  if (style.background != null) {
-    style.background.draw(batch,0,0,width,height);
-  }
+  if (style.background != null)   style.background.draw(batch,0,0,getWidth(),getHeight());
   batch.flush();
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
