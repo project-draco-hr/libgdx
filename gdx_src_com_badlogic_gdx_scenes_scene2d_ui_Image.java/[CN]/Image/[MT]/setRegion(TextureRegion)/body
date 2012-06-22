@@ -1,7 +1,7 @@
 {
   if (region != null) {
     if (this.region == region)     return;
-    if (getPrefWidth() != region.getRegionWidth() || getPrefHeight() != region.getRegionHeight())     invalidateHierarchy();
+    if (getPrefWidth() != Math.abs(region.getRegionWidth()) || getPrefHeight() != Math.abs(region.getRegionHeight()))     invalidateHierarchy();
   }
  else {
     if (getPrefWidth() != 0 || getPrefHeight() != 0)     invalidateHierarchy();

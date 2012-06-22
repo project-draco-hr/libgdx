@@ -5,8 +5,8 @@
     regionHeight=patch.getTotalHeight();
   }
  else   if (region != null) {
-    regionWidth=region.getRegionWidth();
-    regionHeight=region.getRegionHeight();
+    regionWidth=Math.abs(region.getRegionWidth());
+    regionHeight=Math.abs(region.getRegionHeight());
   }
  else   return;
   float width=getWidth();

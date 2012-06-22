@@ -1,5 +1,5 @@
 {
-  if (region != null)   return region.getRegionWidth();
+  if (region != null)   return Math.abs(region.getRegionWidth());
   if (patch != null)   return patch.getTotalWidth();
   return 0;
 }
