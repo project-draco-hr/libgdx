@@ -3,7 +3,8 @@
   if (inTapSquare && (Math.abs(x - tapSquareCenterX) >= tapSquareSize || Math.abs(y - tapSquareCenterY) >= tapSquareSize))   inTapSquare=false;
   longPressTask.cancel();
   panning=false;
-  if (inTapSquare & !longPressFired) {
+  if (longPressFired)   return false;
+  if (inTapSquare) {
     if (TimeUtils.nanoTime() - lastTapTime > tapCountInterval)     tapCount=0;
     tapCount++;
     lastTapTime=TimeUtils.nanoTime();

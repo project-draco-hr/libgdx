@@ -20,6 +20,18 @@
     }
   }
 );
+  button.addListener(new ActorGestureListener(){
+    public void tap(    ActorEvent event,    float x,    float y,    int count){
+      System.out.println("tap");
+    }
+    public void longPress(    ActorEvent event,    float x,    float y){
+      System.out.println("long press");
+    }
+    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
+      System.out.println("panning " + x + ", "+ y);
+    }
+  }
+);
   button.setPosition(100,100);
   stage.addActor(button);
   meow.setDuration(2);

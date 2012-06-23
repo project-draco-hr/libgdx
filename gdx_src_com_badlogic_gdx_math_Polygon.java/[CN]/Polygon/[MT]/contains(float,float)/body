@@ -1,5 +1,5 @@
 {
-  final float[] vertices=getWorldVertices();
+  final float[] vertices=getTransformedVertices();
   final int numFloats=vertices.length;
   int intersects=0;
   for (int i=0; i < numFloats; i+=2) {

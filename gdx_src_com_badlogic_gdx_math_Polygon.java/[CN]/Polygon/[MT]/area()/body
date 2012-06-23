@@ -1,6 +1,6 @@
 {
   float area=0;
-  float[] vertices=getWorldVertices();
+  float[] vertices=getTransformedVertices();
   final int numFloats=vertices.length;
   int x1, y1, x2, y2;
   for (int i=0; i < numFloats; i+=2) {

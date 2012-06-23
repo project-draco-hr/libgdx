@@ -1,6 +1,0 @@
-{
-  if (pressedButtons.contains(Buttons.LEFT))   return Buttons.LEFT;
-  if (pressedButtons.contains(Buttons.RIGHT))   return Buttons.RIGHT;
-  if (pressedButtons.contains(Buttons.MIDDLE))   return Buttons.MIDDLE;
-  return -1;
-}
