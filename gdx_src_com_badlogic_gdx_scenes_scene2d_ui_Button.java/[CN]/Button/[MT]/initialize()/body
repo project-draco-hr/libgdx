@@ -1,5 +1,5 @@
 {
-  addListener(new ClickListener(){
+  addListener(clickListener=new ClickListener(){
     public void clicked(    ActorEvent event,    float x,    float y){
       setChecked(!isChecked);
     }

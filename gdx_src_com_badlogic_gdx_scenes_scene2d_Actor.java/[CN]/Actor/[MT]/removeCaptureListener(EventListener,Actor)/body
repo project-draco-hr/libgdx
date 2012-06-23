@@ -1,7 +1,7 @@
 {
   for (int i=captureListeners.size - 1; i >= 0; i--) {
     if (captureListeners.get(i) != listener)     continue;
-    if (captureActors.get(i) != null)     continue;
+    if (captureActors.get(i) != contextActor)     continue;
     captureListeners.removeIndex(i);
     captureActors.removeIndex(i);
     return true;

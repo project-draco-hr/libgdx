@@ -1,0 +1,4 @@
+{
+  if (pointer == 0 && isPressed())   clicked(event,x,y);
+  return super.touchUp(event,x,y,pointer,button);
+}

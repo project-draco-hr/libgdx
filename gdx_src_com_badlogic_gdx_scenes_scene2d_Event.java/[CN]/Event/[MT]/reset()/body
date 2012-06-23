@@ -1,8 +1,10 @@
 {
-  target=null;
-  currentTarget=null;
+  stage=null;
+  targetActor=null;
+  contextActor=null;
+  capture=false;
+  bubbles=true;
   handled=false;
   stopped=false;
   cancelled=false;
-  bubbles=true;
 }

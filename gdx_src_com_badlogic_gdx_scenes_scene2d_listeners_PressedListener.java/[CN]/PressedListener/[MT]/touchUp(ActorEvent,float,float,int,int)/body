@@ -1,0 +1,7 @@
+{
+  if (pointer == 0 && pressed) {
+    pressed=false;
+    return true;
+  }
+  return false;
+}

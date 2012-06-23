@@ -1,7 +1,7 @@
 {
   event.stage=getStage();
   if (event.stage == null)   return false;
-  event.target=this;
+  event.setTargetActor(this);
   Array<Group> ancestors=Pools.obtain(Array.class);
   Group parent=getParent();
   while (parent != null) {

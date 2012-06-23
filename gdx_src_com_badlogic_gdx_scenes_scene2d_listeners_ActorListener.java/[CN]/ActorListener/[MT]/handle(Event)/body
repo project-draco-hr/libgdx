@@ -1,0 +1,39 @@
+{
+  if (!(e instanceof ActorEvent))   return;
+  ActorEvent event=(ActorEvent)e;
+switch (event.getType()) {
+case keyDown:
+    if (keyDown(event,event.getKeyCode()))     event.handled();
+  return;
+case keyUp:
+if (keyUp(event,event.getKeyCode())) event.handled();
+return;
+case keyTyped:
+if (keyTyped(event,event.getCharacter())) event.handled();
+return;
+case scrolled:
+if (scrolled(event,event.getScrollAmount())) event.handled();
+return;
+}
+Vector2 coords=event.getContextActor().toLocalCoordinates(event.getStageX(),event.getStageY());
+switch (event.getType()) {
+case touchDown:
+if (touchDown(event,coords.x,coords.y,event.getPointer(),event.getButton())) event.handled();
+return;
+case touchUp:
+if (touchUp(event,coords.x,coords.y,event.getPointer(),event.getButton())) event.handled();
+return;
+case touchDragged:
+if (touchDragged(event,coords.x,coords.y,event.getPointer())) event.handled();
+return;
+case touchMoved:
+touchMoved(event,coords.x,coords.y);
+return;
+case enter:
+enter(event,coords.x,coords.y,event.getPointer(),event.getRelatedActor());
+return;
+case exit:
+exit(event,coords.x,coords.y,event.getPointer(),event.getRelatedActor());
+return;
+}
+}

@@ -1,4 +1,5 @@
 {
+  boolean isPressed=isPressed();
   if (isPressed && style.regionDown != null)   image.setRegion(style.regionDown);
  else   if (isPressed && style.patchDown != null)   image.setPatch(style.patchDown);
  else   if (isChecked && style.regionChecked != null)   image.setRegion(style.regionChecked);
