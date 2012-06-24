@@ -27,7 +27,7 @@ case touchDragged:
 if (touchDragged(event,coords.x,coords.y,event.getPointer())) event.handled();
 return;
 case touchMoved:
-touchMoved(event,coords.x,coords.y);
+mouseMoved(event,coords.x,coords.y);
 return;
 case enter:
 enter(event,coords.x,coords.y,event.getPointer(),event.getRelatedActor());

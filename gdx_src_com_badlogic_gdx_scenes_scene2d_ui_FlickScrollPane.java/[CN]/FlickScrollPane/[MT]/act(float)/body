@@ -11,7 +11,7 @@
     if (amountY >= maxY + overscrollDistance)     velocityY=0;
     flingTimer-=delta;
   }
-  if (overscroll && !gestureDetector.isPanning()) {
+  if (overscroll && !gestureListener.getGestureDetector().isPanning()) {
     if (amountX < 0) {
       amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
       if (amountX > 0)       amountX=0;
