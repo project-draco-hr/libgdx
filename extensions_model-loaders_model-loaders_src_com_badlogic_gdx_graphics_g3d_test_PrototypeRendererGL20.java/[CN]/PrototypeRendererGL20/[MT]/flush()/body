@@ -1,6 +1,6 @@
 {
-  drawableManager.drawables.sort();
-  for (int i=drawableManager.drawables.size - 1; i >= 0; i--) {
+  drawableManager.drawables.sort(opaqueSorter);
+  for (int i=drawableManager.drawables.size; --i >= 0; ) {
     final Drawable drawable=drawableManager.drawables.get(i);
     final Vector3 center=drawable.sortCenter;
     lightManager.calculateLights(center.x,center.y,center.z);
