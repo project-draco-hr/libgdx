@@ -3,7 +3,7 @@
   this.height=height;
   ownsBatch=true;
   batch=new SpriteBatch();
-  root=new Group("root");
+  root=new Group();
   root.setStage(this);
   camera=new OrthographicCamera();
   setViewport(width,height,stretch);

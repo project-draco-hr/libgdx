@@ -1,7 +1,7 @@
 {
   float advance=32 + SPACING;
   for (int y=0; y < NUM_SPRITES * advance; y+=advance)   for (int x=0; x < NUM_SPRITES * advance; x+=advance) {
-    Image img=new Image(new TextureRegion(texture),Scaling.none,Align.CENTER,group.getName() + "-sprite" + x * y);
+    Image img=new Image(new TextureRegion(texture),Scaling.none,Align.CENTER);
     img.setBounds(x,y,32,32);
     img.setOrigin(16,16);
     group.addActor(img);

@@ -1,3 +1,9 @@
 {
-  this(text,messageText,style,null);
+  setStyle(style);
+  this.clipboard=Clipboard.getDefaultClipboard();
+  setText(text);
+  this.messageText=messageText;
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
+  initialize();
 }

@@ -7,7 +7,7 @@
   projector.update();
   texture.bind();
   projTexShader.begin();
-  if (((SelectBox)ui.findActor("camera")).getSelectionIndex() == 0) {
+  if (camera.getSelectionIndex() == 0) {
     renderMesh(projTexShader,cam.combined,projector.combined,planeTrans,plane,Color.WHITE);
     renderMesh(projTexShader,cam.combined,projector.combined,cubeTrans,cube,Color.WHITE);
   }
@@ -16,8 +16,7 @@
     renderMesh(projTexShader,projector.combined,projector.combined,cubeTrans,cube,Color.WHITE);
   }
   projTexShader.end();
-  Label label=(Label)ui.findActor("fps");
-  label.setText("fps: " + Gdx.graphics.getFramesPerSecond());
+  fps.setText("fps: " + Gdx.graphics.getFramesPerSecond());
   ui.draw();
   Table.drawDebug(ui);
 }

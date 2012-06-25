@@ -3,9 +3,9 @@
   skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
   Label label=new Label("Camera:",skin.getStyle(LabelStyle.class));
   SelectBox cameraCombo=new SelectBox(new String[]{"Scene","Light"},skin.getStyle(SelectBoxStyle.class));
-  Label label2=new Label("Shader",skin.getStyle(LabelStyle.class),"cameraCombo");
-  SelectBox shaderCombo=new SelectBox(new String[]{"flat","shadow-gen","shadow-map"},skin.getStyle(SelectBoxStyle.class),"shaderCombo");
-  Label fpsLabel=new Label("fps:",skin.getStyle(LabelStyle.class),"fps");
+  Label label2=new Label("Shader",skin.getStyle(LabelStyle.class));
+  SelectBox shaderCombo=new SelectBox(new String[]{"flat","shadow-gen","shadow-map"},skin.getStyle(SelectBoxStyle.class));
+  fpsLabel=new Label("fps:",skin.getStyle(LabelStyle.class));
   Table table=new Table();
   table.setSize(Gdx.graphics.getWidth(),100);
   table.top().padTop(12);

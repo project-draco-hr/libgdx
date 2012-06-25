@@ -1,0 +1,10 @@
+{
+  actorCoords.x+=getX();
+  actorCoords.y+=getY();
+  Group parent=getParent();
+  while (parent != null) {
+    actorCoords.x+=parent.getX();
+    actorCoords.y+=parent.getY();
+    parent=parent.getParent();
+  }
+}

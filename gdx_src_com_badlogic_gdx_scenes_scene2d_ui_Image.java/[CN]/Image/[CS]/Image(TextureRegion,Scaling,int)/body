@@ -1,3 +1,7 @@
 {
-  this(region,scaling,align,null);
+  setRegion(region);
+  this.scaling=scaling;
+  this.align=align;
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

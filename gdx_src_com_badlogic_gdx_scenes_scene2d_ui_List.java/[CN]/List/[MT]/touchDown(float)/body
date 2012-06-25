@@ -1,0 +1,6 @@
+{
+  selected=(int)((getHeight() - y) / itemHeight);
+  selected=Math.max(0,selected);
+  selected=Math.min(items.length - 1,selected);
+  if (listener != null && items.length > 0)   listener.selected(List.this,selected,items[selected]);
+}

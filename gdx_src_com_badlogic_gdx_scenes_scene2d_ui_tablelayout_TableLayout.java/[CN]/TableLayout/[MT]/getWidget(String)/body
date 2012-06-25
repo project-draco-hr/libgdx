@@ -1,5 +1,0 @@
-{
-  Actor actor=super.getWidget(name);
-  if (actor == null)   actor=getTable().findActor(name);
-  return actor;
-}

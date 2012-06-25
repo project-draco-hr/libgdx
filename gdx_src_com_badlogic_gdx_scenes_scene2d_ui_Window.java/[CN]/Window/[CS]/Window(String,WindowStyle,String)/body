@@ -1,9 +1,0 @@
-{
-  super(null,null,name);
-  if (title == null)   throw new IllegalArgumentException("title cannot be null.");
-  setClip(true);
-  this.title=title;
-  setStyle(style);
-  setWidth(150);
-  setHeight(150);
-}

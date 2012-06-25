@@ -1,3 +1,22 @@
 {
-  this(items,style,null);
+  setStyle(style);
+  setItems(items);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
+  addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (pointer != 0)       return false;
+      if (list != null && list.getParent() != null) {
+        list.remove();
+        return true;
+      }
+      Stage stage=getStage();
+      Vector2 stageCoords=Vector2.tmp;
+      stage.toStageCoordinates((int)screenCoords.x,(int)screenCoords.y,stageCoords);
+      list=new SelectList(stageCoords.x,stageCoords.y);
+      stage.addActor(list);
+      return true;
+    }
+  }
+);
 }

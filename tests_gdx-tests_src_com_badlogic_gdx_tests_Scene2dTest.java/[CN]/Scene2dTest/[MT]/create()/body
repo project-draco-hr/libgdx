@@ -14,26 +14,22 @@
   stage.addActor(actor);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   final TextButton button=new TextButton("Some Shit!",skin);
-  button.addListener(new ClickListener(){
-    public void clicked(    ActorEvent event,    float x,    float y){
-      System.out.println("click! " + x + " "+ y);
+  button.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int b){
+      System.out.println("down " + x + ", "+ y+ " "+ pointer+ ", "+ b);
+      return true;
+    }
+    public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int b){
+      System.out.println("up " + x + ", "+ y+ " "+ pointer+ ", "+ b);
     }
   }
 );
-  button.addListener(new ActorGestureListener(){
-    public void tap(    ActorEvent event,    float x,    float y,    int count){
-      System.out.println("tap");
-    }
-    public void longPress(    ActorEvent event,    float x,    float y){
-      System.out.println("long press");
-    }
-    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
-      System.out.println("panning " + x + ", "+ y);
-    }
-  }
-);
-  button.setPosition(100,100);
+  button.setPosition(50,50);
   stage.addActor(button);
+  ScrollPane scroll=new ScrollPane(skin);
+  scroll.setBounds(200,200,100,100);
+  scroll.setWidget(actor);
+  stage.addActor(scroll);
   meow.setDuration(2);
   actor.addAction(parallel(rotateBy(90,2),rotateBy(90,2)));
 }

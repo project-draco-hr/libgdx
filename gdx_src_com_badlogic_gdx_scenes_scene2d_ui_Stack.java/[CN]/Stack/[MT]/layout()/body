@@ -1,5 +1,5 @@
 {
-  Array<Actor> children=getActors();
+  Array<Actor> children=getChildren();
   for (int i=0, n=children.size; i < n; i++) {
     Actor child=children.get(i);
     child.setBounds(0,0,getWidth(),getHeight());

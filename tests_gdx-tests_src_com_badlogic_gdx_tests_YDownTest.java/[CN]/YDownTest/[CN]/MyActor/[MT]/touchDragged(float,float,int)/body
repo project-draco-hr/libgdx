@@ -1,6 +1,0 @@
-{
-  if (pointer != 0)   return;
-  translate(x - lastX,y - lastY);
-  lastX=x - (x - lastX);
-  lastY=y - (y - lastY);
-}

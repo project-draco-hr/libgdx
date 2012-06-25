@@ -1,11 +1,12 @@
 {
-  Vector2 stageCoords=toStageCoordinates(screenX,screenY);
+  toStageCoordinates(screenX,screenY,stageCoords);
   Actor over=hit(stageCoords.x,stageCoords.y);
   if (over == overLast)   return overLast;
   ActorEvent event=Pools.obtain(ActorEvent.class);
-  event.setPointer(pointer);
+  event.setStage(this);
   event.setStageX(stageCoords.x);
   event.setStageY(stageCoords.y);
+  event.setPointer(pointer);
   if (overLast != null) {
     event.setType(ActorEvent.Type.exit);
     event.setRelatedActor(over);

@@ -1,9 +1,0 @@
-{
-  if (x > 0 && x < getWidth() && y > 0 && y < getHeight()) {
-    selected=(int)((getHeight() - y) / itemHeight);
-    selected=Math.max(0,selected);
-    selected=Math.min(items.length - 1,selected);
-  }
-  super.mouseMoved(x,y);
-  return true;
-}

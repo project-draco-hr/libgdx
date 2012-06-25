@@ -1,7 +1,4 @@
 {
-  if (!event.isCapture())   return false;
   this.event=event;
   detector.touchUp(x,y,pointer,0);
-  event.getStage().removeCaptureListener(this,event.getContextActor());
-  return true;
 }

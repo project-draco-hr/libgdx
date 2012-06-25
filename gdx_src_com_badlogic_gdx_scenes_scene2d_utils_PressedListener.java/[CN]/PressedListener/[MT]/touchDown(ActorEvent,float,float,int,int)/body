@@ -1,5 +1,7 @@
 {
   if (pointer > 0)   return false;
+  touchDownX=x;
+  touchDownY=y;
   pressed=true;
   return true;
 }

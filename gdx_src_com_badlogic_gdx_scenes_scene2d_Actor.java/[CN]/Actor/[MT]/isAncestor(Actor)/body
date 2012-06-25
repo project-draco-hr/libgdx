@@ -1,9 +1,8 @@
 {
   if (actor == null)   throw new IllegalArgumentException("actor cannot be null.");
-  Actor parent=this;
   while (true) {
-    if (parent == null)     return false;
-    if (parent == actor)     return true;
-    parent=parent.getParent();
+    if (actor == null)     return false;
+    if (actor == this)     return true;
+    actor=actor.getParent();
   }
 }

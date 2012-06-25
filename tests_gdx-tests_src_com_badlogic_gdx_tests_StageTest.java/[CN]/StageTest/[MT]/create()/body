@@ -5,7 +5,7 @@
   stage=new Stage(480,320,true);
   float loc=(NUM_SPRITES * (32 + SPACING) - SPACING) / 2;
   for (int i=0; i < NUM_GROUPS; i++) {
-    Group group=new Group("group" + i);
+    Group group=new Group();
     group.setX((float)Math.random() * (stage.getWidth() - NUM_SPRITES * (32 + SPACING)));
     group.setY((float)Math.random() * (stage.getHeight() - NUM_SPRITES * (32 + SPACING)));
     group.setOrigin(loc,loc);
@@ -15,35 +15,38 @@
   uiTexture=new Texture(Gdx.files.internal("data/ui.png"));
   uiTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   ui=new Stage(480,320,false);
-  Image blend=new Image(new TextureRegion(uiTexture,0,0,64,32),Scaling.none,Align.CENTER,"blend"){
-    public boolean touchDown(    float x,    float y,    int pointer){
+  Image blend=new Image(new TextureRegion(uiTexture,0,0,64,32),Scaling.none,Align.CENTER);
+  blend.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
       if (stage.getSpriteBatch().isBlendingEnabled())       stage.getSpriteBatch().disableBlending();
  else       stage.getSpriteBatch().enableBlending();
-      return false;
+      return true;
     }
   }
-;
+);
   blend.setY(ui.getHeight() - 64);
-  Image rotate=new Image(new TextureRegion(uiTexture,64,0,64,32),Scaling.none,Align.CENTER,"rotate"){
-    public boolean touchDown(    float x,    float y,    int pointer){
+  Image rotate=new Image(new TextureRegion(uiTexture,64,0,64,32),Scaling.none,Align.CENTER);
+  rotate.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
       rotateSprites=!rotateSprites;
-      return false;
+      return true;
     }
   }
-;
+);
   rotate.setPosition(64,blend.getY());
-  Image scale=new Image(new TextureRegion(uiTexture,64,32,64,32),Scaling.none,Align.CENTER,"scale"){
-    public boolean touchDown(    float x,    float y,    int pointer){
+  Image scale=new Image(new TextureRegion(uiTexture,64,32,64,32),Scaling.none,Align.CENTER);
+  scale.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
       scaleSprites=!scaleSprites;
-      return false;
+      return true;
     }
   }
-;
+);
   scale.setPosition(128,blend.getY());
   ui.addActor(blend);
   ui.addActor(rotate);
   ui.addActor(scale);
-  Label fps=new Label("fps: 0",new Label.LabelStyle(font,Color.WHITE),"fps");
+  fps=new Label("fps: 0",new Label.LabelStyle(font,Color.WHITE));
   fps.setPosition(10,30);
   fps.setColor(0,1,0,1);
   ui.addActor(fps);

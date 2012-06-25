@@ -1,4 +1,4 @@
 {
-  if (iterating)   throw new IllegalStateException("Invalid during snapshot.");
+  if (iterating)   throw new IllegalStateException("Invalid between begin/end.");
   super.swap(first,second);
 }

@@ -2,4 +2,19 @@
   this.region=region;
   setWidth(region.getRegionWidth());
   setHeight(-region.getRegionHeight());
+  addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (pointer != 0)       return false;
+      lastX=x;
+      lastY=y;
+      return true;
+    }
+    public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
+      if (pointer != 0)       return;
+      translate(x - lastX,y - lastY);
+      lastX=x - (x - lastX);
+      lastY=y - (y - lastY);
+    }
+  }
+);
 }

@@ -1,3 +1,4 @@
 {
-  if (parent != null)   parent.removeActor(this);
+  if (parent != null)   return parent.removeActor(this);
+  return false;
 }

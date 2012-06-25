@@ -1,3 +1,5 @@
 {
-  return isModal || (x > 0 && x < getWidth() && y > 0 && y < getHeight()) ? this : null;
+  Actor hit=super.hit(x,y);
+  if (hit == null && isModal)   return this;
+  return hit;
 }

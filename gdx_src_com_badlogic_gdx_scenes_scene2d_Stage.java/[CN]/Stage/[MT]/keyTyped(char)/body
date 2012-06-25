@@ -1,6 +1,7 @@
 {
   if (keyboardFocus == null)   return false;
   ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
   event.setType(ActorEvent.Type.keyTyped);
   event.setCharacter(character);
   boolean handled=keyboardFocus.fire(event);

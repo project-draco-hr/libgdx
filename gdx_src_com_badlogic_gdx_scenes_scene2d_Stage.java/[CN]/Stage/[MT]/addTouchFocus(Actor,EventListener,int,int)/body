@@ -1,0 +1,8 @@
+{
+  TouchFocus focus=Pools.obtain(TouchFocus.class);
+  focus.actor=actor;
+  focus.listener=listener;
+  focus.pointer=pointer;
+  focus.button=button;
+  touchFocuses.add(focus);
+}

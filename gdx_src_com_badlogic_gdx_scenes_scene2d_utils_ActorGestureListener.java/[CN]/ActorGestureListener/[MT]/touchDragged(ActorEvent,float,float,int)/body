@@ -1,6 +1,4 @@
 {
-  if (!event.isCapture())   return false;
   this.event=event;
   detector.touchDragged(x,y,pointer);
-  return true;
 }

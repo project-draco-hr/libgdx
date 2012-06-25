@@ -1,6 +1,7 @@
 {
   if (scrollFocus == null)   return false;
   ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
   event.setType(ActorEvent.Type.scrolled);
   event.setScrollAmount(amount);
   boolean handled=scrollFocus.fire(event);

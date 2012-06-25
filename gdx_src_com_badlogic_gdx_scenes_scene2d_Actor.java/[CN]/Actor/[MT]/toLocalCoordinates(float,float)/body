@@ -1,9 +1,0 @@
-{
-  Vector2 tmp=Vector2.tmp;
-  tmp.x=stageX;
-  tmp.y=stageY;
-  if (parent == null)   return tmp;
-  parent.toLocalCoordinates(tmp);
-  Group.toChildCoordinates(this,tmp.x,tmp.y,tmp);
-  return tmp;
-}

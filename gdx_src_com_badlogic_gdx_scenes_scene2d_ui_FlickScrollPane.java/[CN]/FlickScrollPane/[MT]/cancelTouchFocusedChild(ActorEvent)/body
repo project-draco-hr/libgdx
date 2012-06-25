@@ -1,3 +1,6 @@
 {
-  Actor actor=event.getContextActor();
+  Stage stage=getStage();
+  stage.removeTouchFocus(this,gestureListener,event.getPointer(),event.getPointer());
+  stage.cancelTouchFocus();
+  stage.addTouchFocus(this,gestureListener,event.getPointer(),event.getPointer());
 }

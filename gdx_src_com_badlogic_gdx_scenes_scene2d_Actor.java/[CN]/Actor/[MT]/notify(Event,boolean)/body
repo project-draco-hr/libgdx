@@ -1,25 +1,24 @@
 {
   if (event.getTargetActor() == null)   throw new IllegalArgumentException("The event target cannot be null.");
-  if (capture) {
-    DelayedRemovalArray<EventListener> listeners=captureListeners;
-    if (listeners.size == 0)     return;
-    event.capture=true;
-    DelayedRemovalArray<Actor> actors=captureActors;
-    listeners.begin();
-    for (int i=0, n=listeners.size; i < n; i++) {
-      Actor actor=actors.get(i);
-      event.setContextActor(actor != null ? actor : this);
-      listeners.get(i).handle(event);
+  DelayedRemovalArray<EventListener> listeners=capture ? captureListeners : this.listeners;
+  if (listeners.size == 0)   return;
+  event.setContextActor(this);
+  event.setCapture(capture);
+  if (event.getStage() == null) {
+    Stage stage=getStage();
+    if (stage == null)     throw new IllegalStateException("Stage must be set.");
+    event.setStage(stage);
+  }
+  listeners.begin();
+  for (int i=0, n=listeners.size; i < n; i++) {
+    EventListener listener=listeners.get(i);
+    if (listener.handle(event)) {
+      event.handled();
+      if (event instanceof ActorEvent) {
+        ActorEvent actorEvent=(ActorEvent)event;
+        if (actorEvent.getType() == Type.touchDown)         event.getStage().addTouchFocus(this,listener,actorEvent.getPointer(),actorEvent.getButton());
+      }
     }
-    listeners.end();
   }
- else {
-    DelayedRemovalArray<EventListener> listeners=this.listeners;
-    if (listeners.size == 0)     return;
-    event.setContextActor(this);
-    event.capture=false;
-    listeners.begin();
-    for (int i=0, n=listeners.size; i < n; i++)     listeners.get(i).handle(event);
-    listeners.end();
-  }
+  listeners.end();
 }

@@ -1,6 +1,5 @@
 {
   this.event=event;
   detector.touchDown(x,y,pointer,0);
-  event.getStage().addCaptureListener(this,event.getContextActor());
   return true;
 }

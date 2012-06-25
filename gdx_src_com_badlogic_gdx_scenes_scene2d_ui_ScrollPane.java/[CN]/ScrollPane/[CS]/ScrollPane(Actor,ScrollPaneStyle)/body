@@ -1,3 +1,63 @@
 {
-  this(widget,style,null);
+  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  this.widget=widget;
+  this.style=style;
+  if (widget != null) {
+    setWidget(widget);
+  }
+  setWidth(150);
+  setHeight(150);
+  addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (pointer != 0)       return false;
+      if (scrollX && hScrollBounds.contains(x,y)) {
+        if (hKnobBounds.contains(x,y)) {
+          lastPoint.set(x,y);
+          handlePosition=hKnobBounds.x;
+          touchScrollH=true;
+          return true;
+        }
+        if (x < hKnobBounds.x)         setScrollPercentX(Math.max(0,getScrollPercentX() - 0.1f));
+ else         setScrollPercentX(Math.min(1,getScrollPercentX() + 0.1f));
+        return false;
+      }
+ else       if (scrollY && vScrollBounds.contains(x,y)) {
+        if (vKnobBounds.contains(x,y)) {
+          lastPoint.set(x,y);
+          handlePosition=vKnobBounds.y;
+          touchScrollV=true;
+          return true;
+        }
+        if (y < vKnobBounds.y)         setScrollPercentY(Math.max(0,getScrollPercentY() + 0.1f));
+ else         setScrollPercentY(Math.min(1,getScrollPercentY() - 0.1f));
+        return false;
+      }
+      return false;
+    }
+    public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      touchScrollH=false;
+      touchScrollV=false;
+    }
+    public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
+      if (touchScrollH) {
+        float delta=x - lastPoint.x;
+        float scrollH=handlePosition + delta;
+        handlePosition=scrollH;
+        scrollH=Math.max(hScrollBounds.x,scrollH);
+        scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hKnobBounds.width,scrollH);
+        setScrollPercentX((scrollH - hScrollBounds.x) / (hScrollBounds.width - hKnobBounds.width));
+        lastPoint.set(x,y);
+      }
+ else       if (touchScrollV) {
+        float delta=y - lastPoint.y;
+        float scrollV=handlePosition + delta;
+        handlePosition=scrollV;
+        scrollV=Math.max(vScrollBounds.y,scrollV);
+        scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vKnobBounds.height,scrollV);
+        setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vKnobBounds.height)));
+        lastPoint.set(x,y);
+      }
+    }
+  }
+);
 }

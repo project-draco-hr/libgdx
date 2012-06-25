@@ -1,7 +1,29 @@
 {
+  if (touchFocuses.size == 0)   return false;
+  toStageCoordinates(screenX,screenY,stageCoords);
   ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setType(Type.touchUp);
+  event.setStage(this);
+  event.setStageX(stageCoords.x);
+  event.setStageY(stageCoords.y);
   event.setPointer(pointer);
   event.setButton(button);
-  Vector2 stageCoords=toStageCoordinates(screenX,screenY);
-  return fireTouch(event,ActorEvent.Type.touchUp,stageCoords.x,stageCoords.y);
+  event.setStage(this);
+  SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
+  TouchFocus[] focuses=touchFocuses.begin();
+  for (int i=0, n=touchFocuses.size; i < n; i++) {
+    TouchFocus focus=focuses[i];
+    if (focus.pointer != pointer || focus.button != button)     continue;
+    event.setContextActor(focus.actor);
+    if (focus.listener.handle(event))     event.handled();
+  }
+  touchFocuses.end();
+  for (int i=touchFocuses.size - 1; i >= 0; i--) {
+    TouchFocus focus=touchFocuses.get(i);
+    if (focus.pointer != pointer || focus.button != button)     continue;
+    touchFocuses.removeIndex(i);
+  }
+  boolean handled=event.isHandled();
+  Pools.free(event);
+  return handled;
 }

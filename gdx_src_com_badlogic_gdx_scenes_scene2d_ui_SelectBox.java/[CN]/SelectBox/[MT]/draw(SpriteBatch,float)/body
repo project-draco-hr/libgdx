@@ -17,5 +17,5 @@
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
     font.draw(batch,items[selection],x + background.getLeftWidth(),y + textY,0,numGlyphs);
   }
-  ScissorStack.toWindowCoordinates(getStage().getCamera(),batch.getTransformMatrix(),screenCoords.set(x,y));
+  getStage().toScreenCoordinates(screenCoords.set(x,y),batch.getTransformMatrix());
 }

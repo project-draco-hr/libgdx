@@ -1,0 +1,7 @@
+{
+  setTransform(false);
+  if (layout == null)   layout=new TableLayout();
+  this.layout=layout;
+  layout.setTable(this);
+  layout.skin=skin;
+}

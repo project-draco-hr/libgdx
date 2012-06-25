@@ -4,7 +4,7 @@
     stage.act(Gdx.graphics.getDeltaTime());
     stage.getSpriteBatch().disableBlending();
     Group root=stage.getRoot();
-    Array<Actor> actors=root.getActors();
+    Array<Actor> actors=root.getChildren();
     stage.draw();
   }
  else {

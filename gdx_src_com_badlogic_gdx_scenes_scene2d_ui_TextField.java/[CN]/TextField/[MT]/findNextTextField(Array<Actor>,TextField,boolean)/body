@@ -13,7 +13,7 @@
         best=(TextField)actor;
       }
     }
-    if (actor instanceof Group)     best=findNextTextField(((Group)actor).getActors(),best,up);
+    if (actor instanceof Group)     best=findNextTextField(((Group)actor).getChildren(),best,up);
   }
   return best;
 }

@@ -1,3 +1,11 @@
 {
-  this(firstWidget,secondWidget,vertical,style,null);
+  this.firstWidget=firstWidget;
+  this.secondWidget=secondWidget;
+  this.vertical=vertical;
+  setStyle(style);
+  setFirstWidget(firstWidget);
+  setSecondWidget(secondWidget);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
+  initialize();
 }
