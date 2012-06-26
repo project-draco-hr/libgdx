@@ -1,5 +1,5 @@
 {
-  toStageCoordinates(screenX,screenY,stageCoords);
+  screenToStageCoordinates(stageCoords.set(screenX,screenY));
   ActorEvent event=Pools.obtain(ActorEvent.class);
   event.setType(Type.touchDown);
   event.setStage(this);

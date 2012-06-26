@@ -12,7 +12,7 @@
       }
       Stage stage=getStage();
       Vector2 stageCoords=Vector2.tmp;
-      stage.toStageCoordinates((int)screenCoords.x,(int)screenCoords.y,stageCoords);
+      stage.screenToStageCoordinates(stageCoords.set(screenCoords.x,screenCoords.y));
       list=new SelectList(stageCoords.x,stageCoords.y);
       stage.addActor(list);
       return true;

@@ -1,0 +1,10 @@
+{
+  localCoords.x+=getX();
+  localCoords.y+=getY();
+  Group parent=getParent();
+  while (parent != null) {
+    localCoords.x+=parent.getX();
+    localCoords.y+=parent.getY();
+    parent=parent.getParent();
+  }
+}

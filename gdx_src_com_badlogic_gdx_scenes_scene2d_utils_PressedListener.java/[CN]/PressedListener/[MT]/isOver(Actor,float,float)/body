@@ -1,7 +1,7 @@
 {
   Actor hit=actor.hit(x,y);
   if (hit == null || !hit.isDescendant(actor)) {
-    if (touchDownX == 0 && touchDownY == 0)     return false;
+    if (touchDownX == -1 && touchDownY == -1)     return false;
     return Math.abs(x - touchDownX) < tapSquareSize && Math.abs(y - touchDownY) < tapSquareSize;
   }
   return true;

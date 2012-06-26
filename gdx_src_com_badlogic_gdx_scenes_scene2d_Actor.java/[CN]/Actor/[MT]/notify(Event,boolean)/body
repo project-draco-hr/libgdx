@@ -2,7 +2,7 @@
   if (event.getTargetActor() == null)   throw new IllegalArgumentException("The event target cannot be null.");
   DelayedRemovalArray<EventListener> listeners=capture ? captureListeners : this.listeners;
   if (listeners.size == 0)   return event.isCancelled();
-  event.setContextActor(this);
+  event.setCurrentTarget(this);
   event.setCapture(capture);
   if (event.getStage() == null) {
     Stage stage=getStage();
@@ -13,10 +13,10 @@
   for (int i=0, n=listeners.size; i < n; i++) {
     EventListener listener=listeners.get(i);
     if (listener.handle(event)) {
-      event.handled();
+      event.handle();
       if (event instanceof ActorEvent) {
         ActorEvent actorEvent=(ActorEvent)event;
-        if (actorEvent.getType() == Type.touchDown)         event.getStage().addTouchFocus(this,listener,actorEvent.getPointer(),actorEvent.getButton());
+        if (actorEvent.getType() == Type.touchDown)         event.getStage().addTouchFocus(listener,this,actorEvent.getPointer(),actorEvent.getButton());
       }
     }
   }

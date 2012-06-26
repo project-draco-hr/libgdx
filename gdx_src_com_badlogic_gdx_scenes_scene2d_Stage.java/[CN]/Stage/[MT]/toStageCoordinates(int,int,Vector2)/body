@@ -1,5 +1,0 @@
-{
-  camera.unproject(Vector3.tmp.set(screenX,screenY,0));
-  out.x=Vector3.tmp.x;
-  out.y=Vector3.tmp.y;
-}

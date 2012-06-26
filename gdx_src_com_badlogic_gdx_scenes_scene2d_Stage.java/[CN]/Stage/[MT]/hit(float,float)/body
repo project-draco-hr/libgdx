@@ -1,5 +1,5 @@
 {
   Vector2 actorCoords=Vector2.tmp;
-  Group.toChildCoordinates(root,stageX,stageY,actorCoords);
+  root.parentToLocalCoordinates(actorCoords.set(stageX,stageY));
   return root.hit(actorCoords.x,actorCoords.y);
 }
