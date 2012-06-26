@@ -1,7 +1,3 @@
 {
-  setPatch(patch);
-  this.scaling=scaling;
-  this.align=align;
-  setWidth(getPrefWidth());
-  setHeight(getPrefHeight());
+  this(new NinePatchDrawable(patch));
 }

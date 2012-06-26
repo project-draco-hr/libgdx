@@ -1,6 +1,6 @@
 {
   float width=firstWidget instanceof Layout ? ((Layout)firstWidget).getPrefWidth() : firstWidget.getWidth();
   width+=secondWidget instanceof Layout ? ((Layout)secondWidget).getPrefWidth() : secondWidget.getWidth();
-  if (!vertical)   width+=style.handle.getTotalWidth();
+  if (!vertical)   width+=style.handle.getMinWidth();
   return width;
 }

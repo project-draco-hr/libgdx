@@ -15,10 +15,10 @@
     }
     public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
       if (!touchDrag)       return;
-      NinePatch handle=style.handle;
+      Drawable handle=style.handle;
       if (!vertical) {
         float delta=x - lastPoint.x;
-        float availWidth=getWidth() - handle.getTotalWidth();
+        float availWidth=getWidth() - handle.getMinWidth();
         float dragX=handlePosition.x + delta;
         handlePosition.x=dragX;
         dragX=Math.max(0,dragX);
@@ -30,7 +30,7 @@
       }
  else {
         float delta=y - lastPoint.y;
-        float availHeight=getHeight() - handle.getTotalHeight();
+        float availHeight=getHeight() - handle.getMinHeight();
         float dragY=handlePosition.y + delta;
         handlePosition.y=dragY;
         dragY=Math.max(0,dragY);

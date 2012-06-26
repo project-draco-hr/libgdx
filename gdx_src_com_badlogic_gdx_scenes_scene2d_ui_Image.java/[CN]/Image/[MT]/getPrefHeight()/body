@@ -1,5 +1,4 @@
 {
-  if (region != null)   return Math.abs(region.getRegionHeight());
-  if (patch != null)   return patch.getTotalHeight();
+  if (drawable != null)   return drawable.getMinHeight();
   return 0;
 }

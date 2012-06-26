@@ -1,15 +1,15 @@
 {
-  final TextureRegion knob=style.knob;
-  final NinePatch slider=style.slider;
+  final Drawable knob=style.knob;
+  final Drawable slider=style.slider;
   Color color=getColor();
   float x=getX();
   float y=getY();
   float width=getWidth();
   float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  sliderPos=(value - min) / (max - min) * (width - knob.getRegionWidth());
+  sliderPos=(value - min) / (max - min) * (width - knob.getMinWidth());
   sliderPos=Math.max(0,sliderPos);
-  sliderPos=Math.min(width - knob.getRegionWidth(),sliderPos);
-  slider.draw(batch,x,y + (int)((height - slider.getTotalHeight()) * 0.5f),width,slider.getTotalHeight());
-  batch.draw(knob,x + sliderPos,y + (int)((height - knob.getRegionHeight()) * 0.5f));
+  sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
+  slider.draw(batch,x,y + (int)((height - slider.getMinHeight()) * 0.5f),width,slider.getMinHeight());
+  knob.draw(batch,x + sliderPos,y + (int)((height - knob.getMinHeight()) * 0.5f),knob.getMinWidth(),knob.getMinHeight());
 }

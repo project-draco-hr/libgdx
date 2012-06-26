@@ -13,7 +13,12 @@
   actor.setOrigin(50,50);
   stage.addActor(actor);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  final TextButton button=new TextButton("Some Shit!",skin);
+  final TextButton button=new TextButton("Some Shit!",skin.getStyle("toggle",TextButtonStyle.class));
+  button.addListener(new ChangeListener(){
+    public void changed(    ChangeEvent event,    Actor actor){
+    }
+  }
+);
   button.addListener(new ActorListener(){
     public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int b){
       System.out.println("down " + x + ", "+ y+ " "+ pointer+ ", "+ b);
@@ -26,10 +31,13 @@
 );
   button.setPosition(50,50);
   stage.addActor(button);
-  ScrollPane scroll=new ScrollPane(skin);
-  scroll.setBounds(200,200,100,100);
-  scroll.setWidget(actor);
-  stage.addActor(scroll);
+  stage.addListener(new ChangeListener(){
+    public void changed(    ChangeEvent event,    Actor actor){
+      System.out.println(actor);
+    }
+  }
+);
   meow.setDuration(2);
   actor.addAction(parallel(rotateBy(90,2),rotateBy(90,2)));
+  patch=skin.getPatch("default-round");
 }

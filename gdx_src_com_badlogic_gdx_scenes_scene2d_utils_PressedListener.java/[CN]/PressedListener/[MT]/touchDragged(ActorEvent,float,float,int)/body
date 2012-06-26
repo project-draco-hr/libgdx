@@ -1,5 +1,5 @@
 {
-  pressed=isOver(event.getContextActor(),x,y);
+  pressed=Gdx.input.isButtonPressed(button) && isOver(event.getContextActor(),x,y);
   if (!pressed) {
     touchDownX=0;
     touchDownY=0;

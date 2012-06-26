@@ -1,3 +1,3 @@
 {
-  this(new ImageButtonStyle(null,null,null,0f,0f,0f,0f,regionUp,regionDown,regionChecked));
+  this(new ImageButtonStyle(null,null,null,0f,0f,0f,0f,new TextureRegionDrawable(regionUp),new TextureRegionDrawable(regionDown),new TextureRegionDrawable(regionChecked)));
 }

@@ -176,5 +176,39 @@ class AliasWriter implements Serializer {
     }
   }
 );
+  json.setSerializer(TextureRegion.class,new Serializer<TextureRegion>(){
+    public void write(    Json json,    TextureRegion region,    Class valueType){
+      json.writeObjectStart();
+      json.writeValue("x",region.getRegionX());
+      json.writeValue("y",region.getRegionY());
+      json.writeValue("width",region.getRegionWidth());
+      json.writeValue("height",region.getRegionHeight());
+      json.writeObjectEnd();
+    }
+    public TextureRegion read(    Json json,    Object jsonData,    Class type){
+      if (jsonData instanceof String)       return getResource((String)jsonData,TextureRegion.class);
+      int x=json.readValue("x",int.class,jsonData);
+      int y=json.readValue("y",int.class,jsonData);
+      int width=json.readValue("width",int.class,jsonData);
+      int height=json.readValue("height",int.class,jsonData);
+      return new TextureRegion(skin.texture,x,y,width,height);
+    }
+  }
+);
+  json.setSerializer(Drawable.class,new Serializer<Drawable>(){
+    public void write(    Json json,    Drawable drawable,    Class valueType){
+      throw new SerializationException("Drawables cannot be serialized directly.");
+    }
+    public Drawable read(    Json json,    Object jsonData,    Class type){
+      if (jsonData instanceof String) {
+        String name=(String)jsonData;
+        if (hasResource(name,NinePatch.class))         return new NinePatchDrawable(getResource(name,NinePatch.class));
+        if (hasResource(name,TextureRegion.class))         return new TextureRegionDrawable(getResource(name,TextureRegion.class));
+        throw new GdxRuntimeException("No " + type.getName() + " resource registered with name: "+ name);
+      }
+      throw new SerializationException("Drawables can only be referenced by name.");
+    }
+  }
+);
   return json;
 }

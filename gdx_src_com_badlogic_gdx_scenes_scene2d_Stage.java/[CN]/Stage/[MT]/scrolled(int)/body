@@ -4,7 +4,7 @@
   event.setStage(this);
   event.setType(ActorEvent.Type.scrolled);
   event.setScrollAmount(amount);
-  boolean handled=scrollFocus.fire(event);
+  scrollFocus.fire(event);
   Pools.free(event);
-  return handled;
+  return event.isHandled();
 }

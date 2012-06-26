@@ -3,7 +3,7 @@
   tableBounds.y=0;
   tableBounds.width=getWidth();
   tableBounds.height=getHeight();
-  if (backgroundPatch != null) {
+  if (backgroundDrawable != null) {
     tableBounds.x+=layout.getToolkit().width(layout,layout.getPadLeft());
     tableBounds.y+=layout.getToolkit().width(layout,layout.getPadBottom());
     tableBounds.width-=tableBounds.x + layout.getToolkit().width(layout,layout.getPadRight());

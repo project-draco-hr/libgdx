@@ -1,6 +1,6 @@
 {
   final BitmapFont font=style.font;
-  final NinePatch listSelection=style.listSelection;
+  final Drawable listSelection=style.listSelection;
   float prefWidth=0;
   float prefHeight=0;
   for (int i=0; i < items.length; i++) {

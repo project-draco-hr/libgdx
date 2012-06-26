@@ -6,5 +6,5 @@
   event.setCharacter(character);
   boolean handled=keyboardFocus.fire(event);
   Pools.free(event);
-  return handled;
+  return event.isHandled();
 }

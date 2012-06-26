@@ -1,5 +1,5 @@
 {
-  final NinePatch background=style.background;
+  final Drawable background=style.background;
   final BitmapFont font=style.font;
   final Color fontColor=style.fontColor;
   Color color=getColor();
@@ -11,11 +11,11 @@
   background.draw(batch,x,y,width,height);
   if (items.length > 0) {
     float availableWidth=width - background.getLeftWidth() - background.getRightWidth();
-    int numGlyphs=font.computeVisibleGlyphs(items[selection],0,items[selection].length(),availableWidth);
-    bounds.set(font.getBounds(items[selection]));
+    int numGlyphs=font.computeVisibleGlyphs(items[selectedIndex],0,items[selectedIndex].length(),availableWidth);
+    bounds.set(font.getBounds(items[selectedIndex]));
     float textY=(int)(height / 2) + (int)(bounds.height / 2);
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,items[selection],x + background.getLeftWidth(),y + textY,0,numGlyphs);
+    font.draw(batch,items[selectedIndex],x + background.getLeftWidth(),y + textY,0,numGlyphs);
   }
   getStage().toScreenCoordinates(screenCoords.set(x,y),batch.getTransformMatrix());
 }

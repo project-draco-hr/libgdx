@@ -1,5 +1,3 @@
 {
-  float totalHeight=getTopHeight() + getBottomHeight();
-  if (patches[MIDDLE_CENTER] != null)   totalHeight+=patches[MIDDLE_CENTER].getRegionHeight();
-  return totalHeight;
+  return topHeight + middleHeight + bottomHeight;
 }

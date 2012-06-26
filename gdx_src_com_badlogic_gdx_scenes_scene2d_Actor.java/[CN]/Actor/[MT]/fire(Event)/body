@@ -15,18 +15,18 @@
     for (int i=ancestors.size - 1; i >= 0; i--) {
       Group currentTarget=ancestors.get(i);
       currentTarget.notify(event,true);
-      if (event.isStopped())       return event.isHandled();
+      if (event.isStopped())       return event.isCancelled();
     }
     notify(event,true);
-    if (event.isStopped())     return event.isHandled();
+    if (event.isStopped())     return event.isCancelled();
     notify(event,false);
-    if (!event.getBubbles())     return event.isHandled();
-    if (event.isStopped())     return event.isHandled();
+    if (!event.getBubbles())     return event.isCancelled();
+    if (event.isStopped())     return event.isCancelled();
     for (int i=0, n=ancestors.size; i < n; i++) {
       ancestors.get(i).notify(event,false);
-      if (event.isStopped())       return event.isHandled();
+      if (event.isStopped())       return event.isCancelled();
     }
-    return event.isHandled();
+    return event.isCancelled();
   }
   finally {
     Pools.free(Array.class);

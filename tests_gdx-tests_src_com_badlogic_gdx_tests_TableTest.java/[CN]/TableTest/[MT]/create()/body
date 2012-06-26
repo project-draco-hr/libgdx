@@ -9,7 +9,7 @@
   root=new Table();
   stage.addActor(root);
   Table table=new Table();
-  table.setBackground(patch);
+  table.setBackground(new NinePatchDrawable(patch));
   table.setClip(true);
   table.size(75,75);
   table.add(label);

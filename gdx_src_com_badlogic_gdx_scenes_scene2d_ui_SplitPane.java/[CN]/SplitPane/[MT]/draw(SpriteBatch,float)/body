@@ -1,7 +1,7 @@
 {
   validate();
   Color color=getColor();
-  NinePatch handle=style.handle;
+  Drawable handle=style.handle;
   applyTransform(batch);
   Matrix4 transform=batch.getTransformMatrix();
   if (firstWidget != null) {

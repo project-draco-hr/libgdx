@@ -1,12 +1,8 @@
 {
   float regionWidth, regionHeight;
-  if (patch != null) {
-    regionWidth=patch.getTotalWidth();
-    regionHeight=patch.getTotalHeight();
-  }
- else   if (region != null) {
-    regionWidth=Math.abs(region.getRegionWidth());
-    regionHeight=Math.abs(region.getRegionHeight());
+  if (drawable != null) {
+    regionWidth=drawable.getMinWidth();
+    regionHeight=drawable.getMinHeight();
   }
  else   return;
   float width=getWidth();

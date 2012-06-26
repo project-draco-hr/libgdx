@@ -1,4 +1,4 @@
 {
-  if (backgroundPatch != null)   return Math.max(layout.getPrefWidth(),(int)backgroundPatch.getTotalWidth());
+  if (backgroundDrawable != null)   return Math.max(layout.getPrefWidth(),(int)backgroundDrawable.getMinWidth());
   return layout.getPrefWidth();
 }

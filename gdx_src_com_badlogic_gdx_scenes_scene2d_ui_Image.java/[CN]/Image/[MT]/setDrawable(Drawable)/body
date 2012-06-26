@@ -1,0 +1,10 @@
+{
+  if (drawable != null) {
+    if (this.drawable == drawable)     return;
+    if (getPrefWidth() != drawable.getMinWidth() || getPrefHeight() != drawable.getMinHeight())     invalidateHierarchy();
+  }
+ else {
+    if (getPrefWidth() != 0 || getPrefHeight() != 0)     invalidateHierarchy();
+  }
+  this.drawable=drawable;
+}

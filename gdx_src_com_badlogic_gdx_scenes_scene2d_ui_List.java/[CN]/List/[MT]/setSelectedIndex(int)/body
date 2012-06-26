@@ -1,4 +1,4 @@
 {
   if (index < 0 || index >= items.length)   throw new GdxRuntimeException("index must be >= 0 and < " + items.length + ": "+ index);
-  selected=index;
+  selectedIndex=index;
 }
