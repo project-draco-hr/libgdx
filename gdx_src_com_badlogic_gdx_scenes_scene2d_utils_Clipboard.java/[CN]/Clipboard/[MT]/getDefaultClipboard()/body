@@ -1,11 +1,9 @@
 {
   if (Gdx.app.getType() == ApplicationType.Android)   return new AndroidClipboard();
- else {
-    try {
-      return (Clipboard)Class.forName("com.badlogic.gdx.scenes.scene2d.utils.DesktopClipboard").newInstance();
-    }
- catch (    Exception ex) {
-      throw new GdxRuntimeException("Error creating desktop clipboard.",ex);
-    }
+  try {
+    return (Clipboard)Class.forName("com.badlogic.gdx.scenes.scene2d.utils.DesktopClipboard").newInstance();
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error creating desktop clipboard.",ex);
   }
 }
