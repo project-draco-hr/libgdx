@@ -55,6 +55,5 @@
   }
 );
   meow.setDuration(2);
-  actor.addAction(parallel(rotateBy(90,2),rotateBy(90,2)));
   patch=skin.getPatch("default-round");
 }
