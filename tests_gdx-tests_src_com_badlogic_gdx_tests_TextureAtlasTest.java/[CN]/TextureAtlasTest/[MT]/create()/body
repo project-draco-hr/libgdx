@@ -1,5 +1,6 @@
 {
   batch=new SpriteBatch();
+  renderer=new ShapeRenderer();
   atlas=new TextureAtlas(Gdx.files.internal("data/pack"));
   jumpAtlas=new TextureAtlas(Gdx.files.internal("data/jump.txt"));
   jumpAnimation=new Animation(0.25f,jumpAtlas.findRegions("ALIEN_JUMP_"));
@@ -24,6 +25,9 @@
       }
  else       if (keycode == Keys.LEFT) {
         badlogicSmall.setSize(512,512);
+      }
+ else       if (keycode == Keys.DOWN) {
+        badlogicSmall.rotate90(true);
       }
       return super.keyUp(keycode);
     }

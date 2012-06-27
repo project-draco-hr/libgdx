@@ -1,0 +1,17 @@
+{
+  super.rotate90(clockwise);
+  float oldOriginX=getOriginX();
+  float oldOriginY=getOriginY();
+  float oldOffsetX=region.offsetX;
+  float oldOffsetY=region.offsetY;
+  if (clockwise) {
+    region.offsetX=oldOffsetY;
+    region.offsetY=region.originalHeight - oldOffsetX - region.packedWidth;
+  }
+ else {
+    region.offsetX=region.originalWidth - oldOffsetY - region.packedHeight;
+    region.offsetY=oldOffsetX;
+  }
+  translate(region.offsetX - oldOffsetX,region.offsetY - oldOffsetY);
+  setOrigin(oldOriginX,oldOriginY);
+}
