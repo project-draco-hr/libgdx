@@ -1,0 +1,37 @@
+{
+  if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before draw.");
+  Texture texture=region.getRegion().texture;
+  if (texture != lastTexture) {
+    switchTexture(texture);
+  }
+  float[] localVertices=region.getLocalVertices();
+  float[] texCoords=region.getTextureCoords();
+  if (idx + localVertices.length > vertices.length)   renderMesh();
+  final float worldOriginX=x + originX;
+  final float worldOriginY=y + originY;
+  float sX=width / region.getRegion().getRegionWidth();
+  float sY=height / region.getRegion().getRegionHeight();
+  float fx, rx;
+  float fy, ry;
+  final float cos=MathUtils.cosDeg(rotation);
+  final float sin=MathUtils.sinDeg(rotation);
+  for (int i=0; i < localVertices.length; i+=2) {
+    fx=localVertices[i] * sX;
+    fy=localVertices[i + 1] * sY;
+    fx-=originX;
+    fy-=originY;
+    if (scaleX != 1 || scaleY != 1) {
+      fx*=scaleX;
+      fy*=scaleY;
+    }
+    rx=cos * fx - sin * fy;
+    ry=sin * fx + cos * fy;
+    rx+=worldOriginX;
+    ry+=worldOriginY;
+    vertices[idx++]=rx;
+    vertices[idx++]=ry;
+    vertices[idx++]=color;
+    vertices[idx++]=texCoords[i];
+    vertices[idx++]=texCoords[i + 1];
+  }
+}

@@ -1,0 +1,10 @@
+{
+  x+=xAmount;
+  y+=yAmount;
+  if (dirty)   return;
+  final float[] vertices=this.vertices;
+  for (int i=0; i < vertices.length; i+=Sprite.VERTEX_SIZE) {
+    vertices[i]+=xAmount;
+    vertices[i + 1]+=yAmount;
+  }
+}

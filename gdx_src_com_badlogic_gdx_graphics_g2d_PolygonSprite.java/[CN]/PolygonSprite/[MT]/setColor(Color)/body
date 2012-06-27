@@ -1,0 +1,7 @@
+{
+  float color=tint.toFloatBits();
+  final float[] vertices=this.vertices;
+  for (int i=0; i < vertices.length; i+=Sprite.VERTEX_SIZE) {
+    vertices[i + 2]=color;
+  }
+}

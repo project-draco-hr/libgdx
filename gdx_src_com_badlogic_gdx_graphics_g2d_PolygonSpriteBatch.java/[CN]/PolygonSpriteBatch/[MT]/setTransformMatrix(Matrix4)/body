@@ -1,0 +1,5 @@
+{
+  if (drawing)   flush();
+  transformMatrix.set(transform);
+  if (drawing)   setupMatrices();
+}

@@ -1,0 +1,27 @@
+{
+  if (idx == 0)   return;
+  renderCalls++;
+  totalRenderCalls++;
+  int verticesInBatch=idx / Sprite.VERTEX_SIZE;
+  if (verticesInBatch > maxVerticesInBatch)   maxVerticesInBatch=verticesInBatch;
+  lastTexture.bind();
+  mesh.setVertices(vertices,0,idx);
+  if (blendingDisabled) {
+    Gdx.gl.glDisable(GL20.GL_BLEND);
+  }
+ else {
+    Gdx.gl.glEnable(GL20.GL_BLEND);
+    Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
+  }
+  if (Gdx.graphics.isGL20Available()) {
+    if (customShader != null)     mesh.render(customShader,GL10.GL_TRIANGLES,0,verticesInBatch);
+ else     mesh.render(shader,GL10.GL_TRIANGLES,0,verticesInBatch);
+  }
+ else {
+    mesh.render(GL10.GL_TRIANGLES,0,verticesInBatch);
+  }
+  idx=0;
+  currBufferIdx++;
+  if (currBufferIdx == buffers.length)   currBufferIdx=0;
+  mesh=buffers[currBufferIdx];
+}
