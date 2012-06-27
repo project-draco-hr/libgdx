@@ -1,25 +1,46 @@
 {
   stage=new Stage(0,0,false);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   Gdx.input.setInputProcessor(stage);
-  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
-  Table mytable=new Table();
-  mytable.debug();
-  mytable.add(new Image(new Texture("data/group-debug.png")));
-  mytable.row();
-  mytable.add(new Image(new Texture("data/group-debug.png")));
-  mytable.row();
-  mytable.add(new Image(new Texture("data/group-debug.png")));
-  mytable.row();
-  mytable.add(new Image(new Texture("data/group-debug.png")));
-  ScrollPane pane=new ScrollPane(mytable,skin);
-  pane.setScrollingDisabled(true,false);
-  if (false) {
-    pane.pack();
-    pane.setHeight(Gdx.graphics.getHeight());
+  Gdx.graphics.setVSync(false);
+  container=new Table();
+  stage.addActor(container);
+  container.setFillParent(true);
+  Table table=new Table();
+  final ScrollPane scroll=new ScrollPane(table,skin);
+  ActorListener stopTouchDown=new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      event.stop();
+      return false;
+    }
   }
- else {
-    pane.setWidth(300);
-    pane.setHeight(Gdx.graphics.getHeight());
+;
+  table.parse("pad:10 * expand:x space:4");
+  for (int i=0; i < 100; i++) {
+    table.row();
+    table.add(new Label(i + "uno",skin)).expandX().fillX();
+    TextButton button=new TextButton(i + "dos",skin);
+    table.add(button);
+    button.addListener(new ClickListener(){
+      public void clicked(      ActorEvent event,      float x,      float y){
+        System.out.println("click " + x + ", "+ y);
+      }
+    }
+);
+    Slider slider=new Slider(skin);
+    slider.addListener(stopTouchDown);
+    table.add(slider);
+    table.add(new Label(i + "tres long0 long1 long2 long3 long4 long5 long6 long7 long8 long9 long10 long11 long12",skin));
   }
-  stage.addActor(pane);
+  final TextButton flickBbutton=new TextButton("Flick Scroll",skin.getStyle("toggle",TextButtonStyle.class));
+  flickBbutton.setChecked(true);
+  flickBbutton.addListener(new ChangeListener(){
+    public void changed(    ChangeEvent event,    Actor actor){
+      scroll.setFlickScroll(flickBbutton.isChecked());
+    }
+  }
+);
+  container.add(scroll).expand().fill();
+  container.row();
+  container.add(flickBbutton).pad(10);
 }

@@ -1,3 +1,3 @@
 {
-  amountX=widgetAreaBounds.x * percentX;
+  amountX=maxX * MathUtils.clamp(percentX,0,1);
 }

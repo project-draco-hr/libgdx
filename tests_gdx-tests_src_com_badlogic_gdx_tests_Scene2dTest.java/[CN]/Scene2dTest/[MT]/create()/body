@@ -14,7 +14,7 @@
   stage.addActor(actor);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   TextButtonStyle style=skin.getStyle(TextButtonStyle.class);
-  style.up=new BaseDrawable(){
+  style.up=new EmptyDrawable(){
     ShapeRenderer renderer=new ShapeRenderer();
     public void draw(    SpriteBatch batch,    float x,    float y,    float width,    float height){
       batch.end();

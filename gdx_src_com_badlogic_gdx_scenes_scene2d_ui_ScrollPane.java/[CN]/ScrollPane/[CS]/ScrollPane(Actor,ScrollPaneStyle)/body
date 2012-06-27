@@ -7,30 +7,33 @@
   }
   setWidth(150);
   setHeight(150);
-  addListener(new ActorListener(){
+  addCaptureListener(new ActorListener(){
+    private float handlePosition;
     public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer != 0)       return false;
+      if (fadeAlpha == 0)       return false;
+      resetFade();
       if (scrollX && hScrollBounds.contains(x,y)) {
+        event.stop();
         if (hKnobBounds.contains(x,y)) {
           lastPoint.set(x,y);
           handlePosition=hKnobBounds.x;
           touchScrollH=true;
           return true;
         }
-        if (x < hKnobBounds.x)         setScrollPercentX(Math.max(0,getScrollPercentX() - 0.1f));
- else         setScrollPercentX(Math.min(1,getScrollPercentX() + 0.1f));
-        return false;
+        setScrollX(Math.max(areaWidth * 0.9f,maxX * 0.1f) * (x < hKnobBounds.x ? -1 : 1));
+        return true;
       }
- else       if (scrollY && vScrollBounds.contains(x,y)) {
+      if (scrollY && vScrollBounds.contains(x,y)) {
+        event.stop();
         if (vKnobBounds.contains(x,y)) {
           lastPoint.set(x,y);
           handlePosition=vKnobBounds.y;
           touchScrollV=true;
           return true;
         }
-        if (y < vKnobBounds.y)         setScrollPercentY(Math.max(0,getScrollPercentY() + 0.1f));
- else         setScrollPercentY(Math.min(1,getScrollPercentY() - 0.1f));
-        return false;
+        setScrollY(Math.max(areaHeight * 0.9f,maxY * 0.1f) * (y < vKnobBounds.y ? 1 : -1));
+        return true;
       }
       return false;
     }
@@ -60,4 +63,32 @@
     }
   }
 );
+  gestureListener=new ActorGestureListener(){
+    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
+      resetFade();
+      amountX-=deltaX;
+      amountY+=deltaY;
+      clamp();
+      cancelTouchFocusedChild(event);
+    }
+    public void fling(    ActorEvent event,    float x,    float y){
+      if (Math.abs(x) > 150) {
+        flingTimer=flingTime;
+        velocityX=x;
+        cancelTouchFocusedChild(event);
+      }
+      if (Math.abs(y) > 150) {
+        flingTimer=flingTime;
+        velocityY=-y;
+        cancelTouchFocusedChild(event);
+      }
+    }
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      super.touchDown(event,x,y,pointer,button);
+      flingTimer=0;
+      return true;
+    }
+  }
+;
+  addListener(gestureListener);
 }

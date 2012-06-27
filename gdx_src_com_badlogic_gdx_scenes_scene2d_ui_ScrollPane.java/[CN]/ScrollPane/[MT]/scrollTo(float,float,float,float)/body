@@ -1,9 +1,9 @@
 {
-  float paneWidth=getWidth();
-  float paneHeight=getHeight();
   if (x < amountX)   amountX=x;
- else   if (x + width > amountX + paneWidth)   amountX=x + width - paneWidth;
-  y=getMaxY() + paneHeight - y;
-  if (y > amountY + paneHeight)   amountY=y - paneHeight;
+ else   if (x + width > amountX + areaWidth)   amountX=x + width - areaWidth;
+  amountX=MathUtils.clamp(amountX,0,maxX);
+  y=getMaxY() + areaHeight - y;
+  if (y > amountY + areaHeight)   amountY=y - areaHeight;
  else   if (y - height < amountY)   amountY=y - height;
+  amountY=MathUtils.clamp(amountY,0,maxY);
 }

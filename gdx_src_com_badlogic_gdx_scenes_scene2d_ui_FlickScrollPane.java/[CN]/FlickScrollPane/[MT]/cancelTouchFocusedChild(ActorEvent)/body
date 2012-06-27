@@ -1,6 +1,0 @@
-{
-  Stage stage=getStage();
-  stage.removeTouchFocus(gestureListener,this,event.getPointer(),event.getPointer());
-  stage.cancelTouchFocus();
-  stage.addTouchFocus(gestureListener,this,event.getPointer(),event.getPointer());
-}

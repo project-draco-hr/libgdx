@@ -2,10 +2,13 @@
   final Drawable bg=style.background;
   final Drawable hScrollKnob=style.hScrollKnob;
   final Drawable vScrollKnob=style.vScrollKnob;
-  float bgLeftWidth=bg == null ? 0 : bg.getLeftWidth();
-  float bgRightWidth=bg == null ? 0 : bg.getRightWidth();
-  float bgTopHeight=bg == null ? 0 : bg.getTopHeight();
-  float bgBottomHeight=bg == null ? 0 : bg.getTopHeight();
+  float bgLeftWidth=0, bgRightWidth=0, bgTopHeight=0, bgBottomHeight=0;
+  if (bg != null) {
+    bgLeftWidth=bg.getLeftWidth();
+    bgRightWidth=bg.getRightWidth();
+    bgTopHeight=bg.getTopHeight();
+    bgBottomHeight=bg.getBottomHeight();
+  }
   float width=getWidth();
   float height=getHeight();
   areaWidth=width - bgLeftWidth - bgRightWidth;
@@ -21,21 +24,33 @@
     widgetWidth=widget.getWidth();
     widgetHeight=widget.getHeight();
   }
-  scrollX=false;
-  scrollY=false;
-  if (!disableX && widgetWidth > areaWidth)   scrollX=true;
-  if (!disableY && widgetHeight > areaHeight)   scrollY=true;
-  if (!disableX && scrollY && widgetWidth > areaWidth - vScrollKnob.getMinWidth()) {
-    scrollX=true;
-    areaWidth-=vScrollKnob.getMinWidth();
+  scrollX=forceOverscrollX || (widgetWidth > areaWidth && !disableX);
+  scrollY=forceOverscrollY || (widgetHeight > areaHeight && !disableY);
+  boolean fade=flickScroll && fadeScrollBars;
+  if (!fade) {
+    if (scrollX)     areaHeight-=hScrollKnob.getMinHeight();
+    if (scrollY)     areaWidth-=vScrollKnob.getMinWidth();
+    if (!scrollX && scrollY && vScrollKnob != null && widgetWidth > areaWidth && !disableX) {
+      scrollX=true;
+      areaHeight-=hScrollKnob.getMinHeight();
+    }
+    if (!scrollY && scrollX && hScrollKnob != null && widgetHeight > areaHeight && !disableY) {
+      scrollY=true;
+      areaWidth-=vScrollKnob.getMinWidth();
+    }
   }
-  if (!disableY && scrollX && widgetHeight > areaHeight - hScrollKnob.getMinHeight()) {
-    scrollY=true;
-    areaHeight-=hScrollKnob.getMinHeight();
+  widgetAreaBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,areaHeight);
+  maxX=widgetWidth - areaWidth;
+  maxY=widgetHeight - areaHeight;
+  amountX=MathUtils.clamp(amountX,0,maxX);
+  amountY=MathUtils.clamp(amountY,0,maxY);
+  if (fade) {
+    if (scrollX)     areaHeight-=hScrollKnob.getMinHeight();
+    if (scrollY)     areaWidth-=vScrollKnob.getMinWidth();
   }
-  widgetAreaBounds.set(bgLeftWidth,bgBottomHeight + (scrollX ? hScrollKnob.getMinHeight() : 0),areaWidth,areaHeight);
-  amountX=MathUtils.clamp(amountX,0,widgetAreaBounds.x);
-  amountY=MathUtils.clamp(amountY,0,widgetAreaBounds.y);
+ else {
+    if (scrollX && hScrollKnob != null)     widgetAreaBounds.y+=hScrollKnob.getMinHeight();
+  }
   widgetWidth=disableX ? width : Math.max(areaWidth,widgetWidth);
   widgetHeight=disableY ? height : Math.max(areaHeight,widgetHeight);
   if (widget.getWidth() != widgetWidth || widget.getHeight() != widgetHeight) {
@@ -43,18 +58,30 @@
     widget.setHeight(widgetHeight);
   }
   if (scrollX) {
-    hScrollBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,hScrollKnob.getMinHeight());
-    hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widget.getWidth()));
-    hKnobBounds.height=hScrollKnob.getMinHeight();
-    hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
-    hKnobBounds.y=hScrollBounds.y;
+    if (hScrollKnob != null) {
+      hScrollBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,hScrollKnob.getMinHeight());
+      hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widget.getWidth()));
+      hKnobBounds.height=hScrollKnob.getMinHeight();
+      hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
+      hKnobBounds.y=hScrollBounds.y;
+    }
+ else {
+      hScrollBounds.set(0,0,0,0);
+      hKnobBounds.set(0,0,0,0);
+    }
   }
   if (scrollY) {
-    vScrollBounds.set(width - bgRightWidth - vScrollKnob.getMinWidth(),height - bgTopHeight - areaHeight,vScrollKnob.getMinWidth(),areaHeight);
-    vKnobBounds.width=vScrollKnob.getMinWidth();
-    vKnobBounds.height=Math.max(vScrollKnob.getMinHeight(),(int)(vScrollBounds.height * areaHeight / widget.getHeight()));
-    vKnobBounds.x=vScrollBounds.x;
-    vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
+    if (vScrollKnob != null) {
+      vScrollBounds.set(width - bgRightWidth - vScrollKnob.getMinWidth(),height - bgTopHeight - areaHeight,vScrollKnob.getMinWidth(),areaHeight);
+      vKnobBounds.width=vScrollKnob.getMinWidth();
+      vKnobBounds.height=Math.max(vScrollKnob.getMinHeight(),(int)(vScrollBounds.height * areaHeight / widget.getHeight()));
+      vKnobBounds.x=vScrollBounds.x;
+      vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
+    }
+ else {
+      vScrollBounds.set(0,0,0,0);
+      vKnobBounds.set(0,0,0,0);
+    }
   }
   if (widget instanceof Layout) {
     Layout layout=(Layout)widget;

@@ -6,7 +6,7 @@
   ui.addActor(container);
   container.getTableLayout().debug();
   Table table=new Table();
-  FlickScrollPane scroll=new FlickScrollPane(table);
+  ScrollPane scroll=new ScrollPane(table);
   container.add(scroll).expand().fill();
   table.parse("pad:10 * expand:x space:4");
   for (  final Instancer instancer : tests) {
