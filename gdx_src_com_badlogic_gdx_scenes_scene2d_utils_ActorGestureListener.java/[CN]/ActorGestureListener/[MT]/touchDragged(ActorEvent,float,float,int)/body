@@ -1,4 +1,5 @@
 {
   this.event=event;
+  System.out.println("drag " + x);
   detector.touchDragged(x,y,pointer);
 }

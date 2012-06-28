@@ -1,5 +1,5 @@
 {
-  if (event.getTargetActor() == null)   throw new IllegalArgumentException("The event target cannot be null.");
+  if (event.getTarget() == null)   throw new IllegalArgumentException("The event target cannot be null.");
   DelayedRemovalArray<EventListener> listeners=capture ? captureListeners : this.listeners;
   if (listeners.size == 0)   return event.isCancelled();
   event.setCurrentTarget(this);
