@@ -4,7 +4,7 @@
     if (stage == null)     throw new IllegalStateException("Stage must be set.");
     event.setStage(stage);
   }
-  event.setTargetActor(this);
+  event.setTarget(this);
   Array<Group> ancestors=Pools.obtain(Array.class);
   Group parent=getParent();
   while (parent != null) {
