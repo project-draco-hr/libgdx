@@ -1,4 +1,3 @@
 {
-  Group parent=getParent();
-  if (parent.getChildren().size > 1)   parent.swapActor(this,parent.getChildren().peek());
+  setZIndex(Integer.MAX_VALUE);
 }

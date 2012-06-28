@@ -83,10 +83,12 @@
         cancelTouchFocusedChild(event);
       }
     }
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
-      super.touchDown(event,x,y,pointer,button);
-      flingTimer=0;
-      return true;
+    public boolean handle(    Event event){
+      if (super.handle(event)) {
+        if (((ActorEvent)event).getType() == ActorEvent.Type.touchDown)         flingTimer=0;
+        return true;
+      }
+      return false;
     }
   }
 ;
