@@ -20,13 +20,17 @@
   }
 ;
   final TextButton button=new TextButton("Fancy Background",style);
-  button.addListener(new ActorListener(){
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int b){
-      System.out.println("down " + x + ", "+ y);
-      return true;
+  button.addListener(new ActorGestureListener(){
+    public void tap(    ActorEvent event,    float x,    float y,    int count){
+      System.out.println("tap");
     }
-    public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
-      System.out.println("drag " + x + ", "+ y);
+    public boolean longPress(    ActorEvent event,    float x,    float y){
+      System.out.println("long press");
+      return false;
+    }
+    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
+      event.getTarget().translate(deltaX,deltaY);
+      if (deltaX < 0)       System.out.println("panning " + deltaX + ", "+ deltaY+ " "+ event.getTarget());
     }
   }
 );

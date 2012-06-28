@@ -1,0 +1,19 @@
+{
+  if (!(e instanceof ActorEvent))   return false;
+  ActorEvent event=(ActorEvent)e;
+switch (event.getType()) {
+case touchDown:
+    this.event=event;
+  detector.touchDown(event.getStageX(),event.getStageY(),event.getPointer(),event.getButton());
+return true;
+case touchUp:
+this.event=event;
+detector.touchUp(event.getStageX(),event.getStageY(),event.getPointer(),event.getButton());
+return true;
+case touchDragged:
+this.event=event;
+detector.touchDragged(event.getStageX(),event.getStageY(),event.getPointer());
+return true;
+}
+return false;
+}
