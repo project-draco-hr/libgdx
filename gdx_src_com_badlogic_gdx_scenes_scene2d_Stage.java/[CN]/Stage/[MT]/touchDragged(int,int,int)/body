@@ -13,7 +13,7 @@
     TouchFocus focus=focuses[i];
     if (focus.pointer != pointer)     continue;
     event.setTarget(focus.actor);
-    event.setCurrentTarget(focus.actor);
+    event.setListenerActor(focus.actor);
     if (focus.listener.handle(event))     event.handle();
   }
   touchFocuses.end();

@@ -12,7 +12,7 @@ case scrolled:
 return scrolled(event,event.getScrollAmount());
 }
 Vector2 coords=Vector2.tmp.set(event.getStageX(),event.getStageY());
-event.getCurrentTarget().stageToLocalCoordinates(coords);
+event.getListenerActor().stageToLocalCoordinates(coords);
 switch (event.getType()) {
 case touchDown:
 return touchDown(event,coords.x,coords.y,event.getPointer(),event.getButton());
