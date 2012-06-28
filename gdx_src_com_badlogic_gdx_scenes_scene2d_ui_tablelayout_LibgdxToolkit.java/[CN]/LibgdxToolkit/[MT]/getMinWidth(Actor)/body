@@ -1,4 +1,0 @@
-{
-  if (actor instanceof Layout)   return (int)((Layout)actor).getMinWidth();
-  return (int)actor.getWidth();
-}

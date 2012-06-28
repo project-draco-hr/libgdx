@@ -4,7 +4,7 @@
   font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   container=new Table();
   ui.addActor(container);
-  container.getTableLayout().debug();
+  container.debug();
   Table table=new Table();
   ScrollPane scroll=new ScrollPane(table);
   container.add(scroll).expand().fill();
@@ -23,8 +23,8 @@
 );
     table.add(button).expandX().fillX();
   }
-  container.getTableLayout().row();
-  container.getTableLayout().add(new Label("Click on a test to start it, press ESC to close it.",new LabelStyle(font,Color.WHITE))).pad(5,5,5,5);
+  container.row();
+  container.add(new Label("Click on a test to start it, press ESC to close it.",new LabelStyle(font,Color.WHITE))).pad(5,5,5,5);
   Gdx.input=new InputWrapper(Gdx.input){
     @Override public boolean keyUp(    int keycode){
       if (keycode == Keys.ESCAPE) {

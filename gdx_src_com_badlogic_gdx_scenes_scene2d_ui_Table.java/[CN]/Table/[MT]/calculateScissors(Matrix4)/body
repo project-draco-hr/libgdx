@@ -1,0 +1,13 @@
+{
+  tableBounds.x=0;
+  tableBounds.y=0;
+  tableBounds.width=getWidth();
+  tableBounds.height=getHeight();
+  if (backgroundDrawable != null) {
+    tableBounds.x+=layout.getPadLeft().width(this);
+    tableBounds.y+=layout.getPadBottom().height(this);
+    tableBounds.width-=tableBounds.x + layout.getPadRight().width(this);
+    tableBounds.height-=tableBounds.y + layout.getPadTop().height(this);
+  }
+  ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,scissors);
+}

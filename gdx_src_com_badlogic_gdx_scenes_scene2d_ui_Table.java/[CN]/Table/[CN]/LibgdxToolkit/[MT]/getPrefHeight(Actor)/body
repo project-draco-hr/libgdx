@@ -1,0 +1,4 @@
+{
+  if (actor instanceof Layout)   return ((Layout)actor).getPrefHeight();
+  return actor.getHeight();
+}

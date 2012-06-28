@@ -12,5 +12,6 @@
     event.setButton(focus.button);
     focus.listener.handle(event);
   }
+  TouchFocus.pool.free(touchFocuses);
   touchFocuses.clear();
 }
