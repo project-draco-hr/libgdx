@@ -1,7 +1,0 @@
-{
-  Table table=new Table();
-  TableLayout layout=parent.getTableLayout();
-  table.setSkin(layout.skin);
-  table.setAssetManager(layout.assetManager);
-  return table;
-}

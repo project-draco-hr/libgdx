@@ -1,3 +1,6 @@
 {
-  this(skin,null);
+  this.skin=skin;
+  layout=new TableLayout();
+  layout.setTable(this);
+  setTransform(false);
 }

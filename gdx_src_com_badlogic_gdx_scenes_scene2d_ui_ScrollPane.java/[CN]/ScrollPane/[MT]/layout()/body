@@ -45,8 +45,8 @@
   amountX=MathUtils.clamp(amountX,0,maxX);
   amountY=MathUtils.clamp(amountY,0,maxY);
   if (fade) {
-    if (scrollX)     areaHeight-=hScrollKnob.getMinHeight();
-    if (scrollY)     areaWidth-=vScrollKnob.getMinWidth();
+    if (scrollX && hScrollKnob != null)     areaHeight-=hScrollKnob.getMinHeight();
+    if (scrollY && vScrollKnob != null)     areaWidth-=vScrollKnob.getMinWidth();
   }
  else {
     if (scrollX && hScrollKnob != null)     widgetAreaBounds.y+=hScrollKnob.getMinHeight();

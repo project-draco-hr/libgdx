@@ -4,10 +4,10 @@
   tableBounds.width=getWidth();
   tableBounds.height=getHeight();
   if (backgroundDrawable != null) {
-    tableBounds.x+=layout.getToolkit().width(layout,layout.getPadLeft());
-    tableBounds.y+=layout.getToolkit().width(layout,layout.getPadBottom());
-    tableBounds.width-=tableBounds.x + layout.getToolkit().width(layout,layout.getPadRight());
-    tableBounds.height-=tableBounds.y + layout.getToolkit().width(layout,layout.getPadTop());
+    tableBounds.x+=layout.getToolkit().width(layout.getPadLeft().get());
+    tableBounds.y+=layout.getToolkit().height(layout.getPadBottom().get());
+    tableBounds.width-=tableBounds.x + layout.getToolkit().width(layout.getPadRight().get());
+    tableBounds.height-=tableBounds.y + layout.getToolkit().height(layout.getPadTop().get());
   }
   ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,scissors);
 }

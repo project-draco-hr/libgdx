@@ -3,10 +3,10 @@
   this.backgroundDrawable=background;
   if (background == null)   pad(null);
  else {
-    padBottom((int)background.getBottomHeight());
-    padTop((int)background.getTopHeight());
-    padLeft((int)background.getLeftWidth());
-    padRight((int)background.getRightWidth());
+    padBottom(background.getBottomHeight());
+    padTop(background.getTopHeight());
+    padLeft(background.getLeftWidth());
+    padRight(background.getRightWidth());
     invalidate();
   }
 }

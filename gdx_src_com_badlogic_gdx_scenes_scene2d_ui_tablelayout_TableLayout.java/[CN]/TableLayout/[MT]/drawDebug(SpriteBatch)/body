@@ -1,5 +1,5 @@
 {
-  if (getDebug() == DEBUG_NONE || debugRects == null)   return;
+  if (getDebug() == Debug.none || debugRects == null)   return;
   if (debugRenderer == null) {
     if (Gdx.graphics.isGL20Available())     debugRenderer=new ImmediateModeRenderer20(64,false,true,0);
  else     debugRenderer=new ImmediateModeRenderer10(64);
@@ -20,9 +20,9 @@
     float y1=y + rect.y - rect.height;
     float x2=x1 + rect.width;
     float y2=y1 + rect.height;
-    float r=(rect.type & DEBUG_CELL) != 0 ? 1 : 0;
-    float g=(rect.type & DEBUG_WIDGET) != 0 ? 1 : 0;
-    float b=(rect.type & DEBUG_TABLE) != 0 ? 1 : 0;
+    float r=rect.type == Debug.cell ? 1 : 0;
+    float g=rect.type == Debug.widget ? 1 : 0;
+    float b=rect.type == Debug.table ? 1 : 0;
     debugRenderer.color(r,g,b,1);
     debugRenderer.vertex(x1,y1,0);
     debugRenderer.color(r,g,b,1);

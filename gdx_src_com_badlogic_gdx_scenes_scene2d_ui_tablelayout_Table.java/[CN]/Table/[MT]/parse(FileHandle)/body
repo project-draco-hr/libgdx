@@ -1,8 +1,0 @@
-{
-  try {
-    layout.parse(tableDescriptionFile.readString());
-  }
- catch (  ParseException ex) {
-    throw new ParseException("Error parsing layout file: " + tableDescriptionFile,ex);
-  }
-}
