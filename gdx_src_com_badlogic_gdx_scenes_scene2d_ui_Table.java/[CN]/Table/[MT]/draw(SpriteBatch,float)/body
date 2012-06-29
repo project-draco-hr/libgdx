@@ -6,8 +6,7 @@
   if (isTransform()) {
     applyTransform(batch);
     if (clip) {
-      calculateScissors(batch.getTransformMatrix());
-      if (ScissorStack.pushScissors(scissors)) {
+      if (ScissorStack.pushScissors(calculateScissors(batch.getTransformMatrix()))) {
         drawChildren(batch,parentAlpha);
         ScissorStack.popScissors();
       }
