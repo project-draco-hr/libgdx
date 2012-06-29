@@ -1,14 +1,17 @@
 {
-  String input=getTextInputJSNI(title,placeholder);
-  if (input != null) {
-    if (input.equals(placeholder)) {
-      listener.input(input);
+  TextInputDialogBox dialog=new TextInputDialogBox(title,null,placeholder);
+  final TextInputListener capturedListener=listener;
+  dialog.setListener(new TextInputDialogListener(){
+    @Override public void onPositive(    String text){
+      if (capturedListener != null) {
+        capturedListener.input(text);
+      }
     }
- else {
-      listener.canceled();
+    @Override public void onNegative(){
+      if (capturedListener != null) {
+        capturedListener.canceled();
+      }
     }
   }
- else {
-    listener.canceled();
-  }
+);
 }

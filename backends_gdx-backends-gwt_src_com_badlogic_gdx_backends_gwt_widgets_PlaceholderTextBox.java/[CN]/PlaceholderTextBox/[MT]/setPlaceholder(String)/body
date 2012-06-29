@@ -1,0 +1,4 @@
+{
+  placeholder=(text != null ? text : "");
+  getElement().setPropertyString("placeholder",placeholder);
+}
