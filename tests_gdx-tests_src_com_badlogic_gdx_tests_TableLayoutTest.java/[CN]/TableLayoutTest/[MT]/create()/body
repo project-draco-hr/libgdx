@@ -11,8 +11,13 @@
   table.setSize(260,195);
   table.setPosition(190,142);
   table.debug();
-  Stack stack=new Stack();
-  stack.add(addressLabel);
-  stack.add(nameLabel);
-  table.add(stack);
+  TextureRegion upRegion=skin.getRegion("default-slider-knob");
+  TextureRegion downRegion=skin.getRegion("default-slider-knob");
+  BitmapFont buttonFont=skin.getFont("default-font");
+  TextButtonStyle style=new TextButtonStyle();
+  style.up=new TextureRegionDrawable(upRegion);
+  style.down=new TextureRegionDrawable(downRegion);
+  style.font=buttonFont;
+  TextButton button=new TextButton("Button Text",style);
+  table.add(button);
 }

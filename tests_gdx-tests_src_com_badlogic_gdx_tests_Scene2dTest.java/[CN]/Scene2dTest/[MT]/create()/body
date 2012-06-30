@@ -43,14 +43,15 @@
 ;
   final TextButton button=new TextButton("Fancy Background",style);
   button.addListener(new ActorGestureListener(){
-    public void tap(    ActorEvent event,    float x,    float y,    int count){
-      System.out.println("tap");
-      button.toFront();
-    }
     public boolean longPress(    Actor actor,    float x,    float y){
-      button.toBack();
-      System.out.println("long press");
+      System.out.println("long press " + x + ", "+ y);
       return true;
+    }
+    public void fling(    ActorEvent event,    float velocityX,    float velocityY){
+      System.out.println("fling " + velocityX + ", "+ velocityY);
+    }
+    public void zoom(    ActorEvent event,    float initialDistance,    float distance){
+      System.out.println("zoom " + initialDistance + ", "+ distance);
     }
     public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
       event.getTarget().translate(deltaX,deltaY);

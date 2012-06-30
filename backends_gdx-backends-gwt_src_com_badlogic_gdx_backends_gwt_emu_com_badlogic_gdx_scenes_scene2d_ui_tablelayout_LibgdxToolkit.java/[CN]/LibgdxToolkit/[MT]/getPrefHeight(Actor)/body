@@ -1,4 +1,0 @@
-{
-  if (actor instanceof Layout)   return (int)((Layout)actor).getPrefHeight();
-  return (int)actor.height;
-}

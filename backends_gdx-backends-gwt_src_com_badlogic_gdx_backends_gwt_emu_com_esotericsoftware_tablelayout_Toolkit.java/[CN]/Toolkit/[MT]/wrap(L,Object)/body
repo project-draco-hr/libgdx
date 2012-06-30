@@ -1,9 +1,0 @@
-{
-  if (object instanceof BaseTableLayout)   return (C)((BaseTableLayout)object).getTable();
-  try {
-    return (C)object;
-  }
- catch (  ClassCastException ex) {
-    throw new RuntimeException("Unknown object type: " + object.getClass());
-  }
-}
