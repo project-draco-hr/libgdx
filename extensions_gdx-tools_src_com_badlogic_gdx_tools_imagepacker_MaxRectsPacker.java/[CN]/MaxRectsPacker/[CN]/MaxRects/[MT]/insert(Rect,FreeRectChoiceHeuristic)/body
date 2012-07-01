@@ -1,0 +1,15 @@
+{
+  Rect newNode=ScoreRect(rect,method);
+  if (newNode.height == 0)   return null;
+  int numRectanglesToProcess=freeRectangles.size;
+  for (int i=0; i < numRectanglesToProcess; ++i) {
+    if (SplitFreeNode(freeRectangles.get(i),newNode)) {
+      freeRectangles.removeIndex(i);
+      --i;
+      --numRectanglesToProcess;
+    }
+  }
+  PruneFreeList();
+  usedRectangles.add(newNode);
+  return newNode;
+}

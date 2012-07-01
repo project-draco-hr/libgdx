@@ -1,4 +1,6 @@
 {
+  int width=rect.width;
+  int height=rect.height;
   int rotatedWidth=height - settings.paddingY + settings.paddingX;
   int rotatedHeight=width - settings.paddingX + settings.paddingY;
   Rect newNode=null;
@@ -20,16 +22,9 @@ case BestAreaFit:
 newNode=FindPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight);
 break;
 }
-if (newNode.height == 0) return null;
-int numRectanglesToProcess=freeRectangles.size;
-for (int i=0; i < numRectanglesToProcess; ++i) {
-if (SplitFreeNode(freeRectangles.get(i),newNode)) {
-freeRectangles.removeIndex(i);
---i;
---numRectanglesToProcess;
+if (newNode.height == 0) {
+newNode.score1=Integer.MAX_VALUE;
+newNode.score2=Integer.MAX_VALUE;
 }
-}
-PruneFreeList();
-usedRectangles.add(newNode);
 return newNode;
 }

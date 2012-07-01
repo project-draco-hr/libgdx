@@ -10,7 +10,7 @@
       Array<Rect> remaining=new Array();
       for (int ii=0, nn=inputRects.size; ii < nn; ii++) {
         Rect rect=inputRects.get(ii);
-        if (maxRects.insert(rect.width,rect.height,methods[i]) == null) {
+        if (maxRects.insert(rect,methods[i]) == null) {
           while (ii < nn)           remaining.add(inputRects.get(ii++));
         }
       }
