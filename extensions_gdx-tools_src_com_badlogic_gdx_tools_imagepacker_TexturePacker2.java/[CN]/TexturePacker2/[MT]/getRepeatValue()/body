@@ -1,6 +1,6 @@
 {
-  if (settings.textureWrapX == TextureWrap.Repeat && settings.textureWrapY == TextureWrap.Repeat)   return "xy";
-  if (settings.textureWrapX == TextureWrap.Repeat && settings.textureWrapY == TextureWrap.ClampToEdge)   return "x";
-  if (settings.textureWrapX == TextureWrap.ClampToEdge && settings.textureWrapY == TextureWrap.Repeat)   return "y";
+  if (settings.wrapX == TextureWrap.Repeat && settings.wrapY == TextureWrap.Repeat)   return "xy";
+  if (settings.wrapX == TextureWrap.Repeat && settings.wrapY == TextureWrap.ClampToEdge)   return "x";
+  if (settings.wrapX == TextureWrap.ClampToEdge && settings.wrapY == TextureWrap.Repeat)   return "y";
   return "none";
 }

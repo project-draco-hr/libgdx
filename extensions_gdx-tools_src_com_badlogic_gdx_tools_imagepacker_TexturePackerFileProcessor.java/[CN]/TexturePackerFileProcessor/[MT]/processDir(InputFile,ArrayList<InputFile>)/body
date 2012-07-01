@@ -1,7 +1,16 @@
 {
-  Settings settings=dirToSettings.get(inputDir.inputFile.getParentFile());
+  Settings settings=null;
+  File parent=inputDir.inputFile;
+  while (true) {
+    if (parent.equals(root))     break;
+    parent=parent.getParentFile();
+    settings=dirToSettings.get(parent);
+    if (settings != null) {
+      settings=new Settings(settings);
+      break;
+    }
+  }
   if (settings == null)   settings=new Settings(defaultSettings);
- else   settings=new Settings(settings);
   dirToSettings.put(inputDir.inputFile,settings);
   File settingsFile=new File(inputDir.inputFile,"pack.json");
   if (settingsFile.exists())   json.readFields(settings,new JsonReader().parse(new FileReader(settingsFile)));

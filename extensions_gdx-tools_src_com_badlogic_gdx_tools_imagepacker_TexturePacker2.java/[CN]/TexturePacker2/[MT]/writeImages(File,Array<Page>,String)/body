@@ -22,7 +22,7 @@
     }
     File outputFile;
     while (true) {
-      outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.fileFormat);
+      outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
       if (!outputFile.exists())       break;
     }
     page.imageName=outputFile.getName();
@@ -70,7 +70,7 @@
       g.drawRect(0,0,width - 1,height - 1);
     }
     try {
-      if (settings.fileFormat.equalsIgnoreCase("jpg")) {
+      if (settings.outputFormat.equalsIgnoreCase("jpg")) {
         Iterator<ImageWriter> writers=ImageIO.getImageWritersByFormatName("jpg");
         ImageWriter writer=(ImageWriter)writers.next();
         ImageWriteParam param=writer.getDefaultWriteParam();
