@@ -43,8 +43,8 @@
         region.rotate=rotate;
         if (readTuple(reader) == 4) {
           region.splits=new int[]{Integer.parseInt(tuple[0]),Integer.parseInt(tuple[1]),Integer.parseInt(tuple[2]),Integer.parseInt(tuple[3])};
+          readTuple(reader);
         }
-        readTuple(reader);
         region.originalWidth=Integer.parseInt(tuple[0]);
         region.originalHeight=Integer.parseInt(tuple[1]);
         readTuple(reader);
@@ -56,8 +56,8 @@
       }
     }
   }
- catch (  IOException ex) {
-    throw new GdxRuntimeException("Error reading pack file: " + packFile);
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error reading pack file: " + packFile,ex);
   }
  finally {
     try {
