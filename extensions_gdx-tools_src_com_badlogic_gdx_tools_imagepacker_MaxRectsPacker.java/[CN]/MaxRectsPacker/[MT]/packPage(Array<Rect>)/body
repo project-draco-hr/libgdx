@@ -1,0 +1,35 @@
+{
+  int minWidth=Integer.MAX_VALUE;
+  int minHeight=Integer.MAX_VALUE;
+  for (int i=0, nn=inputRects.size; i < nn; i++) {
+    Rect rect=inputRects.get(i);
+    minWidth=Math.min(minWidth,rect.width);
+    minHeight=Math.min(minHeight,rect.height);
+    if (rect.width > settings.maxWidth && (!settings.rotation || rect.height > settings.maxWidth))     throw new RuntimeException("Image does not fit with max page width " + settings.maxWidth + " and paddingX "+ settings.paddingX+ ": "+ rect);
+    if (rect.height > settings.maxHeight && (!settings.rotation || rect.width > settings.maxHeight))     throw new RuntimeException("Image does not fit in max page height " + settings.maxHeight + " and paddingY "+ settings.paddingY+ ": "+ rect);
+  }
+  minWidth=Math.max(minWidth,settings.minWidth);
+  minHeight=Math.max(minHeight,settings.minHeight);
+  System.out.print("Packing");
+  BinarySearch widthSearch=new BinarySearch(minWidth,settings.maxWidth,settings.fast ? 25 : 15,settings.pot);
+  BinarySearch heightSearch=new BinarySearch(minHeight,settings.maxHeight,settings.fast ? 25 : 15,settings.pot);
+  int width=widthSearch.reset(), height=heightSearch.reset(), i=0;
+  Page bestResult=null;
+  while (true) {
+    Page bestWidthResult=null;
+    while (width != -1) {
+      Page result=packAtSize(true,width,height,inputRects);
+      if (++i % 70 == 0)       System.out.println();
+      System.out.print(".");
+      bestWidthResult=getBest(bestWidthResult,result);
+      width=widthSearch.next(result == null);
+    }
+    bestResult=getBest(bestResult,bestWidthResult);
+    height=heightSearch.next(bestWidthResult == null);
+    if (height == -1)     break;
+    width=widthSearch.reset();
+  }
+  System.out.println();
+  if (bestResult == null)   bestResult=packAtSize(false,settings.maxWidth,settings.maxHeight,inputRects);
+  return bestResult;
+}

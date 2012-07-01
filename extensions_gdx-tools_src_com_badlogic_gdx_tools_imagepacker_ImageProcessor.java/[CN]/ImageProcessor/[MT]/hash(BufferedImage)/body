@@ -1,0 +1,16 @@
+{
+  try {
+    MessageDigest digest=MessageDigest.getInstance("SHA1");
+    WritableRaster raster=image.getRaster();
+    int width=image.getWidth();
+    final byte[] pixels=new byte[4 * width];
+    for (int y=0; y < image.getHeight(); y++) {
+      raster.getDataElements(0,y,width,1,pixels);
+      digest.update(pixels);
+    }
+    return new BigInteger(1,digest.digest()).toString(16);
+  }
+ catch (  NoSuchAlgorithmException ex) {
+    throw new RuntimeException(ex);
+  }
+}

@@ -1,0 +1,25 @@
+{
+  File packFile=new File(outputDir,packFileName);
+  FileWriter writer=new FileWriter(packFile,true);
+  for (int i=0, n=pages.size; i < n; i++) {
+    Page page=pages.get(i);
+    writer.write("\n" + page.imageName + "\n");
+    writer.write("format: " + settings.format + "\n");
+    writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
+    writer.write("repeat: " + getRepeatValue() + "\n");
+    for (int ii=0, nn=page.outputRects.size; ii < nn; ii++) {
+      Rect rect=page.outputRects.get(ii);
+      writer.write(rect.name + "\n");
+      writer.write("  rotate: " + rect.rotated + "\n");
+      writer.write("  xy: " + rect.x + ", "+ rect.y+ "\n");
+      writer.write("  size: " + rect.image.getWidth() + ", "+ rect.image.getHeight()+ "\n");
+      writer.write("  orig: " + rect.originalWidth + ", "+ rect.originalHeight+ "\n");
+      writer.write("  offset: " + rect.offsetX + ", "+ (rect.originalHeight - rect.image.getHeight() - rect.offsetY)+ "\n");
+      writer.write("  index: " + rect.index + "\n");
+      if (rect.splits != null) {
+        writer.write("  split: " + rect.splits[0] + ", "+ rect.splits[1]+ ", "+ rect.splits[2]+ ", "+ rect.splits[3]+ "\n");
+      }
+    }
+  }
+  writer.close();
+}

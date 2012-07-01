@@ -19,7 +19,7 @@
       inputFile.depth=depth;
       inputFile.inputFile=file;
       inputFile.outputDir=outputDir;
-      inputFile.outputFile=flattenOutput ? new File(outputRoot,outputName) : new File(outputDir,outputName);
+      if (outputRoot != null)       inputFile.outputFile=flattenOutput ? new File(outputRoot,outputName) : new File(outputDir,outputName);
       ArrayList<InputFile> inputFiles=dirToEntries.get(dir);
       if (inputFiles == null) {
         inputFiles=new ArrayList();

@@ -1,0 +1,5 @@
+{
+  this.settings=settings;
+  if (settings.minWidth > settings.maxWidth)   throw new RuntimeException("Page min width cannot be higher than max width.");
+  if (settings.minHeight > settings.maxHeight)   throw new RuntimeException("Page min height cannot be higher than max height.");
+}

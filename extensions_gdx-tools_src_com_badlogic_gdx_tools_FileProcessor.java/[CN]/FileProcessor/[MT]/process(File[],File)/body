@@ -1,6 +1,6 @@
 {
   outputFiles.clear();
-  HashMap<File,ArrayList<InputFile>> dirToEntries=new HashMap();
+  LinkedHashMap<File,ArrayList<InputFile>> dirToEntries=new LinkedHashMap();
   process(files,outputRoot,outputRoot,dirToEntries,0);
   ArrayList<InputFile> allInputFiles=new ArrayList();
   for (  Entry<File,ArrayList<InputFile>> entry : dirToEntries.entrySet()) {
@@ -13,7 +13,7 @@
     InputFile inputFile=new InputFile();
     inputFile.inputFile=entry.getKey();
     inputFile.outputDir=newOutputDir;
-    inputFile.outputFile=new File(newOutputDir,outputName);
+    inputFile.outputFile=newOutputDir == null ? null : new File(newOutputDir,outputName);
     try {
       processDir(inputFile,dirInputFiles);
     }

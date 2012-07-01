@@ -1,0 +1,11 @@
+{
+  Settings settings=dirToSettings.get(inputDir.inputFile.getParentFile());
+  if (settings == null)   settings=new Settings(defaultSettings);
+ else   settings=new Settings(settings);
+  dirToSettings.put(inputDir.inputFile,settings);
+  File settingsFile=new File(inputDir.inputFile,"pack.json");
+  if (settingsFile.exists())   json.readFields(settings,new JsonReader().parse(new FileReader(settingsFile)));
+  TexturePacker2 packer=new TexturePacker2(inputDir.inputFile,settings);
+  for (  InputFile file : files)   packer.addImage(file.inputFile);
+  packer.pack(inputDir.outputDir,packFileName);
+}

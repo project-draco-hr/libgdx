@@ -1,0 +1,4 @@
+{
+  if (i1end < i2start || i2end < i1start)   return 0;
+  return Math.min(i1end,i2end) - Math.max(i1start,i2start);
+}

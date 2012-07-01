@@ -1,0 +1,9 @@
+{
+  image=new BufferedImage(source.getColorModel(),source.getRaster().createWritableChild(left,top,newWidth,newHeight,0,0,null),source.getColorModel().isAlphaPremultiplied(),null);
+  offsetX=left;
+  offsetY=top;
+  originalWidth=source.getWidth();
+  originalHeight=source.getHeight();
+  width=newWidth;
+  height=newHeight;
+}

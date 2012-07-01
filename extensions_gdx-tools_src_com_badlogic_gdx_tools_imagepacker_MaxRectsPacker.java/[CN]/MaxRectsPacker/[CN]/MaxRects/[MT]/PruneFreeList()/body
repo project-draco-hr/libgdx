@@ -1,0 +1,13 @@
+{
+  for (int i=0; i < freeRectangles.size; i++)   for (int j=i + 1; j < freeRectangles.size; ++j) {
+    if (IsContainedIn(freeRectangles.get(i),freeRectangles.get(j))) {
+      freeRectangles.removeIndex(i);
+      --i;
+      break;
+    }
+    if (IsContainedIn(freeRectangles.get(j),freeRectangles.get(i))) {
+      freeRectangles.removeIndex(j);
+      --j;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  BufferedImage image;
+  try {
+    image=ImageIO.read(file);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("Error reading image: " + file,ex);
+  }
+  if (image == null)   throw new RuntimeException("Unable to read image: " + file);
+  String name=file.getAbsolutePath().replace('\\','/');
+  if (!name.startsWith(rootPath))   throw new RuntimeException("Path '" + name + "' does not start with root: "+ rootPath);
+  name=name.substring(rootPath.length());
+  int dotIndex=name.lastIndexOf('.');
+  if (dotIndex != -1)   name=name.substring(0,dotIndex);
+  int[] splits=null;
+  if (name.endsWith(".9")) {
+    name=name.substring(0,name.length() - 2);
+    splits=getSplits(image,name);
+    BufferedImage newImage=new BufferedImage(image.getWidth() - 2,image.getHeight() - 2,BufferedImage.TYPE_4BYTE_ABGR);
+    newImage.getGraphics().drawImage(image,0,0,newImage.getWidth(),newImage.getHeight(),1,1,image.getWidth() - 1,image.getHeight() - 1,null);
+    image=newImage;
+  }
+  Matcher matcher=indexPattern.matcher(name);
+  int index=-1;
+  if (matcher.matches()) {
+    name=matcher.group(1);
+    index=Integer.parseInt(matcher.group(2));
+  }
+  Rect rect=createRect(image);
+  if (rect == null) {
+    System.out.println("Ignoring blank input image: " + name);
+    return;
+  }
+  rect.name=name;
+  rect.index=index;
+  rect.splits=splits;
+  if (settings.alias) {
+    String crc=hash(rect.image);
+    Rect existing=crcs.get(crc);
+    if (existing != null) {
+      existing.aliases.add(rect);
+      return;
+    }
+    crcs.put(crc,rect);
+  }
+  rects.add(rect);
+}
