@@ -5,7 +5,7 @@
   dirToSettings.put(inputDir.inputFile,settings);
   File settingsFile=new File(inputDir.inputFile,"pack.json");
   if (settingsFile.exists())   json.readFields(settings,new JsonReader().parse(new FileReader(settingsFile)));
-  TexturePacker2 packer=new TexturePacker2(inputDir.inputFile,settings);
+  TexturePacker2 packer=new TexturePacker2(root,settings);
   for (  InputFile file : files)   packer.addImage(file.inputFile);
   packer.pack(inputDir.outputDir,packFileName);
 }
