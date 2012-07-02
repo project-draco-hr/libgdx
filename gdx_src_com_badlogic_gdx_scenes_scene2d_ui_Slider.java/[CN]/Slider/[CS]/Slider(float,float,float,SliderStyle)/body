@@ -1,3 +1,27 @@
 {
-  this(min,max,steps,style,null);
+  if (min > max)   throw new IllegalArgumentException("min must be > max: " + min + " > "+ max);
+  if (steps < 0)   throw new IllegalArgumentException("steps must be > 0: " + steps);
+  setStyle(style);
+  this.min=min;
+  this.max=max;
+  this.steps=steps;
+  this.value=min;
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
+  addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (pointer != 0)       return false;
+      isDragging=true;
+      calculatePositionAndValue(x);
+      return true;
+    }
+    public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      isDragging=false;
+      calculatePositionAndValue(x);
+    }
+    public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
+      calculatePositionAndValue(x);
+    }
+  }
+);
 }

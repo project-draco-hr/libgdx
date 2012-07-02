@@ -1,3 +1,10 @@
 {
-  this(text,style,null);
+  super(text,style);
+  clear();
+  add(image=new Image(style.checkboxOff));
+  Label label=getLabel();
+  add(label);
+  label.setAlignment(Align.left);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

@@ -48,7 +48,7 @@
       effect.getEmitters().add(emitter);
       return false;
     }
-    @Override public boolean touchMoved(    int x,    int y){
+    @Override public boolean mouseMoved(    int x,    int y){
       return false;
     }
     @Override public boolean scrolled(    int amount){

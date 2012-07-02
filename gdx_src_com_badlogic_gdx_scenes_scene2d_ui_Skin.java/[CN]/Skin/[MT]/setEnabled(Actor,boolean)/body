@@ -1,5 +1,5 @@
 {
-  actor.touchable=enabled;
+  actor.setTouchable(enabled);
   Method method=findMethod(actor.getClass(),"getStyle");
   if (method == null)   return;
   Object style;
@@ -9,10 +9,10 @@
  catch (  Exception ignored) {
     return;
   }
-  String name=findStyleName(style);
+  String name=find(style);
   if (name == null)   return;
   name=name.replace("-disabled","") + (enabled ? "" : "-disabled");
-  style=getStyle(name,style.getClass());
+  style=get(name,style.getClass());
   method=findMethod(actor.getClass(),"setStyle");
   if (method == null)   return;
   try {

@@ -1,0 +1,15 @@
+{
+  if (complete)   return true;
+  if (time == 0)   initialize();
+  time+=delta;
+  complete=time >= duration;
+  float percent;
+  if (complete)   percent=1;
+ else {
+    percent=time / duration;
+    if (interpolation != null)     percent=interpolation.apply(percent);
+  }
+  if (reverse)   percent=1 - percent;
+  update(percent);
+  return complete;
+}

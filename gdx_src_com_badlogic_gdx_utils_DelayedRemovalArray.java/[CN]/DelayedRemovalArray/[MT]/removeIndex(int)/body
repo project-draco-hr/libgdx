@@ -1,0 +1,7 @@
+{
+  if (iterating) {
+    remove(index);
+    return get(index);
+  }
+  return super.removeIndex(index);
+}

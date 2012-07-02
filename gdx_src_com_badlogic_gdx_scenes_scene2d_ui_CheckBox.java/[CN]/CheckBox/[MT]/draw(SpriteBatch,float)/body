@@ -1,4 +1,4 @@
 {
-  image.setRegion(isChecked ? style.checkboxOn : style.checkboxOff);
+  image.setDrawable(isChecked ? style.checkboxOn : style.checkboxOff);
   super.draw(batch,parentAlpha);
 }

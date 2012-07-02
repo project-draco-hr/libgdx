@@ -1,5 +1,0 @@
-{
-  FadeOut fadeOut=$(duration);
-  if (interpolator != null)   fadeOut.setInterpolator(interpolator.copy());
-  return fadeOut;
-}

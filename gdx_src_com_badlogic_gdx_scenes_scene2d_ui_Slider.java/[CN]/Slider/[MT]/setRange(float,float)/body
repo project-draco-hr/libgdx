@@ -2,6 +2,7 @@
   if (min >= max)   throw new IllegalArgumentException("min must be < max");
   this.min=min;
   this.max=max;
+  float oldValue=value;
   this.value=min;
-  if (listener != null)   listener.changed(this,getValue());
+  if (oldValue != value)   fire(new ChangeEvent());
 }

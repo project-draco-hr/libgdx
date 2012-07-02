@@ -1,6 +1,6 @@
 {
   camera.update();
-  if (!root.visible)   return;
+  if (!root.isVisible())   return;
   batch.setProjectionMatrix(camera.combined);
   batch.begin();
   root.draw(batch,1);

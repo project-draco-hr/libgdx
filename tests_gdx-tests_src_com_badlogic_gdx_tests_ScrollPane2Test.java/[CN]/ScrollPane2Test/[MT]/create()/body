@@ -1,0 +1,25 @@
+{
+  stage=new Stage(0,0,false);
+  Gdx.input.setInputProcessor(stage);
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Table mytable=new Table();
+  mytable.debug();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  mytable.row();
+  mytable.add(new Image(new Texture("data/group-debug.png")));
+  ScrollPane pane=new ScrollPane(mytable,skin);
+  pane.setScrollingDisabled(true,false);
+  if (false) {
+    pane.pack();
+    pane.setHeight(Gdx.graphics.getHeight());
+  }
+ else {
+    pane.setWidth(300);
+    pane.setHeight(Gdx.graphics.getHeight());
+  }
+  stage.addActor(pane);
+}

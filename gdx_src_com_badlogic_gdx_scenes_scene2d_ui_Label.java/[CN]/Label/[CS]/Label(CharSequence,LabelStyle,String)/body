@@ -1,8 +1,0 @@
-{
-  super(name);
-  if (text == null)   text="";
-  this.text=text;
-  setStyle(style);
-  width=getPrefWidth();
-  height=getPrefHeight();
-}

@@ -1,8 +1,14 @@
 {
-  final TextureRegion knob=style.knob;
-  sliderPos=x - knob.getRegionWidth() / 2;
+  final Drawable knob=style.knob;
+  float width=getWidth();
+  float oldPosition=sliderPos;
+  float oldValue=value;
+  sliderPos=x - knob.getMinWidth() / 2;
   sliderPos=Math.max(0,sliderPos);
-  sliderPos=Math.min(width - knob.getRegionWidth(),sliderPos);
-  value=min + (max - min) * (sliderPos / (width - knob.getRegionWidth()));
-  if (listener != null)   listener.changed(this,getValue());
+  sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
+  value=min + (max - min) * (sliderPos / (width - knob.getMinWidth()));
+  if (oldValue != value && fire(new ChangeEvent())) {
+    sliderPos=oldPosition;
+    value=oldValue;
+  }
 }

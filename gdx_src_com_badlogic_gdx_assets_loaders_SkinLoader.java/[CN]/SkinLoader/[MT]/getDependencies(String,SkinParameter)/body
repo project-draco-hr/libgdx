@@ -1,9 +1,6 @@
 {
   Array<AssetDescriptor> deps=new Array();
-  TextureParameter textureParam=new TextureParameter();
-  textureParam.minFilter=TextureFilter.Linear;
-  textureParam.magFilter=TextureFilter.Linear;
-  if (parameter == null)   deps.add(new AssetDescriptor(resolve(fileName).pathWithoutExtension() + ".png",Texture.class,textureParam));
- else   deps.add(new AssetDescriptor(parameter.texturePath,Texture.class,textureParam));
+  if (parameter == null)   deps.add(new AssetDescriptor(resolve(fileName).pathWithoutExtension() + ".atlas",TextureAtlas.class));
+ else   deps.add(new AssetDescriptor(parameter.textureAtlasPath,TextureAtlas.class));
   return deps;
 }

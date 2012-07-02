@@ -1,8 +1,4 @@
 {
-  actions.iter();
-  Action action=null;
-  while ((action=actions.next()) != null) {
-    action.finish();
-  }
+  for (int i=actions.size - 1; i >= 0; i--)   actions.get(i).setActor(null);
   actions.clear();
 }

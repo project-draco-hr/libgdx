@@ -1,6 +1,6 @@
 {
-  float height=firstWidget instanceof Layout ? ((Layout)firstWidget).getPrefHeight() : firstWidget.height;
-  height+=secondWidget instanceof Layout ? ((Layout)secondWidget).getPrefHeight() : secondWidget.height;
-  if (vertical)   height+=style.handle.getTotalHeight();
+  float height=firstWidget instanceof Layout ? ((Layout)firstWidget).getPrefHeight() : firstWidget.getHeight();
+  height+=secondWidget instanceof Layout ? ((Layout)secondWidget).getPrefHeight() : secondWidget.getHeight();
+  if (vertical)   height+=style.handle.getMinHeight();
   return height;
 }

@@ -1,19 +1,19 @@
 {
   ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
-  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   container=new Table();
   ui.addActor(container);
-  container.getTableLayout().debug();
+  container.debug();
   Table table=new Table();
-  FlickScrollPane scroll=new FlickScrollPane(table);
+  ScrollPane scroll=new ScrollPane(table);
   container.add(scroll).expand().fill();
-  table.parse("pad:10 * expand:x space:4");
+  table.pad(10).defaults().expandX().space(4);
   for (  final Instancer instancer : tests) {
     table.row();
     TextButton button=new TextButton(instancer.instance().getClass().getName(),skin);
-    button.setClickListener(new ClickListener(){
-      @Override public void click(      Actor actor,      float x,      float y){
+    button.addListener(new ClickListener(){
+      @Override public void clicked(      ActorEvent event,      float x,      float y){
         ((InputWrapper)Gdx.input).multiplexer.removeProcessor(ui);
         test=instancer.instance();
         test.create();
@@ -23,8 +23,8 @@
 );
     table.add(button).expandX().fillX();
   }
-  container.getTableLayout().row();
-  container.getTableLayout().add(new Label("Click on a test to start it, press ESC to close it.",new LabelStyle(font,Color.WHITE))).pad(5,5,5,5);
+  container.row();
+  container.add(new Label("Click on a test to start it, press ESC to close it.",new LabelStyle(font,Color.WHITE))).pad(5,5,5,5);
   Gdx.input=new InputWrapper(Gdx.input){
     @Override public boolean keyUp(    int keycode){
       if (keycode == Keys.ESCAPE) {

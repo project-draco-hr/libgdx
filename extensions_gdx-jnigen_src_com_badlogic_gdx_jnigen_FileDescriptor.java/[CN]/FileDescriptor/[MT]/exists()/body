@@ -1,7 +1,4 @@
 {
-switch (type) {
-case Classpath:
-    return FileDescriptor.class.getResource("/" + file.getPath().replace('\\','/')) != null;
-}
-return file().exists();
+  if (type == FileType.Classpath)   return FileDescriptor.class.getResource("/" + file.getPath().replace('\\','/')) != null;
+  return file().exists();
 }

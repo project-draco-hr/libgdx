@@ -1,0 +1,5 @@
+{
+  this.region=region;
+  setMinWidth(Math.abs(region.getRegionWidth()));
+  setMinHeight(Math.abs(region.getRegionHeight()));
+}

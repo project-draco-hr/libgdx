@@ -1,0 +1,7 @@
+{
+  ColorAction action=action(ColorAction.class);
+  action.setEndColor(color);
+  action.setDuration(duration);
+  action.setInterpolation(interpolation);
+  return action;
+}

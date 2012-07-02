@@ -1,0 +1,7 @@
+{
+  RotateByAction action=action(RotateByAction.class);
+  action.setAmount(rotationAmount);
+  action.setDuration(duration);
+  action.setInterpolation(interpolation);
+  return action;
+}

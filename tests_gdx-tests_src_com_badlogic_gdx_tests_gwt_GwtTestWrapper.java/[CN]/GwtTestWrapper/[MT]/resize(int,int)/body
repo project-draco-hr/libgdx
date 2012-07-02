@@ -1,5 +1,4 @@
 {
   ui.setViewport(width,height,false);
-  container.width=width;
-  container.height=height;
+  container.setSize(width,height);
 }

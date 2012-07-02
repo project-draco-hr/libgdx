@@ -1,0 +1,7 @@
+{
+  this.defaultSettings=defaultSettings;
+  if (packFileName.indexOf('.') == -1)   packFileName+=".atlas";
+  this.packFileName=packFileName;
+  setFlattenOutput(true);
+  addInputSuffix(".png",".jpg");
+}

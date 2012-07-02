@@ -1,0 +1,7 @@
+{
+  if (!ran) {
+    runnable.run();
+    ran=true;
+  }
+  return true;
+}

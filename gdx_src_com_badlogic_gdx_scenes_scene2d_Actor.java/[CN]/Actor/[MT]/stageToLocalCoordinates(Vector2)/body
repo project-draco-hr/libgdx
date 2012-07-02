@@ -1,0 +1,5 @@
+{
+  if (parent == null)   return;
+  parent.stageToLocalCoordinates(stageCoords);
+  parentToLocalCoordinates(stageCoords);
+}

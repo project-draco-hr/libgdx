@@ -1,5 +1,4 @@
 {
-  PriorityQueue<Region> sortedRegions=new PriorityQueue(16,indexComparator);
   BufferedReader reader=new BufferedReader(new InputStreamReader(packFile.read()),64);
   try {
     Page pageImage=null;
@@ -41,7 +40,10 @@
         region.height=height;
         region.name=line;
         region.rotate=rotate;
-        readTuple(reader);
+        if (readTuple(reader) == 4) {
+          region.splits=new int[]{Integer.parseInt(tuple[0]),Integer.parseInt(tuple[1]),Integer.parseInt(tuple[2]),Integer.parseInt(tuple[3])};
+          readTuple(reader);
+        }
         region.originalWidth=Integer.parseInt(tuple[0]);
         region.originalHeight=Integer.parseInt(tuple[1]);
         readTuple(reader);
@@ -49,12 +51,12 @@
         region.offsetY=Integer.parseInt(tuple[1]);
         region.index=Integer.parseInt(readValue(reader));
         if (flip)         region.flip=true;
-        sortedRegions.add(region);
+        regions.add(region);
       }
     }
   }
- catch (  IOException ex) {
-    throw new GdxRuntimeException("Error reading pack file: " + packFile);
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error reading pack file: " + packFile,ex);
   }
  finally {
     try {
@@ -63,6 +65,5 @@
  catch (    IOException ignored) {
     }
   }
-  int n=sortedRegions.size();
-  for (int i=0; i < n; i++)   regions.add(sortedRegions.poll());
+  regions.sort(indexComparator);
 }

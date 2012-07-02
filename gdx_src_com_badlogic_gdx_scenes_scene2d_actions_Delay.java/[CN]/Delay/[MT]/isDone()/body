@@ -1,8 +1,0 @@
-{
-  if (action != null) {
-    return taken > duration && action.isDone();
-  }
- else {
-    return taken > duration;
-  }
-}

@@ -1,17 +1,17 @@
 {
   super(null,name,description);
   initializeComponents();
-  maxSpinner.setValue(editor.getEmitter().getMaxParticleCount());
-  maxSpinner.addChangeListener(new ChangeListener(){
+  maxSlider.setValue(editor.getEmitter().getMaxParticleCount());
+  maxSlider.addChangeListener(new ChangeListener(){
     public void stateChanged(    ChangeEvent event){
-      editor.getEmitter().setMaxParticleCount((Integer)maxSpinner.getValue());
+      editor.getEmitter().setMaxParticleCount((int)maxSlider.getValue());
     }
   }
 );
-  minSpinner.setValue(editor.getEmitter().getMinParticleCount());
-  minSpinner.addChangeListener(new ChangeListener(){
+  minSlider.setValue(editor.getEmitter().getMinParticleCount());
+  minSlider.addChangeListener(new ChangeListener(){
     public void stateChanged(    ChangeEvent event){
-      editor.getEmitter().setMinParticleCount((Integer)minSpinner.getValue());
+      editor.getEmitter().setMinParticleCount((int)minSlider.getValue());
     }
   }
 );

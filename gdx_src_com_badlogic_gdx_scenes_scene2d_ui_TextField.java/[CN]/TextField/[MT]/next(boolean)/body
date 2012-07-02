@@ -1,4 +1,5 @@
 {
+  Stage stage=getStage();
   if (stage == null)   return;
   TextField textField=findNextTextField(stage.getActors(),null,up);
   if (textField != null)   stage.setKeyboardFocus(textField);

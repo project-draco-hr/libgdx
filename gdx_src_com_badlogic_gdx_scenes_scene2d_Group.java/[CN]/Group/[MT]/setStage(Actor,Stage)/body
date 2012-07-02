@@ -1,7 +1,0 @@
-{
-  actor.stage=stage;
-  if (actor instanceof Group) {
-    List<Actor> children=((Group)actor).getActors();
-    for (int i=0; i < children.size(); i++)     setStage(children.get(i),stage);
-  }
-}

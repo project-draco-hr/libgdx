@@ -1,0 +1,5 @@
+{
+  ParallelAction action=action(ParallelAction.class);
+  for (int i=0, n=actions.length; i < n; i++)   action.addAction(actions[i]);
+  return action;
+}

@@ -1,0 +1,5 @@
+{
+  if (!(event instanceof ChangeEvent))   return false;
+  changed((ChangeEvent)event,event.getTarget());
+  return false;
+}

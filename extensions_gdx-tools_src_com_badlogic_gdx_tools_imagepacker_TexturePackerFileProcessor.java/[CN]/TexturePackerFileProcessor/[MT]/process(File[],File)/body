@@ -1,0 +1,18 @@
+{
+  if (outputRoot.exists()) {
+    new File(outputRoot,packFileName).delete();
+    FileProcessor deleteProcessor=new FileProcessor(){
+      protected void processFile(      InputFile inputFile) throws Exception {
+        inputFile.inputFile.delete();
+      }
+    }
+;
+    deleteProcessor.setRecursive(false);
+    String prefix=packFileName;
+    int dotIndex=prefix.lastIndexOf('.');
+    if (dotIndex != -1)     prefix=prefix.substring(0,dotIndex);
+    deleteProcessor.addInputRegex(Pattern.quote(prefix) + "\\d*\\.(png|jpg)");
+    deleteProcessor.process(outputRoot,null);
+  }
+  return super.process(files,outputRoot);
+}

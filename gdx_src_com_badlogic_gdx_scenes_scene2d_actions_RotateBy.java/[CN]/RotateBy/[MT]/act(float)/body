@@ -1,9 +1,0 @@
-{
-  float alpha=createInterpolatedAlpha(delta);
-  if (done) {
-    target.rotation=startRotation + rotation;
-  }
- else {
-    target.rotation=startRotation + deltaRotation * alpha;
-  }
-}

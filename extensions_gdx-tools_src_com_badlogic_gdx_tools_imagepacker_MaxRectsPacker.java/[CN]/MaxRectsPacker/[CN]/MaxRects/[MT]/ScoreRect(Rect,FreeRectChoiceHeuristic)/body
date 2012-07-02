@@ -1,0 +1,30 @@
+{
+  int width=rect.width;
+  int height=rect.height;
+  int rotatedWidth=height - settings.paddingY + settings.paddingX;
+  int rotatedHeight=width - settings.paddingX + settings.paddingY;
+  Rect newNode=null;
+switch (method) {
+case BestShortSideFit:
+    newNode=FindPositionForNewNodeBestShortSideFit(width,height,rotatedWidth,rotatedHeight);
+  break;
+case BottomLeftRule:
+newNode=FindPositionForNewNodeBottomLeft(width,height,rotatedWidth,rotatedHeight);
+break;
+case ContactPointRule:
+newNode=FindPositionForNewNodeContactPoint(width,height,rotatedWidth,rotatedHeight);
+newNode.score1=-newNode.score1;
+break;
+case BestLongSideFit:
+newNode=FindPositionForNewNodeBestLongSideFit(width,height,rotatedWidth,rotatedHeight);
+break;
+case BestAreaFit:
+newNode=FindPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight);
+break;
+}
+if (newNode.height == 0) {
+newNode.score1=Integer.MAX_VALUE;
+newNode.score2=Integer.MAX_VALUE;
+}
+return newNode;
+}

@@ -1,0 +1,4 @@
+{
+  if (!captureListeners.contains(listener,true))   captureListeners.add(listener);
+  return true;
+}

@@ -1,4 +1,10 @@
 {
   if (scrollFocus == null)   return false;
-  return scrollFocus.scrolled(amount);
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
+  event.setType(ActorEvent.Type.scrolled);
+  event.setScrollAmount(amount);
+  scrollFocus.fire(event);
+  Pools.free(event);
+  return event.isHandled();
 }

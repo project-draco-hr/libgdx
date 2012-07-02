@@ -1,9 +1,0 @@
-{
-  super(name);
-  setStyle(style);
-  this.clipboard=Clipboard.getDefaultClipboard();
-  setText(text);
-  this.messageText=messageText;
-  width=getPrefWidth();
-  height=getPrefHeight();
-}

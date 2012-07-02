@@ -1,0 +1,42 @@
+{
+  super.act(delta);
+  boolean panning=gestureListener.getGestureDetector().isPanning();
+  if (fadeScrollBars && flickScroll && !panning&& !touchScrollH&& !touchScrollV) {
+    fadeDelay-=fadeDelaySeconds * delta;
+    if (fadeDelay <= 0)     fadeAlpha=Math.max(0,fadeAlpha - fadeAlphaSeconds * delta);
+  }
+  if (flingTimer > 0) {
+    resetFade();
+    float alpha=flingTimer / flingTime;
+    amountX-=velocityX * alpha * delta;
+    amountY-=velocityY * alpha * delta;
+    clamp();
+    if (amountX == -overscrollDistance)     velocityX=0;
+    if (amountX >= maxX + overscrollDistance)     velocityX=0;
+    if (amountY == -overscrollDistance)     velocityY=0;
+    if (amountY >= maxY + overscrollDistance)     velocityY=0;
+    flingTimer-=delta;
+  }
+  if (overscroll && !panning) {
+    if (amountX < 0) {
+      resetFade();
+      amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
+      if (amountX > 0)       amountX=0;
+    }
+ else     if (amountX > maxX) {
+      resetFade();
+      amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
+      if (amountX < maxX)       amountX=maxX;
+    }
+    if (amountY < 0) {
+      resetFade();
+      amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
+      if (amountY > 0)       amountY=0;
+    }
+ else     if (amountY > maxY) {
+      resetFade();
+      amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
+      if (amountY < maxY)       amountY=maxY;
+    }
+  }
+}

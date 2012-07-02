@@ -1,0 +1,5 @@
+{
+  this.settings=settings;
+  maxRectsPacker=new MaxRectsPacker(settings);
+  imageProcessor=new ImageProcessor(rootDir,settings);
+}

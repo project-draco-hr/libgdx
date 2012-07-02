@@ -1,5 +1,22 @@
 {
-  this.patches=new TextureRegion[9];
-  System.arraycopy(ninePatch.patches,0,patches,0,9);
-  this.color=color;
+  texture=ninePatch.texture;
+  bottomLeft=ninePatch.bottomLeft;
+  bottomCenter=ninePatch.bottomCenter;
+  bottomRight=ninePatch.bottomRight;
+  middleLeft=ninePatch.middleLeft;
+  middleCenter=ninePatch.middleCenter;
+  middleRight=ninePatch.middleRight;
+  topLeft=ninePatch.topLeft;
+  topCenter=ninePatch.topCenter;
+  topRight=ninePatch.topRight;
+  leftWidth=ninePatch.leftWidth;
+  rightWidth=ninePatch.rightWidth;
+  middleWidth=ninePatch.middleWidth;
+  middleHeight=ninePatch.middleHeight;
+  topHeight=ninePatch.topHeight;
+  bottomHeight=ninePatch.bottomHeight;
+  vertices=new float[ninePatch.vertices.length];
+  System.arraycopy(ninePatch.vertices,0,vertices,0,ninePatch.vertices.length);
+  idx=ninePatch.idx;
+  this.color.set(color);
 }

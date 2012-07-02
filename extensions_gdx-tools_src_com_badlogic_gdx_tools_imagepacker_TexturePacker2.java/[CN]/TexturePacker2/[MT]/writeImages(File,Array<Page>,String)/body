@@ -1,0 +1,87 @@
+{
+  String imageName=packFileName;
+  int dotIndex=imageName.lastIndexOf('.');
+  if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
+  int fileIndex=0;
+  for (  Page page : pages) {
+    int width=page.width, height=page.height;
+    int paddingX=(int)Math.ceil(settings.paddingX / 2f);
+    int paddingY=(int)Math.ceil(settings.paddingY / 2f);
+    width-=settings.paddingX;
+    height-=settings.paddingY;
+    if (settings.edgePadding) {
+      page.x=paddingX;
+      page.y=paddingY;
+      width+=paddingX * 2;
+      height+=paddingY * 2;
+    }
+    if (settings.pot) {
+      width=MathUtils.nextPowerOfTwo(width);
+      height=MathUtils.nextPowerOfTwo(height);
+    }
+    File outputFile;
+    while (true) {
+      outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
+      if (!outputFile.exists())       break;
+    }
+    page.imageName=outputFile.getName();
+    BufferedImage canvas=new BufferedImage(width,height,getBufferedImageType(settings.format));
+    Graphics2D g=(Graphics2D)canvas.getGraphics();
+    System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
+    for (    Rect rect : page.outputRects) {
+      int rectX=page.x + rect.x, rectY=page.y + page.height - rect.y - rect.height;
+      if (rect.rotated) {
+        g.translate(rectX,rectY);
+        g.rotate(-90 * MathUtils.degreesToRadians);
+        g.translate(-rectX,-rectY);
+        g.translate(-(rect.height - settings.paddingY),0);
+      }
+      BufferedImage image=rect.image;
+      if (settings.duplicatePadding) {
+        int amountX=settings.paddingX / 2;
+        int amountY=settings.paddingY / 2;
+        int imageWidth=image.getWidth();
+        int imageHeight=image.getHeight();
+        g.drawImage(image,rectX - amountX,rectY - amountY,rectX,rectY,0,0,1,1,null);
+        g.drawImage(image,rectX + imageWidth,rectY - amountY,rectX + imageWidth + amountX,rectY,0,0,1,1,null);
+        g.drawImage(image,rectX - amountX,rectY + imageHeight,rectX,rectY + imageHeight + amountY,0,0,1,1,null);
+        g.drawImage(image,rectX + imageWidth,rectY + imageHeight,rectX + imageWidth + amountX,rectY + imageHeight + amountY,0,0,1,1,null);
+        g.drawImage(image,rectX,rectY - amountY,rectX + imageWidth,rectY,0,0,imageWidth,1,null);
+        g.drawImage(image,rectX,rectY + imageHeight,rectX + imageWidth,rectY + imageHeight + amountY,0,imageHeight - 1,imageWidth,imageHeight,null);
+        g.drawImage(image,rectX - amountX,rectY,rectX,rectY + imageHeight,0,0,1,imageHeight,null);
+        g.drawImage(image,rectX + imageWidth,rectY,rectX + imageWidth + amountX,rectY + imageHeight,imageWidth - 1,0,imageWidth,imageHeight,null);
+      }
+      g.drawImage(image,rectX,rectY,null);
+      if (rect.rotated) {
+        g.translate(rect.height - settings.paddingY,0);
+        g.translate(rectX,rectY);
+        g.rotate(90 * MathUtils.degreesToRadians);
+        g.translate(-rectX,-rectY);
+      }
+      if (settings.debug) {
+        g.setColor(Color.magenta);
+        g.drawRect(rectX,rectY,rect.width - settings.paddingX - 1,rect.height - settings.paddingY - 1);
+      }
+    }
+    if (settings.debug) {
+      g.setColor(Color.magenta);
+      g.drawRect(0,0,width - 1,height - 1);
+    }
+    try {
+      if (settings.outputFormat.equalsIgnoreCase("jpg")) {
+        Iterator<ImageWriter> writers=ImageIO.getImageWritersByFormatName("jpg");
+        ImageWriter writer=(ImageWriter)writers.next();
+        ImageWriteParam param=writer.getDefaultWriteParam();
+        param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+        param.setCompressionQuality(settings.jpegQuality);
+        ImageOutputStream ios=ImageIO.createImageOutputStream(outputFile);
+        writer.setOutput(ios);
+        writer.write(null,new IIOImage(canvas,null,null),param);
+      }
+ else       ImageIO.write(canvas,"png",outputFile);
+    }
+ catch (    IOException ex) {
+      throw new RuntimeException("Error writing file: " + outputFile,ex);
+    }
+  }
+}

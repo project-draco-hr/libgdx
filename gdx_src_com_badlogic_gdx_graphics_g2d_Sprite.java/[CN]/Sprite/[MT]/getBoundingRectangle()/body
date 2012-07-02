@@ -16,6 +16,7 @@
   maxy=maxy < vertices[Y2] ? vertices[Y2] : maxy;
   maxy=maxy < vertices[Y3] ? vertices[Y3] : maxy;
   maxy=maxy < vertices[Y4] ? vertices[Y4] : maxy;
+  if (bounds == null)   bounds=new Rectangle();
   bounds.x=minx;
   bounds.y=miny;
   bounds.width=maxx - minx;

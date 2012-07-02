@@ -1,0 +1,7 @@
+{
+  if (pointer > 0 || button != this.button)   return false;
+  touchDownX=x;
+  touchDownY=y;
+  pressed=true;
+  return true;
+}

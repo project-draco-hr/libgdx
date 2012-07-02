@@ -1,3 +1,7 @@
 {
-  this(text,style,null);
+  if (text == null)   text="";
+  this.text=text;
+  setStyle(style);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

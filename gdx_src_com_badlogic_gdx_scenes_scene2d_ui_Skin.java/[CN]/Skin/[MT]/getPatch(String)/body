@@ -1,3 +1,17 @@
 {
-  return getResource(name,NinePatch.class);
+  NinePatch patch=optional(name,NinePatch.class);
+  if (patch != null)   return patch;
+  try {
+    TextureRegion region=getRegion(name);
+    if (region instanceof AtlasRegion) {
+      int[] splits=((AtlasRegion)region).splits;
+      if (splits != null)       patch=new NinePatch(region,splits[0],splits[1],splits[2],splits[3]);
+    }
+    if (patch == null)     patch=new NinePatch(region);
+    add(name,patch,NinePatch.class);
+    return patch;
+  }
+ catch (  GdxRuntimeException ex) {
+    throw new GdxRuntimeException("No NinePatch, TextureRegion, or Texture registered with name: " + name);
+  }
 }

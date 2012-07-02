@@ -1,0 +1,5 @@
+{
+  super.setStage(stage);
+  Array<Actor> children=this.children;
+  for (int i=0, n=children.size; i < n; i++)   children.get(i).setStage(stage);
+}

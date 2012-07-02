@@ -1,5 +1,0 @@
-{
-  RotateTo rotateTo=$(rotation,duration);
-  if (interpolator != null)   rotateTo.setInterpolator(interpolator.copy());
-  return rotateTo;
-}

@@ -1,0 +1,12 @@
+{
+  if (this.backgroundDrawable == background)   return;
+  this.backgroundDrawable=background;
+  if (background == null)   pad(null);
+ else {
+    padBottom(background.getBottomHeight());
+    padTop(background.getTopHeight());
+    padLeft(background.getLeftWidth());
+    padRight(background.getRightWidth());
+    invalidate();
+  }
+}

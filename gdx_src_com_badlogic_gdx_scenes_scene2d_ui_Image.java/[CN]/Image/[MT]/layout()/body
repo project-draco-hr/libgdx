@@ -1,21 +1,19 @@
 {
   float regionWidth, regionHeight;
-  if (patch != null) {
-    regionWidth=patch.getTotalWidth();
-    regionHeight=patch.getTotalHeight();
-  }
- else   if (region != null) {
-    regionWidth=region.getRegionWidth();
-    regionHeight=region.getRegionHeight();
+  if (drawable != null) {
+    regionWidth=drawable.getMinWidth();
+    regionHeight=drawable.getMinHeight();
   }
  else   return;
+  float width=getWidth();
+  float height=getHeight();
   Vector2 size=scaling.apply(regionWidth,regionHeight,width,height);
   imageWidth=size.x;
   imageHeight=size.y;
-  if ((align & Align.LEFT) != 0)   imageX=0;
- else   if ((align & Align.RIGHT) != 0)   imageX=(int)(width - imageWidth);
+  if ((align & Align.left) != 0)   imageX=0;
+ else   if ((align & Align.right) != 0)   imageX=(int)(width - imageWidth);
  else   imageX=(int)(width / 2 - imageWidth / 2);
-  if ((align & Align.TOP) != 0)   imageY=(int)(height - imageHeight);
- else   if ((align & Align.BOTTOM) != 0)   imageY=0;
+  if ((align & Align.top) != 0)   imageY=(int)(height - imageHeight);
+ else   if ((align & Align.bottom) != 0)   imageY=0;
  else   imageY=(int)(height / 2 - imageHeight / 2);
 }

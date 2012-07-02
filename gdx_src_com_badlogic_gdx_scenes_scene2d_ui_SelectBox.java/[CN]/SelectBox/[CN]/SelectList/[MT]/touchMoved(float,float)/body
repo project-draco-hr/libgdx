@@ -1,8 +1,0 @@
-{
-  if (x > 0 && x < width && y > 0 && y < height) {
-    selected=(int)((height - y) / itemHeight);
-    selected=Math.max(0,selected);
-    selected=Math.min(items.length - 1,selected);
-  }
-  return true;
-}

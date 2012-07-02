@@ -7,7 +7,7 @@
   int width=Math.abs(region.getRegionWidth());
   int height=Math.abs(region.getRegionHeight());
   if (region.rotate) {
-    rotate90(true);
+    super.rotate90(true);
     super.setBounds(region.offsetX,region.offsetY,height,width);
   }
  else   super.setBounds(region.offsetX,region.offsetY,width,height);

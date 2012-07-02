@@ -1,3 +1,9 @@
 {
-  this(style,null);
+  super(style);
+  image=new Image();
+  image.setScaling(Scaling.fit);
+  add(image);
+  setStyle(style);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
 }

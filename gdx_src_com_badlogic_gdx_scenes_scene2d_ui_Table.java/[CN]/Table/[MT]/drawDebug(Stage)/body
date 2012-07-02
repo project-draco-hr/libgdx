@@ -1,0 +1,4 @@
+{
+  if (!TableToolkit.drawDebug)   return;
+  drawDebug(stage.getActors(),stage.getSpriteBatch());
+}

@@ -1,7 +1,0 @@
-{
-  FadeTo action=pool.obtain();
-  action.toAlpha=Math.min(Math.max(alpha,0.0f),1.0f);
-  action.duration=duration;
-  action.invDuration=1 / duration;
-  return action;
-}

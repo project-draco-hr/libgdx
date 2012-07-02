@@ -1,5 +1,4 @@
 {
-  if (region != null)   return region.getRegionWidth();
-  if (patch != null)   return patch.getTotalWidth();
+  if (drawable != null)   return drawable.getMinWidth();
   return 0;
 }

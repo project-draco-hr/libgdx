@@ -1,0 +1,18 @@
+{
+  validate();
+  Color color=getColor();
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  drawBackground(batch,parentAlpha);
+  if (isTransform()) {
+    applyTransform(batch);
+    if (clip) {
+      if (ScissorStack.pushScissors(calculateScissors(batch.getTransformMatrix()))) {
+        drawChildren(batch,parentAlpha);
+        ScissorStack.popScissors();
+      }
+    }
+ else     drawChildren(batch,parentAlpha);
+    resetTransform(batch);
+  }
+ else   super.draw(batch,parentAlpha);
+}

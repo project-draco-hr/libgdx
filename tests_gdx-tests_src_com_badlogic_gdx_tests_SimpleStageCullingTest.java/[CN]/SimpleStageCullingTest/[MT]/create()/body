@@ -5,8 +5,8 @@
   texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));
   for (int i=0; i < 5000; i++) {
     Actor img=new CullableActor("img" + i,texture,(OrthographicCamera)stage.getCamera());
-    img.x=(float)Math.random() * 480 * 10;
-    img.y=(float)Math.random() * 320 * 10;
+    img.setX((float)Math.random() * 480 * 10);
+    img.setY((float)Math.random() * 320 * 10);
     stage.addActor(img);
   }
   batch=new SpriteBatch();

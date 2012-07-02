@@ -1,4 +1,6 @@
 {
-  super(new TextureRegion(texture),Scaling.none,Align.CENTER,name);
+  super(new TextureRegion(texture));
+  setAlign(Align.center);
+  setScaling(Scaling.none);
   this.camera=camera;
 }

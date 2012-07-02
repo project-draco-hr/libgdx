@@ -1,10 +1,8 @@
 {
   actor.remove();
-  int index=children.indexOf(actorBefore);
-  children.add(index,actor);
-  if (actor instanceof Group)   groups.add((Group)actor);
-  if (actor.name != null)   namesToActors.put(actor.name,actor);
-  actor.parent=this;
-  setStage(actor,stage);
+  int index=children.indexOf(actorBefore,true);
+  children.insert(index,actor);
+  actor.setParent(this);
+  actor.setStage(getStage());
   childrenChanged();
 }

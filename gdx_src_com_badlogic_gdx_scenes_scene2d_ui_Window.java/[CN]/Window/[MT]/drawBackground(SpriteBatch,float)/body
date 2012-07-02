@@ -1,5 +1,5 @@
 {
   super.drawBackground(batch,parentAlpha);
-  titleCache.setPosition(x,y);
+  titleCache.setPosition(getX(),getY());
   titleCache.draw(batch,parentAlpha);
 }

@@ -1,4 +1,0 @@
-{
-  if (layout.skin == null)   throw new IllegalStateException("Table must have a skin set to use this method.");
-  return add(new Label(text,layout.skin));
-}

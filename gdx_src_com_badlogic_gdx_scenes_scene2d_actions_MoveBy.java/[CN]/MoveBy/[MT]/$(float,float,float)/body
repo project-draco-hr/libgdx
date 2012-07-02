@@ -1,8 +1,0 @@
-{
-  MoveBy action=pool.obtain();
-  action.x=action.initialX=x;
-  action.y=action.initialY=y;
-  action.duration=duration;
-  action.invDuration=1 / duration;
-  return action;
-}

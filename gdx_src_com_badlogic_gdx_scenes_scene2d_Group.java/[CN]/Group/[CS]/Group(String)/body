@@ -1,8 +1,0 @@
-{
-  super(name);
-  children=new ArrayList<Actor>();
-  immutableChildren=Collections.unmodifiableList(children);
-  groups=new ArrayList<Group>();
-  immutableGroups=Collections.unmodifiableList(groups);
-  namesToActors=new ObjectMap<String,Actor>();
-}

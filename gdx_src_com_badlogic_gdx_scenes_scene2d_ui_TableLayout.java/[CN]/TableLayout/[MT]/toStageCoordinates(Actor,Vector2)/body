@@ -1,0 +1,5 @@
+{
+  point.x+=actor.getX();
+  point.y+=actor.getY();
+  toStageCoordinates(actor.getParent(),point);
+}

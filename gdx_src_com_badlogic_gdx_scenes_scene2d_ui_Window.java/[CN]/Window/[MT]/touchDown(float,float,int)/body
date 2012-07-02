@@ -1,8 +1,0 @@
-{
-  if (pointer != 0)   return false;
-  if (parent.getActors().size() > 1)   parent.swapActor(this,parent.getActors().get(parent.getActors().size() - 1));
-  if (super.touchDown(x,y,pointer))   return true;
-  dragging=isMovable && height - y <= getTitleBarHeight() && y < height && x > 0 && x < width;
-  dragOffset.set(x,y);
-  return true;
-}

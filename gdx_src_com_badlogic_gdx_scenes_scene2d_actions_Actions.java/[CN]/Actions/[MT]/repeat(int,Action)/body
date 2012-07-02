@@ -1,0 +1,6 @@
+{
+  RepeatAction action=action(RepeatAction.class);
+  action.setCount(count);
+  action.setAction(repeatedAction);
+  return action;
+}

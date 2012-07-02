@@ -1,0 +1,7 @@
+{
+  this.tapSquareSize=halfTapSquareSize;
+  this.tapCountInterval=(long)(tapCountInterval * 1000000000l);
+  this.longPressSeconds=longPressDuration;
+  this.maxFlingDelay=(long)(maxFlingDelay * 1000000000l);
+  this.listener=listener;
+}

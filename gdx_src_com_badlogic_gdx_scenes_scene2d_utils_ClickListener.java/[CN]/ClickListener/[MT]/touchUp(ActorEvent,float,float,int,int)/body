@@ -1,0 +1,4 @@
+{
+  if (pointer == 0 && button == getButton() && isOver(event.getListenerActor(),x,y))   clicked(event,x,y);
+  super.touchUp(event,x,y,pointer,button);
+}

@@ -1,8 +1,16 @@
 {
-  setKeyboardFocus(null);
-  Actor actor=touchFocus[pointer];
-  if (actor == null)   actor=root;
-  toStageCoordinates(x,y,coords);
-  Group.toChildCoordinates(actor,coords.x,coords.y,point);
-  return actor.touchDown(point.x,point.y,pointer);
+  screenToStageCoordinates(stageCoords.set(screenX,screenY));
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setType(Type.touchDown);
+  event.setStage(this);
+  event.setStageX(stageCoords.x);
+  event.setStageY(stageCoords.y);
+  event.setPointer(pointer);
+  event.setButton(button);
+  Actor target=hit(stageCoords.x,stageCoords.y);
+  while (target != null && (!target.isTouchable() || !target.isVisible()))   target=target.getParent();
+  if (target == null)   target=root;
+  target.fire(event);
+  Pools.free(event);
+  return event.isHandled();
 }

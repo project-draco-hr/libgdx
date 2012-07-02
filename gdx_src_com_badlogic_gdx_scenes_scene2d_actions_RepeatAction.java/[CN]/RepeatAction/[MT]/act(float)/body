@@ -1,0 +1,9 @@
+{
+  if (executedCount == repeatCount)   return true;
+  if (action.act(delta)) {
+    if (repeatCount > 0)     executedCount++;
+    if (executedCount == repeatCount)     return true;
+    action.restart();
+  }
+  return false;
+}

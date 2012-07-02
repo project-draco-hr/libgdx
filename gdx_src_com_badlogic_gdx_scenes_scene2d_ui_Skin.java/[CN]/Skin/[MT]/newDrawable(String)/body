@@ -1,0 +1,7 @@
+{
+  Drawable drawable=getDrawable(name);
+  if (drawable instanceof TextureRegionDrawable)   return new TextureRegionDrawable((TextureRegionDrawable)drawable);
+  if (drawable instanceof NinePatchDrawable)   return new NinePatchDrawable((NinePatchDrawable)drawable);
+  if (drawable instanceof SpriteDrawable)   return new SpriteDrawable((SpriteDrawable)drawable);
+  throw new GdxRuntimeException("Unable to copy, unknown drawable type: " + drawable.getClass());
+}

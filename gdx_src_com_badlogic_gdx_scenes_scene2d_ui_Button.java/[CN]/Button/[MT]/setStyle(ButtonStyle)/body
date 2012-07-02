@@ -1,6 +1,6 @@
 {
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   this.style=style;
-  setBackground((isPressed && style.down != null) ? style.down : style.up);
+  setBackground((clickListener.isPressed() && style.down != null) ? style.down : style.up);
   invalidateHierarchy();
 }

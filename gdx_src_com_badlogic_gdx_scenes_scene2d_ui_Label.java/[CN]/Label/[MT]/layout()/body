@@ -7,23 +7,24 @@
       invalidateHierarchy();
     }
   }
+  float height=getHeight();
   float y;
-  if ((labelAlign & Align.TOP) != 0) {
+  if ((labelAlign & Align.top) != 0) {
     y=cache.getFont().isFlipped() ? 0 : height - bounds.height;
     y+=style.font.getDescent();
   }
- else   if ((labelAlign & Align.BOTTOM) != 0) {
+ else   if ((labelAlign & Align.bottom) != 0) {
     y=cache.getFont().isFlipped() ? height - bounds.height : 0;
     y-=style.font.getDescent();
   }
  else   y=(height - bounds.height) / 2;
   if (!cache.getFont().isFlipped())   y+=bounds.height;
   float x;
-  if ((labelAlign & Align.LEFT) != 0)   x=0;
- else   if ((labelAlign & Align.RIGHT) != 0) {
-    x=width - bounds.width;
+  if ((labelAlign & Align.left) != 0)   x=0;
+ else   if ((labelAlign & Align.right) != 0) {
+    x=getWidth() - bounds.width;
   }
- else   x=(width - bounds.width) / 2;
+ else   x=(getWidth() - bounds.width) / 2;
   if (wrap)   cache.setWrappedText(text,x,y,bounds.width,lineAlign);
  else   cache.setMultiLineText(text,x,y,bounds.width,lineAlign);
 }

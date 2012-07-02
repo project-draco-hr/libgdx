@@ -1,0 +1,7 @@
+{
+  if (!removed) {
+    removed=true;
+    (removeActor != null ? removeActor : actor).remove();
+  }
+  return true;
+}

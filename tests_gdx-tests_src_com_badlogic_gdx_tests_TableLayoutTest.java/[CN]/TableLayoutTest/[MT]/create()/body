@@ -1,0 +1,23 @@
+{
+  stage=new Stage();
+  Gdx.input.setInputProcessor(stage);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Label nameLabel=new Label("Name:",skin);
+  TextField nameText=new TextField("",skin);
+  Label addressLabel=new Label("Address:",skin);
+  TextField addressText=new TextField("",skin);
+  Table table=new Table();
+  stage.addActor(table);
+  table.setSize(260,195);
+  table.setPosition(190,142);
+  table.debug();
+  TextureRegion upRegion=skin.getRegion("default-slider-knob");
+  TextureRegion downRegion=skin.getRegion("default-slider-knob");
+  BitmapFont buttonFont=skin.getFont("default-font");
+  TextButtonStyle style=new TextButtonStyle();
+  style.up=new TextureRegionDrawable(upRegion);
+  style.down=new TextureRegionDrawable(downRegion);
+  style.font=buttonFont;
+  TextButton button=new TextButton("Button Text",style);
+  table.add(button);
+}

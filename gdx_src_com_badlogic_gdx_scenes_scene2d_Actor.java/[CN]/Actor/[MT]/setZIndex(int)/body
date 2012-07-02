@@ -1,0 +1,9 @@
+{
+  Group parent=getParent();
+  if (parent == null)   return;
+  Array<Actor> children=parent.getChildren();
+  if (children.size == 1)   return;
+  if (!children.removeValue(this,true))   return;
+  if (index >= children.size)   children.add(this);
+ else   children.insert(index,this);
+}

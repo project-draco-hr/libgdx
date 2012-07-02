@@ -1,0 +1,18 @@
+{
+  File packFile=new File(outputDir,packFileName);
+  FileWriter writer=new FileWriter(packFile,true);
+  for (  Page page : pages) {
+    writer.write("\n" + page.imageName + "\n");
+    writer.write("format: " + settings.format + "\n");
+    writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
+    writer.write("repeat: " + getRepeatValue() + "\n");
+    for (    Rect rect : page.outputRects) {
+      writeRect(writer,page,rect);
+      for (      Rect alias : rect.aliases) {
+        alias.setSize(rect);
+        writeRect(writer,page,alias);
+      }
+    }
+  }
+  writer.close();
+}

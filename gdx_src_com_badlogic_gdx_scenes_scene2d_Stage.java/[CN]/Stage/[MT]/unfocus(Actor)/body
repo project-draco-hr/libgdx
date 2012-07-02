@@ -1,5 +1,4 @@
 {
-  for (int i=0, n=touchFocus.length; i < n; i++)   if (touchFocus[i] == actor)   touchFocus[i]=null;
   if (scrollFocus == actor)   scrollFocus=null;
   if (keyboardFocus == actor)   keyboardFocus=null;
 }

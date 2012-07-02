@@ -1,4 +1,4 @@
 {
-  this(title,skin.getStyle(WindowStyle.class),null);
+  this(title,skin.get(WindowStyle.class));
   setSkin(skin);
 }

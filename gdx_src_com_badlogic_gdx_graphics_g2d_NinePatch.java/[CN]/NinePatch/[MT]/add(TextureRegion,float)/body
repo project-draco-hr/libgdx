@@ -1,0 +1,25 @@
+{
+  if (texture == null)   texture=region.getTexture();
+ else   if (texture != region.getTexture())   throw new IllegalArgumentException("All regions must be from the same texture.");
+  final float u=region.u;
+  final float v=region.v2;
+  final float u2=region.u2;
+  final float v2=region.v;
+  idx+=2;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx]=v;
+  idx+=3;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx]=v2;
+  idx+=3;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx]=v2;
+  idx+=3;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx++]=v;
+  return idx - 4 * 5;
+}

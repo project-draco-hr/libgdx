@@ -1,6 +1,6 @@
 {
   final BitmapFont font=style.font;
-  final NinePatch listSelection=style.listSelection;
+  final Drawable listSelection=style.listSelection;
   float prefWidth=0;
   float prefHeight=0;
   for (int i=0; i < items.length; i++) {
@@ -10,12 +10,12 @@
   }
   itemHeight=font.getCapHeight() + -font.getDescent() * 2 + style.itemSpacing;
   itemHeight+=listSelection.getTopHeight() + listSelection.getBottomHeight();
-  itemHeight*=SelectBox.this.parent.scaleY;
+  itemHeight*=SelectBox.this.getParent().getScaleY();
   prefWidth+=listSelection.getLeftWidth() + listSelection.getRightWidth() + 2 * style.itemSpacing;
   prefHeight=items.length * itemHeight;
   textOffsetX=listSelection.getLeftWidth() + style.itemSpacing;
   textOffsetY=listSelection.getTopHeight() + -font.getDescent() + style.itemSpacing / 2;
-  width=Math.max(prefWidth,SelectBox.this.width);
-  width*=SelectBox.this.parent.scaleX;
-  height=prefHeight;
+  float width=Math.max(prefWidth,SelectBox.this.getWidth());
+  setWidth(width * SelectBox.this.getParent().getScaleX());
+  setHeight(prefHeight);
 }

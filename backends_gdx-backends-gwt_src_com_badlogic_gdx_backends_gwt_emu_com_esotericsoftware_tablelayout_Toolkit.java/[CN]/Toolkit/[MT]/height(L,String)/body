@@ -1,7 +1,0 @@
-{
-  int length;
-  if (value == null || (length=value.length()) == 0)   return height(0);
-  if (value.charAt(length - 1) == '%' && length > 1)   return (int)(layout.getLayoutHeight() * Integer.parseInt(value.substring(0,length - 1)) / 100f);
-  if (value.endsWith("px"))   return Integer.parseInt(value.substring(0,value.length() - 2));
-  return height(value == null ? 0 : Integer.parseInt(value));
-}

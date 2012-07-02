@@ -1,0 +1,66 @@
+{
+  stage=new Stage();
+  Gdx.input.setInputProcessor(stage);
+  final TextureRegion region=new TextureRegion(new Texture("data/badlogic.jpg"));
+  Actor actor=new Actor(){
+    public void draw(    SpriteBatch batch,    float parentAlpha){
+      Color color=getColor();
+      batch.setColor(color.r,color.g,color.b,parentAlpha);
+      batch.draw(region,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight(),getScaleX(),getScaleY(),getRotation());
+    }
+  }
+;
+  actor.setBounds(15,15,100,100);
+  actor.setOrigin(50,50);
+  stage.addActor(actor);
+  actor.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      System.out.println("down");
+      return true;
+    }
+    public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      System.out.println("up " + event.getTarget());
+    }
+  }
+);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  TextButtonStyle style=skin.get(TextButtonStyle.class);
+  style.up=new EmptyDrawable(){
+    ShapeRenderer renderer=new ShapeRenderer();
+    public void draw(    SpriteBatch batch,    float x,    float y,    float width,    float height){
+      batch.end();
+      renderer.setProjectionMatrix(batch.getProjectionMatrix());
+      renderer.setTransformMatrix(batch.getTransformMatrix());
+      renderer.begin(ShapeType.Line);
+      for (int i=0; i < 25; i++) {
+        renderer.setColor(MathUtils.random(0.3f,1),MathUtils.random(0.3f,1),MathUtils.random(0.3f,1),1);
+        renderer.line(MathUtils.random(x,x + width),MathUtils.random(y,y + height),MathUtils.random(x,x + width),MathUtils.random(y,y + height));
+      }
+      renderer.end();
+      batch.begin();
+    }
+  }
+;
+  final TextButton button=new TextButton("Fancy Background",style);
+  button.addListener(new ActorGestureListener(){
+    public boolean longPress(    Actor actor,    float x,    float y){
+      System.out.println("long press " + x + ", "+ y);
+      return true;
+    }
+    public void fling(    ActorEvent event,    float velocityX,    float velocityY){
+      System.out.println("fling " + velocityX + ", "+ velocityY);
+    }
+    public void zoom(    ActorEvent event,    float initialDistance,    float distance){
+      System.out.println("zoom " + initialDistance + ", "+ distance);
+    }
+    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
+      event.getTarget().translate(deltaX,deltaY);
+      if (deltaX < 0)       System.out.println("panning " + deltaX + ", "+ deltaY+ " "+ event.getTarget());
+    }
+  }
+);
+  button.setPosition(50,50);
+  stage.addActor(button);
+  meow.setDuration(2);
+  patch=skin.getPatch("default-round");
+}

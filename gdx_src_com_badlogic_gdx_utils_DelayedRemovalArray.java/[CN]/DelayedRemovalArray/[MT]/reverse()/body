@@ -1,0 +1,4 @@
+{
+  if (iterating)   throw new IllegalStateException("Invalid between begin/end.");
+  super.reverse();
+}

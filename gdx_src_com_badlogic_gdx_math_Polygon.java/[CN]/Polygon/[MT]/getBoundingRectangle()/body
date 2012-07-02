@@ -1,5 +1,5 @@
 {
-  float[] vertices=getWorldVertices();
+  float[] vertices=getTransformedVertices();
   float minX=vertices[0];
   float minY=vertices[1];
   float maxX=vertices[0];

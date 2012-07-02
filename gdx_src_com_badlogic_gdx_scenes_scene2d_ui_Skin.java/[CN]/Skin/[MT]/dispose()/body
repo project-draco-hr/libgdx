@@ -1,7 +1,6 @@
 {
-  texture.dispose();
-  for (  Entry<Class,ObjectMap<String,Object>> entry : resources.entries()) {
-    if (!Disposable.class.isAssignableFrom(entry.key))     continue;
-    for (    Object resource : entry.value.values())     ((Disposable)resource).dispose();
+  atlas.dispose();
+  for (  ObjectMap<String,Object> entry : resources.values()) {
+    for (    Object resource : entry.values())     if (resource instanceof Disposable)     ((Disposable)resource).dispose();
   }
 }

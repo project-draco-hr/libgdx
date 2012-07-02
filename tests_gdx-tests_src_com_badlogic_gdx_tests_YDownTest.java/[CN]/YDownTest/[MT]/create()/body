@@ -9,8 +9,7 @@
   stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
   stage.setCamera(camera);
   image=new MyActor(region);
-  image.x=100;
-  image.y=100;
+  image.setPosition(100,100);
   stage.addActor(image);
   Gdx.input.setInputProcessor(stage);
 }

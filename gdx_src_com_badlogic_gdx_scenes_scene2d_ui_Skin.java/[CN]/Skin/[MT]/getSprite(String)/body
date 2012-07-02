@@ -1,0 +1,17 @@
+{
+  Sprite sprite=optional(name,Sprite.class);
+  if (sprite != null)   return sprite;
+  try {
+    TextureRegion textureRegion=getRegion(name);
+    if (textureRegion instanceof AtlasRegion) {
+      AtlasRegion region=(AtlasRegion)textureRegion;
+      if (region.rotate || region.packedWidth != region.originalWidth || region.packedHeight != region.originalHeight)       sprite=new AtlasSprite(region);
+    }
+    if (sprite == null)     sprite=new Sprite(textureRegion);
+    add(name,sprite,NinePatch.class);
+    return sprite;
+  }
+ catch (  GdxRuntimeException ex) {
+    throw new GdxRuntimeException("No NinePatch, TextureRegion, or Texture registered with name: " + name);
+  }
+}

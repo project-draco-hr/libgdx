@@ -1,6 +1,6 @@
 {
-  if (!stretch) {
-    if (width > height && width / (float)Gdx.graphics.getWidth() <= height / (float)Gdx.graphics.getHeight()) {
+  if (keepAspectRatio) {
+    if (width > height && width / Gdx.graphics.getWidth() <= height / Gdx.graphics.getHeight()) {
       float toDeviceSpace=Gdx.graphics.getHeight() / height;
       float toViewportSpace=height / Gdx.graphics.getHeight();
       float deviceWidth=width * toDeviceSpace;
@@ -19,7 +19,6 @@
     this.width=width;
     this.height=height;
   }
-  this.stretch=stretch;
   centerX=this.width / 2;
   centerY=this.height / 2;
   camera.position.set(centerX,centerY,0);

@@ -1,0 +1,7 @@
+{
+  int oldIndex=selectedIndex;
+  selectedIndex=(int)((getHeight() - y) / itemHeight);
+  selectedIndex=Math.max(0,selectedIndex);
+  selectedIndex=Math.min(items.length - 1,selectedIndex);
+  if (fire(new ChangeEvent()))   selectedIndex=oldIndex;
+}

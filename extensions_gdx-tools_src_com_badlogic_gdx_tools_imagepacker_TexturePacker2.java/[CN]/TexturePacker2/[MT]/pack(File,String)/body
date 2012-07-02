@@ -1,0 +1,12 @@
+{
+  outputDir.mkdirs();
+  if (packFileName.indexOf('.') == -1)   packFileName+=".atlas";
+  Array<Page> pages=maxRectsPacker.pack(imageProcessor.getImages());
+  writeImages(outputDir,pages,packFileName);
+  try {
+    writePackFile(outputDir,pages,packFileName);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("Error writing pack file.",ex);
+  }
+}

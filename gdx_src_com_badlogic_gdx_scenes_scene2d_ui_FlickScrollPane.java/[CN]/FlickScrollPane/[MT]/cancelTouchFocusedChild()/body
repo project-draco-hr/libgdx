@@ -1,5 +1,0 @@
-{
-  if (touchFocusedChild == null)   return;
-  touchFocusedChild.touchUp(Integer.MIN_VALUE,Integer.MIN_VALUE,0);
-  touchFocusedChild=null;
-}

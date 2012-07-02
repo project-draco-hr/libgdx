@@ -1,4 +1,0 @@
-{
-  if (backgroundPatch != null)   return Math.max(layout.getPrefWidth(),(int)backgroundPatch.getTotalWidth());
-  return layout.getPrefWidth();
-}

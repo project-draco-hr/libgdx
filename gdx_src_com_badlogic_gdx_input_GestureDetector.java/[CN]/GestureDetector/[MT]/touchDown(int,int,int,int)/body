@@ -1,29 +1,3 @@
 {
-  if (pointer > 1)   return false;
-  if (pointer == 0) {
-    firstPointer.set(x,y);
-    gestureStartTime=Gdx.input.getCurrentEventTime();
-    tracker.start(x,y,gestureStartTime);
-    if (Gdx.input.isTouched(1)) {
-      inTapSquare=false;
-      pinching=true;
-      initialFirstPointer.set(firstPointer);
-      initialSecondPointer.set(secondPointer);
-    }
- else {
-      inTapSquare=true;
-      pinching=false;
-      longPressFired=false;
-      tapSquareCenterX=x;
-      tapSquareCenterY=y;
-    }
-  }
- else {
-    secondPointer.set(x,y);
-    inTapSquare=false;
-    pinching=true;
-    initialFirstPointer.set(firstPointer);
-    initialSecondPointer.set(secondPointer);
-  }
-  return listener.touchDown(x,y,pointer);
+  return touchDown((float)x,(float)y,pointer,button);
 }

@@ -1,5 +1,5 @@
 {
-  actor.touchable=enabled;
+  actor.setTouchable(enabled);
   Method method=findMethod(actor.getClass(),"getStyle");
   if (method == null)   return;
   Object style;

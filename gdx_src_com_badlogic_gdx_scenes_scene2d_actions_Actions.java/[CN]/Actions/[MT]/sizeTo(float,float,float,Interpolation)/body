@@ -1,0 +1,7 @@
+{
+  SizeToAction action=action(SizeToAction.class);
+  action.setSize(x,y);
+  action.setDuration(duration);
+  action.setInterpolation(interpolation);
+  return action;
+}

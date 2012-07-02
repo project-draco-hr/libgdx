@@ -1,0 +1,14 @@
+{
+  screenToStageCoordinates(stageCoords.set(screenX,screenY));
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
+  event.setType(Type.mouseMoved);
+  event.setStageX(stageCoords.x);
+  event.setStageY(stageCoords.y);
+  Actor target=hit(stageCoords.x,stageCoords.y);
+  while (target != null && (!target.isTouchable() || !target.isVisible()))   target=target.getParent();
+  if (target == null)   target=root;
+  target.fire(event);
+  Pools.free(event);
+  return event.isHandled();
+}

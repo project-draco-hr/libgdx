@@ -1,0 +1,4 @@
+{
+  if (actor instanceof Layout)   return ((Layout)actor).getMaxHeight();
+  return 0;
+}

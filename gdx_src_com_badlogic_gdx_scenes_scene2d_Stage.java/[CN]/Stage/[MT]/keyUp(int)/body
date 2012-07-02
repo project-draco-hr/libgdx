@@ -1,4 +1,10 @@
 {
   if (keyboardFocus == null)   return false;
-  return keyboardFocus.keyUp(keycode);
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
+  event.setType(ActorEvent.Type.keyUp);
+  event.setKeyCode(keyCode);
+  boolean handled=keyboardFocus.fire(event);
+  Pools.free(event);
+  return event.isHandled();
 }
