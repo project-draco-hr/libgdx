@@ -1,0 +1,22 @@
+{
+  if (!Gdx.graphics.isGL20Available()) {
+    GL10 gl=Gdx.gl10;
+    gl.glMatrixMode(GL10.GL_PROJECTION);
+    gl.glLoadMatrixf(projectionMatrix.val,0);
+    gl.glMatrixMode(GL10.GL_MODELVIEW);
+    gl.glLoadMatrixf(transformMatrix.val,0);
+  }
+ else {
+    combinedMatrix.set(projectionMatrix).mul(transformMatrix);
+    if (customShader != null) {
+      customShader.setUniformMatrix("u_proj",projectionMatrix);
+      customShader.setUniformMatrix("u_trans",transformMatrix);
+      customShader.setUniformMatrix("u_projTrans",combinedMatrix);
+      customShader.setUniformi("u_texture",0);
+    }
+ else {
+      shader.setUniformMatrix("u_projectionViewMatrix",combinedMatrix);
+      shader.setUniformi("u_texture",0);
+    }
+  }
+}

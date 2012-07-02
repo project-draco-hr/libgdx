@@ -1,0 +1,37 @@
+{
+  String line;
+  BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),64);
+  try {
+    while (true) {
+      line=reader.readLine();
+      if (line == null)       break;
+ else       if (line.startsWith("v")) {
+        String[] vertices=line.substring(1).trim().split(",");
+        localVertices=new float[vertices.length];
+        for (int i=0; i < vertices.length; i+=2) {
+          localVertices[i]=Float.parseFloat(vertices[i]);
+          localVertices[i + 1]=Float.parseFloat(vertices[i + 1]);
+        }
+      }
+ else       if (line.startsWith("u")) {
+        String[] texCoords=line.substring(1).trim().split(",");
+        float localTexCoords[]=new float[texCoords.length];
+        for (int i=0; i < texCoords.length; i+=2) {
+          localTexCoords[i]=Float.parseFloat(texCoords[i]);
+          localTexCoords[i + 1]=Float.parseFloat(texCoords[i + 1]);
+        }
+        this.texCoords=calculateAtlasTexCoords(localTexCoords);
+      }
+    }
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading polygon shape file: " + file);
+  }
+ finally {
+    try {
+      reader.close();
+    }
+ catch (    IOException ignored) {
+    }
+  }
+}

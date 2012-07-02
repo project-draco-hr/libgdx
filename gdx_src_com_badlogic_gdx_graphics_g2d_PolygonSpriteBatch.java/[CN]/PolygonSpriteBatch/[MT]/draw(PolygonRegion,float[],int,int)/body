@@ -1,0 +1,14 @@
+{
+  if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before draw.");
+  Texture texture=region.getRegion().texture;
+  if (texture != lastTexture) {
+    switchTexture(texture);
+  }
+  if (idx + length > vertices.length)   renderMesh();
+  if (length <= vertices.length) {
+    System.arraycopy(spriteVertices,offset,vertices,idx,length);
+    idx+=length;
+  }
+ else {
+  }
+}

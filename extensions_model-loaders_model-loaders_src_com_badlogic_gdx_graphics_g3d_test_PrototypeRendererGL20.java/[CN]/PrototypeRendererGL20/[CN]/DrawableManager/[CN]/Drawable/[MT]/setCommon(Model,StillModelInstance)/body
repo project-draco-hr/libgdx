@@ -1,9 +1,9 @@
 {
   this.model=model;
+  modelHash=model.hashCode();
   System.arraycopy(instance.getTransform().val,0,transform.val,0,16);
   sortCenter.set(instance.getSortCenter());
   distance=(int)(PRIORITY_DISCRETE_STEPS * sortCenter.dst(cam.position));
-  boundingSphereRadius=instance.getBoundingSphereRadius();
   if (instance.getMaterials() != null) {
     for (    Material material : instance.getMaterials()) {
       if (material.getShader() == null)       material.generateShader(materialShaderHandler);
@@ -28,4 +28,5 @@
       break;
     }
   }
+  if (materials.size > 0)   firstShaderHash=materials.get(0).getShader().hashCode();
 }

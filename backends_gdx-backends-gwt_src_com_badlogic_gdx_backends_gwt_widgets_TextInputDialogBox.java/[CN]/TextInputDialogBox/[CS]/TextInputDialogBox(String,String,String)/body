@@ -1,0 +1,32 @@
+{
+  setText(title);
+  VerticalPanel vPanel=new VerticalPanel();
+  HorizontalPanel hPanel=new HorizontalPanel();
+  setAnimationEnabled(true);
+  setGlassEnabled(true);
+  center();
+  vPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
+  Button ok=new Button("OK");
+  ok.addClickHandler(new ClickHandler(){
+    public void onClick(    ClickEvent event){
+      TextInputDialogBox.this.onPositive();
+    }
+  }
+);
+  Button cancel=new Button("Cancel");
+  cancel.addClickHandler(new ClickHandler(){
+    public void onClick(    ClickEvent event){
+      TextInputDialogBox.this.onNegative();
+    }
+  }
+);
+  hPanel.add(ok);
+  hPanel.add(cancel);
+  textBox=new PlaceholderTextBox();
+  textBox.setPlaceholder(placeholder);
+  textBox.setWidth("97%");
+  textBox.setText(text);
+  vPanel.add(textBox);
+  vPanel.add(hPanel);
+  setWidget(vPanel);
+}

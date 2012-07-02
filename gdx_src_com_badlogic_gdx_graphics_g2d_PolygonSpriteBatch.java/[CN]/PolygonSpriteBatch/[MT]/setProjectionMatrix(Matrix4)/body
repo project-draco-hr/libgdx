@@ -1,0 +1,5 @@
+{
+  if (drawing)   flush();
+  projectionMatrix.set(projection);
+  if (drawing)   setupMatrices();
+}
