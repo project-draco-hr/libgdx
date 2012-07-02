@@ -25,12 +25,13 @@
       return skin;
     }
     private void readNamedObjects(    Json json,    Class type,    ObjectMap<String,ObjectMap> valueMap){
+      Class addType=type == TintedDrawable.class ? Drawable.class : type;
       for (      Entry<String,ObjectMap> valueEntry : valueMap.entries()) {
         String name=valueEntry.key;
         Object object=json.readValue(type,valueEntry.value);
         if (object == null)         continue;
         try {
-          add(name,object);
+          add(name,object,addType);
         }
  catch (        Exception ex) {
           throw new SerializationException("Error reading " + type.getSimpleName() + ": "+ valueEntry.key,ex);
