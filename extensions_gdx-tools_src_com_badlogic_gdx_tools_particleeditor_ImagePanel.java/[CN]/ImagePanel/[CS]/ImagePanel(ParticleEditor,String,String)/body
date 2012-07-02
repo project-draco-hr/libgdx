@@ -1,5 +1,5 @@
 {
-  super("Image",null);
+  super(null,name,description);
   JPanel contentPanel=getContentPanel();
 {
     JButton openButton=new JButton("Open");

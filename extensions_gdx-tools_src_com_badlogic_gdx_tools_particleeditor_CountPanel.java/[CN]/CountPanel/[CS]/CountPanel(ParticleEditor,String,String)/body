@@ -1,5 +1,5 @@
 {
-  super("Count",null);
+  super(null,name,description);
   initializeComponents();
   maxSpinner.setValue(editor.getEmitter().getMaxParticleCount());
   maxSpinner.addChangeListener(new ChangeListener(){

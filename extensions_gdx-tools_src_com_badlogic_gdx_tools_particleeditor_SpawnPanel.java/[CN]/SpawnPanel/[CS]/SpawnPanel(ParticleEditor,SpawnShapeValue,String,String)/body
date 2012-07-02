@@ -1,5 +1,5 @@
 {
-  super("Spawn",null);
+  super(null,name,description);
   initializeComponents();
   edgesCheckbox.setSelected(spawnShapeValue.isEdges());
   sideCombo.setSelectedItem(spawnShapeValue.getShape());

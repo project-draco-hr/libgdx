@@ -1,6 +1,7 @@
 {
   this.name=name;
   this.value=value;
+  this.description=description;
   initializeComponents();
   titlePanel.addMouseListener(new MouseAdapter(){
     public void mouseClicked(    MouseEvent event){

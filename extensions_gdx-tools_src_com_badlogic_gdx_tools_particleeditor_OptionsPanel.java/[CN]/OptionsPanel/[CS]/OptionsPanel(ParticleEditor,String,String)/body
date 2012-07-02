@@ -1,5 +1,5 @@
 {
-  super("Options",null);
+  super(null,name,description);
   initializeComponents();
   attachedCheckBox.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent event){

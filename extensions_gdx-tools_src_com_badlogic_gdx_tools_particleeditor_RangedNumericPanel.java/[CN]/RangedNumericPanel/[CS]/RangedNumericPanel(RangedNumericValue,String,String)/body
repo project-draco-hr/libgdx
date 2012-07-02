@@ -1,5 +1,5 @@
 {
-  super(name,value);
+  super(value,name,description);
   this.value=value;
   initializeComponents();
   minSpinner.setValue(value.getLowMin());
