@@ -4,14 +4,14 @@
   if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
   int fileIndex=0;
   for (  Page page : pages) {
-    int x=0, y=0, width=page.width, height=page.height;
+    int width=page.width, height=page.height;
     int paddingX=(int)Math.ceil(settings.paddingX / 2f);
     int paddingY=(int)Math.ceil(settings.paddingY / 2f);
     width-=settings.paddingX;
     height-=settings.paddingY;
     if (settings.edgePadding) {
-      x=paddingX;
-      y=paddingY;
+      page.x=paddingX;
+      page.y=paddingY;
       width+=paddingX * 2;
       height+=paddingY * 2;
     }
@@ -29,7 +29,7 @@
     Graphics2D g=(Graphics2D)canvas.getGraphics();
     System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
     for (    Rect rect : page.outputRects) {
-      int rectX=x + rect.x, rectY=y + page.height - rect.y - rect.height;
+      int rectX=page.x + rect.x, rectY=page.y + page.height - rect.y - rect.height;
       if (rect.rotated) {
         g.translate(rectX,rectY);
         g.rotate(-90 * MathUtils.degreesToRadians);

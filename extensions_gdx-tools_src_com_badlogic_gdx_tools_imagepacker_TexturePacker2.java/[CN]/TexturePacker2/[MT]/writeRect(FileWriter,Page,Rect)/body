@@ -1,7 +1,7 @@
 {
   writer.write(rect.name + "\n");
   writer.write("  rotate: " + rect.rotated + "\n");
-  writer.write("  xy: " + rect.x + ", "+ (page.height - rect.height - rect.y)+ "\n");
+  writer.write("  xy: " + (page.x + rect.x) + ", "+ (page.y + page.height - rect.height - rect.y)+ "\n");
   writer.write("  size: " + rect.image.getWidth() + ", "+ rect.image.getHeight()+ "\n");
   if (rect.splits != null) {
     writer.write("  split: " + rect.splits[0] + ", "+ rect.splits[1]+ ", "+ rect.splits[2]+ ", "+ rect.splits[3]+ "\n");
