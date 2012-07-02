@@ -38,5 +38,5 @@
     if (rgba[3] != 0)     throw new RuntimeException("Unknown ninepatch splits pixel 0," + y + ": "+ name);
   }
   if (startX == 1 && endX == 1 && startY == 1 && endY == 1)   return null;
-  return new int[]{startX - 1,endX - 1,startY - 1,endY - 1};
+  return new int[]{startX - 1,raster.getWidth() - 2 - (endX - 1),startY - 1,raster.getHeight() - 2 - (endY - 1)};
 }

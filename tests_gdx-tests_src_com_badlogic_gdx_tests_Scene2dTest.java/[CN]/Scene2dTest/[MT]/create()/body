@@ -24,7 +24,7 @@
   }
 );
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  TextButtonStyle style=skin.getStyle(TextButtonStyle.class);
+  TextButtonStyle style=skin.get(TextButtonStyle.class);
   style.up=new EmptyDrawable(){
     ShapeRenderer renderer=new ShapeRenderer();
     public void draw(    SpriteBatch batch,    float x,    float y,    float width,    float height){

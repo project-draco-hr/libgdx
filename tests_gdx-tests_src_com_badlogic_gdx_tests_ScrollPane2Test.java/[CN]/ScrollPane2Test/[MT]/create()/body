@@ -1,7 +1,7 @@
 {
   stage=new Stage(0,0,false);
   Gdx.input.setInputProcessor(stage);
-  skin=new Skin(Gdx.files.internal("data/uiskin.json"),Gdx.files.internal("data/uiskin.png"));
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   Table mytable=new Table();
   mytable.debug();
   mytable.add(new Image(new Texture("data/group-debug.png")));

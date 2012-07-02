@@ -3,8 +3,7 @@
   int dotIndex=imageName.lastIndexOf('.');
   if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
   int fileIndex=0;
-  for (int i=0, n=pages.size; i < n; i++) {
-    Page page=pages.get(i);
+  for (  Page page : pages) {
     int x=0, y=0, width=page.width, height=page.height;
     int paddingX=(int)Math.ceil(settings.paddingX / 2f);
     int paddingY=(int)Math.ceil(settings.paddingY / 2f);
@@ -29,8 +28,7 @@
     BufferedImage canvas=new BufferedImage(width,height,getBufferedImageType(settings.format));
     Graphics2D g=(Graphics2D)canvas.getGraphics();
     System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
-    for (int ii=0, nn=page.outputRects.size; ii < nn; ii++) {
-      Rect rect=page.outputRects.get(ii);
+    for (    Rect rect : page.outputRects) {
       int rectX=x + rect.x, rectY=y + page.height - rect.y - rect.height;
       if (rect.rotated) {
         g.translate(rectX,rectY);

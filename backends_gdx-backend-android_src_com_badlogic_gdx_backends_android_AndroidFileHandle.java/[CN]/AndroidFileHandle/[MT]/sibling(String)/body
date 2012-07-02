@@ -1,0 +1,5 @@
+{
+  name=name.replace('\\','/');
+  if (file.getPath().length() == 0)   throw new GdxRuntimeException("Cannot get the sibling of the root.");
+  return new AndroidFileHandle(assets,new File(file.getParent(),name),type);
+}

@@ -13,10 +13,5 @@
   if (topLeft != -1)   set(topLeft,x,topRowY,centerColumnX - x,y + height - topRowY,c);
   if (topCenter != -1)   set(topCenter,centerColumnX,topRowY,rightColumnX - centerColumnX,y + height - topRowY,c);
   if (topRight != -1)   set(topRight,rightColumnX,topRowY,x + width - rightColumnX,y + height - topRowY,c);
-  if (blending)   batch.draw(texture,vertices,0,idx);
- else {
-    if (batch.getColor().a == 1f && color != null && color.a == 1f)     batch.disableBlending();
-    batch.draw(texture,vertices,0,idx);
-    batch.enableBlending();
-  }
+  batch.draw(texture,vertices,0,idx);
 }

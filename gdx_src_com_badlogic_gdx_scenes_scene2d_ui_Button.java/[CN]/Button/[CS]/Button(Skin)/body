@@ -1,7 +1,7 @@
 {
   super(skin);
   initialize();
-  setStyle(skin.getStyle(ButtonStyle.class));
+  setStyle(skin.get(ButtonStyle.class));
   setWidth(getPrefWidth());
   setHeight(getPrefHeight());
 }

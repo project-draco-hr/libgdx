@@ -1,7 +1,7 @@
 {
-  String texturePath;
-  if (parameter == null)   texturePath=resolve(fileName).pathWithoutExtension() + ".png";
- else   texturePath=parameter.texturePath;
-  Texture texture=manager.get(texturePath,Texture.class);
-  return new Skin(resolve(fileName),texture);
+  String textureAtlasPath;
+  if (parameter == null)   textureAtlasPath=resolve(fileName).pathWithoutExtension() + ".atlas";
+ else   textureAtlasPath=parameter.textureAtlasPath;
+  TextureAtlas atlas=manager.get(textureAtlasPath,TextureAtlas.class);
+  return new Skin(resolve(fileName),atlas);
 }

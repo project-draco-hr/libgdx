@@ -2,7 +2,7 @@
   for (  TileSet set : map.tileSets) {
     FileHandle packfile=getRelativeFileHandle(inputDir,removeExtension(set.imageName) + " packfile");
     TextureAtlas textureAtlas=new TextureAtlas(packfile,packfile.parent(),false);
-    List<AtlasRegion> atlasRegions=textureAtlas.findRegions(removeExtension(removePath(set.imageName)));
+    Array<AtlasRegion> atlasRegions=textureAtlas.findRegions(removeExtension(removePath(set.imageName)));
     for (    AtlasRegion reg : atlasRegions) {
       regionsMap.put(reg.index + set.firstgid,reg);
       if (!textures.contains(reg.getTexture())) {

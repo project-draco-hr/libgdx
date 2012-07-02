@@ -9,8 +9,6 @@
   topLeft=ninePatch.topLeft;
   topCenter=ninePatch.topCenter;
   topRight=ninePatch.topRight;
-  patches=new TextureRegion[9];
-  System.arraycopy(ninePatch.patches,0,patches,0,ninePatch.patches.length);
   leftWidth=ninePatch.leftWidth;
   rightWidth=ninePatch.rightWidth;
   middleWidth=ninePatch.middleWidth;
@@ -20,6 +18,5 @@
   vertices=new float[ninePatch.vertices.length];
   System.arraycopy(ninePatch.vertices,0,vertices,0,ninePatch.vertices.length);
   idx=ninePatch.idx;
-  this.color=color == null ? null : new Color(color);
-  blending=ninePatch.blending;
+  this.color.set(color);
 }

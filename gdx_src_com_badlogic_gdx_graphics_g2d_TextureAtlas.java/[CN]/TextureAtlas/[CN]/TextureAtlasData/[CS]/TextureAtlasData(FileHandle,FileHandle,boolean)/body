@@ -1,5 +1,4 @@
 {
-  PriorityQueue<Region> sortedRegions=new PriorityQueue(16,indexComparator);
   BufferedReader reader=new BufferedReader(new InputStreamReader(packFile.read()),64);
   try {
     Page pageImage=null;
@@ -52,7 +51,7 @@
         region.offsetY=Integer.parseInt(tuple[1]);
         region.index=Integer.parseInt(readValue(reader));
         if (flip)         region.flip=true;
-        sortedRegions.add(region);
+        regions.add(region);
       }
     }
   }
@@ -66,6 +65,5 @@
  catch (    IOException ignored) {
     }
   }
-  int n=sortedRegions.size();
-  for (int i=0; i < n; i++)   regions.add(sortedRegions.poll());
+  regions.sort(indexComparator);
 }

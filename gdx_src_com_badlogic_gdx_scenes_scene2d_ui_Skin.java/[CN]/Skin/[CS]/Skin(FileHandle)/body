@@ -1,4 +1,5 @@
 {
-  texture=new Texture(skinFile.parent().child(skinFile.nameWithoutExtension() + ".png"));
+  this.atlas=new TextureAtlas(skinFile.sibling(skinFile.nameWithoutExtension() + ".atlas"));
+  add(atlas);
   load(skinFile);
 }

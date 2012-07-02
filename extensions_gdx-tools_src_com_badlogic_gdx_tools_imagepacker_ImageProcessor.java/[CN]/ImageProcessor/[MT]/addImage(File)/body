@@ -43,6 +43,7 @@
     String crc=hash(rect.image);
     Rect existing=crcs.get(crc);
     if (existing != null) {
+      System.out.println(rect.name + " (alias of " + existing.name+ ")");
       existing.aliases.add(rect);
       return;
     }

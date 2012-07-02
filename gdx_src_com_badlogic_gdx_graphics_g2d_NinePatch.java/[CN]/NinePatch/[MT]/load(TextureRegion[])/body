@@ -1,5 +1,4 @@
 {
-  this.patches=patches;
   float color=Color.WHITE.toFloatBits();
   if (patches[BOTTOM_LEFT] != null) {
     bottomLeft=add(patches[BOTTOM_LEFT],color);
