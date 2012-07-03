@@ -17,6 +17,7 @@
   gatherTypes(typeOracle.findType("java.lang.Short").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Integer").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Float").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.CharSequence").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Double").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Object").getErasedType(),types);
   int id=0;
