@@ -1,0 +1,5 @@
+{
+  this.atlas=new TextureAtlas(skinFile.sibling(skinFile.nameWithoutExtension() + ".atlas"));
+  add(atlas);
+  load(skinFile);
+}

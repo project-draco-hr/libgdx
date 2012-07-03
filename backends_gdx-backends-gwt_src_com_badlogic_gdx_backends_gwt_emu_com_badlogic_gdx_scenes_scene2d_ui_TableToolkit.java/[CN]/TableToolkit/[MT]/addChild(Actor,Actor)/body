@@ -1,0 +1,11 @@
+{
+  child.remove();
+  try {
+    ReflectionCache.getType(parent.getClass()).getMethod("setWidget",Actor.class).invoke(parent,child);
+    return;
+  }
+ catch (  Exception ignored) {
+    Gdx.app.log("TableToolkit","Couldn't call setWidget",ignored);
+  }
+  ((Group)parent).addActor(child);
+}

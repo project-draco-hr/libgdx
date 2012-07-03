@@ -1,0 +1,6 @@
+{
+  if (resource == null)   throw new IllegalArgumentException("style cannot be null.");
+  ObjectMap<String,Object> typeResources=resources.get(resource.getClass());
+  if (typeResources == null)   return null;
+  return typeResources.findKey(resource,true);
+}

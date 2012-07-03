@@ -1,0 +1,8 @@
+{
+  com.badlogic.gwtref.client.Method[] methods=ReflectionCache.getType(type).getMethods();
+  for (int i=0, n=methods.length; i < n; i++) {
+    com.badlogic.gwtref.client.Method method=methods[i];
+    if (method.getName().equals(name))     return method;
+  }
+  return null;
+}

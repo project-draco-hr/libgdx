@@ -1,0 +1,9 @@
+{
+  Type t=ReflectionCache.getType(type);
+  try {
+    return (T)t.newInstance();
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Unable to create new instance: " + type.getName(),ex);
+  }
+}

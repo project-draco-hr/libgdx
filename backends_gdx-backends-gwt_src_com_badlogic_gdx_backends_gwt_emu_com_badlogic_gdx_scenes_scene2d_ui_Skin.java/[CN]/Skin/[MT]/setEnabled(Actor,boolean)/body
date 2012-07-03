@@ -1,0 +1,23 @@
+{
+  actor.setTouchable(enabled);
+  com.badlogic.gwtref.client.Method method=findMethod(actor.getClass(),"getStyle");
+  if (method == null)   return;
+  Object style;
+  try {
+    style=method.invoke(actor);
+  }
+ catch (  Exception ignored) {
+    return;
+  }
+  String name=find(style);
+  if (name == null)   return;
+  name=name.replace("-disabled","") + (enabled ? "" : "-disabled");
+  style=get(name,style.getClass());
+  method=findMethod(actor.getClass(),"setStyle");
+  if (method == null)   return;
+  try {
+    method.invoke(actor,style);
+  }
+ catch (  Exception ignored) {
+  }
+}

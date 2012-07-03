@@ -1,0 +1,14 @@
+{
+  if (current != null) {
+    if (current.array) {
+      if (!current.needsComma)       current.needsComma=true;
+ else       writer.write(',');
+    }
+ else {
+      if (!named && !current.array)       throw new IllegalStateException("Name must be set.");
+      named=false;
+    }
+  }
+  stack.add(current=new JsonObject(true));
+  return this;
+}
