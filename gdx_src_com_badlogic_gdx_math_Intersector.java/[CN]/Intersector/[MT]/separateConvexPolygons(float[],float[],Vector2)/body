@@ -3,7 +3,7 @@
   final int length2=verts2.length;
   for (int i=0; i < length1; i+=2) {
     final int j=(i + 1) % length1;
-    float projX=verts1[j + 1] - verts1[i + 1];
+    float projX=verts1[(j + 1) % length1] - verts1[i + 1];
     float projY=verts1[i] - verts1[j];
     final float length=(float)Math.sqrt(projX * projX + projY * projY);
     projX/=length;
