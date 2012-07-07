@@ -62,5 +62,6 @@
   button.setPosition(50,50);
   stage.addActor(button);
   meow.setDuration(2);
+  actor.addAction(forever(sequence(moveBy(50,0,2),moveBy(-50,0,2))));
   patch=skin.getPatch("default-round");
 }
