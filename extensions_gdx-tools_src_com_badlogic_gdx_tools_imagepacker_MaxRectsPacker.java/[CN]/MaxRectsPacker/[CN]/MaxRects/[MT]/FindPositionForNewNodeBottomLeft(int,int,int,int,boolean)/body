@@ -11,9 +11,10 @@
         bestNode.height=height;
         bestNode.score1=topSideY;
         bestNode.score2=freeRectangles.get(i).x;
+        bestNode.rotated=false;
       }
     }
-    if (settings.rotation && freeRectangles.get(i).width >= rotatedWidth && freeRectangles.get(i).height >= rotatedHeight) {
+    if (rotate && freeRectangles.get(i).width >= rotatedWidth && freeRectangles.get(i).height >= rotatedHeight) {
       int topSideY=freeRectangles.get(i).y + rotatedHeight;
       if (topSideY < bestNode.score1 || (topSideY == bestNode.score1 && freeRectangles.get(i).x < bestNode.score2)) {
         bestNode.x=freeRectangles.get(i).x;

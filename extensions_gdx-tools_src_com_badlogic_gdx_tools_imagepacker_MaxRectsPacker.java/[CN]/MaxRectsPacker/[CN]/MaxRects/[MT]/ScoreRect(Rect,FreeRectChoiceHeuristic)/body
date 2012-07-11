@@ -3,23 +3,24 @@
   int height=rect.height;
   int rotatedWidth=height - settings.paddingY + settings.paddingX;
   int rotatedHeight=width - settings.paddingX + settings.paddingY;
+  boolean rotate=rect.canRotate && settings.rotation;
   Rect newNode=null;
 switch (method) {
 case BestShortSideFit:
-    newNode=FindPositionForNewNodeBestShortSideFit(width,height,rotatedWidth,rotatedHeight);
+    newNode=FindPositionForNewNodeBestShortSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
   break;
 case BottomLeftRule:
-newNode=FindPositionForNewNodeBottomLeft(width,height,rotatedWidth,rotatedHeight);
+newNode=FindPositionForNewNodeBottomLeft(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 case ContactPointRule:
-newNode=FindPositionForNewNodeContactPoint(width,height,rotatedWidth,rotatedHeight);
+newNode=FindPositionForNewNodeContactPoint(width,height,rotatedWidth,rotatedHeight,rotate);
 newNode.score1=-newNode.score1;
 break;
 case BestLongSideFit:
-newNode=FindPositionForNewNodeBestLongSideFit(width,height,rotatedWidth,rotatedHeight);
+newNode=FindPositionForNewNodeBestLongSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 case BestAreaFit:
-newNode=FindPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight);
+newNode=FindPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 }
 if (newNode.height == 0) {

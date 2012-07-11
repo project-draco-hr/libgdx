@@ -10,9 +10,10 @@
         bestNode.width=width;
         bestNode.height=height;
         bestNode.score1=score;
+        bestNode.rotated=false;
       }
     }
-    if (settings.rotation && freeRectangles.get(i).width >= rotatedWidth && freeRectangles.get(i).height >= rotatedHeight) {
+    if (rotate && freeRectangles.get(i).width >= rotatedWidth && freeRectangles.get(i).height >= rotatedHeight) {
       int score=ContactPointScoreNode(freeRectangles.get(i).x,freeRectangles.get(i).y,rotatedWidth,rotatedHeight);
       if (score > bestNode.score1) {
         bestNode.x=freeRectangles.get(i).x;
