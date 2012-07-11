@@ -1,0 +1,5 @@
+{
+  if (button == null)   throw new IllegalArgumentException("button cannot be null.");
+  button.buttonGroup=null;
+  buttons.removeValue(button,true);
+}

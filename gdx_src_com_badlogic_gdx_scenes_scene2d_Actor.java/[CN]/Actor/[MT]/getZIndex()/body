@@ -1,0 +1,5 @@
+{
+  Group parent=getParent();
+  if (parent == null)   return -1;
+  return parent.getChildren().indexOf(this,true);
+}
