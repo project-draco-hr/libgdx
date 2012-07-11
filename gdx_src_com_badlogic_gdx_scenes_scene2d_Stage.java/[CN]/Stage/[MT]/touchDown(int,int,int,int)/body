@@ -11,6 +11,7 @@
   while (target != null && (!target.isTouchable() || !target.isVisible()))   target=target.getParent();
   if (target == null)   target=root;
   target.fire(event);
+  boolean handled=event.isHandled();
   Pools.free(event);
-  return event.isHandled();
+  return handled;
 }
