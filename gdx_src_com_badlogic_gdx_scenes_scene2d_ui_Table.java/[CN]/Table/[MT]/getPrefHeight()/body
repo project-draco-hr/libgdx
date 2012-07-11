@@ -1,4 +1,4 @@
 {
-  if (backgroundDrawable != null)   return Math.max(layout.getPrefHeight(),backgroundDrawable.getMinHeight());
+  if (background != null)   return Math.max(layout.getPrefHeight(),background.getMinHeight());
   return layout.getPrefHeight();
 }

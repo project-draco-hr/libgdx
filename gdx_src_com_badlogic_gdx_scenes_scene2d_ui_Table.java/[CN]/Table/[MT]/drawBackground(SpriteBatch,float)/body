@@ -1,7 +1,7 @@
 {
-  if (backgroundDrawable != null) {
+  if (background != null) {
     Color color=getColor();
     batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-    backgroundDrawable.draw(batch,getX(),getY(),getWidth(),getHeight());
+    background.draw(batch,getX(),getY(),getWidth(),getHeight());
   }
 }

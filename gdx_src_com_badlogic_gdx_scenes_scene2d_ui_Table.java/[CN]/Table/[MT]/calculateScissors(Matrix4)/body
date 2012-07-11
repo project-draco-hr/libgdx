@@ -2,7 +2,7 @@
   Rectangle tableBounds=Rectangle.tmp;
   tableBounds.width=getWidth();
   tableBounds.height=getHeight();
-  if (backgroundDrawable == null) {
+  if (background == null) {
     tableBounds.x=0;
     tableBounds.y=0;
   }

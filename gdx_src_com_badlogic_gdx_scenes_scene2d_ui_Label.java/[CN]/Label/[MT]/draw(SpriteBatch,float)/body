@@ -1,6 +1,11 @@
 {
   layout();
   validate();
+  if (style.background != null) {
+    Color color=getColor();
+    batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+    style.background.draw(batch,getX(),getY(),getWidth(),getHeight());
+  }
   cache.setPosition(getX(),getY());
   cache.draw(batch,getColor().a * parentAlpha);
 }

@@ -1,6 +1,6 @@
 {
-  if (this.backgroundDrawable == background)   return;
-  this.backgroundDrawable=background;
+  if (this.background == background)   return;
+  this.background=background;
   if (background == null)   pad(null);
  else {
     padBottom(background.getBottomHeight());
