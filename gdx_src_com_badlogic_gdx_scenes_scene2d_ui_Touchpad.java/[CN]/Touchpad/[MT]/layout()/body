@@ -1,0 +1,8 @@
+{
+  float radius=Math.min(getWidth(),getHeight()) / 2;
+  if (style.knob != null)   radius-=Math.max(style.knob.getMinWidth(),style.knob.getMinHeight()) / 2;
+  padBounds.set(getWidth() / 2f,getHeight() / 2f,radius);
+  deadzoneBounds.set(getWidth() / 2f,getHeight() / 2f,deadzoneRadius);
+  knobPosition.set(getWidth() / 2f,getHeight() / 2f);
+  knobPercent.set(0,0);
+}

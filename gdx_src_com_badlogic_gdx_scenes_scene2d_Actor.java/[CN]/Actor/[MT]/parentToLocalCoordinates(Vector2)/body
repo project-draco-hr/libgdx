@@ -1,17 +1,17 @@
 {
-  float rotation=getRotation();
-  float scaleX=getScaleX();
-  float scaleY=getScaleY();
-  float childX=getX();
-  float childY=getY();
+  final float rotation=getRotation();
+  final float scaleX=getScaleX();
+  final float scaleY=getScaleY();
+  final float childX=getX();
+  final float childY=getY();
   if (rotation == 0) {
     if (scaleX == 1 && scaleY == 1) {
       parentCoords.x-=childX;
       parentCoords.y-=childY;
     }
  else {
-      float originX=getOriginX();
-      float originY=getOriginY();
+      final float originX=getOriginX();
+      final float originY=getOriginY();
       if (originX == 0 && originY == 0) {
         parentCoords.x=(parentCoords.x - childX) / scaleX;
         parentCoords.y=(parentCoords.y - childY) / scaleY;
@@ -25,8 +25,8 @@
  else {
     final float cos=(float)Math.cos(rotation * MathUtils.degreesToRadians);
     final float sin=(float)Math.sin(rotation * MathUtils.degreesToRadians);
-    float originX=getOriginX();
-    float originY=getOriginY();
+    final float originX=getOriginX();
+    final float originY=getOriginY();
     if (scaleX == 1 && scaleY == 1) {
       if (originX == 0 && originY == 0) {
         float tox=parentCoords.x - childX;
@@ -37,42 +37,34 @@
  else {
         final float worldOriginX=childX + originX;
         final float worldOriginY=childY + originY;
-        float fx=-originX;
-        float fy=-originY;
-        float x1=cos * fx - sin * fy;
-        float y1=sin * fx + cos * fy;
-        x1+=worldOriginX;
-        y1+=worldOriginY;
-        float tox=parentCoords.x - x1;
-        float toy=parentCoords.y - y1;
+        final float fx=-originX;
+        final float fy=-originY;
+        final float x1=cos * fx - sin * fy + worldOriginX;
+        final float y1=sin * fx + cos * fy + worldOriginY;
+        final float tox=parentCoords.x - x1;
+        final float toy=parentCoords.y - y1;
         parentCoords.x=tox * cos + toy * sin;
         parentCoords.y=tox * -sin + toy * cos;
       }
     }
  else {
       if (originX == 0 && originY == 0) {
-        float tox=parentCoords.x - childX;
-        float toy=parentCoords.y - childY;
-        parentCoords.x=tox * cos + toy * sin;
-        parentCoords.y=tox * -sin + toy * cos;
-        parentCoords.x/=scaleX;
-        parentCoords.y/=scaleY;
+        final float tox=parentCoords.x - childX;
+        final float toy=parentCoords.y - childY;
+        parentCoords.x=(tox * cos + toy * sin) / scaleX;
+        parentCoords.y=(tox * -sin + toy * cos) / scaleY;
       }
  else {
         final float worldOriginX=childX + originX;
         final float worldOriginY=childY + originY;
-        float fx=-originX * scaleX;
-        float fy=-originY * scaleY;
-        float x1=cos * fx - sin * fy;
-        float y1=sin * fx + cos * fy;
-        x1+=worldOriginX;
-        y1+=worldOriginY;
-        float tox=parentCoords.x - x1;
-        float toy=parentCoords.y - y1;
-        parentCoords.x=tox * cos + toy * sin;
-        parentCoords.y=tox * -sin + toy * cos;
-        parentCoords.x/=scaleX;
-        parentCoords.y/=scaleY;
+        final float fx=-originX * scaleX;
+        final float fy=-originY * scaleY;
+        final float x1=cos * fx - sin * fy + worldOriginX;
+        final float y1=sin * fx + cos * fy + worldOriginY;
+        final float tox=parentCoords.x - x1;
+        final float toy=parentCoords.y - y1;
+        parentCoords.x=(tox * cos + toy * sin) / scaleX;
+        parentCoords.y=(tox * -sin + toy * cos) / scaleY;
       }
     }
   }

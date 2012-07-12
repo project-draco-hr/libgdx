@@ -1,0 +1,23 @@
+{
+  float oldPositionX=knobPosition.x;
+  float oldPositionY=knobPosition.y;
+  float oldPercentX=knobPercent.x;
+  float oldPercentY=knobPercent.y;
+  knobPosition.set(getWidth() / 2f,getHeight() / 2f);
+  knobPercent.set(0f,0f);
+  if (!isTouchUp) {
+    if (!deadzoneBounds.contains(x,y)) {
+      knobPercent.set(x - padBounds.x,y - padBounds.y).nor();
+      if (padBounds.contains(x,y)) {
+        knobPosition.set(x,y);
+      }
+ else {
+        knobPosition.set(knobPercent).mul(padBounds.radius).add(padBounds.x,padBounds.y);
+      }
+    }
+  }
+  if ((oldPercentX != knobPercent.x || oldPercentY != knobPercent.y) && fire(new ChangeEvent())) {
+    knobPercent.set(oldPercentX,oldPercentY);
+    knobPosition.set(oldPositionX,oldPositionY);
+  }
+}

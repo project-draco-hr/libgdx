@@ -1,0 +1,24 @@
+{
+  if (deadzoneRadius < 0)   throw new IllegalArgumentException("deadzoneRadius must be > 0");
+  this.deadzoneRadius=deadzoneRadius;
+  knobPosition.set(getWidth() / 2f,getHeight() / 2f);
+  setStyle(style);
+  setWidth(getPrefWidth());
+  setHeight(getPrefHeight());
+  addListener(new ActorListener(){
+    @Override public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      if (touched)       return false;
+      touched=true;
+      calculatePositionAndValue(x,y,false);
+      return true;
+    }
+    @Override public void touchDragged(    ActorEvent event,    float x,    float y,    int pointer){
+      calculatePositionAndValue(x,y,false);
+    }
+    @Override public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      touched=false;
+      calculatePositionAndValue(x,y,true);
+    }
+  }
+);
+}

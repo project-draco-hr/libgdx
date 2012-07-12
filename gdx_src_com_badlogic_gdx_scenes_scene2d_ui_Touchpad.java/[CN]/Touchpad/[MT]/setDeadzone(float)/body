@@ -1,0 +1,5 @@
+{
+  if (deadzoneRadius < 0)   throw new IllegalArgumentException("deadzoneRadius must be > 0");
+  this.deadzoneRadius=deadzoneRadius;
+  invalidate();
+}
