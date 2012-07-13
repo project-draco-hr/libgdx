@@ -29,6 +29,7 @@
     return event.isCancelled();
   }
   finally {
-    Pools.free(Array.class);
+    ancestors.clear();
+    Pools.free(ancestors);
   }
 }

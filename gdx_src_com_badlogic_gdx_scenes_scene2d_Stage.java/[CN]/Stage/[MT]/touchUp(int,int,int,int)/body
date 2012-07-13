@@ -8,7 +8,6 @@
   event.setStageY(stageCoords.y);
   event.setPointer(pointer);
   event.setButton(button);
-  event.setStage(this);
   SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
   TouchFocus[] focuses=touchFocuses.begin();
   for (int i=0, n=touchFocuses.size; i < n; i++) {
@@ -23,6 +22,7 @@
     TouchFocus focus=touchFocuses.get(i);
     if (focus.pointer != pointer || focus.button != button)     continue;
     touchFocuses.removeIndex(i);
+    Pools.free(focus);
   }
   boolean handled=event.isHandled();
   Pools.free(event);

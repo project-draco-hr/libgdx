@@ -14,6 +14,7 @@
       if (fadeAlpha == 0)       return false;
       if (scrollX && hScrollBounds.contains(x,y)) {
         event.stop();
+        resetFade();
         if (hKnobBounds.contains(x,y)) {
           lastPoint.set(x,y);
           handlePosition=hKnobBounds.x;
@@ -21,11 +22,11 @@
           return true;
         }
         setScrollX(amountX + Math.max(areaWidth * 0.9f,maxX * 0.1f) * (x < hKnobBounds.x ? -1 : 1));
-        resetFade();
         return true;
       }
       if (scrollY && vScrollBounds.contains(x,y)) {
         event.stop();
+        resetFade();
         if (vKnobBounds.contains(x,y)) {
           lastPoint.set(x,y);
           handlePosition=vKnobBounds.y;
@@ -33,7 +34,6 @@
           return true;
         }
         setScrollY(amountY + Math.max(areaHeight * 0.9f,maxY * 0.1f) * (y < vKnobBounds.y ? 1 : -1));
-        resetFade();
         return true;
       }
       return false;

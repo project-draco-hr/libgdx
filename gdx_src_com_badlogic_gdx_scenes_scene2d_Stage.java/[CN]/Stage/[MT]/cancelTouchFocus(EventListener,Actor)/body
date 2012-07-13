@@ -1,0 +1,19 @@
+{
+  ActorEvent event=Pools.obtain(ActorEvent.class);
+  event.setStage(this);
+  event.setType(ActorEvent.Type.touchUp);
+  event.setStageX(Integer.MIN_VALUE);
+  event.setStageY(Integer.MIN_VALUE);
+  SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
+  for (int i=touchFocuses.size - 1; i >= 0; i--) {
+    TouchFocus focus=touchFocuses.get(i);
+    if (focus.listener == listener && focus.actor == actor)     continue;
+    event.setTarget(focus.actor);
+    event.setListenerActor(focus.actor);
+    event.setPointer(focus.pointer);
+    event.setButton(focus.button);
+    touchFocuses.removeIndex(i);
+    focus.listener.handle(event);
+  }
+  Pools.free(event);
+}

@@ -14,10 +14,26 @@
   TextureRegion upRegion=skin.getRegion("default-slider-knob");
   TextureRegion downRegion=skin.getRegion("default-slider-knob");
   BitmapFont buttonFont=skin.getFont("default-font");
-  TextButtonStyle style=new TextButtonStyle();
-  style.up=new TextureRegionDrawable(upRegion);
-  style.down=new TextureRegionDrawable(downRegion);
-  style.font=buttonFont;
-  TextButton button=new TextButton("Button Text",style);
+  TextButton button=new TextButton("Button 1",skin);
+  button.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      System.out.println("touchDown 1");
+      return false;
+    }
+  }
+);
   table.add(button);
+  Table table2=new Table();
+  stage.addActor(table2);
+  table2.setFillParent(true);
+  table2.bottom();
+  TextButton button2=new TextButton("Button 2",skin);
+  button2.addListener(new ActorListener(){
+    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+      System.out.println("touchDown 2");
+      return false;
+    }
+  }
+);
+  table2.add(button2);
 }

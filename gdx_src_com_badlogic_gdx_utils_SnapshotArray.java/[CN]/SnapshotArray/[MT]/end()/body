@@ -1,6 +1,7 @@
 {
+  snapshots=Math.max(0,snapshots - 1);
   if (snapshot == null)   return;
-  if (snapshot != items) {
+  if (snapshot != items && snapshots == 0) {
     recycled=snapshot;
     for (int i=0, n=recycled.length; i < n; i++)     recycled[i]=null;
   }
