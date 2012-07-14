@@ -24,24 +24,8 @@
   }
 );
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  TextButtonStyle style=skin.get(TextButtonStyle.class);
-  style.up=new EmptyDrawable(){
-    ShapeRenderer renderer=new ShapeRenderer();
-    public void draw(    SpriteBatch batch,    float x,    float y,    float width,    float height){
-      batch.end();
-      renderer.setProjectionMatrix(batch.getProjectionMatrix());
-      renderer.setTransformMatrix(batch.getTransformMatrix());
-      renderer.begin(ShapeType.Line);
-      for (int i=0; i < 25; i++) {
-        renderer.setColor(MathUtils.random(0.3f,1),MathUtils.random(0.3f,1),MathUtils.random(0.3f,1),1);
-        renderer.line(MathUtils.random(x,x + width),MathUtils.random(y,y + height),MathUtils.random(x,x + width),MathUtils.random(y,y + height));
-      }
-      renderer.end();
-      batch.begin();
-    }
-  }
-;
-  final TextButton button=new TextButton("Fancy Background",style);
+  final TextButton button=new TextButton("Fancy Background",skin);
+  button.pad(100).debug();
   button.addListener(new ActorGestureListener(){
     public boolean longPress(    Actor actor,    float x,    float y){
       System.out.println("long press " + x + ", "+ y);

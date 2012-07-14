@@ -4,20 +4,26 @@
       float toDeviceSpace=Gdx.graphics.getHeight() / height;
       float toViewportSpace=height / Gdx.graphics.getHeight();
       float deviceWidth=width * toDeviceSpace;
-      this.width=width + (Gdx.graphics.getWidth() - deviceWidth) * toViewportSpace;
+      gutterWidth=(Gdx.graphics.getWidth() - deviceWidth) * toViewportSpace / 2;
+      gutterHeight=0;
+      this.width=width + gutterWidth * 2;
       this.height=height;
     }
  else {
       float toDeviceSpace=Gdx.graphics.getWidth() / width;
       float toViewportSpace=width / Gdx.graphics.getWidth();
       float deviceHeight=height * toDeviceSpace;
-      this.height=height + (Gdx.graphics.getHeight() - deviceHeight) * toViewportSpace;
+      gutterWidth=0;
+      gutterHeight=(Gdx.graphics.getHeight() - deviceHeight) * toViewportSpace / 2;
+      this.height=height + gutterHeight * 2;
       this.width=width;
     }
   }
  else {
     this.width=width;
     this.height=height;
+    gutterWidth=0;
+    gutterHeight=0;
   }
   centerX=this.width / 2;
   centerY=this.height / 2;

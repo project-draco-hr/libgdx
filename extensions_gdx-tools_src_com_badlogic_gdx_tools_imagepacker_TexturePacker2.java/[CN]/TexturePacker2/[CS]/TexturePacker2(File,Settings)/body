@@ -1,5 +1,9 @@
 {
   this.settings=settings;
+  if (settings.pot) {
+    if (settings.maxWidth != MathUtils.nextPowerOfTwo(settings.maxWidth))     throw new RuntimeException("If pot is true, maxWidth must be a power of two: " + settings.maxWidth);
+    if (settings.maxHeight != MathUtils.nextPowerOfTwo(settings.maxHeight))     throw new RuntimeException("If pot is true, maxHeight must be a power of two: " + settings.maxHeight);
+  }
   maxRectsPacker=new MaxRectsPacker(settings);
   imageProcessor=new ImageProcessor(rootDir,settings);
 }

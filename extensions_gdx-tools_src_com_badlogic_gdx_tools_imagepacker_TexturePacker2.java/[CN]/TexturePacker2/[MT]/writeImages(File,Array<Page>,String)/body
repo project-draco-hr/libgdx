@@ -5,8 +5,12 @@
   int fileIndex=0;
   for (  Page page : pages) {
     int width=page.width, height=page.height;
-    int paddingX=(int)Math.ceil(settings.paddingX / 2f);
-    int paddingY=(int)Math.ceil(settings.paddingY / 2f);
+    int paddingX=settings.paddingX;
+    int paddingY=settings.paddingY;
+    if (settings.duplicatePadding) {
+      paddingX/=2;
+      paddingY/=2;
+    }
     width-=settings.paddingX;
     height-=settings.paddingY;
     if (settings.edgePadding) {

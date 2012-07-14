@@ -1,4 +1,9 @@
 {
+  int edgePaddingX=0, edgePaddingY=0;
+  if (!settings.duplicatePadding) {
+    edgePaddingX=settings.paddingX;
+    edgePaddingY=settings.paddingY;
+  }
   int minWidth=Integer.MAX_VALUE;
   int minHeight=Integer.MAX_VALUE;
   for (int i=0, nn=inputRects.size; i < nn; i++) {
@@ -18,7 +23,7 @@
   while (true) {
     Page bestWidthResult=null;
     while (width != -1) {
-      Page result=packAtSize(true,width,height,inputRects);
+      Page result=packAtSize(true,width - edgePaddingX,height - edgePaddingY,inputRects);
       if (++i % 70 == 0)       System.out.println();
       System.out.print(".");
       bestWidthResult=getBest(bestWidthResult,result);
@@ -30,6 +35,6 @@
     width=widthSearch.reset();
   }
   System.out.println();
-  if (bestResult == null)   bestResult=packAtSize(false,settings.maxWidth,settings.maxHeight,inputRects);
+  if (bestResult == null)   bestResult=packAtSize(false,settings.maxWidth - edgePaddingX,settings.maxHeight - edgePaddingY,inputRects);
   return bestResult;
 }

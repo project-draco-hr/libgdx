@@ -2,6 +2,7 @@
   setTouchable(true);
   addListener(clickListener=new ClickListener(){
     public void clicked(    ActorEvent event,    float x,    float y){
+      if (isDisabled)       return;
       boolean wasChecked=isChecked;
       setChecked(!isChecked);
       if (wasChecked != isChecked && fire(new ChangeEvent()))       setChecked(wasChecked);

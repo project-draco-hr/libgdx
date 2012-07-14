@@ -10,6 +10,15 @@
     }
   }
   PruneFreeList();
-  usedRectangles.add(newNode);
-  return newNode;
+  Rect bestNode=new Rect();
+  bestNode.set(rect);
+  bestNode.score1=newNode.score1;
+  bestNode.score2=newNode.score2;
+  bestNode.x=newNode.x;
+  bestNode.y=newNode.y;
+  bestNode.width=newNode.width;
+  bestNode.height=newNode.height;
+  bestNode.rotated=newNode.rotated;
+  usedRectangles.add(bestNode);
+  return bestNode;
 }
