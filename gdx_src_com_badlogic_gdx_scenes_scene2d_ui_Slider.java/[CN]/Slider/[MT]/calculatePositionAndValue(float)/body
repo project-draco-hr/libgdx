@@ -7,8 +7,12 @@
   sliderPos=Math.max(0,sliderPos);
   sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
   value=min + (max - min) * (sliderPos / (width - knob.getMinWidth()));
-  if (oldValue != value && fire(new ChangeEvent())) {
-    sliderPos=oldPosition;
-    value=oldValue;
+  if (oldValue != value) {
+    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+    if (fire(changeEvent)) {
+      sliderPos=oldPosition;
+      value=oldValue;
+    }
+    Pools.free(changeEvent);
   }
 }

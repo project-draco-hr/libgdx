@@ -3,8 +3,8 @@
   setItems(items);
   setWidth(getPrefWidth());
   setHeight(getPrefHeight());
-  addListener(new ActorListener(){
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+  addListener(new InputListener(){
+    public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer != 0)       return false;
       if (list != null && list.getParent() != null) {
         list.remove();

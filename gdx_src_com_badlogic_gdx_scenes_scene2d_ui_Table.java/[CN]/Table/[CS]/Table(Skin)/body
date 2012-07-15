@@ -3,5 +3,5 @@
   layout=new TableLayout();
   layout.setTable(this);
   setTransform(false);
-  setTouchable(false);
+  setTouchable(Touchable.onlyChildren);
 }

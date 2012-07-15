@@ -13,12 +13,12 @@
   actor.setBounds(15,15,100,100);
   actor.setOrigin(50,50);
   stage.addActor(actor);
-  actor.addListener(new ActorListener(){
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+  actor.addListener(new InputListener(){
+    public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       System.out.println("down");
       return true;
     }
-    public void touchUp(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+    public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
       System.out.println("up " + event.getTarget());
     }
   }
@@ -31,13 +31,13 @@
       System.out.println("long press " + x + ", "+ y);
       return true;
     }
-    public void fling(    ActorEvent event,    float velocityX,    float velocityY){
+    public void fling(    InputEvent event,    float velocityX,    float velocityY){
       System.out.println("fling " + velocityX + ", "+ velocityY);
     }
-    public void zoom(    ActorEvent event,    float initialDistance,    float distance){
+    public void zoom(    InputEvent event,    float initialDistance,    float distance){
       System.out.println("zoom " + initialDistance + ", "+ distance);
     }
-    public void pan(    ActorEvent event,    float x,    float y,    float deltaX,    float deltaY){
+    public void pan(    InputEvent event,    float x,    float y,    float deltaX,    float deltaY){
       event.getTarget().translate(deltaX,deltaY);
       if (deltaX < 0)       System.out.println("panning " + deltaX + ", "+ deltaY+ " "+ event.getTarget());
     }

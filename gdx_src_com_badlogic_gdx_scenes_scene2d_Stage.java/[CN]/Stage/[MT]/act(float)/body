@@ -5,8 +5,8 @@
       if (overLast != null) {
         pointerOverActors[pointer]=null;
         screenToStageCoordinates(stageCoords.set(Gdx.input.getX(pointer),Gdx.input.getY(pointer)));
-        ActorEvent event=Pools.obtain(ActorEvent.class);
-        event.setType(ActorEvent.Type.exit);
+        InputEvent event=Pools.obtain(InputEvent.class);
+        event.setType(InputEvent.Type.exit);
         event.setStage(this);
         event.setStageX(stageCoords.x);
         event.setStageY(stageCoords.y);

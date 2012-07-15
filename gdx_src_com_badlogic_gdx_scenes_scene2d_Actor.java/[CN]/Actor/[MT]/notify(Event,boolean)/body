@@ -14,9 +14,9 @@
     EventListener listener=listeners.get(i);
     if (listener.handle(event)) {
       event.handle();
-      if (event instanceof ActorEvent) {
-        ActorEvent actorEvent=(ActorEvent)event;
-        if (actorEvent.getType() == Type.touchDown)         event.getStage().addTouchFocus(listener,this,actorEvent.getPointer(),actorEvent.getButton());
+      if (event instanceof InputEvent) {
+        InputEvent inputEvent=(InputEvent)event;
+        if (inputEvent.getType() == Type.touchDown)         event.getStage().addTouchFocus(listener,this,inputEvent.getPointer(),inputEvent.getButton());
       }
     }
   }

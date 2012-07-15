@@ -1,6 +1,6 @@
 {
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
-  ActorEvent event=Pools.obtain(ActorEvent.class);
+  InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
   event.setType(Type.mouseMoved);
   event.setStageX(stageCoords.x);

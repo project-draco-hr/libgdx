@@ -7,20 +7,20 @@
       float toViewportSpace=height / screenHeight;
       float deviceWidth=width * toScreenSpace;
       float lengthen=(screenWidth - deviceWidth) * toViewportSpace;
-      gutterWidth=lengthen / 2;
-      gutterHeight=0;
       this.width=width + lengthen;
       this.height=height;
+      gutterWidth=lengthen / 2;
+      gutterHeight=0;
     }
  else {
       float toScreenSpace=screenWidth / width;
       float toViewportSpace=width / screenWidth;
       float deviceHeight=height * toScreenSpace;
       float lengthen=(screenHeight - deviceHeight) * toViewportSpace;
-      gutterWidth=0;
-      gutterHeight=lengthen / 2;
       this.height=height + lengthen;
       this.width=width;
+      gutterWidth=0;
+      gutterHeight=lengthen / 2;
     }
   }
  else {

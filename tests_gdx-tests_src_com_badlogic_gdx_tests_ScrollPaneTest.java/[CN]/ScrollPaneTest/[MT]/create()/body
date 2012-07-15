@@ -8,8 +8,8 @@
   container.setFillParent(true);
   Table table=new Table();
   final ScrollPane scroll=new ScrollPane(table,skin);
-  ActorListener stopTouchDown=new ActorListener(){
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+  InputListener stopTouchDown=new InputListener(){
+    public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       event.stop();
       return false;
     }
@@ -22,7 +22,7 @@
     TextButton button=new TextButton(i + "dos",skin);
     table.add(button);
     button.addListener(new ClickListener(){
-      public void clicked(      ActorEvent event,      float x,      float y){
+      public void clicked(      InputEvent event,      float x,      float y){
         System.out.println("click " + x + ", "+ y);
       }
     }

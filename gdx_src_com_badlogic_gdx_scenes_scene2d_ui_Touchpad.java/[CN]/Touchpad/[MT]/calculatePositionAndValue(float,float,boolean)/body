@@ -16,8 +16,12 @@
       }
     }
   }
-  if ((oldPercentX != knobPercent.x || oldPercentY != knobPercent.y) && fire(new ChangeEvent())) {
-    knobPercent.set(oldPercentX,oldPercentY);
-    knobPosition.set(oldPositionX,oldPositionY);
+  if (oldPercentX != knobPercent.x || oldPercentY != knobPercent.y) {
+    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+    if (fire(changeEvent)) {
+      knobPercent.set(oldPercentX,oldPercentY);
+      knobPosition.set(oldPositionX,oldPositionY);
+    }
+    Pools.free(changeEvent);
   }
 }

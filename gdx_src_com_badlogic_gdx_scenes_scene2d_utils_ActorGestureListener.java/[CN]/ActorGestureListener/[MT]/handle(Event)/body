@@ -1,6 +1,6 @@
 {
-  if (!(e instanceof ActorEvent))   return false;
-  ActorEvent event=(ActorEvent)e;
+  if (!(e instanceof InputEvent))   return false;
+  InputEvent event=(InputEvent)e;
 switch (event.getType()) {
 case touchDown:
     actor=event.getListenerActor();

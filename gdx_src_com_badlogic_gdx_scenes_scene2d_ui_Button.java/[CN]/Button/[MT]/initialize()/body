@@ -1,11 +1,15 @@
 {
-  setTouchable(true);
+  setTouchable(Touchable.enabled);
   addListener(clickListener=new ClickListener(){
-    public void clicked(    ActorEvent event,    float x,    float y){
+    public void clicked(    InputEvent event,    float x,    float y){
       if (isDisabled)       return;
       boolean wasChecked=isChecked;
       setChecked(!isChecked);
-      if (wasChecked != isChecked && fire(new ChangeEvent()))       setChecked(wasChecked);
+      if (wasChecked != isChecked) {
+        ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+        if (fire(changeEvent))         setChecked(wasChecked);
+        Pools.free(changeEvent);
+      }
     }
   }
 );

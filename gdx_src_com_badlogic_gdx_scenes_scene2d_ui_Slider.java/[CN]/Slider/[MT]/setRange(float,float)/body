@@ -4,5 +4,9 @@
   this.max=max;
   float oldValue=value;
   this.value=min;
-  if (oldValue != value)   fire(new ChangeEvent());
+  if (oldValue != value) {
+    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+    fire(changeEvent);
+    Pools.free(changeEvent);
+  }
 }

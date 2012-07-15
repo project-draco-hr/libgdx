@@ -1,7 +1,7 @@
 {
   if (touchFocuses.size == 0)   return false;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
-  ActorEvent event=Pools.obtain(ActorEvent.class);
+  InputEvent event=Pools.obtain(InputEvent.class);
   event.setType(Type.touchUp);
   event.setStage(this);
   event.setStageX(stageCoords.x);

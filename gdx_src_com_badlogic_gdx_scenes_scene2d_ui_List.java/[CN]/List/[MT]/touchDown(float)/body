@@ -3,5 +3,7 @@
   selectedIndex=(int)((getHeight() - y) / itemHeight);
   selectedIndex=Math.max(0,selectedIndex);
   selectedIndex=Math.min(items.length - 1,selectedIndex);
-  if (fire(new ChangeEvent()))   selectedIndex=oldIndex;
+  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+  if (fire(changeEvent))   selectedIndex=oldIndex;
+  Pools.free(changeEvent);
 }

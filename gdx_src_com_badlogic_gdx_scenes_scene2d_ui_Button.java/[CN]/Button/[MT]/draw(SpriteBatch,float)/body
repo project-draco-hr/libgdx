@@ -2,7 +2,7 @@
   validate();
   Drawable background=null;
   float offsetX=0, offsetY=0;
-  if (clickListener.isPressed()) {
+  if (clickListener.isPressed() && !isDisabled) {
     background=style.down == null ? style.up : style.down;
     offsetX=style.pressedOffsetX;
     offsetY=style.pressedOffsetY;

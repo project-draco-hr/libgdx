@@ -6,9 +6,11 @@
     background=style.down;
     if (background == null)     background=style.checked;
   }
-  padBottom(background.getBottomHeight());
-  padTop(background.getTopHeight());
-  padLeft(background.getLeftWidth());
-  padRight(background.getRightWidth());
+  if (background != null) {
+    padBottom(background.getBottomHeight());
+    padTop(background.getTopHeight());
+    padLeft(background.getLeftWidth());
+    padRight(background.getRightWidth());
+  }
   invalidateHierarchy();
 }

@@ -1,6 +1,6 @@
 {
-  addListener(new ActorListener(){
-    public boolean touchDown(    ActorEvent event,    float x,    float y,    int pointer,    int button){
+  addListener(new InputListener(){
+    public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer != 0)       return false;
       Stage stage=getStage();
       if (stage != null)       stage.setKeyboardFocus(TextField.this);
@@ -19,7 +19,7 @@
       cursor=Math.max(0,glyphPositions.size - 1);
       return true;
     }
-    public boolean keyDown(    ActorEvent event,    int keycode){
+    public boolean keyDown(    InputEvent event,    int keycode){
       final BitmapFont font=style.font;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
@@ -90,10 +90,10 @@
       }
       return false;
     }
-    public boolean keyUp(    ActorEvent event,    int keycode){
+    public boolean keyUp(    InputEvent event,    int keycode){
       return true;
     }
-    public boolean keyTyped(    ActorEvent event,    char character){
+    public boolean keyTyped(    InputEvent event,    char character){
       final BitmapFont font=style.font;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {

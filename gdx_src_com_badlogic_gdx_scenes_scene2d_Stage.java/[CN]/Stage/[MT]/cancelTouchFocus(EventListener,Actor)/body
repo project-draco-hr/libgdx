@@ -1,7 +1,7 @@
 {
-  ActorEvent event=Pools.obtain(ActorEvent.class);
+  InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
-  event.setType(ActorEvent.Type.touchUp);
+  event.setType(InputEvent.Type.touchUp);
   event.setStageX(Integer.MIN_VALUE);
   event.setStageY(Integer.MIN_VALUE);
   SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
