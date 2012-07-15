@@ -1,5 +1,14 @@
 {
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   this.style=style;
+  Drawable background=style.up;
+  if (background == null) {
+    background=style.down;
+    if (background == null)     background=style.checked;
+  }
+  padBottom(background.getBottomHeight());
+  padTop(background.getTopHeight());
+  padLeft(background.getLeftWidth());
+  padRight(background.getRightWidth());
   invalidateHierarchy();
 }
