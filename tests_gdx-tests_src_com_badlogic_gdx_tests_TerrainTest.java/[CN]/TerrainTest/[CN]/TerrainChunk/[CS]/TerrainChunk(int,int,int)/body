@@ -1,11 +1,12 @@
 {
   if ((width + 1) * (height + 1) > Short.MAX_VALUE)   throw new IllegalArgumentException("Chunk size too big, (width + 1)*(height+1) must be <= 32767");
-  this.heightMap=new byte[(width + 1) * (height + 1)];
+  this.heightMap=new float[(width + 1) * (height + 1)];
   this.width=(short)width;
   this.height=(short)height;
   this.vertices=new float[heightMap.length * vertexSize];
   this.indices=new short[width * height * 6];
   this.vertexSize=vertexSize;
+  buildHeightmap("data/heightmap.png");
   buildIndices();
   buildVertices();
 }

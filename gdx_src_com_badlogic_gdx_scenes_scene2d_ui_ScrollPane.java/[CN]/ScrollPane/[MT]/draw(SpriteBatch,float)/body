@@ -1,7 +1,7 @@
 {
   if (widget == null)   return;
   validate();
-  applyTransform(batch);
+  applyTransform(batch,computeTransform());
   if (scrollX)   hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
   if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
   float y=widgetAreaBounds.y;

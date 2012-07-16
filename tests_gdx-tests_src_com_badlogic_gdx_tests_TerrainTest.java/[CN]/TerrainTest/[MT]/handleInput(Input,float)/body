@@ -1,15 +1,39 @@
 {
   if (input.isTouched()) {
     Ray ray=camera.getPickRay(input.getX(),input.getY());
-    if (Intersector.intersectRayTriangles(ray,chunk.vertices,chunk.indices,4,intersection))     intersected=true;
+    if (Intersector.intersectRayTriangles(ray,chunk.vertices,chunk.indices,4,intersection)) {
+      intersected=true;
+    }
+    Vector3 v90=camera.direction.cpy();
+    Quaternion q=new Quaternion(camera.up,-90);
+    q.transform(v90);
+    v90.y=0;
+    Quaternion qUpDown=new Quaternion(v90,Gdx.input.getDeltaY());
+    Quaternion qLeftRight=new Quaternion(camera.up,Gdx.input.getDeltaX());
+    qUpDown.transform(camera.direction);
+    qLeftRight.transform(camera.direction);
   }
  else {
     intersected=false;
   }
-  if (input.isKeyPressed(Keys.W))   camera.position.z-=delta;
-  if (input.isKeyPressed(Keys.S))   camera.position.z+=delta;
-  if (input.isKeyPressed(Keys.A))   camera.position.x-=delta;
-  if (input.isKeyPressed(Keys.D))   camera.position.x+=delta;
+  if (input.isKeyPressed(Keys.W)) {
+    Vector3 forward=new Vector3().set(camera.direction).mul(delta);
+    camera.position.add(forward);
+    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+  }
+  if (input.isKeyPressed(Keys.S)) {
+    Vector3 forward=new Vector3().set(camera.direction).mul(-delta);
+    camera.position.add(forward);
+    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+  }
+  if (input.isKeyPressed(Keys.A)) {
+    camera.position.x-=delta;
+    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+  }
+  if (input.isKeyPressed(Keys.D)) {
+    camera.position.x+=delta;
+    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+  }
   if (input.isKeyPressed(Keys.Q))   camera.position.y+=delta;
   if (input.isKeyPressed(Keys.E))   camera.position.y-=delta;
 }

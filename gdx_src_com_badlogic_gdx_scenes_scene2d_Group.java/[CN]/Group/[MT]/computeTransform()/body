@@ -24,4 +24,5 @@
     worldTransform.set(localTransform);
   }
   batchTransform.set(worldTransform);
+  return batchTransform;
 }
