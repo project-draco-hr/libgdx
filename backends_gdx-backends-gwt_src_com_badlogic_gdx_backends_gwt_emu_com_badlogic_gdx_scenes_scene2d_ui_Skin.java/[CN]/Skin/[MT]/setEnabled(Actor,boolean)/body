@@ -1,5 +1,4 @@
 {
-  actor.setTouchable(enabled);
   com.badlogic.gwtref.client.Method method=findMethod(actor.getClass(),"getStyle");
   if (method == null)   return;
   Object style;
