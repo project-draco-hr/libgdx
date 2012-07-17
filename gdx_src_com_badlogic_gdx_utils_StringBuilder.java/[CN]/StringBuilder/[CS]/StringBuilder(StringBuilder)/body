@@ -1,0 +1,5 @@
+{
+  length=builder.length;
+  chars=new char[length + INITIAL_CAPACITY];
+  System.arraycopy(builder.chars,0,chars,0,length);
+}

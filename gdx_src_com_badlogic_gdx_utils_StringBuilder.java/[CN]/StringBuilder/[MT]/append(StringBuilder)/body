@@ -1,0 +1,5 @@
+{
+  if (builder == null)   appendNull();
+ else   append0(builder.chars,0,builder.length);
+  return this;
+}
