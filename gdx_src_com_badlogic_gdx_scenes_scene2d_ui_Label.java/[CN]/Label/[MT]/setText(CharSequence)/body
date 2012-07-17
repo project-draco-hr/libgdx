@@ -1,7 +1,13 @@
 {
-  if (text == null)   throw new IllegalArgumentException("text cannot be null.");
-  if (text.equals(this.text))   return;
-  this.text=text;
+  if (newText instanceof StringBuilder) {
+    if (text.equals(newText))     return;
+  }
+ else {
+    if (newText == null)     newText="";
+    if (isEqual(text.chars,newText))     return;
+  }
+  text.setLength(0);
+  text.append(newText);
   computeBounds();
   invalidateHierarchy();
 }

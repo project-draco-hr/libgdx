@@ -1,6 +1,5 @@
 {
-  if (text == null)   text="";
-  this.text=text;
+  if (text != null)   this.text.append(text);
   setStyle(style);
   setWidth(getPrefWidth());
   setHeight(getPrefHeight());
