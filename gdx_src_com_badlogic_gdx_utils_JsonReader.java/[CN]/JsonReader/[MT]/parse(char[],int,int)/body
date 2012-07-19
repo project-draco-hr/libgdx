@@ -4,6 +4,7 @@
   int s=0;
   Array<String> names=new Array(8);
   boolean needsUnescape=false;
+  boolean discardBuffer=false;
   RuntimeException parseRuntimeEx=null;
   boolean debug=false;
   if (debug)   System.out.println();
@@ -81,6 +82,7 @@ case 0:
 {
           s=p;
           needsUnescape=false;
+          discardBuffer=false;
         }
       break;
 case 1:
@@ -99,12 +101,14 @@ case 2:
 break;
 case 3:
 {
+if (!discardBuffer) {
 String value=new String(data,s,p - s);
 s=p;
 if (needsUnescape) value=unescape(value);
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("string: " + name + "="+ value);
 string(name,value);
+}
 }
 break;
 case 4:
@@ -121,6 +125,7 @@ case 5:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=true");
 bool(name,true);
+discardBuffer=true;
 }
 break;
 case 6:
@@ -128,6 +133,7 @@ case 6:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=false");
 bool(name,false);
+discardBuffer=true;
 }
 break;
 case 7:
@@ -135,6 +141,7 @@ case 7:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);
 string(name,null);
+discardBuffer=true;
 }
 break;
 case 8:
@@ -181,7 +188,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=42;
+cs=49;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -219,12 +226,14 @@ while (__nacts-- > 0) {
 switch (_json_actions[__acts++]) {
 case 3:
 {
+if (!discardBuffer) {
 String value=new String(data,s,p - s);
 s=p;
 if (needsUnescape) value=unescape(value);
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("string: " + name + "="+ value);
 string(name,value);
+}
 }
 break;
 case 4:
@@ -241,6 +250,7 @@ case 5:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=true");
 bool(name,true);
+discardBuffer=true;
 }
 break;
 case 6:
@@ -248,6 +258,7 @@ case 6:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=false");
 bool(name,false);
+discardBuffer=true;
 }
 break;
 case 7:
@@ -255,6 +266,7 @@ case 7:
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);
 string(name,null);
+discardBuffer=true;
 }
 break;
 }

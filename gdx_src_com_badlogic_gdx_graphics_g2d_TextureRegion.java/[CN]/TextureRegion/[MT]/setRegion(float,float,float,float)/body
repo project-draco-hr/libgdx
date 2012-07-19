@@ -3,4 +3,6 @@
   this.v=v;
   this.u2=u2;
   this.v2=v2;
+  regionWidth=Math.round(Math.abs(u2 - u) * texture.getWidth());
+  regionHeight=Math.round(Math.abs(v2 - v) * texture.getHeight());
 }

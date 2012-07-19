@@ -3,7 +3,7 @@
   this.animationDuration=keyFrames.size * frameDuration;
   this.keyFrames=new TextureRegion[keyFrames.size];
   for (int i=0, n=keyFrames.size; i < n; i++) {
-    this.keyFrames[i]=(TextureRegion)keyFrames.get(i);
+    this.keyFrames[i]=keyFrames.get(i);
   }
   this.playMode=NORMAL;
 }

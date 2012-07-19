@@ -1,8 +1,8 @@
 {
   int x=getRegionX();
   int y=getRegionY();
-  int width=getRegionWidth();
-  int height=getRegionHeight();
+  int width=regionWidth;
+  int height=regionHeight;
   if (width < 0) {
     x=x - width;
     width=-width;
