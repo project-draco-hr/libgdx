@@ -1,15 +1,16 @@
 {
   if (input.isTouched()) {
+    delta=delta + 0.0485f;
     Ray ray=camera.getPickRay(input.getX(),input.getY());
     if (Intersector.intersectRayTriangles(ray,chunk.vertices,chunk.indices,4,intersection)) {
       intersected=true;
     }
     Vector3 v90=camera.direction.cpy();
-    Quaternion q=new Quaternion(camera.up,-90);
+    Quaternion q=new Quaternion(camera.up,90);
     q.transform(v90);
     v90.y=0;
     Quaternion qUpDown=new Quaternion(v90,Gdx.input.getDeltaY());
-    Quaternion qLeftRight=new Quaternion(camera.up,Gdx.input.getDeltaX());
+    Quaternion qLeftRight=new Quaternion(camera.up,-Gdx.input.getDeltaX());
     qUpDown.transform(camera.direction);
     qLeftRight.transform(camera.direction);
   }
@@ -19,21 +20,26 @@
   if (input.isKeyPressed(Keys.W)) {
     Vector3 forward=new Vector3().set(camera.direction).mul(delta);
     camera.position.add(forward);
-    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
   }
   if (input.isKeyPressed(Keys.S)) {
-    Vector3 forward=new Vector3().set(camera.direction).mul(-delta);
-    camera.position.add(forward);
-    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+    Vector3 backward=new Vector3().set(camera.direction).mul(delta);
+    camera.position.sub(backward);
   }
   if (input.isKeyPressed(Keys.A)) {
-    camera.position.x-=delta;
-    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+    Vector3 left=new Vector3().set(camera.direction.cpy().crs(camera.up).nor()).mul(delta);
+    camera.position.sub(left);
   }
   if (input.isKeyPressed(Keys.D)) {
-    camera.position.x+=delta;
-    camera.position.y=this.heightmap[((int)(camera.position.x) * 33) + ((int)camera.position.z)] * 4 + 1;
+    Vector3 right=new Vector3().set(camera.direction.cpy().crs(camera.up).nor()).mul(delta);
+    camera.position.add(right);
   }
-  if (input.isKeyPressed(Keys.Q))   camera.position.y+=delta;
-  if (input.isKeyPressed(Keys.E))   camera.position.y-=delta;
+  Vector3 forward=new Vector3().set(camera.direction).mul(delta);
+  camera.position.add(forward);
+  int nextId=(MathUtils.floor(camera.position.x) * 33) + MathUtils.floor(camera.position.z);
+  if (nextId > heightmap.length - 1 || nextId < 0) {
+    camera.position.y=5;
+  }
+ else {
+    camera.position.y=this.heightmap[nextId] * 4 + 1;
+  }
 }

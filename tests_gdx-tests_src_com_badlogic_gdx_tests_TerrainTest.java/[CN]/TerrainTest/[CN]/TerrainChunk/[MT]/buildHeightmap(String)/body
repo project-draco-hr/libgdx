@@ -1,11 +1,11 @@
 {
   FileHandle handle=Gdx.files.internal(pathToHeightMap);
-  Pixmap jpg=new Pixmap(handle);
+  Pixmap heightmapImage=new Pixmap(handle);
   Color color=new Color();
   int idh=0;
   for (int x=0; x < this.width + 1; x++) {
     for (int y=0; y < this.height + 1; y++) {
-      Color.rgba8888ToColor(color,jpg.getPixel(x,y));
+      Color.rgba8888ToColor(color,heightmapImage.getPixel(x,y));
       this.heightMap[idh++]=color.r;
     }
   }

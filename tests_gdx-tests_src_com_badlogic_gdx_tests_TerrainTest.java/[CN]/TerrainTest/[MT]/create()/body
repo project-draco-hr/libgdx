@@ -4,7 +4,6 @@
   this.heightmap=chunk.heightMap;
   int len=chunk.vertices.length;
   for (int i=3; i < len; i+=4) {
-    Float f=Color.toFloatBits(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255),255);
     chunk.vertices[i]=Color.toFloatBits(rand.nextInt(255),rand.nextInt(255),rand.nextInt(255),255);
   }
   mesh=new Mesh(true,chunk.vertices.length / 3,chunk.indices.length,new VertexAttribute(VertexAttributes.Usage.Position,3,"a_position"),new VertexAttribute(VertexAttributes.Usage.ColorPacked,4,"a_color"));
@@ -13,6 +12,6 @@
   camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   camera.position.set(0,5,5);
   camera.direction.set(0,0,0).sub(camera.position).nor();
-  camera.near=-0.5f;
+  camera.near=0.005f;
   camera.far=300;
 }
