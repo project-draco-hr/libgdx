@@ -1,5 +1,0 @@
-{
-  final float[] verts1=p1.getTransformedVertices();
-  final float[] verts2=p2.getTransformedVertices();
-  return !separateConvexPolygons(verts1,verts2,separation) && !separateConvexPolygons(verts2,verts1,separation);
-}
