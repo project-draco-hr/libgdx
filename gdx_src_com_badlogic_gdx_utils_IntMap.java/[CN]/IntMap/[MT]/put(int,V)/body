@@ -8,6 +8,7 @@
     }
     return oldValue;
   }
+  int[] keyTable=this.keyTable;
   int index1=key & mask;
   int key1=keyTable[index1];
   if (key1 == key) {
@@ -28,6 +29,13 @@
     V oldValue=valueTable[index3];
     valueTable[index3]=value;
     return oldValue;
+  }
+  for (int i=capacity, n=i + stashSize; i < n; i++) {
+    if (keyTable[i] == key) {
+      V oldValue=valueTable[i];
+      valueTable[i]=value;
+      return oldValue;
+    }
   }
   if (key1 == EMPTY) {
     keyTable[index1]=key;

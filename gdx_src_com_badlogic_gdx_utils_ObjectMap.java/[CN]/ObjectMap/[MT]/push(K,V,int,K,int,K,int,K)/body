@@ -1,11 +1,5 @@
 {
   K[] keyTable=this.keyTable;
-  for (int i=capacity, n=i + stashSize; i < n; i++) {
-    if (insertKey.equals(keyTable[i])) {
-      valueTable[i]=insertValue;
-      return;
-    }
-  }
   V[] valueTable=this.valueTable;
   int mask=this.mask;
   K evictedKey;

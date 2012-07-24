@@ -1,5 +1,6 @@
 {
   if (key == null)   throw new IllegalArgumentException("key cannot be null.");
+  K[] keyTable=this.keyTable;
   int hashCode=System.identityHashCode(key);
   int index1=hashCode & mask;
   K key1=keyTable[index1];
@@ -21,6 +22,13 @@
     V oldValue=valueTable[index3];
     valueTable[index3]=value;
     return oldValue;
+  }
+  for (int i=capacity, n=i + stashSize; i < n; i++) {
+    if (keyTable[i] == key) {
+      V oldValue=valueTable[i];
+      valueTable[i]=value;
+      return oldValue;
+    }
   }
   if (key1 == null) {
     keyTable[index1]=key;
