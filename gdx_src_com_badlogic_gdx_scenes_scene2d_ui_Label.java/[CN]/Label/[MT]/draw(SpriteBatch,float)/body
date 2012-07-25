@@ -5,6 +5,7 @@
     batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
     style.background.draw(batch,getX(),getY(),getWidth(),getHeight());
   }
+  cache.setColor(color);
   cache.setPosition(getX(),getY());
   cache.draw(batch,color.a * parentAlpha);
 }
