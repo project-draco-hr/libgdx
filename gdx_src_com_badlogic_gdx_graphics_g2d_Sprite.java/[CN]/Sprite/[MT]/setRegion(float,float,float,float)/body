@@ -1,8 +1,5 @@
 {
-  this.u=u;
-  this.v=v;
-  this.u2=u2;
-  this.v2=v2;
+  super.setRegion(u,v,u2,v2);
   float[] vertices=Sprite.this.vertices;
   vertices[U1]=u;
   vertices[V1]=v2;
