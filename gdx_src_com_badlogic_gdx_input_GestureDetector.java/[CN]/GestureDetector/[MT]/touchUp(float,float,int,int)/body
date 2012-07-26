@@ -9,7 +9,7 @@
     tapCount++;
     lastTapTime=TimeUtils.nanoTime();
     gestureStartTime=0;
-    return listener.tap(x,y,tapCount);
+    return listener.tap(x,y,tapCount,pointer,button);
   }
  else   if (pinching) {
     pinching=false;

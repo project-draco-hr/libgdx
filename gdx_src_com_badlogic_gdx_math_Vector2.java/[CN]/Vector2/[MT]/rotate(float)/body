@@ -1,5 +1,5 @@
 {
-  float rad=angle * MathUtils.degreesToRadians;
+  float rad=degrees * MathUtils.degreesToRadians;
   float cos=(float)Math.cos(rad);
   float sin=(float)Math.sin(rad);
   float newX=this.x * cos - this.y * sin;
