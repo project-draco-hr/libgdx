@@ -1,4 +1,5 @@
 {
+  if (index < 0)   throw new IllegalArgumentException("ZIndex cannot be < 0.");
   Group parent=getParent();
   if (parent == null)   return;
   Array<Actor> children=parent.getChildren();

@@ -1,6 +1,6 @@
 {
   super.act(delta);
-  DelayedRemovalArray<Actor> children=this.children;
+  SnapshotArray<Actor> children=this.children;
   children.begin();
   for (int i=0, n=children.size; i < n; i++)   children.get(i).act(delta);
   children.end();

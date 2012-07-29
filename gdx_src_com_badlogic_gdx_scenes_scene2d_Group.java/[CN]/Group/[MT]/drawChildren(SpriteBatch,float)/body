@@ -1,6 +1,6 @@
 {
   parentAlpha*=getColor().a;
-  DelayedRemovalArray<Actor> children=this.children;
+  SnapshotArray<Actor> children=this.children;
   children.begin();
   if (cullingArea != null) {
     if (transform) {
