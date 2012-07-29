@@ -2,11 +2,5 @@
   if (min >= max)   throw new IllegalArgumentException("min must be < max");
   this.min=min;
   this.max=max;
-  float oldValue=value;
-  this.value=min;
-  if (oldValue != value) {
-    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-    fire(changeEvent);
-    Pools.free(changeEvent);
-  }
+  setValue(min);
 }
