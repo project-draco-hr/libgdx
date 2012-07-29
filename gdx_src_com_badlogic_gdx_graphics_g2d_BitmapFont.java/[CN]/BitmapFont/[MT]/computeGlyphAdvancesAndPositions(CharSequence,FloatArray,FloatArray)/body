@@ -3,7 +3,7 @@
   glyphPositions.clear();
   int index=0;
   int end=str.length();
-  int width=0;
+  float width=0;
   Glyph lastGlyph=null;
   if (data.scaleX == 1) {
     for (; index < end; index++) {
@@ -28,9 +28,10 @@
       if (g != null) {
         if (lastGlyph != null)         width+=lastGlyph.getKerning(ch) * scaleX;
         lastGlyph=g;
-        glyphAdvances.add(g.xadvance * scaleX);
+        float xadvance=g.xadvance * scaleX;
+        glyphAdvances.add(xadvance);
         glyphPositions.add(width);
-        width+=g.xadvance;
+        width+=xadvance;
       }
     }
     glyphAdvances.add(0);
