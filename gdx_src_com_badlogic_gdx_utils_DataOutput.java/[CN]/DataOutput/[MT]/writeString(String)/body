@@ -1,0 +1,19 @@
+{
+  if (value == null) {
+    write(0);
+    return;
+  }
+  int charCount=value.length();
+  if (charCount == 0) {
+    writeByte(1);
+    return;
+  }
+  writeInt(charCount + 1,true);
+  int charIndex=0;
+  for (; charIndex < charCount; charIndex++) {
+    int c=value.charAt(charIndex);
+    if (c > 127)     break;
+    write((byte)c);
+  }
+  if (charIndex < charCount)   writeString_slow(value,charCount,charIndex);
+}

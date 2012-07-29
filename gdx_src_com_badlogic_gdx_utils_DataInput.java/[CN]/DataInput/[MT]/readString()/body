@@ -1,0 +1,21 @@
+{
+  int charCount=readInt(true);
+switch (charCount) {
+case 0:
+    return null;
+case 1:
+  return "";
+}
+charCount--;
+if (chars.length < charCount) chars=new char[charCount];
+char[] chars=this.chars;
+int charIndex=0;
+int b=0;
+while (charIndex < charCount) {
+b=read();
+if (b > 127) break;
+chars[charIndex++]=(char)b;
+}
+if (charIndex < charCount) readUtf8_slow(charCount,charIndex,b);
+return new String(chars,0,charCount);
+}

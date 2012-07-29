@@ -1,0 +1,21 @@
+{
+  int b=read();
+  int result=b & 0x7F;
+  if ((b & 0x80) != 0) {
+    b=read();
+    result|=(b & 0x7F) << 7;
+    if ((b & 0x80) != 0) {
+      b=read();
+      result|=(b & 0x7F) << 14;
+      if ((b & 0x80) != 0) {
+        b=read();
+        result|=(b & 0x7F) << 21;
+        if ((b & 0x80) != 0) {
+          b=read();
+          result|=(b & 0x7F) << 28;
+        }
+      }
+    }
+  }
+  return optimizePositive ? result : ((result >>> 1) ^ -(result & 1));
+}

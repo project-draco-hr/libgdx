@@ -1,0 +1,25 @@
+{
+  if (!optimizePositive)   value=(value << 1) ^ (value >> 31);
+  if (value >>> 7 == 0) {
+    write((byte)value);
+    return 1;
+  }
+  write((byte)((value & 0x7F) | 0x80));
+  if (value >>> 14 == 0) {
+    write((byte)(value >>> 7));
+    return 2;
+  }
+  write((byte)(value >>> 7 | 0x80));
+  if (value >>> 21 == 0) {
+    write((byte)(value >>> 14));
+    return 3;
+  }
+  write((byte)(value >>> 14 | 0x80));
+  if (value >>> 28 == 0) {
+    write((byte)(value >>> 21));
+    return 4;
+  }
+  write((byte)(value >>> 21 | 0x80));
+  write((byte)(value >>> 28));
+  return 5;
+}

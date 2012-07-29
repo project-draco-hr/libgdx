@@ -1,0 +1,26 @@
+{
+  char[] chars=this.chars;
+  while (true) {
+switch (b >> 4) {
+case 0:
+case 1:
+case 2:
+case 3:
+case 4:
+case 5:
+case 6:
+case 7:
+      chars[charIndex]=(char)b;
+    break;
+case 12:
+case 13:
+  chars[charIndex]=(char)((b & 0x1F) << 6 | read() & 0x3F);
+break;
+case 14:
+chars[charIndex]=(char)((b & 0x0F) << 12 | (read() & 0x3F) << 6 | read() & 0x3F);
+break;
+}
+if (++charIndex >= charCount) break;
+b=read() & 0xFF;
+}
+}
