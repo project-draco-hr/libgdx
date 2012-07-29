@@ -1,5 +1,7 @@
 {
   sprite.setBounds(x,y,width,height);
-  sprite.setColor(tempColor.set(sprite.getColor()).mul(batch.getColor()));
+  Color color=sprite.getColor();
+  sprite.setColor(tempColor.set(color).mul(batch.getColor()));
   sprite.draw(batch);
+  sprite.setColor(color);
 }
