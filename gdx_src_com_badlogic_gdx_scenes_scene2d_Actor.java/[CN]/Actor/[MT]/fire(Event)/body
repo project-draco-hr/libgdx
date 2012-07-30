@@ -1,9 +1,5 @@
 {
-  if (event.getStage() == null) {
-    Stage stage=getStage();
-    if (stage == null)     throw new IllegalStateException("Stage must be set.");
-    event.setStage(stage);
-  }
+  if (event.getStage() == null)   event.setStage(getStage());
   event.setTarget(this);
   Array<Group> ancestors=Pools.obtain(Array.class);
   Group parent=getParent();

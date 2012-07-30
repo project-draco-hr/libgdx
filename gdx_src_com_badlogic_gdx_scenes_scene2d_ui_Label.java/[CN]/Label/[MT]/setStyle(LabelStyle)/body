@@ -3,7 +3,6 @@
   if (style.font == null)   throw new IllegalArgumentException("Missing LabelStyle font.");
   this.style=style;
   cache=new BitmapFontCache(style.font,style.font.usesIntegerPositions());
-  if (style.fontColor != null)   cache.setColor(style.fontColor);
   computeBounds();
   invalidateHierarchy();
 }
