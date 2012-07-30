@@ -21,6 +21,6 @@
     prefHeight-=rowHeight;
     node.actor.setPosition(indent,prefHeight);
     prefHeight-=ySpacing;
-    if (node.expanded)     layout(node.nodes,indent + indentSpacing);
+    if (node.expanded)     layout(node.children,indent + indentSpacing);
   }
 }

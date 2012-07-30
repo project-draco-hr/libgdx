@@ -1,14 +1,14 @@
 {
-  if (expanded == this.expanded || nodes == null)   return;
+  if (expanded == this.expanded || children == null || children.size == 0)   return;
   this.expanded=expanded;
   Group parent=actor.getParent();
   if (!(parent instanceof Tree))   return;
   Tree tree=(Tree)parent;
   if (expanded) {
-    for (int i=0, n=nodes.size; i < n; i++)     nodes.get(i).addToTree(tree);
+    for (int i=0, n=children.size; i < n; i++)     children.get(i).addToTree(tree);
   }
  else {
-    for (int i=0, n=nodes.size; i < n; i++)     nodes.get(i).removeFromTree(tree);
+    for (int i=0, n=children.size; i < n; i++)     children.get(i).removeFromTree(tree);
   }
   tree.invalidateHierarchy();
 }

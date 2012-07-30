@@ -1,4 +1,10 @@
 {
-  if (nodes == null)   nodes=new Array(2);
-  nodes.add(node);
+  node.parent=this;
+  if (children == null)   children=new Array(2);
+  children.add(node);
+  if (!expanded)   return;
+  Group parent=actor.getParent();
+  if (!(parent instanceof Tree))   return;
+  Tree tree=(Tree)parent;
+  for (int i=0, n=children.size; i < n; i++)   children.get(i).addToTree(tree);
 }

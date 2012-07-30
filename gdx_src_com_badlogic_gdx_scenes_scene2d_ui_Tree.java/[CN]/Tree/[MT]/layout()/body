@@ -2,6 +2,6 @@
   prefWidth=style.plus.getMinWidth();
   prefWidth=Math.max(prefWidth,style.minus.getMinWidth());
   prefHeight=getHeight();
-  layout(nodes,indentSpacing);
+  layout(rootNodes,indentSpacing);
   prefHeight=getHeight() - (prefHeight + ySpacing);
 }

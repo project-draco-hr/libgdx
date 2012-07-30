@@ -1,0 +1,9 @@
+{
+  if (node.parent != null) {
+    node.parent.remove(node);
+    return;
+  }
+  rootNodes.removeValue(node,true);
+  node.removeFromTree(this);
+  invalidateHierarchy();
+}

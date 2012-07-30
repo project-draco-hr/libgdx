@@ -1,8 +1,7 @@
 {
   addListener(new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
-      if (event.getTarget() != Tree.this)       return;
-      expand(nodes,x,y);
+      hit(rootNodes,x,y);
     }
   }
 );
