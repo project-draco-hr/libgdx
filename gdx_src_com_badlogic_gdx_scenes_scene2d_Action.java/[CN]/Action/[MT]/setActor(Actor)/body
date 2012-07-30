@@ -1,3 +1,10 @@
 {
   this.actor=actor;
+  if (actor == null) {
+    if (pool != null) {
+      pool.free(this);
+      pool=null;
+    }
+ else     reset();
+  }
 }

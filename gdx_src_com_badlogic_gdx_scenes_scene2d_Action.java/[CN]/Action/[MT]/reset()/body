@@ -1,7 +1,3 @@
 {
   restart();
-  if (pool != null) {
-    pool.free(this);
-    pool=null;
-  }
 }
