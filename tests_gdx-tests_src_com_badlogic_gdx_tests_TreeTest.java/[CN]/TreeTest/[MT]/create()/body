@@ -1,0 +1,17 @@
+{
+  stage=new Stage();
+  Gdx.input.setInputProcessor(stage);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Table table=new Table();
+  table.setFillParent(true);
+  stage.addActor(table);
+  Tree tree=new Tree(skin);
+  tree.add(new Node(new TextButton("moo1",skin)));
+  Node moo2=new Node(new TextButton("moo2",skin));
+  tree.add(moo2);
+  Node moo3=new Node(new TextButton("moo3",skin));
+  moo2.add(moo3);
+  moo3.add(new Node(new TextButton("moo4",skin)));
+  tree.add(new Node(new TextButton("moo5",skin)));
+  table.add(tree).fill().expand();
+}

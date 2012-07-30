@@ -12,8 +12,8 @@
   for (int i=0, n=touchFocuses.size; i < n; i++) {
     TouchFocus focus=focuses[i];
     if (focus.pointer != pointer)     continue;
-    event.setTarget(focus.actor);
-    event.setListenerActor(focus.actor);
+    event.setTarget(focus.target);
+    event.setListenerActor(focus.listenerActor);
     if (focus.listener.handle(event))     event.handle();
   }
   touchFocuses.end();

@@ -7,9 +7,9 @@
   SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
   for (int i=touchFocuses.size - 1; i >= 0; i--) {
     TouchFocus focus=touchFocuses.get(i);
-    if (focus.listener == listener && focus.actor == actor)     continue;
-    event.setTarget(focus.actor);
-    event.setListenerActor(focus.actor);
+    if (focus.listener == listener && focus.listenerActor == actor)     continue;
+    event.setTarget(focus.target);
+    event.setListenerActor(focus.listenerActor);
     event.setPointer(focus.pointer);
     event.setButton(focus.button);
     touchFocuses.removeIndex(i);

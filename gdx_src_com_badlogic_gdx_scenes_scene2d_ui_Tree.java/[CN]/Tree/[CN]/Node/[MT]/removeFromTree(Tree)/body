@@ -1,0 +1,5 @@
+{
+  tree.removeActor(actor);
+  if (!expanded)   return;
+  for (int i=0, n=nodes.size; i < n; i++)   nodes.get(i).removeFromTree(tree);
+}

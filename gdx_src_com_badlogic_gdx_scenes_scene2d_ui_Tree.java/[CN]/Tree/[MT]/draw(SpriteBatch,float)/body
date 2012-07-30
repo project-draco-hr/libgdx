@@ -1,0 +1,5 @@
+{
+  super.draw(batch,parentAlpha);
+  batch.setColor(getColor());
+  draw(batch,nodes,iconSpacing);
+}
