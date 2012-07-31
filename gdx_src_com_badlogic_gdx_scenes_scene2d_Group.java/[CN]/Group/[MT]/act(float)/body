@@ -1,7 +1,6 @@
 {
   super.act(delta);
-  SnapshotArray<Actor> children=this.children;
-  children.begin();
-  for (int i=0, n=children.size; i < n; i++)   children.get(i).act(delta);
+  Actor[] actors=children.begin();
+  for (int i=0, n=children.size; i < n; i++)   actors[i].act(delta);
   children.end();
 }
