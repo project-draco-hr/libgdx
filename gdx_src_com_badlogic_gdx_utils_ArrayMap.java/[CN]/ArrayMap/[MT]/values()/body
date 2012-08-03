@@ -1,0 +1,5 @@
+{
+  if (valuesIter == null)   valuesIter=new Values(this);
+ else   valuesIter.reset();
+  return valuesIter;
+}

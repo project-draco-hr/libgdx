@@ -1,0 +1,6 @@
+{
+  if (index >= map.size)   throw new NoSuchElementException(String.valueOf(index));
+  entry.key=map.keys[index];
+  entry.value=map.values[index++];
+  return entry;
+}
