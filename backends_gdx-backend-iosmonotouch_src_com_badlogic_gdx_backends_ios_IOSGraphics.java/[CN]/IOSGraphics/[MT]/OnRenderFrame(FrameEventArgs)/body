@@ -10,6 +10,7 @@
     frames=0;
   }
   MakeCurrent();
+  ((IOSInput)Gdx.input).processEvents();
   app.listener.render();
   SwapBuffers();
 }

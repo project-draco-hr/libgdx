@@ -1,0 +1,26 @@
+{
+synchronized (touchEvents) {
+    justTouched=false;
+    if (inputProcessor != null) {
+      for (      TouchEvent event : touchEvents) {
+        currentEvent=event;
+switch (event.phase) {
+case UITouchPhase.Began:
+          inputProcessor.touchDown(event.x,event.y,event.pointer,Buttons.LEFT);
+        if (numTouched == 1)         justTouched=true;
+      break;
+case UITouchPhase.Cancelled:
+case UITouchPhase.Ended:
+    inputProcessor.touchUp(event.x,event.y,event.pointer,Buttons.LEFT);
+  break;
+case UITouchPhase.Moved:
+case UITouchPhase.Stationary:
+inputProcessor.touchDown(event.x,event.y,event.pointer,Buttons.LEFT);
+break;
+}
+}
+}
+touchEventPool.free(touchEvents);
+touchEvents.clear();
+}
+}
