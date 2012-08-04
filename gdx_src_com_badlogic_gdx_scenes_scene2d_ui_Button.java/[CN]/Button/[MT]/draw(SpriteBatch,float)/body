@@ -8,7 +8,8 @@
     offsetY=style.pressedOffsetY;
   }
  else {
-    if (style.checked == null)     background=style.up;
+    if (isDisabled && style.disabled != null)     background=style.disabled;
+ else     if (style.checked == null)     background=style.up;
  else     background=isChecked ? style.checked : style.up;
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
