@@ -1,7 +1,7 @@
 {
-  final float m00=xx, m01=yx, m02=zx;
-  final float m10=xy, m11=yy, m12=zy;
-  final float m20=xz, m21=yz, m22=zz;
+  final float m00=xx, m01=xy, m02=xz;
+  final float m10=yx, m11=yy, m12=yz;
+  final float m20=zx, m21=zy, m22=zz;
   final float t=m00 + m11 + m22;
   double x, y, z, w;
   if (t >= 0) {
