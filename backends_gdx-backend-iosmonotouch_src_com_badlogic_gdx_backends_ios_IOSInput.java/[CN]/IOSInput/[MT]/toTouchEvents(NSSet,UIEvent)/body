@@ -1,0 +1,12 @@
+{
+  Gdx.app.log("IOSInput","got " + touches.get_Count() + " touches");
+  touches.Enumerate(new NSSetEnumerator(new NSSetEnumerator.Method(){
+    public void Invoke(    NSObject obj,    boolean[] stop){
+      UITouch touch=(UITouch)obj;
+      PointF loc=touch.LocationInView(touch.get_View());
+      Gdx.app.log("IOSInput","" + touch.get_Phase() + ", "+ loc.get_X()+ ", "+ loc.get_Y());
+      stop[0]=false;
+    }
+  }
+));
+}
