@@ -5,6 +5,7 @@
         page.texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),useMipMaps)){
           @Override public void dispose(){
             super.dispose();
+            getTextureData().consumePixmap().dispose();
           }
         }
 ;
