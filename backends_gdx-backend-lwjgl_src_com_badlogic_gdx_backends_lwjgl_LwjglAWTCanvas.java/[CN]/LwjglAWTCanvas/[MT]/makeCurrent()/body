@@ -1,0 +1,9 @@
+{
+  try {
+    canvas.makeCurrent();
+    setGlobals();
+  }
+ catch (  LWJGLException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+}
