@@ -53,4 +53,12 @@
   }
 ))));
   patch=skin.getPatch("default-round");
+  Window window=new Window("Moo",skin);
+  Label lbl=new Label("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJ",skin);
+  lbl.setWrap(true);
+  window.row();
+  window.add(lbl).width(400);
+  window.pack();
+  window.pack();
+  stage.addActor(window);
 }

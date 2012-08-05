@@ -18,7 +18,10 @@
         if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
         lineEnd--;
       }
-      if (lineEnd == start)       lineEnd=nextStart - 1;
+      if (lineEnd == start) {
+        nextStart--;
+        lineEnd=nextStart;
+      }
  else {
         nextStart=lineEnd;
         while (lineEnd > start) {
