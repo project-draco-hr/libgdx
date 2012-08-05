@@ -25,7 +25,6 @@
 );
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   final TextButton button=new TextButton("Fancy Background",skin);
-  button.pad(100).debug();
   button.addListener(new ActorGestureListener(){
     public boolean longPress(    Actor actor,    float x,    float y){
       System.out.println("long press " + x + ", "+ y);
@@ -38,7 +37,7 @@
       System.out.println("zoom " + initialDistance + ", "+ distance);
     }
     public void pan(    InputEvent event,    float x,    float y,    float deltaX,    float deltaY){
-      event.getTarget().translate(deltaX,deltaY);
+      event.getListenerActor().translate(deltaX,deltaY);
       if (deltaX < 0)       System.out.println("panning " + deltaX + ", "+ deltaY+ " "+ event.getTarget());
     }
   }
@@ -52,7 +51,7 @@
     }
   }
 ))));
-  patch=skin.getPatch("default-round");
+  patch=new TiledDrawable(skin.getRegion("default-round"));
   Window window=new Window("Moo",skin);
   Label lbl=new Label("ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJ",skin);
   lbl.setWrap(true);

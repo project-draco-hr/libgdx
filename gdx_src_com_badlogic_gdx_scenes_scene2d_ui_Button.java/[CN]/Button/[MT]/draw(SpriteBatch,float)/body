@@ -9,8 +9,9 @@
   }
  else {
     if (isDisabled && style.disabled != null)     background=style.disabled;
- else     if (style.checked == null)     background=style.up;
- else     background=isChecked ? style.checked : style.up;
+ else     if (isChecked && style.checked != null)     background=style.checked;
+ else     if (clickListener.isOver() && style.over != null)     background=style.over;
+ else     background=style.up;
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
   }

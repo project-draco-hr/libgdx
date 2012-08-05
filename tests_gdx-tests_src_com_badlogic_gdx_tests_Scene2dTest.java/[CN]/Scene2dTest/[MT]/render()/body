@@ -4,6 +4,6 @@
   stage.draw();
   Table.drawDebug(stage);
   stage.getSpriteBatch().begin();
-  patch.draw(stage.getSpriteBatch(),300,100,50,50);
+  patch.draw(stage.getSpriteBatch(),300,100,126,126);
   stage.getSpriteBatch().end();
 }
