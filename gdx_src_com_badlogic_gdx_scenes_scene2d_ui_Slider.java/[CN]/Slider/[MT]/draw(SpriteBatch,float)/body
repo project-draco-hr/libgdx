@@ -7,9 +7,18 @@
   float width=getWidth();
   float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  sliderPos=(value - min) / (max - min) * (width - knob.getMinWidth());
-  sliderPos=Math.max(0,sliderPos);
-  sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
-  slider.draw(batch,x,y + (int)((height - slider.getMinHeight()) * 0.5f),width,slider.getMinHeight());
-  knob.draw(batch,x + sliderPos,y + (int)((height - knob.getMinHeight()) * 0.5f),knob.getMinWidth(),knob.getMinHeight());
+  if (vertical) {
+    sliderPos=(value - min) / (max - min) * (height - knob.getMinHeight());
+    sliderPos=Math.max(0,sliderPos);
+    sliderPos=Math.min(height - knob.getMinHeight(),sliderPos);
+    slider.draw(batch,x + (int)((width - slider.getMinWidth()) * 0.5f),y,slider.getMinWidth(),height);
+    knob.draw(batch,x + (int)((width - knob.getMinWidth()) * 0.5f),y + sliderPos,knob.getMinWidth(),knob.getMinHeight());
+  }
+ else {
+    sliderPos=(value - min) / (max - min) * (width - knob.getMinWidth());
+    sliderPos=Math.max(0,sliderPos);
+    sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
+    slider.draw(batch,x,y + (int)((height - slider.getMinHeight()) * 0.5f),width,slider.getMinHeight());
+    knob.draw(batch,x + sliderPos,y + (int)((height - knob.getMinHeight()) * 0.5f),knob.getMinWidth(),knob.getMinHeight());
+  }
 }

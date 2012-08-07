@@ -27,7 +27,7 @@
       }
     }
 );
-    Slider slider=new Slider(0,100,100,skin);
+    Slider slider=new Slider(0,100,100,false,skin);
     slider.addListener(stopTouchDown);
     table.add(slider);
     table.add(new Label(i + "tres long0 long1 long2 long3 long4 long5 long6 long7 long8 long9 long10 long11 long12",skin));

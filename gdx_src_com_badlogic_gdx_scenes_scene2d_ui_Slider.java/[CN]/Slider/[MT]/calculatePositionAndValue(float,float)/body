@@ -1,0 +1,22 @@
+{
+  final Drawable knob=style.knob;
+  float value;
+  float oldPosition=sliderPos;
+  if (vertical) {
+    float height=getHeight();
+    sliderPos=y - knob.getMinHeight() * 0.5f;
+    sliderPos=Math.max(0,sliderPos);
+    sliderPos=Math.min(height - knob.getMinHeight(),sliderPos);
+    value=min + (max - min) * (sliderPos / (height - knob.getMinHeight()));
+  }
+ else {
+    float width=getWidth();
+    sliderPos=x - knob.getMinWidth() * 0.5f;
+    sliderPos=Math.max(0,sliderPos);
+    sliderPos=Math.min(width - knob.getMinWidth(),sliderPos);
+    value=min + (max - min) * (sliderPos / (width - knob.getMinWidth()));
+  }
+  float oldValue=value;
+  setValue(value);
+  if (value == oldValue)   sliderPos=oldPosition;
+}
