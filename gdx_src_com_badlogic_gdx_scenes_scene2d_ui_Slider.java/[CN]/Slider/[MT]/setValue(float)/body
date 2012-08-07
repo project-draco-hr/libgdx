@@ -1,6 +1,6 @@
 {
   if (value < min || value > max)   throw new IllegalArgumentException("value must be >= min and <= max: " + value);
-  value=(float)Math.floor(value / steps) * steps;
+  value=MathUtils.clamp(Math.round(value / steps) * steps,min,max);
   float oldValue=this.value;
   if (value == oldValue)   return;
   this.value=value;
