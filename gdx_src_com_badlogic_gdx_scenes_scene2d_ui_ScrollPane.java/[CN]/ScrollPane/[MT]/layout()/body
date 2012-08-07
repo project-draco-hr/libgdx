@@ -55,6 +55,10 @@
   }
   maxX=widgetWidth - areaWidth;
   maxY=widgetHeight - areaHeight;
+  if (fade) {
+    if (scrollX && hScrollKnob != null)     maxY-=hScrollKnob.getMinHeight();
+    if (scrollY && vScrollKnob != null)     maxX-=vScrollKnob.getMinWidth();
+  }
   amountX=MathUtils.clamp(amountX,0,maxX);
   amountY=MathUtils.clamp(amountY,0,maxY);
   if (scrollX) {
