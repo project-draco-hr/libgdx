@@ -1,4 +1,5 @@
 {
+  if (!layoutEnabled)   return;
   Group parent=getParent();
   if (fillParent && parent != null) {
     float parentWidth, parentHeight;

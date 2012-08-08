@@ -1,4 +1,5 @@
 {
+  if (disableLayout)   return;
   layout.invalidate();
   super.invalidate();
 }
