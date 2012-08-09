@@ -1,7 +1,0 @@
-{
-  this.workspace=workspace.replace('\\','/');
-  this.workspace=this.workspace.endsWith("/") ? this.workspace : this.workspace + "/";
-  this.projectName=projectName;
-  this.packageName=packageName;
-  this.mainClass=mainClass;
-}

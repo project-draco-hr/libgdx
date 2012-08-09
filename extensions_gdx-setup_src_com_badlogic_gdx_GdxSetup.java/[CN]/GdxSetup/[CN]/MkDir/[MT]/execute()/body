@@ -1,6 +1,0 @@
-{
-  log("Creating directory " + target);
-  File file=new File(target);
-  if (file.exists())   return;
-  if (!file.mkdirs())   throw new RuntimeException("Couldn't create directory " + target);
-}
