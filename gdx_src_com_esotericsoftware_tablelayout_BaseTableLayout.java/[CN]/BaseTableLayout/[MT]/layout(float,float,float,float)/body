@@ -1,0 +1,166 @@
+{
+  Toolkit toolkit=this.toolkit;
+  ArrayList<Cell> cells=this.cells;
+  if (sizeInvalid)   computeSize();
+  float hpadding=w(padLeft) + w(padRight);
+  float vpadding=h(padTop) + h(padBottom);
+  float totalMinWidth=0, totalMinHeight=0;
+  float totalExpandWidth=0, totalExpandHeight=0;
+  for (int i=0; i < columns; i++) {
+    totalMinWidth+=columnMinWidth[i];
+    totalExpandWidth+=expandWidth[i];
+  }
+  for (int i=0; i < rows; i++) {
+    totalMinHeight+=rowMinHeight[i];
+    totalExpandHeight+=expandHeight[i];
+  }
+  float[] columnWeightedWidth;
+  float totalGrowWidth=tablePrefWidth - totalMinWidth;
+  if (totalGrowWidth == 0)   columnWeightedWidth=columnMinWidth;
+ else {
+    float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - totalMinWidth));
+    columnWeightedWidth=this.columnWeightedWidth=ensureSize(this.columnWeightedWidth,columns);
+    for (int i=0; i < columns; i++) {
+      float growWidth=columnPrefWidth[i] - columnMinWidth[i];
+      float growRatio=growWidth / (float)totalGrowWidth;
+      columnWeightedWidth[i]=columnMinWidth[i] + extraWidth * growRatio;
+    }
+  }
+  float[] rowWeightedHeight;
+  float totalGrowHeight=tablePrefHeight - totalMinHeight;
+  if (totalGrowHeight == 0)   rowWeightedHeight=rowMinHeight;
+ else {
+    rowWeightedHeight=this.rowWeightedHeight=ensureSize(this.rowWeightedHeight,rows);
+    float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - totalMinHeight));
+    for (int i=0; i < rows; i++) {
+      float growHeight=rowPrefHeight[i] - rowMinHeight[i];
+      float growRatio=growHeight / (float)totalGrowHeight;
+      rowWeightedHeight[i]=rowMinHeight[i] + extraHeight * growRatio;
+    }
+  }
+  for (int i=0, n=cells.size(); i < n; i++) {
+    Cell c=cells.get(i);
+    if (c.ignore)     continue;
+    float spannedWeightedWidth=0;
+    for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedWeightedWidth+=columnWeightedWidth[column];
+    float weightedHeight=rowWeightedHeight[c.row];
+    float prefWidth=w(c.prefWidth,c);
+    float prefHeight=h(c.prefHeight,c);
+    float minWidth=w(c.minWidth,c);
+    float minHeight=h(c.minHeight,c);
+    float maxWidth=w(c.maxWidth,c);
+    float maxHeight=h(c.maxHeight,c);
+    if (prefWidth < minWidth)     prefWidth=minWidth;
+    if (prefHeight < minHeight)     prefHeight=minHeight;
+    if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
+    if (maxHeight > 0 && prefHeight > maxHeight)     prefHeight=maxHeight;
+    c.widgetWidth=Math.min(spannedWeightedWidth - c.computedPadLeft - c.computedPadRight,prefWidth);
+    c.widgetHeight=Math.min(weightedHeight - c.computedPadTop - c.computedPadBottom,prefHeight);
+    if (c.colspan == 1)     columnWidth[c.column]=Math.max(columnWidth[c.column],spannedWeightedWidth);
+    rowHeight[c.row]=Math.max(rowHeight[c.row],weightedHeight);
+  }
+  if (totalExpandWidth > 0) {
+    float extra=layoutWidth - hpadding;
+    for (int i=0; i < columns; i++)     extra-=columnWidth[i];
+    float used=0;
+    int lastIndex=0;
+    for (int i=0; i < columns; i++) {
+      if (expandWidth[i] == 0)       continue;
+      float amount=extra * expandWidth[i] / totalExpandWidth;
+      columnWidth[i]+=amount;
+      used+=amount;
+      lastIndex=i;
+    }
+    columnWidth[lastIndex]+=extra - used;
+  }
+  if (totalExpandHeight > 0) {
+    float extra=layoutHeight - vpadding;
+    for (int i=0; i < rows; i++)     extra-=rowHeight[i];
+    float used=0;
+    int lastIndex=0;
+    for (int i=0; i < rows; i++) {
+      if (expandHeight[i] == 0)       continue;
+      float amount=extra * expandHeight[i] / totalExpandHeight;
+      rowHeight[i]+=amount;
+      used+=amount;
+      lastIndex=i;
+    }
+    rowHeight[lastIndex]+=extra - used;
+  }
+  for (int i=0, n=cells.size(); i < n; i++) {
+    Cell c=cells.get(i);
+    if (c.ignore)     continue;
+    if (c.colspan == 1)     continue;
+    float extraWidth=0;
+    for (int column=c.column, nn=column + c.colspan; column < nn; column++)     extraWidth+=columnWeightedWidth[column] - columnWidth[column];
+    extraWidth-=c.computedPadLeft + c.computedPadRight;
+    extraWidth/=c.colspan;
+    if (extraWidth > 0) {
+      for (int column=c.column, nn=column + c.colspan; column < nn; column++)       columnWidth[column]+=extraWidth;
+    }
+  }
+  float tableWidth=hpadding, tableHeight=vpadding;
+  for (int i=0; i < columns; i++)   tableWidth+=columnWidth[i];
+  for (int i=0; i < rows; i++)   tableHeight+=rowHeight[i];
+  float x=layoutX + w(padLeft);
+  if ((align & RIGHT) != 0)   x+=layoutWidth - tableWidth;
+ else   if ((align & LEFT) == 0)   x+=(layoutWidth - tableWidth) / 2;
+  float y=layoutY + w(padTop);
+  if ((align & BOTTOM) != 0)   y+=layoutHeight - tableHeight;
+ else   if ((align & TOP) == 0)   y+=(layoutHeight - tableHeight) / 2;
+  float currentX=x, currentY=y;
+  for (int i=0, n=cells.size(); i < n; i++) {
+    Cell c=cells.get(i);
+    if (c.ignore)     continue;
+    float spannedCellWidth=0;
+    for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
+    spannedCellWidth-=c.computedPadLeft + c.computedPadRight;
+    currentX+=c.computedPadLeft;
+    if (c.fillX > 0) {
+      c.widgetWidth=spannedCellWidth * c.fillX;
+      float maxWidth=w(c.maxWidth,c);
+      if (maxWidth > 0)       c.widgetWidth=Math.min(c.widgetWidth,maxWidth);
+    }
+    if (c.fillY > 0) {
+      c.widgetHeight=rowHeight[c.row] * c.fillY - c.computedPadTop - c.computedPadBottom;
+      float maxHeight=h(c.maxHeight,c);
+      if (maxHeight > 0)       c.widgetHeight=Math.min(c.widgetHeight,maxHeight);
+    }
+    if ((c.align & LEFT) != 0)     c.widgetX=currentX;
+ else     if ((c.align & RIGHT) != 0)     c.widgetX=currentX + spannedCellWidth - c.widgetWidth;
+ else     c.widgetX=currentX + (spannedCellWidth - c.widgetWidth) / 2;
+    if ((c.align & TOP) != 0)     c.widgetY=currentY + c.computedPadTop;
+ else     if ((c.align & BOTTOM) != 0)     c.widgetY=currentY + rowHeight[c.row] - c.widgetHeight - c.computedPadBottom;
+ else     c.widgetY=currentY + (rowHeight[c.row] - c.widgetHeight + c.computedPadTop - c.computedPadBottom) / 2;
+    if (c.endRow) {
+      currentX=x;
+      currentY+=rowHeight[c.row];
+    }
+ else     currentX+=spannedCellWidth + c.computedPadRight;
+  }
+  if (debug == Debug.none)   return;
+  toolkit.clearDebugRectangles(this);
+  currentX=x;
+  currentY=y;
+  if (debug == Debug.table || debug == Debug.all) {
+    toolkit.addDebugRectangle(this,Debug.table,layoutX,layoutY,layoutWidth,layoutHeight);
+    toolkit.addDebugRectangle(this,Debug.table,x,y,tableWidth - hpadding,tableHeight - vpadding);
+  }
+  for (int i=0, n=cells.size(); i < n; i++) {
+    Cell c=cells.get(i);
+    if (c.ignore)     continue;
+    if (debug == Debug.widget || debug == Debug.all)     toolkit.addDebugRectangle(this,Debug.widget,c.widgetX,c.widgetY,c.widgetWidth,c.widgetHeight);
+    float spannedCellWidth=0;
+    for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
+    spannedCellWidth-=c.computedPadLeft + c.computedPadRight;
+    currentX+=c.computedPadLeft;
+    if (debug == Debug.cell || debug == Debug.all) {
+      toolkit.addDebugRectangle(this,Debug.cell,currentX,currentY + c.computedPadTop,spannedCellWidth,rowHeight[c.row] - c.computedPadTop - c.computedPadBottom);
+    }
+    if (c.endRow) {
+      currentX=x;
+      currentY+=rowHeight[c.row];
+    }
+ else     currentX+=spannedCellWidth + c.computedPadRight;
+  }
+}

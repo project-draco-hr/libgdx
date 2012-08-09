@@ -1,0 +1,13 @@
+{
+  clear();
+  padTop=null;
+  padLeft=null;
+  padBottom=null;
+  padRight=null;
+  align=CENTER;
+  if (debug != Debug.none)   toolkit.clearDebugRectangles((L)this);
+  debug=Debug.none;
+  cellDefaults.set(Cell.defaults(this));
+  columnDefaults.clear();
+  rowDefaults=null;
+}

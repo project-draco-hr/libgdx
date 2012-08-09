@@ -1,0 +1,11 @@
+{
+  return new Value(){
+    public float get(    Cell cell){
+      return Toolkit.instance.getWidth(widget) * percent;
+    }
+    public float get(    Object table){
+      return Toolkit.instance.getWidth(widget) * percent;
+    }
+  }
+;
+}

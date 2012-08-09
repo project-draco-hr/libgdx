@@ -1,0 +1,5 @@
+{
+  removeChild((T)layout.table,(C)cell.widget);
+  cell.widget=widget;
+  addChild((T)layout.table,widget);
+}

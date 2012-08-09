@@ -1,0 +1,11 @@
+{
+  return new CellValue(){
+    public float get(    Cell cell){
+      if (cell == null)       throw new RuntimeException("minHeight can only be set on a cell property.");
+      Object widget=cell.getWidget();
+      if (widget == null)       return 0;
+      return Toolkit.instance.getMinHeight(widget);
+    }
+  }
+;
+}

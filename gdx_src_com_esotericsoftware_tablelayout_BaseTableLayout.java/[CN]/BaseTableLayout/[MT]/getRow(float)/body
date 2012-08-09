@@ -1,0 +1,14 @@
+{
+  int row=0;
+  y+=h(padTop);
+  int i=0, n=cells.size();
+  if (n == 0)   return -1;
+  while (i < n && !cells.get(i).isEndRow())   i++;
+  while (i < n) {
+    Cell c=cells.get(i++);
+    if (c.getIgnore())     continue;
+    if (c.widgetY + c.computedPadTop > y)     break;
+    if (c.endRow)     row++;
+  }
+  return rows - row;
+}
