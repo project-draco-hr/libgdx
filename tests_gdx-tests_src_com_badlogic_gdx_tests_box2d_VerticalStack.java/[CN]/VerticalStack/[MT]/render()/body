@@ -1,7 +1,3 @@
 {
   super.render();
-  if (renderer.batch != null) {
-    renderer.batch.begin();
-    renderer.batch.end();
-  }
 }
