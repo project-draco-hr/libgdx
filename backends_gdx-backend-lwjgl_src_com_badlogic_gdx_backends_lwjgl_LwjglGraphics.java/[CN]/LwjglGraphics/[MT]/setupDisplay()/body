@@ -25,7 +25,6 @@
   }
   if (config.x != -1 && config.y != -1)   Display.setLocation(config.x,config.y);
   createDisplayPixelFormat();
-  if (config.x != -1 && config.y != -1)   Display.setLocation(config.x,config.y);
   config.x=Display.getX();
   config.y=Display.getY();
   initiateGLInstances();
