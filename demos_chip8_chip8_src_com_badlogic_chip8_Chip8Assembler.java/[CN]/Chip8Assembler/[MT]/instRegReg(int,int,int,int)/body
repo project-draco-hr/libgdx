@@ -1,4 +1,0 @@
-{
-  chip8.mem[addr++]=(byte)(((opcode & 0xf) << 4) | (vx & 0xf));
-  chip8.mem[addr++]=(byte)(((vy & 0xf) << 4) | (opcodeSuffix & 0xf));
-}
