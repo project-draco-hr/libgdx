@@ -17,7 +17,7 @@
     if (listSelectedIndex == i) {
       listSelection.draw(batch,x,y + posY - itemHeight,width,itemHeight);
     }
-    font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
+    font.setColor(fontColor.r,fontColor.g,fontColor.b,color.a * fontColor.a * parentAlpha);
     font.setScale(scaleX,scaleY);
     font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
     font.setScale(1,1);

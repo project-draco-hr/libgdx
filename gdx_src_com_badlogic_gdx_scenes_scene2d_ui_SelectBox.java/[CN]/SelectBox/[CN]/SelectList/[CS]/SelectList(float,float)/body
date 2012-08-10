@@ -7,4 +7,6 @@
   if (y - height < 0 && y + SelectBox.this.getHeight() + height < stage.getCamera().viewportHeight)   setY(y + SelectBox.this.getHeight());
  else   setY(y - height);
   stage.addCaptureListener(stageListener);
+  getColor().a=0;
+  addAction(fadeIn(0.3f,Interpolation.fade));
 }

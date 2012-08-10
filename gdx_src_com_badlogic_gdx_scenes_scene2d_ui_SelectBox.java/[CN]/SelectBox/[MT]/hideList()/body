@@ -1,0 +1,4 @@
+{
+  if (list.getParent() == null)   return;
+  list.addAction(sequence(fadeOut(0.15f,Interpolation.fade),removeActor()));
+}
