@@ -1,0 +1,4 @@
+{
+  if (actor != null)   waitForActions.addAll(actor.getActions());
+  super.setActor(actor);
+}

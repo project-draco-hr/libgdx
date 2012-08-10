@@ -1,0 +1,6 @@
+{
+  AddAction addAction=action(AddAction.class);
+  addAction.setTargetActor(targetActor);
+  addAction.setAction(action);
+  return addAction;
+}
