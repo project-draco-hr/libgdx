@@ -1,6 +1,6 @@
 {
   if (!ran) {
-    runnable.run();
+    run();
     ran=true;
   }
   return true;
