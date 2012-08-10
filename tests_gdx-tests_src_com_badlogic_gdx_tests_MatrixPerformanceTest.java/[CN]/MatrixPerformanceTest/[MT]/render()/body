@@ -1,0 +1,12 @@
+{
+  Gdx.gl10.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  if (!done) {
+    doBenchmark();
+    done=true;
+  }
+ else {
+    batch.begin();
+    font.drawMultiLine(batch,result,0,300);
+    batch.end();
+  }
+}
