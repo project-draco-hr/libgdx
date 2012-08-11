@@ -1,7 +1,12 @@
 {
-  Arrays.fill(tmp,0);
   tmp[M00]=scaleX;
+  tmp[M10]=0;
+  tmp[M20]=0;
+  tmp[M01]=0;
   tmp[M11]=scaleY;
+  tmp[M21]=0;
+  tmp[M02]=0;
+  tmp[M12]=0;
   tmp[M22]=1;
   mul(val,tmp);
   return this;

@@ -1,5 +1,12 @@
 {
-  Arrays.fill(val,0);
-  val[M00]=val[M11]=val[M22]=1;
+  val[M00]=1;
+  val[M10]=0;
+  val[M20]=0;
+  val[M01]=0;
+  val[M11]=1;
+  val[M21]=0;
+  val[M02]=0;
+  val[M12]=0;
+  val[M22]=1;
   return this;
 }
