@@ -1,8 +1,7 @@
 {
   new Thread(new Runnable(){
     /** 
- * Downloads the content of the specified url to the array. The
- * array has to be big enough.
+ * Downloads the content of the specified url to the array. The array has to be big enough. 
  */
     private int download(    byte[] out,    String url){
       InputStream in=null;
