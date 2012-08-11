@@ -1,12 +1,7 @@
 {
-  this.val[0]=scaleX;
-  this.val[1]=0;
-  this.val[2]=0;
-  this.val[3]=0;
-  this.val[4]=scaleY;
-  this.val[5]=0;
-  this.val[6]=0;
-  this.val[7]=0;
-  this.val[8]=1;
+  Arrays.fill(val,0);
+  this.val[M00]=scaleX;
+  this.val[M11]=scaleY;
+  this.val[M22]=1;
   return this;
 }
