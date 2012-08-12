@@ -1,7 +1,7 @@
 {
   if (expanded == this.expanded || children == null || children.size == 0)   return;
   this.expanded=expanded;
-  Group parent=actor.getParent();
+  Group parent=rightActor.getParent();
   if (!(parent instanceof Tree))   return;
   Tree tree=(Tree)parent;
   if (expanded) {
