@@ -2,6 +2,6 @@
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (style.background != null)   style.background.draw(batch,getX(),getY(),getWidth(),getHeight());
-  draw(batch,rootNodes,iconSpacing);
+  draw(batch,rootNodes,leftColumnWidth);
   super.draw(batch,parentAlpha);
 }

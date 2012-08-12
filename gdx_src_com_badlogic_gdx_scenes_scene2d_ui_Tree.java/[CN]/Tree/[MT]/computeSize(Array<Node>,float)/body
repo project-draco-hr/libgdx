@@ -1,0 +1,32 @@
+{
+  float ySpacing=this.ySpacing;
+  for (int i=0, n=nodes.size; i < n; i++) {
+    Node node=nodes.get(i);
+    float rowWidth=indent + iconSpacing, rowHeight;
+    Actor actor=node.rightActor;
+    if (actor instanceof Layout) {
+      Layout layout=(Layout)actor;
+      rowWidth+=layout.getPrefWidth();
+      rowHeight=layout.getPrefHeight();
+      layout.pack();
+    }
+ else {
+      rowWidth+=actor.getWidth();
+      rowHeight=actor.getHeight();
+    }
+    actor=node.leftActor;
+    if (actor instanceof Layout) {
+      Layout layout=(Layout)actor;
+      leftColumnWidth=Math.max(leftColumnWidth,layout.getPrefWidth());
+      rowHeight=Math.max(rowHeight,layout.getPrefHeight());
+      layout.pack();
+    }
+ else     if (actor != null) {
+      leftColumnWidth=Math.max(leftColumnWidth,actor.getWidth());
+      rowHeight=Math.max(rowHeight,actor.getHeight());
+    }
+    prefWidth=Math.max(prefWidth,rowWidth);
+    prefHeight-=rowHeight + ySpacing;
+    if (node.expanded)     computeSize(node.children,indent + indentSpacing);
+  }
+}
