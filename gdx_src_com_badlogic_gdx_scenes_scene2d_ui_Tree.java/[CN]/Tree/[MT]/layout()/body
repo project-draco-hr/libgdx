@@ -1,7 +1,4 @@
 {
-  prefWidth=style.plus.getMinWidth();
-  prefWidth=Math.max(prefWidth,style.minus.getMinWidth());
-  prefHeight=getHeight();
-  layout(rootNodes,indentSpacing);
-  prefHeight=getHeight() - (prefHeight + ySpacing);
+  if (sizeInvalid)   computeSize();
+  layout(rootNodes,leftColumnWidth + indentSpacing,getHeight());
 }

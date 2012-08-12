@@ -1,8 +1,9 @@
 {
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
-    if (y >= node.actor.getY() && y <= node.actor.getY() + node.actor.getHeight()) {
-      if (x < node.actor.getX())       node.setExpanded(!node.expanded);
+    if (y >= node.rightActor.getY() && y <= node.rightActor.getY() + node.rightActor.getHeight()) {
+      if (x < leftColumnWidth - iconSpacing)       return;
+      if (x < node.rightActor.getX())       node.setExpanded(!node.expanded);
       Node oldNode=selectedNode;
       selectedNode=node;
       ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
