@@ -4,5 +4,5 @@
     verts[i]=vertices[j].x;
     verts[i + 1]=vertices[j].y;
   }
-  jniSet(addr,verts,verts.length);
+  jniSet(addr,verts,0,verts.length);
 }

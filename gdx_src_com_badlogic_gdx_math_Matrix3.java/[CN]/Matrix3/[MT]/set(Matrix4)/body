@@ -1,12 +1,12 @@
 {
-  val[0]=mat.val[0];
-  val[1]=mat.val[1];
-  val[2]=mat.val[2];
-  val[3]=mat.val[4];
-  val[4]=mat.val[5];
-  val[5]=mat.val[6];
-  val[6]=mat.val[8];
-  val[7]=mat.val[9];
-  val[8]=mat.val[10];
+  val[M00]=mat.val[Matrix4.M00];
+  val[M10]=mat.val[Matrix4.M10];
+  val[M20]=mat.val[Matrix4.M20];
+  val[M01]=mat.val[Matrix4.M01];
+  val[M11]=mat.val[Matrix4.M11];
+  val[M21]=mat.val[Matrix4.M21];
+  val[M02]=mat.val[Matrix4.M02];
+  val[M12]=mat.val[Matrix4.M12];
+  val[M22]=mat.val[Matrix4.M22];
   return this;
 }
