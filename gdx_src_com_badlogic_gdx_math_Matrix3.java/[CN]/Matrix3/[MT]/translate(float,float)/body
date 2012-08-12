@@ -1,13 +1,13 @@
 {
-  tmp[0]=1;
-  tmp[1]=0;
-  tmp[2]=0;
-  tmp[3]=0;
-  tmp[4]=1;
-  tmp[5]=0;
-  tmp[6]=x;
-  tmp[7]=y;
-  tmp[8]=1;
+  tmp[M00]=1;
+  tmp[M10]=0;
+  tmp[M20]=0;
+  tmp[M01]=0;
+  tmp[M11]=1;
+  tmp[M21]=0;
+  tmp[M02]=x;
+  tmp[M12]=y;
+  tmp[M22]=1;
   mul(val,tmp);
   return this;
 }
