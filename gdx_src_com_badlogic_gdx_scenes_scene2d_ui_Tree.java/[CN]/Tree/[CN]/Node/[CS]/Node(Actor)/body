@@ -1,3 +1,4 @@
 {
-  this.actor=actor;
+  if (rightActor == null)   throw new IllegalArgumentException("rightActor cannot be null.");
+  this.rightActor=rightActor;
 }

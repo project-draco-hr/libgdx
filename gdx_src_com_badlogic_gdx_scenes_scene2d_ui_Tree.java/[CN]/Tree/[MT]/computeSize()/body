@@ -1,0 +1,11 @@
+{
+  sizeInvalid=false;
+  prefWidth=style.plus.getMinWidth();
+  prefWidth=Math.max(prefWidth,style.minus.getMinWidth());
+  prefHeight=getHeight();
+  leftColumnWidth=0;
+  computeSize(rootNodes,indentSpacing);
+  leftColumnWidth+=iconSpacing;
+  prefWidth+=leftColumnWidth;
+  prefHeight=getHeight() - (prefHeight + ySpacing);
+}

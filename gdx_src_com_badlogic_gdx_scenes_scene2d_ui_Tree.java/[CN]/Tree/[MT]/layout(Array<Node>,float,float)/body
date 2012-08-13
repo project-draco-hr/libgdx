@@ -1,0 +1,15 @@
+{
+  float ySpacing=this.ySpacing;
+  Drawable plus=style.plus, minus=style.minus;
+  for (int i=0, n=nodes.size; i < n; i++) {
+    Node node=nodes.get(i);
+    Actor actor=node.rightActor;
+    Drawable icon=node.expanded ? minus : plus;
+    y-=actor instanceof Layout ? ((Layout)actor).getPrefHeight() : actor.getHeight();
+    if (node.leftActor != null)     node.leftActor.setPosition(0,y);
+    node.rightActor.setPosition(indent,y);
+    y-=ySpacing;
+    if (node.expanded)     y=layout(node.children,indent + indentSpacing,y);
+  }
+  return y;
+}

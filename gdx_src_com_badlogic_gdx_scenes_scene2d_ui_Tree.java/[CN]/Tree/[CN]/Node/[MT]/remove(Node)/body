@@ -2,7 +2,7 @@
   if (children == null)   return;
   children.removeValue(node,true);
   if (!expanded)   return;
-  Group parent=actor.getParent();
+  Group parent=rightActor.getParent();
   if (!(parent instanceof Tree))   return;
   Tree tree=(Tree)parent;
   node.removeFromTree(tree);

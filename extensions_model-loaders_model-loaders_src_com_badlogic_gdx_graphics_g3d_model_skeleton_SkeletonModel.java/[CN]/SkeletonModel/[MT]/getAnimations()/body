@@ -3,7 +3,7 @@
     animations=new SkeletonAnimation[skeleton.animations.size];
     int i=0;
     for (    SkeletonAnimation anim : skeleton.animations.values()) {
-      animations[i]=anim;
+      animations[i++]=anim;
     }
   }
   return animations;
