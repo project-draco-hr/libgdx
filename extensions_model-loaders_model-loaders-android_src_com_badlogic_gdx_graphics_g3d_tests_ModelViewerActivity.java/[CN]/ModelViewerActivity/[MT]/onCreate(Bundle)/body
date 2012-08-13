@@ -5,5 +5,5 @@
   config.useCompass=false;
   config.useWakelock=true;
   config.useGL20=true;
-  initialize(new HybridLightTest(),config);
+  initialize(new SkeletonModelGpuSkinningTest(),config);
 }

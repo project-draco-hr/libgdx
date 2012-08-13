@@ -1,0 +1,6 @@
+{
+  GpuSkinningAttribute gpuAttr=(GpuSkinningAttribute)attr;
+  name=gpuAttr.name;
+  skeleton=gpuAttr.skeleton;
+  modelMatrix.idt();
+}
