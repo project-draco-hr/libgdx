@@ -1,6 +1,7 @@
 {
   actor.remove();
-  children.insert(index,actor);
+  if (index >= children.size)   children.add(actor);
+ else   children.insert(index,actor);
   actor.setParent(this);
   actor.setStage(getStage());
   childrenChanged();

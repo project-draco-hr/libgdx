@@ -1,0 +1,15 @@
+{
+  GL20 gl=Gdx.graphics.getGL20();
+  int length=skeleton.combinedMatrices.size;
+  for (int i=0; i < length; i++) {
+    Matrix4 matrix=skeleton.combinedMatrices.get(i);
+    tempMatrix.set(modelMatrix);
+    tempMatrix.mul(matrix);
+    System.arraycopy(tempMatrix.val,0,tmpValues,i * 16,16);
+    program.setUniformMatrix(bonesName,matrix);
+  }
+  int location=program.getUniformLocation(bonesName);
+  this.matrixArray.clear();
+  BufferUtils.copy(tmpValues,this.matrixArray,length * 16,0);
+  gl.glUniformMatrix4fv(location,length,false,this.matrixArray);
+}

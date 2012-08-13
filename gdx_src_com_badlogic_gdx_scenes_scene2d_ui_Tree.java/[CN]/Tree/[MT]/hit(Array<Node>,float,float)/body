@@ -3,7 +3,10 @@
     Node node=nodes.get(i);
     if (y >= node.rightActor.getY() && y <= node.rightActor.getY() + node.rightActor.getHeight()) {
       if (x < leftColumnWidth - iconSpacing)       return;
-      if (x < node.rightActor.getX())       node.setExpanded(!node.expanded);
+      if (x < node.rightActor.getX()) {
+        node.setExpanded(!node.expanded);
+        return;
+      }
       Node oldNode=selectedNode;
       selectedNode=node;
       ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);

@@ -35,6 +35,7 @@
         if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
           if (keycode == Keys.V)           paste();
           if (keycode == Keys.C || keycode == Keys.INSERT)           copy();
+          if (keycode == Keys.X || keycode == Keys.DEL)           cut();
         }
  else         if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
           if (keycode == Keys.INSERT)           paste();
