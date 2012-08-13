@@ -1,0 +1,5 @@
+{
+  GpuSkinningAttribute attr=pool.obtain();
+  attr.set(this);
+  return attr;
+}

@@ -1,0 +1,7 @@
+{
+  super(" BONES_NUM " + skeleton.combinedMatrices.size + "\n#define gpuSkinning");
+  this.skeleton=skeleton;
+  final int size=maxNumBones * 16;
+  tmpValues=new float[size];
+  matrixArray=BufferUtils.newFloatBuffer(size);
+}
