@@ -1,13 +1,13 @@
 {
-  tmp[0]=scaleX;
-  tmp[1]=0;
-  tmp[2]=0;
-  tmp[3]=0;
-  tmp[4]=scaleY;
-  tmp[5]=0;
-  tmp[6]=0;
-  tmp[7]=0;
-  tmp[8]=1;
+  tmp[M00]=scaleX;
+  tmp[M10]=0;
+  tmp[M20]=0;
+  tmp[M01]=0;
+  tmp[M11]=scaleY;
+  tmp[M21]=0;
+  tmp[M02]=0;
+  tmp[M12]=0;
+  tmp[M22]=1;
   mul(val,tmp);
   return this;
 }

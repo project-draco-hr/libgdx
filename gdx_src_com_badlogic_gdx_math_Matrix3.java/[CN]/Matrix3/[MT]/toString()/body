@@ -1,7 +1,7 @@
 {
   String[] values={Float.toString(val[M00]),Float.toString(val[M01]),Float.toString(val[M02]),Float.toString(val[M10]),Float.toString(val[M11]),Float.toString(val[M12]),Float.toString(val[M20]),Float.toString(val[M21]),Float.toString(val[M22])};
-  int max1=Math.max(values[0].length(),Math.max(values[3].length(),values[6].length()));
-  int max2=Math.max(values[1].length(),Math.max(values[4].length(),values[7].length()));
-  int max3=Math.max(values[2].length(),Math.max(values[5].length(),values[8].length()));
+  int max1=Math.max(values[M00].length(),Math.max(values[M01].length(),values[M02].length()));
+  int max2=Math.max(values[M10].length(),Math.max(values[M11].length(),values[M12].length()));
+  int max3=Math.max(values[M20].length(),Math.max(values[M21].length(),values[M22].length()));
   return String.format("%" + max1 + "s, %"+ max2+ "s, %"+ max3+ "s\n%"+ max1+ "s, %"+ max2+ "s, %"+ max3+ "s\n%"+ max1+ "s, %"+ max2+ "s, %"+ max3+ "s",(Object[])values);
 }

@@ -1,5 +1,5 @@
 {
+  if (layoutEnabled == enabled)   return;
   layoutEnabled=enabled;
   setLayoutEnabled(this,enabled);
-  if (enabled)   invalidateHierarchy();
 }

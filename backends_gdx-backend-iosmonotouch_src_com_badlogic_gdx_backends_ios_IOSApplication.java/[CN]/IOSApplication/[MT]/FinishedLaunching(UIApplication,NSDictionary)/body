@@ -1,7 +1,7 @@
 {
   this.uiApp=uiApp;
   RectangleF bounds=UIScreen.get_MainScreen().get_Bounds();
-  this.input=new IOSInput();
+  this.input=new IOSInput(config);
   this.graphics=new IOSGraphics(bounds,this,input);
   this.files=new IOSFiles();
   this.audio=new IOSAudio();
@@ -9,6 +9,7 @@
   Gdx.graphics=this.graphics;
   Gdx.audio=this.audio;
   Gdx.input=this.input;
+  this.input.setupPeripherals();
   this.uiWindow=new UIWindow(bounds);
   this.uiWindow.Add(graphics);
   this.graphics.Run();
