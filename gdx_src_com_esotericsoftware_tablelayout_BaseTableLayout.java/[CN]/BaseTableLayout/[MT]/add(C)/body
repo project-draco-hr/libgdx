@@ -27,6 +27,6 @@
   }
  else   cell.set(cellDefaults);
   cell.merge(rowDefaults);
-  toolkit.addChild(table,widget);
+  if (widget != null)   toolkit.addChild(table,widget);
   return cell;
 }
