@@ -7,7 +7,7 @@
     SkeletonJoint joint=new SkeletonJoint();
     joint.name=bone.name;
     joint.position.set(bone.position.x,bone.position.y,bone.position.z);
-    joint.rotation.setFromAxis(bone.rotation.axis.x,bone.rotation.axis.x,bone.rotation.axis.x,MathUtils.radiansToDegrees * bone.rotation.angle);
+    joint.rotation.setFromAxis(bone.rotation.axis.x,bone.rotation.axis.y,bone.rotation.axis.z,MathUtils.radiansToDegrees * bone.rotation.angle);
     if (bone.scale != null) {
       if (bone.scale.factor == 0)       joint.scale.set(bone.scale.x,bone.scale.y,bone.scale.z);
  else       joint.scale.set(bone.scale.factor,bone.scale.factor,bone.scale.factor);
@@ -53,7 +53,7 @@
           if (keyFrame.scale.factor == 0)           jointKeyframe.scale.set(keyFrame.scale.x,keyFrame.scale.y,keyFrame.scale.z);
  else           jointKeyframe.scale.set(keyFrame.scale.factor,keyFrame.scale.factor,keyFrame.scale.factor);
         }
-        jointKeyframe.rotation.setFromAxis(keyFrame.rotate.axis.x,keyFrame.rotate.axis.y,keyFrame.rotate.axis.z,MathUtils.radiansToDegrees * keyFrame.rotate.angle).mulLeft(skel.bindPoseJoints.get(jointIndex).rotation).nor();
+        jointKeyframe.rotation.setFromAxis(keyFrame.rotate.axis.x,keyFrame.rotate.axis.y,keyFrame.rotate.axis.z,MathUtils.radiansToDegrees * keyFrame.rotate.angle).nor();
         jointKeyframe.parentIndex=skel.bindPoseJoints.get(jointIndex).parentIndex;
         jointKeyFrames[k]=jointKeyframe;
         rotation.set(jointKeyframe.rotation);

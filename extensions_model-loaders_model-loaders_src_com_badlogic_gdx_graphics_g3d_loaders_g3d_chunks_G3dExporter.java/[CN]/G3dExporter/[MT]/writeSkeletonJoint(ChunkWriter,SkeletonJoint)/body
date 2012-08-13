@@ -1,0 +1,17 @@
+{
+  writer.writeString(joint.name);
+  writer.writeFloat(joint.position.x);
+  writer.writeFloat(joint.position.y);
+  writer.writeFloat(joint.position.z);
+  writer.writeFloat(joint.rotation.w);
+  writer.writeFloat(joint.rotation.x);
+  writer.writeFloat(joint.rotation.y);
+  writer.writeFloat(joint.rotation.z);
+  writer.writeFloat(joint.scale.x);
+  writer.writeFloat(joint.scale.y);
+  writer.writeFloat(joint.scale.z);
+  writer.writeInt(joint.children.size);
+  for (  SkeletonJoint child : joint.children) {
+    writeSkeletonJoint(writer,child);
+  }
+}

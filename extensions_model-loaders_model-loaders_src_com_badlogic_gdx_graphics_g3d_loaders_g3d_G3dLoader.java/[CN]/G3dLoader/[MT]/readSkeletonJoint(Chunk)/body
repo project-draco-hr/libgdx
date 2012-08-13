@@ -1,0 +1,21 @@
+{
+  SkeletonJoint joint=new SkeletonJoint();
+  joint.name=jointChunk.readString();
+  joint.position.x=jointChunk.readFloat();
+  joint.position.y=jointChunk.readFloat();
+  joint.position.z=jointChunk.readFloat();
+  joint.rotation.w=jointChunk.readFloat();
+  joint.rotation.x=jointChunk.readFloat();
+  joint.rotation.y=jointChunk.readFloat();
+  joint.rotation.z=jointChunk.readFloat();
+  joint.scale.x=jointChunk.readFloat();
+  joint.scale.y=jointChunk.readFloat();
+  joint.scale.z=jointChunk.readFloat();
+  int count=jointChunk.readInt();
+  for (int i=0; i < count; i++) {
+    SkeletonJoint child=readSkeletonJoint(jointChunk);
+    child.parent=joint;
+    joint.children.add(child);
+  }
+  return joint;
+}
