@@ -1,3 +1,3 @@
 {
-  return maxWidth;
+  return maxWidth == null ? 0 : maxWidth.get(this);
 }

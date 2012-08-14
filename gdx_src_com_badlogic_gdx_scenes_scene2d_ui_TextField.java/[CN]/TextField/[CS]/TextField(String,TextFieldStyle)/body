@@ -1,6 +1,6 @@
 {
   setStyle(style);
-  this.clipboard=Clipboard.getDefaultClipboard();
+  this.clipboard=Gdx.app.getClipboard();
   setText(text);
   setWidth(getPrefWidth());
   setHeight(getPrefHeight());

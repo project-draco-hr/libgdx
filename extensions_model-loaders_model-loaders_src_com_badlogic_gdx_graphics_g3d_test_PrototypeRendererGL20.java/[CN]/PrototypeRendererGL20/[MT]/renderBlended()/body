@@ -42,6 +42,11 @@
             currentShader.setUniformi(texAtrib.name,texAtrib.unit);
           }
         }
+ else         if (atrib instanceof GpuSkinningAttribute) {
+          final GpuSkinningAttribute gpuAtrib=(GpuSkinningAttribute)atrib;
+          gpuAtrib.setModelMatrix(modelMatrix);
+          gpuAtrib.bind(currentShader);
+        }
  else {
           atrib.bind(currentShader);
         }
