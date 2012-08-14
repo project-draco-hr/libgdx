@@ -1,8 +1,8 @@
 {
   if (angle == 0)   return this;
   angle=DEGREE_TO_RAD * angle;
-  float cos=MathUtils.cos(angle);
-  float sin=MathUtils.sin(angle);
+  float cos=(float)Math.cos(angle);
+  float sin=(float)Math.sin(angle);
   tmp[M00]=cos;
   tmp[M10]=sin;
   tmp[M20]=0;
