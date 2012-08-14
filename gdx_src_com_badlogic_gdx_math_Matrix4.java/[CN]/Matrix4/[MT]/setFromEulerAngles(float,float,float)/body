@@ -1,5 +1,4 @@
 {
-  idt();
   quat.setEulerAngles(yaw,pitch,roll);
-  return this.set(quat);
+  return idt().set(quat);
 }
