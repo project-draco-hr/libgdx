@@ -1,5 +1,5 @@
 {
-  addListener(new InputListener(){
+  addListener(inputListener=new InputListener(){
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer == 0 && button != 0)       return false;
       Stage stage=getStage();
@@ -30,8 +30,11 @@
     }
     public boolean keyDown(    InputEvent event,    int keycode){
       final BitmapFont font=style.font;
+      lastBlink=0;
+      cursorOn=false;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
+        boolean repeat=false;
         if (Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
           if (keycode == Keys.V)           paste();
           if (keycode == Keys.C || keycode == Keys.INSERT)           copy();
@@ -51,6 +54,7 @@
               hasSelection=true;
             }
             cursor--;
+            repeat=true;
           }
           if (keycode == Keys.RIGHT) {
             if (!hasSelection) {
@@ -58,6 +62,7 @@
               hasSelection=true;
             }
             cursor++;
+            repeat=true;
           }
           if (keycode == Keys.HOME) {
             if (!hasSelection) {
@@ -80,10 +85,12 @@
           if (keycode == Keys.LEFT) {
             cursor--;
             clearSelection();
+            repeat=true;
           }
           if (keycode == Keys.RIGHT) {
             cursor++;
             clearSelection();
+            repeat=true;
           }
           if (keycode == Keys.HOME) {
             cursor=0;
@@ -96,11 +103,17 @@
           cursor=Math.max(0,cursor);
           cursor=Math.min(text.length(),cursor);
         }
+        if (repeat && (!keyRepeatTask.isScheduled() || keyRepeatTask.keycode != keycode)) {
+          keyRepeatTask.keycode=keycode;
+          keyRepeatTask.cancel();
+          Timer.schedule(keyRepeatTask,keyRepeatInitialTime,keyRepeatTime);
+        }
         return true;
       }
       return false;
     }
     public boolean keyUp(    InputEvent event,    int keycode){
+      keyRepeatTask.cancel();
       return true;
     }
     public boolean keyTyped(    InputEvent event,    char character){

@@ -2,7 +2,7 @@
   if (lastKeyCharPressed != 0) {
     keyRepeatTimer-=Gdx.graphics.getDeltaTime();
     if (keyRepeatTimer < 0) {
-      keyRepeatTimer=0.15f;
+      keyRepeatTimer=keyRepeatTime;
       KeyEvent event=usedKeyEvents.obtain();
       event.keyCode=0;
       event.keyChar=lastKeyCharPressed;
@@ -37,7 +37,7 @@ case Keys.FORWARD_DEL:
     keyEvents.add(event);
     pressedKeys++;
     lastKeyCharPressed=keyChar;
-    keyRepeatTimer=0.4f;
+    keyRepeatTimer=keyRepeatInitialTime;
   }
  else {
     int keyCode=LwjglInput.getGdxKeyCode(Keyboard.getEventKey());
