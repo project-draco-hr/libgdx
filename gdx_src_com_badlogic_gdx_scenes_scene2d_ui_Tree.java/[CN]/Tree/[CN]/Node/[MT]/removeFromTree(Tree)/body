@@ -1,4 +1,5 @@
 {
+  if (leftActor != null)   tree.removeActor(leftActor);
   tree.removeActor(rightActor);
   if (!expanded)   return;
   for (int i=0, n=children.size; i < n; i++)   children.get(i).removeFromTree(tree);
