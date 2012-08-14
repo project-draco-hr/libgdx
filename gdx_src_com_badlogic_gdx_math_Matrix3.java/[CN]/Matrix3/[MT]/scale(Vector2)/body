@@ -1,3 +1,13 @@
 {
-  return scale(scale.x,scale.y);
+  tmp[M00]=scale.x;
+  tmp[M10]=0;
+  tmp[M20]=0;
+  tmp[M01]=0;
+  tmp[M11]=scale.y;
+  tmp[M21]=0;
+  tmp[M02]=0;
+  tmp[M12]=0;
+  tmp[M22]=1;
+  mul(val,tmp);
+  return this;
 }

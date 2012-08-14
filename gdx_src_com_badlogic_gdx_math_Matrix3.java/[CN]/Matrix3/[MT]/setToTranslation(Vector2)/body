@@ -1,3 +1,12 @@
 {
-  return setToTranslation(translation.x,translation.y);
+  this.val[M00]=1;
+  this.val[M10]=0;
+  this.val[M20]=0;
+  this.val[M01]=0;
+  this.val[M11]=1;
+  this.val[M21]=0;
+  this.val[M02]=translation.x;
+  this.val[M12]=translation.y;
+  this.val[M22]=1;
+  return this;
 }

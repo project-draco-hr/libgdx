@@ -1,3 +1,13 @@
 {
-  return translate(translation.x,translation.y);
+  tmp[M00]=1;
+  tmp[M10]=0;
+  tmp[M20]=0;
+  tmp[M01]=0;
+  tmp[M11]=1;
+  tmp[M21]=0;
+  tmp[M02]=translation.x;
+  tmp[M12]=translation.y;
+  tmp[M22]=1;
+  mul(val,tmp);
+  return this;
 }
