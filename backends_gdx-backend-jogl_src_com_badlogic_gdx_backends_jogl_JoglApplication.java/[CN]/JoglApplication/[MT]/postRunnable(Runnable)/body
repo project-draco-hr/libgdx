@@ -1,6 +1,0 @@
-{
-synchronized (runnables) {
-    runnables.add(runnable);
-    Gdx.graphics.requestRendering();
-  }
-}

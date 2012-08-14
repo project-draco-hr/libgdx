@@ -1,6 +1,0 @@
-{
-  GraphicsEnvironment genv=GraphicsEnvironment.getLocalGraphicsEnvironment();
-  GraphicsDevice device=genv.getDefaultScreenDevice();
-  java.awt.DisplayMode mode=device.getDisplayMode();
-  return new JoglDisplayMode(mode.getWidth(),mode.getHeight(),mode.getRefreshRate(),mode.getBitDepth(),mode);
-}

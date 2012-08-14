@@ -1,6 +1,0 @@
-{
-  ArrayList newList=(ArrayList)drawables.clone();
-  newList.add(drawable);
-  drawables=newList;
-  notifyAll();
-}

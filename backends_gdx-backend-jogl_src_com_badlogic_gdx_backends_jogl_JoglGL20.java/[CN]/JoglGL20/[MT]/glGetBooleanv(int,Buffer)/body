@@ -1,4 +1,0 @@
-{
-  if (!(params instanceof ByteBuffer))   throw new GdxRuntimeException("params must be a direct ByteBuffer");
-  gl.glGetBooleanv(pname,(ByteBuffer)params);
-}

@@ -1,6 +1,0 @@
-{
-  this.isContinuous=isContinuous;
-synchronized (contMonitor) {
-    contMonitor.notifyAll();
-  }
-}

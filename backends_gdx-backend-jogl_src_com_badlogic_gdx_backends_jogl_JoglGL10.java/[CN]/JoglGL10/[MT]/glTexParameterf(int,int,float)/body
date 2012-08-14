@@ -1,4 +1,0 @@
-{
-  if (JoglGraphics.minor < 2 && param == GL.GL_CLAMP_TO_EDGE)   param=GL.GL_CLAMP;
-  gl.glTexParameterf(target,pname,param);
-}

@@ -1,8 +1,0 @@
-{
-  initialize(config);
-  if (listener == null)   throw new GdxRuntimeException("RenderListener must not be null");
-  this.listener=listener;
-  this.config=config;
-  this.isFullscreen=config.fullscreen;
-  desktopMode=(JoglDisplayMode)JoglApplicationConfiguration.getDesktopDisplayMode();
-}

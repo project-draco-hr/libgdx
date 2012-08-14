@@ -1,4 +1,0 @@
-{
-  if (file.getPath().length() == 0)   return new JoglFileHandle(new File(name),type);
-  return new JoglFileHandle(new File(file,name),type);
-}
