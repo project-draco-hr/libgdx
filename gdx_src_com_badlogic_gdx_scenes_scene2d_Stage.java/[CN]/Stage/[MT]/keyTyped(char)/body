@@ -4,7 +4,8 @@
   event.setStage(this);
   event.setType(InputEvent.Type.keyTyped);
   event.setCharacter(character);
-  boolean handled=keyboardFocus.fire(event);
+  keyboardFocus.fire(event);
+  boolean handled=event.isHandled();
   Pools.free(event);
-  return event.isHandled();
+  return handled;
 }

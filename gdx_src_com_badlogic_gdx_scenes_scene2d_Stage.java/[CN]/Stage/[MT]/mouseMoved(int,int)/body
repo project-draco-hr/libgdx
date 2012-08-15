@@ -8,6 +8,7 @@
   Actor target=hit(stageCoords.x,stageCoords.y);
   if (target == null)   target=root;
   target.fire(event);
+  boolean handled=event.isHandled();
   Pools.free(event);
-  return event.isHandled();
+  return handled;
 }

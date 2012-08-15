@@ -5,6 +5,7 @@
   event.setType(InputEvent.Type.scrolled);
   event.setScrollAmount(amount);
   scrollFocus.fire(event);
+  boolean handled=event.isHandled();
   Pools.free(event);
-  return event.isHandled();
+  return handled;
 }
