@@ -38,11 +38,11 @@
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
     if (maxHeight > 0 && prefHeight > maxHeight)     prefHeight=maxHeight;
     if (c.colspan == 1) {
-      float hpadding=Math.max(0,c.computedPadLeft) + Math.max(0,c.computedPadRight);
+      float hpadding=c.computedPadLeft + c.computedPadRight;
       columnPrefWidth[c.column]=Math.max(columnPrefWidth[c.column],prefWidth + hpadding);
       columnMinWidth[c.column]=Math.max(columnMinWidth[c.column],minWidth + hpadding);
     }
-    float vpadding=Math.max(0,c.computedPadTop) + Math.max(0,c.computedPadBottom);
+    float vpadding=c.computedPadTop + c.computedPadBottom;
     rowPrefHeight[c.row]=Math.max(rowPrefHeight[c.row],prefHeight + vpadding);
     rowMinHeight[c.row]=Math.max(rowMinHeight[c.row],minHeight + vpadding);
   }
