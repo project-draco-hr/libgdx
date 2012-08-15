@@ -4,14 +4,15 @@
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
     Actor actor=node.rightActor;
-    if (selectedNode == node && style.selection != null) {
-      float rowHeight=actor instanceof Layout ? ((Layout)actor).getPrefHeight() : actor.getHeight();
-      style.selection.draw(batch,x,y + actor.getY(),getWidth(),rowHeight);
+    if (selectedNodes.contains(node,true) && style.selection != null)     style.selection.draw(batch,x,y + actor.getY() - ySpacing / 2,getWidth(),node.height + ySpacing);
+    if (node.icon != null) {
+      float iconY=actor.getY() + node.height / 2 - node.icon.getMinHeight() / 2;
+      node.icon.draw(batch,x + node.rightActor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
     }
     if (node.children == null || node.children.size == 0)     continue;
-    Drawable icon=node.expanded ? minus : plus;
-    float iconY=actor.getY() + actor.getHeight() / 2 - icon.getMinHeight() / 2;
-    icon.draw(batch,x + indent,y + iconY,icon.getMinWidth(),icon.getMinHeight());
+    Drawable expandIcon=node.expanded ? minus : plus;
+    float iconY=actor.getY() + +node.height / 2 - expandIcon.getMinHeight() / 2;
+    expandIcon.draw(batch,x + indent,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());
     if (node.expanded)     draw(batch,node.children,indent + indentSpacing);
   }
 }

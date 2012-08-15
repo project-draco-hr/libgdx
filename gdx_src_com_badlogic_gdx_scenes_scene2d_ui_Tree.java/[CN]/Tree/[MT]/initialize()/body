@@ -1,7 +1,7 @@
 {
   addListener(new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
-      hit(rootNodes,x,y);
+      hit(rootNodes,x,y,getHeight());
     }
   }
 );

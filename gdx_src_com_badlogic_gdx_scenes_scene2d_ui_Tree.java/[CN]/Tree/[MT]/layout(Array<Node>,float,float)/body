@@ -4,10 +4,11 @@
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
     Actor actor=node.rightActor;
-    Drawable icon=node.expanded ? minus : plus;
-    y-=actor instanceof Layout ? ((Layout)actor).getPrefHeight() : actor.getHeight();
+    float x=indent;
+    if (node.icon != null)     x+=node.icon.getMinWidth();
+    y-=node.height;
+    node.rightActor.setPosition(x,y);
     if (node.leftActor != null)     node.leftActor.setPosition(0,y);
-    node.rightActor.setPosition(indent,y);
     y-=ySpacing;
     if (node.expanded)     y=layout(node.children,indent + indentSpacing,y);
   }
