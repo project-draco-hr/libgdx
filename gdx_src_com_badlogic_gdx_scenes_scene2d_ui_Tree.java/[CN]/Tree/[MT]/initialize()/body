@@ -2,6 +2,7 @@
   addListener(new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
+      if (node == null)       return;
       float rowX=node.rightActor.getX();
       if (node.icon != null)       rowX-=iconSpacing + node.icon.getMinWidth();
       if (x < rowX) {
