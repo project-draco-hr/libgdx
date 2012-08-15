@@ -1,7 +1,35 @@
 {
   addListener(new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
-      hit(rootNodes,x,y,getHeight());
+      Node node=getNodeAt(y);
+      float rowX=node.rightActor.getX();
+      if (node.icon != null)       rowX-=iconSpacing + node.icon.getMinWidth();
+      if (x < rowX) {
+        node.setExpanded(!node.expanded);
+        return;
+      }
+      if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT) && selectedNodes.size > 0) {
+        float low=selectedNodes.first().rightActor.getY();
+        float high=node.rightActor.getY();
+        if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
+        if (low > high)         selectNodes(rootNodes,high,low);
+ else         selectNodes(rootNodes,low,high);
+      }
+ else {
+        if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
+        if (!selectedNodes.removeValue(node,true))         selectedNodes.add(node);
+      }
+      ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+      fire(changeEvent);
+      Pools.free(changeEvent);
+    }
+    public boolean mouseMoved(    InputEvent event,    float x,    float y){
+      overNode=getNodeAt(y);
+      return false;
+    }
+    public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
+      super.exit(event,x,y,pointer,toActor);
+      if (x < 0 || x > getWidth())       overNode=null;
     }
   }
 );

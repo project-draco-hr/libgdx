@@ -1,0 +1,4 @@
+{
+  if (object == null)   throw new IllegalArgumentException("object cannot be null.");
+  return findNode(rootNodes,object);
+}

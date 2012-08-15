@@ -5,14 +5,15 @@
     Node node=nodes.get(i);
     Actor actor=node.rightActor;
     if (selectedNodes.contains(node,true) && style.selection != null)     style.selection.draw(batch,x,y + actor.getY() - ySpacing / 2,getWidth(),node.height + ySpacing);
+ else     if (node == overNode && style.over != null)     style.over.draw(batch,x,y + actor.getY() - ySpacing / 2,getWidth(),node.height + ySpacing);
     if (node.icon != null) {
       float iconY=actor.getY() + node.height / 2 - node.icon.getMinHeight() / 2;
       node.icon.draw(batch,x + node.rightActor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
     }
     if (node.children == null || node.children.size == 0)     continue;
     Drawable expandIcon=node.expanded ? minus : plus;
-    float iconY=actor.getY() + +node.height / 2 - expandIcon.getMinHeight() / 2;
-    expandIcon.draw(batch,x + indent,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());
+    float iconY=actor.getY() + node.height / 2 - expandIcon.getMinHeight() / 2;
+    expandIcon.draw(batch,x + indent - iconSpacing,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());
     if (node.expanded)     draw(batch,node.children,indent + indentSpacing);
   }
 }
