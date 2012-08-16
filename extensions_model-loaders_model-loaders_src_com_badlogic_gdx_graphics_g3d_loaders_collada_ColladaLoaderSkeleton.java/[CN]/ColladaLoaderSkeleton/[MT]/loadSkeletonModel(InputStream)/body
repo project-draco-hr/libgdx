@@ -1,0 +1,18 @@
+{
+  XmlReader xml=new XmlReader();
+  Element root=null;
+  try {
+    root=xml.parse(in);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load Collada model",e);
+  }
+  Array<Geometry> geos=ColladaLoader.readGeometries(root);
+  Array<Skin> skins=readSkins(root);
+  Joint joint=readJoint(root);
+  Animation anim=readAnim(root);
+  SkeletonSubMesh[] meshes=createSkeletonSubMeshes(geos,skins);
+  Skeleton skeleton=createSkeleton(skins,joint.joint,anim);
+  SkeletonModel model=new SkeletonModel(skeleton,meshes);
+  return model;
+}

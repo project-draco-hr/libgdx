@@ -1,0 +1,16 @@
+{
+  Array<Element> nodes=animationElement.getChildrenByName("node");
+  Element jointNode=null;
+  for (int i=0; i < nodes.size; i++) {
+    Element e=nodes.get(i);
+    Array<Element> subNodes=e.getChildrenByName("node");
+    if (subNodes.size > 0 && subNodes.get(0).getAttribute("type").equalsIgnoreCase("JOINT")) {
+      jointNode=e;
+      break;
+    }
+  }
+  if (jointNode == null) {
+    throw new GdxRuntimeException("no Joint element in scene");
+  }
+  joint=getJoint(jointNode,true);
+}

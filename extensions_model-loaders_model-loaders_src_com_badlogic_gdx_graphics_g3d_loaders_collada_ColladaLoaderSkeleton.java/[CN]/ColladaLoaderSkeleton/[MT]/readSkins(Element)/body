@@ -1,0 +1,13 @@
+{
+  Element colladaGeoLibrary=root.getChildByName("library_controllers");
+  if (colladaGeoLibrary == null)   throw new GdxRuntimeException("not <library_controllers> element in file");
+  Element colladaController=colladaGeoLibrary.getChildByName("controller");
+  if (colladaController == null)   throw new GdxRuntimeException("no <controller> elements in file");
+  Array<Element> colladaSkin=colladaController.getChildrenByName("skin");
+  if (colladaController == null)   throw new GdxRuntimeException("no <controller> elements in file");
+  Array<Skin> skins=new Array<Skin>();
+  for (int i=0; i < colladaSkin.size; i++) {
+    skins.add(new Skin(colladaSkin.get(i)));
+  }
+  return skins;
+}
