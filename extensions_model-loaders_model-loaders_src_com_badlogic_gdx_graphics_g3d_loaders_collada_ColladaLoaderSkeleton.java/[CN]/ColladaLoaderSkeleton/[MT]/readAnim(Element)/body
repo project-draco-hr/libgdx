@@ -1,0 +1,5 @@
+{
+  Element colladaAnimationLib=root.getChildByName("library_animations");
+  if (colladaAnimationLib == null)   throw new GdxRuntimeException("not <library_animations> element in file");
+  return new Animation(colladaAnimationLib);
+}
