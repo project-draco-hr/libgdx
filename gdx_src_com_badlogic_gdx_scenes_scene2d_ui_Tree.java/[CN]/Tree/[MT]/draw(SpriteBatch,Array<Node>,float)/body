@@ -10,7 +10,7 @@
       float iconY=actor.getY() + node.height / 2 - node.icon.getMinHeight() / 2;
       node.icon.draw(batch,x + node.rightActor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
     }
-    if (node.children == null || node.children.size == 0)     continue;
+    if (node.children.size == 0)     continue;
     Drawable expandIcon=node.expanded ? minus : plus;
     float iconY=actor.getY() + node.height / 2 - expandIcon.getMinHeight() / 2;
     expandIcon.draw(batch,x + indent - iconSpacing,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());

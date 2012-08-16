@@ -15,11 +15,13 @@
         return;
       }
       if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
-        float rowX=node.rightActor.getX();
-        if (node.icon != null)         rowX-=iconSpacing + node.icon.getMinWidth();
-        if (x < rowX) {
-          node.setExpanded(!node.expanded);
-          return;
+        if (node.children.size > 0) {
+          float rowX=node.rightActor.getX();
+          if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
+          if (x < rowX) {
+            node.setExpanded(!node.expanded);
+            return;
+          }
         }
         selectedNodes.clear();
       }

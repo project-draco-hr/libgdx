@@ -8,7 +8,7 @@
     if (node.icon != null)     x+=node.icon.getMinWidth();
     y-=node.height;
     node.rightActor.setPosition(x,y);
-    if (node.leftActor != null)     node.leftActor.setPosition(0,y);
+    if (node.leftActor != null)     node.leftActor.setPosition(padding,y);
     y-=ySpacing;
     if (node.expanded)     y=layout(node.children,indent + indentSpacing,y);
   }

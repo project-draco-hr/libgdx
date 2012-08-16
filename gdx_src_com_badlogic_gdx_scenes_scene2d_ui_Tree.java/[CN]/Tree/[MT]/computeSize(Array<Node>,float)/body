@@ -21,12 +21,12 @@
     actor=node.leftActor;
     if (actor instanceof Layout) {
       Layout layout=(Layout)actor;
-      leftColumnWidth=Math.max(leftColumnWidth,layout.getPrefWidth());
+      leftColumnWidth=Math.max(leftColumnWidth,layout.getPrefWidth() + iconSpacing);
       node.height=Math.max(node.height,layout.getPrefHeight());
       layout.pack();
     }
  else     if (actor != null) {
-      leftColumnWidth=Math.max(leftColumnWidth,actor.getWidth());
+      leftColumnWidth=Math.max(leftColumnWidth,actor.getWidth() + iconSpacing);
       node.height=Math.max(node.height,actor.getHeight());
     }
     prefWidth=Math.max(prefWidth,rowWidth);
