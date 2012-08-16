@@ -1,4 +1,5 @@
 {
+  remove(node);
   node.parent=null;
   rootNodes.add(node);
   node.addToTree(this);
