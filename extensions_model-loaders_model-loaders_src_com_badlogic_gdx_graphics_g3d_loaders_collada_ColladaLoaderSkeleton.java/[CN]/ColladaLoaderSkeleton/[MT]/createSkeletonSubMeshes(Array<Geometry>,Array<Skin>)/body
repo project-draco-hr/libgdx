@@ -1,0 +1,7 @@
+{
+  SkeletonSubMesh[] meshes=new SkeletonSubMesh[geos.size];
+  for (int i=0; i < geos.size; i++) {
+    meshes[i]=geos.get(i).getSkeletonSubMesh(skins.get(i));
+  }
+  return meshes;
+}

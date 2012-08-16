@@ -1,0 +1,7 @@
+{
+  Element colladaLibrary=root.getChildByName("library_visual_scenes");
+  if (colladaLibrary == null)   throw new GdxRuntimeException("not <library_visual_scenes> element in file");
+  Element colladaScene=colladaLibrary.getChildByName("visual_scene");
+  if (colladaScene == null)   throw new GdxRuntimeException("no <controller> elements in file");
+  return new Joint(colladaScene);
+}

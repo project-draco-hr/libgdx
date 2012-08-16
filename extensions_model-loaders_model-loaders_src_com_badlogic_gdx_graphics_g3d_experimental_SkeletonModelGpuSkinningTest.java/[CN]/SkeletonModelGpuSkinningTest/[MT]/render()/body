@@ -10,7 +10,7 @@
     v.z+=MathUtils.cos(timer);
   }
   Gdx.gl.glEnable(GL10.GL_CULL_FACE);
-  Gdx.gl.glFrontFace(GL10.GL_CCW);
+  Gdx.gl.glFrontFace(GL10.GL_CW);
   Gdx.gl.glCullFace(GL10.GL_FRONT);
   Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
   Gdx.gl.glDepthMask(true);
