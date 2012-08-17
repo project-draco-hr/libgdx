@@ -1,5 +1,14 @@
 {
   super.drawBackground(batch,parentAlpha);
-  titleCache.setPosition(getX(),getY());
+  float x=getX(), y=getY() + getHeight();
+  TextBounds bounds=titleCache.getBounds();
+  if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
+ else   if ((titleAlignment & Align.right) != 0)   x+=getWidth() - bounds.width - getPadRight();
+ else   x+=(getWidth() - bounds.width) / 2;
+  if ((titleAlignment & Align.top) == 0) {
+    if ((titleAlignment & Align.bottom) != 0)     y-=getPadTop() - bounds.height;
+ else     y-=(getPadTop() - bounds.height) / 2;
+  }
+  titleCache.setPosition(x,y);
   titleCache.draw(batch,parentAlpha);
 }
