@@ -1,3 +1,3 @@
 {
-  return spaceRight == null ? 0 : spaceRight.get(this);
+  return spaceRight == null ? 0 : spaceRight.width(this);
 }
