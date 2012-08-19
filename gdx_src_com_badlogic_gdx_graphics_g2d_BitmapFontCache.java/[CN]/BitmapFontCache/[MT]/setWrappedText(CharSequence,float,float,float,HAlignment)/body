@@ -22,7 +22,7 @@
         lineEnd--;
       }
       if (lineEnd == start) {
-        nextStart--;
+        if (nextStart > start + 1)         nextStart--;
         lineEnd=nextStart;
       }
  else {
