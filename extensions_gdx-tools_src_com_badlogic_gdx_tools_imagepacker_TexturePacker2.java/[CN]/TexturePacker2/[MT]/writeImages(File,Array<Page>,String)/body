@@ -23,6 +23,8 @@
       width=MathUtils.nextPowerOfTwo(width);
       height=MathUtils.nextPowerOfTwo(height);
     }
+    width=Math.max(settings.minWidth,width);
+    height=Math.max(settings.minHeight,height);
     File outputFile;
     while (true) {
       outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
