@@ -76,7 +76,7 @@
 );
   iconButton.addListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
-      new MessageBox("Some Dialog",skin,"messageBox"){
+      new Dialog("Some Dialog",skin,"dialog"){
         protected void clicked(        Object object){
           System.out.println("Chosen: " + object);
         }

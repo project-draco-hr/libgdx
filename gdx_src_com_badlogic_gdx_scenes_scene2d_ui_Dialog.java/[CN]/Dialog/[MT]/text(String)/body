@@ -1,0 +1,4 @@
+{
+  if (skin == null)   throw new IllegalStateException("This method may only be used if the dialog was constructed with a Skin.");
+  return text(text,skin.get(LabelStyle.class));
+}
