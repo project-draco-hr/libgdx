@@ -1,0 +1,6 @@
+{
+  if (getRotation() != 0 || getScaleX() != 1 || getScaleY() != 1)   throw new GdxRuntimeException("Only unrotated and unscaled actors may use this method.");
+  localCoords.x+=getX();
+  localCoords.y+=getY();
+  return localCoords;
+}
