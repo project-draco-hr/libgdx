@@ -1,0 +1,13 @@
+{
+  addListener(new InputListener(){
+    public boolean keyDown(    InputEvent event,    int keycode2){
+      if (keycode == keycode2) {
+        clicked(object);
+        hide();
+      }
+      return false;
+    }
+  }
+);
+  return this;
+}
