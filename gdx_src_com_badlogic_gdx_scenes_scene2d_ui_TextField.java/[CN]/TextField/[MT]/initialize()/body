@@ -7,11 +7,11 @@
       if (!super.touchDown(event,x,y,pointer,button))       return false;
       if (pointer == 0 && button != 0)       return false;
       Stage stage=getStage();
-      if (stage != null)       stage.setKeyboardFocus(TextField.this);
       keyboard.show(true);
       clearSelection();
       setCursorPosition(x);
       selectionStart=cursor;
+      if (stage != null)       stage.setKeyboardFocus(TextField.this);
       return true;
     }
     public void touchDragged(    InputEvent event,    float x,    float y,    int pointer){
