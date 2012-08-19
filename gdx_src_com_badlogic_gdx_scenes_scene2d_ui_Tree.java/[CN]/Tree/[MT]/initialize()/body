@@ -36,7 +36,7 @@
     }
     public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
       super.exit(event,x,y,pointer,toActor);
-      if (x < 0 || x > getWidth() || y < 0 || y > getHeight())       overNode=null;
+      if (toActor == null || !toActor.isDescendant(Tree.this))       overNode=null;
     }
   }
 );
