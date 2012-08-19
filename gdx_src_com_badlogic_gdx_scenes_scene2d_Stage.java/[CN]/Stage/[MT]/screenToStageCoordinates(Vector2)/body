@@ -2,4 +2,5 @@
   camera.unproject(Vector3.tmp.set(screenCoords.x,screenCoords.y,0));
   screenCoords.x=Vector3.tmp.x;
   screenCoords.y=Vector3.tmp.y;
+  return screenCoords;
 }
