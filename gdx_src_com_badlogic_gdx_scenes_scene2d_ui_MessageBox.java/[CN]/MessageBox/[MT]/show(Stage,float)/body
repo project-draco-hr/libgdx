@@ -1,0 +1,10 @@
+{
+  pack();
+  setPosition((stage.getWidth() - getWidth()) / 2,(stage.getHeight() - getHeight()) / 2);
+  stage.addActor(this);
+  if (duration > 0) {
+    getColor().a=0;
+    addAction(Actions.fadeIn(duration,Interpolation.fade));
+  }
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  if (skin == null)   throw new IllegalStateException("This method may only be used if the MessageBox was constructed with a Skin.");
+  return button(text,object,skin.get(TextButtonStyle.class));
+}

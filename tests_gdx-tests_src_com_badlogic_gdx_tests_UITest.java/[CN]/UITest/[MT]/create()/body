@@ -74,4 +74,15 @@
     }
   }
 );
+  iconButton.addListener(new ChangeListener(){
+    public void changed(    ChangeEvent event,    Actor actor){
+      new MessageBox("Some Dialog",skin,"messageBox"){
+        protected void clicked(        Object object){
+          System.out.println("Chosen: " + object);
+        }
+      }
+.text("Are you enjoying this demo?").button("Yes",true).button("No",false).show(stage,0.4f);
+    }
+  }
+);
 }
