@@ -31,26 +31,30 @@
     visualAmountX=amountX;
     visualAmountY=amountY;
   }
-  if (overscroll && !panning) {
-    if (amountX < 0) {
-      resetFade();
-      amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
-      if (amountX > 0)       amountX=0;
+  if (!panning) {
+    if (overscrollX) {
+      if (amountX < 0) {
+        resetFade();
+        amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
+        if (amountX > 0)         amountX=0;
+      }
+ else       if (amountX > maxX) {
+        resetFade();
+        amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
+        if (amountX < maxX)         amountX=maxX;
+      }
     }
- else     if (amountX > maxX) {
-      resetFade();
-      amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
-      if (amountX < maxX)       amountX=maxX;
-    }
-    if (amountY < 0) {
-      resetFade();
-      amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
-      if (amountY > 0)       amountY=0;
-    }
- else     if (amountY > maxY) {
-      resetFade();
-      amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
-      if (amountY < maxY)       amountY=maxY;
+    if (overscrollY) {
+      if (amountY < 0) {
+        resetFade();
+        amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
+        if (amountY > 0)         amountY=0;
+      }
+ else       if (amountY > maxY) {
+        resetFade();
+        amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
+        if (amountY < maxY)         amountY=maxY;
+      }
     }
   }
 }
