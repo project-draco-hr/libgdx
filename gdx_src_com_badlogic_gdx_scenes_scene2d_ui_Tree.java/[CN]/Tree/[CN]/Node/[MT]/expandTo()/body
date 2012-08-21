@@ -1,5 +1,5 @@
 {
-  node=node.parent;
+  Node node=parent;
   while (node != null) {
     node.setExpanded(true);
     node=node.parent;
