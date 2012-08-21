@@ -1,7 +1,13 @@
 {
   Stage stage=getStage();
   if (stage == null)   return;
-  TextField textField=findNextTextField(stage.getActors(),null,up);
+  getParent().localToStageCoordinates(Vector2.tmp.set(getX(),getY()));
+  TextField textField=findNextTextField(stage.getActors(),null,Vector2.tmp2,Vector2.tmp,up);
+  if (textField == null) {
+    if (up)     Vector2.tmp.set(Float.MIN_VALUE,Float.MIN_VALUE);
+ else     Vector2.tmp.set(Float.MAX_VALUE,Float.MAX_VALUE);
+    textField=findNextTextField(getStage().getActors(),null,Vector2.tmp2,Vector2.tmp,up);
+  }
   if (textField != null)   stage.setKeyboardFocus(textField);
  else   Gdx.input.setOnscreenKeyboardVisible(false);
 }
