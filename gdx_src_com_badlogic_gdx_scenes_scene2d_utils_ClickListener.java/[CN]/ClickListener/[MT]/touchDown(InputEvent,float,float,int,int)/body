@@ -1,6 +1,6 @@
 {
   if (pressed)   return false;
-  if (pointer == 0 && button != this.button)   return false;
+  if (pointer == 0 && this.button != -1 && button != this.button)   return false;
   pressed=true;
   pressedPointer=pointer;
   touchDownX=x;
