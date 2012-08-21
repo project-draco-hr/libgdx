@@ -1,18 +1,4 @@
 {
   super(title,windowStyle);
-  setModal(true);
-  defaults().space(6);
-  add(contentTable=new Table(skin)).expand();
-  row();
-  add(buttonTable=new Table(skin));
-  contentTable.defaults().space(6);
-  buttonTable.defaults().space(6);
-  buttonTable.addListener(new ChangeListener(){
-    public void changed(    ChangeEvent event,    Actor actor){
-      while (actor.getParent() != buttonTable)       actor=actor.getParent();
-      clicked(values.get(actor));
-      hide();
-    }
-  }
-);
+  initialize();
 }

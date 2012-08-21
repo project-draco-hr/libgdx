@@ -2,7 +2,7 @@
   stage.setKeyboardFocus(this);
   stage.setScrollFocus(this);
   pack();
-  setPosition((stage.getWidth() - getWidth()) / 2,(stage.getHeight() - getHeight()) / 2);
+  setPosition(Math.round((stage.getWidth() - getWidth()) / 2),Math.round((stage.getHeight() - getHeight()) / 2));
   stage.addActor(this);
   if (fadeDuration > 0) {
     getColor().a=0;
