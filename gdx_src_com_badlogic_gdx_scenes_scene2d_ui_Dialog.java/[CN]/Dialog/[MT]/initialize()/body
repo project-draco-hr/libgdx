@@ -9,7 +9,7 @@
   buttonTable.addListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
       while (actor.getParent() != buttonTable)       actor=actor.getParent();
-      clicked(values.get(actor));
+      result(values.get(actor));
       hide();
     }
   }
