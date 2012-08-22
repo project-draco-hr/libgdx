@@ -1,5 +1,5 @@
 {
-  addListener(new ClickListener(){
+  addListener(clickListener=new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
       if (node == null)       return;
