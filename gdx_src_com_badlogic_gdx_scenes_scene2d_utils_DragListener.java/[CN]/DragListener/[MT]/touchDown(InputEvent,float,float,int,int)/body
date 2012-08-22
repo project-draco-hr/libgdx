@@ -1,0 +1,8 @@
+{
+  if (pressedPointer != -1)   return false;
+  if (pointer == 0 && this.button != -1 && button != this.button)   return false;
+  pressedPointer=pointer;
+  touchDownX=x;
+  touchDownY=y;
+  return true;
+}
