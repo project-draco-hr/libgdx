@@ -3,6 +3,7 @@
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
       if (node == null)       return;
+      if (node != getNodeAt(getTouchDownY()))       return;
       if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
         float low=selectedNodes.first().rightActor.getY();
         float high=node.rightActor.getY();
