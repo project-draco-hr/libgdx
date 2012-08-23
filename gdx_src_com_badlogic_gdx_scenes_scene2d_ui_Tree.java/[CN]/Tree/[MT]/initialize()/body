@@ -5,8 +5,8 @@
       if (node == null)       return;
       if (node != getNodeAt(getTouchDownY()))       return;
       if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
-        float low=selectedNodes.first().rightActor.getY();
-        float high=node.rightActor.getY();
+        float low=selectedNodes.first().actor.getY();
+        float high=node.actor.getY();
         if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
@@ -17,7 +17,7 @@
       }
       if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
         if (node.children.size > 0) {
-          float rowX=node.rightActor.getX();
+          float rowX=node.actor.getX();
           if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
           if (x < rowX) {
             node.setExpanded(!node.expanded);

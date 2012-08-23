@@ -3,12 +3,12 @@
   float x=getX(), y=getY();
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
-    Actor actor=node.rightActor;
+    Actor actor=node.actor;
     if (selectedNodes.contains(node,true) && style.selection != null)     style.selection.draw(batch,x,y + actor.getY() - ySpacing / 2,getWidth(),node.height + ySpacing);
  else     if (node == overNode && style.over != null)     style.over.draw(batch,x,y + actor.getY() - ySpacing / 2,getWidth(),node.height + ySpacing);
     if (node.icon != null) {
       float iconY=actor.getY() + node.height / 2 - node.icon.getMinHeight() / 2;
-      node.icon.draw(batch,x + node.rightActor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
+      node.icon.draw(batch,x + node.actor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
     }
     if (node.children.size == 0)     continue;
     Drawable expandIcon=node.expanded ? minus : plus;
