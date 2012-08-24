@@ -3,21 +3,6 @@
   Settings settings=new Settings();
   settings.padding=2;
   settings.duplicatePadding=true;
-  new LwjglApplication(new ApplicationListener(){
-    @Override public void create(){
-    }
-    @Override public void dispose(){
-    }
-    @Override public void pause(){
-    }
-    @Override public void render(){
-    }
-    @Override public void resize(    int width,    int height){
-    }
-    @Override public void resume(){
-    }
-  }
-,"",0,0,false);
   TiledMapPacker packer=new TiledMapPacker();
   if (args.length != 2) {
     System.out.println("Usage: INPUTDIR OUTPUTDIR");
