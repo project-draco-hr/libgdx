@@ -6,6 +6,10 @@
   packer=new TexturePacker(settings);
   TileSetLayout layout=new TileSetLayout(set,inputDirHandle);
   for (int gid=layout.firstgid, i=0; i < layout.numTiles; gid++, i++) {
+    if (usedIds != null && !usedIds.contains(gid)) {
+      System.out.println("Stripped Id: " + gid);
+      continue;
+    }
     tileLocation=layout.getLocation(gid);
     tile=new BufferedImage(layout.tileWidth,layout.tileHeight,BufferedImage.TYPE_4BYTE_ABGR);
     g=tile.createGraphics();
