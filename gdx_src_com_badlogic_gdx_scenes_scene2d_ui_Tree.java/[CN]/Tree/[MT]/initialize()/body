@@ -32,12 +32,12 @@
       Pools.free(changeEvent);
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
-      overNode=getNodeAt(y);
+      setOverNode(getNodeAt(y));
       return false;
     }
     public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
       super.exit(event,x,y,pointer,toActor);
-      if (toActor == null || !toActor.isDescendant(Tree.this))       overNode=null;
+      if (toActor == null || !toActor.isDescendant(Tree.this))       setOverNode(null);
     }
   }
 );
