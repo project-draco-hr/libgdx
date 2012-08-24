@@ -1,9 +1,4 @@
 {
-  float height=0;
-  Array<Actor> children=getChildren();
-  for (int i=0, n=children.size; i < n; i++) {
-    Actor child=children.get(i);
-    height=Math.max(height,child instanceof Layout ? ((Layout)child).getPrefHeight() : child.getHeight());
-  }
-  return height * getScaleY();
+  if (sizeInvalid)   computeSize();
+  return prefHeight;
 }
