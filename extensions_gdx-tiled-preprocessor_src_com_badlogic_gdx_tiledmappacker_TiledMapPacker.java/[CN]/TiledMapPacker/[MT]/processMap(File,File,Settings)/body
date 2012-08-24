@@ -1,8 +1,8 @@
 {
-  FileHandle inputDirHandle=Gdx.files.absolute(inputDir.getAbsolutePath());
+  FileHandle inputDirHandle=new FileHandle(inputDir.getAbsolutePath());
   File[] files=inputDir.listFiles(new TmxFilter());
   for (  File file : files) {
-    map=TiledLoader.createMap(Gdx.files.absolute(file.getAbsolutePath()));
+    map=TiledLoader.createMap(new FileHandle(file.getAbsolutePath()));
     for (    TileSet set : map.tileSets) {
       if (!processedTileSets.contains(set.imageName)) {
         processedTileSets.add(set.imageName);
