@@ -1,6 +1,7 @@
 {
   DragListener listener=new DragListener(){
     public void dragStart(    InputEvent event,    float x,    float y,    int pointer){
+      dragStartTime=System.currentTimeMillis();
       payload=source.dragStart(event,getTouchDownX(),getTouchDownY(),pointer);
       event.stop();
     }
@@ -40,6 +41,7 @@
     }
     public void dragStop(    InputEvent event,    float x,    float y,    int pointer){
       if (payload == null)       return;
+      if (System.currentTimeMillis() - dragStartTime < dragTime)       isValidTarget=false;
       if (isValidTarget)       target.drop(source,payload);
       source.dragStop(event,x,y,pointer,isValidTarget ? target : null);
       DragAndDrop.this.source=null;
