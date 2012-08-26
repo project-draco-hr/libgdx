@@ -6,9 +6,9 @@
   if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
   float y=widgetAreaBounds.y;
   if (!scrollY)   y-=(int)maxY;
- else   y-=(int)(maxY * (1 - visualAmountY / maxY));
+ else   y-=(int)(maxY - visualAmountY);
   float x=widgetAreaBounds.x;
-  if (scrollX)   x-=(int)(maxX * visualAmountX / maxX);
+  if (scrollX)   x-=(int)visualAmountX;
   widget.setPosition(x,y);
   if (widget instanceof Cullable) {
     widgetCullingArea.x=-widget.getX() + widgetAreaBounds.x;

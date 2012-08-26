@@ -1,0 +1,25 @@
+{
+  float groupWidth=getWidth();
+  float y=reverse ? 0 : getHeight();
+  float dir=reverse ? 1 : -1;
+  SnapshotArray<Actor> children=getChildren();
+  for (int i=0, n=children.size; i < n; i++) {
+    Actor child=children.get(i);
+    float width, height;
+    if (child instanceof Layout) {
+      Layout layout=(Layout)child;
+      width=layout.getPrefWidth();
+      height=layout.getPrefHeight();
+    }
+ else {
+      width=child.getWidth();
+      height=child.getHeight();
+    }
+    float x;
+    if ((alignment & Align.left) != 0)     x=0;
+ else     if ((alignment & Align.right) != 0)     x=groupWidth - width;
+ else     x=(groupWidth - width) / 2;
+    child.setBounds(x,y,width,height);
+    y+=height * dir;
+  }
+}

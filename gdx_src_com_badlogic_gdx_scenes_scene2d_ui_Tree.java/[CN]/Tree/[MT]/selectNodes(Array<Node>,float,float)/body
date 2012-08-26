@@ -2,8 +2,8 @@
   float ySpacing=this.ySpacing;
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
-    if (node.rightActor.getY() < low)     break;
-    if (node.rightActor.getY() <= high)     selectedNodes.add(node);
+    if (node.actor.getY() < low)     break;
+    if (node.actor.getY() <= high)     selectedNodes.add(node);
     if (node.expanded)     selectNodes(node.children,low,high);
   }
 }
