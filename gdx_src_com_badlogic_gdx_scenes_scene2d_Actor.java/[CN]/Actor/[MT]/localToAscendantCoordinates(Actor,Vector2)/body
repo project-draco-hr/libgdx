@@ -5,4 +5,5 @@
     actor=actor.getParent();
     if (actor == ascendant)     break;
   }
+  return localCoords;
 }

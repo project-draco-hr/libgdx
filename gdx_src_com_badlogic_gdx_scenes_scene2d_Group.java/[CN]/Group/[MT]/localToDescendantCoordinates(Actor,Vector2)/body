@@ -3,4 +3,5 @@
   if (parent == null)   throw new IllegalArgumentException("Child is not a descendant: " + descendant);
   if (parent != this)   localToDescendantCoordinates(parent,localCoords);
   descendant.parentToLocalCoordinates(localCoords);
+  return localCoords;
 }
