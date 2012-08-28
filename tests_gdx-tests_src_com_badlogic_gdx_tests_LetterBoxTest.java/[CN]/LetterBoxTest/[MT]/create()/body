@@ -1,0 +1,12 @@
+{
+  stage=new Stage(0,0,false);
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Gdx.input.setInputProcessor(stage);
+  root=new Table();
+  stage.addActor(root);
+  root.setSize(300,200);
+  root.debug().defaults().space(6);
+  root.add(new TextButton("Button 1",skin));
+  root.add(new TextButton("Button 2",skin));
+  root.add(new TextButton("Button 3",skin));
+}
