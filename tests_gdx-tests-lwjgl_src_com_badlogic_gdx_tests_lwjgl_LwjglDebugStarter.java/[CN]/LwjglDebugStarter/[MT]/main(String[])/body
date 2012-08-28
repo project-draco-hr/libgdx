@@ -3,7 +3,7 @@
   new SharedLibraryLoader("../../extensions/gdx-audio/libs/gdx-audio-natives.jar").load("gdx-audio");
   new SharedLibraryLoader("../../extensions/gdx-image/libs/gdx-image-natives.jar").load("gdx-image");
   new SharedLibraryLoader("../../extensions/gdx-freetype/libs/gdx-freetype-natives.jar").load("gdx-freetype");
-  GdxTest test=new TextureDownloadTest();
+  GdxTest test=new ProjectiveTextureTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.width=640;
   config.height=640;
