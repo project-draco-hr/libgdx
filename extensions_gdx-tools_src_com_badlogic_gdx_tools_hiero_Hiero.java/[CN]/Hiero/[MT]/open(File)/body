@@ -13,6 +13,10 @@
   padAdvanceYSpinner.setValue(new Integer(settings.getPaddingAdvanceY()));
   glyphPageWidthCombo.setSelectedItem(new Integer(settings.getGlyphPageWidth()));
   glyphPageHeightCombo.setSelectedItem(new Integer(settings.getGlyphPageHeight()));
+  String gt=settings.getGlyphText();
+  if (gt.length() > 0) {
+    sampleTextPane.setText(settings.getGlyphText());
+  }
   for (Iterator iter=settings.getEffects().iterator(); iter.hasNext(); ) {
     ConfigurableEffect settingsEffect=(ConfigurableEffect)iter.next();
     for (int i=0, n=effectsListModel.getSize(); i < n; i++) {
