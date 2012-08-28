@@ -1,6 +1,7 @@
 {
   boolean isPressed=isPressed();
-  if (isPressed && style.imageDown != null)   image.setDrawable(style.imageDown);
+  if (isDisabled && style.imageDisabled != null)   image.setDrawable(style.imageDisabled);
+ else   if (isPressed && style.imageDown != null)   image.setDrawable(style.imageDown);
  else   if (isChecked && style.imageChecked != null)   image.setDrawable(style.imageChecked);
  else   if (style.imageUp != null)   image.setDrawable(style.imageUp);
 }
