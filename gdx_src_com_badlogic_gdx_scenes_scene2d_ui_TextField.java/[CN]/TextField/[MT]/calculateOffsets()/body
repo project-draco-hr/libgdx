@@ -1,16 +1,14 @@
 {
-  float position=glyphPositions.get(cursor);
-  float distance=position - Math.abs(renderOffset);
   float visibleWidth=getWidth();
   if (style.background != null)   visibleWidth-=style.background.getLeftWidth() + style.background.getRightWidth();
+  float position=glyphPositions.get(cursor);
+  float distance=position - Math.abs(renderOffset);
   if (distance <= 0) {
     if (cursor > 0)     renderOffset=-glyphPositions.get(cursor - 1);
  else     renderOffset=0;
   }
- else {
-    if (distance > visibleWidth) {
-      renderOffset-=distance - visibleWidth;
-    }
+ else   if (distance > visibleWidth) {
+    renderOffset-=distance - visibleWidth;
   }
   visibleTextStart=0;
   textOffset=0;
@@ -21,7 +19,7 @@
     if (glyphPositions.items[i] >= start) {
       visibleTextStart=i;
       startPos=glyphPositions.items[i];
-      textOffset=glyphPositions.items[visibleTextStart] - start;
+      textOffset=startPos - start;
       break;
     }
   }
@@ -33,9 +31,13 @@
   if (hasSelection) {
     int minIndex=Math.min(cursor,selectionStart);
     int maxIndex=Math.max(cursor,selectionStart);
-    float minX=Math.max(glyphPositions.get(minIndex),glyphPositions.get(visibleTextStart));
+    float minX=Math.max(glyphPositions.get(minIndex),startPos);
     float maxX=Math.min(glyphPositions.get(maxIndex),glyphPositions.get(visibleTextEnd));
     selectionX=minX;
     selectionWidth=maxX - minX;
+  }
+  if (rightAligned) {
+    textOffset=visibleWidth - (glyphPositions.items[visibleTextEnd] - startPos);
+    if (hasSelection)     selectionX+=textOffset;
   }
 }
