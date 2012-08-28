@@ -1,5 +1,0 @@
-{
-  GL20 gl=Gdx.graphics.getGL20();
-  checkManaged();
-  gl.glVertexAttribPointer(location,size,type,normalize,stride,offset);
-}

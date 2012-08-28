@@ -1,6 +1,0 @@
-{
-  GL20 gl=Gdx.graphics.getGL20();
-  checkManaged();
-  int location=fetchUniformLocation(name);
-  gl.glUniform2f(location,value1,value2);
-}

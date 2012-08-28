@@ -1,5 +1,0 @@
-{
-  if (floatBuffer == null || floatBuffer.capacity() != numBytes / 4) {
-    floatBuffer=BufferUtils.newFloatBuffer(numBytes / 4);
-  }
-}
