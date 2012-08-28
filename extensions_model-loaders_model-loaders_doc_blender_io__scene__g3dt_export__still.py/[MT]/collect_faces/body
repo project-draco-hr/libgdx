@@ -1,15 +1,15 @@
 def collect_faces(mesh):
     faces = []
-    for faceIndex in range(len(mesh.faces)):
+    for faceIndex in range(len(mesh.tessfaces)):
         faceVertices = []
-        face = mesh.faces[faceIndex]
+        face = mesh.tessfaces[faceIndex]
         for vertexIndex in range(len(face.vertices)):
             v = face.vertices[vertexIndex]
             vertex = []
             vertex.append(mesh.vertices[v].co)
             vertex.append(mesh.vertices[v].normal)
             vertex.append(face.normal)
-            for uv in mesh.uv_textures:
+            for uv in mesh.tessface_uv_textures:
                 vertex.append(uv.data[faceIndex].uv[vertexIndex])
             faceVertices.append(vertex)
         faces.append(faceVertices)

@@ -1,0 +1,7 @@
+{
+  allocatedUnsafe+=buffer.capacity();
+synchronized (unsafeBuffers) {
+    unsafeBuffers.add(buffer);
+  }
+  return buffer;
+}

@@ -1,7 +1,0 @@
-{
-  GL20 gl=Gdx.graphics.getGL20();
-  checkManaged();
-  int location=fetchAttributeLocation(name);
-  if (location == -1)   return;
-  gl.glDisableVertexAttribArray(location);
-}

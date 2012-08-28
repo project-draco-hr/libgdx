@@ -1,7 +1,0 @@
-{
-  GL20 gl=Gdx.graphics.getGL20();
-  checkManaged();
-  this.matrix.clear();
-  BufferUtils.copy(matrix.val,this.matrix,matrix.val.length,0);
-  gl.glUniformMatrix4fv(location,1,transpose,this.matrix);
-}
