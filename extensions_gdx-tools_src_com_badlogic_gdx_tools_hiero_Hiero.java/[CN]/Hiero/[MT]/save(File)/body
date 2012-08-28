@@ -11,6 +11,7 @@
   settings.setPaddingAdvanceY(((Integer)padAdvanceYSpinner.getValue()).intValue());
   settings.setGlyphPageWidth(((Integer)glyphPageWidthCombo.getSelectedItem()).intValue());
   settings.setGlyphPageHeight(((Integer)glyphPageHeightCombo.getSelectedItem()).intValue());
+  settings.setGlyphText(sampleTextPane.getText());
   for (Iterator iter=effectPanels.iterator(); iter.hasNext(); ) {
     EffectPanel panel=(EffectPanel)iter.next();
     settings.getEffects().add(panel.getEffect());

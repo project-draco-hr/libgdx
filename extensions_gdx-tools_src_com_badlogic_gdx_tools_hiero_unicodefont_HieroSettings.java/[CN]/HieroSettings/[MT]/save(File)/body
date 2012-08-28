@@ -14,6 +14,7 @@
   out.println("glyph.native.rendering=" + nativeRendering);
   out.println("glyph.page.width=" + glyphPageWidth);
   out.println("glyph.page.height=" + glyphPageHeight);
+  out.println("glyph.text=" + glyphText);
   out.println();
   for (Iterator iter=effects.iterator(); iter.hasNext(); ) {
     ConfigurableEffect effect=(ConfigurableEffect)iter.next();
