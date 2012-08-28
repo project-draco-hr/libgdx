@@ -1,0 +1,20 @@
+{
+  if (drawable instanceof TextureRegionDrawable) {
+    Sprite sprite=new Sprite(((TextureRegionDrawable)drawable).getRegion());
+    sprite.setColor(tint);
+    return new SpriteDrawable(sprite);
+  }
+  if (drawable instanceof NinePatchDrawable) {
+    NinePatchDrawable patchDrawable=new NinePatchDrawable((NinePatchDrawable)drawable);
+    patchDrawable.setPatch(new NinePatch(patchDrawable.getPatch(),tint));
+    return patchDrawable;
+  }
+  if (drawable instanceof SpriteDrawable) {
+    SpriteDrawable spriteDrawable=new SpriteDrawable((SpriteDrawable)drawable);
+    Sprite sprite=new Sprite(spriteDrawable.getSprite());
+    sprite.setColor(tint);
+    spriteDrawable.setSprite(sprite);
+    return spriteDrawable;
+  }
+  throw new GdxRuntimeException("Unable to copy, unknown drawable type: " + drawable.getClass());
+}
