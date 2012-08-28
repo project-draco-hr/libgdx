@@ -28,15 +28,19 @@
   scrollY=forceOverscrollY || (widgetHeight > areaHeight && !disableY);
   boolean fade=flickScroll && fadeScrollBars;
   if (!fade) {
-    if (scrollX)     areaHeight-=hScrollKnob.getMinHeight();
-    if (scrollY)     areaWidth-=vScrollKnob.getMinWidth();
-    if (!scrollX && scrollY && vScrollKnob != null && widgetWidth > areaWidth && !disableX) {
-      scrollX=true;
-      areaHeight-=hScrollKnob.getMinHeight();
-    }
-    if (!scrollY && scrollX && hScrollKnob != null && widgetHeight > areaHeight && !disableY) {
-      scrollY=true;
+    if (vScrollKnob != null && scrollY) {
       areaWidth-=vScrollKnob.getMinWidth();
+      if (!scrollX && widgetWidth > areaWidth && !disableX) {
+        scrollX=true;
+        areaHeight-=hScrollKnob.getMinHeight();
+      }
+    }
+    if (hScrollKnob != null && scrollX) {
+      areaHeight-=hScrollKnob.getMinHeight();
+      if (!scrollY && widgetHeight > areaHeight && !disableY) {
+        scrollY=true;
+        areaWidth-=vScrollKnob.getMinWidth();
+      }
     }
   }
   widgetAreaBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,areaHeight);
