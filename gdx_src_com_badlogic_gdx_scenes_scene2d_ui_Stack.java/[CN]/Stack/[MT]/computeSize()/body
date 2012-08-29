@@ -24,8 +24,8 @@
       prefHeight=Math.max(prefHeight,child.getHeight());
       minWidth=Math.max(minWidth,child.getWidth());
       minHeight=Math.max(minHeight,child.getHeight());
-      childMaxWidth=prefWidth;
-      childMaxHeight=prefHeight;
+      childMaxWidth=0;
+      childMaxHeight=0;
     }
     if (childMaxWidth > 0)     maxWidth=maxWidth == 0 ? childMaxWidth : Math.min(maxWidth,childMaxWidth);
     if (childMaxHeight > 0)     maxHeight=maxHeight == 0 ? childMaxHeight : Math.min(maxHeight,childMaxHeight);
