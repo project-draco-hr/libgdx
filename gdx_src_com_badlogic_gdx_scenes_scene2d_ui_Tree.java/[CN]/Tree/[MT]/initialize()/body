@@ -4,7 +4,7 @@
       Node node=getNodeAt(y);
       if (node == null)       return;
       if (node != getNodeAt(getTouchDownY()))       return;
-      if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
+      if (selectedNodes.size > 0 && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
         float low=selectedNodes.first().actor.getY();
         float high=node.actor.getY();
         if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
