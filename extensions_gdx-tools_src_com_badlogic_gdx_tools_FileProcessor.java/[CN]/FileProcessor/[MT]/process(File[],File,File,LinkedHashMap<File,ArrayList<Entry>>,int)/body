@@ -15,17 +15,17 @@
       if (inputFilter != null && !inputFilter.accept(dir,file.getName()))       continue;
       String outputName=file.getName();
       if (outputSuffix != null)       outputName=outputName.replaceAll("(.*)\\..*","$1") + outputSuffix;
-      InputFile inputFile=new InputFile();
-      inputFile.depth=depth;
-      inputFile.inputFile=file;
-      inputFile.outputDir=outputDir;
-      if (outputRoot != null)       inputFile.outputFile=flattenOutput ? new File(outputRoot,outputName) : new File(outputDir,outputName);
-      ArrayList<InputFile> inputFiles=dirToEntries.get(dir);
-      if (inputFiles == null) {
-        inputFiles=new ArrayList();
-        dirToEntries.put(dir,inputFiles);
+      Entry entry=new Entry();
+      entry.depth=depth;
+      entry.inputFile=file;
+      entry.outputDir=outputDir;
+      if (outputRoot != null)       entry.outputFile=flattenOutput ? new File(outputRoot,outputName) : new File(outputDir,outputName);
+      ArrayList<Entry> entries=dirToEntries.get(dir);
+      if (entries == null) {
+        entries=new ArrayList();
+        dirToEntries.put(dir,entries);
       }
-      inputFiles.add(inputFile);
+      entries.add(entry);
     }
     if (recursive && file.isDirectory())     process(file.listFiles(inputFilter),outputRoot,new File(outputDir,file.getName()),dirToEntries,depth + 1);
   }
