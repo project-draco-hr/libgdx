@@ -1,7 +1,8 @@
 {
   child.remove();
   try {
-    ReflectionCache.getType(parent.getClass()).getMethod("setWidget",Actor.class).invoke(parent,child);
+    Method method=ReflectionCache.getType(parent.getClass()).getMethod("setWidget",Actor.class);
+    method.invoke(parent,child);
     return;
   }
  catch (  Exception ignored) {
