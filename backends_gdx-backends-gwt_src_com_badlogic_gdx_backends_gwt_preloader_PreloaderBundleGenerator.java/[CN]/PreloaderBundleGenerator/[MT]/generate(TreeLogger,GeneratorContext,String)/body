@@ -17,7 +17,7 @@
   if (target.exists()) {
     if (!target.deleteDirectory())     throw new RuntimeException("Couldn't clean target path '" + target + "'");
   }
-  Array<Asset> assets=new Array<Asset>();
+  ArrayList<Asset> assets=new ArrayList<Asset>();
   copyDirectory(source,target,assetFilter,assets);
   StringBuffer buffer=new StringBuffer();
   for (  Asset asset : assets) {
