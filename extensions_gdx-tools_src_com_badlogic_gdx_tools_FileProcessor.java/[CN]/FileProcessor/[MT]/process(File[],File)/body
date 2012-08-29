@@ -1,34 +1,34 @@
 {
   outputFiles.clear();
-  LinkedHashMap<File,ArrayList<InputFile>> dirToEntries=new LinkedHashMap();
+  LinkedHashMap<File,ArrayList<Entry>> dirToEntries=new LinkedHashMap();
   process(files,outputRoot,outputRoot,dirToEntries,0);
-  ArrayList<InputFile> allInputFiles=new ArrayList();
-  for (  Entry<File,ArrayList<InputFile>> entry : dirToEntries.entrySet()) {
-    ArrayList<InputFile> dirInputFiles=entry.getValue();
-    if (comparator != null)     Collections.sort(dirInputFiles,inputFileComparator);
-    File inputDir=entry.getKey();
-    File newOutputDir=flattenOutput ? outputRoot : dirInputFiles.get(0).outputDir;
+  ArrayList<Entry> allEntries=new ArrayList();
+  for (  java.util.Map.Entry<File,ArrayList<Entry>> mapEntry : dirToEntries.entrySet()) {
+    ArrayList<Entry> dirEntries=mapEntry.getValue();
+    if (comparator != null)     Collections.sort(dirEntries,entryComparator);
+    File inputDir=mapEntry.getKey();
+    File newOutputDir=flattenOutput ? outputRoot : dirEntries.get(0).outputDir;
     String outputName=inputDir.getName();
     if (outputSuffix != null)     outputName=outputName.replaceAll("(.*)\\..*","$1") + outputSuffix;
-    InputFile inputFile=new InputFile();
-    inputFile.inputFile=entry.getKey();
-    inputFile.outputDir=newOutputDir;
-    inputFile.outputFile=newOutputDir == null ? null : new File(newOutputDir,outputName);
+    Entry entry=new Entry();
+    entry.inputFile=mapEntry.getKey();
+    entry.outputDir=newOutputDir;
+    entry.outputFile=newOutputDir == null ? null : new File(newOutputDir,outputName);
     try {
-      processDir(inputFile,dirInputFiles);
+      processDir(entry,dirEntries);
     }
  catch (    Exception ex) {
-      throw new Exception("Error processing directory: " + inputFile.inputFile.getAbsolutePath(),ex);
+      throw new Exception("Error processing directory: " + entry.inputFile.getAbsolutePath(),ex);
     }
-    allInputFiles.addAll(dirInputFiles);
+    allEntries.addAll(dirEntries);
   }
-  if (comparator != null)   Collections.sort(allInputFiles,inputFileComparator);
-  for (  InputFile inputFile : allInputFiles) {
+  if (comparator != null)   Collections.sort(allEntries,entryComparator);
+  for (  Entry entry : allEntries) {
     try {
-      processFile(inputFile);
+      processFile(entry);
     }
  catch (    Exception ex) {
-      throw new Exception("Error processing file: " + inputFile.inputFile.getAbsolutePath(),ex);
+      throw new Exception("Error processing file: " + entry.inputFile.getAbsolutePath(),ex);
     }
   }
   return outputFiles;

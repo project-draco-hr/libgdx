@@ -15,6 +15,6 @@
   File settingsFile=new File(inputDir.inputFile,"pack.json");
   if (settingsFile.exists())   json.readFields(settings,new JsonReader().parse(new FileReader(settingsFile)));
   TexturePacker2 packer=new TexturePacker2(root,settings);
-  for (  InputFile file : files)   packer.addImage(file.inputFile);
+  for (  Entry file : files)   packer.addImage(file.inputFile);
   packer.pack(inputDir.outputDir,packFileName);
 }

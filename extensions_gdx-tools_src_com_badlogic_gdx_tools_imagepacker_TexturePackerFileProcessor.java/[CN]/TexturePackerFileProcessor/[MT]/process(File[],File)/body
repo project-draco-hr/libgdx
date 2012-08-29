@@ -2,7 +2,7 @@
   if (outputRoot.exists()) {
     new File(outputRoot,packFileName).delete();
     FileProcessor deleteProcessor=new FileProcessor(){
-      protected void processFile(      InputFile inputFile) throws Exception {
+      protected void processFile(      Entry inputFile) throws Exception {
         inputFile.inputFile.delete();
       }
     }
