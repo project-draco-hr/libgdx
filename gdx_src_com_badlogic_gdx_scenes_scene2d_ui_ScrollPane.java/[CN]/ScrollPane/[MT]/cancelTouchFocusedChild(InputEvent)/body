@@ -1,4 +1,4 @@
 {
   Stage stage=getStage();
-  stage.cancelTouchFocus(gestureListener,this);
+  if (stage != null)   stage.cancelTouchFocus(gestureListener,this);
 }
