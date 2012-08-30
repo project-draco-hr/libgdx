@@ -1,5 +1,5 @@
 {
-  V[] result=(V[])new Object[size];
+  V[] result=(V[])ReflectionCache.newArray(type,size);
   System.arraycopy(items,0,result,0,size);
   return result;
 }
