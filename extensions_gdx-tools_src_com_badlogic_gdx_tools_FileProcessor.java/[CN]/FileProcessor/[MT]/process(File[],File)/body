@@ -1,4 +1,5 @@
 {
+  if (outputRoot == null)   outputRoot=new File("");
   outputFiles.clear();
   LinkedHashMap<File,ArrayList<Entry>> dirToEntries=new LinkedHashMap();
   process(files,outputRoot,outputRoot,dirToEntries,0);
@@ -13,7 +14,7 @@
     Entry entry=new Entry();
     entry.inputFile=mapEntry.getKey();
     entry.outputDir=newOutputDir;
-    entry.outputFile=newOutputDir == null ? null : new File(newOutputDir,outputName);
+    if (newOutputDir != null)     entry.outputFile=newOutputDir.length() == 0 ? new File(outputName) : new File(newOutputDir,outputName);
     try {
       processDir(entry,dirEntries);
     }

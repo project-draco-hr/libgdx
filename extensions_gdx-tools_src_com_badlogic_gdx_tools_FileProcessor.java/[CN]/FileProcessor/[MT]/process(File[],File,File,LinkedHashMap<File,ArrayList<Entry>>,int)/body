@@ -19,7 +19,12 @@
       entry.depth=depth;
       entry.inputFile=file;
       entry.outputDir=outputDir;
-      if (outputRoot != null)       entry.outputFile=flattenOutput ? new File(outputRoot,outputName) : new File(outputDir,outputName);
+      if (flattenOutput) {
+        entry.outputFile=outputRoot.length() == 0 ? new File(outputName) : new File(outputRoot,outputName);
+      }
+ else {
+        entry.outputFile=outputDir.length() == 0 ? new File(outputName) : new File(outputDir,outputName);
+      }
       ArrayList<Entry> entries=dirToEntries.get(dir);
       if (entries == null) {
         entries=new ArrayList();
@@ -27,6 +32,9 @@
       }
       entries.add(entry);
     }
-    if (recursive && file.isDirectory())     process(file.listFiles(inputFilter),outputRoot,new File(outputDir,file.getName()),dirToEntries,depth + 1);
+    if (recursive && file.isDirectory()) {
+      File subdir=outputDir.getPath().length() == 0 ? new File(file.getName()) : new File(outputDir,file.getName());
+      process(file.listFiles(inputFilter),outputRoot,subdir,dirToEntries,depth + 1);
+    }
   }
 }
