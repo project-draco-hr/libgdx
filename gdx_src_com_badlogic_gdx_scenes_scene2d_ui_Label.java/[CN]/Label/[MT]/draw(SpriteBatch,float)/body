@@ -9,18 +9,23 @@
   cache.setPosition(getX(),getY());
   float scaleX=getScaleX();
   float scaleY=getScaleY();
-  if (scaleX != 1 | scaleY != 1) {
+  float rotation=getRotation();
+  if (scaleX != 1 || scaleY != 1 || rotation != 0) {
     Matrix4 transform=batch.getTransformMatrix();
-    float x=-getOriginX() * (scaleX - 1);
-    float y=-getOriginY() * (scaleY - 1);
     batch.end();
-    transform.scl(scaleX,scaleY,1);
+    float x=getOriginX();
+    float y=getOriginY();
     transform.trn(x,y,0);
+    if (rotation != 0)     transform.rotate(0,0,1,rotation);
+    if (scaleX != 1 || scaleY != 1)     transform.scale(scaleX,scaleY,1);
+    transform.translate(-x,-y,0);
     batch.begin();
     cache.draw(batch,color.a * parentAlpha);
     batch.end();
+    transform.translate(x,y,0);
+    if (scaleX != 1 || scaleY != 1)     transform.scale(1 / scaleX,1 / scaleY,1);
+    if (rotation != 0)     transform.rotate(0,0,1,-rotation);
     transform.trn(-x,-y,0);
-    transform.scl(1 / scaleX,1 / scaleY,1);
     batch.begin();
   }
  else   cache.draw(batch,color.a * parentAlpha);
