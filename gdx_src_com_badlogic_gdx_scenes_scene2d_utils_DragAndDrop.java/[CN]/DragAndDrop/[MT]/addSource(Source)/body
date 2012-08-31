@@ -42,6 +42,7 @@
     public void dragStop(    InputEvent event,    float x,    float y,    int pointer){
       if (payload == null)       return;
       if (System.currentTimeMillis() - dragStartTime < dragTime)       isValidTarget=false;
+      if (dragActor != null)       dragActor.remove();
       if (isValidTarget)       target.drop(source,payload);
       source.dragStop(event,x,y,pointer,isValidTarget ? target : null);
       DragAndDrop.this.source=null;
@@ -49,7 +50,6 @@
       if (target != null)       target.reset();
       target=null;
       isValidTarget=false;
-      if (dragActor != null)       dragActor.remove();
       dragActor=null;
     }
   }
