@@ -14,6 +14,7 @@
       if (draggingPointer != -1)       return false;
       if (pointer == 0 && button != 0)       return false;
       getStage().setScrollFocus(ScrollPane.this);
+      if (!flickScroll)       resetFade();
       if (fadeAlpha == 0)       return false;
       if (scrollX && hScrollBounds.contains(x,y)) {
         event.stop();
@@ -69,6 +70,9 @@
         setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vKnobBounds.height)));
         lastPoint.set(x,y);
       }
+    }
+    public boolean mouseMoved(    InputEvent event,    float x,    float y){
+      return false;
     }
   }
 );

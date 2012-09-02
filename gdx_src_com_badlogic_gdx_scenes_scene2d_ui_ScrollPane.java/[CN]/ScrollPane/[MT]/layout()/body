@@ -32,7 +32,7 @@
   }
   scrollX=forceOverscrollX || (widgetWidth > areaWidth && !disableX);
   scrollY=forceOverscrollY || (widgetHeight > areaHeight && !disableY);
-  boolean fade=flickScroll && fadeScrollBars;
+  boolean fade=fadeScrollBars;
   if (!fade) {
     if (scrollY) {
       areaWidth-=scrollbarWidth;
