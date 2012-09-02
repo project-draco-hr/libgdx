@@ -7,7 +7,7 @@
   event.setType(Type.mouseMoved);
   event.setStageX(stageCoords.x);
   event.setStageY(stageCoords.y);
-  Actor target=hit(stageCoords.x,stageCoords.y);
+  Actor target=hit(stageCoords.x,stageCoords.y,true);
   if (target == null)   target=root;
   target.fire(event);
   boolean handled=event.isHandled();

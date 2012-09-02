@@ -1,5 +1,5 @@
 {
-  Actor hit=super.hit(x,y);
+  Actor hit=super.hit(x,y,touchable);
   if (hit == null && isModal)   return this;
   return hit;
 }
