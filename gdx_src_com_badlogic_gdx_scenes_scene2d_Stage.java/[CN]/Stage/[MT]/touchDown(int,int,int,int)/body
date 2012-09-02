@@ -1,4 +1,7 @@
 {
+  pointerTouched[pointer]=true;
+  pointerScreenX[pointer]=screenX;
+  pointerScreenY[pointer]=screenY;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setType(Type.touchDown);

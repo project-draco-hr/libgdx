@@ -1,10 +1,5 @@
 {
-  this.width=width;
-  this.height=height;
   this.batch=batch;
   ownsBatch=false;
-  root=new Group();
-  root.setStage(this);
-  camera=new OrthographicCamera();
-  setViewport(width,height,stretch);
+  initialize(width,height,stretch);
 }

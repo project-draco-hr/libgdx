@@ -1,4 +1,6 @@
 {
+  pointerScreenX[pointer]=screenX;
+  pointerScreenY[pointer]=screenY;
   if (touchFocuses.size == 0)   return false;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);

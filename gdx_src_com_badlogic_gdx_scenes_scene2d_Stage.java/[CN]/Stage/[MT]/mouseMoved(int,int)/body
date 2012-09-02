@@ -1,4 +1,6 @@
 {
+  mouseScreenX=screenX;
+  mouseScreenY=screenY;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
