@@ -10,13 +10,16 @@
       Stage stage=event.getStage();
       Target newTarget=null;
       isValidTarget=false;
-      for (int i=0, n=targets.size; i < n; i++) {
-        Target target=targets.get(i);
-        target.actor.stageToLocalCoordinates(Vector2.tmp.set(event.getStageX(),event.getStageY()));
-        if (target.actor.hit(Vector2.tmp.x,Vector2.tmp.y,false) == null)         continue;
-        newTarget=target;
-        isValidTarget=target.drag(source,payload,Vector2.tmp.x,Vector2.tmp.y,pointer);
-        break;
+      Actor hit=event.getStage().hit(event.getStageX(),event.getStageY(),false);
+      if (hit != null) {
+        for (int i=0, n=targets.size; i < n; i++) {
+          Target target=targets.get(i);
+          if (!target.actor.isAscendant(hit))           continue;
+          newTarget=target;
+          target.actor.stageToLocalCoordinates(Vector2.tmp.set(event.getStageX(),event.getStageY()));
+          isValidTarget=target.drag(source,payload,Vector2.tmp.x,Vector2.tmp.y,pointer);
+          break;
+        }
       }
       if (newTarget != target) {
         if (target != null)         target.reset(source,payload);
