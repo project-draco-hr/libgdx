@@ -34,7 +34,7 @@
       getActor().setColor(Color.GREEN);
       return true;
     }
-    public void reset(){
+    public void reset(    Source source,    Payload payload){
       getActor().setColor(Color.WHITE);
     }
     public void drop(    Source source,    Payload payload){
@@ -47,7 +47,7 @@
       getActor().setColor(Color.RED);
       return false;
     }
-    public void reset(){
+    public void reset(    Source source,    Payload payload){
       getActor().setColor(Color.WHITE);
     }
     public void drop(    Source source,    Payload payload){

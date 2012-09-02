@@ -19,7 +19,7 @@
         break;
       }
       if (newTarget != target) {
-        if (target != null)         target.reset();
+        if (target != null)         target.reset(source,payload);
         target=newTarget;
       }
       Actor actor=null;
@@ -45,9 +45,9 @@
       if (dragActor != null)       dragActor.remove();
       if (isValidTarget)       target.drop(source,payload);
       source.dragStop(event,x,y,pointer,isValidTarget ? target : null);
+      if (target != null)       target.reset(source,payload);
       DragAndDrop.this.source=null;
       payload=null;
-      if (target != null)       target.reset();
       target=null;
       isValidTarget=false;
       dragActor=null;
