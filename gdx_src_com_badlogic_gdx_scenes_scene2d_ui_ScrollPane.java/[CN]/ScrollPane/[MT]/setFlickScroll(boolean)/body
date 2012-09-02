@@ -2,9 +2,6 @@
   if (this.flickScroll == flickScroll)   return;
   this.flickScroll=flickScroll;
   if (flickScroll)   addListener(gestureListener);
- else {
-    removeListener(gestureListener);
-    fadeAlpha=1;
-  }
+ else   removeListener(gestureListener);
   invalidate();
 }
