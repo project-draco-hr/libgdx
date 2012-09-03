@@ -3,6 +3,11 @@
   float invTexHeight=1.0f / region.getTexture().getHeight();
   float u=region.u;
   float v=region.v;
+  if (region instanceof AtlasRegion) {
+    AtlasRegion atlasRegion=(AtlasRegion)region;
+    u-=atlasRegion.offsetX * invTexWidth;
+    v-=(atlasRegion.originalHeight - atlasRegion.packedHeight - atlasRegion.offsetY) * invTexHeight;
+  }
   for (  Glyph[] page : data.glyphs) {
     if (page == null)     continue;
     for (    Glyph glyph : page) {
