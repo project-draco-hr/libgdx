@@ -1,6 +1,6 @@
 {
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
-  Actor over=hit(stageCoords.x,stageCoords.y,false);
+  Actor over=hit(stageCoords.x,stageCoords.y,true);
   if (over == overLast)   return overLast;
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
