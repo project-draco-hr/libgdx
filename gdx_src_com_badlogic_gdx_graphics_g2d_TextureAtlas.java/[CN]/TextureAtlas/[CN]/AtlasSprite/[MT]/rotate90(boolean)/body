@@ -2,16 +2,16 @@
   super.rotate90(clockwise);
   float oldOriginX=getOriginX();
   float oldOriginY=getOriginY();
-  int oldOffsetX=region.offsetX;
-  int oldOffsetY=region.offsetY;
+  float oldOffsetX=region.offsetX;
+  float oldOffsetY=region.offsetY;
   float widthRatio=getWidth() / region.originalWidth;
   float heightRatio=getHeight() / region.originalHeight;
   if (clockwise) {
     region.offsetX=oldOffsetY;
-    region.offsetY=Math.round(region.originalHeight * heightRatio - oldOffsetX - region.packedWidth * widthRatio);
+    region.offsetY=region.originalHeight * heightRatio - oldOffsetX - region.packedWidth * widthRatio;
   }
  else {
-    region.offsetX=Math.round(region.originalWidth * widthRatio - oldOffsetY - region.packedHeight * heightRatio);
+    region.offsetX=region.originalWidth * widthRatio - oldOffsetY - region.packedHeight * heightRatio;
     region.offsetY=oldOffsetX;
   }
   translate(region.offsetX - oldOffsetX,region.offsetY - oldOffsetY);
