@@ -3,24 +3,58 @@
   float invTexHeight=1.0f / region.getTexture().getHeight();
   float u=region.u;
   float v=region.v;
+  float offsetX=0, offsetY=0;
+  float regionWidth=region.getRegionWidth();
+  float regionHeight=region.getRegionHeight();
   if (region instanceof AtlasRegion) {
     AtlasRegion atlasRegion=(AtlasRegion)region;
-    u-=atlasRegion.offsetX * invTexWidth;
-    v-=(atlasRegion.originalHeight - atlasRegion.packedHeight - atlasRegion.offsetY) * invTexHeight;
+    offsetX=atlasRegion.offsetX;
+    offsetY=atlasRegion.originalHeight - atlasRegion.packedHeight - atlasRegion.offsetY;
   }
   for (  Glyph[] page : data.glyphs) {
     if (page == null)     continue;
     for (    Glyph glyph : page) {
       if (glyph == null)       continue;
-      glyph.u=u + glyph.srcX * invTexWidth;
-      glyph.u2=u + (glyph.srcX + glyph.width) * invTexWidth;
+      float x=glyph.srcX;
+      float x2=glyph.srcX + glyph.width;
+      float y=glyph.srcY;
+      float y2=glyph.srcY + glyph.height;
+      if (offsetX > 0) {
+        x-=offsetX;
+        if (x < 0) {
+          glyph.width+=x;
+          glyph.xoffset-=x;
+          x=0;
+        }
+        x2-=offsetX;
+        if (x2 > regionWidth) {
+          glyph.width-=x2 - regionWidth;
+          x2=regionWidth;
+        }
+      }
+      if (offsetY > 0) {
+        y-=offsetY;
+        if (y < 0) {
+          glyph.height+=y;
+          y=0;
+        }
+        y2-=offsetY;
+        if (y2 > regionHeight) {
+          float amount=y2 - regionHeight;
+          glyph.height-=amount;
+          glyph.yoffset+=amount;
+          y2=regionHeight;
+        }
+      }
+      glyph.u=u + x * invTexWidth;
+      glyph.u2=u + x2 * invTexWidth;
       if (data.flipped) {
-        glyph.v=v + glyph.srcY * invTexHeight;
-        glyph.v2=v + (glyph.srcY + glyph.height) * invTexHeight;
+        glyph.v=v + y * invTexHeight;
+        glyph.v2=v + y2 * invTexHeight;
       }
  else {
-        glyph.v2=v + glyph.srcY * invTexHeight;
-        glyph.v=v + (glyph.srcY + glyph.height) * invTexHeight;
+        glyph.v2=v + y * invTexHeight;
+        glyph.v=v + y2 * invTexHeight;
       }
     }
   }
