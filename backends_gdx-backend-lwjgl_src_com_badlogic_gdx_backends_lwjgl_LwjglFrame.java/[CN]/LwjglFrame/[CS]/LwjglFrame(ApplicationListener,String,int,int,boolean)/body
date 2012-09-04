@@ -29,8 +29,10 @@
   setDefaultCloseOperation(EXIT_ON_CLOSE);
   getContentPane().setPreferredSize(new Dimension(width,height));
   initialize();
-  pack();
-  setLocationRelativeTo(null);
+  Dimension size=getSize();
+  if (size.width == 0 && size.height == 0)   pack();
+  Point location=getLocation();
+  if (location.x == 0 && location.y == 0)   setLocationRelativeTo(null);
   setVisible(true);
   lwjglCanvas.getCanvas().requestFocus();
 }
