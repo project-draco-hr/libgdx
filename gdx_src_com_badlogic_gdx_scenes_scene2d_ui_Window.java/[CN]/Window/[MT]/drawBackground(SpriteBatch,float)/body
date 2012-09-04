@@ -17,9 +17,7 @@
     if ((titleAlignment & Align.bottom) != 0)     y-=getPadTop() - bounds.height;
  else     y-=(getPadTop() - bounds.height) / 2;
   }
-  x=Math.round(x);
-  y=Math.round(y);
   titleCache.setColor(Color.tmp.set(getColor()).mul(style.titleFontColor));
-  titleCache.setPosition(x,y);
+  titleCache.setPosition((int)x,(int)y);
   titleCache.draw(batch,parentAlpha);
 }
