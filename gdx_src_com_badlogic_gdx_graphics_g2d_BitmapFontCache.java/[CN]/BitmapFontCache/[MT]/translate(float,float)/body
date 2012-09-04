@@ -1,8 +1,8 @@
 {
   if (xAmount == 0 && yAmount == 0)   return;
   if (integer) {
-    xAmount=(int)xAmount;
-    yAmount=(int)yAmount;
+    xAmount=Math.round(xAmount);
+    yAmount=Math.round(yAmount);
   }
   x+=xAmount;
   y+=yAmount;
