@@ -13,7 +13,6 @@
     int lastHeight=Math.max(1,graphics.getHeight());
     public void run(){
       if (!running)       return;
-      canvas.setCursor(cursor);
       graphics.updateTime();
 synchronized (runnables) {
         executedRunnables.clear();
@@ -42,6 +41,7 @@ synchronized (runnables) {
       listener.render();
       audio.update();
       Display.update();
+      canvas.setCursor(cursor);
       if (graphics.vsync)       Display.sync(60);
       if (running && !Display.isCloseRequested())       EventQueue.invokeLater(this);
  else       stopped();
