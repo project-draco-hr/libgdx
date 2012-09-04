@@ -10,6 +10,5 @@
     text.setLength(0);
     text.append(newText);
   }
-  computeBounds();
   invalidateHierarchy();
 }
