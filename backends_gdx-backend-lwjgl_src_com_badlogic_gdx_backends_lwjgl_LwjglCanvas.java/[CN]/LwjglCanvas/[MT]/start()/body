@@ -13,7 +13,7 @@
     int lastHeight=Math.max(1,graphics.getHeight());
     public void run(){
       if (!running)       return;
-      canvas.setCursor(null);
+      canvas.setCursor(cursor);
       graphics.updateTime();
 synchronized (runnables) {
         executedRunnables.clear();

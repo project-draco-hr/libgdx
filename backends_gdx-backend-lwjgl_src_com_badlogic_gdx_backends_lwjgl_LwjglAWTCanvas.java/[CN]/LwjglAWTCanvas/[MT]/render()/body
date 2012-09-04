@@ -1,6 +1,6 @@
 {
   setGlobals();
-  canvas.setCursor(null);
+  canvas.setCursor(cursor);
   graphics.updateTime();
 synchronized (runnables) {
     for (int i=0; i < runnables.size(); i++) {
