@@ -1,0 +1,5 @@
+{
+  Stage stage=getStage();
+  if (stage.getKeyboardFocus() == null)   stage.setKeyboardFocus(this);
+  super.draw(batch,parentAlpha);
+}
