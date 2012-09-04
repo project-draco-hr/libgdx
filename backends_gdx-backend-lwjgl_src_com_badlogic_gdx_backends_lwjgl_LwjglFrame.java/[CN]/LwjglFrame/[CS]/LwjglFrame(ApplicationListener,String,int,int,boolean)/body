@@ -1,9 +1,5 @@
 {
   super(title);
-  setDefaultCloseOperation(EXIT_ON_CLOSE);
-  getContentPane().setPreferredSize(new Dimension(width,height));
-  pack();
-  setLocationRelativeTo(null);
   lwjglCanvas=new LwjglCanvas(listener,useGL2){
     protected void stopped(){
       LwjglFrame.this.dispose();
@@ -30,6 +26,11 @@
     }
   }
 );
+  setDefaultCloseOperation(EXIT_ON_CLOSE);
+  getContentPane().setPreferredSize(new Dimension(width,height));
+  initialize();
+  pack();
+  setLocationRelativeTo(null);
   setVisible(true);
   lwjglCanvas.getCanvas().requestFocus();
 }
