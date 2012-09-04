@@ -7,20 +7,18 @@
   float y=getY();
   float width=getWidth();
   float height=getHeight();
-  float scaleX=SelectBox.this.getParent().getScaleX();
-  float scaleY=SelectBox.this.getParent().getScaleY();
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   listBackground.draw(batch,x,y,width,height);
-  float posY=height;
+  width-=listBackground.getLeftWidth() + listBackground.getRightWidth();
+  x+=listBackground.getLeftWidth();
+  float posY=height - listBackground.getTopHeight();
   for (int i=0; i < items.length; i++) {
     if (listSelectedIndex == i) {
       listSelection.draw(batch,x,y + posY - itemHeight,width,itemHeight);
     }
     font.setColor(fontColor.r,fontColor.g,fontColor.b,color.a * fontColor.a * parentAlpha);
-    font.setScale(scaleX,scaleY);
     font.draw(batch,items[i],x + textOffsetX,y + posY - textOffsetY);
-    font.setScale(1,1);
     posY-=itemHeight;
   }
 }
