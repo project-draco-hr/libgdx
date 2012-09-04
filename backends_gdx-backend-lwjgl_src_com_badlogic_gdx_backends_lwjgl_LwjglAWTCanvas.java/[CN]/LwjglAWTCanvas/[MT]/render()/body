@@ -3,15 +3,17 @@
   canvas.setCursor(cursor);
   graphics.updateTime();
 synchronized (runnables) {
-    for (int i=0; i < runnables.size(); i++) {
+    executedRunnables.clear();
+    executedRunnables.addAll(runnables);
+    runnables.clear();
+    for (int i=0; i < executedRunnables.size(); i++) {
       try {
-        runnables.get(i).run();
+        executedRunnables.get(i).run();
       }
  catch (      Throwable t) {
         t.printStackTrace();
       }
     }
-    runnables.clear();
   }
   int width=Math.max(1,graphics.getWidth());
   int height=Math.max(1,graphics.getHeight());
@@ -23,8 +25,10 @@ synchronized (runnables) {
     listener.resize(width,height);
   }
   input.processEvents();
-  listener.render();
-  if (audio != null) {
-    audio.update();
+  if (running) {
+    listener.render();
+    if (audio != null) {
+      audio.update();
+    }
   }
 }

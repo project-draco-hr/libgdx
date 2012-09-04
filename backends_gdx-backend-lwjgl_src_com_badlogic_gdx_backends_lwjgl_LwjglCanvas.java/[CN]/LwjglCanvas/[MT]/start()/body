@@ -38,11 +38,13 @@ synchronized (runnables) {
         listener.resize(width,height);
       }
       input.processEvents();
-      listener.render();
-      audio.update();
-      Display.update();
-      canvas.setCursor(cursor);
-      if (graphics.vsync)       Display.sync(60);
+      if (running) {
+        listener.render();
+        audio.update();
+        Display.update();
+        canvas.setCursor(cursor);
+        if (graphics.vsync)         Display.sync(60);
+      }
       if (running && !Display.isCloseRequested())       EventQueue.invokeLater(this);
  else       stopped();
     }
