@@ -1,6 +1,6 @@
 {
   Actor hit=actor.hit(x,y,true);
-  if (hit == null || !hit.isDescendant(actor)) {
+  if (hit == null || !hit.isDescendantOf(actor)) {
     if (touchDownX == -1 && touchDownY == -1)     return false;
     return Math.abs(x - touchDownX) < tapSquareSize && Math.abs(y - touchDownY) < tapSquareSize;
   }
