@@ -12,6 +12,7 @@
     tableBounds.width-=tableBounds.x + layout.getPadRight();
     tableBounds.height-=tableBounds.y + layout.getPadTop();
   }
-  ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,Rectangle.tmp2);
-  return Rectangle.tmp2;
+  if (scissorBounds == null)   scissorBounds=new Rectangle();
+  ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,scissorBounds);
+  return scissorBounds;
 }

@@ -23,7 +23,11 @@
         if (actor.getWidth() != widgetWidth || actor.getHeight() != widgetHeight) {
           actor.setWidth(widgetWidth);
           actor.setHeight(widgetHeight);
-          if (actor instanceof Layout)           ((Layout)actor).invalidate();
+          if (actor instanceof Layout) {
+            Layout layout=(Layout)actor;
+            layout.invalidate();
+            layout.validate();
+          }
         }
       }
     }
@@ -47,14 +51,13 @@
         if (actor.getWidth() != widgetWidth || actor.getHeight() != widgetHeight) {
           actor.setWidth(widgetWidth);
           actor.setHeight(widgetHeight);
-          if (actor instanceof Layout)           ((Layout)actor).invalidate();
+          if (actor instanceof Layout) {
+            Layout layout=(Layout)actor;
+            layout.invalidate();
+            layout.validate();
+          }
         }
       }
     }
-  }
-  Array<Actor> children=table.getChildren();
-  for (int i=0, n=children.size; i < n; i++) {
-    Actor child=children.get(i);
-    if (child instanceof Layout)     ((Layout)child).validate();
   }
 }
