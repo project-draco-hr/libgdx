@@ -1,53 +1,5 @@
 {
-  if (wrapWidth <= 0)   wrapWidth=Integer.MAX_VALUE;
-  float batchColor=spriteBatch.color;
-  float down=this.data.down;
-  int start=0;
-  int numLines=0;
-  int length=str.length();
-  float maxWidth=0;
-  while (start < length) {
-    int newLine=BitmapFont.indexOf(str,'\n',start);
-    while (start < newLine) {
-      if (!BitmapFont.isWhitespace(str.charAt(start)))       break;
-      start++;
-    }
-    int lineEnd=start + computeVisibleGlyphs(str,start,newLine,wrapWidth);
-    int nextStart=lineEnd + 1;
-    if (lineEnd < newLine) {
-      while (lineEnd > start) {
-        if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
-        lineEnd--;
-      }
-      if (lineEnd == start) {
-        if (nextStart > start + 1)         nextStart--;
-        lineEnd=nextStart;
-      }
- else {
-        nextStart=lineEnd;
-        while (lineEnd > start) {
-          if (!BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))           break;
-          lineEnd--;
-        }
-      }
-    }
- else     nextStart=lineEnd + 1;
-    if (lineEnd > start) {
-      float xOffset=0;
-      if (alignment != HAlignment.LEFT) {
-        float lineWidth=getBounds(str,start,lineEnd).width;
-        xOffset=wrapWidth - lineWidth;
-        if (alignment == HAlignment.CENTER)         xOffset/=2;
-      }
-      float lineWidth=draw(spriteBatch,str,x + xOffset,y,start,lineEnd).width;
-      maxWidth=Math.max(maxWidth,lineWidth);
-    }
-    start=nextStart;
-    y+=down;
-    numLines++;
-  }
-  spriteBatch.setColor(batchColor);
-  textBounds.width=maxWidth;
-  textBounds.height=data.capHeight + (numLines - 1) * data.lineHeight;
-  return textBounds;
+  TextBounds bounds=cache.setWrappedText(str,x,y,wrapWidth,alignment);
+  cache.draw(spriteBatch);
+  return bounds;
 }

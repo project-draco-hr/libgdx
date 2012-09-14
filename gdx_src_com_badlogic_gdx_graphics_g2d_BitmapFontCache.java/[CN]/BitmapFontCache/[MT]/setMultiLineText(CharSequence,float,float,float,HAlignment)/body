@@ -1,28 +1,4 @@
 {
-  BitmapFont font=this.font;
-  int length=str.length();
-  reset(length);
-  y+=font.data.ascent;
-  float down=font.data.down;
-  float maxWidth=0;
-  float startY=y;
-  int start=0;
-  int numLines=0;
-  while (start < length) {
-    int lineEnd=BitmapFont.indexOf(str,'\n',start);
-    float xOffset=0;
-    if (alignment != HAlignment.LEFT) {
-      float lineWidth=font.getBounds(str,start,lineEnd).width;
-      xOffset=alignmentWidth - lineWidth;
-      if (alignment == HAlignment.CENTER)       xOffset/=2;
-    }
-    float lineWidth=addToCache(str,x + xOffset,y,start,lineEnd);
-    maxWidth=Math.max(maxWidth,lineWidth);
-    start=lineEnd + 1;
-    y+=down;
-    numLines++;
-  }
-  textBounds.width=maxWidth;
-  textBounds.height=font.data.capHeight + (numLines - 1) * font.data.lineHeight;
-  return textBounds;
+  clear();
+  return addMultiLineText(str,x,y,alignmentWidth,alignment);
 }

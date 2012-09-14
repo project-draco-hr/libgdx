@@ -12,6 +12,8 @@
     x2=Math.round(x2);
     y2=Math.round(y2);
   }
+  int idx=this.idx;
+  this.idx+=20;
   vertices[idx++]=x;
   vertices[idx++]=y;
   vertices[idx++]=color;

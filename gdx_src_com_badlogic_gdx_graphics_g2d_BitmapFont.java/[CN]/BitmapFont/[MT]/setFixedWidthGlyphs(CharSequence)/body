@@ -1,4 +1,5 @@
 {
+  BitmapFontData data=this.data;
   int maxAdvance=0;
   for (int index=0, end=glyphs.length(); index < end; index++) {
     Glyph g=data.getGlyph(glyphs.charAt(index));

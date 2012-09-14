@@ -2,9 +2,10 @@
   float startX=x;
   BitmapFont font=this.font;
   Glyph lastGlyph=null;
-  if (font.data.scaleX == 1 && font.data.scaleY == 1) {
+  BitmapFontData data=font.data;
+  if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
-      lastGlyph=font.data.getGlyph(str.charAt(start++));
+      lastGlyph=data.getGlyph(str.charAt(start++));
       if (lastGlyph != null) {
         addGlyph(lastGlyph,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height);
         x+=lastGlyph.xadvance;
@@ -13,7 +14,7 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=font.data.getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch);
         lastGlyph=g;
@@ -23,9 +24,9 @@
     }
   }
  else {
-    float scaleX=font.data.scaleX, scaleY=font.data.scaleY;
+    float scaleX=data.scaleX, scaleY=data.scaleY;
     while (start < end) {
-      lastGlyph=font.data.getGlyph(str.charAt(start++));
+      lastGlyph=data.getGlyph(str.charAt(start++));
       if (lastGlyph != null) {
         addGlyph(lastGlyph,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY);
         x+=lastGlyph.xadvance * scaleX;
@@ -34,7 +35,7 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=font.data.getGlyph(ch);
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch) * scaleX;
         lastGlyph=g;
