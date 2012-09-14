@@ -6,7 +6,7 @@
     throw new ArrayIndexOutOfBoundsException("Length out of bounds: " + length);
   }
   int newSize=this.length + length;
-  if (newSize > value.length) {
+  if (newSize > chars.length) {
     enlargeBuffer(newSize);
   }
   System.arraycopy(value,offset,chars,this.length,length);
