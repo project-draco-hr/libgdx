@@ -1,0 +1,13 @@
+{
+  if (additive) {
+    spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE);
+  }
+  for (int i=0, n=maxParticleCount; i < n; i++) {
+    if (active.get(i)) {
+      particles[i].draw(spriteBatch);
+    }
+  }
+  if (additive) {
+    spriteBatch.setBlendFunction(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  }
+}

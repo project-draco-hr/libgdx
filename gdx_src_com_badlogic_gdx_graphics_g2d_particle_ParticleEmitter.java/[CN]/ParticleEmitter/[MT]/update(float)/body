@@ -1,0 +1,46 @@
+{
+  accumulator+=Math.min(delta * 1000,250);
+  if (accumulator < 1) {
+    return;
+  }
+  int deltaMillis=(int)accumulator;
+  accumulator-=deltaMillis;
+  for (int i=0; i < maxParticleCount; i++) {
+    if (active.get(i) && !updateParticle(particles[i],delta,deltaMillis)) {
+      active.clear(i);
+    }
+  }
+  if (delayTimer < delay) {
+    delayTimer+=deltaMillis;
+    return;
+  }
+  if (firstUpdate) {
+    firstUpdate=false;
+    addParticle();
+  }
+  if (durationTimer < duration) {
+    durationTimer+=deltaMillis;
+  }
+ else {
+    if (!continuous || allowCompletion) {
+      return;
+    }
+    restart();
+  }
+  emissionDelta+=deltaMillis;
+  float emissionTime=emission + emissionDiff * emissionValue.getScale(durationTimer / (float)duration);
+  if (emissionTime > 0) {
+    emissionTime=1000 / emissionTime;
+    if (emissionDelta >= emissionTime) {
+      int emitCount=(int)(emissionDelta / emissionTime);
+      emitCount=Math.min(emitCount,maxParticleCount - getActiveCount());
+      emissionDelta-=emitCount * emissionTime;
+      emissionDelta%=emissionTime;
+      addParticles(emitCount);
+    }
+  }
+  int ac=getActiveCount();
+  if (ac < minParticleCount) {
+    addParticles(minParticleCount - ac);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  int possibleCount=Math.min(count,maxParticleCount - getActiveCount());
+  int last=0;
+  for (int i=0; i < possibleCount; i++) {
+    last=addParticleAt(last);
+  }
+}

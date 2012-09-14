@@ -1,0 +1,6 @@
+{
+  emitters=new Array(true,effect.emitters.size);
+  for (int i=0, n=effect.emitters.size; i < n; i++) {
+    emitters.add(effect.emitters.get(i).clone());
+  }
+}
