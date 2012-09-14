@@ -1,0 +1,17 @@
+{
+  ConfigurationProperty assetPathProperty=null;
+  try {
+    assetPathProperty=context.getPropertyOracle().getConfigurationProperty("gdx.assetoutputpath");
+  }
+ catch (  BadPropertyValueException e) {
+    return null;
+  }
+  if (assetPathProperty.getValues().size() == 0) {
+    return null;
+  }
+  String path=assetPathProperty.getValues().get(0);
+  if (path != null && !path.endsWith("/")) {
+    path+="/";
+  }
+  return path;
+}

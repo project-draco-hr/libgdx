@@ -4,5 +4,6 @@
   if (attribute.equals(NORMAL))   return ShaderProgram.NORMAL_ATTRIBUTE;
   if (attribute.equals(TANGENT))   return ShaderProgram.TANGENT_ATTRIBUTE;
   if (attribute.equals(BITANGENT))   return ShaderProgram.BINORMAL_ATTRIBUTE;
+  if (attribute.equals(COLOR))   return ShaderProgram.COLOR_ATTRIBUTE;
   throw new GdxRuntimeException("can't map semantic '" + attribute + "' to alias, must be VERTEX, TEXCOORD, NORMAL, TANGENT or BITANGENT");
 }

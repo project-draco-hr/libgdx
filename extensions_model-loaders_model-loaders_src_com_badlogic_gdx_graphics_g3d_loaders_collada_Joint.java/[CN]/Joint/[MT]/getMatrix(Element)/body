@@ -1,0 +1,9 @@
+{
+  Matrix4 m=new Matrix4();
+  String[] tokens=matrix.getText().split("\\s+");
+  for (int i=0; i < tokens.length; i++) {
+    m.val[i]=Float.parseFloat(tokens[i]);
+  }
+  m.tra();
+  return m;
+}

@@ -6,4 +6,5 @@
     localCoords.y+=actor.getY();
     actor=actor.getParent();
   }
+  return localCoords;
 }

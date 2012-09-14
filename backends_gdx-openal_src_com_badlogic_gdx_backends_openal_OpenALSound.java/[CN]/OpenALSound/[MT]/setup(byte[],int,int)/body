@@ -1,5 +1,7 @@
 {
   int bytes=pcm.length - (pcm.length % (channels > 1 ? 4 : 2));
+  int samples=bytes / (2 * channels);
+  duration=samples / (float)sampleRate;
   ByteBuffer buffer=ByteBuffer.allocateDirect(bytes);
   buffer.order(ByteOrder.nativeOrder());
   buffer.put(pcm,0,bytes);

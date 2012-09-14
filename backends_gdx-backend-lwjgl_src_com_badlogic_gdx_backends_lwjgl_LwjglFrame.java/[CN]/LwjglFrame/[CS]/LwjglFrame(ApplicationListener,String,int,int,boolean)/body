@@ -1,9 +1,5 @@
 {
   super(title);
-  setDefaultCloseOperation(EXIT_ON_CLOSE);
-  getContentPane().setPreferredSize(new Dimension(width,height));
-  pack();
-  setLocationRelativeTo(null);
   lwjglCanvas=new LwjglCanvas(listener,useGL2){
     protected void stopped(){
       LwjglFrame.this.dispose();
@@ -21,6 +17,9 @@
     protected void resize(    int width,    int height){
       updateSize(width,height);
     }
+    protected void start(){
+      LwjglFrame.this.start();
+    }
   }
 ;
   getContentPane().add(lwjglCanvas.getCanvas());
@@ -30,6 +29,13 @@
     }
   }
 );
+  setDefaultCloseOperation(EXIT_ON_CLOSE);
+  getContentPane().setPreferredSize(new Dimension(width,height));
+  initialize();
+  Dimension size=getSize();
+  if (size.width == 0 && size.height == 0)   pack();
+  Point location=getLocation();
+  if (location.x == 0 && location.y == 0)   setLocationRelativeTo(null);
   setVisible(true);
   lwjglCanvas.getCanvas().requestFocus();
 }

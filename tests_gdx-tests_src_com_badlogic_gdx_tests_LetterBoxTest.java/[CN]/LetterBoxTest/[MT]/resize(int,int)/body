@@ -1,0 +1,4 @@
+{
+  stage.setViewport(300,200,true);
+  stage.getCamera().translate(-stage.getGutterWidth(),-stage.getGutterHeight(),0);
+}

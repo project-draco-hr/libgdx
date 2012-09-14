@@ -1,4 +1,5 @@
 {
   if (wrap)   return 0;
+  if (sizeInvalid)   computeSize();
   return bounds.width;
 }

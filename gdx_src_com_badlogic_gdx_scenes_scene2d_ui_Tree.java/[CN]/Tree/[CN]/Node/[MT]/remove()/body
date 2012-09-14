@@ -1,0 +1,5 @@
+{
+  Tree tree=getTree();
+  if (tree == null)   return;
+  tree.remove(this);
+}

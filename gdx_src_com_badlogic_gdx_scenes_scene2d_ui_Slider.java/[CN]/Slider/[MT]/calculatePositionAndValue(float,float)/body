@@ -1,9 +1,10 @@
 {
   final Drawable knob=style.knob;
+  final Drawable bg=style.background;
   float value;
   float oldPosition=sliderPos;
   if (vertical) {
-    float height=getHeight();
+    float height=getHeight() - bg.getTopHeight() - bg.getBottomHeight();
     sliderPos=y - knob.getMinHeight() * 0.5f;
     sliderPos=Math.max(0,sliderPos);
     sliderPos=Math.min(height - knob.getMinHeight(),sliderPos);

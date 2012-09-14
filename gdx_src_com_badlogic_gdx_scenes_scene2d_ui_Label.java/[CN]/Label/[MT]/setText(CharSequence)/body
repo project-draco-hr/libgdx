@@ -6,10 +6,9 @@
   }
  else {
     if (newText == null)     newText="";
-    if (isEqual(text.chars,newText))     return;
+    if (textEquals(newText))     return;
     text.setLength(0);
     text.append(newText);
   }
-  computeBounds();
   invalidateHierarchy();
 }

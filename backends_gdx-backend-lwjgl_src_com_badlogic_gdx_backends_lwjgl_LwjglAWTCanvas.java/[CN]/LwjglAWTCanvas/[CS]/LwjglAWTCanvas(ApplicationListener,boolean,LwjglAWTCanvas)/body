@@ -8,7 +8,7 @@
         return minSize;
       }
       @Override public void initGL(){
-        start();
+        create();
       }
       @Override public void paintGL(){
         try {

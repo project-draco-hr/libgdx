@@ -1,0 +1,3 @@
+{
+  return style.hScrollKnob == null || !scrollX ? 0 : style.hScrollKnob.getMinHeight();
+}

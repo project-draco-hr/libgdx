@@ -1,3 +1,3 @@
 {
-  return minHeight == null ? 0 : minHeight.get(this);
+  return minHeight == null ? 0 : minHeight.height(this);
 }

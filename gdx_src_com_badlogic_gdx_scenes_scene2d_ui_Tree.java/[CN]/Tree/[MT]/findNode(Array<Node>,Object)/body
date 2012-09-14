@@ -5,7 +5,6 @@
   }
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
-    if (node.children == null)     continue;
     Node found=findNode(node.children,object);
     if (found != null)     return found;
   }

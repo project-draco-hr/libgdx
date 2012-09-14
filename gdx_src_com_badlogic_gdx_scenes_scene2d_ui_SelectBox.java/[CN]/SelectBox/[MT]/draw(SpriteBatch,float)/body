@@ -1,5 +1,8 @@
 {
-  final Drawable background=style.background;
+  Drawable background;
+  if (list != null && list.getParent() != null && style.backgroundOpen != null)   background=style.backgroundOpen;
+ else   if (clickListener.isOver() && style.backgroundOver != null)   background=style.backgroundOver;
+ else   background=style.background;
   final BitmapFont font=style.font;
   final Color fontColor=style.fontColor;
   Color color=getColor();
@@ -13,7 +16,8 @@
     float availableWidth=width - background.getLeftWidth() - background.getRightWidth();
     int numGlyphs=font.computeVisibleGlyphs(items[selectedIndex],0,items[selectedIndex].length(),availableWidth);
     bounds.set(font.getBounds(items[selectedIndex]));
-    float textY=(int)(height / 2) + (int)(bounds.height / 2);
+    height-=background.getBottomHeight() + background.getTopHeight();
+    float textY=(int)(height / 2 + background.getBottomHeight() + bounds.height / 2);
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
     font.draw(batch,items[selectedIndex],x + background.getLeftWidth(),y + textY,0,numGlyphs);
   }

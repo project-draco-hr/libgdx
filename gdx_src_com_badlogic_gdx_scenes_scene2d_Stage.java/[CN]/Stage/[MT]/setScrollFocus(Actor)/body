@@ -1,3 +1,16 @@
 {
-  this.scrollFocus=actor;
+  if (scrollFocus == actor)   return;
+  FocusEvent event=Pools.obtain(FocusEvent.class);
+  event.setStage(this);
+  event.setType(FocusEvent.Type.scroll);
+  if (scrollFocus != null) {
+    event.setFocused(false);
+    scrollFocus.fire(event);
+  }
+  scrollFocus=actor;
+  if (scrollFocus != null) {
+    event.setFocused(true);
+    scrollFocus.fire(event);
+  }
+  Pools.free(event);
 }

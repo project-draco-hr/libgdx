@@ -1,0 +1,11 @@
+{
+  Skeleton skeleton=new Skeleton();
+  for (int i=0; i < joint.children.size; i++) {
+    skeleton.hierarchy.add(joint.children.get(i));
+  }
+  skeleton.buildFromHierarchy();
+  float[] times=anim.inputMap.values().next();
+  float totalDuration=times[times.length - 1];
+  skeleton.animations.put("My Animation",new SkeletonAnimation("My Animation",totalDuration,anim.keyFrames));
+  return skeleton;
+}

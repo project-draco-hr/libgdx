@@ -1,5 +1,0 @@
-{
-  if (!inputDir.outputDir.exists()) {
-    if (!inputDir.outputDir.mkdirs())     throw new Exception("Couldn't create output directory '" + inputDir.outputDir + "'");
-  }
-}

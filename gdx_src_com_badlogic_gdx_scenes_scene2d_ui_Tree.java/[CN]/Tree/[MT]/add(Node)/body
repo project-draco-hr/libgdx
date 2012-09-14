@@ -1,6 +1,3 @@
 {
-  node.parent=null;
-  rootNodes.add(node);
-  node.addToTree(this);
-  invalidateHierarchy();
+  insert(rootNodes.size,node);
 }

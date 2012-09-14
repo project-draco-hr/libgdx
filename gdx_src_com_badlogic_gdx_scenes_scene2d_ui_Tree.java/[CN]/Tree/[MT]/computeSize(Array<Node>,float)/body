@@ -3,7 +3,7 @@
   for (int i=0, n=nodes.size; i < n; i++) {
     Node node=nodes.get(i);
     float rowWidth=indent + iconSpacing;
-    Actor actor=node.rightActor;
+    Actor actor=node.actor;
     if (actor instanceof Layout) {
       Layout layout=(Layout)actor;
       rowWidth+=layout.getPrefWidth();
@@ -17,17 +17,6 @@
     if (node.icon != null) {
       rowWidth+=iconSpacing * 2 + node.icon.getMinWidth();
       node.height=Math.max(node.height,node.icon.getMinHeight());
-    }
-    actor=node.leftActor;
-    if (actor instanceof Layout) {
-      Layout layout=(Layout)actor;
-      leftColumnWidth=Math.max(leftColumnWidth,layout.getPrefWidth());
-      node.height=Math.max(node.height,layout.getPrefHeight());
-      layout.pack();
-    }
- else     if (actor != null) {
-      leftColumnWidth=Math.max(leftColumnWidth,actor.getWidth());
-      node.height=Math.max(node.height,actor.getHeight());
     }
     prefWidth=Math.max(prefWidth,rowWidth);
     prefHeight-=node.height + ySpacing;

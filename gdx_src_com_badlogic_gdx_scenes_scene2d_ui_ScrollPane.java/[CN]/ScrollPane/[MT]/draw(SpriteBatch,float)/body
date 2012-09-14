@@ -6,9 +6,15 @@
   if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
   float y=widgetAreaBounds.y;
   if (!scrollY)   y-=(int)maxY;
- else   y-=(int)(maxY * (1 - amountY / maxY));
+ else   y-=(int)(maxY - visualAmountY);
+  if (scrollbarsOnTop && scrollX) {
+    float scrollbarHeight=0;
+    if (style.hScrollKnob != null)     scrollbarHeight=style.hScrollKnob.getMinHeight();
+    if (style.hScroll != null)     scrollbarHeight=Math.max(scrollbarHeight,style.hScroll.getMinHeight());
+    y+=scrollbarHeight;
+  }
   float x=widgetAreaBounds.x;
-  if (scrollX)   x-=(int)(maxX * amountX / maxX);
+  if (scrollX)   x-=(int)visualAmountX;
   widget.setPosition(x,y);
   if (widget instanceof Cullable) {
     widgetCullingArea.x=-widget.getX() + widgetAreaBounds.x;
@@ -27,6 +33,11 @@
     ScissorStack.popScissors();
   }
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha * Interpolation.fade.apply(fadeAlpha / fadeAlphaSeconds));
+  if (scrollX && scrollY) {
+    if (style.corner != null) {
+      style.corner.draw(batch,hScrollBounds.x + hScrollBounds.width,hScrollBounds.y,vScrollBounds.width,vScrollBounds.y);
+    }
+  }
   if (scrollX) {
     if (style.hScroll != null)     style.hScroll.draw(batch,hScrollBounds.x,hScrollBounds.y,hScrollBounds.width,hScrollBounds.height);
     if (style.hScrollKnob != null)     style.hScrollKnob.draw(batch,hKnobBounds.x,hKnobBounds.y,hKnobBounds.width,hKnobBounds.height);

@@ -4,5 +4,6 @@
   setBackground(style.background);
   titleCache=new BitmapFontCache(style.titleFont);
   titleCache.setColor(style.titleFontColor);
+  if (title != null)   setTitle(title);
   invalidateHierarchy();
 }

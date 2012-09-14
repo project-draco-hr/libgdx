@@ -1,10 +1,8 @@
 {
-  if (children == null)   return;
   children.removeValue(node,true);
   if (!expanded)   return;
-  Group parent=rightActor.getParent();
-  if (!(parent instanceof Tree))   return;
-  Tree tree=(Tree)parent;
+  Tree tree=getTree();
+  if (tree == null)   return;
   node.removeFromTree(tree);
   if (children.size == 0)   expanded=false;
 }

@@ -28,5 +28,5 @@
     initialPointer2.set(pointer2);
     longPressTask.cancel();
   }
-  return listener.touchDown(x,y,pointer);
+  return listener.touchDown(x,y,pointer,button);
 }

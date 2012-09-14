@@ -1,0 +1,5 @@
+{
+  Group parent=actor.getParent();
+  if (!(parent instanceof Tree))   return null;
+  return (Tree)parent;
+}

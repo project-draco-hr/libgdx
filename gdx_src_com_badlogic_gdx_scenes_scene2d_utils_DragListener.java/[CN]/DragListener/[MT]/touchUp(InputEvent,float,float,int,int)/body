@@ -1,0 +1,7 @@
+{
+  if (pointer == pressedPointer) {
+    if (dragging)     dragStop(event,x,y,pointer);
+    dragging=false;
+    pressedPointer=-1;
+  }
+}

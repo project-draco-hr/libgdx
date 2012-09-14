@@ -1,11 +1,5 @@
 {
   if (!clamp)   return;
-  if (overscroll) {
-    amountX=MathUtils.clamp(amountX,-overscrollDistance,maxX + overscrollDistance);
-    amountY=MathUtils.clamp(amountY,-overscrollDistance,maxY + overscrollDistance);
-  }
- else {
-    amountX=MathUtils.clamp(amountX,0,maxX);
-    amountY=MathUtils.clamp(amountY,0,maxY);
-  }
+  amountX=overscrollX ? MathUtils.clamp(amountX,-overscrollDistance,maxX + overscrollDistance) : MathUtils.clamp(amountX,0,maxX);
+  amountY=overscrollY ? MathUtils.clamp(amountY,-overscrollDistance,maxY + overscrollDistance) : MathUtils.clamp(amountY,0,maxY);
 }

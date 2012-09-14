@@ -9,7 +9,7 @@
     tapCount++;
     lastTapTime=TimeUtils.nanoTime();
     gestureStartTime=0;
-    return listener.tap(x,y,tapCount,pointer,button);
+    return listener.tap(x,y,tapCount,button);
   }
  else   if (pinching) {
     pinching=false;
@@ -26,7 +26,7 @@
     long time=Gdx.input.getCurrentEventTime();
     if (time - tracker.lastTime < maxFlingDelay) {
       tracker.update(x,y,time);
-      return listener.fling(tracker.getVelocityX(),tracker.getVelocityY(),pointer,button);
+      return listener.fling(tracker.getVelocityX(),tracker.getVelocityY(),button);
     }
   }
   return false;

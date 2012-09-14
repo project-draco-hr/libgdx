@@ -1,0 +1,8 @@
+{
+  if (x + width > amountX + areaWidth)   amountX=x + width - areaWidth;
+  if (x < amountX)   amountX=x;
+  amountX=MathUtils.clamp(amountX,0,maxX);
+  float centerY=maxY - y + areaHeight / 2 - height / 2;
+  if (amountY < centerY - areaHeight / 4 || amountY > centerY + areaHeight / 4)   amountY=centerY;
+  amountY=MathUtils.clamp(amountY,0,maxY);
+}

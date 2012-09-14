@@ -1,0 +1,64 @@
+{
+  DragListener listener=new DragListener(){
+    public void dragStart(    InputEvent event,    float x,    float y,    int pointer){
+      dragStartTime=System.currentTimeMillis();
+      payload=source.dragStart(event,getTouchDownX(),getTouchDownY(),pointer);
+      event.stop();
+    }
+    public void drag(    InputEvent event,    float x,    float y,    int pointer){
+      if (payload == null)       return;
+      Stage stage=event.getStage();
+      Target newTarget=null;
+      isValidTarget=false;
+      Actor hit=event.getStage().hit(event.getStageX(),event.getStageY(),true);
+      if (hit == null)       hit=event.getStage().hit(event.getStageX(),event.getStageY(),false);
+      if (hit != null) {
+        for (int i=0, n=targets.size; i < n; i++) {
+          Target target=targets.get(i);
+          if (!target.actor.isAscendantOf(hit))           continue;
+          newTarget=target;
+          target.actor.stageToLocalCoordinates(Vector2.tmp.set(event.getStageX(),event.getStageY()));
+          isValidTarget=target.drag(source,payload,Vector2.tmp.x,Vector2.tmp.y,pointer);
+          break;
+        }
+      }
+      if (newTarget != target) {
+        if (target != null)         target.reset(source,payload);
+        target=newTarget;
+      }
+      Actor actor=null;
+      if (target != null)       actor=isValidTarget ? payload.validDragActor : payload.invalidDragActor;
+      if (actor == null)       actor=payload.dragActor;
+      if (actor == null)       return;
+      if (dragActor != actor) {
+        if (dragActor != null)         dragActor.remove();
+        dragActor=actor;
+        stage.addActor(actor);
+      }
+      float actorX=event.getStageX() + dragActorX;
+      float actorY=event.getStageY() + dragActorY - actor.getHeight();
+      if (actorX < 0)       actorX=0;
+      if (actorY < 0)       actorY=0;
+      if (actorX + actor.getWidth() > stage.getWidth())       actorX=stage.getWidth() - actor.getWidth();
+      if (actorY + actor.getHeight() > stage.getHeight())       actorY=stage.getHeight() - actor.getHeight();
+      actor.setPosition(actorX,actorY);
+    }
+    public void dragStop(    InputEvent event,    float x,    float y,    int pointer){
+      if (payload == null)       return;
+      if (System.currentTimeMillis() - dragStartTime < dragTime)       isValidTarget=false;
+      if (dragActor != null)       dragActor.remove();
+      if (isValidTarget)       target.drop(source,payload);
+      source.dragStop(event,x,y,pointer,isValidTarget ? target : null);
+      if (target != null)       target.reset(source,payload);
+      DragAndDrop.this.source=null;
+      payload=null;
+      target=null;
+      isValidTarget=false;
+      dragActor=null;
+    }
+  }
+;
+  listener.setTapSquareSize(tapSquareSize);
+  listener.setButton(button);
+  source.actor.addCaptureListener(listener);
+}

@@ -1,0 +1,9 @@
+{
+  Actor actor=this;
+  while (actor.getParent() != null) {
+    actor.localToParentCoordinates(localCoords);
+    actor=actor.getParent();
+    if (actor == ascendant)     break;
+  }
+  return localCoords;
+}

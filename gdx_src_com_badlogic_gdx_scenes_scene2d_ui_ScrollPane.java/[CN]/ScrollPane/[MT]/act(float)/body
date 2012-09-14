@@ -1,7 +1,7 @@
 {
   super.act(delta);
   boolean panning=gestureListener.getGestureDetector().isPanning();
-  if (fadeScrollBars && flickScroll && !panning&& !touchScrollH&& !touchScrollV) {
+  if (fadeAlpha > 0 && fadeScrollBars && !panning && !touchScrollH && !touchScrollV) {
     fadeDelay-=fadeDelaySeconds * delta;
     if (fadeDelay <= 0)     fadeAlpha=Math.max(0,fadeAlpha - fadeAlphaSeconds * delta);
   }
@@ -21,26 +21,40 @@
       velocityY=0;
     }
   }
-  if (overscroll && !panning) {
-    if (amountX < 0) {
-      resetFade();
-      amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
-      if (amountX > 0)       amountX=0;
+  if (smoothScrolling && flingTimer <= 0 && !touchScrollH && !touchScrollV && !panning) {
+    if (visualAmountX < amountX)     visualAmountX=Math.min(amountX,visualAmountX + Math.max(150 * delta,(amountX - visualAmountX) * 5 * delta));
+ else     visualAmountX=Math.max(amountX,visualAmountX - Math.max(150 * delta,(visualAmountX - amountX) * 5 * delta));
+    if (visualAmountY < amountY)     visualAmountY=Math.min(amountY,visualAmountY + Math.max(150 * delta,(amountY - visualAmountY) * 5 * delta));
+ else     visualAmountY=Math.max(amountY,visualAmountY - Math.max(150 * delta,(visualAmountY - amountY) * 5 * delta));
+  }
+ else {
+    visualAmountX=amountX;
+    visualAmountY=amountY;
+  }
+  if (!panning) {
+    if (overscrollX && scrollX) {
+      if (amountX < 0) {
+        resetFade();
+        amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
+        if (amountX > 0)         amountX=0;
+      }
+ else       if (amountX > maxX) {
+        resetFade();
+        amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
+        if (amountX < maxX)         amountX=maxX;
+      }
     }
- else     if (amountX > maxX) {
-      resetFade();
-      amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
-      if (amountX < maxX)       amountX=maxX;
-    }
-    if (amountY < 0) {
-      resetFade();
-      amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
-      if (amountY > 0)       amountY=0;
-    }
- else     if (amountY > maxY) {
-      resetFade();
-      amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
-      if (amountY < maxY)       amountY=maxY;
+    if (overscrollY && scrollY) {
+      if (amountY < 0) {
+        resetFade();
+        amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
+        if (amountY > 0)         amountY=0;
+      }
+ else       if (amountY > maxY) {
+        resetFade();
+        amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
+        if (amountY < maxY)         amountY=maxY;
+      }
     }
   }
 }

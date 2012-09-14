@@ -7,11 +7,12 @@
     tableBounds.y=0;
   }
  else {
-    tableBounds.x=layout.getPadLeft().width(this);
-    tableBounds.y=layout.getPadBottom().height(this);
-    tableBounds.width-=tableBounds.x + layout.getPadRight().width(this);
-    tableBounds.height-=tableBounds.y + layout.getPadTop().height(this);
+    tableBounds.x=layout.getPadLeft();
+    tableBounds.y=layout.getPadBottom();
+    tableBounds.width-=tableBounds.x + layout.getPadRight();
+    tableBounds.height-=tableBounds.y + layout.getPadTop();
   }
-  ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,Rectangle.tmp2);
-  return Rectangle.tmp2;
+  if (scissorBounds == null)   scissorBounds=new Rectangle();
+  ScissorStack.calculateScissors(getStage().getCamera(),transform,tableBounds,scissorBounds);
+  return scissorBounds;
 }

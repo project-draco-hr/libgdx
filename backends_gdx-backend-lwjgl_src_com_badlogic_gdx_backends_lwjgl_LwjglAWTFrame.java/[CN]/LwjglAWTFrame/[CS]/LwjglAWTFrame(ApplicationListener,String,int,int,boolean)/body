@@ -1,0 +1,39 @@
+{
+  super(title);
+  lwjglAWTCanvas=new LwjglAWTCanvas(listener,useGL2){
+    protected void stopped(){
+      LwjglAWTFrame.this.dispose();
+    }
+    protected void setTitle(    String title){
+      LwjglAWTFrame.this.setTitle(title);
+    }
+    protected void setDisplayMode(    int width,    int height){
+      LwjglAWTFrame.this.getContentPane().setPreferredSize(new Dimension(width,height));
+      LwjglAWTFrame.this.getContentPane().invalidate();
+      LwjglAWTFrame.this.pack();
+      LwjglAWTFrame.this.setLocationRelativeTo(null);
+      updateSize(width,height);
+    }
+    protected void resize(    int width,    int height){
+      updateSize(width,height);
+    }
+    protected void start(){
+      LwjglAWTFrame.this.start();
+    }
+  }
+;
+  getContentPane().add(lwjglAWTCanvas.getCanvas());
+  Runtime.getRuntime().addShutdownHook(new Thread(){
+    public void run(){
+      Runtime.getRuntime().halt(0);
+    }
+  }
+);
+  setDefaultCloseOperation(EXIT_ON_CLOSE);
+  getContentPane().setPreferredSize(new Dimension(width,height));
+  initialize();
+  pack();
+  setLocationRelativeTo(null);
+  setVisible(true);
+  lwjglAWTCanvas.getCanvas().requestFocus();
+}

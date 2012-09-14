@@ -1,0 +1,17 @@
+{
+  sizeInvalid=false;
+  prefWidth=0;
+  SnapshotArray<Actor> children=getChildren();
+  for (int i=0, n=children.size; i < n; i++) {
+    Actor child=children.get(i);
+    if (child instanceof Layout) {
+      Layout layout=(Layout)child;
+      prefWidth=Math.max(prefWidth,layout.getPrefWidth());
+      prefHeight+=layout.getPrefHeight();
+    }
+ else {
+      prefWidth=Math.max(prefWidth,child.getWidth());
+      prefHeight+=child.getHeight();
+    }
+  }
+}

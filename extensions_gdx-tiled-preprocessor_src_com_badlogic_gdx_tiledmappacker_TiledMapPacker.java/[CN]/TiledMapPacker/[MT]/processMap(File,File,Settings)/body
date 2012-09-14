@@ -1,12 +1,23 @@
 {
-  FileHandle inputDirHandle=Gdx.files.absolute(inputDir.getAbsolutePath());
+  FileHandle inputDirHandle=new FileHandle(inputDir.getAbsolutePath());
   File[] files=inputDir.listFiles(new TmxFilter());
   for (  File file : files) {
-    map=TiledLoader.createMap(Gdx.files.absolute(file.getAbsolutePath()));
+    map=TiledLoader.createMap(new FileHandle(file.getAbsolutePath()));
+    IntArray usedIds=null;
+    if (this.settings.stripUnusedTiles) {
+      usedIds=new IntArray(map.layers.size() * map.height * map.width);
+      for (      TiledLayer layer : map.layers) {
+        for (int y=0; y < layer.tiles.length; ++y) {
+          for (int x=0; x < layer.tiles[y].length; ++x) {
+            usedIds.add(layer.tiles[y][x]);
+          }
+        }
+      }
+    }
     for (    TileSet set : map.tileSets) {
       if (!processedTileSets.contains(set.imageName)) {
         processedTileSets.add(set.imageName);
-        packTileSet(set,inputDirHandle,outputDir,settings);
+        packTileSet(set,usedIds,inputDirHandle,outputDir,settings);
       }
     }
     writeUpdatedTMX(outputDir,map.tmxFile);

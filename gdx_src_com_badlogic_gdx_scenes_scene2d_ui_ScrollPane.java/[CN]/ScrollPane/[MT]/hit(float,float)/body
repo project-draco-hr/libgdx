@@ -1,4 +1,0 @@
-{
-  if (x > 0 && x < getWidth() && y > 0 && y < getHeight())   return super.hit(x,y);
-  return null;
-}

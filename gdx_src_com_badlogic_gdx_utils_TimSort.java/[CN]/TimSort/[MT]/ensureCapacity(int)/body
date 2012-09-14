@@ -1,4 +1,5 @@
 {
+  tmpCount=Math.max(tmpCount,minCapacity);
   if (tmp.length < minCapacity) {
     int newSize=minCapacity;
     newSize|=newSize >> 1;

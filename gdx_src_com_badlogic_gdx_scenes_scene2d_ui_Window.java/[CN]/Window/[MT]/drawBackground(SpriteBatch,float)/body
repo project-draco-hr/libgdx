@@ -1,5 +1,23 @@
 {
+  if (style.stageBackground != null) {
+    Color color=getColor();
+    batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+    Stage stage=getStage();
+    Vector2 position=stageToLocalCoordinates(Vector2.tmp.set(0,0));
+    Vector2 size=stageToLocalCoordinates(Vector2.tmp2.set(stage.getWidth(),stage.getHeight()));
+    style.stageBackground.draw(batch,getX() + position.x,getY() + position.y,getX() + size.x,getY() + size.y);
+  }
   super.drawBackground(batch,parentAlpha);
-  titleCache.setPosition(getX(),getY());
+  float x=getX(), y=getY() + getHeight();
+  TextBounds bounds=titleCache.getBounds();
+  if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
+ else   if ((titleAlignment & Align.right) != 0)   x+=getWidth() - bounds.width - getPadRight();
+ else   x+=(getWidth() - bounds.width) / 2;
+  if ((titleAlignment & Align.top) == 0) {
+    if ((titleAlignment & Align.bottom) != 0)     y-=getPadTop() - bounds.height;
+ else     y-=(getPadTop() - bounds.height) / 2;
+  }
+  titleCache.setColor(Color.tmp.set(getColor()).mul(style.titleFontColor));
+  titleCache.setPosition((int)x,(int)y);
   titleCache.draw(batch,parentAlpha);
 }

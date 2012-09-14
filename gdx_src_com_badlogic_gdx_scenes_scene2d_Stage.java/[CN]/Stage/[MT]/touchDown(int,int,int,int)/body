@@ -1,4 +1,7 @@
 {
+  pointerTouched[pointer]=true;
+  pointerScreenX[pointer]=screenX;
+  pointerScreenY[pointer]=screenY;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setType(Type.touchDown);
@@ -7,7 +10,7 @@
   event.setStageY(stageCoords.y);
   event.setPointer(pointer);
   event.setButton(button);
-  Actor target=hit(stageCoords.x,stageCoords.y);
+  Actor target=hit(stageCoords.x,stageCoords.y,true);
   if (target == null)   target=root;
   target.fire(event);
   boolean handled=event.isHandled();

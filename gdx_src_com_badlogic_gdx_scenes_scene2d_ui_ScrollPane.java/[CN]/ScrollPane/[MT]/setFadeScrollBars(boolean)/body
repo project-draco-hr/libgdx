@@ -1,6 +1,6 @@
 {
   if (this.fadeScrollBars == fadeScrollBars)   return;
   this.fadeScrollBars=fadeScrollBars;
-  if (!fadeScrollBars)   fadeAlpha=1;
+  if (!fadeScrollBars)   fadeAlpha=fadeAlphaSeconds;
   invalidate();
 }

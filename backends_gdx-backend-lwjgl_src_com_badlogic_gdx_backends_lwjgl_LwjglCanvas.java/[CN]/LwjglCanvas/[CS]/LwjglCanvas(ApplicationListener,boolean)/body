@@ -6,7 +6,7 @@
       super.addNotify();
       EventQueue.invokeLater(new Runnable(){
         public void run(){
-          start();
+          create();
         }
       }
 );

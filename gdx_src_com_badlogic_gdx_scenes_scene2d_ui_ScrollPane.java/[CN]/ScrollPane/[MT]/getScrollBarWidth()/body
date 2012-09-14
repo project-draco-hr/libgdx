@@ -1,0 +1,3 @@
+{
+  return style.vScrollKnob == null || !scrollY ? 0 : style.vScrollKnob.getMinWidth();
+}

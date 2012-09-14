@@ -1,11 +1,12 @@
 {
-  addListener(new ClickListener(){
+  addListener(clickListener=new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
       if (node == null)       return;
-      if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT) && selectedNodes.size > 0) {
-        float low=selectedNodes.first().rightActor.getY();
-        float high=node.rightActor.getY();
+      if (node != getNodeAt(getTouchDownY()))       return;
+      if (multiSelect && selectedNodes.size > 0 && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
+        float low=selectedNodes.first().actor.getY();
+        float high=node.actor.getY();
         if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
@@ -14,27 +15,31 @@
         Pools.free(changeEvent);
         return;
       }
-      if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
-        float rowX=node.rightActor.getX();
-        if (node.icon != null)         rowX-=iconSpacing + node.icon.getMinWidth();
-        if (x < rowX) {
-          node.setExpanded(!node.expanded);
-          return;
+      if (!multiSelect || (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))) {
+        if (node.children.size > 0) {
+          float rowX=node.actor.getX();
+          if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
+          if (x < rowX) {
+            node.setExpanded(!node.expanded);
+            return;
+          }
         }
+        if (!node.isSelectable())         return;
         selectedNodes.clear();
       }
+ else       if (!node.isSelectable())       return;
       if (!selectedNodes.removeValue(node,true))       selectedNodes.add(node);
       ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
       fire(changeEvent);
       Pools.free(changeEvent);
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
-      overNode=getNodeAt(y);
+      setOverNode(getNodeAt(y));
       return false;
     }
     public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
       super.exit(event,x,y,pointer,toActor);
-      if (x < 0 || x > getWidth() || y < 0 || y > getHeight())       overNode=null;
+      if (toActor == null || !toActor.isDescendantOf(Tree.this))       setOverNode(null);
     }
   }
 );
