@@ -1,3 +1,3 @@
 {
-  return padBounds.contains(x,y) ? this : null;
+  return touchBounds.contains(x,y) ? this : null;
 }
