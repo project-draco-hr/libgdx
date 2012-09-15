@@ -1,0 +1,8 @@
+{
+  int vertexCount=idx + glyphCount * 20;
+  if (vertices == null || vertices.length < vertexCount) {
+    float[] newVertices=new float[vertexCount];
+    System.arraycopy(vertices,0,newVertices,0,idx);
+    vertices=newVertices;
+  }
+}

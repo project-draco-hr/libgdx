@@ -1,8 +1,11 @@
 {
-  float radius=Math.min(getWidth(),getHeight()) / 2;
+  float halfWidth=getWidth() / 2;
+  float halfHeight=getHeight() / 2;
+  float radius=Math.min(halfWidth,halfHeight);
+  touchBounds.set(halfWidth,halfHeight,radius);
   if (style.knob != null)   radius-=Math.max(style.knob.getMinWidth(),style.knob.getMinHeight()) / 2;
-  padBounds.set(getWidth() / 2f,getHeight() / 2f,radius);
-  deadzoneBounds.set(getWidth() / 2f,getHeight() / 2f,deadzoneRadius);
-  knobPosition.set(getWidth() / 2f,getHeight() / 2f);
+  padBounds.set(halfWidth,halfHeight,radius);
+  deadzoneBounds.set(halfWidth,halfHeight,deadzoneRadius);
+  knobPosition.set(halfWidth,halfHeight);
   knobPercent.set(0,0);
 }

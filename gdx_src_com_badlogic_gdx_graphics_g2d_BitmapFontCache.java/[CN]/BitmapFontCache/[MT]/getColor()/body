@@ -1,7 +1,7 @@
 {
   float floatBits=color;
   int intBits=NumberUtils.floatToIntColor(color);
-  Color color=tmpColor;
+  Color color=tempColor;
   color.r=(intBits & 0xff) / 255f;
   color.g=((intBits >>> 8) & 0xff) / 255f;
   color.b=((intBits >>> 16) & 0xff) / 255f;
