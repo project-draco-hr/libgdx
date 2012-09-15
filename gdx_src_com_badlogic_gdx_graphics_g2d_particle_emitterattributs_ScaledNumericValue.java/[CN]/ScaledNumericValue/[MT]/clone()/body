@@ -1,0 +1,8 @@
+{
+  ScaledNumericValue n=(ScaledNumericValue)super.clone();
+  n.low=low.clone();
+  n.heigh=heigh.clone();
+  n.scaling=Arrays.copyOf(scaling,scaling.length);
+  n.timeline=Arrays.copyOf(timeline,timeline.length);
+  return n;
+}

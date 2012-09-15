@@ -7,7 +7,7 @@
   float percent=durationTimer / (float)duration;
   int updateFlags=this.updateFlags;
   particle.currentLife=particle.life=life + (int)(lifeDiff * lifeValue.getScale(percent));
-  if (velocityValue.active) {
+  if (velocityValue.isActive()) {
     particle.velocity=velocityValue.newLowValue();
     particle.velocityDiff=velocityValue.newHighValue();
     if (!velocityValue.isRelative()) {
@@ -33,7 +33,7 @@
     particle.scaleDiff-=particle.scale;
   }
   particle.setScale(particle.scale + particle.scaleDiff * scaleValue.getScale(0));
-  if (rotationValue.active) {
+  if (rotationValue.isActive()) {
     particle.rotation=rotationValue.newLowValue();
     particle.rotationDiff=rotationValue.newHighValue();
     if (!rotationValue.isRelative()) {
@@ -45,14 +45,14 @@
     }
     particle.setRotation(rotation);
   }
-  if (windValue.active) {
+  if (windValue.isActive()) {
     particle.wind=windValue.newLowValue();
     particle.windDiff=windValue.newHighValue();
     if (!windValue.isRelative()) {
       particle.windDiff-=particle.wind;
     }
   }
-  if (gravityValue.active) {
+  if (gravityValue.isActive()) {
     particle.gravity=gravityValue.newLowValue();
     particle.gravityDiff=gravityValue.newHighValue();
     if (!gravityValue.isRelative()) {
@@ -70,14 +70,14 @@
   particle.transparency=transparencyValue.newLowValue();
   particle.transparencyDiff=transparencyValue.newHighValue() - particle.transparency;
   float x=this.x;
-  if (xOffsetValue.active) {
-    x+=xOffsetValue.newLowValue();
+  if (xOffsetValue.isActive()) {
+    x+=xOffsetValue.newValue();
   }
   float y=this.y;
-  if (yOffsetValue.active) {
-    y+=yOffsetValue.newLowValue();
+  if (yOffsetValue.isActive()) {
+    y+=yOffsetValue.newValue();
   }
-switch (spawnShapeValue.shape) {
+switch (spawnShapeValue.getShape()) {
 case square:
 {
       float width=spawnWidth + (spawnWidthDiff * spawnWidthValue.getScale(percent));
@@ -96,9 +96,9 @@ case ellipse:
       break;
     }
     float scaleY=radiusX / (float)radiusY;
-    if (spawnShapeValue.edges) {
+    if (spawnShapeValue.isEdges()) {
       float spawnAngle;
-switch (spawnShapeValue.side) {
+switch (spawnShapeValue.getSide()) {
 case top:
         spawnAngle=-MathUtils.random(179f);
       break;

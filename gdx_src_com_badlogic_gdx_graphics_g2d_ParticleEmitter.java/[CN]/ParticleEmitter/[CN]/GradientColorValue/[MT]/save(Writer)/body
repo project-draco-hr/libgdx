@@ -1,8 +1,0 @@
-{
-  super.save(output);
-  if (!active)   return;
-  output.write("colorsCount: " + colors.length + "\n");
-  for (int i=0; i < colors.length; i++)   output.write("colors" + i + ": "+ colors[i]+ "\n");
-  output.write("timelineCount: " + timeline.length + "\n");
-  for (int i=0; i < timeline.length; i++)   output.write("timeline" + i + ": "+ timeline[i]+ "\n");
-}

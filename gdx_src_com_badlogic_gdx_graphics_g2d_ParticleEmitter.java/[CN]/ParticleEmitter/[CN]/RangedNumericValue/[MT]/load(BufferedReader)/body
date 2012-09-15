@@ -1,6 +1,0 @@
-{
-  super.load(reader);
-  if (!active)   return;
-  lowMin=readFloat(reader,"lowMin");
-  lowMax=readFloat(reader,"lowMax");
-}

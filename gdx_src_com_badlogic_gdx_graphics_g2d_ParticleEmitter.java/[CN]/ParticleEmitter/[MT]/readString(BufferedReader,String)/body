@@ -1,5 +1,0 @@
-{
-  String line=reader.readLine();
-  if (line == null)   throw new IOException("Missing value: " + name);
-  return line.substring(line.indexOf(":") + 1).trim();
-}
