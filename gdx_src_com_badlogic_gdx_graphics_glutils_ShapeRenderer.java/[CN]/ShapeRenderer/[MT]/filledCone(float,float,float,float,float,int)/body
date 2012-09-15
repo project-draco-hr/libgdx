@@ -1,0 +1,38 @@
+{
+  if (segments <= 0)   throw new IllegalArgumentException("segments must be >= 0.");
+  if (currType != ShapeType.FilledCone)   throw new GdxRuntimeException("Must call begin(ShapeType.FilledCone)");
+  checkDirty();
+  checkFlush(segments * 6 + 3);
+  int inc=360 / segments;
+  float angle=2 * 3.1415926f / segments;
+  float cos=MathUtils.cos(angle);
+  float sin=MathUtils.sin(angle);
+  float cx=radius, cy=0;
+  segments--;
+  for (int i=0; i < segments; i++) {
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,z);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + cx,y + cy,z);
+    float temp=cx;
+    float temp2=cy;
+    cx=cos * cx - sin * cy;
+    cy=sin * temp + cos * cy;
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + cx,y + cy,z);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + temp,y + temp2,z);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + cx,y + cy,z);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,z + height);
+  }
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x,y,z);
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,z);
+  cx=radius;
+  cy=0;
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,z);
+}
