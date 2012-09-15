@@ -1,3 +1,6 @@
 {
-  return drawWrapped(spriteBatch,str,x,y,wrapWidth,HAlignment.LEFT);
+  cache.clear();
+  TextBounds bounds=cache.addWrappedText(str,x,y,wrapWidth,HAlignment.LEFT);
+  cache.draw(spriteBatch);
+  return bounds;
 }

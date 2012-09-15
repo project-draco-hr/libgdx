@@ -1,5 +1,6 @@
 {
-  TextBounds bounds=cache.setMultiLineText(str,x,y,alignmentWidth,alignment);
+  cache.clear();
+  TextBounds bounds=cache.addMultiLineText(str,x,y,alignmentWidth,alignment);
   cache.draw(spriteBatch);
   return bounds;
 }
