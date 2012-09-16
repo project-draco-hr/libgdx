@@ -1,0 +1,50 @@
+{
+  if (ctmMesh.getVertexCount() > Short.MAX_VALUE) {
+    throw new GdxRuntimeException("The indices exceed the range of SHORT!");
+  }
+  List<VertexAttribute> vas=new ArrayList<VertexAttribute>();
+  VertexAttribute position=new VertexAttribute(Usage.Position,CTM_POSITION_ELEMENT_COUNT,ShaderProgram.POSITION_ATTRIBUTE);
+  vas.add(position);
+  VertexAttribute normal=null;
+  if (ctmMesh.hasNormals()) {
+    normal=new VertexAttribute(Usage.Normal,CTM_NORMAL_ELEMENT_COUNT,ShaderProgram.NORMAL_ATTRIBUTE);
+    vas.add(normal);
+  }
+  VertexAttribute[] uvs=new VertexAttribute[ctmMesh.getUVCount()];
+  if (ctmMesh.getUVCount() > 0) {
+    uvs[0]=new VertexAttribute(Usage.TextureCoordinates,CTM_UV_ELEMENT_COUNT,ShaderProgram.TEXCOORD_ATTRIBUTE);
+    vas.add(uvs[0]);
+    if (ctmMesh.getUVCount() > 1) {
+      for (int i=1; i < ctmMesh.getUVCount(); ++i) {
+        AttributeData ad=ctmMesh.texcoordinates[i];
+        uvs[i]=new VertexAttribute(Usage.TextureCoordinates,CTM_UV_ELEMENT_COUNT,ad.name);
+        vas.add(uvs[i]);
+      }
+    }
+  }
+  VertexAttribute[] others=new VertexAttribute[ctmMesh.getAttrCount()];
+  for (int i=0; i < ctmMesh.getAttrCount(); ++i) {
+    others[i]=new VertexAttribute(Usage.Generic,CTM_ATTR_ELEMENT_COUNT,ctmMesh.attributs[i].name);
+    vas.add(others[i]);
+  }
+  Mesh m=new Mesh(true,ctmMesh.getVertexCount(),ctmMesh.getTriangleCount() * 3,vas.toArray(new VertexAttribute[0]));
+  m.setIndices(convertIndices(ctmMesh.indices));
+  int vsize=m.getVertexSize() / 4;
+  float[] data=new float[vsize * ctmMesh.getVertexCount()];
+  for (int i=0; i < ctmMesh.getVertexCount(); i++) {
+    System.arraycopy(ctmMesh.vertices,i * CTM_POSITION_ELEMENT_COUNT,data,i * vsize,CTM_POSITION_ELEMENT_COUNT);
+    if (normal != null) {
+      System.arraycopy(ctmMesh.normals,i * CTM_NORMAL_ELEMENT_COUNT,data,i * vsize + normal.offset / 4,CTM_NORMAL_ELEMENT_COUNT);
+    }
+    for (    VertexAttribute va : uvs) {
+      AttributeData ad=ctmMesh.texcoordinates[i];
+      System.arraycopy(ad.values,i * CTM_UV_ELEMENT_COUNT,data,i * vsize + va.offset / 4,CTM_UV_ELEMENT_COUNT);
+    }
+    for (    VertexAttribute va : others) {
+      AttributeData ad=ctmMesh.attributs[i];
+      System.arraycopy(ad.values,i * CTM_ATTR_ELEMENT_COUNT,data,i * vsize + va.offset / 4,CTM_ATTR_ELEMENT_COUNT);
+    }
+  }
+  m.setVertices(data);
+  return m;
+}
