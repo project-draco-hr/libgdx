@@ -1,0 +1,13 @@
+{
+  CtmFileReader reader=new CtmFileReader(file.read());
+  try {
+    darwin.jopenctm.data.Mesh ctmMesh=reader.decode();
+    Mesh mesh=convert(ctmMesh);
+    StillSubMesh ssm=new StillSubMesh(reader.getFileComment(),mesh,GL10.GL_TRIANGLES);
+    StillModel model=new StillModel(new StillSubMesh[]{ssm});
+    return model;
+  }
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException("An error occured while loading model: " + file.name(),ex);
+  }
+}
