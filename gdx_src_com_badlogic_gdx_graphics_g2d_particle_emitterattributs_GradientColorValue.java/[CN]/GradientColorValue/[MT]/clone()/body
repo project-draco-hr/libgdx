@@ -1,6 +1,0 @@
-{
-  GradientColorValue n=(GradientColorValue)super.clone();
-  n.colors=Arrays.copyOf(colors,colors.length);
-  n.timeline=Arrays.copyOf(timeline,timeline.length);
-  return n;
-}

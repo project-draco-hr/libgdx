@@ -1,0 +1,7 @@
+{
+  super.save(output);
+  if (!active) {
+    return;
+  }
+  output.write("value: " + value + "\n");
+}

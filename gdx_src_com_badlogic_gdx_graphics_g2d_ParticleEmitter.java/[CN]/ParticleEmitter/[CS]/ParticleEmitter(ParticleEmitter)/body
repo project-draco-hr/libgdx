@@ -1,0 +1,29 @@
+{
+  sprite=emitter.sprite;
+  name=emitter.name;
+  setMaxParticleCount(emitter.maxParticleCount);
+  minParticleCount=emitter.minParticleCount;
+  delayValue.load(emitter.delayValue);
+  durationValue.load(emitter.durationValue);
+  emissionValue.load(emitter.emissionValue);
+  lifeValue.load(emitter.lifeValue);
+  lifeOffsetValue.load(emitter.lifeOffsetValue);
+  scaleValue.load(emitter.scaleValue);
+  rotationValue.load(emitter.rotationValue);
+  velocityValue.load(emitter.velocityValue);
+  angleValue.load(emitter.angleValue);
+  windValue.load(emitter.windValue);
+  gravityValue.load(emitter.gravityValue);
+  transparencyValue.load(emitter.transparencyValue);
+  tintValue.load(emitter.tintValue);
+  xOffsetValue.load(emitter.xOffsetValue);
+  yOffsetValue.load(emitter.yOffsetValue);
+  spawnWidthValue.load(emitter.spawnWidthValue);
+  spawnHeightValue.load(emitter.spawnHeightValue);
+  spawnShapeValue.load(emitter.spawnShapeValue);
+  attached=emitter.attached;
+  continuous=emitter.continuous;
+  aligned=emitter.aligned;
+  behind=emitter.behind;
+  additive=emitter.additive;
+}

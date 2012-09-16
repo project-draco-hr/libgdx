@@ -1,8 +1,8 @@
 {
-  delay=delayValue.isActive() ? delayValue.newValue() : 0;
+  delay=delayValue.active ? delayValue.newLowValue() : 0;
   delayTimer=0;
   durationTimer-=duration;
-  duration=durationValue.newValue();
+  duration=durationValue.newLowValue();
   emission=(int)emissionValue.newLowValue();
   emissionDiff=(int)emissionValue.newHighValue();
   if (!emissionValue.isRelative()) {
@@ -13,7 +13,7 @@
   if (!lifeValue.isRelative()) {
     lifeDiff-=life;
   }
-  lifeOffset=lifeOffsetValue.isActive() ? (int)lifeOffsetValue.newLowValue() : 0;
+  lifeOffset=lifeOffsetValue.active ? (int)lifeOffsetValue.newLowValue() : 0;
   lifeOffsetDiff=(int)lifeOffsetValue.newHighValue();
   if (!lifeOffsetValue.isRelative()) {
     lifeOffsetDiff-=lifeOffset;
@@ -29,25 +29,25 @@
     spawnHeightDiff-=spawnHeight;
   }
   updateFlags=0;
-  if (angleValue.isActive() && angleValue.getTimeLineCount() > 1) {
+  if (angleValue.active && angleValue.timeline.length > 1) {
     updateFlags|=UPDATE_ANGLE;
   }
-  if (velocityValue.isActive() && velocityValue.isActive()) {
+  if (velocityValue.active && velocityValue.active) {
     updateFlags|=UPDATE_VELOCITY;
   }
-  if (scaleValue.getTimeLineCount() > 1) {
+  if (scaleValue.timeline.length > 1) {
     updateFlags|=UPDATE_SCALE;
   }
-  if (rotationValue.isActive() && rotationValue.getTimeLineCount() > 1) {
+  if (rotationValue.active && rotationValue.timeline.length > 1) {
     updateFlags|=UPDATE_ROTATION;
   }
-  if (windValue.isActive()) {
+  if (windValue.active) {
     updateFlags|=UPDATE_WIND;
   }
-  if (gravityValue.isActive()) {
+  if (gravityValue.active) {
     updateFlags|=UPDATE_GRAVITY;
   }
-  if (tintValue.getTimeLineCount() > 1) {
+  if (tintValue.timeline.length > 1) {
     updateFlags|=UPDATE_TINT;
   }
 }

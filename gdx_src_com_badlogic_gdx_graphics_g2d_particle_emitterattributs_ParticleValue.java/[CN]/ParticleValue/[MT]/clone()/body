@@ -1,8 +1,0 @@
-{
-  try {
-    return (ParticleValue)super.clone();
-  }
- catch (  CloneNotSupportedException ex) {
-    throw new UnsupportedOperationException();
-  }
-}
