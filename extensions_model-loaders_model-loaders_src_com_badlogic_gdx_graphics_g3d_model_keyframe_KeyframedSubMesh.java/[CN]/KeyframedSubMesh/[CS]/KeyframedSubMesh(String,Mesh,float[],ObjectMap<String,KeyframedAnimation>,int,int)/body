@@ -1,8 +1,6 @@
 {
-  this.name=name;
-  this.mesh=mesh;
+  super(name,mesh,primitiveType);
   this.blendedVertices=blendedVertices;
   this.animations=animations;
-  this.primitiveType=primitiveType;
   this.animatedComponents=animatedComponents;
 }

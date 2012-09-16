@@ -1,7 +1,7 @@
 {
   try {
     Mesh ogreMesh=loadOgreMesh(in);
-    SkeletonSubMesh[] meshes=generateSubMeshes(ogreMesh);
+    SubMesh[] meshes=generateSubMeshes(ogreMesh);
     return meshes;
   }
  catch (  Throwable t) {
