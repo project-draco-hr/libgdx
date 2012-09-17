@@ -1,4 +1,4 @@
 {
-  if (getRows() == 0)   return ByteBuffer.allocate(1);
+  if (getRows() == 0)   return BufferUtils.newByteBuffer(1);
   return getBuffer(address);
 }
