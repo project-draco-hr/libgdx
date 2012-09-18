@@ -1,3 +1,4 @@
 {
+  if (getRows() == 0)   return BufferUtils.newByteBuffer(1);
   return getBuffer(address);
 }

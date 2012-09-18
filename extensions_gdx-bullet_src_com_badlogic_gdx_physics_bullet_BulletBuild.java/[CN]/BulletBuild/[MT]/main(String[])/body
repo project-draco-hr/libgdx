@@ -40,7 +40,4 @@
   android.headerDirs=headers;
   android.cppFlags+=cppFlags;
   new AntScriptGenerator().generate(new BuildConfig("gdx-bullet"),win32home,win32,win64,lin32,lin64,mac,android);
-  BuildExecutor.executeAnt("jni/build-linux64.xml","");
-  BuildExecutor.executeAnt("jni/build-android32.xml","");
-  BuildExecutor.executeAnt("jni/build.xml","pack-natives");
 }
