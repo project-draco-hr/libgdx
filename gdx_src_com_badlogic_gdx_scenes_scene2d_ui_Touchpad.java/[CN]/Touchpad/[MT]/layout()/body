@@ -4,7 +4,7 @@
   float radius=Math.min(halfWidth,halfHeight);
   touchBounds.set(halfWidth,halfHeight,radius);
   if (style.knob != null)   radius-=Math.max(style.knob.getMinWidth(),style.knob.getMinHeight()) / 2;
-  padBounds.set(halfWidth,halfHeight,radius);
+  knobBounds.set(halfWidth,halfHeight,radius);
   deadzoneBounds.set(halfWidth,halfHeight,deadzoneRadius);
   knobPosition.set(halfWidth,halfHeight);
   knobPercent.set(0,0);
