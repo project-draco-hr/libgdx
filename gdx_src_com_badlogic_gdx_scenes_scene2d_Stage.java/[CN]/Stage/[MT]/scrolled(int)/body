@@ -1,5 +1,5 @@
 {
-  if (scrollFocus == null)   return false;
+  Actor target=scrollFocus == null ? root : scrollFocus;
   screenToStageCoordinates(stageCoords.set(mouseScreenX,mouseScreenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
@@ -7,7 +7,7 @@
   event.setScrollAmount(amount);
   event.setStageX(stageCoords.x);
   event.setStageY(stageCoords.y);
-  scrollFocus.fire(event);
+  target.fire(event);
   boolean handled=event.isHandled();
   Pools.free(event);
   return handled;
