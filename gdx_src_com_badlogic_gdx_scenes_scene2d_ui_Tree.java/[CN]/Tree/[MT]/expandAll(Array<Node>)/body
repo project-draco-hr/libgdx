@@ -1,6 +1,3 @@
 {
-  for (int i=0, n=nodes.size; i < n; i++) {
-    Node node=nodes.get(i);
-    node.expandAll();
-  }
+  for (int i=0, n=nodes.size; i < n; i++)   nodes.get(i).expandAll();
 }
