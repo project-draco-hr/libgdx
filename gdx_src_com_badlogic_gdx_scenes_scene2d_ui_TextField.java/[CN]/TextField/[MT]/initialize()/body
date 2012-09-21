@@ -6,11 +6,12 @@
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (!super.touchDown(event,x,y,pointer,button))       return false;
       if (pointer == 0 && button != 0)       return false;
-      Stage stage=getStage();
+      if (disabled)       return true;
       keyboard.show(true);
       clearSelection();
       setCursorPosition(x);
       selectionStart=cursor;
+      Stage stage=getStage();
       if (stage != null)       stage.setKeyboardFocus(TextField.this);
       return true;
     }
@@ -34,6 +35,7 @@
       cursor=Math.max(0,glyphPositions.size - 1);
     }
     public boolean keyDown(    InputEvent event,    int keycode){
+      if (disabled)       return false;
       final BitmapFont font=style.font;
       lastBlink=0;
       cursorOn=false;
@@ -154,10 +156,12 @@
       return false;
     }
     public boolean keyUp(    InputEvent event,    int keycode){
+      if (disabled)       return false;
       keyRepeatTask.cancel();
       return true;
     }
     public boolean keyTyped(    InputEvent event,    char character){
+      if (disabled)       return false;
       final BitmapFont font=style.font;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
