@@ -1,0 +1,28 @@
+{
+  SwingUtils.importFont(Res.getStream("fonts/SquareFont.ttf"));
+  setLayout(new BorderLayout());
+  add(rootPanel,BorderLayout.CENTER);
+  HttpUtils.setReferer("http://aurelienribon-dev.com/gdx-setup-ui");
+  versionLabel.initAndCheck("3.0.0","versions","https://raw.github.com/libgdx/libgdx/master/extensions/gdx-setup-ui/config/config.txt","https://github.com/AurelienRibon/gdx-setup-ui/downloads");
+  initUI();
+  initLibgdx();
+  initStyle();
+  initConfigurations();
+  rootPanel.initialize(initCfg);
+  SLAnimator.start();
+  rootPanel.setTweenManager(SLAnimator.createTweenManager());
+  taskPanel.setTweenManager(SLAnimator.createTweenManager());
+  if (Ctx.testLibUrl != null)   Ctx.libs.addUrl("__test_url__",Ctx.testLibUrl);
+  if (Ctx.testLibDef != null)   Ctx.libs.addDef("__test_def__",Ctx.testLibDef);
+  if (Ctx.testLibDef != null)   librarySelectionPanel.rebuildLibraries();
+  SwingUtils.addWindowListener(this,new WindowAdapter(){
+    @Override public void windowOpened(    WindowEvent e){
+      DownloadTask task=Ctx.libs.downloadConfigFile();
+      task.addListener(configFileDownloadListener);
+    }
+    @Override public void windowClosing(    WindowEvent e){
+      Ctx.libs.cleanUpDownloads();
+    }
+  }
+);
+}

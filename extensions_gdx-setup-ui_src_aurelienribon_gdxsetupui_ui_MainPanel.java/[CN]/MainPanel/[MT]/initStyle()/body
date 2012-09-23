@@ -1,0 +1,24 @@
+{
+  Style.registerCssClasses(this,".rootPanel");
+  Style.registerCssClasses(configSetupPanel,".groupPanel","#configSetupPanel");
+  Style.registerCssClasses(configUpdatePanel,".groupPanel","#configUpdatePanel");
+  Style.registerCssClasses(librarySelectionPanel,".groupPanel","#librarySelectionPanel");
+  Style.registerCssClasses(previewPanel,".groupPanel","#previewPanel");
+  Style.registerCssClasses(goPanel,".groupPanel","#goPanel");
+  Style.registerCssClasses(advancedSettingsPanel,".groupPanel","#advancedSettingsPanel");
+  Style.registerCssClasses(libraryInfoPanel,".groupPanel","#libraryInfoPanel");
+  Style.registerCssClasses(classpathsPanel,".groupPanel","#classpathsPanel");
+  Style.registerCssClasses(processSetupPanel,".groupPanel","#processSetupPanel");
+  Style.registerCssClasses(processUpdatePanel,".groupPanel","#processUpdatePanel");
+  Style.registerCssClasses(aboutPanel,".groupPanel","#aboutPanel");
+  Style.registerCssClasses(helpImportPanel,".groupPanel","#helpImportPanel");
+  Style.registerCssClasses(helpFixHtmlPanel,".groupPanel","#helpFixHtmlPanel");
+  Style.registerCssClasses(startQuestionLabel,".startQuestionLabel");
+  Style.registerCssClasses(startSetupBtn,".startButton");
+  Style.registerCssClasses(startUpdateBtn,".startButton");
+  Style.registerCssClasses(versionLabel,".versionLabel");
+  Style.registerCssClasses(changeModeBtn,".bold",".center");
+  Component[] targets=new Component[]{this,configSetupPanel,configUpdatePanel,librarySelectionPanel,previewPanel,goPanel,taskPanel,advancedSettingsPanel,libraryInfoPanel,classpathsPanel,processSetupPanel,processUpdatePanel,aboutPanel,helpImportPanel,helpFixHtmlPanel,changeModeBtn,versionLabel,startQuestionLabel,startSetupBtn,startUpdateBtn};
+  Style style=new Style(Res.getUrl("css/style.css"));
+  for (  Component target : targets)   Style.apply(target,style);
+}

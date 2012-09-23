@@ -1,0 +1,6 @@
+{
+  path=computePath(path);
+  InputStream is=Res.class.getResourceAsStream(path);
+  if (is == null)   throw new RuntimeException("File not found: " + path);
+  return is;
+}

@@ -1,0 +1,9 @@
+{
+  boolean ret=super.remove(o);
+  if (ret == true) {
+    evtList1.clear();
+    evtList1.add((T)o);
+    fireElementsRemoved(evtList1);
+  }
+  return ret;
+}

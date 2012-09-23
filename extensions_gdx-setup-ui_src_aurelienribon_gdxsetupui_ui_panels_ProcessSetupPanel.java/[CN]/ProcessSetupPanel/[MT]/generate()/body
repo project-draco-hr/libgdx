@@ -1,0 +1,30 @@
+{
+  progressArea.setText("");
+  final ProjectSetup setup=new ProjectSetup(Ctx.cfgSetup,Ctx.libs);
+  new Thread(new Runnable(){
+    @Override public void run(){
+      try {
+        report("Decompressing projects...");
+        setup.inflateProjects();
+        report(" done\nDecompressing libraries...");
+        setup.inflateLibraries();
+        report(" done\nConfiguring libraries...");
+        setup.configureLibraries();
+        report(" done\nPost-processing files...");
+        setup.postProcess();
+        report(" done\nCopying projects...");
+        setup.copy();
+        report(" done\nCleaning...");
+        setup.clean();
+        report(" done\nAll done!");
+      }
+ catch (      final IOException ex) {
+        report("\n[error] " + ex.getMessage());
+        report("\nCleaning...");
+        setup.clean();
+        report("done");
+      }
+    }
+  }
+).start();
+}

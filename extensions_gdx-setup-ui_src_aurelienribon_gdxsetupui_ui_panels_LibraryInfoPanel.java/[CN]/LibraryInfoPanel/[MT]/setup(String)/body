@@ -1,0 +1,34 @@
+{
+  LibraryDef def=Ctx.libs.getDef(libraryName);
+  nameLabel.setText(def.name);
+  descriptionLabel.setText("<html>" + def.description);
+  versionLabel.setText(def.stableVersion);
+  authorLabel.setText(def.author);
+  homepageLabel.setText(def.homepage != null ? def.homepage : "<unknown>");
+  for (  MouseListener ml : authorLabel.getMouseListeners())   authorLabel.removeMouseListener(ml);
+  for (  MouseListener ml : homepageLabel.getMouseListeners())   homepageLabel.removeMouseListener(ml);
+  if (def.authorWebsite != null) {
+    SwingUtils.addBrowseBehavior(authorLabel,def.authorWebsite);
+    Style.registerCssClasses(authorLabel,".linkLabel");
+  }
+ else   if (authorLabel.getMouseListeners().length > 0) {
+    Style.unregisterAllCssClasses(authorLabel);
+  }
+  if (def.homepage != null) {
+    SwingUtils.addBrowseBehavior(homepageLabel,def.homepage);
+    Style.registerCssClasses(homepageLabel,".linkLabel");
+  }
+ else   if (homepageLabel.getMouseListeners().length > 0) {
+    Style.unregisterAllCssClasses(homepageLabel);
+  }
+  if (def.logo != null) {
+    logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    logoLabel.setIcon(Res.getImage("gfx/ic66_loading.gif"));
+    downloadLogo(def.logo);
+  }
+ else {
+    logoLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+    logoLabel.setIcon(null);
+  }
+  Style.apply(this,new Style(Res.getUrl("css/style.css")));
+}

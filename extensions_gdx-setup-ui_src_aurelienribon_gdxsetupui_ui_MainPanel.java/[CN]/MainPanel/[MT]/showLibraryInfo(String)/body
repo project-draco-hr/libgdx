@@ -1,0 +1,22 @@
+{
+  if (currentLibraryInfo != null) {
+    if (currentLibraryInfo.equals(libraryName)) {
+      hideLibraryInfo();
+    }
+ else {
+      currentLibraryInfo=libraryName;
+      libraryInfoPanel.setup(libraryName);
+    }
+    return;
+  }
+  currentLibraryInfo=libraryName;
+  libraryInfoPanel.setup(libraryName);
+switch (Ctx.mode) {
+case SETUP:
+    rootPanel.createTransition().push(new SLKeyframe(libraryInfoCfg,transitionDuration).setEndSide(LEFT,configSetupPanel,versionLabel,changeModeBtn).setEndSide(RIGHT,previewPanel,goPanel).setStartSide(TOP,libraryInfoPanel).setDelay(transitionDuration,libraryInfoPanel)).play();
+  break;
+case UPDATE:
+rootPanel.createTransition().push(new SLKeyframe(libraryInfoCfg,transitionDuration).setEndSide(LEFT,configUpdatePanel,versionLabel,changeModeBtn).setEndSide(RIGHT,goPanel).setStartSide(TOP,libraryInfoPanel).setDelay(transitionDuration,libraryInfoPanel)).play();
+break;
+}
+}

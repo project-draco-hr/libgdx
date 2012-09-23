@@ -1,0 +1,22 @@
+{
+  final DownloadTile tile=new DownloadTile(task);
+  Style.registerCssClasses(tile,".tile");
+  if (style != null)   Style.apply(tile,style,styleStack);
+  tile.setLocation(getNextTileX() + getWidth(),2);
+  Tween.to(tile,SLAnimator.ComponentAccessor.X,2).target(getNextTileX()).ease(Quad.OUT).start(tweenManager);
+  task.addListener(new DownloadListener(){
+    @Override public void onUpdate(    int length,    int totalLength){
+      tile.setCurrentSize(length,totalLength);
+    }
+    @Override public void onComplete(){
+      tile.setToComplete();
+      tile.disappear(3.5f);
+    }
+    @Override public void onError(    IOException ex){
+      tile.setToError("IOException: " + ex.getMessage());
+    }
+  }
+);
+  add(tile);
+  tiles.add(tile);
+}

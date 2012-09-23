@@ -1,0 +1,8 @@
+{
+  try {
+    return xpath.compile(expr).evaluate(doc,type);
+  }
+ catch (  XPathExpressionException ex) {
+    return null;
+  }
+}

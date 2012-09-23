@@ -1,0 +1,10 @@
+{
+  Ctx.cfgSetup.projectName=nameField.getText();
+  Ctx.cfgSetup.packageName=packageField.getText();
+  Ctx.cfgSetup.mainClassName=mainClassField.getText();
+  Ctx.cfgSetup.destinationPath=destinationField.getText();
+  Ctx.cfgSetup.isDesktopIncluded=genDesktopPrjChk.isSelected();
+  Ctx.cfgSetup.isAndroidIncluded=genAndroidPrjChk.isSelected();
+  Ctx.cfgSetup.isHtmlIncluded=genHtmlPrjChk.isSelected();
+  Ctx.fireCfgSetupChanged();
+}

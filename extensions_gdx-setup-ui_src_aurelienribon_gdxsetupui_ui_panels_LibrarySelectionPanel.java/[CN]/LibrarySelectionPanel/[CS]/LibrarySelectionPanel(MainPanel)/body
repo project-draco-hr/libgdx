@@ -1,0 +1,34 @@
+{
+  this.mainPanel=mainPanel;
+  initComponents();
+  librariesScrollPane.getViewport().setOpaque(false);
+  libgdxInfoBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      showInfo("libgdx");
+    }
+  }
+);
+  libgdxBrowseBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      browse("libgdx");
+    }
+  }
+);
+  libgdxGetStableBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      getStable("libgdx");
+    }
+  }
+);
+  libgdxGetNightliesBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      getLatest("libgdx");
+    }
+  }
+);
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  Style.registerCssClasses(sectionLabel1,".sectionLabel");
+  Style.registerCssClasses(sectionLabel2,".sectionLabel");
+  Style.registerCssClasses(legendPanel,".optionGroupPanel");
+}

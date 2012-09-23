@@ -1,0 +1,11 @@
+{
+  setLayout(null);
+  setPreferredSize(new Dimension(50,30));
+  Style.registerCssClasses(this,".taskBar");
+  HttpUtils.addListener(new HttpUtils.Listener(){
+    @Override public void newDownload(    DownloadTask task){
+      addDownloadTile(task);
+    }
+  }
+);
+}

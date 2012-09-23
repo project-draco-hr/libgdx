@@ -1,0 +1,9 @@
+{
+switch (Ctx.mode) {
+case SETUP:
+    return rootPanel.createTransition().push(new SLKeyframe(setupCfg,transitionDuration).setEndSideForOldCmps(TOP).setStartSideForNewCmps(BOTTOM)).play();
+case UPDATE:
+  return rootPanel.createTransition().push(new SLKeyframe(updateCfg,transitionDuration).setEndSideForOldCmps(TOP).setStartSideForNewCmps(BOTTOM)).play();
+}
+return false;
+}

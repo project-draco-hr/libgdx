@@ -1,0 +1,3 @@
+{
+  rootPanel.createTransition().push(new SLKeyframe(setupProcessCfg,transitionDuration).setEndSide(TOP,configSetupPanel,versionLabel,librarySelectionPanel).setEndSide(BOTTOM,taskPanel,changeModeBtn,goPanel).setStartSide(BOTTOM,processSetupPanel)).play();
+}

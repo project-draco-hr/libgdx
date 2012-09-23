@@ -1,0 +1,7 @@
+{
+  Property p;
+  p=stroke;
+  if (ds.contains(p))   t.setStroke(ds.getValue(p,Paint.class));
+  p=fill;
+  if (ds.contains(p))   t.setFill(ds.getValue(p,Paint.class));
+}

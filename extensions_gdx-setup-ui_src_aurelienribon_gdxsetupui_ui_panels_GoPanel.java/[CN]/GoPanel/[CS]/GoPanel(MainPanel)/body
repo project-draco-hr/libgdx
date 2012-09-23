@@ -1,0 +1,32 @@
+{
+  initComponents();
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  Style.registerCssClasses(errorLabel,".statusLabel");
+  Style.registerCssClasses(goBtn,".bold");
+  Ctx.listeners.add(new Ctx.Listener(){
+    @Override public void modeChanged(){
+      update();
+    }
+    @Override public void cfgSetupChanged(){
+      update();
+    }
+    @Override public void cfgUpdateChanged(){
+      update();
+    }
+  }
+);
+  goBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+switch (Ctx.mode) {
+case SETUP:
+        mainPanel.showProcessSetupPanel();
+      break;
+case UPDATE:
+    mainPanel.showProcessUpdatePanel();
+  break;
+}
+}
+}
+);
+}

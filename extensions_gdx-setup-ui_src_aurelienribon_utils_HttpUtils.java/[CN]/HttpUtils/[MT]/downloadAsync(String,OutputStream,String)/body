@@ -1,0 +1,13 @@
+{
+  URL input;
+  try {
+    input=new URL(url);
+  }
+ catch (  MalformedURLException ex) {
+    return null;
+  }
+  final DownloadTask task=new DownloadTask(input,output,tag);
+  for (  Listener lst : listeners)   lst.newDownload(task);
+  task.start();
+  return task;
+}

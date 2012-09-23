@@ -1,0 +1,3 @@
+{
+  Tween.to(this,SLAnimator.ComponentAccessor.Y,0.3f).targetRelative(50).ease(Quad.IN).delay(delay).setCallback(tileRemovedCallback).setUserData(this).start(tweenManager);
+}

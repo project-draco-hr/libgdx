@@ -1,0 +1,10 @@
+{
+  File coreDir=new File(Helper.getCorePrjPath(Ctx.cfgUpdate));
+  List<ClasspathEntry> classpath=new ArrayList<ClasspathEntry>();
+  classpath.addAll(Helper.getClasspathEntries(new File(coreDir,".classpath")));
+  List<ClasspathEntry> newClasspath=Helper.getCoreClasspathEntries(Ctx.cfgUpdate,Ctx.libs);
+  for (  ClasspathEntry e : classpath)   e.testOverwritten(newClasspath);
+  for (  ClasspathEntry e : newClasspath)   if (e.testAdded(classpath))   classpath.add(e);
+  Collections.sort(classpath);
+  Ctx.cfgUpdate.coreClasspath.replaceBy(classpath);
+}

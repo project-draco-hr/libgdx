@@ -1,0 +1,34 @@
+{
+  initComponents();
+  Style.registerCssClasses(jScrollPane1,".frame");
+  Style.registerCssClasses(importQuestion,".linkLabel");
+  Style.registerCssClasses(fixHtmlQuestion,".linkLabel");
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  Style.registerCssClasses(progressArea,".progressArea");
+  importQuestion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  fixHtmlQuestion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  startBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      generate();
+    }
+  }
+);
+  backBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      mainPanel.hideGenerationCreatePanel();
+    }
+  }
+);
+  importQuestion.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      mainPanel.showHelpImportPanel();
+    }
+  }
+);
+  fixHtmlQuestion.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      mainPanel.showHelpFixHtmlPanel();
+    }
+  }
+);
+}

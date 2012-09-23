@@ -1,0 +1,17 @@
+{
+  List<GwtModule> modules=new ArrayList<GwtModule>();
+  if (!modulesFile.isFile())   return modules;
+  try {
+    Document doc=XmlUtils.createParser().parse(modulesFile);
+    NodeList nodes=(NodeList)XmlUtils.xpath("module/inherits[@name]",doc,XPathConstants.NODESET);
+    for (int i=0; i < nodes.getLength(); i++) {
+      String name=nodes.item(i).getAttributes().getNamedItem("name").getNodeValue();
+      modules.add(new GwtModule(name));
+    }
+  }
+ catch (  SAXException ex) {
+  }
+catch (  IOException ex) {
+  }
+  return modules;
+}

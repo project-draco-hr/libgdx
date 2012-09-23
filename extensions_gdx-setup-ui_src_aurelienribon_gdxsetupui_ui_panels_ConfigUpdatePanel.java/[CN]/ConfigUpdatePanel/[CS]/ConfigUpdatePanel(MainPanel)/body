@@ -1,0 +1,37 @@
+{
+  initComponents();
+  browseBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      browse();
+    }
+  }
+);
+  advancedSettingsLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  advancedSettingsLabel.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      if (clicToShowSettings && mainPanel.showAdvancedSettings()) {
+        clicToShowSettings=false;
+        advancedSettingsLabel.setText("< Hide advanced settings");
+      }
+ else       if (mainPanel.hideAdvancedSettings()) {
+        clicToShowSettings=true;
+        advancedSettingsLabel.setText("Show advanced settings >");
+      }
+    }
+  }
+);
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  Style.registerCssClasses(advancedSettingsLabel,".linkLabel");
+  Style.registerCssClasses(statusCoreLabel,".statusLabel");
+  Style.registerCssClasses(statusAndroidLabel,".statusLabel");
+  Style.registerCssClasses(statusDesktopLabel,".statusLabel");
+  Style.registerCssClasses(statusHtmlLabel,".statusLabel");
+  Style.registerCssClasses(browseBtn,".center");
+  Ctx.listeners.add(new Ctx.Listener(){
+    @Override public void cfgUpdateChanged(){
+      updateClasspaths();
+    }
+  }
+);
+}

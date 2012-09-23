@@ -1,0 +1,50 @@
+{
+  setText("v" + version + " (checking for updates)");
+  setIcon(Res.getImage("gfx/ic_loading.gif"));
+  if (checkUrl == null)   return;
+  final ByteArrayOutputStream stream=new ByteArrayOutputStream();
+  final DownloadListener listener=new HttpUtils.DownloadListener(){
+    @Override public void onComplete(){
+      String str;
+      try {
+        str=stream.toString("UTF-8");
+        if (blockName != null)         str=ParseUtils.parseBlock(str,blockName,version);
+      }
+ catch (      UnsupportedEncodingException ex) {
+        throw new RuntimeException(ex);
+      }
+      List<String> versions=TextUtils.splitAndTrim(str);
+      int idx=versions.indexOf(version);
+      if (idx == 0) {
+        setText("v" + version + " (latest version)");
+        setIcon(Res.getImage("gfx/ic_ok.png"));
+        firePropertyChange("latest",false,true);
+      }
+ else       if (idx > 0) {
+        setText("v" + version + " (new version available! v"+ versions.get(0)+ ")");
+        setIcon(Res.getImage("gfx/ic_warning.png"));
+        SwingUtils.addBrowseBehavior(VersionLabel.this,gotoUrl);
+        firePropertyChange("newVersion",false,true);
+      }
+ else {
+        setText("v" + version + " (update check error)");
+        setIcon(Res.getImage("gfx/ic_error.png"));
+        firePropertyChange("error",false,true);
+      }
+    }
+    @Override public void onError(    IOException ex){
+      setText("v" + version + " (connection error)");
+      setIcon(Res.getImage("gfx/ic_error.png"));
+      firePropertyChange("error",false,true);
+    }
+  }
+;
+  Timer timer=new Timer(2000,new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      HttpUtils.downloadAsync(checkUrl,stream,"Version number").addListener(listener);
+    }
+  }
+);
+  timer.setRepeats(false);
+  timer.start();
+}

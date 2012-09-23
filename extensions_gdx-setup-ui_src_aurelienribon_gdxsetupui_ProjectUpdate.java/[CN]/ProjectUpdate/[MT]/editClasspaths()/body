@@ -1,0 +1,16 @@
+{
+  writeClasspath(new File(Helper.getCorePrjPath(cfg),".classpath"),cfg.coreClasspath);
+  if (cfg.isAndroidIncluded) {
+    writeClasspath(new File(Helper.getAndroidPrjPath(cfg),".classpath"),cfg.androidClasspath);
+  }
+  if (cfg.isDesktopIncluded) {
+    writeClasspath(new File(Helper.getDesktopPrjPath(cfg),".classpath"),cfg.desktopClasspath);
+  }
+  if (cfg.isHtmlIncluded) {
+    File htmlDir=new File(Helper.getHtmlPrjPath(cfg));
+    writeClasspath(new File(htmlDir,".classpath"),cfg.htmlClasspath);
+    for (    File file : FileUtils.listFiles(htmlDir,new String[]{"gwt.xml"},true)) {
+      if (file.getName().equals("GwtDefinition.gwt.xml"))       writeGwtDefinition(file,cfg.gwtModules);
+    }
+  }
+}

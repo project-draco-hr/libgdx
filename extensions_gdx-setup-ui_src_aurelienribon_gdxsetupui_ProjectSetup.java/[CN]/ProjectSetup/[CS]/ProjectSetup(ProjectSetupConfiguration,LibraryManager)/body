@@ -1,0 +1,16 @@
+{
+  this.cfg=cfg;
+  this.libs=libs;
+  templateManager.define("PROJECT_NAME",cfg.projectName);
+  templateManager.define("MAINCLASS_NAME",cfg.mainClassName);
+  templateManager.define("PACKAGE_NAME",cfg.packageName);
+  templateManager.define("PACKAGE_NAME_AS_PATH",cfg.packageName.replace('.','/'));
+  templateManager.define("PRJ_COMMON_NAME",cfg.projectName + cfg.suffixCommon);
+  if (cfg.isDesktopIncluded)   templateManager.define("PRJ_DESKTOP_NAME",cfg.projectName + cfg.suffixDesktop);
+  if (cfg.isAndroidIncluded)   templateManager.define("PRJ_ANDROID_NAME",cfg.projectName + cfg.suffixAndroid);
+  if (cfg.isHtmlIncluded)   templateManager.define("PRJ_HTML_NAME",cfg.projectName + cfg.suffixHtml);
+  if (!cfg.androidMinSdkVersion.equals(""))   templateManager.define("ANDROID_MIN_SDK",cfg.androidMinSdkVersion);
+  if (!cfg.androidTargetSdkVersion.equals(""))   templateManager.define("ANDROID_TARGET_SDK",cfg.androidTargetSdkVersion);
+  if (!cfg.androidMaxSdkVersion.equals(""))   templateManager.define("ANDROID_MAX_SDK",cfg.androidMaxSdkVersion);
+  if (!cfg.androidMinSdkVersion.equals("") || !cfg.androidTargetSdkVersion.equals("") || !cfg.androidMaxSdkVersion.equals(""))   templateManager.define("ANDROID_USES_SDK");
+}

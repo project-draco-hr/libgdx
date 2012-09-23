@@ -1,0 +1,29 @@
+{
+  setBackground(Color.LIGHT_GRAY);
+  setLayout(null);
+  setSize(200,26);
+  if (task.getTag().startsWith("Master"))   logoLabel.setIcon(Res.getImage("gfx/ic24_cog.png"));
+ else   if (task.getTag().startsWith("Def"))   logoLabel.setIcon(Res.getImage("gfx/ic24_file.png"));
+ else   if (task.getTag().startsWith("Version"))   logoLabel.setIcon(Res.getImage("gfx/ic24_cog.png"));
+ else   logoLabel.setIcon(Res.getImage("gfx/ic24_download.png"));
+  logoLabel.setBounds(0,1,24,24);
+  titleLabel.setText(task.getTag());
+  titleLabel.setVerticalAlignment(SwingConstants.TOP);
+  titleLabel.setBounds(29,0,getWidth() - 30,getHeight());
+  stateLabel.setText("0 / ?? (?%)");
+  stateLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+  stateLabel.setBounds(29,0,getWidth() - 30,getHeight());
+  cancelLabel.setBounds(199 - 16,0,16,16);
+  add(logoLabel);
+  add(titleLabel);
+  add(stateLabel);
+  add(cancelLabel);
+  cancelLabel.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      cancelLabel.setIcon(null);
+      disappear(0);
+      task.stop();
+    }
+  }
+);
+}

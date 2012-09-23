@@ -1,0 +1,6 @@
+{
+  path=computePath(path);
+  URL url=Res.class.getResource(path);
+  if (url == null)   throw new RuntimeException("File not found: " + path);
+  return url;
+}

@@ -1,0 +1,34 @@
+{
+  errorLabel.firePropertyChange("valid",true,false);
+  errorLabel.firePropertyChange("error",true,false);
+switch (Ctx.mode) {
+case SETUP:
+    if (isProjectCreationValid(Ctx.cfgSetup)) {
+      goBtn.setEnabled(true);
+      errorLabel.setText("<html>Your configuration is valid.");
+      errorLabel.firePropertyChange("valid",false,true);
+    }
+ else {
+      goBtn.setEnabled(false);
+      errorLabel.setText("<html>" + getCreationErrorMessage(Ctx.cfgSetup));
+      errorLabel.firePropertyChange("error",false,true);
+    }
+  numberLabel.setText("4");
+goBtn.setText("Open the generation screen");
+break;
+case UPDATE:
+if (isProjectUpdateValid(Ctx.cfgUpdate)) {
+goBtn.setEnabled(true);
+errorLabel.setText("<html>Your configuration is valid.");
+errorLabel.firePropertyChange("valid",false,true);
+}
+ else {
+goBtn.setEnabled(false);
+errorLabel.setText("<html>" + getUpdateErrorMessage(Ctx.cfgUpdate));
+errorLabel.firePropertyChange("error",false,true);
+}
+numberLabel.setText("3");
+goBtn.setText("Open the update screen");
+break;
+}
+}

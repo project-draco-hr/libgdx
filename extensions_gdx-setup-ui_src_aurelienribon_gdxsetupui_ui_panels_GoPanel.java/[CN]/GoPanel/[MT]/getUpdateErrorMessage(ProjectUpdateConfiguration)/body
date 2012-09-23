@@ -1,0 +1,9 @@
+{
+  File coreDir=new File(Helper.getCorePrjPath(cfg));
+  if (!coreDir.isDirectory())   return "No core project was selected.";
+  if (!new File(coreDir,".classpath").isFile())   return "No .classpath file was found in the selected directory.";
+  for (  String libraryName : cfg.libraries) {
+    if (!isLibraryValid(cfg,libraryName))     return "At least one selected library has a missing or invalid archive.";
+  }
+  return "No error found";
+}

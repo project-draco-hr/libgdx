@@ -1,0 +1,3 @@
+{
+  return FilenameUtils.normalize(cfg.destinationPath + "/" + cfg.projectName+ cfg.suffixDesktop+ "/",true);
+}

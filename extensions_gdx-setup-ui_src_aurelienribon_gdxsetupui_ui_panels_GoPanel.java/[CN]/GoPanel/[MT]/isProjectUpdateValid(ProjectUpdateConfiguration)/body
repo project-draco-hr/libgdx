@@ -1,0 +1,9 @@
+{
+  File coreDir=new File(Helper.getCorePrjPath(cfg));
+  if (!coreDir.isDirectory())   return false;
+  if (!new File(coreDir,".classpath").isFile())   return false;
+  for (  String libraryName : cfg.libraries) {
+    if (!isLibraryValid(cfg,libraryName))     return false;
+  }
+  return true;
+}

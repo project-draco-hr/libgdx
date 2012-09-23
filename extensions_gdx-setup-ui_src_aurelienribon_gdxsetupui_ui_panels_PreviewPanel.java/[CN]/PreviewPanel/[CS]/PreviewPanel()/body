@@ -1,0 +1,10 @@
+{
+  initComponents();
+  Style.registerCssClasses(headerPanel,".header");
+  Style.registerCssClasses(numberLabel,".headerNumber");
+  JTree tree=new ResultTree();
+  JScrollPane scrollPane=new JScrollPane(tree);
+  scrollPane.setOpaque(false);
+  scrollPane.getViewport().setOpaque(false);
+  add(scrollPane,BorderLayout.CENTER);
+}

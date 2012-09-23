@@ -1,0 +1,9 @@
+{
+  evtList1.clear();
+  evtList2.clear();
+  for (  T e : c)   if (!contains(e))   evtList1.add(e);
+  for (  T e : this)   if (!c.contains(e))   evtList2.add(e);
+  super.clear();
+  super.addAll(c);
+  if (!evtList1.isEmpty() || !evtList2.isEmpty())   fireChanged(evtList1,evtList2);
+}

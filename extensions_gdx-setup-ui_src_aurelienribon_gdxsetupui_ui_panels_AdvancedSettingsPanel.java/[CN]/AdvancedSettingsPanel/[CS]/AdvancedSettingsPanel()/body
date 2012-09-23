@@ -1,0 +1,22 @@
+{
+  initComponents();
+  coreSuffixField.setText(Ctx.cfgSetup.suffixCommon);
+  desktopSuffixField.setText(Ctx.cfgSetup.suffixDesktop);
+  androidSuffixField.setText(Ctx.cfgSetup.suffixAndroid);
+  htmlSuffixField.setText(Ctx.cfgSetup.suffixHtml);
+  androidMinSdkField.setText(Ctx.cfgSetup.androidMinSdkVersion);
+  androidTargetSdkField.setText(Ctx.cfgSetup.androidTargetSdkVersion);
+  androidMaxSdkField.setText(Ctx.cfgSetup.androidMaxSdkVersion);
+  coreSuffixField.addKeyListener(updateOnTypeKeyListener);
+  desktopSuffixField.addKeyListener(updateOnTypeKeyListener);
+  androidSuffixField.addKeyListener(updateOnTypeKeyListener);
+  htmlSuffixField.addKeyListener(updateOnTypeKeyListener);
+  androidMinSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidTargetSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidMaxSdkField.addKeyListener(updateOnTypeKeyListener);
+  androidMinSdkField.addKeyListener(numbersOnlyKeyListener);
+  androidTargetSdkField.addKeyListener(numbersOnlyKeyListener);
+  androidMaxSdkField.addKeyListener(numbersOnlyKeyListener);
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  Style.registerCssClasses(paintedPanel2,".optionGroupPanel");
+}

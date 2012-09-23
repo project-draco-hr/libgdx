@@ -1,0 +1,21 @@
+{
+  initComponents();
+  Style.registerCssClasses(linkLibGDXLabel,".linkLabel");
+  Style.registerCssClasses(linkARLabel,".linkLabel");
+  Style.registerCssClasses(linkCSSEngineLabel,".linkLabel");
+  Style.registerCssClasses(linkSlidingLayoutLabel,".linkLabel");
+  Style.registerCssClasses(linkUTELabel,".linkLabel");
+  Style.registerCssClasses(linkCommonsIOLabel,".linkLabel");
+  backBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      mainPanel.hideAboutPanel();
+    }
+  }
+);
+  SwingUtils.addBrowseBehavior(linkLibGDXLabel,"http://libgdx.badlogicgames.com");
+  SwingUtils.addBrowseBehavior(linkARLabel,"http://www.aurelienribon.com");
+  SwingUtils.addBrowseBehavior(linkCSSEngineLabel,"http://code.google.com/p/java-universal-css-engine/");
+  SwingUtils.addBrowseBehavior(linkSlidingLayoutLabel,"https://github.com/AurelienRibon/sliding-layout");
+  SwingUtils.addBrowseBehavior(linkUTELabel,"http://www.aurelienribon.com/blog/projects/universal-tween-engine/");
+  SwingUtils.addBrowseBehavior(linkCommonsIOLabel,"http://commons.apache.org/io/");
+}

@@ -1,0 +1,11 @@
+{
+  final ByteArrayOutputStream output=new ByteArrayOutputStream();
+  DownloadTask task=HttpUtils.downloadAsync(configUrl,output,"Master config file");
+  task.addListener(new DownloadListener(){
+    @Override public void onComplete(){
+      parseLibraries(output.toString());
+    }
+  }
+);
+  return task;
+}

@@ -1,0 +1,14 @@
+{
+  File htmlSrcDir=new File(Helper.getHtmlPrjPath(Ctx.cfgUpdate),"src");
+  List<GwtModule> gwtModules=new ArrayList<GwtModule>();
+  for (  File file : FileUtils.listFiles(htmlSrcDir,new String[]{"gwt.xml"},true)) {
+    if (file.getName().equals("GwtDefinition.gwt.xml")) {
+      gwtModules.addAll(Helper.getGwtModules(file));
+    }
+  }
+  List<Helper.GwtModule> newGwtModules=Helper.getGwtModules(Ctx.cfgUpdate,Ctx.libs);
+  for (  Helper.GwtModule m : gwtModules)   m.testOverwritten(newGwtModules);
+  for (  Helper.GwtModule m : newGwtModules)   if (m.testAdded(gwtModules))   gwtModules.add(m);
+  Collections.sort(gwtModules);
+  Ctx.cfgUpdate.gwtModules.replaceBy(gwtModules);
+}

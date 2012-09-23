@@ -1,0 +1,14 @@
+{
+  initComponents();
+  closeLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  closeLabel.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      mainPanel.hideLibraryInfo();
+    }
+  }
+);
+  Style.registerCssClasses(nameLabel,".libInfoTitleLabel");
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  Style.registerCssClasses(descriptionLabel,".libInfoDescLabel");
+  Style.registerCssClasses(closeLabel,".linkLabel");
+}

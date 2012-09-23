@@ -1,0 +1,4 @@
+{
+  if (!libraries.contains(name))   libraries.add(name);
+  librariesUrls.put(name,url);
+}

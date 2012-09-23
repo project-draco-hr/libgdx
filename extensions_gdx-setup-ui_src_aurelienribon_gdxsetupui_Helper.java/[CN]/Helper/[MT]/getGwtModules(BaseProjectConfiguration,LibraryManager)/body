@@ -1,0 +1,11 @@
+{
+  List<GwtModule> gwtModules=new ArrayList<GwtModule>();
+  if (!cfg.isHtmlIncluded)   return gwtModules;
+  for (  String library : cfg.libraries) {
+    LibraryDef def=libs.getDef(library);
+    if (def.gwtModuleName != null) {
+      gwtModules.add(new GwtModule(def.gwtModuleName));
+    }
+  }
+  return gwtModules;
+}

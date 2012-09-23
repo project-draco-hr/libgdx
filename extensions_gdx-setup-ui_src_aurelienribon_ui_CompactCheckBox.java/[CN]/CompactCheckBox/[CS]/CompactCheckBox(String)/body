@@ -1,0 +1,9 @@
+{
+  setOpaque(false);
+  setLayout(new BorderLayout());
+  add(label,BorderLayout.CENTER);
+  label.setText(text);
+  add(Box.createHorizontalStrut(boxW + 5),BorderLayout.WEST);
+  addMouseListener(mouseAdapter);
+  addMouseMotionListener(mouseAdapter);
+}

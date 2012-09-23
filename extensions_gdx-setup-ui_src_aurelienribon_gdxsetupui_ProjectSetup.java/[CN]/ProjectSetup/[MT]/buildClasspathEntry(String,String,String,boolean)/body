@@ -1,0 +1,8 @@
+{
+  String str="<classpathentry kind=\"lib\" ";
+  if (exported)   str+="exported=\"true\" ";
+  str+="path=\"" + path + file+ "\"";
+  if (sourceFile != null)   str+=" sourcepath=\"" + path + sourceFile+ "\"";
+  str+="/>";
+  return str;
+}

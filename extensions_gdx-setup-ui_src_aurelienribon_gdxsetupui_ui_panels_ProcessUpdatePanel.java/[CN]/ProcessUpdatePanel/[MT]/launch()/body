@@ -1,0 +1,19 @@
+{
+  progressArea.setText("");
+  final ProjectUpdate update=new ProjectUpdate(Ctx.cfgUpdate,Ctx.libs);
+  new Thread(new Runnable(){
+    @Override public void run(){
+      try {
+        report("Decompressing libraries...");
+        update.inflateLibraries();
+        report(" done\nEditing classpaths...");
+        update.editClasspaths();
+        report(" done\nAll done!");
+      }
+ catch (      final Exception ex) {
+        report("\n[error] " + ex.getMessage());
+      }
+    }
+  }
+).start();
+}

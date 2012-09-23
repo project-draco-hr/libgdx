@@ -1,0 +1,29 @@
+{
+  jScrollPane1=new javax.swing.JScrollPane();
+  progressArea=new javax.swing.JTextArea();
+  paintedPanel1=new aurelienribon.ui.components.PaintedPanel();
+  importQuestion=new javax.swing.JLabel();
+  fixHtmlQuestion=new javax.swing.JLabel();
+  backBtn=new aurelienribon.ui.components.Button();
+  startBtn=new aurelienribon.ui.components.Button();
+  progressArea.setEditable(false);
+  progressArea.setColumns(20);
+  progressArea.setRows(5);
+  jScrollPane1.setViewportView(progressArea);
+  paintedPanel1.setOpaque(false);
+  importQuestion.setText("How do I import the projects into eclipse?");
+  fixHtmlQuestion.setText("How do I fix the \"gwt-servlet not found\" error in my html project?");
+  javax.swing.GroupLayout paintedPanel1Layout=new javax.swing.GroupLayout(paintedPanel1);
+  paintedPanel1.setLayout(paintedPanel1Layout);
+  paintedPanel1Layout.setHorizontalGroup(paintedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(paintedPanel1Layout.createSequentialGroup().addContainerGap().addGroup(paintedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(importQuestion).addComponent(fixHtmlQuestion)).addContainerGap(57,Short.MAX_VALUE)));
+  paintedPanel1Layout.setVerticalGroup(paintedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(paintedPanel1Layout.createSequentialGroup().addContainerGap().addComponent(importQuestion).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(fixHtmlQuestion).addContainerGap()));
+  backBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_back.png")));
+  backBtn.setText("Back");
+  startBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_ok.png")));
+  startBtn.setText("Launch!");
+  javax.swing.GroupLayout layout=new javax.swing.GroupLayout(this);
+  this.setLayout(layout);
+  layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(paintedPanel1,javax.swing.GroupLayout.DEFAULT_SIZE,javax.swing.GroupLayout.DEFAULT_SIZE,Short.MAX_VALUE).addComponent(jScrollPane1).addGroup(javax.swing.GroupLayout.Alignment.TRAILING,layout.createSequentialGroup().addGap(0,0,Short.MAX_VALUE).addComponent(startBtn,javax.swing.GroupLayout.PREFERRED_SIZE,109,javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(backBtn,javax.swing.GroupLayout.PREFERRED_SIZE,104,javax.swing.GroupLayout.PREFERRED_SIZE))).addContainerGap()));
+  layout.linkSize(javax.swing.SwingConstants.HORIZONTAL,new java.awt.Component[]{backBtn,startBtn});
+  layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,javax.swing.GroupLayout.DEFAULT_SIZE,234,Short.MAX_VALUE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(backBtn,javax.swing.GroupLayout.PREFERRED_SIZE,javax.swing.GroupLayout.DEFAULT_SIZE,javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(startBtn,javax.swing.GroupLayout.PREFERRED_SIZE,javax.swing.GroupLayout.DEFAULT_SIZE,javax.swing.GroupLayout.PREFERRED_SIZE)).addGap(20,20,20).addComponent(paintedPanel1,javax.swing.GroupLayout.PREFERRED_SIZE,javax.swing.GroupLayout.DEFAULT_SIZE,javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap()));
+}

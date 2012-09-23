@@ -1,0 +1,12 @@
+{
+  try {
+    Font font1=Font.createFont(Font.TRUETYPE_FONT,stream);
+    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font1);
+  }
+ catch (  FontFormatException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+}

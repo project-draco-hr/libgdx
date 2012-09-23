@@ -1,0 +1,6 @@
+{
+  if (!file.endsWith(".jar"))   return false;
+  String name=FilenameUtils.getBaseName(file);
+  if (endsWith(name,"-source","-sources","-src"))   return false;
+  return true;
+}

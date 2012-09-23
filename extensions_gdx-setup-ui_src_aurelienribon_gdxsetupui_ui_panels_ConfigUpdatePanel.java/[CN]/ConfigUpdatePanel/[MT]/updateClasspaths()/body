@@ -1,0 +1,9 @@
+{
+  if (!Ctx.cfgUpdate.projectName.equals("")) {
+    updateCoreClasspath();
+    if (Ctx.cfgUpdate.isAndroidIncluded)     updateAndroidClasspath();
+    if (Ctx.cfgUpdate.isDesktopIncluded)     updateDesktopClasspath();
+    if (Ctx.cfgUpdate.isHtmlIncluded)     updateHtmlClasspath();
+    if (Ctx.cfgUpdate.isHtmlIncluded)     updateGwtModule();
+  }
+}
