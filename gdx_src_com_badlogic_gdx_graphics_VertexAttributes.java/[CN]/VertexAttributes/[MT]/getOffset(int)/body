@@ -1,0 +1,5 @@
+{
+  VertexAttribute vertexAttribute=findByUsage(usage);
+  if (vertexAttribute == null)   return 0;
+  return vertexAttribute.offset / 4;
+}
