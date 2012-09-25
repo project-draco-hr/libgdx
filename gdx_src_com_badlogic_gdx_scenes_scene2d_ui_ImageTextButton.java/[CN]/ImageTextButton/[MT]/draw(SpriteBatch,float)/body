@@ -1,4 +1,5 @@
 {
+  updateImage();
   Color fontColor;
   if (isDisabled && style.disabledFontColor != null)   fontColor=style.disabledFontColor;
  else   if (isPressed() && style.downFontColor != null)   fontColor=style.downFontColor;

@@ -2,15 +2,15 @@
   validate();
   Drawable background=null;
   float offsetX=0, offsetY=0;
-  if (clickListener.isPressed() && !isDisabled) {
+  if (isPressed() && !isDisabled) {
     background=style.down == null ? style.up : style.down;
     offsetX=style.pressedOffsetX;
     offsetY=style.pressedOffsetY;
   }
  else {
     if (isDisabled && style.disabled != null)     background=style.disabled;
- else     if (isChecked && style.checked != null)     background=style.checked;
- else     if (clickListener.isOver() && style.over != null)     background=style.over;
+ else     if (isChecked && style.checked != null)     background=(isOver() && style.checkedOver != null) ? style.checkedOver : style.checked;
+ else     if (isOver() && style.over != null)     background=style.over;
  else     background=style.up;
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
