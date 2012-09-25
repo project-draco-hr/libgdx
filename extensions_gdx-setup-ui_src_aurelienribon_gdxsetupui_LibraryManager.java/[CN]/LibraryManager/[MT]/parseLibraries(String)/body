@@ -1,0 +1,10 @@
+{
+  List<String> lines=ParseUtils.parseBlockAsList(str,"libraries");
+  for (  String line : lines) {
+    String[] parts=line.split("=",2);
+    if (parts.length != 2)     continue;
+    String name=parts[0].trim();
+    if (!libraries.contains(name))     libraries.add(name);
+    librariesUrls.put(name,parts[1].trim());
+  }
+}

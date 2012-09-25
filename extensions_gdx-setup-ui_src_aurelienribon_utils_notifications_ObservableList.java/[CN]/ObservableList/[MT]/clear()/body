@@ -1,0 +1,6 @@
+{
+  evtList1.clear();
+  evtList1.addAll(this);
+  super.clear();
+  fireElementsRemoved(evtList1);
+}

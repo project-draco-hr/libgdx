@@ -1,0 +1,4 @@
+{
+  if (elems.isEmpty())   return;
+  for (  ListChangeListener<T> listener : listeners.getListeners(ListChangeListener.class))   listener.changed(source != null ? source : this,elems,new ArrayList<T>());
+}

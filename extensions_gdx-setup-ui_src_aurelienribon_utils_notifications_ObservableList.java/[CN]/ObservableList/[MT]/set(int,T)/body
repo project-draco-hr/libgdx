@@ -1,0 +1,10 @@
+{
+  T e=super.set(index,element);
+  evtList1.clear();
+  evtList1.add(e);
+  fireElementsRemoved(evtList1);
+  evtList1.clear();
+  evtList1.add(element);
+  fireElementsAdded(evtList1);
+  return e;
+}

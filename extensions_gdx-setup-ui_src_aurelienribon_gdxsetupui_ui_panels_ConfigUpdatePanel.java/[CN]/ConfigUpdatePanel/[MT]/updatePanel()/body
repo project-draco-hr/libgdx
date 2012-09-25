@@ -1,0 +1,14 @@
+{
+  statusCoreLabel.firePropertyChange("found",true,false);
+  statusAndroidLabel.firePropertyChange("found",true,false);
+  statusDesktopLabel.firePropertyChange("found",true,false);
+  statusHtmlLabel.firePropertyChange("found",true,false);
+  statusCoreLabel.firePropertyChange("notfound",false,true);
+  statusAndroidLabel.firePropertyChange("notfound",false,true);
+  statusDesktopLabel.firePropertyChange("notfound",false,true);
+  statusHtmlLabel.firePropertyChange("notfound",false,true);
+  if (!Ctx.cfgUpdate.projectName.equals(""))   statusCoreLabel.firePropertyChange("found",false,true);
+  if (Ctx.cfgUpdate.isAndroidIncluded)   statusAndroidLabel.firePropertyChange("found",false,true);
+  if (Ctx.cfgUpdate.isDesktopIncluded)   statusDesktopLabel.firePropertyChange("found",false,true);
+  if (Ctx.cfgUpdate.isHtmlIncluded)   statusHtmlLabel.firePropertyChange("found",false,true);
+}

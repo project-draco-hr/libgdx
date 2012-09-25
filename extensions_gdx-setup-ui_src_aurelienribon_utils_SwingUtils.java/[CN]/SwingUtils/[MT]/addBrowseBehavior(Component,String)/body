@@ -1,0 +1,11 @@
+{
+  if (url == null)   return;
+  cmp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  cmp.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      JFrame frame=getJFrame(cmp);
+      browse(url,frame);
+    }
+  }
+);
+}

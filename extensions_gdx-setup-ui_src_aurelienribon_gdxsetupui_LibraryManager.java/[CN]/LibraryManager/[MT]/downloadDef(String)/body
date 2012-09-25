@@ -1,0 +1,12 @@
+{
+  if (!librariesUrls.containsKey(name))   return null;
+  final ByteArrayOutputStream output=new ByteArrayOutputStream();
+  DownloadTask task=HttpUtils.downloadAsync(librariesUrls.get(name),output,"Def '" + name + "'");
+  task.addListener(new DownloadListener(){
+    @Override public void onComplete(){
+      registerLibraryDef(name,output);
+    }
+  }
+);
+  return task;
+}

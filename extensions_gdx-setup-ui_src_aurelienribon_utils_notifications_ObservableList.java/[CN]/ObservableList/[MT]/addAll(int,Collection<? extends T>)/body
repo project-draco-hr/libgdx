@@ -1,0 +1,7 @@
+{
+  boolean ret=super.addAll(index,c);
+  evtList1.clear();
+  evtList1.addAll(c);
+  fireElementsAdded(evtList1);
+  return ret;
+}

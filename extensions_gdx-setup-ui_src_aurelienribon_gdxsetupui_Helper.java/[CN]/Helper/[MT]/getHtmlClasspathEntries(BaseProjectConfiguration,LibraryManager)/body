@@ -1,0 +1,21 @@
+{
+  List<ClasspathEntry> classpath=new ArrayList<ClasspathEntry>();
+  if (!cfg.isHtmlIncluded)   return classpath;
+  String corePrjName=getCorePrjName(cfg);
+  for (  String library : cfg.libraries) {
+    LibraryDef def=libs.getDef(library);
+    for (    String file : def.libsCommon) {
+      if (!isFileRuntimeJar(file))       continue;
+      String source=getSource(def.libsCommon,file);
+      classpath.add(new ClasspathEntry("/" + corePrjName + "/libs/",file,source,false));
+      if (source != null)       classpath.add(new ClasspathEntry("/" + corePrjName + "/libs/",source,null,false));
+    }
+    for (    String file : def.libsHtml) {
+      if (!isFileRuntimeJar(file))       continue;
+      String source=getSource(def.libsHtml,file);
+      classpath.add(new ClasspathEntry("war/WEB-INF/lib/",file,source,false));
+      if (source != null)       classpath.add(new ClasspathEntry("war/WEB-INF/lib/",source,null,false));
+    }
+  }
+  return classpath;
+}

@@ -1,0 +1,17 @@
+{
+  File src=new File(tmpDst,cfg.projectName + cfg.suffixCommon);
+  File dst=new File(cfg.destinationPath);
+  FileUtils.copyDirectoryToDirectory(src,dst);
+  if (cfg.isDesktopIncluded) {
+    src=new File(tmpDst,cfg.projectName + cfg.suffixDesktop);
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+  if (cfg.isAndroidIncluded) {
+    src=new File(tmpDst,cfg.projectName + cfg.suffixAndroid);
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+  if (cfg.isHtmlIncluded) {
+    src=new File(tmpDst,cfg.projectName + cfg.suffixHtml);
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
+}

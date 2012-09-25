@@ -1,0 +1,37 @@
+{
+  initComponents();
+  Style.registerCssClasses(jScrollPane2,".frame");
+  Style.registerCssClasses(jScrollPane6,".frame");
+  Style.registerCssClasses(jScrollPane4,".frame");
+  Style.registerCssClasses(jScrollPane5,".frame");
+  Style.registerCssClasses(jScrollPane7,".frame");
+  Style.registerCssClasses(paintedPanel1,".optionGroupPanel");
+  coreList.setModel(new AutoListModel<ClasspathEntry>(Ctx.cfgUpdate.coreClasspath));
+  androidList.setModel(new AutoListModel<ClasspathEntry>(Ctx.cfgUpdate.androidClasspath));
+  desktopList.setModel(new AutoListModel<ClasspathEntry>(Ctx.cfgUpdate.desktopClasspath));
+  htmlList.setModel(new AutoListModel<ClasspathEntry>(Ctx.cfgUpdate.htmlClasspath));
+  gwtList.setModel(new AutoListModel<GwtModule>(Ctx.cfgUpdate.gwtModules));
+  coreList.setCellRenderer(classpathListCellRenderer);
+  androidList.setCellRenderer(classpathListCellRenderer);
+  desktopList.setCellRenderer(classpathListCellRenderer);
+  htmlList.setCellRenderer(classpathListCellRenderer);
+  gwtList.setCellRenderer(modulesListCellRenderer);
+  backBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      mainPanel.hideGenerationUpdatePanel();
+    }
+  }
+);
+  deleteBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      delete();
+    }
+  }
+);
+  validateBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      mainPanel.launchUpdateProcess();
+    }
+  }
+);
+}

@@ -1,0 +1,5 @@
+{
+  if (path.startsWith("/") && !o.path.startsWith("/"))   return 1;
+  if (!path.startsWith("/") && o.path.startsWith("/"))   return -1;
+  return path.compareTo(o.path);
+}

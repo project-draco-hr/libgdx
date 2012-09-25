@@ -1,0 +1,15 @@
+{
+  label.setFont(getFont());
+  label.setForeground(isEnabled() ? getForeground() : disabledFg);
+  Graphics2D gg=(Graphics2D)g.create();
+  int y=(getHeight() - boxH) / 2;
+  gg.setPaint(fill);
+  gg.fillRect(0,y,boxW - 1,boxH - 1);
+  gg.setPaint(stroke);
+  gg.drawRect(0,y,boxW - 1,boxH - 1);
+  if (isSelected) {
+    gg.setPaint(stroke);
+    gg.fillRect(2,y + 2,boxW - 4,boxH - 4);
+  }
+  gg.dispose();
+}

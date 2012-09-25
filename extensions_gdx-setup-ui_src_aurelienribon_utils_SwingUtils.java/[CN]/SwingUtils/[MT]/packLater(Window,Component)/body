@@ -1,0 +1,11 @@
+{
+  wnd.pack();
+  wnd.setLocationRelativeTo(parent);
+  wnd.addWindowListener(new WindowAdapter(){
+    @Override public void windowOpened(    WindowEvent e){
+      wnd.pack();
+      wnd.setLocationRelativeTo(parent);
+    }
+  }
+);
+}

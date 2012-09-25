@@ -4,6 +4,8 @@
   int firstRow=blockRow * tilesPerBlockY;
   int lastCol=firstCol + tilesPerBlockX;
   int lastRow=firstRow + tilesPerBlockY;
+  float offsetX=((tileWidth - unitsPerTileX) / 2);
+  float offsetY=((tileHeight - unitsPerTileY) / 2);
   for (int row=firstRow; row < lastRow && row < layer.length; row++) {
     for (int col=firstCol; col < lastCol && col < layer[row].length; col++) {
       int tile=layer[row][col];
@@ -15,8 +17,8 @@
         if (blended == blendedTiles.contains(tile)) {
           TextureRegion reg=atlas.getRegion(tile);
           if (reg != null) {
-            float x=col * unitsPerTileX;
-            float y=(layer.length - row - 1) * unitsPerTileY;
+            float x=col * unitsPerTileX - offsetX;
+            float y=(layer.length - row - 1) * unitsPerTileY - offsetY;
             float width=reg.getRegionWidth();
             float height=reg.getRegionHeight();
             float originX=width * 0.5f;

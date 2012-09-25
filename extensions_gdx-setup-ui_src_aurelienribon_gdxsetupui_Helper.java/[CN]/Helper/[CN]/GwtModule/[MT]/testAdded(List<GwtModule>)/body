@@ -1,0 +1,5 @@
+{
+  for (  GwtModule e : entries)   if (e.name.equals(name))   return false;
+  added=true;
+  return true;
+}

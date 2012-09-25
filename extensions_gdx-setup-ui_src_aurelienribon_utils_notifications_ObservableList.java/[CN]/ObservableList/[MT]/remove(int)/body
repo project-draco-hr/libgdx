@@ -1,0 +1,9 @@
+{
+  T e=super.remove(index);
+  if (e != null) {
+    evtList1.clear();
+    evtList1.add(e);
+    fireElementsRemoved(evtList1);
+  }
+  return e;
+}

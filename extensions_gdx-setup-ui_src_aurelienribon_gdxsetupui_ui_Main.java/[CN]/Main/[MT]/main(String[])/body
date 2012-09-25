@@ -1,0 +1,27 @@
+{
+  parseArgs(args);
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      try {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      }
+ catch (      ClassNotFoundException ex) {
+      }
+catch (      InstantiationException ex) {
+      }
+catch (      IllegalAccessException ex) {
+      }
+catch (      UnsupportedLookAndFeelException ex) {
+      }
+      SwingStyle.init();
+      ArStyle.init();
+      JFrame frame=new JFrame("LibGDX Project Setup (gdx-setup-ui)");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setContentPane(new MainPanel());
+      frame.setSize(1100,600);
+      frame.setLocationRelativeTo(null);
+      frame.setVisible(true);
+    }
+  }
+);
+}

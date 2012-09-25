@@ -1,0 +1,24 @@
+{
+  OutputStream tempOutput;
+  try {
+    tempOutput=new BufferedOutputStream(new FileOutputStream(output + ".tmp"));
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+  DownloadTask task=HttpUtils.downloadAsync(input,tempOutput,tag);
+  task.addListener(new DownloadListener(){
+    @Override public void onComplete(){
+      try {
+        FileUtils.deleteQuietly(new File(output));
+        FileUtils.moveFile(new File(output + ".tmp"),new File(output));
+      }
+ catch (      IOException ex) {
+        String msg="Could not rename \"" + output + ".tmp"+ "\" into \""+ output+ "\"";
+        JOptionPane.showMessageDialog(SwingUtils.getJFrame(LibrarySelectionPanel.this),msg);
+      }
+      select(libraryName,new File(output));
+    }
+  }
+);
+}

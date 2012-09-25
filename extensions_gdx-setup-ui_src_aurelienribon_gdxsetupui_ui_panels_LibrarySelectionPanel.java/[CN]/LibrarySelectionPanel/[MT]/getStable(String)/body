@@ -1,0 +1,5 @@
+{
+  final String input=Ctx.libs.getDef(libraryName).stableUrl;
+  final String output=FilenameUtils.getName(input);
+  getFile(input,output,libraryName,"Stable '" + libraryName + "'");
+}

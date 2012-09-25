@@ -1,0 +1,9 @@
+{
+  String path=FilenameUtils.getFullPath(file);
+  String name=FilenameUtils.getBaseName(file);
+  String ext=FilenameUtils.getExtension(file);
+  if (files.contains(path + name + "-source."+ ext))   return path + name + "-source."+ ext;
+  if (files.contains(path + name + "-sources."+ ext))   return path + name + "-sources."+ ext;
+  if (files.contains(path + name + "-src."+ ext))   return path + name + "-src."+ ext;
+  return null;
+}

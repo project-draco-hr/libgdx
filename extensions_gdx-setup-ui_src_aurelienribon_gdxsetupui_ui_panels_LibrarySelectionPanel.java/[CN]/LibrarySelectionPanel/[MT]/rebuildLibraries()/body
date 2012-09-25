@@ -1,0 +1,20 @@
+{
+  List<String> names=new ArrayList<String>(Ctx.libs.getNames());
+  for (int i=names.size() - 1; i >= 0; i--) {
+    if (Ctx.libs.getDef(names.get(i)) == null)     names.remove(i);
+  }
+  Collections.sort(names,new Comparator<String>(){
+    @Override public int compare(    String o1,    String o2){
+      String name1=Ctx.libs.getDef(o1).name;
+      String name2=Ctx.libs.getDef(o2).name;
+      return name1.compareToIgnoreCase(name2);
+    }
+  }
+);
+  librariesPanel.removeAll();
+  librariesScrollPane.revalidate();
+  for (  String name : names) {
+    if (!name.equals("libgdx"))     buildLibraryPanel(name);
+    preselectLibraryArchive(name);
+  }
+}

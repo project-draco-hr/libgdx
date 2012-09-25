@@ -1,0 +1,10 @@
+{
+  File androidDir=new File(Helper.getAndroidPrjPath(Ctx.cfgUpdate));
+  List<ClasspathEntry> classpath=new ArrayList<ClasspathEntry>();
+  classpath.addAll(Helper.getClasspathEntries(new File(androidDir,".classpath")));
+  List<ClasspathEntry> newClasspath=Helper.getAndroidClasspathEntries(Ctx.cfgUpdate,Ctx.libs);
+  for (  ClasspathEntry e : classpath)   e.testOverwritten(newClasspath);
+  for (  ClasspathEntry e : newClasspath)   if (e.testAdded(classpath))   classpath.add(e);
+  Collections.sort(classpath);
+  Ctx.cfgUpdate.androidClasspath.replaceBy(classpath);
+}

@@ -1,0 +1,81 @@
+{
+  ActionListener nameChkAL=new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      if (((CompactCheckBox)e.getSource()).isSelected()) {
+        if (!Ctx.cfgSetup.libraries.contains(libraryName))         Ctx.cfgSetup.libraries.add(libraryName);
+        if (!Ctx.cfgUpdate.libraries.contains(libraryName))         Ctx.cfgUpdate.libraries.add(libraryName);
+      }
+ else {
+        Ctx.cfgSetup.libraries.remove(libraryName);
+        Ctx.cfgUpdate.libraries.remove(libraryName);
+      }
+      Ctx.fireCfgSetupChanged();
+      Ctx.fireCfgUpdateChanged();
+    }
+  }
+;
+  Action infoAction=new AbstractAction(){
+    @Override public void actionPerformed(    ActionEvent e){
+      showInfo(libraryName);
+    }
+  }
+;
+  Action browseAction=new AbstractAction(){
+    @Override public void actionPerformed(    ActionEvent e){
+      browse(libraryName);
+    }
+  }
+;
+  Action getStableAction=new AbstractAction(){
+    @Override public void actionPerformed(    ActionEvent e){
+      getStable(libraryName);
+    }
+  }
+;
+  Action getLatestAction=new AbstractAction(){
+    @Override public void actionPerformed(    ActionEvent e){
+      getLatest(libraryName);
+    }
+  }
+;
+  LibraryDef def=Ctx.libs.getDef(libraryName);
+  CompactCheckBox nameChk=new CompactCheckBox(def.name + " ");
+  JLabel html5Label=new JLabel(Res.getImage("gfx/ic_html5.png"));
+  JButton infoBtn=new JButton(infoAction);
+  JButton browseBtn=new JButton(browseAction);
+  JButton getStableBtn=new JButton(getStableAction);
+  JButton getLatestBtn=new JButton(getLatestAction);
+  nameChk.addActionListener(nameChkAL);
+  nameChk.setForeground(LIB_NOTFOUND_COLOR);
+  html5Label.setToolTipText("Compatible with HTML backend");
+  infoBtn.setIcon(Res.getImage("gfx/ic_info.png"));
+  browseBtn.setIcon(Res.getImage("gfx/ic_browse.png"));
+  getStableBtn.setIcon(Res.getImage("gfx/ic_download_stable.png"));
+  getLatestBtn.setIcon(Res.getImage("gfx/ic_download_nightlies.png"));
+  infoBtn.setFocusable(false);
+  browseBtn.setFocusable(false);
+  getStableBtn.setFocusable(false);
+  getLatestBtn.setFocusable(false);
+  JToolBar toolBar=new JToolBar();
+  toolBar.setOpaque(false);
+  toolBar.setFloatable(false);
+  toolBar.add(Box.createHorizontalGlue());
+  toolBar.add(infoBtn);
+  toolBar.add(browseBtn);
+  if (def.stableUrl != null)   toolBar.add(getStableBtn);
+ else   toolBar.add(Box.createHorizontalStrut(libgdxGetStableBtn.getPreferredSize().width));
+  if (def.latestUrl != null)   toolBar.add(getLatestBtn);
+ else   toolBar.add(Box.createHorizontalStrut(libgdxGetNightliesBtn.getPreferredSize().width));
+  JPanel leftPanel=new JPanel(new BorderLayout());
+  leftPanel.setOpaque(false);
+  leftPanel.add(nameChk,BorderLayout.CENTER);
+  if (def.gwtModuleName != null)   leftPanel.add(html5Label,BorderLayout.EAST);
+  JPanel panel=new JPanel(new BorderLayout());
+  panel.setMaximumSize(new Dimension(Integer.MAX_VALUE,25));
+  panel.setOpaque(false);
+  panel.add(leftPanel,BorderLayout.WEST);
+  panel.add(toolBar,BorderLayout.CENTER);
+  librariesPanel.add(panel);
+  Style.apply(librariesPanel,style);
+  libsNamesCmps.put(libraryName,nameChk);
+}

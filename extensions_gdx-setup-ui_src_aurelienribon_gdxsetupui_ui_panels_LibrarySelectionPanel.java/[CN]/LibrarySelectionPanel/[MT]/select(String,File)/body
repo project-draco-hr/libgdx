@@ -1,0 +1,8 @@
+{
+  libsSelectedFiles.put(libraryName,zipFile);
+  Ctx.cfgSetup.librariesZipPaths.put(libraryName,zipFile.getPath());
+  Ctx.cfgUpdate.librariesZipPaths.put(libraryName,zipFile.getPath());
+  libsNamesCmps.get(libraryName).setToolTipText("Using archive: \"" + zipFile.getPath() + "\"");
+  libsNamesCmps.get(libraryName).setForeground(LIB_FOUND_COLOR);
+  Ctx.fireCfgSetupChanged();
+}

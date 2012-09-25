@@ -1,0 +1,11 @@
+{
+  String path=Ctx.cfgSetup.destinationPath;
+  JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
+  JFileChooser chooser=new JFileChooser(new File(path));
+  chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+  chooser.setDialogTitle("Select the destination folder");
+  if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+    destinationField.setText(chooser.getSelectedFile().getPath());
+    update();
+  }
+}

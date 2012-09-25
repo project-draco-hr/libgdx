@@ -1,0 +1,10 @@
+{
+  File desktopDir=new File(Helper.getDesktopPrjPath(Ctx.cfgUpdate));
+  List<ClasspathEntry> classpath=new ArrayList<ClasspathEntry>();
+  classpath.addAll(Helper.getClasspathEntries(new File(desktopDir,".classpath")));
+  List<ClasspathEntry> newClasspath=Helper.getDesktopClasspathEntries(Ctx.cfgUpdate,Ctx.libs);
+  for (  ClasspathEntry e : classpath)   e.testOverwritten(newClasspath);
+  for (  ClasspathEntry e : newClasspath)   if (e.testAdded(classpath))   classpath.add(e);
+  Collections.sort(classpath);
+  Ctx.cfgUpdate.desktopClasspath.replaceBy(classpath);
+}

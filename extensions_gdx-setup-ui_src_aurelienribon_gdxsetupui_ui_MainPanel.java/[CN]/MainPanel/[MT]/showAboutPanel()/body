@@ -1,0 +1,3 @@
+{
+  rootPanel.createTransition().push(new SLKeyframe(aboutCfg,transitionDuration).setEndSideForOldCmps(LEFT).setStartSideForNewCmps(RIGHT)).play();
+}

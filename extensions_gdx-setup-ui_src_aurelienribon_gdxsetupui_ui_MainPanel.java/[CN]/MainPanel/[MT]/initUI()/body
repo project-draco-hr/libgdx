@@ -1,0 +1,31 @@
+{
+  startSetupBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      showSetupView();
+    }
+  }
+);
+  startUpdateBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      showUpdateView();
+    }
+  }
+);
+  changeModeBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      showInitView();
+    }
+  }
+);
+  JLabel aboutLabel=new JLabel("About this app >");
+  Style.registerCssClasses(aboutLabel,".linkLabel");
+  aboutLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  versionLabel.setLayout(new BorderLayout());
+  versionLabel.add(aboutLabel,BorderLayout.EAST);
+  aboutLabel.addMouseListener(new MouseAdapter(){
+    @Override public void mousePressed(    MouseEvent e){
+      showAboutPanel();
+    }
+  }
+);
+}

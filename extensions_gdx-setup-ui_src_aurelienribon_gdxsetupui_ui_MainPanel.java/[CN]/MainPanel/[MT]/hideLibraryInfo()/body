@@ -1,0 +1,11 @@
+{
+  currentLibraryInfo=null;
+switch (Ctx.mode) {
+case SETUP:
+    rootPanel.createTransition().push(new SLKeyframe(setupCfg,transitionDuration).setEndSide(RIGHT,libraryInfoPanel).setStartSide(RIGHT,previewPanel,goPanel).setStartSide(LEFT,configSetupPanel,versionLabel,changeModeBtn).setDelay(transitionDuration,previewPanel,goPanel)).play();
+  break;
+case UPDATE:
+rootPanel.createTransition().push(new SLKeyframe(updateCfg,transitionDuration).setEndSide(RIGHT,libraryInfoPanel).setStartSide(RIGHT,goPanel).setStartSide(LEFT,configUpdatePanel,versionLabel,changeModeBtn).setDelay(transitionDuration,goPanel)).play();
+break;
+}
+}

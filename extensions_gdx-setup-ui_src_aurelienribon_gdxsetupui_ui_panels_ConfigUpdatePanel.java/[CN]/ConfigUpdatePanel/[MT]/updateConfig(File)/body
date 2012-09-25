@@ -1,0 +1,26 @@
+{
+  if (!coreDir.isDirectory())   return;
+  String dirName=coreDir.getName();
+  if (dirName.endsWith(Ctx.cfgUpdate.suffixCommon) && new File(coreDir,".classpath").isFile()) {
+    String prjName=dirName.substring(0,dirName.length() - Ctx.cfgUpdate.suffixCommon.length());
+    Ctx.cfgUpdate.destinationPath=coreDir.getParent();
+    Ctx.cfgUpdate.projectName=prjName;
+    Ctx.cfgUpdate.isAndroidIncluded=false;
+    Ctx.cfgUpdate.isDesktopIncluded=false;
+    Ctx.cfgUpdate.isHtmlIncluded=false;
+    for (    File dir : new File(Ctx.cfgUpdate.destinationPath).listFiles()) {
+      if (!dir.isDirectory())       continue;
+      String name=dir.getName();
+      if (name.equals(Ctx.cfgUpdate.projectName + Ctx.cfgUpdate.suffixAndroid) && new File(dir,".classpath").isFile()) {
+        Ctx.cfgUpdate.isAndroidIncluded=true;
+      }
+      if (name.equals(Ctx.cfgUpdate.projectName + Ctx.cfgUpdate.suffixDesktop) && new File(dir,".classpath").isFile()) {
+        Ctx.cfgUpdate.isDesktopIncluded=true;
+      }
+      if (name.equals(Ctx.cfgUpdate.projectName + Ctx.cfgUpdate.suffixHtml) && new File(dir,".classpath").isFile()) {
+        Ctx.cfgUpdate.isHtmlIncluded=true;
+      }
+    }
+    Ctx.fireCfgUpdateChanged();
+  }
+}

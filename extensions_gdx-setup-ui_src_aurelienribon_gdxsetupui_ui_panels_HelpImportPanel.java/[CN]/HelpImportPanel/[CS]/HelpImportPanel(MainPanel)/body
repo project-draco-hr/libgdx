@@ -1,0 +1,13 @@
+{
+  initComponents();
+  Style.registerCssClasses(num1,".helpNumber");
+  Style.registerCssClasses(num2,".helpNumber");
+  Style.registerCssClasses(num3,".helpNumber");
+  Style.registerCssClasses(num4,".helpNumber");
+  backBtn.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      mainPanel.hideHelpPanel();
+    }
+  }
+);
+}

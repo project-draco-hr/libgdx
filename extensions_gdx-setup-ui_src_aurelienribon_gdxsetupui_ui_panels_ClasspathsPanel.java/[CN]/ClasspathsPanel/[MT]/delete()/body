@@ -1,0 +1,27 @@
+{
+  for (  Object o : coreList.getSelectedValues()) {
+    ClasspathEntry e=(ClasspathEntry)o;
+    if (!e.added && !e.overwritten)     Ctx.cfgUpdate.coreClasspath.remove(e);
+  }
+  for (  Object o : androidList.getSelectedValues()) {
+    ClasspathEntry e=(ClasspathEntry)o;
+    if (!e.added && !e.overwritten)     Ctx.cfgUpdate.androidClasspath.remove(e);
+  }
+  for (  Object o : desktopList.getSelectedValues()) {
+    ClasspathEntry e=(ClasspathEntry)o;
+    if (!e.added && !e.overwritten)     Ctx.cfgUpdate.desktopClasspath.remove(e);
+  }
+  for (  Object o : htmlList.getSelectedValues()) {
+    ClasspathEntry e=(ClasspathEntry)o;
+    if (!e.added && !e.overwritten)     Ctx.cfgUpdate.htmlClasspath.remove(e);
+  }
+  for (  Object o : gwtList.getSelectedValues()) {
+    GwtModule m=(GwtModule)o;
+    if (!m.added && !m.overwritten)     Ctx.cfgUpdate.gwtModules.remove(m);
+  }
+  coreList.clearSelection();
+  androidList.clearSelection();
+  desktopList.clearSelection();
+  htmlList.clearSelection();
+  gwtList.clearSelection();
+}

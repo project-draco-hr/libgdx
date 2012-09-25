@@ -1,0 +1,5 @@
+{
+  for (  ClasspathEntry e : entries)   if (e.path.equals(path))   return false;
+  added=true;
+  return true;
+}

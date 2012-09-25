@@ -1,0 +1,6 @@
+{
+  for (  ClasspathEntry e : entries)   if (e.path.equals(path)) {
+    overwritten=true;
+    return;
+  }
+}

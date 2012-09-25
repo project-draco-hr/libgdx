@@ -1,0 +1,12 @@
+{
+  List<ClasspathEntry> classpath=new ArrayList<ClasspathEntry>();
+  for (  String library : cfg.libraries) {
+    LibraryDef def=libs.getDef(library);
+    for (    String file : def.libsCommon) {
+      if (!isFileRuntimeJar(file))       continue;
+      String source=getSource(def.libsCommon,file);
+      classpath.add(new ClasspathEntry("libs/",file,source,true));
+    }
+  }
+  return classpath;
+}

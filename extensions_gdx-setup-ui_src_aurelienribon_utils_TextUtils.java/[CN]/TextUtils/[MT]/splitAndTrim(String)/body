@@ -1,0 +1,7 @@
+{
+  String[] strs=str.split("\n");
+  List<String> list=Arrays.asList(strs);
+  trim(list);
+  for (int i=list.size() - 1; i >= 0; i--)   if (list.get(i).isEmpty())   list.remove(i);
+  return list;
+}

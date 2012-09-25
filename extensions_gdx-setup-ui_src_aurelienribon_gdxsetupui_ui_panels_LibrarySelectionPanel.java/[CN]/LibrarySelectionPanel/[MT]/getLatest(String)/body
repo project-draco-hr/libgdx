@@ -1,0 +1,5 @@
+{
+  final String input=Ctx.libs.getDef(libraryName).latestUrl;
+  final String output=FilenameUtils.getName(input);
+  getFile(input,output,libraryName,"Latest '" + libraryName + "'");
+}

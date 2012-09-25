@@ -1,0 +1,23 @@
+{
+  File commonPrjLibsDir=new File(tmpDst,"/prj-common/libs");
+  File desktopPrjLibsDir=new File(tmpDst,"/prj-desktop/libs");
+  File androidPrjLibsDir=new File(tmpDst,"/prj-android/libs");
+  File htmlPrjLibsDir=new File(tmpDst,"/prj-html/war/WEB-INF/lib");
+  File dataDir=new File(tmpDst,"/prj-android/assets");
+  for (  String library : cfg.libraries) {
+    InputStream is=new FileInputStream(cfg.librariesZipPaths.get(library));
+    ZipInputStream zis=new ZipInputStream(is);
+    ZipEntry entry;
+    LibraryDef def=libs.getDef(library);
+    while ((entry=zis.getNextEntry()) != null) {
+      if (entry.isDirectory())       continue;
+      String entryName=entry.getName();
+      for (      String elemName : def.libsCommon)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,commonPrjLibsDir);
+      for (      String elemName : def.libsDesktop)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,desktopPrjLibsDir);
+      for (      String elemName : def.libsAndroid)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,androidPrjLibsDir);
+      for (      String elemName : def.libsHtml)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,htmlPrjLibsDir);
+      for (      String elemName : def.data)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,dataDir);
+    }
+    zis.close();
+  }
+}

@@ -1,0 +1,9 @@
+{
+  int percent=totalSize > 0 ? (int)(100 * ((float)currentSize / totalSize)) : -1;
+  if (percent >= 0) {
+    stateLabel.setText(currentSize + " / " + totalSize+ " ("+ percent+ "%)");
+  }
+ else {
+    stateLabel.setText(currentSize + " / ?? (?%)");
+  }
+}

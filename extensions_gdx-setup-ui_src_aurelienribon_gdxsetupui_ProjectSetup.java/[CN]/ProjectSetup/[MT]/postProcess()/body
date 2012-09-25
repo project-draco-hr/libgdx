@@ -1,0 +1,32 @@
+{
+{
+    File src=new File(tmpDst,"prj-common");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixCommon);
+    move(src,"src/MyGame.java","src/" + cfg.packageName.replace('.','/') + "/"+ cfg.mainClassName+ ".java");
+    move(src,"src/MyGame.gwt.xml","src/" + cfg.mainClassName + ".gwt.xml");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
+  }
+  if (cfg.isDesktopIncluded) {
+    File src=new File(tmpDst,"prj-desktop");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixDesktop);
+    move(src,"src/Main.java","src/" + cfg.packageName.replace('.','/') + "/Main.java");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
+  }
+  if (cfg.isAndroidIncluded) {
+    File src=new File(tmpDst,"prj-android");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixAndroid);
+    move(src,"src/MainActivity.java","src/" + cfg.packageName.replace('.','/') + "/MainActivity.java");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
+  }
+  if (cfg.isHtmlIncluded) {
+    File src=new File(tmpDst,"prj-html");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixHtml);
+    move(src,"src/GwtDefinition.gwt.xml","src/" + cfg.packageName.replace('.','/') + "/GwtDefinition.gwt.xml");
+    move(src,"src/client","src/" + cfg.packageName.replace('.','/') + "/client");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
+  }
+}

@@ -1,0 +1,27 @@
+{
+  try {
+    Document doc=XmlUtils.createParser().parse(gwtDefitionFile);
+    Node root=(Node)XmlUtils.xpath("module",doc,XPathConstants.NODE);
+    NodeList nodes=(NodeList)XmlUtils.xpath("module/inherits",doc,XPathConstants.NODESET);
+    for (int i=0; i < nodes.getLength(); i++) {
+      root.removeChild(nodes.item(i));
+    }
+    for (    GwtModule module : modules) {
+      Element elem=doc.createElement("inherits");
+      root.appendChild(elem);
+      elem.setAttribute("name",module.name);
+    }
+    XmlUtils.clean(doc);
+    String str=XmlUtils.transform(doc);
+    FileUtils.writeStringToFile(gwtDefitionFile,str);
+  }
+ catch (  SAXException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  TransformerException ex) {
+    throw new RuntimeException(ex);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  DOMSource source=new DOMSource(doc);
+  StringWriter sw=new StringWriter();
+  StreamResult result=new StreamResult(sw);
+  transformer.transform(source,result);
+  return sw.toString();
+}

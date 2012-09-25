@@ -1,0 +1,6 @@
+{
+  super.add(index,element);
+  evtList1.clear();
+  evtList1.add(element);
+  fireElementsAdded(evtList1);
+}

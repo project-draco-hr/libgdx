@@ -1,0 +1,12 @@
+{
+  String path=Ctx.cfgUpdate.destinationPath;
+  JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
+  JFileChooser chooser=new JFileChooser(new File(path));
+  chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+  chooser.setDialogTitle("Select the core project folder");
+  if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+    pathField.setText(chooser.getSelectedFile().getPath());
+    updateConfig(chooser.getSelectedFile());
+    updatePanel();
+  }
+}

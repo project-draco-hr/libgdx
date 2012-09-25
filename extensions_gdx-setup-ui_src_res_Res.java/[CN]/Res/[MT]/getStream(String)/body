@@ -1,5 +1,0 @@
-{
-  InputStream is=Res.class.getResourceAsStream(name);
-  if (is == null)   throw new RuntimeException("File not found: " + name);
-  return is;
-}

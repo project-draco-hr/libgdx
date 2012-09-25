@@ -1,0 +1,73 @@
+{
+  DefaultMutableTreeNode previousNode;
+  DefaultMutableTreeNode commonSrcNode=nodes.get("#DIR#prj-common/src");
+  DefaultMutableTreeNode commonSrcAppNode=nodes.get("prj-common/src/MyGame.java");
+  DefaultMutableTreeNode commonSrcAppGwtNode=nodes.get("prj-common/src/MyGame.gwt.xml");
+  commonSrcNode.removeAllChildren();
+  previousNode=commonSrcNode;
+  if (!Ctx.cfgSetup.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfgSetup.packageName.split("\\.");
+    for (    String path : paths) {
+      DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-common/src/" + path);
+      previousNode.add(node);
+      previousNode=node;
+    }
+    previousNode.add(commonSrcAppNode);
+    commonSrcNode.add(commonSrcAppGwtNode);
+  }
+ else {
+    commonSrcNode.add(commonSrcAppNode);
+    commonSrcNode.add(commonSrcAppGwtNode);
+  }
+  DefaultMutableTreeNode desktopSrcNode=nodes.get("#DIR#prj-desktop/src");
+  DefaultMutableTreeNode desktopSrcMainNode=nodes.get("prj-desktop/src/Main.java");
+  desktopSrcNode.removeAllChildren();
+  previousNode=desktopSrcNode;
+  if (!Ctx.cfgSetup.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfgSetup.packageName.split("\\.");
+    for (    String path : paths) {
+      DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-desktop/src/" + path);
+      previousNode.add(node);
+      previousNode=node;
+    }
+    previousNode.add(desktopSrcMainNode);
+  }
+ else {
+    desktopSrcNode.add(desktopSrcMainNode);
+  }
+  DefaultMutableTreeNode androidSrcNode=nodes.get("#DIR#prj-android/src");
+  DefaultMutableTreeNode androidSrcActivityNode=nodes.get("prj-android/src/MainActivity.java");
+  androidSrcNode.removeAllChildren();
+  previousNode=androidSrcNode;
+  if (!Ctx.cfgSetup.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfgSetup.packageName.split("\\.");
+    for (    String path : paths) {
+      DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-android/src/" + path);
+      previousNode.add(node);
+      previousNode=node;
+    }
+    previousNode.add(androidSrcActivityNode);
+  }
+ else {
+    androidSrcNode.add(androidSrcActivityNode);
+  }
+  DefaultMutableTreeNode htmlSrcNode=nodes.get("#DIR#prj-html/src");
+  DefaultMutableTreeNode htmlSrcAppGwtNode=nodes.get("prj-html/src/GwtDefinition.gwt.xml");
+  DefaultMutableTreeNode htmlSrcClientDirNode=nodes.get("#DIR#prj-html/src/client");
+  htmlSrcNode.removeAllChildren();
+  previousNode=htmlSrcNode;
+  if (!Ctx.cfgSetup.packageName.trim().equals("")) {
+    String[] paths=Ctx.cfgSetup.packageName.split("\\.");
+    for (    String path : paths) {
+      DefaultMutableTreeNode node=new DefaultMutableTreeNode("#DIR#prj-html/src/" + path);
+      previousNode.add(node);
+      previousNode=node;
+    }
+    previousNode.add(htmlSrcClientDirNode);
+    previousNode.add(htmlSrcAppGwtNode);
+  }
+ else {
+    commonSrcNode.add(htmlSrcClientDirNode);
+    commonSrcNode.add(htmlSrcAppGwtNode);
+  }
+}

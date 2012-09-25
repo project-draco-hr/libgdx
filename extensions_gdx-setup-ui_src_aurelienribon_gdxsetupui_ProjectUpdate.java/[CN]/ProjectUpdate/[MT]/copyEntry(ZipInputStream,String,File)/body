@@ -1,0 +1,7 @@
+{
+  File file=new File(dst,name);
+  file.getParentFile().mkdirs();
+  OutputStream os=new FileOutputStream(file);
+  IOUtils.copy(zis,os);
+  os.close();
+}

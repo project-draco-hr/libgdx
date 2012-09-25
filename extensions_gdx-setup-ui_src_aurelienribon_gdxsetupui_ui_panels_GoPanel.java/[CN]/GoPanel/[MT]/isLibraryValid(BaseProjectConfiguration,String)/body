@@ -1,0 +1,7 @@
+{
+  String path=cfg.librariesZipPaths.get(libraryName);
+  if (path == null)   return false;
+  if (!path.endsWith(".zip"))   return false;
+  if (!new File(path).isFile())   return false;
+  return true;
+}

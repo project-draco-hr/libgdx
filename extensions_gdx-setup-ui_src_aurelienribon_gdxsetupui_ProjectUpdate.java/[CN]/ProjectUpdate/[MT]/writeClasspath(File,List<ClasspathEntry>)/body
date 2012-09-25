@@ -1,0 +1,30 @@
+{
+  try {
+    Document doc=XmlUtils.createParser().parse(classpathFile);
+    Node root=(Node)XmlUtils.xpath("classpath",doc,XPathConstants.NODE);
+    NodeList libsNodes=(NodeList)XmlUtils.xpath("classpath/classpathentry[@kind='lib' and @path]",doc,XPathConstants.NODESET);
+    for (int i=0; i < libsNodes.getLength(); i++) {
+      root.removeChild(libsNodes.item(i));
+    }
+    for (    ClasspathEntry entry : classpath) {
+      Element elem=doc.createElement("classpathentry");
+      root.appendChild(elem);
+      elem.setAttribute("kind","lib");
+      if (entry.exported)       elem.setAttribute("exported","true");
+      elem.setAttribute("path",entry.path);
+      if (entry.sourcepath != null)       elem.setAttribute("sourcepath",entry.sourcepath);
+    }
+    XmlUtils.clean(doc);
+    String str=XmlUtils.transform(doc);
+    FileUtils.writeStringToFile(classpathFile,str);
+  }
+ catch (  SAXException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  IOException ex) {
+    throw new RuntimeException(ex);
+  }
+catch (  TransformerException ex) {
+    throw new RuntimeException(ex);
+  }
+}

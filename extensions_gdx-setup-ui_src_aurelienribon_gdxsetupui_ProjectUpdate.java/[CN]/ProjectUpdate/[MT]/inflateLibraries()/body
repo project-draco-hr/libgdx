@@ -1,0 +1,29 @@
+{
+  File commonPrjLibsDir=new File(Helper.getCorePrjPath(cfg) + "libs");
+  File desktopPrjLibsDir=new File(Helper.getDesktopPrjPath(cfg) + "libs");
+  File androidPrjLibsDir=new File(Helper.getAndroidPrjPath(cfg) + "libs");
+  File htmlPrjLibsDir=new File(Helper.getHtmlPrjPath(cfg) + "war/WEB-INF/lib");
+  File dataDir=new File(Helper.getAndroidPrjPath(cfg) + "assets");
+  for (  String library : cfg.libraries) {
+    InputStream is=new FileInputStream(cfg.librariesZipPaths.get(library));
+    ZipInputStream zis=new ZipInputStream(is);
+    ZipEntry entry;
+    LibraryDef def=libs.getDef(library);
+    while ((entry=zis.getNextEntry()) != null) {
+      if (entry.isDirectory())       continue;
+      String entryName=entry.getName();
+      for (      String elemName : def.libsCommon)       if (entryName.endsWith(elemName))       copyEntry(zis,elemName,commonPrjLibsDir);
+      if (cfg.isDesktopIncluded) {
+        for (        String elemName : def.libsDesktop)         if (entryName.endsWith(elemName))         copyEntry(zis,elemName,desktopPrjLibsDir);
+      }
+      if (cfg.isAndroidIncluded) {
+        for (        String elemName : def.libsAndroid)         if (entryName.endsWith(elemName))         copyEntry(zis,elemName,androidPrjLibsDir);
+        for (        String elemName : def.data)         if (entryName.endsWith(elemName))         copyEntry(zis,elemName,dataDir);
+      }
+      if (cfg.isHtmlIncluded) {
+        for (        String elemName : def.libsHtml)         if (entryName.endsWith(elemName))         copyEntry(zis,elemName,htmlPrjLibsDir);
+      }
+    }
+    zis.close();
+  }
+}
