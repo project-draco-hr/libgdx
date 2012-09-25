@@ -1,0 +1,8 @@
+{
+  tokens.clear();
+  JsArrayString nativeTokens=nativeTokenize(line);
+  for (int i=0, j=nativeTokens.length(); i < j; i++) {
+    String string=nativeTokens.get(i);
+    tokens.add(string);
+  }
+}

@@ -11,7 +11,7 @@
     String line;
     int currMesh=0;
     while ((line=reader.readLine()) != null) {
-      tokenize(line,tokens);
+      MD5Tokenizer.tokenize(line,tokens);
       if (tokens.size() == 0)       continue;
       if (tokens.get(0).equals("MD5Version")) {
         int version=parseInt(tokens.get(1));
@@ -31,7 +31,7 @@
       if (tokens.get(0).equals("joints")) {
         for (int i=0; i < model.baseSkeleton.numJoints; i++) {
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
           if (tokens.size() == 0) {
             i--;
             continue;
@@ -64,7 +64,7 @@
         int weightIndex=0;
         while (!line.contains("}")) {
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
           if (tokens.size() == 0)           continue;
           if (tokens.get(0).equals("shader")) {
             mesh.shader=tokens.get(1);
