@@ -1,6 +1,3 @@
 {
-  player.set_Volume(volume);
-  player.set_Pan(pan);
-  player.Play();
-  return 0;
+  return play(false,volume,pitch,pan);
 }

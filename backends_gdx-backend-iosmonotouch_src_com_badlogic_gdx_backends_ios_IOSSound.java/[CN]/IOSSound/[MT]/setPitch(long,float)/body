@@ -1,2 +1,5 @@
 {
+  if (soundId >= 0) {
+    Gdx.app.debug("IOSSound","Warning: setting a pitch not supported on iOS.");
+  }
 }
