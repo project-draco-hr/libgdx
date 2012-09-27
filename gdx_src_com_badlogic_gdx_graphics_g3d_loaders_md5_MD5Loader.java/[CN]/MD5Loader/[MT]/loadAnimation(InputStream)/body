@@ -8,7 +8,7 @@
     BaseFrameJoint[] baseFrame=null;
     float[] animFrameData=null;
     while ((line=reader.readLine()) != null) {
-      tokenize(line,tokens);
+      MD5Tokenizer.tokenize(line,tokens);
       if (tokens.size() == 0)       continue;
       if (tokens.get(0).equals("MD5Version")) {
         if (!tokens.get(1).equals("10"))         throw new IllegalArgumentException("Not a valid MD5 animation file, version is " + tokens.get(1) + ", expected 10");
@@ -41,7 +41,7 @@
       if (tokens.get(0).equals("hierarchy")) {
         for (int i=0; i < jointInfos.length; i++) {
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
           if (tokens.size() == 0 || tokens.get(0).equals("//")) {
             i--;
             continue;
@@ -57,7 +57,7 @@
       if (tokens.get(0).equals("bounds")) {
         for (int i=0; i < animation.bounds.length; i++) {
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
           if (tokens.size() == 0) {
             i--;
             continue;
@@ -75,7 +75,7 @@
       if (tokens.get(0).equals("baseframe")) {
         for (int i=0; i < baseFrame.length; i++) {
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
           if (tokens.size() == 0) {
             i--;
             continue;
@@ -95,11 +95,11 @@
         int frameIndex=parseInt(tokens.get(1));
         int i=0;
         line=reader.readLine();
-        tokenize(line,tokens);
+        MD5Tokenizer.tokenize(line,tokens);
         while (tokens.get(0).equals("}") == false) {
           for (int j=0; j < tokens.size(); j++)           animFrameData[i++]=parseFloat(tokens.get(j));
           line=reader.readLine();
-          tokenize(line,tokens);
+          MD5Tokenizer.tokenize(line,tokens);
         }
         buildFrameSkeleton(jointInfos,baseFrame,animFrameData,animation,frameIndex);
       }
