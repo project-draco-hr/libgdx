@@ -78,7 +78,6 @@
     public Object read(    Json json,    Object jsonData,    Class type){
       String name=json.readValue("name",String.class,jsonData);
       Color color=json.readValue("color",Color.class,jsonData);
-      if (name.equals("tree-collapse"))       System.out.println();
       return newDrawable(name,color);
     }
   }
