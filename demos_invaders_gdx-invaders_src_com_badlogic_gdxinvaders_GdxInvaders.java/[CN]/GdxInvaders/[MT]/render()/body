@@ -2,6 +2,8 @@
   InvadersScreen currentScreen=getScreen();
   currentScreen.render(Gdx.graphics.getDeltaTime());
   if (currentScreen.isDone()) {
+    music.dispose();
+    music=null;
     currentScreen.dispose();
     if (currentScreen instanceof MainMenu) {
       setScreen(new GameLoop());

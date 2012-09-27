@@ -1,2 +1,5 @@
 {
+  if (soundId >= 0) {
+    players[(int)soundId].set_NumberOfLoops(looping ? -1 : 0);
+  }
 }

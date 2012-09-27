@@ -1,0 +1,10 @@
+{
+  NSError[] error=new NSError[1];
+  players=new AVAudioPlayer[MAX_PLAYERS];
+  for (int i=0; i < players.length; i++) {
+    players[i]=AVAudioPlayer.FromData(data,error);
+    if (error[0] != null) {
+      throw new GdxRuntimeException("Error creating audio player (index: " + i + "): "+ error[0].ToString());
+    }
+  }
+}

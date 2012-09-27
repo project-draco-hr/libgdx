@@ -1,0 +1,5 @@
+{
+  if (fileHandle.extension().equalsIgnoreCase("ogg")) {
+    throw new GdxRuntimeException("Audio format .ogg is not supported on iOS. Cannot load: " + fileHandle.path());
+  }
+}
