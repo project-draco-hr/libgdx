@@ -13,9 +13,9 @@
 switch (orientation.Value) {
 case UIInterfaceOrientation.LandscapeLeft:
 case UIInterfaceOrientation.LandscapeRight:
-        return config.supportedOrientation == SupportedOrientation.LANDSCAPE || config.supportedOrientation == SupportedOrientation.BOTH;
+        return config.orientationLandscape;
 default :
-      return config.supportedOrientation == SupportedOrientation.PORTRAIT || config.supportedOrientation == SupportedOrientation.BOTH;
+      return config.orientationPortrait;
   }
 }
 }
