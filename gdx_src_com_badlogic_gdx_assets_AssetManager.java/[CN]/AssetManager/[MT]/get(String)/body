@@ -1,0 +1,10 @@
+{
+  Class<T> type=assetTypes.get(fileName);
+  ObjectMap<String,RefCountedContainer> assetsByType=assets.get(type);
+  if (assetsByType == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
+  RefCountedContainer assetContainer=assetsByType.get(fileName);
+  if (assetContainer == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
+  T asset=assetContainer.getObject(type);
+  if (asset == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);
+  return asset;
+}
