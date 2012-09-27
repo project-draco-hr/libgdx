@@ -1,5 +1,4 @@
 {
-  if (name.equals("tree-collapse-up"))   System.out.println();
   Drawable drawable=optional(name,Drawable.class);
   if (drawable != null)   return drawable;
   drawable=optional(name,TiledDrawable.class);
