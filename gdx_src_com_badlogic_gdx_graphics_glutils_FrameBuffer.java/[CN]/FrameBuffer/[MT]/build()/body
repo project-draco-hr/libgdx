@@ -1,9 +1,20 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("GL2 is required.");
+  GL20 gl=Gdx.graphics.getGL20();
+  if (!defaultFramebufferHandleInitialized) {
+    defaultFramebufferHandleInitialized=true;
+    if (Gdx.app.getType() == ApplicationType.iOS) {
+      IntBuffer intbuf=ByteBuffer.allocateDirect(16 * Integer.SIZE / 8).order(ByteOrder.nativeOrder()).asIntBuffer();
+      gl.glGetIntegerv(GL20.GL_FRAMEBUFFER_BINDING,intbuf);
+      defaultFramebufferHandle=intbuf.get();
+    }
+ else {
+      defaultFramebufferHandle=0;
+    }
+  }
   colorTexture=new Texture(width,height,format);
   colorTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   colorTexture.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
-  GL20 gl=Gdx.graphics.getGL20();
   IntBuffer handle=BufferUtils.newIntBuffer(1);
   gl.glGenFramebuffers(1,handle);
   framebufferHandle=handle.get(0);
@@ -25,7 +36,7 @@
   int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
   gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,0);
   gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
-  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,0);
+  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,defaultFramebufferHandle);
   if (result != GL20.GL_FRAMEBUFFER_COMPLETE) {
     colorTexture.dispose();
     if (hasDepth) {
