@@ -1,2 +1,6 @@
 {
+  if (soundId >= 0) {
+    players[(int)soundId].set_Pan(pan);
+    players[(int)soundId].set_Volume(volume);
+  }
 }

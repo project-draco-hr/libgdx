@@ -14,6 +14,24 @@
   gl20=new IOSGLES20();
   Gdx.gl=gl20;
   Gdx.gl20=gl20;
+  if ((UIScreen.get_MainScreen().RespondsToSelector(new Selector("scale:"))) && (UIScreen.get_MainScreen().get_Scale() == 2.0f)) {
+    density=2.0f;
+  }
+ else {
+    density=1.0f;
+  }
+  int ppi;
+  if (UIDevice.get_CurrentDevice().get_UserInterfaceIdiom().Value == UIUserInterfaceIdiom.Pad) {
+    ppi=Math.round(density * 132);
+  }
+ else {
+    ppi=Math.round(density * 163);
+  }
+  ppiX=ppi;
+  ppiY=ppi;
+  ppcX=ppiX / 2.54f;
+  ppcY=ppcY / 2.54f;
+  app.log("IOSGraphics","Display: ppi=" + ppi + ", density="+ density);
   lastFrameTime=System.nanoTime();
   framesStart=lastFrameTime;
 }

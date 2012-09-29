@@ -1,0 +1,11 @@
+{
+  int soundId=findAvailablePlayer();
+  if (soundId >= 0) {
+    AVAudioPlayer player=players[soundId];
+    player.set_NumberOfLoops(looping ? -1 : 0);
+    player.set_Volume(volume);
+    player.set_Pan(pan);
+    player.Play();
+  }
+  return soundId;
+}
