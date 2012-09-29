@@ -9,7 +9,6 @@
   setHeight(150);
   addCaptureListener(new InputListener(){
     private float handlePosition;
-    private int draggingPointer=-1;
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (draggingPointer != -1)       return false;
       if (pointer == 0 && button != 0)       return false;

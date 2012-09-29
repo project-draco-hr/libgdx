@@ -22,26 +22,30 @@
     }
   }
   if (smoothScrolling && flingTimer <= 0 && !touchScrollH && !touchScrollV && !panning) {
-    if (visualAmountX < amountX)     visualAmountX=Math.min(amountX,visualAmountX + Math.max(150 * delta,(amountX - visualAmountX) * 5 * delta));
- else     visualAmountX=Math.max(amountX,visualAmountX - Math.max(150 * delta,(visualAmountX - amountX) * 5 * delta));
-    if (visualAmountY < amountY)     visualAmountY=Math.min(amountY,visualAmountY + Math.max(150 * delta,(amountY - visualAmountY) * 5 * delta));
- else     visualAmountY=Math.max(amountY,visualAmountY - Math.max(150 * delta,(visualAmountY - amountY) * 5 * delta));
+    if (visualAmountX != amountX) {
+      if (visualAmountX < amountX)       visualScrollX(Math.min(amountX,visualAmountX + Math.max(150 * delta,(amountX - visualAmountX) * 5 * delta)));
+ else       visualScrollX(Math.max(amountX,visualAmountX - Math.max(150 * delta,(visualAmountX - amountX) * 5 * delta)));
+    }
+    if (visualAmountY != amountY) {
+      if (visualAmountY < amountY)       visualScrollY(Math.min(amountY,visualAmountY + Math.max(150 * delta,(amountY - visualAmountY) * 5 * delta)));
+ else       visualScrollY(Math.max(amountY,visualAmountY - Math.max(150 * delta,(visualAmountY - amountY) * 5 * delta)));
+    }
   }
  else {
-    visualAmountX=amountX;
-    visualAmountY=amountY;
+    if (visualAmountX != amountX)     visualScrollX(amountX);
+    if (visualAmountY != amountY)     visualScrollY(amountY);
   }
   if (!panning) {
     if (overscrollX && scrollX) {
       if (amountX < 0) {
         resetFade();
         amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
-        if (amountX > 0)         amountX=0;
+        if (amountX > 0)         scrollX(0);
       }
  else       if (amountX > maxX) {
         resetFade();
         amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
-        if (amountX < maxX)         amountX=maxX;
+        if (amountX < maxX)         scrollX(maxX);
       }
     }
     if (overscrollY && scrollY) {
