@@ -1,0 +1,4 @@
+{
+  if (this.padLeft == -1)   return this.getLeftWidth();
+  return this.padLeft;
+}

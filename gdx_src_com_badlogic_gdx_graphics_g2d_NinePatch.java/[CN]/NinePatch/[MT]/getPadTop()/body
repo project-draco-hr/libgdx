@@ -1,0 +1,4 @@
+{
+  if (this.padTop == -1)   return this.getTopHeight();
+  return this.padTop;
+}
