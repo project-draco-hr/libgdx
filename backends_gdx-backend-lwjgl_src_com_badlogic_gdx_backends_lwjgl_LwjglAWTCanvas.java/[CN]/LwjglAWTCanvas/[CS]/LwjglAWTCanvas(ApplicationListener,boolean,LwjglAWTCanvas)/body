@@ -57,6 +57,13 @@
  else {
     files=null;
   }
+  if (Gdx.net == null) {
+    net=new LwjglNet();
+    Gdx.net=net;
+  }
+ else {
+    net=null;
+  }
   input=new LwjglAWTInput(canvas);
   this.listener=listener;
   setGlobals();
