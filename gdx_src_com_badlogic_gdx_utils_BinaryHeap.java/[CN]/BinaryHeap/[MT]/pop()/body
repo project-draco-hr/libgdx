@@ -4,5 +4,5 @@
   nodes[0]=nodes[--size];
   nodes[size]=null;
   if (size > 0)   down(0);
-  return popped;
+  return (T)popped;
 }

@@ -1,8 +1,10 @@
 {
+  float amountX=this.amountX;
   if (x + width > amountX + areaWidth)   amountX=x + width - areaWidth;
   if (x < amountX)   amountX=x;
-  amountX=MathUtils.clamp(amountX,0,maxX);
+  scrollX(MathUtils.clamp(amountX,0,maxX));
+  float amountY=this.amountY;
   if (amountY > maxY - y - height + areaHeight)   amountY=maxY - y - height + areaHeight;
   if (amountY < maxY - y)   amountY=maxY - y;
-  amountY=MathUtils.clamp(amountY,0,maxY);
+  scrollY(MathUtils.clamp(amountY,0,maxY));
 }
