@@ -1,0 +1,5 @@
+{
+  Stage stage=getStage();
+  if (stage == null)   return screenCoords;
+  return stageToLocalCoordinates(stage.screenToStageCoordinates(screenCoords));
+}
