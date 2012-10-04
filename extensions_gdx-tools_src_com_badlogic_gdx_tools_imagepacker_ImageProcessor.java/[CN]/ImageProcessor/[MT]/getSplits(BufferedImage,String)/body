@@ -1,42 +1,25 @@
 {
   WritableRaster raster=image.getRaster();
-  int[] rgba=new int[4];
-  int startX=1;
-  for (int x=1; x < raster.getWidth() - 1; x++) {
-    raster.getPixel(x,0,rgba);
-    if (rgba[3] == 0)     continue;
-    if (rgba[0] != 0 || rgba[1] != 0 || rgba[2] != 0 || rgba[3] != 255)     splitError(x,0,rgba,name);
-    startX=x;
-    break;
+  int startX=getSplitPoint(raster,name,1,0,true,true);
+  int endX=getSplitPoint(raster,name,startX,0,false,true);
+  int startY=getSplitPoint(raster,name,0,1,true,false);
+  int endY=getSplitPoint(raster,name,0,startY,false,false);
+  getSplitPoint(raster,name,endX + 1,0,true,true);
+  getSplitPoint(raster,name,0,endY + 1,true,false);
+  if (startX == 0 && endX == 0 && startY == 0 && endY == 0)   return null;
+  if (startX != 0) {
+    startX--;
+    endX=raster.getWidth() - 2 - (endX - 1);
   }
-  int endX;
-  for (endX=startX; endX < raster.getWidth() - 1; endX++) {
-    raster.getPixel(endX,0,rgba);
-    if (rgba[3] == 0)     break;
-    if (rgba[0] != 0 || rgba[1] != 0 || rgba[2] != 0 || rgba[3] != 255)     splitError(endX,0,rgba,name);
+ else {
+    endX=raster.getWidth() - 2;
   }
-  for (int x=endX + 1; x < raster.getWidth() - 1; x++) {
-    raster.getPixel(x,0,rgba);
-    if (rgba[3] != 0)     splitError(x,0,rgba,name);
+  if (startY != 0) {
+    startY--;
+    endY=raster.getHeight() - 2 - (endY - 1);
   }
-  int startY=1;
-  for (int y=1; y < raster.getHeight() - 1; y++) {
-    raster.getPixel(0,y,rgba);
-    if (rgba[3] == 0)     continue;
-    if (rgba[0] != 0 || rgba[1] != 0 || rgba[2] != 0 || rgba[3] != 255)     splitError(0,y,rgba,name);
-    startY=y;
-    break;
+ else {
+    endY=raster.getHeight() - 2;
   }
-  int endY;
-  for (endY=startY; endY < raster.getHeight() - 1; endY++) {
-    raster.getPixel(0,endY,rgba);
-    if (rgba[3] == 0)     break;
-    if (rgba[0] != 0 || rgba[1] != 0 || rgba[2] != 0 || rgba[3] != 255)     splitError(0,endY,rgba,name);
-  }
-  for (int y=endY + 1; y < raster.getHeight() - 1; y++) {
-    raster.getPixel(0,y,rgba);
-    if (rgba[3] != 0)     splitError(0,y,rgba,name);
-  }
-  if (startX == 1 && endX == 1 && startY == 1 && endY == 1)   return null;
-  return new int[]{startX - 1,raster.getWidth() - 2 - (endX - 1),startY - 1,raster.getHeight() - 2 - (endY - 1)};
+  return new int[]{startX,endX,startY,endY};
 }

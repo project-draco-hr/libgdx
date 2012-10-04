@@ -1,0 +1,35 @@
+{
+  WritableRaster raster=image.getRaster();
+  int bottom=raster.getHeight() - 1;
+  int right=raster.getWidth() - 1;
+  int startX=getSplitPoint(raster,name,1,bottom,true,true);
+  int startY=getSplitPoint(raster,name,right,1,true,false);
+  int endX=0;
+  int endY=0;
+  if (startX != 0)   endX=getSplitPoint(raster,name,startX + 1,bottom,false,true);
+  if (startY != 0)   endY=getSplitPoint(raster,name,right,startY + 1,false,false);
+  getSplitPoint(raster,name,endX + 1,bottom,true,true);
+  getSplitPoint(raster,name,right,endY + 1,true,false);
+  if (startX == 0 && endX == 0 && startY == 0 && endY == 0) {
+    return null;
+  }
+  if (startX > 0) {
+    startX--;
+    endX=raster.getWidth() - 2 - (endX - 1);
+  }
+ else {
+    endX=raster.getWidth() - 2;
+  }
+  if (startY > 0) {
+    startY--;
+    endY=raster.getHeight() - 2 - (endY - 1);
+  }
+ else {
+    endY=raster.getHeight() - 2;
+  }
+  int[] pads=new int[]{startX,endX,startY,endY};
+  if ((splits != null) && Arrays.equals(pads,splits)) {
+    return null;
+  }
+  return pads;
+}
