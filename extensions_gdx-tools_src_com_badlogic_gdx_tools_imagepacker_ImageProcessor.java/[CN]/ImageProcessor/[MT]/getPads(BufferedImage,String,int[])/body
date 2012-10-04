@@ -28,7 +28,7 @@
     endY=raster.getHeight() - 2;
   }
   int[] pads=new int[]{startX,endX,startY,endY};
-  if ((splits != null) && Arrays.equals(pads,splits)) {
+  if (splits != null && Arrays.equals(pads,splits)) {
     return null;
   }
   return pads;
