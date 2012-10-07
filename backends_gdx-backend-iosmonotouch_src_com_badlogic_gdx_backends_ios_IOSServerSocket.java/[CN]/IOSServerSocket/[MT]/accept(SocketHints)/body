@@ -1,0 +1,8 @@
+{
+  try {
+    return new IOSSocket(listener.AcceptTcpClient(),hints);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Error accepting socket.",e);
+  }
+}

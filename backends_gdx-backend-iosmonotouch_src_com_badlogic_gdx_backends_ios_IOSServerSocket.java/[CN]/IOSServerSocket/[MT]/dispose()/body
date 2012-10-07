@@ -1,0 +1,11 @@
+{
+  if (listener != null) {
+    try {
+      listener.Stop();
+      listener=null;
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Error closing listener.",e);
+    }
+  }
+}

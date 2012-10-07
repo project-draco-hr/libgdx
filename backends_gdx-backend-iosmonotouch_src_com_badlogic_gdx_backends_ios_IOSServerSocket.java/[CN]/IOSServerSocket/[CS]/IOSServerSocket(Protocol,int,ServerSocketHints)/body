@@ -1,0 +1,25 @@
+{
+  if (protocol == Protocol.TCP) {
+    this.protocol=protocol;
+    try {
+      IPAddress ipAddress=Dns.GetHostEntry("localhost").get_AddressList()[0];
+      listener=new TcpListener(ipAddress,port);
+      if (hints != null) {
+        listener.set_ExclusiveAddressUse(!hints.reuseAddress);
+      }
+      InetSocketAddress address=new InetSocketAddress(port);
+      if (hints != null) {
+        listener.Start(hints.backlog);
+      }
+ else {
+        listener.Start();
+      }
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Cannot create a server socket at port " + port + ".",e);
+    }
+  }
+ else {
+    throw new GdxRuntimeException("Server socket protocol " + protocol + " is not supported under iOS backend.");
+  }
+}

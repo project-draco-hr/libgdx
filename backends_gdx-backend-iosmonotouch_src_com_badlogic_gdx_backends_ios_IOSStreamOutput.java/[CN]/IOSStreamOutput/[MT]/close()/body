@@ -1,0 +1,6 @@
+{
+  if (closeable) {
+    stream.Close();
+    stream=null;
+  }
+}
