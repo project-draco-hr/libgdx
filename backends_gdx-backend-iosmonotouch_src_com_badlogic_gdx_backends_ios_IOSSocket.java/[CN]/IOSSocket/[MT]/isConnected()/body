@@ -1,0 +1,8 @@
+{
+  if (client != null) {
+    return client.get_Connected();
+  }
+ else {
+    return false;
+  }
+}
