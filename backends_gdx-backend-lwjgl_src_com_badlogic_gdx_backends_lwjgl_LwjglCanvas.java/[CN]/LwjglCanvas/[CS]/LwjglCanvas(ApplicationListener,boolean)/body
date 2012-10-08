@@ -42,10 +42,12 @@
   audio=new OpenALAudio();
   files=new LwjglFiles();
   input=new LwjglInput();
+  net=new LwjglNet();
   this.listener=listener;
   Gdx.app=this;
   Gdx.graphics=graphics;
   Gdx.audio=audio;
   Gdx.files=files;
   Gdx.input=input;
+  Gdx.net=net;
 }

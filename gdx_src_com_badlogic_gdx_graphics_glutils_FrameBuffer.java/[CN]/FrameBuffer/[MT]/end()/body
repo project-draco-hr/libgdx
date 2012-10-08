@@ -1,4 +1,4 @@
 {
   Gdx.graphics.getGL20().glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  Gdx.graphics.getGL20().glBindFramebuffer(GL20.GL_FRAMEBUFFER,0);
+  Gdx.graphics.getGL20().glBindFramebuffer(GL20.GL_FRAMEBUFFER,defaultFramebufferHandle);
 }

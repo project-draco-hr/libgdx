@@ -17,6 +17,8 @@
   Gdx.files=new GwtFiles(preloader);
   this.input=new GwtInput(graphics.canvas);
   Gdx.input=this.input;
+  this.net=new GwtNet();
+  Gdx.net=this.net;
   try {
     listener.create();
     listener.resize(graphics.getWidth(),graphics.getHeight());
