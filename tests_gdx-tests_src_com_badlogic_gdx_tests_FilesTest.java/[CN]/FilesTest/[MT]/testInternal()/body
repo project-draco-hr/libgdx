@@ -1,16 +1,16 @@
 {
   FileHandle handle=Gdx.files.internal("data/badlogic.jpg");
-  if (!handle.exists())   fail();
-  if (handle.isDirectory())   fail();
+  if (!handle.exists())   fail("Couldn't find internal file");
+  if (handle.isDirectory())   fail("Internal file shouldn't be a directory");
   try {
     handle.delete();
-    fail();
+    fail("Shouldn't be able to delete internal file");
   }
  catch (  Exception expected) {
   }
-  if (handle.list().length != 0)   fail();
+  if (handle.list().length != 0)   fail("File length shouldn't be 0");
   if (Gdx.app.getType() != ApplicationType.Android) {
-    if (!handle.parent().exists())     fail();
+    if (!handle.parent().exists())     fail("Parent doesn't exist");
   }
   try {
     handle.read().close();
@@ -19,7 +19,7 @@
  catch (  Exception ignored) {
   }
   FileHandle dir;
-  if (Gdx.app.getType() == ApplicationType.Android)   dir=Gdx.files.internal("data");
+  if (Gdx.app.getType() == ApplicationType.Android || Gdx.app.getType() == ApplicationType.iOS)   dir=Gdx.files.internal("data");
  else   dir=Gdx.files.internal("../gdx-tests-android/assets/data");
   if (Gdx.app.getType() != ApplicationType.Android) {
     if (!dir.exists())     fail();
