@@ -12,10 +12,10 @@
       music.stop();
       music.dispose();
     }
-    music=Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.ogg"));
+    music=Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
   }
  catch (  Exception e) {
-    music=Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.ogg"));
+    music=Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
   }
   factoryP1=atlas.createSprite("factoryp1");
   factoryP2=atlas.createSprite("factoryp2");
