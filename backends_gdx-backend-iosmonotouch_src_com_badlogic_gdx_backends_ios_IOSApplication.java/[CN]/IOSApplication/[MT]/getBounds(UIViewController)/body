@@ -13,6 +13,6 @@ default :
 width=(int)bounds.get_Width();
 height=(int)bounds.get_Height();
 }
-Gdx.app.log("IOSApplication","View: " + orientation.toString() + " "+ width+ "x"+ height);
+Gdx.app.debug("IOSApplication","View: " + orientation.toString() + " "+ width+ "x"+ height);
 return new RectangleF(0,0,width,height);
 }

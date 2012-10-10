@@ -33,6 +33,6 @@ this.input.setupPeripherals();
 uiViewController.set_View(graphics);
 this.graphics.Run();
 this.uiWindow.MakeKeyAndVisible();
-Gdx.app.log("IOSApplication","created");
+Gdx.app.debug("IOSApplication","created");
 return true;
 }
