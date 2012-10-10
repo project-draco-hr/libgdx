@@ -1,0 +1,83 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  time+=delta;
+  if (time < 1f)   return;
+  backgroundFX.render();
+  titleBatch.begin();
+  musicOnOff.draw(titleBatch);
+  help.draw(titleBatch);
+  settings.draw(titleBatch);
+  titleBatch.draw(title,85f,320f,0,0,512,64f,1.24f,1.24f,0);
+  titleBatch.draw(credits,595f,50f);
+  p1.draw(titleBatch);
+  p2.draw(titleBatch);
+  p3.draw(titleBatch);
+  p4.draw(titleBatch);
+  cnt=0;
+  if (p1.playerSelect || p1.cpuSelect)   cnt++;
+  if (p2.playerSelect || p2.cpuSelect)   cnt++;
+  if (p3.playerSelect || p3.cpuSelect)   cnt++;
+  if (p4.playerSelect || p4.cpuSelect)   cnt++;
+  if (cnt > 1) {
+    countdown.draw(titleBatch);
+  }
+  if (cnt != oldCnt) {
+    countdown.reset();
+    oldCnt=cnt;
+  }
+  if ((p1.picked && !(p1.playerSelect || p1.cpuSelect)) || (p2.picked && !(p2.playerSelect || p2.cpuSelect)) || (p3.picked && !(p3.playerSelect || p3.cpuSelect))|| (p4.picked && !(p4.playerSelect || p4.cpuSelect))) {
+    countdown.reset();
+  }
+  titleBatch.end();
+  if (!countdown.finished && fade > 0) {
+    fade=Math.max(fade - delta / 2.f,0);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+  }
+  if (countdown.finished) {
+    fade=Math.min(fade + delta / 2.f,1);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+    if (fade >= 1 && cnt >= 2) {
+      Array<Integer> playerList=new Array<Integer>();
+      if (p1.playerSelect == true) {
+        playerList.add(1);
+      }
+      if (p2.playerSelect == true) {
+        playerList.add(2);
+      }
+      if (p3.playerSelect == true) {
+        playerList.add(3);
+      }
+      if (p4.playerSelect == true) {
+        playerList.add(4);
+      }
+      Array<Integer> cpuList=new Array<Integer>();
+      if (p1.cpuSelect == true) {
+        cpuList.add(1);
+      }
+      if (p2.cpuSelect == true) {
+        cpuList.add(2);
+      }
+      if (p3.cpuSelect == true) {
+        cpuList.add(3);
+      }
+      if (p4.cpuSelect == true) {
+        cpuList.add(4);
+      }
+      game.setScreen(new GameScreen(game,playerList,cpuList));
+    }
+ else     if (fade >= 1 && cnt < 1) {
+      if (changeToScreen == 1) {
+        game.setScreen(new Settings(game));
+      }
+ else {
+        game.setScreen(new Help(game));
+      }
+    }
+  }
+}

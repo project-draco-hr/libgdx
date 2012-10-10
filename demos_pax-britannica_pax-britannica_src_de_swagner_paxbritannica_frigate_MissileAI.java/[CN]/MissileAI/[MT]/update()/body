@@ -1,0 +1,11 @@
+{
+  if (target == null || missile.aliveTime > MAX_LIFETIME) {
+    selfDestruct();
+  }
+ else   if (!target.alive) {
+    retarget();
+  }
+ else {
+    missile.goTowards(predict(),true);
+  }
+}

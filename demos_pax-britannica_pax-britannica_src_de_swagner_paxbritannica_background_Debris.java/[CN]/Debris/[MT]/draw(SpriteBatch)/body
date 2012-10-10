@@ -1,0 +1,18 @@
+{
+  super.draw(spriteBatch);
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  since_alive+=delta;
+  facing.rotate((SPEED + random_speed) * delta).nor();
+  position.add(facing.mul((SPEED + random_speed) * delta));
+  this.setPosition(position.x,position.y);
+  if (since_alive < FADE_TIME) {
+    super.setColor(1,1,1,Math.min((since_alive / FADE_TIME) * random_opacity,random_opacity));
+  }
+ else {
+    this.setColor(1,1,1,Math.min(1 - (since_alive - LIFETIME + FADE_TIME) / FADE_TIME,1) * random_opacity);
+  }
+  if (since_alive > LIFETIME) {
+    alive=false;
+    this.setColor(1,1,1,0);
+  }
+}

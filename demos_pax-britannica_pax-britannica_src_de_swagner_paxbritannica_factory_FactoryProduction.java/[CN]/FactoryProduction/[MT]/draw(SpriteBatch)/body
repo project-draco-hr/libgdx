@@ -1,0 +1,46 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  resourceAmount=Math.min(2000,resourceAmount + (harvestRate * delta));
+  super.draw(spriteBatch);
+  production.draw(spriteBatch);
+  drawDamage=false;
+  float health=healthPercentage();
+  int animation=(int)(Math.floor(aliveTime * 20) % 3 + 1);
+  if (health < Constants.lowHealthThreshold) {
+switch (animation) {
+case 1:
+      current_damage=heavy_damage1;
+    break;
+case 2:
+  current_damage=heavy_damage2;
+break;
+default :
+current_damage=heavy_damage3;
+break;
+}
+drawDamage=true;
+}
+ else if (health < Constants.highHealthThreshold) {
+switch (animation) {
+case 1:
+current_damage=light_damage1;
+break;
+case 2:
+current_damage=light_damage2;
+break;
+default :
+current_damage=light_damage3;
+break;
+}
+drawDamage=true;
+}
+if (drawDamage) {
+facing90.set(facing);
+facing90.rotate(90).nor();
+current_damage.setOrigin(0,0);
+current_damage.setPosition(collisionCenter.x - (90 * facing.x) - (60 * facing90.x),collisionCenter.y - (90 * facing.y) - (60 * facing90.y));
+current_damage.setRotation(facing.angle());
+current_damage.setColor(1,1,1,MathUtils.random());
+current_damage.draw(spriteBatch);
+}
+}

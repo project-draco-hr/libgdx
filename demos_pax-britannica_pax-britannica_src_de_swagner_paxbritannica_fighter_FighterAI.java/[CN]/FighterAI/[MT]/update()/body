@@ -1,0 +1,34 @@
+{
+  boolean new_on_screen=Targeting.onScreen(fighter.collisionCenter);
+  if (on_screen && !new_on_screen || target == null || !target.alive || MathUtils.random() < 0.005f) {
+    retarget();
+  }
+  on_screen=new_on_screen;
+  if (target != null) {
+    to_target.set(target.collisionCenter.x - fighter.collisionCenter.x,target.collisionCenter.y - fighter.collisionCenter.y);
+    float dist_squared=to_target.dot(to_target);
+    if (running) {
+      boolean too_close=dist_squared < Math.pow(run_distance,2);
+      if (too_close) {
+        fighter.goAway(target.collisionCenter,true);
+      }
+ else {
+        fighter.thrust();
+      }
+      if (!fighter.isEmpty() && !too_close) {
+        running=false;
+      }
+    }
+ else {
+      fighter.goTowards(target.collisionCenter,true);
+      if (fighter.isReadyToShoot()) {
+        if (dist_squared <= shot_range * shot_range && to_target.dot(fighter.facing) > 0 && Math.pow(to_target.dot(fighter.facing),2) > 0.97 * dist_squared) {
+          fighter.shoot();
+        }
+      }
+      if (fighter.isEmpty()) {
+        running=true;
+      }
+    }
+  }
+}

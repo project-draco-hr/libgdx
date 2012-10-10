@@ -1,0 +1,44 @@
+{
+  Resources.getInstance().reInit();
+  GameInstance.getInstance().resetGame();
+  changeToScreen=-1;
+  backgroundFX=new BackgroundFXRenderer();
+  title=Resources.getInstance().title;
+  credits=Resources.getInstance().credits;
+  settings=Resources.getInstance().settings;
+  blackFade=Resources.getInstance().blackFade;
+  musicOnOff=Resources.getInstance().musicOnOff;
+  musicOnOff.setPosition(20,10);
+  musicOnOff.setColor(1,1,1,0.5f);
+  collisionMusic.set(new Vector3(musicOnOff.getVertices()[0],musicOnOff.getVertices()[1],-10),new Vector3(musicOnOff.getVertices()[10],musicOnOff.getVertices()[11],10));
+  help=Resources.getInstance().help;
+  help.setPosition(75,10);
+  help.setColor(1,1,1,0.5f);
+  collisionHelp.set(new Vector3(help.getVertices()[0],help.getVertices()[1],-10),new Vector3(help.getVertices()[10],help.getVertices()[11],10));
+  settings=Resources.getInstance().settings;
+  settings.setPosition(135,8);
+  settings.setColor(1,1,1,0.5f);
+  collisionSettings.set(new Vector3(settings.getVertices()[0],settings.getVertices()[1],-10),new Vector3(settings.getVertices()[10],settings.getVertices()[11],10));
+  p1=new FactorySelector(new Vector2(055f,150f),1);
+  p2=new FactorySelector(new Vector2(180f,150f),2);
+  p3=new FactorySelector(new Vector2(305f,150f),3);
+  p4=new FactorySelector(new Vector2(430f,150f),4);
+  countdown=new Countdown(new Vector2(380f,7f));
+  titleBatch=new SpriteBatch();
+  titleBatch.getProjectionMatrix().setToOrtho2D(0,0,800,480);
+  fadeBatch=new SpriteBatch();
+  fadeBatch.getProjectionMatrix().setToOrtho2D(0,0,2,2);
+  Preferences prefs=Gdx.app.getPreferences("paxbritannica");
+  if (prefs.getBoolean("music") == true) {
+    if (Resources.getInstance().music == null)     Resources.getInstance().reInit();
+    if (!Resources.getInstance().music.isPlaying()) {
+      Resources.getInstance().music.play();
+      Resources.getInstance().music.setLooping(true);
+    }
+    musicOnOff.setColor(1,1,1,0.5f);
+  }
+ else {
+    Resources.getInstance().music.stop();
+    musicOnOff.setColor(1,1,1,0.1f);
+  }
+}

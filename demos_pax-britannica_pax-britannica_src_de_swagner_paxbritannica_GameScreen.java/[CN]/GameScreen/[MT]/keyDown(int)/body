@@ -1,0 +1,37 @@
+{
+  if (keycode == Input.Keys.BACK) {
+    gameOver=true;
+    gameOverTimer=0;
+  }
+  if (keycode == Input.Keys.ESCAPE) {
+    gameOver=true;
+    gameOverTimer=0;
+  }
+  if (numPlayers > 0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size > 0) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(0)).button_held=true;
+    touchedP1=true;
+  }
+  if (numPlayers > 1 && keycode == Input.Keys.F && GameInstance.getInstance().factorys.size > 1) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(1)).button_held=true;
+    touchedP2=true;
+  }
+  if (numPlayers > 2 && keycode == Input.Keys.H && GameInstance.getInstance().factorys.size > 2) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(2)).button_held=true;
+    touchedP3=true;
+  }
+  if (numPlayers > 3 && keycode == Input.Keys.L && GameInstance.getInstance().factorys.size > 3) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(3)).button_held=true;
+    touchedP4=true;
+  }
+  if (GameInstance.getInstance().debugMode) {
+    if (keycode == Input.Keys.F8) {
+      try {
+        ScreenshotSaver.saveScreenshot("screenshot");
+      }
+ catch (      IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  return false;
+}

@@ -1,0 +1,13 @@
+{
+  picked=false;
+  cpuSelect=false;
+  playerSelect=false;
+  fade=0.2f;
+  fadeButton=0.0f;
+  pulse_time=0;
+  float pulse=(1 + MathUtils.cos((pulse_time / 180.f) * 2.f * MathUtils.PI)) / 2.f;
+  float color=fade * pulse + 1 * (1 - pulse);
+  this.setColor(color,color,color,1);
+  button.setColor(color,color,color,1);
+  cpuButton.setColor(color,color,color,1);
+}

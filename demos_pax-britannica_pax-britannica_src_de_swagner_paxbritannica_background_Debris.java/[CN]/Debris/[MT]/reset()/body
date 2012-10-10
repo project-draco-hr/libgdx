@@ -1,0 +1,16 @@
+{
+  SPEED=5.0f;
+  LIFETIME=MathUtils.random(8,12);
+  FADE_TIME=2;
+  random_direction=MathUtils.random(-360,360);
+  random_scale=MathUtils.random() * 0.75f + 0.5f;
+  random_speed=(MathUtils.random() * 2f) - 1f;
+  random_opacity=MathUtils.random() * 0.35f + 0.6f;
+  alive=true;
+  since_alive=0;
+  this.position=new Vector2(MathUtils.random(-100,800),MathUtils.random(-100,400));
+  facing=new Vector2(1,0);
+  this.setPosition(position.x,position.y);
+  this.facing.rotate(random_direction);
+  this.setScale(random_scale,random_scale);
+}

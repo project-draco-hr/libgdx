@@ -1,0 +1,14 @@
+{
+  if (ship instanceof FactoryProduction) {
+    explosionParticles.addBigExplosion(pos);
+  }
+ else   if (ship instanceof Bomber) {
+    explosionParticles.addMediumExplosion(pos);
+  }
+ else   if (ship instanceof Frigate) {
+    explosionParticles.addMediumExplosion(pos);
+  }
+ else {
+    explosionParticles.addSmallExplosion(pos);
+  }
+}

@@ -1,0 +1,7 @@
+{
+  if (shipType == 0)   return getNearestOfType(source,GameInstance.getInstance().fighters);
+ else   if (shipType == 3)   return getFactoryWithHighestHealth(source,GameInstance.getInstance().factorys);
+ else   if (shipType == 1)   return getNearestOfType(source,GameInstance.getInstance().bombers);
+ else   if (shipType == 2)   return getNearestOfType(source,GameInstance.getInstance().frigates);
+ else   return null;
+}

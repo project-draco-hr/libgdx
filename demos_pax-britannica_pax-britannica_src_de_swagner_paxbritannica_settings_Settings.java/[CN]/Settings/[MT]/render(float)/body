@@ -1,0 +1,100 @@
+{
+  time+=delta;
+  if (time < 1f)   return;
+  backgroundFX.render();
+  titleBatch.begin();
+  back.draw(titleBatch);
+  font.draw(titleBatch,"Difficulty",90,400);
+  font.draw(titleBatch,"Easy",130,360);
+  if (GameInstance.getInstance().difficultyConfig == 0) {
+    checkboxOn.setPosition(90,330);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(90,330);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"Medium",280,360);
+  if (GameInstance.getInstance().difficultyConfig == 1) {
+    checkboxOn.setPosition(240,330);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(240,330);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"Hard",440,360);
+  if (GameInstance.getInstance().difficultyConfig == 2) {
+    checkboxOn.setPosition(400,330);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(400,330);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"Factory Health",90,300);
+  font.draw(titleBatch,"Low",130,260);
+  if (GameInstance.getInstance().factoryHealthConfig == 0) {
+    checkboxOn.setPosition(90,230);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(90,230);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"Medium",280,260);
+  if (GameInstance.getInstance().factoryHealthConfig == 1) {
+    checkboxOn.setPosition(240,230);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(240,230);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"High",440,260);
+  if (GameInstance.getInstance().factoryHealthConfig == 2) {
+    checkboxOn.setPosition(400,230);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(400,230);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"AntiAliasing (only for fast devices)",90,200);
+  font.draw(titleBatch,"Off",130,160);
+  if (GameInstance.getInstance().antiAliasConfig == 0) {
+    checkboxOn.setPosition(90,130);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(90,130);
+    checkboxOff.draw(titleBatch);
+  }
+  font.draw(titleBatch,"On",280,160);
+  if (GameInstance.getInstance().antiAliasConfig == 1) {
+    checkboxOn.setPosition(240,130);
+    checkboxOn.draw(titleBatch);
+  }
+ else {
+    checkboxOff.setPosition(240,130);
+    checkboxOff.draw(titleBatch);
+  }
+  titleBatch.end();
+  if (!finished && fade > 0) {
+    fade=Math.max(fade - Gdx.graphics.getDeltaTime() / 2.f,0);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+  }
+  if (finished) {
+    fade=Math.min(fade + Gdx.graphics.getDeltaTime() / 2.f,1);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+    if (fade >= 1) {
+      game.setScreen(new MainMenu(game));
+    }
+  }
+}

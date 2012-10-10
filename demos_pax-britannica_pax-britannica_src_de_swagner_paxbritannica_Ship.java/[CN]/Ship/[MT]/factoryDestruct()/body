@@ -1,0 +1,19 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  if (deathCounter > 0) {
+    ((FactoryProduction)this).production.halt_production=true;
+    this.setColor(1,1,1,Math.min(1,opacity));
+    opacity-=1 * delta;
+    if (Math.floor(deathCounter) % nextExplosion == 0) {
+      GameInstance.getInstance().explode(this,randomPointOnShip());
+      nextExplosion=MathUtils.random(2,6);
+    }
+    deathCounter-=10 * delta;
+  }
+ else {
+    for (int i=1; i <= 10; ++i) {
+      GameInstance.getInstance().explode(this,randomPointOnShip());
+    }
+    alive=false;
+  }
+}

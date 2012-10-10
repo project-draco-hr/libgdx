@@ -1,0 +1,18 @@
+{
+  super();
+  this.position=position;
+  this.setPosition(position.x,position.y);
+  this.facing.rotate(random_direction);
+  this.setScale(random_scale,random_scale);
+switch (MathUtils.random(0,2)) {
+case 0:
+    this.set(Resources.getInstance().debrisSmall);
+  break;
+case 1:
+this.set(Resources.getInstance().debrisMed);
+break;
+default :
+this.set(Resources.getInstance().debrisLarge);
+break;
+}
+}

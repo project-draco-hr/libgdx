@@ -1,0 +1,27 @@
+{
+  bullet.facing.nor();
+  float offset=0;
+  if (ship instanceof FactoryProduction)   offset=50;
+  if (ship instanceof Frigate)   offset=20;
+  if (ship instanceof Bomber)   offset=10;
+  if (ship instanceof Fighter)   offset=10;
+  Vector2 pos=new Vector2().set(bullet.collisionCenter.x + (offset * bullet.facing.x),bullet.collisionCenter.y + (offset * bullet.facing.y));
+  Vector2 bullet_vel=new Vector2().set(bullet.velocity);
+  Vector2 bullet_dir;
+  if (bullet_vel.dot(bullet_vel) == 0) {
+    bullet_dir=new Vector2();
+  }
+ else {
+    bullet_dir=bullet_vel.nor();
+  }
+  Vector2 vel=new Vector2(bullet_dir.x * 1.5f,bullet_dir.y * 1.5f);
+  if (bullet instanceof Laser) {
+    laser_hit(pos,vel);
+  }
+ else   if (bullet instanceof Bomb) {
+    explosionParticles.addMediumExplosion(bullet.position);
+  }
+ else   if (bullet instanceof Missile) {
+    explosionParticles.addTinyExplosion(bullet.position);
+  }
+}

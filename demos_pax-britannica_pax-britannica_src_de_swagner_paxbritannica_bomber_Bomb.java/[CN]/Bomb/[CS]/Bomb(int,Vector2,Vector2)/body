@@ -1,0 +1,8 @@
+{
+  super(id,position,facing);
+  bulletSpeed=150;
+  this.velocity=new Vector2().set(facing).mul(bulletSpeed);
+  damage=300;
+  this.set(Resources.getInstance().bomb);
+  this.setOrigin(this.getWidth() / 2,this.getHeight() / 2);
+}

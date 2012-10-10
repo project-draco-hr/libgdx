@@ -1,0 +1,7 @@
+{
+  for (int i=1; i <= 10; ++i) {
+    random.set(MathUtils.cos((float)((MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random()))),(float)(MathUtils.sin(MathUtils.random() * MathUtils.PI * 2f) * Math.sqrt(MathUtils.random())));
+    particleVelocity.set(-velocity.x + random.x,-velocity.y + random.y);
+    addParticle(position,particleVelocity,1f,1);
+  }
+}

@@ -1,0 +1,4 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  facing.rotate(direction * turnSpeed * delta).nor();
+}

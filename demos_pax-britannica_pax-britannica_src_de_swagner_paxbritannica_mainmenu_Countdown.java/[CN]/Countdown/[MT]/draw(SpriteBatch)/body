@@ -1,0 +1,24 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  super.draw(spriteBatch);
+  if (cnt < 1) {
+    finished=true;
+    this.setColor(1,1,1,0);
+    return;
+  }
+  if (showed) {
+    fade=Math.min(fade + delta * 2.f,1);
+  }
+ else {
+    fade=Math.max(fade - delta * 2.f,0);
+  }
+  this.setColor(1,1,1,fade);
+  if (fade == 1) {
+    showed=!showed;
+  }
+  if (fade == 0) {
+    showed=!showed;
+    --cnt;
+    changeTexture(cnt);
+  }
+}

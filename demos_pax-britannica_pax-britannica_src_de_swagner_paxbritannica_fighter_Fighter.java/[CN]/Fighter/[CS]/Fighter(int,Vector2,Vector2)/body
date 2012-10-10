@@ -1,0 +1,21 @@
+{
+  super(id,position,facing);
+  turnSpeed=120f;
+  accel=120.0f;
+  hitPoints=40;
+switch (id) {
+case 1:
+    this.set(Resources.getInstance().fighterP1);
+  break;
+case 2:
+this.set(Resources.getInstance().fighterP2);
+break;
+case 3:
+this.set(Resources.getInstance().fighterP3);
+break;
+default :
+this.set(Resources.getInstance().fighterP4);
+break;
+}
+this.setOrigin(this.getWidth() / 2,this.getHeight() / 2);
+}

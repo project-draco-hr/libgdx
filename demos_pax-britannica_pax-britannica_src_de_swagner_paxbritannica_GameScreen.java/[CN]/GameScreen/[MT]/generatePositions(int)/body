@@ -1,0 +1,7 @@
+{
+  Array<Vector2> positions=new Array<Vector2>();
+  for (int i=1; i <= n; ++i) {
+    positions.add(new Vector2(MathUtils.cos(i / n),MathUtils.sin(i / n)).mul(200));
+  }
+  return positions;
+}

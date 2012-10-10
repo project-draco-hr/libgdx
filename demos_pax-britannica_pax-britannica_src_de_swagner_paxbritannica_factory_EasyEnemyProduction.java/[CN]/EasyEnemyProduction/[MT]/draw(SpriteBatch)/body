@@ -1,0 +1,14 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  super.draw(spriteBatch);
+  accumulated_frames+=30 * delta;
+  if (production.currentBuildingUnit != action && action > -1) {
+    button_held=true;
+  }
+ else {
+    button_held=false;
+    next_action();
+  }
+  thrust();
+  turn(1);
+}

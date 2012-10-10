@@ -1,0 +1,101 @@
+{
+  if (keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE) {
+    boolean exit=true;
+    if (p1.picked) {
+      p1.reset();
+      exit=false;
+    }
+    if (p2.picked) {
+      p2.reset();
+      exit=false;
+    }
+    if (p3.picked) {
+      p3.reset();
+      exit=false;
+    }
+    if (p4.picked) {
+      p4.reset();
+      exit=false;
+    }
+    if (exit) {
+      if (!(Gdx.app.getType() == ApplicationType.Applet)) {
+        Gdx.app.exit();
+      }
+    }
+  }
+  if (keycode == Input.Keys.A) {
+    if (!p1.picked) {
+      p1.picked=true;
+    }
+ else {
+      p1.playerSelect=true;
+      p1.cpuSelect=false;
+    }
+  }
+  if (keycode == Input.Keys.F) {
+    if (!p2.picked) {
+      p2.picked=true;
+    }
+ else {
+      p2.playerSelect=true;
+      p2.cpuSelect=false;
+    }
+  }
+  if (keycode == Input.Keys.H) {
+    if (!p3.picked) {
+      p3.picked=true;
+    }
+ else {
+      p3.playerSelect=true;
+      p3.cpuSelect=false;
+    }
+  }
+  if (keycode == Input.Keys.L) {
+    if (!p4.picked) {
+      p4.picked=true;
+    }
+ else {
+      p4.playerSelect=true;
+      p4.cpuSelect=false;
+    }
+  }
+  if (keycode == Input.Keys.M) {
+    if (cnt >= 1)     return false;
+    Preferences prefs=Gdx.app.getPreferences("paxbritannica");
+    prefs.putBoolean("music",!prefs.getBoolean("music"));
+    prefs.flush();
+    if (prefs.getBoolean("music")) {
+      if (Resources.getInstance().music == null)       Resources.getInstance().reInit();
+      if (!Resources.getInstance().music.isPlaying()) {
+        Resources.getInstance().music.play();
+        Resources.getInstance().music.setLooping(true);
+      }
+      musicOnOff.setColor(1,1,1,0.5f);
+    }
+ else {
+      Resources.getInstance().music.stop();
+      musicOnOff.setColor(1,1,1,0.1f);
+    }
+  }
+  if (keycode == Input.Keys.F1) {
+    if (cnt >= 1)     return false;
+    countdown.finished=true;
+    changeToScreen=0;
+  }
+  if (keycode == Input.Keys.S) {
+    if (cnt >= 1)     return false;
+    countdown.finished=true;
+    changeToScreen=1;
+  }
+  if (GameInstance.getInstance().debugMode) {
+    if (keycode == Input.Keys.F8) {
+      try {
+        ScreenshotSaver.saveScreenshot("screenshot");
+      }
+ catch (      IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+  return false;
+}

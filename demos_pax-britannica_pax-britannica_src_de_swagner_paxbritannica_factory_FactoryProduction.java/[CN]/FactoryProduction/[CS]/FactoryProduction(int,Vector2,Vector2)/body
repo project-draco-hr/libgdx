@@ -1,0 +1,38 @@
+{
+  super(id,position,facing);
+  turnSpeed=2.0f;
+  accel=5.0f;
+  if (GameInstance.getInstance().factoryHealthConfig == 0) {
+    hitPoints=25000;
+  }
+ else   if (GameInstance.getInstance().factoryHealthConfig == 1) {
+    hitPoints=45000;
+  }
+ else {
+    hitPoints=65000;
+  }
+  maxHitPoints=hitPoints;
+  velocity.set(facing.x,facing.y);
+switch (id) {
+case 1:
+    this.set(Resources.getInstance().factoryP1);
+  break;
+case 2:
+this.set(Resources.getInstance().factoryP2);
+break;
+case 3:
+this.set(Resources.getInstance().factoryP3);
+break;
+default :
+this.set(Resources.getInstance().factoryP4);
+break;
+}
+light_damage1.set(Resources.getInstance().factoryLightDamage1);
+light_damage2.set(Resources.getInstance().factoryLightDamage2);
+light_damage3.set(Resources.getInstance().factoryLightDamage3);
+heavy_damage1.set(Resources.getInstance().factoryHeavyDamage1);
+heavy_damage2.set(Resources.getInstance().factoryHeavyDamage2);
+heavy_damage3.set(Resources.getInstance().factoryHeavyDamage3);
+current_damage=light_damage1;
+this.setOrigin(this.getWidth() / 2,this.getHeight() / 2);
+}

@@ -1,0 +1,19 @@
+{
+  target=Targeting.getTypeInRange(missile,0,500);
+  if (target == null) {
+    target=Targeting.getTypeInRange(missile,1,500);
+  }
+ else   return;
+  if (target == null) {
+    target=Targeting.getTypeInRange(missile,2,500);
+  }
+ else   return;
+  if (target == null) {
+    target=Targeting.getNearestOfType(missile,1);
+  }
+ else   return;
+  if (target == null) {
+    target=Targeting.getNearestOfType(missile,3);
+  }
+ else   target=null;
+}

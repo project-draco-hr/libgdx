@@ -1,0 +1,33 @@
+{
+  this.factory=factory;
+  needle=Resources.getInstance().needle;
+  needle.setOrigin(needle.getHeight() / 2,needle.getWidth() / 2);
+  production1=Resources.getInstance().production1;
+  production1.setOrigin(production1.getHeight() / 2,production1.getWidth() / 2);
+  production2=Resources.getInstance().production2;
+  production2.setOrigin(production2.getHeight() / 2,production2.getWidth() / 2);
+  production3=Resources.getInstance().production3;
+  production3.setOrigin(production3.getHeight() / 2,production3.getWidth() / 2);
+  production_tile1=Resources.getInstance().production_tile1;
+  production_tile1.setOrigin(production_tile1.getHeight() / 2,production_tile1.getWidth() / 2);
+  production_tile2=Resources.getInstance().production_tile2;
+  production_tile2.setOrigin(production_tile2.getHeight() / 2,production_tile2.getWidth() / 2);
+  production_tile3=Resources.getInstance().production_tile3;
+  production_tile3.setOrigin(production_tile3.getHeight() / 2,production_tile3.getWidth() / 2);
+  production_tile4=Resources.getInstance().production_tile4;
+  production_tile4.setOrigin(production_tile4.getHeight() / 2,production_tile4.getWidth() / 2);
+  upgrade_outline=Resources.getInstance().upgradeOutline;
+  upgrade_outline.setOrigin(upgrade_outline.getHeight() / 2,upgrade_outline.getWidth() / 2);
+  frigate_outline=Resources.getInstance().frigateOutline;
+  frigate_outline.setOrigin(frigate_outline.getHeight() / 2,frigate_outline.getWidth() / 2);
+  bomber_outline=Resources.getInstance().bomberOutline;
+  bomber_outline.setOrigin(bomber_outline.getHeight() / 2,bomber_outline.getWidth() / 2);
+  fighter_outline=Resources.getInstance().fighterOutline;
+  fighter_outline.setOrigin(fighter_outline.getHeight() / 2,fighter_outline.getWidth() / 2);
+  health_none=Resources.getInstance().healthNone;
+  health_none.setOrigin(health_none.getHeight() / 2,health_none.getWidth() / 2);
+  health_some=Resources.getInstance().healthSome;
+  health_some.setOrigin(health_some.getHeight() / 2,health_some.getWidth() / 2);
+  health_full=Resources.getInstance().healthFull;
+  health_full.setOrigin(health_full.getHeight() / 2,health_full.getWidth() / 2);
+}

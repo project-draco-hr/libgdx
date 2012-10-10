@@ -1,0 +1,7 @@
+{
+  if (particles.size > maxParticle)   return;
+  if (Gdx.graphics.getFramesPerSecond() < 25 && !(this instanceof ExplosionParticleEmitter))   return;
+  Particle particle=freeParticles.obtain();
+  particle.setup(position,velocity,life,scale);
+  particles.add(particle);
+}

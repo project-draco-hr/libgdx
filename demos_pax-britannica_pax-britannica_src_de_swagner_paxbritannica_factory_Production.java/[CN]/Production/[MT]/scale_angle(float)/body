@@ -1,0 +1,16 @@
+{
+  float angle=0;
+  if (frames < fighterCost) {
+    angle=0.25f;
+  }
+ else   if (frames < bomberCost) {
+    angle=(frames - fighterCost) / (bomberCost - fighterCost) * 0.25f + 0.25f;
+  }
+ else   if (frames < frigateCost) {
+    angle=(frames - bomberCost) / (frigateCost - bomberCost) * 0.25f + 0.5f;
+  }
+ else {
+    angle=(frames - frigateCost) / (upgradeCost - frigateCost) * 0.25f + 0.75f;
+  }
+  return Math.min(angle - 0.25f,1);
+}

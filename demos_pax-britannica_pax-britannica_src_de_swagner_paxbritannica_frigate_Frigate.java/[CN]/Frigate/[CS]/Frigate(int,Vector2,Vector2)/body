@@ -1,0 +1,21 @@
+{
+  super(id,position,facing);
+  turnSpeed=20f;
+  accel=14.0f;
+  hitPoints=2000;
+switch (id) {
+case 1:
+    this.set(Resources.getInstance().frigateP1);
+  break;
+case 2:
+this.set(Resources.getInstance().frigateP2);
+break;
+case 3:
+this.set(Resources.getInstance().frigateP3);
+break;
+default :
+this.set(Resources.getInstance().frigateP4);
+break;
+}
+this.setOrigin(this.getWidth() / 2,this.getHeight() / 2);
+}

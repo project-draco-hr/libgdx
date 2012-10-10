@@ -1,0 +1,13 @@
+{
+  if (alive == false)   return;
+  if (!Targeting.onScreen(collisionCenter,buffer)) {
+    alive=false;
+  }
+ else   if (velocity.len() <= 5) {
+    alive=false;
+    GameInstance.getInstance().explosionParticles.addTinyExplosion(collisionCenter);
+  }
+ else {
+    super.draw(spriteBatch);
+  }
+}

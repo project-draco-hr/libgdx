@@ -1,0 +1,28 @@
+{
+  Ship closestShip=null;
+  float closestDistanze=Float.MAX_VALUE;
+  for (int i=0; i < ships.size; i++) {
+    Ship ship=ships.get(i);
+    float currentDistance=source.collisionCenter.dst(ship.collisionCenter);
+    if (ship.alive && source.id != ship.id && onScreen(ship.collisionCenter) && (currentDistance < closestDistanze)) {
+      if (ship instanceof Fighter) {
+        if (((Fighter)ship).ai.target != null && ((Fighter)ship).ai.target.id != source.id) {
+          continue;
+        }
+      }
+      if (ship instanceof Bomber) {
+        if (((Bomber)ship).ai.target != null && ((Bomber)ship).ai.target.id != source.id) {
+          continue;
+        }
+      }
+      if (ship instanceof Frigate) {
+        if (((Frigate)ship).ai.target != null && ((Frigate)ship).ai.target.id != source.id) {
+          continue;
+        }
+      }
+      closestShip=ship;
+      closestDistanze=currentDistance;
+    }
+  }
+  return closestShip;
+}

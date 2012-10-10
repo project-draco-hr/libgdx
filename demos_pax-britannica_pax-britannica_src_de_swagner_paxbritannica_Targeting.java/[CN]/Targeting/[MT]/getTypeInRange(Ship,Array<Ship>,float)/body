@@ -1,0 +1,17 @@
+{
+  Array<Ship> shipsInRange=new Array<Ship>();
+  float range_squared=range * range;
+  for (int i=0; i < ships.size; i++) {
+    Ship ship=ships.get(i);
+    float currentDistance=source.collisionCenter.dst(ship.collisionCenter);
+    if (ship.alive && source.id != ship.id && onScreen(ship.collisionCenter) && (currentDistance < range_squared)) {
+      shipsInRange.add(ship);
+    }
+  }
+  if (shipsInRange.size > 0) {
+    return shipsInRange.get(MathUtils.random(0,shipsInRange.size - 1));
+  }
+ else {
+    return null;
+  }
+}

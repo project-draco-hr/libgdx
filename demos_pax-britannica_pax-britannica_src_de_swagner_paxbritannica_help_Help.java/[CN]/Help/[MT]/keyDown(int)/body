@@ -1,0 +1,9 @@
+{
+  if (keycode == Input.Keys.BACK) {
+    finished=true;
+  }
+  if (keycode == Input.Keys.ESCAPE) {
+    finished=true;
+  }
+  return false;
+}

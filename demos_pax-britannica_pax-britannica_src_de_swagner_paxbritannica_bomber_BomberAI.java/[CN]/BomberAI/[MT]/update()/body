@@ -1,0 +1,55 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  if (target == null || !target.alive || MathUtils.random() < 0.005f) {
+    Ship old_target=target;
+    retarget();
+    if (old_target != null && target != null && old_target.id != target.id) {
+      reviseApproach();
+    }
+  }
+  if (target != null) {
+    float target_distance=target.collisionCenter.dst(bomber.collisionCenter);
+    target_direction.set(target.collisionCenter).sub(bomber.collisionCenter).nor();
+    float unit_factor;
+    if (target instanceof Frigate) {
+      unit_factor=0.6f;
+    }
+ else {
+      unit_factor=1;
+    }
+    if (target_distance > (APPROACH_DISTANCE + 50) * unit_factor) {
+      state=0;
+    }
+    if (state == 0) {
+      bomber.goTowards(target.collisionCenter,true);
+      if (target_distance < APPROACH_DISTANCE * unit_factor) {
+        reviseApproach();
+        state=1;
+      }
+    }
+ else     if (state == 1) {
+      bomber.turn(-approach_sign);
+      bomber.thrust(unit_factor * 0.75f);
+      if (target_direction.dot(bomber.facing) < 0.5f) {
+        state=2;
+      }
+    }
+ else     if (state == 2) {
+      bomber.turn(approach_sign * 0.05f);
+      bomber.thrust(unit_factor * 0.75f);
+      cooldown_timer-=delta;
+      if (cooldown_timer <= 0) {
+        bomber.shoot(approach_sign);
+        cooldown_timer=COOLDOWN_DURATION;
+        shots_counter-=1;
+        if (shots_counter == 0) {
+          shots_counter=MAX_SHOTS;
+          state=3;
+        }
+      }
+    }
+ else     if (state == 3) {
+      bomber.goAway(target.collisionCenter,true);
+    }
+  }
+}

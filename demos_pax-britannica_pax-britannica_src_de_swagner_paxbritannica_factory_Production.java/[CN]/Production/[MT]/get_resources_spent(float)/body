@@ -1,0 +1,19 @@
+{
+  float spent=0;
+  if (frames < fighterCost) {
+    spent=0;
+  }
+ else   if (frames < bomberCost) {
+    spent=fighterCost;
+  }
+ else   if (frames < frigateCost) {
+    spent=bomberCost;
+  }
+ else   if (frames < upgradeCost) {
+    spent=frigateCost;
+  }
+ else {
+    spent=upgradeCost;
+  }
+  return spent;
+}

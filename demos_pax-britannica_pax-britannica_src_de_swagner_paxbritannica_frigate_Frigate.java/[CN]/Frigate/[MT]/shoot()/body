@@ -1,0 +1,7 @@
+{
+  if (cooldown == 0 && shots >= 1) {
+    shots-=1;
+    cooldown=shotCooldownTime;
+    GameInstance.getInstance().bullets.add(new Missile(id,collisionCenter,facing));
+  }
+}
