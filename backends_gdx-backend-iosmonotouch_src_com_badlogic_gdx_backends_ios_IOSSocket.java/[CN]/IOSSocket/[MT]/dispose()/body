@@ -1,0 +1,19 @@
+{
+  if (client != null) {
+    try {
+      stream.Close();
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Error closing stream.",e);
+    }
+    stream=null;
+    try {
+      client.Close();
+      client.Dispose();
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Error closing socket.",e);
+    }
+    client=null;
+  }
+}

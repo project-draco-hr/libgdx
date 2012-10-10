@@ -1,4 +1,5 @@
 {
+  if (blendingDisabled)   return;
   renderMesh();
   blendingDisabled=true;
 }

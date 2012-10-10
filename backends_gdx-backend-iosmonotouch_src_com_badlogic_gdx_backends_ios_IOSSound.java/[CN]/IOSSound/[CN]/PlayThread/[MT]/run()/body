@@ -1,0 +1,29 @@
+{
+  Gdx.app.debug("IOSSound","Sound player is running.");
+  Thread playThread;
+synchronized (IOSSound.sync) {
+    playThread=IOSSound.playThread;
+  }
+  List<AVAudioPlayer> playQueueCopy=new ArrayList<AVAudioPlayer>(64);
+  Thread currentThread=Thread.currentThread();
+  while (currentThread == playThread) {
+synchronized (IOSSound.sync) {
+      playQueueCopy.addAll(playQueue);
+      playQueue.clear();
+    }
+    for (int i=0; i < playQueueCopy.size(); i++) {
+      playQueueCopy.get(i).Play();
+    }
+    playQueueCopy.clear();
+    try {
+      Thread.sleep(5);
+    }
+ catch (    InterruptedException e) {
+      Gdx.app.error("IOSSound","Error in sound player thread.",e);
+    }
+synchronized (IOSSound.sync) {
+      playThread=IOSSound.playThread;
+    }
+  }
+  Gdx.app.debug("IOSSound","Sound player is disposed.");
+}
