@@ -1,4 +1,4 @@
 {
   super.OnResize(event);
-  Gdx.app.error("IOSGraphics","OnResize(...) is not implement.");
+  Gdx.app.debug("IOSGraphics","iOS OnResize(...) is not implement (don't think it is needed?).");
 }

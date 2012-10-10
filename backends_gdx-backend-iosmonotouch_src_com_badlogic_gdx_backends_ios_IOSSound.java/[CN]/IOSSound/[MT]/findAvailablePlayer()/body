@@ -1,6 +1,8 @@
 {
   for (int i=0; i < players.length; i++) {
-    if (!players[i].get_Playing()) {
+    int index=(playerIndex + i) % players.length;
+    if (!players[index].get_Playing()) {
+      playerIndex=(index + 1) % players.length;
       return i;
     }
   }

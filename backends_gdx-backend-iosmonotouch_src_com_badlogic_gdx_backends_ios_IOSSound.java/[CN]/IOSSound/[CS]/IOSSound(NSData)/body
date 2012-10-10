@@ -7,4 +7,13 @@
       throw new GdxRuntimeException("Error creating audio player (index: " + i + "): "+ error[0].ToString());
     }
   }
+  playerIndex=0;
+synchronized (sync) {
+    soundCounter++;
+    if (playThread == null) {
+      playThread=new PlayThread();
+      playThread.setPriority(Thread.MIN_PRIORITY);
+      playThread.start();
+    }
+  }
 }
