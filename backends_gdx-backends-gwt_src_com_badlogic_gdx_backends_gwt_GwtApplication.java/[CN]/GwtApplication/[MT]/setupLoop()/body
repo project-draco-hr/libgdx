@@ -38,12 +38,10 @@
           lastHeight=graphics.getHeight();
           Gdx.gl.glViewport(0,0,lastWidth,lastHeight);
         }
-        runnablesHelper.addAll(runnables);
-        runnables.clear();
-        for (int i=0; i < runnablesHelper.size; i++) {
-          runnablesHelper.get(i).run();
+        for (int i=0; i < runnables.size; i++) {
+          runnables.get(i).run();
         }
-        runnablesHelper.clear();
+        runnables.clear();
         listener.render();
         input.justTouched=false;
       }
