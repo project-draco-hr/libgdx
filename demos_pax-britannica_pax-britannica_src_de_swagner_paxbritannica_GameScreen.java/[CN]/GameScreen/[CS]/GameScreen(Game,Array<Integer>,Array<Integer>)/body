@@ -105,7 +105,6 @@
   stouchAreaP2.setRotation(90);
   gameBatch=new SpriteBatch();
   gameBatch.getProjectionMatrix().set(cam.combined);
-  font=new BitmapFont();
   int currentPos=0;
   for (int i=0; i < playerList.size; ++i) {
     Vector2 temp1=new Vector2(POSITIONS.get(currentPos).x,POSITIONS.get(currentPos).y);
