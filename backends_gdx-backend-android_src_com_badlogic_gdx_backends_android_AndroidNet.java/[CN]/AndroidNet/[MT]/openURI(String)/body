@@ -1,0 +1,9 @@
+{
+  final Uri uri=Uri.parse(URI);
+  app.runOnUiThread(new Runnable(){
+    @Override public void run(){
+      app.startActivity(new Intent(Intent.ACTION_VIEW,uri));
+    }
+  }
+);
+}
