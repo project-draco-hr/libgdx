@@ -1,4 +1,4 @@
 {
   long cPtr=gdxBulletJNI.gContactAddedCallback_get();
-  return (cPtr == 0) ? null : new SWIGTYPE_p_f_r_btManifoldPoint_p_q_const__btCollisionObject_int_int_p_q_const__btCollisionObject_int_int__bool(cPtr,false);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_f_r_btManifoldPoint_p_q_const__btCollisionObjectWrapper_int_int_p_q_const__btCollisionObjectWrapper_int_int__bool(cPtr,false);
 }
