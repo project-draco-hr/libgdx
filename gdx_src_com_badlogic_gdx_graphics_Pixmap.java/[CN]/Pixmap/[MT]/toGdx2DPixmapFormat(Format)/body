@@ -6,6 +6,5 @@
   if (format == RGBA4444)   return Gdx2DPixmap.GDX2D_FORMAT_RGBA4444;
   if (format == RGB888)   return Gdx2DPixmap.GDX2D_FORMAT_RGB888;
   if (format == RGBA8888)   return Gdx2DPixmap.GDX2D_FORMAT_RGBA8888;
-  if (format == Float)   return Gdx2DPixmap.GDX2D_FORMAT_RGBA8888;
   throw new GdxRuntimeException("Unknown Format: " + format);
 }

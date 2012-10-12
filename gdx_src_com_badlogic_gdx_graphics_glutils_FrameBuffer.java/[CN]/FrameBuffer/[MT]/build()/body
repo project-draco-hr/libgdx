@@ -12,9 +12,7 @@
       defaultFramebufferHandle=0;
     }
   }
-  colorTexture=new Texture(width,height,format);
-  colorTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
-  colorTexture.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  setupTexture();
   IntBuffer handle=BufferUtils.newIntBuffer(1);
   gl.glGenFramebuffers(1,handle);
   framebufferHandle=handle.get(0);
