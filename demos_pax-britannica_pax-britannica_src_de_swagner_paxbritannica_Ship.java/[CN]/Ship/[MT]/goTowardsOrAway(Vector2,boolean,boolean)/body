@@ -1,0 +1,15 @@
+{
+  Vector2 target_direction=targetPos.tmp().sub(collisionCenter);
+  if (isAway) {
+    target_direction.mul(-1);
+  }
+  if (facing.crs(target_direction) > 0) {
+    turn(1);
+  }
+ else {
+    turn(-1);
+  }
+  if (forceThrust || facing.dot(target_direction) > 0) {
+    thrust();
+  }
+}

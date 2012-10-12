@@ -1,0 +1,13 @@
+{
+  Ship closestShip=null;
+  float highestHealth=Float.MIN_VALUE;
+  for (int i=0; i < ships.size; i++) {
+    Ship ship=ships.get(i);
+    float currentHealth=ship.hitPoints + (((FactoryProduction)ship).harvestRate * 500);
+    if (ship.alive && source.id != ship.id && onScreen(ship.collisionCenter) && (currentHealth > highestHealth)) {
+      closestShip=ship;
+      highestHealth=currentHealth;
+    }
+  }
+  return closestShip;
+}

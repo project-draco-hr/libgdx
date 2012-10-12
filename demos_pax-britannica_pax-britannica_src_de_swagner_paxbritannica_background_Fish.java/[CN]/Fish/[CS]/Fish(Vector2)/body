@@ -1,0 +1,36 @@
+{
+  super();
+  this.position=position;
+  this.setPosition(position.x,position.y);
+  this.setRotation(random_direction);
+  this.setScale(random_scale,random_scale);
+switch (MathUtils.random(0,7)) {
+case 0:
+    this.set(Resources.getInstance().fish1);
+  break;
+case 1:
+this.set(Resources.getInstance().fish2);
+break;
+case 2:
+this.set(Resources.getInstance().fish3);
+break;
+case 3:
+this.set(Resources.getInstance().fish4);
+break;
+case 4:
+this.set(Resources.getInstance().fish5);
+break;
+case 5:
+this.set(Resources.getInstance().fish6);
+break;
+case 6:
+this.set(Resources.getInstance().fish7);
+break;
+default :
+this.set(Resources.getInstance().fish8);
+break;
+}
+if (random_direction == -1) {
+flip(true,false);
+}
+}

@@ -1,0 +1,25 @@
+{
+  if (factory.button_held) {
+    if (potential_cost == 0 && factory.resourceAmount >= potential_cost) {
+      potential_cost=fighterCost;
+    }
+    if (factory.resourceAmount > potential_cost + (BUILDING_SPEED * Gdx.graphics.getDeltaTime()) - 1) {
+      potential_cost+=BUILDING_SPEED * Gdx.graphics.getDeltaTime();
+    }
+  }
+ else {
+    if (potential_cost > upgradeCost) {
+      spawn(4);
+    }
+ else     if (potential_cost > frigateCost) {
+      spawn(3);
+    }
+ else     if (potential_cost > bomberCost) {
+      spawn(2);
+    }
+ else     if (potential_cost > fighterCost) {
+      spawn(1);
+    }
+    potential_cost=0;
+  }
+}

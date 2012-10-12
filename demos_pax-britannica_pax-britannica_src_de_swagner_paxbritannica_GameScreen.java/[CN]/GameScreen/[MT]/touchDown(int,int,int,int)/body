@@ -1,0 +1,24 @@
+{
+  collisionRay=cam.getPickRay(x,y);
+  if (numPlayers > 0 && Intersector.intersectRayBoundsFast(collisionRay,touchAreaP1) && GameInstance.getInstance().factorys.size > 0) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(0)).button_held=true;
+    pointerP1=pointer;
+    touchedP1=true;
+  }
+  if (numPlayers > 1 && Intersector.intersectRayBoundsFast(collisionRay,touchAreaP2) && GameInstance.getInstance().factorys.size > 1) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(1)).button_held=true;
+    pointerP2=pointer;
+    touchedP2=true;
+  }
+  if (numPlayers > 2 && Intersector.intersectRayBoundsFast(collisionRay,touchAreaP3) && GameInstance.getInstance().factorys.size > 2) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(2)).button_held=true;
+    pointerP3=pointer;
+    touchedP3=true;
+  }
+  if (numPlayers > 3 && Intersector.intersectRayBoundsFast(collisionRay,touchAreaP4) && GameInstance.getInstance().factorys.size > 3) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(3)).button_held=true;
+    pointerP4=pointer;
+    touchedP4=true;
+  }
+  return false;
+}

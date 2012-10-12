@@ -1,0 +1,20 @@
+{
+  collisionRay=cam.getPickRay(x,y);
+  if (numPlayers > 0 && pointer == pointerP1 && GameInstance.getInstance().factorys.size > 0) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(0)).button_held=false;
+    pointerP1=-1;
+  }
+  if (numPlayers > 1 && pointer == pointerP2 && GameInstance.getInstance().factorys.size > 1) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(1)).button_held=false;
+    pointerP2=-1;
+  }
+  if (numPlayers > 2 && pointer == pointerP3 && GameInstance.getInstance().factorys.size > 1) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(2)).button_held=false;
+    pointerP3=-1;
+  }
+  if (numPlayers > 3 && pointer == pointerP4 && GameInstance.getInstance().factorys.size > 1) {
+    ((FactoryProduction)GameInstance.getInstance().factorys.get(3)).button_held=false;
+    pointerP4=-1;
+  }
+  return false;
+}

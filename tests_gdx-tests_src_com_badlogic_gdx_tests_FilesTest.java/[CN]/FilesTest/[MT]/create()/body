@@ -1,5 +1,5 @@
 {
-  font=new BitmapFont();
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   batch=new SpriteBatch();
   if (Gdx.files.isExternalStorageAvailable()) {
     message+="External storage available\n";

@@ -1,0 +1,7 @@
+{
+  if (shipType == 0)   return getTypeInRange(source,GameInstance.getInstance().fighters,range);
+ else   if (shipType == 3)   return getTypeInRange(source,GameInstance.getInstance().factorys,range);
+ else   if (shipType == 1)   return getTypeInRange(source,GameInstance.getInstance().bombers,range);
+ else   if (shipType == 2)   return getTypeInRange(source,GameInstance.getInstance().frigates,range);
+ else   return null;
+}

@@ -1,0 +1,23 @@
+{
+  backgroundBatch.begin();
+  background.draw(backgroundBatch);
+  backgroundBatch.end();
+  backgroundFXBatch.begin();
+  for (  Debris debris : debrises) {
+    if (debris.alive) {
+      debris.draw(backgroundFXBatch);
+    }
+ else {
+      debris.reset();
+    }
+  }
+  for (  Fish fish : fishes) {
+    if (fish.alive) {
+      fish.draw(backgroundFXBatch);
+    }
+ else {
+      fish.reset();
+    }
+  }
+  backgroundFXBatch.end();
+}

@@ -1,0 +1,12 @@
+{
+  target=Targeting.getNearestOfType(fighter,1);
+  if (target == null) {
+    target=Targeting.getNearestOfType(fighter,0);
+  }
+  if (target == null) {
+    target=Targeting.getNearestOfType(fighter,2);
+  }
+  if (target == null) {
+    target=Targeting.getNearestOfType(fighter,3);
+  }
+}

@@ -1,0 +1,37 @@
+{
+  super();
+  this.position=position;
+  this.setPosition(position.x,position.y);
+switch (id) {
+case 1:
+    this.set(Resources.getInstance().factoryP1);
+  break;
+case 2:
+this.set(Resources.getInstance().factoryP2);
+break;
+case 3:
+this.set(Resources.getInstance().factoryP3);
+break;
+default :
+this.set(Resources.getInstance().factoryP4);
+break;
+}
+setRotation(90);
+this.setPosition(position.x,position.y);
+this.setColor(0,0,0,1);
+button=new Sprite(Resources.getInstance().aButton);
+button.setPosition(position.x + 70f,position.y + 35.f);
+aCpuButton=new Sprite(Resources.getInstance().aCpuButton);
+aCpuButton.setPosition(position.x + 70f,position.y + 35.f);
+aPlayerButton=new Sprite(Resources.getInstance().aPlayerButton);
+aPlayerButton.setPosition(position.x + 70f,position.y + 35.f);
+cpuButton=new Sprite(Resources.getInstance().cpuButton);
+cpuButton.setPosition(position.x + 30f,position.y - 0.f);
+playerButton=new Sprite(Resources.getInstance().playerButton);
+playerButton.setPosition(position.x + 30f,position.y + 70.f);
+float pulse=(1 + MathUtils.cos((pulse_time / 180.f) * 2.f * MathUtils.PI)) / 2.f;
+float color=fade * pulse + 1 * (1 - pulse);
+this.setColor(color,color,color,1);
+button.setColor(color,color,color,1);
+cpuButton.setColor(color,color,color,1);
+}

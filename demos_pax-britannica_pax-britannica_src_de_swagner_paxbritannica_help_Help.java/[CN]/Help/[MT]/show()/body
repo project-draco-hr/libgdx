@@ -1,0 +1,22 @@
+{
+  GameInstance.getInstance().resetGame();
+  blackFade=Resources.getInstance().blackFade;
+  back=Resources.getInstance().back;
+  back.setPosition(20,010);
+  back.setColor(1,1,1,0.5f);
+  collisionBack.set(new Vector3(back.getVertices()[0],back.getVertices()[1],-10),new Vector3(back.getVertices()[10],back.getVertices()[11],10));
+  fighter=Resources.getInstance().fighterOutline;
+  fighter.setRotation(0);
+  bomber=Resources.getInstance().bomberOutline;
+  bomber.setRotation(0);
+  frigate=Resources.getInstance().frigateOutline;
+  frigate.setRotation(0);
+  upgrade=Resources.getInstance().upgradeOutline;
+  upgrade.setRotation(0);
+  titleBatch=new SpriteBatch();
+  titleBatch.getProjectionMatrix().setToOrtho2D(0,0,800,480);
+  fadeBatch=new SpriteBatch();
+  fadeBatch.getProjectionMatrix().setToOrtho2D(0,0,2,2);
+  font=new BitmapFont();
+  font.getRegion().getTexture().setFilter(TextureFilter.Linear,TextureFilter.Linear);
+}

@@ -1,0 +1,18 @@
+{
+  SPEED=0.2f;
+  LIFETIME=MathUtils.random(8,12);
+  FADE_TIME=2;
+  random_direction=MathUtils.random() < 0.5f ? 1 : -1;
+  random_scale=MathUtils.random() * 0.75f + 0.2f;
+  random_speed=MathUtils.random() + 0.5f;
+  random_opacity=MathUtils.random() * 0.1f + 0.1f;
+  alive=true;
+  since_alive=0;
+  this.position=new Vector2(MathUtils.random(-100,800),MathUtils.random(-100,400));
+  if (random_direction == -1) {
+    flip(true,false);
+  }
+  this.setPosition(position.x,position.y);
+  this.setRotation(random_direction);
+  this.setScale(random_scale,random_scale);
+}

@@ -1,0 +1,114 @@
+{
+  delta=Math.min(0.06f,delta);
+  backgroundFX.render();
+  Collision.collisionCheck();
+  gameBatch.begin();
+  GameInstance.getInstance().bubbleParticles.draw(gameBatch);
+  GameInstance.getInstance().bigBubbleParticles.draw(gameBatch);
+  for (  Ship ship : GameInstance.getInstance().factorys) {
+    if (ship.alive) {
+      ship.draw(gameBatch);
+    }
+ else {
+      GameInstance.getInstance().factorys.removeValue(ship,true);
+      if (GameInstance.getInstance().factorys.size < 2)       gameOver=true;
+    }
+  }
+  for (  Ship ship : GameInstance.getInstance().frigates) {
+    if (ship.alive) {
+      ship.draw(gameBatch);
+    }
+ else {
+      GameInstance.getInstance().frigates.removeValue(ship,true);
+    }
+  }
+  for (  Ship ship : GameInstance.getInstance().bombers) {
+    if (ship.alive) {
+      ship.draw(gameBatch);
+    }
+ else {
+      GameInstance.getInstance().bombers.removeValue(ship,true);
+    }
+  }
+  for (  Ship ship : GameInstance.getInstance().fighters) {
+    if (ship.alive) {
+      ship.draw(gameBatch);
+    }
+ else {
+      GameInstance.getInstance().fighters.removeValue(ship,true);
+    }
+  }
+  for (  Ship ship : GameInstance.getInstance().bullets) {
+    if (ship.alive) {
+      ship.draw(gameBatch);
+    }
+ else {
+      GameInstance.getInstance().bullets.removeValue((Bullet)ship,true);
+    }
+  }
+  GameInstance.getInstance().sparkParticles.draw(gameBatch);
+  GameInstance.getInstance().explosionParticles.draw(gameBatch);
+  gameBatch.end();
+  if (numPlayers > 0 && touchedP1) {
+    touchFadeP1=Math.max(touchFadeP1 - delta / 2.f,0);
+  }
+  if (numPlayers > 0 && (!touchedP1 || touchFadeP1 > 0)) {
+    gameBatch.begin();
+    stouchAreaP1.setColor(stouchAreaP1.getColor().r,stouchAreaP1.getColor().g,stouchAreaP1.getColor().b,touchFadeP1);
+    stouchAreaP1.draw(gameBatch);
+    p1.setColor(p1.getColor().r,p1.getColor().g,p1.getColor().b,touchFadeP1);
+    p1.draw(gameBatch);
+    gameBatch.end();
+  }
+  if (numPlayers > 1 && touchedP2) {
+    touchFadeP2=Math.max(touchFadeP2 - delta / 2.f,0);
+  }
+  if (numPlayers > 1 && (!touchedP2 || touchFadeP2 > 0)) {
+    gameBatch.begin();
+    stouchAreaP2.setColor(stouchAreaP2.getColor().r,stouchAreaP2.getColor().g,stouchAreaP2.getColor().b,touchFadeP2);
+    stouchAreaP2.draw(gameBatch);
+    p2.setColor(p2.getColor().r,p2.getColor().g,p2.getColor().b,touchFadeP2);
+    p2.draw(gameBatch);
+    gameBatch.end();
+  }
+  if (numPlayers > 2 && touchedP3) {
+    touchFadeP3=Math.max(touchFadeP3 - delta / 2.f,0);
+  }
+  if (numPlayers > 2 && (!touchedP3 || touchFadeP3 > 0)) {
+    gameBatch.begin();
+    stouchAreaP3.setColor(stouchAreaP3.getColor().r,stouchAreaP3.getColor().g,stouchAreaP3.getColor().b,touchFadeP3);
+    stouchAreaP3.draw(gameBatch);
+    p3.setColor(p3.getColor().r,p3.getColor().g,p3.getColor().b,touchFadeP3);
+    p3.draw(gameBatch);
+    gameBatch.end();
+  }
+  if (numPlayers > 3 && touchedP4) {
+    touchFadeP4=Math.max(touchFadeP4 - delta / 2.f,0);
+  }
+  if (numPlayers > 3 && (!touchedP4 || touchFadeP4 > 0)) {
+    gameBatch.begin();
+    stouchAreaP4.setColor(stouchAreaP4.getColor().r,stouchAreaP4.getColor().g,stouchAreaP4.getColor().b,touchFadeP4);
+    stouchAreaP4.draw(gameBatch);
+    p4.setColor(p4.getColor().r,p4.getColor().g,p4.getColor().b,touchFadeP4);
+    p4.draw(gameBatch);
+    gameBatch.end();
+  }
+  if (!gameOver && fade > 0 && fade < 100) {
+    fade=Math.max(fade - delta / 2.f,0);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+  }
+  if (gameOver) {
+    gameOverTimer-=delta;
+  }
+  if (gameOver && gameOverTimer <= 0) {
+    fade=Math.min(fade + delta / 2.f,1);
+    fadeBatch.begin();
+    blackFade.setColor(blackFade.getColor().r,blackFade.getColor().g,blackFade.getColor().b,fade);
+    blackFade.draw(fadeBatch);
+    fadeBatch.end();
+    if (fade >= 1)     game.setScreen(new MainMenu(game));
+  }
+}

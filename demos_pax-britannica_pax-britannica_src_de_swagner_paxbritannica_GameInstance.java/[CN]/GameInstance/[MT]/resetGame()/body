@@ -1,0 +1,19 @@
+{
+  fighters.clear();
+  factorys.clear();
+  bombers.clear();
+  frigates.clear();
+  bullets.clear();
+  bubbleParticles.dispose();
+  bigBubbleParticles.dispose();
+  sparkParticles.dispose();
+  explosionParticles.dispose();
+  bubbleParticles=new BubbleParticleEmitter();
+  bigBubbleParticles=new BigBubbleParticleEmitter();
+  sparkParticles=new SparkParticleEmitter();
+  explosionParticles=new ExplosionParticleEmitter();
+  Preferences prefs=Gdx.app.getPreferences("paxbritannica");
+  GameInstance.getInstance().difficultyConfig=prefs.getInteger("difficulty",0);
+  GameInstance.getInstance().factoryHealthConfig=prefs.getInteger("factoryHealth",0);
+  GameInstance.getInstance().antiAliasConfig=prefs.getInteger("antiAliasConfig",1);
+}

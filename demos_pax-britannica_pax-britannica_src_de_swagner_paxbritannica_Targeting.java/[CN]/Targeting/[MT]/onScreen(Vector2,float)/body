@@ -1,0 +1,3 @@
+{
+  return position.x >= Constants.screenLeft - buffer && position.x <= Constants.screenRight + buffer && position.y >= Constants.screenBottom - buffer && position.y <= Constants.screenTop + buffer;
+}

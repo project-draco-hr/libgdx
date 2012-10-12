@@ -1,0 +1,4 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  velocity.add(facing.x * accel * delta,facing.y * accel * amount* delta);
+}

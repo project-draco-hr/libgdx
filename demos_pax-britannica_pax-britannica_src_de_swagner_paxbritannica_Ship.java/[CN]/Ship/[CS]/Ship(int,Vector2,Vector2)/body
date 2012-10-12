@@ -1,0 +1,12 @@
+{
+  super();
+  this.id=id;
+  this.position.set(position);
+  this.facing.set(facing);
+  collisionPoints.clear();
+  collisionPoints.add(new Vector2());
+  collisionPoints.add(new Vector2());
+  collisionPoints.add(new Vector2());
+  collisionPoints.add(new Vector2());
+  this.setOrigin(this.getWidth() / 2.f,this.getHeight() / 2.f);
+}

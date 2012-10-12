@@ -1,0 +1,23 @@
+{
+  for (int i=0; i < GameInstance.getInstance().bullets.size; i++) {
+    bullet=GameInstance.getInstance().bullets.get(i);
+    if (bullet.alive) {
+      for (int n=0; n < GameInstance.getInstance().fighters.size; n++) {
+        ship=GameInstance.getInstance().fighters.get(n);
+        collisionCheck(bullet,ship);
+      }
+      for (int n=0; n < GameInstance.getInstance().bombers.size; n++) {
+        ship=GameInstance.getInstance().bombers.get(n);
+        collisionCheck(bullet,ship);
+      }
+      for (int n=0; n < GameInstance.getInstance().frigates.size; n++) {
+        ship=GameInstance.getInstance().frigates.get(n);
+        collisionCheck(bullet,ship);
+      }
+      for (int n=0; n < GameInstance.getInstance().factorys.size; n++) {
+        ship=GameInstance.getInstance().factorys.get(n);
+        collisionCheck(bullet,ship);
+      }
+    }
+  }
+}

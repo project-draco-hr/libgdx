@@ -1,0 +1,6 @@
+{
+  target=Targeting.getNearestOfType(bomber,2);
+  if (target == null) {
+    target=Targeting.getNearestOfType(bomber,3);
+  }
+}

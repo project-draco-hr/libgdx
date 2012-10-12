@@ -1,0 +1,9 @@
+{
+  createDebris();
+  createFishes();
+  backgroundFXBatch=new SpriteBatch();
+  backgroundFXBatch.getProjectionMatrix().setToOrtho2D(0,0,800,480);
+  background=Resources.getInstance().background;
+  backgroundBatch=new SpriteBatch();
+  backgroundBatch.getProjectionMatrix().setToOrtho2D(0,0,128,128);
+}

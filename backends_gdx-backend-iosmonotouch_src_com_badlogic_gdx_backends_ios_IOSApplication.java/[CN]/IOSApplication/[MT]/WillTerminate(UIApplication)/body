@@ -1,5 +1,5 @@
 {
-  Gdx.app.log("IOSApplication","disposed");
+  Gdx.app.debug("IOSApplication","disposed");
   graphics.MakeCurrent();
   listener.dispose();
   Gdx.gl.glFlush();

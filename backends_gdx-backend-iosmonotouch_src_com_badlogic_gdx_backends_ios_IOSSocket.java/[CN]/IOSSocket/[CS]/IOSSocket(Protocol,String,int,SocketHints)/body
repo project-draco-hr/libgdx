@@ -1,0 +1,17 @@
+{
+  if (protocol == Protocol.TCP) {
+    try {
+      client=new TcpClient(host,port);
+      applyHints(hints);
+      stream=client.GetStream();
+      inputStream=new IOSStreamInput(stream,false);
+      outputStream=new IOSStreamOutput(stream,false);
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Error making a socket connection to " + host + ":"+ port,e);
+    }
+  }
+ else {
+    throw new GdxRuntimeException("Socket protocol " + protocol + " is not supported under iOS backend.");
+  }
+}

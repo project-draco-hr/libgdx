@@ -1,0 +1,18 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  aliveTime+=delta;
+  collisionPoints.get(0).set(this.getVertices()[0],this.getVertices()[1]);
+  collisionPoints.get(1).set(this.getVertices()[5],this.getVertices()[6]);
+  collisionPoints.get(2).set(this.getVertices()[10],this.getVertices()[11]);
+  collisionPoints.get(3).set(this.getVertices()[15],this.getVertices()[16]);
+  collisionCenter.set(collisionPoints.get(0).tmp().add(collisionPoints.get(2)).mul(0.5f));
+  velocity.mul((float)Math.pow(0.97f,delta * 30.f));
+  position.add(velocity.x * delta,velocity.y * delta);
+  this.setRotation(facing.angle());
+  this.setPosition(position.x,position.y);
+  if (!(this instanceof Bullet) && hitPoints <= 0)   destruct();
+  if (MathUtils.random() < velocity.len() / 900.f) {
+    GameInstance.getInstance().bubbleParticles.addParticle(randomPointOnShip());
+  }
+  super.draw(spriteBatch);
+}

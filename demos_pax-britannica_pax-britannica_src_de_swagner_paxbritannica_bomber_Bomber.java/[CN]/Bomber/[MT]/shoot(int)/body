@@ -1,0 +1,4 @@
+{
+  Vector2 bombFacing=new Vector2().set(facing).rotate(90 * approach);
+  GameInstance.getInstance().bullets.add(new Bomb(id,collisionCenter,bombFacing));
+}

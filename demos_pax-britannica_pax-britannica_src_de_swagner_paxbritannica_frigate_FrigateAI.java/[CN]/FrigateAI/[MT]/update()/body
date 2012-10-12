@@ -1,0 +1,26 @@
+{
+  if (target == null || !target.alive || MathUtils.random() < 0.001f) {
+    retarget();
+  }
+  if (target != null) {
+    float target_distance=target.collisionCenter.dst(frigate.collisionCenter);
+    float speed_square=frigate.velocity.dot(frigate.velocity);
+    if (frigate.isReadyToShoot() && speed_square > 0) {
+      stopping=true;
+    }
+ else     if (frigate.isEmpty()) {
+      stopping=false;
+    }
+    if (!stopping) {
+      if (target_distance < 150) {
+        frigate.goAway(target_fuzzy_pos,true);
+      }
+ else {
+        frigate.goTowards(target_fuzzy_pos,true);
+      }
+    }
+    if (!frigate.isEmpty() && speed_square < 0.1) {
+      frigate.shoot();
+    }
+  }
+}

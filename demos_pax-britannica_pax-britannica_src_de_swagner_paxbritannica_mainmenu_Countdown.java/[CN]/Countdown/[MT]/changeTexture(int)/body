@@ -1,0 +1,23 @@
+{
+switch (id) {
+case 5:
+    this.set(Resources.getInstance().cnt5);
+  break;
+case 2:
+this.set(Resources.getInstance().cnt2);
+break;
+case 3:
+this.set(Resources.getInstance().cnt3);
+break;
+case 4:
+this.set(Resources.getInstance().cnt4);
+break;
+default :
+this.set(Resources.getInstance().cnt1);
+break;
+}
+this.setRotation(0);
+this.setScale(1f);
+this.setPosition(position.x,position.y);
+this.setColor(0,0,0,1);
+}

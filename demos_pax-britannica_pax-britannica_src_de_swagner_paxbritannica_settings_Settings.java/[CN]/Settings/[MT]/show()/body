@@ -1,0 +1,25 @@
+{
+  GameInstance.getInstance().resetGame();
+  backgroundFX=new BackgroundFXRenderer();
+  blackFade=Resources.getInstance().blackFade;
+  back=Resources.getInstance().back;
+  back.setPosition(20,010);
+  back.setColor(1,1,1,0.5f);
+  collisionBack.set(new Vector3(back.getVertices()[0],back.getVertices()[1],-10),new Vector3(back.getVertices()[10],back.getVertices()[11],10));
+  collisionDiffEasy.set(new Vector3(90,330,-10),new Vector3(190,360,10));
+  collisionDiffMedium.set(new Vector3(240,330,-10),new Vector3(340,360,10));
+  collisionDiffHard.set(new Vector3(400,330,-10),new Vector3(500,360,10));
+  collisionFacHealthLow.set(new Vector3(90,230,-10),new Vector3(190,260,10));
+  collisionFacHealthMedium.set(new Vector3(240,230,-10),new Vector3(340,260,10));
+  collisionFacHealthHigh.set(new Vector3(400,230,-10),new Vector3(500,260,10));
+  collisionAntiAliasOff.set(new Vector3(90,130,-10),new Vector3(190,160,10));
+  collisionAntiAliasOn.set(new Vector3(240,130,-10),new Vector3(340,160,10));
+  checkboxOn=Resources.getInstance().checkboxOn;
+  checkboxOff=Resources.getInstance().checkboxOff;
+  titleBatch=new SpriteBatch();
+  titleBatch.getProjectionMatrix().setToOrtho2D(0,0,800,480);
+  fadeBatch=new SpriteBatch();
+  fadeBatch.getProjectionMatrix().setToOrtho2D(0,0,2,2);
+  font=new BitmapFont();
+  font.getRegion().getTexture().setFilter(TextureFilter.Linear,TextureFilter.Linear);
+}

@@ -1,0 +1,12 @@
+{
+  if (this instanceof FactoryProduction) {
+    factoryDestruct();
+  }
+ else {
+    GameInstance.getInstance().explode(this);
+    alive=false;
+    for (    Ship factory : GameInstance.getInstance().factorys) {
+      if (factory instanceof FactoryProduction && factory.id == this.id)       ((FactoryProduction)factory).ownShips--;
+    }
+  }
+}

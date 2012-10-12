@@ -1,0 +1,7 @@
+{
+  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
+  ai.update();
+  cooldown=Math.max(0,cooldown - delta * 50f);
+  shots=Math.min(shots + (shotReloadRate * delta),shotCapacity);
+  super.draw(spriteBatch);
+}

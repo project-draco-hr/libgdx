@@ -1,0 +1,7 @@
+{
+  super();
+  life=0.5f;
+  damping=1f;
+  delta_scale=1.0f;
+  set(Resources.getInstance().explosion);
+}

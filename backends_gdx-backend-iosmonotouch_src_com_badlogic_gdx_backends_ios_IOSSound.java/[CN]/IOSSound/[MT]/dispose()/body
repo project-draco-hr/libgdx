@@ -3,4 +3,10 @@
     players[i].Dispose();
     players[i]=null;
   }
+synchronized (sync) {
+    soundCounter--;
+    if (soundCounter == 0) {
+      playThread=null;
+    }
+  }
 }
