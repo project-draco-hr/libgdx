@@ -1,4 +1,7 @@
 {
   if (sizeInvalid)   computeSize();
-  return bounds.height - style.font.getDescent() * 2;
+  float height=bounds.height - style.font.getDescent() * 2;
+  Drawable background=style.background;
+  if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
+  return height;
 }
