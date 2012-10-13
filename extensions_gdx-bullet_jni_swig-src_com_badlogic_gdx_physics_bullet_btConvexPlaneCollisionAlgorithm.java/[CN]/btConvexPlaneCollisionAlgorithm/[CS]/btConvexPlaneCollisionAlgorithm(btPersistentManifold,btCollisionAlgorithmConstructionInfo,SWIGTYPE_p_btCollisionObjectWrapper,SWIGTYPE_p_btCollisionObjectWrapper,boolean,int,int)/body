@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btConvexPlaneCollisionAlgorithm(btPersistentManifold.getCPtr(mf),mf,btCollisionAlgorithmConstructionInfo.getCPtr(ci),ci,SWIGTYPE_p_btCollisionObjectWrapper.getCPtr(body0Wrap),SWIGTYPE_p_btCollisionObjectWrapper.getCPtr(body1Wrap),isSwapped,numPerturbationIterations,minimumPointsPerturbationThreshold),true);
+}

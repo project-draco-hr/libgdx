@@ -1,4 +1,4 @@
 {
-  long cPtr=gdxBulletJNI.btPersistentManifold_getBody0__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr,false);
+  long cPtr=gdxBulletJNI.btPersistentManifold_getBody0(swigCPtr,this);
+  return (cPtr == 0) ? null : new btCollisionObject(cPtr,false);
 }

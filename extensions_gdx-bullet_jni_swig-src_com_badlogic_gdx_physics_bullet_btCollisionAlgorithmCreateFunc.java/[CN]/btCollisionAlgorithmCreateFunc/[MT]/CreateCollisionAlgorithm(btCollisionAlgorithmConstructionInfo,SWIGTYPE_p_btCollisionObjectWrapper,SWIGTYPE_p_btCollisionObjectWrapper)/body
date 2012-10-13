@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btCollisionAlgorithmCreateFunc_CreateCollisionAlgorithm(swigCPtr,this,btCollisionAlgorithmConstructionInfo.getCPtr(arg0),arg0,SWIGTYPE_p_btCollisionObjectWrapper.getCPtr(body0Wrap),SWIGTYPE_p_btCollisionObjectWrapper.getCPtr(body1Wrap));
+  return (cPtr == 0) ? null : new btCollisionAlgorithm(cPtr,false);
+}
