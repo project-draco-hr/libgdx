@@ -1,0 +1,9 @@
+{
+  if (!config.hideStatusBar || getVersion() < 14)   return;
+  runOnUiThread(new Runnable(){
+    @Override public void run(){
+      getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+    }
+  }
+);
+}
