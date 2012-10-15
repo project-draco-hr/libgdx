@@ -1,4 +1,11 @@
 {
-  testMathTypes();
-  testBounce();
+  GdxTest test=new BulletTest();
+  LwjglApplicationConfiguration cfg=new LwjglApplicationConfiguration();
+  cfg.title=test.getClass().getSimpleName();
+  cfg.useGL20=test.needsGL20();
+  cfg.width=800;
+  cfg.height=480;
+  cfg.samples=8;
+  cfg.vSyncEnabled=false;
+  new LwjglApplication(test,cfg);
 }
