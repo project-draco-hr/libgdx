@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btRaycastVehicle_m_wheelInfo_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_btAlignedObjectArrayT_btWheelInfo_t(cPtr,false);
+}
