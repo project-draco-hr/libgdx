@@ -11,6 +11,7 @@
   set_AutoResize(false);
   set_LayerColorFormat(EAGLColorFormat.RGB565);
   set_ContextRenderingApi(EAGLRenderingAPI.wrap(EAGLRenderingAPI.OpenGLES2));
+  bufferFormat=new BufferFormat(5,6,5,0,16,0,0,false);
   gl20=new IOSGLES20();
   Gdx.gl=gl20;
   Gdx.gl20=gl20;
