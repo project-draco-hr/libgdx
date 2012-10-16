@@ -1,0 +1,7 @@
+{
+  name=name.replace('.','_');
+  for (  Material mat : materials) {
+    if (mat.getName().equals(name))     return mat;
+  }
+  return new Material("default");
+}
