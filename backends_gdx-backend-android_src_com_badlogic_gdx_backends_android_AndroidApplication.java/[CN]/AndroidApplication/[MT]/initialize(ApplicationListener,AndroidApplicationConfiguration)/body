@@ -22,4 +22,5 @@
   getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
   setContentView(graphics.getView(),createLayoutParams());
   createWakeLock(config);
+  hideStatusBar(config);
 }
