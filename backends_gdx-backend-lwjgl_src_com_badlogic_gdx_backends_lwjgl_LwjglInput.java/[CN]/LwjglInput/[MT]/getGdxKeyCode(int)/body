@@ -1,9 +1,37 @@
 {
 switch (lwjglKeyCode) {
+case Keyboard.KEY_LBRACKET:
+    return Input.Keys.LEFT_BRACKET;
+case Keyboard.KEY_RBRACKET:
+  return Input.Keys.RIGHT_BRACKET;
+case Keyboard.KEY_GRAVE:
+return Input.Keys.GRAVE;
+case Keyboard.KEY_MULTIPLY:
+return Input.Keys.STAR;
+case Keyboard.KEY_NUMLOCK:
+return Input.Keys.NUM;
+case Keyboard.KEY_DECIMAL:
+return Input.Keys.PERIOD;
+case Keyboard.KEY_DIVIDE:
+return Input.Keys.SLASH;
+case Keyboard.KEY_LMETA:
+return Input.Keys.SYM;
+case Keyboard.KEY_RMETA:
+return Input.Keys.SYM;
+case Keyboard.KEY_NUMPADEQUALS:
+return Input.Keys.EQUALS;
+case Keyboard.KEY_AT:
+return Input.Keys.AT;
+case Keyboard.KEY_EQUALS:
+return Input.Keys.EQUALS;
+case Keyboard.KEY_NUMPADCOMMA:
+return Input.Keys.COMMA;
+case Keyboard.KEY_NUMPADENTER:
+return Input.Keys.ENTER;
 case Keyboard.KEY_0:
-    return Input.Keys.NUM_0;
+return Input.Keys.NUM_0;
 case Keyboard.KEY_1:
-  return Input.Keys.NUM_1;
+return Input.Keys.NUM_1;
 case Keyboard.KEY_2:
 return Input.Keys.NUM_2;
 case Keyboard.KEY_3:
