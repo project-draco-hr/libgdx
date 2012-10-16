@@ -10,7 +10,7 @@
   BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
   try {
     while ((line=reader.readLine()) != null) {
-      if (line.length() > 0 && line.charAt(0) == '\t')       line=line.substring(1);
+      if (line.length() > 0 && line.charAt(0) == '\t')       line=line.substring(1).trim();
       tokens=line.split("\\s+");
       if (tokens[0].length() == 0) {
         continue;
