@@ -1,0 +1,8 @@
+{
+  super.resize(width,height);
+  if (width > height)   camera=new PerspectiveCamera(67f,3f * width / height,3f);
+ else   camera=new PerspectiveCamera(67f,3f,3f * height / width);
+  camera.position.set(10f,10f,10f);
+  camera.lookAt(0,0,0);
+  camera.update();
+}

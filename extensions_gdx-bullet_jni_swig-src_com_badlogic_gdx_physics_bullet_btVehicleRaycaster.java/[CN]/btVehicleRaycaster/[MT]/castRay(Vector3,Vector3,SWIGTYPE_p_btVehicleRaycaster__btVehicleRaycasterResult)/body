@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btVehicleRaycaster_castRay(swigCPtr,this,from,to,SWIGTYPE_p_btVehicleRaycaster__btVehicleRaycasterResult.getCPtr(result));
+  return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr,false);
+}

@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_btRaycastVehicle(btVehicleTuning.getCPtr(tuning),tuning,btRigidBody.getCPtr(chassis),chassis,btVehicleRaycaster.getCPtr(raycaster),raycaster),true);
+}

@@ -1,0 +1,3 @@
+{
+  return new btTransform(gdxBulletJNI.btRaycastVehicle_getChassisWorldTransform(swigCPtr,this),false);
+}
