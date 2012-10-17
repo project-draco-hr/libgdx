@@ -1,3 +1,4 @@
 {
-  return 0;
+  NSNumber value=(NSNumber)nsDictionary.get_Item(key);
+  return value.get_Int32Value();
 }

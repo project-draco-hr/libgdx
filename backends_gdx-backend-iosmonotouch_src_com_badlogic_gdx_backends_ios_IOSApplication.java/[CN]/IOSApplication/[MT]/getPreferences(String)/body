@@ -1,3 +1,12 @@
 {
-  return new IOSPreferences();
+  NSBundle mainBundle=NSBundle.get_MainBundle();
+  String bundlePath=mainBundle.get_BundlePath();
+  String settingsBundlePath=bundlePath + stringByAppendingPathComponent(bundlePath) + "Library";
+  String finalPath=settingsBundlePath + stringByAppendingPathComponent(settingsBundlePath) + name+ ".plist";
+  NSDictionary nsDictionary=NSDictionary.FromFile(finalPath);
+  if (nsDictionary == null) {
+    nsDictionary=new NSDictionary();
+    nsDictionary.WriteToFile(finalPath,true);
+  }
+  return new IOSPreferences(nsDictionary,finalPath);
 }

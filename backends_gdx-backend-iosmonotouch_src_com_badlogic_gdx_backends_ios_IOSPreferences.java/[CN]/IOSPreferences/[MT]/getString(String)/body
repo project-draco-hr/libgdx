@@ -1,3 +1,4 @@
 {
-  return null;
+  NSString value=(NSString)nsDictionary.get_Item(key);
+  return value.ToString();
 }

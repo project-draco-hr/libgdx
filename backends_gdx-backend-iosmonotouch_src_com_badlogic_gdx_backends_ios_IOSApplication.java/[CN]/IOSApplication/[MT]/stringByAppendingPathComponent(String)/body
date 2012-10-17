@@ -1,0 +1,5 @@
+{
+  String pathSeparator="/";
+  if (path.endsWith(pathSeparator))   return path;
+  return path + pathSeparator;
+}
