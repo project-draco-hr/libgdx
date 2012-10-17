@@ -1,9 +1,25 @@
 {
 switch (gdxKeyCode) {
+case Input.Keys.LEFT_BRACKET:
+    return Keyboard.KEY_LBRACKET;
+case Input.Keys.RIGHT_BRACKET:
+  return Keyboard.KEY_RBRACKET;
+case Input.Keys.GRAVE:
+return Keyboard.KEY_GRAVE;
+case Input.Keys.STAR:
+return Keyboard.KEY_MULTIPLY;
+case Input.Keys.NUM:
+return Keyboard.KEY_NUMLOCK;
+case Input.Keys.AT:
+return Keyboard.KEY_AT;
+case Input.Keys.EQUALS:
+return Keyboard.KEY_EQUALS;
+case Input.Keys.SYM:
+return Keyboard.KEY_LMETA;
 case Input.Keys.NUM_0:
-    return Keyboard.KEY_0;
+return Keyboard.KEY_0;
 case Input.Keys.NUM_1:
-  return Keyboard.KEY_1;
+return Keyboard.KEY_1;
 case Input.Keys.NUM_2:
 return Keyboard.KEY_2;
 case Input.Keys.NUM_3:
