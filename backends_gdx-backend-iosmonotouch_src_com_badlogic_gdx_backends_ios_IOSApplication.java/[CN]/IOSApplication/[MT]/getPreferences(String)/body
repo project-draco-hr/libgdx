@@ -1,12 +1,15 @@
 {
-  NSBundle mainBundle=NSBundle.get_MainBundle();
-  String bundlePath=mainBundle.get_BundlePath();
-  String settingsBundlePath=bundlePath + stringByAppendingPathComponent(bundlePath) + "Library";
-  String finalPath=settingsBundlePath + stringByAppendingPathComponent(settingsBundlePath) + name+ ".plist";
-  NSDictionary nsDictionary=NSDictionary.FromFile(finalPath);
+  String applicationPath=Environment.GetFolderPath(Environment.SpecialFolder.wrap(Environment.SpecialFolder.MyDocuments));
+  String libraryPath=Path.Combine(applicationPath,"..","Library");
+  String finalPath=Path.Combine(libraryPath,name + ".plist");
+  Gdx.app.debug("IOSApplication","Loading NSDictionary from file " + finalPath);
+  NSMutableDictionary nsDictionary=NSMutableDictionary.FromFile(finalPath);
   if (nsDictionary == null) {
-    nsDictionary=new NSDictionary();
-    nsDictionary.WriteToFile(finalPath,true);
+    Gdx.app.debug("IOSApplication","NSDictionary not found, creating a new one");
+    nsDictionary=new NSMutableDictionary();
+    boolean fileWritten=nsDictionary.WriteToFile(finalPath,false);
+    if (fileWritten)     Gdx.app.debug("IOSApplication","NSDictionary file written");
+ else     Gdx.app.debug("IOSApplication","Failed to write NSDictionary to file " + finalPath);
   }
   return new IOSPreferences(nsDictionary,finalPath);
 }
