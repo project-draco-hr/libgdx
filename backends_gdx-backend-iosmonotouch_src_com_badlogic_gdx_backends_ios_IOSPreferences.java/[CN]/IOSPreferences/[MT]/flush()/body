@@ -1,2 +1,5 @@
 {
+  boolean fileWritten=nsDictionary.WriteToFile(filePath,false);
+  if (fileWritten)   Gdx.app.debug("IOSPreferences","NSDictionary file written");
+ else   Gdx.app.debug("IOSPreferences","Failed to write NSDictionary to file " + filePath);
 }
