@@ -1,5 +1,17 @@
 {
   this.uiApp=uiApp;
+  UIApplication.get_SharedApplication().set_IdleTimerDisabled(config.preventScreenDimming);
+  if (UIScreen.get_MainScreen().get_Scale() == 2.0f) {
+    if (UIDevice.get_CurrentDevice().get_UserInterfaceIdiom().Value == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfRetina;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfRetina;
+    }
+  }
+ else {
+    displayScaleFactor=1.0f;
+  }
   this.uiWindow=new UIWindow(UIScreen.get_MainScreen().get_Bounds());
   UIViewController uiViewController=new UIViewController(){
     @Override public void DidRotate(    UIInterfaceOrientation orientation){
@@ -21,7 +33,7 @@ default :
 }
 ;
 this.uiWindow.set_RootViewController(uiViewController);
-this.input=new IOSInput(config);
+this.input=new IOSInput(this);
 this.graphics=new IOSGraphics(getBounds(uiViewController),this,input);
 this.files=new IOSFiles();
 this.audio=new IOSAudio();
