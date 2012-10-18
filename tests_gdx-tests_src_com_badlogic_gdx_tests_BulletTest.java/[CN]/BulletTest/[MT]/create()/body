@@ -20,7 +20,7 @@
   for (int x=0; x < BOXCOUNT_X; x++) {
     for (int y=0; y < BOXCOUNT_Y; y++) {
       for (int z=0; z < BOXCOUNT_Z; z++) {
-        body=new BulletBody(boxMesh,boxInfo,BOXOFFSET_X + (float)x,BOXOFFSET_Y + (float)y,BOXOFFSET_Z + (float)z);
+        body=new BulletBody(boxMesh,boxInfo,BOXOFFSET_X + x,BOXOFFSET_Y + y,BOXOFFSET_Z + z);
         bodies.add(body);
         dynamicsWorld.addRigidBody(body.body);
       }
