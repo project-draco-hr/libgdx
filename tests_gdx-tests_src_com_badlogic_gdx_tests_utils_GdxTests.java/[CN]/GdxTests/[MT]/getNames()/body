@@ -1,5 +1,5 @@
 {
-  List<String> names=new ArrayList<String>(tests.length);
+  List<String> names=new ArrayList<String>(tests.size());
   for (  Class clazz : tests)   names.add(clazz.getSimpleName());
   Collections.sort(names);
   return names;
