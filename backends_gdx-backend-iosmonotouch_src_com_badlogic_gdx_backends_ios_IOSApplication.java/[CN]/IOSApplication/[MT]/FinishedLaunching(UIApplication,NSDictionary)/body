@@ -3,14 +3,19 @@
   UIApplication.get_SharedApplication().set_IdleTimerDisabled(config.preventScreenDimming);
   if (UIScreen.get_MainScreen().get_Scale() == 2.0f) {
     if (UIDevice.get_CurrentDevice().get_UserInterfaceIdiom().Value == UIUserInterfaceIdiom.Pad) {
-      displayScaleFactor=config.displayScaleLargeScreenIfRetina;
+      displayScaleFactor=config.displayScaleLargeScreenIfRetina * 2.0f;
     }
  else {
-      displayScaleFactor=config.displayScaleSmallScreenIfRetina;
+      displayScaleFactor=config.displayScaleSmallScreenIfRetina * 2.0f;
     }
   }
  else {
-    displayScaleFactor=1.0f;
+    if (UIDevice.get_CurrentDevice().get_UserInterfaceIdiom().Value == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfNonRetina;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfNonRetina;
+    }
   }
   this.uiWindow=new UIWindow(UIScreen.get_MainScreen().get_Bounds());
   UIViewController uiViewController=new UIViewController(){
