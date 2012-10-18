@@ -1,22 +1,12 @@
 {
   try {
-    Class clazz=Class.forName("com.badlogic.gdx.tests." + testName);
-    return (GdxTest)clazz.newInstance();
+    return forName(testName).newInstance();
   }
- catch (  Exception e1) {
-    try {
-      Class clazz=Class.forName("com.badlogic.gdx.tests.gles2." + testName);
-      return (GdxTest)clazz.newInstance();
-    }
- catch (    Exception e2) {
-      try {
-        Class clazz=Class.forName("com.badlogic.gdx.tests.examples." + testName);
-        return (GdxTest)clazz.newInstance();
-      }
- catch (      Exception e3) {
-        e3.printStackTrace();
-        return null;
-      }
-    }
+ catch (  InstantiationException e) {
+    e.printStackTrace();
   }
+catch (  IllegalAccessException e) {
+    e.printStackTrace();
+  }
+  return null;
 }
