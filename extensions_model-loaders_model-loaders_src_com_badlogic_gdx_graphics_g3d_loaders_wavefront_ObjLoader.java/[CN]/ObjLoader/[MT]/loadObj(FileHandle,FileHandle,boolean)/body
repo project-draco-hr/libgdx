@@ -2,7 +2,7 @@
   String line;
   String[] tokens;
   char firstChar;
-  MtlLoader mtl=new MtlLoader(textureDir);
+  MtlLoader mtl=new MtlLoader();
   Group activeGroup=new Group("default");
   groups.add(activeGroup);
   BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
@@ -65,7 +65,7 @@
         if (file.path().contains("/")) {
           path=file.path().substring(0,file.path().lastIndexOf('/') + 1);
         }
-        mtl.load(path + tokens[1]);
+        mtl.load(path + tokens[1],textureDir);
       }
  else       if (tokens[0].equals("usemtl")) {
         if (tokens.length == 1)         activeGroup.materialName="default";

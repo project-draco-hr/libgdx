@@ -2,9 +2,9 @@
   String line;
   String[] tokens;
   String curMatName="default";
-  String textureName="";
   Color difcolor=Color.WHITE;
   Color speccolor=Color.WHITE;
+  Texture texture=new Texture(1,1,Format.RGB888);
   FileHandle file=Gdx.files.internal(name);
   if (file == null || file.exists() == false)   return;
   BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
@@ -17,17 +17,15 @@
       }
  else       if (tokens[0].charAt(0) == '#')       continue;
  else       if (tokens[0].toLowerCase().equals("newmtl")) {
-        Material mat;
-        Texture texture;
-        if (textureName.length() > 0)         texture=new Texture(textureDir.child(textureName));
- else         texture=new Texture(1,1,Format.RGB888);
-        mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
+        Material mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
         materials.add(mat);
-        curMatName=tokens[1];
-        curMatName=curMatName.replace('.','_');
+        if (tokens.length > 1) {
+          curMatName=tokens[1];
+          curMatName=curMatName.replace('.','_');
+        }
+ else         curMatName="default";
         difcolor=Color.WHITE;
         speccolor=Color.WHITE;
-        textureName="";
       }
  else       if (tokens[0].toLowerCase().equals("kd") || tokens[0].toLowerCase().equals("ks")) {
         float r=Float.parseFloat(tokens[1]);
@@ -45,7 +43,15 @@
         }
       }
  else       if (tokens[0].toLowerCase().equals("map_kd")) {
-        textureName=tokens[1];
+        String textureName=tokens[1];
+        if (textureName.length() > 0) {
+          String texname=textureDir.child(textureName).toString();
+          assetManager.load(texname,Texture.class);
+          assetManager.finishLoading();
+          texture=assetManager.get(texname,Texture.class);
+          texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+        }
+ else         texture=new Texture(1,1,Format.RGB888);
       }
     }
     reader.close();
@@ -53,11 +59,7 @@
  catch (  IOException e) {
     return;
   }
-  Material mat;
-  Texture texture;
-  if (textureName.length() > 0)   texture=new Texture(textureDir.child(textureName));
- else   texture=new Texture(1,1,Format.RGB888);
-  mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
+  Material mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
   materials.add(mat);
   return;
 }
