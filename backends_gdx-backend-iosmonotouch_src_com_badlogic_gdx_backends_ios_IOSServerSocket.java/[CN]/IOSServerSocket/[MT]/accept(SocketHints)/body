@@ -1,8 +1,51 @@
 {
-  try {
-    return new IOSSocket(listener.AcceptTcpClient(),hints);
+  TcpListener listener=listeners.get(port);
+  int timeout;
+  if (IOSServerSocket.this.hints != null) {
+    timeout=IOSServerSocket.this.hints.acceptTimeout;
+    if (timeout == 0) {
+      timeout=Timeout.Infinite;
+    }
   }
- catch (  Exception e) {
-    throw new GdxRuntimeException("Error accepting socket.",e);
+ else {
+    timeout=Timeout.Infinite;
+  }
+  TcpClient client=clients.get(port);
+  if (client == null) {
+    Gdx.app.debug("IOSServerSocket","Waiting for client connect...");
+    int loopPause=10;
+    int loops;
+    if (timeout == Timeout.Infinite) {
+      loops=Integer.MAX_VALUE;
+    }
+ else {
+      loops=timeout / loopPause;
+    }
+    for (int i=0; i < loops; i++) {
+      if (clients.get(port) != null) {
+        break;
+      }
+      if (sockets == null) {
+        throw new GdxRuntimeException("Server disposed: cannot accept any new clients.");
+      }
+      try {
+        Thread.sleep(loopPause);
+      }
+ catch (      InterruptedException e) {
+        throw new GdxRuntimeException("Error in Thread.sleep.",e);
+      }
+    }
+    client=clients.get(port);
+  }
+  if (client != null) {
+    clients.remove(port);
+    listener.BeginAcceptTcpClient(clientCallbacks.get(port),listener);
+    Gdx.app.debug("IOSServerSocket","Socket connected.");
+    IOSSocket socket=new IOSSocket(this,client,hints);
+    sockets.add(socket);
+    return socket;
+  }
+ else {
+    throw new GdxRuntimeException("No socket connections received (timeout).");
   }
 }

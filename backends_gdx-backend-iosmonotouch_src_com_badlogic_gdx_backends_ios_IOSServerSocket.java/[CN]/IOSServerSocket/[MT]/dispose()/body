@@ -1,11 +1,14 @@
 {
-  if (listener != null) {
-    try {
-      listener.Stop();
-      listener=null;
+  if (sockets != null) {
+    for (int i=0; i < sockets.size(); i++) {
+      IOSSocket socket=sockets.get(i);
+      try {
+        socket.dispose();
+      }
+ catch (      Exception e) {
+        Gdx.app.debug("IOSServerSocket","Error disposing socket.",e);
+      }
     }
- catch (    Exception e) {
-      throw new GdxRuntimeException("Error closing listener.",e);
-    }
+    sockets=null;
   }
 }

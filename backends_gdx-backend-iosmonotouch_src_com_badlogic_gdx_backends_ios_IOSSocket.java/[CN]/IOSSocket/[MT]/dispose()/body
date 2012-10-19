@@ -1,5 +1,5 @@
 {
-  if (client != null) {
+  if (stream != null) {
     try {
       stream.Close();
     }
@@ -7,6 +7,17 @@
       throw new GdxRuntimeException("Error closing stream.",e);
     }
     stream=null;
+  }
+  if (server != null) {
+    try {
+      server.dispose(this);
+    }
+ catch (    Exception e) {
+      throw new GdxRuntimeException("Error closing socket on server.",e);
+    }
+    server=null;
+  }
+  if (client != null) {
     try {
       client.Close();
       client.Dispose();

@@ -12,4 +12,7 @@
       throw new GdxRuntimeException("Error setting socket hints.",e);
     }
   }
+  stream=client.GetStream();
+  inputStream=new IOSStreamInput(stream,false);
+  outputStream=new IOSStreamOutput(stream,false);
 }
