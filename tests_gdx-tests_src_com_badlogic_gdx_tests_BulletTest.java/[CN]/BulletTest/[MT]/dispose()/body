@@ -1,23 +1,4 @@
 {
+  world.dispose();
   super.dispose();
-  for (int i=0; i < entities.size; i++) {
-    final Entity entity=entities.get(i);
-    dynamicsWorld.removeRigidBody(entity.body);
-    entity.dispose();
-  }
-  entities.clear();
-  groundInfo.dispose();
-  groundInfo=null;
-  boxInfo.dispose();
-  boxInfo=null;
-  dynamicsWorld.delete();
-  dynamicsWorld=null;
-  solver.delete();
-  solver=null;
-  broadphase.delete();
-  broadphase=null;
-  dispatcher.delete();
-  dispatcher=null;
-  collisionConfiguration.delete();
-  collisionConfiguration=null;
 }
