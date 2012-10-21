@@ -28,7 +28,14 @@
  else {
           listener.Start();
         }
-        AsyncCallback clientCallback=new AsyncCallback(clientCallbackMethod);
+        AsyncCallback clientCallback=new AsyncCallback(new AsyncCallback.Method(){
+          @Override public void Invoke(          IAsyncResult ar){
+            TcpListener listener=(TcpListener)ar.get_AsyncState();
+            clients.put(port,listener.EndAcceptTcpClient(ar));
+            Gdx.app.debug("IOSServerSocket","Client connected");
+          }
+        }
+);
         clientCallbacks.put(port,clientCallback);
         listener.BeginAcceptTcpClient(clientCallback,listener);
       }
