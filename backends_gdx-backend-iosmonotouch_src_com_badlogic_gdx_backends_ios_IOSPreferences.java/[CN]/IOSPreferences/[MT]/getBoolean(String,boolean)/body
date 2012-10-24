@@ -1,3 +1,4 @@
 {
-  return defValue;
+  if (!contains(key))   return defValue;
+  return getBoolean(key);
 }

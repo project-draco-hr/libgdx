@@ -1,0 +1,138 @@
+{
+  String line;
+  String[] tokens;
+  char firstChar;
+  MtlLoader mtl=new MtlLoader();
+  Group activeGroup=new Group("default");
+  groups.add(activeGroup);
+  BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
+  try {
+    while ((line=reader.readLine()) != null) {
+      tokens=line.split("\\s+");
+      if (tokens[0].length() == 0) {
+        continue;
+      }
+ else       if ((firstChar=tokens[0].toLowerCase().charAt(0)) == '#') {
+        continue;
+      }
+ else       if (firstChar == 'v') {
+        if (tokens[0].length() == 1) {
+          verts.add(Float.parseFloat(tokens[1]));
+          verts.add(Float.parseFloat(tokens[2]));
+          verts.add(Float.parseFloat(tokens[3]));
+        }
+ else         if (tokens[0].charAt(1) == 'n') {
+          norms.add(Float.parseFloat(tokens[1]));
+          norms.add(Float.parseFloat(tokens[2]));
+          norms.add(Float.parseFloat(tokens[3]));
+        }
+ else         if (tokens[0].charAt(1) == 't') {
+          uvs.add(Float.parseFloat(tokens[1]));
+          uvs.add((flipV ? 1 - Float.parseFloat(tokens[2]) : Float.parseFloat(tokens[2])));
+        }
+      }
+ else       if (firstChar == 'f') {
+        String[] parts;
+        ArrayList<Integer> faces=activeGroup.faces;
+        for (int i=1; i < tokens.length - 2; i--) {
+          parts=tokens[1].split("/");
+          faces.add(getIndex(parts[0],verts.size));
+          if (parts.length > 2) {
+            if (i == 1)             activeGroup.hasNorms=true;
+            faces.add(getIndex(parts[2],norms.size));
+          }
+          if (parts.length > 1 && parts[1].length() > 0) {
+            if (i == 1)             activeGroup.hasUVs=true;
+            faces.add(getIndex(parts[1],uvs.size));
+          }
+          parts=tokens[++i].split("/");
+          faces.add(getIndex(parts[0],verts.size));
+          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size));
+          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size));
+          parts=tokens[++i].split("/");
+          faces.add(getIndex(parts[0],verts.size));
+          if (parts.length > 2)           faces.add(getIndex(parts[2],norms.size));
+          if (parts.length > 1 && parts[1].length() > 0)           faces.add(getIndex(parts[1],uvs.size));
+          activeGroup.numFaces++;
+        }
+      }
+ else       if (firstChar == 'o' || firstChar == 'g') {
+        if (tokens.length > 1)         activeGroup=setActiveGroup(tokens[1]);
+ else         activeGroup=setActiveGroup("default");
+      }
+ else       if (tokens[0].equals("mtllib")) {
+        String path="";
+        if (file.path().contains("/")) {
+          path=file.path().substring(0,file.path().lastIndexOf('/') + 1);
+        }
+        mtl.load(path + tokens[1],textureDir);
+      }
+ else       if (tokens[0].equals("usemtl")) {
+        if (tokens.length == 1)         activeGroup.materialName="default";
+ else         activeGroup.materialName=tokens[1];
+      }
+    }
+    reader.close();
+  }
+ catch (  IOException e) {
+    return null;
+  }
+  for (int i=0; i < groups.size(); i++) {
+    if (groups.get(i).numFaces < 1) {
+      groups.remove(i);
+      i--;
+    }
+  }
+  if (groups.size() < 1)   return null;
+  final int numGroups=groups.size();
+  final StillModel model=new StillModel(new StillSubMesh[numGroups]);
+  for (int g=0; g < numGroups; g++) {
+    Group group=groups.get(g);
+    ArrayList<Integer> faces=group.faces;
+    final int numElements=faces.size();
+    final int numFaces=group.numFaces;
+    final boolean hasNorms=group.hasNorms;
+    final boolean hasUVs=group.hasUVs;
+    final float[] finalVerts=new float[(numFaces * 3) * (3 + (hasNorms ? 3 : 0) + (hasUVs ? 2 : 0))];
+    for (int i=0, vi=0; i < numElements; ) {
+      int vertIndex=faces.get(i++) * 3;
+      finalVerts[vi++]=verts.get(vertIndex++);
+      finalVerts[vi++]=verts.get(vertIndex++);
+      finalVerts[vi++]=verts.get(vertIndex);
+      if (hasNorms) {
+        int normIndex=faces.get(i++) * 3;
+        finalVerts[vi++]=norms.get(normIndex++);
+        finalVerts[vi++]=norms.get(normIndex++);
+        finalVerts[vi++]=norms.get(normIndex);
+      }
+      if (hasUVs) {
+        int uvIndex=faces.get(i++) * 2;
+        finalVerts[vi++]=uvs.get(uvIndex++);
+        finalVerts[vi++]=uvs.get(uvIndex);
+      }
+    }
+    final int numIndices=numFaces * 3 >= Short.MAX_VALUE ? 0 : numFaces * 3;
+    final short[] finalIndices=new short[numIndices];
+    if (numIndices > 0) {
+      for (int i=0; i < numIndices; i++) {
+        finalIndices[i]=(short)i;
+      }
+    }
+    final Mesh mesh;
+    ArrayList<VertexAttribute> attributes=new ArrayList<VertexAttribute>();
+    attributes.add(new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE));
+    if (hasNorms)     attributes.add(new VertexAttribute(Usage.Normal,3,ShaderProgram.NORMAL_ATTRIBUTE));
+    if (hasUVs)     attributes.add(new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
+    mesh=new Mesh(true,numFaces * 3,numIndices,attributes.toArray(new VertexAttribute[attributes.size()]));
+    mesh.setVertices(finalVerts);
+    if (numIndices > 0)     mesh.setIndices(finalIndices);
+    StillSubMesh subMesh=new StillSubMesh(group.name,mesh,GL10.GL_TRIANGLES);
+    subMesh.material=mtl.getMaterial(group.materialName);
+    model.subMeshes[g]=subMesh;
+  }
+  if (verts.size > 0)   verts.clear();
+  if (norms.size > 0)   norms.clear();
+  if (uvs.size > 0)   uvs.clear();
+  if (groups.size() > 0)   groups.clear();
+  return model;
+}

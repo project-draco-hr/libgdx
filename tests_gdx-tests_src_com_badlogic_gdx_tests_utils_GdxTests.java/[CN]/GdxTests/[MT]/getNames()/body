@@ -1,6 +1,6 @@
 {
-  List<String> names=new ArrayList<String>();
+  List<String> names=new ArrayList<String>(tests.size());
   for (  Class clazz : tests)   names.add(clazz.getSimpleName());
   Collections.sort(names);
-  return names.toArray(new String[names.size()]);
+  return names;
 }

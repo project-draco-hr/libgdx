@@ -1,0 +1,6 @@
+{
+  if (bodyInfo != null)   bodyInfo.delete();
+  if (shape != null)   shape.delete();
+  bodyInfo=null;
+  shape=null;
+}

@@ -8,7 +8,8 @@
     if (Gdx.input.isTouched(i) == false)     continue;
     float x=Gdx.input.getX(i);
     float y=Gdx.graphics.getHeight() - Gdx.input.getY(i) - 1;
-    Color col=colors[i % colors.length];
+    Color color=colors[i % colors.length];
+    renderer.setColor(color);
     renderer.filledTriangle(x,y + size,x + size,y - size,x - size,y - size);
   }
   renderer.end();
