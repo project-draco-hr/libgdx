@@ -1,6 +1,6 @@
 {
   if (pointer > 1)   return false;
-  if (inTapSquare && (Math.abs(x - tapSquareCenterX) >= tapSquareSize || Math.abs(y - tapSquareCenterY) >= tapSquareSize))   inTapSquare=false;
+  if (inTapSquare && isOutsideOfTapSquare(x,y))   inTapSquare=false;
   longPressTask.cancel();
   panning=false;
   if (longPressFired)   return false;
