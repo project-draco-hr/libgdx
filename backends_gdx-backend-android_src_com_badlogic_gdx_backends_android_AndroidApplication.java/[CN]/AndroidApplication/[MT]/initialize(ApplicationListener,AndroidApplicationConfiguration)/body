@@ -1,6 +1,6 @@
 {
   graphics=new AndroidGraphics(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
-  input=new AndroidInput(this,graphics.view,config);
+  input=new AndroidInput(this,((AndroidGraphics)graphics).view,config);
   audio=new AndroidAudio(this,config);
   files=new AndroidFiles(this.getAssets(),this.getFilesDir().getAbsolutePath());
   net=new AndroidNet(this);
@@ -20,7 +20,7 @@
   }
   getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
   getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-  setContentView(graphics.getView(),createLayoutParams());
+  setContentView(((AndroidGraphics)graphics).getView(),createLayoutParams());
   createWakeLock(config);
   hideStatusBar(config);
 }

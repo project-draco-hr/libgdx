@@ -1,0 +1,7 @@
+{
+  super();
+  if (DEBUG)   Log.d(TAG," > MyEngine() " + hashCode());
+  app=new AndroidApplicationLW(libgdxWallpaperService,this);
+  initialize(app);
+  view=((AndroidGraphicsLW)app.getGraphics()).getView();
+}

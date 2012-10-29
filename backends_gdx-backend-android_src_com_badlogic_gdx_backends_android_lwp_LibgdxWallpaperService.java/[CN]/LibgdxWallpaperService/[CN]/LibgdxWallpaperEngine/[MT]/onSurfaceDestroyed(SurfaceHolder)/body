@@ -1,0 +1,4 @@
+{
+  if (DEBUG)   Log.d(TAG," > onSurfaceDestroyed() " + hashCode());
+  super.onSurfaceDestroyed(holder);
+}

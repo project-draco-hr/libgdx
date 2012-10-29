@@ -1,0 +1,42 @@
+{
+synchronized (this) {
+    justTouched=false;
+    if (processor != null) {
+      if (this.processor instanceof InputProcessorLW) {
+        final InputProcessorLW processor=(InputProcessorLW)this.processor;
+        int len=touchEvents.size();
+        for (int i=0; i < len; i++) {
+          TouchEvent e=touchEvents.get(i);
+          currentEventTimeStamp=e.timeStamp;
+switch (e.type) {
+case TouchEvent.TOUCH_DOWN:
+            processor.touchDown(e.x,e.y,e.pointer,Buttons.LEFT);
+          justTouched=true;
+        break;
+case TouchEvent.TOUCH_UP:
+      processor.touchUp(e.x,e.y,e.pointer,Buttons.LEFT);
+    break;
+case TouchEvent.TOUCH_DRAGGED:
+  processor.touchDragged(e.x,e.y,e.pointer);
+}
+usedTouchEvents.free(e);
+}
+}
+}
+ else {
+int len=touchEvents.size();
+for (int i=0; i < len; i++) {
+TouchEvent e=touchEvents.get(i);
+if (e.type == TouchEvent.TOUCH_DOWN) justTouched=true;
+usedTouchEvents.free(e);
+}
+}
+if (touchEvents.size() == 0) {
+for (int i=0; i < deltaX.length; i++) {
+deltaX[0]=0;
+deltaY[0]=0;
+}
+}
+touchEvents.clear();
+}
+}

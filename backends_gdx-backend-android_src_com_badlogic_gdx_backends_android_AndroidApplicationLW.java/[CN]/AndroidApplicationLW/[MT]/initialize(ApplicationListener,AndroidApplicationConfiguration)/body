@@ -1,0 +1,13 @@
+{
+  graphics=new AndroidGraphicsLW(this,config.useGL20,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  input=new AndroidInputLW(this,config);
+  audio=new AndroidAudio(this.getService());
+  files=new AndroidFiles(this.getService().getAssets());
+  this.listener=listener;
+  this.handler=new Handler();
+  Gdx.app=this;
+  Gdx.input=this.getInput();
+  Gdx.audio=this.getAudio();
+  Gdx.files=this.getFiles();
+  Gdx.graphics=this.getGraphics();
+}

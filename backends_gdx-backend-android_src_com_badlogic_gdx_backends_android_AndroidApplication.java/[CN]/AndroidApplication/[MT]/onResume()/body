@@ -7,13 +7,13 @@
   Gdx.graphics=this.getGraphics();
   Gdx.net=this.getNet();
   ((AndroidInput)getInput()).registerSensorListeners();
-  if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
-    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
+  if (graphics != null && ((AndroidGraphics)graphics).view != null) {
+    if (((AndroidGraphics)graphics).view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)((AndroidGraphics)graphics).view).onResume();
+    if (((AndroidGraphics)graphics).view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)((AndroidGraphics)graphics).view).onResume();
   }
   if (!firstResume) {
     graphics.resume();
   }
  else   firstResume=false;
-  super.onResume();
+  super.forwardOnResume();
 }

@@ -1,0 +1,17 @@
+{
+synchronized (sGLThreadManager) {
+    if (LOG_THREADS) {
+      Log.i("GLThread","requestExitAndWait tid=" + getId());
+    }
+    mShouldExit=true;
+    sGLThreadManager.notifyAll();
+    while (!mExited) {
+      try {
+        sGLThreadManager.wait();
+      }
+ catch (      InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
+    }
+  }
+}

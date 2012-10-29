@@ -1,0 +1,8 @@
+{
+  if (mBuilder.length() > 0) {
+    if (LOG_SURFACE) {
+      Log.v("GLSurfaceView",mBuilder.toString());
+    }
+    mBuilder.delete(0,mBuilder.length());
+  }
+}

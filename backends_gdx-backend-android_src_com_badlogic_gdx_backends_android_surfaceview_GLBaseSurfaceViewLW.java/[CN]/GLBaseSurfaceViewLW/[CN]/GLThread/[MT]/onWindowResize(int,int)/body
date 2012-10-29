@@ -1,0 +1,24 @@
+{
+synchronized (sGLThreadManager) {
+    if (LOG_THREADS) {
+      Log.i("GLThread","onWindowResize tid=" + getId());
+    }
+    mWidth=w;
+    mHeight=h;
+    mSizeChanged=true;
+    mRequestRender=true;
+    mRenderComplete=false;
+    sGLThreadManager.notifyAll();
+    while (!mExited && !mPaused && !mRenderComplete) {
+      if (LOG_SURFACE) {
+      }
+      try {
+        Thread.sleep(200);
+        sGLThreadManager.wait();
+      }
+ catch (      InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
+    }
+  }
+}

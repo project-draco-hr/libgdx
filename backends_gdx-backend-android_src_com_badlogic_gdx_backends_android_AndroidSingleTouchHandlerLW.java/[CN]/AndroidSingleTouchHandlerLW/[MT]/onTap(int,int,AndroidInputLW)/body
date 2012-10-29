@@ -1,0 +1,6 @@
+{
+  input.touchX[0]=pX;
+  input.touchY[0]=pY;
+  postTouchEvent(input,TouchEvent.TOUCH_DOWN,pX,pY,0);
+  input.touched[0]=true;
+}

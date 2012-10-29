@@ -1,0 +1,10 @@
+{
+synchronized (sGLThreadManager) {
+    if (LOG_THREADS) {
+      Log.i("GLThread","onResume tid=" + getId());
+    }
+    mPaused=false;
+    mRequestRender=true;
+    sGLThreadManager.notifyAll();
+  }
+}

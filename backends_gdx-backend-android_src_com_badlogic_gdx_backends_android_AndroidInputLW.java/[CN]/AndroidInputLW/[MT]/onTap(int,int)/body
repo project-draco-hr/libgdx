@@ -1,0 +1,11 @@
+{
+  touchHandler.onTap(pX,pY,this);
+  if (sleepTime != 0) {
+    try {
+      Thread.sleep(sleepTime);
+    }
+ catch (    InterruptedException e) {
+    }
+  }
+  return true;
+}

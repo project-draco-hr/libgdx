@@ -1,0 +1,6 @@
+{
+  if (DEBUG)   Log.d(TAG," > onDestroy() " + hashCode());
+  view.onDestroy();
+  app.onDestroy();
+  super.onDestroy();
+}
