@@ -72,7 +72,7 @@
       }
     }
     for (int j=0; j < perJointkeyFrames.length; j++) {
-      if (perJointkeyFrames[i] == null)       throw new IllegalArgumentException("No track for bone " + skel.jointNames.get(j));
+      if (perJointkeyFrames[j] == null)       throw new IllegalArgumentException("No track for bone " + skel.jointNames.get(j));
     }
     skel.animations.put(animation.name,new SkeletonAnimation(animation.name,animation.length,perJointkeyFrames));
   }
