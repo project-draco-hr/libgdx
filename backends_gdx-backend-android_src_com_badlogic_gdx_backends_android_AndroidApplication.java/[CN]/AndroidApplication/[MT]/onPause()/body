@@ -15,5 +15,5 @@
     if (((AndroidGraphics)graphics).view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)((AndroidGraphics)graphics).view).onPause();
     if (((AndroidGraphics)graphics).view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)((AndroidGraphics)graphics).view).onPause();
   }
-  super.forwardOnPause();
+  super.onPause();
 }
