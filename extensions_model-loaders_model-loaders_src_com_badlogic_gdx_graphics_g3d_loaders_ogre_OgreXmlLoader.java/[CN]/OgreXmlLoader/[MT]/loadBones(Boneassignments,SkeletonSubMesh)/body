@@ -5,7 +5,7 @@
     boneAssignments.add(new IntArray(4));
     boneWeights.add(new FloatArray(4));
   }
-  List<Vertexboneassignment> vertexboneassignment=ogreSubmesh.getBoneassignments().getVertexboneassignment();
+  List<Vertexboneassignment> vertexboneassignment=boneAssigments.getVertexboneassignment();
   for (int j=0; j < vertexboneassignment.size(); j++) {
     Vertexboneassignment assignment=vertexboneassignment.get(j);
     int boneIndex=assignment.boneindex;
