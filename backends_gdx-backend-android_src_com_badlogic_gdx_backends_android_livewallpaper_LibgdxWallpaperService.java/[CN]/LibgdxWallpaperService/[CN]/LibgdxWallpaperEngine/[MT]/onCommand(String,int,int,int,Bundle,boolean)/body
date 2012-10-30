@@ -1,0 +1,8 @@
+{
+  if (DEBUG)   Log.d(TAG," > onCommand(" + pAction + " "+ pX+ " "+ pY+ " "+ pZ+ " "+ pExtras+ " "+ pResultRequested+ ")");
+  if (pAction.equals(WallpaperManager.COMMAND_TAP)) {
+  }
+ else   if (pAction.equals(WallpaperManager.COMMAND_DROP)) {
+  }
+  return super.onCommand(pAction,pX,pY,pZ,pExtras,pResultRequested);
+}

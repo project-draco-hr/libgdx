@@ -1,0 +1,15 @@
+{
+  EGLConfigChooser configChooser=getEglConfigChooser();
+  if (useGL2 && checkGL20()) {
+    GLSurfaceView20LW view=new GLSurfaceView20LW(app.getEngine(),resolutionStrategy);
+    if (configChooser != null)     view.setEGLConfigChooser(configChooser);
+    view.setRenderer(this);
+    return view;
+  }
+ else {
+    GLBaseSurfaceViewLW view=new DefaultGLSurfaceViewLW(app.getEngine(),resolutionStrategy);
+    if (configChooser != null)     view.setEGLConfigChooser(configChooser);
+    view.setRenderer(this);
+    return view;
+  }
+}

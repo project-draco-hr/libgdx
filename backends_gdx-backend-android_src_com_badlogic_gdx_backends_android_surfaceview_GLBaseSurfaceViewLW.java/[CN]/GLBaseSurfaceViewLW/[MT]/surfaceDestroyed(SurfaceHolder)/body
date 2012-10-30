@@ -1,0 +1,6 @@
+{
+  if (LOG_VIEW) {
+    Log.d(TAG," > surfaceDestroyed() " + this.hashCode());
+  }
+  mGLThread.surfaceDestroyed();
+}

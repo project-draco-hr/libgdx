@@ -5,8 +5,12 @@
   camera.apply(Gdx.gl10);
   batch.setProjectionMatrix(camera.combined);
   batch.begin();
-  batch.draw(region,-128,-128,256,256);
+  float width=256;
+  float x=-width;
+  batch.draw(region,x,-128,256,256);
+  batch.draw(region2,x + width + 10,-128,256,256);
   batch.end();
   debugRenderer.setProjectionMatrix(camera.combined);
-  debugRenderer.draw(region,-128,-128,0,0,256,256,1,1,0);
+  debugRenderer.draw(region,x,-128,0,0,256,256,1,1,0);
+  debugRenderer.draw(region2,x + width + 10,-128,0,0,256,256,1,1,0);
 }

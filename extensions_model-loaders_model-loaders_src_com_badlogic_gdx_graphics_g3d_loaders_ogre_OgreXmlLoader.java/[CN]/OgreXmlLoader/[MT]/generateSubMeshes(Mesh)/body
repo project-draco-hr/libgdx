@@ -178,21 +178,26 @@ idx=offset;
 com.badlogic.gdx.graphics.Mesh mesh=new com.badlogic.gdx.graphics.Mesh(false,vertices.length / vertexSize,indices.length,attribs);
 mesh.setIndices(indices);
 mesh.setVertices(vertices);
+String meshName="";
+List<Submeshname> names=ogreMesh.getSubmeshnames().getSubmeshname();
+for (int n=0; n < names.size(); ++n) {
+if (Integer.parseInt(names.get(n).getIndex()) == i) meshName=names.get(n).getName();
+}
 SubMesh subMesh;
-boolean hasSkeleton=ogreSubmesh.getBoneassignments() != null;
-if (hasSkeleton) {
-subMesh=new SkeletonSubMesh("",mesh,GL10.GL_TRIANGLES);
+Boneassignments boneAssigments=(ogreSubmesh.getBoneassignments() != null) ? ogreSubmesh.getBoneassignments() : ogreMesh.getBoneassignments();
+if (boneAssigments != null) {
+subMesh=new SkeletonSubMesh(meshName,mesh,GL10.GL_TRIANGLES);
 }
  else {
-subMesh=new StillSubMesh("",mesh,GL10.GL_TRIANGLES);
+subMesh=new StillSubMesh(meshName,mesh,GL10.GL_TRIANGLES);
 }
-if (hasSkeleton) {
+if (boneAssigments != null) {
 SkeletonSubMesh subSkelMesh=(SkeletonSubMesh)subMesh;
 subSkelMesh.setVertices(vertices);
 subSkelMesh.setIndices(indices);
 subSkelMesh.skinnedVertices=new float[vertices.length];
 System.arraycopy(subSkelMesh.vertices,0,subSkelMesh.skinnedVertices,0,subSkelMesh.vertices.length);
-loadBones(ogreSubmesh,subSkelMesh);
+loadBones(boneAssigments,subSkelMesh);
 }
 if (ogreSubmesh.getOperationtype().equals("triangle_list")) subMesh.primitiveType=GL10.GL_TRIANGLES;
 if (ogreSubmesh.getOperationtype().equals("triangle_fan")) subMesh.primitiveType=GL10.GL_TRIANGLE_FAN;

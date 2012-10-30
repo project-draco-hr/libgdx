@@ -1,0 +1,6 @@
+{
+  if (LOG_VIEW) {
+    Log.d(TAG," > onDestroy() " + this.hashCode());
+  }
+  mGLThread.requestExitAndWait();
+}

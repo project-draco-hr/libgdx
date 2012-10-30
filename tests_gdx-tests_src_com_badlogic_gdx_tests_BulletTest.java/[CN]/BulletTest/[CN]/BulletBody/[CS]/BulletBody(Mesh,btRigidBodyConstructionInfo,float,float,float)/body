@@ -1,6 +1,0 @@
-{
-  this.mesh=mesh;
-  transform.idt().translate(x,y,z);
-  body=new btRigidBody(bodyInfo);
-  body.setMotionState(this);
-}

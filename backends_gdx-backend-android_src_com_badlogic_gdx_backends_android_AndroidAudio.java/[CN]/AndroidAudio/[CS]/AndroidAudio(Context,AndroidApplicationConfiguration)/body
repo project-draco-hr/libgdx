@@ -1,0 +1,7 @@
+{
+  soundPool=new SoundPool(config.maxSimultaneousSounds,AudioManager.STREAM_MUSIC,100);
+  manager=(AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+  if (context instanceof Activity) {
+    ((Activity)context).setVolumeControlStream(AudioManager.STREAM_MUSIC);
+  }
+}
