@@ -1,0 +1,4 @@
+{
+  if (DEBUG)   Log.d(TAG," > onSurfaceCreated() " + hashCode());
+  super.onSurfaceCreated(holder);
+}
