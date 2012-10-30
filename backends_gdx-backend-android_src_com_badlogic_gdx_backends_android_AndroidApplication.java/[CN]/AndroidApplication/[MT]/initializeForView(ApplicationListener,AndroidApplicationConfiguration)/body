@@ -1,6 +1,6 @@
 {
   graphics=new AndroidGraphics(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
-  input=new AndroidInput(this,((AndroidGraphics)graphics).view,config);
+  input=new AndroidInput(this,this,graphics.view,config);
   audio=new AndroidAudio(this,config);
   files=new AndroidFiles(this.getAssets(),this.getFilesDir().getAbsolutePath());
   net=new AndroidNet(this);
@@ -14,5 +14,5 @@
   Gdx.net=this.getNet();
   createWakeLock(config);
   hideStatusBar(config);
-  return ((AndroidGraphics)graphics).getView();
+  return graphics.getView();
 }

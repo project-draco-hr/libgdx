@@ -1,9 +1,9 @@
 {
   handle.post(new Runnable(){
     public void run(){
-      AlertDialog.Builder alert=new AlertDialog.Builder(AndroidInput.this.app);
+      AlertDialog.Builder alert=new AlertDialog.Builder(context);
       alert.setTitle(title);
-      final EditText input=new EditText(AndroidInput.this.app);
+      final EditText input=new EditText(context);
       input.setHint(placeholder);
       input.setSingleLine();
       alert.setView(input);

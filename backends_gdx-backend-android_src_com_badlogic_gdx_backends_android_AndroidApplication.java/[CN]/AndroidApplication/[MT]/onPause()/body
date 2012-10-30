@@ -11,9 +11,9 @@
     graphics.destroy();
   }
   graphics.setContinuousRendering(isContinuous);
-  if (graphics != null && ((AndroidGraphics)graphics).view != null) {
-    if (((AndroidGraphics)graphics).view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)((AndroidGraphics)graphics).view).onPause();
-    if (((AndroidGraphics)graphics).view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)((AndroidGraphics)graphics).view).onPause();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
   }
   super.onPause();
 }
