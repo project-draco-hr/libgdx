@@ -1,0 +1,7 @@
+{
+  this.mesh=mesh;
+  worldTransform=new WorldTransform();
+  worldTransform.transform.idt().translate(x,y,z);
+  body=new btRigidBody(bodyInfo);
+  body.setMotionState(worldTransform);
+}

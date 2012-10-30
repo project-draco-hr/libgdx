@@ -2,8 +2,8 @@
   float uvWidth=this.region.u2 - this.region.u;
   float uvHeight=this.region.v2 - this.region.v;
   for (int i=0; i < localTexCoords.length; i+=2) {
-    localTexCoords[i]=this.region.u + (localTexCoords[i] * uvWidth);
-    localTexCoords[i + 1]=this.region.v + (localTexCoords[i + 1] * uvHeight);
+    localTexCoords[i]=this.region.u + localTexCoords[i] * uvWidth;
+    localTexCoords[i + 1]=this.region.v + localTexCoords[i + 1] * uvHeight;
   }
   return localTexCoords;
 }

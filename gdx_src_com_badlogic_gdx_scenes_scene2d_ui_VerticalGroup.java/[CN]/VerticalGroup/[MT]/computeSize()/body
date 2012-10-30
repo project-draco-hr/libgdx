@@ -1,6 +1,7 @@
 {
   sizeInvalid=false;
   prefWidth=0;
+  prefHeight=0;
   SnapshotArray<Actor> children=getChildren();
   for (int i=0, n=children.size; i < n; i++) {
     Actor child=children.get(i);

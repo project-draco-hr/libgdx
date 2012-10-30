@@ -11,12 +11,11 @@
     return false;
   }
   tracker.update(x,y,Gdx.input.getCurrentEventTime());
-  if (inTapSquare && (Math.abs(x - tapSquareCenterX) >= tapSquareSize || Math.abs(y - tapSquareCenterY) >= tapSquareSize)) {
+  if (inTapSquare && !isWithinTapSquare(x,y)) {
     longPressTask.cancel();
     inTapSquare=false;
   }
   if (!inTapSquare) {
-    inTapSquare=false;
     panning=true;
     return listener.pan(x,y,tracker.deltaX,tracker.deltaY);
   }

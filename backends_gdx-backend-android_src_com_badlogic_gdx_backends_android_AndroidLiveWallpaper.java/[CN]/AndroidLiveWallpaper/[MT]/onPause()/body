@@ -1,0 +1,5 @@
+{
+  graphics.pause();
+  if (audio != null)   audio.pause();
+  input.unregisterSensorListeners();
+}

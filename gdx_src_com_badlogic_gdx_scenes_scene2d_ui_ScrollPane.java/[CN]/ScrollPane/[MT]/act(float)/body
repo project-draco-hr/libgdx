@@ -1,6 +1,6 @@
 {
   super.act(delta);
-  boolean panning=gestureListener.getGestureDetector().isPanning();
+  boolean panning=flickScrollListener.getGestureDetector().isPanning();
   if (fadeAlpha > 0 && fadeScrollBars && !panning && !touchScrollH && !touchScrollV) {
     fadeDelay-=fadeDelaySeconds * delta;
     if (fadeDelay <= 0)     fadeAlpha=Math.max(0,fadeAlpha - fadeAlphaSeconds * delta);

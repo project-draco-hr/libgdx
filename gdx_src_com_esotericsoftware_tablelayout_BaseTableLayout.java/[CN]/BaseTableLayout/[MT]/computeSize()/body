@@ -48,25 +48,13 @@
   }
   outer:   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
-    if (c.ignore)     continue;
-    if (c.expandX == 0)     continue;
+    if (c.ignore || c.expandX == 0)     continue;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     if (expandWidth[column] != 0)     continue outer;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     expandWidth[column]=c.expandX;
   }
-  float uniformMinWidth=0, uniformMinHeight=0;
-  float uniformPrefWidth=0, uniformPrefHeight=0;
   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
-    if (c.ignore)     continue;
-    if (c.uniformX != null) {
-      uniformMinWidth=Math.max(uniformMinWidth,columnMinWidth[c.column]);
-      uniformPrefWidth=Math.max(uniformPrefWidth,columnPrefWidth[c.column]);
-    }
-    if (c.uniformY != null) {
-      uniformMinHeight=Math.max(uniformMinHeight,rowMinHeight[c.row]);
-      uniformPrefHeight=Math.max(uniformPrefHeight,rowPrefHeight[c.row]);
-    }
-    if (c.colspan == 1)     continue;
+    if (c.ignore || c.colspan == 1)     continue;
     float minWidth=w(c.minWidth,c);
     float prefWidth=w(c.prefWidth,c);
     float maxWidth=w(c.maxWidth,c);
@@ -87,19 +75,32 @@
       columnPrefWidth[column]+=extraPrefWidth * ratio;
     }
   }
+  float uniformMinWidth=0, uniformMinHeight=0;
+  float uniformPrefWidth=0, uniformPrefHeight=0;
+  for (int i=0, n=cells.size(); i < n; i++) {
+    Cell c=cells.get(i);
+    if (c.ignore)     continue;
+    if (c.uniformX == Boolean.TRUE && c.colspan == 1) {
+      uniformMinWidth=Math.max(uniformMinWidth,columnMinWidth[c.column]);
+      uniformPrefWidth=Math.max(uniformPrefWidth,columnPrefWidth[c.column]);
+    }
+    if (c.uniformY == Boolean.TRUE) {
+      uniformMinHeight=Math.max(uniformMinHeight,rowMinHeight[c.row]);
+      uniformPrefHeight=Math.max(uniformPrefHeight,rowPrefHeight[c.row]);
+    }
+  }
   if (uniformPrefWidth > 0 || uniformPrefHeight > 0) {
-    outer:     for (int i=0, n=cells.size(); i < n; i++) {
+    for (int i=0, n=cells.size(); i < n; i++) {
       Cell c=cells.get(i);
       if (c.ignore)       continue;
-      if (uniformPrefWidth > 0 && c.uniformX != null) {
+      if (uniformPrefWidth > 0 && c.uniformX == Boolean.TRUE && c.colspan == 1) {
         columnMinWidth[c.column]=uniformMinWidth;
         columnPrefWidth[c.column]=uniformPrefWidth;
       }
-      if (uniformPrefHeight > 0 && c.uniformY != null) {
+      if (uniformPrefHeight > 0 && c.uniformY == Boolean.TRUE) {
         rowMinHeight[c.row]=uniformMinHeight;
         rowPrefHeight[c.row]=uniformPrefHeight;
       }
-      continue outer;
     }
   }
   tableMinWidth=0;
