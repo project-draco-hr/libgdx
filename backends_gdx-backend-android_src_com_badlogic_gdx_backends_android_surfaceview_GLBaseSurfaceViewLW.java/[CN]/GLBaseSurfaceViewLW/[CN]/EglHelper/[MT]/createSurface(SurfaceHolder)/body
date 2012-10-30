@@ -1,0 +1,29 @@
+{
+  if (mEglSurface != null && mEglSurface != EGL10.EGL_NO_SURFACE) {
+    mEgl.eglMakeCurrent(mEglDisplay,EGL10.EGL_NO_SURFACE,EGL10.EGL_NO_SURFACE,EGL10.EGL_NO_CONTEXT);
+    mEGLWindowSurfaceFactory.destroySurface(mEgl,mEglDisplay,mEglSurface);
+  }
+  mEglSurface=mEGLWindowSurfaceFactory.createWindowSurface(mEgl,mEglDisplay,mEglConfig,holder);
+  if (mEglSurface == null || mEglSurface == EGL10.EGL_NO_SURFACE) {
+    throwEglException("createWindowSurface");
+  }
+  if (!mEgl.eglMakeCurrent(mEglDisplay,mEglSurface,mEglSurface,mEglContext)) {
+    throwEglException("eglMakeCurrent");
+  }
+  GL gl=mEglContext.getGL();
+  if (mGLWrapper != null) {
+    gl=mGLWrapper.wrap(gl);
+  }
+  if ((mDebugFlags & (DEBUG_CHECK_GL_ERROR | DEBUG_LOG_GL_CALLS)) != 0) {
+    int configFlags=0;
+    Writer log=null;
+    if ((mDebugFlags & DEBUG_CHECK_GL_ERROR) != 0) {
+      configFlags|=GLDebugHelper.CONFIG_CHECK_GL_ERROR;
+    }
+    if ((mDebugFlags & DEBUG_LOG_GL_CALLS) != 0) {
+      log=new LogWriter();
+    }
+    gl=GLDebugHelper.wrap(gl,configFlags,log);
+  }
+  return gl;
+}

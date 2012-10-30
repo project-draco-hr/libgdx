@@ -1,0 +1,9 @@
+{
+synchronized (sGLThreadManager) {
+    if (LOG_THREADS) {
+      Log.i("GLThread","onPause tid=" + getId());
+    }
+    mPaused=true;
+    sGLThreadManager.notifyAll();
+  }
+}

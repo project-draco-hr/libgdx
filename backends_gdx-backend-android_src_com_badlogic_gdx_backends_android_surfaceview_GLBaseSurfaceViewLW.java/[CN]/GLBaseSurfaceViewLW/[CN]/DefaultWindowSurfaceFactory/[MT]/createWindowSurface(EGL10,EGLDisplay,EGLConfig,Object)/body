@@ -1,0 +1,20 @@
+{
+  EGLSurface eglSurface=null;
+  while (eglSurface == null) {
+    try {
+      eglSurface=egl.eglCreateWindowSurface(display,config,nativeWindow,null);
+    }
+ catch (    Throwable t) {
+    }
+ finally {
+      if (eglSurface == null) {
+        try {
+          Thread.sleep(10);
+        }
+ catch (        InterruptedException t) {
+        }
+      }
+    }
+  }
+  return eglSurface;
+}
