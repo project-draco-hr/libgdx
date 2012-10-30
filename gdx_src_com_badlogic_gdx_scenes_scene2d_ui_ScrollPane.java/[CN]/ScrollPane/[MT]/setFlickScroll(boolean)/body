@@ -1,7 +1,7 @@
 {
   if (this.flickScroll == flickScroll)   return;
   this.flickScroll=flickScroll;
-  if (flickScroll)   addListener(gestureListener);
- else   removeListener(gestureListener);
+  if (flickScroll)   addListener(flickScrollListener);
+ else   removeListener(flickScrollListener);
   invalidate();
 }
