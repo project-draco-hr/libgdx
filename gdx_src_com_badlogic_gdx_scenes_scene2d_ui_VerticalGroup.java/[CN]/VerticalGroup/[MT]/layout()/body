@@ -19,7 +19,8 @@
     if ((alignment & Align.left) != 0)     x=0;
  else     if ((alignment & Align.right) != 0)     x=groupWidth - width;
  else     x=(groupWidth - width) / 2;
+    if (!reverse)     y+=height * dir;
     child.setBounds(x,y,width,height);
-    y+=height * dir;
+    if (reverse)     y+=height * dir;
   }
 }

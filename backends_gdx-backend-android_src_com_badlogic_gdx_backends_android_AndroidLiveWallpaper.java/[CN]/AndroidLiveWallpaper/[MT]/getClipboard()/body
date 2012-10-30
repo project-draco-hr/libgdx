@@ -1,0 +1,6 @@
+{
+  if (clipboard == null) {
+    clipboard=new AndroidClipboard(service);
+  }
+  return clipboard;
+}

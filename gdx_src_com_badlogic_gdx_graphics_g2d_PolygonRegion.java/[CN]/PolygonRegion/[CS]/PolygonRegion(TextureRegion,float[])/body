@@ -1,2 +1,19 @@
 {
+  this.region=region;
+  EarClippingTriangulator ect=new EarClippingTriangulator();
+  List<Vector2> polygonVectors=new ArrayList<Vector2>();
+  for (int i=0; i < vertices.length; i+=2) {
+    polygonVectors.add(new Vector2(vertices[i],vertices[i + 1]));
+  }
+  List<Vector2> triangulatedVectors=ect.computeTriangles(polygonVectors);
+  localVertices=new float[triangulatedVectors.size() * 2];
+  texCoords=new float[triangulatedVectors.size() * 2];
+  float uvWidth=region.u2 - region.u;
+  float uvHeight=region.v2 - region.v;
+  for (int i=0; i < triangulatedVectors.size(); i++) {
+    localVertices[i * 2]=triangulatedVectors.get(i).x;
+    localVertices[i * 2 + 1]=triangulatedVectors.get(i).y;
+    texCoords[i * 2]=region.u + (localVertices[i * 2] - region.getRegionX()) / region.getRegionWidth();
+    texCoords[i * 2 + 1]=region.v + (1 - (localVertices[i * 2 + 1] - region.getRegionY()) / region.getRegionHeight());
+  }
 }
