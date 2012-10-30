@@ -1,0 +1,7 @@
+{
+  this.width=width;
+  this.height=height;
+  updatePpi();
+  gl.glViewport(0,0,this.width,this.height);
+  app.getListener().resize(width,height);
+}

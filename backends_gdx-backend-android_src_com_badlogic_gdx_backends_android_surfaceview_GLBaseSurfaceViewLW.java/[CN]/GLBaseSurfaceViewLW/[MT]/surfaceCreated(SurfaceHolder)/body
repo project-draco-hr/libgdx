@@ -1,0 +1,6 @@
+{
+  if (LOG_VIEW) {
+    Log.d(TAG," > surfaceCreated() " + this.hashCode());
+  }
+  mGLThread.surfaceCreated();
+}

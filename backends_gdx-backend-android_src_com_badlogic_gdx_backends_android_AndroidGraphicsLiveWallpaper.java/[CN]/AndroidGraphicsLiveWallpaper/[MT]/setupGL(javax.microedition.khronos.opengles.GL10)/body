@@ -1,0 +1,30 @@
+{
+  if (gl10 != null || gl20 != null)   return;
+  boolean isGL20=checkGL20();
+  Gdx.app.log("AndroidGraphics","GL20: " + isGL20);
+  if (view instanceof GLSurfaceView20LW) {
+    gl20=new AndroidGL20();
+    this.gl=gl20;
+  }
+ else {
+    gl10=new AndroidGL10(gl);
+    this.gl=gl10;
+    if (gl instanceof javax.microedition.khronos.opengles.GL11) {
+      String renderer=gl.glGetString(GL10.GL_RENDERER);
+      if (!renderer.toLowerCase().contains("pixelflinger") && !(android.os.Build.MODEL.equals("MB200") || android.os.Build.MODEL.equals("MB220") || android.os.Build.MODEL.contains("Behold"))) {
+        gl11=new AndroidGL11((javax.microedition.khronos.opengles.GL11)gl);
+        gl10=gl11;
+      }
+    }
+  }
+  this.glu=new AndroidGLU();
+  Gdx.gl=this.gl;
+  Gdx.gl10=gl10;
+  Gdx.gl11=gl11;
+  Gdx.gl20=gl20;
+  Gdx.glu=glu;
+  Gdx.app.log("AndroidGraphics","OGL renderer: " + gl.glGetString(GL10.GL_RENDERER));
+  Gdx.app.log("AndroidGraphics","OGL vendor: " + gl.glGetString(GL10.GL_VENDOR));
+  Gdx.app.log("AndroidGraphics","OGL version: " + gl.glGetString(GL10.GL_VERSION));
+  Gdx.app.log("AndroidGraphics","OGL extensions: " + gl.glGetString(GL10.GL_EXTENSIONS));
+}
