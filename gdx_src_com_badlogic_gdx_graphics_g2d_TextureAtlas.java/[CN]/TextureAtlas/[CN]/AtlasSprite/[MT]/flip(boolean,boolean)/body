@@ -4,8 +4,8 @@
   float oldOriginY=getOriginY();
   float oldOffsetX=region.offsetX;
   float oldOffsetY=region.offsetY;
-  float widthRatio=getWidth() / region.originalWidth;
-  float heightRatio=getHeight() / region.originalHeight;
+  float widthRatio=getWidthRatio();
+  float heightRatio=getHeightRatio();
   region.offsetX=originalOffsetX;
   region.offsetY=originalOffsetY;
   region.flip(x,y);

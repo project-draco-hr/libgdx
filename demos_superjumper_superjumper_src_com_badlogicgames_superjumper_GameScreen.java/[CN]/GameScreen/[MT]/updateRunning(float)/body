@@ -7,7 +7,8 @@
       return;
     }
   }
-  if (Gdx.app.getType() == Application.ApplicationType.Android) {
+  ApplicationType appType=Gdx.app.getType();
+  if (appType == ApplicationType.Android || appType == ApplicationType.iOS) {
     world.update(deltaTime,Gdx.input.getAccelerometerX());
   }
  else {
