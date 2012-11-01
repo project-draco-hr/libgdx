@@ -1,5 +1,0 @@
-{
-  if (DEBUG)   Log.d(TAG," > onVisibilityChanged(" + xOffset + " "+ yOffset+ " "+ xOffsetStep+ " "+ yOffsetStep+ " "+ xPixelOffset+ " "+ yPixelOffset+ ") "+ hashCode());
-  wallpaperListener.offsetChange(xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
-  super.onOffsetsChanged(xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
-}

@@ -1,0 +1,4 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onSurfaceChanged() " + isPreview() + " "+ hashCode());
+  super.onSurfaceChanged(holder,format,width,height);
+}
