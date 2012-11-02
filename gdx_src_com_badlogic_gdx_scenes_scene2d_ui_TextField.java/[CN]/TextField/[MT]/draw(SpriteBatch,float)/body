@@ -1,6 +1,6 @@
 {
   final BitmapFont font=style.font;
-  final Color fontColor=style.fontColor;
+  final Color fontColor=disabled ? style.disabledFontColor : style.fontColor;
   final Drawable selection=style.selection;
   final Drawable cursorPatch=style.cursor;
   final Drawable background=style.background;
