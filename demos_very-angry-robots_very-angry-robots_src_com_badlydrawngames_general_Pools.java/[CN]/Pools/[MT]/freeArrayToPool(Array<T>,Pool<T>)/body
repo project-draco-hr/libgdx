@@ -1,4 +1,4 @@
 {
-  pool.free(array);
+  pool.freeAll(array);
   array.clear();
 }
