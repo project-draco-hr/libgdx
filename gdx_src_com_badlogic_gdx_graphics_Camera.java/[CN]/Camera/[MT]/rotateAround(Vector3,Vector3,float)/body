@@ -1,0 +1,8 @@
+{
+  tmpVec.set(point);
+  tmpVec.sub(position);
+  translate(tmpVec);
+  rotate(axis,angle);
+  tmpVec.rotate(axis,angle);
+  translate(tmpVec.mul(-1));
+}

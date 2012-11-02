@@ -1,0 +1,8 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(TAG," > onCreate() " + hashCode());
+  super.onCreate(surfaceHolder);
+  if (AndroidLiveWallpaperService.this.previousEngine != null) {
+    AndroidLiveWallpaperService.this.previousEngine.view.onPause();
+  }
+  AndroidLiveWallpaperService.this.previousEngine=this;
+}

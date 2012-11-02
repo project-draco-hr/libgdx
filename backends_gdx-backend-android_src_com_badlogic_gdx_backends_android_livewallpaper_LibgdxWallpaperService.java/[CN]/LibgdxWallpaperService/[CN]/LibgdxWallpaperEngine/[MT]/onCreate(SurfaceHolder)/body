@@ -1,9 +1,0 @@
-{
-  if (DEBUG)   Log.d(TAG," > onCreate() " + hashCode());
-  super.onCreate(surfaceHolder);
-  if (previousEngine != null) {
-    previousEngine.view.onPause();
-  }
-  previousEngine=this;
-  wallpaperListener.setIsPreview(this.isPreview());
-}

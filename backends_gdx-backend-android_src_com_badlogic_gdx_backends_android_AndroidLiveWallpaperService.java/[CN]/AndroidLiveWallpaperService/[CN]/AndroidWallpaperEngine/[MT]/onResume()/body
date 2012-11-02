@@ -1,0 +1,5 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onResume() " + hashCode());
+  app.onResume();
+  view.onResume();
+}
