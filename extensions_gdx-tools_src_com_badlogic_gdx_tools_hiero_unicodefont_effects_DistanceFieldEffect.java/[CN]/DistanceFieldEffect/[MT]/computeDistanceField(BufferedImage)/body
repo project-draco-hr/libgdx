@@ -1,0 +1,20 @@
+{
+  final int inWidth=inImage.getWidth();
+  final int inHeight=inImage.getHeight();
+  final int outWidth=inWidth / upscale;
+  final int outHeight=inHeight / upscale;
+  final BufferedImage outImage=new BufferedImage(outWidth,outHeight,BufferedImage.TYPE_4BYTE_ABGR);
+  final boolean[][] bitmap=new boolean[inHeight][inWidth];
+  for (int y=0; y < inHeight; ++y) {
+    for (int x=0; x < inWidth; ++x) {
+      bitmap[y][x]=(inImage.getRGB(x,y) & 0x808080) != 0;
+    }
+  }
+  for (int y=0; y < outHeight; ++y) {
+    for (int x=0; x < outWidth; ++x) {
+      float signedDistance=findSignedDistance((x * upscale) + (upscale / 2),(y * upscale) + (upscale / 2),bitmap);
+      outImage.setRGB(x,y,distanceToRGB(signedDistance));
+    }
+  }
+  return outImage;
+}

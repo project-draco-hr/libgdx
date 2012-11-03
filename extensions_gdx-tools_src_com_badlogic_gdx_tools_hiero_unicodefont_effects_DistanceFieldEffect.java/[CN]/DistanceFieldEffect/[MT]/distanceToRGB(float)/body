@@ -1,0 +1,6 @@
+{
+  float alpha=0.5f + 0.5f * (signedDistance / spread);
+  alpha=Math.min(1,Math.max(0,alpha));
+  int alphaByte=(int)(alpha * 0xFF);
+  return (alphaByte << 24) | (color.getRGB() & 0xFFFFFF);
+}

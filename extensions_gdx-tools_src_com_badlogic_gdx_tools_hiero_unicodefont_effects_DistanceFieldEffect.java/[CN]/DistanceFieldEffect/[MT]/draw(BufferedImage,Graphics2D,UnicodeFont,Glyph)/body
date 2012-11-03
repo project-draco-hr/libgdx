@@ -1,0 +1,6 @@
+{
+  BufferedImage input=new BufferedImage(upscale * glyph.getWidth(),upscale * glyph.getHeight(),BufferedImage.TYPE_BYTE_BINARY);
+  drawGlyph(input,glyph);
+  BufferedImage distanceField=computeDistanceField(input);
+  g.drawImage(distanceField,new AffineTransform(),null);
+}

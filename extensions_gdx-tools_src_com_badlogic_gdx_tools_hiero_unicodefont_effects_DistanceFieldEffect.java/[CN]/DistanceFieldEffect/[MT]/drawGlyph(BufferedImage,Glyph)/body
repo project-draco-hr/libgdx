@@ -1,0 +1,7 @@
+{
+  Graphics2D inputG=(Graphics2D)image.getGraphics();
+  inputG.setTransform(AffineTransform.getScaleInstance(upscale,upscale));
+  inputG.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS,RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+  inputG.setColor(Color.WHITE);
+  inputG.fill(glyph.getShape());
+}
