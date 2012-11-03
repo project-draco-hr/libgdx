@@ -1,5 +1,5 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onPause() " + hashCode());
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onPause() " + hashCode() + ", running: "+ runningEngines);
   app.onPause();
   view.onPause();
 }

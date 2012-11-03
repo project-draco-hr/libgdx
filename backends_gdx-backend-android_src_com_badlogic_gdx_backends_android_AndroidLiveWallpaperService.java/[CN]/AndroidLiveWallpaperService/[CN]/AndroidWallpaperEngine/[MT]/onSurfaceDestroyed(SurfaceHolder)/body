@@ -1,4 +1,4 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onSurfaceDestroyed() " + hashCode());
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onSurfaceDestroyed() " + hashCode() + ", running: "+ runningEngines);
   super.onSurfaceDestroyed(holder);
 }
