@@ -15,6 +15,10 @@
  else           if (body.getType() == BodyType.KinematicBody)           drawShape(fixture,transform,SHAPE_KINEMATIC);
  else           if (body.isAwake() == false)           drawShape(fixture,transform,SHAPE_NOT_AWAKE);
  else           drawShape(fixture,transform,SHAPE_AWAKE);
+          if (drawVelocities) {
+            Vector2 position=body.getPosition();
+            drawSegment(position,body.getLinearVelocity().add(position),VELOCITY_COLOR);
+          }
         }
         if (drawAABBs) {
           drawAABB(fixture,transform);
