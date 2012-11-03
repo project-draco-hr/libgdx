@@ -11,7 +11,7 @@
     return false;
   }
   tracker.update(x,y,Gdx.input.getCurrentEventTime());
-  if (inTapSquare && !isWithinTapSquare(x,y)) {
+  if (inTapSquare && !isWithinTapSquare(x,y,tapSquareCenterX,tapSquareCenterY)) {
     longPressTask.cancel();
     inTapSquare=false;
   }
