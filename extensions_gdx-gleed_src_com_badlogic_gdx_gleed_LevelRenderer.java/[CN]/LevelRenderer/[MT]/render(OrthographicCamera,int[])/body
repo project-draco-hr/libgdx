@@ -1,0 +1,25 @@
+{
+  Array<Layer> layersArray=m_level.getLayers();
+  m_batch.setProjectionMatrix(camera.combined);
+  m_cameraRectangle.x=camera.position.x - camera.viewportWidth * 0.5f * camera.zoom;
+  m_cameraRectangle.y=camera.position.y - camera.viewportHeight * 0.5f * camera.zoom;
+  m_cameraRectangle.width=camera.viewportWidth * camera.zoom;
+  m_cameraRectangle.height=camera.viewportHeight * camera.zoom;
+  m_batch.begin();
+  m_batch.enableBlending();
+  for (int i=0; i < layers.length; ++i) {
+    Layer layer=layersArray.get(layers[i]);
+    if (!layer.visible) {
+      continue;
+    }
+    Array<TextureElement> textures=layer.getTextures();
+    for (int j=0; j < textures.size; ++j) {
+      TextureElement texture=textures.get(j);
+      setBounds(texture);
+      if (m_cameraRectangle.overlaps(m_box) || m_cameraRectangle.contains(m_box) || m_box.contains(m_cameraRectangle)) {
+        m_batch.draw(texture.region,texture.position.x * m_mpp - texture.originX,texture.position.y * m_mpp - texture.originY,texture.originX,texture.originY,texture.region.getRegionWidth(),texture.region.getRegionHeight(),texture.scaleX * m_mpp,texture.scaleY * m_mpp,-MathUtils.radiansToDegrees * texture.rotation);
+      }
+    }
+  }
+  m_batch.end();
+}

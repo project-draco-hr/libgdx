@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < layers.size; ++i) {
+    Layer layer=layers.get(i);
+    if (layer.getProperties().getString("Name","").equals(name)) {
+      return layer;
+    }
+  }
+  return null;
+}

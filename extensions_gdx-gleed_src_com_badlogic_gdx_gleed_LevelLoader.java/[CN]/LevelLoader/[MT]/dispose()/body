@@ -1,0 +1,12 @@
+{
+  s_logger.info("disposing level assets " + m_level.file);
+  for (int i=0; i < m_level.layers.size; ++i) {
+    Array<TextureElement> textures=m_level.layers.get(i).textures;
+    for (int j=0; j < textures.size; ++j) {
+      TextureElement texture=textures.get(j);
+      if (m_assetManager.isLoaded(texture.path,Texture.class)) {
+        m_assetManager.unload(texture.path);
+      }
+    }
+  }
+}
