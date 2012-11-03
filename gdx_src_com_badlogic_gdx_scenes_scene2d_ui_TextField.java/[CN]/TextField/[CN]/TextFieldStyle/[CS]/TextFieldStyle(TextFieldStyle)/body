@@ -5,5 +5,6 @@
   this.cursor=style.cursor;
   this.font=style.font;
   if (style.fontColor != null)   this.fontColor=new Color(style.fontColor);
+  if (style.disabledFontColor != null)   this.disabledFontColor=new Color(style.disabledFontColor);
   this.selection=style.selection;
 }
