@@ -1,0 +1,9 @@
+{
+  super.create();
+  manager=new AssetManager();
+  camera=new OrthographicCamera(640,480);
+  camera.setToOrtho(false,640,480);
+  LevelLoader.setLoggingLevel(Logger.INFO);
+  manager.setLoader(Level.class,new LevelLoader(new InternalFileHandleResolver()));
+  manager.load("data/gleedtest.xml",Level.class);
+}

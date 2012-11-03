@@ -1,0 +1,9 @@
+{
+  Element position=item.getChildByName("Position");
+  Element colorElement=item.getChildByName("FillColor");
+  circle.color.r=Float.parseFloat(colorElement.getChildByName("R").getText()) / 255.0f;
+  circle.color.g=Float.parseFloat(colorElement.getChildByName("G").getText()) / 255.0f;
+  circle.color.b=Float.parseFloat(colorElement.getChildByName("B").getText()) / 255.0f;
+  circle.color.a=Float.parseFloat(colorElement.getChildByName("A").getText()) / 255.0f;
+  circle.circle=new Circle(new Vector2(Float.parseFloat(position.getChildByName("X").getText()),-Float.parseFloat(position.getChildByName("Y").getText())),Float.parseFloat(item.getChildByName("Radius").getText()));
+}
