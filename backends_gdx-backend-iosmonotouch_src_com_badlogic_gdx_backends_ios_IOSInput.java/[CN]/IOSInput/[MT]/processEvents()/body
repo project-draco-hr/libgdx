@@ -18,7 +18,7 @@ if (inputProcessor != null) inputProcessor.touchDragged(event.x,event.y,event.po
 break;
 }
 }
-touchEventPool.free(touchEvents);
+touchEventPool.freeAll(touchEvents);
 touchEvents.clear();
 }
 }
