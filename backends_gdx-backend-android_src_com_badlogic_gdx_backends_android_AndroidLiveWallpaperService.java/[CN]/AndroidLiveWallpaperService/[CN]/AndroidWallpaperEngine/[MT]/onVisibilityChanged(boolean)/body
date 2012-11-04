@@ -1,0 +1,10 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onVisibilityChanged(" + visible + ") "+ hashCode());
+  if (visible) {
+    onResume();
+  }
+ else {
+    onPause();
+  }
+  super.onVisibilityChanged(visible);
+}

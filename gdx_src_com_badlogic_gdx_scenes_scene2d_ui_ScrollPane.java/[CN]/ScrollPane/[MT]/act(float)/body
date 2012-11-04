@@ -52,12 +52,12 @@
       if (amountY < 0) {
         resetFade();
         amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
-        if (amountY > 0)         amountY=0;
+        if (amountY > 0)         scrollY(0);
       }
  else       if (amountY > maxY) {
         resetFade();
         amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
-        if (amountY < maxY)         amountY=maxY;
+        if (amountY < maxY)         scrollY(maxY);
       }
     }
   }

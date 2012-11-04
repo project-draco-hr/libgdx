@@ -20,7 +20,7 @@
       contents.addAll(materialGroup);
     }
     materialGroups.clear();
-    arrayPool.free(usedArrays);
+    arrayPool.freeAll(usedArrays);
     usedArrays.clear();
   }
 }
