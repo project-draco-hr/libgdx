@@ -1,14 +1,14 @@
 {
   for (Iterator iter=values.iterator(); iter.hasNext(); ) {
     Value value=(Value)iter.next();
-    if (value.getName().equals("Color")) {
-      setColor((Color)value.getObject());
+    if ("Color".equals(value.getName())) {
+      color=(Color)value.getObject();
     }
- else     if (value.getName().equals("Upscale")) {
-      setUpscale((Integer)value.getObject());
+ else     if ("Scale".equals(value.getName())) {
+      scale=Math.max(1,(Integer)value.getObject());
     }
- else     if (value.getName().equals("Spread")) {
-      setSpread((Integer)value.getObject());
+ else     if ("Spread".equals(value.getName())) {
+      spread=Math.max(0,(Float)value.getObject());
     }
   }
 }
