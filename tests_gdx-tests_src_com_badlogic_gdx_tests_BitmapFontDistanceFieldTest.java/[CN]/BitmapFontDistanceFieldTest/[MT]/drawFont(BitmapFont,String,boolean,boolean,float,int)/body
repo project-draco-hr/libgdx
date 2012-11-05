@@ -1,0 +1,31 @@
+{
+  int y=10;
+  float maxWidth=0;
+  spriteBatch.setShader(null);
+  descriptionFont.drawMultiLine(spriteBatch,description,x,y);
+  spriteBatch.flush();
+  y+=10 + 2 * descriptionFont.getLineHeight();
+  if (linearFiltering) {
+    font.getRegion().getTexture().setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
+  }
+ else {
+    font.getRegion().getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
+  }
+  if (useShader) {
+    spriteBatch.setShader(distanceFieldShader);
+  }
+ else {
+    spriteBatch.setShader(null);
+  }
+  for (  float scale : SCALES) {
+    font.setScale(scale);
+    maxWidth=Math.max(maxWidth,font.getBounds(TEXT).width);
+    if (useShader) {
+      distanceFieldShader.setSmoothing(smoothing / scale);
+    }
+    font.draw(spriteBatch,TEXT,x,y + scale * getBaselineShift(font));
+    y+=font.getLineHeight();
+    spriteBatch.flush();
+  }
+  return (int)Math.ceil(maxWidth);
+}

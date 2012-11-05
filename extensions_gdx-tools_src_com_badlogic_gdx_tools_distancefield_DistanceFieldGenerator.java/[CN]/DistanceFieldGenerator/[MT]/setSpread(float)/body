@@ -1,0 +1,4 @@
+{
+  if (spread <= 0)   throw new IllegalArgumentException("spread must be positive");
+  this.spread=spread;
+}
