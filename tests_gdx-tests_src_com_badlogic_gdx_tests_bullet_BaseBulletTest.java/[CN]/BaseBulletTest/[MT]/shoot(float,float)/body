@@ -1,0 +1,5 @@
+{
+  Ray ray=camera.getPickRay(x,y);
+  Entity entity=world.add("box",ray.origin.x,ray.origin.y,ray.origin.z);
+  entity.body.applyCentralImpulse(ray.direction.mul(30f));
+}

@@ -1,0 +1,11 @@
+{
+  super.create();
+  world.add("ground",0f,0f,0f);
+  for (int x=0; x < BOXCOUNT_X; x++) {
+    for (int y=0; y < BOXCOUNT_Y; y++) {
+      for (int z=0; z < BOXCOUNT_Z; z++) {
+        world.add("box",BOXOFFSET_X + x,BOXOFFSET_Y + y,BOXOFFSET_Z + z);
+      }
+    }
+  }
+}

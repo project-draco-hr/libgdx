@@ -1,6 +1,0 @@
-{
-  Ray ray=camera.getPickRay(screenX,screenY);
-  Entity entity=world.add("box",ray.origin.x,ray.origin.y,ray.origin.z);
-  entity.body.applyCentralImpulse(ray.direction.mul(30f));
-  return super.touchUp(screenX,screenY,pointer,button);
-}
