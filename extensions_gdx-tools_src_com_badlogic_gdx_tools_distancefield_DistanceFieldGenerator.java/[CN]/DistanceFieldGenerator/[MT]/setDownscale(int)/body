@@ -1,0 +1,4 @@
+{
+  if (downscale <= 0)   throw new IllegalArgumentException("downscale must be positive");
+  this.downscale=downscale;
+}

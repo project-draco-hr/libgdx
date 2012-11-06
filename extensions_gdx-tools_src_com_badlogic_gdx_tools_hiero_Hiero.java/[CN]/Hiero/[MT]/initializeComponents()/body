@@ -264,7 +264,7 @@
         effectsList=new JList();
         effectsScroll.setViewportView(effectsList);
         effectsList.setModel(effectsListModel);
-        effectsList.setVisibleRowCount(6);
+        effectsList.setVisibleRowCount(7);
         effectsScroll.setMinimumSize(effectsList.getPreferredScrollableViewportSize());
       }
     }
