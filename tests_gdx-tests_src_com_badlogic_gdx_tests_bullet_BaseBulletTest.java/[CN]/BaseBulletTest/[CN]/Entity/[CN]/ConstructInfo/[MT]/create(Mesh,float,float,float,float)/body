@@ -1,11 +1,3 @@
 {
-  this.mesh=mesh;
-  shape=new btBoxShape(Vector3.tmp.set(width * 0.5f,height * 0.5f,depth * 0.5f));
-  Vector3 localInertia;
-  if (mass == 0)   localInertia=Vector3.Zero;
- else {
-    shape.calculateLocalInertia(mass,Vector3.tmp);
-    localInertia=Vector3.tmp;
-  }
-  bodyInfo=new btRigidBodyConstructionInfo(mass,null,shape,localInertia);
+  create(mesh,mass,new btBoxShape(Vector3.tmp.set(width * 0.5f,height * 0.5f,depth * 0.5f)));
 }
