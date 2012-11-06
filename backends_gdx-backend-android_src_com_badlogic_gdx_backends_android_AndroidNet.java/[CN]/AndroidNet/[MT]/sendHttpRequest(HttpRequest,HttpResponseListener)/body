@@ -1,3 +1,16 @@
 {
-  throw new UnsupportedOperationException("Not implemented");
+  if (httpRequest.getUrl() == null)   throw new GdxRuntimeException("can't process a HTTP request without URL set");
+  final HttpUriRequest httpClientRequest=getHttpClientRequest(httpRequest);
+  executorService.submit(new Runnable(){
+    @Override public void run(){
+      try {
+        org.apache.http.HttpResponse httpResponse=httpClient.execute(httpClientRequest);
+        httpResultListener.handleHttpResponse(new HttpClientResponse(httpResponse),httpResponse.getStatusLine().getStatusCode());
+      }
+ catch (      Exception e) {
+        httpResultListener.failed(e);
+      }
+    }
+  }
+);
 }

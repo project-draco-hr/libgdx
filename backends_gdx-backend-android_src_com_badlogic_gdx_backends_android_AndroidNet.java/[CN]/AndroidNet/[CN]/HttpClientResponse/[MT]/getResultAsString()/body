@@ -1,0 +1,8 @@
+{
+  try {
+    return EntityUtils.toString(httpResponse.getEntity());
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Failed to get HTTP response as string",e);
+  }
+}

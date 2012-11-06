@@ -1,0 +1,8 @@
+{
+  try {
+    return httpResponse.getEntity().getContent();
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Failed to get HTTP response as stream",e);
+  }
+}
