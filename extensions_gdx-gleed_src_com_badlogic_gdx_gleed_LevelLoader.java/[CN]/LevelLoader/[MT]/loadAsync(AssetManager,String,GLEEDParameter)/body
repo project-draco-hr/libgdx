@@ -1,0 +1,26 @@
+{
+  m_assetManager=manager;
+  s_logger.info("loading file " + fileName);
+  try {
+    XmlReader reader=new XmlReader();
+    Element root=reader.parse(Gdx.files.internal(fileName));
+    s_logger.info("loading level properties");
+    if (m_level == null) {
+      m_level=new Level(fileName);
+      m_level.properties.load(root);
+    }
+    if (!m_atlasFile.isEmpty()) {
+      s_logger.info("fetching texture atlas " + m_atlasFile);
+      m_atlas=manager.get(m_atlasFile,TextureAtlas.class);
+    }
+    s_logger.info("loading layers");
+    Array<Element> layerElements=root.getChildByName("Layers").getChildrenByName("Layer");
+    for (int i=0; i < layerElements.size; ++i) {
+      Element layerElement=layerElements.get(i);
+      loadLayer(layerElement);
+    }
+  }
+ catch (  Exception e) {
+    s_logger.error("error loading file " + fileName + " "+ e.getMessage());
+  }
+}

@@ -1,0 +1,32 @@
+{
+  float x1=-texture.region.getRegionWidth() * 0.5f * m_mpp* texture.scaleX;
+  float x2=-x1;
+  float y1=-texture.region.getRegionHeight() * 0.5f * m_mpp* texture.scaleY;
+  float y2=-y1;
+  float sin=(float)Math.sin(texture.rotation);
+  float cos=(float)Math.cos(texture.rotation);
+  m_a.x=x1 * cos - y1 * sin;
+  m_a.y=x1 * sin - y1 * cos;
+  m_b.x=x2 * cos - y1 * sin;
+  m_b.y=x2 * sin - y1 * cos;
+  m_c.x=x2 * cos - y2 * sin;
+  m_c.y=x2 * sin - y2 * cos;
+  m_d.x=x1 * cos - y2 * sin;
+  m_d.y=x1 * sin - y2 * cos;
+  m_a.x+=texture.position.x * m_mpp;
+  m_a.y+=texture.position.y * m_mpp;
+  m_b.x+=texture.position.x * m_mpp;
+  m_b.y+=texture.position.y * m_mpp;
+  m_c.x+=texture.position.x * m_mpp;
+  m_c.y+=texture.position.y * m_mpp;
+  m_d.x+=texture.position.x * m_mpp;
+  m_d.y+=texture.position.y * m_mpp;
+  float minX=Math.min(Math.min(Math.min(m_a.x,m_b.x),m_c.x),m_d.x);
+  float minY=Math.min(Math.min(Math.min(m_a.y,m_b.y),m_c.y),m_d.y);
+  float maxX=Math.max(Math.max(Math.max(m_a.x,m_b.x),m_c.x),m_d.x);
+  float maxY=Math.max(Math.max(Math.max(m_a.y,m_b.y),m_c.y),m_d.y);
+  m_box.x=minX;
+  m_box.y=minY;
+  m_box.width=maxX - minX;
+  m_box.height=maxY - minY;
+}

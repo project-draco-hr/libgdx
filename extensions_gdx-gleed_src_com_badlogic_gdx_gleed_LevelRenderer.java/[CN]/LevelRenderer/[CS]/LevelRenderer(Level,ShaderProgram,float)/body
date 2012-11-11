@@ -1,0 +1,7 @@
+{
+  m_level=level;
+  m_mpp=mpp;
+  if (shader != null) {
+    m_batch.setShader(shader);
+  }
+}

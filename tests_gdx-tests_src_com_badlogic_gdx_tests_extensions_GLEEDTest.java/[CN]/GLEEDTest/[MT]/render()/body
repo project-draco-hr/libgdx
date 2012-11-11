@@ -1,0 +1,29 @@
+{
+  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  if (state == State.Loading && manager.update()) {
+    state=State.Running;
+    renderer=new LevelRenderer(manager.get("data/gleedtest.xml",Level.class),null,1.0f);
+  }
+  if (state == State.Running) {
+    camera.update();
+    renderer.render(camera);
+    if (Gdx.input.isKeyPressed(Keys.UP)) {
+      camera.position.y+=5.0f;
+    }
+ else     if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+      camera.position.y-=5.0f;
+    }
+    if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+      camera.position.x+=5.0f;
+    }
+ else     if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+      camera.position.x-=5.0f;
+    }
+    if (Gdx.input.isKeyPressed(Keys.A)) {
+      camera.zoom+=0.05f;
+    }
+ else     if (Gdx.input.isKeyPressed(Keys.S)) {
+      camera.zoom-=0.05f;
+    }
+  }
+}

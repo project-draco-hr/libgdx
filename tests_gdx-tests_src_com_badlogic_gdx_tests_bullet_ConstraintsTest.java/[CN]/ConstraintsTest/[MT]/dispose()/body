@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < constraints.size; i++) {
+    world.dynamicsWorld.removeConstraint(constraints.get(i));
+    constraints.get(i).delete();
+  }
+  constraints.clear();
+  super.dispose();
+}

@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < textures.size; ++i) {
+    TextureElement texture=textures.get(i);
+    if (texture.name.equals(name)) {
+      return texture;
+    }
+  }
+  return null;
+}

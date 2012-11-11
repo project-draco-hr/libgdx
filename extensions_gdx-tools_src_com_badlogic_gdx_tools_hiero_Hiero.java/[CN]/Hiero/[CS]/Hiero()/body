@@ -19,6 +19,7 @@
   effectsListModel.addElement(new OutlineWobbleEffect());
   effectsListModel.addElement(new OutlineZigzagEffect());
   effectsListModel.addElement(new ShadowEffect());
+  effectsListModel.addElement(new DistanceFieldEffect());
   new EffectPanel(colorEffect);
   addWindowListener(new WindowAdapter(){
     public void windowClosed(    WindowEvent event){

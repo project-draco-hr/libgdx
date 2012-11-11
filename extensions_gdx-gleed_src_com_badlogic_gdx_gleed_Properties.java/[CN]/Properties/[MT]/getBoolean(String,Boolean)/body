@@ -1,0 +1,7 @@
+{
+  Boolean value=booleans.get(key);
+  if (value == null) {
+    return defaultValue;
+  }
+  return value;
+}

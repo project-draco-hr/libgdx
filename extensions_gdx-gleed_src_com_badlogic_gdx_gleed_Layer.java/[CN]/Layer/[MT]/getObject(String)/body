@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < objects.size; ++i) {
+    LevelObject levelObject=objects.get(i);
+    if (levelObject.name.equals(name)) {
+      return levelObject;
+    }
+  }
+  return null;
+}
