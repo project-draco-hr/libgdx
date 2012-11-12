@@ -1,0 +1,7 @@
+{
+  if (app == null) {
+    app=Gdx.app;
+    tests[testIndex].create();
+  }
+  Gdx.input.setInputProcessor(new InputMultiplexer(this,new GestureDetector(this)));
+}

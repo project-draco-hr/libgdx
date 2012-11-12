@@ -1,0 +1,7 @@
+{
+  if (!disposed) {
+    dispose();
+    disposed=true;
+  }
+  super.delete();
+}
