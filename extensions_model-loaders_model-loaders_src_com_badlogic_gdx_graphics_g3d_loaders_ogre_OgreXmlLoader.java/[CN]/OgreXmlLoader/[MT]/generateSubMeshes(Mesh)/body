@@ -179,9 +179,11 @@ com.badlogic.gdx.graphics.Mesh mesh=new com.badlogic.gdx.graphics.Mesh(false,ver
 mesh.setIndices(indices);
 mesh.setVertices(vertices);
 String meshName="";
+if (ogreMesh.getSubmeshnames() != null) {
 List<Submeshname> names=ogreMesh.getSubmeshnames().getSubmeshname();
 for (int n=0; n < names.size(); ++n) {
 if (Integer.parseInt(names.get(n).getIndex()) == i) meshName=names.get(n).getName();
+}
 }
 SubMesh subMesh;
 Boneassignments boneAssigments=(ogreSubmesh.getBoneassignments() != null) ? ogreSubmesh.getBoneassignments() : ogreMesh.getBoneassignments();
