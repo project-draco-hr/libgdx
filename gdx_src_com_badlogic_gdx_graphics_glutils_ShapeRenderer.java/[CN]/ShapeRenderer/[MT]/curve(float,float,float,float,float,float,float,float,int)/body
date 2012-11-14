@@ -1,7 +1,7 @@
 {
   if (currType != ShapeType.Curve)   throw new GdxRuntimeException("Must call begin(ShapeType.Curve)");
   checkDirty();
-  checkFlush(segments + 1);
+  checkFlush(segments * 2 + 2);
   float dx1=cx1 - x1;
   float dy1=cy1 - y1;
   float dx2=cx2 - cx1;
@@ -27,9 +27,9 @@
   float ddfy=tmp1y * pre4 + tmp2y * pre5;
   float dddfx=tmp2x * pre5;
   float dddfy=tmp2y * pre5;
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x1,y1,0);
   while (segments-- > 0) {
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(fx,fy,0);
     fx+=dfx;
     fy+=dfy;
     dfx+=ddfx;
@@ -39,6 +39,8 @@
     renderer.color(color.r,color.g,color.b,color.a);
     renderer.vertex(fx,fy,0);
   }
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(fx,fy,0);
   renderer.color(color.r,color.g,color.b,color.a);
   renderer.vertex(x2,y2,0);
 }
