@@ -1,0 +1,10 @@
+{
+  String packFullFileName=output;
+  if (!packFullFileName.endsWith("/"))   packFullFileName+="/";
+  packFullFileName+=packFileName;
+  File outputFile=new File(packFullFileName);
+  if (!outputFile.exists())   return true;
+  File inputFile=new File(input);
+  if (!inputFile.exists())   throw new IllegalArgumentException("Input file does not exist: " + inputFile.getAbsolutePath());
+  return inputFile.lastModified() > outputFile.lastModified();
+}
