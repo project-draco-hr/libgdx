@@ -20,7 +20,7 @@
     for (int j=0; j < gridSize; j++) {
       AnimatedModelNode instance=animInstance[i][j];
       instance.time+=MathUtils.clamp(delta,0,0.1f) * 0.5f;
-      if (instance.time > model.getAnimations()[currAnimIdx].totalDuration) {
+      if (instance.time >= model.getAnimations()[currAnimIdx].totalDuration) {
         instance.time=0;
       }
       instance.matrix.val[12]=-i * 2 + 8;
