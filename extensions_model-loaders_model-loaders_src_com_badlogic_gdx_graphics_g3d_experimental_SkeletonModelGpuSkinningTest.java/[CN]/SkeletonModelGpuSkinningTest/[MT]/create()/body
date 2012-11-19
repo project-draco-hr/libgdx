@@ -22,7 +22,7 @@
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/models/robot.jpg"),Format.RGB565,true);
   texture.setFilter(TextureFilter.MipMapLinearNearest,TextureFilter.Linear);
-  String fileName="data/models/robot-mesh.xml.g3d";
+  String fileName="data/models/ninja.mesh.xml";
   if (!fileName.endsWith(".g3d") && Gdx.app.getType() == ApplicationType.Desktop) {
     model=ModelLoaderRegistry.loadSkeletonModel(Gdx.files.internal(fileName));
     if (model == null) {
