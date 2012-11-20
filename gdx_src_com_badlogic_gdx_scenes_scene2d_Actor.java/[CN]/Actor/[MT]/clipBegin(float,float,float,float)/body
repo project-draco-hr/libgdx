@@ -1,0 +1,11 @@
+{
+  Rectangle tableBounds=Rectangle.tmp;
+  tableBounds.x=x;
+  tableBounds.y=y;
+  tableBounds.width=width;
+  tableBounds.height=height;
+  Stage stage=getStage();
+  Rectangle scissorBounds=Pools.obtain(Rectangle.class);
+  ScissorStack.calculateScissors(stage.getCamera(),stage.getSpriteBatch().getTransformMatrix(),tableBounds,scissorBounds);
+  return ScissorStack.pushScissors(scissorBounds);
+}
