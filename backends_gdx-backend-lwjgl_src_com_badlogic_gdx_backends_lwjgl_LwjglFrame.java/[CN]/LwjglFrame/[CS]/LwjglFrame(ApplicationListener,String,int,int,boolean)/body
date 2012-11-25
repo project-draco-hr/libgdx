@@ -20,6 +20,9 @@
     protected void start(){
       LwjglFrame.this.start();
     }
+    protected void exception(    Throwable t){
+      LwjglFrame.this.exception(t);
+    }
   }
 ;
   getContentPane().add(lwjglCanvas.getCanvas());
