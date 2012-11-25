@@ -1,0 +1,5 @@
+{
+  runningEngines++;
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(TAG," > onCreate() " + hashCode() + ", running: "+ runningEngines);
+  super.onCreate(surfaceHolder);
+}

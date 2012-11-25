@@ -4,5 +4,5 @@
   root=new Group();
   root.setStage(this);
   camera=new OrthographicCamera();
-  setViewport(width,height,stretch);
+  setViewport(width,height,keepAspectRatio);
 }

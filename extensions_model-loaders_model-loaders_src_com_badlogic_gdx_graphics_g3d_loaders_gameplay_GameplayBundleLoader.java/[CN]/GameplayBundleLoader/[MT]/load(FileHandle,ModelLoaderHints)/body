@@ -1,0 +1,25 @@
+{
+  LittleEndianInputStream in=new LittleEndianInputStream(handle.read());
+  try {
+    byte[] bytes=read(in,9);
+    if (Arrays.equals(bytes,sig)) {
+      throw new GdxRuntimeException("Not a Gameplay Bundle file");
+    }
+    log("Signature is good");
+    int major=in.readByte();
+    int minor=in.readByte();
+    log("Version: " + major + "."+ minor);
+    ReferenceTable refs=readReferenceTable(in);
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load " + handle.name(),e);
+  }
+ finally {
+    if (in != null)     try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+  return null;
+}

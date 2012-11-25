@@ -1,0 +1,7 @@
+{
+  Vector2 value=vectors.get(key);
+  if (value == null) {
+    return defaultValue;
+  }
+  return value;
+}

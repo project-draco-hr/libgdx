@@ -71,12 +71,12 @@
     if (scrollY)     maxX-=scrollbarWidth;
   }
   scrollX(MathUtils.clamp(amountX,0,maxX));
-  amountY=MathUtils.clamp(amountY,0,maxY);
+  scrollY(MathUtils.clamp(amountY,0,maxY));
   if (scrollX) {
     if (hScrollKnob != null) {
       float hScrollHeight=style.hScroll != null ? style.hScroll.getMinHeight() : hScrollKnob.getMinHeight();
       hScrollBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,hScrollHeight);
-      hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widget.getWidth()));
+      hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widgetWidth));
       hKnobBounds.height=hScrollKnob.getMinHeight();
       hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
       hKnobBounds.y=hScrollBounds.y;

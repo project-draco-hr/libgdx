@@ -1,0 +1,7 @@
+{
+  Color value=colors.get(key);
+  if (value == null) {
+    return defaultValue;
+  }
+  return value;
+}

@@ -1,0 +1,4 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(TAG," > onCommand(" + pAction + " "+ pX+ " "+ pY+ " "+ pZ+ " "+ pExtras+ " "+ pResultRequested+ ")");
+  return super.onCommand(pAction,pX,pY,pZ,pExtras,pResultRequested);
+}

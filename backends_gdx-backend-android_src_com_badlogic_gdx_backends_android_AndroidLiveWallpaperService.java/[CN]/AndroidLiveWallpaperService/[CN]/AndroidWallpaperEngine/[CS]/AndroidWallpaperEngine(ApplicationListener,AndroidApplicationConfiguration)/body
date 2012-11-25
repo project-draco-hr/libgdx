@@ -1,0 +1,8 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > MyEngine() " + hashCode());
+  this.app=new AndroidLiveWallpaper(AndroidLiveWallpaperService.this,this);
+  this.app.initialize(listener,config);
+  this.listener=listener;
+  this.view=((AndroidGraphicsLiveWallpaper)app.getGraphics()).getView();
+  if (config.getTouchEventsForLiveWallpaper && Integer.parseInt(android.os.Build.VERSION.SDK) < 9)   this.setTouchEventsEnabled(true);
+}

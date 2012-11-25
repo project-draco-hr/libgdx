@@ -1,0 +1,29 @@
+{
+  Element customProperty=element.getChildByName("CustomProperties");
+  if (customProperty != null) {
+    Array<Element> properties=customProperty.getChildrenByName("Property");
+    for (int i=0; i < properties.size; ++i) {
+      Element property=properties.get(i);
+      String type=property.getAttribute("Type");
+      if (type == null) {
+        continue;
+      }
+      if (type.equals("string")) {
+        strings.put(property.getAttribute("Name"),property.getChildByName("string").getText());
+      }
+ else       if (type.equals("bool")) {
+        booleans.put(property.getAttribute("Name"),Boolean.parseBoolean(property.getChildByName("boolean").getText()));
+      }
+ else       if (type.equals("Vector2")) {
+        Element vectorElement=property.getChildByName("Vector2");
+        Vector2 v=new Vector2(Float.parseFloat(vectorElement.getChildByName("X").getText()),Float.parseFloat(vectorElement.getChildByName("Y").getText()));
+        vectors.put(property.getAttribute("Name"),v);
+      }
+ else       if (type.equals("Color")) {
+        Element colorElement=property.getChildByName("Color");
+        Color c=new Color(Float.parseFloat(colorElement.getChildByName("R").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("G").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("B").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("A").getText()) / 255.0f);
+        colors.put(property.getAttribute("Name"),c);
+      }
+    }
+  }
+}

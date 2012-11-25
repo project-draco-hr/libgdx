@@ -1,0 +1,7 @@
+{
+  String value=strings.get(key);
+  if (value == null) {
+    return defaultValue;
+  }
+  return value;
+}

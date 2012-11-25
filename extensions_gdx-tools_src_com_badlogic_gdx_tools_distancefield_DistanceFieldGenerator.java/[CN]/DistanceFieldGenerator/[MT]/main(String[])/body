@@ -1,0 +1,10 @@
+{
+  try {
+    run(args);
+  }
+ catch (  CommandLineArgumentException e) {
+    System.err.println("Error: " + e.getMessage() + "\n");
+    usage();
+    System.exit(1);
+  }
+}

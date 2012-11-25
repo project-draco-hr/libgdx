@@ -1,0 +1,34 @@
+{
+  s_logger.info("getting asset dependencies for " + fileName);
+  Array<AssetDescriptor> dependencies=new Array<AssetDescriptor>();
+  try {
+    XmlReader reader=new XmlReader();
+    Element root=reader.parse(Gdx.files.internal(fileName));
+    if (m_level == null) {
+      m_level=new Level(fileName);
+      m_level.properties.load(root);
+    }
+    m_atlasFile=m_level.properties.getString("atlas","");
+    m_pathRoot=m_level.properties.getString("assetRoot","data");
+    if (!m_atlasFile.isEmpty()) {
+      s_logger.info("texture atlas dependency " + m_atlasFile);
+      dependencies.add(new AssetDescriptor(m_atlasFile,TextureAtlas.class));
+    }
+ else {
+      s_logger.info("textures asset folder " + m_pathRoot);
+      Array<Element> elements=root.getChildrenByNameRecursively("Item");
+      for (int i=0; i < elements.size; ++i) {
+        Element element=elements.get(i);
+        if (element.getAttribute("xsi:type","").equals("TextureItem")) {
+          String[] pathParts=element.getChildByName("texture_filename").getText().split("\\\\");
+          s_logger.info("texture dependency " + m_pathRoot + "/"+ pathParts[pathParts.length - 1]);
+          dependencies.add(new AssetDescriptor(m_pathRoot + "/" + pathParts[pathParts.length - 1],Texture.class));
+        }
+      }
+    }
+  }
+ catch (  Exception e) {
+    s_logger.error("error loading asset dependencies " + fileName + " "+ e.getMessage());
+  }
+  return dependencies;
+}

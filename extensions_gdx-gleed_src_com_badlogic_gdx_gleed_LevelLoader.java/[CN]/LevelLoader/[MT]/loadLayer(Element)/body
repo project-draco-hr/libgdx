@@ -1,0 +1,37 @@
+{
+  Layer layer=new Layer();
+  layer.properties.load(element);
+  layer.name=element.getAttribute("Name","");
+  layer.visible=Boolean.parseBoolean(element.getAttribute("Visible","true"));
+  s_logger.info("loading layer " + layer.name);
+  Array<Element> items=element.getChildByName("Items").getChildrenByName("Item");
+  for (int i=0; i < items.size; ++i) {
+    Element item=items.get(i);
+    String type=item.getAttribute("xsi:type");
+    if (type.equals("TextureItem")) {
+      TextureElement texture=new TextureElement();
+      loadElement(texture,item);
+      loadTextureElement(texture,item);
+      layer.textures.add(texture);
+    }
+ else     if (type.equals("PathItem")) {
+      PathElement path=new PathElement();
+      loadElement(path,item);
+      loadPathElement(path,item);
+      layer.objects.add(path);
+    }
+ else     if (type.equals("RectangleItem")) {
+      RectangleElement rectangle=new RectangleElement();
+      loadElement(rectangle,item);
+      loadRectangleElement(rectangle,item);
+      layer.objects.add(rectangle);
+    }
+ else     if (type.equals("CircleItem")) {
+      CircleElement circle=new CircleElement();
+      loadElement(circle,item);
+      loadCircleElement(circle,item);
+      layer.objects.add(circle);
+    }
+  }
+  m_level.layers.add(layer);
+}
