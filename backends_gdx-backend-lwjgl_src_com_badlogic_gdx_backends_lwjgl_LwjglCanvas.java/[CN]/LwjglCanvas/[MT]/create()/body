@@ -50,9 +50,8 @@ synchronized (runnables) {
         canvas.setCursor(cursor);
         if (graphics.vsync)         Display.sync(60);
       }
- catch (      Throwable t) {
-        t.printStackTrace();
-        stop();
+ catch (      Throwable ex) {
+        exception(ex);
       }
       EventQueue.invokeLater(this);
     }
