@@ -1,3 +1,5 @@
 {
-  return new AndroidApplicationConfiguration();
+  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
+  config.useGL20=true;
+  return config;
 }
