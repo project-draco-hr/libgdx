@@ -58,7 +58,7 @@ synchronized (runnables) {
       }
     }
     input.processEvents();
-    audio.update();
+    if (audio != null)     audio.update();
     if (shouldRender) {
       graphics.updateTime();
       listener.render();
@@ -74,6 +74,6 @@ synchronized (runnables) {
   listener.pause();
   listener.dispose();
   Display.destroy();
-  audio.dispose();
+  if (audio != null)   audio.dispose();
   if (graphics.config.forceExit)   System.exit(-1);
 }
