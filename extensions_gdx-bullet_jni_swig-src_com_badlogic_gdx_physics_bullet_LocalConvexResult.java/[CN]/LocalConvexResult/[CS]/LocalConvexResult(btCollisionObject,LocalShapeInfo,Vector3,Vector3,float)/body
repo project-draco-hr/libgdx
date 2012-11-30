@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_LocalConvexResult(btCollisionObject.getCPtr(hitCollisionObject),hitCollisionObject,LocalShapeInfo.getCPtr(localShapeInfo),localShapeInfo,hitNormalLocal,hitPointLocal,hitFraction),true);
+}
