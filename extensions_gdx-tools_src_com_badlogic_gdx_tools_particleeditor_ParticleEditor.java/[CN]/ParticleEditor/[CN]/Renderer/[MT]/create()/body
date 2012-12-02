@@ -10,6 +10,9 @@
   zoomLevel=new NumericValue();
   zoomLevel.setValue(1.0f);
   zoomLevel.setAlwaysActive(true);
+  deltaMultiplier=new NumericValue();
+  deltaMultiplier.setValue(1.0f);
+  deltaMultiplier.setAlwaysActive(true);
   font=new BitmapFont(Gdx.files.getFileHandle("default.fnt",FileType.Internal),Gdx.files.getFileHandle("default.png",FileType.Internal),true);
   effectPanel.newEmitter("Untitled",true);
   Gdx.input.setInputProcessor(this);

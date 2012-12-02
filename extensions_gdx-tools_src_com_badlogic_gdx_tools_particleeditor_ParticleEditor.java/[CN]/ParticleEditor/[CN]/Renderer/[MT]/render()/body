@@ -1,7 +1,7 @@
 {
   int viewWidth=Gdx.graphics.getWidth();
   int viewHeight=Gdx.graphics.getHeight();
-  float delta=Gdx.graphics.getDeltaTime();
+  float delta=Math.max(0,Gdx.graphics.getDeltaTime() * deltaMultiplier.getValue());
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   if ((pixelsPerMeter.getValue() != pixelsPerMeterPrev) || (zoomLevel.getValue() != zoomLevelPrev)) {
     if (pixelsPerMeter.getValue() <= 0) {
