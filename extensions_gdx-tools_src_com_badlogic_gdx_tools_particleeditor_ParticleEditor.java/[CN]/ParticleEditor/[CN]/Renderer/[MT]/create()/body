@@ -14,6 +14,6 @@
   deltaMultiplier.setValue(1.0f);
   deltaMultiplier.setAlwaysActive(true);
   font=new BitmapFont(Gdx.files.getFileHandle("default.fnt",FileType.Internal),Gdx.files.getFileHandle("default.png",FileType.Internal),true);
-  effectPanel.newEmitter("Untitled",true);
+  effectPanel.newExampleEmitter("Untitled",true);
   Gdx.input.setInputProcessor(this);
 }
