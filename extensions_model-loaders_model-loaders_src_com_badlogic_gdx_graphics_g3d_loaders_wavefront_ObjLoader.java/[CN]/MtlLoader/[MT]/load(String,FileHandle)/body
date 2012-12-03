@@ -4,7 +4,7 @@
   String curMatName="default";
   Color difcolor=Color.WHITE;
   Color speccolor=Color.WHITE;
-  Texture texture=new Texture(1,1,Format.RGB888);
+  Texture texture=emptyTexture;
   FileHandle file=Gdx.files.internal(name);
   if (file == null || file.exists() == false)   return;
   BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
@@ -17,7 +17,7 @@
       }
  else       if (tokens[0].charAt(0) == '#')       continue;
  else       if (tokens[0].toLowerCase().equals("newmtl")) {
-        Material mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
+        Material mat=new Material(curMatName,new TextureAttribute(texture,0,TextureAttribute.diffuseTexture),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
         materials.add(mat);
         if (tokens.length > 1) {
           curMatName=tokens[1];
@@ -51,7 +51,7 @@
           texture=assetManager.get(texname,Texture.class);
           texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
         }
- else         texture=new Texture(1,1,Format.RGB888);
+ else         texture=emptyTexture;
       }
     }
     reader.close();
@@ -59,7 +59,7 @@
  catch (  IOException e) {
     return;
   }
-  Material mat=new Material(curMatName,new TextureAttribute(texture,0,"s_tex"),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
+  Material mat=new Material(curMatName,new TextureAttribute(texture,0,TextureAttribute.diffuseTexture),new ColorAttribute(difcolor,ColorAttribute.diffuse),new ColorAttribute(speccolor,ColorAttribute.specular));
   materials.add(mat);
   return;
 }
