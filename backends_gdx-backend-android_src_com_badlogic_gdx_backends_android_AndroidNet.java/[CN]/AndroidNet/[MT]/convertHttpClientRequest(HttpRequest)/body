@@ -1,0 +1,16 @@
+{
+  if (httpRequest.getMethod().equalsIgnoreCase(HttpMethods.GET)) {
+    return new HttpGet(httpRequest.getUrl());
+  }
+ else   if (httpRequest.getMethod().equalsIgnoreCase(HttpMethods.POST)) {
+    HttpPost httpPost=new HttpPost(httpRequest.getUrl());
+    byte[] contentAsByteArray=httpRequest.getContent();
+    InputStream contentStream=httpRequest.getContentStream();
+    if (contentAsByteArray != null)     httpPost.setEntity(new ByteArrayEntity(contentAsByteArray));
+ else     if (contentStream != null)     httpPost.setEntity(new InputStreamEntity(contentStream,-1));
+    return httpPost;
+  }
+ else {
+    throw new GdxRuntimeException("Android implementation of Net API can't support other HTTP methods yet.");
+  }
+}

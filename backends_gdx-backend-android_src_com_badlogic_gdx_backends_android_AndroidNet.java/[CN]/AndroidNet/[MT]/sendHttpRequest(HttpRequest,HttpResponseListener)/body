@@ -1,0 +1,26 @@
+{
+  if (httpRequest.getUrl() == null)   throw new GdxRuntimeException("can't process a HTTP request without URL set");
+  final HttpUriRequest httpClientRequest=getHttpClientRequest(httpRequest);
+  executorService.submit(new Runnable(){
+    @Override public void run(){
+      try {
+        final org.apache.http.HttpResponse httpResponse=httpClient.execute(httpClientRequest);
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            httpResultListener.handleHttpResponse(new HttpClientResponse(httpResponse));
+          }
+        }
+);
+      }
+ catch (      final Exception e) {
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            httpResultListener.failed(e);
+          }
+        }
+);
+      }
+    }
+  }
+);
+}

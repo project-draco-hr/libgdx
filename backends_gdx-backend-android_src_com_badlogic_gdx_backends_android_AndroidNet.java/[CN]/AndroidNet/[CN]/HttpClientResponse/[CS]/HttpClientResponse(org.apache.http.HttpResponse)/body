@@ -1,0 +1,4 @@
+{
+  this.httpResponse=httpResponse;
+  this.httpStatus=new HttpStatus(httpResponse.getStatusLine().getStatusCode());
+}

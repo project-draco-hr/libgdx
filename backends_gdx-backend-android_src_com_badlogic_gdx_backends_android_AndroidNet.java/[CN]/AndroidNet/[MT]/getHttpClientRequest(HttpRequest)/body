@@ -1,0 +1,10 @@
+{
+  if (httpRequest.getMethod() == null)   throw new GdxRuntimeException("HTTP method can't be null");
+  HttpUriRequest httpClientRequest=convertHttpClientRequest(httpRequest);
+  Map<String,String> headers=httpRequest.getHeaders();
+  Set<String> keySet=headers.keySet();
+  for (  String name : keySet) {
+    httpClientRequest.setHeader(name,headers.get(name));
+  }
+  return httpClientRequest;
+}
