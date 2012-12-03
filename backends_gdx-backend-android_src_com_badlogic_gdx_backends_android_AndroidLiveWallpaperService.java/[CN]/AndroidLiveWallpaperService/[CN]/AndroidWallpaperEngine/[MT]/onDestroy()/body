@@ -2,5 +2,7 @@
   runningEngines--;
   if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onDestroy() " + hashCode() + ", running: "+ runningEngines);
   view.onDestroy();
+  if (listener != null)   listener.dispose();
+  app.onDestroy();
   super.onDestroy();
 }
