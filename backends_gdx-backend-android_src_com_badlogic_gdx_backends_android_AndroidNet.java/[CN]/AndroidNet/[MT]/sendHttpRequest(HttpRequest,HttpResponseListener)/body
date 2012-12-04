@@ -1,6 +1,10 @@
 {
   if (httpRequest.getUrl() == null)   throw new GdxRuntimeException("can't process a HTTP request without URL set");
   final HttpUriRequest httpClientRequest=getHttpClientRequest(httpRequest);
+  final HttpParams httpParams=new BasicHttpParams();
+  HttpConnectionParams.setConnectionTimeout(httpParams,httpRequest.getTimeout());
+  HttpConnectionParams.setSoTimeout(httpParams,httpRequest.getTimeout());
+  httpClient.setParams(httpParams);
   executorService.submit(new Runnable(){
     @Override public void run(){
       try {
