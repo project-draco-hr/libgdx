@@ -1,0 +1,3 @@
+{
+  this(gdxBulletJNI.new_ClosestNotMeConvexResultCallback(btCollisionObject.getCPtr(me),me,fromA,toA),true);
+}
