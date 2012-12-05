@@ -4,7 +4,7 @@
     return;
   }
   try {
-    String value=convertHttpRequest(httpRequest);
+    String value=httpRequest.convertHttpRequest();
     String method=httpRequest.getMethod();
     URL url;
     if (method.equalsIgnoreCase(HttpMethods.GET))     url=new URL(httpRequest.getUrl() + "?" + value);
@@ -13,10 +13,10 @@
     connection.setDoOutput(true);
     connection.setDoInput(true);
     connection.setRequestMethod((method.equalsIgnoreCase(HttpMethods.JSON)) ? HttpMethods.POST : method);
-    Map<String,?> content=httpRequest.getHeaders();
+    Map<String,String> content=httpRequest.getHeaders();
     Set<String> keySet=content.keySet();
     for (    String name : keySet) {
-      connection.addRequestProperty(name,(String)content.get(name));
+      connection.addRequestProperty(name,content.get(name));
     }
     connection.setConnectTimeout(httpRequest.getTimeout());
     connection.setReadTimeout(httpRequest.getTimeout());
