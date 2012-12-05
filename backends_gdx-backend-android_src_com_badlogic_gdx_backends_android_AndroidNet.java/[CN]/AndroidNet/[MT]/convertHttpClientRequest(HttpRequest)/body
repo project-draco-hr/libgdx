@@ -29,7 +29,7 @@
     StringWriter jsonText=new StringWriter();
     JsonWriter writer=new JsonWriter(jsonText);
     try {
-      createJson(httpRequest.getContent(),"",writer);
+      httpRequest.createJson(httpRequest.getContent(),"",writer);
       httpPost.setEntity(new StringEntity(jsonText.toString()));
     }
  catch (    IOException e) {
