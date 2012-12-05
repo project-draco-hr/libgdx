@@ -24,6 +24,19 @@
     }
     return httpPost;
   }
+ else   if (httpRequest.getMethod().equalsIgnoreCase(HttpMethods.JSON)) {
+    HttpPost httpPost=new HttpPost(httpRequest.getUrl());
+    StringWriter jsonText=new StringWriter();
+    JsonWriter writer=new JsonWriter(jsonText);
+    try {
+      createJson(httpRequest.getContent(),"",writer);
+      httpPost.setEntity(new StringEntity(jsonText.toString()));
+    }
+ catch (    IOException e) {
+      return httpPost;
+    }
+    return httpPost;
+  }
  else {
     throw new GdxRuntimeException("Android implementation of Net API can't support other HTTP methods yet.");
   }
