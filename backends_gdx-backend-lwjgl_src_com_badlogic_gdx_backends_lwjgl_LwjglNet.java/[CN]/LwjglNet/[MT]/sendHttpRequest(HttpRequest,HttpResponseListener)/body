@@ -4,11 +4,17 @@
     return;
   }
   try {
-    String value=httpRequest.getContent();
-    String method=httpRequest.getMethod();
+    final String method=httpRequest.getMethod();
     URL url;
-    if (method.equalsIgnoreCase(HttpMethods.GET))     url=new URL(httpRequest.getUrl() + "?" + value);
- else     url=new URL(httpRequest.getUrl());
+    if (method.equalsIgnoreCase(HttpMethods.GET)) {
+      String queryString="";
+      String value=httpRequest.getContent();
+      if (value != null && !"".equals(value))       queryString="?" + value;
+      url=new URL(httpRequest.getUrl() + queryString);
+    }
+ else {
+      url=new URL(httpRequest.getUrl());
+    }
     final HttpURLConnection connection=(HttpURLConnection)url.openConnection();
     connection.setDoOutput(true);
     connection.setDoInput(true);
@@ -20,7 +26,8 @@
     }
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
-    if (!method.equalsIgnoreCase(HttpMethods.GET)) {
+    if (method.equalsIgnoreCase(HttpMethods.POST)) {
+      String value=httpRequest.getContent();
       OutputStreamWriter wr=new OutputStreamWriter(connection.getOutputStream());
       wr.write(value);
       wr.flush();
@@ -51,6 +58,9 @@
             }
           }
 );
+        }
+ finally {
+          connection.disconnect();
         }
       }
     }
