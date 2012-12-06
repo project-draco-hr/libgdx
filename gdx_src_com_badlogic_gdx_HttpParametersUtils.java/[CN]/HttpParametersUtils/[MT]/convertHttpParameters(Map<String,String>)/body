@@ -1,0 +1,6 @@
+{
+  Set<String> keySet=parameters.keySet();
+  String convertedParameters="";
+  for (  String name : keySet)   convertedParameters+=name + "=" + parameters.get(name)+ "&";
+  return convertedParameters;
+}

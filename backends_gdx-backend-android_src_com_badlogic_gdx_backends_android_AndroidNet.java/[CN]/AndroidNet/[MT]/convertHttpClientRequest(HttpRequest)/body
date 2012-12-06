@@ -1,17 +1,12 @@
 {
-  String content=httpRequest.convertHttpRequest();
   String method=httpRequest.getMethod();
   if (method.equalsIgnoreCase(HttpMethods.GET)) {
-    List<NameValuePair> params=new ArrayList<NameValuePair>();
-    Map<String,Object> httpContent=httpRequest.getContent();
-    for (    String key : httpContent.keySet())     params.add(new BasicNameValuePair(key,httpContent.get(key).toString()));
-    String encodedParams=URLEncodedUtils.format(params,"UTF-8");
-    return new HttpGet(URIUtils.resolve(URI.create(httpRequest.getUrl()),"?" + encodedParams));
+    return new HttpGet(URIUtils.resolve(URI.create(httpRequest.getUrl()),"?" + httpRequest.getContent()));
   }
- else   if (method.equalsIgnoreCase(HttpMethods.POST) || method.equalsIgnoreCase(HttpMethods.JSON)) {
+ else   if (method.equalsIgnoreCase(HttpMethods.POST)) {
     HttpPost httpPost=new HttpPost(httpRequest.getUrl());
     try {
-      httpPost.setEntity(new StringEntity(content));
+      httpPost.setEntity(new StringEntity(httpRequest.getContent()));
       return httpPost;
     }
  catch (    UnsupportedEncodingException e) {
