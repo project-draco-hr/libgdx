@@ -1,14 +1,22 @@
 {
-  if (httpRequest.getMethod().equalsIgnoreCase(HttpMethods.GET)) {
-    return new HttpGet(httpRequest.getUrl());
+  String content=httpRequest.convertHttpRequest();
+  String method=httpRequest.getMethod();
+  if (method.equalsIgnoreCase(HttpMethods.GET)) {
+    List<NameValuePair> params=new ArrayList<NameValuePair>();
+    Map<String,Object> httpContent=httpRequest.getContent();
+    for (    String key : httpContent.keySet())     params.add(new BasicNameValuePair(key,httpContent.get(key).toString()));
+    String encodedParams=URLEncodedUtils.format(params,"UTF-8");
+    return new HttpGet(URIUtils.resolve(URI.create(httpRequest.getUrl()),"?" + encodedParams));
   }
- else   if (httpRequest.getMethod().equalsIgnoreCase(HttpMethods.POST)) {
+ else   if (method.equalsIgnoreCase(HttpMethods.POST) || method.equalsIgnoreCase(HttpMethods.JSON)) {
     HttpPost httpPost=new HttpPost(httpRequest.getUrl());
-    byte[] contentAsByteArray=httpRequest.getContent();
-    InputStream contentStream=httpRequest.getContentStream();
-    if (contentAsByteArray != null)     httpPost.setEntity(new ByteArrayEntity(contentAsByteArray));
- else     if (contentStream != null)     httpPost.setEntity(new InputStreamEntity(contentStream,-1));
-    return httpPost;
+    try {
+      httpPost.setEntity(new StringEntity(content));
+      return httpPost;
+    }
+ catch (    UnsupportedEncodingException e) {
+      return httpPost;
+    }
   }
  else {
     throw new GdxRuntimeException("Android implementation of Net API can't support other HTTP methods yet.");

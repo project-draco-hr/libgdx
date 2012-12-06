@@ -1,0 +1,11 @@
+{
+  int refCount=in.readInt();
+  log(refCount + " references");
+  ReferenceTable refs=new ReferenceTable();
+  for (int i=0; i < refCount; i++) {
+    Reference ref=readReference(in);
+    refs.add(ref);
+    log(ref.toString());
+  }
+  return refs;
+}

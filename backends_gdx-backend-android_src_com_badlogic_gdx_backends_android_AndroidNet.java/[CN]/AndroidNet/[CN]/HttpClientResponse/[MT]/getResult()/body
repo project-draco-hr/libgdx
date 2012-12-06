@@ -1,3 +1,8 @@
 {
-  throw new UnsupportedOperationException("get result as byte[] is not implemented");
+  try {
+    return EntityUtils.toByteArray(httpResponse.getEntity());
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Failed to retrieve byte array from response",e);
+  }
 }

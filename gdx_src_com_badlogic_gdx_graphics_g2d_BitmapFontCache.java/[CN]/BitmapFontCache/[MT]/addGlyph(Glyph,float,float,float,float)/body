@@ -33,5 +33,5 @@
   vertices[idx++]=y;
   vertices[idx++]=color;
   vertices[idx++]=u2;
-  vertices[idx++]=v;
+  vertices[idx]=v;
 }

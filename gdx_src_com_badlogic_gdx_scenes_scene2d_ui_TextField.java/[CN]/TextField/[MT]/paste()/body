@@ -3,8 +3,11 @@
   if (content != null) {
     StringBuilder builder=new StringBuilder();
     for (int i=0; i < content.length(); i++) {
+      if (maxLength > 0 && text.length() + i + 1 > maxLength) {
+        break;
+      }
       char c=content.charAt(i);
-      if (style.font.containsCharacter(c))       builder.append(c);
+      if (style.font.containsCharacter(c) && (filter == null || filter.acceptChar(this,c)))       builder.append(c);
     }
     content=builder.toString();
     if (!hasSelection) {

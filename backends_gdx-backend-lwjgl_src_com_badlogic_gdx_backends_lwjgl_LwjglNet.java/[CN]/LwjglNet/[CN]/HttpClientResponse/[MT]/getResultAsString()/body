@@ -1,0 +1,12 @@
+{
+  BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
+  String tmp, line="";
+  try {
+    while ((tmp=reader.readLine()) != null)     line+=tmp;
+    reader.close();
+    return line;
+  }
+ catch (  IOException e) {
+    return "";
+  }
+}

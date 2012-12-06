@@ -76,7 +76,7 @@
     try {
       if (settings.outputFormat.equalsIgnoreCase("jpg")) {
         Iterator<ImageWriter> writers=ImageIO.getImageWritersByFormatName("jpg");
-        ImageWriter writer=(ImageWriter)writers.next();
+        ImageWriter writer=writers.next();
         ImageWriteParam param=writer.getDefaultWriteParam();
         param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
         param.setCompressionQuality(settings.jpegQuality);

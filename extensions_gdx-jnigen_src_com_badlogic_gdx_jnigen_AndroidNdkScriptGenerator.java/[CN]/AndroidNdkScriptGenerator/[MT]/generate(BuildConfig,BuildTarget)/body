@@ -17,12 +17,6 @@
   for (  String exclude : target.cppExcludes)   excludes[idx++]=config.jniDir + "/" + exclude;
   excludes[idx]="**/target/*";
   gatherSourceFiles(config.jniDir,includes,excludes,files);
-  FileDescriptor manifest=config.jniDir.parent();
-  if (manifest.path().equals("/") || manifest.path().equals("\\"))   manifest=new FileDescriptor("AndroidManifest.xml");
- else   manifest=config.jniDir.parent().child("AndroidManifest.xml");
-  if (!manifest.exists()) {
-    manifest.writeString("",false);
-  }
   FileDescriptor application=config.jniDir.child("Application.mk");
   application.writeString(new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/Application.mk.template",FileType.Classpath).readString(),false);
   String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/Android.mk.template",FileType.Classpath).readString();

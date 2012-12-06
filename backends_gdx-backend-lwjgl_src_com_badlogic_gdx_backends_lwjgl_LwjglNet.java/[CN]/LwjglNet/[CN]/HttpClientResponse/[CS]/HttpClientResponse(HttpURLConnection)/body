@@ -1,0 +1,10 @@
+{
+  this.connection=connection;
+  this.inputStream=connection.getInputStream();
+  try {
+    this.status=new HttpStatus(connection.getResponseCode());
+  }
+ catch (  IOException e) {
+    this.status=new HttpStatus(-1);
+  }
+}
