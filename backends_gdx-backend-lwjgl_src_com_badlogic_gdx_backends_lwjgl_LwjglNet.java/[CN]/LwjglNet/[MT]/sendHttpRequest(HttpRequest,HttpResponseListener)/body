@@ -19,23 +19,30 @@
     connection.setDoOutput(true);
     connection.setDoInput(true);
     connection.setRequestMethod(method);
-    Map<String,String> content=httpRequest.getHeaders();
-    Set<String> keySet=content.keySet();
-    for (    String name : keySet) {
-      connection.addRequestProperty(name,content.get(name));
-    }
+    Map<String,String> headers=httpRequest.getHeaders();
+    Set<String> keySet=headers.keySet();
+    for (    String name : keySet)     connection.addRequestProperty(name,headers.get(name));
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
-    if (method.equalsIgnoreCase(HttpMethods.POST)) {
-      String value=httpRequest.getContent();
-      OutputStreamWriter wr=new OutputStreamWriter(connection.getOutputStream());
-      wr.write(value);
-      wr.flush();
-      wr.close();
-    }
     executorService.submit(new Runnable(){
       @Override public void run(){
         try {
+          if (method.equalsIgnoreCase(HttpMethods.POST)) {
+            String contentAsString=httpRequest.getContent();
+            InputStream contentAsStream=httpRequest.getContentStream();
+            OutputStream outputStream=connection.getOutputStream();
+            if (contentAsString != null) {
+              OutputStreamWriter writer=new OutputStreamWriter(outputStream);
+              writer.write(contentAsString);
+              writer.flush();
+              writer.close();
+            }
+ else             if (contentAsStream != null) {
+              StreamUtils.copyStream(contentAsStream,outputStream);
+              outputStream.flush();
+              outputStream.close();
+            }
+          }
           connection.connect();
           Gdx.app.postRunnable(new Runnable(){
             @Override public void run(){
