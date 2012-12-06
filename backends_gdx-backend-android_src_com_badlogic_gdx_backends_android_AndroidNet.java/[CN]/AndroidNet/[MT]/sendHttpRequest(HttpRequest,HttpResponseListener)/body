@@ -6,10 +6,8 @@
   final HttpUriRequest httpClientRequest=getHttpClientRequest(httpRequest);
   final HttpParams httpParams=new BasicHttpParams();
   int timeout=httpRequest.getTimeOut();
-  if (timeout > 0) {
-    HttpConnectionParams.setConnectionTimeout(httpParams,timeout);
-    HttpConnectionParams.setSoTimeout(httpParams,timeout);
-  }
+  HttpConnectionParams.setConnectionTimeout(httpParams,timeout);
+  HttpConnectionParams.setSoTimeout(httpParams,timeout);
   httpClient.setParams(httpParams);
   executorService.submit(new Runnable(){
     @Override public void run(){
