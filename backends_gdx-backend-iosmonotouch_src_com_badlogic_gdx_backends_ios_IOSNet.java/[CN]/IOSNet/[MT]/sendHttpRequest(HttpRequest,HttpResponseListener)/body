@@ -1,3 +1,51 @@
 {
-  throw new UnsupportedOperationException("Not implemented");
+  Future<?> processHttpRequestFuture=executorService.submit(new Runnable(){
+    @Override public void run(){
+      try {
+        String url=httpRequest.getUrl();
+        String method=httpRequest.getMethod();
+        if (method.equalsIgnoreCase(HttpMethods.GET)) {
+          String queryString="";
+          String value=httpRequest.getContent();
+          if (value != null && !"".equals(value))           url+="?" + value;
+        }
+        HttpWebRequest httpWebRequest=(HttpWebRequest)WebRequest.Create(httpRequest.getUrl());
+        int timeOut=httpRequest.getTimeOut();
+        if (timeOut > 0)         httpWebRequest.set_Timeout(timeOut);
+ else         httpWebRequest.set_Timeout(-1);
+        httpWebRequest.set_Method(method);
+        Map<String,String> headers=httpRequest.getHeaders();
+        WebHeaderCollection webHeaderCollection=new WebHeaderCollection();
+        for (        String key : headers.keySet())         webHeaderCollection.Add(key,headers.get(key));
+        httpWebRequest.set_Headers(webHeaderCollection);
+        if (method.equalsIgnoreCase(HttpMethods.POST)) {
+          Stream stream=httpWebRequest.GetRequestStream();
+          InputStream contentAsStream=httpRequest.getContentStream();
+          String contentAsString=httpRequest.getContent();
+          if (contentAsStream != null) {
+            StreamUtils.copyStream(contentAsStream,new OutputStreamNetStreamImpl(stream));
+          }
+ else           if (contentAsString != null) {
+            new StreamWriter(stream).Write(contentAsString);
+          }
+        }
+        final HttpWebResponse httpWebResponse=(HttpWebResponse)httpWebRequest.GetResponse();
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            httpResultListener.handleHttpResponse(new IosHttpResponse(httpWebResponse));
+          }
+        }
+);
+      }
+ catch (      final Exception e) {
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            httpResultListener.failed(e);
+          }
+        }
+);
+      }
+    }
+  }
+);
 }

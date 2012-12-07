@@ -1,0 +1,6 @@
+{
+  int length=(int)webResponse.get_ContentLength();
+  byte[] result=new byte[length];
+  webResponse.GetResponseStream().Read(result,0,length);
+  return result;
+}
