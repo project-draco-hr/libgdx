@@ -3,7 +3,7 @@
   float[] vertices=new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
   mesh.getIndices(indices);
   mesh.getVertices(vertices);
-  btIndexedMesh indexedMesh=new TestIndexedMesh();
+  btIndexedMesh indexedMesh=new btIndexedMesh();
   indexedMesh.setM_indexType(PHY_ScalarType.PHY_SHORT);
   indexedMesh.setM_numTriangles(mesh.getNumIndices() / 3);
   indexedMesh.setM_numVertices(mesh.getNumVertices());
