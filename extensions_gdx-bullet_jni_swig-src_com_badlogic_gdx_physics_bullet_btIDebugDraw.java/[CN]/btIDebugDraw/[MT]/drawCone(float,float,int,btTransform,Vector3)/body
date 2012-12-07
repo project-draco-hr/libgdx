@@ -1,4 +1,0 @@
-{
-  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawCone(swigCPtr,this,radius,height,upAxis,btTransform.getCPtr(transform),transform,color);
- else   gdxBulletJNI.btIDebugDraw_drawConeSwigExplicitbtIDebugDraw(swigCPtr,this,radius,height,upAxis,btTransform.getCPtr(transform),transform,color);
-}
