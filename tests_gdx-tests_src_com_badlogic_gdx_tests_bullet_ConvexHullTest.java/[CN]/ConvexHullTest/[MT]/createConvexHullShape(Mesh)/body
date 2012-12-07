@@ -1,0 +1,10 @@
+{
+  final float[] vertices=new float[mesh.getNumVertices() * mesh.getVertexSize() / 4];
+  mesh.getVertices(vertices);
+  final btConvexHullShape shape=new btConvexHullShape(vertices,mesh.getNumVertices(),mesh.getVertexSize());
+  final btShapeHull hull=new btShapeHull(shape);
+  hull.buildHull(shape.getMargin());
+  final btConvexHullShape result=hull.createConvexHullShape();
+  shape.delete();
+  return result;
+}
