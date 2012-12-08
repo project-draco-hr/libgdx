@@ -3,7 +3,7 @@
   BitmapFont font=style.font;
   StringBuffer buffer=new StringBuffer();
   for (int i=0; i < text.length(); i++) {
-    if (maxLength > 0 && text.length() + i + 1 > maxLength) {
+    if (maxLength > 0 && buffer.length() + 1 > maxLength) {
       break;
     }
     char c=text.charAt(i);
