@@ -1,0 +1,7 @@
+{
+  super.create();
+  world.add("ground",0f,0f,0f).color.set(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
+  kinematicBox=world.add("staticbox",position.x,position.y,position.z);
+  kinematicBox.body.setCollisionFlags(kinematicBox.body.getCollisionFlags() | btCollisionObject.CollisionFlags.CF_KINEMATIC_OBJECT);
+  kinematicBox.body.setActivationState(4);
+}

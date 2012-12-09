@@ -1,0 +1,5 @@
+{
+  angle=(angle + Gdx.graphics.getDeltaTime() * 360f / 5f) % 360;
+  kinematicBox.worldTransform.transform.idt().rotate(Vector3.Y,angle).translate(position);
+  super.render();
+}
