@@ -1,5 +1,5 @@
 {
-  if ((format != WebGLRenderingContext.UNSIGNED_BYTE) || (type != WebGLRenderingContext.RGBA)) {
+  if ((format != WebGLRenderingContext.RGBA) || (type != WebGLRenderingContext.UNSIGNED_BYTE)) {
     throw new GdxRuntimeException("Only format UNSIGNED_BYTE for type RGBA is currently supported.");
   }
   if (!(pixels instanceof ByteBuffer)) {
