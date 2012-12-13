@@ -1,3 +1,15 @@
 {
-  throw new GdxRuntimeException("Not supported by GWT backend");
+  if ((format != WebGLRenderingContext.UNSIGNED_BYTE) || (type != WebGLRenderingContext.RGBA)) {
+    throw new GdxRuntimeException("Only format UNSIGNED_BYTE for type RGBA is currently supported.");
+  }
+  if (!(pixels instanceof ByteBuffer)) {
+    throw new GdxRuntimeException("Inputed pixels buffer needs to be of type ByteBuffer.");
+  }
+  int size=4 * width * height;
+  Uint8Array buffer=Uint8Array.create(size);
+  gl.readPixels(x,y,width,height,format,type,buffer);
+  ByteBuffer pixelsByte=(ByteBuffer)pixels;
+  for (int i=0; i < size; i++) {
+    pixelsByte.put((byte)(buffer.get(i) & 0x000000ff));
+  }
 }

@@ -1,4 +1,3 @@
 {
-  long cPtr=gdxBulletJNI.btTriangleInfoMapData_m_keyArrayPtr_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_int(cPtr,false);
+  return gdxBulletJNI.btTriangleInfoMapData_m_keyArrayPtr_get(swigCPtr,this);
 }
