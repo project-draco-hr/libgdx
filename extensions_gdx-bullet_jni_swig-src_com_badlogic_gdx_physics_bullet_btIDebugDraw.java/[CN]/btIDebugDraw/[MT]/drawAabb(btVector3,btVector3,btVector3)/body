@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawAabb(swigCPtr,this,btVector3.getCPtr(from),from,btVector3.getCPtr(to),to,btVector3.getCPtr(color),color);
+ else   gdxBulletJNI.btIDebugDraw_drawAabbSwigExplicitbtIDebugDraw(swigCPtr,this,btVector3.getCPtr(from),from,btVector3.getCPtr(to),to,btVector3.getCPtr(color),color);
+}

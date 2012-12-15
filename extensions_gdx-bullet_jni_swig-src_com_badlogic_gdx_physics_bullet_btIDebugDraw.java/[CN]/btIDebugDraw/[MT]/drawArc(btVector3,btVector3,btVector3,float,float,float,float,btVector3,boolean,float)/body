@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawArc__SWIG_0(swigCPtr,this,btVector3.getCPtr(center),center,btVector3.getCPtr(normal),normal,btVector3.getCPtr(axis),axis,radiusA,radiusB,minAngle,maxAngle,btVector3.getCPtr(color),color,drawSect,stepDegrees);
+ else   gdxBulletJNI.btIDebugDraw_drawArcSwigExplicitbtIDebugDraw__SWIG_0(swigCPtr,this,btVector3.getCPtr(center),center,btVector3.getCPtr(normal),normal,btVector3.getCPtr(axis),axis,radiusA,radiusB,minAngle,maxAngle,btVector3.getCPtr(color),color,drawSect,stepDegrees);
+}
