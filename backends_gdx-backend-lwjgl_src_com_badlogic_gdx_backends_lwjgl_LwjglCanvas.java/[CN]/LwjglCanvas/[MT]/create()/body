@@ -7,6 +7,7 @@
   }
  catch (  Exception ex) {
     stopped();
+    exception(ex);
     throw new GdxRuntimeException(ex);
   }
   EventQueue.invokeLater(new Runnable(){
@@ -45,7 +46,7 @@ synchronized (runnables) {
         }
         input.processEvents();
         listener.render();
-        audio.update();
+        if (audio != null)         audio.update();
         Display.update();
         canvas.setCursor(cursor);
         if (graphics.vsync)         Display.sync(60);

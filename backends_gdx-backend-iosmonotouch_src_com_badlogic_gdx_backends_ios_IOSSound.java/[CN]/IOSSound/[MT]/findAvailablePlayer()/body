@@ -3,7 +3,7 @@
     int index=(playerIndex + i) % players.length;
     if (!players[index].get_Playing()) {
       playerIndex=(index + 1) % players.length;
-      return i;
+      return index;
     }
   }
   return -1;

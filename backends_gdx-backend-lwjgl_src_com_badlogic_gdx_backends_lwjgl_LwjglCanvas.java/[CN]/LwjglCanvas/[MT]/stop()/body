@@ -5,7 +5,7 @@
       running=false;
       try {
         Display.destroy();
-        audio.dispose();
+        if (audio != null)         audio.dispose();
       }
  catch (      Throwable ignored) {
       }

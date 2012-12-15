@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.btConvexPenetrationDepthSolver_calcPenDepth(swigCPtr,this,SWIGTYPE_p_btSimplexSolverInterface.getCPtr(simplexSolver),btConvexShape.getCPtr(convexA),convexA,btConvexShape.getCPtr(convexB),convexB,transA,transB,v,pa,pb,btIDebugDraw.getCPtr(debugDraw),debugDraw,btStackAlloc.getCPtr(stackAlloc),stackAlloc);
+}

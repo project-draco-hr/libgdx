@@ -1,4 +1,3 @@
 {
-  long cPtr=gdxBulletJNI.btMaterialProperties_m_triangleMaterialsBase_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr,false);
+  return gdxBulletJNI.btMaterialProperties_m_triangleMaterialsBase_get(swigCPtr,this);
 }

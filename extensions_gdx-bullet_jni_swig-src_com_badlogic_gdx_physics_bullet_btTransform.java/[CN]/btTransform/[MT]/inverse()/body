@@ -1,3 +1,3 @@
 {
-  return new btTransform(gdxBulletJNI.btTransform_inverse(swigCPtr,this),true);
+  return gdxBulletJNI.btTransform_inverse(swigCPtr,this);
 }
