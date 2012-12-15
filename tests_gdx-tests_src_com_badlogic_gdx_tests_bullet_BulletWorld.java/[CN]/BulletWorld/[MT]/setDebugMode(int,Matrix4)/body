@@ -1,0 +1,6 @@
+{
+  if (mode <= 0 && debugDrawer == null)   return;
+  if (debugDrawer == null)   dynamicsWorld.setDebugDrawer(debugDrawer=new DebugDrawer());
+  debugDrawer.lineRenderer.setProjectionMatrix(projMatrix);
+  debugDrawer.setDebugMode(mode);
+}

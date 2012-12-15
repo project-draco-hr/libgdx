@@ -1,0 +1,8 @@
+{
+  if (world.getDebugMode() == 0)   setDebugMode(1);
+ else   if (world.renderMeshes)   world.renderMeshes=false;
+ else {
+    world.renderMeshes=true;
+    setDebugMode(0);
+  }
+}

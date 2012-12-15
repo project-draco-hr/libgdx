@@ -11,4 +11,6 @@
   gl.glLightfv(GL10.GL_LIGHT0,GL10.GL_DIFFUSE,lightDiffuse,0);
   camera.apply(Gdx.gl10);
   world.update();
+  performance.setLength(0);
+  performance.append("FPS: ").append(Gdx.graphics.getFramesPerSecond()).append(", Bullet: ").append((int)(world.bulletLoad * 100f)).append("%");
 }

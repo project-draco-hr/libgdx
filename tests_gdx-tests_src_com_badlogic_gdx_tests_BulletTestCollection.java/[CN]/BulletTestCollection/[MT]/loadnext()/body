@@ -1,0 +1,11 @@
+{
+  app.log("TestCollection","disposing test '" + tests[testIndex].getClass().getName() + "'");
+  tests[testIndex].dispose();
+  System.gc();
+  testIndex++;
+  if (testIndex >= tests.length)   testIndex=0;
+  tests[testIndex].create();
+  app.log("TestCollection","created test '" + tests[testIndex].getClass().getName() + "'");
+  titleLabel.setText(tests[testIndex].getClass().getSimpleName());
+  loading=0;
+}
