@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawCapsule(swigCPtr,this,radius,halfHeight,upAxis,btTransform.getCPtr(transform),transform,btVector3.getCPtr(color),color);
+ else   gdxBulletJNI.btIDebugDraw_drawCapsuleSwigExplicitbtIDebugDraw(swigCPtr,this,radius,halfHeight,upAxis,btTransform.getCPtr(transform),transform,btVector3.getCPtr(color),color);
+}
