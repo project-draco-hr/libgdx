@@ -4,4 +4,10 @@
     tests[testIndex].create();
   }
   Gdx.input.setInputProcessor(new InputMultiplexer(this,new GestureDetector(this)));
+  font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
+  hud=new Stage(480,320,true);
+  hud.addActor(fpsLabel=new Label(" ",new Label.LabelStyle(font,Color.WHITE)));
+  fpsLabel.setPosition(0,0);
+  hud.addActor(titleLabel=new Label(tests[testIndex].getClass().getSimpleName(),new Label.LabelStyle(font,Color.WHITE)));
+  titleLabel.setY(hud.getHeight() - titleLabel.getHeight());
 }
