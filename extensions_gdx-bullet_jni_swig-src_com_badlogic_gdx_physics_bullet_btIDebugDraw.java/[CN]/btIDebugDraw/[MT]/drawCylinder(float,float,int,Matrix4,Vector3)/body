@@ -1,4 +1,0 @@
-{
-  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawCylinder(swigCPtr,this,radius,halfHeight,upAxis,transform,color);
- else   gdxBulletJNI.btIDebugDraw_drawCylinderSwigExplicitbtIDebugDraw(swigCPtr,this,radius,halfHeight,upAxis,transform,color);
-}

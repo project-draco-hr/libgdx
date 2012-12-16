@@ -1,0 +1,12 @@
+{
+  for (int i=0; i < entities.size; i++) {
+    btRigidBody body=entities.get(i).body;
+    if (body != null)     dynamicsWorld.removeRigidBody(body);
+  }
+  super.dispose();
+  dynamicsWorld.delete();
+  solver.delete();
+  broadphase.delete();
+  dispatcher.delete();
+  collisionConfiguration.delete();
+}

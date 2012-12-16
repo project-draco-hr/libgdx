@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawSphere__SWIG_1(swigCPtr,this,btVector3.getCPtr(p),p,radius,btVector3.getCPtr(color),color);
+ else   gdxBulletJNI.btIDebugDraw_drawSphereSwigExplicitbtIDebugDraw__SWIG_1(swigCPtr,this,btVector3.getCPtr(p),p,radius,btVector3.getCPtr(color),color);
+}

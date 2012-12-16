@@ -8,7 +8,7 @@
     }
   }
   playerIndex=0;
-synchronized (sync) {
+synchronized (IOSSound.class) {
     soundCounter++;
     if (playThread == null) {
       playThread=new PlayThread();

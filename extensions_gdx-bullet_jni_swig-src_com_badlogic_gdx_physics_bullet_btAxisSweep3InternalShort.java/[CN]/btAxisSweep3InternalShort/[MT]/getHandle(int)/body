@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btAxisSweep3InternalShort_getHandle(swigCPtr,this,index);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_btAxisSweep3InternalT_unsigned_short_t__Handle(cPtr,false);
+}
