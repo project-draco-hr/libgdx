@@ -1,0 +1,4 @@
+{
+  GameplayBundleLoader loader=new GameplayBundleLoader();
+  loader.load(new FileHandle(new File("../model-loaders-android/assets/data/models/dude.gpb")),null);
+}

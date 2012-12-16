@@ -1,0 +1,9 @@
+{
+  super.dispose();
+  mesh.dispose();
+  mesh=null;
+  batch.dispose();
+  batch=null;
+  texture.dispose();
+  texture=null;
+}

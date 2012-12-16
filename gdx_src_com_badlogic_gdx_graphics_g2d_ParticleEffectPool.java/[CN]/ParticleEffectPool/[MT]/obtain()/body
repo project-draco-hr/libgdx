@@ -1,5 +1,5 @@
 {
   PooledEffect effect=super.obtain();
-  effect.start();
+  effect.reset();
   return effect;
 }

@@ -39,7 +39,7 @@
   }
 ;
   graphics.setVSync(true);
-  audio=new OpenALAudio();
+  if (!LwjglApplicationConfiguration.disableAudio)   audio=new OpenALAudio();
   files=new LwjglFiles();
   input=new LwjglInput();
   net=new LwjglNet();

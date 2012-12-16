@@ -1,0 +1,14 @@
+{
+  if (y >= scroll.getHeight()) {
+    scrollDown.cancel();
+    if (!scrollUp.isScheduled())     Timer.schedule(scrollUp,0.05f,0.05f);
+  }
+ else   if (y < 0) {
+    scrollUp.cancel();
+    if (!scrollDown.isScheduled())     Timer.schedule(scrollDown,0.05f,0.05f);
+  }
+ else {
+    scrollUp.cancel();
+    scrollDown.cancel();
+  }
+}

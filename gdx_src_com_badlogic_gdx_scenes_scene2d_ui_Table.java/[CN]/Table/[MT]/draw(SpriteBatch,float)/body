@@ -4,9 +4,10 @@
   if (isTransform()) {
     applyTransform(batch,computeTransform());
     if (clip) {
-      if (ScissorStack.pushScissors(calculateScissors(batch.getTransformMatrix()))) {
+      boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(layout.getPadLeft(),layout.getPadBottom(),getWidth() - layout.getPadLeft() - layout.getPadRight(),getHeight() - layout.getPadBottom() - layout.getPadTop());
+      if (draw) {
         drawChildren(batch,parentAlpha);
-        ScissorStack.popScissors();
+        clipEnd();
       }
     }
  else     drawChildren(batch,parentAlpha);

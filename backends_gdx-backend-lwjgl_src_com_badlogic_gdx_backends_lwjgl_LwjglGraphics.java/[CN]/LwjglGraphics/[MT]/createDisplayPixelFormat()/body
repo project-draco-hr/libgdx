@@ -22,18 +22,23 @@
       Display.destroy();
       try {
         Display.create(new PixelFormat());
-        if (getDesktopDisplayMode().bitsPerPixel == 16) {
-          bufferFormat=new BufferFormat(5,6,5,0,8,0,0,false);
-        }
-        if (getDesktopDisplayMode().bitsPerPixel == 24) {
-          bufferFormat=new BufferFormat(8,8,8,0,8,0,0,false);
-        }
-        if (getDesktopDisplayMode().bitsPerPixel == 32) {
-          bufferFormat=new BufferFormat(8,8,8,8,8,0,0,false);
-        }
       }
  catch (      Exception ex3) {
-        if (ex3.getMessage().contains("Pixel format not accelerated"))         throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex3);
+        try {
+          Display.create();
+        }
+ catch (        Exception ex4) {
+          if (ex4.getMessage().contains("Pixel format not accelerated"))           throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex4);
+        }
+      }
+      if (getDesktopDisplayMode().bitsPerPixel == 16) {
+        bufferFormat=new BufferFormat(5,6,5,0,8,0,0,false);
+      }
+      if (getDesktopDisplayMode().bitsPerPixel == 24) {
+        bufferFormat=new BufferFormat(8,8,8,0,8,0,0,false);
+      }
+      if (getDesktopDisplayMode().bitsPerPixel == 32) {
+        bufferFormat=new BufferFormat(8,8,8,8,8,0,0,false);
       }
     }
   }

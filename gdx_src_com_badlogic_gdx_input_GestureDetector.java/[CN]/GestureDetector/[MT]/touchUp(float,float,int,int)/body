@@ -5,11 +5,13 @@
   panning=false;
   if (longPressFired)   return false;
   if (inTapSquare) {
-    if (TimeUtils.nanoTime() - lastTapTime > tapCountInterval || !isWithinTapSquare(x,y,lastTapX,lastTapY))     tapCount=0;
+    if (lastTapButton != button || lastTapPointer != pointer || TimeUtils.nanoTime() - lastTapTime > tapCountInterval || !isWithinTapSquare(x,y,lastTapX,lastTapY))     tapCount=0;
     tapCount++;
     lastTapTime=TimeUtils.nanoTime();
     lastTapX=x;
     lastTapY=y;
+    lastTapButton=button;
+    lastTapPointer=pointer;
     gestureStartTime=0;
     return listener.tap(x,y,tapCount,button);
   }

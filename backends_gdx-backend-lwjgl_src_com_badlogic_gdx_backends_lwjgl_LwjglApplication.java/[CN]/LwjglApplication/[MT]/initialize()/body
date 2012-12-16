@@ -6,7 +6,7 @@
         LwjglApplication.this.mainLoop();
       }
  catch (      Throwable t) {
-        audio.dispose();
+        if (audio != null)         audio.dispose();
         throw new GdxRuntimeException(t);
       }
     }

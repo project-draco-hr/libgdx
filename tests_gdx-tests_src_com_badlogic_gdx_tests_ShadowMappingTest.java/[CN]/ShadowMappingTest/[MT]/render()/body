@@ -46,6 +46,7 @@
     ui.getSpriteBatch().end();
   }
   fpsLabel.setText("fps: " + Gdx.graphics.getFramesPerSecond());
+  ui.act();
   ui.draw();
   Table.drawDebug(ui);
 }

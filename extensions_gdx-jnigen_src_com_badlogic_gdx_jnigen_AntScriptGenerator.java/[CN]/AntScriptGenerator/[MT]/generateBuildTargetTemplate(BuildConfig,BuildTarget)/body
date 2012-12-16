@@ -10,6 +10,7 @@
   String libName=getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName);
   String jniPlatform=getJniPlatform(target.os);
   StringBuffer cIncludes=new StringBuffer();
+  cIncludes.append("\t\t<include name=\"memcpy_wrap.c\"/>\n");
   for (  String cInclude : target.cIncludes) {
     cIncludes.append("\t\t<include name=\"" + cInclude + "\"/>\n");
   }

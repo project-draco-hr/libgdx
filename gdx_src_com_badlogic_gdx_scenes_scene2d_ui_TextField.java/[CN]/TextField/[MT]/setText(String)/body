@@ -3,8 +3,11 @@
   BitmapFont font=style.font;
   StringBuffer buffer=new StringBuffer();
   for (int i=0; i < text.length(); i++) {
+    if (maxLength > 0 && buffer.length() + 1 > maxLength) {
+      break;
+    }
     char c=text.charAt(i);
-    if (font.containsCharacter(c))     buffer.append(c);
+    if (font.containsCharacter(c) && (filter == null || filter.acceptChar(this,c)))     buffer.append(c);
   }
   this.text=buffer.toString();
   updateDisplayText();

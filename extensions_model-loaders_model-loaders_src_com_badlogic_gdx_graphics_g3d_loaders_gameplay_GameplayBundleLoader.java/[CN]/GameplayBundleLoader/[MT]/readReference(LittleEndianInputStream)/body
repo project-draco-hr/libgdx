@@ -1,0 +1,6 @@
+{
+  String id=readString(in);
+  int typeId=in.readInt();
+  int offset=in.readInt();
+  return new Reference(id,Type.forId(typeId),offset);
+}
