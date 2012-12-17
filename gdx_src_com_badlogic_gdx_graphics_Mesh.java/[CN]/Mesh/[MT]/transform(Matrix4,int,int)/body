@@ -1,0 +1,11 @@
+{
+  final VertexAttribute posAttr=getVertexAttribute(Usage.Position);
+  final int offset=posAttr.offset / 4;
+  final int vertexSize=getVertexSize() / 4;
+  final int numComponents=posAttr.numComponents;
+  final int numVertices=getNumVertices();
+  final float[] vertices=new float[numVertices * vertexSize];
+  getVertices(0,vertices.length,vertices);
+  transform(matrix,vertices,vertexSize,offset,numComponents,start,count);
+  setVertices(vertices,0,vertices.length);
+}

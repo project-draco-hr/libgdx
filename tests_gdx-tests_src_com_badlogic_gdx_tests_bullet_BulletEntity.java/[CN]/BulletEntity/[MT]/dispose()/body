@@ -1,0 +1,6 @@
+{
+  if (motionState != null)   motionState.dispose();
+  if (body != null)   body.delete();
+  motionState=null;
+  body=null;
+}

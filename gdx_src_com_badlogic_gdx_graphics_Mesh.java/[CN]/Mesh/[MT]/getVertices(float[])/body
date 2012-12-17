@@ -1,7 +1,3 @@
 {
-  if (vertices.length < getNumVertices() * getVertexSize() / 4)   throw new IllegalArgumentException("not enough room in vertices array, has " + vertices.length + " floats, needs "+ getNumVertices() * getVertexSize() / 4);
-  int pos=getVerticesBuffer().position();
-  getVerticesBuffer().position(0);
-  getVerticesBuffer().get(vertices,0,getNumVertices() * getVertexSize() / 4);
-  getVerticesBuffer().position(pos);
+  getVertices(0,-1,vertices);
 }

@@ -1,0 +1,15 @@
+{
+  final float dt=Gdx.graphics.getDeltaTime();
+  bulletTime=mean.getMean();
+  final float load=dt == 0 ? 0 : bulletTime / dt;
+  bulletLoad=(dt > 1f) ? load : dt * load + (1f - dt) * bulletLoad;
+  final long start=System.nanoTime();
+  dynamicsWorld.stepSimulation(dt,5);
+  mean.addValue((System.nanoTime() - start) / 1000000000.0f);
+  if (debugDrawer != null && debugDrawer.getDebugMode() > 0) {
+    debugDrawer.begin();
+    dynamicsWorld.debugDrawWorld();
+    debugDrawer.end();
+  }
+  if (renderMeshes)   super.update();
+}
