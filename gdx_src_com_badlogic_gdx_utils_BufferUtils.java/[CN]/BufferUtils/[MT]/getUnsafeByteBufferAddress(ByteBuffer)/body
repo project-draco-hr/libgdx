@@ -1,6 +1,0 @@
-{
-synchronized (unsafeBuffers) {
-    if (!unsafeBuffers.contains(buffer,true))     return 0;
-  }
-  return getByteBufferAddress(buffer);
-}
