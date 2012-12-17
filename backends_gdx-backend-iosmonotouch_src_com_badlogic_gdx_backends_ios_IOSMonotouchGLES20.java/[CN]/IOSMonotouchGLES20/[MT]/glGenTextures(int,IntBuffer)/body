@@ -1,3 +1,4 @@
 {
-  GL.GenTextures(n,textures.array());
+  GL.GenTextures(n,buffer1);
+  textures.put(buffer1,0,1);
 }
