@@ -1,2 +1,3 @@
 {
+  GL.ReadPixels(x,y,width,height,PixelFormat.wrap(format),PixelType.wrap(type),IntPtr.op_Explicit(BufferUtils.getUnsafeByteBufferAddress((ByteBuffer)pixels)));
 }
