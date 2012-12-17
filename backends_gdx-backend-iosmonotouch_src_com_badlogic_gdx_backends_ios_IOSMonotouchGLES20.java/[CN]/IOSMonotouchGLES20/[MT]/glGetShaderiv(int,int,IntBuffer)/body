@@ -1,4 +1,4 @@
 {
-  GL.GetShader(shader,ShaderParameter.wrap(pname),buffer1);
-  params.put(buffer1,0,buffer1.length);
+  GL.GetShader(shader,ShaderParameter.wrap(pname),intArray);
+  params.put(intArray,0,params.remaining());
 }

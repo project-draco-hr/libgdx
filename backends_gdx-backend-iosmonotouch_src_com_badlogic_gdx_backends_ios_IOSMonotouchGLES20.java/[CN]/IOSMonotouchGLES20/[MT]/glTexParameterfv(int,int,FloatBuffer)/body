@@ -1,2 +1,4 @@
 {
+  params.get(floatArray,0,params.remaining());
+  GL.TexParameter(TextureTarget.wrap(target),TextureParameterName.wrap(pname),floatArray);
 }

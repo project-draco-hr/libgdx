@@ -1,3 +1,4 @@
 {
-  GL.Uniform2(location,count,v.array());
+  v.get(intArray,0,v.remaining());
+  GL.Uniform2(location,count,intArray);
 }

@@ -1,2 +1,4 @@
 {
+  buffer.get(intArray,0,buffer.remaining());
+  GL.DeleteFramebuffers(n,intArray);
 }

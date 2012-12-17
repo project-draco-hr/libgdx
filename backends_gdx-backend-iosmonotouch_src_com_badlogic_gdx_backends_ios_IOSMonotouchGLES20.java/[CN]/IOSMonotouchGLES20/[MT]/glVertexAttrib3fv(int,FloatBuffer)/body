@@ -1,2 +1,4 @@
 {
+  v.get(floatArray,0,v.remaining());
+  GL.VertexAttrib3(indx,floatArray);
 }

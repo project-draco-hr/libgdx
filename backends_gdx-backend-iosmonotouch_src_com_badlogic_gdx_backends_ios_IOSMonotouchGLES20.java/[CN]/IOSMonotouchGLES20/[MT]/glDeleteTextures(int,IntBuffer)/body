@@ -1,4 +1,4 @@
 {
-  buffer1[0]=textures.get(0);
-  GL.DeleteTextures(n,buffer1);
+  buffer.get(intArray,0,buffer.remaining());
+  GL.DeleteTextures(n,intArray);
 }

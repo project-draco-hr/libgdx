@@ -1,3 +1,4 @@
 {
-  GL.UniformMatrix4(location,count,transpose,value.array());
+  v.get(floatArray,0,v.remaining());
+  GL.UniformMatrix4(location,count,transpose,floatArray);
 }
