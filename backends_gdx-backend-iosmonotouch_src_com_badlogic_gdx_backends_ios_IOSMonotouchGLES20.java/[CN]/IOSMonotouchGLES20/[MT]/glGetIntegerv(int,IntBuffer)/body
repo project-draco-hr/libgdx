@@ -1,4 +1,5 @@
 {
   GL.GetInteger(GetPName.wrap(pname),intArray);
+  buffer.position(0);
   buffer.put(intArray,0,buffer.remaining());
 }

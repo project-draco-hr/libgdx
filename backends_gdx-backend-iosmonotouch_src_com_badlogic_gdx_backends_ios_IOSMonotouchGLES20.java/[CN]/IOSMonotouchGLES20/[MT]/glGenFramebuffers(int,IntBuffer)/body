@@ -1,4 +1,5 @@
 {
   GL.GenFramebuffers(n,intArray);
+  buffers.position(0);
   buffers.put(intArray,0,n);
 }
