@@ -20,8 +20,11 @@
   this.uiWindow=new UIWindow(UIScreen.get_MainScreen().get_Bounds());
   UIViewController uiViewController=new IOSUIViewController();
   this.uiWindow.set_RootViewController(uiViewController);
+  GL20 gl20=config.useMonotouchOpenTK ? new IOSMonotouchGLES20() : new IOSGLES20();
+  Gdx.gl=gl20;
+  Gdx.gl20=gl20;
   this.input=new IOSInput(this);
-  this.graphics=new IOSGraphics(getBounds(uiViewController),this,input);
+  this.graphics=new IOSGraphics(getBounds(uiViewController),this,input,gl20);
   this.files=new IOSFiles();
   this.audio=new IOSAudio();
   this.net=new IOSNet(this);

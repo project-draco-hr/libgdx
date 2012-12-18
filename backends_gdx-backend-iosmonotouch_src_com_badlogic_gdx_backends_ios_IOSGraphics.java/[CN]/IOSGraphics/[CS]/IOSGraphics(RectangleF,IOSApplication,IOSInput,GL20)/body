@@ -12,9 +12,7 @@
   set_LayerColorFormat(EAGLColorFormat.RGB565);
   set_ContextRenderingApi(EAGLRenderingAPI.wrap(EAGLRenderingAPI.OpenGLES2));
   bufferFormat=new BufferFormat(5,6,5,0,16,0,0,false);
-  gl20=new IOSMonotouchGLES20();
-  Gdx.gl=gl20;
-  Gdx.gl20=gl20;
+  this.gl20=gl20;
   density=1f;
   if ((UIScreen.get_MainScreen().RespondsToSelector(new Selector("scale")))) {
     float scale=UIScreen.get_MainScreen().get_Scale();
