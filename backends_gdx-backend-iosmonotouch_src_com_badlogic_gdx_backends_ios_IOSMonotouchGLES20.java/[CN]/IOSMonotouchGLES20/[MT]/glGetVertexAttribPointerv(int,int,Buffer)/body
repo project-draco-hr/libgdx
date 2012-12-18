@@ -1,3 +1,3 @@
 {
-  throw new UnsupportedOperationException("not implemented yet");
+  GL.GetVertexAttribPointer(index,VertexAttribPointerParameter.wrap(pname),IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(pointer)));
 }
