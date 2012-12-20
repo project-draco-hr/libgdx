@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyHelpers_CreateFromTetGenData(btSoftBodyWorldInfo.getCPtr(worldInfo),worldInfo,ele,face,node,bfacelinks,btetralinks,bfacesfromtetras);
+  return (cPtr == 0) ? null : new btSoftBody(cPtr,false);
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyFloatData_m_config_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SoftBodyConfigData(cPtr,false);
+}

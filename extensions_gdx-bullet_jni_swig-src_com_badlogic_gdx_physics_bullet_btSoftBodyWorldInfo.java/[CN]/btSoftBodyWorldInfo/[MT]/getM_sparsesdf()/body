@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyWorldInfo_m_sparsesdf_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btSparseSdf3(cPtr,false);
+}
