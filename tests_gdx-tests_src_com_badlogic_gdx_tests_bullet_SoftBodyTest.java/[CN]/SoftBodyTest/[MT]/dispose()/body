@@ -1,0 +1,7 @@
+{
+  super.dispose();
+  worldInfo.delete();
+  worldInfo=null;
+  mesh.dispose();
+  mesh=null;
+}
