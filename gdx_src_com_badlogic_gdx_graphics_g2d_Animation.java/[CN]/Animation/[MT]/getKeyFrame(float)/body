@@ -1,29 +1,4 @@
 {
-  int frameNumber=(int)(stateTime / frameDuration);
-switch (playMode) {
-case NORMAL:
-    frameNumber=Math.min(keyFrames.length - 1,frameNumber);
-  break;
-case LOOP:
-frameNumber=frameNumber % keyFrames.length;
-break;
-case LOOP_PINGPONG:
-frameNumber=frameNumber % (keyFrames.length * 2);
-if (frameNumber >= keyFrames.length) frameNumber=keyFrames.length - 1 - (frameNumber - keyFrames.length);
-break;
-case LOOP_RANDOM:
-frameNumber=MathUtils.random(keyFrames.length - 1);
-break;
-case REVERSED:
-frameNumber=Math.max(keyFrames.length - frameNumber - 1,0);
-break;
-case LOOP_REVERSED:
-frameNumber=frameNumber % keyFrames.length;
-frameNumber=keyFrames.length - frameNumber - 1;
-break;
-default :
-frameNumber=Math.min(keyFrames.length - 1,frameNumber);
-break;
-}
-return keyFrames[frameNumber];
+  int frameNumber=getCurrentFrameNumber(stateTime);
+  return keyFrames[frameNumber];
 }
