@@ -1,4 +1,4 @@
 {
-  int frameNumber=getCurrentFrameNumber(stateTime);
+  int frameNumber=getKeyFrameIndex(stateTime);
   return keyFrames[frameNumber];
 }
