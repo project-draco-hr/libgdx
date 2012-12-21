@@ -1,12 +1,15 @@
 {
   super.render();
   if (world.renderMeshes) {
+    Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
+    texture.bind(0);
     softBody.getVertices(mesh.getVerticesBuffer(),softBody.getNodeCount(),mesh.getVertexSize(),0);
     softBody.getWorldTransform(tmpM);
     Gdx.gl10.glPushMatrix();
     Gdx.gl10.glMultMatrixf(tmpM.val,0);
-    Gdx.gl10.glColor4f(color.r,color.g,color.b,color.a);
+    Gdx.gl10.glColor4f(1f,1f,1f,1f);
     mesh.render(GL10.GL_TRIANGLES);
     Gdx.gl10.glPopMatrix();
+    Gdx.gl.glDisable(GL10.GL_TEXTURE_2D);
   }
 }

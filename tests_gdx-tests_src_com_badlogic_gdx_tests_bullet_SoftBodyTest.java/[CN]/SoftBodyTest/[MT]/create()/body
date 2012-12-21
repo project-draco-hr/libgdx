@@ -11,13 +11,23 @@
   softBody.takeOwnership();
   softBody.setTotalMass(100f);
   ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).addSoftBody(softBody);
-  int vertCount=softBody.getNodeCount();
-  int faceCount=softBody.getFaceCount();
-  mesh=new Mesh(false,vertCount,faceCount * 3,new VertexAttribute(Usage.Position,3,"a_position"));
+  final int vertCount=softBody.getNodeCount();
+  final int faceCount=softBody.getFaceCount();
+  mesh=new Mesh(false,vertCount,faceCount * 3,new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
+  final int vertSize=mesh.getVertexSize() / 4;
   mesh.getVerticesBuffer().position(0);
-  mesh.getVerticesBuffer().limit(vertCount * mesh.getVertexSize() / 4);
+  mesh.getVerticesBuffer().limit(vertCount * vertSize);
   mesh.getIndicesBuffer().position(0);
   mesh.getIndicesBuffer().limit(faceCount * 3);
   softBody.getVertices(mesh.getVerticesBuffer(),vertCount,mesh.getVertexSize(),0);
   softBody.getIndices(mesh.getIndicesBuffer(),faceCount);
+  final float[] verts=new float[vertCount * vertSize];
+  final int uvOffset=mesh.getVertexAttribute(Usage.TextureCoordinates).offset / 4;
+  mesh.getVertices(verts);
+  for (int i=0; i < vertCount; i++) {
+    verts[i * vertSize + uvOffset]=(verts[i * vertSize] - x0) / (x1 - x0);
+    verts[i * vertSize + uvOffset + 1]=(verts[i * vertSize + 2] - z0) / (z1 - z0);
+  }
+  mesh.setVertices(verts);
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
 }
