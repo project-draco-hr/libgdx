@@ -1,5 +1,6 @@
 {
   super.OnRenderFrame(arg0);
+  if (paused)   return;
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
