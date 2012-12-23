@@ -1,0 +1,4 @@
+{
+  constructors.put(name,constructor);
+  if (constructor.mesh != null && !meshes.contains(constructor.mesh,true))   meshes.add(constructor.mesh);
+}

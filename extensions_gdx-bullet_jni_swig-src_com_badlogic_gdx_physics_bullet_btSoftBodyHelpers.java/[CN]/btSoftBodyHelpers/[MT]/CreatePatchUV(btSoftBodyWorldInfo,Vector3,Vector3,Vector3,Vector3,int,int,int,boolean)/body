@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyHelpers_CreatePatchUV__SWIG_1(btSoftBodyWorldInfo.getCPtr(worldInfo),worldInfo,corner00,corner10,corner01,corner11,resx,resy,fixeds,gendiags);
+  return (cPtr == 0) ? null : new btSoftBody(cPtr,false);
+}

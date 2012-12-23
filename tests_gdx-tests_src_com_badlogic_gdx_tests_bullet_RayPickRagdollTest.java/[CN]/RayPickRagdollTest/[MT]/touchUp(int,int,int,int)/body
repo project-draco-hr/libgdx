@@ -1,0 +1,17 @@
+{
+  boolean result=false;
+  if (button == Buttons.LEFT) {
+    if (pickConstraint != null) {
+      world.dynamicsWorld.removeConstraint(pickConstraint);
+      pickConstraint.delete();
+      pickConstraint=null;
+      result=true;
+    }
+    if (pickedBody != null) {
+      pickedBody.forceActivationState(gdxBullet.ACTIVE_TAG);
+      pickedBody.setDeactivationTime(0f);
+      pickedBody=null;
+    }
+  }
+  return result ? result : super.touchUp(screenX,screenY,pointer,button);
+}

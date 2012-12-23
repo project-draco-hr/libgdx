@@ -1,0 +1,5 @@
+{
+  super.dispose();
+  if (internalTickCallback != null)   internalTickCallback.delete();
+  internalTickCallback=null;
+}

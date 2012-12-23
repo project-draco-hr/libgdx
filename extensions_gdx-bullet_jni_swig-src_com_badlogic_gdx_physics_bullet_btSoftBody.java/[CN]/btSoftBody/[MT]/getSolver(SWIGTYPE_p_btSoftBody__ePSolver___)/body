@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBody_getSolver__SWIG_0(SWIGTYPE_p_btSoftBody__ePSolver___.getCPtr(solver));
+  return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_btSoftBody_float_float__void(cPtr,false);
+}

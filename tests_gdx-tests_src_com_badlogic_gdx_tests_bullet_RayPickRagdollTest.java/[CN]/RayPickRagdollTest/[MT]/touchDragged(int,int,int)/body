@@ -1,0 +1,10 @@
+{
+  boolean result=false;
+  if (pickConstraint != null) {
+    Ray ray=camera.getPickRay(screenX,screenY);
+    Vector3.tmp.set(ray.direction).mul(pickDistance).add(camera.position);
+    pickConstraint.setPivotB(Vector3.tmp);
+    result=true;
+  }
+  return result ? result : super.touchDragged(screenX,screenY,pointer);
+}
