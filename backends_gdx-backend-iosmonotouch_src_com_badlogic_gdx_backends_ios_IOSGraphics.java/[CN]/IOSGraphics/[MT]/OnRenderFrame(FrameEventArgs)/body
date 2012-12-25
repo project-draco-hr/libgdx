@@ -1,6 +1,18 @@
 {
   super.OnRenderFrame(arg0);
-  if (paused)   return;
+  if (paused) {
+    if (!wasPaused) {
+      app.listener.pause();
+      wasPaused=true;
+    }
+    return;
+  }
+ else {
+    if (wasPaused) {
+      app.listener.resume();
+      wasPaused=false;
+    }
+  }
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;

@@ -1,9 +1,5 @@
 {
   Gdx.app.debug("IOSApplication","resumed");
+  graphics.MakeCurrent();
   graphics.resume();
-  if (!firstResume) {
-    graphics.MakeCurrent();
-    listener.resume();
-    firstResume=true;
-  }
 }
