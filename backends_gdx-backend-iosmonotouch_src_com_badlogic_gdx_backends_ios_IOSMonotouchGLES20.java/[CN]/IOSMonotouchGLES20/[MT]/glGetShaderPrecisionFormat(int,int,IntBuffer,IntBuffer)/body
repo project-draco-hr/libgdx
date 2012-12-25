@@ -1,0 +1,7 @@
+{
+  GL.GetShaderPrecisionFormat(ShaderType.wrap(shadertype),ShaderPrecision.wrap(precisiontype),rangeIntArray,intArray);
+  range.position(0);
+  range.put(rangeIntArray,0,range.remaining());
+  precision.position(0);
+  precision.put(intArray,0,precision.remaining());
+}

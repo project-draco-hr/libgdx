@@ -1,0 +1,4 @@
+{
+  if (getClass() == InternalTickCallback.class)   gdxBulletJNI.InternalTickCallback_onInternalTick(swigCPtr,this,btDynamicsWorld.getCPtr(dynamicsWorld),dynamicsWorld,timeStep);
+ else   gdxBulletJNI.InternalTickCallback_onInternalTickSwigExplicitInternalTickCallback(swigCPtr,this,btDynamicsWorld.getCPtr(dynamicsWorld),dynamicsWorld,timeStep);
+}

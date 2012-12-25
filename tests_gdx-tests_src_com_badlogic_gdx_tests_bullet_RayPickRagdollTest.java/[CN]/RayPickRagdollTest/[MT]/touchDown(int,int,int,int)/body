@@ -1,0 +1,29 @@
+{
+  boolean result=false;
+  if (button == Buttons.LEFT) {
+    Ray ray=camera.getPickRay(screenX,screenY);
+    Vector3.tmp.set(ray.direction).mul(10f).add(ray.origin);
+    ClosestRayResultCallback cb=new ClosestRayResultCallback(ray.origin,Vector3.tmp);
+    world.dynamicsWorld.rayTest(ray.origin,Vector3.tmp,cb);
+    if (cb.hasHit()) {
+      btRigidBody body=btRigidBody.upcast(cb.getM_collisionObject());
+      if (body != null && !body.isStaticObject() && !body.isKinematicObject()) {
+        pickedBody=body;
+        body.setActivationState(gdxBullet.DISABLE_DEACTIVATION);
+        btVector3 hitpoint=cb.getM_hitPointWorld();
+        Vector3.tmp.set(hitpoint.getX(),hitpoint.getY(),hitpoint.getZ());
+        Vector3.tmp.mul(body.getCenterOfMassTransform().inv());
+        pickConstraint=new btPoint2PointConstraint(body,Vector3.tmp);
+        btConstraintSetting setting=pickConstraint.getM_setting();
+        setting.setM_impulseClamp(30f);
+        setting.setM_tau(0.001f);
+        pickConstraint.setM_setting(setting);
+        world.dynamicsWorld.addConstraint(pickConstraint);
+        pickDistance=Vector3.tmp.sub(camera.position).len();
+        result=true;
+      }
+    }
+    cb.delete();
+  }
+  return result ? result : super.touchDown(screenX,screenY,pointer,button);
+}

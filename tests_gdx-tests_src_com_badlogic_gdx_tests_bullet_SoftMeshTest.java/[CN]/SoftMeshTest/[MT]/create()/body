@@ -1,0 +1,19 @@
+{
+  super.create();
+  world.maxSubSteps=20;
+  world.add("ground",0f,0f,0f).color.set(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
+  mesh=ObjLoader.loadObj(Gdx.files.internal("data/wheel.obj").read(),true,true);
+  mesh.scale(6f,6f,6f);
+  softBody=new btSoftBody(worldInfo,mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize(),mesh.getVertexAttribute(Usage.Position).offset,mesh.getIndicesBuffer(),mesh.getNumIndices() / 3);
+  softBody.setMass(0,0);
+  Material pm=softBody.appendMaterial();
+  pm.setM_kLST(0.2f);
+  pm.setM_flags(0);
+  softBody.generateBendingConstraints(2,pm);
+  softBody.setConfig_piterations(7);
+  softBody.setConfig_kDF(0.2f);
+  softBody.randomizeConstraints();
+  softBody.setTotalMass(1);
+  softBody.translate(Vector3.tmp.set(1,5,1));
+  ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).addSoftBody(softBody);
+}

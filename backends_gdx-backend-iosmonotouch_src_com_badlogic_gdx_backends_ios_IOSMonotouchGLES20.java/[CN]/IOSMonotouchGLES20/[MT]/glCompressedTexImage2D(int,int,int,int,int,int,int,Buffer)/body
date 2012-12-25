@@ -1,0 +1,3 @@
+{
+  GL.CompressedTexImage2D(TextureTarget.wrap(target),level,PixelInternalFormat.wrap(internalformat),width,height,border,imageSize,IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(data)));
+}
