@@ -1,6 +1,6 @@
 {
   low=min;
   high=max;
-  current=low + (high - low) / 2;
+  current=(low + high) >>> 1;
   return pot ? (int)Math.pow(2,current) : current;
 }

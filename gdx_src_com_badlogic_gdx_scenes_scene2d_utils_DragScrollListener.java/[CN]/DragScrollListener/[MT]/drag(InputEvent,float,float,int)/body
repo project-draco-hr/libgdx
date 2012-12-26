@@ -1,11 +1,17 @@
 {
   if (y >= scroll.getHeight()) {
     scrollDown.cancel();
-    if (!scrollUp.isScheduled())     Timer.schedule(scrollUp,0.05f,0.05f);
+    if (!scrollUp.isScheduled()) {
+      startTime=System.currentTimeMillis();
+      Timer.schedule(scrollUp,tickSecs,tickSecs);
+    }
   }
  else   if (y < 0) {
     scrollUp.cancel();
-    if (!scrollDown.isScheduled())     Timer.schedule(scrollDown,0.05f,0.05f);
+    if (!scrollDown.isScheduled()) {
+      startTime=System.currentTimeMillis();
+      Timer.schedule(scrollDown,tickSecs,tickSecs);
+    }
   }
  else {
     scrollUp.cancel();

@@ -33,4 +33,6 @@
   app.debug(tag,"Display: ppi=" + ppi + ", density="+ density);
   lastFrameTime=System.nanoTime();
   framesStart=lastFrameTime;
+  paused=false;
+  wasPaused=true;
 }
