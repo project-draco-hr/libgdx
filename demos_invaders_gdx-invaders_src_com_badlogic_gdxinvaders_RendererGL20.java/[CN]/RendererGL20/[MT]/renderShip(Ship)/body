@@ -12,6 +12,6 @@
   normal.rotate(0,1,0,180);
   normal3.set(normal.toNormalMatrix());
   lightTexShader.setUniformMatrix("u_normal",normal3);
-  shipMesh.render(lightTexShader,GL10.GL_TRIANGLES);
+  shipMesh.render(lightTexShader);
   lightTexShader.end();
 }

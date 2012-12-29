@@ -6,7 +6,7 @@
     Block block=blocks.get(i);
     gl.glPushMatrix();
     gl.glTranslatef(block.position.x,block.position.y,block.position.z);
-    blockMesh.render(GL10.GL_TRIANGLES);
+    blockMesh.render();
     gl.glPopMatrix();
   }
   gl.glColor4f(1,1,1,1);
