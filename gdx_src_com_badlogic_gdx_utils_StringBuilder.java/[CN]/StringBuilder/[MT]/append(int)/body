@@ -13,7 +13,7 @@
     if (i >= 10000000)     append0(digits[i % 100000000 / 10000000]);
     if (i >= 1000000)     append0(digits[i % 10000000 / 1000000]);
     if (i >= 100000)     append0(digits[i % 1000000 / 100000]);
-    if (i >= 10000)     append0(digits[i % 100000 / 10000]);
+    append0(digits[i % 100000 / 10000]);
   }
   if (i >= 1000)   append0(digits[i % 10000 / 1000]);
   if (i >= 100)   append0(digits[i % 1000 / 100]);
