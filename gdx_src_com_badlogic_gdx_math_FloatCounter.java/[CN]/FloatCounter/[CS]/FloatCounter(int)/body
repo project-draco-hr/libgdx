@@ -1,0 +1,4 @@
+{
+  mean=(windowSize > 1) ? new WindowedMean(windowSize) : null;
+  reset();
+}

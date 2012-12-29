@@ -1,0 +1,25 @@
+{
+  float wait=Float.MAX_VALUE;
+  for (int i=0, n=tasks.size; i < n; i++) {
+    Task task=tasks.get(i);
+    if (task.executeTime > time) {
+      wait=Math.min(wait,task.executeTime - time);
+      continue;
+    }
+    if (task.repeatCount != CANCELLED) {
+      if (task.repeatCount == 0)       task.repeatCount=CANCELLED;
+      Gdx.app.postRunnable(task);
+    }
+    if (task.repeatCount == CANCELLED) {
+      tasks.removeIndex(i);
+      i--;
+      n--;
+    }
+ else {
+      task.executeTime=time + task.intervalSeconds;
+      wait=Math.min(wait,task.executeTime - time);
+      if (task.repeatCount > 0)       task.repeatCount--;
+    }
+  }
+  return wait;
+}
