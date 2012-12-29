@@ -1,0 +1,9 @@
+{
+  super.onAttachedToWindow();
+  Log.i("Andrew","hi");
+  AndroidApplicationConfiguration cfg=new AndroidApplicationConfiguration();
+  cfg.useGL20=true;
+  setInteractive(false);
+  ApplicationListener app=new MeshShaderTest();
+  initialize(app,cfg);
+}

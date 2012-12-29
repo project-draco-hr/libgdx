@@ -1,0 +1,8 @@
+{
+  this.config=config;
+  view=createGLSurfaceView(daydream,config.useGL20,resolutionStrategy);
+  setPreserveContext(view);
+  view.setFocusable(true);
+  view.setFocusableInTouchMode(true);
+  this.app=daydream;
+}
