@@ -8,7 +8,7 @@
   if (!batchShader.isCompiled()) {
     Gdx.app.log("EdgeDetectionTest","couldn't compile post-processing shader: " + batchShader.getLog());
   }
-  mesh=ObjLoader.loadObj(Gdx.files.internal("data/scene.obj").read());
+  mesh=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/scene.obj"));
   fbo=new FrameBuffer(Format.RGB565,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(0,0,10);

@@ -1,8 +1,0 @@
-{
-  KeyframeAnimation anim=getAnimation(animKey);
-  if (anim != null) {
-    animator.setAnimation(anim,wrapMode);
-    animator.getInterpolatedKeyframe().indicesSet=false;
-    animator.getInterpolatedKeyframe().indicesSent=false;
-  }
-}

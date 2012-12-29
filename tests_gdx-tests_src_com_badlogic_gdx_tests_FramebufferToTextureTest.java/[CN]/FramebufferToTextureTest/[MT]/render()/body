@@ -11,7 +11,7 @@
   gl.glPushMatrix();
   gl.glRotatef(angle,0,1,0);
   texture.bind();
-  mesh.render(GL10.GL_TRIANGLES);
+  mesh.render();
   gl.glPopMatrix();
   if (Gdx.input.justTouched() || fbTexture == null) {
     if (fbTexture != null)     fbTexture.getTexture().dispose();
