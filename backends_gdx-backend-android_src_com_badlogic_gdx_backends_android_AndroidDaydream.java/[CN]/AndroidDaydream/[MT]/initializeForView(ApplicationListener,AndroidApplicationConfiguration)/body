@@ -1,0 +1,17 @@
+{
+  graphics=new AndroidGraphicsDaydream(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  input=new AndroidInput(this,this,graphics.view,config);
+  audio=new AndroidAudio(this,config);
+  files=new AndroidFiles(this.getAssets(),this.getFilesDir().getAbsolutePath());
+  this.listener=listener;
+  this.handler=new Handler();
+  Gdx.app=this;
+  Gdx.input=this.getInput();
+  Gdx.audio=this.getAudio();
+  Gdx.files=this.getFiles();
+  Gdx.graphics=this.getGraphics();
+  Gdx.net=this.getNet();
+  createWakeLock(config);
+  hideStatusBar(config);
+  return graphics.getView();
+}

@@ -1,0 +1,14 @@
+{
+synchronized (synch) {
+    running=false;
+    destroy=true;
+    while (destroy) {
+      try {
+        synch.wait();
+      }
+ catch (      InterruptedException ex) {
+        Gdx.app.log("AndroidGraphics","waiting for destroy synchronization failed!");
+      }
+    }
+  }
+}
