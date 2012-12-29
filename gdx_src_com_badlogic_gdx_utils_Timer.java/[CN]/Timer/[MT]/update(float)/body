@@ -1,16 +1,14 @@
 {
-  if (stopped) {
-    posted=false;
-    return;
-  }
-  float delta=Gdx.graphics.getDeltaTime();
+  float wait=Float.MAX_VALUE;
   for (int i=0, n=tasks.size; i < n; i++) {
     Task task=tasks.get(i);
-    task.delaySeconds-=delta;
-    if (task.delaySeconds > 0)     continue;
+    if (task.executeTime > time) {
+      wait=Math.min(wait,task.executeTime - time);
+      continue;
+    }
     if (task.repeatCount != CANCELLED) {
       if (task.repeatCount == 0)       task.repeatCount=CANCELLED;
-      task.run();
+      Gdx.app.postRunnable(task);
     }
     if (task.repeatCount == CANCELLED) {
       tasks.removeIndex(i);
@@ -18,10 +16,10 @@
       n--;
     }
  else {
-      task.delaySeconds=task.intervalSeconds;
+      task.executeTime=time + task.intervalSeconds;
+      wait=Math.min(wait,task.executeTime - time);
       if (task.repeatCount > 0)       task.repeatCount--;
     }
   }
-  if (tasks.size == 0)   posted=false;
- else   Gdx.app.postRunnable(timerRunnable);
+  return wait;
 }

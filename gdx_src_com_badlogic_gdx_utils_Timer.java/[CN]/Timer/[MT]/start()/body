@@ -1,4 +1,7 @@
 {
-  stopped=false;
-  postRunnable();
+synchronized (instances) {
+    if (instances.contains(this,true))     return;
+    instances.add(this);
+    wake();
+  }
 }
