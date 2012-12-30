@@ -13,7 +13,7 @@
       model=loader.load(file,hints);
     }
  catch (    GdxRuntimeException e) {
-      errors.append("Couldn't load '" + file.name() + "' with loader of type "+ loader.getClass().getSimpleName()+ ": "+ e.getMessage()+ "\n");
+      errors.append("Couldn't load '" + file.name() + "' with loader of type "+ loader.getClass().getName()+ ": "+ e.getMessage()+ "\n");
     }
   }
   if (model == null)   throw new GdxRuntimeException(errors.toString());

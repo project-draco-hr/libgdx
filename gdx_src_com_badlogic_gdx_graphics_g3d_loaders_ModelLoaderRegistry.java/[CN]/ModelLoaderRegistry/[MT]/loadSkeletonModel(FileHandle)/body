@@ -18,7 +18,7 @@
       }
     }
  catch (    GdxRuntimeException e) {
-      errors.append("Couldn't load '" + file.name() + "' with loader of type "+ loader.getClass().getSimpleName()+ ": "+ e.getMessage());
+      errors.append("Couldn't load '" + file.name() + "' with loader of type "+ loader.getClass().getName()+ ": "+ e.getMessage());
     }
   }
   if (model == null)   throw new GdxRuntimeException(errors.toString());
