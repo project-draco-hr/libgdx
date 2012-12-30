@@ -12,5 +12,5 @@
   camera.apply(Gdx.gl10);
   world.update();
   performance.setLength(0);
-  performance.append("FPS: ").append(Gdx.graphics.getFramesPerSecond()).append(", Bullet: ").append((int)(world.bulletLoad * 100f)).append("%");
+  performance.append("FPS: ").append(Gdx.graphics.getFramesPerSecond()).append(", Bullet: ").append((int)(performanceCounter.load.value * 100f)).append("%");
 }

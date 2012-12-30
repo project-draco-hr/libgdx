@@ -1,6 +1,7 @@
 {
   init();
   world=createWorld();
+  world.performanceCounter=performanceCounter;
   final float width=Gdx.graphics.getWidth();
   final float height=Gdx.graphics.getHeight();
   if (width > height)   camera=new PerspectiveCamera(67f,3f * width / height,3f);

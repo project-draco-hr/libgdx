@@ -7,5 +7,6 @@
   tests[testIndex].create();
   app.log("TestCollection","created test '" + tests[testIndex].getClass().getName() + "'");
   titleLabel.setText(tests[testIndex].getClass().getSimpleName());
+  instructLabel.setText(tests[testIndex].instructions);
   loading=0;
 }
