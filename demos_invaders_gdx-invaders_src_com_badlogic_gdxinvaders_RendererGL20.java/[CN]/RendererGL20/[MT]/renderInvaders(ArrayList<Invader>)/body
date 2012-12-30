@@ -11,7 +11,7 @@
     transform.translate(invader.position.x,invader.position.y,invader.position.z);
     transform.rotate(0,1,0,invaderAngle);
     lightTexShader.setUniformMatrix("u_projView",transform);
-    invaderMesh.render(lightTexShader,GL10.GL_TRIANGLES);
+    invaderMesh.render(lightTexShader);
   }
   lightTexShader.end();
 }

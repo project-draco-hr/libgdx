@@ -5,7 +5,7 @@
     gl.glPushMatrix();
     gl.glTranslatef(invader.position.x,invader.position.y,invader.position.z);
     gl.glRotatef(invaderAngle,0,1,0);
-    invaderMesh.render(GL10.GL_TRIANGLES);
+    invaderMesh.render();
     gl.glPopMatrix();
   }
 }

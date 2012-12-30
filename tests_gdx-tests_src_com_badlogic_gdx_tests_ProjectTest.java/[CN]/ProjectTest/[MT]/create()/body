@@ -1,5 +1,5 @@
 {
-  sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  sphere=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
   cam=new PerspectiveCamera(45,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.far=200;
   Random rand=new Random();
