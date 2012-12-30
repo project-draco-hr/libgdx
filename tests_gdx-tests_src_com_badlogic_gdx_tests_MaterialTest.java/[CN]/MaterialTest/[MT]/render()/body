@@ -2,8 +2,8 @@
   GL10 gl=Gdx.graphics.getGL10();
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-  if (material.attributes.size == 1)   gl.glEnable(GL10.GL_TEXTURE_2D);
-  if (material.attributes.size == 3) {
+  if (material.getNumberOfAttributes() == 1)   gl.glEnable(GL10.GL_TEXTURE_2D);
+  if (material.getNumberOfAttributes() == 3) {
     gl.glDisable(GL10.GL_DEPTH_TEST);
     gl.glEnable(GL10.GL_BLEND);
   }
