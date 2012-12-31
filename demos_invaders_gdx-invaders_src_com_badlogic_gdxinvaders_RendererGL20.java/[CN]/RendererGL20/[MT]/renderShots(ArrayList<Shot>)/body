@@ -6,7 +6,7 @@
     transform.set(camera.combined);
     transform.translate(shot.position.x,shot.position.y,shot.position.z);
     colorShader.setUniformMatrix("u_projView",transform);
-    shotMesh.render(colorShader,GL10.GL_TRIANGLES);
+    shotMesh.render(colorShader);
   }
   colorShader.end();
 }

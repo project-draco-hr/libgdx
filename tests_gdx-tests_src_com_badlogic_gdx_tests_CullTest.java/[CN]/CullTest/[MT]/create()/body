@@ -1,5 +1,5 @@
 {
-  sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  sphere=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
   cam=new OrthographicCamera(45,45 * (Gdx.graphics.getWidth() / (float)Gdx.graphics.getHeight()));
   cam.near=1;
   cam.far=200;
