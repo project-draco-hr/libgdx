@@ -1,0 +1,5 @@
+{
+  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
+  config.useGL20=useGL2IfAvailable;
+  return initializeForView(listener,config);
+}

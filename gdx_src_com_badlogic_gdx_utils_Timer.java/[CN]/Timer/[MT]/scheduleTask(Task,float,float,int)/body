@@ -1,8 +1,8 @@
 {
   if (task.repeatCount != CANCELLED)   throw new IllegalArgumentException("The same task may not be scheduled twice.");
-  task.delaySeconds=delaySeconds;
+  task.executeTime=System.nanoTime() * MathUtils.nanoToSec + delaySeconds;
   task.intervalSeconds=intervalSeconds;
   task.repeatCount=repeatCount;
   tasks.add(task);
-  postRunnable();
+  wake();
 }

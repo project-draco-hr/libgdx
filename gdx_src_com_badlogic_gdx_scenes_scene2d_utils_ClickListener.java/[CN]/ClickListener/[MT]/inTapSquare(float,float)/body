@@ -1,0 +1,4 @@
+{
+  if (touchDownX == -1 && touchDownY == -1)   return false;
+  return Math.abs(x - touchDownX) < tapSquareSize && Math.abs(y - touchDownY) < tapSquareSize;
+}

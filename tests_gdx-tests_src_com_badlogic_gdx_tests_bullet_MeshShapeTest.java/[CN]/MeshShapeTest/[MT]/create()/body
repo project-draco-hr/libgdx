@@ -1,8 +1,10 @@
 {
   super.create();
-  final Mesh sphereMesh=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  final StillModel model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
+  final Mesh sphereMesh=model.subMeshes[0].getMesh();
   sphereMesh.scale(0.25f,0.25f,0.25f);
-  final Mesh sceneMesh=ObjLoader.loadObj(Gdx.files.internal("data/scene.obj").read(),true,true);
+  final StillModel sceneModel=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/scene.obj"));
+  final Mesh sceneMesh=sceneModel.subMeshes[0].getMesh();
   final BulletConstructor sphereConstructor=new BulletConstructor(sphereMesh,0.25f,new btSphereShape(sphereMesh.calculateBoundingBox().getDimensions().x * 0.5f));
   sphereConstructor.bodyInfo.setM_restitution(1f);
   world.addConstructor("sphere",sphereConstructor);

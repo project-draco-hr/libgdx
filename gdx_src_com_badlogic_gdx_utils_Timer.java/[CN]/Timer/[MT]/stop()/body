@@ -1,3 +1,5 @@
 {
-  stopped=true;
+synchronized (instances) {
+    instances.removeValue(this,true);
+  }
 }

@@ -1,0 +1,66 @@
+{
+  long time=System.nanoTime();
+  deltaTime=(time - lastFrameTime) / 1000000000.0f;
+  lastFrameTime=time;
+  mean.addValue(deltaTime);
+  boolean lrunning=false;
+  boolean lpause=false;
+  boolean ldestroy=false;
+  boolean lresume=false;
+synchronized (synch) {
+    lrunning=running;
+    lpause=pause;
+    ldestroy=destroy;
+    lresume=resume;
+    if (resume) {
+      resume=false;
+    }
+    if (pause) {
+      pause=false;
+      synch.notifyAll();
+    }
+    if (destroy) {
+      destroy=false;
+      synch.notifyAll();
+    }
+  }
+  if (lresume) {
+    ((AndroidDaydream)app).audio.resume();
+    app.listener.resume();
+    Gdx.app.log("AndroidGraphics","resumed");
+  }
+  if (lrunning) {
+synchronized (app.runnables) {
+      app.executedRunnables.clear();
+      app.executedRunnables.addAll(app.runnables);
+      app.runnables.clear();
+      for (int i=0; i < app.executedRunnables.size; i++) {
+        try {
+          app.executedRunnables.get(i).run();
+        }
+ catch (        Throwable t) {
+          t.printStackTrace();
+        }
+      }
+    }
+    app.input.processEvents();
+    app.listener.render();
+  }
+  if (lpause) {
+    app.listener.pause();
+    ((AndroidDaydream)app).audio.pause();
+    Gdx.app.log("AndroidGraphics","paused");
+  }
+  if (ldestroy) {
+    app.listener.dispose();
+    ((AndroidDaydream)app).audio.dispose();
+    ((AndroidDaydream)app).audio=null;
+    Gdx.app.log("AndroidGraphics","destroyed");
+  }
+  if (time - frameStart > 1000000000) {
+    fps=frames;
+    frames=0;
+    frameStart=time;
+  }
+  frames++;
+}

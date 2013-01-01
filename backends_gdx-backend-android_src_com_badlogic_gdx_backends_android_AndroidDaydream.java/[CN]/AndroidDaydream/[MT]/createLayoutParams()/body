@@ -1,0 +1,5 @@
+{
+  FrameLayout.LayoutParams layoutParams=new FrameLayout.LayoutParams(android.view.ViewGroup.LayoutParams.FILL_PARENT,android.view.ViewGroup.LayoutParams.FILL_PARENT);
+  layoutParams.gravity=Gravity.CENTER;
+  return layoutParams;
+}
