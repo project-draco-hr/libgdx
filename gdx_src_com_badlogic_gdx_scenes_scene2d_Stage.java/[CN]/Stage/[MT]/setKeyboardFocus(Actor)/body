@@ -3,14 +3,20 @@
   FocusEvent event=Pools.obtain(FocusEvent.class);
   event.setStage(this);
   event.setType(FocusEvent.Type.keyboard);
-  if (keyboardFocus != null) {
+  Actor oldKeyboardFocus=keyboardFocus;
+  if (oldKeyboardFocus != null) {
     event.setFocused(false);
-    keyboardFocus.fire(event);
+    event.setRelatedActor(actor);
+    oldKeyboardFocus.fire(event);
   }
-  keyboardFocus=actor;
-  if (keyboardFocus != null) {
-    event.setFocused(true);
-    keyboardFocus.fire(event);
+  if (!event.isCancelled()) {
+    keyboardFocus=actor;
+    if (actor != null) {
+      event.setFocused(true);
+      event.setRelatedActor(oldKeyboardFocus);
+      actor.fire(event);
+      if (event.isCancelled())       setKeyboardFocus(oldKeyboardFocus);
+    }
   }
   Pools.free(event);
 }
