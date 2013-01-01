@@ -3,7 +3,8 @@
     public boolean keyDown(    InputEvent event,    int keycode2){
       if (keycode == keycode2) {
         result(object);
-        hide();
+        if (!cancelHide)         hide();
+        cancelHide=false;
       }
       return false;
     }
