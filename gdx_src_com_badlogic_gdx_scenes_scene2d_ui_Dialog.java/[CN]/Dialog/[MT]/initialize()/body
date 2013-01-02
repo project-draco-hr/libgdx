@@ -24,7 +24,7 @@
     }
     private void focusChanged(    FocusEvent event){
       Stage stage=getStage();
-      if (isModal && stage.getRoot().getChildren().peek() == Dialog.this) {
+      if (isModal && stage != null && stage.getRoot().getChildren().peek() == Dialog.this) {
         Actor newFocusedActor=event.getRelatedActor();
         if (newFocusedActor == null || !newFocusedActor.isDescendantOf(Dialog.this))         event.cancel();
       }
