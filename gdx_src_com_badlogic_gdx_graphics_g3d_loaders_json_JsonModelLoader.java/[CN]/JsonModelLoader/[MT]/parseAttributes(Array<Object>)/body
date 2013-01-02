@@ -1,0 +1,35 @@
+{
+  Array<VertexAttribute> vertexAttributes=new Array<VertexAttribute>();
+  int unit=0;
+  for (  Object attribute : attributes) {
+    String attr=(String)attribute;
+    if (attr.equals("position")) {
+      vertexAttributes.add(VertexAttribute.Position());
+    }
+ else     if (attr.equals("normal")) {
+      vertexAttributes.add(VertexAttribute.Normal());
+    }
+ else     if (attr.equals("uv")) {
+      vertexAttributes.add(VertexAttribute.TexCoords(unit++));
+    }
+ else     if (attr.equals("tangent")) {
+      vertexAttributes.add(VertexAttribute.Tangent());
+    }
+ else     if (attr.equals("binormal")) {
+      vertexAttributes.add(VertexAttribute.Binormal());
+    }
+ else     if (attr.equals("boneids")) {
+      vertexAttributes.add(VertexAttribute.BoneIds(4));
+    }
+ else     if (attr.equals("boneweights")) {
+      vertexAttributes.add(VertexAttribute.BoneWeights(4));
+    }
+ else     if (attr.equals("color")) {
+      vertexAttributes.add(VertexAttribute.Color());
+    }
+ else {
+      throw new GdxRuntimeException("Unknown vertex attribuet '" + attr + "', should be one of position, normal, uv, tangent or binormal");
+    }
+  }
+  return vertexAttributes.toArray(VertexAttribute.class);
+}

@@ -1,0 +1,23 @@
+{
+  if (type.equals("triangle")) {
+    return GL10.GL_TRIANGLES;
+  }
+ else   if (type.equals("line")) {
+    return GL10.GL_LINES;
+  }
+ else   if (type.equals("point")) {
+    return GL10.GL_POINTS;
+  }
+ else   if (type.equals("trianglestrip")) {
+    return GL10.GL_TRIANGLE_STRIP;
+  }
+ else   if (type.equals("linestrip")) {
+    return GL10.GL_LINE_STRIP;
+  }
+ else   if (type.equals("lineloop")) {
+    return GL10.GL_LINE_LOOP;
+  }
+ else {
+    throw new GdxRuntimeException("Unknown primitive type '" + type + "', should be one of triangle, trianglestrip, line, linestrip, lineloop or point");
+  }
+}
