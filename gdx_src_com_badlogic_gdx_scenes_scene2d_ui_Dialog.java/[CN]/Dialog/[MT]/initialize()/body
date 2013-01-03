@@ -10,7 +10,24 @@
     public void changed(    ChangeEvent event,    Actor actor){
       while (actor.getParent() != buttonTable)       actor=actor.getParent();
       result(values.get(actor));
-      hide();
+      if (!cancelHide)       hide();
+      cancelHide=false;
+    }
+  }
+);
+  addListener(new FocusListener(){
+    public void keyboardFocusChanged(    FocusEvent event,    Actor actor,    boolean focused){
+      if (!focused)       focusChanged(event);
+    }
+    public void scrollFocusChanged(    FocusEvent event,    Actor actor,    boolean focused){
+      if (!focused)       focusChanged(event);
+    }
+    private void focusChanged(    FocusEvent event){
+      Stage stage=getStage();
+      if (isModal && stage != null && stage.getRoot().getChildren().peek() == Dialog.this) {
+        Actor newFocusedActor=event.getRelatedActor();
+        if (newFocusedActor == null || !newFocusedActor.isDescendantOf(Dialog.this))         event.cancel();
+      }
     }
   }
 );
