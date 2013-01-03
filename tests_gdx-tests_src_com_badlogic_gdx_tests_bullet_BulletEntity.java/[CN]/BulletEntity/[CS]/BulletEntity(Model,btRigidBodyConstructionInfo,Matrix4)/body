@@ -1,0 +1,9 @@
+{
+  this.model=model;
+  this.transform.set(transform);
+  if (bodyInfo != null) {
+    this.motionState=new MotionState(this.transform);
+    this.body=new btRigidBody(bodyInfo);
+    this.body.setMotionState(motionState);
+  }
+}

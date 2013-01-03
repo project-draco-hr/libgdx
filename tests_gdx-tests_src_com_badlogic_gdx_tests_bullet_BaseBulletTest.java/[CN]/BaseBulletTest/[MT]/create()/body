@@ -12,10 +12,12 @@
   final Mesh groundMesh=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,"a_position"));
   groundMesh.setVertices(new float[]{20f,0f,20f,20f,0f,-20f,-20f,0f,20f,-20f,0f,-20f});
   groundMesh.setIndices(new short[]{0,1,2,1,2,3});
+  final StillModel groundModel=new StillModel(new StillSubMesh("ground",groundMesh,GL10.GL_TRIANGLES,new Material()));
   final Mesh boxMesh=new Mesh(true,8,36,new VertexAttribute(Usage.Position,3,"a_position"));
   boxMesh.setVertices(new float[]{0.5f,0.5f,0.5f,0.5f,0.5f,-0.5f,-0.5f,0.5f,0.5f,-0.5f,0.5f,-0.5f,0.5f,-0.5f,0.5f,0.5f,-0.5f,-0.5f,-0.5f,-0.5f,0.5f,-0.5f,-0.5f,-0.5f});
   boxMesh.setIndices(new short[]{0,1,2,1,2,3,4,5,6,5,6,7,0,2,4,4,6,2,1,3,5,5,7,3,2,3,6,6,7,3,0,1,4,4,5,1});
-  world.addConstructor("ground",new BulletConstructor(groundMesh,0f));
-  world.addConstructor("box",new BulletConstructor(boxMesh,1f));
-  world.addConstructor("staticbox",new BulletConstructor(boxMesh,0f));
+  final StillModel boxModel=new StillModel(new StillSubMesh("box",boxMesh,GL10.GL_TRIANGLES,new Material()));
+  world.addConstructor("ground",new BulletConstructor(groundModel,0f));
+  world.addConstructor("box",new BulletConstructor(boxModel,1f));
+  world.addConstructor("staticbox",new BulletConstructor(boxModel,0f));
 }
