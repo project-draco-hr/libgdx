@@ -2,9 +2,9 @@
   if (swigCPtr != 0) {
     if (swigCMemOwn) {
       swigCMemOwn=false;
-      gdxBulletJNI.delete_btTriangleIndexVertexArray(swigCPtr);
+      gdxBulletJNI.delete_btIndexedMesh(swigCPtr);
     }
     swigCPtr=0;
   }
-  super.delete();
+  dispose();
 }
