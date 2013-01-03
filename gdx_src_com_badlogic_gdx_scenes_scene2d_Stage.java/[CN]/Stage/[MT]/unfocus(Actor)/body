@@ -1,4 +1,4 @@
 {
-  if (scrollFocus == actor)   scrollFocus=null;
-  if (keyboardFocus == actor)   keyboardFocus=null;
+  if (scrollFocus != null && scrollFocus.isDescendantOf(actor))   scrollFocus=null;
+  if (keyboardFocus != null && keyboardFocus.isDescendantOf(actor))   keyboardFocus=null;
 }

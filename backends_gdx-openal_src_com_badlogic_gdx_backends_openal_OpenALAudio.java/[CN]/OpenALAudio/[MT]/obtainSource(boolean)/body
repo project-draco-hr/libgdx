@@ -21,7 +21,7 @@
       alSourcei(sourceId,AL_BUFFER,0);
       AL10.alSourcef(sourceId,AL10.AL_GAIN,1);
       AL10.alSourcef(sourceId,AL10.AL_PITCH,1);
-      AL10.alSource3f(sourceId,AL10.AL_POSITION,0,0,0);
+      AL10.alSource3f(sourceId,AL10.AL_POSITION,0,0,1f);
       return sourceId;
     }
   }

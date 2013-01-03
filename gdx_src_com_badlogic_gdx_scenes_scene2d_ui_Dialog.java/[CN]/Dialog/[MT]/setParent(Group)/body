@@ -1,0 +1,12 @@
+{
+  super.setParent(parent);
+  if (parent == null) {
+    Stage stage=getStage();
+    if (stage != null) {
+      Actor actor=stage.getKeyboardFocus();
+      if (actor == this || actor == null)       stage.setKeyboardFocus(previousKeyboardFocus);
+      actor=stage.getScrollFocus();
+      if (actor == this || actor == null)       stage.setScrollFocus(previousScrollFocus);
+    }
+  }
+}

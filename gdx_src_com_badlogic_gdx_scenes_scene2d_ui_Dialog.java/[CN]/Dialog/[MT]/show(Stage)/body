@@ -1,4 +1,6 @@
 {
+  previousKeyboardFocus=stage.getKeyboardFocus();
+  previousScrollFocus=stage.getScrollFocus();
   stage.setKeyboardFocus(this);
   stage.setScrollFocus(this);
   pack();

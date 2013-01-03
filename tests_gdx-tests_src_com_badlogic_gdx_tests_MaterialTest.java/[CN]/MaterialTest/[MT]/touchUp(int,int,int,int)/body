@@ -1,0 +1,13 @@
+{
+  if (material.getNumberOfAttributes() == 0)   material.addAttribute(textureAttribute);
+ else   if (material.getNumberOfAttributes() == 1)   material.addAttribute(colorAttribute);
+ else   if (material.getNumberOfAttributes() == 2)   material.addAttribute(blendingAttribute);
+ else {
+    GL10 gl=Gdx.gl10;
+    gl.glColor4f(1f,1f,1f,1f);
+    gl.glDisable(GL10.GL_TEXTURE_2D);
+    gl.glDisable(GL10.GL_BLEND);
+    material.clearAttributes();
+  }
+  return super.touchUp(screenX,screenY,pointer,button);
+}
