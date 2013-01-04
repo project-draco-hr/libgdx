@@ -1,4 +1,4 @@
 {
-  if (index < attributes.size)   return attributes.get(index);
+  if (index >= 0 && index < attributes.size)   return attributes.get(index);
   return null;
 }

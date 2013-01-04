@@ -2,6 +2,7 @@
   name=material.name;
   shader=material.shader;
   needBlending=material.needBlending;
+  hasTexture=material.hasTexture;
   attributes.clear();
   for (int i=0, len=material.attributes.size; i < len; i++) {
     attributes.add(material.attributes.get(i).pooledCopy());
