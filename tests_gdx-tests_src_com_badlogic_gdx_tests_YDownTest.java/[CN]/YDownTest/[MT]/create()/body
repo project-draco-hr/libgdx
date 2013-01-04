@@ -3,6 +3,8 @@
   region=new TextureRegion(new Texture("data/badlogic.jpg"));
   region.flip(false,true);
   atlas=new TextureAtlas(Gdx.files.internal("data/pack"),true);
+  sprite=atlas.createSprite("badlogicsmall");
+  sprite.setPosition(0,0);
   batch=new SpriteBatch();
   camera=new OrthographicCamera();
   camera.setToOrtho(true);
