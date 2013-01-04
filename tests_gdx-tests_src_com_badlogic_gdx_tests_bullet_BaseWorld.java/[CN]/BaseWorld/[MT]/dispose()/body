@@ -3,6 +3,6 @@
   entities.clear();
   for (  Constructor<T> constructor : constructors.values())   constructor.dispose();
   constructors.clear();
-  for (int i=0; i < meshes.size; i++)   meshes.get(i).dispose();
-  meshes.clear();
+  for (int i=0; i < models.size; i++)   models.get(i).dispose();
+  models.clear();
 }

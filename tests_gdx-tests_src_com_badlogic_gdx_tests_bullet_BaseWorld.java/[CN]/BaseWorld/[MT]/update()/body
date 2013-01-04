@@ -5,7 +5,7 @@
     gl.glPushMatrix();
     gl.glMultMatrixf(entity.transform.val,0);
     gl.glColor4f(entity.color.r,entity.color.g,entity.color.b,entity.color.a);
-    entity.mesh.render(GL10.GL_TRIANGLES);
+    entity.model.render();
     gl.glPopMatrix();
   }
 }

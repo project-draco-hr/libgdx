@@ -1,5 +1,3 @@
 {
-  this.name=name;
-  this.setMesh(mesh);
-  this.primitiveType=primitiveType;
+  this(name,mesh,primitiveType,null);
 }
