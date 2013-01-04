@@ -1,6 +1,6 @@
 {
   try {
-    final Process process=Runtime.getRuntime().exec(command,null,directory);
+    final Process process=new ProcessBuilder(command.split(" ")).redirectErrorStream(true).start();
     Thread t=new Thread(new Runnable(){
       @Override public void run(){
         BufferedReader reader=new BufferedReader(new InputStreamReader(process.getInputStream()));
