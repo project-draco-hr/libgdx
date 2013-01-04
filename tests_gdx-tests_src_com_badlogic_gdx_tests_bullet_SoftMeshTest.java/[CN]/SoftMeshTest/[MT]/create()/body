@@ -3,7 +3,7 @@
   world.maxSubSteps=20;
   world.add("ground",0f,0f,0f).color.set(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
   final StillModel model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/wheel.obj"));
-  mesh=model.subMeshes[0].getMesh();
+  mesh=model.subMeshes[0].getMesh().copy(false,true,new int[]{Usage.Position});
   mesh.scale(6f,6f,6f);
   softBody=new btSoftBody(worldInfo,mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize(),mesh.getVertexAttribute(Usage.Position).offset,mesh.getIndicesBuffer(),mesh.getNumIndices() / 3);
   softBody.setMass(0,0);
