@@ -1,7 +1,9 @@
 {
   new LwjglFrame(new ApplicationAdapter(){
     public void create(){
-      System.out.println(getWindowHandle());
+      long hwnd=getWindowHandle();
+      System.out.println("hwnd: " + hwnd);
+      System.out.println("inputManager pointer: " + OisWrapper.initialize(hwnd));
     }
     long getWindowHandle(){
       try {

@@ -4,7 +4,6 @@
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   win32home.buildFileName="build-windows32home.xml";
   win32home.is64Bit=false;
-  win32home.excludeFromMasterBuildFile=true;
   win32home.compilerPrefix="";
   win32home.cppIncludes=new String[]{"*.cpp","ois-v1-4svn/src/*.cpp","ois-v1-4svn/src/win32/*.cpp"};
   win32home.headerDirs=new String[]{"ois-v1-4svn/includes","dinput/"};
