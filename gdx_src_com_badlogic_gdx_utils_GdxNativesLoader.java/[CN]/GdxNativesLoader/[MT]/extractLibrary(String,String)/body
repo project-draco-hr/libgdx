@@ -1,9 +1,9 @@
 {
   String nativeFileName=is64Bit ? native64 : native32;
   File nativeFile=new File(nativesDir,nativeFileName);
-  if (!nativeFile.exists()) {
+  InputStream input=GdxNativesLoader.class.getResourceAsStream("/" + nativeFileName);
+  if (!nativeFile.exists() || nativeFile.length() == 0) {
     try {
-      InputStream input=GdxNativesLoader.class.getResourceAsStream("/" + nativeFileName);
       if (input == null)       return null;
       nativesDir.mkdirs();
       FileOutputStream output=new FileOutputStream(nativeFile);
@@ -16,7 +16,7 @@
       input.close();
       output.close();
     }
- catch (    IOException ex) {
+ catch (    IOException ignored) {
     }
   }
   return nativeFile.exists() ? nativeFile.getAbsolutePath() : null;
