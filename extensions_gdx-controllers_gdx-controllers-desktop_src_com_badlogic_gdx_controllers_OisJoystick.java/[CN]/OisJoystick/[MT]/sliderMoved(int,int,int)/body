@@ -1,3 +1,4 @@
 {
-  System.out.println("slider moved " + slider + ", "+ x+ ", "+ y);
+  this.slidersX[slider]=x;
+  this.slidersY[slider]=y;
 }
