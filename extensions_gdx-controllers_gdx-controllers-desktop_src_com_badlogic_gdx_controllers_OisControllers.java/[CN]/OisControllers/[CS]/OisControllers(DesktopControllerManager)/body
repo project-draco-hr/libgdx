@@ -1,0 +1,8 @@
+{
+  Array<OisJoystick> joysticks=ois.getJoysticks();
+  controllers=new OisController[joysticks.size];
+  for (int i=0, n=joysticks.size; i < n; i++) {
+    OisJoystick joystick=joysticks.get(i);
+    controllers=new OisController(joystick);
+  }
+}
