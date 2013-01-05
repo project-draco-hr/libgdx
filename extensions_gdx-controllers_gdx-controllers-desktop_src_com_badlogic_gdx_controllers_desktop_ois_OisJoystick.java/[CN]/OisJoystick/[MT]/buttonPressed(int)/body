@@ -1,6 +1,4 @@
 {
   buttons[buttonIndex]=true;
-  if (callback != null) {
-    callback.buttonPressed(this,buttonIndex);
-  }
+  if (listener != null)   listener.buttonPressed(this,buttonIndex);
 }

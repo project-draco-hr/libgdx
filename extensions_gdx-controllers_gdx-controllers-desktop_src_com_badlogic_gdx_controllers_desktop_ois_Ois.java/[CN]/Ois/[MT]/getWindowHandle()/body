@@ -9,6 +9,6 @@
     return (Long)field.get(display);
   }
  catch (  Exception ex) {
-    throw new GdxRuntimeException("Unable to get window handle.",ex);
+    throw new RuntimeException("Unable to get window handle.",ex);
   }
 }

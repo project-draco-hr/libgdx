@@ -1,7 +1,5 @@
 {
   slidersX[sliderIndex]=x == 1;
   slidersY[sliderIndex]=y == 1;
-  if (callback != null) {
-    callback.sliderMoved(this,sliderIndex,x == 1,y == 1);
-  }
+  if (listener != null)   listener.sliderMoved(this,sliderIndex,x == 1,y == 1);
 }

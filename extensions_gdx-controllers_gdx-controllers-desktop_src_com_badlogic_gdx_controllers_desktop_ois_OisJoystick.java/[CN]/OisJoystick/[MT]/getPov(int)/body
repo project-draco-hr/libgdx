@@ -1,5 +1,5 @@
 {
-switch (povs[pov]) {
+switch (povs[povIndex]) {
 case 0x00000000:
     return OisPov.Centered;
 case 0x00000001:
@@ -19,6 +19,6 @@ return OisPov.NorthWest;
 case 0x00001010:
 return OisPov.SouthWest;
 default :
-throw new RuntimeException("Unexpected POV value reported by OIS: " + povs[pov]);
+throw new RuntimeException("Unexpected POV value reported by OIS: " + povs[povIndex]);
 }
 }
