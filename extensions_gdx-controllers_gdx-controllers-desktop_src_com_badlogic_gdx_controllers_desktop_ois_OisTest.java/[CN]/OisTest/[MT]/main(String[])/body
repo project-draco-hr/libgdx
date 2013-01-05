@@ -5,6 +5,9 @@
     Ois ois;
     @Override public void create(){
       this.ois=new Ois();
+      System.out.println(ois.getVersionNumber());
+      System.out.println(ois.getVersionName());
+      System.out.println(ois.getInputSystemName());
       ois.getJoysticks().get(0).setListener(new OisListener(){
         @Override public void sliderMoved(        OisJoystick joystick,        int slider,        boolean x,        boolean y){
           System.out.println("slider " + slider + " moved, "+ x+ ", "+ y);
