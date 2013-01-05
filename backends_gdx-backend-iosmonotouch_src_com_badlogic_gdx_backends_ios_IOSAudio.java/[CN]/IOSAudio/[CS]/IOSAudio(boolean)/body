@@ -1,0 +1,7 @@
+{
+  this.useObjectAL=useObjectAL;
+  if (useObjectAL) {
+    OALSimpleAudio.sharedInstance().set_allowIpod(false);
+    OALSimpleAudio.sharedInstance().set_honorSilentSwitch(true);
+  }
+}

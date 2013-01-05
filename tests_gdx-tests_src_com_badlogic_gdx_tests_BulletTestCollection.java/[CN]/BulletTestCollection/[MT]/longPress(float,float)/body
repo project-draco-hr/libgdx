@@ -1,4 +1,3 @@
 {
-  if (tests[testIndex].longPress(x,y) == false)   next();
-  return true;
+  return tests[testIndex].longPress(x,y);
 }

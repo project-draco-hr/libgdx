@@ -1,0 +1,7 @@
+{
+  if (colorArray == null) {
+    return defaultColor;
+  }
+ else   if (colorArray.size == 3)   return new Color((Float)colorArray.get(0),(Float)colorArray.get(1),(Float)colorArray.get(2),1.0f);
+ else   throw new GdxRuntimeException("Expected Color values <> than three.");
+}
