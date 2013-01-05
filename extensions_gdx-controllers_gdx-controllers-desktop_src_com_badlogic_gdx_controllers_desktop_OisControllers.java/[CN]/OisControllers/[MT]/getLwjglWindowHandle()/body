@@ -1,5 +1,8 @@
 {
   try {
+    if (Gdx.app instanceof LwjglCanvas) {
+      return (Long)invokeMethod(invokeMethod(SwingUtilities.windowForComponent(((LwjglCanvas)Gdx.app).getCanvas()),"getPeer"),"getHWnd");
+    }
     Method getImplementation=Display.class.getDeclaredMethod("getImplementation",new Class[0]);
     getImplementation.setAccessible(true);
     Object display=getImplementation.invoke(null,(Object[])null);
