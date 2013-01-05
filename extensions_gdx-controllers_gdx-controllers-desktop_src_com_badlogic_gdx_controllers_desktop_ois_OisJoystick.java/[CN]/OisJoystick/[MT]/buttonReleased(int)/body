@@ -1,0 +1,6 @@
+{
+  buttons[buttonIndex]=false;
+  if (callback != null) {
+    callback.buttonReleased(this,buttonIndex);
+  }
+}
