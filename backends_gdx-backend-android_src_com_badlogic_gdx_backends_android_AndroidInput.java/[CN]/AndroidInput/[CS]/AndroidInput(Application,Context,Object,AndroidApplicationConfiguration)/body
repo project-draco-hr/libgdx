@@ -3,6 +3,7 @@
     View v=(View)view;
     v.setOnKeyListener(this);
     v.setOnTouchListener(this);
+    v.setOnGenericMotionListener(this);
     v.setFocusable(true);
     v.setFocusableInTouchMode(true);
     v.requestFocus();

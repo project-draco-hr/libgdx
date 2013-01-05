@@ -1,0 +1,35 @@
+{
+switch (ouyaButton) {
+case OuyaController.BUTTON_O:
+    return 0;
+case OuyaController.BUTTON_U:
+  return 1;
+case OuyaController.BUTTON_Y:
+return 2;
+case OuyaController.BUTTON_A:
+return 3;
+case OuyaController.BUTTON_DPAD_UP:
+return 4;
+case OuyaController.BUTTON_DPAD_DOWN:
+return 5;
+case OuyaController.BUTTON_DPAD_LEFT:
+return 6;
+case OuyaController.BUTTON_DPAD_RIGHT:
+return 7;
+case OuyaController.BUTTON_L1:
+return 8;
+case OuyaController.BUTTON_L2:
+return 9;
+case OuyaController.BUTTON_L3:
+return 10;
+case OuyaController.BUTTON_R1:
+return 11;
+case OuyaController.BUTTON_R2:
+return 12;
+case OuyaController.BUTTON_R3:
+return 13;
+case OuyaController.BUTTON_SYSTEM:
+return 14;
+}
+throw new GdxRuntimeException("Unknown Ouya button: " + ouyaButton);
+}

@@ -1,4 +1,5 @@
 {
+  for (int i=0, n=keyListeners.size(); i < n; i++)   keyListeners.get(i).onKey(v,keyCode,e);
 synchronized (this) {
     char character=(char)e.getUnicodeChar();
     if (keyCode == 67)     character='\b';
