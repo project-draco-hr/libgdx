@@ -1,6 +1,0 @@
-{
-  ZipFile file=new ZipFile(nativesJar);
-  ZipEntry entry=file.getEntry(sharedLibrary);
-  if (entry == null)   throw new GdxRuntimeException("Couldn't find " + sharedLibrary + " in jar "+ jarFile);
-  return file.getInputStream(entry);
-}

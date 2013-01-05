@@ -1,35 +1,9 @@
 {
   if (nativesLoaded)   return;
+  nativesLoaded=true;
   if (disableNativesLoading) {
-    nativesLoaded=true;
     System.out.println("Native loading is disabled.");
     return;
   }
-  String vm=System.getProperty("java.vm.name");
-  if (vm == null || !vm.contains("Dalvik")) {
-    if (isWindows) {
-      nativesLoaded=loadLibrary("gdx.dll","gdx64.dll");
-    }
- else     if (isMac) {
-      nativesLoaded=loadLibrary("libgdx.dylib","libgdx.dylib");
-      if (!nativesLoaded) {
-        File file=new File(System.getProperty("java.library.path"),"libgdx.dylib");
-        if (file.exists()) {
-          System.load(file.getAbsolutePath());
-          nativesLoaded=true;
-        }
-      }
-    }
- else     if (isLinux) {
-      nativesLoaded=loadLibrary("libgdx.so","libgdx64.so");
-    }
-    if (nativesLoaded)     return;
-  }
-  if (!is64Bit || isMac) {
-    System.loadLibrary("gdx");
-  }
- else {
-    System.loadLibrary("gdx64");
-  }
-  nativesLoaded=true;
+  new SharedLibraryLoader().load("gdx");
 }

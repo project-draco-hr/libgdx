@@ -1,38 +1,12 @@
 {
-  if (loadedLibraries.contains(sharedLibName))   return;
-  boolean isWindows=System.getProperty("os.name").contains("Windows");
-  boolean isLinux=System.getProperty("os.name").contains("Linux");
-  boolean isMac=System.getProperty("os.name").contains("Mac");
-  boolean isAndroid=false;
-  boolean is64Bit=System.getProperty("os.arch").equals("amd64");
-  String vm=System.getProperty("java.vm.name");
-  if (vm != null && vm.contains("Dalvik")) {
-    isAndroid=true;
-    isWindows=false;
-    isLinux=false;
-    isMac=false;
-    is64Bit=false;
+  libraryName=mapLibraryName(libraryName);
+  if (loadedLibraries.contains(libraryName))   return;
+  try {
+    if (isAndroid)     System.loadLibrary(libraryName);
+ else     System.load(extractFile(libraryName,null).getAbsolutePath());
   }
-  boolean loaded=false;
-  if (isWindows) {
-    if (!is64Bit)     loaded=loadLibrary(sharedLibName + ".dll");
- else     loaded=loadLibrary(sharedLibName + "64.dll");
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException("Couldn't load shared library '" + libraryName + "' for target: "+ System.getProperty("os.name")+ (is64Bit ? ", 64-bit" : ", 32-bit"),ex);
   }
-  if (isLinux) {
-    if (!is64Bit)     loaded=loadLibrary("lib" + sharedLibName + ".so");
- else     loaded=loadLibrary("lib" + sharedLibName + "64.so");
-  }
-  if (isMac) {
-    loaded=loadLibrary("lib" + sharedLibName + ".dylib");
-  }
-  if (isAndroid) {
-    System.loadLibrary(sharedLibName);
-    loaded=true;
-  }
-  if (loaded) {
-    loadedLibraries.add(sharedLibName);
-  }
- else {
-    throw new RuntimeException("Couldn't load shared library '" + sharedLibName + "' for target: "+ System.getProperty("os.name")+ ", "+ (is64Bit ? "64-bit" : "32-bit"));
-  }
+  loadedLibraries.add(libraryName);
 }
