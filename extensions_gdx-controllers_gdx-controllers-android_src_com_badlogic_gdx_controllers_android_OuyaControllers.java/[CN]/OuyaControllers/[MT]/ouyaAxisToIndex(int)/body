@@ -1,0 +1,17 @@
+{
+switch (ouyaButton) {
+case OuyaController.AXIS_L2:
+    return 0;
+case OuyaController.AXIS_LS_X:
+  return 1;
+case OuyaController.AXIS_LS_Y:
+return 2;
+case OuyaController.AXIS_R2:
+return 3;
+case OuyaController.AXIS_RS_X:
+return 4;
+case OuyaController.AXIS_RS_Y:
+return 5;
+}
+throw new GdxRuntimeException("Unknown Ouya axis: " + ouyaButton);
+}

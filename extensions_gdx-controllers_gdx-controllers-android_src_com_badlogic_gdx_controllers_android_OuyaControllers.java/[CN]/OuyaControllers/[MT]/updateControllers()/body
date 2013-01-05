@@ -1,0 +1,13 @@
+{
+  for (int i=0; i < OuyaController.MAX_CONTROLLERS; i++) {
+    OuyaController controller=OuyaController.getControllerByPlayer(i);
+    if (controller != null) {
+      LibgdxOuyaController libgdxController=controllers[i];
+      if (libgdxController == null) {
+        controllers[i]=libgdxController=new LibgdxOuyaController(controller,i);
+        manager.controllers.add(libgdxController);
+      }
+      libgdxController.update();
+    }
+  }
+}

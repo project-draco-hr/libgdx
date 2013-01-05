@@ -1,0 +1,16 @@
+{
+  String className;
+switch (Gdx.app.getType()) {
+case Android:
+    className="com.badlogic.gdx.controllers.android.AndroidControllerManager";
+  break;
+default :
+throw new GdxRuntimeException("No controller manager is available for: " + Gdx.app.getType());
+}
+try {
+manager=(ControllerManager)Class.forName(className).newInstance();
+}
+ catch (Throwable ex) {
+throw new GdxRuntimeException("Error creating controller manager: " + className,ex);
+}
+}

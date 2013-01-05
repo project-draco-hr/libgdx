@@ -1,0 +1,55 @@
+{
+  this.manager=manager;
+  AndroidInput androidInput=(AndroidInput)Gdx.input;
+  androidInput.addKeyListener(new OnKeyListener(){
+    public boolean onKey(    View v,    int keyCode,    KeyEvent event){
+      boolean handled=false;
+switch (event.getAction()) {
+case android.view.KeyEvent.ACTION_DOWN:
+        handled=OuyaController.onKeyDown(keyCode,event);
+      break;
+case android.view.KeyEvent.ACTION_UP:
+    handled=OuyaController.onKeyUp(keyCode,event);
+  break;
+}
+if (handled) updateControllers();
+return handled;
+}
+}
+);
+androidInput.addGenericMotionListener(new OnGenericMotionListener(){
+public boolean onGenericMotion(View view,MotionEvent event){
+if (OuyaController.onGenericMotionEvent(event)) {
+updateControllers();
+return true;
+}
+return false;
+}
+}
+);
+new Runnable(){
+public void run(){
+Array<ControllerListener> allListeners=manager.listeners;
+for (int i=0, n=eventQueue.size; i < n; i++) {
+Event event=eventQueue.get(i);
+switch (event.type) {
+case Event.BUTTON_DOWN:
+  for (int ii=0, nn=allListeners.size; ii < nn; ii++)   allListeners.get(ii).buttonDown(event.controller,i);
+for (int ii=0, nn=event.controller.listeners.size; ii < nn; ii++) event.controller.listeners.get(ii).buttonDown(event.controller,i);
+break;
+case Event.BUTTON_UP:
+for (int ii=0, nn=allListeners.size; ii < nn; ii++) allListeners.get(ii).buttonUp(event.controller,i);
+for (int ii=0, nn=event.controller.listeners.size; ii < nn; ii++) event.controller.listeners.get(ii).buttonUp(event.controller,i);
+break;
+case Event.AXIS:
+for (int ii=0, nn=allListeners.size; ii < nn; ii++) allListeners.get(ii).axisMoved(event.controller,i,event.axisValue);
+for (int ii=0, nn=event.controller.listeners.size; ii < nn; ii++) event.controller.listeners.get(ii).axisMoved(event.controller,i,event.axisValue);
+break;
+}
+eventPool.free(event);
+}
+Gdx.app.postRunnable(this);
+}
+}
+.run();
+}

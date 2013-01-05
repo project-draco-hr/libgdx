@@ -1,0 +1,23 @@
+{
+  for (int i=0, n=buttons.length; i < n; i++) {
+    boolean newValue=controller.getButton(indexToOuyaButton[i]);
+    if (newValue != buttons[i]) {
+      buttons[i]=newValue;
+      Event event=eventPool.obtain();
+      event.controller=this;
+      event.type=newValue ? Event.BUTTON_DOWN : Event.BUTTON_UP;
+      eventQueue.add(event);
+    }
+  }
+  for (int i=0, n=axes.length; i < n; i++) {
+    float newValue=controller.getAxisValue(indexToOuyaAxis[i]);
+    if (newValue != axes[i]) {
+      axes[i]=newValue;
+      Event event=eventPool.obtain();
+      event.controller=this;
+      event.type=Event.AXIS;
+      event.axisValue=newValue;
+      eventQueue.add(event);
+    }
+  }
+}
