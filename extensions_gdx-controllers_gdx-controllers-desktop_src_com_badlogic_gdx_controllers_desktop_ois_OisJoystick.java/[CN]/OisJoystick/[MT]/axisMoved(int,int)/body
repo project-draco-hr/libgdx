@@ -1,0 +1,6 @@
+{
+  axes[axisIndex]=((value - MIN_AXIS) << 1) / (float)(MAX_AXIS - MIN_AXIS) - 1;
+  if (callback != null) {
+    callback.axisMoved(this,axisIndex,axes[axisIndex]);
+  }
+}

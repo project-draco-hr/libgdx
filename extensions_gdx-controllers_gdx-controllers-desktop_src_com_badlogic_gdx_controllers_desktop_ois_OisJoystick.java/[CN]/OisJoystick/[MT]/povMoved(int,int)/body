@@ -1,0 +1,6 @@
+{
+  povs[povIndex]=value;
+  if (callback != null) {
+    callback.povMoved(this,povIndex,getPov(value));
+  }
+}
