@@ -1,0 +1,4 @@
+{
+  JsonModelLoader loader=new JsonModelLoader();
+  loader.load(Gdx.files.internal("data/g3d/test.g3dj"),null);
+}

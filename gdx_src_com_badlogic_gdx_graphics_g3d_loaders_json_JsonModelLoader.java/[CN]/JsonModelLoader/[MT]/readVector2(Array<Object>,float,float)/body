@@ -1,0 +1,5 @@
+{
+  if (vectorArray == null)   return new Vector2(x,y);
+ else   if (vectorArray.size == 2)   return new Vector2((Float)vectorArray.get(0),(Float)vectorArray.get(1));
+ else   throw new GdxRuntimeException("Expected Vector2 values <> than two.");
+}
