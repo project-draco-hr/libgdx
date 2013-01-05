@@ -83,8 +83,10 @@
     t.setDaemon(true);
     t.start();
     process.waitFor();
+    return process.exitValue() == 0;
   }
  catch (  Exception e) {
     e.printStackTrace();
+    return false;
   }
 }

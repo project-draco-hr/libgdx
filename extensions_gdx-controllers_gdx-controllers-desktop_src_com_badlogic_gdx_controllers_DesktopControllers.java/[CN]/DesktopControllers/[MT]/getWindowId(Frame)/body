@@ -1,0 +1,11 @@
+{
+  try {
+    Object wComponentPeer=invokeMethod(frame,"getPeer");
+    Long hwnd=(Long)invokeMethod(wComponentPeer,"getHWnd");
+    return hwnd;
+  }
+ catch (  Exception ex) {
+    ex.printStackTrace();
+  }
+  return 0;
+}

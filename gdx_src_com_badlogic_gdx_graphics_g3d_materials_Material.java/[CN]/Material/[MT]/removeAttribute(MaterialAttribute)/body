@@ -1,4 +1,4 @@
 {
-  if (attribute instanceof BlendingAttribute)   needBlending=false;
-  attributes.removeValue(attribute,true);
+  for (int i=0; i < attributes.length; i++)   this.attributes.removeValue(attributes[i],true);
+  checkAttributes();
 }
