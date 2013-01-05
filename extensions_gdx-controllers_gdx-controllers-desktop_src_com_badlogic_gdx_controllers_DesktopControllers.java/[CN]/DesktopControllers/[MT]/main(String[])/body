@@ -2,10 +2,14 @@
   DesktopControllersBuild.main(null);
   new SharedLibraryLoader("libs/gdx-controllers-desktop-natives.jar").load("gdx-controllers-desktop");
   ApplicationAdapter app=new ApplicationAdapter(){
+    Ois ois;
     @Override public void create(){
-      OisWrapper.initialize(OisWrapper.invisibleWindowHack());
+      this.ois=new Ois();
+    }
+    public void render(){
+      ois.update();
     }
   }
 ;
-  new LwjglFrame(app,"Controllers",200,200,false);
+  new LwjglApplication(app);
 }
