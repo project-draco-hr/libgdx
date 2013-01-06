@@ -28,7 +28,7 @@
         jsonTexture.id=textureId;
         String fileName=(String)texture.get("filename");
         if (fileName == null)         throw new GdxRuntimeException("Texture needs filename.");
-        jsonTexture.fileName=fileName;
+        jsonTexture.fileName=materialDir + "/" + fileName;
         jsonTexture.uvTranslation=readVector2((Array<Object>)texture.get("uvTranslation"),0f,0f);
         jsonTexture.uvScaling=readVector2((Array<Object>)texture.get("uvScaling"),1f,1f);
         String textureType=(String)texture.get("type");
