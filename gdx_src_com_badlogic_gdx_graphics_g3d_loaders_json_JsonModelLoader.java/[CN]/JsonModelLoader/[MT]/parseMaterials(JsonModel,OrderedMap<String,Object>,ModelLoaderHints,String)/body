@@ -21,25 +21,26 @@
         float shininess=(Float)material.get("shininess",1.0f);
       }
       Array<OrderedMap<String,Object>> textures=(Array<OrderedMap<String,Object>>)material.get("textures");
-      for (      OrderedMap<String,Object> texture : textures) {
-        JsonTexture jsonTexture=new JsonTexture();
-        String textureId=(String)texture.get("id");
-        if (textureId == null)         throw new GdxRuntimeException("Texture has no id.");
-        jsonTexture.id=textureId;
-        String fileName=(String)texture.get("filename");
-        if (fileName == null)         throw new GdxRuntimeException("Texture needs filename.");
-        jsonTexture.fileName=materialDir + "/" + fileName;
-        jsonTexture.uvTranslation=readVector2((Array<Object>)texture.get("uvTranslation"),0f,0f);
-        jsonTexture.uvScaling=readVector2((Array<Object>)texture.get("uvScaling"),1f,1f);
-        String textureType=(String)texture.get("type");
-        if (type == null)         throw new GdxRuntimeException("Texture needs type.");
-        if (textureType.equals("STANDARD")) {
-          if (jsonMaterial.diffuseTextures == null)           jsonMaterial.diffuseTextures=new Array<JsonTexture>();
-          jsonMaterial.diffuseTextures.add(jsonTexture);
+      if (textures != null) {
+        for (        OrderedMap<String,Object> texture : textures) {
+          JsonTexture jsonTexture=new JsonTexture();
+          String textureId=(String)texture.get("id");
+          if (textureId == null)           throw new GdxRuntimeException("Texture has no id.");
+          jsonTexture.id=textureId;
+          String fileName=(String)texture.get("filename");
+          if (fileName == null)           throw new GdxRuntimeException("Texture needs filename.");
+          jsonTexture.fileName=materialDir + "/" + fileName;
+          jsonTexture.uvTranslation=readVector2((Array<Object>)texture.get("uvTranslation"),0f,0f);
+          jsonTexture.uvScaling=readVector2((Array<Object>)texture.get("uvScaling"),1f,1f);
+          String textureType=(String)texture.get("type");
+          if (type == null)           throw new GdxRuntimeException("Texture needs type.");
+          if (textureType.equals("STANDARD")) {
+            if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<JsonTexture>();
+            jsonMaterial.diffuseTextures.add(jsonTexture);
+          }
         }
       }
       model.materials[i++]=jsonMaterial;
     }
   }
-  return null;
 }
