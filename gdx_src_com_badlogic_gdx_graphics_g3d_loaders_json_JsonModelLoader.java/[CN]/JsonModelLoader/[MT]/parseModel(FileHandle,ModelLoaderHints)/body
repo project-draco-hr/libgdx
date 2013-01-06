@@ -7,7 +7,7 @@
   }
   JsonModel model=new JsonModel();
   parseMeshes(model,json,hints);
-  parseMaterials(model,json,hints);
+  parseMaterials(model,json,hints,handle.parent().path());
   parseNodes(model,json,hints);
   return model;
 }

@@ -1,4 +1,8 @@
 {
   JsonModelLoader loader=new JsonModelLoader();
-  loader.load(Gdx.files.internal("data/g3d/test.g3dj"),null);
+  model=loader.load(Gdx.files.internal("data/g3d/test.g3dj"),null);
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(10,10,10);
+  cam.direction.set(-1,-1,-1);
+  Gdx.input.setInputProcessor(this);
 }

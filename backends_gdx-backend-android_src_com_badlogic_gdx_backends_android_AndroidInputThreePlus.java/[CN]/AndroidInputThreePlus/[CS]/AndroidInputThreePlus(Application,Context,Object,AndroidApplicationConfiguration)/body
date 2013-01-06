@@ -1,0 +1,7 @@
+{
+  super(activity,context,view,config);
+  if (view instanceof View) {
+    View v=(View)view;
+    v.setOnGenericMotionListener(this);
+  }
+}

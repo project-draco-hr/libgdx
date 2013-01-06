@@ -1,7 +1,0 @@
-{
-  inputManager=createInputManager(getWindowHandle());
-  int numJoysticks=getNumJoysticks(inputManager);
-  for (int i=0; i < numJoysticks; i++) {
-    joysticks.add(new OisJoystick(createJoystick(inputManager)));
-  }
-}

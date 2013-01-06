@@ -1,9 +1,0 @@
-{
-  this.joystickPtr=joystickPtr;
-  initialize(this);
-  this.buttons=new boolean[getNumButtons()];
-  this.axes=new int[getNumAxes()];
-  this.povs=new int[getNumPovs()];
-  this.slidersX=new int[getNumSliders()];
-  this.slidersY=new int[getNumSliders()];
-}

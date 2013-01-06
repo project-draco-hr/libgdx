@@ -1,0 +1,17 @@
+{
+  this.manager=manager;
+  ArrayList<OisJoystick> joysticks=ois.getJoysticks();
+  controllers=new OisController[joysticks.size()];
+  for (int i=0, n=joysticks.size(); i < n; i++) {
+    OisJoystick joystick=joysticks.get(i);
+    controllers[i]=new OisController(joystick);
+    manager.controllers.add(controllers[i]);
+  }
+  new Runnable(){
+    public void run(){
+      ois.update();
+      Gdx.app.postRunnable(this);
+    }
+  }
+.run();
+}
