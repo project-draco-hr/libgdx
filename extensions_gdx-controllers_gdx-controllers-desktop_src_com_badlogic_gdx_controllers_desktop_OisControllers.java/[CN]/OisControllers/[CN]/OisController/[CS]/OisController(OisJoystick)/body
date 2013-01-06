@@ -1,3 +1,37 @@
 {
   this.joystick=joystick;
+  joystick.setListener(new OisListener(){
+    public void buttonReleased(    OisJoystick joystick,    int buttonIndex){
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).buttonUp(OisController.this,buttonIndex);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).buttonUp(OisController.this,buttonIndex);
+    }
+    public void buttonPressed(    OisJoystick joystick,    int buttonIndex){
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).buttonDown(OisController.this,buttonIndex);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).buttonDown(OisController.this,buttonIndex);
+    }
+    public void axisMoved(    OisJoystick joystick,    int axisIndex,    float value){
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).axisMoved(OisController.this,axisIndex,value);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).axisMoved(OisController.this,axisIndex,value);
+    }
+    public void povMoved(    OisJoystick joystick,    int povIndex,    OisPov ignored){
+      PovDirection value=getPov(povIndex);
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).povMoved(OisController.this,povIndex,value);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).povMoved(OisController.this,povIndex,value);
+    }
+    public void xSliderMoved(    OisJoystick joystick,    int sliderIndex,    boolean value){
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).xSliderMoved(OisController.this,sliderIndex,value);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).xSliderMoved(OisController.this,sliderIndex,value);
+    }
+    public void ySliderMoved(    OisJoystick joystick,    int sliderIndex,    boolean value){
+      Array<ControllerListener> allListeners=manager.listeners;
+      for (int ii=0, nn=allListeners.size; ii < nn; ii++)       allListeners.get(ii).ySliderMoved(OisController.this,sliderIndex,value);
+      for (int ii=0, nn=listeners.size; ii < nn; ii++)       listeners.get(ii).ySliderMoved(OisController.this,sliderIndex,value);
+    }
+  }
+);
 }

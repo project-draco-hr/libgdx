@@ -1,6 +1,6 @@
 {
   this.manager=manager;
-  AndroidInput androidInput=(AndroidInput)Gdx.input;
+  AndroidInputThreePlus androidInput=(AndroidInputThreePlus)Gdx.input;
   androidInput.addKeyListener(new OnKeyListener(){
     public boolean onKey(    View v,    int keyCode,    KeyEvent event){
       boolean handled=false;
