@@ -1,4 +1,7 @@
 {
+  if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+    return 0;
+  }
   try {
     if (Gdx.app instanceof LwjglCanvas) {
       return (Long)invokeMethod(invokeMethod(SwingUtilities.windowForComponent(((LwjglCanvas)Gdx.app).getCanvas()),"getPeer"),"getHWnd");
