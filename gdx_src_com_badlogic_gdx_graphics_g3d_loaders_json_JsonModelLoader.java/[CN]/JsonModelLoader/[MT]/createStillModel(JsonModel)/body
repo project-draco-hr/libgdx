@@ -5,9 +5,10 @@
     JsonMaterial jsonMaterial=model.materials[i];
     Material material=new Material(jsonMaterial.id);
     material.addAttribute(new ColorAttribute(jsonMaterial.diffuse,"diffuse"));
-    if (jsonMaterial.diffuseTextures.size > 0) {
+    if (jsonMaterial.diffuseTextures != null) {
       JsonTexture jsonTexture=jsonMaterial.diffuseTextures.get(0);
       Texture texture=new Texture(Gdx.files.internal(jsonTexture.fileName));
+      texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
       material.addAttribute(new TextureAttribute(texture,0,"diffuseTexture"));
     }
     materials.put(jsonMaterial.id,material);
@@ -19,7 +20,7 @@
     mesh.setIndices(jsonMeshPart.indices);
     mesh.setVertices(jsonMesh.vertices);
     StillSubMesh subMesh=new StillSubMesh(jsonMesh.id,mesh,jsonMeshPart.primitiveType);
-    subMesh.material=materials.get(model.materials[0].id);
+    subMesh.material=materials.get(model.materials[i].id);
     stillModel.subMeshes[i]=subMesh;
   }
   return stillModel;

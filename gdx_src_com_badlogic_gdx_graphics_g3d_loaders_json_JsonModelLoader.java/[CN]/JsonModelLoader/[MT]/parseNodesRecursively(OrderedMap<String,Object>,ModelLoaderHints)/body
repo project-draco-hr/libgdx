@@ -1,0 +1,42 @@
+{
+  JsonNode jsonNode=new JsonNode();
+  String id=(String)json.get("id");
+  if (id == null)   throw new GdxRuntimeException("Node id missing.");
+  jsonNode.id=id;
+  Array<Object> translation=(Array<Object>)json.get("translation");
+  if (translation == null || translation.size != 3)   throw new GdxRuntimeException("Node translation missing or incomplete");
+  jsonNode.translation=new Vector3((Float)translation.get(0),(Float)translation.get(1),(Float)translation.get(2));
+  Array<Object> rotation=(Array<Object>)json.get("rotation");
+  if (rotation == null || rotation.size != 3)   throw new GdxRuntimeException("Node rotation missing or incomplete");
+  jsonNode.rotation=new Vector3((Float)rotation.get(0),(Float)rotation.get(1),(Float)rotation.get(2));
+  Array<Object> scale=(Array<Object>)json.get("scale");
+  if (scale == null || scale.size != 3)   throw new GdxRuntimeException("Node scale missing or incomplete");
+  jsonNode.scale=new Vector3((Float)scale.get(0),(Float)scale.get(1),(Float)scale.get(2));
+  String meshId=(String)json.get("mesh");
+  if (meshId != null)   jsonNode.meshId=meshId;
+  Array<OrderedMap<String,Object>> materials=(Array<OrderedMap<String,Object>>)json.get("materials");
+  if (materials != null) {
+    jsonNode.meshPartMaterials=new JsonMeshPartMaterial[materials.size];
+    int i=0;
+    for (    OrderedMap<String,Object> material : materials) {
+      JsonMeshPartMaterial meshPartMaterial=new JsonMeshPartMaterial();
+      String meshPartId=(String)material.get("meshpartid");
+      String materialId=(String)material.get("materialid");
+      if (meshPartId == null || materialId == null) {
+        throw new GdxRuntimeException("Node material is missing meshPartId or materialId");
+      }
+      meshPartMaterial.materialId=materialId;
+      meshPartMaterial.meshPartId=meshPartId;
+      jsonNode.meshPartMaterials[i++]=meshPartMaterial;
+    }
+  }
+  Array<OrderedMap<String,Object>> children=(Array<OrderedMap<String,Object>>)json.get("children");
+  if (children != null) {
+    jsonNode.children=new JsonNode[children.size];
+    int i=0;
+    for (    OrderedMap<String,Object> child : children) {
+      jsonNode.children[i++]=parseNodesRecursively(child,hints);
+    }
+  }
+  return jsonNode;
+}

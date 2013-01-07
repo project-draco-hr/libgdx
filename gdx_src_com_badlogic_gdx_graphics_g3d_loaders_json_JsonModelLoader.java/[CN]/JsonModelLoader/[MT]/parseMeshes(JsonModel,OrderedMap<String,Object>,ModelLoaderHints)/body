@@ -64,5 +64,4 @@
     jsonMesh.parts=parts.toArray(JsonMeshPart.class);
     model.meshes[i++]=jsonMesh;
   }
-  return model.meshes;
 }
