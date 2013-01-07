@@ -1,0 +1,8 @@
+{
+  cam.rotateAround(Vector3.Zero,Vector3.X,(x - touchStartX));
+  cam.rotateAround(Vector3.Zero,Vector3.Y,(y - touchStartY));
+  touchStartX=x;
+  touchStartY=y;
+  cam.update();
+  return false;
+}

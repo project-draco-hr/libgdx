@@ -1,0 +1,5 @@
+{
+  cam.fieldOfView-=-amount * Gdx.graphics.getDeltaTime() * 100;
+  cam.update();
+  return false;
+}

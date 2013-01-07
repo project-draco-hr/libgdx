@@ -1,0 +1,7 @@
+{
+  instances.sort(renderer);
+  renderer.render(camera,instances);
+  instancePool.freeAll(instances);
+  instances.clear();
+  camera=null;
+}
