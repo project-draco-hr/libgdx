@@ -1,0 +1,11 @@
+{
+  final StillModel sphereModel=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
+  final StillModel sceneModel=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/scene.obj"));
+  models.add(new ModelInstance(sceneModel,new Matrix4()));
+  for (int i=0; i < 10; i++)   models.add(new ModelInstance(sphereModel,(new Matrix4()).setToTranslation(-5f + (float)Math.random() * 10f,1f + (float)Math.random() * 5f,-5f + (float)Math.random() * 10f).scl(0.05f + (float)Math.random())));
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(10f,10f,10f);
+  cam.lookAt(0,0,0);
+  cam.update();
+  Gdx.input.setInputProcessor(this);
+}
