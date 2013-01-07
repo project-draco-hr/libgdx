@@ -1,4 +1,4 @@
 {
   if (vertical)   return 140;
- else   return Math.max(style.knob.getMinHeight(),style.background.getMinHeight());
+ else   return Math.max(style.knob == null ? 0 : style.knob.getMinHeight(),style.background.getMinHeight());
 }
