@@ -6,5 +6,9 @@
   this.value=value;
   ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
   if (fire(changeEvent))   this.value=oldValue;
+ else   if (animateDuration > 0) {
+    animateTime=animateDuration;
+    animateFromValue=getVisualValue();
+  }
   Pools.free(changeEvent);
 }

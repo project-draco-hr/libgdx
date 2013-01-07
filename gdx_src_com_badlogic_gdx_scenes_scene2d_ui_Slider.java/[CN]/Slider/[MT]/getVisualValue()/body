@@ -1,0 +1,4 @@
+{
+  if (animateTime > 0)   return animateInterpolation.apply(animateFromValue,value,animateTime / animateDuration);
+  return value;
+}

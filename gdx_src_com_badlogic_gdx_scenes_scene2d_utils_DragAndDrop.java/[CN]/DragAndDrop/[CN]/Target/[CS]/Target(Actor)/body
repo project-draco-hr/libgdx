@@ -1,4 +1,6 @@
 {
   if (actor == null)   throw new IllegalArgumentException("actor cannot be null.");
   this.actor=actor;
+  Stage stage=actor.getStage();
+  if (stage != null && actor == stage.getRoot())   throw new IllegalArgumentException("The stage root cannot be a drag and drop target.");
 }
