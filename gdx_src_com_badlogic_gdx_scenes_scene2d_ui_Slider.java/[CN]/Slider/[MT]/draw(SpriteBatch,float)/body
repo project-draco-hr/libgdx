@@ -10,6 +10,7 @@
   float height=getHeight();
   float knobHeight=knob == null ? 0 : knob.getMinHeight();
   float knobWidth=knob == null ? 0 : knob.getMinWidth();
+  float value=getVisualValue();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (vertical) {
     bg.draw(batch,x + (int)((width - bg.getMinWidth()) * 0.5f),y,bg.getMinWidth(),height);
