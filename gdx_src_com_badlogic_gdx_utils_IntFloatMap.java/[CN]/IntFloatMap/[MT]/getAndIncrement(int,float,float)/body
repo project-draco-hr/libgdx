@@ -1,0 +1,13 @@
+{
+  int index=key & mask;
+  if (key != keyTable[index]) {
+    index=hash2(key);
+    if (key != keyTable[index]) {
+      index=hash3(key);
+      if (key != keyTable[index])       return getAndIncrementStash(key,defaultValue,increment);
+    }
+  }
+  float value=valueTable[index];
+  valueTable[index]=value + increment;
+  return value;
+}

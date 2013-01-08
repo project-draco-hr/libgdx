@@ -1,0 +1,8 @@
+{
+  stashSize--;
+  int lastIndex=capacity + stashSize;
+  if (index < lastIndex) {
+    keyTable[index]=keyTable[lastIndex];
+    valueTable[index]=valueTable[lastIndex];
+  }
+}

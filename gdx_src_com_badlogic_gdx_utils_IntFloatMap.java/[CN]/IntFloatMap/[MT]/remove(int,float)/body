@@ -1,0 +1,30 @@
+{
+  if (key == 0) {
+    if (!hasZeroValue)     return defaultValue;
+    hasZeroValue=false;
+    size--;
+    return zeroValue;
+  }
+  int index=key & mask;
+  if (key == keyTable[index]) {
+    keyTable[index]=EMPTY;
+    float oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  index=hash2(key);
+  if (key == keyTable[index]) {
+    keyTable[index]=EMPTY;
+    float oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  index=hash3(key);
+  if (key == keyTable[index]) {
+    keyTable[index]=EMPTY;
+    float oldValue=valueTable[index];
+    size--;
+    return oldValue;
+  }
+  return removeStash(key,defaultValue);
+}
