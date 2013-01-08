@@ -26,5 +26,8 @@
     }
   }
  else   compassAvailable=false;
+  for (  PauseResumeListener listener : pauseResumeListeners) {
+    listener.resume();
+  }
   Gdx.app.log("AndroidInput","sensor listener setup");
 }

@@ -5,7 +5,6 @@
       LibgdxOuyaController libgdxController=controllers[i];
       if (libgdxController == null) {
         controllers[i]=libgdxController=new LibgdxOuyaController(controller,i);
-        manager.controllers.add(libgdxController);
       }
       libgdxController.update();
     }

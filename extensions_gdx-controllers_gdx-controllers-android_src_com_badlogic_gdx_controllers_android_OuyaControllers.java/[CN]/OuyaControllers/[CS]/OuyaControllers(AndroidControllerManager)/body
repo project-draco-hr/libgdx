@@ -1,5 +1,14 @@
 {
   this.manager=manager;
+  InputManager inputManager=(InputManager)((Context)Gdx.app).getSystemService(Context.INPUT_SERVICE);
+  for (  int id : inputManager.getInputDeviceIds()) {
+    InputDevice device=inputManager.getInputDevice(id);
+    if (device.getName().toLowerCase().contains("ouya")) {
+      OuyaController ouyaController=OuyaController.getControllerByDeviceId(id);
+      LibgdxOuyaController controller=new LibgdxOuyaController(ouyaController,ouyaController.getPlayerNum());
+      controllers[ouyaController.getPlayerNum()]=controller;
+    }
+  }
   AndroidInputThreePlus androidInput=(AndroidInputThreePlus)Gdx.input;
   androidInput.addKeyListener(new OnKeyListener(){
     public boolean onKey(    View v,    int keyCode,    KeyEvent event){
