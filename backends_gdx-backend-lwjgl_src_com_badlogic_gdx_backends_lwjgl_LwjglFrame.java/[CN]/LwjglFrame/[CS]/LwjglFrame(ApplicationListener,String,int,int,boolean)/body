@@ -25,7 +25,6 @@
     }
   }
 ;
-  getContentPane().add(lwjglCanvas.getCanvas());
   Runtime.getRuntime().addShutdownHook(new Thread(){
     public void run(){
       Runtime.getRuntime().halt(0);
@@ -40,5 +39,6 @@
   Point location=getLocation();
   if (location.x == 0 && location.y == 0)   setLocationRelativeTo(null);
   setVisible(true);
+  getContentPane().add(lwjglCanvas.getCanvas());
   lwjglCanvas.getCanvas().requestFocus();
 }
