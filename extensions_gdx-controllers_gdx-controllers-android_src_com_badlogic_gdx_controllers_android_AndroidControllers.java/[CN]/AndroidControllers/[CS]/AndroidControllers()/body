@@ -1,0 +1,9 @@
+{
+  this.inputManager=(InputManager)((Context)Gdx.app).getSystemService(Context.INPUT_SERVICE);
+  ((AndroidInput)Gdx.input).addPauseResumeListener(this);
+  resume();
+  setupEventQueue();
+  ((AndroidInput)Gdx.input).addKeyListener(this);
+  ((AndroidInputThreePlus)Gdx.input).addGenericMotionListener(this);
+  Gdx.app.log(TAG,"controllers: " + inputManager.getInputDeviceIds().length);
+}

@@ -1,0 +1,13 @@
+{
+  InputDevice device=inputManager.getInputDevice(deviceId);
+  if (!isController(device))   return;
+  String name=device.getName();
+  AndroidController controller=new AndroidController(deviceId,name);
+  controllerMap.put(deviceId,controller);
+synchronized (eventQueue) {
+    AndroidControllerEvent event=eventPool.obtain();
+    event.type=AndroidControllerEvent.CONNECTED;
+    event.controller=controller;
+    eventQueue.add(event);
+  }
+}

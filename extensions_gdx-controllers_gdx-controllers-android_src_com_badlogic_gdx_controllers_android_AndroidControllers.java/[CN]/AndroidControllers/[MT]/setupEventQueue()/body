@@ -1,0 +1,14 @@
+{
+  new Runnable(){
+    @Override public void run(){
+synchronized (eventQueue) {
+        for (        AndroidControllerEvent event : eventQueue) {
+        }
+        eventPool.freeAll(eventQueue);
+        eventPool.clear();
+      }
+      Gdx.app.postRunnable(this);
+    }
+  }
+.run();
+}
