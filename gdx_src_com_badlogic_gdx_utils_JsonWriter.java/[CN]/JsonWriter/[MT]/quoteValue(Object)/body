@@ -1,0 +1,6 @@
+{
+  if (this != OutputType.json && (value == null || value instanceof Number || value instanceof Boolean))   return String.valueOf(value);
+  String string=String.valueOf(value).replace("\\","\\\\");
+  if (this == OutputType.minimal && !string.equals("true") && !string.equals("false") && !string.equals("null") && minimalValuePattern.matcher(string).matches())   return string;
+  return '"' + string.replace("\"","\\\"") + '"';
+}
