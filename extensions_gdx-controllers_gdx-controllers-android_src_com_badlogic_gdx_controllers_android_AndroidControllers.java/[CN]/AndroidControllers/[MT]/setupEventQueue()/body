@@ -3,7 +3,6 @@
     @SuppressWarnings("synthetic-access") @Override public void run(){
 synchronized (eventQueue) {
         for (        AndroidControllerEvent event : eventQueue) {
-          Gdx.app.log(TAG,"received event");
 switch (event.type) {
 case AndroidControllerEvent.CONNECTED:
             controllers.add(event.controller);
@@ -39,7 +38,7 @@ if (listener.buttonUp(event.controller,event.code)) break;
 }
 break;
 case AndroidControllerEvent.AXIS:
-event.controller.axes.put(event.code,event.axisValue);
+event.controller.axes[event.code]=event.axisValue;
 for (ControllerListener listener : listeners) {
 if (listener.axisMoved(event.controller,event.code,event.axisValue)) break;
 }
