@@ -7,5 +7,6 @@ synchronized (eventQueue) {
       event.controller=controller;
       eventQueue.add(event);
     }
+    Gdx.app.log(TAG,"removed controller '" + controller.getName() + "'");
   }
 }
