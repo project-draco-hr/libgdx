@@ -1,4 +1,5 @@
 {
+  if ((motionEvent.getSource() & InputDevice.SOURCE_CLASS_JOYSTICK) == 0)   return false;
   AndroidController controller=controllerMap.get(motionEvent.getDeviceId());
   if (controller != null) {
 synchronized (eventQueue) {
