@@ -1,2 +1,10 @@
 {
+  final RenderInstance instance=instancePool.obtain();
+  instance.distance=distance;
+  instance.material=mesh.material;
+  instance.mesh=mesh.mesh;
+  instance.primitiveType=mesh.primitiveType;
+  instance.transform=transform;
+  instance.shader=null;
+  addInstance(instance);
 }

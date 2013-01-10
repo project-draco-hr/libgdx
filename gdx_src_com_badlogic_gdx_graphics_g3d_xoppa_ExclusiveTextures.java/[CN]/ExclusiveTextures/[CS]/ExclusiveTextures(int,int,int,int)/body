@@ -1,0 +1,10 @@
+{
+  int max=Math.max(GL10.GL_MAX_TEXTURE_UNITS,MAX_GLES_UNITS - offset);
+  if (offset < 0 || count < 0 || (offset + count) > max || reuseWeight < 1)   throw new GdxRuntimeException("Illegal arguments");
+  this.method=method;
+  this.offset=offset;
+  this.count=count;
+  this.textures=new Texture[count];
+  this.reuseWeight=reuseWeight;
+  this.weights=(method == WEIGHTED) ? new int[count] : null;
+}

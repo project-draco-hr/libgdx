@@ -9,11 +9,6 @@
       named=false;
     }
   }
-  if (value == null || value instanceof Number || value instanceof Boolean) {
-    writer.write(String.valueOf(value));
-  }
- else {
-    writer.write(outputType.quoteValue(value.toString()));
-  }
+  writer.write(outputType.quoteValue(value));
   return this;
 }

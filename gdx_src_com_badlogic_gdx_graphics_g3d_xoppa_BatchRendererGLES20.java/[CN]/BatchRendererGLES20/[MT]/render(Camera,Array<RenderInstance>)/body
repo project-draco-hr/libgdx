@@ -1,0 +1,11 @@
+{
+  final GL20 gl=Gdx.gl20;
+  begin(gl,camera);
+  for (int i=0; i < instances.size; i++) {
+    final RenderInstance instance=instances.get(i);
+    bindShader(gl,camera,instance);
+    bindMaterial(gl,camera,instance);
+    renderMesh(gl,camera,instance);
+  }
+  end(gl);
+}

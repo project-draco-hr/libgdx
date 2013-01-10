@@ -1,9 +1,0 @@
-{
-switch (type) {
-case button:
-    return buttons.length;
-case axis:
-  return axes.length;
-}
-return 0;
-}
