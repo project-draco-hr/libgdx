@@ -1,0 +1,19 @@
+{
+  this.deviceId=deviceId;
+  this.name=name;
+  InputDevice device=InputDevice.getDevice(deviceId);
+  int numAxes=0;
+  for (  MotionRange range : device.getMotionRanges()) {
+    if ((range.getSource() & InputDevice.SOURCE_CLASS_JOYSTICK) != 0) {
+      numAxes+=1;
+    }
+  }
+  axesIds=new int[numAxes];
+  axes=new float[numAxes];
+  int i=0;
+  for (  MotionRange range : device.getMotionRanges()) {
+    if ((range.getSource() & InputDevice.SOURCE_CLASS_JOYSTICK) != 0) {
+      axesIds[i++]=range.getAxis();
+    }
+  }
+}
