@@ -1,8 +1,13 @@
 {
-  GL10 gl=Gdx.graphics.getGL10();
+  if ((dbgTimer+=Gdx.graphics.getDeltaTime()) >= 1f) {
+    dbgTimer-=1f;
+    Gdx.app.log("Test","FPS: " + Gdx.graphics.getFramesPerSecond() + ", binds: "+ exclusiveTextures.getBindCount()+ ", reused: "+ exclusiveTextures.getReuseCount());
+    exclusiveTextures.resetCounter();
+  }
+  GL20 gl=Gdx.gl20;
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   renderBatch.begin(cam);
-  for (int i=0; i < models.size; i++)   renderBatch.addModel(models.get(i).model,models.get(i).transform);
+  for (int i=0; i < instances.size; i++)   renderBatch.addModel(instances.get(i).model,instances.get(i).transform);
   renderBatch.end();
 }

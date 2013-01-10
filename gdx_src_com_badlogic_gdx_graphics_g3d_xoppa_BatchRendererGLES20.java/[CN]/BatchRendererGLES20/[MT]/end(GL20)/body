@@ -1,0 +1,10 @@
+{
+  if (currentMesh != null) {
+    currentMesh.unbind(currentShader);
+    currentMesh=null;
+  }
+  if (currentShader != null) {
+    currentShader.end();
+    currentShader=null;
+  }
+}

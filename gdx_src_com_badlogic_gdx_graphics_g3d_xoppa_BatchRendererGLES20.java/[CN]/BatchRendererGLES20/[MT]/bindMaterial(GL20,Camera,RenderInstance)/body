@@ -1,0 +1,8 @@
+{
+  if (currentMaterial == instance.material)   return;
+  currentMaterial=instance.material;
+  for (  MaterialAttribute attr : currentMaterial) {
+    if (attr instanceof TextureAttribute)     bindTextureAttribute(gl,(TextureAttribute)attr);
+ else     attr.bind(currentShader);
+  }
+}

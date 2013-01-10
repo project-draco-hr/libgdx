@@ -1,0 +1,15 @@
+{
+  for (int i=0; i < count; i++) {
+    final int idx=(currentTexture + i) % count;
+    if (textures[idx] == texture) {
+      Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0 + offset + idx);
+      reuseCount++;
+      return offset + idx;
+    }
+  }
+  currentTexture=(currentTexture + 1) % count;
+  textures[currentTexture]=texture;
+  texture.bind(offset + currentTexture);
+  bindCount++;
+  return offset + currentTexture;
+}
