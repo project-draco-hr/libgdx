@@ -1,0 +1,10 @@
+{
+  Mesh.clearAllMeshes(app);
+  Texture.clearAllTextures(app);
+  ShaderProgram.clearAllShaderPrograms(app);
+  FrameBuffer.clearAllFrameBuffers(app);
+  Gdx.app.log("AndroidGraphics",Mesh.getManagedStatus());
+  Gdx.app.log("AndroidGraphics",Texture.getManagedStatus());
+  Gdx.app.log("AndroidGraphics",ShaderProgram.getManagedStatus());
+  Gdx.app.log("AndroidGraphics",FrameBuffer.getManagedStatus());
+}

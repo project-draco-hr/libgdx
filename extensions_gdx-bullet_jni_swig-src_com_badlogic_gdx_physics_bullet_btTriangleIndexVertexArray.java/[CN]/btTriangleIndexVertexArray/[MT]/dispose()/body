@@ -1,0 +1,7 @@
+{
+  if (meshes != null) {
+    for (int i=0; i < meshes.size; i++)     meshes.get(i).delete();
+    meshes.clear();
+    meshes=null;
+  }
+}

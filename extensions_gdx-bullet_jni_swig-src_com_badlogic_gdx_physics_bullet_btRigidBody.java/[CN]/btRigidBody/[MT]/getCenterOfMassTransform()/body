@@ -1,3 +1,3 @@
 {
-  return new btTransform(gdxBulletJNI.btRigidBody_getCenterOfMassTransform(swigCPtr,this),false);
+  return gdxBulletJNI.btRigidBody_getCenterOfMassTransform(swigCPtr,this);
 }

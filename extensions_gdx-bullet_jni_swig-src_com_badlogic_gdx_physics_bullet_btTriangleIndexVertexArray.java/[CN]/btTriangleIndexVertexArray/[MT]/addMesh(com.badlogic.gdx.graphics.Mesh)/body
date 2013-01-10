@@ -1,0 +1,3 @@
+{
+  for (int i=0; i < meshes.length; i++)   addIndexedMesh(new btIndexedMesh(meshes[i]),PHY_ScalarType.PHY_SHORT,true);
+}

@@ -1,0 +1,14 @@
+{
+  if (performanceCounter != null) {
+    performanceCounter.tick();
+    performanceCounter.start();
+  }
+  dynamicsWorld.stepSimulation(Gdx.graphics.getDeltaTime(),maxSubSteps);
+  if (performanceCounter != null)   performanceCounter.stop();
+  if (debugDrawer != null && debugDrawer.getDebugMode() > 0) {
+    debugDrawer.begin();
+    dynamicsWorld.debugDrawWorld();
+    debugDrawer.end();
+  }
+  if (renderMeshes)   super.update();
+}

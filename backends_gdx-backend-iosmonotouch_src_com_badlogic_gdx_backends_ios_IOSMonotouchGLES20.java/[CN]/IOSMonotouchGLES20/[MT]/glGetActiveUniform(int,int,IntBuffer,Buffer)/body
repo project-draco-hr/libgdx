@@ -1,0 +1,14 @@
+{
+  String activeUniform=GL.GetActiveUniform(program,index,intArray,activeUniformTypes);
+  size.position(0);
+  size.put(intArray,0,size.remaining());
+  if (type instanceof IntBuffer) {
+    IntBuffer intBuffer=(IntBuffer)type;
+    intBuffer.position(0);
+    for (int i=0; i < activeUniformTypes.length; i++)     intBuffer.put(activeUniformTypes[i].Value);
+    return activeUniform;
+  }
+ else {
+    throw new UnsupportedOperationException("expected IntBuffer for type parameter");
+  }
+}

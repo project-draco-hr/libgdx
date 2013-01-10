@@ -1,0 +1,7 @@
+{
+  if ((indices.length - destOffset) < getNumIndices())   throw new IllegalArgumentException("not enough room in indices array, has " + indices.length + " floats, needs "+ getNumIndices());
+  int pos=getIndicesBuffer().position();
+  getIndicesBuffer().position(0);
+  getIndicesBuffer().get(indices,destOffset,getNumIndices());
+  getIndicesBuffer().position(pos);
+}

@@ -1,0 +1,37 @@
+{
+  UIAlertViewDelegate delegate=new UIAlertViewDelegate(){
+    @Override public void Clicked(    UIAlertView view,    int clicked){
+      if (clicked == 0) {
+        listener.canceled();
+      }
+ else       if (clicked == 1) {
+        UIView[] views=view.get_Subviews();
+        for (        UIView uiView : views) {
+          if (uiView != null && uiView instanceof UITextField) {
+            UITextField tf=(UITextField)uiView;
+            listener.input(tf.get_Text());
+          }
+        }
+      }
+      view.Dispose();
+    }
+    @Override public void Canceled(    UIAlertView view){
+      listener.canceled();
+      view.Dispose();
+    }
+  }
+;
+  final UIAlertView uiAlertView=new UIAlertView();
+  uiAlertView.set_Title(title);
+  uiAlertView.AddButton("Cancel");
+  uiAlertView.AddButton("Ok");
+  uiAlertView.set_AlertViewStyle(UIAlertViewStyle.wrap(UIAlertViewStyle.PlainTextInput));
+  uiAlertView.set_Delegate(delegate);
+  for (  UIView uiView : uiAlertView.get_Subviews()) {
+    if (uiView != null && uiView instanceof UITextField) {
+      UITextField tf=(UITextField)uiView;
+      tf.set_Text(text);
+    }
+  }
+  return uiAlertView;
+}

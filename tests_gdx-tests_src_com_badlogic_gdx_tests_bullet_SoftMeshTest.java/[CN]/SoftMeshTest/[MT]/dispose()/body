@@ -1,0 +1,10 @@
+{
+  ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).removeSoftBody(softBody);
+  softBody.delete();
+  softBody=null;
+  super.dispose();
+  worldInfo.delete();
+  worldInfo=null;
+  mesh.dispose();
+  mesh=null;
+}

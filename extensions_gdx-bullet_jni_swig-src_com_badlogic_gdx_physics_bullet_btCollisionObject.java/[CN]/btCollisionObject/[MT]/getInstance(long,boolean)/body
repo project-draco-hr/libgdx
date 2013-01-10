@@ -1,0 +1,5 @@
+{
+  btCollisionObject result=instances.get(swigCPtr);
+  if (result == null)   result=new btCollisionObject(swigCPtr,owner);
+  return result;
+}

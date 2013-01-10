@@ -1,0 +1,8 @@
+{
+  this.needBlending=false;
+  this.hasTexture=false;
+  for (int i=0; i < this.attributes.size; i++) {
+    if (!needBlending && this.attributes.get(i) instanceof BlendingAttribute)     this.needBlending=true;
+ else     if (!hasTexture && this.attributes.get(i) instanceof TextureAttribute)     this.hasTexture=true;
+  }
+}

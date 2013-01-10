@@ -7,7 +7,7 @@
   }
   buffer=bytes.toByteArray();
   pixelPtr=load(nativeData,buffer,0,buffer.length,requestedFormat);
-  if (pixelPtr == null)   throw new IOException("couldn't load pixmap");
+  if (pixelPtr == null)   throw new IOException("couldn't load pixmap " + getFailureReason());
   basePtr=nativeData[0];
   width=(int)nativeData[1];
   height=(int)nativeData[2];

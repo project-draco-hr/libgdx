@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawBox__SWIG_0(swigCPtr,this,btVector3.getCPtr(bbMin),bbMin,btVector3.getCPtr(bbMax),bbMax,btVector3.getCPtr(color),color);
+ else   gdxBulletJNI.btIDebugDraw_drawBoxSwigExplicitbtIDebugDraw__SWIG_0(swigCPtr,this,btVector3.getCPtr(bbMin),bbMin,btVector3.getCPtr(bbMax),bbMax,btVector3.getCPtr(color),color);
+}

@@ -1,5 +1,10 @@
 {
-  verify(fileHandle);
-  NSData data=NSData.FromArray(fileHandle.readBytes());
-  return new IOSSound(data);
+  if (useObjectAL) {
+    return new IOSObjectALSound(fileHandle);
+  }
+ else {
+    verify(fileHandle);
+    NSData data=NSData.FromArray(fileHandle.readBytes());
+    return new IOSSound(data);
+  }
 }

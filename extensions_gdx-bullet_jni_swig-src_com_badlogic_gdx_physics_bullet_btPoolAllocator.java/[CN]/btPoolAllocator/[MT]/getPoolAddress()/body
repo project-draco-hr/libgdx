@@ -1,4 +1,3 @@
 {
-  long cPtr=gdxBulletJNI.btPoolAllocator_getPoolAddress__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_char(cPtr,false);
+  return gdxBulletJNI.btPoolAllocator_getPoolAddress__SWIG_0(swigCPtr,this);
 }

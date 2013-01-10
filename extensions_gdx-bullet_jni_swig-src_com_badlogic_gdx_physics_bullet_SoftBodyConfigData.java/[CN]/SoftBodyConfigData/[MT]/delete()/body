@@ -1,0 +1,9 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      gdxBulletJNI.delete_SoftBodyConfigData(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+}

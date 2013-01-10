@@ -9,11 +9,9 @@
   projTexShader.begin();
   if (camera.getSelectionIndex() == 0) {
     renderMesh(projTexShader,cam.combined,projector.combined,planeTrans,plane,Color.WHITE);
-    renderMesh(projTexShader,cam.combined,projector.combined,cubeTrans,cube,Color.WHITE);
   }
  else {
     renderMesh(projTexShader,projector.combined,projector.combined,planeTrans,plane,Color.WHITE);
-    renderMesh(projTexShader,projector.combined,projector.combined,cubeTrans,cube,Color.WHITE);
   }
   projTexShader.end();
   fps.setText("fps: " + Gdx.graphics.getFramesPerSecond());

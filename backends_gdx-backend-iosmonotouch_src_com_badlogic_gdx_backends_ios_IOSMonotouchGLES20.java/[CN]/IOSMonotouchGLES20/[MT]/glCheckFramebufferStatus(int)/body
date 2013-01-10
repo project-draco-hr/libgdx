@@ -1,0 +1,3 @@
+{
+  return GL.CheckFramebufferStatus(FramebufferTarget.wrap(target)).Value;
+}

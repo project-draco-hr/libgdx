@@ -66,6 +66,8 @@
     public Color read(    Json json,    Object jsonData,    Class type){
       if (jsonData instanceof String)       return get((String)jsonData,Color.class);
       ObjectMap map=(ObjectMap)jsonData;
+      String hex=json.readValue("hex",String.class,(String)null,jsonData);
+      if (hex != null)       return Color.valueOf(hex);
       float r=json.readValue("r",float.class,0f,jsonData);
       float g=json.readValue("g",float.class,0f,jsonData);
       float b=json.readValue("b",float.class,0f,jsonData);

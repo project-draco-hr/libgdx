@@ -1,0 +1,3 @@
+{
+  GL.TexSubImage2D(TextureTarget.wrap(target),level,xoffset,yoffset,width,height,PixelFormat.wrap(format),PixelType.wrap(type),IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(pixels)));
+}

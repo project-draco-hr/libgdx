@@ -1,4 +1,4 @@
 {
   long cPtr=gdxBulletJNI.btGhostObject_getOverlappingObject__SWIG_0(swigCPtr,this,index);
-  return (cPtr == 0) ? null : new btCollisionObject(cPtr,false);
+  return (cPtr == 0) ? null : btCollisionObject.getInstance(cPtr,false);
 }

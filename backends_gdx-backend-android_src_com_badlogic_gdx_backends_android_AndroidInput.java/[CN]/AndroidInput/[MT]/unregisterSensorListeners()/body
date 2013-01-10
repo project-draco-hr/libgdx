@@ -10,5 +10,8 @@
     }
     manager=null;
   }
+  for (  PauseResumeListener listener : pauseResumeListeners) {
+    listener.pause();
+  }
   Gdx.app.log("AndroidInput","sensor listener tear down");
 }

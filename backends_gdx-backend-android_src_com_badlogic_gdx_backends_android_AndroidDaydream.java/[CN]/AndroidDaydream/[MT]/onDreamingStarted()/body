@@ -1,0 +1,19 @@
+{
+  if (wakeLock != null)   wakeLock.acquire();
+  Gdx.app=this;
+  Gdx.input=this.getInput();
+  Gdx.audio=this.getAudio();
+  Gdx.files=this.getFiles();
+  Gdx.graphics=this.getGraphics();
+  Gdx.net=this.getNet();
+  ((AndroidInput)getInput()).registerSensorListeners();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
+  }
+  if (!firstResume) {
+    graphics.resume();
+  }
+ else   firstResume=false;
+  super.onDreamingStarted();
+}

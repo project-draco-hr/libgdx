@@ -21,11 +21,11 @@
     }
   }
   cells.add(cell);
+  cell.set(cellDefaults);
   if (cell.column < columnDefaults.size()) {
     Cell columnDefaults=this.columnDefaults.get(cell.column);
-    cell.set(columnDefaults != null ? columnDefaults : cellDefaults);
+    if (columnDefaults != null)     cell.merge(columnDefaults);
   }
- else   cell.set(cellDefaults);
   cell.merge(rowDefaults);
   if (widget != null)   toolkit.addChild(table,widget);
   return cell;

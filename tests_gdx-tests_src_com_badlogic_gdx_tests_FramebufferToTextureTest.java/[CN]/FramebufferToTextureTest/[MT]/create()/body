@@ -1,5 +1,5 @@
 {
-  mesh=ModelLoaderOld.loadObj(Gdx.files.internal("data/cube.obj").read());
+  mesh=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/cube.obj"));
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
   texture.setFilter(TextureFilter.MipMap,TextureFilter.Linear);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());

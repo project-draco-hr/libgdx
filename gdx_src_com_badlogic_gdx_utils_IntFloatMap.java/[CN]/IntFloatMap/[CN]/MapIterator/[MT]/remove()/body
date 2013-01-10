@@ -1,0 +1,16 @@
+{
+  if (currentIndex == INDEX_ZERO && map.hasZeroValue) {
+    map.hasZeroValue=false;
+  }
+ else   if (currentIndex < 0) {
+    throw new IllegalStateException("next must be called before remove.");
+  }
+ else   if (currentIndex >= map.capacity) {
+    map.removeStashIndex(currentIndex);
+  }
+ else {
+    map.keyTable[currentIndex]=EMPTY;
+  }
+  currentIndex=INDEX_ILLEGAL;
+  map.size--;
+}

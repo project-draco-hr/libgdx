@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftClusterCollisionShape_m_cluster_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SWIGTYPE_p_btSoftBody__Cluster(cPtr,false);
+}

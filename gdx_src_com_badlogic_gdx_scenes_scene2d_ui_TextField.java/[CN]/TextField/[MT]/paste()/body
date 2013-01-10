@@ -3,7 +3,7 @@
   if (content != null) {
     StringBuilder builder=new StringBuilder();
     for (int i=0; i < content.length(); i++) {
-      if (maxLength > 0 && text.length() + i + 1 > maxLength) {
+      if (maxLength > 0 && text.length() + builder.length() + 1 > maxLength) {
         break;
       }
       char c=content.charAt(i);

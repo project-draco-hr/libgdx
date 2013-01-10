@@ -1,7 +1,7 @@
 {
   VP_WIDTH=Gdx.graphics.getWidth() - 4 * BORDER;
   VP_HEIGHT=Gdx.graphics.getHeight() - 4 * BORDER;
-  sphere=ObjLoader.loadObj(Gdx.files.internal("data/sphere.obj").read());
+  sphere=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
   cam=new PerspectiveCamera(45,VP_WIDTH,VP_HEIGHT);
   cam.far=200;
   batch=new SpriteBatch();

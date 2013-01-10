@@ -9,9 +9,22 @@
   if (assetPathProperty.getValues().size() == 0) {
     return null;
   }
-  String path=assetPathProperty.getValues().get(0);
-  if (path != null && !path.endsWith("/")) {
-    path+="/";
+  String paths=assetPathProperty.getValues().get(0);
+  if (paths == null) {
+    return null;
   }
-  return path;
+ else {
+    ArrayList<String> existingPaths=new ArrayList<String>();
+    String[] tokens=paths.split(",");
+    String path=null;
+    for (    String token : tokens) {
+      if (new FileWrapper(token).exists()) {
+        path=token;
+      }
+    }
+    if (path != null && !path.endsWith("/")) {
+      path+="/";
+    }
+    return path;
+  }
 }

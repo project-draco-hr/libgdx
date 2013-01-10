@@ -1,0 +1,6 @@
+{
+  this.controllers=controllers;
+  this.inputManager=(InputManager)((Context)Gdx.app).getSystemService(Context.INPUT_SERVICE);
+  ((AndroidInput)Gdx.input).addPauseResumeListener(this);
+  inputManager.registerInputDeviceListener(this,((AndroidApplication)Gdx.app).handler);
+}

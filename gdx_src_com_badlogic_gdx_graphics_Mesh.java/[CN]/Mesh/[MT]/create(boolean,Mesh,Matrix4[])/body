@@ -1,0 +1,21 @@
+{
+  final VertexAttribute posAttr=base.getVertexAttribute(Usage.Position);
+  final int offset=posAttr.offset / 4;
+  final int numComponents=posAttr.numComponents;
+  final int numVertices=base.getNumVertices();
+  final int vertexSize=base.getVertexSize() / 4;
+  final int baseSize=numVertices * vertexSize;
+  final int numIndices=base.getNumIndices();
+  final float vertices[]=new float[numVertices * vertexSize * transformations.length];
+  final short indices[]=new short[numIndices * transformations.length];
+  base.getIndices(indices);
+  for (int i=0; i < transformations.length; i++) {
+    base.getVertices(0,baseSize,vertices,baseSize * i);
+    transform(transformations[i],vertices,vertexSize,offset,numComponents,numVertices * i,numVertices);
+    if (i > 0)     for (int j=0; j < numIndices; j++)     indices[(numIndices * i) + j]=(short)(indices[j] + (numVertices * i));
+  }
+  final Mesh result=new Mesh(isStatic,vertices.length / vertexSize,indices.length,base.getVertexAttributes());
+  result.setVertices(vertices);
+  result.setIndices(indices);
+  return result;
+}

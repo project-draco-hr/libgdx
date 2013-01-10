@@ -1,0 +1,4 @@
+{
+  buttons[buttonIndex]=true;
+  if (listener != null)   listener.buttonPressed(this,buttonIndex);
+}

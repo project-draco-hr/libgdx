@@ -1,0 +1,7 @@
+{
+  RectangleF bounds=getBounds(this);
+  graphics.width=(int)bounds.get_Width();
+  graphics.height=(int)bounds.get_Height();
+  graphics.MakeCurrent();
+  listener.resize(graphics.width,graphics.height);
+}

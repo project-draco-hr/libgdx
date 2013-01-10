@@ -13,7 +13,7 @@
   }
  else {
     Gdx.gl.glEnable(GL20.GL_BLEND);
-    Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
+    if (blendSrcFunc != -1)     Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
   }
   if (Gdx.graphics.isGL20Available()) {
     if (customShader != null)     mesh.render(customShader,GL10.GL_TRIANGLES,0,spritesInBatch * 6);

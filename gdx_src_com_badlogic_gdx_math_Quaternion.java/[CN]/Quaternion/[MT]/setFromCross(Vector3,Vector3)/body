@@ -1,0 +1,4 @@
+{
+  final float dot=MathUtils.clamp(Vector3.tmp.set(v1).nor().dot(Vector3.tmp2.set(v2).nor()),-1f,1f);
+  return setFromAxis(Vector3.tmp.crs(Vector3.tmp2),(float)Math.acos(dot));
+}

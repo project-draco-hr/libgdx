@@ -1,0 +1,4 @@
+{
+  super.add(entity);
+  if (entity.body != null)   dynamicsWorld.addRigidBody(entity.body);
+}

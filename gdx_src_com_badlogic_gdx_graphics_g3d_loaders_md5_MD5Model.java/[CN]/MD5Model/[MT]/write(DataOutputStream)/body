@@ -1,8 +1,0 @@
-{
-  out.writeInt(numJoints);
-  baseSkeleton.write(out);
-  out.writeInt(meshes.length);
-  for (int i=0; i < meshes.length; i++) {
-    meshes[i].write(out);
-  }
-}

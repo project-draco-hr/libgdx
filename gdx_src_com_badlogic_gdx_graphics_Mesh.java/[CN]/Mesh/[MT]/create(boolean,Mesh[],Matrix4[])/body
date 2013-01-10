@@ -1,0 +1,36 @@
+{
+  if (transformations != null && transformations.length < meshes.length)   throw new IllegalArgumentException("Not enough transformations specified");
+  final VertexAttributes attributes=meshes[0].getVertexAttributes();
+  int vertCount=meshes[0].getNumVertices();
+  int idxCount=meshes[0].getNumIndices();
+  for (int i=1; i < meshes.length; i++) {
+    if (!meshes[i].getVertexAttributes().equals(attributes))     throw new IllegalArgumentException("Inconsistent VertexAttributes");
+    vertCount+=meshes[i].getNumVertices();
+    idxCount+=meshes[i].getNumIndices();
+  }
+  final VertexAttribute posAttr=meshes[0].getVertexAttribute(Usage.Position);
+  final int offset=posAttr.offset / 4;
+  final int numComponents=posAttr.numComponents;
+  final int vertexSize=attributes.vertexSize / 4;
+  final float vertices[]=new float[vertCount * vertexSize];
+  final short indices[]=new short[idxCount];
+  meshes[0].getVertices(vertices);
+  meshes[0].getIndices(indices);
+  int voffset=meshes[0].getNumVertices() * vertexSize;
+  int ioffset=meshes[0].getNumIndices();
+  for (int i=1; i < meshes.length; i++) {
+    final Mesh mesh=meshes[i];
+    final int vsize=mesh.getNumVertices() * vertexSize;
+    final int isize=mesh.getNumIndices();
+    mesh.getVertices(0,vsize,vertices,voffset);
+    if (transformations != null)     transform(transformations[i],vertices,vertexSize,offset,numComponents,voffset / vertexSize,vsize / vertexSize);
+    mesh.getIndices(indices,ioffset);
+    for (int j=0; j < isize; i++)     indices[ioffset + j]=(short)(indices[ioffset + j] + voffset);
+    voffset+=vsize;
+    ioffset+=isize;
+  }
+  final Mesh result=new Mesh(isStatic,vertices.length / vertexSize,indices.length,attributes);
+  result.setVertices(vertices);
+  result.setIndices(indices);
+  return result;
+}

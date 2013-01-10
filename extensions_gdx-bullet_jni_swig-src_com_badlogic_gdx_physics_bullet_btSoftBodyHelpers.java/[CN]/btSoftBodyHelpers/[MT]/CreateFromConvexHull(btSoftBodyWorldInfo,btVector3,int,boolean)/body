@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyHelpers_CreateFromConvexHull__SWIG_0(btSoftBodyWorldInfo.getCPtr(worldInfo),worldInfo,btVector3.getCPtr(vertices),vertices,nvertices,randomizeConstraints);
+  return (cPtr == 0) ? null : new btSoftBody(cPtr,false);
+}

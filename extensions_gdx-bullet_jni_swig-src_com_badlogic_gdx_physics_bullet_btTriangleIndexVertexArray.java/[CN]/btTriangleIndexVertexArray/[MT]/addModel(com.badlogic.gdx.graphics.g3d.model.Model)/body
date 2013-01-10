@@ -1,0 +1,6 @@
+{
+  for (int i=0; i < models.length; i++) {
+    final com.badlogic.gdx.graphics.g3d.model.SubMesh[] subMeshes=models[i].getSubMeshes();
+    for (int j=0; j < subMeshes.length; j++)     if (subMeshes[j].primitiveType == com.badlogic.gdx.graphics.GL10.GL_TRIANGLES)     addIndexedMesh(new btIndexedMesh(subMeshes[j].getMesh()),PHY_ScalarType.PHY_SHORT,true);
+  }
+}

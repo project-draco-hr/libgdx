@@ -1,5 +1,5 @@
 {
-synchronized (sync) {
+synchronized (IOSSound.class) {
     soundCounter--;
     stop();
     for (int i=0; i < players.length; i++) {
@@ -7,7 +7,7 @@ synchronized (sync) {
     }
     players=null;
     if (soundCounter == 0) {
-      playThread=null;
+      playThread.interrupt();
     }
   }
 }

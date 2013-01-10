@@ -1,0 +1,9 @@
+{
+  if (emptyTexture == null) {
+    assetManager=new AssetManager();
+    Pixmap pm=new Pixmap(1,1,Format.RGB888);
+    pm.setColor(0.5f,0.5f,0.5f,1);
+    pm.fill();
+    emptyTexture=new Texture(pm,false);
+  }
+}

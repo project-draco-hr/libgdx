@@ -5,9 +5,7 @@
     player.set_NumberOfLoops(looping ? -1 : 0);
     player.set_Volume(volume);
     player.set_Pan(pan);
-synchronized (sync) {
-      playQueue.add(player);
-    }
+    playQueue.offer(player);
   }
   return soundId;
 }

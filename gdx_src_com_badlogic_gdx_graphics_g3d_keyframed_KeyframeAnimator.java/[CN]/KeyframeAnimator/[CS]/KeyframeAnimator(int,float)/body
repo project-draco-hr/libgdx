@@ -1,7 +1,0 @@
-{
-  this.numMeshes=numMeshes;
-  this.R=new Keyframe();
-  this.R.vertices=new float[numMeshes][];
-  this.R.indices=new short[numMeshes][];
-  this.invSampleRate=1.f / sampleRate;
-}

@@ -1,0 +1,13 @@
+{
+  final int max=getNumVertices() * getVertexSize() / 4;
+  if (count == -1) {
+    count=max - srcOffset;
+    if (count > vertices.length - destOffset)     count=vertices.length - destOffset;
+  }
+  if (srcOffset < 0 || count <= 0 || (srcOffset + count) > max || destOffset < 0 || destOffset >= vertices.length)   throw new IndexOutOfBoundsException();
+  if ((vertices.length - destOffset) < count)   throw new IllegalArgumentException("not enough room in vertices array, has " + vertices.length + " floats, needs "+ count);
+  int pos=getVerticesBuffer().position();
+  getVerticesBuffer().position(srcOffset);
+  getVerticesBuffer().get(vertices,destOffset,count);
+  getVerticesBuffer().position(pos);
+}

@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawPlane(swigCPtr,this,btVector3.getCPtr(planeNormal),planeNormal,planeConst,btTransform.getCPtr(transform),transform,btVector3.getCPtr(color),color);
+ else   gdxBulletJNI.btIDebugDraw_drawPlaneSwigExplicitbtIDebugDraw(swigCPtr,this,btVector3.getCPtr(planeNormal),planeNormal,planeConst,btTransform.getCPtr(transform),transform,btVector3.getCPtr(color),color);
+}

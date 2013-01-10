@@ -1,0 +1,7 @@
+{
+  if (keycode == Keys.ENTER) {
+    toggleDebugMode();
+    return true;
+  }
+  return super.keyUp(keycode);
+}
