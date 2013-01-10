@@ -4,5 +4,7 @@
   System.arraycopy(lines,0,newLines,0,lines.length);
   newLines[newLines.length - 1]=message;
   console.setItems(newLines);
+  scrollPane.invalidate();
+  scrollPane.validate();
   scrollPane.setScrollPercentY(1.0f);
 }

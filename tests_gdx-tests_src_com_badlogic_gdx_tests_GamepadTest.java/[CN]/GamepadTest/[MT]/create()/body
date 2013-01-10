@@ -1,5 +1,6 @@
 {
   setupUi();
+  int a=Ouya.BUTTON_A;
   print("Controllers: " + Controllers.getControllers().size);
   int i=0;
   for (  Controller controller : Controllers.getControllers()) {
