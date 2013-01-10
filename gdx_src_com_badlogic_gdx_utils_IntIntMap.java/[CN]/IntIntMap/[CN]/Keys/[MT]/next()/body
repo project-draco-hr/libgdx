@@ -1,0 +1,6 @@
+{
+  int key=nextIndex == INDEX_ZERO ? 0 : map.keyTable[nextIndex];
+  currentIndex=nextIndex;
+  findNextIndex();
+  return key;
+}
