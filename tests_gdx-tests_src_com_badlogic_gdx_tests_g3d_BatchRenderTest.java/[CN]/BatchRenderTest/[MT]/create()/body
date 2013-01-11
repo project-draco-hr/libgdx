@@ -20,6 +20,6 @@
   cam.position.set(10f,10f,10f);
   cam.lookAt(0,0,0);
   cam.update();
-  renderBatch=new BaseRenderBatch(renderer=new BatchRendererGLES20(exclusiveTextures=new ExclusiveTextures(BIND_METHOD,UNIT_OFFSET,MAX_TEXTURES)));
+  renderBatch=new RenderBatch(exclusiveTextures=new ExclusiveTextures(BIND_METHOD,UNIT_OFFSET,MAX_TEXTURES));
   Gdx.input.setInputProcessor(this);
 }

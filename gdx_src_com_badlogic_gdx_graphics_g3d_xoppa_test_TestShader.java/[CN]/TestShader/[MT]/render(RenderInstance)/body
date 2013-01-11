@@ -1,0 +1,14 @@
+{
+  if (instance.material.isNeedBlending() != blending) {
+    blending=!blending;
+    if (blending)     Gdx.gl.glEnable(GL10.GL_BLEND);
+ else     Gdx.gl.glDisable(GL10.GL_BLEND);
+  }
+  if (currentTransform != instance.transform)   program.setUniformMatrix(modelTransLoc,currentTransform=instance.transform);
+  bindMaterial(instance);
+  if (currentMesh != instance.mesh) {
+    if (currentMesh != null)     currentMesh.unbind(program);
+    (currentMesh=instance.mesh).bind(program);
+  }
+  instance.mesh.render(program,instance.primitiveType);
+}

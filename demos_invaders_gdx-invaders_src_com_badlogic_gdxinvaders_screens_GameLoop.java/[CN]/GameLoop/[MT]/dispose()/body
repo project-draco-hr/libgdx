@@ -2,4 +2,5 @@
   renderer.dispose();
   shot.dispose();
   explosion.dispose();
+  controller.removeListener(listener);
 }

@@ -1,0 +1,8 @@
+{
+  if (currentMaterial == instance.material)   return;
+  currentMaterial=instance.material;
+  for (  MaterialAttribute attr : currentMaterial) {
+    if (attr instanceof TextureAttribute)     bindTextureAttribute((TextureAttribute)attr);
+ else     attr.bind(program);
+  }
+}
