@@ -1,9 +1,0 @@
-{
-  shaderChanged=instance.shader != currentShader;
-  if (!shaderChanged)   return;
-  if (currentShader != null)   currentShader.end();
-  previousShader=currentShader;
-  currentShader=instance.shader;
-  currentShader.begin();
-  currentShader.setUniformMatrix(PROJECTION_TRANSFORM,camera.combined);
-}

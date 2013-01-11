@@ -1,0 +1,10 @@
+{
+  if (currentMesh != null) {
+    currentMesh.unbind(program);
+    currentMesh=null;
+  }
+  currentTransform=null;
+  currentTextureAttribute=null;
+  currentMaterial=null;
+  program.end();
+}

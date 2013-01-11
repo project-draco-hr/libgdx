@@ -1,9 +1,0 @@
-{
-switch (method) {
-case ROUNDROBIN:
-    return bindTextureRoundRobin(texture);
-case WEIGHTED:
-  return bindTextureWeighted(texture);
-}
-return -1;
-}

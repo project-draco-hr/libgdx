@@ -1,5 +1,0 @@
-{
-  if (instance.shader == null)   instance.shader=renderer.getShader(instance);
-  instance.mesh.setAutoBind(false);
-  instances.add(instance);
-}
