@@ -2,6 +2,13 @@
   if (!running)   return;
   running=false;
   setGlobals();
+  Array<LifecycleListener> listeners=lifecycleListeners;
+synchronized (listeners) {
+    for (    LifecycleListener listener : listeners) {
+      listener.pause();
+      listener.dispose();
+    }
+  }
   listener.pause();
   listener.dispose();
 }

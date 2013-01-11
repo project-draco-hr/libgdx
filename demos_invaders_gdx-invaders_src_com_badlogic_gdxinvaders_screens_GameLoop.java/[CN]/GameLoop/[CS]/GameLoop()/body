@@ -6,8 +6,9 @@
   shot=Gdx.audio.newSound(Gdx.files.internal("data/shot.wav"));
   if (Controllers.getControllers().size > 0) {
     Controller controller=Controllers.getControllers().get(0);
-    if (controller.getName().toLowerCase().contains("ouya")) {
+    if (Ouya.ID.equals(controller.getName())) {
       this.controller=controller;
+      controller.addListener(listener);
     }
   }
 }

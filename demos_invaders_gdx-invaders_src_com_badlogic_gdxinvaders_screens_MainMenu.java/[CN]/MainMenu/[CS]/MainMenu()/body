@@ -7,7 +7,7 @@
   font=new BitmapFont(Gdx.files.internal("data/font16.fnt"),Gdx.files.internal("data/font16.png"),false);
   if (Controllers.getControllers().size > 0) {
     Controller controller=Controllers.getControllers().get(0);
-    if (controller.getName().toLowerCase().contains("ouya")) {
+    if (Ouya.ID.equals(controller.getName())) {
       controller.addListener(new ControllerAdapter(){
         @Override public boolean buttonUp(        Controller controller,        int buttonIndex){
           isDone=true;

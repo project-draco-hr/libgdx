@@ -1,4 +1,4 @@
 {
-  if (manager == null)   initialize();
-  return manager.getControllers();
+  initialize();
+  return getManager().getControllers();
 }
