@@ -2,6 +2,12 @@
   super.OnRenderFrame(arg0);
   if (paused) {
     if (!wasPaused) {
+      Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+        for (        LifecycleListener listener : listeners) {
+          listener.pause();
+        }
+      }
       app.listener.pause();
       wasPaused=true;
     }
@@ -9,6 +15,12 @@
   }
  else {
     if (wasPaused) {
+      Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+        for (        LifecycleListener listener : listeners) {
+          listener.resume();
+        }
+      }
       app.listener.resume();
       wasPaused=false;
     }
