@@ -71,6 +71,13 @@ synchronized (runnables) {
       Display.sync(60);
     }
   }
+  Array<LifecycleListener> listeners=lifecycleListeners;
+synchronized (listeners) {
+    for (    LifecycleListener listener : listeners) {
+      listener.pause();
+      listener.dispose();
+    }
+  }
   listener.pause();
   listener.dispose();
   Display.destroy();

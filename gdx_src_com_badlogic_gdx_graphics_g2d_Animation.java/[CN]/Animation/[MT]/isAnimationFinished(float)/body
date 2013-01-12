@@ -1,4 +1,5 @@
 {
+  if (playMode != NORMAL && playMode != REVERSED)   return false;
   int frameNumber=(int)(stateTime / frameDuration);
   return keyFrames.length - 1 < frameNumber;
 }

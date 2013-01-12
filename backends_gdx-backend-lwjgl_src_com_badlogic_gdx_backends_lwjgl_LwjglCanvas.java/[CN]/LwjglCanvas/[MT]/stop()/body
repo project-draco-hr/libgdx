@@ -9,6 +9,13 @@
       }
  catch (      Throwable ignored) {
       }
+      Array<LifecycleListener> listeners=lifecycleListeners;
+synchronized (listeners) {
+        for (        LifecycleListener listener : listeners) {
+          listener.pause();
+          listener.dispose();
+        }
+      }
       listener.pause();
       listener.dispose();
     }
