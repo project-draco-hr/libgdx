@@ -1,0 +1,10 @@
+{
+  if (!depthTest) {
+    Gdx.gl.glEnable(GL10.GL_DEPTH_TEST);
+    depthTest=true;
+  }
+  if (depthFunc != depthFunction) {
+    Gdx.gl.glDepthFunc(depthFunction);
+    depthFunc=depthFunction;
+  }
+}

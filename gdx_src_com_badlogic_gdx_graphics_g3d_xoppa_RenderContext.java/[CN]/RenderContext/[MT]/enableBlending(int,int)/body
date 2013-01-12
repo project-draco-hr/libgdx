@@ -1,0 +1,11 @@
+{
+  if (!blending) {
+    Gdx.gl.glEnable(GL10.GL_BLEND);
+    blending=true;
+  }
+  if (blendSFactor != sFactor || blendDFactor != dFactor) {
+    Gdx.gl.glBlendFunc(sFactor,dFactor);
+    blendSFactor=sFactor;
+    blendDFactor=dFactor;
+  }
+}

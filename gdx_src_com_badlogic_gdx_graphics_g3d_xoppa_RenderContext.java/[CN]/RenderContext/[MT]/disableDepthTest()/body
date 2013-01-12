@@ -1,0 +1,6 @@
+{
+  if (depthTest) {
+    Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
+    depthTest=false;
+  }
+}
