@@ -25,6 +25,12 @@ synchronized (synch) {
     }
   }
   if (lresume) {
+    Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.resume();
+      }
+    }
     ((AndroidDaydream)app).audio.resume();
     app.listener.resume();
     Gdx.app.log("AndroidGraphics","resumed");
@@ -47,11 +53,23 @@ synchronized (app.runnables) {
     app.listener.render();
   }
   if (lpause) {
+    Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.pause();
+      }
+    }
     app.listener.pause();
     ((AndroidDaydream)app).audio.pause();
     Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
+    Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.dispose();
+      }
+    }
     app.listener.dispose();
     ((AndroidDaydream)app).audio.dispose();
     ((AndroidDaydream)app).audio=null;

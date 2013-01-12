@@ -1,4 +1,4 @@
 {
-  if (manager == null)   initialize();
-  manager.removeListener(listener);
+  initialize();
+  getManager().removeListener(listener);
 }
