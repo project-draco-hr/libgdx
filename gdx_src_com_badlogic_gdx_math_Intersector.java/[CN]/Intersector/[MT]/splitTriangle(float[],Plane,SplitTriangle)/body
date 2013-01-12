@@ -4,7 +4,7 @@
   boolean r2=plane.testPoint(triangle[0 + stride],triangle[1 + stride],triangle[2 + stride]) == PlaneSide.Back;
   boolean r3=plane.testPoint(triangle[0 + stride * 2],triangle[1 + stride * 2],triangle[2 + stride * 2]) == PlaneSide.Back;
   split.reset();
-  if ((r1 == r2) && (r2 == r3)) {
+  if (r1 == r2 && r2 == r3) {
     split.total=1;
     if (r1) {
       split.numBack=1;
