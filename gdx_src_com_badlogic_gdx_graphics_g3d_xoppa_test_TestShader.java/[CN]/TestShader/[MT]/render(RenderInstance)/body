@@ -7,5 +7,5 @@
     if (currentMesh != null)     currentMesh.unbind(program);
     (currentMesh=instance.mesh).bind(program);
   }
-  instance.mesh.render(program,instance.primitiveType);
+  instance.mesh.render(program,instance.primitiveType,instance.meshPartOffset,instance.meshPartSize);
 }

@@ -3,6 +3,8 @@
   instance.distance=distance;
   instance.material=mesh.material;
   instance.mesh=mesh.mesh;
+  instance.meshPartOffset=0;
+  instance.meshPartSize=mesh.mesh.getMaxIndices() > 0 ? mesh.mesh.getNumIndices() : mesh.mesh.getNumVertices();
   instance.primitiveType=mesh.primitiveType;
   instance.transform=transform;
   instance.shader=null;

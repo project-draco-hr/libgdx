@@ -1,4 +1,5 @@
 {
+  if (suggestedShader != null)   return suggestedShader;
   if (defaultShader == null)   defaultShader=new DefaultShader();
   return defaultShader;
 }
