@@ -1,9 +1,6 @@
 {
-  if (instance.material.isNeedBlending() != blending) {
-    blending=!blending;
-    if (blending)     Gdx.gl.glEnable(GL10.GL_BLEND);
- else     Gdx.gl.glDisable(GL10.GL_BLEND);
-  }
+  if (instance.material.isNeedBlending())   context.enableBlending(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+ else   context.disableBlending();
   if (currentTransform != instance.transform)   program.setUniformMatrix(modelTransLoc,currentTransform=instance.transform);
   bindMaterial(instance);
   if (currentMesh != instance.mesh) {

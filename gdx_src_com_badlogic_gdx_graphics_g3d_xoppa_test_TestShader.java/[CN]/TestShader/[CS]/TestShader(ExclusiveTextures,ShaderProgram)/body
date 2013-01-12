@@ -1,8 +1,0 @@
-{
-  if (!program.isCompiled())   throw new GdxRuntimeException(program.getLog());
-  this.textures=textures;
-  this.program=program;
-  this.projTransLoc=program.getUniformLocation(PROJECTION_TRANSFORM);
-  this.modelTransLoc=program.getUniformLocation(MODEL_TRANSFORM);
-  this.diffuseTextureLoc=program.getUniformLocation(TextureAttribute.diffuseTexture);
-}
