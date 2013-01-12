@@ -1,5 +1,4 @@
 {
   app=activity;
-  executorService=Executors.newCachedThreadPool();
-  httpClient=new DefaultHttpClient();
+  netJavaImpl=new NetJavaImpl();
 }

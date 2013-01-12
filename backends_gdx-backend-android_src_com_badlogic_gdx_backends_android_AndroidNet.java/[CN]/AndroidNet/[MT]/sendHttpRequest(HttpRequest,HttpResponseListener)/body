@@ -1,34 +1,3 @@
 {
-  if (httpRequest.getUrl() == null) {
-    httpResultListener.failed(new GdxRuntimeException("can't process a HTTP request without URL set"));
-    return;
-  }
-  final HttpUriRequest httpClientRequest=getHttpClientRequest(httpRequest);
-  final HttpParams httpParams=new BasicHttpParams();
-  int timeout=httpRequest.getTimeOut();
-  HttpConnectionParams.setConnectionTimeout(httpParams,timeout);
-  HttpConnectionParams.setSoTimeout(httpParams,timeout);
-  httpClient.setParams(httpParams);
-  executorService.submit(new Runnable(){
-    @Override public void run(){
-      try {
-        final org.apache.http.HttpResponse httpResponse=httpClient.execute(httpClientRequest);
-        Gdx.app.postRunnable(new Runnable(){
-          @Override public void run(){
-            httpResultListener.handleHttpResponse(new HttpClientResponse(httpResponse));
-          }
-        }
-);
-      }
- catch (      final Exception e) {
-        Gdx.app.postRunnable(new Runnable(){
-          @Override public void run(){
-            httpResultListener.failed(e);
-          }
-        }
-);
-      }
-    }
-  }
-);
+  netJavaImpl.sendHttpRequest(httpRequest,httpResponseListener);
 }

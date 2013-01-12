@@ -1,0 +1,80 @@
+{
+  if (httpRequest.getUrl() == null) {
+    httpResponseListener.failed(new GdxRuntimeException("can't process a HTTP request without URL set"));
+    return;
+  }
+  try {
+    final String method=httpRequest.getMethod();
+    URL url;
+    if (method.equalsIgnoreCase(HttpMethods.GET)) {
+      String queryString="";
+      String value=httpRequest.getContent();
+      if (value != null && !"".equals(value))       queryString="?" + value;
+      url=new URL(httpRequest.getUrl() + queryString);
+    }
+ else {
+      url=new URL(httpRequest.getUrl());
+    }
+    final HttpURLConnection connection=(HttpURLConnection)url.openConnection();
+    connection.setDoOutput(true);
+    connection.setDoInput(true);
+    connection.setRequestMethod(method);
+    Map<String,String> headers=httpRequest.getHeaders();
+    Set<String> keySet=headers.keySet();
+    for (    String name : keySet)     connection.addRequestProperty(name,headers.get(name));
+    connection.setConnectTimeout(httpRequest.getTimeOut());
+    connection.setReadTimeout(httpRequest.getTimeOut());
+    executorService.submit(new Runnable(){
+      @Override public void run(){
+        try {
+          if (method.equalsIgnoreCase(HttpMethods.POST)) {
+            String contentAsString=httpRequest.getContent();
+            InputStream contentAsStream=httpRequest.getContentStream();
+            OutputStream outputStream=connection.getOutputStream();
+            if (contentAsString != null) {
+              OutputStreamWriter writer=new OutputStreamWriter(outputStream);
+              writer.write(contentAsString);
+              writer.flush();
+              writer.close();
+            }
+ else             if (contentAsStream != null) {
+              StreamUtils.copyStream(contentAsStream,outputStream);
+              outputStream.flush();
+              outputStream.close();
+            }
+          }
+          connection.connect();
+          Gdx.app.postRunnable(new Runnable(){
+            @Override public void run(){
+              try {
+                httpResponseListener.handleHttpResponse(new HttpClientResponse(connection));
+              }
+ catch (              IOException e) {
+                httpResponseListener.failed(e);
+                connection.disconnect();
+              }
+            }
+          }
+);
+        }
+ catch (        final Exception e) {
+          Gdx.app.postRunnable(new Runnable(){
+            @Override public void run(){
+              httpResponseListener.failed(e);
+              connection.disconnect();
+            }
+          }
+);
+        }
+ finally {
+          connection.disconnect();
+        }
+      }
+    }
+);
+  }
+ catch (  Exception e) {
+    httpResponseListener.failed(e);
+    return;
+  }
+}
