@@ -1,6 +1,6 @@
 {
   this.context=context;
   program.begin();
-  context.enableDepthTest(GL10.GL_LEQUAL);
+  context.setDepthTest(true,GL10.GL_LEQUAL);
   program.setUniformMatrix(projTransLoc,camera.combined);
 }
