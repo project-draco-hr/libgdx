@@ -1,0 +1,5 @@
+{
+  instances.add(new ModelInstance(sceneModel,new Matrix4()));
+  instances.add(new ModelInstance(testModel,(new Matrix4()).setToTranslation(0,2,2)));
+  for (int i=0; i < 10; i++)   instances.add(new ModelInstance(sphereModel,(new Matrix4()).setToTranslation(MIN_X + (float)Math.random() * SIZE_X,MIN_Y + (float)Math.random() * SIZE_Y,MIN_Z + (float)Math.random() * SIZE_Z).scl(0.05f + (float)Math.random())));
+}
