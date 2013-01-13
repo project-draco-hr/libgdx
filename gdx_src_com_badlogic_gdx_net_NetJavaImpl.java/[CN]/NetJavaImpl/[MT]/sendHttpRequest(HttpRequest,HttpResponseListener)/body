@@ -16,7 +16,7 @@
       url=new URL(httpRequest.getUrl());
     }
     final HttpURLConnection connection=(HttpURLConnection)url.openConnection();
-    connection.setDoOutput(true);
+    connection.setDoOutput(method.equalsIgnoreCase(HttpMethods.POST));
     connection.setDoInput(true);
     connection.setRequestMethod(method);
     Map<String,String> headers=httpRequest.getHeaders();
@@ -51,6 +51,8 @@
               }
  catch (              IOException e) {
                 httpResponseListener.failed(e);
+              }
+ finally {
                 connection.disconnect();
               }
             }
@@ -60,14 +62,11 @@
  catch (        final Exception e) {
           Gdx.app.postRunnable(new Runnable(){
             @Override public void run(){
-              httpResponseListener.failed(e);
               connection.disconnect();
+              httpResponseListener.failed(e);
             }
           }
 );
-        }
- finally {
-          connection.disconnect();
         }
       }
     }
