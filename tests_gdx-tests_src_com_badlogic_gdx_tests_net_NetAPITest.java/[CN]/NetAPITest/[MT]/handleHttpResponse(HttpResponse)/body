@@ -1,7 +1,12 @@
 {
   textButton.setDisabled(false);
   textButton.setTouchable(Touchable.enabled);
-  statusLabel.setText("HTTP Request status: " + httpResponse.getStatus().getStatusCode());
+  int statusCode=httpResponse.getStatus().getStatusCode();
+  statusLabel.setText("HTTP Request status: " + statusCode);
+  if (statusCode != 200) {
+    Gdx.app.log("NetAPITest","An error ocurred since statusCode is not OK");
+    return;
+  }
   final InputStream resultAsStream=httpResponse.getResultAsStream();
   try {
     Texture.setEnforcePotImages(false);
