@@ -1,0 +1,8 @@
+{
+  if (color != null) {
+    enable(DiffuseColor);
+    if (diffuseColor == null)     diffuseColor=new Color();
+    diffuseColor.set(color);
+  }
+ else   disable(DiffuseColor);
+}
