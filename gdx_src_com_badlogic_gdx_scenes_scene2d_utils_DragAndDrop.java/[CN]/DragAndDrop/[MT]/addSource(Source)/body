@@ -70,4 +70,5 @@
   listener.setTapSquareSize(tapSquareSize);
   listener.setButton(button);
   source.actor.addCaptureListener(listener);
+  sourceListeners.put(source,listener);
 }
