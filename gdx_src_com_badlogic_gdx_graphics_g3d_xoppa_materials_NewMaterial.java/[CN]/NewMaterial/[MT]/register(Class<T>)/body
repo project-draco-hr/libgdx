@@ -1,0 +1,6 @@
+{
+  long result=getAttributeID(type);
+  if (result > 0)   return result;
+  registrations.add(type);
+  return 1L << (registrations.size - 1);
+}
