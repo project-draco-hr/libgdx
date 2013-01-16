@@ -1,0 +1,36 @@
+{
+  batch=new SpriteBatch();
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+  Gdx.input.setInputProcessor(stage);
+{
+    statusLabel=new Label("",skin);
+    statusLabel.setWrap(true);
+    statusLabel.setWidth(Gdx.graphics.getWidth() * 0.96f);
+    statusLabel.setAlignment(Align.center);
+    statusLabel.setPosition(Gdx.graphics.getWidth() * 0.5f - statusLabel.getWidth() * 0.5f,30f);
+    stage.addActor(statusLabel);
+  }
+{
+    ClickListener clickListener=new ClickListener(){
+      @Override public void clicked(      InputEvent event,      float x,      float y){
+        super.clicked(event,x,y);
+        textButton.setDisabled(true);
+        textButton.setTouchable(Touchable.disabled);
+        if (texture != null) {
+          texture.dispose();
+          texture=null;
+        }
+        HttpRequest httpRequest=new HttpRequest(Net.HttpMethods.GET);
+        httpRequest.setUrl("http://i.imgur.com/vxomF.jpg");
+        Gdx.net.sendHttpRequest(httpRequest,NetAPITest.this);
+        statusLabel.setText("Downloading image from " + httpRequest.getUrl());
+      }
+    }
+;
+    textButton=new TextButton("Download image",skin);
+    textButton.setPosition(Gdx.graphics.getWidth() * 0.5f - textButton.getWidth() * 0.5f,60f);
+    textButton.addListener(clickListener);
+    stage.addActor(textButton);
+  }
+}
