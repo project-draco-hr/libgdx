@@ -1,9 +1,8 @@
 {
   for (int i=0; i < attributes.length; i++) {
     final Attribute attr=attributes[i];
-    final long id=attr.getID();
-    if (!has(id)) {
-      enable(id);
+    if (!has(attr.type)) {
+      enable(attr.type);
       this.attributes.add(attr);
       sorted=false;
     }

@@ -1,0 +1,5 @@
+{
+  super(type);
+  if ((Mask & type) != type)   throw new GdxRuntimeException("Invalid type specified");
+  if (color != null)   this.color.set(color);
+}
