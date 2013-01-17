@@ -1,0 +1,11 @@
+{
+  final long type=getAttributeType(alias);
+  if (has(type)) {
+    for (int i=0; i < attributes.size; i++)     if (attributes.get(i).type == type) {
+      attributes.removeIndex(i);
+      break;
+    }
+    sorted=false;
+    disable(type);
+  }
+}
