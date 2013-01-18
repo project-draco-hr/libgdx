@@ -1,9 +1,0 @@
-{
-  if (string == null)   return defaultValue;
-  try {
-    return Integer.parseInt(string);
-  }
- catch (  NumberFormatException e) {
-    return defaultValue;
-  }
-}
