@@ -18,7 +18,7 @@
           if (tile != null) {
             final boolean flipX=cell.getFlipHorizontally();
             final boolean flipY=cell.getFlipVertically();
-            final boolean rotate=cell.getFlipDiagonally();
+            final float rotate=cell.getRotation();
             TextureRegion region=tile.getTextureRegion();
             float drawX=x * layerTileWidth;
             float drawY=y * layerTileHeight;
@@ -33,35 +33,15 @@
             int sourceY=region.getRegionY();
             int sourceWidth=region.getRegionWidth();
             int sourceHeight=region.getRegionHeight();
-            if (rotate) {
-              if (flipX && flipY) {
-                rotation=-90;
-                sourceX+=sourceWidth;
-                sourceWidth=-sourceWidth;
-              }
- else               if (flipX) {
-                rotation=-90;
-              }
- else               if (flipY) {
-                rotation=+90;
-              }
- else {
-                rotation=-90;
-                sourceY+=sourceHeight;
-                sourceHeight=-sourceHeight;
-              }
+            if (flipX) {
+              sourceX+=sourceWidth;
+              sourceWidth=-sourceWidth;
             }
- else {
-              if (flipX) {
-                sourceX+=sourceWidth;
-                sourceWidth=-sourceWidth;
-              }
-              if (flipY) {
-                sourceY+=sourceHeight;
-                sourceHeight=-sourceHeight;
-              }
+            if (flipY) {
+              sourceY+=sourceHeight;
+              sourceHeight=-sourceHeight;
             }
-            spriteBatch.draw(region.getTexture(),drawX,drawY,originX,originY,width,height,scaleX,scaleY,rotation,sourceX,sourceY,sourceWidth,sourceHeight,false,false);
+            spriteBatch.draw(region.getTexture(),drawX,drawY,originX,originY,width,height,scaleX,scaleY,rotate,sourceX,sourceY,sourceWidth,sourceHeight,false,false);
           }
         }
       }
