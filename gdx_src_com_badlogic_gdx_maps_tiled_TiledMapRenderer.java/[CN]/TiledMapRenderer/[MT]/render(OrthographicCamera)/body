@@ -1,0 +1,9 @@
+{
+  final float camTop=camera.position.y + camera.viewportHeight / 2 * camera.zoom;
+  final float camLeft=camera.position.x - camera.viewportWidth / 2 * camera.zoom;
+  final float camRight=camera.position.x + camera.viewportWidth / 2 * camera.zoom;
+  final float camBottom=camera.position.y - camera.viewportHeight / 2 * camera.zoom;
+  for (  MapLayer layer : map.getLayers()) {
+    renderLayer(camLeft,camTop,camRight,camBottom,layer);
+  }
+}

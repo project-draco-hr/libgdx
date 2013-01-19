@@ -1,0 +1,24 @@
+{
+  Object value=properties.get(key);
+  if (value != null) {
+    if (value instanceof Number) {
+      return ((Number)value).doubleValue();
+    }
+ else {
+      if (value instanceof CharSequence) {
+        try {
+          return Double.valueOf(value.toString());
+        }
+ catch (        NumberFormatException e2) {
+          return null;
+        }
+      }
+ else {
+        return null;
+      }
+    }
+  }
+ else {
+    return null;
+  }
+}
