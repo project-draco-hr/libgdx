@@ -1,0 +1,5 @@
+{
+  this.config=config;
+  view=createGLSurfaceView(app,config.useGL20,resolutionStrategy);
+  this.app=app;
+}
