@@ -6,10 +6,10 @@
     renderer.setProjectionMatrix(camera.combined);
     cameraController.dirty=false;
   }
+  renderer.setViewBounds(camera.position.x - camera.viewportWidth * 0.5f,camera.position.y - camera.viewportHeight * 0.5f,camera.viewportWidth,camera.viewportHeight);
   renderer.begin();
-  renderer.render(camera);
+  renderer.render();
   renderer.end();
-  System.out.println("renders: " + renderer.getSpriteBatch().renderCalls);
   batch.begin();
   font.draw(batch,"FPS: " + Gdx.graphics.getFramesPerSecond(),10,20);
   batch.end();
