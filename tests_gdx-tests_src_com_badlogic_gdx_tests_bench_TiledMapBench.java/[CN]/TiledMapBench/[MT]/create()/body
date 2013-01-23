@@ -13,7 +13,7 @@
     TextureRegion[][] splitTiles=TextureRegion.split(tiles,32,32);
     map=new TiledMap();
     MapLayers layers=map.getLayers();
-    for (int l=0; l < 5; l++) {
+    for (int l=0; l < 20; l++) {
       TiledMapTileLayer layer=new TiledMapTileLayer(150,100,32,32);
       for (int x=0; x < 150; x++) {
         for (int y=0; y < 100; y++) {
@@ -25,5 +25,5 @@
       layers.addLayer(layer);
     }
   }
-  renderer=new OrthogonalTiledMapRenderer(map);
+  renderer=new OrthogonalTiledMapRenderer2(map);
 }
