@@ -10,5 +10,5 @@
     renderer.line(lv.x,lv.y,v.x,v.y);
     lv.set(v);
   }
-  renderer.line(f.x,f.y,lv.x,lv.y);
+  if (closed)   renderer.line(f.x,f.y,lv.x,lv.y);
 }
