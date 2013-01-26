@@ -1,0 +1,4 @@
+{
+  Vector2 value=getAsVector2(key);
+  return value == null ? defaultValue : value;
+}

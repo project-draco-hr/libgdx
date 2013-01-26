@@ -1,0 +1,12 @@
+{
+  super.create();
+  manager=new AssetManager();
+  camera=new OrthographicCamera(640,480);
+  camera.setToOrtho(false,640,480);
+  camera.zoom=2.0f;
+  GleedMapLoader.setLoggingLevel(Logger.INFO);
+  manager.setLoader(GleedMap.class,new GleedMapLoader(new InternalFileHandleResolver()));
+  manager.load("data/gleedtest.xml",GleedMap.class);
+  manager.load("data/font.fnt",BitmapFont.class);
+  batch=new SpriteBatch();
+}

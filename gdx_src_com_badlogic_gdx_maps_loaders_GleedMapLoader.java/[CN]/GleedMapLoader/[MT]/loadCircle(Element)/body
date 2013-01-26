@@ -1,0 +1,8 @@
+{
+  CircleMapObject circle=new CircleMapObject();
+  loadObject(item,circle);
+  circle.setColor(loadColor(item.getChildByName("FillColor")));
+  Element position=item.getChildByName("Position");
+  circle.getCircle().set(Float.parseFloat(position.getChildByName("X").getText()),-Float.parseFloat(position.getChildByName("Y").getText()),Float.parseFloat(item.getChildByName("Radius").getText()));
+  return circle;
+}

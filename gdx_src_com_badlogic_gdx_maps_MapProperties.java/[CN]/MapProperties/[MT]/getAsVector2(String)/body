@@ -1,0 +1,7 @@
+{
+  Object value=properties.get(key);
+  if (value != null && value instanceof Vector2) {
+    return (Vector2)value;
+  }
+  return null;
+}

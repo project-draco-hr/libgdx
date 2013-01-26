@@ -1,0 +1,4 @@
+{
+  Color value=getAsColor(key);
+  return value == null ? defaultValue : value;
+}

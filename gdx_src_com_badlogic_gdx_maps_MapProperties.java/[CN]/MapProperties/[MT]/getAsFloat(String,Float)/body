@@ -1,0 +1,4 @@
+{
+  Float value=getAsFloat(key);
+  return value == null ? defaultValue : value;
+}

@@ -1,0 +1,4 @@
+{
+  Double value=getAsDouble(key);
+  return value == null ? defaultValue : value;
+}
