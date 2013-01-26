@@ -4,4 +4,5 @@
     v[i]=new Vec2(vertices[i].x,vertices[i].y);
   }
   shape.createChain(v,v.length);
+  isLooped=false;
 }
