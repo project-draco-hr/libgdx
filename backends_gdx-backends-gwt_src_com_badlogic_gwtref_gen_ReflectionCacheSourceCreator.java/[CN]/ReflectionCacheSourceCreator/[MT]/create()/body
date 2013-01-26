@@ -20,5 +20,6 @@
   invokeM();
   sw.commit(logger);
   createProxy(type);
+  System.out.println(source.toString());
   return packageName + "." + simpleName;
 }

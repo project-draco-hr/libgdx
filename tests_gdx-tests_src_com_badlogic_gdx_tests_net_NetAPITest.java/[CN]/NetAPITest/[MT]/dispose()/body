@@ -1,0 +1,6 @@
+{
+  batch.dispose();
+  stage.dispose();
+  skin.dispose();
+  if (texture != null)   texture.dispose();
+}
