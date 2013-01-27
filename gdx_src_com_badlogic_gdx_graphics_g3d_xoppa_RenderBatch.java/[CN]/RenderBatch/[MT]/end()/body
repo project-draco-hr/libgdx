@@ -13,7 +13,7 @@
   }
   if (currentShader != null)   currentShader.end();
   context.end();
-  instancePool.freeAll(instances);
+  RenderInstance.pool.freeAll(instances);
   instances.clear();
   camera=null;
 }

@@ -1,0 +1,13 @@
+{
+  SubMesh[] meshes=model.getSubMeshes();
+  parts=new Array<Renderable>(meshes.length);
+  for (int i=0; i < meshes.length; i++) {
+    final Renderable inst=new Renderable();
+    inst.mesh=meshes[i].mesh;
+    inst.meshPartOffset=0;
+    inst.meshPartSize=meshes[i].mesh.getMaxIndices() > 0 ? meshes[i].mesh.getNumIndices() : meshes[i].mesh.getNumVertices();
+    inst.primitiveType=meshes[i].primitiveType;
+    inst.material=convertMaterial(meshes[i].material);
+    parts.add(inst);
+  }
+}

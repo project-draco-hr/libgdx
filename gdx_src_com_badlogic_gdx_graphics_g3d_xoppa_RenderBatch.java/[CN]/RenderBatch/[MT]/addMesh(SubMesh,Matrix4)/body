@@ -1,6 +1,0 @@
-{
-  transform.getTranslation(Vector3.tmp);
-  float dist=Vector3.tmp2.set(Vector3.tmp.x - camera.position.x,Vector3.tmp.y - camera.position.y,Vector3.tmp.z - camera.position.z).len();
-  if (Vector3.tmp2.div(dist).dot(camera.direction) < 0)   dist=-dist;
-  addMesh(mesh,transform,dist);
-}

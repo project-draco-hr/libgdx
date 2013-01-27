@@ -1,7 +1,0 @@
-{
-  int result=0;
-  for (  MaterialAttribute atr : material) {
-    if (atr instanceof TextureAttribute)     result|=TextureFlag;
-  }
-  return result;
-}

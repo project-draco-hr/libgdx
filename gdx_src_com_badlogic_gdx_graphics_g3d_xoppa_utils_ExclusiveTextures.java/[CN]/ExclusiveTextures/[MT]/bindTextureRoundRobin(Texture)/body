@@ -1,13 +1,13 @@
 {
   for (int i=0; i < count; i++) {
     final int idx=(currentTexture + i) % count;
-    if (textures[idx] == texture) {
+    if (textures[idx].texture == texture) {
       reused=true;
-      return offset + idx;
+      return idx;
     }
   }
   currentTexture=(currentTexture + 1) % count;
-  textures[currentTexture]=texture;
+  textures[currentTexture].texture=texture;
   texture.bind(offset + currentTexture);
-  return offset + currentTexture;
+  return currentTexture;
 }

@@ -1,8 +1,17 @@
 {
-  if (currentMaterial == instance.material)   return;
-  currentMaterial=instance.material;
-  for (  MaterialAttribute attr : currentMaterial) {
-    if (attr instanceof TextureAttribute)     bindTextureAttribute((TextureAttribute)attr);
- else     attr.bind(program);
+  if (currentMaterial == instance.renderable.material)   return;
+  currentMaterial=instance.renderable.material;
+  for (  NewMaterial.Attribute attr : currentMaterial) {
+    long t=attr.getType();
+    if (BlendingAttribute.is(t))     context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
+ else     if (ColorAttribute.is(t)) {
+      ColorAttribute col=(ColorAttribute)attr;
+      if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       program.setUniformf(diffuseColorLoc,col.color);
+    }
+ else     if (TextureAttribute.is(t)) {
+      TextureAttribute tex=(TextureAttribute)attr;
+      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(diffuseTextureLoc,tex);
+    }
+ else     throw new GdxRuntimeException("unknown attribute");
   }
 }

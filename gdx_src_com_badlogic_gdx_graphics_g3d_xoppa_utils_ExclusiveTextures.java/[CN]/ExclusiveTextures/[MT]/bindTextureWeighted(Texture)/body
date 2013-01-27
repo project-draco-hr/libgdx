@@ -3,8 +3,8 @@
   int weight=weights[0];
   int windex=0;
   for (int i=0; i < count; i++) {
-    if (textures[i] == texture) {
-      result=offset + i;
+    if (textures[i].texture == texture) {
+      result=i;
       weights[i]+=reuseWeight;
     }
  else     if (weights[i] < 0 || --weights[i] < weight) {
@@ -13,9 +13,9 @@
     }
   }
   if (result < 0) {
-    textures[windex]=texture;
+    textures[windex].texture=texture;
     weights[windex]=100;
-    texture.bind(result=offset + windex);
+    texture.bind(offset + (result=windex));
   }
  else   reused=true;
   return result;

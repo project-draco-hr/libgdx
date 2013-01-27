@@ -1,8 +1,0 @@
-{
-  long mask=getMaterialSignature(material);
-  String prefix="";
-  if ((mask & TextureFlag) == TextureFlag)   prefix+="#define texCoords0Flag\n";
-  final TestShader result=new TestShader(prefix + DEFAULT_VERTEX_SHADER,prefix + DEFAULT_FRAGMENT_SHADER);
-  result.mask=mask;
-  return result;
-}
