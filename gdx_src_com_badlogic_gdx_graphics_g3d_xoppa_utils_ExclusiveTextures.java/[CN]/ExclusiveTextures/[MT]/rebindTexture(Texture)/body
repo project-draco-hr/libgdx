@@ -1,3 +1,5 @@
 {
-  return bindTexture(texture,false);
+  tempDesc.reset();
+  tempDesc.texture=texture;
+  return bindTexture(tempDesc,true);
 }

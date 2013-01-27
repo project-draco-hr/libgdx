@@ -1,5 +1,5 @@
 {
   instance.shader=listener.getShader(instance,shader);
-  instance.mesh.setAutoBind(false);
+  instance.renderable.mesh.setAutoBind(false);
   instances.add(instance);
 }

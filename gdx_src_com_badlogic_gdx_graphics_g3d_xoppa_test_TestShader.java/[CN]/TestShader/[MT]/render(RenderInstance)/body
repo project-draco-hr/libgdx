@@ -1,10 +1,11 @@
 {
-  context.setBlending(instance.material.isNeedBlending(),GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  if (!instance.renderable.material.has(BlendingAttribute.Type))   context.setBlending(false,GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
   if (currentTransform != instance.transform)   program.setUniformMatrix(modelTransLoc,currentTransform=instance.transform);
   bindMaterial(instance);
-  if (currentMesh != instance.mesh) {
+  if (lightsLoc >= 0)   bindLights(instance);
+  if (currentMesh != instance.renderable.mesh) {
     if (currentMesh != null)     currentMesh.unbind(program);
-    (currentMesh=instance.mesh).bind(program);
+    (currentMesh=instance.renderable.mesh).bind(program);
   }
-  instance.mesh.render(program,instance.primitiveType,instance.meshPartOffset,instance.meshPartSize);
+  instance.renderable.mesh.render(program,instance.renderable.primitiveType,instance.renderable.meshPartOffset,instance.renderable.meshPartSize);
 }

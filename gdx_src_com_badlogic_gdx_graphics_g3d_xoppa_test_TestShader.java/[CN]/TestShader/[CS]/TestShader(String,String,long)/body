@@ -1,0 +1,19 @@
+{
+  String prefix="";
+  this.mask=mask;
+  if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");
+  if (lightsCount > 0)   prefix+="#define lightsCount " + lightsCount + "\n";
+  if ((mask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
+  if ((mask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)   prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
+  if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
+  program=new ShaderProgram(prefix + vertexShader,prefix + fragmentShader);
+  if (!program.isCompiled())   throw new GdxRuntimeException(program.getLog());
+  projTransLoc=program.getUniformLocation(PROJECTION_TRANSFORM);
+  modelTransLoc=program.getUniformLocation(MODEL_TRANSFORM);
+  diffuseTextureLoc=((mask & TextureAttribute.Diffuse) != TextureAttribute.Diffuse) ? -1 : program.getUniformLocation(TextureAttribute.DiffuseAlias);
+  diffuseColorLoc=((mask & ColorAttribute.Diffuse) != ColorAttribute.Diffuse) ? -1 : program.getUniformLocation(ColorAttribute.DiffuseAlias);
+  lightsLoc=lightsCount > 0 ? program.getUniformLocation("lights[0].color") : -1;
+  lightSize=(lightsLoc >= 0 && lightsCount > 1) ? (program.getUniformLocation("lights[1].color") - lightsLoc) : -1;
+  lightPositionOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].position") - lightsLoc : -1;
+  lightPowerOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].power") - lightsLoc : -1;
+}
