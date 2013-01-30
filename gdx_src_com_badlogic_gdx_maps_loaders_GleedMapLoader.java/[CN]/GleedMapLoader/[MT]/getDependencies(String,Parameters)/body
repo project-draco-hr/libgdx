@@ -5,7 +5,7 @@
     XmlReader reader=new XmlReader();
     Element root=reader.parse(Gdx.files.internal(fileName));
     if (m_map == null) {
-      m_map=new GleedMap();
+      m_map=new Map();
       loadProperties(root,m_map.getProperties());
     }
     MapProperties properties=m_map.getProperties();

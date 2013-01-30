@@ -4,7 +4,7 @@
   Gdx.gl.glViewport((int)viewport.x,(int)viewport.y,(int)viewport.width,(int)viewport.height);
   if (state == State.Loading && manager.update()) {
     state=State.Running;
-    renderer=new GleedMapRenderer(manager.get("data/gleedtest.xml",GleedMap.class));
+    renderer=new GleedMapRenderer(manager.get("data/gleedtest.xml",Map.class));
     fpsFont=manager.get("data/font.fnt",BitmapFont.class);
   }
   if (state == State.Running) {

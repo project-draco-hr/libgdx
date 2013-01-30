@@ -6,7 +6,7 @@
     Element root=reader.parse(Gdx.files.internal(fileName));
     s_logger.info("loading level properties");
     if (m_map == null) {
-      m_map=new GleedMap(root.getAttribute("Name","Level"));
+      m_map=new Map();
       loadProperties(root,m_map.getProperties());
     }
     if (!m_atlasFile.isEmpty()) {
