@@ -1,8 +1,7 @@
 {
   super.create();
   manager=new AssetManager();
-  camera=new OrthographicCamera(640,480);
-  camera.setToOrtho(false,640,480);
+  camera=new OrthographicCamera(VIRTUAL_WIDTH,VIRTUAL_HEIGHT);
   camera.zoom=2.0f;
   GleedMapLoader.setLoggingLevel(Logger.INFO);
   manager.setLoader(GleedMap.class,new GleedMapLoader(new InternalFileHandleResolver()));
