@@ -3,7 +3,7 @@
   this.dispatcher=dispatcher;
   this.broadphase=broadphase;
   this.solver=solver;
-  this.dynamicsWorld=dynamicsWorld;
-  this.dynamicsWorld.setGravity(gravity);
+  this.collisionWorld=world;
+  if (world instanceof btDynamicsWorld)   ((btDynamicsWorld)this.collisionWorld).setGravity(gravity);
   this.gravity=gravity;
 }
