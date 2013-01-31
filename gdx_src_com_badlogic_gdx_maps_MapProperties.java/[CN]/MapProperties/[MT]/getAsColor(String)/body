@@ -1,0 +1,7 @@
+{
+  Object value=properties.get(key);
+  if (value != null && value instanceof Color) {
+    return (Color)value;
+  }
+  return null;
+}

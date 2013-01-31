@@ -1,0 +1,4 @@
+{
+  String value=getAsString(key);
+  return value == null ? defaultValue : value;
+}

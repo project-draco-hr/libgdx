@@ -1,0 +1,4 @@
+{
+  Boolean value=getAsBoolean(key);
+  return value == null ? defaultValue : value;
+}

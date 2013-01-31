@@ -1,0 +1,4 @@
+{
+  Short value=getAsShort(key);
+  return value == null ? defaultValue : value;
+}
