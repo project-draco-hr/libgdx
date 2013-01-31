@@ -1,3 +1,3 @@
 {
-  return gdxBulletJNI.RayResultCallback_needsCollision(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0);
+  return (getClass() == RayResultCallback.class) ? gdxBulletJNI.RayResultCallback_needsCollision(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0) : gdxBulletJNI.RayResultCallback_needsCollisionSwigExplicitRayResultCallback(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0);
 }
