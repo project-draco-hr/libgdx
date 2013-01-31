@@ -10,25 +10,25 @@
   bar.color.set(0.75f + 0.25f * (float)Math.random(),0.75f + 0.25f * (float)Math.random(),0.75f + 0.25f * (float)Math.random(),1f);
   BulletEntity box1=world.add("box",-4.5f,6f,0f);
   box1.color.set(0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),1f);
-  btPoint2PointConstraint constraint=new btPoint2PointConstraint(bar.body,box1.body,Vector3.tmp.set(-5,-0.5f,-0.5f),Vector3.tmp2.set(-0.5f,0.5f,-0.5f));
-  world.dynamicsWorld.addConstraint(constraint,false);
+  btPoint2PointConstraint constraint=new btPoint2PointConstraint((btRigidBody)bar.body,(btRigidBody)box1.body,Vector3.tmp.set(-5,-0.5f,-0.5f),Vector3.tmp2.set(-0.5f,0.5f,-0.5f));
+  ((btDynamicsWorld)world.collisionWorld).addConstraint(constraint,false);
   constraints.add(constraint);
   BulletEntity box2=null;
   for (int i=0; i < 10; i++) {
     if (i % 2 == 0) {
       box2=world.add("box",-3.5f + (float)i,6f,0f);
       box2.color.set(0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),1f);
-      constraint=new btPoint2PointConstraint(box1.body,box2.body,Vector3.tmp.set(0.5f,-0.5f,0.5f),Vector3.tmp2.set(-0.5f,-0.5f,0.5f));
+      constraint=new btPoint2PointConstraint((btRigidBody)box1.body,(btRigidBody)box2.body,Vector3.tmp.set(0.5f,-0.5f,0.5f),Vector3.tmp2.set(-0.5f,-0.5f,0.5f));
     }
  else {
       box1=world.add("box",-3.5f + (float)i,6f,0f);
       box1.color.set(0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),0.5f + 0.5f * (float)Math.random(),1f);
-      constraint=new btPoint2PointConstraint(box2.body,box1.body,Vector3.tmp.set(0.5f,0.5f,-0.5f),Vector3.tmp2.set(-0.5f,0.5f,-0.5f));
+      constraint=new btPoint2PointConstraint((btRigidBody)box2.body,(btRigidBody)box1.body,Vector3.tmp.set(0.5f,0.5f,-0.5f),Vector3.tmp2.set(-0.5f,0.5f,-0.5f));
     }
-    world.dynamicsWorld.addConstraint(constraint,false);
+    ((btDynamicsWorld)world.collisionWorld).addConstraint(constraint,false);
     constraints.add(constraint);
   }
-  constraint=new btPoint2PointConstraint(bar.body,box1.body,Vector3.tmp.set(5f,-0.5f,-0.5f),Vector3.tmp2.set(0.5f,0.5f,-0.5f));
-  world.dynamicsWorld.addConstraint(constraint,false);
+  constraint=new btPoint2PointConstraint((btRigidBody)bar.body,(btRigidBody)box1.body,Vector3.tmp.set(5f,-0.5f,-0.5f),Vector3.tmp2.set(0.5f,0.5f,-0.5f));
+  ((btDynamicsWorld)world.collisionWorld).addConstraint(constraint,false);
   constraints.add(constraint);
 }

@@ -1,3 +1,4 @@
 {
   this(gdxBulletJNI.new_ClosestConvexResultCallback(convexFromWorld,convexToWorld),true);
+  gdxBulletJNI.ClosestConvexResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
 }
