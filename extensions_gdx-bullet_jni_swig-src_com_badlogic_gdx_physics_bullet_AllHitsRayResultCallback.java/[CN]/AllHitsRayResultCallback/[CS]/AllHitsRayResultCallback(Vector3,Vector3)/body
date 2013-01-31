@@ -1,3 +1,4 @@
 {
   this(gdxBulletJNI.new_AllHitsRayResultCallback(rayFromWorld,rayToWorld),true);
+  gdxBulletJNI.AllHitsRayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
 }
