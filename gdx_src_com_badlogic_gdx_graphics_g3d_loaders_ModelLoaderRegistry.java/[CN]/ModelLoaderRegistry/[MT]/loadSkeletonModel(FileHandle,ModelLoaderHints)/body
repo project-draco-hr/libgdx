@@ -1,0 +1,23 @@
+{
+  String name=file.name();
+  int dotIndex=name.lastIndexOf('.');
+  if (dotIndex == -1)   throw new GdxRuntimeException("file '" + file.name() + "' does not have an extension that can be matched to a ModelLoader");
+  String extension=name.substring(dotIndex + 1).toLowerCase();
+  Array<ModelLoader> loaders=ModelLoaderRegistry.loaders.get(extension);
+  if (loaders == null)   throw new GdxRuntimeException("no loaders for extension '" + extension + "'");
+  SkeletonModel model=null;
+  StringBuilder errors=new StringBuilder();
+  for (int i=0; i < loaders.size; i++) {
+    ModelLoader loader=loaders.get(i);
+    try {
+      if (loader instanceof SkeletonModelLoader) {
+        model=((SkeletonModelLoader)loader).load(file,hints);
+      }
+    }
+ catch (    GdxRuntimeException e) {
+      errors.append("Couldn't load '" + file.name() + "' with loader of type "+ loader.getClass().getName()+ ": "+ e.getMessage());
+    }
+  }
+  if (model == null)   throw new GdxRuntimeException(errors.toString());
+ else   return model;
+}

@@ -1,4 +1,5 @@
 {
+  System.out.println(new File(".").getAbsolutePath());
   String assetPath=getAssetPath(context);
   String assetOutputPath=getAssetOutputPath(context);
   if (assetOutputPath == null) {

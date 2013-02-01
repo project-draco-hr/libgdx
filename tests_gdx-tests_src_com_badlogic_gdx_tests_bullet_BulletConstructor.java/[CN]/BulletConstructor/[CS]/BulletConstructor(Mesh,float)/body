@@ -1,5 +1,0 @@
-{
-  final BoundingBox boundingBox=mesh.calculateBoundingBox();
-  final Vector3 dimensions=boundingBox.getDimensions();
-  create(mesh,mass,dimensions.x,dimensions.y,dimensions.z);
-}

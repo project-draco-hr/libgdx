@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyWorldInfo_m_dispatcher_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btDispatcher(cPtr,false);
+}

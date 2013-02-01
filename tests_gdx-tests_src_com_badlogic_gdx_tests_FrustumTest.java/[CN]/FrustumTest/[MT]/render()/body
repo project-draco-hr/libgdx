@@ -8,7 +8,7 @@
   Gdx.gl10.glColor4f(1,0,0,1);
   plane.render(GL10.GL_TRIANGLE_FAN);
   Gdx.gl10.glColor4f(0,1,0,1);
-  sphere.render(GL10.GL_TRIANGLES);
+  sphere.render();
   renderFrustum(renderer,camera2.frustum);
   renderFrustum(renderer,camera3.frustum);
 }

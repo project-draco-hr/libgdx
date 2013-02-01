@@ -1,0 +1,4 @@
+{
+  soundPath=filePath.path();
+  soundBuffer=OALSimpleAudio.sharedInstance().preloadEffect(soundPath);
+}

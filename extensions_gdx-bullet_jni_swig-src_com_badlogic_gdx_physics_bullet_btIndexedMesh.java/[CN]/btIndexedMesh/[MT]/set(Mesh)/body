@@ -1,0 +1,18 @@
+{
+  final int numIndices=mesh.getNumIndices();
+  if ((numIndices <= 0) || ((numIndices % 3) != 0))   throw new com.badlogic.gdx.utils.GdxRuntimeException("Mesh must be indexed and triangulated");
+  java.nio.FloatBuffer buf=mesh.getVerticesBuffer();
+  VertexAttribute posAttr=mesh.getVertexAttribute(Usage.Position);
+  if (posAttr == null)   throw new com.badlogic.gdx.utils.GdxRuntimeException("Mesh doesn't have a position attribute");
+  final int pos=buf.position();
+  buf.position(posAttr.offset);
+  setM_indexType(PHY_ScalarType.PHY_SHORT);
+  setM_numTriangles(numIndices / 3);
+  setM_numVertices(mesh.getNumVertices());
+  setM_triangleIndexStride(6);
+  setM_vertexStride(mesh.getVertexSize());
+  setM_vertexType(PHY_ScalarType.PHY_FLOAT);
+  setTriangleIndexBase(mesh.getIndicesBuffer());
+  setVertexBase(buf);
+  buf.position(pos);
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyHelpers_CreateEllipsoid(btSoftBodyWorldInfo.getCPtr(worldInfo),worldInfo,center,radius,res);
+  return (cPtr == 0) ? null : new btSoftBody(cPtr,false);
+}

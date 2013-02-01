@@ -1,0 +1,14 @@
+{
+  String activeAttrib=GL.GetActiveAttrib(program,index,intArray,activeAttribTypes);
+  size.position(0);
+  size.put(intArray,0,size.remaining());
+  if (type instanceof IntBuffer) {
+    IntBuffer intBuffer=(IntBuffer)type;
+    intBuffer.position(0);
+    for (int i=0; i < activeAttribTypes.length; i++)     intBuffer.put(activeAttribTypes[i].Value);
+    return activeAttrib;
+  }
+ else {
+    throw new UnsupportedOperationException("expected IntBuffer for type parameter");
+  }
+}

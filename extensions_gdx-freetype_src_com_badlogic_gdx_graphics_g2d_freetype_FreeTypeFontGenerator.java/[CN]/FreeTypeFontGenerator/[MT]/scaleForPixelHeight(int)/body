@@ -1,0 +1,7 @@
+{
+  if (!FreeType.setPixelSizes(face,0,size))   throw new GdxRuntimeException("Couldn't set size for font");
+  SizeMetrics fontMetrics=face.getSize().getMetrics();
+  int ascent=FreeType.toInt(fontMetrics.getAscender());
+  int descent=FreeType.toInt(fontMetrics.getDescender());
+  return size * size / (ascent - descent);
+}

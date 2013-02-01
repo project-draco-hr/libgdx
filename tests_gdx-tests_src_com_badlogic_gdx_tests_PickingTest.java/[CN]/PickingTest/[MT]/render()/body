@@ -21,7 +21,7 @@
     }
     gl.glPushMatrix();
     gl.glTranslatef(positions[i].x,positions[i].y,positions[i].z);
-    sphere.render(GL10.GL_TRIANGLES);
+    sphere.render();
     gl.glPopMatrix();
   }
   Gdx.gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());

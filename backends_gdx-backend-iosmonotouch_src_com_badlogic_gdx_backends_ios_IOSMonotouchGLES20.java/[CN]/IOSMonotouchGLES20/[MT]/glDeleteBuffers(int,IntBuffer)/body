@@ -1,0 +1,5 @@
+{
+  buffer.position(0);
+  buffer.get(intArray,0,n);
+  GL.DeleteBuffers(n,intArray);
+}

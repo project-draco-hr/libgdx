@@ -1,8 +1,8 @@
 {
   Gdx.app.debug("IOSApplication","resumed");
-  if (!firstResume) {
-    graphics.MakeCurrent();
-    listener.resume();
-    firstResume=true;
+  if (config.useObjectAL) {
+    OALAudioSession.sharedInstance().forceEndInterrupt();
   }
+  graphics.MakeCurrent();
+  graphics.resume();
 }

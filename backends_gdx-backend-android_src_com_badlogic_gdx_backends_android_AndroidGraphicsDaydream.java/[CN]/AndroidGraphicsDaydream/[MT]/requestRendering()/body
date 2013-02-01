@@ -1,0 +1,6 @@
+{
+  if (view != null) {
+    if (view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)view).requestRender();
+    if (view instanceof GLSurfaceView)     ((GLSurfaceView)view).requestRender();
+  }
+}

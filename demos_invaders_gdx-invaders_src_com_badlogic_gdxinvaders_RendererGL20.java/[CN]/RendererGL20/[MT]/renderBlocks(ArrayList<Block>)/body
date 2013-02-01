@@ -8,7 +8,7 @@
     transform.set(camera.combined);
     transform.translate(block.position.x,block.position.y,block.position.z);
     colorShader.setUniformMatrix("u_projView",transform);
-    blockMesh.render(colorShader,GL10.GL_TRIANGLES);
+    blockMesh.render(colorShader);
   }
   colorShader.end();
   Gdx.gl.glDisable(GL10.GL_BLEND);

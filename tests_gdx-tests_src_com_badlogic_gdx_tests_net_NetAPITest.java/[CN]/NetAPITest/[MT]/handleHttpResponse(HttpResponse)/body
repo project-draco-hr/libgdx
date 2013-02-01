@@ -1,0 +1,28 @@
+{
+  textButton.setDisabled(false);
+  textButton.setTouchable(Touchable.enabled);
+  int statusCode=httpResponse.getStatus().getStatusCode();
+  statusLabel.setText("HTTP Request status: " + statusCode);
+  if (statusCode != 200) {
+    Gdx.app.log("NetAPITest","An error ocurred since statusCode is not OK");
+    return;
+  }
+  final InputStream resultAsStream=httpResponse.getResultAsStream();
+  try {
+    Texture.setEnforcePotImages(false);
+    texture=new Texture(new FileHandle("image.jpg"){
+      @Override public InputStream read(){
+        return resultAsStream;
+      }
+    }
+);
+    Texture.setEnforcePotImages(true);
+  }
+  finally {
+    if (resultAsStream != null)     try {
+      resultAsStream.close();
+    }
+ catch (    IOException e) {
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+switch (orientation.Value) {
+case UIInterfaceOrientation.LandscapeLeft:
+case UIInterfaceOrientation.LandscapeRight:
+    return config.orientationLandscape;
+default :
+  return config.orientationPortrait;
+}
+}

@@ -1,14 +1,22 @@
 {
-  if (y >= scroll.getHeight()) {
-    scrollDown.cancel();
-    if (!scrollUp.isScheduled())     Timer.schedule(scrollUp,0.05f,0.05f);
+  if (x >= 0 && x < scroll.getWidth()) {
+    if (y >= scroll.getHeight()) {
+      scrollDown.cancel();
+      if (!scrollUp.isScheduled()) {
+        startTime=System.currentTimeMillis();
+        Timer.schedule(scrollUp,tickSecs,tickSecs);
+      }
+      return;
+    }
+ else     if (y < 0) {
+      scrollUp.cancel();
+      if (!scrollDown.isScheduled()) {
+        startTime=System.currentTimeMillis();
+        Timer.schedule(scrollDown,tickSecs,tickSecs);
+      }
+      return;
+    }
   }
- else   if (y < 0) {
-    scrollUp.cancel();
-    if (!scrollDown.isScheduled())     Timer.schedule(scrollDown,0.05f,0.05f);
-  }
- else {
-    scrollUp.cancel();
-    scrollDown.cancel();
-  }
+  scrollUp.cancel();
+  scrollDown.cancel();
 }

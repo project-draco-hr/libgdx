@@ -29,4 +29,12 @@
     templateDir(src);
     FileUtils.moveDirectory(src,dst);
   }
+  if (cfg.isIosIncluded) {
+    File src=new File(tmpDst,"prj-ios");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixIos);
+    move(src,"my-gdx-game-ios.csproj",cfg.projectName + cfg.suffixIos + ".csproj");
+    move(src,"my-gdx-game-ios.sln",cfg.projectName + cfg.suffixIos + ".sln");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
+  }
 }

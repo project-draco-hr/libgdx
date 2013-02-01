@@ -1,0 +1,5 @@
+{
+  shaders.position(0);
+  shaders.get(intArray,0,shaders.remaining());
+  GL.ShaderBinary(n,intArray,ShaderBinaryFormat.wrap(binaryformat),IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(binary)),length);
+}

@@ -5,7 +5,7 @@
       templateDir(file);
     }
  else {
-      if (endsWith(file.getName(),".jar",".zip",".png"))       continue;
+      if (endsWith(file.getName(),".jar",".zip",".dll",".a",".png"))       continue;
       templateManager.processOver(file);
     }
   }

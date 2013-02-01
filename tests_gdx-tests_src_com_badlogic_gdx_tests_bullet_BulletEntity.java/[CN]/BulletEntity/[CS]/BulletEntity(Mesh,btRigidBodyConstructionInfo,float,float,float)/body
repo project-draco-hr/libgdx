@@ -1,9 +1,0 @@
-{
-  this.mesh=mesh;
-  this.transform.idt().translate(x,y,z);
-  if (bodyInfo != null) {
-    this.motionState=new MotionState(transform);
-    this.body=new btRigidBody(bodyInfo);
-    this.body.setMotionState(motionState);
-  }
-}

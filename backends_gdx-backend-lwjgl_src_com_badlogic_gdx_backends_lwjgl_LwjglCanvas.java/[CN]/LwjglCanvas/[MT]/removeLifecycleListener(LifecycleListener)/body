@@ -1,0 +1,5 @@
+{
+synchronized (lifecycleListeners) {
+    lifecycleListeners.removeValue(listener,true);
+  }
+}

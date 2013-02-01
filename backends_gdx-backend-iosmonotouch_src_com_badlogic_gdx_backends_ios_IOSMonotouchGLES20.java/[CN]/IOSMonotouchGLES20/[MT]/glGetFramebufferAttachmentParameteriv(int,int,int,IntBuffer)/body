@@ -1,0 +1,5 @@
+{
+  GL.GetFramebufferAttachmentParameter(FramebufferTarget.wrap(target),FramebufferSlot.wrap(attachment),FramebufferParameterName.wrap(pname),intArray);
+  params.position(0);
+  params.put(intArray,0,params.remaining());
+}

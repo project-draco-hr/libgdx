@@ -1,0 +1,13 @@
+{
+  model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/cube.obj"));
+  texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
+  textureAttribute=new TextureAttribute(texture,0,"Badlogic");
+  colorAttribute=new ColorAttribute(Color.ORANGE,"Orange");
+  blendingAttribute=new BlendingAttribute("Additive",GL10.GL_ONE,GL10.GL_ONE);
+  material=new Material();
+  model.setMaterial(material);
+  camera=new PerspectiveCamera(45,4,4);
+  camera.position.set(3,3,3);
+  camera.direction.set(-1,-1,-1);
+  Gdx.input.setInputProcessor(this);
+}

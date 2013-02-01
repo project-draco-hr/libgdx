@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btSoftBodyFloatData_m_links_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new SoftBodyLinkData(cPtr,false);
+}

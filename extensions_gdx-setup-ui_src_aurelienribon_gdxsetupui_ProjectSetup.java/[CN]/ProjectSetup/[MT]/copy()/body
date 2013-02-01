@@ -14,4 +14,8 @@
     src=new File(tmpDst,cfg.projectName + cfg.suffixHtml);
     FileUtils.copyDirectoryToDirectory(src,dst);
   }
+  if (cfg.isIosIncluded) {
+    src=new File(tmpDst,cfg.projectName + cfg.suffixIos);
+    FileUtils.copyDirectoryToDirectory(src,dst);
+  }
 }

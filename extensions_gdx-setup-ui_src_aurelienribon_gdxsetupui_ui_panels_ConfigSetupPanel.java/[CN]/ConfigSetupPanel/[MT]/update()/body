@@ -6,5 +6,6 @@
   Ctx.cfgSetup.isDesktopIncluded=genDesktopPrjChk.isSelected();
   Ctx.cfgSetup.isAndroidIncluded=genAndroidPrjChk.isSelected();
   Ctx.cfgSetup.isHtmlIncluded=genHtmlPrjChk.isSelected();
+  Ctx.cfgSetup.isIosIncluded=genIosPrjChk.isSelected();
   Ctx.fireCfgSetupChanged();
 }

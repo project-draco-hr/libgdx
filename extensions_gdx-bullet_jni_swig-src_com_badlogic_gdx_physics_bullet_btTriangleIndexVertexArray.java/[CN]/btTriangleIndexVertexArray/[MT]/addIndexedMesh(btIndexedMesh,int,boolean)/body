@@ -1,0 +1,7 @@
+{
+  addIndexedMesh(mesh,indexType);
+  if (managed) {
+    if (meshes == null)     meshes=new com.badlogic.gdx.utils.Array<btIndexedMesh>();
+    meshes.add(mesh);
+  }
+}

@@ -1,0 +1,6 @@
+{
+  if (egl.eglGetConfigAttrib(display,config,attrib,value)) {
+    return value[0];
+  }
+  return defValue;
+}

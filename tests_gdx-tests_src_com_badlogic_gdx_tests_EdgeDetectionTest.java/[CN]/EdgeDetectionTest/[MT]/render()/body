@@ -10,7 +10,7 @@
   shader.begin();
   shader.setUniformMatrix("u_projView",cam.combined);
   shader.setUniformf("u_far",cam.far);
-  mesh.render(shader,GL10.GL_TRIANGLES);
+  mesh.render(shader);
   shader.end();
   fbo.end();
   batch.begin();

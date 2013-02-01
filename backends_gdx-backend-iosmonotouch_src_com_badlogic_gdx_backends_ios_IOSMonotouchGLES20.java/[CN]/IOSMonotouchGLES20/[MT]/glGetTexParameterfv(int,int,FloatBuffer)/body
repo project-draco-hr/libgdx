@@ -1,0 +1,5 @@
+{
+  GL.GetTexParameter(TextureTarget.wrap(target),GetTextureParameter.wrap(pname),floatArray);
+  params.position(0);
+  params.put(floatArray,0,params.remaining());
+}

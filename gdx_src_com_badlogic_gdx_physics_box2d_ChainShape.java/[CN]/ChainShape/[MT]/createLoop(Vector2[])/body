@@ -5,4 +5,5 @@
     verts[i + 1]=vertices[j].y;
   }
   jniCreateLoop(addr,verts,verts.length / 2);
+  isLooped=true;
 }

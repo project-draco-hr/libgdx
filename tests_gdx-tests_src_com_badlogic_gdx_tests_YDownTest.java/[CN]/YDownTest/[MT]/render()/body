@@ -6,6 +6,8 @@
   batch.draw(region,20,100);
   font.draw(batch,"This is a test",270,100);
   batch.draw(atlas.findRegion("badlogicsmall"),360,100);
+  sprite.setColor(Color.RED);
+  sprite.draw(batch);
   font.draw(batch,Gdx.input.getX() + ", " + Gdx.input.getY(),0,0);
   batch.end();
   stage.act(Gdx.graphics.getDeltaTime());

@@ -4,4 +4,11 @@
   renderer=Gdx.graphics.isGL20Available() ? new RendererGL20() : new RendererGL10();
   explosion=Gdx.audio.newSound(Gdx.files.internal("data/explosion.wav"));
   shot=Gdx.audio.newSound(Gdx.files.internal("data/shot.wav"));
+  if (Controllers.getControllers().size > 0) {
+    Controller controller=Controllers.getControllers().get(0);
+    if (Ouya.ID.equals(controller.getName())) {
+      this.controller=controller;
+      controller.addListener(listener);
+    }
+  }
 }

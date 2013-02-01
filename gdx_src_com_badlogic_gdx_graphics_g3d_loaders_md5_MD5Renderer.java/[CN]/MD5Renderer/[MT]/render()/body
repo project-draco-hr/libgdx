@@ -1,7 +1,0 @@
-{
-  for (int i=0; i < model.meshes.length; i++) {
-    this.mesh.setIndices(indices[i]);
-    this.mesh.setVertices(vertices[i]);
-    this.mesh.render(GL10.GL_TRIANGLES,0,indices[i].length);
-  }
-}
