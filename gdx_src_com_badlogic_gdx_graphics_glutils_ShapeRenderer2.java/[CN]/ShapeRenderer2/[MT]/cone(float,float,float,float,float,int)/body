@@ -1,0 +1,56 @@
+{
+  if (segments <= 0)   throw new IllegalArgumentException("segments must be >= 0.");
+  if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
+  checkDirty();
+  checkFlush(segments * 4 + 2);
+  float angle=2 * 3.1415926f / segments;
+  float cos=MathUtils.cos(angle);
+  float sin=MathUtils.sin(angle);
+  float cx=radius, cy=0;
+  if (currType == ShapeType.Line) {
+    for (int i=0; i < segments; i++) {
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x,y,z + height);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+      float temp=cx;
+      cx=cos * cx - sin * cy;
+      cy=sin * temp + cos * cy;
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+    }
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + cx,y + cy,z);
+  }
+ else {
+    segments--;
+    for (int i=0; i < segments; i++) {
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x,y,z);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+      float temp=cx;
+      float temp2=cy;
+      cx=cos * cx - sin * cy;
+      cy=sin * temp + cos * cy;
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + temp,y + temp2,z);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x + cx,y + cy,z);
+      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.vertex(x,y,z + height);
+    }
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,z);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + cx,y + cy,z);
+  }
+  cx=radius;
+  cy=0;
+  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.vertex(x + cx,y + cy,z);
+}

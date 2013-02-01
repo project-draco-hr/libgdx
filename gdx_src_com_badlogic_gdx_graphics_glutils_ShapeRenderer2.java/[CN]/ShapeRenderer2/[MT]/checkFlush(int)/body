@@ -1,0 +1,6 @@
+{
+  if (renderer.getMaxVertices() - renderer.getNumVertices() >= newVertices)   return;
+  ShapeType type=currType;
+  end();
+  begin(type);
+}
