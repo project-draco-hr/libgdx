@@ -16,5 +16,5 @@
   softBody.randomizeConstraints();
   softBody.setTotalMass(1);
   softBody.translate(Vector3.tmp.set(1,5,1));
-  ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).addSoftBody(softBody);
+  ((btSoftRigidDynamicsWorld)(world.collisionWorld)).addSoftBody(softBody);
 }

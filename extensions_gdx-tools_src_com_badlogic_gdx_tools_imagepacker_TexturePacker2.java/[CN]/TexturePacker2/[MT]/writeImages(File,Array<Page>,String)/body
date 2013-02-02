@@ -25,6 +25,14 @@
     }
     width=Math.max(settings.minWidth,width);
     height=Math.max(settings.minHeight,height);
+    if (settings.forceSquareOutput) {
+      if (width > height) {
+        height=width;
+      }
+ else {
+        width=height;
+      }
+    }
     File outputFile;
     while (true) {
       outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);

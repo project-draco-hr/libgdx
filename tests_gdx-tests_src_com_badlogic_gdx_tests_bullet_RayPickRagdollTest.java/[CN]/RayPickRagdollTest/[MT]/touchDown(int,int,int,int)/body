@@ -4,7 +4,7 @@
     Ray ray=camera.getPickRay(screenX,screenY);
     Vector3.tmp.set(ray.direction).mul(10f).add(ray.origin);
     ClosestRayResultCallback cb=new ClosestRayResultCallback(ray.origin,Vector3.tmp);
-    world.dynamicsWorld.rayTest(ray.origin,Vector3.tmp,cb);
+    world.collisionWorld.rayTest(ray.origin,Vector3.tmp,cb);
     if (cb.hasHit()) {
       btRigidBody body=btRigidBody.upcast(cb.getM_collisionObject());
       if (body != null && !body.isStaticObject() && !body.isKinematicObject()) {
@@ -18,7 +18,7 @@
         setting.setM_impulseClamp(30f);
         setting.setM_tau(0.001f);
         pickConstraint.setM_setting(setting);
-        world.dynamicsWorld.addConstraint(pickConstraint);
+        ((btDynamicsWorld)world.collisionWorld).addConstraint(pickConstraint);
         pickDistance=Vector3.tmp.sub(camera.position).len();
         result=true;
       }
