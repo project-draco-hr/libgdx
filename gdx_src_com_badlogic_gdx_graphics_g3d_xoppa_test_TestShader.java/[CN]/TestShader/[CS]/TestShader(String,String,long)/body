@@ -10,6 +10,7 @@
   if (!program.isCompiled())   throw new GdxRuntimeException(program.getLog());
   projTransLoc=program.getUniformLocation(PROJECTION_TRANSFORM);
   modelTransLoc=program.getUniformLocation(MODEL_TRANSFORM);
+  normalTransLoc=program.getUniformLocation(NORMAL_TRANSFORM);
   diffuseTextureLoc=((mask & TextureAttribute.Diffuse) != TextureAttribute.Diffuse) ? -1 : program.getUniformLocation(TextureAttribute.DiffuseAlias);
   diffuseColorLoc=((mask & ColorAttribute.Diffuse) != ColorAttribute.Diffuse) ? -1 : program.getUniformLocation(ColorAttribute.DiffuseAlias);
   lightsLoc=lightsCount > 0 ? program.getUniformLocation("lights[0].color") : -1;

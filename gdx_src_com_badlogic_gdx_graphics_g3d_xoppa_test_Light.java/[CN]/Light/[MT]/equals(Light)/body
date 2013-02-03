@@ -1,0 +1,5 @@
+{
+  if (other == null)   return false;
+  if (other == this)   return true;
+  return color.equals(other.color) && position.equals(other.position) && power == other.power;
+}

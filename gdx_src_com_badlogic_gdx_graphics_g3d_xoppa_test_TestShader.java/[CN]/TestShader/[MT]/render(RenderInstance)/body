@@ -1,6 +1,9 @@
 {
   if (!instance.renderable.material.has(BlendingAttribute.Type))   context.setBlending(false,GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
-  if (currentTransform != instance.transform)   program.setUniformMatrix(modelTransLoc,currentTransform=instance.transform);
+  if (currentTransform != instance.transform) {
+    program.setUniformMatrix(modelTransLoc,currentTransform=instance.transform);
+    program.setUniformMatrix(normalTransLoc,normalMatrix.set(currentTransform));
+  }
   bindMaterial(instance);
   if (lightsLoc >= 0)   bindLights(instance);
   if (currentMesh != instance.renderable.mesh) {
