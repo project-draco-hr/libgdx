@@ -15,12 +15,12 @@
   batch.end();
   renderer.setProjectionMatrix(camera.combined);
   renderer.setColor(Color.GREEN);
-  renderer.begin(ShapeType.Rectangle);
+  renderer.begin(ShapeType.Line);
   PolygonSprite sprite=sprites.get(49);
   bounds=sprite.getBoundingRectangle();
   renderer.rect(bounds.x,bounds.y,bounds.width,bounds.height);
   renderer.end();
-  renderer.begin(ShapeType.FilledCircle);
-  renderer.filledCircle(sprite.getX() + sprite.getOriginX(),sprite.getY() + sprite.getOriginY(),4);
+  renderer.begin(ShapeType.Filled);
+  renderer.circle(sprite.getX() + sprite.getOriginX(),sprite.getY() + sprite.getOriginY(),4);
   renderer.end();
 }
