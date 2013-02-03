@@ -1,3 +1,8 @@
 {
-  return new BulletEntity(this,x,y,z);
+  if (bodyInfo == null && shape != null) {
+    btCollisionObject obj=new btCollisionObject();
+    obj.setCollisionShape(shape);
+    return new BulletEntity(model,obj,x,y,z);
+  }
+ else   return new BulletEntity(model,bodyInfo,x,y,z);
 }
