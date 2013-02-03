@@ -12,5 +12,9 @@
     libPrefix="lib";
     libSuffix=".dylib";
   }
+  if (os == TargetOs.IOS) {
+    libPrefix="lib";
+    libSuffix=".a";
+  }
   return libPrefix + sharedLibName + libSuffix;
 }

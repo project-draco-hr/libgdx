@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_RayResultCallback(),true);
+  gdxBulletJNI.RayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

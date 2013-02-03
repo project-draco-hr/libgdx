@@ -1,3 +1,6 @@
 {
   super(file,type);
+  if (type == FileType.Classpath) {
+    throw new GdxRuntimeException("Classpath files are not supported on iOS, this likely happened because you used the default constructor of BitmapFont.");
+  }
 }

@@ -1,0 +1,6 @@
+{
+  textButton.setDisabled(false);
+  textButton.setTouchable(Touchable.enabled);
+  statusLabel.setText("Failed to perform the HTTP Request: " + t.getMessage());
+  t.printStackTrace();
+}

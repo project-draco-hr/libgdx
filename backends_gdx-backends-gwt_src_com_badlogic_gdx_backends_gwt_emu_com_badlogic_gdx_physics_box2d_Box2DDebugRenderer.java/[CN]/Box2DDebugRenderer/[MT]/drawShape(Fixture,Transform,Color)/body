@@ -11,7 +11,7 @@
     edge.getVertex2(vertices[1]);
     transform.mul(vertices[0]);
     transform.mul(vertices[1]);
-    drawSolidPolygon(vertices,2,color);
+    drawSolidPolygon(vertices,2,color,true);
   }
   if (fixture.getType() == Type.Polygon) {
     PolygonShape chain=(PolygonShape)fixture.getShape();
@@ -20,7 +20,7 @@
       chain.getVertex(i,vertices[i]);
       transform.mul(vertices[i]);
     }
-    drawSolidPolygon(vertices,vertexCount,color);
+    drawSolidPolygon(vertices,vertexCount,color,true);
   }
   if (fixture.getType() == Type.Chain) {
     ChainShape chain=(ChainShape)fixture.getShape();
@@ -29,6 +29,6 @@
       chain.getVertex(i,vertices[i]);
       transform.mul(vertices[i]);
     }
-    drawSolidPolygon(vertices,vertexCount,color);
+    drawSolidPolygon(vertices,vertexCount,color,chain.isLooped());
   }
 }

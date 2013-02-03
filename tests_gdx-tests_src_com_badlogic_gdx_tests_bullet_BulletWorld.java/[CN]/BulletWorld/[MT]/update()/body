@@ -3,11 +3,11 @@
     performanceCounter.tick();
     performanceCounter.start();
   }
-  dynamicsWorld.stepSimulation(Gdx.graphics.getDeltaTime(),maxSubSteps);
+  if (collisionWorld instanceof btDynamicsWorld)   ((btDynamicsWorld)collisionWorld).stepSimulation(Gdx.graphics.getDeltaTime(),maxSubSteps);
   if (performanceCounter != null)   performanceCounter.stop();
   if (debugDrawer != null && debugDrawer.getDebugMode() > 0) {
     debugDrawer.begin();
-    dynamicsWorld.debugDrawWorld();
+    collisionWorld.debugDrawWorld();
     debugDrawer.end();
   }
   if (renderMeshes)   super.update();

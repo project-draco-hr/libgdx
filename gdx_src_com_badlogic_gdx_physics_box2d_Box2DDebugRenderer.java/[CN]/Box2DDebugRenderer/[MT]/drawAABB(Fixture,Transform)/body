@@ -10,7 +10,7 @@
     vertices[1].set(upper.x,lower.y);
     vertices[2].set(upper.x,upper.y);
     vertices[3].set(lower.x,upper.y);
-    drawSolidPolygon(vertices,4,AABB_COLOR);
+    drawSolidPolygon(vertices,4,AABB_COLOR,true);
   }
  else   if (fixture.getType() == Type.Polygon) {
     PolygonShape shape=(PolygonShape)fixture.getShape();
@@ -30,6 +30,6 @@
     vertices[1].set(upper.x,lower.y);
     vertices[2].set(upper.x,upper.y);
     vertices[3].set(lower.x,upper.y);
-    drawSolidPolygon(vertices,4,AABB_COLOR);
+    drawSolidPolygon(vertices,4,AABB_COLOR,true);
   }
 }
