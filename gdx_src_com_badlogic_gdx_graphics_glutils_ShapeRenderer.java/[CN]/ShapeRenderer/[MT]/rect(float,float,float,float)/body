@@ -1,21 +1,37 @@
 {
-  if (currType != ShapeType.Rectangle)   throw new GdxRuntimeException("Must call begin(ShapeType.Rectangle)");
+  if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
   checkDirty();
   checkFlush(8);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x,y,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x + width,y,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x + width,y,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x + width,y + height,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x + width,y + height,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x,y + height,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x,y + height,0);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x,y,0);
+  if (currType == ShapeType.Line) {
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,0);
+  }
+ else {
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x + width,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y + height,0);
+    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.vertex(x,y,0);
+  }
 }

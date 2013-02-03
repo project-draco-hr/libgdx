@@ -50,8 +50,8 @@
   }
   renderer.end();
   renderer.setColor(Color.BLUE);
-  renderer.begin(ShapeType.FilledCircle);
-  renderer.filledCircle(worldOriginX,worldOriginY,4);
+  renderer.begin(ShapeType.Filled);
+  renderer.circle(worldOriginX,worldOriginY,4);
   renderer.end();
   fx1=-originX;
   fy1=-originY;
