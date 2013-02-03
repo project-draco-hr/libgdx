@@ -1,5 +1,5 @@
 {
-  ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).removeSoftBody(softBody);
+  ((btSoftRigidDynamicsWorld)(world.collisionWorld)).removeSoftBody(softBody);
   softBody.delete();
   softBody=null;
   super.dispose();

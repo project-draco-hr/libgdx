@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_ContactResultCallback(),true);
+  gdxBulletJNI.ContactResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}
