@@ -1,3 +1,4 @@
 {
   this(gdxBulletJNI.new_ClosestRayResultCallback(rayFromWorld,rayToWorld),true);
+  gdxBulletJNI.ClosestRayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
 }

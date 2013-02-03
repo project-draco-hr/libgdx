@@ -1,7 +1,7 @@
 {
   this.model=model;
   this.shape=shape;
-  if (shape != null) {
+  if (shape != null && mass >= 0) {
     Vector3 localInertia;
     if (mass == 0)     localInertia=Vector3.Zero;
  else {

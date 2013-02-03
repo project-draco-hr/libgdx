@@ -10,7 +10,7 @@
   softBody=btSoftBodyHelpers.CreatePatch(worldInfo,patch00,patch10,patch01,patch11,15,15,15,false);
   softBody.takeOwnership();
   softBody.setTotalMass(100f);
-  ((btSoftRigidDynamicsWorld)(world.dynamicsWorld)).addSoftBody(softBody);
+  ((btSoftRigidDynamicsWorld)(world.collisionWorld)).addSoftBody(softBody);
   final int vertCount=softBody.getNodeCount();
   final int faceCount=softBody.getFaceCount();
   mesh=new Mesh(false,vertCount,faceCount * 3,new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
