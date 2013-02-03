@@ -6,7 +6,13 @@
     template=template.replace("%postcompile%",target.postCompileTask == null ? "" : target.postCompileTask);
     return template;
   }
-  String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-target.xml.template",FileType.Classpath).readString();
+  String template=null;
+  if (target.os == TargetOs.IOS) {
+    template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-ios.xml.template",FileType.Classpath).readString();
+  }
+ else {
+    template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-target.xml.template",FileType.Classpath).readString();
+  }
   String libName=getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName);
   String jniPlatform=getJniPlatform(target.os);
   StringBuffer cIncludes=new StringBuffer();
