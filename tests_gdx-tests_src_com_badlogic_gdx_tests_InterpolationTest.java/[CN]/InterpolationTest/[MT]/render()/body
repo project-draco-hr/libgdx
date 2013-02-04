@@ -5,7 +5,7 @@
   int x=Gdx.graphics.getWidth() / 2 - size / 2;
   int y=Gdx.graphics.getHeight() / 2 - size / 2;
   renderer.setProjectionMatrix(stage.getCamera().combined);
-  renderer.begin(ShapeType.Box);
+  renderer.begin(ShapeType.Line);
   renderer.box(x,y,0,size,size,0);
   renderer.end();
   Interpolation interpolation=getInterpolation();
@@ -22,8 +22,8 @@
   renderer.end();
   timer+=Gdx.graphics.getDeltaTime();
   Vector2 current=getCurrentPosition();
-  renderer.begin(ShapeType.FilledRectangle);
-  renderer.filledRect(current.x,current.y,20,20);
+  renderer.begin(ShapeType.Filled);
+  renderer.rect(current.x,current.y,20,20);
   renderer.end();
   stage.act(Gdx.graphics.getDeltaTime());
   stage.draw();
