@@ -3,8 +3,12 @@
     try {
       client=new TcpClient(host,port);
       setupConnection(hints);
+      if (false)       throw new cli.System.Net.Sockets.SocketException();
     }
- catch (    Exception e) {
+ catch (    cli.System.Net.Sockets.SocketException e) {
+      throw new GdxRuntimeException("Error making a socket connection to " + host + ":"+ port,e);
+    }
+catch (    Exception e) {
       throw new GdxRuntimeException("Error making a socket connection to " + host + ":"+ port,e);
     }
   }
