@@ -1,5 +1,13 @@
 {
   for (  File file : files) {
+    File dir=file.getParentFile();
+    ArrayList<Entry> entries=dirToEntries.get(dir);
+    if (entries == null) {
+      entries=new ArrayList();
+      dirToEntries.put(dir,entries);
+    }
+  }
+  for (  File file : files) {
     if (file.isFile()) {
       if (inputRegex.size > 0) {
         boolean found=false;
@@ -25,12 +33,7 @@
  else {
         entry.outputFile=outputDir.length() == 0 ? new File(outputName) : new File(outputDir,outputName);
       }
-      ArrayList<Entry> entries=dirToEntries.get(dir);
-      if (entries == null) {
-        entries=new ArrayList();
-        dirToEntries.put(dir,entries);
-      }
-      entries.add(entry);
+      dirToEntries.get(dir).add(entry);
     }
     if (recursive && file.isDirectory()) {
       File subdir=outputDir.getPath().length() == 0 ? new File(file.getName()) : new File(outputDir,file.getName());
