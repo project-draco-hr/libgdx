@@ -1,0 +1,5 @@
+{
+  if (predicateIterable == null)   predicateIterable=new Predicate.PredicateIterable<T>(this,predicate);
+ else   predicateIterable.set(this,predicate);
+  return predicateIterable;
+}
