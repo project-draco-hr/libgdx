@@ -14,7 +14,12 @@
       mapObject=loadTexture(item);
     }
  else     if (type.equals("PathItem")) {
-      mapObject=loadPolygon(item);
+      if (isPolygon(item)) {
+        mapObject=loadPolygon(item);
+      }
+ else {
+        mapObject=loadPolyline(item);
+      }
     }
  else     if (type.equals("RectangleItem")) {
       mapObject=loadRectangle(item);
