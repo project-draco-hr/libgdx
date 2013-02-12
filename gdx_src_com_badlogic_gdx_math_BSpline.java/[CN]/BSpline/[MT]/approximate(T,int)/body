@@ -1,0 +1,26 @@
+{
+  int n=near;
+  final T nearest=knots.get(n);
+  final T previous=knots.get(n > 0 ? n - 1 : spanCount - 1);
+  final T next=knots.get((n + 1) % spanCount);
+  final float dstPrev2=in.dst2(previous);
+  final float dstNext2=in.dst2(next);
+  T P1, P2, P3;
+  if (dstNext2 < dstPrev2) {
+    P1=nearest;
+    P2=next;
+    P3=in;
+  }
+ else {
+    P1=previous;
+    P2=nearest;
+    P3=in;
+    n=n > 0 ? n - 1 : spanCount - 1;
+  }
+  float L1=P1.dst(P2);
+  float L2=P3.dst(P2);
+  float L3=P3.dst(P1);
+  float s=(L2 * L2 + L1 * L1 - L3 * L3) / (2 * L1);
+  float u=MathUtils.clamp((L1 - s) / L1,0f,1f);
+  return ((float)n + u) / spanCount;
+}
