@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_ConvexResultCallback(),true);
+  gdxBulletJNI.ConvexResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

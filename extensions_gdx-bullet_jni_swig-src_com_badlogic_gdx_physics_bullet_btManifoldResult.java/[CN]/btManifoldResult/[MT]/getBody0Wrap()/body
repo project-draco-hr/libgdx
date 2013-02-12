@@ -1,4 +1,4 @@
 {
   long cPtr=gdxBulletJNI.btManifoldResult_getBody0Wrap(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_btCollisionObjectWrapper(cPtr,false);
+  return (cPtr == 0) ? null : new btCollisionObjectWrapper(cPtr,false);
 }
