@@ -3,5 +3,5 @@
   float u=t * n;
   int i=(t >= 1f) ? (n - 1) : (int)u;
   u-=(float)i;
-  return calculate(out,i,u,points,degree,continuous);
+  return calculate(out,i,u,points,degree,continuous,tmp);
 }

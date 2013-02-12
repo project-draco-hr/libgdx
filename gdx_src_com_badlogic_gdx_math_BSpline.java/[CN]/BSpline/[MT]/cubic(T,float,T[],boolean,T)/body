@@ -3,5 +3,5 @@
   float u=t * n;
   int i=(t >= 1f) ? (n - 1) : (int)u;
   u-=(float)i;
-  return cubic(out,i,u,points,continuous);
+  return cubic(out,i,u,points,continuous,tmp);
 }

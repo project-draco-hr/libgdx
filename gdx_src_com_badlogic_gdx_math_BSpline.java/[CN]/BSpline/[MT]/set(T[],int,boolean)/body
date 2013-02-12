@@ -1,4 +1,5 @@
 {
+  if (tmp == null)   tmp=controlPoints[0].cpy();
   this.controlPoints=controlPoints;
   this.degree=degree;
   this.continuous=continuous;
@@ -8,6 +9,6 @@
     knots.clear();
     knots.ensureCapacity(spanCount);
   }
-  for (int i=0; i < spanCount; i++)   knots.add(calculate(controlPoints[0].cpy(),continuous ? i : (int)(i + 0.5f * degree),0f,controlPoints,degree,continuous));
+  for (int i=0; i < spanCount; i++)   knots.add(calculate(controlPoints[0].cpy(),continuous ? i : (int)(i + 0.5f * degree),0f,controlPoints,degree,continuous,tmp));
   return this;
 }

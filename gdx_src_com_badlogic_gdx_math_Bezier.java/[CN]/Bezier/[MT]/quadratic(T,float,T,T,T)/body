@@ -1,4 +1,0 @@
-{
-  final float dt=1f - t;
-  return out.set(p0).mul(dt * dt).add(p1.tmp().mul(2 * dt * t)).add(p2.tmp().mul(t * t));
-}
