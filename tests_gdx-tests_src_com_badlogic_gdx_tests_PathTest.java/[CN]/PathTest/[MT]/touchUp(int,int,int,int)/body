@@ -1,7 +1,4 @@
 {
-  t=paths.get(currentPath).approximate(tmpV.set(screenX,Gdx.graphics.getHeight() - screenY));
-  paths.get(currentPath).valueAt(tmpV,t);
-  obj.setPosition(tmpV.x,tmpV.y);
-  wait=2f;
+  touch(screenX,screenY);
   return super.touchUp(screenX,screenY,pointer,button);
 }

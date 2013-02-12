@@ -1,0 +1,6 @@
+{
+  t=paths.get(currentPath).approximate(tmpV.set(x,Gdx.graphics.getHeight() - y));
+  paths.get(currentPath).valueAt(tmpV,t);
+  obj.setPosition(tmpV.x,tmpV.y);
+  wait=2f;
+}
