@@ -1,4 +1,5 @@
 {
+  if (isIos)   return;
   libraryName=mapLibraryName(libraryName);
   if (loadedLibraries.contains(libraryName))   return;
   try {
