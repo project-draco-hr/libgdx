@@ -1,4 +1,5 @@
 {
+  renderer=new ImmediateModeRenderer10();
   spriteBatch=new SpriteBatch();
   obj=new Sprite(new Texture(Gdx.files.internal("data/badlogicsmall.jpg")));
   float w=Gdx.graphics.getWidth() - obj.getWidth();

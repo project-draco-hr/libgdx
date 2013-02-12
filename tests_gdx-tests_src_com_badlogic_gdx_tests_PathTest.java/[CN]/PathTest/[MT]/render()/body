@@ -13,6 +13,15 @@
     obj.setPosition(tmpV.x,tmpV.y);
   }
   spriteBatch.begin();
+  renderer.begin(GL10.GL_LINE_STRIP);
+  float val=0f;
+  while (val <= 1f) {
+    renderer.color(0f,0f,0f,1f);
+    paths.get(currentPath).valueAt(Vector2.tmp,val);
+    renderer.vertex(Vector2.tmp.x,Vector2.tmp.y,0);
+    val+=SAMPLE_POINT_DISTANCE;
+  }
+  renderer.end();
   obj.draw(spriteBatch);
   spriteBatch.end();
 }
