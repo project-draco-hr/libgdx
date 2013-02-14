@@ -4,7 +4,15 @@
     private final Dimension minSize=new Dimension(0,0);
     public final void addNotify(){
       super.addNotify();
-      create();
+      if (SharedLibraryLoader.isMac) {
+        EventQueue.invokeLater(new Runnable(){
+          public void run(){
+            create();
+          }
+        }
+);
+      }
+ else       create();
     }
     public final void removeNotify(){
       stop();
