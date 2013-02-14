@@ -1,4 +1,7 @@
 {
   ui.setViewport(width,height,false);
   container.setSize(width,height);
+  if (test != null) {
+    test.resize(width,height);
+  }
 }
