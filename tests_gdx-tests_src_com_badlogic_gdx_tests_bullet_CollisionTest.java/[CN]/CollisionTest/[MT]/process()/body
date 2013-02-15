@@ -1,0 +1,20 @@
+{
+  Color color=null;
+  update();
+  hits.clear();
+  colors.clear();
+  if (projectile != null)   world.collisionWorld.contactTest(projectile.body,contactCB);
+  if (hits.size > 0) {
+    color=projectile.color;
+    projectile.color=Color.RED;
+    for (int i=0; i < hits.size; i++) {
+      colors.add(hits.get(i).color);
+      hits.get(i).color=Color.RED;
+    }
+  }
+  render(false);
+  if (hits.size > 0) {
+    projectile.color=color;
+    for (int i=0; i < hits.size; i++)     hits.get(i).color=colors.get(i);
+  }
+}
