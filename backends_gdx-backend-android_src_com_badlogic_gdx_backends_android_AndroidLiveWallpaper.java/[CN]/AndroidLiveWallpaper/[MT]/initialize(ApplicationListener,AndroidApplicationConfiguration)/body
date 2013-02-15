@@ -1,6 +1,6 @@
 {
   graphics=new AndroidGraphicsLiveWallpaper(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
-  input=AndroidInputFactory.newAndroidInput(this,this.getService(),null,config);
+  input=AndroidInputFactory.newAndroidInput(this,this.getService(),graphics.view,config);
   audio=new AndroidAudio(this.getService(),config);
   files=new AndroidFiles(this.getService().getAssets(),this.getService().getFilesDir().getAbsolutePath());
   this.listener=listener;

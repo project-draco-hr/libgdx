@@ -1,8 +1,6 @@
 {
   if (gl10 != null || gl20 != null)   return;
-  boolean isGL20=checkGL20();
-  Gdx.app.log("AndroidGraphics","GL20: " + isGL20);
-  if (view instanceof GLSurfaceView20LW) {
+  if (view instanceof GLSurfaceView20) {
     gl20=new AndroidGL20();
     this.gl=gl20;
   }

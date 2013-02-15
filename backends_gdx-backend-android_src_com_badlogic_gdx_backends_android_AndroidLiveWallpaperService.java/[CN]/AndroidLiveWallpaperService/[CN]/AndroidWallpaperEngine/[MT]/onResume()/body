@@ -1,5 +1,15 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onResume() " + hashCode() + ", running: "+ runningEngines);
-  app.onResume();
-  view.onResume();
+  visibleEngines++;
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onResume() " + hashCode() + ", running: "+ engines+ ", linked: "+ (linkedEngine == this)+ ", visible: "+ visibleEngines);
+  if (linkedEngine != null) {
+    if (linkedEngine != this) {
+      setLinkedEngine(this);
+      view.surfaceDestroyed(getSurfaceHolder());
+      view.surfaceCreated(getSurfaceHolder());
+    }
+    if (visibleEngines == 1)     app.onResume();
+    if (waitingSurfaceChangedEvent != null)     waitingSurfaceChangedEvent.run();
+    notifyPreviewState();
+    notifyOffsetsChanged();
+  }
 }

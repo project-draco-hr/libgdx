@@ -1,4 +1,15 @@
 {
-  if (DEBUG)   Log.d(TAG," > LibdgxWallpaperService - onDestroy()");
+  if (DEBUG)   Log.d(TAG," > AndroidLiveWallpaperService - onDestroy()");
   super.onDestroy();
+  if (app != null) {
+    if (app.graphics != null) {
+      if (app.graphics.view != null) {
+        if (app.graphics.view instanceof GLSurfaceViewCupcake)         ((GLSurfaceViewCupcake)app.graphics.view).onResume();
+ else         if (app.graphics.view instanceof android.opengl.GLSurfaceView)         ((android.opengl.GLSurfaceView)app.graphics.view).onResume();
+ else         throw new RuntimeException("unimplemented");
+      }
+    }
+    app=null;
+    view=null;
+  }
 }

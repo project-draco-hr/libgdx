@@ -1,5 +1,9 @@
 {
   graphics.pause();
-  if (audio != null)   audio.pause();
   input.unregisterSensorListeners();
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+ else     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
+ else     throw new RuntimeException("unimplemented");
+  }
 }

@@ -1,4 +1,13 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onSurfaceChanged() " + isPreview() + " "+ hashCode()+ ", running: "+ runningEngines);
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onSurfaceChanged() isPreview: " + isPreview() + ", "+ hashCode()+ ", running: "+ engines+ ", linked: "+ (linkedEngine == this));
   super.onSurfaceChanged(holder,format,width,height);
+  if (linkedEngine == this)   view.surfaceChanged(holder,format,width,height);
+ else {
+    waitingSurfaceChangedEvent=new Runnable(){
+      @Override public void run(){
+        onSurfaceChanged(holder,format,width,height);
+      }
+    }
+;
+  }
 }

@@ -1,3 +1,4 @@
 {
+  if (DEBUG)   Log.d(TAG," > AndroidLiveWallpaperService - onCreateEngine()");
   return new AndroidWallpaperEngine();
 }
