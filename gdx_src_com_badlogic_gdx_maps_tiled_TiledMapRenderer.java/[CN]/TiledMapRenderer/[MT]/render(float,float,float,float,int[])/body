@@ -1,6 +1,0 @@
-{
-  MapLayers mapLayers=map.getLayers();
-  for (int i=0; i < layers.length; i++) {
-    renderLayer(viewboundsX,viewboundsY,viewboundsX + viewboundsHeight,viewboundsY + viewboundsHeight,mapLayers.getLayer(i));
-  }
-}
