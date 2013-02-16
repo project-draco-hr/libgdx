@@ -4,7 +4,6 @@
     return loadTilemap(root,tmxFile,new AssetManagerImageResolver(assetManager));
   }
  catch (  Exception e) {
-    e.printStackTrace();
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
   }
-  return null;
 }
