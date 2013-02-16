@@ -1,4 +1,4 @@
 {
-  this.properties.putAll(copy.properties);
+  getProperties().putAll(copy.properties);
   this.textureRegion=copy.textureRegion;
 }
