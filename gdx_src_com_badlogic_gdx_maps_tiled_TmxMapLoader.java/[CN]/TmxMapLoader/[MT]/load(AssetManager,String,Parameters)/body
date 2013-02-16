@@ -1,0 +1,10 @@
+{
+  FileHandle tmxFile=resolve(fileName);
+  try {
+    return loadTilemap(root,tmxFile,new AssetManagerImageResolver(assetManager));
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+  }
+  return null;
+}
