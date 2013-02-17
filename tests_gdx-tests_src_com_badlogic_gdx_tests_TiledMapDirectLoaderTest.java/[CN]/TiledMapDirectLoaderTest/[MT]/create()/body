@@ -9,5 +9,5 @@
   font=new BitmapFont();
   batch=new SpriteBatch();
   map=new TmxMapLoader().load("data/maps/tiles.tmx");
-  renderer=new OrthogonalTiledMapRenderer2(map,1f / 32f);
+  renderer=new OrthogonalTiledMapRenderer(map,1f / 32f);
 }

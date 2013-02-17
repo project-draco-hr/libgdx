@@ -3,9 +3,7 @@
   Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
   camera.update();
   renderer.setView(camera);
-  renderer.begin();
   renderer.render();
-  renderer.end();
   batch.begin();
   font.draw(batch,"FPS: " + Gdx.graphics.getFramesPerSecond(),10,20);
   batch.end();
