@@ -3,7 +3,6 @@
   loadProperties(element,layer.getProperties());
   layer.setName(element.getAttribute("Name",""));
   layer.setVisible(Boolean.parseBoolean(element.getAttribute("Visible","true")));
-  s_logger.info("loading layer " + layer.getName());
   Array<Element> items=element.getChildByName("Items").getChildrenByName("Item");
   for (int i=0; i < items.size; ++i) {
     Element item=items.get(i);
@@ -32,5 +31,5 @@
     }
     layer.getObjects().addObject(mapObject);
   }
-  m_map.getLayers().addLayer(layer);
+  map.getLayers().addLayer(layer);
 }

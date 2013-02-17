@@ -8,9 +8,8 @@
     fpsFont=manager.get("data/font.fnt",BitmapFont.class);
   }
   if (state == State.Running) {
-    renderer.begin();
-    renderer.render(camera);
-    renderer.end();
+    renderer.setView(camera);
+    renderer.render();
     if (Gdx.input.isKeyPressed(Keys.UP)) {
       camera.position.y+=5.0f;
     }

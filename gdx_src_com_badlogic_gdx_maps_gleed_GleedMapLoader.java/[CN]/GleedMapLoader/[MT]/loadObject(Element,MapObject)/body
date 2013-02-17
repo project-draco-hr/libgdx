@@ -2,5 +2,4 @@
   mapObject.setName(element.getAttribute("Name",""));
   mapObject.setVisible(Boolean.parseBoolean(element.getAttribute("Visible","true")));
   loadProperties(element,mapObject.getProperties());
-  s_logger.info("loading element " + mapObject.getName());
 }

@@ -1,0 +1,9 @@
+{
+  batch.begin();
+  batch.enableBlending();
+  MapLayers layers=map.getLayers();
+  for (  MapLayer layer : layers) {
+    renderLayer(layer);
+  }
+  batch.end();
+}

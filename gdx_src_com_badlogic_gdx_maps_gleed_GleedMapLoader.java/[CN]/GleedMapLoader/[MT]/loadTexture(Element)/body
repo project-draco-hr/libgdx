@@ -3,13 +3,13 @@
   loadObject(item,texture);
   texture.setColor(loadColor(item.getChildByName("TintColor")));
   TextureRegion region;
-  if (m_atlasFile.isEmpty()) {
+  if (atlasFile.isEmpty()) {
     String[] pathParts=item.getChildByName("texture_filename").getText().split("\\\\");
-    region=new TextureRegion(m_assetManager.get(m_pathRoot + "/" + pathParts[pathParts.length - 1],Texture.class));
+    region=new TextureRegion(assetManager.get(pathRoot + "/" + pathParts[pathParts.length - 1],Texture.class));
   }
  else {
     String[] assetParts=item.getChildByName("asset_name").getText().split("\\\\");
-    region=new TextureRegion(m_atlas.findRegion(assetParts[assetParts.length - 1]));
+    region=new TextureRegion(atlas.findRegion(assetParts[assetParts.length - 1]));
   }
   region.flip(Boolean.parseBoolean(item.getChildByName("FlipHorizontally").getText()),Boolean.parseBoolean(item.getChildByName("FlipVertically").getText()));
   texture.setTextureRegion(region);

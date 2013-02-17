@@ -1,12 +1,12 @@
 {
-  m_map=map;
-  m_units=units;
+  this.map=map;
+  this.units=units;
   if (batch != null) {
-    m_batch=batch;
-    m_ownSpriteBatch=false;
+    this.batch=batch;
+    ownSpriteBatch=false;
   }
  else {
-    m_batch=new SpriteBatch();
-    m_ownSpriteBatch=true;
+    batch=new SpriteBatch();
+    ownSpriteBatch=true;
   }
 }
