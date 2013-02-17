@@ -1,0 +1,13 @@
+{
+  if (!cached) {
+    spriteCache.endCache();
+    cached=true;
+    begin();
+    render();
+    end();
+  }
+ else {
+    spriteCache.end();
+    Gdx.gl.glDisable(GL10.GL_BLEND);
+  }
+}
