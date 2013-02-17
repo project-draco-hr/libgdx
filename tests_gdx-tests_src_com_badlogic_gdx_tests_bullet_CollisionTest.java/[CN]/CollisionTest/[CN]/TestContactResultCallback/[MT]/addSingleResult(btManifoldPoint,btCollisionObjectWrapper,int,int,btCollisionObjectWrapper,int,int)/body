@@ -1,7 +1,8 @@
 {
   btCollisionObject other=colObj0Wrap.getM_collisionObject() == projectile.body ? colObj1Wrap.getM_collisionObject() : colObj0Wrap.getM_collisionObject();
   if (other != null && other.userData != null && other.userData instanceof BulletEntity) {
-    if (!hits.contains((BulletEntity)other.userData,true))     hits.add((BulletEntity)other.userData);
+    BulletEntity ent=(BulletEntity)other.userData;
+    if (ent != ground && !hits.contains(ent,true))     hits.add((BulletEntity)other.userData);
   }
   return 0f;
 }
