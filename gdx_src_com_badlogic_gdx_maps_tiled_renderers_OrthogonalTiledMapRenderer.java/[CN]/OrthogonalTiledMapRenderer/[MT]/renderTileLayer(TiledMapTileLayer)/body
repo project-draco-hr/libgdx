@@ -13,6 +13,7 @@
       final TiledMapTileLayer.Cell cell=layer.getCell(col,row);
       final TiledMapTile tile=cell.getTile();
       if (tile != null) {
+        if (tile instanceof AnimatedTiledMapTile)         continue;
         final boolean flipX=cell.getFlipHorizontally();
         final boolean flipY=cell.getFlipVertically();
         final int rotations=cell.getRotation();
