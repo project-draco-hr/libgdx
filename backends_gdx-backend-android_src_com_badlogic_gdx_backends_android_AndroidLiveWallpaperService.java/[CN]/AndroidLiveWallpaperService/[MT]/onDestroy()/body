@@ -4,6 +4,30 @@
   super.onDestroy();
   if (app != null) {
     if (app.graphics != null) {
+      if (app.graphics.view != null && (app.graphics.view instanceof GLSurfaceView)) {
+        GLSurfaceView glSurfaceView=(GLSurfaceView)app.graphics.view;
+        try {
+          Method method=null;
+          for (          Method m : glSurfaceView.getClass().getMethods()) {
+            if (m.getName().equals("onDestroy")) {
+              method=m;
+              break;
+            }
+          }
+          if (method != null) {
+            method.invoke(glSurfaceView);
+            if (DEBUG)             Log.d(TAG," > AndroidLiveWallpaperService - onDestroy() stopped GLThread managed by GLSurfaceView");
+          }
+ else           throw new Exception("method not found!");
+        }
+ catch (        Throwable t) {
+          Log.e(TAG,"failed to destroy GLSurfaceView's thread! GLSurfaceView.onDetachedFromWindow impl changed since API lvl 16!");
+          t.printStackTrace();
+        }
+      }
+    }
+    if (app.audio != null) {
+      app.audio.dispose();
     }
     app=null;
     view=null;

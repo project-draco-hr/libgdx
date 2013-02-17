@@ -5,6 +5,9 @@
       @Override public SurfaceHolder getHolder(){
         return getSurfaceHolder();
       }
+      public void onDestroy(){
+        onDetachedFromWindow();
+      }
     }
 ;
     if (configChooser != null)     view.setEGLConfigChooser(configChooser);
@@ -24,6 +27,9 @@
         }
         @Override public SurfaceHolder getHolder(){
           return getSurfaceHolder();
+        }
+        public void onDestroy(){
+          onDetachedFromWindow();
         }
       }
 ;
