@@ -1,9 +1,12 @@
 {
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause()");
   graphics.pause();
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause() graphics paused!");
   input.unregisterSensorListeners();
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
  else     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
  else     throw new RuntimeException("unimplemented");
   }
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause() done!");
 }

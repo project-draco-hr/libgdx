@@ -2,6 +2,7 @@
   engines++;
   setLinkedEngine(this);
   if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onSurfaceCreated() " + hashCode() + ", running: "+ engines+ ", linked: "+ (linkedEngine == this));
+  Log.i(TAG,"engine surface created");
   super.onSurfaceCreated(holder);
   if (engines == 1) {
     visibleEngines=0;
