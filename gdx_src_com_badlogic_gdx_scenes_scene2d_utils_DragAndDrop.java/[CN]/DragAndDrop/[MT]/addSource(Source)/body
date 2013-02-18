@@ -1,14 +1,11 @@
 {
   DragListener listener=new DragListener(){
     public void dragStart(    InputEvent event,    float x,    float y,    int pointer){
-synchronized (dragSyncObj) {
-        if (isDragging) {
-          event.stop();
-          return;
-        }
-        isDragging=true;
-        activePointer=pointer;
+      if (activePointer != -1) {
+        event.stop();
+        return;
       }
+      activePointer=pointer;
       dragStartTime=System.currentTimeMillis();
       payload=source.dragStart(event,getTouchDownX(),getTouchDownY(),pointer);
       event.stop();
@@ -61,9 +58,7 @@ synchronized (dragSyncObj) {
     public void dragStop(    InputEvent event,    float x,    float y,    int pointer){
       if (payload == null)       return;
       if (pointer != activePointer)       return;
-synchronized (dragSyncObj) {
-        isDragging=false;
-      }
+      activePointer=-1;
       if (System.currentTimeMillis() - dragStartTime < dragTime)       isValidTarget=false;
       if (dragActor != null)       dragActor.remove();
       if (isValidTarget) {
