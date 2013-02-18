@@ -14,12 +14,15 @@ synchronized (synch) {
     lresume=resume;
     if (resume) {
       resume=false;
+      resuming=true;
     }
     if (pause) {
       pause=false;
+      pausing=true;
     }
     if (destroy) {
       destroy=false;
+      destroying=true;
     }
   }
   if (lresume) {

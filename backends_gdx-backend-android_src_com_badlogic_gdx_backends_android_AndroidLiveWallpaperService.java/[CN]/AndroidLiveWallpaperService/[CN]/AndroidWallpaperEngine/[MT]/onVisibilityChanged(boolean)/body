@@ -1,9 +1,5 @@
 {
   if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onVisibilityChanged(" + visible + ") "+ hashCode()+ ", sufcace valid: "+ getSurfaceHolder().getSurface().isValid());
   super.onVisibilityChanged(visible);
-  if (visible != isVisible()) {
-    if (DEBUG)     Log.d(TAG," > AndroidWallpaperEngine - onVisibilityChanged() fake visibilityChanged event! Android WallpaperService likes do that!");
-    return;
-  }
   notifyVisibilityChanged(visible);
 }
