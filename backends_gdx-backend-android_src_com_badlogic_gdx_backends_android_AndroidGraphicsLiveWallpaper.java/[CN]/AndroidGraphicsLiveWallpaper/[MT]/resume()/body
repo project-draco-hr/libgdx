@@ -2,7 +2,7 @@
 synchronized (synch) {
     running=true;
     resume=true;
-    while (resume || resuming) {
+    while (resume) {
       try {
         synch.wait();
       }

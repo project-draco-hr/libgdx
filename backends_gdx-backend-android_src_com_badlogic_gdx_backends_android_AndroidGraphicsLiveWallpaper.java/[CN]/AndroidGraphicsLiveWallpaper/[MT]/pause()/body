@@ -3,7 +3,7 @@ synchronized (synch) {
     if (!running)     return;
     running=false;
     pause=true;
-    while (pause || pausing) {
+    while (pause) {
       try {
         synch.wait();
       }

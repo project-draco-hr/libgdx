@@ -1,7 +1,6 @@
 {
   if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause()");
-  graphics.pause();
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause() graphics paused!");
+  audio.pause();
   input.unregisterSensorListeners();
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();

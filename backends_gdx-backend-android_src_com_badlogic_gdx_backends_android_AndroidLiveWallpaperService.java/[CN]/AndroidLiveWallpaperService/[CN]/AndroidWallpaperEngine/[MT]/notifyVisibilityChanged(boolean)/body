@@ -4,4 +4,7 @@
     if (this.isVisible)     onResume();
  else     onPause();
   }
+ else {
+    if (DEBUG)     Log.d(TAG," > visible state is current, skipping visibilityChanged event!");
+  }
 }

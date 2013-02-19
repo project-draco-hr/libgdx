@@ -1,12 +1,12 @@
 {
   graphics=new AndroidGraphicsLiveWallpaper(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
-  input=new AndroidInput(this,this.getService(),null,config);
+  input=AndroidInputFactory.newAndroidInput(this,this.getService(),graphics.view,config);
   audio=new AndroidAudio(this.getService(),config);
   files=new AndroidFiles(this.getService().getAssets(),this.getService().getFilesDir().getAbsolutePath());
   this.listener=listener;
   Gdx.app=this;
-  Gdx.input=this.getInput();
-  Gdx.audio=this.getAudio();
-  Gdx.files=this.getFiles();
-  Gdx.graphics=this.getGraphics();
+  Gdx.input=input;
+  Gdx.audio=audio;
+  Gdx.files=files;
+  Gdx.graphics=graphics;
 }

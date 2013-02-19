@@ -14,19 +14,18 @@ synchronized (synch) {
     lresume=resume;
     if (resume) {
       resume=false;
-      resuming=true;
+      synch.notifyAll();
     }
     if (pause) {
       pause=false;
-      pausing=true;
+      synch.notifyAll();
     }
     if (destroy) {
       destroy=false;
-      destroying=true;
+      synch.notifyAll();
     }
   }
   if (lresume) {
-    ((AndroidAudio)app.getAudio()).resume();
     app.listener.resume();
     Gdx.app.log("AndroidGraphics","resumed");
   }
@@ -49,12 +48,10 @@ synchronized (app.runnables) {
   }
   if (lpause) {
     app.listener.pause();
-    ((AndroidAudio)app.getAudio()).pause();
     Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
     app.listener.dispose();
-    ((AndroidAudio)app.getAudio()).dispose();
     Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {
@@ -63,18 +60,4 @@ synchronized (app.runnables) {
     frameStart=time;
   }
   frames++;
-synchronized (synch) {
-    if (resuming) {
-      resuming=false;
-      synch.notifyAll();
-    }
-    if (pausing) {
-      pausing=false;
-      synch.notifyAll();
-    }
-    if (destroying) {
-      destroying=false;
-      synch.notifyAll();
-    }
-  }
 }

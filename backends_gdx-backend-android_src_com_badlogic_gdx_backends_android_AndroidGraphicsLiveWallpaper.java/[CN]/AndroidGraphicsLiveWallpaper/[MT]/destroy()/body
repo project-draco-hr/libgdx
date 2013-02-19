@@ -2,7 +2,7 @@
 synchronized (synch) {
     running=false;
     destroy=true;
-    while (destroy || destroying) {
+    while (destroy) {
       try {
         synch.wait();
       }
