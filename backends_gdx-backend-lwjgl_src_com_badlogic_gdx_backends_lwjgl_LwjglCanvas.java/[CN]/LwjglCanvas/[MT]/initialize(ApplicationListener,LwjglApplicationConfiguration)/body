@@ -1,7 +1,7 @@
 {
   LwjglNativesLoader.load();
   canvas=new Canvas(){
-    private final Dimension minSize=new Dimension(0,0);
+    private final Dimension minSize=new Dimension(1,1);
     public final void addNotify(){
       super.addNotify();
       if (SharedLibraryLoader.isMac) {
@@ -23,6 +23,7 @@
     }
   }
 ;
+  canvas.setSize(1,1);
   canvas.setIgnoreRepaint(true);
   graphics=new LwjglGraphics(canvas,config){
     public void setTitle(    String title){
