@@ -1,5 +1,6 @@
 {
-  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onVisibilityChanged(" + visible + ") "+ hashCode()+ ", sufcace valid: "+ getSurfaceHolder().getSurface().isValid());
+  boolean reportedVisible=isVisible();
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onVisibilityChanged(paramVisible: " + visible + " reportedVisible: "+ reportedVisible+ ") "+ hashCode()+ ", sufcace valid: "+ getSurfaceHolder().getSurface().isValid());
   super.onVisibilityChanged(visible);
   notifyVisibilityChanged(visible);
 }
