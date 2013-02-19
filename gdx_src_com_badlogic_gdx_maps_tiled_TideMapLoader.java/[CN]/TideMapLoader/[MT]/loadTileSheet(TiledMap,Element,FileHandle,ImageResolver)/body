@@ -21,7 +21,7 @@
     int spacingX=Integer.parseInt(spacingParts[0]);
     int spacingY=Integer.parseInt(spacingParts[1]);
     FileHandle image=getRelativeFileHandle(tideFile,imageSource);
-    Texture texture=imageResolver.getImage(image.path());
+    TextureRegion texture=imageResolver.getImage(image.path());
     TiledMapTileSets tilesets=map.getTileSets();
     int firstgid=1;
     for (    TiledMapTileSet tileset : tilesets) {
@@ -31,8 +31,8 @@
     tileset.setName(id);
     tileset.getProperties().put("firstgid",firstgid);
     int gid=firstgid;
-    int stopWidth=texture.getWidth() - tileSizeX;
-    int stopHeight=texture.getHeight() - tileSizeY;
+    int stopWidth=texture.getRegionWidth() - tileSizeX;
+    int stopHeight=texture.getRegionHeight() - tileSizeY;
     for (int y=marginY; y <= stopHeight; y+=tileSizeY + spacingY) {
       for (int x=marginX; x <= stopWidth; x+=tileSizeX + spacingX) {
         TiledMapTile tile=new StaticTiledMapTile(new TextureRegion(texture,x,y,tileSizeX,tileSizeY));
