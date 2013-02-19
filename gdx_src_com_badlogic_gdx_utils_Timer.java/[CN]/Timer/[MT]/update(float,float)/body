@@ -1,5 +1,4 @@
 {
-  float wait=Float.MAX_VALUE;
 synchronized (tasks) {
     for (int i=0, n=tasks.size; i < n; i++) {
       Task task=tasks.get(i);
@@ -8,7 +7,9 @@ synchronized (tasks) {
         continue;
       }
       if (task.repeatCount != CANCELLED) {
-        if (task.repeatCount == 0)         task.repeatCount=CANCELLED;
+        if (task.repeatCount == 0) {
+          task.repeatCount=CANCELLED;
+        }
         Gdx.app.postRunnable(task);
       }
       if (task.repeatCount == CANCELLED) {
