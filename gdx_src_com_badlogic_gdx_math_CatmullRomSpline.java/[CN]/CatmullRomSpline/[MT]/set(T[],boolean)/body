@@ -1,0 +1,7 @@
+{
+  if (tmp == null)   tmp=controlPoints[0].cpy();
+  this.controlPoints=controlPoints;
+  this.continuous=continuous;
+  this.spanCount=continuous ? controlPoints.length : controlPoints.length - 3;
+  return this;
+}
