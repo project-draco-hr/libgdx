@@ -1,7 +1,7 @@
 {
-  if (this.isVisible != visible) {
-    this.isVisible=visible;
-    if (this.isVisible)     onResume();
+  if (this.engineIsVisible != visible) {
+    this.engineIsVisible=visible;
+    if (this.engineIsVisible)     onResume();
  else     onPause();
   }
  else {

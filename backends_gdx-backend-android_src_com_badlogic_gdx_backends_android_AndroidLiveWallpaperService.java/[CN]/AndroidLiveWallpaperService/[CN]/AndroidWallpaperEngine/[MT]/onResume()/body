@@ -5,11 +5,11 @@
   if (linkedEngine != null) {
     if (linkedEngine != this) {
       setLinkedEngine(this);
-      view.surfaceDestroyed(getSurfaceHolder());
-      view.surfaceCreated(getSurfaceHolder());
+      view.surfaceDestroyed(this.getSurfaceHolder());
+      view.surfaceCreated(this.getSurfaceHolder());
     }
+    notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
     if (visibleEngines == 1)     app.onResume();
-    if (waitingSurfaceChangedEvent != null)     waitingSurfaceChangedEvent.run();
     notifyPreviewState();
     notifyOffsetsChanged();
   }
