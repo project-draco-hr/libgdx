@@ -20,10 +20,12 @@
   engineFormat=viewFormat;
   engineWidth=viewWidth;
   engineHeight=viewHeight;
-  notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
-  if (engines == 1)   view.surfaceCreated(holder);
+  if (engines == 1) {
+    view.surfaceCreated(holder);
+  }
  else {
     view.surfaceDestroyed(holder);
+    notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
     view.surfaceCreated(holder);
   }
   notifyPreviewState();

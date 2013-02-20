@@ -6,9 +6,12 @@
     if (linkedEngine != this) {
       setLinkedEngine(this);
       view.surfaceDestroyed(this.getSurfaceHolder());
+      notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
       view.surfaceCreated(this.getSurfaceHolder());
     }
-    notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
+ else {
+      notifySurfaceChanged(engineFormat,engineWidth,engineHeight,false);
+    }
     if (visibleEngines == 1)     app.onResume();
     notifyPreviewState();
     notifyOffsetsChanged();
