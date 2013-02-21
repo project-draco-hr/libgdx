@@ -1,0 +1,56 @@
+{
+  koala.stateTime+=deltaTime;
+  if (Gdx.input.isKeyPressed(Keys.SPACE) & koala.grounded) {
+    koala.velocity.y+=Koala.JUMP_VELOCITY;
+    koala.state=Koala.State.Jumping;
+    koala.grounded=false;
+  }
+  if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
+    koala.velocity.x-=Koala.WALK_VELOCITY;
+    if (koala.state != Koala.State.Jumping)     koala.state=Koala.State.Walking;
+    koala.facesRight=false;
+  }
+  if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
+    koala.velocity.x+=Koala.WALK_VELOCITY;
+    if (koala.state != Koala.State.Jumping)     koala.state=Koala.State.Walking;
+    koala.facesRight=true;
+  }
+  koala.velocity.add(0,GRAVITY);
+  koala.velocity.mul(deltaTime);
+  Rectangle koalaRect=rectPool.obtain();
+  System.out.println("frame");
+  koalaRect.set(koala.position.x,koala.position.y,Koala.WIDTH,Koala.HEIGHT);
+  koalaRect.y+=koala.velocity.y;
+  for (  Rectangle rect : getCollidingTiles(koala.position,0,koala.velocity.y)) {
+    if (koalaRect.overlaps(rect)) {
+      System.out.println("coll y");
+      if (koala.velocity.y < 0) {
+        koalaRect.y=rect.y + rect.height + 0.001f;
+        koala.grounded=true;
+      }
+ else       if (koala.velocity.y > 0) {
+        koalaRect.y=rect.y - rect.height - 0.001f;
+      }
+      koala.velocity.y=0;
+    }
+  }
+  koala.position.set(koalaRect.x,koalaRect.y);
+  koalaRect.x+=koala.velocity.x;
+  for (  Rectangle rect : getCollidingTiles(koala.position,koala.velocity.x,0)) {
+    if (koalaRect.overlaps(rect)) {
+      System.out.println("coll x");
+      if (koala.velocity.x < 0) {
+        koalaRect.x=rect.x + rect.width + 0.001f;
+      }
+ else       if (koala.velocity.x > 0) {
+        koalaRect.x=rect.x - rect.width - 0.001f;
+      }
+      koala.velocity.x=0;
+      koala.state=Koala.State.Standing;
+    }
+  }
+  koala.position.set(koalaRect.x,koalaRect.y);
+  koala.velocity.mul(1 / deltaTime);
+  rectPool.free(koalaRect);
+  koala.velocity.x*=Koala.DAMPING;
+}
