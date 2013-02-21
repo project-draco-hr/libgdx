@@ -1,5 +1,5 @@
 {
-  Vector2 target_direction=targetPos.tmp().sub(collisionCenter);
+  target_direction.set(targetPos).sub(collisionCenter);
   if (isAway) {
     target_direction.mul(-1);
   }

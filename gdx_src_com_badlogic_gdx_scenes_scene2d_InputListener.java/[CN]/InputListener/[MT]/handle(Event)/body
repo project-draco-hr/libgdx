@@ -9,7 +9,7 @@ case keyUp:
 case keyTyped:
 return keyTyped(event,event.getCharacter());
 }
-Vector2 coords=Vector2.tmp.set(event.getStageX(),event.getStageY());
+coords.set(event.getStageX(),event.getStageY());
 event.getListenerActor().stageToLocalCoordinates(coords);
 switch (event.getType()) {
 case touchDown:
