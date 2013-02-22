@@ -1,0 +1,68 @@
+{
+  int tileX=(int)position.x;
+  int tileY=(int)position.y;
+  for (int i=0, j=surroundingTiles.length; i < j; i++) {
+    surroundingTiles[i].reset();
+  }
+  boolean goUp=tileY > 0;
+  boolean goDown=tileY < layer.getHeight() - 1;
+  boolean goLeft=tileX > 0;
+  boolean goRight=tileX < layer.getWidth() - 1;
+  TileData item=null;
+  if (goUp) {
+    item=surroundingTiles[UP];
+    item.tileX=tileX;
+    item.tileY=tileY + 1;
+    item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+    item.rectangle.set(item.tileX,item.tileY,1,1);
+    if (goLeft) {
+      item=surroundingTiles[UP_LEFT];
+      item.tileX=tileX - 1;
+      item.tileY=tileY + 1;
+      item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+      item.rectangle.set(item.tileX,item.tileY,1,1);
+    }
+    if (goRight) {
+      item=surroundingTiles[UP_RIGHT];
+      item.tileX=tileX + 1;
+      item.tileY=tileY + 1;
+      item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+      item.rectangle.set(item.tileX,item.tileY,1,1);
+    }
+  }
+  if (goDown) {
+    item=surroundingTiles[DOWN];
+    item.tileX=tileX;
+    item.tileY=tileY - 1;
+    item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+    item.rectangle.set(item.tileX,item.tileY,1,1);
+    if (goLeft) {
+      item=surroundingTiles[DOWN_LEFT];
+      item.tileX=tileX - 1;
+      item.tileY=tileY - 1;
+      item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+      item.rectangle.set(item.tileX,item.tileY,1,1);
+    }
+    if (goRight) {
+      item=surroundingTiles[DOWN_RIGHT];
+      item.tileX=tileX + 1;
+      item.tileY=tileY - 1;
+      item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+      item.rectangle.set(item.tileX,item.tileY,1,1);
+    }
+  }
+  if (goLeft) {
+    item=surroundingTiles[LEFT];
+    item.tileX=tileX - 1;
+    item.tileY=tileY;
+    item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+    item.rectangle.set(item.tileX,item.tileY,1,1);
+  }
+  if (goRight) {
+    item=surroundingTiles[RIGHT];
+    item.tileX=tileX + 1;
+    item.tileY=tileY;
+    item.tile=layer.getCell(item.tileX,item.tileY).getTile();
+    item.rectangle.set(item.tileX,item.tileY,1,1);
+  }
+}

@@ -18,39 +18,87 @@
   koala.velocity.add(0,GRAVITY);
   koala.velocity.mul(deltaTime);
   Rectangle koalaRect=rectPool.obtain();
-  System.out.println("frame");
-  koalaRect.set(koala.position.x,koala.position.y,Koala.WIDTH,Koala.HEIGHT);
-  koalaRect.y+=koala.velocity.y;
-  for (  Rectangle rect : getCollidingTiles(koala.position,0,koala.velocity.y)) {
-    if (koalaRect.overlaps(rect)) {
-      System.out.println("coll y");
-      if (koala.velocity.y < 0) {
-        koalaRect.y=rect.y + rect.height + 0.001f;
-        koala.grounded=true;
-      }
- else       if (koala.velocity.y > 0) {
-        koalaRect.y=rect.y - rect.height - 0.001f;
-      }
+  Rectangle intersect=rectPool.obtain();
+  tmp.set(koala.position).add(koala.velocity);
+  koalaRect.set(tmp.x,tmp.y,Koala.WIDTH,Koala.HEIGHT);
+  getSurroundingTilesForPosition(tmp.set(koala.position).add(Koala.WIDTH / 2,Koala.HEIGHT / 2),(TiledMapTileLayer)map.getLayers().getLayer(1));
+  TileData item=null;
+  item=surroundingTiles[UP];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      koalaRect.y-=intersect.height;
       koala.velocity.y=0;
     }
   }
-  koala.position.set(koalaRect.x,koalaRect.y);
-  koalaRect.x+=koala.velocity.x;
-  for (  Rectangle rect : getCollidingTiles(koala.position,koala.velocity.x,0)) {
-    if (koalaRect.overlaps(rect)) {
-      System.out.println("coll x");
-      if (koala.velocity.x < 0) {
-        koalaRect.x=rect.x + rect.width + 0.001f;
+  item=surroundingTiles[DOWN];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      koalaRect.y+=intersect.height;
+      koala.velocity.y=0;
+      koala.grounded=true;
+    }
+  }
+  item=surroundingTiles[LEFT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      koalaRect.x+=intersect.width;
+    }
+  }
+  item=surroundingTiles[RIGHT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      koalaRect.x-=intersect.width;
+    }
+  }
+  item=surroundingTiles[UP_LEFT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      if (intersect.width > intersect.height) {
+        koalaRect.y-=intersect.height;
+        koala.velocity.y=0;
       }
- else       if (koala.velocity.x > 0) {
-        koalaRect.x=rect.x - rect.width - 0.001f;
+ else {
+        koalaRect.x+=intersect.width;
       }
-      koala.velocity.x=0;
-      koala.state=Koala.State.Standing;
+    }
+  }
+  item=surroundingTiles[UP_RIGHT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      if (intersect.width > intersect.height) {
+        koalaRect.y-=intersect.height;
+        koala.velocity.y=0;
+      }
+ else {
+        koalaRect.x-=intersect.width;
+      }
+    }
+  }
+  item=surroundingTiles[DOWN_LEFT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      if (intersect.width > intersect.height) {
+        koalaRect.y+=intersect.height;
+      }
+ else {
+        koalaRect.x+=intersect.width;
+      }
+    }
+  }
+  item=surroundingTiles[DOWN_RIGHT];
+  if (item.tile != null) {
+    if (intersect(koalaRect,item.rectangle,intersect)) {
+      if (intersect.width > intersect.height) {
+        koalaRect.y+=intersect.height;
+      }
+ else {
+        koalaRect.x-=intersect.width;
+      }
     }
   }
   koala.position.set(koalaRect.x,koalaRect.y);
   koala.velocity.mul(1 / deltaTime);
   rectPool.free(koalaRect);
+  rectPool.free(intersect);
   koala.velocity.x*=Koala.DAMPING;
 }
