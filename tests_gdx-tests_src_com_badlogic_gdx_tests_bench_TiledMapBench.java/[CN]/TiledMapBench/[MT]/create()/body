@@ -19,7 +19,9 @@
         for (int y=0; y < 100; y++) {
           int ty=(int)(Math.random() * splitTiles.length);
           int tx=(int)(Math.random() * splitTiles[ty].length);
-          layer.setCell(x,y,new StaticTiledMapTile(splitTiles[ty][tx]));
+          Cell cell=new Cell();
+          cell.setTile(new StaticTiledMapTile(splitTiles[ty][tx]));
+          layer.setCell(x,y,cell);
         }
       }
       layers.addLayer(layer);

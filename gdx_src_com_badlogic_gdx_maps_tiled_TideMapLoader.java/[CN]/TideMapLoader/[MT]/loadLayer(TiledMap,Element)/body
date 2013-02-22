@@ -33,7 +33,9 @@
           x+=currentChild.getIntAttribute("Count");
         }
  else         if (name.equals("Static")) {
-          layer.setCell(x++,y,currentTileSet.getTile(firstgid + currentChild.getIntAttribute("Index")));
+          Cell cell=new Cell();
+          cell.setTile(currentTileSet.getTile(firstgid + currentChild.getIntAttribute("Index")));
+          layer.setCell(x++,y,cell);
         }
  else         if (name.equals("Animated")) {
           int interval=currentChild.getInt("Interval");
@@ -50,7 +52,9 @@
               frameTiles.add((StaticTiledMapTile)currentTileSet.getTile(firstgid + frame.getIntAttribute("Index")));
             }
           }
-          layer.setCell(x++,y,new AnimatedTiledMapTile(interval / 1000f,frameTiles));
+          Cell cell=new Cell();
+          cell.setTile(new AnimatedTiledMapTile(interval / 1000f,frameTiles));
+          layer.setCell(x++,y,cell);
         }
       }
     }

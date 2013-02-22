@@ -13,6 +13,7 @@
       float x=(col * halfTileWidth) + (row * halfTileWidth);
       float y=(row * halfTileHeight) - (col * halfTileHeight);
       final TiledMapTileLayer.Cell cell=layer.getCell(col,row);
+      if (cell == null)       continue;
       final TiledMapTile tile=cell.getTile();
       if (tile != null) {
         final boolean flipX=cell.getFlipHorizontally();

@@ -1,0 +1,13 @@
+{
+  TiledMapTileLayer layer=(TiledMapTileLayer)map.getLayers().getLayer(1);
+  rectPool.freeAll(tiles);
+  tiles.clear();
+  for (int y=startY; y <= endY; y++) {
+    for (int x=startX; x <= endX; x++) {
+      Cell cell=layer.getCell(x,y);
+      Rectangle rect=rectPool.obtain();
+      rect.set(x,y,1,1);
+      if (cell != null)       tiles.add(rect);
+    }
+  }
+}
