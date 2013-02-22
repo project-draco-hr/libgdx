@@ -1,0 +1,9 @@
+{
+  fill.clear();
+  for (  MapObject object : objects) {
+    if (type.equals(object.getClass())) {
+      fill.add((T)object);
+    }
+  }
+  return fill;
+}
