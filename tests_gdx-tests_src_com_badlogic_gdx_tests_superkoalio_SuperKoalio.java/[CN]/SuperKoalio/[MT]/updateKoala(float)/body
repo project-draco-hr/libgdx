@@ -56,7 +56,13 @@
   koalaRect.y+=koala.velocity.y;
   for (  Rectangle tile : tiles) {
     if (koalaRect.overlaps(tile)) {
-      if (koala.velocity.y < 0)       koala.grounded=true;
+      if (koala.velocity.y > 0) {
+        koala.position.y=tile.y - Koala.HEIGHT;
+      }
+ else {
+        koala.position.y=tile.y + tile.height;
+        koala.grounded=true;
+      }
       koala.velocity.y=0;
       break;
     }
@@ -64,6 +70,5 @@
   rectPool.free(koalaRect);
   koala.position.add(koala.velocity);
   koala.velocity.mul(1 / deltaTime);
-  System.out.println(koala.velocity);
   koala.velocity.x*=Koala.DAMPING;
 }
