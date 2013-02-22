@@ -3,7 +3,7 @@
     Actor actor=actors.get(i);
     if (actor == this)     continue;
     if (actor instanceof TextField) {
-      Vector2 actorCoords=actor.getParent().localToStageCoordinates(Vector2.tmp3.set(actor.getX(),actor.getY()));
+      Vector2 actorCoords=actor.getParent().localToStageCoordinates(tmp3.set(actor.getX(),actor.getY()));
       if ((actorCoords.y < currentCoords.y || (actorCoords.y == currentCoords.y && actorCoords.x > currentCoords.x)) ^ up) {
         if (best == null || (actorCoords.y > bestCoords.y || (actorCoords.y == bestCoords.y && actorCoords.x < bestCoords.x)) ^ up) {
           best=(TextField)actor;
