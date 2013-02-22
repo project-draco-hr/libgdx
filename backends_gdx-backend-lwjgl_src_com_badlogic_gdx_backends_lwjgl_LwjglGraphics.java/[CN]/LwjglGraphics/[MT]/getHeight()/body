@@ -1,4 +1,4 @@
 {
-  if (canvas != null)   return canvas.getHeight();
+  if (canvas != null)   return Math.max(1,canvas.getHeight());
  else   return Display.getHeight();
 }
