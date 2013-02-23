@@ -1,12 +1,12 @@
 {
-  if (!layer.getVisible()) {
+  if (!layer.isVisible()) {
     return;
   }
   MapObjects objects=layer.getObjects();
   int numObjects=objects.getNumObjects();
   for (int j=0; j < numObjects; ++j) {
     MapObject mapObject=objects.getObject(j);
-    if (mapObject == null || !mapObject.getVisible()) {
+    if (mapObject == null || !mapObject.isVisible()) {
       continue;
     }
     if (!(mapObject instanceof TextureMapObject)) {

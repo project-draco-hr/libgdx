@@ -1,7 +1,7 @@
 {
   spriteBatch.begin();
   for (  MapLayer layer : map.getLayers()) {
-    if (layer.getVisible()) {
+    if (layer.isVisible()) {
       if (layer instanceof TiledMapTileLayer) {
         renderTileLayer((TiledMapTileLayer)layer);
       }
