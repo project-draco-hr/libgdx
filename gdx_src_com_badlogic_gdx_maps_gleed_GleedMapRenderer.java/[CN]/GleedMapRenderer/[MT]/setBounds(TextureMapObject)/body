@@ -1,0 +1,48 @@
+{
+  TextureRegion region=texture.getTextureRegion();
+  float x1=-region.getRegionWidth() * 0.5f * units* texture.getScaleX();
+  float x2=-x1;
+  float y1=-region.getRegionHeight() * 0.5f * units* texture.getScaleY();
+  float y2=-y1;
+  float rotation=texture.getRotation();
+  if (rotation == 0.0f) {
+    a.x=x1;
+    a.y=y1;
+    b.x=x2;
+    b.y=y1;
+    c.x=x2;
+    c.y=y2;
+    d.x=x1;
+    d.y=y2;
+  }
+ else {
+    float sin=(float)Math.sin(rotation);
+    float cos=(float)Math.cos(rotation);
+    a.x=x1 * cos - y1 * sin;
+    a.y=x1 * sin - y1 * cos;
+    b.x=x2 * cos - y1 * sin;
+    b.y=x2 * sin - y1 * cos;
+    c.x=x2 * cos - y2 * sin;
+    c.y=x2 * sin - y2 * cos;
+    d.x=x1 * cos - y2 * sin;
+    d.y=x1 * sin - y2 * cos;
+  }
+  float posX=texture.getX();
+  float posY=texture.getY();
+  a.x+=posX * units;
+  a.y+=posY * units;
+  b.x+=posX * units;
+  b.y+=posY * units;
+  c.x+=posX * units;
+  c.y+=posY * units;
+  d.x+=posX * units;
+  d.y+=posY * units;
+  float minX=Math.min(Math.min(Math.min(a.x,b.x),c.x),d.x);
+  float minY=Math.min(Math.min(Math.min(a.y,b.y),c.y),d.y);
+  float maxX=Math.max(Math.max(Math.max(a.x,b.x),c.x),d.x);
+  float maxY=Math.max(Math.max(Math.max(a.y,b.y),c.y),d.y);
+  box.x=minX;
+  box.y=minY;
+  box.width=maxX - minX;
+  box.height=maxY - minY;
+}

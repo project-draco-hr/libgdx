@@ -1,0 +1,17 @@
+{
+  spriteBatch.begin();
+  for (  int layerIdx : layers) {
+    MapLayer layer=map.getLayers().getLayer(layerIdx);
+    if (layer.isVisible()) {
+      if (layer instanceof TiledMapTileLayer) {
+        renderTileLayer((TiledMapTileLayer)layer);
+      }
+ else {
+        for (        MapObject object : layer.getObjects()) {
+          renderObject(object);
+        }
+      }
+    }
+  }
+  spriteBatch.end();
+}

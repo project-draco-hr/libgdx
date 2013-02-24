@@ -1,0 +1,3 @@
+{
+  return new Color(Float.parseFloat(colorElement.getChildByName("R").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("G").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("B").getText()) / 255.0f,Float.parseFloat(colorElement.getChildByName("A").getText()) / 255.0f);
+}

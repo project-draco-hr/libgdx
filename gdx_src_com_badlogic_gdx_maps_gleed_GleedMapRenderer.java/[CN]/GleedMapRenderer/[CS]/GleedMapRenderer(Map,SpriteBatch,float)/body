@@ -1,0 +1,12 @@
+{
+  this.map=map;
+  this.units=units;
+  if (batch != null) {
+    this.batch=batch;
+    ownSpriteBatch=false;
+  }
+ else {
+    batch=new SpriteBatch();
+    ownSpriteBatch=true;
+  }
+}

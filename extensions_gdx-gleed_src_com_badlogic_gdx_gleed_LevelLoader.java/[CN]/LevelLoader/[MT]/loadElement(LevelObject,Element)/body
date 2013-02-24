@@ -1,6 +1,0 @@
-{
-  levelObject.name=element.getAttribute("Name","");
-  levelObject.visible=Boolean.parseBoolean(element.getAttribute("Visible","true"));
-  levelObject.properties.load(element);
-  s_logger.info("loading element " + levelObject.name);
-}
