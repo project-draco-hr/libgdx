@@ -1,0 +1,8 @@
+{
+  if (readBuffer == null || readBuffer.length < numSamples)   readBuffer=new short[numSamples];
+  if (channels <= 0)   channels=getChannels();
+  int result=readSamples(readBuffer,0,numSamples);
+  if (result <= 0)   return result;
+  AudioTools.toFloat(readBuffer,0,samples,offset,result);
+  return result;
+}
