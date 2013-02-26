@@ -27,7 +27,7 @@
         }
         object=new PolylineMapObject(vertices);
       }
- else       if ((child == element.getChildByName("ellipse"))) {
+ else       if ((child=element.getChildByName("ellipse")) != null) {
         object=new EllipseMapObject(x,y,width,height);
       }
     }
