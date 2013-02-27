@@ -1,16 +1,16 @@
 {
   koala.stateTime+=deltaTime;
-  if (Gdx.input.isKeyPressed(Keys.SPACE) & koala.grounded) {
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || isTouched(0.75f,1)) && koala.grounded) {
     koala.velocity.y+=Koala.JUMP_VELOCITY;
     koala.state=Koala.State.Jumping;
     koala.grounded=false;
   }
-  if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A)) {
+  if (Gdx.input.isKeyPressed(Keys.LEFT) || Gdx.input.isKeyPressed(Keys.A) || isTouched(0,0.25f)) {
     koala.velocity.x=-Koala.MAX_VELOCITY;
     if (koala.grounded)     koala.state=Koala.State.Walking;
     koala.facesRight=false;
   }
-  if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D)) {
+  if (Gdx.input.isKeyPressed(Keys.RIGHT) || Gdx.input.isKeyPressed(Keys.D) || isTouched(0.25f,0.5f)) {
     koala.velocity.x=Koala.MAX_VELOCITY;
     if (koala.grounded)     koala.state=Koala.State.Walking;
     koala.facesRight=true;

@@ -1,0 +1,5 @@
+{
+  final int word=index >>> 6;
+  if (word >= bits.length)   return;
+  bits[word]&=~(1L << (index & 0x3F));
+}
