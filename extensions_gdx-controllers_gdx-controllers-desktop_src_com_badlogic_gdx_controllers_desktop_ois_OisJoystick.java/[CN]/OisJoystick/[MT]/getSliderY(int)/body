@@ -1,4 +1,4 @@
 {
-  if (sliderIndex < 0 || sliderIndex >= axes.length)   return false;
+  if (sliderIndex < 0 || sliderIndex >= slidersY.length)   return false;
   return slidersY[sliderIndex];
 }
