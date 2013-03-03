@@ -1,5 +1,5 @@
 {
-  if (povIndex < 0 || povIndex >= axes.length)   return OisPov.Centered;
+  if (povIndex < 0 || povIndex >= povs.length)   return OisPov.Centered;
 switch (povs[povIndex]) {
 case 0x00000000:
     return OisPov.Centered;

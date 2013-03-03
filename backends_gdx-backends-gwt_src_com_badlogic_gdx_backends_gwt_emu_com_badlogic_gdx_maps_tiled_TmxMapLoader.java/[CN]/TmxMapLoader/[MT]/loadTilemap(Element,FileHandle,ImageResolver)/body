@@ -1,0 +1,23 @@
+{
+  TiledMap map=new TiledMap();
+  Element properties=root.getChildByName("properties");
+  if (properties != null) {
+    loadProperties(map.getProperties(),properties);
+  }
+  Array<Element> tilesets=root.getChildrenByName("tileset");
+  for (  Element element : tilesets) {
+    loadTileSet(map,element,tmxFile,imageResolver);
+    root.removeChild(element);
+  }
+  for (int i=0, j=root.getChildCount(); i < j; i++) {
+    Element element=root.getChild(i);
+    String name=element.getName();
+    if (name.equals("layer")) {
+      loadTileLayer(map,element);
+    }
+ else     if (name.equals("objectgroup")) {
+      loadObjectGroup(map,element);
+    }
+  }
+  return map;
+}

@@ -1,0 +1,8 @@
+{
+  for (  MapLayer layer : layers) {
+    if (name.equals(layer.getName())) {
+      return layer;
+    }
+  }
+  return null;
+}
