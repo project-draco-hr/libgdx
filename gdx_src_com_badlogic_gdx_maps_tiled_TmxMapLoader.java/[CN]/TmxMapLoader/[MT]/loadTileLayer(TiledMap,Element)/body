@@ -49,7 +49,7 @@
               cell.setFlipVertically(flipVertically);
             }
             cell.setTile(tile);
-            layer.setCell(x,height - 1 - y,cell);
+            layer.setCell(x,yUp ? height - 1 - y : y,cell);
           }
         }
       }
@@ -91,7 +91,7 @@
                   cell.setFlipVertically(flipVertically);
                 }
                 cell.setTile(tile);
-                layer.setCell(x,height - 1 - y,cell);
+                layer.setCell(x,yUp ? height - 1 - y : y,cell);
               }
             }
           }
@@ -139,7 +139,7 @@
                     cell.setFlipVertically(flipVertically);
                   }
                   cell.setTile(tile);
-                  layer.setCell(x,height - 1 - y,cell);
+                  layer.setCell(x,yUp ? height - 1 - y : y,cell);
                 }
               }
  catch (              IOException e) {
@@ -186,7 +186,7 @@
                     cell.setFlipVertically(flipVertically);
                   }
                   cell.setTile(tile);
-                  layer.setCell(x,height - 1 - y,cell);
+                  layer.setCell(x,yUp ? height - 1 - y : y,cell);
                 }
               }
  catch (              DataFormatException e) {

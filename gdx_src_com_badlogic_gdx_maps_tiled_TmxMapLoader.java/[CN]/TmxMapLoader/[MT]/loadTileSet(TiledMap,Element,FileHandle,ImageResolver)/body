@@ -36,7 +36,11 @@
     int id=firstgid;
     for (int y=margin; y <= stopHeight; y+=tileheight + spacing) {
       for (int x=margin; x <= stopWidth; x+=tilewidth + spacing) {
-        TiledMapTile tile=new StaticTiledMapTile(new TextureRegion(texture,x,y,tilewidth,tileheight));
+        TextureRegion tileRegion=new TextureRegion(new TextureRegion(texture,x,y,tilewidth,tileheight));
+        if (!yUp) {
+          tileRegion.flip(false,true);
+        }
+        TiledMapTile tile=new StaticTiledMapTile(tileRegion);
         tile.setId(id);
         tileset.putTile(id++,tile);
       }
