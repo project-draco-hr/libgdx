@@ -1,5 +1,9 @@
 {
-  if (nativesJar == null)   return SharedLibraryLoader.class.getResourceAsStream("/" + path);
+  if (nativesJar == null) {
+    InputStream input=SharedLibraryLoader.class.getResourceAsStream("/" + path);
+    if (input == null)     throw new GdxRuntimeException("Unable to read file for extraction: " + path);
+    return input;
+  }
   try {
     ZipFile file=new ZipFile(nativesJar);
     ZipEntry entry=file.getEntry(path);
