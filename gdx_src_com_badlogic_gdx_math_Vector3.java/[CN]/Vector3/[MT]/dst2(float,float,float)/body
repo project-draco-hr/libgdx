@@ -2,5 +2,5 @@
   final float a=x - this.x;
   final float b=y - this.y;
   final float c=z - this.z;
-  return a * a + b * b + c * b;
+  return a * a + b * b + c * c;
 }
