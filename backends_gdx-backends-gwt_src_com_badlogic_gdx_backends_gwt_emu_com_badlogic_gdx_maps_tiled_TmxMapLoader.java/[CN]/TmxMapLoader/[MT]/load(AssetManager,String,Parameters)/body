@@ -1,0 +1,9 @@
+{
+  FileHandle tmxFile=resolve(fileName);
+  try {
+    return loadTilemap(root,tmxFile,new AssetManagerImageResolver(assetManager));
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

@@ -1,4 +1,4 @@
 {
-  if (buttonIndex < 0 || buttonIndex >= axes.length)   return false;
+  if (buttonIndex < 0 || buttonIndex >= buttons.length)   return false;
   return buttons[buttonIndex];
 }

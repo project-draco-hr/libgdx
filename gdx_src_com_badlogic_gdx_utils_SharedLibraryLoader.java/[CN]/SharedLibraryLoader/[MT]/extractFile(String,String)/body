@@ -14,7 +14,6 @@
   if (extractedCrc == null || !extractedCrc.equals(sourceCrc)) {
     try {
       InputStream input=readFile(sourcePath);
-      if (input == null)       return null;
       extractedDir.mkdirs();
       FileOutputStream output=new FileOutputStream(extractedFile);
       byte[] buffer=new byte[4096];
@@ -30,5 +29,6 @@
       throw new GdxRuntimeException("Error extracting file: " + sourcePath,ex);
     }
   }
-  return extractedFile.exists() ? extractedFile : null;
+  if (!extractedFile.exists())   throw new GdxRuntimeException("Unable to extract file: " + sourcePath);
+  return extractedFile;
 }
