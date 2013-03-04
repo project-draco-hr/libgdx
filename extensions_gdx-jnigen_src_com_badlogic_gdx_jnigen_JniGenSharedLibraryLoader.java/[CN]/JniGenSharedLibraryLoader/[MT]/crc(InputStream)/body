@@ -1,5 +1,4 @@
 {
-  InputStream input=JniGenSharedLibraryLoader.class.getResourceAsStream("/" + nativeFile);
   if (input == null)   return "" + System.nanoTime();
   CRC32 crc=new CRC32();
   byte[] buffer=new byte[4096];
