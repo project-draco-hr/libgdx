@@ -17,6 +17,8 @@
   if (mapBackgroundColor != null) {
     mapProperties.put("backgroundcolor",mapBackgroundColor);
   }
+  mapWidthInPixels=mapWidth * tileWidth;
+  mapHeightInPixels=mapHeight * tileHeight;
   Element properties=root.getChildByName("properties");
   if (properties != null) {
     loadProperties(map.getProperties(),properties);

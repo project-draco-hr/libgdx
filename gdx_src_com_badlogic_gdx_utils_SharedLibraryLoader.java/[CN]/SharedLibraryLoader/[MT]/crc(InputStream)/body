@@ -1,5 +1,5 @@
 {
-  if (input == null)   return "" + System.nanoTime();
+  if (input == null)   throw new IllegalArgumentException("input cannot be null.");
   CRC32 crc=new CRC32();
   byte[] buffer=new byte[4096];
   try {
