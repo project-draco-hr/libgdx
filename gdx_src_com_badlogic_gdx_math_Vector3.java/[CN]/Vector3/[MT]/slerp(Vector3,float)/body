@@ -8,6 +8,6 @@
   final float ty=target.y - y * dot;
   final float tz=target.z - z * dot;
   final float l2=tx * tx + ty * ty + tz * tz;
-  final float dl=(l2 == 0 || l2 == 1f) ? 1f : 1f / (float)Math.sqrt(l2);
-  return this.mul((float)Math.cos(theta)).add(tx * dl * st,ty * dl * st,tz * dl * st).nor();
+  final float dl=st * ((l2 == 0 || l2 == 1f) ? 1f : 1f / (float)Math.sqrt(l2));
+  return this.mul((float)Math.cos(theta)).add(tx * dl,ty * dl,tz * dl).nor();
 }
