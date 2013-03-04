@@ -1,6 +1,3 @@
 {
-  x*=scalarX;
-  y*=scalarY;
-  z*=scalarZ;
-  return this;
+  return mul(scalarX,scalarY,scalarZ);
 }

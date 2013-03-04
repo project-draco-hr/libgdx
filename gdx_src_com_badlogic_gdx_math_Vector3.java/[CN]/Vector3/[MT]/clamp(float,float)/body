@@ -1,0 +1,7 @@
+{
+  final float l2=len2();
+  if (l2 == 0f)   return this;
+  if (l2 > max * max)   return nor().mul(max);
+  if (l2 < min * min)   return nor().mul(min);
+  return this;
+}
