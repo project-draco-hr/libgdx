@@ -1,70 +1,57 @@
 {
-  this.graphics=graphics;
-  glfwSetCallback(new GlfwCallback(){
+  this.app=app;
+  app.callbacks.add(new GlfwCallbackAdapter(){
     private int mouseX, mouseY, mousePressed;
     private char lastCharacter;
     public void key(    long window,    int key,    int action){
 switch (action) {
 case GLFW_PRESS:
-        if (processor != null)         processor.keyDown(getGdxKeyCode(key));
-      break;
+        pressedKeys++;
+      if (processor != null)       processor.keyDown(getGdxKeyCode(key));
+    break;
 case GLFW_RELEASE:
-    if (processor != null)     processor.keyDown(getGdxKeyCode(key));
-  break;
+  pressedKeys--;
+if (processor != null) processor.keyDown(getGdxKeyCode(key));
+break;
 case GLFW_REPEAT:
 if (processor != null && lastCharacter != 0) processor.keyTyped(lastCharacter);
 break;
 }
-Gdx.graphics.requestRendering();
+app.graphics.requestRendering();
 }
 public void character(long window,char character){
 lastCharacter=character;
 if (processor != null) processor.keyTyped(character);
-Gdx.graphics.requestRendering();
+app.graphics.requestRendering();
 }
 public void scroll(long window,double scrollX,double scrollY){
 if (processor != null) processor.scrolled((int)-Math.signum(scrollY));
-Gdx.graphics.requestRendering();
+app.graphics.requestRendering();
 }
 public void mouseButton(long window,int button,boolean pressed){
 if (pressed) {
 mousePressed++;
 if (processor != null) processor.touchDown(mouseX,mouseY,0,button);
+justTouched=true;
 }
  else {
 mousePressed--;
 if (processor != null) processor.touchUp(mouseX,mouseY,0,button);
 }
-Gdx.graphics.requestRendering();
+app.graphics.requestRendering();
 }
 public void cursorPos(long window,int x,int y){
+deltaX=x - mouseX;
+deltaY=y - mouseX;
 mouseX=x;
 mouseY=y;
 if (processor != null) {
 if (mousePressed > 0) processor.touchDragged(mouseX,mouseY,0);
  else processor.mouseMoved(mouseX,mouseY);
 }
-Gdx.graphics.requestRendering();
+app.graphics.requestRendering();
 }
 public void cursorEnter(long window,boolean entered){
-}
-public void windowSize(long window,int width,int height){
-}
-public void windowRefresh(long window){
-}
-public void windowPos(long window,int x,int y){
-}
-public void windowIconify(long window,boolean iconified){
-}
-public void windowFocus(long window,boolean focused){
-}
-public boolean windowClose(long window){
-return true;
-}
-public void monitor(long monitor,boolean connected){
-}
-public void error(int error,String description){
-throw new GdxRuntimeException("GLFW error " + error + ": "+ description);
 }
 }
 );

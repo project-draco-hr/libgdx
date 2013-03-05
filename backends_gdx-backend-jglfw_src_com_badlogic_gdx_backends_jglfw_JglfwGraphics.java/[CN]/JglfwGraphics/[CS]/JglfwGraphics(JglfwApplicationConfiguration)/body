@@ -1,6 +1,45 @@
 {
   this.config=config;
   bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
-  createWindow();
-  createGL();
+  long fullscreenMonitor=glfwGetPrimaryMonitor();
+  long[] monitors=glfwGetMonitors();
+  for (int i=0, n=monitors.length; i < n; i++) {
+    if (monitors[i] == fullscreenMonitor) {
+      fullscreenMonitorIndex=i;
+      break;
+    }
+  }
+  if (config.fullscreen) {
+    if (monitors.length > 0) {
+      if (config.fullscreenMonitorIndex < monitors.length)       fullscreenMonitorIndex=config.fullscreenMonitorIndex;
+      fullscreenMonitor=monitors[fullscreenMonitorIndex];
+    }
+  }
+  if (!createWindow(config.width,config.height,config.fullscreen)) {
+    throw new GdxRuntimeException("Unable to create window: " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
+  }
+  if (config.x != -1 && config.y != -1)   glfwSetWindowPos(window,config.x,config.y);
+  setVSync(config.vSync);
+  String version=GL.glGetString(GL11.GL_VERSION);
+  glMajorVersion=Integer.parseInt("" + version.charAt(0));
+  glMinorVersion=Integer.parseInt("" + version.charAt(2));
+  if (config.useGL20 && (glMajorVersion >= 2 || version.contains("2.1"))) {
+    gl20=new JglfwGL20();
+    gl=gl20;
+  }
+ else {
+    gl20=null;
+    if (glMajorVersion == 1 && glMinorVersion < 5) {
+      gl10=new JglfwGL10();
+    }
+ else {
+      gl11=new JglfwGL11();
+      gl10=gl11;
+    }
+    gl=gl10;
+  }
+  Gdx.gl=gl;
+  Gdx.gl10=gl10;
+  Gdx.gl11=gl11;
+  Gdx.gl20=gl20;
 }

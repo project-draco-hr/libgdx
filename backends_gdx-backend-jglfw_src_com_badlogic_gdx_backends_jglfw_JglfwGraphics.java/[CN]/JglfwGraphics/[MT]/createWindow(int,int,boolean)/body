@@ -1,0 +1,24 @@
+{
+  long fullscreenMonitor=0;
+  if (fullscreen) {
+    long[] monitors=glfwGetMonitors();
+    if (monitors.length > 0)     fullscreenMonitor=fullscreenMonitorIndex < monitors.length ? monitors[fullscreenMonitorIndex] : 0;
+  }
+  glfwWindowHint(GLFW_RESIZABLE,config.resizable ? 1 : 0);
+  glfwWindowHint(GLFW_RED_BITS,config.r);
+  glfwWindowHint(GLFW_GREEN_BITS,config.g);
+  glfwWindowHint(GLFW_BLUE_BITS,config.b);
+  glfwWindowHint(GLFW_ALPHA_BITS,config.a);
+  glfwWindowHint(GLFW_DEPTH_BITS,config.depth);
+  glfwWindowHint(GLFW_STENCIL_BITS,config.stencil);
+  glfwWindowHint(GLFW_SAMPLES,config.samples);
+  glfwWindowHint(GLFW_DEPTH_BITS,config.bitsPerPixel);
+  long oldWindow=window;
+  long newWindow=glfwCreateWindow(width,height,config.title,fullscreenMonitor,oldWindow);
+  if (newWindow == 0)   return false;
+  if (oldWindow != 0)   glfwDestroyWindow(oldWindow);
+  glfwMakeContextCurrent(newWindow);
+  window=newWindow;
+  config.fullscreen=fullscreen;
+  return true;
+}

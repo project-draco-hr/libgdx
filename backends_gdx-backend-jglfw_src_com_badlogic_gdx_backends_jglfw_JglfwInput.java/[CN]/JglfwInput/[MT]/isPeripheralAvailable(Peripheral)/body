@@ -1,4 +1,3 @@
 {
-  if (peripheral == Peripheral.HardwareKeyboard)   return true;
-  return false;
+  return peripheral == Peripheral.HardwareKeyboard;
 }
