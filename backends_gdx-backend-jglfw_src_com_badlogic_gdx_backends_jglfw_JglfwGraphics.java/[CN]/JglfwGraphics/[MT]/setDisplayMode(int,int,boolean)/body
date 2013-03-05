@@ -13,7 +13,6 @@
     glfwWindowHint(GLFW_DEPTH_BITS,config.depth);
     glfwWindowHint(GLFW_STENCIL_BITS,config.stencil);
     glfwWindowHint(GLFW_SAMPLES,config.samples);
-    glfwWindowHint(GLFW_DEPTH_BITS,config.bitsPerPixel);
     long window=glfwCreateWindow(config.width,config.height,config.title,fullscreenMonitor,this.window);
     if (window == 0)     return false;
     if (this.window != 0)     glfwDestroyWindow(window);

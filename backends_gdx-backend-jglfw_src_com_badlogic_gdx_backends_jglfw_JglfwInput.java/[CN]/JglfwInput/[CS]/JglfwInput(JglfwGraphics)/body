@@ -29,6 +29,7 @@ Gdx.graphics.requestRendering();
 public void mouseButton(long window,int button,boolean pressed){
 if (pressed) {
 mousePressed++;
+justTouched=true;
 if (processor != null) processor.touchDown(mouseX,mouseY,0,button);
 }
  else {

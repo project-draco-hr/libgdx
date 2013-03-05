@@ -30,6 +30,7 @@ synchronized (runnables) {
       executedRunnables.get(i).run();
     }
     if (!running)     break;
+    input.resetStates();
     glfwPollEvents();
     shouldRender|=graphics.shouldRender();
     if (!running)     break;

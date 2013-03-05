@@ -1,5 +1,4 @@
 {
-  if (displayMode.bitsPerPixel != 0)   glfwWindowHint(GLFW_DEPTH_BITS,displayMode.bitsPerPixel);
   glfwSetWindowSize(window,displayMode.width,displayMode.height);
   return true;
 }
