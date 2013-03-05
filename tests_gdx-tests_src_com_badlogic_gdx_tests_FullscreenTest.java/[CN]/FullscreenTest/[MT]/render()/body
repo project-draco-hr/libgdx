@@ -5,6 +5,14 @@
   texture.bind();
   mesh.render(GL10.GL_TRIANGLES);
   if (Gdx.input.justTouched()) {
-    Gdx.graphics.setDisplayMode(480,320,false);
+    if (fullscreen) {
+      Gdx.graphics.setDisplayMode(480,320,false);
+      fullscreen=false;
+    }
+ else {
+      DisplayMode desktopDisplayMode=Gdx.graphics.getDesktopDisplayMode();
+      Gdx.graphics.setDisplayMode(desktopDisplayMode.width,desktopDisplayMode.height,true);
+      fullscreen=true;
+    }
   }
 }
