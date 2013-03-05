@@ -1,3 +1,3 @@
 {
-  glLightModelfv(pname,params,offset);
+  GL.glLightModelfv(pname,toBuffer(params,offset),0);
 }

@@ -1,3 +1,3 @@
 {
-  glGetLightfv(light,pname,params,offset);
+  GL.glGetLightfv(light,pname,toBuffer(params,offset),0);
 }

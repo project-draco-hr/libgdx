@@ -1,3 +1,3 @@
 {
-  GL.glColorPointer(size,type,stride,pointer,Memory.getPosition(pointer));
+  GL.glColorPointer(size,type,stride,pointer,getPosition(pointer));
 }

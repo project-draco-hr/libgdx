@@ -1,3 +1,3 @@
 {
-  GL.glCompressedTexSubImage2D(target,level,xoffset,yoffset,width,height,format,imageSize,data,Memory.getPosition(data));
+  GL.glCompressedTexSubImage2D(target,level,xoffset,yoffset,width,height,format,imageSize,data,getPosition(data));
 }

@@ -1,3 +1,3 @@
 {
-  glGenBuffers(n,buffers,offset);
+  GL.glGenBuffers(n,toBuffer(buffers,offset),0);
 }

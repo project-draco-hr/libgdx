@@ -1,3 +1,3 @@
 {
-  glGetLightfv(light,pname,params);
+  GL.glGetLightfv(light,pname,params,getPosition(params));
 }
