@@ -1,0 +1,4 @@
+{
+  this.sync=vsync;
+  if (!config.cpuSync)   glfwSwapInterval(vsync ? 1 : 0);
+}

@@ -1,0 +1,11 @@
+{
+  this.listener=listener;
+  this.config=config;
+  if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
+  Gdx.app=this;
+  Gdx.graphics=graphics=new JglfwGraphics(config);
+  Gdx.files=files=new JglfwFiles();
+  Gdx.input=input=new JglfwInput(graphics);
+  Gdx.net=net=new JglfwNet();
+  mainLoop();
+}

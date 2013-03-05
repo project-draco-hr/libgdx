@@ -1,0 +1,15 @@
+{
+  if (window == 0 || fullscreen != config.fullscreen) {
+    long fullscreenMonitor=0;
+    long[] monitors=glfwGetMonitors();
+    if (monitors.length > 0)     fullscreenMonitor=fullscreenMonitorIndex < monitors.length ? monitors[fullscreenMonitorIndex] : 0;
+    long window=glfwCreateWindow(config.width,config.height,config.title,fullscreenMonitor,0);
+    if (window == 0)     return false;
+    if (this.window != 0)     glfwDestroyWindow(window);
+    glfwMakeContextCurrent(window);
+    this.window=window;
+    return true;
+  }
+  glfwSetWindowSize(window,width,height);
+  return true;
+}

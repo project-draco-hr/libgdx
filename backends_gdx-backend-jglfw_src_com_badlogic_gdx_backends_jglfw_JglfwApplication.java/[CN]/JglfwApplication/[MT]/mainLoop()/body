@@ -1,0 +1,67 @@
+{
+  listener.create();
+  listener.resize(graphics.getWidth(),graphics.getHeight());
+  graphics.resize=false;
+  int lastWidth=graphics.getWidth();
+  int lastHeight=graphics.getHeight();
+  graphics.lastTime=System.nanoTime();
+  while (running) {
+    if (glfwWindowShouldClose(graphics.window))     exit();
+    graphics.config.x=glfwGetWindowX(graphics.window);
+    graphics.config.y=glfwGetWindowY(graphics.window);
+    int width=glfwGetWindowWidth(graphics.window);
+    int height=glfwGetWindowHeight(graphics.window);
+    if (graphics.resize || width != graphics.config.width || height != graphics.config.height) {
+      graphics.resize=false;
+      Gdx.gl.glViewport(0,0,width,height);
+      graphics.config.width=width;
+      graphics.config.height=height;
+      if (listener != null)       listener.resize(width,height);
+      graphics.requestRendering();
+    }
+synchronized (runnables) {
+      executedRunnables.clear();
+      executedRunnables.addAll(runnables);
+      runnables.clear();
+    }
+    boolean shouldRender=false;
+    for (int i=0; i < executedRunnables.size; i++) {
+      shouldRender=true;
+      executedRunnables.get(i).run();
+    }
+    if (!running)     break;
+    glfwPollEvents();
+    input.update();
+    shouldRender|=graphics.shouldRender();
+    long nextFrameTime=graphics.lastTime;
+    if (shouldRender) {
+      graphics.updateTime();
+      listener.render();
+      glfwSwapBuffers(graphics.window);
+      if (graphics.sync && graphics.config.cpuSync)       nextFrameTime+=60 * 1000000;
+    }
+ else {
+      nextFrameTime+=60 * 1000000;
+    }
+    while (true) {
+      long time=System.nanoTime();
+      if (nextFrameTime <= time)       break;
+      try {
+        Thread.sleep(time / 1000000);
+      }
+ catch (      InterruptedException ignored) {
+      }
+    }
+  }
+  Array<LifecycleListener> listeners=lifecycleListeners;
+synchronized (listeners) {
+    for (    LifecycleListener listener : listeners) {
+      listener.pause();
+      listener.dispose();
+    }
+  }
+  listener.pause();
+  listener.dispose();
+  glfwDestroyWindow(graphics.window);
+  if (graphics.config.forceExit)   System.exit(-1);
+}

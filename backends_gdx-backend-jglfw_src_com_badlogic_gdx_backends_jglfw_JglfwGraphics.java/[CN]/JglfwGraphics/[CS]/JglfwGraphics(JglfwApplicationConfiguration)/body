@@ -1,0 +1,6 @@
+{
+  this.config=config;
+  bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
+  createWindow();
+  createGL();
+}

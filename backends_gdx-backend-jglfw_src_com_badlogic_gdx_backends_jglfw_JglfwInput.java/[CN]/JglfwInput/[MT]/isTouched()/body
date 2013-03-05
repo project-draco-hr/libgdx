@@ -1,0 +1,3 @@
+{
+  return glfwGetMouseButton(graphics.window,0) || glfwGetMouseButton(graphics.window,1) || glfwGetMouseButton(graphics.window,2);
+}

@@ -1,0 +1,3 @@
+{
+  return graphics.getHeight() - 1 - glfwGetCursorPosY(graphics.window);
+}
