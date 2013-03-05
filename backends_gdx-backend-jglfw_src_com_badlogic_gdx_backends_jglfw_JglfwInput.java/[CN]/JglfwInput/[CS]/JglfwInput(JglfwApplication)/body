@@ -4,14 +4,18 @@
     private int mouseX, mouseY, mousePressed;
     private char lastCharacter;
     public void key(    long window,    int key,    int action){
+      key=getGdxKeyCode(key);
 switch (action) {
 case GLFW_PRESS:
         pressedKeys++;
-      if (processor != null)       processor.keyDown(getGdxKeyCode(key));
-    break;
+      if (processor != null)       processor.keyDown(key);
+    lastCharacter=0;
+  char character=characterForKeyCode(key);
+if (character != 0) character(window,character);
+break;
 case GLFW_RELEASE:
-  pressedKeys--;
-if (processor != null) processor.keyDown(getGdxKeyCode(key));
+pressedKeys--;
+if (processor != null) processor.keyUp(key);
 break;
 case GLFW_REPEAT:
 if (processor != null && lastCharacter != 0) processor.keyTyped(lastCharacter);
