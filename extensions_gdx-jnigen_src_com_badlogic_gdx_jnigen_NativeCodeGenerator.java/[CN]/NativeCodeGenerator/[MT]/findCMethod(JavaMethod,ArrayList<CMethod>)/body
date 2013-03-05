@@ -1,6 +1,6 @@
 {
   for (  CMethod cMethod : cMethods) {
-    if (cMethod.getHead().contains(javaMethod.getClassName() + "_" + javaMethod.getName())) {
+    if (cMethod.getHead().endsWith(javaMethod.getClassName() + "_" + javaMethod.getName()) || cMethod.getHead().contains(javaMethod.getClassName() + "_" + javaMethod.getName()+ "__")) {
       if (cMethod.getArgumentTypes().length - 2 == javaMethod.getArguments().size()) {
         boolean match=true;
         for (int i=2; i < cMethod.getArgumentTypes().length; i++) {
