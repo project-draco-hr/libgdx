@@ -33,20 +33,14 @@ synchronized (runnables) {
     glfwPollEvents();
     shouldRender|=graphics.shouldRender();
     if (!running)     break;
-    long nextFrameTime=graphics.lastTime;
     if (shouldRender) {
       graphics.updateTime();
       listener.render();
       glfwSwapBuffers(graphics.window);
     }
  else {
-      nextFrameTime+=60 * 1000000;
-    }
-    while (true) {
-      long time=System.nanoTime();
-      if (nextFrameTime <= time)       break;
       try {
-        Thread.sleep(time / 1000000);
+        Thread.sleep(16);
       }
  catch (      InterruptedException ignored) {
       }
