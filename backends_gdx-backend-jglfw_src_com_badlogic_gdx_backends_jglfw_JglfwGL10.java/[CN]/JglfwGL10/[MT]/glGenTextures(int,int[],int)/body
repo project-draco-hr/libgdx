@@ -1,3 +1,3 @@
 {
-  GL.glGenTexturesEXT(n,toBuffer(textures,offset),0);
+  GL.glGenTextures(n,toBuffer(textures,offset),0);
 }
