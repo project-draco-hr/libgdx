@@ -1,6 +1,7 @@
 {
   this.listener=listener;
   this.config=config;
+  GdxNativesLoader.load();
   if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
   Gdx.app=this;
   Gdx.graphics=graphics=new JglfwGraphics(config);

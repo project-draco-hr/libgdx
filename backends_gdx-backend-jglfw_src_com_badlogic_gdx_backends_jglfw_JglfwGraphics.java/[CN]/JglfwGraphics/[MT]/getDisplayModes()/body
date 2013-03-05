@@ -8,5 +8,5 @@
     if (mode.getBitDepth() != desktopMode.getBitDepth())     continue;
     modes.add(new JglfwDisplayMode(mode.getWidth(),mode.getHeight(),mode.getRefreshRate(),mode.getBitDepth()));
   }
-  return modes.toArray();
+  return modes.toArray(DisplayMode.class);
 }

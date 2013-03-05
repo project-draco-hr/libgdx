@@ -31,8 +31,8 @@ synchronized (runnables) {
     }
     if (!running)     break;
     glfwPollEvents();
-    input.update();
     shouldRender|=graphics.shouldRender();
+    if (!running)     break;
     long nextFrameTime=graphics.lastTime;
     if (shouldRender) {
       graphics.updateTime();

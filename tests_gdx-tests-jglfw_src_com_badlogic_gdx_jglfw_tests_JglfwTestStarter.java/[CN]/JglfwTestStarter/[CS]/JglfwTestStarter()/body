@@ -1,0 +1,9 @@
+{
+  super("libgdx Tests");
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  setContentPane(new TestList());
+  pack();
+  setSize(getWidth(),600);
+  setLocationRelativeTo(null);
+  setVisible(true);
+}
