@@ -38,7 +38,6 @@ synchronized (runnables) {
       graphics.updateTime();
       listener.render();
       glfwSwapBuffers(graphics.window);
-      if (graphics.sync && graphics.config.cpuSync)       nextFrameTime+=60 * 1000000;
     }
  else {
       nextFrameTime+=60 * 1000000;
