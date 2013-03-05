@@ -1,0 +1,8 @@
+{
+  int n=src.length - offset;
+  if (tempInt.capacity() < n)   tempInt=ByteBuffer.allocateDirect(n * 4).order(ByteOrder.nativeOrder()).asIntBuffer();
+ else   tempInt.clear();
+  tempInt.put(src,offset,n);
+  tempInt.flip();
+  return tempInt;
+}
