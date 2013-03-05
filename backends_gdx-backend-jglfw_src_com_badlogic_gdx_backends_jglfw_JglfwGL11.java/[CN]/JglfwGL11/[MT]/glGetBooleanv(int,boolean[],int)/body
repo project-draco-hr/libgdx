@@ -1,3 +1,5 @@
 {
-  GL.glGetBooleanv(pname,toBuffer(params,offset),0);
+  ByteBuffer buffer=toBuffer(params,offset);
+  GL.glGetBooleanv(pname,buffer,0);
+  toArray(buffer,params,offset);
 }

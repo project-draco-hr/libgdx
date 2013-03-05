@@ -1,3 +1,5 @@
 {
-  GL.glGenBuffers(n,toBuffer(buffers,offset),0);
+  IntBuffer buffer=toBuffer(buffers,offset);
+  GL.glGenBuffers(n,buffer,0);
+  toArray(buffer,buffers,offset);
 }

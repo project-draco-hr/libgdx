@@ -1,5 +1,5 @@
 {
-  String version=glGetString(GL11.GL_VERSION);
+  String version=GL.glGetString(GL11.GL_VERSION);
   glMajorVersion=Integer.parseInt("" + version.charAt(0));
   glMinorVersion=Integer.parseInt("" + version.charAt(2));
   if (config.useGL20 && (glMajorVersion >= 2 || version.contains("2.1"))) {
