@@ -1,6 +1,4 @@
 {
-  if (displayMode.bitsPerPixel != 0)   glfwWindowHint(GLFW_DEPTH_BITS,displayMode.bitsPerPixel);
-  if (displayMode.bitsPerPixel != 0 || config.fullscreen)   return createWindow(displayMode.width,displayMode.height,config.fullscreen);
-  glfwSetWindowSize(window,displayMode.width,displayMode.height);
-  return true;
+  bufferFormat=new BufferFormat(displayMode.bitsPerPixel == 16 ? 5 : 8,displayMode.bitsPerPixel == 16 ? 6 : 8,displayMode.bitsPerPixel == 16 ? 6 : 8,bufferFormat.a,bufferFormat.depth,bufferFormat.stencil,bufferFormat.samples,false);
+  return createWindow(displayMode.width,displayMode.height,fullscreen);
 }

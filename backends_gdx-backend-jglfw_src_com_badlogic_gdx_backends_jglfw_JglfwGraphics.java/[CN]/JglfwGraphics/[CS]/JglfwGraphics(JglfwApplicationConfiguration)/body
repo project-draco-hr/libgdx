@@ -1,19 +1,10 @@
 {
-  this.config=config;
   bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
-  long fullscreenMonitor=glfwGetPrimaryMonitor();
-  long[] monitors=glfwGetMonitors();
-  for (int i=0, n=monitors.length; i < n; i++) {
-    if (monitors[i] == fullscreenMonitor) {
-      fullscreenMonitorIndex=i;
-      break;
-    }
-  }
-  if (config.fullscreen) {
-    if (monitors.length > 0) {
-      if (config.fullscreenMonitorIndex < monitors.length)       fullscreenMonitorIndex=config.fullscreenMonitorIndex;
-      fullscreenMonitor=monitors[fullscreenMonitorIndex];
-    }
+  title=config.title;
+  resizable=config.resizable;
+  if (config.fullscreenMonitorIndex != -1) {
+    long[] monitors=glfwGetMonitors();
+    if (config.fullscreenMonitorIndex < monitors.length)     fullscreenMonitor=monitors[config.fullscreenMonitorIndex];
   }
   if (!createWindow(config.width,config.height,config.fullscreen)) {
     throw new GdxRuntimeException("Unable to create window: " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);

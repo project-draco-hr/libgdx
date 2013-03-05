@@ -1,6 +1,6 @@
 {
   this.listener=listener;
-  this.config=config;
+  forceExit=config.forceExit;
   GdxNativesLoader.load();
   if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
   Gdx.app=this;
@@ -34,5 +34,4 @@
     }
   }
 );
-  mainLoop();
 }
