@@ -1,4 +1,6 @@
 {
-  final float d2=dst2(x,y,z);
-  return (d2 == 0f || d2 == 1f) ? d2 : (float)Math.sqrt(d2);
+  final float a=x - this.x;
+  final float b=y - this.y;
+  final float c=z - this.z;
+  return (float)Math.sqrt(a * a + b * b + c * c);
 }

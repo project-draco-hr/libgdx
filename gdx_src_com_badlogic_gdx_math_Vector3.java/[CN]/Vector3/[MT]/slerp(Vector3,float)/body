@@ -1,6 +1,6 @@
 {
   final float dot=dot(target);
-  if (dot > 0.99995 || dot < -0.9995)   return this.add(target.x - x * alpha,target.y - y * alpha,target.z - z * alpha).nor();
+  if (dot > 0.9995 || dot < -0.9995)   return lerp(target,alpha);
   final float theta0=(float)Math.acos(dot);
   final float theta=theta0 * alpha;
   final float st=(float)Math.sin(theta);
@@ -8,6 +8,6 @@
   final float ty=target.y - y * dot;
   final float tz=target.z - z * dot;
   final float l2=tx * tx + ty * ty + tz * tz;
-  final float dl=st * ((l2 == 0 || l2 == 1f) ? 1f : 1f / (float)Math.sqrt(l2));
-  return this.mul((float)Math.cos(theta)).add(tx * dl,ty * dl,tz * dl).nor();
+  final float dl=st * ((l2 < 0.0001f) ? 1f : 1f / (float)Math.sqrt(l2));
+  return scl((float)Math.cos(theta)).add(tx * dl,ty * dl,tz * dl).nor();
 }

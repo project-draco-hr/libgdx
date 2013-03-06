@@ -1,5 +1,5 @@
 {
-  mul(1.0f - alpha);
+  scl(1.0f - alpha);
   add(target.x * alpha,target.y * alpha,target.z * alpha);
   return this;
 }
