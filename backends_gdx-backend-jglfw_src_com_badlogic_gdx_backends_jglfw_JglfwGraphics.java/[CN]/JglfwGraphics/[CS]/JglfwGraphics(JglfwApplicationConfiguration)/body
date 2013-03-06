@@ -2,6 +2,7 @@
   bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
   title=config.title;
   resizable=config.resizable;
+  undecorated=config.undecorated;
   if (config.fullscreenMonitorIndex != -1) {
     long[] monitors=glfwGetMonitors();
     if (config.fullscreenMonitorIndex < monitors.length)     fullscreenMonitor=monitors[config.fullscreenMonitorIndex];
