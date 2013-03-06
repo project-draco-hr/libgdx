@@ -1,0 +1,14 @@
+{
+  GdxTest test=GdxTests.newTest(testName);
+  if (test == null) {
+    return false;
+  }
+  JglfwApplicationConfiguration config=new JglfwApplicationConfiguration();
+  config.width=640;
+  config.height=480;
+  config.title=testName;
+  config.useGL20=test.needsGL20();
+  config.forceExit=false;
+  new JglfwApplication(test,config).start();
+  return true;
+}

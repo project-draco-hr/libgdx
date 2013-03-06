@@ -1,0 +1,22 @@
+{
+  if (fullscreenMonitor == 0)   fullscreenMonitor=glfwGetPrimaryMonitor();
+  glfwWindowHint(GLFW_RESIZABLE,resizable ? 1 : 0);
+  glfwWindowHint(GLFW_UNDECORATED,undecorated ? 1 : 0);
+  glfwWindowHint(GLFW_RED_BITS,bufferFormat.r);
+  glfwWindowHint(GLFW_GREEN_BITS,bufferFormat.g);
+  glfwWindowHint(GLFW_BLUE_BITS,bufferFormat.b);
+  glfwWindowHint(GLFW_ALPHA_BITS,bufferFormat.a);
+  glfwWindowHint(GLFW_DEPTH_BITS,bufferFormat.depth);
+  glfwWindowHint(GLFW_STENCIL_BITS,bufferFormat.stencil);
+  glfwWindowHint(GLFW_SAMPLES,bufferFormat.samples);
+  boolean mouseCaptured=window != 0 && glfwGetInputMode(window,GLFW_CURSOR_MODE) == GLFW_CURSOR_CAPTURED;
+  long oldWindow=window;
+  long newWindow=glfwCreateWindow(width,height,title,fullscreen ? fullscreenMonitor : 0,oldWindow);
+  if (newWindow == 0)   return false;
+  if (oldWindow != 0)   glfwDestroyWindow(oldWindow);
+  glfwMakeContextCurrent(newWindow);
+  window=newWindow;
+  this.fullscreen=fullscreen;
+  if (!mouseCaptured)   glfwSetInputMode(window,GLFW_CURSOR_MODE,GLFW_CURSOR_NORMAL);
+  return true;
+}

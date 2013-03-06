@@ -1,0 +1,5 @@
+{
+  if (window == 0 || fullscreen != this.fullscreen || this.fullscreen)   return createWindow(width,height,fullscreen);
+  glfwSetWindowSize(window,width,height);
+  return true;
+}

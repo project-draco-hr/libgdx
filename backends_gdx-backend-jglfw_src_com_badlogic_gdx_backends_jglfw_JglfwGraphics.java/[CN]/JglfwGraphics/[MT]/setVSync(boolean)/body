@@ -1,0 +1,4 @@
+{
+  this.sync=vsync;
+  glfwSwapInterval(vsync ? 1 : 0);
+}

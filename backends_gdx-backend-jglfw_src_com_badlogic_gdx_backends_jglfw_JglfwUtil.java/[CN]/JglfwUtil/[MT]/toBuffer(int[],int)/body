@@ -1,0 +1,7 @@
+{
+  int n=src.length - offset;
+  ensureSize(n * 4);
+  bufferInt.position(0);
+  bufferInt.put(src,offset,n);
+  return bufferInt;
+}

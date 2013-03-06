@@ -1,0 +1,63 @@
+{
+  this.app=app;
+  app.callbacks.add(new GlfwCallbackAdapter(){
+    private int mouseX, mouseY, mousePressed;
+    private char lastCharacter;
+    public void key(    long window,    int key,    int action){
+      key=getGdxKeyCode(key);
+switch (action) {
+case GLFW_PRESS:
+        pressedKeys++;
+      if (processor != null)       processor.keyDown(key);
+    lastCharacter=0;
+  char character=characterForKeyCode(key);
+if (character != 0) character(window,character);
+break;
+case GLFW_RELEASE:
+pressedKeys--;
+if (processor != null) processor.keyUp(key);
+break;
+case GLFW_REPEAT:
+if (processor != null && lastCharacter != 0) processor.keyTyped(lastCharacter);
+break;
+}
+app.graphics.requestRendering();
+}
+public void character(long window,char character){
+lastCharacter=character;
+if (processor != null) processor.keyTyped(character);
+app.graphics.requestRendering();
+}
+public void scroll(long window,double scrollX,double scrollY){
+if (processor != null) processor.scrolled((int)-Math.signum(scrollY));
+app.graphics.requestRendering();
+}
+public void mouseButton(long window,int button,boolean pressed){
+if (pressed) {
+mousePressed++;
+justTouched=true;
+if (processor != null) processor.touchDown(mouseX,mouseY,0,button);
+justTouched=true;
+}
+ else {
+mousePressed--;
+if (processor != null) processor.touchUp(mouseX,mouseY,0,button);
+}
+app.graphics.requestRendering();
+}
+public void cursorPos(long window,int x,int y){
+deltaX=x - mouseX;
+deltaY=y - mouseX;
+mouseX=x;
+mouseY=y;
+if (processor != null) {
+if (mousePressed > 0) processor.touchDragged(mouseX,mouseY,0);
+ else processor.mouseMoved(mouseX,mouseY);
+}
+app.graphics.requestRendering();
+}
+public void cursorEnter(long window,boolean entered){
+}
+}
+);
+}

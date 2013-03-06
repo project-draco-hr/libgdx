@@ -1,0 +1,20 @@
+{
+  this.name=file.name();
+  this.file=file;
+  if (!file.exists())   return;
+  InputStream in=null;
+  try {
+    in=new BufferedInputStream(file.read());
+    properties.loadFromXML(in);
+  }
+ catch (  Throwable t) {
+    t.printStackTrace();
+  }
+ finally {
+    if (in != null)     try {
+      in.close();
+    }
+ catch (    Exception e) {
+    }
+  }
+}

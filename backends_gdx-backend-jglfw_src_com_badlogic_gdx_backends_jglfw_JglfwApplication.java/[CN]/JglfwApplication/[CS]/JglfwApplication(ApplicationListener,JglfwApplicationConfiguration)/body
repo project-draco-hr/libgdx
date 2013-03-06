@@ -1,0 +1,37 @@
+{
+  this.listener=listener;
+  forceExit=config.forceExit;
+  GdxNativesLoader.load();
+  if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
+  Gdx.app=this;
+  Gdx.graphics=graphics=new JglfwGraphics(config);
+  Gdx.files=files=new JglfwFiles();
+  Gdx.input=input=new JglfwInput(this);
+  Gdx.net=net=new JglfwNet();
+  glfwSetCallback(callbacks);
+  callbacks.add(new GlfwCallbackAdapter(){
+    public void windowSize(    long window,    int width,    int height){
+      Gdx.gl.glViewport(0,0,width,height);
+      if (listener != null)       listener.resize(width,height);
+      graphics.requestRendering();
+    }
+    public void windowRefresh(    long window){
+      renderFrame();
+    }
+    public void windowPos(    long window,    int x,    int y){
+    }
+    public void windowIconify(    long window,    boolean iconified){
+    }
+    public void windowFocus(    long window,    boolean focused){
+    }
+    public boolean windowClose(    long window){
+      return true;
+    }
+    public void monitor(    long monitor,    boolean connected){
+    }
+    public void error(    int error,    String description){
+      throw new GdxRuntimeException("GLFW error " + error + ": "+ description);
+    }
+  }
+);
+}

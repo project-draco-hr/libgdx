@@ -1,0 +1,5 @@
+{
+  FloatBuffer buffer=toBuffer(params,offset);
+  GL.glGetMaterialfv(face,pname,buffer,0);
+  toArray(buffer,params,offset);
+}
