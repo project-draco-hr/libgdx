@@ -1,0 +1,15 @@
+{
+  if (Gdx.gl20 != null || Gdx.gl11 != null || Mesh.forceVBO) {
+    if (staticVertices)     vertices=new VertexBufferObject(true,maxVertices,attributes);
+ else     vertices=new VertexBufferObjectSubData(false,maxVertices,attributes);
+    if (staticIndices)     indices=new IndexBufferObject(true,maxIndices);
+ else     indices=new IndexBufferObjectSubData(false,maxIndices);
+    isVertexArray=false;
+  }
+ else {
+    vertices=new VertexArray(maxVertices,attributes);
+    indices=new IndexArray(maxIndices);
+    isVertexArray=true;
+  }
+  addManagedMesh(Gdx.app,this);
+}
