@@ -1,0 +1,10 @@
+{
+  if (pressed) {
+    mousePressed++;
+    processor.touchDown(mouseX,mouseY,0,button);
+  }
+ else {
+    mousePressed--;
+    processor.touchUp(mouseX,mouseY,0,button);
+  }
+}

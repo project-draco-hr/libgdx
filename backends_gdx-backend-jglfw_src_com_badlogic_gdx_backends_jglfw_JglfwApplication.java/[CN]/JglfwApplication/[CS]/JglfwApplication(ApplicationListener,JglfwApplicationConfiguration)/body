@@ -1,12 +1,13 @@
 {
   this.listener=listener;
+  if (config.enableAWT && isMac)   java.awt.Toolkit.getDefaultToolkit();
   forceExit=config.forceExit;
   GdxNativesLoader.load();
   if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
   Gdx.app=this;
   Gdx.graphics=graphics=new JglfwGraphics(config);
   Gdx.files=files=new JglfwFiles();
-  Gdx.input=input=new JglfwInput(this);
+  Gdx.input=input=new JglfwInput(this,config.enableAWT && isMac);
   Gdx.net=net=new JglfwNet();
   glfwSetCallback(callbacks);
   callbacks.add(new GlfwCallbackAdapter(){

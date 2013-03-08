@@ -5,16 +5,18 @@
   InputStream in=null;
   try {
     in=new BufferedInputStream(file.read());
-    properties.loadFromXML(in);
+    properties.load(in);
   }
- catch (  Throwable t) {
-    t.printStackTrace();
+ catch (  Throwable ex) {
+    ex.printStackTrace();
   }
  finally {
-    if (in != null)     try {
-      in.close();
-    }
- catch (    Exception e) {
+    if (in != null) {
+      try {
+        in.close();
+      }
+ catch (      Exception ignored) {
+      }
     }
   }
 }

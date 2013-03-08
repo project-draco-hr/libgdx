@@ -1,4 +1,3 @@
 {
-  if (pointer > 0)   return false;
- else   return isTouched();
+  return pointer > 0 ? false : isTouched();
 }
