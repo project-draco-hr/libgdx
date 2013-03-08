@@ -19,7 +19,7 @@
     }
   }
 );
-  final Preferences prefs=new JglfwPreferences(new FileHandle(new JglfwFiles().getExternalStoragePath() + ".prefs/lwjgl-tests"));
+  final Preferences prefs=new JglfwPreferences(new FileHandle(new JglfwFiles().getExternalStoragePath() + ".prefs/jglfw-tests"));
   list.setSelectedValue(prefs.getString("last",null),true);
   button.addActionListener(new ActionListener(){
     @Override public void actionPerformed(    ActionEvent e){
