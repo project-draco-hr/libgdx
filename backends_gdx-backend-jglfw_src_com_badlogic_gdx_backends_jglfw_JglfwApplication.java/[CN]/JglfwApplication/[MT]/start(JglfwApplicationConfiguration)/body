@@ -1,25 +1,24 @@
 {
   forceExit=config.forceExit;
+  final Thread glThread=Thread.currentThread();
   GdxNativesLoader.load();
-  final boolean callbacksOnAppKitThread=isMac;
-  if (callbacksOnAppKitThread)   java.awt.Toolkit.getDefaultToolkit();
+  boolean inputCallbacksOnAppKitThread=isMac;
+  if (inputCallbacksOnAppKitThread)   java.awt.Toolkit.getDefaultToolkit();
   if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
   Gdx.app=this;
   Gdx.graphics=graphics=new JglfwGraphics(config);
   Gdx.files=files=new JglfwFiles();
-  Gdx.input=input=new JglfwInput(this,callbacksOnAppKitThread);
+  Gdx.input=input=new JglfwInput(this,inputCallbacksOnAppKitThread);
   Gdx.net=net=new JglfwNet();
   callbacks.add(new GlfwCallbackAdapter(){
     public void windowSize(    long window,    final int width,    final int height){
       Runnable runnable=new Runnable(){
         public void run(){
-          Gdx.gl.glViewport(0,0,width,height);
-          if (listener != null)           listener.resize(width,height);
-          graphics.requestRendering();
+          graphics.resized(width,height);
         }
       }
 ;
-      if (callbacksOnAppKitThread)       postRunnable(runnable);
+      if (Thread.currentThread() != glThread)       postRunnable(runnable);
  else       runnable.run();
     }
     public void windowPos(    long window,    final int x,    final int y){
@@ -30,11 +29,11 @@
         }
       }
 ;
-      if (callbacksOnAppKitThread)       postRunnable(runnable);
+      if (Thread.currentThread() != glThread)       postRunnable(runnable);
  else       runnable.run();
     }
     public void windowRefresh(    long window){
-      if (!callbacksOnAppKitThread)       renderFrame();
+      if (Thread.currentThread() == glThread)       renderFrame();
     }
     public void error(    int error,    String description){
       throw new GdxRuntimeException("GLFW error " + error + ": "+ description);
@@ -47,15 +46,15 @@
   if (config.runOnEDT) {
     new Runnable(){
       public void run(){
-        loopFrame();
+        frame();
         if (running)         EventQueue.invokeLater(this);
- else         loopEnd();
+ else         end();
       }
     }
 .run();
   }
  else {
-    while (running)     loopFrame();
-    loopEnd();
+    while (running)     frame();
+    end();
   }
 }
