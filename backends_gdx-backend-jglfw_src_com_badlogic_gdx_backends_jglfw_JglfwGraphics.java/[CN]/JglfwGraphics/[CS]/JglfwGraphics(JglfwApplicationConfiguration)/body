@@ -5,6 +5,7 @@
   undecorated=config.undecorated;
   x=config.x;
   y=config.y;
+  vSync=config.vSync;
   initialBackgroundColor=config.initialBackgroundColor;
   if (config.fullscreenMonitorIndex != -1) {
     long[] monitors=glfwGetMonitors();
@@ -34,5 +35,4 @@
   Gdx.gl11=gl11;
   Gdx.gl20=gl20;
   if (!config.hidden)   show();
-  setVSync(config.vSync);
 }

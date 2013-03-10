@@ -26,6 +26,7 @@
   }
   if (!mouseCaptured)   glfwSetInputMode(window,GLFW_CURSOR_MODE,GLFW_CURSOR_NORMAL);
   glfwMakeContextCurrent(newWindow);
+  setVSync(vSync);
   if (visible)   glfwShowWindow(window);
   return true;
 }
