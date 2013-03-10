@@ -49,5 +49,5 @@
 ;
   if (queueEvents)   inputProcessor=processorQueue=new InputProcessorQueue(inputProcessor);
  else   processorQueue=null;
-  app.callbacks.add(new GlfwInputProcessor(inputProcessor));
+  app.getCallbacks().add(new GlfwInputProcessor(inputProcessor));
 }

@@ -1,5 +1,7 @@
 {
+  long monitor=glfwGetWindowMonitor(window);
+  if (monitor == 0)   monitor=glfwGetPrimaryMonitor();
   Array<DisplayMode> modes=new Array();
-  for (  GlfwVideoMode mode : glfwGetVideoModes(glfwGetWindowMonitor(window)))   modes.add(new JglfwDisplayMode(mode.width,mode.height,0,mode.redBits + mode.greenBits + mode.blueBits));
+  for (  GlfwVideoMode mode : glfwGetVideoModes(monitor))   modes.add(new JglfwDisplayMode(mode.width,mode.height,0,mode.redBits + mode.greenBits + mode.blueBits));
   return modes.toArray(DisplayMode.class);
 }

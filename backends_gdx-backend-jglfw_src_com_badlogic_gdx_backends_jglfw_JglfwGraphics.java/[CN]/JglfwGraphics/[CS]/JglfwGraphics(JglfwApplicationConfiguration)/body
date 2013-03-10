@@ -3,6 +3,9 @@
   title=config.title;
   resizable=config.resizable;
   undecorated=config.undecorated;
+  x=config.x;
+  y=config.y;
+  initialBackgroundColor=config.initialBackgroundColor;
   if (config.fullscreenMonitorIndex != -1) {
     long[] monitors=glfwGetMonitors();
     if (config.fullscreenMonitorIndex < monitors.length)     fullscreenMonitor=monitors[config.fullscreenMonitorIndex];
@@ -10,8 +13,6 @@
   if (!createWindow(config.width,config.height,config.fullscreen)) {
     throw new GdxRuntimeException("Unable to create window: " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
   }
-  if (config.x != -1 && config.y != -1)   glfwSetWindowPos(window,config.x,config.y);
-  setVSync(config.vSync);
   String version=GL.glGetString(GL11.GL_VERSION);
   glMajorVersion=Integer.parseInt("" + version.charAt(0));
   glMinorVersion=Integer.parseInt("" + version.charAt(2));
@@ -21,9 +22,7 @@
   }
  else {
     gl20=null;
-    if (glMajorVersion == 1 && glMinorVersion < 5) {
-      gl10=new JglfwGL10();
-    }
+    if (glMajorVersion == 1 && glMinorVersion < 5)     gl10=new JglfwGL10();
  else {
       gl11=new JglfwGL11();
       gl10=gl11;
@@ -34,4 +33,6 @@
   Gdx.gl10=gl10;
   Gdx.gl11=gl11;
   Gdx.gl20=gl20;
+  if (!config.hidden)   show();
+  setVSync(config.vSync);
 }

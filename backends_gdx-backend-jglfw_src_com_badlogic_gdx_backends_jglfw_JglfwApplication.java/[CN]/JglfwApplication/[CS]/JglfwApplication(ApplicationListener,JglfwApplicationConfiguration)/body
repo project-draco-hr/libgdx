@@ -1,46 +1,11 @@
 {
   this.listener=listener;
-  final boolean callbacksOnAppKitThread=config.enableAWT && isMac;
-  if (callbacksOnAppKitThread)   java.awt.Toolkit.getDefaultToolkit();
-  forceExit=config.forceExit;
-  GdxNativesLoader.load();
-  if (!glfwInit())   throw new GdxRuntimeException("Unable to initialize GLFW.");
-  Gdx.app=this;
-  Gdx.graphics=graphics=new JglfwGraphics(config);
-  Gdx.files=files=new JglfwFiles();
-  Gdx.input=input=new JglfwInput(this,callbacksOnAppKitThread);
-  Gdx.net=net=new JglfwNet();
-  glfwSetCallback(callbacks);
-  callbacks.add(new GlfwCallbackAdapter(){
-    public void windowSize(    long window,    final int width,    final int height){
-      Runnable runnable=new Runnable(){
-        public void run(){
-          Gdx.gl.glViewport(0,0,width,height);
-          if (listener != null)           listener.resize(width,height);
-          graphics.requestRendering();
-        }
-      }
-;
-      if (callbacksOnAppKitThread)       postRunnable(runnable);
- else       runnable.run();
-    }
-    public void windowRefresh(    long window){
-      if (!callbacksOnAppKitThread)       renderFrame();
-    }
-    public void windowPos(    long window,    int x,    int y){
-    }
-    public void windowIconify(    long window,    boolean iconified){
-    }
-    public void windowFocus(    long window,    boolean focused){
-    }
-    public boolean windowClose(    long window){
-      return true;
-    }
-    public void monitor(    long monitor,    boolean connected){
-    }
-    public void error(    int error,    String description){
-      throw new GdxRuntimeException("GLFW error " + error + ": "+ description);
+  Runnable runnable=new Runnable(){
+    public void run(){
+      start(config);
     }
   }
-);
+;
+  if (config.runOnEDT)   EventQueue.invokeLater(runnable);
+ else   new Thread(runnable,"MainLoop").start();
 }

@@ -1,5 +1,5 @@
 {
-  graphics.updateTime();
+  graphics.frameStart();
   listener.render();
   glfwSwapBuffers(graphics.window);
 }

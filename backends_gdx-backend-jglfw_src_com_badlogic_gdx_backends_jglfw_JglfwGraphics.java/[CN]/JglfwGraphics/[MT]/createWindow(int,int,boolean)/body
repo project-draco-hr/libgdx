@@ -1,5 +1,6 @@
 {
   if (fullscreenMonitor == 0)   fullscreenMonitor=glfwGetPrimaryMonitor();
+  glfwWindowHint(GLFW_VISIBLE,0);
   glfwWindowHint(GLFW_RESIZABLE,resizable ? 1 : 0);
   glfwWindowHint(GLFW_UNDECORATED,undecorated ? 1 : 0);
   glfwWindowHint(GLFW_RED_BITS,bufferFormat.r);
@@ -14,9 +15,17 @@
   long newWindow=glfwCreateWindow(width,height,title,fullscreen ? fullscreenMonitor : 0,oldWindow);
   if (newWindow == 0)   return false;
   if (oldWindow != 0)   glfwDestroyWindow(oldWindow);
-  glfwMakeContextCurrent(newWindow);
   window=newWindow;
   this.fullscreen=fullscreen;
+  if (!fullscreen) {
+    if (x != -1 && y != -1)     glfwSetWindowPos(window,x,y);
+ else {
+      DisplayMode mode=getDesktopDisplayMode();
+      glfwSetWindowPos(window,(mode.width - width) / 2,(mode.height - height) / 2);
+    }
+  }
   if (!mouseCaptured)   glfwSetInputMode(window,GLFW_CURSOR_MODE,GLFW_CURSOR_NORMAL);
+  glfwMakeContextCurrent(newWindow);
+  if (visible)   glfwShowWindow(window);
   return true;
 }

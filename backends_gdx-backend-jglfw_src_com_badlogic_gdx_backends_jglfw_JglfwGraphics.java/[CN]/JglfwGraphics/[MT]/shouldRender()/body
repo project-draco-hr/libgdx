@@ -1,7 +1,8 @@
 {
-synchronized (this) {
-    boolean requestRendering=this.requestRendering;
-    this.requestRendering=false;
-    return requestRendering || isContinuous;
+  try {
+    return renderRequested || isContinuous;
+  }
+  finally {
+    renderRequested=false;
   }
 }

@@ -1,5 +1,6 @@
 {
   long time=System.nanoTime();
+  if (lastTime == -1)   lastTime=time;
   deltaTime=(time - lastTime) / 1000000000.0f;
   lastTime=time;
   if (time - frameStart >= 1000000000) {
