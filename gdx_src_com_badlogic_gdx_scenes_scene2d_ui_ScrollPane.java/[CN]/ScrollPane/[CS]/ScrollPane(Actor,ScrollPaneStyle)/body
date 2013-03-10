@@ -1,8 +1,7 @@
 {
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
-  this.widget=widget;
   this.style=style;
-  if (widget != null)   setWidget(widget);
+  setWidget(widget);
   setWidth(150);
   setHeight(150);
   addCaptureListener(new InputListener(){
