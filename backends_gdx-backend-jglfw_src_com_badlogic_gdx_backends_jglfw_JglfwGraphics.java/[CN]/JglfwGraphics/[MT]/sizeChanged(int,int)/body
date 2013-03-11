@@ -1,4 +1,6 @@
 {
+  this.width=width;
+  this.height=height;
   Gdx.gl.glViewport(0,0,width,height);
   ApplicationListener listener=Gdx.app.getApplicationListener();
   if (listener != null)   listener.resize(width,height);

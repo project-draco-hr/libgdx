@@ -1,5 +1,6 @@
 {
   forceExit=config.forceExit;
+  runOnEDT=config.forceExit;
   final Thread glThread=Thread.currentThread();
   GdxNativesLoader.load();
   boolean inputCallbacksOnAppKitThread=isMac;
@@ -14,7 +15,7 @@
     public void windowSize(    long window,    final int width,    final int height){
       Runnable runnable=new Runnable(){
         public void run(){
-          graphics.resized(width,height);
+          graphics.sizeChanged(width,height);
         }
       }
 ;
@@ -24,8 +25,7 @@
     public void windowPos(    long window,    final int x,    final int y){
       Runnable runnable=new Runnable(){
         public void run(){
-          graphics.x=x;
-          graphics.y=y;
+          graphics.positionChanged(x,y);
         }
       }
 ;
@@ -41,20 +41,5 @@
   }
 );
   glfwSetCallback(callbacks);
-  listener.create();
-  listener.resize(graphics.getWidth(),graphics.getHeight());
-  if (config.runOnEDT) {
-    new Runnable(){
-      public void run(){
-        frame();
-        if (running)         EventQueue.invokeLater(this);
- else         end();
-      }
-    }
-.run();
-  }
- else {
-    while (running)     frame();
-    end();
-  }
+  start();
 }

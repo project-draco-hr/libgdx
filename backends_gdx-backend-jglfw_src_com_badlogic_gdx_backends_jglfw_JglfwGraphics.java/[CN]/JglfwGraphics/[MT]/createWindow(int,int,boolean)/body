@@ -16,13 +16,16 @@
   if (newWindow == 0)   return false;
   if (oldWindow != 0)   glfwDestroyWindow(oldWindow);
   window=newWindow;
+  this.width=width;
+  this.height=height;
   this.fullscreen=fullscreen;
   if (!fullscreen) {
-    if (x != -1 && y != -1)     glfwSetWindowPos(window,x,y);
- else {
+    if (x == -1 || y == -1) {
       DisplayMode mode=getDesktopDisplayMode();
-      glfwSetWindowPos(window,(mode.width - width) / 2,(mode.height - height) / 2);
+      x=(mode.width - width) / 2;
+      y=(mode.height - height) / 2;
     }
+    glfwSetWindowPos(window,x,y);
   }
   if (!mouseCaptured)   glfwSetInputMode(window,GLFW_CURSOR_MODE,GLFW_CURSOR_NORMAL);
   glfwMakeContextCurrent(newWindow);

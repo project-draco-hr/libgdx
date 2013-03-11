@@ -3,7 +3,7 @@
   Runnable runnable=new Runnable(){
     public void run(){
       try {
-        start(config);
+        initialize(config);
       }
  catch (      Throwable ex) {
         exception(ex);
