@@ -1,5 +1,5 @@
 {
-  if (fullscreenMonitor == 0)   fullscreenMonitor=glfwGetPrimaryMonitor();
+  if (fullscreen && fullscreenMonitor == 0)   fullscreenMonitor=getWindowMonitor();
   glfwWindowHint(GLFW_VISIBLE,0);
   glfwWindowHint(GLFW_RESIZABLE,resizable ? 1 : 0);
   glfwWindowHint(GLFW_UNDECORATED,undecorated ? 1 : 0);

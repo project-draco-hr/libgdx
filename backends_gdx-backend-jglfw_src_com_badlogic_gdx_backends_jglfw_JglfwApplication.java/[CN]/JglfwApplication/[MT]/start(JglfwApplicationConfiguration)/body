@@ -33,7 +33,7 @@
  else       runnable.run();
     }
     public void windowRefresh(    long window){
-      if (Thread.currentThread() == glThread)       renderFrame();
+      if (Thread.currentThread() == glThread)       render();
     }
     public void error(    int error,    String description){
       throw new GdxRuntimeException("GLFW error " + error + ": "+ description);

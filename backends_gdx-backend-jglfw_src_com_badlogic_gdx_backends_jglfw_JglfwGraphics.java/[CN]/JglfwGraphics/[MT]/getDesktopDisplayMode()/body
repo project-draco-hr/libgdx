@@ -1,6 +1,4 @@
 {
-  long monitor=glfwGetWindowMonitor(window);
-  if (monitor == 0)   monitor=glfwGetPrimaryMonitor();
-  GlfwVideoMode mode=glfwGetVideoMode(monitor);
+  GlfwVideoMode mode=glfwGetVideoMode(getWindowMonitor());
   return new JglfwDisplayMode(mode.width,mode.height,0,mode.redBits + mode.greenBits + mode.blueBits);
 }

@@ -14,7 +14,7 @@ synchronized (runnables) {
     graphics.requestRendering();
   }
   input.update();
-  if (graphics.shouldRender())   renderFrame();
+  if (graphics.shouldRender())   render();
  else {
     try {
       Thread.sleep(16);

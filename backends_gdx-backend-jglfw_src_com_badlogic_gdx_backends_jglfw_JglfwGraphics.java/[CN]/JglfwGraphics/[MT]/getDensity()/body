@@ -1,3 +1,11 @@
 {
-  return Toolkit.getDefaultToolkit().getScreenResolution() / 160f;
+  long monitor=getWindowMonitor();
+  float mmWidth=glfwGetMonitorPhysicalWidth(monitor);
+  float mmHeight=glfwGetMonitorPhysicalHeight(monitor);
+  float mm=(float)Math.sqrt(mmWidth * mmWidth + mmHeight * mmHeight);
+  float pixelWidth=getWidth();
+  float pixelHeight=getHeight();
+  float pixels=(float)Math.sqrt(pixelWidth * pixelWidth + pixelHeight * pixelHeight);
+  float diagonlPpi=pixels / mm;
+  return diagonlPpi / 160f;
 }
