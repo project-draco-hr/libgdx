@@ -2,7 +2,12 @@
   this.listener=listener;
   Runnable runnable=new Runnable(){
     public void run(){
-      start(config);
+      try {
+        start(config);
+      }
+ catch (      Throwable ex) {
+        exception(ex);
+      }
     }
   }
 ;
