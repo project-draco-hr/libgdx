@@ -15,6 +15,10 @@ return Input.Keys.PERIOD;
 case GLFW_KEY_KP_DIVIDE:
 return Input.Keys.SLASH;
 case GLFW_KEY_MENU:
+return Input.Keys.MENU;
+case GLFW_KEY_RIGHT_SUPER:
+return Input.Keys.SYM;
+case GLFW_KEY_LEFT_SUPER:
 return Input.Keys.SYM;
 case GLFW_KEY_KP_EQUAL:
 return Input.Keys.EQUALS;

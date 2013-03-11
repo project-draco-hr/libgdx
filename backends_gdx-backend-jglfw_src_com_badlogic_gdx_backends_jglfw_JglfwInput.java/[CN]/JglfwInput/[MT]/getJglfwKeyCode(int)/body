@@ -12,8 +12,10 @@ case Input.Keys.NUM:
 return GLFW_KEY_NUM_LOCK;
 case Input.Keys.EQUALS:
 return GLFW_KEY_MENU;
-case Input.Keys.SYM:
+case Input.Keys.MENU:
 return GLFW_KEY_MENU;
+case Input.Keys.SYM:
+return GLFW_KEY_LEFT_SUPER;
 case Input.Keys.NUM_0:
 return GLFW_KEY_0;
 case Input.Keys.NUM_1:
