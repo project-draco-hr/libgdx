@@ -2,10 +2,10 @@
   long monitor=getWindowMonitor();
   float mmWidth=glfwGetMonitorPhysicalWidth(monitor);
   float mmHeight=glfwGetMonitorPhysicalHeight(monitor);
-  float mm=(float)Math.sqrt(mmWidth * mmWidth + mmHeight * mmHeight);
+  float inches=(float)Math.sqrt(mmWidth * mmWidth + mmHeight * mmHeight) * 0.03937f;
   float pixelWidth=getWidth();
   float pixelHeight=getHeight();
   float pixels=(float)Math.sqrt(pixelWidth * pixelWidth + pixelHeight * pixelHeight);
-  float diagonlPpi=pixels / mm;
-  return diagonlPpi / 160f;
+  float diagonalPpi=pixels / inches;
+  return diagonalPpi / 160f;
 }
