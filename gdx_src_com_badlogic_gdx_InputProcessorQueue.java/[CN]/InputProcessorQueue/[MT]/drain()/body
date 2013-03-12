@@ -1,34 +1,41 @@
 {
-  if (processor != null) {
-    for (int i=0, n=queue.size; i < n; ) {
-      currentEventTime=(long)queue.get(i++) << 32 | queue.get(i++) & 0xFFFFFFFFL;
-switch (queue.get(i++)) {
+  IntArray q=processingQueue;
+synchronized (this) {
+    if (processor == null) {
+      queue.clear();
+      return;
+    }
+    q.addAll(queue);
+    queue.clear();
+  }
+  for (int i=0, n=q.size; i < n; ) {
+    currentEventTime=(long)q.get(i++) << 32 | q.get(i++) & 0xFFFFFFFFL;
+switch (q.get(i++)) {
 case KEY_DOWN:
-        processor.keyDown(queue.get(i++));
-      break;
+      processor.keyDown(q.get(i++));
+    break;
 case KEY_UP:
-    processor.keyUp(queue.get(i++));
-  break;
+  processor.keyUp(q.get(i++));
+break;
 case KEY_TYPED:
-processor.keyTyped((char)queue.get(i++));
+processor.keyTyped((char)q.get(i++));
 break;
 case TOUCH_DOWN:
-processor.touchDown(queue.get(i++),queue.get(i++),queue.get(i++),queue.get(i++));
+processor.touchDown(q.get(i++),q.get(i++),q.get(i++),q.get(i++));
 break;
 case TOUCH_UP:
-processor.touchUp(queue.get(i++),queue.get(i++),queue.get(i++),queue.get(i++));
+processor.touchUp(q.get(i++),q.get(i++),q.get(i++),q.get(i++));
 break;
 case TOUCH_DRAGGED:
-processor.touchDragged(queue.get(i++),queue.get(i++),queue.get(i++));
+processor.touchDragged(q.get(i++),q.get(i++),q.get(i++));
 break;
 case MOUSE_MOVED:
-processor.mouseMoved(queue.get(i++),queue.get(i++));
+processor.mouseMoved(q.get(i++),q.get(i++));
 break;
 case SCROLLED:
-processor.scrolled(queue.get(i++));
+processor.scrolled(q.get(i++));
 break;
 }
 }
-}
-queue.clear();
+q.clear();
 }
