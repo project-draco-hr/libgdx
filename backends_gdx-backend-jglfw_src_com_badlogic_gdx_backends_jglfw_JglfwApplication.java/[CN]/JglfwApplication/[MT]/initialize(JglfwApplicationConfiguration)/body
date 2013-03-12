@@ -1,6 +1,6 @@
 {
   forceExit=config.forceExit;
-  runOnEDT=config.forceExit;
+  runOnEDT=config.runOnEDT;
   final Thread glThread=Thread.currentThread();
   GdxNativesLoader.load();
   boolean inputCallbacksOnAppKitThread=isMac;
