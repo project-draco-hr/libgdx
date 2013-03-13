@@ -1,9 +1,9 @@
 {
-  float centerColumnX=x + leftWidth;
-  float rightColumnX=x + width - rightWidth;
-  float middleRowY=y + bottomHeight;
-  float topRowY=y + height - topHeight;
-  float c=tempColor.set(color).mul(batch.getColor()).toFloatBits();
+  final float centerColumnX=x + leftWidth;
+  final float rightColumnX=x + width - rightWidth;
+  final float middleRowY=y + bottomHeight;
+  final float topRowY=y + height - topHeight;
+  final float c=tmpDrawColor.set(color).mul(batch.getColor()).toFloatBits();
   if (bottomLeft != -1)   set(bottomLeft,x,y,centerColumnX - x,middleRowY - y,c);
   if (bottomCenter != -1)   set(bottomCenter,centerColumnX,y,rightColumnX - centerColumnX,middleRowY - y,c);
   if (bottomRight != -1)   set(bottomRight,rightColumnX,y,x + width - rightColumnX,middleRowY - y,c);
