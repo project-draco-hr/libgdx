@@ -1,5 +1,5 @@
 {
-  float color=Color.WHITE.toFloatBits();
+  final float color=Color.WHITE.toFloatBits();
   if (patches[BOTTOM_LEFT] != null) {
     bottomLeft=add(patches[BOTTOM_LEFT],color);
     leftWidth=patches[BOTTOM_LEFT].getRegionWidth();
