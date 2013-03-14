@@ -8,6 +8,7 @@
   buttonTable.defaults().space(6);
   buttonTable.addListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
+      if (!values.containsKey(actor))       return;
       while (actor.getParent() != buttonTable)       actor=actor.getParent();
       result(values.get(actor));
       if (!cancelHide)       hide();
