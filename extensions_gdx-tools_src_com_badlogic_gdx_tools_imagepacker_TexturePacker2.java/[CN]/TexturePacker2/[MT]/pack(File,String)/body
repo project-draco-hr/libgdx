@@ -1,6 +1,6 @@
 {
   outputDir.mkdirs();
-  if (packFileName.indexOf('.') == -1)   packFileName+=".atlas";
+  if (packFileName.indexOf('.') == -1)   packFileName+=settings.jsonOutput ? ".json" : ".atlas";
   Array<Page> pages=maxRectsPacker.pack(imageProcessor.getImages());
   writeImages(outputDir,pages,packFileName);
   try {

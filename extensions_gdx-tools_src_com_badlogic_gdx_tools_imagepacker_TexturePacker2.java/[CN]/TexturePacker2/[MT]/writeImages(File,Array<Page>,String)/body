@@ -83,6 +83,7 @@
     }
     try {
       if (settings.outputFormat.equalsIgnoreCase("jpg")) {
+        if (settings.format == Format.RGBA8888 || settings.format == Format.RGBA4444)         throw new RuntimeException("Invalid format for JPG output: " + settings.format);
         Iterator<ImageWriter> writers=ImageIO.getImageWritersByFormatName("jpg");
         ImageWriter writer=writers.next();
         ImageWriteParam param=writer.getDefaultWriteParam();
