@@ -5,6 +5,7 @@
     for (    Page page : pages) {
       for (      Rect rect : page.outputRects) {
         String rectName=settings.flattenPaths ? new FileHandle(rect.name).name() : rect.name;
+        System.out.println(rectName);
         for (        Region region : textureAtlasData.getRegions()) {
           if (region.name.equals(rectName)) {
             throw new GdxRuntimeException("A region with the name \"" + rectName + "\" has already been packed: "+ rect.name);
@@ -14,42 +15,16 @@
     }
   }
   FileWriter writer=new FileWriter(packFile,true);
-  if (settings.jsonOutput) {
-    JsonWriter json=new JsonWriter(writer);
-    json.object();
-    json.array("pages");
-    for (    Page page : pages) {
-      json.object();
-      json.set("name",page.imageName);
-      if (settings.format != Format.RGBA8888)       json.set("format",settings.format);
-      if (settings.filterMin != TextureFilter.Nearest)       json.set("filterMin",settings.filterMin);
-      if (settings.filterMag != TextureFilter.Nearest)       json.set("filterMag",settings.filterMag);
-      if (!getRepeatValue().equals("none"))       json.set("repeat",getRepeatValue());
-      json.object("regions");
-      for (      Rect rect : page.outputRects) {
-        writeRectJson(json,page,rect);
-        for (        Rect alias : rect.aliases) {
-          alias.setSize(rect);
-          writeRectJson(json,page,alias);
-        }
-      }
-      json.pop();
-      json.pop();
-    }
-    json.close();
-  }
- else {
-    for (    Page page : pages) {
-      writer.write("\n" + page.imageName + "\n");
-      writer.write("format: " + settings.format + "\n");
-      writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
-      writer.write("repeat: " + getRepeatValue() + "\n");
-      for (      Rect rect : page.outputRects) {
-        writeRectLegacy(writer,page,rect);
-        for (        Rect alias : rect.aliases) {
-          alias.setSize(rect);
-          writeRectLegacy(writer,page,alias);
-        }
+  for (  Page page : pages) {
+    writer.write("\n" + page.imageName + "\n");
+    writer.write("format: " + settings.format + "\n");
+    writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
+    writer.write("repeat: " + getRepeatValue() + "\n");
+    for (    Rect rect : page.outputRects) {
+      writeRect(writer,page,rect);
+      for (      Rect alias : rect.aliases) {
+        alias.setSize(rect);
+        writeRect(writer,page,alias);
       }
     }
   }
