@@ -10,6 +10,6 @@
     for (    Element objectElement : element.getChildrenByName("object")) {
       loadObject(layer,objectElement);
     }
-    map.getLayers().addLayer(layer);
+    map.getLayers().add(layer);
   }
 }

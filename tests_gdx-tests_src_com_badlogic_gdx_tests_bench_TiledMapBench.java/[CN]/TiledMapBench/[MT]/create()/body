@@ -24,7 +24,7 @@
           layer.setCell(x,y,cell);
         }
       }
-      layers.addLayer(layer);
+      layers.add(layer);
     }
   }
   renderer=new OrthogonalTiledMapRenderer2(map);
