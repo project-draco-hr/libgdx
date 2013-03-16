@@ -11,6 +11,7 @@
     shader.end();
     GL20 gl=Gdx.gl20;
     gl.glDepthMask(true);
-    mesh.unbind(shader);
+    if (customShader != null)     mesh.unbind(customShader);
+ else     mesh.unbind(shader);
   }
 }
