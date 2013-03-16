@@ -1,0 +1,8 @@
+{
+  super.dispose();
+  frustumObject=null;
+  if (ghostPairCallback != null)   ghostPairCallback.delete();
+  ghostPairCallback=null;
+  if (tempManifoldArr != null)   tempManifoldArr.delete();
+  tempManifoldArr=null;
+}
