@@ -1,4 +1,4 @@
 {
-  direction.mul(quat);
-  up.mul(quat);
+  quat.transform(direction);
+  quat.transform(up);
 }
