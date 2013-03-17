@@ -1,6 +1,6 @@
 {
   if (world.performanceCounter != null)   world.performanceCounter.start();
-  if (USE_BULLET_FRUSTUM_CULLING)   getEntitiesInObject(world,frustumObject,visibleEntities,tempManifoldArr);
+  if (USE_BULLET_FRUSTUM_CULLING)   getEntitiesCollidingWithObject(world,frustumObject,visibleEntities,tempManifoldArr);
  else {
     visibleEntities.clear();
     for (int i=0; i < world.entities.size; i++) {
