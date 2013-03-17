@@ -1,0 +1,16 @@
+{
+  this.listener=listener;
+  Runnable runnable=new Runnable(){
+    public void run(){
+      try {
+        initialize(config);
+      }
+ catch (      Throwable ex) {
+        exception(ex);
+      }
+    }
+  }
+;
+  if (config.runOnEDT)   EventQueue.invokeLater(runnable);
+ else   new Thread(runnable,"MainLoop").start();
+}

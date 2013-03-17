@@ -2,8 +2,11 @@
   if (!FreeType.setPixelSizes(face,0,size))   throw new GdxRuntimeException("Couldn't set size for font");
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   int baseline=FreeType.toInt(fontMetrics.getAscender());
-  if (!FreeType.loadChar(face,c,FreeType.FT_LOAD_DEFAULT)) {
+  if (FreeType.getCharIndex(face,c) == 0) {
     return null;
+  }
+  if (!FreeType.loadChar(face,c,FreeType.FT_LOAD_DEFAULT)) {
+    throw new GdxRuntimeException("Unable to load character!");
   }
   GlyphSlot slot=face.getGlyph();
   Bitmap bitmap;

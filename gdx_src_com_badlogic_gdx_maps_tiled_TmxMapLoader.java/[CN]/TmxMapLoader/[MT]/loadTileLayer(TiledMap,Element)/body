@@ -31,17 +31,17 @@
             if (flipDiagonally) {
               if (flipHorizontally && flipVertically) {
                 cell.setFlipHorizontally(true);
-                cell.setRotation(Cell.ROTATE_90);
+                cell.setRotation(Cell.ROTATE_270);
               }
  else               if (flipHorizontally) {
-                cell.setRotation(Cell.ROTATE_90);
+                cell.setRotation(Cell.ROTATE_270);
               }
  else               if (flipVertically) {
-                cell.setRotation(Cell.ROTATE_270);
+                cell.setRotation(Cell.ROTATE_90);
               }
  else {
                 cell.setFlipVertically(true);
-                cell.setRotation(Cell.ROTATE_90);
+                cell.setRotation(Cell.ROTATE_270);
               }
             }
  else {
@@ -73,17 +73,17 @@
                 if (flipDiagonally) {
                   if (flipHorizontally && flipVertically) {
                     cell.setFlipHorizontally(true);
-                    cell.setRotation(Cell.ROTATE_90);
+                    cell.setRotation(Cell.ROTATE_270);
                   }
  else                   if (flipHorizontally) {
-                    cell.setRotation(Cell.ROTATE_90);
+                    cell.setRotation(Cell.ROTATE_270);
                   }
  else                   if (flipVertically) {
-                    cell.setRotation(Cell.ROTATE_270);
+                    cell.setRotation(Cell.ROTATE_90);
                   }
  else {
                     cell.setFlipVertically(true);
-                    cell.setRotation(Cell.ROTATE_90);
+                    cell.setRotation(Cell.ROTATE_270);
                   }
                 }
  else {
@@ -121,17 +121,17 @@
                   if (flipDiagonally) {
                     if (flipHorizontally && flipVertically) {
                       cell.setFlipHorizontally(true);
-                      cell.setRotation(Cell.ROTATE_90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
  else                     if (flipHorizontally) {
-                      cell.setRotation(Cell.ROTATE_90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
  else                     if (flipVertically) {
-                      cell.setRotation(Cell.ROTATE_270);
+                      cell.setRotation(Cell.ROTATE_90);
                     }
  else {
                       cell.setFlipVertically(true);
-                      cell.setRotation(Cell.ROTATE_90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
                   }
  else {
@@ -168,17 +168,17 @@
                   if (flipDiagonally) {
                     if (flipHorizontally && flipVertically) {
                       cell.setFlipHorizontally(true);
-                      cell.setRotation(-90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
  else                     if (flipHorizontally) {
-                      cell.setRotation(-90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
  else                     if (flipVertically) {
-                      cell.setRotation(+90);
+                      cell.setRotation(Cell.ROTATE_90);
                     }
  else {
                       cell.setFlipVertically(true);
-                      cell.setRotation(-90);
+                      cell.setRotation(Cell.ROTATE_270);
                     }
                   }
  else {
@@ -201,6 +201,6 @@
     if (properties != null) {
       loadProperties(layer.getProperties(),properties);
     }
-    map.getLayers().addLayer(layer);
+    map.getLayers().add(layer);
   }
 }

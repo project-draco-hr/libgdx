@@ -1,0 +1,8 @@
+{
+  justTouched=false;
+  if (processorQueue != null)   processorQueue.drain();
+ else {
+    currentEventTime=System.nanoTime();
+    glfwPollEvents();
+  }
+}

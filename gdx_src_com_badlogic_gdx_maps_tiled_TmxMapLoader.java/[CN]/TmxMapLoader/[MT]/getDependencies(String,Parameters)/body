@@ -3,8 +3,11 @@
   try {
     FileHandle tmxFile=resolve(fileName);
     root=xml.parse(tmxFile);
+    boolean generateMipMaps=(parameter != null ? parameter.generateMipMaps : false);
+    TextureLoader.TextureParameter texParams=new TextureParameter();
+    texParams.genMipMaps=generateMipMaps;
     for (    FileHandle image : loadTilesets(root,tmxFile)) {
-      dependencies.add(new AssetDescriptor(image.path(),Texture.class));
+      dependencies.add(new AssetDescriptor(image.path(),Texture.class,texParams));
     }
     return dependencies;
   }

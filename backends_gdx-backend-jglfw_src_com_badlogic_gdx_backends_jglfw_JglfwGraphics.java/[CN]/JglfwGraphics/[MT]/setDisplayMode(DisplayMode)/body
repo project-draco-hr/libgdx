@@ -1,0 +1,6 @@
+{
+  bufferFormat=new BufferFormat(displayMode.bitsPerPixel == 16 ? 5 : 8,displayMode.bitsPerPixel == 16 ? 6 : 8,displayMode.bitsPerPixel == 16 ? 6 : 8,bufferFormat.a,bufferFormat.depth,bufferFormat.stencil,bufferFormat.samples,false);
+  boolean success=createWindow(displayMode.width,displayMode.height,fullscreen);
+  if (success && fullscreen)   sizeChanged(displayMode.width,displayMode.height);
+  return success;
+}
