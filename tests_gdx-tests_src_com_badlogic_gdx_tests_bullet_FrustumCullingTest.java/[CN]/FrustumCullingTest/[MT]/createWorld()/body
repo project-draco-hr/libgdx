@@ -1,7 +1,5 @@
 {
-  for (int i=0; i < ptrs.length; i++)   ptrs[i]=0;
   btDbvtBroadphase broadphase=new btDbvtBroadphase();
-  broadphase.getOverlappingPairCache().setInternalGhostPairCallback(ghostPairCallback=new btGhostPairCallback());
   btDefaultCollisionConfiguration collisionConfig=new btDefaultCollisionConfiguration();
   btCollisionDispatcher dispatcher=new btCollisionDispatcher(collisionConfig);
   btCollisionWorld collisionWorld=new btCollisionWorld(dispatcher,broadphase,collisionConfig);

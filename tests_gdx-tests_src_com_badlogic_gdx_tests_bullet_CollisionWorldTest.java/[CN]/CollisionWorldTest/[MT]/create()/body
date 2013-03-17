@@ -1,5 +1,6 @@
 {
   super.create();
+  instructions="Long press to toggle debug mode\nSwipe for next test";
   contactCB=new TestContactResultCallback();
   Model groundModel=world.getConstructor("ground").model;
   Model boxModel=world.getConstructor("box").model;
