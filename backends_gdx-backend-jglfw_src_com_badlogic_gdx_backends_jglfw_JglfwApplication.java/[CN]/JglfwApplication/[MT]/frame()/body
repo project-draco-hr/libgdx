@@ -14,8 +14,16 @@ synchronized (runnables) {
     graphics.requestRendering();
   }
   input.update();
+  long frameStartTime=System.nanoTime();
   int targetFPS=(graphics.isHidden() || graphics.isMinimized()) ? hiddenFPS : (graphics.isForeground() ? foregroundFPS : backgroundFPS);
-  long time=System.nanoTime();
-  if (graphics.shouldRender() && targetFPS != -1)   render(time);
-  if (targetFPS != 0)   sleep(targetFPS == -1 ? 100 : (int)(1000f / targetFPS - (System.nanoTime() - time) / 1000000f));
+  if (targetFPS == -1) {
+    if (!isPaused)     listener.pause();
+    isPaused=true;
+  }
+ else {
+    if (isPaused)     listener.resume();
+    isPaused=false;
+    if (graphics.shouldRender())     render(frameStartTime);
+  }
+  if (targetFPS != 0)   sleep(targetFPS == -1 ? 100 : (int)(1000f / targetFPS - (System.nanoTime() - frameStartTime) / 1000000f));
 }

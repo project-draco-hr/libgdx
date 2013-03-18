@@ -1,4 +1,6 @@
 {
+  if (listener == null)   throw new IllegalArgumentException("listener cannot be null.");
+  if (config == null)   throw new IllegalArgumentException("config cannot be null.");
   this.listener=listener;
   Runnable runnable=new Runnable(){
     public void run(){
