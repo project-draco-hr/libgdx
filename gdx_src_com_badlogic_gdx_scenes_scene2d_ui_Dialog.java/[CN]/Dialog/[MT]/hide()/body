@@ -1,4 +1,7 @@
 {
-  if (fadeDuration > 0)   addAction(sequence(fadeOut(fadeDuration,Interpolation.fade),Actions.removeActor()));
+  if (fadeDuration > 0) {
+    addCaptureListener(ignoreTouchDown);
+    addAction(sequence(fadeOut(fadeDuration,Interpolation.fade),Actions.removeListener(ignoreTouchDown,true),Actions.removeActor()));
+  }
  else   remove();
 }
