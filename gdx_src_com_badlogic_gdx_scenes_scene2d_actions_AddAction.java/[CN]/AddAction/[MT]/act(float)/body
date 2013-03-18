@@ -1,4 +1,4 @@
 {
-  targetActor.addAction(action);
+  (targetActor != null ? targetActor : actor).addAction(action);
   return true;
 }
