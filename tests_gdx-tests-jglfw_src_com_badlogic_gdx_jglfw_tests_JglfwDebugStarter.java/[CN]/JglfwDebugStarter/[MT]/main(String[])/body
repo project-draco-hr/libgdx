@@ -4,8 +4,9 @@
   new SharedLibraryLoader("../../extensions/gdx-freetype/libs/gdx-freetype-natives.jar").load("gdx-freetype");
   new SharedLibraryLoader("../../extensions/gdx-controllers/gdx-controllers-desktop/libs/gdx-controllers-desktop-natives.jar").load("gdx-controllers-desktop");
   new SharedLibraryLoader("../../gdx/libs/gdx-natives.jar").load("gdx");
-  GdxTest test=new VBOVATest();
+  GdxTest test=new SuperKoalio();
   JglfwApplicationConfiguration config=new JglfwApplicationConfiguration();
+  config.vSync=true;
   config.useGL20=test.needsGL20();
   new JglfwApplication(test,config);
 }

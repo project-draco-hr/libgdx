@@ -1,9 +1,6 @@
 {
-  float a=x - this.x;
-  float b=y - this.y;
-  float c=z - this.z;
-  a*=a;
-  b*=b;
-  c*=c;
-  return a + b + c;
+  final float a=x - this.x;
+  final float b=y - this.y;
+  final float c=z - this.z;
+  return a * a + b * b + c * c;
 }
