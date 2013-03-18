@@ -1,6 +1,9 @@
 {
   forceExit=config.forceExit;
   runOnEDT=config.runOnEDT;
+  foregroundFPS=config.foregroundFPS;
+  backgroundFPS=config.backgroundFPS;
+  hiddenFPS=config.hiddenFPS;
   final Thread glThread=Thread.currentThread();
   GdxNativesLoader.load();
   boolean inputCallbacksOnAppKitThread=isMac;
@@ -33,7 +36,13 @@
  else       runnable.run();
     }
     public void windowRefresh(    long window){
-      if (Thread.currentThread() == glThread)       render();
+      if (Thread.currentThread() == glThread)       render(System.nanoTime());
+    }
+    public void windowFocus(    long window,    boolean focused){
+      graphics.foreground=focused;
+    }
+    public void windowIconify(    long window,    boolean iconified){
+      graphics.minimized=iconified;
     }
     public void error(    int error,    String description){
       throw new GdxRuntimeException("GLFW error " + error + ": "+ description);
