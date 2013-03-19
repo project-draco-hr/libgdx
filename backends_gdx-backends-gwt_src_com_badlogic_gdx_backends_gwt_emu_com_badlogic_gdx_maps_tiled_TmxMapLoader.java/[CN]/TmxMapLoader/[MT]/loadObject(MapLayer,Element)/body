@@ -54,6 +54,6 @@
     if (properties != null) {
       loadProperties(object.getProperties(),properties);
     }
-    layer.getObjects().addObject(object);
+    layer.getObjects().add(object);
   }
 }
