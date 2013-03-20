@@ -1,0 +1,6 @@
+{
+  if (contactProcessedListener != null)   contactProcessedListener.delete();
+  contactProcessedListener=null;
+  super.dispose();
+  ground=null;
+}
