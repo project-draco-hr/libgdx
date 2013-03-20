@@ -1,5 +1,10 @@
 {
+  if (gdxBridge != null) {
+    gdxBridge.delete();
+    gdxBridge=null;
+  }
   if (swigCPtr != 0) {
+    instances.remove(swigCPtr);
     if (swigCMemOwn) {
       swigCMemOwn=false;
       gdxBulletJNI.delete_btCollisionObject(swigCPtr);

@@ -2,4 +2,6 @@
   swigCMemOwn=cMemoryOwn;
   swigCPtr=cPtr;
   instances.put(cPtr,this);
+  gdxBridge=new GdxCollisionObjectBridge();
+  internalSetGdxBridge(gdxBridge);
 }
