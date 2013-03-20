@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.currentContactDestroyedListener_get();
+  return (cPtr == 0) ? null : new ContactDestroyedListener(cPtr,false);
+}

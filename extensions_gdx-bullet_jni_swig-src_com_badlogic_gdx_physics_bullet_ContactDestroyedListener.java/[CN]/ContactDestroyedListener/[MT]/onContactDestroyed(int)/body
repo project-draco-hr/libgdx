@@ -1,3 +1,3 @@
 {
-  return gdxBulletJNI.ContactDestroyedListener_onContactDestroyed(swigCPtr,this,manifoldPointUserValue);
+  gdxBulletJNI.ContactDestroyedListener_onContactDestroyed(swigCPtr,this,manifoldPointUserValue);
 }

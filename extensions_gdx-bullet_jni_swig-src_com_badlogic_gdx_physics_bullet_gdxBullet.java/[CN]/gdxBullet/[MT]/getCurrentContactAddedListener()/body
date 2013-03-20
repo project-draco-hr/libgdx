@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.currentContactAddedListener_get();
+  return (cPtr == 0) ? null : new SWIGTYPE_p_BaseContactAddedListener(cPtr,false);
+}
