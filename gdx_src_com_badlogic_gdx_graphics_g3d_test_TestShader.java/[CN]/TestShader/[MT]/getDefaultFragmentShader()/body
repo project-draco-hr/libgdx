@@ -1,4 +1,4 @@
 {
-  if (defaultFragmentShader == null)   defaultFragmentShader=Gdx.files.classpath("com/badlogic/gdx/graphics/g3d/xoppa/test/test.fragment.glsl").readString();
+  if (defaultFragmentShader == null)   defaultFragmentShader=Gdx.files.classpath("com/badlogic/gdx/graphics/g3d/test/test.fragment.glsl").readString();
   return defaultFragmentShader;
 }

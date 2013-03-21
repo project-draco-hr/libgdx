@@ -1,4 +1,4 @@
 {
-  if (defaultVertexShader == null)   defaultVertexShader=Gdx.files.classpath("com/badlogic/gdx/graphics/g3d/xoppa/test/test.vertex.glsl").readString();
+  if (defaultVertexShader == null)   defaultVertexShader=Gdx.files.classpath("com/badlogic/gdx/graphics/g3d/test/test.vertex.glsl").readString();
   return defaultVertexShader;
 }

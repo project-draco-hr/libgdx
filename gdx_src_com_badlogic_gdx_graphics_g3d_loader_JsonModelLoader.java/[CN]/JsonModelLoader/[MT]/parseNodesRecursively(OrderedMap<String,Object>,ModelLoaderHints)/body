@@ -1,5 +1,5 @@
 {
-  JsonNode jsonNode=new JsonNode();
+  ModelNode jsonNode=new ModelNode();
   String id=(String)json.get("id");
   if (id == null)   throw new GdxRuntimeException("Node id missing.");
   jsonNode.id=id;
@@ -16,10 +16,10 @@
   if (meshId != null)   jsonNode.meshId=meshId;
   Array<OrderedMap<String,Object>> materials=(Array<OrderedMap<String,Object>>)json.get("materials");
   if (materials != null) {
-    jsonNode.meshPartMaterials=new JsonMeshPartMaterial[materials.size];
+    jsonNode.meshPartMaterials=new ModelMeshPartMaterial[materials.size];
     int i=0;
     for (    OrderedMap<String,Object> material : materials) {
-      JsonMeshPartMaterial meshPartMaterial=new JsonMeshPartMaterial();
+      ModelMeshPartMaterial meshPartMaterial=new ModelMeshPartMaterial();
       String meshPartId=(String)material.get("meshpartid");
       String materialId=(String)material.get("materialid");
       if (meshPartId == null || materialId == null) {
@@ -32,7 +32,7 @@
   }
   Array<OrderedMap<String,Object>> children=(Array<OrderedMap<String,Object>>)json.get("children");
   if (children != null) {
-    jsonNode.children=new JsonNode[children.size];
+    jsonNode.children=new ModelNode[children.size];
     int i=0;
     for (    OrderedMap<String,Object> child : children) {
       jsonNode.children[i++]=parseNodesRecursively(child,hints);

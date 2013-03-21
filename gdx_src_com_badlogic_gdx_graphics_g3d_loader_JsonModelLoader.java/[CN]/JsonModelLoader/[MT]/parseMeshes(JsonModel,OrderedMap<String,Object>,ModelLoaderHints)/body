@@ -3,10 +3,10 @@
   if (meshes == null) {
     throw new GdxRuntimeException("No meshes found in file");
   }
-  model.meshes=new JsonMesh[meshes.size];
+  model.meshes=new ModelMesh[meshes.size];
   int i=0;
   for (  OrderedMap<String,Object> mesh : meshes) {
-    JsonMesh jsonMesh=new JsonMesh();
+    ModelMesh jsonMesh=new ModelMesh();
     String id=(String)mesh.get("id");
     if (id == null) {
       throw new GdxRuntimeException("No id given for mesh");
@@ -31,14 +31,14 @@
     if (meshParts == null) {
       throw new GdxRuntimeException("No mesh parts given for mesh '" + id + "'");
     }
-    Array<JsonMeshPart> parts=new Array<JsonMeshPart>();
+    Array<ModelMeshPart> parts=new Array<ModelMeshPart>();
     for (    OrderedMap<String,Object> meshPart : meshParts) {
-      JsonMeshPart jsonPart=new JsonMeshPart();
+      ModelMeshPart jsonPart=new ModelMeshPart();
       String partId=(String)meshPart.get("id");
       if (id == null) {
         throw new GdxRuntimeException("Not id given for mesh part");
       }
-      for (      JsonMeshPart other : parts) {
+      for (      ModelMeshPart other : parts) {
         if (other.id.equals(partId)) {
           throw new GdxRuntimeException("Mesh part with id '" + partId + "' already in defined");
         }
@@ -61,7 +61,7 @@
       jsonPart.indices=partIndices;
       parts.add(jsonPart);
     }
-    jsonMesh.parts=parts.toArray(JsonMeshPart.class);
+    jsonMesh.parts=parts.toArray(ModelMeshPart.class);
     model.meshes[i++]=jsonMesh;
   }
 }

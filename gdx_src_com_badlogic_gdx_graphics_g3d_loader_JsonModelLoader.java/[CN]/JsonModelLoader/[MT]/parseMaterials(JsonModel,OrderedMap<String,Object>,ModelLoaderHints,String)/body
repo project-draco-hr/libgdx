@@ -3,10 +3,10 @@
   if (materials == null) {
   }
  else {
-    model.materials=new JsonMaterial[materials.size];
+    model.materials=new ModelMaterial[materials.size];
     int i=0;
     for (    OrderedMap<String,Object> material : materials) {
-      JsonMaterial jsonMaterial=new JsonMaterial();
+      ModelMaterial jsonMaterial=new ModelMaterial();
       String id=(String)material.get("id");
       if (id == null)       throw new GdxRuntimeException("Material needs an id.");
       jsonMaterial.id=id;
@@ -23,7 +23,7 @@
       Array<OrderedMap<String,Object>> textures=(Array<OrderedMap<String,Object>>)material.get("textures");
       if (textures != null) {
         for (        OrderedMap<String,Object> texture : textures) {
-          JsonTexture jsonTexture=new JsonTexture();
+          ModelTexture jsonTexture=new ModelTexture();
           String textureId=(String)texture.get("id");
           if (textureId == null)           throw new GdxRuntimeException("Texture has no id.");
           jsonTexture.id=textureId;
@@ -35,7 +35,7 @@
           String textureType=(String)texture.get("type");
           if (type == null)           throw new GdxRuntimeException("Texture needs type.");
           if (textureType.equals("STANDARD")) {
-            if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<JsonTexture>();
+            if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<ModelTexture>();
             jsonMaterial.diffuseTextures.add(jsonTexture);
           }
         }

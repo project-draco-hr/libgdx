@@ -2,11 +2,11 @@
   StillModel stillModel=new StillModel(new SubMesh[model.meshes.length]);
   ObjectMap<String,Material> materials=new ObjectMap<String,Material>();
   for (int i=0; i < model.materials.length; i++) {
-    JsonMaterial jsonMaterial=model.materials[i];
+    ModelMaterial jsonMaterial=model.materials[i];
     Material material=new Material(jsonMaterial.id);
     material.addAttribute(new ColorAttribute(jsonMaterial.diffuse,"diffuse"));
     if (jsonMaterial.diffuseTextures != null) {
-      JsonTexture jsonTexture=jsonMaterial.diffuseTextures.get(0);
+      ModelTexture jsonTexture=jsonMaterial.diffuseTextures.get(0);
       Texture texture=new Texture(Gdx.files.internal(jsonTexture.fileName));
       texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
       material.addAttribute(new TextureAttribute(texture,0,"diffuseTexture"));
@@ -14,8 +14,8 @@
     materials.put(jsonMaterial.id,material);
   }
   for (int i=0; i < model.meshes.length; i++) {
-    JsonMesh jsonMesh=model.meshes[i];
-    JsonMeshPart jsonMeshPart=model.meshes[i].parts[0];
+    ModelMesh jsonMesh=model.meshes[i];
+    ModelMeshPart jsonMeshPart=model.meshes[i].parts[0];
     Mesh mesh=new Mesh(false,jsonMesh.vertices.length,jsonMeshPart.indices.length,jsonMesh.attributes);
     mesh.setIndices(jsonMeshPart.indices);
     mesh.setVertices(jsonMesh.vertices);
