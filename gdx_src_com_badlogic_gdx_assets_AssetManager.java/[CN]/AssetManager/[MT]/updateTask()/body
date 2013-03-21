@@ -1,13 +1,7 @@
 {
   AssetLoadingTask task=tasks.peek();
   if (task.update()) {
-    assetTypes.put(task.assetDesc.fileName,task.assetDesc.type);
-    ObjectMap<String,RefCountedContainer> typeToAssets=assets.get(task.assetDesc.type);
-    if (typeToAssets == null) {
-      typeToAssets=new ObjectMap<String,RefCountedContainer>();
-      assets.put(task.assetDesc.type,typeToAssets);
-    }
-    typeToAssets.put(task.assetDesc.fileName,new RefCountedContainer(task.getAsset()));
+    addAsset(task.assetDesc.fileName,task.assetDesc.type,task.getAsset());
     if (tasks.size() == 1)     loaded++;
     tasks.pop();
     if (task.cancel) {

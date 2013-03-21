@@ -1,8 +1,8 @@
 {
-  float newX=w * q.x + x * q.w + y * q.z - z * q.y;
-  float newY=w * q.y + y * q.w + z * q.x - x * q.z;
-  float newZ=w * q.z + z * q.w + x * q.y - y * q.x;
-  float newW=w * q.w - x * q.x - y * q.y - z * q.z;
+  final float newX=w * q.x + x * q.w + y * q.z - z * q.y;
+  final float newY=w * q.y + y * q.w + z * q.x - x * q.z;
+  final float newZ=w * q.z + z * q.w + x * q.y - y * q.x;
+  final float newW=w * q.w - x * q.x - y * q.y - z * q.z;
   x=newX;
   y=newY;
   z=newZ;

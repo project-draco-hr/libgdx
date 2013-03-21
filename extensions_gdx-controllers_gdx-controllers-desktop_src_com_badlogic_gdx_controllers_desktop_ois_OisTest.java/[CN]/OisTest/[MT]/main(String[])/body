@@ -4,7 +4,7 @@
   ApplicationAdapter app=new ApplicationAdapter(){
     Ois ois;
     public void create(){
-      ois=new Ois(OisControllers.getLwjglWindowHandle());
+      ois=new Ois(OisControllers.getWindowHandle());
       if (ois.getJoysticks().size() > 0) {
         ois.getJoysticks().get(0).setListener(new OisListener(){
           @Override public void xSliderMoved(          OisJoystick joystick,          int slider,          boolean value){
@@ -34,5 +34,4 @@
     }
   }
 ;
-  new LwjglApplication(app);
 }

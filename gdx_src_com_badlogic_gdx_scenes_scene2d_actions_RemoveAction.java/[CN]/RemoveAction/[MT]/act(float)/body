@@ -1,0 +1,4 @@
+{
+  (targetActor != null ? targetActor : actor).removeAction(action);
+  return true;
+}

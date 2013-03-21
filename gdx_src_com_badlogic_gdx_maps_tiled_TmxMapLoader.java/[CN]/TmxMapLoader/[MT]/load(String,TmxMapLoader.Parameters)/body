@@ -1,0 +1,18 @@
+{
+  try {
+    this.yUp=parameters.yUp;
+    FileHandle tmxFile=resolve(fileName);
+    root=xml.parse(tmxFile);
+    ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
+    for (    FileHandle textureFile : loadTilesets(root,tmxFile)) {
+      textures.put(textureFile.path(),new Texture(textureFile,parameters.generateMipMaps));
+    }
+    DirectImageResolver imageResolver=new DirectImageResolver(textures);
+    TiledMap map=loadTilemap(root,tmxFile,imageResolver);
+    map.setOwnedTextures(textures.values().toArray());
+    return map;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

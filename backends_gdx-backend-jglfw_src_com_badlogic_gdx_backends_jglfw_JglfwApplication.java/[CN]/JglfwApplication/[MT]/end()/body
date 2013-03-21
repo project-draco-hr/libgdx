@@ -1,0 +1,12 @@
+{
+synchronized (lifecycleListeners) {
+    for (    LifecycleListener listener : lifecycleListeners) {
+      listener.pause();
+      listener.dispose();
+    }
+  }
+  listener.pause();
+  listener.dispose();
+  glfwTerminate();
+  if (forceExit)   System.exit(-1);
+}

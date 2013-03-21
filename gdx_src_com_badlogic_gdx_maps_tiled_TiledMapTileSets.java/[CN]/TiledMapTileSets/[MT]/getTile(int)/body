@@ -1,0 +1,9 @@
+{
+  for (  TiledMapTileSet tileset : tilesets) {
+    TiledMapTile tile=tileset.getTile(id);
+    if (tile != null) {
+      return tile;
+    }
+  }
+  return null;
+}

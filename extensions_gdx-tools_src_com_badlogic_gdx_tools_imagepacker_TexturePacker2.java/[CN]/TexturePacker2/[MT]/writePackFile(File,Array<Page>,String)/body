@@ -1,5 +1,19 @@
 {
   File packFile=new File(outputDir,packFileName);
+  if (packFile.exists()) {
+    TextureAtlasData textureAtlasData=new TextureAtlasData(new FileHandle(packFile),new FileHandle(packFile),false);
+    for (    Page page : pages) {
+      for (      Rect rect : page.outputRects) {
+        String rectName=settings.flattenPaths ? new FileHandle(rect.name).name() : rect.name;
+        System.out.println(rectName);
+        for (        Region region : textureAtlasData.getRegions()) {
+          if (region.name.equals(rectName)) {
+            throw new GdxRuntimeException("A region with the name \"" + rectName + "\" has already been packed: "+ rect.name);
+          }
+        }
+      }
+    }
+  }
   FileWriter writer=new FileWriter(packFile,true);
   for (  Page page : pages) {
     writer.write("\n" + page.imageName + "\n");

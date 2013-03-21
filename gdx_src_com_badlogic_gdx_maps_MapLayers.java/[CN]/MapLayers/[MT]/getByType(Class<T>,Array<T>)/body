@@ -1,0 +1,9 @@
+{
+  fill.clear();
+  for (  MapLayer layer : layers) {
+    if (type.isInstance(layer)) {
+      fill.add((T)layer);
+    }
+  }
+  return fill;
+}

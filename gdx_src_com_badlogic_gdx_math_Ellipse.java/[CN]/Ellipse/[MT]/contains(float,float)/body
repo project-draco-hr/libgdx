@@ -1,0 +1,7 @@
+{
+  x=x - this.x;
+  y=y - this.y;
+  halfWidth=width * 0.5f;
+  halfHeight=height * 0.5f;
+  return (x * x) / (halfWidth * halfWidth) + (y * y) / (halfHeight * halfHeight) <= 1.0f;
+}

@@ -1,5 +1,6 @@
 {
   clearActions();
+  removeCaptureListener(ignoreTouchDown);
   previousKeyboardFocus=stage.getKeyboardFocus();
   previousScrollFocus=stage.getScrollFocus();
   pack();

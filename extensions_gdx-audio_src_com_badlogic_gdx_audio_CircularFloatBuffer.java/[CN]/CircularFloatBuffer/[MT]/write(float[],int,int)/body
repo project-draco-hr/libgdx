@@ -1,0 +1,15 @@
+{
+  int copy=0;
+  if (writePosition > readPosition || available == 0) {
+    copy=Math.min(buffer.length - writePosition,count);
+    System.arraycopy(data,offset,buffer,writePosition,copy);
+    writePosition=(writePosition + copy) % buffer.length;
+    available+=copy;
+    count-=copy;
+    if (count == 0)     return;
+  }
+  copy=Math.min(readPosition - writePosition,count);
+  System.arraycopy(data,offset,buffer,writePosition,copy);
+  writePosition+=copy;
+  available+=copy;
+}
