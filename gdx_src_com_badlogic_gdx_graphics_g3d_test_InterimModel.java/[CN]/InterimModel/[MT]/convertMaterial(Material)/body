@@ -1,0 +1,21 @@
+{
+  NewMaterial result=new NewMaterial();
+  for (  MaterialAttribute attr : mtl) {
+    if (attr instanceof com.badlogic.gdx.graphics.g3d.old.materials.BlendingAttribute) {
+      com.badlogic.gdx.graphics.g3d.old.materials.BlendingAttribute a=(com.badlogic.gdx.graphics.g3d.old.materials.BlendingAttribute)attr;
+      result.add(new BlendingAttribute(a.blendSrcFunc,a.blendDstFunc));
+    }
+ else     if (attr instanceof com.badlogic.gdx.graphics.g3d.old.materials.ColorAttribute) {
+      com.badlogic.gdx.graphics.g3d.old.materials.ColorAttribute a=(com.badlogic.gdx.graphics.g3d.old.materials.ColorAttribute)attr;
+      if (a.name.compareTo(com.badlogic.gdx.graphics.g3d.old.materials.ColorAttribute.specular) == 0)       result.add(ColorAttribute.createSpecular(a.color));
+ else       result.add(ColorAttribute.createDiffuse(a.color));
+    }
+ else     if (attr instanceof com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute) {
+      com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute a=(com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute)attr;
+      final TextureDescription tex=new TextureDescription(a.texture,a.minFilter,a.magFilter,a.uWrap,a.vWrap);
+      if (a.name.compareTo(com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute.specularTexture) == 0)       result.add(new TextureAttribute(TextureAttribute.Specular,tex));
+ else       result.add(new TextureAttribute(TextureAttribute.Diffuse,tex));
+    }
+  }
+  return result;
+}
