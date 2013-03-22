@@ -44,15 +44,13 @@
             }
           }
           connection.connect();
+          final HttpClientResponse clientResponse=new HttpClientResponse(connection);
           Gdx.app.postRunnable(new Runnable(){
             @Override public void run(){
               try {
-                httpResponseListener.handleHttpResponse(new HttpClientResponse(connection));
+                httpResponseListener.handleHttpResponse(clientResponse);
               }
- catch (              IOException e) {
-                httpResponseListener.failed(e);
-              }
- finally {
+  finally {
                 connection.disconnect();
               }
             }
