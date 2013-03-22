@@ -39,7 +39,7 @@
       playerSensorFixture.setFriction(0.2f);
     }
     if (groundedPlatform != null && groundedPlatform instanceof MovingPlatform && ((MovingPlatform)groundedPlatform).dist == 0) {
-      player.applyLinearImpulse(0,-24,pos.x,pos.y);
+      player.applyLinearImpulse(0,-24,pos.x,pos.y,true);
     }
   }
   List<Contact> contacts=world.getContactList();
@@ -48,10 +48,10 @@
     contact.resetFriction();
   }
   if (Gdx.input.isKeyPressed(Keys.A) && vel.x > -MAX_VELOCITY) {
-    player.applyLinearImpulse(-2f,0,pos.x,pos.y);
+    player.applyLinearImpulse(-2f,0,pos.x,pos.y,true);
   }
   if (Gdx.input.isKeyPressed(Keys.D) && vel.x < MAX_VELOCITY) {
-    player.applyLinearImpulse(2f,0,pos.x,pos.y);
+    player.applyLinearImpulse(2f,0,pos.x,pos.y,true);
   }
   if (jump) {
     jump=false;
@@ -59,7 +59,7 @@
       player.setLinearVelocity(vel.x,0);
       System.out.println("jump before: " + player.getLinearVelocity());
       player.setTransform(pos.x,pos.y + 0.01f,0);
-      player.applyLinearImpulse(0,40,pos.x,pos.y);
+      player.applyLinearImpulse(0,40,pos.x,pos.y,true);
       System.out.println("jump, " + player.getLinearVelocity());
     }
   }
