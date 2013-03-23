@@ -1,0 +1,4 @@
+{
+  if (type == FileType.External)   return new File(JglfwFiles.externalPath,file.getPath());
+  return file;
+}

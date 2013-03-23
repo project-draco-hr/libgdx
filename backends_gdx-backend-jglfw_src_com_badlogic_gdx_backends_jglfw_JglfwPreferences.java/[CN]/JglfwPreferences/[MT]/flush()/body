@@ -1,0 +1,19 @@
+{
+  OutputStream out=null;
+  try {
+    out=new BufferedOutputStream(file.write(false));
+    properties.store(out,null);
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error writing preferences: " + file,ex);
+  }
+ finally {
+    if (out != null) {
+      try {
+        out.close();
+      }
+ catch (      Exception ignored) {
+      }
+    }
+  }
+}

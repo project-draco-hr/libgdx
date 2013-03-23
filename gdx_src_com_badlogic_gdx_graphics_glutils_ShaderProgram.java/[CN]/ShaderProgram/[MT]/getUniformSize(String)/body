@@ -1,0 +1,5 @@
+{
+  int size=uniformSizes.get(name,-1);
+  if (size == -1)   return 0;
+ else   return size;
+}

@@ -1,0 +1,5 @@
+{
+  IntBuffer buffer=toBuffer(textures,offset);
+  GL.glGenTextures(n,buffer,0);
+  toArray(buffer,textures,offset);
+}

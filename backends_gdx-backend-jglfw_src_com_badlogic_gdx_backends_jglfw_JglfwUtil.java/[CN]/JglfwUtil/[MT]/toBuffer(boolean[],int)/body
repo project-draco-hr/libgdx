@@ -1,0 +1,7 @@
+{
+  int n=src.length - offset;
+  ensureSize(n);
+  buffer.position(0);
+  for (  boolean value : src)   buffer.put(value ? (byte)1 : 0);
+  return buffer;
+}

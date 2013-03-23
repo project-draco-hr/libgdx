@@ -1,5 +1,5 @@
 {
-  long endTime=System.nanoTime() + millis * 1000;
+  long endTime=System.currentTimeMillis() + millis;
   while (true) {
     boolean done=update();
     if (done || System.currentTimeMillis() > endTime)     return done;

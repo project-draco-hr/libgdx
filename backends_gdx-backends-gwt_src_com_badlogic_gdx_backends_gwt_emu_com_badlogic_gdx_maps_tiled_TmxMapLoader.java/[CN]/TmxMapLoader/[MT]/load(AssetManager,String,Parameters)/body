@@ -1,5 +1,11 @@
 {
   FileHandle tmxFile=resolve(fileName);
+  if (parameter != null) {
+    yUp=parameter.yUp;
+  }
+ else {
+    yUp=true;
+  }
   try {
     return loadTilemap(root,tmxFile,new AssetManagerImageResolver(assetManager));
   }

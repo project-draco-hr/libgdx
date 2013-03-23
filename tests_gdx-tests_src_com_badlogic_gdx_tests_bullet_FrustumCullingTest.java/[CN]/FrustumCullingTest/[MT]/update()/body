@@ -1,0 +1,8 @@
+{
+  super.update();
+  if (USE_BULLET_FRUSTUM_CULLING) {
+    if (world.performanceCounter != null)     world.performanceCounter.start();
+    world.collisionWorld.performDiscreteCollisionDetection();
+    if (world.performanceCounter != null)     world.performanceCounter.stop();
+  }
+}

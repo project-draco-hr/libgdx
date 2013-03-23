@@ -1,0 +1,8 @@
+{
+  queueTime();
+  queue.add(TOUCH_DRAGGED);
+  queue.add(screenX);
+  queue.add(screenY);
+  queue.add(pointer);
+  return false;
+}

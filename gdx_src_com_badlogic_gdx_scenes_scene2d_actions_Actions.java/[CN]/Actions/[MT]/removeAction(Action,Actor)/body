@@ -1,0 +1,6 @@
+{
+  RemoveAction removeAction=action(RemoveAction.class);
+  removeAction.setTargetActor(targetActor);
+  removeAction.setAction(action);
+  return removeAction;
+}

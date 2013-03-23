@@ -8,6 +8,7 @@
   buttonTable.defaults().space(6);
   buttonTable.addListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
+      if (!values.containsKey(actor))       return;
       while (actor.getParent() != buttonTable)       actor=actor.getParent();
       result(values.get(actor));
       if (!cancelHide)       hide();
@@ -24,7 +25,7 @@
     }
     private void focusChanged(    FocusEvent event){
       Stage stage=getStage();
-      if (isModal && stage != null && stage.getRoot().getChildren().peek() == Dialog.this) {
+      if (isModal && stage != null && stage.getRoot().getChildren().size > 0 && stage.getRoot().getChildren().peek() == Dialog.this) {
         Actor newFocusedActor=event.getRelatedActor();
         if (newFocusedActor == null || !newFocusedActor.isDescendantOf(Dialog.this))         event.cancel();
       }

@@ -1,0 +1,7 @@
+{
+  queueTime();
+  queue.add(MOUSE_MOVED);
+  queue.add(screenX);
+  queue.add(screenY);
+  return false;
+}

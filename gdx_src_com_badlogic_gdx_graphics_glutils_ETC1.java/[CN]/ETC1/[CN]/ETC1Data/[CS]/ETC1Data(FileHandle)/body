@@ -26,4 +26,5 @@
   height=getHeightPKM(compressedData,0);
   dataOffset=PKM_HEADER_SIZE;
   compressedData.position(dataOffset);
+  checkNPOT();
 }

@@ -1,0 +1,5 @@
+{
+  final int c=getCollisionObjects(tempArray,tempArray.length,(int)btCollisionObject.getCPtr(other));
+  for (int i=0; i < c; i++)   out.add(btCollisionObject.getInstance(tempArray[i],false));
+  return out;
+}

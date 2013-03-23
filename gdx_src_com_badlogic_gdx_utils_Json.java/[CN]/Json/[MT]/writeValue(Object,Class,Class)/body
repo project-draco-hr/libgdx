@@ -85,7 +85,7 @@
       writeObjectEnd();
       return;
     }
-    if (actualType.isEnum()) {
+    if (Enum.class.isAssignableFrom(actualType)) {
       writer.value(value);
       return;
     }

@@ -1,3 +1,4 @@
 {
-  rotate(tmpVec.set(axisX,axisY,axisZ),angle);
+  direction.rotate(axisX,axisY,axisZ,angle);
+  up.rotate(axisX,axisY,axisZ,angle);
 }
