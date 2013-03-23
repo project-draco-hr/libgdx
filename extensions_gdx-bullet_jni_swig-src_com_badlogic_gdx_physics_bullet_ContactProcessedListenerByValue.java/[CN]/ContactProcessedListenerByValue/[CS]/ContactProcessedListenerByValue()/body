@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_ContactProcessedListenerByValue(),true);
+  gdxBulletJNI.ContactProcessedListenerByValue_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

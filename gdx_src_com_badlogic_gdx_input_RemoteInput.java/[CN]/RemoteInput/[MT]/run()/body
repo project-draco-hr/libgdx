@@ -1,14 +1,15 @@
 {
   while (true) {
     try {
+      connected=false;
+      if (listener != null)       listener.onDisconnected();
       System.out.println("listening, port " + port);
       Socket socket=null;
-      while (true) {
-        socket=serverSocket.accept();
-        break;
-      }
+      socket=serverSocket.accept();
       socket.setTcpNoDelay(true);
       socket.setSoTimeout(3000);
+      connected=true;
+      if (listener != null)       listener.onConnected();
       DataInputStream in=new DataInputStream(socket.getInputStream());
       multiTouch=in.readBoolean();
       while (true) {

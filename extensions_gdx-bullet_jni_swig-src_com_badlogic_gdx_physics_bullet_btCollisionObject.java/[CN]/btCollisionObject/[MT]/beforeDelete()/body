@@ -1,0 +1,5 @@
+{
+  if (swigCPtr != 0)   removeInstance(this);
+  if (gdxBridge != null)   gdxBridge.delete();
+  gdxBridge=null;
+}
