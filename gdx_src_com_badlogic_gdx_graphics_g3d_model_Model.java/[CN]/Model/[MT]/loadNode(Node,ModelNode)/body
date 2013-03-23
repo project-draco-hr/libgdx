@@ -1,0 +1,41 @@
+{
+  Node node=new Node();
+  node.id=modelNode.id;
+  node.boneId=modelNode.boneId;
+  node.parent=parent;
+  node.translation.set(modelNode.translation);
+  node.rotation.set(modelNode.rotation);
+  node.scale.set(modelNode.scale);
+  for (  ModelMeshPartMaterial modelMeshPartMaterial : modelNode.meshPartMaterials) {
+    MeshPart meshPart=null;
+    NewMaterial meshMaterial=null;
+    if (modelMeshPartMaterial.meshPartId != null) {
+      for (      MeshPart part : meshParts) {
+        if (modelMeshPartMaterial.meshPartId.equals(part.id)) {
+          meshPart=part;
+          break;
+        }
+      }
+    }
+    if (modelMeshPartMaterial.materialId != null) {
+      for (      NewMaterial material : materials) {
+        if (modelMeshPartMaterial.materialId.equals(material.id)) {
+          meshMaterial=material;
+          break;
+        }
+      }
+    }
+    if (meshPart != null && meshMaterial != null) {
+      MeshPartMaterial meshPartMaterial=new MeshPartMaterial();
+      meshPartMaterial.meshPart=meshPart;
+      meshPartMaterial.material=meshMaterial;
+      node.meshPartMaterials.add(meshPartMaterial);
+    }
+  }
+  if (modelNode.children != null) {
+    for (    ModelNode child : modelNode.children) {
+      node.children.add(loadNode(node,child));
+    }
+  }
+  return node;
+}
