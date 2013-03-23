@@ -12,7 +12,7 @@
     }
  else     if (attr instanceof com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute) {
       com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute a=(com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute)attr;
-      final TextureDescription tex=new TextureDescription(a.texture,a.minFilter,a.magFilter,a.uWrap,a.vWrap);
+      final TextureDescriptor tex=new TextureDescriptor(a.texture,a.minFilter,a.magFilter,a.uWrap,a.vWrap);
       if (a.name.compareTo(com.badlogic.gdx.graphics.g3d.old.materials.TextureAttribute.specularTexture) == 0)       result.add(new TextureAttribute(TextureAttribute.Specular,tex));
  else       result.add(new TextureAttribute(TextureAttribute.Diffuse,tex));
     }

@@ -5,7 +5,7 @@
   if (version == null || !version.equals(VERSION)) {
     throw new GdxRuntimeException("No or wrong JSON format version given, should be " + VERSION + ", is "+ version);
   }
-  JsonModel model=new JsonModel();
+  ModelData model=new ModelData();
   parseMeshes(model,json,hints);
   parseMaterials(model,json,hints,handle.parent().path());
   parseNodes(model,json,hints);

@@ -1,0 +1,22 @@
+{
+  NewMaterial result=new NewMaterial();
+  result.id=mtl.id;
+  result.add(new ColorAttribute(ColorAttribute.Ambient,mtl.ambient));
+  result.add(new ColorAttribute(ColorAttribute.Diffuse,mtl.diffuse));
+  result.add(new ColorAttribute(ColorAttribute.Specular,mtl.specular));
+  result.add(new ColorAttribute(ColorAttribute.Emissive,mtl.emissive));
+  result.add(new FloatAttribute(FloatAttribute.Shininess,mtl.shininess));
+  ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
+  if (mtl.diffuseTextures != null) {
+    for (    ModelTexture tex : mtl.diffuseTextures) {
+      if (textures.containsKey(tex.fileName))       continue;
+      Texture texture=textureProvider.load(tex.fileName);
+      textures.put(tex.fileName,texture);
+    }
+    for (    ModelTexture tex : mtl.diffuseTextures) {
+      TextureDescriptor descriptor=new TextureDescriptor();
+      result.add(new TextureAttribute(TextureAttribute.Diffuse,descriptor));
+    }
+  }
+  return result;
+}

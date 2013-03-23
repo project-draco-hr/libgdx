@@ -1,7 +1,9 @@
 {
-  transform.getTranslation(Vector3.tmp);
-  float dist=Vector3.tmp2.set(Vector3.tmp.x - camera.position.x,Vector3.tmp.y - camera.position.y,Vector3.tmp.z - camera.position.z).len();
-  if (Vector3.tmp2.div(dist).dot(camera.direction) < 0)   dist=-dist;
+  transform.getTranslation(posTmp);
+  posTmp.sub(camera.position);
+  float dist=posTmp.len();
+  float dot=dist > 0 ? posTmp.scl(1 / dist).dot(camera.direction) : 0;
+  if (dot < 0)   dist=-dist;
   Iterable<Renderable> parts=model.getParts(dist);
   if (instances != null)   for (  Renderable part : parts)   addModelPart(part,transform,dist,lights,null);
 }

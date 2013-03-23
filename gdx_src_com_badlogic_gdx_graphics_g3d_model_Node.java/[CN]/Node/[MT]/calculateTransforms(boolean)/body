@@ -1,0 +1,9 @@
+{
+  calculateLocalTransform();
+  calculateWorldTransform();
+  if (recursive) {
+    for (    Node child : children) {
+      child.calculateTransforms(true);
+    }
+  }
+}
