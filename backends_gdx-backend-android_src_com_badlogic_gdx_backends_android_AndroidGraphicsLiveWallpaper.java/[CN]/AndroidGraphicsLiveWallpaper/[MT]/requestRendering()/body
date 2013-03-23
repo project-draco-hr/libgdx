@@ -1,5 +1,7 @@
 {
   if (view != null) {
-    view.requestRender();
+    if (view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)view).requestRender();
+ else     if (view instanceof GLSurfaceView)     ((GLSurfaceView)view).requestRender();
+ else     throw new RuntimeException("unimplemented");
   }
 }
