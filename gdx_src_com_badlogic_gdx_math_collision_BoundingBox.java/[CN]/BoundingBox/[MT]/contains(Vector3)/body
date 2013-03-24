@@ -1,3 +1,3 @@
 {
-  return !(min.x > v.x || max.x < v.x || min.y > v.y || max.y < v.y || min.z > v.z || max.z < v.z);
+  return min.x <= v.x && max.x >= v.x && min.y <= v.y && max.y >= v.y && min.z <= v.z && max.z >= v.z;
 }
