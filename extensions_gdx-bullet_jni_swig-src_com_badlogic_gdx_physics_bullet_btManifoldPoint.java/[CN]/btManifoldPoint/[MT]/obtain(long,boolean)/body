@@ -1,0 +1,5 @@
+{
+  final btManifoldPoint result=pool.obtain();
+  result.reuse(cPtr,own);
+  return result;
+}

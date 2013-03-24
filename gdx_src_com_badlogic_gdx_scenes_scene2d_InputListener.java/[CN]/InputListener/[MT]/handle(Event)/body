@@ -9,8 +9,7 @@ case keyUp:
 case keyTyped:
 return keyTyped(event,event.getCharacter());
 }
-tmpCoords.set(event.getStageX(),event.getStageY());
-event.getListenerActor().stageToLocalCoordinates(tmpCoords);
+event.toCoordinates(event.getListenerActor(),tmpCoords);
 switch (event.getType()) {
 case touchDown:
 return touchDown(event,tmpCoords.x,tmpCoords.y,event.getPointer(),event.getButton());
