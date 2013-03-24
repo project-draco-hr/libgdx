@@ -6,6 +6,7 @@
     renderable.lights=lights;
     renderable.shader=shader;
     renderable.transform.set(transform);
+    renderable.transform.mul(transform);
     reuseableRenderables.add(renderable);
   }
 }
