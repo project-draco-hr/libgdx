@@ -5,7 +5,7 @@
     Renderable renderable=renderables.get(i);
     renderable.lights=lights;
     renderable.shader=shader;
-    renderable.shader=shader;
+    renderable.transform.set(transform);
     reuseableRenderables.add(renderable);
   }
 }

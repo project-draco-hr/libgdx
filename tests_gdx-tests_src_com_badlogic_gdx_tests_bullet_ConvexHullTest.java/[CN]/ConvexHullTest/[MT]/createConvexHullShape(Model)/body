@@ -1,4 +1,5 @@
 {
+  final Mesh mesh=model.meshes.get(0);
   final btConvexHullShape shape=new btConvexHullShape(mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize());
   final btShapeHull hull=new btShapeHull(shape);
   hull.buildHull(shape.getMargin());

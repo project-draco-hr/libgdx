@@ -1,0 +1,29 @@
+{
+  final ModelMesh mesh=new ModelMesh();
+  mesh.attributes=attributes;
+  mesh.id="mesh1";
+  mesh.vertices=vertices;
+  ModelMeshPart mp=new ModelMeshPart();
+  mp.id="part1";
+  mp.indices=indices;
+  mp.primitiveType=GL10.GL_TRIANGLES;
+  mesh.parts=new ModelMeshPart[]{mp};
+  ModelNode node=new ModelNode();
+  node.id="node1";
+  node.meshId="mesh1";
+  node.translation=new Vector3();
+  node.rotation=new Quaternion();
+  node.scale=new Vector3(1,1,1);
+  ModelMeshPartMaterial pm=new ModelMeshPartMaterial();
+  pm.meshPartId="part1";
+  pm.materialId="mat1";
+  node.meshPartMaterials=new ModelMeshPartMaterial[]{pm};
+  ModelMaterial mat=new ModelMaterial();
+  mat.id="mat1";
+  mat.diffuse=new Color(Color.WHITE);
+  final ModelData data=new ModelData();
+  data.meshes.add(mesh);
+  data.nodes.add(node);
+  data.materials.add(mat);
+  return new Model(data);
+}
