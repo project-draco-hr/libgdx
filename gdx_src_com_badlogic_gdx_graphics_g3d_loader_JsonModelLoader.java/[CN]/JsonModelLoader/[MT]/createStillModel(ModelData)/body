@@ -1,8 +1,8 @@
 {
-  StillModel stillModel=new StillModel(new SubMesh[model.meshes.length]);
+  StillModel stillModel=new StillModel(new SubMesh[model.meshes.size]);
   ObjectMap<String,Material> materials=new ObjectMap<String,Material>();
-  for (int i=0; i < model.materials.length; i++) {
-    ModelMaterial jsonMaterial=model.materials[i];
+  for (int i=0; i < model.materials.size; i++) {
+    ModelMaterial jsonMaterial=model.materials.get(i);
     Material material=new Material(jsonMaterial.id);
     material.addAttribute(new ColorAttribute(jsonMaterial.diffuse,"diffuse"));
     if (jsonMaterial.diffuseTextures != null) {
@@ -13,14 +13,14 @@
     }
     materials.put(jsonMaterial.id,material);
   }
-  for (int i=0; i < model.meshes.length; i++) {
-    ModelMesh jsonMesh=model.meshes[i];
-    ModelMeshPart jsonMeshPart=model.meshes[i].parts[0];
+  for (int i=0; i < model.meshes.size; i++) {
+    ModelMesh jsonMesh=model.meshes.get(i);
+    ModelMeshPart jsonMeshPart=model.meshes.get(i).parts[0];
     Mesh mesh=new Mesh(false,jsonMesh.vertices.length,jsonMeshPart.indices.length,jsonMesh.attributes);
     mesh.setIndices(jsonMeshPart.indices);
     mesh.setVertices(jsonMesh.vertices);
     StillSubMesh subMesh=new StillSubMesh(jsonMesh.id,mesh,jsonMeshPart.primitiveType);
-    subMesh.material=materials.get(model.materials[i].id);
+    subMesh.material=materials.get(model.materials.get(i).id);
     stillModel.subMeshes[i]=subMesh;
   }
   return stillModel;
