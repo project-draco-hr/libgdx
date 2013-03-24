@@ -1,8 +1,0 @@
-{
-  if (currentMesh != instance.renderable.mesh || shaderChanged) {
-    if (currentMesh != null)     currentMesh.unbind(shaderChanged ? previousShader : currentShader);
-    (currentMesh=instance.renderable.mesh).bind(currentShader);
-  }
-  if (currentTransform != instance.transform || shaderChanged)   currentShader.setUniformMatrix(MODEL_TRANSFORM,currentTransform=instance.transform);
-  instance.renderable.mesh.render(currentShader,instance.renderable.primitiveType);
-}

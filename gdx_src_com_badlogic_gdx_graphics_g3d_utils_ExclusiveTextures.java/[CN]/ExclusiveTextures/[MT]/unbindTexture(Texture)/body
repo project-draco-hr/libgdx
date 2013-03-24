@@ -1,9 +1,0 @@
-{
-  for (int i=0; i < count; i++) {
-    if (textures[i].texture == texture) {
-      textures[i]=null;
-      weights[i]=0;
-      return;
-    }
-  }
-}

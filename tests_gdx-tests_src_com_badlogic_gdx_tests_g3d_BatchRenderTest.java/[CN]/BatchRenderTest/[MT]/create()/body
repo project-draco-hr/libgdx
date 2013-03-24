@@ -16,7 +16,7 @@
   cam.position.set(10f,10f,10f);
   cam.lookAt(0,0,0);
   cam.update();
-  renderBatch=new RenderBatch(exclusiveTextures=new ExclusiveTextures(BIND_METHOD,UNIT_OFFSET,MAX_TEXTURES));
+  renderBatch=new RenderBatch(exclusiveTextures=new DefaultTextureBinder(BIND_METHOD,UNIT_OFFSET,MAX_TEXTURES));
   lights=new Light[]{new Light(Color.WHITE,Vector3.tmp.set(-10f,10f,-10f),15f),new Light(Color.BLUE,Vector3.tmp.set(10f,5f,0f),10f),new Light(Color.GREEN,Vector3.tmp.set(0f,10f,5f),5f)};
   Gdx.input.setInputProcessor(this);
 }

@@ -2,7 +2,7 @@
   if ((dbgTimer+=Gdx.graphics.getDeltaTime()) >= 1f) {
     dbgTimer-=1f;
     Gdx.app.log("Test","FPS: " + Gdx.graphics.getFramesPerSecond() + ", binds: "+ exclusiveTextures.getBindCount()+ ", reused: "+ exclusiveTextures.getReuseCount());
-    exclusiveTextures.resetCounter();
+    exclusiveTextures.resetCounts();
   }
   GL20 gl=Gdx.gl20;
   gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());

@@ -1,5 +1,0 @@
-{
-  this.textures=textures;
-  defaultShader=new ShaderProgram(DEFAULT_VERTEX_SHADER,DEFAULT_FRAGMENT_SHADER);
-  if (!defaultShader.isCompiled())   throw new GdxRuntimeException(defaultShader.getLog());
-}

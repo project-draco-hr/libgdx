@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < count; i++) {
+    Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0 + i);
+    Gdx.gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
+  }
+  Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0);
+}
