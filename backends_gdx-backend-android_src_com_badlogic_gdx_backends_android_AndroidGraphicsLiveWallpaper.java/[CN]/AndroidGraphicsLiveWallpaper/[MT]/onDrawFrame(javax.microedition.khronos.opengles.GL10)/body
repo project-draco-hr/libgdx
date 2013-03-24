@@ -2,7 +2,7 @@
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
-  mean.addValue(deltaTime);
+  mean.addValue(resume ? 0.0f : deltaTime);
   boolean lrunning=false;
   boolean lpause=false;
   boolean ldestroy=false;
@@ -14,6 +14,7 @@ synchronized (synch) {
     lresume=resume;
     if (resume) {
       resume=false;
+      synch.notifyAll();
     }
     if (pause) {
       pause=false;
@@ -25,45 +26,32 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    Array<LifecycleListener> listeners=app.lifecycleListeners;
-synchronized (listeners) {
-      for (      LifecycleListener listener : listeners) {
-        listener.resume();
-      }
-    }
-    app.getListener().resume();
+    app.listener.resume();
     Gdx.app.log("AndroidGraphics","resumed");
   }
   if (lrunning && (Gdx.graphics.getGL10() != null || Gdx.graphics.getGL11() != null || Gdx.graphics.getGL20() != null)) {
 synchronized (app.runnables) {
-      for (int i=0; i < app.runnables.size; i++) {
-        app.runnables.get(i).run();
-      }
+      app.executedRunnables.clear();
+      app.executedRunnables.addAll(app.runnables);
       app.runnables.clear();
+      for (int i=0; i < app.executedRunnables.size; i++) {
+        try {
+          app.executedRunnables.get(i).run();
+        }
+ catch (        Throwable t) {
+          t.printStackTrace();
+        }
+      }
     }
     app.input.processEvents();
-    app.getListener().render();
+    app.listener.render();
   }
   if (lpause) {
-    Array<LifecycleListener> listeners=app.lifecycleListeners;
-synchronized (listeners) {
-      for (      LifecycleListener listener : listeners) {
-        listener.pause();
-      }
-    }
-    app.getListener().pause();
-    ((AndroidAudio)app.getAudio()).pause();
+    app.listener.pause();
     Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
-    Array<LifecycleListener> listeners=app.lifecycleListeners;
-synchronized (listeners) {
-      for (      LifecycleListener listener : listeners) {
-        listener.dispose();
-      }
-    }
-    app.getListener().dispose();
-    ((AndroidAudio)app.getAudio()).dispose();
+    app.listener.dispose();
     Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {

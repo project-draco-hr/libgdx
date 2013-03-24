@@ -2,6 +2,9 @@
   if (view != null) {
     this.isContinuous=isContinuous;
     int renderMode=isContinuous ? GLSurfaceView.RENDERMODE_CONTINUOUSLY : GLSurfaceView.RENDERMODE_WHEN_DIRTY;
-    view.setRenderMode(renderMode);
+    if (view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)view).setRenderMode(renderMode);
+ else     if (view instanceof GLSurfaceView)     ((GLSurfaceView)view).setRenderMode(renderMode);
+ else     throw new RuntimeException("unimplemented");
+    mean.clear();
   }
 }
