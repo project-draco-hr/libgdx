@@ -5,11 +5,11 @@
   shapeRenderer.setProjectionMatrix(cam.combined);
   shapeRenderer.begin(ShapeType.Line);
   shapeRenderer.setColor(Color.RED);
-  shapeRenderer.line(-100,0,0,100,0,0);
+  shapeRenderer.line(0,0,0,100,0,0);
   shapeRenderer.setColor(Color.GREEN);
-  shapeRenderer.line(0,-100,0,0,100,0);
+  shapeRenderer.line(0,0,0,0,100,0);
   shapeRenderer.setColor(Color.BLUE);
-  shapeRenderer.line(0,0,-100,0,0,100);
+  shapeRenderer.line(0,0,0,0,0,100);
   shapeRenderer.end();
   modelBatch.begin(cam);
   modelBatch.addModel(model,transform,lights);

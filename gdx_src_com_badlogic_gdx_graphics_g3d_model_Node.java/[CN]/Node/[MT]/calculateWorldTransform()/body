@@ -1,3 +1,5 @@
 {
+  worldTransform.set(localTransform);
+  if (parent != null)   worldTransform.mul(parent.worldTransform);
   return worldTransform;
 }
