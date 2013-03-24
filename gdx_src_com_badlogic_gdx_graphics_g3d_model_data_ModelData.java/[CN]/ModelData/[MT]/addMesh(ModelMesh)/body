@@ -4,4 +4,5 @@
       throw new GdxRuntimeException("Mesh with id '" + other.id + "' already in model");
     }
   }
+  meshes.add(mesh);
 }

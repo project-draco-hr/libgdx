@@ -3,7 +3,7 @@
   if (materials == null) {
   }
  else {
-    model.materials=new ModelMaterial[materials.size];
+    model.materials.ensureCapacity(materials.size);
     int i=0;
     for (    OrderedMap<String,Object> material : materials) {
       ModelMaterial jsonMaterial=new ModelMaterial();
@@ -40,7 +40,7 @@
           }
         }
       }
-      model.materials[i++]=jsonMaterial;
+      model.materials.add(jsonMaterial);
     }
   }
 }

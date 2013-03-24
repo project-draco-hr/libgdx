@@ -3,7 +3,7 @@
   if (meshes == null) {
     throw new GdxRuntimeException("No meshes found in file");
   }
-  model.meshes=new ModelMesh[meshes.size];
+  model.meshes.ensureCapacity(meshes.size);
   int i=0;
   for (  OrderedMap<String,Object> mesh : meshes) {
     ModelMesh jsonMesh=new ModelMesh();
@@ -62,6 +62,6 @@
       parts.add(jsonPart);
     }
     jsonMesh.parts=parts.toArray(ModelMeshPart.class);
-    model.meshes[i++]=jsonMesh;
+    model.meshes.add(jsonMesh);
   }
 }

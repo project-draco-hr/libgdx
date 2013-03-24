@@ -3,10 +3,10 @@
   if (nodes == null) {
     throw new GdxRuntimeException("At least one node is required.");
   }
-  model.nodes=new ModelNode[nodes.size];
+  model.nodes.ensureCapacity(nodes.size);
   int i=0;
   for (  OrderedMap<String,Object> node : nodes) {
-    model.nodes[i++]=parseNodesRecursively(node,hints);
+    model.nodes.add(parseNodesRecursively(node,hints));
   }
   return model.nodes;
 }
