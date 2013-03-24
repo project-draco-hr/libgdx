@@ -1,0 +1,6 @@
+{
+  cam.rotateAround(new Vector3(),Vector3.Y,x - touchStartX);
+  touchStartX=x;
+  touchStartY=y;
+  return false;
+}

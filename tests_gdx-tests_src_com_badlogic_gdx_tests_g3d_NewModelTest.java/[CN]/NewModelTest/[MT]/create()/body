@@ -1,0 +1,13 @@
+{
+  JsonModelLoader loader=new JsonModelLoader();
+  model=new Model(loader.parseModel(Gdx.files.internal("data/g3d/head.g3dj"),null));
+  modelBatch=new ModelBatch();
+  TestShader.ignoreUnimplemented=true;
+  shapeRenderer=new ShapeRenderer();
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(10f,10f,10f);
+  cam.direction.set(-1,-1,-1);
+  cam.near=0.1f;
+  cam.far=300f;
+  Gdx.input.setInputProcessor(this);
+}

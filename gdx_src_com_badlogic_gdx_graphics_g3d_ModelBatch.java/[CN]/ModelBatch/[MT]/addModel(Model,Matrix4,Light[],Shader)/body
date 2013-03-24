@@ -1,0 +1,7 @@
+{
+  int offset=renderables.size;
+  model.getRenderables(renderables,renderablesPool);
+  for (int i=offset; i < renderables.size; i++) {
+    addRenderable(renderables.get(i),transform,0,lights,null);
+  }
+}
