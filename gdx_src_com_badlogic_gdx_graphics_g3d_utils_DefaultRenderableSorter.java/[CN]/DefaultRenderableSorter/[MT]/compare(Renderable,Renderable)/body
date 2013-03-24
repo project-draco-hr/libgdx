@@ -1,0 +1,7 @@
+{
+  final boolean b1=o1.material.has(BlendingAttribute.Type);
+  final boolean b2=o2.material.has(BlendingAttribute.Type);
+  if (b1 != b2)   return b1 ? 1 : -1;
+  final int result=(o1.shader == o2.shader) ? 0 : o1.shader.compareTo(o2.shader);
+  return result;
+}

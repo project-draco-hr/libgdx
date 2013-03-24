@@ -1,0 +1,4 @@
+{
+  Gdx.app.log("DefaultShaderProvider","Creating new shader");
+  return new TestShader(material);
+}

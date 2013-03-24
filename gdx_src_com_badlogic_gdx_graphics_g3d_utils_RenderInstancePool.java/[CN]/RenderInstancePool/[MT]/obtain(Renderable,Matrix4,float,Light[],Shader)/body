@@ -1,9 +1,0 @@
-{
-  final RenderInstance result=obtain();
-  result.renderable=renderable;
-  result.transform=transform;
-  result.distance=distance;
-  result.lights=lights;
-  result.shader=shader;
-  return result;
-}

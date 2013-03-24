@@ -1,21 +1,21 @@
 {
-  instances.sort(listener);
+  sorter.sort(renderables);
   context.begin();
   Shader currentShader=null;
-  for (int i=0; i < instances.size; i++) {
-    final RenderInstance instance=instances.get(i);
-    if (currentShader != instance.shader) {
+  for (int i=0; i < renderables.size; i++) {
+    final Renderable renderable=renderables.get(i);
+    renderable.shader=shaderProvider.getShader(renderable);
+    if (currentShader != renderable.shader) {
       if (currentShader != null)       currentShader.end();
-      currentShader=instance.shader;
+      currentShader=renderable.shader;
       currentShader.begin(camera,context);
     }
-    currentShader.render(instance);
+    currentShader.render(renderable);
   }
   if (currentShader != null)   currentShader.end();
   context.end();
-  renderablesPool.freeAll(renderables);
+  renderablesPool.freeAll(reuseableRenderables);
+  reuseableRenderables.clear();
   renderables.clear();
-  renderInstancePool.freeAll(instances);
-  instances.clear();
   camera=null;
 }

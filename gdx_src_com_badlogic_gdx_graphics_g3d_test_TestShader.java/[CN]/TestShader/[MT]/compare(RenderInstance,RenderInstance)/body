@@ -1,6 +1,0 @@
-{
-  final boolean b1=arg0.renderable.material.has(BlendingAttribute.Type);
-  final boolean b2=arg1.renderable.material.has(BlendingAttribute.Type);
-  if (b1 != b2)   return b1 ? 1 : -1;
-  return arg0.distance > arg1.distance ? (b1 ? -1 : 1) : (arg0.distance < arg1.distance ? (b1 ? 1 : -1) : 0);
-}
