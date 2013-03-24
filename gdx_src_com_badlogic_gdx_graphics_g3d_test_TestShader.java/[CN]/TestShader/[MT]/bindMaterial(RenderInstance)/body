@@ -12,6 +12,10 @@
       TextureAttribute tex=(TextureAttribute)attr;
       if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(diffuseTextureLoc,tex);
     }
- else     throw new GdxRuntimeException("unknown attribute");
+ else {
+      if (!ignoreUnimplemented) {
+        throw new GdxRuntimeException("unknown attribute");
+      }
+    }
   }
 }

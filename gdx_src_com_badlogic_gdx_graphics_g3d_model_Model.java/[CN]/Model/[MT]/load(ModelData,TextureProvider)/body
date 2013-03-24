@@ -2,4 +2,5 @@
   loadMeshes(modelData.meshes);
   loadMaterials(modelData.materials,textureProvider);
   loadNodes(modelData.nodes);
+  calculateTransforms();
 }

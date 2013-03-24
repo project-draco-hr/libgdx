@@ -12,7 +12,7 @@
   mesh.getIndicesBuffer().clear();
   for (  ModelMeshPart part : modelMesh.parts) {
     MeshPart meshPart=new MeshPart();
-    meshPart.id=modelMesh.id + "-" + part.id;
+    meshPart.id=part.id;
     meshPart.primitiveType=part.primitiveType;
     meshPart.indexOffset=offset;
     meshPart.numVertices=part.indices.length;
