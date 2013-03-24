@@ -1,14 +1,15 @@
 {
+  TestShader.ignoreUnimplemented=true;
   final JsonModelLoader loader=new JsonModelLoader();
   String[] TEXTURES={"data/badlogic.jpg","data/egg.png","data/particle-fire.png","data/planet_earth.png","data/planet_heavyclouds.jpg","data/resource1.jpg","data/stones.jpg","data/sys.png","data/wheel.png"};
   for (int i=0; i < TEXTURE_COUNT; i++)   textures.add(new Texture(Gdx.files.internal(TEXTURES[i % TEXTURES.length])));
-  sphereModel=new InterimModel(ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj")));
-  sceneModel=new InterimModel(ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/scene.obj")));
-  cubeModel=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/cube.obj"));
-  carModel=new InterimModel(ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/car.obj")));
-  testModel=new InterimModel(loader.load(Gdx.files.internal("data/g3d/test.g3dj"),null));
-  StillSubMesh mesh=(StillSubMesh)(cubeModel.subMeshes[0]);
-  for (int i=0; i < textures.size; i++)   cubes.add(new InterimModel(new StillModel(new StillSubMesh(mesh.name,mesh.mesh,mesh.primitiveType,new Material("mat",new TextureAttribute(textures.get(i),0,TextureAttribute.diffuseTexture))))));
+  ObjLoader objLoader=new ObjLoader();
+  sphereModel=objLoader.loadObj(Gdx.files.internal("data/sphere.obj"));
+  sceneModel=objLoader.loadObj(Gdx.files.internal("data/scene.obj"));
+  cubeModel=objLoader.loadObj(Gdx.files.internal("data/cube.obj"));
+  carModel=objLoader.loadObj(Gdx.files.internal("data/car.obj"));
+  testModel=new Model(loader.parseModel(Gdx.files.internal("data/g3d/head.g3dj"),null));
+  for (int i=0; i < textures.size; i++)   cubes.add(cubeModel);
   createScene2();
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.near=1f;
@@ -16,7 +17,7 @@
   cam.position.set(10f,10f,10f);
   cam.lookAt(0,0,0);
   cam.update();
-  renderBatch=new RenderBatch();
+  renderBatch=new ModelBatch();
   lights=new Light[]{new Light(Color.WHITE,Vector3.tmp.set(-10f,10f,-10f),15f),new Light(Color.BLUE,Vector3.tmp.set(10f,5f,0f),10f),new Light(Color.GREEN,Vector3.tmp.set(0f,10f,5f),5f)};
   Gdx.input.setInputProcessor(this);
 }
