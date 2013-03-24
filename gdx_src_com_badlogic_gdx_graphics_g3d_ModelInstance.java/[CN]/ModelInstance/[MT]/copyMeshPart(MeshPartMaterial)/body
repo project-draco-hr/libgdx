@@ -1,0 +1,15 @@
+{
+  MeshPartMaterial copy=new MeshPartMaterial();
+  copy.meshPart=new MeshPart();
+  copy.meshPart.id=meshPart.meshPart.id;
+  copy.meshPart.indexOffset=meshPart.meshPart.indexOffset;
+  copy.meshPart.numVertices=meshPart.meshPart.numVertices;
+  copy.meshPart.primitiveType=meshPart.meshPart.primitiveType;
+  copy.meshPart.mesh=meshPart.meshPart.mesh;
+  int index=model.materials.indexOf(meshPart.material,true);
+  if (index == -1) {
+    throw new GdxRuntimeException("Inconsistent model, material in MeshPartMaterial not found in Model");
+  }
+  copy.material=materials.get(index);
+  return copy;
+}

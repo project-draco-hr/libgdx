@@ -1,12 +1,10 @@
 {
   int offset=renderables.size;
-  model.getRenderables(renderables,renderablesPool);
+  modelInstance.getRenderables(renderables,renderablesPool);
   for (int i=offset; i < renderables.size; i++) {
     Renderable renderable=renderables.get(i);
     renderable.lights=lights;
     renderable.shader=shader;
-    renderable.transform.set(transform);
-    renderable.transform.mul(transform);
     reuseableRenderables.add(renderable);
   }
 }
