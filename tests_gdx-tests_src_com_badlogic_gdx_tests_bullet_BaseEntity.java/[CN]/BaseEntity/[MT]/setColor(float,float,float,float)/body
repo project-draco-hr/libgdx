@@ -1,0 +1,9 @@
+{
+  if (model != null) {
+    NewMaterial m=model.materials.get(0);
+    if (m != null) {
+      ColorAttribute ca=(ColorAttribute)m.get(ColorAttribute.Diffuse);
+      if (ca != null)       ca.color.set(r,g,b,a);
+    }
+  }
+}

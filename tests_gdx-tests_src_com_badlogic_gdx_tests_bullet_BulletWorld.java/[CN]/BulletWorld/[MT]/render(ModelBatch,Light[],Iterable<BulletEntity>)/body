@@ -4,5 +4,5 @@
     collisionWorld.debugDrawWorld();
     debugDrawer.end();
   }
-  if (renderMeshes)   super.render();
+  if (renderMeshes)   super.render(batch,lights,entities);
 }
