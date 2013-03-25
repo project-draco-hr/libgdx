@@ -1,0 +1,20 @@
+{
+  Model result=new Model();
+  MeshPart meshPart=new MeshPart();
+  meshPart.id="part1";
+  meshPart.indexOffset=indexOffset;
+  meshPart.numVertices=vertexCount;
+  meshPart.primitiveType=primitiveType;
+  meshPart.mesh=mesh;
+  MeshPartMaterial partMaterial=new MeshPartMaterial();
+  partMaterial.material=material;
+  partMaterial.meshPart=meshPart;
+  Node node=new Node();
+  node.id="node1";
+  node.meshPartMaterials.add(partMaterial);
+  result.meshes.add(mesh);
+  result.materials.add(material);
+  result.nodes.add(node);
+  result.meshParts.add(meshPart);
+  return result;
+}
