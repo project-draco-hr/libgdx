@@ -1,4 +1,4 @@
 {
   final float hh=radius + 0.5f * height;
-  return ModelBuilder.createBox(radius * 2f,hh * 2f,radius * 2f,new NewMaterial(new ColorAttribute(ColorAttribute.Diffuse,Color.WHITE)));
+  return ModelBuilder.createCylinder(radius * 2,hh * 2f,radius * 2f,16,new NewMaterial(new ColorAttribute(ColorAttribute.Diffuse,Color.WHITE)));
 }
