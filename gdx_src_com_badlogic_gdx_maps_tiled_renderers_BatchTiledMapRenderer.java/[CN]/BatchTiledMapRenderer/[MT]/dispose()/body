@@ -1,3 +1,5 @@
 {
-  spriteBatch.dispose();
+  if (ownsSpriteBatch) {
+    spriteBatch.dispose();
+  }
 }
