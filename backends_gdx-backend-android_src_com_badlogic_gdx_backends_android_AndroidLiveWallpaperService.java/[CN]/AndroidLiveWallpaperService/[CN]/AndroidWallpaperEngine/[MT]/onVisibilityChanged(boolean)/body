@@ -1,10 +1,10 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onVisibilityChanged(" + visible + ") "+ hashCode());
-  if (visible) {
-    onResume();
-  }
- else {
-    onPause();
-  }
+  boolean reportedVisible=isVisible();
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onVisibilityChanged(paramVisible: " + visible + " reportedVisible: "+ reportedVisible+ ") "+ hashCode()+ ", sufcace valid: "+ getSurfaceHolder().getSurface().isValid());
   super.onVisibilityChanged(visible);
+  if (reportedVisible == false && visible == true) {
+    if (DEBUG)     Log.d(TAG," > fake visibilityChanged event! Android WallpaperService likes do that!");
+    return;
+  }
+  notifyVisibilityChanged(visible);
 }

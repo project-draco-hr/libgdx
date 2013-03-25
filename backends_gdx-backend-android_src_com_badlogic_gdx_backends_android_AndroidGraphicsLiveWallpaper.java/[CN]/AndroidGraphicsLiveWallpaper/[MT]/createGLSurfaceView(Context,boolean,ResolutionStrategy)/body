@@ -1,0 +1,54 @@
+{
+  EGLConfigChooser configChooser=getEglConfigChooser();
+  if (useGL2 && checkGL20()) {
+    GLSurfaceView20 view=new GLSurfaceView20(context,resolutionStrategy){
+      @Override public SurfaceHolder getHolder(){
+        return getSurfaceHolder();
+      }
+      public void onDestroy(){
+        onDetachedFromWindow();
+      }
+    }
+;
+    if (configChooser != null)     view.setEGLConfigChooser(configChooser);
+ else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+    view.setRenderer(this);
+    return view;
+  }
+ else {
+    config.useGL20=false;
+    configChooser=getEglConfigChooser();
+    int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
+    if (sdkVersion >= 11) {
+      GLSurfaceView view=new GLSurfaceView(context){
+        @Override protected void onMeasure(        int widthMeasureSpec,        int heightMeasureSpec){
+          ResolutionStrategy.MeasuredDimension measures=resolutionStrategy.calcMeasures(widthMeasureSpec,heightMeasureSpec);
+          setMeasuredDimension(measures.width,measures.height);
+        }
+        @Override public SurfaceHolder getHolder(){
+          return getSurfaceHolder();
+        }
+        public void onDestroy(){
+          onDetachedFromWindow();
+        }
+      }
+;
+      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+ else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+      view.setRenderer(this);
+      return view;
+    }
+ else {
+      GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(context,resolutionStrategy){
+        @Override public SurfaceHolder getHolder(){
+          return getSurfaceHolder();
+        }
+      }
+;
+      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
+ else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+      view.setRenderer(this);
+      return view;
+    }
+  }
+}
