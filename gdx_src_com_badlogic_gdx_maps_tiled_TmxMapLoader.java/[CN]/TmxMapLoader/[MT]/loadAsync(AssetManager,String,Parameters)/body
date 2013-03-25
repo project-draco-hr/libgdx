@@ -1,4 +1,5 @@
 {
+  map=null;
   FileHandle tmxFile=resolve(fileName);
   if (parameter != null) {
     yUp=parameter.yUp;
@@ -7,7 +8,7 @@
     yUp=true;
   }
   try {
-    return loadTilemap(root,tmxFile,new AssetManagerImageResolver(assetManager));
+    map=loadTilemap(root,tmxFile,new AssetManagerImageResolver(manager));
   }
  catch (  Exception e) {
     throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
