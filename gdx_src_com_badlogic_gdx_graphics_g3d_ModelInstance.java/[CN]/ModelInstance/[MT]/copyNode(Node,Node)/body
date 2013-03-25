@@ -1,0 +1,18 @@
+{
+  Node copy=new Node();
+  copy.id=node.id;
+  copy.boneId=node.boneId;
+  copy.parent=parent;
+  copy.translation.set(node.translation);
+  copy.rotation.set(node.rotation);
+  copy.scale.set(node.scale);
+  copy.localTransform.set(node.localTransform);
+  copy.worldTransform.set(node.worldTransform);
+  for (  MeshPartMaterial meshPart : node.meshPartMaterials) {
+    copy.meshPartMaterials.add(copyMeshPart(meshPart));
+  }
+  for (  Node child : node.children) {
+    copy.children.add(copyNode(copy,child));
+  }
+  return copy;
+}

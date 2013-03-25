@@ -7,7 +7,7 @@
       renderable.meshPartOffset=meshPart.meshPart.indexOffset;
       renderable.meshPartSize=meshPart.meshPart.numVertices;
       renderable.primitiveType=meshPart.meshPart.primitiveType;
-      renderable.transform.set(node.worldTransform);
+      renderable.transform.set(transform).mul(node.worldTransform);
       renderables.add(renderable);
     }
   }

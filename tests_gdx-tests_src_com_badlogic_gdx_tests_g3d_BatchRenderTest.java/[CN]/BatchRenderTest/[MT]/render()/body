@@ -10,7 +10,7 @@
   renderBatch.begin(cam);
   for (int i=0; i < instances.size; i++) {
     if (instances.get(i).model == null)     Gdx.app.log("Test","Model " + i + " is null");
- else     renderBatch.addModel(instances.get(i).model,instances.get(i).transform,lights);
+ else     renderBatch.render(instances.get(i),lights);
   }
   renderBatch.end();
 }

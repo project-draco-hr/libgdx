@@ -1,3 +1,4 @@
 {
-  batch.addModel(entity.model,entity.transform,lights);
+  entity.modelInstance.calculateTransforms();
+  batch.render(entity.modelInstance,lights);
 }
