@@ -6,7 +6,7 @@
   final float dX=BOX_X_MAX - BOX_X_MIN;
   final float dY=BOX_Y_MAX - BOX_Y_MIN;
   final float dZ=BOX_Z_MAX - BOX_Z_MIN;
-  for (int i=0; i < BOXCOUNT; i++)   world.add("collisionBox",BOX_X_MIN + dX * (float)Math.random(),BOX_Y_MIN + dY * (float)Math.random(),BOX_Z_MIN + dZ * (float)Math.random()).getColor().set(Color.GRAY);
+  for (int i=0; i < BOXCOUNT; i++)   world.add("collisionBox",BOX_X_MIN + dX * (float)Math.random(),BOX_Y_MIN + dY * (float)Math.random(),BOX_Z_MIN + dZ * (float)Math.random()).setColor(Color.GRAY);
   frustumCam=new PerspectiveCamera(camera.fieldOfView,camera.viewportWidth,camera.viewportHeight);
   frustumCam.far=Vector3.len(BOX_X_MAX,BOX_Y_MAX,BOX_Z_MAX);
   frustumCam.update();
@@ -18,6 +18,7 @@
   final Model frustumModel=createFrustumModel(frustumCam.frustum.planePoints);
   frustumObject=createFrustumObject(frustumCam.frustum.planePoints);
   world.add(frustumEntity=new BulletEntity(frustumModel,frustumObject,0,0,0));
-  frustumEntity.getColor().set(Color.BLUE);
-  world.renderMeshes=false;
+  frustumEntity.setColor(Color.BLUE);
+  lights[0].position.set(0,0,0);
+  lights[0].power=frustumCam.far * 1.25f;
 }

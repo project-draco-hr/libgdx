@@ -5,7 +5,9 @@
   super.dispose();
   worldInfo.delete();
   worldInfo=null;
-  mesh.dispose();
+  instance=null;
+  model.dispose();
+  model=null;
   mesh=null;
   texture.dispose();
   texture=null;

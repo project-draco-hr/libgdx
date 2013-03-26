@@ -1,0 +1,8 @@
+{
+  float[] vertices=new float[]{x1,y1,z1,normalX,normalY,normalZ,x2,y2,z2,normalX,normalY,normalZ,x3,y3,z3,normalX,normalY,normalZ,x4,y4,z4,normalX,normalY,normalZ};
+  short[] indices=new short[]{0,1,2,1,2,3};
+  final Mesh result=new Mesh(true,vertices.length,indices.length,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.Normal,3,"a_normal"));
+  result.setVertices(vertices);
+  result.setIndices(indices);
+  return result;
+}
