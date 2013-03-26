@@ -1,4 +1,0 @@
-{
-  final Mesh mesh=createBoxMesh(width,height,depth);
-  return createFromMesh(mesh,GL10.GL_TRIANGLES,material);
-}

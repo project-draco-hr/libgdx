@@ -1,0 +1,8 @@
+{
+  if (model == null)   throw new GdxRuntimeException("Call begin() first");
+  endnode();
+  node=new Node();
+  node.id="node" + model.nodes.size;
+  model.nodes.add(node);
+  return node;
+}

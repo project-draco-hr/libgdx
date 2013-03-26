@@ -1,0 +1,8 @@
+{
+  if (this.attributes == null)   throw new RuntimeException("Call begin() first");
+  endpart();
+  part=new MeshPart();
+  part.id=id;
+  parts.add(part);
+  return part;
+}

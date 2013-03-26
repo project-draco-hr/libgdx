@@ -1,0 +1,5 @@
+{
+  vertices.addAll(values);
+  vindex+=values.length / stride;
+  return vindex - 1;
+}
