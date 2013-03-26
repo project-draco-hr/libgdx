@@ -1,0 +1,32 @@
+{
+  final float hw=width * 0.5f;
+  final float hh=height * 0.5f;
+  final float hd=depth * 0.5f;
+  final float step=MathUtils.PI2 / divisions;
+  final float vs=1f / divisions;
+  float v=0f;
+  float angle=0f;
+  VertexInfo curr1=vertTmp3.set(null,null,null,null);
+  VertexInfo curr2=vertTmp4.set(null,null,null,null);
+  for (int i=0; i <= divisions; i++) {
+    angle=step * i;
+    v=vs * i;
+    curr1.position.set(MathUtils.cos(angle) * hw,0f,MathUtils.sin(angle) * hd);
+    curr1.normal.set(curr1.position).nor();
+    curr1.position.y=-hh;
+    curr1.uv.set(v,0);
+    curr2.position.set(curr1.position);
+    curr2.normal.set(curr1.normal);
+    curr2.position.y=hh;
+    curr2.uv.set(v,1);
+    vertex(curr1);
+    vertex(curr2);
+    if (i == 0)     continue;
+    indices.add((short)(vindex - 4));
+    indices.add((short)(vindex - 3));
+    indices.add((short)(vindex - 2));
+    indices.add((short)(vindex - 3));
+    indices.add((short)(vindex - 2));
+    indices.add((short)(vindex - 1));
+  }
+}

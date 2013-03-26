@@ -1,0 +1,6 @@
+{
+  ModelBuilder mb=getInstance();
+  mb.begin();
+  mb.part("box",attributes,material).box(width,height,depth);
+  return mb.end();
+}

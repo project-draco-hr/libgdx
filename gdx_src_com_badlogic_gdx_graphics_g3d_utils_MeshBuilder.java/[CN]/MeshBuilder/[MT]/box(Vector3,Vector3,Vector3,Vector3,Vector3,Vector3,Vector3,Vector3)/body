@@ -1,0 +1,11 @@
+{
+  Vector3 nor=tempV1.set(corner000).lerp(corner110,0.5f).sub(tempV2.set(corner001).lerp(corner111,0.5f)).nor();
+  rect(corner000,corner010,corner100,corner110,nor);
+  rect(corner001,corner011,corner101,corner111,nor.scl(-1));
+  nor=tempV1.set(corner000).lerp(corner101,0.5f).sub(tempV2.set(corner010).lerp(corner111,0.5f)).nor();
+  rect(corner000,corner001,corner100,corner101,nor);
+  rect(corner010,corner011,corner110,corner111,nor.scl(-1));
+  nor=tempV1.set(corner000).lerp(corner011,0.5f).sub(tempV2.set(corner100).lerp(corner111,0.5f)).nor();
+  rect(corner000,corner001,corner010,corner011,nor);
+  rect(corner100,corner101,corner110,corner111,nor.scl(-1));
+}

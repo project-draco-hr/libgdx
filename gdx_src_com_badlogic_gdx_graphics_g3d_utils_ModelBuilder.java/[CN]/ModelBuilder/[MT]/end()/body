@@ -1,0 +1,16 @@
+{
+  final Model result=model;
+  endmodel();
+  Gdx.app.log("Test","Builders: " + builders.size);
+  for (  final MeshBuilder mb : builders)   mb.end();
+  builders.clear();
+  Gdx.app.log("Test","model = " + models.size);
+  for (  final Model m : models) {
+    for (    final MeshPart mp : m.meshParts) {
+      if (!m.meshes.contains(mp.mesh,true))       m.meshes.add(mp.mesh);
+    }
+    Gdx.app.log("Test","meshparts = " + m.meshParts.size + " meshes = "+ m.meshes.size);
+  }
+  models.clear();
+  return result;
+}

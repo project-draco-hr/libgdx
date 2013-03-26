@@ -1,0 +1,6 @@
+{
+  ModelBuilder mb=getInstance();
+  mb.begin();
+  mb.part("cylinder",attributes,material).cylinder(width,height,depth,divisions);
+  return mb.end();
+}

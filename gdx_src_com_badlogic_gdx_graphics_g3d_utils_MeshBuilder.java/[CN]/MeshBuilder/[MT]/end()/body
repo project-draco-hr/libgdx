@@ -1,0 +1,12 @@
+{
+  endpart();
+  final Mesh mesh=new Mesh(true,vertices.size,indices.size,attributes);
+  mesh.setVertices(vertices.items,0,vertices.size);
+  mesh.setIndices(indices.items,0,indices.size);
+  for (  MeshPart p : parts)   p.mesh=mesh;
+  parts.clear();
+  attributes=null;
+  vertices.clear();
+  indices.clear();
+  return mesh;
+}
