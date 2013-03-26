@@ -1,4 +1,5 @@
 {
+  if (this.attributes == null)   throw new RuntimeException("Call begin() first");
   endpart();
   final Mesh mesh=new Mesh(true,vertices.size,indices.size,attributes);
   mesh.setVertices(vertices.items,0,vertices.size);

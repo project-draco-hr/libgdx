@@ -1,4 +1,5 @@
 {
+  if (this.attributes != null)   throw new RuntimeException("Call end() first");
   this.attributes=attributes;
   this.vertices.clear();
   this.indices.clear();

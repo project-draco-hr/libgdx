@@ -1,16 +1,12 @@
 {
+  if (model == null)   throw new GdxRuntimeException("Call begin() first");
   final Model result=model;
-  endmodel();
-  Gdx.app.log("Test","Builders: " + builders.size);
+  endnode();
+  model=null;
   for (  final MeshBuilder mb : builders)   mb.end();
   builders.clear();
-  Gdx.app.log("Test","model = " + models.size);
-  for (  final Model m : models) {
-    for (    final MeshPart mp : m.meshParts) {
-      if (!m.meshes.contains(mp.mesh,true))       m.meshes.add(mp.mesh);
-    }
-    Gdx.app.log("Test","meshparts = " + m.meshParts.size + " meshes = "+ m.meshes.size);
+  for (  final MeshPart mp : result.meshParts) {
+    if (!result.meshes.contains(mp.mesh,true))     result.meshes.add(mp.mesh);
   }
-  models.clear();
   return result;
 }
