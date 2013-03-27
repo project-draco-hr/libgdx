@@ -5,7 +5,7 @@
   final Color fontColor=(disabled && style.disabledFontColor != null) ? style.disabledFontColor : ((focused && style.focusedFontColor != null) ? style.focusedFontColor : style.fontColor);
   final Drawable selection=style.selection;
   final Drawable cursorPatch=style.cursor;
-  final Drawable background=(focused && style.focusedBackground != null) ? style.focusedBackground : style.background;
+  final Drawable background=(disabled && style.disabledBackground != null) ? style.disabledBackground : ((focused && style.focusedBackground != null) ? style.focusedBackground : style.background);
   Color color=getColor();
   float x=getX();
   float y=getY();
