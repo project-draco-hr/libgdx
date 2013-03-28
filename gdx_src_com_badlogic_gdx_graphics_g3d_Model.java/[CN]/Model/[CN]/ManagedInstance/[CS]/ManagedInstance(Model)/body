@@ -1,0 +1,5 @@
+{
+  if (model == null)   throw new GdxRuntimeException("Model cannot be null");
+  this.model=model;
+  model.addInstance(this);
+}

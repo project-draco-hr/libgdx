@@ -1,7 +1,10 @@
 {
+  for (  final ManagedInstance instance : instances)   instance.dispose();
+  instances.clear();
   for (  Mesh mesh : meshes) {
     mesh.dispose();
   }
   for (  NewMaterial material : materials) {
+    material.dispose();
   }
 }
