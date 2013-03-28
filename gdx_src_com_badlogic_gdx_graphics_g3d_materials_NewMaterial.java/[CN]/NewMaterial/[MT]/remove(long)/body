@@ -2,6 +2,7 @@
   for (int i=0; i < attributes.size; i++) {
     final long type=attributes.get(i).type;
     if ((mask & type) == type) {
+      attributes.get(i).dispose();
       attributes.removeIndex(i);
       disable(type);
       sorted=false;

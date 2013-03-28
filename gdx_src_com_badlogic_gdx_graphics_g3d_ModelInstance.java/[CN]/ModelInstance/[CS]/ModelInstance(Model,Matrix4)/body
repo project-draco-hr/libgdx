@@ -1,5 +1,5 @@
 {
-  this.model=model;
+  super(model);
   this.transform.set(transform);
   copyMaterials(model.materials);
   copyNodes(model.nodes);
