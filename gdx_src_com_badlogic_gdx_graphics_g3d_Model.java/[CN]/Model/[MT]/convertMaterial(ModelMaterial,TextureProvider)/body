@@ -12,6 +12,7 @@
       if (textures.containsKey(tex.fileName))       continue;
       Texture texture=textureProvider.load(tex.fileName);
       textures.put(tex.fileName,texture);
+      disposables.add(texture);
     }
     for (    ModelTexture tex : mtl.diffuseTextures) {
       TextureDescriptor descriptor=new TextureDescriptor();

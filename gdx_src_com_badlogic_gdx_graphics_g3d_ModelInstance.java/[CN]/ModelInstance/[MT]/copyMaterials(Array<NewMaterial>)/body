@@ -1,5 +1,5 @@
 {
-  for (  NewMaterial material : model.materials) {
+  for (  NewMaterial material : materials) {
     this.materials.add(material.copy());
   }
 }
