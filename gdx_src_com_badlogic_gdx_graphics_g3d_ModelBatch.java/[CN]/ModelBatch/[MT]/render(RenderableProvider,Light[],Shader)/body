@@ -1,6 +1,6 @@
 {
   int offset=renderables.size;
-  modelInstance.getRenderables(renderables,renderablesPool);
+  renderableProvider.getRenderables(renderables,renderablesPool);
   for (int i=offset; i < renderables.size; i++) {
     Renderable renderable=renderables.get(i);
     renderable.lights=lights;
