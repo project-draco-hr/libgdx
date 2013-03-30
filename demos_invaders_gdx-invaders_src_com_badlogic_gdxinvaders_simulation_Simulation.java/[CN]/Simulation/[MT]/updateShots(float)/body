@@ -9,7 +9,8 @@
   if (shipShot != null && shipShot.hasLeftField)   shipShot=null;
   if (Math.random() < 0.01 * multiplier && invaders.size() > 0) {
     int index=(int)(Math.random() * (invaders.size() - 1));
-    Shot shot=new Shot(invaders.get(index).position,true);
+    invaders.get(index).transform.getTranslation(tmpV1);
+    Shot shot=new Shot(shotModel,tmpV1,true);
     shots.add(shot);
     if (listener != null)     listener.shot();
   }
