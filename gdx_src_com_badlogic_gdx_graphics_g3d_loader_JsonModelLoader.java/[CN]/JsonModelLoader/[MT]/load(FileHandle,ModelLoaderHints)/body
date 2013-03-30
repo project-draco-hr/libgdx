@@ -1,7 +1,0 @@
-{
-  ModelData jsonModel=parseModel(handle,hints);
-  Model model=null;
-  if (jsonModel.animations == null)   model=createStillModel(jsonModel);
- else   model=createSkeletonModel(jsonModel);
-  return model;
-}

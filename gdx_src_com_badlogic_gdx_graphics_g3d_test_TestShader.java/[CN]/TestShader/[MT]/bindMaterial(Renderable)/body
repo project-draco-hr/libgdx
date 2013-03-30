@@ -1,7 +1,7 @@
 {
   if (currentMaterial == renderable.material)   return;
   currentMaterial=renderable.material;
-  for (  NewMaterial.Attribute attr : currentMaterial) {
+  for (  Material.Attribute attr : currentMaterial) {
     final long t=attr.type;
     if (BlendingAttribute.is(t))     context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
  else     if (ColorAttribute.is(t)) {

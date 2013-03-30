@@ -8,7 +8,7 @@
   node.scale.set(modelNode.scale);
   for (  ModelMeshPartMaterial modelMeshPartMaterial : modelNode.meshPartMaterials) {
     MeshPart meshPart=null;
-    NewMaterial meshMaterial=null;
+    Material meshMaterial=null;
     if (modelMeshPartMaterial.meshPartId != null) {
       for (      MeshPart part : meshParts) {
         if (modelMeshPartMaterial.meshPartId.equals(part.id)) {
@@ -18,7 +18,7 @@
       }
     }
     if (modelMeshPartMaterial.materialId != null) {
-      for (      NewMaterial material : materials) {
+      for (      Material material : materials) {
         if (modelMeshPartMaterial.materialId.equals(material.id)) {
           meshMaterial=material;
           break;
