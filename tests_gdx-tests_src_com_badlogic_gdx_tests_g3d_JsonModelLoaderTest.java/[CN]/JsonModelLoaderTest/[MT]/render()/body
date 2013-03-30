@@ -17,5 +17,4 @@
   gl.glLightfv(GL10.GL_LIGHT0,GL10.GL_POSITION,lightPosition,0);
   gl.glRotatef(angleY,0,1,0);
   gl.glRotatef(angleX,1,0,0);
-  model.render();
 }
