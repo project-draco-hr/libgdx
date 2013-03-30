@@ -1,5 +1,5 @@
 {
-  NewMaterial result=new NewMaterial();
+  Material result=new Material();
   result.id=mtl.id;
   result.add(new ColorAttribute(ColorAttribute.Ambient,mtl.ambient));
   result.add(new ColorAttribute(ColorAttribute.Diffuse,mtl.diffuse));

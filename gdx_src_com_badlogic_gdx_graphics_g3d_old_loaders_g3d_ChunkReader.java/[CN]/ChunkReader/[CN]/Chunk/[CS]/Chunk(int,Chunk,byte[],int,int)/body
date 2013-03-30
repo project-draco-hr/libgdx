@@ -1,8 +1,0 @@
-{
-  this.id=id;
-  this.parent=parent;
-  this.payload=new ByteArrayInputStream(bytes,offset,size);
-  this.payloadBytes=bytes;
-  this.offset=offset;
-  this.in=new CountingDataInputStream(payload);
-}

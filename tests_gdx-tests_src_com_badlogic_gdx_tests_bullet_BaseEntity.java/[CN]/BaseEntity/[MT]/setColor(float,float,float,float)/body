@@ -1,7 +1,7 @@
 {
   color.set(r,g,b,a);
   if (modelInstance != null) {
-    for (    NewMaterial m : modelInstance.materials) {
+    for (    Material m : modelInstance.materials) {
       ColorAttribute ca=(ColorAttribute)m.get(ColorAttribute.Diffuse);
       if (ca != null)       ca.color.set(r,g,b,a);
     }

@@ -3,10 +3,10 @@
     blocks.clear();
     shots.clear();
     shipShot=null;
-    Vector3 shipPosition=ship.position;
+    ship.transform.getTranslation(tmpV1);
     int lives=ship.lives;
     populate();
-    ship.position.set(shipPosition);
+    ship.transform.setToTranslation(tmpV1);
     ship.lives=lives;
     multiplier+=0.2f;
     wave++;

@@ -1,0 +1,24 @@
+{
+  if (light == null && num == 0)   light=defaultLight;
+  if (lights[num] == light)   return;
+  lights[num]=light;
+  if (light == null) {
+    lightVal[0]=lightVal[1]=lightVal[2]=lightVal[3]=0f;
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + num,GL10.GL_DIFFUSE,lightVal,0);
+  }
+ else {
+    lightVal[0]=light.color.r;
+    lightVal[1]=light.color.g;
+    lightVal[2]=light.color.b;
+    lightVal[3]=light.color.a;
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + num,GL10.GL_DIFFUSE,lightVal,0);
+    lightVal[0]=light.position.x;
+    lightVal[1]=light.position.y;
+    lightVal[2]=light.position.z;
+    lightVal[3]=1f;
+    Gdx.gl10.glPushMatrix();
+    Gdx.gl10.glLoadIdentity();
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + num,GL10.GL_POSITION,lightVal,0);
+    Gdx.gl10.glPopMatrix();
+  }
+}

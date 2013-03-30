@@ -1,3 +1,6 @@
 {
-  this(model,new Matrix4());
+  this.model=model;
+  copyMaterials(model.materials);
+  copyNodes(model.nodes);
+  calculateTransforms();
 }

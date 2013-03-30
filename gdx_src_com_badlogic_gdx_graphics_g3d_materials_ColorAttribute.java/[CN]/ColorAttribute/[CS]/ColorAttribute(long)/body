@@ -1,3 +1,4 @@
 {
-  this(type,null);
+  super(type);
+  if (!is(type))   throw new GdxRuntimeException("Invalid type specified");
 }

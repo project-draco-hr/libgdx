@@ -4,26 +4,25 @@
   gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
   gl.glEnable(GL10.GL_DEPTH_TEST);
   cam.update();
-  cam.apply(gl);
   gl.glViewport(VP_X,VP_Y,VP_WIDTH,VP_HEIGHT);
   Ray pickRay=null;
   if (Gdx.input.isTouched()) {
     pickRay=cam.getPickRay(Gdx.input.getX(),Gdx.input.getY(),VP_X,VP_Y,VP_WIDTH,VP_HEIGHT);
   }
   boolean intersected=false;
-  for (int i=0; i < positions.length; i++) {
-    if (pickRay != null && Intersector.intersectRaySphere(pickRay,positions[i],1,intersection)) {
-      gl.glColor4f(1,0,0,1);
+  modelBatch.begin(cam);
+  for (int i=0; i < instances.length; i++) {
+    instances[i].transform.getTranslation(tempVector);
+    if (pickRay != null && Intersector.intersectRaySphere(pickRay,tempVector,1,intersection)) {
+      ((ColorAttribute)instances[i].materials.get(0).get(ColorAttribute.Diffuse)).color.set(Color.RED);
       intersected=true;
     }
  else {
-      gl.glColor4f(1,1,1,1);
+      ((ColorAttribute)instances[i].materials.get(0).get(ColorAttribute.Diffuse)).color.set(Color.WHITE);
     }
-    gl.glPushMatrix();
-    gl.glTranslatef(positions[i].x,positions[i].y,positions[i].z);
-    sphere.render();
-    gl.glPopMatrix();
+    modelBatch.render(instances[i]);
   }
+  modelBatch.end();
   Gdx.gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   batch.begin();
   if (intersected) {

@@ -1,4 +1,5 @@
 {
+  if (!Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("This shader requires OpenGL ES 2.0");
   String prefix="";
   this.mask=mask;
   if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");

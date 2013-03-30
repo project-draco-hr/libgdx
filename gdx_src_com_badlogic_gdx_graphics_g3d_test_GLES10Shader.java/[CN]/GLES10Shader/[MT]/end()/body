@@ -1,0 +1,9 @@
+{
+  if (currentMesh != null)   currentMesh.unbind();
+  currentMesh=null;
+  if (currentTransform != null)   Gdx.gl10.glPopMatrix();
+  currentTransform=null;
+  currentTexture0=null;
+  currentMaterial=null;
+  Gdx.gl10.glDisable(GL10.GL_LIGHTING);
+}
