@@ -11,11 +11,27 @@
   int lastWidth=graphics.getWidth();
   int lastHeight=graphics.getHeight();
   graphics.lastTime=System.nanoTime();
+  boolean wasActive=true;
+  boolean isActive;
+  int frameRate;
   while (running) {
     Display.processMessages();
     if (Display.isCloseRequested()) {
       exit();
     }
+    isActive=Display.isActive();
+    if (wasActive && !isActive) {
+      wasActive=false;
+      listener.pause();
+    }
+    if (!wasActive && isActive) {
+      wasActive=true;
+      listener.resume();
+    }
+    if (!isActive && graphics.config.hiddenFPS == -1) {
+      continue;
+    }
+    frameRate=isActive ? graphics.config.foregroundFPS : graphics.config.hiddenFPS;
     boolean shouldRender=false;
     if (graphics.canvas != null) {
       int width=graphics.canvas.getWidth();
@@ -59,11 +75,11 @@ synchronized (runnables) {
       listener.render();
       Display.update();
       if (graphics.vsync && graphics.config.useCPUSynch) {
-        Display.sync(60);
+        Display.sync(frameRate);
       }
     }
  else {
-      Display.sync(60);
+      Display.sync(frameRate);
     }
   }
   Array<LifecycleListener> listeners=lifecycleListeners;
