@@ -5,8 +5,6 @@
   model=null;
   for (  final MeshBuilder mb : builders)   mb.end();
   builders.clear();
-  for (  final MeshPart mp : result.meshParts) {
-    if (!result.meshes.contains(mp.mesh,true))     result.meshes.add(mp.mesh);
-  }
+  rebuildReferences(result);
   return result;
 }

@@ -1,6 +1,4 @@
 {
   if (node == null)   node();
-  if (!model.meshParts.contains(meshpart,true))   model.meshParts.add(meshpart);
-  if (!model.materials.contains(material,true))   model.materials.add(material);
   node.meshPartMaterials.add(new MeshPartMaterial(meshpart,material));
 }

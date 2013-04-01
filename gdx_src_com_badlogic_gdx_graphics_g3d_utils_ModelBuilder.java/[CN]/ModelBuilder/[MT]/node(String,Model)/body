@@ -1,0 +1,7 @@
+{
+  final Node node=new Node();
+  node.id=id;
+  node.children.addAll(model.nodes);
+  for (  final Disposable disposable : model.getManagedDisposables())   manage(disposable);
+  return node(node);
+}

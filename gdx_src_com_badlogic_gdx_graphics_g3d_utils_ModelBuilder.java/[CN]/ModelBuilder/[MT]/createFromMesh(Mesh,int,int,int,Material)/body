@@ -16,5 +16,6 @@
   result.materials.add(material);
   result.nodes.add(node);
   result.meshParts.add(meshPart);
+  result.manageDisposable(mesh);
   return result;
 }
