@@ -1,5 +1,5 @@
 {
-  TestShader.ignoreUnimplemented=true;
+  DefaultShader.ignoreUnimplemented=true;
   final JsonModelLoader loader=new JsonModelLoader();
   String[] TEXTURES={"data/badlogic.jpg","data/egg.png","data/particle-fire.png","data/planet_earth.png","data/planet_heavyclouds.jpg","data/resource1.jpg","data/stones.jpg","data/sys.png","data/wheel.png"};
   for (int i=0; i < TEXTURE_COUNT; i++)   textures.add(new Texture(Gdx.files.internal(TEXTURES[i % TEXTURES.length])));
