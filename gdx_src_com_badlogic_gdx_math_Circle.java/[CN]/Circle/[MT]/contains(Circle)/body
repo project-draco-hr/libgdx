@@ -1,0 +1,6 @@
+{
+  float dx=x - c.x;
+  float dy=y - c.y;
+  float maxDistanceSqrd=dx * dx + dy * dy + c.radius * c.radius;
+  return maxDistanceSqrd <= radius * radius;
+}

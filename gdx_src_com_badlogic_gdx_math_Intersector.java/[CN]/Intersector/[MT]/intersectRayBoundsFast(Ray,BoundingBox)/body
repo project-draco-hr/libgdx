@@ -32,5 +32,5 @@
   }
   if (a > min)   min=a;
   if (b < max)   max=b;
-  return (max >= 0) && (max >= min);
+  return max >= 0 && max >= min;
 }
