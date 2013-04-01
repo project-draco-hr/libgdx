@@ -1,6 +1,3 @@
 {
-  this.model=model;
-  copyMaterials(model.materials);
-  copyNodes(model.nodes);
-  calculateTransforms();
+  this(model,(String[])null);
 }

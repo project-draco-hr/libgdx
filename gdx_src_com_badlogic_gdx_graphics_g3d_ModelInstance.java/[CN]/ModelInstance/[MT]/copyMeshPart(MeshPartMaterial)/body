@@ -6,10 +6,8 @@
   copy.meshPart.numVertices=meshPart.meshPart.numVertices;
   copy.meshPart.primitiveType=meshPart.meshPart.primitiveType;
   copy.meshPart.mesh=meshPart.meshPart.mesh;
-  int index=model.materials.indexOf(meshPart.material,true);
-  if (index == -1) {
-    throw new GdxRuntimeException("Inconsistent model, material in MeshPartMaterial not found in Model");
-  }
-  copy.material=materials.get(index);
+  final int index=materials.indexOf(meshPart.material,false);
+  if (index < 0)   materials.add(copy.material=meshPart.material.copy());
+ else   copy.material=materials.get(index);
   return copy;
 }

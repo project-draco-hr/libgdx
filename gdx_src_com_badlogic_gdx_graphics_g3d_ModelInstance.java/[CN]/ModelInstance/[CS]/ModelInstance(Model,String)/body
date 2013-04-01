@@ -1,0 +1,6 @@
+{
+  this.model=model;
+  if (rootNodeIds == null)   copyNodes(model.nodes);
+ else   copyNodes(model.nodes,rootNodeIds);
+  calculateTransforms();
+}
