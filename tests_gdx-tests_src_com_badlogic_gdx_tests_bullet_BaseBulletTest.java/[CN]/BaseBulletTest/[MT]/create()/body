@@ -1,7 +1,6 @@
 {
   init();
   modelBatch=new ModelBatch();
-  DefaultShader.ignoreUnimplemented=true;
   world=createWorld();
   world.performanceCounter=performanceCounter;
   final float width=Gdx.graphics.getWidth();
