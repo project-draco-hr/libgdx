@@ -5,7 +5,7 @@
     final Shader shader=shaders.get(i);
     if (shader.canRender(renderable))     return shader;
   }
-  final Shader result=createShader(renderable.material);
+  final Shader result=createShader(renderable);
   shaders.add(result);
   return result;
 }

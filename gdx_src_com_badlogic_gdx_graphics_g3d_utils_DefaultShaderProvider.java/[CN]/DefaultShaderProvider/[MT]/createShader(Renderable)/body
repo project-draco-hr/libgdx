@@ -1,5 +1,5 @@
 {
   Gdx.app.log("DefaultShaderProvider","Creating new shader");
-  if (Gdx.graphics.isGL20Available())   return new TestShader(material);
+  if (Gdx.graphics.isGL20Available())   return new TestShader(renderable.material);
   return new GLES10Shader();
 }
