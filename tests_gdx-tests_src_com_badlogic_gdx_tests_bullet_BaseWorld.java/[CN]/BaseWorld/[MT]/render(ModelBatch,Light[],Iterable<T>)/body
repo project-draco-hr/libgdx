@@ -1,6 +1,6 @@
 {
   for (  final T e : entities) {
     e.modelInstance.calculateTransforms();
-    batch.render(lights,e.modelInstance);
+    batch.render(e.modelInstance,lights);
   }
 }
