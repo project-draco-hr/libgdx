@@ -4,5 +4,5 @@
   program.begin();
   context.setDepthTest(true,GL10.GL_LEQUAL);
   program.setUniformMatrix(projTransLoc,camera.combined);
-  for (int i=0; i < currentLights.length; i++)   currentLights[i]=null;
+  if (currentLights != null)   for (int i=0; i < currentLights.length; i++)   currentLights[i]=null;
 }

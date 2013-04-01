@@ -1,9 +1,10 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("This shader requires OpenGL ES 2.0");
+  currentLights=maxLightsCount > 0 ? new Light[maxLightsCount] : null;
   String prefix="";
   this.mask=mask;
   if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");
-  if (lightsCount > 0)   prefix+="#define lightsCount " + lightsCount + "\n";
+  if (maxLightsCount > 0)   prefix+="#define lightsCount " + maxLightsCount + "\n";
   if ((mask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
   if ((mask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)   prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
   if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
@@ -14,8 +15,8 @@
   normalTransLoc=program.getUniformLocation(NORMAL_TRANSFORM);
   diffuseTextureLoc=((mask & TextureAttribute.Diffuse) != TextureAttribute.Diffuse) ? -1 : program.getUniformLocation(TextureAttribute.DiffuseAlias);
   diffuseColorLoc=((mask & ColorAttribute.Diffuse) != ColorAttribute.Diffuse) ? -1 : program.getUniformLocation(ColorAttribute.DiffuseAlias);
-  lightsLoc=lightsCount > 0 ? program.getUniformLocation("lights[0].color") : -1;
-  lightSize=(lightsLoc >= 0 && lightsCount > 1) ? (program.getUniformLocation("lights[1].color") - lightsLoc) : -1;
+  lightsLoc=maxLightsCount > 0 ? program.getUniformLocation("lights[0].color") : -1;
+  lightSize=(lightsLoc >= 0 && maxLightsCount > 1) ? (program.getUniformLocation("lights[1].color") - lightsLoc) : -1;
   lightPositionOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].position") - lightsLoc : -1;
   lightPowerOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].power") - lightsLoc : -1;
 }
