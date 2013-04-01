@@ -1,5 +1,5 @@
 {
-  for (int i=0; i < lightsCount; i++) {
+  for (int i=0; i < currentLights.length; i++) {
     final int loc=lightsLoc + i * lightSize;
     if (renderable.lights.length <= i) {
       if (currentLights[i] != null) {

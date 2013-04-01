@@ -2,7 +2,6 @@
   init();
   modelBatch=new ModelBatch();
   TestShader.ignoreUnimplemented=true;
-  TestShader.lightsCount=5;
   world=createWorld();
   world.performanceCounter=performanceCounter;
   final float width=Gdx.graphics.getWidth();
