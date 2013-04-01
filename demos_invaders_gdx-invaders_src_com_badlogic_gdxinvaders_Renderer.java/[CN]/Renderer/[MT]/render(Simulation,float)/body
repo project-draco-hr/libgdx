@@ -6,11 +6,11 @@
   gl.glEnable(GL10.GL_CULL_FACE);
   setProjectionAndCamera(simulation.ship);
   modelBatch.begin(camera);
-  renderExplosions(simulation.explosions);
-  renderShip(simulation.ship);
-  renderInvaders(simulation.invaders);
-  renderBlocks(simulation.blocks);
-  renderShots(simulation.shots);
+  modelBatch.render(simulation.explosions);
+  if (!simulation.ship.isExploding)   modelBatch.render(simulation.ship);
+  modelBatch.render(simulation.invaders);
+  modelBatch.render(simulation.blocks);
+  modelBatch.render(simulation.shots);
   modelBatch.end();
   gl.glDisable(GL10.GL_CULL_FACE);
   gl.glDisable(GL10.GL_DEPTH_TEST);
