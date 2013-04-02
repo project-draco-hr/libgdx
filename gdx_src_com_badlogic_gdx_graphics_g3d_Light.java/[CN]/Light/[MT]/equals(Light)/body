@@ -1,12 +1,10 @@
 {
   if (other == null)   return false;
   if (other == this)   return true;
+  if (type != other.type)   return false;
   if (!color.equals(other.color))   return false;
-  if ((position == null) != (other.position == null))   return false;
-  if (position != null && !position.equals(other.position))   return false;
-  if ((direction == null) != (other.direction == null))   return false;
-  if (direction != null && !direction.equals(other.direction))   return false;
-  if (position != null && power != other.power)   return false;
-  if (direction != null && position != null && angle != other.angle)   return false;
+  if ((type == POINT || type == SPOT) && (!position.equals(other.position) || power != other.power))   return false;
+  if ((type == DIRECTIONAL || type == SPOT) && !direction.equals(other.direction))   return false;
+  if (type == SPOT && angle != other.angle)   return false;
   return true;
 }

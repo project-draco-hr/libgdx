@@ -1,7 +1,3 @@
 {
-  this.color.set(color);
-  this.position=new Vector3(position);
-  this.direction=new Vector3(direction);
-  this.angle=angle;
-  this.power=power;
+  this(color.r,color.g,color.b,color.a,position.x,position.y,position.z,direction.x,direction.y,direction.z,angle,power);
 }

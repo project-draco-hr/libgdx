@@ -1,4 +1,3 @@
 {
-  this.color.set(color);
-  this.direction=new Vector3(direction);
+  this(color.r,color.g,color.b,color.a,direction.x,direction.y,direction.z);
 }

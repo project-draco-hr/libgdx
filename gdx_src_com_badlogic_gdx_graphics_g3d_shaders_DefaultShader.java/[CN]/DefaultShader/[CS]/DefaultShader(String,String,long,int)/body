@@ -1,6 +1,7 @@
 {
   if (!Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("This shader requires OpenGL ES 2.0");
   currentLights=maxLightsCount < 0 ? null : new Light[maxLightsCount];
+  if (currentLights != null)   for (int i=0; i < currentLights.length; i++)   currentLights[i]=new Light();
   String prefix="";
   this.mask=mask;
   if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");
