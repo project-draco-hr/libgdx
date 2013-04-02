@@ -12,14 +12,10 @@
   int lastHeight=graphics.getHeight();
   graphics.lastTime=System.nanoTime();
   boolean wasActive=true;
-  boolean isActive;
-  int frameRate;
   while (running) {
     Display.processMessages();
-    if (Display.isCloseRequested()) {
-      exit();
-    }
-    isActive=Display.isActive();
+    if (Display.isCloseRequested())     exit();
+    boolean isActive=Display.isActive();
     if (wasActive && !isActive) {
       wasActive=false;
       listener.pause();
@@ -28,10 +24,6 @@
       wasActive=true;
       listener.resume();
     }
-    if (!isActive && graphics.config.hiddenFPS == -1) {
-      continue;
-    }
-    frameRate=isActive ? graphics.config.foregroundFPS : graphics.config.hiddenFPS;
     boolean shouldRender=false;
     if (graphics.canvas != null) {
       int width=graphics.canvas.getWidth();
@@ -70,17 +62,19 @@ synchronized (runnables) {
     shouldRender|=graphics.shouldRender();
     input.processEvents();
     if (audio != null)     audio.update();
+    if (!isActive && graphics.config.backgroundFPS == -1)     shouldRender=false;
+    int frameRate=isActive ? graphics.config.foregroundFPS : graphics.config.backgroundFPS;
     if (shouldRender) {
       graphics.updateTime();
       listener.render();
       Display.update();
-      if (graphics.vsync && graphics.config.useCPUSynch) {
-        Display.sync(frameRate);
-      }
     }
  else {
-      Display.sync(frameRate);
+      if (frameRate == -1)       frameRate=10;
+      if (frameRate <= 0)       frameRate=graphics.config.backgroundFPS;
+      if (frameRate <= 0)       frameRate=30;
     }
+    if (frameRate > 0)     Display.sync(frameRate);
   }
   Array<LifecycleListener> listeners=lifecycleListeners;
 synchronized (listeners) {
