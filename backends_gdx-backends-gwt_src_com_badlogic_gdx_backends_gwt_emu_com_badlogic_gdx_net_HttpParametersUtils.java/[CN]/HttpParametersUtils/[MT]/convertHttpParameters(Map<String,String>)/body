@@ -1,0 +1,12 @@
+{
+  Set<String> keySet=parameters.keySet();
+  StringBuffer convertedParameters=new StringBuffer();
+  for (  String name : keySet) {
+    convertedParameters.append(encode(name,defaultEncoding));
+    convertedParameters.append(nameValueSeparator);
+    convertedParameters.append(encode(parameters.get(name),defaultEncoding));
+    convertedParameters.append(parameterSeparator);
+  }
+  if (convertedParameters.length() > 0)   convertedParameters.deleteCharAt(convertedParameters.length() - 1);
+  return convertedParameters.toString();
+}
