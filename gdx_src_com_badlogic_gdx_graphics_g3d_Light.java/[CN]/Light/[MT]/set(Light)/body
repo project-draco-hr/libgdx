@@ -6,6 +6,6 @@
     position.set(other.position);
     direction.set(other.direction);
     angle=other.angle;
-    power=other.power;
+    attenuation.set(other.attenuation);
   }
 }

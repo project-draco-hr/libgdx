@@ -16,8 +16,14 @@
   normalTransLoc=program.getUniformLocation(NORMAL_TRANSFORM);
   diffuseTextureLoc=((mask & TextureAttribute.Diffuse) != TextureAttribute.Diffuse) ? -1 : program.getUniformLocation(TextureAttribute.DiffuseAlias);
   diffuseColorLoc=((mask & ColorAttribute.Diffuse) != ColorAttribute.Diffuse) ? -1 : program.getUniformLocation(ColorAttribute.DiffuseAlias);
-  lightsLoc=maxLightsCount > 0 ? program.getUniformLocation("lights[0].color") : -1;
-  lightSize=(lightsLoc >= 0 && maxLightsCount > 1) ? (program.getUniformLocation("lights[1].color") - lightsLoc) : -1;
+  ambientLoc=maxLightsCount < 0 ? -1 : program.getUniformLocation("ambient");
+  lightsLoc=maxLightsCount > 0 ? program.getUniformLocation("lights[0].type") : -1;
+  lightSize=(lightsLoc >= 0 && maxLightsCount > 1) ? (program.getUniformLocation("lights[1].type") - lightsLoc) : -1;
+  lightTypeOffset=0;
+  lightColorOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].color") - lightsLoc : -1;
   lightPositionOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].position") - lightsLoc : -1;
-  lightPowerOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].power") - lightsLoc : -1;
+  lightAttenuationOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].attenuation") - lightsLoc : -1;
+  lightDirectionOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].direction") - lightsLoc : -1;
+  lightAngleOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].angle") - lightsLoc : -1;
+  lightExponentOffset=lightsLoc >= 0 ? program.getUniformLocation("lights[0].exponent") - lightsLoc : -1;
 }

@@ -1,6 +1,6 @@
 {
   color.set(red,green,blue,alpha);
   this.position.set(x,y,z);
-  this.power=power;
+  this.attenuation.set(attConstant,attLinear,attQuadratic);
   type=POINT;
 }

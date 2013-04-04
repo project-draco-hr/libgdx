@@ -1,0 +1,6 @@
+{
+  this.model=copyFrom.model;
+  this.transform.set(transform == null ? copyFrom.transform : transform);
+  copyNodes(copyFrom.nodes);
+  calculateTransforms();
+}
