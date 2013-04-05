@@ -29,6 +29,9 @@
       throw new GdxRuntimeException("Error extracting file: " + sourcePath,ex);
     }
   }
-  if (!extractedFile.exists())   throw new GdxRuntimeException("Unable to extract file: " + sourcePath);
+  if (!extractedFile.exists()) {
+    extractedFile=new File(System.getProperty("java.library.path"),sourcePath);
+    if (!extractedFile.exists())     throw new GdxRuntimeException("Unable to extract file: " + sourcePath);
+  }
   return extractedFile;
 }
