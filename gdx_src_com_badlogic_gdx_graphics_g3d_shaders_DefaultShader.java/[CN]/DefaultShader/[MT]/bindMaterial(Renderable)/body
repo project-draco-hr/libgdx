@@ -7,15 +7,13 @@
  else     if (ColorAttribute.is(t)) {
       ColorAttribute col=(ColorAttribute)attr;
       if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       program.setUniformf(diffuseColorLoc,col.color);
+ else       if ((t & ColorAttribute.Specular) == ColorAttribute.Specular)       program.setUniformf(specularColorLoc,col.color);
     }
  else     if (TextureAttribute.is(t)) {
       TextureAttribute tex=(TextureAttribute)attr;
       if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(diffuseTextureLoc,tex);
     }
- else {
-      if (!ignoreUnimplemented) {
-        throw new GdxRuntimeException("unknown attribute");
-      }
-    }
+ else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     program.setUniformf(shininessLoc,((FloatAttribute)attr).value);
+ else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
 }
