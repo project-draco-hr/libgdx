@@ -1,0 +1,5 @@
+{
+  if (Gdx.gl10 == null)   throw new GdxRuntimeException("This shader requires OpenGL ES 1.x");
+  currentLights=new Light[maxLightsCount < 0 ? 0 : maxLightsCount];
+  for (int i=0; i < currentLights.length; i++)   currentLights[i]=new Light();
+}

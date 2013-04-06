@@ -4,7 +4,6 @@
   if (!batchShader.isCompiled()) {
     Gdx.app.log("EdgeDetectionTest","couldn't compile post-processing shader: " + batchShader.getLog());
   }
-  TestShader.ignoreUnimplemented=true;
   ObjLoader objLoader=new ObjLoader();
   scene=objLoader.loadObj(Gdx.files.internal("data/scene.obj"));
   sceneInstance=new ModelInstance(scene);

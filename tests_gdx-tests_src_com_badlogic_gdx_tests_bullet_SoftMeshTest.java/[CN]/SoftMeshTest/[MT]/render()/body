@@ -1,0 +1,8 @@
+{
+  if (world.renderMeshes) {
+    final Mesh mesh=model.meshes.get(0);
+    softBody.getVertices(mesh.getVerticesBuffer(),softBody.getNodeCount(),mesh.getVertexSize(),mesh.getVertexAttribute(Usage.Position).offset);
+    softBody.getWorldTransform(entity.transform);
+  }
+  super.render();
+}

@@ -3,7 +3,6 @@
   model=new Model(loader.parseModel(Gdx.files.internal("data/g3d/cubes.g3dj")));
   instance=new ModelInstance(model);
   modelBatch=new ModelBatch();
-  TestShader.ignoreUnimplemented=true;
   shapeRenderer=new ShapeRenderer();
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(10f,10f,10f);

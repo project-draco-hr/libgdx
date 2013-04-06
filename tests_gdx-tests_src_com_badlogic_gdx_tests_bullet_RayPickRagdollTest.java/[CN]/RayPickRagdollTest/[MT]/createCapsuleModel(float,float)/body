@@ -1,4 +1,4 @@
 {
   final float hh=radius + 0.5f * height;
-  return modelBuilder.createCylinder(radius * 2,hh * 2f,radius * 2f,16,new Material(new ColorAttribute(ColorAttribute.Diffuse,Color.WHITE)),new VertexAttributes(new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.Normal,3,ShaderProgram.NORMAL_ATTRIBUTE)));
+  return modelBuilder.createCylinder(radius * 2,hh * 2f,radius * 2f,16,new Material(ColorAttribute.createDiffuse(Color.WHITE),ColorAttribute.createSpecular(Color.WHITE)),new VertexAttributes(new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.Normal,3,ShaderProgram.NORMAL_ATTRIBUTE)));
 }

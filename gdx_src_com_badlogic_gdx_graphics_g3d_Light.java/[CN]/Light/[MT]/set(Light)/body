@@ -1,0 +1,11 @@
+{
+  if (other == null)   type=NONE;
+ else {
+    type=other.type;
+    color.set(other.color);
+    position.set(other.position);
+    direction.set(other.direction);
+    angle=other.angle;
+    attenuation.set(other.attenuation);
+  }
+}

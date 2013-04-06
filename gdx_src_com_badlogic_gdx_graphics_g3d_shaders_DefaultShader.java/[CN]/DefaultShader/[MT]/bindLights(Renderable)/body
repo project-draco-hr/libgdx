@@ -1,0 +1,29 @@
+{
+  int idx=-1;
+  ambient.set(0,0,0,1);
+  if (renderable.lights != null) {
+    for (    final Light light : renderable.lights) {
+      if (light.type == Light.AMBIENT)       ambient.add(light.color);
+ else       if (lightsLoc >= 0 && ++idx < currentLights.length && !currentLights[idx].equals(light)) {
+        final int loc=lightsLoc + idx * lightSize;
+        currentLights[idx].set(light);
+        program.setUniformi(loc + lightTypeOffset,light.type);
+        program.setUniformf(loc + lightColorOffset,light.color);
+        program.setUniformf(loc + lightPositionOffset,light.position);
+        program.setUniformf(loc + lightAttenuationOffset,light.attenuation);
+        program.setUniformf(loc + lightDirectionOffset,light.direction);
+        program.setUniformf(loc + lightAngleOffset,MathUtils.cosDeg(light.angle));
+        program.setUniformf(loc + lightExponentOffset,light.exponent);
+      }
+    }
+  }
+  if (lightsLoc >= 0) {
+    while (++idx < currentLights.length) {
+      if (currentLights[idx].type != Light.NONE) {
+        program.setUniformi(lightsLoc + idx * lightSize + lightTypeOffset,Light.NONE);
+        currentLights[idx].type=Light.NONE;
+      }
+    }
+  }
+  if (ambientLoc >= 0)   program.setUniformf(ambientLoc,ambient);
+}
