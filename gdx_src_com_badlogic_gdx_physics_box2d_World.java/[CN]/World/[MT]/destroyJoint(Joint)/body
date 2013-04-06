@@ -1,4 +1,5 @@
 {
+  joint.setUserData(null);
   joints.remove(joint.addr);
   joint.jointEdgeA.other.joints.remove(joint.jointEdgeB);
   joint.jointEdgeB.other.joints.remove(joint.jointEdgeA);

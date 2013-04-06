@@ -1,4 +1,4 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(TAG," > onCommand(" + pAction + " "+ pX+ " "+ pY+ " "+ pZ+ " "+ pExtras+ " "+ pResultRequested+ ")");
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onCommand(" + pAction + " "+ pX+ " "+ pY+ " "+ pZ+ " "+ pExtras+ " "+ pResultRequested+ ")"+ ", linked: "+ (linkedEngine == this));
   return super.onCommand(pAction,pX,pY,pZ,pExtras,pResultRequested);
 }

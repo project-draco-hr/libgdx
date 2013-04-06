@@ -4,7 +4,7 @@
   tableBounds.y=y;
   tableBounds.width=width;
   tableBounds.height=height;
-  Stage stage=getStage();
+  Stage stage=this.stage;
   Rectangle scissorBounds=Pools.obtain(Rectangle.class);
   ScissorStack.calculateScissors(stage.getCamera(),stage.getSpriteBatch().getTransformMatrix(),tableBounds,scissorBounds);
   if (ScissorStack.pushScissors(scissorBounds))   return true;

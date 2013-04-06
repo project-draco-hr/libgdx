@@ -1,0 +1,16 @@
+{
+  map=null;
+  FileHandle tmxFile=resolve(fileName);
+  if (parameter != null) {
+    yUp=parameter.yUp;
+  }
+ else {
+    yUp=true;
+  }
+  try {
+    map=loadTilemap(root,tmxFile,new AssetManagerImageResolver(manager));
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

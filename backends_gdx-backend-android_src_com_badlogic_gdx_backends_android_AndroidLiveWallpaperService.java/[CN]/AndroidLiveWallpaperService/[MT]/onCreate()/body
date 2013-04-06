@@ -1,4 +1,5 @@
 {
-  if (DEBUG)   Log.d(TAG," > LibdgxWallpaperService - onCreate()");
+  if (DEBUG)   Log.d(TAG," > AndroidLiveWallpaperService - onCreate() " + hashCode());
+  Log.i(TAG,"service created");
   super.onCreate();
 }
