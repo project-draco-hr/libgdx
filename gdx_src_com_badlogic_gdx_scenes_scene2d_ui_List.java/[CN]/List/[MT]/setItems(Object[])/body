@@ -11,7 +11,6 @@
   final Drawable selectedDrawable=style.selection;
   itemHeight=font.getCapHeight() - font.getDescent() * 2;
   itemHeight+=selectedDrawable.getTopHeight() + selectedDrawable.getBottomHeight();
-  prefWidth+=selectedDrawable.getLeftWidth() + selectedDrawable.getRightWidth();
   textOffsetX=selectedDrawable.getLeftWidth();
   textOffsetY=selectedDrawable.getTopHeight() - font.getDescent();
   prefWidth=0;
@@ -19,6 +18,7 @@
     TextBounds bounds=font.getBounds(items[i]);
     prefWidth=Math.max(bounds.width,prefWidth);
   }
+  prefWidth+=selectedDrawable.getLeftWidth() + selectedDrawable.getRightWidth();
   prefHeight=items.length * itemHeight;
   invalidateHierarchy();
 }
