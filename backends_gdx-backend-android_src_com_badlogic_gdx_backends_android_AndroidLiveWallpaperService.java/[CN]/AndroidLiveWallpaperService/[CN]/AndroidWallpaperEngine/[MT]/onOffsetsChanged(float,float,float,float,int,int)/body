@@ -1,10 +1,11 @@
 {
-  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.this.TAG," > onOffsetChanged(" + xOffset + " "+ yOffset+ " "+ xOffsetStep+ " "+ yOffsetStep+ " "+ xPixelOffset+ " "+ yPixelOffset+ ") "+ hashCode());
-  app.postRunnable(new Runnable(){
-    @Override public void run(){
-      AndroidLiveWallpaperService.this.offsetChange(listener,xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
-    }
-  }
-);
+  this.offsetsConsumed=false;
+  this.xOffset=xOffset;
+  this.yOffset=yOffset;
+  this.xOffsetStep=xOffsetStep;
+  this.yOffsetStep=yOffsetStep;
+  this.xPixelOffset=xPixelOffset;
+  this.yPixelOffset=yPixelOffset;
+  notifyOffsetsChanged();
   super.onOffsetsChanged(xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
 }

@@ -1,3 +1,5 @@
 {
-  app.input.onTouch(null,event);
+  if (linkedEngine == this) {
+    app.input.onTouch(null,event);
+  }
 }

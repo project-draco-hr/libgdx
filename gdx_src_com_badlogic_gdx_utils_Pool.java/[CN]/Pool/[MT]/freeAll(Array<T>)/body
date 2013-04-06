@@ -6,4 +6,5 @@
     if (freeObjects.size < max)     freeObjects.add(object);
     if (object instanceof Poolable)     ((Poolable)object).reset();
   }
+  peak=Math.max(peak,freeObjects.size);
 }

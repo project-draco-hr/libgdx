@@ -1,0 +1,6 @@
+{
+  TimeScaleAction action=action(TimeScaleAction.class);
+  action.setScale(scale);
+  action.setAction(scaledAction);
+  return action;
+}

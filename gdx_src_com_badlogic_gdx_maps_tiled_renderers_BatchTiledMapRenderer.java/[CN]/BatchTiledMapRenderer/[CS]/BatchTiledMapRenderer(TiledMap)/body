@@ -1,6 +1,3 @@
 {
-  this.map=map;
-  this.unitScale=1;
-  this.spriteBatch=new SpriteBatch();
-  this.viewBounds=new Rectangle();
+  this(map,1.0f);
 }
