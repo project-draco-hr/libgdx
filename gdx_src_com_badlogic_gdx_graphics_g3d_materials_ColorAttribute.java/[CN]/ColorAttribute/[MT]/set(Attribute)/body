@@ -1,0 +1,5 @@
+{
+  if (other == null || other.type != type || !(other instanceof ColorAttribute))   throw new GdxRuntimeException("Cannot set this attribute to an attribute of another type");
+  final ColorAttribute o=(ColorAttribute)other;
+  color.set(o.color);
+}
