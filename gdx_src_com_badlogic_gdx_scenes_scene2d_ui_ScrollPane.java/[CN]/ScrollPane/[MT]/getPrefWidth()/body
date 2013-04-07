@@ -1,4 +1,8 @@
 {
-  if (widget instanceof Layout)   return ((Layout)widget).getPrefWidth();
+  if (widget instanceof Layout) {
+    float width=((Layout)widget).getPrefWidth();
+    if (style.background != null)     width+=style.background.getLeftWidth() + style.background.getRightWidth();
+    return width;
+  }
   return 150;
 }
