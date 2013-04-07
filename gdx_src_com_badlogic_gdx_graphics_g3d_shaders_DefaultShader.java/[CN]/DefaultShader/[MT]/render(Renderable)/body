@@ -8,6 +8,7 @@
   if (currentLights != null)   bindLights(renderable);
   if (currentMesh != renderable.mesh) {
     if (currentMesh != null)     currentMesh.unbind(program);
+    renderable.mesh.setAutoBind(false);
     (currentMesh=renderable.mesh).bind(program);
   }
   renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
