@@ -1,5 +1,7 @@
 {
-  idt();
-  if (angle == 0)   return this;
-  return this.set(quat.set(tmpV.set(axisX,axisY,axisZ),angle));
+  if (angle == 0) {
+    idt();
+    return this;
+  }
+  return this.set(quat.setFromAxis(axisX,axisY,axisZ,angle));
 }
