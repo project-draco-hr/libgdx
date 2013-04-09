@@ -19,7 +19,7 @@
     vertex(curr1);
     if (i == 0)     continue;
     indices.add((short)base);
-    indices.add((short)(vindex - 2));
     indices.add((short)(vindex - 1));
+    indices.add((short)(vindex - 2));
   }
 }

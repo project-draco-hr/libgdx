@@ -1,13 +1,13 @@
 {
   vertex(corner00);
-  vertex(corner01);
   vertex(corner10);
   vertex(corner11);
+  vertex(corner01);
   indices.ensureCapacity(6);
   indices.add((short)(vindex - 4));
   indices.add((short)(vindex - 3));
   indices.add((short)(vindex - 2));
-  indices.add((short)(vindex - 3));
   indices.add((short)(vindex - 2));
   indices.add((short)(vindex - 1));
+  indices.add((short)(vindex - 4));
 }
