@@ -3,9 +3,9 @@
   node.id=modelNode.id;
   node.boneId=modelNode.boneId;
   node.parent=parent;
-  node.translation.set(modelNode.translation);
-  node.rotation.set(modelNode.rotation);
-  node.scale.set(modelNode.scale);
+  if (modelNode.translation != null)   node.translation.set(modelNode.translation);
+  if (modelNode.rotation != null)   node.rotation.set(modelNode.rotation);
+  if (modelNode.scale != null)   node.scale.set(modelNode.scale);
   for (  ModelMeshPartMaterial modelMeshPartMaterial : modelNode.meshPartMaterials) {
     MeshPart meshPart=null;
     Material meshMaterial=null;
