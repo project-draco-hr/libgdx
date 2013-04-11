@@ -7,7 +7,7 @@
     try {
       this.writer.close();
     }
- catch (    IOException ignored) {
+ catch (    Exception ignored) {
     }
     this.writer=null;
   }
