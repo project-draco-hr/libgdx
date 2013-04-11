@@ -1,0 +1,6 @@
+{
+  if (data == null)   return null;
+  final Model result=new Model(data,new TextureProvider.AssetTextureProvider(manager));
+  data=null;
+  return result;
+}

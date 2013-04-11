@@ -28,8 +28,8 @@
       indices.add((short)(vindex - 1));
       indices.add((short)(vindex - (divisionsV + 2)));
       indices.add((short)(vindex - 1));
-      indices.add((short)(vindex - (divisionsV + 2)));
       indices.add((short)(vindex - (divisionsV + 1)));
+      indices.add((short)(vindex - (divisionsV + 2)));
     }
   }
 }

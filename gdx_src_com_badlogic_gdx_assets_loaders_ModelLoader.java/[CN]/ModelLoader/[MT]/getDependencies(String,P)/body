@@ -1,0 +1,13 @@
+{
+  final Array<AssetDescriptor> deps=new Array();
+  data=loadModelData(resolve(fileName),parameters);
+  if (data == null)   return deps;
+  for (  final ModelMaterial modelMaterial : data.materials) {
+    if (modelMaterial.diffuseTextures != null) {
+      for (      final ModelTexture modelTexture : modelMaterial.diffuseTextures) {
+        deps.add(new AssetDescriptor(modelTexture.fileName,Texture.class));
+      }
+    }
+  }
+  return deps;
+}

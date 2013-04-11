@@ -1,0 +1,4 @@
+{
+  if (loader == null)   loader=new JsonModelLoader();
+  return loader.parseModel(fileHandle);
+}
