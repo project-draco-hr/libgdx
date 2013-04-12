@@ -24,4 +24,5 @@
       movedDistance=0;
     }
   }
+  transform.rotate(0,1,0,INVADER_ROTATION * delta);
 }
