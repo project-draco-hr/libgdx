@@ -1,5 +1,5 @@
 {
-  this.modelInstance=new ModelInstance(model,transform);
+  this.modelInstance=new ModelInstance(model,transform.cpy());
   this.transform=this.modelInstance.transform;
   this.body=body;
   if (body != null) {
