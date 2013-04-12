@@ -1,0 +1,7 @@
+{
+  if (keycode == activateKey) {
+    activatePressed=false;
+    button=-1;
+  }
+  return false;
+}

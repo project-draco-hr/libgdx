@@ -18,5 +18,5 @@
   cam.update();
   renderBatch=new ModelBatch();
   lights=new Light[]{new Light(1f,1f,1f,1f,-20f,10f,0f,0f,-1f,0f,15f,1f,0f,0f),new Light(0f,0f,1f,1f,10f,10f,0f,0f,-1f,0f,15f,1f,0f,0f),new Light(0f,1f,0f,1f,0f,10f,50f,0f,-1f,0f,15f,1f,0f,0f)};
-  Gdx.input.setInputProcessor(this);
+  Gdx.input.setInputProcessor(new CameraInputController(cam));
 }
