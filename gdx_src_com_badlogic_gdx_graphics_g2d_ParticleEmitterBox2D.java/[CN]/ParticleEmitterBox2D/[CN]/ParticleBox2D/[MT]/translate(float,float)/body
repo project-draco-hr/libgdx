@@ -6,7 +6,7 @@
   startPoint.set(x,y);
   endPoint.set(x + velocityX,y + velocityY);
   if (world != null)   world.rayCast(rayCallBack,startPoint,endPoint);
-  if (!particleCollided) {
+  if (particleCollided) {
     angle=2f * normalAngle - angle - 180f;
     angleCos=MathUtils.cosDeg(angle);
     angleSin=MathUtils.sinDeg(angle);
