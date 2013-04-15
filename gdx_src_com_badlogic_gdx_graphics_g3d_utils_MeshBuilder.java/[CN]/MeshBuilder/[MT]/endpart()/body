@@ -2,7 +2,6 @@
   if (part != null) {
     part.indexOffset=istart;
     part.numVertices=indices.size - istart;
-    part.primitiveType=GL10.GL_TRIANGLES;
     istart=indices.size;
     part=null;
   }

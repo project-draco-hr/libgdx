@@ -1,0 +1,6 @@
+{
+  long result=0;
+  final int n=attributes.size();
+  for (int i=0; i < n; i++)   result|=(long)attributes.get(i).usage;
+  return result;
+}
