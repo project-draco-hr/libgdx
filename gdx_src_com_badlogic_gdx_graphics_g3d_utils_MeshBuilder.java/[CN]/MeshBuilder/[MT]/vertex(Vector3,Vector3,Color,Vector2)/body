@@ -1,8 +1,9 @@
 {
-  if (pos != null && posOffset >= 0) {
+  if (col == null && colorSet)   col=color;
+  if (pos != null) {
     vertex[posOffset]=pos.x;
-    vertex[posOffset + 1]=pos.y;
-    vertex[posOffset + 2]=pos.z;
+    if (posSize > 1)     vertex[posOffset + 1]=pos.y;
+    if (posSize > 2)     vertex[posOffset + 2]=pos.z;
   }
   if (nor != null && norOffset >= 0) {
     vertex[norOffset]=nor.x;
@@ -14,7 +15,7 @@
       vertex[colOffset]=col.r;
       vertex[colOffset + 1]=col.g;
       vertex[colOffset + 2]=col.b;
-      vertex[colOffset + 3]=col.a;
+      if (colSize > 3)       vertex[colOffset + 3]=col.a;
     }
  else     if (cpOffset > 0)     vertex[cpOffset]=col.toFloatBits();
   }
@@ -23,5 +24,5 @@
     vertex[uvOffset + 1]=uv.y;
   }
   vertices.addAll(vertex);
-  return vindex++;
+  return (short)(vindex++);
 }

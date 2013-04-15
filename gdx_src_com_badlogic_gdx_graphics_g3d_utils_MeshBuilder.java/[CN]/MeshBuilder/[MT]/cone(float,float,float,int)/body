@@ -18,8 +18,6 @@
     curr1.uv.set(u,1);
     vertex(curr1);
     if (i == 0)     continue;
-    indices.add((short)base);
-    indices.add((short)(vindex - 1));
-    indices.add((short)(vindex - 2));
+    triangle((short)base,(short)(vindex - 1),(short)(vindex - 2));
   }
 }

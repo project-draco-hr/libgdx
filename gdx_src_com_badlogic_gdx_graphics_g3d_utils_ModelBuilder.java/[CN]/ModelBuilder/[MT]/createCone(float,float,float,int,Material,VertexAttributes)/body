@@ -1,5 +1,5 @@
 {
   begin();
-  part("cone",attributes,material).cone(width,height,depth,divisions);
+  part("cone",GL10.GL_TRIANGLES,attributes,material).cone(width,height,depth,divisions);
   return end();
 }
