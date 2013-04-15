@@ -24,7 +24,7 @@
     koala.velocity.x=0;
     if (koala.grounded)     koala.state=Koala.State.Standing;
   }
-  koala.velocity.mul(deltaTime);
+  koala.velocity.scl(deltaTime);
   Rectangle koalaRect=rectPool.obtain();
   koalaRect.set(koala.position.x,koala.position.y,Koala.WIDTH,Koala.HEIGHT);
   int startX, startY, endX, endY;
@@ -72,6 +72,6 @@
   }
   rectPool.free(koalaRect);
   koala.position.add(koala.velocity);
-  koala.velocity.mul(1 / deltaTime);
+  koala.velocity.scl(1 / deltaTime);
   koala.velocity.x*=Koala.DAMPING;
 }

@@ -10,6 +10,6 @@
   if (t < 0.0f)   return point.dst(start);
  else   if (t > 1.0f)   return point.dst(end);
   tmp.set(end.x,end.y,0);
-  tmp.sub(start.x,start.y,0).mul(t).add(start.x,start.y,0);
+  tmp.sub(start.x,start.y,0).scl(t).add(start.x,start.y,0);
   return tmp2.set(point.x,point.y,0).dst(tmp);
 }
