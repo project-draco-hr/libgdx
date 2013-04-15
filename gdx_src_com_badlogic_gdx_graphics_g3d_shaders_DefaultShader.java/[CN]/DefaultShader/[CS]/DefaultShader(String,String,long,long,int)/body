@@ -4,8 +4,13 @@
   if (currentLights != null)   for (int i=0; i < currentLights.length; i++)   currentLights[i]=new Light();
   String prefix="";
   this.mask=mask;
+  this.attributes=attributes;
   if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");
-  if (maxLightsCount > 0)   prefix+="#define lightsCount " + maxLightsCount + "\n";
+  if ((attributes & Usage.Color) == Usage.Color)   prefix+="#define colorFlag\n";
+  if ((attributes & Usage.Normal) == Usage.Normal) {
+    prefix+="#define normalFlag\n";
+    if (maxLightsCount > 0)     prefix+="#define lightsCount " + maxLightsCount + "\n";
+  }
   if (can(BlendingAttribute.Type))   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
   if (can(TextureAttribute.Diffuse))   prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
   if (can(ColorAttribute.Diffuse))   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
