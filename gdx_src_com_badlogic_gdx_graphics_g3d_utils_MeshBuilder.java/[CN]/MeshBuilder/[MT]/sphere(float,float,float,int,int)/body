@@ -11,6 +11,7 @@
   float angleU=0f;
   float angleV=0f;
   VertexInfo curr1=vertTmp3.set(null,null,null,null);
+  curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
   for (int i=0; i <= divisionsU; i++) {
     angleU=stepU * i;
     u=1f - us * i;
