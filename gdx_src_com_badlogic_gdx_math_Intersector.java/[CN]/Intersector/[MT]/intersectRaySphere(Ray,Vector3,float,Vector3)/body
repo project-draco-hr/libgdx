@@ -18,11 +18,11 @@
   }
   if (t1 < 0)   return false;
   if (t0 < 0) {
-    if (intersection != null)     intersection.set(start).add(dir.tmp().mul(t1));
+    if (intersection != null)     intersection.set(start).add(dir.tmp().scl(t1));
     return true;
   }
  else {
-    if (intersection != null)     intersection.set(start).add(dir.tmp().mul(t0));
+    if (intersection != null)     intersection.set(start).add(dir.tmp().scl(t0));
     return true;
   }
 }

@@ -1,7 +1,7 @@
 {
   dist+=dir.len() * deltaTime;
   if (dist > maxDist) {
-    dir.mul(-1);
+    dir.scl(-1);
     dist=0;
   }
   platform.setLinearVelocity(dir);

@@ -3,6 +3,6 @@
   float denom=dir.dot(plane.getNormal());
   float t=-(start.dot(plane.getNormal()) + plane.getD()) / denom;
   if (t < 0 || t > 1)   return false;
-  intersection.set(start).add(dir.mul(t));
+  intersection.set(start).add(dir.scl(t));
   return true;
 }
