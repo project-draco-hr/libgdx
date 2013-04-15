@@ -4,6 +4,7 @@
     t.set(circle.getPosition());
     transform.mul(t);
     drawSolidCircle(t,circle.getRadius(),axis.set(transform.vals[Transform.COS],transform.vals[Transform.SIN]),color);
+    return;
   }
   if (fixture.getType() == Type.Edge) {
     EdgeShape edge=(EdgeShape)fixture.getShape();
@@ -12,6 +13,7 @@
     transform.mul(vertices[0]);
     transform.mul(vertices[1]);
     drawSolidPolygon(vertices,2,color,true);
+    return;
   }
   if (fixture.getType() == Type.Polygon) {
     PolygonShape chain=(PolygonShape)fixture.getShape();
@@ -21,6 +23,7 @@
       transform.mul(vertices[i]);
     }
     drawSolidPolygon(vertices,vertexCount,color,true);
+    return;
   }
   if (fixture.getType() == Type.Chain) {
     ChainShape chain=(ChainShape)fixture.getShape();
