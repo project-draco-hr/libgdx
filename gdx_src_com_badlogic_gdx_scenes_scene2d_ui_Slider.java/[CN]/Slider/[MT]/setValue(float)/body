@@ -1,14 +1,16 @@
 {
   value=MathUtils.clamp(Math.round(value / stepSize) * stepSize,min,max);
   float oldValue=this.value;
-  if (value == oldValue)   return;
+  if (value == oldValue)   return false;
   float oldVisualValue=getVisualValue();
   this.value=value;
   ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-  if (fire(changeEvent))   this.value=oldValue;
+  boolean cancelled=fire(changeEvent);
+  if (cancelled)   this.value=oldValue;
  else   if (animateDuration > 0) {
     animateFromValue=oldVisualValue;
     animateTime=animateDuration;
   }
   Pools.free(changeEvent);
+  return !cancelled;
 }

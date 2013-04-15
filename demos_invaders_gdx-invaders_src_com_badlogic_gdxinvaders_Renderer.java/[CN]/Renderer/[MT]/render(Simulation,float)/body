@@ -7,8 +7,8 @@
   setProjectionAndCamera(simulation.ship);
   modelBatch.begin(camera);
   modelBatch.render(simulation.explosions);
-  if (!simulation.ship.isExploding)   modelBatch.render(simulation.ship);
-  modelBatch.render(simulation.invaders);
+  if (!simulation.ship.isExploding)   modelBatch.render(simulation.ship,lights);
+  modelBatch.render(simulation.invaders,lights);
   modelBatch.render(simulation.blocks);
   modelBatch.render(simulation.shots);
   modelBatch.end();
