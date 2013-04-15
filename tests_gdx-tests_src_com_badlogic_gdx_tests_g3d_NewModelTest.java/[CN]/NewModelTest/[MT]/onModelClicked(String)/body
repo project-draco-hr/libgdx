@@ -1,0 +1,7 @@
+{
+  if (name == null)   return;
+  assets.load("data/" + name,Model.class);
+  assets.finishLoading();
+  instances.clear();
+  instances.add(new ModelInstance(assets.get("data/" + name,Model.class)));
+}
