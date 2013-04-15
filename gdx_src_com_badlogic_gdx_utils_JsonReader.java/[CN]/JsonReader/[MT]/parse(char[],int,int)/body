@@ -116,11 +116,20 @@ case 4:
 String value=new String(data,s,p - s);
 s=p;
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("number: " + name + "="+ Float.parseFloat(value));
+if (debug) System.out.println("float: " + name + "="+ Float.parseFloat(value));
 number(name,Float.parseFloat(value));
 }
 break;
 case 5:
+{
+String value=new String(data,s,p - s);
+s=p;
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("long: " + name + "="+ Long.parseLong(value));
+number(name,Long.parseLong(value));
+}
+break;
+case 6:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=true");
@@ -128,7 +137,7 @@ bool(name,true);
 discardBuffer=true;
 }
 break;
-case 6:
+case 7:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=false");
@@ -136,7 +145,7 @@ bool(name,false);
 discardBuffer=true;
 }
 break;
-case 7:
+case 8:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);
@@ -144,7 +153,7 @@ string(name,null);
 discardBuffer=true;
 }
 break;
-case 8:
+case 9:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startObject: " + name);
@@ -164,7 +173,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 9:
+case 10:
 {
 if (debug) System.out.println("endObject");
 pop();
@@ -175,7 +184,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 10:
+case 11:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startArray: " + name);
@@ -195,7 +204,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 11:
+case 12:
 {
 if (debug) System.out.println("endArray");
 pop();
@@ -241,11 +250,20 @@ case 4:
 String value=new String(data,s,p - s);
 s=p;
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("number: " + name + "="+ Float.parseFloat(value));
+if (debug) System.out.println("float: " + name + "="+ Float.parseFloat(value));
 number(name,Float.parseFloat(value));
 }
 break;
 case 5:
+{
+String value=new String(data,s,p - s);
+s=p;
+String name=names.size > 0 ? names.pop() : null;
+if (debug) System.out.println("long: " + name + "="+ Long.parseLong(value));
+number(name,Long.parseLong(value));
+}
+break;
+case 6:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=true");
@@ -253,7 +271,7 @@ bool(name,true);
 discardBuffer=true;
 }
 break;
-case 6:
+case 7:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("boolean: " + name + "=false");
@@ -261,7 +279,7 @@ bool(name,false);
 discardBuffer=true;
 }
 break;
-case 7:
+case 8:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("null: " + name);

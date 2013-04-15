@@ -64,6 +64,9 @@
     int intValue=floatValue.intValue();
     buffer.append(floatValue - intValue == 0 ? intValue : object);
   }
+ else   if (object instanceof Long) {
+    buffer.append((Long)object);
+  }
  else   if (object instanceof Boolean) {
     buffer.append(object);
   }
