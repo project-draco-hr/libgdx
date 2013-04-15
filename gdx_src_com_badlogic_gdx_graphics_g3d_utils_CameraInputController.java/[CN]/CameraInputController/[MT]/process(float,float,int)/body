@@ -1,6 +1,4 @@
 {
-  deltaX=(deltaX + 1f) * 0.5f;
-  deltaY=(deltaY + 1f) * 0.5f;
   if (button == rotateButton) {
     tmpV1.set(camera.direction).crs(camera.up).y=0f;
     camera.rotateAround(target,tmpV1.nor(),deltaY * rotateAngle);
