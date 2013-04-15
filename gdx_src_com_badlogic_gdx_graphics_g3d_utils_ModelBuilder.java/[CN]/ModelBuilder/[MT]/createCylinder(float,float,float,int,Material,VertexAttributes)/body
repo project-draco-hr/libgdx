@@ -1,5 +1,0 @@
-{
-  begin();
-  part("cylinder",GL10.GL_TRIANGLES,attributes,material).cylinder(width,height,depth,divisions);
-  return end();
-}

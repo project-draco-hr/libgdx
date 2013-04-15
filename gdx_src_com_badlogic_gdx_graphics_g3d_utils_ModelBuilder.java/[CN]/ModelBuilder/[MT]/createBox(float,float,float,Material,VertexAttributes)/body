@@ -1,5 +1,0 @@
-{
-  begin();
-  part("box",GL10.GL_TRIANGLES,attributes,material).box(width,height,depth);
-  return end();
-}
