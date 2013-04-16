@@ -67,7 +67,7 @@ synchronized (runnables) {
     if (shouldRender) {
       graphics.updateTime();
       listener.render();
-      Display.update();
+      Display.update(false);
     }
  else {
       if (frameRate == -1)       frameRate=10;
