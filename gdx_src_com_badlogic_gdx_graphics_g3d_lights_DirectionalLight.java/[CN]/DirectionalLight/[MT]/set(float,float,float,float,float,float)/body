@@ -1,0 +1,5 @@
+{
+  this.color.set(r,g,b,1f);
+  this.direction.set(dirX,dirY,dirZ).nor();
+  return this;
+}
