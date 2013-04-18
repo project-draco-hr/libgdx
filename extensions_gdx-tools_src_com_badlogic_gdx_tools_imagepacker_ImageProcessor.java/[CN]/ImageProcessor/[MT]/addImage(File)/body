@@ -27,11 +27,13 @@
     rect.pads=pads;
     rect.canRotate=false;
   }
-  Matcher matcher=indexPattern.matcher(name);
   int index=-1;
-  if (matcher.matches()) {
-    name=matcher.group(1);
-    index=Integer.parseInt(matcher.group(2));
+  if (settings.useIndexes) {
+    Matcher matcher=indexPattern.matcher(name);
+    if (matcher.matches()) {
+      name=matcher.group(1);
+      index=Integer.parseInt(matcher.group(2));
+    }
   }
   if (rect == null) {
     rect=createRect(image);
