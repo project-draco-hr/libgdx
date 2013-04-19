@@ -1,0 +1,3 @@
+{
+  if (Gdx.gl10 == null)   throw new GdxRuntimeException("This shader requires OpenGL ES 1.x");
+}

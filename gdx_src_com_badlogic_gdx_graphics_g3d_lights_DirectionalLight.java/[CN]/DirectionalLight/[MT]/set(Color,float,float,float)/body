@@ -1,0 +1,5 @@
+{
+  if (color != null)   this.color.set(color);
+  this.direction.set(dirX,dirY,dirZ).nor();
+  return this;
+}

@@ -1,29 +1,40 @@
 {
-  int idx=-1;
-  ambient.set(0,0,0,1);
-  if (renderable.lights != null) {
-    for (    final Light light : renderable.lights) {
-      if (light.type == Light.AMBIENT)       ambient.add(light.color);
- else       if (lightsLoc >= 0 && ++idx < currentLights.length && !currentLights[idx].equals(light)) {
-        final int loc=lightsLoc + idx * lightSize;
-        currentLights[idx].set(light);
-        program.setUniformi(loc + lightTypeOffset,light.type);
-        program.setUniformf(loc + lightColorOffset,light.color);
-        program.setUniformf(loc + lightPositionOffset,light.position);
-        program.setUniformf(loc + lightAttenuationOffset,light.attenuation);
-        program.setUniformf(loc + lightDirectionOffset,light.direction);
-        program.setUniformf(loc + lightAngleOffset,MathUtils.cosDeg(light.angle));
-        program.setUniformf(loc + lightExponentOffset,light.exponent);
+  final Lights lights=renderable.lights;
+  final Array<DirectionalLight> dirs=lights.directionalLights;
+  final Array<PointLight> points=lights.pointLights;
+  if (ambientCubemapLoc >= 0) {
+    renderable.transform.getTranslation(tmpV1);
+    ambientCubemap.set(lights.ambientLight);
+    for (int i=directionalLights.length; i < dirs.size; i++)     ambientCubemap.add(dirs.get(i).color,dirs.get(i).direction);
+    for (int i=pointLights.length; i < points.size; i++)     ambientCubemap.add(points.get(i).color,points.get(i).position,tmpV1,points.get(i).intensity);
+    ambientCubemap.clamp();
+    program.setUniform3fv(ambientCubemapLoc,ambientCubemap.data,0,ambientCubemap.data.length);
+  }
+  if (dirLightsLoc >= 0) {
+    for (int i=0; i < directionalLights.length; i++) {
+      if (dirs == null || i >= dirs.size) {
+        if (directionalLights[i].color.r == 0f && directionalLights[i].color.g == 0f && directionalLights[i].color.b == 0f)         continue;
+        directionalLights[i].color.set(0,0,0,1);
       }
+ else       if (directionalLights[i].equals(dirs.get(i)))       continue;
+ else       directionalLights[i].set(dirs.get(i));
+      int idx=dirLightsLoc + i * dirLightsSize;
+      program.setUniformf(idx + dirLightsColorOffset,directionalLights[i].color.r,directionalLights[i].color.g,directionalLights[i].color.b);
+      program.setUniformf(idx + dirLightsDirectionOffset,directionalLights[i].direction);
     }
   }
-  if (lightsLoc >= 0) {
-    while (++idx < currentLights.length) {
-      if (currentLights[idx].type != Light.NONE) {
-        program.setUniformi(lightsLoc + idx * lightSize + lightTypeOffset,Light.NONE);
-        currentLights[idx].type=Light.NONE;
+  if (pointLightsLoc >= 0) {
+    for (int i=0; i < pointLights.length; i++) {
+      if (points == null || i >= points.size) {
+        if (pointLights[i].intensity == 0f)         continue;
+        pointLights[i].intensity=0f;
       }
+ else       if (pointLights[i].equals(points.get(i)))       continue;
+ else       pointLights[i].set(points.get(i));
+      int idx=pointLightsLoc + i * pointLightsSize;
+      program.setUniformf(idx + pointLightsColorOffset,pointLights[i].color.r,pointLights[i].color.g,pointLights[i].color.b);
+      program.setUniformf(idx + pointLightsPositionOffset,pointLights[i].position);
+      if (pointLightsIntensityOffset >= 0)       program.setUniformf(idx + pointLightsIntensityOffset,pointLights[i].intensity);
     }
   }
-  if (ambientLoc >= 0)   program.setUniformf(ambientLoc,ambient);
 }

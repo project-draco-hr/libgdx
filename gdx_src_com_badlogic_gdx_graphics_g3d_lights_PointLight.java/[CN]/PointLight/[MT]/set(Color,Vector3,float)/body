@@ -1,0 +1,6 @@
+{
+  if (color != null)   this.color.set(color);
+  if (position != null)   this.position.set(position);
+  this.intensity=intensity;
+  return this;
+}

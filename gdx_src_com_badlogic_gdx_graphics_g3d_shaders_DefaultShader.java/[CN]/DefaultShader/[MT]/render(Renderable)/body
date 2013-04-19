@@ -5,7 +5,7 @@
     program.setUniformMatrix(normalTransLoc,normalMatrix.set(currentTransform));
   }
   bindMaterial(renderable);
-  if (currentLights != null)   bindLights(renderable);
+  if (lighting)   bindLights(renderable);
   if (currentMesh != renderable.mesh) {
     if (currentMesh != null)     currentMesh.unbind(program);
     renderable.mesh.setAutoBind(false);

@@ -7,6 +7,6 @@
   if (cameraPosLoc >= 0)   program.setUniformf(cameraPosLoc,camera.position);
   if (cameraDirLoc >= 0)   program.setUniformf(cameraDirLoc,camera.direction);
   if (cameraUpLoc >= 0)   program.setUniformf(cameraUpLoc,camera.up);
-  if (currentLights != null)   for (int i=0; i < currentLights.length; i++)   currentLights[i].set(null);
-  ambient.set(0,0,0,0);
+  for (  final DirectionalLight dirLight : directionalLights)   dirLight.set(0,0,0,0,-1,0);
+  for (  final PointLight pointLight : pointLights)   pointLight.set(0,0,0,0,0,0,0);
 }
