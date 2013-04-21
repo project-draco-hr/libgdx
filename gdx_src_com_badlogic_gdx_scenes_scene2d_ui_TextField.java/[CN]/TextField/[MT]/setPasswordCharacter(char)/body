@@ -1,4 +1,4 @@
 {
   this.passwordCharacter=passwordCharacter;
-  updateDisplayText();
+  if (passwordMode)   updateDisplayText();
 }
