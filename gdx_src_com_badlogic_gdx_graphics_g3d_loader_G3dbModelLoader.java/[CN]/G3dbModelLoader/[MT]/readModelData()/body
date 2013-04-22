@@ -1,0 +1,13 @@
+{
+  while (din.available() > 0) {
+    final byte type=din.readByte();
+    final long size=readSize(type);
+    if ((type & TYPE_MASK) == G3DB_TAG_MESH)     result.meshes.add(readMesh(size));
+ else     if ((type & TYPE_MASK) == G3DB_TAG_MATERIAL)     result.materials.add(readMaterial(size));
+ else     if ((type & TYPE_MASK) == G3DB_TAG_NODE)     result.nodes.add(readNode(size));
+ else {
+      din.skipBytes((int)size);
+      Gdx.app.log("G3dbModelLoader","Unknown model tag: " + type + "["+ size+ "], skipping");
+    }
+  }
+}

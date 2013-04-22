@@ -1,0 +1,5 @@
+{
+  final float result[]=new float[(int)length / 4];
+  for (int i=0; i < result.length; i++)   result[i]=din.readFloat();
+  return result;
+}

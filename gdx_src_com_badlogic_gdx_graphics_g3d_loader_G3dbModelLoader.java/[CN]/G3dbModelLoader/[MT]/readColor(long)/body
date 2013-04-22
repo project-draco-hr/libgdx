@@ -1,0 +1,9 @@
+{
+  final Color result=new Color(0,0,0,1);
+  if (size >= 4)   result.r=din.readFloat();
+  if (size >= 8)   result.g=din.readFloat();
+  if (size >= 12)   result.b=din.readFloat();
+  if (size >= 16)   result.a=din.readFloat();
+  if (size > 16)   din.skipBytes((int)size - 16);
+  return result;
+}
