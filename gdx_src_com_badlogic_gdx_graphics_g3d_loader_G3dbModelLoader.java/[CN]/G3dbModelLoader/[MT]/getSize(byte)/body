@@ -1,0 +1,6 @@
+{
+  if ((tag & SIZE_MASK) == SMALL)   return 1;
+  if ((tag & SIZE_MASK) == MEDIUM)   return 2;
+  if ((tag & SIZE_MASK) == LARGE)   return 4;
+  return 8;
+}

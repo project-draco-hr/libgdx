@@ -1,0 +1,16 @@
+{
+  final ModelMeshPartMaterial part=new ModelMeshPartMaterial();
+  long cnt=0;
+  while ((din.available() > 0) && (cnt < length)) {
+    final byte type=din.readByte();
+    final long size=readSize(type);
+    cnt+=1 + getSize(type) + size;
+    if ((type & TYPE_MASK) == G3DB_TAG_MESHPART)     part.meshPartId=readString(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_MATERIAL)     part.materialId=readString(size);
+ else {
+      din.skipBytes((int)size);
+      Gdx.app.log("G3dbModelLoader","Unknown meshpartmaterial tag: " + type + "["+ size+ "], skipping");
+    }
+  }
+  return part;
+}

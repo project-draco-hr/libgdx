@@ -1,0 +1,7 @@
+{
+  final Vector2 result=new Vector2();
+  if (size >= 4)   result.x=din.readFloat();
+  if (size >= 8)   result.y=din.readFloat();
+  if (size > 8)   din.skipBytes((int)size - 8);
+  return result;
+}

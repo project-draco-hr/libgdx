@@ -1,0 +1,16 @@
+{
+  VertexAttribute result[]=new VertexAttribute[(int)length];
+  for (int i=0; i < length; i++) {
+    final byte type=din.readByte();
+    if (type == USAGE_POSITION)     result[i]=VertexAttribute.Position();
+ else     if (type == USAGE_NORMAL)     result[i]=VertexAttribute.Normal();
+ else     if (type == USAGE_COLOR)     result[i]=VertexAttribute.ColorUnpacked();
+ else     if (type == USAGE_TANGENT)     result[i]=VertexAttribute.Tangent();
+ else     if (type == USAGE_BINORMAL)     result[i]=VertexAttribute.Binormal();
+ else     if (type == USAGE_BLENDWEIGHTS)     result[i]=VertexAttribute.BoneWeights(4);
+ else     if (type == USAGE_BLENDINDICES)     result[i]=VertexAttribute.BoneIds(4);
+ else     if (type >= USAGE_TEXCOORD0 && type <= USAGE_TEXCOORD7)     result[i]=VertexAttribute.TexCoords(type - USAGE_TEXCOORD0);
+ else     if (type == USAGE_UNKNOWN)     ;
+  }
+  return result;
+}
