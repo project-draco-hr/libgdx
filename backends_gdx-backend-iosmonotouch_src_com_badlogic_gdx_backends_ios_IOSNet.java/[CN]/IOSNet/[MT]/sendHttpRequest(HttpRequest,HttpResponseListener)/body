@@ -5,11 +5,10 @@
         String url=httpRequest.getUrl();
         String method=httpRequest.getMethod();
         if (method.equalsIgnoreCase(HttpMethods.GET)) {
-          String queryString="";
           String value=httpRequest.getContent();
           if (value != null && !"".equals(value))           url+="?" + value;
         }
-        HttpWebRequest httpWebRequest=(HttpWebRequest)WebRequest.Create(httpRequest.getUrl());
+        HttpWebRequest httpWebRequest=(HttpWebRequest)WebRequest.Create(url);
         int timeOut=httpRequest.getTimeOut();
         if (timeOut > 0)         httpWebRequest.set_Timeout(timeOut);
  else         httpWebRequest.set_Timeout(-1);
