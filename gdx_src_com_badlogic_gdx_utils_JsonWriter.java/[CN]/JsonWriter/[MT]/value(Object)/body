@@ -1,7 +1,8 @@
 {
   if (value instanceof Number) {
     Number number=(Number)value;
-    if (number.doubleValue() % 1 == 0)     value=number.longValue();
+    long longValue=number.longValue();
+    if (number.doubleValue() == longValue)     value=longValue;
   }
   if (current != null) {
     if (current.array) {
