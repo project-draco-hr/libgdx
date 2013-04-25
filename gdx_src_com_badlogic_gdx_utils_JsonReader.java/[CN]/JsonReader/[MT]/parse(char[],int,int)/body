@@ -116,8 +116,8 @@ case 4:
 String value=new String(data,s,p - s);
 s=p;
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("float: " + name + "="+ Float.parseFloat(value));
-number(name,Float.parseFloat(value));
+if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
+number(name,Double.parseDouble(value));
 }
 break;
 case 5:
@@ -250,8 +250,8 @@ case 4:
 String value=new String(data,s,p - s);
 s=p;
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("float: " + name + "="+ Float.parseFloat(value));
-number(name,Float.parseFloat(value));
+if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
+number(name,Double.parseDouble(value));
 }
 break;
 case 5:
