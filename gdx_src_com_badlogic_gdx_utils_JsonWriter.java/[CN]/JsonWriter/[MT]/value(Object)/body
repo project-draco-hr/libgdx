@@ -1,4 +1,8 @@
 {
+  if (value instanceof Number) {
+    Number number=(Number)value;
+    if (number.doubleValue() % 1 == 0)     value=number.longValue();
+  }
   if (current != null) {
     if (current.array) {
       if (!current.needsComma)       current.needsComma=true;

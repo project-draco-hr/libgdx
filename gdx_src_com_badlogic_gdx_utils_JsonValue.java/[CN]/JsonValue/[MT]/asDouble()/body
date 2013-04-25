@@ -1,0 +1,12 @@
+{
+  if (doubleValue != null)   return doubleValue;
+  if (stringValue != null) {
+    try {
+      return Double.parseDouble(stringValue);
+    }
+ catch (    NumberFormatException ignored) {
+    }
+  }
+  if (booleanValue != null)   return booleanValue ? 1 : 0;
+  throw new IllegalStateException("Value cannot be converted to double: " + type);
+}

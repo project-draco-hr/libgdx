@@ -1,0 +1,12 @@
+{
+  if (doubleValue != null)   return doubleValue.floatValue();
+  if (stringValue != null) {
+    try {
+      return Float.parseFloat(stringValue);
+    }
+ catch (    NumberFormatException ignored) {
+    }
+  }
+  if (booleanValue != null)   return booleanValue ? 1 : 0;
+  throw new IllegalStateException("Value cannot be converted to float: " + type);
+}

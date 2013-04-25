@@ -1,0 +1,5 @@
+{
+  JsonValue child=get(name);
+  if (child == null)   throw new IllegalArgumentException("Named value not found: " + name);
+  return child.asLong();
+}

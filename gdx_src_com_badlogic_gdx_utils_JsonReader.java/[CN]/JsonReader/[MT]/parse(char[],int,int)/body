@@ -305,12 +305,12 @@ for (int i=0; i < p; i++) if (data[i] == '\n') lineNumber++;
 throw new SerializationException("Error parsing JSON on line " + lineNumber + " near: "+ new String(data,p,pe - p),parseRuntimeEx);
 }
  else if (elements.size != 0) {
-Object element=elements.peek();
+JsonValue element=elements.peek();
 elements.clear();
-if (element instanceof OrderedMap) throw new SerializationException("Error parsing JSON, unmatched brace.");
+if (element != null && element.isObject()) throw new SerializationException("Error parsing JSON, unmatched brace.");
  else throw new SerializationException("Error parsing JSON, unmatched bracket.");
 }
-Object root=this.root;
+JsonValue root=this.root;
 this.root=null;
 return root;
 }
