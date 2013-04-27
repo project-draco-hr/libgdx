@@ -1,4 +1,4 @@
 {
-  for (  final MeshPartMaterial mpm : node.meshPartMaterials)   mpm.meshPart.mesh.calculateBoundingBox(out,mpm.meshPart.indexOffset,mpm.meshPart.numVertices);
+  for (  final NodePart mpm : node.parts)   mpm.meshPart.mesh.calculateBoundingBox(out,mpm.meshPart.indexOffset,mpm.meshPart.numVertices);
   for (  final Node child : node.children)   calculateBoundingBox(out,child);
 }

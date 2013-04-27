@@ -7,10 +7,7 @@
   int i=0;
   for (  OrderedMap<String,Object> mesh : meshes) {
     ModelMesh jsonMesh=new ModelMesh();
-    String id=(String)mesh.get("id");
-    if (id == null) {
-      throw new GdxRuntimeException("No id given for mesh");
-    }
+    String id=(String)mesh.get("id","");
     jsonMesh.id=id;
     Array<Object> attributes=(Array<Object>)mesh.get("attributes");
     if (attributes == null) {

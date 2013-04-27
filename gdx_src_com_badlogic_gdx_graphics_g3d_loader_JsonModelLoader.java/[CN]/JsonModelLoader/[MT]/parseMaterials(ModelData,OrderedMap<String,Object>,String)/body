@@ -10,9 +10,6 @@
       String id=(String)material.get("id");
       if (id == null)       throw new GdxRuntimeException("Material needs an id.");
       jsonMaterial.id=id;
-      String type=(String)material.get("type");
-      if (type == null)       throw new GdxRuntimeException("Material needs a type. Lambert|Phong");
-      jsonMaterial.type=type.equals("PHONG") ? MaterialType.Phong : MaterialType.Lambert;
       jsonMaterial.diffuse=parseColor((Array<Object>)material.get("diffuse"),Color.WHITE);
       jsonMaterial.ambient=parseColor((Array<Object>)material.get("ambient"),Color.BLACK);
       jsonMaterial.emissive=parseColor((Array<Object>)material.get("emissive"),Color.WHITE);
@@ -33,7 +30,7 @@
           jsonTexture.uvTranslation=readVector2((Array<Object>)texture.get("uvTranslation"),0f,0f);
           jsonTexture.uvScaling=readVector2((Array<Object>)texture.get("uvScaling"),1f,1f);
           String textureType=(String)texture.get("type");
-          if (type == null)           throw new GdxRuntimeException("Texture needs type.");
+          if (textureType == null)           throw new GdxRuntimeException("Texture needs type.");
           if (textureType.equals("STANDARD")) {
             if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<ModelTexture>();
             jsonMaterial.diffuseTextures.add(jsonTexture);

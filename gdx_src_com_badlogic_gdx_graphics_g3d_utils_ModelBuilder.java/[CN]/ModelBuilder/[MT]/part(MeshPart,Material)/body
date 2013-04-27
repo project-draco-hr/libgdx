@@ -1,4 +1,4 @@
 {
   if (node == null)   node();
-  node.meshPartMaterials.add(new MeshPartMaterial(meshpart,material));
+  node.parts.add(new NodePart(meshpart,material));
 }

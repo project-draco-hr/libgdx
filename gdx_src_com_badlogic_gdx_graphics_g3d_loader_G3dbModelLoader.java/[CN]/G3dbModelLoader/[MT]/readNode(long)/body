@@ -2,7 +2,7 @@
   long cnt=0;
   ModelNode node=new ModelNode();
   Array<ModelNode> children=new Array<ModelNode>();
-  Array<ModelMeshPartMaterial> parts=new Array<ModelMeshPartMaterial>();
+  Array<ModelNodePart> parts=new Array<ModelNodePart>();
   result.nodes.add(node);
   while ((din.available() > 0) && (cnt < length)) {
     final byte type=din.readByte();
@@ -26,8 +26,8 @@
     for (int i=0; i < children.size; i++)     node.children[i]=children.get(i);
   }
   if (parts.size > 0) {
-    node.meshPartMaterials=new ModelMeshPartMaterial[parts.size];
-    for (int i=0; i < parts.size; i++)     node.meshPartMaterials[i]=parts.get(i);
+    node.parts=new ModelNodePart[parts.size];
+    for (int i=0; i < parts.size; i++)     node.parts[i]=parts.get(i);
   }
   return node;
 }
