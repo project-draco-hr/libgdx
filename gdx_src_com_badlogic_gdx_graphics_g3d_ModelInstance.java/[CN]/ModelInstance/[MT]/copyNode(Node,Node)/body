@@ -8,8 +8,8 @@
   copy.scale.set(node.scale);
   copy.localTransform.set(node.localTransform);
   copy.worldTransform.set(node.worldTransform);
-  for (  MeshPartMaterial meshPart : node.meshPartMaterials) {
-    copy.meshPartMaterials.add(copyMeshPart(meshPart));
+  for (  NodePart meshPart : node.parts) {
+    copy.parts.add(copyMeshPart(meshPart));
   }
   for (  Node child : node.children) {
     copy.children.add(copyNode(copy,child));

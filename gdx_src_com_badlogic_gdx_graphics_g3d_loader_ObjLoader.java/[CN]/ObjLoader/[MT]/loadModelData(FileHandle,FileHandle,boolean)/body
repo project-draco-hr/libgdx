@@ -133,10 +133,10 @@
     node.scale=new Vector3(1,1,1);
     node.translation=new Vector3();
     node.rotation=new Quaternion();
-    ModelMeshPartMaterial pm=new ModelMeshPartMaterial();
+    ModelNodePart pm=new ModelNodePart();
     pm.meshPartId=partId;
     pm.materialId=group.materialName;
-    node.meshPartMaterials=new ModelMeshPartMaterial[]{pm};
+    node.parts=new ModelNodePart[]{pm};
     ModelMeshPart part=new ModelMeshPart();
     part.id=partId;
     part.indices=finalIndices;

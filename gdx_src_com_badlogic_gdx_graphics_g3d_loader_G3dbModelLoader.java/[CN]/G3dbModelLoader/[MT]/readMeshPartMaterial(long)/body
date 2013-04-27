@@ -1,5 +1,5 @@
 {
-  final ModelMeshPartMaterial part=new ModelMeshPartMaterial();
+  final ModelNodePart part=new ModelNodePart();
   long cnt=0;
   while ((din.available() > 0) && (cnt < length)) {
     final byte type=din.readByte();

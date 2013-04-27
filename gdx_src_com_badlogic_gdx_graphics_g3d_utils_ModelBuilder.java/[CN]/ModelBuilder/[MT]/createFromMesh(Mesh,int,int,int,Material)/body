@@ -6,12 +6,12 @@
   meshPart.numVertices=vertexCount;
   meshPart.primitiveType=primitiveType;
   meshPart.mesh=mesh;
-  MeshPartMaterial partMaterial=new MeshPartMaterial();
+  NodePart partMaterial=new NodePart();
   partMaterial.material=material;
   partMaterial.meshPart=meshPart;
   Node node=new Node();
   node.id="node1";
-  node.meshPartMaterials.add(partMaterial);
+  node.parts.add(partMaterial);
   result.meshes.add(mesh);
   result.materials.add(material);
   result.nodes.add(node);

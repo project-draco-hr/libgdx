@@ -6,8 +6,8 @@
   if (modelNode.translation != null)   node.translation.set(modelNode.translation);
   if (modelNode.rotation != null)   node.rotation.set(modelNode.rotation);
   if (modelNode.scale != null)   node.scale.set(modelNode.scale);
-  if (modelNode.meshPartMaterials != null) {
-    for (    ModelMeshPartMaterial modelMeshPartMaterial : modelNode.meshPartMaterials) {
+  if (modelNode.parts != null) {
+    for (    ModelNodePart modelMeshPartMaterial : modelNode.parts) {
       MeshPart meshPart=null;
       Material meshMaterial=null;
       if (modelMeshPartMaterial.meshPartId != null) {
@@ -27,10 +27,10 @@
         }
       }
       if (meshPart != null && meshMaterial != null) {
-        MeshPartMaterial meshPartMaterial=new MeshPartMaterial();
+        NodePart meshPartMaterial=new NodePart();
         meshPartMaterial.meshPart=meshPart;
         meshPartMaterial.material=meshMaterial;
-        node.meshPartMaterials.add(meshPartMaterial);
+        node.parts.add(meshPartMaterial);
       }
     }
   }

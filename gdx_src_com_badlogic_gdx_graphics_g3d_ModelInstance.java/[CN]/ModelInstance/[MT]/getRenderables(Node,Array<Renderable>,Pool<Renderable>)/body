@@ -1,6 +1,6 @@
 {
-  if (node.meshPartMaterials.size > 0) {
-    for (    MeshPartMaterial meshPart : node.meshPartMaterials) {
+  if (node.parts.size > 0) {
+    for (    NodePart meshPart : node.parts) {
       Renderable renderable=pool.obtain();
       renderable.material=meshPart.material;
       renderable.mesh=meshPart.meshPart.mesh;
@@ -8,6 +8,7 @@
       renderable.meshPartSize=meshPart.meshPart.numVertices;
       renderable.primitiveType=meshPart.meshPart.primitiveType;
       renderable.transform.set(transform).mul(node.worldTransform);
+      renderable.userData=userData;
       renderables.add(renderable);
     }
   }
