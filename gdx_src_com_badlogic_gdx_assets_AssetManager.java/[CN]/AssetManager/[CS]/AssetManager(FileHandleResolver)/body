@@ -6,7 +6,7 @@
   setLoader(TextureAtlas.class,new TextureAtlasLoader(resolver));
   setLoader(Texture.class,new TextureLoader(resolver));
   setLoader(Skin.class,new SkinLoader(resolver));
-  setLoader(Model.class,".g3dj",new ModelLoader.G3djModelLoader(resolver));
+  setLoader(Model.class,".g3dj",new G3djModelLoader(resolver));
   setLoader(Model.class,".g3db",new G3dbModelLoader(resolver));
   setLoader(Model.class,".obj",new ObjLoader(resolver));
   threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
