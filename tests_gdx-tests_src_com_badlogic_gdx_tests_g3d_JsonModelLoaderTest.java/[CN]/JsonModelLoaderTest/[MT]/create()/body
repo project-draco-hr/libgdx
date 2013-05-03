@@ -1,5 +1,5 @@
 {
-  JsonModelLoader loader=new JsonModelLoader();
+  G3djModelLoader loader=new G3djModelLoader();
   model=loader.load(Gdx.files.internal("data/g3d/head2.g3dj"));
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(1f,1.5f,1f);
