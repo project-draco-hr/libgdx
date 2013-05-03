@@ -16,7 +16,8 @@
       url=new URL(httpRequest.getUrl());
     }
     final HttpURLConnection connection=(HttpURLConnection)url.openConnection();
-    connection.setDoOutput(method.equalsIgnoreCase(HttpMethods.POST));
+    final boolean doingOutPut=method.equalsIgnoreCase(HttpMethods.POST) || method.equalsIgnoreCase(HttpMethods.PUT);
+    connection.setDoOutput(doingOutPut);
     connection.setDoInput(true);
     connection.setRequestMethod(method);
     Map<String,String> headers=httpRequest.getHeaders();
@@ -27,7 +28,7 @@
     executorService.submit(new Runnable(){
       @Override public void run(){
         try {
-          if (method.equalsIgnoreCase(HttpMethods.POST)) {
+          if (doingOutPut) {
             String contentAsString=httpRequest.getContent();
             InputStream contentAsStream=httpRequest.getContentStream();
             OutputStream outputStream=connection.getOutputStream();
