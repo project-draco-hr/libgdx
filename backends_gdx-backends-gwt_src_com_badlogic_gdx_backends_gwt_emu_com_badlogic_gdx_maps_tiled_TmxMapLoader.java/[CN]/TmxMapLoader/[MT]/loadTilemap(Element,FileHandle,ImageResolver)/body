@@ -8,7 +8,7 @@
   String mapBackgroundColor=root.getAttribute("backgroundcolor",null);
   MapProperties mapProperties=map.getProperties();
   if (mapOrientation != null) {
-    mapProperties.put("orientation",mapBackgroundColor);
+    mapProperties.put("orientation",mapOrientation);
   }
   mapProperties.put("width",mapWidth);
   mapProperties.put("height",mapHeight);
