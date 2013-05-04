@@ -41,7 +41,7 @@
       regionsName=atlasHandle.nameWithoutExtension();
       if (parameter != null && parameter.forceTextureFilters) {
         for (        Texture texture : atlas.getTextures()) {
-          texture.setFilter(parameter.textureMinFilter,parameter.textureMagFilter);
+          trackedTextures.add(texture);
         }
       }
     }
