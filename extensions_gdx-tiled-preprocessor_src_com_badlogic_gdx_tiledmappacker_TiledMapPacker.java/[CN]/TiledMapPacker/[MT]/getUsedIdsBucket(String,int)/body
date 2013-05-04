@@ -1,0 +1,8 @@
+{
+  if (tilesetUsedIds.containsKey(tilesetName)) {
+    return tilesetUsedIds.get(tilesetName);
+  }
+  IntArray bucket=new IntArray(size);
+  tilesetUsedIds.put(tilesetName,bucket);
+  return bucket;
+}

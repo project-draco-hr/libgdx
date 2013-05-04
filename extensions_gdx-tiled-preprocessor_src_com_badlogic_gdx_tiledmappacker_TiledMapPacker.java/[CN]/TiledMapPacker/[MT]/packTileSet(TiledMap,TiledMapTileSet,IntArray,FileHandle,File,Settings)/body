@@ -8,11 +8,12 @@
   int mapHeight=map.getProperties().get("height",Integer.class);
   int tileWidth=set.getProperties().get("tilewidth",Integer.class);
   int tileHeight=set.getProperties().get("tileheight",Integer.class);
+  int firstgid=set.getProperties().get("firstgid",Integer.class);
   String imageName=set.getProperties().get("imagesource",String.class);
-  TileSetLayout layout=new TileSetLayout(map,1,set,inputDirHandle);
+  TileSetLayout layout=new TileSetLayout(map,firstgid,set,inputDirHandle);
   for (int gid=layout.firstgid, i=0; i < layout.numTiles; gid++, i++) {
     if (usedIds != null && !usedIds.contains(gid)) {
-      System.out.println("Stripped Id: " + gid + " (map \""+ map.getProperties().get("name")+ "\")");
+      System.out.println("Stripped Id: " + gid);
       continue;
     }
     tileLocation=layout.getLocation(gid);

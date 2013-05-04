@@ -3,12 +3,11 @@
   File[] files=inputDir.listFiles(new TmxFilter());
   for (  File file : files) {
     map=mapLoader.load(file.getAbsolutePath());
-    IntArray usedIds=null;
     if (this.settings.stripUnusedTiles) {
       int mapWidth=map.getProperties().get("width",Integer.class);
       int mapHeight=map.getProperties().get("height",Integer.class);
       int numlayers=map.getLayers().getCount();
-      usedIds=new IntArray(numlayers * mapHeight * mapWidth);
+      int bucketSize=mapWidth * mapHeight * numlayers;
       Iterator<MapLayer> it=map.getLayers().iterator();
       while (it.hasNext()) {
         MapLayer layer=it.next();
@@ -16,20 +15,28 @@
           TiledMapTileLayer tlayer=(TiledMapTileLayer)layer;
           for (int y=0; y < mapHeight; ++y) {
             for (int x=0; x < mapWidth; ++x) {
-              usedIds.add(tlayer.getCell(x,y).getTile().getId() & ~0xE0000000);
+              int tileid=tlayer.getCell(x,y).getTile().getId() & ~0xE0000000;
+              IntArray usedIds=getUsedIdsBucket(tilesetNameFromTileId(map,tileid),bucketSize);
+              usedIds.add(tileid);
             }
           }
         }
       }
     }
-    for (    TiledMapTileSet set : map.getTileSets()) {
-      String imagesource=set.getProperties().get("imagesource",String.class);
-      if (!processedTileSets.contains(imagesource)) {
-        processedTileSets.add(imagesource);
-        packTileSet(map,set,usedIds,inputDirHandle,outputDir,settings);
-      }
-    }
     FileHandle tmxFile=new FileHandle(file.getAbsolutePath());
     writeUpdatedTMX(outputDir,tmxFile);
+  }
+  if (this.settings.stripUnusedTiles) {
+    for (    String tilesetName : tilesetUsedIds.keySet()) {
+      TiledMapTileSet tileset=map.getTileSets().getTileSet(tilesetName);
+      if (tileset != null) {
+        packTileSet(map,tileset,tilesetUsedIds.get(tilesetName),inputDirHandle,outputDir,settings);
+      }
+    }
+  }
+ else {
+    for (    TiledMapTileSet tileset : map.getTileSets()) {
+      packTileSet(map,tileset,null,inputDirHandle,outputDir,settings);
+    }
   }
 }
