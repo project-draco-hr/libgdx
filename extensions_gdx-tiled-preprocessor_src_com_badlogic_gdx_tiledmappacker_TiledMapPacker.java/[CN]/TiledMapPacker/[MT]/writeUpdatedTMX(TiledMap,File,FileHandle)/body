@@ -12,6 +12,10 @@
       }
     }
     setProperty(doc,map,"blended tiles",toCSV(blendedTiles));
+    for (    TiledMapTileSet tileset : tiledMap.getTileSets()) {
+      String atlasName=removeExtension(tileset.getProperties().get("imagesource",String.class)) + ".atlas";
+      setProperty(doc,map,"atlas_" + tileset.getName(),atlasName);
+    }
     TransformerFactory transformerFactory=TransformerFactory.newInstance();
     Transformer transformer=transformerFactory.newTransformer();
     DOMSource source=new DOMSource(doc);

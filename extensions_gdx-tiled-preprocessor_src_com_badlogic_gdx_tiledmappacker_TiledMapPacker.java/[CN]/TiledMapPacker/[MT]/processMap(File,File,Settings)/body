@@ -1,6 +1,7 @@
 {
   FileHandle inputDirHandle=new FileHandle(inputDir.getAbsolutePath());
   File[] files=inputDir.listFiles(new TmxFilter());
+  ObjectMap<String,TiledMapTileSet> tilesetsToPack=new ObjectMap<String,TiledMapTileSet>();
   for (  File file : files) {
     map=mapLoader.load(file.getAbsolutePath());
     if (this.settings.stripUnusedTiles) {
@@ -15,28 +16,32 @@
           TiledMapTileLayer tlayer=(TiledMapTileLayer)layer;
           for (int y=0; y < mapHeight; ++y) {
             for (int x=0; x < mapWidth; ++x) {
-              int tileid=tlayer.getCell(x,y).getTile().getId() & ~0xE0000000;
-              IntArray usedIds=getUsedIdsBucket(tilesetNameFromTileId(map,tileid),bucketSize);
-              usedIds.add(tileid);
+              if (tlayer.getCell(x,y) != null) {
+                int tileid=tlayer.getCell(x,y).getTile().getId() & ~0xE0000000;
+                String tilesetName=tilesetNameFromTileId(map,tileid);
+                IntArray usedIds=getUsedIdsBucket(tilesetName,bucketSize);
+                usedIds.add(tileid);
+                if (!tilesetsToPack.containsKey(tilesetName)) {
+                  tilesetsToPack.put(tilesetName,map.getTileSets().getTileSet(tilesetName));
+                }
+              }
             }
           }
         }
       }
     }
-    FileHandle tmxFile=new FileHandle(file.getAbsolutePath());
-    writeUpdatedTMX(outputDir,tmxFile);
-  }
-  if (this.settings.stripUnusedTiles) {
-    for (    String tilesetName : tilesetUsedIds.keySet()) {
-      TiledMapTileSet tileset=map.getTileSets().getTileSet(tilesetName);
-      if (tileset != null) {
-        packTileSet(map,tileset,tilesetUsedIds.get(tilesetName),inputDirHandle,outputDir,settings);
+ else {
+      for (      TiledMapTileSet tileset : map.getTileSets()) {
+        String tilesetName=tileset.getName();
+        if (!tilesetsToPack.containsKey(tilesetName)) {
+          tilesetsToPack.put(tilesetName,map.getTileSets().getTileSet(tilesetName));
+        }
       }
     }
+    FileHandle tmxFile=new FileHandle(file.getAbsolutePath());
+    writeUpdatedTMX(map,outputDir,tmxFile);
   }
- else {
-    for (    TiledMapTileSet tileset : map.getTileSets()) {
-      packTileSet(map,tileset,null,inputDirHandle,outputDir,settings);
-    }
+  for (  TiledMapTileSet tileset : tilesetsToPack.values()) {
+    packTileSet(tileset,this.settings.stripUnusedTiles ? tilesetUsedIds.get(tileset.getName()) : null,inputDirHandle,outputDir,settings);
   }
 }
