@@ -1,0 +1,24 @@
+{
+  try {
+    if (parameter != null) {
+      yUp=parameter.yUp;
+    }
+ else {
+      yUp=true;
+    }
+    FileHandle tmxFile=resolve(fileName);
+    root=xml.parse(tmxFile);
+    ObjectMap<String,TextureAtlas> atlases=new ObjectMap<String,TextureAtlas>();
+    for (    FileHandle atlasFile : loadAtlases(root,tmxFile)) {
+      TextureAtlas atlas=new TextureAtlas(atlasFile);
+      atlases.put(atlasFile.path(),atlas);
+    }
+    AtlasResolver.DirectAtlasResolver atlasResolver=new AtlasResolver.DirectAtlasResolver(atlases);
+    AtlasTiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
+    map.setOwnedAtlases(atlases.values().toArray());
+    return map;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

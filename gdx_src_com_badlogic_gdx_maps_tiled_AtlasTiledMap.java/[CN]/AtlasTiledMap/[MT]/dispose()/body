@@ -1,0 +1,8 @@
+{
+  super.dispose();
+  if (ownedAtlases != null) {
+    for (    TextureAtlas atlas : ownedAtlases) {
+      atlas.dispose();
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  Element e=root.getChildByName("properties");
+  Array<FileHandle> atlases=new Array<FileHandle>();
+  if (e != null) {
+    for (    Element property : e.getChildrenByName("property")) {
+      String name=property.getAttribute("name",null);
+      String value=property.getAttribute("value",null);
+      if (name.startsWith("atlas_")) {
+        if (value == null) {
+          value=property.getText();
+        }
+        FileHandle atlas=getRelativeFileHandle(tmxFile,value);
+        atlases.add(atlas);
+      }
+    }
+  }
+  return atlases;
+}
