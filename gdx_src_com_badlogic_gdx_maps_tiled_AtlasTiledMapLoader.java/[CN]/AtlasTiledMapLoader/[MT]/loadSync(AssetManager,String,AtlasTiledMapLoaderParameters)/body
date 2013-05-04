@@ -1,7 +1,6 @@
 {
-  for (  Texture texture : trackedTextures) {
-    texture.setFilter(parameter.textureMinFilter,parameter.textureMagFilter);
+  if (parameter.forceTextureFilters) {
+    setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
   }
-  trackedTextures.clear();
   return map;
 }

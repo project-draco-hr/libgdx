@@ -16,6 +16,9 @@
     AtlasResolver.DirectAtlasResolver atlasResolver=new AtlasResolver.DirectAtlasResolver(atlases);
     AtlasTiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
     map.setOwnedAtlases(atlases.values().toArray());
+    if (parameter.forceTextureFilters) {
+      setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
+    }
     return map;
   }
  catch (  IOException e) {
