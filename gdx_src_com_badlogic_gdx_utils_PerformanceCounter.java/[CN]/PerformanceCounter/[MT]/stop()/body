@@ -1,6 +1,6 @@
 {
   if (startTime > 0L) {
-    current+=(System.nanoTime() - startTime) * nano2seconds;
+    current+=(TimeUtils.nanoTime() - startTime) * nano2seconds;
     startTime=0L;
     valid=true;
   }
