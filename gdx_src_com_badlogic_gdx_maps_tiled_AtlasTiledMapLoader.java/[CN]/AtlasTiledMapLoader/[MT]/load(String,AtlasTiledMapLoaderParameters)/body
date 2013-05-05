@@ -14,8 +14,8 @@
       atlases.put(atlasFile.path(),atlas);
     }
     AtlasResolver.DirectAtlasResolver atlasResolver=new AtlasResolver.DirectAtlasResolver(atlases);
-    AtlasTiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
-    map.setOwnedAtlases(atlases.values().toArray());
+    TiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
+    map.setOwnedResources(atlases.values().toArray());
     if (parameter.forceTextureFilters) {
       setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
     }

@@ -1,5 +1,5 @@
 {
-  AtlasTiledMap map=new AtlasTiledMap();
+  TiledMap map=new TiledMap();
   String mapOrientation=root.getAttribute("orientation",null);
   int mapWidth=root.getIntAttribute("width",0);
   int mapHeight=root.getIntAttribute("height",0);
