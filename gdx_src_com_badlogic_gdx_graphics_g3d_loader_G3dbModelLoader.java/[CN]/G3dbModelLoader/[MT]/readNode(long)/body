@@ -1,9 +1,8 @@
 {
   long cnt=0;
-  ModelNode node=new ModelNode();
-  Array<ModelNode> children=new Array<ModelNode>();
-  Array<ModelNodePart> parts=new Array<ModelNodePart>();
-  result.nodes.add(node);
+  final ModelNode node=new ModelNode();
+  final Array<ModelNode> children=new Array<ModelNode>();
+  final Array<ModelNodePart> parts=new Array<ModelNodePart>();
   while ((din.available() > 0) && (cnt < length)) {
     final byte type=din.readByte();
     final long size=readSize(type);
@@ -13,7 +12,7 @@
  else     if ((type & TYPE_MASK) == G3DB_TAG_ROTATE)     node.rotation=readQuaternion(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_SCALE)     node.scale=readVector3(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_MESH)     node.meshId=readString(size);
- else     if ((type & TYPE_MASK) == G3DB_TAG_NODEPART)     parts.add(readMeshPartMaterial(size));
+ else     if ((type & TYPE_MASK) == G3DB_TAG_NODEPART)     parts.add(readNodePart(size));
  else     if ((type & TYPE_MASK) == G3DB_TAG_NODE)     children.add(readNode(size));
  else {
       din.skipBytes((int)size);
