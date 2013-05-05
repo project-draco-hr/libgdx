@@ -1,36 +1,36 @@
 {
   Node node=new Node();
   node.id=modelNode.id;
-  node.boneId=modelNode.boneId;
   node.parent=parent;
   if (modelNode.translation != null)   node.translation.set(modelNode.translation);
   if (modelNode.rotation != null)   node.rotation.set(modelNode.rotation);
   if (modelNode.scale != null)   node.scale.set(modelNode.scale);
   if (modelNode.parts != null) {
-    for (    ModelNodePart modelMeshPartMaterial : modelNode.parts) {
+    for (    ModelNodePart modelNodePart : modelNode.parts) {
       MeshPart meshPart=null;
       Material meshMaterial=null;
-      if (modelMeshPartMaterial.meshPartId != null) {
+      if (modelNodePart.meshPartId != null) {
         for (        MeshPart part : meshParts) {
-          if (modelMeshPartMaterial.meshPartId.equals(part.id)) {
+          if (modelNodePart.meshPartId.equals(part.id)) {
             meshPart=part;
             break;
           }
         }
       }
-      if (modelMeshPartMaterial.materialId != null) {
+      if (modelNodePart.materialId != null) {
         for (        Material material : materials) {
-          if (modelMeshPartMaterial.materialId.equals(material.id)) {
+          if (modelNodePart.materialId.equals(material.id)) {
             meshMaterial=material;
             break;
           }
         }
       }
       if (meshPart != null && meshMaterial != null) {
-        NodePart meshPartMaterial=new NodePart();
-        meshPartMaterial.meshPart=meshPart;
-        meshPartMaterial.material=meshMaterial;
-        node.parts.add(meshPartMaterial);
+        NodePart nodePart=new NodePart();
+        nodePart.meshPart=meshPart;
+        nodePart.material=meshMaterial;
+        node.parts.add(nodePart);
+        if (modelNodePart.bones != null)         nodePartBones.put(nodePart,modelNodePart.bones);
       }
     }
   }

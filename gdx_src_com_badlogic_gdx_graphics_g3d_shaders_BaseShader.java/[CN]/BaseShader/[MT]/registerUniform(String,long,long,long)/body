@@ -1,0 +1,8 @@
+{
+  UniformEntry entry=UniformEntry.pool.obtain();
+  entry.name=name;
+  entry.material=material;
+  entry.attribute=attribute;
+  entry.userFlag=userFlag;
+  return registerUniform(entry);
+}

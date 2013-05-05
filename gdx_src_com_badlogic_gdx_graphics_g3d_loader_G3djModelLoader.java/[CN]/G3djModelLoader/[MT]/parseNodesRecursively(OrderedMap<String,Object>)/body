@@ -19,15 +19,20 @@
     jsonNode.parts=new ModelNodePart[materials.size];
     int i=0;
     for (    OrderedMap<String,Object> material : materials) {
-      ModelNodePart meshPartMaterial=new ModelNodePart();
+      ModelNodePart nodePart=new ModelNodePart();
       String meshPartId=(String)material.get("meshpartid");
       String materialId=(String)material.get("materialid");
       if (meshPartId == null || materialId == null) {
         throw new GdxRuntimeException("Node " + id + " part is missing meshPartId or materialId");
       }
-      meshPartMaterial.materialId=materialId;
-      meshPartMaterial.meshPartId=meshPartId;
-      jsonNode.parts[i++]=meshPartMaterial;
+      nodePart.materialId=materialId;
+      nodePart.meshPartId=meshPartId;
+      Array<Object> bones=(Array<Object>)material.get("bones");
+      if (bones != null) {
+        nodePart.bones=new String[bones.size];
+        for (int j=0; j < bones.size; j++)         nodePart.bones[j]=(String)bones.get(j);
+      }
+      jsonNode.parts[i++]=nodePart;
     }
   }
   Array<OrderedMap<String,Object>> children=(Array<OrderedMap<String,Object>>)json.get("children");

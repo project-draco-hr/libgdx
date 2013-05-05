@@ -12,7 +12,7 @@
     }
  else     if ((type & TYPE_MASK) == G3DB_TAG_DIFFUSE)     material.diffuse=readColor(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_AMBIENT)     material.ambient=readColor(size);
- else     if ((type & TYPE_MASK) == G3DB_TAG_EMMISIVE)     material.ambient=readColor(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_EMISSIVE)     material.ambient=readColor(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_OPACITY)     din.skipBytes((int)size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_SPECULAR)     material.specular=readColor(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_SHININESS) {

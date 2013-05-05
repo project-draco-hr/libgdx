@@ -1,0 +1,23 @@
+{
+  String prefix="";
+  if ((attributes & Usage.Color) == Usage.Color)   prefix+="#define colorFlag\n";
+  if ((attributes & Usage.Normal) == Usage.Normal) {
+    prefix+="#define normalFlag\n";
+    if (lighting) {
+      prefix+="#define lightingFlag\n";
+      prefix+="#define ambientCubemapFlag\n";
+      prefix+="#define numDirectionalLights " + numDirectional + "\n";
+      prefix+="#define numPointLights " + numPoint + "\n";
+    }
+  }
+  for (int i=0; i < blendAttributes.length; i++) {
+    if ((attributes & blendAttributes[i]) == blendAttributes[i])     prefix+="#define boneWeight" + i + "Flag\n";
+  }
+  if ((mask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
+  if ((mask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)   prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
+  if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
+  if ((mask & ColorAttribute.Specular) == ColorAttribute.Specular)   prefix+="#define " + ColorAttribute.SpecularAlias + "Flag\n";
+  if ((mask & FloatAttribute.Shininess) == FloatAttribute.Shininess)   prefix+="#define " + FloatAttribute.ShininessAlias + "Flag\n";
+  if (numBones > 0)   prefix+="#define numBones " + numBones + "\n";
+  return prefix;
+}

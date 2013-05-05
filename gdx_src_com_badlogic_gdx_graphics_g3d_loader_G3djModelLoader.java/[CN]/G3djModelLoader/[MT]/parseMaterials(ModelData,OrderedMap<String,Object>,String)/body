@@ -12,11 +12,9 @@
       jsonMaterial.id=id;
       jsonMaterial.diffuse=parseColor((Array<Object>)material.get("diffuse"),Color.WHITE);
       jsonMaterial.ambient=parseColor((Array<Object>)material.get("ambient"),Color.BLACK);
-      jsonMaterial.emissive=parseColor((Array<Object>)material.get("emissive"),Color.WHITE);
-      if (jsonMaterial.type == MaterialType.Phong) {
-        jsonMaterial.specular=parseColor((Array<Object>)material.get("specular"),Color.WHITE);
-        float shininess=(Float)material.get("shininess",1.0f);
-      }
+      jsonMaterial.emissive=parseColor((Array<Object>)material.get("emissive"),Color.BLACK);
+      jsonMaterial.specular=parseColor((Array<Object>)material.get("specular"),Color.BLACK);
+      float shininess=(Float)material.get("shininess",0.0f);
       Array<OrderedMap<String,Object>> textures=(Array<OrderedMap<String,Object>>)material.get("textures");
       if (textures != null) {
         for (        OrderedMap<String,Object> texture : textures) {

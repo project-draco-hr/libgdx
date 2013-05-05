@@ -1,6 +1,13 @@
 {
   long result=0;
+  int currentBone=0;
   final int n=attributes.size();
-  for (int i=0; i < n; i++)   result|=(long)attributes.get(i).usage;
+  for (int i=0; i < n; i++) {
+    long a=(long)attributes.get(i).usage;
+    if (a == Usage.Generic) {
+      if (attributes.get(i).alias.startsWith("a_boneWeight"))       a=blendAttributes[Integer.parseInt(attributes.get(i).alias.substring(12))];
+    }
+    result|=a;
+  }
   return result;
 }

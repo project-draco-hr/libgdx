@@ -1,0 +1,8 @@
+{
+  GL20 gl=Gdx.graphics.getGL20();
+  checkManaged();
+  ensureBufferCapacity(length << 2);
+  floatBuffer.clear();
+  BufferUtils.copy(values,floatBuffer,length,offset);
+  gl.glUniformMatrix4fv(location,length / 16,false,floatBuffer);
+}
