@@ -1,6 +1,5 @@
 {
-  String rectName=settings.getRectAtlasName(name);
-  writer.write(rectName + "\n");
+  writer.write(rect.getName(settings.flattenPaths) + "\n");
   writer.write("  rotate: " + rect.rotated + "\n");
   writer.write("  xy: " + (page.x + rect.x) + ", "+ (page.y + page.height - rect.height - rect.y)+ "\n");
   writer.write("  size: " + rect.image.getWidth() + ", "+ rect.image.getHeight()+ "\n");
