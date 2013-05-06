@@ -34,8 +34,8 @@
     }
     TextureAtlas atlas=null;
     String regionsName="";
-    if (map.getProperties().containsKey("atlas_" + name)) {
-      FileHandle atlasHandle=getRelativeFileHandle(tmxFile,map.getProperties().get("atlas_" + name,String.class));
+    if (map.getProperties().containsKey("atlas")) {
+      FileHandle atlasHandle=getRelativeFileHandle(tmxFile,map.getProperties().get("atlas",String.class));
       atlasHandle=resolve(atlasHandle.path());
       atlas=resolver.getAtlas(atlasHandle.path());
       regionsName=atlasHandle.nameWithoutExtension();

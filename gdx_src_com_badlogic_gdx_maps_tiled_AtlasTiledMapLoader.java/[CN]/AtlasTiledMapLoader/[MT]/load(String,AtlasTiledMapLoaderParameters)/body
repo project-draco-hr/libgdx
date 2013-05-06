@@ -9,16 +9,16 @@
     FileHandle tmxFile=resolve(fileName);
     root=xml.parse(tmxFile);
     ObjectMap<String,TextureAtlas> atlases=new ObjectMap<String,TextureAtlas>();
-    for (    FileHandle atlasFile : loadAtlases(root,tmxFile)) {
-      TextureAtlas atlas=new TextureAtlas(atlasFile);
-      atlases.put(atlasFile.path(),atlas);
+    FileHandle atlasFile=loadAtlas(root,tmxFile);
+    if (atlasFile == null) {
+      throw new GdxRuntimeException("Couldn't load atlas");
     }
+    TextureAtlas atlas=new TextureAtlas(atlasFile);
+    atlases.put(atlasFile.path(),atlas);
     AtlasResolver.DirectAtlasResolver atlasResolver=new AtlasResolver.DirectAtlasResolver(atlases);
     TiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
     map.setOwnedResources(atlases.values().toArray());
-    if (parameter.forceTextureFilters) {
-      setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
-    }
+    setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
     return map;
   }
  catch (  IOException e) {

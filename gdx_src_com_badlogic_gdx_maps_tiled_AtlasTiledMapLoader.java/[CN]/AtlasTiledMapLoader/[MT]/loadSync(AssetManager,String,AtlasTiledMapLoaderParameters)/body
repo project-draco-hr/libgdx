@@ -1,6 +1,4 @@
 {
-  if (parameter.forceTextureFilters) {
-    setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
-  }
+  setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
   return map;
 }
