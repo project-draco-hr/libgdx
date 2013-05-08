@@ -4,7 +4,7 @@
     TextureAtlasData textureAtlasData=new TextureAtlasData(new FileHandle(packFile),new FileHandle(packFile),false);
     for (    Page page : pages) {
       for (      Rect rect : page.outputRects) {
-        String rectName=settings.flattenPaths ? new FileHandle(rect.name).name() : rect.name;
+        String rectName=Rect.getAtlasName(rect.name,settings.flattenPaths);
         System.out.println(rectName);
         for (        Region region : textureAtlasData.getRegions()) {
           if (region.name.equals(rectName)) {
