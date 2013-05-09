@@ -41,5 +41,5 @@
     FileHandle tmxFile=new FileHandle(file.getAbsolutePath());
     writeUpdatedTMX(map,outputDir,tmxFile);
   }
-  packTileSet(tilesetsToPack,inputDirHandle,outputDir,settings);
+  packTilesets(tilesetsToPack,inputDirHandle,outputDir,settings);
 }

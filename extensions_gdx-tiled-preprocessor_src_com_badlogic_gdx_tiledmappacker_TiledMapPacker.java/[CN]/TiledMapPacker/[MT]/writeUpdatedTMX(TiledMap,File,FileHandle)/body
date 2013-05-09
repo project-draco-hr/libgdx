@@ -11,8 +11,7 @@
         throw new GdxRuntimeException("Couldn't find map node!");
       }
     }
-    setProperty(doc,map,"blended tiles",toCSV(blendedTiles));
-    setProperty(doc,map,"atlas",TilesetsOutputDir + "/" + AtlasOutputName+ ".atlas");
+    setProperty(doc,map,"atlas",settings.tilesetOutputDirectory + "/" + settings.atlasOutputName+ ".atlas");
     TransformerFactory transformerFactory=TransformerFactory.newInstance();
     Transformer transformer=transformerFactory.newTransformer();
     DOMSource source=new DOMSource(doc);
