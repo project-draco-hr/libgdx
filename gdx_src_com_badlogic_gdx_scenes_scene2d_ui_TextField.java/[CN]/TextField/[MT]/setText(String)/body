@@ -1,13 +1,13 @@
 {
   if (text == null)   throw new IllegalArgumentException("text cannot be null.");
   BitmapFont font=style.font;
-  StringBuffer buffer=new StringBuffer();
+  StringBuilder buffer=new StringBuilder();
   for (int i=0; i < text.length(); i++) {
-    if (maxLength > 0 && buffer.length() + 1 > maxLength) {
-      break;
-    }
+    if (maxLength > 0 && buffer.length() + 1 > maxLength)     break;
     char c=text.charAt(i);
-    if (font.containsCharacter(c) && (filter == null || filter.acceptChar(this,c)))     buffer.append(c);
+    if (onlyFontChars && !style.font.containsCharacter(c))     continue;
+    if (filter != null && !filter.acceptChar(this,c))     continue;
+    buffer.append(c);
   }
   this.text=buffer.toString();
   updateDisplayText();
