@@ -1,16 +1,7 @@
 {
   postRunnable(new Runnable(){
     @Override public void run(){
-      setGlobals();
-      Array<LifecycleListener> listeners=lifecycleListeners;
-synchronized (listeners) {
-        for (        LifecycleListener listener : listeners) {
-          listener.pause();
-          listener.dispose();
-        }
-      }
-      LwjglAWTCanvas.this.listener.pause();
-      LwjglAWTCanvas.this.listener.dispose();
+      stop();
       System.exit(-1);
     }
   }
