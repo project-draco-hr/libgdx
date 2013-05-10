@@ -1,5 +1,11 @@
 {
+  nodePartBones.clear();
   for (  ModelNode node : modelNodes) {
     nodes.add(loadNode(null,node));
+  }
+  for (  ObjectMap.Entry<NodePart,String[]> e : nodePartBones.entries()) {
+    if (e.key.bones == null)     e.key.bones=new ArrayMap<Node,Matrix4>();
+    e.key.bones.clear();
+    for (    final String n : e.value)     e.key.bones.put(getNode(n),null);
   }
 }

@@ -6,14 +6,14 @@
     if (BlendingAttribute.is(t))     context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
  else     if (ColorAttribute.is(t)) {
       ColorAttribute col=(ColorAttribute)attr;
-      if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       program.setUniformf(diffuseColorLoc,col.color);
- else       if ((t & ColorAttribute.Specular) == ColorAttribute.Specular)       program.setUniformf(specularColorLoc,col.color);
+      if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       set(u_diffuseColor,col.color);
+ else       if ((t & ColorAttribute.Specular) == ColorAttribute.Specular)       set(u_specularColor,col.color);
     }
  else     if (TextureAttribute.is(t)) {
       TextureAttribute tex=(TextureAttribute)attr;
-      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(diffuseTextureLoc,tex);
+      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(loc(u_diffuseTexture),tex);
     }
- else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     program.setUniformf(shininessLoc,((FloatAttribute)attr).value);
+ else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
 }

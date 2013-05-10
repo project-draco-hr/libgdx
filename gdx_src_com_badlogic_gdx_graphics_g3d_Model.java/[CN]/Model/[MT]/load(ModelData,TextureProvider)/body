@@ -2,5 +2,7 @@
   loadMeshes(modelData.meshes);
   loadMaterials(modelData.materials,textureProvider);
   loadNodes(modelData.nodes);
+  loadAnimations(modelData.animations);
   calculateTransforms();
+  setInitialTransform(null);
 }

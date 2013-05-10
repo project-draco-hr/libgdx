@@ -1,0 +1,22 @@
+{
+  final ModelNodePart part=new ModelNodePart();
+  final Array<String> bones=new Array<String>();
+  long cnt=0;
+  while ((din.available() > 0) && (cnt < length)) {
+    final byte type=din.readByte();
+    final long size=readSize(type);
+    cnt+=1 + getSize(type) + size;
+    if ((type & TYPE_MASK) == G3DB_TAG_MESHPART)     part.meshPartId=readString(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_MATERIAL)     part.materialId=readString(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_BONE)     bones.add(readString(size));
+ else {
+      din.skipBytes((int)size);
+      Gdx.app.log("G3dbModelLoader","Unknown nodepart tag: " + type + "["+ size+ "], skipping");
+    }
+  }
+  if (bones.size > 0) {
+    part.bones=new String[bones.size];
+    for (int i=0; i < bones.size; i++)     part.bones[i]=bones.get(i);
+  }
+  return part;
+}

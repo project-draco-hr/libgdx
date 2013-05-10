@@ -3,10 +3,11 @@
   this.camera=camera;
   program.begin();
   context.setDepthTest(true,GL10.GL_LEQUAL);
-  if (projTransLoc >= 0)   program.setUniformMatrix(projTransLoc,camera.combined);
-  if (cameraPosLoc >= 0)   program.setUniformf(cameraPosLoc,camera.position);
-  if (cameraDirLoc >= 0)   program.setUniformf(cameraDirLoc,camera.direction);
-  if (cameraUpLoc >= 0)   program.setUniformf(cameraUpLoc,camera.up);
+  set(u_projTrans,camera.combined);
+  set(u_cameraPosition,camera.position);
+  set(u_cameraDirection,camera.direction);
+  set(u_cameraUp,camera.up);
   for (  final DirectionalLight dirLight : directionalLights)   dirLight.set(0,0,0,0,-1,0);
   for (  final PointLight pointLight : pointLights)   pointLight.set(0,0,0,0,0,0,0);
+  for (int i=0; i < bones.length; i++)   bones[i]=idtMatrix.val[i % 16];
 }

@@ -9,5 +9,6 @@
   parseMeshes(model,json);
   parseMaterials(model,json,handle.parent().path());
   parseNodes(model,json);
+  parseAnimations(model,json);
   return model;
 }

@@ -1,0 +1,5 @@
+{
+  if (uniformLocations[what] < 0)   return false;
+  program.setUniformMatrix(uniformLocations[what],value);
+  return true;
+}

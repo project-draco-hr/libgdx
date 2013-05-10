@@ -1,0 +1,5 @@
+{
+  if (program != null)   throw new GdxRuntimeException("Cannot register uniforms after initialization");
+  uniformEntries.add(entry);
+  return uniformEntries.size - 1;
+}

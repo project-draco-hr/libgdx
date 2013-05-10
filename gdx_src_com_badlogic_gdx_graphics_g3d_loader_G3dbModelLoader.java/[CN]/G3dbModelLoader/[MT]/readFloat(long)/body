@@ -1,0 +1,5 @@
+{
+  final float result=din.readFloat();
+  if (size > 4)   din.skipBytes((int)size - 4);
+  return result;
+}
