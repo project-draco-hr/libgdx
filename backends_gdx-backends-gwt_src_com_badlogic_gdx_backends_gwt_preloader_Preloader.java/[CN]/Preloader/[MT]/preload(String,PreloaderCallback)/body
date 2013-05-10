@@ -2,7 +2,7 @@
   new TextLoader(baseUrl + assetFileUrl,new LoaderCallback<String>(){
     @Override public void success(    String result){
       String[] lines=result.split("\n");
-      Array<Asset> assets=new Array<Asset>();
+      assets=new Array<Asset>();
       for (      String line : lines) {
         String[] tokens=line.split(":");
         if (tokens.length != 2)         continue;
@@ -13,7 +13,9 @@
         if (tokens[0].equals("d"))         type=AssetType.Directory;
         assets.add(new Asset(tokens[1].trim(),type));
       }
-      loadNextAsset(assets,0,callback);
+      for (      Asset asset : assets) {
+        beginLoadingAsset(asset,callback);
+      }
     }
     @Override public void error(){
       callback.error(assetFileUrl);
