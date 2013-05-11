@@ -22,6 +22,7 @@
       tile=new BufferedImage(tileWidth,tileHeight,BufferedImage.TYPE_4BYTE_ABGR);
       g=tile.createGraphics();
       g.drawImage(layout.image,0,0,tileWidth,tileHeight,(int)tileLocation.x,(int)tileLocation.y,(int)tileLocation.x + tileWidth,(int)tileLocation.y + tileHeight,null);
+      if (isBlended(tile))       setBlended(gid);
       packer.addImage(tile,this.settings.atlasOutputName + "_" + tileidx);
     }
   }
