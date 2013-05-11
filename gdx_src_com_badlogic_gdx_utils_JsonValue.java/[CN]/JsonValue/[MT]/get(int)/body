@@ -1,0 +1,8 @@
+{
+  JsonValue current=child;
+  while (current != null && index > 0) {
+    index--;
+    current=current.next;
+  }
+  return current;
+}

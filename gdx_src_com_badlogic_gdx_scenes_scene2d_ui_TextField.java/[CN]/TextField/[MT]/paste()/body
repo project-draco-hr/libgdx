@@ -1,15 +1,15 @@
 {
   String content=clipboard.getContents();
   if (content != null) {
-    StringBuilder builder=new StringBuilder();
+    StringBuilder buffer=new StringBuilder();
     for (int i=0; i < content.length(); i++) {
-      if (maxLength > 0 && text.length() + builder.length() + 1 > maxLength) {
-        break;
-      }
+      if (maxLength > 0 && text.length() + buffer.length() + 1 > maxLength)       break;
       char c=content.charAt(i);
-      if (style.font.containsCharacter(c) && (filter == null || filter.acceptChar(this,c)))       builder.append(c);
+      if (!style.font.containsCharacter(c))       continue;
+      if (filter != null && !filter.acceptChar(this,c))       continue;
+      buffer.append(c);
     }
-    content=builder.toString();
+    content=buffer.toString();
     if (!hasSelection) {
       text=text.substring(0,cursor) + content + text.substring(cursor,text.length());
       updateDisplayText();

@@ -1,0 +1,5 @@
+{
+  child.setName(name);
+  if (current.isArray() || current.isObject())   current.addChild(child);
+ else   root=current;
+}

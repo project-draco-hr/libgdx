@@ -1,7 +1,7 @@
 {
   JsonReader reader=new JsonReader();
-  OrderedMap<String,Object> json=(OrderedMap<String,Object>)reader.parse(handle);
-  String version=(String)json.get("version");
+  JsonValue json=reader.parse(handle);
+  String version=(String)json.getString("version");
   if (version == null || !version.equals(VERSION)) {
     throw new GdxRuntimeException("No or wrong JSON format version given, should be " + VERSION + ", is "+ version);
   }

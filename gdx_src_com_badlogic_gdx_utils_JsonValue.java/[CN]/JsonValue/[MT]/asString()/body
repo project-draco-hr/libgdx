@@ -1,0 +1,10 @@
+{
+  if (stringValue != null)   return stringValue;
+  if (doubleValue != null) {
+    if (doubleValue % 1 == 0)     return Long.toString(longValue);
+    return Double.toString(doubleValue);
+  }
+  if (booleanValue != null)   return Boolean.toString(booleanValue);
+  if (type == ValueType.nullValue)   return null;
+  throw new IllegalStateException("Value cannot be converted to string: " + type);
+}

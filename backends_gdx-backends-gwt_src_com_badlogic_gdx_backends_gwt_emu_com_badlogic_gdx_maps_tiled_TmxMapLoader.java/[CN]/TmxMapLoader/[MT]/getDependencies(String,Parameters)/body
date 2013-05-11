@@ -6,6 +6,10 @@
     boolean generateMipMaps=(parameter != null ? parameter.generateMipMaps : false);
     TextureLoader.TextureParameter texParams=new TextureParameter();
     texParams.genMipMaps=generateMipMaps;
+    if (parameter != null) {
+      texParams.minFilter=parameter.textureMinFilter;
+      texParams.magFilter=parameter.textureMagFilter;
+    }
     for (    FileHandle image : loadTilesets(root,tmxFile)) {
       dependencies.add(new AssetDescriptor(image.path(),Texture.class,texParams));
     }

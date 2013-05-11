@@ -1,0 +1,42 @@
+{
+  JsonValue materials=json.get("materials");
+  if (materials == null) {
+  }
+ else {
+    model.materials.ensureCapacity(materials.size());
+    for (int i=0; i < materials.size(); i++) {
+      JsonValue material=materials.get(i);
+      ModelMaterial jsonMaterial=new ModelMaterial();
+      String id=material.getString("id");
+      if (id == null)       throw new GdxRuntimeException("Material needs an id.");
+      jsonMaterial.id=id;
+      jsonMaterial.diffuse=parseColor(material.get("diffuse"),Color.WHITE);
+      jsonMaterial.ambient=parseColor(material.get("ambient"),Color.BLACK);
+      jsonMaterial.emissive=parseColor(material.get("emissive"),Color.BLACK);
+      jsonMaterial.specular=parseColor(material.get("specular"),Color.BLACK);
+      float shininess=material.getFloat("shininess",0.0f);
+      JsonValue textures=material.get("textures");
+      if (textures != null) {
+        for (int j=0; j < textures.size(); j++) {
+          JsonValue texture=textures.get(j);
+          ModelTexture jsonTexture=new ModelTexture();
+          String textureId=texture.getString("id");
+          if (textureId == null)           throw new GdxRuntimeException("Texture has no id.");
+          jsonTexture.id=textureId;
+          String fileName=texture.getString("filename");
+          if (fileName == null)           throw new GdxRuntimeException("Texture needs filename.");
+          jsonTexture.fileName=materialDir + "/" + fileName;
+          jsonTexture.uvTranslation=readVector2(texture.get("uvTranslation"),0f,0f);
+          jsonTexture.uvScaling=readVector2(texture.get("uvScaling"),1f,1f);
+          String textureType=texture.getString("type");
+          if (textureType == null)           throw new GdxRuntimeException("Texture needs type.");
+          if (textureType.equals("STANDARD")) {
+            if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<ModelTexture>();
+            jsonMaterial.diffuseTextures.add(jsonTexture);
+          }
+        }
+      }
+      model.materials.add(jsonMaterial);
+    }
+  }
+}

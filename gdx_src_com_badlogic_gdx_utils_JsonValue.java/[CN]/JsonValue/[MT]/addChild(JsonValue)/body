@@ -1,0 +1,15 @@
+{
+  JsonValue current=child;
+  if (current == null) {
+    child=newChild;
+    return;
+  }
+  while (true) {
+    if (current.next == null) {
+      current.next=newChild;
+      newChild.prev=current;
+      return;
+    }
+    current=current.next;
+  }
+}

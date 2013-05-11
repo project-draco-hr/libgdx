@@ -4,7 +4,7 @@
   ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
   if (fields == null)   fields=cacheFields(type);
   int i=0;
-  for (  FieldMetadata metadata : fields.values()) {
+  for (  FieldMetadata metadata : new Values<FieldMetadata>(fields)) {
     Field field=metadata.field;
     try {
       Object value=field.get(object);

@@ -1,7 +1,5 @@
 {
   x=x - this.x;
   y=y - this.y;
-  halfWidth=width * 0.5f;
-  halfHeight=height * 0.5f;
-  return (x * x) / (halfWidth * halfWidth) + (y * y) / (halfHeight * halfHeight) <= 1.0f;
+  return (x * x) / (width * 0.5f * width* 0.5f) + (y * y) / (height * 0.5f * height* 0.5f) <= 1.0f;
 }
