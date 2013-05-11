@@ -32,6 +32,7 @@ System.out.println("Usage: INPUTDIR [OUTPUTDIR] [--strip-unused]");
 System.exit(0);
 }
 }
+TiledMapPacker packer=new TiledMapPacker(packerSettings);
 new LwjglApplication(new ApplicationListener(){
 @Override public void resume(){
 }
