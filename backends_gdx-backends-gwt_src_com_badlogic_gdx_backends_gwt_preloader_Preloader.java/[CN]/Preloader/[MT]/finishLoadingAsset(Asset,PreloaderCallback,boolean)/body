@@ -1,0 +1,12 @@
+{
+  loaded++;
+  if (success) {
+    callback.loaded(asset.url,loaded,assets.size);
+  }
+ else {
+    callback.error(asset.url);
+  }
+  if (loaded == assets.size) {
+    callback.done();
+  }
+}

@@ -1,4 +1,10 @@
 {
+  StringBuilder buffer=new StringBuilder();
+  for (int i=0; i < text.length(); i++) {
+    char c=text.charAt(i);
+    buffer.append(style.font.containsCharacter(c) ? c : ' ');
+  }
+  String text=buffer.toString();
   if (passwordMode && style.font.containsCharacter(passwordCharacter)) {
     if (passwordBuffer == null)     passwordBuffer=new StringBuilder(text.length());
     if (passwordBuffer.length() > text.length())     passwordBuffer.setLength(text.length());
