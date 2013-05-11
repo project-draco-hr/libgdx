@@ -9,5 +9,6 @@
     child.prev.next=child.next;
     if (child.next != null)     child.next.prev=child.prev;
   }
+  size--;
   return child;
 }

@@ -1,9 +1,3 @@
 {
-  JsonValue current=child;
-  int size=0;
-  while (current != null) {
-    size++;
-    current=current.next;
-  }
   return size;
 }
