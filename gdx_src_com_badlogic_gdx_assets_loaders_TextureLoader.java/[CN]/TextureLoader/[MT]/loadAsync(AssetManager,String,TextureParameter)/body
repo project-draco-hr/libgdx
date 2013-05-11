@@ -1,27 +1,32 @@
 {
+  TextureLoaderInfo info=new TextureLoaderInfo();
+  info.filename=fileName;
   if (parameter == null || (parameter != null && parameter.textureData == null)) {
     Pixmap pixmap=null;
     Format format=null;
     boolean genMipMaps=false;
-    texture=null;
+    info.texture=null;
     if (parameter != null) {
       format=parameter.format;
       genMipMaps=parameter.genMipMaps;
-      texture=parameter.texture;
+      info.texture=parameter.texture;
     }
     FileHandle handle=resolve(fileName);
     if (!fileName.contains(".etc1")) {
       if (fileName.contains(".cim"))       pixmap=PixmapIO.readCIM(handle);
  else       pixmap=new Pixmap(handle);
-      data=new FileTextureData(handle,pixmap,format,genMipMaps);
+      info.data=new FileTextureData(handle,pixmap,format,genMipMaps);
     }
  else {
-      data=new ETC1TextureData(handle,genMipMaps);
+      info.data=new ETC1TextureData(handle,genMipMaps);
     }
   }
  else {
-    data=parameter.textureData;
-    if (!data.isPrepared())     data.prepare();
-    texture=parameter.texture;
+    info.data=parameter.textureData;
+    if (!info.data.isPrepared())     info.data.prepare();
+    info.texture=parameter.texture;
+  }
+synchronized (items) {
+    items.add(info);
   }
 }

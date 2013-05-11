@@ -20,7 +20,9 @@
     }
     float[] verts=new float[vertices.size()];
     for (int j=0; j < vertices.size(); j++) {
-      verts[j]=(Float)vertices.getFloat(j);
+      final String s=vertices.getString(j);
+      if (s.startsWith("0x"))       verts[j]=Float.intBitsToFloat((int)Long.parseLong(s.substring(2),16));
+ else       verts[j]=vertices.getFloat(j);
     }
     jsonMesh.vertices=verts;
     JsonValue meshParts=mesh.get("parts");

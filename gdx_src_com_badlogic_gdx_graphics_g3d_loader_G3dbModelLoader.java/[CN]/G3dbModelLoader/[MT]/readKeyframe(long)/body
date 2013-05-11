@@ -7,7 +7,7 @@
     cnt+=1 + getSize(type) + size;
     if ((type & TYPE_MASK) == G3DB_TAG_TIME)     keyframe.keytime=readFloat(size) / 1000.f;
  else     if ((type & TYPE_MASK) == G3DB_TAG_TRANSLATE)     keyframe.translation=readVector3(size);
- else     if ((type & TYPE_MASK) == G3DB_TAG_ROTATE)     keyframe.rotation=readQuaternion(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_ROTATE)     keyframe.rotation=readQuaternion(size).nor();
  else     if ((type & TYPE_MASK) == G3DB_TAG_SCALE)     keyframe.scale=readVector3(size);
  else {
       din.skipBytes((int)size);

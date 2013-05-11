@@ -1,5 +1,6 @@
 {
   final ModelTexture texture=new ModelTexture();
+  texture.usage=ModelTexture.USAGE_DIFFUSE;
   long cnt=0;
   while ((din.available() > 0) && (cnt < length)) {
     final byte type=din.readByte();

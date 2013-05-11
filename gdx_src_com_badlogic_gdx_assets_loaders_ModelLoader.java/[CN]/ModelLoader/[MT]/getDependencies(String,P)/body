@@ -1,12 +1,16 @@
 {
   final Array<AssetDescriptor> deps=new Array();
-  data=loadModelData(resolve(fileName),parameters);
+  ModelData data=loadModelData(resolve(fileName),parameters);
   if (data == null)   return deps;
+  ObjectMap.Entry<String,ModelData> item=new ObjectMap.Entry<String,ModelData>();
+  item.key=fileName;
+  item.value=data;
+synchronized (items) {
+    items.add(item);
+  }
   for (  final ModelMaterial modelMaterial : data.materials) {
-    if (modelMaterial.diffuseTextures != null) {
-      for (      final ModelTexture modelTexture : modelMaterial.diffuseTextures) {
-        deps.add(new AssetDescriptor(modelTexture.fileName,Texture.class));
-      }
+    if (modelMaterial.textures != null) {
+      for (      final ModelTexture modelTexture : modelMaterial.textures)       deps.add(new AssetDescriptor(modelTexture.fileName,Texture.class));
     }
   }
   return deps;

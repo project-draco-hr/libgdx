@@ -1,7 +1,7 @@
 {
   if (currentMaterial == renderable.material)   return;
   currentMaterial=renderable.material;
-  for (  Material.Attribute attr : currentMaterial) {
+  for (  final Material.Attribute attr : currentMaterial) {
     final long t=attr.type;
     if (BlendingAttribute.is(t))     context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
  else     if (ColorAttribute.is(t)) {
@@ -10,8 +10,9 @@
  else       if ((t & ColorAttribute.Specular) == ColorAttribute.Specular)       set(u_specularColor,col.color);
     }
  else     if (TextureAttribute.is(t)) {
-      TextureAttribute tex=(TextureAttribute)attr;
-      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)       bindTextureAttribute(loc(u_diffuseTexture),tex);
+      final TextureAttribute tex=(TextureAttribute)attr;
+      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse && hasUniform(u_diffuseTexture))       bindTextureAttribute(loc(u_diffuseTexture),tex);
+      if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && hasUniform(u_normalTexture))       bindTextureAttribute(loc(u_normalTexture),tex);
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
