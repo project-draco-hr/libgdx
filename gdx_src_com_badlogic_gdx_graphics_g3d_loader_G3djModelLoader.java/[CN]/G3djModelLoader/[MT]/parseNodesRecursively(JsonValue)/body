@@ -12,7 +12,7 @@
   JsonValue scale=json.get("scale");
   if (scale != null && scale.size() != 3)   throw new GdxRuntimeException("Node scale incomplete");
   jsonNode.scale=scale == null ? null : new Vector3(scale.getFloat(0),scale.getFloat(1),scale.getFloat(2));
-  String meshId=json.getString("mesh");
+  String meshId=json.getString("mesh",null);
   if (meshId != null)   jsonNode.meshId=meshId;
   JsonValue materials=json.get("parts");
   if (materials != null) {

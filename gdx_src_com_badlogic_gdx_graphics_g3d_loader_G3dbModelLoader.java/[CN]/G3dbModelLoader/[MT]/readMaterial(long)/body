@@ -17,8 +17,8 @@
  else     if ((type & TYPE_MASK) == G3DB_TAG_SPECULAR)     material.specular=readColor(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_SHININESS)     material.shininess=readFloat(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_TEXTURE) {
-      if (material.diffuseTextures == null)       material.diffuseTextures=new Array<ModelTexture>();
-      material.diffuseTextures.add(readTexture(size));
+      if (material.textures == null)       material.textures=new Array<ModelTexture>();
+      material.textures.add(readTexture(size));
     }
  else {
       din.skipBytes((int)size);

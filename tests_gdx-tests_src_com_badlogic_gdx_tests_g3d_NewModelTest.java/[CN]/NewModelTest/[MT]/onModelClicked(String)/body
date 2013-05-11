@@ -3,11 +3,6 @@
   assets.load("data/" + name,Model.class);
   assets.finishLoading();
   instances.clear();
-  for (float x=-10; x <= 10; x+=10) {
-    for (float z=-10; z <= 10; z+=10) {
-      final ModelInstance instance=new ModelInstance(assets.get("data/" + name,Model.class));
-      instance.transform.translate(x,9.492372f,z);
-      instances.add(instance);
-    }
-  }
+  final ModelInstance instance=new ModelInstance(assets.get("data/" + name,Model.class));
+  instances.add(instance);
 }

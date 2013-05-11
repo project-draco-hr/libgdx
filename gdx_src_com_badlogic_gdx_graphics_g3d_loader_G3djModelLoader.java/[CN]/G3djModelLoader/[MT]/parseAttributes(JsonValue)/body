@@ -14,6 +14,9 @@
  else     if (attr.equals("COLOR")) {
       vertexAttributes.add(VertexAttribute.ColorUnpacked());
     }
+ else     if (attr.equals("COLORPACKED")) {
+      vertexAttributes.add(VertexAttribute.Color());
+    }
  else     if (attr.equals("TANGENT")) {
       vertexAttributes.add(VertexAttribute.Tangent());
     }
@@ -27,7 +30,7 @@
       vertexAttributes.add(VertexAttribute.BoneWeight(blendWeightCount++));
     }
  else {
-      throw new GdxRuntimeException("Unknown vertex attribuet '" + attr + "', should be one of position, normal, uv, tangent or binormal");
+      throw new GdxRuntimeException("Unknown vertex attribute '" + attr + "', should be one of position, normal, uv, tangent or binormal");
     }
   }
   return vertexAttributes.toArray(VertexAttribute.class);

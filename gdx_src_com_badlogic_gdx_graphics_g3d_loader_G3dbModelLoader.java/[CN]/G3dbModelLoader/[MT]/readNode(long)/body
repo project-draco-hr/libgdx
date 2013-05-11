@@ -9,7 +9,7 @@
     cnt+=1 + getSize(type) + size;
     if ((type & TYPE_MASK) == G3DB_TAG_ID)     node.id=readString(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_TRANSLATE)     node.translation=readVector3(size);
- else     if ((type & TYPE_MASK) == G3DB_TAG_ROTATE)     node.rotation=readQuaternion(size);
+ else     if ((type & TYPE_MASK) == G3DB_TAG_ROTATE)     node.rotation=readQuaternion(size).nor();
  else     if ((type & TYPE_MASK) == G3DB_TAG_SCALE)     node.scale=readVector3(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_MESH)     node.meshId=readString(size);
  else     if ((type & TYPE_MASK) == G3DB_TAG_NODEPART)     parts.add(readNodePart(size));

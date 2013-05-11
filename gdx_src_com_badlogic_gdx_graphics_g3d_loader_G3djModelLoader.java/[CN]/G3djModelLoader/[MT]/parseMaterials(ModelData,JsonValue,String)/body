@@ -30,10 +30,9 @@
           jsonTexture.uvScaling=readVector2(texture.get("uvScaling"),1f,1f);
           String textureType=texture.getString("type");
           if (textureType == null)           throw new GdxRuntimeException("Texture needs type.");
-          if (textureType.equals("STANDARD")) {
-            if (jsonMaterial.diffuseTextures == null)             jsonMaterial.diffuseTextures=new Array<ModelTexture>();
-            jsonMaterial.diffuseTextures.add(jsonTexture);
-          }
+          jsonTexture.usage=parseTextureUsage(textureType);
+          if (jsonMaterial.textures == null)           jsonMaterial.textures=new Array<ModelTexture>();
+          jsonMaterial.textures.add(jsonTexture);
         }
       }
       model.materials.add(jsonMaterial);
