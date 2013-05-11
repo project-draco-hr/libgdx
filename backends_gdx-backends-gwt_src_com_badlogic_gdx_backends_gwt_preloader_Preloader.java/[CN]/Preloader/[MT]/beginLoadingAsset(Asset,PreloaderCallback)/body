@@ -1,19 +1,12 @@
 {
-  if (next == assets.size) {
-    callback.done();
-    return;
-  }
-  final Asset asset=assets.get(next);
   if (asset.type == AssetType.Text) {
     new TextLoader(baseUrl + asset.url,new LoaderCallback<String>(){
       @Override public void success(      String result){
         texts.put(asset.url,result);
-        callback.loaded(asset.url,next + 1,assets.size);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,true);
       }
       @Override public void error(){
-        callback.error(asset.url);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,false);
       }
     }
 );
@@ -22,12 +15,10 @@
     new ImageLoader(baseUrl + asset.url,new LoaderCallback<ImageElement>(){
       @Override public void success(      ImageElement result){
         images.put(asset.url,result);
-        callback.loaded(asset.url,next + 1,assets.size);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,true);
       }
       @Override public void error(){
-        callback.error(asset.url);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,false);
       }
     }
 );
@@ -36,12 +27,10 @@
     new BinaryLoader(baseUrl + asset.url,new LoaderCallback<Blob>(){
       @Override public void success(      Blob result){
         binaries.put(asset.url,result);
-        callback.loaded(asset.url,next + 1,assets.size);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,true);
       }
       @Override public void error(){
-        callback.error(asset.url);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,false);
       }
     }
 );
@@ -50,17 +39,15 @@
     new AudioLoader(baseUrl + asset.url,new LoaderCallback<Void>(){
       @Override public void success(      Void result){
         audio.put(asset.url,null);
-        callback.loaded(asset.url,next + 1,assets.size);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,true);
       }
       @Override public void error(){
-        callback.error(asset.url);
-        loadNextAsset(assets,next + 1,callback);
+        finishLoadingAsset(asset,callback,false);
       }
     }
 );
   }
   if (asset.type == AssetType.Directory) {
-    loadNextAsset(assets,next + 1,callback);
+    finishLoadingAsset(asset,callback,true);
   }
 }
