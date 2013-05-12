@@ -34,7 +34,7 @@
       for (      TiledMapTileSet tileset : map.getTileSets()) {
         String tilesetName=tileset.getName();
         if (!tilesetsToPack.containsKey(tilesetName)) {
-          tilesetsToPack.put(tilesetName,map.getTileSets().getTileSet(tilesetName));
+          tilesetsToPack.put(tilesetName,tileset);
         }
       }
     }

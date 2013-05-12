@@ -3,6 +3,8 @@
   texturePackerSettings.paddingX=2;
   texturePackerSettings.paddingY=2;
   texturePackerSettings.duplicatePadding=true;
+  texturePackerSettings.alias=true;
+  texturePackerSettings.useIndexes=true;
   final TiledMapPackerSettings packerSettings=new TiledMapPackerSettings();
 switch (args.length) {
 case 3:
