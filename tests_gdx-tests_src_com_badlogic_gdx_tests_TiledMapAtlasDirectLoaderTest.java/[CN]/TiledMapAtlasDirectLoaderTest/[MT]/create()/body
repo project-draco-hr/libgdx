@@ -8,6 +8,6 @@
   Gdx.input.setInputProcessor(cameraController);
   font=new BitmapFont();
   batch=new SpriteBatch();
-  map=new AtlasTiledMapLoader().load("data/maps/tiled-atlas-processed/test.tmx");
+  map=new AtlasTmxMapLoader().load("data/maps/tiled-atlas-processed/test.tmx");
   renderer=new OrthogonalTiledMapRenderer(map,1f / 32f);
 }
