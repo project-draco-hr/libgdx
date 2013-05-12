@@ -1,5 +1,4 @@
 {
-  TextureLoaderInfo info=new TextureLoaderInfo();
   info.filename=fileName;
   if (parameter == null || (parameter != null && parameter.textureData == null)) {
     Pixmap pixmap=null;
@@ -25,8 +24,5 @@
     info.data=parameter.textureData;
     if (!info.data.isPrepared())     info.data.prepare();
     info.texture=parameter.texture;
-  }
-synchronized (items) {
-    items.add(info);
   }
 }
