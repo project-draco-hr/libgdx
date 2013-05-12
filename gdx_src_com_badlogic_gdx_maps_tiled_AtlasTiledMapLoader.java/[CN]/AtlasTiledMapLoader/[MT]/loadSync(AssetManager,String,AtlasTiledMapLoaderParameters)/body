@@ -1,0 +1,6 @@
+{
+  if (parameter != null) {
+    setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
+  }
+  return map;
+}

@@ -1,7 +1,7 @@
 {
-  if (ownedTextures != null) {
-    for (    Texture texture : ownedTextures) {
-      texture.dispose();
+  if (ownedResources != null) {
+    for (    Disposable resource : ownedResources) {
+      resource.dispose();
     }
   }
 }
