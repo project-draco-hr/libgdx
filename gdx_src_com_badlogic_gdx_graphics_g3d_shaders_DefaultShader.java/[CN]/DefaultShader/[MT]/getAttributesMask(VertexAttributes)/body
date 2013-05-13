@@ -6,6 +6,8 @@
     long a=(long)attributes.get(i).usage;
     if (a == Usage.Generic) {
       if (attributes.get(i).alias.startsWith("a_boneWeight"))       a=blendAttributes[Integer.parseInt(attributes.get(i).alias.substring(12))];
+ else       if (attributes.get(i).alias.equals(ShaderProgram.TANGENT_ATTRIBUTE))       a=tangentAttribute;
+ else       if (attributes.get(i).alias.equals(ShaderProgram.BINORMAL_ATTRIBUTE))       a=binormalAttribute;
     }
     result|=a;
   }

@@ -13,6 +13,8 @@
   for (int i=0; i < blendAttributes.length; i++) {
     if ((attributes & blendAttributes[i]) == blendAttributes[i])     prefix+="#define boneWeight" + i + "Flag\n";
   }
+  if ((attributes & tangentAttribute) == tangentAttribute)   prefix+="#define tangentFlag\n";
+  if ((attributes & binormalAttribute) == binormalAttribute)   prefix+="#define binormalFlag\n";
   if ((mask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
   if ((mask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse)   prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
   if ((mask & TextureAttribute.Normal) == TextureAttribute.Normal)   prefix+="#define " + TextureAttribute.NormalAlias + "Flag\n";
