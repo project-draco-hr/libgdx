@@ -32,7 +32,7 @@
         nodePart.bones=new String[bones.size()];
         for (int j=0; j < bones.size(); j++)         nodePart.bones[j]=bones.getString(j);
       }
-      jsonNode.parts[i++]=nodePart;
+      jsonNode.parts[i]=nodePart;
     }
   }
   JsonValue children=json.get("children");
