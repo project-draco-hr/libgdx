@@ -14,16 +14,11 @@
   preloaderPanel.add(meterPanel);
   getRootPanel().add(preloaderPanel);
   return new PreloaderCallback(){
-    @Override public void done(){
-      meter.getElement().getStyle().setWidth(100,Unit.PCT);
-    }
-    @Override public void loaded(    String file,    int loaded,    int total){
-      System.out.println("loaded " + file + ","+ loaded+ "/"+ total);
-      float percent=(float)loaded / (float)total * 100;
-      meterStyle.setWidth(percent,Unit.PCT);
-    }
     @Override public void error(    String file){
       System.out.println("error: " + file);
+    }
+    @Override public void update(    PreloaderState state){
+      meterStyle.setWidth(100f * state.getProgress(),Unit.PCT);
     }
   }
 ;
