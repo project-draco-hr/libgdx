@@ -1,0 +1,8 @@
+{
+  ModelData model=new ModelData();
+  parseMeshes(model,json);
+  parseMaterials(model,json,folder);
+  parseNodes(model,json);
+  parseAnimations(model,json);
+  return model;
+}

@@ -1,0 +1,12 @@
+{
+  JsonValue result=null;
+  try {
+    DataInputStream din=new DataInputStream(fileHandle.read());
+    result=parse(din);
+    din.close();
+  }
+ catch (  IOException e) {
+    e.printStackTrace();
+  }
+  return result;
+}

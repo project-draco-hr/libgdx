@@ -1,28 +1,3 @@
 {
-  din=new DataInputStream(fileHandle.read());
-  file=fileHandle;
-  try {
-    if (!readString(4).equals("G3DB"))     throw new IOException("Not a valid G3DB file.");
-    versionHi=din.readShort();
-    versionLo=din.readShort();
-    din.skipBytes(32 - 8);
-    result=new ModelData();
-    result.version=versionHi + "." + versionLo;
-    readModelData();
-  }
- catch (  final IOException e) {
-    Gdx.app.log("G3dbModelLoader",e.getMessage());
-  }
- finally {
-    try {
-      din.close();
-    }
- catch (    final IOException e) {
-      Gdx.app.log("G3dbModelLoader",e.getMessage());
-    }
-    din=null;
-  }
-  final ModelData r=result;
-  result=null;
-  return r;
+  return parseModel(fileHandle);
 }

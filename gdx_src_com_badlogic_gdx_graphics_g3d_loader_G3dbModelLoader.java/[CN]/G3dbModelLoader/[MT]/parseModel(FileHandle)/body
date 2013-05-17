@@ -1,5 +1,5 @@
 {
-  JsonReader reader=new JsonReader();
+  UBJsonReader reader=new UBJsonReader();
   JsonValue json=reader.parse(handle);
   G3dModelLoader loader=new G3dModelLoader();
   return loader.parseModel(json,handle.parent().path());

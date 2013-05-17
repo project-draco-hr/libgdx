@@ -1,5 +1,0 @@
-{
-  final short result[]=new short[(int)length / 2];
-  for (int i=0; i < result.length; i++)   result[i]=din.readShort();
-  return result;
-}

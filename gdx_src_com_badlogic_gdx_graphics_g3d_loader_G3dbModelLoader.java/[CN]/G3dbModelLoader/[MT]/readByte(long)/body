@@ -1,5 +1,0 @@
-{
-  int result=din.readByte() & 0xFF;
-  if (size > 1)   din.skipBytes((int)size - 1);
-  return result;
-}

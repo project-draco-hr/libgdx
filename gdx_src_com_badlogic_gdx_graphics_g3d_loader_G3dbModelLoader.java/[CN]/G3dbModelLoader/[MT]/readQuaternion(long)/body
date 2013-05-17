@@ -1,9 +1,0 @@
-{
-  final Quaternion result=new Quaternion();
-  if (size >= 4)   result.x=din.readFloat();
-  if (size >= 8)   result.y=din.readFloat();
-  if (size >= 12)   result.z=din.readFloat();
-  if (size >= 16)   result.w=din.readFloat();
-  if (size > 16)   din.skipBytes((int)size - 16);
-  return result;
-}
