@@ -1,12 +1,8 @@
 {
-  JsonValue result=null;
   try {
-    DataInputStream din=new DataInputStream(fileHandle.read());
-    result=parse(din);
-    din.close();
+    return parse(file.read());
   }
- catch (  IOException e) {
-    e.printStackTrace();
+ catch (  Exception ex) {
+    throw new SerializationException("Error parsing file: " + file,ex);
   }
-  return result;
 }

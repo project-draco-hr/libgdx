@@ -7,7 +7,7 @@
  else   if (type == 'B')   return new JsonValue((long)readUChar(din));
  else   if (type == 'i')   return new JsonValue((long)din.readShort());
  else   if (type == 'I')   return new JsonValue((long)din.readInt());
- else   if (type == 'I')   return new JsonValue(din.readLong());
+ else   if (type == 'L')   return new JsonValue(din.readLong());
  else   if (type == 'd')   return new JsonValue(din.readFloat());
  else   if (type == 'D')   return new JsonValue(din.readDouble());
  else   if (type == 's' || type == 'S')   return new JsonValue(parseString(din,type));
