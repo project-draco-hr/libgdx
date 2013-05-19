@@ -1,8 +1,8 @@
 {
-  if (segments <= 0)   throw new IllegalArgumentException("segments must be >= 0.");
+  if (segments <= 0)   throw new IllegalArgumentException("segments must be > 0.");
   if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
   checkDirty();
-  checkFlush(segments * 2 + 2);
+  checkFlush(segments * 3);
   float angle=2 * 3.1415926f / segments;
   float cx=x + width / 2, cy=y + height / 2;
   if (currType == ShapeType.Line) {
