@@ -11,7 +11,7 @@
     }
     DirectImageResolver imageResolver=new DirectImageResolver(textures);
     TiledMap map=loadTilemap(root,tmxFile,imageResolver);
-    map.setOwnedTextures(textures.values().toArray());
+    map.setOwnedResources(textures.values().toArray());
     return map;
   }
  catch (  IOException e) {

@@ -1,5 +1,6 @@
 {
   PrintStream out=new PrintStream(new FileOutputStream(file));
+  out.println("font.name=" + fontName);
   out.println("font.size=" + fontSize);
   out.println("font.bold=" + bold);
   out.println("font.italic=" + italic);

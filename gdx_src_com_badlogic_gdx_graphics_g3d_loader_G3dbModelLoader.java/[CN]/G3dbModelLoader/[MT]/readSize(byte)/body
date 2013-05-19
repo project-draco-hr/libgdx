@@ -1,6 +1,0 @@
-{
-  if ((tag & SIZE_MASK) == SMALL)   return din.readByte();
-  if ((tag & SIZE_MASK) == MEDIUM)   return din.readShort();
-  if ((tag & SIZE_MASK) == LARGE)   return din.readInt();
-  return din.readLong();
-}

@@ -1,0 +1,9 @@
+{
+  JsonValue result=new JsonValue(JsonValue.ValueType.array);
+  byte type=din.readByte();
+  while (din.available() > 0 && type != ']') {
+    result.addChild(parse(din,type));
+    type=din.readByte();
+  }
+  return result;
+}
