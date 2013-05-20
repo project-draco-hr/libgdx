@@ -1,4 +1,4 @@
 {
   this.ordered=ordered;
-  items=(T[])java.lang.reflect.Array.newInstance(arrayType,capacity);
+  items=(T[])Reflection.newArray(arrayType,capacity);
 }

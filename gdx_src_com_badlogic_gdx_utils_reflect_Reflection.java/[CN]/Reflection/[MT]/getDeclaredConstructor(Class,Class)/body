@@ -1,0 +1,11 @@
+{
+  try {
+    return new Constructor(c.getDeclaredConstructor(parameterTypes));
+  }
+ catch (  SecurityException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  NoSuchMethodException e) {
+    throw new ReflectionException("",e);
+  }
+}

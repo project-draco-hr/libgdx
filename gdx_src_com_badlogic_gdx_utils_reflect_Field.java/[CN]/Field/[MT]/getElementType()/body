@@ -1,0 +1,12 @@
+{
+  Type genericType=field.getGenericType();
+  if (genericType instanceof ParameterizedType) {
+    Type[] actualTypes=((ParameterizedType)genericType).getActualTypeArguments();
+    if (actualTypes.length == 1) {
+      Type actualType=actualTypes[0];
+      if (actualType instanceof Class)       return (Class)actualType;
+ else       if (actualType instanceof ParameterizedType)       return (Class)((ParameterizedType)actualType).getRawType();
+    }
+  }
+  return null;
+}

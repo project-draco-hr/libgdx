@@ -1,0 +1,5 @@
+{
+  Type cType=ReflectionCache.getType(c);
+  Type objType=ReflectionCache.getType(obj.getClass());
+  return cType.isAssignableFrom(objType);
+}
