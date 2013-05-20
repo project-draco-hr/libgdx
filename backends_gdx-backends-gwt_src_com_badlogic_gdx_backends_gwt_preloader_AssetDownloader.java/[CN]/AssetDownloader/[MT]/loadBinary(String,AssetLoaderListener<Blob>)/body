@@ -1,0 +1,21 @@
+{
+  XMLHttpRequest request=XMLHttpRequest.create();
+  request.setResponseType(ResponseType.ArrayBuffer);
+  request.setOnReadyStateChange(new ReadyStateChangeHandler(){
+    @Override public void onReadyStateChange(    XMLHttpRequest xhr){
+      if (xhr.getReadyState() == XMLHttpRequest.DONE) {
+        if (xhr.getStatus() != 200) {
+          listener.onFailure();
+        }
+ else {
+          @SuppressWarnings("synthetic-access") Int8Array data=getInt8ArrayResponse(xhr);
+          listener.onSuccess(new Blob(data));
+        }
+      }
+    }
+  }
+);
+  setOnProgress(request,listener);
+  request.open("GET",url);
+  request.send();
+}

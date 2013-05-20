@@ -7,22 +7,37 @@
   if (mtl.emissive != null)   result.set(new ColorAttribute(ColorAttribute.Emissive,mtl.emissive));
   if (mtl.shininess > 0f)   result.set(new FloatAttribute(FloatAttribute.Shininess,mtl.shininess));
   ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
-  if (mtl.diffuseTextures != null) {
-    for (    ModelTexture tex : mtl.diffuseTextures) {
-      if (textures.containsKey(tex.fileName))       continue;
-      Texture texture=textureProvider.load(tex.fileName);
-      textures.put(tex.fileName,texture);
-      disposables.add(texture);
-    }
-    for (    ModelTexture tex : mtl.diffuseTextures) {
-      TextureDescriptor descriptor=new TextureDescriptor();
-      descriptor.texture=textures.get(tex.fileName);
+  if (mtl.textures != null) {
+    for (    ModelTexture tex : mtl.textures) {
+      Texture texture;
+      if (textures.containsKey(tex.fileName)) {
+        texture=textures.get(tex.fileName);
+      }
+ else {
+        texture=textureProvider.load(tex.fileName);
+        textures.put(tex.fileName,texture);
+        disposables.add(texture);
+      }
+      TextureDescriptor descriptor=new TextureDescriptor(texture);
       descriptor.minFilter=GL20.GL_LINEAR;
       descriptor.magFilter=GL20.GL_LINEAR;
       descriptor.uWrap=GL20.GL_CLAMP_TO_EDGE;
       descriptor.vWrap=GL20.GL_CLAMP_TO_EDGE;
-      result.set(new TextureAttribute(TextureAttribute.Diffuse,descriptor));
-    }
-  }
-  return result;
+switch (tex.usage) {
+case ModelTexture.USAGE_DIFFUSE:
+        result.set(new TextureAttribute(TextureAttribute.Diffuse,descriptor));
+      break;
+case ModelTexture.USAGE_SPECULAR:
+    result.set(new TextureAttribute(TextureAttribute.Specular,descriptor));
+  break;
+case ModelTexture.USAGE_BUMP:
+result.set(new TextureAttribute(TextureAttribute.Bump,descriptor));
+break;
+case ModelTexture.USAGE_NORMAL:
+result.set(new TextureAttribute(TextureAttribute.Normal,descriptor));
+break;
+}
+}
+}
+return result;
 }

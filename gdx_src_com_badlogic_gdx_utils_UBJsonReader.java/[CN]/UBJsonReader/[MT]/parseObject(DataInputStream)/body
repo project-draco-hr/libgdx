@@ -1,0 +1,13 @@
+{
+  JsonValue result=new JsonValue(JsonValue.ValueType.object);
+  byte type=din.readByte();
+  while (din.available() > 0 && type != '}') {
+    if (type != 's' && type != 'S')     throw new GdxRuntimeException("Only string key are currently supported");
+    final String key=parseString(din,type);
+    final JsonValue child=parse(din);
+    child.setName(key);
+    result.addChild(child);
+    type=din.readByte();
+  }
+  return result;
+}

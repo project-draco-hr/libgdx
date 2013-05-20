@@ -9,7 +9,10 @@
       String[] pieces=line.split("=",2);
       String name=pieces[0].trim();
       String value=pieces[1];
-      if (name.equals("font.size")) {
+      if (name.equals("font.name")) {
+        fontName=value;
+      }
+ else       if (name.equals("font.size")) {
         fontSize=Integer.parseInt(value);
       }
  else       if (name.equals("font.bold")) {

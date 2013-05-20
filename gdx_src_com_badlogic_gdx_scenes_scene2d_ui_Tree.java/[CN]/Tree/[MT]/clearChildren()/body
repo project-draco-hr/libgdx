@@ -3,4 +3,5 @@
   rootNodes.clear();
   selectedNodes.clear();
   setOverNode(null);
+  fireChangeEvent();
 }

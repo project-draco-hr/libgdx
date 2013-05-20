@@ -1,5 +1,5 @@
 {
-  final int max=Math.min(getMaxTextureUnits(),MAX_GLES_UNITS - offset);
+  final int max=Math.min(getMaxTextureUnits(),MAX_GLES_UNITS);
   if (offset < 0 || count < 0 || (offset + count) > max || reuseWeight < 1)   throw new GdxRuntimeException("Illegal arguments");
   this.method=method;
   this.offset=offset;
