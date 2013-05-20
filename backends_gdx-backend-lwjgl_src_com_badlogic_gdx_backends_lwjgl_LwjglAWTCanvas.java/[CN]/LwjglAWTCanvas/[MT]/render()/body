@@ -1,4 +1,5 @@
 {
+  if (!running)   return;
   setGlobals();
   canvas.setCursor(cursor);
   graphics.updateTime();
