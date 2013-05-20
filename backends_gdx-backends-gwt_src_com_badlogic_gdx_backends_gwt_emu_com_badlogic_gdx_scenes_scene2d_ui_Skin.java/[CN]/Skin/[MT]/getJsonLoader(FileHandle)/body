@@ -1,7 +1,7 @@
 {
   final Skin skin=this;
   final Json json=new Json(){
-    @Override public <T>T readValue(    Class<T> type,    Class elementType,    JsonValue jsonData){
+    public <T>T readValue(    Class<T> type,    Class elementType,    JsonValue jsonData){
       if (jsonData.isString() && !ReflectionCache.getType(type).isAssignableFrom(ReflectionCache.getType(CharSequence.class)))       return get(jsonData.asString(),type);
       return super.readValue(type,elementType,jsonData);
     }
