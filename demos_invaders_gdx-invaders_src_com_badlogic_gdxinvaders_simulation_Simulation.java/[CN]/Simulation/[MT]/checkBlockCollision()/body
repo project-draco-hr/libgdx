@@ -2,9 +2,11 @@
   removedShots.clear();
   for (int i=0; i < shots.size(); i++) {
     Shot shot=shots.get(i);
+    shot.transform.getTranslation(tmpV2);
     for (int j=0; j < blocks.size(); j++) {
       Block block=blocks.get(j);
-      if (block.position.dst(shot.position) < Block.BLOCK_RADIUS) {
+      block.transform.getTranslation(tmpV1);
+      if (tmpV1.dst(tmpV2) < Block.BLOCK_RADIUS) {
         removedShots.add(shot);
         shot.hasLeftField=true;
         blocks.remove(block);

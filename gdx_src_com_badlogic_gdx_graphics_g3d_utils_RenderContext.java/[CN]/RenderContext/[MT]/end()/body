@@ -1,0 +1,5 @@
+{
+  if (depthTest)   Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
+  if (blending)   Gdx.gl.glDisable(GL10.GL_BLEND);
+  textureBinder.end();
+}

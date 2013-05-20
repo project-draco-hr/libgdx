@@ -1,0 +1,23 @@
+{
+  for (  final ModelInstance instance : instances) {
+    if (instance.currentAnimation != null) {
+      instance.currentAnimTime=(instance.currentAnimTime + Gdx.graphics.getDeltaTime()) % instance.currentAnimation.duration;
+      for (      final NodeAnimation nodeAnim : instance.currentAnimation.nodeAnimations) {
+        nodeAnim.node.isAnimated=true;
+        final int n=nodeAnim.keyframes.size - 1;
+        if (n == 0) {
+          nodeAnim.node.localTransform.idt().translate(nodeAnim.keyframes.get(0).translation).rotate(nodeAnim.keyframes.get(0).rotation).scl(nodeAnim.keyframes.get(0).scale);
+        }
+        for (int i=0; i < n; i++) {
+          if (instance.currentAnimTime >= nodeAnim.keyframes.get(i).keytime && instance.currentAnimTime <= nodeAnim.keyframes.get(i + 1).keytime) {
+            final float t=(instance.currentAnimTime - nodeAnim.keyframes.get(i).keytime) / (nodeAnim.keyframes.get(i + 1).keytime - nodeAnim.keyframes.get(i).keytime);
+            nodeAnim.node.localTransform.idt().translate(tmpV.set(nodeAnim.keyframes.get(i).translation).lerp(nodeAnim.keyframes.get(i + 1).translation,t)).rotate(tmpQ.set(nodeAnim.keyframes.get(i).rotation).slerp(nodeAnim.keyframes.get(i + 1).rotation,t)).scl(tmpV.set(nodeAnim.keyframes.get(i).scale).lerp(nodeAnim.keyframes.get(i + 1).scale,t));
+            break;
+          }
+        }
+      }
+      instance.calculateTransforms();
+    }
+  }
+  batch.render(instances,lights);
+}

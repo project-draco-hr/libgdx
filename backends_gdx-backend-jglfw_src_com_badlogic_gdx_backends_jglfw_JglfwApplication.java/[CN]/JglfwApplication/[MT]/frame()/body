@@ -1,8 +1,5 @@
 {
-  if (glfwWindowShouldClose(graphics.window)) {
-    exit();
-    return;
-  }
+  if (!running)   return;
 synchronized (runnables) {
     executedRunnables.clear();
     executedRunnables.addAll(runnables);

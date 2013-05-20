@@ -1,0 +1,7 @@
+{
+  angleY+=(x - touchStartX);
+  angleX+=(y - touchStartY);
+  touchStartX=x;
+  touchStartY=y;
+  return false;
+}

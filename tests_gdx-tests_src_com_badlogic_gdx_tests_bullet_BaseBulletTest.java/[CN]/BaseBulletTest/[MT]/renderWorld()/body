@@ -1,3 +1,5 @@
 {
-  world.render();
+  modelBatch.begin(camera);
+  world.render(modelBatch,lights);
+  modelBatch.end();
 }

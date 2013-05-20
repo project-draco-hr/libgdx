@@ -1,0 +1,8 @@
+{
+  if (this.button < 0)   return false;
+  final float deltaX=(screenX - startX) / Gdx.graphics.getWidth();
+  final float deltaY=(startY - screenY) / Gdx.graphics.getHeight();
+  startX=screenX;
+  startY=screenY;
+  return process(deltaX,deltaY,button);
+}

@@ -1,0 +1,6 @@
+{
+  if (parent == null)   globalTransform.set(localTransform);
+ else   globalTransform.set(parent.globalTransform).mul(localTransform);
+  boneTransform.set(globalTransform).mul(invInitialTransform);
+  return globalTransform;
+}

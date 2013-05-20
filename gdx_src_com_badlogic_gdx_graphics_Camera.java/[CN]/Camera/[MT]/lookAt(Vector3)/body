@@ -1,3 +1,4 @@
 {
   direction.set(target).sub(position).nor();
+  normalizeUp();
 }

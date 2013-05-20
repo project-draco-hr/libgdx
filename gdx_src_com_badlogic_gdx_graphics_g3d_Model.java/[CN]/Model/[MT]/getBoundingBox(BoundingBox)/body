@@ -1,0 +1,8 @@
+{
+  out.inf();
+  for (  Mesh mesh : meshes) {
+    mesh.calculateBoundingBox(meshBounds);
+    out.ext(meshBounds);
+  }
+  return out;
+}

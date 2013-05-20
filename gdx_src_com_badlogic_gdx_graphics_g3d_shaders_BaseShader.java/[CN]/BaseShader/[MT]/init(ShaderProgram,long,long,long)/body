@@ -1,0 +1,16 @@
+{
+  if (this.program != null)   throw new GdxRuntimeException("Already initialized");
+  if (!program.isCompiled())   throw new GdxRuntimeException(program.getLog());
+  this.program=program;
+  uniformLocations=new int[uniformEntries.size];
+  for (int i=0; i < uniformLocations.length; i++) {
+    UniformEntry entry=uniformEntries.get(i);
+    if (((material & entry.material) == entry.material) && ((attributes & entry.attribute) == entry.attribute) && ((userMask & entry.userFlag) == entry.userFlag)) {
+      uniformLocations[i]=program.fetchUniformLocation(entry.name,false);
+    }
+ else     uniformLocations[i]=-1;
+    Gdx.app.log("Test","Uniform: " + entry.name + " = "+ uniformLocations[i]);
+  }
+  UniformEntry.pool.freeAll(uniformEntries);
+  uniformEntries.clear();
+}

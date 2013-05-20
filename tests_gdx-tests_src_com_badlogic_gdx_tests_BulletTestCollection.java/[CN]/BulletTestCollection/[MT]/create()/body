@@ -3,7 +3,12 @@
     app=Gdx.app;
     tests[testIndex].create();
   }
-  Gdx.input.setInputProcessor(new InputMultiplexer(this,new GestureDetector(this)));
+  cameraController=new CameraInputController(tests[testIndex].camera);
+  cameraController.activateKey=Keys.CONTROL_LEFT;
+  cameraController.autoUpdate=false;
+  cameraController.forwardTarget=false;
+  cameraController.translateTarget=false;
+  Gdx.input.setInputProcessor(new InputMultiplexer(cameraController,this,new GestureDetector(this)));
   font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   hud=new Stage(480,320,true);
   hud.addActor(fpsLabel=new Label(" ",new Label.LabelStyle(font,Color.WHITE)));

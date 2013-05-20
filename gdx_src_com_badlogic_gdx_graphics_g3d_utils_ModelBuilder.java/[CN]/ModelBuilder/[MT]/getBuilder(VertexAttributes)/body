@@ -1,0 +1,7 @@
+{
+  for (  final MeshBuilder mb : builders)   if (mb.getAttributes().equals(attributes))   return mb;
+  final MeshBuilder result=new MeshBuilder();
+  result.begin(attributes);
+  builders.add(result);
+  return result;
+}

@@ -1,0 +1,8 @@
+{
+  super.render();
+  stringBuilder.setLength(0);
+  getStatus(stringBuilder);
+  fpsLabel.setText(stringBuilder);
+  hud.act(Gdx.graphics.getDeltaTime());
+  hud.draw();
+}

@@ -1,0 +1,8 @@
+{
+  for (  final Node node : nodes) {
+    if (node.id.equals(id))     return node;
+    final Node n=getNode(id,node.children);
+    if (n != null)     return n;
+  }
+  return null;
+}

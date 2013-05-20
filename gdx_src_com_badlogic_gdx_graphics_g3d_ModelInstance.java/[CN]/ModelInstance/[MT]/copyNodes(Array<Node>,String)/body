@@ -1,0 +1,12 @@
+{
+  nodePartBones.clear();
+  for (  Node node : nodes) {
+    for (    final String nodeId : nodeIds) {
+      if (nodeId.equals(node.id)) {
+        this.nodes.add(copyNode(null,node));
+        break;
+      }
+    }
+  }
+  setBones();
+}

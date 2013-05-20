@@ -1,0 +1,5 @@
+{
+  begin();
+  part("box",primitiveType,attributes,material).box(width,height,depth);
+  return end();
+}

@@ -1,0 +1,22 @@
+{
+  final G3dModelLoader loader=new G3dModelLoader(new JsonReader());
+  String[] TEXTURES={"data/badlogic.jpg","data/egg.png","data/particle-fire.png","data/planet_earth.png","data/planet_heavyclouds.jpg","data/resource1.jpg","data/stones.jpg","data/sys.png","data/wheel.png"};
+  for (int i=0; i < TEXTURE_COUNT; i++)   textures.add(new Texture(Gdx.files.internal(TEXTURES[i % TEXTURES.length])));
+  ObjLoader objLoader=new ObjLoader();
+  sphereModel=objLoader.loadObj(Gdx.files.internal("data/sphere.obj"));
+  sceneModel=objLoader.loadObj(Gdx.files.internal("data/scene.obj"));
+  cubeModel=objLoader.loadObj(Gdx.files.internal("data/cube.obj"));
+  carModel=objLoader.loadObj(Gdx.files.internal("data/car.obj"));
+  testModel=new Model(loader.parseModel(Gdx.files.internal("data/g3d/head.g3dj")));
+  for (int i=0; i < textures.size; i++)   cubes.add(cubeModel);
+  createScene2();
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.near=1f;
+  cam.far=100f;
+  cam.position.set(0f,10f,-15f);
+  cam.lookAt(0,0,0);
+  cam.update();
+  renderBatch=new ModelBatch();
+  lights=new Lights().add(new PointLight().set(1f,1f,1f,-20f,10f,0f,150f),new PointLight().set(0f,0f,1f,10f,10f,0f,150f),new PointLight().set(0f,1f,0f,0f,10f,50f,150f));
+  Gdx.input.setInputProcessor(new CameraInputController(cam));
+}

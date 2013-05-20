@@ -1,0 +1,35 @@
+{
+  if (lights == null) {
+    Gdx.gl10.glDisable(GL10.GL_LIGHTING);
+    return;
+  }
+  Gdx.gl10.glEnable(GL10.GL_LIGHTING);
+  Gdx.gl10.glEnable(GL10.GL_LIGHT0);
+  Gdx.gl10.glLightfv(GL10.GL_LIGHT0,GL10.GL_AMBIENT,getValues(lightVal,lights.ambientLight),0);
+  int idx=1;
+  Gdx.gl10.glPushMatrix();
+  Gdx.gl10.glLoadIdentity();
+  for (int i=0; i < lights.directionalLights.size && idx < 8; i++) {
+    final DirectionalLight light=lights.directionalLights.get(i);
+    Gdx.gl10.glEnable(GL10.GL_LIGHT0 + idx);
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + idx,GL10.GL_DIFFUSE,getValues(lightVal,light.color),0);
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + idx,GL10.GL_POSITION,getValues(lightVal,-light.direction.x,-light.direction.y,-light.direction.z,0f),0);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_SPOT_CUTOFF,180f);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_CONSTANT_ATTENUATION,1f);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_LINEAR_ATTENUATION,0f);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_QUADRATIC_ATTENUATION,0f);
+    idx++;
+  }
+  for (int i=0; i < lights.pointLights.size && idx < 8; i++) {
+    Gdx.gl10.glEnable(GL10.GL_LIGHT0 + idx);
+    final PointLight light=lights.pointLights.get(i);
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + idx,GL10.GL_DIFFUSE,getValues(lightVal,light.color),0);
+    Gdx.gl10.glLightfv(GL10.GL_LIGHT0 + idx,GL10.GL_POSITION,getValues(lightVal,light.position.x,light.position.y,light.position.z,1f),0);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_SPOT_CUTOFF,180f);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_CONSTANT_ATTENUATION,0f);
+    Gdx.gl10.glLightf(GL10.GL_LIGHT0 + idx,GL10.GL_LINEAR_ATTENUATION,1f / light.intensity);
+    idx++;
+  }
+  while (idx < 8)   Gdx.gl10.glDisable(GL10.GL_LIGHT0 + (idx++));
+  Gdx.gl10.glPopMatrix();
+}

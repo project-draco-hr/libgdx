@@ -1,7 +1,0 @@
-{
-  if (buffer.length < len) {
-    buffer=new byte[len];
-  }
-  in.read(buffer,0,len);
-  return buffer;
-}

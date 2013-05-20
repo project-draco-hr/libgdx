@@ -1,0 +1,8 @@
+{
+  this.context=context;
+  this.camera=camera;
+  context.setDepthTest(true,GL10.GL_LEQUAL);
+  Gdx.gl10.glMatrixMode(GL10.GL_PROJECTION);
+  Gdx.gl10.glLoadMatrixf(camera.combined.val,0);
+  Gdx.gl10.glMatrixMode(GL10.GL_MODELVIEW);
+}

@@ -1,0 +1,8 @@
+{
+  if (this.button < 0 && (activateKey == 0 || activatePressed)) {
+    startX=screenX;
+    startY=screenY;
+    this.button=button;
+  }
+  return activatePressed;
+}

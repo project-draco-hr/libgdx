@@ -1,0 +1,4 @@
+{
+  if (copyFrom.length != (6 * 3))   throw new GdxRuntimeException("Incorrect array size");
+  data=copyFrom.clone();
+}

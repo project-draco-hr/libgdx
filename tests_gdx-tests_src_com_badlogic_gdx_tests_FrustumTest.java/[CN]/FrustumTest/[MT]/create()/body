@@ -18,6 +18,9 @@
   plane=new Mesh(true,4,6,new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE));
   plane.setVertices(new float[]{-10,-1,10,10,-1,10,10,-1,-10,-10,-1,-10});
   plane.setIndices(new short[]{3,2,1,1,0,3});
-  sphere=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/sphere.obj"));
+  ObjLoader objLoader=new ObjLoader();
+  sphere=objLoader.loadObj(Gdx.files.internal("data/sphere.obj"));
+  sphereInstance=new ModelInstance(sphere);
+  modelBatch=new ModelBatch();
   renderer=new ImmediateModeRenderer10();
 }

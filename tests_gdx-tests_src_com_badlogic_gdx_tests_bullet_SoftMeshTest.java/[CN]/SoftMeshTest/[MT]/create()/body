@@ -1,13 +1,18 @@
 {
   super.create();
   world.maxSubSteps=20;
-  world.add("ground",0f,0f,0f).color.set(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
-  final StillModel model=ModelLoaderRegistry.loadStillModel(Gdx.files.internal("data/wheel.obj"));
-  mesh=model.subMeshes[0].getMesh().copy(false,true,new int[]{Usage.Position});
-  mesh.scale(6f,6f,6f);
+  world.add("ground",0f,0f,0f).setColor(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
+  final ModelBuilder modelBuilder=new ModelBuilder();
+  model=objLoader.loadObj(Gdx.files.internal("data/wheel.obj"));
+  final Mesh source=model.meshes.get(0);
+  final Mesh mesh=source.copy(false,true,new int[]{Usage.Position});
+  model.meshes.removeIndex(0);
+  model.meshes.add(mesh);
+  model.meshParts.get(0).mesh=mesh;
+  mesh.scale(6,6,6);
   softBody=new btSoftBody(worldInfo,mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize(),mesh.getVertexAttribute(Usage.Position).offset,mesh.getIndicesBuffer(),mesh.getNumIndices() / 3);
   softBody.setMass(0,0);
-  Material pm=softBody.appendMaterial();
+  com.badlogic.gdx.physics.bullet.Material pm=softBody.appendMaterial();
   pm.setM_kLST(0.2f);
   pm.setM_flags(0);
   softBody.generateBendingConstraints(2,pm);
@@ -17,4 +22,5 @@
   softBody.setTotalMass(1);
   softBody.translate(Vector3.tmp.set(1,5,1));
   ((btSoftRigidDynamicsWorld)(world.collisionWorld)).addSoftBody(softBody);
+  world.add(entity=new BulletEntity(model,(btCollisionObject)null,1,5,1));
 }
