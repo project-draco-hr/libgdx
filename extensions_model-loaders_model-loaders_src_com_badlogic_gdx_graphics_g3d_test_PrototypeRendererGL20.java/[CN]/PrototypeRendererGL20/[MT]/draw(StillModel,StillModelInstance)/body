@@ -1,4 +1,0 @@
-{
-  if (cam != null)   if (!cam.frustum.sphereInFrustum(instance.getSortCenter(),instance.getBoundingSphereRadius()))   return;
-  drawableManager.add(model,instance);
-}
