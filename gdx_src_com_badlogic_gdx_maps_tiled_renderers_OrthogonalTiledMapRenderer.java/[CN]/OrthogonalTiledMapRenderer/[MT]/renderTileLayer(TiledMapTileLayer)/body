@@ -1,5 +1,6 @@
 {
-  final float color=Color.toFloatBits(1,1,1,layer.getOpacity());
+  final Color batchColor=spriteBatch.getColor();
+  final float color=Color.toFloatBits(batchColor.r,batchColor.g,batchColor.b,batchColor.a * layer.getOpacity());
   final int layerWidth=layer.getWidth();
   final int layerHeight=layer.getHeight();
   final float layerTileWidth=layer.getTileWidth() * unitScale;
@@ -21,7 +22,6 @@
       }
       final TiledMapTile tile=cell.getTile();
       if (tile != null) {
-        if (tile instanceof AnimatedTiledMapTile)         continue;
         final boolean flipX=cell.getFlipHorizontally();
         final boolean flipY=cell.getFlipVertically();
         final int rotations=cell.getRotation();
