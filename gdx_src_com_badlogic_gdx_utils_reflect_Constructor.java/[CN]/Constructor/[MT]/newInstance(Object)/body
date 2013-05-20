@@ -1,0 +1,17 @@
+{
+  try {
+    return constructor.newInstance(args);
+  }
+ catch (  IllegalArgumentException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  InstantiationException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  IllegalAccessException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  InvocationTargetException e) {
+    throw new ReflectionException("",e);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  try {
+    return new Field(c.getField(name));
+  }
+ catch (  SecurityException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  NoSuchFieldException e) {
+    throw new ReflectionException("",e);
+  }
+}

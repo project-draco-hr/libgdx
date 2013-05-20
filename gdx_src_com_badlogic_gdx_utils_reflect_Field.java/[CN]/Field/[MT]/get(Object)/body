@@ -1,0 +1,11 @@
+{
+  try {
+    return field.get(obj);
+  }
+ catch (  IllegalArgumentException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  IllegalAccessException e) {
+    throw new ReflectionException("",e);
+  }
+}
