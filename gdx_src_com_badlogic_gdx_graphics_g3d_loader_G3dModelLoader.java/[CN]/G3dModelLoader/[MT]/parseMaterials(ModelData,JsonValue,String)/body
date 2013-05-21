@@ -4,10 +4,9 @@
   }
  else {
     model.materials.ensureCapacity(materials.size());
-    for (int i=0; i < materials.size(); i++) {
-      JsonValue material=materials.get(i);
+    for (JsonValue material=materials.child(); material != null; material=material.next()) {
       ModelMaterial jsonMaterial=new ModelMaterial();
-      String id=material.getString("id");
+      String id=material.getString("id",null);
       if (id == null)       throw new GdxRuntimeException("Material needs an id.");
       jsonMaterial.id=id;
       jsonMaterial.diffuse=parseColor(material.get("diffuse"),Color.WHITE);
@@ -17,18 +16,17 @@
       float shininess=material.getFloat("shininess",0.0f);
       JsonValue textures=material.get("textures");
       if (textures != null) {
-        for (int j=0; j < textures.size(); j++) {
-          JsonValue texture=textures.get(j);
+        for (JsonValue texture=textures.child(); texture != null; texture=texture.next()) {
           ModelTexture jsonTexture=new ModelTexture();
-          String textureId=texture.getString("id");
+          String textureId=texture.getString("id",null);
           if (textureId == null)           throw new GdxRuntimeException("Texture has no id.");
           jsonTexture.id=textureId;
-          String fileName=texture.getString("filename");
+          String fileName=texture.getString("filename",null);
           if (fileName == null)           throw new GdxRuntimeException("Texture needs filename.");
           jsonTexture.fileName=materialDir + "/" + fileName;
           jsonTexture.uvTranslation=readVector2(texture.get("uvTranslation"),0f,0f);
           jsonTexture.uvScaling=readVector2(texture.get("uvScaling"),1f,1f);
-          String textureType=texture.getString("type");
+          String textureType=texture.getString("type",null);
           if (textureType == null)           throw new GdxRuntimeException("Texture needs type.");
           jsonTexture.usage=parseTextureUsage(textureType);
           if (jsonMaterial.textures == null)           jsonMaterial.textures=new Array<ModelTexture>();

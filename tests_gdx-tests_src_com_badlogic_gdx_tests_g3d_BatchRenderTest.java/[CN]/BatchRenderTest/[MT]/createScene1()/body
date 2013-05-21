@@ -1,3 +1,0 @@
-{
-  for (int i=0; i < BOX_COUNT; i++)   instances.add(new ModelInstance(cubes.get((int)(Math.random() * cubes.size)),(new Matrix4()).setToTranslation(MIN_X + (float)Math.random() * SIZE_X,MIN_Y + (float)Math.random() * SIZE_Y,MIN_Z + (float)Math.random() * SIZE_Z).scl(0.05f + (float)Math.random())));
-}
