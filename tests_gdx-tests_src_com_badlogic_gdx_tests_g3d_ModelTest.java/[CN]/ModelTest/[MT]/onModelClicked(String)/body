@@ -1,8 +1,6 @@
 {
   if (name == null)   return;
-  assets.load("data/" + name,Model.class);
-  assets.finishLoading();
-  instances.clear();
-  final ModelInstance instance=new ModelInstance(assets.get(currentAsset="data/" + name,Model.class));
-  instances.add(instance);
+  currentlyLoading="data/" + name;
+  assets.load(currentlyLoading,Model.class);
+  loading=true;
 }
