@@ -1,5 +1,6 @@
 {
   if (currentMaterial == renderable.material)   return;
+  int cullFace=0;
   currentMaterial=renderable.material;
   for (  final Material.Attribute attr : currentMaterial) {
     final long t=attr.type;
@@ -15,6 +16,8 @@
       if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && hasUniform(u_normalTexture))       bindTextureAttribute(loc(u_normalTexture),tex);
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
+ else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
+  context.setCullFace(cullFace);
 }
