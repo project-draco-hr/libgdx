@@ -2,8 +2,8 @@
   Array<VertexAttribute> vertexAttributes=new Array<VertexAttribute>();
   int unit=0;
   int blendWeightCount=0;
-  for (int i=0; i < attributes.size(); i++) {
-    String attribute=attributes.getString(i);
+  for (JsonValue value=attributes.child(); value != null; value=value.next()) {
+    String attribute=value.asString();
     String attr=(String)attribute;
     if (attr.equals("POSITION")) {
       vertexAttributes.add(VertexAttribute.Position());

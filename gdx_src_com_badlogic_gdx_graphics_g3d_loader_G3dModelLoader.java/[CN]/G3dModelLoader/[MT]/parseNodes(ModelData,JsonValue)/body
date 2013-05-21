@@ -4,8 +4,7 @@
     throw new GdxRuntimeException("At least one node is required.");
   }
   model.nodes.ensureCapacity(nodes.size());
-  for (int i=0; i < nodes.size(); i++) {
-    JsonValue node=nodes.get(i);
+  for (JsonValue node=nodes.child(); node != null; node=node.next()) {
     model.nodes.add(parseNodesRecursively(node));
   }
   return model.nodes;
