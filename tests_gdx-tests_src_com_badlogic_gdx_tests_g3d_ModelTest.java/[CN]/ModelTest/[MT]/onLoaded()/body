@@ -1,0 +1,7 @@
+{
+  if (currentlyLoading == null || currentlyLoading.isEmpty())   return;
+  instances.clear();
+  final ModelInstance instance=new ModelInstance(assets.get(currentlyLoading,Model.class));
+  instances.add(instance);
+  currentlyLoading=null;
+}
