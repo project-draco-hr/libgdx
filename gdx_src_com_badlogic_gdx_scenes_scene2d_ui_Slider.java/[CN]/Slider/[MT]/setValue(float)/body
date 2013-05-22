@@ -1,5 +1,5 @@
 {
-  value=MathUtils.clamp(Math.round(value / stepSize) * stepSize,min,max);
+  value=snap(MathUtils.clamp(Math.round(value / stepSize) * stepSize,min,max));
   float oldValue=this.value;
   if (value == oldValue)   return false;
   float oldVisualValue=getVisualValue();
