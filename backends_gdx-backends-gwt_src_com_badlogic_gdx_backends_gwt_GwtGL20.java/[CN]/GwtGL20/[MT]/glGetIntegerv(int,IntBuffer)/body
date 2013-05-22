@@ -1,3 +1,7 @@
 {
+  if (pname == GL10.GL_MAX_TEXTURE_UNITS || pname == GL20.GL_MAX_TEXTURE_IMAGE_UNITS) {
+    params.put(16);
+    return;
+  }
   throw new GdxRuntimeException("glGetInteger not supported by GWT WebGL backend");
 }
