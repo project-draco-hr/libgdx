@@ -13,7 +13,8 @@
       jsonMaterial.ambient=parseColor(material.get("ambient"),Color.BLACK);
       jsonMaterial.emissive=parseColor(material.get("emissive"),Color.BLACK);
       jsonMaterial.specular=parseColor(material.get("specular"),Color.BLACK);
-      float shininess=material.getFloat("shininess",0.0f);
+      jsonMaterial.shininess=material.getFloat("shininess",0.0f);
+      jsonMaterial.opacity=material.getFloat("opacity",1.0f);
       JsonValue textures=material.get("textures");
       if (textures != null) {
         for (JsonValue texture=textures.child(); texture != null; texture=texture.next()) {
