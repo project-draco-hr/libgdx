@@ -1,5 +1,5 @@
 {
   if (buffer.remaining() > intBuffer.length()) {
-    intBuffer=Int32ArrayNative.create(buffer.remaining());
+    intBuffer=TypedArrays.createInt32Array(buffer.remaining());
   }
 }
