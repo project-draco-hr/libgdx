@@ -6,7 +6,7 @@
     throw new GdxRuntimeException("Inputed pixels buffer needs to be of type ByteBuffer for glReadPixels(...).");
   }
   int size=4 * width * height;
-  Uint8Array buffer=Uint8Array.create(size);
+  Uint8Array buffer=Uint8ArrayNative.create(size);
   gl.readPixels(x,y,width,height,format,type,buffer);
   ByteBuffer pixelsByte=(ByteBuffer)pixels;
   for (int i=0; i < size; i++) {
