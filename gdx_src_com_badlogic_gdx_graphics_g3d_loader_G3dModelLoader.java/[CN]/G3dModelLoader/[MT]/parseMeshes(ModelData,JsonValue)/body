@@ -1,8 +1,7 @@
 {
   JsonValue meshes=json.require("meshes");
   model.meshes.ensureCapacity(meshes.size());
-  for (int i=0; i < meshes.size(); i++) {
-    JsonValue mesh=meshes.get(i);
+  for (JsonValue mesh=meshes.child(); mesh != null; mesh=mesh.next()) {
     ModelMesh jsonMesh=new ModelMesh();
     String id=mesh.getString("id","");
     jsonMesh.id=id;
@@ -10,16 +9,16 @@
     jsonMesh.attributes=parseAttributes(attributes);
     JsonValue vertices=mesh.require("vertices");
     float[] verts=new float[vertices.size()];
-    for (int j=0; j < vertices.size(); j++) {
-      verts[j]=vertices.getFloat(j);
+    int j=0;
+    for (JsonValue value=vertices.child(); value != null; value=value.next(), j++) {
+      verts[j]=value.asFloat();
     }
     jsonMesh.vertices=verts;
     JsonValue meshParts=mesh.require("parts");
     Array<ModelMeshPart> parts=new Array<ModelMeshPart>();
-    for (int j=0; j < meshParts.size(); j++) {
-      JsonValue meshPart=meshParts.get(j);
+    for (JsonValue meshPart=meshParts.child(); meshPart != null; meshPart=meshPart.next()) {
       ModelMeshPart jsonPart=new ModelMeshPart();
-      String partId=meshPart.getString("id");
+      String partId=meshPart.getString("id",null);
       if (id == null) {
         throw new GdxRuntimeException("Not id given for mesh part");
       }
@@ -29,14 +28,15 @@
         }
       }
       jsonPart.id=partId;
-      String type=meshPart.getString("type");
+      String type=meshPart.getString("type",null);
       if (type == null) {
         throw new GdxRuntimeException("No primitive type given for mesh part '" + partId + "'");
       }
       jsonPart.primitiveType=parseType(type);
       JsonValue indices=meshPart.require("indices");
       short[] partIndices=new short[indices.size()];
-      for (int k=0; k < indices.size(); k++) {
+      int k=0;
+      for (JsonValue value=indices.child(); value != null; value=value.next(), k++) {
         partIndices[k]=(short)indices.getInt(k);
       }
       jsonPart.indices=partIndices;
