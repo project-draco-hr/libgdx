@@ -1,13 +1,13 @@
 {
-  ObjLoader objLoader=new ObjLoader();
-  model=objLoader.loadObj(Gdx.files.internal("data/cube.obj"));
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
+  ModelBuilder builder=new ModelBuilder();
+  model=builder.createBox(1,1,1,new Material(),Usage.Position | Usage.Normal | Usage.TextureCoordinates);
+  model.manageDisposable(texture);
+  modelInstance=new ModelInstance(model);
   textureAttribute=new TextureAttribute(TextureAttribute.Diffuse,texture);
   colorAttribute=new ColorAttribute(ColorAttribute.Diffuse,Color.ORANGE);
-  blendingAttribute=new BlendingAttribute(GL10.GL_ONE,GL10.GL_ONE);
-  modelInstance=new ModelInstance(model);
+  blendingAttribute=new BlendingAttribute(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
   material=modelInstance.materials.get(0);
-  material.clear();
   modelBatch=new ModelBatch();
   camera=new PerspectiveCamera(45,4,4);
   camera.position.set(3,3,3);
