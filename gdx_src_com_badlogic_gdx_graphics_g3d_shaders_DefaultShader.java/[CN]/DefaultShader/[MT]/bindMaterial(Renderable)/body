@@ -20,6 +20,7 @@
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
  else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;
+ else     if ((t & FloatAttribute.AlphaTest) == FloatAttribute.AlphaTest)     set(u_alphaTest,((FloatAttribute)attr).value);
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
   context.setCullFace(cullFace);
