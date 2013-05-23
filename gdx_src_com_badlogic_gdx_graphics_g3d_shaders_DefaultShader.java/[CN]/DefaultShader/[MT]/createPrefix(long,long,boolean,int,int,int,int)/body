@@ -21,7 +21,6 @@
   if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
   if ((mask & ColorAttribute.Specular) == ColorAttribute.Specular)   prefix+="#define " + ColorAttribute.SpecularAlias + "Flag\n";
   if ((mask & FloatAttribute.Shininess) == FloatAttribute.Shininess)   prefix+="#define " + FloatAttribute.ShininessAlias + "Flag\n";
-  if ((mask & FloatAttribute.Opacity) == FloatAttribute.Opacity)   prefix+="#define " + FloatAttribute.OpacityAlias + "Flag\n";
   if (numBones > 0)   prefix+="#define numBones " + numBones + "\n";
   return prefix;
 }
