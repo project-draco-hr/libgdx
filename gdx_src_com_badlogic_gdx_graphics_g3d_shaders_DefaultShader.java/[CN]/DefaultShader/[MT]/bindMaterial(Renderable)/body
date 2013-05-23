@@ -16,6 +16,7 @@
       if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && hasUniform(u_normalTexture))       bindTextureAttribute(loc(u_normalTexture),tex);
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
+ else     if ((t & FloatAttribute.Opacity) == FloatAttribute.Opacity)     set(u_opacity,((FloatAttribute)attr).value);
  else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
