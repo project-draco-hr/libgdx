@@ -1,0 +1,36 @@
+{
+  super(null);
+  getStyle().background=style.listBackground;
+  setOverscroll(false,false);
+  ListStyle listStyle=new ListStyle();
+  listStyle.font=style.font;
+  listStyle.fontColorSelected=style.fontColor;
+  listStyle.fontColorUnselected=style.fontColor;
+  listStyle.selection=style.listSelection;
+  list=new List(new Object[0],listStyle);
+  setWidget(list);
+  list.addListener(new InputListener(){
+    public boolean mouseMoved(    InputEvent event,    float x,    float y){
+      list.setSelectedIndex(Math.min(items.length - 1,(int)((list.getHeight() - y) / list.getItemHeight())));
+      return true;
+    }
+  }
+);
+  addListener(new InputListener(){
+    public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
+      if (event.getTarget() == list)       return true;
+      hideList();
+      return false;
+    }
+    public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
+      if (hit(x,y,true) == list) {
+        setSelection(list.getSelectedIndex());
+        ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+        SelectBox.this.fire(changeEvent);
+        Pools.free(changeEvent);
+        hideList();
+      }
+    }
+  }
+);
+}

@@ -1,3 +1,4 @@
 {
-  return this;
+  Actor actor=super.hit(x,y,touchable);
+  return actor != null ? actor : this;
 }

@@ -1,0 +1,32 @@
+{
+  stage.addActor(this);
+  SelectBox.this.localToStageCoordinates(tmpCoords.set(0,0));
+  screenCoords.set(tmpCoords);
+  list.setItems(items);
+  list.setSelectedIndex(selectedIndex);
+  float height=getPrefHeight();
+  float heightBelow=tmpCoords.y;
+  float heightAbove=stage.getCamera().viewportHeight - tmpCoords.y - SelectBox.this.getHeight();
+  boolean below=true;
+  if (height > heightBelow) {
+    if (heightAbove > heightBelow) {
+      below=false;
+      height=Math.min(height,heightAbove);
+    }
+ else     height=heightBelow;
+  }
+  float itemHeight=list.getItemHeight();
+  float backgroundPadding=getStyle().background.getTopHeight() + getStyle().background.getBottomHeight();
+  height-=backgroundPadding;
+  height-=height % itemHeight;
+  height+=backgroundPadding;
+  if (below)   setY(tmpCoords.y - height);
+ else   setY(tmpCoords.y + SelectBox.this.getHeight());
+  setX(tmpCoords.x);
+  setWidth(SelectBox.this.getWidth());
+  setHeight(height);
+  scrollToCenter(0,list.getHeight() - selectedIndex * itemHeight - itemHeight / 2,0,0);
+  updateVisualScroll();
+  getColor().a=0;
+  addAction(fadeIn(0.3f,Interpolation.fade));
+}
