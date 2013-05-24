@@ -6,14 +6,9 @@
   addListener(clickListener=new ClickListener(){
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer == 0 && button != 0)       return false;
-      if (list != null && list.getParent() != null) {
-        hideList();
-        return true;
-      }
       Stage stage=getStage();
-      stage.screenToStageCoordinates(tmpCoords.set(screenCoords));
-      list=new SelectList(tmpCoords.x,tmpCoords.y);
-      stage.addActor(list);
+      if (list == null)       list=new SelectList();
+      list.show(stage);
       return true;
     }
   }
