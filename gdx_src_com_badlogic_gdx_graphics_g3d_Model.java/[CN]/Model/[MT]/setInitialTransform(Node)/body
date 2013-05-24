@@ -1,4 +1,0 @@
-{
-  if (node != null)   node.invInitialTransform.set(node.globalTransform).inv();
-  for (  Node child : (node == null ? nodes : node.children))   setInitialTransform(child);
-}

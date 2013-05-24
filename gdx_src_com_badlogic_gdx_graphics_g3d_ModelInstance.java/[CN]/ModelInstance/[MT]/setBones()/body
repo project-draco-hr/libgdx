@@ -1,10 +1,9 @@
 {
-  for (  ObjectMap.Entry<NodePart,String[]> e : nodePartBones.entries()) {
-    if (e.key.bones == null)     e.key.bones=new ArrayMap<Node,Matrix4>(true,e.value.length,Node.class,Matrix4.class);
-    e.key.bones.clear();
-    for (    final String n : e.value) {
-      final Node node=getNode(n);
-      e.key.bones.put(node,node == null ? null : node.boneTransform);
-    }
+  for (  ObjectMap.Entry<NodePart,ArrayMap<Node,Matrix4>> e : nodePartBones.entries()) {
+    if (e.key.invBoneBindTransforms == null)     e.key.invBoneBindTransforms=new ArrayMap<Node,Matrix4>(true,e.value.size,Node.class,Matrix4.class);
+    e.key.invBoneBindTransforms.clear();
+    for (    final ObjectMap.Entry<Node,Matrix4> b : e.value.entries())     e.key.invBoneBindTransforms.put(getNode(b.key.id),b.value);
+    e.key.bones=new Matrix4[e.value.size];
+    for (int i=0; i < e.key.bones.length; i++)     e.key.bones[i]=new Matrix4();
   }
 }

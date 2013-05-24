@@ -3,7 +3,6 @@
     currentMesh.unbind(program);
     currentMesh=null;
   }
-  currentModelTransform=null;
   currentTextureAttribute=null;
   currentMaterial=null;
   program.end();
