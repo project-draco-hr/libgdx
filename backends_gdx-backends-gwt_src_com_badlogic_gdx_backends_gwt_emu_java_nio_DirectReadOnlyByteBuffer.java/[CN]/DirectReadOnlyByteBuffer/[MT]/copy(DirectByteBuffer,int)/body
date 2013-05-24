@@ -1,5 +1,5 @@
 {
-  DirectReadOnlyByteBuffer buf=new DirectReadOnlyByteBuffer(other.byteArray.getBuffer(),other.capacity(),other.byteArray.getByteOffset());
+  DirectReadOnlyByteBuffer buf=new DirectReadOnlyByteBuffer(other.byteArray.buffer(),other.capacity(),other.byteArray.byteOffset());
   buf.limit=other.limit();
   buf.position=other.position();
   buf.mark=markOfOther;

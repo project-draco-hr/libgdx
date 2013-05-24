@@ -1,9 +1,13 @@
 {
   if (currentMaterial == renderable.material)   return;
+  int cullFace=defaultCullFace;
   currentMaterial=renderable.material;
   for (  final Material.Attribute attr : currentMaterial) {
     final long t=attr.type;
-    if (BlendingAttribute.is(t))     context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
+    if (BlendingAttribute.is(t)) {
+      context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
+      set(u_opacity,((BlendingAttribute)attr).opacity);
+    }
  else     if (ColorAttribute.is(t)) {
       ColorAttribute col=(ColorAttribute)attr;
       if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       set(u_diffuseColor,col.color);
@@ -15,6 +19,8 @@
       if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && hasUniform(u_normalTexture))       bindTextureAttribute(loc(u_normalTexture),tex);
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
+ else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
+  context.setCullFace(cullFace);
 }

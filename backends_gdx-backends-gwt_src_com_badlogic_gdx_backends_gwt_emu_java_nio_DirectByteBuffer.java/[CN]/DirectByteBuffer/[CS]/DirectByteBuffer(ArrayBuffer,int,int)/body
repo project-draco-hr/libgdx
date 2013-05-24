@@ -1,4 +1,4 @@
 {
   super(capacity);
-  byteArray=Int8Array.create(buffer,offset,capacity);
+  byteArray=Int8ArrayNative.create(buffer,offset,capacity);
 }
