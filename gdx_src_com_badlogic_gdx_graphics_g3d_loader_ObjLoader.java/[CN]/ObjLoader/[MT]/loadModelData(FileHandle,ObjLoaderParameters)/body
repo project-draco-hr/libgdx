@@ -1,3 +1,3 @@
 {
-  return loadModelData(file,parameters == null || parameters.textureDir == null ? file.parent() : parameters.textureDir,parameters == null ? false : parameters.flipV);
+  return loadModelData(file,parameters == null ? false : parameters.flipV);
 }

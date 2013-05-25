@@ -2,7 +2,8 @@
   this.context=context;
   this.camera=camera;
   program.begin();
-  context.setDepthTest(true,GL10.GL_LEQUAL);
+  if (defaultDepthFunc == 0)   context.setDepthTest(false,GL10.GL_LEQUAL);
+ else   context.setDepthTest(true,defaultDepthFunc);
   set(u_projTrans,camera.combined);
   set(u_cameraPosition,camera.position);
   set(u_cameraDirection,camera.direction);

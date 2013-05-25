@@ -63,11 +63,7 @@
  else         activeGroup=setActiveGroup("default");
       }
  else       if (tokens[0].equals("mtllib")) {
-        String path="";
-        if (file.path().contains("/")) {
-          path=file.path().substring(0,file.path().lastIndexOf('/') + 1);
-        }
-        mtl.load(path + tokens[1],textureDir);
+        mtl.load(file.parent().child(tokens[1]));
       }
  else       if (tokens[0].equals("usemtl")) {
         if (tokens.length == 1)         activeGroup.materialName="default";

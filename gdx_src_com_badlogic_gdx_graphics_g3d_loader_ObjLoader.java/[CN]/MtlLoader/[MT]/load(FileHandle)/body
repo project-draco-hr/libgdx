@@ -5,7 +5,6 @@
   Color difcolor=Color.WHITE;
   Color speccolor=Color.WHITE;
   String texFilename=null;
-  FileHandle file=Gdx.files.internal(name);
   if (file == null || file.exists() == false)   return;
   BufferedReader reader=new BufferedReader(new InputStreamReader(file.read()),4096);
   try {
@@ -23,6 +22,7 @@
         mat.specular=new Color(speccolor);
         if (texFilename != null) {
           ModelTexture tex=new ModelTexture();
+          tex.usage=ModelTexture.USAGE_DIFFUSE;
           tex.fileName=new String(texFilename);
           if (mat.textures == null)           mat.textures=new Array<ModelTexture>(1);
           mat.textures.add(tex);
@@ -52,11 +52,7 @@
         }
       }
  else       if (tokens[0].toLowerCase().equals("map_kd")) {
-        String textureName=tokens[1];
-        if (textureName.length() > 0) {
-          texFilename=textureDir.child(textureName).toString();
-        }
- else         texFilename=null;
+        texFilename=file.parent().child(tokens[1]).path();
       }
     }
     reader.close();
@@ -70,6 +66,7 @@
   mat.specular=new Color(speccolor);
   if (texFilename != null) {
     ModelTexture tex=new ModelTexture();
+    tex.usage=ModelTexture.USAGE_DIFFUSE;
     tex.fileName=new String(texFilename);
     if (mat.textures == null)     mat.textures=new Array<ModelTexture>(1);
     mat.textures.add(tex);
