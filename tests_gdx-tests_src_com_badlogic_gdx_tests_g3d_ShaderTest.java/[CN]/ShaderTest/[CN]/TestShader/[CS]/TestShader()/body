@@ -1,0 +1,6 @@
+{
+  super();
+  program=new ShaderProgram(vertexShader,fragmentShader);
+  if (!program.isCompiled())   throw new GdxRuntimeException("Couldn't compile shader " + program.getLog());
+  init(program,0,0,0);
+}
