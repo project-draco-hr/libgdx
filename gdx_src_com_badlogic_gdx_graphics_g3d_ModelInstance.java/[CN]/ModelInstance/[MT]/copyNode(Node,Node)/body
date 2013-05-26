@@ -7,7 +7,6 @@
   copy.scale.set(node.scale);
   copy.localTransform.set(node.localTransform);
   copy.globalTransform.set(node.globalTransform);
-  copy.invInitialTransform.set(node.invInitialTransform);
   for (  NodePart nodePart : node.parts) {
     copy.parts.add(copyNodePart(nodePart));
   }
