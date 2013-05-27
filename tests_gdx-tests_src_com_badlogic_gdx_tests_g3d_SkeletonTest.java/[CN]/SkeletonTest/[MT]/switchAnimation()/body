@@ -1,0 +1,21 @@
+{
+  for (  final ModelInstance instance : instances) {
+    if (instance.animations.size > 0) {
+      if (instance.currentAnimation != null) {
+        for (        final NodeAnimation nodeAnim : instance.currentAnimation.nodeAnimations)         nodeAnim.node.isAnimated=false;
+        instance.calculateTransforms();
+      }
+      int animIndex=-1;
+      for (int i=0; i < instance.animations.size; i++) {
+        final Animation animation=instance.animations.get(i);
+        if (instance.currentAnimation == animation) {
+          animIndex=i;
+          break;
+        }
+      }
+      animIndex=(animIndex + 1) % (instance.animations.size + 1);
+      instance.currentAnimation=animIndex == instance.animations.size ? null : instance.animations.get(animIndex);
+      instance.currentAnimTime=0f;
+    }
+  }
+}
