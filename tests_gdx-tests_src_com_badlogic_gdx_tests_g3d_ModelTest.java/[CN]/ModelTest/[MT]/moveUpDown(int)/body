@@ -1,0 +1,6 @@
+{
+  for (  final ModelInstance instance : instances) {
+    instance.transform.getTranslation(tmpTrans);
+    instance.transform.setToTranslation(tmpTrans.x,tmpTrans.y + Gdx.graphics.getDeltaTime() * dir,tmpTrans.z);
+  }
+}
