@@ -12,6 +12,7 @@
       ColorAttribute col=(ColorAttribute)attr;
       if ((t & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)       set(u_diffuseColor,col.color);
  else       if ((t & ColorAttribute.Specular) == ColorAttribute.Specular)       set(u_specularColor,col.color);
+ else       if ((t & ColorAttribute.Fog) == ColorAttribute.Fog)       set(u_fogColor,col.color);
     }
  else     if (TextureAttribute.is(t)) {
       final TextureAttribute tex=(TextureAttribute)attr;
@@ -21,6 +22,7 @@
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
  else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;
  else     if ((t & FloatAttribute.AlphaTest) == FloatAttribute.AlphaTest)     set(u_alphaTest,((FloatAttribute)attr).value);
+ else     if ((t & FloatAttribute.FogDistance) == FloatAttribute.FogDistance)     set(u_fogDistance,((FloatAttribute)attr).value);
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
   context.setCullFace(cullFace);
