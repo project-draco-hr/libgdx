@@ -3,6 +3,7 @@
   if (pointer == 0 && this.button != -1 && button != this.button)   return false;
   pressed=true;
   pressedPointer=pointer;
+  pressedButton=button;
   touchDownX=x;
   touchDownY=y;
   return true;
