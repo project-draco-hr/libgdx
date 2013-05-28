@@ -1,4 +1,4 @@
 {
-  cell.setLayout(null);
+  cell.free();
   cellPool.free(cell);
 }
