@@ -1,5 +1,6 @@
 {
-  Cell defaults=new Cell(layout);
+  Cell defaults=new Cell();
+  defaults.layout=layout;
   defaults.minWidth=Value.minWidth;
   defaults.minHeight=Value.minHeight;
   defaults.prefWidth=Value.prefWidth;

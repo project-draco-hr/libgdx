@@ -1,5 +1,5 @@
 {
-  Cell cell=new Cell(this);
+  Cell cell=toolkit.obtainCell((L)this);
   cell.widget=widget;
   if (cells.size() > 0) {
     Cell lastCell=cells.get(cells.size() - 1);

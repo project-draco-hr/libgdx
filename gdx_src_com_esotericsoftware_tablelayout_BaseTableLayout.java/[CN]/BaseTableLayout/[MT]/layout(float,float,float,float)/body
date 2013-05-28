@@ -4,21 +4,14 @@
   if (sizeInvalid)   computeSize();
   float hpadding=w(padLeft) + w(padRight);
   float vpadding=h(padTop) + h(padBottom);
-  float totalMinWidth=0, totalMinHeight=0;
   float totalExpandWidth=0, totalExpandHeight=0;
-  for (int i=0; i < columns; i++) {
-    totalMinWidth+=columnMinWidth[i];
-    totalExpandWidth+=expandWidth[i];
-  }
-  for (int i=0; i < rows; i++) {
-    totalMinHeight+=rowMinHeight[i];
-    totalExpandHeight+=expandHeight[i];
-  }
+  for (int i=0; i < columns; i++)   totalExpandWidth+=expandWidth[i];
+  for (int i=0; i < rows; i++)   totalExpandHeight+=expandHeight[i];
   float[] columnWeightedWidth;
-  float totalGrowWidth=tablePrefWidth - totalMinWidth;
+  float totalGrowWidth=tablePrefWidth - tableMinWidth;
   if (totalGrowWidth == 0)   columnWeightedWidth=columnMinWidth;
  else {
-    float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - totalMinWidth));
+    float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - tableMinWidth));
     columnWeightedWidth=this.columnWeightedWidth=ensureSize(this.columnWeightedWidth,columns);
     for (int i=0; i < columns; i++) {
       float growWidth=columnPrefWidth[i] - columnMinWidth[i];
@@ -27,11 +20,11 @@
     }
   }
   float[] rowWeightedHeight;
-  float totalGrowHeight=tablePrefHeight - totalMinHeight;
+  float totalGrowHeight=tablePrefHeight - tableMinHeight;
   if (totalGrowHeight == 0)   rowWeightedHeight=rowMinHeight;
  else {
     rowWeightedHeight=this.rowWeightedHeight=ensureSize(this.rowWeightedHeight,rows);
-    float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - totalMinHeight));
+    float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - tableMinHeight));
     for (int i=0; i < rows; i++) {
       float growHeight=rowPrefHeight[i] - rowMinHeight[i];
       float growRatio=growHeight / (float)totalGrowHeight;
