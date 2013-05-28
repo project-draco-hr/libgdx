@@ -6,13 +6,8 @@
   }
   writeable=mode.equals("rw");
   if (file.exists()) {
-    try {
-      data=atob(LocalStorage.getItem(name));
-      len=data.length();
-    }
- catch (    IOException e) {
-      throw new FileNotFoundException("" + e);
-    }
+    data=atob(File.LocalStorage.getItem(name));
+    len=data.length();
   }
  else   if (writeable) {
     data="";

@@ -1,0 +1,4 @@
+{
+  final ModelData data=loadModelData(fileHandle,parameters);
+  return data == null ? null : new Model(data,textureProvider);
+}

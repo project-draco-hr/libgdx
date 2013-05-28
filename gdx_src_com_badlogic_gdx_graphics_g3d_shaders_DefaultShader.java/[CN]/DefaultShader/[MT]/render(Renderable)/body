@@ -1,11 +1,6 @@
 {
   if (!renderable.material.has(BlendingAttribute.Type))   context.setBlending(false,GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
-  if (currentLocalTransform != renderable.localTransform)   set(u_localTrans,(currentLocalTransform=renderable.localTransform) == null ? idtMatrix : renderable.localTransform);
-  if (currentModelTransform != renderable.modelTransform)   set(u_modelTrans,(currentModelTransform=renderable.modelTransform) == null ? idtMatrix : renderable.modelTransform);
-  if (currentLocalTransform == null && currentModelTransform == null)   setWorldTransform(idtMatrix,false);
- else   if (currentLocalTransform == null)   setWorldTransform(currentModelTransform,false);
- else   if (currentModelTransform == null)   setWorldTransform(currentLocalTransform,false);
- else   setWorldTransform(combinedWorldTransform.set(currentLocalTransform).mul(currentModelTransform),true);
+  setWorldTransform(renderable.worldTransform);
   bindMaterial(renderable);
   if (lighting)   bindLights(renderable);
   if (currentMesh != renderable.mesh) {

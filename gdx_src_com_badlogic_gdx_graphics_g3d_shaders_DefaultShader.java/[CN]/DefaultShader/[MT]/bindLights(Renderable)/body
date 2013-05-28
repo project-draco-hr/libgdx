@@ -3,7 +3,7 @@
   final Array<DirectionalLight> dirs=lights.directionalLights;
   final Array<PointLight> points=lights.pointLights;
   if (hasUniform(u_ambientCubemap)) {
-    renderable.modelTransform.getTranslation(tmpV1);
+    renderable.worldTransform.getTranslation(tmpV1);
     ambientCubemap.set(lights.ambientLight);
     for (int i=directionalLights.length; i < dirs.size; i++)     ambientCubemap.add(dirs.get(i).color,dirs.get(i).direction);
     for (int i=pointLights.length; i < points.size; i++)     ambientCubemap.add(points.get(i).color,points.get(i).position,tmpV1,points.get(i).intensity);

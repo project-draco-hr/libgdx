@@ -1,0 +1,21 @@
+{
+  modelBatch=new ModelBatch(new BaseShaderProvider(){
+    @Override protected Shader createShader(    Renderable renderable){
+      return new TestShader();
+    }
+  }
+);
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(10f,10f,10f);
+  cam.lookAt(0,0,0);
+  cam.near=0.1f;
+  cam.far=300f;
+  cam.update();
+  camController=new CameraInputController(cam);
+  Gdx.input.setInputProcessor(camController);
+  Material material=new Material(new TestAttribute(1f));
+  ModelBuilder builder=new ModelBuilder();
+  model=builder.createCone(5,5,5,20,material,Usage.Position);
+  instance=new ModelInstance(model);
+  testAttribute=(TestAttribute)instance.materials.get(0).get(TestAttribute.ID);
+}

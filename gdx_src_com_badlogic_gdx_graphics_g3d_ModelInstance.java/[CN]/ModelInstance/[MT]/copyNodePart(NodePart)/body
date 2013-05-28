@@ -6,11 +6,7 @@
   copy.meshPart.numVertices=nodePart.meshPart.numVertices;
   copy.meshPart.primitiveType=nodePart.meshPart.primitiveType;
   copy.meshPart.mesh=nodePart.meshPart.mesh;
-  if (nodePart.bones != null) {
-    final String bones[]=new String[nodePart.bones.size];
-    for (int i=0; i < nodePart.bones.size; i++)     bones[i]=nodePart.bones.getKeyAt(i).id;
-    nodePartBones.put(copy,bones);
-  }
+  if (nodePart.invBoneBindTransforms != null)   nodePartBones.put(copy,nodePart.invBoneBindTransforms);
   final int index=materials.indexOf(nodePart.material,false);
   if (index < 0)   materials.add(copy.material=nodePart.material.copy());
  else   copy.material=materials.get(index);

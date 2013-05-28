@@ -1,6 +1,0 @@
-{
-  if (force || ((currentWorldTransform == null) != (value == null)) || !currentWorldTransform.equals(value)) {
-    set(u_worldTrans,(currentWorldTransform=value) == null ? idtMatrix : value);
-    set(u_normalMatrix,normalMatrix.set(currentWorldTransform == null ? idtMatrix : currentWorldTransform));
-  }
-}
