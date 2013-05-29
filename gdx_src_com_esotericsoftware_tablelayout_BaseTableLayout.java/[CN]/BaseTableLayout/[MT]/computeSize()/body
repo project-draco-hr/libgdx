@@ -60,7 +60,7 @@
     float maxWidth=w(c.maxWidth,c);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
-    float spannedMinWidth=0, spannedPrefWidth=0;
+    float spannedMinWidth=-(c.computedPadLeft + c.computedPadRight), spannedPrefWidth=spannedMinWidth;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++) {
       spannedMinWidth+=columnMinWidth[column];
       spannedPrefWidth+=columnPrefWidth[column];

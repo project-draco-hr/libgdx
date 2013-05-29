@@ -1,5 +1,7 @@
 {
   if (cells.size() > 0)   endRow();
-  rowDefaults=new Cell(this);
+  if (rowDefaults != null)   toolkit.freeCell(rowDefaults);
+  rowDefaults=toolkit.obtainCell((L)this);
+  rowDefaults.clear();
   return rowDefaults;
 }
