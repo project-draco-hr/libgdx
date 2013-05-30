@@ -3,7 +3,7 @@
   if (inTapSquare && !isWithinTapSquare(x,y,tapSquareCenterX,tapSquareCenterY))   inTapSquare=false;
   longPressTask.cancel();
   panning=false;
-  if (longPressFired)   return false;
+  if (longPressFired)   return true;
   if (inTapSquare) {
     if (lastTapButton != button || lastTapPointer != pointer || TimeUtils.nanoTime() - lastTapTime > tapCountInterval || !isWithinTapSquare(x,y,lastTapX,lastTapY))     tapCount=0;
     tapCount++;
