@@ -1,0 +1,7 @@
+{
+  for (  final ModelInstance instance : instances) {
+    updateAnimation(instance);
+    renderSkeleton(instance);
+  }
+  batch.render(instances);
+}
