@@ -13,7 +13,7 @@
   float max=0;
   for (int i=0; i < items.length; i++)   max=Math.max(font.getBounds(items[i]).width,max);
   prefWidth=bg.getLeftWidth() + bg.getRightWidth() + max;
-  prefWidth=Math.max(prefWidth,max + style.listBackground.getLeftWidth() + style.listBackground.getRightWidth()+ 2 * style.itemSpacing);
+  prefWidth=Math.max(prefWidth,max + style.listBackground.getLeftWidth() + style.listBackground.getRightWidth()+ style.listSelection.getLeftWidth()+ style.listSelection.getRightWidth());
   if (items.length > 0) {
     ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
     SelectBox.this.fire(changeEvent);
