@@ -9,5 +9,6 @@
   assets.finishLoading();
   model=assets.get("data/g3d/cube.g3dj",Model.class);
   instance=new ModelInstance(model);
-  batch=new ModelBatch();
+  modelBatch=new ModelBatch();
+  spriteBatch=new SpriteBatch();
 }

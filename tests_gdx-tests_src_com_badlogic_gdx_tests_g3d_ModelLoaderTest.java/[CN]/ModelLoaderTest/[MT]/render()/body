@@ -2,7 +2,11 @@
   Gdx.gl.glClearColor(0.2f,0.2f,0.2f,1);
   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
   Gdx.gl.glEnable(GL20.GL_DEPTH_TEST);
-  batch.begin(camera);
-  batch.render(instance);
-  batch.end();
+  modelBatch.begin(camera);
+  modelBatch.render(instance);
+  modelBatch.end();
+  spriteBatch.begin();
+  spriteBatch.draw(assets.get("data/g3d/checkboard.png",Texture.class),0,0,100,100);
+  spriteBatch.draw(assets.get("data/g3d/Knight.png",Texture.class),100,0,100,100);
+  spriteBatch.end();
 }
