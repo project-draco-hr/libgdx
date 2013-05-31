@@ -8,7 +8,7 @@
       renderable.meshPartSize=nodePart.meshPart.numVertices;
       renderable.primitiveType=nodePart.meshPart.primitiveType;
       renderable.bones=nodePart.bones;
-      if (nodePart.bones == null && transform != null)       renderable.worldTransform.set(node.globalTransform).mul(transform);
+      if (nodePart.bones == null && transform != null)       renderable.worldTransform.set(transform).mul(node.globalTransform);
  else       if (transform != null)       renderable.worldTransform.set(transform);
  else       renderable.worldTransform.idt();
       renderable.userData=userData;
