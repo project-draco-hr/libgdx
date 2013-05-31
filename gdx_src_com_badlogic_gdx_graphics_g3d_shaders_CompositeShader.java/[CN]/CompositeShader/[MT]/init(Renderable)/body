@@ -33,6 +33,7 @@
       vertexShader.append("\n");
     }
   }
+  vertexShader.append("  gl_Position = position;\n");
   vertexShader.append("}");
   fragmentShader.append("void main() {\n");
   for (  SubShader subShader : subShaders) {
@@ -42,6 +43,7 @@
       fragmentShader.append("\n");
     }
   }
+  fragmentShader.append("  gl_FragColor = color;\n");
   fragmentShader.append("}");
   program=new ShaderProgram(vertexShader.toString(),fragmentShader.toString());
   if (!program.isCompiled()) {
