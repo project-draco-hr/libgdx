@@ -5,7 +5,7 @@
   if (defaultDepthFunc == 0)   context.setDepthTest(false,GL10.GL_LEQUAL);
  else   context.setDepthTest(true,defaultDepthFunc);
   set(u_projTrans,camera.combined);
-  set(u_cameraPosition,camera.position);
+  set(u_cameraPosition,camera.position.x,camera.position.y,camera.position.z,camera.far);
   set(u_cameraDirection,camera.direction);
   set(u_cameraUp,camera.up);
   for (  final DirectionalLight dirLight : directionalLights)   dirLight.set(0,0,0,0,-1,0);

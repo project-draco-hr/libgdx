@@ -1,0 +1,5 @@
+{
+  if (uniformLocations[what] < 0)   return false;
+  program.setUniformf(uniformLocations[what],v1,v2,v3,v4);
+  return true;
+}

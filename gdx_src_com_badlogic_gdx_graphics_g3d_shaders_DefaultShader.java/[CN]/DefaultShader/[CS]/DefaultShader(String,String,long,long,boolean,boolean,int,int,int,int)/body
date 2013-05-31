@@ -1,5 +1,5 @@
 {
-  final String prefix=createPrefix(mask,attributes,lighting,numDirectional,numPoint,numSpot,numBones);
+  final String prefix=createPrefix(mask,attributes,lighting,fog,numDirectional,numPoint,numSpot,numBones);
   program=new ShaderProgram(prefix + vertexShader,prefix + fragmentShader);
   if (!program.isCompiled()) {
     throw new GdxRuntimeException("Couldn't compile shader " + program.getLog());
