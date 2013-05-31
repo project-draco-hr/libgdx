@@ -1,0 +1,7 @@
+{
+  if (enabled) {
+    TextureAttribute attribute=(TextureAttribute)renderable.material.get(TextureAttribute.Diffuse);
+    int unit=context.textureBinder.bind(attribute.textureDescription);
+    program.setUniformi("u_diffuseTexture",unit);
+  }
+}
