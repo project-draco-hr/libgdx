@@ -1,4 +1,9 @@
 {
+  if (!created) {
+    app.graphics.makeCurrent();
+    app.listener.create();
+    created=true;
+  }
   if (paused) {
     if (!wasPaused) {
       Array<LifecycleListener> listeners=app.lifecycleListeners;

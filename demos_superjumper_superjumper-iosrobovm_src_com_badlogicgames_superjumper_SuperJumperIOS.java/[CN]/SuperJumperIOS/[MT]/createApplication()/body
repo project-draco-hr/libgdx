@@ -1,16 +1,4 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  return new IOSApplication(new ApplicationAdapter(){
-    SpriteBatch batch;
-    Texture texture;
-    @Override public void create(){
-      batch=new SpriteBatch();
-      System.out.println(batch);
-    }
-    @Override public void render(){
-      Gdx.gl.glClearColor(1,1,1,1);
-      Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-    }
-  }
-,config);
+  return new IOSApplication(new SuperJumper(),config);
 }
