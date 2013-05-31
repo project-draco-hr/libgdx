@@ -1,5 +1,4 @@
 {
   out.inf();
-  for (  final Node node : nodes)   calculateBoundingBox(out,node);
-  return out;
+  return extendBoundingBox(out);
 }

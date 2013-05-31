@@ -3,9 +3,7 @@
   if (dependenciesLoaded == false) {
     dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
     if (dependencies != null) {
-      for (      AssetDescriptor desc : dependencies) {
-        manager.injectDependency(assetDesc.fileName,desc);
-      }
+      manager.injectDependencies(assetDesc.fileName,dependencies);
     }
  else {
       asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);

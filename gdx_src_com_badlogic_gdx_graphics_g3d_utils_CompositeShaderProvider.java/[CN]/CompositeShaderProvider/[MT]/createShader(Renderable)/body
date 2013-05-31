@@ -1,0 +1,4 @@
+{
+  Gdx.app.log("CompositeShaderProvider","Creating new shader");
+  return new CompositeShader(renderable);
+}
