@@ -1,0 +1,6 @@
+{
+  if (logLevel >= LOG_ERROR) {
+    System.out.println("[error] " + tag + ": "+ message);
+    exception.printStackTrace();
+  }
+}

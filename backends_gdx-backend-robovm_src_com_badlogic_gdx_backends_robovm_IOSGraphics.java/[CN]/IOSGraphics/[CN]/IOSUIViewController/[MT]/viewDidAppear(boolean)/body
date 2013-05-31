@@ -1,0 +1,5 @@
+{
+  super.viewDidAppear(animated);
+  graphics.makeCurrent();
+  app.listener.create();
+}

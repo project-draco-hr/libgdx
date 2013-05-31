@@ -1,0 +1,5 @@
+{
+  application.addStrongRef(this);
+  this.app=createApplication();
+  return app.didFinishLaunching(application,launchOptions);
+}
