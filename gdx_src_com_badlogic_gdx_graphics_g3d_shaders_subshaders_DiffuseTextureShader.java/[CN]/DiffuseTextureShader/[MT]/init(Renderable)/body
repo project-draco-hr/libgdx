@@ -1,9 +1,0 @@
-{
-  if (renderable.material.has(TextureAttribute.Diffuse)) {
-    vertexVars.addAll(new String[]{"attribute vec2 a_texCoord0;","varying vec2 v_texCoords0;"});
-    vertexCode.addAll(new String[]{"v_texCoords0 = a_texCoord0;"});
-    fragmentVars.addAll(new String[]{"uniform sampler2D u_diffuseTexture;","varying MED vec2 v_texCoords0;"});
-    fragmentCode.addAll(new String[]{"color = texture2D(u_diffuseTexture, v_texCoords0);"});
-    enabled=true;
-  }
-}
