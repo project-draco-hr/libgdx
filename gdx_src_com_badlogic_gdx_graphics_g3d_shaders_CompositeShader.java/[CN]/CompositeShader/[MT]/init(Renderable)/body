@@ -1,0 +1,53 @@
+{
+  materialMask=renderable.material.getMask();
+  attributesMask=renderable.mesh.getVertexAttributes().getMask();
+  lightingEnabled=renderable.lights != null;
+  for (  SubShader subShader : subShaders) {
+    subShader.init(renderable);
+  }
+  StringBuffer vertexShader=new StringBuffer();
+  StringBuffer fragmentShader=new StringBuffer();
+  fragmentShader.append("#ifdef GL_ES\n" + "  #define LOWP lowp\n" + "  #define MED mediump\n"+ "  #define HIGH highp\n"+ "  precision mediump float;\n"+ "#else\n"+ "  #define MED\n"+ "  #define LOWP\n"+ "  #define HIGH\n"+ "#endif\n\n");
+  vertexShader.append("uniform mat4 u_projTrans;\n");
+  vertexShader.append("uniform vec3 u_cameraPosition;\n");
+  vertexShader.append("uniform vec3 u_cameraDirection;\n");
+  vertexShader.append("uniform vec3 u_cameraUp;\n");
+  vertexShader.append("uniform mat3 u_normalMatrix;\n");
+  for (  SubShader subShader : subShaders) {
+    for (    String line : subShader.getVertexShaderVars()) {
+      vertexShader.append(line);
+      vertexShader.append("\n");
+    }
+    vertexShader.append("\n");
+    for (    String line : subShader.getFragmentShaderVars()) {
+      fragmentShader.append(line);
+      fragmentShader.append("\n");
+    }
+    fragmentShader.append("\n");
+  }
+  vertexShader.append("void main() {\n");
+  for (  SubShader subShader : subShaders) {
+    for (    String line : subShader.getVertexShaderCode()) {
+      vertexShader.append("  ");
+      vertexShader.append(line);
+      vertexShader.append("\n");
+    }
+  }
+  vertexShader.append("}");
+  fragmentShader.append("void main() {\n");
+  for (  SubShader subShader : subShaders) {
+    for (    String line : subShader.getFragmentShaderCode()) {
+      fragmentShader.append("  ");
+      fragmentShader.append(line);
+      fragmentShader.append("\n");
+    }
+  }
+  fragmentShader.append("}");
+  program=new ShaderProgram(vertexShader.toString(),fragmentShader.toString());
+  if (!program.isCompiled()) {
+    throw new GdxRuntimeException("Couldn't compile composite shader\n" + "------ vertex shader ------\n" + vertexShader + "\n"+ "------ fragment shader ------\n"+ fragmentShader+ "\n"+ "------ error log ------\n"+ program.getLog());
+  }
+ else {
+    Gdx.app.log("CompositeShader","\n" + "------ vertex shader ------\n" + vertexShader + "\n"+ "------ fragment shader ------\n"+ fragmentShader+ "\n"+ "------ error log ------\n"+ program.getLog());
+  }
+}
