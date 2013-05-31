@@ -1,10 +1,15 @@
 {
-  if (stringValue != null)   return stringValue;
-  if (doubleValue != null) {
-    if (doubleValue % 1 == 0)     return Long.toString(longValue);
-    return Double.toString(doubleValue);
-  }
-  if (booleanValue != null)   return Boolean.toString(booleanValue);
-  if (type == ValueType.nullValue)   return null;
-  throw new IllegalStateException("Value cannot be converted to string: " + type);
+switch (type) {
+case stringValue:
+    return stringValue;
+case doubleValue:
+  return Double.toString(doubleValue);
+case longValue:
+return Long.toString(longValue);
+case booleanValue:
+return longValue != 0 ? "true" : "false";
+case nullValue:
+return null;
+}
+throw new IllegalStateException("Value cannot be converted to string: " + type);
 }

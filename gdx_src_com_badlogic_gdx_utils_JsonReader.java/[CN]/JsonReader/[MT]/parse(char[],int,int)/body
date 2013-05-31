@@ -299,6 +299,10 @@ break;
  catch (RuntimeException ex) {
 parseRuntimeEx=ex;
 }
+JsonValue root=this.root;
+this.root=null;
+current=null;
+lastChild.clear();
 if (p < pe) {
 int lineNumber=1;
 for (int i=0; i < p; i++) if (data[i] == '\n') lineNumber++;
@@ -313,7 +317,5 @@ if (element != null && element.isObject()) throw new SerializationException("Err
  else if (parseRuntimeEx != null) {
 throw new SerializationException("Error parsing JSON: " + new String(data),parseRuntimeEx);
 }
-JsonValue root=this.root;
-this.root=null;
 return root;
 }
