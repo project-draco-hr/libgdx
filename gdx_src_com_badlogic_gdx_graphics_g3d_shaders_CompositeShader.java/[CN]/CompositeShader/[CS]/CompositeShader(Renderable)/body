@@ -1,4 +1,5 @@
 {
   subShaders.add(new TransformShader());
+  subShaders.add(new DiffuseTextureShader());
   init(renderable);
 }
