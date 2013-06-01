@@ -1,4 +1,4 @@
 {
-  if (items.length == 0)   return null;
+  if (items.length == 0 || isNothingSelected())   return null;
   return items[selectedIndex];
 }
