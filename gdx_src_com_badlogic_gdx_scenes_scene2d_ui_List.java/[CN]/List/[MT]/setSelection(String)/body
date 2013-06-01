@@ -1,5 +1,5 @@
 {
-  setSelectionToNothing();
+  selectedIndex=-1;
   for (int i=0, n=items.length; i < n; i++) {
     if (items[i].equals(item)) {
       selectedIndex=i;
