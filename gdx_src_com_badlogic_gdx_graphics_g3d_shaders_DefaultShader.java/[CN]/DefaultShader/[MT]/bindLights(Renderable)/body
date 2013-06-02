@@ -37,7 +37,7 @@
       if (pointLightsIntensityOffset >= 0)       program.setUniformf(idx + pointLightsIntensityOffset,pointLights[i].intensity);
     }
   }
-  if (lights.fog.a > 0) {
+  if (lights.fog != null) {
     program.setUniformf(loc(u_fogColor),lights.fog);
   }
 }
