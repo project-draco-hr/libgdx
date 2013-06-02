@@ -10,6 +10,13 @@ synchronized (items) {
   }
   if (data == null)   return null;
   final Model result=new Model(data,new TextureProvider.AssetTextureProvider(manager));
+  Iterator<Disposable> disposables=result.getManagedDisposables().iterator();
+  while (disposables.hasNext()) {
+    Disposable disposable=disposables.next();
+    if (disposable instanceof Texture) {
+      disposables.remove();
+    }
+  }
   data=null;
   return result;
 }

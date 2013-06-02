@@ -1,0 +1,25 @@
+{
+  String value="";
+  if (renderable.mesh.getVertexAttribute(Usage.Color) != null || renderable.mesh.getVertexAttribute(Usage.ColorPacked) != null) {
+    vertexVars.addAll(new String[]{"attribute vec4 " + ShaderProgram.COLOR_ATTRIBUTE + ";","varying vec4 v_diffuseColor;"});
+    vertexCode.add("v_diffuseColor = " + ShaderProgram.COLOR_ATTRIBUTE + ";");
+    fragmentVars.add("varying LOWP vec4 v_diffuseColor;");
+    useVertexColor=true;
+    value="v_diffuseColor";
+  }
+  if (renderable.material.has(ColorAttribute.Diffuse)) {
+    fragmentVars.addAll(new String[]{"uniform LOWP vec4 u_diffuseColor;"});
+    useDiffuseColor=true;
+    value+=useVertexColor ? " * " : "";
+    value+="u_diffuseColor";
+  }
+  if (renderable.material.has(TextureAttribute.Diffuse)) {
+    vertexVars.addAll(new String[]{"attribute vec2 a_texCoord0;","varying vec2 v_texCoords0;"});
+    vertexCode.addAll(new String[]{"v_texCoords0 = a_texCoord0;"});
+    fragmentVars.addAll(new String[]{"uniform sampler2D u_diffuseTexture;","varying MED vec2 v_texCoords0;"});
+    useDiffuseTexture=true;
+    value+=(useVertexColor || useDiffuseColor) ? " * " : "";
+    value+="texture2D(u_diffuseTexture, v_texCoords0)";
+  }
+  fragmentCode.add("color = color * " + value + ";");
+}

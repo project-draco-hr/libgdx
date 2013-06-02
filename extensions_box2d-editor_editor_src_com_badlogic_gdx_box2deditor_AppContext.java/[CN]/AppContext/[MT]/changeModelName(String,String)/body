@@ -1,5 +1,0 @@
-{
-  if (oldName.equals(currentName))   currentName=newName;
-  BodyModel bm=modelMap.remove(oldName);
-  modelMap.put(newName,bm);
-}

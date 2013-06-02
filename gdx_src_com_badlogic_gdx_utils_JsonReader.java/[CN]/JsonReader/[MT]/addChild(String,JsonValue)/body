@@ -4,6 +4,11 @@
     current=child;
     root=child;
   }
- else   if (current.isArray() || current.isObject())   current.addChild(child);
+ else   if (current.isArray() || current.isObject()) {
+    if (current.size == 0)     current.child=child;
+ else     lastChild.pop().next=child;
+    lastChild.add(child);
+    current.size++;
+  }
  else   root=current;
 }

@@ -2,6 +2,5 @@
   renderer.dispose();
   shot.dispose();
   explosion.dispose();
-  if (controller != null)   controller.removeListener(listener);
   simulation.dispose();
 }

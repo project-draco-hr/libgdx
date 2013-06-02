@@ -1,0 +1,6 @@
+{
+  program.begin();
+  this.camera=camera;
+  this.context=context;
+  context.setDepthTest(true,GL20.GL_LEQUAL);
+}

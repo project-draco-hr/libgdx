@@ -4,7 +4,9 @@
   screenCoords.set(tmpCoords);
   list.setItems(items);
   list.setSelectedIndex(selectedIndex);
-  float height=getPrefHeight();
+  float height=list.getItemHeight() * (maxListCount <= 0 ? items.length : Math.min(maxListCount,items.length));
+  Drawable background=getStyle().background;
+  if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
   float heightBelow=tmpCoords.y;
   float heightAbove=stage.getCamera().viewportHeight - tmpCoords.y - SelectBox.this.getHeight();
   boolean below=true;

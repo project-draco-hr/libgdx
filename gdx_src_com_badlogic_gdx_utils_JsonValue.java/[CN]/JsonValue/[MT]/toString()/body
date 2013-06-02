@@ -1,3 +1,4 @@
 {
-  return prettyPrint(OutputType.minimal,0);
+  if (isValue())   return name == null ? asString() : name + ": " + asString();
+ else   return prettyPrint(OutputType.minimal,0);
 }

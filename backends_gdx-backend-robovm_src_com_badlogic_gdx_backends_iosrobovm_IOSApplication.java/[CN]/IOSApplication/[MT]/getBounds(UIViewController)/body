@@ -1,0 +1,20 @@
+{
+  CGSize bounds=UIScreen.getMainScreen().getBounds().size();
+  UIInterfaceOrientation orientation=viewController != null ? viewController.getInterfaceOrientation() : uiApp.getStatusBarOrientation();
+  int width;
+  int height;
+switch (orientation) {
+case LandscapeLeft:
+case LandscapeRight:
+    height=(int)bounds.width();
+  width=(int)bounds.height();
+break;
+default :
+width=(int)bounds.width();
+height=(int)bounds.height();
+}
+width*=displayScaleFactor;
+height*=displayScaleFactor;
+Gdx.app.debug("IOSApplication","View: " + orientation.toString() + " "+ width+ "x"+ height);
+return new CGSize(width,height);
+}

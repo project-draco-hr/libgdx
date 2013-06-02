@@ -1,0 +1,7 @@
+{
+  Gdx.app.debug("IOSApplication","resumed");
+  if (config.useObjectAL) {
+  }
+  graphics.makeCurrent();
+  graphics.resume();
+}

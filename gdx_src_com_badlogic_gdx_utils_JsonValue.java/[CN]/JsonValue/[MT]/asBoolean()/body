@@ -1,6 +1,13 @@
 {
-  if (booleanValue != null)   return booleanValue;
-  if (doubleValue != null)   return longValue == 0;
-  if (stringValue != null)   return stringValue.equalsIgnoreCase("true");
-  throw new IllegalStateException("Value cannot be converted to boolean: " + type);
+switch (type) {
+case stringValue:
+    return stringValue.equalsIgnoreCase("true");
+case doubleValue:
+  return doubleValue == 0;
+case longValue:
+return longValue == 0;
+case booleanValue:
+return longValue != 0;
+}
+throw new IllegalStateException("Value cannot be converted to boolean: " + type);
 }
