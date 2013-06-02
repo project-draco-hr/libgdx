@@ -1,5 +1,8 @@
 {
-  if (cells.size() > 0)   endRow();
+  if (cells.size() > 0) {
+    endRow();
+    invalidate();
+  }
   if (rowDefaults != null)   toolkit.freeCell(rowDefaults);
   rowDefaults=toolkit.obtainCell((L)this);
   rowDefaults.clear();
