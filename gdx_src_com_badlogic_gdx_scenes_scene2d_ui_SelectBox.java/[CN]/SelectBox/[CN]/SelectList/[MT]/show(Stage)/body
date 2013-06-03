@@ -4,7 +4,8 @@
   screenCoords.set(tmpCoords);
   list.setItems(items);
   list.setSelectedIndex(selectedIndex);
-  float height=list.getItemHeight() * (maxListCount <= 0 ? items.length : Math.min(maxListCount,items.length));
+  float itemHeight=list.getItemHeight();
+  float height=itemHeight * (maxListCount <= 0 ? items.length : Math.min(maxListCount,items.length));
   Drawable background=getStyle().background;
   if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
   float heightBelow=tmpCoords.y;
@@ -22,7 +23,6 @@
   setX(tmpCoords.x);
   setWidth(SelectBox.this.getWidth());
   setHeight(height);
-  float itemHeight=list.getItemHeight();
   scrollToCenter(0,list.getHeight() - selectedIndex * itemHeight - itemHeight / 2,0,0);
   updateVisualScroll();
   getColor().a=0;
