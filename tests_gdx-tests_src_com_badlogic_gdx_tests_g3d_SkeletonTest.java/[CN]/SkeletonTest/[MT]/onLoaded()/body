@@ -1,8 +1,10 @@
 {
   if (currentlyLoading == null || currentlyLoading.isEmpty())   return;
   instances.clear();
+  animationControllers.clear();
   final ModelInstance instance=new ModelInstance(assets.get(currentlyLoading,Model.class));
   instance.materials.get(0).set(new BlendingAttribute(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA,0.5f));
   instances.add(instance);
+  if (instance.animations.size > 0)   animationControllers.put(instance,new AnimationController(instance));
   currentlyLoading=null;
 }
