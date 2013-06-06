@@ -15,7 +15,7 @@
     try {
       field.set(object,readValue(field.getType(),metadata.elementType,child));
     }
- catch (    IllegalAccessException ex) {
+ catch (    ReflectionException ex) {
       throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
     }
 catch (    SerializationException ex) {

@@ -1,0 +1,11 @@
+{
+  try {
+    return new Method(ReflectionCache.getType(c).getMethod(name,parameterTypes));
+  }
+ catch (  SecurityException e) {
+    throw new ReflectionException("",e);
+  }
+catch (  NoSuchMethodException e) {
+    throw new ReflectionException("",e);
+  }
+}

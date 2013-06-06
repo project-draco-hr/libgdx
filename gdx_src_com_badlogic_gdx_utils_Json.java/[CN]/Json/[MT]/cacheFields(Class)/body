@@ -2,15 +2,14 @@
   ArrayList<Field> allFields=new ArrayList();
   Class nextClass=type;
   while (nextClass != Object.class) {
-    Collections.addAll(allFields,nextClass.getDeclaredFields());
+    Collections.addAll(allFields,Reflection.ClassReflection.getDeclaredFields(nextClass));
     nextClass=nextClass.getSuperclass();
   }
   ObjectMap<String,FieldMetadata> nameToField=new ObjectMap();
   for (int i=0, n=allFields.size(); i < n; i++) {
     Field field=allFields.get(i);
-    int modifiers=field.getModifiers();
-    if (Modifier.isTransient(modifiers))     continue;
-    if (Modifier.isStatic(modifiers))     continue;
+    if (field.isTransient())     continue;
+    if (field.isStatic())     continue;
     if (field.isSynthetic())     continue;
     if (!field.isAccessible()) {
       try {

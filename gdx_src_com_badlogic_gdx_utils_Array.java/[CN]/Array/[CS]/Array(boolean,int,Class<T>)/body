@@ -1,4 +1,4 @@
 {
   this.ordered=ordered;
-  items=(T[])Reflection.newArray(arrayType,capacity);
+  items=(T[])Reflection.ArrayReflection.newInstance(arrayType,capacity);
 }
