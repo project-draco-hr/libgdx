@@ -1,7 +1,7 @@
 {
   fill.clear();
   for (  MapLayer layer : layers) {
-    if (Reflection.isInstance(type,layer)) {
+    if (Reflection.ClassReflection.isInstance(type,layer)) {
       fill.add((T)layer);
     }
   }
