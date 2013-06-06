@@ -1,0 +1,11 @@
+{
+  if (useDiffuseColor) {
+    ColorAttribute attribute=(ColorAttribute)renderable.material.get(ColorAttribute.Diffuse);
+    program.setUniformf("u_diffuseColor",attribute.color);
+  }
+  if (useDiffuseTexture) {
+    TextureAttribute attribute=(TextureAttribute)renderable.material.get(TextureAttribute.Diffuse);
+    int unit=context.textureBinder.bind(attribute.textureDescription);
+    program.setUniformi("u_diffuseTexture",unit);
+  }
+}

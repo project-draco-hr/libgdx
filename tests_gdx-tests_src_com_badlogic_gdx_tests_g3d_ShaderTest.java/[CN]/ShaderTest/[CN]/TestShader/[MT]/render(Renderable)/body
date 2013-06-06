@@ -1,0 +1,6 @@
+{
+  set(u_worldTrans,renderable.worldTransform);
+  TestAttribute attr=(TestAttribute)renderable.material.get(TestAttribute.ID);
+  set(u_test,attr == null ? 1f : attr.value);
+  renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
+}

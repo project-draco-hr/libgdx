@@ -1,7 +1,8 @@
 {
   Cell cell=columnDefaults.size() > column ? columnDefaults.get(column) : null;
   if (cell == null) {
-    cell=new Cell(this);
+    cell=toolkit.obtainCell((L)this);
+    cell.clear();
     if (column >= columnDefaults.size()) {
       for (int i=columnDefaults.size(); i < column; i++)       columnDefaults.add(null);
       columnDefaults.add(cell);

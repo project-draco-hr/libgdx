@@ -24,6 +24,21 @@
   }
   ArrayList<Asset> assets=new ArrayList<Asset>();
   copyDirectory(source,target,assetFilter,assets);
+  List<String> classpathFiles=getClasspathFiles(context);
+  for (  String classpathFile : classpathFiles) {
+    if (assetFilter.accept(classpathFile,false)) {
+      try {
+        InputStream is=context.getClass().getClassLoader().getResourceAsStream(classpathFile);
+        FileWrapper dest=target.child(classpathFile);
+        dest.write(is,false);
+        assets.add(new Asset(dest,assetFilter.getType(dest.path())));
+        is.close();
+      }
+ catch (      IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
   StringBuffer buffer=new StringBuffer();
   for (  Asset asset : assets) {
     String path=asset.file.path().replace('\\','/').replace(assetOutputPath + "assets/","").replaceFirst("assets","");

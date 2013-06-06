@@ -30,8 +30,8 @@
     widgetWidth=widget.getWidth();
     widgetHeight=widget.getHeight();
   }
-  scrollX=forceOverscrollX || (widgetWidth > areaWidth && !disableX);
-  scrollY=forceOverscrollY || (widgetHeight > areaHeight && !disableY);
+  scrollX=forceScrollX || (widgetWidth > areaWidth && !disableX);
+  scrollY=forceScrollY || (widgetHeight > areaHeight && !disableY);
   boolean fade=fadeScrollBars;
   if (!fade) {
     if (scrollY) {

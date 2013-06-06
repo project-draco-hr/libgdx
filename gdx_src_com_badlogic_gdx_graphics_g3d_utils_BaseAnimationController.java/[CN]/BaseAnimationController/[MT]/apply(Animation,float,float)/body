@@ -1,0 +1,4 @@
+{
+  if (!applying)   throw new GdxRuntimeException("You must call begin() before adding an animation");
+  applyAnimation(transforms,transformPool,weight,animation,time);
+}

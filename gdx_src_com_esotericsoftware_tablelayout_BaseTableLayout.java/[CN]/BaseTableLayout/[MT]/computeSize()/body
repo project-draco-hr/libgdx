@@ -27,12 +27,12 @@
     c.computedPadRight=w(c.padRight,c) + ((c.column + c.colspan) == columns ? 0 : spaceRight);
     c.computedPadBottom=h(c.padBottom,c) + (c.row == rows - 1 ? 0 : h(c.spaceBottom,c));
     spaceRightLast=spaceRight;
-    float prefWidth=w(c.prefWidth,c);
-    float prefHeight=h(c.prefHeight,c);
-    float minWidth=w(c.minWidth,c);
-    float minHeight=h(c.minHeight,c);
-    float maxWidth=w(c.maxWidth,c);
-    float maxHeight=h(c.maxHeight,c);
+    float prefWidth=c.prefWidth.get(c);
+    float prefHeight=c.prefHeight.get(c);
+    float minWidth=c.minWidth.get(c);
+    float minHeight=c.minHeight.get(c);
+    float maxWidth=c.maxWidth.get(c);
+    float maxHeight=c.maxHeight.get(c);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
@@ -55,12 +55,12 @@
   for (int i=0, n=cells.size(); i < n; i++) {
     Cell c=cells.get(i);
     if (c.ignore || c.colspan == 1)     continue;
-    float minWidth=w(c.minWidth,c);
-    float prefWidth=w(c.prefWidth,c);
-    float maxWidth=w(c.maxWidth,c);
+    float minWidth=c.minWidth.get(c);
+    float prefWidth=c.prefWidth.get(c);
+    float maxWidth=c.maxWidth.get(c);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
-    float spannedMinWidth=0, spannedPrefWidth=0;
+    float spannedMinWidth=-(c.computedPadLeft + c.computedPadRight), spannedPrefWidth=spannedMinWidth;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++) {
       spannedMinWidth+=columnMinWidth[column];
       spannedPrefWidth+=columnPrefWidth[column];

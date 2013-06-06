@@ -7,10 +7,10 @@
       renderable.meshPartOffset=nodePart.meshPart.indexOffset;
       renderable.meshPartSize=nodePart.meshPart.numVertices;
       renderable.primitiveType=nodePart.meshPart.primitiveType;
-      renderable.bones=nodePart.bones == null ? null : nodePart.bones.values;
-      if (transform == null)       renderable.modelTransform.idt();
- else       renderable.modelTransform.set(transform);
-      renderable.localTransform=node.globalTransform;
+      renderable.bones=nodePart.bones;
+      if (nodePart.bones == null && transform != null)       renderable.worldTransform.set(transform).mul(node.globalTransform);
+ else       if (transform != null)       renderable.worldTransform.set(transform);
+ else       renderable.worldTransform.idt();
       renderable.userData=userData;
       renderables.add(renderable);
     }

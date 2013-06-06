@@ -6,6 +6,7 @@
   if (mtl.specular != null)   result.set(new ColorAttribute(ColorAttribute.Specular,mtl.specular));
   if (mtl.emissive != null)   result.set(new ColorAttribute(ColorAttribute.Emissive,mtl.emissive));
   if (mtl.shininess > 0f)   result.set(new FloatAttribute(FloatAttribute.Shininess,mtl.shininess));
+  if (mtl.opacity != 1.f)   result.set(new BlendingAttribute(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA,mtl.opacity));
   ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
   if (mtl.textures != null) {
     for (    ModelTexture tex : mtl.textures) {
@@ -21,8 +22,8 @@
       TextureDescriptor descriptor=new TextureDescriptor(texture);
       descriptor.minFilter=GL20.GL_LINEAR;
       descriptor.magFilter=GL20.GL_LINEAR;
-      descriptor.uWrap=GL20.GL_CLAMP_TO_EDGE;
-      descriptor.vWrap=GL20.GL_CLAMP_TO_EDGE;
+      descriptor.uWrap=GL20.GL_REPEAT;
+      descriptor.vWrap=GL20.GL_REPEAT;
 switch (tex.usage) {
 case ModelTexture.USAGE_DIFFUSE:
         result.set(new TextureAttribute(TextureAttribute.Diffuse,descriptor));

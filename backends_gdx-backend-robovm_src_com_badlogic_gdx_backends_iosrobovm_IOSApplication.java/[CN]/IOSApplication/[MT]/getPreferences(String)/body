@@ -1,0 +1,14 @@
+{
+  File libraryPath=new File(System.getenv("HOME"),"Library");
+  String finalPath=new File(libraryPath,name + ".plist").getAbsolutePath();
+  Gdx.app.debug("IOSApplication","Loading NSDictionary from file " + finalPath);
+  NSMutableDictionary nsDictionary=NSMutableDictionary.fromFile(finalPath);
+  if (nsDictionary == null) {
+    Gdx.app.debug("IOSApplication","NSDictionary not found, creating a new one");
+    nsDictionary=new NSMutableDictionary();
+    boolean fileWritten=nsDictionary.writeToFile(finalPath,false);
+    if (fileWritten)     Gdx.app.debug("IOSApplication","NSDictionary file written");
+ else     Gdx.app.debug("IOSApplication","Failed to write NSDictionary to file " + finalPath);
+  }
+  return new IOSPreferences(nsDictionary,finalPath);
+}

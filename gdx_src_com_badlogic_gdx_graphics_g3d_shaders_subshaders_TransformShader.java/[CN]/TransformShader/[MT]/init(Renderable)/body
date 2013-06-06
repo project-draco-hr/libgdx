@@ -1,0 +1,22 @@
+{
+  VertexAttributes attributes=renderable.mesh.getVertexAttributes();
+  int boneWeightsPerVertex=0;
+  for (int i=0; i < attributes.size(); i++) {
+    VertexAttribute attr=attributes.get(i);
+    if (attr.usage == VertexAttributes.Usage.Position)     vertexVars.add("attribute vec3 " + attr.alias + ";");
+    if (attr.usage == VertexAttributes.Usage.Normal)     vertexVars.add("attribute vec3 " + attr.alias + ";");
+    if (attr.usage == VertexAttributes.Usage.BiNormal)     vertexVars.add("attribute vec3 " + attr.alias + ";");
+    if (attr.usage == VertexAttributes.Usage.Tangent)     vertexVars.add("attribute vec3 " + attr.alias + ";");
+    if (attr.usage == VertexAttributes.Usage.BoneWeight) {
+      vertexVars.add("#define boneWeight" + boneWeightsPerVertex + "Flag");
+      vertexVars.add("attribute vec2 " + attr.alias + ";");
+      boneWeightsPerVertex++;
+    }
+  }
+  if (boneWeightsPerVertex > 0) {
+    skinned=true;
+    vertexVars.add("#define skinnedFlag");
+    vertexVars.add("#define numBones " + NUM_BONES);
+    vertexVars.add("uniform mat4 u_bones[numBones];");
+  }
+}

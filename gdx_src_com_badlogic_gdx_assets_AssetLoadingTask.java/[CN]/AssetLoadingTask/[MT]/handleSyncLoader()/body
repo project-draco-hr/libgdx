@@ -7,9 +7,7 @@
       asset=syncLoader.load(manager,assetDesc.fileName,assetDesc.params);
       return;
     }
-    for (    AssetDescriptor desc : dependencies) {
-      manager.injectDependency(assetDesc.fileName,desc);
-    }
+    manager.injectDependencies(assetDesc.fileName,dependencies);
   }
  else {
     asset=syncLoader.load(manager,assetDesc.fileName,assetDesc.params);

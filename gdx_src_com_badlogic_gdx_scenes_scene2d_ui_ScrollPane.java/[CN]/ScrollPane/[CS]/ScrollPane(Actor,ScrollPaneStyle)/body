@@ -54,7 +54,8 @@
         handlePosition=scrollH;
         scrollH=Math.max(hScrollBounds.x,scrollH);
         scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hKnobBounds.width,scrollH);
-        setScrollPercentX((scrollH - hScrollBounds.x) / (hScrollBounds.width - hKnobBounds.width));
+        float total=hScrollBounds.width - hKnobBounds.width;
+        if (total != 0)         setScrollPercentX((scrollH - hScrollBounds.x) / total);
         lastPoint.set(x,y);
       }
  else       if (touchScrollV) {
@@ -63,7 +64,8 @@
         handlePosition=scrollV;
         scrollV=Math.max(vScrollBounds.y,scrollV);
         scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vKnobBounds.height,scrollV);
-        setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vKnobBounds.height)));
+        float total=vScrollBounds.height - vKnobBounds.height;
+        if (total != 0)         setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / total));
         lastPoint.set(x,y);
       }
     }

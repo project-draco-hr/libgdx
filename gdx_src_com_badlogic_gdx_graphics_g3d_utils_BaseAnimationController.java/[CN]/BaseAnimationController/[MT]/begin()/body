@@ -1,0 +1,4 @@
+{
+  if (applying)   throw new GdxRuntimeException("You must call end() after each call to being()");
+  applying=true;
+}
