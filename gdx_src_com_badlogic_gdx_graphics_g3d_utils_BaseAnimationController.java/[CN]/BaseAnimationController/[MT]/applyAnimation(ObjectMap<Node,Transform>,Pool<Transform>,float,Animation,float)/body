@@ -1,0 +1,33 @@
+{
+  for (  final NodeAnimation nodeAnim : animation.nodeAnimations) {
+    final Node node=nodeAnim.node;
+    node.isAnimated=true;
+    final int n=nodeAnim.keyframes.size - 1;
+    int first=0, second=-1;
+    for (int i=0; i < n; i++) {
+      if (time >= nodeAnim.keyframes.get(i).keytime && time <= nodeAnim.keyframes.get(i + 1).keytime) {
+        first=i;
+        second=i + 1;
+        break;
+      }
+    }
+    final Transform transform=tmpT;
+    final NodeKeyframe firstKeyframe=nodeAnim.keyframes.get(first);
+    transform.set(firstKeyframe.translation,firstKeyframe.rotation,firstKeyframe.scale);
+    if (second > first) {
+      final NodeKeyframe secondKeyframe=nodeAnim.keyframes.get(second);
+      final float t=(time - firstKeyframe.keytime) / (secondKeyframe.keytime - firstKeyframe.keytime);
+      transform.lerp(secondKeyframe.translation,secondKeyframe.rotation,secondKeyframe.scale,t);
+    }
+    if (out == null)     transform.toMatrix4(node.localTransform);
+ else {
+      if (out.containsKey(node)) {
+        if (alpha == 1.f)         out.get(node).set(transform);
+ else         out.get(node).lerp(transform,alpha);
+      }
+ else {
+        out.put(node,pool.obtain().set(transform));
+      }
+    }
+  }
+}

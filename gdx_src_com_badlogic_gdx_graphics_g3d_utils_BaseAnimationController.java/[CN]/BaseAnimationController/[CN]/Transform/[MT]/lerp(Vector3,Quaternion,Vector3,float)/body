@@ -1,0 +1,6 @@
+{
+  translation.lerp(targetT,alpha);
+  rotation.slerp(targetR,alpha);
+  scale.lerp(targetS,alpha);
+  return this;
+}
