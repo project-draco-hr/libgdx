@@ -1,8 +1,0 @@
-{
-  return new AsynchResult(executor.submit(new Callable<T>(){
-    @Override public T call() throws Exception {
-      return task.call();
-    }
-  }
-));
-}
