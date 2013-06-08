@@ -3,9 +3,9 @@
     return new Method(c.getMethod(name,parameterTypes));
   }
  catch (  SecurityException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Security violation occurred while getting method '" + name + "' for class: '"+ c.getName()+ "'.",e);
   }
 catch (  NoSuchMethodException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("No method with name '" + name + "' for class '"+ c.getName()+ "' with the supplied parameter types.",e);
   }
 }

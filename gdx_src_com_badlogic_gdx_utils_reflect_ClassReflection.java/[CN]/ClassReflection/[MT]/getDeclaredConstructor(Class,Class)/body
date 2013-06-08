@@ -3,9 +3,9 @@
     return new Constructor(c.getDeclaredConstructor(parameterTypes));
   }
  catch (  SecurityException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Security violation occurred while getting constructor for class: '" + c.getName() + "'.",e);
   }
 catch (  NoSuchMethodException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("No constructor for class " + c.getName() + " with the supplied parameter types.",e);
   }
 }
