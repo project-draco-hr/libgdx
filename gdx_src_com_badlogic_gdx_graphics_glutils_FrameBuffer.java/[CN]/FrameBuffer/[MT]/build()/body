@@ -51,5 +51,7 @@
     if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete attachment");
     if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete dimensions");
     if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: missing attachment");
+    if (result == GL20.GL_FRAMEBUFFER_UNSUPPORTED)     throw new IllegalStateException("frame buffer couldn't be constructed: unsupported combination of formats");
+    throw new IllegalStateException("frame buffer couldn't be constructed: unknown error " + result);
   }
 }
