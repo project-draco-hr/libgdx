@@ -5,7 +5,7 @@
     if (className != null) {
       jsonData.remove(typeName);
       try {
-        type=(Class<T>)Reflection.ClassReflection.forName(className);
+        type=(Class<T>)ClassReflection.forName(className);
       }
  catch (      ReflectionException ex) {
         type=tagToClass.get(className);
@@ -44,12 +44,12 @@
     if (serializer != null)     return (T)serializer.read(this,jsonData,type);
   }
   if (jsonData.isArray()) {
-    if (type == null || Reflection.ClassReflection.isAssignableFrom(Array.class,type)) {
+    if (type == null || ClassReflection.isAssignableFrom(Array.class,type)) {
       Array newArray=type == null ? new Array() : (Array)newInstance(type);
       for (JsonValue child=jsonData.child(); child != null; child=child.next())       newArray.add(readValue(elementType,null,child));
       return (T)newArray;
     }
-    if (Reflection.ClassReflection.isAssignableFrom(List.class,type)) {
+    if (ClassReflection.isAssignableFrom(List.class,type)) {
       List newArray=type == null ? new ArrayList() : (List)newInstance(type);
       for (JsonValue child=jsonData.child(); child != null; child=child.next())       newArray.add(readValue(elementType,null,child));
       return (T)newArray;
@@ -57,9 +57,9 @@
     if (type.isArray()) {
       Class componentType=type.getComponentType();
       if (elementType == null)       elementType=componentType;
-      Object newArray=Reflection.ArrayReflection.newInstance(componentType,jsonData.size());
+      Object newArray=ArrayReflection.newInstance(componentType,jsonData.size());
       int i=0;
-      for (JsonValue child=jsonData.child(); child != null; child=child.next())       Reflection.ArrayReflection.set(newArray,i++,readValue(elementType,null,child));
+      for (JsonValue child=jsonData.child(); child != null; child=child.next())       ArrayReflection.set(newArray,i++,readValue(elementType,null,child));
       return (T)newArray;
     }
     throw new SerializationException("Unable to convert value to required type: " + jsonData + " ("+ type.getName()+ ")");
@@ -101,7 +101,7 @@
     }
     if (type == boolean.class || type == Boolean.class)     return (T)Boolean.valueOf(string);
     if (type == char.class || type == Character.class)     return (T)(Character)string.charAt(0);
-    if (Reflection.ClassReflection.isAssignableFrom(Enum.class,type)) {
+    if (ClassReflection.isAssignableFrom(Enum.class,type)) {
       Object[] constants=type.getEnumConstants();
       for (int i=0, n=constants.length; i < n; i++)       if (string.equals(constants[i].toString()))       return (T)constants[i];
     }

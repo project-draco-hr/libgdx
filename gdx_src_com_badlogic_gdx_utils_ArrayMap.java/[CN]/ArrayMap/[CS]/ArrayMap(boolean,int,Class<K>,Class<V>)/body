@@ -1,5 +1,5 @@
 {
   this.ordered=ordered;
-  keys=(K[])Reflection.ArrayReflection.newInstance(keyArrayType,capacity);
-  values=(V[])Reflection.ArrayReflection.newInstance(valueArrayType,capacity);
+  keys=(K[])ArrayReflection.newInstance(keyArrayType,capacity);
+  values=(V[])ArrayReflection.newInstance(valueArrayType,capacity);
 }

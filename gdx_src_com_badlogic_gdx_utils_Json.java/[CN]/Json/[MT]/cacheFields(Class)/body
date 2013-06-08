@@ -2,7 +2,7 @@
   ArrayList<Field> allFields=new ArrayList();
   Class nextClass=type;
   while (nextClass != Object.class) {
-    Collections.addAll(allFields,Reflection.ClassReflection.getDeclaredFields(nextClass));
+    Collections.addAll(allFields,ClassReflection.getDeclaredFields(nextClass));
     nextClass=nextClass.getSuperclass();
   }
   ObjectMap<String,FieldMetadata> nameToField=new ObjectMap();

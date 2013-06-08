@@ -1,10 +1,10 @@
 {
   try {
-    return Reflection.ClassReflection.newInstance(type);
+    return ClassReflection.newInstance(type);
   }
  catch (  Exception ex) {
     try {
-      Constructor constructor=Reflection.ClassReflection.getDeclaredConstructor(type);
+      Constructor constructor=ClassReflection.getDeclaredConstructor(type);
       constructor.setAccessible(true);
       return constructor.newInstance();
     }
@@ -12,7 +12,7 @@
     }
 catch (    ReflectionException ignored) {
       if (type.isArray())       throw new SerializationException("Encountered JSON object when expected array of type: " + type.getName(),ex);
- else       if (Reflection.ClassReflection.isMemberClass(type) && !Reflection.ClassReflection.isStaticClass(type))       throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(),ex);
+ else       if (ClassReflection.isMemberClass(type) && !ClassReflection.isStaticClass(type))       throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(),ex);
  else       throw new SerializationException("Class cannot be created (missing no-arg constructor): " + type.getName(),ex);
     }
 catch (    Exception privateConstructorException) {

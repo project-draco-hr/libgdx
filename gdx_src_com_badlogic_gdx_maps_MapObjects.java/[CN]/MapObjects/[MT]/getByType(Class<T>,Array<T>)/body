@@ -1,7 +1,7 @@
 {
   fill.clear();
   for (  MapObject object : objects) {
-    if (Reflection.ClassReflection.isInstance(type,object)) {
+    if (ClassReflection.isInstance(type,object)) {
       fill.add((T)object);
     }
   }
