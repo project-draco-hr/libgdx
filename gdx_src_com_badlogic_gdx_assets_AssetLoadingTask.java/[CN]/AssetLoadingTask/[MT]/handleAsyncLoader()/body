@@ -2,7 +2,7 @@
   AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
   if (!dependenciesLoaded) {
     if (depsFuture == null) {
-      depsFuture=threadPool.submit(this);
+      depsFuture=executor.submit(this);
     }
  else {
       if (depsFuture.isDone()) {
@@ -21,7 +21,7 @@
   }
  else {
     if (loadFuture == null && !asyncDone) {
-      loadFuture=threadPool.submit(this);
+      loadFuture=executor.submit(this);
     }
  else {
       if (asyncDone) {

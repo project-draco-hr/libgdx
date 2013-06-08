@@ -1,0 +1,11 @@
+{
+  T result=null;
+  boolean error=false;
+  try {
+    result=task.call();
+  }
+ catch (  Throwable t) {
+    error=true;
+  }
+  return new AsynchResult(result);
+}

@@ -2,6 +2,6 @@
   this.manager=manager;
   this.assetDesc=assetDesc;
   this.loader=loader;
-  this.threadPool=threadPool;
+  this.executor=threadPool;
   startTime=manager.log.getLevel() == Logger.DEBUG ? TimeUtils.nanoTime() : 0;
 }
