@@ -2,15 +2,11 @@
   super.create();
   world.maxSubSteps=20;
   world.add("ground",0f,0f,0f).setColor(0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),0.25f + 0.5f * (float)Math.random(),1f);
-  final ModelBuilder modelBuilder=new ModelBuilder();
-  model=objLoader.loadObj(Gdx.files.internal("data/wheel.obj"));
-  final Mesh source=model.meshes.get(0);
-  final Mesh mesh=source.copy(false,true,new int[]{Usage.Position});
-  model.meshes.removeIndex(0);
-  model.meshes.add(mesh);
-  model.meshParts.get(0).mesh=mesh;
-  mesh.scale(6,6,6);
-  softBody=new btSoftBody(worldInfo,mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize(),mesh.getVertexAttribute(Usage.Position).offset,mesh.getIndicesBuffer(),mesh.getNumIndices() / 3);
+  model=objLoader.loadModel(Gdx.files.internal("data/wheel.obj"));
+  MeshPart meshPart=model.nodes.get(0).parts.get(0).meshPart;
+  meshPart.mesh.scale(6,6,6);
+  indexMap=BufferUtils.newShortBuffer(meshPart.numVertices);
+  softBody=new btSoftBody(worldInfo,meshPart.mesh.getVerticesBuffer(),meshPart.mesh.getVertexSize(),meshPart.mesh.getVertexAttribute(Usage.Position).offset,meshPart.mesh.getIndicesBuffer(),meshPart.indexOffset,meshPart.numVertices,indexMap,0);
   softBody.setMass(0,0);
   com.badlogic.gdx.physics.bullet.Material pm=softBody.appendMaterial();
   pm.setM_kLST(0.2f);
@@ -20,7 +16,7 @@
   softBody.setConfig_kDF(0.2f);
   softBody.randomizeConstraints();
   softBody.setTotalMass(1);
-  softBody.translate(Vector3.tmp.set(1,5,1));
+  softBody.translate(tmpV.set(1,5,1));
   ((btSoftRigidDynamicsWorld)(world.collisionWorld)).addSoftBody(softBody);
   world.add(entity=new BulletEntity(model,(btCollisionObject)null,1,5,1));
 }
