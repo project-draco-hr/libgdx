@@ -1,7 +1,8 @@
-btSoftBodyWorldInfo worldInfo
 java.nio.FloatBuffer vertices
-int vertexCount
 int vertexSize
 int posOffset
 java.nio.ShortBuffer indices
-int triangleCount
+int indexOffset
+int numVertices
+java.nio.ShortBuffer indexMap
+int indexMapOffset
