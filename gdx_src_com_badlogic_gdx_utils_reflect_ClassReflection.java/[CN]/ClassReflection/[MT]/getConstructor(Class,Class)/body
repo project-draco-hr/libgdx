@@ -6,6 +6,6 @@
     throw new ReflectionException("Security violation occurred while getting constructor for class: '" + c.getName() + "'.",e);
   }
 catch (  NoSuchMethodException e) {
-    throw new ReflectionException("No constructor for class " + c.getName() + " with the supplied parameter types.",e);
+    throw new ReflectionException("Constructor not found for class: " + c.getName(),e);
   }
 }

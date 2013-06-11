@@ -3,6 +3,6 @@
     return Class.forName(name);
   }
  catch (  ClassNotFoundException e) {
-    throw new ReflectionException("Class " + name + "could not be found.",e);
+    throw new ReflectionException("Class not found: " + name,e);
   }
 }
