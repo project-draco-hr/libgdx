@@ -9,10 +9,14 @@
       String id=material.getString("id",null);
       if (id == null)       throw new GdxRuntimeException("Material needs an id.");
       jsonMaterial.id=id;
-      jsonMaterial.diffuse=parseColor(material.get("diffuse"),Color.WHITE);
-      jsonMaterial.ambient=parseColor(material.get("ambient"),Color.BLACK);
-      jsonMaterial.emissive=parseColor(material.get("emissive"),Color.BLACK);
-      jsonMaterial.specular=parseColor(material.get("specular"),Color.BLACK);
+      final JsonValue diffuse=material.get("diffuse");
+      if (diffuse != null)       jsonMaterial.diffuse=parseColor(diffuse);
+      final JsonValue ambient=material.get("ambient");
+      if (ambient != null)       jsonMaterial.ambient=parseColor(ambient);
+      final JsonValue emissive=material.get("emissive");
+      if (emissive != null)       jsonMaterial.emissive=parseColor(emissive);
+      final JsonValue specular=material.get("specular");
+      if (specular != null)       jsonMaterial.specular=parseColor(specular);
       jsonMaterial.shininess=material.getFloat("shininess",0.0f);
       jsonMaterial.opacity=material.getFloat("opacity",1.0f);
       JsonValue textures=material.get("textures");
