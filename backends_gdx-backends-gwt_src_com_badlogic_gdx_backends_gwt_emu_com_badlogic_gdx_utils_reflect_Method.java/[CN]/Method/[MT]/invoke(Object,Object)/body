@@ -3,6 +3,6 @@
     return method.invoke(obj,args);
   }
  catch (  IllegalArgumentException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Illegal argument(s) supplied to method: " + getName(),e);
   }
 }

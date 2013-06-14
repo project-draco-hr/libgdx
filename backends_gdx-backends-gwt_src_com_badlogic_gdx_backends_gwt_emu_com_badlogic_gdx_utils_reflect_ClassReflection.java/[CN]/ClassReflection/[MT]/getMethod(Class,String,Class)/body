@@ -3,9 +3,9 @@
     return new Method(ReflectionCache.getType(c).getMethod(name,parameterTypes));
   }
  catch (  SecurityException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Security violation while getting method: " + name + ", for class: "+ c.getName(),e);
   }
 catch (  NoSuchMethodException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Method not found: " + name + ", for class: "+ c.getName(),e);
   }
 }

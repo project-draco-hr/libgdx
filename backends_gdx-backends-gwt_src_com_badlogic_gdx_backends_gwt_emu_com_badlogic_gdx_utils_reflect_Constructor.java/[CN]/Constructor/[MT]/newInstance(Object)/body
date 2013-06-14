@@ -3,6 +3,6 @@
     return constructor.newInstance();
   }
  catch (  IllegalArgumentException e) {
-    throw new ReflectionException("",e);
+    throw new ReflectionException("Illegal argument(s) supplied to constructor for class: " + getDeclaringClass().getName(),e);
   }
 }
