@@ -42,7 +42,9 @@
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
         boolean repeat=false;
-        boolean ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+        boolean ctrl;
+        if (isMac)         ctrl=Gdx.input.isKeyPressed(Keys.SYM);
+ else         ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
         if (ctrl) {
           if (keycode == Keys.V) {
             paste();
