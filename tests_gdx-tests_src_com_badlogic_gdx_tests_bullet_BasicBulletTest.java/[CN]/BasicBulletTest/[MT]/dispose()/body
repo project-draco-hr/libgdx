@@ -1,0 +1,19 @@
+{
+  collisionWorld.delete();
+  solver.delete();
+  broadphase.delete();
+  dispatcher.delete();
+  collisionConfiguration.delete();
+  for (  btRigidBody body : bodies)   body.delete();
+  bodies.clear();
+  for (  MotionState motionState : motionStates)   motionState.delete();
+  motionStates.clear();
+  for (  btCollisionShape shape : shapes)   shape.delete();
+  shapes.clear();
+  for (  btRigidBodyConstructionInfo info : bodyInfos)   info.delete();
+  bodyInfos.clear();
+  modelBatch.dispose();
+  instances.clear();
+  for (  Model model : models)   model.dispose();
+  models.clear();
+}
