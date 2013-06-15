@@ -13,7 +13,7 @@
   models.add(groundModel);
   final Model sphereModel=modelBuilder.createSphere(1f,1f,1f,10,10,new Material(ColorAttribute.createDiffuse(Color.RED),ColorAttribute.createSpecular(Color.WHITE),FloatAttribute.createShininess(64f)),Usage.Position | Usage.Normal);
   models.add(sphereModel);
-  Bullet.init();
+  BaseBulletTest.init();
   collisionConfiguration=new btDefaultCollisionConfiguration();
   dispatcher=new btCollisionDispatcher(collisionConfiguration);
   broadphase=new btDbvtBroadphase();
