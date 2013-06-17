@@ -1,0 +1,3 @@
+{
+  return btHingeConstraint.getCPtr(self.createHingeConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),rbAFrame,rbBFrame));
+}

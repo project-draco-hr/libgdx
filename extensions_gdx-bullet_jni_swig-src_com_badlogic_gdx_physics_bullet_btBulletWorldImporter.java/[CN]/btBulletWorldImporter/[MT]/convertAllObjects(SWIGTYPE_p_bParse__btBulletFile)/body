@@ -1,0 +1,3 @@
+{
+  return (getClass() == btBulletWorldImporter.class) ? gdxBulletJNI.btBulletWorldImporter_convertAllObjects(swigCPtr,this,SWIGTYPE_p_bParse__btBulletFile.getCPtr(file)) : gdxBulletJNI.btBulletWorldImporter_convertAllObjectsSwigExplicitbtBulletWorldImporter(swigCPtr,this,SWIGTYPE_p_bParse__btBulletFile.getCPtr(file));
+}

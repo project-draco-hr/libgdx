@@ -1,0 +1,9 @@
+{
+  super.dispose();
+  vehicle.delete();
+  vehicle=null;
+  raycaster.delete();
+  raycaster=null;
+  tuning.delete();
+  tuning=null;
+}

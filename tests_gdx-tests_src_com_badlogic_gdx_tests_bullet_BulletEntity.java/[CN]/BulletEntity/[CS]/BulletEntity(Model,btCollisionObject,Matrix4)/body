@@ -1,13 +1,3 @@
 {
-  this.modelInstance=new ModelInstance(model,transform.cpy());
-  this.transform=this.modelInstance.transform;
-  this.body=body;
-  if (body != null) {
-    body.userData=this;
-    if (body instanceof btRigidBody) {
-      this.motionState=new MotionState(this.modelInstance.transform);
-      ((btRigidBody)this.body).setMotionState(motionState);
-    }
- else     body.setWorldTransform(transform);
-  }
+  this(new ModelInstance(model,transform.cpy()),body);
 }
