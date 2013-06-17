@@ -6,6 +6,6 @@
   camera.update();
   assets=new AssetManager();
   assets.load("data/g3d/cube.g3dj",Model.class);
-  modelBatch=new ModelBatch();
   spriteBatch=new SpriteBatch();
+  modelBatch=new ModelBatch();
 }

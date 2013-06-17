@@ -11,7 +11,7 @@
     writer.name(jsonName);
     writeValue(field.get(object),field.getType(),elementType);
   }
- catch (  IllegalAccessException ex) {
+ catch (  ReflectionException ex) {
     throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
   }
 catch (  SerializationException ex) {

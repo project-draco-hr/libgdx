@@ -1,4 +1,3 @@
 {
-  model=assets.get("data/g3d/cube.g3dj",Model.class);
-  instance=new ModelInstance(model);
+  instance=new ModelInstance(assets.get("data/g3d/cube.g3dj",Model.class));
 }

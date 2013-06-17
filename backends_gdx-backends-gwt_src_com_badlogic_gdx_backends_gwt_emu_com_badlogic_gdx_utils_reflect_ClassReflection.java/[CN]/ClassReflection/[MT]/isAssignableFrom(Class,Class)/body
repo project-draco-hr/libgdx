@@ -1,0 +1,5 @@
+{
+  Type c1Type=ReflectionCache.getType(c1);
+  Type c2Type=ReflectionCache.getType(c2);
+  return c1Type.isAssignableFrom(c2Type);
+}

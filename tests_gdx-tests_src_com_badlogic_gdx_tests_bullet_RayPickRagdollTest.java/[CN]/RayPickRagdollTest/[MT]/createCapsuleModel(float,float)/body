@@ -1,4 +1,6 @@
 {
   final float hh=radius + 0.5f * height;
-  return modelBuilder.createCylinder(radius * 2,hh * 2f,radius * 2f,16,new Material(ColorAttribute.createDiffuse(Color.WHITE),ColorAttribute.createSpecular(Color.WHITE)),Usage.Position | Usage.Normal);
+  Model result=modelBuilder.createCylinder(radius * 2,hh * 2f,radius * 2f,16,new Material(ColorAttribute.createDiffuse(Color.WHITE),ColorAttribute.createSpecular(Color.WHITE)),Usage.Position | Usage.Normal);
+  disposables.add(result);
+  return result;
 }

@@ -4,7 +4,10 @@
   screenCoords.set(tmpCoords);
   list.setItems(items);
   list.setSelectedIndex(selectedIndex);
-  float height=getPrefHeight();
+  float itemHeight=list.getItemHeight();
+  float height=itemHeight * (maxListCount <= 0 ? items.length : Math.min(maxListCount,items.length));
+  Drawable background=getStyle().background;
+  if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
   float heightBelow=tmpCoords.y;
   float heightAbove=stage.getCamera().viewportHeight - tmpCoords.y - SelectBox.this.getHeight();
   boolean below=true;
@@ -15,11 +18,6 @@
     }
  else     height=heightBelow;
   }
-  float itemHeight=list.getItemHeight();
-  float backgroundPadding=getStyle().background.getTopHeight() + getStyle().background.getBottomHeight();
-  height-=backgroundPadding;
-  height-=height % itemHeight;
-  height+=backgroundPadding;
   if (below)   setY(tmpCoords.y - height);
  else   setY(tmpCoords.y + SelectBox.this.getHeight());
   setX(tmpCoords.x);

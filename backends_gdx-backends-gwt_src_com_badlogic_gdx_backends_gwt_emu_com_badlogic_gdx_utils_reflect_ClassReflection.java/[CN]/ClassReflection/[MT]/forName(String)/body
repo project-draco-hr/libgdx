@@ -1,0 +1,7 @@
+{
+  Type type=ReflectionCache.instance.forName(name);
+  if (type != null) {
+    return type.getClassOfType();
+  }
+  throw new ReflectionException("Class not found: " + name);
+}

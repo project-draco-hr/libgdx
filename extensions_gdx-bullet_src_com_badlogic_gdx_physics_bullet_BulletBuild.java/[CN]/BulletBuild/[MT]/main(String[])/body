@@ -4,8 +4,8 @@
   cppFlags+=" -fno-strict-aliasing";
   cppFlags+=" -fno-rtti";
   cppFlags+=" -DBT_NO_PROFILE";
-  String[] excludes={"src/BulletMultiThreaded/GpuSoftBodySolvers/**"};
-  String[] headers={"src/"};
+  String[] excludes={"src/bullet/BulletMultiThreaded/GpuSoftBodySolvers/**"};
+  String[] headers={"src/bullet/","src/custom/","src/extras/serialize"};
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   win32home.compilerPrefix="";
   win32home.buildFileName="build-windows32home.xml";
@@ -21,8 +21,6 @@
   win64.cExcludes=win64.cppExcludes=excludes;
   win64.headerDirs=headers;
   win64.cppFlags+=cppFlags;
-  win64.preCompileTask="<copy todir=\"src\" verbose=\"true\" overwrite=\"true\">" + "<fileset dir=\"../patched\"/>" + "</copy>";
-  win64.postCompileTask="<exec executable=\"svn\" dir=\".\">" + "<arg line=\"revert -R src\"/>" + "</exec>";
   BuildTarget lin32=BuildTarget.newDefaultTarget(TargetOs.Linux,false);
   lin32.cExcludes=lin32.cppExcludes=excludes;
   lin32.headerDirs=headers;

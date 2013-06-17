@@ -43,9 +43,9 @@
     }
     if (actualType.isArray()) {
       if (elementType == null)       elementType=actualType.getComponentType();
-      int length=java.lang.reflect.Array.getLength(value);
+      int length=ArrayReflection.getLength(value);
       writeArrayStart();
-      for (int i=0; i < length; i++)       writeValue(java.lang.reflect.Array.get(value,i),elementType,null);
+      for (int i=0; i < length; i++)       writeValue(ArrayReflection.get(value,i),elementType,null);
       writeArrayEnd();
       return;
     }
@@ -91,7 +91,7 @@
       writeObjectEnd();
       return;
     }
-    if (Enum.class.isAssignableFrom(actualType)) {
+    if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
       writer.value(value);
       return;
     }
