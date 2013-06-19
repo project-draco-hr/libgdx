@@ -1,4 +1,3 @@
 {
-  if (pointer != 0)   return 0;
-  return mouseY;
+  return touchY[pointer];
 }
