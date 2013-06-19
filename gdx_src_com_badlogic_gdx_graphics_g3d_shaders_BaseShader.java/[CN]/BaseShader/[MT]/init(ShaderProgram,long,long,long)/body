@@ -2,14 +2,22 @@
   if (this.program != null)   throw new GdxRuntimeException("Already initialized");
   if (!program.isCompiled())   throw new GdxRuntimeException(program.getLog());
   this.program=program;
-  uniformLocations=new int[uniformEntries.size];
-  for (int i=0; i < uniformLocations.length; i++) {
-    UniformEntry entry=uniformEntries.get(i);
-    if (((material & entry.material) == entry.material) && ((attributes & entry.attribute) == entry.attribute) && ((userMask & entry.userFlag) == entry.userFlag)) {
-      uniformLocations[i]=program.fetchUniformLocation(entry.name,false);
+  for (  Input input : inputs) {
+    if (input.compare(materialMask,vertexMask,userMask)) {
+      if (input.scope == GLOBAL_UNIFORM) {
+        input.location=program.fetchUniformLocation(input.name,false);
+        if (input.location >= 0 && input.setter != null)         globalUniforms.add(input);
+      }
+ else       if (input.scope == LOCAL_UNIFORM) {
+        input.location=program.fetchUniformLocation(input.name,false);
+        if (input.location >= 0 && input.setter != null)         localUniforms.add(input);
+      }
+ else       if (input.scope == VERTEX_ATTRIBUTE) {
+        input.location=program.getAttributeLocation(input.name);
+        if (input.location >= 0)         vertexAttributes.add(input);
+      }
+ else       input.location=-1;
     }
- else     uniformLocations[i]=-1;
+ else     input.location=-1;
   }
-  UniformEntry.pool.freeAll(uniformEntries);
-  uniformEntries.clear();
 }

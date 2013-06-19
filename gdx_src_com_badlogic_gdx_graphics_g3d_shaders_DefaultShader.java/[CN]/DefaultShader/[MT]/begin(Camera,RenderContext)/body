@@ -1,7 +1,5 @@
 {
-  this.context=context;
-  this.camera=camera;
-  program.begin();
+  super.begin(camera,context);
   if (defaultDepthFunc == 0)   context.setDepthTest(false,GL10.GL_LEQUAL);
  else   context.setDepthTest(true,defaultDepthFunc);
   float fogDist=1.09f / camera.far;

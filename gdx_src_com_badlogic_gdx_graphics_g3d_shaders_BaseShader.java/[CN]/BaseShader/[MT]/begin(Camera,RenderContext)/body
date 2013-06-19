@@ -1,0 +1,6 @@
+{
+  this.camera=camera;
+  this.context=context;
+  program.begin();
+  for (  final Input input : globalUniforms)   input.setter.set(this,program,input,camera,context,null);
+}
