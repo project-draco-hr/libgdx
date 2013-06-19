@@ -1,5 +1,7 @@
 {
   world.dispose();
   world=null;
+  for (  Disposable disposable : disposables)   disposable.dispose();
+  disposables.clear();
   super.dispose();
 }

@@ -1,5 +1,0 @@
-{
-  JsonValue jsonValue=jsonMap.get(name);
-  if (jsonValue == null)   return defaultValue;
-  return (T)readValue(type,null,jsonValue);
-}

@@ -1,9 +1,0 @@
-{
-  fill.clear();
-  for (  MapLayer layer : layers) {
-    if (type.equals(layer.getClass())) {
-      fill.add((T)layer);
-    }
-  }
-  return fill;
-}

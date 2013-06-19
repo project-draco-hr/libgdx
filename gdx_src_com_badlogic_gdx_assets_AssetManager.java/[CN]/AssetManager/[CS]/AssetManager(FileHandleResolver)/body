@@ -9,12 +9,5 @@
   setLoader(Model.class,".g3dj",new G3dModelLoader(new JsonReader(),resolver));
   setLoader(Model.class,".g3db",new G3dModelLoader(new UBJsonReader(),resolver));
   setLoader(Model.class,".obj",new ObjLoader(resolver));
-  threadPool=Executors.newFixedThreadPool(1,new ThreadFactory(){
-    @Override public Thread newThread(    Runnable r){
-      Thread thread=new Thread(r,"AssetManager-Loader-Thread");
-      thread.setDaemon(true);
-      return thread;
-    }
-  }
-);
+  executor=new AsyncExecutor(1);
 }

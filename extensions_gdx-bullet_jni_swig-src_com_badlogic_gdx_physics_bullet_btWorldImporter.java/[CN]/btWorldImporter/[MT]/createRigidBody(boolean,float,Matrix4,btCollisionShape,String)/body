@@ -1,0 +1,4 @@
+{
+  long cPtr=gdxBulletJNI.btWorldImporter_createRigidBody(swigCPtr,this,isDynamic,mass,startTransform,btCollisionShape.getCPtr(shape),shape,bodyName);
+  return (cPtr == 0) ? null : new btRigidBody(cPtr,false);
+}

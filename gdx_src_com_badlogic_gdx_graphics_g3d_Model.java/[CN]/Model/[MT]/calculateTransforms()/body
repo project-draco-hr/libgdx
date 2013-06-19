@@ -2,4 +2,7 @@
   for (  Node node : nodes) {
     node.calculateTransforms(true);
   }
+  for (  Node node : nodes) {
+    node.calculateBoneTransforms(true);
+  }
 }

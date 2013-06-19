@@ -5,7 +5,7 @@
   cppFlags+=" -fno-rtti";
   cppFlags+=" -DBT_NO_PROFILE";
   String[] excludes={"src/bullet/BulletMultiThreaded/GpuSoftBodySolvers/**"};
-  String[] headers={"src/bullet/","src/custom/"};
+  String[] headers={"src/bullet/","src/custom/","src/extras/serialize/"};
   BuildTarget win32home=BuildTarget.newDefaultTarget(TargetOs.Windows,false);
   win32home.compilerPrefix="";
   win32home.buildFileName="build-windows32home.xml";

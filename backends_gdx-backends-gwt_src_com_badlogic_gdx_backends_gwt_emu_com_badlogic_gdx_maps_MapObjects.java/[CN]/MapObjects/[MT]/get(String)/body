@@ -1,8 +1,0 @@
-{
-  for (  MapObject object : objects) {
-    if (name.equals(object.getName())) {
-      return object;
-    }
-  }
-  return null;
-}
