@@ -15,8 +15,8 @@
     }
  else     if (TextureAttribute.is(t)) {
       final TextureAttribute tex=(TextureAttribute)attr;
-      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse && hasUniform(u_diffuseTexture))       bindTextureAttribute(loc(u_diffuseTexture),tex);
-      if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && hasUniform(u_normalTexture))       bindTextureAttribute(loc(u_normalTexture),tex);
+      if ((t & TextureAttribute.Diffuse) == TextureAttribute.Diffuse && has(u_diffuseTexture))       bindTextureAttribute(u_diffuseTexture.location,tex);
+      if ((t & TextureAttribute.Normal) == TextureAttribute.Normal && has(u_normalTexture))       bindTextureAttribute(u_normalTexture.location,tex);
     }
  else     if ((t & FloatAttribute.Shininess) == FloatAttribute.Shininess)     set(u_shininess,((FloatAttribute)attr).value);
  else     if ((t & IntAttribute.CullFace) == IntAttribute.CullFace)     cullFace=((IntAttribute)attr).value;

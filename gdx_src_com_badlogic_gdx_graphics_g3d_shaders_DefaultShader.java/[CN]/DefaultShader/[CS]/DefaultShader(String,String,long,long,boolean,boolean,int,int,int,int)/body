@@ -1,27 +1,3 @@
 {
-  final String prefix=createPrefix(mask,attributes,lighting,fog,numDirectional,numPoint,numSpot,numBones);
-  program=new ShaderProgram(prefix + vertexShader,prefix + fragmentShader);
-  if (!program.isCompiled()) {
-    throw new GdxRuntimeException("Couldn't compile shader " + program.getLog());
-  }
-  init(program,mask,attributes,0);
-  this.lighting=lighting;
-  this.fog=fog;
-  this.directionalLights=new DirectionalLight[lighting && numDirectional > 0 ? numDirectional : 0];
-  for (int i=0; i < directionalLights.length; i++)   directionalLights[i]=new DirectionalLight();
-  this.pointLights=new PointLight[lighting && numPoint > 0 ? numPoint : 0];
-  for (int i=0; i < pointLights.length; i++)   pointLights[i]=new PointLight();
-  bones=new float[numBones > 0 ? numBones * 16 : 0];
-  this.mask=mask;
-  this.attributes=attributes;
-  if (!ignoreUnimplemented && (implementedFlags & mask) != mask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + mask + ")");
-  dirLightsLoc=loc(u_dirLights0color);
-  dirLightsColorOffset=loc(u_dirLights0color) - dirLightsLoc;
-  dirLightsDirectionOffset=loc(u_dirLights0direction) - dirLightsLoc;
-  dirLightsSize=loc(u_dirLights1color) - dirLightsLoc;
-  pointLightsLoc=loc(u_pointLights0color);
-  pointLightsColorOffset=loc(u_pointLights0color) - pointLightsLoc;
-  pointLightsPositionOffset=loc(u_pointLights0position) - pointLightsLoc;
-  pointLightsIntensityOffset=loc(u_pointLights0intensity) - pointLightsLoc;
-  pointLightsSize=loc(u_pointLights1color) - pointLightsLoc;
+  this(createPrefix(materialMask,vertexMask,lighting,fog,numDirectional,numPoint,numSpot,numBones),vertexShader,fragmentShader,materialMask,vertexMask,lighting,fog,numDirectional,numPoint,numSpot,numBones);
 }

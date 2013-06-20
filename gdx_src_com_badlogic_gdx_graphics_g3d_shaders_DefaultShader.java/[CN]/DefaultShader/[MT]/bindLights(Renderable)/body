@@ -2,13 +2,13 @@
   final Lights lights=renderable.lights;
   final Array<DirectionalLight> dirs=lights.directionalLights;
   final Array<PointLight> points=lights.pointLights;
-  if (hasUniform(u_ambientCubemap)) {
+  if (has(u_ambientCubemap)) {
     renderable.worldTransform.getTranslation(tmpV1);
     ambientCubemap.set(lights.ambientLight);
     for (int i=directionalLights.length; i < dirs.size; i++)     ambientCubemap.add(dirs.get(i).color,dirs.get(i).direction);
     for (int i=pointLights.length; i < points.size; i++)     ambientCubemap.add(points.get(i).color,points.get(i).position,tmpV1,points.get(i).intensity);
     ambientCubemap.clamp();
-    program.setUniform3fv(loc(u_ambientCubemap),ambientCubemap.data,0,ambientCubemap.data.length);
+    program.setUniform3fv(u_ambientCubemap.location,ambientCubemap.data,0,ambientCubemap.data.length);
   }
   if (dirLightsLoc >= 0) {
     for (int i=0; i < directionalLights.length; i++) {
@@ -38,6 +38,6 @@
     }
   }
   if (lights.fog != null) {
-    program.setUniformf(loc(u_fogColor),lights.fog);
+    program.setUniformf(u_fogColor.location,lights.fog);
   }
 }
