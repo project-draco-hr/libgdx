@@ -1,3 +1,0 @@
-{
-  return materialMask == renderable.material.getMask() && attributesMask == renderable.mesh.getVertexAttributes().getMask() && (renderable.lights != null) == lightingEnabled;
-}

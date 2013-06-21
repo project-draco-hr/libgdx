@@ -1,5 +1,5 @@
 {
-  modelBatch=new ModelBatch(new CompositeShaderProvider());
+  modelBatch=new ModelBatch(new DefaultShaderProvider());
   lights=new Lights();
   lights.ambientLight.set(0.4f,0.4f,0.4f,1f);
   lights.add(new DirectionalLight().set(0.8f,0.8f,0.8f,-1f,-0.8f,-0.2f));
