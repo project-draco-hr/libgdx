@@ -1,4 +1,6 @@
 {
   this.audio=audio;
   this.player=player;
+  onCompletionListener=new AndroidOnCompletionListener(this);
+  this.player.setOnCompletionListener(onCompletionListener);
 }

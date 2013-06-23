@@ -11,6 +11,9 @@
     if (fill(bufferID))     alSourceQueueBuffers(sourceID,bufferID);
  else     end=true;
   }
-  if (end && alGetSourcei(sourceID,AL_BUFFERS_QUEUED) == 0)   stop();
+  if (end && alGetSourcei(sourceID,AL_BUFFERS_QUEUED) == 0) {
+    if (onCompletionListener != null)     onCompletionListener.onCompletion(this);
+    stop();
+  }
   if (isPlaying && alGetSourcei(sourceID,AL_SOURCE_STATE) != AL_PLAYING)   alSourcePlay(sourceID);
 }

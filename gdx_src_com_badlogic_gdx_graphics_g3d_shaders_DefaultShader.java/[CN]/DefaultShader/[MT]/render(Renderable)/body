@@ -8,12 +8,12 @@
     renderable.mesh.setAutoBind(false);
     (currentMesh=renderable.mesh).bind(program);
   }
-  if (hasUniform(u_bones)) {
+  if (has(u_bones)) {
     for (int i=0; i < bones.length; i++) {
       final int idx=i / 16;
       bones[i]=(renderable.bones == null || idx >= renderable.bones.length || renderable.bones[idx] == null) ? idtMatrix.val[i % 16] : renderable.bones[idx].val[i % 16];
     }
-    program.setUniformMatrix4fv(loc(u_bones),bones,0,bones.length);
+    program.setUniformMatrix4fv(u_bones.location,bones,0,bones.length);
   }
-  renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
+  super.render(renderable);
 }

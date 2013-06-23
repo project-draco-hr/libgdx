@@ -1,0 +1,5 @@
+{
+  if (uniform.location < 0)   return false;
+  program.setUniformi(uniform.location,v1,v2);
+  return true;
+}

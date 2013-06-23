@@ -1,5 +1,4 @@
 {
-  consoleLog("onModuleLoad");
   this.agentInfo=computeAgentInfo();
   this.listener=getApplicationListener();
   this.config=getConfig();
@@ -30,7 +29,7 @@
       root=panel;
     }
   }
-  SoundManager.init(GWT.getModuleBaseURL(),9);
+  SoundManager.init(GWT.getModuleBaseURL(),9,true);
   new Timer(){
     @Override public void run(){
       if (SoundManager.ok()) {

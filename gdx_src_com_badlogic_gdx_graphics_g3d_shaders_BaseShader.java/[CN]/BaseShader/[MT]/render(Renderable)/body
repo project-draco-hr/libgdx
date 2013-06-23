@@ -1,0 +1,4 @@
+{
+  for (  final Input input : localUniforms)   input.setter.set(this,program,input,camera,context,renderable);
+  renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
+}
