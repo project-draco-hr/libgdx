@@ -1,3 +1,4 @@
 {
-  return attributes.iterator();
+  readOnlyIterator.reset();
+  return readOnlyIterator;
 }
