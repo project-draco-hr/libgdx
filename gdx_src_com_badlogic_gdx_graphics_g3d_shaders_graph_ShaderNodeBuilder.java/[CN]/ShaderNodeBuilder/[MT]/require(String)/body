@@ -1,0 +1,6 @@
+{
+  if (require == null)   throw new GdxRuntimeException("requires must not be null");
+  if (require.length() == 0)   throw new GdxRuntimeException("requires must not be zero");
+  requires.add(require);
+  return this;
+}

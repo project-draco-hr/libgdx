@@ -1,0 +1,6 @@
+{
+  for (  ShaderInput input : inputs) {
+    if (input.getName().equals(name))     return input;
+  }
+  return null;
+}
