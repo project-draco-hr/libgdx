@@ -1,2 +1,7 @@
 {
+  this.name=name;
+  this.defines=new Array<ShaderDefine>();
+  this.requires=new Array<String>();
+  this.inputs=new Array<ShaderInput>();
+  this.outputs=new Array<ShaderOutput>();
 }
