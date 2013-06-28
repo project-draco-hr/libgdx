@@ -1,0 +1,8 @@
+{
+  ShaderNode node=nodeTypes.get(nodeType);
+  if (node == null)   throw new GdxRuntimeException("Node type '" + nodeType + "' not in graph, add it with addNodeType() first!");
+  node=node.copy();
+  nodes.add(node);
+  nodeSet.add(node);
+  return node;
+}
