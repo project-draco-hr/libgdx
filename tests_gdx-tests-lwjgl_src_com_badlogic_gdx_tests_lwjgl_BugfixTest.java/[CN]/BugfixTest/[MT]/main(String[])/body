@@ -1,9 +1,0 @@
-{
-  LwjglApplicationConfiguration cfg=new LwjglApplicationConfiguration();
-  cfg.title="SomeLibgdxTests";
-  cfg.vSyncEnabled=true;
-  cfg.useGL20=true;
-  cfg.width=1280;
-  cfg.height=720;
-  new LwjglApplication(new BugfixTest(),cfg);
-}
