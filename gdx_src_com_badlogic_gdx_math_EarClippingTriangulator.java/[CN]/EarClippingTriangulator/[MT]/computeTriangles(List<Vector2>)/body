@@ -6,10 +6,16 @@
   if (!areVerticesClockwise()) {
     Collections.reverse(vertices);
   }
+  vertexTypes=new int[vertexCount];
+  concaveVertexCount=0;
+  for (int i=0; i < vertexCount; ++i) {
+    classifyVertex(i);
+  }
   while (vertexCount > 3) {
-    vertexTypes=classifyVertices();
     int earTipIndex=findEarTip();
     cutEarTip(earTipIndex);
+    classifyVertex(computePreviousIndex(earTipIndex));
+    classifyVertex(earTipIndex);
   }
   if (vertexCount == 3) {
     triangles.addAll(vertices);

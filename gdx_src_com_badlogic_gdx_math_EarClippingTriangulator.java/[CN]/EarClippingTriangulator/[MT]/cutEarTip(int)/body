@@ -5,5 +5,6 @@
   triangles.add(new Vector2(vertices.get(pEarTipIndex)));
   triangles.add(new Vector2(vertices.get(nextIndex)));
   vertices.remove(pEarTipIndex);
+  System.arraycopy(vertexTypes,pEarTipIndex + 1,vertexTypes,pEarTipIndex,vertexCount - pEarTipIndex - 1);
   vertexCount--;
 }
