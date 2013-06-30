@@ -1,0 +1,14 @@
+{
+  if (polygon.isEmpty()) {
+    return;
+  }
+  while (step > 0) {
+    polygon.add(0,polygon.remove(polygon.size() - 1));
+    --step;
+  }
+  while (step < 0) {
+    polygon.add(polygon.remove(0));
+    ++step;
+  }
+  triangulate();
+}

@@ -1,0 +1,8 @@
+{
+  for (int index=0; index < vertexCount; index++) {
+    if (vertexTypes[index] != CONCAVE) {
+      return index;
+    }
+  }
+  return 0;
+}
