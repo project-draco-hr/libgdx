@@ -1,13 +1,12 @@
 {
-  final int vertexCount=pVertices.size();
   final int[] vertexTypes=new int[vertexCount];
   this.concaveVertexCount=0;
   for (int index=0; index < vertexCount; index++) {
-    final int previousIndex=computePreviousIndex(pVertices,index);
-    final int nextIndex=computeNextIndex(pVertices,index);
-    final Vector2 previousVertex=pVertices.get(previousIndex);
-    final Vector2 currentVertex=pVertices.get(index);
-    final Vector2 nextVertex=pVertices.get(nextIndex);
+    final int previousIndex=computePreviousIndex(index);
+    final int nextIndex=computeNextIndex(index);
+    final Vector2 previousVertex=vertices.get(previousIndex);
+    final Vector2 currentVertex=vertices.get(index);
+    final Vector2 nextVertex=vertices.get(nextIndex);
     if (isTriangleConvex(previousVertex,currentVertex,nextVertex)) {
       vertexTypes[index]=CONVEX_OR_TANGENTIAL;
     }

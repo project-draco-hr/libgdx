@@ -1,17 +1,22 @@
 {
-  final ArrayList<Vector2> triangles=new ArrayList<Vector2>();
-  final ArrayList<Vector2> vertices=new ArrayList<Vector2>(polygon.size());
+  triangles=new ArrayList<Vector2>();
+  vertices=new ArrayList<Vector2>(polygon.size());
   vertices.addAll(polygon);
-  if (!areVerticesClockwise(vertices)) {
+  vertexCount=vertices.size();
+  if (!areVerticesClockwise()) {
     Collections.reverse(vertices);
   }
-  while (vertices.size() > 3) {
-    final int vertexTypes[]=this.classifyVertices(vertices);
-    int earTipIndex=findEarTip(vertices,vertexTypes);
-    cutEarTip(vertices,earTipIndex,triangles);
+  while (vertexCount > 3) {
+    vertexTypes=classifyVertices();
+    int earTipIndex=findEarTip();
+    cutEarTip(earTipIndex);
   }
-  if (vertices.size() == 3) {
+  if (vertexCount == 3) {
     triangles.addAll(vertices);
   }
-  return triangles;
+  List<Vector2> result=triangles;
+  vertices=null;
+  triangles=null;
+  vertexTypes=null;
+  return result;
 }

@@ -1,8 +1,0 @@
-{
-  final int previousIndex=computePreviousIndex(pVertices,pEarTipIndex);
-  final int nextIndex=computeNextIndex(pVertices,pEarTipIndex);
-  pTriangles.add(new Vector2(pVertices.get(previousIndex)));
-  pTriangles.add(new Vector2(pVertices.get(pEarTipIndex)));
-  pTriangles.add(new Vector2(pVertices.get(nextIndex)));
-  pVertices.remove(pEarTipIndex);
-}

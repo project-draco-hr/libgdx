@@ -1,0 +1,9 @@
+{
+  final int previousIndex=computePreviousIndex(pEarTipIndex);
+  final int nextIndex=computeNextIndex(pEarTipIndex);
+  triangles.add(new Vector2(vertices.get(previousIndex)));
+  triangles.add(new Vector2(vertices.get(pEarTipIndex)));
+  triangles.add(new Vector2(vertices.get(nextIndex)));
+  vertices.remove(pEarTipIndex);
+  vertexCount--;
+}

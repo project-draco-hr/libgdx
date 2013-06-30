@@ -1,7 +1,6 @@
 {
-  final int vertexCount=pVertices.size();
   for (int index=0; index < vertexCount; index++) {
-    if (pVertexTypes[index] == CONVEX_OR_TANGENTIAL) {
+    if (vertexTypes[index] == CONVEX_OR_TANGENTIAL) {
       return index;
     }
   }
