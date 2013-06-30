@@ -2,9 +2,6 @@
   final int vertexCount=pVertices.size();
   final int[] vertexTypes=new int[vertexCount];
   this.concaveVertexCount=0;
-  if (!areVerticesClockwise(pVertices)) {
-    Collections.reverse(pVertices);
-  }
   for (int index=0; index < vertexCount; index++) {
     final int previousIndex=computePreviousIndex(pVertices,index);
     final int nextIndex=computeNextIndex(pVertices,index);
