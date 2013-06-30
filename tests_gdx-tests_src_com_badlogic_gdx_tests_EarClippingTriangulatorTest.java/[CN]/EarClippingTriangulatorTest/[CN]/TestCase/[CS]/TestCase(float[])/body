@@ -10,7 +10,7 @@
     max.x=Math.max(max.x,v.x);
     max.y=Math.max(max.y,v.y);
   }
-  boundingRect=new Rectangle(min.x,min.y,max.x - min.x,max.y - min.y);
+  boundingRect=new Rectangle(min.x,min.y,Math.max(0.001f,max.x - min.x),Math.max(0.001f,max.y - min.y));
   List<Vector2> triangles=new EarClippingTriangulator().computeTriangles(polygon);
   int numTriangleVertices=triangles.size();
   ArrayList<Vector2> triangleOutlines=new ArrayList<Vector2>(2 * numTriangleVertices);

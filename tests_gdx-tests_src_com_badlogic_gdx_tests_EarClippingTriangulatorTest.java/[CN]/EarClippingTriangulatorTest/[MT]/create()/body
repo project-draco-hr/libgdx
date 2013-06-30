@@ -6,7 +6,11 @@
   testCases.add(new TestCase(new float[]{0,0,0,1,1,1,1,0}));
   testCases.add(new TestCase(new float[]{0,0,1,0,1,1,0,1}));
   testCases.add(new TestCase(new float[]{0,0,0.6f,0.4f,1,0,0.5f,1}));
-  testCases.add(new TestCase(new float[]{-2.0f,0.5f,0.0f,1.0f,0.5f,2.875f,1.0f,0.5f,1.5f,1.0f,2.0f,0.0f}));
+  testCases.add(new TestCase(new float[]{1,0,0.5f,1,0,0,0.6f,0.4f}));
+  testCases.add(new TestCase(new float[]{0,0,1,0,2,0}));
+  testCases.add(new TestCase(new float[]{0,0,1,0,2,0,3,0}));
+  testCases.add(new TestCase(new float[]{0,0,1,1,2,0,3,1,4,0}));
+  testCases.add(new TestCase(new float[]{-2.0f,0.0f,-2.0f,0.5f,0.0f,1.0f,0.5f,2.875f,1.0f,0.5f,1.5f,1.0f,2.0f,1.0f,2.0f,0.0f}));
   testCases.add(new TestCase(new float[]{72.42465f,197.07095f,78.485535f,189.92776f,86.12059f,180.92929f,99.68253f,164.94557f,105.24325f,165.79604f,107.21862f,166.09814f,112.41958f,162.78253f,113.73238f,161.94562f,123.29477f,167.93805f,126.70667f,170.07617f,73.22717f,199.51062f}));
   casesX=(int)Math.ceil(Math.sqrt(testCases.size()));
   casesY=(int)Math.ceil((float)testCases.size() / casesX);
