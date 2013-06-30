@@ -17,7 +17,7 @@
       final int areaSign1=computeSpannedAreaSign(p1,p2,v);
       final int areaSign2=computeSpannedAreaSign(p2,p3,v);
       final int areaSign3=computeSpannedAreaSign(p3,p1,v);
-      if (!((areaSign1 > 0 || areaSign2 > 0 || areaSign3 > 0) && (areaSign1 < 0 || areaSign2 < 0 || areaSign3 < 0))) {
+      if (areaSign1 >= 0 && areaSign2 >= 0 && areaSign3 >= 0) {
         return false;
       }
     }
