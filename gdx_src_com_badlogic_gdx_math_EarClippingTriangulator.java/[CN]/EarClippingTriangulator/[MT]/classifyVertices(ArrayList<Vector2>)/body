@@ -12,7 +12,7 @@
     final Vector2 currentVertex=pVertices.get(index);
     final Vector2 nextVertex=pVertices.get(nextIndex);
     if (isTriangleConvex(previousVertex,currentVertex,nextVertex)) {
-      vertexTypes[index]=CONVEX;
+      vertexTypes[index]=CONVEX_OR_TANGENTIAL;
     }
  else {
       vertexTypes[index]=CONCAVE;
