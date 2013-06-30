@@ -1,13 +1,8 @@
 {
   final int previousIndex=computePreviousIndex(pVertices,pEarTipIndex);
   final int nextIndex=computeNextIndex(pVertices,pEarTipIndex);
-  if (!isCollinear(pVertices,previousIndex,pEarTipIndex,nextIndex)) {
-    pTriangles.add(new Vector2(pVertices.get(previousIndex)));
-    pTriangles.add(new Vector2(pVertices.get(pEarTipIndex)));
-    pTriangles.add(new Vector2(pVertices.get(nextIndex)));
-  }
+  pTriangles.add(new Vector2(pVertices.get(previousIndex)));
+  pTriangles.add(new Vector2(pVertices.get(pEarTipIndex)));
+  pTriangles.add(new Vector2(pVertices.get(nextIndex)));
   pVertices.remove(pEarTipIndex);
-  if (pVertices.size() >= 3) {
-    removeCollinearNeighborEarsAfterRemovingEarTip(pVertices,pEarTipIndex);
-  }
 }

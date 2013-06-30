@@ -1,6 +1,0 @@
-{
-  final Vector2 previousVertex=pVertices.get(pPreviousIndex);
-  final Vector2 vertex=pVertices.get(pIndex);
-  final Vector2 nextVertex=pVertices.get(pNextIndex);
-  return computeSpannedAreaSign(previousVertex,vertex,nextVertex) == 0;
-}

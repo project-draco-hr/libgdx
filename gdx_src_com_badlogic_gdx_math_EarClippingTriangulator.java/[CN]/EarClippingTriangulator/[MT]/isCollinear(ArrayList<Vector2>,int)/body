@@ -1,5 +1,0 @@
-{
-  final int previousIndex=computePreviousIndex(pVertices,pIndex);
-  final int nextIndex=computeNextIndex(pVertices,pIndex);
-  return isCollinear(pVertices,previousIndex,pIndex,nextIndex);
-}
