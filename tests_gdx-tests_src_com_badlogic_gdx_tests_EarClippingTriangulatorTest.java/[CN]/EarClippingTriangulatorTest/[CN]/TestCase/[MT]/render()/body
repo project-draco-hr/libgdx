@@ -1,12 +1,6 @@
 {
   Gdx.gl10.glScalef(1 / boundingRect.width,1 / boundingRect.height,1);
   Gdx.gl10.glTranslatef(-boundingRect.x,-boundingRect.y,0);
-  if (invalid) {
-    Gdx.gl10.glColor4f(1.0f,0.8f,0.8f,1.0f);
-  }
- else {
-    Gdx.gl10.glColor4f(0.8f,0.8f,0.9f,1.0f);
-  }
   interiorMesh.render(GL10.GL_TRIANGLES);
   Gdx.gl10.glColor4f(0.4f,0.4f,0.4f,1.0f);
   Gdx.gl10.glLineWidth(1.0f);

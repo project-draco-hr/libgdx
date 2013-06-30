@@ -14,6 +14,6 @@
     triangleOutlines.add(a);
   }
   polygonMesh.setVertices(listToVertexArray(polygon));
-  interiorMesh.setVertices(listToVertexArray(triangles));
+  interiorMesh.setVertices(listToColoredVertexArray(triangles,getColor()));
   triangleOutlineMesh.setVertices(listToVertexArray(triangleOutlines));
 }
