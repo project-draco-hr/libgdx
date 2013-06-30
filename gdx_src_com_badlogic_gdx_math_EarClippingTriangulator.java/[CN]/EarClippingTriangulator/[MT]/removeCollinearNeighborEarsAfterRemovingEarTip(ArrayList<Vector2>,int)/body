@@ -1,16 +1,16 @@
 {
   final int collinearityCheckNextIndex=pEarTipCutIndex % pVertices.size();
-  int collinearCheckPreviousIndex=EarClippingTriangulator.computePreviousIndex(pVertices,collinearityCheckNextIndex);
-  if (EarClippingTriangulator.isCollinear(pVertices,collinearityCheckNextIndex)) {
+  int collinearCheckPreviousIndex=computePreviousIndex(pVertices,collinearityCheckNextIndex);
+  if (isCollinear(pVertices,collinearityCheckNextIndex)) {
     pVertices.remove(collinearityCheckNextIndex);
     if (pVertices.size() > 3) {
-      collinearCheckPreviousIndex=EarClippingTriangulator.computePreviousIndex(pVertices,collinearityCheckNextIndex);
-      if (EarClippingTriangulator.isCollinear(pVertices,collinearCheckPreviousIndex)) {
+      collinearCheckPreviousIndex=computePreviousIndex(pVertices,collinearityCheckNextIndex);
+      if (isCollinear(pVertices,collinearCheckPreviousIndex)) {
         pVertices.remove(collinearCheckPreviousIndex);
       }
     }
   }
- else   if (EarClippingTriangulator.isCollinear(pVertices,collinearCheckPreviousIndex)) {
+ else   if (isCollinear(pVertices,collinearCheckPreviousIndex)) {
     pVertices.remove(collinearCheckPreviousIndex);
   }
 }
