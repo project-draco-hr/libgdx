@@ -15,7 +15,7 @@
     int earTipIndex=findEarTip();
     cutEarTip(earTipIndex);
     classifyVertex(computePreviousIndex(earTipIndex));
-    classifyVertex(earTipIndex);
+    classifyVertex(earTipIndex == vertexCount ? 0 : earTipIndex);
   }
   if (vertexCount == 3) {
     triangles.addAll(vertices);
