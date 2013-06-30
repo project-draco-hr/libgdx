@@ -7,6 +7,6 @@
   Gdx.gl10.glLineWidth(1.0f);
   triangleOutlineMesh.render(GL10.GL_LINES);
   Gdx.gl10.glColor4f(0.3f,0.0f,0.0f,1.0f);
-  Gdx.gl10.glLineWidth(3.0f);
+  Gdx.gl10.glLineWidth(2.0f);
   polygonMesh.render(GL10.GL_LINE_LOOP);
 }
