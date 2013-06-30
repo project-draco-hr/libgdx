@@ -22,7 +22,10 @@
     writer.write("repeat: " + getRepeatValue() + "\n");
     for (    Rect rect : page.outputRects) {
       writeRect(writer,page,rect,rect.name);
-      for (      String alias : rect.aliases)       writeRect(writer,page,rect,alias);
+      for (      Alias alias : rect.aliases) {
+        rect.index=alias.index;
+        writeRect(writer,page,rect,alias.name);
+      }
     }
   }
   writer.close();
