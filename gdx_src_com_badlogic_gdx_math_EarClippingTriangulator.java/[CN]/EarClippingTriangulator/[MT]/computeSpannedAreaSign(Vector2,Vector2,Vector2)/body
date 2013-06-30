@@ -1,0 +1,7 @@
+{
+  double area=0;
+  area+=(double)p1.x * (p3.y - p2.y);
+  area+=(double)p2.x * (p1.y - p3.y);
+  area+=(double)p3.x * (p2.y - p1.y);
+  return (int)Math.signum(area);
+}

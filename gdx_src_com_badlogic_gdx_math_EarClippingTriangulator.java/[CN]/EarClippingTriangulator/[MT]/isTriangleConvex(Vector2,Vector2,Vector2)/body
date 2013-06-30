@@ -1,0 +1,8 @@
+{
+  if (EarClippingTriangulator.computeSpannedAreaSign(p1,p2,p3) < 0) {
+    return false;
+  }
+ else {
+    return true;
+  }
+}
