@@ -1,0 +1,10 @@
+{
+  int n=list.size();
+  float[] array=new float[n * 2];
+  int i=0;
+  for (  Vector2 v : list) {
+    array[i++]=v.x;
+    array[i++]=v.y;
+  }
+  return array;
+}
