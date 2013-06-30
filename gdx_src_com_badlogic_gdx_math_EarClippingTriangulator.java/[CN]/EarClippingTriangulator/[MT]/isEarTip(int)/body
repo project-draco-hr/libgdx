@@ -1,9 +1,6 @@
 {
-  if (vertexTypes[pEarTipIndex] != CONVEX_OR_TANGENTIAL) {
+  if (vertexTypes[pEarTipIndex] == CONCAVE) {
     return false;
-  }
-  if (this.concaveVertexCount == 0) {
-    return true;
   }
   final int previousIndex=computePreviousIndex(pEarTipIndex);
   final int nextIndex=computeNextIndex(pEarTipIndex);
@@ -11,7 +8,7 @@
   final Vector2 p2=vertices.get(pEarTipIndex);
   final Vector2 p3=vertices.get(nextIndex);
   for (int i=computeNextIndex(nextIndex); i != previousIndex; i=computeNextIndex(i)) {
-    if ((vertexTypes[i] == CONCAVE)) {
+    if (vertexTypes[i] != CONVEX) {
       final Vector2 v=vertices.get(i);
       final int areaSign1=computeSpannedAreaSign(p1,p2,v);
       final int areaSign2=computeSpannedAreaSign(p2,p3,v);

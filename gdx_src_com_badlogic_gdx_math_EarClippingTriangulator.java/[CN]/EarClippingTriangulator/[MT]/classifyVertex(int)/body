@@ -2,18 +2,5 @@
   final Vector2 previousVertex=vertices.get(computePreviousIndex(index));
   final Vector2 currentVertex=vertices.get(index);
   final Vector2 nextVertex=vertices.get(computeNextIndex(index));
-  int vertexType=vertexTypes[index];
-  if (vertexTypes[index] == CONCAVE) {
-    concaveVertexCount--;
-  }
-  if (isTriangleConvex(previousVertex,currentVertex,nextVertex)) {
-    vertexType=CONVEX_OR_TANGENTIAL;
-  }
- else {
-    vertexType=CONCAVE;
-  }
-  if (vertexType == CONCAVE) {
-    concaveVertexCount++;
-  }
-  vertexTypes[index]=vertexType;
+  return computeSpannedAreaSign(previousVertex,currentVertex,nextVertex);
 }

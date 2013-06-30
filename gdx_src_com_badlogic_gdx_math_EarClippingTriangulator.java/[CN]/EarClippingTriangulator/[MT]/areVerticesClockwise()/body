@@ -5,10 +5,5 @@
     final Vector2 p2=vertices.get(computeNextIndex(i));
     area+=p1.x * p2.y - p2.x * p1.y;
   }
-  if (area < 0) {
-    return true;
-  }
- else {
-    return false;
-  }
+  return area < 0;
 }

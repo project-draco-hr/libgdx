@@ -1,6 +1,6 @@
 {
   for (int index=0; index < vertexCount; index++) {
-    if (vertexTypes[index] == CONVEX_OR_TANGENTIAL) {
+    if (vertexTypes[index] != CONCAVE) {
       return index;
     }
   }
