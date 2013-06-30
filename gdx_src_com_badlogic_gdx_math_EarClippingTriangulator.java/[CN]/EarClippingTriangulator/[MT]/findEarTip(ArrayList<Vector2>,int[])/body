@@ -1,0 +1,9 @@
+{
+  final int vertexCount=pVertices.size();
+  for (int index=0; index < vertexCount; index++) {
+    if (isEarTip(pVertices,index,pVertexTypes)) {
+      return index;
+    }
+  }
+  return desperatelyFindEarTip(pVertices,pVertexTypes);
+}

@@ -7,13 +7,8 @@
   }
   while (vertices.size() > 3) {
     final int vertexTypes[]=this.classifyVertices(vertices);
-    final int vertexCount=vertices.size();
-    for (int index=0; index < vertexCount; index++) {
-      if (this.isEarTip(vertices,index,vertexTypes)) {
-        this.cutEarTip(vertices,index,triangles);
-        break;
-      }
-    }
+    int earTipIndex=findEarTip(vertices,vertexTypes);
+    cutEarTip(vertices,earTipIndex,triangles);
   }
   if (vertices.size() == 3) {
     triangles.addAll(vertices);
