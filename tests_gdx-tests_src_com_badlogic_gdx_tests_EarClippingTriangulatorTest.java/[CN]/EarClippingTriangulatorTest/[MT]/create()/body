@@ -18,4 +18,23 @@
   testCases.add(new TestCase(new float[]{72.42465f,197.07095f,78.485535f,189.92776f,86.12059f,180.92929f,99.68253f,164.94557f,105.24325f,165.79604f,107.21862f,166.09814f,112.41958f,162.78253f,113.73238f,161.94562f,123.29477f,167.93805f,126.70667f,170.07617f,73.22717f,199.51062f}));
   casesX=(int)Math.ceil(Math.sqrt(testCases.size()));
   casesY=(int)Math.ceil((float)testCases.size() / casesX);
+  Gdx.input.setInputProcessor(new InputAdapter(){
+    @Override public boolean keyDown(    int keycode){
+switch (keycode) {
+case Keys.RIGHT:
+        cycle(1);
+      break;
+case Keys.LEFT:
+    cycle(-1);
+  break;
+case Keys.SPACE:
+reverse();
+break;
+default :
+return super.keyDown(keycode);
+}
+return true;
+}
+}
+);
 }

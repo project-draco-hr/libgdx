@@ -1,5 +1,5 @@
 {
-  List<Vector2> polygon=vertexArrayToList(p);
+  polygon=vertexArrayToList(p);
   int numPolygonVertices=polygon.size();
   Vector2 min=new Vector2(Float.MAX_VALUE,Float.MAX_VALUE);
   Vector2 max=new Vector2(-Float.MAX_VALUE,-Float.MAX_VALUE);
@@ -11,25 +11,10 @@
     max.y=Math.max(max.y,v.y);
   }
   boundingRect=new Rectangle(min.x,min.y,Math.max(0.001f,max.x - min.x),Math.max(0.001f,max.y - min.y));
-  List<Vector2> triangles=new EarClippingTriangulator().computeTriangles(polygon);
-  int numTriangleVertices=triangles.size();
-  ArrayList<Vector2> triangleOutlines=new ArrayList<Vector2>(2 * numTriangleVertices);
-  for (int i=0, j=0; i < numTriangleVertices; ) {
-    Vector2 a=triangles.get(i++);
-    Vector2 b=triangles.get(i++);
-    Vector2 c=triangles.get(i++);
-    triangleOutlines.add(a);
-    triangleOutlines.add(b);
-    triangleOutlines.add(b);
-    triangleOutlines.add(c);
-    triangleOutlines.add(c);
-    triangleOutlines.add(a);
-  }
+  int numTriangles=Math.max(0,polygon.size() - 2);
   VertexAttributes attributes=new VertexAttributes(new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE));
   polygonMesh=new Mesh(true,polygon.size(),0,attributes);
-  polygonMesh.setVertices(listToVertexArray(polygon));
-  interiorMesh=new Mesh(true,triangles.size(),0,attributes);
-  interiorMesh.setVertices(listToVertexArray(triangles));
-  triangleOutlineMesh=new Mesh(true,triangleOutlines.size(),0,attributes);
-  triangleOutlineMesh.setVertices(listToVertexArray(triangleOutlines));
+  interiorMesh=new Mesh(true,3 * numTriangles,0,attributes);
+  triangleOutlineMesh=new Mesh(true,6 * numTriangles,0,attributes);
+  triangulate();
 }
