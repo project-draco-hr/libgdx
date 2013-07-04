@@ -25,6 +25,7 @@
           }
         }
       }
+      if (meshPart == null || meshMaterial == null)       throw new GdxRuntimeException("Invalid node: " + node.id);
       if (meshPart != null && meshMaterial != null) {
         NodePart nodePart=new NodePart();
         nodePart.meshPart=meshPart;

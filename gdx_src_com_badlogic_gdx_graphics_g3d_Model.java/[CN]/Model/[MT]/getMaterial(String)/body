@@ -1,4 +1,3 @@
 {
-  for (  final Material mtl : materials)   if (mtl.id.compareTo(id) == 0)   return mtl;
-  return null;
+  return getMaterial(id,true);
 }

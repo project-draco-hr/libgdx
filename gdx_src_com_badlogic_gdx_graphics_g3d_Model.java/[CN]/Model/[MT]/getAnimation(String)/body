@@ -1,4 +1,3 @@
 {
-  for (  final Animation anim : animations)   if (anim.id.compareTo(id) == 0)   return anim;
-  return null;
+  return getAnimation(id,true);
 }

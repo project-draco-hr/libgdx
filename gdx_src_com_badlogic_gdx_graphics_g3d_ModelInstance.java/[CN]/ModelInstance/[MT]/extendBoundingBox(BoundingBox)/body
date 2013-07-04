@@ -1,4 +1,5 @@
 {
-  for (  final Node node : nodes)   calculateBoundingBox(out,node);
+  final int n=nodes.size;
+  for (int i=0; i < n; i++)   nodes.get(i).extendBoundingBox(out);
   return out;
 }
