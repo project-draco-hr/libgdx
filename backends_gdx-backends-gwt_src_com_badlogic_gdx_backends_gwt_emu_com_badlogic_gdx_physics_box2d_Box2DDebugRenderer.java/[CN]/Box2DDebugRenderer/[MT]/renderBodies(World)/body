@@ -1,13 +1,15 @@
 {
   renderer.begin(ShapeType.Line);
   if (drawBodies || drawAABBs) {
-    for (Iterator<Body> iter=world.getBodies(); iter.hasNext(); ) {
+    world.getBodies(bodies);
+    for (Iterator<Body> iter=bodies.iterator(); iter.hasNext(); ) {
       Body body=iter.next();
       if (body.isActive() || drawInactiveBodies)       renderBody(body);
     }
   }
   if (drawJoints) {
-    for (Iterator<Joint> iter=world.getJoints(); iter.hasNext(); ) {
+    world.getJoints(joints);
+    for (Iterator<Joint> iter=joints.iterator(); iter.hasNext(); ) {
       Joint joint=iter.next();
       drawJoint(joint);
     }
