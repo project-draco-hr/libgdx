@@ -2,6 +2,7 @@
   if (!created) {
     app.graphics.makeCurrent();
     app.listener.create();
+    app.listener.resize(width,height);
     created=true;
   }
   if (paused) {
