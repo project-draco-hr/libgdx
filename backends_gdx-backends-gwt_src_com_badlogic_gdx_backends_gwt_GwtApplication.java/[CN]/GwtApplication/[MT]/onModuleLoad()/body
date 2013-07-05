@@ -34,7 +34,7 @@
     @Override public void run(){
       if (SoundManager.ok()) {
         final PreloaderCallback callback=getPreloaderCallback();
-        preloader=new Preloader();
+        preloader=createPreloader();
         preloader.preload("assets.txt",new PreloaderCallback(){
           @Override public void error(          String file){
             callback.error(file);
