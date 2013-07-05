@@ -2,4 +2,5 @@
   super.OnLoad(arg0);
   MakeCurrent();
   app.listener.create();
+  created=true;
 }

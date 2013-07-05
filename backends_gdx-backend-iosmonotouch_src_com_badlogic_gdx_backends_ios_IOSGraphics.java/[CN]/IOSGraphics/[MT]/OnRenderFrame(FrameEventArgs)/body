@@ -14,7 +14,7 @@ synchronized (listeners) {
     return;
   }
  else {
-    if (wasPaused) {
+    if (wasPaused && !created) {
       Array<LifecycleListener> listeners=app.lifecycleListeners;
 synchronized (listeners) {
         for (        LifecycleListener listener : listeners) {
@@ -23,6 +23,12 @@ synchronized (listeners) {
       }
       app.listener.resume();
       wasPaused=false;
+    }
+ else {
+      if (created) {
+        wasPaused=false;
+        created=false;
+      }
     }
   }
   long time=System.nanoTime();
