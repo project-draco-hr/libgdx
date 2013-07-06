@@ -1,0 +1,6 @@
+{
+  final Vector2 previousVertex=vertices.get(computePreviousIndex(index));
+  final Vector2 currentVertex=vertices.get(index);
+  final Vector2 nextVertex=vertices.get(computeNextIndex(index));
+  return computeSpannedAreaSign(previousVertex,currentVertex,nextVertex);
+}

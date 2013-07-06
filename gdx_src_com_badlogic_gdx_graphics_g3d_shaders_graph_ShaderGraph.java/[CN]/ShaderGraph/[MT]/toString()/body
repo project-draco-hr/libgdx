@@ -1,0 +1,30 @@
+{
+  StringBuilder builder=new StringBuilder();
+  builder.append("types {\n");
+  for (  String type : nodeTypes.keys()) {
+    builder.append("   {\n");
+    String[] lines=nodeTypes.get(type).toString().split("\n");
+    for (    String line : lines) {
+      builder.append("      " + line + "\n");
+    }
+    builder.append("   }\n");
+  }
+  builder.append("\n}\n");
+  builder.append("nodes {\n");
+  int i=0;
+  for (  ShaderNode node : nodes) {
+    builder.append("   node " + node.getName() + "_"+ i+ ";\n");
+    ++i;
+  }
+  builder.append("\n}\n");
+  builder.append("connections {\n");
+  for (  ShaderConnection con : connections) {
+    int outputIdx=nodes.indexOf(con.getOutputNode(),true);
+    int inputIdx=nodes.indexOf(con.getInputNode(),true);
+    builder.append("   " + con.getOutputNode().getName() + "_"+ outputIdx+ con.getOutput().getName()+ " -> ");
+    builder.append(con.getInputNode().getName() + "_" + inputIdx+ con.getInput().getName()+ ";\n");
+    ++i;
+  }
+  builder.append("\n}\n");
+  return builder.toString();
+}

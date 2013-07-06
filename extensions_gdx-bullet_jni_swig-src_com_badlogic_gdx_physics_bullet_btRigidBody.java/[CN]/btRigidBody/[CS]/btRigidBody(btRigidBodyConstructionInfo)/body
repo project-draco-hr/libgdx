@@ -1,3 +1,5 @@
 {
-  this(gdxBulletJNI.new_btRigidBody__SWIG_0(btRigidBodyConstructionInfo.getCPtr(constructionInfo),constructionInfo),true);
+  this(false,constructionInfo);
+  this.collisionShape=constructionInfo.getCollisionShape();
+  this.motionState=constructionInfo.getMotionState();
 }

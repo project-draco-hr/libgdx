@@ -1,0 +1,7 @@
+{
+  joints.clear();
+  joints.ensureCapacity(this.joints.size);
+  for (Iterator<Joint> iter=this.joints.values(); iter.hasNext(); ) {
+    joints.add(iter.next());
+  }
+}

@@ -1,0 +1,19 @@
+{
+  List<Vector2> triangles=new EarClippingTriangulator().computeTriangles(polygon);
+  int numTriangleVertices=triangles.size();
+  ArrayList<Vector2> triangleOutlines=new ArrayList<Vector2>(2 * numTriangleVertices);
+  for (int i=0, j=0; i < numTriangleVertices; ) {
+    Vector2 a=triangles.get(i++);
+    Vector2 b=triangles.get(i++);
+    Vector2 c=triangles.get(i++);
+    triangleOutlines.add(a);
+    triangleOutlines.add(b);
+    triangleOutlines.add(b);
+    triangleOutlines.add(c);
+    triangleOutlines.add(c);
+    triangleOutlines.add(a);
+  }
+  polygonMesh.setVertices(listToVertexArray(polygon));
+  interiorMesh.setVertices(listToColoredVertexArray(triangles,getColor()));
+  triangleOutlineMesh.setVertices(listToVertexArray(triangleOutlines));
+}

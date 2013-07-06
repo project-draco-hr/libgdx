@@ -1,0 +1,17 @@
+{
+  int n=list.size();
+  float[] array=new float[n * 6];
+  int i=0;
+  int j=0;
+  for (  Vector2 v : list) {
+    array[i++]=v.x;
+    array[i++]=v.y;
+    float brightness=0.3f + 0.6f * (j / 3) * 3 / list.size();
+    array[i++]=color.r * brightness;
+    array[i++]=color.g * brightness;
+    array[i++]=color.b * brightness;
+    array[i++]=1;
+    j++;
+  }
+  return array;
+}

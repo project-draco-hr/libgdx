@@ -1,0 +1,13 @@
+{
+  if (!nodeSet.contains(outputNode))   throw new GdxRuntimeException("output node not in graph");
+  if (!nodeSet.contains(inputNode))   throw new GdxRuntimeException("input node not in graph");
+  ShaderOutput output=outputNode.getOutput(outputName);
+  if (output == null)   throw new GdxRuntimeException("shader output '" + outputName + "' not in node '"+ outputNode.getName()+ "'");
+  ShaderInput input=inputNode.getInput(inputName);
+  if (input == null)   throw new GdxRuntimeException("shader input '" + inputName + "' not in node '"+ inputNode.getName()+ "'");
+  if (!output.getType().equals(input.getType()))   throw new GdxRuntimeException("shader output '" + output.getName() + "' has type '"+ output.getType()+ "'"+ ", does not match shader input '"+ input.getName()+ "' type '"+ input.getType()+ "'");
+  ShaderConnection connection=new ShaderConnection(outputNode,output,inputNode,input);
+  connections.add(connection);
+  addConnection(outputNode,connection);
+  addConnection(inputNode,connection);
+}
