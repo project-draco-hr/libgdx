@@ -1,5 +1,3 @@
 {
-  begin();
-  part("cylinder",primitiveType,attributes,material).cylinder(width,height,depth,divisions);
-  return end();
+  return createCylinder(width,height,depth,divisions,primitiveType,material,attributes,0,360);
 }
