@@ -1,5 +1,5 @@
 {
-  scale.x=val[M00];
-  scale.y=val[M11];
-  scale.z=val[M22];
+  scale.x=(float)Math.sqrt(val[M00] * val[M00] + val[M01] * val[M01] + val[M02] * val[M02]);
+  scale.y=(float)Math.sqrt(val[M10] * val[M10] + val[M11] * val[M11] + val[M12] * val[M12]);
+  scale.z=(float)Math.sqrt(val[M20] * val[M20] + val[M21] * val[M21] + val[M22] * val[M22]);
 }
