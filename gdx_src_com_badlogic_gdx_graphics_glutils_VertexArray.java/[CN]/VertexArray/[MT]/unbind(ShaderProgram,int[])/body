@@ -8,7 +8,7 @@
   }
  else {
     for (int i=0; i < numAttributes; i++) {
-      final int location=locations.get(attributes.get(i).getKey(),-1);
+      final int location=locations[i];
       if (location >= 0)       shader.disableVertexAttribute(location);
     }
   }

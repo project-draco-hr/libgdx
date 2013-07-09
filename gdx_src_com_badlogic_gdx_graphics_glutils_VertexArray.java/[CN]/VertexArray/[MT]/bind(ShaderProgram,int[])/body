@@ -16,7 +16,7 @@
  else {
     for (int i=0; i < numAttributes; i++) {
       final VertexAttribute attribute=attributes.get(i);
-      final int location=locations.get(attribute.getKey(),-1);
+      final int location=locations[i];
       if (location < 0)       continue;
       shader.enableVertexAttribute(location);
       byteBuffer.position(attribute.offset);
