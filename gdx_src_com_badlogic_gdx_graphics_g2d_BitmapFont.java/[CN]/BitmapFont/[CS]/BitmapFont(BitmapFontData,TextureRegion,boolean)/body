@@ -1,5 +1,15 @@
 {
-  this.region=region == null ? new TextureRegion(new Texture(Gdx.files.internal(data.imagePath),false)) : region;
+  if (region != null) {
+    this.region=region;
+  }
+ else {
+    if (data.fontFile == null) {
+      this.region=new TextureRegion(new Texture(Gdx.files.internal(data.imagePath),false));
+    }
+ else {
+      this.region=new TextureRegion(new Texture(Gdx.files.getFileHandle(data.imagePath,data.fontFile.type()),false));
+    }
+  }
   this.flipped=data.flipped;
   this.data=data;
   this.integer=integer;
