@@ -1,5 +1,10 @@
 {
-  this.batch=batch;
-  ownsBatch=false;
-  initialize(width,height,keepAspectRatio);
+  ownsBatch=batch == null;
+  this.batch=ownsBatch ? new SpriteBatch() : batch;
+  this.width=width;
+  this.height=height;
+  root=new Group();
+  root.setStage(this);
+  camera=new OrthographicCamera();
+  setViewport(width,height,keepAspectRatio);
 }
