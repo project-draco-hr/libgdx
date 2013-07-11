@@ -1,0 +1,4 @@
+{
+  float[][] baseNoise=generateWhiteNoise(width,height);
+  return generatePerlinNoise(baseNoise,octaveCount);
+}
