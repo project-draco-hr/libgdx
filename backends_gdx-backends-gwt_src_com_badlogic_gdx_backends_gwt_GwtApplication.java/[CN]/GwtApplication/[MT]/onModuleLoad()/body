@@ -1,5 +1,5 @@
 {
-  this.agentInfo=computeAgentInfo();
+  GwtApplication.agentInfo=computeAgentInfo();
   this.listener=getApplicationListener();
   this.config=getConfig();
   this.log=config.log;

@@ -1,4 +1,4 @@
 {
   if (isLooping)   play();
-  if (onCompletionListener != null)   onCompletionListener.onCompletion(this);
+ else   if (onCompletionListener != null)   onCompletionListener.onCompletion(this);
 }
