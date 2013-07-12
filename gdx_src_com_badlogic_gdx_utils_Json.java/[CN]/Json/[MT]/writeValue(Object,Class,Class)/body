@@ -92,7 +92,15 @@
       return;
     }
     if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
-      writer.value(value);
+      if (knownType == null || !knownType.equals(actualType)) {
+        writeObjectStart(actualType,null);
+        writer.name("value");
+        writer.value(value);
+        writeObjectEnd();
+      }
+ else {
+        writer.value(value);
+      }
       return;
     }
     writeObjectStart(actualType,knownType);
