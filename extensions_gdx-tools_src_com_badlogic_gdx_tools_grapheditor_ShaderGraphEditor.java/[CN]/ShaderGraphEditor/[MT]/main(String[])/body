@@ -1,0 +1,7 @@
+{
+  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+  config.width=640;
+  config.height=480;
+  config.useGL20=true;
+  new LwjglApplication(new ShaderGraphEditor(),config);
+}
