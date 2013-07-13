@@ -1,2 +1,14 @@
 {
+  if (config.useAccelerometer) {
+    accelerometerDelegate=new UIAccelerometerDelegate.Adapter(){
+      @Override public void didAccelerate(      UIAccelerometer accelerometer,      UIAcceleration values){
+        acceleration[0]=(float)values.getX() * 10;
+        acceleration[1]=(float)values.getY() * 10;
+        acceleration[2]=(float)values.getZ() * 10;
+      }
+    }
+;
+    UIAccelerometer.getSharedAccelerometer().setDelegate(accelerometerDelegate);
+    UIAccelerometer.getSharedAccelerometer().setUpdateInterval(config.accelerometerUpdate);
+  }
 }
