@@ -1,4 +1,5 @@
 {
+  renderedChunks=0;
   for (int i=0; i < chunks.length; i++) {
     VoxelChunk chunk=chunks[i];
     Mesh mesh=meshes[i];
@@ -8,6 +9,7 @@
       mesh.setVertices(vertices,0,numVerts * VoxelChunk.VERTEX_SIZE);
       dirty[i]=false;
     }
+    if (numVertices[i] == 0)     continue;
     Renderable renderable=pool.obtain();
     renderable.material=materials[i];
     renderable.mesh=mesh;
@@ -15,5 +17,6 @@
     renderable.meshPartSize=numVertices[i];
     renderable.primitiveType=GL20.GL_TRIANGLES;
     renderables.add(renderable);
+    renderedChunks++;
   }
 }

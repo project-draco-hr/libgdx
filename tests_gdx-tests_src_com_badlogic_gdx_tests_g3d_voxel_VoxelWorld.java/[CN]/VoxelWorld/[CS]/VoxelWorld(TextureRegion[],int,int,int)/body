@@ -4,6 +4,7 @@
   this.chunksX=chunksX;
   this.chunksY=chunksY;
   this.chunksZ=chunksZ;
+  this.numChunks=chunksX * chunksY * chunksZ;
   this.voxelsX=chunksX * CHUNK_SIZE_X;
   this.voxelsY=chunksY * CHUNK_SIZE_Y;
   this.voxelsZ=chunksZ * CHUNK_SIZE_Z;
