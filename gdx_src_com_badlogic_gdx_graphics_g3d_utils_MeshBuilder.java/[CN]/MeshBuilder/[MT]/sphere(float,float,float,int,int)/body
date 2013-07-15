@@ -1,31 +1,3 @@
 {
-  final float hw=width * 0.5f;
-  final float hh=height * 0.5f;
-  final float hd=depth * 0.5f;
-  final float stepU=MathUtils.PI2 / divisionsU;
-  final float stepV=MathUtils.PI / divisionsV;
-  final float us=1f / divisionsU;
-  final float vs=1f / divisionsV;
-  float u=0f;
-  float v=0f;
-  float angleU=0f;
-  float angleV=0f;
-  VertexInfo curr1=vertTmp3.set(null,null,null,null);
-  curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
-  for (int i=0; i <= divisionsU; i++) {
-    angleU=stepU * i;
-    u=1f - us * i;
-    tempV1.set(MathUtils.cos(angleU) * hw,0f,MathUtils.sin(angleU) * hd);
-    for (int j=0; j <= divisionsV; j++) {
-      angleV=stepV * j;
-      v=vs * j;
-      final float t=MathUtils.sin(angleV);
-      curr1.position.set(tempV1.x * t,MathUtils.cos(angleV) * hh,tempV1.z * t);
-      curr1.normal.set(curr1.position).nor();
-      curr1.uv.set(u,v);
-      vertex(curr1);
-      if (i == 0 || j == 0)       continue;
-      index((short)(vindex - 2),(short)(vindex - 1),(short)(vindex - (divisionsV + 2)),(short)(vindex - 1),(short)(vindex - (divisionsV + 1)),(short)(vindex - (divisionsV + 2)));
-    }
-  }
+  sphere(width,height,depth,divisionsU,divisionsV,0,360,0,180);
 }

@@ -1,5 +1,5 @@
 {
   this.color.set(r,g,b,1f);
-  if (direction != null)   this.direction.set(direction);
+  if (direction != null)   this.direction.set(direction).nor();
   return this;
 }

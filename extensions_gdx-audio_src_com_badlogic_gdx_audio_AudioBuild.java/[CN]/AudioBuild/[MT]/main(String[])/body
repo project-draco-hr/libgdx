@@ -68,4 +68,6 @@
   android.cppExcludes=cppExcludes;
   android.preCompileTask=precompileTask;
   new AntScriptGenerator().generate(buildConfig,win32home,win32,win64,lin32,lin64,mac,android);
+  String androidMakeFile=new FileHandle("jni/Application.mk").readString();
+  new FileHandle("jni/Application.mk").writeString(androidMakeFile.replaceAll("x86",""),false);
 }
