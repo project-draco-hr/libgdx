@@ -1,3 +1,10 @@
 {
-  if (listener != null)   listener.onCompletion(music);
+  if (onCompletionListener != null) {
+    Gdx.app.postRunnable(new Runnable(){
+      @Override public void run(){
+        onCompletionListener.onCompletion(IOSMusic.this);
+      }
+    }
+);
+  }
 }

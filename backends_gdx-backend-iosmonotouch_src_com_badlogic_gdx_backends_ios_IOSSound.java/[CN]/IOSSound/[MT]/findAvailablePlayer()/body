@@ -6,5 +6,7 @@
       return index;
     }
   }
-  return -1;
+  int index=playerIndex % players.length;
+  playerIndex=(index + 1) % players.length;
+  return index;
 }

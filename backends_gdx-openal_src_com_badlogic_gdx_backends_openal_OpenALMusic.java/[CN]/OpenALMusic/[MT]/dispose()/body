@@ -9,4 +9,5 @@
   }
   alDeleteBuffers(buffers);
   buffers=null;
+  onCompletionListener=null;
 }
