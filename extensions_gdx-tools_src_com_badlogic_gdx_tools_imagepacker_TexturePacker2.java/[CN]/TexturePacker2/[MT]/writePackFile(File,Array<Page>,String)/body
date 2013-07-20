@@ -5,7 +5,6 @@
     for (    Page page : pages) {
       for (      Rect rect : page.outputRects) {
         String rectName=Rect.getAtlasName(rect.name,settings.flattenPaths);
-        System.out.println(rectName);
         for (        Region region : textureAtlasData.getRegions()) {
           if (region.name.equals(rectName)) {
             throw new GdxRuntimeException("A region with the name \"" + rectName + "\" has already been packed: "+ rect.name);
@@ -23,8 +22,10 @@
     for (    Rect rect : page.outputRects) {
       writeRect(writer,page,rect,rect.name);
       for (      Alias alias : rect.aliases) {
-        rect.index=alias.index;
-        writeRect(writer,page,rect,alias.name);
+        Rect aliasRect=new Rect();
+        aliasRect.set(rect);
+        alias.apply(aliasRect);
+        writeRect(writer,page,aliasRect,alias.name);
       }
     }
   }

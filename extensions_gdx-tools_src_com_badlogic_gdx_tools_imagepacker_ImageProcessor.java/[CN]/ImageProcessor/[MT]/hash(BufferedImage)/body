@@ -12,22 +12,10 @@
     int[] pixels=new int[width];
     for (int y=0; y < height; y++) {
       raster.getDataElements(0,y,width,1,pixels);
-      for (int x=0; x < width; x++) {
-        int rgba=pixels[x];
-        digest.update((byte)(rgba >> 24));
-        digest.update((byte)(rgba >> 16));
-        digest.update((byte)(rgba >> 8));
-        digest.update((byte)rgba);
-      }
+      for (int x=0; x < width; x++)       hash(digest,pixels[x]);
     }
-    digest.update((byte)(width >> 24));
-    digest.update((byte)(width >> 16));
-    digest.update((byte)(width >> 8));
-    digest.update((byte)width);
-    digest.update((byte)(height >> 24));
-    digest.update((byte)(height >> 16));
-    digest.update((byte)(height >> 8));
-    digest.update((byte)height);
+    hash(digest,width);
+    hash(digest,height);
     return new BigInteger(1,digest.digest()).toString(16);
   }
  catch (  NoSuchAlgorithmException ex) {

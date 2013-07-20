@@ -41,7 +41,7 @@
     Rect existing=crcs.get(crc);
     if (existing != null) {
       System.out.println(rect.name + " (alias of " + existing.name+ ")");
-      existing.aliases.add(new Alias(rect.name,rect.index));
+      existing.aliases.add(new Alias(rect));
       return;
     }
     crcs.put(crc,rect);
