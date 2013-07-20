@@ -1,0 +1,19 @@
+{
+  int word=fromIndex >>> 6;
+  if (word >= bits.length)   return -1;
+  for (int i=fromIndex & 0x3f; i < 64; i++) {
+    if ((bits[word] & (1L << (i & 0x3F))) != 0L) {
+      return (word << 6) + i;
+    }
+  }
+  for (word++; word < bits.length; word++) {
+    if (word != 0) {
+      for (int i=0; i < 64; i++) {
+        if ((bits[word] & (1L << (i & 0x3F))) != 0L) {
+          return (word << 6) + i;
+        }
+      }
+    }
+  }
+  return -1;
+}
