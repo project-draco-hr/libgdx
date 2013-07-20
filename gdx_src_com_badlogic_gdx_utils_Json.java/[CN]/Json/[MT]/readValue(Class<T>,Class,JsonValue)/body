@@ -44,8 +44,8 @@
     if (serializer != null)     return (T)serializer.read(this,jsonData,type);
   }
   if (jsonData.isArray()) {
-    if (type == null || ClassReflection.isAssignableFrom(Array.class,type)) {
-      Array newArray=type == null ? new Array() : (Array)newInstance(type);
+    if ((type == null || type == Object.class) || ClassReflection.isAssignableFrom(Array.class,type)) {
+      Array newArray=(type == null || type == Object.class) ? new Array() : (Array)newInstance(type);
       for (JsonValue child=jsonData.child(); child != null; child=child.next())       newArray.add(readValue(elementType,null,child));
       return (T)newArray;
     }

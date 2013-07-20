@@ -1,0 +1,8 @@
+{
+  Json json=new Json();
+  Graph graph=new Graph();
+  graph.data=new Array();
+  String jsonString=json.toJson(graph);
+  System.out.println(jsonString);
+  Graph graph2=json.fromJson(Graph.class,jsonString);
+}
