@@ -3,6 +3,7 @@
   int index=start;
   float width=0;
   Glyph lastGlyph=null;
+  availableWidth/=data.scaleX;
   if (data.scaleX == 1) {
     for (; index < end; index++) {
       char ch=str.charAt(index);
