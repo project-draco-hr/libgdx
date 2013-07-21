@@ -1,0 +1,8 @@
+{
+  for (int i=0, j=bits.length, k=other.bits.length; i < j && i < k; i++) {
+    if ((bits[i] & other.bits[i]) != 0) {
+      return true;
+    }
+  }
+  return false;
+}
