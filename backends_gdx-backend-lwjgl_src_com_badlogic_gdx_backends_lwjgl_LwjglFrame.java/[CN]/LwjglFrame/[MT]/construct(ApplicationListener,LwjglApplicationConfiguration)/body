@@ -22,6 +22,10 @@
     protected void exception(    Throwable t){
       LwjglFrame.this.exception(t);
     }
+    protected int getFrameRate(){
+      int frameRate=LwjglFrame.this.getFrameRate();
+      return frameRate == 0 ? super.getFrameRate() : frameRate;
+    }
   }
 ;
   Runtime.getRuntime().addShutdownHook(new Thread(){

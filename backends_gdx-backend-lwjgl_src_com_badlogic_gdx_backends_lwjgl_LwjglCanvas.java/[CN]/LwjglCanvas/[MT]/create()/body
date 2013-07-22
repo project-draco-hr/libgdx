@@ -49,7 +49,7 @@ synchronized (runnables) {
         if (audio != null)         audio.update();
         Display.update();
         canvas.setCursor(cursor);
-        if (graphics.vsync)         Display.sync(60);
+        Display.sync(getFrameRate());
       }
  catch (      Throwable ex) {
         exception(ex);
