@@ -58,6 +58,10 @@
             cut();
             return true;
           }
+          if (keycode == Keys.A) {
+            selectAll();
+            return true;
+          }
         }
         if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
           if (keycode == Keys.INSERT)           paste();
