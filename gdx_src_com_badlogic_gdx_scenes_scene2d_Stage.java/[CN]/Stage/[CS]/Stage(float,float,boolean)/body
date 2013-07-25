@@ -1,5 +1,3 @@
 {
-  batch=new SpriteBatch();
-  ownsBatch=true;
-  initialize(width,height,keepAspectRatio);
+  this(width,height,keepAspectRatio,null);
 }
