@@ -1,13 +1,8 @@
 {
-  super(null);
-  getStyle().background=style.listBackground;
+  super(null,style.scrollStyle);
   setOverscroll(false,false);
-  ListStyle listStyle=new ListStyle();
-  listStyle.font=style.font;
-  listStyle.fontColorSelected=style.fontColor;
-  listStyle.fontColorUnselected=style.fontColor;
-  listStyle.selection=style.listSelection;
-  list=new List(new Object[0],listStyle);
+  setFadeScrollBars(false);
+  list=new List(new Object[0],style.listStyle);
   setWidget(list);
   list.addListener(new InputListener(){
     public boolean mouseMoved(    InputEvent event,    float x,    float y){

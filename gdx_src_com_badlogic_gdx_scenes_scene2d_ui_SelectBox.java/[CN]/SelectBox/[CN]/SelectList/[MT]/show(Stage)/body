@@ -28,4 +28,5 @@
   clearActions();
   getColor().a=0;
   addAction(fadeIn(0.3f,Interpolation.fade));
+  stage.setScrollFocus(this);
 }
