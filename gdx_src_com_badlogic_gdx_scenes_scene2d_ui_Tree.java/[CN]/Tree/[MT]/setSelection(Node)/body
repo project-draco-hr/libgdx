@@ -1,5 +1,5 @@
 {
   selectedNodes.clear();
-  selectedNodes.add(node);
+  if (node != null)   selectedNodes.add(node);
   fireChangeEvent();
 }
