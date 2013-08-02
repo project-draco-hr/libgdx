@@ -14,7 +14,7 @@
         }
         dependenciesLoaded=true;
         if (asyncDone) {
-          asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+          asset=asyncLoader.loadSync(manager,assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
         }
       }
     }
@@ -25,7 +25,7 @@
     }
  else {
       if (asyncDone) {
-        asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+        asset=asyncLoader.loadSync(manager,assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
       }
  else       if (loadFuture.isDone()) {
         try {
@@ -34,7 +34,7 @@
  catch (        Exception e) {
           throw new GdxRuntimeException("Couldn't load asset: " + assetDesc.fileName,e);
         }
-        asset=asyncLoader.loadSync(manager,assetDesc.fileName,assetDesc.params);
+        asset=asyncLoader.loadSync(manager,assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
       }
     }
   }

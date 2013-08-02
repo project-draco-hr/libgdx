@@ -1,0 +1,27 @@
+{
+  info.filename=fileName;
+  if (parameter == null || (parameter != null && parameter.textureData == null)) {
+    Pixmap pixmap=null;
+    Format format=null;
+    boolean genMipMaps=false;
+    info.texture=null;
+    if (parameter != null) {
+      format=parameter.format;
+      genMipMaps=parameter.genMipMaps;
+      info.texture=parameter.texture;
+    }
+    if (!fileName.contains(".etc1")) {
+      if (fileName.contains(".cim"))       pixmap=PixmapIO.readCIM(file);
+ else       pixmap=new Pixmap(file);
+      info.data=new FileTextureData(file,pixmap,format,genMipMaps);
+    }
+ else {
+      info.data=new ETC1TextureData(file,genMipMaps);
+    }
+  }
+ else {
+    info.data=parameter.textureData;
+    if (!info.data.isPrepared())     info.data.prepare();
+    info.texture=parameter.texture;
+  }
+}

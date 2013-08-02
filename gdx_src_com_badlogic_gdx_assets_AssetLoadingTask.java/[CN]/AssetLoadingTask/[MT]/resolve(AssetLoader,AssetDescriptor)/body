@@ -1,0 +1,4 @@
+{
+  if (assetDesc.file == null)   assetDesc.file=loader.resolve(assetDesc.fileName);
+  return assetDesc.file;
+}
