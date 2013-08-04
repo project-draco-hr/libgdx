@@ -1,0 +1,10 @@
+{
+  try {
+    System.load(extractFile(sourcePath,sourceCrc,extractedFile).getAbsolutePath());
+    return null;
+  }
+ catch (  Throwable ex) {
+    ex.printStackTrace();
+    return ex;
+  }
+}

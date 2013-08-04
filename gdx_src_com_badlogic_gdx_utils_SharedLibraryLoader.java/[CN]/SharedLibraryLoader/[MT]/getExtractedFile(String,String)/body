@@ -1,0 +1,18 @@
+{
+  File idealFile=new File(System.getProperty("java.io.tmpdir") + "/libgdx" + System.getProperty("user.name")+ "/"+ dirName,fileName);
+  if (canWrite(idealFile))   return idealFile;
+  try {
+    File file=File.createTempFile(dirName,null);
+    if (file.delete()) {
+      file=new File(file,fileName);
+      if (canWrite(file))       return file;
+    }
+  }
+ catch (  IOException ignored) {
+  }
+  File file=new File(System.getProperty("user.home") + "/.libgdx/" + dirName,fileName);
+  if (canWrite(file))   return file;
+  file=new File(".temp/" + dirName,fileName);
+  if (canWrite(file))   return file;
+  return idealFile;
+}

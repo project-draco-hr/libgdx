@@ -1,0 +1,14 @@
+{
+  if (file.canWrite())   return true;
+  File parent=file.getParentFile();
+  parent.mkdirs();
+  if (!parent.isDirectory())   return false;
+  try {
+    new FileOutputStream(file).close();
+    file.delete();
+    return true;
+  }
+ catch (  Throwable ex) {
+    return false;
+  }
+}

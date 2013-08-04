@@ -16,5 +16,5 @@
  catch (    Exception ignored) {
     }
   }
-  return Long.toString(crc.getValue());
+  return Long.toString(crc.getValue(),16);
 }
