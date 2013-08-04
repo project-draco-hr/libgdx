@@ -1,0 +1,7 @@
+{
+  if (arg0 == null)   return false;
+  if (arg0 == this)   return true;
+  if (!(arg0 instanceof MeshPart))   return false;
+  final MeshPart other=(MeshPart)arg0;
+  return other.mesh == mesh && other.primitiveType == primitiveType && other.indexOffset == indexOffset && other.numVertices == numVertices;
+}
