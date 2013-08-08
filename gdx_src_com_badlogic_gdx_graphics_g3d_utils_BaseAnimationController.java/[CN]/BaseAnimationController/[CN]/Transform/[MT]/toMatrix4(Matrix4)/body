@@ -1,7 +1,3 @@
 {
-  out.idt();
-  out.translate(translation);
-  out.rotate(rotation);
-  out.scale(scale.x,scale.y,scale.z);
-  return out;
+  return out.set(translation,rotation,scale);
 }
