@@ -21,11 +21,13 @@
       setters.set(i,null);
     }
   }
-  final VertexAttributes attrs=renderable.mesh.getVertexAttributes();
-  final int c=attrs.size();
-  for (int i=0; i < c; i++) {
-    final VertexAttribute attr=attrs.get(i);
-    final int location=program.getAttributeLocation(attr.alias);
-    if (location >= 0)     attributes.put(attr.getKey(),location);
+  if (renderable != null) {
+    final VertexAttributes attrs=renderable.mesh.getVertexAttributes();
+    final int c=attrs.size();
+    for (int i=0; i < c; i++) {
+      final VertexAttribute attr=attrs.get(i);
+      final int location=program.getAttributeLocation(attr.alias);
+      if (location >= 0)       attributes.put(attr.getKey(),location);
+    }
   }
 }
