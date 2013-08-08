@@ -1,0 +1,3 @@
+{
+  return (inputID >= 0 && inputID < locations.length) ? locations[inputID] : -1;
+}

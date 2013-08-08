@@ -1,14 +1,7 @@
 {
   super.begin(camera,context);
-  if (defaultDepthFunc == 0)   context.setDepthTest(false,GL10.GL_LEQUAL);
- else   context.setDepthTest(true,defaultDepthFunc);
-  float fogDist=1.09f / camera.far;
-  fogDist*=fogDist;
-  set(u_projTrans,camera.combined);
-  set(u_cameraPosition,camera.position.x,camera.position.y,camera.position.z,fogDist);
-  set(u_cameraDirection,camera.direction);
-  set(u_cameraUp,camera.up);
   for (  final DirectionalLight dirLight : directionalLights)   dirLight.set(0,0,0,0,-1,0);
   for (  final PointLight pointLight : pointLights)   pointLight.set(0,0,0,0,0,0,0);
-  for (int i=0; i < bones.length; i++)   bones[i]=idtMatrix.val[i % 16];
+  lightsSet=false;
+  if (has(u_time))   set(u_time,time+=Gdx.graphics.getDeltaTime());
 }

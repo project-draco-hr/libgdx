@@ -1,0 +1,13 @@
+{
+  if (locations != null)   throw new GdxRuntimeException("Cannot register an uniform after initialization");
+  final int existing=getUniformID(alias);
+  if (existing >= 0) {
+    validators.set(existing,validator);
+    setters.set(existing,setter);
+    return existing;
+  }
+  uniforms.add(alias);
+  validators.add(validator);
+  setters.add(setter);
+  return uniforms.size - 1;
+}

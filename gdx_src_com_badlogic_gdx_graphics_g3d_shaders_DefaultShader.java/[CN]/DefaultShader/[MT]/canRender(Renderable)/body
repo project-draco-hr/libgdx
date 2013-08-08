@@ -1,3 +1,3 @@
 {
-  return materialMask == renderable.material.getMask() && vertexMask == getAttributesMask(renderable.mesh.getVertexAttributes()) && (renderable.lights != null) == lighting && ((renderable.lights != null && renderable.lights.fog != null) == fog);
+  return (materialMask == (renderable.material.getMask() | optionalAttributes)) && (vertexMask == renderable.mesh.getVertexAttributes().getMask()) && (renderable.lights != null) == lighting && ((renderable.lights != null && renderable.lights.fog != null) == fog);
 }

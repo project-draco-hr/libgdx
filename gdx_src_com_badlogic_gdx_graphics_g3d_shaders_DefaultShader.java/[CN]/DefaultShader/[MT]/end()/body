@@ -1,9 +1,4 @@
 {
-  if (currentMesh != null) {
-    currentMesh.unbind(program);
-    currentMesh=null;
-  }
-  currentTextureAttribute=null;
   currentMaterial=null;
   super.end();
 }
