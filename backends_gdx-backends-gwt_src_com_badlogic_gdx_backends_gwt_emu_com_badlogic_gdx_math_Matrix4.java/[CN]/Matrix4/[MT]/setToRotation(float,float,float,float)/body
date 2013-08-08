@@ -3,5 +3,5 @@
     idt();
     return this;
   }
-  return this.set(quat.setFromAxis(axisX,axisY,axisZ,angle));
+  return set(quat.setFromAxis(axisX,axisY,axisZ,angle));
 }
