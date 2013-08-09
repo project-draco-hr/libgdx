@@ -68,5 +68,5 @@
  catch (    IOException ignored) {
     }
   }
-  regions.sort(indexComparator);
+  new Sort().sort((Object[])regions.items,(Comparator)indexComparator,0,regions.size);
 }

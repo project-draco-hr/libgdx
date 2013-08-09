@@ -1,5 +1,5 @@
 {
-  this.idt();
+  idt();
   float l_fd=(float)(1.0 / Math.tan((fov * (Math.PI / 180)) / 2.0));
   float l_a1=(far + near) / (near - far);
   float l_a2=(2 * far * near) / (near - far);

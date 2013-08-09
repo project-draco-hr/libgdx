@@ -1,4 +1,5 @@
 {
+  if (vindex >= Short.MAX_VALUE)   throw new GdxRuntimeException("Too many vertices used");
   if (col == null && colorSet)   col=color;
   if (pos != null) {
     vertex[posOffset]=pos.x;

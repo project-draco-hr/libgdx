@@ -3,10 +3,12 @@
   if (parent == null) {
     Stage stage=getStage();
     if (stage != null) {
+      if (previousKeyboardFocus != null && previousKeyboardFocus.getStage() == null)       previousKeyboardFocus=null;
       Actor actor=stage.getKeyboardFocus();
-      if (actor == this || actor == null)       stage.setKeyboardFocus(previousKeyboardFocus);
+      if (actor == null || actor.isDescendantOf(this))       stage.setKeyboardFocus(previousKeyboardFocus);
+      if (previousScrollFocus != null && previousScrollFocus.getStage() == null)       previousScrollFocus=null;
       actor=stage.getScrollFocus();
-      if (actor == this || actor == null)       stage.setScrollFocus(previousScrollFocus);
+      if (actor == null || actor.isDescendantOf(this))       stage.setScrollFocus(previousScrollFocus);
     }
   }
 }
