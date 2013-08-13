@@ -1,8 +1,0 @@
-{
-  FileHandle atlasFile=skinFile.sibling(skinFile.nameWithoutExtension() + ".atlas");
-  if (atlasFile.exists()) {
-    atlas=new TextureAtlas(atlasFile);
-    addRegions(atlas);
-  }
-  load(skinFile);
-}

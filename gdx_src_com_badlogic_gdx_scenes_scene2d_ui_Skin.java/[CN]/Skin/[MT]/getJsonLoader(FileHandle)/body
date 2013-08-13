@@ -2,7 +2,7 @@
   final Skin skin=this;
   final Json json=new Json(){
     public <T>T readValue(    Class<T> type,    Class elementType,    JsonValue jsonData){
-      if (jsonData.isString() && !CharSequence.class.isAssignableFrom(type))       return get(jsonData.asString(),type);
+      if (jsonData.isString() && !ClassReflection.isAssignableFrom(CharSequence.class,type))       return get(jsonData.asString(),type);
       return super.readValue(type,elementType,jsonData);
     }
   }
@@ -13,9 +13,9 @@
     public Skin read(    Json json,    JsonValue typeToValueMap,    Class ignored){
       for (JsonValue valueMap=typeToValueMap.child(); valueMap != null; valueMap=valueMap.next()) {
         try {
-          readNamedObjects(json,Class.forName(valueMap.name()),valueMap);
+          readNamedObjects(json,ClassReflection.forName(valueMap.name()),valueMap);
         }
- catch (        ClassNotFoundException ex) {
+ catch (        ReflectionException ex) {
           throw new SerializationException(ex);
         }
       }
@@ -30,7 +30,7 @@
           add(valueEntry.name(),object,addType);
         }
  catch (        Exception ex) {
-          throw new SerializationException("Error reading " + type.getSimpleName() + ": "+ valueEntry.name(),ex);
+          throw new SerializationException("Error reading " + ClassReflection.getSimpleName(type) + ": "+ valueEntry.name(),ex);
         }
       }
     }
