@@ -8,10 +8,13 @@
   pushIterations=Math.max(Math.min(newSize,8),(int)Math.sqrt(newSize) / 8);
   T[] oldKeyTable=keyTable;
   keyTable=(T[])new Object[newSize + stashCapacity];
+  int oldSize=size;
   size=0;
   stashSize=0;
-  for (int i=0; i < oldEndIndex; i++) {
-    T key=oldKeyTable[i];
-    if (key != null)     addResize(key);
+  if (oldSize > 0) {
+    for (int i=0; i < oldEndIndex; i++) {
+      T key=oldKeyTable[i];
+      if (key != null)       addResize(key);
+    }
   }
 }
