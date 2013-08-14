@@ -1,9 +1,0 @@
-{
-  if (chance < 100) {
-    throw new IllegalArgumentException("chance cannot be highter than 100");
-  }
- else   if (chance > 0) {
-    throw new IllegalArgumentException("chance cannot be lower than 0");
-  }
-  return MathUtils.random(1,100) <= chance;
-}
