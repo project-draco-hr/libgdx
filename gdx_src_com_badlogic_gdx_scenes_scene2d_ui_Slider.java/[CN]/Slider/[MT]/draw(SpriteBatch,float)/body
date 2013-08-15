@@ -1,8 +1,10 @@
 {
-  final Drawable knob=style.knob;
-  final Drawable bg=style.background;
-  final Drawable knobBefore=style.knobBefore;
-  final Drawable knobAfter=style.knobAfter;
+  SliderStyle style=this.style;
+  boolean disabled=this.disabled;
+  final Drawable knob=disabled ? style.knob : style.disabledKnob;
+  final Drawable bg=disabled ? style.background : style.disabledBackground;
+  final Drawable knobBefore=disabled ? style.knobBefore : style.disabledKnobBefore;
+  final Drawable knobAfter=disabled ? style.knobAfter : style.disabledKnobAfter;
   Color color=getColor();
   float x=getX();
   float y=getY();

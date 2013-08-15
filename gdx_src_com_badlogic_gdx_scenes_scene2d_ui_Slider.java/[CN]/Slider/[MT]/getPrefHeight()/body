@@ -1,4 +1,8 @@
 {
   if (vertical)   return 140;
- else   return Math.max(style.knob == null ? 0 : style.knob.getMinHeight(),style.background.getMinHeight());
+ else {
+    final Drawable knob=disabled ? style.knob : style.disabledKnob;
+    final Drawable bg=disabled ? style.background : style.disabledBackground;
+    return Math.max(knob == null ? 0 : knob.getMinHeight(),bg.getMinHeight());
+  }
 }
