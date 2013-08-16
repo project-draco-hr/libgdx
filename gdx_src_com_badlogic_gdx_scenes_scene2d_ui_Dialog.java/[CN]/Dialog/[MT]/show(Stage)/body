@@ -1,8 +1,12 @@
 {
   clearActions();
   removeCaptureListener(ignoreTouchDown);
-  previousKeyboardFocus=stage.getKeyboardFocus();
-  previousScrollFocus=stage.getScrollFocus();
+  previousKeyboardFocus=null;
+  Actor actor=stage.getKeyboardFocus();
+  if (actor != null && !actor.isDescendantOf(this))   previousKeyboardFocus=actor;
+  previousScrollFocus=null;
+  actor=stage.getScrollFocus();
+  if (actor != null && !actor.isDescendantOf(this))   stage.setScrollFocus(previousScrollFocus);
   pack();
   setPosition(Math.round((stage.getWidth() - getWidth()) / 2),Math.round((stage.getHeight() - getHeight()) / 2));
   stage.addActor(this);
