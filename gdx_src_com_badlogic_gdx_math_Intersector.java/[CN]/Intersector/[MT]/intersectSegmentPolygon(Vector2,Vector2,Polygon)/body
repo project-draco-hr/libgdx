@@ -11,9 +11,9 @@
     float width34=x3 - x4, height34=y3 - y4;
     float det3=width12 * height34 - height12 * width34;
     float x=(det1 * width34 - width12 * det2) / det3;
-    if ((x >= x3 && x <= x4) || (x >= x4 && x <= x3)) {
+    if (((x >= x3 && x <= x4) || (x >= x4 && x <= x3)) && ((x >= x1 && x <= x2) || (x >= x2 && x <= x1))) {
       float y=(det1 * height34 - height12 * det2) / det3;
-      if ((y >= y3 && y <= y4) || (y >= y4 && y <= y3))       return true;
+      if (((y >= y3 && y <= y4) || (y >= y4 && y <= y3)) && ((y >= y1 && y <= y2) || (y >= y2 && y <= y1)))       return true;
     }
     x3=x4;
     y3=y4;
