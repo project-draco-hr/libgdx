@@ -24,5 +24,6 @@
  else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
   context.setCullFace(cullFace);
-  context.setDepthTest(depthFunc,depthRangeNear,depthRangeFar,depthMask);
+  context.setDepthTest(depthFunc,depthRangeNear,depthRangeFar);
+  context.setDepthMask(depthMask);
 }

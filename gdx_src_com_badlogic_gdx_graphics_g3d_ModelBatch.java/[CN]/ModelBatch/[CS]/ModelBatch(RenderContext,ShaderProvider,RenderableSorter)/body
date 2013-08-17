@@ -1,5 +1,3 @@
 {
-  this.context=context;
-  this.shaderProvider=shaderProvider;
-  this.sorter=sorter;
+  this(context,false,shaderProvider,sorter);
 }

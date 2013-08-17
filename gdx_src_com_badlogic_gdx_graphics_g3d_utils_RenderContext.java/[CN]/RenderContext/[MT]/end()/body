@@ -1,5 +1,6 @@
 {
   if (depthFunc != 0)   Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
+  if (!depthMask)   Gdx.gl.glDepthMask(true);
   if (blending)   Gdx.gl.glDisable(GL10.GL_BLEND);
   if (cullFace > 0)   Gdx.gl.glDisable(GL10.GL_CULL_FACE);
   textureBinder.end();
