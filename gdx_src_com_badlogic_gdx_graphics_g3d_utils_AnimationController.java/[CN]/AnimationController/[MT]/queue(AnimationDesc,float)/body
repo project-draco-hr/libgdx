@@ -6,4 +6,5 @@
     queuedTransitionTime=transitionTime;
     if (current.loopCount < 0)     current.loopCount=1;
   }
+  return anim;
 }
