@@ -6,4 +6,5 @@
     animationPool.free(current);
     current=anim;
   }
+  return anim;
 }

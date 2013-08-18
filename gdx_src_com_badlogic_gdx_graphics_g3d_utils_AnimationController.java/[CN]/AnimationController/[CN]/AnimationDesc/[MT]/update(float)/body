@@ -11,7 +11,7 @@
     time=Math.abs(time % duration);
     for (int i=0; i < loops; i++) {
       if (loopCount > 0)       loopCount--;
-      if (listener != null)       listener.onLoop(this);
+      if (loopCount != 0 && listener != null)       listener.onLoop(this);
       if (loopCount == 0) {
         final float result=((loops - 1) - i) * duration + (diff < 0f ? duration - time : time);
         time=(diff < 0f) ? duration : 0f;
