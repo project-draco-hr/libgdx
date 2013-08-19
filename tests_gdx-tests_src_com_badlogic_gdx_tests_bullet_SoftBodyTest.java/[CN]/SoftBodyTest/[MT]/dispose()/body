@@ -1,9 +1,9 @@
 {
   ((btSoftRigidDynamicsWorld)(world.collisionWorld)).removeSoftBody(softBody);
-  softBody.delete();
+  softBody.dispose();
   softBody=null;
   super.dispose();
-  worldInfo.delete();
+  worldInfo.dispose();
   worldInfo=null;
   instance=null;
   model.dispose();

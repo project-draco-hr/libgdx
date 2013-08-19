@@ -1,5 +1,5 @@
 {
   super.dispose();
-  if (shape != null)   shape.delete();
+  if (shape != null)   shape.dispose();
   shape=null;
 }

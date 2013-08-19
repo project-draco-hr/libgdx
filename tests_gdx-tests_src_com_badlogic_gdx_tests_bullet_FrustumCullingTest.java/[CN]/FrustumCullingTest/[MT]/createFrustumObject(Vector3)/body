@@ -8,7 +8,7 @@
     final btConvexHullShape hullShape=new btConvexHullShape();
     for (int i=0; i < points.length; i++)     hullShape.addPoint(tmpV.set(points[i]).sub(center));
     final btCompoundShape shape=new btCompoundShape();
-    shape.addChildShape(tmpM.setToTranslation(center),hullShape,true);
+    shape.addChildShape(tmpM.setToTranslation(center),hullShape);
     result.setCollisionShape(shape);
   }
  else {

@@ -2,13 +2,13 @@
   Ray ray=camera.getPickRay(x,y);
   rayFrom.set(ray.origin);
   rayTo.set(ray.direction).scl(50f).add(rayFrom);
-  rayTestCB.setM_collisionObject(null);
-  rayTestCB.setM_closestHitFraction(1f);
-  rayTestCB.getM_rayFromWorld().setValue(rayFrom.x,rayFrom.y,rayFrom.z);
-  rayTestCB.getM_rayToWorld().setValue(rayTo.x,rayTo.y,rayTo.z);
+  rayTestCB.setCollisionObject(null);
+  rayTestCB.setClosestHitFraction(1f);
+  rayTestCB.getRayFromWorld().setValue(rayFrom.x,rayFrom.y,rayFrom.z);
+  rayTestCB.getRayToWorld().setValue(rayTo.x,rayTo.y,rayTo.z);
   world.collisionWorld.rayTest(rayFrom,rayTo,rayTestCB);
   if (rayTestCB.hasHit()) {
-    final btCollisionObject obj=rayTestCB.getM_collisionObject();
+    final btCollisionObject obj=rayTestCB.getCollisionObject();
     if (!obj.isStaticOrKinematicObject()) {
       final btRigidBody body=(btRigidBody)(obj);
       body.activate();
