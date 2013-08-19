@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btMultimaterialTriangleMeshShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btMultimaterialTriangleMeshShape",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,4 +1,5 @@
 {
-  for (int i=0; i < children.size; i++)   children.get(i).delete();
+  for (  btCollisionShape child : children)   child.release();
   children.clear();
+  super.dispose();
 }

@@ -1,3 +1,4 @@
 {
-  return gdxBulletJNI.btSoftBody_getWindVelocity(swigCPtr,this);
+  long cPtr=gdxBulletJNI.btSoftBody_windVelocity_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3(cPtr,false);
 }

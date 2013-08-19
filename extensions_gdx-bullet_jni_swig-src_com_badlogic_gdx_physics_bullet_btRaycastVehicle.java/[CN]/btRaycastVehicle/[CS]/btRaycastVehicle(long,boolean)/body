@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btRaycastVehicle_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btRaycastVehicle",cPtr,cMemoryOwn);
+  construct();
 }

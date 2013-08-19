@@ -1,3 +1,4 @@
 {
-  return gdxBulletJNI.btManifoldPoint_getPositionWorldOnB(swigCPtr,this);
+  long cPtr=gdxBulletJNI.btManifoldPoint_positionWorldOnB_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3(cPtr,false);
 }

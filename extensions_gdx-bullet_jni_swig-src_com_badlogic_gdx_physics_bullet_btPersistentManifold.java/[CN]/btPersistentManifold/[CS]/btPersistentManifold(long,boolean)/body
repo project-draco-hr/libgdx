@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btPersistentManifold_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btPersistentManifold",cPtr,cMemoryOwn);
+  construct();
 }

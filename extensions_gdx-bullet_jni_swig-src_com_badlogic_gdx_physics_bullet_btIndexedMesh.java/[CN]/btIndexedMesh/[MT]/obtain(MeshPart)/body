@@ -1,0 +1,10 @@
+{
+  if (meshPart == null)   throw new GdxRuntimeException("meshPart cannot be null");
+  btIndexedMesh result=getInstance(meshPart);
+  if (result == null) {
+    result=new btIndexedMesh(meshPart);
+    instances.add(result);
+  }
+  result.obtain();
+  return result;
+}

@@ -1,0 +1,8 @@
+{
+  final int n=instances.size;
+  for (int i=0; i < n; i++) {
+    final btIndexedMesh mesh=instances.get(i);
+    if (meshPart.equals(mesh.meshPart))     return mesh;
+  }
+  return null;
+}

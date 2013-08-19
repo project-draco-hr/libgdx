@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btBoxBoxCollisionAlgorithm_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btBoxBoxCollisionAlgorithm",cPtr,cMemoryOwn);
+  construct();
 }

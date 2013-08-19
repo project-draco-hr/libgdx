@@ -1,3 +1,5 @@
 {
-  gdxBulletJNI.btCompoundShape_addChildShape(swigCPtr,this,localTransform,btCollisionShape.getCPtr(shape),shape);
+  internalAddChildShape(localTransform,shape);
+  children.add(shape);
+  shape.obtain();
 }

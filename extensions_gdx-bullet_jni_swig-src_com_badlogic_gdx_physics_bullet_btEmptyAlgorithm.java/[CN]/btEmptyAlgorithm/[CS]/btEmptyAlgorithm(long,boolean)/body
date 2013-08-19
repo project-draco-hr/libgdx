@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btEmptyAlgorithm_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btEmptyAlgorithm",cPtr,cMemoryOwn);
+  construct();
 }

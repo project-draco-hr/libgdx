@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btBulletWorldImporter_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btBulletWorldImporter",cPtr,cMemoryOwn);
+  construct();
 }

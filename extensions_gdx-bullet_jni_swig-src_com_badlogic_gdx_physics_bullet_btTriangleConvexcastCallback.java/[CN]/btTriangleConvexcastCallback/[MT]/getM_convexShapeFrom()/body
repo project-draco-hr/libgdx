@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btTriangleConvexcastCallback_m_convexShapeFrom_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btTransform(cPtr,false);
-}

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBodyFloatData_m_nodes_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new SoftBodyNodeData(cPtr,false);
-}

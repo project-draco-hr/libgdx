@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btContactSolverInfo_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btContactSolverInfo",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btDiscreteDynamicsWorld_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btDiscreteDynamicsWorld",cPtr,cMemoryOwn);
+  construct();
 }

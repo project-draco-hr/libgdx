@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btStackAlloc",cPtr,cMemoryOwn);
+  construct();
 }
