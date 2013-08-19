@@ -37,7 +37,7 @@
     start=nextStart;
     numLines++;
   }
-  textBounds.width=maxWidth * data.scaleX;
+  textBounds.width=maxWidth;
   textBounds.height=data.capHeight + (numLines - 1) * data.lineHeight;
   return textBounds;
 }
