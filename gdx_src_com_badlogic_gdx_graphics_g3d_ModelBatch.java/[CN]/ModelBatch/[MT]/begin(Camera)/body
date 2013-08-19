@@ -1,3 +1,5 @@
 {
-  this.camera=cam;
+  if (camera != null)   throw new GdxRuntimeException("Call end() first.");
+  camera=cam;
+  if (ownContext)   context.begin();
 }

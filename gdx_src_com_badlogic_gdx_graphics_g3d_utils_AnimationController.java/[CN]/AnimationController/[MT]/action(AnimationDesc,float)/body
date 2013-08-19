@@ -8,4 +8,5 @@
     inAction=true;
     if (toQueue != null)     queue(toQueue,transitionTime);
   }
+  return anim;
 }
