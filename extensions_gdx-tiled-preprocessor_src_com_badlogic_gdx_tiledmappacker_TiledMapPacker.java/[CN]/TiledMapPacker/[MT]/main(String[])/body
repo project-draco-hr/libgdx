@@ -35,6 +35,12 @@ System.exit(0);
 }
 }
 TiledMapPacker packer=new TiledMapPacker(packerSettings);
+LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+config.forceExit=false;
+config.width=100;
+config.height=50;
+config.useGL20=true;
+config.title="TiledMapPacker";
 new LwjglApplication(new ApplicationListener(){
 @Override public void resume(){
 }
@@ -60,5 +66,5 @@ throw new RuntimeException("Error processing map: " + e.getMessage());
 Gdx.app.exit();
 }
 }
-,"TiledMapPacker",100,50,true);
+,config);
 }
