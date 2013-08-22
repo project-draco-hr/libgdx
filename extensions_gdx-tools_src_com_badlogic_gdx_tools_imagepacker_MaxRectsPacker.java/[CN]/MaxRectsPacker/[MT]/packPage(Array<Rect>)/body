@@ -1,6 +1,9 @@
 {
-  int edgePaddingX=settings.paddingX;
-  int edgePaddingY=settings.paddingY;
+  int edgePaddingX=0, edgePaddingY=0;
+  if (!settings.duplicatePadding) {
+    edgePaddingX=settings.paddingX;
+    edgePaddingY=settings.paddingY;
+  }
   int minWidth=Integer.MAX_VALUE;
   int minHeight=Integer.MAX_VALUE;
   for (int i=0, nn=inputRects.size; i < nn; i++) {
