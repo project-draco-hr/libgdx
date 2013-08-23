@@ -1,5 +1,3 @@
 {
-  int location=attributes.get(name,-1);
-  if (location == -1)   return -1;
- else   return location;
+  return attributes.get(name,-1);
 }
