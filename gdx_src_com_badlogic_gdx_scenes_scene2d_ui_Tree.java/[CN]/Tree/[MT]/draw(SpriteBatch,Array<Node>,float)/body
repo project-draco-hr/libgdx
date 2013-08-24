@@ -13,13 +13,13 @@
     if (node.icon != null) {
       float iconY=actor.getY() + Math.round((node.height - node.icon.getMinHeight()) / 2);
       batch.setColor(actor.getColor());
-      node.icon.draw(batch,x + node.actor.getX() - iconSpacing - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
+      node.icon.draw(batch,x + node.actor.getX() - iconSpacingRight - node.icon.getMinWidth(),y + iconY,node.icon.getMinWidth(),node.icon.getMinHeight());
       batch.setColor(Color.WHITE);
     }
     if (node.children.size == 0)     continue;
     Drawable expandIcon=node.expanded ? minus : plus;
     float iconY=actor.getY() + Math.round((node.height - expandIcon.getMinHeight()) / 2);
-    expandIcon.draw(batch,x + indent - iconSpacing,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());
+    expandIcon.draw(batch,x + indent - iconSpacingLeft,y + iconY,expandIcon.getMinWidth(),expandIcon.getMinHeight());
     if (node.expanded)     draw(batch,node.children,indent + indentSpacing);
   }
 }
