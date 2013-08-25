@@ -1,15 +1,7 @@
 {
   if (!running)   return;
-synchronized (runnables) {
-    executedRunnables.clear();
-    executedRunnables.addAll(runnables);
-    runnables.clear();
-  }
-  if (executedRunnables.size > 0) {
-    for (int i=0; i < executedRunnables.size; i++)     executedRunnables.get(i).run();
-    if (!running)     return;
-    graphics.requestRendering();
-  }
+  if (executeRunnables())   graphics.requestRendering();
+  if (!running)   return;
   input.update();
   long frameStartTime=System.nanoTime();
   int targetFPS=(graphics.isHidden() || graphics.isMinimized()) ? hiddenFPS : (graphics.isForeground() ? foregroundFPS : backgroundFPS);
