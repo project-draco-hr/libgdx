@@ -1,19 +1,6 @@
 {
   FloatArray verticesArray=this.verticesArray;
   float[] vertices=this.vertices=verticesArray.items;
-  if (!areVerticesClockwise()) {
-    for (int i=0, lastIndex=verticesArray.size - 2, n=verticesArray.size / 2; i < n; i++) {
-      int ii=lastIndex - i;
-      float temp=vertices[i];
-      vertices[i]=vertices[ii];
-      vertices[ii]=temp;
-      i++;
-      ii++;
-      temp=vertices[i];
-      vertices[i]=vertices[ii];
-      vertices[ii]=temp;
-    }
-  }
   IntArray vertexTypes=this.vertexTypes;
   vertexCount=verticesArray.size / 2;
   vertexTypes.ensureCapacity(vertexCount);

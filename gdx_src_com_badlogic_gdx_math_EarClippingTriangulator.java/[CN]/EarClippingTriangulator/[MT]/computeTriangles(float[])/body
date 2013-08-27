@@ -1,4 +1,4 @@
 {
-  verticesArray.addAll(polygon,0,polygon.length);
+  setVertices(polygon,0,polygon.length);
   return computeTriangles();
 }
