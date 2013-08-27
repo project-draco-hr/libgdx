@@ -1,13 +1,14 @@
 {
-  if (polygon.isEmpty()) {
+  if (polygon.size == 0) {
     return;
   }
   while (step > 0) {
-    polygon.add(0,polygon.remove(polygon.size() - 1));
+    polygon.insert(0,polygon.pop());
+    polygon.insert(0,polygon.pop());
     --step;
   }
   while (step < 0) {
-    polygon.add(polygon.remove(0));
+    polygon.add(polygon.removeIndex(0));
     ++step;
   }
   triangulate();

@@ -1,0 +1,43 @@
+{
+  FloatArray verticesArray=this.verticesArray;
+  float[] vertices=this.vertices=verticesArray.items;
+  if (!areVerticesClockwise()) {
+    for (int i=0, lastIndex=verticesArray.size - 2, n=verticesArray.size / 2; i < n; i++) {
+      int ii=lastIndex - i;
+      float temp=vertices[i];
+      vertices[i]=vertices[ii];
+      vertices[ii]=temp;
+      i++;
+      ii++;
+      temp=vertices[i];
+      vertices[i]=vertices[ii];
+      vertices[ii]=temp;
+    }
+  }
+  IntArray vertexTypes=this.vertexTypes;
+  vertexCount=verticesArray.size / 2;
+  vertexTypes.ensureCapacity(vertexCount);
+  for (int i=0, n=vertexCount; i < n; ++i)   vertexTypes.add(classifyVertex(i));
+  FloatArray triangles=this.triangles;
+  triangles.clear();
+  triangles.ensureCapacity(Math.max(0,vertexCount - 2) * 3 * 2);
+  while (vertexCount > 3) {
+    int earTipIndex=findEarTip();
+    cutEarTip(earTipIndex);
+    int previousIndex=previousIndex(earTipIndex);
+    int nextIndex=earTipIndex == vertexCount ? 0 : earTipIndex;
+    vertexTypes.set(previousIndex,classifyVertex(previousIndex));
+    vertexTypes.set(nextIndex,classifyVertex(nextIndex));
+  }
+  if (vertexCount == 3) {
+    triangles.add(vertices[0]);
+    triangles.add(vertices[1]);
+    triangles.add(vertices[2]);
+    triangles.add(vertices[3]);
+    triangles.add(vertices[4]);
+    triangles.add(vertices[5]);
+  }
+  verticesArray.clear();
+  vertexTypes.clear();
+  return triangles;
+}

@@ -1,6 +1,12 @@
 {
-  final Vector2 previousVertex=vertices.get(computePreviousIndex(index));
-  final Vector2 currentVertex=vertices.get(index);
-  final Vector2 nextVertex=vertices.get(computeNextIndex(index));
-  return computeSpannedAreaSign(previousVertex,currentVertex,nextVertex);
+  float[] vertices=this.vertices;
+  int previousIndex=previousIndex(index) * 2;
+  float previousX=vertices[previousIndex];
+  float previousY=vertices[previousIndex + 1];
+  float currentX=vertices[index * 2];
+  float currentY=vertices[index * 2 + 1];
+  int nextIndex=nextIndex(index) * 2;
+  float nextX=vertices[nextIndex];
+  float nextY=vertices[nextIndex + 1];
+  return computeSpannedAreaSign(previousX,previousY,currentX,currentY,nextX,nextY);
 }
