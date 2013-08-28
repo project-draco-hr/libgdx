@@ -1,0 +1,5 @@
+{
+  if (!isValid())   return false;
+  updateCorners();
+  return contains(crn[0]) || contains(crn[1]) || contains(crn[2])|| contains(crn[3])|| contains(crn[4])|| contains(crn[5])|| contains(crn[6])|| contains(crn[7]);
+}
