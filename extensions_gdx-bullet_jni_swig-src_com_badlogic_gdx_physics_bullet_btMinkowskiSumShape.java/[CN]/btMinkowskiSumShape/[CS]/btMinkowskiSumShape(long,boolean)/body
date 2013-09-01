@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btMinkowskiSumShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btMinkowskiSumShape",cPtr,cMemoryOwn);
+  construct();
 }

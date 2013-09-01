@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btDefaultSoftBodySolver_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btDefaultSoftBodySolver",cPtr,cMemoryOwn);
+  construct();
 }

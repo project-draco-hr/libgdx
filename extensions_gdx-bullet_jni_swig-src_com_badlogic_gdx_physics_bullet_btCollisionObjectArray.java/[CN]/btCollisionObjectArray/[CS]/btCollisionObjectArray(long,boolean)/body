@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btCollisionObjectArray",cPtr,cMemoryOwn);
+  construct();
 }

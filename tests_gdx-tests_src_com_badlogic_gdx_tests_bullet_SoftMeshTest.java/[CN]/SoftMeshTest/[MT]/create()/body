@@ -11,8 +11,8 @@
   softBody=new btSoftBody(worldInfo,meshPart.mesh.getVerticesBuffer(),meshPart.mesh.getVertexSize(),positionOffset,normalOffset,meshPart.mesh.getIndicesBuffer(),meshPart.indexOffset,meshPart.numVertices,indexMap,0);
   softBody.setMass(0,0);
   com.badlogic.gdx.physics.bullet.Material pm=softBody.appendMaterial();
-  pm.setM_kLST(0.2f);
-  pm.setM_flags(0);
+  pm.setKLST(0.2f);
+  pm.setFlags(0);
   softBody.generateBendingConstraints(2,pm);
   softBody.setConfig_piterations(7);
   softBody.setConfig_kDF(0.2f);

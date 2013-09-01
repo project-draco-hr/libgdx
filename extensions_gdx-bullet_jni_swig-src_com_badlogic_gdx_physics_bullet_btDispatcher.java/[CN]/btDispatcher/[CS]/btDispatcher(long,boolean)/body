@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btDispatcher",cPtr,cMemoryOwn);
+  construct();
 }

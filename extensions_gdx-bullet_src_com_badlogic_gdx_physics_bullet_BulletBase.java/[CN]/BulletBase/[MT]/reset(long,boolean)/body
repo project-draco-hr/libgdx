@@ -1,0 +1,6 @@
+{
+  if (!destroyed)   destroy();
+  swigCMemOwn=cMemoryOwn;
+  cPointer=cPtr;
+  construct();
+}

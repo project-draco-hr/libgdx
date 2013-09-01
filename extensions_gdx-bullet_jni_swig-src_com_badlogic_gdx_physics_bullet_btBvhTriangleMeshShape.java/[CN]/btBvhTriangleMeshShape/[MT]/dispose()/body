@@ -1,4 +1,5 @@
 {
-  if (meshInterface != null)   meshInterface.delete();
+  if (meshInterface != null)   meshInterface.release();
   meshInterface=null;
+  super.dispose();
 }

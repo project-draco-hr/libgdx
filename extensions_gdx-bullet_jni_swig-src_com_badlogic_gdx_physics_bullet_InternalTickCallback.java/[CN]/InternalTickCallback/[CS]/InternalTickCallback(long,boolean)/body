@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("InternalTickCallback",cPtr,cMemoryOwn);
+  construct();
 }

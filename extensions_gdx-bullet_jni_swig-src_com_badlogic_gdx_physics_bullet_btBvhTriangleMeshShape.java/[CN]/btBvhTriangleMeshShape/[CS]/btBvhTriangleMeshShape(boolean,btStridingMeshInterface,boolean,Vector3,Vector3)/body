@@ -1,4 +1,3 @@
 {
-  this(meshInterface,useQuantizedAabbCompression,bvhAabbMin,bvhAabbMax);
-  this.meshInterface=meshInterface;
+  this(gdxBulletJNI.new_btBvhTriangleMeshShape__SWIG_3(dummy,btStridingMeshInterface.getCPtr(meshInterface),meshInterface,useQuantizedAabbCompression,bvhAabbMin,bvhAabbMax),true);
 }

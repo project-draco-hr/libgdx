@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btIntIndexData",cPtr,cMemoryOwn);
+  construct();
 }

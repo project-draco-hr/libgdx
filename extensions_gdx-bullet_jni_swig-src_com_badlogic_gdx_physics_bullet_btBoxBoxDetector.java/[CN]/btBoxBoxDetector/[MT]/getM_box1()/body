@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btBoxBoxDetector_m_box1_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btBoxShape(cPtr,false);
-}

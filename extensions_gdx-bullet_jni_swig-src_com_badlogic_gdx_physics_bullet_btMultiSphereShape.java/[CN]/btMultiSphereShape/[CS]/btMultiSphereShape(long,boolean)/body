@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btMultiSphereShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btMultiSphereShape",cPtr,cMemoryOwn);
+  construct();
 }

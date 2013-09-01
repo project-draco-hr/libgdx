@@ -34,7 +34,7 @@
   MotionState groundMotionState=new MotionState(ground.transform);
   motionStates.add(groundMotionState);
   btRigidBody groundBody=new btRigidBody(groundInfo);
-  groundInfo.setMotionState(groundMotionState);
+  groundBody.setMotionState(groundMotionState);
   bodies.add(groundBody);
   collisionWorld.addRigidBody(groundBody);
   for (float x=-10f; x <= 10f; x+=2f) {
@@ -42,11 +42,11 @@
       for (float z=0f; z <= 0f; z+=2f) {
         ModelInstance sphere=new ModelInstance(sphereModel);
         instances.add(sphere);
-        sphere.transform.trn(x,y,z);
+        sphere.transform.trn(x + 0.1f * MathUtils.random(),y + 0.1f * MathUtils.random(),z + 0.1f * MathUtils.random());
         MotionState sphereMotionState=new MotionState(sphere.transform);
         motionStates.add(sphereMotionState);
         btRigidBody sphereBody=new btRigidBody(sphereInfo);
-        sphereInfo.setMotionState(sphereMotionState);
+        sphereBody.setMotionState(sphereMotionState);
         bodies.add(sphereBody);
         collisionWorld.addRigidBody(sphereBody);
       }

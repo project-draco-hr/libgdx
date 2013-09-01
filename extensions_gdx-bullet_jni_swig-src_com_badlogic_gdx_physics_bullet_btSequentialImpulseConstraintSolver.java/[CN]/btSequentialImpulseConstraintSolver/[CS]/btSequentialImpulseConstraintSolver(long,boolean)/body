@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btSequentialImpulseConstraintSolver_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btSequentialImpulseConstraintSolver",cPtr,cMemoryOwn);
+  construct();
 }

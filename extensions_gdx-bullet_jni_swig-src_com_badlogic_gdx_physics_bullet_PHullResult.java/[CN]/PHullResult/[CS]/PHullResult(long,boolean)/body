@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("PHullResult",cPtr,cMemoryOwn);
+  construct();
 }
