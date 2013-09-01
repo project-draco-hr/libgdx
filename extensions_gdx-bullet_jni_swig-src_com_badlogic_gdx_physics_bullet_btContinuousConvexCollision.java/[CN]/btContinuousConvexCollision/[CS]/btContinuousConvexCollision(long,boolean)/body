@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btContinuousConvexCollision_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btContinuousConvexCollision",cPtr,cMemoryOwn);
+  construct();
 }

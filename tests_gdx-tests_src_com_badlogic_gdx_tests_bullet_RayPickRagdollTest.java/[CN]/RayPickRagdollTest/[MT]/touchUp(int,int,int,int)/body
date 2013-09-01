@@ -3,7 +3,7 @@
   if (button == Buttons.LEFT) {
     if (pickConstraint != null) {
       ((btDynamicsWorld)world.collisionWorld).removeConstraint(pickConstraint);
-      pickConstraint.delete();
+      pickConstraint.dispose();
       pickConstraint=null;
       result=true;
     }

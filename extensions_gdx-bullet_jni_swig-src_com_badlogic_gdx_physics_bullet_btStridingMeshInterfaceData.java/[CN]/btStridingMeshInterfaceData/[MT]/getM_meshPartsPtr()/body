@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btStridingMeshInterfaceData_m_meshPartsPtr_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btMeshPartData(cPtr,false);
-}

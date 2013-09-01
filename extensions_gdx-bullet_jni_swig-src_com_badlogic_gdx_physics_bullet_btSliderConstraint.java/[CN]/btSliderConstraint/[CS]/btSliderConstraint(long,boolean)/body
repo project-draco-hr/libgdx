@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btSliderConstraint_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btSliderConstraint",cPtr,cMemoryOwn);
+  construct();
 }

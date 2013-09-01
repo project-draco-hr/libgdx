@@ -1,0 +1,5 @@
+{
+  Bullet.useRefCounting=useRefCounting;
+  Bullet.enableLogging=logging;
+  new SharedLibraryLoader().load("gdx-bullet");
+}

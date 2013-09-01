@@ -1,0 +1,5 @@
+{
+  if (meshPart.primitiveType != com.badlogic.gdx.graphics.GL10.GL_TRIANGLES)   throw new com.badlogic.gdx.utils.GdxRuntimeException("Mesh must be indexed and triangulated");
+  set(meshPart.mesh,meshPart.indexOffset,meshPart.numVertices);
+  this.meshPart=meshPart;
+}

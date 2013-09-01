@@ -1,0 +1,7 @@
+{
+  getShapeParts(nodes,shapePartArray,0,shapePartPool);
+  btCollisionShape result=obtainStaticShape(shapePartArray);
+  shapePartPool.freeAll(shapePartArray);
+  shapePartArray.clear();
+  return result;
+}

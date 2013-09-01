@@ -1,3 +1,4 @@
 {
-  gdxBulletJNI.btCompoundShape_removeChildShapeByIndex(swigCPtr,this,childShapeindex);
+  internalRemoveChildShapeByIndex(index);
+  children.removeIndex(index).release();
 }

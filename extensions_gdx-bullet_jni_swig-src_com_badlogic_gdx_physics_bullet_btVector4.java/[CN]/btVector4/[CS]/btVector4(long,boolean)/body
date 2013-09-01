@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btVector4_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btVector4",cPtr,cMemoryOwn);
+  construct();
 }

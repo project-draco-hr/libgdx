@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btDynamicsWorldFloatData",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btHeightfieldTerrainShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btHeightfieldTerrainShape",cPtr,cMemoryOwn);
+  construct();
 }

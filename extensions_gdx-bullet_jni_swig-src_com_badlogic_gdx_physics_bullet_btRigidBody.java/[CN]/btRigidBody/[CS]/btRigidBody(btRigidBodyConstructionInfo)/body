@@ -1,5 +1,5 @@
 {
   this(false,constructionInfo);
-  this.collisionShape=constructionInfo.getCollisionShape();
-  this.motionState=constructionInfo.getMotionState();
+  refCollisionShape(constructionInfo.getCollisionShape());
+  refMotionState(constructionInfo.getMotionState());
 }

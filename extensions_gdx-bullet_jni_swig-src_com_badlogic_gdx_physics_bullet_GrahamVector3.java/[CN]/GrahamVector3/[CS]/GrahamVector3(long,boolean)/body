@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.GrahamVector3_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("GrahamVector3",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btVertexBufferDescriptor",cPtr,cMemoryOwn);
+  construct();
 }

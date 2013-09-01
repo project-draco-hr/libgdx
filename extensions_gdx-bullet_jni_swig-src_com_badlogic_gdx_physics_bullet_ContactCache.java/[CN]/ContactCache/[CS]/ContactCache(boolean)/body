@@ -1,0 +1,4 @@
+{
+  this(gdxBulletJNI.new_ContactCache(dummy),true);
+  gdxBulletJNI.ContactCache_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

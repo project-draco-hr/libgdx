@@ -1,7 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
-  gdxBridge=new GdxCollisionObjectBridge();
-  internalSetGdxBridge(gdxBridge);
-  addInstance(this);
+  this("btCollisionObject",cPtr,cMemoryOwn);
+  construct();
 }

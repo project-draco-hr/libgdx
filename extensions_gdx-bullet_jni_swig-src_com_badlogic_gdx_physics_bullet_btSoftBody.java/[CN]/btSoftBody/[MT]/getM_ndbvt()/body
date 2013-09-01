@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBody_m_ndbvt_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btDbvt(cPtr,false);
-}

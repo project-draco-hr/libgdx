@@ -1,0 +1,9 @@
+{
+  btBvhTriangleMeshShape result=getInstance(meshParts);
+  if (result == null) {
+    result=new btBvhTriangleMeshShape(btTriangleIndexVertexArray.obtain(meshParts),true);
+    instances.add(result);
+  }
+  result.obtain();
+  return result;
+}

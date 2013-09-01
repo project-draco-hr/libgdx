@@ -1,5 +1,5 @@
 {
   final btCollisionObjectWrapper result=pool.obtain();
-  result.reuse(cPtr,own);
+  result.reset(cPtr,own);
   return result;
 }

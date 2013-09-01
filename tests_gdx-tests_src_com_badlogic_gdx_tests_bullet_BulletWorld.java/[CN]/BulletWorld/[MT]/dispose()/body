@@ -7,9 +7,9 @@
     }
   }
   super.dispose();
-  collisionWorld.delete();
-  if (solver != null)   solver.delete();
-  if (broadphase != null)   broadphase.delete();
-  if (dispatcher != null)   dispatcher.delete();
-  if (collisionConfiguration != null)   collisionConfiguration.delete();
+  collisionWorld.dispose();
+  if (solver != null)   solver.dispose();
+  if (broadphase != null)   broadphase.dispose();
+  if (dispatcher != null)   dispatcher.dispose();
+  if (collisionConfiguration != null)   collisionConfiguration.dispose();
 }
