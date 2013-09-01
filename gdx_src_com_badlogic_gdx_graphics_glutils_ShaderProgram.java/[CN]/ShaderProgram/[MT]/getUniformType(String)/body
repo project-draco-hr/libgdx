@@ -1,5 +1,3 @@
 {
-  int type=uniformTypes.get(name,-1);
-  if (type == -1)   return 0;
- else   return type;
+  return uniformTypes.get(name,0);
 }
