@@ -1,7 +1,11 @@
 {
   this.font=style.font;
   this.fontColor.set(style.fontColor);
+  if (style.disabledFontColor != null)   this.disabledFontColor=new Color(style.disabledFontColor);
   this.background=style.background;
-  this.scrollStyle=style.scrollStyle;
-  this.listStyle=style.listStyle;
+  this.backgroundOver=style.backgroundOver;
+  this.backgroundOpen=style.backgroundOpen;
+  this.backgroundDisabled=style.backgroundDisabled;
+  this.scrollStyle=new ScrollPaneStyle(style.scrollStyle);
+  this.listStyle=new ListStyle(style.listStyle);
 }
