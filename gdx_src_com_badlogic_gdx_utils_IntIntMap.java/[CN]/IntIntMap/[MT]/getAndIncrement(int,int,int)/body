@@ -1,4 +1,12 @@
 {
+  if (key == 0) {
+    zeroValue=(hasZeroValue ? zeroValue : defaultValue) + increment;
+    if (!hasZeroValue) {
+      hasZeroValue=true;
+      size++;
+    }
+    return zeroValue;
+  }
   int index=key & mask;
   if (key != keyTable[index]) {
     index=hash2(key);
