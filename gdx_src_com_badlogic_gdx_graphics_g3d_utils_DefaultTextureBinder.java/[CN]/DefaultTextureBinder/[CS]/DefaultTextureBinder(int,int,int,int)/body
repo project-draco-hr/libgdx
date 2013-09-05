@@ -5,8 +5,7 @@
   this.method=method;
   this.offset=offset;
   this.count=count;
-  this.textures=new TextureDescriptor[count];
-  for (int i=0; i < count; i++)   this.textures[i]=new TextureDescriptor();
+  this.textures=new Texture[count];
   this.reuseWeight=reuseWeight;
   this.weights=(method == WEIGHTED) ? new int[count] : null;
 }
