@@ -3,6 +3,8 @@
   float color=NumberUtils.intToFloatColor(intBits);
   if (color == this.color)   return;
   this.color=color;
-  float[] vertices=this.vertices;
-  for (int i=2, n=idx; i < n; i+=5)   vertices[i]=color;
+  for (int j=0; j < vertexData.length; j++) {
+    float[] vertices=vertexData[j];
+    for (int i=2, n=idx[j]; i < n; i+=5)     vertices[i]=color;
+  }
 }

@@ -1,3 +1,7 @@
 {
-  spriteBatch.draw(font.getRegion().getTexture(),vertices,0,idx);
+  TextureRegion[] regions=font.getRegions();
+  for (int j=0; j < vertexData.length; j++) {
+    float[] vertices=vertexData[j];
+    spriteBatch.draw(regions[j].getTexture(),vertices,0,idx[j]);
+  }
 }
