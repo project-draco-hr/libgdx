@@ -1,6 +1,4 @@
 {
-  long seed=MathUtils.random.nextLong();
-  System.out.println(seed);
   MathUtils.random.setSeed(seed);
   int pointCount=100;
   points.clear();
@@ -17,5 +15,7 @@
  while (points.contains(value));
     points.add(value);
   }
+  points.add(Gdx.input.getX());
+  points.add(Gdx.graphics.getHeight() - Gdx.input.getY());
   triangles=trianglulator.computeTriangles(points,false);
 }
