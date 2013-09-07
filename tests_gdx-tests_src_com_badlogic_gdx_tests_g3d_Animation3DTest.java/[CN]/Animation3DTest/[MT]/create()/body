@@ -1,5 +1,7 @@
 {
   super.create();
+  lights=new Lights(0.4f,0.4f,0.4f).add((shadowLight=new DirectionalShadowLight(1024,1024,30f,30f,1f,100f)).set(0.8f,0.8f,0.8f,-1f,-.8f,-.2f));
+  lights.shadowMap=shadowLight;
   inputController.rotateLeftKey=inputController.rotateRightKey=inputController.forwardKey=inputController.backwardKey=0;
   cam.position.set(25,25,25);
   cam.lookAt(0,0,0);
@@ -21,4 +23,5 @@
     }
   }
   floorModel=builder.end();
+  shadowBatch=new ModelBatch(new DepthShaderProvider());
 }
