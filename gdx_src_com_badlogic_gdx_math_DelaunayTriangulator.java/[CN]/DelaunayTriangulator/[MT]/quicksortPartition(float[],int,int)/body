@@ -1,0 +1,24 @@
+{
+  float value=values[lower];
+  int up=upper;
+  int down=lower;
+  float temp;
+  while (down < up) {
+    while (values[down] <= value && down < up)     down=down + 2;
+    while (values[up] > value)     up=up - 2;
+    if (down < up) {
+      temp=values[down];
+      values[down]=values[up];
+      values[up]=temp;
+      temp=values[down + 1];
+      values[down + 1]=values[up + 1];
+      values[up + 1]=temp;
+    }
+  }
+  values[lower]=values[up];
+  values[up]=value;
+  temp=values[lower + 1];
+  values[lower + 1]=values[up + 1];
+  values[up + 1]=temp;
+  return up;
+}

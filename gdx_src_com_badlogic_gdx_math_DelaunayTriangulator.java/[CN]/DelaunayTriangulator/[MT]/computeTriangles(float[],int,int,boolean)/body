@@ -1,0 +1,110 @@
+{
+  int end=offset + count;
+  if (!sorted)   quicksortPairs(points,offset,end - 1);
+  IntArray triangles=this.triangles;
+  triangles.clear();
+  triangles.ensureCapacity(count);
+  IntArray edges=this.edges;
+  BooleanArray complete=this.complete;
+  complete.ensureCapacity(count);
+  float xmin=points[0], ymin=points[1];
+  float xmax=xmin, ymax=ymin;
+  for (int i=offset + 2; i < end; i++) {
+    if (points[i] < xmin)     xmin=points[i];
+    if (points[i] > xmax)     xmax=points[i];
+    i++;
+    if (points[i] < ymin)     ymin=points[i];
+    if (points[i] > ymax)     ymax=points[i];
+  }
+  float dx=xmax - xmin, dy=ymax - ymin;
+  float dmax=dx > dy ? dx : dy;
+  float xmid=(xmax + xmin) / 2f, ymid=(ymax + ymin) / 2f;
+  float[] superTriangle=new float[6];
+  superTriangle[0]=xmid - 2f * dmax;
+  superTriangle[1]=ymid - dmax;
+  superTriangle[2]=xmid;
+  superTriangle[3]=ymid + 2f * dmax;
+  superTriangle[4]=xmid + 2f * dmax;
+  superTriangle[5]=ymid - dmax;
+  triangles.add(end);
+  triangles.add(end + 2);
+  triangles.add(end + 4);
+  complete.add(false);
+  for (int pointIndex=offset; pointIndex < end; pointIndex+=2) {
+    float x=points[pointIndex], y=points[pointIndex + 1];
+    for (int triangleIndex=0; triangleIndex < triangles.size; triangleIndex+=3) {
+      int completeIndex=triangleIndex / 3;
+      if (complete.get(completeIndex))       continue;
+      int p1=triangles.get(triangleIndex);
+      int p2=triangles.get(triangleIndex + 1);
+      int p3=triangles.get(triangleIndex + 2);
+      float x1, y1, x2, y2, x3, y3;
+      if (p1 >= end) {
+        x1=superTriangle[p1 - end];
+        y1=superTriangle[p1 - end + 1];
+      }
+ else {
+        x1=points[p1];
+        y1=points[p1 + 1];
+      }
+      if (p2 >= end) {
+        x2=superTriangle[p2 - end];
+        y2=superTriangle[p2 - end + 1];
+      }
+ else {
+        x2=points[p2];
+        y2=points[p2 + 1];
+      }
+      if (p3 >= end) {
+        x3=superTriangle[p3 - end];
+        y3=superTriangle[p3 - end + 1];
+      }
+ else {
+        x3=points[p3];
+        y3=points[p3 + 1];
+      }
+      float result=circumCircle(x,y,x1,y1,x2,y2,x3,y3);
+      if (result == -1) {
+        edges.add(p1);
+        edges.add(p2);
+        edges.add(p2);
+        edges.add(p3);
+        edges.add(p3);
+        edges.add(p1);
+        triangles.removeIndex(triangleIndex + 2);
+        triangles.removeIndex(triangleIndex + 1);
+        triangles.removeIndex(triangleIndex);
+        complete.removeIndex(completeIndex);
+        triangleIndex-=3;
+      }
+ else       if (result < x)       complete.set(completeIndex,true);
+    }
+    for (int i=0, n=edges.size; i < n; i+=2) {
+      int p1=edges.get(i);
+      if (p1 == -1)       continue;
+      int p2=edges.get(i + 1);
+      boolean skip=false;
+      for (int ii=i + 2; ii < n; ii+=2) {
+        if (p1 == edges.get(ii + 1) && p2 == edges.get(ii)) {
+          skip=true;
+          edges.set(ii,-1);
+        }
+      }
+      if (skip)       continue;
+      triangles.add(p1);
+      triangles.add(edges.get(i + 1));
+      triangles.add(pointIndex);
+      complete.add(false);
+    }
+    edges.clear();
+  }
+  complete.clear();
+  for (int i=triangles.size - 1; i >= 0; i-=3) {
+    if (triangles.get(i) >= end || triangles.get(i - 1) >= end || triangles.get(i - 2) >= end) {
+      triangles.removeIndex(i);
+      triangles.removeIndex(i - 1);
+      triangles.removeIndex(i - 2);
+    }
+  }
+  return triangles;
+}

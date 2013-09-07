@@ -1,0 +1,21 @@
+{
+  long seed=MathUtils.random.nextLong();
+  System.out.println(seed);
+  MathUtils.random.setSeed(seed);
+  int pointCount=100;
+  points.clear();
+  for (int i=0; i < pointCount; i++) {
+    float value;
+    do {
+      value=MathUtils.random(10,400);
+    }
+ while (points.contains(value));
+    points.add(value);
+    do {
+      value=MathUtils.random(10,400);
+    }
+ while (points.contains(value));
+    points.add(value);
+  }
+  triangles=trianglulator.computeTriangles(points,false);
+}
