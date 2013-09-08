@@ -1,5 +1,0 @@
-{
-  if (node.getType() != type)   throw new GdxRuntimeException("graph type " + type + " != node type "+ node.getType());
-  if (nodeTypes.get(node.getName()) != null)   throw new GdxRuntimeException("Node type with name '" + node.getName() + "' already in graph");
-  nodeTypes.put(node.getName(),node);
-}

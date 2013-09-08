@@ -1,8 +1,0 @@
-{
-  Array<ShaderConnection> connections=connectionMap.get(node);
-  if (connections == null) {
-    connections=new Array<ShaderConnection>();
-    connectionMap.put(node,connections);
-  }
-  connections.add(connection);
-}
