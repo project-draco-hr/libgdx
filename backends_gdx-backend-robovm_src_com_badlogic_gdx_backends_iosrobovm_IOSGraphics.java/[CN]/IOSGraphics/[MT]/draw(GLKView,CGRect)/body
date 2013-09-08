@@ -40,6 +40,6 @@ synchronized (listeners) {
     frames=0;
   }
   makeCurrent();
-  ((IOSInput)Gdx.input).processEvents();
+  input.processEvents();
   app.listener.render();
 }
