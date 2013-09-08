@@ -1,6 +1,0 @@
-{
-  if (define == null)   throw new GdxRuntimeException("define must not be null");
-  if (define.length() == 0)   throw new GdxRuntimeException("define must not be zero");
-  defines.add(new ShaderDefine(define,value));
-  return this;
-}
