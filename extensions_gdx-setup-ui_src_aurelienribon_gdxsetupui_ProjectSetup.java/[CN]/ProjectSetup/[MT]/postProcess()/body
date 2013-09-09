@@ -36,5 +36,10 @@
     move(src,"my-gdx-game-ios.sln",cfg.projectName + cfg.suffixIos + ".sln");
     templateDir(src);
     FileUtils.moveDirectory(src,dst);
+    src=new File(tmpDst,"prj-robovm");
+    dst=new File(tmpDst,cfg.projectName + cfg.suffixRobovm);
+    move(src,"src/RobovmLauncher.java","src/" + cfg.packageName.replace('.','/') + "/RobovmLauncher.java");
+    templateDir(src);
+    FileUtils.moveDirectory(src,dst);
   }
 }
