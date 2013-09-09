@@ -1,4 +1,8 @@
 {
+  IntArray triangles=this.triangles;
+  triangles.clear();
+  if (count < 6)   return triangles;
+  triangles.ensureCapacity(count);
   int end=offset + count;
   if (!sorted)   sort(points,offset,count);
   float xmin=points[0], ymin=points[1];
@@ -27,9 +31,6 @@
   BooleanArray complete=this.complete;
   complete.clear();
   complete.ensureCapacity(count);
-  IntArray triangles=this.triangles;
-  triangles.clear();
-  triangles.ensureCapacity(count);
   triangles.add(end);
   triangles.add(end + 2);
   triangles.add(end + 4);
@@ -120,10 +121,7 @@ triangles.removeIndex(i - 2);
 }
 if (!sorted) {
 int[] originalIndicesArray=originalIndices.items;
-for (int i=0, n=triangles.size; i < n; i++) {
-System.out.println(trianglesArray[i] / 2 + " -> " + originalIndicesArray[trianglesArray[i] / 2]);
-trianglesArray[i]=originalIndicesArray[trianglesArray[i] / 2] * 2;
-}
+for (int i=0, n=triangles.size; i < n; i++) trianglesArray[i]=originalIndicesArray[trianglesArray[i] / 2] * 2;
 }
 return triangles;
 }
