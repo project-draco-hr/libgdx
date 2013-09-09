@@ -1,7 +1,8 @@
 {
   int end=offset + count;
-  if (!sorted)   quicksortPairs(points,offset,end - 1);
+  if (!sorted)   sort(points,offset,count);
   FloatArray hull=this.hull;
+  hull.clear();
   for (int i=offset; i < end; i+=2) {
     float x=points[i];
     float y=points[i + 1];
