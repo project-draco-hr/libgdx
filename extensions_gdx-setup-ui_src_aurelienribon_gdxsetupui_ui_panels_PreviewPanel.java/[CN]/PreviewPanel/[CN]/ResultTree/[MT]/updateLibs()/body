@@ -4,11 +4,14 @@
   DefaultMutableTreeNode androidLibsNode=nodes.get("#DIR#prj-android/libs");
   DefaultMutableTreeNode htmlLibsNode=nodes.get("#DIR#prj-html/war/WEB-INF/lib");
   DefaultMutableTreeNode iosLibsNode=nodes.get("#DIR#prj-ios/libs");
+  DefaultMutableTreeNode robovmLibsNode=nodes.get("#DIR#prj-robovm/libs");
   DefaultMutableTreeNode dataNode=nodes.get("#DIR#prj-android/assets");
   commonLibsNode.removeAllChildren();
   desktopLibsNode.removeAllChildren();
   androidLibsNode.removeAllChildren();
   htmlLibsNode.removeAllChildren();
+  iosLibsNode.removeAllChildren();
+  robovmLibsNode.removeAllChildren();
   dataNode.removeAllChildren();
   for (  String libraryName : Ctx.cfgSetup.libraries) {
     LibraryDef def=Ctx.libs.getDef(libraryName);
@@ -17,6 +20,7 @@
     for (    String path : def.libsAndroid)     pathToNodes(path,androidLibsNode);
     for (    String path : def.libsHtml)     pathToNodes(path,htmlLibsNode);
     for (    String path : def.libsIos)     pathToNodes(path,iosLibsNode);
+    for (    String path : def.libsRobovm)     pathToNodes(path,robovmLibsNode);
     for (    String path : def.data)     pathToNodes(path,dataNode);
   }
 }

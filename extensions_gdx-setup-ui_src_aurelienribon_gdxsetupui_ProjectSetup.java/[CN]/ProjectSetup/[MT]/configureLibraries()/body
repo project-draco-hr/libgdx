@@ -3,6 +3,7 @@
   List<String> entriesDesktop=new ArrayList<String>();
   List<String> entriesAndroid=new ArrayList<String>();
   List<String> entriesHtml=new ArrayList<String>();
+  List<String> entriesRobovm=new ArrayList<String>();
   List<String> gwtInherits=new ArrayList<String>();
   for (  String library : cfg.libraries) {
     LibraryDef def=libs.getDef(library);
@@ -30,6 +31,11 @@
       entriesHtml.add(buildClasspathEntry(file,source,"war/WEB-INF/lib/",false));
       if (source != null)       entriesHtml.add(buildClasspathEntry(source,null,"war/WEB-INF/lib/",false));
     }
+    for (    String file : def.libsRobovm) {
+      if (!isLibJar(file))       continue;
+      String source=getSource(def.libsAndroid,file);
+      entriesRobovm.add(buildClasspathEntry(file,source,"libs/",false));
+    }
     if (def.gwtModuleName != null) {
       gwtInherits.add("<inherits name='" + def.gwtModuleName + "' />");
     }
@@ -38,6 +44,7 @@
   templateManager.define("CLASSPATHENTRIES_DESKTOP",flatten(entriesDesktop,"\t","\n").trim());
   templateManager.define("CLASSPATHENTRIES_ANDROID",flatten(entriesAndroid,"\t","\n").trim());
   templateManager.define("CLASSPATHENTRIES_HTML",flatten(entriesHtml,"\t","\n").trim());
+  templateManager.define("CLASSPATHENTRIES_ROBOVM",flatten(entriesRobovm,"\t","\n").trim());
   templateManager.define("GWT_INHERITS",flatten(gwtInherits,"\t","\n").trim());
   templateManager.processOver(new File(tmpDst,"prj-common/.classpath"));
   templateManager.processOver(new File(tmpDst,"prj-desktop/.classpath"));
