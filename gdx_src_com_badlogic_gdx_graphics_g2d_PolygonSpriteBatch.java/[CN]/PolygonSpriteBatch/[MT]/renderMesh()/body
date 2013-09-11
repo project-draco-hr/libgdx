@@ -2,8 +2,8 @@
   if (vertexIndex == 0)   return;
   renderCalls++;
   totalRenderCalls++;
-  int verticesInBatch=triangleIndex;
-  if (verticesInBatch > maxVerticesInBatch)   maxVerticesInBatch=verticesInBatch;
+  int trianglesInBatch=triangleIndex;
+  if (trianglesInBatch > maxTrianglesInBatch)   maxTrianglesInBatch=trianglesInBatch;
   lastTexture.bind();
   Mesh mesh=this.mesh;
   mesh.setVertices(vertices,0,vertexIndex);
@@ -15,8 +15,8 @@
     Gdx.gl.glEnable(GL20.GL_BLEND);
     if (blendSrcFunc != -1)     Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
   }
-  if (Gdx.graphics.isGL20Available())   mesh.render(customShader != null ? customShader : shader,GL10.GL_TRIANGLES,0,verticesInBatch);
- else   mesh.render(GL10.GL_TRIANGLES,0,verticesInBatch);
+  if (Gdx.graphics.isGL20Available())   mesh.render(customShader != null ? customShader : shader,GL10.GL_TRIANGLES,0,trianglesInBatch);
+ else   mesh.render(GL10.GL_TRIANGLES,0,trianglesInBatch);
   vertexIndex=0;
   triangleIndex=0;
   bufferIndex++;
