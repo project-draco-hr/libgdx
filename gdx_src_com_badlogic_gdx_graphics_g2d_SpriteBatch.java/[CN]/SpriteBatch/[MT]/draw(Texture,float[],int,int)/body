@@ -6,7 +6,7 @@
  else {
     remainingVertices-=idx;
     if (remainingVertices == 0) {
-      renderMesh();
+      flush();
       remainingVertices=verticesLength;
     }
   }
@@ -16,7 +16,7 @@
   count-=copyCount;
   while (count > 0) {
     offset+=copyCount;
-    renderMesh();
+    flush();
     copyCount=Math.min(verticesLength,count);
     System.arraycopy(spriteVertices,offset,vertices,0,copyCount);
     idx+=copyCount;

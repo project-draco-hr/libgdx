@@ -2,7 +2,7 @@
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
   float[] vertices=this.vertices;
   if (texture != lastTexture)   switchTexture(texture);
- else   if (idx == vertices.length)   renderMesh();
+ else   if (idx == vertices.length)   flush();
   float u=srcX * invTexWidth;
   float v=(srcY + srcHeight) * invTexHeight;
   float u2=(srcX + srcWidth) * invTexWidth;
@@ -19,6 +19,7 @@
     v=v2;
     v2=tmp;
   }
+  float color=this.color;
   int idx=this.idx;
   vertices[idx++]=x;
   vertices[idx++]=y;

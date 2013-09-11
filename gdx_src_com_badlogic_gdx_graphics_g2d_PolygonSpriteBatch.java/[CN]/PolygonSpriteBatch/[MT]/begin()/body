@@ -1,5 +1,5 @@
 {
-  if (drawing)   throw new IllegalStateException("you have to call PolygonSpriteBatch.end() first");
+  if (drawing)   throw new IllegalStateException("PolygonSpriteBatch.end must be called before begin.");
   renderCalls=0;
   Gdx.gl.glDepthMask(false);
   if (Gdx.graphics.isGL20Available()) {

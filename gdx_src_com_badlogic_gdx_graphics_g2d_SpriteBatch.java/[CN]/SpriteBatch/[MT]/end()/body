@@ -1,6 +1,6 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before end.");
-  if (idx > 0)   renderMesh();
+  if (idx > 0)   flush();
   lastTexture=null;
   drawing=false;
   GLCommon gl=Gdx.gl;

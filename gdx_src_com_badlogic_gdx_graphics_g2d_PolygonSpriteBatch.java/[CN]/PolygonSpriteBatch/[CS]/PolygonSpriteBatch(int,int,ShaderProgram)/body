@@ -1,15 +1,16 @@
 {
+  if (size > 10920)   throw new IllegalArgumentException("Can't have more than 10920 triangles per batch: " + size);
   this.buffers=new Mesh[buffers];
   for (int i=0; i < buffers; i++) {
-    this.buffers[i]=new Mesh(VertexDataType.VertexArray,false,size * 4,size * 3,new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.ColorPacked,4,ShaderProgram.COLOR_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
+    this.buffers[i]=new Mesh(VertexDataType.VertexArray,false,size,size * 3,new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.ColorPacked,4,ShaderProgram.COLOR_ATTRIBUTE),new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
   }
-  projectionMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  vertices=new float[size * Sprite.SPRITE_SIZE];
-  triangles=new short[size * 3];
   mesh=this.buffers[0];
+  vertices=new float[size * VERTEX_SIZE];
+  triangles=new short[size * 3];
   if (Gdx.graphics.isGL20Available() && defaultShader == null) {
-    shader=createDefaultShader();
+    shader=SpriteBatch.createDefaultShader();
     ownsShader=true;
   }
  else   shader=defaultShader;
+  projectionMatrix.setToOrtho2D(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 }

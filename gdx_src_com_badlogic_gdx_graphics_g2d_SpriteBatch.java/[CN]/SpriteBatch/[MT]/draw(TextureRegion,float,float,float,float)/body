@@ -5,13 +5,14 @@
   if (texture != lastTexture) {
     switchTexture(texture);
   }
- else   if (idx == vertices.length)   renderMesh();
+ else   if (idx == vertices.length)   flush();
   final float fx2=x + width;
   final float fy2=y + height;
   final float u=region.u;
   final float v=region.v2;
   final float u2=region.u2;
   final float v2=region.v;
+  float color=this.color;
   int idx=this.idx;
   vertices[idx++]=x;
   vertices[idx++]=y;
