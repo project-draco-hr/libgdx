@@ -1,5 +1,6 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
+  float[] vertices=this.vertices;
   Texture texture=region.texture;
   if (texture != lastTexture) {
     switchTexture(texture);
@@ -84,6 +85,7 @@
     u4=region.u;
     v4=region.v2;
   }
+  int idx=this.idx;
   vertices[idx++]=x1;
   vertices[idx++]=y1;
   vertices[idx++]=color;
@@ -104,4 +106,5 @@
   vertices[idx++]=color;
   vertices[idx++]=u4;
   vertices[idx++]=v4;
+  this.idx=idx;
 }

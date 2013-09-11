@@ -2,7 +2,6 @@
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before end.");
   if (idx > 0)   renderMesh();
   lastTexture=null;
-  idx=0;
   drawing=false;
   GLCommon gl=Gdx.gl;
   gl.glDepthMask(true);
