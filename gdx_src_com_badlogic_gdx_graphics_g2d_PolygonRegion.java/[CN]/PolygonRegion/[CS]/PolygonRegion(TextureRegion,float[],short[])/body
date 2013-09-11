@@ -1,0 +1,13 @@
+{
+  this.region=region;
+  this.vertices=vertices;
+  this.triangles=triangles;
+  textureCoords=new float[vertices.length];
+  float uvWidth=region.u2 - region.u;
+  float uvHeight=region.v2 - region.v;
+  for (int i=0, n=vertices.length; i < n; i++) {
+    textureCoords[i]=region.getU() + uvWidth * (vertices[i] / region.getRegionWidth());
+    i++;
+    textureCoords[i]=region.getV() + uvHeight * (1 - (vertices[i] / region.getRegionHeight()));
+  }
+}

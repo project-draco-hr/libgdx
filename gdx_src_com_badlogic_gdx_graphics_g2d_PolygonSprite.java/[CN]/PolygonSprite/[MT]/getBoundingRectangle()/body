@@ -4,7 +4,7 @@
   float miny=vertices[1];
   float maxx=vertices[0];
   float maxy=vertices[1];
-  for (int i=0; i < vertices.length; i+=5) {
+  for (int i=5; i < vertices.length; i+=5) {
     minx=minx > vertices[i] ? vertices[i] : minx;
     maxx=maxx < vertices[i] ? vertices[i] : maxx;
     miny=miny > vertices[i + 1] ? vertices[i + 1] : miny;
