@@ -1,4 +1,3 @@
 {
-  if (type == FileType.Internal)   return internal(fileName);
   return new IOSFileHandle(fileName,type);
 }
