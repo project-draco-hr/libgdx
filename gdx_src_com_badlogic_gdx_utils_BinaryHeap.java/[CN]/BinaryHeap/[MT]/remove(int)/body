@@ -3,6 +3,6 @@
   Node removed=nodes[index];
   nodes[index]=nodes[--size];
   nodes[size]=null;
-  if (size > 0)   down(index);
+  if (size > 0 && index < size)   down(index);
   return (T)removed;
 }
