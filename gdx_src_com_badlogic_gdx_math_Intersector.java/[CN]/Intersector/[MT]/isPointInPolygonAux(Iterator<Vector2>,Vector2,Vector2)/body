@@ -1,0 +1,14 @@
+{
+  System.out.print("isPointInPolygonAux(" + point + ") ");
+  boolean oddNodes=false;
+  for (; polygon.hasNext(); ) {
+    Vector2 vertice=polygon.next();
+    if (vertice.y < point.y && lastVertice.y >= point.y || lastVertice.y < point.y && vertice.y >= point.y) {
+      if (vertice.x + (point.y - vertice.y) / (lastVertice.y - vertice.y) * (lastVertice.x - vertice.x) < point.x) {
+        oddNodes=!oddNodes;
+      }
+    }
+    lastVertice=vertice;
+  }
+  return oddNodes;
+}
