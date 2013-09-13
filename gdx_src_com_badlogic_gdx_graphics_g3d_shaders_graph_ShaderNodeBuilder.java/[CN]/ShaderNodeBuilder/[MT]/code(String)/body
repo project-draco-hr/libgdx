@@ -1,6 +1,0 @@
-{
-  if (code == null)   throw new GdxRuntimeException("code must not be null");
-  if (code.length() == 0)   throw new GdxRuntimeException("code must not be empty string");
-  this.code=code;
-  return this;
-}

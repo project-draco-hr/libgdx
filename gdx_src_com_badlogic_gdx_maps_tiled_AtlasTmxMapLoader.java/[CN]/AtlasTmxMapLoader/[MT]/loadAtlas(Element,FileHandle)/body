@@ -1,6 +1,5 @@
 {
   Element e=root.getChildByName("properties");
-  Array<FileHandle> atlases=new Array<FileHandle>();
   if (e != null) {
     for (    Element property : e.getChildrenByName("property")) {
       String name=property.getAttribute("name",null);

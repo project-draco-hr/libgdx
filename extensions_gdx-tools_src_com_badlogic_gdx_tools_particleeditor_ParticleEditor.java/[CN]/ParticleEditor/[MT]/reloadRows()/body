@@ -4,6 +4,7 @@
       editRowsPanel.removeAll();
       addEditorRow(new NumericPanel(pixelsPerMeter,"Pixels per meter",""));
       addEditorRow(new NumericPanel(zoomLevel,"Zoom level",""));
+      addEditorRow(new NumericPanel(deltaMultiplier,"Delta multiplier",""));
       rowsPanel.removeAll();
       ParticleEmitter emitter=getEmitter();
       addRow(new ImagePanel(ParticleEditor.this,"Image",""));

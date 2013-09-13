@@ -1,6 +1,7 @@
 {
   texture=new Texture(Gdx.files.internal("data/tree.png"));
-  region=new PolygonRegion(new TextureRegion(texture),Gdx.files.internal("data/tree.psh"));
+  PolygonRegionLoader loader=new PolygonRegionLoader();
+  region=loader.load(new TextureRegion(texture),Gdx.files.internal("data/tree.psh"));
   renderer=new ShapeRenderer();
   camera=new OrthographicCamera(480,320);
   camera.position.x=240;
