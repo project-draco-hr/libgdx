@@ -1,0 +1,12 @@
+{
+  bind();
+  unsafeSetFilter(minFilter,magFilter,true);
+  unsafeSetWrap(uWrap,vWrap,true);
+  load(CubemapSide.PositiveX,positiveX);
+  load(CubemapSide.NegativeX,negativeX);
+  load(CubemapSide.PositiveY,positiveY);
+  load(CubemapSide.NegativeY,negativeY);
+  load(CubemapSide.PositiveZ,positiveZ);
+  load(CubemapSide.NegativeZ,negativeZ);
+  Gdx.gl.glBindTexture(glTarget,0);
+}

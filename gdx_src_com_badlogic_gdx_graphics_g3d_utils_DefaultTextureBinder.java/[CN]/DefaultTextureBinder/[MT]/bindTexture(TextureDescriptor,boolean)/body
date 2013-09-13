@@ -1,6 +1,6 @@
 {
   final int idx, result;
-  final Texture texture=textureDesc.texture;
+  final GLTexture texture=textureDesc.texture;
   reused=false;
 switch (method) {
 case ROUNDROBIN:
