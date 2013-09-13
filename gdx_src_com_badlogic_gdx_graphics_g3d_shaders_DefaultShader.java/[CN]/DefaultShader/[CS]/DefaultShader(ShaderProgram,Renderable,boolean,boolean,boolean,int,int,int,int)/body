@@ -1,0 +1,35 @@
+{
+  this.program=shaderProgram;
+  this.lighting=lighting;
+  this.shadowMap=shadowMap;
+  this.fog=fog;
+  this.renderable=renderable;
+  materialMask=renderable.material.getMask() | optionalAttributes;
+  vertexMask=renderable.mesh.getVertexAttributes().getMask();
+  this.directionalLights=new DirectionalLight[lighting && numDirectional > 0 ? numDirectional : 0];
+  for (int i=0; i < directionalLights.length; i++)   directionalLights[i]=new DirectionalLight();
+  this.pointLights=new PointLight[lighting && numPoint > 0 ? numPoint : 0];
+  for (int i=0; i < pointLights.length; i++)   pointLights[i]=new PointLight();
+  if (!ignoreUnimplemented && (implementedFlags & materialMask) != materialMask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + materialMask + ")");
+  u_projTrans=register(Inputs.projTrans,Setters.projTrans);
+  u_viewTrans=register(Inputs.viewTrans,Setters.viewTrans);
+  u_projViewTrans=register(Inputs.projViewTrans,Setters.projViewTrans);
+  u_cameraPosition=register(Inputs.cameraPosition,Setters.cameraPosition);
+  u_cameraDirection=register(Inputs.cameraDirection,Setters.cameraDirection);
+  u_cameraUp=register(Inputs.cameraUp,Setters.cameraUp);
+  u_time=register(new Uniform("u_time"));
+  u_worldTrans=register(Inputs.worldTrans,Setters.worldTrans);
+  u_viewWorldTrans=register(Inputs.worldViewTrans,Setters.worldViewTrans);
+  u_projViewWorldTrans=register(Inputs.projViewWorldTrans,Setters.projViewWorldTrans);
+  u_normalMatrix=register(Inputs.normalMatrix,Setters.normalMatrix);
+  u_bones=numBones > 0 ? register(Inputs.bones,new Setters.Bones(numBones)) : -1;
+  u_shininess=register(Inputs.shininess,Setters.shininess);
+  u_opacity=register(Inputs.opacity);
+  u_diffuseColor=register(Inputs.diffuseColor,Setters.diffuseColor);
+  u_diffuseTexture=register(Inputs.diffuseTexture,Setters.diffuseTexture);
+  u_specularColor=register(Inputs.specularColor,Setters.specularColor);
+  u_specularTexture=register(Inputs.specularTexture,Setters.specularTexture);
+  u_normalTexture=register(Inputs.normalTexture,Setters.normalTexture);
+  u_alphaTest=register(Inputs.alphaTest);
+  u_ambientCubemap=lighting ? register(Inputs.ambientCube,new Setters.ACubemap(numDirectional,numPoint)) : -1;
+}
