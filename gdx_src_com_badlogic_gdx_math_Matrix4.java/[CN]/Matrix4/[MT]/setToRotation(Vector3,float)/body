@@ -1,7 +1,7 @@
 {
-  if (angle == 0) {
+  if (degrees == 0) {
     idt();
     return this;
   }
-  return set(quat.set(axis,angle));
+  return set(quat.set(axis,degrees));
 }
