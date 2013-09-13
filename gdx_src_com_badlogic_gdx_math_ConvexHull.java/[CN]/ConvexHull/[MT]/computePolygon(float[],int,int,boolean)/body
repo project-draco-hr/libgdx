@@ -1,6 +1,12 @@
 {
   int end=offset + count;
-  if (!sorted)   sort(points,offset,count);
+  if (!sorted) {
+    if (sortedPoints == null || sortedPoints.length < count)     sortedPoints=new float[count];
+    System.arraycopy(points,offset,sortedPoints,0,count);
+    points=sortedPoints;
+    offset=0;
+    sort(points,count);
+  }
   FloatArray hull=this.hull;
   hull.clear();
   for (int i=offset; i < end; i+=2) {
