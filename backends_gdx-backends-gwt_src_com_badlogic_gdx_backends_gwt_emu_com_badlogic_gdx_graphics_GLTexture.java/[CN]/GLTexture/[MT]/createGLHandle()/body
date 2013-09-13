@@ -1,0 +1,6 @@
+{
+  buffer.position(0);
+  buffer.limit(buffer.capacity());
+  Gdx.gl.glGenTextures(1,buffer);
+  return buffer.get(0);
+}
