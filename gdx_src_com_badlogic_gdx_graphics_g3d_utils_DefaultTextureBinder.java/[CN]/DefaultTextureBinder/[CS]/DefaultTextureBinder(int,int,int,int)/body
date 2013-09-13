@@ -5,7 +5,7 @@
   this.method=method;
   this.offset=offset;
   this.count=count;
-  this.textures=new Texture[count];
+  this.textures=new GLTexture[count];
   this.reuseWeight=reuseWeight;
   this.weights=(method == WEIGHTED) ? new int[count] : null;
 }
