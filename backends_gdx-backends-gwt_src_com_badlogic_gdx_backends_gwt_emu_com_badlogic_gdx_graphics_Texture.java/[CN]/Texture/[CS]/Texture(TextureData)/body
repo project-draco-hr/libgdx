@@ -1,3 +1,4 @@
 {
-  create(data);
+  super(GL10.GL_TEXTURE_2D,createGLHandle());
+  load(data);
 }
