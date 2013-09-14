@@ -1,6 +1,7 @@
 {
   this.program=shaderProgram;
   this.lighting=lighting;
+  this.environmentCubemap=environmentCubemap;
   this.shadowMap=shadowMap;
   this.fog=fog;
   this.renderable=renderable;
@@ -29,7 +30,10 @@
   u_diffuseTexture=register(Inputs.diffuseTexture,Setters.diffuseTexture);
   u_specularColor=register(Inputs.specularColor,Setters.specularColor);
   u_specularTexture=register(Inputs.specularTexture,Setters.specularTexture);
+  u_emissiveColor=register(Inputs.emissiveColor,Setters.emissiveColor);
+  u_reflectionColor=register(Inputs.reflectionColor,Setters.reflectionColor);
   u_normalTexture=register(Inputs.normalTexture,Setters.normalTexture);
   u_alphaTest=register(Inputs.alphaTest);
   u_ambientCubemap=lighting ? register(Inputs.ambientCube,new Setters.ACubemap(numDirectional,numPoint)) : -1;
+  u_environmentCubemap=environmentCubemap ? register(Inputs.environmentCubemap,Setters.environmentCubemap) : -1;
 }
