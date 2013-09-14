@@ -1,7 +1,3 @@
 {
-  if (!alwaysScroll && activateKey != 0 && !activatePressed)   return false;
-  camera.translate(tmpV1.set(camera.direction).scl(amount * scrollFactor * translateUnits));
-  if (scrollTarget)   target.add(tmpV1);
-  if (autoUpdate)   camera.update();
-  return true;
+  return zoom(amount * scrollFactor * translateUnits);
 }

@@ -17,6 +17,8 @@
       if (emissive != null)       jsonMaterial.emissive=parseColor(emissive);
       final JsonValue specular=material.get("specular");
       if (specular != null)       jsonMaterial.specular=parseColor(specular);
+      final JsonValue reflection=material.get("reflection");
+      if (reflection != null)       jsonMaterial.reflection=parseColor(reflection);
       jsonMaterial.shininess=material.getFloat("shininess",0.0f);
       jsonMaterial.opacity=material.getFloat("opacity",1.0f);
       JsonValue textures=material.get("textures");
