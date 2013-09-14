@@ -3,7 +3,7 @@
   if (materials == null) {
   }
  else {
-    model.materials.ensureCapacity(materials.size());
+    model.materials.ensureCapacity(materials.size);
     for (JsonValue material=materials.child(); material != null; material=material.next()) {
       ModelMaterial jsonMaterial=new ModelMaterial();
       String id=material.getString("id",null);
