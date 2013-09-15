@@ -1,0 +1,36 @@
+{
+  super.createHUD();
+  final List shadersList=new List(shaders,skin);
+  shadersList.addListener(new ClickListener(){
+    @Override public void clicked(    InputEvent event,    float x,    float y){
+      if (!shadersWindow.isCollapsed() && getTapCount() == 2) {
+        setShader(shadersList.getSelection());
+        shadersWindow.collapse();
+      }
+    }
+  }
+);
+  shadersWindow=addListWindow("Shaders",shadersList,-1,-1);
+  final List materialsList=new List(materials,skin);
+  materialsList.addListener(new ClickListener(){
+    @Override public void clicked(    InputEvent event,    float x,    float y){
+      if (!materialsWindow.isCollapsed() && getTapCount() == 2) {
+        setMaterial(materialsList.getSelection());
+        materialsWindow.collapse();
+      }
+    }
+  }
+);
+  materialsWindow=addListWindow("Materials",materialsList,modelsWindow.getWidth(),-1);
+  final List environmentsList=new List(environments,skin);
+  environmentsList.addListener(new ClickListener(){
+    @Override public void clicked(    InputEvent event,    float x,    float y){
+      if (!environmentsWindow.isCollapsed() && getTapCount() == 2) {
+        setEnvironment(environmentsList.getSelection());
+        environmentsWindow.collapse();
+      }
+    }
+  }
+);
+  environmentsWindow=addListWindow("Environments",environmentsList,materialsWindow.getRight(),-1);
+}

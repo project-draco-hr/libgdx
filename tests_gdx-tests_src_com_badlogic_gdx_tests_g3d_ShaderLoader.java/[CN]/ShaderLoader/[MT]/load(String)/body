@@ -1,0 +1,6 @@
+{
+  StringBuilder out=new StringBuilder();
+  load(out,name);
+  includes.clear();
+  return out.toString();
+}
