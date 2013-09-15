@@ -1,5 +1,0 @@
-{
-  final int unit=context.textureBinder.bind(attribute.textureDescription);
-  program.setUniformi(uniform,unit);
-  currentTextureAttribute=attribute;
-}

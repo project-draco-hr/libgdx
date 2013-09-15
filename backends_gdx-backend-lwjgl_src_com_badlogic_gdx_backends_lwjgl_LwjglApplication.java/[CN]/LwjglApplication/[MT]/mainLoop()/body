@@ -55,15 +55,7 @@ synchronized (lifecycleListeners) {
         graphics.requestRendering();
       }
     }
-synchronized (runnables) {
-      executedRunnables.clear();
-      executedRunnables.addAll(runnables);
-      runnables.clear();
-    }
-    for (int i=0; i < executedRunnables.size; i++) {
-      shouldRender=true;
-      executedRunnables.get(i).run();
-    }
+    if (executeRunnables())     shouldRender=true;
     if (!running)     break;
     input.update();
     shouldRender|=graphics.shouldRender();

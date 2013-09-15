@@ -1,5 +1,5 @@
 {
   this(false,mass,motionState,collisionShape,localInertia);
-  this.collisionShape=collisionShape;
-  this.motionState=motionState;
+  refCollisionShape(collisionShape);
+  refMotionState(motionState);
 }

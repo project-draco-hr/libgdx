@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btConvexConvexAlgorithm_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btConvexConvexAlgorithm",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btCharacterControllerInterface_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btCharacterControllerInterface",cPtr,cMemoryOwn);
+  construct();
 }

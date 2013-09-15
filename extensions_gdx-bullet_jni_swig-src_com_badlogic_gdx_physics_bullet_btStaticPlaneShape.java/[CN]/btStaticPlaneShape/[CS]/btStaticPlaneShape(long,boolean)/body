@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btStaticPlaneShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btStaticPlaneShape",cPtr,cMemoryOwn);
+  construct();
 }

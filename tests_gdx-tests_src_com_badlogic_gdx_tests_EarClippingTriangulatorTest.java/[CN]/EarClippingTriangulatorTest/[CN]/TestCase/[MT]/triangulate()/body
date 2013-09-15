@@ -1,19 +1,27 @@
 {
-  List<Vector2> triangles=new EarClippingTriangulator().computeTriangles(polygon);
-  int numTriangleVertices=triangles.size();
-  ArrayList<Vector2> triangleOutlines=new ArrayList<Vector2>(2 * numTriangleVertices);
-  for (int i=0, j=0; i < numTriangleVertices; ) {
-    Vector2 a=triangles.get(i++);
-    Vector2 b=triangles.get(i++);
-    Vector2 c=triangles.get(i++);
-    triangleOutlines.add(a);
-    triangleOutlines.add(b);
-    triangleOutlines.add(b);
-    triangleOutlines.add(c);
-    triangleOutlines.add(c);
-    triangleOutlines.add(a);
+  ShortArray triangles=new EarClippingTriangulator().computeTriangles(polygon);
+  FloatArray triangleOutlines=new FloatArray(triangles.size * 2);
+  for (int i=0; i < triangles.size; i+=3) {
+    float ax=polygon.get(triangles.get(i) * 2);
+    float ay=polygon.get(triangles.get(i) * 2 + 1);
+    float bx=polygon.get(triangles.get(i + 1) * 2);
+    float by=polygon.get(triangles.get(i + 1) * 2 + 1);
+    float cx=polygon.get(triangles.get(i + 2) * 2);
+    float cy=polygon.get(triangles.get(i + 2) * 2 + 1);
+    triangleOutlines.add(ax);
+    triangleOutlines.add(ay);
+    triangleOutlines.add(bx);
+    triangleOutlines.add(by);
+    triangleOutlines.add(bx);
+    triangleOutlines.add(by);
+    triangleOutlines.add(cx);
+    triangleOutlines.add(cy);
+    triangleOutlines.add(cx);
+    triangleOutlines.add(cy);
+    triangleOutlines.add(ax);
+    triangleOutlines.add(ay);
   }
-  polygonMesh.setVertices(listToVertexArray(polygon));
-  interiorMesh.setVertices(listToColoredVertexArray(triangles,getColor()));
-  triangleOutlineMesh.setVertices(listToVertexArray(triangleOutlines));
+  polygonMesh.setVertices(polygon.items,0,polygon.size);
+  interiorMesh.setVertices(listToColoredVertexArray(polygon,triangles,getColor()));
+  triangleOutlineMesh.setVertices(triangleOutlines.items,0,triangleOutlines.size);
 }

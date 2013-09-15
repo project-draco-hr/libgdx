@@ -30,6 +30,9 @@
         return (T)result;
       }
     }
+ else     if (defaultSerializer != null) {
+      return (T)defaultSerializer.read(this,jsonData,type);
+    }
  else     return (T)jsonData;
     if (object instanceof ObjectMap) {
       ObjectMap result=(ObjectMap)object;

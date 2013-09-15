@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btConvexPointCloudShape_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btConvexPointCloudShape",cPtr,cMemoryOwn);
+  construct();
 }

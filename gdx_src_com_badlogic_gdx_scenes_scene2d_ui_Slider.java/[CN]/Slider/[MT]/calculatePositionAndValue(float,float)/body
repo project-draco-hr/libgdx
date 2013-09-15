@@ -1,6 +1,6 @@
 {
-  final Drawable knob=style.knob;
-  final Drawable bg=style.background;
+  final Drawable knob=(disabled && style.disabledKnob != null) ? style.disabledKnob : style.knob;
+  final Drawable bg=(disabled && style.disabledBackground != null) ? style.disabledBackground : style.background;
   float value;
   float oldPosition=sliderPos;
   if (vertical) {

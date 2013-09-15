@@ -1,3 +1,4 @@
 {
-  return gdxBulletJNI.btSolverBody_getWorldTransform(swigCPtr,this);
+  long cPtr=gdxBulletJNI.btSolverBody_worldTransform_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btTransform(cPtr,false);
 }

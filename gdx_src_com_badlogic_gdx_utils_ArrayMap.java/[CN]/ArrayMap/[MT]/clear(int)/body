@@ -1,0 +1,8 @@
+{
+  if (keys.length <= maximumCapacity) {
+    clear();
+    return;
+  }
+  size=0;
+  resize(maximumCapacity);
+}

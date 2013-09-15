@@ -15,6 +15,10 @@
   middleHeight=ninePatch.middleHeight;
   topHeight=ninePatch.topHeight;
   bottomHeight=ninePatch.bottomHeight;
+  padLeft=ninePatch.padLeft;
+  padTop=ninePatch.padTop;
+  padBottom=ninePatch.padBottom;
+  padRight=ninePatch.padRight;
   vertices=new float[ninePatch.vertices.length];
   System.arraycopy(ninePatch.vertices,0,vertices,0,ninePatch.vertices.length);
   idx=ninePatch.idx;

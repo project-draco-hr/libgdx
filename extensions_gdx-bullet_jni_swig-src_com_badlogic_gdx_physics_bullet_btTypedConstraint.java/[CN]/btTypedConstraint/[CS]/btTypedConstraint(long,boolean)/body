@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btTypedConstraint_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btTypedConstraint",cPtr,cMemoryOwn);
+  construct();
 }

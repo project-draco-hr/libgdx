@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btConeShapeX_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btConeShapeX",cPtr,cMemoryOwn);
+  construct();
 }

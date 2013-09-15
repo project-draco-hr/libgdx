@@ -1,6 +1,3 @@
 {
-  super(Type);
-  sourceFunction=sourceFunc;
-  destFunction=destFunc;
-  this.opacity=opacity;
+  this(true,sourceFunc,destFunc,opacity);
 }

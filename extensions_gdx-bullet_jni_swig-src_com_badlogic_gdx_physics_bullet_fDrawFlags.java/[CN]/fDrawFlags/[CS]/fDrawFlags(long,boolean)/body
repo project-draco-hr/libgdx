@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("fDrawFlags",cPtr,cMemoryOwn);
+  construct();
 }

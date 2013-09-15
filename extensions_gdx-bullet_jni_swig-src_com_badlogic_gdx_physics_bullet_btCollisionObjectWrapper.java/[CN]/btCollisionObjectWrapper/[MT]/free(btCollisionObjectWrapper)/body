@@ -1,4 +1,4 @@
 {
-  inst.delete();
+  inst.dispose();
   pool.free(inst);
 }

@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btTriangleIndexVertexMaterialArray_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btTriangleIndexVertexMaterialArray",cPtr,cMemoryOwn);
+  construct();
 }

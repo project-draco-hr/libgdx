@@ -20,7 +20,7 @@
       if (!multiSelect || !isCtrlPressed()) {
         if (node.children.size > 0) {
           float rowX=node.actor.getX();
-          if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
+          if (node.icon != null)           rowX-=iconSpacingRight + node.icon.getMinWidth();
           if (x < rowX) {
             node.setExpanded(!node.expanded);
             return;

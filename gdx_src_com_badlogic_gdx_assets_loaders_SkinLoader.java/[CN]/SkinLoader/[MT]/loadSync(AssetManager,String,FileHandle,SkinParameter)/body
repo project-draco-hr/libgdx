@@ -1,6 +1,6 @@
 {
   String textureAtlasPath;
-  if (parameter == null)   textureAtlasPath=Gdx.files.absolute(fileName).pathWithoutExtension() + ".atlas";
+  if (parameter == null)   textureAtlasPath=file.pathWithoutExtension() + ".atlas";
  else   textureAtlasPath=parameter.textureAtlasPath;
   TextureAtlas atlas=manager.get(textureAtlasPath,TextureAtlas.class);
   return new Skin(file,atlas);

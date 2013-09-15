@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btGeneric6DofSpringConstraint_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btGeneric6DofSpringConstraint",cPtr,cMemoryOwn);
+  construct();
 }

@@ -1,5 +1,0 @@
-{
-  if (uniform.location < 0)   return false;
-  program.setUniformMatrix(uniform.location,value);
-  return true;
-}

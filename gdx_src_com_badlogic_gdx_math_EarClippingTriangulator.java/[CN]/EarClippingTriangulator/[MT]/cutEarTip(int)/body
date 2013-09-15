@@ -1,10 +1,10 @@
 {
-  final int previousIndex=computePreviousIndex(pEarTipIndex);
-  final int nextIndex=computeNextIndex(pEarTipIndex);
-  triangles.add(new Vector2(vertices.get(previousIndex)));
-  triangles.add(new Vector2(vertices.get(pEarTipIndex)));
-  triangles.add(new Vector2(vertices.get(nextIndex)));
-  vertices.remove(pEarTipIndex);
-  System.arraycopy(vertexTypes,pEarTipIndex + 1,vertexTypes,pEarTipIndex,vertexCount - pEarTipIndex - 1);
+  short[] indices=this.indices;
+  ShortArray triangles=this.triangles;
+  triangles.add(indices[previousIndex(earTipIndex)]);
+  triangles.add(indices[earTipIndex]);
+  triangles.add(indices[nextIndex(earTipIndex)]);
+  indicesArray.removeIndex(earTipIndex);
+  vertexTypes.removeIndex(earTipIndex);
   vertexCount--;
 }

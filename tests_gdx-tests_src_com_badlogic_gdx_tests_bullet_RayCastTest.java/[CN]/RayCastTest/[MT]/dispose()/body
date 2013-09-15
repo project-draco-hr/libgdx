@@ -1,5 +1,5 @@
 {
-  if (rayTestCB != null)   rayTestCB.delete();
+  if (rayTestCB != null)   rayTestCB.dispose();
   rayTestCB=null;
   super.dispose();
 }

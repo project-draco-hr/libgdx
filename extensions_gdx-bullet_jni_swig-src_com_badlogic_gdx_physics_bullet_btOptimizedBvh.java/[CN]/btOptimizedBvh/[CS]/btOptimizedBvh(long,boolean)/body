@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btOptimizedBvh_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btOptimizedBvh",cPtr,cMemoryOwn);
+  construct();
 }

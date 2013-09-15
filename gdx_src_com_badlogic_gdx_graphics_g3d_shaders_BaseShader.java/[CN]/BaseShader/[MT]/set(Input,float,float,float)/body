@@ -1,5 +1,0 @@
-{
-  if (uniform.location < 0)   return false;
-  program.setUniformf(uniform.location,v1,v2,v3);
-  return true;
-}

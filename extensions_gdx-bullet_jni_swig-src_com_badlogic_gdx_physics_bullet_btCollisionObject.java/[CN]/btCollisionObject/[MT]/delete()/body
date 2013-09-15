@@ -1,5 +1,4 @@
 {
-  beforeDelete();
   if (swigCPtr != 0) {
     if (swigCMemOwn) {
       swigCMemOwn=false;
@@ -7,4 +6,5 @@
     }
     swigCPtr=0;
   }
+  super.delete();
 }

@@ -1,3 +1,4 @@
 {
-  return gdxBulletJNI.btSolverBody_getPushVelocity(swigCPtr,this);
+  long cPtr=gdxBulletJNI.btSolverBody_pushVelocity_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btVector3(cPtr,false);
 }

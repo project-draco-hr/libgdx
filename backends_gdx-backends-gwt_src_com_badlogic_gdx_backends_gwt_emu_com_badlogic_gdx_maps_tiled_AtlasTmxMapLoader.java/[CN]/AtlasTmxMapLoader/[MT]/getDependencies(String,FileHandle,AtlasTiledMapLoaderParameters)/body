@@ -1,6 +1,5 @@
 {
   Array<AssetDescriptor> dependencies=new Array<AssetDescriptor>();
-  FileHandle tmxFile=resolve(fileName);
   try {
     root=xml.parse(tmxFile);
     Element properties=root.getChildByName("properties");
@@ -10,8 +9,7 @@
         String value=property.getAttribute("value");
         if (name.startsWith("atlas")) {
           FileHandle atlasHandle=getRelativeFileHandle(tmxFile,value);
-          atlasHandle=resolve(atlasHandle.path());
-          dependencies.add(new AssetDescriptor(atlasHandle.path(),TextureAtlas.class));
+          dependencies.add(new AssetDescriptor(atlasHandle,TextureAtlas.class));
         }
       }
     }

@@ -1,4 +1,4 @@
 {
-  super(gdxBulletJNI.btMinkowskiPenetrationDepthSolver_SWIGUpcast(cPtr),cMemoryOwn);
-  swigCPtr=cPtr;
+  this("btMinkowskiPenetrationDepthSolver",cPtr,cMemoryOwn);
+  construct();
 }

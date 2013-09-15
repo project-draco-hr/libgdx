@@ -1,5 +1,5 @@
 {
-  if (angle == 0)   return this;
-  quat.set(axis,angle);
+  if (degrees == 0)   return this;
+  quat.set(axis,degrees);
   return rotate(quat);
 }

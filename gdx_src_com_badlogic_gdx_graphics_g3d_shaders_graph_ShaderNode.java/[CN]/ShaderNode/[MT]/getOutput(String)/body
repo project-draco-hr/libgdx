@@ -1,6 +1,0 @@
-{
-  for (  ShaderOutput output : outputs) {
-    if (output.getName().equals(name))     return output;
-  }
-  return null;
-}

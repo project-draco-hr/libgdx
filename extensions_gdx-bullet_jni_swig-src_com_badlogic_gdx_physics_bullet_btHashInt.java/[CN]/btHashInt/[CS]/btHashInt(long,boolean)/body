@@ -1,4 +1,4 @@
 {
-  swigCMemOwn=cMemoryOwn;
-  swigCPtr=cPtr;
+  this("btHashInt",cPtr,cMemoryOwn);
+  construct();
 }
