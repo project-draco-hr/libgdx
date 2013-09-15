@@ -35,7 +35,7 @@
       }
  else       if (firstChar == 'f') {
         String[] parts;
-        ArrayList<Integer> faces=activeGroup.faces;
+        Array<Integer> faces=activeGroup.faces;
         for (int i=1; i < tokens.length - 2; i--) {
           parts=tokens[1].split("/");
           faces.add(getIndex(parts[0],verts.size));
@@ -75,19 +75,19 @@
  catch (  IOException e) {
     return null;
   }
-  for (int i=0; i < groups.size(); i++) {
+  for (int i=0; i < groups.size; i++) {
     if (groups.get(i).numFaces < 1) {
-      groups.remove(i);
+      groups.removeIndex(i);
       i--;
     }
   }
-  if (groups.size() < 1)   return null;
-  final int numGroups=groups.size();
+  if (groups.size < 1)   return null;
+  final int numGroups=groups.size;
   final ModelData data=new ModelData();
   for (int g=0; g < numGroups; g++) {
     Group group=groups.get(g);
-    ArrayList<Integer> faces=group.faces;
-    final int numElements=faces.size();
+    Array<Integer> faces=group.faces;
+    final int numElements=faces.size;
     final int numFaces=group.numFaces;
     final boolean hasNorms=group.hasNorms;
     final boolean hasUVs=group.hasUVs;
@@ -116,7 +116,7 @@
         finalIndices[i]=(short)i;
       }
     }
-    ArrayList<VertexAttribute> attributes=new ArrayList<VertexAttribute>();
+    Array<VertexAttribute> attributes=new Array<VertexAttribute>();
     attributes.add(new VertexAttribute(Usage.Position,3,ShaderProgram.POSITION_ATTRIBUTE));
     if (hasNorms)     attributes.add(new VertexAttribute(Usage.Normal,3,ShaderProgram.NORMAL_ATTRIBUTE));
     if (hasUVs)     attributes.add(new VertexAttribute(Usage.TextureCoordinates,2,ShaderProgram.TEXCOORD_ATTRIBUTE + "0"));
@@ -139,7 +139,7 @@
     part.primitiveType=GL10.GL_TRIANGLES;
     ModelMesh mesh=new ModelMesh();
     mesh.id=meshId;
-    mesh.attributes=attributes.toArray(new VertexAttribute[attributes.size()]);
+    mesh.attributes=attributes.toArray(VertexAttribute.class);
     mesh.vertices=finalVerts;
     mesh.parts=new ModelMeshPart[]{part};
     data.nodes.add(node);
@@ -150,6 +150,6 @@
   if (verts.size > 0)   verts.clear();
   if (norms.size > 0)   norms.clear();
   if (uvs.size > 0)   uvs.clear();
-  if (groups.size() > 0)   groups.clear();
+  if (groups.size > 0)   groups.clear();
   return data;
 }

@@ -1,6 +1,6 @@
 {
-  List<ShaderProgram> managedResources=shaders.get(app);
-  if (managedResources == null)   managedResources=new ArrayList<ShaderProgram>();
+  Array<ShaderProgram> managedResources=shaders.get(app);
+  if (managedResources == null)   managedResources=new Array<ShaderProgram>();
   managedResources.add(shaderProgram);
   shaders.put(app,managedResources);
 }
