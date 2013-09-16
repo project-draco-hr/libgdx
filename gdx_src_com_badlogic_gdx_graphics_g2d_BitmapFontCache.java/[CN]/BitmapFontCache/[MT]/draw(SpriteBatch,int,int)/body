@@ -9,10 +9,10 @@
       int offset=-1;
       int count=0;
       for (int j=0; j < glyphIndices[i].size; j++) {
-        int gInd=glyphIndices[i].items[j];
-        if (gInd >= end)         break;
-        if (offset == -1 && gInd >= start)         offset=j;
-        if (gInd >= start)         count++;
+        int glyphIndex=glyphIndices[i].items[j];
+        if (glyphIndex >= end)         break;
+        if (offset == -1 && glyphIndex >= start)         offset=j;
+        if (glyphIndex >= start)         count++;
       }
       if (offset == -1 || count == 0)       continue;
       spriteBatch.draw(regions[i].getTexture(),vertexData[i],offset * 20,count * 20);
