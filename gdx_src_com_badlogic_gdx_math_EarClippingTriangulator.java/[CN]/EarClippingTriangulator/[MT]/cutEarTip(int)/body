@@ -1,17 +1,10 @@
 {
-  float[] vertices=this.vertices;
-  FloatArray triangles=this.triangles;
-  int previousIndex=previousIndex(earTipIndex) * 2;
-  int nextIndex=nextIndex(earTipIndex) * 2;
+  short[] indices=this.indices;
+  ShortArray triangles=this.triangles;
+  triangles.add(indices[previousIndex(earTipIndex)]);
+  triangles.add(indices[earTipIndex]);
+  triangles.add(indices[nextIndex(earTipIndex)]);
+  indicesArray.removeIndex(earTipIndex);
   vertexTypes.removeIndex(earTipIndex);
   vertexCount--;
-  triangles.add(vertices[previousIndex]);
-  triangles.add(vertices[previousIndex + 1]);
-  earTipIndex*=2;
-  triangles.add(vertices[earTipIndex]);
-  triangles.add(vertices[earTipIndex + 1]);
-  triangles.add(vertices[nextIndex]);
-  triangles.add(vertices[nextIndex + 1]);
-  verticesArray.size-=2;
-  System.arraycopy(vertices,earTipIndex + 2,vertices,earTipIndex,verticesArray.size - earTipIndex);
 }

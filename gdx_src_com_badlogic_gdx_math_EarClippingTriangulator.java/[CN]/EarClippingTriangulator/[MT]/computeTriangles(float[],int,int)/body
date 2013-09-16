@@ -1,4 +1,24 @@
 {
-  setVertices(polygon,offset,count);
-  return computeTriangles();
+  this.vertices=vertices;
+  int vertexCount=this.vertexCount=count / 2;
+  ShortArray indicesArray=this.indicesArray;
+  indicesArray.clear();
+  indicesArray.ensureCapacity(vertexCount);
+  indicesArray.size=vertexCount;
+  short[] indices=this.indices=indicesArray.items;
+  if (areVerticesClockwise(vertices,0,vertices.length)) {
+    for (short i=0; i < vertexCount; i++)     indices[i]=i;
+  }
+ else {
+    for (int i=0, n=vertexCount - 1; i < vertexCount; i++)     indices[i]=(short)(n - i);
+  }
+  IntArray vertexTypes=this.vertexTypes;
+  vertexTypes.clear();
+  vertexTypes.ensureCapacity(vertexCount);
+  for (int i=0, n=vertexCount; i < n; ++i)   vertexTypes.add(classifyVertex(i));
+  ShortArray triangles=this.triangles;
+  triangles.clear();
+  triangles.ensureCapacity(Math.max(0,vertexCount - 2) * 3);
+  triangulate();
+  return triangles;
 }

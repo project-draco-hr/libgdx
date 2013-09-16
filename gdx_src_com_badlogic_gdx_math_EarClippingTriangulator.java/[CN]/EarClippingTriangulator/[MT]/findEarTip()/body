@@ -1,6 +1,7 @@
 {
-  for (int i=0, n=vertexCount; i < n; i++)   if (isEarTip(i))   return i;
-  IntArray vertexTypes=this.vertexTypes;
-  for (int i=0, n=vertexCount; i < n; i++)   if (vertexTypes.get(i) != CONCAVE)   return i;
+  int vertexCount=this.vertexCount;
+  for (int i=0; i < vertexCount; i++)   if (isEarTip(i))   return i;
+  int[] vertexTypes=this.vertexTypes.items;
+  for (int i=0; i < vertexCount; i++)   if (vertexTypes[i] != CONCAVE)   return i;
   return 0;
 }

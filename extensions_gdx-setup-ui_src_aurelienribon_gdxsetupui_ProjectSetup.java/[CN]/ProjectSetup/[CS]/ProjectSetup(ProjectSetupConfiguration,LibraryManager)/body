@@ -9,7 +9,10 @@
   if (cfg.isDesktopIncluded)   templateManager.define("PRJ_DESKTOP_NAME",cfg.projectName + cfg.suffixDesktop);
   if (cfg.isAndroidIncluded)   templateManager.define("PRJ_ANDROID_NAME",cfg.projectName + cfg.suffixAndroid);
   if (cfg.isHtmlIncluded)   templateManager.define("PRJ_HTML_NAME",cfg.projectName + cfg.suffixHtml);
-  if (cfg.isIosIncluded)   templateManager.define("PRJ_IOS_NAME",cfg.projectName + cfg.suffixIos);
+  if (cfg.isIosIncluded) {
+    templateManager.define("PRJ_IOS_NAME",cfg.projectName + cfg.suffixIos);
+    templateManager.define("PRJ_ROBOVM_NAME",cfg.projectName + cfg.suffixRobovm);
+  }
   if (!cfg.androidMinSdkVersion.equals(""))   templateManager.define("ANDROID_MIN_SDK",cfg.androidMinSdkVersion);
   if (!cfg.androidTargetSdkVersion.equals(""))   templateManager.define("ANDROID_TARGET_SDK",cfg.androidTargetSdkVersion);
   if (!cfg.androidMaxSdkVersion.equals(""))   templateManager.define("ANDROID_MAX_SDK",cfg.androidMaxSdkVersion);

@@ -1,8 +1,7 @@
 {
   if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before end.");
-  if (idx > 0)   renderMesh();
+  if (vertexIndex > 0)   flush();
   lastTexture=null;
-  idx=0;
   drawing=false;
   GLCommon gl=Gdx.gl;
   gl.glDepthMask(true);

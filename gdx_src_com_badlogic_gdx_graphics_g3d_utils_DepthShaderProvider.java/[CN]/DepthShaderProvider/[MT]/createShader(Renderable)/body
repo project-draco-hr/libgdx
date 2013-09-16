@@ -1,0 +1,4 @@
+{
+  Gdx.app.log("DepthShaderProvider","Creating new shader");
+  return new DepthShader(vertexShader,fragmentShader,renderable,renderable.bones == null ? 0 : 12,depthBufferOnly);
+}

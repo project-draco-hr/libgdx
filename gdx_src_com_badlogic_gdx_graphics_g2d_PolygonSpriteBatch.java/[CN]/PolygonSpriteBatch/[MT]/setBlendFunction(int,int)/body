@@ -1,5 +1,6 @@
 {
-  renderMesh();
+  if (blendSrcFunc == srcFunc && blendDstFunc == dstFunc)   return;
+  flush();
   blendSrcFunc=srcFunc;
   blendDstFunc=dstFunc;
 }

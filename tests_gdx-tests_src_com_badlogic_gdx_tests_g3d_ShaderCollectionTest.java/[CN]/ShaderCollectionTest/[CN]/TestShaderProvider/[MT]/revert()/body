@@ -1,0 +1,9 @@
+{
+  final String defaultVert=DefaultShader.getDefaultVertexShader();
+  final String defaultFrag=DefaultShader.getDefaultFragmentShader();
+  if (vertexShader.equals(defaultVert) && fragmentShader.equals(defaultFrag))   return false;
+  vertexShader=defaultVert;
+  fragmentShader=defaultFrag;
+  clear();
+  return true;
+}

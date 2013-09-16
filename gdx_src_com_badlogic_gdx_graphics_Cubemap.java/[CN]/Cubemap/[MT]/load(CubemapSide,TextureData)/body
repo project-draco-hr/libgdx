@@ -1,0 +1,5 @@
+{
+  bind();
+  unsafeLoad(side,data);
+  Gdx.gl.glBindTexture(glTarget,0);
+}

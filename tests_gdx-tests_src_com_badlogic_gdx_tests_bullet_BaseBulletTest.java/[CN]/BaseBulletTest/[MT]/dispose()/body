@@ -3,5 +3,11 @@
   world=null;
   for (  Disposable disposable : disposables)   disposable.dispose();
   disposables.clear();
+  modelBatch.dispose();
+  modelBatch=null;
+  shadowBatch.dispose();
+  shadowBatch=null;
+  shadowLight.dispose();
+  shadowLight=null;
   super.dispose();
 }

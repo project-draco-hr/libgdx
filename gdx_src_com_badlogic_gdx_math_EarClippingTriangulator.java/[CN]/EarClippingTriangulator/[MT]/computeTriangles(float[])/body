@@ -1,4 +1,3 @@
 {
-  setVertices(polygon,0,polygon.length);
-  return computeTriangles();
+  return computeTriangles(vertices,0,vertices.length);
 }

@@ -1,5 +1,6 @@
 {
-  if (this.button < 0)   return false;
+  boolean result=super.touchDragged(screenX,screenY,pointer);
+  if (result || this.button < 0)   return result;
   final float deltaX=(screenX - startX) / Gdx.graphics.getWidth();
   final float deltaY=(startY - screenY) / Gdx.graphics.getHeight();
   startX=screenX;
