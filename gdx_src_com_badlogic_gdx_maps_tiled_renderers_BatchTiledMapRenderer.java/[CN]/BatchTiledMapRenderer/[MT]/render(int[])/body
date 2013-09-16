@@ -1,5 +1,4 @@
 {
-  AnimatedTiledMapTile.updateAnimationBaseTime();
   beginRender();
   for (  int layerIdx : layers) {
     MapLayer layer=map.getLayers().get(layerIdx);

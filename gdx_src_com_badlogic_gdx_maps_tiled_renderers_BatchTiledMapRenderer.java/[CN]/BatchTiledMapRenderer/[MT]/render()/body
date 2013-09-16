@@ -1,5 +1,4 @@
 {
-  AnimatedTiledMapTile.updateAnimationBaseTime();
   beginRender();
   for (  MapLayer layer : map.getLayers()) {
     if (layer.isVisible()) {
