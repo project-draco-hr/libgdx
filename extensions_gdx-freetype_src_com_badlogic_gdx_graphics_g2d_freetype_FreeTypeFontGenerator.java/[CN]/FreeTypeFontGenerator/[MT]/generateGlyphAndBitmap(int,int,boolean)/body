@@ -31,6 +31,7 @@
   glyph.xadvance=FreeType.toInt(metrics.getHoriAdvance());
   glyph.srcX=0;
   glyph.srcY=0;
+  glyph.id=c;
   GlyphAndBitmap result=new GlyphAndBitmap();
   result.glyph=glyph;
   result.bitmap=bitmap;

@@ -1,4 +1,14 @@
 {
   this.font=font;
   this.integer=integer;
+  if (font.regions == null || font.regions.length == 0)   throw new IllegalArgumentException("The specified font must be non-null and contain at least 1 texture page");
+  this.vertexData=new float[font.regions.length][];
+  this.idx=new int[font.regions.length];
+  if (vertexData.length > 1) {
+    glyphIndices=new IntArray[vertexData.length];
+    for (int i=0; i < glyphIndices.length; i++) {
+      glyphIndices[i]=new IntArray();
+    }
+    tmpGlyphCount=new int[vertexData.length];
+  }
 }
