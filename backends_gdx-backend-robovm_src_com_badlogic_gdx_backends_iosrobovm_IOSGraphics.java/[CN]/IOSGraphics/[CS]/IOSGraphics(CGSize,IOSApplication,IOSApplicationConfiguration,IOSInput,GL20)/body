@@ -1,4 +1,5 @@
 {
+  this.config=config;
   width=(int)bounds.width();
   height=(int)bounds.height();
   app.debug(tag,bounds.width() + "x" + bounds.height()+ ", "+ UIScreen.getMainScreen().getScale());
@@ -34,7 +35,7 @@
   viewController=new IOSUIViewController(app,this);
   viewController.setView(view);
   viewController.setDelegate(this);
-  viewController.setPreferredFramesPerSecond(60);
+  viewController.setPreferredFramesPerSecond(config.preferredFramesPerSecond);
   this.app=app;
   this.input=input;
   int r=0, g=0, b=0, a=0, depth=0, stencil=0, samples=0;

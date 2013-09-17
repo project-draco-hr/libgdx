@@ -1,3 +1,3 @@
 {
-  return new IOSDisplayMode(getWidth(),getHeight(),60,bufferFormat.r + bufferFormat.g + bufferFormat.b+ bufferFormat.a);
+  return new IOSDisplayMode(getWidth(),getHeight(),config.preferredFramesPerSecond,bufferFormat.r + bufferFormat.g + bufferFormat.b+ bufferFormat.a);
 }
