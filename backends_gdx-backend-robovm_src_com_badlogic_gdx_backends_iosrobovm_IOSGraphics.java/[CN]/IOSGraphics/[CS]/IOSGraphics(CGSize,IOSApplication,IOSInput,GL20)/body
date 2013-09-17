@@ -28,6 +28,7 @@
 ;
   view.setDelegate(this);
   view.setDrawableColorFormat(GLKViewDrawableColorFormat.RGB565);
+  view.setDrawableDepthFormat(GLKViewDrawableDepthFormat.Format16);
   viewController=new IOSUIViewController(app,this);
   viewController.setView(view);
   viewController.setDelegate(this);
