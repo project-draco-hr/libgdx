@@ -1,7 +1,7 @@
 {
-  Vector2 v0=b.sub(a);
-  Vector2 v1=c.sub(a);
-  Vector2 v2=p.sub(a);
+  Vector2 v0=tmp1.set(b).sub(a);
+  Vector2 v1=tmp2.set(c).sub(a);
+  Vector2 v2=tmp3.set(p).sub(a);
   float d00=v0.dot(v0);
   float d01=v0.dot(v1);
   float d11=v1.dot(v1);
