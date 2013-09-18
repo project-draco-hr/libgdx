@@ -32,6 +32,7 @@
   view.setDrawableDepthFormat(config.depthFormat);
   view.setDrawableStencilFormat(config.stencilFormat);
   view.setDrawableMultisample(config.multisample);
+  view.setMultipleTouchEnabled(true);
   viewController=new IOSUIViewController(app,this);
   viewController.setView(view);
   viewController.setDelegate(this);
