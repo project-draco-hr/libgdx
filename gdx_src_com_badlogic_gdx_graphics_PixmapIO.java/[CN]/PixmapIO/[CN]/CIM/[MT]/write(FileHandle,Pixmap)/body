@@ -26,10 +26,6 @@ synchronized (writeBuffer) {
     throw new GdxRuntimeException("Couldn't write Pixmap to file '" + file + "'",e);
   }
  finally {
-    if (out != null)     try {
-      out.close();
-    }
- catch (    Exception e) {
-    }
+    StreamUtils.closeQuietly(out);
   }
 }
