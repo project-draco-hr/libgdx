@@ -1,4 +1,4 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  return new IOSApplication(new GwtTestWrapper(),config);
+  return new IOSApplication(new BulletTestCollection(),config);
 }
