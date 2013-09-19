@@ -8,10 +8,6 @@
     throw new SerializationException("Error writing file: " + file,ex);
   }
  finally {
-    try {
-      if (writer != null)       writer.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(writer);
   }
 }

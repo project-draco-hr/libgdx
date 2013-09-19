@@ -1,7 +1,3 @@
 {
-  try {
-    if (in != null)     in.close();
-  }
- catch (  Exception e) {
-  }
+  StreamUtils.closeQuietly(in);
 }

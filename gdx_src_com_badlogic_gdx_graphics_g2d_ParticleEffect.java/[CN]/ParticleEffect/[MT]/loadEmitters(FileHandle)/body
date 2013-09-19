@@ -17,10 +17,6 @@
     throw new GdxRuntimeException("Error loading effect: " + effectFile,ex);
   }
  finally {
-    try {
-      if (reader != null)       reader.close();
-    }
- catch (    IOException ex) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
 }
