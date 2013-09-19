@@ -144,10 +144,6 @@
     throw new GdxRuntimeException("Error loading font file: " + fontFile,ex);
   }
  finally {
-    try {
-      reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
 }

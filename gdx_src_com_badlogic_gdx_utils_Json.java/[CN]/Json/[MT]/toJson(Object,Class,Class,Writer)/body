@@ -4,11 +4,7 @@
     writeValue(object,knownType,elementType);
   }
   finally {
-    try {
-      this.writer.close();
-    }
- catch (    Exception ignored) {
-    }
+    StreamUtils.closeQuietly(this.writer);
     this.writer=null;
   }
 }
