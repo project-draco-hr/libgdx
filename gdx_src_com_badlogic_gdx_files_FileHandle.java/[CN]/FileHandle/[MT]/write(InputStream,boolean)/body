@@ -13,15 +13,7 @@
     throw new GdxRuntimeException("Error stream writing to file: " + file + " ("+ type+ ")",ex);
   }
  finally {
-    try {
-      if (input != null)       input.close();
-    }
- catch (    Exception ignored) {
-    }
-    try {
-      if (output != null)       output.close();
-    }
- catch (    Exception ignored) {
-    }
+    StreamUtils.closeQuietly(input);
+    StreamUtils.closeQuietly(output);
   }
 }

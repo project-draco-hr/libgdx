@@ -7,10 +7,6 @@
     throw new GdxRuntimeException("Error writing file: " + file + " ("+ type+ ")",ex);
   }
  finally {
-    try {
-      output.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(output);
   }
 }

@@ -23,11 +23,7 @@
     throw new GdxRuntimeException("Error reading file: " + this,ex);
   }
  finally {
-    try {
-      if (input != null)       input.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(input);
   }
   if (position < buffer.length) {
     byte[] newBuffer=new byte[position];
