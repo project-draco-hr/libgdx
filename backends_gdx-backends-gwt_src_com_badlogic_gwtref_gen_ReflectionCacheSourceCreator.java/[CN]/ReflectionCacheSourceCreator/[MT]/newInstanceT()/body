@@ -2,8 +2,7 @@
   p("public Object newInstance (Type type) {");
   for (  JType type : types) {
     if (type instanceof JClassType) {
-      JClassType clazzType=(JClassType)type;
-      if (clazzType.isDefaultInstantiable() && !(clazzType instanceof JArrayType) && !(clazzType instanceof JEnumType)) {
+      if (isInstantiableWithNewOperator((JClassType)type)) {
         p("if(type.getName().equals(\"" + type.getErasedType().getQualifiedSourceName() + "\")) return new "+ type.getErasedType().getQualifiedSourceName()+ "();");
       }
  else {
