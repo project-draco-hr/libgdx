@@ -1,6 +1,6 @@
 {
   try {
-    return ReflectionCache.forName(superClass.getName());
+    return superClass == null ? null : ReflectionCache.forName(superClass.getName());
   }
  catch (  ClassNotFoundException e) {
     return null;

@@ -2,9 +2,11 @@
   if (updating)   throw new GdxRuntimeException("Cannot change animation during update");
   if (current == null)   current=anim;
  else {
-    if (current.animation == anim.animation)     anim.time=current.time;
+    if (anim != null && current.animation == anim.animation)     anim.time=current.time;
+ else     removeAnimation(current.animation);
     animationPool.free(current);
     current=anim;
   }
+  justChangedAnimation=true;
   return anim;
 }
