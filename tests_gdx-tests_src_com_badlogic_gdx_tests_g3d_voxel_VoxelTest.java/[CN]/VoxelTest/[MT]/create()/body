@@ -9,8 +9,8 @@
   camera.far=1000;
   controller=new FirstPersonCameraController(camera);
   Gdx.input.setInputProcessor(controller);
-  lights=new Lights();
-  lights.ambientLight.set(0.4f,0.4f,0.4f,1f);
+  lights=new Environment();
+  lights.set(new ColorAttribute(ColorAttribute.AmbientLight,0.4f,0.4f,0.4f,1.f));
   lights.add(new DirectionalLight().set(1,1,1,0,-1,0));
   Texture texture=new Texture(Gdx.files.internal("data/g3d/tiles.png"));
   TextureRegion[][] tiles=TextureRegion.split(texture,32,32);

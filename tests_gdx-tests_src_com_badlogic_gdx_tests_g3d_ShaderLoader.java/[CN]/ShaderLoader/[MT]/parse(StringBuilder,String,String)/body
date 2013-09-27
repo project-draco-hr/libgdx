@@ -12,6 +12,6 @@
         }
       }
     }
- else     out.append(line).append("\n");
+ else     out.append(line.trim()).append("\r\n");
   }
 }
