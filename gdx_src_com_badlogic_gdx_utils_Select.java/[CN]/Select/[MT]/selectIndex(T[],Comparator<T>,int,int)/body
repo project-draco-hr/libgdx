@@ -1,0 +1,15 @@
+{
+  if (size < 1)   throw new GdxRuntimeException("cannot select from empty array (size < 1)");
+  int idx;
+  if (kthLowest == 1) {
+    idx=fastMin(items,comp,size);
+  }
+ else   if (kthLowest == size) {
+    idx=fastMax(items,comp,size);
+  }
+ else {
+    if (quickSelect == null)     quickSelect=new QuickSelect();
+    idx=quickSelect.select(items,comp,kthLowest,size);
+  }
+  return idx;
+}

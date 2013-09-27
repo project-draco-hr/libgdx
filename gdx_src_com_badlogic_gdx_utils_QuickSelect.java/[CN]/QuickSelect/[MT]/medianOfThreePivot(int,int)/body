@@ -1,0 +1,28 @@
+{
+  T left=array[leftIdx];
+  int midIdx=(leftIdx + rightIdx) / 2;
+  T mid=array[midIdx];
+  T right=array[rightIdx];
+  if (comp.compare(left,mid) > 0) {
+    if (comp.compare(mid,right) > 0) {
+      return midIdx;
+    }
+ else     if (comp.compare(left,right) > 0) {
+      return rightIdx;
+    }
+ else {
+      return leftIdx;
+    }
+  }
+ else {
+    if (comp.compare(left,right) > 0) {
+      return leftIdx;
+    }
+ else     if (comp.compare(mid,right) > 0) {
+      return rightIdx;
+    }
+ else {
+      return midIdx;
+    }
+  }
+}

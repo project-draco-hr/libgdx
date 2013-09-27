@@ -1,4 +1,5 @@
 {
+  filePath=font.pathWithoutExtension();
   library=FreeType.initFreeType();
   if (library == null)   throw new GdxRuntimeException("Couldn't initialize FreeType");
   face=FreeType.newFace(library,font,0);

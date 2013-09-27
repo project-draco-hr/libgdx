@@ -1,15 +1,13 @@
 {
-  ByteArrayOutputStream buffer=new ByteArrayOutputStream();
-  int nRead;
-  byte[] data=new byte[16384];
   try {
-    while ((nRead=inputStream.read(data,0,data.length)) != -1) {
-      buffer.write(data,0,nRead);
-    }
-    buffer.flush();
+    int contentLength=connection.getContentLength();
+    ByteArrayOutputStream buffer;
+    if (contentLength > 0)     buffer=new OptimizedByteArrayOutputStream(contentLength);
+ else     buffer=new OptimizedByteArrayOutputStream();
+    StreamUtils.copyStream(inputStream,buffer);
+    return buffer.toByteArray();
   }
  catch (  IOException e) {
-    return new byte[0];
+    return StreamUtils.EMPTY_BYTES;
   }
-  return buffer.toByteArray();
 }

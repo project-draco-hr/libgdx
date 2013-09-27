@@ -1,0 +1,6 @@
+{
+  super(FontStyle.class);
+  for (  FontStyle style : FontStyle.values()) {
+    put(style,new EnumMap<FontSize,T>(FontSize.class));
+  }
+}

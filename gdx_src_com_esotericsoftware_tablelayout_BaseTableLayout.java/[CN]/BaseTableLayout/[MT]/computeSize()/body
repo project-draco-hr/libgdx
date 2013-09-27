@@ -1,6 +1,5 @@
 {
   sizeInvalid=false;
-  Toolkit toolkit=this.toolkit;
   ArrayList<Cell> cells=this.cells;
   if (cells.size() > 0 && !cells.get(cells.size() - 1).endRow)   endRow();
   columnMinWidth=ensureSize(columnMinWidth,columns);

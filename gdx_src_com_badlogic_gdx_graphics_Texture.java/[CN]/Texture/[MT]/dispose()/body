@@ -1,5 +1,5 @@
 {
   if (glHandle == 0)   return;
   delete();
-  if (data.isManaged())   if (managedTextures.get(Gdx.app) != null)   managedTextures.get(Gdx.app).remove(this);
+  if (data.isManaged())   if (managedTextures.get(Gdx.app) != null)   managedTextures.get(Gdx.app).removeValue(this,true);
 }

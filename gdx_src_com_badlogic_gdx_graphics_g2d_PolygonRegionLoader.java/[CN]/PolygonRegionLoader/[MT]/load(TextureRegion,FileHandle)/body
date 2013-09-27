@@ -16,11 +16,7 @@
     throw new GdxRuntimeException("Error reading polygon shape file: " + file,ex);
   }
  finally {
-    try {
-      reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
   throw new GdxRuntimeException("Polygon shape not found: " + file);
 }

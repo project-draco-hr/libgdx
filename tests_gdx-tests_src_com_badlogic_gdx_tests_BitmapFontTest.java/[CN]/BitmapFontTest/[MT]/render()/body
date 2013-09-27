@@ -20,8 +20,21 @@
     alignmentWidth=280;
     font.drawWrapped(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
   }
+  String txt2="this font uses " + multiPageFont.getRegions().length + " texture pages: RpRpRpRpRpNM";
+  spriteBatch.renderCalls=0;
+  multiPageFont.setColor(Color.BLUE);
+  multiPageFont.draw(spriteBatch,txt2,10,100);
+  BitmapFontCache cache=multiPageFont.getCache();
+  cache.clear();
+  cache.setColor(Color.BLACK);
+  cache.setText(txt2,10,50);
+  cache.setColor(Color.PINK,3,6);
+  cache.setColor(Color.ORANGE,9,12);
+  cache.setColor(Color.GREEN,16,txt2.length());
+  cache.draw(spriteBatch,5,txt2.length() - 5);
   spriteBatch.end();
   renderer.begin(ShapeType.Line);
+  renderer.setColor(Color.BLACK);
   renderer.rect(x,viewHeight - y,x + alignmentWidth,300);
   renderer.end();
 }
