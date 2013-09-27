@@ -1,5 +1,5 @@
 {
-  final Lights lights=renderable.lights;
+  final Environment lights=renderable.environment;
   final Array<DirectionalLight> dirs=lights.directionalLights;
   final Array<PointLight> points=lights.pointLights;
   if (dirLightsLoc >= 0) {

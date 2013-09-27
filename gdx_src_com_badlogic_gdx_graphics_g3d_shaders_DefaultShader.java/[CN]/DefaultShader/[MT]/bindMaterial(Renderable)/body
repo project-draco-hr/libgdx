@@ -6,7 +6,7 @@
   float depthRangeFar=1f;
   boolean depthMask=true;
   currentMaterial=renderable.material;
-  for (  final Material.Attribute attr : currentMaterial) {
+  for (  final Attribute attr : currentMaterial) {
     final long t=attr.type;
     if (BlendingAttribute.is(t)) {
       context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
