@@ -17,7 +17,7 @@
         prefix+="#define fogFlag\n";
       }
       if (renderable.environment.shadowMap != null)       prefix+="#define shadowMapFlag\n";
-      if (renderable.environment.environmentCubemap != null)       prefix+="#define environmentCubemapFlag\n";
+      if (renderable.material.has(CubemapAttribute.EnvironmentMap) || renderable.environment.has(CubemapAttribute.EnvironmentMap))       prefix+="#define environmentCubemapFlag\n";
     }
   }
   final int n=renderable.mesh.getVertexAttributes().size();

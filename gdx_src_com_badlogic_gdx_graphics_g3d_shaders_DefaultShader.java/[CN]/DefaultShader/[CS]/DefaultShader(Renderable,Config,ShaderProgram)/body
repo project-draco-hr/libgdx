@@ -1,7 +1,7 @@
 {
   this.program=shaderProgram;
   this.lighting=renderable.environment != null;
-  this.environmentCubemap=lighting && renderable.environment.environmentCubemap != null;
+  this.environmentCubemap=renderable.material.has(CubemapAttribute.EnvironmentMap) || (lighting && renderable.environment.has(CubemapAttribute.EnvironmentMap));
   this.shadowMap=lighting && renderable.environment.shadowMap != null;
   this.fog=lighting && renderable.environment.has(ColorAttribute.Fog);
   this.renderable=renderable;
