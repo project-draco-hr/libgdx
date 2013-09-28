@@ -3,7 +3,7 @@
   this.lighting=renderable.environment != null;
   this.environmentCubemap=lighting && renderable.environment.environmentCubemap != null;
   this.shadowMap=lighting && renderable.environment.shadowMap != null;
-  this.fog=lighting && renderable.environment.fog != null;
+  this.fog=lighting && renderable.environment.has(ColorAttribute.Fog);
   this.renderable=renderable;
   materialMask=renderable.material.getMask() | optionalAttributes;
   vertexMask=renderable.mesh.getVertexAttributes().getMask();
