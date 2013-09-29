@@ -1,6 +1,6 @@
 {
   modelBatch.begin(cam);
   if (showAxes)   modelBatch.render(axesInstance);
-  render(modelBatch,instances);
+  if (instances != null)   render(modelBatch,instances);
   modelBatch.end();
 }
