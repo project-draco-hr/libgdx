@@ -1,17 +1,15 @@
 {
   shaderProvider.error=false;
   if (name.equals("<default>")) {
-    shaderProvider.vertexShader=DefaultShader.getDefaultVertexShader();
-    shaderProvider.fragmentShader=DefaultShader.getDefaultFragmentShader();
+    shaderProvider.config.vertexShader=null;
+    shaderProvider.config.fragmentShader=null;
     shaderProvider.name="default";
   }
  else {
     ShaderLoader loader=new ShaderLoader(shaderRoot);
-    shaderProvider.vertexShader=loader.load(name + ".glsl:VS");
-    shaderProvider.fragmentShader=loader.load(name + ".glsl:FS");
+    shaderProvider.config.vertexShader=loader.load(name + ".glsl:VS");
+    shaderProvider.config.fragmentShader=loader.load(name + ".glsl:FS");
     shaderProvider.name=name;
   }
-  Gdx.app.log("VS","\n" + shaderProvider.vertexShader);
-  Gdx.app.log("FS","\n" + shaderProvider.fragmentShader);
   shaderProvider.clear();
 }

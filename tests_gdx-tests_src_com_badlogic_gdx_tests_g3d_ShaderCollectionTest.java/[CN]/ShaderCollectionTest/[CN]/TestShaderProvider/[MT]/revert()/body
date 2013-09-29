@@ -1,9 +1,7 @@
 {
-  final String defaultVert=DefaultShader.getDefaultVertexShader();
-  final String defaultFrag=DefaultShader.getDefaultFragmentShader();
-  if (vertexShader.equals(defaultVert) && fragmentShader.equals(defaultFrag))   return false;
-  vertexShader=defaultVert;
-  fragmentShader=defaultFrag;
+  if (config.vertexShader == null || config.fragmentShader == null)   return false;
+  config.vertexShader=null;
+  config.fragmentShader=null;
   clear();
   return true;
 }

@@ -1,7 +1,3 @@
 {
-  Gdx.app.log("DefaultShaderProvider","Creating new shader");
-  if (Gdx.graphics.isGL20Available()) {
-    return new DefaultShader(vertexShader,fragmentShader,renderable,renderable.lights != null,renderable.lights != null && renderable.lights.environmentCubemap != null,renderable.lights != null && renderable.lights.shadowMap != null,renderable.lights != null && renderable.lights.fog != null,renderable.lights == null ? 0 : (numDirectionalLights < 0 ? defaultNumDirectionalLights : numDirectionalLights),renderable.lights == null ? 0 : (numPointLights < 0 ? defaultNumPointLights : numPointLights),renderable.lights == null ? 0 : (numSpotLights < 0 ? defaultNumSpotLights : numSpotLights),renderable.bones == null ? 0 : (numBones < 0 ? defaultNumBones : numBones));
-  }
-  return new GLES10Shader();
+  return new DefaultShader(renderable,config);
 }

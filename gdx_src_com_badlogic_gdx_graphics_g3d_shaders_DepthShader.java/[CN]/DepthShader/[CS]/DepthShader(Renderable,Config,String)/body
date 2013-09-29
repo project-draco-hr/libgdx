@@ -1,0 +1,3 @@
+{
+  this(renderable,config,prefix,config.vertexShader != null ? config.vertexShader : getDefaultVertexShader(),config.fragmentShader != null ? config.fragmentShader : getDefaultFragmentShader());
+}

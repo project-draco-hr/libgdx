@@ -1,9 +1,12 @@
 {
   p("public Object getArrayElement(Type type, Object obj, int i) {");
+  p("    String param = type.getName();");
+  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  JType type : types) {
     if (!(type instanceof JArrayType))     continue;
-    p("   if(type.getName().equals(\"" + type.getQualifiedSourceName() + "\")) return (("+ type.getQualifiedSourceName()+ ")obj)[i];");
+    pc.add(type.getQualifiedSourceName(),"return ((" + type.getQualifiedSourceName() + ")obj)[i];");
   }
+  pc.print();
   p("	return null;");
   p("}");
 }
