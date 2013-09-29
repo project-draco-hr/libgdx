@@ -1,5 +1,7 @@
 {
   p("public void setArrayElement(Type type, Object obj, int i, Object value) {");
+  p("    String param = type.getName();");
+  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  JType type : types) {
     if (!(type instanceof JArrayType))     continue;
     String value=((JArrayType)type).getComponentType().getErasedType().getQualifiedSourceName();
@@ -9,7 +11,8 @@
  else {
       value="(" + value + ")value";
     }
-    p("   if(type.getName().equals(\"" + type.getQualifiedSourceName() + "\")) (("+ type.getQualifiedSourceName()+ ")obj)[i] = "+ value+ ";");
+    pc.add(type.getQualifiedSourceName(),"((" + type.getQualifiedSourceName() + ")obj)[i] = "+ value+ ";");
   }
+  pc.print();
   p("}");
 }

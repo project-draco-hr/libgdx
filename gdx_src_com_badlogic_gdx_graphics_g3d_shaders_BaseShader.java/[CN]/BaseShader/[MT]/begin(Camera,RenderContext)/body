@@ -3,5 +3,5 @@
   this.context=context;
   program.begin();
   currentMesh=null;
-  for (  final int i : globalUniforms.items)   if (setters.get(i) != null)   setters.get(i).set(this,i,null);
+  for (  final int i : globalUniforms.items)   if (setters.get(i) != null)   setters.get(i).set(this,i,null,null);
 }
