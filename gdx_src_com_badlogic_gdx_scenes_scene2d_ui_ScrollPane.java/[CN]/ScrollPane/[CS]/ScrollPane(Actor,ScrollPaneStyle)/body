@@ -22,7 +22,7 @@
           draggingPointer=pointer;
           return true;
         }
-        setScrollX(amountX + areaWidth * (x < hKnobBounds.x ? -1 : 1));
+        setScrollX(amountX + getPageScrollX() * (x < hKnobBounds.x ? -1 : 1));
         return true;
       }
       if (scrollY && vScrollBounds.contains(x,y)) {
@@ -35,7 +35,7 @@
           draggingPointer=pointer;
           return true;
         }
-        setScrollY(amountY + areaHeight * (y < vKnobBounds.y ? 1 : -1));
+        setScrollY(amountY + getPageScrollY() * (y < vKnobBounds.y ? 1 : -1));
         return true;
       }
       return false;
