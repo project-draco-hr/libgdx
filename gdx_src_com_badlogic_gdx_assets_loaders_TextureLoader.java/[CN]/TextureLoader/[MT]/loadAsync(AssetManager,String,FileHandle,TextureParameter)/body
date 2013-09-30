@@ -1,6 +1,6 @@
 {
   info.filename=fileName;
-  if (parameter == null || (parameter != null && parameter.textureData == null)) {
+  if (parameter == null || parameter.textureData == null) {
     Pixmap pixmap=null;
     Format format=null;
     boolean genMipMaps=false;
