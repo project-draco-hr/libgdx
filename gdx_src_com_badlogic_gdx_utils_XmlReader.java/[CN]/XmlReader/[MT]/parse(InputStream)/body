@@ -1,3 +1,10 @@
 {
-  return parse(new InputStreamReader(input,"ISO-8859-1"));
+  Reader r=null;
+  try {
+    r=new InputStreamReader(input,"ISO-8859-1");
+    return parse(r);
+  }
+  finally {
+    StreamUtils.closeQuietly(r);
+  }
 }
