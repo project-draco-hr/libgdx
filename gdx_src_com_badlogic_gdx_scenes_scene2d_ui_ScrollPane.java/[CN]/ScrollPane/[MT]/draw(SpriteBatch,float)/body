@@ -23,7 +23,7 @@
     widgetCullingArea.height=widgetAreaBounds.height;
     ((Cullable)widget).setCullingArea(widgetCullingArea);
   }
-  ScissorStack.calculateScissors(getStage().getCamera(),batch.getTransformMatrix(),widgetAreaBounds,scissorBounds);
+  getStage().calculateScissors(widgetAreaBounds,scissorBounds);
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (style.background != null)   style.background.draw(batch,0,0,getWidth(),getHeight());
