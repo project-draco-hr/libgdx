@@ -1,4 +1,0 @@
-{
-  StreamReader reader=new StreamReader(webResponse.GetResponseStream());
-  return reader.ReadToEnd();
-}

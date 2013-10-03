@@ -1,3 +1,0 @@
-{
-  GL.DrawElements(BeginMode.wrap(mode),count,DrawElementsType.wrap(type),IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(indices)));
-}

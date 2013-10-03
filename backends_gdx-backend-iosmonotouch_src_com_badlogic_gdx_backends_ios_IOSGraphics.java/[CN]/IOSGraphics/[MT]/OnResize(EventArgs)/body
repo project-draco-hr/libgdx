@@ -1,5 +1,0 @@
-{
-  super.OnResize(event);
-  MakeCurrent();
-  Gdx.app.debug("IOSGraphics","iOS OnResize(...) is not implement (don't think it is needed?).");
-}

@@ -1,6 +1,0 @@
-{
-  if (soundId >= 0) {
-    AVAudioPlayer player=players[(int)soundId];
-    if (!player.get_Playing() && player.get_CurrentTime() > 0)     playQueue.offer(player);
-  }
-}
