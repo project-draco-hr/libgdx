@@ -1,5 +1,10 @@
 {
-  if (size < 1)   throw new GdxRuntimeException("cannot select from empty array (size < 1)");
+  if (size < 1) {
+    throw new GdxRuntimeException("cannot select from empty array (size < 1)");
+  }
+ else   if (kthLowest > size) {
+    throw new GdxRuntimeException("Kth rank is larger than size. k: " + kthLowest + ", size: "+ size);
+  }
   int idx;
   if (kthLowest == 1) {
     idx=fastMin(items,comp,size);
