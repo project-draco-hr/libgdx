@@ -1,6 +1,6 @@
 {
-  if (nthLowest < 1) {
+  if (kthLowest < 1) {
     throw new GdxRuntimeException("nth_lowest must be greater than 0, 1 = first, 2 = second...");
   }
-  return Select.instance().selectIndex(items,comparator,nthLowest,size);
+  return Select.instance().selectIndex(items,comparator,kthLowest,size);
 }
