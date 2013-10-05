@@ -101,10 +101,6 @@
         boundsY=bgBottomHeight;
       }
  else {
-        System.out.println("height: " + height);
-        System.out.println("areaHeight: " + areaHeight);
-        System.out.println("bgBottomHeight: " + bgBottomHeight);
-        System.out.println("bgTopHeight: " + bgTopHeight);
         boundsY=height - bgTopHeight - hScrollHeight;
       }
       hScrollBounds.set(boundsX,boundsY,areaWidth,hScrollHeight);
