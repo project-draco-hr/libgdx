@@ -6,8 +6,8 @@
     Color color=getColor();
     batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
     Stage stage=getStage();
-    stageToLocalCoordinates(tmpPosition.set(0,-1));
-    stageToLocalCoordinates(tmpSize.set(stage.getWidth() + 1,stage.getHeight()));
+    stageToLocalCoordinates(tmpPosition.set(0,0));
+    stageToLocalCoordinates(tmpSize.set(stage.getWidth(),stage.getHeight()));
     style.stageBackground.draw(batch,x + tmpPosition.x,y + tmpPosition.y,x + tmpSize.x,y + tmpSize.y);
   }
   super.drawBackground(batch,parentAlpha);
