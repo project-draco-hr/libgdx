@@ -1,4 +1,0 @@
-{
-  IntPtr pixelsPointer=pixels != null ? IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(pixels)) : null;
-  GL.TexImage2D(TextureTarget.wrap(target),level,PixelInternalFormat.wrap(internalformat),width,height,border,PixelFormat.wrap(format),PixelType.wrap(type),pixelsPointer);
-}

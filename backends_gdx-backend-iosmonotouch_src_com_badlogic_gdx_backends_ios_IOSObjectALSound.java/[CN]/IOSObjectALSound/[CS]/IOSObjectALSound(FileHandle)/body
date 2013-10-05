@@ -1,4 +1,0 @@
-{
-  soundPath=filePath.file().getPath().replace('\\','/');
-  soundBuffer=OALSimpleAudio.sharedInstance().preloadEffect(soundPath);
-}
