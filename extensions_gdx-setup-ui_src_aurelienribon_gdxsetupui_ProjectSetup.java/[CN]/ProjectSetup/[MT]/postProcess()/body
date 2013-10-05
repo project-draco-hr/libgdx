@@ -30,14 +30,8 @@
     FileUtils.moveDirectory(src,dst);
   }
   if (cfg.isIosIncluded) {
-    File src=new File(tmpDst,"prj-ios");
-    File dst=new File(tmpDst,cfg.projectName + cfg.suffixIos);
-    move(src,"my-gdx-game-ios.csproj",cfg.projectName + cfg.suffixIos + ".csproj");
-    move(src,"my-gdx-game-ios.sln",cfg.projectName + cfg.suffixIos + ".sln");
-    templateDir(src);
-    FileUtils.moveDirectory(src,dst);
-    src=new File(tmpDst,"prj-robovm");
-    dst=new File(tmpDst,cfg.projectName + cfg.suffixRobovm);
+    File src=new File(tmpDst,"prj-robovm");
+    File dst=new File(tmpDst,cfg.projectName + cfg.suffixRobovm);
     move(src,"src/RobovmLauncher.java","src/" + cfg.packageName.replace('.','/') + "/RobovmLauncher.java");
     templateDir(src);
     FileUtils.moveDirectory(src,dst);

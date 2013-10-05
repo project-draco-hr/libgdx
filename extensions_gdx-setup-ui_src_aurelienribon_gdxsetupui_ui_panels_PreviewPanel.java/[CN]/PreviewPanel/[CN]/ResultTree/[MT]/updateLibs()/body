@@ -19,7 +19,6 @@
     for (    String path : def.libsDesktop)     pathToNodes(path,desktopLibsNode);
     for (    String path : def.libsAndroid)     pathToNodes(path,androidLibsNode);
     for (    String path : def.libsHtml)     pathToNodes(path,htmlLibsNode);
-    for (    String path : def.libsIos)     pathToNodes(path,iosLibsNode);
     for (    String path : def.libsRobovm)     pathToNodes(path,robovmLibsNode);
     for (    String path : def.data)     pathToNodes(path,dataNode);
   }
