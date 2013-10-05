@@ -29,4 +29,5 @@
   values.put("%PACKAGE%",packageName);
   values.put("%MAIN_CLASS%",mainClass);
   copyAndReplace(outputDir,project,values);
+  new File(outputDir,"gradlew").setExecutable(true);
 }
