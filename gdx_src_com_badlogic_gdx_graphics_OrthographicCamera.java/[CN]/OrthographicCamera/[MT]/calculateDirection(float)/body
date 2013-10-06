@@ -1,7 +1,0 @@
-{
-  Matrix4 transform=new Matrix4();
-  Vector3 dir=new Vector3(-1,0,1).nor();
-  transform.setToRotation(new Vector3(1,0,1).nor(),angle);
-  dir.mul(transform).nor();
-  return dir;
-}

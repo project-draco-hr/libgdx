@@ -1,8 +1,8 @@
 {
-  GdxTest test=new NetAPITest();
+  GdxTest test=new PixelPerfectTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.useGL20=test.needsGL20();
-  config.width=1024;
-  config.height=768;
+  config.width=320;
+  config.height=240;
   new LwjglApplication(test,config);
 }
