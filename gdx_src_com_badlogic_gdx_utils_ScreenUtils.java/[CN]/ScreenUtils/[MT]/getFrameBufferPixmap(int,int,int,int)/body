@@ -1,0 +1,9 @@
+{
+  Gdx.gl.glPixelStorei(GL10.GL_PACK_ALIGNMENT,1);
+  final Pixmap pixmap=new Pixmap(w,h,Format.RGBA8888);
+  ByteBuffer pixels=pixmap.getPixels();
+  byte[] bytes=getFrameBufferPixels(true);
+  pixels.put(bytes);
+  pixels.flip();
+  return pixmap;
+}
