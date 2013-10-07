@@ -1,0 +1,7 @@
+{
+  final int word=index >>> 6;
+  checkCapacity(word);
+  long oldBits=bits[word];
+  bits[word]|=1L << (index & 0x3F);
+  return bits[word] == oldBits;
+}
