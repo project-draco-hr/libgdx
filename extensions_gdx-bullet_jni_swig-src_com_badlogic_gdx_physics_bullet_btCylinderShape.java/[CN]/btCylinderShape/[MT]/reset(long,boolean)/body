@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(gdxBulletJNI.btCylinderShape_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(gdxBulletJNI.btCPUVertexBufferDescriptor_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

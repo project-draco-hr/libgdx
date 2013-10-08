@@ -1,0 +1,3 @@
+{
+  return new btQuaternion(gdxBulletJNI.shortestArcQuat(btVector3.getCPtr(v0),v0,btVector3.getCPtr(v1),v1),true);
+}

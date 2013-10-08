@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(gdxBulletJNI.btDbvtBroadphase_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

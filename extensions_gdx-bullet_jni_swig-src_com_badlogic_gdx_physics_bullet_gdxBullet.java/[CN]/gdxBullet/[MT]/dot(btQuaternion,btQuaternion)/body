@@ -1,0 +1,3 @@
+{
+  return gdxBulletJNI.dot(btQuaternion.getCPtr(q1),q1,btQuaternion.getCPtr(q2),q2);
+}
