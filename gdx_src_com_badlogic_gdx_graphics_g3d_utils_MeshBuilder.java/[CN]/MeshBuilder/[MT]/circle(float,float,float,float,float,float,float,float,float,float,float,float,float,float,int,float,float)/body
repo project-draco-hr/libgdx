@@ -1,4 +1,5 @@
 {
+  ensureTriangles(divisions + 2,divisions);
   final float ao=MathUtils.degreesToRadians * angleFrom;
   final float step=(MathUtils.degreesToRadians * (angleTo - angleFrom)) / divisions;
   final Vector3 sx=tempV1.set(tangentX,tangentY,tangentZ).scl(width * 0.5f);
