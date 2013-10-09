@@ -1,0 +1,3 @@
+{
+  return new btQuaternion(gdxBulletJNI.btQuaternion_nearest(swigCPtr,this,btQuaternion.getCPtr(qd),qd),true);
+}

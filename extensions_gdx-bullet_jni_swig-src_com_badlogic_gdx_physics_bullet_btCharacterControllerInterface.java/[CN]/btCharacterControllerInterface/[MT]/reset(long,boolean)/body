@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(gdxBulletJNI.btCharacterControllerInterface_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}
