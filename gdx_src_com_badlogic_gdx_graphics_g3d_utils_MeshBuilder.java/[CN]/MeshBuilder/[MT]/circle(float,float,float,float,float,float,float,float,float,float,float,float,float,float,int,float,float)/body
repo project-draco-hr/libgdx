@@ -1,23 +1,4 @@
 {
   ensureTriangles(divisions + 2,divisions);
-  final float ao=MathUtils.degreesToRadians * angleFrom;
-  final float step=(MathUtils.degreesToRadians * (angleTo - angleFrom)) / divisions;
-  final Vector3 sx=tempV1.set(tangentX,tangentY,tangentZ).scl(width * 0.5f);
-  final Vector3 sy=tempV2.set(binormalX,binormalY,binormalZ).scl(height * 0.5f);
-  VertexInfo curr=vertTmp3.set(null,null,null,null);
-  curr.hasUV=curr.hasPosition=curr.hasNormal=true;
-  curr.uv.set(.5f,.5f);
-  curr.position.set(centerX,centerY,centerZ);
-  curr.normal.set(normalX,normalY,normalZ);
-  final short center=vertex(curr);
-  float angle=0f;
-  for (int i=0; i <= divisions; i++) {
-    angle=ao + step * i;
-    final float x=MathUtils.cos(angle);
-    final float y=MathUtils.sin(angle);
-    curr.uv.set(.5f + .5f * x,.5f + .5f * y);
-    curr.position.set(centerX,centerY,centerZ).add(sx.x * x + sy.x * y,sx.y * x + sy.y * y,sx.z * x + sy.z * y);
-    vertex(curr);
-    if (i != 0)     triangle((short)(vindex - 1),(short)(vindex - 2),center);
-  }
+  makecircle(width,height,centerX,centerY,centerZ,normalX,normalY,normalZ,tangentX,tangentY,tangentZ,binormalX,binormalY,binormalZ,divisions,angleFrom,angleTo,false);
 }
