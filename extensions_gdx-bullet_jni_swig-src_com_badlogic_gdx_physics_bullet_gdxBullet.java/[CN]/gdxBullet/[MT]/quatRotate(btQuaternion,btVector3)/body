@@ -1,0 +1,3 @@
+{
+  return new btVector3(gdxBulletJNI.quatRotate(btQuaternion.getCPtr(rotation),rotation,btVector3.getCPtr(v),v),true);
+}

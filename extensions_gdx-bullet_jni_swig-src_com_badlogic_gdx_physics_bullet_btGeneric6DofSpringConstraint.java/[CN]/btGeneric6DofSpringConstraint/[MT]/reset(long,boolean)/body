@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(gdxBulletJNI.btGeneric6DofSpringConstraint_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

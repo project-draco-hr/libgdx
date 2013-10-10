@@ -1,0 +1,3 @@
+{
+  return new btVector3(gdxBulletJNI.btVector3_rotate(swigCPtr,this,btVector3.getCPtr(wAxis),wAxis,angle),true);
+}
