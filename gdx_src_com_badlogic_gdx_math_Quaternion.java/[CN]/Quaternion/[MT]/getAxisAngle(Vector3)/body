@@ -12,5 +12,5 @@
     axis.y=(float)(this.y / s);
     axis.z=(float)(this.z / s);
   }
-  return (float)Math.toDegrees(angle);
+  return MathUtils.radiansToDegrees * angle;
 }
