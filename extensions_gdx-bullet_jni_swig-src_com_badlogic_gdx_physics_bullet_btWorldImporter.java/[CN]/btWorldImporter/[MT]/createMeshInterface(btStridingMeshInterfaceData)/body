@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btWorldImporter_createMeshInterface(swigCPtr,this,btStridingMeshInterfaceData.getCPtr(meshData),meshData);
-  return (cPtr == 0) ? null : new btTriangleIndexVertexArray(cPtr,false);
-}

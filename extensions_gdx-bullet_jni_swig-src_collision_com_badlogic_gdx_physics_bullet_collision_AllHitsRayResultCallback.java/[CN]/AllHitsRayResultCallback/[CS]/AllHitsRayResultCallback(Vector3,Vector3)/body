@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_AllHitsRayResultCallback(rayFromWorld,rayToWorld),true);
+  CollisionJNI.AllHitsRayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

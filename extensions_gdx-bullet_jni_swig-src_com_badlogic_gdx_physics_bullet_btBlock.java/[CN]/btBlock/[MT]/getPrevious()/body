@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btBlock_previous_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btBlock(cPtr,false);
-}

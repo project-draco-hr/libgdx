@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.btOverlappingPairCache_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}
