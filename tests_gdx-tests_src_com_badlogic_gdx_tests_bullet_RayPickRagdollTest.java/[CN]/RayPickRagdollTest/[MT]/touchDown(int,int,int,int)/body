@@ -9,11 +9,10 @@
       btRigidBody body=(btRigidBody)(cb.getCollisionObject());
       if (body != null && !body.isStaticObject() && !body.isKinematicObject()) {
         pickedBody=body;
-        body.setActivationState(gdxBullet.DISABLE_DEACTIVATION);
-        btVector3 hitpoint=cb.getHitPointWorld();
-        Vector3.tmp.set(hitpoint.getX(),hitpoint.getY(),hitpoint.getZ());
-        Vector3.tmp.mul(body.getCenterOfMassTransform().inv());
-        pickConstraint=new btPoint2PointConstraint(body,Vector3.tmp);
+        body.setActivationState(Collision.DISABLE_DEACTIVATION);
+        tmpV.set(cb.getHitPointWorld().getFloats());
+        tmpV.mul(body.getCenterOfMassTransform().inv());
+        pickConstraint=new btPoint2PointConstraint(body,tmpV);
         btConstraintSetting setting=pickConstraint.getSetting();
         setting.setImpulseClamp(30f);
         setting.setTau(0.001f);
