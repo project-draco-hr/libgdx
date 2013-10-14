@@ -2,18 +2,18 @@
   sizeInvalid=false;
   SnapshotArray<Actor> children=getChildren();
   int n=children.size;
-  prefWidth=0;
-  prefHeight=spacing * (n - 1);
+  prefWidth=spacing * (n - 1);
+  prefHeight=0;
   for (int i=0; i < n; i++) {
     Actor child=children.get(i);
     if (child instanceof Layout) {
       Layout layout=(Layout)child;
-      prefWidth=Math.max(prefWidth,layout.getPrefWidth());
-      prefHeight+=layout.getPrefHeight();
+      prefWidth+=layout.getPrefWidth();
+      prefHeight=Math.max(prefHeight,layout.getPrefHeight());
     }
  else {
-      prefWidth=Math.max(prefWidth,child.getWidth());
-      prefHeight+=child.getHeight();
+      prefWidth+=child.getWidth();
+      prefHeight=Math.max(prefHeight,child.getHeight());
     }
   }
 }
