@@ -28,7 +28,7 @@
     if (i != 0)     rect((short)(vindex - 3),(short)(vindex - 1),(short)(vindex - 2),(short)(vindex - 4));
   }
   if (close) {
-    circle(width,depth,0,hh,0,0,1,0,1,0,0,0,0,1,divisions,angleFrom,angleTo);
-    circle(width,depth,0,-hh,0,0,-1,0,-1,0,0,0,0,1,divisions,180f - angleTo,180f - angleFrom);
+    ellipse(width,depth,0,0,divisions,0,hh,0,0,1,0,1,0,0,0,0,1,angleFrom,angleTo);
+    ellipse(width,depth,0,0,divisions,0,-hh,0,0,-1,0,-1,0,0,0,0,1,180f - angleTo,180f - angleFrom);
   }
 }
