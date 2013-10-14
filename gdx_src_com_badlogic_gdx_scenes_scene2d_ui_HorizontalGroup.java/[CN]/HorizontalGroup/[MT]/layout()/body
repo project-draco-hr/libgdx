@@ -17,8 +17,8 @@
       height=child.getHeight();
     }
     float y;
-    if ((alignment & Align.left) != 0)     y=0;
- else     if ((alignment & Align.right) != 0)     y=groupHeight - height;
+    if ((alignment & Align.bottom) != 0)     y=0;
+ else     if ((alignment & Align.top) != 0)     y=groupHeight - height;
  else     y=(groupHeight - height) / 2;
     if (reverse)     x+=(width + spacing) * dir;
     child.setBounds(x,y,width,height);
