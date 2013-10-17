@@ -1,15 +1,15 @@
 {
-  Rect newNode=ScoreRect(rect,method);
+  Rect newNode=scoreRect(rect,method);
   if (newNode.height == 0)   return null;
   int numRectanglesToProcess=freeRectangles.size;
   for (int i=0; i < numRectanglesToProcess; ++i) {
-    if (SplitFreeNode(freeRectangles.get(i),newNode)) {
+    if (splitFreeNode(freeRectangles.get(i),newNode)) {
       freeRectangles.removeIndex(i);
       --i;
       --numRectanglesToProcess;
     }
   }
-  PruneFreeList();
+  pruneFreeList();
   Rect bestNode=new Rect();
   bestNode.set(rect);
   bestNode.score1=newNode.score1;

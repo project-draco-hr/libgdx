@@ -3,6 +3,8 @@
   image=rect.image;
   offsetX=rect.offsetX;
   offsetY=rect.offsetY;
+  regionWidth=rect.regionWidth;
+  regionHeight=rect.regionHeight;
   originalWidth=rect.originalWidth;
   originalHeight=rect.originalHeight;
   x=rect.x;
@@ -17,4 +19,6 @@
   canRotate=rect.canRotate;
   score1=rect.score1;
   score2=rect.score2;
+  file=rect.file;
+  isPatch=rect.isPatch;
 }

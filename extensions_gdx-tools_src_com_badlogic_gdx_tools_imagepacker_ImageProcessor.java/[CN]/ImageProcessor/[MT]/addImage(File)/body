@@ -12,5 +12,6 @@
   name=name.substring(rootPath.length());
   int dotIndex=name.lastIndexOf('.');
   if (dotIndex != -1)   name=name.substring(0,dotIndex);
-  addImage(image,name);
+  Rect rect=addImage(image,name);
+  if (rect != null && settings.limitMemory)   rect.unloadImage(file);
 }
