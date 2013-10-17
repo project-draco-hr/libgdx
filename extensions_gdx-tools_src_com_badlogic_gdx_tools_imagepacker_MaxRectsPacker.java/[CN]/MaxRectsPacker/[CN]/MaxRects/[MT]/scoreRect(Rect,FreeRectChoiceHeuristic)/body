@@ -7,20 +7,20 @@
   Rect newNode=null;
 switch (method) {
 case BestShortSideFit:
-    newNode=FindPositionForNewNodeBestShortSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
+    newNode=findPositionForNewNodeBestShortSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
   break;
 case BottomLeftRule:
-newNode=FindPositionForNewNodeBottomLeft(width,height,rotatedWidth,rotatedHeight,rotate);
+newNode=findPositionForNewNodeBottomLeft(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 case ContactPointRule:
-newNode=FindPositionForNewNodeContactPoint(width,height,rotatedWidth,rotatedHeight,rotate);
+newNode=findPositionForNewNodeContactPoint(width,height,rotatedWidth,rotatedHeight,rotate);
 newNode.score1=-newNode.score1;
 break;
 case BestLongSideFit:
-newNode=FindPositionForNewNodeBestLongSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
+newNode=findPositionForNewNodeBestLongSideFit(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 case BestAreaFit:
-newNode=FindPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight,rotate);
+newNode=findPositionForNewNodeBestAreaFit(width,height,rotatedWidth,rotatedHeight,rotate);
 break;
 }
 if (newNode.height == 0) {
