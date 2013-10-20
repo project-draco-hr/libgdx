@@ -1,0 +1,11 @@
+{
+  final Mesh mesh=model.meshes.get(0);
+  final btConvexHullShape shape=new btConvexHullShape(mesh.getVerticesBuffer(),mesh.getNumVertices(),mesh.getVertexSize());
+  if (!optimize)   return shape;
+  final btShapeHull hull=new btShapeHull(shape);
+  hull.buildHull(shape.getMargin());
+  final btConvexHullShape result=new btConvexHullShape(hull);
+  shape.dispose();
+  hull.dispose();
+  return result;
+}
