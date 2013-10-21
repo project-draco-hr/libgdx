@@ -3,9 +3,9 @@
   Pool pool=getPool();
   setPool(null);
   try {
-    if (!begun) {
+    if (!began) {
       begin();
-      begun=true;
+      began=true;
     }
     time+=delta;
     complete=time >= duration;
