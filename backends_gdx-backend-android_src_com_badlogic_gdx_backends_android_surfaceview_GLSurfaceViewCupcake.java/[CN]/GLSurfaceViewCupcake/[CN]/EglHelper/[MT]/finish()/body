@@ -1,11 +1,12 @@
 {
-  if (mEglSurface != null) {
-    mEgl.eglMakeCurrent(mEglDisplay,EGL10.EGL_NO_SURFACE,EGL10.EGL_NO_SURFACE,EGL10.EGL_NO_CONTEXT);
-    mEgl.eglDestroySurface(mEglDisplay,mEglSurface);
-    mEglSurface=null;
+  if (LOG_EGL) {
+    Log.w("EglHelper","finish() tid=" + Thread.currentThread().getId());
   }
   if (mEglContext != null) {
-    mEgl.eglDestroyContext(mEglDisplay,mEglContext);
+    GLSurfaceViewCupcake view=mGLSurfaceViewWeakRef.get();
+    if (view != null) {
+      view.mEGLContextFactory.destroyContext(mEgl,mEglDisplay,mEglContext);
+    }
     mEglContext=null;
   }
   if (mEglDisplay != null) {

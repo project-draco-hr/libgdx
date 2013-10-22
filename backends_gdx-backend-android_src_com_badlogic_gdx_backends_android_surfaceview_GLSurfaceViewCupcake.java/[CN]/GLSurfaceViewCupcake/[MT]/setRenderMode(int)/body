@@ -1,6 +1,3 @@
 {
-  mRenderMode=renderMode;
-  if (mGLThread != null) {
-    mGLThread.setRenderMode(renderMode);
-  }
+  mGLThread.setRenderMode(renderMode);
 }

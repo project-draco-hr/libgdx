@@ -1,12 +1,14 @@
 {
-synchronized (this) {
-    mDone=true;
-    notify();
-  }
-  try {
-    join();
-  }
- catch (  InterruptedException ex) {
-    Thread.currentThread().interrupt();
+synchronized (sGLThreadManager) {
+    mShouldExit=true;
+    sGLThreadManager.notifyAll();
+    while (!mExited) {
+      try {
+        sGLThreadManager.wait();
+      }
+ catch (      InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
+    }
   }
 }
