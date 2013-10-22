@@ -1,5 +1,5 @@
 {
-  if (hasZeroValue && zeroValue == value)   return true;
+  if (hasZeroValue && Math.abs(zeroValue - value) <= epsilon)   return true;
   float[] valueTable=this.valueTable;
   for (int i=capacity + stashSize; i-- > 0; )   if (Math.abs(valueTable[i] - value) <= epsilon)   return true;
   return false;
