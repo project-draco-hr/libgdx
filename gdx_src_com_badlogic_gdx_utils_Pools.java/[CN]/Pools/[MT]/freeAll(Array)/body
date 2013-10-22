@@ -4,7 +4,7 @@
     Object object=objects.get(i);
     if (object == null)     continue;
     ReflectionPool pool=typePools.get(object.getClass());
-    if (pool == null)     return;
+    if (pool == null)     continue;
     pool.free(object);
   }
 }
