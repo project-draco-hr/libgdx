@@ -1,0 +1,6 @@
+{
+  btVector3 startVector=cp.getPositionWorldOnA();
+  btVector3 endVector=cp.getPositionWorldOnB();
+  vectors=new Vector3[]{new Vector3(startVector.getFloats()),new Vector3(endVector.getFloats())};
+  return 1.f;
+}

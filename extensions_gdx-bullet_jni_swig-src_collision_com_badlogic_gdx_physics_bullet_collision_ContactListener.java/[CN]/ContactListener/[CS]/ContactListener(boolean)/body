@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ContactListener(dummy),true);
+  CollisionJNI.ContactListener_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

@@ -1,0 +1,3 @@
+{
+  return new btRigidBody(DynamicsJNI.btSliderConstraint_getRigidBodyA(swigCPtr,this),false);
+}

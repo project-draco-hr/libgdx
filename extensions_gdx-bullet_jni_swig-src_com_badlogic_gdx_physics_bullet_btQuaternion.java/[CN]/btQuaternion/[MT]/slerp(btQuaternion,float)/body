@@ -1,3 +1,0 @@
-{
-  return new btQuaternion(gdxBulletJNI.btQuaternion_slerp(swigCPtr,this,btQuaternion.getCPtr(q),q,t),true);
-}

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btWorldImporter_createPoint2PointConstraint__SWIG_1(swigCPtr,this,btRigidBody.getCPtr(rbA),rbA,pivotInA);
-  return (cPtr == 0) ? null : new btPoint2PointConstraint(cPtr,false);
-}
