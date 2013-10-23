@@ -1,6 +1,6 @@
 {
   DistanceInternalResultCallback result=new DistanceInternalResultCallback();
-  gdxBullet.setGContactBreakingThreshold(100f);
+  Collision.setGContactBreakingThreshold(100f);
   collisionWorld.contactPairTest(colObjA,colObjB,result);
-  gdxBullet.setGContactBreakingThreshold(0.02f);
+  Collision.setGContactBreakingThreshold(0.02f);
 }
