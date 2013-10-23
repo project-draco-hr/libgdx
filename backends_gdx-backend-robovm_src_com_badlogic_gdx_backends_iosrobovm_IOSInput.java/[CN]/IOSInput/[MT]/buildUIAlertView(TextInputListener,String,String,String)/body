@@ -1,21 +1,18 @@
 {
-  UIAlertViewDelegate delegate=new UIAlertViewDelegate.Adapter(){
+  delegate=new UIAlertViewDelegate.Adapter(){
     @Override public void clicked(    UIAlertView view,    int clicked){
       if (clicked == 0) {
         listener.canceled();
       }
  else       if (clicked == 1) {
-        NSArray<UIView> views=view.getSubviews();
-        for (        UIView uiView : views) {
-          if (uiView != null && uiView instanceof UITextField) {
-            UITextField tf=(UITextField)uiView;
-            listener.input(tf.getText());
-          }
-        }
+        UITextField textField=view.getTextField(0);
+        listener.input(textField.getText());
       }
+      delegate=null;
     }
     @Override public void cancel(    UIAlertView view){
       listener.canceled();
+      delegate=null;
     }
   }
 ;
@@ -25,11 +22,8 @@
   uiAlertView.addButton("Ok");
   uiAlertView.setAlertViewStyle(UIAlertViewStyle.PlainTextInput);
   uiAlertView.setDelegate(delegate);
-  for (  UIView uiView : (NSArray<UIView>)uiAlertView.getSubviews()) {
-    if (uiView != null && uiView instanceof UITextField) {
-      UITextField tf=(UITextField)uiView;
-      tf.setText(text);
-    }
-  }
+  UITextField textField=uiAlertView.getTextField(0);
+  textField.setPlaceholder(placeholder);
+  textField.setText(text);
   return uiAlertView;
 }
