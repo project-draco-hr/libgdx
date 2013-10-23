@@ -1,7 +1,7 @@
 {
   Gdx.gl.glClearColor(.3f,.3f,.3f,1);
   renderer=new ShapeRenderer();
-  generateUIResources();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   stage=new Stage();
   resetPositions();
   table=new Table();
@@ -12,10 +12,7 @@
   interpolationNames=new String[interpolationMembers];
   for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationNames[i]=interpolationFields[i].getName();
   selectedInterpolation=interpolationNames[0];
-  ListStyle listStyle=new ListStyle();
-  listStyle.font=font;
-  listStyle.selection=new TextureRegionDrawable(new TextureRegion(blue));
-  final List list=new List(interpolationNames,listStyle);
+  list=new List(interpolationNames,skin);
   list.addListener(new ChangeListener(){
     @Override public void changed(    ChangeEvent event,    Actor actor){
       selectedInterpolation=list.getSelection();
