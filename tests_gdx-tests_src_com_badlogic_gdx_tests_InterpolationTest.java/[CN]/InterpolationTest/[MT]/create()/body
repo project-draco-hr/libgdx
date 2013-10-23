@@ -1,23 +1,46 @@
 {
+  Gdx.gl.glClearColor(.3f,.3f,.3f,1);
   renderer=new ShapeRenderer();
-  stage=new Stage(0,0,true);
-  Gdx.input.setInputProcessor(new InputMultiplexer(stage,new InputAdapter(){
-    public boolean touchDown(    int x,    int y,    int pointer,    int button){
-      Vector2 current=getCurrentPosition();
-      position.set(current);
-      targetPosition.set(x - 10,Gdx.graphics.getHeight() - y - 10);
-      timer=0;
+  generateUIResources();
+  stage=new Stage();
+  resetPositions();
+  table=new Table();
+  table.setFillParent(true);
+  Field[] interpolationFields=ClassReflection.getFields(Interpolation.class);
+  int interpolationMembers=0;
+  for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationMembers++;
+  interpolationNames=new String[interpolationMembers];
+  for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationNames[i]=interpolationFields[i].getName();
+  selectedInterpolation=interpolationNames[0];
+  ListStyle listStyle=new ListStyle();
+  listStyle.font=font;
+  listStyle.selection=new TextureRegionDrawable(new TextureRegion(blue));
+  final List list=new List(interpolationNames,listStyle);
+  list.addListener(new ChangeListener(){
+    @Override public void changed(    ChangeEvent event,    Actor actor){
+      selectedInterpolation=list.getSelection();
+      time=0;
+      resetPositions();
+    }
+  }
+);
+  table.add(new ScrollPane(list)).expand().fillY().left();
+  stage.addActor(table);
+  Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter(){
+    @Override public boolean scrolled(    int amount){
+      if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT))       return false;
+      duration-=amount / 15f;
+      duration=MathUtils.clamp(duration,0,Float.POSITIVE_INFINITY);
+      return true;
+    }
+  }
+,stage,new InputAdapter(){
+    @Override public boolean touchDown(    int screenX,    int screenY,    int pointer,    int button){
+      if (!Float.isNaN(time))       startPosition.set(getPosition(time));
+      targetPosition.set(stage.screenToStageCoordinates(targetPosition.set(screenX,screenY)));
+      time=0;
       return true;
     }
   }
 ));
-  root=new Table();
-  stage.addActor(root);
-  root.pad(10).top().left();
-  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  list=new List(interpolators,skin);
-  ScrollPane scrollPane=new ScrollPane(list,skin);
-  scrollPane.setOverscroll(false,false);
-  scrollPane.setFadeScrollBars(false);
-  root.add(scrollPane).expandY().fillY().prefWidth(110);
 }

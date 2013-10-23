@@ -1,0 +1,8 @@
+{
+  font=new BitmapFont();
+  Pixmap pixmap=new Pixmap(1,1,Format.RGB565);
+  pixmap.setColor(Color.BLUE);
+  pixmap.fill();
+  blue=new Texture(pixmap);
+  pixmap.dispose();
+}
