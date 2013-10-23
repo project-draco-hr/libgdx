@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btCollisionObjectWrapper_shape_get(swigCPtr,this);
-  return (cPtr == 0) ? null : btCollisionShape.newDerivedObject(cPtr,false);
-}

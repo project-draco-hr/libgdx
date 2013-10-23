@@ -1,3 +1,0 @@
-{
-  return new btQuaternion(gdxBulletJNI.inverse(btQuaternion.getCPtr(q),q),true);
-}

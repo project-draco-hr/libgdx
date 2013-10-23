@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBody_getFace(swigCPtr,this,idx);
-  return (cPtr == 0) ? null : new Face(cPtr,false);
-}

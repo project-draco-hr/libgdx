@@ -1,0 +1,3 @@
+{
+  return new btRigidBody(DynamicsJNI.btConeTwistConstraint_getRigidBodyA(swigCPtr,this),false);
+}

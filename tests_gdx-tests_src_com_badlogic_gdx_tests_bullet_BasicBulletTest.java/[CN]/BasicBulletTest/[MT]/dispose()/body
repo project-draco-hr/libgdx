@@ -6,7 +6,7 @@
   collisionConfiguration.dispose();
   for (  btRigidBody body : bodies)   body.dispose();
   bodies.clear();
-  for (  MotionState motionState : motionStates)   motionState.dispose();
+  for (  btDefaultMotionState motionState : motionStates)   motionState.dispose();
   motionStates.clear();
   for (  btCollisionShape shape : shapes)   shape.dispose();
   shapes.clear();
