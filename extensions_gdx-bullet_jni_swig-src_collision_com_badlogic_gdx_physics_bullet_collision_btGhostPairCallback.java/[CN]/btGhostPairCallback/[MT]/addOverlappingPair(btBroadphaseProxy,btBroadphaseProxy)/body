@@ -1,0 +1,4 @@
+{
+  long cPtr=(getClass() == btGhostPairCallback.class) ? CollisionJNI.btGhostPairCallback_addOverlappingPair(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0,btBroadphaseProxy.getCPtr(proxy1),proxy1) : CollisionJNI.btGhostPairCallback_addOverlappingPairSwigExplicitbtGhostPairCallback(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0,btBroadphaseProxy.getCPtr(proxy1),proxy1);
+  return (cPtr == 0) ? null : new btBroadphasePair(cPtr,false);
+}

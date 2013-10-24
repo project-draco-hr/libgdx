@@ -1,4 +1,0 @@
-{
-  long cPtr=CollisionJNI.btDispatcherInfo_stackAllocator_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btStackAlloc(cPtr,false);
-}
