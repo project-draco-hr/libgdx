@@ -1,4 +1,3 @@
 {
-  long cPtr=CollisionJNI.btDispatcher_allocateCollisionAlgorithm(swigCPtr,this,size);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr,false);
+  return CollisionJNI.btDispatcher_allocateCollisionAlgorithm(swigCPtr,this,size);
 }
