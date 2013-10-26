@@ -1,4 +1,3 @@
 {
-  long cPtr=CollisionJNI.btBroadphaseInterface_createProxy(swigCPtr,this,aabbMin,aabbMax,shapeType,userPtr,collisionFilterGroup,collisionFilterMask,btDispatcher.getCPtr(dispatcher),dispatcher,multiSapProxy);
-  return (cPtr == 0) ? null : new btBroadphaseProxy(cPtr,false);
+  return btBroadphaseProxy.internalTemp(CollisionJNI.btBroadphaseInterface_createProxy(swigCPtr,this,aabbMin,aabbMax,shapeType,userPtr,collisionFilterGroup,collisionFilterMask,btDispatcher.getCPtr(dispatcher),dispatcher,multiSapProxy),false);
 }
