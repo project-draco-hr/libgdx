@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.btTriangleShape_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBodyFloatData_joints_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btSoftBodyJointData(cPtr,false);
-}

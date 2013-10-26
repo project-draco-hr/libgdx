@@ -22,7 +22,6 @@
   emitter.getTransparency().setHigh(1,1);
   emitter.getTransparency().setTimeline(new float[]{0,0.2f,0.8f,1});
   emitter.getTransparency().setScaling(new float[]{0,1,0.75f,0});
-  emitter.setFlip(false,true);
   emitter.setMaxParticleCount(200);
   emitter.setImagePath("particle.png");
   addEmitter(name,select,emitter);

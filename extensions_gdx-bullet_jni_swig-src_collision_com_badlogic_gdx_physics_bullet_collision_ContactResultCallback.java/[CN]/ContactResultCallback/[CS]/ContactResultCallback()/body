@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ContactResultCallback(),true);
+  CollisionJNI.ContactResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

@@ -1,7 +1,0 @@
-{
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  Gdx.gl.glClearColor(0,0,0,1);
-  batch.begin();
-  batch.draw(screenCapTex,0,0);
-  batch.end();
-}

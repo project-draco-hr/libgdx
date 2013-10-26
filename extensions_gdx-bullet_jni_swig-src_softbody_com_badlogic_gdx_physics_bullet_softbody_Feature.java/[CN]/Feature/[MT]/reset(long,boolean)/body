@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(SoftbodyJNI.Feature_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

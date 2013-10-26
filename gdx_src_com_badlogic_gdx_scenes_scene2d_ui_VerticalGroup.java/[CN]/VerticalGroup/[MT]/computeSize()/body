@@ -1,9 +1,10 @@
 {
   sizeInvalid=false;
-  prefWidth=0;
-  prefHeight=0;
   SnapshotArray<Actor> children=getChildren();
-  for (int i=0, n=children.size; i < n; i++) {
+  int n=children.size;
+  prefWidth=0;
+  prefHeight=spacing * (n - 1);
+  for (int i=0; i < n; i++) {
     Actor child=children.get(i);
     if (child instanceof Layout) {
       Layout layout=(Layout)child;

@@ -14,6 +14,7 @@
   float angleV=0f;
   VertexInfo curr1=vertTmp3.set(null,null,null,null);
   curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
+  ensureRectangles((divisionsV + 1) * (divisionsU + 1),divisionsV * divisionsU);
   for (int iv=0; iv <= divisionsV; iv++) {
     angleV=avo + stepV * iv;
     v=vs * iv;
