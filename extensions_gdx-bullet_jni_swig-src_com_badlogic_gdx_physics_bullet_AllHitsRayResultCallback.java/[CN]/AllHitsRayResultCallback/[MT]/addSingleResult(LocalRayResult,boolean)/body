@@ -1,3 +1,0 @@
-{
-  return (getClass() == AllHitsRayResultCallback.class) ? gdxBulletJNI.AllHitsRayResultCallback_addSingleResult(swigCPtr,this,LocalRayResult.getCPtr(rayResult),rayResult,normalInWorldSpace) : gdxBulletJNI.AllHitsRayResultCallback_addSingleResultSwigExplicitAllHitsRayResultCallback(swigCPtr,this,LocalRayResult.getCPtr(rayResult),rayResult,normalInWorldSpace);
-}

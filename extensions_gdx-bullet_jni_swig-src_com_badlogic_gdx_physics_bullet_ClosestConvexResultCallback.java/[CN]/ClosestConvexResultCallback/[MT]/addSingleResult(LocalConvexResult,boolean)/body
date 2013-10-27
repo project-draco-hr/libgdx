@@ -1,3 +1,0 @@
-{
-  return (getClass() == ClosestConvexResultCallback.class) ? gdxBulletJNI.ClosestConvexResultCallback_addSingleResult(swigCPtr,this,LocalConvexResult.getCPtr(convexResult),convexResult,normalInWorldSpace) : gdxBulletJNI.ClosestConvexResultCallback_addSingleResultSwigExplicitClosestConvexResultCallback(swigCPtr,this,LocalConvexResult.getCPtr(convexResult),convexResult,normalInWorldSpace);
-}

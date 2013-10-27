@@ -1,0 +1,4 @@
+{
+  long cPtr=ExtrasJNI.btWorldImporter_createHingeConstraint__SWIG_2(swigCPtr,this,btRigidBody.getCPtr(rbA),rbA,rbAFrame,useReferenceFrameA);
+  return (cPtr == 0) ? null : new btHingeConstraint(cPtr,false);
+}

@@ -6,7 +6,6 @@
   emitter.getScale().setHigh(32,32);
   emitter.getTint().setColors(new float[]{1,0.12156863f,0.047058824f});
   emitter.getTransparency().setHigh(1);
-  emitter.setFlip(false,true);
   emitter.setMaxParticleCount(25);
   emitter.setImagePath("particle.png");
   addEmitter(name,select,emitter);

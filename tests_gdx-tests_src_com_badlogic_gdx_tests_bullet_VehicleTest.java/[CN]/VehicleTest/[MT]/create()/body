@@ -27,7 +27,7 @@
   raycaster=new btDefaultVehicleRaycaster((btDynamicsWorld)world.collisionWorld);
   tuning=new btVehicleTuning();
   vehicle=new btRaycastVehicle(tuning,(btRigidBody)chassis.body,raycaster);
-  chassis.body.setActivationState(gdxBullet.DISABLE_DEACTIVATION);
+  chassis.body.setActivationState(Collision.DISABLE_DEACTIVATION);
   vehicle.setCoordinateSystem(0,1,2);
   btWheelInfo wheelInfo;
   Vector3 point=new Vector3();

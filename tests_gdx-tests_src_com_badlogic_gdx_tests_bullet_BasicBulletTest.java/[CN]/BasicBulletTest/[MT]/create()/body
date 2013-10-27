@@ -34,7 +34,8 @@
   bodyInfos.add(sphereInfo);
   ModelInstance ground=new ModelInstance(groundModel);
   instances.add(ground);
-  MotionState groundMotionState=new MotionState(ground.transform);
+  btDefaultMotionState groundMotionState=new btDefaultMotionState();
+  groundMotionState.setWorldTransform(ground.transform);
   motionStates.add(groundMotionState);
   btRigidBody groundBody=new btRigidBody(groundInfo);
   groundBody.setMotionState(groundMotionState);
@@ -46,7 +47,8 @@
         ModelInstance sphere=new ModelInstance(sphereModel);
         instances.add(sphere);
         sphere.transform.trn(x + 0.1f * MathUtils.random(),y + 0.1f * MathUtils.random(),z + 0.1f * MathUtils.random());
-        MotionState sphereMotionState=new MotionState(sphere.transform);
+        btDefaultMotionState sphereMotionState=new btDefaultMotionState();
+        sphereMotionState.setWorldTransform(sphere.transform);
         motionStates.add(sphereMotionState);
         btRigidBody sphereBody=new btRigidBody(sphereInfo);
         sphereBody.setMotionState(sphereMotionState);

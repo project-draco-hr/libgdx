@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btWorldImporter_createStridingMeshInterfaceData(swigCPtr,this,btStridingMeshInterfaceData.getCPtr(interfaceData),interfaceData);
-  return (cPtr == 0) ? null : new btStridingMeshInterfaceData(cPtr,false);
-}

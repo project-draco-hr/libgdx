@@ -1,0 +1,4 @@
+{
+  this(LinearMathJNI.new_btMotionState(),true);
+  LinearMathJNI.btMotionState_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

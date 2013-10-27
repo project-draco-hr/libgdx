@@ -6,6 +6,10 @@
   performanceCounter.start();
   ((btDynamicsWorld)collisionWorld).stepSimulation(Gdx.graphics.getDeltaTime(),5);
   performanceCounter.stop();
+  int c=motionStates.size;
+  for (int i=0; i < c; i++) {
+    motionStates.get(i).getWorldTransform(instances.get(i).transform);
+  }
   modelBatch.begin(camera);
   modelBatch.render(instances,lights);
   modelBatch.end();
