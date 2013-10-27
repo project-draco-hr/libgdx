@@ -1,3 +1,6 @@
 {
-  mGLThread.requestRender();
+  GLThread thread=mGLThread;
+  if (thread != null) {
+    thread.requestRender();
+  }
 }

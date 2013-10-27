@@ -1,6 +1,4 @@
 {
-  if (!mEgl.eglSwapBuffers(mEglDisplay,mEglSurface)) {
-    return mEgl.eglGetError();
-  }
-  return EGL10.EGL_SUCCESS;
+  mEgl.eglSwapBuffers(mEglDisplay,mEglSurface);
+  return mEgl.eglGetError() != EGL11.EGL_CONTEXT_LOST;
 }

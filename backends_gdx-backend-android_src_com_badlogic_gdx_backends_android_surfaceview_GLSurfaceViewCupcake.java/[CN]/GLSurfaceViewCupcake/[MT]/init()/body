@@ -1,11 +1,6 @@
 {
   SurfaceHolder holder=getHolder();
   holder.addCallback(this);
-  int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
-  if (sdkVersion <= 8) {
-    holder.setFormat(PixelFormat.RGB_565);
-  }
-  if (sdkVersion <= 4) {
-    holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
-  }
+  holder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
+  mRenderMode=RENDERMODE_CONTINUOUSLY;
 }

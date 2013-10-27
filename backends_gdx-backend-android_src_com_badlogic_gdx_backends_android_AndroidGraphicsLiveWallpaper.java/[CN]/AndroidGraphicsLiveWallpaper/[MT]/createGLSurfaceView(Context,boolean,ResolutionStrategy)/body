@@ -39,16 +39,30 @@
       return view;
     }
  else {
-      GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(context,resolutionStrategy){
-        @Override public SurfaceHolder getHolder(){
-          return getSurfaceHolder();
+      if (config.useGLSurfaceViewAPI18) {
+        GLSurfaceViewAPI18 view=new GLSurfaceViewAPI18(context,resolutionStrategy){
+          @Override public SurfaceHolder getHolder(){
+            return getSurfaceHolder();
+          }
         }
-      }
 ;
-      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
- else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
-      view.setRenderer(this);
-      return view;
+        if (configChooser != null)         view.setEGLConfigChooser(configChooser);
+ else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+        view.setRenderer(this);
+        return view;
+      }
+ else {
+        GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(context,resolutionStrategy){
+          @Override public SurfaceHolder getHolder(){
+            return getSurfaceHolder();
+          }
+        }
+;
+        if (configChooser != null)         view.setEGLConfigChooser(configChooser);
+ else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+        view.setRenderer(this);
+        return view;
+      }
     }
   }
 }

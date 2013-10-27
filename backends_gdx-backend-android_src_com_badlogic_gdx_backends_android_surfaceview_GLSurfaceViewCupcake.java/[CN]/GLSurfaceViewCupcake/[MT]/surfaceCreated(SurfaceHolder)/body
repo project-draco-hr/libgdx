@@ -1,3 +1,6 @@
 {
-  mGLThread.surfaceCreated();
+  if (mGLThread != null) {
+    mGLThread.surfaceCreated();
+  }
+  mHasSurface=true;
 }

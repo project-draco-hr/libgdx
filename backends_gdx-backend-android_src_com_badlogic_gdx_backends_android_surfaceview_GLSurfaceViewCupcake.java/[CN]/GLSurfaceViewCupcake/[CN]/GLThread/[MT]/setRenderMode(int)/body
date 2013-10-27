@@ -2,8 +2,10 @@
   if (!((RENDERMODE_WHEN_DIRTY <= renderMode) && (renderMode <= RENDERMODE_CONTINUOUSLY))) {
     throw new IllegalArgumentException("renderMode");
   }
-synchronized (sGLThreadManager) {
+synchronized (this) {
     mRenderMode=renderMode;
-    sGLThreadManager.notifyAll();
+    if (renderMode == RENDERMODE_CONTINUOUSLY) {
+      notify();
+    }
   }
 }

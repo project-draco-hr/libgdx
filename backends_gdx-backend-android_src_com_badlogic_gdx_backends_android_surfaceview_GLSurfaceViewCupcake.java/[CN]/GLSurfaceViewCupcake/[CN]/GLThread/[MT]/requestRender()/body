@@ -1,6 +1,6 @@
 {
-synchronized (sGLThreadManager) {
+synchronized (this) {
     mRequestRender=true;
-    sGLThreadManager.notifyAll();
+    notify();
   }
 }

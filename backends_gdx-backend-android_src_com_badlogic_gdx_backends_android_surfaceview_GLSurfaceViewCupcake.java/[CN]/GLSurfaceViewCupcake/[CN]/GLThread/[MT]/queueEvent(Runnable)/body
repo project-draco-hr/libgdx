@@ -1,9 +1,5 @@
 {
-  if (r == null) {
-    throw new IllegalArgumentException("r must not be null");
-  }
-synchronized (sGLThreadManager) {
+synchronized (this) {
     mEventQueue.add(r);
-    sGLThreadManager.notifyAll();
   }
 }

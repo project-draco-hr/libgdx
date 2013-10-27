@@ -1,14 +1,11 @@
 {
-  setName("GLThread " + getId());
-  if (LOG_THREADS) {
-    Log.i("GLThread","starting tid=" + getId());
-  }
   try {
-    guardedRun();
+synchronized (sEglLock) {
+      guardedRun();
+    }
   }
  catch (  InterruptedException e) {
   }
  finally {
-    sGLThreadManager.threadExiting(this);
   }
 }

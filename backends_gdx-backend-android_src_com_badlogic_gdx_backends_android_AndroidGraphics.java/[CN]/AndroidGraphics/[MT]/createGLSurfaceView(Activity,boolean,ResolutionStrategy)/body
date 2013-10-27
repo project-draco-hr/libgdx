@@ -46,11 +46,20 @@
       return view;
     }
  else {
-      GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(activity,resolutionStrategy);
-      if (configChooser != null)       view.setEGLConfigChooser(configChooser);
- else       view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
-      view.setRenderer(this);
-      return view;
+      if (config.useGLSurfaceViewAPI18) {
+        GLSurfaceViewAPI18 view=new GLSurfaceViewAPI18(activity,resolutionStrategy);
+        if (configChooser != null)         view.setEGLConfigChooser(configChooser);
+ else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+        view.setRenderer(this);
+        return view;
+      }
+ else {
+        GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(activity,resolutionStrategy);
+        if (configChooser != null)         view.setEGLConfigChooser(configChooser);
+ else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
+        view.setRenderer(this);
+        return view;
+      }
     }
   }
 }

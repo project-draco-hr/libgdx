@@ -1,5 +1,5 @@
 {
-synchronized (sGLThreadManager) {
+synchronized (this) {
     return mRenderMode;
   }
 }

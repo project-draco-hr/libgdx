@@ -1,3 +1,5 @@
 {
-  mGLThread.queueEvent(r);
+  if (mGLThread != null) {
+    mGLThread.queueEvent(r);
+  }
 }
