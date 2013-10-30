@@ -4,12 +4,12 @@
     require(0,newGlyphCount);
   }
  else {
-    for (int i=0; i < tmpGlyphCount.length; i++)     tmpGlyphCount[i]=0;
+    for (int i=0, n=tmpGlyphCount.length; i < n; i++)     tmpGlyphCount[i]=0;
     while (start < end) {
       Glyph g=font.data.getGlyph(seq.charAt(start++));
       if (g == null)       continue;
       tmpGlyphCount[g.page]++;
     }
-    for (int i=0; i < tmpGlyphCount.length; i++)     require(i,tmpGlyphCount[i]);
+    for (int i=0, n=tmpGlyphCount.length; i < n; i++)     require(i,tmpGlyphCount[i]);
   }
 }
