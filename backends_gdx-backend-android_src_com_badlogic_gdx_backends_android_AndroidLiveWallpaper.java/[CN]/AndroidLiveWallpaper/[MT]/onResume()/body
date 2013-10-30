@@ -7,6 +7,7 @@
   input.registerSensorListeners();
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
+ else     if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onResume();
  else     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
  else     throw new RuntimeException("unimplemented");
   }
