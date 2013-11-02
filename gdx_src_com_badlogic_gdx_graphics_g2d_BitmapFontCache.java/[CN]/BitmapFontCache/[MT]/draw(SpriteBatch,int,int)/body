@@ -8,7 +8,7 @@
     for (int i=0; i < pageCount; i++) {
       int offset=-1;
       int count=0;
-      for (int j=0; j < glyphIndices[i].size; j++) {
+      for (int j=0, n=glyphIndices[i].size; j < n; j++) {
         int glyphIndex=glyphIndices[i].items[j];
         if (glyphIndex >= end)         break;
         if (offset == -1 && glyphIndex >= start)         offset=j;
