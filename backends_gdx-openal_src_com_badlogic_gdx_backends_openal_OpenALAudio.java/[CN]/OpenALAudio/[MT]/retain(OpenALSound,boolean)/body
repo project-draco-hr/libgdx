@@ -2,7 +2,7 @@
   mostRecetSound++;
   mostRecetSound%=recentSounds.length;
   if (stop) {
-    recentSounds[mostRecetSound].stop();
+    if (recentSounds[mostRecetSound] != null)     recentSounds[mostRecetSound].stop();
   }
   recentSounds[mostRecetSound]=sound;
 }
