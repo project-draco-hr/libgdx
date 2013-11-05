@@ -1,5 +1,5 @@
 {
-  if (!FreeType.setPixelSizes(face,0,size))   throw new GdxRuntimeException("Couldn't set size for font");
+  if (!bitmapped && !FreeType.setPixelSizes(face,0,size))   throw new GdxRuntimeException("Couldn't set size for font");
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   int baseline=FreeType.toInt(fontMetrics.getAscender());
   if (FreeType.getCharIndex(face,c) == 0) {
@@ -10,7 +10,10 @@
   }
   GlyphSlot slot=face.getGlyph();
   Bitmap bitmap;
-  if (!FreeType.renderGlyph(slot,FreeType.FT_RENDER_MODE_LIGHT)) {
+  if (bitmapped) {
+    bitmap=slot.getBitmap();
+  }
+ else   if (!FreeType.renderGlyph(slot,FreeType.FT_RENDER_MODE_LIGHT)) {
     bitmap=null;
   }
  else {
