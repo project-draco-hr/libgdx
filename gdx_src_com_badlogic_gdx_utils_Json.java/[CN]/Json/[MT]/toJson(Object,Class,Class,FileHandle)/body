@@ -1,7 +1,7 @@
 {
   Writer writer=null;
   try {
-    writer=file.writer(false);
+    writer=file.writer(false,"UTF-8");
     toJson(object,knownType,elementType,writer);
   }
  catch (  Exception ex) {
