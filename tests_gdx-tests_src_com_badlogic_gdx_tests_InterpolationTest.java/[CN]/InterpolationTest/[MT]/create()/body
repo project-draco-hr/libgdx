@@ -4,8 +4,6 @@
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   stage=new Stage();
   resetPositions();
-  table=new Table();
-  table.setFillParent(true);
   Field[] interpolationFields=ClassReflection.getFields(Interpolation.class);
   int interpolationMembers=0;
   for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationMembers++;
@@ -14,17 +12,22 @@
   selectedInterpolation=interpolationNames[0];
   list=new List(interpolationNames,skin);
   list.addListener(new ChangeListener(){
-    @Override public void changed(    ChangeEvent event,    Actor actor){
+    public void changed(    ChangeEvent event,    Actor actor){
       selectedInterpolation=list.getSelection();
       time=0;
       resetPositions();
     }
   }
 );
-  table.add(new ScrollPane(list)).expand().fillY().left();
+  ScrollPane scroll=new ScrollPane(list,skin);
+  scroll.setFadeScrollBars(false);
+  scroll.setScrollingDisabled(true,false);
+  table=new Table();
+  table.setFillParent(true);
+  table.add(scroll).expandX().left().width(100);
   stage.addActor(table);
   Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter(){
-    @Override public boolean scrolled(    int amount){
+    public boolean scrolled(    int amount){
       if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT))       return false;
       duration-=amount / 15f;
       duration=MathUtils.clamp(duration,0,Float.POSITIVE_INFINITY);
@@ -32,7 +35,7 @@
     }
   }
 ,stage,new InputAdapter(){
-    @Override public boolean touchDown(    int screenX,    int screenY,    int pointer,    int button){
+    public boolean touchDown(    int screenX,    int screenY,    int pointer,    int button){
       if (!Float.isNaN(time))       startPosition.set(getPosition(time));
       targetPosition.set(stage.screenToStageCoordinates(targetPosition.set(screenX,screenY)));
       time=0;
