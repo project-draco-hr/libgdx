@@ -28,6 +28,8 @@
   values.put("%APP_NAME%",appName);
   values.put("%PACKAGE%",packageName);
   values.put("%MAIN_CLASS%",mainClass);
+  values.put("%GDX_VERSION%",gdxVersion);
   copyAndReplace(outputDir,project,values);
   new File(outputDir,"gradlew").setExecutable(true);
+  System.out.println("Done! project created in " + outputDir + " directory");
 }
