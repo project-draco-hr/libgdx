@@ -23,4 +23,5 @@
   setContentView(graphics.getView(),createLayoutParams());
   createWakeLock(config);
   hideStatusBar(config);
+  useImmersiveMode(config);
 }

@@ -1,0 +1,12 @@
+{
+  if (!conifg.useImmersiveMode || getVersion() < 19)   return;
+  View view=getWindow().getDecorView();
+  try {
+    Method m=View.class.getMethod("setSystemUiVisibility",int.class);
+    m.invoke(view,0x00000800);
+    m.invoke(view,0x00000002);
+  }
+ catch (  Exception e) {
+    log("AndroidApplication","Can't set immersive mode",e);
+  }
+}
