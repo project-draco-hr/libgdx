@@ -1,11 +1,6 @@
 {
   try {
-    int contentLength=connection.getContentLength();
-    ByteArrayOutputStream buffer;
-    if (contentLength > 0)     buffer=new OptimizedByteArrayOutputStream(contentLength);
- else     buffer=new OptimizedByteArrayOutputStream();
-    StreamUtils.copyStream(inputStream,buffer);
-    return buffer.toByteArray();
+    return StreamUtils.copyStreamToByteArray(inputStream,connection.getContentLength());
   }
  catch (  IOException e) {
     return StreamUtils.EMPTY_BYTES;
