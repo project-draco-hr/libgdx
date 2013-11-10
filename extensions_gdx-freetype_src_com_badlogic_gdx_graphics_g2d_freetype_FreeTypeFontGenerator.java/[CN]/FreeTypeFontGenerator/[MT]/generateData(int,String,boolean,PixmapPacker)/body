@@ -113,11 +113,16 @@
     data.regions=new TextureRegion[pages.size];
     for (int i=0; i < pages.size; i++) {
       Page p=pages.get(i);
-      Texture tex=new Texture(p.getPixmap(),p.getPixmap().getFormat(),false);
+      Texture tex=new Texture(new PixmapTextureData(p.getPixmap(),p.getPixmap().getFormat(),false,false,true)){
+        @Override public void dispose(){
+          super.dispose();
+          getTextureData().consumePixmap().dispose();
+        }
+      }
+;
       tex.setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
       data.regions[i]=new TextureRegion(tex);
     }
-    packer.dispose();
   }
   return data;
 }

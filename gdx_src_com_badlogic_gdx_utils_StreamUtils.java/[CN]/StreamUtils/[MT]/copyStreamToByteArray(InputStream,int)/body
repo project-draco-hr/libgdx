@@ -1,0 +1,5 @@
+{
+  ByteArrayOutputStream baos=new OptimizedByteArrayOutputStream(Math.max(0,estimatedSize));
+  copyStream(input,baos);
+  return baos.toByteArray();
+}
