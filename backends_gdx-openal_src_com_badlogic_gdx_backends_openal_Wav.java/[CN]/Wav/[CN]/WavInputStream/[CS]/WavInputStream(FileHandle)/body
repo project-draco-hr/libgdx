@@ -17,11 +17,7 @@
     dataRemaining=seekToChunk('d','a','t','a');
   }
  catch (  Throwable ex) {
-    try {
-      close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(this);
     throw new GdxRuntimeException("Error reading WAV file: " + file,ex);
   }
 }
