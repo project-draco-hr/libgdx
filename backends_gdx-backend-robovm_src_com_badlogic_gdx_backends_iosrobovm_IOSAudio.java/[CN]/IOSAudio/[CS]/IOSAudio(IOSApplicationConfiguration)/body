@@ -1,4 +1,4 @@
 {
-  OALSimpleAudio.sharedInstance().setAllowIpod(false);
+  OALSimpleAudio.sharedInstance().setAllowIpod(config.allowIpod);
   OALSimpleAudio.sharedInstance().setHonorSilentSwitch(true);
 }
