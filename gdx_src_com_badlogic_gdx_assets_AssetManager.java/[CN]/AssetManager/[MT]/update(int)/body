@@ -3,6 +3,6 @@
   while (true) {
     boolean done=update();
     if (done || System.currentTimeMillis() > endTime)     return done;
-    Thread.yield();
+    ThreadUtils.yield();
   }
 }

@@ -1,0 +1,4 @@
+{
+  long cPtr=CollisionJNI.gCompoundCompoundChildShapePairCallback_get();
+  return (cPtr == 0) ? null : new SWIGTYPE_p_f_p_q_const__btCollisionShape_p_q_const__btCollisionShape__bool(cPtr,false);
+}

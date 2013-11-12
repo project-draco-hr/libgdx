@@ -30,8 +30,8 @@
     widgetWidth=widget.getWidth();
     widgetHeight=widget.getHeight();
   }
-  scrollX=forceOverscrollX || (widgetWidth > areaWidth && !disableX);
-  scrollY=forceOverscrollY || (widgetHeight > areaHeight && !disableY);
+  scrollX=forceScrollX || (widgetWidth > areaWidth && !disableX);
+  scrollY=forceScrollY || (widgetHeight > areaHeight && !disableY);
   boolean fade=fadeScrollBars;
   if (!fade) {
     if (scrollY) {
@@ -59,7 +59,22 @@
       if (scrollY)       widgetAreaBounds.width+=scrollbarWidth;
     }
  else {
-      if (scrollX)       widgetAreaBounds.y+=scrollbarHeight;
+      if (scrollX) {
+        if (hScrollOnBottom) {
+          widgetAreaBounds.y+=scrollbarHeight;
+        }
+ else {
+          widgetAreaBounds.y=0;
+        }
+      }
+      if (scrollY) {
+        if (vScrollOnRight) {
+          widgetAreaBounds.x=0;
+        }
+ else {
+          widgetAreaBounds.x+=scrollbarWidth;
+        }
+      }
     }
   }
   widgetWidth=disableX ? width : Math.max(areaWidth,widgetWidth);
@@ -75,7 +90,20 @@
   if (scrollX) {
     if (hScrollKnob != null) {
       float hScrollHeight=style.hScroll != null ? style.hScroll.getMinHeight() : hScrollKnob.getMinHeight();
-      hScrollBounds.set(bgLeftWidth,bgBottomHeight,areaWidth,hScrollHeight);
+      float boundsX, boundsY;
+      if (vScrollOnRight) {
+        boundsX=bgLeftWidth;
+      }
+ else {
+        boundsX=bgLeftWidth + scrollbarWidth;
+      }
+      if (hScrollOnBottom) {
+        boundsY=bgBottomHeight;
+      }
+ else {
+        boundsY=height - bgTopHeight - hScrollHeight;
+      }
+      hScrollBounds.set(boundsX,boundsY,areaWidth,hScrollHeight);
       hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widgetWidth));
       hKnobBounds.height=hScrollKnob.getMinHeight();
       hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
@@ -89,10 +117,28 @@
   if (scrollY) {
     if (vScrollKnob != null) {
       float vScrollWidth=style.vScroll != null ? style.vScroll.getMinWidth() : vScrollKnob.getMinWidth();
-      vScrollBounds.set(width - bgRightWidth - vScrollWidth,height - bgTopHeight - areaHeight,vScrollWidth,areaHeight);
+      float boundsX, boundsY;
+      if (hScrollOnBottom) {
+        boundsY=height - bgTopHeight - areaHeight;
+      }
+ else {
+        boundsY=bgBottomHeight;
+      }
+      if (vScrollOnRight) {
+        boundsX=width - bgRightWidth - vScrollWidth;
+      }
+ else {
+        boundsX=bgLeftWidth;
+      }
+      vScrollBounds.set(boundsX,boundsY,vScrollWidth,areaHeight);
       vKnobBounds.width=vScrollKnob.getMinWidth();
       vKnobBounds.height=Math.max(vScrollKnob.getMinHeight(),(int)(vScrollBounds.height * areaHeight / widgetHeight));
-      vKnobBounds.x=width - bgRightWidth - vScrollKnob.getMinWidth();
+      if (vScrollOnRight) {
+        vKnobBounds.x=width - bgRightWidth - vScrollKnob.getMinWidth();
+      }
+ else {
+        vKnobBounds.x=bgLeftWidth;
+      }
       vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
     }
  else {
@@ -100,16 +146,6 @@
       vKnobBounds.set(0,0,0,0);
     }
   }
-  if (widget.getWidth() != widgetWidth || widget.getHeight() != widgetHeight) {
-    widget.setWidth(widgetWidth);
-    widget.setHeight(widgetHeight);
-    if (widget instanceof Layout) {
-      Layout layout=(Layout)widget;
-      layout.invalidate();
-      layout.validate();
-    }
-  }
- else {
-    if (widget instanceof Layout)     ((Layout)widget).validate();
-  }
+  widget.setSize(widgetWidth,widgetHeight);
+  if (widget instanceof Layout)   ((Layout)widget).validate();
 }

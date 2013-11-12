@@ -1,5 +1,0 @@
-{
-  if (other == null)   return false;
-  if (this == other)   return true;
-  return (texture == other.texture) && (unit == other.unit) && (minFilter == other.minFilter)&& (magFilter == other.magFilter)&& (uWrap == other.uWrap)&& (vWrap == other.vWrap);
-}

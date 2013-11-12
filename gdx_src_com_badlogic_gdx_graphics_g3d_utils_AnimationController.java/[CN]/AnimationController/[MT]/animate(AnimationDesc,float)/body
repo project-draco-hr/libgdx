@@ -1,0 +1,17 @@
+{
+  if (current == null)   current=anim;
+ else   if (inAction)   queue(anim,transitionTime);
+ else   if (anim != null && current.animation == anim.animation) {
+    anim.time=current.time;
+    animationPool.free(current);
+    current=anim;
+  }
+ else {
+    if (previous != null)     animationPool.free(previous);
+    previous=current;
+    current=anim;
+    transitionCurrentTime=0f;
+    transitionTargetTime=transitionTime;
+  }
+  return anim;
+}

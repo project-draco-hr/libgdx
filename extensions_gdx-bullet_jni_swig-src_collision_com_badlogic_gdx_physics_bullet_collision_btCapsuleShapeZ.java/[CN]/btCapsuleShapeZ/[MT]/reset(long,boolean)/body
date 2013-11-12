@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.btCapsuleShapeZ_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

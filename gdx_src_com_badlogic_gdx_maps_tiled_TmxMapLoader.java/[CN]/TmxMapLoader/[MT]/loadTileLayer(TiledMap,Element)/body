@@ -15,6 +15,9 @@
     Element data=element.getChildByName("data");
     String encoding=data.getAttribute("encoding",null);
     String compression=data.getAttribute("compression",null);
+    if (encoding == null) {
+      throw new GdxRuntimeException("Unsupported encoding (XML) for TMX Layer Data");
+    }
     if (encoding.equals("csv")) {
       String[] array=data.getText().split(",");
       for (int y=0; y < height; y++) {
@@ -27,27 +30,7 @@
           tilesets.getTile(id);
           TiledMapTile tile=tilesets.getTile(id);
           if (tile != null) {
-            Cell cell=new Cell();
-            if (flipDiagonally) {
-              if (flipHorizontally && flipVertically) {
-                cell.setFlipHorizontally(true);
-                cell.setRotation(Cell.ROTATE_270);
-              }
- else               if (flipHorizontally) {
-                cell.setRotation(Cell.ROTATE_270);
-              }
- else               if (flipVertically) {
-                cell.setRotation(Cell.ROTATE_90);
-              }
- else {
-                cell.setFlipVertically(true);
-                cell.setRotation(Cell.ROTATE_270);
-              }
-            }
- else {
-              cell.setFlipHorizontally(flipHorizontally);
-              cell.setFlipVertically(flipVertically);
-            }
+            Cell cell=createTileLayerCell(flipHorizontally,flipVertically,flipDiagonally);
             cell.setTile(tile);
             layer.setCell(x,yUp ? height - 1 - y : y,cell);
           }
@@ -69,27 +52,7 @@
               tilesets.getTile(id);
               TiledMapTile tile=tilesets.getTile(id);
               if (tile != null) {
-                Cell cell=new Cell();
-                if (flipDiagonally) {
-                  if (flipHorizontally && flipVertically) {
-                    cell.setFlipHorizontally(true);
-                    cell.setRotation(Cell.ROTATE_270);
-                  }
- else                   if (flipHorizontally) {
-                    cell.setRotation(Cell.ROTATE_270);
-                  }
- else                   if (flipVertically) {
-                    cell.setRotation(Cell.ROTATE_90);
-                  }
- else {
-                    cell.setFlipVertically(true);
-                    cell.setRotation(Cell.ROTATE_270);
-                  }
-                }
- else {
-                  cell.setFlipHorizontally(flipHorizontally);
-                  cell.setFlipVertically(flipVertically);
-                }
+                Cell cell=createTileLayerCell(flipHorizontally,flipVertically,flipDiagonally);
                 cell.setTile(tile);
                 layer.setCell(x,yUp ? height - 1 - y : y,cell);
               }
@@ -117,27 +80,7 @@
                 tilesets.getTile(id);
                 TiledMapTile tile=tilesets.getTile(id);
                 if (tile != null) {
-                  Cell cell=new Cell();
-                  if (flipDiagonally) {
-                    if (flipHorizontally && flipVertically) {
-                      cell.setFlipHorizontally(true);
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
- else                     if (flipHorizontally) {
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
- else                     if (flipVertically) {
-                      cell.setRotation(Cell.ROTATE_90);
-                    }
- else {
-                      cell.setFlipVertically(true);
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
-                  }
- else {
-                    cell.setFlipHorizontally(flipHorizontally);
-                    cell.setFlipVertically(flipVertically);
-                  }
+                  Cell cell=createTileLayerCell(flipHorizontally,flipVertically,flipDiagonally);
                   cell.setTile(tile);
                   layer.setCell(x,yUp ? height - 1 - y : y,cell);
                 }
@@ -164,27 +107,7 @@
                 tilesets.getTile(id);
                 TiledMapTile tile=tilesets.getTile(id);
                 if (tile != null) {
-                  Cell cell=new Cell();
-                  if (flipDiagonally) {
-                    if (flipHorizontally && flipVertically) {
-                      cell.setFlipHorizontally(true);
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
- else                     if (flipHorizontally) {
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
- else                     if (flipVertically) {
-                      cell.setRotation(Cell.ROTATE_90);
-                    }
- else {
-                      cell.setFlipVertically(true);
-                      cell.setRotation(Cell.ROTATE_270);
-                    }
-                  }
- else {
-                    cell.setFlipHorizontally(flipHorizontally);
-                    cell.setFlipVertically(flipVertically);
-                  }
+                  Cell cell=createTileLayerCell(flipHorizontally,flipVertically,flipDiagonally);
                   cell.setTile(tile);
                   layer.setCell(x,yUp ? height - 1 - y : y,cell);
                 }
@@ -195,6 +118,9 @@
             }
           }
         }
+      }
+ else {
+        throw new GdxRuntimeException("Unrecognised encoding (" + encoding + ") for TMX Layer Data");
       }
     }
     Element properties=element.getChildByName("properties");

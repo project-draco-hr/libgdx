@@ -1,0 +1,14 @@
+{
+  Vector2 v0=tmp1.set(b).sub(a);
+  Vector2 v1=tmp2.set(c).sub(a);
+  Vector2 v2=tmp3.set(p).sub(a);
+  float d00=v0.dot(v0);
+  float d01=v0.dot(v1);
+  float d11=v1.dot(v1);
+  float d20=v2.dot(v0);
+  float d21=v2.dot(v1);
+  float denom=d00 * d11 - d01 * d01;
+  barycentricOut.x=(d11 * d20 - d01 * d21) / denom;
+  barycentricOut.y=(d00 * d21 - d01 * d20) / denom;
+  return barycentricOut;
+}

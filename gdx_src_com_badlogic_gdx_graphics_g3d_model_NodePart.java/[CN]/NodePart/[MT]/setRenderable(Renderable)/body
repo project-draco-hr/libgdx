@@ -1,0 +1,9 @@
+{
+  out.material=material;
+  out.mesh=meshPart.mesh;
+  out.meshPartOffset=meshPart.indexOffset;
+  out.meshPartSize=meshPart.numVertices;
+  out.primitiveType=meshPart.primitiveType;
+  out.bones=bones;
+  return out;
+}

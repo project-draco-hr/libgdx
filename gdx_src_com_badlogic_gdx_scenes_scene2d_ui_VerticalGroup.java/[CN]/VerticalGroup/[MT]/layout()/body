@@ -1,4 +1,5 @@
 {
+  float spacing=this.spacing;
   float groupWidth=getWidth();
   float y=reverse ? 0 : getHeight();
   float dir=reverse ? 1 : -1;
@@ -19,8 +20,8 @@
     if ((alignment & Align.left) != 0)     x=0;
  else     if ((alignment & Align.right) != 0)     x=groupWidth - width;
  else     x=(groupWidth - width) / 2;
-    if (!reverse)     y+=height * dir;
+    if (!reverse)     y+=(height + spacing) * dir;
     child.setBounds(x,y,width,height);
-    if (reverse)     y+=height * dir;
+    if (reverse)     y+=(height + spacing) * dir;
   }
 }

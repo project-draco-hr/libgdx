@@ -1,22 +1,25 @@
 {
   if (!drawing)   throw new IllegalStateException("SpriteBatch.begin must be called before draw.");
-  if (texture != lastTexture) {
-    switchTexture(texture);
+  int verticesLength=vertices.length;
+  int remainingVertices=verticesLength;
+  if (texture != lastTexture)   switchTexture(texture);
+ else {
+    remainingVertices-=idx;
+    if (remainingVertices == 0) {
+      flush();
+      remainingVertices=verticesLength;
+    }
   }
-  int remainingVertices=vertices.length - idx;
-  if (remainingVertices == 0) {
-    renderMesh();
-    remainingVertices=vertices.length;
-  }
-  int vertexCount=Math.min(remainingVertices,length - offset);
-  System.arraycopy(spriteVertices,offset,vertices,idx,vertexCount);
-  offset+=vertexCount;
-  idx+=vertexCount;
-  while (offset < length) {
-    renderMesh();
-    vertexCount=Math.min(vertices.length,length - offset);
-    System.arraycopy(spriteVertices,offset,vertices,0,vertexCount);
-    offset+=vertexCount;
-    idx+=vertexCount;
+  int copyCount=Math.min(remainingVertices,count);
+  System.arraycopy(spriteVertices,offset,vertices,idx,copyCount);
+  idx+=copyCount;
+  count-=copyCount;
+  while (count > 0) {
+    offset+=copyCount;
+    flush();
+    copyCount=Math.min(verticesLength,count);
+    System.arraycopy(spriteVertices,offset,vertices,0,copyCount);
+    idx+=copyCount;
+    count-=copyCount;
   }
 }

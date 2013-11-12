@@ -1,0 +1,9 @@
+{
+  viewMatrix.setToOrtho2D(0,0,400,320);
+  spriteBatch.setProjectionMatrix(viewMatrix);
+  spriteBatch.begin();
+  spriteBatch.disableBlending();
+  spriteBatch.setColor(Color.WHITE);
+  spriteBatch.draw(backgroundTexture,0,0,480,320,0,0,512,512,false,false);
+  spriteBatch.end();
+}

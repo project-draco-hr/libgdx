@@ -1,0 +1,40 @@
+{
+  Gdx.app=this;
+  this.uiApp=uiApp;
+  UIApplication.getSharedApplication().setIdleTimerDisabled(config.preventScreenDimming);
+  if (UIScreen.getMainScreen().getScale() == 2.0f) {
+    if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfRetina * 2.0f;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfRetina * 2.0f;
+    }
+  }
+ else {
+    if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfNonRetina;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfNonRetina;
+    }
+  }
+  GL20 gl20=new IOSGLES20();
+  Gdx.gl=gl20;
+  Gdx.gl20=gl20;
+  this.input=new IOSInput(this);
+  this.graphics=new IOSGraphics(getBounds(null),this,config,input,gl20);
+  this.files=new IOSFiles();
+  this.audio=new IOSAudio();
+  this.net=new IOSNet(this);
+  Gdx.files=this.files;
+  Gdx.graphics=this.graphics;
+  Gdx.audio=this.audio;
+  Gdx.input=this.input;
+  Gdx.net=this.net;
+  this.input.setupPeripherals();
+  this.uiWindow=new UIWindow(UIScreen.getMainScreen().getBounds());
+  this.uiWindow.setRootViewController(this.graphics.viewController);
+  this.uiWindow.makeKeyAndVisible();
+  Gdx.app.debug("IOSApplication","created");
+  return true;
+}

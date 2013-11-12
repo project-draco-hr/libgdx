@@ -1,5 +1,5 @@
 {
-  if (segments <= 0)   throw new IllegalArgumentException("segments must be >= 0.");
+  if (segments <= 0)   throw new IllegalArgumentException("segments must be > 0.");
   if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
   checkDirty();
   checkFlush(segments * 4 + 2);

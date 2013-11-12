@@ -1,0 +1,14 @@
+{
+  NodePart copy=new NodePart();
+  copy.meshPart=new MeshPart();
+  copy.meshPart.id=nodePart.meshPart.id;
+  copy.meshPart.indexOffset=nodePart.meshPart.indexOffset;
+  copy.meshPart.numVertices=nodePart.meshPart.numVertices;
+  copy.meshPart.primitiveType=nodePart.meshPart.primitiveType;
+  copy.meshPart.mesh=nodePart.meshPart.mesh;
+  if (nodePart.invBoneBindTransforms != null)   nodePartBones.put(copy,nodePart.invBoneBindTransforms);
+  final int index=materials.indexOf(nodePart.material,false);
+  if (index < 0)   materials.add(copy.material=nodePart.material.copy());
+ else   copy.material=materials.get(index);
+  return copy;
+}

@@ -2,23 +2,18 @@
   Toolkit toolkit=this.toolkit;
   ArrayList<Cell> cells=this.cells;
   if (sizeInvalid)   computeSize();
-  float hpadding=w(padLeft) + w(padRight);
-  float vpadding=h(padTop) + h(padBottom);
-  float totalMinWidth=0, totalMinHeight=0;
+  float padLeft=w(this.padLeft);
+  float hpadding=padLeft + w(padRight);
+  float padTop=h(this.padTop);
+  float vpadding=padTop + h(padBottom);
   float totalExpandWidth=0, totalExpandHeight=0;
-  for (int i=0; i < columns; i++) {
-    totalMinWidth+=columnMinWidth[i];
-    totalExpandWidth+=expandWidth[i];
-  }
-  for (int i=0; i < rows; i++) {
-    totalMinHeight+=rowMinHeight[i];
-    totalExpandHeight+=expandHeight[i];
-  }
+  for (int i=0; i < columns; i++)   totalExpandWidth+=expandWidth[i];
+  for (int i=0; i < rows; i++)   totalExpandHeight+=expandHeight[i];
   float[] columnWeightedWidth;
-  float totalGrowWidth=tablePrefWidth - totalMinWidth;
+  float totalGrowWidth=tablePrefWidth - tableMinWidth;
   if (totalGrowWidth == 0)   columnWeightedWidth=columnMinWidth;
  else {
-    float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - totalMinWidth));
+    float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - tableMinWidth));
     columnWeightedWidth=this.columnWeightedWidth=ensureSize(this.columnWeightedWidth,columns);
     for (int i=0; i < columns; i++) {
       float growWidth=columnPrefWidth[i] - columnMinWidth[i];
@@ -27,11 +22,11 @@
     }
   }
   float[] rowWeightedHeight;
-  float totalGrowHeight=tablePrefHeight - totalMinHeight;
+  float totalGrowHeight=tablePrefHeight - tableMinHeight;
   if (totalGrowHeight == 0)   rowWeightedHeight=rowMinHeight;
  else {
     rowWeightedHeight=this.rowWeightedHeight=ensureSize(this.rowWeightedHeight,rows);
-    float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - totalMinHeight));
+    float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - tableMinHeight));
     for (int i=0; i < rows; i++) {
       float growHeight=rowPrefHeight[i] - rowMinHeight[i];
       float growRatio=growHeight / (float)totalGrowHeight;
@@ -44,12 +39,12 @@
     float spannedWeightedWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedWeightedWidth+=columnWeightedWidth[column];
     float weightedHeight=rowWeightedHeight[c.row];
-    float prefWidth=w(c.prefWidth,c);
-    float prefHeight=h(c.prefHeight,c);
-    float minWidth=w(c.minWidth,c);
-    float minHeight=h(c.minHeight,c);
-    float maxWidth=w(c.maxWidth,c);
-    float maxHeight=h(c.maxHeight,c);
+    float prefWidth=c.prefWidth.get(c);
+    float prefHeight=c.prefHeight.get(c);
+    float minWidth=c.minWidth.get(c);
+    float minHeight=c.minHeight.get(c);
+    float maxWidth=c.maxWidth.get(c);
+    float maxHeight=c.maxHeight.get(c);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
@@ -102,10 +97,10 @@
   float tableWidth=hpadding, tableHeight=vpadding;
   for (int i=0; i < columns; i++)   tableWidth+=columnWidth[i];
   for (int i=0; i < rows; i++)   tableHeight+=rowHeight[i];
-  float x=layoutX + w(padLeft);
+  float x=layoutX + padLeft;
   if ((align & RIGHT) != 0)   x+=layoutWidth - tableWidth;
  else   if ((align & LEFT) == 0)   x+=(layoutWidth - tableWidth) / 2;
-  float y=layoutY + w(padTop);
+  float y=layoutY + padTop;
   if ((align & BOTTOM) != 0)   y+=layoutHeight - tableHeight;
  else   if ((align & TOP) == 0)   y+=(layoutHeight - tableHeight) / 2;
   float currentX=x, currentY=y;
@@ -118,12 +113,12 @@
     currentX+=c.computedPadLeft;
     if (c.fillX > 0) {
       c.widgetWidth=spannedCellWidth * c.fillX;
-      float maxWidth=w(c.maxWidth,c);
+      float maxWidth=c.maxWidth.get(c);
       if (maxWidth > 0)       c.widgetWidth=Math.min(c.widgetWidth,maxWidth);
     }
     if (c.fillY > 0) {
       c.widgetHeight=rowHeight[c.row] * c.fillY - c.computedPadTop - c.computedPadBottom;
-      float maxHeight=h(c.maxHeight,c);
+      float maxHeight=c.maxHeight.get(c);
       if (maxHeight > 0)       c.widgetHeight=Math.min(c.widgetHeight,maxHeight);
     }
     if ((c.align & LEFT) != 0)     c.widgetX=currentX;

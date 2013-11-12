@@ -1,0 +1,23 @@
+{
+  this.invalid=invalid;
+  polygon=new FloatArray(p);
+  int numPolygonVertices=polygon.size;
+  Vector2 min=new Vector2(Float.MAX_VALUE,Float.MAX_VALUE);
+  Vector2 max=new Vector2(-Float.MAX_VALUE,-Float.MAX_VALUE);
+  for (int i=0; i < numPolygonVertices; i++) {
+    float x=polygon.get(i++);
+    float y=polygon.get(i);
+    min.x=Math.min(min.x,x);
+    min.y=Math.min(min.y,y);
+    max.x=Math.max(max.x,x);
+    max.y=Math.max(max.y,y);
+  }
+  boundingRect=new Rectangle(min.x,min.y,Math.max(0.001f,max.x - min.x),Math.max(0.001f,max.y - min.y));
+  int numTriangles=Math.max(0,polygon.size / 2 - 2);
+  VertexAttributes position=new VertexAttributes(new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE));
+  VertexAttributes positionAndColor=new VertexAttributes(new VertexAttribute(Usage.Position,2,ShaderProgram.POSITION_ATTRIBUTE),new VertexAttribute(Usage.Color,4,ShaderProgram.COLOR_ATTRIBUTE));
+  polygonMesh=new Mesh(true,polygon.size / 2,0,position);
+  interiorMesh=new Mesh(true,3 * numTriangles,0,positionAndColor);
+  triangleOutlineMesh=new Mesh(true,6 * numTriangles,0,position);
+  triangulate();
+}

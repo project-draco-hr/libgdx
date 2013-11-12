@@ -1,7 +1,7 @@
 {
   target_direction.set(targetPos).sub(collisionCenter);
   if (isAway) {
-    target_direction.mul(-1);
+    target_direction.scl(-1);
   }
   if (facing.crs(target_direction) > 0) {
     turn(1);

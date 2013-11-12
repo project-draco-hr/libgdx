@@ -1,0 +1,9 @@
+{
+  for (  final int i : localUniforms.items)   if (setters.get(i) != null)   setters.get(i).set(this,i,renderable,combinedAttributes);
+  if (currentMesh != renderable.mesh) {
+    if (currentMesh != null)     currentMesh.unbind(program,tempArray.items);
+    currentMesh=renderable.mesh;
+    currentMesh.bind(program,getAttributeLocations(renderable.mesh.getVertexAttributes()));
+  }
+  renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize,false);
+}

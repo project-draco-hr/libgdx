@@ -1,0 +1,6 @@
+{
+  this.fileName=file.path().replaceAll("\\\\","/");
+  this.file=file;
+  this.type=assetType;
+  this.params=params;
+}

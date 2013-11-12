@@ -1,9 +1,0 @@
-{
-  if (swigCPtr != 0) {
-    if (swigCMemOwn) {
-      swigCMemOwn=false;
-      gdxBulletJNI.delete_btDbvtNode(swigCPtr);
-    }
-    swigCPtr=0;
-  }
-}

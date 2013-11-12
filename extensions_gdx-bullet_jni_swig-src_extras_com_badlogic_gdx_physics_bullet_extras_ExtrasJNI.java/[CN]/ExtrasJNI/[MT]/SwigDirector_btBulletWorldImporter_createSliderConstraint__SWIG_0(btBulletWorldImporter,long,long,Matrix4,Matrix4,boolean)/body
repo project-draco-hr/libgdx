@@ -1,0 +1,3 @@
+{
+  return btSliderConstraint.getCPtr(self.createSliderConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),frameInA,frameInB,useLinearReferenceFrameA));
+}

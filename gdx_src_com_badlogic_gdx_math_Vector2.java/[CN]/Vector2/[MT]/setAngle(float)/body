@@ -1,4 +1,5 @@
 {
   this.set(len(),0f);
-  this.rotate(angle);
+  this.rotate(degrees);
+  return this;
 }

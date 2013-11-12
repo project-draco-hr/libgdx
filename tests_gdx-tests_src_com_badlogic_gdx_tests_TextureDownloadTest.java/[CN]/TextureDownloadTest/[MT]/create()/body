@@ -25,11 +25,7 @@
         return 0;
       }
  finally {
-        try {
-          if (in != null)           in.close();
-        }
- catch (        Exception ignored) {
-        }
+        StreamUtils.closeQuietly(in);
       }
     }
     @Override public void run(){

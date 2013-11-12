@@ -1,4 +1,5 @@
 {
   super.act(delta);
-  if (screenCoords.x != oldScreenCoords.x || screenCoords.y != oldScreenCoords.y)   hideList();
+  SelectBox.this.localToStageCoordinates(tmpCoords.set(0,0));
+  if (tmpCoords.x != screenCoords.x || tmpCoords.y != screenCoords.y)   hideList();
 }

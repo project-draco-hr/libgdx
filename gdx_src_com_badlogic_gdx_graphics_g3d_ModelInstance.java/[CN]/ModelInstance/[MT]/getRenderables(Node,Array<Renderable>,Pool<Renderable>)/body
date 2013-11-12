@@ -1,0 +1,10 @@
+{
+  if (node.parts.size > 0) {
+    for (    NodePart nodePart : node.parts) {
+      renderables.add(getRenderable(pool.obtain(),node,nodePart));
+    }
+  }
+  for (  Node child : node.children) {
+    getRenderables(child,renderables,pool);
+  }
+}

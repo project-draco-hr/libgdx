@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.btConvex2dConvex2dAlgorithm_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

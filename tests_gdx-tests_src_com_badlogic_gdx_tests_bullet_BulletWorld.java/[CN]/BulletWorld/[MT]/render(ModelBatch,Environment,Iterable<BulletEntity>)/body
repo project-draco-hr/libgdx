@@ -1,0 +1,8 @@
+{
+  if (debugDrawer != null && debugDrawer.getDebugMode() > 0) {
+    debugDrawer.begin();
+    collisionWorld.debugDrawWorld();
+    debugDrawer.end();
+  }
+  if (renderMeshes)   super.render(batch,lights,entities);
+}

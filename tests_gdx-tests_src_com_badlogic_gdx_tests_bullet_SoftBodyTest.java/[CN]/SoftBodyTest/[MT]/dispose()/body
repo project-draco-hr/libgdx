@@ -1,11 +1,13 @@
 {
   ((btSoftRigidDynamicsWorld)(world.collisionWorld)).removeSoftBody(softBody);
-  softBody.delete();
+  softBody.dispose();
   softBody=null;
   super.dispose();
-  worldInfo.delete();
+  worldInfo.dispose();
   worldInfo=null;
-  mesh.dispose();
+  instance=null;
+  model.dispose();
+  model=null;
   mesh=null;
   texture.dispose();
   texture=null;

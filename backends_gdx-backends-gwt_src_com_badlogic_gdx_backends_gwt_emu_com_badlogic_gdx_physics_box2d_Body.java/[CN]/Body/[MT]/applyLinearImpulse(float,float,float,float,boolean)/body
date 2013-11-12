@@ -1,0 +1,5 @@
+{
+  tmp.set(impulseX,impulseY);
+  tmp2.set(pointX,pointY);
+  body.applyLinearImpulse(tmp,tmp2);
+}

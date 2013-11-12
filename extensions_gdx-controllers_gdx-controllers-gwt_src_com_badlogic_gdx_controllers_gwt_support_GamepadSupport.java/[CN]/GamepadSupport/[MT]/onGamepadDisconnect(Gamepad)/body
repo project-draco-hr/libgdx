@@ -1,0 +1,5 @@
+{
+  consoleLog("onGamepadDisconnect: " + gamepad.getId());
+  gamepads.remove(gamepad.getIndex());
+  fireGamepadDisconnected(gamepad.getIndex());
+}

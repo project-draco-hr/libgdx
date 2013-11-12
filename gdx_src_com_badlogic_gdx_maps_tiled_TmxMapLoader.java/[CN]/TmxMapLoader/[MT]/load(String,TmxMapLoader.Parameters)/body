@@ -5,11 +5,13 @@
     root=xml.parse(tmxFile);
     ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
     for (    FileHandle textureFile : loadTilesets(root,tmxFile)) {
-      textures.put(textureFile.path(),new Texture(textureFile,parameters.generateMipMaps));
+      Texture texture=new Texture(textureFile,parameters.generateMipMaps);
+      texture.setFilter(parameters.textureMinFilter,parameters.textureMagFilter);
+      textures.put(textureFile.path(),texture);
     }
     DirectImageResolver imageResolver=new DirectImageResolver(textures);
     TiledMap map=loadTilemap(root,tmxFile,imageResolver);
-    map.setOwnedTextures(textures.values().toArray());
+    map.setOwnedResources(textures.values().toArray());
     return map;
   }
  catch (  IOException e) {

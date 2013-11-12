@@ -1,7 +1,6 @@
 {
-  cameraCoords.set(stageCoords.x,stageCoords.y,0);
-  camera.project(cameraCoords);
+  camera.project(cameraCoords.set(stageCoords.x,stageCoords.y,0),viewportX,viewportY,viewportWidth,viewportHeight);
   stageCoords.x=cameraCoords.x;
-  stageCoords.y=cameraCoords.y;
+  stageCoords.y=viewportHeight - cameraCoords.y;
   return stageCoords;
 }

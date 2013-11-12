@@ -6,8 +6,8 @@
     contacts.ensureCapacity(newSize);
     freeContacts.ensureCapacity(newSize);
   }
-  if (numContacts > freeContacts.size()) {
-    int freeConts=freeContacts.size();
+  if (numContacts > freeContacts.size) {
+    int freeConts=freeContacts.size;
     for (int i=0; i < numContacts - freeConts; i++)     freeContacts.add(new Contact(this,0));
   }
   jniGetContactList(addr,contactAddrs);

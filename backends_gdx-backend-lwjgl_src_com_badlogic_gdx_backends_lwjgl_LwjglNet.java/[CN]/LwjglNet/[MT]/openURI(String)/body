@@ -1,11 +1,3 @@
 {
-  if (!Desktop.isDesktopSupported())   return;
-  Desktop desktop=Desktop.getDesktop();
-  if (!desktop.isSupported(Desktop.Action.BROWSE))   return;
-  try {
-    desktop.browse(new java.net.URI(URI));
-  }
- catch (  Exception e) {
-    throw new GdxRuntimeException(e);
-  }
+  Sys.openURL(URI);
 }

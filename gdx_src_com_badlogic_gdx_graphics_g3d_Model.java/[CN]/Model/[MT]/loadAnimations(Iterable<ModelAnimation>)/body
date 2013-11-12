@@ -1,0 +1,23 @@
+{
+  for (  final ModelAnimation anim : modelAnimations) {
+    Animation animation=new Animation();
+    animation.id=anim.id;
+    for (    ModelNodeAnimation nanim : anim.nodeAnimations) {
+      final Node node=getNode(nanim.nodeId);
+      if (node == null)       continue;
+      NodeAnimation nodeAnim=new NodeAnimation();
+      nodeAnim.node=node;
+      for (      ModelNodeKeyframe kf : nanim.keyframes) {
+        if (kf.keytime > animation.duration)         animation.duration=kf.keytime;
+        NodeKeyframe keyframe=new NodeKeyframe();
+        keyframe.keytime=kf.keytime;
+        keyframe.rotation.set(kf.rotation == null ? node.rotation : kf.rotation);
+        keyframe.scale.set(kf.scale == null ? node.scale : kf.scale);
+        keyframe.translation.set(kf.translation == null ? node.translation : kf.translation);
+        nodeAnim.keyframes.add(keyframe);
+      }
+      if (nodeAnim.keyframes.size > 0)       animation.nodeAnimations.add(nodeAnim);
+    }
+    if (animation.nodeAnimations.size > 0)     animations.add(animation);
+  }
+}

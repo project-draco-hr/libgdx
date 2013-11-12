@@ -1,0 +1,5 @@
+{
+  for (  btCollisionShape child : children)   child.release();
+  children.clear();
+  super.dispose();
+}

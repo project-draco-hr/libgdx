@@ -16,18 +16,17 @@
       url=new URL(httpRequest.getUrl());
     }
     final HttpURLConnection connection=(HttpURLConnection)url.openConnection();
-    connection.setDoOutput(method.equalsIgnoreCase(HttpMethods.POST));
+    final boolean doingOutPut=method.equalsIgnoreCase(HttpMethods.POST) || method.equalsIgnoreCase(HttpMethods.PUT);
+    connection.setDoOutput(doingOutPut);
     connection.setDoInput(true);
     connection.setRequestMethod(method);
-    Map<String,String> headers=httpRequest.getHeaders();
-    Set<String> keySet=headers.keySet();
-    for (    String name : keySet)     connection.addRequestProperty(name,headers.get(name));
+    for (    Map.Entry<String,String> header : httpRequest.getHeaders().entrySet())     connection.addRequestProperty(header.getKey(),header.getValue());
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
     executorService.submit(new Runnable(){
       @Override public void run(){
         try {
-          if (method.equalsIgnoreCase(HttpMethods.POST)) {
+          if (doingOutPut) {
             String contentAsString=httpRequest.getContent();
             InputStream contentAsStream=httpRequest.getContentStream();
             OutputStream outputStream=connection.getOutputStream();
@@ -44,29 +43,17 @@
             }
           }
           connection.connect();
-          Gdx.app.postRunnable(new Runnable(){
-            @Override public void run(){
-              try {
-                httpResponseListener.handleHttpResponse(new HttpClientResponse(connection));
-              }
- catch (              IOException e) {
-                httpResponseListener.failed(e);
-              }
- finally {
-                connection.disconnect();
-              }
-            }
+          final HttpClientResponse clientResponse=new HttpClientResponse(connection);
+          try {
+            httpResponseListener.handleHttpResponse(clientResponse);
           }
-);
+  finally {
+            connection.disconnect();
+          }
         }
  catch (        final Exception e) {
-          Gdx.app.postRunnable(new Runnable(){
-            @Override public void run(){
-              connection.disconnect();
-              httpResponseListener.failed(e);
-            }
-          }
-);
+          connection.disconnect();
+          httpResponseListener.failed(e);
         }
       }
     }

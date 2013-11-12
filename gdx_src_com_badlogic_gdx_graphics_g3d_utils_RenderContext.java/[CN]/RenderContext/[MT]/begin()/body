@@ -1,0 +1,9 @@
+{
+  Gdx.gl.glDisable(GL10.GL_DEPTH_TEST);
+  depthFunc=0;
+  Gdx.gl.glDisable(GL10.GL_BLEND);
+  blending=false;
+  Gdx.gl.glDisable(GL10.GL_CULL_FACE);
+  cullFace=blendSFactor=blendDFactor;
+  textureBinder.begin();
+}

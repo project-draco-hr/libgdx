@@ -1,0 +1,4 @@
+{
+  box(tmp(-0.5f,-0.5f,-0.5f).mul(transform),tmp(-0.5f,0.5f,-0.5f).mul(transform),tmp(0.5f,-0.5f,-0.5f).mul(transform),tmp(0.5f,0.5f,-0.5f).mul(transform),tmp(-0.5f,-0.5f,0.5f).mul(transform),tmp(-0.5f,0.5f,0.5f).mul(transform),tmp(0.5f,-0.5f,0.5f).mul(transform),tmp(0.5f,0.5f,0.5f).mul(transform));
+  cleanup();
+}

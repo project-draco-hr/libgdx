@@ -1,4 +1,5 @@
 {
+  int oldPlayMode=playMode;
   if (looping && (playMode == NORMAL || playMode == REVERSED)) {
     if (playMode == NORMAL)     playMode=LOOP;
  else     playMode=LOOP_REVERSED;
@@ -7,5 +8,7 @@
     if (playMode == LOOP_REVERSED)     playMode=REVERSED;
  else     playMode=LOOP;
   }
-  return getKeyFrame(stateTime);
+  TextureRegion frame=getKeyFrame(stateTime);
+  playMode=oldPlayMode;
+  return frame;
 }

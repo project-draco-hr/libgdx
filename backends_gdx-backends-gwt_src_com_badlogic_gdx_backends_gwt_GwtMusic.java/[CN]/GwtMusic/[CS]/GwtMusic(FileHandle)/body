@@ -1,5 +1,6 @@
 {
   String url=((GwtApplication)Gdx.app).getBaseUrl() + file.path();
-  sound=SoundManager.createSound(url,url);
-  sound.loops(0);
+  sound=SoundManager.createSound(url);
+  soundOptions=new SMSoundOptions();
+  soundOptions.callback=this;
 }

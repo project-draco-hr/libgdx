@@ -1,0 +1,4 @@
+{
+  if (model == null)   throw new GdxRuntimeException("Call begin() first");
+  model.manageDisposable(disposable);
+}

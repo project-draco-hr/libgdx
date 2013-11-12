@@ -1,0 +1,4 @@
+{
+  if (action == null)   return true;
+  return action.act(delta * scale);
+}

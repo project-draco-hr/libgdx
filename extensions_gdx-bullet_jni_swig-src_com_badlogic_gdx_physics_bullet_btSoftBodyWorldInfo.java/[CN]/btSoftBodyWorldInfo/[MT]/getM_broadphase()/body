@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBodyWorldInfo_m_broadphase_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btBroadphaseInterface(cPtr,false);
-}

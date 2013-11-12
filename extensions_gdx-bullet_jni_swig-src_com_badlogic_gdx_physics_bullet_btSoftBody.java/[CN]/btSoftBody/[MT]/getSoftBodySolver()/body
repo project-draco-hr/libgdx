@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSoftBody_getSoftBodySolver__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new btSoftBodySolver(cPtr,false);
-}

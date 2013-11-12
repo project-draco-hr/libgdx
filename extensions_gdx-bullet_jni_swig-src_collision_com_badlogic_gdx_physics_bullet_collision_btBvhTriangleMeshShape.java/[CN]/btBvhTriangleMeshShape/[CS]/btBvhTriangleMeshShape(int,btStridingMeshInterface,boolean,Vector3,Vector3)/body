@@ -1,0 +1,5 @@
+{
+  this(true,meshInterface,useQuantizedAabbCompression,bvhAabbMin,bvhAabbMax);
+  this.meshInterface=meshInterface;
+  if (obtained == 0)   meshInterface.obtain();
+}

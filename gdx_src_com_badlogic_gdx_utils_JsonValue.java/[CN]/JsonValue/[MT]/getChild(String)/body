@@ -1,0 +1,4 @@
+{
+  JsonValue child=get(name);
+  return child == null ? null : child.child;
+}

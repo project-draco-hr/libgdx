@@ -1,6 +1,6 @@
 {
   mainLoopThread=new Thread("LWJGL Application"){
-    public void run(){
+    @Override public void run(){
       graphics.setVSync(graphics.config.vSyncEnabled);
       try {
         LwjglApplication.this.mainLoop();

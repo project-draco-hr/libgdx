@@ -1,0 +1,6 @@
+{
+  final Mesh mesh=new Mesh(false,vertices.length,indices.length,attributes);
+  mesh.setVertices(vertices);
+  mesh.setIndices(indices);
+  return createFromMesh(mesh,0,indices.length,primitiveType,material);
+}

@@ -3,4 +3,5 @@
   this.unitScale=unitScale;
   this.viewBounds=new Rectangle();
   this.spriteBatch=new SpriteBatch();
+  this.ownsSpriteBatch=true;
 }

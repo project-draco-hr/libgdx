@@ -36,13 +36,14 @@
     }
     public boolean keyDown(    InputEvent event,    int keycode){
       if (disabled)       return false;
-      final BitmapFont font=style.font;
       lastBlink=0;
       cursorOn=false;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
         boolean repeat=false;
-        boolean ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+        boolean ctrl;
+        if (isMac)         ctrl=Gdx.input.isKeyPressed(Keys.SYM);
+ else         ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
         if (ctrl) {
           if (keycode == Keys.V) {
             paste();
@@ -54,6 +55,10 @@
           }
           if (keycode == Keys.X || keycode == Keys.DEL) {
             cut();
+            return true;
+          }
+          if (keycode == Keys.A) {
+            selectAll();
             return true;
           }
         }
@@ -165,18 +170,20 @@
       final BitmapFont font=style.font;
       Stage stage=getStage();
       if (stage != null && stage.getKeyboardFocus() == TextField.this) {
-        if (character == BACKSPACE && (cursor > 0 || hasSelection)) {
-          if (!hasSelection) {
-            text=text.substring(0,cursor - 1) + text.substring(cursor);
-            updateDisplayText();
-            cursor--;
-            renderOffset=0;
-          }
+        if (character == BACKSPACE) {
+          if (cursor > 0 || hasSelection) {
+            if (!hasSelection) {
+              text=text.substring(0,cursor - 1) + text.substring(cursor);
+              updateDisplayText();
+              cursor--;
+              renderOffset=0;
+            }
  else {
-            delete();
+              delete();
+            }
           }
         }
-        if (character == DELETE) {
+ else         if (character == DELETE) {
           if (cursor < text.length() || hasSelection) {
             if (!hasSelection) {
               text=text.substring(0,cursor) + text.substring(cursor + 1);
@@ -186,16 +193,15 @@
               delete();
             }
           }
-          return true;
         }
-        if (character != ENTER_DESKTOP && character != ENTER_ANDROID) {
-          if (filter != null && !filter.acceptChar(TextField.this,character))           return true;
+ else         if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
+          next(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT));
         }
-        if ((character == TAB || character == ENTER_ANDROID) && focusTraversal)         next(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT));
-        if (font.containsCharacter(character)) {
-          if (maxLength > 0 && text.length() + 1 > maxLength) {
-            return true;
+ else         if (font.containsCharacter(character)) {
+          if (character != ENTER_DESKTOP && character != ENTER_ANDROID) {
+            if (filter != null && !filter.acceptChar(TextField.this,character))             return true;
           }
+          if (maxLength > 0 && text.length() + 1 > maxLength)           return true;
           if (!hasSelection) {
             text=text.substring(0,cursor) + character + text.substring(cursor,text.length());
             updateDisplayText();

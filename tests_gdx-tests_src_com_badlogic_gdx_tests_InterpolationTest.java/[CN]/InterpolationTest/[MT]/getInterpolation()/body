@@ -1,8 +1,0 @@
-{
-  try {
-    return (Interpolation)Interpolation.class.getField(list.getSelection()).get(null);
-  }
- catch (  Exception ex) {
-    throw new RuntimeException(ex);
-  }
-}

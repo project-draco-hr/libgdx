@@ -1,0 +1,5 @@
+{
+  if (currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Line)");
+  line(x - radius,y - radius,x + radius,y + radius);
+  line(x - radius,y + radius,x + radius,y - radius);
+}

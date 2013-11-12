@@ -1,0 +1,7 @@
+{
+  if (glHandle != 0) {
+    buffer.put(0,glHandle);
+    Gdx.gl.glDeleteTextures(1,buffer);
+    glHandle=0;
+  }
+}

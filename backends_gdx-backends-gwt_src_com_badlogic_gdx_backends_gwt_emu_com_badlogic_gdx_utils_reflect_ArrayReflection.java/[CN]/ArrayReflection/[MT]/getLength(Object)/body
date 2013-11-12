@@ -1,0 +1,3 @@
+{
+  return ReflectionCache.instance.getArrayLength(ReflectionCache.getType(array.getClass()),array);
+}

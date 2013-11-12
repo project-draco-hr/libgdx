@@ -1,8 +1,0 @@
-{
-  try {
-    return (T)readValue(type,elementType,new JsonReader().parse(file));
-  }
- catch (  Exception ex) {
-    throw new SerializationException("Error reading file: " + file,ex);
-  }
-}

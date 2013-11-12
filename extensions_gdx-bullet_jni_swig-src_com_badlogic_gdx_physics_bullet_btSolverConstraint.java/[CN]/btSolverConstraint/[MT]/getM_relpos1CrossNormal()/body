@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btSolverConstraint_m_relpos1CrossNormal_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btVector3(cPtr,false);
-}

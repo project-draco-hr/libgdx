@@ -1,6 +1,9 @@
 {
-  setX(x);
-  setY(y);
-  setWidth(width);
-  setHeight(height);
+  float oldWidth=this.width;
+  float oldHeight=this.height;
+  this.x=x;
+  this.y=y;
+  this.width=width;
+  this.height=height;
+  if (width != oldWidth || height != oldHeight)   sizeChanged();
 }

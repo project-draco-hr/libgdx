@@ -1,4 +1,6 @@
 {
   this.audio=audio;
   this.player=player;
+  this.onCompletionListener=null;
+  this.player.setOnCompletionListener(this);
 }

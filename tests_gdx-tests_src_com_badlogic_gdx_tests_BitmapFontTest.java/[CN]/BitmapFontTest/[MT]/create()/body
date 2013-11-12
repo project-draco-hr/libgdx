@@ -1,6 +1,7 @@
 {
   spriteBatch=new SpriteBatch();
   font=new BitmapFont(Gdx.files.internal("data/verdana39.fnt"),false);
+  multiPageFont=new BitmapFont(Gdx.files.internal("data/multipagefont.fnt"));
   renderer=new ShapeRenderer();
   renderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
 }

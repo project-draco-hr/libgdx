@@ -11,4 +11,13 @@ synchronized (listeners) {
   }
   listener.pause();
   listener.dispose();
+  Gdx.app=null;
+  Gdx.graphics=null;
+  if (audio != null) {
+    audio.dispose();
+    Gdx.audio=null;
+  }
+  if (files != null)   Gdx.files=null;
+  if (net != null)   Gdx.net=null;
+  stopped();
 }

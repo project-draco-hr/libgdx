@@ -1,0 +1,17 @@
+{
+  String[] lines=code.split("\n");
+  int idx, jdx;
+  for (  final String line : lines) {
+    if (((idx=line.indexOf("#include")) == 0) && ((idx=line.indexOf("\"",idx)) > 0) && ((jdx=line.indexOf("\"",++idx)) > idx)) {
+      String name=line.substring(idx,jdx);
+      if (name.length() > 0) {
+        if (name.charAt(0) == ':')         name=currentFile + name;
+        if (!includes.contains(name,false)) {
+          includes.add(name);
+          load(out,name);
+        }
+      }
+    }
+ else     out.append(line.trim()).append("\r\n");
+  }
+}

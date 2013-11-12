@@ -1,10 +1,3 @@
 {
-  Actor actor=this;
-  while (actor != null) {
-    if (actor.getRotation() != 0 || actor.getScaleX() != 1 || actor.getScaleY() != 1)     throw new GdxRuntimeException("Only unrotated and unscaled actors may use this method.");
-    localCoords.x+=actor.getX();
-    localCoords.y+=actor.getY();
-    actor=actor.getParent();
-  }
-  return localCoords;
+  return localToAscendantCoordinates(null,localCoords);
 }

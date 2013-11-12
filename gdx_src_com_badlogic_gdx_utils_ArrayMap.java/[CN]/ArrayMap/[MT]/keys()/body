@@ -1,5 +1,16 @@
 {
-  if (keysIter == null)   keysIter=new Keys(this);
- else   keysIter.reset();
-  return keysIter;
+  if (keysIter1 == null) {
+    keysIter1=new Keys(this);
+    keysIter2=new Keys(this);
+  }
+  if (!keysIter1.valid) {
+    keysIter1.index=0;
+    keysIter1.valid=true;
+    keysIter2.valid=false;
+    return keysIter1;
+  }
+  keysIter2.index=0;
+  keysIter2.valid=true;
+  keysIter1.valid=false;
+  return keysIter2;
 }

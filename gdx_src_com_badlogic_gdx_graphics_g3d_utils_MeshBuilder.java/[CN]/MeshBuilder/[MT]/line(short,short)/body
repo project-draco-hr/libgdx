@@ -1,0 +1,4 @@
+{
+  if (primitiveType != GL10.GL_LINES)   throw new GdxRuntimeException("Incorrect primitive type");
+  index(index1,index2);
+}

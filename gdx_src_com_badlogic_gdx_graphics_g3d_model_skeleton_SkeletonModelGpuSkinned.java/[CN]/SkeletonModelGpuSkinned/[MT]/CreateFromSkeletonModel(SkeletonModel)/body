@@ -1,8 +1,0 @@
-{
-  if (Gdx.gl20 == null) {
-    return skeletonModel;
-  }
-  SkeletonModelGpuSkinned model=new SkeletonModelGpuSkinned(skeletonModel.skeleton,skeletonModel.subMeshes);
-  model.setupGpuSkin();
-  return model;
-}

@@ -1,15 +1,15 @@
 {
-  List<Texture> managedTexureList=managedTextures.get(app);
-  if (managedTexureList == null)   return;
+  Array<Texture> managedTextureArray=managedTextures.get(app);
+  if (managedTextureArray == null)   return;
   if (assetManager == null) {
-    for (int i=0; i < managedTexureList.size(); i++) {
-      Texture texture=managedTexureList.get(i);
+    for (int i=0; i < managedTextureArray.size; i++) {
+      Texture texture=managedTextureArray.get(i);
       texture.reload();
     }
   }
  else {
     assetManager.finishLoading();
-    List<Texture> textures=new ArrayList<Texture>(managedTexureList);
+    Array<Texture> textures=new Array<Texture>(managedTextureArray);
     for (    Texture texture : textures) {
       String fileName=assetManager.getAssetFileName(texture);
       if (fileName == null) {
@@ -38,7 +38,7 @@
         assetManager.load(fileName,Texture.class,params);
       }
     }
-    managedTexureList.clear();
-    managedTexureList.addAll(textures);
+    managedTextureArray.clear();
+    managedTextureArray.addAll(textures);
   }
 }

@@ -1,13 +1,10 @@
 {
-  if (!(writer instanceof JsonWriter)) {
-    writer=new JsonWriter(writer);
-  }
-  ((JsonWriter)writer).setOutputType(outputType);
-  this.writer=(JsonWriter)writer;
+  setWriter(writer);
   try {
     writeValue(object,knownType,elementType);
   }
   finally {
+    StreamUtils.closeQuietly(this.writer);
     this.writer=null;
   }
 }

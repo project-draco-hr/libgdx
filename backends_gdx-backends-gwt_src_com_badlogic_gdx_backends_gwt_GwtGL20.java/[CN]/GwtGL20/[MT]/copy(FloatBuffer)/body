@@ -4,9 +4,8 @@
   }
  else {
     ensureCapacity(buffer);
-    float[] array=buffer.array();
     for (int i=buffer.position(), j=0; i < buffer.limit(); i++, j++) {
-      floatBuffer.set(j,array[i]);
+      floatBuffer.set(j,buffer.get(i));
     }
     return floatBuffer.subarray(0,buffer.remaining());
   }

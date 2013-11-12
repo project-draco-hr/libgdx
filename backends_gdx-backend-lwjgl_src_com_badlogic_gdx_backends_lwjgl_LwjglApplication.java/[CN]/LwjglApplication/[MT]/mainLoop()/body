@@ -1,4 +1,5 @@
 {
+  Array<LifecycleListener> lifecycleListeners=this.lifecycleListeners;
   try {
     graphics.setupDisplay();
   }
@@ -11,10 +12,24 @@
   int lastWidth=graphics.getWidth();
   int lastHeight=graphics.getHeight();
   graphics.lastTime=System.nanoTime();
+  boolean wasActive=true;
   while (running) {
     Display.processMessages();
-    if (Display.isCloseRequested()) {
-      exit();
+    if (Display.isCloseRequested())     exit();
+    boolean isActive=Display.isActive();
+    if (wasActive && !isActive) {
+      wasActive=false;
+synchronized (lifecycleListeners) {
+        for (        LifecycleListener listener : lifecycleListeners)         listener.pause();
+      }
+      listener.pause();
+    }
+    if (!wasActive && isActive) {
+      wasActive=true;
+      listener.resume();
+synchronized (lifecycleListeners) {
+        for (        LifecycleListener listener : lifecycleListeners)         listener.resume();
+      }
     }
     boolean shouldRender=false;
     if (graphics.canvas != null) {
@@ -40,35 +55,28 @@
         graphics.requestRendering();
       }
     }
-synchronized (runnables) {
-      executedRunnables.clear();
-      executedRunnables.addAll(runnables);
-      runnables.clear();
-    }
-    for (int i=0; i < executedRunnables.size; i++) {
-      shouldRender=true;
-      executedRunnables.get(i).run();
-    }
+    if (executeRunnables())     shouldRender=true;
     if (!running)     break;
     input.update();
     shouldRender|=graphics.shouldRender();
     input.processEvents();
     if (audio != null)     audio.update();
+    if (!isActive && graphics.config.backgroundFPS == -1)     shouldRender=false;
+    int frameRate=isActive ? graphics.config.foregroundFPS : graphics.config.backgroundFPS;
     if (shouldRender) {
       graphics.updateTime();
       listener.render();
-      Display.update();
-      if (graphics.vsync && graphics.config.useCPUSynch) {
-        Display.sync(60);
-      }
+      Display.update(false);
     }
  else {
-      Display.sync(60);
+      if (frameRate == -1)       frameRate=10;
+      if (frameRate == 0)       frameRate=graphics.config.backgroundFPS;
+      if (frameRate == 0)       frameRate=30;
     }
+    if (frameRate > 0)     Display.sync(frameRate);
   }
-  Array<LifecycleListener> listeners=lifecycleListeners;
-synchronized (listeners) {
-    for (    LifecycleListener listener : listeners) {
+synchronized (lifecycleListeners) {
+    for (    LifecycleListener listener : lifecycleListeners) {
       listener.pause();
       listener.dispose();
     }

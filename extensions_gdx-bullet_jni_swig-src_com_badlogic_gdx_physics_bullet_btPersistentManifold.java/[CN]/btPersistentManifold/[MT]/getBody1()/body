@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btPersistentManifold_getBody1(swigCPtr,this);
-  return (cPtr == 0) ? null : btCollisionObject.getInstance(cPtr,false);
-}

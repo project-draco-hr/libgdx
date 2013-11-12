@@ -1,5 +1,5 @@
 {
-  Cell cell=new Cell(this);
+  Cell cell=toolkit.obtainCell((L)this);
   cell.widget=widget;
   if (cells.size() > 0) {
     Cell lastCell=cells.get(cells.size() - 1);
@@ -7,7 +7,10 @@
       cell.column=lastCell.column + lastCell.colspan;
       cell.row=lastCell.row;
     }
- else     cell.row=lastCell.row + 1;
+ else {
+      cell.column=0;
+      cell.row=lastCell.row + 1;
+    }
     if (cell.row > 0) {
       outer:       for (int i=cells.size() - 1; i >= 0; i--) {
         Cell other=cells.get(i);
@@ -20,11 +23,15 @@
       }
     }
   }
+ else {
+    cell.column=0;
+    cell.row=0;
+  }
   cells.add(cell);
   cell.set(cellDefaults);
   if (cell.column < columnDefaults.size()) {
-    Cell columnDefaults=this.columnDefaults.get(cell.column);
-    if (columnDefaults != null)     cell.merge(columnDefaults);
+    Cell columnCell=columnDefaults.get(cell.column);
+    if (columnCell != null)     cell.merge(columnCell);
   }
   cell.merge(rowDefaults);
   if (widget != null)   toolkit.addChild(table,widget);

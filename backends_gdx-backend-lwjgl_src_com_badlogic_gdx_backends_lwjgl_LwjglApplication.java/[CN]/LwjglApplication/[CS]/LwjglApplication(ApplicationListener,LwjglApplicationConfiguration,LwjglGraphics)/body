@@ -1,7 +1,8 @@
 {
   LwjglNativesLoader.load();
+  if (config.title == null)   config.title=listener.getClass().getSimpleName();
   this.graphics=graphics;
-  if (!LwjglApplicationConfiguration.disableAudio)   audio=new OpenALAudio(16,config.audioDeviceBufferCount,config.audioDeviceBufferSize);
+  if (!LwjglApplicationConfiguration.disableAudio)   audio=new OpenALAudio(config.audioDeviceSimultaneousSources,config.audioDeviceBufferCount,config.audioDeviceBufferSize);
   files=new LwjglFiles();
   input=new LwjglInput();
   net=new LwjglNet();

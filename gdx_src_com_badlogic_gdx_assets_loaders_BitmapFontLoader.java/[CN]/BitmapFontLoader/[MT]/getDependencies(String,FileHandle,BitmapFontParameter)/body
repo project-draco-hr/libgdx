@@ -1,0 +1,12 @@
+{
+  Array<AssetDescriptor> deps=new Array<AssetDescriptor>();
+  if (parameter != null && parameter.bitmapFontData != null) {
+    data=parameter.bitmapFontData;
+    return deps;
+  }
+  data=new BitmapFontData(file,parameter != null ? parameter.flip : false);
+  for (int i=0; i < data.getImagePaths().length; i++) {
+    deps.add(new AssetDescriptor(data.getImagePath(i),Texture.class));
+  }
+  return deps;
+}

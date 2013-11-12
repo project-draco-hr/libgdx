@@ -1,7 +1,0 @@
-{
-  for (int i=0; i < attributes.length; i++) {
-    if (attributes[i] instanceof BlendingAttribute)     needBlending=true;
- else     if (attributes[i] instanceof TextureAttribute)     hasTexture=true;
-    this.attributes.add(attributes[i]);
-  }
-}

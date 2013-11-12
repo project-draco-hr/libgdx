@@ -1,0 +1,10 @@
+{
+  Pool pool=getPool();
+  setPool(null);
+  try {
+    return delegate(delta);
+  }
+  finally {
+    setPool(pool);
+  }
+}

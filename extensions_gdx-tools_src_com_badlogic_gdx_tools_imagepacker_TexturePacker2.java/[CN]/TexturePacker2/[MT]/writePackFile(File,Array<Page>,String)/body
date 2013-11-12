@@ -4,8 +4,7 @@
     TextureAtlasData textureAtlasData=new TextureAtlasData(new FileHandle(packFile),new FileHandle(packFile),false);
     for (    Page page : pages) {
       for (      Rect rect : page.outputRects) {
-        String rectName=settings.flattenPaths ? new FileHandle(rect.name).name() : rect.name;
-        System.out.println(rectName);
+        String rectName=Rect.getAtlasName(rect.name,settings.flattenPaths);
         for (        Region region : textureAtlasData.getRegions()) {
           if (region.name.equals(rectName)) {
             throw new GdxRuntimeException("A region with the name \"" + rectName + "\" has already been packed: "+ rect.name);
@@ -21,10 +20,12 @@
     writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
     writer.write("repeat: " + getRepeatValue() + "\n");
     for (    Rect rect : page.outputRects) {
-      writeRect(writer,page,rect);
-      for (      Rect alias : rect.aliases) {
-        alias.setSize(rect);
-        writeRect(writer,page,alias);
+      writeRect(writer,page,rect,rect.name);
+      for (      Alias alias : rect.aliases) {
+        Rect aliasRect=new Rect();
+        aliasRect.set(rect);
+        alias.apply(aliasRect);
+        writeRect(writer,page,aliasRect,alias.name);
       }
     }
   }

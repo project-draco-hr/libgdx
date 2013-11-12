@@ -1,5 +1,9 @@
 {
   addListener(clickListener=new ClickListener(){
+    private boolean isCtrlPressed(){
+      if (isMac)       return Gdx.input.isKeyPressed(Keys.SYM);
+ else       return Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+    }
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
       if (node == null)       return;
@@ -7,31 +11,32 @@
       if (multiSelect && selectedNodes.size > 0 && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
         float low=selectedNodes.first().actor.getY();
         float high=node.actor.getY();
-        if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
+        if (!isCtrlPressed())         selectedNodes.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
-        ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-        fire(changeEvent);
-        Pools.free(changeEvent);
+        fireChangeEvent();
         return;
       }
-      if (!multiSelect || (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))) {
+      if (!multiSelect || !isCtrlPressed()) {
         if (node.children.size > 0) {
           float rowX=node.actor.getX();
-          if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
+          if (node.icon != null)           rowX-=iconSpacingRight + node.icon.getMinWidth();
           if (x < rowX) {
             node.setExpanded(!node.expanded);
             return;
           }
         }
         if (!node.isSelectable())         return;
+        boolean unselect=toggleSelect && selectedNodes.size == 1 && selectedNodes.contains(node,true);
         selectedNodes.clear();
+        if (unselect) {
+          fireChangeEvent();
+          return;
+        }
       }
  else       if (!node.isSelectable())       return;
       if (!selectedNodes.removeValue(node,true))       selectedNodes.add(node);
-      ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-      fire(changeEvent);
-      Pools.free(changeEvent);
+      fireChangeEvent();
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
       setOverNode(getNodeAt(y));

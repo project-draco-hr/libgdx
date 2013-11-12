@@ -1,5 +1,4 @@
 {
-  if (input == null)   return;
-  input.close();
+  StreamUtils.closeQuietly(input);
   input=null;
 }

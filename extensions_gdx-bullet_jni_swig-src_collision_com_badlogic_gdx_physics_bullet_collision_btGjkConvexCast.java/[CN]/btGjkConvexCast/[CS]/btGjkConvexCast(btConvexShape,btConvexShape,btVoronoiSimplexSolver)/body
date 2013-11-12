@@ -1,0 +1,3 @@
+{
+  this(CollisionJNI.new_btGjkConvexCast(btConvexShape.getCPtr(convexA),convexA,btConvexShape.getCPtr(convexB),convexB,btVoronoiSimplexSolver.getCPtr(simplexSolver),simplexSolver),true);
+}

@@ -1,4 +1,4 @@
 {
-  setScaleX(this.scaleX + scaleX);
-  setScaleY(this.scaleY + scaleY);
+  this.scaleX+=scaleX;
+  this.scaleY+=scaleY;
 }

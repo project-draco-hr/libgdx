@@ -4,6 +4,6 @@
   while (true) {
     if (parent == null)     return false;
     if (parent == actor)     return true;
-    parent=parent.getParent();
+    parent=parent.parent;
   }
 }

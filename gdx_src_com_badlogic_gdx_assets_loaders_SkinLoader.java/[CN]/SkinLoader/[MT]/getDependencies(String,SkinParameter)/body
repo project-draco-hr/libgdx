@@ -1,6 +1,0 @@
-{
-  Array<AssetDescriptor> deps=new Array();
-  if (parameter == null)   deps.add(new AssetDescriptor(resolve(fileName).pathWithoutExtension() + ".atlas",TextureAtlas.class));
- else   deps.add(new AssetDescriptor(parameter.textureAtlasPath,TextureAtlas.class));
-  return deps;
-}

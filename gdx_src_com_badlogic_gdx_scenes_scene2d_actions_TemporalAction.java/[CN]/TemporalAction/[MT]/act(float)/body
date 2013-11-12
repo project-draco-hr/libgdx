@@ -1,15 +1,25 @@
 {
   if (complete)   return true;
-  if (time == 0)   begin();
-  time+=delta;
-  complete=time >= duration;
-  float percent;
-  if (complete)   percent=1;
+  Pool pool=getPool();
+  setPool(null);
+  try {
+    if (!began) {
+      begin();
+      began=true;
+    }
+    time+=delta;
+    complete=time >= duration;
+    float percent;
+    if (complete)     percent=1;
  else {
-    percent=time / duration;
-    if (interpolation != null)     percent=interpolation.apply(percent);
+      percent=time / duration;
+      if (interpolation != null)       percent=interpolation.apply(percent);
+    }
+    update(reverse ? 1 - percent : percent);
+    if (complete)     end();
+    return complete;
   }
-  update(reverse ? 1 - percent : percent);
-  if (complete)   end();
-  return complete;
+  finally {
+    setPool(pool);
+  }
 }

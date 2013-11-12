@@ -1,5 +1,8 @@
 {
   if (object == null)   throw new IllegalArgumentException("object cannot be null.");
-  if (freeObjects.size < max)   freeObjects.add(object);
+  if (freeObjects.size < max) {
+    freeObjects.add(object);
+    peak=Math.max(peak,freeObjects.size);
+  }
   if (object instanceof Poolable)   ((Poolable)object).reset();
 }

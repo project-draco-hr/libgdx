@@ -1,5 +1,4 @@
 {
-  if (iterator == null)   iterator=new ArrayIterator(this);
- else   iterator.index=0;
-  return iterator;
+  if (iterable == null)   iterable=new ArrayIterable(this);
+  return iterable.iterator();
 }

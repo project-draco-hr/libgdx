@@ -1,12 +1,18 @@
 {
   BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
-  String tmp, line="";
   try {
-    while ((tmp=reader.readLine()) != null)     line+=tmp;
-    reader.close();
-    return line;
+    int approxStringLength=connection.getContentLength();
+    StringBuilder b;
+    if (approxStringLength > 0)     b=new StringBuilder(approxStringLength);
+ else     b=new StringBuilder();
+    String line;
+    while ((line=reader.readLine()) != null)     b.append(line);
+    return b.toString();
   }
  catch (  IOException e) {
     return "";
+  }
+ finally {
+    StreamUtils.closeQuietly(reader);
   }
 }

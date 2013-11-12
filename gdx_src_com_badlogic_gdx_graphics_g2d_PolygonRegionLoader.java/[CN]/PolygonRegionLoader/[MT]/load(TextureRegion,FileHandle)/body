@@ -1,0 +1,22 @@
+{
+  BufferedReader reader=file.reader(256);
+  try {
+    while (true) {
+      String line=reader.readLine();
+      if (line == null)       break;
+      if (line.startsWith("s")) {
+        String[] polygonStrings=line.substring(1).trim().split(",");
+        float[] vertices=new float[polygonStrings.length];
+        for (int i=0, n=vertices.length; i < n; i++)         vertices[i]=Float.parseFloat(polygonStrings[i]);
+        return new PolygonRegion(textureRegion,vertices,triangulator.computeTriangles(vertices).toArray());
+      }
+    }
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading polygon shape file: " + file,ex);
+  }
+ finally {
+    StreamUtils.closeQuietly(reader);
+  }
+  throw new GdxRuntimeException("Polygon shape not found: " + file);
+}

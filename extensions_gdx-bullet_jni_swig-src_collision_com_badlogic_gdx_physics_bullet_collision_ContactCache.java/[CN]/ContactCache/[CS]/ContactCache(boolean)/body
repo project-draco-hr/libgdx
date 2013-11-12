@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ContactCache(dummy),true);
+  CollisionJNI.ContactCache_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

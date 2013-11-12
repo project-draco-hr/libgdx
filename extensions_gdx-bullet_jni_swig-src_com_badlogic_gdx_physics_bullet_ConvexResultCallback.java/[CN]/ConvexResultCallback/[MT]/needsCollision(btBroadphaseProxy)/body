@@ -1,3 +1,0 @@
-{
-  return (getClass() == ConvexResultCallback.class) ? gdxBulletJNI.ConvexResultCallback_needsCollision(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0) : gdxBulletJNI.ConvexResultCallback_needsCollisionSwigExplicitConvexResultCallback(swigCPtr,this,btBroadphaseProxy.getCPtr(proxy0),proxy0);
-}

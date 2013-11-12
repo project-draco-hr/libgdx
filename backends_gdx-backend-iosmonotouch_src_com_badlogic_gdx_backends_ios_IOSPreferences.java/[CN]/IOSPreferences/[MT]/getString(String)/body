@@ -1,5 +1,0 @@
-{
-  NSString value=(NSString)nsDictionary.get_Item(convertKey(key));
-  if (value == null)   return "";
-  return value.ToString();
-}

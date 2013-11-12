@@ -17,11 +17,7 @@
     throw new GdxRuntimeException("Error reading layout file: " + this,ex);
   }
  finally {
-    try {
-      if (reader != null)       reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
   return output.toString();
 }

@@ -6,13 +6,10 @@
   gl.glEnable(GL10.GL_DEPTH_TEST);
   gl.glEnable(GL10.GL_TEXTURE_2D);
   cam.update();
-  cam.apply(gl);
-  angle+=45 * Gdx.graphics.getDeltaTime();
-  gl.glPushMatrix();
-  gl.glRotatef(angle,0,1,0);
-  texture.bind();
-  mesh.render();
-  gl.glPopMatrix();
+  modelInstance.transform.rotate(Vector3.Y,45 * Gdx.graphics.getDeltaTime());
+  modelBatch.begin(cam);
+  modelBatch.render(modelInstance);
+  modelBatch.end();
   if (Gdx.input.justTouched() || fbTexture == null) {
     if (fbTexture != null)     fbTexture.getTexture().dispose();
     fbTexture=ScreenUtils.getFrameBufferTexture();

@@ -1,0 +1,5 @@
+{
+  if (meshInterface != null)   meshInterface.release();
+  meshInterface=null;
+  super.dispose();
+}

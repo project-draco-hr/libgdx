@@ -1,28 +1,25 @@
 {
-  textButton.setDisabled(false);
-  textButton.setTouchable(Touchable.enabled);
-  int statusCode=httpResponse.getStatus().getStatusCode();
-  statusLabel.setText("HTTP Request status: " + statusCode);
+  final int statusCode=httpResponse.getStatus().getStatusCode();
+  Gdx.app.postRunnable(new Runnable(){
+    @Override public void run(){
+      statusLabel.setText("HTTP Request status: " + statusCode);
+      textButton.setDisabled(false);
+      textButton.setTouchable(Touchable.enabled);
+    }
+  }
+);
   if (statusCode != 200) {
     Gdx.app.log("NetAPITest","An error ocurred since statusCode is not OK");
     return;
   }
-  final InputStream resultAsStream=httpResponse.getResultAsStream();
-  try {
-    Texture.setEnforcePotImages(false);
-    texture=new Texture(new FileHandle("image.jpg"){
-      @Override public InputStream read(){
-        return resultAsStream;
-      }
+  final byte[] rawImageBytes=httpResponse.getResult();
+  Gdx.app.postRunnable(new Runnable(){
+    public void run(){
+      Texture.setEnforcePotImages(false);
+      Pixmap pixmap=new Pixmap(rawImageBytes,0,rawImageBytes.length);
+      texture=new Texture(pixmap);
+      Texture.setEnforcePotImages(true);
     }
+  }
 );
-    Texture.setEnforcePotImages(true);
-  }
-  finally {
-    if (resultAsStream != null)     try {
-      resultAsStream.close();
-    }
- catch (    IOException e) {
-    }
-  }
 }

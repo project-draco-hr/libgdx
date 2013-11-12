@@ -1,12 +1,8 @@
 {
-  super.render();
   if (world.renderMeshes) {
-    softBody.getVertices(mesh.getVerticesBuffer(),softBody.getNodeCount(),mesh.getVertexSize(),0);
-    softBody.getWorldTransform(tmpM);
-    Gdx.gl10.glPushMatrix();
-    Gdx.gl10.glMultMatrixf(tmpM.val,0);
-    Gdx.gl10.glColor4f(color.r,color.g,color.b,color.a);
-    mesh.render(GL10.GL_TRIANGLES);
-    Gdx.gl10.glPopMatrix();
+    MeshPart meshPart=model.nodes.get(0).parts.get(0).meshPart;
+    softBody.getVertices(meshPart.mesh.getVerticesBuffer(),meshPart.mesh.getVertexSize(),positionOffset,normalOffset,meshPart.mesh.getIndicesBuffer(),meshPart.indexOffset,meshPart.numVertices,indexMap,0);
+    softBody.getWorldTransform(entity.transform);
   }
+  super.render();
 }

@@ -1,0 +1,14 @@
+{
+  if (match0) {
+    final BulletEntity e=(BulletEntity)(entities.get(userValue0));
+    e.body.setContactCallbackFilter(0);
+    e.setColor(Color.RED);
+    Gdx.app.log("ContactCallbackTest","Contact processed " + (++c));
+  }
+  if (match1) {
+    final BulletEntity e=(BulletEntity)(entities.get(userValue1));
+    e.body.setContactCallbackFilter(0);
+    e.setColor(Color.RED);
+    Gdx.app.log("ContactCallbackTest","Contact processed " + (++c));
+  }
+}

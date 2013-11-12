@@ -1,0 +1,6 @@
+{
+  long result=getAttributeType(alias);
+  if (result > 0)   return result;
+  types.add(alias);
+  return 1L << (types.size - 1);
+}

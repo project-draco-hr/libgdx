@@ -1,0 +1,17 @@
+{
+  int n=triangles.size;
+  float[] array=new float[n * 6];
+  int i=0;
+  int j=0;
+  for (int k=0; k < n; k++, j++) {
+    float percent=n <= 3 ? 1 : (j / 3) / (float)(n / 3 - 1);
+    float brightness=0.3f + 0.4f * percent;
+    array[i++]=vertices.get(triangles.get(k) * 2);
+    array[i++]=vertices.get(triangles.get(k) * 2 + 1);
+    array[i++]=color.r * brightness;
+    array[i++]=color.g * brightness;
+    array[i++]=color.b * brightness;
+    array[i++]=1;
+  }
+  return array;
+}

@@ -1,0 +1,45 @@
+{
+  Material result=new Material();
+  result.id=mtl.id;
+  if (mtl.ambient != null)   result.set(new ColorAttribute(ColorAttribute.Ambient,mtl.ambient));
+  if (mtl.diffuse != null)   result.set(new ColorAttribute(ColorAttribute.Diffuse,mtl.diffuse));
+  if (mtl.specular != null)   result.set(new ColorAttribute(ColorAttribute.Specular,mtl.specular));
+  if (mtl.emissive != null)   result.set(new ColorAttribute(ColorAttribute.Emissive,mtl.emissive));
+  if (mtl.reflection != null)   result.set(new ColorAttribute(ColorAttribute.Reflection,mtl.reflection));
+  if (mtl.shininess > 0f)   result.set(new FloatAttribute(FloatAttribute.Shininess,mtl.shininess));
+  if (mtl.opacity != 1.f)   result.set(new BlendingAttribute(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA,mtl.opacity));
+  ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
+  if (mtl.textures != null) {
+    for (    ModelTexture tex : mtl.textures) {
+      Texture texture;
+      if (textures.containsKey(tex.fileName)) {
+        texture=textures.get(tex.fileName);
+      }
+ else {
+        texture=textureProvider.load(tex.fileName);
+        textures.put(tex.fileName,texture);
+        disposables.add(texture);
+      }
+      TextureDescriptor descriptor=new TextureDescriptor(texture);
+      descriptor.minFilter=Texture.TextureFilter.Linear;
+      descriptor.magFilter=Texture.TextureFilter.Linear;
+      descriptor.uWrap=Texture.TextureWrap.Repeat;
+      descriptor.vWrap=Texture.TextureWrap.Repeat;
+switch (tex.usage) {
+case ModelTexture.USAGE_DIFFUSE:
+        result.set(new TextureAttribute(TextureAttribute.Diffuse,descriptor));
+      break;
+case ModelTexture.USAGE_SPECULAR:
+    result.set(new TextureAttribute(TextureAttribute.Specular,descriptor));
+  break;
+case ModelTexture.USAGE_BUMP:
+result.set(new TextureAttribute(TextureAttribute.Bump,descriptor));
+break;
+case ModelTexture.USAGE_NORMAL:
+result.set(new TextureAttribute(TextureAttribute.Normal,descriptor));
+break;
+}
+}
+}
+return result;
+}

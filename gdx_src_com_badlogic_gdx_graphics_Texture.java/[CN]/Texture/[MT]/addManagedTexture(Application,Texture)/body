@@ -1,6 +1,6 @@
 {
-  List<Texture> managedTexureList=managedTextures.get(app);
-  if (managedTexureList == null)   managedTexureList=new ArrayList<Texture>();
-  managedTexureList.add(texture);
-  managedTextures.put(app,managedTexureList);
+  Array<Texture> managedTextureArray=managedTextures.get(app);
+  if (managedTextureArray == null)   managedTextureArray=new Array<Texture>();
+  managedTextureArray.add(texture);
+  managedTextures.put(app,managedTextureArray);
 }

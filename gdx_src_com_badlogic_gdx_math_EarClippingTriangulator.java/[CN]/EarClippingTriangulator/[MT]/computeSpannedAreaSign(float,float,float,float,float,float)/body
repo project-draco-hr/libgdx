@@ -1,7 +1,6 @@
 {
-  double area=0;
-  area+=(double)pX1 * (pY3 - pY2);
-  area+=(double)pX2 * (pY1 - pY3);
-  area+=(double)pX3 * (pY2 - pY1);
+  float area=p1x * (p3y - p2y);
+  area+=p2x * (p1y - p3y);
+  area+=p3x * (p2y - p1y);
   return (int)Math.signum(area);
 }

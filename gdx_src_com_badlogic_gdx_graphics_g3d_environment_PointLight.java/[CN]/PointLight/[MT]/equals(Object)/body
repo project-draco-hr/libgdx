@@ -1,0 +1,3 @@
+{
+  return (obj instanceof PointLight) ? equals((PointLight)obj) : false;
+}

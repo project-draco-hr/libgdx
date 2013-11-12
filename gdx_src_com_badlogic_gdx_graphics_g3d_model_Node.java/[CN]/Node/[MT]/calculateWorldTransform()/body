@@ -1,0 +1,5 @@
+{
+  if (parent == null)   globalTransform.set(localTransform);
+ else   globalTransform.set(parent.globalTransform).mul(localTransform);
+  return globalTransform;
+}

@@ -1,13 +1,13 @@
 {
-  if (segments <= 0)   throw new IllegalArgumentException("segments must be >= 0.");
+  if (segments <= 0)   throw new IllegalArgumentException("segments must be > 0.");
   if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
   checkDirty();
-  checkFlush(segments * 2 + 2);
   float angle=2 * 3.1415926f / segments;
   float cos=MathUtils.cos(angle);
   float sin=MathUtils.sin(angle);
   float cx=radius, cy=0;
   if (currType == ShapeType.Line) {
+    checkFlush(segments * 2 + 2);
     for (int i=0; i < segments; i++) {
       renderer.color(color.r,color.g,color.b,color.a);
       renderer.vertex(x + cx,y + cy,0);
@@ -21,6 +21,7 @@
     renderer.vertex(x + cx,y + cy,0);
   }
  else {
+    checkFlush(segments * 3 + 3);
     segments--;
     for (int i=0; i < segments; i++) {
       renderer.color(color.r,color.g,color.b,color.a);

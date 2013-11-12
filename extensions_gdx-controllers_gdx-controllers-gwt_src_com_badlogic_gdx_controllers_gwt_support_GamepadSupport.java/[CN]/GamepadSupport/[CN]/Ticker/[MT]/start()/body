@@ -1,0 +1,6 @@
+{
+  if (!ticking) {
+    ticking=true;
+    AnimationScheduler.get().requestAnimationFrame(this);
+  }
+}

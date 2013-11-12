@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btQuantizedBvhFloatData_m_quantizedContiguousNodesPtr_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btQuantizedBvhNodeData(cPtr,false);
-}

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.ClosestConvexResultCallback_m_hitCollisionObject_get(swigCPtr,this);
-  return (cPtr == 0) ? null : btCollisionObject.getInstance(cPtr,false);
-}

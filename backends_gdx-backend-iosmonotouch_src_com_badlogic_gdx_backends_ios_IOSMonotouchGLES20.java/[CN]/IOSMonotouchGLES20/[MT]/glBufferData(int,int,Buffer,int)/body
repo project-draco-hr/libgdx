@@ -1,3 +1,0 @@
-{
-  GL.BufferData(BufferTarget.wrap(target),IntPtr.op_Explicit(size),IntPtr.op_Explicit(BufferUtils.getUnsafeBufferAddress(data)),BufferUsage.wrap(usage));
-}

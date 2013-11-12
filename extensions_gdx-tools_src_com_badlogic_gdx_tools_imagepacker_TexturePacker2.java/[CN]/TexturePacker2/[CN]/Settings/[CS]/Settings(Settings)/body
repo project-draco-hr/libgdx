@@ -9,6 +9,7 @@
   paddingX=settings.paddingX;
   paddingY=settings.paddingY;
   edgePadding=settings.edgePadding;
+  duplicatePadding=settings.duplicatePadding;
   alphaThreshold=settings.alphaThreshold;
   ignoreBlankImages=settings.ignoreBlankImages;
   stripWhitespaceX=settings.stripWhitespaceX;
@@ -21,9 +22,12 @@
   filterMag=settings.filterMag;
   wrapX=settings.wrapX;
   wrapY=settings.wrapY;
-  duplicatePadding=settings.duplicatePadding;
   debug=settings.debug;
   combineSubdirectories=settings.combineSubdirectories;
-  jsonOutput=settings.jsonOutput;
   flattenPaths=settings.flattenPaths;
+  premultiplyAlpha=settings.premultiplyAlpha;
+  forceSquareOutput=settings.forceSquareOutput;
+  useIndexes=settings.useIndexes;
+  bleed=settings.bleed;
+  limitMemory=settings.limitMemory;
 }

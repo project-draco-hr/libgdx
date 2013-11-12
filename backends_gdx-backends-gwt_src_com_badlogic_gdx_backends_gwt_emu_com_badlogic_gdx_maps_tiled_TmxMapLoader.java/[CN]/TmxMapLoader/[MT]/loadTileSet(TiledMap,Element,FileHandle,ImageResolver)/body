@@ -7,6 +7,8 @@
     int spacing=element.getIntAttribute("spacing",0);
     int margin=element.getIntAttribute("margin",0);
     String source=element.getAttribute("source",null);
+    String imageSource="";
+    int imageWidth=0, imageHeight=0;
     FileHandle image=null;
     if (source != null) {
       FileHandle tsx=getRelativeFileHandle(tmxFile,source);
@@ -17,7 +19,9 @@
         tileheight=element.getIntAttribute("tileheight",0);
         spacing=element.getIntAttribute("spacing",0);
         margin=element.getIntAttribute("margin",0);
-        String imageSource=element.getChildByName("image").getAttribute("source");
+        imageSource=element.getChildByName("image").getAttribute("source");
+        imageWidth=element.getChildByName("image").getIntAttribute("width",0);
+        imageHeight=element.getChildByName("image").getIntAttribute("height",0);
         image=getRelativeFileHandle(tsx,imageSource);
       }
  catch (      IOException e) {
@@ -25,12 +29,23 @@
       }
     }
  else {
-      String imageSource=element.getChildByName("image").getAttribute("source");
+      imageSource=element.getChildByName("image").getAttribute("source");
+      imageWidth=element.getChildByName("image").getIntAttribute("width",0);
+      imageHeight=element.getChildByName("image").getIntAttribute("height",0);
       image=getRelativeFileHandle(tmxFile,imageSource);
     }
     TextureRegion texture=imageResolver.getImage(image.path());
     TiledMapTileSet tileset=new TiledMapTileSet();
+    MapProperties props=tileset.getProperties();
     tileset.setName(name);
+    props.put("firstgid",firstgid);
+    props.put("imagesource",imageSource);
+    props.put("imagewidth",imageWidth);
+    props.put("imageheight",imageHeight);
+    props.put("tilewidth",tilewidth);
+    props.put("tileheight",tileheight);
+    props.put("margin",margin);
+    props.put("spacing",spacing);
     int stopWidth=texture.getRegionWidth() - tilewidth;
     int stopHeight=texture.getRegionHeight() - tileheight;
     int id=firstgid;
@@ -50,6 +65,14 @@
       int localtid=tileElement.getIntAttribute("id",0);
       TiledMapTile tile=tileset.getTile(firstgid + localtid);
       if (tile != null) {
+        String terrain=tileElement.getAttribute("terrain",null);
+        if (terrain != null) {
+          tile.getProperties().put("terrain",terrain);
+        }
+        String probability=tileElement.getAttribute("probability",null);
+        if (probability != null) {
+          tile.getProperties().put("probability",probability);
+        }
         Element properties=tileElement.getChildByName("properties");
         if (properties != null) {
           loadProperties(tile.getProperties(),properties);

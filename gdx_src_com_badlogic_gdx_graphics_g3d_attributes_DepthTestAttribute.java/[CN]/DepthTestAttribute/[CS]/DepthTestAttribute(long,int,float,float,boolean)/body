@@ -1,0 +1,8 @@
+{
+  super(type);
+  if (!is(type))   throw new GdxRuntimeException("Invalid type specified");
+  this.depthFunc=depthFunc;
+  this.depthRangeNear=depthRangeNear;
+  this.depthRangeFar=depthRangeFar;
+  this.depthMask=depthMask;
+}

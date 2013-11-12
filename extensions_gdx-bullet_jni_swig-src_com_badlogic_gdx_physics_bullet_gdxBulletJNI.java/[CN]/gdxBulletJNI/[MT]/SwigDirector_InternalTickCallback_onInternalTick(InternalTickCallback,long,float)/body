@@ -1,3 +1,0 @@
-{
-  self.onInternalTick((dynamicsWorld == 0) ? null : new btDynamicsWorld(dynamicsWorld,false),timeStep);
-}

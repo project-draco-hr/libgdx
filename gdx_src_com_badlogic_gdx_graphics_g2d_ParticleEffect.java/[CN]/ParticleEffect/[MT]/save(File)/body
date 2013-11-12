@@ -15,10 +15,6 @@
     throw new GdxRuntimeException("Error saving effect: " + file,ex);
   }
  finally {
-    try {
-      if (output != null)       output.close();
-    }
- catch (    IOException ex) {
-    }
+    StreamUtils.closeQuietly(output);
   }
 }
