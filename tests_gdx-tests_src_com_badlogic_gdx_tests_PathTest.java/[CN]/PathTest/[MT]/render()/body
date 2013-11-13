@@ -5,11 +5,24 @@
   if (wait > 0)   wait-=Gdx.graphics.getDeltaTime();
  else {
     t+=speed * Gdx.graphics.getDeltaTime();
+    zt+=zspeed * Gdx.graphics.getDeltaTime();
     while (t >= 1f) {
       currentPath=(currentPath + 1) % paths.size;
+      if (currentPath == 0) {
+        zigzag=!zigzag;
+        zt=0;
+      }
       t-=1f;
     }
     paths.get(currentPath).valueAt(tmpV,t);
+    paths.get(currentPath).derivativeAt(tmpV2,t);
+    obj.setRotation(tmpV2.angle());
+    if (zigzag) {
+      tmpV2.nor();
+      tmpV2.set(-tmpV2.y,tmpV2.x);
+      tmpV2.scl((float)Math.sin(zt) * ZIGZAG_SCALE);
+      tmpV.add(tmpV2);
+    }
     obj.setPosition(tmpV.x,tmpV.y);
   }
   spriteBatch.begin();
