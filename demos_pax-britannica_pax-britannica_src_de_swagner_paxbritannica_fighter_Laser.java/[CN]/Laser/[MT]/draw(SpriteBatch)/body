@@ -1,5 +1,0 @@
-{
-  delta=Math.min(0.06f,Gdx.graphics.getDeltaTime());
-  velocity.scl((float)Math.pow(1.03f,delta * 30.f));
-  super.draw(spriteBatch);
-}
