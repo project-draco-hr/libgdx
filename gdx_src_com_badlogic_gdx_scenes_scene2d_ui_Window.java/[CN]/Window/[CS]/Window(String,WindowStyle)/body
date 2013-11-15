@@ -35,7 +35,7 @@
           if (y < border)           edge|=Align.bottom;
           if (y > height - border)           edge|=Align.top;
         }
-        if (isMovable && edge == 0 && y >= height - getPadTop())         edge=MOVE;
+        if (isMovable && edge == 0 && y <= height && y >= height - getPadTop() && x >= 0 && x <= width)         edge=MOVE;
         dragging=edge != 0;
         startX=x;
         startY=y;

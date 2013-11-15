@@ -1,6 +1,0 @@
-{
-  cache.clear();
-  TextBounds bounds=cache.addText(str,x,y,0,str.length());
-  cache.draw(spriteBatch);
-  return bounds;
-}

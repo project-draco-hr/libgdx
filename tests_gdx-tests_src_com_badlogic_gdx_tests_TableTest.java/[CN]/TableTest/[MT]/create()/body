@@ -7,7 +7,7 @@
   NinePatch patch=skin.getPatch("default-round");
   Label label=new Label("This is some text.",skin);
   root=new Table(){
-    public void draw(    SpriteBatch batch,    float parentAlpha){
+    public void draw(    Batch batch,    float parentAlpha){
       super.draw(batch,parentAlpha);
     }
   }

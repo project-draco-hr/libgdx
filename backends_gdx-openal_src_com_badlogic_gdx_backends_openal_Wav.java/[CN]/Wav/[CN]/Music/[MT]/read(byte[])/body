@@ -4,7 +4,7 @@
     setup(input.channels,input.sampleRate);
   }
   try {
-    return input.readData(buffer);
+    return input.read(buffer);
   }
  catch (  IOException ex) {
     throw new GdxRuntimeException("Error reading WAV file: " + file,ex);
