@@ -1,13 +1,8 @@
 {
-  InputStream is=null;
   try {
-    is=file.read();
-    return parse(is);
+    return parse(file.reader("UTF-8"));
   }
  catch (  Exception ex) {
     throw new SerializationException("Error parsing file: " + file,ex);
-  }
- finally {
-    StreamUtils.closeQuietly(is);
   }
 }
