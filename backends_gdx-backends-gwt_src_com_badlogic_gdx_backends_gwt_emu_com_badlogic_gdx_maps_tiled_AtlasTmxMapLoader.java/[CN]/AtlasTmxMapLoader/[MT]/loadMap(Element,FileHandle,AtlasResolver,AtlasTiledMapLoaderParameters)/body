@@ -17,6 +17,8 @@
   if (mapBackgroundColor != null) {
     mapProperties.put("backgroundcolor",mapBackgroundColor);
   }
+  mapTileWidth=tileWidth;
+  mapTileHeight=tileHeight;
   mapWidthInPixels=mapWidth * tileWidth;
   mapHeightInPixels=mapHeight * tileHeight;
   for (int i=0, j=root.getChildCount(); i < j; i++) {
