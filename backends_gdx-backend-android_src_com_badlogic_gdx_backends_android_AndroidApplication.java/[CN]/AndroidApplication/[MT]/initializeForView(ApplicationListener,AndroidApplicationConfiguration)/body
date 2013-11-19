@@ -6,6 +6,7 @@
   net=new AndroidNet(this);
   this.listener=listener;
   this.handler=new Handler();
+  this.useImmersiveMode=config.useImmersiveMode;
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
@@ -14,5 +15,6 @@
   Gdx.net=this.getNet();
   createWakeLock(config);
   hideStatusBar(config);
+  useImmersiveMode(this.useImmersiveMode);
   return graphics.getView();
 }
