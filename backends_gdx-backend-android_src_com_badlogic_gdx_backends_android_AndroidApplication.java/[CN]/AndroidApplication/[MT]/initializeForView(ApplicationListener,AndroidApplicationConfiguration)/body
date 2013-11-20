@@ -16,5 +16,19 @@
   createWakeLock(config);
   hideStatusBar(config);
   useImmersiveMode(this.useImmersiveMode);
+  if (this.useImmersiveMode && getVersion() >= 19) {
+    try {
+      View rootView=getWindow().getDecorView();
+      rootView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener(){
+        @Override public void onSystemUiVisibilityChange(        int arg0){
+          useImmersiveMode(useImmersiveMode);
+        }
+      }
+);
+    }
+ catch (    Exception e) {
+      log("AndroidApplication","Can't OnSystemUiVisibilityChangeListener",e);
+    }
+  }
   return graphics.getView();
 }
