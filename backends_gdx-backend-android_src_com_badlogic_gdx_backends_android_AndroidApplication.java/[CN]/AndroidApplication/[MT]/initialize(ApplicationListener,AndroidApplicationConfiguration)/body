@@ -35,8 +35,8 @@
       }
 );
     }
- catch (    Exception e) {
-      log("AndroidApplication","Can't OnSystemUiVisibilityChangeListener",e);
+ catch (    Throwable t) {
+      log("AndroidApplication","Can't create OnSystemUiVisibilityChangeListener",t);
     }
   }
 }
