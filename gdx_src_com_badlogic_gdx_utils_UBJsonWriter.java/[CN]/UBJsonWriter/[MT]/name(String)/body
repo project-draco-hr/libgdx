@@ -1,7 +1,6 @@
 {
   if (current == null || current.array)   throw new IllegalStateException("Current item must be an object.");
   byte[] bytes=name.getBytes("UTF-8");
-  out.writeByte('S');
   if (bytes.length <= Byte.MAX_VALUE) {
     out.writeByte('i');
     out.writeByte(bytes.length);
