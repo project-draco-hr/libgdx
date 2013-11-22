@@ -1,3 +1,5 @@
 {
   System.out.println("Usage: GdxSetup --dir <dir-name> --name <app-name> --package <package> --mainClass <mainClass>");
+  System.out.println("[OPTIONAL]");
+  System.out.println("--gdxVersion <version> defaults to " + GDX_VERSIONS[0] + " if not specified");
 }
