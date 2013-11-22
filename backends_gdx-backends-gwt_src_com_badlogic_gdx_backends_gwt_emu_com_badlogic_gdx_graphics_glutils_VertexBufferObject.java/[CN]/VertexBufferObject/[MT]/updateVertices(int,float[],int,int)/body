@@ -1,0 +1,8 @@
+{
+  isDirty=true;
+  final int pos=buffer.position();
+  buffer.position(targetOffset);
+  BufferUtils.copy(vertices,sourceOffset,buffer,count);
+  buffer.position(pos);
+  bufferChanged();
+}

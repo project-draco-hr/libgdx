@@ -10,4 +10,5 @@
   getVerticesBuffer().position(srcOffset);
   getVerticesBuffer().get(vertices,destOffset,count);
   getVerticesBuffer().position(pos);
+  return vertices;
 }
