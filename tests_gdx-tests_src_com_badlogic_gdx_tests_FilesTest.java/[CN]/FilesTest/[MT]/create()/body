@@ -96,6 +96,14 @@ catch (    IOException e) {
  finally {
       StreamUtils.closeQuietly(in);
     }
+    try {
+      byte[] testBytes=Gdx.files.local("test.txt").readBytes();
+      if (Arrays.equals("test".getBytes(),testBytes))       message+="Read into byte array success\n";
+ else       fail();
+    }
+ catch (    Throwable e) {
+      message+="Couldn't read localstorage/test.txt\n" + e.getMessage() + "\n";
+    }
     if (!Gdx.files.local("test.txt").delete())     message+="Couldn't delete localstorage/test.txt";
   }
   try {
