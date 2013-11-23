@@ -1,0 +1,4 @@
+{
+  for (int i=0; i < 6; i++)   if ((planes[i].normal.x * x + planes[i].normal.y * y + planes[i].normal.z * z) < (-radius - planes[i].d))   return false;
+  return true;
+}
