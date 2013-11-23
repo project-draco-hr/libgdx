@@ -15,11 +15,17 @@
       temp=values[down + 1];
       values[down + 1]=values[up + 1];
       values[up + 1]=temp;
+      tempIndex=originalIndices[down / 2];
+      originalIndices[down / 2]=originalIndices[up / 2];
+      originalIndices[up / 2]=tempIndex;
     }
   }
   values[lower]=values[up];
   values[up]=x;
   values[lower + 1]=values[up + 1];
   values[up + 1]=y;
+  tempIndex=originalIndices[lower / 2];
+  originalIndices[lower / 2]=originalIndices[up / 2];
+  originalIndices[up / 2]=tempIndex;
   return up;
 }
