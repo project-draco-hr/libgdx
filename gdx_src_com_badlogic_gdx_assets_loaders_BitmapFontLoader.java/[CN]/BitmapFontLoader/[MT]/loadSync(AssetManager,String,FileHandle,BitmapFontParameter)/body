@@ -3,7 +3,7 @@
   for (int i=0; i < regs.length; i++) {
     TextureRegion region=new TextureRegion(manager.get(data.getImagePath(i),Texture.class));
     if (parameter != null) {
-      region.getTexture().setFilter(parameter.minFilter,parameter.maxFilter);
+      region.getTexture().setFilter(parameter.minFilter,parameter.magFilter);
     }
     regs[i]=region;
   }
