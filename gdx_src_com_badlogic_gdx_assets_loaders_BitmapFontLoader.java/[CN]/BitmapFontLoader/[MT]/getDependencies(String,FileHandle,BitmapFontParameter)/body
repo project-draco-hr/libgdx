@@ -5,6 +5,8 @@
     return deps;
   }
   data=new BitmapFontData(file,parameter != null ? parameter.flip : false);
-  deps.add(new AssetDescriptor(data.getImagePath(),Texture.class));
+  for (int i=0; i < data.getImagePaths().length; i++) {
+    deps.add(new AssetDescriptor(data.getImagePath(i),Texture.class));
+  }
   return deps;
 }

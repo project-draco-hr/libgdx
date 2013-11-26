@@ -12,11 +12,7 @@
       parentWidth=parent.getWidth();
       parentHeight=parent.getHeight();
     }
-    if (getWidth() != parentWidth || getHeight() != parentHeight) {
-      setWidth(parentWidth);
-      setHeight(parentHeight);
-      invalidate();
-    }
+    setSize(parentWidth,parentHeight);
   }
   if (!needsLayout)   return;
   needsLayout=false;

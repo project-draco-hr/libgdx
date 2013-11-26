@@ -1,4 +1,4 @@
 {
-  final UIAlertView uiAlertView=buildUIAlertView(listener,title,text);
+  final UIAlertView uiAlertView=buildUIAlertView(listener,title,text,null);
   uiAlertView.show();
 }

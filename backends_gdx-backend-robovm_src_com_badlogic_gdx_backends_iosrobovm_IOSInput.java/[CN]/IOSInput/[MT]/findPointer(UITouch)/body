@@ -1,5 +1,5 @@
 {
-  int ptr=(int)touch.getHandle();
+  long ptr=touch.getHandle();
   for (int i=0; i < touchDown.length; i++) {
     if (touchDown[i] == ptr)     return i;
   }

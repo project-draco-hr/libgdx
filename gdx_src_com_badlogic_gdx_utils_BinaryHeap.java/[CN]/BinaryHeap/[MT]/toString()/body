@@ -1,12 +1,12 @@
 {
   if (size == 0)   return "[]";
-  Object[] nodes=this.nodes;
+  Node[] nodes=this.nodes;
   StringBuilder buffer=new StringBuilder(32);
   buffer.append('[');
-  buffer.append(nodes[0]);
+  buffer.append(nodes[0].value);
   for (int i=1; i < size; i++) {
     buffer.append(", ");
-    buffer.append(nodes[i]);
+    buffer.append(nodes[i].value);
   }
   buffer.append(']');
   return buffer.toString();

@@ -3,7 +3,7 @@
   if (materials == null) {
   }
  else {
-    model.materials.ensureCapacity(materials.size());
+    model.materials.ensureCapacity(materials.size);
     for (JsonValue material=materials.child(); material != null; material=material.next()) {
       ModelMaterial jsonMaterial=new ModelMaterial();
       String id=material.getString("id",null);
@@ -17,6 +17,8 @@
       if (emissive != null)       jsonMaterial.emissive=parseColor(emissive);
       final JsonValue specular=material.get("specular");
       if (specular != null)       jsonMaterial.specular=parseColor(specular);
+      final JsonValue reflection=material.get("reflection");
+      if (reflection != null)       jsonMaterial.reflection=parseColor(reflection);
       jsonMaterial.shininess=material.getFloat("shininess",0.0f);
       jsonMaterial.opacity=material.getFloat("opacity",1.0f);
       JsonValue textures=material.get("textures");

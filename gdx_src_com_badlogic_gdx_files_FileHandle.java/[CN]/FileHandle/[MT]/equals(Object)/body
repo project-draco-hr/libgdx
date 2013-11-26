@@ -1,0 +1,5 @@
+{
+  if (!(obj instanceof FileHandle))   return false;
+  FileHandle other=(FileHandle)obj;
+  return type == other.type && path().equals(other.path());
+}

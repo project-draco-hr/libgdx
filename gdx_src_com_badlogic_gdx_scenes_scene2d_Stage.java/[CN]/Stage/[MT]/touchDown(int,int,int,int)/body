@@ -1,4 +1,6 @@
 {
+  if (screenX < viewportX || screenX >= viewportX + viewportWidth)   return false;
+  if (screenY < viewportY || screenY >= viewportY + viewportHeight)   return false;
   pointerTouched[pointer]=true;
   pointerScreenX[pointer]=screenX;
   pointerScreenY[pointer]=screenY;

@@ -18,10 +18,6 @@
     throw new SerializationException(ex);
   }
  finally {
-    try {
-      reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
 }

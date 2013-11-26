@@ -1,0 +1,5 @@
+{
+  for (  final T e : entities) {
+    batch.render(e.modelInstance,lights);
+  }
+}

@@ -1,9 +1,0 @@
-{
-  if (other == null)   return false;
-  if (other == this)   return true;
-  if (!same(other))   return false;
-  sort();
-  other.sort();
-  for (int i=0; i < attributes.size; i++)   if (!attributes.get(i).equals(other.attributes.get(i)))   return false;
-  return true;
-}

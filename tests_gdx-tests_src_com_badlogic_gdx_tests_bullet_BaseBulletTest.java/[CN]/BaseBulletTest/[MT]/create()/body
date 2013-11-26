@@ -1,5 +1,9 @@
 {
   init();
+  lights=new Environment();
+  lights.set(new ColorAttribute(ColorAttribute.AmbientLight,0.3f,0.3f,0.3f,1.f));
+  lights.add((shadowLight=new DirectionalLight()).set(0.8f,0.8f,0.8f,-0.5f,-1f,0.7f));
+  shadowBatch=new ModelBatch(new DepthShaderProvider());
   modelBatch=new ModelBatch();
   world=createWorld();
   world.performanceCounter=performanceCounter;

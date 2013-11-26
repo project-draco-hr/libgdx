@@ -8,6 +8,7 @@
   for (int i=0; i < touched.length; i++)   touched[i]=false;
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+ else     if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onPause();
  else     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
  else     throw new RuntimeException("unimplemented");
   }

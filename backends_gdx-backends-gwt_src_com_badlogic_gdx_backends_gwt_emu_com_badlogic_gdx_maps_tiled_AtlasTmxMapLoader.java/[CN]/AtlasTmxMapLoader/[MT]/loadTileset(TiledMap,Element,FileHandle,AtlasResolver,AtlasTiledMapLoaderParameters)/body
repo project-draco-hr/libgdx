@@ -32,17 +32,16 @@
       imageWidth=element.getChildByName("image").getIntAttribute("width",0);
       imageHeight=element.getChildByName("image").getIntAttribute("height",0);
     }
-    TextureAtlas atlas=null;
-    String regionsName="";
-    if (map.getProperties().containsKey("atlas")) {
-      FileHandle atlasHandle=getRelativeFileHandle(tmxFile,map.getProperties().get("atlas",String.class));
-      atlasHandle=resolve(atlasHandle.path());
-      atlas=resolver.getAtlas(atlasHandle.path());
-      regionsName=atlasHandle.nameWithoutExtension();
-      if (parameter != null && parameter.forceTextureFilters) {
-        for (        Texture texture : atlas.getTextures()) {
-          trackedTextures.add(texture);
-        }
+    if (!map.getProperties().containsKey("atlas")) {
+      throw new GdxRuntimeException("The map is missing the 'atlas' property");
+    }
+    FileHandle atlasHandle=getRelativeFileHandle(tmxFile,map.getProperties().get("atlas",String.class));
+    atlasHandle=resolve(atlasHandle.path());
+    TextureAtlas atlas=resolver.getAtlas(atlasHandle.path());
+    String regionsName=atlasHandle.nameWithoutExtension();
+    if (parameter != null && parameter.forceTextureFilters) {
+      for (      Texture texture : atlas.getTextures()) {
+        trackedTextures.add(texture);
       }
     }
     TiledMapTileSet tileset=new TiledMapTileSet();

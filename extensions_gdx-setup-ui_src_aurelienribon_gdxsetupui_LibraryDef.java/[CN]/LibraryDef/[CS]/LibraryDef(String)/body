@@ -13,6 +13,6 @@
   this.libsDesktop=ParseUtils.parseBlockAsList(content,"libs-desktop");
   this.libsAndroid=ParseUtils.parseBlockAsList(content,"libs-android");
   this.libsHtml=ParseUtils.parseBlockAsList(content,"libs-html");
-  this.libsIos=ParseUtils.parseBlockAsList(content,"libs-ios");
+  this.libsRobovm=ParseUtils.parseBlockAsList(content,"libs-robovm");
   this.data=ParseUtils.parseBlockAsList(content,"data");
 }

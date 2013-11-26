@@ -33,7 +33,15 @@
         Display.create(new PixelFormat());
       }
  catch (      Exception ex3) {
-        if (ex3.getMessage().contains("Pixel format not accelerated"))         throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex3);
+        if (ex3.getMessage().contains("Pixel format not accelerated")) {
+          if (!softwareMode && config.allowSoftwareMode) {
+            softwareMode=true;
+            System.setProperty("org.lwjgl.opengl.Display.allowSoftwareOpenGL","true");
+            createDisplayPixelFormat();
+            return;
+          }
+          throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex3);
+        }
         throw new GdxRuntimeException("Unable to create OpenGL display.",ex3);
       }
       if (getDesktopDisplayMode().bitsPerPixel == 16) {

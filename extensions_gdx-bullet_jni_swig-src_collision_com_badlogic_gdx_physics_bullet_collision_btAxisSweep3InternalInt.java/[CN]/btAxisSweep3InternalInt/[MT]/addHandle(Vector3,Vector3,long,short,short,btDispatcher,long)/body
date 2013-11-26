@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.btAxisSweep3InternalInt_addHandle(swigCPtr,this,aabbMin,aabbMax,pOwner,collisionFilterGroup,collisionFilterMask,btDispatcher.getCPtr(dispatcher),dispatcher,multiSapProxy);
+}

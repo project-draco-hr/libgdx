@@ -1,4 +1,5 @@
 {
+  if (anim == null)   return null;
   final AnimationDesc result=animationPool.obtain();
   result.animation=anim;
   result.listener=listener;

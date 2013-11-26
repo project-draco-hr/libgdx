@@ -1,8 +1,17 @@
 {
+  int texWidth=texture.getWidth(), texHeight=texture.getHeight();
+  regionWidth=Math.round(Math.abs(u2 - u) * texWidth);
+  regionHeight=Math.round(Math.abs(v2 - v) * texHeight);
+  if (regionWidth == 1 && regionHeight == 1) {
+    float adjustX=0.25f / texWidth;
+    u+=adjustX;
+    u2-=adjustX;
+    float adjustY=0.25f / texHeight;
+    v+=adjustY;
+    v2-=adjustY;
+  }
   this.u=u;
   this.v=v;
   this.u2=u2;
   this.v2=v2;
-  regionWidth=Math.round(Math.abs(u2 - u) * texture.getWidth());
-  regionHeight=Math.round(Math.abs(v2 - v) * texture.getHeight());
 }

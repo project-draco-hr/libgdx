@@ -23,10 +23,6 @@ synchronized (readBuffer) {
     throw new GdxRuntimeException("Couldn't read Pixmap from file '" + file + "'",e);
   }
  finally {
-    if (in != null)     try {
-      in.close();
-    }
- catch (    Exception e) {
-    }
+    StreamUtils.closeQuietly(in);
   }
 }

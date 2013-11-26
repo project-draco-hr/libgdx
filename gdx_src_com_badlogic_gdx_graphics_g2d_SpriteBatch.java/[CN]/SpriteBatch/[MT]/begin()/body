@@ -1,5 +1,5 @@
 {
-  if (drawing)   throw new IllegalStateException("you have to call SpriteBatch.end() first");
+  if (drawing)   throw new IllegalStateException("SpriteBatch.end must be called before begin.");
   renderCalls=0;
   Gdx.gl.glDepthMask(false);
   if (Gdx.graphics.isGL20Available()) {
@@ -10,7 +10,5 @@
     Gdx.gl.glEnable(GL10.GL_TEXTURE_2D);
   }
   setupMatrices();
-  idx=0;
-  lastTexture=null;
   drawing=true;
 }

@@ -5,15 +5,19 @@
   final float u2=glyph.u2;
   final float v=glyph.v;
   final float v2=glyph.v2;
-  final float[] vertices=this.vertices;
+  final int page=glyph.page;
+  if (glyphIndices != null) {
+    glyphIndices[page].add(glyphCount++);
+  }
+  final float[] vertices=vertexData[page];
   if (integer) {
     x=Math.round(x);
     y=Math.round(y);
     x2=Math.round(x2);
     y2=Math.round(y2);
   }
-  int idx=this.idx;
-  this.idx+=20;
+  int idx=this.idx[page];
+  this.idx[page]+=20;
   vertices[idx++]=x;
   vertices[idx++]=y;
   vertices[idx++]=color;

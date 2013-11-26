@@ -1,0 +1,17 @@
+{
+  OutputStream out=null;
+  try {
+    out=new BufferedOutputStream(new FileOutputStream(outFile));
+    out.write(bytes);
+  }
+ catch (  IOException e) {
+    throw new RuntimeException("Couldn't write file '" + outFile.getAbsolutePath() + "'",e);
+  }
+ finally {
+    if (out != null)     try {
+      out.close();
+    }
+ catch (    IOException e) {
+    }
+  }
+}

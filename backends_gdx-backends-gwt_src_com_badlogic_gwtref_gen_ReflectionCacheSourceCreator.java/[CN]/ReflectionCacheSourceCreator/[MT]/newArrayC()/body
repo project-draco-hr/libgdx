@@ -1,6 +1,7 @@
 {
   p("public Object newArray (Class componentType, int size) {");
-  p("    String typeName = componentType.getName().replace('$', '.');");
+  p("    String param = componentType.getName().replace('$', '.');");
+  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  JType type : types) {
     if (type.getQualifiedSourceName().equals("void"))     continue;
     if (type.getQualifiedSourceName().endsWith("Void"))     continue;
@@ -9,8 +10,9 @@
       arrayType=type.getErasedType().getQualifiedSourceName();
       arrayType=arrayType.replaceFirst("\\[\\]","[size]") + "[]";
     }
-    p("   if(typeName.equals(\"" + type.getQualifiedSourceName() + "\")) return new "+ arrayType+ ";");
+    pc.add(type.getQualifiedSourceName(),"return new " + arrayType + ";");
   }
+  pc.print();
   p("	throw new RuntimeException(\"Couldn't create array with element type \" + componentType.getName());");
   p("}");
 }

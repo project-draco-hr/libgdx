@@ -31,8 +31,8 @@
     gutterWidth=0;
     gutterHeight=0;
   }
-  centerX=this.width / 2;
-  centerY=this.height / 2;
+  float centerX=this.width / 2;
+  float centerY=this.height / 2;
   camera.position.set(centerX,centerY,0);
   camera.viewportWidth=this.width;
   camera.viewportHeight=this.height;

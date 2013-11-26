@@ -1,4 +1,5 @@
 {
+  ownsTexture=true;
   for (int i=0, n=emitters.size; i < n; i++) {
     ParticleEmitter emitter=emitters.get(i);
     String imagePath=emitter.getImagePath();

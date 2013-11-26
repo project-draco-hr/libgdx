@@ -1,4 +1,5 @@
 {
+  ensureTriangles(divisions + 2,divisions);
   final float hw=width * 0.5f;
   final float hh=height * 0.5f;
   final float hd=depth * 0.5f;
@@ -22,5 +23,5 @@
     if (i == 0)     continue;
     triangle((short)base,(short)(vindex - 1),(short)(vindex - 2));
   }
-  circle(width,depth,0,-hh,0,0,-1,0,-1,0,0,0,0,1,divisions,180f - angleTo,180f - angleFrom);
+  ellipse(width,depth,0,0,divisions,0,-hh,0,0,-1,0,-1,0,0,0,0,1,180f - angleTo,180f - angleFrom);
 }

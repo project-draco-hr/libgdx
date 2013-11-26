@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btBroadphaseAabbCallback(),true);
+  CollisionJNI.btBroadphaseAabbCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

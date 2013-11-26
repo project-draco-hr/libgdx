@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btWorldImporter_createSliderConstraint__SWIG_1(swigCPtr,this,btRigidBody.getCPtr(rbB),rbB,frameInB,useLinearReferenceFrameA);
-  return (cPtr == 0) ? null : new btSliderConstraint(cPtr,false);
-}

@@ -3,7 +3,7 @@
   if (nodes == null) {
     throw new GdxRuntimeException("At least one node is required.");
   }
-  model.nodes.ensureCapacity(nodes.size());
+  model.nodes.ensureCapacity(nodes.size);
   for (JsonValue node=nodes.child(); node != null; node=node.next()) {
     model.nodes.add(parseNodesRecursively(node));
   }

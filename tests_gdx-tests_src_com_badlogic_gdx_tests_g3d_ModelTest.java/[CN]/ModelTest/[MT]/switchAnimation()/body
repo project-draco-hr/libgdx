@@ -10,7 +10,7 @@
         }
       }
     }
-    animIndex=(animIndex + 1) % e.key.animations.size;
-    e.value.animate(e.key.animations.get(animIndex).id,-1,1f,null,0.2f);
+    animIndex=(animIndex + 1) % (e.key.animations.size + 1);
+    e.value.animate((animIndex == e.key.animations.size) ? null : e.key.animations.get(animIndex).id,-1,1f,null,0.2f);
   }
 }

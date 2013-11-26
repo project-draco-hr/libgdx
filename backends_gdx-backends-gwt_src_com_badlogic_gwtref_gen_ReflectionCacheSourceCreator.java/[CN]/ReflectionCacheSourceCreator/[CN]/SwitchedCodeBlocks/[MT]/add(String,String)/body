@@ -1,0 +1,12 @@
+{
+  int keyHash=key.hashCode();
+  List<KeyedCodeBlock> blocks=keyHash2CodeBlock.get(keyHash);
+  if (blocks == null) {
+    blocks=new ArrayList<SwitchedCodeBlocks.KeyedCodeBlock>();
+    keyHash2CodeBlock.put(keyHash,blocks);
+  }
+  KeyedCodeBlock c=new KeyedCodeBlock();
+  c.key=key;
+  c.codeBlock=codeBlock;
+  blocks.add(c);
+}

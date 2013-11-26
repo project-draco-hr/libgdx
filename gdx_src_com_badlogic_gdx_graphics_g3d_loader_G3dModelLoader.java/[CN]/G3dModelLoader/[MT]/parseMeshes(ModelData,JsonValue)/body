@@ -1,6 +1,6 @@
 {
   JsonValue meshes=json.require("meshes");
-  model.meshes.ensureCapacity(meshes.size());
+  model.meshes.ensureCapacity(meshes.size);
   for (JsonValue mesh=meshes.child(); mesh != null; mesh=mesh.next()) {
     ModelMesh jsonMesh=new ModelMesh();
     String id=mesh.getString("id","");
@@ -8,7 +8,7 @@
     JsonValue attributes=mesh.require("attributes");
     jsonMesh.attributes=parseAttributes(attributes);
     JsonValue vertices=mesh.require("vertices");
-    float[] verts=new float[vertices.size()];
+    float[] verts=new float[vertices.size];
     int j=0;
     for (JsonValue value=vertices.child(); value != null; value=value.next(), j++) {
       verts[j]=value.asFloat();
@@ -34,7 +34,7 @@
       }
       jsonPart.primitiveType=parseType(type);
       JsonValue indices=meshPart.require("indices");
-      short[] partIndices=new short[indices.size()];
+      short[] partIndices=new short[indices.size];
       int k=0;
       for (JsonValue value=indices.child(); value != null; value=value.next(), k++) {
         partIndices[k]=(short)value.asInt();

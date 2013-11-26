@@ -1,10 +1,12 @@
 {
   if (element.getName().equals("object")) {
     MapObject object=null;
-    int x=element.getIntAttribute("x",0);
-    int y=(yUp ? mapHeightInPixels - element.getIntAttribute("y",0) : element.getIntAttribute("y",0));
-    int width=element.getIntAttribute("width",0);
-    int height=element.getIntAttribute("height",0);
+    float scaleX=convertObjectToTileSpace ? 1.0f / mapTileWidth : 1.0f;
+    float scaleY=convertObjectToTileSpace ? 1.0f / mapTileHeight : 1.0f;
+    float x=element.getIntAttribute("x",0) * scaleX;
+    float y=(yUp ? mapHeightInPixels - element.getIntAttribute("y",0) : element.getIntAttribute("y",0)) * scaleY;
+    float width=element.getIntAttribute("width",0) * scaleX;
+    float height=element.getIntAttribute("height",0) * scaleY;
     if (element.getChildCount() > 0) {
       Element child=null;
       if ((child=element.getChildByName("polygon")) != null) {
@@ -12,8 +14,8 @@
         float[] vertices=new float[points.length * 2];
         for (int i=0; i < points.length; i++) {
           String[] point=points[i].split(",");
-          vertices[i * 2]=Integer.parseInt(point[0]);
-          vertices[i * 2 + 1]=Integer.parseInt(point[1]);
+          vertices[i * 2]=Integer.parseInt(point[0]) * scaleX;
+          vertices[i * 2 + 1]=Integer.parseInt(point[1]) * scaleY;
           if (yUp) {
             vertices[i * 2 + 1]*=-1;
           }
@@ -27,8 +29,8 @@
         float[] vertices=new float[points.length * 2];
         for (int i=0; i < points.length; i++) {
           String[] point=points[i].split(",");
-          vertices[i * 2]=Integer.parseInt(point[0]);
-          vertices[i * 2 + 1]=Integer.parseInt(point[1]);
+          vertices[i * 2]=Integer.parseInt(point[0]) * scaleX;
+          vertices[i * 2 + 1]=Integer.parseInt(point[1]) * scaleY;
           if (yUp) {
             vertices[i * 2 + 1]*=-1;
           }
@@ -53,8 +55,8 @@
     if (gid != -1) {
       object.getProperties().put("gid",gid);
     }
-    object.getProperties().put("x",x);
-    object.getProperties().put("y",yUp ? y - height : y);
+    object.getProperties().put("x",x * scaleX);
+    object.getProperties().put("y",(yUp ? y - height : y) * scaleY);
     object.setVisible(element.getIntAttribute("visible",1) == 1);
     Element properties=element.getChildByName("properties");
     if (properties != null) {

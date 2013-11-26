@@ -1,6 +1,0 @@
-{
-  if (logLevel >= LOG_DEBUG) {
-    Console.WriteLine("[error] " + tag + ": "+ message);
-    exception.printStackTrace();
-  }
-}

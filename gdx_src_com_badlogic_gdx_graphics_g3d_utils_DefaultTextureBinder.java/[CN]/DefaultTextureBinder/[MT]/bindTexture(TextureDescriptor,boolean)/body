@@ -1,25 +1,24 @@
 {
-  int idx, result;
+  final int idx, result;
+  final GLTexture texture=textureDesc.texture;
   reused=false;
 switch (method) {
 case ROUNDROBIN:
-    result=offset + (idx=bindTextureRoundRobin(textureDesc.texture));
+    result=offset + (idx=bindTextureRoundRobin(texture));
   break;
 case WEIGHTED:
-result=offset + (idx=bindTextureWeighted(textureDesc.texture));
+result=offset + (idx=bindTextureWeighted(texture));
 break;
 default :
 return -1;
 }
 if (reused) {
 reuseCount++;
-if (rebind) textureDesc.texture.bind(result);
+if (rebind) texture.bind(result);
  else Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0 + result);
 }
  else bindCount++;
-if (textureDesc.minFilter != GL10.GL_INVALID_VALUE && textureDesc.minFilter != textures[idx].minFilter) Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MIN_FILTER,textures[idx].minFilter=textureDesc.minFilter);
-if (textureDesc.magFilter != GL10.GL_INVALID_VALUE && textureDesc.magFilter != textures[idx].magFilter) Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_MAG_FILTER,textures[idx].magFilter=textureDesc.magFilter);
-if (textureDesc.uWrap != GL10.GL_INVALID_VALUE && textureDesc.uWrap != textures[idx].uWrap) Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_S,textures[idx].uWrap=textureDesc.uWrap);
-if (textureDesc.vWrap != GL10.GL_INVALID_VALUE && textureDesc.vWrap != textures[idx].vWrap) Gdx.gl.glTexParameterf(GL10.GL_TEXTURE_2D,GL10.GL_TEXTURE_WRAP_T,textures[idx].vWrap=textureDesc.vWrap);
+texture.unsafeSetWrap(textureDesc.uWrap,textureDesc.vWrap);
+texture.unsafeSetFilter(textureDesc.minFilter,textureDesc.magFilter);
 return result;
 }

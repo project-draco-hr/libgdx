@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btWorldImporter_createScaledTrangleMeshShape(swigCPtr,this,btBvhTriangleMeshShape.getCPtr(meshShape),meshShape,localScalingbtBvhTriangleMeshShape);
-  return (cPtr == 0) ? null : new btScaledBvhTriangleMeshShape(cPtr,false);
-}

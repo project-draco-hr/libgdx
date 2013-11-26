@@ -1,0 +1,4 @@
+{
+  if (primitiveType == GL10.GL_LINES)   ensureIndices(6 * numTriangles);
+ else   ensureIndices(3 * numTriangles);
+}

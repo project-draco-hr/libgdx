@@ -1,17 +1,21 @@
 {
+  long[] bits=this.bits;
   int word=fromIndex >>> 6;
-  if (word >= bits.length)   return -1;
+  int bitsLength=bits.length;
+  if (word >= bitsLength)   return -1;
+  long bitsAtWord=bits[word];
   for (int i=fromIndex & 0x3f; i < 64; i++) {
-    if ((bits[word] & (1L << (i & 0x3F))) == 0L) {
+    if ((bitsAtWord & (1L << (i & 0x3F))) == 0L) {
       return (word << 6) + i;
     }
   }
-  for (word++; word < bits.length; word++) {
+  for (word++; word < bitsLength; word++) {
     if (word == 0) {
       return word << 6;
     }
+    bitsAtWord=bits[word];
     for (int i=0; i < 64; i++) {
-      if ((bits[word] & (1L << (i & 0x3F))) == 0L) {
+      if ((bitsAtWord & (1L << (i & 0x3F))) == 0L) {
         return (word << 6) + i;
       }
     }

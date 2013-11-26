@@ -1,10 +1,11 @@
 {
   p("public Object newInstance (Type type) {");
+  p("    String param = type.getName();");
+  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  JType type : types) {
     if (type instanceof JClassType) {
-      JClassType clazzType=(JClassType)type;
-      if (clazzType.isDefaultInstantiable() && !(clazzType instanceof JArrayType) && !(clazzType instanceof JEnumType)) {
-        p("if(type.getName().equals(\"" + type.getErasedType().getQualifiedSourceName() + "\")) return new "+ type.getErasedType().getQualifiedSourceName()+ "();");
+      if (isInstantiableWithNewOperator((JClassType)type)) {
+        pc.add(type.getErasedType().getQualifiedSourceName(),"return new " + type.getErasedType().getQualifiedSourceName() + "();");
       }
  else {
         logger.log(Type.INFO,"No public default constructor for '" + type.getQualifiedSourceName() + "', or type is an array, enum, abstract class or interface type");
@@ -14,6 +15,7 @@
       logger.log(Type.INFO,"No public default constructor for primitive type '" + type.getQualifiedSourceName() + "'");
     }
   }
+  pc.print();
   p("return null;");
   p("}");
 }
