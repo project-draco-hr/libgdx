@@ -7,6 +7,7 @@
       gatherTypes(t.getErasedType(),types);
     }
   }
+  gatherTypes(typeOracle.findType("java.util.List").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.util.ArrayList").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.util.HashMap").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.util.Map").getErasedType(),types);
