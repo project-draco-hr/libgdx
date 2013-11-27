@@ -19,7 +19,8 @@
  else   pb("   return obj.@" + stub.enclosingType + "::"+ stub.name+ ";");
   pb("}-*/;");
   if (!stub.isFinal) {
-    pb("public native void " + stub.setter + "("+ stub.enclosingType+ " obj, Object value)  /*-{");
+    String vType=stub.type.equals("int") || stub.type.equals("float") || stub.type.equals("double")|| stub.type.equals("boolean") ? stub.type : "Object";
+    pb("public native void " + stub.setter + "("+ stub.enclosingType+ " obj, "+ vType+ " value)  /*-{");
     if (stub.isStatic)     pb("    @" + stub.enclosingType + "::"+ stub.name+ " = value");
  else     pb("    obj.@" + stub.enclosingType + "::"+ stub.name+ " = value;");
     pb("}-*/;");
