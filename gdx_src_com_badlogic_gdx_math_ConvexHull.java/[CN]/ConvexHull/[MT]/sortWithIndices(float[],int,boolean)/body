@@ -13,7 +13,7 @@
     upper=stack.pop();
     lower=stack.pop();
     if (upper <= lower)     continue;
-    int i=quicksortPartitionWithIndices(values,lower,upper,originalIndicesArray);
+    int i=quicksortPartitionWithIndices(values,lower,upper,yDown,originalIndicesArray);
     if (i - lower > upper - i) {
       stack.add(lower);
       stack.add(i - 2);

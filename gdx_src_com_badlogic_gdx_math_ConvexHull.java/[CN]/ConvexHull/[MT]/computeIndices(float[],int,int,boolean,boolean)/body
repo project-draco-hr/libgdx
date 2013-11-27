@@ -5,7 +5,7 @@
     System.arraycopy(points,offset,sortedPoints,0,count);
     points=sortedPoints;
     offset=0;
-    sortWithIndices(points,count);
+    sortWithIndices(points,count,yDown);
   }
   IntArray indices=this.indices;
   indices.clear();

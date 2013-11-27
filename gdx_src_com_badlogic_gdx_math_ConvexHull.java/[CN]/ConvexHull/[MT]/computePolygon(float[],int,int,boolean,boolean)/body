@@ -5,7 +5,7 @@
     System.arraycopy(points,offset,sortedPoints,0,count);
     points=sortedPoints;
     offset=0;
-    sort(points,count);
+    sort(points,count,yDown);
   }
   FloatArray hull=this.hull;
   hull.clear();
