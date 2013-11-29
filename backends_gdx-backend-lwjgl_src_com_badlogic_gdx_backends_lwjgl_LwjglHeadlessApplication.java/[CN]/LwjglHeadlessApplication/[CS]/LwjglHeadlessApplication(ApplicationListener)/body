@@ -1,0 +1,9 @@
+{
+  this.listener=listener;
+  this.files=new LwjglFiles();
+  this.net=new LwjglNet();
+  Gdx.app=this;
+  Gdx.files=files;
+  Gdx.net=net;
+  initialize();
+}
