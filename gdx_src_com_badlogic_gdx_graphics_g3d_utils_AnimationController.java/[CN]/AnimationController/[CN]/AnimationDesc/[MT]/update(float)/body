@@ -1,6 +1,5 @@
 {
   if (loopCount != 0 && animation != null) {
-    final float duration=animation.duration;
     final float diff=speed * delta;
     time+=diff;
     int loops=(int)Math.abs(time / duration);

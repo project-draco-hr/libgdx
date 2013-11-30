@@ -21,7 +21,7 @@
     update(remain);
     return;
   }
-  if (previous != null)   applyAnimations(previous.animation,previous.time,current.animation,current.time,transitionCurrentTime / transitionTargetTime);
- else   applyAnimation(current.animation,current.time);
+  if (previous != null)   applyAnimations(previous.animation,previous.offset + previous.time,current.animation,current.offset + current.time,transitionCurrentTime / transitionTargetTime);
+ else   applyAnimation(current.animation,current.offset + current.time);
   updating=false;
 }
