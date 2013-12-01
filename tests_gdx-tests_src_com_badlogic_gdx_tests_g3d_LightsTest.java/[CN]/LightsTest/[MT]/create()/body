@@ -1,10 +1,57 @@
 {
-  super.create();
-  environment.clear();
+  modelBatch=new ModelBatch();
+  environment=new Environment();
   environment.set(new ColorAttribute(ColorAttribute.AmbientLight,0.2f,0.2f,0.2f,1.0f));
-  environment.add(dirLight=new DirectionalLight().set(0.8f,0.2f,0.2f,-1f,-2f,-0.5f));
   environment.add(pointLight=new PointLight().set(0.2f,0.8f,0.2f,0f,0f,0f,100f));
-  ModelBuilder mb=new ModelBuilder();
-  lightModel=mb.createSphere(1,1,1,10,10,new Material(ColorAttribute.createDiffuse(1,1,1,1)),Usage.Position);
-  lightModel.nodes.get(0).parts.get(0).setRenderable(pLight=new Renderable());
+  cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  cam.position.set(0f,0f,5f);
+  cam.lookAt(0,0,0);
+  cam.near=1f;
+  cam.far=300f;
+  cam.update();
+  ModelBuilder modelBuilder=new ModelBuilder();
+  model=modelBuilder.createCone(2f,3f,2f,10,GL10.GL_TRIANGLES,new Material(ColorAttribute.createDiffuse(1,1,1,1)),Usage.Position | Usage.Normal);
+  renderable=model.nodes.get(0).parts.get(0).setRenderable(new Renderable());
+  renderable.environment=environment;
+  renderable.shader=shader=new DefaultShader(renderable,new DefaultShader.Config(Gdx.files.internal("data/g3d/shaders/lighttest.vertex.glsl").readString(),Gdx.files.internal("data/g3d/shaders/lighttest.fragment.glsl").readString())){
+    protected final int u_pointLightPosition=register(new Uniform("u_pointLightPosition"),new Setter(){
+      @Override public boolean isGlobal(      BaseShader shader,      int inputID){
+        return false;
+      }
+      @Override public void set(      BaseShader shader,      int inputID,      Renderable renderable,      Attributes combinedAttributes){
+        shader.set(inputID,pointLight.position);
+      }
+    }
+);
+    protected final int u_pointLightIntensity=register(new Uniform("u_pointLightIntensity"),new Setter(){
+      @Override public boolean isGlobal(      BaseShader shader,      int inputID){
+        return false;
+      }
+      @Override public void set(      BaseShader shader,      int inputID,      Renderable renderable,      Attributes combinedAttributes){
+        shader.set(inputID,pointLight.intensity);
+      }
+    }
+);
+    protected final int u_pointLightColor=register(new Uniform("u_pointLightColor"),new Setter(){
+      @Override public boolean isGlobal(      BaseShader shader,      int inputID){
+        return false;
+      }
+      @Override public void set(      BaseShader shader,      int inputID,      Renderable renderable,      Attributes combinedAttributes){
+        shader.set(inputID,pointLight.color.r,pointLight.color.g,pointLight.color.b);
+      }
+    }
+);
+    @Override public void init(){
+      super.init();
+      if (!has(u_pointLightPosition))       Gdx.app.error("LightsTest","No uniform called: u_pointLightPosition");
+      if (!has(u_pointLightColor))       Gdx.app.error("LightsTest","No uniform called: u_pointLightColor");
+      if (!has(u_pointLightIntensity))       Gdx.app.error("LightsTest","No uniform called: u_pointLightIntensity");
+      Gdx.app.log("LightsTest","Shader log: " + program.getLog());
+    }
+  }
+;
+  shader.init();
+  pointLight.position.set(0,3f,0);
+  pointLight.intensity=9f;
+  Gdx.input.setInputProcessor(inputController=new CameraInputController(cam));
 }
