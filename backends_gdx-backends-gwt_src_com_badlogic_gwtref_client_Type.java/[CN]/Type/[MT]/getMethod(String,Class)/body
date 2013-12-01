@@ -1,5 +1,4 @@
 {
-  ArrayList<Method> allMethods=new ArrayList<Method>();
   Type t=this;
   while (t != null) {
     Method[] declMethods=t.getDeclaredMethods();

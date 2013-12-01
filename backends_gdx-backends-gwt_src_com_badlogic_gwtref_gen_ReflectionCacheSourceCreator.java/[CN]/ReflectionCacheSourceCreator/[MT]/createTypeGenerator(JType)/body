@@ -29,7 +29,8 @@
         String fieldType=getType(f.getType());
         String setter="s" + (nextStub++);
         String getter="g" + (nextStub++);
-        pb("new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ "\""+ getter+ "\", "+ "\""+ setter+ "\" "+ "), ");
+        String elementType=getElementTypes(f);
+        pb("new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ "\""+ getter+ "\", "+ "\""+ setter+ "\", "+ elementType+ "), ");
         SetterGetterStub stub=new SetterGetterStub();
         stub.name=f.getName();
         stub.enclosingType=enclosingType;
