@@ -1,5 +1,4 @@
 {
-  modelBatch.dispose();
-  model.dispose();
-  shader.dispose();
+  lightModel.dispose();
+  super.dispose();
 }
