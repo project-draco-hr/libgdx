@@ -5,15 +5,16 @@
     buffer.append(style.font.containsCharacter(c) ? c : ' ');
   }
   String text=buffer.toString();
+  int len=text.length();
   if (passwordMode && style.font.containsCharacter(passwordCharacter)) {
     if (passwordBuffer == null)     passwordBuffer=new StringBuilder(text.length());
-    if (passwordBuffer.length() > text.length())     passwordBuffer.setLength(text.length());
+    if (passwordBuffer.length() > len)     passwordBuffer.setLength(len);
  else {
-      for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)       passwordBuffer.append(passwordCharacter);
+      for (int i=passwordBuffer.length(), n=len; i < n; i++)       passwordBuffer.append(passwordCharacter);
     }
     displayText=passwordBuffer;
   }
  else   displayText=text;
   style.font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
-  if (selectionStart > text.length())   selectionStart=text.length();
+  if (selectionStart > text.length())   selectionStart=len;
 }
