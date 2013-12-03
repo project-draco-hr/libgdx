@@ -1,0 +1,11 @@
+{
+  x-=renderOffset + textOffset;
+  int index=glyphPositions.size - 1;
+  for (int i=0; i < glyphPositions.size; i++) {
+    if (glyphPositions.items[i] > x) {
+      index=i - 1;
+      break;
+    }
+  }
+  return Math.max(0,index);
+}
