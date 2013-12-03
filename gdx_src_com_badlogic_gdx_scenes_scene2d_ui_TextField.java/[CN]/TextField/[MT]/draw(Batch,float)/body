@@ -44,7 +44,7 @@
   if (focused && !disabled) {
     blink();
     if (cursorOn && cursorPatch != null) {
-      cursorPatch.draw(batch,x + bgLeftWidth + textOffset+ glyphPositions.get(cursor) - glyphPositions.items[visibleTextStart] - 1,y + textY - textHeight - descent,cursorPatch.getMinWidth(),textHeight + descent / 2);
+      cursorPatch.draw(batch,x + bgLeftWidth + textOffset+ glyphPositions.items[cursor] - glyphPositions.items[visibleTextStart] - 1,y + textY - textHeight - descent,cursorPatch.getMinWidth(),textHeight + descent / 2);
     }
   }
 }

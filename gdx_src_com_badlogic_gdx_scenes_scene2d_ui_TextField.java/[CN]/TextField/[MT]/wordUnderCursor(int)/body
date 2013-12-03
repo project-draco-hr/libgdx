@@ -1,12 +1,17 @@
 {
+  String text=this.text;
   int start=at, right=text.length(), left=0, index=start;
-  for (; index < right; index++)   if (text.charAt(index) == rightWordDelimiter) {
-    right=index;
-    break;
+  for (; index < right; index++) {
+    if (text.charAt(index) == ' ') {
+      right=index;
+      break;
+    }
   }
-  for (index=start - 1; index > -1; index--)   if (text.charAt(index) == leftWordDelimiter) {
-    left=index + 1;
-    break;
+  for (index=start - 1; index > -1; index--) {
+    if (text.charAt(index) == ' ') {
+      left=index + 1;
+      break;
+    }
   }
   return new int[]{left,right};
 }
