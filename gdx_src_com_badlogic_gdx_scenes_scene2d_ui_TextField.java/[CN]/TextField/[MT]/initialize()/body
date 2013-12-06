@@ -25,6 +25,10 @@
       super.touchDragged(event,x,y,pointer);
       setCursorPosition(x);
     }
+    public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
+      if (selectionStart == cursor)       hasSelection=false;
+      super.touchUp(event,x,y,pointer,button);
+    }
     private void setCursorPosition(    float x){
       lastBlink=0;
       cursorOn=false;
@@ -133,9 +137,6 @@
         Timer.schedule(keyRepeatTask,keyRepeatInitialTime,keyRepeatTime);
       }
       return true;
-    }
-    private boolean isWordCharacter(    char c){
-      return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
     }
     public boolean keyUp(    InputEvent event,    int keycode){
       if (disabled)       return false;
