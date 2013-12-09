@@ -10,6 +10,9 @@
   packer.pack("badlogic",pixmap1);
   packer.pack("wheel",pixmap1);
   packer.pack("egg",pixmap1);
+  pixmap1.dispose();
+  pixmap2.dispose();
+  pixmap3.dispose();
   atlas=packer.generateTextureAtlas(TextureFilter.Nearest,TextureFilter.Nearest,false);
   Gdx.app.log("PixmaPackerTest","Number of textures: " + atlas.getTextures().size());
 }
