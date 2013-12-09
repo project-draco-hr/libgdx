@@ -1,11 +1,8 @@
 {
   try {
-    final String fn="test.ubjson";
-    StringBuilder sb=new StringBuilder();
-    for (int i=0; i < 300; i++)     sb.append((char)((i % 26) + 'a'));
     UBJsonWriter uw=new UBJsonWriter(Gdx.files.external(fn).write(false));
     uw.object();
-    uw.set(sb.toString(),sb.toString());
+    uw.set(longString,longString);
     uw.set("0floats",new float[]{});
     uw.set("3floats",new float[]{1,2,3.456789f});
     uw.set("xfloats",new float[]{Float.MIN_VALUE,Float.MAX_VALUE,Float.NaN,Float.NEGATIVE_INFINITY});
@@ -26,7 +23,8 @@
     ur.oldFormat=false;
     JsonValue v=ur.parse(Gdx.files.external(fn));
     Gdx.app.log("UBJsonTest","result = \n" + v.toString());
-    Gdx.app.debug("UBJsonTest","Test succeeded");
+    performanceTest();
+    Gdx.app.log("UBJsonTest","Test succeeded");
   }
  catch (  Throwable t) {
     Gdx.app.error("UBJsonTest","Test failed",t);
