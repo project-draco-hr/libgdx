@@ -11,6 +11,7 @@
   curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
   VertexInfo curr2=vertTmp4.set(null,null,null,null);
   curr2.hasUV=curr2.hasPosition=curr2.hasNormal=true;
+  short i1, i2, i3=0, i4=0;
   ensureRectangles(2 * (divisions + 1),divisions);
   for (int i=0; i <= divisions; i++) {
     angle=ao + step * i;
@@ -23,9 +24,11 @@
     curr2.normal.set(curr1.normal);
     curr2.position.y=hh;
     curr2.uv.set(u,0);
-    vertex(curr1);
-    vertex(curr2);
-    if (i != 0)     rect((short)(vindex - 3),(short)(vindex - 1),(short)(vindex - 2),(short)(vindex - 4));
+    i2=vertex(curr1);
+    i1=vertex(curr2);
+    if (i != 0)     rect(i3,i1,i2,i4);
+    i4=i2;
+    i3=i1;
   }
   if (close) {
     ellipse(width,depth,0,0,divisions,0,hh,0,0,1,0,1,0,0,0,0,1,angleFrom,angleTo);

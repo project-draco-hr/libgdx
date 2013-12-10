@@ -40,6 +40,6 @@
     vertex[uvOffset]=uv.x;
     vertex[uvOffset + 1]=uv.y;
   }
-  vertices.addAll(vertex);
-  return (short)(vindex++);
+  addVertex(vertex,0);
+  return lastIndex;
 }
