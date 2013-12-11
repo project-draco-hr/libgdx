@@ -1,5 +1,5 @@
 {
-  if (!config.hideStatusBar || getVersion() < 11)   return;
+  if (!hide || getVersion() < 11)   return;
   View rootView=getWindow().getDecorView();
   try {
     Method m=View.class.getMethod("setSystemUiVisibility",int.class);
