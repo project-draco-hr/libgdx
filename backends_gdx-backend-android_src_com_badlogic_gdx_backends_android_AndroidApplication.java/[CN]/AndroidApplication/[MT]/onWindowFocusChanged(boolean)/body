@@ -1,4 +1,5 @@
 {
   super.onWindowFocusChanged(hasFocus);
   useImmersiveMode(this.useImmersiveMode);
+  hideStatusBar(this.hideStatusBar);
 }
