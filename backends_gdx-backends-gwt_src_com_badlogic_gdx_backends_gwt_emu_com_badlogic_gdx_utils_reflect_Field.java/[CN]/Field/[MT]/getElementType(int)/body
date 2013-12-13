@@ -1,3 +1,4 @@
 {
-  return field.getElementType(index).getClassOfType();
+  Type elementType=field.getElementType(index);
+  return elementType != null ? elementType.getClassOfType() : null;
 }
