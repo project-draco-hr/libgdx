@@ -8,13 +8,14 @@
   this.handler=new Handler();
   this.useImmersiveMode=config.useImmersiveMode;
   this.hideStatusBar=config.hideStatusBar;
+  this.useWakelock=config.useWakelock;
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
   Gdx.net=this.getNet();
-  createWakeLock(config);
+  createWakeLock(this.useWakelock);
   hideStatusBar(this.hideStatusBar);
   useImmersiveMode(this.useImmersiveMode);
   if (this.useImmersiveMode && getVersion() >= 19) {
