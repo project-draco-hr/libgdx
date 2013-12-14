@@ -1,4 +1,5 @@
 {
+  LwjglNativesLoader.load();
   this.listener=listener;
   this.files=new LwjglFiles();
   this.net=new LwjglNet();
