@@ -1,164 +1,142 @@
 {
   addListener(inputListener=new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
-      if (getTapCount() > 1)       setSelection(0,text.length());
+      int count=getTapCount() % 4;
+      if (count == 0)       clearSelection();
+      if (count == 2) {
+        int[] array=wordUnderCursor(x);
+        setSelection(array[0],array[1]);
+      }
+      if (count == 3)       selectAll();
     }
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (!super.touchDown(event,x,y,pointer,button))       return false;
       if (pointer == 0 && button != 0)       return false;
       if (disabled)       return true;
-      clearSelection();
       setCursorPosition(x);
       selectionStart=cursor;
       Stage stage=getStage();
       if (stage != null)       stage.setKeyboardFocus(TextField.this);
       keyboard.show(true);
+      hasSelection=true;
       return true;
     }
     public void touchDragged(    InputEvent event,    float x,    float y,    int pointer){
       super.touchDragged(event,x,y,pointer);
-      lastBlink=0;
-      cursorOn=false;
       setCursorPosition(x);
-      hasSelection=true;
+    }
+    public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
+      if (selectionStart == cursor)       hasSelection=false;
+      super.touchUp(event,x,y,pointer,button);
     }
     private void setCursorPosition(    float x){
       lastBlink=0;
       cursorOn=false;
-      x-=renderOffset + textOffset;
-      for (int i=0; i < glyphPositions.size; i++) {
-        if (glyphPositions.items[i] > x) {
-          cursor=Math.max(0,i - 1);
-          return;
-        }
-      }
-      cursor=Math.max(0,glyphPositions.size - 1);
+      cursor=letterUnderCursor(x);
     }
     public boolean keyDown(    InputEvent event,    int keycode){
       if (disabled)       return false;
       lastBlink=0;
       cursorOn=false;
       Stage stage=getStage();
-      if (stage != null && stage.getKeyboardFocus() == TextField.this) {
-        boolean repeat=false;
-        boolean ctrl;
-        if (isMac)         ctrl=Gdx.input.isKeyPressed(Keys.SYM);
- else         ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
-        if (ctrl) {
-          if (keycode == Keys.V) {
-            paste();
-            return true;
-          }
-          if (keycode == Keys.C || keycode == Keys.INSERT) {
-            copy();
-            return true;
-          }
-          if (keycode == Keys.X || keycode == Keys.DEL) {
-            cut();
-            return true;
-          }
-          if (keycode == Keys.A) {
-            selectAll();
-            return true;
-          }
+      if (stage == null || stage.getKeyboardFocus() != TextField.this)       return false;
+      boolean repeat=false;
+      boolean ctrl;
+      if (isMac)       ctrl=Gdx.input.isKeyPressed(Keys.SYM);
+ else       ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+      boolean jump=ctrl && !passwordMode;
+      if (ctrl) {
+        if (keycode == Keys.V) {
+          paste();
+          return true;
         }
-        if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
-          if (keycode == Keys.INSERT)           paste();
-          if (keycode == Keys.FORWARD_DEL) {
-            if (hasSelection) {
-              copy();
-              delete();
-            }
-          }
-          if (keycode == Keys.LEFT) {
-            if (!hasSelection) {
-              selectionStart=cursor;
-              hasSelection=true;
-            }
-            while (--cursor > 0 && ctrl) {
-              char c=text.charAt(cursor);
-              if (c >= 'A' && c <= 'Z')               continue;
-              if (c >= 'a' && c <= 'z')               continue;
-              if (c >= '0' && c <= '9')               continue;
-              break;
-            }
-            repeat=true;
-          }
-          if (keycode == Keys.RIGHT) {
-            if (!hasSelection) {
-              selectionStart=cursor;
-              hasSelection=true;
-            }
-            int length=text.length();
-            while (++cursor < length && ctrl) {
-              char c=text.charAt(cursor - 1);
-              if (c >= 'A' && c <= 'Z')               continue;
-              if (c >= 'a' && c <= 'z')               continue;
-              if (c >= '0' && c <= '9')               continue;
-              break;
-            }
-            repeat=true;
-          }
-          if (keycode == Keys.HOME) {
-            if (!hasSelection) {
-              selectionStart=cursor;
-              hasSelection=true;
-            }
-            cursor=0;
-          }
-          if (keycode == Keys.END) {
-            if (!hasSelection) {
-              selectionStart=cursor;
-              hasSelection=true;
-            }
-            cursor=text.length();
-          }
-          cursor=Math.max(0,cursor);
-          cursor=Math.min(text.length(),cursor);
+        if (keycode == Keys.C || keycode == Keys.INSERT) {
+          copy();
+          return true;
         }
- else {
-          if (keycode == Keys.LEFT) {
-            while (cursor-- > 1 && ctrl) {
-              char c=text.charAt(cursor - 1);
-              if (c >= 'A' && c <= 'Z')               continue;
-              if (c >= 'a' && c <= 'z')               continue;
-              if (c >= '0' && c <= '9')               continue;
-              break;
-            }
-            clearSelection();
-            repeat=true;
-          }
-          if (keycode == Keys.RIGHT) {
-            int length=text.length();
-            while (++cursor < length && ctrl) {
-              char c=text.charAt(cursor - 1);
-              if (c >= 'A' && c <= 'Z')               continue;
-              if (c >= 'a' && c <= 'z')               continue;
-              if (c >= '0' && c <= '9')               continue;
-              break;
-            }
-            clearSelection();
-            repeat=true;
-          }
-          if (keycode == Keys.HOME) {
-            cursor=0;
-            clearSelection();
-          }
-          if (keycode == Keys.END) {
-            cursor=text.length();
-            clearSelection();
-          }
-          cursor=Math.max(0,cursor);
-          cursor=Math.min(text.length(),cursor);
+        if (keycode == Keys.X || keycode == Keys.DEL) {
+          cut();
+          return true;
         }
-        if (repeat && (!keyRepeatTask.isScheduled() || keyRepeatTask.keycode != keycode)) {
-          keyRepeatTask.keycode=keycode;
-          keyRepeatTask.cancel();
-          Timer.schedule(keyRepeatTask,keyRepeatInitialTime,keyRepeatTime);
+        if (keycode == Keys.A) {
+          selectAll();
+          return true;
         }
-        return true;
       }
-      return false;
+      if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
+        if (keycode == Keys.INSERT)         paste();
+        if (keycode == Keys.FORWARD_DEL && hasSelection) {
+          copy();
+          delete();
+        }
+        selection: {
+          int temp=cursor;
+          keys: {
+            if (keycode == Keys.LEFT) {
+              while (--cursor > 0 && jump) {
+                if (isWordCharacter(text.charAt(cursor)))                 continue;
+                break;
+              }
+              repeat=true;
+              break keys;
+            }
+            if (keycode == Keys.RIGHT) {
+              while (++cursor < text.length() && jump) {
+                if (isWordCharacter(text.charAt(cursor - 1)))                 continue;
+                break;
+              }
+              repeat=true;
+              break keys;
+            }
+            if (keycode == Keys.HOME) {
+              cursor=0;
+              break keys;
+            }
+            if (keycode == Keys.END) {
+              cursor=text.length();
+              break keys;
+            }
+            break selection;
+          }
+          if (!hasSelection) {
+            selectionStart=temp;
+            hasSelection=true;
+          }
+        }
+      }
+ else {
+        if (keycode == Keys.LEFT) {
+          while (cursor-- > 1 && jump) {
+            if (isWordCharacter(text.charAt(cursor - 1)))             continue;
+            break;
+          }
+          clearSelection();
+          repeat=true;
+        }
+        if (keycode == Keys.RIGHT) {
+          while (++cursor < text.length() && jump) {
+            if (isWordCharacter(text.charAt(cursor - 1)))             continue;
+            break;
+          }
+          clearSelection();
+          repeat=true;
+        }
+        if (keycode == Keys.HOME) {
+          cursor=0;
+          clearSelection();
+        }
+        if (keycode == Keys.END) {
+          cursor=text.length();
+          clearSelection();
+        }
+      }
+      cursor=MathUtils.clamp(cursor,0,text.length());
+      if (repeat && (!keyRepeatTask.isScheduled() || keyRepeatTask.keycode != keycode)) {
+        keyRepeatTask.keycode=keycode;
+        keyRepeatTask.cancel();
+        Timer.schedule(keyRepeatTask,keyRepeatInitialTime,keyRepeatTime);
+      }
+      return true;
     }
     public boolean keyUp(    InputEvent event,    int keycode){
       if (disabled)       return false;
@@ -167,61 +145,39 @@
     }
     public boolean keyTyped(    InputEvent event,    char character){
       if (disabled)       return false;
-      final BitmapFont font=style.font;
       Stage stage=getStage();
-      if (stage != null && stage.getKeyboardFocus() == TextField.this) {
-        if (character == BACKSPACE) {
-          if (cursor > 0 || hasSelection) {
-            if (!hasSelection) {
-              text=text.substring(0,cursor - 1) + text.substring(cursor);
-              updateDisplayText();
-              cursor--;
+      if (stage == null || stage.getKeyboardFocus() != TextField.this)       return false;
+      if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
+        next(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT));
+      }
+ else {
+        boolean delete=character == DELETE;
+        boolean backspace=character == BACKSPACE;
+        boolean add=style.font.containsCharacter(character);
+        boolean remove=backspace || delete;
+        if (add || remove) {
+          if (hasSelection)           cursor=delete(false);
+ else {
+            if (backspace && cursor > 0) {
+              text=text.substring(0,cursor - 1) + text.substring(cursor--);
               renderOffset=0;
             }
- else {
-              delete();
-            }
-          }
-        }
- else         if (character == DELETE) {
-          if (cursor < text.length() || hasSelection) {
-            if (!hasSelection) {
+            if (delete && cursor < text.length()) {
               text=text.substring(0,cursor) + text.substring(cursor + 1);
-              updateDisplayText();
-            }
- else {
-              delete();
             }
           }
-        }
- else         if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
-          next(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT));
-        }
- else         if (font.containsCharacter(character)) {
-          if (character != ENTER_DESKTOP && character != ENTER_ANDROID) {
-            if (filter != null && !filter.acceptChar(TextField.this,character))             return true;
+          if (add && !remove) {
+            if (character != ENTER_DESKTOP && character != ENTER_ANDROID) {
+              if (filter != null && !filter.acceptChar(TextField.this,character))               return true;
+            }
+            if (!withinMaxLength(text.length()))             return true;
+            text=insert(cursor++,String.valueOf(character),text);
           }
-          if (maxLength > 0 && text.length() + 1 > maxLength)           return true;
-          if (!hasSelection) {
-            text=text.substring(0,cursor) + character + text.substring(cursor,text.length());
-            updateDisplayText();
-            cursor++;
-          }
- else {
-            int minIndex=Math.min(cursor,selectionStart);
-            int maxIndex=Math.max(cursor,selectionStart);
-            text=(minIndex > 0 ? text.substring(0,minIndex) : "") + (maxIndex < text.length() ? text.substring(maxIndex,text.length()) : "");
-            cursor=minIndex;
-            text=text.substring(0,cursor) + character + text.substring(cursor,text.length());
-            updateDisplayText();
-            cursor++;
-            clearSelection();
-          }
+          updateDisplayText();
         }
-        if (listener != null)         listener.keyTyped(TextField.this,character);
-        return true;
       }
- else       return false;
+      if (listener != null)       listener.keyTyped(TextField.this,character);
+      return true;
     }
   }
 );

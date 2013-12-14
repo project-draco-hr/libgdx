@@ -30,24 +30,30 @@
   float angle=0f;
   final float us=0.5f * (innerWidth / width);
   final float vs=0.5f * (innerHeight / height);
+  short i1, i2=0, i3=0, i4=0;
   for (int i=0; i <= divisions; i++) {
     angle=ao + step * i;
     final float x=MathUtils.cos(angle);
     final float y=MathUtils.sin(angle);
     currEx.position.set(centerX,centerY,centerZ).add(sxEx.x * x + syEx.x * y,sxEx.y * x + syEx.y * y,sxEx.z * x + syEx.z * y);
     currEx.uv.set(.5f + .5f * x,.5f + .5f * y);
-    vertex(currEx);
+    i1=vertex(currEx);
     if (innerWidth <= 0f || innerHeight <= 0f) {
-      if (i != 0)       triangle((short)(vindex - 1),(short)(vindex - 2),center);
+      if (i != 0)       triangle(i1,i2,center);
+      i2=i1;
     }
  else     if (innerWidth == width && innerHeight == height) {
-      if (i != 0)       line((short)(vindex - 1),(short)(vindex - 2));
+      if (i != 0)       line(i1,i2);
+      i2=i1;
     }
  else {
       currIn.position.set(centerX,centerY,centerZ).add(sxIn.x * x + syIn.x * y,sxIn.y * x + syIn.y * y,sxIn.z * x + syIn.z * y);
       currIn.uv.set(.5f + us * x,.5f + vs * y);
-      vertex(currIn);
-      if (i != 0)       rect((short)(vindex - 1),(short)(vindex - 2),(short)(vindex - 4),(short)(vindex - 3));
+      i2=i1;
+      i1=vertex(currIn);
+      if (i != 0)       rect(i1,i2,i4,i3);
+      i4=i2;
+      i3=i1;
     }
   }
 }
