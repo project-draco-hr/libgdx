@@ -1,4 +1,7 @@
 {
+  if (soundPool == null) {
+    return;
+  }
 synchronized (musics) {
     for (    AndroidMusic music : musics) {
       if (music.isPlaying()) {
