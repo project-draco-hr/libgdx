@@ -6,7 +6,6 @@
   halfHeight=shadowViewportHeight * 0.5f;
   halfDepth=shadowNear + 0.5f * (shadowFar - shadowNear);
   textureDesc=new TextureDescriptor();
-  textureDesc.minFilter=textureDesc.minFilter=Texture.TextureFilter.Linear;
+  textureDesc.minFilter=textureDesc.minFilter=Texture.TextureFilter.Nearest;
   textureDesc.uWrap=textureDesc.vWrap=Texture.TextureWrap.ClampToEdge;
-  Gdx.app.log("Test",Gdx.gl20.glGetString(GL20.GL_EXTENSIONS));
 }
