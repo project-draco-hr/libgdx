@@ -1,0 +1,6 @@
+{
+  if (id == null)   return null;
+  final Animation anim=target.getAnimation(id);
+  if (anim == null)   throw new GdxRuntimeException("Unknown animation: " + id);
+  return obtain(anim,offset,duration,loopCount,speed,listener);
+}

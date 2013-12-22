@@ -1,5 +1,4 @@
 {
-  if (wakeLock != null)   wakeLock.release();
   boolean isContinuous=graphics.isContinuousRendering();
   graphics.setContinuousRendering(true);
   graphics.pause();

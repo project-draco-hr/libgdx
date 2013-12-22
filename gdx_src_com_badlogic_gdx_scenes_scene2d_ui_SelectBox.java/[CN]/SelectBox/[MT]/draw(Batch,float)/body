@@ -1,6 +1,6 @@
 {
   Drawable background;
-  if (disabled)   background=style.backgroundDisabled;
+  if (disabled && style.backgroundDisabled != null)   background=style.backgroundDisabled;
  else   if (list != null && list.getParent() != null && style.backgroundOpen != null)   background=style.backgroundOpen;
  else   if (clickListener.isOver() && style.backgroundOver != null)   background=style.backgroundOver;
  else   background=style.background;

@@ -14,5 +14,8 @@
     isPaused=false;
     if (graphics.shouldRender())     render(frameStartTime);
   }
-  if (targetFPS != 0)   sleep(targetFPS == -1 ? 100 : (int)(1000f / targetFPS - (System.nanoTime() - frameStartTime) / 1000000f));
+  if (targetFPS != 0) {
+    if (targetFPS == -1)     sleep(100);
+ else     Sync.sync(targetFPS);
+  }
 }

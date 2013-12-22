@@ -1,5 +1,3 @@
 {
   super.end();
-  DefaultShader.defaultCullFace=originalCullFace;
-  Gdx.gl20.glDisable(GL20.GL_POLYGON_OFFSET_FILL);
 }

@@ -7,6 +7,6 @@
     textures.add(texture);
     counts.add(count);
   }
- else   counts.set(lastIndex,counts.get(lastIndex) + count);
+ else   counts.incr(lastIndex,count);
   mesh.getVerticesBuffer().put(vertices,offset,length);
 }

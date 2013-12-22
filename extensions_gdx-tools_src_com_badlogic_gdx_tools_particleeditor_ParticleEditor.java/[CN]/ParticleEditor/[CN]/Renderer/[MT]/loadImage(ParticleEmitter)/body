@@ -3,7 +3,7 @@
   String imageName=new File(imagePath.replace('\\','/')).getName();
   try {
     FileHandle file;
-    if (imagePath.equals("particle.png"))     file=Gdx.files.classpath(imagePath);
+    if (imagePath.equals(ParticleEditor.DEFAULT_PARTICLE))     file=Gdx.files.classpath(imagePath);
  else     file=Gdx.files.absolute(imagePath);
     emitter.setSprite(new Sprite(new Texture(file)));
   }

@@ -1,3 +1,3 @@
 {
-  render(renderableProviders,null,null);
+  for (  final RenderableProvider renderableProvider : renderableProviders)   render(renderableProvider);
 }

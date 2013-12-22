@@ -3,6 +3,7 @@
   instances.clear();
   animationControllers.clear();
   final ModelInstance instance=new ModelInstance(assets.get(currentlyLoading,Model.class));
+  instance.transform=transform;
   instances.add(instance);
   if (instance.animations.size > 0)   animationControllers.put(instance,new AnimationController(instance));
   currentlyLoading=null;
@@ -10,6 +11,6 @@
   cam.position.set(1,1,1).nor().scl(bounds.getDimensions().len() * 0.75f + bounds.getCenter().len());
   cam.up.set(0,1,0);
   cam.lookAt(0,0,0);
-  cam.far=bounds.getDimensions().len() * 2.0f;
+  cam.far=50f + bounds.getDimensions().len() * 2.0f;
   cam.update();
 }
