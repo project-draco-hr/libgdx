@@ -57,7 +57,7 @@ new LwjglApplication(new ApplicationListener(){
 @Override public void create(){
 TiledMapPacker packer=new TiledMapPacker(packerSettings);
 if (!inputDir.exists()) {
-throw new RuntimeException("Input directory does not exist");
+throw new RuntimeException("Input directory does not exist: " + inputDir);
 }
 try {
 packer.processMaps(inputDir,outputDir,texturePackerSettings);

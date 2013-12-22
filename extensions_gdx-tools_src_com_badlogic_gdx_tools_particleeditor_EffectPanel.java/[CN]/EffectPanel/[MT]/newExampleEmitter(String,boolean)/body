@@ -23,7 +23,7 @@
   emitter.getTransparency().setTimeline(new float[]{0,0.2f,0.8f,1});
   emitter.getTransparency().setScaling(new float[]{0,1,0.75f,0});
   emitter.setMaxParticleCount(200);
-  emitter.setImagePath("particle.png");
+  emitter.setImagePath(ParticleEditor.DEFAULT_PARTICLE);
   addEmitter(name,select,emitter);
   return emitter;
 }
