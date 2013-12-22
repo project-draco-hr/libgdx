@@ -6,6 +6,11 @@
     batch.draw(texture,Gdx.graphics.getWidth() * 0.5f - texture.getWidth() * 0.5f,100f);
     batch.end();
   }
+ else   if (text != null) {
+    batch.begin();
+    font.drawMultiLine(batch,text,10,Gdx.graphics.getHeight() - 10);
+    batch.end();
+  }
   stage.act(Gdx.graphics.getDeltaTime());
   stage.draw();
 }
