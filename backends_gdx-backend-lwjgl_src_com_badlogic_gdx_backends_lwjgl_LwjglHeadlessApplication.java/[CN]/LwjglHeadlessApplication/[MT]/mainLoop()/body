@@ -1,0 +1,18 @@
+{
+  Array<LifecycleListener> lifecycleListeners=this.lifecycleListeners;
+  listener.create();
+  boolean wasActive=true;
+  while (running) {
+    executeRunnables();
+    listener.render();
+    if (!running)     break;
+  }
+synchronized (lifecycleListeners) {
+    for (    LifecycleListener listener : lifecycleListeners) {
+      listener.pause();
+      listener.dispose();
+    }
+  }
+  listener.pause();
+  listener.dispose();
+}
