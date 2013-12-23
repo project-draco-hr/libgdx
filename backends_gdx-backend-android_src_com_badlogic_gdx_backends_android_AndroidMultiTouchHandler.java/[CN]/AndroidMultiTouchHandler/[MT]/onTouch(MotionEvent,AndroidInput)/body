@@ -10,7 +10,7 @@ switch (action) {
 case MotionEvent.ACTION_DOWN:
 case MotionEvent.ACTION_POINTER_DOWN:
       realPointerIndex=input.getFreePointerIndex();
-    if (realPointerIndex > AndroidInput.NUM_TOUCHES)     break;
+    if (realPointerIndex >= AndroidInput.NUM_TOUCHES)     break;
   input.realId[realPointerIndex]=pointerId;
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
@@ -27,7 +27,7 @@ case MotionEvent.ACTION_OUTSIDE:
 case MotionEvent.ACTION_CANCEL:
 realPointerIndex=input.lookUpPointerIndex(pointerId);
 if (realPointerIndex == -1) break;
-if (realPointerIndex > AndroidInput.NUM_TOUCHES) break;
+if (realPointerIndex >= AndroidInput.NUM_TOUCHES) break;
 input.realId[realPointerIndex]=-1;
 x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
@@ -47,7 +47,7 @@ x=(int)event.getX(pointerIndex);
 y=(int)event.getY(pointerIndex);
 realPointerIndex=input.lookUpPointerIndex(pointerId);
 if (realPointerIndex == -1) continue;
-if (realPointerIndex > AndroidInput.NUM_TOUCHES) break;
+if (realPointerIndex >= AndroidInput.NUM_TOUCHES) break;
 postTouchEvent(input,TouchEvent.TOUCH_DRAGGED,x,y,realPointerIndex,timeStamp);
 input.deltaX[realPointerIndex]=x - input.touchX[realPointerIndex];
 input.deltaY[realPointerIndex]=y - input.touchY[realPointerIndex];
