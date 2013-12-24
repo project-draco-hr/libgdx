@@ -5,6 +5,8 @@
       statusLabel.setText("HTTP Request status: " + statusCode);
       textButton.setDisabled(false);
       textButton.setTouchable(Touchable.enabled);
+      textButtonTxt.setDisabled(false);
+      textButtonTxt.setTouchable(Touchable.enabled);
     }
   }
 );
@@ -12,14 +14,25 @@
     Gdx.app.log("NetAPITest","An error ocurred since statusCode is not OK");
     return;
   }
-  final byte[] rawImageBytes=httpResponse.getResult();
-  Gdx.app.postRunnable(new Runnable(){
-    public void run(){
-      Texture.setEnforcePotImages(false);
-      Pixmap pixmap=new Pixmap(rawImageBytes,0,rawImageBytes.length);
-      texture=new Texture(pixmap);
-      Texture.setEnforcePotImages(true);
+  if (doImageDownload) {
+    final byte[] rawImageBytes=httpResponse.getResult();
+    Gdx.app.postRunnable(new Runnable(){
+      public void run(){
+        Texture.setEnforcePotImages(false);
+        Pixmap pixmap=new Pixmap(rawImageBytes,0,rawImageBytes.length);
+        texture=new Texture(pixmap);
+        Texture.setEnforcePotImages(true);
+      }
     }
-  }
 );
+  }
+ else {
+    final String newText=httpResponse.getResultAsString();
+    Gdx.app.postRunnable(new Runnable(){
+      public void run(){
+        text=newText;
+      }
+    }
+);
+  }
 }
