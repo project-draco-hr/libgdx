@@ -6,6 +6,6 @@
   Gdx.app=this;
   Gdx.files=files;
   Gdx.net=net;
-  loopRender=config == null ? false : config.loopRender;
+  renderInterval=config == null ? -1 : (long)(config.renderInterval * 1000000000f);
   initialize();
 }
