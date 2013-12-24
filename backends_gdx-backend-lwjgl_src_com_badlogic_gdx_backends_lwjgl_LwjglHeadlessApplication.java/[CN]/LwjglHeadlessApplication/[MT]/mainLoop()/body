@@ -5,7 +5,7 @@
   while (running) {
     executeRunnables();
     listener.render();
-    if (!running)     break;
+    if (!running || !loopRender)     break;
   }
 synchronized (lifecycleListeners) {
     for (    LifecycleListener listener : lifecycleListeners) {

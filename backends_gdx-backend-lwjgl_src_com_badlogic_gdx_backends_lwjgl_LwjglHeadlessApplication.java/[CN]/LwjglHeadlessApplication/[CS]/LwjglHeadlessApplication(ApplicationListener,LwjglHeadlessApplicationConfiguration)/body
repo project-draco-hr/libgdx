@@ -1,0 +1,11 @@
+{
+  LwjglNativesLoader.load();
+  this.listener=listener;
+  this.files=new LwjglFiles();
+  this.net=new LwjglNet();
+  Gdx.app=this;
+  Gdx.files=files;
+  Gdx.net=net;
+  loopRender=config == null ? false : config.loopRender;
+  initialize();
+}
