@@ -20,9 +20,7 @@
     connection.setDoOutput(doingOutPut);
     connection.setDoInput(true);
     connection.setRequestMethod(method);
-    Map<String,String> headers=httpRequest.getHeaders();
-    Set<String> keySet=headers.keySet();
-    for (    String name : keySet)     connection.addRequestProperty(name,headers.get(name));
+    for (    Map.Entry<String,String> header : httpRequest.getHeaders().entrySet())     connection.addRequestProperty(header.getKey(),header.getValue());
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
     executorService.submit(new Runnable(){

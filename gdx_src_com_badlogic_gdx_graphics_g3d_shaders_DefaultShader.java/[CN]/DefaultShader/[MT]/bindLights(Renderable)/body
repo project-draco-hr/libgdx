@@ -1,5 +1,5 @@
 {
-  final Lights lights=renderable.lights;
+  final Environment lights=renderable.environment;
   final Array<DirectionalLight> dirs=lights.directionalLights;
   final Array<PointLight> points=lights.pointLights;
   if (dirLightsLoc >= 0) {
@@ -25,14 +25,13 @@
  else       if (lightsSet && pointLights[i].equals(points.get(i)))       continue;
  else       pointLights[i].set(points.get(i));
       int idx=pointLightsLoc + i * pointLightsSize;
-      program.setUniformf(idx + pointLightsColorOffset,pointLights[i].color.r,pointLights[i].color.g,pointLights[i].color.b);
+      program.setUniformf(idx + pointLightsColorOffset,pointLights[i].color.r * pointLights[i].intensity,pointLights[i].color.g * pointLights[i].intensity,pointLights[i].color.b * pointLights[i].intensity);
       program.setUniformf(idx + pointLightsPositionOffset,pointLights[i].position);
-      if (pointLightsIntensityOffset >= 0)       program.setUniformf(idx + pointLightsIntensityOffset,pointLights[i].intensity);
       if (pointLightsSize <= 0)       break;
     }
   }
-  if (lights.fog != null) {
-    set(u_fogColor,lights.fog);
+  if (lights.has(ColorAttribute.Fog)) {
+    set(u_fogColor,((ColorAttribute)lights.get(ColorAttribute.Fog)).color);
   }
   if (lights.shadowMap != null) {
     set(u_shadowMapProjViewTrans,lights.shadowMap.getProjViewTrans());

@@ -1,9 +1,4 @@
 {
-  shadowLight.begin(Vector3.Zero,camera.direction);
-  shadowBatch.begin(shadowLight.getCamera());
-  world.render(shadowBatch,null);
-  shadowBatch.end();
-  shadowLight.end();
   modelBatch.begin(camera);
   world.render(modelBatch,lights);
   modelBatch.end();

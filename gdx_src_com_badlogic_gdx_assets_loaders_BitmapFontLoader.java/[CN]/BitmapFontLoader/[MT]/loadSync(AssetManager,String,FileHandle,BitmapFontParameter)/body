@@ -1,5 +1,11 @@
 {
-  TextureRegion region=new TextureRegion(manager.get(data.getImagePath(),Texture.class));
-  if (parameter != null)   region.getTexture().setFilter(parameter.minFitler,parameter.maxFilter);
-  return new BitmapFont(data,region,true);
+  TextureRegion[] regs=new TextureRegion[data.getImagePaths().length];
+  for (int i=0; i < regs.length; i++) {
+    TextureRegion region=new TextureRegion(manager.get(data.getImagePath(i),Texture.class));
+    if (parameter != null) {
+      region.getTexture().setFilter(parameter.minFilter,parameter.magFilter);
+    }
+    regs[i]=region;
+  }
+  return new BitmapFont(data,regs,true);
 }

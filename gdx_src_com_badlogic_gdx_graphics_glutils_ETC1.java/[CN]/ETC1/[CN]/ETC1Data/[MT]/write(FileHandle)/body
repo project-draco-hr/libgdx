@@ -18,11 +18,7 @@
     throw new GdxRuntimeException("Couldn't write PKM file to '" + file + "'",e);
   }
  finally {
-    if (write != null)     try {
-      write.close();
-    }
- catch (    Exception e) {
-    }
+    StreamUtils.closeQuietly(write);
   }
   compressedData.position(dataOffset);
   compressedData.limit(compressedData.capacity());

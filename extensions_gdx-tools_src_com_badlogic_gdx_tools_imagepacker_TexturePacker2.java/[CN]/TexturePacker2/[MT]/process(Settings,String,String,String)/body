@@ -1,6 +1,13 @@
 {
   try {
-    new TexturePackerFileProcessor(settings,packFileName).process(new File(input),new File(output));
+    TexturePackerFileProcessor processor=new TexturePackerFileProcessor(settings,packFileName);
+    processor.setComparator(new Comparator<File>(){
+      public int compare(      File file1,      File file2){
+        return file1.getName().compareTo(file2.getName());
+      }
+    }
+);
+    processor.process(new File(input),new File(output));
   }
  catch (  Exception ex) {
     throw new RuntimeException("Error packing files.",ex);

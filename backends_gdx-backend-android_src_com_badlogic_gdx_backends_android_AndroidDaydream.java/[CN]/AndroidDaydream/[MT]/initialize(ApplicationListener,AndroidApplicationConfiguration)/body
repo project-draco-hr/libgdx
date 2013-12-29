@@ -6,6 +6,7 @@
   net=new AndroidNet(null);
   this.listener=listener;
   this.handler=new Handler();
+  this.useWakelock=config.useWakelock;
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
@@ -14,6 +15,6 @@
   Gdx.net=this.getNet();
   setFullscreen(true);
   setContentView(graphics.getView(),createLayoutParams());
-  createWakeLock(config);
+  createWakeLock(this.useWakelock);
   hideStatusBar(config);
 }

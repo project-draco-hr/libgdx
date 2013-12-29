@@ -8,6 +8,7 @@
   label=new Label(text,new LabelStyle(style.font,style.fontColor));
   label.setAlignment(Align.center);
   add(label);
+  setStyle(style);
   setWidth(getPrefWidth());
   setHeight(getPrefHeight());
 }

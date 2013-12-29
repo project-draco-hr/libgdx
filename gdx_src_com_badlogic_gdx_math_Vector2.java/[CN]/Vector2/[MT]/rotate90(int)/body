@@ -1,0 +1,12 @@
+{
+  float x=this.x;
+  if (dir >= 0) {
+    this.x=-y;
+    y=x;
+  }
+ else {
+    this.x=y;
+    y=-x;
+  }
+  return this;
+}

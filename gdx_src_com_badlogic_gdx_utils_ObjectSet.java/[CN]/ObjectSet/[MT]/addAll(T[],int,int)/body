@@ -1,0 +1,4 @@
+{
+  ensureCapacity(length);
+  for (int i=offset, n=i + length; i < n; i++)   add(array[i]);
+}

@@ -1,0 +1,13 @@
+{
+  if (icon != null) {
+    imageLabel.setIcon(icon);
+    widthLabel.setText("Width: " + icon.getIconWidth());
+    heightLabel.setText("Height: " + icon.getIconHeight());
+  }
+ else {
+    imageLabel.setIcon(null);
+    widthLabel.setText("");
+    heightLabel.setText("");
+  }
+  revalidate();
+}

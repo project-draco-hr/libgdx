@@ -3,7 +3,10 @@
   Pool pool=getPool();
   setPool(null);
   try {
-    if (time == 0)     begin();
+    if (!began) {
+      begin();
+      began=true;
+    }
     time+=delta;
     complete=time >= duration;
     float percent;

@@ -15,8 +15,6 @@
     FileUtils.copyDirectoryToDirectory(src,dst);
   }
   if (cfg.isIosIncluded) {
-    src=new File(tmpDst,cfg.projectName + cfg.suffixIos);
-    FileUtils.copyDirectoryToDirectory(src,dst);
     src=new File(tmpDst,cfg.projectName + cfg.suffixRobovm);
     FileUtils.copyDirectoryToDirectory(src,dst);
   }

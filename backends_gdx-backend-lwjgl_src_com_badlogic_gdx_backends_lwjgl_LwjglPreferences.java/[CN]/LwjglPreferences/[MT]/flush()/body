@@ -8,10 +8,6 @@
     throw new GdxRuntimeException("Error writing preferences: " + file,ex);
   }
  finally {
-    if (out != null)     try {
-      out.close();
-    }
- catch (    Exception e) {
-    }
+    StreamUtils.closeQuietly(out);
   }
 }

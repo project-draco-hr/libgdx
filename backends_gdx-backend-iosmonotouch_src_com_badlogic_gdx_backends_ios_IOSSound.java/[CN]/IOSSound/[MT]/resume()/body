@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < players.length; i++) {
-    AVAudioPlayer player=players[i];
-    if (!player.get_Playing() && player.get_CurrentTime() > 0)     playQueue.offer(player);
-  }
-}

@@ -1,0 +1,6 @@
+{
+  if ((vertexTransformationEnabled=(transform != null)) == true) {
+    this.positionTransform.set(transform);
+    this.normalTransform.set(transform).inv().tra();
+  }
+}

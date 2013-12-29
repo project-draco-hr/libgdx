@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btDefaultCollisionConfiguration_getSimplexSolver(swigCPtr,this);
-  return (cPtr == 0) ? null : new btVoronoiSimplexSolver(cPtr,false);
-}

@@ -20,7 +20,6 @@
       for (      String elemName : def.libsDesktop)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,desktopPrjLibsDir);
       for (      String elemName : def.libsAndroid)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,androidPrjLibsDir);
       for (      String elemName : def.libsHtml)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,htmlPrjLibsDir);
-      for (      String elemName : def.libsIos)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,iosPrjLibsDir);
       for (      String elemName : def.libsRobovm)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,robovmPrjLibsDir);
       for (      String elemName : def.data)       if (entryName.endsWith(elemName))       copyEntry(new ByteArrayInputStream(bytes),elemName,dataDir);
     }

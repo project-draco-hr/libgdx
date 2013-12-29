@@ -1,19 +1,7 @@
 {
-  if (text == null)   throw new IllegalArgumentException("text cannot be null.");
-  BitmapFont font=style.font;
-  StringBuilder buffer=new StringBuilder();
-  for (int i=0; i < text.length(); i++) {
-    if (maxLength > 0 && buffer.length() + 1 > maxLength)     break;
-    char c=text.charAt(i);
-    if (onlyFontChars && !style.font.containsCharacter(c))     continue;
-    if (filter != null && !filter.acceptChar(this,c))     continue;
-    buffer.append(c);
-  }
-  this.text=buffer.toString();
-  updateDisplayText();
-  cursor=0;
+  if (str == null)   throw new IllegalArgumentException("text cannot be null.");
   clearSelection();
-  textBounds.set(font.getBounds(displayText));
-  textBounds.height-=font.getDescent() * 2;
-  font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
+  text="";
+  paste(str,onlyFontChars);
+  cursor=0;
 }

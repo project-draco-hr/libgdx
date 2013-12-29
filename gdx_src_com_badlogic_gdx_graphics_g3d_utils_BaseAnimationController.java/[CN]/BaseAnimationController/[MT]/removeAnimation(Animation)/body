@@ -1,0 +1,5 @@
+{
+  for (  final NodeAnimation nodeAnim : animation.nodeAnimations) {
+    nodeAnim.node.isAnimated=false;
+  }
+}

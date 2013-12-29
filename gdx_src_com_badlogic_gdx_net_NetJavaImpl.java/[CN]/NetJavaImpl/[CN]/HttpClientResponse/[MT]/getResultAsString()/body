@@ -1,10 +1,6 @@
 {
-  BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
-  String tmp, line="";
   try {
-    while ((tmp=reader.readLine()) != null)     line+=tmp;
-    reader.close();
-    return line;
+    return StreamUtils.copyStreamToString(inputStream,connection.getContentLength());
   }
  catch (  IOException e) {
     return "";

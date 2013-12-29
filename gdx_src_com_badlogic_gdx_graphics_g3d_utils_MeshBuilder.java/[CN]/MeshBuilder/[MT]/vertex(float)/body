@@ -1,0 +1,5 @@
+{
+  final int n=values.length - stride;
+  for (int i=0; i <= n; i+=stride)   addVertex(values,i);
+  return lastIndex;
+}

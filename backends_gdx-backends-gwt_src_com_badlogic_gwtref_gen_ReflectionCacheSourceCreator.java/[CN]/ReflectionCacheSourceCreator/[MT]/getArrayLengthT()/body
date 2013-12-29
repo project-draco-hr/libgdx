@@ -1,9 +1,12 @@
 {
   p("public int getArrayLength(Type type, Object obj) {");
+  p("    String param = type.getName();");
+  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  JType type : types) {
     if (!(type instanceof JArrayType))     continue;
-    p("   if(type.getName().equals(\"" + type.getQualifiedSourceName() + "\")) return (("+ type.getQualifiedSourceName()+ ")obj).length;");
+    pc.add(type.getQualifiedSourceName(),"return ((" + type.getQualifiedSourceName() + ")obj).length;");
   }
+  pc.print();
   p("	return 0;");
   p("}");
 }

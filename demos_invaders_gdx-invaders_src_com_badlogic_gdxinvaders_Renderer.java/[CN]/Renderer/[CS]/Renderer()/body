@@ -1,5 +1,7 @@
 {
   try {
+    lights=new Environment();
+    lights.add(new DirectionalLight().set(Color.WHITE,new Vector3(-1,-0.5f,0).nor()));
     spriteBatch=new SpriteBatch();
     modelBatch=new ModelBatch();
     backgroundTexture=new Texture(Gdx.files.internal("data/planet.jpg"),Format.RGB565,true);

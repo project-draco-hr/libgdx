@@ -43,7 +43,7 @@
     Graphics2D g=(Graphics2D)canvas.getGraphics();
     System.out.println("Writing " + canvas.getWidth() + "x"+ canvas.getHeight()+ ": "+ outputFile);
     for (    Rect rect : page.outputRects) {
-      BufferedImage image=rect.image;
+      BufferedImage image=rect.getImage(imageProcessor);
       int iw=image.getWidth();
       int ih=image.getHeight();
       int rectX=page.x + rect.x, rectY=page.y + page.height - rect.y - rect.height;

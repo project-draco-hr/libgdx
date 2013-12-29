@@ -12,7 +12,7 @@
         stringBuilder.setLength(0);
         snipName=line.substring(1,idx);
       }
- else       stringBuilder.append(line).append("\n");
+ else       stringBuilder.append(line.trim()).append("\r\n");
     }
   }
  catch (  IOException e) {

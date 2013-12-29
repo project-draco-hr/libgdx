@@ -1,0 +1,26 @@
+{
+  if (value == Integer.MIN_VALUE) {
+    append0("-2147483648");
+    return this;
+  }
+  if (value < 0) {
+    append0('-');
+    value=-value;
+  }
+  if (minLength > 1) {
+    for (int j=minLength - numChars(value,10); j > 0; --j)     append(prefix);
+  }
+  if (value >= 10000) {
+    if (value >= 1000000000)     append0(digits[(int)((long)value % 10000000000L / 1000000000L)]);
+    if (value >= 100000000)     append0(digits[value % 1000000000 / 100000000]);
+    if (value >= 10000000)     append0(digits[value % 100000000 / 10000000]);
+    if (value >= 1000000)     append0(digits[value % 10000000 / 1000000]);
+    if (value >= 100000)     append0(digits[value % 1000000 / 100000]);
+    append0(digits[value % 100000 / 10000]);
+  }
+  if (value >= 1000)   append0(digits[value % 10000 / 1000]);
+  if (value >= 100)   append0(digits[value % 1000 / 100]);
+  if (value >= 10)   append0(digits[value % 100 / 10]);
+  append0(digits[value % 10]);
+  return this;
+}

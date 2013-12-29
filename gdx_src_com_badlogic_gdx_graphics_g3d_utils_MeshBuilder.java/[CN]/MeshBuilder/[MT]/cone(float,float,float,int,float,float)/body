@@ -1,4 +1,5 @@
 {
+  ensureTriangles(divisions + 2,divisions);
   final float hw=width * 0.5f;
   final float hh=height * 0.5f;
   final float hd=depth * 0.5f;
@@ -10,7 +11,8 @@
   VertexInfo curr1=vertTmp3.set(null,null,null,null);
   curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
   VertexInfo curr2=vertTmp4.set(null,null,null,null).setPos(0,hh,0).setNor(0,1,0).setUV(0.5f,0);
-  final int base=vertex(curr2);
+  final short base=vertex(curr2);
+  short i1, i2=0;
   for (int i=0; i <= divisions; i++) {
     angle=ao + step * i;
     u=1f - us * i;
@@ -18,9 +20,9 @@
     curr1.normal.set(curr1.position).nor();
     curr1.position.y=-hh;
     curr1.uv.set(u,1);
-    vertex(curr1);
-    if (i == 0)     continue;
-    triangle((short)base,(short)(vindex - 1),(short)(vindex - 2));
+    i1=vertex(curr1);
+    if (i != 0)     triangle(base,i1,i2);
+    i2=i1;
   }
-  circle(width,depth,0,-hh,0,0,-1,0,-1,0,0,0,0,1,divisions,180f - angleTo,180f - angleFrom);
+  ellipse(width,depth,0,0,divisions,0,-hh,0,0,-1,0,-1,0,0,0,0,1,180f - angleTo,180f - angleFrom);
 }

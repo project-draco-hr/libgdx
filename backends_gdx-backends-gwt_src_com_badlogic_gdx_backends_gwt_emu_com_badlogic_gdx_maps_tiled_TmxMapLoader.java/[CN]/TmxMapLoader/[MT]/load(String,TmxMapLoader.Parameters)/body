@@ -1,6 +1,7 @@
 {
   try {
     this.yUp=parameters.yUp;
+    this.convertObjectToTileSpace=parameters.convertObjectToTileSpace;
     FileHandle tmxFile=resolve(fileName);
     root=xml.parse(tmxFile);
     ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();

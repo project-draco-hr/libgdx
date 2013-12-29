@@ -1,4 +1,5 @@
 {
+  ensureRectangles((divisionsV + 1) * (divisionsU + 1),divisionsV * divisionsU);
   for (int u=0; u <= divisionsU; u++) {
     final float alphaU=(float)u / (float)divisionsU;
     vertTmp5.set(corner00).lerp(corner10,alphaU);

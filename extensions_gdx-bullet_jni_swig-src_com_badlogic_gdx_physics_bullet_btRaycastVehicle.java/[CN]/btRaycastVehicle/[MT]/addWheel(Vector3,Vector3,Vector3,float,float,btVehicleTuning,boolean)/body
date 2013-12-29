@@ -1,3 +1,0 @@
-{
-  return new btWheelInfo(gdxBulletJNI.btRaycastVehicle_addWheel(swigCPtr,this,connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,btVehicleTuning.getCPtr(tuning),tuning,isFrontWheel),false);
-}

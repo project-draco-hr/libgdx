@@ -1,3 +1,6 @@
 {
-  this(context,false,shaderProvider,sorter);
+  this.sorter=(sorter == null) ? new DefaultRenderableSorter() : sorter;
+  this.ownContext=(context == null);
+  this.context=(context == null) ? new RenderContext(new DefaultTextureBinder(DefaultTextureBinder.WEIGHTED,1)) : context;
+  this.shaderProvider=(shaderProvider == null) ? (Gdx.graphics.isGL20Available() ? new DefaultShaderProvider() : new GLES10ShaderProvider()) : shaderProvider;
 }

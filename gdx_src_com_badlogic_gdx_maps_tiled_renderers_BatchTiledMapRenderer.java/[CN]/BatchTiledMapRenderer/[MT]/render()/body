@@ -1,6 +1,5 @@
 {
-  AnimatedTiledMapTile.updateAnimationBaseTime();
-  spriteBatch.begin();
+  beginRender();
   for (  MapLayer layer : map.getLayers()) {
     if (layer.isVisible()) {
       if (layer instanceof TiledMapTileLayer) {
@@ -13,5 +12,5 @@
       }
     }
   }
-  spriteBatch.end();
+  endRender();
 }

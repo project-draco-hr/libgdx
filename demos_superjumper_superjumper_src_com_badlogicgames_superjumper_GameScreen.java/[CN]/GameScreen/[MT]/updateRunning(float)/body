@@ -1,7 +1,7 @@
 {
   if (Gdx.input.justTouched()) {
     guiCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
-    if (OverlapTester.pointInRectangle(pauseBounds,touchPoint.x,touchPoint.y)) {
+    if (pauseBounds.contains(touchPoint.x,touchPoint.y)) {
       Assets.playSound(Assets.clickSound);
       state=GAME_PAUSED;
       return;

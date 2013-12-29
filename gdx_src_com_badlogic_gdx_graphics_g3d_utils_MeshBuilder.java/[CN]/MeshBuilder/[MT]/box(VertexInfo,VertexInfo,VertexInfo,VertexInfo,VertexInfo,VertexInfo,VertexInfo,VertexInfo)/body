@@ -1,4 +1,5 @@
 {
+  ensureVertices(8);
   final short i000=vertex(corner000);
   final short i100=vertex(corner100);
   final short i110=vertex(corner110);
@@ -7,16 +8,24 @@
   final short i101=vertex(corner101);
   final short i111=vertex(corner111);
   final short i011=vertex(corner011);
-  rect(i000,i100,i110,i010);
-  rect(i101,i001,i011,i111);
   if (primitiveType == GL10.GL_LINES) {
+    ensureIndices(24);
+    rect(i000,i100,i110,i010);
+    rect(i101,i001,i011,i111);
     index(i000,i001,i010,i011,i110,i111,i100,i101);
   }
- else   if (primitiveType == GL10.GL_TRIANGLES) {
-    index(i001,i000,i010,i010,i011,i001);
-    index(i100,i101,i111,i111,i110,i100);
-    index(i001,i101,i100,i100,i000,i001);
-    index(i010,i110,i111,i111,i011,i010);
+ else   if (primitiveType == GL10.GL_POINTS) {
+    ensureRectangleIndices(2);
+    rect(i000,i100,i110,i010);
+    rect(i101,i001,i011,i111);
   }
- else   if (primitiveType != GL10.GL_POINTS)   throw new GdxRuntimeException("Incorrect primitive type");
+ else {
+    ensureRectangleIndices(6);
+    rect(i000,i100,i110,i010);
+    rect(i101,i001,i011,i111);
+    rect(i000,i010,i011,i001);
+    rect(i101,i111,i110,i100);
+    rect(i101,i100,i000,i001);
+    rect(i110,i111,i011,i010);
+  }
 }

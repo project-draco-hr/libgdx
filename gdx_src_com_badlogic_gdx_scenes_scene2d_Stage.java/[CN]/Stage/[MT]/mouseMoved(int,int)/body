@@ -1,4 +1,6 @@
 {
+  if (screenX < viewportX || screenX >= viewportX + viewportWidth)   return false;
+  if (screenY < viewportY || screenY >= viewportY + viewportHeight)   return false;
   mouseScreenX=screenX;
   mouseScreenY=screenY;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));

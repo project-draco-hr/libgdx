@@ -1,0 +1,7 @@
+{
+  for (int i=0; i < pages.size; i++) {
+    Rectangle rect=pages.get(i).rects.get(name);
+    if (rect != null)     return i;
+  }
+  return -1;
+}

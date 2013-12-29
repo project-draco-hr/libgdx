@@ -1,0 +1,4 @@
+{
+  if (elementTypes != null && index < elementTypes.length)   return ReflectionCache.getType(elementTypes[index]);
+  return null;
+}

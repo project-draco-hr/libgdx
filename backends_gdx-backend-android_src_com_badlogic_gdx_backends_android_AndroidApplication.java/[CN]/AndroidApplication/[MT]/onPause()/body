@@ -1,5 +1,4 @@
 {
-  if (wakeLock != null)   wakeLock.release();
   boolean isContinuous=graphics.isContinuousRendering();
   graphics.setContinuousRendering(true);
   graphics.pause();
@@ -15,6 +14,7 @@
   graphics.setContinuousRendering(isContinuous);
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onPause();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
   }
   super.onPause();

@@ -1,0 +1,9 @@
+{
+  if (Gdx.input.justTouched()) {
+    guiCam.unproject(touchPoint.set(Gdx.input.getX(),Gdx.input.getY(),0));
+    if (nextBounds.contains(touchPoint.x,touchPoint.y)) {
+      Assets.playSound(Assets.clickSound);
+      game.setScreen(new MainMenuScreen(game));
+    }
+  }
+}

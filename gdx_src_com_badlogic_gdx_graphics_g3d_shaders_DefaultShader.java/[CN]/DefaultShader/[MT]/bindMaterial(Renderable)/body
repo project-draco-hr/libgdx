@@ -1,12 +1,12 @@
 {
   if (currentMaterial == renderable.material)   return;
-  int cullFace=defaultCullFace;
-  int depthFunc=defaultDepthFunc;
+  int cullFace=config.defaultCullFace == -1 ? defaultCullFace : config.defaultCullFace;
+  int depthFunc=config.defaultDepthFunc == -1 ? defaultDepthFunc : config.defaultDepthFunc;
   float depthRangeNear=0f;
   float depthRangeFar=1f;
   boolean depthMask=true;
   currentMaterial=renderable.material;
-  for (  final Material.Attribute attr : currentMaterial) {
+  for (  final Attribute attr : currentMaterial) {
     final long t=attr.type;
     if (BlendingAttribute.is(t)) {
       context.setBlending(true,((BlendingAttribute)attr).sourceFunction,((BlendingAttribute)attr).destFunction);
@@ -21,7 +21,7 @@
       depthRangeFar=dta.depthRangeFar;
       depthMask=dta.depthMask;
     }
- else     if (!ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
+ else     if (!config.ignoreUnimplemented)     throw new GdxRuntimeException("Unknown material attribute: " + attr.toString());
   }
   context.setCullFace(cullFace);
   context.setDepthTest(depthFunc,depthRangeNear,depthRangeFar);

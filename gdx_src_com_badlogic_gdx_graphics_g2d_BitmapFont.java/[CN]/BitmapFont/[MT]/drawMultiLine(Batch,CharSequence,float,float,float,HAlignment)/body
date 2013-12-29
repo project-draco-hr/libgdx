@@ -1,0 +1,6 @@
+{
+  cache.clear();
+  TextBounds bounds=cache.addMultiLineText(str,x,y,alignmentWidth,alignment);
+  cache.draw(batch);
+  return bounds;
+}
