@@ -1,0 +1,12 @@
+{
+switch (dimensions) {
+case 3:
+    transformV3M3Jni(data,strideInBytes,count,matrix.val,positionInBytes(data) + offset * 3);
+  break;
+case 2:
+transformV2M3Jni(data,strideInBytes,count,matrix.val,positionInBytes(data) + offset * 3);
+break;
+default :
+throw new IllegalArgumentException();
+}
+}

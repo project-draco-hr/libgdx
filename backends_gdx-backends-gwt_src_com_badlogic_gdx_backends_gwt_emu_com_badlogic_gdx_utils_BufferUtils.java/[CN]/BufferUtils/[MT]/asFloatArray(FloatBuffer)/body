@@ -1,0 +1,7 @@
+{
+  final int pos=buffer.position();
+  final float[] result=new float[buffer.remaining()];
+  buffer.get(result);
+  buffer.position(pos);
+  return result;
+}
