@@ -4,6 +4,7 @@
   foregroundFPS=config.foregroundFPS;
   backgroundFPS=config.backgroundFPS;
   hiddenFPS=config.hiddenFPS;
+  preferencesdir=config.prefrencesLocation;
   final Thread glThread=Thread.currentThread();
   GdxNativesLoader.load();
   boolean inputCallbacksOnAppKitThread=isMac;
