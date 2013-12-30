@@ -7,7 +7,7 @@
   input=new LwjglInput();
   net=new LwjglNet();
   this.listener=listener;
-  this.prefencesdir=config.prefrencesLocation;
+  this.preferencesdir=config.preferencesLocation;
   Gdx.app=this;
   Gdx.graphics=graphics;
   Gdx.audio=audio;
