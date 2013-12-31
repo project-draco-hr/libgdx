@@ -2,6 +2,5 @@
   initialize();
   add(child);
   setStyle(style);
-  setWidth(getPrefWidth());
-  setHeight(getPrefHeight());
+  setSize(getPrefWidth(),getPrefHeight());
 }
