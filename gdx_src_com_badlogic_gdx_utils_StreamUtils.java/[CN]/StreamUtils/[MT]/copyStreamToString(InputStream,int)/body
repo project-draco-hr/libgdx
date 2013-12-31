@@ -1,0 +1,15 @@
+{
+  BufferedReader reader=new BufferedReader(new InputStreamReader(input));
+  try {
+    StringWriter w=new StringWriter(Math.max(0,approxStringLength));
+    char[] buffer=new char[DEFAULT_BUFFER_SIZE];
+    int charsRead;
+    while ((charsRead=reader.read(buffer)) != -1) {
+      w.write(buffer,0,charsRead);
+    }
+    return w.toString();
+  }
+  finally {
+    StreamUtils.closeQuietly(reader);
+  }
+}

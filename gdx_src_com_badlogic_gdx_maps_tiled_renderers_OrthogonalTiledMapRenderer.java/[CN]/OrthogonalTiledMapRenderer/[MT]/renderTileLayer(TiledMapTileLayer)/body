@@ -119,8 +119,8 @@ case Cell.ROTATE_270:
     }
   }
   spriteBatch.draw(region.getTexture(),vertices,0,20);
-  x+=layerTileWidth;
 }
+x+=layerTileWidth;
 }
 y+=layerTileHeight;
 }

@@ -5,7 +5,11 @@ synchronized (synch) {
     pause=true;
     while (pause) {
       try {
-        synch.wait();
+        synch.wait(4000);
+        if (pause) {
+          Gdx.app.error("AndroidGraphics","waiting for pause synchronization took too " + "long; assuming deadlock and killing");
+          android.os.Process.killProcess(android.os.Process.myPid());
+        }
       }
  catch (      InterruptedException ignored) {
         Gdx.app.log("AndroidGraphics","waiting for pause synchronization failed!");
