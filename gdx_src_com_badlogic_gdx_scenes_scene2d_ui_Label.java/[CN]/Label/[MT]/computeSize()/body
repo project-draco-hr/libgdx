@@ -6,8 +6,4 @@
     bounds.set(cache.getFont().getWrappedBounds(text,width));
   }
  else   bounds.set(cache.getFont().getMultiLineBounds(text));
-  if (!wrap) {
-    bounds.width*=fontScaleX;
-    bounds.height*=fontScaleY;
-  }
 }

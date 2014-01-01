@@ -4,6 +4,5 @@
   image.setScaling(Scaling.fit);
   add(image);
   setStyle(style);
-  setWidth(getPrefWidth());
-  setHeight(getPrefHeight());
+  setSize(getPrefWidth(),getPrefHeight());
 }

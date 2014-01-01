@@ -1,5 +1,4 @@
 {
-  float floatBits=color;
   int intBits=NumberUtils.floatToIntColor(color);
   Color color=tempColor;
   color.r=(intBits & 0xff) / 255f;
