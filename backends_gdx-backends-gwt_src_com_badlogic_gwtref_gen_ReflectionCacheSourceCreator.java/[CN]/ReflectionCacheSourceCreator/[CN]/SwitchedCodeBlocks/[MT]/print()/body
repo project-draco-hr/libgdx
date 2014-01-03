@@ -1,4 +1,5 @@
 {
+  if (keyHash2CodeBlock.isEmpty())   return;
   p("    switch(param.hashCode()) {");
   for (  Entry<Integer,List<KeyedCodeBlock>> e : keyHash2CodeBlock.entrySet()) {
     p("    case " + e.getKey() + ":");

@@ -1,3 +1,8 @@
 {
-  return (T)ReflectionCache.getType(c).newInstance();
+  try {
+    return (T)ReflectionCache.getType(c).newInstance();
+  }
+ catch (  NoSuchMethodException e) {
+    throw new ReflectionException("Could not use default constructor of " + c.getName(),e);
+  }
 }
