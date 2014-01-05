@@ -1,3 +1,13 @@
 {
   paused=true;
+  if (!wasPaused) {
+    Array<LifecycleListener> listeners=app.lifecycleListeners;
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.pause();
+      }
+    }
+    app.listener.pause();
+    wasPaused=true;
+  }
 }
