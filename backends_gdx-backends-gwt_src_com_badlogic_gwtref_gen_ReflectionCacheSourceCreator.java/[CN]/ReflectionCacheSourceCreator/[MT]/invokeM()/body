@@ -41,6 +41,7 @@
       nDispatch=0;
     }
   }
-  p("   return null;");
+  pc.print();
+  p("   throw new IllegalArgumentException(\"Missing method-stub \" + m.methodId + \" for method \" + m.name);");
   p("}");
 }

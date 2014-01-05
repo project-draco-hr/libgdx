@@ -1,6 +1,6 @@
 {
   try {
-    return constructor.newInstance();
+    return constructor.newInstance(args);
   }
  catch (  IllegalArgumentException e) {
     throw new ReflectionException("Illegal argument(s) supplied to constructor for class: " + getDeclaringClass().getName(),e);
