@@ -7,8 +7,8 @@
       if (pointer == 0 && button != 0)       return false;
       if (disabled)       return false;
       Stage stage=getStage();
-      if (list == null)       list=new SelectList();
-      list.show(stage);
+      if (scroll == null)       scroll=new ListScroll();
+      scroll.show(stage);
       return true;
     }
   }

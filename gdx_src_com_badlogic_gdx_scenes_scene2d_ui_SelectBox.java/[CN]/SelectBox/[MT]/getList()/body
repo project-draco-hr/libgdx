@@ -1,0 +1,4 @@
+{
+  if (scroll == null || scroll.getParent() == null)   return null;
+  return scroll.list;
+}
