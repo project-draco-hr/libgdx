@@ -1,8 +1,10 @@
 {
   if (pause) {
+    if (paused)     return;
     pause();
   }
  else {
+    if (!paused)     return;
     resume();
   }
 }

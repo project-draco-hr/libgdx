@@ -1,13 +1,11 @@
 {
+  if (!paused)   return;
   paused=false;
-  if (wasPaused) {
-    Array<LifecycleListener> listeners=app.lifecycleListeners;
+  Array<LifecycleListener> listeners=app.lifecycleListeners;
 synchronized (listeners) {
-      for (      LifecycleListener listener : listeners) {
-        listener.resume();
-      }
+    for (    LifecycleListener listener : listeners) {
+      listener.resume();
     }
-    app.listener.resume();
-    wasPaused=false;
   }
+  app.listener.resume();
 }
