@@ -1,4 +1,4 @@
 {
-  if (list == null || list.getParent() == null)   return;
-  list.addAction(sequence(fadeOut(0.15f,Interpolation.fade),removeActor()));
+  if (scroll == null || scroll.getParent() == null)   return;
+  scroll.addAction(sequence(fadeOut(0.15f,Interpolation.fade),removeActor()));
 }
