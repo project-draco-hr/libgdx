@@ -1,0 +1,12 @@
+{
+  if (config == null)   config=new HeadlessApplicationConfiguration();
+  HeadlessNativesLoader.load();
+  this.listener=listener;
+  this.files=new HeadlessFiles();
+  this.net=new HeadlessNet();
+  Gdx.app=this;
+  Gdx.files=files;
+  Gdx.net=net;
+  renderInterval=config.renderInterval > 0 ? (long)(config.renderInterval * 1000000000f) : (config.renderInterval < 0 ? -1 : 0);
+  initialize();
+}

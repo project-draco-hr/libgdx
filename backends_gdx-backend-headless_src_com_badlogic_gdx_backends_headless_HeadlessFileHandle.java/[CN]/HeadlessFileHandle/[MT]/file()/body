@@ -1,0 +1,4 @@
+{
+  if (type == FileType.External)   return new File(HeadlessFiles.externalPath,file.getPath());
+  return file;
+}
