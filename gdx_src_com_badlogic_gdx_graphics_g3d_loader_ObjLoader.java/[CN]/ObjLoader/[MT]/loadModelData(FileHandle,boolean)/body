@@ -1,4 +1,5 @@
 {
+  if (logWarning)   Gdx.app.error("ObjLoader","Wavefront (OBJ) is not fully supported, consult the documentation for more information");
   String line;
   String[] tokens;
   char firstChar;
