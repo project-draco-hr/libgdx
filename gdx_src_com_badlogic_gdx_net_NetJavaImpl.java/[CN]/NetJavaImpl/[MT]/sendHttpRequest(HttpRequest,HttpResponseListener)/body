@@ -28,18 +28,26 @@
         try {
           if (doingOutPut) {
             String contentAsString=httpRequest.getContent();
-            InputStream contentAsStream=httpRequest.getContentStream();
-            OutputStream outputStream=connection.getOutputStream();
             if (contentAsString != null) {
-              OutputStreamWriter writer=new OutputStreamWriter(outputStream);
-              writer.write(contentAsString);
-              writer.flush();
-              writer.close();
+              OutputStreamWriter writer=new OutputStreamWriter(connection.getOutputStream());
+              try {
+                writer.write(contentAsString);
+              }
+  finally {
+                StreamUtils.closeQuietly(writer);
+              }
             }
- else             if (contentAsStream != null) {
-              StreamUtils.copyStream(contentAsStream,outputStream);
-              outputStream.flush();
-              outputStream.close();
+ else {
+              InputStream contentAsStream=httpRequest.getContentStream();
+              if (contentAsStream != null) {
+                OutputStream os=connection.getOutputStream();
+                try {
+                  StreamUtils.copyStream(contentAsStream,os);
+                }
+  finally {
+                  StreamUtils.closeQuietly(os);
+                }
+              }
             }
           }
           connection.connect();
