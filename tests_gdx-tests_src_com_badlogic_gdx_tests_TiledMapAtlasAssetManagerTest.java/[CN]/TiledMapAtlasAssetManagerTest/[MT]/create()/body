@@ -14,9 +14,12 @@
   params.textureMinFilter=TextureFilter.Linear;
   params.textureMagFilter=TextureFilter.Linear;
   assetManager=new AssetManager();
+  assetManager.setErrorListener(new AssetErrorListener(){
+    @Override public void error(    AssetDescriptor asset,    Throwable throwable){
+      errorMessage=throwable.getMessage();
+    }
+  }
+);
   assetManager.setLoader(TiledMap.class,new AtlasTmxMapLoader(new InternalFileHandleResolver()));
-  assetManager.load("data/maps/tiled-atlas-processed/test.tmx",TiledMap.class);
-  assetManager.finishLoading();
-  map=assetManager.get("data/maps/tiled-atlas-processed/test.tmx");
-  renderer=new OrthogonalTiledMapRenderer(map,1f / 32f);
+  assetManager.load(fileName,TiledMap.class);
 }
