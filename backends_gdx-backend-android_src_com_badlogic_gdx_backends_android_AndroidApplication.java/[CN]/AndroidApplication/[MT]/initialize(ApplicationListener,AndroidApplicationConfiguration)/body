@@ -8,7 +8,6 @@
   this.handler=new Handler();
   this.useImmersiveMode=config.useImmersiveMode;
   this.hideStatusBar=config.hideStatusBar;
-  this.useWakelock=config.useWakelock;
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
@@ -24,7 +23,7 @@
   getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
   getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
   setContentView(graphics.getView(),createLayoutParams());
-  createWakeLock(this.useWakelock);
+  createWakeLock(config.useWakelock);
   hideStatusBar(this.hideStatusBar);
   useImmersiveMode(this.useImmersiveMode);
   if (this.useImmersiveMode && getVersion() >= 19) {
