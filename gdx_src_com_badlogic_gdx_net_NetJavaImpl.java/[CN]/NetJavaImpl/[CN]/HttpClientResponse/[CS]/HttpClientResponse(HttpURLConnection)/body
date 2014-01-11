@@ -1,12 +1,6 @@
 {
   this.connection=connection;
   try {
-    this.inputStream=connection.getInputStream();
-  }
- catch (  IOException e) {
-    this.inputStream=connection.getErrorStream();
-  }
-  try {
     this.status=new HttpStatus(connection.getResponseCode());
   }
  catch (  IOException e) {
