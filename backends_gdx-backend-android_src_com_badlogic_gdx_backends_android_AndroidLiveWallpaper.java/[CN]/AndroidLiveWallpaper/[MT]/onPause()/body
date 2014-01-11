@@ -3,8 +3,8 @@
   audio.pause();
   input.unregisterSensorListeners();
   int[] realId=input.realId;
-  boolean[] touched=input.touched;
   Arrays.fill(realId,-1);
+  boolean[] touched=input.touched;
   Arrays.fill(touched,false);
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();

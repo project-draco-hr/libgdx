@@ -4,8 +4,8 @@
   graphics.pause();
   input.unregisterSensorListeners();
   int[] realId=input.realId;
-  boolean[] touched=input.touched;
   Arrays.fill(realId,-1);
+  boolean[] touched=input.touched;
   Arrays.fill(touched,false);
   graphics.clearManagedCaches();
   graphics.destroy();
