@@ -17,6 +17,7 @@
  else       t=n + renderInterval;
       executeRunnables();
       listener.render();
+      graphics.updateTime();
       if (!running)       break;
     }
   }
