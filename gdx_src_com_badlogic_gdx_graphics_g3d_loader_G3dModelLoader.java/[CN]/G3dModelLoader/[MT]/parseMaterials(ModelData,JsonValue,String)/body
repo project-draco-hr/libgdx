@@ -4,7 +4,7 @@
   }
  else {
     model.materials.ensureCapacity(materials.size);
-    for (JsonValue material=materials.child(); material != null; material=material.next()) {
+    for (JsonValue material=materials.child; material != null; material=material.next) {
       ModelMaterial jsonMaterial=new ModelMaterial();
       String id=material.getString("id",null);
       if (id == null)       throw new GdxRuntimeException("Material needs an id.");
@@ -23,7 +23,7 @@
       jsonMaterial.opacity=material.getFloat("opacity",1.0f);
       JsonValue textures=material.get("textures");
       if (textures != null) {
-        for (JsonValue texture=textures.child(); texture != null; texture=texture.next()) {
+        for (JsonValue texture=textures.child; texture != null; texture=texture.next) {
           ModelTexture jsonTexture=new ModelTexture();
           String textureId=texture.getString("id",null);
           if (textureId == null)           throw new GdxRuntimeException("Texture has no id.");

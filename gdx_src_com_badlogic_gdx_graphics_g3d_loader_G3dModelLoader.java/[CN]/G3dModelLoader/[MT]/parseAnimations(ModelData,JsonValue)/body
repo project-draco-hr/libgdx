@@ -2,20 +2,20 @@
   JsonValue animations=json.get("animations");
   if (animations == null)   return;
   model.animations.ensureCapacity(animations.size);
-  for (JsonValue anim=animations.child(); anim != null; anim=anim.next()) {
+  for (JsonValue anim=animations.child; anim != null; anim=anim.next) {
     JsonValue nodes=anim.get("bones");
     if (nodes == null)     continue;
     ModelAnimation animation=new ModelAnimation();
     model.animations.add(animation);
     animation.nodeAnimations.ensureCapacity(nodes.size);
     animation.id=anim.getString("id");
-    for (JsonValue node=nodes.child(); node != null; node=node.next()) {
+    for (JsonValue node=nodes.child; node != null; node=node.next) {
       JsonValue keyframes=node.get("keyframes");
       ModelNodeAnimation nodeAnim=new ModelNodeAnimation();
       animation.nodeAnimations.add(nodeAnim);
       nodeAnim.nodeId=node.getString("boneId");
       nodeAnim.keyframes.ensureCapacity(keyframes.size);
-      for (JsonValue keyframe=keyframes.child(); keyframe != null; keyframe=keyframe.next()) {
+      for (JsonValue keyframe=keyframes.child; keyframe != null; keyframe=keyframe.next) {
         ModelNodeKeyframe kf=new ModelNodeKeyframe();
         nodeAnim.keyframes.add(kf);
         kf.keytime=keyframe.getFloat("keytime") / 1000.f;

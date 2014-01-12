@@ -2,7 +2,7 @@
   Array<VertexAttribute> vertexAttributes=new Array<VertexAttribute>();
   int unit=0;
   int blendWeightCount=0;
-  for (JsonValue value=attributes.child(); value != null; value=value.next()) {
+  for (JsonValue value=attributes.child; value != null; value=value.next) {
     String attribute=value.asString();
     String attr=(String)attribute;
     if (attr.equals("POSITION")) {
