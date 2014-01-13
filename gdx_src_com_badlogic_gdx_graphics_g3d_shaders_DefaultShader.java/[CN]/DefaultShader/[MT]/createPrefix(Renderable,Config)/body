@@ -44,6 +44,5 @@
   if ((mask & FloatAttribute.Shininess) == FloatAttribute.Shininess)   prefix+="#define " + FloatAttribute.ShininessAlias + "Flag\n";
   if ((mask & FloatAttribute.AlphaTest) == FloatAttribute.AlphaTest)   prefix+="#define " + FloatAttribute.AlphaTestAlias + "Flag\n";
   if (renderable.bones != null && config.numBones > 0)   prefix+="#define numBones " + config.numBones + "\n";
-  Gdx.app.log("Prefix","\n" + prefix);
   return prefix;
 }
