@@ -16,4 +16,8 @@
       prefHeight+=child.getHeight();
     }
   }
+  if (round) {
+    prefWidth=Math.round(prefWidth);
+    prefHeight=Math.round(prefHeight);
+  }
 }

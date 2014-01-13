@@ -24,7 +24,8 @@
  else     if ((alignment & Align.right) != 0)     x=groupWidth - width;
  else     x=(groupWidth - width) / 2;
     if (!reverse)     y+=(height + spacing) * dir;
-    child.setBounds(x,y,width,height);
+    if (round)     child.setBounds(Math.round(x),Math.round(y),Math.round(width),Math.round(height));
+ else     child.setBounds(x,y,width,height);
     if (reverse)     y+=(height + spacing) * dir;
   }
 }
