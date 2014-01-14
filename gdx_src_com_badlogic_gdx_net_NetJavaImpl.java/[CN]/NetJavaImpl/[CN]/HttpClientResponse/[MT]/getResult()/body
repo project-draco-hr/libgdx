@@ -1,6 +1,6 @@
 {
   try {
-    return StreamUtils.copyStreamToByteArray(inputStream,connection.getContentLength());
+    return StreamUtils.copyStreamToByteArray(getInputStream(),connection.getContentLength());
   }
  catch (  IOException e) {
     return StreamUtils.EMPTY_BYTES;

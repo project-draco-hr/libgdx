@@ -1,15 +1,3 @@
 {
-switch (dimensions) {
-case 4:
-    transformV4M4Jni(data,positionInBytes(data),strideInBytes,count,matrix.val);
-  break;
-case 3:
-transformV3M4Jni(data,positionInBytes(data),strideInBytes,count,matrix.val);
-break;
-case 2:
-transformV2M4Jni(data,positionInBytes(data),strideInBytes,count,matrix.val);
-break;
-default :
-throw new IllegalArgumentException();
-}
+  transform(data,dimensions,strideInBytes,count,matrix,0);
 }

@@ -4,17 +4,5 @@
     printHelp();
     System.exit(-1);
   }
-  if (params.containsKey("gdxVersion")) {
-    List<String> versions=Arrays.asList(GDX_VERSIONS);
-    if (!versions.contains(params.get("gdxVersion"))) {
-      System.out.println("Invalid gdxVersion : use one of the following versions");
-      System.out.println(versions);
-      System.exit(-1);
-    }
-  }
-  if (!params.containsKey("gdxVersion")) {
-    params.put("gdxVersion",GDX_VERSIONS[0]);
-    System.out.println("No gdxVersion specified: using default [" + GDX_VERSIONS[0] + "]");
-  }
-  new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),params.get("gdxVersion"));
+  new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"));
 }

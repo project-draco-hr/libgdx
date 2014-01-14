@@ -36,21 +36,38 @@
   }
   stub.enclosingType=stub.enclosingType.replace(".class","");
   stub.returnType=stub.returnType.replace(".class","");
-  pbn("public native " + stub.returnType + " "+ stub.methodId+ "(");
-  pbn(stub.enclosingType + " obj" + (stub.parameterTypes.size() > 0 ? ", " : ""));
-  int i=0;
-  for (  String paramType : stub.parameterTypes) {
-    pbn(paramType + " p" + i+ (i < stub.parameterTypes.size() - 1 ? "," : ""));
-    i++;
+  if (stub.isMethod) {
+    pbn("private native " + stub.returnType + " "+ stub.methodId+ "(");
+    if (!stub.isStatic)     pbn(stub.enclosingType + " obj" + (stub.parameterTypes.size() > 0 ? ", " : ""));
+    int i=0;
+    for (    String paramType : stub.parameterTypes) {
+      pbn(paramType + " p" + i+ (i < stub.parameterTypes.size() - 1 ? "," : ""));
+      i++;
+    }
+    pb(") /*-{");
+    if (!stub.returnType.equals("void"))     pbn("return ");
+    if (stub.isStatic)     pbn("@" + stub.enclosingType + "::"+ stub.name+ "("+ stub.jnsi+ ")(");
+ else     pbn("obj.@" + stub.enclosingType + "::"+ stub.name+ "("+ stub.jnsi+ ")(");
+    for (i=0; i < stub.parameterTypes.size(); i++) {
+      pbn("p" + i + (i < stub.parameterTypes.size() - 1 ? ", " : ""));
+    }
+    pb(");");
+    pb("}-*/;");
   }
-  pb(") /*-{");
-  if (!stub.returnType.equals("void"))   pbn("return ");
-  if (stub.isStatic)   pbn("@" + stub.enclosingType + "::"+ stub.name+ "("+ stub.jnsi+ ")(");
- else   pbn("obj.@" + stub.enclosingType + "::"+ stub.name+ "("+ stub.jnsi+ ")(");
-  for (i=0; i < stub.parameterTypes.size(); i++) {
-    pbn("p" + i + (i < stub.parameterTypes.size() - 1 ? ", " : ""));
+ else {
+    pbn("private static " + stub.returnType + " "+ stub.methodId+ "(");
+    int i=0;
+    for (    String paramType : stub.parameterTypes) {
+      pbn(paramType + " p" + i+ (i < stub.parameterTypes.size() - 1 ? "," : ""));
+      i++;
+    }
+    pb(") {");
+    pbn("return new " + stub.returnType + "(");
+    for (i=0; i < stub.parameterTypes.size(); i++) {
+      pbn("p" + i + (i < stub.parameterTypes.size() - 1 ? ", " : ""));
+    }
+    pb(");");
+    pb("}");
   }
-  pb(");");
-  pb("}-*/;");
   return buffer.toString();
 }

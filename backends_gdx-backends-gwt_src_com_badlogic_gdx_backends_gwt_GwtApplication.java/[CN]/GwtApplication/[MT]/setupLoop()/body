@@ -19,6 +19,7 @@
   Gdx.input=this.input;
   this.net=new GwtNet();
   Gdx.net=this.net;
+  this.clipboard=new GwtClipboard();
   try {
     listener.create();
     listener.resize(graphics.getWidth(),graphics.getHeight());

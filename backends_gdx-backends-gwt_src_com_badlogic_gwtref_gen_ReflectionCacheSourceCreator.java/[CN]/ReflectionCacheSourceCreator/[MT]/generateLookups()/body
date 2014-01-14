@@ -30,7 +30,7 @@
   int id=0;
   for (  JType t : types) {
     String typeGen=createTypeGenerator(t);
-    p("public void c" + (id++) + "() {");
+    p("private void c" + (id++) + "() {");
     p(typeGen);
     p("}\n");
   }

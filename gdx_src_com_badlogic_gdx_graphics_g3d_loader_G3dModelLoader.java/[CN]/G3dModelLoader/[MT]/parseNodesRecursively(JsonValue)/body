@@ -18,7 +18,7 @@
   if (materials != null) {
     jsonNode.parts=new ModelNodePart[materials.size];
     int i=0;
-    for (JsonValue material=materials.child(); material != null; material=material.next(), i++) {
+    for (JsonValue material=materials.child; material != null; material=material.next, i++) {
       ModelNodePart nodePart=new ModelNodePart();
       String meshPartId=material.getString("meshpartid",null);
       String materialId=material.getString("materialid",null);
@@ -31,7 +31,7 @@
       if (bones != null) {
         nodePart.bones=new ArrayMap<String,Matrix4>(true,bones.size,String.class,Matrix4.class);
         int j=0;
-        for (JsonValue bone=bones.child(); bone != null; bone=bone.next(), j++) {
+        for (JsonValue bone=bones.child; bone != null; bone=bone.next, j++) {
           String nodeId=bone.getString("node",null);
           if (nodeId == null)           throw new GdxRuntimeException("Bone node ID missing");
           Matrix4 transform=new Matrix4();
@@ -51,7 +51,7 @@
   if (children != null) {
     jsonNode.children=new ModelNode[children.size];
     int i=0;
-    for (JsonValue child=children.child(); child != null; child=child.next(), i++) {
+    for (JsonValue child=children.child; child != null; child=child.next, i++) {
       jsonNode.children[i]=parseNodesRecursively(child);
     }
   }

@@ -1,3 +1,8 @@
 {
-  throw new GdxRuntimeException("Not implemented.");
+  com.badlogic.gwtref.client.Constructor[] constructors=ReflectionCache.getType(c).getConstructors();
+  Constructor[] result=new Constructor[constructors.length];
+  for (int i=0, j=constructors.length; i < j; i++) {
+    result[i]=new Constructor(constructors[i]);
+  }
+  return result;
 }

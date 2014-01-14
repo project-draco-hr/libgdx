@@ -45,41 +45,8 @@
       }
       pb("};");
     }
-    if (c.getMethods() != null) {
-      pb(varName + ".methods = new Method[] {");
-      for (      JMethod m : c.getMethods()) {
-        String enclosingType=getType(c);
-        String returnType=getType(m.getReturnType());
-        String methodId="m" + (nextStub++);
-        MethodStub stub=new MethodStub();
-        stub.enclosingType=enclosingType;
-        stub.returnType=returnType;
-        stub.jnsi="";
-        stub.isStatic=m.isStatic();
-        stub.isAbstract=m.isAbstract();
-        stub.methodId=methodId;
-        stub.name=m.getName();
-        methodStubs.add(stub);
-        pb("new Method(\"" + m.getName() + "\", ");
-        pb(enclosingType + ", ");
-        pb(returnType + ", ");
-        if (m.getParameters() != null) {
-          pb("new Parameter[] {");
-          for (          JParameter p : m.getParameters()) {
-            String paramType=getType(p.getType());
-            stub.parameterTypes.add(paramType);
-            stub.jnsi+=p.getType().getErasedType().getJNISignature();
-            pb("new Parameter(\"" + p.getName() + "\", "+ paramType+ ", \""+ p.getType().getJNISignature()+ "\"), ");
-          }
-          pb("}, ");
-        }
- else {
-          pb("new Parameter[0], ");
-        }
-        pb(m.isAbstract() + ", " + m.isFinal()+ ", "+ m.isStatic()+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ m.isNative()+ ", "+ m.isVarArgs()+ ", "+ (m.isMethod() != null)+ ", "+ (m.isConstructor() != null)+ ", "+ "\""+ methodId+ "\""+ "),");
-      }
-      pb("};");
-    }
+    printMethods(c,varName,"Method",c.getMethods());
+    if (!c.isAbstract())     printMethods(c,varName,"Constructor",c.getConstructors());
     if (c.isArray() != null) {
       pb(varName + ".componentType = " + getType(c.isArray().getComponentType())+ ";");
     }

@@ -1,4 +1,8 @@
 {
+  BitmapFont font=cache.getFont();
+  float oldScaleX=font.getScaleX();
+  float oldScaleY=font.getScaleY();
+  if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(fontScaleX,fontScaleY);
   if (sizeInvalid)   computeSize();
   if (wrap) {
     float prefHeight=getPrefHeight();
@@ -7,10 +11,6 @@
       invalidateHierarchy();
     }
   }
-  BitmapFont font=cache.getFont();
-  float oldScaleX=font.getScaleX();
-  float oldScaleY=font.getScaleY();
-  if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(fontScaleX,fontScaleY);
   float width=getWidth(), height=getHeight();
   StringBuilder text;
   if (ellipse && width < bounds.width) {

@@ -1,6 +1,6 @@
 {
   try {
-    return StreamUtils.copyStreamToString(inputStream,connection.getContentLength());
+    return StreamUtils.copyStreamToString(getInputStream(),connection.getContentLength());
   }
  catch (  IOException e) {
     return "";
