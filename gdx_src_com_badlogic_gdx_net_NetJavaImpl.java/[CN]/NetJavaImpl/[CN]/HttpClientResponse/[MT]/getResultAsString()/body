@@ -1,8 +1,12 @@
 {
+  InputStream input=getInputStream();
   try {
-    return StreamUtils.copyStreamToString(getInputStream(),connection.getContentLength());
+    return StreamUtils.copyStreamToString(input,connection.getContentLength());
   }
  catch (  IOException e) {
     return "";
+  }
+ finally {
+    StreamUtils.closeQuietly(input);
   }
 }
