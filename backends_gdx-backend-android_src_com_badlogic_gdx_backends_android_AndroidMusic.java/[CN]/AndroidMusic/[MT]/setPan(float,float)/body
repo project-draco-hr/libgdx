@@ -1,4 +1,5 @@
 {
+  if (player == null)   return;
   float leftVolume=volume;
   float rightVolume=volume;
   if (pan < 0) {
