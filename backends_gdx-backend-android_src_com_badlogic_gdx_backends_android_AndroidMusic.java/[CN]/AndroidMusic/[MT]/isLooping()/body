@@ -1,3 +1,4 @@
 {
+  if (player == null)   return false;
   return player.isLooping();
 }

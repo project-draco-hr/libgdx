@@ -1,4 +1,5 @@
 {
+  if (player == null)   return;
   if (player.isPlaying())   return;
   try {
     if (!isPrepared) {
