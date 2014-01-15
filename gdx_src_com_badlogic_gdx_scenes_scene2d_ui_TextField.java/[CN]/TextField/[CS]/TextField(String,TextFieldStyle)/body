@@ -1,7 +1,7 @@
 {
   setStyle(style);
   clipboard=Gdx.app.getClipboard();
+  initialize();
   setText(text);
   setSize(getPrefWidth(),getPrefHeight());
-  initialize();
 }

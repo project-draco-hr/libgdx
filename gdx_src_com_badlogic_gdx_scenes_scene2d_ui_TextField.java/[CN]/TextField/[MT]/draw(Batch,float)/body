@@ -11,20 +11,16 @@
   float y=getY();
   float width=getWidth();
   float height=getHeight();
-  float descent=font.getDescent();
-  float textY=textHeight / 2 + descent;
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   float bgLeftWidth=0;
   if (background != null) {
     background.draw(batch,x,y,width,height);
     bgLeftWidth=background.getLeftWidth();
-    float bottom=background.getBottomHeight();
-    textY=(int)(textY + (height - background.getTopHeight() - bottom) / 2 + bottom);
   }
- else   textY=(int)(textY + height / 2);
+  float textY=getTextY(font,background);
   calculateOffsets();
   if (focused && hasSelection && selection != null) {
-    selection.draw(batch,x + selectionX + bgLeftWidth+ renderOffset,y + textY - textHeight - descent,selectionWidth,textHeight + descent / 2);
+    drawSelection(selection,batch,font,x + bgLeftWidth,y + textY);
   }
   float yOffset=font.isFlipped() ? -textHeight : 0;
   if (displayText.length() == 0) {
@@ -39,12 +35,12 @@
   }
  else {
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,displayText,x + bgLeftWidth + textOffset,y + textY + yOffset,visibleTextStart,visibleTextEnd);
+    drawText(batch,font,x + bgLeftWidth,y + textY + yOffset);
   }
   if (focused && !disabled) {
     blink();
     if (cursorOn && cursorPatch != null) {
-      cursorPatch.draw(batch,x + bgLeftWidth + textOffset+ glyphPositions.items[cursor] - glyphPositions.items[visibleTextStart] - 1,y + textY - textHeight - descent,cursorPatch.getMinWidth(),textHeight + descent / 2);
+      drawCursor(cursorPatch,batch,font,x + bgLeftWidth,y + textY);
     }
   }
 }

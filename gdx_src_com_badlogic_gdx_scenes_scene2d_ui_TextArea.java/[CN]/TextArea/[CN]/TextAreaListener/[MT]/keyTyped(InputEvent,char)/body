@@ -1,0 +1,5 @@
+{
+  boolean result=super.keyTyped(event,character);
+  showCursor();
+  return result;
+}

@@ -1,0 +1,7 @@
+{
+  int index=0;
+  while (index < linesBreak.size && cursor > linesBreak.items[index]) {
+    index++;
+  }
+  return index;
+}
