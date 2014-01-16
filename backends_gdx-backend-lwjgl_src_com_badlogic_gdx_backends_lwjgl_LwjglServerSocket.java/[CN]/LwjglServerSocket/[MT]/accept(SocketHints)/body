@@ -1,8 +1,0 @@
-{
-  try {
-    return new LwjglSocket(server.accept(),hints);
-  }
- catch (  Exception e) {
-    throw new GdxRuntimeException("Error accepting socket.",e);
-  }
-}
