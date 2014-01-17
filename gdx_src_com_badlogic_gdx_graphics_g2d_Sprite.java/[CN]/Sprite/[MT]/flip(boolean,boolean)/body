@@ -1,5 +1,11 @@
 {
   super.flip(x,y);
+  if (x) {
+    flipX=!flipX;
+  }
+  if (y) {
+    flipY=!flipY;
+  }
   float[] vertices=Sprite.this.vertices;
   if (x) {
     float temp=vertices[U1];

@@ -1,0 +1,11 @@
+{
+  boolean performX=false;
+  boolean performY=false;
+  if (flipX != x) {
+    performX=true;
+  }
+  if (flipY != y) {
+    performY=true;
+  }
+  flip(performX,performY);
+}
