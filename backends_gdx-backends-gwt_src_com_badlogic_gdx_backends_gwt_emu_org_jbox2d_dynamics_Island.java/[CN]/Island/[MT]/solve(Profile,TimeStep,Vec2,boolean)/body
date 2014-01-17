@@ -12,12 +12,16 @@
       v.x+=h * (b.m_gravityScale * gravity.x + b.m_invMass * b.m_force.x);
       v.y+=h * (b.m_gravityScale * gravity.y + b.m_invMass * b.m_force.y);
       w+=h * b.m_invI * b.m_torque;
-      v.mulLocal(MathUtils.clamp(1.0f - h * b.m_linearDamping,0.0f,1.0f));
+      float a1=MathUtils.clamp(1.0f - h * b.m_linearDamping,0.0f,1.0f);
+      v.x*=a1;
+      v.y*=a1;
       w*=MathUtils.clamp(1.0f - h * b.m_angularDamping,0.0f,1.0f);
     }
-    m_positions[i].c.set(c);
+    m_positions[i].c.x=c.x;
+    m_positions[i].c.y=c.y;
     m_positions[i].a=a;
-    m_velocities[i].v.set(v);
+    m_velocities[i].v.x=v.x;
+    m_velocities[i].v.y=v.y;
     m_velocities[i].w=w;
   }
   timer.reset();
@@ -52,10 +56,10 @@
     float a=m_positions[i].a;
     final Vec2 v=m_velocities[i].v;
     float w=m_velocities[i].w;
-    translation.x=v.x * h;
-    translation.y=v.y * h;
-    if (Vec2.dot(translation,translation) > Settings.maxTranslationSquared) {
-      float ratio=Settings.maxTranslation / translation.length();
+    float translationx=v.x * h;
+    float translationy=v.y * h;
+    if (translationx * translationx + translationy * translationy > Settings.maxTranslationSquared) {
+      float ratio=Settings.maxTranslation / MathUtils.sqrt(translationx * translationx + translationy * translationy);
       v.x*=ratio;
       v.y*=ratio;
     }
@@ -86,9 +90,11 @@
   }
   for (int i=0; i < m_bodyCount; ++i) {
     Body body=m_bodies[i];
-    body.m_sweep.c.set(m_positions[i].c);
+    body.m_sweep.c.x=m_positions[i].c.x;
+    body.m_sweep.c.y=m_positions[i].c.y;
     body.m_sweep.a=m_positions[i].a;
-    body.m_linearVelocity.set(m_velocities[i].v);
+    body.m_linearVelocity.x=m_velocities[i].v.x;
+    body.m_linearVelocity.y=m_velocities[i].v.y;
     body.m_angularVelocity=m_velocities[i].w;
     body.synchronizeTransform();
   }

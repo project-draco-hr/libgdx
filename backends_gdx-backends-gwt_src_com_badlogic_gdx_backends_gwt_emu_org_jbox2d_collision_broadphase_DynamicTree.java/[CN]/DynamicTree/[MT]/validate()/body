@@ -2,10 +2,11 @@
   validateStructure(m_root);
   validateMetrics(m_root);
   int freeCount=0;
-  int freeIndex=m_freeList;
-  while (freeIndex != NULL_NODE) {
-    assert(0 <= freeIndex && freeIndex < m_nodeCapacity);
-    freeIndex=m_nodes[freeIndex].parent;
+  DynamicTreeNode freeNode=m_freeList != NULL_NODE ? m_nodes[m_freeList] : null;
+  while (freeNode != null) {
+    assert(0 <= freeNode.id && freeNode.id < m_nodeCapacity);
+    assert(freeNode == m_nodes[freeNode.id]);
+    freeNode=freeNode.parent;
     ++freeCount;
   }
   assert(getHeight() == computeHeight());

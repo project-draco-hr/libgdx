@@ -1,0 +1,10 @@
+{
+  super(worldPool,def);
+  m_localAnchorA.set(def.localAnchorA);
+  m_localAnchorB.set(def.localAnchorB);
+  m_maxLength=def.maxLength;
+  m_mass=0.0f;
+  m_impulse=0.0f;
+  m_state=LimitState.INACTIVE;
+  m_length=0.0f;
+}

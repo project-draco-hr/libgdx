@@ -16,10 +16,9 @@
     m_impulse.mulLocal(maxImpulse / m_impulse.length());
   }
   impulse.set(m_impulse).subLocal(oldImpulse);
-  vB.x+=m_invMassB * m_impulse.x;
-  vB.y+=m_invMassB * m_impulse.y;
+  vB.x+=m_invMassB * impulse.x;
+  vB.y+=m_invMassB * impulse.y;
   wB+=m_invIB * Vec2.cross(m_rB,impulse);
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(3);
 }

@@ -1,0 +1,34 @@
+{
+  Vec2 cA=data.positions[m_indexA].c;
+  float aA=data.positions[m_indexA].a;
+  Vec2 cB=data.positions[m_indexB].c;
+  float aB=data.positions[m_indexB].a;
+  final Rot qA=pool.popRot();
+  final Rot qB=pool.popRot();
+  final Vec2 u=pool.popVec2();
+  final Vec2 rA=pool.popVec2();
+  final Vec2 rB=pool.popVec2();
+  final Vec2 temp=pool.popVec2();
+  qA.set(aA);
+  qB.set(aB);
+  Rot.mulToOutUnsafe(qA,temp.set(m_localAnchorA).subLocal(m_localCenterA),rA);
+  Rot.mulToOutUnsafe(qB,temp.set(m_localAnchorB).subLocal(m_localCenterB),rB);
+  u.set(cB).addLocal(rB).subLocal(cA).subLocal(rA);
+  float length=u.normalize();
+  float C=length - m_maxLength;
+  C=MathUtils.clamp(C,0.0f,Settings.maxLinearCorrection);
+  float impulse=-m_mass * C;
+  float Px=impulse * u.x;
+  float Py=impulse * u.y;
+  cA.x-=m_invMassA * Px;
+  cA.y-=m_invMassA * Py;
+  aA-=m_invIA * (rA.x * Py - rA.y * Px);
+  cB.x+=m_invMassB * Px;
+  cB.y+=m_invMassB * Py;
+  aB+=m_invIB * (rB.x * Py - rB.y * Px);
+  pool.pushRot(2);
+  pool.pushVec2(4);
+  data.positions[m_indexA].a=aA;
+  data.positions[m_indexB].a=aB;
+  return length - m_maxLength < Settings.linearSlop;
+}

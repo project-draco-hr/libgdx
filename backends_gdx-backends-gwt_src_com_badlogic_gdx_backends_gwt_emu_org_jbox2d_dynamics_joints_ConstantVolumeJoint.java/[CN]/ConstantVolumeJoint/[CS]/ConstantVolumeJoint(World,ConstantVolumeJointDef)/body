@@ -11,7 +11,7 @@
     float dist=bodies[i].getWorldCenter().sub(bodies[next].getWorldCenter()).length();
     targetLengths[i]=dist;
   }
-  targetVolume=getArea();
+  targetVolume=getBodyArea();
   if (def.joints != null && def.joints.size() != def.bodies.size()) {
     throw new IllegalArgumentException("Incorrect joint definition.  Joints have to correspond to the bodies");
   }
@@ -22,6 +22,7 @@
       final int next=(i == targetLengths.length - 1) ? 0 : i + 1;
       djd.frequencyHz=def.frequencyHz;
       djd.dampingRatio=def.dampingRatio;
+      djd.collideConnected=def.collideConnected;
       djd.initialize(bodies[i],bodies[next],bodies[i].getWorldCenter(),bodies[next].getWorldCenter());
       distanceJoints[i]=(DistanceJoint)world.createJoint(djd);
     }
@@ -29,13 +30,8 @@
  else {
     distanceJoints=def.joints.toArray(new DistanceJoint[0]);
   }
-  frequencyHz=def.frequencyHz;
-  dampingRatio=def.dampingRatio;
   normals=new Vec2[bodies.length];
   for (int i=0; i < normals.length; ++i) {
     normals[i]=new Vec2();
   }
-  this.m_bodyA=bodies[0];
-  this.m_bodyB=bodies[1];
-  this.m_collideConnected=false;
 }

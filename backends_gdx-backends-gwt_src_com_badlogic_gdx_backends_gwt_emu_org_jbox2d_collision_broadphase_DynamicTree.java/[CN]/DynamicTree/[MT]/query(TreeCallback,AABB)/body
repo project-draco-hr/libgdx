@@ -1,22 +1,21 @@
 {
-  intStack.reset();
-  intStack.push(m_root);
-  while (intStack.getCount() > 0) {
-    int nodeId=intStack.pop();
-    if (nodeId == TreeNode.NULL_NODE) {
+  nodeStack.reset();
+  nodeStack.push(m_root);
+  while (nodeStack.getCount() > 0) {
+    DynamicTreeNode node=nodeStack.pop();
+    if (node == null) {
       continue;
     }
-    final TreeNode node=m_nodes[nodeId];
     if (AABB.testOverlap(node.aabb,aabb)) {
-      if (node.isLeaf()) {
-        boolean proceed=callback.treeCallback(nodeId);
+      if (node.child1 == null) {
+        boolean proceed=callback.treeCallback(node.id);
         if (!proceed) {
           return;
         }
       }
  else {
-        intStack.push(node.child1);
-        intStack.push(node.child2);
+        nodeStack.push(node.child1);
+        nodeStack.push(node.child2);
       }
     }
   }

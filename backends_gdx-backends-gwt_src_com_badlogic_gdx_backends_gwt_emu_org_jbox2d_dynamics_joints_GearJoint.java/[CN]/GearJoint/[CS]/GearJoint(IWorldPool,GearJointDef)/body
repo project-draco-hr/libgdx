@@ -1,0 +1,71 @@
+{
+  super(argWorldPool,def);
+  m_joint1=def.joint1;
+  m_joint2=def.joint2;
+  m_typeA=m_joint1.getType();
+  m_typeB=m_joint2.getType();
+  assert(m_typeA == JointType.REVOLUTE || m_typeA == JointType.PRISMATIC);
+  assert(m_typeB == JointType.REVOLUTE || m_typeB == JointType.PRISMATIC);
+  float coordinateA, coordinateB;
+  m_bodyC=m_joint1.getBodyA();
+  m_bodyA=m_joint1.getBodyB();
+  Transform xfA=m_bodyA.m_xf;
+  float aA=m_bodyA.m_sweep.a;
+  Transform xfC=m_bodyC.m_xf;
+  float aC=m_bodyC.m_sweep.a;
+  if (m_typeA == JointType.REVOLUTE) {
+    RevoluteJoint revolute=(RevoluteJoint)def.joint1;
+    m_localAnchorC.set(revolute.m_localAnchorA);
+    m_localAnchorA.set(revolute.m_localAnchorB);
+    m_referenceAngleA=revolute.m_referenceAngle;
+    m_localAxisC.setZero();
+    coordinateA=aA - aC - m_referenceAngleA;
+  }
+ else {
+    Vec2 pA=pool.popVec2();
+    Vec2 temp=pool.popVec2();
+    PrismaticJoint prismatic=(PrismaticJoint)def.joint1;
+    m_localAnchorC.set(prismatic.m_localAnchorA);
+    m_localAnchorA.set(prismatic.m_localAnchorB);
+    m_referenceAngleA=prismatic.m_referenceAngle;
+    m_localAxisC.set(prismatic.m_localXAxisA);
+    Vec2 pC=m_localAnchorC;
+    Rot.mulToOutUnsafe(xfA.q,m_localAnchorA,temp);
+    temp.addLocal(xfA.p).subLocal(xfC.p);
+    Rot.mulTransUnsafe(xfC.q,temp,pA);
+    coordinateA=Vec2.dot(pA.subLocal(pC),m_localAxisC);
+    pool.pushVec2(2);
+  }
+  m_bodyD=m_joint2.getBodyA();
+  m_bodyB=m_joint2.getBodyB();
+  Transform xfB=m_bodyB.m_xf;
+  float aB=m_bodyB.m_sweep.a;
+  Transform xfD=m_bodyD.m_xf;
+  float aD=m_bodyD.m_sweep.a;
+  if (m_typeB == JointType.REVOLUTE) {
+    RevoluteJoint revolute=(RevoluteJoint)def.joint2;
+    m_localAnchorD.set(revolute.m_localAnchorA);
+    m_localAnchorB.set(revolute.m_localAnchorB);
+    m_referenceAngleB=revolute.m_referenceAngle;
+    m_localAxisD.setZero();
+    coordinateB=aB - aD - m_referenceAngleB;
+  }
+ else {
+    Vec2 pB=pool.popVec2();
+    Vec2 temp=pool.popVec2();
+    PrismaticJoint prismatic=(PrismaticJoint)def.joint2;
+    m_localAnchorD.set(prismatic.m_localAnchorA);
+    m_localAnchorB.set(prismatic.m_localAnchorB);
+    m_referenceAngleB=prismatic.m_referenceAngle;
+    m_localAxisD.set(prismatic.m_localXAxisA);
+    Vec2 pD=m_localAnchorD;
+    Rot.mulToOutUnsafe(xfB.q,m_localAnchorB,temp);
+    temp.addLocal(xfB.p).subLocal(xfD.p);
+    Rot.mulTransUnsafe(xfD.q,temp,pB);
+    coordinateB=Vec2.dot(pB.subLocal(pD),m_localAxisD);
+    pool.pushVec2(2);
+  }
+  m_ratio=def.ratio;
+  m_constant=coordinateA + m_ratio * coordinateB;
+  m_impulse=0.0f;
+}

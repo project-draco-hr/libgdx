@@ -3,7 +3,7 @@
   if (isLocked()) {
     return;
   }
-  boolean collideConnected=j.m_collideConnected;
+  boolean collideConnected=j.getCollideConnected();
   if (j.m_prev != null) {
     j.m_prev.m_next=j.m_next;
   }
@@ -13,8 +13,8 @@
   if (j == m_jointList) {
     m_jointList=j.m_next;
   }
-  Body bodyA=j.m_bodyA;
-  Body bodyB=j.m_bodyB;
+  Body bodyA=j.getBodyA();
+  Body bodyB=j.getBodyB();
   bodyA.setAwake(true);
   bodyB.setAwake(true);
   if (j.m_edgeA.prev != null) {

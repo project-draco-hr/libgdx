@@ -13,8 +13,8 @@
       mA=pc.invMassA;
       iA=pc.invIA;
     }
-    float mB=pc.invMassB;
-    float iB=pc.invIB;
+    float mB=0f;
+    float iB=0f;
     if (indexB == toiIndexA || indexB == toiIndexB) {
       mB=pc.invMassB;
       iB=pc.invIB;
@@ -49,9 +49,7 @@
       cB.addLocal(temp.set(P).mulLocal(mB));
       aB+=iB * Vec2.cross(rB,P);
     }
-    m_positions[indexA].c.set(cA);
     m_positions[indexA].a=aA;
-    m_positions[indexB].c.set(cB);
     m_positions[indexB].a=aB;
   }
   return minSeparation >= -1.5f * Settings.linearSlop;

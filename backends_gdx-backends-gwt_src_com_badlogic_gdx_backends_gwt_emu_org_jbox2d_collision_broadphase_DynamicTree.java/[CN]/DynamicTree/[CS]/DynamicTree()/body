@@ -1,14 +1,13 @@
 {
-  m_root=TreeNode.NULL_NODE;
+  m_root=null;
   m_nodeCount=0;
   m_nodeCapacity=16;
-  m_nodes=new TreeNode[16];
-  for (int i=0; i < m_nodeCapacity; i++) {
-    m_nodes[i]=new TreeNode();
-    m_nodes[i].parent=i + 1;
+  m_nodes=new DynamicTreeNode[16];
+  for (int i=m_nodeCapacity - 1; i >= 0; i--) {
+    m_nodes[i]=new DynamicTreeNode(i);
+    m_nodes[i].parent=(i == m_nodeCapacity - 1) ? null : m_nodes[i + 1];
     m_nodes[i].height=-1;
   }
-  m_nodes[m_nodeCapacity - 1].parent=TreeNode.NULL_NODE;
   m_freeList=0;
   m_insertionCount=0;
   for (int i=0; i < drawVecs.length; i++) {

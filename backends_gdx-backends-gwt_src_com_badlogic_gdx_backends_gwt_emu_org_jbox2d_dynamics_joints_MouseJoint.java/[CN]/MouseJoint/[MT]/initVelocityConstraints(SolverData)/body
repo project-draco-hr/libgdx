@@ -1,5 +1,4 @@
 {
-  m_indexA=m_bodyA.m_islandIndex;
   m_indexB=m_bodyB.m_islandIndex;
   m_localCenterB.set(m_bodyB.m_sweep.localCenter);
   m_invMassB=m_bodyB.m_invMass;
@@ -41,7 +40,6 @@
  else {
     m_impulse.setZero();
   }
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(1);
   pool.pushMat22(1);

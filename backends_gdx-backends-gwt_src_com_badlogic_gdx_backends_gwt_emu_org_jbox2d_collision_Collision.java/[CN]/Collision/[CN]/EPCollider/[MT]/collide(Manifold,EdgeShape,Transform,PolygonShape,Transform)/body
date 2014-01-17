@@ -31,53 +31,77 @@
     if (convex1 && convex2) {
       m_front=offset0 >= 0.0f || offset1 >= 0.0f || offset2 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal0);
-        m_upperLimit.set(m_normal2);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal0.x;
+        m_lowerLimit.y=m_normal0.y;
+        m_upperLimit.x=m_normal2.x;
+        m_upperLimit.y=m_normal2.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal1).negateLocal();
-        m_upperLimit.set(m_normal1).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal1.x;
+        m_lowerLimit.y=-m_normal1.y;
+        m_upperLimit.x=-m_normal1.x;
+        m_upperLimit.y=-m_normal1.y;
       }
     }
  else     if (convex1) {
       m_front=offset0 >= 0.0f || (offset1 >= 0.0f && offset2 >= 0.0f);
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal0);
-        m_upperLimit.set(m_normal1);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal0.x;
+        m_lowerLimit.y=m_normal0.y;
+        m_upperLimit.x=m_normal1.x;
+        m_upperLimit.y=m_normal1.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal2).negateLocal();
-        m_upperLimit.set(m_normal1).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal2.x;
+        m_lowerLimit.y=-m_normal2.y;
+        m_upperLimit.x=-m_normal1.x;
+        m_upperLimit.y=-m_normal1.y;
       }
     }
  else     if (convex2) {
       m_front=offset2 >= 0.0f || (offset0 >= 0.0f && offset1 >= 0.0f);
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal1);
-        m_upperLimit.set(m_normal2);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal1.x;
+        m_lowerLimit.y=m_normal1.y;
+        m_upperLimit.x=m_normal2.x;
+        m_upperLimit.y=m_normal2.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal1).negateLocal();
-        m_upperLimit.set(m_normal0).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal1.x;
+        m_lowerLimit.y=-m_normal1.y;
+        m_upperLimit.x=-m_normal0.x;
+        m_upperLimit.y=-m_normal0.y;
       }
     }
  else {
       m_front=offset0 >= 0.0f && offset1 >= 0.0f && offset2 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal1);
-        m_upperLimit.set(m_normal1);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal1.x;
+        m_lowerLimit.y=m_normal1.y;
+        m_upperLimit.x=m_normal1.x;
+        m_upperLimit.y=m_normal1.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal2).negateLocal();
-        m_upperLimit.set(m_normal0).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal2.x;
+        m_lowerLimit.y=-m_normal2.y;
+        m_upperLimit.x=-m_normal0.x;
+        m_upperLimit.y=-m_normal0.y;
       }
     }
   }
@@ -85,27 +109,39 @@
     if (convex1) {
       m_front=offset0 >= 0.0f || offset1 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal0);
-        m_upperLimit.set(m_normal1).negateLocal();
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal0.x;
+        m_lowerLimit.y=m_normal0.y;
+        m_upperLimit.x=-m_normal1.x;
+        m_upperLimit.y=-m_normal1.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal1);
-        m_upperLimit.set(m_normal1).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=m_normal1.x;
+        m_lowerLimit.y=m_normal1.y;
+        m_upperLimit.x=-m_normal1.x;
+        m_upperLimit.y=-m_normal1.y;
       }
     }
  else {
       m_front=offset0 >= 0.0f && offset1 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal1);
-        m_upperLimit.set(m_normal1).negateLocal();
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=m_normal1.x;
+        m_lowerLimit.y=m_normal1.y;
+        m_upperLimit.x=-m_normal1.x;
+        m_upperLimit.y=-m_normal1.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal1);
-        m_upperLimit.set(m_normal0).negateLocal();
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=m_normal1.x;
+        m_lowerLimit.y=m_normal1.y;
+        m_upperLimit.x=-m_normal0.x;
+        m_upperLimit.y=-m_normal0.y;
       }
     }
   }
@@ -113,41 +149,59 @@
     if (convex2) {
       m_front=offset1 >= 0.0f || offset2 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal1).negateLocal();
-        m_upperLimit.set(m_normal2);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=-m_normal1.x;
+        m_lowerLimit.y=-m_normal1.y;
+        m_upperLimit.x=m_normal2.x;
+        m_upperLimit.y=m_normal2.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal1).negateLocal();
-        m_upperLimit.set(m_normal1);
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal1.x;
+        m_lowerLimit.y=-m_normal1.y;
+        m_upperLimit.x=m_normal1.x;
+        m_upperLimit.y=m_normal1.y;
       }
     }
  else {
       m_front=offset1 >= 0.0f && offset2 >= 0.0f;
       if (m_front) {
-        m_normal.set(m_normal1);
-        m_lowerLimit.set(m_normal1).negateLocal();
-        m_upperLimit.set(m_normal1);
+        m_normal.x=m_normal1.x;
+        m_normal.y=m_normal1.y;
+        m_lowerLimit.x=-m_normal1.x;
+        m_lowerLimit.y=-m_normal1.y;
+        m_upperLimit.x=m_normal1.x;
+        m_upperLimit.y=m_normal1.y;
       }
  else {
-        m_normal.set(m_normal1).negateLocal();
-        m_lowerLimit.set(m_normal2).negateLocal();
-        m_upperLimit.set(m_normal1);
+        m_normal.x=-m_normal1.x;
+        m_normal.y=-m_normal1.y;
+        m_lowerLimit.x=-m_normal2.x;
+        m_lowerLimit.y=-m_normal2.y;
+        m_upperLimit.x=m_normal1.x;
+        m_upperLimit.y=m_normal1.y;
       }
     }
   }
  else {
     m_front=offset1 >= 0.0f;
     if (m_front) {
-      m_normal.set(m_normal1);
-      m_lowerLimit.set(m_normal1).negateLocal();
-      m_upperLimit.set(m_normal1).negateLocal();
+      m_normal.x=m_normal1.x;
+      m_normal.y=m_normal1.y;
+      m_lowerLimit.x=-m_normal1.x;
+      m_lowerLimit.y=-m_normal1.y;
+      m_upperLimit.x=-m_normal1.x;
+      m_upperLimit.y=-m_normal1.y;
     }
  else {
-      m_normal.set(m_normal1).negateLocal();
-      m_lowerLimit.set(m_normal1);
-      m_upperLimit.set(m_normal1);
+      m_normal.x=-m_normal1.x;
+      m_normal.y=-m_normal1.y;
+      m_lowerLimit.x=m_normal1.x;
+      m_lowerLimit.y=m_normal1.y;
+      m_upperLimit.x=m_normal1.x;
+      m_upperLimit.y=m_normal1.y;
     }
   }
   m_polygonB.count=polygonB.m_count;
@@ -180,6 +234,8 @@
  else {
     primaryAxis=edgeAxis;
   }
+  final ClipVertex ie0=ie[0];
+  final ClipVertex ie1=ie[1];
   if (primaryAxis.type == EPAxis.Type.EDGE_A) {
     manifold.type=Manifold.ManifoldType.FACE_A;
     int bestIndex=0;
@@ -193,16 +249,16 @@
     }
     int i1=bestIndex;
     int i2=i1 + 1 < m_polygonB.count ? i1 + 1 : 0;
-    ie[0].v.set(m_polygonB.vertices[i1]);
-    ie[0].id.indexA=0;
-    ie[0].id.indexB=(byte)i1;
-    ie[0].id.typeA=(byte)ContactID.Type.FACE.ordinal();
-    ie[0].id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
-    ie[1].v.set(m_polygonB.vertices[i2]);
-    ie[1].id.indexA=0;
-    ie[1].id.indexB=(byte)i2;
-    ie[1].id.typeA=(byte)ContactID.Type.FACE.ordinal();
-    ie[1].id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
+    ie0.v.set(m_polygonB.vertices[i1]);
+    ie0.id.indexA=0;
+    ie0.id.indexB=(byte)i1;
+    ie0.id.typeA=(byte)ContactID.Type.FACE.ordinal();
+    ie0.id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
+    ie1.v.set(m_polygonB.vertices[i2]);
+    ie1.id.indexA=0;
+    ie1.id.indexB=(byte)i2;
+    ie1.id.typeA=(byte)ContactID.Type.FACE.ordinal();
+    ie1.id.typeB=(byte)ContactID.Type.VERTEX.ordinal();
     if (m_front) {
       rf.i1=0;
       rf.i2=1;
@@ -220,16 +276,16 @@
   }
  else {
     manifold.type=Manifold.ManifoldType.FACE_B;
-    ie[0].v.set(m_v1);
-    ie[0].id.indexA=0;
-    ie[0].id.indexB=(byte)primaryAxis.index;
-    ie[0].id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
-    ie[0].id.typeB=(byte)ContactID.Type.FACE.ordinal();
-    ie[1].v.set(m_v2);
-    ie[1].id.indexA=0;
-    ie[1].id.indexB=(byte)primaryAxis.index;
-    ie[1].id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
-    ie[1].id.typeB=(byte)ContactID.Type.FACE.ordinal();
+    ie0.v.set(m_v1);
+    ie0.id.indexA=0;
+    ie0.id.indexB=(byte)primaryAxis.index;
+    ie0.id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
+    ie0.id.typeB=(byte)ContactID.Type.FACE.ordinal();
+    ie1.v.set(m_v2);
+    ie1.id.indexA=0;
+    ie1.id.indexB=(byte)primaryAxis.index;
+    ie1.id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
+    ie1.id.typeB=(byte)ContactID.Type.FACE.ordinal();
     rf.i1=primaryAxis.index;
     rf.i2=rf.i1 + 1 < m_polygonB.count ? rf.i1 + 1 : 0;
     rf.v1.set(m_polygonB.vertices[rf.i1]);

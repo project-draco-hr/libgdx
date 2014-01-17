@@ -13,15 +13,18 @@
     Vec2 vB=m_velocities[indexB].v;
     float wB=m_velocities[indexB].w;
     Vec2 normal=vc.normal;
-    Vec2.crossToOutUnsafe(normal,1.0f,tangent);
+    float tangentx=1.0f * normal.y;
+    float tangenty=-1.0f * normal.x;
     for (int j=0; j < pointCount; ++j) {
       VelocityConstraintPoint vcp=vc.points[j];
-      temp.set(normal).mulLocal(vcp.normalImpulse);
-      P.set(tangent).mulLocal(vcp.tangentImpulse).addLocal(temp);
-      wA-=iA * Vec2.cross(vcp.rA,P);
-      vA.subLocal(temp.set(P).mulLocal(mA));
-      wB+=iB * Vec2.cross(vcp.rB,P);
-      vB.addLocal(temp.set(P).mulLocal(mB));
+      float Px=tangentx * vcp.tangentImpulse + normal.x * vcp.normalImpulse;
+      float Py=tangenty * vcp.tangentImpulse + normal.y * vcp.normalImpulse;
+      wA-=iA * (vcp.rA.x * Py - vcp.rA.y * Px);
+      vA.x-=Px * mA;
+      vA.y-=Py * mA;
+      wB+=iB * (vcp.rB.x * Py - vcp.rB.y * Px);
+      vB.x+=Px * mB;
+      vB.y+=Py * mB;
     }
     m_velocities[indexA].w=wA;
     m_velocities[indexB].w=wB;
