@@ -25,7 +25,6 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    ((AndroidApplication)app).audio.resume();
     Array<LifecycleListener> listeners=((AndroidApplication)app).lifecycleListeners;
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
