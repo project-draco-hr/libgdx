@@ -4,7 +4,18 @@
   SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
   for (  SetterGetterStub stub : setterGetterStubs) {
     if (stub.enclosingType == null || stub.type == null || stub.isFinal || stub.unused)     continue;
-    pc.add(stub.setter,stub.setter + "((" + stub.enclosingType+ ")obj, value);");
+    if (stub.type.equals("float") || stub.type.equals("int") || stub.type.equals("double")|| stub.type.equals("byte")|| stub.type.equals("short")|| stub.type.equals("long")) {
+      pc.add(stub.setter,stub.setter + "((" + stub.enclosingType+ ")obj, ((Number) value)."+ stub.type+ "Value());");
+    }
+ else     if (stub.type.equals("boolean")) {
+      pc.add(stub.setter,stub.setter + "((" + stub.enclosingType+ ")obj, ((Boolean) value).booleanValue());");
+    }
+ else     if (stub.type.equals("char")) {
+      pc.add(stub.setter,stub.setter + "((" + stub.enclosingType+ ")obj, ((Character) value).charValue());");
+    }
+ else {
+      pc.add(stub.setter,stub.setter + "((" + stub.enclosingType+ ")obj, value);");
+    }
   }
   pc.print();
   p("}");
