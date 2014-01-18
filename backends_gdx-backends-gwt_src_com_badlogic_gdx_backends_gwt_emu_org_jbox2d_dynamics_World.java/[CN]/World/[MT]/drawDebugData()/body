@@ -38,6 +38,11 @@
   if ((flags & DebugDraw.e_pairBit) == DebugDraw.e_pairBit) {
     color.set(0.3f,0.9f,0.9f);
     for (Contact c=m_contactManager.m_contactList; c != null; c=c.getNext()) {
+      Fixture fixtureA=c.getFixtureA();
+      Fixture fixtureB=c.getFixtureB();
+      fixtureA.getAABB(c.getChildIndexA()).getCenterToOut(cA);
+      fixtureB.getAABB(c.getChildIndexB()).getCenterToOut(cB);
+      m_debugDraw.drawSegment(cA,cB,color);
     }
   }
   if ((flags & DebugDraw.e_aabbBit) == DebugDraw.e_aabbBit) {

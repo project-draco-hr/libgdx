@@ -62,9 +62,7 @@
     pool.pushVec2(4);
     pool.pushMat22(1);
   }
-  data.positions[m_indexA].c.set(cA);
   data.positions[m_indexA].a=aA;
-  data.positions[m_indexB].c.set(cB);
   data.positions[m_indexB].a=aB;
   pool.pushRot(2);
   return positionError <= Settings.linearSlop && angularError <= Settings.angularSlop;

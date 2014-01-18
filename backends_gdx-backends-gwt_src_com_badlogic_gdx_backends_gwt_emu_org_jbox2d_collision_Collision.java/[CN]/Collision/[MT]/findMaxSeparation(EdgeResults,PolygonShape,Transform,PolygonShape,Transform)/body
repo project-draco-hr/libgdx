@@ -1,15 +1,19 @@
 {
   int count1=poly1.m_count;
   final Vec2[] normals1=poly1.m_normals;
-  Transform.mulToOutUnsafe(xf2,poly2.m_centroid,d);
-  Transform.mulToOutUnsafe(xf1,poly1.m_centroid,temp);
-  d.subLocal(temp);
-  Rot.mulTransUnsafe(xf1.q,d,dLocal1);
-  final float dLocal1x=dLocal1.x;
-  final float dLocal1y=dLocal1.y;
+  final Vec2 poly1centroid=poly1.m_centroid;
+  final Vec2 poly2centroid=poly2.m_centroid;
+  final Rot xf2q=xf2.q;
+  final Rot xf1q=xf1.q;
+  float dx=(xf2q.c * poly2centroid.x - xf2q.s * poly2centroid.y) + xf2.p.x;
+  float dy=(xf2q.s * poly2centroid.x + xf2q.c * poly2centroid.y) + xf2.p.y;
+  dx-=(xf1q.c * poly1centroid.x - xf1q.s * poly1centroid.y) + xf1.p.x;
+  dy-=(xf1q.s * poly1centroid.x + xf1q.c * poly1centroid.y) + xf1.p.y;
+  final float dLocal1x=xf1q.c * dx + xf1q.s * dy;
+  final float dLocal1y=-xf1q.s * dx + xf1q.c * dy;
   int edge=0;
   float dot;
-  float maxDot=Float.MIN_VALUE;
+  float maxDot=-Float.MAX_VALUE;
   for (int i=0; i < count1; i++) {
     final Vec2 normal=normals1[i];
     dot=normal.x * dLocal1x + normal.y * dLocal1y;

@@ -1,7 +1,12 @@
 {
-  int y=(int)x;
-  if (x < 0 && x != y) {
-    y--;
+  if (Settings.FAST_FLOOR) {
+    int y=(int)x;
+    if (x < 0 && x != y) {
+      return y - 1;
+    }
+    return y;
   }
-  return y;
+ else {
+    return (int)Math.floor(x);
+  }
 }

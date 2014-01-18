@@ -1,6 +1,6 @@
 {
   assert(def.bodyA != def.bodyB);
-  pool=argWorldPool;
+  pool=worldPool;
   m_type=def.type;
   m_prev=null;
   m_next=null;
@@ -9,7 +9,6 @@
   m_collideConnected=def.collideConnected;
   m_islandFlag=false;
   m_userData=def.userData;
-  m_index=0;
   m_edgeA=new JointEdge();
   m_edgeA.joint=null;
   m_edgeA.other=null;

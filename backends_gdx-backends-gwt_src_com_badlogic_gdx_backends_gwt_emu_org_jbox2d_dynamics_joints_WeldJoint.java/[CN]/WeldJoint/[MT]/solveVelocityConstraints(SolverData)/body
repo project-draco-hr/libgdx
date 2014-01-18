@@ -49,9 +49,7 @@
     wB+=iB * (Vec2.cross(m_rB,P) + impulse.z);
     pool.pushVec3(2);
   }
-  data.velocities[m_indexA].v.set(vA);
   data.velocities[m_indexA].w=wA;
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(3);
 }

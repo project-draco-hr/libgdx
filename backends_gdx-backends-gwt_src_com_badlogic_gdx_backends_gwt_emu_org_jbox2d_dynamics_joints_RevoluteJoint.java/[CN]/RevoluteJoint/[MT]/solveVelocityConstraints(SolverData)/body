@@ -95,9 +95,7 @@
     wB+=iB * Vec2.cross(m_rB,impulse);
     pool.pushVec2(2);
   }
-  data.velocities[m_indexA].v.set(vA);
   data.velocities[m_indexA].w=wA;
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(1);
 }

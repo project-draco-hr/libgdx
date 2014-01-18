@@ -51,9 +51,7 @@
   cB.x+=m_invMassB * PB.x;
   cB.y+=m_invMassB * PB.y;
   aB+=m_invIB * Vec2.cross(rB,PB);
-  data.positions[m_indexA].c.set(cA);
   data.positions[m_indexA].a=aA;
-  data.positions[m_indexB].c.set(cB);
   data.positions[m_indexB].a=aB;
   pool.pushRot(2);
   pool.pushVec2(7);

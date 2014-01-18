@@ -51,9 +51,8 @@
     final Vec2 f2r=pool.popVec2();
     temp.set(m_K.ez.x,m_K.ez.y).mulLocal(m_impulse.z - f1.z);
     b.set(Cdot1).negateLocal().subLocal(temp);
-    temp.set(f1.x,f1.y);
     m_K.solve22ToOut(b,f2r);
-    f2r.addLocal(temp);
+    f2r.addLocal(f1.x,f1.y);
     m_impulse.x=f2r.x;
     m_impulse.y=f2r.y;
     df.set(m_impulse).subLocal(f1);
@@ -87,19 +86,9 @@
     vB.x+=mB * P.x;
     vB.y+=mB * P.y;
     wB+=iB * LB;
-    final Vec2 Cdot10=pool.popVec2();
-    Cdot10.set(Cdot1);
-    Cdot1.x=Vec2.dot(m_perp,temp.set(vB).subLocal(vA)) + m_s2 * wB - m_s1 * wA;
-    Cdot1.y=wB - wA;
-    if (MathUtils.abs(Cdot1.x) > 0.01f || MathUtils.abs(Cdot1.y) > 0.01f) {
-      Mat33.mul22ToOutUnsafe(m_K,df,temp);
-      Cdot1.x+=0.0f;
-    }
-    pool.pushVec2(3);
+    pool.pushVec2(2);
   }
-  data.velocities[m_indexA].v.set(vA);
   data.velocities[m_indexA].w=wA;
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(2);
 }

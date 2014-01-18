@@ -1,12 +1,17 @@
 {
-  final Vec2 v1=pool1;
-  final Vec2 v2=pool2;
-  Transform.mulToOutUnsafe(xf,m_vertex1,v1);
-  Transform.mulToOutUnsafe(xf,m_vertex2,v2);
-  Vec2.minToOut(v1,v2,aabb.lowerBound);
-  Vec2.maxToOut(v1,v2,aabb.upperBound);
-  aabb.lowerBound.x-=m_radius;
-  aabb.lowerBound.y-=m_radius;
-  aabb.upperBound.x+=m_radius;
-  aabb.upperBound.y+=m_radius;
+  final Vec2 lowerBound=aabb.lowerBound;
+  final Vec2 upperBound=aabb.upperBound;
+  final Rot xfq=xf.q;
+  final float v1x=(xfq.c * m_vertex1.x - xfq.s * m_vertex1.y) + xf.p.x;
+  final float v1y=(xfq.s * m_vertex1.x + xfq.c * m_vertex1.y) + xf.p.y;
+  final float v2x=(xfq.c * m_vertex2.x - xfq.s * m_vertex2.y) + xf.p.x;
+  final float v2y=(xfq.s * m_vertex2.x + xfq.c * m_vertex2.y) + xf.p.y;
+  lowerBound.x=v1x < v2x ? v1x : v2x;
+  lowerBound.y=v1y < v2y ? v1y : v2y;
+  upperBound.x=v1x > v2x ? v1x : v2x;
+  upperBound.y=v1y > v2y ? v1y : v2y;
+  lowerBound.x-=m_radius;
+  lowerBound.y-=m_radius;
+  upperBound.x+=m_radius;
+  upperBound.y+=m_radius;
 }

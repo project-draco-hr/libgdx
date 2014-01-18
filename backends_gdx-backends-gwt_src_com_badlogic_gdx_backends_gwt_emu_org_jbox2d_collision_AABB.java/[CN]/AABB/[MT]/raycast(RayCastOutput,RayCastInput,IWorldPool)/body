@@ -1,5 +1,5 @@
 {
-  float tmin=Float.MIN_VALUE;
+  float tmin=-Float.MAX_VALUE;
   float tmax=Float.MAX_VALUE;
   final Vec2 p=argPool.popVec2();
   final Vec2 d=argPool.popVec2();

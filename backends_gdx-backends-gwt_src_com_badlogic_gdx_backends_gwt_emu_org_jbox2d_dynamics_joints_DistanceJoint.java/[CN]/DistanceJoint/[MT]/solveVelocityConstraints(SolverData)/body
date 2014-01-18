@@ -20,9 +20,7 @@
   vB.x+=m_invMassB * Px;
   vB.y+=m_invMassB * Py;
   wB+=m_invIB * (m_rB.x * Py - m_rB.y * Px);
-  data.velocities[m_indexA].v.set(vA);
   data.velocities[m_indexA].w=wA;
-  data.velocities[m_indexB].v.set(vB);
   data.velocities[m_indexB].w=wB;
   pool.pushVec2(2);
 }

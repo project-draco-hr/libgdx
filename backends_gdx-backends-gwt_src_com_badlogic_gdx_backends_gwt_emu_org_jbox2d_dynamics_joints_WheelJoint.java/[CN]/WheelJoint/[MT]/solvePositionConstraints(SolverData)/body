@@ -1,0 +1,43 @@
+{
+  Vec2 cA=data.positions[m_indexA].c;
+  float aA=data.positions[m_indexA].a;
+  Vec2 cB=data.positions[m_indexB].c;
+  float aB=data.positions[m_indexB].a;
+  final Rot qA=pool.popRot();
+  final Rot qB=pool.popRot();
+  final Vec2 temp=pool.popVec2();
+  qA.set(aA);
+  qB.set(aB);
+  Rot.mulToOut(qA,temp.set(m_localAnchorA).subLocal(m_localCenterA),rA);
+  Rot.mulToOut(qB,temp.set(m_localAnchorB).subLocal(m_localCenterB),rB);
+  d.set(cB).subLocal(cA).addLocal(rB).subLocal(rA);
+  Vec2 ay=pool.popVec2();
+  Rot.mulToOut(qA,m_localYAxisA,ay);
+  float sAy=Vec2.cross(temp.set(d).addLocal(rA),ay);
+  float sBy=Vec2.cross(rB,ay);
+  float C=Vec2.dot(d,ay);
+  float k=m_invMassA + m_invMassB + m_invIA * m_sAy * m_sAy + m_invIB * m_sBy * m_sBy;
+  float impulse;
+  if (k != 0.0f) {
+    impulse=-C / k;
+  }
+ else {
+    impulse=0.0f;
+  }
+  final Vec2 P=pool.popVec2();
+  P.x=impulse * ay.x;
+  P.y=impulse * ay.y;
+  float LA=impulse * sAy;
+  float LB=impulse * sBy;
+  cA.x-=m_invMassA * P.x;
+  cA.y-=m_invMassA * P.y;
+  aA-=m_invIA * LA;
+  cB.x+=m_invMassB * P.x;
+  cB.y+=m_invMassB * P.y;
+  aB+=m_invIB * LB;
+  pool.pushVec2(3);
+  pool.pushRot(2);
+  data.positions[m_indexA].a=aA;
+  data.positions[m_indexB].a=aB;
+  return MathUtils.abs(C) <= Settings.linearSlop;
+}

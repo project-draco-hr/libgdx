@@ -78,7 +78,8 @@
       vcp.normalMass=0;
       vcp.tangentMass=0;
       vcp.velocityBias=0;
-      pc.localPoints[j].set(cp.localPoint);
+      pc.localPoints[j].x=cp.localPoint.x;
+      pc.localPoints[j].y=cp.localPoint.y;
     }
   }
 }

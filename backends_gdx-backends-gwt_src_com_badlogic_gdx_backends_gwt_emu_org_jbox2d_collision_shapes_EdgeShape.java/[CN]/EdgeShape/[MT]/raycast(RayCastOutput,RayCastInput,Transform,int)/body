@@ -1,17 +1,28 @@
 {
-  final Vec2 p1=pool0.set(input.p1).subLocal(xf.p);
-  Rot.mulTrans(xf.q,p1,p1);
-  final Vec2 p2=pool1.set(input.p2).subLocal(xf.p);
-  Rot.mulTrans(xf.q,p1,p1);
-  final Vec2 d=p2.subLocal(p1);
+  float tempx, tempy;
   final Vec2 v1=m_vertex1;
   final Vec2 v2=m_vertex2;
-  final Vec2 normal=pool2.set(v2).subLocal(v1);
-  normal.set(normal.y,-normal.x);
+  final Rot xfq=xf.q;
+  final Vec2 xfp=xf.p;
+  tempx=input.p1.x - xfp.x;
+  tempy=input.p1.y - xfp.y;
+  final float p1x=xfq.c * tempx + xfq.s * tempy;
+  final float p1y=-xfq.s * tempx + xfq.c * tempy;
+  tempx=input.p2.x - xfp.x;
+  tempy=input.p2.y - xfp.y;
+  final float p2x=xfq.c * tempx + xfq.s * tempy;
+  final float p2y=-xfq.s * tempx + xfq.c * tempy;
+  final float dx=p2x - p1x;
+  final float dy=p2y - p1y;
+  normal.x=v2.y - v1.y;
+  normal.y=v1.x - v2.x;
   normal.normalize();
-  pool3.set(v1).subLocal(p1);
-  float numerator=Vec2.dot(normal,pool3);
-  float denominator=Vec2.dot(normal,d);
+  final float normalx=normal.x;
+  final float normaly=normal.y;
+  tempx=v1.x - p1x;
+  tempy=v1.y - p1y;
+  float numerator=normalx * tempx + normaly * tempy;
+  float denominator=normalx * dx + normaly * dy;
   if (denominator == 0.0f) {
     return false;
   }
@@ -19,25 +30,28 @@
   if (t < 0.0f || 1.0f < t) {
     return false;
   }
-  final Vec2 q=pool3;
-  final Vec2 r=pool4;
-  q.set(d).mulLocal(t).addLocal(p1);
-  r.set(v2).subLocal(v1);
-  float rr=Vec2.dot(r,r);
+  final float qx=p1x + t * dx;
+  final float qy=p1y + t * dy;
+  final float rx=v2.x - v1.x;
+  final float ry=v2.y - v1.y;
+  final float rr=rx * rx + ry * ry;
   if (rr == 0.0f) {
     return false;
   }
-  pool5.set(q).subLocal(v1);
-  float s=Vec2.dot(pool5,r) / rr;
+  tempx=qx - v1.x;
+  tempy=qy - v1.y;
+  float s=(tempx * rx + tempy * ry) / rr;
   if (s < 0.0f || 1.0f < s) {
     return false;
   }
   output.fraction=t;
   if (numerator > 0.0f) {
-    output.normal.set(normal).negateLocal();
+    output.normal.x=-normalx;
+    output.normal.y=-normaly;
   }
  else {
-    output.normal.set(normal);
+    output.normal.x=normalx;
+    output.normal.y=normaly;
   }
   return true;
 }

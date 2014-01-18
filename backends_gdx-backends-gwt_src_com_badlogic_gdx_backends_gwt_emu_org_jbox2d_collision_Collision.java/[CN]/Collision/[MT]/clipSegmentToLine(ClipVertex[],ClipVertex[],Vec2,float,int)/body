@@ -1,20 +1,26 @@
 {
   int numOut=0;
-  float distance0=Vec2.dot(normal,vIn[0].v) - offset;
-  float distance1=Vec2.dot(normal,vIn[1].v) - offset;
+  final ClipVertex vIn0=vIn[0];
+  final ClipVertex vIn1=vIn[1];
+  final Vec2 vIn0v=vIn0.v;
+  final Vec2 vIn1v=vIn1.v;
+  float distance0=Vec2.dot(normal,vIn0v) - offset;
+  float distance1=Vec2.dot(normal,vIn1v) - offset;
   if (distance0 <= 0.0f) {
-    vOut[numOut++].set(vIn[0]);
+    vOut[numOut++].set(vIn0);
   }
   if (distance1 <= 0.0f) {
-    vOut[numOut++].set(vIn[1]);
+    vOut[numOut++].set(vIn1);
   }
   if (distance0 * distance1 < 0.0f) {
     float interp=distance0 / (distance0 - distance1);
-    vOut[numOut].v.set(vIn[1].v).subLocal(vIn[0].v).mulLocal(interp).addLocal(vIn[0].v);
-    vOut[numOut].id.indexA=(byte)vertexIndexA;
-    vOut[numOut].id.indexB=vIn[0].id.indexB;
-    vOut[numOut].id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
-    vOut[numOut].id.typeB=(byte)ContactID.Type.FACE.ordinal();
+    ClipVertex vOutNO=vOut[numOut];
+    vOutNO.v.x=vIn0v.x + interp * (vIn1v.x - vIn0v.x);
+    vOutNO.v.y=vIn0v.y + interp * (vIn1v.y - vIn0v.y);
+    vOutNO.id.indexA=(byte)vertexIndexA;
+    vOutNO.id.indexB=vIn0.id.indexB;
+    vOutNO.id.typeA=(byte)ContactID.Type.VERTEX.ordinal();
+    vOutNO.id.typeB=(byte)ContactID.Type.FACE.ordinal();
     ++numOut;
   }
   return numOut;

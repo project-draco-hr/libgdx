@@ -28,9 +28,7 @@
   cB.x+=m_invMassB * Px;
   cB.y+=m_invMassB * Py;
   aB+=m_invIB * (rB.x * Py - rB.y * Px);
-  data.positions[m_indexA].c.set(cA);
   data.positions[m_indexA].a=aA;
-  data.positions[m_indexB].c.set(cB);
   data.positions[m_indexB].a=aB;
   pool.pushVec2(3);
   pool.pushRot(2);
