@@ -8,12 +8,18 @@
   lastDir=dir;
   int index=0;
   for (  ParticleEmitter emitter : editor.effect.getEmitters())   emitter.setName((String)emitterTableModel.getValueAt(index++,0));
+  File outputFile=new File(dir,file);
+  Writer fileWriter=null;
   try {
-    editor.effect.save(new File(dir,file));
+    fileWriter=new FileWriter(outputFile);
+    editor.effect.save(fileWriter);
   }
  catch (  Exception ex) {
-    System.out.println("Error saving effect: " + new File(dir,file).getAbsolutePath());
+    System.out.println("Error saving effect: " + outputFile.getAbsolutePath());
     ex.printStackTrace();
     JOptionPane.showMessageDialog(editor,"Error saving effect.");
+  }
+ finally {
+    StreamUtils.closeQuietly(fileWriter);
   }
 }
