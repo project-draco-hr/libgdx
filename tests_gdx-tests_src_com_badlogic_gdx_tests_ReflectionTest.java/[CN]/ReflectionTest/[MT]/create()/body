@@ -14,9 +14,23 @@
     println("Multiplied by 2; " + mMul.invoke(fromCopyConstructor,2));
     Method mNor=ClassReflection.getMethod(Vector2.class,"nor");
     println("Normalized: " + mNor.invoke(fromCopyConstructor));
-    println("JSON serialized: " + new Json().toJson(fromCopyConstructor));
+    Vector2 fieldCopy=new Vector2();
+    Field fx=ClassReflection.getField(Vector2.class,"x");
+    Field fy=ClassReflection.getField(Vector2.class,"y");
+    fx.set(fieldCopy,fx.get(fromCopyConstructor));
+    fy.set(fieldCopy,fy.get(fromCopyConstructor));
+    println("Copied field by field: " + fieldCopy);
+    Json json=new Json();
+    String jsonString=json.toJson(fromCopyConstructor);
+    Vector2 fromJson=json.fromJson(Vector2.class,jsonString);
+    println("JSON serialized: " + jsonString);
+    println("JSON deserialized: " + fromJson);
+    fromJson.x+=1;
+    fromJson.y+=1;
+    println("JSON deserialized + 1/1: " + fromJson);
   }
  catch (  Exception e) {
-    message="FAILED: " + e.getMessage();
+    message="FAILED: " + e.getMessage() + "\n";
+    message+=e.getClass();
   }
 }
