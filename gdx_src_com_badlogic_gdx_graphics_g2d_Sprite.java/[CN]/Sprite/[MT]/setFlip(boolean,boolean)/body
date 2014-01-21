@@ -1,10 +1,10 @@
 {
   boolean performX=false;
   boolean performY=false;
-  if (flipX != x) {
+  if (isFlipX() != x) {
     performX=true;
   }
-  if (flipY != y) {
+  if (isFlipY() != y) {
     performY=true;
   }
   flip(performX,performY);
