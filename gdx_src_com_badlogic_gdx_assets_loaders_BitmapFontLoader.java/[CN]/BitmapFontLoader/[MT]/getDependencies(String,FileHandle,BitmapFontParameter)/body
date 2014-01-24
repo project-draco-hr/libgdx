@@ -1,5 +1,5 @@
 {
-  Array<AssetDescriptor> deps=Array.of(AssetDescriptor.class);
+  Array<AssetDescriptor> deps=new Array();
   if (parameter != null && parameter.bitmapFontData != null) {
     data=parameter.bitmapFontData;
     return deps;
