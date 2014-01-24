@@ -1,0 +1,4 @@
+{
+  Exception e=new GdxRuntimeException("ERROR: cannot open URI on a headless application");
+  e.printStackTrace();
+}
