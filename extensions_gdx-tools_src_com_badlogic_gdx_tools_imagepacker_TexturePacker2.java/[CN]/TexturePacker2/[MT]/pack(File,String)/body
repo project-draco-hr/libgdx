@@ -1,7 +1,7 @@
 {
   outputDir.mkdirs();
   if (packFileName.indexOf('.') == -1)   packFileName+=".atlas";
-  Array<Page> pages=maxRectsPacker.pack(imageProcessor.getImages());
+  Array<Page> pages=packer.pack(imageProcessor.getImages());
   writeImages(outputDir,pages,packFileName);
   try {
     writePackFile(outputDir,pages,packFileName);
