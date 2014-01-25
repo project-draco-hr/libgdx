@@ -1,3 +1,3 @@
 {
-  return new Headless(protocol,host,port,hints);
+  return new NetJavaSocketImpl(protocol,host,port,hints);
 }
