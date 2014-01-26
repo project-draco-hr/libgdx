@@ -1,0 +1,4 @@
+{
+  if (iterable == null)   iterable=new ReadonlyIterable<VertexAttribute>(attributes);
+  return iterable.iterator();
+}
