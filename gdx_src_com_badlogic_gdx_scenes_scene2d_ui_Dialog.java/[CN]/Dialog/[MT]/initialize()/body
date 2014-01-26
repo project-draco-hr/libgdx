@@ -6,7 +6,7 @@
   add(buttonTable=new Table(skin));
   contentTable.defaults().space(6);
   buttonTable.defaults().space(6);
-  buttonTable.addListener(new ChangeListener(){
+  buttonTable.addCaptureListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
       if (!values.containsKey(actor))       return;
       while (actor.getParent() != buttonTable)       actor=actor.getParent();
