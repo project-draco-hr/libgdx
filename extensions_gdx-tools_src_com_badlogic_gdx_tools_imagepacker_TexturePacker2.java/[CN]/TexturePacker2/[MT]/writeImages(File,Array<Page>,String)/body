@@ -25,7 +25,7 @@
     }
     width=Math.max(settings.minWidth,width);
     height=Math.max(settings.minHeight,height);
-    if (settings.forceSquareOutput) {
+    if (settings.square) {
       if (width > height) {
         height=width;
       }
