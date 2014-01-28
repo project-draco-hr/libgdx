@@ -1,4 +1,10 @@
 {
   if (scroll == null || scroll.getParent() == null)   return;
+  Stage stage=scroll.getStage();
+  if (stage != null) {
+    if (previousScrollFocus != null && previousScrollFocus.getStage() == null)     previousScrollFocus=null;
+    Actor actor=stage.getScrollFocus();
+    if (actor == null || actor.isDescendantOf(scroll))     stage.setScrollFocus(previousScrollFocus);
+  }
   scroll.addAction(sequence(fadeOut(0.15f,Interpolation.fade),removeActor()));
 }
