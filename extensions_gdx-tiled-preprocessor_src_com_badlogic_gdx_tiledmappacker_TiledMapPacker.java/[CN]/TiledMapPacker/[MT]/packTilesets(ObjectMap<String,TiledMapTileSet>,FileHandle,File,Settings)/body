@@ -3,7 +3,7 @@
   Vector2 tileLocation;
   TileSetLayout packerTileSet;
   Graphics g;
-  packer=new TexturePacker2(texturePackerSettings);
+  packer=new TexturePacker(texturePackerSettings);
   for (  TiledMapTileSet set : sets.values()) {
     String tilesetName=set.getName();
     System.out.println("Processing tileset " + tilesetName);
