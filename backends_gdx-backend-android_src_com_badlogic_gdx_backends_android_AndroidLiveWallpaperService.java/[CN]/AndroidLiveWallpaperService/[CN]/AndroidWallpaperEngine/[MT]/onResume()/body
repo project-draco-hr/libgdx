@@ -15,5 +15,8 @@
     if (visibleEngines == 1)     app.onResume();
     notifyPreviewState();
     notifyOffsetsChanged();
+    if (!Gdx.graphics.isContinuousRendering()) {
+      Gdx.graphics.requestRendering();
+    }
   }
 }
