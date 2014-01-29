@@ -28,5 +28,8 @@
   clearActions();
   getColor().a=0;
   addAction(fadeIn(0.3f,Interpolation.fade));
+  previousScrollFocus=null;
+  Actor actor=stage.getScrollFocus();
+  if (actor != null && !actor.isDescendantOf(this))   previousScrollFocus=actor;
   stage.setScrollFocus(this);
 }
