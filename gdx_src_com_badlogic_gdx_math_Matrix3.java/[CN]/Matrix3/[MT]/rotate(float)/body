@@ -1,17 +1,3 @@
 {
-  if (degrees == 0)   return this;
-  degrees=DEGREE_TO_RAD * degrees;
-  float cos=(float)Math.cos(degrees);
-  float sin=(float)Math.sin(degrees);
-  tmp[M00]=cos;
-  tmp[M10]=sin;
-  tmp[M20]=0;
-  tmp[M01]=-sin;
-  tmp[M11]=cos;
-  tmp[M21]=0;
-  tmp[M02]=0;
-  tmp[M12]=0;
-  tmp[M22]=1;
-  mul(val,tmp);
-  return this;
+  return rotateRad(DEGREE_TO_RAD * degrees);
 }
