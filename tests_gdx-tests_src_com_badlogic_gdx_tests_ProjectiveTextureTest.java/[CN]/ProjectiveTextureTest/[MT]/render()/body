@@ -15,6 +15,7 @@
   }
   projTexShader.end();
   fps.setText("fps: " + Gdx.graphics.getFramesPerSecond());
+  ui.act();
   ui.draw();
   Table.drawDebug(ui);
 }
