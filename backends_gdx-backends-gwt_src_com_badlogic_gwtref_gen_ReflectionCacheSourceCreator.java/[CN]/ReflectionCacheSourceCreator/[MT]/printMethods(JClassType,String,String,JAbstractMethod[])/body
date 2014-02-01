@@ -17,7 +17,7 @@
         stub.returnType=stub.enclosingType;
       }
       stub.jnsi="";
-      stub.methodId="m" + (nextStub++);
+      stub.methodId=nextId();
       stub.name=m.getName();
       methodStubs.add(stub);
       pb("new " + methodType + "(\""+ m.getName()+ "\", ");
@@ -32,7 +32,7 @@
         }
       }
       pb("}, ");
-      pb(stub.isAbstract + ", " + stub.isFinal+ ", "+ stub.isStatic+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ stub.isNative+ ", "+ m.isVarArgs()+ ", "+ stub.isMethod+ ", "+ stub.isConstructor+ ", "+ "\""+ stub.methodId+ "\""+ "),");
+      pb(stub.isAbstract + ", " + stub.isFinal+ ", "+ stub.isStatic+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ stub.isNative+ ", "+ m.isVarArgs()+ ", "+ stub.isMethod+ ", "+ stub.isConstructor+ ", "+ stub.methodId+ "),");
     }
     pb("};");
   }
