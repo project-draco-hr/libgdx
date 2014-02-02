@@ -1,5 +1,5 @@
 {
-  if (methodTypes != null) {
+  if (methodTypes != null && methodTypes.length > 0) {
     pb(varName + "." + methodType.toLowerCase()+ "s = new "+ methodType+ "[] {");
     for (    JAbstractMethod m : methodTypes) {
       MethodStub stub=new MethodStub();
@@ -20,18 +20,24 @@
       stub.methodId=nextId();
       stub.name=m.getName();
       methodStubs.add(stub);
-      pb("new " + methodType + "(\""+ m.getName()+ "\", ");
-      pb(stub.enclosingType + ", ");
-      pb(stub.returnType + ", ");
-      pb("new Parameter[] {");
-      if (m.getParameters() != null) {
+      pbn("    new " + methodType + "(\""+ m.getName()+ "\", ");
+      pbn(stub.enclosingType + ", ");
+      pbn(stub.returnType + ", ");
+      if (m.getParameters() != null && m.getParameters().length > 0) {
+        pbn("new Parameter[] {");
         for (        JParameter p : m.getParameters()) {
           stub.parameterTypes.add(getType(p.getType()));
           stub.jnsi+=p.getType().getErasedType().getJNISignature();
-          pb("new Parameter(\"" + p.getName() + "\", "+ getType(p.getType())+ ", \""+ p.getType().getJNISignature()+ "\"), ");
+          String paramName=(p.getName() + "__" + p.getType().getErasedType().getJNISignature()).replaceAll("[/;\\[\\]]","_");
+          String paramInstantiation="new Parameter(\"" + p.getName() + "\", "+ getType(p.getType())+ ", \""+ p.getType().getJNISignature()+ "\")";
+          parameterName2ParameterInstantiation.put(paramName,paramInstantiation);
+          pbn(paramName + ", ");
         }
+        pbn("}, ");
       }
-      pb("}, ");
+ else {
+        pbn("EMPTY_PARAMETERS,");
+      }
       pb(stub.isAbstract + ", " + stub.isFinal+ ", "+ stub.isStatic+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ stub.isNative+ ", "+ m.isVarArgs()+ ", "+ stub.isMethod+ ", "+ stub.isConstructor+ ", "+ stub.methodId+ "),");
     }
     pb("};");

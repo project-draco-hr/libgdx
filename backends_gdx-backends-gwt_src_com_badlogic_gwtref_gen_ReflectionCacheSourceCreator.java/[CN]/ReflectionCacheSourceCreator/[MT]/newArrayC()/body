@@ -1,6 +1,5 @@
 {
-  p("public Object newArray (Class componentType, int size) {");
-  p("    Type t = forName(componentType.getName().replace('$', '.'));");
+  p("public Object newArray (Type t, int size) {");
   p("    if (t != null) {");
   SwitchedCodeBlock pc=new SwitchedCodeBlock("t.id");
   for (  JType type : types) {
@@ -15,6 +14,6 @@
   }
   pc.print();
   p("    }");
-  p("    throw new RuntimeException(\"Couldn't create array with element type \" + componentType.getName());");
+  p("    throw new RuntimeException(\"Couldn't create array\");");
   p("}");
 }
