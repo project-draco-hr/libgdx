@@ -1,4 +1,3 @@
 {
-  super(initialCapacity);
-  constructor=findConstructor(type);
+  this(type,initialCapacity,Integer.MAX_VALUE);
 }

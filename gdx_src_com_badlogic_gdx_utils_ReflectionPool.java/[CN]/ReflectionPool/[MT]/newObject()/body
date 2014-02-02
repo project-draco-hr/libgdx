@@ -1,5 +1,4 @@
 {
-  if (constructor == null)   throw new RuntimeException("Class cannot be created (missing no-arg constructor): " + constructor.getDeclaringClass().getName());
   try {
     return (T)constructor.newInstance((Object[])null);
   }
