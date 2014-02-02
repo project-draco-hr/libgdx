@@ -14,6 +14,7 @@
   gatherTypes(typeOracle.findType("java.lang.String").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Boolean").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Byte").getErasedType(),types);
+  gatherTypes(typeOracle.findType("java.lang.Long").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Character").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Short").getErasedType(),types);
   gatherTypes(typeOracle.findType("java.lang.Integer").getErasedType(),types);
@@ -41,7 +42,7 @@
   p("}");
   Collections.sort(setterGetterStubs,new Comparator<SetterGetterStub>(){
     @Override public int compare(    SetterGetterStub o1,    SetterGetterStub o2){
-      return (o1.enclosingType + o1.name).compareTo(o2.enclosingType + o2.name);
+      return new Integer(o1.setter).compareTo(o2.setter);
     }
   }
 );
@@ -52,7 +53,7 @@
   }
   Collections.sort(methodStubs,new Comparator<MethodStub>(){
     @Override public int compare(    MethodStub o1,    MethodStub o2){
-      return (o1.enclosingType + o1.name).compareTo(o2.enclosingType + o2.name);
+      return new Integer(o1.methodId).compareTo(o2.methodId);
     }
   }
 );

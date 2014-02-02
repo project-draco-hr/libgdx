@@ -15,13 +15,12 @@
   stub.enclosingType=stub.enclosingType.replace(".class","");
   stub.type=stub.type.replace(".class","");
   pb("// " + stub.enclosingType + "#"+ stub.name);
-  pbn("private native " + stub.type + " "+ stub.getter+ "("+ stub.enclosingType+ " obj) /*-{");
+  pbn("private native " + stub.type + " g"+ stub.getter+ "("+ stub.enclosingType+ " obj) /*-{");
   if (stub.isStatic)   pbn("return @" + stub.enclosingType + "::"+ stub.name+ ";");
  else   pbn("return obj.@" + stub.enclosingType + "::"+ stub.name+ ";");
   pb("}-*/;");
   if (!stub.isFinal) {
-    String vType=isPrimitive(stub.type) ? stub.type : "Object";
-    pbn("private native void " + stub.setter + "("+ stub.enclosingType+ " obj, "+ vType+ " value)  /*-{");
+    pbn("private native void s" + stub.setter + "("+ stub.enclosingType+ " obj, "+ stub.type+ " value)  /*-{");
     if (stub.isStatic)     pbn("@" + stub.enclosingType + "::"+ stub.name+ " = value");
  else     pbn("obj.@" + stub.enclosingType + "::"+ stub.name+ " = value;");
     pb("}-*/;");

@@ -1,0 +1,55 @@
+{
+  if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before draw.");
+  final short[] triangles=this.triangles;
+  final float[] vertices=this.vertices;
+  if (texture != lastTexture)   switchTexture(texture);
+ else   if (triangleIndex + 6 > triangles.length || vertexIndex + SPRITE_SIZE > vertices.length)   flush();
+  int triangleIndex=this.triangleIndex;
+  final int startVertex=vertexIndex / VERTEX_SIZE;
+  triangles[triangleIndex++]=(short)startVertex;
+  triangles[triangleIndex++]=(short)(startVertex + 1);
+  triangles[triangleIndex++]=(short)(startVertex + 2);
+  triangles[triangleIndex++]=(short)(startVertex + 2);
+  triangles[triangleIndex++]=(short)(startVertex + 3);
+  triangles[triangleIndex++]=(short)startVertex;
+  this.triangleIndex=triangleIndex;
+  float u=srcX * invTexWidth;
+  float v=(srcY + srcHeight) * invTexHeight;
+  float u2=(srcX + srcWidth) * invTexWidth;
+  float v2=srcY * invTexHeight;
+  final float fx2=x + width;
+  final float fy2=y + height;
+  if (flipX) {
+    float tmp=u;
+    u=u2;
+    u2=tmp;
+  }
+  if (flipY) {
+    float tmp=v;
+    v=v2;
+    v2=tmp;
+  }
+  float color=this.color;
+  int idx=this.vertexIndex;
+  vertices[idx++]=x;
+  vertices[idx++]=y;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx++]=v;
+  vertices[idx++]=x;
+  vertices[idx++]=fy2;
+  vertices[idx++]=color;
+  vertices[idx++]=u;
+  vertices[idx++]=v2;
+  vertices[idx++]=fx2;
+  vertices[idx++]=fy2;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx++]=v2;
+  vertices[idx++]=fx2;
+  vertices[idx++]=y;
+  vertices[idx++]=color;
+  vertices[idx++]=u2;
+  vertices[idx++]=v;
+  this.vertexIndex=idx;
+}

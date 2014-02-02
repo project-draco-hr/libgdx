@@ -4,6 +4,8 @@
   FloatArray array=(FloatArray)object;
   int n=size;
   if (n != array.size)   return false;
-  for (int i=0; i < n; i++)   if (items[i] != array.items[i])   return false;
+  float[] items=this.items;
+  float[] arrayItems=array.items;
+  for (int i=0; i < n; i++)   if (items[i] != arrayItems[i])   return false;
   return true;
 }

@@ -1,7 +1,6 @@
 {
   p("public Object invoke(Method m, Object obj, Object[] params) {");
-  p("    String param = m.methodId;");
-  SwitchedCodeBlocks pc=new SwitchedCodeBlocks();
+  SwitchedCodeBlock pc=new SwitchedCodeBlock("m.methodId");
   int subN=0;
   int nDispatch=0;
   for (  MethodStub stub : methodStubs) {
@@ -18,26 +17,18 @@
     }
     if (!paramsOk)     continue;
     buffer.setLength(0);
-    if (stub.returnType.equals("void")) {
-      pbn("      " + stub.methodId + "(");
-      addParameters(stub);
-      pbn(");");
-      pbn(" return null;");
-    }
- else {
-      pbn("      return " + stub.methodId + "(");
-      addParameters(stub);
-      pbn(");");
-    }
+    pbn("return m" + stub.methodId + "(");
+    addParameters(stub);
+    pbn(");");
     pc.add(stub.methodId,buffer.toString());
     nDispatch++;
     if (nDispatch > 1000) {
       pc.print();
-      pc=new SwitchedCodeBlocks();
+      pc=new SwitchedCodeBlock("m.methodId");
       subN++;
-      p("   return invoke" + subN + "(m, obj, params, param);");
+      p("   return invoke" + subN + "(m, obj, params);");
       p("}");
-      p("public Object invoke" + subN + "(Method m, Object obj, Object[] params, String param) {");
+      p("public Object invoke" + subN + "(Method m, Object obj, Object[] params) {");
       nDispatch=0;
     }
   }
