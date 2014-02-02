@@ -2,8 +2,11 @@
   buffer.setLength(0);
   String varName="t";
   if (t instanceof JPrimitiveType)   varName="p";
+  int id=nextId();
+  typeNames2typeIds.put(t.getErasedType().getQualifiedSourceName(),id);
   pb("Type " + varName + " = new Type();");
   pb(varName + ".name = \"" + t.getErasedType().getQualifiedSourceName()+ "\";");
+  pb(varName + ".id = " + id+ ";");
   pb(varName + ".clazz = " + t.getErasedType().getQualifiedSourceName()+ ".class;");
   if (t instanceof JClassType) {
     JClassType c=(JClassType)t;
@@ -27,10 +30,10 @@
       for (      JField f : c.getFields()) {
         String enclosingType=getType(c);
         String fieldType=getType(f.getType());
-        String setter="s" + (nextStub++);
-        String getter="g" + (nextStub++);
+        int setter=nextId();
+        int getter=nextId();
         String elementType=getElementTypes(f);
-        pb("new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ "\""+ getter+ "\", "+ "\""+ setter+ "\", "+ elementType+ "), ");
+        pb("new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ getter+ ", "+ setter+ ", "+ elementType+ "), ");
         SetterGetterStub stub=new SetterGetterStub();
         stub.name=f.getName();
         stub.enclosingType=enclosingType;
