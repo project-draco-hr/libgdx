@@ -32,25 +32,25 @@ synchronized (listeners) {
         listener.resume();
       }
     }
-    app.listener.resume();
+    app.getApplicationListener().resume();
     Gdx.app.log("AndroidGraphics","resumed");
   }
   if (lrunning) {
-synchronized (app.runnables) {
-      app.executedRunnables.clear();
-      app.executedRunnables.addAll(app.runnables);
-      app.runnables.clear();
+synchronized (app.getRunnables()) {
+      app.getExecutedRunnables().clear();
+      app.getExecutedRunnables().addAll(app.getRunnables());
+      app.getRunnables().clear();
     }
-    for (int i=0; i < app.executedRunnables.size; i++) {
+    for (int i=0; i < app.getExecutedRunnables().size; i++) {
       try {
-        app.executedRunnables.get(i).run();
+        app.getExecutedRunnables().get(i).run();
       }
  catch (      Throwable t) {
         t.printStackTrace();
       }
     }
-    app.input.processEvents();
-    app.listener.render();
+    ((AndroidInput)app.getInput()).processEvents();
+    app.getApplicationListener().render();
   }
   if (lpause) {
     Array<LifecycleListener> listeners=((AndroidApplication)app).lifecycleListeners;
@@ -59,7 +59,7 @@ synchronized (listeners) {
         listener.pause();
       }
     }
-    app.listener.pause();
+    app.getApplicationListener().pause();
     ((AndroidApplication)app).audio.pause();
     Gdx.app.log("AndroidGraphics","paused");
   }
@@ -70,7 +70,7 @@ synchronized (listeners) {
         listener.dispose();
       }
     }
-    app.listener.dispose();
+    app.getApplicationListener().dispose();
     ((AndroidApplication)app).audio.dispose();
     ((AndroidApplication)app).audio=null;
     Gdx.app.log("AndroidGraphics","destroyed");

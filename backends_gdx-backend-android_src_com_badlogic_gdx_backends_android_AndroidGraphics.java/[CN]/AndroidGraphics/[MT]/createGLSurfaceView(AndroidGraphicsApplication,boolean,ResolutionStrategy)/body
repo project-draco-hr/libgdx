@@ -1,7 +1,7 @@
 {
   EGLConfigChooser configChooser=getEglConfigChooser();
   if (useGL2 && checkGL20()) {
-    GLSurfaceView20 view=new GLSurfaceView20(activity,resolutionStrategy);
+    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy);
     if (configChooser != null)     view.setEGLConfigChooser(configChooser);
  else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
     view.setRenderer(this);
@@ -12,7 +12,7 @@
     configChooser=getEglConfigChooser();
     int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
     if (sdkVersion >= 11) {
-      GLSurfaceView view=new GLSurfaceView(activity){
+      GLSurfaceView view=new GLSurfaceView(application.getContext()){
         @Override protected void onMeasure(        int widthMeasureSpec,        int heightMeasureSpec){
           ResolutionStrategy.MeasuredDimension measures=resolutionStrategy.calcMeasures(widthMeasureSpec,heightMeasureSpec);
           setMeasuredDimension(measures.width,measures.height);
@@ -47,14 +47,14 @@
     }
  else {
       if (config.useGLSurfaceViewAPI18) {
-        GLSurfaceViewAPI18 view=new GLSurfaceViewAPI18(activity,resolutionStrategy);
+        GLSurfaceViewAPI18 view=new GLSurfaceViewAPI18(application.getContext(),resolutionStrategy);
         if (configChooser != null)         view.setEGLConfigChooser(configChooser);
  else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
         view.setRenderer(this);
         return view;
       }
  else {
-        GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(activity,resolutionStrategy);
+        GLSurfaceViewCupcake view=new GLSurfaceViewCupcake(application.getContext(),resolutionStrategy);
         if (configChooser != null)         view.setEGLConfigChooser(configChooser);
  else         view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
         view.setRenderer(this);
