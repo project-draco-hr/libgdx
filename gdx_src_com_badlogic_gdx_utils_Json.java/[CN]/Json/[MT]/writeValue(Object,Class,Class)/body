@@ -93,6 +93,7 @@
     }
     if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
       if (knownType == null || !knownType.equals(actualType)) {
+        if (actualType.isAnonymousClass())         actualType=actualType.getSuperclass();
         writeObjectStart(actualType,null);
         writer.name("value");
         writer.value(value);
