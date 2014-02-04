@@ -1,4 +1,9 @@
 {
-  setButtonDisabled(false);
-  statusLabel.setText("HTTP request cancelled");
+  Gdx.app.postRunnable(new Runnable(){
+    public void run(){
+      setButtonDisabled(false);
+      statusLabel.setText("HTTP request cancelled");
+    }
+  }
+);
 }
