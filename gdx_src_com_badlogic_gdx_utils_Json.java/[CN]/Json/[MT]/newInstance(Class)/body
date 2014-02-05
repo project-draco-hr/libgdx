@@ -11,11 +11,9 @@
  catch (    SecurityException ignored) {
     }
 catch (    ReflectionException ignored) {
-      if (type.isEnum()) {
+      if (ClassReflection.isAssignableFrom(Enum.class,type)) {
+        if (type.getEnumConstants() == null)         type=type.getSuperclass();
         return type.getEnumConstants()[0];
-      }
-      if (type.isAnonymousClass() && type.getSuperclass().isEnum()) {
-        return type.getSuperclass().getEnumConstants()[0];
       }
       if (type.isArray())       throw new SerializationException("Encountered JSON object when expected array of type: " + type.getName(),ex);
  else       if (ClassReflection.isMemberClass(type) && !ClassReflection.isStaticClass(type))       throw new SerializationException("Class cannot be created (non-static member class): " + type.getName(),ex);
