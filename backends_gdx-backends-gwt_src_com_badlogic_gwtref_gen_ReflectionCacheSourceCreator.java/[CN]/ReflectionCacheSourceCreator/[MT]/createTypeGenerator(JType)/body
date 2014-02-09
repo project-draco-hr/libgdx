@@ -52,9 +52,9 @@
       }
       pb("};");
     }
-    printMethods(c,varName,"Method",c.getMethods());
-    if (!c.isAbstract() && (c.getEnclosingType() == null || c.isStatic())) {
-      printMethods(c,varName,"Constructor",c.getConstructors());
+    createTypeInvokables(c,varName,"Method",c.getMethods());
+    if (c.isPublic() && !c.isAbstract() && (c.getEnclosingType() == null || c.isStatic())) {
+      createTypeInvokables(c,varName,"Constructor",c.getConstructors());
     }
  else {
       logger.log(Type.INFO,c.getName() + " can't be instantiated. Constructors not generated");

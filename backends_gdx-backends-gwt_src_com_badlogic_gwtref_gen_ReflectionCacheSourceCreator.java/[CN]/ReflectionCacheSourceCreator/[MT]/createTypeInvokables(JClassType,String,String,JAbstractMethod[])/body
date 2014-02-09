@@ -3,6 +3,7 @@
     pb(varName + "." + methodType.toLowerCase()+ "s = new "+ methodType+ "[] {");
     for (    JAbstractMethod m : methodTypes) {
       MethodStub stub=new MethodStub();
+      stub.isPublic=m.isPublic();
       stub.enclosingType=getType(c);
       if (m.isMethod() != null) {
         stub.isMethod=true;
@@ -13,6 +14,14 @@
         stub.isFinal=m.isMethod().isFinal();
       }
  else {
+        if (m.isPrivate() || m.isDefaultAccess()) {
+          logger.log(Type.INFO,"Skipping non-visible constructor for class " + c.getName());
+          continue;
+        }
+        if (m.getEnclosingType().isFinal() && !m.isPublic()) {
+          logger.log(Type.INFO,"Skipping non-public constructor for final class" + c.getName());
+          continue;
+        }
         stub.isConstructor=true;
         stub.returnType=stub.enclosingType;
       }
