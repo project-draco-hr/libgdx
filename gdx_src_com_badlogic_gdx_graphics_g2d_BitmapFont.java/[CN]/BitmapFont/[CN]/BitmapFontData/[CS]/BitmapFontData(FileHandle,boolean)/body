@@ -99,7 +99,9 @@
       Glyph glyph=getGlyph((char)first);
       tokens.nextToken();
       int amount=Integer.parseInt(tokens.nextToken());
-      glyph.setKerning(second,amount);
+      if (glyph != null) {
+        glyph.setKerning(second,amount);
+      }
     }
     Glyph spaceGlyph=getGlyph(' ');
     if (spaceGlyph == null) {

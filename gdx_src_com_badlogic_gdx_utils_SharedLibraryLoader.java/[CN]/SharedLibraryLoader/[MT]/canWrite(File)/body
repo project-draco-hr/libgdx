@@ -1,5 +1,5 @@
 {
-  if (file.canWrite())   return true;
+  if (file.canWrite() && file.canExecute())   return true;
   File parent=file.getParentFile();
   parent.mkdirs();
   if (!parent.isDirectory())   return false;

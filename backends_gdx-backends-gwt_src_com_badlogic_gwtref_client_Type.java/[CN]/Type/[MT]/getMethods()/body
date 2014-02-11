@@ -1,14 +1,14 @@
 {
-  ArrayList<Method> allMethods=new ArrayList<Method>();
-  Type t=this;
-  while (t != null) {
-    Method[] declMethods=t.getDeclaredMethods();
-    if (declMethods != null) {
-      for (      Method m : declMethods) {
-        if (m.isPublic())         allMethods.add(m);
+  if (allMethods == null) {
+    ArrayList<Method> allMethodsList=new ArrayList<Method>();
+    Type t=this;
+    while (t != null) {
+      for (      Method m : t.methods) {
+        if (m.isPublic())         allMethodsList.add(m);
       }
+      t=t.getSuperclass();
     }
-    t=t.getSuperclass();
+    allMethods=allMethodsList.toArray(new Method[allMethodsList.size()]);
   }
-  return allMethods.toArray(new Method[allMethods.size()]);
+  return allMethods;
 }

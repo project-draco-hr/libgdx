@@ -30,4 +30,7 @@
   }
   notifyPreviewState();
   notifyOffsetsChanged();
+  if (!Gdx.graphics.isContinuousRendering()) {
+    Gdx.graphics.requestRendering();
+  }
 }

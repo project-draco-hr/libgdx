@@ -1,8 +1,8 @@
 {
   this.name=name;
-  this.enclosingType=enclosingType;
+  this.enclosingType=new CachedTypeLookup(enclosingType);
   this.parameters=parameters != null ? parameters : EMPTY_PARAMS;
-  this.returnType=returnType;
+  this.returnType=new CachedTypeLookup(returnType);
   this.isAbstract=isAbstract;
   this.isFinal=isFinal;
   this.isStatic=isStatic;

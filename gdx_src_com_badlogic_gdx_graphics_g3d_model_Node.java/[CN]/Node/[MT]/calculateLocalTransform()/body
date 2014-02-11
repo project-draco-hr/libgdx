@@ -1,4 +1,4 @@
 {
-  if (!isAnimated)   localTransform.idt().translate(translation).rotate(rotation).scale(scale.x,scale.y,scale.z);
+  if (!isAnimated)   localTransform.set(translation,rotation,scale);
   return localTransform;
 }
