@@ -1,0 +1,51 @@
+{
+  if (normalizeAxes) {
+    final float lx=1f / Vector3.len(xx,xy,xz);
+    final float ly=1f / Vector3.len(yx,yy,yz);
+    final float lz=1f / Vector3.len(zx,zy,zz);
+    xx*=lx;
+    xy*=lx;
+    xz*=lx;
+    yz*=ly;
+    yy*=ly;
+    yz*=ly;
+    zx*=lz;
+    zy*=lz;
+    zz*=lz;
+  }
+  final float t=xx + yy + zz;
+  double x, y, z, w;
+  if (t >= 0) {
+    double s=Math.sqrt(t + 1);
+    w=0.5 * s;
+    s=0.5 / s;
+    x=(zy - yz) * s;
+    y=(xz - zx) * s;
+    z=(yx - xy) * s;
+  }
+ else   if ((xx > yy) && (xx > zz)) {
+    double s=Math.sqrt(1.0 + xx - yy - zz);
+    x=s * 0.5;
+    s=0.5 / s;
+    y=(yx + xy) * s;
+    z=(xz + zx) * s;
+    w=(zy - yz) * s;
+  }
+ else   if (yy > zz) {
+    double s=Math.sqrt(1.0 + yy - xx - zz);
+    y=s * 0.5;
+    s=0.5 / s;
+    x=(yx + xy) * s;
+    z=(zy + yz) * s;
+    w=(xz - zx) * s;
+  }
+ else {
+    double s=Math.sqrt(1.0 + zz - xx - yy);
+    z=s * 0.5;
+    s=0.5 / s;
+    x=(xz + zx) * s;
+    y=(zy + yz) * s;
+    w=(yx - xy) * s;
+  }
+  return set((float)x,(float)y,(float)z,(float)w);
+}
