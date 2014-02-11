@@ -1,5 +1,5 @@
 {
-  GdxTest test=new UtfFontTest();
+  GdxTest test=new FullscreenTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.useGL20=test.needsGL20();
   new LwjglApplication(test,config);
