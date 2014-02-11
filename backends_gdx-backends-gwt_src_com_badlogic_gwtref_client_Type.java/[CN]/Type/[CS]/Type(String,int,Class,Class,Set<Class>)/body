@@ -1,0 +1,7 @@
+{
+  this.name=name;
+  this.id=id;
+  this.clazz=clazz;
+  this.superClass=new CachedTypeLookup(superClass);
+  this.assignables=assignables != null ? assignables : EMPTY_ASSIGNABLES;
+}

@@ -33,9 +33,11 @@
     String typeGen=createTypeGenerator(t);
     p("private void c" + (id++) + "() {");
     p(typeGen);
-    p("}\n");
+    p("}");
   }
+  parameterInitialization();
   p("public " + simpleName + "() {");
+  p("initializeParameters();");
   for (int i=0; i < id; i++) {
     p("c" + i + "();");
   }

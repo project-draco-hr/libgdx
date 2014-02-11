@@ -1,0 +1,19 @@
+{
+  p("private static final Parameter[] EMPTY_PARAMETERS = new Parameter[0];");
+  for (  Map.Entry<String,String> e : parameterName2ParameterInstantiation.entrySet()) {
+    p("private Parameter " + e.getKey() + ";");
+  }
+  p("private void initializeParameters() {");
+  int i=0;
+  for (  Map.Entry<String,String> e : parameterName2ParameterInstantiation.entrySet()) {
+    p("    " + e.getKey() + " = "+ e.getValue()+ ";");
+    i++;
+    if (i % 1000 == 0) {
+      String nextCall="initializeParameters" + (i / 1000);
+      p("    " + nextCall + "();");
+      p("}");
+      p("private void " + nextCall + "() {");
+    }
+  }
+  p("}");
+}
