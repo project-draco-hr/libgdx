@@ -69,7 +69,6 @@
       }
       source.dragStop(event,x,y,pointer,isValidTarget ? target : null);
       if (target != null)       target.reset(source,payload);
-      DragAndDrop.this.source=null;
       payload=null;
       target=null;
       isValidTarget=false;
