@@ -1,4 +1,16 @@
 {
+  try {
+    if (!GraphicsEnvironment.isHeadless() && Desktop.isDesktopSupported()) {
+      if (Desktop.getDesktop().isSupported(Action.BROWSE)) {
+        Desktop.getDesktop().browse(java.net.URI.create(URI));
+        return;
+      }
+    }
+  }
+ catch (  Throwable t) {
+    t.printStackTrace();
+    return;
+  }
   Exception e=new GdxRuntimeException("ERROR: cannot open URI on a headless application");
   e.printStackTrace();
 }
