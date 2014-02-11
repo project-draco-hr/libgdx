@@ -1,2 +1,6 @@
 {
+  if (TimeUtils.nanoTime() - startTime > 1000000000) {
+    Gdx.app.log("FPSLogger","fps: " + Gdx.graphics.getFramesPerSecond());
+    startTime=TimeUtils.nanoTime();
+  }
 }
