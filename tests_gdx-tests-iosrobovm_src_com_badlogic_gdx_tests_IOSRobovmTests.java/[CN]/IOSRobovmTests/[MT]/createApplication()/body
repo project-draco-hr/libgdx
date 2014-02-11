@@ -1,4 +1,9 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  return new IOSApplication(new BulletTestCollection(),config);
+  return new IOSApplication(new GdxTest(){
+    @Override public void resize(    int width,    int height){
+      System.out.println(width + ", " + height);
+    }
+  }
+,config);
 }

@@ -1,5 +1,5 @@
 {
-  CGSize bounds=UIScreen.getMainScreen().getBounds().size();
+  CGSize bounds=UIScreen.getMainScreen().getApplicationFrame().size();
   UIInterfaceOrientation orientation=viewController != null ? viewController.getInterfaceOrientation() : uiApp.getStatusBarOrientation();
   int width;
   int height;
