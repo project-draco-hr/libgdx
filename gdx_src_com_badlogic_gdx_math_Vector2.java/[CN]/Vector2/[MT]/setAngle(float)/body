@@ -1,5 +1,3 @@
 {
-  this.set(len(),0f);
-  this.rotate(degrees);
-  return this;
+  return setAngleRad(degrees * RADIANS);
 }
