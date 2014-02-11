@@ -15,5 +15,10 @@
     graphics.resume();
   }
  else   firstResume=false;
+  this.isWaitingForAudio=true;
+  if (this.wasFocusChanged == 1 || this.wasFocusChanged == -1) {
+    this.audio.resume();
+    this.isWaitingForAudio=false;
+  }
   super.onResume();
 }
