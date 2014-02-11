@@ -1,0 +1,5 @@
+{
+  if (radians == 0)   return this;
+  quat.setFromAxisRad(axisX,axisY,axisZ,radians);
+  return rotate(quat);
+}
