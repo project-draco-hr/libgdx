@@ -2,7 +2,12 @@
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
-  mean.addValue(resume ? 0.0f : deltaTime);
+  if (!resume) {
+    mean.addValue(deltaTime);
+  }
+ else {
+    deltaTime=0;
+  }
   boolean lrunning=false;
   boolean lpause=false;
   boolean ldestroy=false;
