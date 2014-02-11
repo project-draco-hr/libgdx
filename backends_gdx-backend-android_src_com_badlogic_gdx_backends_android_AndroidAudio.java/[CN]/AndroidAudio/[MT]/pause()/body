@@ -11,4 +11,5 @@ synchronized (musics) {
  else       music.wasPlaying=false;
     }
   }
+  this.soundPool.autoPause();
 }

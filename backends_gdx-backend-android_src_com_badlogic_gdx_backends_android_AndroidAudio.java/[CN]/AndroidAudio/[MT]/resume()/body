@@ -7,4 +7,5 @@ synchronized (musics) {
       if (musics.get(i).wasPlaying == true)       musics.get(i).play();
     }
   }
+  this.soundPool.autoResume();
 }
