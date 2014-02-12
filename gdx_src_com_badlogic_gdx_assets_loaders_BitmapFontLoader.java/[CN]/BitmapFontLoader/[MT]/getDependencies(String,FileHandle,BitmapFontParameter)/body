@@ -6,7 +6,14 @@
   }
   data=new BitmapFontData(file,parameter != null ? parameter.flip : false);
   for (int i=0; i < data.getImagePaths().length; i++) {
-    deps.add(new AssetDescriptor(data.getImagePath(i),Texture.class));
+    TextureLoader.TextureParameter textureParams=new TextureLoader.TextureParameter();
+    if (parameter != null) {
+      textureParams.genMipMaps=parameter.genMipMaps;
+      textureParams.minFilter=parameter.minFilter;
+      textureParams.magFilter=parameter.magFilter;
+    }
+    AssetDescriptor descriptor=new AssetDescriptor(data.getImagePath(i),Texture.class,textureParams);
+    deps.add(descriptor);
   }
   return deps;
 }
