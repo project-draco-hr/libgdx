@@ -10,7 +10,7 @@
  else {
     config.useGL20=false;
     configChooser=getEglConfigChooser();
-    int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
+    int sdkVersion=android.os.Build.VERSION.SDK_INT;
     if (sdkVersion >= 11) {
       GLSurfaceView view=new GLSurfaceView(activity){
         @Override protected void onMeasure(        int widthMeasureSpec,        int heightMeasureSpec){
@@ -20,7 +20,7 @@
         @Override public InputConnection onCreateInputConnection(        EditorInfo outAttrs){
           BaseInputConnection connection=new BaseInputConnection(this,false){
             @Override public boolean deleteSurroundingText(            int beforeLength,            int afterLength){
-              int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
+              int sdkVersion=android.os.Build.VERSION.SDK_INT;
               if (sdkVersion >= 16) {
                 if (beforeLength == 1 && afterLength == 0) {
                   sendDownUpKeyEventForBackwardCompatibility(KeyEvent.KEYCODE_DEL);
