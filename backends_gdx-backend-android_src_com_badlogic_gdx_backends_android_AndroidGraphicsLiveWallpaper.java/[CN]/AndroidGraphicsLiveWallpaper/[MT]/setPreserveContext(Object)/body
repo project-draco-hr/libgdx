@@ -1,5 +1,5 @@
 {
-  int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
+  int sdkVersion=android.os.Build.VERSION.SDK_INT;
   if (sdkVersion >= 11 && view instanceof GLSurfaceView) {
     try {
       Method method=null;
