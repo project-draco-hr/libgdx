@@ -30,11 +30,11 @@
     try {
       Class vlistener=Class.forName("com.badlogic.gdx.backends.android.AndroidVisibilityListener");
       Object o=vlistener.newInstance();
-      Method method=vlistener.getDeclaredMethod("createListener",AndroidApplication.class);
+      Method method=vlistener.getDeclaredMethod("createListener",AndroidApplicationBase.class);
       method.invoke(o,this);
     }
  catch (    Exception e) {
-      log("AndroidApplication","Failed to create AndroidVisibilityListener");
+      log("AndroidApplication","Failed to create AndroidVisibilityListener",e);
     }
   }
 }
