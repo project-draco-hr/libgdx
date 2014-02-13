@@ -1,0 +1,21 @@
+{
+  boolean isContinuous=graphics.isContinuousRendering();
+  graphics.setContinuousRendering(true);
+  graphics.pause();
+  input.unregisterSensorListeners();
+  int[] realId=input.realId;
+  Arrays.fill(realId,-1);
+  boolean[] touched=input.touched;
+  Arrays.fill(touched,false);
+  if (getActivity().isFinishing()) {
+    graphics.clearManagedCaches();
+    graphics.destroy();
+  }
+  graphics.setContinuousRendering(isContinuous);
+  if (graphics != null && graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onPause();
+    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onPause();
+    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
+  }
+  super.onPause();
+}
