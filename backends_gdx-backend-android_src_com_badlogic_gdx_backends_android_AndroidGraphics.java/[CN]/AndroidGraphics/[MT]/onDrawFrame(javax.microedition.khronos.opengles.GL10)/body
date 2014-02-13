@@ -30,7 +30,9 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).resume();
+    if (app instanceof AndroidFragmentApplication) {
+      ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).resume();
+    }
     Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
