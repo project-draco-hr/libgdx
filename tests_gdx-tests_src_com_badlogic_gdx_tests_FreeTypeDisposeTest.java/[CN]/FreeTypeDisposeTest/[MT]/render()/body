@@ -6,7 +6,9 @@
       }
       FileHandle fontFile=Gdx.files.internal("data/arial.ttf");
       FreeTypeFontGenerator generator=new FreeTypeFontGenerator(fontFile);
-      font=generator.generateFont(15);
+      FreeTypeFontParameter parameter=new FreeTypeFontParameter();
+      parameter.size=15;
+      font=generator.generateFont(parameter);
       generator.dispose();
     }
     for (int i=0; i < 10; i++)     System.gc();

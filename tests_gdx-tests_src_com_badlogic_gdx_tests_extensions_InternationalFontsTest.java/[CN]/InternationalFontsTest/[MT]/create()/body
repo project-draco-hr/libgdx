@@ -1,12 +1,17 @@
 {
   FreeTypeFontGenerator generator=new FreeTypeFontGenerator(Gdx.files.internal("data/unbom.ttf"));
-  koreanFont=generator.generateFont(18,"?????????/??????????",false);
+  FreeTypeFontParameter parameter=new FreeTypeFontParameter();
+  parameter.size=18;
+  parameter.characters="?????????/??????????";
+  koreanFont=generator.generateFont(parameter);
   generator.dispose();
+  parameter.characters=FreeTypeFontGenerator.DEFAULT_CHARS;
   generator=new FreeTypeFontGenerator(Gdx.files.internal("data/russkij.ttf"));
-  cyrillicFont=generator.generateFont(18,FreeTypeFontGenerator.DEFAULT_CHARS,false);
+  cyrillicFont=generator.generateFont(parameter);
   generator.dispose();
+  parameter.characters="?????????????????????????";
   generator=new FreeTypeFontGenerator(Gdx.files.internal("data/garuda.ttf"));
-  thaiFont=generator.generateFont(18,"?????????????????????????",false);
+  thaiFont=generator.generateFont(parameter);
   generator.dispose();
   batch=new SpriteBatch();
   cam=new OrthographicCamera();
