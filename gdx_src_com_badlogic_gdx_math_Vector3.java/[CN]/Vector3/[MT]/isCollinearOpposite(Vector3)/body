@@ -1,0 +1,5 @@
+{
+  float mag=len() * vector.len();
+  if (mag != 0)   return dot(vector) / mag == -1;
+  return false;
+}
