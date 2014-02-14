@@ -1,0 +1,35 @@
+{
+  if (widget == null)   return;
+  float containerWidth=getWidth() - padLeft - padRight, containerHeight=getHeight() - padTop - padBottom;
+  Layout layout=widget instanceof Layout ? (Layout)widget : null;
+  float minWidth=this.minWidth == null ? (layout != null ? layout.getMinWidth() : widget.getWidth()) : this.minWidth;
+  float minHeight=this.minHeight == null ? (layout != null ? layout.getMinHeight() : widget.getHeight()) : this.minHeight;
+  float prefWidth=this.prefWidth == null ? (layout != null ? layout.getPrefWidth() : widget.getWidth()) : this.prefWidth;
+  float prefHeight=this.prefHeight == null ? (layout != null ? layout.getPrefHeight() : widget.getHeight()) : this.prefHeight;
+  float maxWidth=this.maxWidth == null ? (layout != null ? layout.getMaxWidth() : widget.getWidth()) : this.maxWidth;
+  float maxHeight=this.maxHeight == null ? (layout != null ? layout.getMaxHeight() : widget.getHeight()) : this.maxHeight;
+  float width;
+  if (fillX > 0)   width=containerWidth * fillX;
+ else   width=Math.min(prefWidth,containerWidth);
+  if (width < minWidth)   width=minWidth;
+  if (maxWidth > 0 && width > maxWidth)   width=maxWidth;
+  float height;
+  if (fillY > 0)   height=containerHeight * fillY;
+ else   height=Math.min(prefHeight,containerHeight);
+  if (height < minHeight)   height=minHeight;
+  if (maxHeight > 0 && height > maxHeight)   height=maxHeight;
+  float x=padLeft;
+  if ((align & Align.right) != 0)   x+=containerWidth - width;
+ else   if ((align & Align.left) == 0)   x+=(containerWidth - width) / 2;
+  float y=padBottom;
+  if ((align & Align.top) != 0)   y+=containerHeight - height;
+ else   if ((align & Align.bottom) == 0)   y+=(containerHeight - height) / 2;
+  if (round) {
+    x=Math.round(x);
+    y=Math.round(y);
+    width=Math.round(width);
+    height=Math.round(height);
+  }
+  widget.setBounds(x,y,width,height);
+  if (widget instanceof Layout)   ((Layout)widget).validate();
+}
