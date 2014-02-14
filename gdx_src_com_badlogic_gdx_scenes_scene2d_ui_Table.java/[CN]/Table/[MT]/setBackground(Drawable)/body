@@ -3,10 +3,7 @@
   this.background=background;
   if (background == null)   pad(null);
  else {
-    padBottom(background.getBottomHeight());
-    padTop(background.getTopHeight());
-    padLeft(background.getLeftWidth());
-    padRight(background.getRightWidth());
+    pad(background.getTopHeight(),background.getLeftWidth(),background.getBottomHeight(),background.getRightWidth());
     invalidate();
   }
 }

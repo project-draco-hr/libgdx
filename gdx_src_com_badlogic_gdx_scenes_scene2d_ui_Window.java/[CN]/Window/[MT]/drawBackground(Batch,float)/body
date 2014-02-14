@@ -14,9 +14,9 @@
   buttonTable.getColor().a=getColor().a;
   buttonTable.pack();
   buttonTable.setPosition(width - buttonTable.getWidth(),Math.min(height - padTop,height - buttonTable.getHeight()));
-  buttonTable.translate(x,y);
+  buttonTable.moveBy(x,y);
   buttonTable.draw(batch,parentAlpha);
-  buttonTable.translate(-x,-y);
+  buttonTable.moveBy(-x,-y);
   y+=height;
   TextBounds bounds=titleCache.getBounds();
   if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
