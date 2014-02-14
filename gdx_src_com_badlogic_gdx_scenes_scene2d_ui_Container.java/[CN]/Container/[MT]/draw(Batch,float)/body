@@ -5,6 +5,7 @@
     applyTransform(batch,computeTransform());
     drawBackground(batch,parentAlpha,0,0);
     if (clip) {
+      batch.flush();
       boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(padLeft,padBottom,getWidth() - padLeft - padRight,getHeight() - padBottom - padTop);
       if (draw) {
         drawChildren(batch,parentAlpha);
