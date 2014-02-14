@@ -1,22 +1,11 @@
 {
-  float x=getX(), y=getY();
   float width=getWidth(), height=getHeight();
   float padTop=getPadTop();
-  if (style.stageBackground != null) {
-    Color color=getColor();
-    batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-    Stage stage=getStage();
-    stageToLocalCoordinates(tmpPosition.set(0,0));
-    stageToLocalCoordinates(tmpSize.set(stage.getWidth(),stage.getHeight()));
-    style.stageBackground.draw(batch,x + tmpPosition.x,y + tmpPosition.y,x + tmpSize.x,y + tmpSize.y);
-  }
-  super.drawBackground(batch,parentAlpha);
+  super.drawBackground(batch,parentAlpha,x,y);
   buttonTable.getColor().a=getColor().a;
   buttonTable.pack();
   buttonTable.setPosition(width - buttonTable.getWidth(),Math.min(height - padTop,height - buttonTable.getHeight()));
-  buttonTable.moveBy(x,y);
   buttonTable.draw(batch,parentAlpha);
-  buttonTable.moveBy(-x,-y);
   y+=height;
   TextBounds bounds=titleCache.getBounds();
   if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
