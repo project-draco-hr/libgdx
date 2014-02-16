@@ -1,5 +1,5 @@
 {
-  GdxTest test=new FullscreenTest();
+  GdxTest test=new Scene2dTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   config.useGL20=test.needsGL20();
   new LwjglApplication(test,config);
