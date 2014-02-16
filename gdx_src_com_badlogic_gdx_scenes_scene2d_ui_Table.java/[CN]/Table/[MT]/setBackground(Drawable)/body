@@ -1,9 +1,3 @@
 {
-  if (this.background == background)   return;
-  this.background=background;
-  if (background == null)   pad(null);
- else {
-    pad(background.getTopHeight(),background.getLeftWidth(),background.getBottomHeight(),background.getRightWidth());
-    invalidate();
-  }
+  setBackground(background,true);
 }
