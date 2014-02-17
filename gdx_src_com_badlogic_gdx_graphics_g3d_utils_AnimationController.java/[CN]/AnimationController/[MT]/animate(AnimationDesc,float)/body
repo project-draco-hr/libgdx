@@ -1,7 +1,7 @@
 {
   if (current == null)   current=anim;
  else   if (inAction)   queue(anim,transitionTime);
- else   if (anim != null && current.animation == anim.animation) {
+ else   if (!allowSameAnimation && anim != null && current.animation == anim.animation) {
     anim.time=current.time;
     animationPool.free(current);
     current=anim;

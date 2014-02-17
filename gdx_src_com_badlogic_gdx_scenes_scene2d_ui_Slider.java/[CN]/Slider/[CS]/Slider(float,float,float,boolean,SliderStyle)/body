@@ -1,13 +1,5 @@
 {
-  if (min > max)   throw new IllegalArgumentException("min must be > max: " + min + " > "+ max);
-  if (stepSize <= 0)   throw new IllegalArgumentException("stepSize must be > 0: " + stepSize);
-  setStyle(style);
-  this.min=min;
-  this.max=max;
-  this.stepSize=stepSize;
-  this.vertical=vertical;
-  this.value=min;
-  setSize(getPrefWidth(),getPrefHeight());
+  super(min,max,stepSize,vertical,style);
   addListener(new InputListener(){
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (disabled)       return false;

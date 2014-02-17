@@ -1,4 +1,5 @@
 {
+  if (paused)   return;
   if (previous != null && ((transitionCurrentTime+=delta) >= transitionTargetTime)) {
     removeAnimation(previous.animation);
     justChangedAnimation=true;
