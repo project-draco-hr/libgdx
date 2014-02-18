@@ -1,0 +1,17 @@
+{
+synchronized (instances) {
+    if (app != Gdx.app)     return;
+    long timeMillis=TimeUtils.nanoTime() / 1000000;
+    long waitMillis=5000;
+    for (int i=0, n=instances.size; i < n; i++) {
+      try {
+        waitMillis=instances.get(i).update(timeMillis,waitMillis);
+      }
+ catch (      Throwable ex) {
+        throw new GdxRuntimeException("Task failed: " + instances.get(i).getClass().getName(),ex);
+      }
+    }
+    if (app != Gdx.app)     return;
+    schedule((int)Math.max(0,waitMillis));
+  }
+}
