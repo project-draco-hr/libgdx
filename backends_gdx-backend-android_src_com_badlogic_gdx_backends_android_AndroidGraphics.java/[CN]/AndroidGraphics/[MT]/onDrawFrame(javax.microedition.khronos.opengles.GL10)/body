@@ -71,15 +71,14 @@ synchronized (listeners) {
     Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
-    Array<LifecycleListener> listeners=((AndroidApplication)app).lifecycleListeners;
+    Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
         listener.dispose();
       }
     }
-    app.getApplicationListener().dispose();
-    ((AndroidApplication)app).audio.dispose();
-    ((AndroidApplication)app).audio=null;
+    ((AndroidApplicationBase)app).getApplicationListener().dispose();
+    ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).dispose();
     Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {
