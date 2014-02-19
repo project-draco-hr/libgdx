@@ -14,7 +14,6 @@
   }
   stub.enclosingType=stub.enclosingType.replace(".class","");
   stub.type=stub.type.replace(".class","");
-  pb("// " + stub.enclosingType + "#"+ stub.name);
   pbn("private native " + stub.type + " g"+ stub.getter+ "("+ stub.enclosingType+ " obj) /*-{");
   if (stub.isStatic)   pbn("return @" + stub.enclosingType + "::"+ stub.name+ ";");
  else   pbn("return obj.@" + stub.enclosingType + "::"+ stub.name+ ";");
