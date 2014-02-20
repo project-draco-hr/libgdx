@@ -1,8 +1,6 @@
 {
   buffer.setLength(0);
-  String varName="t";
-  if (t instanceof JPrimitiveType)   varName="p";
-  int id=nextId();
+  int id=nextTypeId++;
   typeNames2typeIds.put(t.getErasedType().getQualifiedSourceName(),id);
   JClassType c=t.isClass();
   String name=t.getErasedType().getQualifiedSourceName();
@@ -21,7 +19,11 @@
     if (used)     assignables+="))";
  else     assignables=null;
   }
-  pb("Type " + varName + " = new Type(\""+ name+ "\", "+ id+ ", "+ name+ ".class, "+ superClass+ ", "+ assignables+ ");");
+  String varName="c" + id;
+  pb("private static Type " + varName + ";");
+  pb("private static Type " + varName + "() {");
+  pb("if(" + varName + "!=null) return "+ varName+ ";");
+  pb(varName + " = new Type(\"" + name+ "\", "+ id+ ", "+ name+ ".class, "+ superClass+ ", "+ assignables+ ");");
   if (c != null) {
     if (c.isInterface() != null)     pb(varName + ".isInterface = true;");
     if (c.isEnum() != null)     pb(varName + ".isEnum = true;");
@@ -34,10 +36,9 @@
       for (      JField f : c.getFields()) {
         String enclosingType=getType(c);
         String fieldType=getType(f.getType());
-        int setter=nextId();
-        int getter=nextId();
+        int setterGetter=nextSetterGetterId++;
         String elementType=getElementTypes(f);
-        pb("    new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ getter+ ", "+ setter+ ", "+ elementType+ "), ");
+        pb("    new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ setterGetter+ ", "+ setterGetter+ ", "+ elementType+ "), ");
         SetterGetterStub stub=new SetterGetterStub();
         stub.name=f.getName();
         stub.enclosingType=enclosingType;
@@ -45,8 +46,8 @@
         stub.isStatic=f.isStatic();
         stub.isFinal=f.isFinal();
         if (enclosingType != null && fieldType != null) {
-          stub.getter=getter;
-          stub.setter=setter;
+          stub.getter=setterGetter;
+          stub.setter=setterGetter;
         }
         setterGetterStubs.add(stub);
       }
@@ -75,6 +76,7 @@
  else {
     pb(varName + ".isPrimitive = true;");
   }
-  pbn("types.put(\"" + t.getErasedType().getQualifiedSourceName() + "\", "+ varName+ ");");
+  pb("return " + varName + ";");
+  pb("}");
   return buffer.toString();
 }
