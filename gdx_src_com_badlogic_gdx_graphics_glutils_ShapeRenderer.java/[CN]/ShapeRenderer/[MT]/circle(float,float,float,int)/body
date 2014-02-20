@@ -2,7 +2,7 @@
   if (segments <= 0)   throw new IllegalArgumentException("segments must be > 0.");
   if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
   checkDirty();
-  float angle=2 * 3.1415927f / segments;
+  float angle=2 * MathUtils.PI / segments;
   float cos=MathUtils.cos(angle);
   float sin=MathUtils.sin(angle);
   float cx=radius, cy=0;
