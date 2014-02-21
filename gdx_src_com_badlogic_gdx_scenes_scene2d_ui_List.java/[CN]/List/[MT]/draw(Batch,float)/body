@@ -5,14 +5,21 @@
   Color fontColorUnselected=style.fontColorUnselected;
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  float x=getX();
-  float y=getY();
+  float x=getX(), y=getY(), width=getWidth(), height=getHeight();
+  float itemY=height;
+  Drawable background=style.background;
+  if (background != null) {
+    background.draw(batch,x,y,width,height);
+    float leftWidth=background.getLeftWidth();
+    x+=leftWidth;
+    itemY-=background.getTopHeight();
+    width-=leftWidth + background.getRightWidth();
+  }
   font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
-  float itemY=getHeight();
   for (int i=0; i < items.length; i++) {
     if (cullingArea == null || (itemY - itemHeight <= cullingArea.y + cullingArea.height && itemY >= cullingArea.y)) {
       if (selectedIndex == i) {
-        selectedDrawable.draw(batch,x,y + itemY - itemHeight,getWidth(),itemHeight);
+        selectedDrawable.draw(batch,x,y + itemY - itemHeight,width,itemHeight);
         font.setColor(fontColorSelected.r,fontColorSelected.g,fontColorSelected.b,fontColorSelected.a * parentAlpha);
       }
       font.draw(batch,items[i],x + textOffsetX,y + itemY - textOffsetY);

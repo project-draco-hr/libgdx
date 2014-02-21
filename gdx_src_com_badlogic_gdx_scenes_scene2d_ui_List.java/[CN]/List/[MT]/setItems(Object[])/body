@@ -20,5 +20,10 @@
   }
   prefWidth+=selectedDrawable.getLeftWidth() + selectedDrawable.getRightWidth();
   prefHeight=items.length * itemHeight;
+  Drawable background=style.background;
+  if (background != null) {
+    prefWidth+=background.getLeftWidth() + background.getRightWidth();
+    prefHeight+=background.getTopHeight() + background.getBottomHeight();
+  }
   invalidateHierarchy();
 }
