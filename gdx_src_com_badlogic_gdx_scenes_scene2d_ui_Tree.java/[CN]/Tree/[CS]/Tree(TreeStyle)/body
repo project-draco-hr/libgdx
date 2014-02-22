@@ -1,4 +1,7 @@
 {
+  selection=new Selection();
+  selection.setActor(this);
+  selection.setMultiple(true);
   setStyle(style);
   initialize();
 }

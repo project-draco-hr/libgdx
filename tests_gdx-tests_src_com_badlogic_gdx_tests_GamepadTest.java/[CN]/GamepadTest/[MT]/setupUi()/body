@@ -3,7 +3,7 @@
   stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
   ui=new Table();
   ui.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  console=new List(new String[0],skin);
+  console=new List(skin);
   scrollPane=new ScrollPane(console);
   scrollPane.setScrollbarsOnTop(true);
   TextButton clear=new TextButton("Clear",skin);

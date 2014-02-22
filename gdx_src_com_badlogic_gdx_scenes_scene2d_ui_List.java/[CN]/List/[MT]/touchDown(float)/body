@@ -1,11 +1,6 @@
 {
-  int oldIndex=selectedIndex;
-  selectedIndex=(int)((getHeight() - y) / itemHeight);
-  selectedIndex=Math.max(0,selectedIndex);
-  selectedIndex=Math.min(items.length - 1,selectedIndex);
-  if (oldIndex != selectedIndex) {
-    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-    if (fire(changeEvent))     selectedIndex=oldIndex;
-    Pools.free(changeEvent);
-  }
+  int index=(int)((getHeight() - y) / itemHeight);
+  index=Math.max(0,index);
+  index=Math.min(items.size - 1,index);
+  selection.choose(items.get(index));
 }

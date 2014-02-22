@@ -1,5 +1,6 @@
 {
-  if (scroll == null || scroll.getParent() == null)   return;
+  if (!scroll.hasParent())   return;
+  selected=null;
   Stage stage=scroll.getStage();
   if (stage != null) {
     if (previousScrollFocus != null && previousScrollFocus.getStage() == null)     previousScrollFocus=null;

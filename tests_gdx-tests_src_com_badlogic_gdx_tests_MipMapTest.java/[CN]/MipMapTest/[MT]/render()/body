@@ -4,7 +4,7 @@
   camera.update();
   currTexture=hwMipMap.isChecked() ? textureHW : textureSW;
   currTexture.bind();
-  currTexture.setFilter(TextureFilter.valueOf(minFilter.getSelection()),TextureFilter.valueOf(magFilter.getSelection()));
+  currTexture.setFilter(TextureFilter.valueOf(minFilter.getSelected()),TextureFilter.valueOf(magFilter.getSelected()));
   shader.begin();
   shader.setUniformMatrix("u_projTrans",camera.combined);
   shader.setUniformi("s_texture",0);

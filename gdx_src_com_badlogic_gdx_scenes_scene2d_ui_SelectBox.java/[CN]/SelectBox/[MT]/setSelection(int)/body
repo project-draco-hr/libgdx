@@ -1,4 +1,0 @@
-{
-  if (selection < 0)   throw new IllegalArgumentException("selection cannot be < 0.");
-  this.selectedIndex=selection;
-}
