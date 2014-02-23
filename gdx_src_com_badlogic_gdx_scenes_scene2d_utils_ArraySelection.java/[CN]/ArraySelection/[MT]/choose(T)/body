@@ -1,0 +1,19 @@
+{
+  if (isDisabled)   return;
+  if (selected.size > 0 && rangeSelect && multiple && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
+    int low=items.indexOf(getLastSelected(),false);
+    int high=items.indexOf(item,false);
+    if (low > high) {
+      int temp=low;
+      low=high;
+      high=temp;
+    }
+    snapshot();
+    if (!isCtrlPressed())     selected.clear();
+    for (; low <= high; low++)     selected.add(items.get(low));
+    if (fireChangeEvent())     revert();
+    cleanup();
+    return;
+  }
+  super.choose(item);
+}
