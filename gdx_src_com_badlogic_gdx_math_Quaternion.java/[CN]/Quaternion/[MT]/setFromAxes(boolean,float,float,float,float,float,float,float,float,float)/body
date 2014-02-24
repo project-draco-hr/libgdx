@@ -13,39 +13,38 @@
     zy*=lz;
     zz*=lz;
   }
-  final float t=xx + yy + zz;
-  double x, y, z, w;
+  float t=xx + yy + zz;
   if (t >= 0) {
-    double s=Math.sqrt(t + 1);
-    w=0.5 * s;
-    s=0.5 / s;
-    x=(zy - yz) * s;
-    y=(xz - zx) * s;
-    z=(yx - xy) * s;
+    float s=(float)Math.sqrt(t + 1);
+    w=0.5f * s;
+    s=0.5f / s;
+    x=(yz - zy) * s;
+    y=(zx - xz) * s;
+    z=(xy - yx) * s;
   }
  else   if ((xx > yy) && (xx > zz)) {
-    double s=Math.sqrt(1.0 + xx - yy - zz);
-    x=s * 0.5;
-    s=0.5 / s;
-    y=(yx + xy) * s;
-    z=(xz + zx) * s;
-    w=(zy - yz) * s;
+    float s=(float)Math.sqrt(1.0f + xx - yy - zz);
+    x=s * 0.5f;
+    s=0.5f / s;
+    y=(xy + yx) * s;
+    z=(zx + xz) * s;
+    w=(yz - zy) * s;
   }
  else   if (yy > zz) {
-    double s=Math.sqrt(1.0 + yy - xx - zz);
-    y=s * 0.5;
-    s=0.5 / s;
-    x=(yx + xy) * s;
-    z=(zy + yz) * s;
-    w=(xz - zx) * s;
+    float s=(float)Math.sqrt(1.0f + yy - xx - zz);
+    y=s * 0.5f;
+    s=0.5f / s;
+    x=(xy + yx) * s;
+    z=(yz + zy) * s;
+    w=(zx - xz) * s;
   }
  else {
-    double s=Math.sqrt(1.0 + zz - xx - yy);
-    z=s * 0.5;
-    s=0.5 / s;
-    x=(xz + zx) * s;
-    y=(zy + yz) * s;
-    w=(yx - xy) * s;
+    float s=(float)Math.sqrt(1.0f + zz - xx - yy);
+    z=s * 0.5f;
+    s=0.5f / s;
+    x=(zx + xz) * s;
+    y=(yz + zy) * s;
+    w=(xy - yx) * s;
   }
-  return set((float)x,(float)y,(float)z,(float)w);
+  return this;
 }
