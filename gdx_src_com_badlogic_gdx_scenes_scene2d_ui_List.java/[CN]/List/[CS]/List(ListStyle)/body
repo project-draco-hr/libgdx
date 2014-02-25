@@ -3,7 +3,6 @@
   selection.setActor(this);
   selection.setRequired(true);
   setStyle(style);
-  setItems(new Array(0));
   setSize(getPrefWidth(),getPrefHeight());
   addListener(new InputListener(){
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){

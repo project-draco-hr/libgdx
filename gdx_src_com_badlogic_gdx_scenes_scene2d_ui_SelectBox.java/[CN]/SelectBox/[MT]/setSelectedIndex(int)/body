@@ -1,4 +1,3 @@
 {
-  if (index < -1 || index >= items.size)   throw new IllegalArgumentException("index must be >= -1 and < " + items.size + ": "+ index);
   selection.set(items.get(index));
 }
