@@ -29,7 +29,7 @@
       root=panel;
     }
   }
-  SoundManager.init(GWT.getModuleBaseURL(),9,true,new SoundManager.SoundManagerCallback(){
+  SoundManager.init(GWT.getModuleBaseURL(),9,config.preferFlash,new SoundManager.SoundManagerCallback(){
     @Override public void onready(){
       final PreloaderCallback callback=getPreloaderCallback();
       preloader=createPreloader();
