@@ -28,12 +28,7 @@
       }
     }
     if (settings == null)     settings=new Settings(defaultSettings);
-    try {
-      json.readFields(settings,new JsonReader().parse(new FileReader(settingsFile)));
-    }
- catch (    SerializationException ex) {
-      throw new GdxRuntimeException("Error reading settings file: " + settingsFile,ex);
-    }
+    merge(settings,settingsFile);
     dirToSettings.put(settingsFile.getParentFile(),settings);
   }
   return super.process(inputFile,outputRoot);

@@ -10,9 +10,21 @@
     String prefix=packFileName;
     int dotIndex=prefix.lastIndexOf('.');
     if (dotIndex != -1)     prefix=prefix.substring(0,dotIndex);
-    deleteProcessor.addInputRegex("(?i)" + Pattern.quote(prefix) + "([\\d\\.]*)?-\\d*\\.(png|jpg)");
-    deleteProcessor.addInputRegex("(?i)" + Pattern.quote(prefix) + "([\\d\\.]*)?\\.(atlas)");
-    deleteProcessor.process(outputRoot,null);
+    deleteProcessor.addInputRegex("(?i)" + Pattern.quote(prefix) + "\\d*\\.(png|jpg)");
+    deleteProcessor.addInputRegex("(?i)" + Pattern.quote(prefix) + "\\.(atlas)");
+    File settingsFile=new File(root,"pack.json");
+    Settings rootSettings=defaultSettings;
+    if (settingsFile.exists()) {
+      rootSettings=new Settings(rootSettings);
+      merge(rootSettings,settingsFile);
+    }
+    if (rootSettings.scale.length == 1)     deleteProcessor.process(outputRoot,null);
+ else {
+      for (      float scale : rootSettings.scale) {
+        String subdir=scale == (int)scale ? Integer.toString((int)scale) : Float.toString(scale);
+        deleteProcessor.process(outputRoot + "/" + subdir,null);
+      }
+    }
   }
   return super.process(files,outputRoot);
 }
