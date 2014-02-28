@@ -43,6 +43,8 @@
     System.out.println();
     if (bestResult == null)     bestResult=packAtSize(false,maxSize - edgePaddingX,maxSize - edgePaddingY,inputRects);
     sort.sort(bestResult.outputRects,rectComparator);
+    bestResult.width=Math.max(bestResult.width,bestResult.height);
+    bestResult.height=Math.max(bestResult.width,bestResult.height);
     return bestResult;
   }
  else {
