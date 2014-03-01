@@ -27,10 +27,10 @@
     height=Math.max(settings.minHeight,height);
     File outputFile;
     while (true) {
-      fileIndex++;
-      outputFile=new File(outputDir,imageName + "-" + fileIndex+ "."+ settings.outputFormat);
+      outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
       if (!outputFile.exists())       break;
     }
+    new FileHandle(outputFile).parent().mkdirs();
     page.imageName=outputFile.getName();
     BufferedImage canvas=new BufferedImage(width,height,getBufferedImageType(settings.format));
     Graphics2D g=(Graphics2D)canvas.getGraphics();

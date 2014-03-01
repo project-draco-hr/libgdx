@@ -7,7 +7,7 @@
   }
  else   if (currentIndex >= map.capacity) {
     map.removeStashIndex(currentIndex);
-    nextIndex=currentIndex;
+    nextIndex=currentIndex - 1;
     findNextIndex();
   }
  else {

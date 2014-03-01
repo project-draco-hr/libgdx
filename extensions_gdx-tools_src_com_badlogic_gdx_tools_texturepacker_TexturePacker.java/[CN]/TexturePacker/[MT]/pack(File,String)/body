@@ -4,9 +4,7 @@
   for (  float scale : settings.scale) {
     String scaledPackFileName=packFileName;
     if (scale != 1 || settings.scale.length != 1) {
-      FileHandle file=new FileHandle(scaledPackFileName);
-      String suffix=scale == (int)scale ? Integer.toString((int)scale) : Float.toString(scale);
-      scaledPackFileName=file.nameWithoutExtension() + suffix + "."+ file.extension();
+      scaledPackFileName=(scale == (int)scale ? Integer.toString((int)scale) : Float.toString(scale)) + "/" + scaledPackFileName;
     }
     imageProcessor.setScale(scale);
     for (    InputImage inputImage : inputImages) {

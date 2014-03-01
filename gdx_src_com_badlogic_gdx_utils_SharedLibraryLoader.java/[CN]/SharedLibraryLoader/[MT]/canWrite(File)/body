@@ -1,14 +1,24 @@
 {
-  if (file.canWrite() && file.canExecute())   return true;
   File parent=file.getParentFile();
-  parent.mkdirs();
-  if (!parent.isDirectory())   return false;
+  File testFile;
+  if (file.exists()) {
+    if (!file.canWrite() || !file.canExecute())     return false;
+    testFile=new File(parent,UUID.randomUUID().toString());
+  }
+ else {
+    parent.mkdirs();
+    if (!parent.isDirectory())     return false;
+    testFile=file;
+  }
   try {
-    new FileOutputStream(file).close();
-    file.delete();
+    new FileOutputStream(testFile).close();
+    if (!testFile.canExecute())     return false;
     return true;
   }
  catch (  Throwable ex) {
     return false;
+  }
+ finally {
+    testFile.delete();
   }
 }
