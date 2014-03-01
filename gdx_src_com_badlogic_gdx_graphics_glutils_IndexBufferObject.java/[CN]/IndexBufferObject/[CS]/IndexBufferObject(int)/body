@@ -5,5 +5,5 @@
   buffer.flip();
   byteBuffer.flip();
   bufferHandle=createBufferObject();
-  usage=GL11.GL_STATIC_DRAW;
+  usage=GL20.GL_STATIC_DRAW;
 }

@@ -21,7 +21,7 @@
     this.buffers[i].setIndices(indices);
   }
   mesh=this.buffers[0];
-  if (Gdx.graphics.isGL20Available() && defaultShader == null) {
+  if (defaultShader == null) {
     shader=createDefaultShader();
     ownsShader=true;
   }

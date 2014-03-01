@@ -1,6 +1,12 @@
 {
   try {
-    Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+    if (config.useGL30) {
+      ContextAttribs context=new ContextAttribs(3,2).withForwardCompatible(false).withProfileCore(true);
+      Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+    }
+ else {
+      Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+    }
     bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
   }
  catch (  Exception ex) {

@@ -3,7 +3,7 @@
   this.attributes=new VertexAttributes(attributes);
   byteBuffer=BufferUtils.newByteBuffer(this.attributes.vertexSize * numVertices);
   isDirect=true;
-  usage=isStatic ? GL11.GL_STATIC_DRAW : GL11.GL_DYNAMIC_DRAW;
+  usage=isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW;
   buffer=byteBuffer.asFloatBuffer();
   bufferHandle=createBufferObject();
   buffer.flip();

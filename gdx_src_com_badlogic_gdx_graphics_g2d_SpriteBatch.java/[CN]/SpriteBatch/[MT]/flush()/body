@@ -17,8 +17,7 @@
     Gdx.gl.glEnable(GL20.GL_BLEND);
     if (blendSrcFunc != -1)     Gdx.gl.glBlendFunc(blendSrcFunc,blendDstFunc);
   }
-  if (Gdx.graphics.isGL20Available())   mesh.render(customShader != null ? customShader : shader,GL10.GL_TRIANGLES,0,count);
- else   mesh.render(GL10.GL_TRIANGLES,0,count);
+  mesh.render(customShader != null ? customShader : shader,GL20.GL_TRIANGLES,0,count);
   idx=0;
   currBufferIdx++;
   if (currBufferIdx == buffers.length)   currBufferIdx=0;
