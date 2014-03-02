@@ -1,7 +1,0 @@
-{
-  renderer=new ShapeRenderer();
-  camera=new OrthographicCamera(10,10);
-  camera.position.set(0,0,0);
-  camera.update();
-  triangles=new EarClippingTriangulator().computeTriangles(coords);
-}

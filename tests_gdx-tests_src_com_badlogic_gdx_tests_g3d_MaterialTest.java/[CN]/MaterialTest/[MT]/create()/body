@@ -2,7 +2,7 @@
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"),true);
   textureAttribute=new TextureAttribute(TextureAttribute.Diffuse,texture);
   colorAttribute=new ColorAttribute(ColorAttribute.Diffuse,Color.ORANGE);
-  blendingAttribute=new BlendingAttribute(GL10.GL_SRC_ALPHA,GL10.GL_ONE_MINUS_SRC_ALPHA);
+  blendingAttribute=new BlendingAttribute(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
   ModelBuilder builder=new ModelBuilder();
   model=builder.createBox(1,1,1,new Material(),Usage.Position | Usage.Normal | Usage.TextureCoordinates);
   model.manageDisposable(texture);
@@ -10,7 +10,7 @@
   modelInstance.transform.rotate(Vector3.X,45);
   material=modelInstance.materials.get(0);
   builder.begin();
-  MeshPartBuilder mpb=builder.part("back",GL10.GL_TRIANGLES,Usage.Position | Usage.TextureCoordinates,new Material(textureAttribute));
+  MeshPartBuilder mpb=builder.part("back",GL20.GL_TRIANGLES,Usage.Position | Usage.TextureCoordinates,new Material(textureAttribute));
   mpb.rect(-2,-2,-2,2,-2,-2,2,2,-2,-2,2,-2,0,0,1);
   backModel=builder.end();
   background=new ModelInstance(backModel);

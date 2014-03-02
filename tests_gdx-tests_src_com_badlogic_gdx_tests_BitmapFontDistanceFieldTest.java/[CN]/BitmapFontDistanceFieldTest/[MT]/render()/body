@@ -1,6 +1,6 @@
 {
   Gdx.gl.glClearColor(1,1,1,1);
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   spriteBatch.begin();
   int x=10;
   x+=drawFont(regularFont,"Regular font\nNearest filter",false,false,0,x);
