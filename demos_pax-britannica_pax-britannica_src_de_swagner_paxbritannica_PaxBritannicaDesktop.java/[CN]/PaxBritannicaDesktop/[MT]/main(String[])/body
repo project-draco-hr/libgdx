@@ -1,3 +1,7 @@
 {
-  new LwjglApplication(new PaxBritannica(),"Pax Britannica",1024,550);
+  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+  config.width=1024;
+  config.height=550;
+  config.title="Pax Britannica";
+  new LwjglApplication(new PaxBritannica(),config);
 }
