@@ -15,41 +15,21 @@
   }
   boolean loaded=false;
   if (isWindows) {
-    if (libraryFinder != null)     try {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameWindows(sharedLibName,is64Bit,new ZipFile(nativesJar)));
-    }
- catch (    IOException e) {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameWindows(sharedLibName,is64Bit,null));
-    }
+    if (libraryFinder != null)     loaded=loadLibrary(libraryFinder.getSharedLibraryNameWindows(sharedLibName,is64Bit,nativesZip));
  else     if (!is64Bit)     loaded=loadLibrary(sharedLibName + ".dll");
  else     loaded=loadLibrary(sharedLibName + "64.dll");
   }
   if (isLinux) {
-    if (libraryFinder != null)     try {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameLinux(sharedLibName,is64Bit,new ZipFile(nativesJar)));
-    }
- catch (    IOException e) {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameLinux(sharedLibName,is64Bit,null));
-    }
+    if (libraryFinder != null)     loaded=loadLibrary(libraryFinder.getSharedLibraryNameLinux(sharedLibName,is64Bit,nativesZip));
  else     if (!is64Bit)     loaded=loadLibrary("lib" + sharedLibName + ".so");
  else     loaded=loadLibrary("lib" + sharedLibName + "64.so");
   }
   if (isMac) {
-    if (libraryFinder != null)     try {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameMac(sharedLibName,new ZipFile(nativesJar)));
-    }
- catch (    IOException e) {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameMac(sharedLibName,null));
-    }
+    if (libraryFinder != null)     loaded=loadLibrary(libraryFinder.getSharedLibraryNameMac(sharedLibName,nativesZip));
  else     loaded=loadLibrary("lib" + sharedLibName + ".dylib");
   }
   if (isAndroid) {
-    if (libraryFinder != null)     try {
-      System.loadLibrary(libraryFinder.getSharedLibraryNameAndroid(sharedLibName,new ZipFile(nativesJar)));
-    }
- catch (    IOException e) {
-      loaded=loadLibrary(libraryFinder.getSharedLibraryNameAndroid(sharedLibName,null));
-    }
+    if (libraryFinder != null)     System.loadLibrary(libraryFinder.getSharedLibraryNameAndroid(sharedLibName,nativesZip));
  else     System.loadLibrary(sharedLibName);
     loaded=true;
   }
