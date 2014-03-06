@@ -1,4 +1,5 @@
 {
+  if (item == null)   throw new IllegalArgumentException("item cannot be null.");
   if (isDisabled)   return;
   snapshot();
   if ((toggle || (!required && selected.size == 1) || isCtrlPressed()) && selected.contains(item)) {
