@@ -1,3 +1,3 @@
 {
-  return createBox(width,height,depth,GL10.GL_TRIANGLES,material,attributes);
+  return createBox(width,height,depth,GL20.GL_TRIANGLES,material,attributes);
 }

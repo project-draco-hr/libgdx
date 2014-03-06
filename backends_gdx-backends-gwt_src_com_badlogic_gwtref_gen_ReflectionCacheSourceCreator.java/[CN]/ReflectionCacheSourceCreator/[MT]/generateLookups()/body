@@ -1,5 +1,4 @@
 {
-  p("Map<String, Type> types = new HashMap<String, Type>();");
   TypeOracle typeOracle=context.getTypeOracle();
   JPackage[] packages=typeOracle.getPackages();
   for (  JPackage p : packages) {
@@ -28,18 +27,10 @@
     }
   }
 );
-  int id=0;
   for (  JType t : types) {
-    String typeGen=createTypeGenerator(t);
-    p("private void c" + (id++) + "() {");
-    p(typeGen);
-    p("}\n");
+    p(createTypeGenerator(t));
   }
-  p("public " + simpleName + "() {");
-  for (int i=0; i < id; i++) {
-    p("c" + i + "();");
-  }
-  p("}");
+  parameterInitialization();
   Collections.sort(setterGetterStubs,new Comparator<SetterGetterStub>(){
     @Override public int compare(    SetterGetterStub o1,    SetterGetterStub o2){
       return new Integer(o1.setter).compareTo(o2.setter);

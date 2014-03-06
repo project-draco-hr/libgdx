@@ -1,5 +1,0 @@
-{
-  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-  fire(changeEvent);
-  Pools.free(changeEvent);
-}

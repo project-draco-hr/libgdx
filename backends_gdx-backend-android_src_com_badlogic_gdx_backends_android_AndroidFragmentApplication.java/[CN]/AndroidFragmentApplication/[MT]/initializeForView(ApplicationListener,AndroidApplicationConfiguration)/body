@@ -13,5 +13,17 @@
   Gdx.graphics=this.getGraphics();
   Gdx.net=this.getNet();
   createWakeLock(config.useWakelock);
+  useImmersiveMode(config.useImmersiveMode);
+  if (config.useImmersiveMode && getVersion() >= 19) {
+    try {
+      Class vlistener=Class.forName("com.badlogic.gdx.backends.android.AndroidVisibilityListener");
+      Object o=vlistener.newInstance();
+      Method method=vlistener.getDeclaredMethod("createListener",AndroidApplicationBase.class);
+      method.invoke(o,this);
+    }
+ catch (    Exception e) {
+      log("AndroidApplication","Failed to create AndroidVisibilityListener",e);
+    }
+  }
   return graphics.getView();
 }

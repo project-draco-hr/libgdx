@@ -2,7 +2,12 @@
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
-  mean.addValue(deltaTime);
+  if (!resume) {
+    mean.addValue(deltaTime);
+  }
+ else {
+    deltaTime=0;
+  }
   boolean lrunning=false;
   boolean lpause=false;
   boolean ldestroy=false;
@@ -25,7 +30,9 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).resume();
+    if (app.isFragment()) {
+      ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).resume();
+    }
     Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
@@ -64,15 +71,14 @@ synchronized (listeners) {
     Gdx.app.log("AndroidGraphics","paused");
   }
   if (ldestroy) {
-    Array<LifecycleListener> listeners=((AndroidApplication)app).lifecycleListeners;
+    Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
         listener.dispose();
       }
     }
-    app.getApplicationListener().dispose();
-    ((AndroidApplication)app).audio.dispose();
-    ((AndroidApplication)app).audio=null;
+    ((AndroidApplicationBase)app).getApplicationListener().dispose();
+    ((AndroidAudio)((AndroidApplicationBase)app).getAudio()).dispose();
     Gdx.app.log("AndroidGraphics","destroyed");
   }
   if (time - frameStart > 1000000000) {

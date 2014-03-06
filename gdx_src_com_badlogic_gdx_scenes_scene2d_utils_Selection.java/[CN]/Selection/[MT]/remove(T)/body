@@ -1,0 +1,5 @@
+{
+  if (!selected.remove(item))   return;
+  if (programmaticChangeEvents && fireChangeEvent())   selected.add(item);
+ else   lastSelected=null;
+}

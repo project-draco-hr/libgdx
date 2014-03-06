@@ -1,4 +1,6 @@
 {
-  for (int i=0, n=tasks.size; i < n; i++)   tasks.get(i).cancel();
-  tasks.clear();
+synchronized (tasks) {
+    for (int i=0, n=tasks.size; i < n; i++)     tasks.get(i).cancel();
+    tasks.clear();
+  }
 }

@@ -7,7 +7,7 @@
   mesh=this.buffers[0];
   vertices=new float[size * VERTEX_SIZE];
   triangles=new short[size * 3];
-  if (Gdx.graphics.isGL20Available() && defaultShader == null) {
+  if (defaultShader == null) {
     shader=SpriteBatch.createDefaultShader();
     ownsShader=true;
   }

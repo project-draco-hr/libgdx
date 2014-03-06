@@ -7,6 +7,8 @@
   }
  else   if (currentIndex >= set.capacity) {
     set.removeStashIndex(currentIndex);
+    nextIndex=currentIndex - 1;
+    findNextIndex();
   }
  else {
     set.keyTable[currentIndex]=EMPTY;

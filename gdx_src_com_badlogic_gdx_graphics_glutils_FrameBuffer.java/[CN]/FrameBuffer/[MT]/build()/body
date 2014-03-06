@@ -1,5 +1,4 @@
 {
-  if (!Gdx.graphics.isGL20Available())   throw new GdxRuntimeException("GL2 is required.");
   GL20 gl=Gdx.graphics.getGL20();
   if (!defaultFramebufferHandleInitialized) {
     defaultFramebufferHandleInitialized=true;

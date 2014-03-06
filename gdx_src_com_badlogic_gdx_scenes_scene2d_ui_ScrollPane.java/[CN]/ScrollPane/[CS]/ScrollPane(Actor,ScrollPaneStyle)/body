@@ -2,8 +2,7 @@
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   this.style=style;
   setWidget(widget);
-  setWidth(150);
-  setHeight(150);
+  setSize(150,150);
   addCaptureListener(new InputListener(){
     private float handlePosition;
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){

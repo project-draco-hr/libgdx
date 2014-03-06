@@ -1,5 +1,7 @@
 {
-  if (scroll == null || scroll.getParent() == null)   return;
+  if (!scroll.hasParent())   return;
+  selected=null;
+  scroll.list.setTouchable(Touchable.disabled);
   Stage stage=scroll.getStage();
   if (stage != null) {
     if (previousScrollFocus != null && previousScrollFocus.getStage() == null)     previousScrollFocus=null;

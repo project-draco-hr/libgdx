@@ -13,15 +13,27 @@
   }
   builder.setTimeoutMillis(httpRequest.getTimeOut());
   try {
-    builder.sendRequest(is_get ? null : value,new RequestCallback(){
+    Request request=builder.sendRequest(is_get ? null : value,new RequestCallback(){
       @Override public void onResponseReceived(      Request request,      Response response){
-        httpResultListener.handleHttpResponse(new HttpClientResponse(response));
+        HttpRequest httpRequest=requests.findKey(requests,true);
+        if (httpRequest != null) {
+          httpResultListener.handleHttpResponse(new HttpClientResponse(response));
+          requests.remove(httpRequest);
+          listeners.remove(httpRequest);
+        }
       }
       @Override public void onError(      Request request,      Throwable exception){
-        httpResultListener.failed(exception);
+        HttpRequest httpRequest=requests.findKey(requests,true);
+        if (httpRequest != null) {
+          httpResultListener.failed(exception);
+          requests.remove(httpRequest);
+          listeners.remove(httpRequest);
+        }
       }
     }
 );
+    requests.put(httpRequest,request);
+    listeners.put(httpRequest,httpResultListener);
   }
  catch (  RequestException e) {
     httpResultListener.failed(e);

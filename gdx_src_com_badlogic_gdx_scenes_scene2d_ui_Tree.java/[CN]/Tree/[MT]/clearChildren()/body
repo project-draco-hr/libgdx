@@ -1,7 +1,6 @@
 {
   super.clearChildren();
-  rootNodes.clear();
-  selectedNodes.clear();
   setOverNode(null);
-  fireChangeEvent();
+  rootNodes.clear();
+  selection.clear();
 }

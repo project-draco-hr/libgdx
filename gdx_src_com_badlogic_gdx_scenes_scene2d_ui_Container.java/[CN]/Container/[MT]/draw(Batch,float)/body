@@ -1,0 +1,22 @@
+{
+  validate();
+  if (widget == null)   return;
+  if (isTransform()) {
+    applyTransform(batch,computeTransform());
+    drawBackground(batch,parentAlpha,0,0);
+    if (clip) {
+      batch.flush();
+      boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(padLeft,padBottom,getWidth() - padLeft - padRight,getHeight() - padBottom - padTop);
+      if (draw) {
+        drawChildren(batch,parentAlpha);
+        clipEnd();
+      }
+    }
+ else     drawChildren(batch,parentAlpha);
+    resetTransform(batch);
+  }
+ else {
+    drawBackground(batch,parentAlpha,getX(),getY());
+    super.draw(batch,parentAlpha);
+  }
+}

@@ -1,0 +1,5 @@
+{
+  float v=maxWidth == null ? (widget instanceof Layout ? ((Layout)widget).getMaxWidth() : widget.getWidth()) : maxWidth;
+  if (v > 0)   v+=padLeft + padRight;
+  return v;
+}

@@ -1,5 +1,0 @@
-{
-  IntBuffer buffer=toBuffer(params,offset);
-  GL.glGetTexEnviv(env,pname,buffer,0);
-  toArray(buffer,params,offset);
-}

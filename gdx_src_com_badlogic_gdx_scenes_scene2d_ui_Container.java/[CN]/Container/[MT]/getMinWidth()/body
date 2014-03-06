@@ -1,0 +1,3 @@
+{
+  return (minWidth == null ? (widget instanceof Layout ? ((Layout)widget).getMinWidth() : widget.getWidth()) : minWidth) + padLeft + padRight;
+}

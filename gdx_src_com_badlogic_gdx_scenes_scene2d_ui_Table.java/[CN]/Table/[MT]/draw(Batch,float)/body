@@ -1,10 +1,18 @@
 {
   validate();
-  drawBackground(batch,parentAlpha);
   if (isTransform()) {
     applyTransform(batch,computeTransform());
+    drawBackground(batch,parentAlpha,0,0);
     if (clip) {
-      boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(layout.getPadLeft(),layout.getPadBottom(),getWidth() - layout.getPadLeft() - layout.getPadRight(),getHeight() - layout.getPadBottom() - layout.getPadTop());
+      batch.flush();
+      float x=0, y=0, width=getWidth(), height=getHeight();
+      if (background != null) {
+        x=layout.getPadLeft();
+        y=layout.getPadBottom();
+        width-=layout.getPadLeft() + layout.getPadRight();
+        height-=layout.getPadBottom() + layout.getPadTop();
+      }
+      boolean draw=clipBegin(x,y,width,height);
       if (draw) {
         drawChildren(batch,parentAlpha);
         clipEnd();
@@ -13,5 +21,8 @@
  else     drawChildren(batch,parentAlpha);
     resetTransform(batch);
   }
- else   super.draw(batch,parentAlpha);
+ else {
+    drawBackground(batch,parentAlpha,getX(),getY());
+    super.draw(batch,parentAlpha);
+  }
 }

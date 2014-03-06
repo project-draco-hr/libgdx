@@ -1,5 +1,5 @@
 {
   this.name=name;
-  this.type=type;
+  this.type=new CachedTypeLookup(type);
   this.jnsi=jnsi;
 }

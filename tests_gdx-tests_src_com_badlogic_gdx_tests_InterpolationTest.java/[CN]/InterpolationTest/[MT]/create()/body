@@ -10,10 +10,11 @@
   interpolationNames=new String[interpolationMembers];
   for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationNames[i]=interpolationFields[i].getName();
   selectedInterpolation=interpolationNames[0];
-  list=new List(interpolationNames,skin);
+  list=new List(skin);
+  list.setItems(interpolationNames);
   list.addListener(new ChangeListener(){
     public void changed(    ChangeEvent event,    Actor actor){
-      selectedInterpolation=list.getSelection();
+      selectedInterpolation=list.getSelected();
       time=0;
       resetPositions();
     }

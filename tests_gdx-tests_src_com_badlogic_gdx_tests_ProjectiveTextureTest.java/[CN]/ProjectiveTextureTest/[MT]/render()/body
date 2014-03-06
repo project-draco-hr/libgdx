@@ -7,7 +7,7 @@
   projector.update();
   texture.bind();
   projTexShader.begin();
-  if (camera.getSelectionIndex() == 0) {
+  if (camera.getSelectedIndex() == 0) {
     renderMesh(projTexShader,cam.combined,projector.combined,planeTrans,plane,Color.WHITE);
   }
  else {

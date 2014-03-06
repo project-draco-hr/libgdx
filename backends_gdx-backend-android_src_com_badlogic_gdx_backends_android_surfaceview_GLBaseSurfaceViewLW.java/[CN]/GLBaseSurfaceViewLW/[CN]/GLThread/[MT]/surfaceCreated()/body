@@ -1,9 +1,0 @@
-{
-synchronized (sGLThreadManager) {
-    if (LOG_THREADS) {
-      Log.i("GLThread","surfaceCreated tid=" + getId());
-    }
-    mHasSurface=true;
-    sGLThreadManager.notifyAll();
-  }
-}
