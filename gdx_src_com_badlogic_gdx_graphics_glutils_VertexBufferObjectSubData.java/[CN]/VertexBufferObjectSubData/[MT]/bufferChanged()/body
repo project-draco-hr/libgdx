@@ -1,13 +1,6 @@
 {
   if (isBound) {
-    if (Gdx.gl20 != null) {
-      GL20 gl=Gdx.gl20;
-      gl.glBufferSubData(GL20.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
-    }
- else {
-      GL11 gl=Gdx.gl11;
-      gl.glBufferSubData(GL11.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
-    }
+    Gdx.gl20.glBufferSubData(GL20.GL_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
     isDirty=false;
   }
 }

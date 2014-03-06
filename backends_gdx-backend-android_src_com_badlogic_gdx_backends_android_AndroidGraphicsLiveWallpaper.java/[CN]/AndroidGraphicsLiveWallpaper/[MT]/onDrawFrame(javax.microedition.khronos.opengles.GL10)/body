@@ -34,7 +34,7 @@ synchronized (synch) {
     app.listener.resume();
     Gdx.app.log("AndroidGraphics","resumed");
   }
-  if (lrunning && (Gdx.graphics.getGL10() != null || Gdx.graphics.getGL11() != null || Gdx.graphics.getGL20() != null)) {
+  if (lrunning && (Gdx.graphics.getGL20() != null)) {
 synchronized (app.runnables) {
       app.executedRunnables.clear();
       app.executedRunnables.addAll(app.runnables);

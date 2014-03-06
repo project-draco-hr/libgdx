@@ -1,5 +1,0 @@
-{
-  FloatBuffer buffer=toBuffer(params,offset);
-  GL.glGetLightfv(light,pname,buffer,0);
-  toArray(buffer,params,offset);
-}

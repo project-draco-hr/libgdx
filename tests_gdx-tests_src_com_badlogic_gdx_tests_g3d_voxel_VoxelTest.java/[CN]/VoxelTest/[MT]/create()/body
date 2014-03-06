@@ -3,7 +3,6 @@
   font=new BitmapFont();
   modelBatch=new ModelBatch();
   DefaultShader.defaultCullFace=GL20.GL_FRONT;
-  GLES10Shader.defaultCullFace=GL20.GL_FRONT;
   camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   camera.near=0.5f;
   camera.far=1000;

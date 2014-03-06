@@ -1,8 +1,7 @@
 {
   if (getDebug() == Debug.none || debugRects == null)   return;
   if (debugRenderer == null) {
-    if (Gdx.graphics.isGL20Available())     debugRenderer=new ImmediateModeRenderer20(64,false,true,0);
- else     debugRenderer=new ImmediateModeRenderer10(64);
+    debugRenderer=new ImmediateModeRenderer20(64,false,true,0);
   }
   float x=0, y=0;
   Actor parent=getTable();
@@ -13,7 +12,7 @@
     }
     parent=parent.getParent();
   }
-  debugRenderer.begin(batch.getProjectionMatrix(),GL10.GL_LINES);
+  debugRenderer.begin(batch.getProjectionMatrix(),GL20.GL_LINES);
   for (int i=0, n=debugRects.size; i < n; i++) {
     DebugRect rect=debugRects.get(i);
     float x1=x + rect.x;
@@ -41,7 +40,7 @@
     debugRenderer.vertex(x1,y1,0);
     if (debugRenderer.getNumVertices() == 64) {
       debugRenderer.end();
-      debugRenderer.begin(batch.getProjectionMatrix(),GL10.GL_LINES);
+      debugRenderer.begin(batch.getProjectionMatrix(),GL20.GL_LINES);
     }
   }
   debugRenderer.end();

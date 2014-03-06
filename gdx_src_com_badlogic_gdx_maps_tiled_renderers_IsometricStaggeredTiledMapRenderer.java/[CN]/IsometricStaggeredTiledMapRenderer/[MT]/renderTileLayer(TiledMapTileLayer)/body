@@ -1,12 +1,19 @@
 {
   final Color batchColor=spriteBatch.getColor();
   final float color=Color.toFloatBits(batchColor.r,batchColor.g,batchColor.b,batchColor.a * layer.getOpacity());
-  float tileWidth=layer.getTileWidth() * unitScale;
-  float tileHeight=layer.getTileHeight() * unitScale;
-  float halfTileWidth=tileWidth * 0.5f;
-  float halfTileHeight=tileHeight * 0.5f;
-  for (int y=layer.getHeight() - 1; y >= 0; y--) {
-    for (int x=layer.getWidth() - 1; x >= 0; x--) {
+  final int layerWidth=layer.getWidth();
+  final int layerHeight=layer.getHeight();
+  final float layerTileWidth=layer.getTileWidth() * unitScale;
+  final float layerTileHeight=layer.getTileHeight() * unitScale;
+  final float layerTileWidth50=layerTileWidth * 0.50f;
+  final float layerTileHeight50=layerTileHeight * 0.50f;
+  final int minX=Math.max(0,(int)(((viewBounds.x - layerTileWidth50) / layerTileWidth)));
+  final int maxX=Math.min(layerWidth,(int)((viewBounds.x + viewBounds.width + layerTileWidth+ layerTileWidth50) / layerTileWidth));
+  final int minY=Math.max(0,(int)(((viewBounds.y - layerTileHeight) / layerTileHeight)));
+  final int maxY=Math.min(layerHeight,(int)((viewBounds.y + viewBounds.height + layerTileHeight) / layerTileHeight50));
+  for (int y=maxY - 1; y >= minY; y--) {
+    float offsetX=(y % 2 == 1) ? layerTileWidth50 : 0;
+    for (int x=maxX - 1; x >= minX; x--) {
       final TiledMapTileLayer.Cell cell=layer.getCell(x,y);
       if (cell == null)       continue;
       final TiledMapTile tile=cell.getTile();
@@ -15,8 +22,8 @@
         final boolean flipY=cell.getFlipVertically();
         final int rotations=cell.getRotation();
         TextureRegion region=tile.getTextureRegion();
-        float x1=(x * tileWidth) - ((y % 2 == 1) ? halfTileWidth : 0);
-        float y1=y * halfTileHeight;
+        float x1=x * layerTileWidth - offsetX;
+        float y1=y * layerTileHeight50;
         float x2=x1 + region.getRegionWidth() * unitScale;
         float y2=y1 + region.getRegionHeight() * unitScale;
         float u1=region.getU();

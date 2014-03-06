@@ -1,6 +1,0 @@
-{
-  if (LOG_VIEW) {
-    Log.d(TAG," > onPause() " + this.hashCode());
-  }
-  mGLThread.onPause();
-}

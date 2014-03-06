@@ -1,6 +1,6 @@
 {
   Rectangle old=scissors.pop();
-  if (scissors.size == 0)   Gdx.gl.glDisable(GL10.GL_SCISSOR_TEST);
+  if (scissors.size == 0)   Gdx.gl.glDisable(GL20.GL_SCISSOR_TEST);
  else {
     Rectangle scissor=scissors.peek();
     Gdx.gl.glScissor((int)scissor.x,(int)scissor.y,(int)scissor.width,(int)scissor.height);

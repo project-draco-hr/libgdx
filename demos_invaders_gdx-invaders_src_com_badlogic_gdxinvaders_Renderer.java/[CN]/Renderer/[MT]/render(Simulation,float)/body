@@ -1,9 +1,9 @@
 {
   GLCommon gl=Gdx.gl;
-  gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+  gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
   renderBackground();
-  gl.glEnable(GL10.GL_DEPTH_TEST);
-  gl.glEnable(GL10.GL_CULL_FACE);
+  gl.glEnable(GL20.GL_DEPTH_TEST);
+  gl.glEnable(GL20.GL_CULL_FACE);
   setProjectionAndCamera(simulation.ship);
   modelBatch.begin(camera);
   modelBatch.render(simulation.explosions);
@@ -12,8 +12,8 @@
   modelBatch.render(simulation.blocks);
   modelBatch.render(simulation.shots);
   modelBatch.end();
-  gl.glDisable(GL10.GL_CULL_FACE);
-  gl.glDisable(GL10.GL_DEPTH_TEST);
+  gl.glDisable(GL20.GL_CULL_FACE);
+  gl.glDisable(GL20.GL_DEPTH_TEST);
   spriteBatch.setProjectionMatrix(viewMatrix);
   spriteBatch.begin();
   if (simulation.ship.lives != lastLives || simulation.score != lastScore || simulation.wave != lastWave) {

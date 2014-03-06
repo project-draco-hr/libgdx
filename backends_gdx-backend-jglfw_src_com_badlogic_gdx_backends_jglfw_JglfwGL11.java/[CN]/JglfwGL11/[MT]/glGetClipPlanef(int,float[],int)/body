@@ -1,5 +1,0 @@
-{
-  FloatBuffer buffer=toBuffer(eqn,offset);
-  GL.glGetClipPlane(pname,buffer,0);
-  toArray(buffer,eqn,offset);
-}
