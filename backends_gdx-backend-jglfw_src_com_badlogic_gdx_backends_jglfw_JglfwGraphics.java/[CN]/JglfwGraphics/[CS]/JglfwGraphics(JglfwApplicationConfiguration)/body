@@ -19,8 +19,7 @@
   glMinorVersion=Integer.parseInt("" + version.charAt(2));
   if (glMajorVersion < 2)   throw new RuntimeException("Libgdx requires OpenGL ES 2.0");
   gl20=new JglfwGL20();
-  gl=gl20;
-  Gdx.gl=gl;
+  Gdx.gl=gl20;
   Gdx.gl20=gl20;
   if (!config.hidden)   show();
 }

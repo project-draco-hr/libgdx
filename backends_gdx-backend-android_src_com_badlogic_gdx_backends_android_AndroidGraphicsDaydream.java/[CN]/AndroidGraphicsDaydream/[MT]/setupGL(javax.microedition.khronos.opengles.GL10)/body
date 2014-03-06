@@ -1,8 +1,7 @@
 {
   if (gl20 != null)   return;
   gl20=new AndroidGL20();
-  this.gl=gl20;
-  Gdx.gl=this.gl;
+  Gdx.gl=gl20;
   Gdx.gl20=gl20;
   Gdx.app.log("AndroidGraphics","OGL renderer: " + gl.glGetString(GL10.GL_RENDERER));
   Gdx.app.log("AndroidGraphics","OGL vendor: " + gl.glGetString(GL10.GL_VENDOR));
