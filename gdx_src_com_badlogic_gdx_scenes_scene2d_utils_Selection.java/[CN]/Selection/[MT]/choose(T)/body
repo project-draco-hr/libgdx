@@ -1,0 +1,20 @@
+{
+  if (isDisabled)   return;
+  snapshot();
+  if ((toggle || (!required && selected.size == 1) || isCtrlPressed()) && selected.contains(item)) {
+    if (required && selected.size == 1)     return;
+    selected.remove(item);
+    lastSelected=null;
+  }
+ else {
+    boolean modified=false;
+    if (!multiple || (!toggle && !isCtrlPressed())) {
+      modified=selected.size > 0;
+      selected.clear();
+    }
+    if (!selected.add(item) && !modified)     return;
+    lastSelected=item;
+  }
+  if (fireChangeEvent())   revert();
+  cleanup();
+}

@@ -15,7 +15,7 @@ return -1;
 if (reused) {
 reuseCount++;
 if (rebind) texture.bind(result);
- else Gdx.gl.glActiveTexture(GL10.GL_TEXTURE0 + result);
+ else Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0 + result);
 }
  else bindCount++;
 texture.unsafeSetWrap(textureDesc.uWrap,textureDesc.vWrap);

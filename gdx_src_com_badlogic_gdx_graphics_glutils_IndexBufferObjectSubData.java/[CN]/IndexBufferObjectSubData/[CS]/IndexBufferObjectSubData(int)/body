@@ -1,7 +1,7 @@
 {
   byteBuffer=BufferUtils.newByteBuffer(maxIndices * 2);
   this.isDirect=true;
-  usage=GL11.GL_STATIC_DRAW;
+  usage=GL20.GL_STATIC_DRAW;
   buffer=byteBuffer.asShortBuffer();
   buffer.flip();
   byteBuffer.flip();

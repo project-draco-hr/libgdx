@@ -1,0 +1,7 @@
+{
+  pauseMillis=TimeUtils.nanoTime() / 1000000;
+synchronized (instances) {
+    app=null;
+    wake();
+  }
+}

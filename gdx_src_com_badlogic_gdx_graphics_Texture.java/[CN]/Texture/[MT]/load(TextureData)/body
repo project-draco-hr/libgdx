@@ -3,7 +3,7 @@
   this.data=data;
   if (!data.isPrepared())   data.prepare();
   bind();
-  uploadImageData(GL10.GL_TEXTURE_2D,data);
+  uploadImageData(GL20.GL_TEXTURE_2D,data);
   setFilter(minFilter,magFilter);
   setWrap(uWrap,vWrap);
   Gdx.gl.glBindTexture(glTarget,0);

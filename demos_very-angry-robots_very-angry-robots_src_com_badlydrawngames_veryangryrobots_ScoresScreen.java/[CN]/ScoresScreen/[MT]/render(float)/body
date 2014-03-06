@@ -9,7 +9,7 @@
   }
  else {
     Gdx.gl.glClearColor(0.0f,0.0f,0.0f,1.0f);
-    Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     spriteBatch.begin();
     Assets.scoreFont.setColor(Color.WHITE);
     TextBounds b=Assets.scoreFont.getBounds(LAST_SCORE);

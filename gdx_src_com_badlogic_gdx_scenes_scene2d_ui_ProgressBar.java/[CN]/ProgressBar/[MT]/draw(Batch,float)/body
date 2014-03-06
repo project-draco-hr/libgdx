@@ -1,0 +1,51 @@
+{
+  ProgressBarStyle style=this.style;
+  boolean disabled=this.disabled;
+  final Drawable knob=(disabled && style.disabledKnob != null) ? style.disabledKnob : style.knob;
+  final Drawable bg=(disabled && style.disabledBackground != null) ? style.disabledBackground : style.background;
+  final Drawable knobBefore=(disabled && style.disabledKnobBefore != null) ? style.disabledKnobBefore : style.knobBefore;
+  final Drawable knobAfter=(disabled && style.disabledKnobAfter != null) ? style.disabledKnobAfter : style.knobAfter;
+  Color color=getColor();
+  float x=getX();
+  float y=getY();
+  float width=getWidth();
+  float height=getHeight();
+  float knobHeight=knob == null ? 0 : knob.getMinHeight();
+  float knobWidth=knob == null ? 0 : knob.getMinWidth();
+  float value=getVisualValue();
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  if (vertical) {
+    bg.draw(batch,x + (int)((width - bg.getMinWidth()) * 0.5f),y,bg.getMinWidth(),height);
+    float positionHeight=height - (bg.getTopHeight() + bg.getBottomHeight());
+    if (min != max) {
+      position=(value - min) / (max - min) * (positionHeight - knobHeight);
+      position=Math.max(0,position);
+      position=Math.min(positionHeight - knobHeight,position) + bg.getBottomHeight();
+    }
+    float knobHeightHalf=knobHeight * 0.5f;
+    if (knobBefore != null) {
+      knobBefore.draw(batch,x + (int)((width - knobBefore.getMinWidth()) * 0.5f),y,knobBefore.getMinWidth(),(int)(position + knobHeightHalf));
+    }
+    if (knobAfter != null) {
+      knobAfter.draw(batch,x + (int)((width - knobAfter.getMinWidth()) * 0.5f),y + (int)(position + knobHeightHalf),knobAfter.getMinWidth(),height - (int)(position + knobHeightHalf));
+    }
+    if (knob != null)     knob.draw(batch,x + (int)((width - knobWidth) * 0.5f),(int)(y + position),knobWidth,knobHeight);
+  }
+ else {
+    bg.draw(batch,x,y + (int)((height - bg.getMinHeight()) * 0.5f),width,bg.getMinHeight());
+    float positionWidth=width - (bg.getLeftWidth() + bg.getRightWidth());
+    if (min != max) {
+      position=(value - min) / (max - min) * (positionWidth - knobWidth);
+      position=Math.max(0,position);
+      position=Math.min(positionWidth - knobWidth,position) + bg.getLeftWidth();
+    }
+    float knobWidthHalf=knobWidth * 0.5f;
+    if (knobBefore != null) {
+      knobBefore.draw(batch,x,y + (int)((height - knobBefore.getMinHeight()) * 0.5f),(int)(position + knobWidthHalf),knobBefore.getMinHeight());
+    }
+    if (knobAfter != null) {
+      knobAfter.draw(batch,x + (int)(position + knobWidthHalf),y + (int)((height - knobAfter.getMinHeight()) * 0.5f),width - (int)(position + knobWidthHalf),knobAfter.getMinHeight());
+    }
+    if (knob != null)     knob.draw(batch,(int)(x + position),(int)(y + (height - knobHeight) * 0.5f),knobWidth,knobHeight);
+  }
+}

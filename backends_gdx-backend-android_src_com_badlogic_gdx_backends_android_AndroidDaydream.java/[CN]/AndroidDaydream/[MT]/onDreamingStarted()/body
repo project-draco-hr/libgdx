@@ -7,8 +7,6 @@
   Gdx.net=this.getNet();
   ((AndroidInput)getInput()).registerSensorListeners();
   if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
-    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onResume();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
   }
   if (!firstResume) {

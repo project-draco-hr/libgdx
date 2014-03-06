@@ -3,7 +3,7 @@
   long startPhysics=TimeUtils.nanoTime();
   field.tick((long)(Gdx.graphics.getDeltaTime() * 3000),4);
   physicsMean.addValue((TimeUtils.nanoTime() - startPhysics) / 1000000000.0f);
-  gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   cam.viewportWidth=field.getWidth();
   cam.viewportHeight=field.getHeight();
   cam.position.set(field.getWidth() / 2,field.getHeight() / 2,0);

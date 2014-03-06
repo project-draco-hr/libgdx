@@ -1,4 +1,5 @@
 {
+  testName=originalToObfuscated.get(testName,testName);
   try {
     return forName(testName).newInstance();
   }

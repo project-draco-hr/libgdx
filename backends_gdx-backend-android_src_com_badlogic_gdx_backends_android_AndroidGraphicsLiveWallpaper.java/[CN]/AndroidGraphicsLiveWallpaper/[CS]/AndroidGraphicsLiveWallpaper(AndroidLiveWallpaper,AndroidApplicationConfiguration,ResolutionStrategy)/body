@@ -1,6 +1,6 @@
 {
   this.config=config;
   this.app=app;
-  view=createGLSurfaceView(app.service,config.useGL20,resolutionStrategy);
+  view=createGLSurfaceView(app.service,resolutionStrategy);
   setPreserveContext(view);
 }

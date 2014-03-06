@@ -3,7 +3,7 @@
   SnapshotArray<Actor> children=getChildren();
   int n=children.size;
   prefWidth=0;
-  prefHeight=spacing * (n - 1);
+  prefHeight=padTop + padBottom + spacing * (n - 1);
   for (int i=0; i < n; i++) {
     Actor child=children.get(i);
     if (child instanceof Layout) {
@@ -16,6 +16,7 @@
       prefHeight+=child.getHeight();
     }
   }
+  prefWidth+=padLeft + padRight;
   if (round) {
     prefWidth=Math.round(prefWidth);
     prefHeight=Math.round(prefHeight);

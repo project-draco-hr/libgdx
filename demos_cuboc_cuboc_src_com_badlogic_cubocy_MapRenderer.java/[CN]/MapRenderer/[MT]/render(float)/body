@@ -4,7 +4,7 @@
   cam.update();
   renderLaserBeams();
   cache.setProjectionMatrix(cam.combined);
-  Gdx.gl.glDisable(GL10.GL_BLEND);
+  Gdx.gl.glDisable(GL20.GL_BLEND);
   cache.begin();
   int b=0;
   for (int blockY=0; blockY < 4; blockY++) {

@@ -1,15 +1,3 @@
 {
-  float angle=DEGREE_TO_RAD * degrees;
-  float cos=(float)Math.cos(angle);
-  float sin=(float)Math.sin(angle);
-  this.val[M00]=cos;
-  this.val[M10]=sin;
-  this.val[M20]=0;
-  this.val[M01]=-sin;
-  this.val[M11]=cos;
-  this.val[M21]=0;
-  this.val[M02]=0;
-  this.val[M12]=0;
-  this.val[M22]=1;
-  return this;
+  return setToRotationRad(MathUtils.degreesToRadians * degrees);
 }

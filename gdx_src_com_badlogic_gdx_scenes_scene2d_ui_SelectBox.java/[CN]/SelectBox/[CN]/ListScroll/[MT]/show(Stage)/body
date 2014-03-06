@@ -2,10 +2,8 @@
   stage.addActor(this);
   SelectBox.this.localToStageCoordinates(tmpCoords.set(0,0));
   screenCoords.set(tmpCoords);
-  list.setItems(items);
-  list.setSelectedIndex(selectedIndex);
   float itemHeight=list.getItemHeight();
-  float height=itemHeight * (maxListCount <= 0 ? items.length : Math.min(maxListCount,items.length));
+  float height=itemHeight * (maxListCount <= 0 ? items.size : Math.min(maxListCount,items.size));
   Drawable background=getStyle().background;
   if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
   float heightBelow=tmpCoords.y;
@@ -23,7 +21,7 @@
   setX(tmpCoords.x);
   setWidth(SelectBox.this.getWidth());
   setHeight(height);
-  scrollToCenter(0,list.getHeight() - selectedIndex * itemHeight - itemHeight / 2,0,0);
+  scrollToCenter(0,list.getHeight() - getSelectedIndex() * itemHeight - itemHeight / 2,0,0);
   updateVisualScroll();
   clearActions();
   getColor().a=0;

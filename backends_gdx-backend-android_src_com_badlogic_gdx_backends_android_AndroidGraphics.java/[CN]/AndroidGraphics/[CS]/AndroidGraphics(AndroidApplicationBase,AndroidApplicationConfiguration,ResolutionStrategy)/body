@@ -1,6 +1,6 @@
 {
   this.config=config;
-  view=createGLSurfaceView(application,config.useGL20,resolutionStrategy);
+  view=createGLSurfaceView(application,resolutionStrategy);
   setPreserveContext(view);
   view.setFocusable(true);
   view.setFocusableInTouchMode(true);

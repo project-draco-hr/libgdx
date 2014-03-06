@@ -1,42 +1,28 @@
 {
   addListener(clickListener=new ClickListener(){
-    private boolean isCtrlPressed(){
-      if (isMac)       return Gdx.input.isKeyPressed(Keys.SYM);
- else       return Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
-    }
     public void clicked(    InputEvent event,    float x,    float y){
       Node node=getNodeAt(y);
       if (node == null)       return;
       if (node != getNodeAt(getTouchDownY()))       return;
-      if (multiSelect && selectedNodes.size > 0 && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
-        float low=selectedNodes.first().actor.getY();
+      if (selection.getMultiple() && selection.hasItems() && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
+        float low=selection.getLastSelected().actor.getY();
         float high=node.actor.getY();
-        if (!isCtrlPressed())         selectedNodes.clear();
+        if (!Selection.isCtrlPressed())         selection.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
-        fireChangeEvent();
+        selection.fireChangeEvent();
         return;
       }
-      if (!multiSelect || !isCtrlPressed()) {
-        if (node.children.size > 0) {
-          float rowX=node.actor.getX();
-          if (node.icon != null)           rowX-=iconSpacingRight + node.icon.getMinWidth();
-          if (x < rowX) {
-            node.setExpanded(!node.expanded);
-            return;
-          }
-        }
-        if (!node.isSelectable())         return;
-        boolean unselect=toggleSelect && selectedNodes.size == 1 && selectedNodes.contains(node,true);
-        selectedNodes.clear();
-        if (unselect) {
-          fireChangeEvent();
+      if (node.children.size > 0 && (!selection.getMultiple() || !Selection.isCtrlPressed())) {
+        float rowX=node.actor.getX();
+        if (node.icon != null)         rowX-=iconSpacingRight + node.icon.getMinWidth();
+        if (x < rowX) {
+          node.setExpanded(!node.expanded);
           return;
         }
       }
- else       if (!node.isSelectable())       return;
-      if (!selectedNodes.removeValue(node,true))       selectedNodes.add(node);
-      fireChangeEvent();
+      if (!node.isSelectable())       return;
+      selection.choose(node);
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
       setOverNode(getNodeAt(y));

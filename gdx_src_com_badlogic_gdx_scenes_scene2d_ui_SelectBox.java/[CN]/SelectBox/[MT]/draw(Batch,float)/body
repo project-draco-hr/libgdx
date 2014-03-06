@@ -1,7 +1,8 @@
 {
+  validate();
   Drawable background;
   if (disabled && style.backgroundDisabled != null)   background=style.backgroundDisabled;
- else   if (scroll != null && scroll.getParent() != null && style.backgroundOpen != null)   background=style.backgroundOpen;
+ else   if (scroll.hasParent() && style.backgroundOpen != null)   background=style.backgroundOpen;
  else   if (clickListener.isOver() && style.backgroundOver != null)   background=style.backgroundOver;
  else   background=style.background;
   final BitmapFont font=style.font;
@@ -13,13 +14,15 @@
   float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   background.draw(batch,x,y,width,height);
-  if (items.length > 0) {
+  T selected=this.selected != null ? this.selected : selection.first();
+  if (selected != null) {
     float availableWidth=width - background.getLeftWidth() - background.getRightWidth();
-    int numGlyphs=font.computeVisibleGlyphs(items[selectedIndex],0,items[selectedIndex].length(),availableWidth);
-    bounds.set(font.getBounds(items[selectedIndex]));
+    String string=selected.toString();
+    int numGlyphs=font.computeVisibleGlyphs(string,0,string.length(),availableWidth);
+    bounds.set(font.getBounds(string));
     height-=background.getBottomHeight() + background.getTopHeight();
     float textY=(int)(height / 2 + background.getBottomHeight() + bounds.height / 2);
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,items[selectedIndex],x + background.getLeftWidth(),y + textY,0,numGlyphs);
+    font.draw(batch,string,x + background.getLeftWidth(),y + textY,0,numGlyphs);
   }
 }

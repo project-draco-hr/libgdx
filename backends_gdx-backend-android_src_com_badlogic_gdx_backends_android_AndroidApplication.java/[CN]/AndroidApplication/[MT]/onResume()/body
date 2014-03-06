@@ -7,13 +7,16 @@
   Gdx.net=this.getNet();
   ((AndroidInput)getInput()).registerSensorListeners();
   if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewCupcake)     ((GLSurfaceViewCupcake)graphics.view).onResume();
-    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onResume();
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
   }
   if (!firstResume) {
     graphics.resume();
   }
  else   firstResume=false;
+  this.isWaitingForAudio=true;
+  if (this.wasFocusChanged == 1 || this.wasFocusChanged == -1) {
+    this.audio.resume();
+    this.isWaitingForAudio=false;
+  }
   super.onResume();
 }

@@ -137,7 +137,7 @@
     ModelMeshPart part=new ModelMeshPart();
     part.id=partId;
     part.indices=finalIndices;
-    part.primitiveType=GL10.GL_TRIANGLES;
+    part.primitiveType=GL20.GL_TRIANGLES;
     ModelMesh mesh=new ModelMesh();
     mesh.id=meshId;
     mesh.attributes=attributes.toArray(VertexAttribute.class);

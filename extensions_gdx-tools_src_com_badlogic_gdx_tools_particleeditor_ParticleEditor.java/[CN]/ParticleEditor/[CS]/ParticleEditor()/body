@@ -1,6 +1,6 @@
 {
   super("Particle Editor");
-  lwjglCanvas=new LwjglCanvas(new Renderer(),false);
+  lwjglCanvas=new LwjglCanvas(new Renderer());
   addWindowListener(new WindowAdapter(){
     public void windowClosed(    WindowEvent event){
       System.exit(0);

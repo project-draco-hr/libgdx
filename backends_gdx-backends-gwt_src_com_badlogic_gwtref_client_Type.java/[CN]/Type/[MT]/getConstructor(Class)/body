@@ -1,8 +1,6 @@
 {
-  if (constructors != null) {
-    for (    Constructor c : constructors) {
-      if (c.isPublic() && c.match(parameterTypes))       return c;
-    }
+  for (  Constructor c : constructors) {
+    if (c.isPublic() && c.match(parameterTypes))     return c;
   }
   throw new NoSuchMethodException();
 }

@@ -1,4 +1,3 @@
 {
-  direction.set(target).sub(position).nor();
-  normalizeUp();
+  lookAt(target.x,target.y,target.z);
 }

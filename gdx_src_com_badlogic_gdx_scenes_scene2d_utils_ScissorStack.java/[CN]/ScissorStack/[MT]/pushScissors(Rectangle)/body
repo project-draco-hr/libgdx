@@ -2,7 +2,7 @@
   fix(scissor);
   if (scissors.size == 0) {
     if (scissor.width < 1 || scissor.height < 1)     return false;
-    Gdx.gl.glEnable(GL10.GL_SCISSOR_TEST);
+    Gdx.gl.glEnable(GL20.GL_SCISSOR_TEST);
   }
  else {
     Rectangle parent=scissors.get(scissors.size - 1);
