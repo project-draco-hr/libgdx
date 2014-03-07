@@ -53,7 +53,13 @@
             createDisplayPixelFormat();
             return;
           }
-          throw new GdxRuntimeException("OpenGL is not supported by the video driver.",ex3);
+          String glInfo=".";
+          try {
+            glInfo=": " + GL11.glGetString(GL11.GL_VENDOR) + " "+ GL11.glGetString(GL11.GL_RENDERER)+ " "+ GL11.glGetString(GL11.GL_VERSION);
+          }
+ catch (          Throwable ignored) {
+          }
+          throw new GdxRuntimeException("OpenGL is not supported by the video driver" + glInfo,ex3);
         }
         throw new GdxRuntimeException("Unable to create OpenGL display.",ex3);
       }

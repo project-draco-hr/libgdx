@@ -2,7 +2,7 @@
   try {
     Class<?> clazz=null;
     AndroidInput input=null;
-    int sdkVersion=Integer.parseInt(android.os.Build.VERSION.SDK);
+    int sdkVersion=android.os.Build.VERSION.SDK_INT;
     if (sdkVersion >= 12) {
       clazz=Class.forName("com.badlogic.gdx.backends.android.AndroidInputThreePlus");
     }

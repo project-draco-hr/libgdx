@@ -1,0 +1,6 @@
+{
+  super.onCreate(savedInstanceState);
+  List<String> testNames=GdxTests.getNames();
+  setListAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,testNames));
+  prefs=getActivity().getSharedPreferences("libgdx-tests",Context.MODE_PRIVATE);
+}
