@@ -19,7 +19,4 @@
   }
   mesh.render(customShader != null ? customShader : shader,GL20.GL_TRIANGLES,0,count);
   idx=0;
-  currBufferIdx++;
-  if (currBufferIdx == buffers.length)   currBufferIdx=0;
-  this.mesh=buffers[currBufferIdx];
 }

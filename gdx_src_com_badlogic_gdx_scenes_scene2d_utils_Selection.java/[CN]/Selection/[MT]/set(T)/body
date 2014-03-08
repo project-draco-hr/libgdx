@@ -1,4 +1,5 @@
 {
+  if (item == null)   throw new IllegalArgumentException("item cannot be null.");
   if (selected.size == 1 && selected.first() == item)   return;
   snapshot();
   selected.clear();

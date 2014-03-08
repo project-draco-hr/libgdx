@@ -1,5 +1,5 @@
 {
-  GLCommon gl=Gdx.gl;
+  GL20 gl=Gdx.gl;
   long startPhysics=TimeUtils.nanoTime();
   field.tick((long)(Gdx.graphics.getDeltaTime() * 3000),4);
   physicsMean.addValue((TimeUtils.nanoTime() - startPhysics) / 1000000000.0f);

@@ -1,6 +1,5 @@
 {
   if (spriteBatch != null)   return;
-  Texture.setEnforcePotImages(false);
   spriteBatch=new SpriteBatch();
   worldCamera=new OrthographicCamera();
   textCamera=new OrthographicCamera();

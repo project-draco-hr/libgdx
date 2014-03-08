@@ -18,7 +18,4 @@
   mesh.render(customShader != null ? customShader : shader,GL20.GL_TRIANGLES,0,trianglesInBatch);
   vertexIndex=0;
   triangleIndex=0;
-  bufferIndex++;
-  if (bufferIndex == buffers.length)   bufferIndex=0;
-  this.mesh=buffers[bufferIndex];
 }
