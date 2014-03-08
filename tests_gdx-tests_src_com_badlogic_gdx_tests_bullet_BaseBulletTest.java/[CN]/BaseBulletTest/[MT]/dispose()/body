@@ -7,6 +7,7 @@
   modelBatch=null;
   shadowBatch.dispose();
   shadowBatch=null;
-  shadowLight=null;
+  if (shadows)   ((DirectionalShadowLight)light).dispose();
+  light=null;
   super.dispose();
 }
