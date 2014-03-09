@@ -21,7 +21,7 @@
   u_cameraUp=register(Inputs.cameraUp,Setters.cameraUp);
   u_time=register(new Uniform("u_time"));
   u_worldTrans=register(Inputs.worldTrans,Setters.worldTrans);
-  u_viewWorldTrans=register(Inputs.worldViewTrans,Setters.worldViewTrans);
+  u_viewWorldTrans=register(Inputs.viewWorldTrans,Setters.viewWorldTrans);
   u_projViewWorldTrans=register(Inputs.projViewWorldTrans,Setters.projViewWorldTrans);
   u_normalMatrix=register(Inputs.normalMatrix,Setters.normalMatrix);
   u_bones=(renderable.bones != null && config.numBones > 0) ? register(Inputs.bones,new Setters.Bones(config.numBones)) : -1;
