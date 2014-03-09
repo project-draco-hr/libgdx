@@ -41,7 +41,9 @@
           callback.update(state);
           if (state.hasEnded()) {
             getRootPanel().clear();
+            if (loadingListener != null)             loadingListener.beforeSetup();
             setupLoop();
+            if (loadingListener != null)             loadingListener.afterSetup();
           }
         }
       }
