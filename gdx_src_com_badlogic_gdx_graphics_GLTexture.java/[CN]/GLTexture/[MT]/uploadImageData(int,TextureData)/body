@@ -3,9 +3,6 @@
     return;
   }
   if (!data.isPrepared())   data.prepare();
-  if (enforcePotImages && Gdx.gl20 == null && (!MathUtils.isPowerOfTwo(data.getWidth()) || !MathUtils.isPowerOfTwo(data.getHeight()))) {
-    throw new GdxRuntimeException("Texture width and height must be powers of two: " + data.getWidth() + "x"+ data.getHeight());
-  }
   final TextureDataType type=data.getType();
   if (type == TextureDataType.Compressed || type == TextureDataType.Float) {
     data.consumeCompressedData(target);
