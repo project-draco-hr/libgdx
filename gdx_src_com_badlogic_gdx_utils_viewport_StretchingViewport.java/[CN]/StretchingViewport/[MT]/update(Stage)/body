@@ -1,0 +1,7 @@
+{
+  stage.setViewport(virtualWidth,virtualHeight,false);
+  if (stage.getRoot().getChildren().size == 1 && stage.getRoot().getChildren().get(0) instanceof Table) {
+    Table rootTable=(Table)stage.getRoot().getChildren().get(0);
+    rootTable.setSize(virtualWidth,virtualHeight);
+  }
+}

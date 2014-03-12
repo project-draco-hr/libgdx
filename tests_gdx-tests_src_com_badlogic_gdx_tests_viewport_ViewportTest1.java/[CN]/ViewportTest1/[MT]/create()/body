@@ -1,0 +1,18 @@
+{
+  stage=new Stage();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Gdx.input.setInputProcessor(stage);
+  root=new Table();
+  stage.addActor(root);
+  root.setBackground(skin.getDrawable("default-pane"));
+  root.debug().defaults().space(6);
+  root.add(new TextButton("Button 1",skin));
+  button=new TextButton("Button 2",skin);
+  root.add(button);
+  root.add(new TextButton("Button 3",skin));
+  viewports.add(new StretchingViewport(300,200));
+  viewports.add(new FixedViewport(300,200));
+  viewports.add(new ScreenViewport());
+  viewport=viewports.first();
+  viewport.manage(stage);
+}

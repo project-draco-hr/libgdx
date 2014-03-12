@@ -1,0 +1,12 @@
+{
+  disabled=true;
+  Gdx.gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  for (  Camera camera : managedCameras) {
+    camera.viewportWidth=Gdx.graphics.getWidth();
+    camera.viewportHeight=Gdx.graphics.getHeight();
+    camera.update();
+  }
+  for (  Stage stage : managedStages) {
+    stage.setViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  }
+}
