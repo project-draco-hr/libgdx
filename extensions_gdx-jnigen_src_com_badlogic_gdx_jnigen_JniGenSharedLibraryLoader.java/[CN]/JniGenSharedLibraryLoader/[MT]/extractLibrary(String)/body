@@ -16,7 +16,7 @@
       if (nativesJar == null)       input=JniGenSharedLibraryLoader.class.getResourceAsStream("/" + sharedLibName);
  else       input=getFromJar(nativesJar,sharedLibName);
       if (input == null)       return null;
-      nativesDir.mkdirs();
+      nativeFile.getParentFile().mkdirs();
       FileOutputStream output=new FileOutputStream(nativeFile);
       byte[] buffer=new byte[4096];
       while (true) {
