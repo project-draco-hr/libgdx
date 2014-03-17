@@ -1,0 +1,12 @@
+{
+  this.nativesJar=nativesJar;
+  this.libraryFinder=libraryFinder;
+  if (nativesJar != null) {
+    try {
+      nativesZip=new ZipFile(nativesJar);
+    }
+ catch (    IOException e) {
+      nativesZip=null;
+    }
+  }
+}
