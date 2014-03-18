@@ -1,7 +1,7 @@
 {
   batch=new SpriteBatch();
   HttpRequest request=new HttpRequest(HttpMethods.GET);
-  request.setUrl("http://www.badlogicgames.com/wordpress/wp-content/uploads/2012/01/badlogic-new.png");
+  request.setUrl("https://www.google.at/images/srpr/logo11w.png");
   Gdx.net.sendHttpRequest(request,new HttpResponseListener(){
     @Override public void handleHttpResponse(    HttpResponse httpResponse){
       final byte[] bytes=httpResponse.getResult();
