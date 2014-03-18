@@ -12,7 +12,7 @@
       textureParams.minFilter=parameter.minFilter;
       textureParams.magFilter=parameter.magFilter;
     }
-    AssetDescriptor descriptor=new AssetDescriptor(data.getImagePath(i),Texture.class,textureParams);
+    AssetDescriptor descriptor=new AssetDescriptor(resolve(data.getImagePath(i)),Texture.class,textureParams);
     deps.add(descriptor);
   }
   return deps;
