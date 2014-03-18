@@ -1,5 +1,5 @@
 {
   batch.dispose();
   buttons.getTexture().dispose();
-  for (  Music m : music)   m.dispose();
+  music.dispose();
 }

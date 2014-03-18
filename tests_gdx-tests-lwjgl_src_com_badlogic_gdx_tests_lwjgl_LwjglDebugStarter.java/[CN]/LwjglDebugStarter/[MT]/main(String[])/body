@@ -1,5 +1,5 @@
 {
-  GdxTest test=new DownloadTest();
+  GdxTest test=new MusicTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  new LwjglApplication(new ContactListenerTest(),config);
+  new LwjglApplication(test,config);
 }
