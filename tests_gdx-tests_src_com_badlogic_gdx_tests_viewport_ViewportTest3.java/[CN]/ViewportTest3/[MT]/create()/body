@@ -9,9 +9,9 @@
   camera=new OrthographicCamera();
   camera.position.set(100,100,0);
   camera.update();
-  viewports.add(new StretchingViewport(300,200));
-  viewports.add(new FixedViewport(300,200));
-  viewports.add(new ScreenViewport());
+  viewports.add(new StretchedViewport(camera,300,200));
+  viewports.add(new FixedViewport(camera,300,200));
+  viewports.add(new ScreenViewport(camera));
+  viewports.add(new StaticViewport(camera,300,200));
   viewport=viewports.first();
-  viewport.manage(camera);
 }

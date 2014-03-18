@@ -3,14 +3,14 @@
   if (delay <= 0) {
     if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
       viewport=viewports.get((viewports.indexOf(viewport,true) + 1) % viewports.size);
-      viewport.manage(stage);
+      viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
       delay=1f;
     }
   }
-  label.setText(viewport.getClass().getSimpleName());
   Gdx.gl.glClearColor(0,0,0,1);
-  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-  stage.act(Gdx.graphics.getDeltaTime());
-  stage.draw();
-  Table.drawDebug(stage);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+  modelBatch.begin(camera);
+  modelBatch.render(backgroundInstance,environment);
+  modelBatch.render(boxInstance,environment);
+  modelBatch.end();
 }

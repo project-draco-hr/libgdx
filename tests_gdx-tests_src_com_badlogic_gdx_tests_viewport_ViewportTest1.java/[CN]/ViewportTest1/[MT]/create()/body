@@ -10,9 +10,9 @@
   button=new TextButton("Button 2",skin);
   root.add(button);
   root.add(new TextButton("Button 3",skin));
-  viewports.add(new StretchingViewport(300,200));
-  viewports.add(new FixedViewport(300,200));
-  viewports.add(new ScreenViewport());
+  viewports.add(new StretchedViewport(stage.getCamera(),300,200));
+  viewports.add(new FixedViewport(stage.getCamera(),300,200));
+  viewports.add(new ScreenViewport(stage.getCamera()));
+  viewports.add(new StaticViewport(stage.getCamera(),300,200));
   viewport=viewports.first();
-  viewport.manage(stage);
 }

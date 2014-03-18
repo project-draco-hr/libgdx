@@ -3,7 +3,8 @@
   if (delay <= 0) {
     if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
       viewport=viewports.get((viewports.indexOf(viewport,true) + 1) % viewports.size);
-      viewport.manage(stage);
+      viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+      viewport.updateStage(stage);
       delay=1f;
     }
   }

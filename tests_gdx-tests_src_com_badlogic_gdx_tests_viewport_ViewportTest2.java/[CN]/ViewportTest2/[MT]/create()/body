@@ -13,9 +13,9 @@
   actor.setRotation(45);
   actor.setPosition(100,100);
   stage.addActor(actor);
-  viewports.add(new StretchingViewport(300,200));
-  viewports.add(new FixedViewport(300,200));
-  viewports.add(new ScreenViewport());
+  viewports.add(new StretchedViewport(stage.getCamera(),300,200));
+  viewports.add(new FixedViewport(stage.getCamera(),300,200));
+  viewports.add(new ScreenViewport(stage.getCamera()));
+  viewports.add(new StaticViewport(stage.getCamera(),300,200));
   viewport=viewports.first();
-  viewport.manage(stage);
 }

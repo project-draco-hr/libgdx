@@ -1,7 +1,0 @@
-{
-  stage.setViewport(virtualWidth,virtualHeight,true,viewportX,viewportY,viewportWidth,viewportHeight);
-  Table rootTable=getRootTable(stage);
-  if (rootTable != null) {
-    rootTable.setSize(virtualWidth,virtualHeight);
-  }
-}
