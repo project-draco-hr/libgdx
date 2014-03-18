@@ -1,0 +1,24 @@
+{
+  batch=new SpriteBatch();
+  HttpRequest request=new HttpRequest(HttpMethods.GET);
+  request.setUrl("http://www.badlogicgames.com/wordpress/wp-content/uploads/2012/01/badlogic-new.png");
+  Gdx.net.sendHttpRequest(request,new HttpResponseListener(){
+    @Override public void handleHttpResponse(    HttpResponse httpResponse){
+      final byte[] bytes=httpResponse.getResult();
+      Gdx.app.postRunnable(new Runnable(){
+        @Override public void run(){
+          Pixmap pixmap=new Pixmap(bytes,0,bytes.length);
+          texture=new Texture(new PixmapTextureData(pixmap,pixmap.getFormat(),false,false,true));
+        }
+      }
+);
+    }
+    @Override public void failed(    Throwable t){
+      Gdx.app.log("EmptyDownloadTest","Failed",t);
+    }
+    @Override public void cancelled(){
+      Gdx.app.log("EmptyDownloadTest","Cancelled");
+    }
+  }
+);
+}
