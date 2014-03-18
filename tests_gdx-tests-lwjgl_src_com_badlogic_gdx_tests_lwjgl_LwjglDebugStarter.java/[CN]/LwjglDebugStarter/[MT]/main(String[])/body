@@ -1,5 +1,5 @@
 {
-  GdxTest test=new Scene2dTest();
+  GdxTest test=new EmptyDownloadTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   new LwjglApplication(test,config);
 }

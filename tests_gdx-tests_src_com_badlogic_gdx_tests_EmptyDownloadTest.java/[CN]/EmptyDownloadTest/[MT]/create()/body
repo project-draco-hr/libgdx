@@ -1,0 +1,5 @@
+{
+  HttpRequest request=new HttpRequest(HttpMethods.GET);
+  request.setUrl("http://www.google.at");
+  Gdx.net.sendHttpRequest(request,null);
+}
