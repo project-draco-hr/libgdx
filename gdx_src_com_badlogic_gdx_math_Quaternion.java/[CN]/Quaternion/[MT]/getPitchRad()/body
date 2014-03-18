@@ -1,0 +1,4 @@
+{
+  final int pole=getGimbalPole();
+  return pole == 0 ? (float)Math.asin(2f * (w * x - z * y)) : (float)pole * MathUtils.PI * 0.5f;
+}
