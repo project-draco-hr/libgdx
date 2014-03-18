@@ -1,5 +1,4 @@
 {
-  boolean handled=false;
   if (pointer == pressedPointer) {
     if (!cancelled) {
       boolean touchUpOver=isOver(event.getListenerActor(),x,y);
@@ -10,7 +9,6 @@
         tapCount++;
         lastTapTime=time;
         clicked(event,x,y);
-        handled=!cancelled;
       }
     }
     pressed=false;
@@ -18,5 +16,4 @@
     pressedButton=-1;
     cancelled=false;
   }
-  return handled;
 }
