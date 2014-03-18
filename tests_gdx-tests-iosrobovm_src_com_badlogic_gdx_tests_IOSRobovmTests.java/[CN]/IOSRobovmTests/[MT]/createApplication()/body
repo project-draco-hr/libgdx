@@ -1,4 +1,4 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  return new IOSApplication(new EmptyDownloadTest(),config);
+  return new IOSApplication(new DownloadTest(),config);
 }
