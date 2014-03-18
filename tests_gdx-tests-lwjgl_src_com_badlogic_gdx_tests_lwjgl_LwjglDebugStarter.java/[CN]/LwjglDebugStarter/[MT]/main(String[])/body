@@ -1,5 +1,5 @@
 {
   GdxTest test=new DownloadTest();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  new LwjglApplication(test,config);
+  new LwjglApplication(new ContactListenerTest(),config);
 }
