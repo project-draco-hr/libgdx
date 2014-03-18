@@ -4,7 +4,7 @@
   Joint joint=null;
   if (def.type == JointType.DistanceJoint)   joint=new DistanceJoint(this,(org.jbox2d.dynamics.joints.DistanceJoint)j);
   if (def.type == JointType.FrictionJoint)   joint=new FrictionJoint(this,(org.jbox2d.dynamics.joints.FrictionJoint)j);
-  if (def.type == JointType.GearJoint)   joint=new DistanceJoint(this,(org.jbox2d.dynamics.joints.DistanceJoint)j);
+  if (def.type == JointType.GearJoint)   joint=new GearJoint(this,(org.jbox2d.dynamics.joints.GearJoint)j,((GearJointDef)def).joint1,((GearJointDef)def).joint2);
   if (def.type == JointType.MouseJoint)   joint=new MouseJoint(this,(org.jbox2d.dynamics.joints.MouseJoint)j);
   if (def.type == JointType.PrismaticJoint)   joint=new PrismaticJoint(this,(org.jbox2d.dynamics.joints.PrismaticJoint)j);
   if (def.type == JointType.PulleyJoint)   joint=new PulleyJoint(this,(org.jbox2d.dynamics.joints.PulleyJoint)j);
