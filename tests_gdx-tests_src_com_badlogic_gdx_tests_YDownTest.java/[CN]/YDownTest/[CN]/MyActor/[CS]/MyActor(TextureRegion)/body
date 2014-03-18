@@ -9,11 +9,12 @@
       lastY=y;
       return true;
     }
-    public void touchDragged(    InputEvent event,    float x,    float y,    int pointer){
-      if (pointer != 0)       return;
+    public boolean touchDragged(    InputEvent event,    float x,    float y,    int pointer){
+      if (pointer != 0)       return false;
       moveBy(x - lastX,y - lastY);
       lastX=x - (x - lastX);
       lastY=y - (y - lastY);
+      return true;
     }
   }
 );

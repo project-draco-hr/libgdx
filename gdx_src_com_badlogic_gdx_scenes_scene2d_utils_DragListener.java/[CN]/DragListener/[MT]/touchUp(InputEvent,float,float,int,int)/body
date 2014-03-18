@@ -3,4 +3,5 @@
     if (dragging)     dragStop(event,x,y,pointer);
     cancel();
   }
+  return true;
 }

@@ -1,5 +1,5 @@
 {
-  if (pointer != pressedPointer)   return;
+  if (pointer != pressedPointer)   return false;
   if (!dragging && (Math.abs(touchDownX - x) > tapSquareSize || Math.abs(touchDownY - y) > tapSquareSize)) {
     dragging=true;
     dragStart(event,x,y,pointer);
@@ -13,4 +13,5 @@
     deltaX=x;
     deltaY=y;
   }
+  return true;
 }
