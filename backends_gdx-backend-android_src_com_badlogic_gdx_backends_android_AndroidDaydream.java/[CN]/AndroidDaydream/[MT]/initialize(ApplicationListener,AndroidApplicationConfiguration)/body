@@ -1,5 +1,5 @@
 {
-  graphics=new AndroidGraphicsDaydream(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  graphics=new AndroidGraphics(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
   input=AndroidInputFactory.newAndroidInput(this,this,graphics.view,config);
   audio=new AndroidAudio(this,config);
   this.getFilesDir();
