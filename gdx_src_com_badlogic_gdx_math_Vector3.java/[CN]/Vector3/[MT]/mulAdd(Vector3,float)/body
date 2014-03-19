@@ -1,0 +1,6 @@
+{
+  this.x+=vec.x * scalar;
+  this.y+=vec.y * scalar;
+  this.z+=vec.z * scalar;
+  return this;
+}
