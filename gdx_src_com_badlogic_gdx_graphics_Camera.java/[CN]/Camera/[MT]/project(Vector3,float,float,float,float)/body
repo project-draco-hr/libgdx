@@ -3,4 +3,5 @@
   worldCoords.x=viewportWidth * (worldCoords.x + 1) / 2 + viewportX;
   worldCoords.y=viewportHeight * (worldCoords.y + 1) / 2 + viewportY;
   worldCoords.z=(worldCoords.z + 1) / 2;
+  return worldCoords;
 }

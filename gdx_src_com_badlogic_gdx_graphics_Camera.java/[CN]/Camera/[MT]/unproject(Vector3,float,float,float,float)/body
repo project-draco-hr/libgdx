@@ -7,4 +7,5 @@
   screenCoords.y=(2 * y) / viewportHeight - 1;
   screenCoords.z=2 * screenCoords.z - 1;
   screenCoords.prj(invProjectionView);
+  return screenCoords;
 }

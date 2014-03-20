@@ -2,4 +2,5 @@
   tmp.set(worldCoords.x,worldCoords.y,1);
   camera.project(tmp,viewportX,viewportY,viewportWidth,viewportHeight);
   worldCoords.set(tmp.x,tmp.y);
+  return worldCoords;
 }
