@@ -1,0 +1,11 @@
+{
+  calculateViewport(width,height);
+  if (!disabled) {
+    Gdx.gl.glViewport(viewportX,viewportY,viewportWidth,viewportHeight);
+    if (camera != null) {
+      camera.viewportWidth=virtualWidth;
+      camera.viewportHeight=virtualHeight;
+      camera.update();
+    }
+  }
+}

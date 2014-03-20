@@ -1,0 +1,29 @@
+{
+  delay-=Gdx.graphics.getDeltaTime();
+  if (delay <= 0) {
+    if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
+      viewport=viewports.get((viewports.indexOf(viewport,true) + 1) % viewports.size);
+      viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+      viewport.updateStage(stage);
+      delay=1f;
+    }
+  }
+  if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+    stage.getCamera().translate(-1,0,0);
+  }
+  if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+    stage.getCamera().translate(1,0,0);
+  }
+  if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+    stage.getCamera().translate(-0,1,0);
+  }
+  if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+    stage.getCamera().translate(0,-1,0);
+  }
+  label.setText(viewport.getClass().getSimpleName());
+  Gdx.gl.glClearColor(0,0,0,1);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+  stage.act(Gdx.graphics.getDeltaTime());
+  stage.draw();
+  Table.drawDebug(stage);
+}
