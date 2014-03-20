@@ -9,8 +9,8 @@
   batch.draw(texture,150,100,16,16,32,32,1,1,45,0,0,16,16,false,false);
   font.draw(batch,viewport.getClass().getSimpleName(),150,100);
   batch.end();
-  if (viewport instanceof FixedViewport) {
-    FixedViewport fixed=(FixedViewport)viewport;
+  if (viewport instanceof FitViewport) {
+    FitViewport fixed=(FitViewport)viewport;
     int screenWidth=Gdx.graphics.getWidth();
     int screenHeight=Gdx.graphics.getHeight();
     Gdx.gl.glViewport(0,0,screenWidth,screenHeight);

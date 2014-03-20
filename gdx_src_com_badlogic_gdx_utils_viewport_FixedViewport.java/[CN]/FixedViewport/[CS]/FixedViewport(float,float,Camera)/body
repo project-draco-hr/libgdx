@@ -1,5 +1,7 @@
 {
   this.worldWidth=worldWidth;
   this.worldHeight=worldHeight;
+  viewportWidth=Math.round(worldWidth);
+  viewportHeight=Math.round(worldHeight);
   this.camera=camera;
 }

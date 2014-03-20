@@ -12,10 +12,10 @@
   int worldWidth=300;
   int worldHeight=200;
   viewports.add(new StretchViewport(worldWidth,worldHeight,camera));
-  viewports.add(new FixedViewport(worldWidth,worldHeight,camera));
+  viewports.add(new FitViewport(worldWidth,worldHeight,camera));
   viewports.add(new ExtendViewport(worldWidth,worldHeight,camera));
   viewports.add(new ScreenViewport(camera));
-  viewports.add(new StaticViewport(worldWidth,worldHeight,camera));
+  viewports.add(new FixedViewport(worldWidth,worldHeight,camera));
   viewport=viewports.first();
   Gdx.input.setInputProcessor(new InputAdapter(){
     public boolean keyDown(    int keycode){

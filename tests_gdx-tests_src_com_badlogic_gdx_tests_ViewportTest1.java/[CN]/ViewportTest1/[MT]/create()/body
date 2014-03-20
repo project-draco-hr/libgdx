@@ -15,10 +15,10 @@
   int worldHeight=200;
   Camera camera=stage.getCamera();
   viewports.add(new StretchViewport(worldWidth,worldHeight,camera));
-  viewports.add(new FixedViewport(worldWidth,worldHeight,camera));
+  viewports.add(new FitViewport(worldWidth,worldHeight,camera));
   viewports.add(new ExtendViewport(worldWidth,worldHeight,camera));
   viewports.add(new ScreenViewport(camera));
-  viewports.add(new StaticViewport(worldWidth,worldHeight,camera));
+  viewports.add(new FixedViewport(worldWidth,worldHeight,camera));
   stage.setViewport(viewports.first());
   Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter(){
     public boolean keyDown(    int keycode){
