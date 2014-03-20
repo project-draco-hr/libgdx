@@ -1,5 +1,3 @@
 {
-  this.worldWidth=worldWidth;
-  this.worldHeight=worldHeight;
-  this.camera=camera;
+  super(Scaling.fit,worldWidth,worldHeight,camera);
 }

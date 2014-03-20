@@ -1,4 +1,4 @@
 {
-  System.out.println(stage.getViewport().getClass().getSimpleName());
+  System.out.println(stage.getViewport());
   stage.getViewport().update(width,height);
 }

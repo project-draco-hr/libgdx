@@ -1,5 +1,5 @@
 {
-  label.setText(stage.getViewport().getClass().getSimpleName());
+  label.setText(stage.getViewport().toString());
   stage.act();
   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   stage.draw();

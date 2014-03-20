@@ -1,5 +1,5 @@
 {
-  Vector2 scaled=Scaling.fit.apply(worldWidth,worldHeight,screenWidth,screenHeight);
+  Vector2 scaled=scaling.apply(worldWidth,worldHeight,screenWidth,screenHeight);
   viewportWidth=Math.round(scaled.x);
   viewportHeight=Math.round(scaled.y);
   viewportX=(screenWidth - viewportWidth) / 2;

@@ -18,11 +18,12 @@
   boxInstance.transform.rotate(0,1,0,30);
   int worldWidth=300;
   int worldHeight=200;
-  viewports.add(new StretchViewport(worldWidth,worldHeight,camera));
-  viewports.add(new FitViewport(worldWidth,worldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.stretch,worldWidth,worldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.fill,worldWidth,worldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.fit,worldWidth,worldHeight,camera));
   viewports.add(new ExtendViewport(worldWidth,worldHeight,camera));
   viewports.add(new ScreenViewport(camera));
-  viewports.add(new FixedViewport(worldWidth,worldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.none,worldWidth,worldHeight,camera));
   viewport=viewports.first();
   Gdx.input.setInputProcessor(new InputAdapter(){
     public boolean keyDown(    int keycode){
