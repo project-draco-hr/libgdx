@@ -18,5 +18,5 @@
     worldHeight+=(screenHeight - viewportHeight) * toWorldSpace;
     viewportHeight=screenHeight;
   }
-  super.update(screenWidth,screenHeight);
+  super.update(screenWidth,screenHeight,centerCamera);
 }

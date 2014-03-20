@@ -28,6 +28,6 @@
       batch.draw(texture,0,scalingViewport.getTopGutterY(),screenWidth,scalingViewport.getTopGutterHeight());
     }
     batch.end();
-    viewport.update(screenWidth,screenHeight);
+    viewport.update(screenWidth,screenHeight,true);
   }
 }

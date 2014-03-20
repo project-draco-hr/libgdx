@@ -1,7 +1,3 @@
 {
-  Gdx.gl.glViewport(viewportX,viewportY,viewportWidth,viewportHeight);
-  camera.viewportWidth=worldWidth;
-  camera.viewportHeight=worldHeight;
-  camera.position.set(worldWidth / 2,worldHeight / 2,0);
-  camera.update();
+  update(screenWidth,screenHeight,false);
 }

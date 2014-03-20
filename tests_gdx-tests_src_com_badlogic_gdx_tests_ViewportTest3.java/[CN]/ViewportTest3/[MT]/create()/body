@@ -11,6 +11,8 @@
   camera.fieldOfView=67;
   camera.near=0.1f;
   camera.far=300f;
+  camera.position.set(0,0,100);
+  camera.lookAt(0,0,0);
   ModelBuilder modelBuilder=new ModelBuilder();
   Model boxModel=modelBuilder.createBox(50f,50f,50f,new Material(ColorAttribute.createDiffuse(Color.GREEN)),Usage.Position | Usage.Normal);
   boxInstance=new ModelInstance(boxModel);

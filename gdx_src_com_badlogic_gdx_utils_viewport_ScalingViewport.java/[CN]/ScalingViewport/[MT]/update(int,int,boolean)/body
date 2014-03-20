@@ -4,5 +4,5 @@
   viewportHeight=Math.round(scaled.y);
   viewportX=(screenWidth - viewportWidth) / 2;
   viewportY=(screenHeight - viewportHeight) / 2;
-  super.update(screenWidth,screenHeight);
+  super.update(screenWidth,screenHeight,centerCamera);
 }

@@ -1,4 +1,4 @@
 {
-  stage.getViewport().update(width,height);
+  stage.getViewport().update(width,height,true);
   root.invalidate();
 }
