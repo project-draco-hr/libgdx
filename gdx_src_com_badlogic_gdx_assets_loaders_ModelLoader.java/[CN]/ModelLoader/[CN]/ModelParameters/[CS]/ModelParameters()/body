@@ -1,0 +1,5 @@
+{
+  textureParameter=new TextureLoader.TextureParameter();
+  textureParameter.minFilter=textureParameter.magFilter=Texture.TextureFilter.Linear;
+  textureParameter.wrapU=textureParameter.wrapV=Texture.TextureWrap.Repeat;
+}

@@ -1,0 +1,18 @@
+{
+  if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+    characterTransform.rotate(0,1,0,5f);
+    ghostObject.setWorldTransform(characterTransform);
+  }
+  if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+    characterTransform.rotate(0,1,0,-5f);
+    ghostObject.setWorldTransform(characterTransform);
+  }
+  characterDirection.set(-1,0,0).rot(characterTransform).nor();
+  walkDirection.set(0,0,0);
+  if (Gdx.input.isKeyPressed(Keys.UP))   walkDirection.add(characterDirection);
+  if (Gdx.input.isKeyPressed(Keys.DOWN))   walkDirection.add(-characterDirection.x,-characterDirection.y,-characterDirection.z);
+  walkDirection.scl(4f * Gdx.graphics.getDeltaTime());
+  characterController.setWalkDirection(walkDirection);
+  super.update();
+  ghostObject.getWorldTransform(characterTransform);
+}

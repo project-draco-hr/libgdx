@@ -1,0 +1,14 @@
+{
+  stage.setViewport(virtualWidth,virtualHeight,viewportX,viewportY,viewportWidth,viewportHeight);
+  Table root=getRootTable(stage);
+  if (root != null) {
+    root.setBounds(viewportX,viewportY,viewportWidth,viewportHeight);
+    root.invalidate();
+    stage.getCamera().position.set((viewportWidth / 2) + viewportX,(viewportHeight / 2) + viewportY,0);
+    stage.getCamera().update();
+  }
+ else {
+    stage.getCamera().position.set(virtualWidth / 2,virtualHeight / 2,0);
+    stage.getCamera().update();
+  }
+}

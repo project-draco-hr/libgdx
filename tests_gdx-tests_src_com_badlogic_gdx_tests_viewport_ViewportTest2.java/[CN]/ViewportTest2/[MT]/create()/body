@@ -1,0 +1,21 @@
+{
+  stage=new Stage();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Gdx.input.setInputProcessor(stage);
+  label=new Label("Label",skin);
+  Actor background=new DebugActor(new Color(0.2f,0.2f,0.2f,1));
+  background.setSize(10000,10000);
+  stage.addActor(background);
+  stage.addActor(label);
+  Actor actor=new DebugActor(new Color(1,0,0,1));
+  actor.setSize(32,32);
+  actor.setOrigin(16,16);
+  actor.setRotation(45);
+  actor.setPosition(100,100);
+  stage.addActor(actor);
+  viewports.add(new StretchedViewport(stage.getCamera(),300,200));
+  viewports.add(new FixedViewport(stage.getCamera(),300,200));
+  viewports.add(new ScreenViewport(stage.getCamera()));
+  viewports.add(new StaticViewport(stage.getCamera(),300,200));
+  viewport=viewports.first();
+}

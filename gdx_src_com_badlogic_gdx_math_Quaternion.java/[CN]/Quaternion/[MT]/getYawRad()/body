@@ -1,0 +1,3 @@
+{
+  return getGimbalPole() == 0 ? MathUtils.atan2(2f * (y * w + x * z),1f - 2f * (y * y + x * x)) : 0f;
+}

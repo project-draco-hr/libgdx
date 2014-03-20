@@ -1,7 +1,7 @@
 {
-  if (obj == null)   return false;
-  if (Math.abs(obj.x - x) > epsilon)   return false;
-  if (Math.abs(obj.y - y) > epsilon)   return false;
-  if (Math.abs(obj.z - z) > epsilon)   return false;
+  if (other == null)   return false;
+  if (Math.abs(other.x - x) > epsilon)   return false;
+  if (Math.abs(other.y - y) > epsilon)   return false;
+  if (Math.abs(other.z - z) > epsilon)   return false;
   return true;
 }

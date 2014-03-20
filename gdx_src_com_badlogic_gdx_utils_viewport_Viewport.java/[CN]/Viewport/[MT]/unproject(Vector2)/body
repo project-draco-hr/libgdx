@@ -1,0 +1,5 @@
+{
+  tmp.set(vec.x,vec.y,1);
+  camera.unproject(tmp,viewportX,viewportY,viewportWidth,viewportHeight);
+  vec.set(tmp.x,tmp.y);
+}

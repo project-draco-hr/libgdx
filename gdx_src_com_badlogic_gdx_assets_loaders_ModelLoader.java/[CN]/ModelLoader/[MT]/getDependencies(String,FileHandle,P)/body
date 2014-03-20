@@ -8,9 +8,10 @@
 synchronized (items) {
     items.add(item);
   }
+  TextureLoader.TextureParameter textureParameter=(parameters != null) ? parameters.textureParameter : defaultParameters.textureParameter;
   for (  final ModelMaterial modelMaterial : data.materials) {
     if (modelMaterial.textures != null) {
-      for (      final ModelTexture modelTexture : modelMaterial.textures)       deps.add(new AssetDescriptor(modelTexture.fileName,Texture.class));
+      for (      final ModelTexture modelTexture : modelMaterial.textures)       deps.add(new AssetDescriptor(modelTexture.fileName,Texture.class,textureParameter));
     }
   }
   return deps;
