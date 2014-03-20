@@ -104,7 +104,8 @@
         boundsY=height - bgTopHeight - hScrollHeight;
       }
       hScrollBounds.set(boundsX,boundsY,areaWidth,hScrollHeight);
-      hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widgetWidth));
+      if (useRealSizeKnobs)       hKnobBounds.width=hScrollKnob.getMinWidth();
+ else       hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widgetWidth));
       hKnobBounds.height=hScrollKnob.getMinHeight();
       hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
       hKnobBounds.y=hScrollBounds.y;
@@ -132,7 +133,8 @@
       }
       vScrollBounds.set(boundsX,boundsY,vScrollWidth,areaHeight);
       vKnobBounds.width=vScrollKnob.getMinWidth();
-      vKnobBounds.height=Math.max(vScrollKnob.getMinHeight(),(int)(vScrollBounds.height * areaHeight / widgetHeight));
+      if (useRealSizeKnobs)       vKnobBounds.height=vScrollKnob.getMinHeight();
+ else       vKnobBounds.height=Math.max(vScrollKnob.getMinHeight(),(int)(vScrollBounds.height * areaHeight / widgetHeight));
       if (vScrollOnRight) {
         vKnobBounds.x=width - bgRightWidth - vScrollKnob.getMinWidth();
       }
