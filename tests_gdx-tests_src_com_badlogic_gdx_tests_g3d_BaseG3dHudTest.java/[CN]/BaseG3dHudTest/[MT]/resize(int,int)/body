@@ -1,6 +1,6 @@
 {
   super.resize(width,height);
-  hud.setViewport(PREF_HUDWIDTH,PREF_HUDHEIGHT,true);
+  hud.getViewport().update(width,height);
   hudWidth=hud.getWidth();
   hudHeight=hud.getHeight();
 }

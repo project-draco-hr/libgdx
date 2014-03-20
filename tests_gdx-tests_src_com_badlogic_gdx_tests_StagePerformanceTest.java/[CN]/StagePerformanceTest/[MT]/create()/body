@@ -1,7 +1,7 @@
 {
   batch=new SpriteBatch();
   font=new BitmapFont();
-  stage=new Stage(24,12,true);
+  stage=new Stage(new ScalingViewport(Scaling.fit,24,12));
   regions=new TextureRegion[8 * 8];
   sprites=new Sprite[24 * 12];
   texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));

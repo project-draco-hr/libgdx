@@ -1,4 +1,3 @@
 {
-  ScissorStack.toWindowCoordinates(camera,transformMatrix,coords);
-  return coords;
+  return viewport.toScreenCoordinates(coords,transformMatrix);
 }

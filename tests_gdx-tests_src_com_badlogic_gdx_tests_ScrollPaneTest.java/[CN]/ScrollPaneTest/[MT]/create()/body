@@ -1,5 +1,5 @@
 {
-  stage=new Stage(0,0,false);
+  stage=new Stage();
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   Gdx.input.setInputProcessor(stage);
   container=new Table();

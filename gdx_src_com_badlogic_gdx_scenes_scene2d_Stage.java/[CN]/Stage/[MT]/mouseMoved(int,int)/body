@@ -1,6 +1,6 @@
 {
-  if (screenX < viewportX || screenX >= viewportX + viewportWidth)   return false;
-  if (Gdx.graphics.getHeight() - screenY < viewportY || Gdx.graphics.getHeight() - screenY >= viewportY + viewportHeight)   return false;
+  if (screenX < viewport.getViewportX() || screenX >= viewport.getViewportX() + viewport.getViewportWidth())   return false;
+  if (Gdx.graphics.getHeight() - screenY < viewport.getViewportY() || Gdx.graphics.getHeight() - screenY >= viewport.getViewportY() + viewport.getViewportHeight())   return false;
   mouseScreenX=screenX;
   mouseScreenY=screenY;
   screenToStageCoordinates(stageCoords.set(screenX,screenY));

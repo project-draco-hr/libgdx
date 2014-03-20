@@ -1,0 +1,22 @@
+{
+  viewportX=0;
+  viewportY=0;
+  viewportWidth=screenWidth;
+  viewportHeight=screenHeight;
+  worldWidth=originalWorldWidth;
+  worldHeight=originalWorldHeight;
+  Vector2 scaled=Scaling.fit.apply(worldWidth,worldHeight,screenWidth,screenHeight);
+  viewportWidth=Math.round(scaled.x);
+  viewportHeight=Math.round(scaled.y);
+  if (viewportWidth < screenWidth) {
+    float toWorldSpace=worldHeight / viewportHeight;
+    worldWidth+=(screenWidth - viewportWidth) * toWorldSpace;
+    viewportWidth=screenWidth;
+  }
+ else   if (viewportHeight < screenHeight) {
+    float toWorldSpace=worldWidth / viewportWidth;
+    worldHeight+=(screenHeight - viewportHeight) * toWorldSpace;
+    viewportHeight=screenHeight;
+  }
+  super.update(screenWidth,screenHeight);
+}

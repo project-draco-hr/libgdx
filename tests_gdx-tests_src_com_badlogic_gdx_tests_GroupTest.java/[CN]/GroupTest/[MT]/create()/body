@@ -2,7 +2,7 @@
   batch=new SpriteBatch();
   font=new BitmapFont();
   renderer=new ShapeRenderer();
-  stage=new Stage(0,0,false);
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   region=new TextureRegion(new Texture(Gdx.files.internal("data/group-debug.png")));
   group2=new TestGroup("group2");

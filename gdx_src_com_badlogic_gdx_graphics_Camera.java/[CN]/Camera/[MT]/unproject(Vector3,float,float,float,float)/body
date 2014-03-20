@@ -1,10 +1,11 @@
 {
-  float x=vec.x, y=vec.y;
+  float x=screenCoords.x, y=screenCoords.y;
   x=x - viewportX;
   y=Gdx.graphics.getHeight() - y - 1;
   y=y - viewportY;
-  vec.x=(2 * x) / viewportWidth - 1;
-  vec.y=(2 * y) / viewportHeight - 1;
-  vec.z=2 * vec.z - 1;
-  vec.prj(invProjectionView);
+  screenCoords.x=(2 * x) / viewportWidth - 1;
+  screenCoords.y=(2 * y) / viewportHeight - 1;
+  screenCoords.z=2 * screenCoords.z - 1;
+  screenCoords.prj(invProjectionView);
+  return screenCoords;
 }

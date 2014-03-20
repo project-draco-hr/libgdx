@@ -1,6 +1,7 @@
 {
-  vec.prj(combined);
-  vec.x=viewportWidth * (vec.x + 1) / 2 + viewportX;
-  vec.y=viewportHeight * (vec.y + 1) / 2 + viewportY;
-  vec.z=(vec.z + 1) / 2;
+  worldCoords.prj(combined);
+  worldCoords.x=viewportWidth * (worldCoords.x + 1) / 2 + viewportX;
+  worldCoords.y=viewportHeight * (worldCoords.y + 1) / 2 + viewportY;
+  worldCoords.z=(worldCoords.z + 1) / 2;
+  return worldCoords;
 }
