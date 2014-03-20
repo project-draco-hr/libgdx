@@ -7,12 +7,7 @@
   short tempIndex;
   while (down < up) {
     while (down < up && values[down] <= x)     down=down + 2;
-    if (yDown) {
-      while (values[up] > x || (values[up] == x && values[up + 1] < y))       up=up - 2;
-    }
- else {
-      while (values[up] > x || (values[up] == x && values[up + 1] > y))       up=up - 2;
-    }
+    while (values[up] > x || (values[up] == x && values[up + 1] < y))     up=up - 2;
     if (down < up) {
       temp=values[down];
       values[down]=values[up];

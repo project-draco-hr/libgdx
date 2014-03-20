@@ -8,7 +8,7 @@
     upper=stack.pop();
     lower=stack.pop();
     if (upper <= lower)     continue;
-    int i=quicksortPartition(values,lower,upper,yDown);
+    int i=quicksortPartition(values,lower,upper);
     if (i - lower > upper - i) {
       stack.add(lower);
       stack.add(i - 2);
