@@ -1,0 +1,5 @@
+{
+  final float d=Vector3.dot(this.x,this.y,this.z,axisX,axisY,axisZ);
+  twist.set(axisX * d,axisY * d,axisZ * d,this.w).nor();
+  swing.set(twist).conjugate().mulLeft(this);
+}
