@@ -1,5 +1,5 @@
 {
   ui.setSize(width,height);
   ui.invalidate();
-  stage.setViewport(width,height,false);
+  stage.getViewport().update(width,height);
 }

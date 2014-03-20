@@ -1,9 +1,0 @@
-{
-  disabled=true;
-  Gdx.gl.glViewport(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-  if (camera != null) {
-    camera.viewportWidth=Gdx.graphics.getWidth();
-    camera.viewportHeight=Gdx.graphics.getHeight();
-    camera.update();
-  }
-}

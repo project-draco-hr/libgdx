@@ -1,6 +1,6 @@
 {
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
+  stage=new Stage();
   ui=new Table();
   ui.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   console=new List(skin);

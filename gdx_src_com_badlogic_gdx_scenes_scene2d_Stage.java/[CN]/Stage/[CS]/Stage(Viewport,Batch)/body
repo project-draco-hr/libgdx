@@ -1,0 +1,7 @@
+{
+  this.viewport=viewport;
+  ownsBatch=batch == null;
+  this.batch=ownsBatch ? new SpriteBatch() : batch;
+  root=new Group();
+  root.setStage(this);
+}

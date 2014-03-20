@@ -1,7 +1,0 @@
-{
-  Vector2 scaled=Scaling.fit.apply(virtualWidth,virtualHeight,width,height);
-  viewportWidth=Math.round(scaled.x);
-  viewportHeight=Math.round(scaled.y);
-  viewportX=(width - viewportWidth) / 2;
-  viewportY=(height - viewportHeight) / 2;
-}

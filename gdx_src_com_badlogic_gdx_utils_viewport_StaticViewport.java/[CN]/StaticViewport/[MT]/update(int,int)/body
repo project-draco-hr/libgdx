@@ -1,0 +1,5 @@
+{
+  this.viewportX=(screenWidth - viewportWidth) / 2;
+  this.viewportY=(screenHeight - viewportHeight) / 2;
+  super.update(screenWidth,screenHeight);
+}

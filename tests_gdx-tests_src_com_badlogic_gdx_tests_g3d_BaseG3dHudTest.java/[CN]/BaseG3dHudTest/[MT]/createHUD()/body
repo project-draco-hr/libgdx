@@ -1,5 +1,5 @@
 {
-  hud=new Stage(PREF_HUDWIDTH,PREF_HUDHEIGHT,true);
+  hud=new Stage(new FixedViewport(PREF_HUDWIDTH,PREF_HUDHEIGHT));
   hudWidth=hud.getWidth();
   hudHeight=hud.getHeight();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));

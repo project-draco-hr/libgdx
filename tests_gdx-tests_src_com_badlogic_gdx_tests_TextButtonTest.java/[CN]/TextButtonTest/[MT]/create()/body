@@ -1,5 +1,5 @@
 {
-  stage=new Stage(0,0,false,new SpriteBatch());
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   for (int i=0; i < 1; i++) {

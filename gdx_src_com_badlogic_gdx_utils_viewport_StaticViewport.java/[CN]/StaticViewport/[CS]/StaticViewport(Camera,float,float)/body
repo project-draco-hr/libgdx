@@ -1,8 +1,0 @@
-{
-  this.camera=camera;
-  this.virtualWidth=virtualWidth;
-  this.virtualHeight=virtualHeight;
-  this.viewportWidth=Math.round(virtualWidth);
-  this.viewportHeight=Math.round(virtualHeight);
-  update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-}

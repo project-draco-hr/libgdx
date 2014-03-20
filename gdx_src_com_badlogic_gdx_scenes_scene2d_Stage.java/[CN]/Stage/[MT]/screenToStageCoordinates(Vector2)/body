@@ -1,6 +1,4 @@
 {
-  camera.unproject(cameraCoords.set(screenCoords.x,screenCoords.y,0),viewportX,viewportY,viewportWidth,viewportHeight);
-  screenCoords.x=cameraCoords.x;
-  screenCoords.y=cameraCoords.y;
+  viewport.unproject(screenCoords);
   return screenCoords;
 }

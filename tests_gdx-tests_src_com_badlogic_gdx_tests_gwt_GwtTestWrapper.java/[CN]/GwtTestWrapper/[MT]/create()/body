@@ -1,7 +1,7 @@
 {
   Gdx.app.setLogLevel(Application.LOG_DEBUG);
   Gdx.app.log("GdxTestGwt","Setting up for " + tests.length + " tests.");
-  ui=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
+  ui=new Stage();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   font=new BitmapFont(Gdx.files.internal("data/arial-15.fnt"),false);
   container=new Table();

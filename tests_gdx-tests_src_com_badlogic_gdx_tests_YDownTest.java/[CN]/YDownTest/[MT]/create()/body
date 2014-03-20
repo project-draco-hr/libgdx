@@ -8,8 +8,8 @@
   batch=new SpriteBatch();
   camera=new OrthographicCamera();
   camera.setToOrtho(true);
-  stage=new Stage(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
-  stage.setCamera(camera);
+  stage=new Stage();
+  stage.getViewport().setCamera(camera);
   image=new MyActor(region);
   image.setPosition(100,100);
   stage.addActor(image);

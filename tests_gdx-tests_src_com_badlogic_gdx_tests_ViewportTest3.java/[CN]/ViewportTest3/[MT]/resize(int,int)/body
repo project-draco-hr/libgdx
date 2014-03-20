@@ -1,0 +1,7 @@
+{
+  System.out.println(viewport.getClass().getSimpleName());
+  viewport.update(width,height);
+  camera.position.set(0,0,100);
+  camera.lookAt(0,0,0);
+  camera.update();
+}

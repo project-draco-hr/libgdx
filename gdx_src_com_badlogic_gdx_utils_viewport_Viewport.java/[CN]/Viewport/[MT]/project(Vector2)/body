@@ -1,5 +1,5 @@
 {
-  tmp.set(vec.x,vec.y,1);
+  tmp.set(worldCoords.x,worldCoords.y,1);
   camera.project(tmp,viewportX,viewportY,viewportWidth,viewportHeight);
-  vec.set(tmp.x,tmp.y);
+  worldCoords.set(tmp.x,tmp.y);
 }

@@ -3,7 +3,7 @@
   float height=Gdx.graphics.getHeight();
   float btnWidth=200;
   float btnHeight=40;
-  stage=new Stage(0,0,false);
+  stage=new Stage();
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   Gdx.input.setInputProcessor(stage);
   final TextButton fadeBtn=new TextButton("Fade: " + doFade,skin);

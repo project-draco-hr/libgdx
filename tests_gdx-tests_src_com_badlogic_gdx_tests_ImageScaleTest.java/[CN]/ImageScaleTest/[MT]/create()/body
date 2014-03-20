@@ -1,5 +1,5 @@
 {
-  stage=new Stage(0,0,false);
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   texture=new Texture("data/group-debug.png");
   Image image=new Image(texture);
