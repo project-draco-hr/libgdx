@@ -1,0 +1,3 @@
+{
+  return getClass().getSimpleName() + (snap ? " (snapped)" : " (non snapped)");
+}

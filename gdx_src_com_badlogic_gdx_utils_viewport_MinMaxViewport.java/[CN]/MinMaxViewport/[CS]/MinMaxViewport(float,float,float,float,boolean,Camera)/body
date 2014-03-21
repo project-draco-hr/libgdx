@@ -1,0 +1,13 @@
+{
+  super(Scaling.fit,minWorldWidth,minWorldHeight,camera);
+  this.minWorldWidth=minWorldWidth;
+  this.minWorldHeight=minWorldHeight;
+  this.maxWorldWidth=maxWorldWidth;
+  this.maxWorldHeight=maxWorldHeight;
+  this.minAspectRatio=minWorldWidth / minWorldHeight;
+  this.maxAspectRatio=maxWorldWidth / maxWorldHeight;
+  this.snap=snap;
+  if (this.minAspectRatio > this.maxAspectRatio) {
+    throw new IllegalArgumentException("Minimum aspect ratio has to be smaller than Maximum aspect ratio");
+  }
+}
