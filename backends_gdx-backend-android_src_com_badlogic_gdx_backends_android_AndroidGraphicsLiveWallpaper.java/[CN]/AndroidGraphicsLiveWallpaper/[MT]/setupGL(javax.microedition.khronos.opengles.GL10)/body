@@ -1,0 +1,6 @@
+{
+  if (gl20 != null)   return;
+  gl20=new AndroidGL20();
+  Gdx.gl=gl20;
+  Gdx.gl20=gl20;
+}

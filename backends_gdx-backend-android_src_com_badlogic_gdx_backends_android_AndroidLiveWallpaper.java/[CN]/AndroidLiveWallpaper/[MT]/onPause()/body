@@ -1,5 +1,6 @@
 {
   if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause()");
+  audio.pause();
   input.unregisterSensorListeners();
   int[] realId=input.realId;
   Arrays.fill(realId,-1);
@@ -9,6 +10,5 @@
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
  else     throw new RuntimeException("unimplemented");
   }
-  audio.pause();
   if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause() done!");
 }

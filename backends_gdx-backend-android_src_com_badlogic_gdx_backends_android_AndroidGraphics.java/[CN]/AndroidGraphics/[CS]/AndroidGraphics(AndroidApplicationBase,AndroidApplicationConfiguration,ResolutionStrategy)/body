@@ -5,7 +5,4 @@
   view.setFocusable(true);
   view.setFocusableInTouchMode(true);
   this.app=application;
-  if (application instanceof AndroidLiveWallpaper) {
-    this.isLiveWallpaper=true;
-  }
 }

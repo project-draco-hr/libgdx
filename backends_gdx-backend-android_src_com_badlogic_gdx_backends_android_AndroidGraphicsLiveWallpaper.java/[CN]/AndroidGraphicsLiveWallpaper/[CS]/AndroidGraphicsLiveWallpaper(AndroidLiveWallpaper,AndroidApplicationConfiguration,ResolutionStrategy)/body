@@ -1,0 +1,6 @@
+{
+  this.config=config;
+  this.app=app;
+  view=createGLSurfaceView(app.service,resolutionStrategy);
+  setPreserveContext(view);
+}
