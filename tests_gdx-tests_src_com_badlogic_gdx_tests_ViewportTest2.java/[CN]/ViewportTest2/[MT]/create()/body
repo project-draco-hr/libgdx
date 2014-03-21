@@ -19,8 +19,8 @@
   viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,camera));
   viewports.add(new ScreenViewport(camera));
   viewports.add(new ScalingViewport(Scaling.none,minWorldWidth,minWorldHeight,camera));
-  viewports.add(new DoubleRatioViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
-  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
+  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,true,camera));
+  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,false,camera));
   viewport=viewports.first();
   Gdx.input.setInputProcessor(new InputAdapter(){
     public boolean keyDown(    int keycode){
