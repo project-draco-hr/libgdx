@@ -1,4 +1,4 @@
 {
-  calculateWorldSize((float)screenWidth / (float)screenHeight);
+  update((float)screenWidth / (float)screenHeight);
   super.update(screenWidth,screenHeight,centerCamera);
 }

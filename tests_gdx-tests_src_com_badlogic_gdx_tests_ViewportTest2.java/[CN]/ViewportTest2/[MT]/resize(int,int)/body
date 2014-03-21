@@ -1,4 +1,4 @@
 {
-  System.out.println(viewport);
+  System.out.println(viewport.getClass().getSimpleName());
   viewport.update(width,height);
 }
