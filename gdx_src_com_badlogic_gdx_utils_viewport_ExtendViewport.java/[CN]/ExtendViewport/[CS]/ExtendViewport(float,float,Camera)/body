@@ -1,5 +1,3 @@
 {
-  originalWorldWidth=worldWidth;
-  originalWorldHeight=worldHeight;
-  this.camera=camera;
+  this(minWorldWidth,minWorldHeight,0,0,camera);
 }
