@@ -15,7 +15,6 @@
   this.app=activity;
   this.context=context;
   this.sleepTime=config.touchSleepTime;
-  int sdkVersion=android.os.Build.VERSION.SDK_INT;
   touchHandler=new AndroidMultiTouchHandler();
   hasMultitouch=touchHandler.supportsMultitouch(context);
   vibrator=(Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
