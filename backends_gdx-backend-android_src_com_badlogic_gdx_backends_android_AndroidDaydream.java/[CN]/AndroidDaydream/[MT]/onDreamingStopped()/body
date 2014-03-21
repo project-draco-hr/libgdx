@@ -13,5 +13,6 @@
   if (graphics != null && graphics.view != null) {
     if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
   }
+  audio.resume();
   super.onDreamingStopped();
 }
