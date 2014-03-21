@@ -1,0 +1,8 @@
+{
+  if (Math.abs(screenAspectRatio - minAspectRatio) < Math.abs(screenAspectRatio - maxAspectRatio)) {
+    this.setWorldSize(minWorldWidth,minWorldHeight);
+  }
+ else {
+    this.setWorldSize(maxWorldWidth,maxWorldHeight);
+  }
+}

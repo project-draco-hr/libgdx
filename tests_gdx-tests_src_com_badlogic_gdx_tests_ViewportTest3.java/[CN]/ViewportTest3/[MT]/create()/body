@@ -18,14 +18,18 @@
   boxInstance=new ModelInstance(boxModel);
   boxInstance.transform.rotate(1,0,0,30);
   boxInstance.transform.rotate(0,1,0,30);
-  int worldWidth=300;
-  int worldHeight=200;
-  viewports.add(new ScalingViewport(Scaling.stretch,worldWidth,worldHeight,camera));
-  viewports.add(new ScalingViewport(Scaling.fill,worldWidth,worldHeight,camera));
-  viewports.add(new ScalingViewport(Scaling.fit,worldWidth,worldHeight,camera));
-  viewports.add(new ExtendViewport(worldWidth,worldHeight,camera));
+  int minWorldWidth=300;
+  int minWorldHeight=225;
+  int maxWorldWidth=300;
+  int maxWorldHeight=168;
+  viewports.add(new ScalingViewport(Scaling.stretch,minWorldWidth,minWorldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.fill,minWorldWidth,minWorldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.fit,minWorldWidth,minWorldHeight,camera));
+  viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,camera));
   viewports.add(new ScreenViewport(camera));
-  viewports.add(new ScalingViewport(Scaling.none,worldWidth,worldHeight,camera));
+  viewports.add(new ScalingViewport(Scaling.none,minWorldWidth,minWorldHeight,camera));
+  viewports.add(new DoubleRatioViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
+  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
   viewport=viewports.first();
   Gdx.input.setInputProcessor(new InputAdapter(){
     public boolean keyDown(    int keycode){

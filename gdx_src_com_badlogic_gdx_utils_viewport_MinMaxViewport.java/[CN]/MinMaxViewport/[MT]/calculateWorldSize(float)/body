@@ -1,0 +1,16 @@
+{
+  if (screenAspectRatio < minAspectRatio) {
+    this.setWorldSize(minWorldWidth,minWorldHeight);
+  }
+ else   if (screenAspectRatio > maxAspectRatio) {
+    this.setWorldSize(maxWorldWidth,maxWorldHeight);
+  }
+ else {
+    if (Math.abs(screenAspectRatio - minAspectRatio) < Math.abs(screenAspectRatio - maxAspectRatio)) {
+      this.setWorldSize(minWorldWidth,minWorldWidth / screenAspectRatio);
+    }
+ else {
+      this.setWorldSize(maxWorldWidth,maxWorldWidth / screenAspectRatio);
+    }
+  }
+}
