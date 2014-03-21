@@ -22,9 +22,6 @@ case LOOP_REVERSED:
 frameNumber=frameNumber % keyFrames.length;
 frameNumber=keyFrames.length - frameNumber - 1;
 break;
-default :
-frameNumber=Math.min(keyFrames.length - 1,frameNumber);
-break;
 }
 return frameNumber;
 }
