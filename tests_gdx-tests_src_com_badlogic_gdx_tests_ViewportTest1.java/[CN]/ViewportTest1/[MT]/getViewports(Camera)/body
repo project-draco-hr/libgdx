@@ -1,0 +1,16 @@
+{
+  int minWorldWidth=300;
+  int minWorldHeight=225;
+  int maxWorldWidth=300;
+  int maxWorldHeight=168;
+  Array<Viewport> viewports=new Array();
+  viewports.add(new StretchViewport(minWorldWidth,minWorldHeight,camera));
+  viewports.add(new FillViewport(minWorldWidth,minWorldHeight,camera));
+  viewports.add(new FitViewport(minWorldWidth,minWorldHeight,camera));
+  viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,camera));
+  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,false,camera));
+  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,true,camera));
+  viewports.add(new ScreenViewport(camera));
+  viewports.add(new ScalingViewport(Scaling.none,minWorldWidth,minWorldHeight,camera));
+  return viewports;
+}
