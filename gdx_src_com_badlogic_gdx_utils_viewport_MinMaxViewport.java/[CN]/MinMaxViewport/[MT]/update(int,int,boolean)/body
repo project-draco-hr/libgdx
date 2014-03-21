@@ -2,10 +2,10 @@
   float screenAspectRatio=(float)screenWidth / (float)screenHeight;
   if (snap) {
     if (Math.abs(screenAspectRatio - minAspectRatio) < Math.abs(screenAspectRatio - maxAspectRatio)) {
-      this.setWorldSize(minWorldWidth,minWorldHeight);
+      setWorldSize(minWorldWidth,minWorldHeight);
     }
  else {
-      this.setWorldSize(maxWorldWidth,maxWorldHeight);
+      setWorldSize(maxWorldWidth,maxWorldHeight);
     }
   }
  else {
@@ -15,13 +15,11 @@
  else     if (screenAspectRatio > maxAspectRatio) {
       setWorldSize(maxWorldWidth,maxWorldHeight);
     }
+ else     if (Math.abs(screenAspectRatio - minAspectRatio) < Math.abs(screenAspectRatio - maxAspectRatio)) {
+      setWorldSize(minWorldWidth,minWorldWidth / screenAspectRatio);
+    }
  else {
-      if (Math.abs(screenAspectRatio - minAspectRatio) < Math.abs(screenAspectRatio - maxAspectRatio)) {
-        setWorldSize(minWorldWidth,minWorldWidth / screenAspectRatio);
-      }
- else {
-        setWorldSize(maxWorldWidth,maxWorldWidth / screenAspectRatio);
-      }
+      setWorldSize(maxWorldWidth,maxWorldWidth / screenAspectRatio);
     }
   }
   super.update(screenWidth,screenHeight,centerCamera);
