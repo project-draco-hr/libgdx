@@ -9,8 +9,6 @@
   viewports.add(new FitViewport(minWorldWidth,minWorldHeight,camera));
   viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,camera));
   viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
-  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,false,camera));
-  viewports.add(new MinMaxViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,true,camera));
   viewports.add(new ScreenViewport(camera));
   viewports.add(new ScalingViewport(Scaling.none,minWorldWidth,minWorldHeight,camera));
   return viewports;
