@@ -1,6 +1,6 @@
 {
-  if (this.getVersion() < 8) {
-    throw new GdxRuntimeException("LibGDX requires Android 2.2 or later.");
+  if (this.getVersion() < MINIMUM_SDK) {
+    throw new GdxRuntimeException("LibGDX requires Android API Level " + MINIMUM_SDK + " or later.");
   }
   graphics=new AndroidGraphics(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
   input=AndroidInputFactory.newAndroidInput(this,this,graphics.view,config);
