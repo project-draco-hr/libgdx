@@ -1,8 +1,10 @@
 {
   Map<String,String> params=parseArgs(args);
   if (!params.containsKey("dir") || !params.containsKey("name") || !params.containsKey("package")|| !params.containsKey("mainClass")) {
+    new GdxSetupUI();
     printHelp();
-    System.exit(-1);
   }
-  new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"));
+ else {
+    new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"));
+  }
 }

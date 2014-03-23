@@ -1,6 +1,7 @@
 {
   Project project=new Project();
   String packageDir=packageName.replace('.','/');
+  project.files.add(new ProjectFile("gitignore",".gitignore",false));
   project.files.add(new ProjectFile("build.gradle",true));
   project.files.add(new ProjectFile("settings.gradle"));
   project.files.add(new ProjectFile("gradlew",false));

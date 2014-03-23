@@ -1,0 +1,32 @@
+{
+  final String name=ui.form.nameText.getText().trim();
+  if (name.length() == 0) {
+    JOptionPane.showMessageDialog(this,"Please enter a project name.");
+    return;
+  }
+  final String pack=ui.form.packageText.getText().trim();
+  if (pack.length() == 0) {
+    JOptionPane.showMessageDialog(this,"Please enter a package name.");
+    return;
+  }
+  final String clazz=ui.form.gameClassText.getText().trim();
+  if (pack.length() == 0) {
+    JOptionPane.showMessageDialog(this,"Please enter a game class name.");
+    return;
+  }
+  final String destination=ui.form.destinationText.getText().trim();
+  if (pack.length() == 0) {
+    JOptionPane.showMessageDialog(this,"Please enter a destination directory.");
+    return;
+  }
+  new Thread("DoShit"){
+    public void run(){
+      log("Generating app in " + destination);
+      new GdxSetup().build(destination,name,pack,clazz);
+      log("Done!");
+      log("To import in Eclipse: File -> Import -> Gradle -> Gradle Project");
+      log("To import to Intellij IDEA: File -> Import -> build.gradle");
+    }
+  }
+.start();
+}
