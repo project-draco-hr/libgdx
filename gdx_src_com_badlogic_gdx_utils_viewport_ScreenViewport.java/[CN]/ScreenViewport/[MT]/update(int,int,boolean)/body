@@ -3,7 +3,7 @@
   viewportY=0;
   viewportWidth=screenWidth;
   viewportHeight=screenHeight;
-  worldWidth=screenWidth;
-  worldHeight=screenHeight;
+  worldWidth=screenWidth * unitsPerPixel;
+  worldHeight=screenHeight * unitsPerPixel;
   super.update(screenWidth,screenHeight,centerCamera);
 }
