@@ -1,10 +1,10 @@
 {
   Map<String,String> params=parseArgs(args);
-  if (!params.containsKey("dir") || !params.containsKey("name") || !params.containsKey("package")|| !params.containsKey("mainClass")) {
+  if (!params.containsKey("dir") || !params.containsKey("name") || !params.containsKey("package")|| !params.containsKey("mainClass")|| !params.containsKey("sdkLocation")) {
     new GdxSetupUI();
     printHelp();
   }
  else {
-    new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"));
+    new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),params.get("sdkLocation"));
   }
 }
