@@ -22,7 +22,7 @@
   float dddfx=tmp2x * pre5;
   float dddfy=tmp2y * pre5;
   while (segments-- > 0) {
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(fx,fy,0);
     fx+=dfx;
     fy+=dfy;
@@ -30,11 +30,11 @@
     dfy+=ddfy;
     ddfx+=dddfx;
     ddfy+=dddfy;
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(fx,fy,0);
   }
-  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.color(color);
   renderer.vertex(fx,fy,0);
-  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.color(color);
   renderer.vertex(x2,y2,0);
 }
