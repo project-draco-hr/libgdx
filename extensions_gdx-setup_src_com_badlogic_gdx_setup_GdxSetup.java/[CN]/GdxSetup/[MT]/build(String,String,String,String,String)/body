@@ -1,6 +1,7 @@
 {
   Project project=new Project();
   String packageDir=packageName.replace('.','/');
+  String sdkPath=sdkLocation.replace('\\','/');
   project.files.add(new ProjectFile("gitignore",".gitignore",false));
   project.files.add(new ProjectFile("build.gradle",true));
   project.files.add(new ProjectFile("settings.gradle"));
@@ -8,6 +9,7 @@
   project.files.add(new ProjectFile("gradlew.bat",false));
   project.files.add(new ProjectFile("gradle/wrapper/gradle-wrapper.jar",false));
   project.files.add(new ProjectFile("gradle/wrapper/gradle-wrapper.properties",false));
+  project.files.add(new ProjectFile("local.properties",true));
   project.files.add(new ProjectFile("core/build.gradle"));
   project.files.add(new ProjectFile("core/src/MainClass","core/src/" + packageDir + "/"+ mainClass+ ".java",true));
   project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + packageDir + "/"+ mainClass+ ".gwt.xml",true));
@@ -43,6 +45,7 @@
   values.put("%APP_NAME%",appName);
   values.put("%PACKAGE%",packageName);
   values.put("%MAIN_CLASS%",mainClass);
+  values.put("%ANDROID_SDK%",sdkPath);
   copyAndReplace(outputDir,project,values);
   new File(outputDir,"gradlew").setExecutable(true);
 }
