@@ -12,7 +12,7 @@
       }
     }
     pressed=false;
-    visualPressedTime=System.nanoTime() + visualPressedDuration * 1000000000;
+    visualPressedTime=TimeUtils.nanoTime() + visualPressedDuration * 1000000000;
     pressedPointer=-1;
     pressedButton=-1;
     cancelled=false;

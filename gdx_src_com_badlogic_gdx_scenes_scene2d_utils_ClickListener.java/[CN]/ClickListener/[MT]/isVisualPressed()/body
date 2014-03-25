@@ -1,7 +1,7 @@
 {
   if (pressed)   return true;
   if (visualPressedTime <= 0)   return false;
-  if (visualPressedTime > System.nanoTime())   return true;
+  if (visualPressedTime > TimeUtils.nanoTime())   return true;
   visualPressedTime=0;
   return false;
 }
