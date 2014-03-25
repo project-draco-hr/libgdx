@@ -7,12 +7,14 @@
   forward.crs(up).nor();
   Vector3 left=tmp(forward).crs(up).nor();
   Vector3 direction=tmp(end).sub(begin).nor();
-  matTmp1.set(left,up,forward,tmp(direction).scl(stemLength / 2));
-  setVertexTransform(matTmp1);
+  Matrix4 userTransform=getVertexTransform(tmp());
+  Matrix4 transform=tmp().set(left,up,forward,tmp(direction).scl(stemLength / 2));
+  Matrix4 temp=tmp();
+  setVertexTransform(temp.set(transform).mul(userTransform));
   cylinder(stemDiameter,stemLength,stemDiameter,divisions);
-  matTmp1.setTranslation(tmp(direction).scl(stemLength));
-  setVertexTransform(matTmp1);
+  transform.setTranslation(tmp(direction).scl(stemLength));
+  setVertexTransform(temp.set(transform).mul(userTransform));
   cone(coneDiameter,coneHeight,coneDiameter,divisions);
+  setVertexTransform(userTransform);
   cleanup();
-  setVertexTransformationEnabled(false);
 }
