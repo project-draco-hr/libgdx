@@ -1,0 +1,7 @@
+{
+  float freq=1f / values.size;
+  for (int i=0; i < values.size; ++i) {
+    values.items[i].interval=freq;
+    values.items[i].frequency=(i + 1) * freq;
+  }
+}
