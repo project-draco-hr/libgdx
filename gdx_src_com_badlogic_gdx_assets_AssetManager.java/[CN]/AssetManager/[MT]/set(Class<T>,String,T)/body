@@ -1,0 +1,14 @@
+{
+  ObjectMap<String,RefCountedContainer> assetsByType=assets.get(type);
+  if (assetsByType == null) {
+    assetsByType=new ObjectMap<String,RefCountedContainer>();
+    assets.put(type,assetsByType);
+  }
+  RefCountedContainer container=assetsByType.get(fileName);
+  if (container == null) {
+    container=new RefCountedContainer(asset);
+    assetsByType.put(fileName,container);
+  }
+ else   container.setObject(asset);
+  container.setRefCount(0);
+}
