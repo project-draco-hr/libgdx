@@ -1,7 +1,0 @@
-{
-synchronized (sGLThreadManager) {
-    mPaused=false;
-    mRequestRender=true;
-    sGLThreadManager.notifyAll();
-  }
-}
