@@ -166,7 +166,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=8;
+cs=10;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -197,7 +197,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=46;
+cs=55;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -212,6 +212,18 @@ pop();
 cs=stack[--top];
 _goto_targ=2;
 if (true) continue _goto;
+}
+}
+break;
+case 13:
+{
+if (debug) System.out.println("comment /" + data[p]);
+if (data[p++] == '/') {
+while (data[p] != '\n') p++;
+}
+ else {
+while (data[p] != '*' || data[p + 1] != '/') p++;
+p++;
 }
 }
 break;

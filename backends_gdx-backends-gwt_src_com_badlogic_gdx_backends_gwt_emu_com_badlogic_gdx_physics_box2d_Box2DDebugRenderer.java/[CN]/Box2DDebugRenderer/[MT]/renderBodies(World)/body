@@ -15,7 +15,9 @@
     }
   }
   renderer.end();
-  renderer.begin(ShapeType.Point);
-  for (  Contact contact : world.getContactList())   drawContact(contact);
-  renderer.end();
+  if (drawContacts) {
+    renderer.begin(ShapeType.Point);
+    for (    Contact contact : world.getContactList())     drawContact(contact);
+    renderer.end();
+  }
 }

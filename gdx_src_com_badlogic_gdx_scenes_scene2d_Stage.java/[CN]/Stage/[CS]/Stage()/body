@@ -1,3 +1,4 @@
 {
   this(new ScalingViewport(Scaling.stretch,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),new OrthographicCamera()),null);
+  getViewport().update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
 }
