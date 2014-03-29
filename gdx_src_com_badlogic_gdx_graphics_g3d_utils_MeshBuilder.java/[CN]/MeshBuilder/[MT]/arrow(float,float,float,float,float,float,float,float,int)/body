@@ -1,6 +1,10 @@
 {
   Vector3 begin=tmp(x1,y1,z1), end=tmp(x2,y2,z2);
-  float length=begin.dst(end), coneHeight=length * capLength, coneDiameter=2 * (float)(coneHeight * Math.sqrt(1f / 3)), stemLength=length - coneHeight, stemDiameter=coneDiameter * stemThickness;
+  float length=begin.dst(end);
+  float coneHeight=length * capLength;
+  float coneDiameter=2 * (float)(coneHeight * Math.sqrt(1f / 3));
+  float stemLength=length - coneHeight;
+  float stemDiameter=coneDiameter * stemThickness;
   Vector3 up=tmp(end).sub(begin).nor();
   Vector3 forward=tmp(up).crs(Vector3.Z);
   if (forward.isZero())   forward.set(Vector3.X);
