@@ -24,7 +24,7 @@
     JOptionPane.showMessageDialog(this,"Please enter your Android SDK's path");
     return;
   }
-  if (!isSdkLocationValid(sdkLocation)) {
+  if (!GdxSetup.isSdkLocationValid(sdkLocation)) {
     JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
   }
