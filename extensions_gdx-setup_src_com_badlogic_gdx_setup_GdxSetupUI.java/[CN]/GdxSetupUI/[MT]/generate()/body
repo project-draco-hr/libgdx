@@ -28,7 +28,7 @@
     JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
   }
-  new Thread("DoShit"){
+  new Thread(){
     public void run(){
       log("Generating app in " + destination);
       new GdxSetup().build(destination,name,pack,clazz,sdkLocation);
