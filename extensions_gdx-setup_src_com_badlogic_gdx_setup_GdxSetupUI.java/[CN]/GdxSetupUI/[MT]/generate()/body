@@ -21,7 +21,11 @@
   }
   final String sdkLocation=ui.form.sdkLocationText.getText().trim();
   if (sdkLocation.length() == 0) {
-    JOptionPane.showMessageDialog(this,"Please enter in your android sdk path");
+    JOptionPane.showMessageDialog(this,"Please enter your Android SDK's path");
+    return;
+  }
+  if (!GdxSetup.isSdkLocationValid(sdkLocation)) {
+    JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
   }
   new Thread("DoShit"){
