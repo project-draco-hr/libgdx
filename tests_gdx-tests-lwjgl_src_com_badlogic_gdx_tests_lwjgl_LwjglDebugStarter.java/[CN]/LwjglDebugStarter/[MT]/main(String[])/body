@@ -1,5 +1,5 @@
 {
-  GdxTest test=new DownloadTest();
+  GdxTest test=new BulletTestCollection();
   LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
   new LwjglApplication(test,config);
 }
