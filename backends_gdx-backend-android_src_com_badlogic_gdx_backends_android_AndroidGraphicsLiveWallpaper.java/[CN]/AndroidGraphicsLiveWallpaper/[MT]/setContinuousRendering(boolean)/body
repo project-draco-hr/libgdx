@@ -1,8 +1,14 @@
 {
   if (view != null) {
     this.isContinuous=isContinuous;
-    int renderMode=isContinuous ? GLSurfaceView.RENDERMODE_CONTINUOUSLY : GLSurfaceView.RENDERMODE_WHEN_DIRTY;
-    if (view instanceof GLSurfaceView)     ((GLSurfaceView)view).setRenderMode(renderMode);
+    if (view instanceof GLSurfaceViewAPI18) {
+      int renderMode=isContinuous ? GLSurfaceViewAPI18.RENDERMODE_CONTINUOUSLY : GLSurfaceViewAPI18.RENDERMODE_WHEN_DIRTY;
+      ((GLSurfaceViewAPI18)view).setRenderMode(renderMode);
+    }
+ else     if (view instanceof GLSurfaceView) {
+      int renderMode=isContinuous ? GLSurfaceView.RENDERMODE_CONTINUOUSLY : GLSurfaceView.RENDERMODE_WHEN_DIRTY;
+      ((GLSurfaceView)view).setRenderMode(renderMode);
+    }
  else     throw new RuntimeException("unimplemented");
     mean.clear();
   }
