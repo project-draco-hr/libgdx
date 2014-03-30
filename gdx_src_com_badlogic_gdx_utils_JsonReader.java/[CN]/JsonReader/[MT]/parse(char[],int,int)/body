@@ -166,7 +166,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=10;
+cs=17;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -197,7 +197,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=55;
+cs=61;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -225,6 +225,25 @@ while (data[p] != '\n') p++;
 while (data[p] != '*' || data[p + 1] != '/') p++;
 p++;
 }
+}
+break;
+case 14:
+{
+outer: while (true) {
+switch (data[p]) {
+case ':':
+case '}':
+case ']':
+case ',':
+case ' ':
+case '\r':
+case '\n':
+case '\t':
+break outer;
+}
+p++;
+}
+p--;
 }
 break;
 }
