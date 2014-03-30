@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(SoftbodyJNI.btSoftColliders_CollideSDF_RS_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}
