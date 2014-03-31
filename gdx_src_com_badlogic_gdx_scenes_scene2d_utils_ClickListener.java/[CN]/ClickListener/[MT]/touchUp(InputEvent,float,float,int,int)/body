@@ -9,6 +9,7 @@
         tapCount++;
         lastTapTime=time;
         clicked(event,x,y);
+        visualPressedTime=TimeUtils.nanoTime() + visualPressedDuration * 1000000000;
       }
     }
     pressed=false;

@@ -10,6 +10,9 @@
   viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,camera));
   viewports.add(new ExtendViewport(minWorldWidth,minWorldHeight,maxWorldWidth,maxWorldHeight,camera));
   viewports.add(new ScreenViewport(camera));
+  ScreenViewport screenViewport=new ScreenViewport(camera);
+  screenViewport.setUnitsPerPixel(0.75f);
+  viewports.add(screenViewport);
   viewports.add(new ScalingViewport(Scaling.none,minWorldWidth,minWorldHeight,camera));
   return viewports;
 }

@@ -19,9 +19,9 @@
       x2=vertices[i + 2];
       y2=vertices[i + 3];
     }
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x1,y1,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x2,y2,0);
   }
 }

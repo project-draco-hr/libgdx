@@ -3,35 +3,35 @@
   checkDirty();
   checkFlush(8);
   if (currType == ShapeType.Line) {
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y,0);
   }
  else {
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + width,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y + height,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y,0);
   }
 }

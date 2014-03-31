@@ -3,25 +3,25 @@
   checkDirty();
   checkFlush(6);
   if (currType == ShapeType.Line) {
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x1,y1,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x2,y2,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x2,y2,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x3,y3,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x3,y3,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x1,y1,0);
   }
  else {
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x1,y1,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x2,y2,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x3,y3,0);
   }
 }

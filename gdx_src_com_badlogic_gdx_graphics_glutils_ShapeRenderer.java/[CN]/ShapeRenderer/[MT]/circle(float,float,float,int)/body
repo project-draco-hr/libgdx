@@ -9,39 +9,39 @@
   if (currType == ShapeType.Line) {
     checkFlush(segments * 2 + 2);
     for (int i=0; i < segments; i++) {
-      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.color(color);
       renderer.vertex(x + cx,y + cy,0);
       float temp=cx;
       cx=cos * cx - sin * cy;
       cy=sin * temp + cos * cy;
-      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.color(color);
       renderer.vertex(x + cx,y + cy,0);
     }
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + cx,y + cy,0);
   }
  else {
     checkFlush(segments * 3 + 3);
     segments--;
     for (int i=0; i < segments; i++) {
-      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.color(color);
       renderer.vertex(x,y,0);
-      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.color(color);
       renderer.vertex(x + cx,y + cy,0);
       float temp=cx;
       cx=cos * cx - sin * cy;
       cy=sin * temp + cos * cy;
-      renderer.color(color.r,color.g,color.b,color.a);
+      renderer.color(color);
       renderer.vertex(x + cx,y + cy,0);
     }
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x,y,0);
-    renderer.color(color.r,color.g,color.b,color.a);
+    renderer.color(color);
     renderer.vertex(x + cx,y + cy,0);
   }
   float temp=cx;
   cx=radius;
   cy=0;
-  renderer.color(color.r,color.g,color.b,color.a);
+  renderer.color(color);
   renderer.vertex(x + cx,y + cy,0);
 }

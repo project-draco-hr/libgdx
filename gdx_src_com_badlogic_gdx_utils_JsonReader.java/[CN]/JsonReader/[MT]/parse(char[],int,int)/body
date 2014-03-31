@@ -166,7 +166,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=8;
+cs=17;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -197,7 +197,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=46;
+cs=61;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -213,6 +213,37 @@ cs=stack[--top];
 _goto_targ=2;
 if (true) continue _goto;
 }
+}
+break;
+case 13:
+{
+if (debug) System.out.println("comment /" + data[p]);
+if (data[p++] == '/') {
+while (data[p] != '\n') p++;
+}
+ else {
+while (data[p] != '*' || data[p + 1] != '/') p++;
+p++;
+}
+}
+break;
+case 14:
+{
+outer: while (true) {
+switch (data[p]) {
+case ':':
+case '}':
+case ']':
+case ',':
+case ' ':
+case '\r':
+case '\n':
+case '\t':
+break outer;
+}
+p++;
+}
+p--;
 }
 break;
 }

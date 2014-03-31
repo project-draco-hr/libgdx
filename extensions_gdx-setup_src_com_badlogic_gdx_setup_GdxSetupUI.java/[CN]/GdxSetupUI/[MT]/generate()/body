@@ -10,22 +10,32 @@
     return;
   }
   final String clazz=ui.form.gameClassText.getText().trim();
-  if (pack.length() == 0) {
+  if (clazz.length() == 0) {
     JOptionPane.showMessageDialog(this,"Please enter a game class name.");
     return;
   }
   final String destination=ui.form.destinationText.getText().trim();
-  if (pack.length() == 0) {
+  if (destination.length() == 0) {
     JOptionPane.showMessageDialog(this,"Please enter a destination directory.");
     return;
   }
-  new Thread("DoShit"){
+  final String sdkLocation=ui.form.sdkLocationText.getText().trim();
+  if (sdkLocation.length() == 0) {
+    JOptionPane.showMessageDialog(this,"Please enter your Android SDK's path");
+    return;
+  }
+  if (!GdxSetup.isSdkLocationValid(sdkLocation)) {
+    JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
+    return;
+  }
+  new Thread(){
     public void run(){
       log("Generating app in " + destination);
-      new GdxSetup().build(destination,name,pack,clazz);
+      new GdxSetup().build(destination,name,pack,clazz,sdkLocation);
       log("Done!");
       log("To import in Eclipse: File -> Import -> Gradle -> Gradle Project");
       log("To import to Intellij IDEA: File -> Import -> build.gradle");
+      log("To import to NetBeans: File -> Open Project...");
     }
   }
 .start();
