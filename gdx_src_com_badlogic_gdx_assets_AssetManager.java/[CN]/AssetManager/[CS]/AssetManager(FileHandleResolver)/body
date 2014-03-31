@@ -10,5 +10,6 @@
   setLoader(Model.class,".g3dj",new G3dModelLoader(new JsonReader(),resolver));
   setLoader(Model.class,".g3db",new G3dModelLoader(new UBJsonReader(),resolver));
   setLoader(Model.class,".obj",new ObjLoader(resolver));
+  setLoader(PolygonRegion.class,new PolygonRegionLoader(resolver));
   executor=new AsyncExecutor(1);
 }
