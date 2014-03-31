@@ -1,4 +1,5 @@
 {
+  if (params == null)   params=defaultParameters;
   String image=null;
   try {
     BufferedReader reader=file.reader(params.readerBuffer);
