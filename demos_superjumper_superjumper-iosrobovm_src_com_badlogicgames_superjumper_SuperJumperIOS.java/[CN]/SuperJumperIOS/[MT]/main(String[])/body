@@ -1,5 +1,5 @@
 {
-  try (NSAutoreleasePool pool=new NSAutoreleasePool()){
-    UIApplication.main(argv,null,SuperJumperIOS.class);
-  }
- }
+  NSAutoreleasePool pool=new NSAutoreleasePool();
+  UIApplication.main(argv,null,SuperJumperIOS.class);
+  pool.close();
+}

@@ -1,5 +1,5 @@
 {
   NSAutoreleasePool pool=new NSAutoreleasePool();
   UIApplication.main(argv,null,PaxBritannicaIOS.class);
-  pool.drain();
+  pool.close();
 }
