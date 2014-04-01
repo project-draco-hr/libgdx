@@ -4,7 +4,6 @@
   int s=0;
   Array<String> names=new Array(8);
   boolean needsUnescape=false;
-  boolean discardBuffer=false;
   RuntimeException parseRuntimeEx=null;
   boolean debug=false;
   if (debug)   System.out.println();
@@ -82,7 +81,6 @@ case 0:
 {
           s=p;
           needsUnescape=false;
-          discardBuffer=false;
         }
       break;
 case 1:
@@ -101,14 +99,12 @@ case 2:
 break;
 case 3:
 {
-if (!discardBuffer) {
 String value=new String(data,s,p - s);
 s=p;
 if (needsUnescape) value=unescape(value);
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("string: " + name + "="+ value);
 string(name,value);
-}
 }
 break;
 case 4:
@@ -132,30 +128,6 @@ break;
 case 6:
 {
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("boolean: " + name + "=true");
-bool(name,true);
-discardBuffer=true;
-}
-break;
-case 7:
-{
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("boolean: " + name + "=false");
-bool(name,false);
-discardBuffer=true;
-}
-break;
-case 8:
-{
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("null: " + name);
-string(name,null);
-discardBuffer=true;
-}
-break;
-case 9:
-{
-String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startObject: " + name);
 startObject(name);
 {
@@ -166,14 +138,14 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=17;
+cs=10;
 _goto_targ=2;
 if (true) continue _goto;
 }
 }
 }
 break;
-case 10:
+case 7:
 {
 if (debug) System.out.println("endObject");
 pop();
@@ -184,7 +156,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 11:
+case 8:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startArray: " + name);
@@ -197,14 +169,14 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=61;
+cs=41;
 _goto_targ=2;
 if (true) continue _goto;
 }
 }
 }
 break;
-case 12:
+case 9:
 {
 if (debug) System.out.println("endArray");
 pop();
@@ -215,7 +187,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 13:
+case 10:
 {
 if (debug) System.out.println("comment /" + data[p]);
 if (data[p++] == '/') {
@@ -227,7 +199,7 @@ p++;
 }
 }
 break;
-case 14:
+case 11:
 {
 outer: while (true) {
 switch (data[p]) {
@@ -244,6 +216,30 @@ break outer;
 p++;
 }
 p--;
+}
+break;
+case 12:
+{
+String value=new String(data,s,p - s);
+s=p;
+String name=names.size > 0 ? names.pop() : null;
+if (value.equals("null")) {
+if (debug) System.out.println("null: " + name);
+string(name,null);
+}
+ else if (value.equals("true")) {
+if (debug) System.out.println("boolean: " + name + "=true");
+bool(name,true);
+}
+ else if (value.equals("false")) {
+if (debug) System.out.println("boolean: " + name + "=false");
+bool(name,false);
+}
+ else {
+if (needsUnescape) value=unescape(value);
+if (debug) System.out.println("unquotedString: " + name + "="+ value);
+string(name,value);
+}
 }
 break;
 }
@@ -264,18 +260,6 @@ int __acts=_json_eof_actions[cs];
 int __nacts=(int)_json_actions[__acts++];
 while (__nacts-- > 0) {
 switch (_json_actions[__acts++]) {
-case 3:
-{
-if (!discardBuffer) {
-String value=new String(data,s,p - s);
-s=p;
-if (needsUnescape) value=unescape(value);
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("string: " + name + "="+ value);
-string(name,value);
-}
-}
-break;
 case 4:
 {
 String value=new String(data,s,p - s);
@@ -294,28 +278,28 @@ if (debug) System.out.println("long: " + name + "="+ Long.parseLong(value));
 number(name,Long.parseLong(value));
 }
 break;
-case 6:
+case 12:
 {
+String value=new String(data,s,p - s);
+s=p;
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("boolean: " + name + "=true");
-bool(name,true);
-discardBuffer=true;
-}
-break;
-case 7:
-{
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("boolean: " + name + "=false");
-bool(name,false);
-discardBuffer=true;
-}
-break;
-case 8:
-{
-String name=names.size > 0 ? names.pop() : null;
+if (value.equals("null")) {
 if (debug) System.out.println("null: " + name);
 string(name,null);
-discardBuffer=true;
+}
+ else if (value.equals("true")) {
+if (debug) System.out.println("boolean: " + name + "=true");
+bool(name,true);
+}
+ else if (value.equals("false")) {
+if (debug) System.out.println("boolean: " + name + "=false");
+bool(name,false);
+}
+ else {
+if (needsUnescape) value=unescape(value);
+if (debug) System.out.println("unquotedString: " + name + "="+ value);
+string(name,value);
+}
 }
 break;
 }
