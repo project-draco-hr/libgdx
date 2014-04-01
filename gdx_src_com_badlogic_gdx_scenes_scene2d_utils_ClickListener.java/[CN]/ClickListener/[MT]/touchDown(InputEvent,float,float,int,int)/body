@@ -6,6 +6,6 @@
   pressedButton=button;
   touchDownX=x;
   touchDownY=y;
-  visualPressedTime=0;
+  visualPressedTime=TimeUtils.nanoTime() + visualPressedDuration * 1000000000;
   return true;
 }
