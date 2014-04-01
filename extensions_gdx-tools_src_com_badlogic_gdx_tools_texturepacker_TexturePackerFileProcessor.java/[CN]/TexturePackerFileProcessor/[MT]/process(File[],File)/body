@@ -1,32 +1,30 @@
 {
   if (outputRoot.exists()) {
-    FileProcessor deleteProcessor=new FileProcessor(){
-      protected void processFile(      Entry inputFile) throws Exception {
-        inputFile.inputFile.delete();
-      }
-    }
-;
-    deleteProcessor.setRecursive(false);
     File settingsFile=new File(root,"pack.json");
     Settings rootSettings=defaultSettings;
     if (settingsFile.exists()) {
       rootSettings=new Settings(rootSettings);
       merge(rootSettings,settingsFile);
     }
-    ObjectSet<String> dirs=new ObjectSet();
     for (int i=0, n=rootSettings.scale.length; i < n; i++) {
+      FileProcessor deleteProcessor=new FileProcessor(){
+        protected void processFile(        Entry inputFile) throws Exception {
+          inputFile.inputFile.delete();
+        }
+      }
+;
+      deleteProcessor.setRecursive(false);
       String scaledPackFileName=rootSettings.scaledPackFileName(packFileName,i);
-      String prefix=scaledPackFileName;
+      File packFile=new File(scaledPackFileName);
+      String prefix=packFile.getName();
       int dotIndex=prefix.lastIndexOf('.');
       if (dotIndex != -1)       prefix=prefix.substring(0,dotIndex);
       deleteProcessor.addInputRegex("(?i)" + prefix + "\\d*\\.(png|jpg)");
       deleteProcessor.addInputRegex("(?i)" + prefix + "\\.atlas");
-      System.out.println();
-      String dir=new File(scaledPackFileName).getParent();
-      if (dir == null)       dirs.add("");
- else       if (new File(dir).exists())       dirs.add(dir);
+      String dir=packFile.getParent();
+      if (dir == null)       deleteProcessor.process(outputRoot,null);
+ else       if (new File(outputRoot + "/" + dir).exists())       deleteProcessor.process(outputRoot + "/" + dir,null);
     }
-    for (    String dir : dirs)     deleteProcessor.process(outputRoot + "/" + dir,null);
   }
   return super.process(files,outputRoot);
 }

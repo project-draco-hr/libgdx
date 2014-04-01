@@ -1,5 +1,4 @@
 {
-  File packFile=new File(outputDir,packFileName);
   if (packFile.exists()) {
     TextureAtlasData textureAtlasData=new TextureAtlasData(new FileHandle(packFile),new FileHandle(packFile),false);
     for (    Page page : pages) {

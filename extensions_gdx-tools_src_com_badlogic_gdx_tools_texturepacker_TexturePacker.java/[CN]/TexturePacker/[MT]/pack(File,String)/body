@@ -8,9 +8,12 @@
     }
     Array<Page> pages=packer.pack(imageProcessor.getImages());
     String scaledPackFileName=settings.scaledPackFileName(packFileName,i);
-    writeImages(outputDir,pages,scaledPackFileName);
+    File packFile=new File(outputDir,scaledPackFileName);
+    File packDir=packFile.getParentFile();
+    packDir.mkdirs();
+    writeImages(packFile,pages);
     try {
-      writePackFile(outputDir,pages,scaledPackFileName);
+      writePackFile(packFile,pages);
     }
  catch (    IOException ex) {
       throw new RuntimeException("Error writing pack file.",ex);

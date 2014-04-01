@@ -1,5 +1,6 @@
 {
-  String imageName=packFileName;
+  File packDir=packFile.getParentFile();
+  String imageName=packFile.getName();
   int dotIndex=imageName.indexOf('.');
   if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
   int fileIndex=0;
@@ -27,7 +28,7 @@
     height=Math.max(settings.minHeight,height);
     File outputFile;
     while (true) {
-      outputFile=new File(outputDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
+      outputFile=new File(packDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
       if (!outputFile.exists())       break;
     }
     new FileHandle(outputFile).parent().mkdirs();
