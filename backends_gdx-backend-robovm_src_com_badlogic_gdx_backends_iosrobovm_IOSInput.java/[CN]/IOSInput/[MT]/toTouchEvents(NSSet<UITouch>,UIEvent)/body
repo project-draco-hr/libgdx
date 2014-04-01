@@ -1,5 +1,5 @@
 {
-  for (  UITouch touch : (NSSet<UITouch>)touches) {
+  for (  UITouch touch : touches) {
     CGPoint loc=touch.getLocation(touch.getView());
 synchronized (touchEvents) {
       TouchEvent event=touchEventPool.obtain();

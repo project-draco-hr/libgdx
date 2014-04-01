@@ -1,6 +1,6 @@
 {
-  delegate=new UIAlertViewDelegate.Adapter(){
-    @Override public void clicked(    UIAlertView view,    int clicked){
+  delegate=new UIAlertViewDelegateAdapter(){
+    @Override public void clicked(    UIAlertView view,    long clicked){
       if (clicked == 0) {
         listener.canceled();
       }
