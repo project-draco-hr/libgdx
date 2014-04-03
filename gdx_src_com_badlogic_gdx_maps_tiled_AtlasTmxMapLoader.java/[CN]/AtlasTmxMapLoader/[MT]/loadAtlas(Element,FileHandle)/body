@@ -15,5 +15,9 @@
       }
     }
   }
+ else {
+    FileHandle atlasFile=tmxFile.sibling(tmxFile.nameWithoutExtension() + ".atlas");
+    return atlasFile.exists() ? atlasFile : null;
+  }
   return null;
 }
