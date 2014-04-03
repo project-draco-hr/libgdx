@@ -4,16 +4,16 @@
       Node node=getNodeAt(y);
       if (node == null)       return;
       if (node != getNodeAt(getTouchDownY()))       return;
-      if (selection.getMultiple() && selection.hasItems() && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
+      if (selection.getMultiple() && selection.hasItems() && UIUtils.shift()) {
         float low=selection.getLastSelected().actor.getY();
         float high=node.actor.getY();
-        if (!Selection.isCtrlPressed())         selection.clear();
+        if (!UIUtils.ctrl())         selection.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
         selection.fireChangeEvent();
         return;
       }
-      if (node.children.size > 0 && (!selection.getMultiple() || !Selection.isCtrlPressed())) {
+      if (node.children.size > 0 && (!selection.getMultiple() || !UIUtils.ctrl())) {
         float rowX=node.actor.getX();
         if (node.icon != null)         rowX-=iconSpacingRight + node.icon.getMinWidth();
         if (x < rowX) {

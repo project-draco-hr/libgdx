@@ -5,9 +5,7 @@
   Stage stage=getStage();
   if (stage == null || stage.getKeyboardFocus() != TextField.this)   return false;
   boolean repeat=false;
-  boolean ctrl;
-  if (isMac)   ctrl=Gdx.input.isKeyPressed(Keys.SYM);
- else   ctrl=Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+  boolean ctrl=UIUtils.ctrl();
   boolean jump=ctrl && !passwordMode;
   if (ctrl) {
     if (keycode == Keys.V) {
@@ -27,7 +25,7 @@
       return true;
     }
   }
-  if (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)) {
+  if (UIUtils.shift()) {
     if (keycode == Keys.INSERT)     paste();
     if (keycode == Keys.FORWARD_DEL && hasSelection) {
       copy();
