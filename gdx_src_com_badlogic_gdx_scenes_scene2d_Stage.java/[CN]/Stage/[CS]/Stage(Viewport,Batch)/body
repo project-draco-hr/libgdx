@@ -4,4 +4,5 @@
   this.batch=ownsBatch ? new SpriteBatch() : batch;
   root=new Group();
   root.setStage(this);
+  viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
 }
