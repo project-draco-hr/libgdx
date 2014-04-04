@@ -1,0 +1,7 @@
+{
+  spriteCache.setProjectionMatrix(camera.combined);
+  float width=camera.viewportWidth * camera.zoom + maxTileWidth * 2 * unitScale;
+  float height=camera.viewportHeight * camera.zoom + maxTileHeight * 2 * unitScale;
+  viewBounds.set(camera.position.x - width / 2,camera.position.y - height / 2,width,height);
+  if ((canCacheMoreW && viewBounds.x < cacheBounds.x - tolerance) || (canCacheMoreS && viewBounds.y < cacheBounds.y - tolerance) || (canCacheMoreE && viewBounds.x + viewBounds.width > cacheBounds.x + cacheBounds.width + tolerance)|| (canCacheMoreN && viewBounds.y + viewBounds.height > cacheBounds.y + cacheBounds.height + tolerance))   cached=false;
+}
