@@ -1,4 +1,4 @@
 {
-  super(className,cPtr,cMemoryOwn);
+  super(className,CollisionJNI.btGjkPairDetector_SWIGUpcast(cPtr),cMemoryOwn);
   swigCPtr=cPtr;
 }

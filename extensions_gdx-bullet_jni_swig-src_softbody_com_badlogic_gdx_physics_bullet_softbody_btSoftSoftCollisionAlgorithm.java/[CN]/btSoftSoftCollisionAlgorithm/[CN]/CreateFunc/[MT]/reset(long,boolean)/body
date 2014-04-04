@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(SoftbodyJNI.btSoftSoftCollisionAlgorithm_CreateFunc_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

@@ -1,4 +1,4 @@
 {
   long cPtr=SoftbodyJNI.btSoftBody_appendMaterial(swigCPtr,this);
-  return (cPtr == 0) ? null : new Material(cPtr,false);
+  return (cPtr == 0) ? null : new btSoftBody.Material(cPtr,false);
 }

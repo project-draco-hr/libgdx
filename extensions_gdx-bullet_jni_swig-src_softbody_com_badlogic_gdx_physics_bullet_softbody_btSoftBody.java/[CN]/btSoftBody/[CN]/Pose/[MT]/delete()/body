@@ -1,0 +1,10 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      SoftbodyJNI.delete_btSoftBody_Pose(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+  super.delete();
+}

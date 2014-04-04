@@ -1,0 +1,10 @@
+{
+  if (swigCPtr != 0) {
+    if (swigCMemOwn) {
+      swigCMemOwn=false;
+      CollisionJNI.delete_btDiscreteCollisionDetectorInterface_Result(swigCPtr);
+    }
+    swigCPtr=0;
+  }
+  super.delete();
+}
