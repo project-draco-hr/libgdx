@@ -1,6 +1,6 @@
 {
   if (config.useAccelerometer) {
-    accelerometerDelegate=new UIAccelerometerDelegate.Adapter(){
+    accelerometerDelegate=new UIAccelerometerDelegateAdapter(){
       @Override public void didAccelerate(      UIAccelerometer accelerometer,      UIAcceleration values){
         float x=(float)values.getX() * 10;
         float y=(float)values.getY() * 10;
