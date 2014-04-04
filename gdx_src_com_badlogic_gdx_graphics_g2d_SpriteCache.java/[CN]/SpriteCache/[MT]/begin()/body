@@ -1,5 +1,6 @@
 {
   if (drawing)   throw new IllegalStateException("end must be called before begin.");
+  renderCalls=0;
   combinedMatrix.set(projectionMatrix).mul(transformMatrix);
   Gdx.gl20.glDepthMask(false);
   if (customShader != null) {

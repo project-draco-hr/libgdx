@@ -5,11 +5,12 @@
   length*=6;
   Texture[] textures=cache.textures;
   int[] counts=cache.counts;
-  for (int i=0, n=cache.textureCount; i < n; i++) {
+  int textureCount=cache.textureCount;
+  for (int i=0; i < textureCount; i++) {
     textures[i].bind();
     int count=counts[i];
     if (count > length) {
-      i=n;
+      i=textureCount;
       count=length;
     }
  else     length-=count;
@@ -17,4 +18,6 @@
  else     mesh.render(shader,GL20.GL_TRIANGLES,offset,count);
     offset+=count;
   }
+  renderCalls+=cache.textureCount;
+  totalRenderCalls+=textureCount;
 }
