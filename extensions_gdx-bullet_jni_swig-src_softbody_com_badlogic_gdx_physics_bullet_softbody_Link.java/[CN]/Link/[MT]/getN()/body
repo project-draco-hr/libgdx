@@ -1,4 +1,0 @@
-{
-  long cPtr=SoftbodyJNI.Link_n_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_p_Node(cPtr,false);
-}
