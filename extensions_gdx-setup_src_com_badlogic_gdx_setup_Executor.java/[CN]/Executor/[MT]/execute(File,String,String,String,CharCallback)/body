@@ -1,0 +1,6 @@
+{
+  String exec=workingDir.getAbsolutePath() + "/" + (System.getProperty("os.name").contains("Windows") ? windowsFile : unixFile);
+  String command=exec + " " + parameters;
+  System.out.println("Executing '" + command + "'");
+  return startProcess(command,workingDir,callback);
+}

@@ -52,4 +52,5 @@
   values.put("%ANDROID_SDK%",sdkPath);
   copyAndReplace(outputDir,project,values);
   new File(outputDir,"gradlew").setExecutable(true);
+  Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean",callback);
 }

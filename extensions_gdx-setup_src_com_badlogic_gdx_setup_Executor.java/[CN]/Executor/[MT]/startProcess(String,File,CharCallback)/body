@@ -1,0 +1,28 @@
+{
+  try {
+    final Process process=new ProcessBuilder(command.split(" ")).redirectErrorStream(true).directory(directory).start();
+    Thread t=new Thread(new Runnable(){
+      @Override public void run(){
+        BufferedReader reader=new BufferedReader(new InputStreamReader(process.getInputStream()),1);
+        try {
+          char c=0;
+          while ((c=(char)reader.read()) != -1) {
+            callback.character(c);
+          }
+        }
+ catch (        IOException e) {
+        }
+      }
+    }
+);
+    t.setDaemon(true);
+    t.start();
+    process.waitFor();
+    t.interrupt();
+    return process.exitValue() == 0;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return false;
+  }
+}

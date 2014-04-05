@@ -5,6 +5,11 @@
     printHelp();
   }
  else {
-    new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),params.get("sdkLocation"));
+    new GdxSetup().build(params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),params.get("sdkLocation"),new CharCallback(){
+      @Override public void character(      char c){
+        System.out.print(c);
+      }
+    }
+);
   }
 }
