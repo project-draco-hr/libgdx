@@ -3,7 +3,6 @@
   DefaultMutableTreeNode desktopPrjNode=nodes.get("#DIR#prj-desktop");
   DefaultMutableTreeNode androidPrjNode=nodes.get("#DIR#prj-android");
   DefaultMutableTreeNode htmlPrjNode=nodes.get("#DIR#prj-html");
-  DefaultMutableTreeNode iosPrjNode=nodes.get("#DIR#prj-ios");
   DefaultMutableTreeNode robovmPrjNode=nodes.get("#DIR#prj-robovm");
   rootNode.removeAllChildren();
   rootNode.add(commonPrjNode);
@@ -11,7 +10,6 @@
   if (Ctx.cfgSetup.isAndroidIncluded)   rootNode.add(androidPrjNode);
   if (Ctx.cfgSetup.isHtmlIncluded)   rootNode.add(htmlPrjNode);
   if (Ctx.cfgSetup.isIosIncluded) {
-    rootNode.add(iosPrjNode);
     rootNode.add(robovmPrjNode);
   }
   updateSrc();
