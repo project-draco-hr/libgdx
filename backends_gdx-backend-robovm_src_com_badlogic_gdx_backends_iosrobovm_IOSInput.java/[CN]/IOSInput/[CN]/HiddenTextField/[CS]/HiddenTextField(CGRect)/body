@@ -1,0 +1,9 @@
+{
+  super(frame);
+  setKeyboardType(UIKeyboardType.Default);
+  setReturnKeyType(UIReturnKeyType.Done);
+  setAutocapitalizationType(UITextAutocapitalizationType.None);
+  setAutocorrectionType(UITextAutocorrectionType.No);
+  setSpellCheckingType(UITextSpellCheckingType.No);
+  setHidden(true);
+}
