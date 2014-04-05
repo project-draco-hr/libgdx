@@ -28,14 +28,26 @@
     JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
   }
+  ui.generateButton.setEnabled(false);
   new Thread(){
     public void run(){
       log("Generating app in " + destination);
-      new GdxSetup().build(destination,name,pack,clazz,sdkLocation);
+      new GdxSetup().build(destination,name,pack,clazz,sdkLocation,new CharCallback(){
+        @Override public void character(        char c){
+          log(c);
+        }
+      }
+);
       log("Done!");
       log("To import in Eclipse: File -> Import -> Gradle -> Gradle Project");
       log("To import to Intellij IDEA: File -> Import -> build.gradle");
       log("To import to NetBeans: File -> Open Project...");
+      SwingUtilities.invokeLater(new Runnable(){
+        @Override public void run(){
+          ui.generateButton.setEnabled(true);
+        }
+      }
+);
     }
   }
 .start();
