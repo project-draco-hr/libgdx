@@ -35,6 +35,12 @@
   mac.cFlags+=" -DFT2_BUILD_LIBRARY";
   mac.cppFlags+=" -DFT2_BUILD_LIBRARY";
   mac.linkerFlags+=" -framework CoreServices -framework Carbon";
+  BuildTarget mac64=BuildTarget.newDefaultTarget(TargetOs.MacOsX,true);
+  mac64.headerDirs=headers;
+  mac64.cIncludes=sources;
+  mac64.cFlags+=" -DFT2_BUILD_LIBRARY";
+  mac64.cppFlags+=" -DFT2_BUILD_LIBRARY";
+  mac64.linkerFlags+=" -framework CoreServices -framework Carbon";
   BuildTarget android=BuildTarget.newDefaultTarget(TargetOs.Android,false);
   android.headerDirs=headers;
   android.cIncludes=sources;
@@ -46,5 +52,5 @@
   ios.cFlags+=" -DFT2_BUILD_LIBRARY";
   ios.cppFlags+=" -DFT2_BUILD_LIBRARY";
   new NativeCodeGenerator().generate();
-  new AntScriptGenerator().generate(new BuildConfig("gdx-freetype"),win32home,win32,win64,lin32,lin64,mac,android,ios);
+  new AntScriptGenerator().generate(new BuildConfig("gdx-freetype"),win32home,win32,win64,lin32,lin64,mac,mac64,android,ios);
 }
