@@ -1,4 +1,5 @@
 {
+  viewport.update();
   Camera camera=viewport.getCamera();
   camera.update();
   if (!root.isVisible())   return;
