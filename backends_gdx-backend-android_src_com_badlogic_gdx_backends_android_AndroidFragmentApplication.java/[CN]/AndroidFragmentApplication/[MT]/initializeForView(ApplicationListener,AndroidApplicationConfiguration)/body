@@ -19,7 +19,7 @@
   useImmersiveMode(config.useImmersiveMode);
   if (config.useImmersiveMode && getVersion() >= 19) {
     try {
-      Class vlistener=Class.forName("com.badlogic.gdx.backends.android.AndroidVisibilityListener");
+      Class<?> vlistener=Class.forName("com.badlogic.gdx.backends.android.AndroidVisibilityListener");
       Object o=vlistener.newInstance();
       Method method=vlistener.getDeclaredMethod("createListener",AndroidApplicationBase.class);
       method.invoke(o,this);

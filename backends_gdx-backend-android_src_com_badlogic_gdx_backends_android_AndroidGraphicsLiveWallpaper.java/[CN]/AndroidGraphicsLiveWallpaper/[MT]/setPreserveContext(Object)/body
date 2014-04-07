@@ -1,6 +1,6 @@
 {
   int sdkVersion=android.os.Build.VERSION.SDK_INT;
-  if (sdkVersion >= 11 && view instanceof GLSurfaceView) {
+  if ((sdkVersion >= 11 && view instanceof GLSurfaceView) || view instanceof GLSurfaceViewAPI18) {
     try {
       Method method=null;
       for (      Method m : view.getClass().getMethods()) {
@@ -10,7 +10,7 @@
         }
       }
       if (method != null) {
-        method.invoke((GLSurfaceView)view,true);
+        method.invoke(view,true);
       }
     }
  catch (    Exception e) {
