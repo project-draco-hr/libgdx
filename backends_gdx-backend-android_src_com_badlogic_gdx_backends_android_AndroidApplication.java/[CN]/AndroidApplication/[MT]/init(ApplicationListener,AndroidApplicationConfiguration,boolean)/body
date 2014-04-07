@@ -12,6 +12,17 @@
   this.handler=new Handler();
   this.useImmersiveMode=config.useImmersiveMode;
   this.hideStatusBar=config.hideStatusBar;
+  addLifecycleListener(new LifecycleListener(){
+    @Override public void resume(){
+    }
+    @Override public void pause(){
+      audio.pause();
+    }
+    @Override public void dispose(){
+      audio.dispose();
+    }
+  }
+);
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();
