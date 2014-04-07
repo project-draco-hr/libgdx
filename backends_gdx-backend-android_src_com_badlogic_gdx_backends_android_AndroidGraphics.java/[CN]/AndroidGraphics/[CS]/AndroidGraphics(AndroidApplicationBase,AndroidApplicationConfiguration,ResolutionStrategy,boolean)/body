@@ -1,0 +1,10 @@
+{
+  this.config=config;
+  this.app=application;
+  view=createGLSurfaceView(application,resolutionStrategy);
+  preserveEGLContextOnPause();
+  if (focusableView) {
+    view.setFocusable(true);
+    view.setFocusableInTouchMode(true);
+  }
+}

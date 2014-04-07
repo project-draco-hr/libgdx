@@ -30,14 +30,14 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
         listener.resume();
       }
     }
     app.getApplicationListener().resume();
-    Gdx.app.log("AndroidGraphics","resumed");
+    Gdx.app.log(LOG_TAG,"resumed");
   }
   if (lrunning) {
 synchronized (app.getRunnables()) {
@@ -53,28 +53,28 @@ synchronized (app.getRunnables()) {
         t.printStackTrace();
       }
     }
-    ((AndroidInput)app.getInput()).processEvents();
+    app.getInput().processEvents();
     app.getApplicationListener().render();
   }
   if (lpause) {
-    Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
         listener.pause();
       }
     }
     app.getApplicationListener().pause();
-    Gdx.app.log("AndroidGraphics","paused");
+    Gdx.app.log(LOG_TAG,"paused");
   }
   if (ldestroy) {
-    Array<LifecycleListener> listeners=((AndroidApplicationBase)app).getLifecycleListeners();
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
 synchronized (listeners) {
       for (      LifecycleListener listener : listeners) {
         listener.dispose();
       }
     }
-    ((AndroidApplicationBase)app).getApplicationListener().dispose();
-    Gdx.app.log("AndroidGraphics","destroyed");
+    app.getApplicationListener().dispose();
+    Gdx.app.log(LOG_TAG,"destroyed");
   }
   if (time - frameStart > 1000000000) {
     fps=frames;
