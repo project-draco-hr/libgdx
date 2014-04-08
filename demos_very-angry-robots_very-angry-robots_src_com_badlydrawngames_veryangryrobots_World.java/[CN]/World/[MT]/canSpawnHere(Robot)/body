@@ -1,3 +1,0 @@
-{
-  return !(intersectsWalls(robot) || intersectsDoors(robot) || intersectsRobots(robot)|| playerPos.dst(robot.x,robot.y) < WALL_WIDTH);
-}

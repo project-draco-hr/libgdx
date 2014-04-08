@@ -1,8 +1,0 @@
-{
-  super(id,position,facing);
-  bulletSpeed=1000;
-  damage=10;
-  this.velocity=new Vector2().set(facing).scl(bulletSpeed);
-  this.set(Resources.getInstance().laser);
-  this.setOrigin(0,0);
-}

@@ -1,8 +1,0 @@
-{
-  super.onCreate(savedInstanceState);
-  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
-  config.useCompass=false;
-  config.useAccelerometer=false;
-  VeryAngryRobotsGame game=new VeryAngryRobotsGame();
-  initialize(game,config);
-}

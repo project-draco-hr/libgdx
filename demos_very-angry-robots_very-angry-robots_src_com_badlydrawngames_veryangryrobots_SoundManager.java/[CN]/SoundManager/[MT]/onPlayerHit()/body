@@ -1,7 +1,0 @@
-{
-  if (lastPlayerHitTime != now) {
-    canTaunt=false;
-    Assets.playSound(Assets.killPlayerSound);
-    lastPlayerHitTime=now;
-  }
-}
