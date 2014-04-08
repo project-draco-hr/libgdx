@@ -1,0 +1,29 @@
+{
+  final float divX=ray.direction.x == 0f ? 0f : 1 / ray.direction.x;
+  final float divY=ray.direction.y == 0f ? 0f : 1 / ray.direction.y;
+  final float divZ=ray.direction.z == 0f ? 0f : 1 / ray.direction.z;
+  float minx=((center.x - dimensions.x * .5f) - ray.origin.x) * divX;
+  float maxx=((center.x + dimensions.x * .5f) - ray.origin.x) * divX;
+  if (minx > maxx) {
+    final float t=minx;
+    minx=maxx;
+    maxx=t;
+  }
+  float miny=((center.y - dimensions.y * .5f) - ray.origin.y) * divY;
+  float maxy=((center.y + dimensions.y * .5f) - ray.origin.y) * divY;
+  if (miny > maxy) {
+    final float t=miny;
+    miny=maxy;
+    maxy=t;
+  }
+  float minz=((center.z - dimensions.z * .5f) - ray.origin.z) * divZ;
+  float maxz=((center.z + dimensions.z * .5f) - ray.origin.z) * divZ;
+  if (minz > maxz) {
+    final float t=minz;
+    minz=maxz;
+    maxz=t;
+  }
+  float min=Math.max(Math.max(minx,miny),minz);
+  float max=Math.min(Math.min(maxx,maxy),maxz);
+  return max >= 0 && max >= min;
+}
