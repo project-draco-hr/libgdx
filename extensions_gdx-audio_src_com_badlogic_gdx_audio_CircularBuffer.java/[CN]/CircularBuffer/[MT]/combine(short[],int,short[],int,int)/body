@@ -1,8 +1,0 @@
-{
-  for (int i=0; i < length; i++) {
-    int destIndex=destPos + i;
-    int a=src[srcPos + i];
-    int b=dest[destIndex];
-    dest[destIndex]=(short)(0.5f * (a + b));
-  }
-}

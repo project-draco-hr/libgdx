@@ -1,9 +1,0 @@
-{
-  if (numAvg > spectrum.length / 2) {
-    throw new IllegalArgumentException("The number of averages for this transform can be at most " + spectrum.length / 2 + ".");
-  }
- else {
-    averages=new float[numAvg];
-  }
-  whichAverage=LINAVG;
-}
