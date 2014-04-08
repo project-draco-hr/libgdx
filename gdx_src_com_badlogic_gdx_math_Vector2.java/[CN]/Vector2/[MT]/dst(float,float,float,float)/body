@@ -1,0 +1,5 @@
+{
+  final float x_d=x2 - x1;
+  final float y_d=y2 - y1;
+  return (float)Math.sqrt(x_d * x_d + y_d * y_d);
+}

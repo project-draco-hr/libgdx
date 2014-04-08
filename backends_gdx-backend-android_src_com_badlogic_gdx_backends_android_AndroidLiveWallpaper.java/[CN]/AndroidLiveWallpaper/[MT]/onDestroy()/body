@@ -1,7 +1,7 @@
 {
   if (graphics != null) {
-    if (graphics.view != null && (graphics.view instanceof GLSurfaceView)) {
-      GLSurfaceView glSurfaceView=(GLSurfaceView)graphics.view;
+    if (graphics.view != null && (graphics.view instanceof GLSurfaceView || graphics.view instanceof GLSurfaceViewAPI18)) {
+      View glSurfaceView=graphics.view;
       try {
         Method method=null;
         for (        Method m : glSurfaceView.getClass().getMethods()) {

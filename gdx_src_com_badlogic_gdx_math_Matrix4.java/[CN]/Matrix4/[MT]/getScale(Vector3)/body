@@ -1,13 +1,3 @@
 {
-  if (MathUtils.isZero(val[Matrix4.M01]) && MathUtils.isZero(val[Matrix4.M02]) && MathUtils.isZero(val[Matrix4.M10])&& MathUtils.isZero(val[Matrix4.M12])&& MathUtils.isZero(val[Matrix4.M20])&& MathUtils.isZero(val[Matrix4.M21])) {
-    scale.x=val[Matrix4.M00];
-    scale.y=val[Matrix4.M11];
-    scale.z=val[Matrix4.M22];
-  }
- else {
-    scale.x=(float)Math.sqrt(val[Matrix4.M00] * val[Matrix4.M00] + val[Matrix4.M01] * val[Matrix4.M01] + val[Matrix4.M02] * val[Matrix4.M02]);
-    scale.y=(float)Math.sqrt(val[Matrix4.M10] * val[Matrix4.M10] + val[Matrix4.M11] * val[Matrix4.M11] + val[Matrix4.M12] * val[Matrix4.M12]);
-    scale.z=(float)Math.sqrt(val[Matrix4.M20] * val[Matrix4.M20] + val[Matrix4.M21] * val[Matrix4.M21] + val[Matrix4.M22] * val[Matrix4.M22]);
-  }
-  return scale;
+  return scale.set(getScaleX(),getScaleY(),getScaleZ());
 }
