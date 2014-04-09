@@ -1,8 +1,8 @@
 {
-  long endTime=TimeUtils.millis() + millis;
+  long endTime=System.currentTimeMillis() + millis;
   while (true) {
     boolean done=update();
-    if (done || TimeUtils.millis() > endTime)     return done;
+    if (done || System.currentTimeMillis() > endTime)     return done;
     ThreadUtils.yield();
   }
 }

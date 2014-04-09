@@ -5,9 +5,9 @@
   setLoader(Sound.class,new SoundLoader(resolver));
   setLoader(TextureAtlas.class,new TextureAtlasLoader(resolver));
   setLoader(Texture.class,new TextureLoader(resolver));
-  setLoader(PolygonRegion.class,new PolygonRegionLoader(resolver));
   setLoader(Skin.class,new SkinLoader(resolver));
   setLoader(ParticleEffect.class,new ParticleEffectLoader(resolver));
+  setLoader(PolygonRegion.class,new PolygonRegionLoader(resolver));
   setLoader(Model.class,".g3dj",new G3dModelLoader(new JsonReader(),resolver));
   setLoader(Model.class,".g3db",new G3dModelLoader(new UBJsonReader(),resolver));
   setLoader(Model.class,".obj",new ObjLoader(resolver));

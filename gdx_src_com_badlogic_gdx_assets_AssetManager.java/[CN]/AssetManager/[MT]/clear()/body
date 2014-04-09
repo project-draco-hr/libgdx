@@ -5,7 +5,9 @@
   while (assetTypes.size > 0) {
     dependencyCount.clear();
     Array<String> assets=assetTypes.keys().toArray();
-    for (    String asset : assets)     dependencyCount.put(asset,0);
+    for (    String asset : assets) {
+      dependencyCount.put(asset,0);
+    }
     for (    String asset : assets) {
       Array<String> dependencies=assetDependencies.get(asset);
       if (dependencies == null)       continue;
@@ -15,13 +17,17 @@
         dependencyCount.put(dependency,count);
       }
     }
-    for (    String asset : assets)     if (dependencyCount.get(asset,0) == 0)     unload(asset);
+    for (    String asset : assets) {
+      if (dependencyCount.get(asset,0) == 0) {
+        unload(asset);
+      }
+    }
   }
-  assets.clear();
-  assetTypes.clear();
-  assetDependencies.clear();
-  loaded=0;
-  toLoad=0;
-  loadQueue.clear();
-  tasks.clear();
+  this.assets.clear();
+  this.assetTypes.clear();
+  this.assetDependencies.clear();
+  this.loaded=0;
+  this.toLoad=0;
+  this.loadQueue.clear();
+  this.tasks.clear();
 }
