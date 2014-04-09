@@ -1,5 +1,5 @@
 {
   DisplayMetrics metrics=new DisplayMetrics();
-  ((WindowManager)app.getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+  app.getWindowManager().getDefaultDisplay().getMetrics(metrics);
   return new AndroidDisplayMode(metrics.widthPixels,metrics.heightPixels,0,0);
 }

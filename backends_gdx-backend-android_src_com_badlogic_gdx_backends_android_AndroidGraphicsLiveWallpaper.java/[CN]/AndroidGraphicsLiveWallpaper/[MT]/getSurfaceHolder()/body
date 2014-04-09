@@ -1,5 +1,5 @@
 {
-synchronized (app.service.sync) {
-    return app.service.getSurfaceHolder();
+synchronized (((AndroidLiveWallpaper)app).service.sync) {
+    return ((AndroidLiveWallpaper)app).service.getSurfaceHolder();
   }
 }

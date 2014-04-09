@@ -1,0 +1,14 @@
+{
+  if (view != null) {
+    if (view instanceof GLSurfaceView || view instanceof GLSurfaceViewAPI18) {
+      try {
+        view.getClass().getMethod("onDestroy").invoke(view);
+        if (AndroidLiveWallpaperService.DEBUG)         Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onDestroy() stopped GLThread managed by GLSurfaceView");
+      }
+ catch (      Throwable t) {
+        Log.e(AndroidLiveWallpaperService.TAG,"failed to destroy GLSurfaceView's thread! GLSurfaceView.onDetachedFromWindow impl changed since API lvl 16!");
+        t.printStackTrace();
+      }
+    }
+  }
+}

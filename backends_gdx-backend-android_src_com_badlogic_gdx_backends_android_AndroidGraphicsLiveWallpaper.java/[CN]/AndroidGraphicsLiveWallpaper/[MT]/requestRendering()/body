@@ -1,7 +1,0 @@
-{
-  if (view != null) {
-    if (view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)view).requestRender();
- else     if (view instanceof GLSurfaceView)     ((GLSurfaceView)view).requestRender();
- else     throw new RuntimeException("unimplemented");
-  }
-}
