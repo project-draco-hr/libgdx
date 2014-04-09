@@ -15,7 +15,7 @@
   project.files.add(new ProjectFile("local.properties",true));
   project.files.add(new ProjectFile("core/build.gradle"));
   project.files.add(new ProjectFile("core/src/MainClass","core/src/" + packageDir + "/"+ mainClass+ ".java",true));
-  project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + packageDir + "/"+ mainClass+ ".gwt.xml",true));
+  project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + mainClass + ".gwt.xml",true));
   project.files.add(new ProjectFile("desktop/build.gradle"));
   project.files.add(new ProjectFile("desktop/src/DesktopLauncher","desktop/src/" + packageDir + "/desktop/DesktopLauncher.java",true));
   project.files.add(new ProjectFile("android/assets/badlogic.jpg",false));
