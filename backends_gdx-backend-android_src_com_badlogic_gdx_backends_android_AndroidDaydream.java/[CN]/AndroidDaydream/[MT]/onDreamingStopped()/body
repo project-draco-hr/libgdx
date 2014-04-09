@@ -10,8 +10,8 @@
   graphics.clearManagedCaches();
   graphics.destroy();
   graphics.setContinuousRendering(isContinuous);
-  if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
+  if (graphics.view != null) {
+    if (graphics.view instanceof GLSurfaceView)     ((GLSurfaceView)graphics.view).onPause();
   }
   super.onDreamingStopped();
 }
