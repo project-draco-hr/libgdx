@@ -9,5 +9,5 @@
     return false;
   }
   Quaternion other=(Quaternion)obj;
-  return (Float.floatToIntBits(w) == Float.floatToIntBits(other.w)) && (Float.floatToIntBits(x) == Float.floatToIntBits(other.x)) && (Float.floatToIntBits(y) == Float.floatToIntBits(other.y))&& (Float.floatToIntBits(z) == Float.floatToIntBits(other.z));
+  return (NumberUtils.floatToRawIntBits(w) == NumberUtils.floatToRawIntBits(other.w)) && (NumberUtils.floatToRawIntBits(x) == NumberUtils.floatToRawIntBits(other.x)) && (NumberUtils.floatToRawIntBits(y) == NumberUtils.floatToRawIntBits(other.y))&& (NumberUtils.floatToRawIntBits(z) == NumberUtils.floatToRawIntBits(other.z));
 }
