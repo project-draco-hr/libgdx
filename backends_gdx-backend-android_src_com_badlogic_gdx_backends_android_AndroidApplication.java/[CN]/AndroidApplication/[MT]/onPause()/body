@@ -12,9 +12,6 @@
     graphics.destroy();
   }
   graphics.setContinuousRendering(isContinuous);
-  if (graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onPause();
-    if (graphics.view instanceof GLSurfaceView)     ((GLSurfaceView)graphics.view).onPause();
-  }
+  graphics.onPauseGLSurfaceView();
   super.onPause();
 }
