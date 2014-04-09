@@ -1,0 +1,5 @@
+{
+  for (int i=0; i < mips.length; ++i) {
+    GLTexture.uploadImageData(target,mips[i],i);
+  }
+}
