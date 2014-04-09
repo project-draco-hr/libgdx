@@ -1,20 +1,3 @@
 {
-  graphics=new AndroidGraphicsDaydream(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
-  input=AndroidInputFactory.newAndroidInput(this,this,graphics.view,config);
-  audio=new AndroidAudio(this,config);
-  this.getFilesDir();
-  files=new AndroidFiles(this.getAssets(),this.getFilesDir().getAbsolutePath());
-  net=new AndroidNet(null);
-  this.listener=listener;
-  this.handler=new Handler();
-  Gdx.app=this;
-  Gdx.input=this.getInput();
-  Gdx.audio=this.getAudio();
-  Gdx.files=this.getFiles();
-  Gdx.graphics=this.getGraphics();
-  Gdx.net=this.getNet();
-  setFullscreen(true);
-  setContentView(graphics.getView(),createLayoutParams());
-  createWakeLock(config.useWakelock);
-  hideStatusBar(config);
+  init(listener,config,false);
 }

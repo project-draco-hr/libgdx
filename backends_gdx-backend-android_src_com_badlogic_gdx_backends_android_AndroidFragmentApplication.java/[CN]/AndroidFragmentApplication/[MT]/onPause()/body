@@ -8,9 +8,6 @@
   boolean[] touched=input.touched;
   Arrays.fill(touched,false);
   graphics.setContinuousRendering(isContinuous);
-  if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof GLSurfaceViewAPI18)     ((GLSurfaceViewAPI18)graphics.view).onPause();
-    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onPause();
-  }
+  graphics.onPauseGLSurfaceView();
   super.onPause();
 }

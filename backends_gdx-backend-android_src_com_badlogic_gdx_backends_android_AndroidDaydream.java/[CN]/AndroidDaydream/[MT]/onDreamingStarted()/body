@@ -5,9 +5,9 @@
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
   Gdx.net=this.getNet();
-  ((AndroidInput)getInput()).registerSensorListeners();
-  if (graphics != null && graphics.view != null) {
-    if (graphics.view instanceof android.opengl.GLSurfaceView)     ((android.opengl.GLSurfaceView)graphics.view).onResume();
+  getInput().registerSensorListeners();
+  if (graphics != null) {
+    graphics.onResumeGLSurfaceView();
   }
   if (!firstResume) {
     graphics.resume();
