@@ -7,6 +7,10 @@
   Arrays.fill(realId,-1);
   boolean[] touched=input.touched;
   Arrays.fill(touched,false);
+  if (isRemoving() || getActivity().isFinishing()) {
+    graphics.clearManagedCaches();
+    graphics.destroy();
+  }
   graphics.setContinuousRendering(isContinuous);
   graphics.onPauseGLSurfaceView();
   super.onPause();
