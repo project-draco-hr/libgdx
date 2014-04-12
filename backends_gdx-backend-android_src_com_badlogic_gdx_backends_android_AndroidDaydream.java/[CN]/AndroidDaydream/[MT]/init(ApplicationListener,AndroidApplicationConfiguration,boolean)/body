@@ -4,7 +4,7 @@
   audio=new AndroidAudio(this,config);
   this.getFilesDir();
   files=new AndroidFiles(this.getAssets(),this.getFilesDir().getAbsolutePath());
-  net=new AndroidNet(null);
+  net=new AndroidNet(this);
   this.listener=listener;
   this.handler=new Handler();
   addLifecycleListener(new LifecycleListener(){
