@@ -4,11 +4,11 @@
     throw new RuntimeException("Couldn't create dir '" + outFile.getAbsolutePath() + "'");
   }
   if (file.isTemplate) {
-    String txt=readResourceAsString(file.resourceName);
+    String txt=readResourceAsString(file.resourceName,file.resourceLoc);
     txt=replace(txt,values);
     writeFile(outFile,txt);
   }
  else {
-    writeFile(outFile,readResource(file.resourceName));
+    writeFile(outFile,readResource(file.resourceName,file.resourceLoc));
   }
 }

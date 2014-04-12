@@ -15,4 +15,50 @@
   add(sdkLocationLabel,new GridBagConstraints(0,4,1,1,0,0,EAST,NONE,new Insets(0,0,0,6),0,0));
   add(sdkLocationText,new GridBagConstraints(1,4,1,1,1,0,CENTER,HORIZONTAL,new Insets(0,0,0,0),0,0));
   add(sdkLocationButton,new GridBagConstraints(2,4,1,1,0,0,CENTER,NONE,new Insets(0,6,0,0),0,0));
+  for (  final ProjectType projectType : ProjectType.values()) {
+    if (projectType.equals(ProjectType.CORE)) {
+      continue;
+    }
+    SetupCheckBox checkBox=new SetupCheckBox(projectType.getName().substring(0,1).toUpperCase() + projectType.getName().substring(1,projectType.getName().length()));
+    subProjectsPanel.add(checkBox);
+    checkBox.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent e){
+        SetupCheckBox box=(SetupCheckBox)e.getSource();
+        if (box.isSelected()) {
+          modules.add(projectType);
+        }
+ else {
+          if (modules.contains(projectType)) {
+            modules.remove(projectType);
+          }
+        }
+      }
+    }
+);
+  }
+  add(projectsLabel,new GridBagConstraints(0,5,1,1,0,0,WEST,WEST,new Insets(20,0,0,0),0,0));
+  add(subProjectsPanel,new GridBagConstraints(0,6,3,1,0,0,CENTER,HORIZONTAL,new Insets(0,0,0,0),0,0));
+  for (  final ProjectDependency projDep : ProjectDependency.values()) {
+    if (projDep.equals(ProjectDependency.GDX)) {
+      continue;
+    }
+    SetupCheckBox depCheckBox=new SetupCheckBox(projDep.name().substring(0,1) + projDep.name().substring(1,projDep.name().length()).toLowerCase());
+    extensionsPanel.add(depCheckBox);
+    depCheckBox.addItemListener(new ItemListener(){
+      @Override public void itemStateChanged(      ItemEvent e){
+        SetupCheckBox box=(SetupCheckBox)e.getSource();
+        if (box.isSelected()) {
+          dependencies.add(builder.bank.getDependency(projDep));
+        }
+ else {
+          if (dependencies.contains(builder.bank.getDependency(projDep))) {
+            dependencies.remove(builder.bank.getDependency(projDep));
+          }
+        }
+      }
+    }
+);
+  }
+  add(extensionsLabel,new GridBagConstraints(0,7,1,1,0,0,WEST,WEST,new Insets(20,0,0,0),0,0));
+  add(extensionsPanel,new GridBagConstraints(0,8,3,1,0,0,CENTER,HORIZONTAL,new Insets(0,0,0,0),0,0));
 }

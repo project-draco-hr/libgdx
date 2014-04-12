@@ -1,0 +1,19 @@
+{
+  write(wr,"allprojects {");
+  write(wr,"apply plugin: \"eclipse\"");
+  write(wr,"apply plugin: \"idea\"");
+  space(wr);
+  write(wr,"version = '1.0'");
+  write(wr,"ext {");
+  write(wr,"appName = '%APP_NAME%'");
+  write(wr,"gdxVersion = '1.0-SNAPSHOT'");
+  write(wr,"roboVMVersion = '0.0.10'");
+  write(wr,"}");
+  space(wr);
+  write(wr,"repositories {");
+  write(wr,"mavenLocal()");
+  write(wr,"mavenCentral()");
+  write(wr,"maven { url \"" + DependencyBank.libGDXSnapshotsUrl + "\" }");
+  write(wr,"}");
+  write(wr,"}");
+}

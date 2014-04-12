@@ -1,0 +1,13 @@
+{
+  String[] out;
+  if (in != null) {
+    out=new String[in.length];
+    for (int i=0; i < in.length; i++) {
+      if (in[i] != null) {
+        out[i]=in[i].replace("%PACKAGE%",packageString);
+      }
+    }
+    return out;
+  }
+  return null;
+}
