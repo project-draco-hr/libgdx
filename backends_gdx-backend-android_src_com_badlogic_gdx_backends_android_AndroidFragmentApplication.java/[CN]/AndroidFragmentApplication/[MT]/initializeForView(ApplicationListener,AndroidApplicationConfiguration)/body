@@ -9,6 +9,18 @@
   net=new AndroidNet(this);
   this.listener=listener;
   this.handler=new Handler();
+  addLifecycleListener(new LifecycleListener(){
+    @Override public void resume(){
+      audio.resume();
+    }
+    @Override public void pause(){
+      audio.pause();
+    }
+    @Override public void dispose(){
+      audio.dispose();
+    }
+  }
+);
   Gdx.app=this;
   Gdx.input=this.getInput();
   Gdx.audio=this.getAudio();

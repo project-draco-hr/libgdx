@@ -1,8 +1,0 @@
-{
-  for (int i=0; i < length; i++) {
-    int destIndex=destPos + i;
-    float a=src[srcPos + i];
-    float b=dest[destIndex];
-    dest[destIndex]=a + b;
-  }
-}

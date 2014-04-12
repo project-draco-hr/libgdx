@@ -1,6 +1,0 @@
-{
-  IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  config.orientationLandscape=true;
-  config.orientationPortrait=false;
-  return new IOSApplication(new GdxInvaders(),config);
-}

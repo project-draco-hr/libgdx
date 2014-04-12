@@ -1,7 +1,0 @@
-{
-  collisionRay=cam.getPickRay(x,y);
-  if (Intersector.intersectRayBoundsFast(collisionRay,collisionBack)) {
-    finished=true;
-  }
-  return false;
-}

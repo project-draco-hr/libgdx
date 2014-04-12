@@ -1,6 +1,0 @@
-{
-  if (lastRobotFireTime != now) {
-    Assets.playSound(Assets.robotShotSound);
-    lastRobotFireTime=now;
-  }
-}

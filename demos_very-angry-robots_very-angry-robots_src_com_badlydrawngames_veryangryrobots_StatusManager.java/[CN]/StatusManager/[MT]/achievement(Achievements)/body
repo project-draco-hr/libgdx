@@ -1,6 +1,0 @@
-{
-  if (!achieved.contains(achievement)) {
-    achieved.add(achievement);
-    achievementsNotifier.onAttained(achievement);
-  }
-}

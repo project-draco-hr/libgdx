@@ -1,9 +1,0 @@
-{
-  placePlayer();
-  placeCaptain();
-  for (  Robot robot : robots) {
-    robot.respawn();
-  }
-  robotShots.clear();
-  playerShots.clear();
-}

@@ -1,8 +1,0 @@
-{
-  if (shipShot == null && !ship.isExploding) {
-    ship.transform.getTranslation(tmpV1);
-    shipShot=new Shot(shotModel,tmpV1,false);
-    shots.add(shipShot);
-    if (listener != null)     listener.shot();
-  }
-}

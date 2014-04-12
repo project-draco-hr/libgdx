@@ -1,7 +1,0 @@
-{
-  if (freq < getBandWidth() / 2)   return 0;
-  if (freq > sampleRate / 2 - getBandWidth() / 2)   return spectrum.length - 1;
-  float fraction=freq / (float)sampleRate;
-  int i=Math.round(timeSize * fraction);
-  return i;
-}

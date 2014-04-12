@@ -1,7 +1,0 @@
-{
-  float fr=r / 255f;
-  float fg=g / 255f;
-  float fb=b / 255f;
-  renderer.setColor(fr,fg,fb,1);
-  renderer.line(x1,y1,x2,y2);
-}

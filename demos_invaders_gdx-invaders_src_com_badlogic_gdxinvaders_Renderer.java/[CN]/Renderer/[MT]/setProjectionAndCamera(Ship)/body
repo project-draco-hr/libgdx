@@ -1,6 +1,0 @@
-{
-  ship.transform.getTranslation(tmpV);
-  camera.position.set(tmpV.x,6,2);
-  camera.direction.set(tmpV.x,0,-4).sub(camera.position).nor();
-  camera.update();
-}

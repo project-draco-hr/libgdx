@@ -1,6 +1,0 @@
-{
-  int N=timeSize;
-  reverse=new int[N];
-  reverse[0]=0;
-  for (int limit=1, bit=N / 2; limit < N; limit<<=1, bit>>=1)   for (int i=0; i < limit; i++)   reverse[i + limit]=reverse[i] + bit;
-}

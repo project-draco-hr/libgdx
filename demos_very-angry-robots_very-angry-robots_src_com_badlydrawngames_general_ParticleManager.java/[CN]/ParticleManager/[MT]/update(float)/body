@@ -1,7 +1,0 @@
-{
-  for (  Particle particle : particles) {
-    if (particle.active) {
-      particle.update(delta);
-    }
-  }
-}

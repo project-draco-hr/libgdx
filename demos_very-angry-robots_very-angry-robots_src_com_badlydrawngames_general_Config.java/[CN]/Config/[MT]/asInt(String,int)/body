@@ -1,5 +1,0 @@
-{
-  String v=instance().getProperty(name);
-  if (v == null)   return fallback;
-  return Integer.parseInt(v);
-}

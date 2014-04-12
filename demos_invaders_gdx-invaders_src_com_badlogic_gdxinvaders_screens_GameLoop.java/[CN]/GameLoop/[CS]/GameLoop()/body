@@ -1,7 +1,0 @@
-{
-  simulation=new Simulation();
-  simulation.listener=this;
-  renderer=new Renderer();
-  explosion=Gdx.audio.newSound(Gdx.files.internal("data/explosion.wav"));
-  shot=Gdx.audio.newSound(Gdx.files.internal("data/shot.wav"));
-}

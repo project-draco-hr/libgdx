@@ -1,7 +1,0 @@
-{
-  if (gameMessage != null) {
-    if (System.currentTimeMillis() - gameMessage.creationTime > gameMessage.duration) {
-      gameMessage=null;
-    }
-  }
-}

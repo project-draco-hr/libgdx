@@ -1,6 +1,0 @@
-{
-  if (ship.isExploding)   return;
-  ship.transform.trn(+delta * Ship.SHIP_VELOCITY * scale,0,0);
-  ship.transform.getTranslation(tmpV1);
-  if (tmpV1.x > PLAYFIELD_MAX_X)   ship.transform.trn(tmpV1.x - PLAYFIELD_MAX_X,0,0);
-}
