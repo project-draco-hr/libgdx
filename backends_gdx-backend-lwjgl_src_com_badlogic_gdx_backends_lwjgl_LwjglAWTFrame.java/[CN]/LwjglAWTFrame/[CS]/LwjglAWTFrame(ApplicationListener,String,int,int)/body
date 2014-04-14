@@ -1,6 +1,6 @@
 {
   super(title);
-  lwjglAWTCanvas=new LwjglAWTCanvas(listener,useGL2){
+  lwjglAWTCanvas=new LwjglAWTCanvas(listener){
     protected void stopped(){
       LwjglAWTFrame.this.dispose();
     }
