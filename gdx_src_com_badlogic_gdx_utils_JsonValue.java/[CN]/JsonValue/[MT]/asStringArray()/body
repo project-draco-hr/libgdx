@@ -4,18 +4,18 @@
   int i=0;
   for (JsonValue value=child; value != null; value=value.next, i++) {
     String v;
-switch (type) {
+switch (value.type) {
 case stringValue:
-      v=stringValue;
+      v=value.stringValue;
     break;
 case doubleValue:
-  v=Double.toString(doubleValue);
+  v=Double.toString(value.doubleValue);
 break;
 case longValue:
-v=Long.toString(longValue);
+v=Long.toString(value.longValue);
 break;
 case booleanValue:
-v=longValue != 0 ? "true" : "false";
+v=value.longValue != 0 ? "true" : "false";
 break;
 case nullValue:
 v=null;
