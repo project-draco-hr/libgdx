@@ -29,7 +29,7 @@
   project.files.add(new ProjectFile("local.properties",true));
   project.files.add(new ProjectFile("core/build.gradle"));
   project.files.add(new ProjectFile("core/src/MainClass","core/src/" + packageDir + "/"+ mainClass+ ".java",true));
-  project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + packageDir + "/"+ mainClass+ ".gwt.xml",true));
+  project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + mainClass + ".gwt.xml",true));
   if (!ui || builder.modules.contains(ProjectType.DESKTOP)) {
     project.files.add(new ProjectFile("desktop/build.gradle"));
     project.files.add(new ProjectFile("desktop/src/DesktopLauncher","desktop/src/" + packageDir + "/desktop/DesktopLauncher.java",true));
@@ -70,11 +70,12 @@
   Map<String,String> values=new HashMap<String,String>();
   values.put("%APP_NAME%",appName);
   values.put("%PACKAGE%",packageName);
+  values.put("%PACKAGE_DIR%",packageDir);
   values.put("%MAIN_CLASS%",mainClass);
   values.put("%ANDROID_SDK%",sdkPath);
   values.put("%ASSET_PATH%",assetPath);
   if (!ui || builder.modules.contains(ProjectType.HTML)) {
-    values.put("%GWT_INHERITS%",parseGwtInherits(builder.bank.gwtInheritances));
+    values.put("%GWT_INHERITS%",parseGwtInherits(builder.bank.gwtInheritances,builder));
   }
   copyAndReplace(outputDir,project,values);
   builder.cleanUp();

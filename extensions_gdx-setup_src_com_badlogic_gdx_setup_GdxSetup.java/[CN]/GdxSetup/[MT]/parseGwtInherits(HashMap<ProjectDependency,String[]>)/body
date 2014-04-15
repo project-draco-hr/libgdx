@@ -1,9 +1,0 @@
-{
-  String parsed="";
-  for (  String[] array : gwtInheritances.values()) {
-    for (    String inherit : array) {
-      parsed+="\t<inherits name='" + inherit + "' />\n";
-    }
-  }
-  return parsed;
-}
