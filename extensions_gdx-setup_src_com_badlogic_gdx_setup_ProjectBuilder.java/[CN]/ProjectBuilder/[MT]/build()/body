@@ -1,6 +1,14 @@
 {
-  File settingsFile=new File("src/temp/settings.gradle");
-  File buildFile=new File("src/temp/build.gradle");
+  settingsFile=File.createTempFile("libgdx-setup-settings",".gradle");
+  buildFile=File.createTempFile("libgdx-setup-build",".gradle");
+  if (!settingsFile.exists()) {
+    settingsFile.createNewFile();
+  }
+  if (!buildFile.exists()) {
+    buildFile.createNewFile();
+  }
+  settingsFile.setWritable(true);
+  buildFile.setWritable(true);
   try {
     FileWriter settingsWriter=new FileWriter(settingsFile.getAbsoluteFile());
     BufferedWriter settingsBw=new BufferedWriter(settingsWriter);

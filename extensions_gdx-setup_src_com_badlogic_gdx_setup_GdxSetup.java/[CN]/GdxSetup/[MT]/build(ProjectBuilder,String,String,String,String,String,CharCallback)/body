@@ -15,8 +15,8 @@
   }
   project.files.add(new ProjectFile("gitignore",".gitignore",false));
   if (ui) {
-    project.files.add(new ProjectFile("temp/build.gradle","build.gradle",true,"/"));
-    project.files.add(new ProjectFile("temp/settings.gradle","settings.gradle",false,"/"));
+    project.files.add(new TemporaryProjectFile(builder.settingsFile,"settings.gradle",false));
+    project.files.add(new TemporaryProjectFile(builder.buildFile,"build.gradle",true));
   }
  else {
     project.files.add(new ProjectFile("build.gradle",true));
@@ -34,8 +34,8 @@
     project.files.add(new ProjectFile("desktop/build.gradle"));
     project.files.add(new ProjectFile("desktop/src/DesktopLauncher","desktop/src/" + packageDir + "/desktop/DesktopLauncher.java",true));
   }
+  project.files.add(new ProjectFile("android/assets/badlogic.jpg",assetPath + "/badlogic.jpg",false));
   if (!ui || builder.modules.contains(ProjectType.ANDROID)) {
-    project.files.add(new ProjectFile("android/assets/badlogic.jpg",false));
     project.files.add(new ProjectFile("android/res/values/strings.xml"));
     project.files.add(new ProjectFile("android/res/values/styles.xml",false));
     project.files.add(new ProjectFile("android/res/drawable-hdpi/ic_launcher.png",false));
@@ -77,6 +77,7 @@
     values.put("%GWT_INHERITS%",parseGwtInherits(builder.bank.gwtInheritances));
   }
   copyAndReplace(outputDir,project,values);
+  builder.cleanUp();
   new File(outputDir,"gradlew").setExecutable(true);
   Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean",callback);
 }
