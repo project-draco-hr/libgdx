@@ -67,7 +67,7 @@
         target.actor.stageToLocalCoordinates(tmpVector.set(stageX,stageY));
         target.drop(source,payload,tmpVector.x,tmpVector.y,pointer);
       }
-      source.dragStop(event,payload,x,y,pointer,isValidTarget ? target : null);
+      source.dragStop(event,x,y,pointer,payload,isValidTarget ? target : null);
       if (target != null)       target.reset(source,payload);
       payload=null;
       target=null;
