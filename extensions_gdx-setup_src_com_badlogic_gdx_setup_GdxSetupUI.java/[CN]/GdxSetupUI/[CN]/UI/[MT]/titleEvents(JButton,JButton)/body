@@ -1,0 +1,14 @@
+{
+  minimize.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      setState(ICONIFIED);
+    }
+  }
+);
+  exit.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      dispose();
+    }
+  }
+);
+}

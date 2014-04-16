@@ -1,0 +1,6 @@
+{
+  this.name=name;
+  for (  ProjectType type : ProjectType.values()) {
+    subDependencyMap.put(type,subDependencies[type.ordinal()]);
+  }
+}
