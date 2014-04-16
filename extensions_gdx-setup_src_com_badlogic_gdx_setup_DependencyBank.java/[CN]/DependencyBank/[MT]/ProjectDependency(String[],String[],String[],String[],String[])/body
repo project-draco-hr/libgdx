@@ -1,7 +1,7 @@
 {
-  this.coreDependencies=regex(coreDeps);
-  this.desktopDependencies=regex(desktopDeps);
-  this.androidDependencies=regex(androidDeps);
-  this.iosDependencies=regex(iosDeps);
-  this.gwtDependencies=regex(gwtDeps);
+  this.coreDependencies=coreDeps;
+  this.desktopDependencies=desktopDeps;
+  this.androidDependencies=androidDeps;
+  this.iosDependencies=iosDeps;
+  this.gwtDependencies=gwtDeps;
 }

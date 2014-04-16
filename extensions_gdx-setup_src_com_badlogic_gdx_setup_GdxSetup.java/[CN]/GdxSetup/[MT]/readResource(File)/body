@@ -11,10 +11,7 @@
     }
     return bytes.toByteArray();
   }
- catch (  FileNotFoundException e) {
-    throw new RuntimeException("Couldn't read resource '" + file.getAbsoluteFile() + "'",e);
-  }
-catch (  IOException e) {
+ catch (  Throwable e) {
     throw new RuntimeException("Couldn't read resource '" + file.getAbsoluteFile() + "'",e);
   }
  finally {
