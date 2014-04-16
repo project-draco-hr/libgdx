@@ -1,0 +1,5 @@
+{
+  if (project.equals(ProjectType.IOS) || project.equals(ProjectType.ANDROID)) {
+    write(wr,"configurations { natives }");
+  }
+}
