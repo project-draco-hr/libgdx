@@ -1,6 +1,6 @@
 {
   int numIndices=getNumIndices();
-  if (offset < 0 || count < 1 || offset + count > numIndices)   throw new GdxRuntimeException("Not enough indices");
+  if (offset < 0 || count < 1 || offset + count > numIndices)   throw new GdxRuntimeException("Not enough indices ( offset=" + offset + ", count="+ count+ ", max="+ numIndices+ " )");
   final FloatBuffer verts=vertices.getBuffer();
   final ShortBuffer index=indices.getBuffer();
   final VertexAttribute posAttrib=getVertexAttribute(Usage.Position);
