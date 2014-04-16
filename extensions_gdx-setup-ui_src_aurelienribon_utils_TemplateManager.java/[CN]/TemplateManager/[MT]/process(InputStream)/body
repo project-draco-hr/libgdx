@@ -1,9 +1,0 @@
-{
-  try {
-    String input=IOUtils.toString(stream);
-    return process(input);
-  }
- catch (  IOException ex) {
-    throw new RuntimeException(ex);
-  }
-}

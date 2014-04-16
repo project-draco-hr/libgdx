@@ -1,9 +1,0 @@
-{
-  try {
-    String input=IOUtils.toString(url);
-    return process(input);
-  }
- catch (  IOException ex) {
-    throw new RuntimeException(ex);
-  }
-}

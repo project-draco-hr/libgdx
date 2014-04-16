@@ -1,7 +1,0 @@
-{
-  evtList1.clear();
-  for (  Object o : c)   if (contains(o))   evtList1.add((T)o);
-  boolean ret=super.removeAll(c);
-  if (ret == true)   fireElementsRemoved(evtList1);
-  return ret;
-}

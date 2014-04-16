@@ -1,5 +1,0 @@
-{
-  Ctx.mode=Ctx.Mode.UPDATE;
-  Ctx.fireModeChangedChanged();
-  rootPanel.createTransition().push(new SLKeyframe(updateCfg,transitionDuration).setStartSideForNewCmps(RIGHT).setStartSide(LEFT,changeModeBtn).setEndSideForOldCmps(LEFT)).play();
-}

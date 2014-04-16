@@ -1,5 +1,0 @@
-{
-  this.model=model;
-  model.addListChangedListener(modelListener);
-  for (  Object elem : model)   if (elem instanceof Changeable)   ((Changeable)elem).addChangeListener(elemChangeListener);
-}
