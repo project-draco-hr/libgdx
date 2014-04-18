@@ -2,7 +2,7 @@
   CGSize bounds=UIScreen.getMainScreen().getApplicationFrame().size();
   UIInterfaceOrientation orientation;
   if (viewController != null) {
-    viewController.getInterfaceOrientation();
+    orientation=viewController.getInterfaceOrientation();
   }
  else   if (config.orientationLandscape == config.orientationPortrait) {
     orientation=uiApp.getStatusBarOrientation();
