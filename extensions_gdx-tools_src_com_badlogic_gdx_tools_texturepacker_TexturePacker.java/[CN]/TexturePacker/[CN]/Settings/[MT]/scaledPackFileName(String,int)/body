@@ -8,7 +8,7 @@
   if (scaleSuffix[scaleIndex].length() > 0)   packFileName+=scaleSuffix[scaleIndex];
  else {
     float scaleValue=scale[scaleIndex];
-    if (scaleValue != 1 || scale.length != 1) {
+    if (scale.length != 1) {
       packFileName=(scaleValue == (int)scaleValue ? Integer.toString((int)scaleValue) : Float.toString(scaleValue)) + "/" + packFileName;
     }
   }
