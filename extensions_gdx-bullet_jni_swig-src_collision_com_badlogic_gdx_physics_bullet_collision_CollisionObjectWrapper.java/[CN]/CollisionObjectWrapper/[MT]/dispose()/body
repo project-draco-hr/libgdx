@@ -1,0 +1,7 @@
+{
+  if (wrapper != null) {
+    btCollisionObjectWrapper.free(wrapper);
+    wrapper=null;
+  }
+  super.dispose();
+}
