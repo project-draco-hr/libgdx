@@ -1,0 +1,26 @@
+{
+  if (size == 0)   return braces ? "{}" : "";
+  StringBuilder buffer=new StringBuilder(32);
+  if (braces)   buffer.append('{');
+  K[] keyTable=this.keyTable;
+  V[] valueTable=this.valueTable;
+  int i=keyTable.length;
+  while (i-- > 0) {
+    K key=keyTable[i];
+    if (key == null)     continue;
+    buffer.append(key);
+    buffer.append('=');
+    buffer.append(valueTable[i]);
+    break;
+  }
+  while (i-- > 0) {
+    K key=keyTable[i];
+    if (key == null)     continue;
+    buffer.append(separator);
+    buffer.append(key);
+    buffer.append('=');
+    buffer.append(valueTable[i]);
+  }
+  if (braces)   buffer.append('}');
+  return buffer.toString();
+}
