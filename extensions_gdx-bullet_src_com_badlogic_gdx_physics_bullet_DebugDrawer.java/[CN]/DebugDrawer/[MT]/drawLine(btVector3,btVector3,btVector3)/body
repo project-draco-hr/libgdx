@@ -1,0 +1,4 @@
+{
+  shapeRenderer.setColor(color.getX(),color.getY(),color.getZ(),1f);
+  shapeRenderer.line(from.getX(),from.getY(),from.getZ(),to.getX(),to.getY(),to.getZ());
+}

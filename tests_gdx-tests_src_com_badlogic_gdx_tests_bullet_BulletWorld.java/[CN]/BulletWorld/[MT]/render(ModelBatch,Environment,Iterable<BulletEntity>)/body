@@ -1,6 +1,6 @@
 {
   if (debugDrawer != null && debugDrawer.getDebugMode() > 0) {
-    debugDrawer.begin();
+    debugDrawer.begin(batch.getCamera());
     collisionWorld.debugDrawWorld();
     debugDrawer.end();
   }
