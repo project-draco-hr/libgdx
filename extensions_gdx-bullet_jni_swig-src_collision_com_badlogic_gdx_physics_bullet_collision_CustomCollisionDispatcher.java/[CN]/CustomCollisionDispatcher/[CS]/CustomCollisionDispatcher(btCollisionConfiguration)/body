@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_CustomCollisionDispatcher(btCollisionConfiguration.getCPtr(collisionConfiguration),collisionConfiguration),true);
+  CollisionJNI.CustomCollisionDispatcher_director_connect(this,swigCPtr,swigCMemOwn,true);
+}
