@@ -20,7 +20,7 @@
   add(nightlyWarning,new GridBagConstraints(1,5,1,1,0,0,WEST,WEST,new Insets(20,200,0,0),0,0));
   versionButton.addItemListener(new ItemListener(){
     @Override public void itemStateChanged(    ItemEvent e){
-      JComboBox<String> list=(JComboBox<String>)e.getSource();
+      JComboBox list=(JComboBox)e.getSource();
       if (list.getSelectedItem().equals("Nightlies")) {
         nightlyWarning.setVisible(true);
       }
