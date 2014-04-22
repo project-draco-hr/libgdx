@@ -5,6 +5,7 @@
   renderer.begin(ShapeType.Filled);
   renderer.setColor(1.0f,0,0,0.3f);
   renderer.circle(-2 + lerpTarget.x,2 + lerpTarget.y,0.08f,16);
+  renderer.circle(-4 + lerpTarget2.x,0 + lerpTarget2.y,0.08f,16);
   renderer.end();
   renderer.begin(ShapeType.Line);
   renderer.setColor(Color.RED);
@@ -25,6 +26,15 @@
   lerping1.lerp(lerpTarget,0.025f);
   if (lerping1.epsilonEquals(lerpTarget,0.05f)) {
     lerpTarget.set(-1.0f + MathUtils.random(2.0f),-1.0f + MathUtils.random(2.0f)).nor();
+  }
+  timePassed+=Gdx.graphics.getDeltaTime();
+  renderVectorAt(-4,0,lerping2);
+  lerping2.set(lerpStart2);
+  lerping2.interpolate(lerpTarget2,MathUtils.clamp(timePassed / DURATION,0,1),interpolator);
+  if (lerping2.epsilonEquals(lerpTarget2,0.025f)) {
+    lerpTarget2.set(-1.0f + MathUtils.random(2.0f),-1.0f + MathUtils.random(2.0f)).nor();
+    lerpStart2.set(lerping2);
+    timePassed=0;
   }
   renderVectorAt(-2,-2,mash);
   mash.set(0,0).add(rotating).add(scalingX).add(scalingY).add(lerping1);
