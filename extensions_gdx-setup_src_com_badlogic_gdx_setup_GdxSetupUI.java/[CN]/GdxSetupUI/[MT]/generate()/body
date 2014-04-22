@@ -24,9 +24,16 @@
     JOptionPane.showMessageDialog(this,"Please enter your Android SDK's path");
     return;
   }
-  if (!GdxSetup.isSdkLocationValid(sdkLocation)) {
+  if (!GdxSetup.isSdkLocationValid(sdkLocation) && modules.contains(ProjectType.ANDROID)) {
     JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
+  }
+  String selectedVersion=(String)ui.form.versionButton.getSelectedItem();
+  if (selectedVersion.equals("Nightlies")) {
+    DependencyBank.libgdxVersion=DependencyBank.libgdxNightlyVersion;
+  }
+ else {
+    DependencyBank.libgdxVersion=selectedVersion.split("Release ")[1];
   }
   List<String> incompatList=builder.buildProject(modules,dependencies);
   if (incompatList.size() == 0) {
