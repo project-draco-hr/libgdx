@@ -71,6 +71,8 @@
   values.put("%MAIN_CLASS%",mainClass);
   values.put("%ANDROID_SDK%",sdkPath);
   values.put("%ASSET_PATH%",assetPath);
+  values.put("%BUILD_TOOLS_VERSION%",DependencyBank.buildToolsVersion);
+  values.put("%API_LEVEL%",DependencyBank.androidAPILevel);
   if (builder.modules.contains(ProjectType.HTML)) {
     values.put("%GWT_INHERITS%",parseGwtInherits(builder.bank.gwtInheritances,builder));
   }
