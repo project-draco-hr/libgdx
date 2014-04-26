@@ -1,0 +1,21 @@
+{
+  Locale targetLocale=bundleKey.getLocale();
+  ResourceBundle bundle=null;
+  int size=formats.size();
+  for (int i=0; i < size; i++) {
+    String format=formats.get(i);
+    try {
+      bundle=control.newBundle(bundleKey.getName(),targetLocale,format,reload);
+    }
+ catch (    Exception exception) {
+      bundleKey.setThrowable(exception);
+    }
+    if (bundle != null) {
+      bundleKey.setFormat(format);
+      bundle.locale=targetLocale;
+      bundle.expired=false;
+      break;
+    }
+  }
+  return bundle;
+}

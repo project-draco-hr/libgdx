@@ -1,0 +1,8 @@
+{
+  Object result=handleGetObject(key);
+  if (result == null) {
+    if (parent != null)     result=parent.getObject(key);
+    if (result == null)     throw new MissingResourceException("Can't find resource for bundle " + this.getClass().getName() + ", key "+ key,this.getClass().getName(),key);
+  }
+  return result;
+}

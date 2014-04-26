@@ -1,0 +1,12 @@
+{
+  long now=TimeUtils.millis();
+  while (bundle != null) {
+    if (bundle.expired)     return false;
+    if (bundle.bundleKey != null) {
+      long expirationTime=bundle.bundleKey.expirationTime;
+      if (expirationTime >= 0 && expirationTime <= now)       return false;
+    }
+    bundle=bundle.parent;
+  }
+  return true;
+}

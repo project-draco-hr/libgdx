@@ -1,0 +1,6 @@
+{
+  hashCode=1;
+  hashCode=31 * hashCode + ((name == null) ? 0 : name.hashCode());
+  hashCode=31 * hashCode + ((locale == null) ? 0 : locale.hashCode());
+  hashCode=31 * hashCode + ((auxId == null) ? 0 : auxId.hashCode());
+}

@@ -1,0 +1,18 @@
+{
+  if (keySet == null) {
+synchronized (this) {
+      if (keySet == null) {
+        Set<String> keys=new HashSet<String>();
+        Enumeration<String> enumKeys=getKeys();
+        while (enumKeys.hasMoreElements()) {
+          String key=enumKeys.nextElement();
+          if (handleGetObject(key) != null) {
+            keys.add(key);
+          }
+        }
+        keySet=keys;
+      }
+    }
+  }
+  return keySet;
+}

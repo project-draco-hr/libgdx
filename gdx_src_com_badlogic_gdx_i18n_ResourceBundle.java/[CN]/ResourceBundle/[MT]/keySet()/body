@@ -1,0 +1,7 @@
+{
+  Set<String> keys=new HashSet<String>();
+  for (ResourceBundle rb=this; rb != null; rb=rb.parent) {
+    keys.addAll(rb.handleKeySet());
+  }
+  return keys;
+}

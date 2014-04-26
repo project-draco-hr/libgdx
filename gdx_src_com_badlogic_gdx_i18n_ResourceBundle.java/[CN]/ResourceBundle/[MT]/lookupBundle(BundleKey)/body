@@ -1,0 +1,5 @@
+{
+  BundleReference bundleReference=cache.get(bundleKey);
+  if (bundleReference == null)   return null;
+  return bundleReference.get();
+}

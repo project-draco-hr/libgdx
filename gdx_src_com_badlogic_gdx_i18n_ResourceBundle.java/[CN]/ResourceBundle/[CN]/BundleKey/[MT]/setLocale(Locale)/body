@@ -1,0 +1,6 @@
+{
+  if (!this.locale.equals(locale)) {
+    this.locale=locale;
+    recalculateHashCode();
+  }
+}

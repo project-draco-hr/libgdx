@@ -1,0 +1,13 @@
+{
+  long ttl=control.getTimeToLive(bundleKey.getName(),bundleKey.getLocale());
+  if (ttl >= 0) {
+    bundleKey.loadTime=TimeUtils.millis();
+    bundleKey.expirationTime=bundleKey.loadTime + ttl;
+  }
+ else   if (ttl == Control.TTL_DONT_CACHE || ttl == Control.TTL_NO_EXPIRATION_CONTROL) {
+    bundleKey.expirationTime=ttl;
+  }
+ else {
+    throw new IllegalArgumentException("Invalid Control: TTL=" + ttl);
+  }
+}

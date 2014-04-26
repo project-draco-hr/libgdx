@@ -1,0 +1,7 @@
+{
+  if (!this.name.equals(baseName)) {
+    this.name=baseName;
+    recalculateHashCode();
+  }
+  return this;
+}

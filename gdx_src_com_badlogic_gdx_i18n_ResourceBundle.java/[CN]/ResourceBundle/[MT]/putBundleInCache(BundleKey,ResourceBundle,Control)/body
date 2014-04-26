@@ -1,0 +1,21 @@
+{
+  setExpirationTime(bundleKey,control);
+  if (bundleKey.expirationTime != Control.TTL_DONT_CACHE) {
+    BundleKey key=new BundleKey(bundleKey);
+    BundleReference bundleReference=new BundleReference(bundle,referenceQueue,key);
+    bundle.bundleKey=key;
+    BundleReference previous=cache.putIfAbsent(key,bundleReference);
+    if (previous != null) {
+      ResourceBundle rb=previous.get();
+      if (rb != null && !rb.expired) {
+        bundle.bundleKey=null;
+        bundle=rb;
+        bundleReference.clear();
+      }
+ else {
+        cache.put(key,bundleReference);
+      }
+    }
+  }
+  return bundle;
+}

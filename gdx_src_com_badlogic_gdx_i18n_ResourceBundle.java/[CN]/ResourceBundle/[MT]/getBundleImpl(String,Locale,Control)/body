@@ -1,0 +1,42 @@
+{
+  if (locale == null || control == null)   throw new NullPointerException();
+  BundleKey bundleKey=new BundleKey(baseName,locale,control.getAuxId(baseName));
+  ResourceBundle bundle=lookupBundle(bundleKey);
+  if (isValidBundle(bundle) && hasValidParentChain(bundle)) {
+    return bundle;
+  }
+  List<String> formats=control.getFormats(baseName);
+  if (!isValidList(formats)) {
+    throw new IllegalArgumentException("Control with invalid formats");
+  }
+  ResourceBundle baseBundle=null;
+  Locale targetLocale=locale;
+  do {
+    List<Locale> candidateLocales=control.getCandidateLocales(baseName,targetLocale);
+    if (!isValidList(candidateLocales)) {
+      throw new IllegalArgumentException("Control with invalid candidate locales");
+    }
+    bundle=findBundle(bundleKey,candidateLocales,formats,0,control,baseBundle);
+    if (isValidBundle(bundle)) {
+      boolean isBaseBundle=bundle.locale.equals(Locale.ROOT);
+      if (!isBaseBundle || bundle.locale.equals(locale)) {
+        return bundle;
+      }
+      if (candidateLocales.size() == 1 && bundle.locale.equals(candidateLocales.get(0))) {
+        return bundle;
+      }
+      if (isBaseBundle && baseBundle == null) {
+        baseBundle=bundle;
+      }
+    }
+    targetLocale=control.getFallbackLocale(baseName,targetLocale);
+  }
+ while (targetLocale != null);
+  if (bundle != null) {
+    return bundle;
+  }
+  if (baseBundle == null) {
+    throwMissingResourceException(baseName,locale,bundleKey.getThrowable());
+  }
+  return baseBundle;
+}
