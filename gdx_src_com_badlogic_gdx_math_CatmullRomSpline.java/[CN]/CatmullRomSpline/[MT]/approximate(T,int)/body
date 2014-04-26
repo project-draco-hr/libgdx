@@ -23,5 +23,5 @@
   float L1=(float)Math.sqrt(L1Sqr);
   float s=(L2Sqr + L1Sqr - L3Sqr) / (2f * L1);
   float u=MathUtils.clamp((L1 - s) / L1,0f,1f);
-  return ((float)n + u) / spanCount;
+  return (n + u) / spanCount;
 }
