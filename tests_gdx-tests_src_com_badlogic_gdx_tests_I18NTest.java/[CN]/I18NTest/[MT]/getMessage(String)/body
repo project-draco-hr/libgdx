@@ -1,0 +1,4 @@
+{
+  ResourceBundle rb=ResourceBundle.getBundle("data/i18n/" + baseName);
+  return "Bundle: " + baseName + ", locale: default, msg: \""+ rb.getString("msg")+ "\", rootMsg: \""+ rb.getString("rootMsg")+ "\"";
+}
