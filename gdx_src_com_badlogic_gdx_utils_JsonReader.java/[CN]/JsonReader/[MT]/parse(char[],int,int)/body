@@ -215,9 +215,22 @@ if (debug) System.out.println("unquotedChars");
 s=p;
 needsUnescape=false;
 stringIsUnquoted=true;
+if (stringIsName) {
 outer: while (true) {
 switch (data[p]) {
 case ':':
+case ' ':
+case '\r':
+case '\n':
+case '\t':
+break outer;
+}
+p++;
+}
+}
+ else {
+outer: while (true) {
+switch (data[p]) {
 case '}':
 case ']':
 case ',':
@@ -228,6 +241,7 @@ case '\t':
 break outer;
 }
 p++;
+}
 }
 p--;
 }
@@ -241,6 +255,7 @@ outer: while (true) {
 switch (data[p]) {
 case '\\':
 needsUnescape=true;
+p++;
 break;
 case '"':
 break outer;
