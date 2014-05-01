@@ -2,6 +2,6 @@
   final int n=spanCount;
   float u=t * n;
   int i=(t >= 1f) ? (n - 1) : (int)u;
-  u-=(float)i;
+  u-=i;
   return derivativeAt(out,i,u);
 }
