@@ -1,0 +1,40 @@
+{
+  StringBuilder buffer=new StringBuilder();
+  int placeholder=-1;
+  boolean inQuote=false;
+  int patternLength=pattern.length();
+  for (int i=0; i < patternLength; ++i) {
+    char ch=pattern.charAt(i);
+    if (placeholder < 0) {
+      if (ch == '\'') {
+        if (i + 1 < patternLength && pattern.charAt(i + 1) == '\'') {
+          buffer.append(ch);
+          ++i;
+        }
+ else {
+          inQuote=!inQuote;
+        }
+      }
+ else       if (ch == '{' && !inQuote) {
+        placeholder=0;
+      }
+ else {
+        buffer.append(ch);
+      }
+    }
+ else {
+      if (ch == '}') {
+        if (placeholder >= args.length)         throw new IllegalArgumentException("Out of bounds argument number:" + placeholder);
+        if (args[placeholder] == null)         buffer.append("null");
+ else         buffer.append(args[placeholder].toString());
+        placeholder=-1;
+      }
+ else {
+        if (ch < '0' || ch > '9')         throw new IllegalArgumentException("Unexpected '" + ch + "' while parsing argument number");
+        placeholder=placeholder * 10 + (ch - '0');
+      }
+    }
+  }
+  if (placeholder >= 0)   throw new IllegalArgumentException("Unmatched braces in the pattern.");
+  return buffer.toString();
+}

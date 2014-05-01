@@ -1,0 +1,8 @@
+{
+  String result=properties.get(key);
+  if (result == null) {
+    if (parent != null)     result=parent.get(key);
+    if (result == null)     throw new MissingResourceException("Can't find bundle key " + key,this.getClass().getName(),key);
+  }
+  return result;
+}

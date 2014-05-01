@@ -1,0 +1,24 @@
+{
+  T bundle=null;
+  try {
+    FileHandle fileHandle=toFileHandle(baseFileHandle,targetLocale);
+    if (fileHandle.exists()) {
+      InputStream stream=null;
+      try {
+        bundle=clazz.newInstance();
+        stream=fileHandle.read();
+        bundle.load(new InputStreamReader(stream,encoding));
+      }
+  finally {
+        StreamUtils.closeQuietly(stream);
+      }
+    }
+  }
+ catch (  Exception exception) {
+    throw new GdxRuntimeException(exception);
+  }
+  if (bundle != null) {
+    bundle.setLocale(targetLocale);
+  }
+  return bundle;
+}

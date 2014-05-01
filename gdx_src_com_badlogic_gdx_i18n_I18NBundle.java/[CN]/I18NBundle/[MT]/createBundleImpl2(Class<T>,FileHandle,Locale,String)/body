@@ -1,0 +1,31 @@
+{
+  if (baseFileHandle == null || locale == null || encoding == null)   throw new NullPointerException();
+  T bundle=null;
+  T baseBundle=null;
+  Locale targetLocale=locale;
+  do {
+    List<Locale> candidateLocales=getCandidateLocales(targetLocale);
+    bundle=loadBundleChain(clazz,baseFileHandle,encoding,candidateLocales,0,baseBundle);
+    if (bundle != null) {
+      boolean isBaseBundle=bundle.locale.equals(Locale.ROOT);
+      if (!isBaseBundle || bundle.locale.equals(locale)) {
+        break;
+      }
+      if (candidateLocales.size() == 1 && bundle.locale.equals(candidateLocales.get(0))) {
+        break;
+      }
+      if (isBaseBundle && baseBundle == null) {
+        baseBundle=bundle;
+      }
+    }
+    targetLocale=getFallbackLocale(targetLocale);
+  }
+ while (targetLocale != null);
+  if (bundle == null) {
+    if (baseBundle == null) {
+      throw new MissingResourceException("Can't find bundle for base file handle " + baseFileHandle.path() + ", locale "+ locale,baseFileHandle + "_" + locale,"");
+    }
+    bundle=baseBundle;
+  }
+  return bundle;
+}

@@ -1,5 +1,0 @@
-{
-  ResourceBundle rb=ResourceBundle.getBundle("data/i18n/" + baseName,locale);
-  String localeStr=Locale.ROOT.equals(locale) ? "root" : locale.toString();
-  return "Bundle: " + baseName + ", locale: "+ localeStr+ ", msg: \""+ rb.getString("msg")+ "\", rootMsg: \""+ rb.getString("rootMsg")+ "\"";
-}

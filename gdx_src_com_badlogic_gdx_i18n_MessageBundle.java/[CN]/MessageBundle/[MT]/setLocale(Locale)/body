@@ -1,0 +1,4 @@
+{
+  super.setLocale(locale);
+  this.messageFormat=new MessageFormat("",locale);
+}
