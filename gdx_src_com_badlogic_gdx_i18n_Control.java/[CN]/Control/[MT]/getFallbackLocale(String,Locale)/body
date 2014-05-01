@@ -1,7 +1,0 @@
-{
-  if (baseName == null) {
-    throw new NullPointerException();
-  }
-  Locale defaultLocale=Locale.getDefault();
-  return locale.equals(defaultLocale) ? null : defaultLocale;
-}

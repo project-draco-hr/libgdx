@@ -1,5 +1,0 @@
-{
-  StringBuilder sb=new StringBuilder(bundleName.length() + 1 + suffix.length());
-  sb.append(bundleName).append('.').append(suffix);
-  return sb.toString();
-}

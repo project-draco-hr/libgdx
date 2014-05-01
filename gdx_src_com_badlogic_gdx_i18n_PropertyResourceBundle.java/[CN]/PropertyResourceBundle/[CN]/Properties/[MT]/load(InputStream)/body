@@ -1,6 +1,0 @@
-{
-  if (in == null) {
-    throw new NullPointerException("in == null");
-  }
-  loadImpl(new InputStreamReader(in,"ISO-8859-1"));
-}

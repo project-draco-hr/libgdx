@@ -1,7 +1,0 @@
-{
-  if (key == null)   throw new NullPointerException();
-  for (ResourceBundle rb=this; rb != null; rb=rb.parent) {
-    if (rb.handleKeySet().contains(key))     return true;
-  }
-  return false;
-}

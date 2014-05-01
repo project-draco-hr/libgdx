@@ -1,7 +1,0 @@
-{
-  MissingResourceException mre=new MissingResourceException("Can't find bundle for base name " + baseName + ", locale "+ locale,baseName + "_" + locale,"");
-  if (!(cause instanceof MissingResourceException)) {
-    mre.initCause(cause);
-  }
-  throw mre;
-}
