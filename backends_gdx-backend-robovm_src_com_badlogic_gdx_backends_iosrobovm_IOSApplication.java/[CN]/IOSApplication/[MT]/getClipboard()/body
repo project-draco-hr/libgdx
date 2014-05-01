@@ -1,9 +1,10 @@
 {
   return new Clipboard(){
     @Override public void setContents(    String content){
+      UIPasteboard.getGeneral().setString(content);
     }
     @Override public String getContents(){
-      return null;
+      return UIPasteboard.getGeneral().getString();
     }
   }
 ;
