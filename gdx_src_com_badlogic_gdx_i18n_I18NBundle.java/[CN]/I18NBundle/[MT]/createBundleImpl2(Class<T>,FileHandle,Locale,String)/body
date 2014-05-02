@@ -7,11 +7,12 @@
     List<Locale> candidateLocales=getCandidateLocales(targetLocale);
     bundle=loadBundleChain(clazz,baseFileHandle,encoding,candidateLocales,0,baseBundle);
     if (bundle != null) {
-      boolean isBaseBundle=bundle.locale.equals(Locale.ROOT);
-      if (!isBaseBundle || bundle.locale.equals(locale)) {
+      Locale bundleLocale=bundle.getLocale();
+      boolean isBaseBundle=bundleLocale.equals(Locale.ROOT);
+      if (!isBaseBundle || bundleLocale.equals(locale)) {
         break;
       }
-      if (candidateLocales.size() == 1 && bundle.locale.equals(candidateLocales.get(0))) {
+      if (candidateLocales.size() == 1 && bundleLocale.equals(candidateLocales.get(0))) {
         break;
       }
       if (isBaseBundle && baseBundle == null) {

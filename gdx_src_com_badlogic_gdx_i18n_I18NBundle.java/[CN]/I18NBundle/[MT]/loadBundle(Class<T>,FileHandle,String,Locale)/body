@@ -5,7 +5,7 @@
     if (fileHandle.exists()) {
       InputStream stream=null;
       try {
-        bundle=clazz.newInstance();
+        bundle=ClassReflection.newInstance(clazz);
         stream=fileHandle.read();
         bundle.load(new InputStreamReader(stream,encoding));
       }
