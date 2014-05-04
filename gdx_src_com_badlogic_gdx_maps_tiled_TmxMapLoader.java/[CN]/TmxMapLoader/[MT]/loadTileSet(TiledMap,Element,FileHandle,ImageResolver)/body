@@ -64,13 +64,10 @@
     for (int y=margin; y <= stopHeight; y+=tileheight + spacing) {
       for (int x=margin; x <= stopWidth; x+=tilewidth + spacing) {
         TextureRegion tileRegion=new TextureRegion(texture,x,y,tilewidth,tileheight);
-        if (!yUp) {
-          tileRegion.flip(false,true);
-        }
         TiledMapTile tile=new StaticTiledMapTile(tileRegion);
         tile.setId(id);
         tile.setOffsetX(offsetX);
-        tile.setOffsetY(yUp ? -offsetY : offsetY);
+        tile.setOffsetY(-offsetY);
         tileset.putTile(id++,tile);
       }
     }

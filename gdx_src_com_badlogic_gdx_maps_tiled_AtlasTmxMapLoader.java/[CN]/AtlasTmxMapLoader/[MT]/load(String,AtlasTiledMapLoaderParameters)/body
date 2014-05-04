@@ -1,11 +1,9 @@
 {
   try {
     if (parameter != null) {
-      yUp=parameter.yUp;
       convertObjectToTileSpace=parameter.convertObjectToTileSpace;
     }
  else {
-      yUp=true;
       convertObjectToTileSpace=false;
     }
     FileHandle tmxFile=resolve(fileName);

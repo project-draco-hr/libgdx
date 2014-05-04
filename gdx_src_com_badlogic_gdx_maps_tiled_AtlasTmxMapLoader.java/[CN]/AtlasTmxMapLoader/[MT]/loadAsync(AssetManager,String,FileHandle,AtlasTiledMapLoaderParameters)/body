@@ -1,11 +1,9 @@
 {
   map=null;
   if (parameter != null) {
-    yUp=parameter.yUp;
     convertObjectToTileSpace=parameter.convertObjectToTileSpace;
   }
  else {
-    yUp=true;
     convertObjectToTileSpace=false;
   }
   try {

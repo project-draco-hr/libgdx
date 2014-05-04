@@ -3,17 +3,17 @@
   if (flipDiagonally) {
     if (flipHorizontally && flipVertically) {
       cell.setFlipHorizontally(true);
-      cell.setRotation(yUp ? Cell.ROTATE_270 : Cell.ROTATE_90);
+      cell.setRotation(Cell.ROTATE_270);
     }
  else     if (flipHorizontally) {
-      cell.setRotation(yUp ? Cell.ROTATE_270 : Cell.ROTATE_90);
+      cell.setRotation(Cell.ROTATE_270);
     }
  else     if (flipVertically) {
-      cell.setRotation(yUp ? Cell.ROTATE_90 : Cell.ROTATE_270);
+      cell.setRotation(Cell.ROTATE_90);
     }
  else {
       cell.setFlipVertically(true);
-      cell.setRotation(yUp ? Cell.ROTATE_270 : Cell.ROTATE_90);
+      cell.setRotation(Cell.ROTATE_270);
     }
   }
  else {
