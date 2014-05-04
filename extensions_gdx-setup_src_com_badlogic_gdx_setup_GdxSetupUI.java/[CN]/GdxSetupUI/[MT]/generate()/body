@@ -28,6 +28,9 @@
     JOptionPane.showMessageDialog(this,"Your Android SDK path doesn't contain an SDK! Please install the Android SDK, including all platforms and build tools!");
     return;
   }
+  if (!GdxSetup.isSdkUpToDate(sdkLocation) && modules.contains(ProjectType.ANDROID)) {
+    JOptionPane.showMessageDialog(this,"Please update your Android SDK, you need: \nAndroid API " + DependencyBank.androidAPILevel + "\nAndroid Build Tools "+ DependencyBank.buildToolsVersion);
+  }
   if (!GdxSetup.isEmptyDirectory(destination)) {
     int value=JOptionPane.showConfirmDialog(this,"The destination is not empty, do you want to overwrite?","Warning!",JOptionPane.YES_NO_OPTION);
     if (value == 1) {

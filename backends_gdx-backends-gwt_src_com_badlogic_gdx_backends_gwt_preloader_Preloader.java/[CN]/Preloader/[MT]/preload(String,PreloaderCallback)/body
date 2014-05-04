@@ -58,6 +58,7 @@ case Audio:
   audio.put(asset.url,null);
 break;
 case Directory:
+directories.put(asset.url,null);
 break;
 }
 asset.succeed=true;

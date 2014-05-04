@@ -1,0 +1,22 @@
+{
+  boolean hasTools=false;
+  boolean hasApi=false;
+  File buildTools=new File(sdkLocation,"build-tools");
+  if (!buildTools.exists()) {
+    return false;
+  }
+  for (  File toolsVersion : buildTools.listFiles()) {
+    if (toolsVersion.getName().equals(DependencyBank.buildToolsVersion)) {
+      hasTools=true;
+      break;
+    }
+  }
+  File apis=new File(sdkLocation,"platforms");
+  for (  File api : apis.listFiles()) {
+    if (api.getName().equals("android-" + DependencyBank.androidAPILevel)) {
+      hasApi=true;
+      break;
+    }
+  }
+  return hasTools && hasApi;
+}

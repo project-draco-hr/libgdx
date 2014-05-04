@@ -3,7 +3,7 @@
   int[] stack=new int[4];
   int s=0;
   Array<String> names=new Array(8);
-  boolean needsUnescape=false;
+  boolean needsUnescape=false, stringIsName=false, stringIsUnquoted=false;
   RuntimeException parseRuntimeEx=null;
   boolean debug=false;
   if (debug)   System.out.println();
@@ -71,81 +71,91 @@ case 1:
         }
       }
  while (false);
-    cs=_json_trans_targs[_trans];
-  if (_json_trans_actions[_trans] != 0) {
-    _acts=_json_trans_actions[_trans];
-    _nacts=(int)_json_actions[_acts++];
-    while (_nacts-- > 0) {
+    _trans=_json_indicies[_trans];
+  cs=_json_trans_targs[_trans];
+if (_json_trans_actions[_trans] != 0) {
+  _acts=_json_trans_actions[_trans];
+  _nacts=(int)_json_actions[_acts++];
+  while (_nacts-- > 0) {
 switch (_json_actions[_acts++]) {
 case 0:
 {
-          s=p;
-          needsUnescape=false;
-        }
-      break;
+        stringIsName=true;
+      }
+    break;
 case 1:
 {
-      needsUnescape=true;
+    String value=new String(data,s,p - s);
+    s=p;
+    if (needsUnescape)     value=unescape(value);
+    outer:     if (stringIsName) {
+      stringIsName=false;
+      if (debug)       System.out.println("name: " + value);
+      names.add(value);
     }
-  break;
+ else {
+      String name=names.size > 0 ? names.pop() : null;
+      if (stringIsUnquoted) {
+        if (value.equals("true")) {
+          if (debug)           System.out.println("boolean: " + name + "=true");
+          bool(name,true);
+          break outer;
+        }
+ else         if (value.equals("false")) {
+          if (debug)           System.out.println("boolean: " + name + "=false");
+          bool(name,false);
+          break outer;
+        }
+ else         if (value.equals("null")) {
+          string(name,null);
+          break outer;
+        }
+ else         if (value.indexOf('.') != -1) {
+          try {
+            if (debug)             System.out.println("double: " + name + "="+ Double.parseDouble(value));
+            number(name,Double.parseDouble(value));
+            break outer;
+          }
+ catch (          NumberFormatException ignored) {
+          }
+        }
+ else {
+          try {
+            if (debug)             System.out.println("double: " + name + "="+ Double.parseDouble(value));
+            number(name,Long.parseLong(value));
+            break outer;
+          }
+ catch (          NumberFormatException ignored) {
+          }
+        }
+      }
+      if (debug)       System.out.println("string: " + name + "="+ value);
+      string(name,value);
+    }
+    stringIsUnquoted=false;
+  }
+break;
 case 2:
-{
-  String name=new String(data,s,p - s);
-  s=p;
-  if (needsUnescape)   name=unescape(name);
-  if (debug)   System.out.println("name: " + name);
-  names.add(name);
-}
-break;
-case 3:
-{
-String value=new String(data,s,p - s);
-s=p;
-if (needsUnescape) value=unescape(value);
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("string: " + name + "="+ value);
-string(name,value);
-}
-break;
-case 4:
-{
-String value=new String(data,s,p - s);
-s=p;
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
-number(name,Double.parseDouble(value));
-}
-break;
-case 5:
-{
-String value=new String(data,s,p - s);
-s=p;
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("long: " + name + "="+ Long.parseLong(value));
-number(name,Long.parseLong(value));
-}
-break;
-case 6:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startObject: " + name);
 startObject(name);
 {
-if (top == stack.length) {
-int[] newStack=new int[stack.length * 2];
-System.arraycopy(stack,0,newStack,0,stack.length);
-stack=newStack;
-}
+  if (top == stack.length) {
+    int[] newStack=new int[stack.length * 2];
+    System.arraycopy(stack,0,newStack,0,stack.length);
+    stack=newStack;
+  }
 {
-stack[top++]=cs;
-cs=10;
-_goto_targ=2;
-if (true) continue _goto;
-}
+    stack[top++]=cs;
+    cs=5;
+    _goto_targ=2;
+    if (true)     continue _goto;
+  }
 }
 }
 break;
-case 7:
+case 3:
 {
 if (debug) System.out.println("endObject");
 pop();
@@ -156,7 +166,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 8:
+case 4:
 {
 String name=names.size > 0 ? names.pop() : null;
 if (debug) System.out.println("startArray: " + name);
@@ -169,14 +179,14 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=41;
+cs=22;
 _goto_targ=2;
 if (true) continue _goto;
 }
 }
 }
 break;
-case 9:
+case 5:
 {
 if (debug) System.out.println("endArray");
 pop();
@@ -187,7 +197,7 @@ if (true) continue _goto;
 }
 }
 break;
-case 10:
+case 6:
 {
 if (debug) System.out.println("comment /" + data[p]);
 if (data[p++] == '/') {
@@ -199,11 +209,28 @@ p++;
 }
 }
 break;
-case 11:
+case 7:
 {
+if (debug) System.out.println("unquotedChars");
+s=p;
+needsUnescape=false;
+stringIsUnquoted=true;
+if (stringIsName) {
 outer: while (true) {
 switch (data[p]) {
 case ':':
+case ' ':
+case '\r':
+case '\n':
+case '\t':
+break outer;
+}
+p++;
+}
+}
+ else {
+outer: while (true) {
+switch (data[p]) {
 case '}':
 case ']':
 case ',':
@@ -215,31 +242,27 @@ break outer;
 }
 p++;
 }
+}
 p--;
 }
 break;
-case 12:
+case 8:
 {
-String value=new String(data,s,p - s);
-s=p;
-String name=names.size > 0 ? names.pop() : null;
-if (value.equals("null")) {
-if (debug) System.out.println("null: " + name);
-string(name,null);
+if (debug) System.out.println("quotedChars");
+s=++p;
+needsUnescape=false;
+outer: while (true) {
+switch (data[p]) {
+case '\\':
+needsUnescape=true;
+p++;
+break;
+case '"':
+break outer;
 }
- else if (value.equals("true")) {
-if (debug) System.out.println("boolean: " + name + "=true");
-bool(name,true);
+p++;
 }
- else if (value.equals("false")) {
-if (debug) System.out.println("boolean: " + name + "=false");
-bool(name,false);
-}
- else {
-if (needsUnescape) value=unescape(value);
-if (debug) System.out.println("unquotedString: " + name + "="+ value);
-string(name,value);
-}
+p--;
 }
 break;
 }
@@ -260,46 +283,56 @@ int __acts=_json_eof_actions[cs];
 int __nacts=(int)_json_actions[__acts++];
 while (__nacts-- > 0) {
 switch (_json_actions[__acts++]) {
-case 4:
+case 1:
 {
 String value=new String(data,s,p - s);
 s=p;
-String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
-number(name,Double.parseDouble(value));
+if (needsUnescape) value=unescape(value);
+outer: if (stringIsName) {
+stringIsName=false;
+if (debug) System.out.println("name: " + value);
+names.add(value);
 }
-break;
-case 5:
-{
-String value=new String(data,s,p - s);
-s=p;
+ else {
 String name=names.size > 0 ? names.pop() : null;
-if (debug) System.out.println("long: " + name + "="+ Long.parseLong(value));
-number(name,Long.parseLong(value));
-}
-break;
-case 12:
-{
-String value=new String(data,s,p - s);
-s=p;
-String name=names.size > 0 ? names.pop() : null;
-if (value.equals("null")) {
-if (debug) System.out.println("null: " + name);
-string(name,null);
-}
- else if (value.equals("true")) {
+if (stringIsUnquoted) {
+if (value.equals("true")) {
 if (debug) System.out.println("boolean: " + name + "=true");
 bool(name,true);
+break outer;
 }
  else if (value.equals("false")) {
 if (debug) System.out.println("boolean: " + name + "=false");
 bool(name,false);
+break outer;
+}
+ else if (value.equals("null")) {
+string(name,null);
+break outer;
+}
+ else if (value.indexOf('.') != -1) {
+try {
+if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
+number(name,Double.parseDouble(value));
+break outer;
+}
+ catch (NumberFormatException ignored) {
+}
 }
  else {
-if (needsUnescape) value=unescape(value);
-if (debug) System.out.println("unquotedString: " + name + "="+ value);
+try {
+if (debug) System.out.println("double: " + name + "="+ Double.parseDouble(value));
+number(name,Long.parseLong(value));
+break outer;
+}
+ catch (NumberFormatException ignored) {
+}
+}
+}
+if (debug) System.out.println("string: " + name + "="+ value);
 string(name,value);
 }
+stringIsUnquoted=false;
 }
 break;
 }

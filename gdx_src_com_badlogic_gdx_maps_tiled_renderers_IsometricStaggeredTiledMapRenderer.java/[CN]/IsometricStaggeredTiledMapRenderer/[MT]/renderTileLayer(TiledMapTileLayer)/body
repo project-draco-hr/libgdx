@@ -22,8 +22,8 @@
         final boolean flipY=cell.getFlipVertically();
         final int rotations=cell.getRotation();
         TextureRegion region=tile.getTextureRegion();
-        float x1=x * layerTileWidth - offsetX;
-        float y1=y * layerTileHeight50;
+        float x1=x * layerTileWidth - offsetX + tile.getOffsetX() * unitScale;
+        float y1=y * layerTileHeight50 + tile.getOffsetY() * unitScale;
         float x2=x1 + region.getRegionWidth() * unitScale;
         float y2=y1 + region.getRegionHeight() * unitScale;
         float u1=region.getU();
