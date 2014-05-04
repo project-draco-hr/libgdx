@@ -27,6 +27,6 @@
  catch (  Throwable t) {
     message="FAILED: " + t.getMessage() + "\n";
     message+=t.getClass();
-    Gdx.app.error(I18NTest.class.getSimpleName(),"Error",t);
+    Gdx.app.error(I18NMessageTest.class.getSimpleName(),"Error",t);
   }
 }
