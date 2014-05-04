@@ -1,0 +1,3 @@
+{
+  return path.startsWith(url) && (path.indexOf('/',url.length() + 1) < 0);
+}
