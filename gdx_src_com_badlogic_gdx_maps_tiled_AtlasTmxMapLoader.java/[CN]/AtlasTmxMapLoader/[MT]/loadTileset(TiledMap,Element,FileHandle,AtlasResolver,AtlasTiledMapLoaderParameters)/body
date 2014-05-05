@@ -79,13 +79,10 @@
     for (    AtlasRegion region : atlas.findRegions(regionsName)) {
       if (region != null) {
         StaticTiledMapTile tile=new StaticTiledMapTile(region);
-        if (!yUp) {
-          region.flip(false,true);
-        }
         int tileid=firstgid + region.index;
         tile.setId(tileid);
         tile.setOffsetX(offsetX);
-        tile.setOffsetY(yUp ? -offsetY : offsetY);
+        tile.setOffsetY(-offsetY);
         tileset.putTile(tileid,tile);
       }
     }
@@ -100,10 +97,9 @@
           AtlasRegion region=atlas.findRegion(regionName);
           if (region == null)           throw new GdxRuntimeException("Tileset region not found: " + regionName);
           tile=new StaticTiledMapTile(region);
-          if (!yUp)           region.flip(false,true);
           tile.setId(tileid);
           tile.setOffsetX(offsetX);
-          tile.setOffsetY(yUp ? -offsetY : offsetY);
+          tile.setOffsetY(-offsetY);
           tileset.putTile(tileid,tile);
         }
       }
