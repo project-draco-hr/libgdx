@@ -41,9 +41,6 @@
   if (selectedVersion.equals("Nightlies")) {
     DependencyBank.libgdxVersion=DependencyBank.libgdxNightlyVersion;
   }
- else {
-    DependencyBank.libgdxVersion=selectedVersion.split("Release ")[1];
-  }
   List<String> incompatList=builder.buildProject(modules,dependencies);
   if (incompatList.size() == 0) {
     try {
