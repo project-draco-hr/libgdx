@@ -1,4 +1,7 @@
 {
+  if (properties == null) {
+    throw new NullPointerException("ObjectMap cannot be null");
+  }
   int mode=NONE, unicode=0, count=0;
   char nextChar, buf[]=new char[40];
   int offset=0, keyLength=-1, intVal;
@@ -93,7 +96,7 @@ if (keyLength == -1) {
 keyLength=offset;
 }
 String temp=new String(buf,0,offset);
-put(temp.substring(0,keyLength),temp.substring(keyLength));
+properties.put(temp.substring(0,keyLength),temp.substring(keyLength));
 }
 keyLength=-1;
 offset=0;
@@ -149,6 +152,6 @@ String value=temp.substring(keyLength);
 if (mode == SLASH) {
 value+="\u0000";
 }
-put(key,value);
+properties.put(key,value);
 }
 }

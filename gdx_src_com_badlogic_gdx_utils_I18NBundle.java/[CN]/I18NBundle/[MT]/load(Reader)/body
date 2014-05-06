@@ -1,4 +1,4 @@
 {
-  properties=new PropertyMap();
-  properties.load(reader);
+  properties=new ObjectMap<String,String>();
+  PropertiesUtils.load(properties,reader);
 }

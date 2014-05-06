@@ -2,5 +2,5 @@
   if (reader == null) {
     throw new NullPointerException("InputStream cannot be null");
   }
-  loadImpl(reader);
+  loadImpl(properties,reader);
 }

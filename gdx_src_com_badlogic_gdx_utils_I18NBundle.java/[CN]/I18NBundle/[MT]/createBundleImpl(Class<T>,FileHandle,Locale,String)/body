@@ -1,12 +1,32 @@
 {
-  T rb=createBundleImpl2(clazz,baseFileHandle,locale,encoding);
-  StringBuffer sb=new StringBuffer("Requested locale = ");
-  sb.append(locale.equals(Locale.ROOT) ? "root" : locale.toString()).append(", bundle chain = [ ");
-  for (I18NBundle p=rb; p != null; p=p.parent) {
-    String loc=p.locale.equals(Locale.ROOT) ? "root" : p.locale.toString();
-    sb.append(loc).append(" ");
+  if (baseFileHandle == null || locale == null || encoding == null)   throw new NullPointerException();
+  T bundle=null;
+  T baseBundle=null;
+  Locale targetLocale=locale;
+  do {
+    List<Locale> candidateLocales=getCandidateLocales(targetLocale);
+    bundle=loadBundleChain(clazz,baseFileHandle,encoding,candidateLocales,0,baseBundle);
+    if (bundle != null) {
+      Locale bundleLocale=bundle.getLocale();
+      boolean isBaseBundle=bundleLocale.equals(Locale.ROOT);
+      if (!isBaseBundle || bundleLocale.equals(locale)) {
+        break;
+      }
+      if (candidateLocales.size() == 1 && bundleLocale.equals(candidateLocales.get(0))) {
+        break;
+      }
+      if (isBaseBundle && baseBundle == null) {
+        baseBundle=bundle;
+      }
+    }
+    targetLocale=getFallbackLocale(targetLocale);
   }
-  sb.append("]");
-  Gdx.app.log(LOG_TAG,sb.toString());
-  return rb;
+ while (targetLocale != null);
+  if (bundle == null) {
+    if (baseBundle == null) {
+      throw new MissingResourceException("Can't find bundle for base file handle " + baseFileHandle.path() + ", locale "+ locale,baseFileHandle + "_" + locale,"");
+    }
+    bundle=baseBundle;
+  }
+  return bundle;
 }

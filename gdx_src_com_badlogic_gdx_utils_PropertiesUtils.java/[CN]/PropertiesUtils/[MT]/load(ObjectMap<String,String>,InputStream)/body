@@ -2,5 +2,5 @@
   if (inStream == null) {
     throw new NullPointerException("InputStream cannot be null");
   }
-  loadImpl(new InputStreamReader(inStream,"ISO-8859-1"));
+  loadImpl(properties,new InputStreamReader(inStream,"ISO-8859-1"));
 }

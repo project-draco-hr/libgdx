@@ -1,21 +1,19 @@
 {
   T bundle=null;
+  InputStream stream=null;
   try {
     FileHandle fileHandle=toFileHandle(baseFileHandle,targetLocale);
     if (fileHandle.exists()) {
-      InputStream stream=null;
-      try {
-        bundle=ClassReflection.newInstance(clazz);
-        stream=fileHandle.read();
-        bundle.load(new InputStreamReader(stream,encoding));
-      }
-  finally {
-        StreamUtils.closeQuietly(stream);
-      }
+      bundle=ClassReflection.newInstance(clazz);
+      stream=fileHandle.read();
+      bundle.load(new InputStreamReader(stream,encoding));
     }
   }
- catch (  Exception exception) {
-    throw new GdxRuntimeException(exception);
+ catch (  Throwable t) {
+    throw new GdxRuntimeException(t);
+  }
+ finally {
+    StreamUtils.closeQuietly(stream);
   }
   if (bundle != null) {
     bundle.setLocale(targetLocale);
