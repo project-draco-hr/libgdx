@@ -20,8 +20,8 @@
   blend.setScaling(Scaling.none);
   blend.addListener(new InputListener(){
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
-      if (stage.getSpriteBatch().isBlendingEnabled())       stage.getSpriteBatch().disableBlending();
- else       stage.getSpriteBatch().enableBlending();
+      if (stage.getBatch().isBlendingEnabled())       stage.getBatch().disableBlending();
+ else       stage.getBatch().enableBlending();
       return true;
     }
   }
