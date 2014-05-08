@@ -1,4 +1,7 @@
 {
-  messageFormat.applyPattern(replaceEscapeChars(pattern));
-  return messageFormat.format(args);
+  if (messageFormat != null) {
+    messageFormat.applyPattern(replaceEscapeChars(pattern));
+    return messageFormat.format(args);
+  }
+  return simpleFormat(pattern,args);
 }
