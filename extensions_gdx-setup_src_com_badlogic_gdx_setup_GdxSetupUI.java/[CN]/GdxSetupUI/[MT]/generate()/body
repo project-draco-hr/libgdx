@@ -20,7 +20,7 @@
     return;
   }
   final String sdkLocation=ui.form.sdkLocationText.getText().trim();
-  if (sdkLocation.length() == 0) {
+  if (sdkLocation.length() == 0 && modules.contains(ProjectType.ANDROID)) {
     JOptionPane.showMessageDialog(this,"Please enter your Android SDK's path");
     return;
   }
@@ -40,9 +40,6 @@
   String selectedVersion=(String)ui.form.versionButton.getSelectedItem();
   if (selectedVersion.equals("Nightlies")) {
     DependencyBank.libgdxVersion=DependencyBank.libgdxNightlyVersion;
-  }
- else {
-    DependencyBank.libgdxVersion=selectedVersion.split("Release ")[1];
   }
   List<String> incompatList=builder.buildProject(modules,dependencies);
   if (incompatList.size() == 0) {
