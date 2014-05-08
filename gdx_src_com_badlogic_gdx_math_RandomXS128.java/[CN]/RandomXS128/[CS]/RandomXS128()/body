@@ -1,4 +1,3 @@
 {
-  s[0]=System.nanoTime();
-  s[1]=System.nanoTime();
+  this(System.nanoTime(),System.nanoTime());
 }
