@@ -14,6 +14,16 @@
 );
     }
 {
+      JButton newButton=new JButton("Duplicate");
+      sideButtons.add(newButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      newButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          duplicateEmitter();
+        }
+      }
+);
+    }
+{
       JButton deleteButton=new JButton("Delete");
       sideButtons.add(deleteButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
       deleteButton.addActionListener(new ActionListener(){
