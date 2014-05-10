@@ -82,11 +82,11 @@
       }
       if (!endOfBitStream) {
         bytes=0;
-        int index=syncState.buffer(4096);
+        int index=syncState.buffer(BUFFER_SIZE);
         if (index >= 0) {
           buffer=syncState.data;
           try {
-            bytes=input.read(buffer,index,4096);
+            bytes=input.read(buffer,index,BUFFER_SIZE);
           }
  catch (          Exception e) {
             throw new GdxRuntimeException("Error during Vorbis decoding.",e);

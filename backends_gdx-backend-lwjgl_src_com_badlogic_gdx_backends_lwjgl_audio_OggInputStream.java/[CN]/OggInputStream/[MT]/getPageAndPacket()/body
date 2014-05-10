@@ -1,5 +1,5 @@
 {
-  int index=syncState.buffer(4096);
+  int index=syncState.buffer(BUFFER_SIZE);
   if (index == -1)   return false;
   buffer=syncState.data;
   if (buffer == null) {
@@ -7,14 +7,14 @@
     return false;
   }
   try {
-    bytes=input.read(buffer,index,4096);
+    bytes=input.read(buffer,index,BUFFER_SIZE);
   }
  catch (  Exception e) {
     throw new GdxRuntimeException("Failure reading Vorbis.",e);
   }
   syncState.wrote(bytes);
   if (syncState.pageout(page) != 1) {
-    if (bytes < 4096)     return false;
+    if (bytes < BUFFER_SIZE)     return false;
     throw new GdxRuntimeException("Input does not appear to be an Ogg bitstream.");
   }
   streamState.init(page.serialno());
@@ -47,11 +47,11 @@
         }
       }
     }
-    index=syncState.buffer(4096);
+    index=syncState.buffer(BUFFER_SIZE);
     if (index == -1)     return false;
     buffer=syncState.data;
     try {
-      bytes=input.read(buffer,index,4096);
+      bytes=input.read(buffer,index,BUFFER_SIZE);
     }
  catch (    Exception e) {
       throw new GdxRuntimeException("Failed to read Vorbis.",e);
@@ -61,7 +61,7 @@
     }
     syncState.wrote(bytes);
   }
-  convsize=4096 / oggInfo.channels;
+  convsize=BUFFER_SIZE / oggInfo.channels;
   dspState.synthesis_init(oggInfo);
   vorbisBlock.init(dspState);
   return true;
