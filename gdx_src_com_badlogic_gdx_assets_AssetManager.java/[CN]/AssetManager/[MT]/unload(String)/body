@@ -36,7 +36,7 @@
   Array<String> dependencies=assetDependencies.get(fileName);
   if (dependencies != null) {
     for (    String dependency : dependencies) {
-      unload(dependency);
+      if (isLoaded(dependency))       unload(dependency);
     }
   }
   if (assetRef.getRefCount() <= 0) {

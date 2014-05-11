@@ -1,0 +1,11 @@
+{
+synchronized (instances) {
+    if (thread != null) {
+      if (thread.app != Gdx.app) {
+        thread=null;
+        instances.clear();
+        instance=null;
+      }
+    }
+  }
+}

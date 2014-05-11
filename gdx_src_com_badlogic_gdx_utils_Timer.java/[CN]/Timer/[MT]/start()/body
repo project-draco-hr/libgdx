@@ -1,5 +1,6 @@
 {
 synchronized (instances) {
+    checkStatics();
     if (instances.contains(this,true))     return;
     instances.add(this);
     if (thread == null)     thread=new TimerThread();

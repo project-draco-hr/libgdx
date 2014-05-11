@@ -1,0 +1,3 @@
+{
+  return header + " -> locale: " + rb.getLocale()+ ", msg: \""+ rb.format("msg")+ "\", rootMsg: \""+ rb.format("rootMsg")+ "\"";
+}
