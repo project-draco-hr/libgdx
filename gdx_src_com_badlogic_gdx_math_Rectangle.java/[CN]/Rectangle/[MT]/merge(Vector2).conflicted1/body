@@ -1,0 +1,17 @@
+{
+  float minX=x;
+  float maxX=x + width;
+  float minY=y;
+  float maxY=y + height;
+  for (int i=0; i < vecs.length; ++i) {
+    minX=Math.min(minX,vecs[i].x);
+    maxX=Math.max(maxX,vecs[i].x);
+    minY=Math.min(minY,vecs[i].y);
+    maxY=Math.max(maxY,vecs[i].y);
+  }
+  x=minX;
+  width=maxX - minX;
+  y=minY;
+  height=maxY - minY;
+  return this;
+}
