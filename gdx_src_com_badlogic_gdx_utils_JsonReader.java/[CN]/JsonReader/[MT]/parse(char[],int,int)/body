@@ -226,6 +226,7 @@ case '\t':
 break outer;
 }
 p++;
+if (p == eof) break;
 }
 }
  else {
@@ -241,6 +242,7 @@ case '\t':
 break outer;
 }
 p++;
+if (p == eof) break;
 }
 }
 p--;
@@ -261,6 +263,7 @@ case '"':
 break outer;
 }
 p++;
+if (p == eof) break;
 }
 p--;
 }
