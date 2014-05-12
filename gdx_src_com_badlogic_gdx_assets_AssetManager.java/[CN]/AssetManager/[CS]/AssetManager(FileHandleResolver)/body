@@ -8,6 +8,7 @@
   setLoader(Skin.class,new SkinLoader(resolver));
   setLoader(ParticleEffect.class,new ParticleEffectLoader(resolver));
   setLoader(PolygonRegion.class,new PolygonRegionLoader(resolver));
+  setLoader(I18NBundle.class,new I18NBundleLoader(resolver));
   setLoader(Model.class,".g3dj",new G3dModelLoader(new JsonReader(),resolver));
   setLoader(Model.class,".g3db",new G3dModelLoader(new UBJsonReader(),resolver));
   setLoader(Model.class,".obj",new ObjLoader(resolver));
