@@ -4,10 +4,13 @@
   Node node=node();
   partBuilder=part("xyz",primitiveType,attributes,material);
   partBuilder.setColor(Color.RED);
-  partBuilder.arrow(0,0,0,axisLength,0,0,capLength,stemThickness,divisions);
+  partBuilder.setVertexTransform(tmpTransform.setToRotation(Vector3.Z,-90));
+  partBuilder.arrow(axisLength,capLength,stemThickness,divisions);
   partBuilder.setColor(Color.GREEN);
-  partBuilder.arrow(0,0,0,0,axisLength,0,capLength,stemThickness,divisions);
+  partBuilder.setVertexTransform(tmpTransform.idt());
+  partBuilder.arrow(axisLength,capLength,stemThickness,divisions);
   partBuilder.setColor(Color.BLUE);
-  partBuilder.arrow(0,0,0,0,0,axisLength,capLength,stemThickness,divisions);
+  partBuilder.setVertexTransform(tmpTransform.setToRotation(Vector3.X,90));
+  partBuilder.arrow(axisLength,capLength,stemThickness,divisions);
   return end();
 }
