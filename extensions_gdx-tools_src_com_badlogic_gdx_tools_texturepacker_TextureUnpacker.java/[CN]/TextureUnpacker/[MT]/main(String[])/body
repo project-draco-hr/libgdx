@@ -1,24 +1,23 @@
 {
-  String input=null, output=null;
-switch (args.length) {
+  TextureUnpacker unpacker=new TextureUnpacker();
+  String atlasFile=null, imageDir=null, outputDir=null;
+switch (unpacker.parseArguments(args)) {
+case 0:
+    System.out.println(HELP);
+  return;
+case 3:
+outputDir=args[2];
 case 2:
-    output=args[1];
+imageDir=args[1];
 case 1:
-  input=args[0];
-break;
-default :
-System.out.println("Usage: inputDir [outputDir] [packFileName]");
-System.exit(0);
+atlasFile=args[0];
 }
-FileHandle inputFileHandle=new FileHandle(input);
-File inputFile=inputFileHandle.file();
-if (output == null) {
-File outputFile=new File(inputFile.getParentFile(),"output");
-if (!outputFile.exists()) {
-outputFile.mkdir();
+File atlasFileHandle=new File(atlasFile);
+String atlasParentPath=atlasFileHandle.getParentFile().getAbsolutePath();
+if (imageDir == null) {
+imageDir=atlasParentPath;
 }
-output=outputFile.getAbsolutePath();
-}
-TextureAtlasData atlasData=new TextureAtlasData(inputFileHandle,inputFileHandle.parent(),false);
-process(atlasData,output);
+if (outputDir == null) outputDir=(new File(atlasParentPath,DEFAULT_OUTPUT_PATH)).getAbsolutePath();
+TextureAtlasData atlas=new TextureAtlasData(new FileHandle(atlasFile),new FileHandle(imageDir),false);
+unpacker.splitAtlas(atlas,outputDir);
 }
