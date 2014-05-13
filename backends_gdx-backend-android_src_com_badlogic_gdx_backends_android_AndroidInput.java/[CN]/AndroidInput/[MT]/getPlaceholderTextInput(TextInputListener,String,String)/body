@@ -7,7 +7,7 @@
       input.setHint(placeholder);
       input.setSingleLine();
       alert.setView(input);
-      alert.setPositiveButton("Ok",new DialogInterface.OnClickListener(){
+      alert.setPositiveButton(context.getString(android.R.string.ok),new DialogInterface.OnClickListener(){
         public void onClick(        DialogInterface dialog,        int whichButton){
           Gdx.app.postRunnable(new Runnable(){
             @Override public void run(){
