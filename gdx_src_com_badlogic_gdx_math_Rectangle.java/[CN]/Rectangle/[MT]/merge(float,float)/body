@@ -1,0 +1,11 @@
+{
+  float minX=Math.min(this.x,x);
+  float maxX=Math.max(this.x + width,x);
+  this.x=minX;
+  this.width=maxX - minX;
+  float minY=Math.min(this.y,y);
+  float maxY=Math.max(this.y + height,y);
+  this.y=minY;
+  this.height=maxY - minY;
+  return this;
+}
