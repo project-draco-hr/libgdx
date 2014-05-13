@@ -1,0 +1,5 @@
+{
+  begin();
+  part("arrow",primitiveType,attributes,material).arrow(length,capLength,stemThickness,divisions);
+  return end();
+}

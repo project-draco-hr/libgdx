@@ -1,0 +1,16 @@
+{
+  float coneHeight=length * capLength;
+  float coneDiameter=2 * (float)(coneHeight * Math.sqrt(1f / 3));
+  float stemLength=length - coneHeight;
+  float stemDiameter=coneDiameter * stemThickness;
+  Matrix4 userTransform=getVertexTransform(tmp());
+  Matrix4 transform=tmp(userTransform);
+  transform.translate(0,stemLength / 2,0);
+  setVertexTransform(transform);
+  cylinder(stemDiameter,stemLength,stemDiameter,divisions);
+  transform.translate(0,stemLength / 2,0);
+  setVertexTransform(transform);
+  cone(coneDiameter,coneHeight,coneDiameter,divisions);
+  setVertexTransform(userTransform);
+  cleanup();
+}
