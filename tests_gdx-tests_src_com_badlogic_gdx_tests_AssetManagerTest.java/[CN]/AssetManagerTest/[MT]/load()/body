@@ -8,4 +8,5 @@
   manager.load("data/animation.png",Texture.class);
   manager.load("data/pack",TextureAtlas.class);
   manager.load("data/verdana39.fnt",BitmapFont.class);
+  manager.load("data/i18n/message2",I18NBundle.class,new I18NBundleLoader.I18NBundleParameter(reloads % 2 == 0 ? Locale.ITALIAN : Locale.ENGLISH));
 }
