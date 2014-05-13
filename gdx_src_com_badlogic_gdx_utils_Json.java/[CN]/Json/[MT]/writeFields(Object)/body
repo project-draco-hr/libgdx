@@ -1,6 +1,5 @@
 {
   Class type=object.getClass();
-  System.out.println(type);
   Object[] defaultValues=getDefaultValues(type);
   ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
   if (fields == null)   fields=cacheFields(type);
