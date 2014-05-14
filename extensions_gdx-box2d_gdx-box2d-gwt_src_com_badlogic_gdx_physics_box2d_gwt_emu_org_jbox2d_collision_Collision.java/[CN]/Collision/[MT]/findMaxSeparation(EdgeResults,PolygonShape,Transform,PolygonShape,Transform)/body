@@ -1,66 +1,29 @@
 {
   int count1=poly1.m_count;
-  final Vec2[] normals1=poly1.m_normals;
-  final Vec2 poly1centroid=poly1.m_centroid;
-  final Vec2 poly2centroid=poly2.m_centroid;
-  final Rot xf2q=xf2.q;
-  final Rot xf1q=xf1.q;
-  float dx=(xf2q.c * poly2centroid.x - xf2q.s * poly2centroid.y) + xf2.p.x;
-  float dy=(xf2q.s * poly2centroid.x + xf2q.c * poly2centroid.y) + xf2.p.y;
-  dx-=(xf1q.c * poly1centroid.x - xf1q.s * poly1centroid.y) + xf1.p.x;
-  dy-=(xf1q.s * poly1centroid.x + xf1q.c * poly1centroid.y) + xf1.p.y;
-  final float dLocal1x=xf1q.c * dx + xf1q.s * dy;
-  final float dLocal1y=-xf1q.s * dx + xf1q.c * dy;
-  int edge=0;
-  float dot;
-  float maxDot=-Float.MAX_VALUE;
+  int count2=poly2.m_count;
+  Vec2[] n1s=poly1.m_normals;
+  Vec2[] v1s=poly1.m_vertices;
+  Vec2[] v2s=poly2.m_vertices;
+  Transform.mulTransToOutUnsafe(xf2,xf1,xf);
+  final Rot xfq=xf.q;
+  int bestIndex=0;
+  float maxSeparation=-Float.MAX_VALUE;
   for (int i=0; i < count1; i++) {
-    final Vec2 normal=normals1[i];
-    dot=normal.x * dLocal1x + normal.y * dLocal1y;
-    if (dot > maxDot) {
-      maxDot=dot;
-      edge=i;
+    Rot.mulToOutUnsafe(xfq,n1s[i],n);
+    Transform.mulToOutUnsafe(xf,v1s[i],v1);
+    float si=Float.MAX_VALUE;
+    for (int j=0; j < count2; ++j) {
+      Vec2 v2sj=v2s[j];
+      float sij=n.x * (v2sj.x - v1.x) + n.y * (v2sj.y - v1.y);
+      if (sij < si) {
+        si=sij;
+      }
+    }
+    if (si > maxSeparation) {
+      maxSeparation=si;
+      bestIndex=i;
     }
   }
-  float s=edgeSeparation(poly1,xf1,edge,poly2,xf2);
-  int prevEdge=edge - 1 >= 0 ? edge - 1 : count1 - 1;
-  float sPrev=edgeSeparation(poly1,xf1,prevEdge,poly2,xf2);
-  int nextEdge=edge + 1 < count1 ? edge + 1 : 0;
-  float sNext=edgeSeparation(poly1,xf1,nextEdge,poly2,xf2);
-  int bestEdge;
-  float bestSeparation;
-  int increment;
-  if (sPrev > s && sPrev > sNext) {
-    increment=-1;
-    bestEdge=prevEdge;
-    bestSeparation=sPrev;
-  }
- else   if (sNext > s) {
-    increment=1;
-    bestEdge=nextEdge;
-    bestSeparation=sNext;
-  }
- else {
-    results.edgeIndex=edge;
-    results.separation=s;
-    return;
-  }
-  for (; ; ) {
-    if (increment == -1) {
-      edge=bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
-    }
- else {
-      edge=bestEdge + 1 < count1 ? bestEdge + 1 : 0;
-    }
-    s=edgeSeparation(poly1,xf1,edge,poly2,xf2);
-    if (s > bestSeparation) {
-      bestEdge=edge;
-      bestSeparation=s;
-    }
- else {
-      break;
-    }
-  }
-  results.edgeIndex=bestEdge;
-  results.separation=bestSeparation;
+  results.edgeIndex=bestIndex;
+  results.separation=maxSeparation;
 }

@@ -3,6 +3,6 @@
     return x > 0 ? x : -x;
   }
  else {
-    return Math.abs(x);
+    return StrictMath.abs(x);
   }
 }

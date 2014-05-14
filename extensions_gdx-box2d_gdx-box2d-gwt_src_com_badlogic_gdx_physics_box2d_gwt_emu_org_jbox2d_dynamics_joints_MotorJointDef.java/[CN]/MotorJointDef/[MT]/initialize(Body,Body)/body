@@ -1,0 +1,9 @@
+{
+  bodyA=bA;
+  bodyB=bB;
+  Vec2 xB=bodyB.getPosition();
+  bodyA.getLocalPointToOut(xB,linearOffset);
+  float angleA=bodyA.getAngle();
+  float angleB=bodyB.getAngle();
+  angularOffset=angleB - angleA;
+}

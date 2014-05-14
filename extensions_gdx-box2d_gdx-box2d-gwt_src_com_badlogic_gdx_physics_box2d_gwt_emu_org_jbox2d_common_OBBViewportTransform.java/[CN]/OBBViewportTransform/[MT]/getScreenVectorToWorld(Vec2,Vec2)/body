@@ -1,8 +1,7 @@
 {
-  inv.set(box.R);
-  inv.invertLocal();
-  inv.mulToOut(argScreen,argWorld);
+  box.R.invertToOut(inv);
+  inv.mulToOut(screen,world);
   if (yFlip) {
-    yFlipMatInv.mulToOut(argWorld,argWorld);
+    yFlipMat.mulToOut(world,world);
   }
 }

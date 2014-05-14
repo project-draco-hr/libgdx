@@ -1,12 +1,8 @@
 {
   if (Settings.FAST_CEIL) {
-    int y=(int)x;
-    if (x > 0 && x != y) {
-      return y + 1;
-    }
-    return y;
+    return fastCeil(x);
   }
  else {
-    return (int)Math.ceil(x);
+    return (int)StrictMath.ceil(x);
   }
 }

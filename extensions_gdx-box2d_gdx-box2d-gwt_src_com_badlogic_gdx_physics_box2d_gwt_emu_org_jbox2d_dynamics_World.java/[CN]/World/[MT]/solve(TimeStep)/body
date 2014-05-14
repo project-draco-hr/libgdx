@@ -1,7 +1,10 @@
 {
-  m_profile.solveInit=0;
-  m_profile.solveVelocity=0;
-  m_profile.solvePosition=0;
+  m_profile.solveInit.startAccum();
+  m_profile.solveVelocity.startAccum();
+  m_profile.solvePosition.startAccum();
+  for (Body b=m_bodyList; b != null; b=b.m_next) {
+    b.m_xf0.set(b.m_xf);
+  }
   island.init(m_bodyCount,m_contactManager.m_contactCount,m_jointCount,m_contactManager.m_contactListener);
   for (Body b=m_bodyList; b != null; b=b.m_next) {
     b.m_flags&=~Body.e_islandFlag;
@@ -79,10 +82,7 @@
         other.m_flags|=Body.e_islandFlag;
       }
     }
-    island.solve(islandProfile,step,m_gravity,m_allowSleep);
-    m_profile.solveInit+=islandProfile.solveInit;
-    m_profile.solveVelocity+=islandProfile.solveVelocity;
-    m_profile.solvePosition+=islandProfile.solvePosition;
+    island.solve(m_profile,step,m_gravity,m_allowSleep);
     for (int i=0; i < island.m_bodyCount; ++i) {
       Body b=island.m_bodies[i];
       if (b.getType() == BodyType.STATIC) {
@@ -90,6 +90,9 @@
       }
     }
   }
+  m_profile.solveInit.endAccum();
+  m_profile.solveVelocity.endAccum();
+  m_profile.solvePosition.endAccum();
   broadphaseTimer.reset();
   for (Body b=m_bodyList; b != null; b=b.getNext()) {
     if ((b.m_flags & Body.e_islandFlag) == 0) {
@@ -101,5 +104,5 @@
     b.synchronizeFixtures();
   }
   m_contactManager.findNewContacts();
-  m_profile.broadphase=broadphaseTimer.getMilliseconds();
+  m_profile.broadphase.record(broadphaseTimer.getMilliseconds());
 }

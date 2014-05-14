@@ -1,5 +1,5 @@
 {
-  type=JointType.WHEEL;
+  super(JointType.WHEEL);
   localAxisA.set(1,0);
   enableMotor=false;
   maxMotorTorque=0f;

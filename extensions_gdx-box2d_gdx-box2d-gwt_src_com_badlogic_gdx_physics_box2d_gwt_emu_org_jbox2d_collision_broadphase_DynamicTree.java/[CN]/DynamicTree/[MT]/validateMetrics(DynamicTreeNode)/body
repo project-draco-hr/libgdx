@@ -4,7 +4,7 @@
   }
   DynamicTreeNode child1=node.child1;
   DynamicTreeNode child2=node.child2;
-  if (node.isLeaf()) {
+  if (node.child1 == null) {
     assert(child1 == null);
     assert(child2 == null);
     assert(node.height == 0);

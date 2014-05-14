@@ -1,9 +1,10 @@
 {
+  assert(aabb.isValid());
   assert(0 <= proxyId && proxyId < m_nodeCapacity);
   final DynamicTreeNode node=m_nodes[proxyId];
-  assert(node.isLeaf());
+  assert(node.child1 == null);
   final AABB nodeAABB=node.aabb;
-  if (nodeAABB.lowerBound.x > aabb.lowerBound.x && nodeAABB.lowerBound.y > aabb.lowerBound.y && aabb.upperBound.x > nodeAABB.upperBound.x && aabb.upperBound.y > nodeAABB.upperBound.y) {
+  if (nodeAABB.lowerBound.x <= aabb.lowerBound.x && nodeAABB.lowerBound.y <= aabb.lowerBound.y && aabb.upperBound.x <= nodeAABB.upperBound.x && aabb.upperBound.y <= nodeAABB.upperBound.y) {
     return false;
   }
   removeLeaf(node);

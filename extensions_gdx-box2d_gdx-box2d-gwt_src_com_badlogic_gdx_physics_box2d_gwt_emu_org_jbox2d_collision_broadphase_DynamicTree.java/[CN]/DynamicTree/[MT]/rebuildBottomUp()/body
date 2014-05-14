@@ -6,7 +6,7 @@
       continue;
     }
     DynamicTreeNode node=m_nodes[i];
-    if (node.isLeaf()) {
+    if (node.child1 == null) {
       node.parent=null;
       nodes[count]=i;
       ++count;

@@ -1,4 +1,5 @@
 {
+  assert(aabb.isValid());
   final DynamicTreeNode node=allocateNode();
   int proxyId=node.id;
   final AABB nodeAABB=node.aabb;

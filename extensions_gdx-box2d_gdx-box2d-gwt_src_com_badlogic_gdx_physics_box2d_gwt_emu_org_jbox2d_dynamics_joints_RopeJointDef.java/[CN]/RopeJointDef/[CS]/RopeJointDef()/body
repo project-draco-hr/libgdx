@@ -1,5 +1,5 @@
 {
-  type=JointType.ROPE;
+  super(JointType.ROPE);
   localAnchorA.set(-1.0f,0.0f);
   localAnchorB.set(1.0f,0.0f);
 }

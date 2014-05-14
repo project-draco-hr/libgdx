@@ -1,7 +1,7 @@
 {
   assert(iA != null);
   DynamicTreeNode A=iA;
-  if (A.isLeaf() || A.height < 2) {
+  if (A.child1 == null || A.height < 2) {
     return iA;
   }
   DynamicTreeNode iB=A.child1;

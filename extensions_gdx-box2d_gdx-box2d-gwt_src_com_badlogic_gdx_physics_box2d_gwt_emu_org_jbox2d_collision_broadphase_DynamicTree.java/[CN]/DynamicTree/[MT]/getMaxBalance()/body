@@ -5,7 +5,7 @@
     if (node.height <= 1) {
       continue;
     }
-    assert(node.isLeaf() == false);
+    assert(node.child1 == null == false);
     DynamicTreeNode child1=node.child1;
     DynamicTreeNode child2=node.child2;
     int balance=MathUtils.abs(child2.height - child1.height);
