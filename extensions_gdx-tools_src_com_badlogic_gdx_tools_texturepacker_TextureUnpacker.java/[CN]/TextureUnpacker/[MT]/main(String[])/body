@@ -14,9 +14,7 @@ atlasFile=args[0];
 }
 File atlasFileHandle=new File(atlasFile);
 String atlasParentPath=atlasFileHandle.getParentFile().getAbsolutePath();
-if (imageDir == null) {
-imageDir=atlasParentPath;
-}
+if (imageDir == null) imageDir=atlasParentPath;
 if (outputDir == null) outputDir=(new File(atlasParentPath,DEFAULT_OUTPUT_PATH)).getAbsolutePath();
 TextureAtlasData atlas=new TextureAtlasData(new FileHandle(atlasFile),new FileHandle(imageDir),false);
 unpacker.splitAtlas(atlas,outputDir);

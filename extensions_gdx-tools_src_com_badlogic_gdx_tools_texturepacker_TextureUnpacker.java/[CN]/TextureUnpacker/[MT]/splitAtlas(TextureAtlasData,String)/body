@@ -2,7 +2,7 @@
   File outputDirFile=new File(outputDir);
   if (!outputDirFile.exists()) {
     outputDirFile.mkdirs();
-    System.out.println(String.format("Creating directory %s",outputDirFile.getPath()));
+    System.out.println(String.format("Creating directory: %s",outputDirFile.getPath()));
   }
   for (  Page page : atlas.getPages()) {
     BufferedImage img=null;
@@ -13,7 +13,7 @@
       printExceptionAndExit(e);
     }
     for (    Region region : atlas.getRegions()) {
-      System.out.println(String.format("processing image for %s x[%s] y[%s] w[%s] h[%s], rotate[%s]",region.name,region.left,region.top,region.width,region.height,region.rotate));
+      System.out.println(String.format("Processing image for %s: x[%s] y[%s] w[%s] h[%s], rotate[%s]",region.name,region.left,region.top,region.width,region.height,region.rotate));
       if (region.page == page) {
         BufferedImage splitImage=null;
         String extension=null;
@@ -28,7 +28,7 @@
         File imgOutput=new File(outputDirFile,String.format("%s.%s",region.name,extension));
         File imgDir=imgOutput.getParentFile();
         if (!imgDir.exists()) {
-          System.out.println(String.format("Creating directory %s",imgDir.getPath()));
+          System.out.println(String.format("Creating directory: %s",imgDir.getPath()));
           imgDir.mkdirs();
         }
         try {
