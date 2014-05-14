@@ -5,7 +5,15 @@
   BitmapFontData data=font.data;
   if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
-      lastGlyph=data.getGlyph(str.charAt(start++));
+      char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (!(start < end && str.charAt(start) == '[')) {
+          start+=parseAndSetColor(str,start,end) + 1;
+          continue;
+        }
+        start++;
+      }
+      lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
         addGlyph(lastGlyph,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height);
         x+=lastGlyph.xadvance;
@@ -14,6 +22,13 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (!(start < end && str.charAt(start) == '[')) {
+          start+=parseAndSetColor(str,start,end) + 1;
+          continue;
+        }
+        start++;
+      }
       Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch);
@@ -26,7 +41,15 @@
  else {
     float scaleX=data.scaleX, scaleY=data.scaleY;
     while (start < end) {
-      lastGlyph=data.getGlyph(str.charAt(start++));
+      char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (!(start < end && str.charAt(start) == '[')) {
+          start+=parseAndSetColor(str,start,end) + 1;
+          continue;
+        }
+        start++;
+      }
+      lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
         addGlyph(lastGlyph,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY);
         x+=lastGlyph.xadvance * scaleX;
@@ -35,6 +58,13 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (!(start < end && str.charAt(start) == '[')) {
+          start+=parseAndSetColor(str,start,end) + 1;
+          continue;
+        }
+        start++;
+      }
       Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch) * scaleX;
