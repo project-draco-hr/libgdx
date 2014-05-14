@@ -1,0 +1,11 @@
+{
+  File checkFile=new File(directory);
+  boolean path=true;
+  try {
+    checkFile.getCanonicalPath();
+  }
+ catch (  Exception e) {
+    path=false;
+  }
+  return path;
+}
