@@ -22,33 +22,42 @@
     Vec2 vB=m_velocities[indexB].v;
     float wB=m_velocities[indexB].w;
     assert(manifold.pointCount > 0);
-    xfA.q.set(aA);
-    xfB.q.set(aB);
-    xfA.p.x=cA.x - (xfA.q.c * localCenterA.x - xfA.q.s * localCenterA.y);
-    xfA.p.y=cA.y - (xfA.q.s * localCenterA.x + xfA.q.c * localCenterA.y);
-    xfB.p.x=cB.x - (xfB.q.c * localCenterB.x - xfB.q.s * localCenterB.y);
-    xfB.p.y=cB.y - (xfB.q.s * localCenterB.x + xfB.q.c * localCenterB.y);
+    final Rot xfAq=xfA.q;
+    final Rot xfBq=xfB.q;
+    xfAq.set(aA);
+    xfBq.set(aB);
+    xfA.p.x=cA.x - (xfAq.c * localCenterA.x - xfAq.s * localCenterA.y);
+    xfA.p.y=cA.y - (xfAq.s * localCenterA.x + xfAq.c * localCenterA.y);
+    xfB.p.x=cB.x - (xfBq.c * localCenterB.x - xfBq.s * localCenterB.y);
+    xfB.p.y=cB.y - (xfBq.s * localCenterB.x + xfBq.c * localCenterB.y);
     worldManifold.initialize(manifold,xfA,radiusA,xfB,radiusB);
-    vc.normal.set(worldManifold.normal);
+    final Vec2 vcnormal=vc.normal;
+    vcnormal.x=worldManifold.normal.x;
+    vcnormal.y=worldManifold.normal.y;
     int pointCount=vc.pointCount;
     for (int j=0; j < pointCount; ++j) {
       VelocityConstraintPoint vcp=vc.points[j];
-      vcp.rA.set(worldManifold.points[j]).subLocal(cA);
-      vcp.rB.set(worldManifold.points[j]).subLocal(cB);
-      float rnA=vcp.rA.x * vc.normal.y - vcp.rA.y * vc.normal.x;
-      float rnB=vcp.rB.x * vc.normal.y - vcp.rB.y * vc.normal.x;
+      Vec2 wmPj=worldManifold.points[j];
+      final Vec2 vcprA=vcp.rA;
+      final Vec2 vcprB=vcp.rB;
+      vcprA.x=wmPj.x - cA.x;
+      vcprA.y=wmPj.y - cA.y;
+      vcprB.x=wmPj.x - cB.x;
+      vcprB.y=wmPj.y - cB.y;
+      float rnA=vcprA.x * vcnormal.y - vcprA.y * vcnormal.x;
+      float rnB=vcprB.x * vcnormal.y - vcprB.y * vcnormal.x;
       float kNormal=mA + mB + iA * rnA * rnA + iB * rnB * rnB;
       vcp.normalMass=kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
-      float tangentx=1.0f * vc.normal.y;
-      float tangenty=-1.0f * vc.normal.x;
-      float rtA=vcp.rA.x * tangenty - vcp.rA.y * tangentx;
-      float rtB=vcp.rB.x * tangenty - vcp.rB.y * tangentx;
+      float tangentx=1.0f * vcnormal.y;
+      float tangenty=-1.0f * vcnormal.x;
+      float rtA=vcprA.x * tangenty - vcprA.y * tangentx;
+      float rtB=vcprB.x * tangenty - vcprB.y * tangentx;
       float kTangent=mA + mB + iA * rtA * rtA + iB * rtB * rtB;
       vcp.tangentMass=kTangent > 0.0f ? 1.0f / kTangent : 0.0f;
       vcp.velocityBias=0.0f;
-      float tempx=vB.x + -wB * vcp.rB.y - vA.x - (-wA * vcp.rA.y);
-      float tempy=vB.y + wB * vcp.rB.x - vA.y - (wA * vcp.rA.x);
-      float vRel=vc.normal.x * tempx + vc.normal.y * tempy;
+      float tempx=vB.x + -wB * vcprB.y - vA.x - (-wA * vcprA.y);
+      float tempy=vB.y + wB * vcprB.x - vA.y - (wA * vcprA.x);
+      float vRel=vcnormal.x * tempx + vcnormal.y * tempy;
       if (vRel < -Settings.velocityThreshold) {
         vcp.velocityBias=-vc.restitution * vRel;
       }
@@ -56,16 +65,18 @@
     if (vc.pointCount == 2) {
       VelocityConstraintPoint vcp1=vc.points[0];
       VelocityConstraintPoint vcp2=vc.points[1];
-      float rn1A=Vec2.cross(vcp1.rA,vc.normal);
-      float rn1B=Vec2.cross(vcp1.rB,vc.normal);
-      float rn2A=Vec2.cross(vcp2.rA,vc.normal);
-      float rn2B=Vec2.cross(vcp2.rB,vc.normal);
+      float rn1A=vcp1.rA.x * vcnormal.y - vcp1.rA.y * vcnormal.x;
+      float rn1B=vcp1.rB.x * vcnormal.y - vcp1.rB.y * vcnormal.x;
+      float rn2A=vcp2.rA.x * vcnormal.y - vcp2.rA.y * vcnormal.x;
+      float rn2B=vcp2.rB.x * vcnormal.y - vcp2.rB.y * vcnormal.x;
       float k11=mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
       float k22=mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
       float k12=mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
       if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12)) {
-        vc.K.ex.set(k11,k12);
-        vc.K.ey.set(k12,k22);
+        vc.K.ex.x=k11;
+        vc.K.ex.y=k12;
+        vc.K.ey.x=k12;
+        vc.K.ey.y=k22;
         vc.K.invertToOut(vc.normalMass);
       }
  else {

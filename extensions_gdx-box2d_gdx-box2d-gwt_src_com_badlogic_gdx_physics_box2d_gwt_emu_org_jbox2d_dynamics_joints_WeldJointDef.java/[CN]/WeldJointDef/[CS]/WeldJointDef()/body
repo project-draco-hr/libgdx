@@ -1,5 +1,5 @@
 {
-  type=JointType.WELD;
+  super(JointType.WELD);
   localAnchorA=new Vec2();
   localAnchorB=new Vec2();
   referenceAngle=0.0f;

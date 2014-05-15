@@ -1,5 +1,5 @@
 {
-  type=JointType.PRISMATIC;
+  super(JointType.PRISMATIC);
   localAnchorA=new Vec2();
   localAnchorB=new Vec2();
   localAxisA=new Vec2(1.0f,0.0f);

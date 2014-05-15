@@ -1,5 +1,5 @@
 {
-  type=JointType.REVOLUTE;
+  super(JointType.REVOLUTE);
   localAnchorA=new Vec2(0.0f,0.0f);
   localAnchorB=new Vec2(0.0f,0.0f);
   referenceAngle=0.0f;

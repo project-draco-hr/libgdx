@@ -1,10 +1,11 @@
 {
-  argWorld.set(argScreen);
-  argWorld.subLocal(box.extents);
-  box.R.invertToOut(inv2);
-  inv2.mulToOut(argWorld,argWorld);
+  world.x=screen.x - box.extents.x;
+  world.y=screen.y - box.extents.y;
   if (yFlip) {
-    yFlipMatInv.mulToOut(argWorld,argWorld);
+    yFlipMat.mulToOut(world,world);
   }
-  argWorld.addLocal(box.center);
+  box.R.invertToOut(inv2);
+  inv2.mulToOut(world,world);
+  world.x+=box.center.x;
+  world.y+=box.center.y;
 }

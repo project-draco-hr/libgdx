@@ -14,9 +14,8 @@
   Transform xf1, xf2;
   int edge1;
   boolean flip;
-  final float k_relativeTol=0.98f;
-  final float k_absoluteTol=0.001f;
-  if (results2.separation > k_relativeTol * results1.separation + k_absoluteTol) {
+  final float k_tol=0.1f * Settings.linearSlop;
+  if (results2.separation > results1.separation + k_tol) {
     poly1=polyB;
     poly2=polyA;
     xf1=xfB;

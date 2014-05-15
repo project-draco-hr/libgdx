@@ -1,8 +1,9 @@
 {
-  nodeStack.reset();
-  nodeStack.push(m_root);
-  while (nodeStack.getCount() > 0) {
-    DynamicTreeNode node=nodeStack.pop();
+  assert(aabb.isValid());
+  nodeStackIndex=0;
+  nodeStack[nodeStackIndex++]=m_root;
+  while (nodeStackIndex > 0) {
+    DynamicTreeNode node=nodeStack[--nodeStackIndex];
     if (node == null) {
       continue;
     }
@@ -14,8 +15,13 @@
         }
       }
  else {
-        nodeStack.push(node.child1);
-        nodeStack.push(node.child2);
+        if (nodeStack.length - nodeStackIndex - 2 <= 0) {
+          DynamicTreeNode[] newBuffer=new DynamicTreeNode[nodeStack.length * 2];
+          System.arraycopy(nodeStack,0,newBuffer,0,nodeStack.length);
+          nodeStack=newBuffer;
+        }
+        nodeStack[nodeStackIndex++]=node.child1;
+        nodeStack[nodeStackIndex++]=node.child2;
       }
     }
   }

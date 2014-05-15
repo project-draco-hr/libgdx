@@ -1,6 +1,6 @@
 {
-  box.R.mulToOut(argWorld,argScreen);
+  box.R.mulToOut(world,screen);
   if (yFlip) {
-    yFlipMatInv.mulToOut(argScreen,argScreen);
+    yFlipMat.mulToOut(screen,screen);
   }
 }

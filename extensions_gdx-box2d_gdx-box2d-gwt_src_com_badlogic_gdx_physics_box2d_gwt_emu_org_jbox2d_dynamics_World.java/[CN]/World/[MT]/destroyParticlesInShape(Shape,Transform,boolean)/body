@@ -1,0 +1,7 @@
+{
+  assert(isLocked() == false);
+  if (isLocked()) {
+    return 0;
+  }
+  return m_particleSystem.destroyParticlesInShape(shape,xf,callDestructionListener);
+}

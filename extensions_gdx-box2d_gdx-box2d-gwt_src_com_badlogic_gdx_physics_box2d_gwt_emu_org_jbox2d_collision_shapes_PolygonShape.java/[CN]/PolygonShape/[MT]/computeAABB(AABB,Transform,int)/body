@@ -2,17 +2,18 @@
   final Vec2 lower=aabb.lowerBound;
   final Vec2 upper=aabb.upperBound;
   final Vec2 v1=m_vertices[0];
-  final Rot xfq=xf.q;
-  final Vec2 xfp=xf.p;
-  float vx, vy;
-  lower.x=(xfq.c * v1.x - xfq.s * v1.y) + xfp.x;
-  lower.y=(xfq.s * v1.x + xfq.c * v1.y) + xfp.y;
+  final float xfqc=xf.q.c;
+  final float xfqs=xf.q.s;
+  final float xfpx=xf.p.x;
+  final float xfpy=xf.p.y;
+  lower.x=(xfqc * v1.x - xfqs * v1.y) + xfpx;
+  lower.y=(xfqs * v1.x + xfqc * v1.y) + xfpy;
   upper.x=lower.x;
   upper.y=lower.y;
   for (int i=1; i < m_count; ++i) {
     Vec2 v2=m_vertices[i];
-    vx=(xfq.c * v2.x - xfq.s * v2.y) + xfp.x;
-    vy=(xfq.s * v2.x + xfq.c * v2.y) + xfp.y;
+    float vx=(xfqc * v2.x - xfqs * v2.y) + xfpx;
+    float vy=(xfqs * v2.x + xfqc * v2.y) + xfpy;
     lower.x=lower.x < vx ? lower.x : vx;
     lower.y=lower.y < vy ? lower.y : vy;
     upper.x=upper.x > vx ? upper.x : vx;

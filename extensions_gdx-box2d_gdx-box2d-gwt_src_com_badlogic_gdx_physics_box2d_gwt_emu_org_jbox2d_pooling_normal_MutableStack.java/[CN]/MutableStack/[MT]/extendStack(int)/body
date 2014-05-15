@@ -1,5 +1,5 @@
 {
-  Object[] newStack=new Object[argSize];
+  E[] newStack=newArray(argSize);
   if (stack != null) {
     System.arraycopy(stack,0,newStack,0,size);
   }

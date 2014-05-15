@@ -22,6 +22,8 @@ case CONSTANT_VOLUME:
 return new ConstantVolumeJoint(world,(ConstantVolumeJointDef)def);
 case ROPE:
 return new RopeJoint(world.getPool(),(RopeJointDef)def);
+case MOTOR:
+return new MotorJoint(world.getPool(),(MotorJointDef)def);
 case UNKNOWN:
 default :
 return null;

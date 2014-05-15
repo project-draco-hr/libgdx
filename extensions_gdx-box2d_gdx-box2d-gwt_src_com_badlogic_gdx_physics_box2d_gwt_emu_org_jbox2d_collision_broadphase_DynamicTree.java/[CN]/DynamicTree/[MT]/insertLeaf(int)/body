@@ -1,5 +1,4 @@
 {
-  m_insertionCount++;
   DynamicTreeNode leaf=m_nodes[leaf_index];
   if (m_root == null) {
     m_root=leaf;
@@ -18,7 +17,7 @@
     float cost=2.0f * combinedArea;
     float inheritanceCost=2.0f * (combinedArea - area);
     float cost1;
-    if (child1.isLeaf()) {
+    if (child1.child1 == null) {
       combinedAABB.combine(leafAABB,child1.aabb);
       cost1=combinedAABB.getPerimeter() + inheritanceCost;
     }
@@ -29,7 +28,7 @@
       cost1=(newArea - oldArea) + inheritanceCost;
     }
     float cost2;
-    if (child2.isLeaf()) {
+    if (child2.child1 == null) {
       combinedAABB.combine(leafAABB,child2.aabb);
       cost2=combinedAABB.getPerimeter() + inheritanceCost;
     }

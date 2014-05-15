@@ -26,10 +26,10 @@
   segAABB.lowerBound.y=p1y < tempy ? p1y : tempy;
   segAABB.upperBound.x=p1x > tempx ? p1x : tempx;
   segAABB.upperBound.y=p1y > tempy ? p1y : tempy;
-  nodeStack.reset();
-  nodeStack.push(m_root);
-  while (nodeStack.getCount() > 0) {
-    final DynamicTreeNode node=nodeStack.pop();
+  nodeStackIndex=0;
+  nodeStack[nodeStackIndex++]=m_root;
+  while (nodeStackIndex > 0) {
+    final DynamicTreeNode node=nodeStack[--nodeStackIndex];
     if (node == null) {
       continue;
     }
@@ -47,7 +47,7 @@
     if (separation > 0.0f) {
       continue;
     }
-    if (node.isLeaf()) {
+    if (node.child1 == null) {
       subInput.p1.x=p1x;
       subInput.p1.y=p1y;
       subInput.p2.x=p2x;
@@ -68,8 +68,13 @@
       }
     }
  else {
-      nodeStack.push(node.child1);
-      nodeStack.push(node.child2);
+      if (nodeStack.length - nodeStackIndex - 2 <= 0) {
+        DynamicTreeNode[] newBuffer=new DynamicTreeNode[nodeStack.length * 2];
+        System.arraycopy(nodeStack,0,newBuffer,0,nodeStack.length);
+        nodeStack=newBuffer;
+      }
+      nodeStack[nodeStackIndex++]=node.child1;
+      nodeStack[nodeStackIndex++]=node.child2;
     }
   }
 }

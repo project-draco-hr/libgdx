@@ -1,5 +1,5 @@
 {
-  type=JointType.CONSTANT_VOLUME;
+  super(JointType.CONSTANT_VOLUME);
   bodies=new ArrayList<Body>();
   joints=null;
   collideConnected=false;

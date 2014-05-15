@@ -1,6 +1,6 @@
 {
   assert(0 <= node.id && node.id < m_nodeCapacity);
-  if (node.isLeaf()) {
+  if (node.child1 == null) {
     return 0;
   }
   int height1=computeHeight(node.child1);

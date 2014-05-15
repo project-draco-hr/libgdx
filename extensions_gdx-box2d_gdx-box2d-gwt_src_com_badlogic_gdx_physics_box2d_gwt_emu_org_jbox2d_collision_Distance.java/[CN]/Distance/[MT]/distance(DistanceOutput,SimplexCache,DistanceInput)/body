@@ -11,7 +11,7 @@
   float distanceSqr1=closestPoint.lengthSquared();
   float distanceSqr2=distanceSqr1;
   int iter=0;
-  while (iter < GJK_MAX_ITERS) {
+  while (iter < MAX_ITERS) {
     saveCount=simplex.m_count;
     for (int i=0; i < saveCount; i++) {
       saveA[i]=vertices[i].indexA;

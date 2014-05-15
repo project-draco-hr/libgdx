@@ -1,0 +1,6 @@
+{
+  wqwrapper.broadPhase=m_contactManager.m_broadPhase;
+  wqwrapper.callback=callback;
+  m_contactManager.m_broadPhase.query(wqwrapper,aabb);
+  m_particleSystem.queryAABB(particleCallback,aabb);
+}

@@ -1,0 +1,15 @@
+{
+  if (m_freeList == NULL_NODE) {
+    assert(m_nodeCount == m_nodeCapacity);
+    m_nodeCapacity*=2;
+    expandBuffers(m_nodeCount,m_nodeCapacity);
+  }
+  assert(m_freeList != NULL_NODE);
+  int node=m_freeList;
+  m_freeList=m_parent[node];
+  m_parent[node]=NULL_NODE;
+  m_child1[node]=NULL_NODE;
+  m_height[node]=0;
+  ++m_nodeCount;
+  return node;
+}

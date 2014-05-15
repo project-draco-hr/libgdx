@@ -13,5 +13,4 @@
   for (Fixture f=m_fixtureList; f != null; f=f.m_next) {
     f.synchronize(broadPhase,m_xf,m_xf);
   }
-  m_world.m_contactManager.findNewContacts();
 }

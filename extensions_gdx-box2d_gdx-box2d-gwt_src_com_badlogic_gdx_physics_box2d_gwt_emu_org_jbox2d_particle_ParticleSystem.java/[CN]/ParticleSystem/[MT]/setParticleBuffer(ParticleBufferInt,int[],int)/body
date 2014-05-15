@@ -1,0 +1,7 @@
+{
+  assert((newData != null && newCapacity != 0) || (newData == null && newCapacity == 0));
+  if (buffer.userSuppliedCapacity != 0) {
+  }
+  buffer.data=newData;
+  buffer.userSuppliedCapacity=newCapacity;
+}
