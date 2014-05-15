@@ -1,0 +1,7 @@
+{
+  final float w=1.0f / q.length;
+  set(q[0]).exp(w);
+  for (int i=1; i < q.length; i++)   mul(tmp1.set(q[i]).exp(w));
+  nor();
+  return this;
+}

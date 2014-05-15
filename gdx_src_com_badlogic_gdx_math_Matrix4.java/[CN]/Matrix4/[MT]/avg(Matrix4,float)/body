@@ -1,0 +1,18 @@
+{
+  getScale(tmpVec);
+  if (tmpVec.x < 0)   tmpVec.x=-tmpVec.x;
+  if (tmpVec.y < 0)   tmpVec.y=-tmpVec.y;
+  if (tmpVec.z < 0)   tmpVec.z=-tmpVec.z;
+  other.getScale(tmpForward);
+  if (tmpForward.x < 0)   tmpForward.x=-tmpForward.x;
+  if (tmpForward.y < 0)   tmpForward.y=-tmpForward.y;
+  if (tmpForward.z < 0)   tmpForward.z=-tmpForward.z;
+  getRotation(quat);
+  other.getRotation(quat2);
+  getTranslation(tmpUp);
+  other.getTranslation(right);
+  setToScaling(tmpVec.scl(w).add(tmpForward.scl(1 - w)));
+  rotate(quat.slerp(quat2,1 - w));
+  setTranslation(tmpUp.scl(w).add(right.scl(1 - w)));
+  return this;
+}
