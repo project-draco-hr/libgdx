@@ -8,13 +8,13 @@
           if (i < start + 2 || i > start + 9)           throw new GdxRuntimeException("Hex color cannot have " + (i - start - 1) + " digits");
           this.previousColor=this.color;
           if (i <= start + 7) {
-            Color.rgb888ToColor(tempColor,colorInt);
-            tempColor.a=1f;
+            Color.rgb888ToColor(hexColor,colorInt);
+            hexColor.a=1f;
           }
  else {
-            Color.rgba8888ToColor(tempColor,colorInt);
+            Color.rgba8888ToColor(hexColor,colorInt);
           }
-          this.color=tempColor.toFloatBits();
+          this.color=hexColor.toFloatBits();
           return i - start;
         }
         if (ch >= '0' && ch <= '9')         colorInt=colorInt * 16 + (ch - '0');

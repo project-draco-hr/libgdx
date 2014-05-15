@@ -1,6 +1,6 @@
 {
-  int newGlyphCount=end - start;
   if (vertexData.length == 1) {
+    int newGlyphCount=font.markupEnabled ? countGlyphs(seq,start,end) : end - start;
     require(0,newGlyphCount);
   }
  else {
