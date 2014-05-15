@@ -24,11 +24,11 @@
   val[Matrix4.M21]=up.z;
   val[Matrix4.M22]=forward.z;
   Matrix4 temp=tmp();
-  transform.setTranslation(tmp(direction).scl(stemLength / 2));
+  transform.setTranslation(tmp(direction).scl(stemLength / 2).add(x1,y1,z1));
   setVertexTransform(temp.set(transform).mul(userTransform));
   cylinder(stemDiameter,stemLength,stemDiameter,divisions);
-  transform.translate(0,stemLength / 2,0);
-  setVertexTransform(transform);
+  transform.setTranslation(tmp(direction).scl(stemLength).add(x1,y1,z1));
+  setVertexTransform(temp.set(transform).mul(userTransform));
   cone(coneDiameter,coneHeight,coneDiameter,divisions);
   setVertexTransform(userTransform);
   cleanup();
