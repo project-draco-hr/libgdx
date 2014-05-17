@@ -1,4 +1,11 @@
 {
+  advancedButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      settings.showDialog();
+      ;
+    }
+  }
+);
   generateButton.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent e){
       generate();
