@@ -12,6 +12,7 @@
   project.files.add(new ProjectFile("gradlew.bat",false));
   project.files.add(new ProjectFile("gradle/wrapper/gradle-wrapper.jar",false));
   project.files.add(new ProjectFile("gradle/wrapper/gradle-wrapper.properties",false));
+  project.files.add(new ProjectFile("gradle.properties"));
   project.files.add(new ProjectFile("core/build.gradle"));
   project.files.add(new ProjectFile("core/src/MainClass","core/src/" + packageDir + "/"+ mainClass+ ".java",true));
   project.files.add(new ProjectFile("core/CoreGdxDefinition","core/src/" + mainClass + ".gwt.xml",true));
@@ -79,5 +80,5 @@
   copyAndReplace(outputDir,project,values);
   builder.cleanUp();
   new File(outputDir,"gradlew").setExecutable(true);
-  Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean",callback);
+  Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean" + parseGradleArgs(gradleArgs),callback);
 }

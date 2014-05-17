@@ -17,21 +17,6 @@
   add(sdkLocationButton,new GridBagConstraints(2,4,1,1,0,0,CENTER,NONE,new Insets(0,6,0,0),0,0));
   add(versionLabel,new GridBagConstraints(0,5,1,1,0,0,WEST,WEST,new Insets(20,0,0,0),0,0));
   add(versionButton,new GridBagConstraints(1,5,1,1,0,0,WEST,WEST,new Insets(20,20,0,0),0,0));
-  add(nightlyWarning,new GridBagConstraints(1,5,1,1,0,0,WEST,WEST,new Insets(20,200,0,0),0,0));
-  versionButton.addItemListener(new ItemListener(){
-    @Override public void itemStateChanged(    ItemEvent e){
-      JComboBox list=(JComboBox)e.getSource();
-      if (list.getSelectedItem().equals("Nightlies")) {
-        nightlyWarning.setVisible(true);
-      }
- else {
-        if (nightlyWarning.isVisible()) {
-          nightlyWarning.setVisible(false);
-        }
-      }
-    }
-  }
-);
   for (  final ProjectType projectType : ProjectType.values()) {
     if (projectType.equals(ProjectType.CORE)) {
       continue;
