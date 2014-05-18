@@ -1,0 +1,12 @@
+{
+  org.jbox2d.dynamics.joints.MotorJointDef jd=new org.jbox2d.dynamics.joints.MotorJointDef();
+  jd.bodyA=bodyA.body;
+  jd.bodyB=bodyB.body;
+  jd.collideConnected=collideConnected;
+  jd.linearOffset.set(linearOffset.x,linearOffset.y);
+  jd.angularOffset=angularOffset;
+  jd.maxForce=maxForce;
+  jd.maxTorque=maxTorque;
+  jd.type=org.jbox2d.dynamics.joints.JointType.MOTOR;
+  return jd;
+}

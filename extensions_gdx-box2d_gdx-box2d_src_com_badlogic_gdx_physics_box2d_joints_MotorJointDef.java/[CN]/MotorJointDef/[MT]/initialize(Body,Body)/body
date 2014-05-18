@@ -1,0 +1,6 @@
+{
+  this.bodyA=body1;
+  this.bodyB=body2;
+  this.linearOffset.set(bodyA.getLocalPoint(bodyB.getPosition()));
+  this.angularOffset=bodyB.getAngle() - bodyA.getAngle();
+}
