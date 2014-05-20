@@ -16,9 +16,9 @@
       int v=indices[i] * 2;
       float vx=vertices[v];
       float vy=vertices[v + 1];
-      if (computeSpannedAreaSign(p1x,p1y,p2x,p2y,vx,vy) >= 0) {
-        if (computeSpannedAreaSign(p2x,p2y,p3x,p3y,vx,vy) >= 0) {
-          if (computeSpannedAreaSign(p3x,p3y,p1x,p1y,vx,vy) >= 0)           return false;
+      if (computeSpannedAreaSign(p3x,p3y,p1x,p1y,vx,vy) >= 0) {
+        if (computeSpannedAreaSign(p1x,p1y,p2x,p2y,vx,vy) >= 0) {
+          if (computeSpannedAreaSign(p2x,p2y,p3x,p3y,vx,vy) >= 0)           return false;
         }
       }
     }
