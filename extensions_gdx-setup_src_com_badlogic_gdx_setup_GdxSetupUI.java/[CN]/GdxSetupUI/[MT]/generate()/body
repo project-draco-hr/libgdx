@@ -33,13 +33,9 @@
   }
   if (!GdxSetup.isEmptyDirectory(destination)) {
     int value=JOptionPane.showConfirmDialog(this,"The destination is not empty, do you want to overwrite?","Warning!",JOptionPane.YES_NO_OPTION);
-    if (value == 1) {
+    if (value != 0) {
       return;
     }
-  }
-  String selectedVersion=(String)ui.form.versionButton.getSelectedItem();
-  if (selectedVersion.equals("Nightlies")) {
-    DependencyBank.libgdxVersion=DependencyBank.libgdxNightlyVersion;
   }
   List<String> incompatList=builder.buildProject(modules,dependencies);
   if (incompatList.size() == 0) {
@@ -82,7 +78,7 @@ catch (        URISyntaxException e1) {
     panel.add(pane);
     Object[] options={"Yes, build it!","No, I'll change my extensions"};
     int value=JOptionPane.showOptionDialog(null,panel,"Extension Incompatibilities",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,null);
-    if (value == 1) {
+    if (value != 0) {
       return;
     }
  else {
@@ -103,11 +99,17 @@ catch (        URISyntaxException e1) {
           log(c);
         }
       }
-);
+,ui.settings.getGradleArgs());
       log("Done!");
-      log("To import in Eclipse: File -> Import -> Gradle -> Gradle Project");
-      log("To import to Intellij IDEA: File -> Import -> build.gradle");
-      log("To import to NetBeans: File -> Open Project...");
+      if (ui.settings.getGradleArgs().contains("eclipse") || ui.settings.getGradleArgs().contains("idea")) {
+        log("To import in Eclipse: File -> Import -> General -> Exisiting Projects into Workspace");
+        log("To import to Intellij IDEA: File -> Open -> YourProject.ipr");
+      }
+ else {
+        log("To import in Eclipse: File -> Import -> Gradle -> Gradle Project");
+        log("To import to Intellij IDEA: File -> Import -> build.gradle");
+        log("To import to NetBeans: File -> Open Project...");
+      }
       SwingUtilities.invokeLater(new Runnable(){
         @Override public void run(){
           ui.generateButton.setEnabled(true);

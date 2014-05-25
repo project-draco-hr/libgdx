@@ -4,4 +4,6 @@
     points[i].set(manifold.points[i].x,manifold.points[i].y);
   }
   numContactPoints=manifold.points.length;
+  separations[0]=manifold.separations[0];
+  separations[1]=manifold.separations[1];
 }

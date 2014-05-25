@@ -7,5 +7,7 @@
     point.x=tmp[2 + i * 2];
     point.y=tmp[2 + i * 2 + 1];
   }
+  worldManifold.separations[0]=tmp[6];
+  worldManifold.separations[1]=tmp[7];
   return worldManifold;
 }

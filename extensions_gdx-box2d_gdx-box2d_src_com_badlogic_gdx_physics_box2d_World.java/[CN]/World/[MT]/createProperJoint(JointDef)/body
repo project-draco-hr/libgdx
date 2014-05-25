@@ -11,6 +11,10 @@
     GearJointDef d=(GearJointDef)def;
     return jniCreateGearJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.joint1.addr,d.joint2.addr,d.ratio);
   }
+  if (def.type == JointType.MotorJoint) {
+    MotorJointDef d=(MotorJointDef)def;
+    return jniCreateMotorJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.linearOffset.x,d.linearOffset.y,d.angularOffset,d.maxForce,d.maxTorque,d.correctionFactor);
+  }
   if (def.type == JointType.MouseJoint) {
     MouseJointDef d=(MouseJointDef)def;
     return jniCreateMouseJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.target.x,d.target.y,d.maxForce,d.frequencyHz,d.dampingRatio);
@@ -27,13 +31,13 @@
     RevoluteJointDef d=(RevoluteJointDef)def;
     return jniCreateRevoluteJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle,d.enableLimit,d.lowerAngle,d.upperAngle,d.enableMotor,d.motorSpeed,d.maxMotorTorque);
   }
-  if (def.type == JointType.WeldJoint) {
-    WeldJointDef d=(WeldJointDef)def;
-    return jniCreateWeldJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle);
-  }
   if (def.type == JointType.RopeJoint) {
     RopeJointDef d=(RopeJointDef)def;
     return jniCreateRopeJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.maxLength);
+  }
+  if (def.type == JointType.WeldJoint) {
+    WeldJointDef d=(WeldJointDef)def;
+    return jniCreateWeldJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle);
   }
   if (def.type == JointType.WheelJoint) {
     WheelJointDef d=(WheelJointDef)def;

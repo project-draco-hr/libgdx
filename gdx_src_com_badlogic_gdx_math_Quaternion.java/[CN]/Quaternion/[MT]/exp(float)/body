@@ -1,0 +1,14 @@
+{
+  float norm=len();
+  float normExp=(float)Math.pow(norm,alpha);
+  float theta=(float)Math.acos(w / norm);
+  float coeff=0;
+  if (Math.abs(theta) < 0.001)   coeff=normExp * alpha / norm;
+ else   coeff=(float)(normExp * Math.sin(alpha * theta) / (norm * Math.sin(theta)));
+  w=(float)(normExp * Math.cos(alpha * theta));
+  x*=coeff;
+  y*=coeff;
+  z*=coeff;
+  nor();
+  return this;
+}

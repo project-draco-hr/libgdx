@@ -33,7 +33,7 @@
           }
  else {
             String colorString=colorBuffer.toString();
-            Color newColor=colorMap.get(colorString);
+            Color newColor=Colors.get(colorString);
             if (newColor == null)             throw new GdxRuntimeException("Unknown color '" + colorString + "'");
             this.previousColor=this.color;
             this.color=newColor.toFloatBits();

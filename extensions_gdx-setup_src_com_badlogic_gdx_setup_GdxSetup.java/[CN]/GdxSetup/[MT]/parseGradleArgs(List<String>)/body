@@ -1,0 +1,8 @@
+{
+  String argString="";
+  if (args == null)   return argString;
+  for (  String argument : args) {
+    argString+=" " + argument;
+  }
+  return argString;
+}
