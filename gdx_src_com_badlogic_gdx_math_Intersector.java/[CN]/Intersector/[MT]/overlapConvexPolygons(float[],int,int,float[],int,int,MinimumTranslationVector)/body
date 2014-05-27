@@ -2,6 +2,7 @@
   float overlap=Float.MAX_VALUE;
   float smallestAxisX=0;
   float smallestAxisY=0;
+  int numInNormalDir;
   int end1=offset1 + count1;
   int end2=offset2 + count2;
   for (int i=offset1; i < end1; i+=2) {
@@ -25,9 +26,11 @@
         max1=p;
       }
     }
+    numInNormalDir=0;
     float min2=axisX * verts2[0] + axisY * verts2[1];
     float max2=min2;
     for (int j=offset2; j < end2; j+=2) {
+      numInNormalDir-=pointLineSide(x1,y1,x2,y2,verts2[j],verts2[j + 1]);
       float p=axisX * verts2[j] + axisY * verts2[j + 1];
       if (p < min2) {
         min2=p;
@@ -45,8 +48,6 @@
         float mins=Math.abs(min1 - min2);
         float maxs=Math.abs(max1 - max2);
         if (mins < maxs) {
-          axisX=-axisX;
-          axisY=-axisY;
           o+=mins;
         }
  else {
@@ -55,8 +56,8 @@
       }
       if (o < overlap) {
         overlap=o;
-        smallestAxisX=axisX;
-        smallestAxisY=axisY;
+        smallestAxisX=numInNormalDir >= 0 ? axisX : -axisX;
+        smallestAxisY=numInNormalDir >= 0 ? axisY : -axisY;
       }
     }
   }
@@ -70,10 +71,12 @@
     final float length=(float)Math.sqrt(axisX * axisX + axisY * axisY);
     axisX/=length;
     axisY/=length;
+    numInNormalDir=0;
     float min1=axisX * verts1[0] + axisY * verts1[1];
     float max1=min1;
     for (int j=offset1; j < end1; j+=2) {
       float p=axisX * verts1[j] + axisY * verts1[j + 1];
+      numInNormalDir-=pointLineSide(x1,y1,x2,y2,verts1[j],verts1[j + 1]);
       if (p < min1) {
         min1=p;
       }
@@ -101,8 +104,6 @@
         float mins=Math.abs(min1 - min2);
         float maxs=Math.abs(max1 - max2);
         if (mins < maxs) {
-          axisX=-axisX;
-          axisY=-axisY;
           o+=mins;
         }
  else {
@@ -111,8 +112,8 @@
       }
       if (o < overlap) {
         overlap=o;
-        smallestAxisX=axisX;
-        smallestAxisY=axisY;
+        smallestAxisX=numInNormalDir < 0 ? axisX : -axisX;
+        smallestAxisY=numInNormalDir < 0 ? axisY : -axisY;
       }
     }
   }
