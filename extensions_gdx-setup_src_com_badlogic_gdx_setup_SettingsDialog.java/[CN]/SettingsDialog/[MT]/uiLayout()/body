@@ -35,6 +35,12 @@
   eclipseLabel.setForeground(new Color(170,170,170));
   eclipseDesc.setForeground(new Color(170,170,170));
   eclipseBox.setBackground(new Color(36,36,36));
+  JLabel offlineLabel=new JLabel("Offline Mode");
+  JLabel offlineDesc=new JLabel("Don't force download dependencies");
+  offlineBox=new JCheckBox();
+  offlineLabel.setForeground(new Color(170,170,170));
+  offlineDesc.setForeground(new Color(170,170,170));
+  offlineBox.setBackground(new Color(36,36,36));
   JSeparator separator=new JSeparator();
   separator.setForeground(new Color(85,85,85));
   separator.setBackground(new Color(85,85,85));
@@ -48,6 +54,9 @@
   content.add(eclipseLabel,new GridBagConstraints(0,4,1,1,1,1,NORTH,HORIZONTAL,new Insets(0,0,0,0),0,0));
   content.add(eclipseBox,new GridBagConstraints(1,4,2,1,1,1,NORTH,HORIZONTAL,new Insets(0,15,0,0),0,0));
   content.add(eclipseDesc,new GridBagConstraints(3,4,1,1,1,1,NORTH,HORIZONTAL,new Insets(0,15,0,0),0,0));
+  content.add(offlineLabel,new GridBagConstraints(0,5,1,1,1,1,NORTH,HORIZONTAL,new Insets(0,0,0,0),0,0));
+  content.add(offlineBox,new GridBagConstraints(1,5,2,1,1,1,NORTH,HORIZONTAL,new Insets(0,15,0,0),0,0));
+  content.add(offlineDesc,new GridBagConstraints(3,5,1,1,1,1,NORTH,HORIZONTAL,new Insets(0,15,0,0),0,0));
   String text="<p style=\"font-size:10\">Click for more info on using Gradle without IDE integration</p>";
   linkText=new JLabel("<html>" + text + "</html>");
   bottomPanel.add(linkText,new GridBagConstraints(0,0,1,1,1,1,WEST,NONE,new Insets(0,10,0,0),0,0));
