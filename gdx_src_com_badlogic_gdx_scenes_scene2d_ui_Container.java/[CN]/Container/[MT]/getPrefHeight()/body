@@ -1,5 +1,5 @@
 {
-  float v=prefHeight == null ? (widget instanceof Layout ? ((Layout)widget).getPrefHeight() : widget.getHeight()) : prefHeight;
+  float v=prefHeight == null ? (widget instanceof Layout ? ((Layout)widget).getPrefHeight() : (widget != null ? widget.getHeight() : 0)) : prefHeight;
   if (background != null)   v=Math.max(v,background.getMinHeight());
   return v + padTop + padBottom;
 }
