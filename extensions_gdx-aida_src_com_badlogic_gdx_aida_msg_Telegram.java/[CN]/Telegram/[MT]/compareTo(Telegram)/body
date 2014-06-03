@@ -1,0 +1,4 @@
+{
+  if (this.equals(other))   return 0;
+  return (this.timestamp - other.timestamp < 0) ? -1 : 1;
+}

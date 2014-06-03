@@ -1,0 +1,8 @@
+{
+  if (minCapacity < 0)   throw new OutOfMemoryError();
+  int oldCapacity=queue.length;
+  int newCapacity=(int)((oldCapacity < 64) ? ((oldCapacity + 1) * CAPACITY_RATIO_HI) : (oldCapacity * CAPACITY_RATIO_LOW));
+  if (newCapacity < 0)   newCapacity=Integer.MAX_VALUE;
+  if (newCapacity < minCapacity)   newCapacity=minCapacity;
+  queue=Arrays.copyOf(queue,newCapacity);
+}
