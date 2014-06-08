@@ -1,0 +1,9 @@
+{
+  try {
+    Method m=File.class.getMethod("canWrite");
+    return (Boolean)m.invoke(file);
+  }
+ catch (  Exception e) {
+    return false;
+  }
+}
