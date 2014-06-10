@@ -2,10 +2,10 @@
   Array<Cell> cells=this.cells;
   int cellCount=cells.size;
   if (sizeInvalid)   computeSize();
-  float padLeft=getPadLeft();
-  float hpadding=padLeft + getPadRight();
-  float padTop=getPadTop();
-  float vpadding=padTop + getPadBottom();
+  float padLeft=this.padLeft.get(this);
+  float hpadding=padLeft + padRight.get(this);
+  float padTop=this.padTop.get(this);
+  float vpadding=padTop + padBottom.get(this);
   int columns=this.columns, rows=this.rows;
   float[] expandWidth=this.expandWidth, expandHeight=this.expandHeight;
   float[] columnWidth=this.columnWidth, rowHeight=this.rowHeight;
@@ -44,12 +44,13 @@
     float spannedWeightedWidth=0;
     for (int ii=column, nn=ii + c.colspan; ii < nn; ii++)     spannedWeightedWidth+=columnWeightedWidth[ii];
     float weightedHeight=rowWeightedHeight[row];
-    float prefWidth=c.prefWidth.get(c);
-    float prefHeight=c.prefHeight.get(c);
-    float minWidth=c.minWidth.get(c);
-    float minHeight=c.minHeight.get(c);
-    float maxWidth=c.maxWidth.get(c);
-    float maxHeight=c.maxHeight.get(c);
+    Actor actor=c.actor;
+    float prefWidth=c.prefWidth.get(actor);
+    float prefHeight=c.prefHeight.get(actor);
+    float minWidth=c.minWidth.get(actor);
+    float minHeight=c.minHeight.get(actor);
+    float maxWidth=c.maxWidth.get(actor);
+    float maxHeight=c.maxHeight.get(actor);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
@@ -118,12 +119,12 @@
     currentX+=c.computedPadLeft;
     if (c.fillX > 0) {
       c.actorWidth=spannedCellWidth * c.fillX;
-      float maxWidth=c.maxWidth.get(c);
+      float maxWidth=c.maxWidth.get(c.actor);
       if (maxWidth > 0)       c.actorWidth=Math.min(c.actorWidth,maxWidth);
     }
     if (c.fillY > 0) {
       c.actorHeight=rowHeight[c.row] * c.fillY - c.computedPadTop - c.computedPadBottom;
-      float maxHeight=c.maxHeight.get(c);
+      float maxHeight=c.maxHeight.get(c.actor);
       if (maxHeight > 0)       c.actorHeight=Math.min(c.actorHeight,maxHeight);
     }
     if ((c.align & Align.left) != 0)     c.actorX=currentX;

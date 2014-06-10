@@ -1,9 +1,9 @@
 {
   clear();
-  padTop=null;
-  padLeft=null;
-  padBottom=null;
-  padRight=null;
+  padTop=Value.zero;
+  padLeft=Value.zero;
+  padBottom=Value.zero;
+  padRight=Value.zero;
   align=Align.center;
   if (debug != Debug.none)   debugRects.clear();
   debug=Debug.none;

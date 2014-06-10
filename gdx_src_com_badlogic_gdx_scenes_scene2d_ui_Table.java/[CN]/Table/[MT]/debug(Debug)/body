@@ -1,6 +1,8 @@
 {
   this.debug=debug;
-  if (debug == Debug.none)   debugRects.clear();
+  if (debug == Debug.none) {
+    if (debugRects != null)     debugRects.clear();
+  }
  else   invalidate();
   return this;
 }

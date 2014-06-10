@@ -7,10 +7,10 @@
       batch.flush();
       float x=0, y=0, width=getWidth(), height=getHeight();
       if (background != null) {
-        x=getPadLeft();
-        y=getPadBottom();
-        width-=x + getPadRight();
-        height-=y + getPadTop();
+        x=padLeft.get(this);
+        y=padBottom.get(this);
+        width-=x + padRight.get(this);
+        height-=y + padTop.get(this);
       }
       boolean draw=clipBegin(x,y,width,height);
       if (draw) {
