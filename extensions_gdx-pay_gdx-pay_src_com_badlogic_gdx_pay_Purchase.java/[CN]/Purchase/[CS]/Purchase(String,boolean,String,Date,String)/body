@@ -1,3 +1,7 @@
 {
-  this(Integer.parseInt(identifierAsText.substring(IDENTIFIER_PREFIX.length())),valid,transactionId,transactionDate,transactionReceipt);
+  this.identifier=identifier;
+  this.valid=valid;
+  this.transactionId=transactionId;
+  this.transactionDate=transactionDate;
+  this.transactionReceipt=transactionReceipt;
 }
