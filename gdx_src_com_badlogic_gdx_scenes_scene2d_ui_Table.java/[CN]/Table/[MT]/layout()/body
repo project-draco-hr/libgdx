@@ -6,10 +6,10 @@
   if (round) {
     for (int i=0, n=cells.size; i < n; i++) {
       Cell c=cells.get(i);
-      float actorWidth=Math.round(c.getActorWidth());
-      float actorHeight=Math.round(c.getActorHeight());
-      float actorX=Math.round(c.getActorX());
-      float actorY=height - Math.round(c.getActorY()) - actorHeight;
+      float actorWidth=Math.round(c.actorWidth);
+      float actorHeight=Math.round(c.actorHeight);
+      float actorX=Math.round(c.actorX);
+      float actorY=height - Math.round(c.actorY) - actorHeight;
       c.setActorBounds(actorX,actorY,actorWidth,actorHeight);
       Actor actor=c.actor;
       if (actor != null)       actor.setBounds(actorX,actorY,actorWidth,actorHeight);
@@ -18,11 +18,11 @@
  else {
     for (int i=0, n=cells.size; i < n; i++) {
       Cell c=cells.get(i);
-      float actorHeight=c.getActorHeight();
-      float actorY=height - c.getActorY() - actorHeight;
+      float actorHeight=c.actorHeight;
+      float actorY=height - c.actorY - actorHeight;
       c.setActorY(actorY);
       Actor actor=c.actor;
-      if (actor != null)       actor.setBounds(c.getActorX(),actorY,c.getActorWidth(),actorHeight);
+      if (actor != null)       actor.setBounds(c.actorX,actorY,c.actorWidth,actorHeight);
     }
   }
   Array<Actor> children=getChildren();

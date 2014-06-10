@@ -1,3 +1,3 @@
 {
-  return (padTop == null ? 0 : padTop.get(actor)) + (padBottom == null ? 0 : padBottom.get(actor));
+  return padTop.get(actor) + padBottom.get(actor);
 }

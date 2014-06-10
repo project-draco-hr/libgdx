@@ -41,16 +41,16 @@
   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
     int column=c.column, row=c.row;
+    Actor a=c.actor;
     float spannedWeightedWidth=0;
     for (int ii=column, nn=ii + c.colspan; ii < nn; ii++)     spannedWeightedWidth+=columnWeightedWidth[ii];
     float weightedHeight=rowWeightedHeight[row];
-    Actor actor=c.actor;
-    float prefWidth=c.prefWidth.get(actor);
-    float prefHeight=c.prefHeight.get(actor);
-    float minWidth=c.minWidth.get(actor);
-    float minHeight=c.minHeight.get(actor);
-    float maxWidth=c.maxWidth.get(actor);
-    float maxHeight=c.maxHeight.get(actor);
+    float prefWidth=c.prefWidth.get(a);
+    float prefHeight=c.prefHeight.get(a);
+    float minWidth=c.minWidth.get(a);
+    float minHeight=c.minHeight.get(a);
+    float maxWidth=c.maxWidth.get(a);
+    float maxHeight=c.maxHeight.get(a);
     if (prefWidth < minWidth)     prefWidth=minWidth;
     if (prefHeight < minHeight)     prefHeight=minHeight;
     if (maxWidth > 0 && prefWidth > maxWidth)     prefWidth=maxWidth;
