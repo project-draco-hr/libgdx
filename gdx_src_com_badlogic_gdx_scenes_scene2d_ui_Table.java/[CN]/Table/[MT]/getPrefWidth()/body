@@ -1,4 +1,6 @@
 {
-  if (background != null)   return Math.max(layout.getPrefWidth(),background.getMinWidth());
-  return layout.getPrefWidth();
+  if (sizeInvalid)   computeSize();
+  float width=tablePrefWidth;
+  if (background != null)   return Math.max(width,background.getMinWidth());
+  return width;
 }

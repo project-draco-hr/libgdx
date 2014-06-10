@@ -1,0 +1,5 @@
+{
+  draw=true;
+  if (table.debugRects == null)   table.debugRects=new Array();
+  table.debugRects.add(new DebugRect(type,x,table.getHeight() - y,w,h));
+}

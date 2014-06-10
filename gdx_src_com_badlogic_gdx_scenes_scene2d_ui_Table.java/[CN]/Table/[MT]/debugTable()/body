@@ -1,4 +1,5 @@
 {
-  layout.debugTable();
+  this.debug=Debug.table;
+  invalidate();
   return this;
 }

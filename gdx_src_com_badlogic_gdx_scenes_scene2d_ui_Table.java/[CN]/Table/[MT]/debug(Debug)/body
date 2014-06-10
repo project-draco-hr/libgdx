@@ -1,4 +1,6 @@
 {
-  layout.debug(debug);
+  this.debug=debug;
+  if (debug == Debug.none)   debugRects.clear();
+ else   invalidate();
   return this;
 }

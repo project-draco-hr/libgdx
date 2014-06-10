@@ -1,3 +1,14 @@
 {
-  return layout.getRow(y);
+  Array<Cell> cells=this.cells;
+  int row=0;
+  y+=getPadTop();
+  int i=0, n=cells.size;
+  if (n == 0)   return -1;
+  if (n == 1)   return 0;
+  while (i < n) {
+    Cell c=cells.get(i++);
+    if (c.actorY + c.computedPadTop < y)     break;
+    if (c.endRow)     row++;
+  }
+  return row;
 }

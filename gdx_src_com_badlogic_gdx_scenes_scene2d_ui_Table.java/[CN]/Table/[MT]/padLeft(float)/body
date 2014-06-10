@@ -1,4 +1,5 @@
 {
-  layout.padLeft(padLeft);
+  this.padLeft=new Fixed(padLeft);
+  sizeInvalid=true;
   return this;
 }

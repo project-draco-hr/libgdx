@@ -1,0 +1,4 @@
+{
+  if (!(context instanceof Actor))   throw new UnsupportedOperationException("This value can only be used for an actor.");
+  return get((Actor)context);
+}

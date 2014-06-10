@@ -1,4 +1,5 @@
 {
-  layout.padRight(padRight);
+  this.padRight=new Fixed(padRight);
+  sizeInvalid=true;
   return this;
 }

@@ -1,6 +1,6 @@
 {
   if (!super.removeActor(actor))   return false;
   Cell cell=getCell(actor);
-  if (cell != null)   cell.setWidget(null);
+  if (cell != null)   cell.actor=null;
   return true;
 }

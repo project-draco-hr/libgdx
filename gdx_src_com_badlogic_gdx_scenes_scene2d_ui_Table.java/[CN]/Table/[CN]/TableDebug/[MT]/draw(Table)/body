@@ -1,0 +1,41 @@
+{
+  if (table.debug == Debug.none)   return;
+  Array<DebugRect> debugRects=table.debugRects;
+  if (debugRects == null)   return;
+  float x=0, y=0;
+  Actor parent=table;
+  while (parent != null) {
+    if (parent instanceof Group) {
+      x+=parent.getX();
+      y+=parent.getY();
+    }
+    parent=parent.getParent();
+  }
+  for (int i=0, n=debugRects.size; i < n; i++) {
+    DebugRect rect=debugRects.get(i);
+    float x1=x + rect.x;
+    float y1=y + rect.y - rect.height;
+    float x2=x1 + rect.width;
+    float y2=y1 + rect.height;
+    float r=rect.type == Debug.cell ? 1 : 0;
+    float g=rect.type == Debug.actor ? 1 : 0;
+    float b=rect.type == Debug.table ? 1 : 0;
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x1,y1,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x1,y2,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x1,y2,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x2,y2,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x2,y2,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x2,y1,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x2,y1,0);
+    debugRenderer.color(r,g,b,1);
+    debugRenderer.vertex(x1,y1,0);
+    if (debugRenderer.getNumVertices() == 128)     debugRenderer.flush();
+  }
+}

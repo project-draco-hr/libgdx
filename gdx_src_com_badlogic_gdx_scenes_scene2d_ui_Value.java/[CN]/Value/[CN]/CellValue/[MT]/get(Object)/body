@@ -1,0 +1,4 @@
+{
+  if (!(context instanceof Cell))   throw new UnsupportedOperationException("This value can only be used for a cell.");
+  return get((Cell)context);
+}

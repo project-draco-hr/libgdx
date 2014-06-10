@@ -1,4 +1,6 @@
 {
-  if (background != null)   return Math.max(layout.getPrefHeight(),background.getMinHeight());
-  return layout.getPrefHeight();
+  if (sizeInvalid)   computeSize();
+  float height=tablePrefHeight;
+  if (background != null)   return Math.max(height,background.getMinHeight());
+  return height;
 }

@@ -1,4 +1,3 @@
 {
-  if (!TableToolkit.drawDebug)   return;
-  drawDebug(stage.getActors(),stage.getBatch());
+  if (TableDebug.draw)   TableDebug.draw(stage);
 }

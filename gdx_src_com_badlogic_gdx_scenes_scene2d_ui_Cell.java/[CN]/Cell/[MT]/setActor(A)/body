@@ -1,0 +1,8 @@
+{
+  if (actor != null)   actor.remove();
+  if (actor != newActor) {
+    actor=newActor;
+    if (newActor != null)     table.addActor(newActor);
+  }
+  return (Cell<A>)this;
+}
