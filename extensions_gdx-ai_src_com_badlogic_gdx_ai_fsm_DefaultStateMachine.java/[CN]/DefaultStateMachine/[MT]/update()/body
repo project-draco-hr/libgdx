@@ -1,0 +1,4 @@
+{
+  if (globalState != null)   globalState.execute(owner);
+  if (currentState != null)   currentState.execute(owner);
+}
