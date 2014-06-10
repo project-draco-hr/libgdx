@@ -1,4 +1,4 @@
 {
-  if (globalState != null)   globalState.execute(owner);
-  if (currentState != null)   currentState.execute(owner);
+  if (globalState != null)   globalState.update(owner);
+  if (currentState != null)   currentState.update(owner);
 }
