@@ -1,12 +1,13 @@
 {
   validate();
-  if (widget == null)   return;
+  if (actor == null)   return;
   if (isTransform()) {
     applyTransform(batch,computeTransform());
     drawBackground(batch,parentAlpha,0,0);
     if (clip) {
       batch.flush();
-      boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(padLeft,padBottom,getWidth() - padLeft - padRight,getHeight() - padBottom - padTop);
+      float padLeft=this.padLeft.get(this), padBottom=this.padBottom.get(this);
+      boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(padLeft,padBottom,getWidth() - padLeft - padRight.get(this),getHeight() - padBottom - padTop.get(this));
       if (draw) {
         drawChildren(batch,parentAlpha);
         clipEnd();
