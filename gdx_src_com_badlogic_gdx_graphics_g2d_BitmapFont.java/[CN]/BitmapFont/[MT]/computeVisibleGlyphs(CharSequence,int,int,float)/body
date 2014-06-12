@@ -6,6 +6,13 @@
   availableWidth/=data.scaleX;
   for (; index < end; index++) {
     char ch=str.charAt(index);
+    if (ch == '[' && markupEnabled) {
+      index++;
+      if (!(index < end && str.charAt(index) == '[')) {
+        while (index < end && str.charAt(index) != ']')         index++;
+        continue;
+      }
+    }
     Glyph g=data.getGlyph(ch);
     if (g != null) {
       if (lastGlyph != null)       width+=lastGlyph.getKerning(ch);
