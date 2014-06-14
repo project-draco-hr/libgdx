@@ -1,0 +1,6 @@
+{
+  if (other == null)   return false;
+  if (other == this)   return true;
+  if (!(other instanceof Attributes))   return false;
+  return hashCode() == other.hashCode();
+}
