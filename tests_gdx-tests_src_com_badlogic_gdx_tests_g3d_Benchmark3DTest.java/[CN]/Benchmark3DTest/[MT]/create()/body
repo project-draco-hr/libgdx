@@ -1,5 +1,6 @@
 {
   super.create();
+  Gdx.gl=new GL20Benchmark(Gdx.gl);
   Gdx.gl20=new GL20Benchmark(Gdx.gl20);
   Gdx.gl30=new GL30Benchmark(Gdx.gl30);
   randomizeLights();
