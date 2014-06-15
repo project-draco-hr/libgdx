@@ -1,0 +1,6 @@
+{
+  for (  Renderable renderable : renderables) {
+    tris+=renderable.meshPartSize / 3;
+  }
+  super.end();
+}
