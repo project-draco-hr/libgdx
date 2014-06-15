@@ -1,5 +1,5 @@
 {
-  GL20 gl=Gdx.graphics.getGL20();
+  GL20 gl=Gdx.gl20;
   if (!defaultFramebufferHandleInitialized) {
     defaultFramebufferHandleInitialized=true;
     if (Gdx.app.getType() == ApplicationType.iOS) {
