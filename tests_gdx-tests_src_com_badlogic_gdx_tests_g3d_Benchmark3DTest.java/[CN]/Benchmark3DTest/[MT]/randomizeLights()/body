@@ -6,7 +6,7 @@
   config.numPointLights=pointLights;
   config.numSpotLights=0;
   modelBatch.dispose();
-  modelBatch=new BenchmarkModelBatch(new DefaultShaderProvider(config));
+  modelBatch=new ProfilingModelBatch(new DefaultShaderProvider(config));
   environment=new Environment();
   environment.set(new ColorAttribute(ColorAttribute.AmbientLight,0.4f,0.4f,0.4f,1.f));
   for (int i=0; i < pointLights; i++) {

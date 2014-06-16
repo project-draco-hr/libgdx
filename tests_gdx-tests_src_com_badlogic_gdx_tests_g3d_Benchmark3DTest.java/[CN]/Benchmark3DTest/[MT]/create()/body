@@ -1,8 +1,8 @@
 {
   super.create();
-  Gdx.gl=new GL20Benchmark(Gdx.gl);
-  Gdx.gl20=new GL20Benchmark(Gdx.gl20);
-  Gdx.gl30=new GL30Benchmark(Gdx.gl30);
+  Gdx.gl=new GL20Profiler(Gdx.gl);
+  Gdx.gl20=new GL20Profiler(Gdx.gl20);
+  Gdx.gl30=new GL30Profiler(Gdx.gl30);
   randomizeLights();
   cam.position.set(1,1,1);
   cam.lookAt(0,0,0);
