@@ -1,0 +1,3 @@
+{
+  return other != null && (other == this || other instanceof Rectangle && ((Rectangle)other).width == this.width && ((Rectangle)other).height == this.height && ((Rectangle)other).x == this.x && ((Rectangle)other).y == this.y);
+}
