@@ -1,0 +1,7 @@
+{
+  int shaderSwitches=0;
+  if (Gdx.gl != null && Gdx.gl instanceof GLProfiler)   shaderSwitches+=((GLProfiler)Gdx.gl).shaderSwitches;
+  if (Gdx.gl20 != null && Gdx.gl20 instanceof GLProfiler)   shaderSwitches+=((GLProfiler)Gdx.gl20).shaderSwitches;
+  if (Gdx.gl30 != null && Gdx.gl30 instanceof GLProfiler)   shaderSwitches+=((GLProfiler)Gdx.gl30).shaderSwitches;
+  return shaderSwitches;
+}

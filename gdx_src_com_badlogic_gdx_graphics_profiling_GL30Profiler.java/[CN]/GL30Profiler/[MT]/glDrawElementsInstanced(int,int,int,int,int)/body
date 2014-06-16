@@ -1,4 +1,6 @@
 {
+  vertexCount+=count;
+  primitiveCount+=calculatePrimitiveCount(mode,count);
   drawCalls++;
   calls++;
   gl30.glDrawElementsInstanced(mode,count,type,indicesOffset,instanceCount);

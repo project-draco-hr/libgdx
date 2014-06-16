@@ -1,6 +1,5 @@
 {
-  calls=0;
-  textureBinds=0;
-  drawCalls=0;
-  shaderSwitches=0;
+  if (Gdx.gl30 != null && Gdx.gl30 instanceof GLProfiler)   ((GLProfiler)Gdx.gl30).resetVariables();
+  if (Gdx.gl20 != null && Gdx.gl20 instanceof GLProfiler)   ((GLProfiler)Gdx.gl).resetVariables();
+  if (Gdx.gl != null && Gdx.gl instanceof GLProfiler)   ((GLProfiler)Gdx.gl).resetVariables();
 }

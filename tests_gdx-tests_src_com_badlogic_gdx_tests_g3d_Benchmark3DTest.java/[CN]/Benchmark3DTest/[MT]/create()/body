@@ -1,19 +1,20 @@
 {
   super.create();
-  Gdx.gl=new GL20Profiler(Gdx.gl);
-  Gdx.gl20=new GL20Profiler(Gdx.gl20);
-  Gdx.gl30=new GL30Profiler(Gdx.gl30);
+  GLProfiler.enable();
   randomizeLights();
   cam.position.set(1,1,1);
   cam.lookAt(0,0,0);
   cam.update();
   showAxes=true;
   lighting=true;
-  trisCountLabel=new Label("Tris: 999",skin);
-  trisCountLabel.setPosition(0,fpsLabel.getTop());
-  hud.addActor(trisCountLabel);
-  textureBindsLabel=new Label("Texture binds: 999",skin);
-  textureBindsLabel.setPosition(0,trisCountLabel.getTop());
+  vertexCountLabel=new Label("Vertices: 999",skin);
+  vertexCountLabel.setPosition(0,fpsLabel.getTop());
+  hud.addActor(vertexCountLabel);
+  primitiveCountLabel=new Label("Primitives: 999",skin);
+  primitiveCountLabel.setPosition(0,vertexCountLabel.getTop());
+  hud.addActor(primitiveCountLabel);
+  textureBindsLabel=new Label("Texture bindings: 999",skin);
+  textureBindsLabel.setPosition(0,primitiveCountLabel.getTop());
   hud.addActor(textureBindsLabel);
   shaderSwitchesLabel=new Label("Shader switches: 999",skin);
   shaderSwitchesLabel.setPosition(0,textureBindsLabel.getTop());

@@ -1,0 +1,7 @@
+{
+  int calls=0;
+  if (Gdx.gl != null && Gdx.gl instanceof GLProfiler)   calls+=((GLProfiler)Gdx.gl).calls;
+  if (Gdx.gl20 != null && Gdx.gl20 instanceof GLProfiler)   calls+=((GLProfiler)Gdx.gl20).calls;
+  if (Gdx.gl30 != null && Gdx.gl30 instanceof GLProfiler)   calls+=((GLProfiler)Gdx.gl30).calls;
+  return calls;
+}

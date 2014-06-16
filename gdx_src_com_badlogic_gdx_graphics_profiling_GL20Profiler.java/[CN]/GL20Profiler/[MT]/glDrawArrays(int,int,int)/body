@@ -1,4 +1,6 @@
 {
+  vertexCount+=count;
+  primitiveCount+=calculatePrimitiveCount(mode,count);
   drawCalls++;
   calls++;
   gl20.glDrawArrays(mode,first,count);
