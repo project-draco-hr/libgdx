@@ -1,0 +1,8 @@
+{
+  if (lighting) {
+    batch.render(instances,environment);
+  }
+ else {
+    batch.render(instances);
+  }
+}
