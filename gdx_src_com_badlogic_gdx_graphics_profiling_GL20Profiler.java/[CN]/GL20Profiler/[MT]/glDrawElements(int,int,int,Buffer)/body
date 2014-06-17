@@ -1,6 +1,5 @@
 {
   vertexCount.put(count);
-  primitiveCount.put(calculatePrimitiveCount(mode,count));
   drawCalls++;
   calls++;
   gl20.glDrawElements(mode,count,type,indices);

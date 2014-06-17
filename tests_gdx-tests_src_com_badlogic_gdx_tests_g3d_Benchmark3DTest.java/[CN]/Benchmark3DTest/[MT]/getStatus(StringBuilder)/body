@@ -20,10 +20,6 @@
   stringBuilder.append(GLProfiler.vertexCount.total);
   vertexCountLabel.setText(stringBuilder);
   stringBuilder.setLength(0);
-  stringBuilder.append("Primitives: ");
-  stringBuilder.append(GLProfiler.primitiveCount.total);
-  primitiveCountLabel.setText(stringBuilder);
-  stringBuilder.setLength(0);
   stringBuilder.append("Lights: ");
   stringBuilder.append(environment.directionalLights.size + environment.pointLights.size);
   stringBuilder.append(", Directional: ");
