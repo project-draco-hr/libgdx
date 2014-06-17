@@ -1,4 +1,7 @@
 {
+  if (outAttrs != null) {
+    outAttrs.imeOptions=outAttrs.imeOptions | EditorInfo.IME_FLAG_NO_EXTRACT_UI;
+  }
   BaseInputConnection connection=new BaseInputConnection(this,false){
     @Override public boolean deleteSurroundingText(    int beforeLength,    int afterLength){
       int sdkVersion=android.os.Build.VERSION.SDK_INT;
