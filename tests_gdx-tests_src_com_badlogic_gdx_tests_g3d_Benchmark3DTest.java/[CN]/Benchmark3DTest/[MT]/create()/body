@@ -2,7 +2,7 @@
   super.create();
   GLProfiler.enable();
   randomizeLights();
-  cam.position.set(1,1,1);
+  cam.position.set(10,10,10);
   cam.lookAt(0,0,0);
   cam.update();
   showAxes=true;
