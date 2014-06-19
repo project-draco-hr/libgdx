@@ -1,0 +1,6 @@
+{
+  previousState=currentState;
+  currentState.exit(owner);
+  currentState=newState;
+  currentState.enter(owner);
+}

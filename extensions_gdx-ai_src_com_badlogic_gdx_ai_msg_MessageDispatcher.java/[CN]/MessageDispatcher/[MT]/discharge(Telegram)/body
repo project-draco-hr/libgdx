@@ -1,0 +1,6 @@
+{
+  if (!telegram.receiver.handleMessage(telegram)) {
+    if (debugEnabled)     Gdx.app.log(LOG_TAG,"Message not handled");
+  }
+  pool.free(telegram);
+}

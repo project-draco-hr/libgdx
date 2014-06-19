@@ -1,5 +1,5 @@
 {
-  float v=maxHeight == null ? (widget instanceof Layout ? ((Layout)widget).getMaxHeight() : (widget != null ? widget.getHeight() : 0)) : maxHeight;
-  if (v > 0)   v+=padTop + padBottom;
+  float v=maxHeight.get(actor);
+  if (v > 0)   v+=padTop.get(this) + padBottom.get(this);
   return v;
 }

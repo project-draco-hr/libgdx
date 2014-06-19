@@ -1,5 +1,5 @@
 {
-  GL20 gl=Gdx.graphics.getGL20();
+  GL20 gl=Gdx.gl20;
   IntBuffer intbuf=BufferUtils.newIntBuffer(1);
   int shader=gl.glCreateShader(type);
   if (shader == 0)   return -1;

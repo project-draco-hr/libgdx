@@ -1,5 +1,5 @@
 {
-  GL20 gl=Gdx.graphics.getGL20();
+  GL20 gl=Gdx.gl20;
   checkManaged();
   this.matrix.clear();
   BufferUtils.copy(matrix.val,this.matrix,matrix.val.length,0);

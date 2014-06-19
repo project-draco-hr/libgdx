@@ -1,3 +1,10 @@
 {
-  return layout.row();
+  if (cells.size > 0) {
+    endRow();
+    invalidate();
+  }
+  if (rowDefaults != null)   cellPool.free(rowDefaults);
+  rowDefaults=obtainCell();
+  rowDefaults.clear();
+  return rowDefaults;
 }

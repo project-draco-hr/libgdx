@@ -2,7 +2,7 @@
   File parent=file.getParentFile();
   File testFile;
   if (file.exists()) {
-    if (!file.canWrite() || !file.canExecute())     return false;
+    if (!file.canWrite() || !canExecute(file))     return false;
     testFile=new File(parent,UUID.randomUUID().toString());
   }
  else {
@@ -12,7 +12,7 @@
   }
   try {
     new FileOutputStream(testFile).close();
-    if (!testFile.canExecute())     return false;
+    if (!canExecute(testFile))     return false;
     return true;
   }
  catch (  Throwable ex) {

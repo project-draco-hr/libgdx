@@ -1,7 +1,7 @@
 {
   this.skin=skin;
-  layout=new TableLayout();
-  layout.setTable(this);
+  cellDefaults=obtainCell();
+  cellDefaults.defaults();
   setTransform(false);
   setTouchable(Touchable.childrenOnly);
 }

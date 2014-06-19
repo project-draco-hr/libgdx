@@ -1,4 +1,5 @@
 {
-  layout.debug();
+  this.debug=Debug.all;
+  invalidate();
   return this;
 }

@@ -1,8 +1,0 @@
-{
-  if (align == null)   align=BOTTOM;
- else {
-    align|=BOTTOM;
-    align&=~TOP;
-  }
-  return this;
-}

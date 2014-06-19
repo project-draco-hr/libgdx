@@ -1,5 +1,5 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
   config.useAccelerometer=false;
-  return new IOSApplication(new InputTest(),config);
+  return new IOSApplication(new Benchmark3DTest(),config);
 }

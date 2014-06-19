@@ -1,24 +1,11 @@
 {
-  if (widget == null)   return;
-  float containerWidth=getWidth() - padLeft - padRight, containerHeight=getHeight() - padTop - padBottom;
-  float minWidth, minHeight, prefWidth, prefHeight, maxWidth, maxHeight;
-  Layout layout=widget instanceof Layout ? (Layout)widget : null;
-  if (layout != null) {
-    minWidth=this.minWidth == null ? layout.getMinWidth() : this.minWidth;
-    minHeight=this.minHeight == null ? layout.getMinHeight() : this.minHeight;
-    prefWidth=this.prefWidth == null ? layout.getPrefWidth() : this.prefWidth;
-    prefHeight=this.prefHeight == null ? layout.getPrefHeight() : this.prefHeight;
-    maxWidth=this.maxWidth == null ? layout.getMaxWidth() : this.maxWidth;
-    maxHeight=this.maxHeight == null ? layout.getMaxHeight() : this.maxHeight;
-  }
- else {
-    minWidth=this.minWidth == null ? widget.getWidth() : this.minWidth;
-    minHeight=this.minHeight == null ? widget.getHeight() : this.minHeight;
-    prefWidth=this.prefWidth == null ? widget.getWidth() : this.prefWidth;
-    prefHeight=this.prefHeight == null ? widget.getHeight() : this.prefHeight;
-    maxWidth=this.maxWidth == null ? widget.getWidth() : this.maxWidth;
-    maxHeight=this.maxHeight == null ? widget.getHeight() : this.maxHeight;
-  }
+  if (actor == null)   return;
+  float padLeft=this.padLeft.get(this), padBottom=this.padBottom.get(this);
+  float containerWidth=getWidth() - padLeft - padRight.get(this);
+  float containerHeight=getHeight() - padBottom - padTop.get(this);
+  float minWidth=this.minWidth.get(actor), minHeight=this.minHeight.get(actor);
+  float prefWidth=this.prefWidth.get(actor), prefHeight=this.prefHeight.get(actor);
+  float maxWidth=this.maxWidth.get(actor), maxHeight=this.maxHeight.get(actor);
   float width;
   if (fillX > 0)   width=containerWidth * fillX;
  else   width=Math.min(prefWidth,containerWidth);
@@ -41,6 +28,6 @@
     width=Math.round(width);
     height=Math.round(height);
   }
-  widget.setBounds(x,y,width,height);
-  if (widget instanceof Layout)   ((Layout)widget).validate();
+  actor.setBounds(x,y,width,height);
+  if (actor instanceof Layout)   ((Layout)actor).validate();
 }

@@ -1,0 +1,9 @@
+{
+  if (currentState != null && currentState.onMessage(telegram)) {
+    return true;
+  }
+  if (globalState != null && globalState.onMessage(telegram)) {
+    return true;
+  }
+  return false;
+}

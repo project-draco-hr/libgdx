@@ -1,0 +1,8 @@
+{
+  if (align == null)   align=Align.bottom;
+ else {
+    align|=Align.bottom;
+    align&=~Align.top;
+  }
+  return this;
+}

@@ -1,0 +1,11 @@
+{
+  if (top < 0)   throw new IllegalArgumentException("top cannot be < 0.");
+  if (left < 0)   throw new IllegalArgumentException("left cannot be < 0.");
+  if (bottom < 0)   throw new IllegalArgumentException("bottom cannot be < 0.");
+  if (right < 0)   throw new IllegalArgumentException("right cannot be < 0.");
+  spaceTop=new Fixed(top);
+  spaceLeft=new Fixed(left);
+  spaceBottom=new Fixed(bottom);
+  spaceRight=new Fixed(right);
+  return this;
+}

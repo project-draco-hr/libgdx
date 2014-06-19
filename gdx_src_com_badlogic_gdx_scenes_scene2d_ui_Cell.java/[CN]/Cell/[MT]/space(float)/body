@@ -1,0 +1,9 @@
+{
+  if (space < 0)   throw new IllegalArgumentException("space cannot be < 0.");
+  Value value=new Fixed(space);
+  spaceTop=value;
+  spaceLeft=value;
+  spaceBottom=value;
+  spaceRight=value;
+  return this;
+}

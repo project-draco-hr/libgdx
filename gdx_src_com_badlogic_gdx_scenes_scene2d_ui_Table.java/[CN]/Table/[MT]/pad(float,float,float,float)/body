@@ -1,4 +1,8 @@
 {
-  layout.pad(top,left,bottom,right);
+  padTop=new Fixed(top);
+  padLeft=new Fixed(left);
+  padBottom=new Fixed(bottom);
+  padRight=new Fixed(right);
+  sizeInvalid=true;
   return this;
 }

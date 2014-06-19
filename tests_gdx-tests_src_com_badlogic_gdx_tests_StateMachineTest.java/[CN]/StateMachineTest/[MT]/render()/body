@@ -1,0 +1,9 @@
+{
+  elapsedTime+=Gdx.graphics.getRawDeltaTime();
+  if (elapsedTime > 0.8f) {
+    bob.update(elapsedTime);
+    elsa.update(elapsedTime);
+    MessageDispatcher.getInstance().dispatchDelayedMessages();
+    elapsedTime=0;
+  }
+}

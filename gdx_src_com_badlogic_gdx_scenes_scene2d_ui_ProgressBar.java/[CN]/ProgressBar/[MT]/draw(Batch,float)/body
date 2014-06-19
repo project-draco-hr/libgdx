@@ -20,7 +20,7 @@
     float knobHeightHalf=0;
     if (min != max) {
       if (knob == null) {
-        knobHeightHalf=knobBefore.getMinHeight() * 0.5f;
+        knobHeightHalf=knobBefore == null ? 0 : knobBefore.getMinHeight() * 0.5f;
         position=(value - min) / (max - min) * (positionHeight - knobHeightHalf);
         position=Math.min(positionHeight - knobHeightHalf,position);
       }
@@ -47,7 +47,7 @@
     float knobWidthHalf=0;
     if (min != max) {
       if (knob == null) {
-        knobWidthHalf=knobBefore.getMinWidth() * 0.5f;
+        knobWidthHalf=knobBefore == null ? 0 : knobBefore.getMinWidth() * 0.5f;
         position=(value - min) / (max - min) * (positionWidth - knobWidthHalf);
         position=Math.min(positionWidth - knobWidthHalf,position);
       }
