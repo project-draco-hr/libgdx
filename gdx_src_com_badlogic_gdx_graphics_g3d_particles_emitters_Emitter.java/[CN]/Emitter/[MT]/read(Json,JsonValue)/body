@@ -1,0 +1,4 @@
+{
+  minParticleCount=json.readValue("minParticleCount",Integer.class,jsonData);
+  maxParticleCount=json.readValue("maxParticleCount",Integer.class,jsonData);
+}

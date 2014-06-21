@@ -1,0 +1,6 @@
+{
+  for (int i=0, c=channel.data.length; i < c; i+=channel.strideSize) {
+    channel.data[i + ParticleChannels.CosineOffset]=1;
+    channel.data[i + ParticleChannels.SineOffset]=0;
+  }
+}

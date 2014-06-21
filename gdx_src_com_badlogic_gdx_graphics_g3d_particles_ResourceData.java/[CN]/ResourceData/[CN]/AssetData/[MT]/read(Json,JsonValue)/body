@@ -1,0 +1,10 @@
+{
+  try {
+    filename=json.readValue("filename",String.class,jsonData);
+    String className=json.readValue("type",String.class,jsonData);
+    type=(Class<T>)Class.forName(className);
+  }
+ catch (  ClassNotFoundException e) {
+    e.printStackTrace();
+  }
+}

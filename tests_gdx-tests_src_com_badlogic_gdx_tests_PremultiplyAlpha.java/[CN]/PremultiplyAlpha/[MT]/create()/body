@@ -1,0 +1,8 @@
+{
+  Pixmap.setBlending(Blending.None);
+  Pixmap.setFilter(Filter.NearestNeighbour);
+  String in="C:\\Users\\Inferno\\Documents\\backup OSX\\elflab\\assets\\text_in\\debug\\particle.png", out="C:\\Users\\Inferno\\Documents\\backup OSX\\elflab\\assets\\text_in\\debug\\pre_particle.png";
+  System.out.println("Converting " + in);
+  imageIOPremultiplyAlpha(in,out);
+  System.out.println("Conversion done!");
+}

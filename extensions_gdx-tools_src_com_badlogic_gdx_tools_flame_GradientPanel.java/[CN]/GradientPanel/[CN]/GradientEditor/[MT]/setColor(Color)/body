@@ -1,0 +1,5 @@
+{
+  if (selectedIndex == -1)   return;
+  colors.set(selectedIndex,color);
+  repaint();
+}

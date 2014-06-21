@@ -1,0 +1,5 @@
+{
+  super(rotation);
+  strengthValue=new ScaledNumericValue();
+  strengthValue.load(rotation.strengthValue);
+}

@@ -1,0 +1,6 @@
+{
+  super.allocateChannels();
+  ParticleChannels.Interpolation.id=controller.particleChannels.newId();
+  alphaInterpolationChannel=controller.particles.addChannel(ParticleChannels.Interpolation);
+  lifeChannel=controller.particles.addChannel(ParticleChannels.Life);
+}

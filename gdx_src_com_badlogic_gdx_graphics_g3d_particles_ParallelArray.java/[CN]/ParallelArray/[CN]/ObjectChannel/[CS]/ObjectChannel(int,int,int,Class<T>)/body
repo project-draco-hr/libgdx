@@ -1,0 +1,4 @@
+{
+  super(id,ArrayReflection.newInstance(type,size * strideSize),strideSize);
+  this.data=(T[])super.data;
+}

@@ -1,0 +1,6 @@
+{
+  transform=new Matrix4();
+  scale=new Vector3(1,1,1);
+  influencers=new Array<Influencer>(true,3,Influencer.class);
+  setTimeStep(DEFAULT_TIME_STEP);
+}
