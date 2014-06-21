@@ -1,0 +1,4 @@
+{
+  super.activate();
+  if (value != null)   value.setActive(activeButton.isSelected());
+}

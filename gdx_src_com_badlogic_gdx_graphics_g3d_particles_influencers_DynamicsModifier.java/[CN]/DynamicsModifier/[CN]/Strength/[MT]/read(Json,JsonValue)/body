@@ -1,0 +1,4 @@
+{
+  super.read(json,jsonData);
+  strengthValue=json.readValue("strengthValue",ScaledNumericValue.class,jsonData);
+}

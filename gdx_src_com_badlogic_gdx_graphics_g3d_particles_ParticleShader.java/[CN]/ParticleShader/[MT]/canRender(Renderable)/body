@@ -1,0 +1,3 @@
+{
+  return (materialMask == (renderable.material.getMask() | optionalAttributes)) && (vertexMask == renderable.mesh.getVertexAttributes().getMask());
+}

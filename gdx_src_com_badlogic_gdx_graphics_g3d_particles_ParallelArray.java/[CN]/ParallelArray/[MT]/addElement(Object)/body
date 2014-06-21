@@ -1,0 +1,9 @@
+{
+  if (size == capacity)   throw new GdxRuntimeException("Capacity reached, cannot add other elements");
+  int k=0;
+  for (  Channel strideArray : arrays) {
+    strideArray.add(k,values);
+    k+=strideArray.strideSize;
+  }
+  ++size;
+}

@@ -1,0 +1,6 @@
+{
+  uniqueData=new ObjectMap<String,SaveData>();
+  data=new Array<SaveData>(true,3,SaveData.class);
+  sharedAssets=new Array<AssetData>();
+  currentLoadIndex=0;
+}

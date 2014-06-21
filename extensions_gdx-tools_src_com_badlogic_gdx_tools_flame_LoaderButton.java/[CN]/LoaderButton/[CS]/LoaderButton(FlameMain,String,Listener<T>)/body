@@ -1,0 +1,11 @@
+{
+  super(text);
+  this.editor=editor;
+  this.listener=listener;
+  addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      loadResource();
+    }
+  }
+);
+}

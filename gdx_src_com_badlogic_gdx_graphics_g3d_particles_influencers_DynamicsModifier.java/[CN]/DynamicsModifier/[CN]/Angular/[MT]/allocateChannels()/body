@@ -1,0 +1,5 @@
+{
+  super.allocateChannels();
+  ParticleChannels.Interpolation4.id=controller.particleChannels.newId();
+  angularChannel=controller.particles.addChannel(ParticleChannels.Interpolation4);
+}

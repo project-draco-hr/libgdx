@@ -1,0 +1,8 @@
+{
+  ParticleController controller=createBillboardController(colors,particleTexture);
+  controller.init();
+  controller.start();
+  emitters.add(controller);
+  controller.translate(translation);
+  ui.addAction(new RotationAction(controller,actionAxis,actionRotation));
+}

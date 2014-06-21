@@ -1,0 +1,14 @@
+{
+  super("Premultiply alpha converter");
+  addWindowListener(new WindowAdapter(){
+    public void windowClosed(    WindowEvent event){
+      System.exit(0);
+    }
+  }
+);
+  initializeComponents();
+  pack();
+  setLocationRelativeTo(null);
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  setVisible(true);
+}
