@@ -1,0 +1,23 @@
+{
+  if (renderInvisibleActors || isActorVisible(actor)) {
+    if (renderGroups || !(actor instanceof Group)) {
+      topLeft.set(0,actor.getHeight());
+      topRight.set(actor.getWidth(),actor.getHeight());
+      bottomRight.set(actor.getWidth(),0);
+      bottomLeft.set(0,0);
+      actor.localToStageCoordinates(topLeft);
+      actor.localToStageCoordinates(topRight);
+      actor.localToStageCoordinates(bottomRight);
+      actor.localToStageCoordinates(bottomLeft);
+      shapeRenderer.line(topLeft,topRight);
+      shapeRenderer.line(topRight,bottomRight);
+      shapeRenderer.line(bottomRight,bottomLeft);
+      shapeRenderer.line(bottomLeft,topLeft);
+    }
+  }
+  if (actor instanceof Group) {
+    for (    Actor child : ((Group)actor).getChildren()) {
+      render(child);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  Actor currentActor=actor;
+  while (currentActor != null) {
+    if (currentActor.isVisible() == false) {
+      return false;
+    }
+ else {
+      currentActor=currentActor.getParent();
+    }
+  }
+  return true;
+}
