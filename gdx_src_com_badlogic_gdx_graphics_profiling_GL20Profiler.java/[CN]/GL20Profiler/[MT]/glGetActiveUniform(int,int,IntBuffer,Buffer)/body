@@ -1,0 +1,4 @@
+{
+  calls++;
+  return gl20.glGetActiveUniform(program,index,size,type);
+}
