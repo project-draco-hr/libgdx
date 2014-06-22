@@ -9,6 +9,12 @@
       actor.localToStageCoordinates(topRight);
       actor.localToStageCoordinates(bottomRight);
       actor.localToStageCoordinates(bottomLeft);
+      if (actor instanceof Group) {
+        shapeRenderer.setColor(groupColor);
+      }
+ else {
+        shapeRenderer.setColor(actorColor);
+      }
       shapeRenderer.line(topLeft,topRight);
       shapeRenderer.line(topRight,bottomRight);
       shapeRenderer.line(bottomRight,bottomLeft);
