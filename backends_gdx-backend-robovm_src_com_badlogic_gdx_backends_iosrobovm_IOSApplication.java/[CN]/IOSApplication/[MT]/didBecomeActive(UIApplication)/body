@@ -1,5 +1,6 @@
 {
   Gdx.app.debug("IOSApplication","resumed");
+  OALAudioSession.sharedInstance().forceEndInterruption();
   graphics.makeCurrent();
   graphics.resume();
 }
