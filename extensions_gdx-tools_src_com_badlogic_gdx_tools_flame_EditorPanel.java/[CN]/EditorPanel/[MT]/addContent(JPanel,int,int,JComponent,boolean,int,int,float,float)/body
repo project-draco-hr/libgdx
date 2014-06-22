@@ -1,0 +1,4 @@
+{
+  if (addBorders)   component.setBorder(BorderFactory.createMatteBorder(0,0,1,0,java.awt.Color.black));
+  panel.add(component,new GridBagConstraints(column,row,1,1,wx,wy,anchor,fill,new Insets(0,0,0,0),0,0));
+}

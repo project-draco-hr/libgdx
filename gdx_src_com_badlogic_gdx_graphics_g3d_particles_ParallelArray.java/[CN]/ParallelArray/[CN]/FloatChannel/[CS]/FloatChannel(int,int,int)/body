@@ -1,0 +1,4 @@
+{
+  super(id,new float[size * strideSize],strideSize);
+  this.data=(float[])super.data;
+}

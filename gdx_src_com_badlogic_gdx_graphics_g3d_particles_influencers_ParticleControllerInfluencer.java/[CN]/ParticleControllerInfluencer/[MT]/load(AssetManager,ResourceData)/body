@@ -1,0 +1,15 @@
+{
+  SaveData data=resources.getSaveData();
+  Array<Array<Integer>> effectsIndices=data.load("indices");
+  AssetDescriptor descriptor;
+  Iterator<Array<Integer>> iterator=effectsIndices.iterator();
+  while ((descriptor=data.loadAsset()) != null) {
+    ParticleEffect effect=(ParticleEffect)manager.get(descriptor);
+    if (effect == null)     throw new RuntimeException("Template is null");
+    Array<ParticleController> effectControllers=effect.getControllers();
+    Array<Integer> effectIndices=iterator.next();
+    for (    Integer index : effectIndices) {
+      templates.add(effectControllers.get(index));
+    }
+  }
+}

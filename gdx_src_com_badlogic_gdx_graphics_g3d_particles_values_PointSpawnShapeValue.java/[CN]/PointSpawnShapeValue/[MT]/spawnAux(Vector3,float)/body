@@ -1,0 +1,5 @@
+{
+  vector.x=spawnWidth + (spawnWidthDiff * spawnWidthValue.getScale(percent));
+  vector.y=spawnHeight + (spawnHeightDiff * spawnHeightValue.getScale(percent));
+  vector.z=spawnDepth + (spawnDepthDiff * spawnDepthValue.getScale(percent));
+}

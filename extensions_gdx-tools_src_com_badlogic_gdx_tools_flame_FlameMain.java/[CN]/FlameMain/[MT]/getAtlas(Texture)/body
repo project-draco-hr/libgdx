@@ -1,0 +1,7 @@
+{
+  Array<TextureAtlas> atlases=assetManager.getAll(TextureAtlas.class,new Array<TextureAtlas>());
+  for (  TextureAtlas atlas : atlases) {
+    if (atlas.getTextures().contains(texture))     return atlas;
+  }
+  return null;
+}

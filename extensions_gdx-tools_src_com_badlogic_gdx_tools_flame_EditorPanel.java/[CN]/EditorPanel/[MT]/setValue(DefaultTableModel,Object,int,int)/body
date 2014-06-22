@@ -1,0 +1,10 @@
+{
+  TableModelListener[] listeners=tableModel.getTableModelListeners();
+  TableModelListener listener=null;
+  if (listeners != null && listeners.length > 0) {
+    listener=listeners[0];
+    tableModel.removeTableModelListener(listener);
+  }
+  tableModel.setValueAt(value,row,column);
+  if (listener != null)   tableModel.addTableModelListener(listener);
+}

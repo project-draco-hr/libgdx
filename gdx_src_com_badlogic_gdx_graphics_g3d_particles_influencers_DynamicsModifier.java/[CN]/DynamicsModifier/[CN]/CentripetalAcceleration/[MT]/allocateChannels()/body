@@ -1,0 +1,5 @@
+{
+  super.allocateChannels();
+  accelerationChannel=controller.particles.addChannel(ParticleChannels.Acceleration);
+  positionChannel=controller.particles.addChannel(ParticleChannels.Position);
+}

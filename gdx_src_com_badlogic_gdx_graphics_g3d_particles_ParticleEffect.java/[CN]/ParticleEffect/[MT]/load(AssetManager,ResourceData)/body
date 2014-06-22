@@ -1,0 +1,6 @@
+{
+  int i=0;
+  for (  ParticleController controller : controllers) {
+    controller.load(assetManager,data);
+  }
+}

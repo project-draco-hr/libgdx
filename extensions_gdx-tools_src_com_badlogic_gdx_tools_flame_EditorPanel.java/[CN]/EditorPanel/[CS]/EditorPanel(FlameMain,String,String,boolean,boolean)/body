@@ -1,0 +1,9 @@
+{
+  this.editor=editor;
+  this.name=name;
+  this.description=description;
+  this.isRemovable=isRemovable;
+  this.isAlwaysActive=alwaysActive;
+  initializeComponents();
+  showContent(false);
+}

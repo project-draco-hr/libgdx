@@ -1,0 +1,5 @@
+{
+  super.setValue(value);
+  if (value == null)   return;
+  chart.setValues(this.value.getTimeline(),this.value.getScaling());
+}
