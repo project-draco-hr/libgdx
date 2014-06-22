@@ -3,9 +3,9 @@
   if (obj == null)   return false;
   if (getClass() != obj.getClass())   return false;
   Rectangle other=(Rectangle)obj;
-  if (Float.floatToIntBits(height) != NumberUtils.floatToIntBits(other.height))   return false;
-  if (Float.floatToIntBits(width) != NumberUtils.floatToIntBits(other.width))   return false;
-  if (Float.floatToIntBits(x) != NumberUtils.floatToIntBits(other.x))   return false;
-  if (Float.floatToIntBits(y) != NumberUtils.floatToIntBits(other.y))   return false;
+  if (Float.floatToRawIntBits(height) != NumberUtils.floatToRawIntBits(other.height))   return false;
+  if (Float.floatToRawIntBits(width) != NumberUtils.floatToRawIntBits(other.width))   return false;
+  if (Float.floatToRawIntBits(x) != NumberUtils.floatToRawIntBits(other.x))   return false;
+  if (Float.floatToRawIntBits(y) != NumberUtils.floatToRawIntBits(other.y))   return false;
   return true;
 }
