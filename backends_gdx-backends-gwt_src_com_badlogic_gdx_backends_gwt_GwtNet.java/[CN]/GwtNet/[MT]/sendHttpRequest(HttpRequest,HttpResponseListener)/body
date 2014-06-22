@@ -3,18 +3,31 @@
     httpResultListener.failed(new GdxRuntimeException("can't process a HTTP request without URL set"));
     return;
   }
-  final boolean is_get=(httpRequest.getMethod() == HttpMethods.GET);
+  final String method=httpRequest.getMethod();
   final String value=httpRequest.getContent();
+  final boolean valueInBody=method.equalsIgnoreCase(HttpMethods.POST) || method.equals(HttpMethods.PUT);
   RequestBuilder builder;
   String url=httpRequest.getUrl();
-  if (is_get) {
+  if (method.equalsIgnoreCase(HttpMethods.GET)) {
     if (value != null) {
       url+="?" + value;
     }
     builder=new RequestBuilder(RequestBuilder.GET,url);
   }
- else {
+ else   if (method.equalsIgnoreCase(HttpMethods.POST)) {
     builder=new RequestBuilder(RequestBuilder.POST,url);
+  }
+ else   if (method.equalsIgnoreCase(HttpMethods.DELETE)) {
+    if (value != null) {
+      url+="?" + value;
+    }
+    builder=new RequestBuilder(RequestBuilder.DELETE,url);
+  }
+ else   if (method.equalsIgnoreCase(HttpMethods.PUT)) {
+    builder=new RequestBuilder(RequestBuilder.PUT,url);
+  }
+ else {
+    throw new GdxRuntimeException("Unsupported HTTP Method");
   }
   Map<String,String> content=httpRequest.getHeaders();
   Set<String> keySet=content.keySet();
@@ -23,7 +36,7 @@
   }
   builder.setTimeoutMillis(httpRequest.getTimeOut());
   try {
-    Request request=builder.sendRequest(is_get ? null : value,new RequestCallback(){
+    Request request=builder.sendRequest(valueInBody ? value : null,new RequestCallback(){
       @Override public void onResponseReceived(      Request request,      Response response){
         httpResultListener.handleHttpResponse(new HttpClientResponse(response));
         requests.remove(httpRequest);
