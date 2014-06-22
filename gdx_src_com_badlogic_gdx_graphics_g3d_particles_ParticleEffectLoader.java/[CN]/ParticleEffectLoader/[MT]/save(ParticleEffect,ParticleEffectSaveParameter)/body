@@ -13,7 +13,6 @@
       if (save)       batch.save(parameter.manager,data);
     }
   }
-  Writer fileWriter=new FileWriter(parameter.file);
   Json json=new Json();
-  json.toJson(data,fileWriter);
+  json.toJson(data,parameter.file);
 }

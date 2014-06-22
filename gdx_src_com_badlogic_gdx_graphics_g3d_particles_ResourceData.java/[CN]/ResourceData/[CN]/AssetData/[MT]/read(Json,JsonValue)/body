@@ -1,10 +1,10 @@
 {
+  filename=json.readValue("filename",String.class,jsonData);
+  String className=json.readValue("type",String.class,jsonData);
   try {
-    filename=json.readValue("filename",String.class,jsonData);
-    String className=json.readValue("type",String.class,jsonData);
-    type=(Class<T>)Class.forName(className);
+    type=(Class<T>)ClassReflection.forName(className);
   }
- catch (  ClassNotFoundException e) {
-    e.printStackTrace();
+ catch (  ReflectionException e) {
+    throw new GdxRuntimeException("Class not found: " + className,e);
   }
 }

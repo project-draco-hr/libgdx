@@ -2,7 +2,7 @@
   Writer fileWriter=null;
   try {
     ParticleEffectLoader loader=(ParticleEffectLoader)assetManager.getLoader(ParticleEffect.class);
-    loader.save(effect,new ParticleEffectSaveParameter(file,assetManager,particleSystem.getBatches()));
+    loader.save(effect,new ParticleEffectSaveParameter(new FileHandle(file.getAbsolutePath()),assetManager,particleSystem.getBatches()));
   }
  catch (  Exception ex) {
     System.out.println("Error saving effect: " + file.getAbsolutePath());
