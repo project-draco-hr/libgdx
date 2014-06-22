@@ -1,0 +1,11 @@
+{
+  super(editor,"","");
+  this.type=type;
+  this.listener=listener;
+  this.isOneModelSelectedRequired=isOneModelSelectedRequired;
+  this.isMultipleSelectionAllowed=isMultipleSelectionAllowed;
+  loadedTemplates=new Array<T>();
+  excludedTemplates=new Array<T>();
+  initializeComponents(type,loaderButton);
+  setValue(value);
+}

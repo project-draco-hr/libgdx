@@ -1,0 +1,11 @@
+{
+  bind();
+  if (particles != null) {
+    end();
+    particleChannels.resetIds();
+  }
+  allocateChannels(emitter.maxParticleCount);
+  emitter.init();
+  for (  Influencer influencer : influencers)   influencer.init();
+  renderer.init();
+}

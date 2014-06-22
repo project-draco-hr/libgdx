@@ -1,0 +1,5 @@
+{
+  super.read(json,jsonData);
+  thetaValue=json.readValue("thetaValue",ScaledNumericValue.class,jsonData);
+  phiValue=json.readValue("phiValue",ScaledNumericValue.class,jsonData);
+}

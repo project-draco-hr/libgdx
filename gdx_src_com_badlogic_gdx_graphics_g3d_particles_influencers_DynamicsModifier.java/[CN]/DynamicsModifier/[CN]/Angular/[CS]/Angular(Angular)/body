@@ -1,0 +1,7 @@
+{
+  super(value);
+  thetaValue=new ScaledNumericValue();
+  phiValue=new ScaledNumericValue();
+  thetaValue.load(value.thetaValue);
+  phiValue.load(value.phiValue);
+}

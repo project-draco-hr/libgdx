@@ -1,0 +1,8 @@
+{
+  this();
+  this.name=name;
+  this.emitter=emitter;
+  this.renderer=renderer;
+  this.particleChannels=new ParticleChannels();
+  this.influencers=new Array<Influencer>(influencers);
+}

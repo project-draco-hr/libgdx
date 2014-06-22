@@ -1,0 +1,5 @@
+{
+  super.write(json);
+  json.writeValue("lowMin",lowMin);
+  json.writeValue("lowMax",lowMax);
+}

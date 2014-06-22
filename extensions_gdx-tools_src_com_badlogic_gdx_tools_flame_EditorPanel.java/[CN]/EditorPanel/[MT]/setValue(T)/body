@@ -1,0 +1,5 @@
+{
+  this.value=value;
+  activeButton.setVisible(value == null ? false : !isAlwaysActive);
+  removeButton.setVisible(isRemovable);
+}
