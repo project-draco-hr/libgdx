@@ -1,6 +1,6 @@
 {
   final Pointer pt=getPointerById(pointer);
-  if (pt == null || pt.id < 0)   return false;
+  if (pt.id < 0)   return false;
   --pointersCount;
   pt.touchUp();
   if (inTapSquare && !isWithinTapSquare(x,y,tapSquareCenterX,tapSquareCenterY))   inTapSquare=false;

@@ -11,5 +11,5 @@
  else   if (pointer2.id < 0) {
     return pointer2;
   }
-  return null;
+  return Pointer.NO_POINTER;
 }

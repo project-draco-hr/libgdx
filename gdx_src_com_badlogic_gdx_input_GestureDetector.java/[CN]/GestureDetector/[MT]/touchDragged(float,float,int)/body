@@ -1,6 +1,6 @@
 {
   final Pointer pt=getPointerById(pointer);
-  if (pt == null)   return false;
+  if (pt == Pointer.NO_POINTER)   return false;
   if (longPressFired)   return false;
   pt.pos.set(x,y);
   if (pinching) {
