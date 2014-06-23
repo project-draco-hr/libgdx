@@ -1,5 +1,5 @@
 {
-  Cell cell=obtainCell();
+  Cell<T> cell=obtainCell();
   cell.actor=actor;
   Array<Cell> cells=this.cells;
   int cellCount=cells.size;
