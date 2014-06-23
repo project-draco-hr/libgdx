@@ -1,0 +1,6 @@
+{
+  super(editor,influencer,"Spawn Influencer","Define where the particles are spawned.",true,false);
+  setValue(influencer);
+  setCurrentSpawnData(influencer.spawnShapeValue);
+  shapeCombo.setSelectedItem(spawnShapeToString(influencer.spawnShapeValue));
+}

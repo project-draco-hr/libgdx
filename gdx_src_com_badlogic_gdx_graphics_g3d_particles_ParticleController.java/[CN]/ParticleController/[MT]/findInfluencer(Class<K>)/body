@@ -1,0 +1,4 @@
+{
+  int index=findIndex(influencerClass);
+  return index > -1 ? (K)influencers.get(index) : null;
+}

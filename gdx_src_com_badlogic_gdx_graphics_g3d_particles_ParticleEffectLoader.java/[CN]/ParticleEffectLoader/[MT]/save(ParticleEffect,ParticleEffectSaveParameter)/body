@@ -1,0 +1,18 @@
+{
+  ResourceData<ParticleEffect> data=new ResourceData<ParticleEffect>(effect);
+  effect.save(parameter.manager,data);
+  if (parameter.batches != null) {
+    for (    ParticleBatch<?> batch : parameter.batches) {
+      boolean save=false;
+      for (      ParticleController controller : effect.getControllers()) {
+        if (controller.renderer.isCompatible(batch)) {
+          save=true;
+          break;
+        }
+      }
+      if (save)       batch.save(parameter.manager,data);
+    }
+  }
+  Json json=new Json();
+  json.toJson(data,parameter.file);
+}

@@ -1,0 +1,72 @@
+{
+  setPreferredSize(new Dimension(100,30));
+  addMouseListener(new MouseAdapter(){
+    public void mousePressed(    MouseEvent event){
+      dragIndex=-1;
+      int mouseX=event.getX();
+      int mouseY=event.getY();
+      int y=gradientY + gradientHeight;
+      for (int i=0, n=colors.size(); i < n; i++) {
+        int x=gradientX + (int)(percentages.get(i) * gradientWidth) - handleWidth / 2;
+        if (mouseX >= x && mouseX <= x + handleWidth && mouseY >= gradientY && mouseY <= y + handleHeight) {
+          dragIndex=selectedIndex=i;
+          handleSelected(colors.get(selectedIndex));
+          repaint();
+          break;
+        }
+      }
+    }
+    public void mouseReleased(    MouseEvent event){
+      if (dragIndex != -1) {
+        dragIndex=-1;
+        repaint();
+      }
+    }
+    public void mouseClicked(    MouseEvent event){
+      int mouseX=event.getX();
+      int mouseY=event.getY();
+      if (event.getClickCount() == 2) {
+        if (percentages.size() <= 1)         return;
+        if (selectedIndex == -1 || selectedIndex == 0)         return;
+        int y=gradientY + gradientHeight;
+        int x=gradientX + (int)(percentages.get(selectedIndex) * gradientWidth) - handleWidth / 2;
+        if (mouseX >= x && mouseX <= x + handleWidth && mouseY >= gradientY && mouseY <= y + handleHeight) {
+          percentages.remove(selectedIndex);
+          colors.remove(selectedIndex);
+          selectedIndex--;
+          dragIndex=selectedIndex;
+          if (percentages.size() == 2)           percentages.set(1,1f);
+          handleSelected(colors.get(selectedIndex));
+          repaint();
+        }
+        return;
+      }
+      if (mouseX < gradientX || mouseX > gradientX + gradientWidth)       return;
+      if (mouseY < gradientY || mouseY > gradientY + gradientHeight)       return;
+      float percent=(event.getX() - gradientX) / (float)gradientWidth;
+      if (percentages.size() == 1)       percent=1f;
+      for (int i=0, n=percentages.size(); i <= n; i++) {
+        if (i == n || percent < percentages.get(i)) {
+          percentages.add(i,percent);
+          colors.add(i,colors.get(i - 1));
+          dragIndex=selectedIndex=i;
+          handleSelected(colors.get(selectedIndex));
+          repaint();
+          break;
+        }
+      }
+    }
+  }
+);
+  addMouseMotionListener(new MouseMotionAdapter(){
+    public void mouseDragged(    MouseEvent event){
+      if (dragIndex == -1 || dragIndex == 0 || dragIndex == percentages.size() - 1)       return;
+      float percent=(event.getX() - gradientX) / (float)gradientWidth;
+      percent=Math.max(percent,percentages.get(dragIndex - 1) + 0.01f);
+      percent=Math.min(percent,percentages.get(dragIndex + 1) - 0.01f);
+      percentages.set(dragIndex,percent);
+      repaint();
+    }
+  }
+);
+}

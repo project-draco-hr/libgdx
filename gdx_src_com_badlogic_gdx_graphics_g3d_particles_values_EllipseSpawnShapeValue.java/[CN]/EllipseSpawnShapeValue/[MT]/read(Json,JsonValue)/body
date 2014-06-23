@@ -1,0 +1,4 @@
+{
+  super.read(json,jsonData);
+  side=json.readValue("side",SpawnSide.class,jsonData);
+}

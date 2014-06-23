@@ -1,0 +1,10 @@
+{
+  ActionListener[] listeners=checkBox.getActionListeners();
+  ActionListener listener=null;
+  if (listeners != null && listeners.length > 0) {
+    listener=listeners[0];
+    checkBox.removeActionListener(listener);
+  }
+  checkBox.setSelected(isSelected);
+  if (listener != null)   checkBox.addActionListener(listener);
+}

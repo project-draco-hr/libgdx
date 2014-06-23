@@ -1,0 +1,11 @@
+{
+  String prefix="";
+  if (Gdx.app.getType() == ApplicationType.Desktop)   prefix+="#version 120\n";
+ else   prefix+="#version 100\n";
+  if (config.type == ParticleType.Billboard) {
+    prefix+="#define billboard\n";
+    if (config.align == AlignMode.Screen)     prefix+="#define screenFacing\n";
+ else     if (config.align == AlignMode.ViewPoint)     prefix+="#define viewPointFacing\n";
+  }
+  return prefix;
+}
