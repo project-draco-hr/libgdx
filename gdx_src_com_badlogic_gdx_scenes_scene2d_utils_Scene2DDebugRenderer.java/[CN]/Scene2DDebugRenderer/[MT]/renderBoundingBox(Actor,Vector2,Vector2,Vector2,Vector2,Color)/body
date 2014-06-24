@@ -1,0 +1,11 @@
+{
+  actor.localToStageCoordinates(topLeft);
+  actor.localToStageCoordinates(topRight);
+  actor.localToStageCoordinates(bottomRight);
+  actor.localToStageCoordinates(bottomLeft);
+  shapeRenderer.setColor(color);
+  shapeRenderer.line(topLeft,topRight);
+  shapeRenderer.line(topRight,bottomRight);
+  shapeRenderer.line(bottomRight,bottomLeft);
+  shapeRenderer.line(bottomLeft,topLeft);
+}

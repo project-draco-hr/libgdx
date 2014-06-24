@@ -3,7 +3,7 @@
   shapeRenderer.setTransformMatrix(stage.getCamera().view);
   shapeRenderer.begin(ShapeType.Line);
   for (  Actor actor : stage.getActors()) {
-    render(actor);
+    renderRecursive(actor);
   }
   shapeRenderer.end();
 }

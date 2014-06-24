@@ -1,0 +1,32 @@
+{
+  if (renderInvisibleActors || isActorVisible(actor)) {
+    if (actor instanceof Table) {
+      Table table=(Table)actor;
+      if (renderTable) {
+        render(table);
+      }
+      for (      Cell<Actor> cell : table.getCells()) {
+        if (renderCells) {
+          render(cell);
+        }
+        if (cell.hasActor()) {
+          renderRecursive(cell.getActor());
+        }
+      }
+    }
+ else     if (actor instanceof Group) {
+      Group group=(Group)actor;
+      if (renderGroups) {
+        render(group);
+      }
+      for (      Actor child : group.getChildren()) {
+        renderRecursive(child);
+      }
+    }
+ else {
+      if (renderActors) {
+        render(actor);
+      }
+    }
+  }
+}

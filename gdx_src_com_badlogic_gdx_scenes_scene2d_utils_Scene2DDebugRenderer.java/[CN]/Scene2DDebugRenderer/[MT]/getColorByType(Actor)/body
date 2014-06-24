@@ -1,0 +1,10 @@
+{
+  Color color;
+  if (actor instanceof Group) {
+    color=groupColor;
+  }
+ else {
+    color=actorColor;
+  }
+  return color;
+}
