@@ -5,6 +5,7 @@
   skin.getAtlas().getTextures().iterator().next().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
   skin.getFont("default-font").setMarkupEnabled(true);
   stage=new Stage();
+  debugRenderer=new Scene2DDebugRenderer(stage);
   Gdx.input.setInputProcessor(stage);
   Table table=new Table();
   stage.addActor(table);

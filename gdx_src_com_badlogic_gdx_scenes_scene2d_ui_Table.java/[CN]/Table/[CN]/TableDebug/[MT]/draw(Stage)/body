@@ -1,6 +1,0 @@
-{
-  if (app != Gdx.app)   debugRenderer=new ImmediateModeRenderer20(128,false,true,0);
-  debugRenderer.begin(stage.getBatch().getProjectionMatrix(),GL20.GL_LINES);
-  draw(stage.getActors());
-  debugRenderer.end();
-}

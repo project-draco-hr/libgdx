@@ -1,7 +1,10 @@
 {
   this.debug=debug;
   if (debug == Debug.none) {
-    if (debugRects != null)     debugRects.clear();
+    if (debugRects != null) {
+      Scene2DDebugRenderer.debugRectPool.freeAll(debugRects);
+      debugRects.clear();
+    }
   }
  else   invalidate();
   return this;

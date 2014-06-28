@@ -1,8 +1,0 @@
-{
-  topLeft.set(0,actor.getHeight());
-  topRight.set(actor.getWidth(),actor.getHeight());
-  bottomRight.set(actor.getWidth(),0);
-  bottomLeft.set(0,0);
-  Color color=getColorByType(actor);
-  renderBoundingBox(actor,topLeft,topRight,bottomRight,bottomLeft,color);
-}

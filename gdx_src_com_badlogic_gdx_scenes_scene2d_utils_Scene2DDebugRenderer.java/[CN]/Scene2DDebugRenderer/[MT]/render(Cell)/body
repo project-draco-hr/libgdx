@@ -1,8 +1,0 @@
-{
-  Table table=cell.getTable();
-  topLeft.set(cell.getActorX() - cell.getPadLeft(),cell.getActorY() + cell.getActorHeight() + cell.getPadTop());
-  topRight.set(cell.getActorX() + cell.getActorWidth() + cell.getPadRight(),cell.getActorY() + cell.getActorHeight() + cell.getPadTop());
-  bottomRight.set(cell.getActorX() + cell.getActorWidth() + cell.getPadRight(),cell.getActorY() - cell.getPadBottom());
-  bottomLeft.set(cell.getActorX() - cell.getPadLeft(),cell.getActorY() - cell.getPadBottom());
-  renderBoundingBox(table,topLeft,topRight,bottomRight,bottomLeft,cellColor);
-}
