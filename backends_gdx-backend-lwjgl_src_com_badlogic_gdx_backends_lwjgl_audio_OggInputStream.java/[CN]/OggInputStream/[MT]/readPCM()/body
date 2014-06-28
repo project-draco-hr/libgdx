@@ -61,8 +61,8 @@
                   }
                 }
                 int bytesToWrite=2 * oggInfo.channels * bout;
-                if (bytesToWrite >= pcmBuffer.remaining()) {
-                  throw new GdxRuntimeException("Ogg block too big to be buffered: " + bytesToWrite);
+                if (bytesToWrite > pcmBuffer.remaining()) {
+                  throw new GdxRuntimeException("Ogg block too big to be buffered: " + bytesToWrite + " :: "+ pcmBuffer.remaining());
                 }
  else {
                   pcmBuffer.put(convbuffer,0,bytesToWrite);

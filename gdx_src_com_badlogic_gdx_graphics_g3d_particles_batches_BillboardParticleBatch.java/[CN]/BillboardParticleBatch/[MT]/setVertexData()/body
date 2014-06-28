@@ -1,0 +1,10 @@
+{
+  if (useGPU) {
+    currentAttributes=GPU_ATTRIBUTES;
+    currentVertexSize=GPU_VERTEX_SIZE;
+  }
+ else {
+    currentAttributes=CPU_ATTRIBUTES;
+    currentVertexSize=CPU_VERTEX_SIZE;
+  }
+}

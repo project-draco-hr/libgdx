@@ -97,17 +97,19 @@
     data.setGlyph(c,glyph);
     pixmap.dispose();
   }
-  for (int i=0; i < parameter.characters.length(); i++) {
-    for (int j=0; j < parameter.characters.length(); j++) {
-      char firstChar=parameter.characters.charAt(i);
-      Glyph first=data.getGlyph(firstChar);
-      if (first == null)       continue;
-      char secondChar=parameter.characters.charAt(j);
-      Glyph second=data.getGlyph(secondChar);
-      if (second == null)       continue;
-      int kerning=FreeType.getKerning(face,FreeType.getCharIndex(face,firstChar),FreeType.getCharIndex(face,secondChar),0);
-      if (kerning == 0)       continue;
-      first.setKerning(secondChar,FreeType.toInt(kerning));
+  if (parameter.kerning) {
+    for (int i=0; i < parameter.characters.length(); i++) {
+      for (int j=0; j < parameter.characters.length(); j++) {
+        char firstChar=parameter.characters.charAt(i);
+        Glyph first=data.getGlyph(firstChar);
+        if (first == null)         continue;
+        char secondChar=parameter.characters.charAt(j);
+        Glyph second=data.getGlyph(secondChar);
+        if (second == null)         continue;
+        int kerning=FreeType.getKerning(face,FreeType.getCharIndex(face,firstChar),FreeType.getCharIndex(face,secondChar),0);
+        if (kerning == 0)         continue;
+        first.setKerning(secondChar,FreeType.toInt(kerning));
+      }
     }
   }
   if (ownsAtlas) {

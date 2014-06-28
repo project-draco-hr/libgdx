@@ -1,0 +1,11 @@
+{
+  int row=velocityTable.getSelectedRow();
+  if (row == -1)   return;
+  ParticleController controller=editor.getEmitter();
+  DynamicsInfluencer influencer=(DynamicsInfluencer)controller.findInfluencer(DynamicsInfluencer.class);
+  influencer.velocities.removeValue(velocities.removeIndex(row).velocityValue,true);
+  velocityTableModel.removeRow(row);
+  editor.restart();
+  selectedVelocityPanel.setVisible(false);
+  selectedVelocityPanel=null;
+}

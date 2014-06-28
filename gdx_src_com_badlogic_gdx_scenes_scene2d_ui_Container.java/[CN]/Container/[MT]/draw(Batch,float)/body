@@ -1,6 +1,5 @@
 {
   validate();
-  if (actor == null)   return;
   if (isTransform()) {
     applyTransform(batch,computeTransform());
     drawBackground(batch,parentAlpha,0,0);
