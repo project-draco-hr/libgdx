@@ -147,8 +147,8 @@
   currentX=x;
   currentY=y;
   if (debug == Debug.table || debug == Debug.all) {
-    addDebugRect(layoutX,layoutY,layoutWidth,layoutHeight,tableColor);
-    addDebugRect(x,y,tableWidth - hpadding,tableHeight - vpadding,tableColor);
+    addDebugRect(layoutX,layoutY,layoutWidth,layoutHeight,debugColor);
+    addDebugRect(x,y,tableWidth - hpadding,tableHeight - vpadding,debugColor);
   }
   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
@@ -158,7 +158,7 @@
     spannedCellWidth-=c.computedPadLeft + c.computedPadRight;
     currentX+=c.computedPadLeft;
     if (debug == Debug.cell || debug == Debug.all) {
-      addDebugRect(currentX,currentY + c.computedPadTop,spannedCellWidth,rowHeight[c.row] - c.computedPadTop - c.computedPadBottom,cellColor);
+      addDebugRect(currentX,currentY + c.computedPadTop,spannedCellWidth,rowHeight[c.row] - c.computedPadTop - c.computedPadBottom,debugCellColor);
     }
     if (c.endRow) {
       currentX=x;

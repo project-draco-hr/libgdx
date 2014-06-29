@@ -9,11 +9,11 @@
       renderBoundingBox(actor,topLeft,topRight,bottomRight,bottomLeft,debugRect.color);
     }
     debugRects.clear();
-    if (actor instanceof Group) {
-      Group group=(Group)actor;
-      for (      Actor child : group.getChildren()) {
-        renderRecursive(child);
-      }
+  }
+  if (actor instanceof Group) {
+    Group group=(Group)actor;
+    for (    Actor child : group.getChildren()) {
+      renderRecursive(child);
     }
   }
 }
