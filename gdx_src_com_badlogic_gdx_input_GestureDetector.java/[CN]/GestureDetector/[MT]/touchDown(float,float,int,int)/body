@@ -1,31 +1,23 @@
 {
-  if (pointer > 1)   return false;
-  if (pointer == 0) {
-    pointer1.set(x,y);
+  final Pointer pt=getPointerById(pointer);
+  if (pt == Pointer.NO_POINTER)   return false;
+  ++pointersCount;
+  pt.touchDown(x,y,pointer);
+  if (pointersCount == 1) {
     gestureStartTime=Gdx.input.getCurrentEventTime();
     tracker.start(x,y,gestureStartTime);
-    if (Gdx.input.isTouched(1)) {
-      inTapSquare=false;
-      pinching=true;
-      initialPointer1.set(pointer1);
-      initialPointer2.set(pointer2);
-      longPressTask.cancel();
-    }
- else {
-      inTapSquare=true;
-      pinching=false;
-      longPressFired=false;
-      tapSquareCenterX=x;
-      tapSquareCenterY=y;
-      if (!longPressTask.isScheduled())       Timer.schedule(longPressTask,longPressSeconds);
-    }
+    inTapSquare=true;
+    pinching=false;
+    longPressFired=false;
+    tapSquareCenterX=x;
+    tapSquareCenterY=y;
+    if (!longPressTask.isScheduled())     Timer.schedule(longPressTask,longPressSeconds);
   }
  else {
-    pointer2.set(x,y);
     inTapSquare=false;
     pinching=true;
-    initialPointer1.set(pointer1);
-    initialPointer2.set(pointer2);
+    pointer1.startPinch();
+    pointer2.startPinch();
     longPressTask.cancel();
   }
   return listener.touchDown(x,y,pointer,button);
