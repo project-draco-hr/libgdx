@@ -7,4 +7,5 @@
     if (val.getValue() instanceof String)     putString(val.getKey(),(String)val.getValue());
     if (val.getValue() instanceof Float)     putFloat(val.getKey(),(Float)val.getValue());
   }
+  return this;
 }
