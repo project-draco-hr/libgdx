@@ -2,4 +2,5 @@
   for (  String key : vals.keySet()) {
     values.put(key,vals.get(key));
   }
+  return this;
 }
