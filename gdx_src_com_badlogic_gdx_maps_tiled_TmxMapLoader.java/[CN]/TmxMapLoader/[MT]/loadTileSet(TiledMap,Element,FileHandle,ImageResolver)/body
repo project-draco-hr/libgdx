@@ -72,7 +72,7 @@
       }
     }
     Array<Element> tileElements=element.getChildrenByName("tile");
-    HashMap<Integer,AnimatedTiledMapTile> animatedTiles=new HashMap<Integer,AnimatedTiledMapTile>();
+    Array<AnimatedTiledMapTile> animatedTiles=new Array<AnimatedTiledMapTile>();
     for (    Element tileElement : tileElements) {
       int localtid=tileElement.getIntAttribute("id",0);
       TiledMapTile tile=tileset.getTile(firstgid + localtid);
@@ -87,7 +87,7 @@
           }
           AnimatedTiledMapTile animatedTile=new AnimatedTiledMapTile(interval,staticTiles);
           animatedTile.setId(tile.getId());
-          animatedTiles.put(tile.getId(),animatedTile);
+          animatedTiles.add(animatedTile);
           tile=animatedTile;
         }
         String terrain=tileElement.getAttribute("terrain",null);
@@ -104,8 +104,8 @@
         }
       }
     }
-    for (    Entry<Integer,AnimatedTiledMapTile> entry : animatedTiles.entrySet()) {
-      tileset.putTile(entry.getKey(),entry.getValue());
+    for (    AnimatedTiledMapTile tile : animatedTiles) {
+      tileset.putTile(tile.getId(),tile);
     }
     Element properties=element.getChildByName("properties");
     if (properties != null) {
