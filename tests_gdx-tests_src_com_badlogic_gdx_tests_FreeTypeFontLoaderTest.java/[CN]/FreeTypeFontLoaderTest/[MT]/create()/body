@@ -1,0 +1,16 @@
+{
+  manager=new AssetManager();
+  FileHandleResolver resolver=new InternalFileHandleResolver();
+  manager.setLoader(FreeTypeFontGenerator.class,new FreeTypeFontGeneratorLoader(resolver));
+  manager.setLoader(BitmapFont.class,".ttf",new FreetypeFontLoader(resolver));
+  FreeTypeFontLoaderParameter size1Params=new FreeTypeFontLoaderParameter();
+  size1Params.fontFileName="data/arial.ttf";
+  size1Params.fontParameters.size=10;
+  manager.load("size10.ttf",BitmapFont.class,size1Params);
+  FreeTypeFontLoaderParameter size2Params=new FreeTypeFontLoaderParameter();
+  size2Params.fontFileName="data/arial.ttf";
+  size2Params.fontParameters.size=20;
+  manager.load("size20.ttf",BitmapFont.class,size2Params);
+  manager.load("data/default.fnt",BitmapFont.class);
+  batch=new SpriteBatch();
+}
