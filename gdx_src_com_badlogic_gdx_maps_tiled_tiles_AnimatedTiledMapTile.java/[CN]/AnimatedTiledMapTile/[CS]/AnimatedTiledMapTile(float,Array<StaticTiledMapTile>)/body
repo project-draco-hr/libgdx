@@ -1,5 +1,9 @@
 {
   this.frameTiles=frameTiles;
-  this.animationInterval=interval;
   this.frameCount=frameTiles.size;
+  this.loopDuration=(long)(frameTiles.size * interval * 1000f);
+  this.animationIntervals=new LongArray();
+  for (  StaticTiledMapTile tile : frameTiles) {
+    this.animationIntervals.add((long)(interval * 1000f));
+  }
 }

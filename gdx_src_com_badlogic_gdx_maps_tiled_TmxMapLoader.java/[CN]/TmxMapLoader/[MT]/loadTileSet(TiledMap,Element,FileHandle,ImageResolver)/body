@@ -79,13 +79,13 @@
       if (tile != null) {
         Element animationElement=tileElement.getChildByName("animation");
         if (animationElement != null) {
-          float interval=1;
           Array<StaticTiledMapTile> staticTiles=new Array<StaticTiledMapTile>();
+          LongArray intervals=new LongArray();
           for (          Element frameElement : animationElement.getChildrenByName("frame")) {
             staticTiles.add((StaticTiledMapTile)tileset.getTile(firstgid + frameElement.getIntAttribute("tileid")));
-            interval=frameElement.getIntAttribute("duration") / 1000f;
+            intervals.add(frameElement.getIntAttribute("duration"));
           }
-          AnimatedTiledMapTile animatedTile=new AnimatedTiledMapTile(interval,staticTiles);
+          AnimatedTiledMapTile animatedTile=new AnimatedTiledMapTile(intervals,staticTiles);
           animatedTile.setId(tile.getId());
           animatedTiles.add(animatedTile);
           tile=animatedTile;
