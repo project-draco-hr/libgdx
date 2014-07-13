@@ -6,13 +6,20 @@
   }
   data=new BitmapFontData(file,parameter != null ? parameter.flip : false);
   for (int i=0; i < data.getImagePaths().length; i++) {
-    TextureLoader.TextureParameter textureParams=new TextureLoader.TextureParameter();
-    if (parameter != null) {
-      textureParams.genMipMaps=parameter.genMipMaps;
-      textureParams.minFilter=parameter.minFilter;
-      textureParams.magFilter=parameter.magFilter;
+    String path=data.getImagePath(i);
+    AssetDescriptor descriptor;
+    if (path.equals(parameter.atlasName)) {
+      descriptor=new AssetDescriptor(resolve(path),TextureAtlas.class,new TextureAtlasLoader.TextureAtlasParameter());
     }
-    AssetDescriptor descriptor=new AssetDescriptor(resolve(data.getImagePath(i)),Texture.class,textureParams);
+ else {
+      TextureLoader.TextureParameter textureParams=new TextureLoader.TextureParameter();
+      if (parameter != null) {
+        textureParams.genMipMaps=parameter.genMipMaps;
+        textureParams.minFilter=parameter.minFilter;
+        textureParams.magFilter=parameter.magFilter;
+      }
+      descriptor=new AssetDescriptor(resolve(path),Texture.class,textureParams);
+    }
     deps.add(descriptor);
   }
   return deps;
