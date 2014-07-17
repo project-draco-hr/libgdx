@@ -1,5 +1,3 @@
 {
-  Random random=new Random();
-  seed0=random.nextLong();
-  seed1=random.nextLong();
+  setSeed(new Random().nextLong());
 }
