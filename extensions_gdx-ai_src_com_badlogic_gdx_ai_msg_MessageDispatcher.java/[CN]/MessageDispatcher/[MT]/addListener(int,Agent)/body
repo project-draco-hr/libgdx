@@ -1,0 +1,8 @@
+{
+  Array<Agent> listeners=msgListeners.get(msg);
+  if (listeners == null) {
+    listeners=new Array<Agent>(false,16);
+    msgListeners.put(msg,listeners);
+  }
+  listeners.add(listener);
+}
