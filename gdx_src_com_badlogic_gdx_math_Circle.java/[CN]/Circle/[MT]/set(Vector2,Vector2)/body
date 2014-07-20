@@ -1,0 +1,5 @@
+{
+  this.x=center.x;
+  this.y=center.y;
+  this.radius=Vector2.len(center.x - edge.x,center.y - edge.y);
+}

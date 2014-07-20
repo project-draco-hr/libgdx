@@ -1,3 +1,8 @@
 {
-  return originalHandle.parent() + "/" + suffix+ "/"+ originalHandle.name();
+  String parentString="";
+  FileHandle parent=originalHandle.parent();
+  if (parent != null && !parent.name().equals("")) {
+    parentString=parent + "/";
+  }
+  return parentString + suffix + "/"+ originalHandle.name();
 }

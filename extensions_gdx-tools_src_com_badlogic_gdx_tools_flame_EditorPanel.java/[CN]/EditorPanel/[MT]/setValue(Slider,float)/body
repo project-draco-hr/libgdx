@@ -1,0 +1,10 @@
+{
+  ChangeListener[] listeners=slider.spinner.getChangeListeners();
+  ChangeListener listener=null;
+  if (listeners != null && listeners.length > 0) {
+    listener=listeners[0];
+    slider.spinner.removeChangeListener(listener);
+  }
+  slider.setValue(value);
+  if (listener != null)   slider.spinner.addChangeListener(listener);
+}

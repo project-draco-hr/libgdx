@@ -1,0 +1,5 @@
+{
+  ParticleController controller=templates.random().copy();
+  controller.init();
+  return controller;
+}

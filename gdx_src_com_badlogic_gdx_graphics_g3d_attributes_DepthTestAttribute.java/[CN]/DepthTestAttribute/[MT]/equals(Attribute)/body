@@ -1,4 +1,0 @@
-{
-  DepthTestAttribute attr=(DepthTestAttribute)other;
-  return depthFunc == attr.depthFunc && depthRangeNear == attr.depthRangeNear && depthRangeFar == attr.depthRangeFar && depthMask == attr.depthMask;
-}

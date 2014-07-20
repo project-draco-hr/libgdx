@@ -1,0 +1,4 @@
+{
+  super.read(json,jsonData);
+  isGlobal=json.readValue("isGlobal",boolean.class,jsonData);
+}

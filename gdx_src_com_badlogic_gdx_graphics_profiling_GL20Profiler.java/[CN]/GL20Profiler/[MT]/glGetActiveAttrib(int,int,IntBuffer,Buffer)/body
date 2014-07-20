@@ -1,0 +1,4 @@
+{
+  calls++;
+  return gl20.glGetActiveAttrib(program,index,size,type);
+}

@@ -1,4 +1,3 @@
 {
-  long currentFrame=(lastTiledMapRenderTime / (long)(animationInterval * 1000f)) % frameCount;
-  return frameTiles.get((int)currentFrame).getTextureRegion();
+  return getCurrentFrame().getTextureRegion();
 }

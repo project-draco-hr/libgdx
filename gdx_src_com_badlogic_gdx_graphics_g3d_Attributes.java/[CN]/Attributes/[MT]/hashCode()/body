@@ -1,0 +1,8 @@
+{
+  sort();
+  final int n=attributes.size;
+  int result=71 + (int)mask;
+  int m=1;
+  for (int i=0; i < n; i++)   result+=mask * attributes.get(i).hashCode() * (m=(m * 7) & 0xFFFF);
+  return result;
+}

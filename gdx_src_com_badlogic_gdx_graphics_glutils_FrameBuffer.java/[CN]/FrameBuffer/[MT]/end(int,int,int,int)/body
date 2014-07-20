@@ -1,4 +1,4 @@
 {
   unbind();
-  Gdx.graphics.getGL20().glViewport(x,y,width,height);
+  Gdx.gl20.glViewport(x,y,width,height);
 }

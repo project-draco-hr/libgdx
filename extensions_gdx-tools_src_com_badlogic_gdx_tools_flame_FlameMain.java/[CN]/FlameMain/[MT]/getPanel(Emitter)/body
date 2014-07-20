@@ -1,0 +1,6 @@
+{
+  if (emitter instanceof RegularEmitter) {
+    return new RegularEmitterPanel(this,(RegularEmitter)emitter);
+  }
+  return null;
+}

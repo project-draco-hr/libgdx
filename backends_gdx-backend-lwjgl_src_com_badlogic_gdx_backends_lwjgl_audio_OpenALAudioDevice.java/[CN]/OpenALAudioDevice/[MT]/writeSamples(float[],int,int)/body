@@ -1,6 +1,7 @@
 {
   if (bytes == null || bytes.length < numSamples * 2)   bytes=new byte[numSamples * 2];
-  for (int i=offset, ii=0; i < numSamples; i++) {
+  int end=Math.min(offset + numSamples,samples.length);
+  for (int i=offset, ii=0; i < end; i++) {
     float floatSample=samples[i];
     floatSample=MathUtils.clamp(floatSample,-1f,1f);
     int intSample=(int)(floatSample * 32767);

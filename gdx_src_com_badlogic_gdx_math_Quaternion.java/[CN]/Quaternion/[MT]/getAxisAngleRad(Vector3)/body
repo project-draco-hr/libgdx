@@ -2,7 +2,7 @@
   if (this.w > 1)   this.nor();
   float angle=(float)(2.0 * Math.acos(this.w));
   double s=Math.sqrt(1 - this.w * this.w);
-  if (s < NORMALIZATION_TOLERANCE) {
+  if (s < MathUtils.FLOAT_ROUNDING_ERROR) {
     axis.x=this.x;
     axis.y=this.y;
     axis.z=this.z;
