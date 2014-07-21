@@ -1,4 +1,5 @@
 {
+  if (space == null)   throw new IllegalArgumentException("space cannot be null.");
   spaceTop=space;
   spaceLeft=space;
   spaceBottom=space;
