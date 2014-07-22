@@ -1,4 +1,7 @@
 {
+  if (divisionsU < 1 || divisionsV < 1) {
+    throw new GdxRuntimeException("divisionsU and divisionV must be > 0, u,v: " + divisionsU + ", "+ divisionsV);
+  }
   ensureRectangles((divisionsV + 1) * (divisionsU + 1),divisionsV * divisionsU);
   for (int u=0; u <= divisionsU; u++) {
     final float alphaU=(float)u / (float)divisionsU;
