@@ -1,0 +1,9 @@
+{
+  if (!hasNext)   throw new NoSuchElementException();
+  if (!valid)   throw new GdxRuntimeException("#iterator() cannot be used nested.");
+  entry.key=keys.get(nextIndex);
+  entry.value=map.get(entry.key);
+  nextIndex++;
+  hasNext=nextIndex < map.size;
+  return entry;
+}
