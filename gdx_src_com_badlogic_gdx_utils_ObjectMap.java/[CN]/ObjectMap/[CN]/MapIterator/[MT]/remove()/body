@@ -3,7 +3,7 @@
   if (currentIndex >= map.capacity) {
     map.removeStashIndex(currentIndex);
     nextIndex=currentIndex - 1;
-    advance();
+    findNextIndex();
   }
  else {
     map.keyTable[currentIndex]=null;

@@ -3,7 +3,7 @@
   long currentTime=getCurrentTime();
   do {
     final Telegram telegram=queue.peek();
-    if (telegram.getTimestamp() < currentTime)     break;
+    if (telegram.getTimestamp() > currentTime)     break;
     if (debugEnabled) {
       Gdx.app.log(LOG_TAG,"Queued telegram ready for dispatch: Sent to " + telegram.receiver + ". Msg is "+ telegram.message);
     }

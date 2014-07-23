@@ -41,6 +41,7 @@
     shadowLight.begin(character.transform.getTranslation(tmpVector),cam.direction);
     shadowBatch.begin(shadowLight.getCamera());
     if (character != null)     shadowBatch.render(character);
+    if (tree != null)     shadowBatch.render(tree);
     shadowBatch.end();
     shadowLight.end();
   }

@@ -8,4 +8,5 @@
     if (attr.usage == Usage.BoneWeight)     w|=(1 << attr.unit);
   }
   weights=w;
+  alphaTestAttribute=new FloatAttribute(FloatAttribute.AlphaTest,config.defaultAlphaTest);
 }

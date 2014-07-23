@@ -22,6 +22,21 @@
     }
 );
   }
+ else   if (clickedButton == btnDownloadLarge) {
+    Gdx.app.postRunnable(new Runnable(){
+      public void run(){
+        text="Retrieving large file...";
+      }
+    }
+);
+    final byte[] rawFileBytes=httpResponse.getResult();
+    Gdx.app.postRunnable(new Runnable(){
+      public void run(){
+        text="Retrieved large file: " + rawFileBytes.length;
+      }
+    }
+);
+  }
  else {
     setText(httpResponse);
   }
