@@ -6,7 +6,7 @@
   padRight=Value.zero;
   align=Align.center;
   if (debug != Debug.none) {
-    Scene2DDebugRenderer.debugRectPool.freeAll(debugRects);
+    StageDebugRenderer.debugRectPool.freeAll(debugRects);
     debugRects.clear();
   }
   debug=Debug.none;

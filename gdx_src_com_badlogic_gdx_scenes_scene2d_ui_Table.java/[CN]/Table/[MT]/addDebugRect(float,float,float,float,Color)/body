@@ -1,5 +1,5 @@
 {
-  DebugRect debugRect=Scene2DDebugRenderer.debugRectPool.obtain();
+  DebugRect debugRect=StageDebugRenderer.debugRectPool.obtain();
   float yCorrected=getHeight() - y - height;
   debugRect.bottomLeft.set(x,yCorrected);
   debugRect.topRight.set(x + width,yCorrected + height);

@@ -1,5 +1,5 @@
 {
-  DebugRect debugRect=Scene2DDebugRenderer.debugRectPool.obtain();
+  DebugRect debugRect=StageDebugRenderer.debugRectPool.obtain();
   debugRect.bottomLeft.set(0,0);
   debugRect.topRight.set(width,height);
   debugRect.color.set(Actor.debugColor);

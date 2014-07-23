@@ -1,6 +1,6 @@
 {
   stage=new Stage();
-  debugRenderer=new Scene2DDebugRenderer(stage);
+  debugRenderer=new StageDebugRenderer(stage);
   Gdx.input.setInputProcessor(stage);
   final TextureRegion region=new TextureRegion(new Texture("data/badlogic.jpg"));
   final Actor actor=new Actor(){

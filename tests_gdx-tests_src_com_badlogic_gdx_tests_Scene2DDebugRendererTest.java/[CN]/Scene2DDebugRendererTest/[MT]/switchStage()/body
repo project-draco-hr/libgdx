@@ -5,5 +5,5 @@
  else {
     stage=stage2;
   }
-  debugRenderer=new Scene2DDebugRenderer(stage);
+  debugRenderer=new StageDebugRenderer(stage);
 }

@@ -2,7 +2,7 @@
   this.debug=debug;
   if (debug == Debug.none) {
     if (debugRects != null) {
-      Scene2DDebugRenderer.debugRectPool.freeAll(debugRects);
+      StageDebugRenderer.debugRectPool.freeAll(debugRects);
       debugRects.clear();
     }
   }

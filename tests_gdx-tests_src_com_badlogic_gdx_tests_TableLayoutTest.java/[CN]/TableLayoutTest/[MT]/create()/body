@@ -1,6 +1,6 @@
 {
   stage=new Stage();
-  debugRenderer=new Scene2DDebugRenderer(stage);
+  debugRenderer=new StageDebugRenderer(stage);
   Gdx.input.setInputProcessor(stage);
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   Label nameLabel=new Label("Name:",skin);

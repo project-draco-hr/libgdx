@@ -141,7 +141,7 @@
   }
   if (debug == Debug.none)   return;
   if (debugRects != null) {
-    Scene2DDebugRenderer.debugRectPool.freeAll(debugRects);
+    StageDebugRenderer.debugRectPool.freeAll(debugRects);
     debugRects.clear();
   }
   currentX=x;
