@@ -6,7 +6,6 @@
     boolean displayCreated=setDisplayMode(config.width,config.height,config.fullscreen);
     if (!displayCreated) {
       if (config.failsafeWidth > 0 && config.failsafeHeight > 0) {
-        usingFailsafeDisplay=true;
         displayCreated=setDisplayMode(config.failsafeWidth,config.failsafeHeight,false);
       }
     }
