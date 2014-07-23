@@ -1,0 +1,22 @@
+{
+  String version=null;
+  int[] versionSplit=new int[3];
+  int[] testSplit=new int[3];
+  for (  File toolsVersion : buildTools.listFiles()) {
+    if (version == null) {
+      version=toolsVersion.getName();
+      versionSplit=convertTools(version);
+      continue;
+    }
+    testSplit=convertTools(toolsVersion.getName());
+    if (compareVersions(versionSplit,testSplit)) {
+      version=toolsVersion.getName();
+    }
+  }
+  if (version != null) {
+    return version;
+  }
+ else {
+    return "0.0.0";
+  }
+}
