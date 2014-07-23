@@ -83,5 +83,5 @@
   copyAndReplace(outputDir,project,values);
   builder.cleanUp();
   new File(outputDir,"gradlew").setExecutable(true);
-  Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean" + parseGradleArgs(gradleArgs),callback);
+  Executor.execute(new File(outputDir),"gradlew.bat","gradlew","clean" + parseGradleArgs(builder.modules,gradleArgs),callback);
 }
