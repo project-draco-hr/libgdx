@@ -1,0 +1,15 @@
+{
+  topLeft.set(debugRect.bottomLeft.x,debugRect.topRight.y);
+  topRight.set(debugRect.topRight.x,debugRect.topRight.y);
+  bottomRight.set(debugRect.topRight.x,debugRect.bottomLeft.y);
+  bottomLeft.set(debugRect.bottomLeft.x,debugRect.bottomLeft.y);
+  actor.localToStageCoordinates(topLeft);
+  actor.localToStageCoordinates(topRight);
+  actor.localToStageCoordinates(bottomRight);
+  actor.localToStageCoordinates(bottomLeft);
+  shapeRenderer.setColor(debugRect.color);
+  shapeRenderer.line(topLeft,topRight);
+  shapeRenderer.line(topRight,bottomRight);
+  shapeRenderer.line(bottomRight,bottomLeft);
+  shapeRenderer.line(bottomLeft,topLeft);
+}

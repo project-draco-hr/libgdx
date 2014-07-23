@@ -1,0 +1,8 @@
+{
+  if (disabled)   return;
+  shapeRenderer.setProjectionMatrix(stage.getCamera().projection);
+  shapeRenderer.setTransformMatrix(stage.getCamera().view);
+  shapeRenderer.begin(ShapeType.Line);
+  drawRecursive(actor);
+  shapeRenderer.end();
+}

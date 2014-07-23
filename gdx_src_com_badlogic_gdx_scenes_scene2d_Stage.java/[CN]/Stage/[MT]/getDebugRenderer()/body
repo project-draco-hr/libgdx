@@ -1,0 +1,4 @@
+{
+  if (debugRenderer == null)   debugRenderer=new StageDebug(this);
+  return debugRenderer;
+}

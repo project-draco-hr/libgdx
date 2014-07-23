@@ -1,7 +1,6 @@
 {
   stage=new Stage();
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  debugRenderer=new StageDebugRenderer(stage);
   label=new Label("",skin);
   Table root=new Table(skin);
   root.setFillParent(true);

@@ -1,0 +1,16 @@
+{
+  if (!invisibleActors && !actor.isVisible())   return;
+  if (allActors || actor.getDebug()) {
+    actor.getDebugRects(debugRects);
+    for (    DebugRect debugRect : debugRects)     drawRect(actor,debugRect);
+    debugRects.clear();
+    debugRectPool.freeAll(usedRects);
+    usedRects.clear();
+  }
+  if (actor instanceof Group) {
+    Group group=(Group)actor;
+    for (    Actor child : group.getChildren()) {
+      drawRecursive(child);
+    }
+  }
+}

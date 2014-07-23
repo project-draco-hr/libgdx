@@ -6,4 +6,5 @@
   batch.begin();
   root.draw(batch,1);
   batch.end();
+  if (Actor.debugEnabled > 0)   getDebugRenderer().draw();
 }

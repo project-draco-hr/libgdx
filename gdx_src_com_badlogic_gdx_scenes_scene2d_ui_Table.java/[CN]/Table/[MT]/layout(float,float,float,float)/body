@@ -141,18 +141,18 @@
   }
   if (debug == Debug.none)   return;
   if (debugRects != null) {
-    StageDebugRenderer.debugRectPool.freeAll(debugRects);
+    StageDebug.debugRectPool.freeAll(debugRects);
     debugRects.clear();
   }
   currentX=x;
   currentY=y;
   if (debug == Debug.table || debug == Debug.all) {
-    addDebugRect(layoutX,layoutY,layoutWidth,layoutHeight,debugColor);
-    addDebugRect(x,y,tableWidth - hpadding,tableHeight - vpadding,debugColor);
+    addDebugRect(layoutX,layoutY,layoutWidth,layoutHeight,debugTableColor);
+    addDebugRect(x,y,tableWidth - hpadding,tableHeight - vpadding,debugTableColor);
   }
   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
-    if (debug == Debug.actor || debug == Debug.all)     addDebugRect(c.actorX,c.actorY,c.actorWidth,c.actorHeight,Actor.debugColor);
+    if (debug == Debug.actor || debug == Debug.all)     addDebugRect(c.actorX,c.actorY,c.actorWidth,c.actorHeight,debugActorColor);
     float spannedCellWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     spannedCellWidth-=c.computedPadLeft + c.computedPadRight;

@@ -1,0 +1,5 @@
+{
+  DebugRect rect=debugRectPool.obtain();
+  usedRects.add(rect);
+  return rect;
+}
