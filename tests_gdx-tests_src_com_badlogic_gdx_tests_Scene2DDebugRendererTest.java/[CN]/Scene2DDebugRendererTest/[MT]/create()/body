@@ -1,0 +1,34 @@
+{
+  textureRegion=new TextureRegion(new Texture("data/badlogic.jpg"));
+  Gdx.input.setInputProcessor(this);
+  stage1=new Stage();
+  stage1.getCamera().position.set(100,100,0);
+  Group group=new Group();
+  group.setRotation(10);
+  group.setScale(1.2f);
+  stage1.addActor(group);
+  DebugActor actor=new DebugActor();
+  actor.setBounds(400,240,50,100);
+  actor.setOrigin(25,50);
+  actor.setRotation(-45);
+  actor.setScale(2f);
+  group.addActor(actor);
+  stage2=new Stage();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Table root=new Table(skin);
+  root.setFillParent(true);
+  root.setBackground(skin.getDrawable("default-pane"));
+  root.defaults().space(6);
+  root.debug();
+  TextButton shortButton=new TextButton("Button short",skin);
+  root.add(shortButton).pad(5);
+  shortButton.debug();
+  TextButton longButton=new TextButton("Button loooooooooong",skin);
+  longButton.debug();
+  root.add(longButton).row();
+  root.add("Colspan").colspan(2).row();
+  root.setTransform(true);
+  root.rotateBy(10);
+  stage2.addActor(root);
+  switchStage();
+}

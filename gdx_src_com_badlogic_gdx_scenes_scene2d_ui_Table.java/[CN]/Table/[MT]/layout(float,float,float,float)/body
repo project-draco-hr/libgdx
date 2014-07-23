@@ -140,22 +140,25 @@
  else     currentX+=spannedCellWidth + c.computedPadRight;
   }
   if (debug == Debug.none)   return;
-  if (debugRects != null)   debugRects.clear();
+  if (debugRects != null) {
+    Scene2DDebugRenderer.debugRectPool.freeAll(debugRects);
+    debugRects.clear();
+  }
   currentX=x;
   currentY=y;
   if (debug == Debug.table || debug == Debug.all) {
-    TableDebug.addRectangle(this,Debug.table,layoutX,layoutY,layoutWidth,layoutHeight);
-    TableDebug.addRectangle(this,Debug.table,x,y,tableWidth - hpadding,tableHeight - vpadding);
+    addDebugRect(layoutX,layoutY,layoutWidth,layoutHeight,debugColor);
+    addDebugRect(x,y,tableWidth - hpadding,tableHeight - vpadding,debugColor);
   }
   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
-    if (debug == Debug.actor || debug == Debug.all)     TableDebug.addRectangle(this,Debug.actor,c.actorX,c.actorY,c.actorWidth,c.actorHeight);
+    if (debug == Debug.actor || debug == Debug.all)     addDebugRect(c.actorX,c.actorY,c.actorWidth,c.actorHeight,Actor.debugColor);
     float spannedCellWidth=0;
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     spannedCellWidth-=c.computedPadLeft + c.computedPadRight;
     currentX+=c.computedPadLeft;
     if (debug == Debug.cell || debug == Debug.all) {
-      TableDebug.addRectangle(this,Debug.cell,currentX,currentY + c.computedPadTop,spannedCellWidth,rowHeight[c.row] - c.computedPadTop - c.computedPadBottom);
+      addDebugRect(currentX,currentY + c.computedPadTop,spannedCellWidth,rowHeight[c.row] - c.computedPadTop - c.computedPadBottom,debugCellColor);
     }
     if (c.endRow) {
       currentX=x;

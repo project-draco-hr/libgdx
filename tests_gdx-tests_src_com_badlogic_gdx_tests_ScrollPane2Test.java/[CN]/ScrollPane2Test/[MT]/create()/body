@@ -1,5 +1,6 @@
 {
   stage=new Stage();
+  debugRenderer=new Scene2DDebugRenderer(stage);
   Gdx.input.setInputProcessor(stage);
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   ScrollPane pane2=new ScrollPane(new Image(new Texture("data/group-debug.png")),skin);

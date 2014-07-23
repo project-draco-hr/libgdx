@@ -1,0 +1,13 @@
+{
+  setDebuggingEnabled(enabled);
+  if (recursively) {
+    for (    Actor child : children) {
+      if (child instanceof Group) {
+        ((Group)child).setDebuggingEnabled(enabled,recursively);
+      }
+ else {
+        child.setDebuggingEnabled(enabled);
+      }
+    }
+  }
+}

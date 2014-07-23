@@ -1,0 +1,9 @@
+{
+  shapeRenderer.setProjectionMatrix(stage.getCamera().projection);
+  shapeRenderer.setTransformMatrix(stage.getCamera().view);
+  shapeRenderer.begin(ShapeType.Line);
+  for (  Actor actor : stage.getActors()) {
+    renderRecursive(actor);
+  }
+  shapeRenderer.end();
+}

@@ -2,6 +2,7 @@
   batch=new SpriteBatch();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   stage=new Stage();
+  debugRenderer=new Scene2DDebugRenderer(stage);
   Gdx.input.setInputProcessor(stage);
   Table table=new Table();
   stage.addActor(table);
