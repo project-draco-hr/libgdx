@@ -9,7 +9,7 @@
       continue;
     }
     testSplit=convertTools(toolsVersion.getName());
-    if (testSplit[0] >= versionSplit[0] && testSplit[1] >= versionSplit[1] && testSplit[2] >= versionSplit[2]) {
+    if (compareVersions(versionSplit,testSplit)) {
       version=toolsVersion.getName();
     }
   }
