@@ -12,7 +12,7 @@
   String newestLocalTool=getLatestTools(buildTools);
   int[] localToolVersion=convertTools(newestLocalTool);
   int[] targetToolVersion=convertTools(DependencyBank.buildToolsVersion);
-  if (localToolVersion[0] >= targetToolVersion[0] && localToolVersion[1] >= targetToolVersion[1] && localToolVersion[2] >= targetToolVersion[2]) {
+  if (compareVersions(targetToolVersion,localToolVersion)) {
     int value=JOptionPane.showConfirmDialog(null,"You have a more recent version of android build tools than the recommended.\nDo you want to use this version?","Warning!",JOptionPane.YES_NO_OPTION);
     if (value != 0) {
       JOptionPane.showMessageDialog(null,"Using build tools: " + DependencyBank.buildToolsVersion);
