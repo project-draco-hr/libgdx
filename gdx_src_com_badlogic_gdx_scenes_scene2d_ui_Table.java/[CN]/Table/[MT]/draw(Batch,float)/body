@@ -1,4 +1,5 @@
 {
+  boolean hasScissorBounds=false;
   validate();
   if (isTransform()) {
     applyTransform(batch,computeTransform());
@@ -14,6 +15,9 @@
       }
       boolean draw=clipBegin(x,y,width,height);
       if (draw) {
+        hasScissorBounds=true;
+        if (scissorBounds == null)         scissorBounds=Pools.obtain(Rectangle.class);
+        scissorBounds.set(ScissorStack.peekScissors());
         drawChildren(batch,parentAlpha);
         clipEnd();
       }
@@ -25,4 +29,5 @@
     drawBackground(batch,parentAlpha,getX(),getY());
     super.draw(batch,parentAlpha);
   }
+  if (!hasScissorBounds && scissorBounds != null)   Pools.free(scissorBounds);
 }

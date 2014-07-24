@@ -1,16 +1,28 @@
 {
   if (!invisibleActors && !actor.isVisible())   return;
-  if (allActors || actor.getDebug()) {
+  if (allActors)   actor.debug();
+  if (actor.getDebug()) {
     actor.getDebugRects(debugRects);
     for (    DebugRect debugRect : debugRects)     drawRect(actor,debugRect);
     debugRects.clear();
     debugRectPool.freeAll(usedRects);
     usedRects.clear();
   }
-  if (actor instanceof Group) {
-    Group group=(Group)actor;
-    for (    Actor child : group.getChildren()) {
-      drawRecursive(child);
+  boolean draw=true;
+  Rectangle scissorBounds=null;
+  if (actor instanceof Group)   scissorBounds=((Group)actor).getScissorBounds();
+  if (scissorBounds != null) {
+    shapes.flush();
+    draw=ScissorStack.pushScissors(scissorBounds);
+  }
+  if (draw) {
+    if (actor instanceof Group) {
+      Group group=(Group)actor;
+      for (      Actor child : group.getChildren())       drawRecursive(child);
+    }
+    if (scissorBounds != null) {
+      shapes.flush();
+      ScissorStack.popScissors();
     }
   }
 }

@@ -7,9 +7,9 @@
   actor.localToStageCoordinates(topRight);
   actor.localToStageCoordinates(bottomRight);
   actor.localToStageCoordinates(bottomLeft);
-  shapeRenderer.setColor(debugRect.color);
-  shapeRenderer.line(topLeft,topRight);
-  shapeRenderer.line(topRight,bottomRight);
-  shapeRenderer.line(bottomRight,bottomLeft);
-  shapeRenderer.line(bottomLeft,topLeft);
+  shapes.setColor(debugRect.color);
+  shapes.line(topLeft,topRight);
+  shapes.line(topRight,bottomRight);
+  shapes.line(bottomRight,bottomLeft);
+  shapes.line(bottomLeft,topLeft);
 }
