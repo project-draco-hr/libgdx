@@ -1,3 +1,4 @@
 {
+  if (processor == null)   throw new NullPointerException("processor cannot be null");
   processors.insert(index,processor);
 }
