@@ -51,8 +51,8 @@
   scale.setPosition(128,blend.getY());
 {
     Actor shapeActor=new Actor(){
-      public void draw(      ShapeRenderer shapes,      float parentAlpha){
-        shapes.begin(ShapeType.Filled);
+      public void drawDebug(      ShapeRenderer shapes){
+        shapes.set(ShapeType.Filled);
         shapes.setColor(getColor());
         shapes.rect(getX(),getY(),getWidth(),getHeight(),getOriginX(),getOriginY(),getScaleX(),getScaleY(),getRotation());
       }
@@ -60,6 +60,7 @@
 ;
     shapeActor.setBounds(0,0,100,150);
     shapeActor.setOrigin(50,75);
+    shapeActor.debug();
     sprites.add(shapeActor);
     Group shapeGroup=new Group();
     shapeGroup.setBounds(300,300,300,300);

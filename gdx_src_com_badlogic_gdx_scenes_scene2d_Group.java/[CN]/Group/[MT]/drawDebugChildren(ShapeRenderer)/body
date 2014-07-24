@@ -4,7 +4,7 @@
   if (transform) {
     for (int i=0, n=children.size; i < n; i++) {
       Actor child=actors[i];
-      if (!child.isVisible() || !child.getDebug())       continue;
+      if (!child.isVisible())       continue;
       child.drawDebug(shapes);
     }
     shapes.flush();
@@ -15,7 +15,7 @@
     y=0;
     for (int i=0, n=children.size; i < n; i++) {
       Actor child=actors[i];
-      if (!child.isVisible() || !child.getDebug())       continue;
+      if (!child.isVisible())       continue;
       float cx=child.x, cy=child.y;
       child.x=cx + offsetX;
       child.y=cy + offsetY;

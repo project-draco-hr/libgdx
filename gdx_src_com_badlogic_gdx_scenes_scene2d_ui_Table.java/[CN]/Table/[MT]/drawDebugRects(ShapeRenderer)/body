@@ -1,5 +1,5 @@
 {
-  if (debugRects == null)   return;
+  if (debugRects == null || !getDebug())   return;
   shapes.set(ShapeType.Line);
   shapes.setColor(getStage().getDebugColor());
   for (int i=0, n=debugRects.size; i < n; i++) {

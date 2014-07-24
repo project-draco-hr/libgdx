@@ -1,4 +1,5 @@
 {
+  if (!getDebug())   return;
   shapes.set(ShapeType.Line);
   shapes.setColor(getStage().getDebugColor());
   shapes.rect(getX(),getY(),getWidth(),getHeight(),getOriginX(),getOriginY(),getScaleX(),getScaleY(),getRotation());
