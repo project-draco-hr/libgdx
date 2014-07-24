@@ -1,6 +1,4 @@
 {
-  this.debug=Debug.all;
-  setDebug(true);
-  invalidate();
+  super.debug();
   return this;
 }

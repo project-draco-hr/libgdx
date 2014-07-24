@@ -1,15 +1,9 @@
 {
-  this.debug=debug;
-  if (debug == Debug.none) {
-    setDebug(false);
-    if (debugRects != null) {
-      StageDebug.debugRectPool.freeAll(debugRects);
-      debugRects.clear();
-    }
-  }
- else {
-    setDebug(true);
-    invalidate();
+  super.setDebug(debug != Debug.none);
+  if (this.debug != debug) {
+    this.debug=debug;
+    if (debug == Debug.none)     clearDebugRects();
+ else     invalidate();
   }
   return this;
 }

@@ -1,5 +1,0 @@
-{
-  if (allActors == this.allActors)   return;
-  Actor.debugEnabled+=allActors ? 1 : -1;
-  this.allActors=allActors;
-}

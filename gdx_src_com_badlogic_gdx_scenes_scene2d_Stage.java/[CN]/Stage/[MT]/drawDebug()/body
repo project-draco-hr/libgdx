@@ -1,0 +1,49 @@
+{
+  if (debugShapes == null) {
+    debugShapes=new ShapeRenderer();
+    debugShapes.setAutoShapeType(true);
+  }
+  Actor actor=root;
+  if (debugUnderMouse || debugParentUnderMouse || debugTableUnderMouse != Debug.none) {
+    screenToStageCoordinates(stageCoords.set(Gdx.input.getX(),Gdx.input.getY()));
+    actor=hit(stageCoords.x,stageCoords.y,true);
+    if (actor == null)     return;
+    if (debugParentUnderMouse && actor.parent != null)     actor=actor.parent;
+    if (debugTableUnderMouse != Debug.none) {
+      while (actor != null) {
+        if (actor instanceof Table)         break;
+        actor=actor.parent;
+      }
+      if (actor == null)       return;
+      ((Table)actor).debug(debugTableUnderMouse);
+    }
+ else     actor.setDebug(true);
+    if (actor instanceof Group) {
+      for (      Actor child : ((Group)actor).getChildren()) {
+        if (child instanceof Group)         ((Group)child).setDebug(false,true);
+ else         child.setDebug(false);
+      }
+    }
+  }
+  if (debugAll && actor instanceof Group)   ((Group)actor).debugAll();
+  Group group=actor.parent;
+  if (group != null) {
+    debugShapes.setTransformMatrix(group.computeTransform());
+    group=group.parent;
+  }
+  float offsetX=0, offsetY=0;
+  while (group != null && !group.transform) {
+    offsetX+=group.x;
+    offsetY+=group.y;
+    group=group.parent;
+  }
+  actor.x+=offsetX;
+  actor.y+=offsetY;
+  Gdx.gl.glEnable(GL20.GL_BLEND);
+  debugShapes.setProjectionMatrix(viewport.getCamera().combined);
+  debugShapes.begin();
+  actor.drawDebug(debugShapes);
+  debugShapes.end();
+  actor.x-=offsetX;
+  actor.y-=offsetY;
+}

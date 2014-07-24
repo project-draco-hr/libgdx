@@ -1,3 +1,4 @@
 {
-  this(viewport,null);
+  this(viewport,new SpriteBatch());
+  ownsBatch=true;
 }

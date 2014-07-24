@@ -1,4 +1,4 @@
 {
-  oldBatchTransform.set(batch.getTransformMatrix());
+  oldTransform.set(batch.getTransformMatrix());
   batch.setTransformMatrix(transform);
 }

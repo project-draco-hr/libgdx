@@ -140,10 +140,7 @@
  else     currentX+=spannedCellWidth + c.computedPadRight;
   }
   if (debug == Debug.none)   return;
-  if (debugRects != null) {
-    StageDebug.debugRectPool.freeAll(debugRects);
-    debugRects.clear();
-  }
+  clearDebugRects();
   currentX=x;
   currentY=y;
   if (debug == Debug.table || debug == Debug.all) {

@@ -1,0 +1,10 @@
+{
+  if (debugRects == null)   return;
+  shapes.set(ShapeType.Line);
+  shapes.setColor(getStage().getDebugColor());
+  for (int i=0, n=debugRects.size; i < n; i++) {
+    DebugRect debugRect=debugRects.get(i);
+    shapes.setColor(debugRect.color);
+    shapes.rect(getX() + debugRect.x,getY() + debugRect.y,debugRect.width,debugRect.height);
+  }
+}
