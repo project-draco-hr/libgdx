@@ -1,7 +1,7 @@
 {
   if (isTransform()) {
-    drawDebugRects(shapes);
     applyTransform(shapes,computeTransform());
+    drawDebugRects(shapes);
     if (clip) {
       shapes.flush();
       float x=0, y=0, width=getWidth(), height=getHeight();
