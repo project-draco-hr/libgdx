@@ -1,8 +1,9 @@
 {
   if (touchable && getTouchable() == Touchable.disabled)   return null;
-  Array<Actor> children=this.children;
+  Vector2 point=tmp;
+  Actor[] childrenArray=children.items;
   for (int i=children.size - 1; i >= 0; i--) {
-    Actor child=children.get(i);
+    Actor child=childrenArray[i];
     if (!child.isVisible())     continue;
     child.parentToLocalCoordinates(point.set(x,y));
     Actor hit=child.hit(point.x,point.y,touchable);
