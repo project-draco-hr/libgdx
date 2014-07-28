@@ -1,0 +1,9 @@
+{
+  drawDebugBounds(shapes);
+  applyTransform(shapes,computeTransform());
+  if (ScissorStack.pushScissors(scissorBounds)) {
+    drawDebugChildren(shapes);
+    ScissorStack.popScissors();
+  }
+  resetTransform(shapes);
+}

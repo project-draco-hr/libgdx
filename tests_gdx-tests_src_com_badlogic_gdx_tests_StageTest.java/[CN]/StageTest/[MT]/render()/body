@@ -5,7 +5,7 @@
   if (Gdx.input.isTouched()) {
     stage.screenToStageCoordinates(stageCoords.set(Gdx.input.getX(),Gdx.input.getY()));
     Actor actor=stage.hit(stageCoords.x,stageCoords.y,true);
-    if (actor instanceof Image)     ((Image)actor).setColor((float)Math.random(),(float)Math.random(),(float)Math.random(),0.5f + 0.5f * (float)Math.random());
+    if (actor != null)     actor.setColor((float)Math.random(),(float)Math.random(),(float)Math.random(),0.5f + 0.5f * (float)Math.random());
   }
   Array<Actor> actors=stage.getActors();
   int len=actors.size;
@@ -21,18 +21,17 @@
     scale=0.5f;
     vScale=-vScale;
   }
-  len=images.size();
+  len=sprites.size;
   for (int i=0; i < len; i++) {
-    Image img=images.get(i);
-    if (rotateSprites)     img.rotateBy(-40 * Gdx.graphics.getDeltaTime());
- else     img.setRotation(0);
+    Actor sprite=sprites.get(i);
+    if (rotateSprites)     sprite.rotateBy(-40 * Gdx.graphics.getDeltaTime());
+ else     sprite.setRotation(0);
     if (scaleSprites) {
-      img.setScale(scale);
+      sprite.setScale(scale);
     }
  else {
-      img.setScale(1);
+      sprite.setScale(1);
     }
-    img.invalidate();
   }
   stage.draw();
   renderer.begin(ShapeType.Point);
@@ -43,6 +42,6 @@
     renderer.point(group.getX() + group.getOriginX(),group.getY() + group.getOriginY(),0);
   }
   renderer.end();
-  fps.setText("fps: " + Gdx.graphics.getFramesPerSecond() + ", actors "+ images.size()+ ", groups "+ actors.size);
+  fps.setText("fps: " + Gdx.graphics.getFramesPerSecond() + ", actors "+ sprites.size+ ", groups "+ sprites.size);
   ui.draw();
 }

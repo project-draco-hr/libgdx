@@ -1,0 +1,6 @@
+{
+  drawDebugBounds(shapes);
+  if (transform)   applyTransform(shapes,computeTransform());
+  drawDebugChildren(shapes);
+  if (transform)   resetTransform(shapes);
+}

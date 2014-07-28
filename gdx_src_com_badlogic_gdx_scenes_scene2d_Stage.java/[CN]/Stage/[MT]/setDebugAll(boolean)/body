@@ -1,0 +1,6 @@
+{
+  if (this.debugAll == debugAll)   return;
+  this.debugAll=debugAll;
+  if (debugAll)   debug=true;
+ else   root.setDebug(false,true);
+}

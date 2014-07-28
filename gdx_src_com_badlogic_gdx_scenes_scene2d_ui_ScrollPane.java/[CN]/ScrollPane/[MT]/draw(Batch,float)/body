@@ -2,8 +2,8 @@
   if (widget == null)   return;
   validate();
   applyTransform(batch,computeTransform());
-  if (scrollX)   hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getScrollPercentX());
-  if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getScrollPercentY()));
+  if (scrollX)   hKnobBounds.x=hScrollBounds.x + (int)((hScrollBounds.width - hKnobBounds.width) * getVisualScrollPercentX());
+  if (scrollY)   vKnobBounds.y=vScrollBounds.y + (int)((vScrollBounds.height - vKnobBounds.height) * (1 - getVisualScrollPercentY()));
   float y=widgetAreaBounds.y;
   if (!scrollY)   y-=(int)maxY;
  else   y-=(int)(maxY - visualAmountY);
@@ -23,11 +23,13 @@
     widgetCullingArea.height=widgetAreaBounds.height;
     ((Cullable)widget).setCullingArea(widgetCullingArea);
   }
-  getStage().calculateScissors(widgetAreaBounds,scissorBounds);
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  if (style.background != null)   style.background.draw(batch,0,0,getWidth(),getHeight());
-  batch.flush();
+  if (style.background != null) {
+    style.background.draw(batch,0,0,getWidth(),getHeight());
+    batch.flush();
+  }
+  getStage().calculateScissors(widgetAreaBounds,scissorBounds);
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
     ScissorStack.popScissors();

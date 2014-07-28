@@ -1,9 +1,7 @@
 {
-  if (currType != ShapeType.Filled && currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Filled) or begin(ShapeType.Line)");
-  checkDirty();
   depth=-depth;
-  if (currType == ShapeType.Line) {
-    checkFlush(24);
+  if (shapeType == ShapeType.Line) {
+    check(ShapeType.Line,ShapeType.Filled,24);
     renderer.color(color);
     renderer.vertex(x,y,z);
     renderer.color(color);
@@ -54,7 +52,7 @@
     renderer.vertex(x,y + height,z + depth);
   }
  else {
-    checkFlush(36);
+    check(ShapeType.Line,ShapeType.Filled,36);
     renderer.color(color);
     renderer.vertex(x,y,z);
     renderer.color(color);

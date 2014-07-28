@@ -1,0 +1,7 @@
+{
+  if (debugTableUnderMouse == null)   debugTableUnderMouse=Debug.none;
+  if (this.debugTableUnderMouse == debugTableUnderMouse)   return;
+  this.debugTableUnderMouse=debugTableUnderMouse;
+  if (debugTableUnderMouse != Debug.none)   debug=true;
+ else   root.setDebug(false,true);
+}

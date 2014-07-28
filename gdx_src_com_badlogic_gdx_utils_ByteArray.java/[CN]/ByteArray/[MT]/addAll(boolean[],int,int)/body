@@ -1,0 +1,7 @@
+{
+  byte[] items=this.items;
+  int sizeNeeded=size + length;
+  if (sizeNeeded > items.length)   items=resize(Math.max(8,(int)(sizeNeeded * 1.75f)));
+  for (int i=0; i < length; i++)   items[i]=array[i] ? (byte)1 : 0;
+  size+=length;
+}

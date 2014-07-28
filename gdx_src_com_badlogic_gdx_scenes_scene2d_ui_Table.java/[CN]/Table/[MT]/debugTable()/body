@@ -1,5 +1,8 @@
 {
-  this.debug=Debug.table;
-  invalidate();
+  super.setDebug(true);
+  if (debug != Debug.table) {
+    this.debug=Debug.table;
+    invalidate();
+  }
   return this;
 }
