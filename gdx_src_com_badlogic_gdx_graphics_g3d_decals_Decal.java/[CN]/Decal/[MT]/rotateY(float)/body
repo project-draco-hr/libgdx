@@ -1,5 +1,5 @@
 {
-  rotator.set(Y_AXIS,angle);
+  rotator.set(Vector3.Y,angle);
   rotation.mul(rotator);
   updated=false;
 }
