@@ -5,12 +5,15 @@
  else {
     boolean displayCreated=setDisplayMode(config.width,config.height,config.fullscreen);
     if (!displayCreated) {
-      if (config.failsafeWidth > 0 && config.failsafeHeight > 0) {
-        displayCreated=setDisplayMode(config.failsafeWidth,config.failsafeHeight,false);
+      if (config.setDisplayModeCallback != null) {
+        config=config.setDisplayModeCallback.onFailure(config);
+        if (config != null) {
+          displayCreated=setDisplayMode(config.width,config.height,config.fullscreen);
+        }
       }
-    }
-    if (!displayCreated) {
-      throw new GdxRuntimeException("Couldn't set display mode " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
+      if (!displayCreated) {
+        throw new GdxRuntimeException("Couldn't set display mode " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
+      }
     }
     if (config.iconPaths.size > 0) {
       ByteBuffer[] icons=new ByteBuffer[config.iconPaths.size];
