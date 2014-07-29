@@ -1,0 +1,4 @@
+{
+  Rectangle rect=this.getBoundingRectangle();
+  return new BoundingBox(new Vector3(rect.x,rect.y,0),new Vector3(rect.x + rect.width,rect.y + rect.height,0));
+}
