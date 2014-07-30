@@ -46,6 +46,7 @@
     aligned=readBoolean(reader,"aligned");
     additive=readBoolean(reader,"additive");
     behind=readBoolean(reader,"behind");
+    premultipliedAlpha=readBoolean(reader,"premultipliedAlpha");
   }
  catch (  RuntimeException ex) {
     if (name == null)     throw ex;
