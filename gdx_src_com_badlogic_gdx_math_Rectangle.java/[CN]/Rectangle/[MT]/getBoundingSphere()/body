@@ -1,5 +1,0 @@
-{
-  float hWidth=width / 2, hHeight=height / 2;
-  float radius=(float)Math.sqrt(hWidth * hWidth + hHeight * hHeight);
-  return new Sphere(new Vector3(x + hWidth,y + hHeight,0),radius);
-}

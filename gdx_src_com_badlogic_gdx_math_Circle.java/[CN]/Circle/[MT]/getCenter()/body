@@ -1,3 +1,4 @@
 {
-  return new Vector3(x,y,0);
+  if (center == null)   center=new Vector2();
+  return center.set(x,y);
 }

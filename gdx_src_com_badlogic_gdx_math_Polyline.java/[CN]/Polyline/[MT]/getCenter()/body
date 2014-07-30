@@ -1,20 +1,14 @@
 {
-  float cx=0, cy=0;
-  Polygon poly=new Polygon(worldVertices);
-  float area=poly.area();
-  Vector2[] polyPoints=new Vector2[worldVertices.length / 2];
-  for (int i=0; i < worldVertices.length; i+=2)   polyPoints[i / 2]=new Vector2(worldVertices[i],worldVertices[i + 1]);
-  int i, j, n=polyPoints.length;
+  if (dirty)   getTransformedVertices();
+  if (center == null)   center=new Vector2();
+  int i, j, n=worldVertices.length / 2;
   float factor=0;
   for (i=0; i < n; i++) {
     j=(i + 1) % n;
-    factor=(polyPoints[i].x * polyPoints[j].y - polyPoints[j].x * polyPoints[i].y);
-    cx+=(polyPoints[i].x + polyPoints[j].y) * factor;
-    cy+=(polyPoints[i].x + polyPoints[j].y) * factor;
+    factor=(worldVertices[i * 2] * worldVertices[j * 2 + 1] - worldVertices[j * 2] * worldVertices[i * 2 + 1]);
+    center.x+=(worldVertices[i * 2] + worldVertices[j * 2 + 1]) * factor;
+    center.y+=(worldVertices[i * 2] + worldVertices[j * 2 + 1]) * factor;
   }
-  area*=6.0f;
-  factor=1 / area;
-  cx*=factor;
-  cy*=factor;
-  return new Vector3(cx,cy,0);
+  center.scl(1 / (GeometryUtils.polygonArea(worldVertices,0,worldVertices.length) * 6.0f));
+  return center;
 }
