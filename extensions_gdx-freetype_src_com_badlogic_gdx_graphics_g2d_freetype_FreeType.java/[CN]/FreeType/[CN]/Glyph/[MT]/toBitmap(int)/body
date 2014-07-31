@@ -1,0 +1,6 @@
+{
+  long bitmap=toBitmap(address,renderMode);
+  if (bitmap == 0)   throw new GdxRuntimeException("Couldn't render glyph");
+  address=bitmap;
+  rendered=true;
+}
