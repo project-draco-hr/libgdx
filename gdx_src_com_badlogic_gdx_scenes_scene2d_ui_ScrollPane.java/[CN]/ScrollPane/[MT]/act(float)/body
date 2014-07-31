@@ -23,12 +23,12 @@
   }
   if (smoothScrolling && flingTimer <= 0 && !touchScrollH && !touchScrollV && !panning) {
     if (visualAmountX != amountX) {
-      if (visualAmountX < amountX)       visualScrollX(Math.min(amountX,visualAmountX + Math.max(150 * delta,(amountX - visualAmountX) * 5 * delta)));
- else       visualScrollX(Math.max(amountX,visualAmountX - Math.max(150 * delta,(visualAmountX - amountX) * 5 * delta)));
+      if (visualAmountX < amountX)       visualScrollX(Math.min(amountX,visualAmountX + Math.max(200 * delta,(amountX - visualAmountX) * 7 * delta)));
+ else       visualScrollX(Math.max(amountX,visualAmountX - Math.max(200 * delta,(visualAmountX - amountX) * 7 * delta)));
     }
     if (visualAmountY != amountY) {
-      if (visualAmountY < amountY)       visualScrollY(Math.min(amountY,visualAmountY + Math.max(150 * delta,(amountY - visualAmountY) * 5 * delta)));
- else       visualScrollY(Math.max(amountY,visualAmountY - Math.max(150 * delta,(visualAmountY - amountY) * 5 * delta)));
+      if (visualAmountY < amountY)       visualScrollY(Math.min(amountY,visualAmountY + Math.max(200 * delta,(amountY - visualAmountY) * 7 * delta)));
+ else       visualScrollY(Math.max(amountY,visualAmountY - Math.max(200 * delta,(visualAmountY - amountY) * 7 * delta)));
     }
   }
  else {

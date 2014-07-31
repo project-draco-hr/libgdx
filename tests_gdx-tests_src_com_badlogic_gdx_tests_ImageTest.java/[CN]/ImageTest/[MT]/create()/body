@@ -4,9 +4,10 @@
   ui=new Stage();
   Gdx.input.setInputProcessor(ui);
   root=new Table();
+  root.setSize(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   ui.addActor(root);
   root.debug();
   Image image=new Image(image2);
   image.setScaling(Scaling.fill);
-  root.add(image).width(160).height(100);
+  root.add(image).width(image2.getRegionWidth()).height(image2.getRegionHeight());
 }

@@ -5,8 +5,7 @@
   padBottom=Value.zero;
   padRight=Value.zero;
   align=Align.center;
-  if (debug != Debug.none)   debugRects.clear();
-  debug=Debug.none;
+  debug(Debug.none);
   cellDefaults.defaults();
   for (int i=0, n=columnDefaults.size; i < n; i++) {
     Cell columnCell=columnDefaults.get(i);

@@ -1,5 +1,5 @@
 {
   if (logLevel > LOG_NONE) {
-    System.out.println("[info] " + tag + ": "+ message);
+    Foundation.NSLog("[info] " + tag + ": "+ message);
   }
 }

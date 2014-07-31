@@ -12,8 +12,7 @@
         width-=x + padRight.get(this);
         height-=y + padTop.get(this);
       }
-      boolean draw=clipBegin(x,y,width,height);
-      if (draw) {
+      if (clipBegin(x,y,width,height)) {
         drawChildren(batch,parentAlpha);
         clipEnd();
       }

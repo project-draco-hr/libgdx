@@ -37,6 +37,13 @@
   float[] color;
   if ((updateFlags & UPDATE_TINT) != 0)   color=tintValue.getColor(percent);
  else   color=particle.tint;
-  particle.setColor(color[0],color[1],color[2],particle.transparency + particle.transparencyDiff * transparencyValue.getScale(percent));
+  if (premultipliedAlpha) {
+    float alphaMultiplier=additive ? 0 : 1;
+    float a=particle.transparency + particle.transparencyDiff * transparencyValue.getScale(percent);
+    particle.setColor(color[0] * a,color[1] * a,color[2] * a,a * alphaMultiplier);
+  }
+ else {
+    particle.setColor(color[0],color[1],color[2],particle.transparency + particle.transparencyDiff * transparencyValue.getScale(percent));
+  }
   return true;
 }

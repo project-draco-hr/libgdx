@@ -1,4 +1,5 @@
 {
+  if (width == null)   throw new IllegalArgumentException("width cannot be null.");
   minWidth=width;
   prefWidth=width;
   maxWidth=width;

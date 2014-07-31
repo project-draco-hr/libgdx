@@ -1,4 +1,5 @@
 {
+  if (pad == null)   throw new IllegalArgumentException("pad cannot be null.");
   padTop=pad;
   padLeft=pad;
   padBottom=pad;

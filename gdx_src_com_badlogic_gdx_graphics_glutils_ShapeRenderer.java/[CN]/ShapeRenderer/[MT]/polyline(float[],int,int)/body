@@ -1,9 +1,7 @@
 {
-  if (currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Line)");
   if (count < 4)   throw new IllegalArgumentException("Polylines must contain at least 2 points.");
   if (count % 2 != 0)   throw new IllegalArgumentException("Polylines must have an even number of vertices.");
-  checkDirty();
-  checkFlush(count);
+  check(ShapeType.Line,null,count);
   for (int i=offset, n=offset + count - 2; i < n; i+=2) {
     float x1=vertices[i];
     float y1=vertices[i + 1];

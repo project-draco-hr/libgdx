@@ -5,6 +5,6 @@
   entry.key=keyTable[nextIndex];
   entry.value=map.valueTable[nextIndex];
   currentIndex=nextIndex;
-  advance();
+  findNextIndex();
   return entry;
 }

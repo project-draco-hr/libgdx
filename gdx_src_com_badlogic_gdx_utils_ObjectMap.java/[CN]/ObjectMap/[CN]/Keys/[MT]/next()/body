@@ -3,6 +3,6 @@
   if (!valid)   throw new GdxRuntimeException("#iterator() cannot be used nested.");
   K key=map.keyTable[nextIndex];
   currentIndex=nextIndex;
-  advance();
+  findNextIndex();
   return key;
 }

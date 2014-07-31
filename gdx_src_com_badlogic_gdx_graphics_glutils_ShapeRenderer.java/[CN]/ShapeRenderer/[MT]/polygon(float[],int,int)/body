@@ -1,9 +1,7 @@
 {
-  if (currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Line)");
   if (count < 6)   throw new IllegalArgumentException("Polygons must contain at least 3 points.");
   if (count % 2 != 0)   throw new IllegalArgumentException("Polygons must have an even number of vertices.");
-  checkDirty();
-  checkFlush(count);
+  check(ShapeType.Line,null,count);
   float firstX=vertices[0];
   float firstY=vertices[1];
   for (int i=offset, n=offset + count; i < n; i+=2) {
