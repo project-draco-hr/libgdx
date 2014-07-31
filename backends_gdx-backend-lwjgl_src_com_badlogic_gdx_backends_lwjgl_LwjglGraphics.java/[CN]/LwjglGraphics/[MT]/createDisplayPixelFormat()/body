@@ -3,10 +3,10 @@
     if (config.useGL30) {
       ContextAttribs context=new ContextAttribs(3,2).withForwardCompatible(false).withProfileCore(true);
       try {
-        Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+        Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples),context);
       }
  catch (      Exception e) {
-        Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+        Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples),context);
         System.out.println("LwjglGraphics: couldn't create OpenGL 3.2+ core profile context");
       }
       System.out.println("LwjglGraphics: created OpenGL 3.2+ core profile context. This is experimental!");
