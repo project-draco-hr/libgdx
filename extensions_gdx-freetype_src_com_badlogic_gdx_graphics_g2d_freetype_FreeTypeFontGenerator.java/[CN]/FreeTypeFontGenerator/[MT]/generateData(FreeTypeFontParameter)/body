@@ -54,48 +54,89 @@
     packer=new PixmapPacker(pageWidth,pageWidth,Format.RGBA8888,2,false);
   }
   String packPrefix=ownsAtlas ? "" : (filePath + '_' + parameter.size+ (parameter.flip ? "_flip_" : '_'));
+  Stroker stroker=null;
+  if (parameter.borderWidth > 0) {
+    stroker=library.createStroker();
+    stroker.set((int)(parameter.borderWidth * 64f),parameter.borderStraight ? FreeType.FT_STROKER_LINECAP_BUTT : FreeType.FT_STROKER_LINECAP_ROUND,parameter.borderStraight ? FreeType.FT_STROKER_LINEJOIN_MITER_FIXED : FreeType.FT_STROKER_LINEJOIN_ROUND,0);
+  }
   for (int i=0; i < parameter.characters.length(); i++) {
     char c=parameter.characters.charAt(i);
     if (!face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
       Gdx.app.log("FreeTypeFontGenerator","Couldn't load char '" + c + "'");
       continue;
     }
-    if (!face.getGlyph().renderGlyph(FreeType.FT_RENDER_MODE_NORMAL)) {
+    GlyphSlot slot=face.getGlyph();
+    com.badlogic.gdx.graphics.g2d.freetype.FreeType.Glyph mainGlyph=slot.getGlyph();
+    try {
+      mainGlyph.toBitmap(FreeType.FT_RENDER_MODE_NORMAL);
+    }
+ catch (    GdxRuntimeException e) {
+      mainGlyph.dispose();
       Gdx.app.log("FreeTypeFontGenerator","Couldn't render char '" + c + "'");
       continue;
     }
-    GlyphSlot slot=face.getGlyph();
+    Bitmap mainBitmap=mainGlyph.getBitmap();
+    Pixmap mainPixmap=mainBitmap.getPixmap(Format.RGBA8888,parameter.color);
+    if (parameter.borderWidth > 0 || parameter.shadowOffset > 0) {
+      com.badlogic.gdx.graphics.g2d.freetype.FreeType.Glyph borderGlyph=mainGlyph;
+      Bitmap borderBitmap=mainBitmap;
+      if (parameter.borderWidth > 0) {
+        borderGlyph=slot.getGlyph();
+        borderGlyph.strokeBorder(stroker,false);
+        borderGlyph.toBitmap(FreeType.FT_RENDER_MODE_NORMAL);
+        borderBitmap=borderGlyph.getBitmap();
+        Pixmap borderPixmap=borderBitmap.getPixmap(Format.RGBA8888,parameter.borderColor);
+        borderPixmap.drawPixmap(mainPixmap,mainGlyph.getLeft() - borderGlyph.getLeft(),-(mainGlyph.getTop() - borderGlyph.getTop()));
+        mainPixmap.dispose();
+        mainGlyph.dispose();
+        mainPixmap=borderPixmap;
+        mainGlyph=borderGlyph;
+      }
+      if (parameter.shadowOffset > 0) {
+        Pixmap shadowPixmapSrc=borderBitmap.getPixmap(Format.RGBA8888,parameter.shadowColor);
+        Pixmap shadowPixmap=new Pixmap(shadowPixmapSrc.getWidth() + parameter.shadowOffset,shadowPixmapSrc.getHeight() + parameter.shadowOffset,Format.RGBA8888);
+        Blending blending=Pixmap.getBlending();
+        Pixmap.setBlending(Blending.None);
+        shadowPixmap.drawPixmap(shadowPixmapSrc,parameter.shadowOffset,parameter.shadowOffset);
+        Pixmap.setBlending(blending);
+        shadowPixmap.drawPixmap(mainPixmap,0,0);
+        mainPixmap.dispose();
+        mainPixmap=shadowPixmap;
+      }
+    }
     GlyphMetrics metrics=slot.getMetrics();
-    Bitmap bitmap=slot.getBitmap();
-    Pixmap pixmap=bitmap.getPixmap(Format.RGBA8888);
     Glyph glyph=new Glyph();
-    glyph.id=(int)c;
-    glyph.width=pixmap.getWidth();
-    glyph.height=pixmap.getHeight();
-    glyph.xoffset=slot.getBitmapLeft();
-    glyph.yoffset=parameter.flip ? -slot.getBitmapTop() + (int)baseLine : -(glyph.height - slot.getBitmapTop()) - (int)baseLine;
-    glyph.xadvance=FreeType.toInt(metrics.getHoriAdvance());
+    glyph.id=c;
+    glyph.width=mainPixmap.getWidth();
+    glyph.height=mainPixmap.getHeight();
+    glyph.xoffset=mainGlyph.getLeft();
+    glyph.yoffset=parameter.flip ? -mainGlyph.getTop() + (int)baseLine : -(glyph.height - mainGlyph.getTop()) - (int)baseLine;
+    glyph.xadvance=FreeType.toInt(metrics.getHoriAdvance()) + (int)parameter.borderWidth;
     if (bitmapped) {
-      pixmap.setColor(Color.CLEAR);
-      pixmap.fill();
-      ByteBuffer buf=bitmap.getBuffer();
+      mainPixmap.setColor(Color.CLEAR);
+      mainPixmap.fill();
+      ByteBuffer buf=mainBitmap.getBuffer();
       for (int h=0; h < glyph.height; h++) {
-        int idx=h * bitmap.getPitch();
+        int idx=h * mainBitmap.getPitch();
         for (int w=0; w < (glyph.width + glyph.xoffset); w++) {
           int bit=(buf.get(idx + (w / 8)) >>> (7 - (w % 8))) & 1;
-          pixmap.drawPixel(w,h,((bit == 1) ? Color.WHITE.toIntBits() : Color.CLEAR.toIntBits()));
+          mainPixmap.drawPixel(w,h,((bit == 1) ? Color.WHITE.toIntBits() : Color.CLEAR.toIntBits()));
         }
       }
     }
     String name=packPrefix + c;
-    Rectangle rect=packer.pack(name,pixmap);
+    Rectangle rect=packer.pack(name,mainPixmap);
     int pIndex=packer.getPageIndex(name);
     if (pIndex == -1)     throw new IllegalStateException("packer was not able to insert '" + name + "' into a page");
     glyph.page=pIndex;
     glyph.srcX=(int)rect.x;
     glyph.srcY=(int)rect.y;
     data.setGlyph(c,glyph);
-    pixmap.dispose();
+    mainPixmap.dispose();
+    mainGlyph.dispose();
+  }
+  if (stroker != null) {
+    stroker.dispose();
   }
   if (parameter.kerning) {
     for (int i=0; i < parameter.characters.length(); i++) {
