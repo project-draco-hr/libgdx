@@ -1,8 +1,8 @@
 {
-  if (pushCurrentStateToStack) {
+  if (pushCurrentStateToStack && currentState != null) {
     stateStack.add(currentState);
   }
-  currentState.exit(owner);
+  if (currentState != null)   currentState.exit(owner);
   currentState=newState;
   currentState.enter(owner);
 }
