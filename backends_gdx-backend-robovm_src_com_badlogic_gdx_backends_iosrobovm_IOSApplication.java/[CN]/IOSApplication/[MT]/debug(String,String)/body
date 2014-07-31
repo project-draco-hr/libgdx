@@ -1,5 +1,5 @@
 {
   if (logLevel >= LOG_DEBUG) {
-    Foundation.NSLog("[debug] " + tag + ": "+ message);
+    Foundation.log("[debug] " + tag + ": "+ message);
   }
 }

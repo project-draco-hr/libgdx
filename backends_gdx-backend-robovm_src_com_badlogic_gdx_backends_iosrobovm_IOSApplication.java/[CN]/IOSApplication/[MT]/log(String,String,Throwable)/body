@@ -1,6 +1,6 @@
 {
   if (logLevel > LOG_NONE) {
-    Foundation.NSLog("[info] " + tag + ": "+ message);
+    Foundation.log("[info] " + tag + ": "+ message);
     exception.printStackTrace();
   }
 }

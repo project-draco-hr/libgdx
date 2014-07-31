@@ -1,6 +1,6 @@
 {
   if (logLevel >= LOG_DEBUG) {
-    Foundation.NSLog("[error] " + tag + ": "+ message);
+    Foundation.log("[error] " + tag + ": "+ message);
     exception.printStackTrace();
   }
 }
