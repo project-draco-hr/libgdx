@@ -2,10 +2,10 @@
   filePath=font.pathWithoutExtension();
   library=FreeType.initFreeType();
   if (library == null)   throw new GdxRuntimeException("Couldn't initialize FreeType");
-  face=FreeType.newFace(library,font,0);
+  face=library.newFace(font,0);
   if (face == null)   throw new GdxRuntimeException("Couldn't create face for font '" + font + "'");
   if (checkForBitmapFont()) {
     return;
   }
-  if (!FreeType.setPixelSizes(face,0,15))   throw new GdxRuntimeException("Couldn't set size for font '" + font + "'");
+  if (!face.setPixelSizes(0,15))   throw new GdxRuntimeException("Couldn't set size for font '" + font + "'");
 }

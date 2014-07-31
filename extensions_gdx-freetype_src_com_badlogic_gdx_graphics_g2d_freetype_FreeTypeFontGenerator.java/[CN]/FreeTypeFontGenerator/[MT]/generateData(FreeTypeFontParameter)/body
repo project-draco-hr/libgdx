@@ -1,7 +1,7 @@
 {
   parameter=parameter == null ? new FreeTypeFontParameter() : parameter;
   FreeTypeBitmapFontData data=new FreeTypeBitmapFontData();
-  if (!bitmapped && !FreeType.setPixelSizes(face,0,parameter.size))   throw new GdxRuntimeException("Couldn't set size for font");
+  if (!bitmapped && !face.setPixelSizes(0,parameter.size))   throw new GdxRuntimeException("Couldn't set size for font");
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   data.flipped=parameter.flip;
   data.ascent=FreeType.toInt(fontMetrics.getAscender());
@@ -10,13 +10,13 @@
   float baseLine=data.ascent;
   if (bitmapped && (data.lineHeight == 0)) {
     for (int c=32; c < (32 + face.getNumGlyphs()); c++) {
-      if (FreeType.loadChar(face,c,FreeType.FT_LOAD_DEFAULT)) {
+      if (face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
         int lh=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
         data.lineHeight=(lh > data.lineHeight) ? lh : data.lineHeight;
       }
     }
   }
-  if (FreeType.loadChar(face,' ',FreeType.FT_LOAD_DEFAULT)) {
+  if (face.loadChar(' ',FreeType.FT_LOAD_DEFAULT)) {
     data.spaceWidth=FreeType.toInt(face.getGlyph().getMetrics().getHoriAdvance());
   }
  else {
@@ -27,13 +27,13 @@
   spaceGlyph.id=(int)' ';
   data.setGlyph(' ',spaceGlyph);
   for (  char xChar : BitmapFont.xChars) {
-    if (!FreeType.loadChar(face,xChar,FreeType.FT_LOAD_DEFAULT))     continue;
+    if (!face.loadChar(xChar,FreeType.FT_LOAD_DEFAULT))     continue;
     data.xHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }
   if (data.xHeight == 0)   throw new GdxRuntimeException("No x-height character found in font");
   for (  char capChar : BitmapFont.capChars) {
-    if (!FreeType.loadChar(face,capChar,FreeType.FT_LOAD_DEFAULT))     continue;
+    if (!face.loadChar(capChar,FreeType.FT_LOAD_DEFAULT))     continue;
     data.capHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }
@@ -56,11 +56,11 @@
   String packPrefix=ownsAtlas ? "" : (filePath + '_' + parameter.size+ (parameter.flip ? "_flip_" : '_'));
   for (int i=0; i < parameter.characters.length(); i++) {
     char c=parameter.characters.charAt(i);
-    if (!FreeType.loadChar(face,c,FreeType.FT_LOAD_DEFAULT)) {
+    if (!face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
       Gdx.app.log("FreeTypeFontGenerator","Couldn't load char '" + c + "'");
       continue;
     }
-    if (!FreeType.renderGlyph(face.getGlyph(),FreeType.FT_RENDER_MODE_NORMAL)) {
+    if (!face.getGlyph().renderGlyph(FreeType.FT_RENDER_MODE_NORMAL)) {
       Gdx.app.log("FreeTypeFontGenerator","Couldn't render char '" + c + "'");
       continue;
     }
@@ -106,7 +106,7 @@
         char secondChar=parameter.characters.charAt(j);
         Glyph second=data.getGlyph(secondChar);
         if (second == null)         continue;
-        int kerning=FreeType.getKerning(face,FreeType.getCharIndex(face,firstChar),FreeType.getCharIndex(face,secondChar),0);
+        int kerning=face.getKerning(face.getCharIndex(firstChar),face.getCharIndex(secondChar),0);
         if (kerning == 0)         continue;
         first.setKerning(secondChar,FreeType.toInt(kerning));
       }
