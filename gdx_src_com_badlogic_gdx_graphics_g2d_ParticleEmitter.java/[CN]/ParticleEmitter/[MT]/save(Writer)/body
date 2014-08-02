@@ -46,4 +46,6 @@
   output.write("additive: " + additive + "\n");
   output.write("behind: " + behind + "\n");
   output.write("premultipliedAlpha: " + premultipliedAlpha + "\n");
+  output.write("- Image Path -\n");
+  output.write(imagePath + "\n");
 }
