@@ -13,7 +13,7 @@ frameNumber=frameNumber % ((keyFrames.length * 2) - 2);
 if (frameNumber >= keyFrames.length) frameNumber=keyFrames.length - 2 - (frameNumber - keyFrames.length);
 break;
 case LOOP_RANDOM:
-int lastFrameNumber=(int)((stateTime - Gdx.graphics.getDeltaTime()) / frameDuration);
+int lastFrameNumber=(int)((stateTime - (stateTime - lastStateTime)) / frameDuration);
 if (lastFrameNumber != frameNumber) {
 frameNumber=MathUtils.random(keyFrames.length - 1);
 }
@@ -30,5 +30,6 @@ frameNumber=keyFrames.length - frameNumber - 1;
 break;
 }
 lastFrameNumber=frameNumber;
+lastStateTime=stateTime;
 return frameNumber;
 }
