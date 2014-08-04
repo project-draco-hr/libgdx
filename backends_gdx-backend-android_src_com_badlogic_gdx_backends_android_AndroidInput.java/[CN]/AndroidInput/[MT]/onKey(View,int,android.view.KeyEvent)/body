@@ -28,7 +28,7 @@ keyCode=Keys.BUTTON_CIRCLE;
 event.keyCode=keyCode;
 }
 keyEvents.add(event);
-keys.put(event.keyCode,null);
+keys.add(event.keyCode);
 break;
 case android.view.KeyEvent.ACTION_UP:
 long timeStamp=System.nanoTime();

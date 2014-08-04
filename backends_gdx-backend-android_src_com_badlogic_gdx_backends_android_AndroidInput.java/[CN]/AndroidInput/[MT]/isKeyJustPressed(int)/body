@@ -3,6 +3,6 @@
     return justPressedKeys.size > 0;
   }
  else {
-    return justPressedKeys.containsKey(key);
+    return justPressedKeys.contains(key);
   }
 }

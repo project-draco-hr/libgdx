@@ -11,7 +11,7 @@ synchronized (this) {
 switch (e.type) {
 case KeyEvent.KEY_DOWN:
           processor.keyDown(e.keyCode);
-        justPressedKeys.put(e.keyCode,null);
+        justPressedKeys.add(e.keyCode);
       break;
 case KeyEvent.KEY_UP:
     processor.keyUp(e.keyCode);
