@@ -81,8 +81,11 @@
       }
     }
  else {
-      if (this.pressedKeys.add(code) && processor != null) {
-        processor.keyDown(code);
+      if (this.pressedKeys.add(code)) {
+        justPressedKeys.add(code);
+        if (processor != null) {
+          processor.keyDown(code);
+        }
       }
     }
   }

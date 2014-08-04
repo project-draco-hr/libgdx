@@ -1,5 +1,6 @@
 {
   justTouched=false;
+  justPressedKeys.clear();
   if (processor != null) {
     if (touchEvent != null) {
       touchX[touchEvent.pointer]=touchEvent.x;
@@ -24,6 +25,7 @@ switch (keyEvent.type) {
 case KeyEvent.KEY_DOWN:
 processor.keyDown(keyEvent.keyCode);
 keys.add(keyEvent.keyCode);
+justPressedKeys.add(keyEvent.keyCode);
 break;
 case KeyEvent.KEY_UP:
 processor.keyUp(keyEvent.keyCode);
@@ -48,8 +50,13 @@ isTouched[touchEvent.pointer]=false;
 }
 }
 if (keyEvent != null) {
-if (keyEvent.type == KeyEvent.KEY_DOWN) keys.add(keyEvent.keyCode);
-if (keyEvent.type == KeyEvent.KEY_UP) keys.remove(keyEvent.keyCode);
+if (keyEvent.type == KeyEvent.KEY_DOWN) {
+keys.add(keyEvent.keyCode);
+justPressedKeys.add(keyEvent.keyCode);
+}
+if (keyEvent.type == KeyEvent.KEY_UP) {
+keys.remove(keyEvent.keyCode);
+}
 }
 }
 }

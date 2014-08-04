@@ -4,6 +4,7 @@
     private int mouseX, mouseY;
     public boolean keyDown(    int keycode){
       pressedKeys++;
+      justPressedKeys.add(keycode);
       app.graphics.requestRendering();
       return processor != null ? processor.keyDown(keycode) : false;
     }

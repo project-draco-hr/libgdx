@@ -1,5 +1,6 @@
 {
   justTouched=false;
+  justPressedKeys.clear();
   if (processorQueue != null)   processorQueue.drain();
  else {
     currentEventTime=System.nanoTime();
