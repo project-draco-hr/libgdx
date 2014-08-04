@@ -1,5 +1,5 @@
 {
-  if (polygon.length < 6)   throw new IllegalArgumentException("A polygon must have 3 or more coordinate pairs.");
+  if (count < 6)   throw new IllegalArgumentException("A polygon must have 3 or more coordinate pairs.");
   float x=0, y=0;
   float signedArea=0;
   int i=offset;
