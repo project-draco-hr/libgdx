@@ -1,5 +1,6 @@
 {
-  for (  MapObject object : objects) {
+  for (int i=0, n=objects.size; i < n; i++) {
+    MapObject object=objects.get(i);
     if (name.equals(object.getName())) {
       return object;
     }
