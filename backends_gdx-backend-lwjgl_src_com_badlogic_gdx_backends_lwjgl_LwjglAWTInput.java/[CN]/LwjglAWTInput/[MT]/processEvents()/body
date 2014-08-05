@@ -1,6 +1,12 @@
 {
 synchronized (this) {
     justTouched=false;
+    if (keyJustPressed) {
+      keyJustPressed=false;
+      for (int i=0; i < justPressedKeys.length; i++) {
+        justPressedKeys[i]=false;
+      }
+    }
     if (processor != null) {
       InputProcessor processor=this.processor;
       int len=keyEvents.size();
@@ -10,12 +16,14 @@ synchronized (this) {
 switch (e.type) {
 case KeyEvent.KEY_DOWN:
           processor.keyDown(e.keyCode);
-        break;
-case KeyEvent.KEY_UP:
-      processor.keyUp(e.keyCode);
+        keyJustPressed=true;
+      justPressedKeys[e.keyCode]=true;
     break;
+case KeyEvent.KEY_UP:
+  processor.keyUp(e.keyCode);
+break;
 case KeyEvent.KEY_TYPED:
-  processor.keyTyped(e.keyChar);
+processor.keyTyped(e.keyChar);
 }
 usedKeyEvents.free(e);
 }

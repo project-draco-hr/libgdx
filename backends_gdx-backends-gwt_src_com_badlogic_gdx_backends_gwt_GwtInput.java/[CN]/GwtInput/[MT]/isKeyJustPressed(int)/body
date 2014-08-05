@@ -1,9 +1,9 @@
 {
   if (key == Keys.ANY_KEY) {
-    return pressedKeyCount > 0;
+    return keyJustPressed;
   }
   if (key < 0 || key > 255) {
     return false;
   }
-  return pressedKeys[key];
+  return justPressedKeys[key];
 }

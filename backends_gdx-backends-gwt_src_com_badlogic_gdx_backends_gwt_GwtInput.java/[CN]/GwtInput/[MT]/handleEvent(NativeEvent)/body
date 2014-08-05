@@ -47,7 +47,7 @@
   if (e.getType().equals("mouseup")) {
     if (!touched[0])     return;
     this.pressedButtons.remove(getButton(e.getButton()));
-    this.touched[0]=pressedButtons.size() > 0;
+    this.touched[0]=pressedButtons.size > 0;
     if (isCursorCatched()) {
       this.deltaX[0]=(int)getMovementXJSNI(e);
       this.deltaY[0]=(int)getMovementYJSNI(e);
@@ -81,8 +81,14 @@
       }
     }
  else {
-      if (this.pressedKeys.add(code) && processor != null) {
-        processor.keyDown(code);
+      if (!pressedKeys[code]) {
+        pressedKeyCount++;
+        pressedKeys[code]=true;
+        keyJustPressed=true;
+        justPressedKeys[code]=true;
+        if (processor != null) {
+          processor.keyDown(code);
+        }
       }
     }
   }
@@ -92,7 +98,10 @@
   }
   if (e.getType().equals("keyup") && hasFocus) {
     int code=keyForCode(e.getKeyCode());
-    this.pressedKeys.remove(code);
+    if (pressedKeys[code]) {
+      pressedKeyCount--;
+      pressedKeys[code]=false;
+    }
     if (processor != null) {
       processor.keyUp(code);
     }
