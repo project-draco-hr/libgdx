@@ -1,8 +1,9 @@
 {
   if (key == Keys.ANY_KEY) {
-    return justPressedKeys.size > 0;
+    return keyJustPressed;
   }
- else {
-    return justPressedKeys.contains(key);
+  if (key < 0 || key > 255) {
+    return false;
   }
+  return justPressedKeys[key];
 }

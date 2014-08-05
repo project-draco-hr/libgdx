@@ -81,8 +81,11 @@
       }
     }
  else {
-      if (this.pressedKeys.add(code)) {
-        justPressedKeys.add(code);
+      if (!pressedKeys[code]) {
+        pressedKeyCount++;
+        pressedKeys[code]=true;
+        keyJustPressed=true;
+        justPressedKeys[code]=true;
         if (processor != null) {
           processor.keyDown(code);
         }
@@ -95,7 +98,10 @@
   }
   if (e.getType().equals("keyup") && hasFocus) {
     int code=keyForCode(e.getKeyCode());
-    this.pressedKeys.remove(code);
+    if (pressedKeys[code]) {
+      pressedKeyCount--;
+      pressedKeys[code]=false;
+    }
     if (processor != null) {
       processor.keyUp(code);
     }

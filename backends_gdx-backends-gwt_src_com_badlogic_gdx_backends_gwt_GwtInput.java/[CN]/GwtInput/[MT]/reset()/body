@@ -1,4 +1,9 @@
 {
   justTouched=false;
-  justPressedKeys.clear();
+  if (keyJustPressed) {
+    keyJustPressed=false;
+    for (int i=0; i < justPressedKeys.length; i++) {
+      justPressedKeys[i]=false;
+    }
+  }
 }

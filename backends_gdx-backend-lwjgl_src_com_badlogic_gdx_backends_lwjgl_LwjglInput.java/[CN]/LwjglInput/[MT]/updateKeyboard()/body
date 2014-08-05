@@ -1,5 +1,10 @@
 {
-  justPressedKeys.clear();
+  if (keyJustPressed) {
+    keyJustPressed=false;
+    for (int i=0; i < justPressedKeys.length; i++) {
+      justPressedKeys[i]=false;
+    }
+  }
   if (lastKeyCharPressed != 0) {
     keyRepeatTimer-=deltaTime;
     if (keyRepeatTimer < 0) {
@@ -40,7 +45,8 @@ event.type=KeyEvent.KEY_TYPED;
 event.timeStamp=timeStamp;
 keyEvents.add(event);
 pressedKeys++;
-justPressedKeys.add(keyCode);
+keyJustPressed=true;
+justPressedKeys[keyCode]=true;
 lastKeyCharPressed=keyChar;
 keyRepeatTimer=keyRepeatInitialTime;
 }
