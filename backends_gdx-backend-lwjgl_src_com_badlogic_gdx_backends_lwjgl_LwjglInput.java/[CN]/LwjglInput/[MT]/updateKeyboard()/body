@@ -1,6 +1,6 @@
 {
   if (lastKeyCharPressed != 0) {
-    keyRepeatTimer-=Gdx.graphics.getDeltaTime();
+    keyRepeatTimer-=deltaTime;
     if (keyRepeatTimer < 0) {
       keyRepeatTimer=keyRepeatTime;
       KeyEvent event=usedKeyEvents.obtain();

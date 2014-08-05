@@ -13,7 +13,13 @@ frameNumber=frameNumber % ((keyFrames.length * 2) - 2);
 if (frameNumber >= keyFrames.length) frameNumber=keyFrames.length - 2 - (frameNumber - keyFrames.length);
 break;
 case LOOP_RANDOM:
+int lastFrameNumber=(int)((lastStateTime) / frameDuration);
+if (lastFrameNumber != frameNumber) {
 frameNumber=MathUtils.random(keyFrames.length - 1);
+}
+ else {
+frameNumber=this.lastFrameNumber;
+}
 break;
 case REVERSED:
 frameNumber=Math.max(keyFrames.length - frameNumber - 1,0);
@@ -23,5 +29,7 @@ frameNumber=frameNumber % keyFrames.length;
 frameNumber=keyFrames.length - frameNumber - 1;
 break;
 }
+lastFrameNumber=frameNumber;
+lastStateTime=stateTime;
 return frameNumber;
 }
