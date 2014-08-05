@@ -3,7 +3,7 @@
   int length=read(tempBytes);
   if (length <= 0) {
     if (isLooping) {
-      reset();
+      loop();
       renderedSeconds=0;
       length=read(tempBytes);
       if (length <= 0)       return false;
