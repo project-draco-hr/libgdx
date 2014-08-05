@@ -47,7 +47,7 @@
   if (e.getType().equals("mouseup")) {
     if (!touched[0])     return;
     this.pressedButtons.remove(getButton(e.getButton()));
-    this.touched[0]=pressedButtons.size() > 0;
+    this.touched[0]=pressedButtons.size > 0;
     if (isCursorCatched()) {
       this.deltaX[0]=(int)getMovementXJSNI(e);
       this.deltaY[0]=(int)getMovementYJSNI(e);
