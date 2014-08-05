@@ -1,7 +1,7 @@
 {
   if (entries1 == null) {
-    entries1=new Entries(this);
-    entries2=new Entries(this);
+    entries1=new OrderedMapEntries(this);
+    entries2=new OrderedMapEntries(this);
   }
   if (!entries1.valid) {
     entries1.reset();
