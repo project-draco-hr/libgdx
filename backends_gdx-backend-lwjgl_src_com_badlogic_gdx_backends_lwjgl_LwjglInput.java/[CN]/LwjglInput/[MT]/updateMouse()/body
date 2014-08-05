@@ -18,7 +18,7 @@
           event.type=TouchEvent.TOUCH_SCROLLED;
           event.scrollAmount=(int)-Math.signum(Mouse.getEventDWheel());
         }
- else         if (pressedButtons.size() > 0) {
+ else         if (pressedButtons.size > 0) {
           event.type=TouchEvent.TOUCH_DRAGGED;
         }
  else {

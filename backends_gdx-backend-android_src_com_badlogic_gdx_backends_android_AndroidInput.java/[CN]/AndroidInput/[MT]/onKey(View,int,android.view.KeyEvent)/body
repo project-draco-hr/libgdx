@@ -28,7 +28,10 @@ keyCode=Keys.BUTTON_CIRCLE;
 event.keyCode=keyCode;
 }
 keyEvents.add(event);
-keys.put(event.keyCode,null);
+if (!keys[event.keyCode]) {
+keyCount++;
+keys[event.keyCode]=true;
+}
 break;
 case android.view.KeyEvent.ACTION_UP:
 long timeStamp=System.nanoTime();
@@ -48,8 +51,18 @@ event.keyChar=character;
 event.keyCode=0;
 event.type=KeyEvent.KEY_TYPED;
 keyEvents.add(event);
-if (keyCode == Keys.BUTTON_CIRCLE) keys.remove(Keys.BUTTON_CIRCLE);
- else keys.remove(e.getKeyCode());
+if (keyCode == Keys.BUTTON_CIRCLE) {
+if (keys[Keys.BUTTON_CIRCLE]) {
+keyCount--;
+keys[Keys.BUTTON_CIRCLE]=false;
+}
+}
+ else {
+if (keys[e.getKeyCode()]) {
+keyCount--;
+keys[e.getKeyCode()]=false;
+}
+}
 }
 app.getGraphics().requestRendering();
 }
