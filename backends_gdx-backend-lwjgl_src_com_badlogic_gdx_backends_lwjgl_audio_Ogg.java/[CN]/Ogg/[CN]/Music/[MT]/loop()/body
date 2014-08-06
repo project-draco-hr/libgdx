@@ -1,5 +1,5 @@
 {
   StreamUtils.closeQuietly(input);
-  previousInput=null;
+  previousInput=input;
   input=null;
 }
