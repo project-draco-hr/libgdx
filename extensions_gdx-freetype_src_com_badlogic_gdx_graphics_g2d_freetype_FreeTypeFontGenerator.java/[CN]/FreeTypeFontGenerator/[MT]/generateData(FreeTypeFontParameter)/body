@@ -77,7 +77,7 @@
     }
     Bitmap mainBitmap=mainGlyph.getBitmap();
     Pixmap mainPixmap=mainBitmap.getPixmap(Format.RGBA8888,parameter.color);
-    if (parameter.borderWidth > 0 || parameter.shadowOffset > 0) {
+    if (parameter.borderWidth > 0 || parameter.shadowOffsetX != 0 || parameter.shadowOffsetY != 0) {
       com.badlogic.gdx.graphics.g2d.freetype.FreeType.Glyph borderGlyph=mainGlyph;
       Bitmap borderBitmap=mainBitmap;
       if (parameter.borderWidth > 0) {
@@ -92,14 +92,14 @@
         mainPixmap=borderPixmap;
         mainGlyph=borderGlyph;
       }
-      if (parameter.shadowOffset > 0) {
+      if (parameter.shadowOffsetX != 0 || parameter.shadowOffsetY != 0) {
         Pixmap shadowPixmapSrc=borderBitmap.getPixmap(Format.RGBA8888,parameter.shadowColor);
-        Pixmap shadowPixmap=new Pixmap(shadowPixmapSrc.getWidth() + parameter.shadowOffset,shadowPixmapSrc.getHeight() + parameter.shadowOffset,Format.RGBA8888);
+        Pixmap shadowPixmap=new Pixmap(shadowPixmapSrc.getWidth() + Math.abs(parameter.shadowOffsetX),shadowPixmapSrc.getHeight() + Math.abs(parameter.shadowOffsetY),Format.RGBA8888);
         Blending blending=Pixmap.getBlending();
         Pixmap.setBlending(Blending.None);
-        shadowPixmap.drawPixmap(shadowPixmapSrc,parameter.shadowOffset,parameter.shadowOffset);
+        shadowPixmap.drawPixmap(shadowPixmapSrc,Math.max(parameter.shadowOffsetX,0),Math.max(parameter.shadowOffsetY,0));
         Pixmap.setBlending(blending);
-        shadowPixmap.drawPixmap(mainPixmap,0,0);
+        shadowPixmap.drawPixmap(mainPixmap,Math.max(-parameter.shadowOffsetX,0),Math.max(-parameter.shadowOffsetY,0));
         mainPixmap.dispose();
         mainPixmap=shadowPixmap;
       }
