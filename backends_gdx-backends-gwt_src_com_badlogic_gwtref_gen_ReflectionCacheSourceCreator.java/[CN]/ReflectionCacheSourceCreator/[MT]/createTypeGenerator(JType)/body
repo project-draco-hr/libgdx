@@ -24,13 +24,20 @@
   pb("private static Type " + varName + "() {");
   pb("if(" + varName + "!=null) return "+ varName+ ";");
   pb(varName + " = new Type(\"" + name+ "\", "+ id+ ", "+ name+ ".class, "+ superClass+ ", "+ assignables+ ");");
+  if (c == null) {
+    c=t.isInterface();
+  }
   if (c != null) {
-    if (c.isInterface() != null)     pb(varName + ".isInterface = true;");
     if (c.isEnum() != null)     pb(varName + ".isEnum = true;");
     if (c.isArray() != null)     pb(varName + ".isArray = true;");
     if (c.isMemberType())     pb(varName + ".isMemberClass = true;");
-    pb(varName + ".isStatic = " + c.isStatic()+ ";");
-    pb(varName + ".isAbstract = " + c.isAbstract()+ ";");
+    if (c.isInterface() != null) {
+      pb(varName + ".isInterface = true;");
+    }
+ else {
+      pb(varName + ".isStatic = " + c.isStatic()+ ";");
+      pb(varName + ".isAbstract = " + c.isAbstract()+ ";");
+    }
     if (c.getFields() != null && c.getFields().length > 0) {
       pb(varName + ".fields = new Field[] {");
       for (      JField f : c.getFields()) {
