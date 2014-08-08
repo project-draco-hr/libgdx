@@ -1,5 +1,5 @@
 {
-  java.lang.annotation.Annotation[] annotations=field.getDeclaredAnnotations();
+  java.lang.annotation.Annotation[] annotations=ReflectionCache.getType(c).getDeclaredAnnotations();
   Annotation[] result=new Annotation[annotations.length];
   for (int i=0; i < annotations.length; i++) {
     result[i]=new Annotation(annotations[i]);

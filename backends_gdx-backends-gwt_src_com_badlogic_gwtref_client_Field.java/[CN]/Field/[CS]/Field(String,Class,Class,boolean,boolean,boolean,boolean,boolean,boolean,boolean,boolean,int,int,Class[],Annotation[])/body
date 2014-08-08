@@ -20,4 +20,5 @@
     }
   }
   this.elementTypes=tmp;
+  this.annotations=annotations != null ? annotations : new Annotation[]{};
 }

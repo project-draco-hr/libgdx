@@ -1,8 +1,5 @@
 {
   java.lang.annotation.Annotation[] annotations=c.getDeclaredAnnotations();
-  if (annotations == null) {
-    return null;
-  }
   Annotation[] result=new Annotation[annotations.length];
   for (int i=0; i < annotations.length; i++) {
     result[i]=new Annotation(annotations[i]);
