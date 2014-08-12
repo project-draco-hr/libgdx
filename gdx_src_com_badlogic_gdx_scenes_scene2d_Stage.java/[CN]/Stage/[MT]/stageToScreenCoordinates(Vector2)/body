@@ -1,5 +1,5 @@
 {
   viewport.project(stageCoords);
-  stageCoords.y=viewport.getViewportHeight() - stageCoords.y;
+  stageCoords.y=viewport.getScreenHeight() - stageCoords.y;
   return stageCoords;
 }
