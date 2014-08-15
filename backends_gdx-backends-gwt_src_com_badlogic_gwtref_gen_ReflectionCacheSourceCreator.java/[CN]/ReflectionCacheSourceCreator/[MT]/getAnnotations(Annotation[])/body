@@ -4,6 +4,10 @@
     b.append("new java.lang.annotation.Annotation[] {");
     for (    Annotation annotation : annotations) {
       Class<?> type=annotation.annotationType();
+      Retention retention=type.getAnnotation(Retention.class);
+      if (retention == null || retention.value() != RetentionPolicy.RUNTIME) {
+        continue;
+      }
       b.append(" new ").append(type.getCanonicalName()).append("() {");
       Method[] methods=type.getDeclaredMethods();
       for (      Method method : methods) {
