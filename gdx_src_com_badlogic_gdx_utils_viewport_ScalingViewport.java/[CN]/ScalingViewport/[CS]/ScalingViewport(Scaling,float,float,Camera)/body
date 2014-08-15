@@ -1,6 +1,5 @@
 {
   this.scaling=scaling;
-  this.worldWidth=worldWidth;
-  this.worldHeight=worldHeight;
-  this.camera=camera;
+  setWorldSize(worldWidth,worldHeight);
+  setCamera(camera);
 }

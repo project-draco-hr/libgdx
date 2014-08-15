@@ -5,7 +5,7 @@
   Gdx.files=this.getFiles();
   Gdx.graphics=this.getGraphics();
   Gdx.net=this.getNet();
-  getInput().registerSensorListeners();
+  input.onResume();
   if (graphics != null) {
     graphics.onResumeGLSurfaceView();
   }
