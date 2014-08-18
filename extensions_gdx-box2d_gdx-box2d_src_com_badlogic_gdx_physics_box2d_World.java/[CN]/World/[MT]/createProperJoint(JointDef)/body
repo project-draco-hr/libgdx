@@ -37,7 +37,7 @@
   }
   if (def.type == JointType.WeldJoint) {
     WeldJointDef d=(WeldJointDef)def;
-    return jniCreateWeldJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle);
+    return jniCreateWeldJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle,d.frequencyHz,d.dampingRatio);
   }
   if (def.type == JointType.WheelJoint) {
     WheelJointDef d=(WheelJointDef)def;
