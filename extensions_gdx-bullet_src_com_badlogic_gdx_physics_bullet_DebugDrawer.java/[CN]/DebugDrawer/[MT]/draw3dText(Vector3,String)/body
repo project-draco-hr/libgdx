@@ -1,4 +1,10 @@
 {
+  if (spriteBatch == null) {
+    spriteBatch=new SpriteBatch();
+  }
+  if (font == null) {
+    font=new BitmapFont();
+  }
   if (camera.frustum.pointInFrustum(location)) {
     if (viewport != null) {
       camera.project(location,viewport.getScreenX(),viewport.getScreenY(),viewport.getScreenWidth(),viewport.getScreenHeight());

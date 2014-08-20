@@ -3,10 +3,10 @@
   if (ownsShapeRenderer) {
     shapeRenderer.dispose();
   }
-  if (ownsSpriteBatch) {
+  if (ownsSpriteBatch && spriteBatch != null) {
     spriteBatch.dispose();
   }
-  if (ownsFont) {
+  if (ownsFont && font != null) {
     font.dispose();
   }
 }
