@@ -1,5 +1,5 @@
 {
-  if (ownsFont) {
+  if (ownsFont && this.font != null) {
     this.font.dispose();
   }
   this.font=font;
