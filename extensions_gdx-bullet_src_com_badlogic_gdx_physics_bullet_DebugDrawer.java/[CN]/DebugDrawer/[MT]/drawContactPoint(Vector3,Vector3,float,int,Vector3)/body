@@ -1,2 +1,7 @@
 {
+  shapeRenderer.setColor(color.x,color.y,color.z,1f);
+  shapeRenderer.point(pointOnB.x,pointOnB.y,pointOnB.z);
+  to.set(pointOnB.x,pointOnB.y,pointOnB.z);
+  to.add(normalOnB.scl(distance));
+  shapeRenderer.line(pointOnB,to);
 }
