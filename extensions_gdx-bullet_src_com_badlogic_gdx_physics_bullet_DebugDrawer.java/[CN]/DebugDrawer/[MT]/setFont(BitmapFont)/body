@@ -1,0 +1,7 @@
+{
+  if (ownsFont) {
+    this.font.dispose();
+  }
+  this.font=font;
+  ownsFont=false;
+}
