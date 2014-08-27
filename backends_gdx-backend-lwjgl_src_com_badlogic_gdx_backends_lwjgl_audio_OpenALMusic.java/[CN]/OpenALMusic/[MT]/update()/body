@@ -12,8 +12,8 @@
  else     end=true;
   }
   if (end && alGetSourcei(sourceID,AL_BUFFERS_QUEUED) == 0) {
-    if (onCompletionListener != null)     onCompletionListener.onCompletion(this);
     stop();
+    if (onCompletionListener != null)     onCompletionListener.onCompletion(this);
   }
   if (isPlaying && alGetSourcei(sourceID,AL_SOURCE_STATE) != AL_PLAYING)   alSourcePlay(sourceID);
 }
