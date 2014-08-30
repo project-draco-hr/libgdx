@@ -1,6 +1,3 @@
 {
-  Array<Telegraph> listeners=msgListeners.get(msg);
-  if (listeners != null) {
-    listeners.removeValue(listener,true);
-  }
+  removeListener(listener,msg);
 }
