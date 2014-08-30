@@ -1,5 +1,5 @@
 {
-  Array<Agent> listeners=msgListeners.get(msg);
+  Array<Telegraph> listeners=msgListeners.get(msg);
   if (listeners != null) {
     listeners.removeValue(listener,true);
   }
