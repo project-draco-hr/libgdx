@@ -1,6 +1,6 @@
 {
   for (  final btTriangleIndexVertexArray instance : instances) {
-    if (compare(instance,meshParts))     return instance;
+    if (compare(instance,tags))     return instance;
   }
   return null;
 }
