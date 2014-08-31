@@ -7,9 +7,6 @@ synchronized (this) {
         }
       }
     }
- else     if (touched[0]) {
-      return true;
-    }
-    return false;
+    return touched[0];
   }
 }
