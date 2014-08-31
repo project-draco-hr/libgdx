@@ -16,7 +16,7 @@
     }
   }
 );
-  addListener(new FocusListener(){
+  focusListener=new FocusListener(){
     public void keyboardFocusChanged(    FocusEvent event,    Actor actor,    boolean focused){
       if (!focused)       focusChanged(event);
     }
@@ -31,5 +31,5 @@
       }
     }
   }
-);
+;
 }

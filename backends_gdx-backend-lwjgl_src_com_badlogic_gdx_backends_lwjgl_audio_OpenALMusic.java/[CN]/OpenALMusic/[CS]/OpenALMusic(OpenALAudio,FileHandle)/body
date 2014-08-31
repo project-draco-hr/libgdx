@@ -1,8 +1,5 @@
 {
   this.audio=audio;
   this.file=file;
-  if (audio != null) {
-    if (!audio.noDevice)     audio.music.add(this);
-  }
   this.onCompletionListener=null;
 }

@@ -6,7 +6,7 @@
   jumpAnimation=new Animation(0.25f,jumpAtlas.findRegions("ALIEN_JUMP_"));
   badlogic=atlas.createSprite("badlogicslice");
   badlogic.setPosition(50,50);
-  badlogicSmall=atlas.createSprite("badlogicsmall");
+  badlogicSmall=atlas.createSprite("badlogicsmall-rotated");
   badlogicSmall.setPosition(10,10);
   AtlasRegion region=atlas.findRegion("badlogicsmall");
   System.out.println("badlogicSmall original size: " + region.originalWidth + ", "+ region.originalHeight);

@@ -3,6 +3,12 @@
   running=false;
   setGlobals();
   Array<LifecycleListener> listeners=lifecycleListeners;
+  if (canvas.isDisplayable()) {
+    makeCurrent();
+  }
+ else {
+    error(logTag,"OpenGL context destroyed before application listener has had a chance to dispose of textures.");
+  }
 synchronized (listeners) {
     for (    LifecycleListener listener : listeners) {
       listener.pause();

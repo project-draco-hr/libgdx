@@ -1,4 +1,5 @@
 {
+  this.color.set(NumberUtils.floatToIntColor(color));
   vertices[C1]=color;
   vertices[C2]=color;
   vertices[C3]=color;

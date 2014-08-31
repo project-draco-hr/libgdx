@@ -4,7 +4,7 @@
   try {
     canvas=new AWTGLCanvas(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice(),new PixelFormat(),sharedDrawable){
       private final Dimension minSize=new Dimension(0,0);
-      public Dimension getMinimumSize(){
+      @Override public Dimension getMinimumSize(){
         return minSize;
       }
       @Override public void initGL(){
@@ -27,16 +27,16 @@
     throw new GdxRuntimeException(ex);
   }
   graphics=new LwjglGraphics(canvas){
-    public void setTitle(    String title){
+    @Override public void setTitle(    String title){
       super.setTitle(title);
       LwjglAWTCanvas.this.setTitle(title);
     }
-    public boolean setDisplayMode(    int width,    int height,    boolean fullscreen){
+    @Override public boolean setDisplayMode(    int width,    int height,    boolean fullscreen){
       if (!super.setDisplayMode(width,height,fullscreen))       return false;
       if (!fullscreen)       LwjglAWTCanvas.this.setDisplayMode(width,height);
       return true;
     }
-    public boolean setDisplayMode(    DisplayMode displayMode){
+    @Override public boolean setDisplayMode(    DisplayMode displayMode){
       if (!super.setDisplayMode(displayMode))       return false;
       LwjglAWTCanvas.this.setDisplayMode(displayMode.width,displayMode.height);
       return true;
