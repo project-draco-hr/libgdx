@@ -21,7 +21,7 @@
   }
   ApplicationType type=Gdx.app.getType();
   if (type == ApplicationType.Desktop || type == ApplicationType.Applet || type == ApplicationType.WebGL)   mouseOverActor=fireEnterAndExit(mouseOverActor,mouseScreenX,mouseScreenY,-1);
-  int previousActionCount=Actor.runningActionCount;
   root.act(delta);
-  if (actionsRequestRendering && previousActionCount != Actor.runningActionCount)   Gdx.graphics.requestRendering();
+  if (actionsRequestRendering && Actor.actionsChanged)   Gdx.graphics.requestRendering();
+  Actor.actionsChanged=false;
 }

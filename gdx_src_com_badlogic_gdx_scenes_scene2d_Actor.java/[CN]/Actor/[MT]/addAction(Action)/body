@@ -1,5 +1,5 @@
 {
   action.setActor(this);
   actions.add(action);
-  runningActionCount++;
+  actionsChanged=true;
 }

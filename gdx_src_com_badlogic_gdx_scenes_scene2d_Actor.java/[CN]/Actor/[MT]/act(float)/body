@@ -1,7 +1,7 @@
 {
   Array<Action> actions=this.actions;
   if (actions.size > 0) {
-    runningActionCount+=actions.size;
+    actionsChanged=true;
     for (int i=0; i < actions.size; i++) {
       Action action=actions.get(i);
       if (action.act(delta) && i < actions.size) {
