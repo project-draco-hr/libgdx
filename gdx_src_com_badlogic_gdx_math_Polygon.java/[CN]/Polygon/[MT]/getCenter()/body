@@ -1,5 +1,0 @@
-{
-  if (dirty)   getTransformedVertices();
-  if (center == null)   center=new Vector2();
-  return GeometryUtils.polygonCentroid(worldVertices,0,worldVertices.length,center);
-}
