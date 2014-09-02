@@ -1,13 +1,23 @@
 {
   if (annotations != null && annotations.length > 0) {
+    int numValidAnnotations=0;
+    final Class<?>[] ignoredAnnotations={Deprecated.class,Retention.class};
     StringBuilder b=new StringBuilder();
     b.append("new java.lang.annotation.Annotation[] {");
     for (    Annotation annotation : annotations) {
       Class<?> type=annotation.annotationType();
+      boolean ignoredType=false;
+      for (int i=0; !ignoredType && i < ignoredAnnotations.length; i++) {
+        ignoredType=ignoredAnnotations[i].equals(type);
+      }
+      if (ignoredType) {
+        continue;
+      }
       Retention retention=type.getAnnotation(Retention.class);
       if (retention == null || retention.value() != RetentionPolicy.RUNTIME) {
         continue;
       }
+      numValidAnnotations++;
       b.append(" new ").append(type.getCanonicalName()).append("() {");
       Method[] methods=type.getDeclaredMethods();
       for (      Method method : methods) {
@@ -90,7 +100,7 @@ catch (        InvocationTargetException e) {
       b.append("}, ");
     }
     b.append("}");
-    return b.toString();
+    return (numValidAnnotations > 0) ? b.toString() : "null";
   }
   return "null";
 }
