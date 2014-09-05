@@ -1,27 +1,8 @@
 {
   int apiLevel=0;
   for (  File api : apis.listFiles()) {
-    if (apiLevel != 0) {
-      try {
-        apiLevel=Integer.parseInt(api.getName().split("android-")[1]);
-      }
- catch (      NumberFormatException nfe) {
-        continue;
-      }
-catch (      ArrayIndexOutOfBoundsException ioobe) {
-        continue;
-      }
-    }
-    try {
-      int testLevel=Integer.parseInt(api.getName().split("android-")[1]);
-      if (testLevel > apiLevel)       apiLevel=testLevel;
-    }
- catch (    NumberFormatException nfe) {
-      continue;
-    }
-catch (    ArrayIndexOutOfBoundsException ioobe) {
-      continue;
-    }
+    int level=readAPIVersion(api);
+    if (level > apiLevel)     apiLevel=level;
   }
   return apiLevel;
 }

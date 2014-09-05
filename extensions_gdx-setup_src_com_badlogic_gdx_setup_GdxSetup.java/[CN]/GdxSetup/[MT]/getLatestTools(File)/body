@@ -4,13 +4,13 @@
   int[] testSplit=new int[3];
   for (  File toolsVersion : buildTools.listFiles()) {
     if (version == null) {
-      version=toolsVersion.getName();
+      version=readBuildToolsVersion(toolsVersion);
       versionSplit=convertTools(version);
       continue;
     }
-    testSplit=convertTools(toolsVersion.getName());
+    testSplit=convertTools(readBuildToolsVersion(toolsVersion));
     if (compareVersions(versionSplit,testSplit)) {
-      version=toolsVersion.getName();
+      version=readBuildToolsVersion(toolsVersion);
     }
   }
   if (version != null) {
