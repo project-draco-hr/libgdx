@@ -1,0 +1,11 @@
+{
+  X x1=new X();
+  x1.s="123.0.0";
+  x1.n=123;
+  x1.d=1234567890123456789012d;
+  System.out.println(x1);
+  String jsonString=new Json().toJson(x1);
+  System.out.println(new Json().prettyPrint(jsonString));
+  X x2=new Json().fromJson(X.class,jsonString);
+  System.out.println(x2);
+}
