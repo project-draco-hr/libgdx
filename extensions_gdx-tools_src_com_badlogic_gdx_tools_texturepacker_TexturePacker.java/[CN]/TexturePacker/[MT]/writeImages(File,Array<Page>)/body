@@ -26,6 +26,8 @@
     }
     width=Math.max(settings.minWidth,width);
     height=Math.max(settings.minHeight,height);
+    page.imageWidth=width;
+    page.imageHeight=height;
     File outputFile;
     while (true) {
       outputFile=new File(packDir,imageName + (fileIndex++ == 0 ? "" : fileIndex) + "."+ settings.outputFormat);
