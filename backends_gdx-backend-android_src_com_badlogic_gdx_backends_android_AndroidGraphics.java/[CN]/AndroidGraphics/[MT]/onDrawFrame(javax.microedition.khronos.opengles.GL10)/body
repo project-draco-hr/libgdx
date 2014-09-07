@@ -54,6 +54,7 @@ synchronized (app.getRunnables()) {
       }
     }
     app.getInput().processEvents();
+    frameId++;
     app.getApplicationListener().render();
   }
   if (lpause) {
