@@ -1,7 +1,25 @@
 {
-  TextureRegion[] regs=new TextureRegion[data.getImagePaths().length];
-  for (int i=0; i < regs.length; i++) {
-    regs[i]=new TextureRegion(manager.get(data.getImagePath(i),Texture.class));
+  if (parameter.atlasName != null) {
+    if (manager.getLoader(TextureAtlas.class) == null) {
+      throw new IllegalStateException(String.format("Tried to load a BitmapFont %s from a TextureAtlas %s, but no TextureAtlas loader was set",fileName,parameter.atlasName));
+    }
+ else {
+      TextureAtlas atlas=manager.get(parameter.atlasName,TextureAtlas.class);
+      String name=file.sibling(data.imagePaths[0]).nameWithoutExtension().toString();
+      AtlasRegion region=atlas.findRegion(name);
+      if (region == null) {
+        throw new IllegalArgumentException(String.format("Could not find font region %s in atlas %s",name,parameter.atlasName));
+      }
+ else {
+        return new BitmapFont(file,region);
+      }
+    }
   }
-  return new BitmapFont(data,regs,true);
+ else {
+    TextureRegion[] regs=new TextureRegion[data.getImagePaths().length];
+    for (int i=0; i < regs.length; i++) {
+      regs[i]=new TextureRegion(manager.get(data.getImagePath(i),Texture.class));
+    }
+    return new BitmapFont(data,regs,true);
+  }
 }
