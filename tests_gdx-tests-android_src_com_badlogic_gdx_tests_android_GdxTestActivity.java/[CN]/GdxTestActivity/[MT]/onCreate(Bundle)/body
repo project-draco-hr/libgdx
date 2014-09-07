@@ -3,6 +3,9 @@
   Bundle extras=getIntent().getExtras();
   String testName=(String)extras.get("test");
   GdxTest test=GdxTests.newTest(testName);
+  if (PayTest.class.equals(test.getClass())) {
+    IAP.init(new PurchaseManagerGoogleAndroid(this));
+  }
   AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
   config.useImmersiveMode=true;
   initialize(test,config);

@@ -1,0 +1,22 @@
+{
+  font=new BitmapFont();
+  batch=new SpriteBatch();
+  try {
+    message="Testing InApp Managers... (" + IAP.getManagerCount() + " total)\n";
+    for (int i=0; i < IAP.getManagerCount(); i++) {
+      final PurchaseManager manager=IAP.getManager(i);
+      manager.purchase(new PurchaseListener(){
+        @Override public void handlePurchase(        Purchase purchase){
+          message+="Manager \"" + manager.toString() + "\": Purchase sucessful for "+ purchase.identifier;
+        }
+        @Override public void handleError(        Throwable e){
+          throw new RuntimeException(e);
+        }
+      }
+,Purchase.IDENTIFIER_TEST_SUCCESS);
+    }
+  }
+ catch (  Throwable e) {
+    throw new RuntimeException(e);
+  }
+}

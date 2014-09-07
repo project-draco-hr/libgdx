@@ -1,0 +1,11 @@
+{
+  if (managers != null) {
+    for (int i=0; i < managers.size(); i++) {
+      PurchaseManager manager=managers.get(i);
+      if (manager instanceof Disposable) {
+        ((Disposable)manager).dispose();
+      }
+    }
+    IAP.managers=null;
+  }
+}
