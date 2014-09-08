@@ -1,7 +1,7 @@
 {
-  Resolution bestDesc=choose(descriptors);
+  Resolution bestResolution=choose(descriptors);
   FileHandle originalHandle=new FileHandle(fileName);
-  FileHandle handle=baseResolver.resolve(resolve(originalHandle,bestDesc.suffix));
+  FileHandle handle=baseResolver.resolve(resolve(originalHandle,bestResolution.folder));
   if (!handle.exists())   handle=baseResolver.resolve(fileName);
   return handle;
 }

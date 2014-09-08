@@ -24,13 +24,20 @@
   pb("private static Type " + varName + "() {");
   pb("if(" + varName + "!=null) return "+ varName+ ";");
   pb(varName + " = new Type(\"" + name+ "\", "+ id+ ", "+ name+ ".class, "+ superClass+ ", "+ assignables+ ");");
+  if (c == null) {
+    c=t.isInterface();
+  }
   if (c != null) {
-    if (c.isInterface() != null)     pb(varName + ".isInterface = true;");
     if (c.isEnum() != null)     pb(varName + ".isEnum = true;");
     if (c.isArray() != null)     pb(varName + ".isArray = true;");
     if (c.isMemberType())     pb(varName + ".isMemberClass = true;");
-    pb(varName + ".isStatic = " + c.isStatic()+ ";");
-    pb(varName + ".isAbstract = " + c.isAbstract()+ ";");
+    if (c.isInterface() != null) {
+      pb(varName + ".isInterface = true;");
+    }
+ else {
+      pb(varName + ".isStatic = " + c.isStatic()+ ";");
+      pb(varName + ".isAbstract = " + c.isAbstract()+ ";");
+    }
     if (c.getFields() != null && c.getFields().length > 0) {
       pb(varName + ".fields = new Field[] {");
       for (      JField f : c.getFields()) {
@@ -38,7 +45,8 @@
         String fieldType=getType(f.getType());
         int setterGetter=nextSetterGetterId++;
         String elementType=getElementTypes(f);
-        pb("    new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ setterGetter+ ", "+ setterGetter+ ", "+ elementType+ "), ");
+        String annotations=getAnnotations(f.getDeclaredAnnotations());
+        pb("    new Field(\"" + f.getName() + "\", "+ enclosingType+ ", "+ fieldType+ ", "+ f.isFinal()+ ", "+ f.isDefaultAccess()+ ", "+ f.isPrivate()+ ", "+ f.isProtected()+ ", "+ f.isPublic()+ ", "+ f.isStatic()+ ", "+ f.isTransient()+ ", "+ f.isVolatile()+ ", "+ setterGetter+ ", "+ setterGetter+ ", "+ elementType+ ", "+ annotations+ "), ");
         SetterGetterStub stub=new SetterGetterStub();
         stub.name=f.getName();
         stub.enclosingType=enclosingType;
@@ -72,6 +80,13 @@
         }
       }
     }
+    Annotation[] annotations=c.getDeclaredAnnotations();
+    if (annotations != null && annotations.length > 0) {
+      pb(varName + ".annotations = " + getAnnotations(annotations)+ ";");
+    }
+  }
+ else   if (t.isAnnotation() != null) {
+    pb(varName + ".isAnnotation = true;");
   }
  else {
     pb(varName + ".isPrimitive = true;");

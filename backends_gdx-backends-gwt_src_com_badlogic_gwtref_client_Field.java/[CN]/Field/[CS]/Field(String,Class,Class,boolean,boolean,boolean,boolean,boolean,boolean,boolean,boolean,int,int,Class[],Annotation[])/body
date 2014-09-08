@@ -1,0 +1,24 @@
+{
+  this.name=name;
+  this.enclosingType=new CachedTypeLookup(enclosingType);
+  this.type=new CachedTypeLookup(type);
+  this.isFinal=isFinal;
+  this.isDefaultAccess=isDefaultAccess;
+  this.isPrivate=isPrivate;
+  this.isProtected=isProtected;
+  this.isPublic=isPublic;
+  this.isStatic=isStatic;
+  this.isTransient=isTransient;
+  this.isVolatile=isVolatile;
+  this.getter=getter;
+  this.setter=setter;
+  CachedTypeLookup[] tmp=null;
+  if (elementTypes != null) {
+    tmp=new CachedTypeLookup[elementTypes.length];
+    for (int i=0; i < tmp.length; i++) {
+      tmp[i]=new CachedTypeLookup(elementTypes[i]);
+    }
+  }
+  this.elementTypes=tmp;
+  this.annotations=annotations != null ? annotations : new Annotation[]{};
+}
