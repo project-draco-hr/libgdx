@@ -43,7 +43,8 @@
     int column=c.column, row=c.row;
     Actor a=c.actor;
     float spannedWeightedWidth=0;
-    for (int ii=column, nn=ii + c.colspan; ii < nn; ii++)     spannedWeightedWidth+=columnWeightedWidth[ii];
+    int colspan=c.colspan;
+    for (int ii=column, nn=ii + colspan; ii < nn; ii++)     spannedWeightedWidth+=columnWeightedWidth[ii];
     float weightedHeight=rowWeightedHeight[row];
     float prefWidth=c.prefWidth.get(a);
     float prefHeight=c.prefHeight.get(a);
@@ -57,7 +58,7 @@
     if (maxHeight > 0 && prefHeight > maxHeight)     prefHeight=maxHeight;
     c.actorWidth=Math.min(spannedWeightedWidth - c.computedPadLeft - c.computedPadRight,prefWidth);
     c.actorHeight=Math.min(weightedHeight - c.computedPadTop - c.computedPadBottom,prefHeight);
-    if (c.colspan == 1)     columnWidth[column]=Math.max(columnWidth[column],spannedWeightedWidth);
+    if (colspan == 1)     columnWidth[column]=Math.max(columnWidth[column],spannedWeightedWidth);
     rowHeight[row]=Math.max(rowHeight[row],weightedHeight);
   }
   if (totalExpandWidth > 0) {
@@ -117,21 +118,23 @@
     for (int column=c.column, nn=column + c.colspan; column < nn; column++)     spannedCellWidth+=columnWidth[column];
     spannedCellWidth-=c.computedPadLeft + c.computedPadRight;
     currentX+=c.computedPadLeft;
-    if (c.fillX > 0) {
-      c.actorWidth=spannedCellWidth * c.fillX;
+    float fillX=c.fillX, fillY=c.fillY;
+    if (fillX > 0) {
+      c.actorWidth=spannedCellWidth * fillX;
       float maxWidth=c.maxWidth.get(c.actor);
       if (maxWidth > 0)       c.actorWidth=Math.min(c.actorWidth,maxWidth);
     }
-    if (c.fillY > 0) {
-      c.actorHeight=rowHeight[c.row] * c.fillY - c.computedPadTop - c.computedPadBottom;
+    if (fillY > 0) {
+      c.actorHeight=rowHeight[c.row] * fillY - c.computedPadTop - c.computedPadBottom;
       float maxHeight=c.maxHeight.get(c.actor);
       if (maxHeight > 0)       c.actorHeight=Math.min(c.actorHeight,maxHeight);
     }
-    if ((c.align & Align.left) != 0)     c.actorX=currentX;
- else     if ((c.align & Align.right) != 0)     c.actorX=currentX + spannedCellWidth - c.actorWidth;
+    align=c.align;
+    if ((align & Align.left) != 0)     c.actorX=currentX;
+ else     if ((align & Align.right) != 0)     c.actorX=currentX + spannedCellWidth - c.actorWidth;
  else     c.actorX=currentX + (spannedCellWidth - c.actorWidth) / 2;
-    if ((c.align & Align.top) != 0)     c.actorY=currentY + c.computedPadTop;
- else     if ((c.align & Align.bottom) != 0)     c.actorY=currentY + rowHeight[c.row] - c.actorHeight - c.computedPadBottom;
+    if ((align & Align.top) != 0)     c.actorY=currentY + c.computedPadTop;
+ else     if ((align & Align.bottom) != 0)     c.actorY=currentY + rowHeight[c.row] - c.actorHeight - c.computedPadBottom;
  else     c.actorY=currentY + (rowHeight[c.row] - c.actorHeight + c.computedPadTop - c.computedPadBottom) / 2;
     if (c.endRow) {
       currentX=x;
