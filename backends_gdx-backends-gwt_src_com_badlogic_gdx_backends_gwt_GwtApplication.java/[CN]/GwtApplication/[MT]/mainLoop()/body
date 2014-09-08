@@ -12,6 +12,7 @@
     runnablesHelper.get(i).run();
   }
   runnablesHelper.clear();
+  graphics.frameId++;
   listener.render();
   input.reset();
 }

@@ -20,5 +20,6 @@
     frames=0;
   }
   input.processEvents();
+  frameId++;
   app.listener.render();
 }
