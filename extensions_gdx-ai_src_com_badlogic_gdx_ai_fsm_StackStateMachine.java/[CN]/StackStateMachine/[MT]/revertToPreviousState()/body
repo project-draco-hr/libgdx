@@ -1,8 +1,0 @@
-{
-  if (stateStack.size == 0) {
-    return false;
-  }
-  State<E> previousState=stateStack.pop();
-  changeState(previousState,false);
-  return true;
-}

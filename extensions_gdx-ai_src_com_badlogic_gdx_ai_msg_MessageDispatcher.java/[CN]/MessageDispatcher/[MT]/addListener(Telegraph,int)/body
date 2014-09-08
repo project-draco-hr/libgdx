@@ -1,8 +1,0 @@
-{
-  Array<Telegraph> listeners=msgListeners.get(msg);
-  if (listeners == null) {
-    listeners=new Array<Telegraph>(false,16);
-    msgListeners.put(msg,listeners);
-  }
-  listeners.add(listener);
-}

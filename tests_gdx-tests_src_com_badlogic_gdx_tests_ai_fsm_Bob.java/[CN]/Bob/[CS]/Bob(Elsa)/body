@@ -1,9 +1,0 @@
-{
-  this.elsa=elsa;
-  location=Location.SHACK;
-  goldCarried=0;
-  moneyInBank=0;
-  thirst=0;
-  fatigue=0;
-  stateMachine=new DefaultStateMachine<Bob>(this,BobState.GO_HOME_AND_SLEEP_TILL_RESTED);
-}

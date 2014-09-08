@@ -1,5 +1,0 @@
-{
-  boolean uniqueness=timeGranularity > 0;
-  this.timeGranularity=uniqueness ? (long)(timeGranularity * NANOS_PER_SEC) : 0;
-  this.queue.setUniqueness(uniqueness);
-}
