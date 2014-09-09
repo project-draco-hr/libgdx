@@ -1,8 +1,5 @@
 {
-  if (align == null)   align=Align.left;
- else {
-    align|=Align.left;
-    align&=~Align.right;
-  }
+  if (align == null)   align=lefti;
+ else   align=(align | Align.left) & ~Align.right;
   return this;
 }
