@@ -50,11 +50,10 @@
   }
   outer:   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
-    if (c.expandX == 0)     continue;
-    int column=c.column;
-    int nn=column + c.colspan;
-    for (int ii=column; ii < nn; ii++)     if (expandWidth[ii] != 0)     continue outer;
     int expandX=c.expandX;
+    if (expandX == 0)     continue;
+    int column=c.column, nn=column + c.colspan;
+    for (int ii=column; ii < nn; ii++)     if (expandWidth[ii] != 0)     continue outer;
     for (int ii=column; ii < nn; ii++)     expandWidth[ii]=expandX;
   }
   for (int i=0; i < cellCount; i++) {

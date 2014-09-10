@@ -12,6 +12,7 @@
   Gdx.net=net;
   Gdx.audio=audio;
   Gdx.graphics=graphics;
+  Gdx.input=input;
   renderInterval=config.renderInterval > 0 ? (long)(config.renderInterval * 1000000000f) : (config.renderInterval < 0 ? -1 : 0);
   initialize();
 }
