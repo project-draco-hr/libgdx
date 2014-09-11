@@ -29,16 +29,16 @@
 ).start();
         }
         if (identifier.equals("android.test.purchased")) {
-          identifier=Purchase.IDENTIFIER_TEST_SUCCESS;
+          identifier=Transaction.IDENTIFIER_TEST_SUCCESS;
         }
  else         if (identifier.equals("android.test.canceled")) {
-          identifier=Purchase.IDENTIFIER_TEST_FAILURE_CANCELED;
+          identifier=Transaction.IDENTIFIER_TEST_FAILURE_CANCELED;
         }
  else         if (identifier.equals("android.test.refunded")) {
-          identifier=Purchase.IDENTIFIER_TEST_FAILURE_REFUNDED;
+          identifier=Transaction.IDENTIFIER_TEST_FAILURE_REFUNDED;
         }
  else         if (identifier.equals("android.test.item_unavailable")) {
-          identifier=Purchase.IDENTIFIER_TEST_FAILURE_INVALIDIDENTIFIER;
+          identifier=Transaction.IDENTIFIER_TEST_FAILURE_INVALIDIDENTIFIER;
         }
         String developerPayload=jo.getString("developerPayload");
         final PurchaseListener listener=listeners.remove(developerPayload);
@@ -46,7 +46,7 @@
           Gdx.app.error("","Wrong developerPayload string (cannot find listener).");
         }
  else {
-          Purchase purchase=new Purchase(identifier,valid,transactionId,transactionDate,transactionReceipt);
+          Transaction purchase=new Transaction(identifier,valid,transactionId,transactionDate,transactionReceipt);
           listener.handlePurchase(purchase);
         }
       }

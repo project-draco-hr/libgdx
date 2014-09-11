@@ -1,0 +1,8 @@
+{
+  if (manager != null) {
+    manager.purchaseRestore();
+  }
+ else {
+    throw new GdxRuntimeException("No purchase manager was found.");
+  }
+}

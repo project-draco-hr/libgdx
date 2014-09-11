@@ -1,0 +1,8 @@
+{
+  if (manager != null) {
+    if (manager instanceof Disposable) {
+      ((Disposable)manager).dispose();
+    }
+    manager=null;
+  }
+}

@@ -1,14 +1,14 @@
 {
-  if (identifier.equals(Purchase.IDENTIFIER_TEST_SUCCESS)) {
+  if (identifier.equals(Transaction.IDENTIFIER_TEST_SUCCESS)) {
     identifier="android.test.purchased";
   }
- else   if (identifier.equals(Purchase.IDENTIFIER_TEST_FAILURE_CANCELED)) {
+ else   if (identifier.equals(Transaction.IDENTIFIER_TEST_FAILURE_CANCELED)) {
     identifier="android.test.canceled";
   }
- else   if (identifier.equals(Purchase.IDENTIFIER_TEST_FAILURE_REFUNDED)) {
+ else   if (identifier.equals(Transaction.IDENTIFIER_TEST_FAILURE_REFUNDED)) {
     identifier="android.test.refunded";
   }
- else   if (identifier.equals(Purchase.IDENTIFIER_TEST_FAILURE_INVALIDIDENTIFIER)) {
+ else   if (identifier.equals(Transaction.IDENTIFIER_TEST_FAILURE_INVALIDIDENTIFIER)) {
     identifier="android.test.item_unavailable";
   }
   String developerPayload="gdx-pay-google-android-listener-" + listenerIndex++;
