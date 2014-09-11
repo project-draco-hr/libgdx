@@ -1,0 +1,4 @@
+{
+  list.getColor().a=1;
+  return sequence(fadeOut(0.15f,Interpolation.fade),removeActor());
+}
