@@ -1,0 +1,30 @@
+{
+  if (storeName.equals(PurchaseManagerConfig.STORE_NAME_GOOGLE)) {
+    return OpenIabHelper.NAME_GOOGLE;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_AMAZON)) {
+    return OpenIabHelper.NAME_AMAZON;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_SAMSUNG)) {
+    return OpenIabHelper.NAME_SAMSUNG;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_NOKIA)) {
+    return OpenIabHelper.NAME_NOKIA;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_SLIDEME)) {
+    return OpenIabHelper.NAME_SLIDEME;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_APTOIDE)) {
+    return OpenIabHelper.NAME_APTOIDE;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_APPLAND)) {
+    return OpenIabHelper.NAME_APPLAND;
+  }
+ else   if (storeName.equals(PurchaseManagerConfig.STORE_NAME_YANDEX)) {
+    return OpenIabHelper.NAME_YANDEX;
+  }
+ else {
+    Gdx.app.error(TAG,"Store name could not be mapped: " + storeName);
+    return storeName;
+  }
+}

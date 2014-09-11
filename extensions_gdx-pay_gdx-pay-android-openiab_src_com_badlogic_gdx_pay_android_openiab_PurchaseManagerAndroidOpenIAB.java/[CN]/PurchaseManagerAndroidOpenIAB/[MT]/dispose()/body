@@ -1,4 +1,8 @@
 {
-  helper.dispose();
-  helper=null;
+  if (helper != null) {
+    helper.dispose();
+    helper=null;
+    observer=null;
+    config=null;
+  }
 }
