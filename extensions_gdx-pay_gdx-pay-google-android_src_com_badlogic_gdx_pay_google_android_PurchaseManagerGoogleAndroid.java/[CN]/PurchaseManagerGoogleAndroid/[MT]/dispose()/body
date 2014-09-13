@@ -1,8 +1,0 @@
-{
-  if (mService != null) {
-    Log.d(toString(),"Service Shutdown!");
-    activity.unbindService(mServiceConn);
-    activity=null;
-    mService=null;
-  }
-}
