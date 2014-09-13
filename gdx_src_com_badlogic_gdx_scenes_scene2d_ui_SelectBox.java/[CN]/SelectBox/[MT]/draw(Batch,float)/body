@@ -2,7 +2,7 @@
   validate();
   Drawable background;
   if (disabled && style.backgroundDisabled != null)   background=style.backgroundDisabled;
- else   if (scroll.hasParent() && style.backgroundOpen != null)   background=style.backgroundOpen;
+ else   if (selectBoxList.hasParent() && style.backgroundOpen != null)   background=style.backgroundOpen;
  else   if (clickListener.isOver() && style.backgroundOver != null)   background=style.backgroundOver;
  else   if (style.background != null)   background=style.background;
  else   background=null;
@@ -15,7 +15,7 @@
   float height=getHeight();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (background != null)   background.draw(batch,x,y,width,height);
-  T selected=this.selected != null ? this.selected : selection.first();
+  T selected=selection.first();
   if (selected != null) {
     String string=selected.toString();
     bounds.set(font.getBounds(string));
