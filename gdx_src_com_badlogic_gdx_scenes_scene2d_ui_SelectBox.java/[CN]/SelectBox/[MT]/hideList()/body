@@ -1,5 +1,6 @@
 {
-  if (!scroll.hasParent())   return;
+  if (scroll.list.selection.isDisabled() || !scroll.hasParent())   return;
+  scroll.list.selection.setDisabled(true);
   selected=null;
   scroll.list.setTouchable(Touchable.disabled);
   Stage stage=scroll.getStage();
@@ -8,5 +9,6 @@
     Actor actor=stage.getScrollFocus();
     if (actor == null || actor.isDescendantOf(scroll))     stage.setScrollFocus(previousScrollFocus);
   }
-  scroll.addAction(sequence(fadeOut(0.15f,Interpolation.fade),removeActor()));
+  scroll.clearActions();
+  scroll.addAction(getHideAction(scroll));
 }

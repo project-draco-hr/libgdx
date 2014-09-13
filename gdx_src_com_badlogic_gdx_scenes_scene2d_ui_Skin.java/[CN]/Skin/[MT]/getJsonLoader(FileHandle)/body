@@ -80,7 +80,11 @@
     public Object read(    Json json,    JsonValue jsonData,    Class type){
       String name=json.readValue("name",String.class,jsonData);
       Color color=json.readValue("color",Color.class,jsonData);
-      return newDrawable(name,color);
+      TintedDrawable tinted=new TintedDrawable();
+      tinted.name=name;
+      tinted.color=color;
+      tinted.setDrawable(newDrawable(name,color));
+      return tinted;
     }
   }
 );

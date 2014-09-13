@@ -1,4 +1,5 @@
 {
+  if (drawable instanceof TintedDrawable)   drawable=((TintedDrawable)drawable).getDrawable();
   if (drawable instanceof TextureRegionDrawable) {
     TextureRegion region=((TextureRegionDrawable)drawable).getRegion();
     Sprite sprite;
