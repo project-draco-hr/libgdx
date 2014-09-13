@@ -28,18 +28,6 @@
           }
 ).start();
         }
-        if (identifier.equals("android.test.purchased")) {
-          identifier=Transaction.IDENTIFIER_TEST_SUCCESS;
-        }
- else         if (identifier.equals("android.test.canceled")) {
-          identifier=Transaction.IDENTIFIER_TEST_FAILURE_CANCELED;
-        }
- else         if (identifier.equals("android.test.refunded")) {
-          identifier=Transaction.IDENTIFIER_TEST_FAILURE_REFUNDED;
-        }
- else         if (identifier.equals("android.test.item_unavailable")) {
-          identifier=Transaction.IDENTIFIER_TEST_FAILURE_INVALIDIDENTIFIER;
-        }
         String developerPayload=jo.getString("developerPayload");
         final PurchaseListener listener=listeners.remove(developerPayload);
         if (listener == null) {

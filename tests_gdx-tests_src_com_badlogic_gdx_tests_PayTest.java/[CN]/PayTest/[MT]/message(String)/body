@@ -1,0 +1,8 @@
+{
+  Gdx.app.postRunnable(new Runnable(){
+    public void run(){
+      PayTest.this.message+=message;
+    }
+  }
+);
+}
