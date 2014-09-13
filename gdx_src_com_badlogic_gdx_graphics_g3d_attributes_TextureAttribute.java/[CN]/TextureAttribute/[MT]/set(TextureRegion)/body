@@ -1,0 +1,7 @@
+{
+  textureDescription.texture=region.getTexture();
+  uvOffsetX=region.getU();
+  uvOffsetY=region.getV();
+  uvScaleX=region.getU2() - uvOffsetX;
+  uvScaleY=region.getV2() - uvOffsetY;
+}
