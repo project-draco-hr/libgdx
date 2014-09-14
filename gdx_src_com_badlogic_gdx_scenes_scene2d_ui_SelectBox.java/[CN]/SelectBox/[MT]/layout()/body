@@ -1,7 +1,9 @@
 {
   Drawable bg=style.background;
   BitmapFont font=style.font;
-  if (bg != null)   prefHeight=Math.max(bg.getTopHeight() + bg.getBottomHeight() + font.getCapHeight() - font.getDescent() * 2,bg.getMinHeight());
+  if (bg != null) {
+    prefHeight=Math.max(bg.getTopHeight() + bg.getBottomHeight() + font.getCapHeight() - font.getDescent() * 2,bg.getMinHeight());
+  }
  else   prefHeight=font.getCapHeight() - font.getDescent() * 2;
   float maxItemWidth=0;
   for (int i=0; i < items.size; i++)   maxItemWidth=Math.max(font.getBounds(items.get(i).toString()).width,maxItemWidth);

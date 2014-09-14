@@ -1,14 +1,3 @@
 {
-  if (scroll.list.selection.isDisabled() || !scroll.hasParent())   return;
-  scroll.list.selection.setDisabled(true);
-  selected=null;
-  scroll.list.setTouchable(Touchable.disabled);
-  Stage stage=scroll.getStage();
-  if (stage != null) {
-    if (previousScrollFocus != null && previousScrollFocus.getStage() == null)     previousScrollFocus=null;
-    Actor actor=stage.getScrollFocus();
-    if (actor == null || actor.isDescendantOf(scroll))     stage.setScrollFocus(previousScrollFocus);
-  }
-  scroll.clearActions();
-  scroll.addAction(getHideAction(scroll));
+  selectBoxList.hide();
 }

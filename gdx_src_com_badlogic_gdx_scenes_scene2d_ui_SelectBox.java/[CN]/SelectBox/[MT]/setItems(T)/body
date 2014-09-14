@@ -2,6 +2,7 @@
   if (newItems == null)   throw new IllegalArgumentException("newItems cannot be null.");
   items.clear();
   items.addAll(newItems);
-  scroll.list.setItems(items);
+  selectBoxList.list.setItems(items);
+  selection.set(selectBoxList.list.getSelected());
   invalidateHierarchy();
 }

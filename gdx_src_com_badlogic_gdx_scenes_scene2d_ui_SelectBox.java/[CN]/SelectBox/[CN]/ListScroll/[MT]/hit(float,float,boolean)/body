@@ -1,4 +1,0 @@
-{
-  Actor actor=super.hit(x,y,touchable);
-  return actor != null ? actor : (list.selection.isDisabled() ? null : this);
-}
