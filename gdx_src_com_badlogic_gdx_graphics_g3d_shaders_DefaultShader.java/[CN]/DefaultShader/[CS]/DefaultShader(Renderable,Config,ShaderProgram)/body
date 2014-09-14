@@ -29,11 +29,14 @@
   u_opacity=register(Inputs.opacity);
   u_diffuseColor=register(Inputs.diffuseColor,Setters.diffuseColor);
   u_diffuseTexture=register(Inputs.diffuseTexture,Setters.diffuseTexture);
+  u_diffuseUVTransform=register(Inputs.diffuseUVTransform,Setters.diffuseUVTransform);
   u_specularColor=register(Inputs.specularColor,Setters.specularColor);
   u_specularTexture=register(Inputs.specularTexture,Setters.specularTexture);
+  u_specularUVTransform=register(Inputs.specularUVTransform,Setters.specularUVTransform);
   u_emissiveColor=register(Inputs.emissiveColor,Setters.emissiveColor);
   u_reflectionColor=register(Inputs.reflectionColor,Setters.reflectionColor);
   u_normalTexture=register(Inputs.normalTexture,Setters.normalTexture);
+  u_normalUVTransform=register(Inputs.normalUVTransform,Setters.normalUVTransform);
   u_alphaTest=register(Inputs.alphaTest);
   u_ambientCubemap=lighting ? register(Inputs.ambientCube,new Setters.ACubemap(config.numDirectionalLights,config.numPointLights)) : -1;
   u_environmentCubemap=environmentCubemap ? register(Inputs.environmentCubemap,Setters.environmentCubemap) : -1;
