@@ -1,9 +1,9 @@
 {
   int result=(int)type;
   result=991 * result + textureDescription.hashCode();
-  result=991 * result + Float.floatToRawIntBits(uvOffsetX);
-  result=991 * result + Float.floatToRawIntBits(uvOffsetY);
-  result=991 * result + Float.floatToRawIntBits(uvScaleX);
-  result=991 * result + Float.floatToRawIntBits(uvScaleY);
+  result=991 * result + NumberUtils.floatToRawIntBits(offsetU);
+  result=991 * result + NumberUtils.floatToRawIntBits(offsetV);
+  result=991 * result + NumberUtils.floatToRawIntBits(scaleU);
+  result=991 * result + NumberUtils.floatToRawIntBits(scaleV);
   return result;
 }
