@@ -2,4 +2,5 @@
   if (!(writer instanceof JsonWriter))   writer=new JsonWriter(writer);
   this.writer=(JsonWriter)writer;
   this.writer.setOutputType(outputType);
+  this.writer.setQuoteLongValues(quoteLongValues);
 }

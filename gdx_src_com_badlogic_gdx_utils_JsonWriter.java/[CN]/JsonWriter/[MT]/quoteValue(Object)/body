@@ -1,12 +1,4 @@
 {
-  if (this == OutputType.jsonQuoteLong && (value instanceof Long || value instanceof BigDecimal || value instanceof BigInteger)) {
-    return '"' + String.valueOf(value) + '"';
-  }
- else   if (value instanceof Number) {
-    Number number=(Number)value;
-    long longValue=number.longValue();
-    if (number.doubleValue() == longValue)     value=longValue;
-  }
   if (value == null || value instanceof Number || value instanceof Boolean)   return String.valueOf(value);
   String string=String.valueOf(value).replace("\\","\\\\").replace("\r","\\r").replace("\n","\\n").replace("\t","\\t");
   if (this == OutputType.minimal && !string.equals("true") && !string.equals("false") && !string.equals("null") && minimalValuePattern.matcher(string).matches())   return string;
