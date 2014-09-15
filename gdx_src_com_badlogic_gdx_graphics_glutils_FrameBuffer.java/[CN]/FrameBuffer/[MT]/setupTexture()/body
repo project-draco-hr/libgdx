@@ -1,5 +1,5 @@
 {
   colorTexture=new Texture(width,height,format);
-  colorTexture.setFilter(Texture.TextureFilter.Linear,Texture.TextureFilter.Linear);
-  colorTexture.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  colorTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  colorTexture.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
 }

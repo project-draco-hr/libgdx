@@ -2,7 +2,7 @@
   GL20 gl=Gdx.gl20;
   if (!defaultFramebufferHandleInitialized) {
     defaultFramebufferHandleInitialized=true;
-    if (Gdx.app.getType() == Application.ApplicationType.iOS) {
+    if (Gdx.app.getType() == ApplicationType.iOS) {
       IntBuffer intbuf=ByteBuffer.allocateDirect(16 * Integer.SIZE / 8).order(ByteOrder.nativeOrder()).asIntBuffer();
       gl.glGetIntegerv(GL20.GL_FRAMEBUFFER_BINDING,intbuf);
       defaultFramebufferHandle=intbuf.get(0);
