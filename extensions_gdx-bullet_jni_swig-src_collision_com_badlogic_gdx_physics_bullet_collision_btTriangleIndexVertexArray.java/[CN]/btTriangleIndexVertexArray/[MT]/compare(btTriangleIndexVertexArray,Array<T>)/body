@@ -1,11 +1,11 @@
 {
-  if (array.meshes.size != meshParts.size)   return false;
+  if (array.meshes.size != tags.size)   return false;
   for (  final btIndexedMesh mesh : array.meshes) {
     boolean found=false;
-    final MeshPart mp=mesh.getMeshPart();
-    if (mp == null)     return false;
-    for (    final MeshPart part : meshParts) {
-      if (mp.equals(part)) {
+    final Object tag=mesh.tag;
+    if (tag == null)     return false;
+    for (    final T t : tags) {
+      if (t.equals(tag)) {
         found=true;
         break;
       }

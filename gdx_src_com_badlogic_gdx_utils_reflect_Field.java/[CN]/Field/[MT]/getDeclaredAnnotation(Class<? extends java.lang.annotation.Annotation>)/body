@@ -1,0 +1,12 @@
+{
+  java.lang.annotation.Annotation[] annotations=field.getDeclaredAnnotations();
+  if (annotations == null) {
+    return null;
+  }
+  for (  java.lang.annotation.Annotation annotation : annotations) {
+    if (annotation.annotationType().equals(annotationType)) {
+      return new Annotation(annotation);
+    }
+  }
+  return null;
+}

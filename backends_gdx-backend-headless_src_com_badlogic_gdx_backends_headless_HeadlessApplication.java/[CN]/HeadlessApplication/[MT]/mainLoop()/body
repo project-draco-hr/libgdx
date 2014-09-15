@@ -16,6 +16,7 @@
       }
  else       t=n + renderInterval;
       executeRunnables();
+      graphics.incrementFrameId();
       listener.render();
       graphics.updateTime();
       if (!running)       break;

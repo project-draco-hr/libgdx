@@ -27,6 +27,7 @@ synchronized (runnables) {
   }
   input.processEvents();
   if (running) {
+    graphics.frameId++;
     listener.render();
     if (audio != null) {
       audio.update();

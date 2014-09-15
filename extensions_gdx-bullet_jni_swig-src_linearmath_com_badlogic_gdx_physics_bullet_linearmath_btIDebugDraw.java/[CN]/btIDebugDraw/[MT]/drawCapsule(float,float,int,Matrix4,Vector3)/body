@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   LinearMathJNI.btIDebugDraw_drawCapsule(swigCPtr,this,radius,halfHeight,upAxis,transform,color);
+ else   LinearMathJNI.btIDebugDraw_drawCapsuleSwigExplicitbtIDebugDraw(swigCPtr,this,radius,halfHeight,upAxis,transform,color);
+}

@@ -1,6 +1,6 @@
 {
   if (logLevel >= LOG_ERROR) {
-    System.out.println("[error] " + tag + ": "+ message);
+    Foundation.log("[error] " + tag + ": "+ message);
     exception.printStackTrace();
   }
 }

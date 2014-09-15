@@ -1,5 +1,6 @@
 {
-  super.flip(x,y);
+  if (region.rotate)   super.flip(y,x);
+ else   super.flip(x,y);
   float oldOriginX=getOriginX();
   float oldOriginY=getOriginY();
   float oldOffsetX=region.offsetX;

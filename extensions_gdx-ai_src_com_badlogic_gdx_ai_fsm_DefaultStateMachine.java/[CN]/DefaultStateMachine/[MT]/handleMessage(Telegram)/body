@@ -1,8 +1,8 @@
 {
-  if (currentState != null && currentState.onMessage(telegram)) {
+  if (currentState != null && currentState.onMessage(owner,telegram)) {
     return true;
   }
-  if (globalState != null && globalState.onMessage(telegram)) {
+  if (globalState != null && globalState.onMessage(owner,telegram)) {
     return true;
   }
   return false;

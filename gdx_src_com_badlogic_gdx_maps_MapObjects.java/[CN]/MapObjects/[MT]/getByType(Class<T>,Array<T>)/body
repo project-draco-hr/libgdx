@@ -1,6 +1,7 @@
 {
   fill.clear();
-  for (  MapObject object : objects) {
+  for (int i=0, n=objects.size; i < n; i++) {
+    MapObject object=objects.get(i);
     if (ClassReflection.isInstance(type,object)) {
       fill.add((T)object);
     }

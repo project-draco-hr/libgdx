@@ -3,8 +3,8 @@
   jd.bodyA=bodyA.body;
   jd.bodyB=bodyB.body;
   jd.collideConnected=collideConnected;
-  jd.dampingRatio=0;
-  jd.frequencyHz=0;
+  jd.dampingRatio=dampingRatio;
+  jd.frequencyHz=frequencyHz;
   jd.localAnchorA.set(localAnchorA.x,localAnchorA.y);
   jd.localAnchorB.set(localAnchorB.x,localAnchorB.y);
   jd.referenceAngle=referenceAngle;

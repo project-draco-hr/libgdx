@@ -1,4 +1,5 @@
 {
-  shapeRenderer.setProjectionMatrix(cam.combined);
+  this.camera=camera;
+  shapeRenderer.setProjectionMatrix(camera.combined);
   shapeRenderer.begin(ShapeType.Line);
 }

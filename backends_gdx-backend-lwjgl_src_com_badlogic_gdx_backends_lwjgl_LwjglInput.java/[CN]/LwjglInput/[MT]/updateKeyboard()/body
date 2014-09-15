@@ -1,6 +1,12 @@
 {
+  if (keyJustPressed) {
+    keyJustPressed=false;
+    for (int i=0; i < justPressedKeys.length; i++) {
+      justPressedKeys[i]=false;
+    }
+  }
   if (lastKeyCharPressed != 0) {
-    keyRepeatTimer-=Gdx.graphics.getDeltaTime();
+    keyRepeatTimer-=deltaTime;
     if (keyRepeatTimer < 0) {
       keyRepeatTimer=keyRepeatTime;
       KeyEvent event=usedKeyEvents.obtain();
@@ -39,6 +45,8 @@ event.type=KeyEvent.KEY_TYPED;
 event.timeStamp=timeStamp;
 keyEvents.add(event);
 pressedKeys++;
+keyJustPressed=true;
+justPressedKeys[keyCode]=true;
 lastKeyCharPressed=keyChar;
 keyRepeatTimer=keyRepeatInitialTime;
 }

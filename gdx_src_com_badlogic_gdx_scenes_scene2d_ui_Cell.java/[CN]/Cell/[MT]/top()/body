@@ -1,8 +1,5 @@
 {
-  if (align == null)   align=Align.top;
- else {
-    align|=Align.top;
-    align&=~Align.bottom;
-  }
+  if (align == null)   align=topi;
+ else   align=(align | Align.top) & ~Align.bottom;
   return this;
 }

@@ -1,8 +1,3 @@
 {
-  if ((count <= 0) || ((count % 3) != 0))   throw new com.badlogic.gdx.utils.GdxRuntimeException("Mesh must be indexed and triangulated");
-  VertexAttribute posAttr=mesh.getVertexAttribute(Usage.Position);
-  if (posAttr == null)   throw new com.badlogic.gdx.utils.GdxRuntimeException("Mesh doesn't have a position attribute");
-  setVertices(mesh.getVerticesBuffer(),mesh.getVertexSize(),mesh.getNumVertices(),posAttr.offset);
-  setIndices(mesh.getIndicesBuffer(),offset,count);
-  meshPart=null;
+  set(null,mesh,offset,count);
 }
