@@ -23,8 +23,7 @@
   if (below)   setY(screenPosition.y - height);
  else   setY(screenPosition.y + selectBox.getHeight());
   setX(screenPosition.x);
-  setWidth(selectBox.getWidth());
-  setHeight(height);
+  setSize(Math.max(getPrefWidth(),selectBox.getWidth()),height);
   validate();
   scrollToCenter(0,list.getHeight() - selectBox.getSelectedIndex() * itemHeight - itemHeight / 2,0,0);
   updateVisualScroll();

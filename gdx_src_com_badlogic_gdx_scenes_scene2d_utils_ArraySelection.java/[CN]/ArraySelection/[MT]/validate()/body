@@ -1,0 +1,12 @@
+{
+  Array<T> array=this.array;
+  if (array.size == 0) {
+    clear();
+    return;
+  }
+  for (Iterator<T> iter=items().iterator(); iter.hasNext(); ) {
+    T selected=iter.next();
+    if (!array.contains(selected,false))     iter.remove();
+  }
+  if (required && selected.size == 0)   set(array.first());
+}
