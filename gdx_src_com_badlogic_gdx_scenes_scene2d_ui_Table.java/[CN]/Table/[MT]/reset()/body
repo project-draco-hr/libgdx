@@ -1,9 +1,9 @@
 {
   clear();
-  padTop=Value.zero;
-  padLeft=Value.zero;
-  padBottom=Value.zero;
-  padRight=Value.zero;
+  padTop=backgroundTop;
+  padLeft=backgroundLeft;
+  padBottom=backgroundBottom;
+  padRight=backgroundRight;
   align=Align.center;
   debug(Debug.none);
   cellDefaults.defaults();
