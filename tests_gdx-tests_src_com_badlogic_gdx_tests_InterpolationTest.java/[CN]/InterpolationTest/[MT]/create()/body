@@ -2,7 +2,7 @@
   Gdx.gl.glClearColor(.3f,.3f,.3f,1);
   renderer=new ShapeRenderer();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
-  stage=new Stage();
+  stage=new Stage(new ScreenViewport());
   resetPositions();
   Field[] interpolationFields=ClassReflection.getFields(Interpolation.class);
   int interpolationMembers=0;
