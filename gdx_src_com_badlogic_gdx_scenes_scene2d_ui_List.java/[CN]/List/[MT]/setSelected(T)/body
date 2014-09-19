@@ -1,0 +1,5 @@
+{
+  if (items.contains(item,false))   selection.set(item);
+ else   if (selection.getRequired() && items.size > 0)   selection.set(items.first());
+ else   selection.clear();
+}

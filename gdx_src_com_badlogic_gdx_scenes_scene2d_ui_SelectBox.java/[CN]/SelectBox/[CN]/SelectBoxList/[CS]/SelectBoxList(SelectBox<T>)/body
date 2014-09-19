@@ -8,15 +8,18 @@
   setWidget(list);
   list.addListener(new ClickListener(){
     public void clicked(    InputEvent event,    float x,    float y){
-      selectBox.setSelected(list.getSelected());
+      selectBox.selection.choose(list.getSelected());
       hide();
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
       list.setSelectedIndex(Math.min(selectBox.items.size - 1,(int)((list.getHeight() - y) / list.getItemHeight())));
       return true;
     }
+  }
+);
+  addListener(new InputListener(){
     public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
-      list.selection.set(selectBox.getSelected());
+      if (toActor == null || !isAscendantOf(toActor))       list.selection.set(selectBox.getSelected());
     }
   }
 );

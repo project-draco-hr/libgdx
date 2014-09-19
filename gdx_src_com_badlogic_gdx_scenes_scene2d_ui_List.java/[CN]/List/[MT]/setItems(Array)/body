@@ -1,11 +1,9 @@
 {
   if (newItems == null)   throw new IllegalArgumentException("newItems cannot be null.");
+  float oldPrefWidth=getPrefWidth(), oldPrefHeight=getPrefHeight();
   items.clear();
   items.addAll(newItems);
-  T selected=getSelected();
-  if (!items.contains(selected,false)) {
-    if (selection.getRequired() && items.size > 0)     selection.set(items.first());
- else     selection.clear();
-  }
-  invalidateHierarchy();
+  selection.validate();
+  invalidate();
+  if (oldPrefWidth != getPrefWidth() || oldPrefHeight != getPrefHeight())   invalidateHierarchy();
 }

@@ -2,20 +2,25 @@
   if (item == null)   throw new IllegalArgumentException("item cannot be null.");
   if (isDisabled)   return;
   snapshot();
-  if ((toggle || (!required && selected.size == 1) || UIUtils.ctrl()) && selected.contains(item)) {
-    if (required && selected.size == 1)     return;
-    selected.remove(item);
-    lastSelected=null;
-  }
- else {
-    boolean modified=false;
-    if (!multiple || (!toggle && !UIUtils.ctrl())) {
-      modified=selected.size > 0;
-      selected.clear();
+  try {
+    if ((toggle || (!required && selected.size == 1) || UIUtils.ctrl()) && selected.contains(item)) {
+      if (required && selected.size == 1)       return;
+      selected.remove(item);
+      lastSelected=null;
     }
-    if (!selected.add(item) && !modified)     return;
-    lastSelected=item;
+ else {
+      boolean modified=false;
+      if (!multiple || (!toggle && !UIUtils.ctrl())) {
+        if (selected.size == 1 && selected.contains(item))         return;
+        modified=selected.size > 0;
+        selected.clear();
+      }
+      if (!selected.add(item) && !modified)       return;
+      lastSelected=item;
+    }
+    if (fireChangeEvent())     revert();
   }
-  if (fireChangeEvent())   revert();
-  cleanup();
+  finally {
+    cleanup();
+  }
 }
