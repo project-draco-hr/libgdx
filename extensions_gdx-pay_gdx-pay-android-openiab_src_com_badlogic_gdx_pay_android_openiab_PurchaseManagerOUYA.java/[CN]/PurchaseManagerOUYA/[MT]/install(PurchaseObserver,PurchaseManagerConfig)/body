@@ -1,0 +1,23 @@
+{
+  this.observer=observer;
+  this.config=config;
+  ouyaFacade=OuyaFacade.getInstance();
+  ouyaFacade.init((Context)activity,config.getDeveloperID());
+  applicationKey=config.getApplicationKey();
+  productIDList=new ArrayList<Purchasable>(config.getOfferCount());
+  for (int i=0; i < config.getOfferCount(); i++) {
+    productIDList.add(new Purchasable(config.getOffer(i).getIdentifier()));
+  }
+  try {
+    X509EncodedKeySpec keySpec=new X509EncodedKeySpec(applicationKey);
+    KeyFactory keyFactory=KeyFactory.getInstance("RSA");
+    ouyaPublicKey=keyFactory.generatePublic(keySpec);
+    showMessage(LOGTYPELOG,"succesfully created publicKey");
+    requestProductList();
+    observer.handleInstall();
+  }
+ catch (  Exception e) {
+    showMessage(LOGTYPEERROR,"Problem setting up in-app billing: Unable to create encryption key");
+    observer.handleInstallError(new GdxRuntimeException("Problem setting up in-app billing: Unable to create encryption key: " + e));
+  }
+}

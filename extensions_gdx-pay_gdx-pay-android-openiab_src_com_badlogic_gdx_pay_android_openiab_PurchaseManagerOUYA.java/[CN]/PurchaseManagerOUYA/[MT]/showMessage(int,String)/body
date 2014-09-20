@@ -1,0 +1,10 @@
+{
+  if (LOGDEBUG) {
+    if (type == LOGTYPELOG)     Gdx.app.log(TAG,message);
+    if (type == LOGTYPEERROR)     Gdx.app.error(TAG,message);
+  }
+  if (SHOWTOASTS) {
+    if (type == LOGTYPELOG)     showToast(message);
+    if (type == LOGTYPEERROR)     showToast("error: " + message);
+  }
+}
