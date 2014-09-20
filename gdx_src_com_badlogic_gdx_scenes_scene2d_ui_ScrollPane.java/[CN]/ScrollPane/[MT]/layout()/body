@@ -36,9 +36,7 @@
   if (!fade) {
     if (scrollY) {
       areaWidth-=scrollbarWidth;
-      if (!scrollX && widgetWidth > areaWidth && !disableX) {
-        scrollX=true;
-      }
+      if (!scrollX && widgetWidth > areaWidth && !disableX)       scrollX=true;
     }
     if (scrollX) {
       areaHeight-=scrollbarHeight;
@@ -76,19 +74,8 @@
   if (scrollX) {
     if (hScrollKnob != null) {
       float hScrollHeight=style.hScroll != null ? style.hScroll.getMinHeight() : hScrollKnob.getMinHeight();
-      float boundsX, boundsY;
-      if (vScrollOnRight) {
-        boundsX=bgLeftWidth;
-      }
- else {
-        boundsX=bgLeftWidth + scrollbarWidth;
-      }
-      if (hScrollOnBottom) {
-        boundsY=bgBottomHeight;
-      }
- else {
-        boundsY=height - bgTopHeight - hScrollHeight;
-      }
+      float boundsX=vScrollOnRight ? bgLeftWidth : bgLeftWidth + scrollbarWidth;
+      float boundsY=hScrollOnBottom ? bgBottomHeight : height - bgTopHeight - hScrollHeight;
       hScrollBounds.set(boundsX,boundsY,areaWidth,hScrollHeight);
       if (variableSizeKnobs)       hKnobBounds.width=Math.max(hScrollKnob.getMinWidth(),(int)(hScrollBounds.width * areaWidth / widgetWidth));
  else       hKnobBounds.width=hScrollKnob.getMinWidth();
