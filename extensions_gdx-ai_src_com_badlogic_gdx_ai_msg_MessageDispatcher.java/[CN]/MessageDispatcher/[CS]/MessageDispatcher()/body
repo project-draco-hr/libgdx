@@ -1,9 +1,0 @@
-{
-  this.pool=new Pool<Telegram>(64){
-    protected Telegram newObject(){
-      return new Telegram();
-    }
-  }
-;
-  setTimeGranularity(0.25f);
-}

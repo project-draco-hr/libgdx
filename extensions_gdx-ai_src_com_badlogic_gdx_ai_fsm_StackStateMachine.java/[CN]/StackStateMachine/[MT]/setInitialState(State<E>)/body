@@ -1,7 +1,0 @@
-{
-  if (stateStack == null) {
-    stateStack=new Array<State<E>>();
-  }
-  this.stateStack.clear();
-  this.currentState=state;
-}
