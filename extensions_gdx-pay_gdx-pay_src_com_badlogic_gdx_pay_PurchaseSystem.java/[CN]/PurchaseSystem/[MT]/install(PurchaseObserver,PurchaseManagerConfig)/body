@@ -3,6 +3,6 @@
     manager.install(observer,config);
   }
  else {
-    observer.handleInstallError(new GdxRuntimeException("No purchase manager was available."));
+    observer.handleInstallError(new RuntimeException("No purchase manager was available."));
   }
 }

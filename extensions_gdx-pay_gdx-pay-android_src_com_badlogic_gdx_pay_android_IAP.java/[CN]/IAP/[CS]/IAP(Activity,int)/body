@@ -8,13 +8,13 @@
     }
   }
  catch (  Exception e) {
-    Gdx.app.debug(TAG,"Failed to locate purchase manager for OUYA-IAP (gdx-pay-android-ouya.jar file not installed)",e);
+    Log.d(TAG,"Failed to locate purchase manager for OUYA-IAP (gdx-pay-android-ouya.jar file not installed)",e);
   }
   try {
     Class<?> iabClazz=Class.forName("com.badlogic.gdx.pay.android.openiab.PurchaseManagerAndroidOpenIAB");
     PurchaseSystem.setManager((PurchaseManager)iabClazz.getConstructor(Activity.class,int.class).newInstance(activity,requestCode));
   }
  catch (  Exception e) {
-    Gdx.app.debug(TAG,"Failed to locate purchase manager for OpenIAB-IAP (gdx-pay-android-openiab.jar file not installed)",e);
+    Log.d(TAG,"Failed to locate purchase manager for OpenIAB-IAP (gdx-pay-android-openiab.jar file not installed)",e);
   }
 }

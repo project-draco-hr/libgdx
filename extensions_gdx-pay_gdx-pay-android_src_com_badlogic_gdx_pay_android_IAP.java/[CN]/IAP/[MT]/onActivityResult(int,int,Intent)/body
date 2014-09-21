@@ -6,7 +6,7 @@
       method.invoke(manager,requestCode,resultCode,data);
     }
  catch (    Exception e) {
-      Gdx.app.debug(TAG,"Failed to invoke onActivityResult(...) on purchase manager.",e);
+      Log.d(TAG,"Failed to invoke onActivityResult(...) on purchase manager.",e);
     }
   }
 }

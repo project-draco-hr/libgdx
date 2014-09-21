@@ -3,6 +3,6 @@
     manager.purchase(listener,identifier);
   }
  else {
-    throw new GdxRuntimeException("No purchase manager was found.");
+    throw new RuntimeException("No purchase manager was found.");
   }
 }
