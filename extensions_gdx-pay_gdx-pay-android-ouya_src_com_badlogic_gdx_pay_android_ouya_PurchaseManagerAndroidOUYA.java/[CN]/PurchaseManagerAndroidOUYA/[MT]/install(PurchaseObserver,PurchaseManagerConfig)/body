@@ -1,9 +1,11 @@
 {
   this.observer=observer;
   this.config=config;
+  Object[] configuration=(Object[])config.getStoreParam(PurchaseManagerConfig.STORE_NAME_ANDROID_OUYA);
+  String developerID=(String)configuration[0];
+  applicationKey=(byte[])configuration[1];
   ouyaFacade=OuyaFacade.getInstance();
-  ouyaFacade.init((Context)activity,config.getDeveloperID());
-  applicationKey=config.getApplicationKey();
+  ouyaFacade.init((Context)activity,developerID);
   productIDList=new ArrayList<Purchasable>(config.getOfferCount());
   for (int i=0; i < config.getOfferCount(); i++) {
     productIDList.add(new Purchasable(config.getOffer(i).getIdentifier()));
