@@ -1,0 +1,22 @@
+{
+  SkuDetails skuDetails=inventory.getSkuDetails(purchase.getSku());
+  Transaction transaction=new Transaction();
+  transaction.setIdentifier(purchase.getSku());
+  transaction.setStoreName(storeNameFromOpenIAB(purchase.getAppstoreName()));
+  transaction.setOrderId(purchase.getOrderId());
+  transaction.setPurchaseTime(new Date(purchase.getPurchaseTime()));
+  transaction.setPurchaseText(skuDetails != null ? "Purchased: " + skuDetails.getTitle() : "Purchased");
+  transaction.setPurchaseCost(-1);
+  transaction.setPurchaseCostCurrency(null);
+  if (purchase.getPurchaseState() != 0) {
+    transaction.setReversalTime(new Date());
+    transaction.setReversalText(purchase.getPurchaseState() == 1 ? "Cancelled" : "Refunded");
+  }
+ else {
+    transaction.setReversalTime(null);
+    transaction.setReversalText(null);
+  }
+  transaction.setTransactionData(purchase.getOriginalJson());
+  transaction.setTransactionDataSignature(purchase.getSignature());
+  return transaction;
+}

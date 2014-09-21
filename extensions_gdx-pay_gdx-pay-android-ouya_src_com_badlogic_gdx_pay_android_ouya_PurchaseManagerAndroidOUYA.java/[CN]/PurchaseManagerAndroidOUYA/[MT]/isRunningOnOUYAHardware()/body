@@ -1,0 +1,4 @@
+{
+  String name=android.os.Build.MODEL.toLowerCase();
+  return (name.contains("ouya") || name.contains("mojo") || name.contains("m.o.j.o"));
+}

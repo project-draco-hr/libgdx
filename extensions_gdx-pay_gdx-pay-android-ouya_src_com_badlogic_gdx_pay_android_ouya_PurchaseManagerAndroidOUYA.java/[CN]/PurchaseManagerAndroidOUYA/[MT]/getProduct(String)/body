@@ -1,0 +1,10 @@
+{
+  Product returnProduct=null;
+  for (int i=0; i < productList.size(); i++) {
+    if (productList.get(i).getIdentifier().equals(identifier)) {
+      returnProduct=productList.get(i);
+      break;
+    }
+  }
+  return returnProduct;
+}

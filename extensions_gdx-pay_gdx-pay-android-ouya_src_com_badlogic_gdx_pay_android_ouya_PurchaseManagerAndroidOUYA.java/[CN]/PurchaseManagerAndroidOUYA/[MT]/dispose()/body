@@ -1,0 +1,9 @@
+{
+  if (ouyaFacade != null) {
+    ouyaFacade.shutdown();
+    ouyaFacade=null;
+    observer=null;
+    config=null;
+    showMessage(LOGTYPELOG,"disposed all the OUYA IAP stuff.");
+  }
+}

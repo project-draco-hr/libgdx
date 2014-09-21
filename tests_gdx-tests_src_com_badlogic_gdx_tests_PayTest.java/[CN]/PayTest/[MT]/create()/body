@@ -1,0 +1,64 @@
+{
+  font=new BitmapFont();
+  batch=new SpriteBatch();
+  message="Testing InApp System:\n";
+  if (PurchaseSystem.hasManager()) {
+    final String IAP_TEST_CONSUMEABLE="com.badlogic.gdx.tests.pay.consumeable";
+    PurchaseManagerConfig config=new PurchaseManagerConfig();
+    config.addOffer(new Offer().setType(OfferType.CONSUMABLE).setIdentifier(IAP_TEST_CONSUMEABLE).putIdentifierForStore(PurchaseManagerConfig.STORE_NAME_ANDROID_GOOGLE,"android.test.purchased"));
+    PurchaseSystem.install(new PurchaseObserver(){
+      @Override public void handleRestore(      Transaction[] transactions){
+        message(" - totally " + transactions.length + " purchased products\n");
+        for (int i=0; i < transactions.length; i++) {
+          message("   . " + transactions[i].getIdentifier() + "\n");
+        }
+      }
+      @Override public void handleRestoreError(      Throwable e){
+        message(" - error during purchase manager restore: " + e + "\n");
+        throw new GdxRuntimeException(e);
+      }
+      @Override public void handleInstall(){
+        message(" - purchase manager installed: " + PurchaseSystem.storeName() + ".\n");
+      }
+      @Override public void handleInstallError(      Throwable e){
+        message(" - error installing purchase manager: " + e + "\n");
+        throw new GdxRuntimeException(e);
+      }
+    }
+,config);
+    Timer.schedule(new Timer.Task(){
+      @Override public void run(){
+        message(" - do a restore to check inventory\n");
+        PurchaseSystem.purchaseRestore();
+      }
+    }
+,2.0f);
+    Timer.schedule(new Timer.Task(){
+      @Override public void run(){
+        message(" - purchasing: " + IAP_TEST_CONSUMEABLE + ".\n");
+        PurchaseSystem.purchase(IAP_TEST_CONSUMEABLE,new PurchaseListener(){
+          @Override public void handlePurchase(          Transaction transaction){
+            message(" - purchased: " + transaction.getIdentifier() + "\n");
+            Gdx.app.postRunnable(new Runnable(){
+              @Override public void run(){
+                message(" - disposing the purchase manager.\n");
+                PurchaseSystem.dispose();
+                message("Testing InApp System: COMPLETED\n");
+              }
+            }
+);
+          }
+          @Override public void handlePurchaseError(          Throwable e){
+            message(" - error purchasing: " + e + "\n");
+            throw new GdxRuntimeException(e);
+          }
+        }
+);
+      }
+    }
+,4.0f);
+  }
+ else {
+    message(" - no purchase manager found.\n");
+  }
+}
