@@ -1,0 +1,12 @@
+{
+  PurchaseManager manager=PurchaseSystem.getManager();
+  if (manager != null) {
+    try {
+      Method method=manager.getClass().getMethod("onActivityResult",int.class,int.class,Intent.class);
+      method.invoke(manager,requestCode,resultCode,data);
+    }
+ catch (    Exception e) {
+      Gdx.app.debug(TAG,"Failed to invoke onActivityResult(...) on purchase manager.",e);
+    }
+  }
+}

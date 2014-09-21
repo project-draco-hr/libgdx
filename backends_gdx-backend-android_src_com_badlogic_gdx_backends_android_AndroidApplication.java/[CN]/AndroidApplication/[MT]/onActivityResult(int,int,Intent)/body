@@ -1,0 +1,12 @@
+{
+  super.onActivityResult(requestCode,resultCode,data);
+  if (iap != null) {
+    try {
+      Method method=iap.getClass().getMethod("onActivityResult",int.class,int.class,Intent.class);
+      method.invoke(iap,requestCode,resultCode,data);
+    }
+ catch (    Exception e) {
+      log("AndroidApplication","Failed to invoke onActivityResult(...) on IAP.",e);
+    }
+  }
+}

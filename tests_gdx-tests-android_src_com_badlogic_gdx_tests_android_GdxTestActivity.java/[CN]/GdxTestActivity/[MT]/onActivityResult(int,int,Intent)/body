@@ -1,5 +1,0 @@
-{
-  if (PurchaseSystem.hasManager()) {
-    ((PurchaseManagerAndroidOpenIAB)PurchaseSystem.getManager()).onActivityResult(requestCode,resultCode,data);
-  }
-}
