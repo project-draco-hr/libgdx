@@ -1,17 +1,13 @@
 {
-  Matrix3 worldTransform=this.worldTransform;
-  Matrix3 localTransform=this.localTransform;
+  Affine2 worldTransform=this.worldTransform;
+  Affine2 localTransform=this.localTransform;
   float originX=this.originX;
   float originY=this.originY;
   float rotation=this.rotation;
   float scaleX=this.scaleX;
   float scaleY=this.scaleY;
-  if (originX != 0 || originY != 0)   localTransform.setToTranslation(originX,originY);
- else   localTransform.idt();
-  if (rotation != 0)   localTransform.rotate(rotation);
-  if (scaleX != 1 || scaleY != 1)   localTransform.scale(scaleX,scaleY);
+  localTransform.setToTrnRotScl(x + originX,y + originY,rotation,scaleX,scaleY);
   if (originX != 0 || originY != 0)   localTransform.translate(-originX,-originY);
-  localTransform.trn(x,y);
   Group parentGroup=parent;
   while (parentGroup != null) {
     if (parentGroup.transform)     break;
