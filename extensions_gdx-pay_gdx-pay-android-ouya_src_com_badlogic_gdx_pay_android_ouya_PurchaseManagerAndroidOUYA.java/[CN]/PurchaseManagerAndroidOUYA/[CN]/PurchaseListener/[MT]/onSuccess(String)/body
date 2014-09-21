@@ -1,0 +1,59 @@
+{
+  Product product=null;
+  Product storedProduct=null;
+  String id;
+  try {
+    OuyaEncryptionHelper helper=new OuyaEncryptionHelper();
+    JSONObject response=new JSONObject(result);
+    if (response.has("key") && response.has("iv")) {
+      id=helper.decryptPurchaseResponse(response,ouyaPublicKey);
+synchronized (ouyaOutstandingPurchaseRequests) {
+        storedProduct=ouyaOutstandingPurchaseRequests.remove(id);
+      }
+      if (storedProduct == null || !storedProduct.getIdentifier().equals(mProduct.getIdentifier())) {
+        showMessage(LOGTYPEERROR,"Purchased product is not the same as purchase request product");
+        onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,"Purchased product is not the same as purchase request product",Bundle.EMPTY);
+        return;
+      }
+    }
+ else {
+      product=new Product(new JSONObject(result));
+      if (!mProduct.getIdentifier().equals(product.getIdentifier())) {
+        showMessage(LOGTYPEERROR,"Purchased product is not the same as purchase request product");
+        onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,"Purchased product is not the same as purchase request product",Bundle.EMPTY);
+        return;
+      }
+    }
+  }
+ catch (  ParseException e) {
+    appPurchaseListener.handlePurchaseError(e);
+    onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,e.getMessage(),Bundle.EMPTY);
+  }
+catch (  JSONException e) {
+    appPurchaseListener.handlePurchaseError(e);
+    onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,e.getMessage(),Bundle.EMPTY);
+    return;
+  }
+catch (  IOException e) {
+    appPurchaseListener.handlePurchaseError(e);
+    onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,e.getMessage(),Bundle.EMPTY);
+    return;
+  }
+catch (  GeneralSecurityException e) {
+    appPurchaseListener.handlePurchaseError(e);
+    onFailure(OuyaErrorCodes.THROW_DURING_ON_SUCCESS,e.getMessage(),Bundle.EMPTY);
+    return;
+  }
+catch (  java.text.ParseException e) {
+    appPurchaseListener.handlePurchaseError(e);
+    e.printStackTrace();
+    return;
+  }
+  if (storedProduct != null) {
+    Transaction trans=convertPurchasedProductToTransaction(storedProduct);
+    appPurchaseListener.handlePurchase(trans);
+  }
+ else {
+    showMessage(LOGTYPEERROR,"PurchaseListener: storedProduct == null!");
+  }
+}
