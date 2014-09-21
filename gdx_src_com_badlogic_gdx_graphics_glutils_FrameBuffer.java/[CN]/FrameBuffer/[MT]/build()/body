@@ -20,15 +20,27 @@
     gl.glGenRenderbuffers(1,handle);
     depthbufferHandle=handle.get(0);
   }
+  if (hasStencil) {
+    handle.clear();
+    gl.glGenRenderbuffers(1,handle);
+    stencilbufferHandle=handle.get(0);
+  }
   gl.glBindTexture(GL20.GL_TEXTURE_2D,colorTexture.getTextureObjectHandle());
   if (hasDepth) {
     gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,depthbufferHandle);
     gl.glRenderbufferStorage(GL20.GL_RENDERBUFFER,GL20.GL_DEPTH_COMPONENT16,colorTexture.getWidth(),colorTexture.getHeight());
   }
+  if (hasStencil) {
+    gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,stencilbufferHandle);
+    gl.glRenderbufferStorage(GL20.GL_RENDERBUFFER,GL20.GL_STENCIL_INDEX8,colorTexture.getWidth(),colorTexture.getHeight());
+  }
   gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,framebufferHandle);
   gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL20.GL_COLOR_ATTACHMENT0,GL20.GL_TEXTURE_2D,colorTexture.getTextureObjectHandle(),0);
   if (hasDepth) {
     gl.glFramebufferRenderbuffer(GL20.GL_FRAMEBUFFER,GL20.GL_DEPTH_ATTACHMENT,GL20.GL_RENDERBUFFER,depthbufferHandle);
+  }
+  if (hasStencil) {
+    gl.glFramebufferRenderbuffer(GL20.GL_FRAMEBUFFER,GL20.GL_STENCIL_ATTACHMENT,GL20.GL_RENDERBUFFER,stencilbufferHandle);
   }
   int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
   gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,0);
@@ -39,6 +51,12 @@
     if (hasDepth) {
       handle.clear();
       handle.put(depthbufferHandle);
+      handle.flip();
+      gl.glDeleteRenderbuffers(1,handle);
+    }
+    if (hasStencil) {
+      handle.clear();
+      handle.put(stencilbufferHandle);
       handle.flip();
       gl.glDeleteRenderbuffers(1,handle);
     }

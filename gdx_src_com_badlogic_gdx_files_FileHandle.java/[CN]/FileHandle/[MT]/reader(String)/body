@@ -1,8 +1,10 @@
 {
+  InputStream stream=read();
   try {
-    return new InputStreamReader(read(),charset);
+    return new InputStreamReader(stream,charset);
   }
  catch (  UnsupportedEncodingException ex) {
+    StreamUtils.closeQuietly(stream);
     throw new GdxRuntimeException("Error reading file: " + this,ex);
   }
 }

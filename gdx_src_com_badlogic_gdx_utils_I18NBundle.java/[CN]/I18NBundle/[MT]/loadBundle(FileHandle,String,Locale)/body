@@ -1,19 +1,19 @@
 {
   I18NBundle bundle=null;
-  InputStream stream=null;
+  Reader reader=null;
   try {
     FileHandle fileHandle=toFileHandle(baseFileHandle,targetLocale);
-    if (fileHandle.exists()) {
+    if (checkFileExistence(fileHandle)) {
       bundle=new I18NBundle();
-      stream=fileHandle.read();
-      bundle.load(new InputStreamReader(stream,encoding));
+      reader=fileHandle.reader(encoding);
+      bundle.load(reader);
     }
   }
- catch (  Throwable t) {
-    throw new GdxRuntimeException(t);
+ catch (  IOException e) {
+    throw new GdxRuntimeException(e);
   }
  finally {
-    StreamUtils.closeQuietly(stream);
+    StreamUtils.closeQuietly(reader);
   }
   if (bundle != null) {
     bundle.setLocale(targetLocale);

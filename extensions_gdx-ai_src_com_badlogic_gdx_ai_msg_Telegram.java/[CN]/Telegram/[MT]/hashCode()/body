@@ -1,9 +1,0 @@
-{
-  final int prime=31;
-  int result=1;
-  result=prime * result + message;
-  result=prime * result + ((receiver == null) ? 0 : receiver.hashCode());
-  result=prime * result + ((sender == null) ? 0 : sender.hashCode());
-  result=prime * result + (int)(discreteTimestamp ^ (discreteTimestamp >>> 32));
-  return result;
-}
