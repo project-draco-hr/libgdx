@@ -20,6 +20,6 @@
   }
  catch (  Exception e) {
     showMessage(LOGTYPEERROR,"Problem setting up in-app billing: Unable to create encryption key");
-    observer.handleInstallError(new GdxRuntimeException("Problem setting up in-app billing: Unable to create encryption key: " + e));
+    observer.handleInstallError(new RuntimeException("Problem setting up in-app billing: Unable to create encryption key: " + e));
   }
 }

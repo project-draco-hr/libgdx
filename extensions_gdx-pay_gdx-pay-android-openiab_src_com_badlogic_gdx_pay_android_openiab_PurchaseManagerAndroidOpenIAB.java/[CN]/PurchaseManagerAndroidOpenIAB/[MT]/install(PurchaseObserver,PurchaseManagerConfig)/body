@@ -49,7 +49,7 @@
         inventory=null;
         PurchaseManagerAndroidOpenIAB.this.observer=null;
         PurchaseManagerAndroidOpenIAB.this.config=null;
-        observer.handleInstallError(new GdxRuntimeException("Problem setting up in-app billing: " + result));
+        observer.handleInstallError(new RuntimeException("Problem setting up in-app billing: " + result));
       }
  else {
         boolean querySkuDetails=true;

@@ -28,7 +28,7 @@
       return PurchaseManagerConfig.STORE_NAME_ANDROID_YANDEX;
     }
  else {
-      Gdx.app.error(TAG,"Store name could not be mapped: " + storeNameOpenIAB);
+      Log.e(TAG,"Store name could not be mapped: " + storeNameOpenIAB);
       return storeNameOpenIAB;
     }
   }

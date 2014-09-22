@@ -28,7 +28,7 @@
       return OpenIabHelper.NAME_YANDEX;
     }
  else {
-      Gdx.app.error(TAG,"Store name could not be mapped: " + storeName);
+      Log.e(TAG,"Store name could not be mapped: " + storeName);
       return storeName;
     }
   }

@@ -1,7 +1,7 @@
 {
   if (LOGDEBUG) {
-    if (type == LOGTYPELOG)     Gdx.app.log(TAG,message);
-    if (type == LOGTYPEERROR)     Gdx.app.error(TAG,message);
+    if (type == LOGTYPELOG)     Log.d(TAG,message);
+    if (type == LOGTYPEERROR)     Log.e(TAG,message);
   }
   if (SHOWTOASTS) {
     if (type == LOGTYPELOG)     showToast(message);

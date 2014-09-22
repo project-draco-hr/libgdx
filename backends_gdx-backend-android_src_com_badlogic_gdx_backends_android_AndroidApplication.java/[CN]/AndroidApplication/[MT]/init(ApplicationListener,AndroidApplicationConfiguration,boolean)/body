@@ -54,13 +54,4 @@
       log("AndroidApplication","Failed to create AndroidVisibilityListener",e);
     }
   }
-  try {
-    Class<?> iapClazz=Class.forName("com.badlogic.gdx.pay.android.IAP");
-    int requestCode=1032;
-    iap=iapClazz.getConstructor(Activity.class,int.class).newInstance(this,requestCode);
-    log("AndroidApplication","IAP: gdx-pay successfully instantiated.");
-  }
- catch (  Exception e) {
-    debug("AndroidApplication","Failed to locate IAP (gdx-pay jar files not installed for Android)",e);
-  }
 }

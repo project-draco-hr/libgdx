@@ -13,13 +13,13 @@
         Purchase purchase=purchases.get(i);
         Offer offer=config.getOffer(purchase.getSku());
         if (offer == null) {
-          Gdx.app.debug(TAG,"Offer not found for: " + purchase.getSku());
+          Log.d(TAG,"Offer not found for: " + purchase.getSku());
         }
  else         if (offer.getType() == OfferType.CONSUMABLE) {
           helper.consumeAsync(purchase,new IabHelper.OnConsumeFinishedListener(){
             @Override public void onConsumeFinished(            Purchase purchase,            IabResult result){
               if (!result.isSuccess()) {
-                Gdx.app.error(TAG,"Error while consuming: " + result);
+                Log.e(TAG,"Error while consuming: " + result);
               }
             }
           }

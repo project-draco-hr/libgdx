@@ -21,6 +21,6 @@ catch (    JSONException e) {
   }
  else {
     showMessage(LOGTYPEERROR,"There has been a Problem with your Internet connection. Please try again later");
-    appPurchaseListener.handlePurchaseError(new GdxRuntimeException("There has been a Problem with your Internet connection. Please try again later"));
+    appPurchaseListener.handlePurchaseError(new RuntimeException("There has been a Problem with your Internet connection. Please try again later"));
   }
 }
