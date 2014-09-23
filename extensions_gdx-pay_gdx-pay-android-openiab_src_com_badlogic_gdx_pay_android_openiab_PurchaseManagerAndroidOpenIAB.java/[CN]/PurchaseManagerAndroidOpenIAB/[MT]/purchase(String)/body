@@ -3,11 +3,11 @@
   helper.launchPurchaseFlow(activity,identifier,IabHelper.ITEM_TYPE_INAPP,requestCode,new IabHelper.OnIabPurchaseFinishedListener(){
     @Override public void onIabPurchaseFinished(    IabResult result,    Purchase purchase){
       if (result.isFailure()) {
-        listener.handlePurchaseError(new RuntimeException(result.toString()));
+        observer.handlePurchaseError(new RuntimeException(result.toString()));
       }
  else {
         Transaction transaction=transaction(purchase);
-        listener.handlePurchase(transaction);
+        observer.handlePurchase(transaction);
         Offer offer=config.getOffer(purchase.getSku());
         if (offer == null) {
           Log.d(TAG,"Offer not found for: " + purchase.getSku());

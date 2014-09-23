@@ -1,6 +1,6 @@
 {
   if (manager != null) {
-    manager.purchase(identifier,listener);
+    manager.purchase(identifier);
   }
  else {
     throw new RuntimeException("No purchase manager was found.");
