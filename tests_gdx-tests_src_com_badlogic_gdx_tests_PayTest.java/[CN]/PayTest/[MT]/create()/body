@@ -24,6 +24,23 @@
         message(" - error installing purchase manager: " + e + "\n");
         throw new GdxRuntimeException(e);
       }
+      @Override public void handlePurchase(      Transaction transaction){
+        message(" - purchased: " + transaction.getIdentifier() + "\n");
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            message(" - disposing the purchase manager.\n");
+            PurchaseSystem.dispose();
+            message("Testing InApp System: COMPLETED\n");
+          }
+        }
+);
+      }
+      @Override public void handlePurchaseError(      Throwable e){
+        message(" - error purchasing: " + e + "\n");
+        throw new GdxRuntimeException(e);
+      }
+      @Override public void handlePurchaseCanceled(){
+      }
     }
 ,config);
     Timer.schedule(new Timer.Task(){
@@ -36,24 +53,7 @@
     Timer.schedule(new Timer.Task(){
       @Override public void run(){
         message(" - purchasing: " + IAP_TEST_CONSUMEABLE + ".\n");
-        PurchaseSystem.purchase(IAP_TEST_CONSUMEABLE,new PurchaseListener(){
-          @Override public void handlePurchase(          Transaction transaction){
-            message(" - purchased: " + transaction.getIdentifier() + "\n");
-            Gdx.app.postRunnable(new Runnable(){
-              @Override public void run(){
-                message(" - disposing the purchase manager.\n");
-                PurchaseSystem.dispose();
-                message("Testing InApp System: COMPLETED\n");
-              }
-            }
-);
-          }
-          @Override public void handlePurchaseError(          Throwable e){
-            message(" - error purchasing: " + e + "\n");
-            throw new GdxRuntimeException(e);
-          }
-        }
-);
+        PurchaseSystem.purchase(IAP_TEST_CONSUMEABLE);
       }
     }
 ,4.0f);
