@@ -3,7 +3,7 @@
   Reader reader=null;
   try {
     FileHandle fileHandle=toFileHandle(baseFileHandle,targetLocale);
-    if (fileHandle.exists()) {
+    if (checkFileExistence(fileHandle)) {
       bundle=new I18NBundle();
       reader=fileHandle.reader(encoding);
       bundle.load(reader);

@@ -14,7 +14,7 @@
       }
 ;
       deleteProcessor.setRecursive(false);
-      String scaledPackFileName=rootSettings.scaledPackFileName(packFileName,i);
+      String scaledPackFileName=rootSettings.getScaledPackFileName(packFileName,i);
       File packFile=new File(scaledPackFileName);
       String prefix=packFile.getName();
       int dotIndex=prefix.lastIndexOf('.');

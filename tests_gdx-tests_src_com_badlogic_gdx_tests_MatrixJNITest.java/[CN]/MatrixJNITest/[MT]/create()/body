@@ -32,4 +32,5 @@
   Matrix4.mul(mat3.val,mat2.val);
   check(mat1,mat3);
   bench();
+  System.out.println("All tests passed.");
 }

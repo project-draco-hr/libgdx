@@ -1,9 +1,12 @@
 {
   try {
-    Method m=File.class.getMethod("canExecute");
-    return (Boolean)m.invoke(file);
+    Method canExecute=File.class.getMethod("canExecute");
+    if ((Boolean)canExecute.invoke(file))     return true;
+    Method setExecutable=File.class.getMethod("setExecutable",boolean.class,boolean.class);
+    setExecutable.invoke(file,true,false);
+    return (Boolean)canExecute.invoke(file);
   }
- catch (  Exception e) {
-    return false;
+ catch (  Exception ignored) {
   }
+  return false;
 }

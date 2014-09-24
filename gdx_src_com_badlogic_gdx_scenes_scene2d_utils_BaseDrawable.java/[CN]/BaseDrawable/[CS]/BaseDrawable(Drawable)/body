@@ -1,4 +1,5 @@
 {
+  if (drawable instanceof BaseDrawable)   name=((BaseDrawable)drawable).getName();
   leftWidth=drawable.getLeftWidth();
   rightWidth=drawable.getRightWidth();
   topHeight=drawable.getTopHeight();

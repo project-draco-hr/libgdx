@@ -1,0 +1,26 @@
+{
+  this.appPurchaseListener=listener;
+  OUYApurchaseProduct=getProduct(identifier);
+  if (OUYApurchaseProduct != null) {
+    try {
+      requestPurchase(OUYApurchaseProduct);
+      handler.sendEmptyMessage(requestOUYApurchase);
+    }
+ catch (    UnsupportedEncodingException e) {
+      appPurchaseListener.handlePurchaseError(e);
+      e.printStackTrace();
+    }
+catch (    GeneralSecurityException e) {
+      appPurchaseListener.handlePurchaseError(e);
+      e.printStackTrace();
+    }
+catch (    JSONException e) {
+      appPurchaseListener.handlePurchaseError(e);
+      e.printStackTrace();
+    }
+  }
+ else {
+    showMessage(LOGTYPEERROR,"There has been a Problem with your Internet connection. Please try again later");
+    appPurchaseListener.handlePurchaseError(new RuntimeException("There has been a Problem with your Internet connection. Please try again later"));
+  }
+}

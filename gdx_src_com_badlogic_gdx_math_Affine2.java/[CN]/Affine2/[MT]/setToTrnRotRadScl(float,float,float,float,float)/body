@@ -1,0 +1,19 @@
+{
+  m02=x;
+  m12=y;
+  if (radians == 0) {
+    m00=scaleX;
+    m01=0;
+    m10=0;
+    m11=scaleY;
+  }
+ else {
+    float sin=(float)Math.sin(radians);
+    float cos=(float)Math.cos(radians);
+    m00=cos * scaleX;
+    m01=-sin * scaleY;
+    m10=sin * scaleX;
+    m11=cos * scaleY;
+  }
+  return this;
+}

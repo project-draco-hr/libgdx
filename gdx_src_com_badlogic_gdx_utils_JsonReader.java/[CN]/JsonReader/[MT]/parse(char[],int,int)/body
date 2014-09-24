@@ -179,7 +179,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=22;
+cs=19;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -218,6 +218,9 @@ stringIsUnquoted=true;
 if (stringIsName) {
 outer: while (true) {
 switch (data[p]) {
+case '\\':
+needsUnescape=true;
+break;
 case ':':
 case ' ':
 case '\r':
@@ -232,6 +235,9 @@ if (p == eof) break;
  else {
 outer: while (true) {
 switch (data[p]) {
+case '\\':
+needsUnescape=true;
+break;
 case '}':
 case ']':
 case ',':
