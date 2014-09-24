@@ -3,11 +3,13 @@
   this.uiApp=uiApp;
   UIApplication.getSharedApplication().setIdleTimerDisabled(config.preventScreenDimming);
   if (UIScreen.getMainScreen().getScale() == 2.0f) {
+    Gdx.app.debug("IOSApplication","scale: " + UIScreen.getMainScreen().getScale());
+    float scale=(float)UIScreen.getMainScreen().getScale();
     if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
-      displayScaleFactor=config.displayScaleLargeScreenIfRetina * 2.0f;
+      displayScaleFactor=config.displayScaleLargeScreenIfRetina * scale;
     }
  else {
-      displayScaleFactor=config.displayScaleSmallScreenIfRetina * 2.0f;
+      displayScaleFactor=config.displayScaleSmallScreenIfRetina * scale;
     }
   }
  else {

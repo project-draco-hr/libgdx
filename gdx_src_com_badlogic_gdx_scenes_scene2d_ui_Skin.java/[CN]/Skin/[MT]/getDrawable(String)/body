@@ -23,6 +23,7 @@
  else       throw new GdxRuntimeException("No Drawable, NinePatch, TextureRegion, Texture, or Sprite registered with name: " + name);
     }
   }
+  if (drawable instanceof BaseDrawable)   ((BaseDrawable)drawable).setName(name);
   add(name,drawable,Drawable.class);
   return drawable;
 }

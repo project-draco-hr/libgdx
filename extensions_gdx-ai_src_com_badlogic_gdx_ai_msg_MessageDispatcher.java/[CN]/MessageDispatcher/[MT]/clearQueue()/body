@@ -1,6 +1,0 @@
-{
-  for (int i=0; i < queue.size(); i++) {
-    pool.free(queue.get(i));
-  }
-  queue.clear();
-}

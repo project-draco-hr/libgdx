@@ -1,9 +1,0 @@
-{
-  float newX=x - width / 2;
-  float newY=y - height / 2;
-  if (this.x != newX || this.y != newY) {
-    this.x=newX;
-    this.y=newY;
-    positionChanged();
-  }
-}

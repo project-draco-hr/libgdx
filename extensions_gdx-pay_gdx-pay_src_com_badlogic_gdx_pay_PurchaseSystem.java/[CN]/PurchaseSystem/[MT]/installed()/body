@@ -1,0 +1,8 @@
+{
+  if (manager != null) {
+    return manager.installed();
+  }
+ else {
+    return false;
+  }
+}

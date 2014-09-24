@@ -1,7 +1,0 @@
-{
-  if (previousState == null) {
-    return false;
-  }
-  changeState(previousState);
-  return true;
-}
