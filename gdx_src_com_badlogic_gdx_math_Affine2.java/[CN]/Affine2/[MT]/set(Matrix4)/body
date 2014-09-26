@@ -1,0 +1,10 @@
+{
+  float[] other=matrix.val;
+  m00=other[Matrix4.M00];
+  m01=other[Matrix4.M01];
+  m02=other[Matrix4.M03];
+  m10=other[Matrix4.M10];
+  m11=other[Matrix4.M11];
+  m12=other[Matrix4.M13];
+  return this;
+}

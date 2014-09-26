@@ -1,3 +1,3 @@
 {
-  return lerp(target,interpolator.apply(0f,1f,alpha));
+  return lerp(target,interpolation.apply(alpha));
 }

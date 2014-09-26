@@ -1,0 +1,9 @@
+{
+  if (helper != null) {
+    helper.dispose();
+    helper=null;
+    inventory=null;
+    observer=null;
+    config=null;
+  }
+}

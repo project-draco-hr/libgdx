@@ -1,0 +1,9 @@
+{
+  PurchaseVerifier verifier=verifiers.get(transaction.getStoreName());
+  if (verifier == null) {
+    return defaultIfNoVerifierFound;
+  }
+ else {
+    return verifier.isValid(transaction);
+  }
+}
