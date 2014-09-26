@@ -15,7 +15,6 @@
         float cx=child.x, cy=child.y;
         if (cx <= cullRight && cy <= cullTop && cx + child.width >= cullLeft && cy + child.height >= cullBottom)         child.draw(batch,parentAlpha);
       }
-      batch.flush();
     }
  else {
       float offsetX=x, offsetY=y;
@@ -44,7 +43,6 @@
         if (!child.isVisible())         continue;
         child.draw(batch,parentAlpha);
       }
-      batch.flush();
     }
  else {
       float offsetX=x, offsetY=y;
