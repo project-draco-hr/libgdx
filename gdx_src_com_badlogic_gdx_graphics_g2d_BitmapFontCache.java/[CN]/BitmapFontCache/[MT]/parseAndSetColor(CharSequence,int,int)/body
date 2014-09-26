@@ -15,6 +15,7 @@
             Color.rgba8888ToColor(hexColor,colorInt);
           }
           this.color=hexColor.toFloatBits();
+          addColorChunk(this.color);
           return i - start;
         }
         if (ch >= '0' && ch <= '9')         colorInt=colorInt * 16 + (ch - '0');
@@ -38,6 +39,7 @@
             this.previousColor=this.color;
             this.color=newColor.toFloatBits();
           }
+          addColorChunk(this.color);
           return i - start;
         }
  else {
