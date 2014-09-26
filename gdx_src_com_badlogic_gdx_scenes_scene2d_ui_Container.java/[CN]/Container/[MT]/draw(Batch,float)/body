@@ -9,6 +9,7 @@
       boolean draw=background == null ? clipBegin(0,0,getWidth(),getHeight()) : clipBegin(padLeft,padBottom,getWidth() - padLeft - padRight.get(this),getHeight() - padBottom - padTop.get(this));
       if (draw) {
         drawChildren(batch,parentAlpha);
+        batch.flush();
         clipEnd();
       }
     }
