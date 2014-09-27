@@ -1,0 +1,10 @@
+{
+  if (!haveVirtualMatrix) {
+    super.draw(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation);
+  }
+ else {
+    fillVertices(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation);
+    adjustVertices();
+    drawVertices(region.getTexture());
+  }
+}

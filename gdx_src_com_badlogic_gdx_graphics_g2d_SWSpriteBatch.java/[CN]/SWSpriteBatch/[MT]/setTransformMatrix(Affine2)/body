@@ -1,0 +1,15 @@
+{
+  if (checkEqual(super.getTransformMatrix(),transform)) {
+    haveVirtualMatrix=false;
+  }
+ else {
+    virtualMatrix.set(transform);
+    if (isDrawing()) {
+      haveVirtualMatrix=true;
+      adjustAffine.set(super.getTransformMatrix()).inv().mul(transform);
+    }
+ else {
+      super.setTransformMatrix(virtualMatrix);
+    }
+  }
+}
