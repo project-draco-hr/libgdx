@@ -1,5 +1,5 @@
 {
   final float d=Vector3.dot(this.x,this.y,this.z,axisX,axisY,axisZ);
   final float l2=Quaternion.len2(axisX * d,axisY * d,axisZ * d,this.w);
-  return MathUtils.isZero(l2) ? 0f : (float)(2.0 * Math.acos(this.w / Math.sqrt(l2)));
+  return MathUtils.isZero(l2) ? 0f : (float)(2.0 * Math.acos(MathUtils.clamp((float)(this.w / Math.sqrt(l2)),-1f,1f)));
 }
