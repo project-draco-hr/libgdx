@@ -1,0 +1,7 @@
+{
+  super.flush();
+  if (haveVirtualMatrix && vertexBuffer.size == 0) {
+    haveVirtualMatrix=false;
+    super.setTransformMatrix(virtualMatrix);
+  }
+}

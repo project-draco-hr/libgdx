@@ -1,7 +1,0 @@
-{
-  super.flush();
-  if (haveVirtualMatrix) {
-    super.setTransformMatrix(virtualMatrix);
-    haveVirtualMatrix=false;
-  }
-}
