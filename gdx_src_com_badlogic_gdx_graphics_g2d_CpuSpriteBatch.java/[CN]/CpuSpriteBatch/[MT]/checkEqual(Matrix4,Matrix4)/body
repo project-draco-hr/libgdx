@@ -1,7 +1,4 @@
 {
   if (a == b)   return true;
-  for (int i=0; i < 16; i++) {
-    if (a.val[i] != b.val[i])     return false;
-  }
-  return true;
+  return (a.val[Matrix4.M00] == b.val[Matrix4.M00] && a.val[Matrix4.M10] == b.val[Matrix4.M10] && a.val[Matrix4.M01] == b.val[Matrix4.M01] && a.val[Matrix4.M11] == b.val[Matrix4.M11] && a.val[Matrix4.M03] == b.val[Matrix4.M03] && a.val[Matrix4.M13] == b.val[Matrix4.M13]);
 }

@@ -4,8 +4,6 @@
     super.draw(texture,spriteVertices,offset,count);
   }
  else {
-    fillVertices(spriteVertices,offset,count);
-    adjustVertices();
-    drawVertices(texture);
+    drawAdjusted(texture,spriteVertices,offset,count);
   }
 }

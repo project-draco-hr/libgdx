@@ -3,8 +3,6 @@
     super.draw(texture,x,y,width,height,srcX,srcY,srcWidth,srcHeight,flipX,flipY);
   }
  else {
-    fillVertices(texture,x,y,0,0,width,height,1,1,0,srcX,srcY,srcWidth,srcHeight,flipX,flipY);
-    adjustVertices();
-    drawVertices(texture);
+    drawAdjusted(texture,x,y,0,0,width,height,1,1,0,srcX,srcY,srcWidth,srcHeight,flipX,flipY);
   }
 }

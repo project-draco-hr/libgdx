@@ -7,12 +7,17 @@
     if (isDrawing()) {
       virtualMatrix.set(transform);
       haveVirtualMatrix=true;
-      adjustAffine.set(realMatrix).inv();
-      tmpAffine.set(transform);
-      adjustAffine.mul(tmpAffine);
+      if (haveIdentityRealMatrix) {
+        adjustAffine.set(transform);
+      }
+ else {
+        tmpAffine.set(transform);
+        adjustAffine.set(realMatrix).inv().mul(tmpAffine);
+      }
     }
  else {
       realMatrix.set(transform);
+      haveIdentityRealMatrix=checkIdt(realMatrix);
     }
   }
 }

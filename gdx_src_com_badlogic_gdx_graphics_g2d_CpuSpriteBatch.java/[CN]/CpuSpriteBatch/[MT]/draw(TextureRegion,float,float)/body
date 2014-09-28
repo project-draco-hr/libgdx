@@ -3,8 +3,6 @@
     super.draw(region,x,y);
   }
  else {
-    fillVertices(region,x,y,0,0,region.getRegionWidth(),region.getRegionHeight(),1,1,0);
-    adjustVertices();
-    drawVertices(region.getTexture());
+    drawAdjusted(region,x,y,0,0,region.getRegionWidth(),region.getRegionHeight(),1,1,0);
   }
 }

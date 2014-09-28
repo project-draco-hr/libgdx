@@ -1,6 +1,0 @@
-{
-  vertexBuffer.size=0;
-  vertexBuffer.ensureCapacity(count);
-  System.arraycopy(spriteVertices,offset,vertexBuffer.items,0,count);
-  vertexBuffer.size=count;
-}

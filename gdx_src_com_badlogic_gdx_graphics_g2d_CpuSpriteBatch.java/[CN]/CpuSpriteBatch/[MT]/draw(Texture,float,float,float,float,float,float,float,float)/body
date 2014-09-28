@@ -3,8 +3,6 @@
     super.draw(texture,x,y,width,height,u,v,u2,v2);
   }
  else {
-    fillVerticesUV(texture,x,y,0,0,texture.getWidth(),texture.getHeight(),1,1,0,u,v,u2,v2,false,false);
-    adjustVertices();
-    drawVertices(texture);
+    drawAdjustedUV(texture,x,y,0,0,texture.getWidth(),texture.getHeight(),1,1,0,u,v,u2,v2,false,false);
   }
 }
