@@ -8,6 +8,7 @@
   final float m12=adjustAffine.m12;
   int copyCount=Math.min(vertices.length - idx,count);
   do {
+    count-=copyCount;
     while (copyCount > 0) {
       float x=spriteVertices[offset];
       float y=spriteVertices[offset + 1];
@@ -20,7 +21,6 @@
       offset+=Sprite.VERTEX_SIZE;
       copyCount-=Sprite.VERTEX_SIZE;
     }
-    count-=copyCount;
     if (count > 0) {
       super.flush();
       copyCount=Math.min(vertices.length,count);
