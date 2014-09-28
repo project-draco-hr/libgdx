@@ -1,0 +1,8 @@
+{
+  if (!haveVirtualMatrix) {
+    super.draw(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation);
+  }
+ else {
+    drawAdjusted(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation);
+  }
+}
