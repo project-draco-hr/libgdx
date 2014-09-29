@@ -1,5 +1,8 @@
 {
-  if (value instanceof Number) {
+  if (quoteLongValues && (value instanceof Long || value instanceof BigDecimal || value instanceof BigInteger)) {
+    value=String.valueOf(value);
+  }
+ else   if (value instanceof Number) {
     Number number=(Number)value;
     long longValue=number.longValue();
     if (number.doubleValue() == longValue)     value=longValue;
