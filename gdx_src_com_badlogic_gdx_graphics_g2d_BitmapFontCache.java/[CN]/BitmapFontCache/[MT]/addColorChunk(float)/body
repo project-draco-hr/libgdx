@@ -1,6 +1,0 @@
-{
-  if (colorChunks.size > 0) {
-    colorChunks.peek().endIndex=(glyphIndices != null ? glyphCount : this.idx[0] / 20);
-  }
-  colorChunks.add(new ColorChunk(color));
-}

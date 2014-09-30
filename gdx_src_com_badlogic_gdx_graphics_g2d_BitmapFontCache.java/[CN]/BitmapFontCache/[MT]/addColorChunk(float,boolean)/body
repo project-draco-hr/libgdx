@@ -1,0 +1,10 @@
+{
+  int popIndex=-1;
+  if (colorChunks.size > 0) {
+    ColorChunk last=colorChunks.peek();
+    last.endIndex=(glyphIndices != null ? glyphCount : this.idx[0] / 20);
+    if (isPop)     popIndex=colorChunks.get(Math.max(0,last.popIndex)).popIndex;
+ else     popIndex=colorChunks.size - 1;
+  }
+  colorChunks.add(new ColorChunk(color,popIndex));
+}

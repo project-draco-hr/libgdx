@@ -4,7 +4,7 @@
   Glyph lastGlyph=null;
   BitmapFontData data=font.data;
   textChanged=start < end;
-  if (font.markupEnabled && colorChunks.size == 0)   colorChunks.add(new ColorChunk(this.color));
+  if (font.markupEnabled && colorChunks.size == 0)   colorChunks.add(new ColorChunk(this.color,-1));
   if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
       char ch=str.charAt(start++);
