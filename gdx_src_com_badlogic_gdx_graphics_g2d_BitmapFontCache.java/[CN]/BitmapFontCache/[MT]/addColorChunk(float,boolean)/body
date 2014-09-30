@@ -6,5 +6,5 @@
     if (isPop)     popIndex=colorChunks.get(Math.max(0,last.popIndex)).popIndex;
  else     popIndex=colorChunks.size - 1;
   }
-  colorChunks.add(new ColorChunk(color,popIndex));
+  colorChunks.add(obtainColorChunk(color,popIndex));
 }
