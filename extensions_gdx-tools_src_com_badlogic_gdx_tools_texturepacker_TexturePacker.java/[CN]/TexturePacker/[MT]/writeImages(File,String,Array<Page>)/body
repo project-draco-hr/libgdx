@@ -1,8 +1,7 @@
 {
-  File packDir=packFile.getParentFile();
-  String imageName=packFile.getName();
-  int dotIndex=imageName.lastIndexOf('.');
-  if (dotIndex != -1)   imageName=imageName.substring(0,dotIndex);
+  File packFileNoExt=new File(outputDir,scaledPackFileName);
+  File packDir=packFileNoExt.getParentFile();
+  String imageName=packFileNoExt.getName();
   int fileIndex=0;
   for (  Page page : pages) {
     int width=page.width, height=page.height;

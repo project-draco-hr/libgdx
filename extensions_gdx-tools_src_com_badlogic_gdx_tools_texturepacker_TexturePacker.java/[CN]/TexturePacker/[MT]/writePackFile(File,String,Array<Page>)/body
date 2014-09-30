@@ -1,4 +1,7 @@
 {
+  File packFile=new File(outputDir,scaledPackFileName + settings.atlasExtension);
+  File packDir=packFile.getParentFile();
+  packDir.mkdirs();
   if (packFile.exists()) {
     TextureAtlasData textureAtlasData=new TextureAtlasData(new FileHandle(packFile),new FileHandle(packFile),false);
     for (    Page page : pages) {
