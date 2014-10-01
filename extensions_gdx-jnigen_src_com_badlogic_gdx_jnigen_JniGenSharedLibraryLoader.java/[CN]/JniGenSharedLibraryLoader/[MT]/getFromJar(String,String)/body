@@ -1,5 +1,5 @@
 {
-  @SuppressWarnings("resource") ZipFile file=new ZipFile(nativesJar);
+  ZipFile file=new ZipFile(nativesJar);
   ZipEntry entry=file.getEntry(sharedLibrary);
   return file.getInputStream(entry);
 }
