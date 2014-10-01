@@ -49,4 +49,6 @@
   renderer.setColor(Color.BLACK);
   renderer.rect(x,viewHeight - y,x + alignmentWidth,300);
   renderer.end();
+  stage.act(Gdx.graphics.getDeltaTime());
+  stage.draw();
 }

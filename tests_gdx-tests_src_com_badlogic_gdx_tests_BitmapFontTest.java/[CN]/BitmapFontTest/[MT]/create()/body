@@ -5,4 +5,15 @@
   Colors.put("PERU",Color.valueOf("CD853F"));
   renderer=new ShapeRenderer();
   renderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
+  stage=new Stage();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  BitmapFont labelFont=skin.get("default-font",BitmapFont.class);
+  labelFont.setMarkupEnabled(true);
+  Label label=new Label("<<[BLUE]M[RED]u[YELLOW]l[GREEN]t[OLIVE]ic[]o[]l[]o[]r[]*[MAROON]Label[][]>>",skin);
+  label.setPosition(200,200);
+  stage.addActor(label);
+  Window window=new Window("[RED]Multicolor[GREEN] Title",skin);
+  window.setPosition(400,200);
+  window.pack();
+  stage.addActor(window);
 }
