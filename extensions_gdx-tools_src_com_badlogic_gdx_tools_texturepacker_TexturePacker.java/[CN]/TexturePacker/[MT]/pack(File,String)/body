@@ -1,4 +1,5 @@
 {
+  if (packFileName.endsWith(settings.atlasExtension))   packFileName=packFileName.substring(packFileName.length() - settings.atlasExtension.length());
   outputDir.mkdirs();
   for (int i=0, n=settings.scale.length; i < n; i++) {
     imageProcessor.setScale(settings.scale[i]);
@@ -8,12 +9,9 @@
     }
     Array<Page> pages=packer.pack(imageProcessor.getImages());
     String scaledPackFileName=settings.getScaledPackFileName(packFileName,i);
-    File packFile=new File(outputDir,scaledPackFileName);
-    File packDir=packFile.getParentFile();
-    packDir.mkdirs();
-    writeImages(packFile,pages);
+    writeImages(outputDir,scaledPackFileName,pages);
     try {
-      writePackFile(packFile,pages);
+      writePackFile(outputDir,scaledPackFileName,pages);
     }
  catch (    IOException ex) {
       throw new RuntimeException("Error writing pack file.",ex);

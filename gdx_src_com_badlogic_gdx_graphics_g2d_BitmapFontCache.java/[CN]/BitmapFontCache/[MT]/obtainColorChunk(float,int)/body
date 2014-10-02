@@ -1,0 +1,6 @@
+{
+  ColorChunk colorChunk=colorChunkPool.obtain();
+  colorChunk.color=color;
+  colorChunk.popIndex=popIndex;
+  return colorChunk;
+}
