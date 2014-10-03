@@ -1,5 +1,5 @@
 {
   String systemVersion=UIDevice.getCurrentDevice().getSystemVersion();
-  int version=Character.getNumericValue(systemVersion.charAt(0));
+  int version=Integer.parseInt(systemVersion.split("\\.")[0]);
   return version;
 }

@@ -2,7 +2,7 @@
   this.config=config;
   width=(int)bounds.width();
   height=(int)bounds.height();
-  app.debug(tag,bounds.width() + "x" + bounds.height()+ ", "+ UIScreen.getMainScreen().getScale());
+  app.debug(tag,bounds.width() + "x" + bounds.height()+ ", "+ scale);
   this.gl20=gl20;
   context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
   view=new GLKView(new CGRect(new CGPoint(0,0),bounds),context){
@@ -63,7 +63,6 @@
   bufferFormat=new BufferFormat(r,g,b,a,depth,stencil,samples,false);
   this.gl20=gl20;
   density=1f;
-  double scale=UIScreen.getMainScreen().getScale();
   app.debug(tag,"Calculating density, UIScreen.mainScreen.scale: " + scale);
   if (scale == 2)   density=2f;
   int ppi;
