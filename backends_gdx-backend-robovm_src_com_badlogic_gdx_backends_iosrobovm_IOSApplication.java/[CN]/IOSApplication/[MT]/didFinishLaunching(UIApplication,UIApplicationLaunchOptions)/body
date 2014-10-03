@@ -2,9 +2,10 @@
   Gdx.app=this;
   this.uiApp=uiApp;
   UIApplication.getSharedApplication().setIdleTimerDisabled(config.preventScreenDimming);
-  if (UIScreen.getMainScreen().getScale() == 2.0f) {
-    Gdx.app.debug("IOSApplication","scale: " + UIScreen.getMainScreen().getScale());
-    float scale=(float)UIScreen.getMainScreen().getScale();
+  Gdx.app.debug("IOSApplication","iOS version: " + UIDevice.getCurrentDevice().getSystemVersion());
+  float scale=(float)(getIosVersion() >= 8 ? UIScreen.getMainScreen().getNativeScale() : UIScreen.getMainScreen().getScale());
+  if (scale >= 2.0f) {
+    Gdx.app.debug("IOSApplication","scale: " + scale);
     if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
       displayScaleFactor=config.displayScaleLargeScreenIfRetina * scale;
     }
@@ -24,7 +25,7 @@
   Gdx.gl=gl20;
   Gdx.gl20=gl20;
   this.input=new IOSInput(this);
-  this.graphics=new IOSGraphics(getBounds(null),this,config,input,gl20);
+  this.graphics=new IOSGraphics(getBounds(null),scale,this,config,input,gl20);
   this.files=new IOSFiles();
   this.audio=new IOSAudio(config);
   this.net=new IOSNet(this);
