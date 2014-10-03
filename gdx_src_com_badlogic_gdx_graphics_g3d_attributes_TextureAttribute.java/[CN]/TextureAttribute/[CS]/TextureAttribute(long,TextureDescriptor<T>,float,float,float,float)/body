@@ -1,7 +1,3 @@
 {
-  this(type,textureDescription);
-  this.offsetU=offsetU;
-  this.offsetV=offsetV;
-  this.scaleU=scaleU;
-  this.scaleV=scaleV;
+  this(type,textureDescription,offsetU,offsetV,scaleU,scaleV,0);
 }
