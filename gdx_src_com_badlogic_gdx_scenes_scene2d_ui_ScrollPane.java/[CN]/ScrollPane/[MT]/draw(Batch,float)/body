@@ -32,6 +32,7 @@
   getStage().calculateScissors(widgetAreaBounds,scissorBounds);
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
+    batch.flush();
     ScissorStack.popScissors();
   }
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha * Interpolation.fade.apply(fadeAlpha / fadeAlphaSeconds));

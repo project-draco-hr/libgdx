@@ -1,0 +1,3 @@
+{
+  return (haveVirtualMatrix ? virtualMatrix : super.getTransformMatrix());
+}

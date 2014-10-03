@@ -1,10 +1,4 @@
 {
-  String extension="";
-  int dotIndex=packFileName.lastIndexOf('.');
-  if (dotIndex != -1) {
-    extension=packFileName.substring(dotIndex);
-    packFileName=packFileName.substring(0,dotIndex);
-  }
   if (scaleSuffix[scaleIndex].length() > 0)   packFileName+=scaleSuffix[scaleIndex];
  else {
     float scaleValue=scale[scaleIndex];
@@ -12,7 +6,5 @@
       packFileName=(scaleValue == (int)scaleValue ? Integer.toString((int)scaleValue) : Float.toString(scaleValue)) + "/" + packFileName;
     }
   }
-  packFileName+=extension;
-  if (packFileName.indexOf('.') == -1 || packFileName.endsWith(".png") || packFileName.endsWith(".jpg"))   packFileName+=".atlas";
   return packFileName;
 }

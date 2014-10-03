@@ -1,0 +1,23 @@
+{
+  Matrix4 realMatrix=super.getTransformMatrix();
+  if (checkEqual(realMatrix,transform)) {
+    haveVirtualMatrix=false;
+  }
+ else {
+    if (isDrawing()) {
+      virtualMatrix.set(transform);
+      haveVirtualMatrix=true;
+      if (haveIdentityRealMatrix) {
+        adjustAffine.set(transform);
+      }
+ else {
+        tmpAffine.set(transform);
+        adjustAffine.set(realMatrix).inv().mul(tmpAffine);
+      }
+    }
+ else {
+      realMatrix.set(transform);
+      haveIdentityRealMatrix=checkIdt(realMatrix);
+    }
+  }
+}

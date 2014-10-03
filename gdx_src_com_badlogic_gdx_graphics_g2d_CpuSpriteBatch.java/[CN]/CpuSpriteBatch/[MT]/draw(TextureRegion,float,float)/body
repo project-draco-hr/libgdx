@@ -1,0 +1,8 @@
+{
+  if (!haveVirtualMatrix) {
+    super.draw(region,x,y);
+  }
+ else {
+    drawAdjusted(region,x,y,0,0,region.getRegionWidth(),region.getRegionHeight(),1,1,0);
+  }
+}
