@@ -1,19 +1,14 @@
 {
   if (texture != lastTexture)   switchTexture(texture);
-  final float m00=adjustAffine.m00;
-  final float m10=adjustAffine.m10;
-  final float m01=adjustAffine.m01;
-  final float m11=adjustAffine.m11;
-  final float m02=adjustAffine.m02;
-  final float m12=adjustAffine.m12;
+  Affine2 t=adjustAffine;
   int copyCount=Math.min(vertices.length - idx,count);
   do {
     count-=copyCount;
     while (copyCount > 0) {
       float x=spriteVertices[offset];
       float y=spriteVertices[offset + 1];
-      vertices[idx]=m00 * x + m01 * y + m02;
-      vertices[idx + 1]=m10 * x + m11 * y + m12;
+      vertices[idx]=t.m00 * x + t.m01 * y + t.m02;
+      vertices[idx + 1]=t.m10 * x + t.m11 * y + t.m12;
       vertices[idx + 2]=spriteVertices[offset + 2];
       vertices[idx + 3]=spriteVertices[offset + 3];
       vertices[idx + 4]=spriteVertices[offset + 4];
