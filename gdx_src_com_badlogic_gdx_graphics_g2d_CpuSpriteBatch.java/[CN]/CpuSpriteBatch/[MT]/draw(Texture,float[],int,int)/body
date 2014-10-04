@@ -1,6 +1,6 @@
 {
   if (count % Sprite.SPRITE_SIZE != 0)   throw new GdxRuntimeException("invalid vertex count");
-  if (!haveVirtualMatrix) {
+  if (!adjustNeeded) {
     super.draw(texture,spriteVertices,offset,count);
   }
  else {
