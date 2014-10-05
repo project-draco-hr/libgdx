@@ -22,7 +22,7 @@
     }
   }
  else {
-    if (!hasFileInDirectory(buildTools,DependencyBank.buildToolsVersion)) {
+    if (!versionsEqual(localToolVersion,targetToolVersion)) {
       JOptionPane.showMessageDialog(null,"Please update your Android SDK, you need build tools: " + DependencyBank.buildToolsVersion);
       return false;
     }
@@ -38,7 +38,7 @@
     }
   }
  else {
-    if (!hasFileInDirectory(apis,"android-" + DependencyBank.androidAPILevel)) {
+    if (newestLocalApi != Integer.valueOf(DependencyBank.androidAPILevel)) {
       JOptionPane.showMessageDialog(null,"Please update your Android SDK, you need the Android API: " + DependencyBank.androidAPILevel);
       return false;
     }
