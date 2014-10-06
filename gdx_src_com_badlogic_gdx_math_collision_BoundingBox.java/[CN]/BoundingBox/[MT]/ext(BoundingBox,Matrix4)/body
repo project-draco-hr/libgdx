@@ -1,11 +1,11 @@
 {
-  bounds.updateCorners();
-  for (  Vector3 pnt : crn) {
-    pnt.mul(transform);
-    min.set(min(min.x,pnt.x),min(min.y,pnt.y),min(min.z,pnt.z));
-    max.set(max(max.x,pnt.x),max(max.y,pnt.y),max(max.z,pnt.z));
-  }
-  crn_dirty=true;
-  bounds.crn_dirty=true;
-  return this.set(min,max);
+  ext(tmpVector.set(bounds.min.x,bounds.min.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.min.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.max.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.max.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.min.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.min.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.max.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.max.y,bounds.max.z).mul(transform));
+  return this;
 }
