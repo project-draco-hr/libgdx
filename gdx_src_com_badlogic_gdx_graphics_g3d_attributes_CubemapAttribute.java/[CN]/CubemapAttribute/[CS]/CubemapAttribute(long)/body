@@ -1,5 +1,5 @@
 {
   super(type);
   if (!is(type))   throw new GdxRuntimeException("Invalid type specified");
-  textureDescription=new TextureDescriptor<Cubemap>();
+  textureDescription=new TextureDescriptor<GLTexture>();
 }

@@ -1,0 +1,4 @@
+{
+  if (data.getWidth() == -1)   throw new GdxRuntimeException("getWidth called before preparing the texture");
+  return data.getWidth();
+}
