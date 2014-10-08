@@ -2,7 +2,7 @@
   String cubemapVS="" + "attribute vec3 a_position;\n" + "uniform mat4 u_projViewTrans;\n"+ "uniform mat4 u_worldTrans;\n"+ "\n"+ "varying vec3 v_cubeMapUV;\n"+ "\n"+ "void main() {\n"+ "   vec4 g_position = vec4(a_position, 1.0);\n"+ "   g_position = u_worldTrans * g_position;\n"+ "   v_cubeMapUV = normalize(g_position.xyz);\n"+ "   gl_Position = u_projViewTrans * g_position;\n"+ "}";
   String cubemapFS="" + "uniform samplerCube u_environmentCubemap;\n" + "varying vec3 v_cubeMapUV;\n"+ "void main() {\n"+ "	gl_FragColor = vec4(textureCube(u_environmentCubemap, v_cubeMapUV).rgb, 1.0);\n"+ "}\n";
   modelBatch=new ModelBatch(new DefaultShaderProvider(new Config(cubemapVS,cubemapFS)));
-  cubemap=new KTXCubemap(new KTXTextureData(Gdx.files.internal("data/cubemap.zktx"),true));
+  cubemap=new Cubemap(new KTXTextureData(Gdx.files.internal("data/cubemap.zktx"),true));
   cubemap.setFilter(TextureFilter.MipMapLinearLinear,TextureFilter.Linear);
   environment=new Environment();
   environment.set(new ColorAttribute(ColorAttribute.AmbientLight,0.1f,0.1f,0.1f,1.f));

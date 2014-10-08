@@ -1,4 +1,3 @@
 {
-  for (  TextureData data : this.data)   if (!data.isManaged())   return false;
-  return true;
+  return data.isManaged();
 }

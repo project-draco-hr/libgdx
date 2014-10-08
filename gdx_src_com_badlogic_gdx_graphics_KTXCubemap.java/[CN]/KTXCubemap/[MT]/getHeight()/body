@@ -1,4 +1,0 @@
-{
-  if (data.getHeight() == -1)   throw new GdxRuntimeException("getHeight called before preparing the texture");
-  return data.getHeight();
-}

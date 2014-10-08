@@ -1,8 +1,0 @@
-{
-  if (!data.isPrepared())   data.prepare();
-  bind();
-  uploadImageData(glTarget,data);
-  setFilter(minFilter,magFilter);
-  setWrap(uWrap,vWrap);
-  Gdx.gl.glBindTexture(glTarget,0);
-}

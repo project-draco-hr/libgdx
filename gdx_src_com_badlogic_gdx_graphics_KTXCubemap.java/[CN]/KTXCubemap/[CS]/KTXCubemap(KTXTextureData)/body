@@ -1,9 +1,0 @@
-{
-  super(GL20.GL_TEXTURE_CUBE_MAP);
-  minFilter=TextureFilter.Nearest;
-  magFilter=TextureFilter.Nearest;
-  uWrap=TextureWrap.ClampToEdge;
-  vWrap=TextureWrap.ClampToEdge;
-  this.data=data;
-  load();
-}
