@@ -1,0 +1,8 @@
+{
+  if (!data.isPrepared())   data.prepare();
+  bind();
+  unsafeSetFilter(minFilter,magFilter,true);
+  unsafeSetWrap(uWrap,vWrap,true);
+  data.consumeCubemapData();
+  Gdx.gl.glBindTexture(glTarget,0);
+}

@@ -1,0 +1,21 @@
+{
+  info.filename=fileName;
+  if (parameter == null || parameter.textureData == null) {
+    Pixmap pixmap=null;
+    Format format=null;
+    boolean genMipMaps=false;
+    info.texture=null;
+    if (parameter != null) {
+      format=parameter.format;
+      info.texture=parameter.cubemap;
+    }
+    if (fileName.contains(".ktx") || fileName.contains(".zktx")) {
+      info.data=new KTXTextureData(file,genMipMaps);
+    }
+  }
+ else {
+    info.data=parameter.textureData;
+    info.texture=parameter.cubemap;
+  }
+  if (!info.data.isPrepared())   info.data.prepare();
+}

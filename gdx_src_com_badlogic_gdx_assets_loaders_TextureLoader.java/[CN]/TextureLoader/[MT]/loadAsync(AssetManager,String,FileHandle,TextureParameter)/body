@@ -10,7 +10,10 @@
       genMipMaps=parameter.genMipMaps;
       info.texture=parameter.texture;
     }
-    if (!fileName.contains(".etc1")) {
+    if (fileName.contains(".ktx") || fileName.contains(".zktx")) {
+      info.data=new KTXTextureData(file,genMipMaps);
+    }
+ else     if (!fileName.contains(".etc1")) {
       if (fileName.contains(".cim"))       pixmap=PixmapIO.readCIM(file);
  else       pixmap=new Pixmap(file);
       info.data=new FileTextureData(file,pixmap,format,genMipMaps);
