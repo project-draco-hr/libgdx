@@ -8,8 +8,8 @@
     m11=scaleY;
   }
  else {
-    float sin=(float)Math.sin(radians);
-    float cos=(float)Math.cos(radians);
+    float sin=MathUtils.sin(radians);
+    float cos=MathUtils.cos(radians);
     m00=cos * scaleX;
     m01=-sin * scaleY;
     m10=sin * scaleX;
