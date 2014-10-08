@@ -20,7 +20,7 @@
         assetManager.setReferenceCount(fileName,0);
         cubemap.glHandle=0;
         CubemapParameter params=new CubemapParameter();
-        params.textureData=cubemap.getTextureData();
+        params.cubemapData=cubemap.getCubemapData();
         params.minFilter=cubemap.getMinFilter();
         params.magFilter=cubemap.getMagFilter();
         params.wrapU=cubemap.getUWrap();
