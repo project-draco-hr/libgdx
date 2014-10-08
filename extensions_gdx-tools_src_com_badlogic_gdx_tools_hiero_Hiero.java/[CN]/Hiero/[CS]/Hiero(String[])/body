@@ -21,6 +21,7 @@
   effectsListModel.addElement(new ShadowEffect());
   effectsListModel.addElement(new DistanceFieldEffect());
   new EffectPanel(colorEffect);
+  parseArgs(args);
   addWindowListener(new WindowAdapter(){
     public void windowClosed(    WindowEvent event){
       System.exit(0);

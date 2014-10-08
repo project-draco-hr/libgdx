@@ -207,7 +207,7 @@ class FontUpdateListener implements ChangeListener, ActionListener {
       String fileName=dialog.getFile();
       if (fileName == null)       return;
       lastSaveBMFilename=fileName;
-      saveBmFontFile=new File(dialog.getDirectory(),fileName);
+      saveBm(new File(dialog.getDirectory(),fileName));
     }
   }
 );
