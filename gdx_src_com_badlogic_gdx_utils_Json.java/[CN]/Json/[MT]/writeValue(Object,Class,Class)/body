@@ -35,10 +35,18 @@
       return;
     }
     if (value instanceof Collection) {
-      if (knownType != null && actualType != knownType && actualType != ArrayList.class)       throw new SerializationException("Serialization of a Collection other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
-      writeArrayStart();
-      for (      Object item : (Collection)value)       writeValue(item,elementType,null);
-      writeArrayEnd();
+      if (knownType != null && actualType != knownType && actualType != ArrayList.class) {
+        writeObjectStart(actualType,knownType);
+        writeArrayStart("items");
+        for (        Object item : (Collection)value)         writeValue(item,elementType,null);
+        writeArrayEnd();
+        writeObjectEnd();
+      }
+ else {
+        writeArrayStart();
+        for (        Object item : (Collection)value)         writeValue(item,elementType,null);
+        writeArrayEnd();
+      }
       return;
     }
     if (actualType.isArray()) {
@@ -49,13 +57,12 @@
       writeArrayEnd();
       return;
     }
-    if (value instanceof OrderedMap) {
-      if (knownType == null)       knownType=OrderedMap.class;
+    if (value instanceof ObjectMap) {
+      if (knownType == null)       knownType=ObjectMap.class;
       writeObjectStart(actualType,knownType);
-      OrderedMap map=(OrderedMap)value;
-      for (      Object key : map.orderedKeys()) {
-        writer.name(convertToString(key));
-        writeValue(map.get(key),elementType,null);
+      for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
+        writer.name(convertToString(entry.key));
+        writeValue(entry.value,elementType,null);
       }
       writeObjectEnd();
       return;
@@ -71,16 +78,6 @@
       writeObjectEnd();
       return;
     }
-    if (value instanceof ObjectMap) {
-      if (knownType == null)       knownType=ObjectMap.class;
-      writeObjectStart(actualType,knownType);
-      for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
-        writer.name(convertToString(entry.key));
-        writeValue(entry.value,elementType,null);
-      }
-      writeObjectEnd();
-      return;
-    }
     if (value instanceof Map) {
       if (knownType == null)       knownType=HashMap.class;
       writeObjectStart(actualType,knownType);
@@ -92,15 +89,15 @@
       return;
     }
     if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
-      if (knownType == null || !knownType.equals(actualType)) {
+      if (knownType == null || knownType != actualType) {
         if (actualType.getEnumConstants() == null)         actualType=actualType.getSuperclass();
         writeObjectStart(actualType,null);
         writer.name("value");
-        writer.value(value);
+        writer.value(((Enum)value).name());
         writeObjectEnd();
       }
  else {
-        writer.value(value);
+        writer.value(((Enum)value).name());
       }
       return;
     }
