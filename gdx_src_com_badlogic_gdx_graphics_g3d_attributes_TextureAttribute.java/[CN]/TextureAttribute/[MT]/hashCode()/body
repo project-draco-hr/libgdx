@@ -5,5 +5,6 @@
   result=991 * result + NumberUtils.floatToRawIntBits(offsetV);
   result=991 * result + NumberUtils.floatToRawIntBits(scaleU);
   result=991 * result + NumberUtils.floatToRawIntBits(scaleV);
+  result=991 * result + NumberUtils.floatToRawIntBits(uvIndex);
   return result;
 }

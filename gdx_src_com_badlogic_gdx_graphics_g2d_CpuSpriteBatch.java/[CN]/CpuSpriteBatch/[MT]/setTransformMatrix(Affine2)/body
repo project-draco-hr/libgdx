@@ -1,12 +1,12 @@
 {
   Matrix4 realMatrix=super.getTransformMatrix();
   if (checkEqual(realMatrix,transform)) {
-    haveVirtualMatrix=false;
+    adjustNeeded=false;
   }
  else {
-    virtualMatrix.set(transform);
+    virtualMatrix.setAsAffine(transform);
     if (isDrawing()) {
-      haveVirtualMatrix=true;
+      adjustNeeded=true;
       if (haveIdentityRealMatrix) {
         adjustAffine.set(transform);
       }
@@ -15,7 +15,7 @@
       }
     }
  else {
-      realMatrix.set(transform);
+      realMatrix.setAsAffine(transform);
       haveIdentityRealMatrix=checkIdt(realMatrix);
     }
   }

@@ -6,7 +6,6 @@
     v.setFocusable(true);
     v.setFocusableInTouchMode(true);
     v.requestFocus();
-    v.requestFocusFromTouch();
   }
   this.config=config;
   this.onscreenKeyboard=new AndroidOnscreenKeyboard(context,new Handler(),this);

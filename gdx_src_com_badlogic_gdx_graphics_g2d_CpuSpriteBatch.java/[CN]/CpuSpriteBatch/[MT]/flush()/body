@@ -1,8 +1,0 @@
-{
-  super.flush();
-  if (haveVirtualMatrix) {
-    haveVirtualMatrix=false;
-    super.setTransformMatrix(virtualMatrix);
-    haveIdentityRealMatrix=checkIdt(virtualMatrix);
-  }
-}

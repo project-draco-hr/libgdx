@@ -1,5 +1,5 @@
 {
-  if (!haveVirtualMatrix) {
+  if (!adjustNeeded) {
     super.draw(region,x,y);
   }
  else {

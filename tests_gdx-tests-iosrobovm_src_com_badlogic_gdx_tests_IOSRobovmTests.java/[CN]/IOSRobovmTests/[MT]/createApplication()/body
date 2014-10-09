@@ -1,5 +1,5 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
   config.useAccelerometer=false;
-  return new IOSApplication(new Box2DTestCollection(),config);
+  return new IOSApplication(new BulletTestCollection(),config);
 }

@@ -29,6 +29,7 @@ default :
 width=(int)bounds.width();
 height=(int)bounds.height();
 }
+Gdx.app.debug("IOSApplication","Unscaled View: " + orientation.toString() + " "+ width+ "x"+ height);
 width*=displayScaleFactor;
 height*=displayScaleFactor;
 Gdx.app.debug("IOSApplication","View: " + orientation.toString() + " "+ width+ "x"+ height);
