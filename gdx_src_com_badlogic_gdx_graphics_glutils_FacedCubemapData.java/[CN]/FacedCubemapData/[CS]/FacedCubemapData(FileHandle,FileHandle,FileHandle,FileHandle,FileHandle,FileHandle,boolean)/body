@@ -1,3 +1,3 @@
 {
-  this(GLTexture.createTextureData(positiveX,useMipMaps),GLTexture.createTextureData(negativeX,useMipMaps),GLTexture.createTextureData(positiveY,useMipMaps),GLTexture.createTextureData(negativeY,useMipMaps),GLTexture.createTextureData(positiveZ,useMipMaps),GLTexture.createTextureData(negativeZ,useMipMaps));
+  this(TextureData.Factory.loadTextureDataFromFile(positiveX,useMipMaps),TextureData.Factory.loadTextureDataFromFile(negativeX,useMipMaps),TextureData.Factory.loadTextureDataFromFile(positiveY,useMipMaps),TextureData.Factory.loadTextureDataFromFile(negativeY,useMipMaps),TextureData.Factory.loadTextureDataFromFile(positiveZ,useMipMaps),TextureData.Factory.loadTextureDataFromFile(negativeZ,useMipMaps));
 }

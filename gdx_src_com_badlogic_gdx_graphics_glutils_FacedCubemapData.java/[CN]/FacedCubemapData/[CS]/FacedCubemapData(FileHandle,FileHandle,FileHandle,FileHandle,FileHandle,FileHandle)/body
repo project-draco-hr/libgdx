@@ -1,3 +1,3 @@
 {
-  this(GLTexture.createTextureData(positiveX,false),GLTexture.createTextureData(negativeX,false),GLTexture.createTextureData(positiveY,false),GLTexture.createTextureData(negativeY,false),GLTexture.createTextureData(positiveZ,false),GLTexture.createTextureData(negativeZ,false));
+  this(TextureData.Factory.loadTextureDataFromFile(positiveX,false),TextureData.Factory.loadTextureDataFromFile(negativeX,false),TextureData.Factory.loadTextureDataFromFile(positiveY,false),TextureData.Factory.loadTextureDataFromFile(negativeY,false),TextureData.Factory.loadTextureDataFromFile(positiveZ,false),TextureData.Factory.loadTextureDataFromFile(negativeZ,false));
 }
