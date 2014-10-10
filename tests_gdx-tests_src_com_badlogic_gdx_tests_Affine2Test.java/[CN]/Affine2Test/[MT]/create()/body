@@ -50,12 +50,12 @@
   checkEqual(mat1,afn1);
   mat1.set(afn2.setToShearing(shear)).trn(trn).mulLeft(mat2.setToRotation(rot)).mulLeft(mat2.setToScaling(scl));
   checkEqual(mat1,afn1);
-  check(mat1.det() == afn1.det());
+  checkEqual(mat1.det(),afn1.det());
   check(afn1.det() == (afn1.m00 * afn1.m11 - afn1.m01 * afn1.m10));
   mat1.inv();
   afn2.set(afn1).inv();
   checkEqual(mat1,afn2);
-  check(MathUtils.isEqual(afn1.det(),1 / afn2.det()));
+  checkEqual(afn1.det(),1 / afn2.det());
   boolean didThrow=false;
   afn1.setToShearing(1,1);
   try {
