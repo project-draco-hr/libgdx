@@ -1,5 +1,5 @@
 {
-  if (quoteLongValues && (value instanceof Long || value instanceof BigDecimal || value instanceof BigInteger)) {
+  if (quoteLongValues && (value instanceof Long || value instanceof Double || value instanceof BigDecimal|| value instanceof BigInteger)) {
     value=String.valueOf(value);
   }
  else   if (value instanceof Number) {
