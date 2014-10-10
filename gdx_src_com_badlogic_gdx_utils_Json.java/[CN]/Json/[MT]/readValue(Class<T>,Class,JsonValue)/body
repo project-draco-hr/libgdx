@@ -117,8 +117,8 @@
     if (ClassReflection.isAssignableFrom(Enum.class,type)) {
       Enum[] constants=(Enum[])type.getEnumConstants();
       for (int i=0, n=constants.length; i < n; i++) {
-        Enum enun=constants[i];
-        if (string.equals(getEnumValue(enun)))         return (T)enun;
+        Enum e=constants[i];
+        if (string.equals(convertToString(e)))         return (T)e;
       }
     }
     if (type == CharSequence.class)     return (T)string;

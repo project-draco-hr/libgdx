@@ -93,11 +93,11 @@
         if (actualType.getEnumConstants() == null)         actualType=actualType.getSuperclass();
         writeObjectStart(actualType,null);
         writer.name("value");
-        writer.value(getEnumValue((Enum)value));
+        writer.value(convertToString((Enum)value));
         writeObjectEnd();
       }
  else {
-        writer.value(getEnumValue((Enum)value));
+        writer.value(convertToString((Enum)value));
       }
       return;
     }
