@@ -35,7 +35,7 @@
       return;
     }
     if (value instanceof Collection) {
-      if (knownType != null && actualType != knownType && actualType != ArrayList.class) {
+      if (typeName != null && actualType != ArrayList.class && (knownType == null || knownType != actualType)) {
         writeObjectStart(actualType,knownType);
         writeArrayStart("items");
         for (        Object item : (Collection)value)         writeValue(item,elementType,null);
@@ -89,7 +89,7 @@
       return;
     }
     if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
-      if (knownType == null || knownType != actualType) {
+      if (typeName != null && (knownType == null || knownType != actualType)) {
         if (actualType.getEnumConstants() == null)         actualType=actualType.getSuperclass();
         writeObjectStart(actualType,null);
         writer.name("value");
