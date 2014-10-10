@@ -1,8 +1,0 @@
-{
-  Transaction transaction=new Transaction();
-  transaction.setIdentifier(product.getIdentifier());
-  transaction.setStoreName(storeName());
-  transaction.setPurchaseTime(new Date());
-  showMessage(LOGTYPELOG,"converted purchased product to transaction.");
-  return transaction;
-}
