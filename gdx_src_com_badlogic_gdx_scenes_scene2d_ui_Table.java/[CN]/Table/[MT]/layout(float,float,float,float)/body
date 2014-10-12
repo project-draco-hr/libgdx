@@ -14,7 +14,7 @@
   for (int i=0; i < rows; i++)   totalExpandHeight+=expandHeight[i];
   float[] columnWeightedWidth;
   float totalGrowWidth=tablePrefWidth - tableMinWidth;
-  if (totalGrowWidth == 0)   columnWeightedWidth=columnMinWidth;
+  if (MathUtils.isZero(totalGrowWidth))   columnWeightedWidth=columnMinWidth;
  else {
     float extraWidth=Math.min(totalGrowWidth,Math.max(0,layoutWidth - tableMinWidth));
     columnWeightedWidth=Table.columnWeightedWidth=ensureSize(Table.columnWeightedWidth,columns);
@@ -27,7 +27,7 @@
   }
   float[] rowWeightedHeight;
   float totalGrowHeight=tablePrefHeight - tableMinHeight;
-  if (totalGrowHeight == 0)   rowWeightedHeight=rowMinHeight;
+  if (MathUtils.isZero(totalGrowHeight))   rowWeightedHeight=rowMinHeight;
  else {
     rowWeightedHeight=Table.rowWeightedHeight=ensureSize(Table.rowWeightedHeight,rows);
     float extraHeight=Math.min(totalGrowHeight,Math.max(0,layoutHeight - tableMinHeight));
