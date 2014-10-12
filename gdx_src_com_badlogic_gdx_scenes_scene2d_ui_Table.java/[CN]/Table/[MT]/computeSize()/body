@@ -74,11 +74,10 @@
     }
     float totalExpandWidth=0;
     for (int ii=column, nn=ii + colspan; ii < nn; ii++)     totalExpandWidth+=expandWidth[ii];
-    boolean isZero=MathUtils.isZero(totalExpandWidth);
     float extraMinWidth=Math.max(0,minWidth - spannedMinWidth);
     float extraPrefWidth=Math.max(0,prefWidth - spannedPrefWidth);
     for (int ii=column, nn=ii + colspan; ii < nn; ii++) {
-      float ratio=isZero ? 1f / colspan : expandWidth[ii] / totalExpandWidth;
+      float ratio=totalExpandWidth == 0 ? 1f / colspan : expandWidth[ii] / totalExpandWidth;
       columnMinWidth[ii]+=extraMinWidth * ratio;
       columnPrefWidth[ii]+=extraPrefWidth * ratio;
     }
