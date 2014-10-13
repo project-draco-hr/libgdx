@@ -1,3 +1,4 @@
 {
-  view.setNeedsDisplay();
+  isFrameRequested=true;
+  viewController.setPaused(false);
 }

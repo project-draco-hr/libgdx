@@ -1,6 +1,4 @@
 {
   this.isContinuous=isContinuous;
-  viewController.setPaused(!isContinuous);
-  viewController.setResumeOnDidBecomeActive(isContinuous);
-  view.setEnableSetNeedsDisplay(!isContinuous);
+  if (isContinuous)   viewController.setPaused(false);
 }
