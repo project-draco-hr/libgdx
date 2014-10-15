@@ -1,4 +1,4 @@
 {
   isFrameRequested=true;
-  viewController.setPaused(false);
+  if (!isContinuous)   viewController.setPaused(false);
 }
