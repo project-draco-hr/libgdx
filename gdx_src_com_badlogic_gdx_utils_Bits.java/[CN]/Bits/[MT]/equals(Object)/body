@@ -3,5 +3,11 @@
   if (obj == null)   return false;
   if (getClass() != obj.getClass())   return false;
   Bits other=(Bits)obj;
-  return Arrays.equals(bits,other.bits);
+  long[] otherBits=other.bits;
+  int commonWords=Math.min(bits.length,otherBits.length);
+  for (int i=0; commonWords > i; i++) {
+    if (bits[i] != otherBits[i])     return false;
+  }
+  if (bits.length == otherBits.length)   return true;
+  return length() == other.length();
 }
