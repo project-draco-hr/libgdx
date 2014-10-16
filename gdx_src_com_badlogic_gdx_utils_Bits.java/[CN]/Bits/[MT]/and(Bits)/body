@@ -1,5 +1,11 @@
 {
-  for (int i=0, j=bits.length, k=other.bits.length; i < j && i < k; i++) {
+  int commonWords=Math.min(bits.length,other.bits.length);
+  for (int i=0; commonWords > i; i++) {
     bits[i]&=other.bits[i];
+  }
+  if (bits.length > commonWords) {
+    for (int i=commonWords, s=bits.length; s > i; i++) {
+      bits[i]=0L;
+    }
   }
 }
