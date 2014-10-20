@@ -39,6 +39,18 @@
     prefix+="#define " + TextureAttribute.NormalAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.NormalAlias + "Coord texCoord0\n";
   }
+  if ((mask & TextureAttribute.Emissive) == TextureAttribute.Emissive) {
+    prefix+="#define " + TextureAttribute.EmissiveAlias + "Flag\n";
+    prefix+="#define " + TextureAttribute.EmissiveAlias + "Coord texCoord0\n";
+  }
+  if ((mask & TextureAttribute.Reflection) == TextureAttribute.Reflection) {
+    prefix+="#define " + TextureAttribute.ReflectionAlias + "Flag\n";
+    prefix+="#define " + TextureAttribute.ReflectionAlias + "Coord texCoord0\n";
+  }
+  if ((mask & TextureAttribute.Ambient) == TextureAttribute.Ambient) {
+    prefix+="#define " + TextureAttribute.AmbientAlias + "Flag\n";
+    prefix+="#define " + TextureAttribute.AmbientAlias + "Coord texCoord0\n";
+  }
   if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
   if ((mask & ColorAttribute.Specular) == ColorAttribute.Specular)   prefix+="#define " + ColorAttribute.SpecularAlias + "Flag\n";
   if ((mask & ColorAttribute.Emissive) == ColorAttribute.Emissive)   prefix+="#define " + ColorAttribute.EmissiveAlias + "Flag\n";

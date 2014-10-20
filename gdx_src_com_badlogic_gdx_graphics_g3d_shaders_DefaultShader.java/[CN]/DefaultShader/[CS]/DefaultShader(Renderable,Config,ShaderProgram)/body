@@ -34,9 +34,15 @@
   u_specularTexture=register(Inputs.specularTexture,Setters.specularTexture);
   u_specularUVTransform=register(Inputs.specularUVTransform,Setters.specularUVTransform);
   u_emissiveColor=register(Inputs.emissiveColor,Setters.emissiveColor);
+  u_emissiveTexture=register(Inputs.emissiveTexture,Setters.emissiveTexture);
+  u_emissiveUVTransform=register(Inputs.emissiveUVTransform,Setters.emissiveUVTransform);
   u_reflectionColor=register(Inputs.reflectionColor,Setters.reflectionColor);
+  u_reflectionTexture=register(Inputs.reflectionTexture,Setters.reflectionTexture);
+  u_reflectionUVTransform=register(Inputs.reflectionUVTransform,Setters.reflectionUVTransform);
   u_normalTexture=register(Inputs.normalTexture,Setters.normalTexture);
   u_normalUVTransform=register(Inputs.normalUVTransform,Setters.normalUVTransform);
+  u_ambientTexture=register(Inputs.ambientTexture,Setters.ambientTexture);
+  u_ambientUVTransform=register(Inputs.ambientUVTransform,Setters.ambientUVTransform);
   u_alphaTest=register(Inputs.alphaTest);
   u_ambientCubemap=lighting ? register(Inputs.ambientCube,new Setters.ACubemap(config.numDirectionalLights,config.numPointLights)) : -1;
   u_environmentCubemap=environmentCubemap ? register(Inputs.environmentCubemap,Setters.environmentCubemap) : -1;
