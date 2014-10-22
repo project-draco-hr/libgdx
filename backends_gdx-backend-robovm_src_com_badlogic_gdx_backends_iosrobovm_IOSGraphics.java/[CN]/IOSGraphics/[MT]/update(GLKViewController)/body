@@ -1,4 +1,8 @@
 {
   makeCurrent();
   app.processRunnables();
+  if (!isContinuous && !isFrameRequested) {
+    viewController.setPaused(true);
+  }
+  isFrameRequested=false;
 }
