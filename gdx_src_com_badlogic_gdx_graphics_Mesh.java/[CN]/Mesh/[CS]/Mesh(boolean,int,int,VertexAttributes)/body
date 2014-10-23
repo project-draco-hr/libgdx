@@ -1,5 +1,5 @@
 {
-  vertices=new VertexBufferObject(isStatic,maxVertices,attributes);
+  vertices=makeVertexBuffer(isStatic,maxVertices,attributes);
   indices=new IndexBufferObject(isStatic,maxIndices);
   isVertexArray=false;
   addManagedMesh(Gdx.app,this);

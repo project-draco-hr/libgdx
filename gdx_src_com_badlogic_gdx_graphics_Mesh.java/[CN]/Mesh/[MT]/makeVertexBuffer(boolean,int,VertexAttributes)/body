@@ -1,0 +1,8 @@
+{
+  if (Gdx.gl30 != null) {
+    return new VertexBufferObjectWithVAO(isStatic,maxVertices,vertexAttributes);
+  }
+ else {
+    return new VertexBufferObject(isStatic,maxVertices,vertexAttributes);
+  }
+}

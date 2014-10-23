@@ -1,5 +1,4 @@
 {
-  final GL20 gl=Gdx.gl20;
   final int numAttributes=attributes.size();
   byteBuffer.limit(buffer.limit() * 4);
   if (locations == null) {

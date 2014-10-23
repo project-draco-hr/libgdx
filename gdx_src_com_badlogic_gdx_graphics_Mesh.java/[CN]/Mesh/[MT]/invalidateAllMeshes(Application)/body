@@ -5,6 +5,9 @@
     if (meshesArray.get(i).vertices instanceof VertexBufferObject) {
       ((VertexBufferObject)meshesArray.get(i).vertices).invalidate();
     }
+ else     if (meshesArray.get(i).vertices instanceof VertexBufferObjectWithVAO) {
+      ((VertexBufferObjectWithVAO)meshesArray.get(i).vertices).invalidate();
+    }
     meshesArray.get(i).indices.invalidate();
   }
 }
