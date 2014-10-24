@@ -3,6 +3,10 @@
   batch.begin();
   batch.draw(buttons,0,0);
   batch.end();
+  sliderUpdating=true;
+  sliderUpdating=false;
+  stage.act();
+  stage.draw();
   if (Gdx.input.justTouched()) {
     if (Gdx.input.getY() > Gdx.graphics.getHeight() - 64) {
       if (Gdx.input.getX() < 64) {
