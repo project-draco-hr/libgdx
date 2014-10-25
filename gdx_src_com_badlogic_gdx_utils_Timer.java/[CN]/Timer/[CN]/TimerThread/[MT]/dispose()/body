@@ -1,7 +1,6 @@
 {
   pause();
   Gdx.app.removeLifecycleListener(this);
-  thread=null;
   instances.clear();
   instance=null;
 }
