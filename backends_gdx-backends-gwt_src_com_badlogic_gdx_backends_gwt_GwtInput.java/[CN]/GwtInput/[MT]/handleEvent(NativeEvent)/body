@@ -1,8 +1,8 @@
 {
   if (e.getType().equals("mousedown")) {
     if (!e.getEventTarget().equals(canvas) || touched[0]) {
-      float mouseX=(int)getRelativeX(e,canvas);
-      float mouseY=(int)getRelativeY(e,canvas);
+      float mouseX=getRelativeX(e,canvas);
+      float mouseY=getRelativeY(e,canvas);
       if (mouseX < 0 || mouseX > Gdx.graphics.getWidth() || mouseY < 0 || mouseY > Gdx.graphics.getHeight()) {
         hasFocus=false;
       }
@@ -19,8 +19,8 @@
       this.touchY[0]+=getMovementYJSNI(e);
     }
  else {
-      this.touchX[0]=(int)getRelativeX(e,canvas);
-      this.touchY[0]=(int)getRelativeY(e,canvas);
+      this.touchX[0]=getRelativeX(e,canvas);
+      this.touchY[0]=getRelativeY(e,canvas);
     }
     this.currentEventTimeStamp=TimeUtils.nanoTime();
     if (processor != null)     processor.touchDown(touchX[0],touchY[0],0,getButton(e.getButton()));
@@ -33,10 +33,10 @@
       this.touchY[0]+=getMovementYJSNI(e);
     }
  else {
-      this.deltaX[0]=(int)getRelativeX(e,canvas) - touchX[0];
-      this.deltaY[0]=(int)getRelativeY(e,canvas) - touchY[0];
-      this.touchX[0]=(int)getRelativeX(e,canvas);
-      this.touchY[0]=(int)getRelativeY(e,canvas);
+      this.deltaX[0]=getRelativeX(e,canvas) - touchX[0];
+      this.deltaY[0]=getRelativeY(e,canvas) - touchY[0];
+      this.touchX[0]=getRelativeX(e,canvas);
+      this.touchY[0]=getRelativeY(e,canvas);
     }
     this.currentEventTimeStamp=TimeUtils.nanoTime();
     if (processor != null) {
@@ -55,10 +55,10 @@
       this.touchY[0]+=getMovementYJSNI(e);
     }
  else {
-      this.deltaX[0]=(int)getRelativeX(e,canvas) - touchX[0];
-      this.deltaY[0]=(int)getRelativeY(e,canvas) - touchY[0];
-      this.touchX[0]=(int)getRelativeX(e,canvas);
-      this.touchY[0]=(int)getRelativeY(e,canvas);
+      this.deltaX[0]=getRelativeX(e,canvas) - touchX[0];
+      this.deltaY[0]=getRelativeY(e,canvas) - touchY[0];
+      this.touchX[0]=getRelativeX(e,canvas);
+      this.touchY[0]=getRelativeY(e,canvas);
     }
     this.currentEventTimeStamp=TimeUtils.nanoTime();
     this.touched[0]=false;
@@ -113,8 +113,8 @@
       Touch touch=touches.get(i);
       int touchId=touch.getIdentifier();
       touched[touchId]=true;
-      touchX[touchId]=touch.getRelativeX(canvas);
-      touchY[touchId]=touch.getRelativeY(canvas);
+      touchX[touchId]=getRelativeX(touch,canvas);
+      touchY[touchId]=getRelativeY(touch,canvas);
       deltaX[touchId]=0;
       deltaY[touchId]=0;
       if (processor != null) {
@@ -129,10 +129,10 @@
     for (int i=0, j=touches.length(); i < j; i++) {
       Touch touch=touches.get(i);
       int touchId=touch.getIdentifier();
-      deltaX[touchId]=touch.getRelativeX(canvas) - touchX[touchId];
-      deltaY[touchId]=touch.getRelativeY(canvas) - touchY[touchId];
-      touchX[touchId]=touch.getRelativeX(canvas);
-      touchY[touchId]=touch.getRelativeY(canvas);
+      deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
+      deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
+      touchX[touchId]=getRelativeX(touch,canvas);
+      touchY[touchId]=getRelativeY(touch,canvas);
       if (processor != null) {
         processor.touchDragged(touchX[touchId],touchY[touchId],touchId);
       }
@@ -146,10 +146,10 @@
       Touch touch=touches.get(i);
       int touchId=touch.getIdentifier();
       touched[touchId]=false;
-      deltaX[touchId]=touch.getRelativeX(canvas) - touchX[touchId];
-      deltaY[touchId]=touch.getRelativeY(canvas) - touchY[touchId];
-      touchX[touchId]=touch.getRelativeX(canvas);
-      touchY[touchId]=touch.getRelativeY(canvas);
+      deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
+      deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
+      touchX[touchId]=getRelativeX(touch,canvas);
+      touchY[touchId]=getRelativeY(touch,canvas);
       if (processor != null) {
         processor.touchUp(touchX[touchId],touchY[touchId],touchId,Buttons.LEFT);
       }
@@ -163,10 +163,10 @@
       Touch touch=touches.get(i);
       int touchId=touch.getIdentifier();
       touched[touchId]=false;
-      deltaX[touchId]=touch.getRelativeX(canvas) - touchX[touchId];
-      deltaY[touchId]=touch.getRelativeY(canvas) - touchY[touchId];
-      touchX[touchId]=touch.getRelativeX(canvas);
-      touchY[touchId]=touch.getRelativeY(canvas);
+      deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
+      deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
+      touchX[touchId]=getRelativeX(touch,canvas);
+      touchY[touchId]=getRelativeY(touch,canvas);
       if (processor != null) {
         processor.touchUp(touchX[touchId],touchY[touchId],touchId,Buttons.LEFT);
       }

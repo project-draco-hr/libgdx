@@ -1,0 +1,4 @@
+{
+  float yScaleRatio=target.getHeight() * 1f / target.getClientHeight();
+  return Math.round(yScaleRatio * touch.getRelativeY(target));
+}
