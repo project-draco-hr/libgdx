@@ -1,0 +1,54 @@
+{
+  DataOutputStream dataOutput=new DataOutputStream(output);
+  dataOutput.write(SIGNATURE);
+  buffer.writeInt(IHDR);
+  buffer.writeInt(pixmap.getWidth());
+  buffer.writeInt(pixmap.getHeight());
+  buffer.writeByte(8);
+  buffer.writeByte(COLOR_ARGB);
+  buffer.writeByte(COMPRESSION_DEFLATE);
+  buffer.writeByte(FILTER_NONE);
+  buffer.writeByte(INTERLACE_NONE);
+  buffer.endChunk(dataOutput);
+  buffer.writeInt(IDAT);
+  deflater.reset();
+  int lineLen=pixmap.getWidth() * 4;
+  byte[] lineOut=this.lineOut.ensureCapacity(lineLen);
+  byte[] curLine=this.curLine.ensureCapacity(lineLen);
+  byte[] prevLine=this.prevLine.ensureCapacity(lineLen);
+  for (int i=0; i < lineLen; i++)   prevLine[i]=0;
+  ByteBuffer pixels=pixmap.getPixels();
+  for (int y=0, h=pixmap.getHeight(); y < h; y++) {
+    pixels.position((flipY ? (h - y - 1) : y) * lineLen);
+    pixels.get(curLine,0,lineLen);
+    lineOut[0]=(byte)(curLine[0] - prevLine[0]);
+    lineOut[1]=(byte)(curLine[1] - prevLine[1]);
+    lineOut[2]=(byte)(curLine[2] - prevLine[2]);
+    lineOut[3]=(byte)(curLine[3] - prevLine[3]);
+    for (int x=4; x < lineLen; x++) {
+      int a=curLine[x - 4] & 255;
+      int b=prevLine[x] & 255;
+      int c=prevLine[x - 4] & 255;
+      int p=a + b - c;
+      int pa=p - a;
+      if (pa < 0)       pa=-pa;
+      int pb=p - b;
+      if (pb < 0)       pb=-pb;
+      int pc=p - c;
+      if (pc < 0)       pc=-pc;
+      if (pa <= pb && pa <= pc)       c=a;
+ else       if (pb <= pc)       c=b;
+      lineOut[x]=(byte)(curLine[x] - c);
+    }
+    deflaterOutput.write(PAETH);
+    deflaterOutput.write(lineOut,0,lineLen);
+    byte[] temp=curLine;
+    curLine=prevLine;
+    prevLine=temp;
+  }
+  deflaterOutput.finish();
+  buffer.endChunk(dataOutput);
+  buffer.writeInt(IEND);
+  buffer.endChunk(dataOutput);
+  output.flush();
+}
