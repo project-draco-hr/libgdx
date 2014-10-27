@@ -1,5 +1,3 @@
 {
-  buffer=new ChunkBuffer();
-  deflater=new Deflater();
-  deflaterOutput=new DeflaterOutputStream(buffer,deflater);
+  this(256,256);
 }

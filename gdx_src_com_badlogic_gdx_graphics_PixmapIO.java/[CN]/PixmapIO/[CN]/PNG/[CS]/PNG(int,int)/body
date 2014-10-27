@@ -1,0 +1,5 @@
+{
+  buffer=new ChunkBuffer((int)(width * height * 1.5f));
+  deflater=new Deflater();
+  deflaterOutput=new DeflaterOutputStream(buffer,deflater);
+}

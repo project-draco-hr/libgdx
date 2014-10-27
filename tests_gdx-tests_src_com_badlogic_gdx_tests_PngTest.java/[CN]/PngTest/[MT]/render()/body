@@ -5,12 +5,13 @@
     int width=Gdx.graphics.getWidth(), height=Gdx.graphics.getHeight();
     for (int i=0; i < 100; i++)     batch.draw(badlogic,MathUtils.random(width),MathUtils.random(height));
     batch.flush();
-    FileHandle file=Gdx.files.local("screenshot.png");
+    FileHandle file=FileHandle.tempFile("screenshot-");
     System.out.println(file.file().getAbsolutePath());
     Pixmap pixmap=ScreenUtils.getFrameBufferPixmap(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     try {
-      PNG writer=new PNG();
+      PNG writer=new PNG(pixmap.getWidth(),pixmap.getHeight());
       writer.write(file,pixmap);
+      writer.dispose();
     }
  catch (    IOException ex) {
       throw new RuntimeException(ex);
