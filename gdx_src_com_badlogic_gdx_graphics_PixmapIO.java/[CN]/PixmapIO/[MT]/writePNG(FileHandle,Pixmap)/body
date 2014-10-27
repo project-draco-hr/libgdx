@@ -1,9 +1,13 @@
 {
   try {
-    PNG writer=new PNG(pixmap.getWidth(),pixmap.getHeight());
-    writer.setFlipY(false);
-    writer.write(file,pixmap);
-    writer.dispose();
+    PNG writer=new PNG((int)(pixmap.getWidth() * pixmap.getHeight() * 1.5f));
+    try {
+      writer.setFlipY(false);
+      writer.write(file,pixmap);
+    }
+  finally {
+      writer.dispose();
+    }
   }
  catch (  IOException ex) {
     throw new GdxRuntimeException("Error writing PNG: " + file,ex);
