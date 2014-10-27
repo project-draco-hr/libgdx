@@ -19,6 +19,7 @@
     if (lineEnd < newLine) {
       while (lineEnd > start) {
         if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
+ else         if (font.isBreakChar(str.charAt(lineEnd - 1)))         break;
         lineEnd--;
       }
       if (lineEnd == start) {
