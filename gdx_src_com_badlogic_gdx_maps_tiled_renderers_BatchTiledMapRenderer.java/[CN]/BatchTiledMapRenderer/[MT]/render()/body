@@ -6,9 +6,7 @@
         renderTileLayer((TiledMapTileLayer)layer);
       }
  else {
-        for (        MapObject object : layer.getObjects()) {
-          renderObject(object);
-        }
+        renderObjects(layer);
       }
     }
   }
