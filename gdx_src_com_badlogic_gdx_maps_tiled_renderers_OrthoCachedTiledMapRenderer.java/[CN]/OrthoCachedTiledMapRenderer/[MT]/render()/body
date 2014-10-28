@@ -27,9 +27,7 @@
     MapLayer layer=mapLayers.get(i);
     if (layer.isVisible()) {
       spriteCache.draw(i);
-      for (      MapObject object : layer.getObjects()) {
-        renderObject(object);
-      }
+      renderObjects(layer);
     }
   }
   spriteCache.end();
