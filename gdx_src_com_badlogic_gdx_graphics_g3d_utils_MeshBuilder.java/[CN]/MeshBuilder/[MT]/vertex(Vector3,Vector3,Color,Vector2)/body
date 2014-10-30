@@ -1,6 +1,7 @@
 {
   if (vindex >= Short.MAX_VALUE)   throw new GdxRuntimeException("Too many vertices used");
-  if (col == null && colorSet)   col=color;
+  tempC1.set(color);
+  if (col != null)   tempC1.mul(col);
   if (pos != null) {
     if (vertexTransformationEnabled) {
       tempVTransformed.set(pos).mul(positionTransform);
@@ -27,15 +28,13 @@
       vertex[norOffset + 2]=nor.z;
     }
   }
-  if (col != null) {
-    if (colOffset >= 0) {
-      vertex[colOffset]=col.r;
-      vertex[colOffset + 1]=col.g;
-      vertex[colOffset + 2]=col.b;
-      if (colSize > 3)       vertex[colOffset + 3]=col.a;
-    }
- else     if (cpOffset > 0)     vertex[cpOffset]=col.toFloatBits();
+  if (colOffset >= 0) {
+    vertex[colOffset]=tempC1.r;
+    vertex[colOffset + 1]=tempC1.g;
+    vertex[colOffset + 2]=tempC1.b;
+    if (colSize > 3)     vertex[colOffset + 3]=tempC1.a;
   }
+ else   if (cpOffset > 0)   vertex[cpOffset]=tempC1.toFloatBits();
   if (uv != null && uvOffset >= 0) {
     vertex[uvOffset]=uv.x;
     vertex[uvOffset + 1]=uv.y;

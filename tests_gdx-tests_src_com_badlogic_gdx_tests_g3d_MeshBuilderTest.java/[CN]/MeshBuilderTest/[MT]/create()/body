@@ -1,0 +1,31 @@
+{
+  super.create();
+  environment=new Environment();
+  environment.set(new ColorAttribute(ColorAttribute.AmbientLight,0.4f,0.4f,0.4f,1.f));
+  environment.add(new DirectionalLight().set(0.8f,0.8f,0.8f,-0.5f,-1.0f,-0.8f));
+  modelsWindow.setVisible(false);
+  Texture texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  Material material=new Material(TextureAttribute.createDiffuse(texture));
+  ModelBuilder mb=new ModelBuilder();
+  mb.begin();
+  mb.manage(texture);
+  mb.node().id="box";
+  MeshPartBuilder mpb=mb.part("box",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal | Usage.TextureCoordinates| Usage.ColorPacked,material);
+  mpb.setColor(Color.RED);
+  mpb.box(1f,1f,1f);
+  mb.node().id="sphere";
+  mpb=mb.part("sphere",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal | Usage.TextureCoordinates| Usage.ColorPacked,material);
+  mpb.sphere(2f,2f,2f,10,5);
+  mb.node().id="cone";
+  mpb=mb.part("cone",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal | Usage.TextureCoordinates| Usage.ColorPacked,material);
+  mpb.setVertexTransform(new Matrix4().rotate(Vector3.X,-45f));
+  mpb.cone(2f,3f,1f,8);
+  mb.node().id="cylinder";
+  mpb=mb.part("cylinder",GL20.GL_TRIANGLES,Usage.Position | Usage.Normal | Usage.TextureCoordinates| Usage.ColorPacked,material);
+  mpb.cylinder(2f,4f,3f,15);
+  model=mb.end();
+  instances.add(new ModelInstance(model,new Matrix4().trn(-5f,0f,-5f),"box",true));
+  instances.add(new ModelInstance(model,new Matrix4().trn(5f,0f,-5f),"sphere",true));
+  instances.add(new ModelInstance(model,new Matrix4().trn(-5f,0f,5f),"cone",true));
+  instances.add(new ModelInstance(model,new Matrix4().trn(5f,0f,5f),"cylinder",true));
+}
