@@ -13,7 +13,7 @@
   }
   float width=getWidth(), height=getHeight();
   StringBuilder text;
-  if (ellipse && width < bounds.width) {
+  if (ellipsis && width < bounds.width) {
     float ellipseWidth=font.getBounds("...").width;
     text=tempText != null ? tempText : (tempText=new StringBuilder());
     text.setLength(0);
