@@ -111,7 +111,9 @@
     JsArray<Touch> touches=e.getChangedTouches();
     for (int i=0, j=touches.length(); i < j; i++) {
       Touch touch=touches.get(i);
-      int touchId=touch.getIdentifier();
+      int real=touch.getIdentifier();
+      int touchId;
+      touchMap.put(real,touchId=getAvailablePointer());
       touched[touchId]=true;
       touchX[touchId]=getRelativeX(touch,canvas);
       touchY[touchId]=getRelativeY(touch,canvas);
@@ -128,7 +130,8 @@
     JsArray<Touch> touches=e.getChangedTouches();
     for (int i=0, j=touches.length(); i < j; i++) {
       Touch touch=touches.get(i);
-      int touchId=touch.getIdentifier();
+      int real=touch.getIdentifier();
+      int touchId=touchMap.get(real);
       deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
       deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
       touchX[touchId]=getRelativeX(touch,canvas);
@@ -144,7 +147,9 @@
     JsArray<Touch> touches=e.getChangedTouches();
     for (int i=0, j=touches.length(); i < j; i++) {
       Touch touch=touches.get(i);
-      int touchId=touch.getIdentifier();
+      int real=touch.getIdentifier();
+      int touchId=touchMap.get(real);
+      touchMap.remove(real);
       touched[touchId]=false;
       deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
       deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
@@ -161,7 +166,9 @@
     JsArray<Touch> touches=e.getChangedTouches();
     for (int i=0, j=touches.length(); i < j; i++) {
       Touch touch=touches.get(i);
-      int touchId=touch.getIdentifier();
+      int real=touch.getIdentifier();
+      int touchId=touchMap.get(real);
+      touchMap.remove(real);
       touched[touchId]=false;
       deltaX[touchId]=getRelativeX(touch,canvas) - touchX[touchId];
       deltaY[touchId]=getRelativeY(touch,canvas) - touchY[touchId];
