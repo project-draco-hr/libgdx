@@ -1,6 +1,4 @@
 {
-  ByteBuffer bytebuffer=BufferUtils.newUnsafeByteBuffer(1000 * 1000);
-  BufferUtils.disposeUnsafeByteBuffer(bytebuffer);
   ByteBuffer bb=BufferUtils.newByteBuffer(8);
   CharBuffer cb=BufferUtils.newCharBuffer(8);
   ShortBuffer sb=BufferUtils.newShortBuffer(8);
@@ -44,12 +42,14 @@
   checkFloat(fb.get(),2);
   checkFloat(fb.get(),3);
   checkFloat(fb.get(),4);
-  db.position(4);
-  BufferUtils.copy(new double[]{1,2,3,4},0,db,4);
-  checkFloat(db.get(),1);
-  checkFloat(db.get(),2);
-  checkFloat(db.get(),3);
-  checkFloat(db.get(),4);
+  if (Gdx.app.getType() != ApplicationType.WebGL) {
+    db.position(4);
+    BufferUtils.copy(new double[]{1,2,3,4},0,db,4);
+    checkFloat(db.get(),1);
+    checkFloat(db.get(),2);
+    checkFloat(db.get(),3);
+    checkFloat(db.get(),4);
+  }
   ByteBuffer bb2=BufferUtils.newByteBuffer(4);
   bb.position(4);
   BufferUtils.copy(bb,bb2,4);

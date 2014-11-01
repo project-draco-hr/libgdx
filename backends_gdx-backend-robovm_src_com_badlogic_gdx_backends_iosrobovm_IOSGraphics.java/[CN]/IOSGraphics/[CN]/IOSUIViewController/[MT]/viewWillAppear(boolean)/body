@@ -1,4 +1,4 @@
 {
   super.viewWillAppear(arg0);
-  setPaused(!graphics.isContinuous);
+  setPaused(false);
 }

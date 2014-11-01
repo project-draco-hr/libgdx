@@ -1,6 +1,6 @@
 {
-  if (!paused)   return;
-  paused=false;
+  if (!appPaused)   return;
+  appPaused=false;
   Array<LifecycleListener> listeners=app.lifecycleListeners;
 synchronized (listeners) {
     for (    LifecycleListener listener : listeners) {

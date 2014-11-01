@@ -1,8 +1,0 @@
-{
-  for (int i=0; i < offers.size(); i++) {
-    if (offers.get(i).getIdentifier().equals(identifier)) {
-      return offers.get(i);
-    }
-  }
-  return null;
-}

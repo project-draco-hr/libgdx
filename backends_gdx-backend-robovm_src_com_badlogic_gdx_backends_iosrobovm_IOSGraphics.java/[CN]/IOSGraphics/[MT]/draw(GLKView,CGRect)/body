@@ -7,7 +7,7 @@
     app.listener.resize(width,height);
     created=true;
   }
-  if (paused) {
+  if (appPaused) {
     return;
   }
   long time=System.nanoTime();

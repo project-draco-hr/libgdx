@@ -1,7 +1,7 @@
 {
   if (radians == 0)   return this;
-  float cos=(float)Math.cos(radians);
-  float sin=(float)Math.sin(radians);
+  float cos=MathUtils.cos(radians);
+  float sin=MathUtils.sin(radians);
   float tmp00=m00 * cos + m01 * sin;
   float tmp01=m00 * -sin + m01 * cos;
   float tmp10=m10 * cos + m11 * sin;

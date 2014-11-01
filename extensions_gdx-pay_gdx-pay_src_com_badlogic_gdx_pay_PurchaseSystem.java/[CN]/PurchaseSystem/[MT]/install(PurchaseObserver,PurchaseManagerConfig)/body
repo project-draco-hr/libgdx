@@ -1,8 +1,0 @@
-{
-  if (manager != null) {
-    manager.install(observer,config);
-  }
- else {
-    observer.handleInstallError(new RuntimeException("No purchase manager was available."));
-  }
-}

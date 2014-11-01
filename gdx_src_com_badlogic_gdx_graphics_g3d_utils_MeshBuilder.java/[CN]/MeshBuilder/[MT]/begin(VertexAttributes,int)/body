@@ -23,5 +23,6 @@
   a=attributes.findByUsage(Usage.TextureCoordinates);
   uvOffset=a == null ? -1 : a.offset / 4;
   setColor(null);
+  setVertexTransform(null);
   this.primitiveType=primitiveType;
 }

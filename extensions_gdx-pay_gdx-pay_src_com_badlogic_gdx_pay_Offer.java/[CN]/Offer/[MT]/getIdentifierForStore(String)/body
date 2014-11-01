@@ -1,9 +1,0 @@
-{
-  String identifier=identifierForStores.get(storeName);
-  if (identifier != null) {
-    return identifier;
-  }
- else {
-    return this.identifier;
-  }
-}
