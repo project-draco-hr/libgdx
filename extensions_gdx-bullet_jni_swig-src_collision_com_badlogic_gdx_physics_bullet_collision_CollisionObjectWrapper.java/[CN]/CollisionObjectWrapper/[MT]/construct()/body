@@ -1,4 +1,4 @@
 {
   super.construct();
-  wrapper=btCollisionObjectWrapper.obtain(getWrapper().getCPointer(),false);
+  wrapper=new btCollisionObjectWrapper(getWrapper().getCPointer(),false);
 }
