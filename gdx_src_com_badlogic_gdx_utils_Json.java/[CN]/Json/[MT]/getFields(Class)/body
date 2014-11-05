@@ -1,11 +1,13 @@
 {
+  OrderedMap<String,FieldMetadata> fields=typeToFields.get(type);
+  if (fields != null)   return fields;
   ArrayList<Field> allFields=new ArrayList();
   Class nextClass=type;
   while (nextClass != Object.class) {
     Collections.addAll(allFields,ClassReflection.getDeclaredFields(nextClass));
     nextClass=nextClass.getSuperclass();
   }
-  ObjectMap<String,FieldMetadata> nameToField=new ObjectMap();
+  OrderedMap<String,FieldMetadata> nameToField=new OrderedMap();
   for (int i=0, n=allFields.size(); i < n; i++) {
     Field field=allFields.get(i);
     if (field.isTransient())     continue;
