@@ -80,7 +80,7 @@
         Element animationElement=tileElement.getChildByName("animation");
         if (animationElement != null) {
           Array<StaticTiledMapTile> staticTiles=new Array<StaticTiledMapTile>();
-          LongArray intervals=new LongArray();
+          IntArray intervals=new IntArray();
           for (          Element frameElement : animationElement.getChildrenByName("frame")) {
             staticTiles.add((StaticTiledMapTile)tileset.getTile(firstgid + frameElement.getIntAttribute("tileid")));
             intervals.add(frameElement.getIntAttribute("duration"));
