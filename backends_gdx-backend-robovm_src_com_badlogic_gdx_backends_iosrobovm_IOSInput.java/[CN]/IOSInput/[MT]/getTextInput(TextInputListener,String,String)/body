@@ -1,4 +1,3 @@
 {
-  final UIAlertView uiAlertView=buildUIAlertView(listener,title,text,null);
-  uiAlertView.show();
+  getTextInput(listener,title,text,null);
 }

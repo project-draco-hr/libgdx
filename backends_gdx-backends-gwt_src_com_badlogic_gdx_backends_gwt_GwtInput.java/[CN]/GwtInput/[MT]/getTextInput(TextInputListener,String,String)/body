@@ -1,17 +1,3 @@
 {
-  TextInputDialogBox dialog=new TextInputDialogBox(title,text,null);
-  final TextInputListener capturedListener=listener;
-  dialog.setListener(new TextInputDialogListener(){
-    @Override public void onPositive(    String text){
-      if (capturedListener != null) {
-        capturedListener.input(text);
-      }
-    }
-    @Override public void onNegative(){
-      if (capturedListener != null) {
-        capturedListener.canceled();
-      }
-    }
-  }
-);
+  getTextInput(listener,title,text,null);
 }
