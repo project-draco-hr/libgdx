@@ -25,7 +25,7 @@
   setX(screenPosition.x);
   setSize(Math.max(getPrefWidth(),selectBox.getWidth()),height);
   validate();
-  scrollToCenter(0,list.getHeight() - selectBox.getSelectedIndex() * itemHeight - itemHeight / 2,0,0);
+  scrollTo(0,list.getHeight() - selectBox.getSelectedIndex() * itemHeight - itemHeight / 2,0,0,true,true);
   updateVisualScroll();
   previousScrollFocus=null;
   Actor actor=stage.getScrollFocus();
