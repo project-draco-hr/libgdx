@@ -17,19 +17,6 @@
     glyphPagesTotalLabel.setText(String.valueOf(pageCount));
     glyphsTotalLabel.setText(String.valueOf(glyphCount));
   }
-  if (saveBmFontFile != null) {
-    try {
-      BMFontUtil bmFont=new BMFontUtil(unicodeFont);
-      bmFont.save(saveBmFontFile);
-    }
- catch (    Throwable ex) {
-      System.out.println("Error saving BMFont files: " + saveBmFontFile.getAbsolutePath());
-      ex.printStackTrace();
-    }
- finally {
-      saveBmFontFile=null;
-    }
-  }
   if (unicodeFont == null)   return;
   try {
     sampleText=sampleTextPane.getText();
@@ -72,6 +59,22 @@
       glTexCoord2f(1,0);
       glVertex3f(texture.getWidth(),0,0);
       glEnd();
+    }
+  }
+  if (saveBmFontFile != null) {
+    try {
+      BMFontUtil bmFont=new BMFontUtil(unicodeFont);
+      bmFont.save(saveBmFontFile);
+      if (batchMode) {
+        System.exit(0);
+      }
+    }
+ catch (    Throwable ex) {
+      System.out.println("Error saving BMFont files: " + saveBmFontFile.getAbsolutePath());
+      ex.printStackTrace();
+    }
+ finally {
+      saveBmFontFile=null;
     }
   }
 }
