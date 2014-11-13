@@ -3,12 +3,12 @@
   pointerScreenX[pointer]=screenX;
   pointerScreenY[pointer]=screenY;
   if (touchFocuses.size == 0)   return false;
-  screenToStageCoordinates(stageCoords.set(screenX,screenY));
+  screenToStageCoordinates(tempCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setType(Type.touchUp);
   event.setStage(this);
-  event.setStageX(stageCoords.x);
-  event.setStageY(stageCoords.y);
+  event.setStageX(tempCoords.x);
+  event.setStageY(tempCoords.y);
   event.setPointer(pointer);
   event.setButton(button);
   SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;

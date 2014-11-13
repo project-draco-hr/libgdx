@@ -4,12 +4,12 @@
   mouseScreenX=screenX;
   mouseScreenY=screenY;
   if (touchFocuses.size == 0)   return false;
-  screenToStageCoordinates(stageCoords.set(screenX,screenY));
+  screenToStageCoordinates(tempCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setType(Type.touchDragged);
   event.setStage(this);
-  event.setStageX(stageCoords.x);
-  event.setStageY(stageCoords.y);
+  event.setStageX(tempCoords.x);
+  event.setStageY(tempCoords.y);
   event.setPointer(pointer);
   SnapshotArray<TouchFocus> touchFocuses=this.touchFocuses;
   TouchFocus[] focuses=touchFocuses.begin();
