@@ -1,5 +1,5 @@
 {
   Array<AssetDescriptor> deps=new Array<AssetDescriptor>();
-  deps.add(new AssetDescriptor<FreeTypeFontGenerator>(parameter.fontFileName,FreeTypeFontGenerator.class));
+  deps.add(new AssetDescriptor<FreeTypeFontGenerator>(parameter.fontFileName + ".gen",FreeTypeFontGenerator.class));
   return deps;
 }
