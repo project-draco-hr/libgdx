@@ -10,6 +10,6 @@
   }
   int streamId=soundPool.play(soundId,leftVolume,rightVolume,1,-1,pitch);
   if (streamId == 0)   return -1;
-  streamIds.add(streamId);
+  streamIds.insert(0,streamId);
   return streamId;
 }
