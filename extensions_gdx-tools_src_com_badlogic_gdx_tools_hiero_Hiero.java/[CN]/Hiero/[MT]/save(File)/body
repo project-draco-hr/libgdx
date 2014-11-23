@@ -2,6 +2,8 @@
   HieroSettings settings=new HieroSettings();
   settings.setFontName((String)fontList.getSelectedValue());
   settings.setFontSize(((Integer)fontSizeSpinner.getValue()).intValue());
+  settings.setFont2File(fontFileText.getText());
+  settings.setFont2Active(fontFileRadio.isSelected());
   settings.setBold(boldCheckBox.isSelected());
   settings.setItalic(italicCheckBox.isSelected());
   settings.setPaddingTop(((Integer)padTopSpinner.getValue()).intValue());

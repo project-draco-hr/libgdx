@@ -79,12 +79,15 @@ class FontUpdateListener implements ChangeListener, ActionListener {
     }
   }
 );
-  fontFileRadio.addActionListener(new ActionListener(){
+  final ActionListener al=new ActionListener(){
     public void actionPerformed(    ActionEvent evt){
-      if (fontList.isEnabled())       systemFontRadio.setSelected(true);
+      updateFontSelector();
+      updateFont();
     }
   }
-);
+;
+  systemFontRadio.addActionListener(al);
+  fontFileRadio.addActionListener(al);
   browseButton.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent evt){
       FileDialog dialog=new FileDialog(Hiero.this,"Choose TrueType font file",FileDialog.LOAD);
@@ -204,7 +207,7 @@ class FontUpdateListener implements ChangeListener, ActionListener {
       String fileName=dialog.getFile();
       if (fileName == null)       return;
       lastSaveBMFilename=fileName;
-      saveBmFontFile=new File(dialog.getDirectory(),fileName);
+      saveBm(new File(dialog.getDirectory(),fileName));
     }
   }
 );

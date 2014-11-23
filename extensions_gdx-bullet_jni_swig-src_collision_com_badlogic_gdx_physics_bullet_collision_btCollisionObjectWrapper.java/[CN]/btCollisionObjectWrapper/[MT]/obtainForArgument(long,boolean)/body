@@ -1,0 +1,5 @@
+{
+  btCollisionObjectWrapper instance=argumentInstances[argumentIndex=(argumentIndex + 1) & 3];
+  instance.reset(swigCPtr,owner);
+  return instance;
+}

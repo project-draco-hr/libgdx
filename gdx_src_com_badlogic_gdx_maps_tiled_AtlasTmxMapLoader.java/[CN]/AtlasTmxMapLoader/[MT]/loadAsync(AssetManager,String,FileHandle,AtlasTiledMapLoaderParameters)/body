@@ -7,7 +7,7 @@
     convertObjectToTileSpace=false;
   }
   try {
-    map=loadMap(root,tmxFile,new AtlasResolver.AssetManagerAtlasResolver(manager),parameter);
+    map=loadMap(root,tmxFile,new AtlasResolver.AssetManagerAtlasResolver(manager));
   }
  catch (  Exception e) {
     throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);

@@ -2,18 +2,38 @@
   Array<FileHandle> images=new Array<FileHandle>();
   for (  Element tileset : root.getChildrenByName("tileset")) {
     String source=tileset.getAttribute("source",null);
-    FileHandle image=null;
     if (source != null) {
-      FileHandle tsx=getRelativeFileHandle(tmxFile,source);
-      tileset=xml.parse(tsx);
-      String imageSource=tileset.getChildByName("image").getAttribute("source");
-      image=getRelativeFileHandle(tsx,imageSource);
+      FileHandle tsxFile=getRelativeFileHandle(tmxFile,source);
+      tileset=xml.parse(tsxFile);
+      Element imageElement=tileset.getChildByName("image");
+      if (imageElement != null) {
+        String imageSource=tileset.getChildByName("image").getAttribute("source");
+        FileHandle image=getRelativeFileHandle(tsxFile,imageSource);
+        images.add(image);
+      }
+ else {
+        for (        Element tile : tileset.getChildrenByName("tile")) {
+          String imageSource=tile.getChildByName("image").getAttribute("source");
+          FileHandle image=getRelativeFileHandle(tsxFile,imageSource);
+          images.add(image);
+        }
+      }
     }
  else {
-      String imageSource=tileset.getChildByName("image").getAttribute("source");
-      image=getRelativeFileHandle(tmxFile,imageSource);
+      Element imageElement=tileset.getChildByName("image");
+      if (imageElement != null) {
+        String imageSource=tileset.getChildByName("image").getAttribute("source");
+        FileHandle image=getRelativeFileHandle(tmxFile,imageSource);
+        images.add(image);
+      }
+ else {
+        for (        Element tile : tileset.getChildrenByName("tile")) {
+          String imageSource=tile.getChildByName("image").getAttribute("source");
+          FileHandle image=getRelativeFileHandle(tmxFile,imageSource);
+          images.add(image);
+        }
+      }
     }
-    images.add(image);
   }
   return images;
 }

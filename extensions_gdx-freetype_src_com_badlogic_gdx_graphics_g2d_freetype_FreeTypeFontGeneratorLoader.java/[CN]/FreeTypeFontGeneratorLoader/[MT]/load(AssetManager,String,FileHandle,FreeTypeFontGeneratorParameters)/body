@@ -1,4 +1,4 @@
 {
-  FreeTypeFontGenerator generator=new FreeTypeFontGenerator(file);
+  FreeTypeFontGenerator generator=new FreeTypeFontGenerator(file.sibling(file.name().substring(0,file.name().length() - 4)));
   return generator;
 }

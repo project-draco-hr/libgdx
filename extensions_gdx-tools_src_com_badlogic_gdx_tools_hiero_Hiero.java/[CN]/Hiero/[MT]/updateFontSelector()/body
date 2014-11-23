@@ -1,0 +1,6 @@
+{
+  final boolean use2=fontFileRadio.isSelected();
+  fontList.setEnabled(!use2);
+  fontFileText.setEnabled(use2);
+  browseButton.setEnabled(use2);
+}

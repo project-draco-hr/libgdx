@@ -9,8 +9,7 @@
     classToDefaultValues.put(type,null);
     return null;
   }
-  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
-  if (fields == null)   fields=cacheFields(type);
+  ObjectMap<String,FieldMetadata> fields=getFields(type);
   Object[] values=new Object[fields.size];
   classToDefaultValues.put(type,values);
   int i=0;
