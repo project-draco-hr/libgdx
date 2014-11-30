@@ -1,2 +1,6 @@
 {
+  if (soundSource != null) {
+    soundSource.setPan(pan);
+    soundSource.setVolume(volume);
+  }
 }

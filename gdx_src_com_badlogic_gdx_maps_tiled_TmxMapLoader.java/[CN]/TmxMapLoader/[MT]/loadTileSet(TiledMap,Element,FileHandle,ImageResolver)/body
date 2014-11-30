@@ -26,10 +26,13 @@
           offsetX=offset.getIntAttribute("x",0);
           offsetY=offset.getIntAttribute("y",0);
         }
-        imageSource=element.getChildByName("image").getAttribute("source");
-        imageWidth=element.getChildByName("image").getIntAttribute("width",0);
-        imageHeight=element.getChildByName("image").getIntAttribute("height",0);
-        image=getRelativeFileHandle(tsx,imageSource);
+        Element imageElement=element.getChildByName("image");
+        if (imageElement != null) {
+          imageSource=imageElement.getAttribute("source");
+          imageWidth=imageElement.getIntAttribute("width",0);
+          imageHeight=imageElement.getIntAttribute("height",0);
+          image=getRelativeFileHandle(tsx,imageSource);
+        }
       }
  catch (      IOException e) {
         throw new GdxRuntimeException("Error parsing external tileset.");
@@ -41,34 +44,57 @@
         offsetX=offset.getIntAttribute("x",0);
         offsetY=offset.getIntAttribute("y",0);
       }
-      imageSource=element.getChildByName("image").getAttribute("source");
-      imageWidth=element.getChildByName("image").getIntAttribute("width",0);
-      imageHeight=element.getChildByName("image").getIntAttribute("height",0);
-      image=getRelativeFileHandle(tmxFile,imageSource);
+      Element imageElement=element.getChildByName("image");
+      if (imageElement != null) {
+        imageSource=imageElement.getAttribute("source");
+        imageWidth=imageElement.getIntAttribute("width",0);
+        imageHeight=imageElement.getIntAttribute("height",0);
+        image=getRelativeFileHandle(tmxFile,imageSource);
+      }
     }
-    TextureRegion texture=imageResolver.getImage(image.path());
     TiledMapTileSet tileset=new TiledMapTileSet();
-    MapProperties props=tileset.getProperties();
-    tileset.setName(name);
-    props.put("firstgid",firstgid);
-    props.put("imagesource",imageSource);
-    props.put("imagewidth",imageWidth);
-    props.put("imageheight",imageHeight);
-    props.put("tilewidth",tilewidth);
-    props.put("tileheight",tileheight);
-    props.put("margin",margin);
-    props.put("spacing",spacing);
-    int stopWidth=texture.getRegionWidth() - tilewidth;
-    int stopHeight=texture.getRegionHeight() - tileheight;
-    int id=firstgid;
-    for (int y=margin; y <= stopHeight; y+=tileheight + spacing) {
-      for (int x=margin; x <= stopWidth; x+=tilewidth + spacing) {
-        TextureRegion tileRegion=new TextureRegion(texture,x,y,tilewidth,tileheight);
-        TiledMapTile tile=new StaticTiledMapTile(tileRegion);
-        tile.setId(id);
+    if (image != null) {
+      TextureRegion texture=imageResolver.getImage(image.path());
+      MapProperties props=tileset.getProperties();
+      tileset.setName(name);
+      props.put("firstgid",firstgid);
+      props.put("imagesource",imageSource);
+      props.put("imagewidth",imageWidth);
+      props.put("imageheight",imageHeight);
+      props.put("tilewidth",tilewidth);
+      props.put("tileheight",tileheight);
+      props.put("margin",margin);
+      props.put("spacing",spacing);
+      int stopWidth=texture.getRegionWidth() - tilewidth;
+      int stopHeight=texture.getRegionHeight() - tileheight;
+      int id=firstgid;
+      for (int y=margin; y <= stopHeight; y+=tileheight + spacing) {
+        for (int x=margin; x <= stopWidth; x+=tilewidth + spacing) {
+          TextureRegion tileRegion=new TextureRegion(texture,x,y,tilewidth,tileheight);
+          TiledMapTile tile=new StaticTiledMapTile(tileRegion);
+          tile.setId(id);
+          tile.setOffsetX(offsetX);
+          tile.setOffsetY(-offsetY);
+          tileset.putTile(id++,tile);
+        }
+      }
+    }
+ else {
+      Array<Element> tileElements=element.getChildrenByName("tile");
+      for (      Element tileElement : tileElements) {
+        Element imageElement=tileElement.getChildByName("image");
+        if (imageElement != null) {
+          imageSource=imageElement.getAttribute("source");
+          imageWidth=imageElement.getIntAttribute("width",0);
+          imageHeight=imageElement.getIntAttribute("height",0);
+          image=getRelativeFileHandle(tmxFile,imageSource);
+        }
+        TextureRegion texture=imageResolver.getImage(image.path());
+        TiledMapTile tile=new StaticTiledMapTile(texture);
+        tile.setId(firstgid + tileElement.getIntAttribute("id"));
         tile.setOffsetX(offsetX);
         tile.setOffsetY(-offsetY);
-        tileset.putTile(id++,tile);
+        tileset.putTile(tile.getId(),tile);
       }
     }
     Array<Element> tileElements=element.getChildrenByName("tile");
@@ -80,7 +106,7 @@
         Element animationElement=tileElement.getChildByName("animation");
         if (animationElement != null) {
           Array<StaticTiledMapTile> staticTiles=new Array<StaticTiledMapTile>();
-          LongArray intervals=new LongArray();
+          IntArray intervals=new IntArray();
           for (          Element frameElement : animationElement.getChildrenByName("frame")) {
             staticTiles.add((StaticTiledMapTile)tileset.getTile(firstgid + frameElement.getIntAttribute("tileid")));
             intervals.add(frameElement.getIntAttribute("duration"));

@@ -25,10 +25,10 @@ synchronized (lifecycleListeners) {
     }
     if (!wasActive && isActive) {
       wasActive=true;
-      listener.resume();
 synchronized (lifecycleListeners) {
         for (        LifecycleListener listener : lifecycleListeners)         listener.resume();
       }
+      listener.resume();
     }
     boolean shouldRender=false;
     if (graphics.canvas != null) {
