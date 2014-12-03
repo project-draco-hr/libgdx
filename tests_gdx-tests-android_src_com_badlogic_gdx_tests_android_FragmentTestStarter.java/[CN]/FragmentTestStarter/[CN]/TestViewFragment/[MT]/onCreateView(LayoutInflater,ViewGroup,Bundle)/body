@@ -1,3 +1,5 @@
 {
-  return initializeForView(test,new AndroidApplicationConfiguration());
+  AndroidApplicationConfiguration config=new AndroidApplicationConfiguration();
+  config.useImmersiveMode=true;
+  return initializeForView(test,config);
 }
