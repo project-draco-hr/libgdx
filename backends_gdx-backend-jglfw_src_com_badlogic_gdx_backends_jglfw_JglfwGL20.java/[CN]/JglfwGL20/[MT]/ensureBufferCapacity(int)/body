@@ -1,6 +1,6 @@
 {
   if (buffer == null || buffer.capacity() < numBytes) {
-    buffer=BufferUtils.newByteBuffer(numBytes);
+    buffer=com.badlogic.gdx.utils.BufferUtils.newByteBuffer(numBytes);
     floatBuffer=buffer.asFloatBuffer();
     intBuffer=buffer.asIntBuffer();
   }
