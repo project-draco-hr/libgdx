@@ -1,8 +1,5 @@
 {
   GL20 gl=Gdx.gl20;
   checkManaged();
-  float[] vals=matrix.getValues();
-  this.matrix.clear();
-  BufferUtils.copy(vals,this.matrix,vals.length,0);
-  gl.glUniformMatrix3fv(location,1,transpose,this.matrix);
+  gl.glUniformMatrix3fv(location,1,transpose,matrix.val,0);
 }
