@@ -1,3 +1,4 @@
 {
-  if (soundSource != null)   soundSource.setPitch(pitch);
+  ALSource source;
+  if ((source=getSoundSource(soundId)) != null)   source.setPitch(pitch);
 }

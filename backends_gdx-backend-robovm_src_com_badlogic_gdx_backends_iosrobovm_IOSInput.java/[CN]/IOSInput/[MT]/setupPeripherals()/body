@@ -1,4 +1,5 @@
 {
+  motionManager=new CMMotionManager();
   setupAccelerometer();
   setupCompass();
   UIDevice device=UIDevice.getCurrentDevice();

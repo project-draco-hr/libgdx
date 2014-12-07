@@ -1,0 +1,4 @@
+{
+  WebGLRenderbuffer rb=gl.createRenderbuffer();
+  return allocateRenderBufferId(rb);
+}

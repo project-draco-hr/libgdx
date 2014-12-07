@@ -1,0 +1,4 @@
+{
+  WebGLUniformLocation loc=getUniformLocation(location);
+  gl.uniformMatrix3fv(loc,transpose,value);
+}
