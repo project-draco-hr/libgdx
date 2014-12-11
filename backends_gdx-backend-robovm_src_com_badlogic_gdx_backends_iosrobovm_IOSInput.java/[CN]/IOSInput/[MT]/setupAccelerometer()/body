@@ -1,7 +1,7 @@
 {
   if (config.useAccelerometer) {
     motionManager.setAccelerometerUpdateInterval(config.accelerometerUpdate);
-    VoidBlock2<CMAccelerometerData,NSError> accelVoid=new VoidBlock2<CMAccelerometerData,NSError>(){
+    accelVoid=new VoidBlock2<CMAccelerometerData,NSError>(){
       @Override public void invoke(      CMAccelerometerData accelData,      NSError error){
         updateAccelerometer(accelData);
       }
