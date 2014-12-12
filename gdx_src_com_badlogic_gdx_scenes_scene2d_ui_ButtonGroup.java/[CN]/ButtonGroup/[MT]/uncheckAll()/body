@@ -2,7 +2,7 @@
   int old=minCheckCount;
   minCheckCount=0;
   for (int i=0, n=buttons.size; i < n; i++) {
-    Button button=buttons.get(i);
+    T button=buttons.get(i);
     button.setChecked(false);
   }
   minCheckCount=old;

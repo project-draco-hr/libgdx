@@ -1,9 +1,11 @@
 {
   if (button == null)   throw new IllegalArgumentException("button cannot be null.");
   button.buttonGroup=null;
+  boolean wasChecked=button.isChecked();
   boolean shouldCheck=button.isChecked() || buttons.size < minCheckCount;
-  button.setChecked(false);
+  if (wasChecked != shouldCheck)   button.setChecked(false);
   button.buttonGroup=this;
   buttons.add(button);
-  if (shouldCheck)   button.setChecked(true);
+  if (wasChecked != shouldCheck)   button.setChecked(true);
+ else   if (shouldCheck)   checkedButtons.add(button);
 }
