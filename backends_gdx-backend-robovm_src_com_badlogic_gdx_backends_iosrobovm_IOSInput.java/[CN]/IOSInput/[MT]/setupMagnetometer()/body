@@ -2,7 +2,7 @@
   if (motionManager.isMagnetometerAvailable() && config.useCompass)   compassSupported=true;
  else   return;
   motionManager.setMagnetometerUpdateInterval(config.magnetometerUpdate);
-  VoidBlock2<CMMagnetometerData,NSError> magnetVoid=new VoidBlock2<CMMagnetometerData,NSError>(){
+  magnetVoid=new VoidBlock2<CMMagnetometerData,NSError>(){
     @Override public void invoke(    CMMagnetometerData magnetData,    NSError error){
       updateRotation(magnetData);
     }
