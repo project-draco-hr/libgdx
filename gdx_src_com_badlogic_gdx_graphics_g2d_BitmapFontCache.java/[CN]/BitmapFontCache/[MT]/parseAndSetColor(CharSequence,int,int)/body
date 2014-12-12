@@ -5,7 +5,7 @@
       for (int i=start + 1; i < end; i++) {
         char ch=str.charAt(i);
         if (ch == ']') {
-          if (i < start + 2 || i > start + 9)           throw new GdxRuntimeException("Hex color cannot have " + (i - start - 1) + " digits");
+          if (i < start + 2 || i > start + 9)           throw new GdxRuntimeException("Hex color cannot have " + (i - start - 1) + " digits.");
           if (i <= start + 7) {
             Color.rgb888ToColor(hexColor,colorInt);
             hexColor.a=1f;
@@ -20,7 +20,7 @@
         if (ch >= '0' && ch <= '9')         colorInt=colorInt * 16 + (ch - '0');
  else         if (ch >= 'a' && ch <= 'f')         colorInt=colorInt * 16 + (ch - ('a' - 10));
  else         if (ch >= 'A' && ch <= 'F')         colorInt=colorInt * 16 + (ch - ('A' - 10));
- else         throw new GdxRuntimeException("Unexpected '" + ch + "' in hex color");
+ else         throw new GdxRuntimeException("Unexpected character in hex color: " + ch);
       }
     }
  else {
@@ -36,7 +36,7 @@
  else {
             String colorString=colorBuffer.toString();
             Color newColor=Colors.get(colorString);
-            if (newColor == null)             throw new GdxRuntimeException("Unknown color '" + colorString + "'");
+            if (newColor == null)             throw new GdxRuntimeException("Unknown color: " + colorString);
             this.color=newColor.toFloatBits();
             addColorChunk(this.color,false);
           }
@@ -48,5 +48,5 @@
       }
     }
   }
-  throw new GdxRuntimeException("Unclosed color tag");
+  throw new GdxRuntimeException("Unclosed color tag.");
 }

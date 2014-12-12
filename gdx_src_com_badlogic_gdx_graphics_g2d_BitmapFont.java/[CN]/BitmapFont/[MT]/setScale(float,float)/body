@@ -1,7 +1,6 @@
 {
-  if (scaleX == 0 || scaleY == 0) {
-    throw new IllegalArgumentException("Scale must not be zero");
-  }
+  if (scaleX == 0)   throw new IllegalArgumentException("scaleX cannot be 0.");
+  if (scaleY == 0)   throw new IllegalArgumentException("scaleY cannot be 0.");
   BitmapFontData data=this.data;
   float x=scaleX / data.scaleX;
   float y=scaleY / data.scaleY;

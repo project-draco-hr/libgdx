@@ -5,44 +5,44 @@
   try {
     reader.readLine();
     String line=reader.readLine();
-    if (line == null)     throw new GdxRuntimeException("Invalid font file: " + fontFile);
+    if (line == null)     throw new GdxRuntimeException("File is empty.");
     String[] common=line.split(" ",7);
-    if (common.length < 3)     throw new GdxRuntimeException("Invalid font file: " + fontFile);
-    if (!common[1].startsWith("lineHeight="))     throw new GdxRuntimeException("Invalid font file: " + fontFile);
+    if (common.length < 3)     throw new GdxRuntimeException("Invalid header.");
+    if (!common[1].startsWith("lineHeight="))     throw new GdxRuntimeException("Missing: lineHeight");
     lineHeight=Integer.parseInt(common[1].substring(11));
-    if (!common[2].startsWith("base="))     throw new GdxRuntimeException("Invalid font file: " + fontFile);
+    if (!common[2].startsWith("base="))     throw new GdxRuntimeException("Missing: base");
     float baseLine=Integer.parseInt(common[2].substring(5));
-    int imgPageCount=1;
+    int pageCount=1;
     if (common.length >= 6 && common[5] != null && common[5].startsWith("pages=")) {
       try {
-        imgPageCount=Math.max(1,Integer.parseInt(common[5].substring(6)));
+        pageCount=Math.max(1,Integer.parseInt(common[5].substring(6)));
       }
- catch (      NumberFormatException e) {
+ catch (      NumberFormatException ignored) {
       }
     }
-    imagePaths=new String[imgPageCount];
-    for (int p=0; p < imgPageCount; p++) {
+    imagePaths=new String[pageCount];
+    for (int p=0; p < pageCount; p++) {
       line=reader.readLine();
-      if (line == null)       throw new GdxRuntimeException("Expected more 'page' definitions in font file " + fontFile);
+      if (line == null)       throw new GdxRuntimeException("Missing additional page definitions.");
       String[] pageLine=line.split(" ",4);
-      if (!pageLine[2].startsWith("file="))       throw new GdxRuntimeException("Invalid font file: " + fontFile);
+      if (!pageLine[2].startsWith("file="))       throw new GdxRuntimeException("Missing: file");
       if (pageLine[1].startsWith("id=")) {
         try {
           int pageID=Integer.parseInt(pageLine[1].substring(3));
-          if (pageID != p)           throw new GdxRuntimeException("Invalid font file: " + fontFile + " -- page ids must be indices starting at 0");
+          if (pageID != p)           throw new GdxRuntimeException("Page IDs must be indices starting at 0: " + pageLine[1].substring(3));
         }
- catch (        NumberFormatException e) {
-          throw new GdxRuntimeException("NumberFormatException on 'page id' element of " + fontFile);
+ catch (        NumberFormatException ex) {
+          throw new GdxRuntimeException("Invalid page id: " + pageLine[1].substring(3),ex);
         }
       }
-      String imgFilename=null;
+      String fileName=null;
       if (pageLine[2].endsWith("\"")) {
-        imgFilename=pageLine[2].substring(6,pageLine[2].length() - 1);
+        fileName=pageLine[2].substring(6,pageLine[2].length() - 1);
       }
  else {
-        imgFilename=pageLine[2].substring(5,pageLine[2].length());
+        fileName=pageLine[2].substring(5,pageLine[2].length());
       }
-      String path=fontFile.parent().child(imgFilename).path().replaceAll("\\\\","/");
+      String path=fontFile.parent().child(fileName).path().replaceAll("\\\\","/");
       if (this.imagePath == null)       this.imagePath=path;
       imagePaths[p]=path;
     }
@@ -80,7 +80,7 @@
         try {
           glyph.page=Integer.parseInt(tokens.nextToken());
         }
- catch (        NumberFormatException e) {
+ catch (        NumberFormatException ignored) {
         }
       }
       if (glyph.width > 0 && glyph.height > 0)       descent=Math.min(baseLine + glyph.yoffset,descent);
