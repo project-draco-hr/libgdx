@@ -1,4 +1,4 @@
 {
   json.writeValue("data",data,ObjectMap.class);
-  json.writeValue("indices",assets.toArray(Integer.class),Integer[].class);
+  json.writeValue("indices",assets.toArray(),int[].class);
 }
