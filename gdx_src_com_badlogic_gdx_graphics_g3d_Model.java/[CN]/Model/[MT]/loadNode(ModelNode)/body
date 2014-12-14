@@ -1,7 +1,6 @@
 {
   Node node=new Node();
   node.id=modelNode.id;
-  node.parent=parent;
   if (modelNode.translation != null)   node.translation.set(modelNode.translation);
   if (modelNode.rotation != null)   node.rotation.set(modelNode.rotation);
   if (modelNode.scale != null)   node.scale.set(modelNode.scale);
@@ -37,7 +36,7 @@
   }
   if (modelNode.children != null) {
     for (    ModelNode child : modelNode.children) {
-      node.children.add(loadNode(node,child));
+      node.addChild(loadNode(child));
     }
   }
   return node;
