@@ -3,6 +3,6 @@
   this.transform=transform == null ? new Matrix4() : transform;
   if (rootNodeIds == null)   copyNodes(model.nodes);
  else   copyNodes(model.nodes,rootNodeIds);
-  copyAnimations(model.animations);
+  copyAnimations(model.animations,defaultShareKeyframes);
   calculateTransforms();
 }
