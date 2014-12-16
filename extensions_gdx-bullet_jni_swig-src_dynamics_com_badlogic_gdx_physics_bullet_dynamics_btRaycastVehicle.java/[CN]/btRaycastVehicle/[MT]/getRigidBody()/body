@@ -1,4 +1,3 @@
 {
-  long cPtr=DynamicsJNI.btRaycastVehicle_getRigidBody__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new btRigidBody(cPtr,false);
+  return (btRigidBody)btCollisionObject.getInstance(DynamicsJNI.btRaycastVehicle_getRigidBody__SWIG_0(swigCPtr,this),false);
 }

@@ -1,3 +1,3 @@
 {
-  return new btRigidBody(DynamicsJNI.btTypedConstraint_getFixedBody(),false);
+  return (btRigidBody)btCollisionObject.getInstance(DynamicsJNI.btTypedConstraint_getFixedBody(),false);
 }
