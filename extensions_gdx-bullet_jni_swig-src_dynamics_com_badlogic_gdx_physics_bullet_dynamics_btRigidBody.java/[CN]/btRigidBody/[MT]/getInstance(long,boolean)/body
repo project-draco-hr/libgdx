@@ -1,0 +1,6 @@
+{
+  if (swigCPtr == 0)   return null;
+  btRigidBody result=getInstance(swigCPtr);
+  if (result == null)   result=new btRigidBody(swigCPtr,owner);
+  return result;
+}
