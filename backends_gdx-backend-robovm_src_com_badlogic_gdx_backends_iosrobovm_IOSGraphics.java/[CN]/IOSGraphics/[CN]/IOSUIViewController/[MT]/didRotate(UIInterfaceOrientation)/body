@@ -1,8 +1,8 @@
 {
   super.didRotate(orientation);
   CGSize bounds=app.getBounds(this);
-  graphics.width=(int)bounds.getWidth();
-  graphics.height=(int)bounds.getHeight();
+  graphics.width=(int)bounds.width();
+  graphics.height=(int)bounds.height();
   graphics.makeCurrent();
   app.listener.resize(graphics.width,graphics.height);
 }

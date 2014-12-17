@@ -1,7 +1,7 @@
 {
-  final float eX=(float)data.getMagneticField().getX();
-  final float eY=(float)data.getMagneticField().getY();
-  final float eZ=(float)data.getMagneticField().getZ();
+  final float eX=(float)data.getMagneticField().x();
+  final float eY=(float)data.getMagneticField().y();
+  final float eZ=(float)data.getMagneticField().z();
   float gX=acceleration[0];
   float gY=acceleration[1];
   float gZ=acceleration[2];
