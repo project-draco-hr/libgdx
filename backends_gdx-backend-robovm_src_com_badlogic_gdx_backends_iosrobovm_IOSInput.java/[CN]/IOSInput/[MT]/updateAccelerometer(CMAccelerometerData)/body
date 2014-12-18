@@ -1,8 +1,0 @@
-{
-  float x=(float)data.getAcceleration().getX() * 10f;
-  float y=(float)data.getAcceleration().getY() * 10f;
-  float z=(float)data.getAcceleration().getZ() * 10f;
-  acceleration[0]=-x;
-  acceleration[1]=-y;
-  acceleration[2]=-z;
-}

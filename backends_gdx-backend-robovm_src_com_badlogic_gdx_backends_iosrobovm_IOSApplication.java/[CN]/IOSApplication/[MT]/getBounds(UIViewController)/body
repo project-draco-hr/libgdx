@@ -1,5 +1,5 @@
 {
-  CGSize bounds=UIScreen.getMainScreen().getApplicationFrame().getSize();
+  CGSize bounds=UIScreen.getMainScreen().getApplicationFrame().size();
   UIInterfaceOrientation orientation;
   if (viewController != null) {
     orientation=viewController.getInterfaceOrientation();
@@ -18,16 +18,16 @@
 switch (orientation) {
 case LandscapeLeft:
 case LandscapeRight:
-    height=(int)bounds.getWidth();
-  width=(int)bounds.getHeight();
+    height=(int)bounds.width();
+  width=(int)bounds.height();
 if (width < height) {
-  width=(int)bounds.getWidth();
-  height=(int)bounds.getHeight();
+  width=(int)bounds.width();
+  height=(int)bounds.height();
 }
 break;
 default :
-width=(int)bounds.getWidth();
-height=(int)bounds.getHeight();
+width=(int)bounds.width();
+height=(int)bounds.height();
 }
 Gdx.app.debug("IOSApplication","Unscaled View: " + orientation.toString() + " "+ width+ "x"+ height);
 width*=displayScaleFactor;
