@@ -229,12 +229,12 @@ case 6:
 {
 if (debug) System.out.println("comment /" + data[p]);
 if (data[p++] == '/') {
-while (data[p] != '\n') p++;
+while (p != eof && data[p] != '\n') p++;
 p--;
 }
  else {
-while (data[p] != '*' || data[p + 1] != '/') p++;
-p++;
+while (p + 1 < eof && data[p] != '*' || data[p + 1] != '/') p++;
+p+=2;
 }
 }
 break;
@@ -250,8 +250,12 @@ switch (data[p]) {
 case '\\':
 needsUnescape=true;
 break;
-case ':':
 case '/':
+if (p + 1 == eof) break;
+char c=data[p + 1];
+if (c == '/' || c == '*') break outer;
+break;
+case ':':
 case '\r':
 case '\n':
 break outer;
@@ -267,10 +271,14 @@ switch (data[p]) {
 case '\\':
 needsUnescape=true;
 break;
+case '/':
+if (p + 1 == eof) break;
+char c=data[p + 1];
+if (c == '/' || c == '*') break outer;
+break;
 case '}':
 case ']':
 case ',':
-case '/':
 case '\r':
 case '\n':
 break outer;
