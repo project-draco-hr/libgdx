@@ -45,6 +45,7 @@
     if ((labelAlign & Align.right) != 0)     x+=width - bounds.width;
  else     x+=(int)((width - bounds.width) / 2);
   }
+  cache.setColor(Color.WHITE);
   if (wrap)   cache.setWrappedText(text,x,y,bounds.width,lineAlign);
  else   cache.setMultiLineText(text,x,y,bounds.width,lineAlign);
   if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(oldScaleX,oldScaleY);
