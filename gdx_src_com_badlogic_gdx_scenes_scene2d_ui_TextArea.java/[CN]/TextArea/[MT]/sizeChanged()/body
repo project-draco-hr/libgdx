@@ -1,4 +1,5 @@
 {
+  lastText=null;
   BitmapFont font=style.font;
   Drawable background=style.background;
   float availableHeight=getHeight() - (background == null ? 0 : background.getBottomHeight() + background.getTopHeight());
