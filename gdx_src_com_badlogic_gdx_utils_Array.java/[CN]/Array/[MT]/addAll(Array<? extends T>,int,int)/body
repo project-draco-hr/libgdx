@@ -1,4 +1,4 @@
 {
-  if (offset + length > array.size)   throw new IllegalArgumentException("offset + length must be <= size: " + offset + " + "+ length+ " <= "+ array.size);
-  addAll((T[])array.items,offset,length);
+  if (start + count > array.size)   throw new IllegalArgumentException("start + count must be <= size: " + start + " + "+ count+ " <= "+ array.size);
+  addAll((T[])array.items,start,count);
 }
