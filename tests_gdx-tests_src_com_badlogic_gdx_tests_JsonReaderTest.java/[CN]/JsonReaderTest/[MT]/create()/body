@@ -32,12 +32,14 @@
   test.array=new Array();
   roundTrip(test);
   test.array.add("meow");
+  roundTrip(test);
   test.array.add("moo");
   roundTrip(test);
   test=new Test1();
   test.map=new ObjectMap();
   roundTrip(test);
   test.map.put("one",1);
+  roundTrip(test);
   test.map.put("two",2);
   test.map.put("nine",9);
   roundTrip(test);

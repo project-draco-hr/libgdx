@@ -207,7 +207,7 @@ stack=newStack;
 }
 {
 stack[top++]=cs;
-cs=17;
+cs=23;
 _goto_targ=2;
 if (true) continue _goto;
 }
@@ -227,15 +227,16 @@ if (true) continue _goto;
 break;
 case 6:
 {
-if (debug) System.out.println("comment /" + data[p]);
+int start=p - 1;
 if (data[p++] == '/') {
 while (p != eof && data[p] != '\n') p++;
 p--;
 }
  else {
 while (p + 1 < eof && data[p] != '*' || data[p + 1] != '/') p++;
-p+=2;
+p++;
 }
+if (debug) System.out.println("comment " + new String(data,start,p - start));
 }
 break;
 case 7:
