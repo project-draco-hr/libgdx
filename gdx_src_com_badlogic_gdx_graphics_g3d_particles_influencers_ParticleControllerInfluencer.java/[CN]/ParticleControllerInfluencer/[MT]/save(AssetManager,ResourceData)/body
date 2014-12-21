@@ -2,18 +2,18 @@
   SaveData data=resources.createSaveData();
   Array<ParticleEffect> effects=manager.getAll(ParticleEffect.class,new Array<ParticleEffect>());
   Array<ParticleController> controllers=new Array<ParticleController>(templates);
-  Array<Array<Integer>> effectsIndices=new Array<Array<Integer>>();
+  Array<IntArray> effectsIndices=new Array<IntArray>();
   for (int i=0; i < effects.size && controllers.size > 0; ++i) {
     ParticleEffect effect=effects.get(i);
     Array<ParticleController> effectControllers=effect.getControllers();
     Iterator<ParticleController> iterator=controllers.iterator();
-    Array<Integer> indices=null;
+    IntArray indices=null;
     while (iterator.hasNext()) {
       ParticleController controller=iterator.next();
       int index=-1;
       if ((index=effectControllers.indexOf(controller,true)) > -1) {
         if (indices == null) {
-          indices=new Array<Integer>();
+          indices=new IntArray();
         }
         iterator.remove();
         indices.add(index);

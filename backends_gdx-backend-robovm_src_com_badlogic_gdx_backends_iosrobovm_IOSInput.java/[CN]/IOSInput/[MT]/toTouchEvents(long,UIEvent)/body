@@ -15,7 +15,7 @@ synchronized (touchEvents) {
       touchEvents.add(event);
       if (phase == UITouchPhase.Began) {
         event.pointer=getFreePointer();
-        touchDown[event.pointer]=(int)touch.getHandle();
+        touchDown[event.pointer]=touch.getHandle();
         touchX[event.pointer]=event.x;
         touchY[event.pointer]=event.y;
         deltaX[event.pointer]=0;

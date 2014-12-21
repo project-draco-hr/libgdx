@@ -7,4 +7,5 @@ synchronized (tasks) {
     tasks.add(task);
   }
   wake();
+  return task;
 }

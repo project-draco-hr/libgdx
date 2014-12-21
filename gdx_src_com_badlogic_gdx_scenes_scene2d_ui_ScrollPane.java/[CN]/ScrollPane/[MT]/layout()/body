@@ -61,8 +61,8 @@
       if (scrollY && !vScrollOnRight)       widgetAreaBounds.x+=scrollbarWidth;
     }
   }
-  widgetWidth=disableX ? width : Math.max(areaWidth,widgetWidth);
-  widgetHeight=disableY ? height : Math.max(areaHeight,widgetHeight);
+  widgetWidth=disableX ? areaWidth : Math.max(areaWidth,widgetWidth);
+  widgetHeight=disableY ? areaHeight : Math.max(areaHeight,widgetHeight);
   maxX=widgetWidth - areaWidth;
   maxY=widgetHeight - areaHeight;
   if (fade) {

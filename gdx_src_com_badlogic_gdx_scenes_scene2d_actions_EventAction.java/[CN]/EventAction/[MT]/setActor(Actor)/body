@@ -1,5 +1,0 @@
-{
-  if (getActor() != null)   getActor().removeListener(listener);
-  super.setActor(actor);
-  if (actor != null)   actor.addListener(listener);
-}

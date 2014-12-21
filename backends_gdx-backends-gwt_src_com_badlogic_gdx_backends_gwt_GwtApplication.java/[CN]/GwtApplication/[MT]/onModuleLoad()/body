@@ -3,6 +3,7 @@
   this.listener=getApplicationListener();
   this.config=getConfig();
   this.log=config.log;
+  addEventListeners();
   if (config.rootPanel != null) {
     this.root=config.rootPanel;
   }

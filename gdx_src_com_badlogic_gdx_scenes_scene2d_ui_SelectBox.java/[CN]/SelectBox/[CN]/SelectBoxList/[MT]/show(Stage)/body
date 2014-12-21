@@ -31,6 +31,7 @@
   Actor actor=stage.getScrollFocus();
   if (actor != null && !actor.isDescendantOf(this))   previousScrollFocus=actor;
   stage.setScrollFocus(this);
+  list.selection.set(selectBox.getSelected());
   list.setTouchable(Touchable.enabled);
   clearActions();
   selectBox.onShow(this,below);

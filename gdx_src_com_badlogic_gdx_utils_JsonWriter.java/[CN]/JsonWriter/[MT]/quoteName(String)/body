@@ -2,7 +2,7 @@
   value=value.replace("\\","\\\\").replace("\r","\\r").replace("\n","\\n").replace("\t","\\t");
 switch (this) {
 case minimal:
-    if (minimalNamePattern.matcher(value).matches())     return value;
+    if (!value.contains("//") && !value.contains("/*") && minimalNamePattern.matcher(value).matches())     return value;
 case javascript:
   if (javascriptPattern.matcher(value).matches())   return value;
 }
