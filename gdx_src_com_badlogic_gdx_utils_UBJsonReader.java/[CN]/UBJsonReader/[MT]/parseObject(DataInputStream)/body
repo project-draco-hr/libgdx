@@ -20,6 +20,7 @@
     final JsonValue child=parse(din,valueType == 0 ? din.readByte() : valueType);
     child.setName(key);
     if (prev != null) {
+      child.prev=prev;
       prev.next=child;
       result.size++;
     }
