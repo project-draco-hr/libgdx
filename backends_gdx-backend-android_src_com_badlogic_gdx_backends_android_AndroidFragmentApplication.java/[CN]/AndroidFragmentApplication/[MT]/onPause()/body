@@ -1,7 +1,7 @@
 {
   boolean isContinuous=graphics.isContinuousRendering();
-  boolean isContinuousEnforced=AndroidGraphics.enforceContinuousRenderingOnPause;
-  AndroidGraphics.enforceContinuousRenderingOnPause=true;
+  boolean isContinuousEnforced=AndroidGraphics.enforceContinuousRendering;
+  AndroidGraphics.enforceContinuousRendering=true;
   graphics.setContinuousRendering(true);
   graphics.pause();
   input.onPause();
@@ -9,7 +9,7 @@
     graphics.clearManagedCaches();
     graphics.destroy();
   }
-  AndroidGraphics.enforceContinuousRenderingOnPause=isContinuousEnforced;
+  AndroidGraphics.enforceContinuousRendering=isContinuousEnforced;
   graphics.setContinuousRendering(isContinuous);
   graphics.onPauseGLSurfaceView();
   super.onPause();
