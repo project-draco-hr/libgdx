@@ -1,0 +1,43 @@
+{
+  Array<Cubemap> managedCubemapArray=managedCubemaps.get(app);
+  if (managedCubemapArray == null)   return;
+  if (assetManager == null) {
+    for (int i=0; i < managedCubemapArray.size; i++) {
+      Cubemap cubemap=managedCubemapArray.get(i);
+      cubemap.reload();
+    }
+  }
+ else {
+    assetManager.finishLoading();
+    Array<Cubemap> cubemaps=new Array<Cubemap>(managedCubemapArray);
+    for (    Cubemap cubemap : cubemaps) {
+      String fileName=assetManager.getAssetFileName(cubemap);
+      if (fileName == null) {
+        cubemap.reload();
+      }
+ else {
+        final int refCount=assetManager.getReferenceCount(fileName);
+        assetManager.setReferenceCount(fileName,0);
+        cubemap.glHandle=0;
+        CubemapParameter params=new CubemapParameter();
+        params.cubemapData=cubemap.getCubemapData();
+        params.minFilter=cubemap.getMinFilter();
+        params.magFilter=cubemap.getMagFilter();
+        params.wrapU=cubemap.getUWrap();
+        params.wrapV=cubemap.getVWrap();
+        params.cubemap=cubemap;
+        params.loadedCallback=new LoadedCallback(){
+          @Override public void finishedLoading(          AssetManager assetManager,          String fileName,          Class type){
+            assetManager.setReferenceCount(fileName,refCount);
+          }
+        }
+;
+        assetManager.unload(fileName);
+        cubemap.glHandle=GLTexture.createGLHandle();
+        assetManager.load(fileName,Cubemap.class,params);
+      }
+    }
+    managedCubemapArray.clear();
+    managedCubemapArray.addAll(cubemaps);
+  }
+}

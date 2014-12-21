@@ -1,21 +1,21 @@
 {
   info.filename=fileName;
-  if (parameter == null || parameter.textureData == null) {
+  if (parameter == null || parameter.cubemapData == null) {
     Pixmap pixmap=null;
     Format format=null;
     boolean genMipMaps=false;
-    info.texture=null;
+    info.cubemap=null;
     if (parameter != null) {
       format=parameter.format;
-      info.texture=parameter.cubemap;
+      info.cubemap=parameter.cubemap;
     }
     if (fileName.contains(".ktx") || fileName.contains(".zktx")) {
       info.data=new KTXTextureData(file,genMipMaps);
     }
   }
  else {
-    info.data=parameter.textureData;
-    info.texture=parameter.cubemap;
+    info.data=parameter.cubemapData;
+    info.cubemap=parameter.cubemap;
   }
   if (!info.data.isPrepared())   info.data.prepare();
 }

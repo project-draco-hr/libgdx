@@ -1,8 +1,8 @@
 {
-  Class type=tagToClass.get(tag);
+  Class type=tagToClass.get(tagOrClassName);
   if (type != null)   return type;
   try {
-    return ClassReflection.forName(tag);
+    return ClassReflection.forName(tagOrClassName);
   }
  catch (  ReflectionException ex) {
     throw new SerializationException(ex);

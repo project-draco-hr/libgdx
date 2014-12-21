@@ -14,58 +14,66 @@
         }
       }
     }
-    Object object;
-    if (type != null) {
-      if (type == String.class || type == Integer.class || type == Boolean.class || type == Float.class || type == Long.class || type == Double.class || type == Short.class || type == Byte.class || type == Character.class || ClassReflection.isAssignableFrom(Enum.class,type)) {
-        return readValue("value",type,jsonData);
-      }
+    if (type == null) {
+      if (defaultSerializer != null)       return (T)defaultSerializer.read(this,jsonData,type);
+      return (T)jsonData;
+    }
+    if (type == String.class || type == Integer.class || type == Boolean.class || type == Float.class || type == Long.class || type == Double.class || type == Short.class || type == Byte.class || type == Character.class || ClassReflection.isAssignableFrom(Enum.class,type)) {
+      return readValue("value",type,jsonData);
+    }
+    if (typeName != null && ClassReflection.isAssignableFrom(Collection.class,type)) {
+      jsonData=jsonData.get("items");
+    }
+ else {
       Serializer serializer=classToSerializer.get(type);
       if (serializer != null)       return (T)serializer.read(this,jsonData,type);
-      object=newInstance(type);
+      Object object=newInstance(type);
       if (object instanceof Serializable) {
         ((Serializable)object).read(this,jsonData);
         return (T)object;
       }
-      if (object instanceof HashMap) {
-        HashMap result=(HashMap)object;
+      if (object instanceof ObjectMap) {
+        ObjectMap result=(ObjectMap)object;
         for (JsonValue child=jsonData.child; child != null; child=child.next)         result.put(child.name(),readValue(elementType,null,child));
         return (T)result;
       }
+      if (object instanceof ArrayMap) {
+        ArrayMap result=(ArrayMap)object;
+        for (JsonValue child=jsonData.child; child != null; child=child.next)         result.put(child.name(),readValue(elementType,null,child));
+        return (T)result;
+      }
+      if (object instanceof Map) {
+        Map result=(Map)object;
+        for (JsonValue child=jsonData.child; child != null; child=child.next)         result.put(child.name(),readValue(elementType,null,child));
+        return (T)result;
+      }
+      readFields(object,jsonData);
+      return (T)object;
     }
- else     if (defaultSerializer != null) {
-      return (T)defaultSerializer.read(this,jsonData,type);
-    }
- else     return (T)jsonData;
-    if (object instanceof ObjectMap) {
-      ObjectMap result=(ObjectMap)object;
-      for (JsonValue child=jsonData.child; child != null; child=child.next)       result.put(child.name(),readValue(elementType,null,child));
-      return (T)result;
-    }
-    readFields(object,jsonData);
-    return (T)object;
   }
   if (type != null) {
     Serializer serializer=classToSerializer.get(type);
     if (serializer != null)     return (T)serializer.read(this,jsonData,type);
   }
   if (jsonData.isArray()) {
-    if ((type == null || type == Object.class) || ClassReflection.isAssignableFrom(Array.class,type)) {
-      Array newArray=(type == null || type == Object.class) ? new Array() : (Array)newInstance(type);
-      for (JsonValue child=jsonData.child; child != null; child=child.next)       newArray.add(readValue(elementType,null,child));
-      return (T)newArray;
+    if (type == null || type == Object.class)     type=(Class<T>)Array.class;
+    if (ClassReflection.isAssignableFrom(Array.class,type)) {
+      Array result=type == Array.class ? new Array() : (Array)newInstance(type);
+      for (JsonValue child=jsonData.child; child != null; child=child.next)       result.add(readValue(elementType,null,child));
+      return (T)result;
     }
-    if (ClassReflection.isAssignableFrom(List.class,type)) {
-      List newArray=(type == null || type.isInterface()) ? new ArrayList() : (List)newInstance(type);
-      for (JsonValue child=jsonData.child; child != null; child=child.next)       newArray.add(readValue(elementType,null,child));
-      return (T)newArray;
+    if (ClassReflection.isAssignableFrom(Collection.class,type)) {
+      Collection result=type.isInterface() ? new ArrayList() : (Collection)newInstance(type);
+      for (JsonValue child=jsonData.child; child != null; child=child.next)       result.add(readValue(elementType,null,child));
+      return (T)result;
     }
     if (type.isArray()) {
       Class componentType=type.getComponentType();
       if (elementType == null)       elementType=componentType;
-      Object newArray=ArrayReflection.newInstance(componentType,jsonData.size);
+      Object result=ArrayReflection.newInstance(componentType,jsonData.size);
       int i=0;
-      for (JsonValue child=jsonData.child; child != null; child=child.next)       ArrayReflection.set(newArray,i++,readValue(elementType,null,child));
-      return (T)newArray;
+      for (JsonValue child=jsonData.child; child != null; child=child.next)       ArrayReflection.set(result,i++,readValue(elementType,null,child));
+      return (T)result;
     }
     throw new SerializationException("Unable to convert value to required type: " + jsonData + " ("+ type.getName()+ ")");
   }
@@ -107,8 +115,11 @@
     if (type == boolean.class || type == Boolean.class)     return (T)Boolean.valueOf(string);
     if (type == char.class || type == Character.class)     return (T)(Character)string.charAt(0);
     if (ClassReflection.isAssignableFrom(Enum.class,type)) {
-      Object[] constants=type.getEnumConstants();
-      for (int i=0, n=constants.length; i < n; i++)       if (string.equals(constants[i].toString()))       return (T)constants[i];
+      Enum[] constants=(Enum[])type.getEnumConstants();
+      for (int i=0, n=constants.length; i < n; i++) {
+        Enum e=constants[i];
+        if (string.equals(convertToString(e)))         return (T)e;
+      }
     }
     if (type == CharSequence.class)     return (T)string;
     throw new SerializationException("Unable to convert value to required type: " + jsonData + " ("+ type.getName()+ ")");

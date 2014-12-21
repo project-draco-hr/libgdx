@@ -16,7 +16,7 @@
     TextureAtlas atlas=new TextureAtlas(atlasFile);
     atlases.put(atlasFile.path(),atlas);
     AtlasResolver.DirectAtlasResolver atlasResolver=new AtlasResolver.DirectAtlasResolver(atlases);
-    TiledMap map=loadMap(root,tmxFile,atlasResolver,parameter);
+    TiledMap map=loadMap(root,tmxFile,atlasResolver);
     map.setOwnedResources(atlases.values().toArray());
     setTextureFilters(parameter.textureMinFilter,parameter.textureMagFilter);
     return map;

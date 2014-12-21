@@ -1,7 +1,6 @@
 {
   Class type=object.getClass();
-  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
-  if (fields == null)   fields=cacheFields(type);
+  ObjectMap<String,FieldMetadata> fields=getFields(type);
   for (JsonValue child=jsonMap.child; child != null; child=child.next) {
     FieldMetadata metadata=fields.get(child.name());
     if (metadata == null) {

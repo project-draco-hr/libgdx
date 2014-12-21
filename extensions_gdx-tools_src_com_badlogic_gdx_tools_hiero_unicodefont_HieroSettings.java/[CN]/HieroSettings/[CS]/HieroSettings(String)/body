@@ -21,6 +21,12 @@
  else       if (name.equals("font.italic")) {
         italic=Boolean.parseBoolean(value);
       }
+ else       if (name.equals("font2.file")) {
+        font2File=value;
+      }
+ else       if (name.equals("font2.use")) {
+        font2Active=Boolean.parseBoolean(value);
+      }
  else       if (name.equals("pad.top")) {
         paddingTop=Integer.parseInt(value);
       }

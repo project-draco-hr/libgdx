@@ -1,0 +1,5 @@
+{
+  super(new CheckedOutputStream(buffer,crc));
+  this.buffer=buffer;
+  this.crc=crc;
+}

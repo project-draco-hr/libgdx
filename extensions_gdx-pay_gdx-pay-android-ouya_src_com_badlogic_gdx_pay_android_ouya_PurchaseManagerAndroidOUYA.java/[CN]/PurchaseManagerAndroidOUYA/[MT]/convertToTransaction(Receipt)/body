@@ -1,8 +1,0 @@
-{
-  Transaction transaction=new Transaction();
-  transaction.setIdentifier(receipt.getIdentifier());
-  transaction.setStoreName(storeName());
-  transaction.setPurchaseTime(receipt.getPurchaseDate());
-  showMessage(LOGTYPELOG,"converted receipt to transaction.");
-  return transaction;
-}

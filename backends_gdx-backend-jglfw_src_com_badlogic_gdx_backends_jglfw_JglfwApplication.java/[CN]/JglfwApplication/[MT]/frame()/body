@@ -1,8 +1,10 @@
 {
   if (!running)   return;
-  if (executeRunnables())   graphics.requestRendering();
+  boolean shouldRender=false;
+  if (executeRunnables())   shouldRender=true;
   if (!running)   return;
   input.update();
+  shouldRender|=graphics.shouldRender();
   long frameStartTime=System.nanoTime();
   int targetFPS=(graphics.isHidden() || graphics.isMinimized()) ? hiddenFPS : (graphics.isForeground() ? foregroundFPS : backgroundFPS);
   if (targetFPS == -1) {
@@ -12,7 +14,8 @@
  else {
     if (isPaused)     listener.resume();
     isPaused=false;
-    if (graphics.shouldRender())     render(frameStartTime);
+    if (shouldRender)     render(frameStartTime);
+ else     targetFPS=backgroundFPS;
   }
   if (targetFPS != 0) {
     if (targetFPS == -1)     sleep(100);
