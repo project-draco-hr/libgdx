@@ -1,9 +1,6 @@
 {
-  tmpHandle.clear();
-  tmpHandle.put(bufferHandle);
-  tmpHandle.flip();
   GL20 gl=Gdx.gl20;
   gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
-  gl.glDeleteBuffers(1,tmpHandle);
+  gl.glDeleteBuffer(bufferHandle);
   bufferHandle=0;
 }
