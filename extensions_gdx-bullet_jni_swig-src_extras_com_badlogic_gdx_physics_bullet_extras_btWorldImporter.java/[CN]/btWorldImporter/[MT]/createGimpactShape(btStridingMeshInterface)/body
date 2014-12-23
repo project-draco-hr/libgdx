@@ -1,4 +1,4 @@
 {
   long cPtr=ExtrasJNI.btWorldImporter_createGimpactShape(swigCPtr,this,btStridingMeshInterface.getCPtr(trimesh),trimesh);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_btGImpactMeshShape(cPtr,false);
+  return (cPtr == 0) ? null : new btGImpactMeshShape(cPtr,false);
 }
