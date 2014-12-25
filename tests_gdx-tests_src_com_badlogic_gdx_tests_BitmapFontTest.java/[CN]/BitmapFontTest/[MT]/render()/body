@@ -44,6 +44,9 @@
   textX+=cache.addText("[#A52A2A]br[#A52A2ADF]ow[#A52A2ABF]n f[#A52A2A9F]ad[#A52A2A7F]in[#A52A2A5F]g o[#A52A2A3F]ut ",textX,150).width;
   multiPageFont.setMarkupEnabled(false);
   cache.draw(spriteBatch);
+  cache.tint(new Color(1f,1f,1f,0.3f));
+  cache.translate(0f,40f);
+  cache.draw(spriteBatch);
   spriteBatch.end();
   renderer.begin(ShapeType.Line);
   renderer.setColor(Color.BLACK);

@@ -4,13 +4,13 @@
   Glyph lastGlyph=null;
   BitmapFontData data=font.data;
   textChanged=start < end;
-  if (font.markupEnabled && colorChunks.size == 0)   colorChunks.add(obtainColorChunk(this.color,-1));
   if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
         if (!(start < end && str.charAt(start) == '[')) {
-          start+=parseAndSetColor(str,start,end) + 1;
+          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
+          color=markup.getLastColor().toFloatBits();
           continue;
         }
         start++;
@@ -26,7 +26,8 @@
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
         if (!(start < end && str.charAt(start) == '[')) {
-          start+=parseAndSetColor(str,start,end) + 1;
+          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
+          color=markup.getLastColor().toFloatBits();
           continue;
         }
         start++;
@@ -46,7 +47,8 @@
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
         if (!(start < end && str.charAt(start) == '[')) {
-          start+=parseAndSetColor(str,start,end) + 1;
+          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
+          color=markup.getLastColor().toFloatBits();
           continue;
         }
         start++;
@@ -62,7 +64,8 @@
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
         if (!(start < end && str.charAt(start) == '[')) {
-          start+=parseAndSetColor(str,start,end) + 1;
+          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
+          color=markup.getLastColor().toFloatBits();
           continue;
         }
         start++;
