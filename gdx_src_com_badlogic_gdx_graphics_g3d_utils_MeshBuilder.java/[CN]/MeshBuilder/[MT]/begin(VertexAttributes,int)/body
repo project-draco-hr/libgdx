@@ -24,5 +24,6 @@
   uvOffset=a == null ? -1 : a.offset / 4;
   setColor(null);
   setVertexTransform(null);
+  setUVRange(0f,0f,1f,1f);
   this.primitiveType=primitiveType;
 }

@@ -1,0 +1,4 @@
+{
+  if (meshpart.primitiveType != primitiveType)   throw new GdxRuntimeException("Primitive type doesn't match");
+  addMesh(meshpart.mesh,meshpart.indexOffset,meshpart.numVertices);
+}
