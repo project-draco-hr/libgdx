@@ -18,4 +18,6 @@
   check(text,object);
   text=text.replace("\n","\r\n");
   check(text,object);
+  text=text.replace("\r\n","\r\n\r\n");
+  check(text,object);
 }
