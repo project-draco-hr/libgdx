@@ -1,0 +1,10 @@
+{
+  final int size=colorChunks.size;
+  for (int i=0; i < size; i++) {
+    colorChunkPool.free(colorChunks.get(i));
+    colorChunks.set(i,null);
+  }
+  colorChunks.size=0;
+  currentColorStack.clear();
+  setDefaultChunk(defaultColor,0);
+}

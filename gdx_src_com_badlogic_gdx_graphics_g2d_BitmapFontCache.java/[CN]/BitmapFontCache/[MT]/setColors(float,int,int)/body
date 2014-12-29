@@ -1,0 +1,19 @@
+{
+  if (vertexData.length == 1) {
+    float[] vertices=vertexData[0];
+    for (int i=start * 20 + 2, n=end * 20; i < n; i+=5)     vertices[i]=color;
+  }
+ else {
+    int pageCount=vertexData.length;
+    for (int i=0; i < pageCount; i++) {
+      float[] vertices=vertexData[i];
+      for (int j=0, n=glyphIndices[i].size; j < n; j++) {
+        int gInd=glyphIndices[i].items[j];
+        if (gInd >= end)         break;
+        if (gInd >= start) {
+          for (int off=0; off < 20; off+=5)           vertices[off + (j * 20 + 2)]=color;
+        }
+      }
+    }
+  }
+}
