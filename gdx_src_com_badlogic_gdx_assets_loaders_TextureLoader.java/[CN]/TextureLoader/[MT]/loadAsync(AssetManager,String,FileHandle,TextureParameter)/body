@@ -10,14 +10,7 @@
       genMipMaps=parameter.genMipMaps;
       info.texture=parameter.texture;
     }
-    if (!fileName.contains(".etc1")) {
-      if (fileName.contains(".cim"))       pixmap=PixmapIO.readCIM(file);
- else       pixmap=new Pixmap(file);
-      info.data=new FileTextureData(file,pixmap,format,genMipMaps);
-    }
- else {
-      info.data=new ETC1TextureData(file,genMipMaps);
-    }
+    info.data=TextureData.Factory.loadFromFile(file,format,genMipMaps);
   }
  else {
     info.data=parameter.textureData;

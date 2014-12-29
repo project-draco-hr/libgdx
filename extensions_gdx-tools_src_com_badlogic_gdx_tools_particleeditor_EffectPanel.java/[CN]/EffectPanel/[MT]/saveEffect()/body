@@ -7,7 +7,16 @@
   if (dir == null || file == null || file.trim().length() == 0)   return;
   lastDir=dir;
   int index=0;
-  for (  ParticleEmitter emitter : editor.effect.getEmitters())   emitter.setName((String)emitterTableModel.getValueAt(index++,0));
+  File effectFile=new File(dir,file);
+  URI effectDirUri=effectFile.getParentFile().toURI();
+  for (  ParticleEmitter emitter : editor.effect.getEmitters()) {
+    emitter.setName((String)emitterTableModel.getValueAt(index++,0));
+    String imagePath=emitter.getImagePath();
+    if ((imagePath.contains("/") || imagePath.contains("\\")) && !imagePath.contains("..")) {
+      URI imageUri=new File(emitter.getImagePath()).toURI();
+      emitter.setImagePath(effectDirUri.relativize(imageUri).getPath());
+    }
+  }
   File outputFile=new File(dir,file);
   Writer fileWriter=null;
   try {

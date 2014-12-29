@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.bt_line_plane_collision(btVector4.getCPtr(plane),plane,vDir,vPoint,pout,SWIGTYPE_p_float.getCPtr(tparam),tmin,tmax);
+}

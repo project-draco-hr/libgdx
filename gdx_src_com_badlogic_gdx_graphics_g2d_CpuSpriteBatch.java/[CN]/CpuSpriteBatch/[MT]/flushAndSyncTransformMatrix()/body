@@ -1,8 +1,9 @@
 {
   flush();
   if (adjustNeeded) {
+    haveIdentityRealMatrix=checkIdt(virtualMatrix);
+    if (!haveIdentityRealMatrix && virtualMatrix.det() == 0)     throw new GdxRuntimeException("Transform matrix is singular, can't sync");
     adjustNeeded=false;
     super.setTransformMatrix(virtualMatrix);
-    haveIdentityRealMatrix=checkIdt(virtualMatrix);
   }
 }

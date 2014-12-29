@@ -1,0 +1,9 @@
+{
+  Array<String> opts=new Array<String>(String.class);
+  opts.add(input);
+  opts.add(output);
+  if (genMipmaps)   opts.add("-mipmaps");
+  if (packETC1 && !genAlphaAtlas)   opts.add("-etc1");
+  if (packETC1 && genAlphaAtlas)   opts.add("-etc1a");
+  main(opts.toArray());
+}

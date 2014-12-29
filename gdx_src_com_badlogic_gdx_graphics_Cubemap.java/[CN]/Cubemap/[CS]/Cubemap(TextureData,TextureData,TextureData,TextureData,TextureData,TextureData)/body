@@ -4,5 +4,6 @@
   magFilter=TextureFilter.Nearest;
   uWrap=TextureWrap.ClampToEdge;
   vWrap=TextureWrap.ClampToEdge;
-  load(positiveX,negativeX,positiveY,negativeY,positiveZ,negativeZ);
+  data=new FacedCubemapData(positiveX,negativeX,positiveY,negativeY,positiveZ,negativeZ);
+  load(data);
 }

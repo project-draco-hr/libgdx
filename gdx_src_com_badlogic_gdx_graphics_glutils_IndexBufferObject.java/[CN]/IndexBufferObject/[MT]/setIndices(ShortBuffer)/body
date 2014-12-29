@@ -1,0 +1,14 @@
+{
+  isDirty=true;
+  int pos=indices.position();
+  buffer.clear();
+  buffer.put(indices);
+  buffer.flip();
+  indices.position(pos);
+  byteBuffer.position(0);
+  byteBuffer.limit(buffer.limit() << 1);
+  if (isBound) {
+    Gdx.gl20.glBufferData(GL20.GL_ELEMENT_ARRAY_BUFFER,byteBuffer.limit(),byteBuffer,usage);
+    isDirty=false;
+  }
+}
