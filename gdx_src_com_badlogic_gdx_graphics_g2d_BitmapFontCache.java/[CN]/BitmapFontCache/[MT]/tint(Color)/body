@@ -1,32 +1,8 @@
 {
-  float floatTint=tint.toFloatBits();
+  final float floatTint=tint.toFloatBits();
   if (textChanged || oldTint != floatTint) {
     textChanged=false;
     oldTint=floatTint;
-    if (font.markupEnabled) {
-      int lastChunkIndex=updateCurrentChunk(-1,tint);
-      float color=currentChunkColor.toFloatBits();
-      int ci=0;
-      for (int j=0, length=vertexData.length; j < length; j++) {
-        float[] vertices=vertexData[j];
-        for (int i=2, n=idx[j]; i < n; i+=5) {
-          if ((i % 20) == 2) {
-            if (++ci > currentChunkEndIndex) {
-              lastChunkIndex=updateCurrentChunk(lastChunkIndex,tint);
-              color=currentChunkColor.toFloatBits();
-            }
-          }
-          vertices[i]=color;
-        }
-      }
-    }
- else {
-      for (int j=0, length=vertexData.length; j < length; j++) {
-        float[] vertices=vertexData[j];
-        for (int i=2, n=idx[j]; i < n; i+=5) {
-          vertices[i]=floatTint;
-        }
-      }
-    }
+    markup.tint(this,tint);
   }
 }
