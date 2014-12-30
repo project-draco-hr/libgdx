@@ -1,0 +1,10 @@
+{
+  int pos=indices.position();
+  buffer.clear();
+  buffer.limit(indices.remaining());
+  buffer.put(indices);
+  buffer.flip();
+  indices.position(pos);
+  byteBuffer.position(0);
+  byteBuffer.limit(buffer.limit() << 1);
+}

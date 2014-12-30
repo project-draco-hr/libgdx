@@ -4,7 +4,6 @@
   int regionsLength=font.regions.length;
   if (regionsLength == 0)   throw new IllegalArgumentException("The specified font must contain at least one texture page.");
   this.vertexData=new float[regionsLength][];
-  this.colorChunks=new Array<ColorChunk>();
   this.idx=new int[regionsLength];
   int vertexDataLength=vertexData.length;
   if (vertexDataLength > 1) {

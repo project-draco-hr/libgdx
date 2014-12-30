@@ -1,4 +1,5 @@
 {
   if (primitiveType == GL20.GL_LINES)   ensureIndices(6 * numTriangles);
- else   ensureIndices(3 * numTriangles);
+ else   if (primitiveType == GL20.GL_TRIANGLES || primitiveType == GL20.GL_POINTS)   ensureIndices(3 * numTriangles);
+ else   throw new GdxRuntimeException("Incorrect primtive type");
 }
