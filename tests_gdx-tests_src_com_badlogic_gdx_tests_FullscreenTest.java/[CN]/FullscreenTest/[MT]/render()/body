@@ -2,7 +2,8 @@
   Gdx.gl.glClearColor(0,0,0,1);
   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   batch.begin();
-  batch.draw(tex,(float)Math.random() * Gdx.graphics.getWidth(),0);
+  batch.draw(tex,Gdx.input.getX(),Gdx.input.getY());
+  font.draw(batch,"" + Gdx.graphics.getWidth() + ", "+ Gdx.graphics.getHeight(),0,20);
   batch.end();
   if (Gdx.input.justTouched()) {
     if (fullscreen) {
