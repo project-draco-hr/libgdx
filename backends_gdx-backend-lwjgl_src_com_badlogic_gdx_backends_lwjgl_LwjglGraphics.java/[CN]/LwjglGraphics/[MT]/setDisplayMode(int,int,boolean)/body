@@ -32,9 +32,10 @@
     Display.setDisplayMode(targetDisplayMode);
     Display.setFullscreen(fullscreen);
     Display.setResizable(!fullscreen && config.resizable);
-    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,targetDisplayMode.getWidth(),targetDisplayMode.getHeight());
-    config.width=targetDisplayMode.getWidth();
-    config.height=targetDisplayMode.getHeight();
+    float scaleFactor=Display.getPixelScaleFactor();
+    config.width=(int)(targetDisplayMode.getWidth() * scaleFactor);
+    config.height=(int)(targetDisplayMode.getHeight() * scaleFactor);
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,config.width,config.height);
     resize=true;
     return true;
   }
