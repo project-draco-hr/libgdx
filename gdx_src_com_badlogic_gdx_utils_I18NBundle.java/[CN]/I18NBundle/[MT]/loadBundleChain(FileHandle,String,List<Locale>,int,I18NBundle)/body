@@ -4,7 +4,7 @@
   if (candidateIndex != candidateLocales.size() - 1) {
     parent=loadBundleChain(baseFileHandle,encoding,candidateLocales,candidateIndex + 1,baseBundle);
   }
- else   if (baseBundle != null && targetLocale.equals(Locale.ROOT)) {
+ else   if (baseBundle != null && targetLocale.equals(ROOT_LOCALE)) {
     return baseBundle;
   }
   I18NBundle bundle=loadBundle(baseFileHandle,encoding,targetLocale);
