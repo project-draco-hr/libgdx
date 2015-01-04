@@ -1,0 +1,7 @@
+{
+  validate();
+  httpRequest.setHeader(HttpRequestHeader.ContentType,"application/x-www-form-urlencoded");
+  String formEncodedContent=HttpParametersUtils.convertHttpParameters(content);
+  httpRequest.setContent(formEncodedContent);
+  return this;
+}

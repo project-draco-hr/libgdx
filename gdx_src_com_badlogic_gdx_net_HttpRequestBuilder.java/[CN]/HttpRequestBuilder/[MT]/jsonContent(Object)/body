@@ -1,0 +1,7 @@
+{
+  validate();
+  httpRequest.setHeader(HttpRequestHeader.ContentType,"application/json");
+  String jsonContent=json.toJson(content);
+  httpRequest.setContent(jsonContent);
+  return this;
+}

@@ -7,9 +7,10 @@
  else {
       Display.setDisplayModeAndFullscreen(mode);
     }
-    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,displayMode.width,displayMode.height);
-    config.width=displayMode.width;
-    config.height=displayMode.height;
+    float scaleFactor=Display.getPixelScaleFactor();
+    config.width=(int)(mode.getWidth() * scaleFactor);
+    config.height=(int)(mode.getHeight() * scaleFactor);
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,config.width,config.height);
     resize=true;
     return true;
   }
