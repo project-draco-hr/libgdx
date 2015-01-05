@@ -1,0 +1,4 @@
+{
+  if (widget == null)   return super.toString();
+ else   return super.toString() + ": " + widget.toString();
+}

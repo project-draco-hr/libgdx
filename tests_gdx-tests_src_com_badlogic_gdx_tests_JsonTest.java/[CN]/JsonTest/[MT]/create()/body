@@ -43,6 +43,18 @@
   test.map.put("two",2);
   test.map.put("nine",9);
   roundTrip(test);
+  test.map.put("\nst\nuff\n",9);
+  test.map.put("\r\nst\r\nuff\r\n",9);
+  roundTrip(test);
+  equals(json.toJson("meow"),"meow");
+  equals(json.toJson("meow "),"\"meow \"");
+  equals(json.toJson(" meow"),"\" meow\"");
+  equals(json.toJson(" meow "),"\" meow \"");
+  equals(json.toJson("\nmeow\n"),"\\nmeow\\n");
+  equals(json.toJson(Array.with(1,2,3),null,int.class),"[1,2,3]");
+  equals(json.toJson(Array.with("1","2","3"),null,String.class),"[1,2,3]");
+  equals(json.toJson(Array.with(" 1","2 "," 3 "),null,String.class),"[\" 1\",\"2 \",\" 3 \"]");
+  equals(json.toJson(Array.with("1","","3"),null,String.class),"[1,\"\",3]");
   System.out.println();
   System.out.println("Success!");
 }
