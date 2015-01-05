@@ -4,4 +4,5 @@
   test(text,object);
   text=json.prettyPrint(object,130);
   test(text,object);
+  return text;
 }

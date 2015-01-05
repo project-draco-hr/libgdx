@@ -1,4 +1,0 @@
-{
-  Object object2=json.fromJson(object.getClass(),text);
-  if (!object.equals(object2))   throw new RuntimeException("Fail!");
-}
