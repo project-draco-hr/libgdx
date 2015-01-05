@@ -1,4 +1,7 @@
 {
+  if (config.useHDPI) {
+    System.setProperty("org.lwjgl.opengl.Display.enableHighDPI","true");
+  }
   if (canvas != null) {
     Display.setParent(canvas);
   }

@@ -8,7 +8,7 @@
     bundle=loadBundleChain(baseFileHandle,encoding,candidateLocales,0,baseBundle);
     if (bundle != null) {
       Locale bundleLocale=bundle.getLocale();
-      boolean isBaseBundle=bundleLocale.equals(Locale.ROOT);
+      boolean isBaseBundle=bundleLocale.equals(ROOT_LOCALE);
       if (!isBaseBundle || bundleLocale.equals(locale)) {
         break;
       }

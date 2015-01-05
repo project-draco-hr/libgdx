@@ -1,6 +1,6 @@
 {
   StringBuilder sb=new StringBuilder(baseFileHandle.name());
-  if (!locale.equals(Locale.ROOT)) {
+  if (!locale.equals(ROOT_LOCALE)) {
     String language=locale.getLanguage();
     String country=locale.getCountry();
     String variant=locale.getVariant();
