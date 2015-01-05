@@ -1,0 +1,5 @@
+{
+  NinePatchDrawable drawable=new NinePatchDrawable(this);
+  drawable.setPatch(new NinePatch(drawable.getPatch(),tint));
+  return drawable;
+}
