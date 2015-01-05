@@ -53,8 +53,8 @@
   }
  else {
     if (scrollbarsOnTop) {
-      if (scrollX)       widgetAreaBounds.height+=scrollbarHeight;
       if (scrollY)       widgetAreaBounds.width+=scrollbarWidth;
+      if (scrollX)       widgetAreaBounds.height+=scrollbarHeight;
     }
  else {
       if (scrollX && hScrollOnBottom)       widgetAreaBounds.y+=scrollbarHeight;
