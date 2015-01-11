@@ -1,5 +1,6 @@
 {
   super(title,skin.get(WindowStyle.class));
+  setSkin(skin);
   this.skin=skin;
   initialize();
 }
