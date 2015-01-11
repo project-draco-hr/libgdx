@@ -39,7 +39,7 @@
   }
   if (textHAlign == Align.center || textHAlign == Align.right) {
     textOffset=visibleWidth - (glyphPositions[visibleTextEnd] - startPos);
-    if (textHAlign == Align.center)     textOffset*=.5f;
+    if (textHAlign == Align.center)     textOffset=Math.round(textOffset * 0.5f);
     if (hasSelection)     selectionX+=textOffset;
   }
 }
