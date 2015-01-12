@@ -1,8 +1,8 @@
 {
   this.config=config;
-  width=(int)bounds.width();
-  height=(int)bounds.height();
-  app.debug(tag,bounds.width() + "x" + bounds.height()+ ", "+ scale);
+  width=(int)bounds.getWidth();
+  height=(int)bounds.getHeight();
+  app.debug(tag,bounds.getWidth() + "x" + bounds.getHeight()+ ", "+ scale);
   this.gl20=gl20;
   context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
   view=new GLKView(new CGRect(new CGPoint(0,0),bounds),context){
