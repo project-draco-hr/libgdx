@@ -6,16 +6,12 @@
   float maxWidth=0;
   while (start < length) {
     int newLine=BitmapFont.indexOf(str,'\n',start);
-    while (start < newLine) {
-      if (!BitmapFont.isWhitespace(str.charAt(start)))       break;
-      start++;
-    }
     int lineEnd=start + computeVisibleGlyphs(str,start,newLine,wrapWidth);
     int nextStart=lineEnd + 1;
     if (lineEnd < newLine) {
       while (lineEnd > start) {
         if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
- else         if (isBreakChar(str.charAt(lineEnd - 1)))         break;
+        if (isBreakChar(str.charAt(lineEnd - 1)))         break;
         lineEnd--;
       }
       if (lineEnd == start) {
@@ -24,6 +20,10 @@
       }
  else {
         nextStart=lineEnd;
+        while (nextStart < length) {
+          if (!BitmapFont.isWhitespace(str.charAt(nextStart)))           break;
+          nextStart++;
+        }
         while (lineEnd > start) {
           if (!BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))           break;
           lineEnd--;
