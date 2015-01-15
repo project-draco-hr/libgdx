@@ -21,8 +21,10 @@
  else {
         nextStart=lineEnd;
         while (nextStart < length) {
-          if (!BitmapFont.isWhitespace(str.charAt(nextStart)))           break;
+          char c=str.charAt(nextStart);
+          if (!BitmapFont.isWhitespace(c))           break;
           nextStart++;
+          if (c == '\n')           break;
         }
         while (lineEnd > start) {
           if (!BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))           break;
