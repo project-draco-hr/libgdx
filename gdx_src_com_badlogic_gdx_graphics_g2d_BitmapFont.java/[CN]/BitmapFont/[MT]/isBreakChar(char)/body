@@ -1,7 +1,5 @@
 {
   if (breakChars == null)   return false;
-  for (  char br : breakChars) {
-    if (c == br)     return true;
-  }
+  for (  char br : breakChars)   if (c == br)   return true;
   return false;
 }
