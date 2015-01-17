@@ -62,17 +62,11 @@
   }
   bufferFormat=new BufferFormat(r,g,b,a,depth,stencil,samples,false);
   this.gl20=gl20;
-  density=1f;
-  app.debug(tag,"Calculating density, UIScreen.mainScreen.scale: " + scale);
-  if (scale == 2)   density=2f;
-  if (scale == 3)   density=3f;
-  int ppi;
-  if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
-    ppi=Math.round(density * 132);
-  }
- else {
-    ppi=Math.round(density * 163);
-  }
+  density=scale;
+  String machineString=HWMachine.getMachineString();
+  IOSDevice device=IOSDevice.getDevice(machineString);
+  if (device == null)   app.error(tag,"Machine ID: " + machineString + " not found, please report to LibGDX");
+  int ppi=device != null ? device.ppi : 163;
   ppiX=ppi;
   ppiY=ppi;
   ppcX=ppiX / 2.54f;
