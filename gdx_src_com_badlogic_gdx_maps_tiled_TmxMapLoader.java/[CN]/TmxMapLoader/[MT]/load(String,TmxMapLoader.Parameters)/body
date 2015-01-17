@@ -4,7 +4,9 @@
     FileHandle tmxFile=resolve(fileName);
     root=xml.parse(tmxFile);
     ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
-    for (    FileHandle textureFile : loadTilesets(root,tmxFile)) {
+    Array<FileHandle> textureFiles=loadTilesets(root,tmxFile);
+    textureFiles.addAll(loadImages(root,tmxFile));
+    for (    FileHandle textureFile : textureFiles) {
       Texture texture=new Texture(textureFile,parameters.generateMipMaps);
       texture.setFilter(parameters.textureMinFilter,parameters.textureMagFilter);
       textures.put(textureFile.path(),texture);

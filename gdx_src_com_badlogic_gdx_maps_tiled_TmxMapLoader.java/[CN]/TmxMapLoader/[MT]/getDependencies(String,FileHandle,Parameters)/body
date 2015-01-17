@@ -12,6 +12,9 @@
     for (    FileHandle image : loadTilesets(root,tmxFile)) {
       dependencies.add(new AssetDescriptor(image,Texture.class,texParams));
     }
+    for (    FileHandle image : loadImages(root,tmxFile)) {
+      dependencies.add(new AssetDescriptor(image,Texture.class,texParams));
+    }
     return dependencies;
   }
  catch (  IOException e) {
