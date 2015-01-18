@@ -39,6 +39,9 @@
  else     if (name.equals("objectgroup")) {
       loadObjectGroup(map,element);
     }
+ else     if (name.equals("imagelayer")) {
+      loadImageLayer(map,element,tmxFile,imageResolver);
+    }
   }
   return map;
 }
