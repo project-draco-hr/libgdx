@@ -38,7 +38,20 @@
       }
     }
     if (object == null) {
-      object=new RectangleMapObject(x,y - height,width,height);
+      int gid=-1;
+      if ((gid=element.getIntAttribute("gid",-1)) != -1) {
+        TiledMapTile tile=map.getTileSets().getTile(gid);
+        TextureMapObject textureMapObject=new TextureMapObject(tile.getTextureRegion());
+        textureMapObject.setX(x);
+        textureMapObject.setY(y - height);
+        textureMapObject.setScaleX(scaleX);
+        textureMapObject.setScaleY(scaleY);
+        textureMapObject.setRotation(element.getFloatAttribute("rotation",0));
+        object=textureMapObject;
+      }
+ else {
+        object=new RectangleMapObject(x,y - height,width,height);
+      }
     }
     object.setName(element.getAttribute("name",null));
     String rotation=element.getAttribute("rotation",null);
