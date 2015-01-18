@@ -1,3 +1,3 @@
 {
-  return CollisionJNI.ContactListener_onContactAdded__SWIG_9(swigCPtr,this,colObj0Wrap,partId0,index0,match0,colObj1Wrap,partId1,index1,match1);
+  return CollisionJNI.ContactListener_onContactAdded__SWIG_9(swigCPtr,this,btCollisionObjectWrapper.getCPtr(colObj0Wrap),colObj0Wrap,partId0,index0,match0,btCollisionObjectWrapper.getCPtr(colObj1Wrap),colObj1Wrap,partId1,index1,match1);
 }

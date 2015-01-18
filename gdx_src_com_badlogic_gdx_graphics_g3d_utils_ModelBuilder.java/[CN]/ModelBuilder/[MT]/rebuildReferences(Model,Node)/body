@@ -7,5 +7,5 @@
       model.manageDisposable(mpm.meshPart.mesh);
     }
   }
-  for (  final Node child : node.children)   rebuildReferences(model,child);
+  for (  final Node child : node.getChildren())   rebuildReferences(model,child);
 }

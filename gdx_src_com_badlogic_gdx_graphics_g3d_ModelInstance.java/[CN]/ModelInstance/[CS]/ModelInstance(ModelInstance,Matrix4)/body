@@ -1,7 +1,3 @@
 {
-  this.model=copyFrom.model;
-  this.transform=transform == null ? new Matrix4() : transform;
-  copyNodes(copyFrom.nodes);
-  copyAnimations(copyFrom.animations);
-  calculateTransforms();
+  this(copyFrom,transform,defaultShareKeyframes);
 }

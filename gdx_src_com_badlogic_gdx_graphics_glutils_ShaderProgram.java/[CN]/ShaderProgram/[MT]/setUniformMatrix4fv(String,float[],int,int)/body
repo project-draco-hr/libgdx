@@ -1,9 +1,3 @@
 {
-  GL20 gl=Gdx.gl20;
-  checkManaged();
-  ensureBufferCapacity(length << 2);
-  floatBuffer.clear();
-  BufferUtils.copy(values,floatBuffer,length,offset);
-  int location=fetchUniformLocation(name);
-  gl.glUniformMatrix4fv(location,length / 16,false,floatBuffer);
+  setUniformMatrix4fv(fetchUniformLocation(name),values,offset,length);
 }

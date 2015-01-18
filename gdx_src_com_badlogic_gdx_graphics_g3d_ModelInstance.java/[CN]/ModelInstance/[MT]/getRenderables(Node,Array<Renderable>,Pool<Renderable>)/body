@@ -4,7 +4,7 @@
       if (nodePart.enabled)       renderables.add(getRenderable(pool.obtain(),node,nodePart));
     }
   }
-  for (  Node child : node.children) {
+  for (  Node child : node.getChildren()) {
     getRenderables(child,renderables,pool);
   }
 }

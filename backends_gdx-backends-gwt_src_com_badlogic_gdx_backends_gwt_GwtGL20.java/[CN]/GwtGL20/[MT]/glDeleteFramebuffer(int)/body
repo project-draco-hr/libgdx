@@ -1,0 +1,5 @@
+{
+  WebGLFramebuffer fb=this.frameBuffers.get(id);
+  deallocateFrameBufferId(id);
+  gl.deleteFramebuffer(fb);
+}

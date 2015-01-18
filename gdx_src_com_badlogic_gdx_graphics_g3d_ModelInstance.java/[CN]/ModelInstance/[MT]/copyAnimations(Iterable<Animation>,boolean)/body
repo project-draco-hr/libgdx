@@ -1,0 +1,26 @@
+{
+  for (  final Animation anim : source) {
+    Animation animation=new Animation();
+    animation.id=anim.id;
+    animation.duration=anim.duration;
+    for (    final NodeAnimation nanim : anim.nodeAnimations) {
+      final Node node=getNode(nanim.node.id);
+      if (node == null)       continue;
+      NodeAnimation nodeAnim=new NodeAnimation();
+      nodeAnim.node=node;
+      if (shareKeyframes)       nodeAnim.keyframes=nanim.keyframes;
+ else {
+        for (        final NodeKeyframe kf : nanim.keyframes) {
+          NodeKeyframe keyframe=new NodeKeyframe();
+          keyframe.keytime=kf.keytime;
+          keyframe.rotation.set(kf.rotation);
+          keyframe.scale.set(kf.scale);
+          keyframe.translation.set(kf.translation);
+          nodeAnim.keyframes.add(keyframe);
+        }
+      }
+      if (nodeAnim.keyframes.size > 0)       animation.nodeAnimations.add(nodeAnim);
+    }
+    if (animation.nodeAnimations.size > 0)     animations.add(animation);
+  }
+}

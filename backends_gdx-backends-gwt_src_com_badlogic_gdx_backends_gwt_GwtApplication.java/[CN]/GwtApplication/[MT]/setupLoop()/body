@@ -29,8 +29,8 @@
     t.printStackTrace();
     throw new RuntimeException(t);
   }
-  new Timer(){
-    @Override public void run(){
+  AnimationScheduler.get().requestAnimationFrame(new AnimationCallback(){
+    @Override public void execute(    double timestamp){
       try {
         mainLoop();
       }
@@ -38,7 +38,8 @@
         error("GwtApplication","exception: " + t.getMessage(),t);
         throw new RuntimeException(t);
       }
+      AnimationScheduler.get().requestAnimationFrame(this,graphics.canvas);
     }
   }
-.scheduleRepeating((int)((1f / config.fps) * 1000));
+,graphics.canvas);
 }

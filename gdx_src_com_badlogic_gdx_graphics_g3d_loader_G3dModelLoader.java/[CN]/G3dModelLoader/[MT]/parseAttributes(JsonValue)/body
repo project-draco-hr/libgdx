@@ -15,7 +15,7 @@
       vertexAttributes.add(VertexAttribute.ColorUnpacked());
     }
  else     if (attr.equals("COLORPACKED")) {
-      vertexAttributes.add(VertexAttribute.Color());
+      vertexAttributes.add(VertexAttribute.ColorPacked());
     }
  else     if (attr.equals("TANGENT")) {
       vertexAttributes.add(VertexAttribute.Tangent());

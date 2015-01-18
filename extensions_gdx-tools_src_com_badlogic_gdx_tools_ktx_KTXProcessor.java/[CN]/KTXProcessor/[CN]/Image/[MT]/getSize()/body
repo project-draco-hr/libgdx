@@ -1,0 +1,4 @@
+{
+  if (etcData != null)   return etcData.compressedData.limit() - etcData.dataOffset;
+  throw new GdxRuntimeException("Unsupported output format");
+}

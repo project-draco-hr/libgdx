@@ -1,0 +1,4 @@
+{
+  if (target != null)   waitForActions.addAll(target.getActions());
+  super.setTarget(target);
+}

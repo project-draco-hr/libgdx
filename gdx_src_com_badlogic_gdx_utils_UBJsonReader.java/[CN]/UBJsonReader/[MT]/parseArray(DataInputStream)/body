@@ -18,6 +18,7 @@
   while (din.available() > 0 && type != ']') {
     final JsonValue val=parse(din,type);
     if (prev != null) {
+      val.prev=prev;
       prev.next=val;
       result.size++;
     }

@@ -1,0 +1,18 @@
+{
+  info.filename=fileName;
+  if (parameter == null || parameter.cubemapData == null) {
+    Pixmap pixmap=null;
+    Format format=null;
+    boolean genMipMaps=false;
+    info.cubemap=null;
+    if (parameter != null) {
+      format=parameter.format;
+      info.cubemap=parameter.cubemap;
+    }
+  }
+ else {
+    info.data=parameter.cubemapData;
+    info.cubemap=parameter.cubemap;
+  }
+  if (!info.data.isPrepared())   info.data.prepare();
+}

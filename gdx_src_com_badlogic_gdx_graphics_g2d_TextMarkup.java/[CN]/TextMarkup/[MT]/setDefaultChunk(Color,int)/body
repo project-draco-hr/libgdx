@@ -1,0 +1,7 @@
+{
+  ColorChunk newChunk=colorChunkPool.obtain();
+  newChunk.color.set(color);
+  newChunk.start=start;
+  colorChunks.add(newChunk);
+  setDefaultColor(newChunk.color);
+}

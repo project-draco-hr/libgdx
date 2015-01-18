@@ -1,4 +1,4 @@
 {
-  startX=actor.getX();
-  startY=actor.getY();
+  startX=target.getX(alignment);
+  startY=target.getY(alignment);
 }

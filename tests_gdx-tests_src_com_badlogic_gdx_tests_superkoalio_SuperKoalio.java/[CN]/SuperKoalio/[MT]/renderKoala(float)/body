@@ -11,7 +11,7 @@ case Jumping:
 frame=jump.getKeyFrame(koala.stateTime);
 break;
 }
-Batch batch=renderer.getSpriteBatch();
+Batch batch=renderer.getBatch();
 batch.begin();
 if (koala.facesRight) {
 batch.draw(frame,koala.position.x,koala.position.y,Koala.WIDTH,Koala.HEIGHT);

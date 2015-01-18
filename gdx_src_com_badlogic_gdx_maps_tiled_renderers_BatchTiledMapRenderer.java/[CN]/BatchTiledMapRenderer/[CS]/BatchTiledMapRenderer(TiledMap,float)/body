@@ -2,6 +2,6 @@
   this.map=map;
   this.unitScale=unitScale;
   this.viewBounds=new Rectangle();
-  this.spriteBatch=new SpriteBatch();
-  this.ownsSpriteBatch=true;
+  this.batch=new SpriteBatch();
+  this.ownsBatch=true;
 }

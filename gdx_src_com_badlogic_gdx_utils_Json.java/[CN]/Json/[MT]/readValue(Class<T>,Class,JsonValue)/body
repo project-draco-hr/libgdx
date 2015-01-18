@@ -4,7 +4,7 @@
     String className=typeName == null ? null : jsonData.getString(typeName,null);
     if (className != null) {
       jsonData.remove(typeName);
-      type=tagToClass.get(className);
+      type=getClass(className);
       if (type == null) {
         try {
           type=(Class<T>)ClassReflection.forName(className);

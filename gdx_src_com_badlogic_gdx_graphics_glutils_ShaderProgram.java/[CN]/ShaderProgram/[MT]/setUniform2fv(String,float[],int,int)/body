@@ -2,8 +2,5 @@
   GL20 gl=Gdx.gl20;
   checkManaged();
   int location=fetchUniformLocation(name);
-  ensureBufferCapacity(length << 2);
-  floatBuffer.clear();
-  BufferUtils.copy(values,floatBuffer,length,offset);
-  gl.glUniform2fv(location,length / 2,floatBuffer);
+  gl.glUniform2fv(location,length / 2,values,offset);
 }

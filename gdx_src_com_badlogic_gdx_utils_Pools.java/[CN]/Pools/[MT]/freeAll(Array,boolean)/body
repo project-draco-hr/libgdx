@@ -1,6 +1,6 @@
 {
-  if (objects == null)   throw new IllegalArgumentException("objects cannot be null.");
-  ReflectionPool pool=null;
+  if (objects == null)   throw new IllegalArgumentException("Objects cannot be null.");
+  Pool pool=null;
   for (int i=0, n=objects.size; i < n; i++) {
     Object object=objects.get(i);
     if (object == null)     continue;

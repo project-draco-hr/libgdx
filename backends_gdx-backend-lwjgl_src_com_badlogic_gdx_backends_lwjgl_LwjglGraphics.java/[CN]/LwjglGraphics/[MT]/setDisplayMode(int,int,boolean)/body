@@ -29,11 +29,17 @@
     if (targetDisplayMode == null) {
       return false;
     }
+    boolean resizable=!fullscreen && config.resizable;
     Display.setDisplayMode(targetDisplayMode);
     Display.setFullscreen(fullscreen);
-    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,targetDisplayMode.getWidth(),targetDisplayMode.getHeight());
-    config.width=targetDisplayMode.getWidth();
-    config.height=targetDisplayMode.getHeight();
+    if (resizable == Display.isResizable()) {
+      Display.setResizable(!resizable);
+    }
+    Display.setResizable(resizable);
+    float scaleFactor=Display.getPixelScaleFactor();
+    config.width=(int)(targetDisplayMode.getWidth() * scaleFactor);
+    config.height=(int)(targetDisplayMode.getHeight() * scaleFactor);
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,config.width,config.height);
     resize=true;
     return true;
   }

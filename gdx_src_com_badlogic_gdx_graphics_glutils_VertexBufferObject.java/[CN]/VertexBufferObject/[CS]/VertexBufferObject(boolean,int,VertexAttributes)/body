@@ -5,6 +5,6 @@
   buffer=byteBuffer.asFloatBuffer();
   buffer.flip();
   byteBuffer.flip();
-  bufferHandle=createBufferObject();
+  bufferHandle=Gdx.gl20.glGenBuffer();
   usage=isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW;
 }

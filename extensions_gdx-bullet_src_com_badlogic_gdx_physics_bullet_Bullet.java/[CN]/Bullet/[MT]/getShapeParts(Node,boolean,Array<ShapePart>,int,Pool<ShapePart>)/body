@@ -17,10 +17,10 @@
     }
     for (int i=0, n=node.parts.size; i < n; i++)     part.parts.add(node.parts.get(i).meshPart);
   }
-  if (node.children.size > 0) {
+  if (node.hasChildren()) {
     final boolean transformed=applyTransform && !Arrays.equals(transform.val,idt.val);
     final int o=transformed ? out.size : offset;
-    getShapeParts(node.children,out,o,pool);
+    getShapeParts(node.getChildren(),out,o,pool);
     if (transformed) {
       for (int i=o, n=out.size; i < n; i++) {
         final ShapePart part=out.get(i);

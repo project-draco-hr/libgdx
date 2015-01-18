@@ -1,0 +1,14 @@
+{
+  if (!attributes.equals(mesh.getVertexAttributes()))   throw new GdxRuntimeException("Vertex attributes do not match");
+  if (numIndices <= 0)   return;
+  int numFloats=mesh.getNumVertices() * stride;
+  tmpVertices.clear();
+  tmpVertices.ensureCapacity(numFloats);
+  tmpVertices.size=numFloats;
+  mesh.getVertices(tmpVertices.items);
+  tmpIndices.clear();
+  tmpIndices.ensureCapacity(numIndices);
+  tmpIndices.size=numIndices;
+  mesh.getIndices(indexOffset,numIndices,tmpIndices.items,0);
+  addMesh(tmpVertices.items,tmpIndices.items,0,numIndices);
+}

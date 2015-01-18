@@ -1,3 +1,8 @@
 {
-  new GdxSetupUI();
+  SwingUtilities.invokeLater(new Runnable(){
+    @Override public void run(){
+      new GdxSetupUI();
+    }
+  }
+);
 }

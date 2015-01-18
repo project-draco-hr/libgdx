@@ -1,5 +1,5 @@
 {
   action.setActor(this);
   actions.add(action);
-  actionsChanged=true;
+  if (stage != null && stage.getActionsRequestRendering())   Gdx.graphics.requestRendering();
 }

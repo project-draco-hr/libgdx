@@ -1,7 +1,3 @@
 {
-  if (len2() > limit * limit) {
-    nor();
-    scl(limit);
-  }
-  return this;
+  return limit2(limit * limit);
 }

@@ -2,13 +2,10 @@
   x=0;
   y=0;
   glyphCount=0;
+  charsCount=0;
+  markup.clear();
   for (int i=0, n=idx.length; i < n; i++) {
     if (glyphIndices != null)     glyphIndices[i].clear();
     idx[i]=0;
   }
-  for (int i=0; i < colorChunks.size; i++) {
-    colorChunkPool.free(colorChunks.get(i));
-    colorChunks.set(i,null);
-  }
-  colorChunks.size=0;
 }

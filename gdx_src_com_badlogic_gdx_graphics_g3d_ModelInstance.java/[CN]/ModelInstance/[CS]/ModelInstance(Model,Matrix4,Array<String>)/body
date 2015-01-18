@@ -1,7 +1,3 @@
 {
-  this.model=model;
-  this.transform=transform == null ? new Matrix4() : transform;
-  copyNodes(model.nodes,rootNodeIds);
-  copyAnimations(model.animations);
-  calculateTransforms();
+  this(model,transform,rootNodeIds,defaultShareKeyframes);
 }

@@ -1,6 +1,5 @@
 {
-  Actor actor=(targetActor != null ? targetActor : this.actor);
-  if (capture)   actor.addCaptureListener(listener);
- else   actor.addListener(listener);
+  if (capture)   target.addCaptureListener(listener);
+ else   target.addListener(listener);
   return true;
 }

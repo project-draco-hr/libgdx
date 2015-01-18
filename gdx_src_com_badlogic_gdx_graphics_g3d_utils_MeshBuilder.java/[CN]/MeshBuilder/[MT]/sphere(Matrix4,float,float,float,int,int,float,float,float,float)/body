@@ -14,11 +14,10 @@
   float angleV=0f;
   VertexInfo curr1=vertTmp3.set(null,null,null,null);
   curr1.hasUV=curr1.hasPosition=curr1.hasNormal=true;
-  if (tmpIndices == null)   tmpIndices=new ShortArray(divisionsU * 2);
   final int s=divisionsU + 3;
-  tmpIndices.ensureCapacity(s);
-  while (tmpIndices.size > s)   tmpIndices.pop();
-  while (tmpIndices.size < s)   tmpIndices.add(-1);
+  tmpIndices.clear();
+  tmpIndices.ensureCapacity(divisionsU * 2);
+  tmpIndices.size=s;
   int tempOffset=0;
   ensureRectangles((divisionsV + 1) * (divisionsU + 1),divisionsV * divisionsU);
   for (int iv=0; iv <= divisionsV; iv++) {

@@ -13,7 +13,7 @@
   }
   float width=getWidth(), height=getHeight();
   StringBuilder text;
-  if (ellipse && width < bounds.width) {
+  if (ellipsis && width < bounds.width) {
     float ellipseWidth=font.getBounds("...").width;
     text=tempText != null ? tempText : (tempText=new StringBuilder());
     text.setLength(0);
@@ -45,6 +45,7 @@
     if ((labelAlign & Align.right) != 0)     x+=width - bounds.width;
  else     x+=(int)((width - bounds.width) / 2);
   }
+  cache.setColor(Color.WHITE);
   if (wrap)   cache.setWrappedText(text,x,y,bounds.width,lineAlign);
  else   cache.setMultiLineText(text,x,y,bounds.width,lineAlign);
   if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(oldScaleX,oldScaleY);

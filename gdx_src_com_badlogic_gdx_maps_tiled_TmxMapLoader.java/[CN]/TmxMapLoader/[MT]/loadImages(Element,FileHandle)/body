@@ -1,0 +1,14 @@
+{
+  Array<FileHandle> images=new Array<FileHandle>();
+  for (  Element imageLayer : root.getChildrenByName("imagelayer")) {
+    Element image=imageLayer.getChildByName("image");
+    String source=image.getAttribute("source",null);
+    if (source != null) {
+      FileHandle handle=getRelativeFileHandle(tmxFile,source);
+      if (!images.contains(handle,false)) {
+        images.add(handle);
+      }
+    }
+  }
+  return images;
+}

@@ -1,6 +1,0 @@
-{
-  final int idx=side.index;
-  if (this.data[idx] != null && data != null && data.isManaged() != this.data[idx].isManaged())   throw new GdxRuntimeException("New data must have the same managed status as the old data");
-  uploadImageData(side.glEnum,data);
-  this.data[idx]=data;
-}

@@ -1,6 +1,9 @@
 {
   if (value == null || value instanceof Number || value instanceof Boolean)   return String.valueOf(value);
   String string=String.valueOf(value).replace("\\","\\\\").replace("\r","\\r").replace("\n","\\n").replace("\t","\\t");
-  if (this == OutputType.minimal && !string.equals("true") && !string.equals("false") && !string.equals("null") && minimalValuePattern.matcher(string).matches())   return string;
+  if (this == OutputType.minimal && !string.equals("true") && !string.equals("false") && !string.equals("null") && !string.contains("//") && !string.contains("/*")) {
+    int length=string.length();
+    if (length > 0 && string.charAt(length - 1) != ' ' && minimalValuePattern.matcher(string).matches())     return string;
+  }
   return '"' + string.replace("\"","\\\"") + '"';
 }
