@@ -5,5 +5,5 @@
     etcData.compressedData.get(result);
     return result;
   }
-  throw new GdxRuntimeException("Unsupported output format");
+  throw new GdxRuntimeException("Unsupported output format, try adding '-etc1' as argument");
 }
