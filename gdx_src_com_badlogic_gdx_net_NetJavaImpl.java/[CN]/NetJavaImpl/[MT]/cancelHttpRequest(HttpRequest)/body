@@ -3,7 +3,9 @@
     lock.lock();
     HttpResponseListener httpResponseListener=listeners.get(httpRequest);
     if (httpResponseListener != null) {
+      lock.unlock();
       httpResponseListener.cancelled();
+      lock.lock();
       connections.remove(httpRequest);
       listeners.remove(httpRequest);
     }

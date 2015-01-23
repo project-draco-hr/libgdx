@@ -61,23 +61,25 @@
             lock.lock();
             HttpResponseListener listener=listeners.get(httpRequest);
             if (listener != null) {
+              lock.unlock();
               listener.handleHttpResponse(clientResponse);
+              lock.lock();
               listeners.remove(httpRequest);
             }
             connections.remove(httpRequest);
           }
   finally {
-            connection.disconnect();
             lock.unlock();
+            connection.disconnect();
           }
         }
  catch (        final Exception e) {
           connection.disconnect();
-          lock.lock();
           try {
             httpResponseListener.failed(e);
           }
   finally {
+            lock.lock();
             connections.remove(httpRequest);
             listeners.remove(httpRequest);
             lock.unlock();
@@ -88,11 +90,11 @@
 );
   }
  catch (  Exception e) {
-    lock.lock();
     try {
       httpResponseListener.failed(e);
     }
   finally {
+      lock.lock();
       connections.remove(httpRequest);
       listeners.remove(httpRequest);
       lock.unlock();
