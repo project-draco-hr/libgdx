@@ -6,6 +6,9 @@
       if (layer instanceof TiledMapTileLayer) {
         renderTileLayer((TiledMapTileLayer)layer);
       }
+ else       if (layer instanceof TiledMapImageLayer) {
+        renderImageLayer((TiledMapImageLayer)layer);
+      }
  else {
         renderObjects(layer);
       }

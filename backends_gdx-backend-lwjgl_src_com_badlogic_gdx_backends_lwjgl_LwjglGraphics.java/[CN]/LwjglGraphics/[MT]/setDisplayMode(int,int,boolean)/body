@@ -29,9 +29,13 @@
     if (targetDisplayMode == null) {
       return false;
     }
+    boolean resizable=!fullscreen && config.resizable;
     Display.setDisplayMode(targetDisplayMode);
     Display.setFullscreen(fullscreen);
-    Display.setResizable(!fullscreen && config.resizable);
+    if (resizable == Display.isResizable()) {
+      Display.setResizable(!resizable);
+    }
+    Display.setResizable(resizable);
     float scaleFactor=Display.getPixelScaleFactor();
     config.width=(int)(targetDisplayMode.getWidth() * scaleFactor);
     config.height=(int)(targetDisplayMode.getHeight() * scaleFactor);

@@ -8,7 +8,7 @@
       loadProperties(layer.getProperties(),properties);
     }
     for (    Element objectElement : element.getChildrenByName("object")) {
-      loadObject(layer,objectElement);
+      loadObject(map,layer,objectElement);
     }
     map.getLayers().add(layer);
   }
