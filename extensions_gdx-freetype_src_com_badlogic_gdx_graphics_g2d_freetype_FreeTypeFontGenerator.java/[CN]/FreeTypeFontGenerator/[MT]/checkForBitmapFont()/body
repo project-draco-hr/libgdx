@@ -1,6 +1,6 @@
 {
   if (((face.getFaceFlags() & FreeType.FT_FACE_FLAG_FIXED_SIZES) == FreeType.FT_FACE_FLAG_FIXED_SIZES) && ((face.getFaceFlags() & FreeType.FT_FACE_FLAG_HORIZONTAL) == FreeType.FT_FACE_FLAG_HORIZONTAL)) {
-    if (FreeType.loadChar(face,32,FreeType.FT_LOAD_DEFAULT)) {
+    if (face.loadChar(32,FreeType.FT_LOAD_DEFAULT)) {
       GlyphSlot slot=face.getGlyph();
       if (slot.getFormat() == 1651078259) {
         bitmapped=true;

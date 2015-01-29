@@ -1,0 +1,33 @@
+{
+  int width=getWidth();
+  ByteBuffer src=getBuffer();
+  Pixmap pixmap;
+  if (color == Color.WHITE) {
+    pixmap=new Pixmap(width,getRows(),Format.Alpha);
+    BufferUtils.copy(src,pixmap.getPixels(),pixmap.getPixels().capacity());
+  }
+ else {
+    pixmap=new Pixmap(width,getRows(),Format.RGBA8888);
+    int srcPitch=getPitch();
+    int srcRGBA=Color.rgba8888(color);
+    IntBuffer dst=pixmap.getPixels().asIntBuffer();
+    for (int y=0; y < getRows(); y++) {
+      int ySrcPitch=y * srcPitch;
+      int yWidth=y * width;
+      for (int x=0; x < width; x++) {
+        byte alpha=src.get(ySrcPitch + x);
+        dst.put(yWidth + x,(srcRGBA & 0xffffff00) | (int)((srcRGBA & 0xff) * (alpha & 0xff) / 255f));
+      }
+    }
+  }
+  Pixmap converted=pixmap;
+  if (format != pixmap.getFormat()) {
+    converted=new Pixmap(pixmap.getWidth(),pixmap.getHeight(),format);
+    Blending blending=Pixmap.getBlending();
+    Pixmap.setBlending(Blending.None);
+    converted.drawPixmap(pixmap,0,0);
+    Pixmap.setBlending(blending);
+    pixmap.dispose();
+  }
+  return converted;
+}
