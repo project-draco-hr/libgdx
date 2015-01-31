@@ -1,5 +1,5 @@
 {
-  if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+  if (IS_MAC) {
     return 0;
   }
   try {
