@@ -1,5 +1,5 @@
 {
   if (logLevel >= LOG_ERROR) {
-    Foundation.log("[error] " + tag + ": "+ message);
+    Foundation.log("%@",new NSString("[error] " + tag + ": "+ message));
   }
 }

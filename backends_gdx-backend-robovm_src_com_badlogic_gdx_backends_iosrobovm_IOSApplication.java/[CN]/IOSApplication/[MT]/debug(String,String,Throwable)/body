@@ -1,6 +1,6 @@
 {
   if (logLevel >= LOG_DEBUG) {
-    Foundation.log("[error] " + tag + ": "+ message);
+    Foundation.log("%@",new NSString("[error] " + tag + ": "+ message));
     exception.printStackTrace();
   }
 }
