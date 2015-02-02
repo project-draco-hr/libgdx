@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(DynamicsJNI.btFixedConstraint_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}
