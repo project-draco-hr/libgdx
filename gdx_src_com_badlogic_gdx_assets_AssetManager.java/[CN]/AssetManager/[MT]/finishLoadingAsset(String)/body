@@ -1,8 +1,8 @@
 {
-  log.debug("Waiting for loading " + fileName + " to complete...");
+  log.debug("Waiting for asset to be loaded: " + fileName);
   while (!isLoaded(fileName)) {
     update();
     ThreadUtils.yield();
   }
-  log.debug("Loading " + fileName + " complete.");
+  log.debug("Asset loaded: " + fileName);
 }
