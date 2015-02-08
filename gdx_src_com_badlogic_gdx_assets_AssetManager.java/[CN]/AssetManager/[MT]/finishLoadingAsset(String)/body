@@ -1,0 +1,8 @@
+{
+  log.debug("Waiting for loading " + fileName + " to complete...");
+  while (!isLoaded(fileName)) {
+    update();
+    ThreadUtils.yield();
+  }
+  log.debug("Loading " + fileName + " complete.");
+}
