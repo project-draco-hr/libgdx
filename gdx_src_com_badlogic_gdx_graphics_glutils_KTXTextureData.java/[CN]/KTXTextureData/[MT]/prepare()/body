@@ -49,6 +49,10 @@
   numberOfArrayElements=compressedData.getInt();
   numberOfFaces=compressedData.getInt();
   numberOfMipmapLevels=compressedData.getInt();
+  if (numberOfMipmapLevels == 0) {
+    numberOfMipmapLevels=1;
+    useMipMaps=true;
+  }
   int bytesOfKeyValueData=compressedData.getInt();
   imagePos=compressedData.position() + bytesOfKeyValueData;
   if (!compressedData.isDirect()) {
