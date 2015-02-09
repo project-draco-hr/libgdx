@@ -17,4 +17,10 @@
     }
   }
 );
+  showMoreExtensionsButton.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      externalExtensionsDialog.showDialog();
+    }
+  }
+);
 }

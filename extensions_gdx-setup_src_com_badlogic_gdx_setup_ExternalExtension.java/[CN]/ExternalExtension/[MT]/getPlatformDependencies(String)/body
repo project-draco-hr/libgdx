@@ -1,0 +1,15 @@
+{
+  if (dependencies.get(platformName) == null) {
+    return null;
+  }
+ else   if (dependencies.get(platformName) != null && dependencies.get(platformName).size() == 0) {
+    return new String[]{};
+  }
+ else {
+    String[] arr=new String[dependencies.get(platformName).size()];
+    for (int i=0; i < dependencies.get(platformName).size(); i++) {
+      arr[i]=dependencies.get(platformName).get(i) + ":" + version;
+    }
+    return arr;
+  }
+}

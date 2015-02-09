@@ -1,0 +1,6 @@
+{
+  if (((Dependency)obj).getName().equals(getName())) {
+    return true;
+  }
+  return false;
+}

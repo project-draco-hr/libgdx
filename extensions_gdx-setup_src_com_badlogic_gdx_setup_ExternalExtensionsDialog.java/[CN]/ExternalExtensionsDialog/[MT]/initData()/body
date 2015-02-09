@@ -1,0 +1,43 @@
+{
+  DocumentBuilderFactory dbFactory=DocumentBuilderFactory.newInstance();
+  DocumentBuilder builder=dbFactory.newDocumentBuilder();
+  Document doc=builder.parse(ExternalExtensionsDialog.class.getResourceAsStream("/com/badlogic/gdx/setup/data/extensions.xml"));
+  doc.getDocumentElement().normalize();
+  NodeList nList=doc.getElementsByTagName("extension");
+  for (int i=0; i < nList.getLength(); i++) {
+    Node nNode=nList.item(i);
+    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+      Element eElement=(Element)nNode;
+      String name=eElement.getElementsByTagName("name").item(0).getTextContent();
+      String description=eElement.getElementsByTagName("description").item(0).getTextContent();
+      String version=eElement.getElementsByTagName("version").item(0).getTextContent();
+      String rowText=name + " - " + description+ " (v"+ version+ ")";
+      final HashMap<String,List<String>> dependencies=new HashMap<String,List<String>>();
+      addToDependencyMapFromXML(dependencies,eElement,"core");
+      addToDependencyMapFromXML(dependencies,eElement,"desktop");
+      addToDependencyMapFromXML(dependencies,eElement,"android");
+      addToDependencyMapFromXML(dependencies,eElement,"ios");
+      addToDependencyMapFromXML(dependencies,eElement,"html");
+      ExtensionRowCheckbox checkBox=new ExtensionRowCheckbox(rowText);
+      checkBoxesMap.put(name,checkBox);
+      content.add(checkBox,new GridBagConstraints(0,i,1,1,1,1,NORTH,HORIZONTAL,new Insets(0,0,0,0),0,0));
+      final ExternalExtension extension=new ExternalExtension(name,description,version);
+      extension.setDependencies(dependencies);
+      checkBox.addItemListener(new ItemListener(){
+        @Override public void itemStateChanged(        ItemEvent e){
+          ExtensionRowCheckbox box=(ExtensionRowCheckbox)e.getSource();
+          Dependency dep=extension.generateDependency();
+          if (box.isSelected()) {
+            if (!mainDependencies.contains(dep)) {
+              mainDependencies.add(dep);
+            }
+          }
+ else {
+            mainDependencies.remove(dep);
+          }
+        }
+      }
+);
+    }
+  }
+}
