@@ -42,6 +42,7 @@
   }
   if (!panning) {
     if (overscrollX && scrollX) {
+      Gdx.graphics.requestRendering();
       if (amountX < 0) {
         resetFade();
         amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
@@ -56,6 +57,7 @@
       }
     }
     if (overscrollY && scrollY) {
+      Gdx.graphics.requestRendering();
       if (amountY < 0) {
         resetFade();
         amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
