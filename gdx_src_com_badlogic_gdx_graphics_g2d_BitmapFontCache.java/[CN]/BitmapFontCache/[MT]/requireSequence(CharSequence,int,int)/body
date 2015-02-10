@@ -1,6 +1,6 @@
 {
   if (vertexData.length == 1) {
-    int newGlyphCount=font.markupEnabled ? countGlyphs(seq,start,end) : end - start;
+    int newGlyphCount=countGlyphs(seq,start,end);
     require(0,newGlyphCount);
   }
  else {
@@ -9,9 +9,11 @@
       char ch=seq.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
         if (!(start < end && seq.charAt(start) == '[')) {
-          while (start < end && seq.charAt(start) != ']')           start++;
-          start++;
-          continue;
+          int colorTagLen=markup.parseColorTag(seq,-1,start,end);
+          if (colorTagLen >= 0) {
+            start+=colorTagLen + 1;
+            continue;
+          }
         }
         start++;
       }
