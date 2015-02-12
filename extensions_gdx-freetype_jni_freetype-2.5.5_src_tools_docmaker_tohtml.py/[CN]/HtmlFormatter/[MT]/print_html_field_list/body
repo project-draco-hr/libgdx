@@ -1,0 +1,7 @@
+def print_html_field_list(self, fields):
+    print '<table class="fields">'
+    for field in fields:
+        print (((('<tr><td class="val" id="' + field.name) + '">') + field.name) + '</td><td class="desc">')
+        self.print_html_items(field.items)
+        print '</td></tr>'
+    print '</table>'
