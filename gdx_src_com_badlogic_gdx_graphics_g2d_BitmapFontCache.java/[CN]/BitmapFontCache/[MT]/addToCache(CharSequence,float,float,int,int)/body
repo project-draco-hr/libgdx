@@ -8,12 +8,15 @@
     while (start < end) {
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
-        if (!(start < end && str.charAt(start) == '[')) {
-          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
-          color=markup.getLastColor().toFloatBits();
-          continue;
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
         }
-        start++;
       }
       lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
@@ -25,12 +28,15 @@
     while (start < end) {
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
-        if (!(start < end && str.charAt(start) == '[')) {
-          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
-          color=markup.getLastColor().toFloatBits();
-          continue;
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
         }
-        start++;
       }
       Glyph g=data.getGlyph(ch);
       if (g != null) {
@@ -46,12 +52,15 @@
     while (start < end) {
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
-        if (!(start < end && str.charAt(start) == '[')) {
-          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
-          color=markup.getLastColor().toFloatBits();
-          continue;
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
         }
-        start++;
       }
       lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
@@ -63,12 +72,15 @@
     while (start < end) {
       char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
-        if (!(start < end && str.charAt(start) == '[')) {
-          start+=TextMarkup.parseColorTag(markup,str,charsCount,start,end) + 1;
-          color=markup.getLastColor().toFloatBits();
-          continue;
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
         }
-        start++;
       }
       Glyph g=data.getGlyph(ch);
       if (g != null) {
