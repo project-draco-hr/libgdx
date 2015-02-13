@@ -1,0 +1,7 @@
+def __init__(self):
+    'Initialize a block content processor.'
+    self.reset()
+    self.sections = {}
+    self.section = None
+    self.chapters = []
+    self.headers = {}
