@@ -1,16 +1,7 @@
 {
-  try {
-    lock.lock();
-    HttpResponseListener httpResponseListener=listeners.get(httpRequest);
-    if (httpResponseListener != null) {
-      lock.unlock();
-      httpResponseListener.cancelled();
-      lock.lock();
-      connections.remove(httpRequest);
-      listeners.remove(httpRequest);
-    }
-  }
-  finally {
-    lock.unlock();
+  HttpResponseListener httpResponseListener=get(httpRequest);
+  if (httpResponseListener != null) {
+    httpResponseListener.cancelled();
+    remove(httpRequest);
   }
 }
