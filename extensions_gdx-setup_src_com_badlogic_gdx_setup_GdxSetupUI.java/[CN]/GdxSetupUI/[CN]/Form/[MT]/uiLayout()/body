@@ -82,7 +82,7 @@
         depCounter++;
       }
     }
-    for (int left=depCounter - 5; left > 1; left--) {
+    for (int left=((depCounter - 1) % 5); left > 1; left--) {
       extensionPanel.add(Box.createHorizontalBox());
     }
     extensionsPanels.add(extensionPanel);
