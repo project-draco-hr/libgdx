@@ -21,7 +21,7 @@
     connection.setDoInput(true);
     connection.setRequestMethod(method);
     HttpURLConnection.setFollowRedirects(httpRequest.getFollowRedirects());
-    put(httpRequest,httpResponseListener,connection);
+    putIntoConnectionsAndListeners(httpRequest,httpResponseListener,connection);
     for (    Map.Entry<String,String> header : httpRequest.getHeaders().entrySet())     connection.addRequestProperty(header.getKey(),header.getValue());
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
@@ -55,11 +55,11 @@
           connection.connect();
           final HttpClientResponse clientResponse=new HttpClientResponse(connection);
           try {
-            HttpResponseListener listener=get(httpRequest);
+            HttpResponseListener listener=getFromListeners(httpRequest);
             if (listener != null) {
               listener.handleHttpResponse(clientResponse);
             }
-            remove(httpRequest);
+            removeFromConnectionsAndListeners(httpRequest);
           }
   finally {
             connection.disconnect();
@@ -71,7 +71,7 @@
             httpResponseListener.failed(e);
           }
   finally {
-            remove(httpRequest);
+            removeFromConnectionsAndListeners(httpRequest);
           }
         }
       }
@@ -83,7 +83,7 @@
       httpResponseListener.failed(e);
     }
   finally {
-      remove(httpRequest);
+      removeFromConnectionsAndListeners(httpRequest);
     }
     return;
   }
