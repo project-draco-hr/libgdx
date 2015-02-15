@@ -2,6 +2,7 @@
   if (count < 6)   throw new IllegalArgumentException("Polygons must contain at least 3 points.");
   if (count % 2 != 0)   throw new IllegalArgumentException("Polygons must have an even number of vertices.");
   check(ShapeType.Line,null,count);
+  float colorBits=color.toFloatBits();
   float firstX=vertices[0];
   float firstY=vertices[1];
   for (int i=offset, n=offset + count; i < n; i+=2) {
@@ -17,9 +18,9 @@
       x2=vertices[i + 2];
       y2=vertices[i + 3];
     }
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1,y1,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2,y2,0);
   }
 }

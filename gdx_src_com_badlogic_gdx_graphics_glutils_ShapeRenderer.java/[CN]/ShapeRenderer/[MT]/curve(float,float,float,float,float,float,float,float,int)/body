@@ -1,5 +1,6 @@
 {
   check(ShapeType.Line,null,segments * 2 + 2);
+  float colorBits=color.toFloatBits();
   float subdiv_step=1f / segments;
   float subdiv_step2=subdiv_step * subdiv_step;
   float subdiv_step3=subdiv_step * subdiv_step * subdiv_step;
@@ -20,7 +21,7 @@
   float dddfx=tmp2x * pre5;
   float dddfy=tmp2y * pre5;
   while (segments-- > 0) {
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(fx,fy,0);
     fx+=dfx;
     fy+=dfy;
@@ -28,11 +29,11 @@
     dfy+=ddfy;
     ddfx+=dddfx;
     ddfy+=dddfy;
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(fx,fy,0);
   }
-  renderer.color(color);
+  renderer.color(colorBits);
   renderer.vertex(fx,fy,0);
-  renderer.color(color);
+  renderer.color(colorBits);
   renderer.vertex(x2,y2,0);
 }
