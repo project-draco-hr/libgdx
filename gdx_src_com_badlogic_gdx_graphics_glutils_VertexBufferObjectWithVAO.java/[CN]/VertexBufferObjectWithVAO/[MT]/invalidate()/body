@@ -1,5 +1,5 @@
 {
-  bufferHandle=createBufferObject();
+  bufferHandle=Gdx.gl20.glGenBuffer();
   isDirty=true;
   vaoDirty=true;
 }
