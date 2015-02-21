@@ -1,0 +1,4 @@
+{
+  if (isSelected())   return iconPressedSelected;
+ else   return super.getPressedIcon();
+}
