@@ -23,12 +23,7 @@
   }
 ;
   getContentPane().add(lwjglAWTCanvas.getCanvas());
-  Runtime.getRuntime().addShutdownHook(new Thread(){
-    public void run(){
-      Runtime.getRuntime().halt(0);
-    }
-  }
-);
+  setHaltOnShutdown(true);
   setDefaultCloseOperation(EXIT_ON_CLOSE);
   getContentPane().setPreferredSize(new Dimension(width,height));
   initialize();
