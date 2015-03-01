@@ -1,0 +1,46 @@
+{
+  String DEBUGGER_DISABLED_MESSAGE="Error will be detected after enabling the debugger";
+switch (character) {
+case 'e':
+    GLDebugger.enable();
+  message="GLDebugger enabled (isEnabled(): " + GLDebugger.isEnabled() + ")";
+break;
+case 'd':
+GLDebugger.disable();
+message="GLDebugger disabled (isEnabled(): " + GLDebugger.isEnabled() + ")";
+break;
+case 'l':
+GLDebugger.listener=GLDebuggerErrorListener.LOGGING_LISTENER;
+makeGlError=true;
+if (GLDebugger.isEnabled()) {
+message="Log should contain info about error, which happened in glClear.";
+}
+ else {
+message=DEBUGGER_DISABLED_MESSAGE;
+}
+break;
+case 't':
+GLDebugger.listener=GLDebuggerErrorListener.THROWING_LISTENER;
+makeGlError=true;
+if (GLDebugger.isEnabled()) {
+message="This should be soon replaced with info about caught exception.";
+}
+ else {
+message=DEBUGGER_DISABLED_MESSAGE;
+}
+break;
+case 'c':
+GLDebugger.listener=customListener;
+makeGlError=true;
+if (GLDebugger.isEnabled()) {
+message="This should be soon replaced about info about success.";
+}
+ else {
+message=DEBUGGER_DISABLED_MESSAGE;
+}
+break;
+default :
+return false;
+}
+return true;
+}

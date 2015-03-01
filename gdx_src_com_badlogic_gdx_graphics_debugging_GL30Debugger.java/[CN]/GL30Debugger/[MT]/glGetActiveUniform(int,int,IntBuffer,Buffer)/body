@@ -1,0 +1,5 @@
+{
+  String result=gl30.glGetActiveUniform(program,index,size,type);
+  check();
+  return result;
+}

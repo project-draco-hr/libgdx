@@ -1,0 +1,5 @@
+{
+  if (Gdx.gl30 != null && Gdx.gl30 instanceof GL30Debugger)   Gdx.gl30=((GL30Debugger)Gdx.gl30).gl30;
+  if (Gdx.gl20 != null && Gdx.gl20 instanceof GL20Debugger)   Gdx.gl20=((GL20Debugger)Gdx.gl).gl20;
+  if (Gdx.gl != null && Gdx.gl instanceof GL20Debugger)   Gdx.gl=((GL20Debugger)Gdx.gl).gl20;
+}
