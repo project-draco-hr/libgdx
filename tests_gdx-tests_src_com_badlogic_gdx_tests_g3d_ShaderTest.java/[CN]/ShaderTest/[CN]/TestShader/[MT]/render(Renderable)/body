@@ -1,6 +1,10 @@
 {
   set(u_worldTrans,renderable.worldTransform);
-  TestAttribute attr=(TestAttribute)renderable.material.get(TestAttribute.ID);
-  set(u_test,attr == null ? 1f : attr.value);
+  TestAttribute testAttr=(TestAttribute)renderable.material.get(TestAttribute.ID);
+  set(u_test,testAttr.value);
+  if (withColor) {
+    ColorAttribute colorAttr=(ColorAttribute)renderable.material.get(ColorAttribute.Diffuse);
+    set(u_color,colorAttr.color);
+  }
   renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
 }

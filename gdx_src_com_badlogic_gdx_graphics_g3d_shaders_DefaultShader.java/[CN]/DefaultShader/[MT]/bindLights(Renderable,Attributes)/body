@@ -31,8 +31,8 @@
       if (pointLightsSize <= 0)       break;
     }
   }
-  if (lights.has(ColorAttribute.Fog)) {
-    set(u_fogColor,((ColorAttribute)lights.get(ColorAttribute.Fog)).color);
+  if (attributes.has(ColorAttribute.Fog)) {
+    set(u_fogColor,((ColorAttribute)attributes.get(ColorAttribute.Fog)).color);
   }
   if (lights.shadowMap != null) {
     set(u_shadowMapProjViewTrans,lights.shadowMap.getProjViewTrans());
