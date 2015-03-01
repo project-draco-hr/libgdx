@@ -6,11 +6,14 @@
     if (additive) {
       batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE);
     }
+ else {
+      batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+    }
   }
   Particle[] particles=this.particles;
   boolean[] active=this.active;
   for (int i=0, n=active.length; i < n; i++) {
     if (active[i])     particles[i].draw(batch);
   }
-  if (additive || premultipliedAlpha)   batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+  if (cleansUpBlendFunction && (additive || premultipliedAlpha))   batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
 }
