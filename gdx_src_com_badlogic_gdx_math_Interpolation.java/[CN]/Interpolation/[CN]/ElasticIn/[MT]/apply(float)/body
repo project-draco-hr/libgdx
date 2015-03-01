@@ -1,3 +1,4 @@
 {
+  if (a >= 0.99)   return 1;
   return (float)Math.pow(value,power * (a - 1)) * MathUtils.sin(a * bounces) * scale;
 }
