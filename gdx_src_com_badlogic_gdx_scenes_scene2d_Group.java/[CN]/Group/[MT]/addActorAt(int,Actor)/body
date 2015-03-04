@@ -1,5 +1,5 @@
 {
-  actor.remove();
+  if (actor.parent != null)   actor.parent.removeActor(actor,false);
   if (index >= children.size)   children.add(actor);
  else   children.insert(index,actor);
   actor.setParent(this);

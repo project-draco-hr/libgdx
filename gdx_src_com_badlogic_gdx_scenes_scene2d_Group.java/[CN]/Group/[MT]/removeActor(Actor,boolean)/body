@@ -1,0 +1,11 @@
+{
+  if (!children.removeValue(actor,true))   return false;
+  if (unfocus) {
+    Stage stage=getStage();
+    if (stage != null)     stage.unfocus(actor);
+  }
+  actor.setParent(null);
+  actor.setStage(null);
+  childrenChanged();
+  return true;
+}
