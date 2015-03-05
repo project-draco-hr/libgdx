@@ -1,0 +1,4 @@
+def reset(self):
+    'Reset a block processor and clean up all its blocks.'
+    self.blocks = []
+    self.format = None

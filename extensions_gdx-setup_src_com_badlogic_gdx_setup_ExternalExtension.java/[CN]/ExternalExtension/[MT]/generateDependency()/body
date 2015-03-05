@@ -1,0 +1,4 @@
+{
+  Dependency dep=new Dependency(name,getPlatformDependencies("core"),getPlatformDependencies("desktop"),getPlatformDependencies("android"),getPlatformDependencies("ios"),getPlatformDependencies("html"));
+  return dep;
+}

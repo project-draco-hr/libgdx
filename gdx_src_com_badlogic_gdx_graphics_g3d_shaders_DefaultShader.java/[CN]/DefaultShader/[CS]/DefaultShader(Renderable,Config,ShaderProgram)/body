@@ -1,18 +1,18 @@
 {
+  final Attributes attributes=combineAttributes(renderable);
   this.config=config;
   this.program=shaderProgram;
   this.lighting=renderable.environment != null;
-  this.environmentCubemap=renderable.material.has(CubemapAttribute.EnvironmentMap) || (lighting && renderable.environment.has(CubemapAttribute.EnvironmentMap));
+  this.environmentCubemap=attributes.has(CubemapAttribute.EnvironmentMap) || (lighting && attributes.has(CubemapAttribute.EnvironmentMap));
   this.shadowMap=lighting && renderable.environment.shadowMap != null;
-  this.fog=lighting && renderable.environment.has(ColorAttribute.Fog);
   this.renderable=renderable;
-  materialMask=renderable.material.getMask() | optionalAttributes;
+  attributesMask=attributes.getMask() | optionalAttributes;
   vertexMask=renderable.mesh.getVertexAttributes().getMask();
   this.directionalLights=new DirectionalLight[lighting && config.numDirectionalLights > 0 ? config.numDirectionalLights : 0];
   for (int i=0; i < directionalLights.length; i++)   directionalLights[i]=new DirectionalLight();
   this.pointLights=new PointLight[lighting && config.numPointLights > 0 ? config.numPointLights : 0];
   for (int i=0; i < pointLights.length; i++)   pointLights[i]=new PointLight();
-  if (!config.ignoreUnimplemented && (implementedFlags & materialMask) != materialMask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + materialMask + ")");
+  if (!config.ignoreUnimplemented && (implementedFlags & attributesMask) != attributesMask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + attributesMask + ")");
   u_projTrans=register(Inputs.projTrans,Setters.projTrans);
   u_viewTrans=register(Inputs.viewTrans,Setters.viewTrans);
   u_projViewTrans=register(Inputs.projViewTrans,Setters.projViewTrans);

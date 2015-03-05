@@ -1,25 +1,26 @@
 {
   check(ShapeType.Line,ShapeType.Filled,6);
+  float colorBits=color.toFloatBits();
   if (shapeType == ShapeType.Line) {
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1,y1,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2,y2,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2,y2,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x3,y3,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x3,y3,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1,y1,0);
   }
  else {
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1,y1,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2,y2,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x3,y3,0);
   }
 }

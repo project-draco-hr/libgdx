@@ -1,0 +1,11 @@
+{
+  super();
+  withColor=renderable.material.has(ColorAttribute.Diffuse);
+  if (withColor)   Gdx.app.log("ShaderTest","Compiling test shader with u_color uniform");
+ else   Gdx.app.log("ShaderTest","Compiling test shader without u_color uniform");
+  String prefix=withColor ? "#define HasDiffuseColor\n" : "";
+  program=new ShaderProgram(vertexShader,prefix + fragmentShader);
+  if (!program.isCompiled())   throw new GdxRuntimeException("Couldn't compile shader " + program.getLog());
+  String log=program.getLog();
+  if (log.length() > 0)   Gdx.app.error("ShaderTest","Shader compilation log: " + log);
+}

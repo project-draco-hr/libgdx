@@ -12,7 +12,7 @@
   float height=getHeight();
   float knobHeight=knob == null ? 0 : knob.getMinHeight();
   float knobWidth=knob == null ? 0 : knob.getMinWidth();
-  float value=getVisualValue();
+  float percent=getVisualPercent();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
   if (vertical) {
     bg.draw(batch,x + (int)((width - bg.getMinWidth()) * 0.5f),y,bg.getMinWidth(),height);
@@ -21,12 +21,12 @@
     if (min != max) {
       if (knob == null) {
         knobHeightHalf=knobBefore == null ? 0 : knobBefore.getMinHeight() * 0.5f;
-        position=(value - min) / (max - min) * (positionHeight - knobHeightHalf);
+        position=(positionHeight - knobHeightHalf) * percent;
         position=Math.min(positionHeight - knobHeightHalf,position);
       }
  else {
         knobHeightHalf=knobHeight * 0.5f;
-        position=(value - min) / (max - min) * (positionHeight - knobHeight);
+        position=(positionHeight - knobHeight) * percent;
         position=Math.min(positionHeight - knobHeight,position) + bg.getBottomHeight();
       }
       position=Math.max(0,position);
@@ -48,12 +48,12 @@
     if (min != max) {
       if (knob == null) {
         knobWidthHalf=knobBefore == null ? 0 : knobBefore.getMinWidth() * 0.5f;
-        position=(value - min) / (max - min) * (positionWidth - knobWidthHalf);
+        position=(positionWidth - knobWidthHalf) * percent;
         position=Math.min(positionWidth - knobWidthHalf,position);
       }
  else {
         knobWidthHalf=knobWidth * 0.5f;
-        position=(value - min) / (max - min) * (positionWidth - knobWidth);
+        position=(positionWidth - knobWidth) * percent;
         position=Math.min(positionWidth - knobWidth,position) + bg.getLeftWidth();
       }
       position=Math.max(0,position);

@@ -1,0 +1,24 @@
+{
+  this.mainDependencies=mainDependencies;
+  contentPane=new JPanel(new GridBagLayout());
+  setContentPane(contentPane);
+  setModal(true);
+  getRootPane().setDefaultButton(buttonOK);
+  uiLayout();
+  uiStyle();
+  buttonOK.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      onOK();
+    }
+  }
+);
+  buttonCancel.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      onCancel();
+    }
+  }
+);
+  setTitle("Third party external extensions");
+  setSize(600,300);
+  setLocationRelativeTo(null);
+}

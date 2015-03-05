@@ -1,23 +1,24 @@
 {
+  final Attributes attributes=combineAttributes(renderable);
   String prefix="";
-  final long mask=renderable.material.getMask();
-  final long attributes=renderable.mesh.getVertexAttributes().getMask();
-  if (and(attributes,Usage.Position))   prefix+="#define positionFlag\n";
-  if (or(attributes,Usage.Color | Usage.ColorPacked))   prefix+="#define colorFlag\n";
-  if (and(attributes,Usage.BiNormal))   prefix+="#define binormalFlag\n";
-  if (and(attributes,Usage.Tangent))   prefix+="#define tangentFlag\n";
-  if (and(attributes,Usage.Normal))   prefix+="#define normalFlag\n";
-  if (and(attributes,Usage.Normal) || and(attributes,Usage.Tangent | Usage.BiNormal)) {
+  final long attributesMask=attributes.getMask();
+  final long vertexMask=renderable.mesh.getVertexAttributes().getMask();
+  if (and(vertexMask,Usage.Position))   prefix+="#define positionFlag\n";
+  if (or(vertexMask,Usage.Color | Usage.ColorPacked))   prefix+="#define colorFlag\n";
+  if (and(vertexMask,Usage.BiNormal))   prefix+="#define binormalFlag\n";
+  if (and(vertexMask,Usage.Tangent))   prefix+="#define tangentFlag\n";
+  if (and(vertexMask,Usage.Normal))   prefix+="#define normalFlag\n";
+  if (and(vertexMask,Usage.Normal) || and(vertexMask,Usage.Tangent | Usage.BiNormal)) {
     if (renderable.environment != null) {
       prefix+="#define lightingFlag\n";
       prefix+="#define ambientCubemapFlag\n";
       prefix+="#define numDirectionalLights " + config.numDirectionalLights + "\n";
       prefix+="#define numPointLights " + config.numPointLights + "\n";
-      if (renderable.environment.has(ColorAttribute.Fog)) {
+      if (attributes.has(ColorAttribute.Fog)) {
         prefix+="#define fogFlag\n";
       }
       if (renderable.environment.shadowMap != null)       prefix+="#define shadowMapFlag\n";
-      if (renderable.material.has(CubemapAttribute.EnvironmentMap) || renderable.environment.has(CubemapAttribute.EnvironmentMap))       prefix+="#define environmentCubemapFlag\n";
+      if (attributes.has(CubemapAttribute.EnvironmentMap) || attributes.has(CubemapAttribute.EnvironmentMap))       prefix+="#define environmentCubemapFlag\n";
     }
   }
   final int n=renderable.mesh.getVertexAttributes().size();
@@ -26,37 +27,37 @@
     if (attr.usage == Usage.BoneWeight)     prefix+="#define boneWeight" + attr.unit + "Flag\n";
  else     if (attr.usage == Usage.TextureCoordinates)     prefix+="#define texCoord" + attr.unit + "Flag\n";
   }
-  if ((mask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
-  if ((mask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse) {
+  if ((attributesMask & BlendingAttribute.Type) == BlendingAttribute.Type)   prefix+="#define " + BlendingAttribute.Alias + "Flag\n";
+  if ((attributesMask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse) {
     prefix+="#define " + TextureAttribute.DiffuseAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.DiffuseAlias + "Coord texCoord0\n";
   }
-  if ((mask & TextureAttribute.Specular) == TextureAttribute.Specular) {
+  if ((attributesMask & TextureAttribute.Specular) == TextureAttribute.Specular) {
     prefix+="#define " + TextureAttribute.SpecularAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.SpecularAlias + "Coord texCoord0\n";
   }
-  if ((mask & TextureAttribute.Normal) == TextureAttribute.Normal) {
+  if ((attributesMask & TextureAttribute.Normal) == TextureAttribute.Normal) {
     prefix+="#define " + TextureAttribute.NormalAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.NormalAlias + "Coord texCoord0\n";
   }
-  if ((mask & TextureAttribute.Emissive) == TextureAttribute.Emissive) {
+  if ((attributesMask & TextureAttribute.Emissive) == TextureAttribute.Emissive) {
     prefix+="#define " + TextureAttribute.EmissiveAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.EmissiveAlias + "Coord texCoord0\n";
   }
-  if ((mask & TextureAttribute.Reflection) == TextureAttribute.Reflection) {
+  if ((attributesMask & TextureAttribute.Reflection) == TextureAttribute.Reflection) {
     prefix+="#define " + TextureAttribute.ReflectionAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.ReflectionAlias + "Coord texCoord0\n";
   }
-  if ((mask & TextureAttribute.Ambient) == TextureAttribute.Ambient) {
+  if ((attributesMask & TextureAttribute.Ambient) == TextureAttribute.Ambient) {
     prefix+="#define " + TextureAttribute.AmbientAlias + "Flag\n";
     prefix+="#define " + TextureAttribute.AmbientAlias + "Coord texCoord0\n";
   }
-  if ((mask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
-  if ((mask & ColorAttribute.Specular) == ColorAttribute.Specular)   prefix+="#define " + ColorAttribute.SpecularAlias + "Flag\n";
-  if ((mask & ColorAttribute.Emissive) == ColorAttribute.Emissive)   prefix+="#define " + ColorAttribute.EmissiveAlias + "Flag\n";
-  if ((mask & ColorAttribute.Reflection) == ColorAttribute.Reflection)   prefix+="#define " + ColorAttribute.ReflectionAlias + "Flag\n";
-  if ((mask & FloatAttribute.Shininess) == FloatAttribute.Shininess)   prefix+="#define " + FloatAttribute.ShininessAlias + "Flag\n";
-  if ((mask & FloatAttribute.AlphaTest) == FloatAttribute.AlphaTest)   prefix+="#define " + FloatAttribute.AlphaTestAlias + "Flag\n";
+  if ((attributesMask & ColorAttribute.Diffuse) == ColorAttribute.Diffuse)   prefix+="#define " + ColorAttribute.DiffuseAlias + "Flag\n";
+  if ((attributesMask & ColorAttribute.Specular) == ColorAttribute.Specular)   prefix+="#define " + ColorAttribute.SpecularAlias + "Flag\n";
+  if ((attributesMask & ColorAttribute.Emissive) == ColorAttribute.Emissive)   prefix+="#define " + ColorAttribute.EmissiveAlias + "Flag\n";
+  if ((attributesMask & ColorAttribute.Reflection) == ColorAttribute.Reflection)   prefix+="#define " + ColorAttribute.ReflectionAlias + "Flag\n";
+  if ((attributesMask & FloatAttribute.Shininess) == FloatAttribute.Shininess)   prefix+="#define " + FloatAttribute.ShininessAlias + "Flag\n";
+  if ((attributesMask & FloatAttribute.AlphaTest) == FloatAttribute.AlphaTest)   prefix+="#define " + FloatAttribute.AlphaTestAlias + "Flag\n";
   if (renderable.bones != null && config.numBones > 0)   prefix+="#define numBones " + config.numBones + "\n";
   return prefix;
 }
