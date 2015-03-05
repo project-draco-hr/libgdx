@@ -1,0 +1,4 @@
+{
+  direction.set(target).sub(position).nor();
+  return this;
+}
