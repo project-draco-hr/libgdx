@@ -1,3 +1,6 @@
 {
-  if (isModified(input,output,packFileName))   process(input,output,packFileName);
+  Settings settings=new Settings();
+  if (isModified(input,output,packFileName,settings)) {
+    process(input,output,packFileName);
+  }
 }
