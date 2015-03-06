@@ -1,9 +1,9 @@
 {
   if (intervals.length == animationIntervals.length) {
     this.animationIntervals=intervals;
-    loopduration=0;
+    loopDuration=0;
     for (int i=0; i < intervals.length; i++) {
-      loopduration+=intervals[i];
+      loopDuration+=intervals[i];
     }
   }
  else {
