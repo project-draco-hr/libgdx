@@ -1,4 +1,2 @@
 {
-  if (intervals.length == animationIntervals.length)   this.animationIntervals=intervals;
- else   throw new GdxRuntimeException("Cannot set " + intervals.length + " frame intervals. The given int[] must have a size of "+ animationIntervals.length+ ".");
 }
