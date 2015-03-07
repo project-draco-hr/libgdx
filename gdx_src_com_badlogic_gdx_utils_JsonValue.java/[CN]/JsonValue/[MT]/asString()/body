@@ -3,9 +3,9 @@ switch (type) {
 case stringValue:
     return stringValue;
 case doubleValue:
-  return Double.toString(doubleValue);
+  return stringValue != null ? stringValue : Double.toString(doubleValue);
 case longValue:
-return Long.toString(longValue);
+return stringValue != null ? stringValue : Long.toString(longValue);
 case booleanValue:
 return longValue != 0 ? "true" : "false";
 case nullValue:
