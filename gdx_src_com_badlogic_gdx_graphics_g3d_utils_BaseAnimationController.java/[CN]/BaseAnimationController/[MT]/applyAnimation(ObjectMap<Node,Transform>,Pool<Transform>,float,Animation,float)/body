@@ -1,41 +1,10 @@
 {
-  if (out != null) {
+  if (out == null) {
+    for (    final NodeAnimation nodeAnim : animation.nodeAnimations)     applyNodeAnimationDirectly(nodeAnim,time);
+  }
+ else {
     for (    final Node node : out.keys())     node.isAnimated=false;
-  }
-  for (  final NodeAnimation nodeAnim : animation.nodeAnimations) {
-    final Node node=nodeAnim.node;
-    node.isAnimated=true;
-    final int n=nodeAnim.keyframes.size - 1;
-    int first=0, second=-1;
-    for (int i=0; i < n; i++) {
-      if (time >= nodeAnim.keyframes.get(i).keytime && time <= nodeAnim.keyframes.get(i + 1).keytime) {
-        first=i;
-        second=i + 1;
-        break;
-      }
-    }
-    final Transform transform=tmpT;
-    final NodeKeyframe firstKeyframe=nodeAnim.keyframes.get(first);
-    transform.set(firstKeyframe.translation,firstKeyframe.rotation,firstKeyframe.scale);
-    if (second > first) {
-      final NodeKeyframe secondKeyframe=nodeAnim.keyframes.get(second);
-      final float t=(time - firstKeyframe.keytime) / (secondKeyframe.keytime - firstKeyframe.keytime);
-      transform.lerp(secondKeyframe.translation,secondKeyframe.rotation,secondKeyframe.scale,t);
-    }
-    if (out == null)     transform.toMatrix4(node.localTransform);
- else {
-      Transform t=out.get(node,null);
-      if (t != null) {
-        if (alpha > 0.999999f)         t.set(transform);
- else         t.lerp(transform,alpha);
-      }
- else {
-        if (alpha > 0.999999f)         out.put(node,pool.obtain().set(transform));
- else         out.put(node,pool.obtain().set(node.translation,node.rotation,node.scale).lerp(transform,alpha));
-      }
-    }
-  }
-  if (out != null) {
+    for (    final NodeAnimation nodeAnim : animation.nodeAnimations)     applyNodeAnimationBlending(nodeAnim,out,pool,alpha,time);
     for (    final ObjectMap.Entry<Node,Transform> e : out.entries()) {
       if (!e.key.isAnimated) {
         e.key.isAnimated=true;

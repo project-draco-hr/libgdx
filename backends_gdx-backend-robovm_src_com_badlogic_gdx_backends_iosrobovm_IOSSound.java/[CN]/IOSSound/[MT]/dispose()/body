@@ -1,3 +1,4 @@
 {
-  OALSimpleAudio.sharedInstance().unloadEffect(soundPath);
+  stop();
+  soundBuffer.dispose();
 }
