@@ -3,6 +3,6 @@
   if (position != null)   this.position.set(position);
   if (direction != null)   this.direction.set(direction).nor();
   this.intensity=intensity;
-  this.angleCos=angleCos;
+  this.cutoffAngle=cutoffAngle;
   return this;
 }
