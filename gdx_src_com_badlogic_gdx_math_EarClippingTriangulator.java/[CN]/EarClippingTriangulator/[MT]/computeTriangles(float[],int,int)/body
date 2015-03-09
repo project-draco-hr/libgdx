@@ -1,16 +1,17 @@
 {
   this.vertices=vertices;
   int vertexCount=this.vertexCount=count / 2;
+  int vertexOffset=offset / 2;
   ShortArray indicesArray=this.indicesArray;
   indicesArray.clear();
   indicesArray.ensureCapacity(vertexCount);
   indicesArray.size=vertexCount;
   short[] indices=this.indices=indicesArray.items;
   if (areVerticesClockwise(vertices,offset,count)) {
-    for (short i=0; i < vertexCount; i++)     indices[i]=i;
+    for (short i=0; i < vertexCount; i++)     indices[i]=(short)(vertexOffset + i);
   }
  else {
-    for (int i=0, n=vertexCount - 1; i < vertexCount; i++)     indices[i]=(short)(n - i);
+    for (int i=0, n=vertexCount - 1; i < vertexCount; i++)     indices[i]=(short)(vertexOffset + n - i);
   }
   IntArray vertexTypes=this.vertexTypes;
   vertexTypes.clear();
