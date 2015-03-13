@@ -1,0 +1,6 @@
+{
+  Array<FrameBufferCubemap> managedResources=buffers.get(app);
+  if (managedResources == null)   managedResources=new Array<FrameBufferCubemap>();
+  managedResources.add(frameBuffer);
+  buffers.put(app,managedResources);
+}

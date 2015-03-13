@@ -1,0 +1,8 @@
+{
+  if (Gdx.gl20 == null)   return;
+  Array<FrameBufferCubemap> bufferArray=buffers.get(app);
+  if (bufferArray == null)   return;
+  for (int i=0; i < bufferArray.size; i++) {
+    bufferArray.get(i).build();
+  }
+}
