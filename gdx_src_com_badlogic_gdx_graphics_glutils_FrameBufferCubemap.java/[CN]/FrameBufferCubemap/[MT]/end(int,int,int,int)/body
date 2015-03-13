@@ -1,0 +1,9 @@
+{
+  if (nbSides < 6)   throw new GdxRuntimeException("Not all sides have been rendered.");
+  camera.direction.set(cameraDirectionCache);
+  camera.up.set(cameraUpCache);
+  camera.update();
+  camera=null;
+  unbind();
+  Gdx.gl20.glViewport(x,y,width,height);
+}

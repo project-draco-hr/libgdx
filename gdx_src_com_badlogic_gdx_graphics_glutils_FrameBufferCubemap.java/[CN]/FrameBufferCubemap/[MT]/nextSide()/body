@@ -1,0 +1,11 @@
+{
+  if (nbSides > 6) {
+    throw new GdxRuntimeException("No remaining sides.");
+  }
+ else   if (nbSides == 6) {
+    return false;
+  }
+  bindSide(Cubemap.CubemapSide.values()[nbSides]);
+  nbSides++;
+  return true;
+}
