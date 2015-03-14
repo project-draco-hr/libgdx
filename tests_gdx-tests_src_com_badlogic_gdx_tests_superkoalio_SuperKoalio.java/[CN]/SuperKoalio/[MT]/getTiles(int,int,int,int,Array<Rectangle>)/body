@@ -1,5 +1,5 @@
 {
-  TiledMapTileLayer layer=(TiledMapTileLayer)map.getLayers().get(1);
+  TiledMapTileLayer layer=(TiledMapTileLayer)map.getLayers().get("walls");
   rectPool.freeAll(tiles);
   tiles.clear();
   for (int y=startY; y <= endY; y++) {

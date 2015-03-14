@@ -1,0 +1,8 @@
+{
+  if (color != null)   this.color.set(color);
+  this.position.set(posX,posY,posZ);
+  this.direction.set(dirX,dirY,dirZ).nor();
+  this.intensity=intensity;
+  this.cutoffAngle=cutoffAngle;
+  return this;
+}
