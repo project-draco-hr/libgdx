@@ -1,10 +1,7 @@
 {
-  this.isStatic=isStatic;
-  this.attributes=attributes;
-  byteBuffer=BufferUtils.newUnsafeByteBuffer(this.attributes.vertexSize * numVertices);
-  buffer=byteBuffer.asFloatBuffer();
-  buffer.flip();
-  byteBuffer.flip();
   bufferHandle=Gdx.gl20.glGenBuffer();
-  usage=isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW;
+  ByteBuffer data=BufferUtils.newUnsafeByteBuffer(attributes.vertexSize * numVertices);
+  data.limit(0);
+  setBuffer(data,true,attributes);
+  setUsage(isStatic ? GL20.GL_STATIC_DRAW : GL20.GL_DYNAMIC_DRAW);
 }

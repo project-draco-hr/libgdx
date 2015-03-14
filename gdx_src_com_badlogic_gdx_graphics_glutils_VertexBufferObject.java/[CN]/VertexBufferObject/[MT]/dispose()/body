@@ -3,5 +3,5 @@
   gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
   gl.glDeleteBuffer(bufferHandle);
   bufferHandle=0;
-  BufferUtils.disposeUnsafeByteBuffer(byteBuffer);
+  if (ownsBuffer)   BufferUtils.disposeUnsafeByteBuffer(byteBuffer);
 }
