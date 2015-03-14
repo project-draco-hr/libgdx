@@ -1,4 +1,5 @@
 {
+  bufferHandle=Gdx.gl20.glGenBuffer();
   setBuffer(data,ownsBuffer,attributes);
   setUsage(usage);
 }
