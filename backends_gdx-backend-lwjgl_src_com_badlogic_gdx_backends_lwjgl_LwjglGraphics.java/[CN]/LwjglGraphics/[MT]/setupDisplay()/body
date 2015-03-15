@@ -38,6 +38,8 @@
   Display.setResizable(config.resizable);
   Display.setInitialBackground(config.initialBackgroundColor.r,config.initialBackgroundColor.g,config.initialBackgroundColor.b);
   Display.setLocation(config.x,config.y);
-  createDisplayPixelFormat();
+  createDisplayPixelFormat(config.useGL30);
+  extractVersion();
+  extractExtensions();
   initiateGLInstances();
 }
