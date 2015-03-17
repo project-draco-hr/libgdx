@@ -1,8 +1,8 @@
 {
   int alphaBits=((int)(254 * alpha)) << 24;
   float prev=0, newColor=0;
-  for (int j=0, length=vertexData.length; j < length; j++) {
-    float[] vertices=vertexData[j];
+  for (int j=0, length=pageVertices.length; j < length; j++) {
+    float[] vertices=pageVertices[j];
     for (int i=2, n=idx[j]; i < n; i+=5) {
       float c=vertices[i];
       if (c == prev && i != 2) {

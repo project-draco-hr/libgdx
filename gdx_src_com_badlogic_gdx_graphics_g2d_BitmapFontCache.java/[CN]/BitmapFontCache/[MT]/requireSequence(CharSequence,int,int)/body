@@ -1,15 +1,15 @@
 {
-  if (vertexData.length == 1) {
-    int newGlyphCount=countGlyphs(seq,start,end);
+  if (pageVertices.length == 1) {
+    int newGlyphCount=countGlyphs(str,start,end);
     require(0,newGlyphCount);
   }
  else {
-    for (int i=0, n=tmpGlyphCount.length; i < n; i++)     tmpGlyphCount[i]=0;
+    for (int i=0, n=tempGlyphCount.length; i < n; i++)     tempGlyphCount[i]=0;
     while (start < end) {
-      char ch=seq.charAt(start++);
+      char ch=str.charAt(start++);
       if (ch == '[' && font.markupEnabled) {
-        if (!(start < end && seq.charAt(start) == '[')) {
-          int colorTagLen=markup.parseColorTag(seq,-1,start,end);
+        if (!(start < end && str.charAt(start) == '[')) {
+          int colorTagLen=markup.parseColorTag(str,-1,start,end);
           if (colorTagLen >= 0) {
             start+=colorTagLen + 1;
             continue;
@@ -19,8 +19,8 @@
       }
       Glyph g=font.data.getGlyph(ch);
       if (g == null)       continue;
-      tmpGlyphCount[g.page]++;
+      tempGlyphCount[g.page]++;
     }
-    for (int i=0, n=tmpGlyphCount.length; i < n; i++)     require(i,tmpGlyphCount[i]);
+    for (int i=0, n=tempGlyphCount.length; i < n; i++)     require(i,tempGlyphCount[i]);
   }
 }

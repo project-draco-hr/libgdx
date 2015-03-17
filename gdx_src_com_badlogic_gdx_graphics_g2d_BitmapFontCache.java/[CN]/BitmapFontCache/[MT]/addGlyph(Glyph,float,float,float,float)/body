@@ -6,10 +6,8 @@
   final float v=glyph.v;
   final float v2=glyph.v2;
   final int page=glyph.page;
-  if (glyphIndices != null) {
-    glyphIndices[page].add(glyphCount++);
-  }
-  final float[] vertices=vertexData[page];
+  if (pageGlyphIndices != null)   pageGlyphIndices[page].add(glyphCount++);
+  final float[] vertices=pageVertices[page];
   if (integer) {
     x=Math.round(x);
     y=Math.round(y);
