@@ -1,0 +1,4 @@
+{
+  constructors.put(name,constructor);
+  if (constructor.model != null && !models.contains(constructor.model,true))   models.add(constructor.model);
+}

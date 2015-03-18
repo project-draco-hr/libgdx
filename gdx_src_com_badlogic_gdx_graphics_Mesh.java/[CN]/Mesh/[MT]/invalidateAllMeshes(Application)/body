@@ -1,10 +1,13 @@
 {
-  List<Mesh> meshesList=meshes.get(app);
-  if (meshesList == null)   return;
-  for (int i=0; i < meshesList.size(); i++) {
-    if (meshesList.get(i).vertices instanceof VertexBufferObject) {
-      ((VertexBufferObject)meshesList.get(i).vertices).invalidate();
+  Array<Mesh> meshesArray=meshes.get(app);
+  if (meshesArray == null)   return;
+  for (int i=0; i < meshesArray.size; i++) {
+    if (meshesArray.get(i).vertices instanceof VertexBufferObject) {
+      ((VertexBufferObject)meshesArray.get(i).vertices).invalidate();
     }
-    meshesList.get(i).indices.invalidate();
+ else     if (meshesArray.get(i).vertices instanceof VertexBufferObjectWithVAO) {
+      ((VertexBufferObjectWithVAO)meshesArray.get(i).vertices).invalidate();
+    }
+    meshesArray.get(i).indices.invalidate();
   }
 }

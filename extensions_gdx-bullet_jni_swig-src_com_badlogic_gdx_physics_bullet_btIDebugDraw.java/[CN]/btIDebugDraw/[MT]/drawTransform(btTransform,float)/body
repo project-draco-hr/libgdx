@@ -1,4 +1,0 @@
-{
-  if (getClass() == btIDebugDraw.class)   gdxBulletJNI.btIDebugDraw_drawTransform(swigCPtr,this,btTransform.getCPtr(transform),transform,orthoLen);
- else   gdxBulletJNI.btIDebugDraw_drawTransformSwigExplicitbtIDebugDraw(swigCPtr,this,btTransform.getCPtr(transform),transform,orthoLen);
-}

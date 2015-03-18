@@ -1,0 +1,9 @@
+{
+  int index=findIndex(type);
+  if (index > -1) {
+    influencers.insert(index,newInfluencer);
+    influencers.removeIndex(index + 1);
+    return true;
+  }
+  return false;
+}

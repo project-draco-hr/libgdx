@@ -1,0 +1,5 @@
+{
+  ControllerData data=controllersData.get(emitterIndex);
+  data.enabled=enabled;
+  rebuildActiveControllers();
+}

@@ -1,0 +1,10 @@
+{
+  ParticleController controller=editor.getEmitter();
+  DynamicsInfluencer influencer=(DynamicsInfluencer)controller.findInfluencer(DynamicsInfluencer.class);
+  influencer.velocities.clear();
+  velocities.get(index).isActive=isChecked;
+  for (  VelocityWrapper wrapper : velocities) {
+    if (wrapper.isActive)     influencer.velocities.add(wrapper.velocityValue);
+  }
+  editor.restart();
+}

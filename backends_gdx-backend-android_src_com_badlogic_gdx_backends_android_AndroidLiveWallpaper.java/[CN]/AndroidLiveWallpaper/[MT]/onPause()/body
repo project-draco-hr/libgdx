@@ -1,0 +1,9 @@
+{
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause()");
+  audio.pause();
+  input.onPause();
+  if (graphics != null) {
+    graphics.onPauseGLSurfaceView();
+  }
+  if (AndroidLiveWallpaperService.DEBUG)   Log.d(AndroidLiveWallpaperService.TAG," > AndroidLiveWallpaper - onPause() done!");
+}

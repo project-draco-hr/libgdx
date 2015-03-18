@@ -1,8 +1,0 @@
-{
-  try {
-    new TexturePackerFileProcessor(settings,packFileName).process(new File(input),new File(output));
-  }
- catch (  Exception ex) {
-    throw new RuntimeException("Error packing files.",ex);
-  }
-}

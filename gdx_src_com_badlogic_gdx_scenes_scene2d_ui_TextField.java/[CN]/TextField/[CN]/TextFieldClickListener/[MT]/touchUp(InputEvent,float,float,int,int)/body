@@ -1,0 +1,4 @@
+{
+  if (selectionStart == cursor)   hasSelection=false;
+  super.touchUp(event,x,y,pointer,button);
+}

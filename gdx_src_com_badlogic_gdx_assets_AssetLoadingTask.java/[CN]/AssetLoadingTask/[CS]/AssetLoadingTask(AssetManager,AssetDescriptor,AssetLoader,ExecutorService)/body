@@ -1,7 +1,0 @@
-{
-  this.manager=manager;
-  this.assetDesc=assetDesc;
-  this.loader=loader;
-  this.threadPool=threadPool;
-  startTime=manager.log.getLevel() == Logger.DEBUG ? TimeUtils.nanoTime() : 0;
-}

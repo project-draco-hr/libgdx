@@ -1,13 +1,22 @@
 {
-  if (passwordMode && style.font.containsCharacter(passwordCharacter)) {
-    if (passwordBuffer == null)     passwordBuffer=new StringBuilder(text.length());
-    if (passwordBuffer.length() > text.length())     passwordBuffer.setLength(text.length());
+  BitmapFont font=style.font;
+  String text=this.text;
+  int textLength=text.length();
+  StringBuilder buffer=new StringBuilder();
+  for (int i=0; i < textLength; i++) {
+    char c=text.charAt(i);
+    buffer.append(font.containsCharacter(c) ? c : ' ');
+  }
+  String newDisplayText=buffer.toString();
+  if (passwordMode && font.containsCharacter(passwordCharacter)) {
+    if (passwordBuffer == null)     passwordBuffer=new StringBuilder(newDisplayText.length());
+    if (passwordBuffer.length() > textLength)     passwordBuffer.setLength(textLength);
  else {
-      for (int i=passwordBuffer.length(), n=text.length(); i < n; i++)       passwordBuffer.append(passwordCharacter);
+      for (int i=passwordBuffer.length(); i < textLength; i++)       passwordBuffer.append(passwordCharacter);
     }
     displayText=passwordBuffer;
   }
- else   displayText=text;
-  style.font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
-  if (selectionStart > text.length())   selectionStart=text.length();
+ else   displayText=newDisplayText;
+  font.computeGlyphAdvancesAndPositions(displayText,glyphAdvances,glyphPositions);
+  if (selectionStart > newDisplayText.length())   selectionStart=textLength;
 }

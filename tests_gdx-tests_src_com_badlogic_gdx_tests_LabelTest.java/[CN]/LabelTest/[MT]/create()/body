@@ -3,7 +3,8 @@
   renderer=new ShapeRenderer();
   skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   skin.getAtlas().getTextures().iterator().next().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
-  stage=new Stage(0,0,false);
+  skin.getFont("default-font").setMarkupEnabled(true);
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   Table table=new Table();
   stage.addActor(table);
@@ -13,7 +14,8 @@
   table.row();
   table.add(new Label("This is regular text\nwith a newline.",skin));
   table.row();
-  Label label3=new Label("This is regular text\n\nwith newlines,\naligned bottom, right.",skin);
+  Label label3=new Label("This is [RED]regular text\n\nwith newlines,\naligned bottom, right.",skin);
+  label3.setColor(Color.GREEN);
   label3.setAlignment(Align.bottom | Align.right);
   table.add(label3).minWidth(200).minHeight(110).fill();
   table.row();

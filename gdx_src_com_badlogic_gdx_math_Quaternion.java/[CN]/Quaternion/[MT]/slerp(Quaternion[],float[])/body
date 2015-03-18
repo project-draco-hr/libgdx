@@ -1,0 +1,6 @@
+{
+  set(q[0]).exp(w[0]);
+  for (int i=1; i < q.length; i++)   mul(tmp1.set(q[i]).exp(w[i]));
+  nor();
+  return this;
+}

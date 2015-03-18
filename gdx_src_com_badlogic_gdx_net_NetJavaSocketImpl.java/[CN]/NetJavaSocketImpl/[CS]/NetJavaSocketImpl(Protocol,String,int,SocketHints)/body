@@ -1,0 +1,16 @@
+{
+  try {
+    socket=new java.net.Socket();
+    applyHints(hints);
+    InetSocketAddress address=new InetSocketAddress(host,port);
+    if (hints != null) {
+      socket.connect(address,hints.connectTimeout);
+    }
+ else {
+      socket.connect(address);
+    }
+  }
+ catch (  Exception e) {
+    throw new GdxRuntimeException("Error making a socket connection to " + host + ":"+ port,e);
+  }
+}

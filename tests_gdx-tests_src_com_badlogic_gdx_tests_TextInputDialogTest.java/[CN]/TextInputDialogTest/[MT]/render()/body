@@ -1,5 +1,5 @@
 {
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   batch.begin();
   font.draw(batch,message,10,40);
   batch.end();
@@ -12,6 +12,6 @@
         message="cancled by user";
       }
     }
-,"enter something funny","funny");
+,"enter something funny","funny","something funny");
   }
 }

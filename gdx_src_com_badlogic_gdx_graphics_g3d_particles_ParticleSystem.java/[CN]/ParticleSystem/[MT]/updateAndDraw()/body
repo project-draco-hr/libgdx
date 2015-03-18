@@ -1,0 +1,6 @@
+{
+  for (  ParticleEffect effect : effects) {
+    effect.update();
+    effect.draw();
+  }
+}

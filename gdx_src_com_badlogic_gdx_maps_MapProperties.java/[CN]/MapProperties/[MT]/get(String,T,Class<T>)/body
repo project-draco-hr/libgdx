@@ -1,0 +1,4 @@
+{
+  Object object=get(key);
+  return object == null ? defaultValue : (T)object;
+}

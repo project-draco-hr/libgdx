@@ -1,0 +1,16 @@
+{
+  Gdx.app.addLifecycleListener(this);
+  gatherControllers(false);
+  setupEventQueue();
+  ((AndroidInput)Gdx.input).addKeyListener(this);
+  ((AndroidInputThreePlus)Gdx.input).addGenericMotionListener(this);
+  if (Gdx.app.getVersion() >= 16) {
+    try {
+      String className="com.badlogic.gdx.controllers.android.ControllerLifeCycleListener";
+      Class.forName(className).getConstructor(AndroidControllers.class).newInstance(this);
+    }
+ catch (    Exception e) {
+      Gdx.app.log(TAG,"Couldn't register controller life-cycle listener");
+    }
+  }
+}

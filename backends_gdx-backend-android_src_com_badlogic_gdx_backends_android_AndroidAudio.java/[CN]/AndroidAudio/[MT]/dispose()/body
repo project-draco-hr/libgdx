@@ -1,4 +1,7 @@
 {
+  if (soundPool == null) {
+    return;
+  }
 synchronized (musics) {
     ArrayList<AndroidMusic> musicsCopy=new ArrayList<AndroidMusic>(musics);
     for (    AndroidMusic music : musicsCopy) {

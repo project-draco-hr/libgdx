@@ -1,7 +1,6 @@
 {
   if (player == null)   return;
   try {
-    if (player.isPlaying())     player.stop();
     player.release();
   }
  catch (  Throwable t) {
@@ -9,6 +8,7 @@
   }
  finally {
     player=null;
+    onCompletionListener=null;
 synchronized (audio.musics) {
       audio.musics.remove(this);
     }

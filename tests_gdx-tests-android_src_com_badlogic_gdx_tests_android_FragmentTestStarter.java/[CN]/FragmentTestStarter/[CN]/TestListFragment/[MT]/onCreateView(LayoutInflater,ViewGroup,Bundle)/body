@@ -1,0 +1,5 @@
+{
+  View view=super.onCreateView(inflater,container,savedInstanceState);
+  ((ListView)view.findViewById(android.R.id.list)).setSelectionFromTop(prefs.getInt("index",0),prefs.getInt("top",0));
+  return view;
+}

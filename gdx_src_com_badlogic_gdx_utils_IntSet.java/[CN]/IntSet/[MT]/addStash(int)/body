@@ -1,0 +1,11 @@
+{
+  if (stashSize == stashCapacity) {
+    resize(capacity << 1);
+    add(key);
+    return;
+  }
+  int index=capacity + stashSize;
+  keyTable[index]=key;
+  stashSize++;
+  size++;
+}

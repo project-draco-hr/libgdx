@@ -3,4 +3,5 @@
   if (type == FileType.Internal)   throw new GdxRuntimeException("Cannot move an internal file: " + file);
   copyTo(dest);
   delete();
+  if (exists() && isDirectory())   deleteDirectory();
 }

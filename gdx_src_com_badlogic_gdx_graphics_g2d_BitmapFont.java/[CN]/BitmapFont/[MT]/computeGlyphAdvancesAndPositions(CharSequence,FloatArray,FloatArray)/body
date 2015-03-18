@@ -5,6 +5,7 @@
   int end=str.length();
   float width=0;
   Glyph lastGlyph=null;
+  BitmapFontData data=this.data;
   if (data.scaleX == 1) {
     for (; index < end; index++) {
       char ch=str.charAt(index);

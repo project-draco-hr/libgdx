@@ -1,0 +1,5 @@
+{
+  final int word=index >>> 6;
+  checkCapacity(word);
+  bits[word]|=1L << (index & 0x3F);
+}

@@ -1,0 +1,9 @@
+{
+  Class type=object.getClass();
+  ObjectMap<String,FieldMetadata> fields=getFields(type);
+  FieldMetadata metadata=fields.get(fieldName);
+  if (metadata == null)   throw new SerializationException("Field not found: " + fieldName + " ("+ type.getName()+ ")");
+  Field field=metadata.field;
+  if (elementType == null)   elementType=metadata.elementType;
+  readField(object,field,jsonName,elementType,jsonMap);
+}

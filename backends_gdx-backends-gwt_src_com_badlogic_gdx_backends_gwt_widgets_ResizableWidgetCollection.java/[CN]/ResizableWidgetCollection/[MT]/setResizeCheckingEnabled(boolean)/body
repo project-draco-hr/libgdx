@@ -2,12 +2,7 @@
   if (enabled && !resizeCheckingEnabled) {
     resizeCheckingEnabled=true;
     if (windowHandler == null) {
-      windowHandler=Window.addResizeHandler(new ResizeHandler(){
-        public void onResize(        ResizeEvent event){
-          onWindowResized(event.getWidth(),event.getHeight());
-        }
-      }
-);
+      windowHandler=Window.addResizeHandler(this);
     }
     resizeCheckTimer.schedule(resizeCheckDelay);
   }

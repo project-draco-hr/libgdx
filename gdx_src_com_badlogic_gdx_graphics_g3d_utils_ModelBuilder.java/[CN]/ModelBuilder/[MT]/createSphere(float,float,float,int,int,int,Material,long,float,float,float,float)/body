@@ -1,0 +1,5 @@
+{
+  begin();
+  part("cylinder",primitiveType,attributes,material).sphere(width,height,depth,divisionsU,divisionsV,angleUFrom,angleUTo,angleVFrom,angleVTo);
+  return end();
+}

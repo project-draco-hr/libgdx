@@ -1,4 +1,5 @@
 {
+  if (player == null)   return;
   if (isPrepared) {
     player.seekTo(0);
   }

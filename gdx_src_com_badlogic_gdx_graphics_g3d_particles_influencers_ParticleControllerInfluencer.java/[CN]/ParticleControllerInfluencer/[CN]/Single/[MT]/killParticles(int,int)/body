@@ -1,0 +1,5 @@
+{
+  for (int i=startIndex, c=startIndex + count; i < c; ++i) {
+    particleControllerChannel.data[i].end();
+  }
+}

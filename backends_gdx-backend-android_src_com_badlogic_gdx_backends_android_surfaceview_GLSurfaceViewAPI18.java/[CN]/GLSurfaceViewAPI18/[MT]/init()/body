@@ -1,0 +1,8 @@
+{
+  SurfaceHolder holder=getHolder();
+  holder.addCallback(this);
+  int sdkVersion=android.os.Build.VERSION.SDK_INT;
+  if (sdkVersion <= 8) {
+    holder.setFormat(PixelFormat.RGB_565);
+  }
+}

@@ -1,11 +1,16 @@
 {
-  data.lineHeight=data.lineHeight / this.data.scaleX * scaleX;
-  data.spaceWidth=data.spaceWidth / this.data.scaleX * scaleX;
-  data.xHeight=data.xHeight / this.data.scaleY * scaleY;
-  data.capHeight=data.capHeight / this.data.scaleY * scaleY;
-  data.ascent=data.ascent / this.data.scaleY * scaleY;
-  data.descent=data.descent / this.data.scaleY * scaleY;
-  data.down=data.down / this.data.scaleY * scaleY;
+  if (scaleX == 0)   throw new IllegalArgumentException("scaleX cannot be 0.");
+  if (scaleY == 0)   throw new IllegalArgumentException("scaleY cannot be 0.");
+  BitmapFontData data=this.data;
+  float x=scaleX / data.scaleX;
+  float y=scaleY / data.scaleY;
+  data.lineHeight=data.lineHeight * y;
+  data.spaceWidth=data.spaceWidth * x;
+  data.xHeight=data.xHeight * y;
+  data.capHeight=data.capHeight * y;
+  data.ascent=data.ascent * y;
+  data.descent=data.descent * y;
+  data.down=data.down * y;
   data.scaleX=scaleX;
   data.scaleY=scaleY;
 }

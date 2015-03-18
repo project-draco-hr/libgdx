@@ -1,4 +1,3 @@
 {
-  super(initialCapacity);
-  this.type=type;
+  this(type,initialCapacity,Integer.MAX_VALUE);
 }

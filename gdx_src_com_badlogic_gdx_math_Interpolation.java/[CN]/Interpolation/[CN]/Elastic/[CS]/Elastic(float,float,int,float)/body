@@ -1,0 +1,6 @@
+{
+  this.value=value;
+  this.power=power;
+  this.scale=scale;
+  this.bounces=bounces * MathUtils.PI * (bounces % 2 == 0 ? 1 : -1);
+}

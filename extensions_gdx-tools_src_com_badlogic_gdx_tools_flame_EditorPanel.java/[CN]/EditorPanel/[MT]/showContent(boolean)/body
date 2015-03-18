@@ -1,0 +1,6 @@
+{
+  contentPanel.setVisible(visible);
+  advancedPanel.setVisible(visible && advancedButton.isSelected());
+  advancedButton.setVisible(visible && hasAdvanced);
+  descriptionLabel.setText(visible ? description : "");
+}

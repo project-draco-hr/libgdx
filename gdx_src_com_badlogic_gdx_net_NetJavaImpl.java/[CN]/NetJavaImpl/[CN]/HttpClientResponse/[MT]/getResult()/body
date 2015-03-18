@@ -1,0 +1,12 @@
+{
+  InputStream input=getInputStream();
+  try {
+    return StreamUtils.copyStreamToByteArray(input,connection.getContentLength());
+  }
+ catch (  IOException e) {
+    return StreamUtils.EMPTY_BYTES;
+  }
+ finally {
+    StreamUtils.closeQuietly(input);
+  }
+}

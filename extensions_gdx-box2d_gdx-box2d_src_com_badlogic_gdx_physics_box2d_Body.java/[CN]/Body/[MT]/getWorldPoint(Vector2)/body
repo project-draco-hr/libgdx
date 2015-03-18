@@ -1,0 +1,6 @@
+{
+  jniGetWorldPoint(addr,localPoint.x,localPoint.y,tmp);
+  this.localPoint.x=tmp[0];
+  this.localPoint.y=tmp[1];
+  return this.localPoint;
+}

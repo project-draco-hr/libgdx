@@ -1,0 +1,4 @@
+{
+  super.allocateChannels();
+  rotationalVelocity2dChannel=controller.particles.addChannel(ParticleChannels.AngularVelocity2D);
+}

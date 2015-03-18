@@ -1,0 +1,6 @@
+{
+  super.onAttach(activity);
+  if (activity instanceof FragmentTestStarter) {
+    this.activity=(FragmentTestStarter)activity;
+  }
+}

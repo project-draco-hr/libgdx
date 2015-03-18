@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btDynamicsWorld_getConstraintSolver(swigCPtr,this);
-  return (cPtr == 0) ? null : new btConstraintSolver(cPtr,false);
-}

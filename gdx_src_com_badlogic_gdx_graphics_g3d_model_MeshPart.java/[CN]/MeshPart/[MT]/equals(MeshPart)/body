@@ -1,0 +1,3 @@
+{
+  return other == this || (other != null && other.mesh == mesh && other.primitiveType == primitiveType && other.indexOffset == indexOffset && other.numVertices == numVertices);
+}

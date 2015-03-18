@@ -1,0 +1,18 @@
+{
+  if (listener == null)   throw new IllegalArgumentException("listener cannot be null.");
+  if (config == null)   throw new IllegalArgumentException("config cannot be null.");
+  this.listener=listener;
+  Runnable runnable=new Runnable(){
+    public void run(){
+      try {
+        initialize(config);
+      }
+ catch (      Throwable ex) {
+        exception(ex);
+      }
+    }
+  }
+;
+  if (config.runOnEDT)   EventQueue.invokeLater(runnable);
+ else   new Thread(runnable,"MainLoop").start();
+}

@@ -1,0 +1,9 @@
+{
+  executor.shutdown();
+  try {
+    executor.awaitTermination(Long.MAX_VALUE,TimeUnit.SECONDS);
+  }
+ catch (  InterruptedException e) {
+    throw new GdxRuntimeException("Couldn't shutdown loading thread",e);
+  }
+}

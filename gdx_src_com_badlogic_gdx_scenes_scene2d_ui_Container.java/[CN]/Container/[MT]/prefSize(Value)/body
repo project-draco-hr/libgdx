@@ -1,0 +1,6 @@
+{
+  if (size == null)   throw new IllegalArgumentException("size cannot be null.");
+  prefWidth=size;
+  prefHeight=size;
+  return this;
+}

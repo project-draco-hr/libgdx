@@ -1,0 +1,4 @@
+{
+  float xScaleRatio=target.getWidth() * 1f / target.getClientWidth();
+  return Math.round(xScaleRatio * (e.getClientX() - target.getAbsoluteLeft() + target.getScrollLeft() + target.getOwnerDocument().getScrollLeft()));
+}

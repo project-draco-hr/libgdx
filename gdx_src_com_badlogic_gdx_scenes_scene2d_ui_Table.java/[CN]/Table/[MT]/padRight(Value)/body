@@ -1,4 +1,6 @@
 {
-  layout.padRight(padRight);
+  if (padRight == null)   throw new IllegalArgumentException("padRight cannot be null.");
+  this.padRight=padRight;
+  sizeInvalid=true;
   return this;
 }

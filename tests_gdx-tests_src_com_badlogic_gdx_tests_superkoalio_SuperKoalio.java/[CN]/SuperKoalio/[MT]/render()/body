@@ -1,0 +1,11 @@
+{
+  Gdx.gl.glClearColor(0.7f,0.7f,1.0f,1);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+  float deltaTime=Gdx.graphics.getDeltaTime();
+  updateKoala(deltaTime);
+  camera.position.x=koala.position.x;
+  camera.update();
+  renderer.setView(camera);
+  renderer.render();
+  renderKoala(deltaTime);
+}

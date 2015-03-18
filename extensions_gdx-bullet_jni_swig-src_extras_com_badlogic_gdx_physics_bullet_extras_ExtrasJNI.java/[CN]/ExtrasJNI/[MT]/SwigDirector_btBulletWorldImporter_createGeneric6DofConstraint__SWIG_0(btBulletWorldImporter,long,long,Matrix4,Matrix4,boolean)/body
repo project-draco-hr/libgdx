@@ -1,0 +1,3 @@
+{
+  return btGeneric6DofConstraint.getCPtr(self.createGeneric6DofConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),frameInA,frameInB,useLinearReferenceFrameA));
+}

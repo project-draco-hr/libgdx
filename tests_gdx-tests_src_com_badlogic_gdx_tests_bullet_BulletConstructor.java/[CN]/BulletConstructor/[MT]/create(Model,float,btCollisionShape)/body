@@ -1,0 +1,13 @@
+{
+  this.model=model;
+  this.shape=shape;
+  if (shape != null && mass >= 0) {
+    Vector3 localInertia;
+    if (mass == 0)     localInertia=Vector3.Zero;
+ else {
+      shape.calculateLocalInertia(mass,tmpV);
+      localInertia=tmpV;
+    }
+    bodyInfo=new btRigidBodyConstructionInfo(mass,null,shape,localInertia);
+  }
+}

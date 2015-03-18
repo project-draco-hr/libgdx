@@ -16,14 +16,11 @@
     throw new GdxRuntimeException("Couldn't load pkm file '" + pkmFile + "'",e);
   }
  finally {
-    if (in != null)     try {
-      in.close();
-    }
- catch (    Exception e) {
-    }
+    StreamUtils.closeQuietly(in);
   }
   width=getWidthPKM(compressedData,0);
   height=getHeightPKM(compressedData,0);
   dataOffset=PKM_HEADER_SIZE;
   compressedData.position(dataOffset);
+  checkNPOT();
 }

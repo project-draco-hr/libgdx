@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.btConvexCast_calcTimeOfImpact(swigCPtr,this,fromA,toA,fromB,toB,btConvexCast.CastResult.getCPtr(result),result);
+}

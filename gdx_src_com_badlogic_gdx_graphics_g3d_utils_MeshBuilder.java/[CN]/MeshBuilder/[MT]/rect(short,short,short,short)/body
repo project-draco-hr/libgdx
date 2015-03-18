@@ -1,0 +1,12 @@
+{
+  if (primitiveType == GL20.GL_TRIANGLES) {
+    index(corner00,corner10,corner11,corner11,corner01,corner00);
+  }
+ else   if (primitiveType == GL20.GL_LINES) {
+    index(corner00,corner10,corner10,corner11,corner11,corner01,corner01,corner00);
+  }
+ else   if (primitiveType == GL20.GL_POINTS) {
+    index(corner00,corner10,corner11,corner01);
+  }
+ else   throw new GdxRuntimeException("Incorrect primitive type");
+}

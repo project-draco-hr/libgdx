@@ -1,0 +1,11 @@
+{
+  vertices[offset + CPU_POSITION_OFFSET]=p.x;
+  vertices[offset + CPU_POSITION_OFFSET + 1]=p.y;
+  vertices[offset + CPU_POSITION_OFFSET + 2]=p.z;
+  vertices[offset + CPU_UV_OFFSET]=u;
+  vertices[offset + CPU_UV_OFFSET + 1]=v;
+  vertices[offset + CPU_COLOR_OFFSET]=r;
+  vertices[offset + CPU_COLOR_OFFSET + 1]=g;
+  vertices[offset + CPU_COLOR_OFFSET + 2]=b;
+  vertices[offset + CPU_COLOR_OFFSET + 3]=a;
+}

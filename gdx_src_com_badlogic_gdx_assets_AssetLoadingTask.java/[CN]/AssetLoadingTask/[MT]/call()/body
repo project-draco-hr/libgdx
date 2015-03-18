@@ -1,19 +1,17 @@
 {
   AsynchronousAssetLoader asyncLoader=(AsynchronousAssetLoader)loader;
   if (dependenciesLoaded == false) {
-    dependencies=asyncLoader.getDependencies(assetDesc.fileName,assetDesc.params);
+    dependencies=asyncLoader.getDependencies(assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
     if (dependencies != null) {
-      for (      AssetDescriptor desc : dependencies) {
-        manager.injectDependency(assetDesc.fileName,desc);
-      }
+      manager.injectDependencies(assetDesc.fileName,dependencies);
     }
  else {
-      asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+      asyncLoader.loadAsync(manager,assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
       asyncDone=true;
     }
   }
  else {
-    asyncLoader.loadAsync(manager,assetDesc.fileName,assetDesc.params);
+    asyncLoader.loadAsync(manager,assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
   }
   return null;
 }

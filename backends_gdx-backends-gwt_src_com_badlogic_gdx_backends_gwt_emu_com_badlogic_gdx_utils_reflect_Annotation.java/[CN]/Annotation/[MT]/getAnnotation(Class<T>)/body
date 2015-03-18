@@ -1,0 +1,6 @@
+{
+  if (annotation.annotationType().equals(annotationType)) {
+    return (T)annotation;
+  }
+  return null;
+}

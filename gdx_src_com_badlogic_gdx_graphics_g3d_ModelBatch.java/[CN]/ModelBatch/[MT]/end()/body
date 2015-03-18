@@ -1,0 +1,5 @@
+{
+  flush();
+  if (ownContext)   context.end();
+  camera=null;
+}

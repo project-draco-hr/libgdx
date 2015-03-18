@@ -3,6 +3,6 @@
     return;
   }
   consolidate();
-  LocalStorage.setItem(name,btoa(data));
+  File.LocalStorage.setItem(name,btoa(data));
   dirty=false;
 }

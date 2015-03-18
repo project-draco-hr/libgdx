@@ -1,0 +1,7 @@
+{
+  RemoveListenerAction addAction=action(RemoveListenerAction.class);
+  addAction.setTarget(targetActor);
+  addAction.setListener(listener);
+  addAction.setCapture(capture);
+  return addAction;
+}

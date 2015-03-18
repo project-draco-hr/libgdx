@@ -1,0 +1,7 @@
+{
+  this.settings=settings;
+  if (rootDir != null) {
+    rootPath=rootDir.getAbsolutePath().replace('\\','/');
+    if (!rootPath.endsWith("/"))     rootPath+="/";
+  }
+}

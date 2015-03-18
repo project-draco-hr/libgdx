@@ -1,0 +1,6 @@
+{
+  super(editor,influencer,"Dynamics Influencer","Defines how the particles dynamics (acceleration, angular velocity).");
+  velocities=new Array<VelocityWrapper>();
+  setValue(value);
+  set(influencer);
+}

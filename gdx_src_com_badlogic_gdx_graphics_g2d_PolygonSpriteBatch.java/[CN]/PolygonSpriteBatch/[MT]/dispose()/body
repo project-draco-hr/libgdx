@@ -1,4 +1,4 @@
 {
-  for (int i=0; i < buffers.length; i++)   buffers[i].dispose();
+  mesh.dispose();
   if (ownsShader && shader != null)   shader.dispose();
 }

@@ -1,0 +1,10 @@
+{
+  if (u != null && (force || uWrap != u)) {
+    Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_WRAP_S,u.getGLEnum());
+    uWrap=u;
+  }
+  if (v != null && (force || vWrap != v)) {
+    Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_WRAP_T,v.getGLEnum());
+    vWrap=v;
+  }
+}

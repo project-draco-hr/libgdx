@@ -1,0 +1,7 @@
+{
+  float textY=getHeight();
+  if (background != null) {
+    textY=(int)(textY - background.getTopHeight());
+  }
+  return textY;
+}

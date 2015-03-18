@@ -1,0 +1,5 @@
+{
+  JsonValue current=child;
+  while (current != null && !current.name.equalsIgnoreCase(name))   current=current.next;
+  return current;
+}

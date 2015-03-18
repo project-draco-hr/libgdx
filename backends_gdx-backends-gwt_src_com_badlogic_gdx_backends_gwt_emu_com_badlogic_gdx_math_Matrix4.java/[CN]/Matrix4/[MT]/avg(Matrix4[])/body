@@ -1,0 +1,16 @@
+{
+  final float w=1.0f / t.length;
+  tmpVec.set(t[0].getScale(tmpUp).scl(w));
+  quat.set(t[0].getRotation(quat2).exp(w));
+  tmpForward.set(t[0].getTranslation(tmpUp).scl(w));
+  for (int i=1; i < t.length; i++) {
+    tmpVec.add(t[i].getScale(tmpUp).scl(w));
+    quat.mul(t[i].getRotation(quat2).exp(w));
+    tmpForward.add(t[i].getTranslation(tmpUp).scl(w));
+  }
+  quat.nor();
+  setToScaling(tmpVec);
+  rotate(quat);
+  setTranslation(tmpForward);
+  return this;
+}

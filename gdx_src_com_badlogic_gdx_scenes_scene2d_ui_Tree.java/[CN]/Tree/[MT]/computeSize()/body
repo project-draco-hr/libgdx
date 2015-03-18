@@ -5,7 +5,7 @@
   prefHeight=getHeight();
   leftColumnWidth=0;
   computeSize(rootNodes,indentSpacing);
-  leftColumnWidth+=iconSpacing + padding;
+  leftColumnWidth+=iconSpacingLeft + padding;
   prefWidth+=leftColumnWidth + padding;
-  prefHeight=getHeight() - (prefHeight + ySpacing);
+  prefHeight=getHeight() - prefHeight;
 }

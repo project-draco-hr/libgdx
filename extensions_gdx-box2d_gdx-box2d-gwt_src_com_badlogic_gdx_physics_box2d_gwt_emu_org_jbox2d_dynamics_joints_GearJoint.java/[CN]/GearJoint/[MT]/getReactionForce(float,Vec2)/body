@@ -1,0 +1,4 @@
+{
+  argOut.set(m_JvAC).mulLocal(m_impulse);
+  argOut.mulLocal(inv_dt);
+}

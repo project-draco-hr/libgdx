@@ -1,5 +1,6 @@
 {
-  Vector3 r=this.mul(1.0f - alpha);
-  r.add(target.tmp().mul(alpha));
-  return r;
+  x+=alpha * (target.x - x);
+  y+=alpha * (target.y - y);
+  z+=alpha * (target.z - z);
+  return this;
 }

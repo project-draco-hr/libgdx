@@ -1,0 +1,10 @@
+{
+  if (DEBUG)   Log.d(TAG," > AndroidLiveWallpaperService - onDestroy() " + hashCode());
+  Log.i(TAG,"service destroyed");
+  super.onDestroy();
+  if (app != null) {
+    app.onDestroy();
+    app=null;
+    view=null;
+  }
+}

@@ -1,0 +1,4 @@
+{
+  regions.clear();
+  regions.addAll(json.readValue("regions",Array.class,AspectTextureRegion.class,jsonData));
+}

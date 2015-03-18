@@ -1,0 +1,6 @@
+{
+  if (isContinuous != this.isContinuous) {
+    this.isContinuous=isContinuous;
+    if (isContinuous)     viewController.setPaused(false);
+  }
+}

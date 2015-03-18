@@ -1,4 +1,0 @@
-{
-  value=value.replace("\\","\\\\");
-  return '"' + value.replace("\"","\\\"") + '"';
-}

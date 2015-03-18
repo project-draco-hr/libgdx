@@ -2,10 +2,10 @@
   this.prefix=prefix + ":";
   int prefixLength=this.prefix.length();
   try {
-    for (int i=0; i < LocalStorage.length(); i++) {
-      String key=LocalStorage.key(i);
+    for (int i=0; i < GwtFiles.LocalStorage.getLength(); i++) {
+      String key=GwtFiles.LocalStorage.key(i);
       if (key.startsWith(prefix)) {
-        String value=LocalStorage.getItem(key);
+        String value=GwtFiles.LocalStorage.getItem(key);
         values.put(key.substring(prefixLength,key.length() - 1),toObject(key,value));
       }
     }

@@ -1,0 +1,9 @@
+{
+  JsonValue current=child;
+  while (current != null && index > 0) {
+    index--;
+    current=current.next;
+  }
+  if (current == null)   throw new IllegalArgumentException("Child not found with index: " + index);
+  return current;
+}

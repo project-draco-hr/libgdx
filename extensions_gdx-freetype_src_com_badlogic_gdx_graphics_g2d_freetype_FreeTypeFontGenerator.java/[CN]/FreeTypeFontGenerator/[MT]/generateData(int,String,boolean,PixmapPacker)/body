@@ -1,0 +1,8 @@
+{
+  FreeTypeFontParameter parameter=new FreeTypeFontParameter();
+  parameter.size=size;
+  parameter.characters=characters;
+  parameter.flip=flip;
+  parameter.packer=packer;
+  return generateData(parameter);
+}

@@ -1,0 +1,21 @@
+{
+  int numContacts=getContactCount();
+  if (numContacts > contactAddrs.length) {
+    int newSize=2 * numContacts;
+    contactAddrs=new long[newSize];
+    contacts.ensureCapacity(newSize);
+    freeContacts.ensureCapacity(newSize);
+  }
+  if (numContacts > freeContacts.size) {
+    int freeConts=freeContacts.size;
+    for (int i=0; i < numContacts - freeConts; i++)     freeContacts.add(new Contact(this,0));
+  }
+  jniGetContactList(addr,contactAddrs);
+  contacts.clear();
+  for (int i=0; i < numContacts; i++) {
+    Contact contact=freeContacts.get(i);
+    contact.addr=contactAddrs[i];
+    contacts.add(contact);
+  }
+  return contacts;
+}

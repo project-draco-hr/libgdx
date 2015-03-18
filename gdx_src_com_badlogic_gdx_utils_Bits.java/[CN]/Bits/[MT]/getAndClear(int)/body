@@ -1,0 +1,7 @@
+{
+  final int word=index >>> 6;
+  if (word >= bits.length)   return false;
+  long oldBits=bits[word];
+  bits[word]&=~(1L << (index & 0x3F));
+  return bits[word] != oldBits;
+}

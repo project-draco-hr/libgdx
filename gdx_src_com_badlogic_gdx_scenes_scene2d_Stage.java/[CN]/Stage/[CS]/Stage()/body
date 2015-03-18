@@ -1,3 +1,4 @@
 {
-  this(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),false);
+  this(new ScalingViewport(Scaling.stretch,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),new OrthographicCamera()),new SpriteBatch());
+  ownsBatch=true;
 }

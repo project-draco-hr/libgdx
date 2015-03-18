@@ -1,0 +1,4 @@
+{
+  if (!(out instanceof DataOutputStream))   out=new DataOutputStream(out);
+  this.out=(DataOutputStream)out;
+}

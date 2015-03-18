@@ -1,4 +1,6 @@
 {
-  layout.padTop(padTop);
+  if (padTop == null)   throw new IllegalArgumentException("padTop cannot be null.");
+  this.padTop=padTop;
+  sizeInvalid=true;
   return this;
 }

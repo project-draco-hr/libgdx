@@ -1,0 +1,11 @@
+{
+  assert(m_proxyCount == 0);
+  m_proxyCount=m_shape.getChildCount();
+  for (int i=0; i < m_proxyCount; ++i) {
+    FixtureProxy proxy=m_proxies[i];
+    m_shape.computeAABB(proxy.aabb,xf,i);
+    proxy.proxyId=broadPhase.createProxy(proxy.aabb,proxy);
+    proxy.fixture=this;
+    proxy.childIndex=i;
+  }
+}

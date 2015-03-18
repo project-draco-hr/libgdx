@@ -10,7 +10,7 @@
   }
   tasks.clear();
   if (listener != null) {
-    listener.error(assetDesc.fileName,assetDesc.type,t);
+    listener.error(assetDesc,t);
   }
  else {
     throw new GdxRuntimeException(t);

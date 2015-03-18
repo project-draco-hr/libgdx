@@ -1,8 +1,0 @@
-{
-  try {
-    removeItemImpl(key);
-  }
- catch (  JavaScriptException e) {
-    throw new IOException("" + e);
-  }
-}

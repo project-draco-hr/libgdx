@@ -1,23 +1,29 @@
 {
   Class type=object.getClass();
   Object[] defaultValues=getDefaultValues(type);
-  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
-  if (fields == null)   fields=cacheFields(type);
+  OrderedMap<String,FieldMetadata> fields=getFields(type);
   int i=0;
-  for (  FieldMetadata metadata : fields.values()) {
+  for (  FieldMetadata metadata : new OrderedMapValues<FieldMetadata>(fields)) {
     Field field=metadata.field;
     try {
       Object value=field.get(object);
       if (defaultValues != null) {
         Object defaultValue=defaultValues[i++];
         if (value == null && defaultValue == null)         continue;
-        if (value != null && defaultValue != null && value.equals(defaultValue))         continue;
+        if (value != null && defaultValue != null) {
+          if (value.equals(defaultValue))           continue;
+          if (value.getClass().isArray() && defaultValue.getClass().isArray()) {
+            equals1[0]=value;
+            equals2[0]=defaultValue;
+            if (Arrays.deepEquals(equals1,equals2))             continue;
+          }
+        }
       }
       if (debug)       System.out.println("Writing field: " + field.getName() + " ("+ type.getName()+ ")");
       writer.name(field.getName());
       writeValue(value,field.getType(),metadata.elementType);
     }
- catch (    IllegalAccessException ex) {
+ catch (    ReflectionException ex) {
       throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
     }
 catch (    SerializationException ex) {

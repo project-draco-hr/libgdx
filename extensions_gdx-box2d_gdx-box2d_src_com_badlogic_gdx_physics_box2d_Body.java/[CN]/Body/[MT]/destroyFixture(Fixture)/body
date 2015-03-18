@@ -1,0 +1,7 @@
+{
+  this.world.destroyFixture(this,fixture);
+  fixture.setUserData(null);
+  this.world.fixtures.remove(fixture.addr);
+  this.fixtures.removeValue(fixture,true);
+  this.world.freeFixtures.free(fixture);
+}

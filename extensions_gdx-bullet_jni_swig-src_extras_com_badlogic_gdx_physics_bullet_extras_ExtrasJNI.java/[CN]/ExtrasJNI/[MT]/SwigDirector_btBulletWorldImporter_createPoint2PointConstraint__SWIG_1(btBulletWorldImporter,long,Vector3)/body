@@ -1,0 +1,3 @@
+{
+  return btPoint2PointConstraint.getCPtr(self.createPoint2PointConstraint(new btRigidBody(rbA,false),pivotInA));
+}

@@ -1,6 +1,6 @@
 {
   try {
-    BufferedReader reader=new BufferedReader(new InputStreamReader(Gdx.files.absolute(hieroFileRef).read()));
+    BufferedReader reader=new BufferedReader(new InputStreamReader(Gdx.files.absolute(hieroFileRef).read(),"UTF-8"));
     while (true) {
       String line=reader.readLine();
       if (line == null)       break;
@@ -9,7 +9,10 @@
       String[] pieces=line.split("=",2);
       String name=pieces[0].trim();
       String value=pieces[1];
-      if (name.equals("font.size")) {
+      if (name.equals("font.name")) {
+        fontName=value;
+      }
+ else       if (name.equals("font.size")) {
         fontSize=Integer.parseInt(value);
       }
  else       if (name.equals("font.bold")) {
@@ -17,6 +20,12 @@
       }
  else       if (name.equals("font.italic")) {
         italic=Boolean.parseBoolean(value);
+      }
+ else       if (name.equals("font2.file")) {
+        font2File=value;
+      }
+ else       if (name.equals("font2.use")) {
+        font2Active=Boolean.parseBoolean(value);
       }
  else       if (name.equals("pad.top")) {
         paddingTop=Integer.parseInt(value);

@@ -1,0 +1,4 @@
+{
+  this(id);
+  for (  Attribute attr : copyFrom)   set(attr.copy());
+}

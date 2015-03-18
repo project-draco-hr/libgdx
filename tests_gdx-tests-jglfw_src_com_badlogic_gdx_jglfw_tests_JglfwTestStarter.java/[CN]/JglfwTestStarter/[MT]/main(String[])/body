@@ -1,0 +1,8 @@
+{
+  if (argv.length > 0) {
+    runTest(argv[0]);
+    return;
+  }
+  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+  new JglfwTestStarter();
+}

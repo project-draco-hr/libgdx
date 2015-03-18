@@ -1,0 +1,5 @@
+{
+  if (Math.abs(x - this.x) > epsilon)   return false;
+  if (Math.abs(y - this.y) > epsilon)   return false;
+  return true;
+}

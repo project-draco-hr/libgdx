@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btOverlapCallback(),true);
+  CollisionJNI.btOverlapCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

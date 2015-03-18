@@ -1,0 +1,47 @@
+{
+  assert(m_world.isLocked() == false);
+  if (m_world.isLocked() == true) {
+    return;
+  }
+  assert(fixture.m_body == this);
+  assert(m_fixtureCount > 0);
+  Fixture node=m_fixtureList;
+  Fixture last=null;
+  boolean found=false;
+  while (node != null) {
+    if (node == fixture) {
+      node=fixture.m_next;
+      found=true;
+      break;
+    }
+    last=node;
+    node=node.m_next;
+  }
+  assert(found);
+  if (last == null) {
+    m_fixtureList=fixture.m_next;
+  }
+ else {
+    last.m_next=fixture.m_next;
+  }
+  ContactEdge edge=m_contactList;
+  while (edge != null) {
+    Contact c=edge.contact;
+    edge=edge.next;
+    Fixture fixtureA=c.getFixtureA();
+    Fixture fixtureB=c.getFixtureB();
+    if (fixture == fixtureA || fixture == fixtureB) {
+      m_world.m_contactManager.destroy(c);
+    }
+  }
+  if ((m_flags & e_activeFlag) == e_activeFlag) {
+    BroadPhase broadPhase=m_world.m_contactManager.m_broadPhase;
+    fixture.destroyProxies(broadPhase);
+  }
+  fixture.destroy();
+  fixture.m_body=null;
+  fixture.m_next=null;
+  fixture=null;
+  --m_fixtureCount;
+  resetMassData();
+}

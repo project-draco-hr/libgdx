@@ -10,7 +10,7 @@
     tmp2.set(end.x,end.y,0);
   }
  else {
-    tmp3.set(tmp.mul(u));
+    tmp3.set(tmp.scl(u));
     tmp2.set(tmp3.x + start.x,tmp3.y + start.y,0);
   }
   float x=center.x - tmp2.x;

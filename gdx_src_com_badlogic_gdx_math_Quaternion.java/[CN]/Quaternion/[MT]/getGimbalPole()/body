@@ -1,0 +1,4 @@
+{
+  final float t=y * x + z * w;
+  return t > 0.499f ? 1 : (t < -0.499f ? -1 : 0);
+}

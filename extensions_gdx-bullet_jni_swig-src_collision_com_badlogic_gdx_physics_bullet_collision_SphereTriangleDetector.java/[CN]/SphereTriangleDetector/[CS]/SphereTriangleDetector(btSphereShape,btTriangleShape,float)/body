@@ -1,0 +1,3 @@
+{
+  this(CollisionJNI.new_SphereTriangleDetector(btSphereShape.getCPtr(sphere),sphere,btTriangleShape.getCPtr(triangle),triangle,contactBreakingThreshold),true);
+}

@@ -1,0 +1,19 @@
+{
+  if (!forceUpdate && format == viewFormat && width == viewWidth && height == viewHeight) {
+    if (DEBUG)     Log.d(TAG," > surface is current, skipping surfaceChanged event");
+  }
+ else {
+    engineFormat=format;
+    engineWidth=width;
+    engineHeight=height;
+    if (linkedEngine == this) {
+      viewFormat=engineFormat;
+      viewWidth=engineWidth;
+      viewHeight=engineHeight;
+      view.surfaceChanged(this.getSurfaceHolder(),viewFormat,viewWidth,viewHeight);
+    }
+ else {
+      if (DEBUG)       Log.d(TAG," > engine is not active, skipping surfaceChanged event");
+    }
+  }
+}

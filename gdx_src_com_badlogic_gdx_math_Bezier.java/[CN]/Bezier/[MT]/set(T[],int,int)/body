@@ -1,0 +1,9 @@
+{
+  if (length < 2 || length > 4)   throw new GdxRuntimeException("Only first, second and third degree Bezier curves are supported.");
+  if (tmp == null)   tmp=points[0].cpy();
+  if (tmp2 == null)   tmp2=points[0].cpy();
+  if (tmp3 == null)   tmp3=points[0].cpy();
+  this.points.clear();
+  this.points.addAll(points,offset,length);
+  return this;
+}

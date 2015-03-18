@@ -1,30 +1,37 @@
 {
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  int steps=100;
-  int size=200;
-  int x=Gdx.graphics.getWidth() / 2 - size / 2;
-  int y=Gdx.graphics.getHeight() / 2 - size / 2;
-  renderer.setProjectionMatrix(stage.getCamera().combined);
-  renderer.begin(ShapeType.Box);
-  renderer.box(x,y,0,size,size,0);
-  renderer.end();
-  Interpolation interpolation=getInterpolation();
-  float lastX=x, lastY=y;
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+  float bottomLeftX=Gdx.graphics.getWidth() / 2 - graphSize / 2, bottomLeftY=Gdx.graphics.getHeight() / 2 - graphSize / 2;
+  String text=String.valueOf(duration);
+  if (text.length() > 4)   text=text.substring(0,text.lastIndexOf('.') + 3);
+  text="duration: " + text + " s (ctrl + scroll to change)";
+  stage.getBatch().begin();
+  list.getStyle().font.draw(stage.getBatch(),text,bottomLeftX + graphSize / 2 - list.getStyle().font.getBounds(text).width / 2,bottomLeftY + graphSize + list.getStyle().font.getLineHeight());
+  stage.getBatch().end();
   renderer.begin(ShapeType.Line);
-  for (int i=0; i <= steps; i++) {
-    float alpha=i / (float)steps;
-    float lineX=x + size * alpha;
-    float lineY=y + size * interpolation.apply(alpha);
-    renderer.line(lastX,lastY,lineX,lineY);
-    lastX=lineX;
-    lastY=lineY;
+  renderer.rect(bottomLeftX,bottomLeftY,graphSize,graphSize);
+  float lastX=bottomLeftX, lastY=bottomLeftY;
+  for (float step=0; step <= steps; step++) {
+    Interpolation interpolation=getInterpolation(selectedInterpolation);
+    float percent=step / steps;
+    float x=bottomLeftX + graphSize * percent, y=bottomLeftY + graphSize * interpolation.apply(percent);
+    renderer.line(lastX,lastY,x,y);
+    lastX=x;
+    lastY=y;
   }
+  time+=Gdx.graphics.getDeltaTime();
+  if (time > duration) {
+    time=Float.NaN;
+    startPosition.set(targetPosition);
+  }
+  renderer.line(bottomLeftX + graphSize * time / duration,bottomLeftY,bottomLeftX + graphSize * time / duration,bottomLeftY + graphSize);
+  renderer.setColor(Color.GRAY);
+  renderer.line(startPosition,targetPosition);
+  renderer.setColor(Color.WHITE);
   renderer.end();
-  timer+=Gdx.graphics.getDeltaTime();
-  Vector2 current=getCurrentPosition();
-  renderer.begin(ShapeType.FilledRectangle);
-  renderer.filledRect(current.x,current.y,20,20);
+  renderer.begin(ShapeType.Filled);
+  if (!Float.isNaN(time))   getPosition(time);
+  renderer.circle(position.x,position.y,7);
   renderer.end();
-  stage.act(Gdx.graphics.getDeltaTime());
+  stage.act();
   stage.draw();
 }

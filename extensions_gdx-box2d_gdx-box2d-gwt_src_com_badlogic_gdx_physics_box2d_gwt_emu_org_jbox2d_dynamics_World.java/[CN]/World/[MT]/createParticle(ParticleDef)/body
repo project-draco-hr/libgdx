@@ -1,0 +1,8 @@
+{
+  assert(isLocked() == false);
+  if (isLocked()) {
+    return 0;
+  }
+  int p=m_particleSystem.createParticle(def);
+  return p;
+}

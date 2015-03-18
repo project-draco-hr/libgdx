@@ -1,3 +1,4 @@
 {
-  return setMultiLineText(str,x,y,0,HAlignment.LEFT);
+  clear();
+  return addMultiLineText(str,x,y,0,HAlignment.LEFT);
 }

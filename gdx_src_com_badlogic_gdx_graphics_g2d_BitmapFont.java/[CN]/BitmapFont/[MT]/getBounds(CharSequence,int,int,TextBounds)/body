@@ -1,8 +1,18 @@
 {
+  BitmapFontData data=this.data;
   int width=0;
   Glyph lastGlyph=null;
   while (start < end) {
-    lastGlyph=data.getGlyph(str.charAt(start++));
+    char ch=str.charAt(start++);
+    if (ch == '[' && markupEnabled) {
+      if (!(start < end && str.charAt(start) == '[')) {
+        while (start < end && str.charAt(start) != ']')         start++;
+        start++;
+        continue;
+      }
+      start++;
+    }
+    lastGlyph=data.getGlyph(ch);
     if (lastGlyph != null) {
       width=lastGlyph.xadvance;
       break;
@@ -10,6 +20,14 @@
   }
   while (start < end) {
     char ch=str.charAt(start++);
+    if (ch == '[' && markupEnabled) {
+      if (!(start < end && str.charAt(start) == '[')) {
+        while (start < end && str.charAt(start) != ']')         start++;
+        start++;
+        continue;
+      }
+      start++;
+    }
     Glyph g=data.getGlyph(ch);
     if (g != null) {
       width+=lastGlyph.getKerning(ch);

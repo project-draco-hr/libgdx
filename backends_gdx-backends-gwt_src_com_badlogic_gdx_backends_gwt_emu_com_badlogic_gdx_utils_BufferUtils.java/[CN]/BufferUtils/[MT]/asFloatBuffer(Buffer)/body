@@ -1,0 +1,7 @@
+{
+  FloatBuffer buffer=null;
+  if (data instanceof ByteBuffer)   buffer=((ByteBuffer)data).asFloatBuffer();
+ else   if (data instanceof FloatBuffer)   buffer=(FloatBuffer)data;
+  if (buffer == null)   throw new GdxRuntimeException("data must be a ByteBuffer or FloatBuffer");
+  return buffer;
+}

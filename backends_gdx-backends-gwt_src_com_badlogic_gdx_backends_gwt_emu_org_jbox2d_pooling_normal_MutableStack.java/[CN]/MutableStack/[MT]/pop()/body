@@ -1,6 +1,0 @@
-{
-  if (index >= size) {
-    extendStack(size * 2);
-  }
-  return (E)stack[index++];
-}

@@ -1,0 +1,7 @@
+{
+  if (this.useGPU != useGPU) {
+    this.useGPU=useGPU;
+    initRenderData();
+    allocRenderables(bufferedParticlesCount);
+  }
+}

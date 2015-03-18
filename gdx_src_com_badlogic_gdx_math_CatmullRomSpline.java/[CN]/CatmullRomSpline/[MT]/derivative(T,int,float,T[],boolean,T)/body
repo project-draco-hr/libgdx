@@ -1,0 +1,9 @@
+{
+  final int n=points.length;
+  final float u2=u * u;
+  out.set(points[i]).scl(-u * 5 + u2 * 4.5f);
+  if (continuous || i > 0)   out.add(tmp.set(points[(n + i - 1) % n]).scl(-0.5f + u * 2 - u2 * 1.5f));
+  if (continuous || i < (n - 1))   out.add(tmp.set(points[(i + 1) % n]).scl(0.5f + u * 4 - u2 * 4.5f));
+  if (continuous || i < (n - 2))   out.add(tmp.set(points[(i + 2) % n]).scl(-u + u2 * 1.5f));
+  return out;
+}

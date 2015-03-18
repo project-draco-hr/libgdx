@@ -1,5 +1,5 @@
 {
-  DirectReadOnlyByteBuffer slice=new DirectReadOnlyByteBuffer(byteArray.getBuffer(),remaining(),byteArray.getByteOffset() + position);
+  DirectReadOnlyByteBuffer slice=new DirectReadOnlyByteBuffer(byteArray.buffer(),remaining(),byteArray.byteOffset() + position);
   slice.order=order;
   return slice;
 }

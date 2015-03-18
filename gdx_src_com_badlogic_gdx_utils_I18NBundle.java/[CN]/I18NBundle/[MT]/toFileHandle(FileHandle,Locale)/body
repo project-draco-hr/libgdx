@@ -1,0 +1,24 @@
+{
+  StringBuilder sb=new StringBuilder(baseFileHandle.name());
+  if (!locale.equals(ROOT_LOCALE)) {
+    String language=locale.getLanguage();
+    String country=locale.getCountry();
+    String variant=locale.getVariant();
+    boolean emptyLanguage="".equals(language);
+    boolean emptyCountry="".equals(country);
+    boolean emptyVariant="".equals(variant);
+    if (!(emptyLanguage && emptyCountry && emptyVariant)) {
+      sb.append('_');
+      if (!emptyVariant) {
+        sb.append(language).append('_').append(country).append('_').append(variant);
+      }
+ else       if (!emptyCountry) {
+        sb.append(language).append('_').append(country);
+      }
+ else {
+        sb.append(language);
+      }
+    }
+  }
+  return baseFileHandle.sibling(sb.append(".properties").toString());
+}

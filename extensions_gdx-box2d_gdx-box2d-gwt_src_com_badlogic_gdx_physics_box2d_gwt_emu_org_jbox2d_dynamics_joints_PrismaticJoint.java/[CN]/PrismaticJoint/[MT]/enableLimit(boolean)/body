@@ -1,0 +1,8 @@
+{
+  if (flag != m_enableLimit) {
+    m_bodyA.setAwake(true);
+    m_bodyB.setAwake(true);
+    m_enableLimit=flag;
+    m_impulse.z=0.0f;
+  }
+}

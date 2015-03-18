@@ -1,0 +1,22 @@
+{
+  if (object == null) {
+    return value();
+  }
+ else   if (object instanceof Number) {
+    Number number=(Number)object;
+    if (object instanceof Byte)     return value(number.byteValue());
+    if (object instanceof Short)     return value(number.shortValue());
+    if (object instanceof Integer)     return value(number.intValue());
+    if (object instanceof Long)     return value(number.longValue());
+    if (object instanceof Float)     return value(number.floatValue());
+    if (object instanceof Double)     return value(number.doubleValue());
+  }
+ else   if (object instanceof Character) {
+    return value(((Character)object).charValue());
+  }
+ else   if (object instanceof CharSequence) {
+    return value(object.toString());
+  }
+ else   throw new IOException("Unknown object type.");
+  return this;
+}

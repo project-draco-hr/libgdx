@@ -78,7 +78,7 @@
             @Override public TextureDataType getType(){
               return TextureDataType.Pixmap;
             }
-            @Override public void consumeCompressedData(){
+            @Override public void consumeCustomData(            int target){
             }
             @Override public boolean isPrepared(){
               return true;

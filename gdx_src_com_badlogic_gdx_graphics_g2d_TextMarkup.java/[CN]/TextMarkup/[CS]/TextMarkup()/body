@@ -1,0 +1,11 @@
+{
+  if (Gdx.app != app) {
+    colorChunkPool=new Pool<ColorChunk>(32){
+      protected ColorChunk newObject(){
+        return new ColorChunk();
+      }
+    }
+;
+    app=Gdx.app;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  if (align == null)   align=bottomi;
+ else   align=(align | Align.bottom) & ~Align.top;
+  return this;
+}

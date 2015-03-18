@@ -1,7 +1,4 @@
 {
-  reset(end - start);
-  y+=font.data.ascent;
-  textBounds.width=addToCache(str,x,y,start,end);
-  textBounds.height=font.data.capHeight;
-  return textBounds;
+  clear();
+  return addText(str,x,y,start,end);
 }

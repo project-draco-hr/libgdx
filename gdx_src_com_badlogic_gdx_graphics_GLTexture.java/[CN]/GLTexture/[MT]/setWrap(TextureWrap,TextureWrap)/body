@@ -1,0 +1,7 @@
+{
+  this.uWrap=u;
+  this.vWrap=v;
+  bind();
+  Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_WRAP_S,u.getGLEnum());
+  Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_WRAP_T,v.getGLEnum());
+}

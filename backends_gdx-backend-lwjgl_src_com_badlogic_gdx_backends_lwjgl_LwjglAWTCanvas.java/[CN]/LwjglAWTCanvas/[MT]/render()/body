@@ -1,18 +1,8 @@
 {
+  if (!running)   return;
   setGlobals();
-  canvas.setCursor(null);
+  canvas.setCursor(cursor);
   graphics.updateTime();
-synchronized (runnables) {
-    for (int i=0; i < runnables.size(); i++) {
-      try {
-        runnables.get(i).run();
-      }
- catch (      Throwable t) {
-        t.printStackTrace();
-      }
-    }
-    runnables.clear();
-  }
   int width=Math.max(1,graphics.getWidth());
   int height=Math.max(1,graphics.getHeight());
   if (lastWidth != width || lastHeight != height) {
@@ -22,9 +12,25 @@ synchronized (runnables) {
     resize(width,height);
     listener.resize(width,height);
   }
+synchronized (runnables) {
+    executedRunnables.clear();
+    executedRunnables.addAll(runnables);
+    runnables.clear();
+    for (int i=0; i < executedRunnables.size(); i++) {
+      try {
+        executedRunnables.get(i).run();
+      }
+ catch (      Throwable t) {
+        t.printStackTrace();
+      }
+    }
+  }
   input.processEvents();
-  listener.render();
-  if (audio != null) {
-    audio.update();
+  if (running) {
+    graphics.frameId++;
+    listener.render();
+    if (audio != null) {
+      audio.update();
+    }
   }
 }

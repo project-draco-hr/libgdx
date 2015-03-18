@@ -1,8 +1,3 @@
 {
-  if (x + width > amountX + areaWidth)   amountX=x + width - areaWidth;
-  if (x < amountX)   amountX=x;
-  amountX=MathUtils.clamp(amountX,0,maxX);
-  if (amountY > maxY - y - height + areaHeight)   amountY=maxY - y - height + areaHeight;
-  if (amountY < maxY - y)   amountY=maxY - y;
-  amountY=MathUtils.clamp(amountY,0,maxY);
+  scrollTo(x,y,width,height,false,false);
 }

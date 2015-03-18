@@ -1,0 +1,16 @@
+{
+  Locale targetLocale=candidateLocales.get(candidateIndex);
+  I18NBundle parent=null;
+  if (candidateIndex != candidateLocales.size() - 1) {
+    parent=loadBundleChain(baseFileHandle,encoding,candidateLocales,candidateIndex + 1,baseBundle);
+  }
+ else   if (baseBundle != null && targetLocale.equals(ROOT_LOCALE)) {
+    return baseBundle;
+  }
+  I18NBundle bundle=loadBundle(baseFileHandle,encoding,targetLocale);
+  if (bundle != null) {
+    bundle.parent=parent;
+    return bundle;
+  }
+  return parent;
+}

@@ -1,5 +1,11 @@
 {
-  int orientation=app.getWindowManager().getDefaultDisplay().getOrientation();
+  int orientation=0;
+  if (context instanceof Activity) {
+    orientation=((Activity)context).getWindowManager().getDefaultDisplay().getRotation();
+  }
+ else {
+    orientation=((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
+  }
 switch (orientation) {
 case Surface.ROTATION_0:
     return 0;

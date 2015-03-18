@@ -1,9 +1,3 @@
 {
-  if (currType != ShapeType.Line)   throw new GdxRuntimeException("Must call begin(ShapeType.Line)");
-  checkDirty();
-  checkFlush(2);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x,y,z);
-  renderer.color(color.r,color.g,color.b,color.a);
-  renderer.vertex(x2,y2,z2);
+  line(x,y,z,x2,y2,z2,color,color);
 }

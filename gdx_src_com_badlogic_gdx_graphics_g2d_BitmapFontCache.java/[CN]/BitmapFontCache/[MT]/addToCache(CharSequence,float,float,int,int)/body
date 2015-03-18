@@ -2,9 +2,23 @@
   float startX=x;
   BitmapFont font=this.font;
   Glyph lastGlyph=null;
-  if (font.data.scaleX == 1 && font.data.scaleY == 1) {
+  BitmapFontData data=font.data;
+  textChanged=start < end;
+  if (data.scaleX == 1 && data.scaleY == 1) {
     while (start < end) {
-      lastGlyph=font.data.getGlyph(str.charAt(start++));
+      char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
+        }
+      }
+      lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
         addGlyph(lastGlyph,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width,lastGlyph.height);
         x+=lastGlyph.xadvance;
@@ -13,7 +27,18 @@
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=font.data.getGlyph(ch);
+      if (ch == '[' && font.markupEnabled) {
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
+        }
+      }
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch);
         lastGlyph=g;
@@ -23,22 +48,45 @@
     }
   }
  else {
-    float scaleX=font.data.scaleX, scaleY=font.data.scaleY;
+    float scaleX=data.scaleX, scaleY=data.scaleY;
     while (start < end) {
-      lastGlyph=font.data.getGlyph(str.charAt(start++));
+      char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
+        }
+      }
+      lastGlyph=data.getGlyph(ch);
       if (lastGlyph != null) {
-        addGlyph(lastGlyph,x + lastGlyph.xoffset * scaleX,y + lastGlyph.yoffset * scaleY,lastGlyph.width * scaleX,lastGlyph.height * scaleY);
+        addGlyph(lastGlyph,x + lastGlyph.xoffset,y + lastGlyph.yoffset,lastGlyph.width * scaleX,lastGlyph.height * scaleY);
         x+=lastGlyph.xadvance * scaleX;
         break;
       }
     }
     while (start < end) {
       char ch=str.charAt(start++);
-      Glyph g=font.data.getGlyph(ch);
+      if (ch == '[' && font.markupEnabled) {
+        if (start < end && str.charAt(start) == '[')         start++;
+ else {
+          int colorTagLen=markup.parseColorTag(str,charsCount,start,end);
+          if (colorTagLen >= 0) {
+            color=markup.getLastColor().toFloatBits();
+            start+=colorTagLen + 1;
+            continue;
+          }
+        }
+      }
+      Glyph g=data.getGlyph(ch);
       if (g != null) {
         x+=lastGlyph.getKerning(ch) * scaleX;
         lastGlyph=g;
-        addGlyph(lastGlyph,x + g.xoffset * scaleX,y + g.yoffset * scaleY,g.width * scaleX,g.height * scaleY);
+        addGlyph(lastGlyph,x + g.xoffset,y + g.yoffset,g.width * scaleX,g.height * scaleY);
         x+=g.xadvance * scaleX;
       }
     }

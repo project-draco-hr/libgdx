@@ -1,6 +1,0 @@
-{
-  if (peripheral == Peripheral.Accelerometer && config.useAccelerometer)   return true;
-  if (peripheral == Peripheral.MultitouchScreen)   return true;
-  if (peripheral == Peripheral.OnscreenKeyboard)   return true;
-  return false;
-}

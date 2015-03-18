@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btQuantizedBvh_deSerializeInPlace(SWIGTYPE_p_void.getCPtr(i_alignedDataBuffer),i_dataBufferSize,i_swapEndian);
-  return (cPtr == 0) ? null : new btQuantizedBvh(cPtr,false);
-}

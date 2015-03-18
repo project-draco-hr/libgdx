@@ -1,0 +1,5 @@
+{
+  inputManagerPtr=createInputManager(hwnd);
+  String[] names=getJoystickNames(inputManagerPtr);
+  for (int i=0, n=names.length; i < n; i++)   joysticks.add(new OisJoystick(createJoystick(inputManagerPtr),names[i]));
+}

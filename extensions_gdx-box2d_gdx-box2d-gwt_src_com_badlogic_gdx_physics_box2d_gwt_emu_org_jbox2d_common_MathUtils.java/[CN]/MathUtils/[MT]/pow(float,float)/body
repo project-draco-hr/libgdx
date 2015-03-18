@@ -1,0 +1,8 @@
+{
+  if (Settings.FAST_POW) {
+    return fastPow(a,b);
+  }
+ else {
+    return (float)StrictMath.pow(a,b);
+  }
+}

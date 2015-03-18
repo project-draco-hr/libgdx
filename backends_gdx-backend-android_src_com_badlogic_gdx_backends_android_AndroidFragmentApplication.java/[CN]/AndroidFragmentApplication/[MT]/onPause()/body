@@ -1,0 +1,16 @@
+{
+  boolean isContinuous=graphics.isContinuousRendering();
+  boolean isContinuousEnforced=AndroidGraphics.enforceContinuousRendering;
+  AndroidGraphics.enforceContinuousRendering=true;
+  graphics.setContinuousRendering(true);
+  graphics.pause();
+  input.onPause();
+  if (isRemoving() || getActivity().isFinishing()) {
+    graphics.clearManagedCaches();
+    graphics.destroy();
+  }
+  AndroidGraphics.enforceContinuousRendering=isContinuousEnforced;
+  graphics.setContinuousRendering(isContinuous);
+  graphics.onPauseGLSurfaceView();
+  super.onPause();
+}

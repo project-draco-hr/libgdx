@@ -1,0 +1,21 @@
+{
+  float width=getWidth(), height=getHeight();
+  float padTop=getPadTop();
+  super.drawBackground(batch,parentAlpha,x,y);
+  buttonTable.getColor().a=getColor().a;
+  buttonTable.pack();
+  buttonTable.setPosition(width - buttonTable.getWidth(),Math.min(height - padTop,height - buttonTable.getHeight()));
+  buttonTable.draw(batch,parentAlpha);
+  y+=height;
+  TextBounds bounds=titleCache.getBounds();
+  if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
+ else   if ((titleAlignment & Align.right) != 0)   x+=width - bounds.width - getPadRight();
+ else   x+=(width - bounds.width) / 2;
+  if ((titleAlignment & Align.top) == 0) {
+    if ((titleAlignment & Align.bottom) != 0)     y-=padTop - bounds.height;
+ else     y-=(padTop - bounds.height) / 2;
+  }
+  titleCache.tint(Color.tmp.set(getColor()).mul(style.titleFontColor));
+  titleCache.setPosition((int)x,(int)y);
+  titleCache.draw(batch,parentAlpha);
+}

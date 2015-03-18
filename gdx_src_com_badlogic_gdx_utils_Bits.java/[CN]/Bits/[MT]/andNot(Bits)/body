@@ -1,0 +1,5 @@
+{
+  for (int i=0, j=bits.length, k=other.bits.length; i < j && i < k; i++) {
+    bits[i]&=~other.bits[i];
+  }
+}

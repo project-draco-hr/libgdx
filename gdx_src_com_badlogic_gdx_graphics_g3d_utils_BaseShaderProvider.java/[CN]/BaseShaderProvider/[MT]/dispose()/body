@@ -1,0 +1,6 @@
+{
+  for (  Shader shader : shaders) {
+    shader.dispose();
+  }
+  shaders.clear();
+}

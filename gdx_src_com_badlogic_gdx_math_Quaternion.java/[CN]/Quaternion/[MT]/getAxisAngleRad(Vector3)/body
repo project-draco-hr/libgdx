@@ -1,0 +1,16 @@
+{
+  if (this.w > 1)   this.nor();
+  float angle=(float)(2.0 * Math.acos(this.w));
+  double s=Math.sqrt(1 - this.w * this.w);
+  if (s < MathUtils.FLOAT_ROUNDING_ERROR) {
+    axis.x=this.x;
+    axis.y=this.y;
+    axis.z=this.z;
+  }
+ else {
+    axis.x=(float)(this.x / s);
+    axis.y=(float)(this.y / s);
+    axis.z=(float)(this.z / s);
+  }
+  return angle;
+}

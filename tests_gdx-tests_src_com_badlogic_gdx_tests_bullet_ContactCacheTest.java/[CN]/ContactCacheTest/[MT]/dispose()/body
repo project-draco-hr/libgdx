@@ -1,0 +1,5 @@
+{
+  if (contactListener != null)   contactListener.dispose();
+  contactListener=null;
+  super.dispose();
+}

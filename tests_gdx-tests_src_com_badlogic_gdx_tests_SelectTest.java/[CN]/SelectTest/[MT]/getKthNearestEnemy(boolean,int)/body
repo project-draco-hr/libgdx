@@ -1,0 +1,12 @@
+{
+  Dummy kthDummy=null;
+  perf.reset();
+  allPerf.start();
+  for (  Dummy d : player) {
+    Dummy found=d.getKthNearestEnemy(k);
+  }
+  allPerf.stop();
+  allPerf.tick();
+  if (silent)   return;
+  print(String.format("found nearest. min: %.4f, max: %.4f, avg: %.4f, total: %.3f ms",perf.time.min * 1000,perf.time.max * 1000,perf.time.average * 1000,perf.time.total * 1000));
+}

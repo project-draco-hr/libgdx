@@ -1,0 +1,6 @@
+{
+  this.velocities=new Array<DynamicsModifier>(true,velocities.length,DynamicsModifier.class);
+  for (  DynamicsModifier value : velocities) {
+    this.velocities.add((DynamicsModifier)value.copy());
+  }
+}

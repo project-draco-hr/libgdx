@@ -1,0 +1,7 @@
+{
+  if (ownedResources != null) {
+    for (    Disposable resource : ownedResources) {
+      resource.dispose();
+    }
+  }
+}

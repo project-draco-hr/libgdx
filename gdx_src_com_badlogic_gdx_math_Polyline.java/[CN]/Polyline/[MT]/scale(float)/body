@@ -1,0 +1,6 @@
+{
+  this.scaleX+=amount;
+  this.scaleY+=amount;
+  dirty=true;
+  calculateScaledLength=true;
+}

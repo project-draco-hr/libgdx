@@ -1,0 +1,33 @@
+{
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  Vec2 vC=data.velocities[m_indexC].v;
+  float wC=data.velocities[m_indexC].w;
+  Vec2 vD=data.velocities[m_indexD].v;
+  float wD=data.velocities[m_indexD].w;
+  Vec2 temp1=pool.popVec2();
+  Vec2 temp2=pool.popVec2();
+  float Cdot=Vec2.dot(m_JvAC,temp1.set(vA).subLocal(vC)) + Vec2.dot(m_JvBD,temp2.set(vB).subLocal(vD));
+  Cdot+=(m_JwA * wA - m_JwC * wC) + (m_JwB * wB - m_JwD * wD);
+  pool.pushVec2(2);
+  float impulse=-m_mass * Cdot;
+  m_impulse+=impulse;
+  vA.x+=(m_mA * impulse) * m_JvAC.x;
+  vA.y+=(m_mA * impulse) * m_JvAC.y;
+  wA+=m_iA * impulse * m_JwA;
+  vB.x+=(m_mB * impulse) * m_JvBD.x;
+  vB.y+=(m_mB * impulse) * m_JvBD.y;
+  wB+=m_iB * impulse * m_JwB;
+  vC.x-=(m_mC * impulse) * m_JvAC.x;
+  vC.y-=(m_mC * impulse) * m_JvAC.y;
+  wC-=m_iC * impulse * m_JwC;
+  vD.x-=(m_mD * impulse) * m_JvBD.x;
+  vD.y-=(m_mD * impulse) * m_JvBD.y;
+  wD-=m_iD * impulse * m_JwD;
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].w=wB;
+  data.velocities[m_indexC].w=wC;
+  data.velocities[m_indexD].w=wD;
+}

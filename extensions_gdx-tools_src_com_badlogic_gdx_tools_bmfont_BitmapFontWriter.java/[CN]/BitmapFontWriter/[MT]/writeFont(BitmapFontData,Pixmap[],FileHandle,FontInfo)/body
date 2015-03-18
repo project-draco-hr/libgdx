@@ -1,0 +1,4 @@
+{
+  String[] pageRefs=writePixmaps(pages,outFntFile.parent(),outFntFile.nameWithoutExtension());
+  writeFont(fontData,pageRefs,outFntFile,info,pages[0].getWidth(),pages[0].getHeight());
+}

@@ -1,0 +1,9 @@
+{
+  OutputStream output=file.write(false);
+  try {
+    write(output,pixmap);
+  }
+  finally {
+    StreamUtils.closeQuietly(output);
+  }
+}

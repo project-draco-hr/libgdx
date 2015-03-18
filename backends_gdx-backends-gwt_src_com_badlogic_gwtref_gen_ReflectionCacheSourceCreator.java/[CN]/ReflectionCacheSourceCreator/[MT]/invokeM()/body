@@ -1,5 +1,8 @@
 {
   p("public Object invoke(Method m, Object obj, Object[] params) {");
+  SwitchedCodeBlock pc=new SwitchedCodeBlock("m.methodId");
+  int subN=0;
+  int nDispatch=0;
   for (  MethodStub stub : methodStubs) {
     if (stub.enclosingType == null)     continue;
     if (stub.enclosingType.contains("[]"))     continue;
@@ -13,20 +16,23 @@
       }
     }
     if (!paramsOk)     continue;
-    p("   if(m.methodId.equals(\"" + stub.methodId + "\")) {");
-    if (stub.returnType.equals("void")) {
-      pn("      " + stub.methodId + "(");
-      addParameters(stub);
-      p(");");
-      p("      return null;");
+    buffer.setLength(0);
+    pbn("return m" + stub.methodId + "(");
+    addParameters(stub);
+    pbn(");");
+    pc.add(stub.methodId,buffer.toString());
+    nDispatch++;
+    if (nDispatch > 1000) {
+      pc.print();
+      pc=new SwitchedCodeBlock("m.methodId");
+      subN++;
+      p("   return invoke" + subN + "(m, obj, params);");
+      p("}");
+      p("public Object invoke" + subN + "(Method m, Object obj, Object[] params) {");
+      nDispatch=0;
     }
- else {
-      pn("      return " + stub.methodId + "(");
-      addParameters(stub);
-      pn(");");
-    }
-    p("   }");
   }
-  p("   return null;");
+  pc.print();
+  p("   throw new IllegalArgumentException(\"Missing method-stub \" + m.methodId + \" for method \" + m.name);");
   p("}");
 }

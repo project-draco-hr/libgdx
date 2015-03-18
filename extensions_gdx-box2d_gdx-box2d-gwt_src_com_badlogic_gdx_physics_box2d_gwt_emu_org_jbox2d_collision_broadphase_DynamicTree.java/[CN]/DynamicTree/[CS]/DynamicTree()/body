@@ -1,0 +1,15 @@
+{
+  m_root=null;
+  m_nodeCount=0;
+  m_nodeCapacity=16;
+  m_nodes=new DynamicTreeNode[16];
+  for (int i=m_nodeCapacity - 1; i >= 0; i--) {
+    m_nodes[i]=new DynamicTreeNode(i);
+    m_nodes[i].parent=(i == m_nodeCapacity - 1) ? null : m_nodes[i + 1];
+    m_nodes[i].height=-1;
+  }
+  m_freeList=0;
+  for (int i=0; i < drawVecs.length; i++) {
+    drawVecs[i]=new Vec2();
+  }
+}

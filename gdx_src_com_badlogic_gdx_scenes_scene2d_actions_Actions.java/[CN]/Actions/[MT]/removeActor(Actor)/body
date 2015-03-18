@@ -1,5 +1,5 @@
 {
   RemoveActorAction action=action(RemoveActorAction.class);
-  action.setRemoveActor(removeActor);
+  action.setTarget(removeActor);
   return action;
 }

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btBroadphaseProxy_m_aabbMax_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btVector3(cPtr,false);
-}

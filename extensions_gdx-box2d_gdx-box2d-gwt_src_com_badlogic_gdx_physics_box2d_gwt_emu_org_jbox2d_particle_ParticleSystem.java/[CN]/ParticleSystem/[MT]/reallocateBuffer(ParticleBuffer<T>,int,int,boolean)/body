@@ -1,0 +1,4 @@
+{
+  assert(newCapacity > oldCapacity);
+  return BufferUtils.reallocateBuffer(buffer.dataClass,buffer.data,buffer.userSuppliedCapacity,oldCapacity,newCapacity,deferred);
+}

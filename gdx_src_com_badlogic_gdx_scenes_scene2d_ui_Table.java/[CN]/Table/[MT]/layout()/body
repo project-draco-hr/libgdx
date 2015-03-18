@@ -1,3 +1,33 @@
 {
-  layout.layout();
+  float width=getWidth();
+  float height=getHeight();
+  layout(0,0,width,height);
+  Array<Cell> cells=this.cells;
+  if (round) {
+    for (int i=0, n=cells.size; i < n; i++) {
+      Cell c=cells.get(i);
+      float actorWidth=Math.round(c.actorWidth);
+      float actorHeight=Math.round(c.actorHeight);
+      float actorX=Math.round(c.actorX);
+      float actorY=height - Math.round(c.actorY) - actorHeight;
+      c.setActorBounds(actorX,actorY,actorWidth,actorHeight);
+      Actor actor=c.actor;
+      if (actor != null)       actor.setBounds(actorX,actorY,actorWidth,actorHeight);
+    }
+  }
+ else {
+    for (int i=0, n=cells.size; i < n; i++) {
+      Cell c=cells.get(i);
+      float actorHeight=c.actorHeight;
+      float actorY=height - c.actorY - actorHeight;
+      c.setActorY(actorY);
+      Actor actor=c.actor;
+      if (actor != null)       actor.setBounds(c.actorX,actorY,c.actorWidth,actorHeight);
+    }
+  }
+  Array<Actor> children=getChildren();
+  for (int i=0, n=children.size; i < n; i++) {
+    Actor child=children.get(i);
+    if (child instanceof Layout)     ((Layout)child).validate();
+  }
 }

@@ -1,0 +1,36 @@
+{
+  float xfqc=xf.q.c;
+  float xfqs=xf.q.s;
+  float xfpx=xf.p.x;
+  float xfpy=xf.p.y;
+  float v1x=(xfqc * m_vertex1.x - xfqs * m_vertex1.y) + xfpx;
+  float v1y=(xfqs * m_vertex1.x + xfqc * m_vertex1.y) + xfpy;
+  float v2x=(xfqc * m_vertex2.x - xfqs * m_vertex2.y) + xfpx;
+  float v2y=(xfqs * m_vertex2.x + xfqc * m_vertex2.y) + xfpy;
+  float dx=p.x - v1x;
+  float dy=p.y - v1y;
+  float sx=v2x - v1x;
+  float sy=v2y - v1y;
+  float ds=dx * sx + dy * sy;
+  if (ds > 0) {
+    float s2=sx * sx + sy * sy;
+    if (ds > s2) {
+      dx=p.x - v2x;
+      dy=p.y - v2y;
+    }
+ else {
+      dx-=ds / s2 * sx;
+      dy-=ds / s2 * sy;
+    }
+  }
+  float d1=MathUtils.sqrt(dx * dx + dy * dy);
+  if (d1 > 0) {
+    normalOut.x=1 / d1 * dx;
+    normalOut.y=1 / d1 * dy;
+  }
+ else {
+    normalOut.x=0;
+    normalOut.y=0;
+  }
+  return d1;
+}

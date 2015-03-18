@@ -1,0 +1,5 @@
+{
+  if (isModified(input,output,packFileName,settings)) {
+    process(settings,input,output,packFileName);
+  }
+}

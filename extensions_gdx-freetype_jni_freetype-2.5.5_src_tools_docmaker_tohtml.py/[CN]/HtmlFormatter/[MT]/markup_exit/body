@@ -1,0 +1,5 @@
+def markup_exit(self, markup, block):
+    if (markup.tag == 'description'):
+        print description_footer
+    else:
+        print marker_footer

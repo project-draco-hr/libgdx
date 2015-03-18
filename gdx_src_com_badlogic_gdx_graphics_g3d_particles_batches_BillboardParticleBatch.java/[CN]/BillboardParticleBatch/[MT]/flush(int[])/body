@@ -1,0 +1,18 @@
+{
+  if (useGPU) {
+    fillVerticesGPU(offsets);
+  }
+ else {
+    if (mode == AlignMode.Screen)     fillVerticesToScreenCPU(offsets);
+ else     if (mode == AlignMode.ViewPoint)     fillVerticesToViewPointCPU(offsets);
+  }
+  int addedVertexCount=0;
+  int vCount=bufferedParticlesCount * 4;
+  for (int v=0; v < vCount; v+=addedVertexCount) {
+    addedVertexCount=Math.min(vCount - v,MAX_VERTICES_PER_MESH);
+    Renderable renderable=renderablePool.obtain();
+    renderable.meshPartSize=(addedVertexCount / 4) * 6;
+    renderable.mesh.setVertices(vertices,currentVertexSize * v,currentVertexSize * addedVertexCount);
+    renderables.add(renderable);
+  }
+}

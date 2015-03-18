@@ -1,0 +1,5 @@
+{
+  final int n=uniforms.size;
+  for (int i=0; i < n; i++)   if (uniforms.get(i).equals(alias))   return i;
+  return -1;
+}

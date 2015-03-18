@@ -1,0 +1,11 @@
+{
+  super(argWorld,def);
+  m_localAnchorA=def.localAnchorA.clone();
+  m_localAnchorB=def.localAnchorB.clone();
+  m_length=def.length;
+  m_impulse=0.0f;
+  m_frequencyHz=def.frequencyHz;
+  m_dampingRatio=def.dampingRatio;
+  m_gamma=0.0f;
+  m_bias=0.0f;
+}

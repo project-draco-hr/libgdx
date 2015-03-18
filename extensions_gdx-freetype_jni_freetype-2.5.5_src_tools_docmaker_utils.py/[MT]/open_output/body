@@ -1,0 +1,8 @@
+def open_output(filename):
+    global output_dir
+    if (output_dir and (output_dir != '')):
+        filename = ((output_dir + os.sep) + filename)
+    old_stdout = sys.stdout
+    new_file = open(filename, 'w')
+    sys.stdout = new_file
+    return (new_file, old_stdout)

@@ -3,8 +3,12 @@
   for (int i=0; i < len; i++) {
     if (realId[i] == -1)     return i;
   }
-  int[] tmp=new int[realId.length + 1];
-  System.arraycopy(realId,0,tmp,0,realId.length);
-  realId=tmp;
-  return tmp.length - 1;
+  realId=resize(realId);
+  touchX=resize(touchX);
+  touchY=resize(touchY);
+  deltaX=resize(deltaX);
+  deltaY=resize(deltaY);
+  touched=resize(touched);
+  button=resize(button);
+  return len;
 }

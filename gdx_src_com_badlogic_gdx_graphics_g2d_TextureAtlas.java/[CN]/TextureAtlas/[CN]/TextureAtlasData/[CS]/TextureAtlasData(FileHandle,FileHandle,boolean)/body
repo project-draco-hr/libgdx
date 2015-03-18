@@ -8,7 +8,13 @@
       if (line.trim().length() == 0)       pageImage=null;
  else       if (pageImage == null) {
         FileHandle file=imagesDir.child(line);
-        Format format=Format.valueOf(readValue(reader));
+        float width=0, height=0;
+        if (readTuple(reader) == 2) {
+          width=Integer.parseInt(tuple[0]);
+          height=Integer.parseInt(tuple[1]);
+          readTuple(reader);
+        }
+        Format format=Format.valueOf(tuple[0]);
         readTuple(reader);
         TextureFilter min=TextureFilter.valueOf(tuple[0]);
         TextureFilter max=TextureFilter.valueOf(tuple[1]);
@@ -21,7 +27,7 @@
           repeatX=Repeat;
           repeatY=Repeat;
         }
-        pageImage=new Page(file,min.isMipMap(),format,min,max,repeatX,repeatY);
+        pageImage=new Page(file,width,height,min.isMipMap(),format,min,max,repeatX,repeatY);
         pages.add(pageImage);
       }
  else {
@@ -42,7 +48,10 @@
         region.rotate=rotate;
         if (readTuple(reader) == 4) {
           region.splits=new int[]{Integer.parseInt(tuple[0]),Integer.parseInt(tuple[1]),Integer.parseInt(tuple[2]),Integer.parseInt(tuple[3])};
-          readTuple(reader);
+          if (readTuple(reader) == 4) {
+            region.pads=new int[]{Integer.parseInt(tuple[0]),Integer.parseInt(tuple[1]),Integer.parseInt(tuple[2]),Integer.parseInt(tuple[3])};
+            readTuple(reader);
+          }
         }
         region.originalWidth=Integer.parseInt(tuple[0]);
         region.originalHeight=Integer.parseInt(tuple[1]);
@@ -59,11 +68,7 @@
     throw new GdxRuntimeException("Error reading pack file: " + packFile,ex);
   }
  finally {
-    try {
-      reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
   regions.sort(indexComparator);
 }

@@ -1,0 +1,8 @@
+{
+  if (blocks.isEmpty())   return;
+  p("    switch(" + switchStatement + ") {");
+  for (  KeyedCodeBlock b : blocks) {
+    p("    case " + b.key + ": "+ b.codeBlock);
+  }
+  p("}");
+}

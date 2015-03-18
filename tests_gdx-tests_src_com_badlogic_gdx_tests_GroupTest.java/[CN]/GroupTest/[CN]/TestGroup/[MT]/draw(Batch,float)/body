@@ -1,0 +1,9 @@
+{
+  toScreenCoordinates.set(testX,testY).sub(getOriginX(),getOriginY()).scl(getScaleX(),getScaleY()).rotate(getRotation()).add(getOriginX(),getOriginY()).add(getX(),getY());
+  getStage().toScreenCoordinates(toScreenCoordinates,batch.getTransformMatrix());
+  localToAscendantCoordinates(null,localToParentCoordinates.set(testX,testY));
+  getStage().stageToScreenCoordinates(localToParentCoordinates);
+  batch.setColor(getColor());
+  batch.draw(region,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight(),getScaleX(),getScaleY(),getRotation());
+  super.draw(batch,parentAlpha);
+}

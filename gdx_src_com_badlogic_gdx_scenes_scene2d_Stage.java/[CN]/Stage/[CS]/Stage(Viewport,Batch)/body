@@ -1,0 +1,9 @@
+{
+  if (viewport == null)   throw new IllegalArgumentException("viewport cannot be null.");
+  if (batch == null)   throw new IllegalArgumentException("batch cannot be null.");
+  this.viewport=viewport;
+  this.batch=batch;
+  root=new Group();
+  root.setStage(this);
+  viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
+}

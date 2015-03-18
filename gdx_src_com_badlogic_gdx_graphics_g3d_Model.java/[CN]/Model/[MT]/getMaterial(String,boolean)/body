@@ -1,0 +1,11 @@
+{
+  final int n=materials.size;
+  Material material;
+  if (ignoreCase) {
+    for (int i=0; i < n; i++)     if ((material=materials.get(i)).id.equalsIgnoreCase(id))     return material;
+  }
+ else {
+    for (int i=0; i < n; i++)     if ((material=materials.get(i)).id.equals(id))     return material;
+  }
+  return null;
+}

@@ -1,0 +1,7 @@
+{
+  out.clear();
+  for (  TextureRegion region : atlasRegions) {
+    if (region.getTexture() == texture)     out.add(region);
+  }
+  return out;
+}

@@ -1,0 +1,5 @@
+{
+  super.write(json);
+  json.writeValue("thetaValue",thetaValue);
+  json.writeValue("phiValue",phiValue);
+}

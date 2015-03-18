@@ -4,9 +4,15 @@
       writer.value(null);
       return;
     }
+    if ((knownType != null && knownType.isPrimitive()) || knownType == String.class || knownType == Integer.class || knownType == Boolean.class || knownType == Float.class || knownType == Long.class || knownType == Double.class || knownType == Short.class || knownType == Byte.class || knownType == Character.class) {
+      writer.value(value);
+      return;
+    }
     Class actualType=value.getClass();
     if (actualType.isPrimitive() || actualType == String.class || actualType == Integer.class || actualType == Boolean.class || actualType == Float.class || actualType == Long.class || actualType == Double.class || actualType == Short.class || actualType == Byte.class || actualType == Character.class) {
-      writer.value(value);
+      writeObjectStart(actualType,null);
+      writeValue("value",value);
+      writeObjectEnd();
       return;
     }
     if (value instanceof Serializable) {
@@ -21,7 +27,7 @@
       return;
     }
     if (value instanceof Array) {
-      if (knownType != null && actualType != knownType)       throw new SerializationException("Serialization of an Array other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
+      if (knownType != null && actualType != knownType && actualType != Array.class)       throw new SerializationException("Serialization of an Array other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
       writeArrayStart();
       Array array=(Array)value;
       for (int i=0, n=array.size; i < n; i++)       writeValue(array.get(i),elementType,null);
@@ -29,27 +35,34 @@
       return;
     }
     if (value instanceof Collection) {
-      if (knownType != null && actualType != knownType && actualType != ArrayList.class)       throw new SerializationException("Serialization of a Collection other than the known type is not supported.\n" + "Known type: " + knownType + "\nActual type: "+ actualType);
-      writeArrayStart();
-      for (      Object item : (Collection)value)       writeValue(item,elementType,null);
-      writeArrayEnd();
+      if (typeName != null && actualType != ArrayList.class && (knownType == null || knownType != actualType)) {
+        writeObjectStart(actualType,knownType);
+        writeArrayStart("items");
+        for (        Object item : (Collection)value)         writeValue(item,elementType,null);
+        writeArrayEnd();
+        writeObjectEnd();
+      }
+ else {
+        writeArrayStart();
+        for (        Object item : (Collection)value)         writeValue(item,elementType,null);
+        writeArrayEnd();
+      }
       return;
     }
     if (actualType.isArray()) {
       if (elementType == null)       elementType=actualType.getComponentType();
-      int length=java.lang.reflect.Array.getLength(value);
+      int length=ArrayReflection.getLength(value);
       writeArrayStart();
-      for (int i=0; i < length; i++)       writeValue(java.lang.reflect.Array.get(value,i),elementType,null);
+      for (int i=0; i < length; i++)       writeValue(ArrayReflection.get(value,i),elementType,null);
       writeArrayEnd();
       return;
     }
-    if (value instanceof OrderedMap) {
-      if (knownType == null)       knownType=OrderedMap.class;
+    if (value instanceof ObjectMap) {
+      if (knownType == null)       knownType=ObjectMap.class;
       writeObjectStart(actualType,knownType);
-      OrderedMap map=(OrderedMap)value;
-      for (      Object key : map.orderedKeys()) {
-        writer.name(convertToString(key));
-        writeValue(map.get(key),elementType,null);
+      for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
+        writer.name(convertToString(entry.key));
+        writeValue(entry.value,elementType,null);
       }
       writeObjectEnd();
       return;
@@ -65,18 +78,8 @@
       writeObjectEnd();
       return;
     }
-    if (value instanceof ObjectMap) {
-      if (knownType == null)       knownType=OrderedMap.class;
-      writeObjectStart(actualType,knownType);
-      for (      Entry entry : ((ObjectMap<?,?>)value).entries()) {
-        writer.name(convertToString(entry.key));
-        writeValue(entry.value,elementType,null);
-      }
-      writeObjectEnd();
-      return;
-    }
     if (value instanceof Map) {
-      if (knownType == null)       knownType=OrderedMap.class;
+      if (knownType == null)       knownType=HashMap.class;
       writeObjectStart(actualType,knownType);
       for (      Map.Entry entry : ((Map<?,?>)value).entrySet()) {
         writer.name(convertToString(entry.getKey()));
@@ -85,8 +88,17 @@
       writeObjectEnd();
       return;
     }
-    if (actualType.isEnum()) {
-      writer.value(value);
+    if (ClassReflection.isAssignableFrom(Enum.class,actualType)) {
+      if (typeName != null && (knownType == null || knownType != actualType)) {
+        if (actualType.getEnumConstants() == null)         actualType=actualType.getSuperclass();
+        writeObjectStart(actualType,null);
+        writer.name("value");
+        writer.value(convertToString((Enum)value));
+        writeObjectEnd();
+      }
+ else {
+        writer.value(convertToString((Enum)value));
+      }
       return;
     }
     writeObjectStart(actualType,knownType);

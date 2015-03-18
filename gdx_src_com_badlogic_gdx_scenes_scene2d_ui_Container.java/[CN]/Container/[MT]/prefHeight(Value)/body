@@ -1,0 +1,5 @@
+{
+  if (prefHeight == null)   throw new IllegalArgumentException("prefHeight cannot be null.");
+  this.prefHeight=prefHeight;
+  return this;
+}

@@ -1,4 +1,6 @@
 {
-  layout.padBottom(padBottom);
+  if (padBottom == null)   throw new IllegalArgumentException("padBottom cannot be null.");
+  this.padBottom=padBottom;
+  sizeInvalid=true;
   return this;
 }

@@ -1,0 +1,6 @@
+{
+  super.setValue(value);
+  if (value == null)   return;
+  setValue(isGlobalCheckBox,this.value.isGlobal);
+  magnitudePanel.setValue(value.strengthValue);
+}

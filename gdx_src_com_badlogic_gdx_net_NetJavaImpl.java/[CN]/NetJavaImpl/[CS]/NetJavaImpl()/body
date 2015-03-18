@@ -1,0 +1,5 @@
+{
+  executorService=Executors.newCachedThreadPool();
+  connections=new ObjectMap<HttpRequest,HttpURLConnection>();
+  listeners=new ObjectMap<HttpRequest,HttpResponseListener>();
+}

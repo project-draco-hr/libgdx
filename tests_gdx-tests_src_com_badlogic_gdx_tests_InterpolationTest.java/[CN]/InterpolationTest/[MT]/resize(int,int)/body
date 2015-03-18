@@ -1,5 +1,5 @@
 {
-  stage.setViewport(width,height,true);
-  root.setSize(width,height);
-  root.invalidate();
+  stage.getViewport().update(width,height,true);
+  table.invalidateHierarchy();
+  renderer.setProjectionMatrix(stage.getViewport().getCamera().combined);
 }

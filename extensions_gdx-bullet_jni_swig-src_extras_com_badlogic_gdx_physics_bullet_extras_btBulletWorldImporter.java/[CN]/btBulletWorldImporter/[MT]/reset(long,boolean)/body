@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(ExtrasJNI.btBulletWorldImporter_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

@@ -1,0 +1,6 @@
+{
+  renderable=new Renderable();
+  renderable.primitiveType=GL20.GL_POINTS;
+  renderable.meshPartOffset=0;
+  renderable.material=new Material(new BlendingAttribute(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA,1f),new DepthTestAttribute(GL20.GL_LEQUAL,false),TextureAttribute.createDiffuse((Texture)null));
+}

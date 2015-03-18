@@ -1,0 +1,14 @@
+{
+  while (start < 0)   start+=spanCount;
+  int result=start % spanCount;
+  float dst=in.dst2(knots.get(result));
+  for (int i=1; i < count; i++) {
+    final int idx=(start + i) % spanCount;
+    final float d=in.dst2(knots.get(idx));
+    if (d < dst) {
+      dst=d;
+      result=idx;
+    }
+  }
+  return result;
+}

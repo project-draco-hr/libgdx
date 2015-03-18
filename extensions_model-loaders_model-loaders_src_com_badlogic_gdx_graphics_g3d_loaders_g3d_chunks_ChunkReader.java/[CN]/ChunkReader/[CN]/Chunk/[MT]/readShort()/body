@@ -1,8 +1,0 @@
-{
-  try {
-    return in.readShort();
-  }
- catch (  IOException e) {
-    throw new GdxRuntimeException("Couldn't read payload, " + e.getMessage(),e);
-  }
-}

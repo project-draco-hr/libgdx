@@ -1,0 +1,5 @@
+{
+  super.dispose();
+  for (  TextureRegion r : regions)   r.getTexture().dispose();
+  batch.dispose();
+}

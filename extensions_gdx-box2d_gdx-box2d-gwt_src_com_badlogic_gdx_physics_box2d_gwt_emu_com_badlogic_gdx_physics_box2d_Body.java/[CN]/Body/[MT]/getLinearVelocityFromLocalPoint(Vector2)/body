@@ -1,0 +1,5 @@
+{
+  tmp.set(localPoint.x,localPoint.y);
+  Vec2 lv=body.getLinearVelocityFromLocalPoint(tmp);
+  return linVelLoc.set(lv.x,lv.y);
+}

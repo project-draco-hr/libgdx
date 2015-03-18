@@ -1,0 +1,16 @@
+{
+  TiledMap map=new TiledMap();
+  Element properties=root.getChildByName("properties");
+  if (properties != null) {
+    loadProperties(map.getProperties(),properties);
+  }
+  Element tilesheets=root.getChildByName("TileSheets");
+  for (  Element tilesheet : tilesheets.getChildrenByName("TileSheet")) {
+    loadTileSheet(map,tilesheet,tmxFile,imageResolver);
+  }
+  Element layers=root.getChildByName("Layers");
+  for (  Element layer : layers.getChildrenByName("Layer")) {
+    loadLayer(map,layer);
+  }
+  return map;
+}

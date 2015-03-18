@@ -1,0 +1,16 @@
+{
+  deltaX=0;
+  deltaY=0;
+  justTouched=false;
+  if (keyJustPressed) {
+    keyJustPressed=false;
+    for (int i=0; i < justPressedKeys.length; i++) {
+      justPressedKeys[i]=false;
+    }
+  }
+  if (processorQueue != null)   processorQueue.drain();
+ else {
+    currentEventTime=System.nanoTime();
+    glfwPollEvents();
+  }
+}

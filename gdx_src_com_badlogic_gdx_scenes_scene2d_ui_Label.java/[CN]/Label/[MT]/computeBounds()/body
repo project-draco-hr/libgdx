@@ -1,4 +1,0 @@
-{
-  if (wrap)   bounds.set(cache.getFont().getWrappedBounds(text,getWidth()));
- else   bounds.set(cache.getFont().getMultiLineBounds(text));
-}

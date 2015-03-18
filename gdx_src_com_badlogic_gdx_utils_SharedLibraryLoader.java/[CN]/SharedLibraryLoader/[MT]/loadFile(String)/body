@@ -1,0 +1,23 @@
+{
+  String sourceCrc=crc(readFile(sourcePath));
+  String fileName=new File(sourcePath).getName();
+  File file=new File(System.getProperty("java.io.tmpdir") + "/libgdx" + System.getProperty("user.name")+ "/"+ sourceCrc,fileName);
+  Throwable ex=loadFile(sourcePath,sourceCrc,file);
+  if (ex == null)   return;
+  try {
+    file=File.createTempFile(sourceCrc,null);
+    if (file.delete() && loadFile(sourcePath,sourceCrc,file) == null)     return;
+  }
+ catch (  Throwable ignored) {
+  }
+  file=new File(System.getProperty("user.home") + "/.libgdx/" + sourceCrc,fileName);
+  if (loadFile(sourcePath,sourceCrc,file) == null)   return;
+  file=new File(".temp/" + sourceCrc,fileName);
+  if (loadFile(sourcePath,sourceCrc,file) == null)   return;
+  file=new File(System.getProperty("java.library.path"),sourcePath);
+  if (file.exists()) {
+    System.load(file.getAbsolutePath());
+    return;
+  }
+  throw new GdxRuntimeException(ex);
+}

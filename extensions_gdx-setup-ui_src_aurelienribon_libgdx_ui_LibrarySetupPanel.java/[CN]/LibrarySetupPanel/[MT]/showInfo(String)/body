@@ -1,6 +1,0 @@
-{
-  JFrame frame=(JFrame)SwingUtilities.getWindowAncestor(this);
-  LibraryInfoDialog dialog=new LibraryInfoDialog(frame,libraryName);
-  dialog.setLocationRelativeTo(frame);
-  dialog.setVisible(true);
-}

@@ -5,9 +5,9 @@
   val[M10]=yAxis.x;
   val[M11]=yAxis.y;
   val[M12]=yAxis.z;
-  val[M20]=-zAxis.x;
-  val[M21]=-zAxis.y;
-  val[M22]=-zAxis.z;
+  val[M20]=zAxis.x;
+  val[M21]=zAxis.y;
+  val[M22]=zAxis.z;
   val[M03]=pos.x;
   val[M13]=pos.y;
   val[M23]=pos.z;
@@ -15,4 +15,5 @@
   val[M31]=0;
   val[M32]=0;
   val[M33]=1;
+  return this;
 }

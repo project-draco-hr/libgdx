@@ -1,6 +1,12 @@
 {
 synchronized (this) {
     justTouched=false;
+    if (keyJustPressed) {
+      keyJustPressed=false;
+      for (int i=0; i < justPressedKeys.length; i++) {
+        justPressedKeys[i]=false;
+      }
+    }
     if (processor != null) {
       final InputProcessor processor=this.processor;
       int len=keyEvents.size();
@@ -10,12 +16,14 @@ synchronized (this) {
 switch (e.type) {
 case KeyEvent.KEY_DOWN:
           processor.keyDown(e.keyCode);
-        break;
-case KeyEvent.KEY_UP:
-      processor.keyUp(e.keyCode);
+        keyJustPressed=true;
+      justPressedKeys[e.keyCode]=true;
     break;
+case KeyEvent.KEY_UP:
+  processor.keyUp(e.keyCode);
+break;
 case KeyEvent.KEY_TYPED:
-  processor.keyTyped(e.keyChar);
+processor.keyTyped(e.keyChar);
 }
 usedKeyEvents.free(e);
 }
@@ -25,14 +33,20 @@ TouchEvent e=touchEvents.get(i);
 currentEventTimeStamp=e.timeStamp;
 switch (e.type) {
 case TouchEvent.TOUCH_DOWN:
-processor.touchDown(e.x,e.y,e.pointer,Buttons.LEFT);
+processor.touchDown(e.x,e.y,e.pointer,e.button);
 justTouched=true;
 break;
 case TouchEvent.TOUCH_UP:
-processor.touchUp(e.x,e.y,e.pointer,Buttons.LEFT);
+processor.touchUp(e.x,e.y,e.pointer,e.button);
 break;
 case TouchEvent.TOUCH_DRAGGED:
 processor.touchDragged(e.x,e.y,e.pointer);
+break;
+case TouchEvent.TOUCH_MOVED:
+processor.mouseMoved(e.x,e.y);
+break;
+case TouchEvent.TOUCH_SCROLLED:
+processor.scrolled(e.scrollAmount);
 }
 usedTouchEvents.free(e);
 }

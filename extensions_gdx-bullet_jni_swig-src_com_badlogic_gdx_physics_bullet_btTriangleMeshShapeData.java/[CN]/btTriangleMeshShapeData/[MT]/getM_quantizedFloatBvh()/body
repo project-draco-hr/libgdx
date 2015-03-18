@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btTriangleMeshShapeData_m_quantizedFloatBvh_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btQuantizedBvhFloatData(cPtr,false);
-}

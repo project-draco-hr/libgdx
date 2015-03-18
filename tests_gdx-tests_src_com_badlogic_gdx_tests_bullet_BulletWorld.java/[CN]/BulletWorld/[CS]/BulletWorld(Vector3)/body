@@ -1,0 +1,9 @@
+{
+  collisionConfiguration=new btDefaultCollisionConfiguration();
+  dispatcher=new btCollisionDispatcher(collisionConfiguration);
+  broadphase=new btDbvtBroadphase();
+  solver=new btSequentialImpulseConstraintSolver();
+  collisionWorld=new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,collisionConfiguration);
+  ((btDynamicsWorld)collisionWorld).setGravity(gravity);
+  this.gravity=gravity;
+}

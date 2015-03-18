@@ -1,0 +1,7 @@
+{
+  if (height == null)   throw new IllegalArgumentException("height cannot be null.");
+  minHeight=height;
+  prefHeight=height;
+  maxHeight=height;
+  return this;
+}

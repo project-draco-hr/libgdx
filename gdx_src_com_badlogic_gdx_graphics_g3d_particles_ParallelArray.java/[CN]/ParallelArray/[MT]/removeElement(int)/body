@@ -1,0 +1,7 @@
+{
+  int last=size - 1;
+  for (  Channel strideArray : arrays) {
+    strideArray.swap(index,last);
+  }
+  size=last;
+}

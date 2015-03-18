@@ -1,0 +1,4 @@
+{
+  ObjectSet<T> selected=selection.items();
+  return selected.size == 0 ? -1 : items.indexOf(selected.first(),false);
+}

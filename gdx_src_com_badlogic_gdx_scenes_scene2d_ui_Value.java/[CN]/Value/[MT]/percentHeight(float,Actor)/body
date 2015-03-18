@@ -1,0 +1,9 @@
+{
+  if (actor == null)   throw new IllegalArgumentException("actor cannot be null.");
+  return new Value(){
+    public float get(    Actor context){
+      return actor.getHeight() * percent;
+    }
+  }
+;
+}

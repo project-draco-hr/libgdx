@@ -1,0 +1,5 @@
+{
+  actorCoords.set(stageX,stageY);
+  actor.stageToLocalCoordinates(actorCoords);
+  return actorCoords;
+}

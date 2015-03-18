@@ -1,0 +1,17 @@
+{
+  if (linkedEngine == this && app.listener instanceof AndroidWallpaperListener) {
+    if (!offsetsConsumed) {
+      offsetsConsumed=true;
+      app.postRunnable(new Runnable(){
+        @Override public void run(){
+          boolean isCurrent=false;
+synchronized (sync) {
+            isCurrent=(linkedEngine == AndroidWallpaperEngine.this);
+          }
+          if (isCurrent)           ((AndroidWallpaperListener)app.listener).offsetChange(xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
+        }
+      }
+);
+    }
+  }
+}

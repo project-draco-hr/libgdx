@@ -1,0 +1,6 @@
+{
+  vertexCount.put(count);
+  drawCalls++;
+  calls++;
+  gl30.glDrawRangeElements(mode,start,end,count,type,indices);
+}

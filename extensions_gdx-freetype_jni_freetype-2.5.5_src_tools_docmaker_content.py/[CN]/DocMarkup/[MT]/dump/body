@@ -1,0 +1,5 @@
+def dump(self, margin):
+    print ((((' ' * margin) + '<') + self.tag) + '>')
+    for f in self.fields:
+        f.dump('  ')
+    print ((((' ' * margin) + '</') + self.tag) + '>')

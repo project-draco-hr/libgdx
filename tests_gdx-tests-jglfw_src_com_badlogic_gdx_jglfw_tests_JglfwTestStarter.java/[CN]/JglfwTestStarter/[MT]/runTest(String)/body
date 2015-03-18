@@ -1,0 +1,10 @@
+{
+  final GdxTest test=GdxTests.newTest(testName);
+  if (test == null)   throw new GdxRuntimeException("Test not found: " + testName);
+  final JglfwApplicationConfiguration config=new JglfwApplicationConfiguration();
+  config.width=640;
+  config.height=480;
+  config.title=testName;
+  config.forceExit=false;
+  return new JglfwApplication(test,config);
+}

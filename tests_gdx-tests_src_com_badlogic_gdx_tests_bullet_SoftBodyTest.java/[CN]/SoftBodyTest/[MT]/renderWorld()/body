@@ -1,0 +1,5 @@
+{
+  softBody.getVertices(mesh.getVerticesBuffer(),softBody.getNodeCount(),mesh.getVertexSize(),0);
+  softBody.getWorldTransform(instance.transform);
+  super.renderWorld();
+}

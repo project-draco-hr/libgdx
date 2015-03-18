@@ -1,0 +1,7 @@
+{
+  Gdx.gl.glEnable(GL20.GL_VERTEX_PROGRAM_POINT_SIZE);
+  if (Gdx.app.getType() == ApplicationType.Desktop) {
+    Gdx.gl.glEnable(0x8861);
+  }
+  pointSpritesEnabled=true;
+}

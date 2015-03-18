@@ -1,3 +1,6 @@
 {
-  this.x=x;
+  if (this.x != x) {
+    this.x=x;
+    positionChanged();
+  }
 }

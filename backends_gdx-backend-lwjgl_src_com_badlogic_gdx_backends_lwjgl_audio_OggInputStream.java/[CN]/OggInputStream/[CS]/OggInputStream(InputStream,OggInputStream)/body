@@ -1,0 +1,18 @@
+{
+  if (previousStream == null) {
+    convbuffer=new byte[convsize];
+    pcmBuffer=BufferUtils.createByteBuffer(4096 * 500);
+  }
+ else {
+    convbuffer=previousStream.convbuffer;
+    pcmBuffer=previousStream.pcmBuffer;
+  }
+  this.input=input;
+  try {
+    total=input.available();
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+  init();
+}

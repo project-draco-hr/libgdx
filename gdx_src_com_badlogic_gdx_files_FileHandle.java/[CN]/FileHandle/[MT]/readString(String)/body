@@ -1,7 +1,5 @@
 {
-  int fileLength=(int)length();
-  if (fileLength == 0)   fileLength=512;
-  StringBuilder output=new StringBuilder(fileLength);
+  StringBuilder output=new StringBuilder(estimateLength());
   InputStreamReader reader=null;
   try {
     if (charset == null)     reader=new InputStreamReader(read());
@@ -17,11 +15,7 @@
     throw new GdxRuntimeException("Error reading layout file: " + this,ex);
   }
  finally {
-    try {
-      if (reader != null)       reader.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
   return output.toString();
 }

@@ -1,0 +1,5 @@
+{
+  for (int i=offset; i < offset + count; i++) {
+    samplers[i]=GL33.glGenSamplers();
+  }
+}

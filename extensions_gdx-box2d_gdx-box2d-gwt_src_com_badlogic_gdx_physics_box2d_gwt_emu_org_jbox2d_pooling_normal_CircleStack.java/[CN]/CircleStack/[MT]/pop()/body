@@ -1,0 +1,7 @@
+{
+  index++;
+  if (index >= size) {
+    index=0;
+  }
+  return (E)pool[index];
+}

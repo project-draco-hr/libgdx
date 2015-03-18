@@ -1,0 +1,11 @@
+{
+  ext(tmpVector.set(bounds.min.x,bounds.min.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.min.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.max.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.min.x,bounds.max.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.min.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.min.y,bounds.max.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.max.y,bounds.min.z).mul(transform));
+  ext(tmpVector.set(bounds.max.x,bounds.max.y,bounds.max.z).mul(transform));
+  return this;
+}

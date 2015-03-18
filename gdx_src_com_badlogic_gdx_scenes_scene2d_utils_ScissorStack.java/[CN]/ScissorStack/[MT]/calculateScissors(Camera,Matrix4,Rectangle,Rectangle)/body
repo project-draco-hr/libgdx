@@ -1,12 +1,3 @@
 {
-  tmp.set(area.x,area.y,0);
-  tmp.mul(batchTransform);
-  camera.project(tmp);
-  scissor.x=tmp.x;
-  scissor.y=tmp.y;
-  tmp.set(area.x + area.width,area.y + area.height,0);
-  tmp.mul(batchTransform);
-  camera.project(tmp);
-  scissor.width=tmp.x - scissor.x;
-  scissor.height=tmp.y - scissor.y;
+  calculateScissors(camera,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),batchTransform,area,scissor);
 }

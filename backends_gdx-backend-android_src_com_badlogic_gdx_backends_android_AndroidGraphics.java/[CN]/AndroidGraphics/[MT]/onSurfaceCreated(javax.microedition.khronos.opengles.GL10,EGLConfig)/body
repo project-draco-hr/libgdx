@@ -5,16 +5,14 @@
   updatePpi();
   Mesh.invalidateAllMeshes(app);
   Texture.invalidateAllTextures(app);
+  Cubemap.invalidateAllCubemaps(app);
   ShaderProgram.invalidateAllShaderPrograms(app);
   FrameBuffer.invalidateAllFrameBuffers(app);
-  Gdx.app.log("AndroidGraphics",Mesh.getManagedStatus());
-  Gdx.app.log("AndroidGraphics",Texture.getManagedStatus());
-  Gdx.app.log("AndroidGraphics",ShaderProgram.getManagedStatus());
-  Gdx.app.log("AndroidGraphics",FrameBuffer.getManagedStatus());
+  logManagedCachesStatus();
   Display display=app.getWindowManager().getDefaultDisplay();
   this.width=display.getWidth();
   this.height=display.getHeight();
-  mean=new WindowedMean(5);
+  this.mean=new WindowedMean(5);
   this.lastFrameTime=System.nanoTime();
   gl.glViewport(0,0,this.width,this.height);
 }

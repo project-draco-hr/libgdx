@@ -1,0 +1,8 @@
+{
+  normal=new Vec2();
+  points=new Vec2[Settings.maxManifoldPoints];
+  separations=new float[Settings.maxManifoldPoints];
+  for (int i=0; i < Settings.maxManifoldPoints; i++) {
+    points[i]=new Vec2();
+  }
+}

@@ -1,0 +1,7 @@
+{
+  Vector2 scaled=scaling.apply(getWorldWidth(),getWorldHeight(),screenWidth,screenHeight);
+  int viewportWidth=Math.round(scaled.x);
+  int viewportHeight=Math.round(scaled.y);
+  setScreenBounds((screenWidth - viewportWidth) / 2,(screenHeight - viewportHeight) / 2,viewportWidth,viewportHeight);
+  apply(centerCamera);
+}

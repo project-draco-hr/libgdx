@@ -1,0 +1,9 @@
+{
+  if (mode != this.mode) {
+    this.mode=mode;
+    if (useGPU) {
+      initRenderData();
+      allocRenderables(bufferedParticlesCount);
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  if (audio.noDevice)   return;
-  if (bufferID == -1)   return;
-  audio.freeBuffer(bufferID);
-  alDeleteBuffers(bufferID);
-  bufferID=-1;
-}

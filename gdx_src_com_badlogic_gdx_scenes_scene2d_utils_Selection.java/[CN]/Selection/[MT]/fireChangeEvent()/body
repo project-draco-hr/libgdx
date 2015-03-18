@@ -1,0 +1,10 @@
+{
+  if (actor == null)   return false;
+  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+  try {
+    return actor.fire(changeEvent);
+  }
+  finally {
+    Pools.free(changeEvent);
+  }
+}

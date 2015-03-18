@@ -1,4 +1,9 @@
 {
-  layout.pad(pad);
+  if (pad == null)   throw new IllegalArgumentException("pad cannot be null.");
+  padTop=pad;
+  padLeft=pad;
+  padBottom=pad;
+  padRight=pad;
+  sizeInvalid=true;
   return this;
 }

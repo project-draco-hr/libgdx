@@ -1,0 +1,6 @@
+{
+  collisionConfiguration=new btDefaultCollisionConfiguration();
+  dispatcher=new btCollisionDispatcher(collisionConfiguration);
+  pairCache=new btDbvtBroadphase();
+  collisionWorld=new btCollisionWorld(dispatcher,pairCache,collisionConfiguration);
+}

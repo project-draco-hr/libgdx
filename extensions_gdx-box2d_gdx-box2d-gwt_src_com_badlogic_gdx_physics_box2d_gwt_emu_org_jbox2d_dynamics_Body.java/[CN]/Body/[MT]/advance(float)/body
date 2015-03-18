@@ -1,0 +1,8 @@
+{
+  m_sweep.advance(t);
+  m_sweep.c.set(m_sweep.c0);
+  m_sweep.a=m_sweep.a0;
+  m_xf.q.set(m_sweep.a);
+  Rot.mulToOutUnsafe(m_xf.q,m_sweep.localCenter,m_xf.p);
+  m_xf.p.mulLocal(-1).addLocal(m_sweep.c);
+}

@@ -1,0 +1,8 @@
+{
+  float px1=p.x - a.x;
+  float py1=p.y - a.y;
+  boolean side12=(b.x - a.x) * py1 - (b.y - a.y) * px1 > 0;
+  if ((c.x - a.x) * py1 - (c.y - a.y) * px1 > 0 == side12)   return false;
+  if ((c.x - b.x) * (p.y - b.y) - (c.y - b.y) * (p.x - b.x) > 0 != side12)   return false;
+  return true;
+}

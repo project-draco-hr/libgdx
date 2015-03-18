@@ -1,0 +1,5 @@
+{
+  begin();
+  part("cone",primitiveType,attributes,material).cone(width,height,depth,divisions,angleFrom,angleTo);
+  return end();
+}

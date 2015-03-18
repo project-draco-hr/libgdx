@@ -1,0 +1,8 @@
+{
+  assert(newCapacity > oldCapacity);
+  assert(userSuppliedCapacity == 0 || newCapacity <= userSuppliedCapacity);
+  if ((!deferred || buffer != null) && userSuppliedCapacity == 0) {
+    buffer=reallocateBuffer(buffer,oldCapacity,newCapacity);
+  }
+  return buffer;
+}

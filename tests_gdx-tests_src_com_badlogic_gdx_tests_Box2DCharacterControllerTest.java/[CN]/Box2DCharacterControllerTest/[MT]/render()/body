@@ -1,5 +1,5 @@
 {
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   cam.position.set(player.getPosition().x,player.getPosition().y,0);
   cam.update();
   renderer.render(world,cam.combined);
@@ -39,19 +39,19 @@
       playerSensorFixture.setFriction(0.2f);
     }
     if (groundedPlatform != null && groundedPlatform instanceof MovingPlatform && ((MovingPlatform)groundedPlatform).dist == 0) {
-      player.applyLinearImpulse(0,-24,pos.x,pos.y);
+      player.applyLinearImpulse(0,-24,pos.x,pos.y,true);
     }
   }
-  List<Contact> contacts=world.getContactList();
+  Array<Contact> contacts=world.getContactList();
   for (int i=0; i < world.getContactCount(); i++) {
     Contact contact=contacts.get(i);
     contact.resetFriction();
   }
   if (Gdx.input.isKeyPressed(Keys.A) && vel.x > -MAX_VELOCITY) {
-    player.applyLinearImpulse(-2f,0,pos.x,pos.y);
+    player.applyLinearImpulse(-2f,0,pos.x,pos.y,true);
   }
   if (Gdx.input.isKeyPressed(Keys.D) && vel.x < MAX_VELOCITY) {
-    player.applyLinearImpulse(2f,0,pos.x,pos.y);
+    player.applyLinearImpulse(2f,0,pos.x,pos.y,true);
   }
   if (jump) {
     jump=false;
@@ -59,7 +59,7 @@
       player.setLinearVelocity(vel.x,0);
       System.out.println("jump before: " + player.getLinearVelocity());
       player.setTransform(pos.x,pos.y + 0.01f,0);
-      player.applyLinearImpulse(0,40,pos.x,pos.y);
+      player.applyLinearImpulse(0,40,pos.x,pos.y,true);
       System.out.println("jump, " + player.getLinearVelocity());
     }
   }

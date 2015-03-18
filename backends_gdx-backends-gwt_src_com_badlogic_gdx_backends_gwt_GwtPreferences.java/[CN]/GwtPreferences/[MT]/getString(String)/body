@@ -1,3 +1,4 @@
 {
-  return (String)values.get(key);
+  String v=(String)values.get(key);
+  return v == null ? "" : v;
 }

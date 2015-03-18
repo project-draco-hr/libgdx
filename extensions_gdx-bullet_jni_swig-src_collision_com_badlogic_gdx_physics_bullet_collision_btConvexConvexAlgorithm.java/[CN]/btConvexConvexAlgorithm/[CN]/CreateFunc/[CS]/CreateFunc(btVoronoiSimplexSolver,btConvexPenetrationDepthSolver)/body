@@ -1,0 +1,3 @@
+{
+  this(CollisionJNI.new_btConvexConvexAlgorithm_CreateFunc(btVoronoiSimplexSolver.getCPtr(simplexSolver),simplexSolver,btConvexPenetrationDepthSolver.getCPtr(pdSolver),pdSolver),true);
+}

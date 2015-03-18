@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btQuantizedBvhDoubleData_m_contiguousNodesPtr_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btOptimizedBvhNodeDoubleData(cPtr,false);
-}

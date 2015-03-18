@@ -1,7 +1,5 @@
 {
-  Vector3.tmp.set(stageCoords.x,stageCoords.y,0);
-  camera.project(Vector3.tmp);
-  stageCoords.x=Vector3.tmp.x;
-  stageCoords.y=Vector3.tmp.y;
+  viewport.project(stageCoords);
+  stageCoords.y=viewport.getScreenHeight() - stageCoords.y;
   return stageCoords;
 }

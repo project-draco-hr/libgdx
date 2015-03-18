@@ -1,0 +1,6 @@
+{
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onSurfaceChanged() isPreview: " + isPreview() + ", "+ hashCode()+ ", running: "+ engines+ ", linked: "+ (linkedEngine == this)+ ", sufcace valid: "+ getSurfaceHolder().getSurface().isValid());
+  Log.i(TAG,"engine surface changed");
+  super.onSurfaceChanged(holder,format,width,height);
+  notifySurfaceChanged(format,width,height,true);
+}

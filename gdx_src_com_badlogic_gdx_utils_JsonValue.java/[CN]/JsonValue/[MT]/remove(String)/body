@@ -1,0 +1,14 @@
+{
+  JsonValue child=get(name);
+  if (child == null)   return null;
+  if (child.prev == null) {
+    this.child=child.next;
+    if (this.child != null)     this.child.prev=null;
+  }
+ else {
+    child.prev.next=child.next;
+    if (child.next != null)     child.next.prev=child.prev;
+  }
+  size--;
+  return child;
+}

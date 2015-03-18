@@ -1,0 +1,4 @@
+{
+  if (elementTypes != null && index >= 0 && index < elementTypes.length)   return elementTypes[index].getType();
+  return null;
+}

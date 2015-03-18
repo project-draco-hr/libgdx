@@ -1,0 +1,4 @@
+{
+  Texture texture=manager.get(manager.getDependencies(fileName).first());
+  return load(new TextureRegion(texture),file);
+}

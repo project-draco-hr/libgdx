@@ -1,0 +1,21 @@
+{
+  if (shapeType == null)   throw new IllegalStateException("begin must be called first.");
+  if (shapeType != preferred && shapeType != other) {
+    if (!autoShapeType) {
+      if (other == null)       throw new IllegalStateException("Must call begin(ShapeType." + preferred + ").");
+ else       throw new IllegalStateException("Must call begin(ShapeType." + preferred + ") or begin(ShapeType."+ other+ ").");
+    }
+    end();
+    begin(preferred);
+  }
+ else   if (matrixDirty) {
+    ShapeType type=shapeType;
+    end();
+    begin(type);
+  }
+ else   if (renderer.getMaxVertices() - renderer.getNumVertices() < newVertices) {
+    ShapeType type=shapeType;
+    end();
+    begin(type);
+  }
+}

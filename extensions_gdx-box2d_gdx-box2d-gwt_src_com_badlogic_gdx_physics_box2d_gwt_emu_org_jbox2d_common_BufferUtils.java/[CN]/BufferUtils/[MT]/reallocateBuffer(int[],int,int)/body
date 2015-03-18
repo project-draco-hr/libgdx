@@ -1,0 +1,8 @@
+{
+  assert(newCapacity > oldCapacity);
+  int[] newBuffer=new int[newCapacity];
+  if (oldBuffer != null) {
+    System.arraycopy(oldBuffer,0,newBuffer,0,oldCapacity);
+  }
+  return newBuffer;
+}

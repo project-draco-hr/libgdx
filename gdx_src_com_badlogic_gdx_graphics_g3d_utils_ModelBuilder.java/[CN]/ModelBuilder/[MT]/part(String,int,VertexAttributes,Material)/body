@@ -1,0 +1,5 @@
+{
+  final MeshBuilder builder=getBuilder(attributes);
+  part(builder.part(id,primitiveType),material);
+  return builder;
+}

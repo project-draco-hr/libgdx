@@ -1,0 +1,9 @@
+{
+  if (m_type == BodyType.STATIC) {
+    return;
+  }
+  if (Vec2.dot(v,v) > 0.0f) {
+    setAwake(true);
+  }
+  m_linearVelocity.set(v);
+}

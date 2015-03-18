@@ -1,0 +1,21 @@
+{
+  String textureAtlasPath;
+  ObjectMap<String,Object> resources;
+  if (parameter == null) {
+    textureAtlasPath=file.pathWithoutExtension() + ".atlas";
+    resources=null;
+  }
+ else {
+    textureAtlasPath=parameter.textureAtlasPath;
+    resources=parameter.resources;
+  }
+  TextureAtlas atlas=manager.get(textureAtlasPath,TextureAtlas.class);
+  Skin skin=new Skin(atlas);
+  if (resources != null) {
+    for (    Entry<String,Object> entry : resources.entries()) {
+      skin.add(entry.key,entry.value);
+    }
+  }
+  skin.load(file);
+  return skin;
+}

@@ -1,0 +1,6 @@
+{
+  if (mockInputProcessor == null) {
+    mockInputProcessor=new InputAdapter();
+  }
+  return mockInputProcessor;
+}

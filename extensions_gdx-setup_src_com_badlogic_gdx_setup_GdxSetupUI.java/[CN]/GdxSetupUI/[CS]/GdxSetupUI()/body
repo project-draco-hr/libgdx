@@ -1,0 +1,29 @@
+{
+  setTitle("LibGDX Project Generator");
+  setLayout(new BorderLayout());
+  add(ui,BorderLayout.CENTER);
+  setSize(620,720);
+  setLocationRelativeTo(null);
+  setUndecorated(true);
+  pack();
+  setDefaultCloseOperation(EXIT_ON_CLOSE);
+  addMouseListener(new MouseAdapter(){
+    public void mousePressed(    MouseEvent e){
+      point.x=e.getX();
+      point.y=e.getY();
+    }
+  }
+);
+  addMouseMotionListener(new MouseMotionAdapter(){
+    public void mouseDragged(    MouseEvent e){
+      Point p=getLocation();
+      setLocation(p.x + e.getX() - point.x,p.y + e.getY() - point.y);
+    }
+  }
+);
+  setVisible(true);
+  builder=new ProjectBuilder(new DependencyBank());
+  modules.add(ProjectType.CORE);
+  dependencies.add(builder.bank.getDependency(ProjectDependency.GDX));
+  dependencies.add(builder.bank.getDependency(ProjectDependency.BOX2D));
+}

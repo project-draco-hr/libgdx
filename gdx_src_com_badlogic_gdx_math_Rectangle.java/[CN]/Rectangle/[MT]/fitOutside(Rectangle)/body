@@ -1,0 +1,11 @@
+{
+  float ratio=getAspectRatio();
+  if (ratio > rect.getAspectRatio()) {
+    setSize(rect.height * ratio,rect.height);
+  }
+ else {
+    setSize(rect.width,rect.width / ratio);
+  }
+  setPosition((rect.x + rect.width / 2) - width / 2,(rect.y + rect.height / 2) - height / 2);
+  return this;
+}

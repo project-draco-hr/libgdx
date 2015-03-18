@@ -1,7 +1,0 @@
-{
-  if (pointer instanceof ShortBuffer && type == GL10.GL_SHORT)   GL11.glTexCoordPointer(size,stride,(ShortBuffer)pointer);
- else   if (pointer instanceof ByteBuffer && type == GL10.GL_SHORT)   GL11.glTexCoordPointer(size,stride,((ByteBuffer)pointer).asShortBuffer());
- else   if (pointer instanceof FloatBuffer && type == GL10.GL_FLOAT)   GL11.glTexCoordPointer(size,stride,(FloatBuffer)pointer);
- else   if (pointer instanceof ByteBuffer && type == GL10.GL_FLOAT)   GL11.glTexCoordPointer(size,stride,((ByteBuffer)pointer).asFloatBuffer());
- else   throw new GdxRuntimeException("Can't use " + pointer.getClass().getName() + " with this method. Use ShortBuffer or FloatBuffer or ByteBuffer instead with GL_FLOAT or GL_SHORT. GL_BYTE is not supported. Blame LWJGL");
-}

@@ -1,0 +1,7 @@
+{
+  if (wrapper != null) {
+    wrapper.dispose();
+    wrapper=null;
+  }
+  super.dispose();
+}

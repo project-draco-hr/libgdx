@@ -1,0 +1,5 @@
+{
+  if (maxHeight == null)   throw new IllegalArgumentException("maxHeight cannot be null.");
+  this.maxHeight=maxHeight;
+  return this;
+}

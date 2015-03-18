@@ -1,0 +1,9 @@
+{
+  if (this.background == background)   return;
+  this.background=background;
+  if (adjustPadding) {
+    if (background == null)     pad(Value.zero);
+ else     pad(background.getTopHeight(),background.getLeftWidth(),background.getBottomHeight(),background.getRightWidth());
+    invalidate();
+  }
+}

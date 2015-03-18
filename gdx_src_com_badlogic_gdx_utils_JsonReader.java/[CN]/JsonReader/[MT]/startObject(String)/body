@@ -1,6 +1,6 @@
 {
-  OrderedMap value=new OrderedMap();
-  if (current != null)   set(name,value);
+  JsonValue value=new JsonValue(ValueType.object);
+  if (current != null)   addChild(name,value);
   elements.add(value);
   current=value;
 }

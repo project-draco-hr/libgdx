@@ -1,4 +1,8 @@
 {
   if (wrap)   return 0;
-  return bounds.width;
+  if (sizeInvalid)   scaleAndComputeSize();
+  float width=bounds.width;
+  Drawable background=style.background;
+  if (background != null)   width+=background.getLeftWidth() + background.getRightWidth();
+  return width;
 }

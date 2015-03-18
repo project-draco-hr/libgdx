@@ -1,0 +1,9 @@
+{
+  sizeInvalid=false;
+  if (wrap) {
+    float width=getWidth();
+    if (style.background != null)     width-=style.background.getLeftWidth() + style.background.getRightWidth();
+    bounds.set(cache.getFont().getWrappedBounds(text,width));
+  }
+ else   bounds.set(cache.getFont().getMultiLineBounds(text));
+}

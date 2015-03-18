@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btDispatcher_findAlgorithm__SWIG_0(swigCPtr,this,btCollisionObject.getCPtr(body0),body0,btCollisionObject.getCPtr(body1),body1,btPersistentManifold.getCPtr(sharedManifold),sharedManifold);
-  return (cPtr == 0) ? null : new btCollisionAlgorithm(cPtr,false);
-}

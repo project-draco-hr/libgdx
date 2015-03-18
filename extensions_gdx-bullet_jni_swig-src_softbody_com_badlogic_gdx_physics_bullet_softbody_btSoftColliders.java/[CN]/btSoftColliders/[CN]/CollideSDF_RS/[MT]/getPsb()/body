@@ -1,0 +1,4 @@
+{
+  long cPtr=SoftbodyJNI.btSoftColliders_CollideSDF_RS_psb_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btSoftBody(cPtr,false);
+}

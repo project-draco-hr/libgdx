@@ -1,0 +1,7 @@
+{
+  this.u=region.getU();
+  this.v=region.getV();
+  this.u2=region.getU2();
+  this.v2=region.getV2();
+  this.halfInvAspectRatio=0.5f * ((float)region.getRegionHeight() / region.getRegionWidth());
+}

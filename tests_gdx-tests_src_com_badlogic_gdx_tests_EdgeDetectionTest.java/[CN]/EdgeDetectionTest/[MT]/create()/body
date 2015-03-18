@@ -1,14 +1,13 @@
 {
   ShaderProgram.pedantic=false;
-  shader=new ShaderProgram(Gdx.files.internal("data/shaders/default.vert").readString(),Gdx.files.internal("data/shaders/depthtocolor.frag").readString());
-  if (!shader.isCompiled()) {
-    Gdx.app.log("EdgeDetectionTest","couldn't compile scene shader: " + shader.getLog());
-  }
   batchShader=new ShaderProgram(Gdx.files.internal("data/shaders/batch.vert").readString(),Gdx.files.internal("data/shaders/convolution.frag").readString());
   if (!batchShader.isCompiled()) {
     Gdx.app.log("EdgeDetectionTest","couldn't compile post-processing shader: " + batchShader.getLog());
   }
-  mesh=ObjLoader.loadObj(Gdx.files.internal("data/scene.obj").read());
+  ObjLoader objLoader=new ObjLoader();
+  scene=objLoader.loadObj(Gdx.files.internal("data/scene.obj"));
+  sceneInstance=new ModelInstance(scene);
+  modelBatch=new ModelBatch();
   fbo=new FrameBuffer(Format.RGB565,Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),true);
   cam=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
   cam.position.set(0,0,10);

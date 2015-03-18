@@ -1,0 +1,5 @@
+{
+  spinner=new JSpinner(new SpinnerNumberModel(initialValue,min,max,stepSize));
+  setLayout(new BorderLayout());
+  add(spinner);
+}

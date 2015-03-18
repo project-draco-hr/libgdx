@@ -1,0 +1,9 @@
+{
+  btTriangleIndexVertexArray result=getInstance(meshParts);
+  if (result == null) {
+    result=new btTriangleIndexVertexArray(meshParts);
+    instances.add(result);
+  }
+  result.obtain();
+  return result;
+}

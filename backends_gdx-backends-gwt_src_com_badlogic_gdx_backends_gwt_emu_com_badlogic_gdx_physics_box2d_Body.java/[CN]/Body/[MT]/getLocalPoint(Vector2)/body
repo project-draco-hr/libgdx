@@ -1,5 +1,0 @@
-{
-  tmp.set(worldPoint.x,worldPoint.y);
-  Vec2 lp=body.getLocalPoint(tmp);
-  return localPoint2.set(lp.x,lp.y);
-}

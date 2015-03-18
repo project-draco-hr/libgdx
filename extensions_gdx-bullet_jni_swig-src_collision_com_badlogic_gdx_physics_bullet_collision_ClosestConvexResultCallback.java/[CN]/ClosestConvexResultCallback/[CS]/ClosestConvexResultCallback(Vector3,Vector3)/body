@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ClosestConvexResultCallback(convexFromWorld,convexToWorld),true);
+  CollisionJNI.ClosestConvexResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

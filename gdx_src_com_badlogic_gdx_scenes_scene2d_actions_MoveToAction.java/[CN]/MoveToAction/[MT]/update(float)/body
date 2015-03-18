@@ -1,3 +1,3 @@
 {
-  actor.setPosition(startX + (endX - startX) * percent,startY + (endY - startY) * percent);
+  target.setPosition(startX + (endX - startX) * percent,startY + (endY - startY) * percent,alignment);
 }

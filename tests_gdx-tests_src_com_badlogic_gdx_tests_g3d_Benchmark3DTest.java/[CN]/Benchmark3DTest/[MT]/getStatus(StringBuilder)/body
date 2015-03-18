@@ -1,0 +1,33 @@
+{
+  stringBuilder.setLength(0);
+  stringBuilder.append("GL calls: ");
+  stringBuilder.append(GLProfiler.calls);
+  glCallsLabel.setText(stringBuilder);
+  stringBuilder.setLength(0);
+  stringBuilder.append("Draw calls: ");
+  stringBuilder.append(GLProfiler.drawCalls);
+  drawCallsLabel.setText(stringBuilder);
+  stringBuilder.setLength(0);
+  stringBuilder.append("Shader switches: ");
+  stringBuilder.append(GLProfiler.shaderSwitches);
+  shaderSwitchesLabel.setText(stringBuilder);
+  stringBuilder.setLength(0);
+  stringBuilder.append("Texture bindings: ");
+  stringBuilder.append(GLProfiler.textureBindings);
+  textureBindsLabel.setText(stringBuilder);
+  stringBuilder.setLength(0);
+  stringBuilder.append("Vertices: ");
+  stringBuilder.append(GLProfiler.vertexCount.total);
+  vertexCountLabel.setText(stringBuilder);
+  stringBuilder.setLength(0);
+  stringBuilder.append("Lights: ");
+  stringBuilder.append(environment.directionalLights.size + environment.pointLights.size);
+  stringBuilder.append(", Directional: ");
+  stringBuilder.append(environment.directionalLights.size);
+  stringBuilder.append(", Point: ");
+  stringBuilder.append(environment.pointLights.size);
+  lightsLabel.setText(stringBuilder);
+  GLProfiler.reset();
+  stringBuilder.setLength(0);
+  super.getStatus(stringBuilder);
+}

@@ -1,11 +1,14 @@
 {
-  if (looping && (playMode == NORMAL || playMode == REVERSED)) {
-    if (playMode == NORMAL)     playMode=LOOP;
- else     playMode=LOOP_REVERSED;
+  PlayMode oldPlayMode=playMode;
+  if (looping && (playMode == PlayMode.NORMAL || playMode == PlayMode.REVERSED)) {
+    if (playMode == PlayMode.NORMAL)     playMode=PlayMode.LOOP;
+ else     playMode=PlayMode.LOOP_REVERSED;
   }
- else   if (!looping && !(playMode == NORMAL || playMode == REVERSED)) {
-    if (playMode == LOOP_REVERSED)     playMode=REVERSED;
- else     playMode=LOOP;
+ else   if (!looping && !(playMode == PlayMode.NORMAL || playMode == PlayMode.REVERSED)) {
+    if (playMode == PlayMode.LOOP_REVERSED)     playMode=PlayMode.REVERSED;
+ else     playMode=PlayMode.LOOP;
   }
-  return getKeyFrame(stateTime);
+  TextureRegion frame=getKeyFrame(stateTime);
+  playMode=oldPlayMode;
+  return frame;
 }

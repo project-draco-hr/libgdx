@@ -1,13 +1,15 @@
 {
+  if (screenX < viewport.getScreenX() || screenX >= viewport.getScreenX() + viewport.getScreenWidth())   return false;
+  if (Gdx.graphics.getHeight() - screenY < viewport.getScreenY() || Gdx.graphics.getHeight() - screenY >= viewport.getScreenY() + viewport.getScreenHeight())   return false;
   mouseScreenX=screenX;
   mouseScreenY=screenY;
-  screenToStageCoordinates(stageCoords.set(screenX,screenY));
+  screenToStageCoordinates(tempCoords.set(screenX,screenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
   event.setType(Type.mouseMoved);
-  event.setStageX(stageCoords.x);
-  event.setStageY(stageCoords.y);
-  Actor target=hit(stageCoords.x,stageCoords.y);
+  event.setStageX(tempCoords.x);
+  event.setStageY(tempCoords.y);
+  Actor target=hit(tempCoords.x,tempCoords.y,true);
   if (target == null)   target=root;
   target.fire(event);
   boolean handled=event.isHandled();

@@ -1,0 +1,5 @@
+{
+  GL20 gl=Gdx.gl20;
+  checkManaged();
+  gl.glUniformMatrix4fv(location,length / 16,false,values,offset);
+}

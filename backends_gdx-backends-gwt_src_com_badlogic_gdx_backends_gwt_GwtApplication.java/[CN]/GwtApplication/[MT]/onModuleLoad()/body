@@ -1,7 +1,9 @@
 {
-  this.agentInfo=computeAgentInfo();
+  GwtApplication.agentInfo=computeAgentInfo();
   this.listener=getApplicationListener();
   this.config=getConfig();
+  this.log=config.log;
+  addEventListeners();
   if (config.rootPanel != null) {
     this.root=config.rootPanel;
   }
@@ -28,29 +30,29 @@
       root=panel;
     }
   }
-  SoundManager.init(GWT.getModuleBaseURL(),9);
-  new Timer(){
-    @Override public void run(){
-      if (SoundManager.swfLoaded()) {
-        final PreloaderCallback callback=getPreloaderCallback();
-        preloader=new Preloader();
-        preloader.preload("assets.txt",new PreloaderCallback(){
-          @Override public void loaded(          String file,          int loaded,          int total){
-            callback.loaded(file,loaded,total);
-          }
-          @Override public void error(          String file){
-            callback.error(file);
-          }
-          @Override public void done(){
-            callback.done();
-            root.clear();
+  SoundManager.init(GWT.getModuleBaseURL(),9,config.preferFlash,new SoundManager.SoundManagerCallback(){
+    @Override public void onready(){
+      final PreloaderCallback callback=getPreloaderCallback();
+      preloader=createPreloader();
+      preloader.preload("assets.txt",new PreloaderCallback(){
+        @Override public void error(        String file){
+          callback.error(file);
+        }
+        @Override public void update(        PreloaderState state){
+          callback.update(state);
+          if (state.hasEnded()) {
+            getRootPanel().clear();
+            if (loadingListener != null)             loadingListener.beforeSetup();
             setupLoop();
+            if (loadingListener != null)             loadingListener.afterSetup();
           }
         }
-);
-        cancel();
       }
+);
+    }
+    @Override public void ontimeout(    String status,    String errorType){
+      error("SoundManager",status + " " + errorType);
     }
   }
-.scheduleRepeating(100);
+);
 }

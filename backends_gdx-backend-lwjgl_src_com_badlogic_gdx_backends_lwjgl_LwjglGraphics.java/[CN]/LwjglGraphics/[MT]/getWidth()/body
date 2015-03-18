@@ -1,4 +1,4 @@
 {
-  if (canvas != null)   return canvas.getWidth();
- else   return Display.getWidth();
+  if (canvas != null)   return Math.max(1,canvas.getWidth());
+ else   return (int)(Display.getWidth() * Display.getPixelScaleFactor());
 }

@@ -1,0 +1,28 @@
+{
+  if (loopCount != 0 && animation != null) {
+    int loops;
+    final float diff=speed * delta;
+    if (!MathUtils.isZero(duration)) {
+      time+=diff;
+      loops=(int)Math.abs(time / duration);
+      if (time < 0f) {
+        loops++;
+        while (time < 0f)         time+=duration;
+      }
+      time=Math.abs(time % duration);
+    }
+ else     loops=1;
+    for (int i=0; i < loops; i++) {
+      if (loopCount > 0)       loopCount--;
+      if (loopCount != 0 && listener != null)       listener.onLoop(this);
+      if (loopCount == 0) {
+        final float result=((loops - 1) - i) * duration + (diff < 0f ? duration - time : time);
+        time=(diff < 0f) ? 0f : duration;
+        if (listener != null)         listener.onEnd(this);
+        return result;
+      }
+    }
+    return 0f;
+  }
+ else   return delta;
+}

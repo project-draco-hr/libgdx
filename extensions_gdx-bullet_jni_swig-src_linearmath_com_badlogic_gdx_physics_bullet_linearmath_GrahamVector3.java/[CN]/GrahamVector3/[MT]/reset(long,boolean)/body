@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(LinearMathJNI.GrahamVector3_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

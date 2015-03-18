@@ -1,0 +1,5 @@
+{
+  if (spaceTop == null)   throw new IllegalArgumentException("spaceTop cannot be null.");
+  this.spaceTop=spaceTop;
+  return this;
+}

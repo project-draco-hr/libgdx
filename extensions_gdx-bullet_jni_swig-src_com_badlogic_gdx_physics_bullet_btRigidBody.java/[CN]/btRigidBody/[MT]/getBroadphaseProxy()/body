@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btRigidBody_getBroadphaseProxy__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new btBroadphaseProxy(cPtr,false);
-}

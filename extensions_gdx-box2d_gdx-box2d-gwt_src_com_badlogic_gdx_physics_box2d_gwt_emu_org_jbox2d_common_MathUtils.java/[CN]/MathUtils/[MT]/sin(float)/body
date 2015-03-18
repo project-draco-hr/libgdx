@@ -1,0 +1,8 @@
+{
+  if (Settings.SINCOS_LUT_ENABLED) {
+    return sinLUT(x);
+  }
+ else {
+    return (float)StrictMath.sin(x);
+  }
+}

@@ -1,0 +1,78 @@
+{
+  this.config=config;
+  width=(int)bounds.getWidth();
+  height=(int)bounds.getHeight();
+  app.debug(tag,bounds.getWidth() + "x" + bounds.getHeight()+ ", "+ scale);
+  this.gl20=gl20;
+  context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
+  view=new GLKView(new CGRect(new CGPoint(0,0),bounds),context){
+    @Method(selector="touchesBegan:withEvent:") public void touchesBegan(    @Pointer long touches,    UIEvent event){
+      IOSGraphics.this.input.touchDown(touches,event);
+    }
+    @Method(selector="touchesCancelled:withEvent:") public void touchesCancelled(    @Pointer long touches,    UIEvent event){
+      IOSGraphics.this.input.touchUp(touches,event);
+    }
+    @Method(selector="touchesEnded:withEvent:") public void touchesEnded(    @Pointer long touches,    UIEvent event){
+      IOSGraphics.this.input.touchUp(touches,event);
+    }
+    @Method(selector="touchesMoved:withEvent:") public void touchesMoved(    @Pointer long touches,    UIEvent event){
+      IOSGraphics.this.input.touchMoved(touches,event);
+    }
+    @Override public void draw(    CGRect rect){
+      IOSGraphics.this.draw(this,rect);
+    }
+  }
+;
+  view.setDelegate(this);
+  view.setDrawableColorFormat(config.colorFormat);
+  view.setDrawableDepthFormat(config.depthFormat);
+  view.setDrawableStencilFormat(config.stencilFormat);
+  view.setDrawableMultisample(config.multisample);
+  view.setMultipleTouchEnabled(true);
+  viewController=new IOSUIViewController(app,this);
+  viewController.setView(view);
+  viewController.setDelegate(this);
+  viewController.setPreferredFramesPerSecond(config.preferredFramesPerSecond);
+  this.app=app;
+  this.input=input;
+  int r=0, g=0, b=0, a=0, depth=0, stencil=0, samples=0;
+  if (config.colorFormat == GLKViewDrawableColorFormat.RGB565) {
+    r=5;
+    g=6;
+    b=5;
+    a=0;
+  }
+ else {
+    r=g=b=a=8;
+  }
+  if (config.depthFormat == GLKViewDrawableDepthFormat._16) {
+    depth=16;
+  }
+ else   if (config.depthFormat == GLKViewDrawableDepthFormat._24) {
+    depth=24;
+  }
+ else {
+    depth=0;
+  }
+  if (config.stencilFormat == GLKViewDrawableStencilFormat._8) {
+    stencil=8;
+  }
+  if (config.multisample == GLKViewDrawableMultisample._4X) {
+    samples=4;
+  }
+  bufferFormat=new BufferFormat(r,g,b,a,depth,stencil,samples,false);
+  this.gl20=gl20;
+  String machineString=HWMachine.getMachineString();
+  IOSDevice device=IOSDevice.getDevice(machineString);
+  if (device == null)   app.error(tag,"Machine ID: " + machineString + " not found, please report to LibGDX");
+  int ppi=device != null ? device.ppi : 163;
+  density=device != null ? device.ppi / 160f : scale;
+  ppiX=ppi;
+  ppiY=ppi;
+  ppcX=ppiX / 2.54f;
+  ppcY=ppiY / 2.54f;
+  app.debug(tag,"Display: ppi=" + ppi + ", density="+ density);
+  lastFrameTime=System.nanoTime();
+  framesStart=lastFrameTime;
+  appPaused=false;
+}

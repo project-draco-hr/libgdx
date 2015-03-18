@@ -1,0 +1,6 @@
+{
+  this.controllers=controllers;
+  this.inputManager=(InputManager)((Context)Gdx.app).getSystemService(Context.INPUT_SERVICE);
+  Gdx.app.addLifecycleListener(this);
+  inputManager.registerInputDeviceListener(this,((AndroidApplication)Gdx.app).handler);
+}

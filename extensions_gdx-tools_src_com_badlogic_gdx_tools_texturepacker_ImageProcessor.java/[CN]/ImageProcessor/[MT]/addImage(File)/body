@@ -1,0 +1,19 @@
+{
+  BufferedImage image;
+  try {
+    image=ImageIO.read(file);
+  }
+ catch (  IOException ex) {
+    throw new RuntimeException("Error reading image: " + file,ex);
+  }
+  if (image == null)   throw new RuntimeException("Unable to read image: " + file);
+  String name=file.getAbsolutePath().replace('\\','/');
+  if (rootPath != null) {
+    if (!name.startsWith(rootPath))     throw new RuntimeException("Path '" + name + "' does not start with root: "+ rootPath);
+    name=name.substring(rootPath.length());
+  }
+  int dotIndex=name.lastIndexOf('.');
+  if (dotIndex != -1)   name=name.substring(0,dotIndex);
+  Rect rect=addImage(image,name);
+  if (rect != null && settings.limitMemory)   rect.unloadImage(file);
+}

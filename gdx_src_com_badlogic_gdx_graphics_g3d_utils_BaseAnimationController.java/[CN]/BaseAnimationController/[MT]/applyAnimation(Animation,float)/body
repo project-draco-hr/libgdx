@@ -1,0 +1,5 @@
+{
+  if (applying)   throw new GdxRuntimeException("Call end() first");
+  applyAnimation(null,null,1.f,animation,time);
+  target.calculateTransforms();
+}

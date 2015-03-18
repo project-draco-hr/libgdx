@@ -1,3 +1,4 @@
 {
-  return setText(str,x,y,0,str.length());
+  clear();
+  return addText(str,x,y,0,str.length());
 }

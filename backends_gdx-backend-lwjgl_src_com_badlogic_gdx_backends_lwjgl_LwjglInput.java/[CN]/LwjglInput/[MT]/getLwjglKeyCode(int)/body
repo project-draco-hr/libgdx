@@ -1,9 +1,27 @@
 {
 switch (gdxKeyCode) {
+case Input.Keys.APOSTROPHE:
+    return Keyboard.KEY_APOSTROPHE;
+case Input.Keys.LEFT_BRACKET:
+  return Keyboard.KEY_LBRACKET;
+case Input.Keys.RIGHT_BRACKET:
+return Keyboard.KEY_RBRACKET;
+case Input.Keys.GRAVE:
+return Keyboard.KEY_GRAVE;
+case Input.Keys.STAR:
+return Keyboard.KEY_MULTIPLY;
+case Input.Keys.NUM:
+return Keyboard.KEY_NUMLOCK;
+case Input.Keys.AT:
+return Keyboard.KEY_AT;
+case Input.Keys.EQUALS:
+return Keyboard.KEY_EQUALS;
+case Input.Keys.SYM:
+return Keyboard.KEY_LMETA;
 case Input.Keys.NUM_0:
-    return Keyboard.KEY_0;
+return Keyboard.KEY_0;
 case Input.Keys.NUM_1:
-  return Keyboard.KEY_1;
+return Keyboard.KEY_1;
 case Input.Keys.NUM_2:
 return Keyboard.KEY_2;
 case Input.Keys.NUM_3:
@@ -94,6 +112,14 @@ case Input.Keys.ENTER:
 return Keyboard.KEY_RETURN;
 case Input.Keys.HOME:
 return Keyboard.KEY_HOME;
+case Input.Keys.END:
+return Keyboard.KEY_END;
+case Input.Keys.PAGE_DOWN:
+return Keyboard.KEY_NEXT;
+case Input.Keys.PAGE_UP:
+return Keyboard.KEY_PRIOR;
+case Input.Keys.INSERT:
+return Keyboard.KEY_INSERT;
 case Input.Keys.MINUS:
 return Keyboard.KEY_MINUS;
 case Input.Keys.PERIOD:
@@ -146,6 +172,26 @@ case Input.Keys.F12:
 return Keyboard.KEY_F12;
 case Input.Keys.COLON:
 return Keyboard.KEY_COLON;
+case Input.Keys.NUMPAD_0:
+return Keyboard.KEY_NUMPAD0;
+case Input.Keys.NUMPAD_1:
+return Keyboard.KEY_NUMPAD1;
+case Input.Keys.NUMPAD_2:
+return Keyboard.KEY_NUMPAD2;
+case Input.Keys.NUMPAD_3:
+return Keyboard.KEY_NUMPAD3;
+case Input.Keys.NUMPAD_4:
+return Keyboard.KEY_NUMPAD4;
+case Input.Keys.NUMPAD_5:
+return Keyboard.KEY_NUMPAD5;
+case Input.Keys.NUMPAD_6:
+return Keyboard.KEY_NUMPAD6;
+case Input.Keys.NUMPAD_7:
+return Keyboard.KEY_NUMPAD7;
+case Input.Keys.NUMPAD_8:
+return Keyboard.KEY_NUMPAD8;
+case Input.Keys.NUMPAD_9:
+return Keyboard.KEY_NUMPAD9;
 default :
 return Keyboard.KEY_NONE;
 }

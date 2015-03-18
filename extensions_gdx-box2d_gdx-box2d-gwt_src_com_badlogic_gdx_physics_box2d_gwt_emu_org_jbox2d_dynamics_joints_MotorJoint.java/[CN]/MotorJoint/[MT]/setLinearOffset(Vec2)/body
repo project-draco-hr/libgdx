@@ -1,0 +1,7 @@
+{
+  if (linearOffset.x != m_linearOffset.x || linearOffset.y != m_linearOffset.y) {
+    m_bodyA.setAwake(true);
+    m_bodyB.setAwake(true);
+    m_linearOffset.set(linearOffset);
+  }
+}

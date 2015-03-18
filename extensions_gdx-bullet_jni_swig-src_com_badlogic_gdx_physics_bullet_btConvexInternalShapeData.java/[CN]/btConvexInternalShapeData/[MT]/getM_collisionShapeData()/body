@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btConvexInternalShapeData_m_collisionShapeData_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btCollisionShapeData(cPtr,false);
-}

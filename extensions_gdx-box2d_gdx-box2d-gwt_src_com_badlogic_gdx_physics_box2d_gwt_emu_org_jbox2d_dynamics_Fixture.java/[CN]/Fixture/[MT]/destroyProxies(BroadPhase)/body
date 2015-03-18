@@ -1,0 +1,8 @@
+{
+  for (int i=0; i < m_proxyCount; ++i) {
+    FixtureProxy proxy=m_proxies[i];
+    broadPhase.destroyProxy(proxy.proxyId);
+    proxy.proxyId=BroadPhase.NULL_PROXY;
+  }
+  m_proxyCount=0;
+}

@@ -1,0 +1,11 @@
+{
+  perf.start();
+  originDummy=this;
+  Dummy found=enemy.selectRanked(distComp,k);
+  perf.stop();
+  perf.tick();
+  if (verify) {
+    verifyCorrectness(found,k);
+  }
+  return found;
+}

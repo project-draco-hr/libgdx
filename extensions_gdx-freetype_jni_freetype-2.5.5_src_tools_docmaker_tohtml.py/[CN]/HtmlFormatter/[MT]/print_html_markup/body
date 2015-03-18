@@ -1,0 +1,12 @@
+def print_html_markup(self, markup):
+    table_fields = []
+    for field in markup.fields:
+        if field.name:
+            table_fields.append(field)
+        else:
+            if table_fields:
+                self.print_html_field_list(table_fields)
+                table_fields = []
+            self.print_html_items(field.items)
+    if table_fields:
+        self.print_html_field_list(table_fields)

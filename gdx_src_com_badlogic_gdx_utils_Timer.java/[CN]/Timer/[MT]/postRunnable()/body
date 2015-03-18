@@ -1,5 +1,0 @@
-{
-  if (stopped || posted)   return;
-  posted=true;
-  Gdx.app.postRunnable(timerRunnable);
-}

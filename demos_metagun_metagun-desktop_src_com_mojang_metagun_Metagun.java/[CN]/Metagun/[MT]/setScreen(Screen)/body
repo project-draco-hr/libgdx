@@ -1,5 +1,0 @@
-{
-  if (screen != null)   screen.removed();
-  screen=newScreen;
-  if (screen != null)   screen.init(this);
-}

@@ -1,0 +1,6 @@
+{
+  if (data.fontFile != null) {
+    return data.fontFile.nameWithoutExtension();
+  }
+  return super.toString();
+}

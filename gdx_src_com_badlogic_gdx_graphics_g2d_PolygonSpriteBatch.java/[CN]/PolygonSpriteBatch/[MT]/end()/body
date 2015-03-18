@@ -1,17 +1,11 @@
 {
   if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before end.");
-  if (idx > 0)   renderMesh();
+  if (vertexIndex > 0)   flush();
   lastTexture=null;
-  idx=0;
   drawing=false;
-  GLCommon gl=Gdx.gl;
+  GL20 gl=Gdx.gl;
   gl.glDepthMask(true);
-  if (isBlendingEnabled())   gl.glDisable(GL10.GL_BLEND);
-  if (Gdx.graphics.isGL20Available()) {
-    if (customShader != null)     customShader.end();
- else     shader.end();
-  }
- else {
-    gl.glDisable(GL10.GL_TEXTURE_2D);
-  }
+  if (isBlendingEnabled())   gl.glDisable(GL20.GL_BLEND);
+  if (customShader != null)   customShader.end();
+ else   shader.end();
 }

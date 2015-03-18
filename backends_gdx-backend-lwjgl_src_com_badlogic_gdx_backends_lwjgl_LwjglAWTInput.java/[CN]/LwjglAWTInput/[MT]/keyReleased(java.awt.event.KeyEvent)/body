@@ -6,7 +6,10 @@ synchronized (this) {
     event.type=KeyEvent.KEY_UP;
     event.timeStamp=System.nanoTime();
     keyEvents.add(event);
-    keys.remove(event.keyCode);
+    if (keys[event.keyCode]) {
+      keyCount--;
+      keys[event.keyCode]=false;
+    }
     Gdx.graphics.requestRendering();
   }
 }

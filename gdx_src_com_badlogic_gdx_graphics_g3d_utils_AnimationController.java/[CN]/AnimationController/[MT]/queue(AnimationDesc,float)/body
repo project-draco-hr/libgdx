@@ -1,0 +1,10 @@
+{
+  if (current == null || current.loopCount == 0)   animate(anim,transitionTime);
+ else {
+    if (queued != null)     animationPool.free(queued);
+    queued=anim;
+    queuedTransitionTime=transitionTime;
+    if (current.loopCount < 0)     current.loopCount=1;
+  }
+  return anim;
+}

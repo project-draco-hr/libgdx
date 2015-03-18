@@ -1,4 +1,7 @@
 {
+  if (soundPool == null) {
+    throw new GdxRuntimeException("Android audio is not enabled by the application config.");
+  }
   AndroidFileHandle aHandle=(AndroidFileHandle)file;
   MediaPlayer mediaPlayer=new MediaPlayer();
   if (aHandle.type() == FileType.Internal) {

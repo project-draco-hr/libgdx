@@ -1,3 +1,4 @@
 {
-  for (  Entry<K,V> entry : map.entries())   put(entry.key,entry.value);
+  ensureCapacity(map.size);
+  for (  Entry<K,V> entry : map)   put(entry.key,entry.value);
 }

@@ -1,0 +1,9 @@
+{
+  for (int i=0; i < 2; i++) {
+    float x=Gdx.input.getX(i) / (float)Gdx.graphics.getWidth();
+    if (Gdx.input.isTouched(i) && (x >= startX && x <= endX)) {
+      return true;
+    }
+  }
+  return false;
+}

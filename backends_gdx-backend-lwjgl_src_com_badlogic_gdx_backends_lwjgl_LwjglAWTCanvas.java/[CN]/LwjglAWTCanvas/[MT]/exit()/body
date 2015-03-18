@@ -1,9 +1,7 @@
 {
   postRunnable(new Runnable(){
     @Override public void run(){
-      setGlobals();
-      LwjglAWTCanvas.this.listener.pause();
-      LwjglAWTCanvas.this.listener.dispose();
+      stop();
       System.exit(-1);
     }
   }

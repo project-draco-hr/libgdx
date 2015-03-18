@@ -1,6 +1,6 @@
 {
   if (config.useAccelerometer) {
-    manager=(SensorManager)app.getSystemService(Context.SENSOR_SERVICE);
+    manager=(SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
     if (manager.getSensorList(Sensor.TYPE_ACCELEROMETER).size() == 0) {
       accelerometerAvailable=false;
     }
@@ -12,7 +12,7 @@
   }
  else   accelerometerAvailable=false;
   if (config.useCompass) {
-    if (manager == null)     manager=(SensorManager)app.getSystemService(Context.SENSOR_SERVICE);
+    if (manager == null)     manager=(SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
     Sensor sensor=manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     if (sensor != null) {
       compassAvailable=accelerometerAvailable;

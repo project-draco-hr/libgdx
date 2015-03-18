@@ -1,0 +1,6 @@
+{
+  final int patchSize=8;
+  final int pixmapSize=patchSize * 2;
+  TextureRegion tr=newPatchPix(patchSize,pixmapSize);
+  return new NinePatch(tr,patchSize,0,patchSize,0);
+}

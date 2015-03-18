@@ -1,0 +1,7 @@
+{
+  this.r+=t * (r - this.r);
+  this.g+=t * (g - this.g);
+  this.b+=t * (b - this.b);
+  this.a+=t * (a - this.a);
+  return clamp();
+}

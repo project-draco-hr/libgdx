@@ -1,3 +1,3 @@
 {
-  this.amountX=MathUtils.clamp(pixels,0,maxX);
+  scrollX(MathUtils.clamp(pixels,0,maxX));
 }

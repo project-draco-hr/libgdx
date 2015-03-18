@@ -1,0 +1,8 @@
+{
+  if (Settings.FAST_ROUND) {
+    return floor(x + .5f);
+  }
+ else {
+    return StrictMath.round(x);
+  }
+}

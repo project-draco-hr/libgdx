@@ -1,0 +1,7 @@
+{
+  if (buffer.capacity() < n) {
+    buffer=ByteBuffer.allocateDirect(n).order(ByteOrder.nativeOrder());
+    bufferInt=buffer.asIntBuffer();
+    bufferFloat=buffer.asFloatBuffer();
+  }
+}

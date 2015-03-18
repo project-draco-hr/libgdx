@@ -1,0 +1,8 @@
+{
+  assert(isLocked() == false);
+  if (isLocked()) {
+    return null;
+  }
+  ParticleGroup g=m_particleSystem.createParticleGroup(def);
+  return g;
+}

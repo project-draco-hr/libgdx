@@ -1,0 +1,5 @@
+{
+  hit=true;
+  other=colObj0Wrap.getCollisionObject() == movingBox.body ? colObj1Wrap.getCollisionObject() : colObj0Wrap.getCollisionObject();
+  return 0f;
+}

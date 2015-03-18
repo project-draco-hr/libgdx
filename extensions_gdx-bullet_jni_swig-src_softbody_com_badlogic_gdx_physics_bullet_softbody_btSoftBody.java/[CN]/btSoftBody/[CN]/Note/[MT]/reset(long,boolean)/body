@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(SoftbodyJNI.btSoftBody_Note_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

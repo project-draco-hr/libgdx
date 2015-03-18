@@ -1,0 +1,8 @@
+{
+  super();
+  this.width=width;
+  this.height=height;
+  this.tileWidth=tileWidth;
+  this.tileHeight=tileHeight;
+  this.cells=new Cell[width][height];
+}

@@ -1,0 +1,9 @@
+{
+  super(style);
+  if (style.imageUp != null)   this.imageUp=style.imageUp;
+  if (style.imageDown != null)   this.imageDown=style.imageDown;
+  if (style.imageOver != null)   this.imageOver=style.imageOver;
+  if (style.imageChecked != null)   this.imageChecked=style.imageChecked;
+  if (style.imageCheckedOver != null)   this.imageCheckedOver=style.imageCheckedOver;
+  if (style.imageDisabled != null)   this.imageDisabled=style.imageDisabled;
+}

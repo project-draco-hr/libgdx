@@ -1,10 +1,10 @@
 {
   time+=Gdx.graphics.getDeltaTime();
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-  batch.begin();
-  badlogicSmall.draw(batch);
-  renderer.begin(ShapeType.Rectangle);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+  renderer.begin(ShapeType.Line);
   renderer.rect(10,10,256,256);
   renderer.end();
+  batch.begin();
+  badlogicSmall.draw(batch);
   batch.end();
 }

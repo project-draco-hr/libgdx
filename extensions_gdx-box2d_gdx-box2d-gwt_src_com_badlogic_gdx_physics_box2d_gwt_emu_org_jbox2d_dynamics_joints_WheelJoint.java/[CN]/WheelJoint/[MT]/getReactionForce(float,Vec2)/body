@@ -1,0 +1,6 @@
+{
+  final Vec2 temp=pool.popVec2();
+  temp.set(m_ay).mulLocal(m_impulse);
+  argOut.set(m_ax).mulLocal(m_springImpulse).addLocal(temp).mulLocal(inv_dt);
+  pool.pushVec2(1);
+}

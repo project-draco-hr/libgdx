@@ -1,0 +1,7 @@
+{
+  joint.setUserData(null);
+  joints.remove(joint.addr);
+  joint.jointEdgeA.other.joints.removeValue(joint.jointEdgeB,true);
+  joint.jointEdgeB.other.joints.removeValue(joint.jointEdgeA,true);
+  jniDestroyJoint(addr,joint.addr);
+}

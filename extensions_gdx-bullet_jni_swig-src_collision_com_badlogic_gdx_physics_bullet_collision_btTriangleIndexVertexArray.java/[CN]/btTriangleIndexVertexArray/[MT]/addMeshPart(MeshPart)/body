@@ -1,0 +1,6 @@
+{
+  btIndexedMesh mesh=btIndexedMesh.obtain(meshPart);
+  addIndexedMesh(mesh,PHY_ScalarType.PHY_SHORT);
+  mesh.release();
+  return this;
+}

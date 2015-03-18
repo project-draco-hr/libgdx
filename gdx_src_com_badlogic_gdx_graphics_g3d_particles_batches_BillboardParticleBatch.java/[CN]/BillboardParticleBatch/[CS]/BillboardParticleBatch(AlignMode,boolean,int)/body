@@ -1,0 +1,10 @@
+{
+  super(BillboardControllerRenderData.class);
+  renderables=new Array<Renderable>();
+  renderablePool=new RenderablePool();
+  allocIndices();
+  initRenderData();
+  ensureCapacity(capacity);
+  setUseGpu(useGPU);
+  setAlignMode(mode);
+}

@@ -1,0 +1,3 @@
+{
+  return Integer.parseInt(UIDevice.getCurrentDevice().getSystemVersion().split("\\.")[0]);
+}

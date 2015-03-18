@@ -1,0 +1,5 @@
+{
+  int extensionIndex=s.lastIndexOf(".");
+  if (extensionIndex == -1)   return s;
+  return s.substring(0,extensionIndex);
+}

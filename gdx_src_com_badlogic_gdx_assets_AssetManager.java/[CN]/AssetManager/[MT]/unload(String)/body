@@ -7,6 +7,7 @@
     }
   }
   if (foundIndex != -1) {
+    toLoad--;
     loadQueue.removeIndex(foundIndex);
     log.debug("Unload (from queue): " + fileName);
     return;
@@ -35,7 +36,7 @@
   Array<String> dependencies=assetDependencies.get(fileName);
   if (dependencies != null) {
     for (    String dependency : dependencies) {
-      unload(dependency);
+      if (isLoaded(dependency))       unload(dependency);
     }
   }
   if (assetRef.getRefCount() <= 0) {

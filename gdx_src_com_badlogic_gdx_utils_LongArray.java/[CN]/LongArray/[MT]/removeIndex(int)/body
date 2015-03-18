@@ -1,5 +1,5 @@
 {
-  if (index >= size)   throw new IndexOutOfBoundsException(String.valueOf(index));
+  if (index >= size)   throw new IndexOutOfBoundsException("index can't be >= size: " + index + " >= "+ size);
   long[] items=this.items;
   long value=items[index];
   size--;

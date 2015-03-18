@@ -1,0 +1,4 @@
+{
+  if (processor == null)   throw new IllegalArgumentException("processor cannot be null.");
+  this.processor=processor;
+}

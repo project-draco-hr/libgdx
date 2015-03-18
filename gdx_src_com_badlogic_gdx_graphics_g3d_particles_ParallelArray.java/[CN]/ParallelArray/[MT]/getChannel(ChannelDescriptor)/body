@@ -1,0 +1,6 @@
+{
+  for (  Channel array : arrays) {
+    if (array.id == descriptor.id)     return (T)array;
+  }
+  return null;
+}

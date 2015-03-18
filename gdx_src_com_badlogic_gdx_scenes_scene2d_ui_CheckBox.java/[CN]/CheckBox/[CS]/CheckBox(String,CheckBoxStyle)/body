@@ -1,10 +1,9 @@
 {
   super(text,style);
-  clear();
-  add(image=new Image(style.checkboxOff));
+  clearChildren();
+  imageCell=add(image=new Image(style.checkboxOff));
   Label label=getLabel();
   add(label);
   label.setAlignment(Align.left);
-  setWidth(getPrefWidth());
-  setHeight(getPrefHeight());
+  setSize(getPrefWidth(),getPrefHeight());
 }

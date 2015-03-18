@@ -1,0 +1,3 @@
+{
+  return (float)(2.0 * Math.acos((this.w > 1) ? (this.w / len()) : this.w));
+}

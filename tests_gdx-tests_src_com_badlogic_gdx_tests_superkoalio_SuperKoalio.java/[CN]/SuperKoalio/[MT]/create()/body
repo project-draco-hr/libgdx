@@ -1,0 +1,17 @@
+{
+  koalaTexture=new Texture("data/maps/tiled/super-koalio/koalio.png");
+  TextureRegion[] regions=TextureRegion.split(koalaTexture,18,26)[0];
+  stand=new Animation(0,regions[0]);
+  jump=new Animation(0,regions[1]);
+  walk=new Animation(0.15f,regions[2],regions[3],regions[4]);
+  walk.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
+  Koala.WIDTH=1 / 16f * regions[0].getRegionWidth();
+  Koala.HEIGHT=1 / 16f * regions[0].getRegionHeight();
+  map=new TmxMapLoader().load("data/maps/tiled/super-koalio/level1.tmx");
+  renderer=new OrthogonalTiledMapRenderer(map,1 / 16f);
+  camera=new OrthographicCamera();
+  camera.setToOrtho(false,30,20);
+  camera.update();
+  koala=new Koala();
+  koala.position.set(20,20);
+}

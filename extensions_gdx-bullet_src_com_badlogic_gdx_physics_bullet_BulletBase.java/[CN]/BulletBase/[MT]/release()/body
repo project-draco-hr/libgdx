@@ -1,0 +1,3 @@
+{
+  if (--refCount <= 0 && Bullet.useRefCounting)   dispose();
+}

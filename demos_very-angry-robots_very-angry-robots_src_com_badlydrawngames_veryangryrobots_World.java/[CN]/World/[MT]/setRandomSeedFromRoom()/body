@@ -1,4 +1,0 @@
-{
-  long seed=roomSeed + ((roomX & 0xff) | ((roomY & 0xff) << 8));
-  random.setSeed(seed);
-}

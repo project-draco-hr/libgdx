@@ -1,0 +1,3 @@
+{
+  return new btWheelInfo(DynamicsJNI.btRaycastVehicle_addWheel(swigCPtr,this,connectionPointCS0,wheelDirectionCS0,wheelAxleCS,suspensionRestLength,wheelRadius,btRaycastVehicle.btVehicleTuning.getCPtr(tuning),tuning,isFrontWheel),false);
+}

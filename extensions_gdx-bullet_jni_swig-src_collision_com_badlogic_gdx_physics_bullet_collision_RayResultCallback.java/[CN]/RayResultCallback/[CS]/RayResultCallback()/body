@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_RayResultCallback(),true);
+  CollisionJNI.RayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

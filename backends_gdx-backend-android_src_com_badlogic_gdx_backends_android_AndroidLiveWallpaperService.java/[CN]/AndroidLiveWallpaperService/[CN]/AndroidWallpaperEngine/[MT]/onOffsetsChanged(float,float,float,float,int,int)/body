@@ -1,0 +1,14 @@
+{
+  this.offsetsConsumed=false;
+  this.xOffset=xOffset;
+  this.yOffset=yOffset;
+  this.xOffsetStep=xOffsetStep;
+  this.yOffsetStep=yOffsetStep;
+  this.xPixelOffset=xPixelOffset;
+  this.yPixelOffset=yPixelOffset;
+  notifyOffsetsChanged();
+  if (!Gdx.graphics.isContinuousRendering()) {
+    Gdx.graphics.requestRendering();
+  }
+  super.onOffsetsChanged(xOffset,yOffset,xOffsetStep,yOffsetStep,xPixelOffset,yPixelOffset);
+}

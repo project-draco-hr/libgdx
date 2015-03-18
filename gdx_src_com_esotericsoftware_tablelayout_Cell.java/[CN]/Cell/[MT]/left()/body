@@ -1,8 +1,0 @@
-{
-  if (align == null)   align=LEFT;
- else {
-    align|=LEFT;
-    align&=~RIGHT;
-  }
-  return this;
-}

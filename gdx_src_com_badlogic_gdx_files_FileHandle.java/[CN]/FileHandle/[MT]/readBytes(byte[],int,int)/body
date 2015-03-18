@@ -12,11 +12,7 @@
     throw new GdxRuntimeException("Error reading file: " + this,ex);
   }
  finally {
-    try {
-      if (input != null)       input.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(input);
   }
   return position - offset;
 }

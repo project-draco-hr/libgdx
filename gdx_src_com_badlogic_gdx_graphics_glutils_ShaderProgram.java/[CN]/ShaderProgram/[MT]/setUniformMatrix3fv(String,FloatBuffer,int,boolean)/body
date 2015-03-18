@@ -1,0 +1,7 @@
+{
+  GL20 gl=Gdx.gl20;
+  checkManaged();
+  buffer.position(0);
+  int location=fetchUniformLocation(name);
+  gl.glUniformMatrix3fv(location,count,transpose,buffer);
+}

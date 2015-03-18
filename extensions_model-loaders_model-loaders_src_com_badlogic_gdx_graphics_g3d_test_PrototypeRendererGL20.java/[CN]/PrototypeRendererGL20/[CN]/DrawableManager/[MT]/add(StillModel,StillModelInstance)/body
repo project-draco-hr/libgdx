@@ -1,6 +1,0 @@
-{
-  Drawable drawable=drawablePool.obtain();
-  drawable.set(model,instance);
-  if (drawable.blending)   drawablesBlended.add(drawable);
- else   drawables.add(drawable);
-}

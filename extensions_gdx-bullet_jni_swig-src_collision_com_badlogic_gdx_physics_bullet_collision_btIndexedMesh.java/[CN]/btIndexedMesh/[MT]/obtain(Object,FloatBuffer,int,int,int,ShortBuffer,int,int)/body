@@ -1,0 +1,11 @@
+{
+  if (tag == null)   throw new GdxRuntimeException("tag cannot be null");
+  btIndexedMesh result=getInstance(tag);
+  if (result == null) {
+    result=new btIndexedMesh(vertices,sizeInBytesOfEachVertex,vertexCount,positionOffsetInBytes,indices,indexOffset,indexCount);
+    result.tag=tag;
+    instances.add(result);
+  }
+  result.obtain();
+  return result;
+}

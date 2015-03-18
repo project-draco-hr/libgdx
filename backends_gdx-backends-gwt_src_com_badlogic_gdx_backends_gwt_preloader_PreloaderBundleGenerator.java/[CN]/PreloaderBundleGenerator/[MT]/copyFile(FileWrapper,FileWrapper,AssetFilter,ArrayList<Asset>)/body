@@ -1,5 +1,5 @@
 {
-  if (filter.accept(dest.path(),false))   ;
+  if (!filter.accept(dest.path(),false))   return;
   try {
     assets.add(new Asset(dest,filter.getType(dest.path())));
     dest.write(source.read(),false);

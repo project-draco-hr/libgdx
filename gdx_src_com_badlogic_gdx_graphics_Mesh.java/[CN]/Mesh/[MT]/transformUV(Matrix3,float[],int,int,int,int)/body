@@ -1,0 +1,11 @@
+{
+  if (start < 0 || count < 1 || ((start + count) * vertexSize) > vertices.length)   throw new IndexOutOfBoundsException("start = " + start + ", count = "+ count+ ", vertexSize = "+ vertexSize+ ", length = "+ vertices.length);
+  final Vector2 tmp=new Vector2();
+  int idx=offset + (start * vertexSize);
+  for (int i=0; i < count; i++) {
+    tmp.set(vertices[idx],vertices[idx + 1]).mul(matrix);
+    vertices[idx]=tmp.x;
+    vertices[idx + 1]=tmp.y;
+    idx+=vertexSize;
+  }
+}

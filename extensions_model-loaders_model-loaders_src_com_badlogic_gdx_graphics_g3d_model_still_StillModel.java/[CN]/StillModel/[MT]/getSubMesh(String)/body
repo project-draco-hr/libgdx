@@ -1,6 +1,0 @@
-{
-  for (  StillSubMesh subMesh : subMeshes) {
-    if (subMesh.name.equals(name))     return subMesh;
-  }
-  return null;
-}

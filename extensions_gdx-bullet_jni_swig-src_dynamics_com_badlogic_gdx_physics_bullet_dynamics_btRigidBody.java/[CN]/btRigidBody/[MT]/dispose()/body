@@ -1,0 +1,5 @@
+{
+  if (motionState != null)   motionState.release();
+  motionState=null;
+  super.dispose();
+}

@@ -1,5 +1,5 @@
 {
   super.flip(x,y);
-  if (x)   offsetX=originalWidth - offsetX - packedWidth;
-  if (y)   offsetY=originalHeight - offsetY - packedHeight;
+  if (x)   offsetX=originalWidth - offsetX - getRotatedPackedWidth();
+  if (y)   offsetY=originalHeight - offsetY - getRotatedPackedHeight();
 }

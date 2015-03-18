@@ -1,8 +1,0 @@
-{
-  timeSize=ts;
-  sampleRate=(int)sr;
-  bandWidth=(2f / timeSize) * ((float)sampleRate / 2f);
-  noAverages();
-  allocateArrays();
-  whichWindow=NONE;
-}

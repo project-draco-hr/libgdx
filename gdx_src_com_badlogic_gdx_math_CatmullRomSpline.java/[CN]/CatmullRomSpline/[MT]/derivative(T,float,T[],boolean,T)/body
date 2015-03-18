@@ -1,0 +1,7 @@
+{
+  final int n=continuous ? points.length : points.length - 3;
+  float u=t * n;
+  int i=(t >= 1f) ? (n - 1) : (int)u;
+  u-=i;
+  return derivative(out,i,u,points,continuous,tmp);
+}

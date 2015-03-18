@@ -1,0 +1,9 @@
+{
+  enemy.sort(distComp);
+  int idx=enemy.indexOf(d,true);
+  if (enemy.get(idx) != enemy.get(k - 1)) {
+    System.out.println("origin dummy: " + originDummy);
+    System.out.println("TEST FAILURE: " + "idx: " + idx + " does not equal (k - 1): "+ (k - 1));
+    throw new GdxRuntimeException("test failed");
+  }
+}

@@ -7,28 +7,33 @@
     }
   }
 );
-  continuousCheckbox.setSelected(editor.getEmitter().isContinuous());
   continuousCheckbox.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent event){
       editor.getEmitter().setContinuous(continuousCheckbox.isSelected());
     }
   }
 );
-  alignedCheckbox.addChangeListener(new ChangeListener(){
-    public void stateChanged(    ChangeEvent event){
+  alignedCheckbox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
       editor.getEmitter().setAligned(alignedCheckbox.isSelected());
     }
   }
 );
-  additiveCheckbox.addChangeListener(new ChangeListener(){
-    public void stateChanged(    ChangeEvent event){
+  additiveCheckbox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
       editor.getEmitter().setAdditive(additiveCheckbox.isSelected());
     }
   }
 );
-  behindCheckbox.addChangeListener(new ChangeListener(){
-    public void stateChanged(    ChangeEvent event){
+  behindCheckbox.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent event){
       editor.getEmitter().setBehind(behindCheckbox.isSelected());
+    }
+  }
+);
+  premultipliedAlphaCheckbox.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent event){
+      editor.getEmitter().setPremultipliedAlpha(premultipliedAlphaCheckbox.isSelected());
     }
   }
 );
@@ -38,4 +43,5 @@
   alignedCheckbox.setSelected(emitter.isAligned());
   additiveCheckbox.setSelected(emitter.isAdditive());
   behindCheckbox.setSelected(emitter.isBehind());
+  premultipliedAlphaCheckbox.setSelected(emitter.isPremultipliedAlpha());
 }

@@ -1,0 +1,4 @@
+{
+  alphaValue=json.readValue("alpha",ScaledNumericValue.class,jsonData);
+  colorValue=json.readValue("color",GradientColorValue.class,jsonData);
+}

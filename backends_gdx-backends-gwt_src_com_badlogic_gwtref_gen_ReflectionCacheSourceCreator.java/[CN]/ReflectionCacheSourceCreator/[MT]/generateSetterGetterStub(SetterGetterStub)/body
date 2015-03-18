@@ -14,14 +14,14 @@
   }
   stub.enclosingType=stub.enclosingType.replace(".class","");
   stub.type=stub.type.replace(".class","");
-  pb("public native Object " + stub.getter + "("+ stub.enclosingType+ " obj) /*-{");
-  if (stub.isStatic)   pb("   return @" + stub.enclosingType + "::"+ stub.name+ ";");
- else   pb("   return obj.@" + stub.enclosingType + "::"+ stub.name+ ";");
+  pbn("private native " + stub.type + " g"+ stub.getter+ "("+ stub.enclosingType+ " obj) /*-{");
+  if (stub.isStatic)   pbn("return @" + stub.enclosingType + "::"+ stub.name+ ";");
+ else   pbn("return obj.@" + stub.enclosingType + "::"+ stub.name+ ";");
   pb("}-*/;");
   if (!stub.isFinal) {
-    pb("public native void " + stub.setter + "("+ stub.enclosingType+ " obj, Object value)  /*-{");
-    if (stub.isStatic)     pb("    @" + stub.enclosingType + "::"+ stub.name+ " = value");
- else     pb("    obj.@" + stub.enclosingType + "::"+ stub.name+ " = value;");
+    pbn("private native void s" + stub.setter + "("+ stub.enclosingType+ " obj, "+ stub.type+ " value)  /*-{");
+    if (stub.isStatic)     pbn("@" + stub.enclosingType + "::"+ stub.name+ " = value");
+ else     pbn("obj.@" + stub.enclosingType + "::"+ stub.name+ " = value;");
     pb("}-*/;");
   }
   return buffer.toString();

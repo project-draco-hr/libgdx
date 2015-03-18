@@ -1,0 +1,17 @@
+{
+  beginRender();
+  for (  MapLayer layer : map.getLayers()) {
+    if (layer.isVisible()) {
+      if (layer instanceof TiledMapTileLayer) {
+        renderTileLayer((TiledMapTileLayer)layer);
+      }
+      if (layer instanceof TiledMapImageLayer) {
+        renderImageLayer((TiledMapImageLayer)layer);
+      }
+ else {
+        renderObjects(layer);
+      }
+    }
+  }
+  endRender();
+}

@@ -1,0 +1,15 @@
+{
+  super(argWorld,def);
+  assert(def.target.isValid());
+  assert(def.maxForce >= 0);
+  assert(def.frequencyHz >= 0);
+  assert(def.dampingRatio >= 0);
+  m_targetA.set(def.target);
+  Transform.mulTransToOutUnsafe(m_bodyB.getTransform(),m_targetA,m_localAnchorB);
+  m_maxForce=def.maxForce;
+  m_impulse.setZero();
+  m_frequencyHz=def.frequencyHz;
+  m_dampingRatio=def.dampingRatio;
+  m_beta=0;
+  m_gamma=0;
+}

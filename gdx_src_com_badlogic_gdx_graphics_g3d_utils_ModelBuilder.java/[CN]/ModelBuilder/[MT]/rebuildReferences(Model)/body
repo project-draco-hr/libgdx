@@ -1,0 +1,6 @@
+{
+  model.materials.clear();
+  model.meshes.clear();
+  model.meshParts.clear();
+  for (  final Node node : model.nodes)   rebuildReferences(model,node);
+}

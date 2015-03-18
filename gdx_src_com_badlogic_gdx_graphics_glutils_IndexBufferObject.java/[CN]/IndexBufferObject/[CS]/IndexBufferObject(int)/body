@@ -4,6 +4,6 @@
   buffer=byteBuffer.asShortBuffer();
   buffer.flip();
   byteBuffer.flip();
-  bufferHandle=createBufferObject();
-  usage=GL11.GL_STATIC_DRAW;
+  bufferHandle=Gdx.gl20.glGenBuffer();
+  usage=GL20.GL_STATIC_DRAW;
 }

@@ -1,0 +1,4 @@
+{
+  final float dt=1f - t;
+  return out.set(p1).sub(p0).scl(2).scl(1 - t).add(tmp.set(p2).sub(p1).scl(t).scl(2));
+}

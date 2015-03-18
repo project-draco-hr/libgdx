@@ -1,0 +1,6 @@
+def __init__(self, lines):
+    self.lines = None
+    self.words = []
+    for l in lines:
+        l = string.strip(l)
+        self.words.extend(string.split(l))

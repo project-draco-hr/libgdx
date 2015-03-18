@@ -1,0 +1,6 @@
+{
+  particles=new ParallelArray(maxParticleCount);
+  emitter.allocateChannels();
+  for (  Influencer influencer : influencers)   influencer.allocateChannels();
+  renderer.allocateChannels();
+}

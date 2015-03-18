@@ -1,7 +1,0 @@
-{
-  int len=subMeshes.length;
-  for (int i=0; i < len; i++) {
-    if (subMeshes[i].name.equals(name))     return subMeshes[i];
-  }
-  return null;
-}

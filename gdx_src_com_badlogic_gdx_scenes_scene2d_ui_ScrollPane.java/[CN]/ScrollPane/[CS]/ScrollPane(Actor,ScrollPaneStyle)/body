@@ -1,19 +1,15 @@
 {
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
-  this.widget=widget;
   this.style=style;
-  if (widget != null) {
-    setWidget(widget);
-  }
-  setWidth(150);
-  setHeight(150);
+  setWidget(widget);
+  setSize(150,150);
   addCaptureListener(new InputListener(){
     private float handlePosition;
-    private int draggingPointer=-1;
     public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (draggingPointer != -1)       return false;
       if (pointer == 0 && button != 0)       return false;
       getStage().setScrollFocus(ScrollPane.this);
+      if (!flickScroll)       resetFade();
       if (fadeAlpha == 0)       return false;
       if (scrollX && hScrollBounds.contains(x,y)) {
         event.stop();
@@ -25,7 +21,7 @@
           draggingPointer=pointer;
           return true;
         }
-        setScrollX(amountX + Math.max(areaWidth * 0.9f,maxX * 0.1f) * (x < hKnobBounds.x ? -1 : 1));
+        setScrollX(amountX + areaWidth * (x < hKnobBounds.x ? -1 : 1));
         return true;
       }
       if (scrollY && vScrollBounds.contains(x,y)) {
@@ -38,16 +34,14 @@
           draggingPointer=pointer;
           return true;
         }
-        setScrollY(amountY + Math.max(areaHeight * 0.9f,maxY * 0.1f) * (y < vKnobBounds.y ? 1 : -1));
+        setScrollY(amountY + areaHeight * (y < vKnobBounds.y ? 1 : -1));
         return true;
       }
       return false;
     }
     public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (pointer != draggingPointer)       return;
-      draggingPointer=-1;
-      touchScrollH=false;
-      touchScrollV=false;
+      cancel();
     }
     public void touchDragged(    InputEvent event,    float x,    float y,    int pointer){
       if (pointer != draggingPointer)       return;
@@ -57,7 +51,8 @@
         handlePosition=scrollH;
         scrollH=Math.max(hScrollBounds.x,scrollH);
         scrollH=Math.min(hScrollBounds.x + hScrollBounds.width - hKnobBounds.width,scrollH);
-        setScrollPercentX((scrollH - hScrollBounds.x) / (hScrollBounds.width - hKnobBounds.width));
+        float total=hScrollBounds.width - hKnobBounds.width;
+        if (total != 0)         setScrollPercentX((scrollH - hScrollBounds.x) / total);
         lastPoint.set(x,y);
       }
  else       if (touchScrollV) {
@@ -66,13 +61,18 @@
         handlePosition=scrollV;
         scrollV=Math.max(vScrollBounds.y,scrollV);
         scrollV=Math.min(vScrollBounds.y + vScrollBounds.height - vKnobBounds.height,scrollV);
-        setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / (vScrollBounds.height - vKnobBounds.height)));
+        float total=vScrollBounds.height - vKnobBounds.height;
+        if (total != 0)         setScrollPercentY(1 - ((scrollV - vScrollBounds.y) / total));
         lastPoint.set(x,y);
       }
     }
+    public boolean mouseMoved(    InputEvent event,    float x,    float y){
+      if (!flickScroll)       resetFade();
+      return false;
+    }
   }
 );
-  gestureListener=new ActorGestureListener(){
+  flickScrollListener=new ActorGestureListener(){
     public void pan(    InputEvent event,    float x,    float y,    float deltaX,    float deltaY){
       resetFade();
       amountX-=deltaX;
@@ -101,12 +101,13 @@
     }
   }
 ;
-  addListener(gestureListener);
+  addListener(flickScrollListener);
   addListener(new InputListener(){
-    public boolean scrolled(    InputEvent event,    int amount){
+    public boolean scrolled(    InputEvent event,    float x,    float y,    int amount){
       resetFade();
-      if (scrollY)       setScrollY(amountY + Math.max(areaHeight * 0.9f,maxY * 0.1f) / 4 * amount);
- else       if (scrollX)       setScrollX(amountX + Math.max(areaWidth * 0.9f,maxX * 0.1f) / 4 * amount);
+      if (scrollY)       setScrollY(amountY + getMouseWheelY() * amount);
+ else       if (scrollX)       setScrollX(amountX + getMouseWheelX() * amount);
+ else       return false;
       return true;
     }
   }

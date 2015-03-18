@@ -1,0 +1,30 @@
+{
+  if (usedNode.x >= freeNode.x + freeNode.width || usedNode.x + usedNode.width <= freeNode.x || usedNode.y >= freeNode.y + freeNode.height || usedNode.y + usedNode.height <= freeNode.y)   return false;
+  if (usedNode.x < freeNode.x + freeNode.width && usedNode.x + usedNode.width > freeNode.x) {
+    if (usedNode.y > freeNode.y && usedNode.y < freeNode.y + freeNode.height) {
+      Rect newNode=new Rect(freeNode);
+      newNode.height=usedNode.y - newNode.y;
+      freeRectangles.add(newNode);
+    }
+    if (usedNode.y + usedNode.height < freeNode.y + freeNode.height) {
+      Rect newNode=new Rect(freeNode);
+      newNode.y=usedNode.y + usedNode.height;
+      newNode.height=freeNode.y + freeNode.height - (usedNode.y + usedNode.height);
+      freeRectangles.add(newNode);
+    }
+  }
+  if (usedNode.y < freeNode.y + freeNode.height && usedNode.y + usedNode.height > freeNode.y) {
+    if (usedNode.x > freeNode.x && usedNode.x < freeNode.x + freeNode.width) {
+      Rect newNode=new Rect(freeNode);
+      newNode.width=usedNode.x - newNode.x;
+      freeRectangles.add(newNode);
+    }
+    if (usedNode.x + usedNode.width < freeNode.x + freeNode.width) {
+      Rect newNode=new Rect(freeNode);
+      newNode.x=usedNode.x + usedNode.width;
+      newNode.width=freeNode.x + freeNode.width - (usedNode.x + usedNode.width);
+      freeRectangles.add(newNode);
+    }
+  }
+  return true;
+}

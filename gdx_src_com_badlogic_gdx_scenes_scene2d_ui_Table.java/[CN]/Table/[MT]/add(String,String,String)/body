@@ -1,0 +1,4 @@
+{
+  if (skin == null)   throw new IllegalStateException("Table must have a skin set to use this method.");
+  return add(new Label(text,new LabelStyle(skin.getFont(fontName),skin.getColor(colorName))));
+}

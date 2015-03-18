@@ -1,0 +1,6 @@
+{
+  final float dt=1f - t;
+  final float dt2=dt * dt;
+  final float t2=t * t;
+  return out.set(p1).sub(p0).scl(dt2 * 3).add(tmp.set(p2).sub(p1).scl(dt * t * 6)).add(tmp.set(p3).sub(p2).scl(t2 * 3));
+}

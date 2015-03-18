@@ -1,0 +1,15 @@
+{
+  super(audio);
+  if (audio.noDevice)   return;
+  WavInputStream input=null;
+  try {
+    input=new WavInputStream(file);
+    setup(StreamUtils.copyStreamToByteArray(input,input.dataRemaining),input.channels,input.sampleRate);
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("Error reading WAV file: " + file,ex);
+  }
+ finally {
+    StreamUtils.closeQuietly(input);
+  }
+}

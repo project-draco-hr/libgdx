@@ -1,0 +1,9 @@
+{
+  super(pool,def);
+  m_linearOffset.set(def.linearOffset);
+  m_angularOffset=def.angularOffset;
+  m_angularImpulse=0.0f;
+  m_maxForce=def.maxForce;
+  m_maxTorque=def.maxTorque;
+  m_correctionFactor=def.correctionFactor;
+}

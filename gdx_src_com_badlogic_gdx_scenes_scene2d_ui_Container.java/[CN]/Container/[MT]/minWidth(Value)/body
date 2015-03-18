@@ -1,0 +1,5 @@
+{
+  if (minWidth == null)   throw new IllegalArgumentException("minWidth cannot be null.");
+  this.minWidth=minWidth;
+  return this;
+}

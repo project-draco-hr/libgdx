@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btBroadphaseInterface_createProxy(swigCPtr,this,aabbMin,aabbMax,shapeType,SWIGTYPE_p_void.getCPtr(userPtr),collisionFilterGroup,collisionFilterMask,btDispatcher.getCPtr(dispatcher),dispatcher,SWIGTYPE_p_void.getCPtr(multiSapProxy));
-  return (cPtr == 0) ? null : new btBroadphaseProxy(cPtr,false);
-}

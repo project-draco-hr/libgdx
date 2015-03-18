@@ -1,0 +1,9 @@
+{
+  float invTexWidth=1.0f / texture.getWidth();
+  float invTexHeight=1.0f / texture.getHeight();
+  float u=srcX * invTexWidth;
+  float v=(srcY + srcHeight) * invTexHeight;
+  float u2=(srcX + srcWidth) * invTexWidth;
+  float v2=srcY * invTexHeight;
+  drawAdjustedUV(texture,x,y,originX,originY,width,height,scaleX,scaleY,rotation,u,v,u2,v2,flipX,flipY);
+}

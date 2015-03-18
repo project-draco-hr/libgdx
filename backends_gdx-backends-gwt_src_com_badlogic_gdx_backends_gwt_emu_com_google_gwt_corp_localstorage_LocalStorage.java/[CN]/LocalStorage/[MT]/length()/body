@@ -1,8 +1,0 @@
-{
-  try {
-    return lengthImpl();
-  }
- catch (  JavaScriptException e) {
-    throw new IOException("" + e);
-  }
-}

@@ -1,0 +1,9 @@
+{
+  final int offset=renderables.size;
+  renderableProvider.getRenderables(renderables,renderablesPool);
+  for (int i=offset; i < renderables.size; i++) {
+    Renderable renderable=renderables.get(i);
+    renderable.shader=shader;
+    renderable.shader=shaderProvider.getShader(renderable);
+  }
+}

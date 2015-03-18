@@ -1,0 +1,8 @@
+{
+  for (  TiledMapTileSet tileset : tilesets) {
+    if (name.equals(tileset.getName())) {
+      return tileset;
+    }
+  }
+  return null;
+}

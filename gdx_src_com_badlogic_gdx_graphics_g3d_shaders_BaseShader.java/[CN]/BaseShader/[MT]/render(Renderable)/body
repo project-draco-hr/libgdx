@@ -1,0 +1,7 @@
+{
+  if (renderable.worldTransform.det3x3() == 0)   return;
+  combinedAttributes.clear();
+  if (renderable.environment != null)   combinedAttributes.set(renderable.environment);
+  if (renderable.material != null)   combinedAttributes.set(renderable.material);
+  render(renderable,combinedAttributes);
+}

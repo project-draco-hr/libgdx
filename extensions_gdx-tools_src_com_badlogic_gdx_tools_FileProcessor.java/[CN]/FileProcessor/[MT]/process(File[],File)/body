@@ -8,7 +8,9 @@
     ArrayList<Entry> dirEntries=mapEntry.getValue();
     if (comparator != null)     Collections.sort(dirEntries,entryComparator);
     File inputDir=mapEntry.getKey();
-    File newOutputDir=flattenOutput ? outputRoot : dirEntries.get(0).outputDir;
+    File newOutputDir=null;
+    if (flattenOutput)     newOutputDir=outputRoot;
+ else     if (!dirEntries.isEmpty())     newOutputDir=dirEntries.get(0).outputDir;
     String outputName=inputDir.getName();
     if (outputSuffix != null)     outputName=outputName.replaceAll("(.*)\\..*","$1") + outputSuffix;
     Entry entry=new Entry();

@@ -4,11 +4,13 @@
   float miny=vertices[1];
   float maxx=vertices[0];
   float maxy=vertices[1];
-  for (int i=0; i < vertices.length; i+=5) {
-    minx=minx > vertices[i] ? vertices[i] : minx;
-    maxx=maxx < vertices[i] ? vertices[i] : maxx;
-    miny=miny > vertices[i + 1] ? vertices[i + 1] : miny;
-    maxy=maxy < vertices[i + 1] ? vertices[i + 1] : maxy;
+  for (int i=5; i < vertices.length; i+=5) {
+    float x=vertices[i];
+    float y=vertices[i + 1];
+    minx=minx > x ? x : minx;
+    maxx=maxx < x ? x : maxx;
+    miny=miny > y ? y : miny;
+    maxy=maxy < y ? y : maxy;
   }
   bounds.x=minx;
   bounds.y=miny;

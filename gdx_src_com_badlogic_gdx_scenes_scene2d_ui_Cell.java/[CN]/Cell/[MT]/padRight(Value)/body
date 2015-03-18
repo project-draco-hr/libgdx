@@ -1,0 +1,5 @@
+{
+  if (padRight == null)   throw new IllegalArgumentException("padRight cannot be null.");
+  this.padRight=padRight;
+  return this;
+}

@@ -1,0 +1,14 @@
+{
+  super(argWorld,def);
+  m_localAnchorA.set(def.localAnchorA);
+  m_localAnchorB.set(def.localAnchorB);
+  m_referenceAngle=def.referenceAngle;
+  m_motorImpulse=0;
+  m_lowerAngle=def.lowerAngle;
+  m_upperAngle=def.upperAngle;
+  m_maxMotorTorque=def.maxMotorTorque;
+  m_motorSpeed=def.motorSpeed;
+  m_enableLimit=def.enableLimit;
+  m_enableMotor=def.enableMotor;
+  m_limitState=LimitState.INACTIVE;
+}

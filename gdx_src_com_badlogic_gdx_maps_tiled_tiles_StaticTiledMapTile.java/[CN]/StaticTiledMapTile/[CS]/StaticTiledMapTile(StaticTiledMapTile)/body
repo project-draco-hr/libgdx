@@ -1,0 +1,7 @@
+{
+  if (copy.properties != null) {
+    getProperties().putAll(copy.properties);
+  }
+  this.textureRegion=copy.textureRegion;
+  this.id=copy.id;
+}

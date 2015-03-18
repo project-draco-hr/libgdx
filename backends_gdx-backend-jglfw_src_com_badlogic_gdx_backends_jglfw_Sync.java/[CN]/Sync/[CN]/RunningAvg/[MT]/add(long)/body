@@ -1,0 +1,4 @@
+{
+  this.slots[this.offset++ % this.slots.length]=value;
+  this.offset%=this.slots.length;
+}

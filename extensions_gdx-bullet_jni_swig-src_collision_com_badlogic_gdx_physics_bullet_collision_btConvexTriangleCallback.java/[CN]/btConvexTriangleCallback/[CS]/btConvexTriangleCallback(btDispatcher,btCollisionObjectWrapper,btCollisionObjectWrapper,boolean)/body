@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btConvexTriangleCallback(btDispatcher.getCPtr(dispatcher),dispatcher,btCollisionObjectWrapper.getCPtr(body0Wrap),body0Wrap,btCollisionObjectWrapper.getCPtr(body1Wrap),body1Wrap,isSwapped),true);
+  CollisionJNI.btConvexTriangleCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

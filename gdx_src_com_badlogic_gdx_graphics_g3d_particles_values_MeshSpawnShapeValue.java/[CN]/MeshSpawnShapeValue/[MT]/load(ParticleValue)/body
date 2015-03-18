@@ -1,0 +1,5 @@
+{
+  super.load(value);
+  MeshSpawnShapeValue spawnShapeValue=(MeshSpawnShapeValue)value;
+  setMesh(spawnShapeValue.mesh,spawnShapeValue.model);
+}

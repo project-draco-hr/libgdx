@@ -1,6 +1,6 @@
 {
-  if (hasSelection) {
+  if (hasSelection && !passwordMode) {
     copy();
-    delete();
+    cursor=delete();
   }
 }

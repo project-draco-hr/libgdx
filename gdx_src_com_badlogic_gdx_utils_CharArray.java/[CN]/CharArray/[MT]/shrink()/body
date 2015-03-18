@@ -1,3 +1,4 @@
 {
-  resize(size);
+  if (items.length != size)   resize(size);
+  return items;
 }

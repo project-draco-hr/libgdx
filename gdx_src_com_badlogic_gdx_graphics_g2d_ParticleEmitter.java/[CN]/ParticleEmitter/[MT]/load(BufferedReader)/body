@@ -46,6 +46,12 @@
     aligned=readBoolean(reader,"aligned");
     additive=readBoolean(reader,"additive");
     behind=readBoolean(reader,"behind");
+    String line=reader.readLine();
+    if (line.startsWith("premultipliedAlpha")) {
+      premultipliedAlpha=readBoolean(line);
+      reader.readLine();
+    }
+    setImagePath(reader.readLine());
   }
  catch (  RuntimeException ex) {
     if (name == null)     throw ex;

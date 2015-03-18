@@ -1,0 +1,6 @@
+{
+  if (glHandle != 0) {
+    Gdx.gl.glDeleteTexture(glHandle);
+    glHandle=0;
+  }
+}

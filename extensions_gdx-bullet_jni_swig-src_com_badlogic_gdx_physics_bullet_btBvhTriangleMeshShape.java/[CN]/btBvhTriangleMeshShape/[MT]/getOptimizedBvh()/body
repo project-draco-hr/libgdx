@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btBvhTriangleMeshShape_getOptimizedBvh(swigCPtr,this);
-  return (cPtr == 0) ? null : new btOptimizedBvh(cPtr,false);
-}

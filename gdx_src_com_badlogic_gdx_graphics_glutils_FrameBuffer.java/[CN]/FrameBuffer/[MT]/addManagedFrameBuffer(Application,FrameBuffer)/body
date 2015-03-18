@@ -1,6 +1,6 @@
 {
-  List<FrameBuffer> managedResources=buffers.get(app);
-  if (managedResources == null)   managedResources=new ArrayList<FrameBuffer>();
+  Array<FrameBuffer> managedResources=buffers.get(app);
+  if (managedResources == null)   managedResources=new Array<FrameBuffer>();
   managedResources.add(frameBuffer);
   buffers.put(app,managedResources);
 }

@@ -1,0 +1,9 @@
+{
+  this.connection=connection;
+  try {
+    this.status=new HttpStatus(connection.getResponseCode());
+  }
+ catch (  IOException e) {
+    this.status=new HttpStatus(-1);
+  }
+}

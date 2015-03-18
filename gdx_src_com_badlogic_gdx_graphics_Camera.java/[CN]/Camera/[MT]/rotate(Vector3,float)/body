@@ -1,5 +1,4 @@
 {
-  tmpMat.setToRotation(axis,angle);
-  direction.mul(tmpMat).nor();
-  up.mul(tmpMat).nor();
+  direction.rotate(axis,angle);
+  up.rotate(axis,angle);
 }

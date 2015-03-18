@@ -1,17 +1,13 @@
 {
   Writer writer=null;
   try {
-    writer=file.writer(false);
+    writer=file.writer(false,"UTF-8");
     toJson(object,knownType,elementType,writer);
   }
  catch (  Exception ex) {
     throw new SerializationException("Error writing file: " + file,ex);
   }
  finally {
-    try {
-      if (writer != null)       writer.close();
-    }
- catch (    IOException ignored) {
-    }
+    StreamUtils.closeQuietly(writer);
   }
 }

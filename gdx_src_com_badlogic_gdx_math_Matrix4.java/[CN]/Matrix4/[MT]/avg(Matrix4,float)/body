@@ -1,0 +1,12 @@
+{
+  getScale(tmpVec);
+  other.getScale(tmpForward);
+  getRotation(quat);
+  other.getRotation(quat2);
+  getTranslation(tmpUp);
+  other.getTranslation(right);
+  setToScaling(tmpVec.scl(w).add(tmpForward.scl(1 - w)));
+  rotate(quat.slerp(quat2,1 - w));
+  setTranslation(tmpUp.scl(w).add(right.scl(1 - w)));
+  return this;
+}

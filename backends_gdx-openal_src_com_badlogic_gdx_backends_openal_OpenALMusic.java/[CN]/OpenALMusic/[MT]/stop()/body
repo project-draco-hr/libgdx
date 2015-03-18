@@ -1,9 +1,0 @@
-{
-  if (audio.noDevice)   return;
-  if (sourceID == -1)   return;
-  reset();
-  audio.freeSource(sourceID);
-  sourceID=-1;
-  renderedSeconds=0;
-  isPlaying=false;
-}

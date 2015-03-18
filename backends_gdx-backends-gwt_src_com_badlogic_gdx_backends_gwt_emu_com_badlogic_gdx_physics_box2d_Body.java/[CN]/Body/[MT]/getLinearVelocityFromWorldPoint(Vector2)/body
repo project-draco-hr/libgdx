@@ -1,5 +1,0 @@
-{
-  tmp.set(worldPoint.x,worldPoint.y);
-  Vec2 lv=body.getLinearVelocityFromWorldPoint(tmp);
-  return linVelWorld.set(lv.x,lv.y);
-}

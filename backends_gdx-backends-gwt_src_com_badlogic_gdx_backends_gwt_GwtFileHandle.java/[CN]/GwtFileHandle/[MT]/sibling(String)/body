@@ -1,4 +1,3 @@
 {
-  name=name.replace('\\','/');
-  return parent().child(name);
+  return parent().child(fixSlashes(name));
 }

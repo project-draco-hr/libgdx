@@ -1,0 +1,3 @@
+{
+  return btRigidBody.getCPtr(self.createRigidBody(isDynamic,mass,startTransform,(shape == 0) ? null : new btCollisionShape(shape,false),bodyName));
+}

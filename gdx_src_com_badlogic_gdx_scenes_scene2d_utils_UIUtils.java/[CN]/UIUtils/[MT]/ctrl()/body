@@ -1,0 +1,4 @@
+{
+  if (isMac)   return Gdx.input.isKeyPressed(Keys.SYM);
+ else   return Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) || Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT);
+}

@@ -1,0 +1,4 @@
+{
+  long cPtr=SoftbodyJNI.btSoftBody_RayFromToCaster_face_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btSoftBody.Face(cPtr,false);
+}

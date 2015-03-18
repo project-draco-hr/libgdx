@@ -1,0 +1,3 @@
+{
+  return (MathUtils.isZero(val[Matrix4.M10]) && MathUtils.isZero(val[Matrix4.M12])) ? Math.abs(val[Matrix4.M11]) : (float)Math.sqrt(getScaleYSquared());
+}

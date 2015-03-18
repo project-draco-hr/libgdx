@@ -1,0 +1,6 @@
+{
+  super(gestureListener);
+  this.gestureListener=gestureListener;
+  this.gestureListener.controller=this;
+  this.camera=camera;
+}

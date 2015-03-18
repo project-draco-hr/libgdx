@@ -1,0 +1,30 @@
+{
+  bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
+  title=config.title;
+  resizable=config.resizable;
+  undecorated=config.undecorated;
+  x=config.x;
+  y=config.y;
+  vSync=config.vSync;
+  initialBackgroundColor=config.initialBackgroundColor;
+  if (config.fullscreenMonitorIndex != -1) {
+    long[] monitors=glfwGetMonitors();
+    if (config.fullscreenMonitorIndex < monitors.length)     fullscreenMonitor=monitors[config.fullscreenMonitorIndex];
+  }
+  if (!createWindow(config.width,config.height,config.fullscreen)) {
+    throw new GdxRuntimeException("Unable to create window: " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
+  }
+  String version=GL.glGetString(GL20.GL_VERSION);
+  glMajorVersion=Integer.parseInt("" + version.charAt(0));
+  glMinorVersion=Integer.parseInt("" + version.charAt(2));
+  if (glMajorVersion <= 1)   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version);
+  if (glMajorVersion == 2 || version.contains("2.1")) {
+    if (!supportsExtension("GL_EXT_framebuffer_object") && !supportsExtension("GL_ARB_framebuffer_object")) {
+      throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version + ", FBO extension: false");
+    }
+  }
+  gl20=new JglfwGL20();
+  Gdx.gl=gl20;
+  Gdx.gl20=gl20;
+  if (!config.hidden)   show();
+}

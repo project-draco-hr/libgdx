@@ -1,0 +1,12 @@
+{
+  CumulativeValue value=null;
+  int imax=values.size - 1, imin=0, imid;
+  while (imin <= imax) {
+    imid=imin + ((imax - imin) / 2);
+    value=values.items[imid];
+    if (probability < value.frequency)     imax=imid - 1;
+ else     if (probability > value.frequency)     imin=imid + 1;
+ else     break;
+  }
+  return value.value;
+}

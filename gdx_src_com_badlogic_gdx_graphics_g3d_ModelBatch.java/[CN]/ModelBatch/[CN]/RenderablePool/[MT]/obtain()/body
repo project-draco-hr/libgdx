@@ -1,0 +1,9 @@
+{
+  Renderable renderable=super.obtain();
+  renderable.environment=null;
+  renderable.material=null;
+  renderable.mesh=null;
+  renderable.shader=null;
+  obtained.add(renderable);
+  return renderable;
+}

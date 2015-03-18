@@ -1,6 +1,6 @@
 {
   if (group == GROUP_BLEND) {
-    Gdx.gl.glEnable(GL10.GL_BLEND);
+    Gdx.gl.glEnable(GL20.GL_BLEND);
     contents.sort(cameraSorter);
   }
  else {
@@ -20,7 +20,7 @@
       contents.addAll(materialGroup);
     }
     materialGroups.clear();
-    arrayPool.free(usedArrays);
+    arrayPool.freeAll(usedArrays);
     usedArrays.clear();
   }
 }

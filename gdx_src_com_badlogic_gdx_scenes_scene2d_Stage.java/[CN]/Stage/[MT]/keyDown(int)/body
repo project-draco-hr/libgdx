@@ -1,10 +1,10 @@
 {
-  if (keyboardFocus == null)   return false;
+  Actor target=keyboardFocus == null ? root : keyboardFocus;
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
   event.setType(InputEvent.Type.keyDown);
   event.setKeyCode(keyCode);
-  keyboardFocus.fire(event);
+  target.fire(event);
   boolean handled=event.isHandled();
   Pools.free(event);
   return handled;

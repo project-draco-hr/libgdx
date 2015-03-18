@@ -1,0 +1,14 @@
+{
+  Vector2 lastVertice=polygon.peek();
+  boolean oddNodes=false;
+  for (int i=0; i < polygon.size; i++) {
+    Vector2 vertice=polygon.get(i);
+    if ((vertice.y < point.y && lastVertice.y >= point.y) || (lastVertice.y < point.y && vertice.y >= point.y)) {
+      if (vertice.x + (point.y - vertice.y) / (lastVertice.y - vertice.y) * (lastVertice.x - vertice.x) < point.x) {
+        oddNodes=!oddNodes;
+      }
+    }
+    lastVertice=vertice;
+  }
+  return oddNodes;
+}

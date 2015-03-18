@@ -1,8 +1,11 @@
 {
-  pixelPtr=load(nativeData,encodedData,offset,len,requestedFormat);
-  if (pixelPtr == null)   throw new IOException("couldn't load pixmap");
+  pixelPtr=load(nativeData,encodedData,offset,len);
+  if (pixelPtr == null)   throw new IOException("Error loading pixmap: " + getFailureReason());
   basePtr=nativeData[0];
   width=(int)nativeData[1];
   height=(int)nativeData[2];
   format=(int)nativeData[3];
+  if (requestedFormat != 0 && requestedFormat != format) {
+    convert(requestedFormat);
+  }
 }

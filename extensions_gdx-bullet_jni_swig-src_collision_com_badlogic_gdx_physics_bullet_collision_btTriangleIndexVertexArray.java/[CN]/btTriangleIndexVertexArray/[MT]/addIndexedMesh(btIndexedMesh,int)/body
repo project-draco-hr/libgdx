@@ -1,0 +1,6 @@
+{
+  mesh.obtain();
+  internalAddIndexedMesh(mesh,indexType);
+  meshes.add(mesh);
+  return this;
+}

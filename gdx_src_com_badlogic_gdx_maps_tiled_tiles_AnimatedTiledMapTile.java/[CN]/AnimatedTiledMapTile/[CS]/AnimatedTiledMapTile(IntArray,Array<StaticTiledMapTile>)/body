@@ -1,0 +1,10 @@
+{
+  this.frameTiles=new StaticTiledMapTile[frameTiles.size];
+  this.frameCount=frameTiles.size;
+  this.animationIntervals=intervals.toArray();
+  this.loopDuration=0;
+  for (int i=0; i < intervals.size; ++i) {
+    this.frameTiles[i]=frameTiles.get(i);
+    this.loopDuration+=intervals.get(i);
+  }
+}

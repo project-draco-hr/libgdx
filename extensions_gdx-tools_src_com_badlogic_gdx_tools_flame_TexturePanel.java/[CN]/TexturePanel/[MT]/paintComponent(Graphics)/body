@@ -1,0 +1,5 @@
+{
+  super.paintComponent(g);
+  draw(g,unselectedRegions,unselectedColor,false);
+  draw(g,selectedRegions,selectedColor,true);
+}

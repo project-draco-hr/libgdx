@@ -1,4 +1,5 @@
 {
+  if (degrees == 0)   return;
   rotation+=degrees;
   dirty=true;
 }

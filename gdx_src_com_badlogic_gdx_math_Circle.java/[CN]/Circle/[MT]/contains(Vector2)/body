@@ -1,5 +1,5 @@
 {
-  float x=this.x - point.x;
-  float y=this.y - point.y;
-  return x * x + y * y <= radius * radius;
+  float dx=x - point.x;
+  float dy=y - point.y;
+  return dx * dx + dy * dy <= radius * radius;
 }

@@ -1,0 +1,8 @@
+{
+  this(1);
+  AspectTextureRegion aspectRegion=new AspectTextureRegion();
+  aspectRegion.u=aspectRegion.v=0;
+  aspectRegion.u2=aspectRegion.v2=1;
+  aspectRegion.halfInvAspectRatio=0.5f;
+  regions.add(aspectRegion);
+}

@@ -1,0 +1,5 @@
+{
+  super.resize(width,height);
+  ui.getViewport().setWorldSize(width,height);
+  ui.getViewport().update(width,height,true);
+}

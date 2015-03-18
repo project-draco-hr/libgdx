@@ -1,0 +1,8 @@
+{
+  if (!adjustNeeded) {
+    super.draw(texture,x,y,width,height,srcX,srcY,srcWidth,srcHeight,flipX,flipY);
+  }
+ else {
+    drawAdjusted(texture,x,y,0,0,width,height,1,1,0,srcX,srcY,srcWidth,srcHeight,flipX,flipY);
+  }
+}

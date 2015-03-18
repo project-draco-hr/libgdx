@@ -1,0 +1,6 @@
+{
+  boolean buffer=m_tree.moveProxy(proxyId,aabb,displacement);
+  if (buffer) {
+    bufferMove(proxyId);
+  }
+}

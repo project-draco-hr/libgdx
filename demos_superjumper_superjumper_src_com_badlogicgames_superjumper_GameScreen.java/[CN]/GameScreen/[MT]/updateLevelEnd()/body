@@ -1,8 +1,0 @@
-{
-  if (Gdx.input.justTouched()) {
-    world=new World(worldListener);
-    renderer=new WorldRenderer(batcher,world);
-    world.score=lastScore;
-    state=GAME_READY;
-  }
-}

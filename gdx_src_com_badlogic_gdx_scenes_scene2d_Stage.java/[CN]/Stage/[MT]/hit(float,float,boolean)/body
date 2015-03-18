@@ -1,0 +1,4 @@
+{
+  root.parentToLocalCoordinates(tempCoords.set(stageX,stageY));
+  return root.hit(tempCoords.x,tempCoords.y,touchable);
+}

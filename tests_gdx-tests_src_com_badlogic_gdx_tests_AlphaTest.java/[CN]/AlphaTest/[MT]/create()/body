@@ -1,6 +1,6 @@
 {
   Pixmap pixmap=new Pixmap(256,256,Format.RGBA8888);
-  pixmap.setColor(0,1,0,0.7f);
+  pixmap.setColor(1,0,0,1);
   pixmap.fill();
   texture=new Texture(pixmap,false);
   texture.setFilter(TextureFilter.Linear,TextureFilter.Linear);

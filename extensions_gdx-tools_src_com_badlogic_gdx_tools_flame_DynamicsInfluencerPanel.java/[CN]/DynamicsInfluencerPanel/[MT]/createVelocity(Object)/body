@@ -1,0 +1,13 @@
+{
+  ParticleController controller=editor.getEmitter();
+  DynamicsInfluencer influencer=(DynamicsInfluencer)controller.findInfluencer(DynamicsInfluencer.class);
+  VelocityWrapper wrapper=new VelocityWrapper(createVelocityValue(selectedItem),true);
+  velocities.add(wrapper);
+  influencer.velocities.add(wrapper.velocityValue);
+  int index=velocities.size - 1;
+  velocityTableModel.addRow(new Object[]{"Velocity " + index,true});
+  editor.restart();
+  velocityTable.getSelectionModel().setSelectionInterval(index,index);
+  revalidate();
+  repaint();
+}

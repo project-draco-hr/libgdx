@@ -1,0 +1,29 @@
+{
+  delegate=new UIAlertViewDelegateAdapter(){
+    @Override public void clicked(    UIAlertView view,    long clicked){
+      if (clicked == 0) {
+        listener.canceled();
+      }
+ else       if (clicked == 1) {
+        UITextField textField=view.getTextField(0);
+        listener.input(textField.getText());
+      }
+      delegate=null;
+    }
+    @Override public void cancel(    UIAlertView view){
+      listener.canceled();
+      delegate=null;
+    }
+  }
+;
+  final UIAlertView uiAlertView=new UIAlertView();
+  uiAlertView.setTitle(title);
+  uiAlertView.addButton("Cancel");
+  uiAlertView.addButton("Ok");
+  uiAlertView.setAlertViewStyle(UIAlertViewStyle.PlainTextInput);
+  uiAlertView.setDelegate(delegate);
+  UITextField textField=uiAlertView.getTextField(0);
+  textField.setPlaceholder(placeholder);
+  textField.setText(text);
+  return uiAlertView;
+}

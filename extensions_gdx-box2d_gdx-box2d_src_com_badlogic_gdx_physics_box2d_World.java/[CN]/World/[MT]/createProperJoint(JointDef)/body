@@ -1,0 +1,47 @@
+{
+  if (def.type == JointType.DistanceJoint) {
+    DistanceJointDef d=(DistanceJointDef)def;
+    return jniCreateDistanceJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.length,d.frequencyHz,d.dampingRatio);
+  }
+  if (def.type == JointType.FrictionJoint) {
+    FrictionJointDef d=(FrictionJointDef)def;
+    return jniCreateFrictionJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.maxForce,d.maxTorque);
+  }
+  if (def.type == JointType.GearJoint) {
+    GearJointDef d=(GearJointDef)def;
+    return jniCreateGearJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.joint1.addr,d.joint2.addr,d.ratio);
+  }
+  if (def.type == JointType.MotorJoint) {
+    MotorJointDef d=(MotorJointDef)def;
+    return jniCreateMotorJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.linearOffset.x,d.linearOffset.y,d.angularOffset,d.maxForce,d.maxTorque,d.correctionFactor);
+  }
+  if (def.type == JointType.MouseJoint) {
+    MouseJointDef d=(MouseJointDef)def;
+    return jniCreateMouseJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.target.x,d.target.y,d.maxForce,d.frequencyHz,d.dampingRatio);
+  }
+  if (def.type == JointType.PrismaticJoint) {
+    PrismaticJointDef d=(PrismaticJointDef)def;
+    return jniCreatePrismaticJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.localAxisA.x,d.localAxisA.y,d.referenceAngle,d.enableLimit,d.lowerTranslation,d.upperTranslation,d.enableMotor,d.maxMotorForce,d.motorSpeed);
+  }
+  if (def.type == JointType.PulleyJoint) {
+    PulleyJointDef d=(PulleyJointDef)def;
+    return jniCreatePulleyJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.groundAnchorA.x,d.groundAnchorA.y,d.groundAnchorB.x,d.groundAnchorB.y,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.lengthA,d.lengthB,d.ratio);
+  }
+  if (def.type == JointType.RevoluteJoint) {
+    RevoluteJointDef d=(RevoluteJointDef)def;
+    return jniCreateRevoluteJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle,d.enableLimit,d.lowerAngle,d.upperAngle,d.enableMotor,d.motorSpeed,d.maxMotorTorque);
+  }
+  if (def.type == JointType.RopeJoint) {
+    RopeJointDef d=(RopeJointDef)def;
+    return jniCreateRopeJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.maxLength);
+  }
+  if (def.type == JointType.WeldJoint) {
+    WeldJointDef d=(WeldJointDef)def;
+    return jniCreateWeldJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.referenceAngle,d.frequencyHz,d.dampingRatio);
+  }
+  if (def.type == JointType.WheelJoint) {
+    WheelJointDef d=(WheelJointDef)def;
+    return jniCreateWheelJoint(addr,d.bodyA.addr,d.bodyB.addr,d.collideConnected,d.localAnchorA.x,d.localAnchorA.y,d.localAnchorB.x,d.localAnchorB.y,d.localAxisA.x,d.localAxisA.y,d.enableMotor,d.maxMotorTorque,d.motorSpeed,d.frequencyHz,d.dampingRatio);
+  }
+  return 0;
+}

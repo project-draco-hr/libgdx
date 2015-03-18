@@ -1,0 +1,5 @@
+{
+  if (prefWidth == null)   throw new IllegalArgumentException("prefWidth cannot be null.");
+  this.prefWidth=prefWidth;
+  return this;
+}

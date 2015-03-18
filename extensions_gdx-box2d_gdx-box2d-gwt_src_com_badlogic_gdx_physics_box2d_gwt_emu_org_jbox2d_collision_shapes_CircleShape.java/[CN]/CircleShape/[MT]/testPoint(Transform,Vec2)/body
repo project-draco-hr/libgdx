@@ -1,0 +1,7 @@
+{
+  final Rot q=transform.q;
+  final Vec2 tp=transform.p;
+  float centerx=-(q.c * m_p.x - q.s * m_p.y + tp.x - p.x);
+  float centery=-(q.s * m_p.x + q.c * m_p.y + tp.y - p.y);
+  return centerx * centerx + centery * centery <= m_radius * m_radius;
+}

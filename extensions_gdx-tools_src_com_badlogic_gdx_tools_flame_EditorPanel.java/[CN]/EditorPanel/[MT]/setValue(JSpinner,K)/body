@@ -1,0 +1,10 @@
+{
+  ChangeListener[] listeners=spinner.getChangeListeners();
+  ChangeListener listener=null;
+  if (listeners != null && listeners.length > 0) {
+    listener=listeners[0];
+    spinner.removeChangeListener(listener);
+  }
+  spinner.setValue(object);
+  if (listener != null)   spinner.addChangeListener(listener);
+}

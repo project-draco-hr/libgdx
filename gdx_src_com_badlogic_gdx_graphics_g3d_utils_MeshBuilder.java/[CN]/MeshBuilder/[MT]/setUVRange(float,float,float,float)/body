@@ -1,0 +1,7 @@
+{
+  uOffset=u1;
+  vOffset=v1;
+  uScale=u2 - u1;
+  vScale=v2 - v1;
+  hasUVTransform=!(MathUtils.isZero(u1) && MathUtils.isZero(v1) && MathUtils.isEqual(u2,1f)&& MathUtils.isEqual(v2,1f));
+}

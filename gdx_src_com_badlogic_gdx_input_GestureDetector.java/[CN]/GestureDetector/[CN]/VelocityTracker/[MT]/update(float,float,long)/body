@@ -1,7 +1,7 @@
 {
   long currTime=timeStamp;
-  deltaX=(x - lastX);
-  deltaY=(y - lastY);
+  deltaX=x - lastX;
+  deltaY=y - lastY;
   lastX=x;
   lastY=y;
   long deltaTime=currTime - lastTime;

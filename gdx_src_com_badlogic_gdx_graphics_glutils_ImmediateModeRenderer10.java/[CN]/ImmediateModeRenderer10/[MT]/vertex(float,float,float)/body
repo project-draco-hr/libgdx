@@ -1,9 +1,0 @@
-{
-  positions[idxPos++]=x;
-  positions[idxPos++]=y;
-  positions[idxPos++]=z;
-  if (hasCols)   idxCols+=4;
-  if (hasNors)   idxNors+=3;
-  if (hasTexCoords)   idxTexCoords+=2;
-  numVertices++;
-}

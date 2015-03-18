@@ -1,5 +1,0 @@
-{
-  ByteBuffer b=ByteBuffer.allocateDirect(numSamples * numChannels * 4);
-  b.order(ByteOrder.nativeOrder());
-  return b.asFloatBuffer();
-}

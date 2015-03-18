@@ -1,0 +1,5 @@
+{
+  final btBroadphaseProxy result=pool.obtain();
+  result.reset(cPtr,own);
+  return result;
+}

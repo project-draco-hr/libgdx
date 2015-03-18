@@ -1,0 +1,8 @@
+{
+  if (input == null) {
+    input=new OggInputStream(file.read(),previousInput);
+    setup(input.getChannels(),input.getSampleRate());
+    previousInput=null;
+  }
+  return input.read(buffer);
+}

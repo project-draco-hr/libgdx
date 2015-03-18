@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btCompoundShapeData_m_childShapePtr_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btCompoundShapeChildData(cPtr,false);
-}

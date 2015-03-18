@@ -1,9 +1,0 @@
-{
-  try {
-    writer.name(name);
-    writer.array();
-  }
- catch (  IOException ex) {
-    throw new SerializationException(ex);
-  }
-}

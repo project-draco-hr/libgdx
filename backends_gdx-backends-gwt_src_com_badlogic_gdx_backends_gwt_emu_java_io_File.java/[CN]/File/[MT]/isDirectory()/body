@@ -1,9 +1,4 @@
 {
-  try {
-    String s=LocalStorage.getItem(getCanonicalPath());
-    return s != null && s.startsWith("{");
-  }
- catch (  IOException e) {
-    return false;
-  }
+  String s=LocalStorage.getItem(getCanonicalPath());
+  return s != null && s.startsWith("{");
 }

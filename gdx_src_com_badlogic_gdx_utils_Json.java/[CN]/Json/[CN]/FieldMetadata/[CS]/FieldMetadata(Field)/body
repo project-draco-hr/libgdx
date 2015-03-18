@@ -1,3 +1,5 @@
 {
   this.field=field;
+  int index=(ClassReflection.isAssignableFrom(ObjectMap.class,field.getType()) || ClassReflection.isAssignableFrom(Map.class,field.getType())) ? 1 : 0;
+  this.elementType=field.getElementType(index);
 }

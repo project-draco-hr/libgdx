@@ -1,0 +1,4 @@
+{
+  data=json.readValue("data",ObjectMap.class,jsonData);
+  assets.addAll(json.readValue("indices",int[].class,jsonData));
+}

@@ -1,0 +1,14 @@
+{
+  super(argPool,def);
+  m_localAnchorA.set(def.localAnchorA);
+  m_localAnchorB.set(def.localAnchorB);
+  m_localXAxisA.set(def.localAxisA);
+  Vec2.crossToOutUnsafe(1.0f,m_localXAxisA,m_localYAxisA);
+  m_motorMass=0.0f;
+  m_motorImpulse=0.0f;
+  m_maxMotorTorque=def.maxMotorTorque;
+  m_motorSpeed=def.motorSpeed;
+  m_enableMotor=def.enableMotor;
+  m_frequencyHz=def.frequencyHz;
+  m_dampingRatio=def.dampingRatio;
+}

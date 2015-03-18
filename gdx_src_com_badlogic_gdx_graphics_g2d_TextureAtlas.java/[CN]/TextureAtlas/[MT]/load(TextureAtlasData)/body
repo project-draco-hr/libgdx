@@ -27,6 +27,7 @@
     atlasRegion.originalWidth=region.originalWidth;
     atlasRegion.rotate=region.rotate;
     atlasRegion.splits=region.splits;
+    atlasRegion.pads=region.pads;
     if (region.flip)     atlasRegion.flip(false,true);
     regions.add(atlasRegion);
   }

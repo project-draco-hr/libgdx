@@ -4,32 +4,25 @@
       Node node=getNodeAt(y);
       if (node == null)       return;
       if (node != getNodeAt(getTouchDownY()))       return;
-      if (selectedNodes.size > 0 && (Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) || Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT))) {
-        float low=selectedNodes.first().actor.getY();
+      if (selection.getMultiple() && selection.hasItems() && UIUtils.shift()) {
+        float low=selection.getLastSelected().actor.getY();
         float high=node.actor.getY();
-        if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT))         selectedNodes.clear();
+        if (!UIUtils.ctrl())         selection.clear();
         if (low > high)         selectNodes(rootNodes,high,low);
  else         selectNodes(rootNodes,low,high);
-        ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-        fire(changeEvent);
-        Pools.free(changeEvent);
+        selection.fireChangeEvent();
         return;
       }
-      if (!Gdx.input.isKeyPressed(Keys.CONTROL_LEFT) && !Gdx.input.isKeyPressed(Keys.CONTROL_RIGHT)) {
-        if (node.children.size > 0) {
-          float rowX=node.actor.getX();
-          if (node.icon != null)           rowX-=iconSpacing + node.icon.getMinWidth();
-          if (x < rowX) {
-            node.setExpanded(!node.expanded);
-            return;
-          }
+      if (node.children.size > 0 && (!selection.getMultiple() || !UIUtils.ctrl())) {
+        float rowX=node.actor.getX();
+        if (node.icon != null)         rowX-=iconSpacingRight + node.icon.getMinWidth();
+        if (x < rowX) {
+          node.setExpanded(!node.expanded);
+          return;
         }
-        selectedNodes.clear();
       }
-      if (!selectedNodes.removeValue(node,true))       selectedNodes.add(node);
-      ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-      fire(changeEvent);
-      Pools.free(changeEvent);
+      if (!node.isSelectable())       return;
+      selection.choose(node);
     }
     public boolean mouseMoved(    InputEvent event,    float x,    float y){
       setOverNode(getNodeAt(y));
@@ -37,7 +30,7 @@
     }
     public void exit(    InputEvent event,    float x,    float y,    int pointer,    Actor toActor){
       super.exit(event,x,y,pointer,toActor);
-      if (toActor == null || !toActor.isDescendant(Tree.this))       setOverNode(null);
+      if (toActor == null || !toActor.isDescendantOf(Tree.this))       setOverNode(null);
     }
   }
 );

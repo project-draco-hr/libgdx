@@ -1,0 +1,10 @@
+{
+  final MeshPart meshPart=new MeshPart();
+  meshPart.id=id;
+  meshPart.primitiveType=primitiveType;
+  meshPart.mesh=mesh;
+  meshPart.indexOffset=offset;
+  meshPart.numVertices=size;
+  part(meshPart,material);
+  return meshPart;
+}

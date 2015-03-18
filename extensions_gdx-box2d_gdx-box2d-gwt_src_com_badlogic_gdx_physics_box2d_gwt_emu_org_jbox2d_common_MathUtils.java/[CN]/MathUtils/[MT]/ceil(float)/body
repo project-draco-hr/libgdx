@@ -1,0 +1,8 @@
+{
+  if (Settings.FAST_CEIL) {
+    return fastCeil(x);
+  }
+ else {
+    return (int)StrictMath.ceil(x);
+  }
+}

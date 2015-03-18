@@ -1,0 +1,7 @@
+{
+  if (ownsShapeRenderer) {
+    this.shapeRenderer.dispose();
+  }
+  this.shapeRenderer=shapeRenderer;
+  ownsShapeRenderer=false;
+}

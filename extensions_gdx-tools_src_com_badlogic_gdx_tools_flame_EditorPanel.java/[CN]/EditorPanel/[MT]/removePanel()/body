@@ -1,0 +1,6 @@
+{
+  Container parent=this.getParent();
+  parent.remove(this);
+  parent.validate();
+  parent.repaint();
+}

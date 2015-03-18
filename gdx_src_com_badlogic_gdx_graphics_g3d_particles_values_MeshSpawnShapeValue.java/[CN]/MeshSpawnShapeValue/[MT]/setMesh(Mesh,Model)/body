@@ -1,0 +1,5 @@
+{
+  if (mesh.getVertexAttribute(Usage.Position) == null)   throw new GdxRuntimeException("Mesh vertices must have Usage.Position");
+  this.model=model;
+  this.mesh=mesh;
+}

@@ -1,0 +1,11 @@
+{
+  final float newX=this.w * x + this.x * w + this.y * z - this.z * y;
+  final float newY=this.w * y + this.y * w + this.z * x - this.x * z;
+  final float newZ=this.w * z + this.z * w + this.x * y - this.y * x;
+  final float newW=this.w * w - this.x * x - this.y * y - this.z * z;
+  this.x=newX;
+  this.y=newY;
+  this.z=newZ;
+  this.w=newW;
+  return this;
+}

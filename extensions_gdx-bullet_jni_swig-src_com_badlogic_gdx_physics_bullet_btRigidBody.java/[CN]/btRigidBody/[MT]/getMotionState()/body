@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btRigidBody_getMotionState__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : btMotionState.newDerivedObject(cPtr,false);
-}

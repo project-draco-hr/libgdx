@@ -1,0 +1,10 @@
+{
+  if (minFilter != null && (force || this.minFilter != minFilter)) {
+    Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_MIN_FILTER,minFilter.getGLEnum());
+    this.minFilter=minFilter;
+  }
+  if (magFilter != null && (force || this.magFilter != magFilter)) {
+    Gdx.gl.glTexParameterf(glTarget,GL20.GL_TEXTURE_MAG_FILTER,magFilter.getGLEnum());
+    this.magFilter=magFilter;
+  }
+}

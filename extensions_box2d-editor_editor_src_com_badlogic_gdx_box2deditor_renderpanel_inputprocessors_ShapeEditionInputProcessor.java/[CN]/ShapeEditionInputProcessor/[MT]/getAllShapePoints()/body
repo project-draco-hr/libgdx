@@ -1,5 +1,0 @@
-{
-  List<Vector2> points=new ArrayList<Vector2>();
-  for (  ShapeModel shape : AppContext.instance().getTempShapes())   Collections.addAll(points,shape.getPoints());
-  return points.toArray(new Vector2[points.size()]);
-}

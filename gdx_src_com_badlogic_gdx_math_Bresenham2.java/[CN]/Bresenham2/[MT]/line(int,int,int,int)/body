@@ -1,0 +1,5 @@
+{
+  pool.freeAll(points);
+  points.clear();
+  return line(startX,startY,endX,endY,pool,points);
+}

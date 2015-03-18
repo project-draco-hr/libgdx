@@ -1,0 +1,4 @@
+{
+  float u=1 - barycentric.x - barycentric.y;
+  return u * a + barycentric.x * b + barycentric.y * c;
+}

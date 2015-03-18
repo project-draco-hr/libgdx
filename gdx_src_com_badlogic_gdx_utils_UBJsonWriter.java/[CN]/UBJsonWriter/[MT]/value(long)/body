@@ -1,0 +1,6 @@
+{
+  checkName();
+  out.writeByte('L');
+  out.writeLong(value);
+  return this;
+}

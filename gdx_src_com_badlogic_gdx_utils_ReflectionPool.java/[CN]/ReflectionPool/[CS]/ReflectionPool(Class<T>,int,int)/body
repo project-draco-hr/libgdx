@@ -1,4 +1,5 @@
 {
   super(initialCapacity,max);
-  this.type=type;
+  constructor=findConstructor(type);
+  if (constructor == null)   throw new RuntimeException("Class cannot be created (missing no-arg constructor): " + type.getName());
 }

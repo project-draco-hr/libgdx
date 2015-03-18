@@ -11,7 +11,7 @@
     }
     public void touchDragged(    InputEvent event,    float x,    float y,    int pointer){
       if (pointer != 0)       return;
-      translate(x - lastX,y - lastY);
+      moveBy(x - lastX,y - lastY);
       lastX=x - (x - lastX);
       lastY=y - (y - lastY);
     }

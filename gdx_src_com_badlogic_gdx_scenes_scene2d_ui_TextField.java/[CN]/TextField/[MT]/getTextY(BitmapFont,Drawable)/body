@@ -1,0 +1,12 @@
+{
+  float height=getHeight();
+  float textY=textHeight / 2 + font.getDescent();
+  if (background != null) {
+    float bottom=background.getBottomHeight();
+    textY=(int)(textY + (height - background.getTopHeight() - bottom) / 2 + bottom);
+  }
+ else {
+    textY=(int)(textY + height / 2);
+  }
+  return textY;
+}

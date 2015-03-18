@@ -1,0 +1,7 @@
+{
+  bodies.clear();
+  bodies.ensureCapacity(this.bodies.size);
+  for (Iterator<Body> iter=this.bodies.values(); iter.hasNext(); ) {
+    bodies.add(iter.next());
+  }
+}

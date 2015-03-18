@@ -1,0 +1,76 @@
+{
+  nesting++;
+  if (type == null) {
+    nesting--;
+    return;
+  }
+  if (type.getQualifiedSourceName().contains("-")) {
+    nesting--;
+    return;
+  }
+  if (!isVisible(type)) {
+    nesting--;
+    return;
+  }
+  boolean keep=false;
+  String name=type.getQualifiedSourceName();
+  try {
+    ConfigurationProperty prop;
+    keep|=!name.contains(".");
+    prop=context.getPropertyOracle().getConfigurationProperty("gdx.reflect.include");
+    for (    String s : prop.getValues())     keep|=name.contains(s);
+    prop=context.getPropertyOracle().getConfigurationProperty("gdx.reflect.exclude");
+    for (    String s : prop.getValues())     keep&=!name.equals(s);
+  }
+ catch (  BadPropertyValueException e) {
+    e.printStackTrace();
+  }
+  if (!keep) {
+    nesting--;
+    return;
+  }
+  if (types.contains(type.getErasedType())) {
+    nesting--;
+    return;
+  }
+  types.add(type.getErasedType());
+  out(type.getErasedType().getQualifiedSourceName(),nesting);
+  if (type instanceof JPrimitiveType) {
+    nesting--;
+    return;
+  }
+ else {
+    JClassType c=(JClassType)type;
+    JField[] fields=c.getFields();
+    if (fields != null) {
+      for (      JField field : fields) {
+        gatherTypes(field.getType().getErasedType(),types);
+      }
+    }
+    gatherTypes(c.getSuperclass(),types);
+    JClassType[] interfaces=c.getImplementedInterfaces();
+    if (interfaces != null) {
+      for (      JClassType i : interfaces) {
+        gatherTypes(i.getErasedType(),types);
+      }
+    }
+    JMethod[] methods=c.getMethods();
+    if (methods != null) {
+      for (      JMethod m : methods) {
+        gatherTypes(m.getReturnType().getErasedType(),types);
+        if (m.getParameterTypes() != null) {
+          for (          JType p : m.getParameterTypes()) {
+            gatherTypes(p.getErasedType(),types);
+          }
+        }
+      }
+    }
+    JClassType[] inner=c.getNestedTypes();
+    if (inner != null) {
+      for (      JClassType i : inner) {
+        gatherTypes(i.getErasedType(),types);
+      }
+    }
+  }
+  nesting--;
+}

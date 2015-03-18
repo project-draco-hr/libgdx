@@ -1,0 +1,7 @@
+{
+  float offsetY=0;
+  for (int i=firstLineShowing * 2; i < (firstLineShowing + linesShowing) * 2 && i < linesBreak.size; i+=2) {
+    font.draw(batch,displayText,x,y + offsetY,linesBreak.items[i],linesBreak.items[i + 1]);
+    offsetY-=font.getLineHeight();
+  }
+}

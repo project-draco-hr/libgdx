@@ -1,0 +1,6 @@
+{
+  this.index=index;
+  this.name=name;
+  Gamepad gamepad=Gamepad.getGamepad(index);
+  axes=new float[gamepad.getAxes().length()];
+}

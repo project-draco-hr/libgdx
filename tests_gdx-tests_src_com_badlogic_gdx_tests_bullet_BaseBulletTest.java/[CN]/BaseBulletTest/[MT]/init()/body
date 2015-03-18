@@ -1,0 +1,9 @@
+{
+  if (initialized)   return;
+  if (Gdx.app.getType() == ApplicationType.Desktop && customDesktopLib != null) {
+    System.load(customDesktopLib);
+  }
+ else   Bullet.init();
+  Gdx.app.log("Bullet","Version = " + LinearMath.btGetVersion());
+  initialized=true;
+}

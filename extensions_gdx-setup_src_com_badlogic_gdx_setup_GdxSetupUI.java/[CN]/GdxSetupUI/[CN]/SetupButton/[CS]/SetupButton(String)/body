@@ -1,0 +1,11 @@
+{
+  super(buttonTag);
+  setBackground(backgroundColor);
+  setForeground(textColor);
+  setContentAreaFilled(false);
+  setFocusPainted(false);
+  Border line=BorderFactory.createLineBorder(new Color(80,80,80));
+  Border empty=new EmptyBorder(4,4,4,4);
+  CompoundBorder border=new CompoundBorder(line,empty);
+  setBorder(border);
+}

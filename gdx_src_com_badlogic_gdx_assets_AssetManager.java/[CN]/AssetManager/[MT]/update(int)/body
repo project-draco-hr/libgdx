@@ -1,8 +1,8 @@
 {
-  long endTime=System.nanoTime() + millis * 1000;
+  long endTime=TimeUtils.millis() + millis;
   while (true) {
     boolean done=update();
-    if (done || System.currentTimeMillis() > endTime)     return done;
-    Thread.yield();
+    if (done || TimeUtils.millis() > endTime)     return done;
+    ThreadUtils.yield();
   }
 }

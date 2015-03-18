@@ -34,11 +34,11 @@
       getActor().setColor(Color.GREEN);
       return true;
     }
-    public void reset(){
+    public void reset(    Source source,    Payload payload){
       getActor().setColor(Color.WHITE);
     }
-    public void drop(    Source source,    Payload payload){
-      System.out.println("Accepted: " + payload.getObject());
+    public void drop(    Source source,    Payload payload,    float x,    float y,    int pointer){
+      System.out.println("Accepted: " + payload.getObject() + " "+ x+ ", "+ y);
     }
   }
 );
@@ -47,10 +47,10 @@
       getActor().setColor(Color.RED);
       return false;
     }
-    public void reset(){
+    public void reset(    Source source,    Payload payload){
       getActor().setColor(Color.WHITE);
     }
-    public void drop(    Source source,    Payload payload){
+    public void drop(    Source source,    Payload payload,    float x,    float y,    int pointer){
     }
   }
 );

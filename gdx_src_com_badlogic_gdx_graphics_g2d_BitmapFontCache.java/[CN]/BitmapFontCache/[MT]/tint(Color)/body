@@ -1,0 +1,8 @@
+{
+  final float floatTint=tint.toFloatBits();
+  if (textChanged || oldTint != floatTint) {
+    textChanged=false;
+    oldTint=floatTint;
+    markup.tint(this,tint);
+  }
+}

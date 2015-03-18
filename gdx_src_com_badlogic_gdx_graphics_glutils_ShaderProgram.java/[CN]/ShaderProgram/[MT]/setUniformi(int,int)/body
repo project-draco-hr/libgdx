@@ -1,5 +1,5 @@
 {
-  GL20 gl=Gdx.graphics.getGL20();
+  GL20 gl=Gdx.gl20;
   checkManaged();
   gl.glUniform1i(location,value);
 }

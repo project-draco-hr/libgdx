@@ -8,10 +8,8 @@
   }
   sw=composer.createSourceWriter(context,printWriter);
   generateLookups();
-  getKnownTypesC();
   forNameC();
   newArrayC();
-  newInstanceT();
   getArrayLengthT();
   getArrayElementT();
   setArrayElementT();

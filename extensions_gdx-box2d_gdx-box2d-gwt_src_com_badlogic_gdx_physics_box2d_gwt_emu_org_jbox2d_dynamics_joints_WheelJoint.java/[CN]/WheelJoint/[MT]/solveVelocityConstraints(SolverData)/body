@@ -1,0 +1,53 @@
+{
+  float mA=m_invMassA, mB=m_invMassB;
+  float iA=m_invIA, iB=m_invIB;
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  final Vec2 temp=pool.popVec2();
+  final Vec2 P=pool.popVec2();
+{
+    float Cdot=Vec2.dot(m_ax,temp.set(vB).subLocal(vA)) + m_sBx * wB - m_sAx * wA;
+    float impulse=-m_springMass * (Cdot + m_bias + m_gamma * m_springImpulse);
+    m_springImpulse+=impulse;
+    P.x=impulse * m_ax.x;
+    P.y=impulse * m_ax.y;
+    float LA=impulse * m_sAx;
+    float LB=impulse * m_sBx;
+    vA.x-=mA * P.x;
+    vA.y-=mA * P.y;
+    wA-=iA * LA;
+    vB.x+=mB * P.x;
+    vB.y+=mB * P.y;
+    wB+=iB * LB;
+  }
+{
+    float Cdot=wB - wA - m_motorSpeed;
+    float impulse=-m_motorMass * Cdot;
+    float oldImpulse=m_motorImpulse;
+    float maxImpulse=data.step.dt * m_maxMotorTorque;
+    m_motorImpulse=MathUtils.clamp(m_motorImpulse + impulse,-maxImpulse,maxImpulse);
+    impulse=m_motorImpulse - oldImpulse;
+    wA-=iA * impulse;
+    wB+=iB * impulse;
+  }
+{
+    float Cdot=Vec2.dot(m_ay,temp.set(vB).subLocal(vA)) + m_sBy * wB - m_sAy * wA;
+    float impulse=-m_mass * Cdot;
+    m_impulse+=impulse;
+    P.x=impulse * m_ay.x;
+    P.y=impulse * m_ay.y;
+    float LA=impulse * m_sAy;
+    float LB=impulse * m_sBy;
+    vA.x-=mA * P.x;
+    vA.y-=mA * P.y;
+    wA-=iA * LA;
+    vB.x+=mB * P.x;
+    vB.y+=mB * P.y;
+    wB+=iB * LB;
+  }
+  pool.pushVec2(2);
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].w=wB;
+}

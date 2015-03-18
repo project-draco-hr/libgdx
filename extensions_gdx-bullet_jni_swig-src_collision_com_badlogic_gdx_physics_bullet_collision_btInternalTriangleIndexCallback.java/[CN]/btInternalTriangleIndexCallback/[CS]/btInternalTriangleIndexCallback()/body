@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btInternalTriangleIndexCallback(),true);
+  CollisionJNI.btInternalTriangleIndexCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

@@ -1,0 +1,13 @@
+{
+  try {
+    String sourceCrc=crc(readFile(sourcePath));
+    if (dirName == null)     dirName=sourceCrc;
+    File extractedFile=getExtractedFile(dirName,new File(sourcePath).getName());
+    return extractFile(sourcePath,sourceCrc,extractedFile);
+  }
+ catch (  RuntimeException ex) {
+    File file=new File(System.getProperty("java.library.path"),sourcePath);
+    if (file.exists())     return file;
+    throw ex;
+  }
+}

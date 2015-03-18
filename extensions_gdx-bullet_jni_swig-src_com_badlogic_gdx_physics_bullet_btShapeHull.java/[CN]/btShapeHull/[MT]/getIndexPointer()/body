@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btShapeHull_getIndexPointer(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_unsigned_int(cPtr,false);
-}

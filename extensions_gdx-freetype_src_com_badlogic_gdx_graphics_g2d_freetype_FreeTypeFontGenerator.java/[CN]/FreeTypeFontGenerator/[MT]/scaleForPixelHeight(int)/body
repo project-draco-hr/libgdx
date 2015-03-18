@@ -1,0 +1,7 @@
+{
+  if (!bitmapped && !face.setPixelSizes(0,height))   throw new GdxRuntimeException("Couldn't set size for font");
+  SizeMetrics fontMetrics=face.getSize().getMetrics();
+  int ascent=FreeType.toInt(fontMetrics.getAscender());
+  int descent=FreeType.toInt(fontMetrics.getDescender());
+  return height * height / (ascent - descent);
+}

@@ -2,5 +2,5 @@
   spriteBatch.dispose();
   renderer.dispose();
   font.dispose();
-  atlas.dispose();
+  Colors.reset();
 }

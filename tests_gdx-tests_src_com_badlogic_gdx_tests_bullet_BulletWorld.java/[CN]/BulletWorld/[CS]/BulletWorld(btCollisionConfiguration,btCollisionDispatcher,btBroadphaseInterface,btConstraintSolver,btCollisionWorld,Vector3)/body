@@ -1,0 +1,9 @@
+{
+  this.collisionConfiguration=collisionConfiguration;
+  this.dispatcher=dispatcher;
+  this.broadphase=broadphase;
+  this.solver=solver;
+  this.collisionWorld=world;
+  if (world instanceof btDynamicsWorld)   ((btDynamicsWorld)this.collisionWorld).setGravity(gravity);
+  this.gravity=gravity;
+}

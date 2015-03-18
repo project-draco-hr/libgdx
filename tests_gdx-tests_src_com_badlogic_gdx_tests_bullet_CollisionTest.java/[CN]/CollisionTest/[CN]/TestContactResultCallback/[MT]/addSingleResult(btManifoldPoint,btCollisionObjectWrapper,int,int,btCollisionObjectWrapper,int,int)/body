@@ -1,0 +1,8 @@
+{
+  btCollisionObject other=colObj0Wrap.getCollisionObject() == projectile.body ? colObj1Wrap.getCollisionObject() : colObj0Wrap.getCollisionObject();
+  if (other != null && other.userData != null && other.userData instanceof BulletEntity) {
+    BulletEntity ent=(BulletEntity)other.userData;
+    if (ent != ground && !hits.contains(ent,true))     hits.add((BulletEntity)other.userData);
+  }
+  return 0f;
+}

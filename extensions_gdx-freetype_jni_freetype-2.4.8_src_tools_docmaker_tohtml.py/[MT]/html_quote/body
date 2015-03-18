@@ -1,5 +1,0 @@
-def html_quote(line):
-    result = string.replace(line, '&', '&amp;')
-    result = string.replace(result, '<', '&lt;')
-    result = string.replace(result, '>', '&gt;')
-    return result

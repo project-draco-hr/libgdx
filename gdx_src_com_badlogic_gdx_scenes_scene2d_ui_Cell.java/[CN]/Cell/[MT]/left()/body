@@ -1,0 +1,5 @@
+{
+  if (align == null)   align=lefti;
+ else   align=(align | Align.left) & ~Align.right;
+  return this;
+}

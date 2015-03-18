@@ -1,0 +1,8 @@
+{
+  if (capacity != requiredCapacity) {
+    for (    Channel channel : arrays) {
+      channel.setCapacity(requiredCapacity);
+    }
+    capacity=requiredCapacity;
+  }
+}

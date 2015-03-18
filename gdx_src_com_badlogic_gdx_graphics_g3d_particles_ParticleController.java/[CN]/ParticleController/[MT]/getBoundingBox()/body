@@ -1,0 +1,5 @@
+{
+  if (boundingBox == null)   boundingBox=new BoundingBox();
+  calculateBoundingBox();
+  return boundingBox;
+}

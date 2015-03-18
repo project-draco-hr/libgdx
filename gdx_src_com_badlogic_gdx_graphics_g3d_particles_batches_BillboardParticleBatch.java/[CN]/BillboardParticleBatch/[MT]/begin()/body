@@ -1,0 +1,5 @@
+{
+  super.begin();
+  renderablePool.freeAll(renderables);
+  renderables.clear();
+}

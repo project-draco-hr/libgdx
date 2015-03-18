@@ -1,0 +1,10 @@
+{
+  contact.getWorldManifold(worldManifold2);
+  int numContactPoints=contact.getManifold().pointCount;
+  worldManifold.numContactPoints=numContactPoints;
+  worldManifold.normal.set(worldManifold2.normal.x,worldManifold2.normal.y);
+  for (int i=0; i < worldManifold.points.length; i++) {
+    worldManifold.points[i]=new Vector2(worldManifold2.points[i].x,worldManifold2.points[i].y);
+  }
+  return worldManifold;
+}

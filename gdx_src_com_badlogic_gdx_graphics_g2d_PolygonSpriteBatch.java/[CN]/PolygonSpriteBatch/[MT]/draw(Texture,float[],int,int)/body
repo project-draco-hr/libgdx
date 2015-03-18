@@ -1,0 +1,22 @@
+{
+  if (!drawing)   throw new IllegalStateException("PolygonSpriteBatch.begin must be called before draw.");
+  final short[] triangles=this.triangles;
+  final float[] vertices=this.vertices;
+  final int triangleCount=count / SPRITE_SIZE * 6;
+  if (texture != lastTexture)   switchTexture(texture);
+ else   if (triangleIndex + triangleCount > triangles.length || vertexIndex + count > vertices.length)   flush();
+  final int vertexIndex=this.vertexIndex;
+  int triangleIndex=this.triangleIndex;
+  short vertex=(short)(vertexIndex / VERTEX_SIZE);
+  for (int n=triangleIndex + triangleCount; triangleIndex < n; triangleIndex+=6, vertex+=4) {
+    triangles[triangleIndex]=vertex;
+    triangles[triangleIndex + 1]=(short)(vertex + 1);
+    triangles[triangleIndex + 2]=(short)(vertex + 2);
+    triangles[triangleIndex + 3]=(short)(vertex + 2);
+    triangles[triangleIndex + 4]=(short)(vertex + 3);
+    triangles[triangleIndex + 5]=vertex;
+  }
+  this.triangleIndex=triangleIndex;
+  System.arraycopy(spriteVertices,offset,vertices,vertexIndex,count);
+  this.vertexIndex+=count;
+}

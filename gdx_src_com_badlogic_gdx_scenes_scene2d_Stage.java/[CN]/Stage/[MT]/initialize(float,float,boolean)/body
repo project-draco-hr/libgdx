@@ -1,8 +1,0 @@
-{
-  this.width=width;
-  this.height=height;
-  root=new Group();
-  root.setStage(this);
-  camera=new OrthographicCamera();
-  setViewport(width,height,stretch);
-}

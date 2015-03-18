@@ -1,0 +1,11 @@
+{
+  StringBuilder out=new StringBuilder();
+  load(out,vertex);
+  vertex=out.toString();
+  includes.clear();
+  out.setLength(0);
+  load(out,fragment);
+  fragment=out.toString();
+  includes.clear();
+  return new ShaderProgram(vertex,fragment);
+}

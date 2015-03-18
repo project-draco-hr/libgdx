@@ -1,0 +1,8 @@
+{
+  try {
+    return new String(readResource(resource,path),"UTF-8");
+  }
+ catch (  UnsupportedEncodingException e) {
+    throw new RuntimeException(e);
+  }
+}

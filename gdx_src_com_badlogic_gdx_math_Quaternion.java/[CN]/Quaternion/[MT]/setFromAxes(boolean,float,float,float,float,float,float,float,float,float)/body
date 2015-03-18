@@ -1,0 +1,50 @@
+{
+  if (normalizeAxes) {
+    final float lx=1f / Vector3.len(xx,xy,xz);
+    final float ly=1f / Vector3.len(yx,yy,yz);
+    final float lz=1f / Vector3.len(zx,zy,zz);
+    xx*=lx;
+    xy*=lx;
+    xz*=lx;
+    yz*=ly;
+    yy*=ly;
+    yz*=ly;
+    zx*=lz;
+    zy*=lz;
+    zz*=lz;
+  }
+  final float t=xx + yy + zz;
+  if (t >= 0) {
+    float s=(float)Math.sqrt(t + 1);
+    w=0.5f * s;
+    s=0.5f / s;
+    x=(zy - yz) * s;
+    y=(xz - zx) * s;
+    z=(yx - xy) * s;
+  }
+ else   if ((xx > yy) && (xx > zz)) {
+    float s=(float)Math.sqrt(1.0 + xx - yy - zz);
+    x=s * 0.5f;
+    s=0.5f / s;
+    y=(yx + xy) * s;
+    z=(xz + zx) * s;
+    w=(zy - yz) * s;
+  }
+ else   if (yy > zz) {
+    float s=(float)Math.sqrt(1.0 + yy - xx - zz);
+    y=s * 0.5f;
+    s=0.5f / s;
+    x=(yx + xy) * s;
+    z=(zy + yz) * s;
+    w=(xz - zx) * s;
+  }
+ else {
+    float s=(float)Math.sqrt(1.0 + zz - xx - yy);
+    z=s * 0.5f;
+    s=0.5f / s;
+    x=(xz + zx) * s;
+    y=(zy + yz) * s;
+    w=(yx - xy) * s;
+  }
+  return this;
+}

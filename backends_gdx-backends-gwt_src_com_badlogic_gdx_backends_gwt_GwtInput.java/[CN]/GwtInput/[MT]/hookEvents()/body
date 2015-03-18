@@ -9,4 +9,8 @@
   addEventListener(Document.get(),"keydown",this,false);
   addEventListener(Document.get(),"keyup",this,false);
   addEventListener(Document.get(),"keypress",this,false);
+  addEventListener(canvas,"touchstart",this,true);
+  addEventListener(canvas,"touchmove",this,true);
+  addEventListener(canvas,"touchcancel",this,true);
+  addEventListener(canvas,"touchend",this,true);
 }

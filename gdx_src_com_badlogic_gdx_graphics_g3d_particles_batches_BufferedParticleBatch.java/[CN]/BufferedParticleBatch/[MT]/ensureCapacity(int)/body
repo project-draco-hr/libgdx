@@ -1,0 +1,6 @@
+{
+  if (currentCapacity >= capacity)   return;
+  sorter.ensureCapacity(capacity);
+  allocParticlesData(capacity);
+  currentCapacity=capacity;
+}

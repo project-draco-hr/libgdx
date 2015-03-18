@@ -1,0 +1,8 @@
+{
+  if (actor == except)   return;
+  actor.setDebug(false);
+  if (actor instanceof Group) {
+    SnapshotArray<Actor> children=((Group)actor).children;
+    for (int i=0, n=children.size; i < n; i++)     disableDebug(children.get(i),except);
+  }
+}

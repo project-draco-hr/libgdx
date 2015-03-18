@@ -1,0 +1,3 @@
+def get_markup_text(self, tag_name):
+    result = self.get_markup_words(tag_name)
+    return string.join(result)

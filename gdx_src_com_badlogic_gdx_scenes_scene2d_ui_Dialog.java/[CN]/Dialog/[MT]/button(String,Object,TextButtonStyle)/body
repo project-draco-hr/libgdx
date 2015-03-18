@@ -1,6 +1,3 @@
 {
-  TextButton button=new TextButton(text,buttonStyle);
-  buttonTable.add(button);
-  setObject(button,object);
-  return this;
+  return button(new TextButton(text,buttonStyle),object);
 }

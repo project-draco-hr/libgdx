@@ -1,8 +1,0 @@
-{
-  if (numBytes % 2 != 0)   throw new GdxRuntimeException("bytes must be even (2 bytes 16-bit PCM expected)");
-  for (int i=offsetSrc, ii=offsetDst; i < numBytes; ) {
-    int b1=src[i++] & 0xff;
-    int b2=src[i++] & 0xff;
-    dst[ii++]=(short)(b1 | (b2 << 8));
-  }
-}

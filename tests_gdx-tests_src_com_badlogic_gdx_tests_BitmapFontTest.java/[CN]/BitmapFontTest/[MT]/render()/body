@@ -1,7 +1,7 @@
 {
   int viewHeight=Gdx.graphics.getHeight();
   Gdx.gl.glClearColor(1,1,1,1);
-  Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
   spriteBatch.begin();
   String text="Sphinx of black quartz, judge my vow.";
   font.setColor(Color.RED);
@@ -20,8 +20,38 @@
     alignmentWidth=280;
     font.drawWrapped(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
   }
+  String txt2="this font uses " + multiPageFont.getRegions().length + " texture pages: RpRpRpRpRpNM";
+  spriteBatch.renderCalls=0;
+  multiPageFont.setColor(Color.BLUE);
+  multiPageFont.draw(spriteBatch,txt2,10,100);
+  BitmapFontCache cache=multiPageFont.getCache();
+  cache.clear();
+  cache.setColor(Color.BLACK);
+  cache.setText(txt2,10,50);
+  cache.setColors(Color.PINK,3,6);
+  cache.setColors(Color.ORANGE,9,12);
+  cache.setColors(Color.GREEN,16,txt2.length());
+  cache.draw(spriteBatch,5,txt2.length() - 5);
+  cache.clear();
+  cache.setColor(Color.BLACK);
+  float textX=10;
+  textX+=cache.setText("[black] ",textX,150).width;
+  multiPageFont.setMarkupEnabled(true);
+  textX+=cache.addText("[[[PINK]pink[]] ",textX,150).width;
+  textX+=cache.addText("[PERU][[peru] ",textX,150).width;
+  cache.setColor(Color.GREEN);
+  textX+=cache.addText("green ",textX,150).width;
+  textX+=cache.addText("[#A52A2A]br[#A52A2ADF]ow[#A52A2ABF]n f[#A52A2A9F]ad[#A52A2A7F]in[#A52A2A5F]g o[#A52A2A3F]ut ",textX,150).width;
+  multiPageFont.setMarkupEnabled(false);
+  cache.draw(spriteBatch);
+  cache.tint(new Color(1f,1f,1f,0.3f));
+  cache.translate(0f,40f);
+  cache.draw(spriteBatch);
   spriteBatch.end();
-  renderer.begin(ShapeType.Rectangle);
+  renderer.begin(ShapeType.Line);
+  renderer.setColor(Color.BLACK);
   renderer.rect(x,viewHeight - y,x + alignmentWidth,300);
   renderer.end();
+  stage.act(Gdx.graphics.getDeltaTime());
+  stage.draw();
 }

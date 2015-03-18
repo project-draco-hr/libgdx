@@ -1,0 +1,13 @@
+{
+  DataInputStream din=null;
+  try {
+    din=new DataInputStream(input);
+    return parse(din);
+  }
+ catch (  IOException ex) {
+    throw new SerializationException(ex);
+  }
+ finally {
+    StreamUtils.closeQuietly(din);
+  }
+}

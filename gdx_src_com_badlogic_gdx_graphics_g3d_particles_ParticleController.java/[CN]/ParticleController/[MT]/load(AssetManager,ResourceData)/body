@@ -1,0 +1,5 @@
+{
+  emitter.load(manager,data);
+  for (  Influencer influencer : influencers)   influencer.load(manager,data);
+  renderer.load(manager,data);
+}

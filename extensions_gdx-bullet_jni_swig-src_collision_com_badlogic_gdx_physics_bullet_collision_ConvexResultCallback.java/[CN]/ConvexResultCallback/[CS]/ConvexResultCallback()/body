@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ConvexResultCallback(),true);
+  CollisionJNI.ConvexResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

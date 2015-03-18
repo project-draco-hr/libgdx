@@ -1,0 +1,7 @@
+{
+  assert(isLocked() == false);
+  if (isLocked()) {
+    return;
+  }
+  m_particleSystem.destroyParticlesInGroup(group,callDestructionListener);
+}

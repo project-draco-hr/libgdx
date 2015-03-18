@@ -1,6 +1,7 @@
 {
   final float fx2=x + width;
   final float fy2=y + height;
+  final float[] vertices=this.vertices;
   vertices[idx++]=x;
   vertices[idx++]=y;
   vertices[idx]=color;

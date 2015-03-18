@@ -1,0 +1,3 @@
+{
+  return barycentric.x >= 0 && barycentric.y >= 0 && barycentric.x + barycentric.y <= 1;
+}

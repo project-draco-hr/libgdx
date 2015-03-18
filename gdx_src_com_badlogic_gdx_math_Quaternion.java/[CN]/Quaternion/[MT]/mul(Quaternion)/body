@@ -1,11 +1,11 @@
 {
-  float newX=w * q.x + x * q.w + y * q.z - z * q.y;
-  float newY=w * q.y + y * q.w + z * q.x - x * q.z;
-  float newZ=w * q.z + z * q.w + x * q.y - y * q.x;
-  float newW=w * q.w - x * q.x - y * q.y - z * q.z;
-  x=newX;
-  y=newY;
-  z=newZ;
-  w=newW;
+  final float newX=this.w * other.x + this.x * other.w + this.y * other.z - this.z * other.y;
+  final float newY=this.w * other.y + this.y * other.w + this.z * other.x - this.x * other.z;
+  final float newZ=this.w * other.z + this.z * other.w + this.x * other.y - this.y * other.x;
+  final float newW=this.w * other.w - this.x * other.x - this.y * other.y - this.z * other.z;
+  this.x=newX;
+  this.y=newY;
+  this.z=newZ;
+  this.w=newW;
   return this;
 }

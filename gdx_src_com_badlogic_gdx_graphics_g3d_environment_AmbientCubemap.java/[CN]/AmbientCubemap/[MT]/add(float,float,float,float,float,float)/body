@@ -1,0 +1,20 @@
+{
+  final float x2=x * x, y2=y * y, z2=z * z;
+  float d=x2 + y2 + z2;
+  if (d == 0f)   return this;
+  d=1f / d * (d + 1f);
+  final float rd=r * d, gd=g * d, bd=b * d;
+  int idx=x > 0 ? 0 : 3;
+  data[idx]+=x2 * rd;
+  data[idx + 1]+=x2 * gd;
+  data[idx + 2]+=x2 * bd;
+  idx=y > 0 ? 6 : 9;
+  data[idx]+=y2 * rd;
+  data[idx + 1]+=y2 * gd;
+  data[idx + 2]+=y2 * bd;
+  idx=z > 0 ? 12 : 15;
+  data[idx]+=z2 * rd;
+  data[idx + 1]+=z2 * gd;
+  data[idx + 2]+=z2 * bd;
+  return this;
+}

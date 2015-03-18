@@ -1,7 +1,7 @@
 {
   handle.post(new Runnable(){
     public void run(){
-      InputMethodManager manager=(InputMethodManager)app.getSystemService(Context.INPUT_METHOD_SERVICE);
+      InputMethodManager manager=(InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
       if (visible) {
         View view=((AndroidGraphics)app.getGraphics()).getView();
         view.setFocusable(true);

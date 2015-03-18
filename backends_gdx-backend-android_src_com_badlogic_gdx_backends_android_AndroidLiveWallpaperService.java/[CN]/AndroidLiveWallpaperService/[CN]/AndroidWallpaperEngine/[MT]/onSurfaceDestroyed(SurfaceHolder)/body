@@ -1,0 +1,12 @@
+{
+  engines--;
+  if (DEBUG)   Log.d(TAG," > AndroidWallpaperEngine - onSurfaceDestroyed() " + hashCode() + ", running: "+ engines+ " ,linked: "+ (linkedEngine == this)+ ", isVisible: "+ engineIsVisible);
+  Log.i(TAG,"engine surface destroyed");
+  if (engines == 0)   onDeepPauseApplication();
+  if (linkedEngine == this && view != null)   view.surfaceDestroyed(holder);
+  engineFormat=0;
+  engineWidth=0;
+  engineHeight=0;
+  if (engines == 0)   linkedEngine=null;
+  super.onSurfaceDestroyed(holder);
+}

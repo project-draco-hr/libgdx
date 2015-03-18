@@ -9,8 +9,7 @@
     classToDefaultValues.put(type,null);
     return null;
   }
-  ObjectMap<String,FieldMetadata> fields=typeToFields.get(type);
-  if (fields == null)   fields=cacheFields(type);
+  ObjectMap<String,FieldMetadata> fields=getFields(type);
   Object[] values=new Object[fields.size];
   classToDefaultValues.put(type,values);
   int i=0;
@@ -19,7 +18,7 @@
     try {
       values[i++]=field.get(object);
     }
- catch (    IllegalAccessException ex) {
+ catch (    ReflectionException ex) {
       throw new SerializationException("Error accessing field: " + field.getName() + " ("+ type.getName()+ ")",ex);
     }
 catch (    SerializationException ex) {

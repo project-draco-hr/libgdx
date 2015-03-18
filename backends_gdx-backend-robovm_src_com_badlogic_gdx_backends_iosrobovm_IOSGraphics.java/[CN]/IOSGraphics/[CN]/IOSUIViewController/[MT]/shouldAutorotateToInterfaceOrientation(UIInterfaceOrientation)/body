@@ -1,0 +1,9 @@
+{
+switch (orientation) {
+case LandscapeLeft:
+case LandscapeRight:
+    return app.config.orientationLandscape;
+default :
+  return app.config.orientationPortrait;
+}
+}

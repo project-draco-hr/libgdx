@@ -1,4 +1,3 @@
 {
-  contentTable.add(new Label(text,labelStyle));
-  return this;
+  return text(new Label(text,labelStyle));
 }

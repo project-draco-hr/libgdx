@@ -1,0 +1,6 @@
+{
+  final Vec2 center=new Vec2(upperBound);
+  center.subLocal(lowerBound);
+  center.mulLocal(.5f);
+  return center;
+}

@@ -1,0 +1,7 @@
+{
+  viewport.calculateScissors(batch.getTransformMatrix(),localRect,scissorRect);
+  Matrix4 transformMatrix;
+  if (debugShapes != null && debugShapes.isDrawing())   transformMatrix=debugShapes.getTransformMatrix();
+ else   transformMatrix=batch.getTransformMatrix();
+  viewport.calculateScissors(transformMatrix,localRect,scissorRect);
+}

@@ -1,9 +1,0 @@
-{
-  try {
-    return (int)in.skip(numSamples * 2 * getChannels()) / (2 * getChannels());
-  }
- catch (  IOException e) {
-    Gdx.app.error("WavDecoder","Couldn't skip");
-    return 0;
-  }
-}

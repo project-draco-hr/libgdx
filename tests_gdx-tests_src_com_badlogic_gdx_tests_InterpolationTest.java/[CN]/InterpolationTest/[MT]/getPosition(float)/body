@@ -1,0 +1,7 @@
+{
+  position.set(targetPosition);
+  position.sub(startPosition);
+  position.scl(getInterpolation(selectedInterpolation).apply(time / duration));
+  position.add(startPosition);
+  return position;
+}

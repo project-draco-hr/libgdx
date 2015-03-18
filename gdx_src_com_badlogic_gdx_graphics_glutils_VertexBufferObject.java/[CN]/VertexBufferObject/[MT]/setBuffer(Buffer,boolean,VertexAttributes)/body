@@ -1,0 +1,13 @@
+{
+  if (isBound)   throw new GdxRuntimeException("Cannot change attributes while VBO is bound");
+  if (this.ownsBuffer && byteBuffer != null)   BufferUtils.disposeUnsafeByteBuffer(byteBuffer);
+  attributes=value;
+  if (data instanceof ByteBuffer)   byteBuffer=(ByteBuffer)data;
+ else   throw new GdxRuntimeException("Only ByteBuffer is currently supported");
+  this.ownsBuffer=ownsBuffer;
+  final int l=byteBuffer.limit();
+  byteBuffer.limit(byteBuffer.capacity());
+  buffer=byteBuffer.asFloatBuffer();
+  byteBuffer.limit(l);
+  buffer.limit(l / 4);
+}

@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btOverlappingPairCache_getOverlappingPairArrayPtr__SWIG_0(swigCPtr,this);
-  return (cPtr == 0) ? null : new btBroadphasePair(cPtr,false);
-}

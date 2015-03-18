@@ -1,0 +1,5 @@
+{
+  float[] valueTable=this.valueTable;
+  for (int i=capacity + stashSize; i-- > 0; )   if (valueTable[i] == value)   return true;
+  return false;
+}

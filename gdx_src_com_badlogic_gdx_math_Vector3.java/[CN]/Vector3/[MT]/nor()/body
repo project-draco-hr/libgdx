@@ -1,9 +1,5 @@
 {
-  float len=this.len();
-  if (len == 0) {
-    return this;
-  }
- else {
-    return this.div(len);
-  }
+  final float len2=this.len2();
+  if (len2 == 0f || len2 == 1f)   return this;
+  return this.scl(1f / (float)Math.sqrt(len2));
 }

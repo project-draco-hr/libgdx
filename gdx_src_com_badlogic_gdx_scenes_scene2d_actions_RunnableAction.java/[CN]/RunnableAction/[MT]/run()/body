@@ -1,3 +1,10 @@
 {
-  runnable.run();
+  Pool pool=getPool();
+  setPool(null);
+  try {
+    runnable.run();
+  }
+  finally {
+    setPool(pool);
+  }
 }

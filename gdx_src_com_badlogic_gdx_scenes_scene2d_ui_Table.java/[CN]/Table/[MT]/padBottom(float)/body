@@ -1,4 +1,5 @@
 {
-  layout.padBottom(padBottom);
+  this.padBottom=new Fixed(padBottom);
+  sizeInvalid=true;
   return this;
 }

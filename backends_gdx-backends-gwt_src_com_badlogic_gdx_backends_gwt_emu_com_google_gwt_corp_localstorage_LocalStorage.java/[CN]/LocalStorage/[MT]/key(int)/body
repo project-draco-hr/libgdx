@@ -1,8 +1,0 @@
-{
-  try {
-    return keyImpl(index);
-  }
- catch (  JavaScriptException e) {
-    throw new IOException("" + e);
-  }
-}

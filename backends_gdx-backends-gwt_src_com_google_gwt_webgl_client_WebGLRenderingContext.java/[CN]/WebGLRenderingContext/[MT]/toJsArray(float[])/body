@@ -1,0 +1,5 @@
+{
+  Float32Array array=TypedArrays.createFloat32Array(values.length);
+  array.set(values);
+  return array;
+}

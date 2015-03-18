@@ -1,0 +1,6 @@
+{
+  pool.clear();
+  for (int i=0; i < controller.emitter.maxParticleCount; ++i) {
+    pool.free(pool.newObject());
+  }
+}

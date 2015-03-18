@@ -1,0 +1,12 @@
+{
+  if (anim == null)   return null;
+  final AnimationDesc result=animationPool.obtain();
+  result.animation=anim;
+  result.listener=listener;
+  result.loopCount=loopCount;
+  result.speed=speed;
+  result.offset=offset;
+  result.duration=duration < 0 ? (anim.duration - offset) : duration;
+  result.time=speed < 0 ? result.duration : 0.f;
+  return result;
+}

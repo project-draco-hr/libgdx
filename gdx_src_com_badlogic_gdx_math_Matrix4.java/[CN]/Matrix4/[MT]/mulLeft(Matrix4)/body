@@ -1,0 +1,5 @@
+{
+  tmpMat.set(matrix);
+  mul(tmpMat.val,this.val);
+  return set(tmpMat);
+}

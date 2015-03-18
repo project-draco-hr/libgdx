@@ -1,0 +1,11 @@
+{
+  if (m_type != BodyType.DYNAMIC) {
+    return;
+  }
+  if (isAwake() == false) {
+    setAwake(true);
+  }
+  m_force.x+=force.x;
+  m_force.y+=force.y;
+  m_torque+=(point.x - m_sweep.c.x) * force.y - (point.y - m_sweep.c.y) * force.x;
+}

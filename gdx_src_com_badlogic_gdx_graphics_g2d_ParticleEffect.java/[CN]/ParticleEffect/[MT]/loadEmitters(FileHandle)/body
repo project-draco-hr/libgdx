@@ -6,8 +6,6 @@
     reader=new BufferedReader(new InputStreamReader(input),512);
     while (true) {
       ParticleEmitter emitter=new ParticleEmitter(reader);
-      reader.readLine();
-      emitter.setImagePath(reader.readLine());
       emitters.add(emitter);
       if (reader.readLine() == null)       break;
       if (reader.readLine() == null)       break;
@@ -17,10 +15,6 @@
     throw new GdxRuntimeException("Error loading effect: " + effectFile,ex);
   }
  finally {
-    try {
-      if (reader != null)       reader.close();
-    }
- catch (    IOException ex) {
-    }
+    StreamUtils.closeQuietly(reader);
   }
 }

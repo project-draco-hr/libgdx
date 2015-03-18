@@ -1,0 +1,7 @@
+{
+  String result=cachedToStringResult;
+  if (result == null) {
+    result=cachedToStringResult=toNewString(languageCode,countryCode,variantCode);
+  }
+  return result;
+}

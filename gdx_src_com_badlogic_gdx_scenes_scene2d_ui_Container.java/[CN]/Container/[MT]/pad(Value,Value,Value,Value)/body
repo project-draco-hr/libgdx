@@ -1,0 +1,11 @@
+{
+  if (top == null)   throw new IllegalArgumentException("top cannot be null.");
+  if (left == null)   throw new IllegalArgumentException("left cannot be null.");
+  if (bottom == null)   throw new IllegalArgumentException("bottom cannot be null.");
+  if (right == null)   throw new IllegalArgumentException("right cannot be null.");
+  padTop=top;
+  padLeft=left;
+  padBottom=bottom;
+  padRight=right;
+  return this;
+}

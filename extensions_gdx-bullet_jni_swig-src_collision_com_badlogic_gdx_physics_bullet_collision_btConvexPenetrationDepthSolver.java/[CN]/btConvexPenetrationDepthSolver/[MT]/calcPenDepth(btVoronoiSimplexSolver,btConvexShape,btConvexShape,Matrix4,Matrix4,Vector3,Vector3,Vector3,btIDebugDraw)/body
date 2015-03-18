@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.btConvexPenetrationDepthSolver_calcPenDepth(swigCPtr,this,btVoronoiSimplexSolver.getCPtr(simplexSolver),simplexSolver,btConvexShape.getCPtr(convexA),convexA,btConvexShape.getCPtr(convexB),convexB,transA,transB,v,pa,pb,btIDebugDraw.getCPtr(debugDraw),debugDraw);
+}

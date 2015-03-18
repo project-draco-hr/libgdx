@@ -1,0 +1,7 @@
+{
+  btBroadphasePairArray arr=world.broadphase.getOverlappingPairCache().getOverlappingPairArray();
+  final int n=arr.getCollisionObjectsValue(ptrs,object);
+  out.clear();
+  for (int i=0; i < n; i++)   out.add(world.entities.get(ptrs[i]));
+  return out;
+}

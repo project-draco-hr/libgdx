@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ClosestRayResultCallback(rayFromWorld,rayToWorld),true);
+  CollisionJNI.ClosestRayResultCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

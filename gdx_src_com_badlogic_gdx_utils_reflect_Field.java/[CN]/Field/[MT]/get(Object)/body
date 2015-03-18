@@ -1,0 +1,11 @@
+{
+  try {
+    return field.get(obj);
+  }
+ catch (  IllegalArgumentException e) {
+    throw new ReflectionException("Object is not an instance of " + getDeclaringClass(),e);
+  }
+catch (  IllegalAccessException e) {
+    throw new ReflectionException("Illegal access to field: " + getName(),e);
+  }
+}

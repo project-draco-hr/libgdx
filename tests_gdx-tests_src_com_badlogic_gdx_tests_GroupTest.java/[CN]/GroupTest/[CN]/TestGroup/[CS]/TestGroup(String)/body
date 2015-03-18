@@ -1,0 +1,11 @@
+{
+  this.name=name;
+  addListener(new InputListener(){
+    public boolean mouseMoved(    InputEvent event,    float x,    float y){
+      testX=x;
+      testY=y;
+      return true;
+    }
+  }
+);
+}

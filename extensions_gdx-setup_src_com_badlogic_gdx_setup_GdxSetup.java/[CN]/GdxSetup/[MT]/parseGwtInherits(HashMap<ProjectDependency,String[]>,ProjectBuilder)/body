@@ -1,0 +1,11 @@
+{
+  String parsed="";
+  for (  ProjectDependency dep : gwtInheritances.keySet()) {
+    if (containsDependency(builder.dependencies,dep)) {
+      for (      String inherit : gwtInheritances.get(dep)) {
+        parsed+="\t<inherits name='" + inherit + "' />\n";
+      }
+    }
+  }
+  return parsed;
+}

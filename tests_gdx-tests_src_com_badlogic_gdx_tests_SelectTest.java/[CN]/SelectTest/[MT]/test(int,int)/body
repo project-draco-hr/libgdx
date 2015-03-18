@@ -1,0 +1,11 @@
+{
+  comparisonsMade=0;
+  perf.reset();
+  allPerf.reset();
+  allRandom();
+  enemy.shuffle();
+  player.shuffle();
+  for (int i=0; i < runs; i++) {
+    getKthNearestEnemy(quiet,k);
+  }
+}

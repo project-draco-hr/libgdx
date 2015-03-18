@@ -1,0 +1,4 @@
+{
+  calls++;
+  gl30.glCopyTexImage2D(target,level,internalformat,x,y,width,height,border);
+}

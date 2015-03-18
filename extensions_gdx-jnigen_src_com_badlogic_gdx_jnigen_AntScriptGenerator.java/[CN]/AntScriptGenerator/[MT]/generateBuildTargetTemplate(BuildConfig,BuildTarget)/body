@@ -6,10 +6,17 @@
     template=template.replace("%postcompile%",target.postCompileTask == null ? "" : target.postCompileTask);
     return template;
   }
-  String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-target.xml.template",FileType.Classpath).readString();
+  String template=null;
+  if (target.os == TargetOs.IOS) {
+    template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-ios.xml.template",FileType.Classpath).readString();
+  }
+ else {
+    template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build-target.xml.template",FileType.Classpath).readString();
+  }
   String libName=getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName);
   String jniPlatform=getJniPlatform(target.os);
   StringBuffer cIncludes=new StringBuffer();
+  cIncludes.append("\t\t<include name=\"memcpy_wrap.c\"/>\n");
   for (  String cInclude : target.cIncludes) {
     cIncludes.append("\t\t<include name=\"" + cInclude + "\"/>\n");
   }
@@ -38,6 +45,7 @@
   template=template.replace("%cFlags%",target.cFlags);
   template=template.replace("%cppFlags%",target.cppFlags);
   template=template.replace("%linkerFlags%",target.linkerFlags);
+  template=template.replace("%libraries%",target.libraries);
   template=template.replace("%cIncludes%",cIncludes);
   template=template.replace("%cExcludes%",cExcludes);
   template=template.replace("%cppIncludes%",cppIncludes);

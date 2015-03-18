@@ -1,4 +1,6 @@
 {
-  String url=((GwtApplication)Gdx.app).getBaseUrl() + file.path();
-  sound=SoundManager.createSound(url,url);
+  soundFile=file;
+  sounds=new GwtMusic[MAX_SOUNDS];
+  sounds[0]=new GwtMusic(file);
+  soundIndex=0;
 }

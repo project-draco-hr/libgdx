@@ -1,0 +1,4 @@
+{
+  if (getClass() == btIDebugDraw.class)   LinearMathJNI.btIDebugDraw_drawPlane(swigCPtr,this,planeNormal,planeConst,transform,color);
+ else   LinearMathJNI.btIDebugDraw_drawPlaneSwigExplicitbtIDebugDraw(swigCPtr,this,planeNormal,planeConst,transform,color);
+}

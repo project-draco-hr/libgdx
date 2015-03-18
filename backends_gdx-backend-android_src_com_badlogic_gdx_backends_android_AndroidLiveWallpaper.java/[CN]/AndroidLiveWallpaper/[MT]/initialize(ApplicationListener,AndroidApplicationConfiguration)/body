@@ -1,0 +1,18 @@
+{
+  if (this.getVersion() < MINIMUM_SDK) {
+    throw new GdxRuntimeException("LibGDX requires Android API Level " + MINIMUM_SDK + " or later.");
+  }
+  graphics=new AndroidGraphicsLiveWallpaper(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
+  input=AndroidInputFactory.newAndroidInput(this,this.getService(),graphics.view,config);
+  audio=new AndroidAudio(this.getService(),config);
+  this.getService().getFilesDir();
+  files=new AndroidFiles(this.getService().getAssets(),this.getService().getFilesDir().getAbsolutePath());
+  net=new AndroidNet(this);
+  this.listener=listener;
+  Gdx.app=this;
+  Gdx.input=input;
+  Gdx.audio=audio;
+  Gdx.files=files;
+  Gdx.graphics=graphics;
+  Gdx.net=net;
+}

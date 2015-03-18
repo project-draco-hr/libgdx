@@ -1,0 +1,6 @@
+{
+  this.pot=pot;
+  this.fuzziness=pot ? 0 : fuzziness;
+  this.min=pot ? (int)(Math.log(MathUtils.nextPowerOfTwo(min)) / Math.log(2)) : min;
+  this.max=pot ? (int)(Math.log(MathUtils.nextPowerOfTwo(max)) / Math.log(2)) : max;
+}

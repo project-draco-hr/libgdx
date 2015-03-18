@@ -1,6 +1,6 @@
 {
-  Array value=new Array();
-  if (current != null)   set(name,value);
+  JsonValue value=new JsonValue(ValueType.array);
+  if (current != null)   addChild(name,value);
   elements.add(value);
   current=value;
 }

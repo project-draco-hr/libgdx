@@ -1,9 +1,9 @@
 {
   if (pointer == pressedPointer) {
     if (!cancelled) {
-      boolean validClick=isOver(event.getListenerActor(),x,y);
-      if (validClick && pointer == 0 && this.button != -1 && button != this.button)       validClick=false;
-      if (validClick) {
+      boolean touchUpOver=isOver(event.getListenerActor(),x,y);
+      if (touchUpOver && pointer == 0 && this.button != -1 && button != this.button)       touchUpOver=false;
+      if (touchUpOver) {
         long time=TimeUtils.nanoTime();
         if (time - lastTapTime > tapCountInterval)         tapCount=0;
         tapCount++;
@@ -13,7 +13,7 @@
     }
     pressed=false;
     pressedPointer=-1;
-    over=false;
+    pressedButton=-1;
     cancelled=false;
   }
 }

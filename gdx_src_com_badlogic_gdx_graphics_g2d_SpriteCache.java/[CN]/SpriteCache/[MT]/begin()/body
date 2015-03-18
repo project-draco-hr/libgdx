@@ -1,31 +1,20 @@
 {
   if (drawing)   throw new IllegalStateException("end must be called before begin.");
-  if (Gdx.graphics.isGL20Available() == false) {
-    GL10 gl=Gdx.gl10;
-    gl.glDepthMask(false);
-    gl.glEnable(GL10.GL_TEXTURE_2D);
-    gl.glMatrixMode(GL10.GL_PROJECTION);
-    gl.glLoadMatrixf(projectionMatrix.val,0);
-    gl.glMatrixMode(GL10.GL_MODELVIEW);
-    gl.glLoadMatrixf(transformMatrix.val,0);
-    mesh.bind();
+  renderCalls=0;
+  combinedMatrix.set(projectionMatrix).mul(transformMatrix);
+  Gdx.gl20.glDepthMask(false);
+  if (customShader != null) {
+    customShader.begin();
+    customShader.setUniformMatrix("u_proj",projectionMatrix);
+    customShader.setUniformMatrix("u_trans",transformMatrix);
+    customShader.setUniformMatrix("u_projTrans",combinedMatrix);
+    customShader.setUniformi("u_texture",0);
+    mesh.bind(customShader);
   }
  else {
-    combinedMatrix.set(projectionMatrix).mul(transformMatrix);
-    GL20 gl=Gdx.gl20;
-    gl.glDepthMask(false);
-    if (customShader != null) {
-      customShader.begin();
-      customShader.setUniformMatrix("u_proj",projectionMatrix);
-      customShader.setUniformMatrix("u_trans",transformMatrix);
-      customShader.setUniformMatrix("u_projTrans",combinedMatrix);
-      customShader.setUniformi("u_texture",0);
-    }
- else {
-      shader.begin();
-      shader.setUniformMatrix("u_projectionViewMatrix",combinedMatrix);
-      shader.setUniformi("u_texture",0);
-    }
+    shader.begin();
+    shader.setUniformMatrix("u_projectionViewMatrix",combinedMatrix);
+    shader.setUniformi("u_texture",0);
     mesh.bind(shader);
   }
   drawing=true;

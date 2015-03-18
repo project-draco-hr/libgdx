@@ -1,4 +1,4 @@
 {
-  right.set(direction).crs(up).nor();
-  up.set(right).crs(direction).nor();
+  tmpVec.set(direction).crs(up).nor();
+  up.set(tmpVec).crs(direction).nor();
 }

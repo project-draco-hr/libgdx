@@ -1,0 +1,11 @@
+{
+  try {
+    return future.get();
+  }
+ catch (  InterruptedException ex) {
+    return null;
+  }
+catch (  ExecutionException ex) {
+    throw new GdxRuntimeException(ex.getCause());
+  }
+}

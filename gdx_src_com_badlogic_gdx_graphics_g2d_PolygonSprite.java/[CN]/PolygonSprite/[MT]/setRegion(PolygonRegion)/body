@@ -1,13 +1,13 @@
 {
   this.region=region;
-  float[] localVertices=region.getLocalVertices();
-  float[] localTextureCoords=region.getTextureCoords();
-  if (vertices == null || localVertices.length != vertices.length)   vertices=new float[(localVertices.length / 2) * 5];
-  for (int i=0; i < localVertices.length / 2; i++) {
-    vertices[(i * 5)]=localVertices[(i * 2)];
-    vertices[(i * 5) + 1]=localVertices[(i * 2) + 1];
-    vertices[(i * 5) + 2]=color.toFloatBits();
-    vertices[(i * 5) + 3]=localTextureCoords[(i * 2)];
-    vertices[(i * 5) + 4]=localTextureCoords[(i * 2) + 1];
+  float[] regionVertices=region.vertices;
+  float[] textureCoords=region.textureCoords;
+  if (vertices == null || regionVertices.length != vertices.length)   vertices=new float[(regionVertices.length / 2) * 5];
+  float[] vertices=this.vertices;
+  for (int i=0, v=2, n=regionVertices.length; i < n; i+=2, v+=5) {
+    vertices[v]=color.toFloatBits();
+    vertices[v + 1]=textureCoords[i];
+    vertices[v + 2]=textureCoords[i + 1];
   }
+  dirty=true;
 }

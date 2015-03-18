@@ -1,0 +1,4 @@
+def dump(self, prefix='', width=60):
+    lines = self.dump_lines(0, width)
+    for l in lines:
+        print (prefix + l)

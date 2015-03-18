@@ -1,0 +1,14 @@
+{
+  final ObjectMap<String,AssetLoader> loaders=this.loaders.get(type);
+  if (loaders == null || loaders.size < 1)   return null;
+  if (fileName == null)   return loaders.get("");
+  AssetLoader result=null;
+  int l=-1;
+  for (  ObjectMap.Entry<String,AssetLoader> entry : loaders.entries()) {
+    if (entry.key.length() > l && fileName.endsWith(entry.key)) {
+      result=entry.value;
+      l=entry.key.length();
+    }
+  }
+  return result;
+}

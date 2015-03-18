@@ -1,0 +1,6 @@
+{
+  float u=1 - barycentric.x - barycentric.y;
+  interpolatedOut.x=u * a.x + barycentric.x * b.x + barycentric.y * c.x;
+  interpolatedOut.y=u * a.y + barycentric.x * b.y + barycentric.y * c.y;
+  return interpolatedOut;
+}

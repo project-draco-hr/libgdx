@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.HullResult_m_OutputVertices_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new SWIGTYPE_p_btAlignedObjectArrayT_btVector3_t(cPtr,false);
-}

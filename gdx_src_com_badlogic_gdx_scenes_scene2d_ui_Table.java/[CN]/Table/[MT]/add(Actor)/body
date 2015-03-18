@@ -1,3 +1,3 @@
 {
-  return layout.add(actor);
+  for (int i=0, n=actors.length; i < n; i++)   add(actors[i]);
 }

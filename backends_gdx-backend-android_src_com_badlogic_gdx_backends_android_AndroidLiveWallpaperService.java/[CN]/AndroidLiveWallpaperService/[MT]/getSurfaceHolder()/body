@@ -1,0 +1,7 @@
+{
+  if (DEBUG)   Log.d(TAG," > AndroidLiveWallpaperService - getSurfaceHolder()");
+synchronized (sync) {
+    if (linkedEngine == null)     return null;
+ else     return linkedEngine.getSurfaceHolder();
+  }
+}

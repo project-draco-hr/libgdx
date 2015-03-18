@@ -1,18 +1,16 @@
 {
-  return new Entries(this){
-    void advance(){
-      nextIndex++;
-      hasNext=nextIndex < map.size;
-    }
-    public Entry next(){
-      entry.key=keys.get(nextIndex);
-      entry.value=map.get(entry.key);
-      advance();
-      return entry;
-    }
-    public void remove(){
-      map.remove(entry.key);
-    }
+  if (entries1 == null) {
+    entries1=new OrderedMapEntries(this);
+    entries2=new OrderedMapEntries(this);
   }
-;
+  if (!entries1.valid) {
+    entries1.reset();
+    entries1.valid=true;
+    entries2.valid=false;
+    return entries1;
+  }
+  entries2.reset();
+  entries2.valid=true;
+  entries1.valid=false;
+  return entries2;
 }

@@ -1,0 +1,6 @@
+{
+  massData.mass=density * Settings.PI * m_radius* m_radius;
+  massData.center.x=m_p.x;
+  massData.center.y=m_p.y;
+  massData.I=massData.mass * (0.5f * m_radius * m_radius + (m_p.x * m_p.x + m_p.y * m_p.y));
+}

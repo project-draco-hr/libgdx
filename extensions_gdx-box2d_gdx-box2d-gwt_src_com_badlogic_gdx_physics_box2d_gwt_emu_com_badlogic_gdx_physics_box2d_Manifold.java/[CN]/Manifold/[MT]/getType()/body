@@ -1,0 +1,7 @@
+{
+  org.jbox2d.collision.Manifold.ManifoldType type=manifold.type;
+  if (type == org.jbox2d.collision.Manifold.ManifoldType.CIRCLES)   return ManifoldType.Circle;
+  if (type == org.jbox2d.collision.Manifold.ManifoldType.FACE_A)   return ManifoldType.FaceA;
+  if (type == org.jbox2d.collision.Manifold.ManifoldType.FACE_B)   return ManifoldType.FaceB;
+  return ManifoldType.Circle;
+}

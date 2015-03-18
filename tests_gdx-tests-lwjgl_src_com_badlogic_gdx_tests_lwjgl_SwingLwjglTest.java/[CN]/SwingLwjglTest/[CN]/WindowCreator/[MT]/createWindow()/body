@@ -1,6 +1,6 @@
 {
   JFrame window=new JFrame();
-  LwjglAWTCanvas canvas=new LwjglAWTCanvas(new ObjTest(),false,canvas1);
+  LwjglAWTCanvas canvas=new LwjglAWTCanvas(new AnimationTest(),canvas1);
   window.getContentPane().add(canvas.getCanvas(),BorderLayout.CENTER);
   window.pack();
   window.setVisible(true);

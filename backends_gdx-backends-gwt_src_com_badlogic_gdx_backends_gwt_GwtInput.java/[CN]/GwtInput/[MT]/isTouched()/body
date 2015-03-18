@@ -1,3 +1,8 @@
 {
-  return touched;
+  for (int pointer=0; pointer < MAX_TOUCHES; pointer++) {
+    if (touched[pointer]) {
+      return true;
+    }
+  }
+  return false;
 }

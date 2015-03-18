@@ -1,17 +1,22 @@
 {
   if (pointer > 1)   return false;
-  if (inTapSquare && (Math.abs(x - tapSquareCenterX) >= tapSquareSize || Math.abs(y - tapSquareCenterY) >= tapSquareSize))   inTapSquare=false;
-  longPressTask.cancel();
+  if (inTapSquare && !isWithinTapSquare(x,y,tapSquareCenterX,tapSquareCenterY))   inTapSquare=false;
+  boolean wasPanning=panning;
   panning=false;
+  longPressTask.cancel();
   if (longPressFired)   return false;
   if (inTapSquare) {
-    if (TimeUtils.nanoTime() - lastTapTime > tapCountInterval)     tapCount=0;
+    if (lastTapButton != button || lastTapPointer != pointer || TimeUtils.nanoTime() - lastTapTime > tapCountInterval || !isWithinTapSquare(x,y,lastTapX,lastTapY))     tapCount=0;
     tapCount++;
     lastTapTime=TimeUtils.nanoTime();
+    lastTapX=x;
+    lastTapY=y;
+    lastTapButton=button;
+    lastTapPointer=pointer;
     gestureStartTime=0;
     return listener.tap(x,y,tapCount,button);
   }
- else   if (pinching) {
+  if (pinching) {
     pinching=false;
     panning=true;
     if (pointer == 0) {
@@ -20,14 +25,15 @@
  else {
       tracker.start(pointer1.x,pointer1.y,Gdx.input.getCurrentEventTime());
     }
+    return false;
   }
- else {
-    gestureStartTime=0;
-    long time=Gdx.input.getCurrentEventTime();
-    if (time - tracker.lastTime < maxFlingDelay) {
-      tracker.update(x,y,time);
-      return listener.fling(tracker.getVelocityX(),tracker.getVelocityY(),button);
-    }
+  boolean handled=false;
+  if (wasPanning && !panning)   handled=listener.panStop(x,y,pointer,button);
+  gestureStartTime=0;
+  long time=Gdx.input.getCurrentEventTime();
+  if (time - tracker.lastTime < maxFlingDelay) {
+    tracker.update(x,y,time);
+    handled=listener.fling(tracker.getVelocityX(),tracker.getVelocityY(),button) || handled;
   }
-  return false;
+  return handled;
 }

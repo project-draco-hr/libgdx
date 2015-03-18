@@ -1,0 +1,8 @@
+{
+  Pool pool=typePools.get(type);
+  if (pool == null) {
+    pool=new ReflectionPool(type,4,max);
+    typePools.put(type,pool);
+  }
+  return pool;
+}

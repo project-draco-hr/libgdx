@@ -1,0 +1,15 @@
+{
+  vertices[offset + GPU_POSITION_OFFSET]=x;
+  vertices[offset + GPU_POSITION_OFFSET + 1]=y;
+  vertices[offset + GPU_POSITION_OFFSET + 2]=z;
+  vertices[offset + GPU_UV_OFFSET]=u;
+  vertices[offset + GPU_UV_OFFSET + 1]=v;
+  vertices[offset + GPU_SIZE_ROTATION_OFFSET]=scaleX;
+  vertices[offset + GPU_SIZE_ROTATION_OFFSET + 1]=scaleY;
+  vertices[offset + GPU_SIZE_ROTATION_OFFSET + 2]=cosRotation;
+  vertices[offset + GPU_SIZE_ROTATION_OFFSET + 3]=sinRotation;
+  vertices[offset + GPU_COLOR_OFFSET]=r;
+  vertices[offset + GPU_COLOR_OFFSET + 1]=g;
+  vertices[offset + GPU_COLOR_OFFSET + 2]=b;
+  vertices[offset + GPU_COLOR_OFFSET + 3]=a;
+}

@@ -1,0 +1,26 @@
+{
+  if (pageVertices.length == 1) {
+    int newGlyphCount=countGlyphs(str,start,end);
+    require(0,newGlyphCount);
+  }
+ else {
+    for (int i=0, n=tempGlyphCount.length; i < n; i++)     tempGlyphCount[i]=0;
+    while (start < end) {
+      char ch=str.charAt(start++);
+      if (ch == '[' && font.markupEnabled) {
+        if (!(start < end && str.charAt(start) == '[')) {
+          int colorTagLen=markup.parseColorTag(str,-1,start,end);
+          if (colorTagLen >= 0) {
+            start+=colorTagLen + 1;
+            continue;
+          }
+        }
+        start++;
+      }
+      Glyph g=font.data.getGlyph(ch);
+      if (g == null)       continue;
+      tempGlyphCount[g.page]++;
+    }
+    for (int i=0, n=tempGlyphCount.length; i < n; i++)     require(i,tempGlyphCount[i]);
+  }
+}

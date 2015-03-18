@@ -1,5 +1,7 @@
 {
   super(texture,x,y,width,height);
+  originalWidth=width;
+  originalHeight=height;
   packedWidth=width;
   packedHeight=height;
 }

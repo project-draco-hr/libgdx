@@ -1,4 +1,5 @@
 {
+  if (descriptors.length == 0)   throw new IllegalArgumentException("At least one Resolution needs to be supplied.");
   this.baseResolver=baseResolver;
   this.descriptors=descriptors;
 }

@@ -1,0 +1,16 @@
+{
+  int next=new_first;
+  while (next != first) {
+    int temp=ray[first];
+    ray[first]=ray[next];
+    ray[next]=temp;
+    first++;
+    next++;
+    if (next == last) {
+      next=new_first;
+    }
+ else     if (first == new_first) {
+      new_first=next;
+    }
+  }
+}

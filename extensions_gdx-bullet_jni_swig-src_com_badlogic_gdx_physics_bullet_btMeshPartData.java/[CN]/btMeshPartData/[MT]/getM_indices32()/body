@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btMeshPartData_m_indices32_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btIntIndexData(cPtr,false);
-}

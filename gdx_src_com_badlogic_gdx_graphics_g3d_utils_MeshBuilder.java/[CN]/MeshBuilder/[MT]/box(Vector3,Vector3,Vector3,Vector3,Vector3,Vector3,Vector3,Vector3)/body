@@ -1,0 +1,17 @@
+{
+  if (norOffset < 0 && uvOffset < 0) {
+    box(vertTmp1.set(corner000,null,null,null),vertTmp2.set(corner010,null,null,null),vertTmp3.set(corner100,null,null,null),vertTmp4.set(corner110,null,null,null),vertTmp5.set(corner001,null,null,null),vertTmp6.set(corner011,null,null,null),vertTmp7.set(corner101,null,null,null),vertTmp8.set(corner111,null,null,null));
+  }
+ else {
+    ensureRectangles(6);
+    Vector3 nor=tempV1.set(corner000).lerp(corner110,0.5f).sub(tempV2.set(corner001).lerp(corner111,0.5f)).nor();
+    rect(corner000,corner010,corner110,corner100,nor);
+    rect(corner011,corner001,corner101,corner111,nor.scl(-1));
+    nor=tempV1.set(corner000).lerp(corner101,0.5f).sub(tempV2.set(corner010).lerp(corner111,0.5f)).nor();
+    rect(corner001,corner000,corner100,corner101,nor);
+    rect(corner010,corner011,corner111,corner110,nor.scl(-1));
+    nor=tempV1.set(corner000).lerp(corner011,0.5f).sub(tempV2.set(corner100).lerp(corner111,0.5f)).nor();
+    rect(corner001,corner011,corner010,corner000,nor);
+    rect(corner100,corner110,corner111,corner101,nor.scl(-1));
+  }
+}

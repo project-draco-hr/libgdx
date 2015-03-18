@@ -1,9 +1,11 @@
 {
   super.act(delta);
-  boolean panning=gestureListener.getGestureDetector().isPanning();
-  if (fadeScrollBars && flickScroll && !panning&& !touchScrollH&& !touchScrollV) {
-    fadeDelay-=fadeDelaySeconds * delta;
-    if (fadeDelay <= 0)     fadeAlpha=Math.max(0,fadeAlpha - fadeAlphaSeconds * delta);
+  boolean panning=flickScrollListener.getGestureDetector().isPanning();
+  boolean animating=false;
+  if (fadeAlpha > 0 && fadeScrollBars && !panning && !touchScrollH && !touchScrollV) {
+    fadeDelay-=delta;
+    if (fadeDelay <= 0)     fadeAlpha=Math.max(0,fadeAlpha - delta);
+    animating=true;
   }
   if (flingTimer > 0) {
     resetFade();
@@ -20,41 +22,56 @@
       velocityX=0;
       velocityY=0;
     }
+    animating=true;
   }
   if (smoothScrolling && flingTimer <= 0 && !touchScrollH && !touchScrollV && !panning) {
-    if (visualAmountX < amountX)     visualAmountX=Math.min(amountX,visualAmountX + Math.max(150 * delta,(amountX - visualAmountX) * 5 * delta));
- else     visualAmountX=Math.max(amountX,visualAmountX - Math.max(150 * delta,(visualAmountX - amountX) * 5 * delta));
-    if (visualAmountY < amountY)     visualAmountY=Math.min(amountY,visualAmountY + Math.max(150 * delta,(amountY - visualAmountY) * 5 * delta));
- else     visualAmountY=Math.max(amountY,visualAmountY - Math.max(150 * delta,(visualAmountY - amountY) * 5 * delta));
+    if (visualAmountX != amountX) {
+      if (visualAmountX < amountX)       visualScrollX(Math.min(amountX,visualAmountX + Math.max(200 * delta,(amountX - visualAmountX) * 7 * delta)));
+ else       visualScrollX(Math.max(amountX,visualAmountX - Math.max(200 * delta,(visualAmountX - amountX) * 7 * delta)));
+      animating=true;
+    }
+    if (visualAmountY != amountY) {
+      if (visualAmountY < amountY)       visualScrollY(Math.min(amountY,visualAmountY + Math.max(200 * delta,(amountY - visualAmountY) * 7 * delta)));
+ else       visualScrollY(Math.max(amountY,visualAmountY - Math.max(200 * delta,(visualAmountY - amountY) * 7 * delta)));
+      animating=true;
+    }
   }
  else {
-    visualAmountX=amountX;
-    visualAmountY=amountY;
+    if (visualAmountX != amountX)     visualScrollX(amountX);
+    if (visualAmountY != amountY)     visualScrollY(amountY);
   }
   if (!panning) {
-    if (overscrollX) {
+    if (overscrollX && scrollX) {
       if (amountX < 0) {
         resetFade();
         amountX+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountX / overscrollDistance) * delta;
-        if (amountX > 0)         amountX=0;
+        if (amountX > 0)         scrollX(0);
+        animating=true;
       }
  else       if (amountX > maxX) {
         resetFade();
         amountX-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxX - amountX) / overscrollDistance) * delta;
-        if (amountX < maxX)         amountX=maxX;
+        if (amountX < maxX)         scrollX(maxX);
+        animating=true;
       }
     }
-    if (overscrollY) {
+    if (overscrollY && scrollY) {
       if (amountY < 0) {
         resetFade();
         amountY+=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -amountY / overscrollDistance) * delta;
-        if (amountY > 0)         amountY=0;
+        if (amountY > 0)         scrollY(0);
+        animating=true;
       }
  else       if (amountY > maxY) {
         resetFade();
         amountY-=(overscrollSpeedMin + (overscrollSpeedMax - overscrollSpeedMin) * -(maxY - amountY) / overscrollDistance) * delta;
-        if (amountY < maxY)         amountY=maxY;
+        if (amountY < maxY)         scrollY(maxY);
+        animating=true;
       }
     }
+  }
+  if (animating) {
+    Stage stage=getStage();
+    if (stage != null && stage.getActionsRequestRendering())     Gdx.graphics.requestRendering();
   }
 }

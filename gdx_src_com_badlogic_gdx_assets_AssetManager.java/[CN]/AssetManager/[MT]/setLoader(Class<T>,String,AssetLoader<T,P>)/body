@@ -1,0 +1,8 @@
+{
+  if (type == null)   throw new IllegalArgumentException("type cannot be null.");
+  if (loader == null)   throw new IllegalArgumentException("loader cannot be null.");
+  log.debug("Loader set: " + ClassReflection.getSimpleName(type) + " -> "+ ClassReflection.getSimpleName(loader.getClass()));
+  ObjectMap<String,AssetLoader> loaders=this.loaders.get(type);
+  if (loaders == null)   this.loaders.put(type,loaders=new ObjectMap<String,AssetLoader>());
+  loaders.put(suffix == null ? "" : suffix,loader);
+}

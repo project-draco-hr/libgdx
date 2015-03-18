@@ -1,0 +1,23 @@
+{
+  super("Flame");
+  MathUtils.random=new RandomXS128();
+  particleSystem=ParticleSystem.get();
+  effect=new ParticleEffect();
+  particleSystem.add(effect);
+  assetManager=new AssetManager();
+  assetManager.setErrorListener(this);
+  assetManager.setLoader(ParticleEffect.class,new ParticleEffectLoader(new InternalFileHandleResolver()));
+  controllersData=new Array<ControllerData>();
+  lwjglCanvas=new LwjglCanvas(renderer=new AppRenderer());
+  addWindowListener(new WindowAdapter(){
+    public void windowClosed(    WindowEvent event){
+      Gdx.app.exit();
+    }
+  }
+);
+  initializeComponents();
+  setSize(1280,950);
+  setLocationRelativeTo(null);
+  setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+  setVisible(true);
+}

@@ -2,7 +2,12 @@
   long time=System.nanoTime();
   deltaTime=(time - lastFrameTime) / 1000000000.0f;
   lastFrameTime=time;
-  mean.addValue(deltaTime);
+  if (!resume) {
+    mean.addValue(deltaTime);
+  }
+ else {
+    deltaTime=0;
+  }
   boolean lrunning=false;
   boolean lpause=false;
   boolean ldestroy=false;
@@ -25,37 +30,52 @@ synchronized (synch) {
     }
   }
   if (lresume) {
-    ((AndroidApplication)app).audio.resume();
-    app.listener.resume();
-    Gdx.app.log("AndroidGraphics","resumed");
-  }
-  if (lrunning) {
-synchronized (app.runnables) {
-      app.executedRunnables.clear();
-      app.executedRunnables.addAll(app.runnables);
-      app.runnables.clear();
-      for (int i=0; i < app.executedRunnables.size; i++) {
-        try {
-          app.executedRunnables.get(i).run();
-        }
- catch (        Throwable t) {
-          t.printStackTrace();
-        }
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.resume();
       }
     }
-    app.input.processEvents();
-    app.listener.render();
+    app.getApplicationListener().resume();
+    Gdx.app.log(LOG_TAG,"resumed");
+  }
+  if (lrunning) {
+synchronized (app.getRunnables()) {
+      app.getExecutedRunnables().clear();
+      app.getExecutedRunnables().addAll(app.getRunnables());
+      app.getRunnables().clear();
+    }
+    for (int i=0; i < app.getExecutedRunnables().size; i++) {
+      try {
+        app.getExecutedRunnables().get(i).run();
+      }
+ catch (      Throwable t) {
+        t.printStackTrace();
+      }
+    }
+    app.getInput().processEvents();
+    frameId++;
+    app.getApplicationListener().render();
   }
   if (lpause) {
-    app.listener.pause();
-    ((AndroidApplication)app).audio.pause();
-    Gdx.app.log("AndroidGraphics","paused");
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.pause();
+      }
+    }
+    app.getApplicationListener().pause();
+    Gdx.app.log(LOG_TAG,"paused");
   }
   if (ldestroy) {
-    app.listener.dispose();
-    ((AndroidApplication)app).audio.dispose();
-    ((AndroidApplication)app).audio=null;
-    Gdx.app.log("AndroidGraphics","destroyed");
+    Array<LifecycleListener> listeners=app.getLifecycleListeners();
+synchronized (listeners) {
+      for (      LifecycleListener listener : listeners) {
+        listener.dispose();
+      }
+    }
+    app.getApplicationListener().dispose();
+    Gdx.app.log(LOG_TAG,"destroyed");
   }
   if (time - frameStart > 1000000000) {
     fps=frames;

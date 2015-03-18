@@ -1,4 +1,12 @@
 {
+  if (quoteLongValues && (value instanceof Long || value instanceof Double || value instanceof BigDecimal|| value instanceof BigInteger)) {
+    value=String.valueOf(value);
+  }
+ else   if (value instanceof Number) {
+    Number number=(Number)value;
+    long longValue=number.longValue();
+    if (number.doubleValue() == longValue)     value=longValue;
+  }
   if (current != null) {
     if (current.array) {
       if (!current.needsComma)       current.needsComma=true;
@@ -9,11 +17,6 @@
       named=false;
     }
   }
-  if (value == null || value instanceof Number || value instanceof Boolean) {
-    writer.write(String.valueOf(value));
-  }
- else {
-    writer.write(outputType.quoteValue(value.toString()));
-  }
+  writer.write(outputType.quoteValue(value));
   return this;
 }

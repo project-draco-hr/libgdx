@@ -1,5 +1,6 @@
 {
-  stage=new Stage(480,320,false);
+  stage=new Stage();
+  ;
   camController=new OrthoCamController((OrthographicCamera)stage.getCamera());
   Gdx.input.setInputProcessor(camController);
   texture=new Texture(Gdx.files.internal("data/badlogicsmall.jpg"));

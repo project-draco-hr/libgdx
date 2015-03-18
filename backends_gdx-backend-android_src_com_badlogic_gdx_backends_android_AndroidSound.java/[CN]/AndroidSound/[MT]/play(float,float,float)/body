@@ -9,6 +9,7 @@
     leftVolume*=(1 - Math.abs(pan));
   }
   int streamId=soundPool.play(soundId,leftVolume,rightVolume,1,0,pitch);
-  streamIds.add(streamId);
+  if (streamId == 0)   return -1;
+  streamIds.insert(0,streamId);
   return streamId;
 }

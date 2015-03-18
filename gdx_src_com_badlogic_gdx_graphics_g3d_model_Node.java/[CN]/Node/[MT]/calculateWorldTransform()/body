@@ -1,0 +1,5 @@
+{
+  if (inheritTransform && parent != null)   globalTransform.set(parent.globalTransform).mul(localTransform);
+ else   globalTransform.set(localTransform);
+  return globalTransform;
+}

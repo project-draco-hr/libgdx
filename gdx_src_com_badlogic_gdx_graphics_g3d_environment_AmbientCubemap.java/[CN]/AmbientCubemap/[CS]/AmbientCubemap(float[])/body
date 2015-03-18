@@ -1,0 +1,5 @@
+{
+  if (copyFrom.length != (6 * 3))   throw new GdxRuntimeException("Incorrect array size");
+  data=new float[copyFrom.length];
+  System.arraycopy(copyFrom,0,data,0,data.length);
+}

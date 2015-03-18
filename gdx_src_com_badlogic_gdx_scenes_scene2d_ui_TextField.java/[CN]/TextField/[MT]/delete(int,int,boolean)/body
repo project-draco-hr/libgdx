@@ -1,0 +1,8 @@
+{
+  int minIndex=Math.min(from,to);
+  int maxIndex=Math.max(from,to);
+  text=(minIndex > 0 ? text.substring(0,minIndex) : "") + (maxIndex < text.length() ? text.substring(maxIndex,text.length()) : "");
+  if (updateText)   updateDisplayText();
+  clearSelection();
+  return minIndex;
+}

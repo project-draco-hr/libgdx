@@ -1,0 +1,8 @@
+{
+  if (Settings.FAST_ATAN2) {
+    return fastAtan2(y,x);
+  }
+ else {
+    return (float)StrictMath.atan2(y,x);
+  }
+}

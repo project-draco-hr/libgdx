@@ -1,0 +1,4 @@
+{
+  super(id,new int[size * strideSize],strideSize);
+  this.data=(int[])super.data;
+}

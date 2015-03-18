@@ -1,0 +1,23 @@
+def __init__(self, tag, lines):
+    self.tag = string.lower(tag)
+    self.fields = []
+    cur_lines = []
+    field = None
+    mode = 0
+    for l in lines:
+        m = re_field.match(l)
+        if m:
+            if cur_lines:
+                f = DocField(field, cur_lines)
+                self.fields.append(f)
+                cur_lines = []
+                field = None
+            field = m.group(1)
+            ln = len(m.group(0))
+            l = ((' ' * ln) + l[ln:])
+            cur_lines = [l]
+        else:
+            cur_lines.append(l)
+    if (field or cur_lines):
+        f = DocField(field, cur_lines)
+        self.fields.append(f)

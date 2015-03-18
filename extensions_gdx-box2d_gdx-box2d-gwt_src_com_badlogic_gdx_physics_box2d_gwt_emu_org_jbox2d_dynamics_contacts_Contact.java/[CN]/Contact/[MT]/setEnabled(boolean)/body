@@ -1,0 +1,8 @@
+{
+  if (flag) {
+    m_flags|=ENABLED_FLAG;
+  }
+ else {
+    m_flags&=~ENABLED_FLAG;
+  }
+}

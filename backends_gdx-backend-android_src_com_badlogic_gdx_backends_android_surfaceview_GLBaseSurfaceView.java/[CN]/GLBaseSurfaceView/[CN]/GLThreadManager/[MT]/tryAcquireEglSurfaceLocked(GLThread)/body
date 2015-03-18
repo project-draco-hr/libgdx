@@ -1,8 +1,0 @@
-{
-  if (mEglOwner == thread || mEglOwner == null) {
-    mEglOwner=thread;
-    notifyAll();
-    return true;
-  }
-  return false;
-}

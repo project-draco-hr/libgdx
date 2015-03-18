@@ -1,13 +1,13 @@
 {
-  float xx=x * x;
-  float xy=x * y;
-  float xz=x * z;
-  float xw=x * w;
-  float yy=y * y;
-  float yz=y * z;
-  float yw=y * w;
-  float zz=z * z;
-  float zw=z * w;
+  final float xx=x * x;
+  final float xy=x * y;
+  final float xz=x * z;
+  final float xw=x * w;
+  final float yy=y * y;
+  final float yz=y * z;
+  final float yw=y * w;
+  final float zz=z * z;
+  final float zw=z * w;
   matrix[Matrix4.M00]=1 - 2 * (yy + zz);
   matrix[Matrix4.M01]=2 * (xy - zw);
   matrix[Matrix4.M02]=2 * (xz + yw);

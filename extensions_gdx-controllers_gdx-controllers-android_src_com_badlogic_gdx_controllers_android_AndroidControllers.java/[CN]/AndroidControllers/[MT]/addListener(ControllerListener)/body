@@ -1,0 +1,5 @@
+{
+synchronized (eventQueue) {
+    listeners.add(listener);
+  }
+}

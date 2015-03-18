@@ -1,0 +1,18 @@
+{
+  if (config == null)   config=new HeadlessApplicationConfiguration();
+  HeadlessNativesLoader.load();
+  this.listener=listener;
+  this.files=new HeadlessFiles();
+  this.net=new HeadlessNet();
+  this.graphics=new MockGraphics();
+  this.audio=new MockAudio();
+  this.input=new MockInput();
+  Gdx.app=this;
+  Gdx.files=files;
+  Gdx.net=net;
+  Gdx.audio=audio;
+  Gdx.graphics=graphics;
+  Gdx.input=input;
+  renderInterval=config.renderInterval > 0 ? (long)(config.renderInterval * 1000000000f) : (config.renderInterval < 0 ? -1 : 0);
+  initialize();
+}

@@ -1,9 +1,12 @@
 {
-  int oldIndex=selectedIndex;
-  selectedIndex=(int)((getHeight() - y) / itemHeight);
-  selectedIndex=Math.max(0,selectedIndex);
-  selectedIndex=Math.min(items.length - 1,selectedIndex);
-  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-  if (fire(changeEvent))   selectedIndex=oldIndex;
-  Pools.free(changeEvent);
+  if (items.size == 0)   return;
+  float height=getHeight();
+  if (style.background != null) {
+    height-=style.background.getTopHeight() + style.background.getBottomHeight();
+    y-=style.background.getBottomHeight();
+  }
+  int index=(int)((height - y) / itemHeight);
+  index=Math.max(0,index);
+  index=Math.min(items.size - 1,index);
+  selection.choose(items.get(index));
 }

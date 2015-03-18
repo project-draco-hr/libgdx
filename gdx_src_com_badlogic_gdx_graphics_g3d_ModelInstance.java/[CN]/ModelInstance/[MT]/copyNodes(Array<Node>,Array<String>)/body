@@ -1,0 +1,13 @@
+{
+  nodePartBones.clear();
+  for (int i=0, n=nodes.size; i < n; ++i) {
+    final Node node=nodes.get(i);
+    for (    final String nodeId : nodeIds) {
+      if (nodeId.equals(node.id)) {
+        this.nodes.add(copyNode(node));
+        break;
+      }
+    }
+  }
+  setBones();
+}

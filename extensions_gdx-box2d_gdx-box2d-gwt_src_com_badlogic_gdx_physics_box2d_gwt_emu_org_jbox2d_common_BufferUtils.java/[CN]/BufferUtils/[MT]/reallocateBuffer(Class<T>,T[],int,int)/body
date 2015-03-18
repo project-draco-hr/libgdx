@@ -1,0 +1,16 @@
+{
+  assert(newCapacity > oldCapacity);
+  @SuppressWarnings("unchecked") T[] newBuffer=(T[])ArrayReflection.newInstance(klass,newCapacity);
+  if (oldBuffer != null) {
+    System.arraycopy(oldBuffer,0,newBuffer,0,oldCapacity);
+  }
+  for (int i=oldCapacity; i < newCapacity; i++) {
+    try {
+      newBuffer[i]=ClassReflection.newInstance(klass);
+    }
+ catch (    Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+  return newBuffer;
+}

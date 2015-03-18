@@ -1,4 +1,6 @@
 {
+  if (!hasNext)   throw new NoSuchElementException();
+  if (!valid)   throw new GdxRuntimeException("#iterator() cannot be used nested.");
   V value;
   if (nextIndex == INDEX_ZERO)   value=map.zeroValue;
  else   value=map.valueTable[nextIndex];

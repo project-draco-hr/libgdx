@@ -1,5 +1,0 @@
-{
-  RigidBody body=new RigidBody(createRigidParticleJni(this.addr));
-  objects.put(body.addr,body);
-  return body;
-}

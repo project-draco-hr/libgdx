@@ -1,0 +1,5 @@
+{
+  StringBuilder buffer=new StringBuilder(512);
+  prettyPrint(this,buffer,0,settings);
+  return buffer.toString();
+}

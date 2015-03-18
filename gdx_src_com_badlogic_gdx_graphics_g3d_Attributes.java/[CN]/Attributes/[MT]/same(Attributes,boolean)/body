@@ -1,0 +1,9 @@
+{
+  if (other == this)   return true;
+  if ((other == null) || (mask != other.mask))   return false;
+  if (!compareValues)   return true;
+  sort();
+  other.sort();
+  for (int i=0; i < attributes.size; i++)   if (!attributes.get(i).equals(other.attributes.get(i)))   return false;
+  return true;
+}

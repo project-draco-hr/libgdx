@@ -1,0 +1,6 @@
+{
+  frustumObject=null;
+  super.dispose();
+  if (tempManifoldArr != null)   tempManifoldArr.dispose();
+  tempManifoldArr=null;
+}

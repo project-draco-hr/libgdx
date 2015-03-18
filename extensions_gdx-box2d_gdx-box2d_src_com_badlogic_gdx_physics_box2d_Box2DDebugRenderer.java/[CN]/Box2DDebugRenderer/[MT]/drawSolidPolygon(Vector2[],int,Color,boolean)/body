@@ -1,0 +1,11 @@
+{
+  renderer.setColor(color.r,color.g,color.b,color.a);
+  lv.set(vertices[0]);
+  f.set(vertices[0]);
+  for (int i=1; i < vertexCount; i++) {
+    Vector2 v=vertices[i];
+    renderer.line(lv.x,lv.y,v.x,v.y);
+    lv.set(v);
+  }
+  if (closed)   renderer.line(f.x,f.y,lv.x,lv.y);
+}

@@ -1,0 +1,5 @@
+{
+  super(editor,influencer,name,desc,true,false);
+  controllerPicker.setMultipleSelectionAllowed(!single);
+  EventManager.get().attach(FlameMain.EVT_ASSET_RELOADED,this);
+}

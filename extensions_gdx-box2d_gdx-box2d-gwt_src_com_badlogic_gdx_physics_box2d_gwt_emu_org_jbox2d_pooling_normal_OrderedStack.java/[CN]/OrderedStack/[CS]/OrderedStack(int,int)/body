@@ -1,0 +1,9 @@
+{
+  size=argStackSize;
+  pool=new Object[argStackSize];
+  for (int i=0; i < argStackSize; i++) {
+    pool[i]=newInstance();
+  }
+  index=0;
+  container=new Object[argContainerSize];
+}

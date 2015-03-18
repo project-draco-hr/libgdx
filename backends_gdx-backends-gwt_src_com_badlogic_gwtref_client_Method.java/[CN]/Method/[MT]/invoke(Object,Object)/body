@@ -1,7 +1,4 @@
 {
-  if (parameters != null && (params == null || params.length != parameters.length))   throw new IllegalArgumentException("Parameter mismatch");
-  if (parameters == null && params != null && params.length > 0) {
-    throw new IllegalArgumentException("Parameter mismatch");
-  }
-  return ReflectionCache.instance.invoke(this,obj,params);
+  if (parameters.length != (params != null ? params.length : 0))   throw new IllegalArgumentException("Parameter mismatch");
+  return ReflectionCache.invoke(this,obj,params);
 }

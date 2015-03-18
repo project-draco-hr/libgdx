@@ -1,6 +1,0 @@
-{
-  captain.update(delta);
-  if (captain.stateTime == 0.0f && captain.state == Captain.CHASING) {
-    doCaptainActivated();
-  }
-}

@@ -1,0 +1,9 @@
+{
+  T channel=getChannel(channelDescriptor);
+  if (channel == null) {
+    channel=allocateChannel(channelDescriptor);
+    if (initializer != null)     initializer.init(channel);
+    arrays.add(channel);
+  }
+  return channel;
+}

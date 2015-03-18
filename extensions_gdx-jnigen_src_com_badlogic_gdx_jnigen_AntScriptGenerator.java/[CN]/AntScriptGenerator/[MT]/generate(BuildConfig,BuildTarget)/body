@@ -6,6 +6,9 @@
     if (!config.jniDir.mkdirs())     throw new RuntimeException("Couldn't create native code directory '" + config.jniDir + "'");
   }
   copyJniHeaders(config.jniDir.path());
+  if (config.jniDir.child("memcpy_wrap.c").exists() == false) {
+    new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/memcpy_wrap.c",FileType.Classpath).copyTo(config.jniDir.child("memcpy_wrap.c"));
+  }
   ArrayList<String> buildFiles=new ArrayList<String>();
   ArrayList<String> libsDirs=new ArrayList<String>();
   ArrayList<String> sharedLibFiles=new ArrayList<String>();
@@ -20,11 +23,13 @@
     config.jniDir.child(buildFileName).writeString(buildFile,false);
     System.out.println("Wrote target '" + target.os + (target.is64Bit ? "64" : "")+ "' build script '"+ config.jniDir.child(buildFileName)+ "'");
     if (!target.excludeFromMasterBuildFile) {
-      if (target.os != TargetOs.MacOsX) {
+      if (target.os != TargetOs.MacOsX && target.os != TargetOs.IOS) {
         buildFiles.add(buildFileName);
       }
       sharedLibFiles.add(getSharedLibFilename(target.os,target.is64Bit,config.sharedLibName));
-      libsDirs.add("../" + libsDir.path().replace('\\','/'));
+      if (target.os != TargetOs.Android && target.os != TargetOs.IOS) {
+        libsDirs.add("../" + libsDir.path().replace('\\','/'));
+      }
     }
   }
   String template=new FileDescriptor("com/badlogic/gdx/jnigen/resources/scripts/build.xml.template",FileType.Classpath).readString();
@@ -37,6 +42,11 @@
   }
   for (int i=0; i < libsDirs.size(); i++) {
     pack.append("\t\t\t<fileset dir=\"" + libsDirs.get(i) + "\" includes=\""+ sharedLibFiles.get(i)+ "\"/>\n");
+  }
+  if (config.sharedLibs != null) {
+    for (    String sharedLib : config.sharedLibs) {
+      pack.append("\t\t\t<fileset dir=\"" + sharedLib + "\"/>\n");
+    }
   }
   template=template.replace("%projectName%",config.sharedLibName + "-natives");
   template=template.replace("<clean/>",clean.toString());

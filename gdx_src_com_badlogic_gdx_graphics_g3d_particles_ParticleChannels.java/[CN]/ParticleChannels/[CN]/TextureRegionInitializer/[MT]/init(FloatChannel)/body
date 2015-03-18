@@ -1,0 +1,10 @@
+{
+  for (int i=0, c=channel.data.length; i < c; i+=channel.strideSize) {
+    channel.data[i + ParticleChannels.UOffset]=0;
+    channel.data[i + ParticleChannels.VOffset]=0;
+    channel.data[i + ParticleChannels.U2Offset]=1;
+    channel.data[i + ParticleChannels.V2Offset]=1;
+    channel.data[i + ParticleChannels.HalfWidthOffset]=0.5f;
+    channel.data[i + ParticleChannels.HalfHeightOffset]=0.5f;
+  }
+}

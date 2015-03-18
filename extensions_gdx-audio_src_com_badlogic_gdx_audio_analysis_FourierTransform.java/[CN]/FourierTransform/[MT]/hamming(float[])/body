@@ -1,5 +1,0 @@
-{
-  for (int i=0; i < samples.length; i++) {
-    samples[i]*=(0.54f - 0.46f * Math.cos(TWO_PI * i / (samples.length - 1)));
-  }
-}

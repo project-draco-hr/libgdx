@@ -1,0 +1,12 @@
+{
+  Array<JointEdge> jointList=body.getJointList();
+  while (jointList.size > 0)   destroyJoint(body.getJointList().get(0).joint);
+  jniDestroyBody(addr,body.addr);
+  body.setUserData(null);
+  this.bodies.remove(body.addr);
+  Array<Fixture> fixtureList=body.getFixtureList();
+  while (fixtureList.size > 0) {
+    this.fixtures.remove(fixtureList.removeIndex(0).addr).setUserData(null);
+  }
+  freeBodies.free(body);
+}

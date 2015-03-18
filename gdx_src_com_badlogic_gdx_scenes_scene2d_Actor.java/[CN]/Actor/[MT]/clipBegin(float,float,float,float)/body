@@ -1,0 +1,14 @@
+{
+  if (width <= 0 || height <= 0)   return false;
+  Rectangle tableBounds=Rectangle.tmp;
+  tableBounds.x=x;
+  tableBounds.y=y;
+  tableBounds.width=width;
+  tableBounds.height=height;
+  Stage stage=this.stage;
+  Rectangle scissorBounds=Pools.obtain(Rectangle.class);
+  stage.calculateScissors(tableBounds,scissorBounds);
+  if (ScissorStack.pushScissors(scissorBounds))   return true;
+  Pools.free(scissorBounds);
+  return false;
+}

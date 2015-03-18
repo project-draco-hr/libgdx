@@ -1,4 +1,5 @@
 {
+  if (size == 0)   return;
   int[] keyTable=this.keyTable;
   V[] valueTable=this.valueTable;
   for (int i=capacity + stashSize; i-- > 0; ) {

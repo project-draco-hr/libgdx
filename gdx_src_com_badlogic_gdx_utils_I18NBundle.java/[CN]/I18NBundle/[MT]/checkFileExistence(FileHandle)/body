@@ -1,0 +1,9 @@
+{
+  try {
+    fh.read().close();
+    return true;
+  }
+ catch (  Exception e) {
+    return false;
+  }
+}

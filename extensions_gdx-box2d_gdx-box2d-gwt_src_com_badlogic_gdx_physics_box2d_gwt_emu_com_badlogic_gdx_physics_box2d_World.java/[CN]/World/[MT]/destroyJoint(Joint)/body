@@ -1,0 +1,5 @@
+{
+  joint.setUserData(null);
+  world.destroyJoint(joint.joint);
+  joints.remove(joint.joint);
+}

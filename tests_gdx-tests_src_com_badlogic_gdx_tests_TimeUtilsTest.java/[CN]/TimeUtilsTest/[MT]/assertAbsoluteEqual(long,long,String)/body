@@ -1,0 +1,9 @@
+{
+  System.out.println("Compare " + a + " to "+ b);
+  if (a != b) {
+    failTest(testName + " - NOT EQUAL");
+  }
+ else {
+    System.out.println("TEST PASSED: " + testName);
+  }
+}

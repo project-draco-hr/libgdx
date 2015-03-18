@@ -1,6 +1,6 @@
 {
   if (typeName == null)   return;
-  String className=classToTag.get(type);
+  String className=getTag(type);
   if (className == null)   className=type.getName();
   try {
     writer.set(typeName,className);

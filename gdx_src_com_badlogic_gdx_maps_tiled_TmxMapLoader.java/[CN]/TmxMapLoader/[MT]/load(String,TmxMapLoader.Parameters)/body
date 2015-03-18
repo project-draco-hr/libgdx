@@ -1,0 +1,22 @@
+{
+  try {
+    this.convertObjectToTileSpace=parameters.convertObjectToTileSpace;
+    FileHandle tmxFile=resolve(fileName);
+    root=xml.parse(tmxFile);
+    ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
+    Array<FileHandle> textureFiles=loadTilesets(root,tmxFile);
+    textureFiles.addAll(loadImages(root,tmxFile));
+    for (    FileHandle textureFile : textureFiles) {
+      Texture texture=new Texture(textureFile,parameters.generateMipMaps);
+      texture.setFilter(parameters.textureMinFilter,parameters.textureMagFilter);
+      textures.put(textureFile.path(),texture);
+    }
+    DirectImageResolver imageResolver=new DirectImageResolver(textures);
+    TiledMap map=loadTilemap(root,tmxFile,imageResolver);
+    map.setOwnedResources(textures.values().toArray());
+    return map;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

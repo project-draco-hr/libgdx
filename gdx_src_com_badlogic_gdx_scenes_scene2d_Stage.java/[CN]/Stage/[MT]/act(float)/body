@@ -4,12 +4,12 @@
     if (!pointerTouched[pointer]) {
       if (overLast != null) {
         pointerOverActors[pointer]=null;
-        screenToStageCoordinates(stageCoords.set(pointerScreenX[pointer],pointerScreenY[pointer]));
+        screenToStageCoordinates(tempCoords.set(pointerScreenX[pointer],pointerScreenY[pointer]));
         InputEvent event=Pools.obtain(InputEvent.class);
         event.setType(InputEvent.Type.exit);
         event.setStage(this);
-        event.setStageX(stageCoords.x);
-        event.setStageY(stageCoords.y);
+        event.setStageX(tempCoords.x);
+        event.setStageY(tempCoords.y);
         event.setRelatedActor(overLast);
         event.setPointer(pointer);
         overLast.fire(event);
@@ -19,6 +19,7 @@
     }
     pointerOverActors[pointer]=fireEnterAndExit(overLast,pointerScreenX[pointer],pointerScreenY[pointer],pointer);
   }
-  if (Gdx.app.getType() == ApplicationType.Desktop)   mouseOverActor=fireEnterAndExit(mouseOverActor,mouseScreenX,mouseScreenY,-1);
+  ApplicationType type=Gdx.app.getType();
+  if (type == ApplicationType.Desktop || type == ApplicationType.Applet || type == ApplicationType.WebGL)   mouseOverActor=fireEnterAndExit(mouseOverActor,mouseScreenX,mouseScreenY,-1);
   root.act(delta);
 }

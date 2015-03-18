@@ -1,4 +1,6 @@
 {
-  renderMesh();
+  flush();
   lastTexture=texture;
+  invTexWidth=1.0f / texture.getWidth();
+  invTexHeight=1.0f / texture.getHeight();
 }

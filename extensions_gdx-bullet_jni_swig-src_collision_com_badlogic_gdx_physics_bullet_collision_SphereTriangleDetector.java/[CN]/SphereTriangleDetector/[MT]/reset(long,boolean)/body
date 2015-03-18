@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.SphereTriangleDetector_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

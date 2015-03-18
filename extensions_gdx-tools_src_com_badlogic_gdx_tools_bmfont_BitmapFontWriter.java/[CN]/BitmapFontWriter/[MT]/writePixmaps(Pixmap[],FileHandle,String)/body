@@ -1,0 +1,10 @@
+{
+  if (pages == null || pages.length == 0)   throw new IllegalArgumentException("no pixmaps supplied to BitmapFontWriter.write");
+  String[] pageRefs=new String[pages.length];
+  for (int i=0; i < pages.length; i++) {
+    String ref=pages.length == 1 ? (fileName + ".png") : (fileName + "_" + i+ ".png");
+    pageRefs[i]=ref;
+    PixmapIO.writePNG(outputDir.child(ref),pages[i]);
+  }
+  return pageRefs;
+}

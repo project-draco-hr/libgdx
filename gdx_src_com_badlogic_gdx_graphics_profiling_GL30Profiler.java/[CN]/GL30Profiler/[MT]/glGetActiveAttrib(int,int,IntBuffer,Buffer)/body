@@ -1,0 +1,4 @@
+{
+  calls++;
+  return gl30.glGetActiveAttrib(program,index,size,type);
+}

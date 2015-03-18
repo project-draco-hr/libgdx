@@ -1,0 +1,2 @@
+def make_section_url(self, section):
+    return ((self.file_prefix + section.name) + '.html')

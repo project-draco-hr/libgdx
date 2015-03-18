@@ -1,0 +1,10 @@
+{
+  EGLSurface result=null;
+  try {
+    result=egl.eglCreateWindowSurface(display,config,nativeWindow,null);
+  }
+ catch (  IllegalArgumentException e) {
+    Log.e(TAG,"eglCreateWindowSurface",e);
+  }
+  return result;
+}

@@ -8,4 +8,5 @@
  else {
     HeaderFixer.process(args[0]);
   }
+  System.out.println("Changed " + filesChanged + " / "+ filesScanned+ " files.");
 }

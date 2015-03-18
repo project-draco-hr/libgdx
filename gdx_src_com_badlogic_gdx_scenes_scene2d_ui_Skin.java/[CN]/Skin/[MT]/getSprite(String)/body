@@ -8,7 +8,7 @@
       if (region.rotate || region.packedWidth != region.originalWidth || region.packedHeight != region.originalHeight)       sprite=new AtlasSprite(region);
     }
     if (sprite == null)     sprite=new Sprite(textureRegion);
-    add(name,sprite,NinePatch.class);
+    add(name,sprite,Sprite.class);
     return sprite;
   }
  catch (  GdxRuntimeException ex) {

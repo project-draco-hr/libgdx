@@ -1,7 +1,0 @@
-{
-  org.jbox2d.dynamics.Fixture f=body.createFixture(shape.shape,density);
-  Fixture fixture=new Fixture(this,f);
-  fixtures.add(fixture);
-  world.fixtures.put(f,fixture);
-  return fixture;
-}

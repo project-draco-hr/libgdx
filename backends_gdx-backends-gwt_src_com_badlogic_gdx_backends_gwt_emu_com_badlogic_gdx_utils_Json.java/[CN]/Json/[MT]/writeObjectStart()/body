@@ -1,8 +1,0 @@
-{
-  try {
-    writer.object();
-  }
- catch (  IOException ex) {
-    throw new SerializationException(ex);
-  }
-}

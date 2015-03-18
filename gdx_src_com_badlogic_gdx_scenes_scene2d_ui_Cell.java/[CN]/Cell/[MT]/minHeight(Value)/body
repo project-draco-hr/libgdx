@@ -1,0 +1,5 @@
+{
+  if (minHeight == null)   throw new IllegalArgumentException("minHeight cannot be null.");
+  this.minHeight=minHeight;
+  return this;
+}

@@ -1,0 +1,4 @@
+{
+  buttons[buttonIndex]=false;
+  if (listener != null)   listener.buttonReleased(this,buttonIndex);
+}

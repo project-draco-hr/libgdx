@@ -1,0 +1,6 @@
+{
+  for (  Object object : array) {
+    if (ClassReflection.isAssignableFrom(type,object.getClass()))     return (T)object;
+  }
+  return null;
+}

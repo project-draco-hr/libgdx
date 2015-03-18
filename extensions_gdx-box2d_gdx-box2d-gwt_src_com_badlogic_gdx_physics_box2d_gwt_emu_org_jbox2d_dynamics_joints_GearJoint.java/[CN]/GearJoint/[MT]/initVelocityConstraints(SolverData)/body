@@ -1,0 +1,97 @@
+{
+  m_indexA=m_bodyA.m_islandIndex;
+  m_indexB=m_bodyB.m_islandIndex;
+  m_indexC=m_bodyC.m_islandIndex;
+  m_indexD=m_bodyD.m_islandIndex;
+  m_lcA.set(m_bodyA.m_sweep.localCenter);
+  m_lcB.set(m_bodyB.m_sweep.localCenter);
+  m_lcC.set(m_bodyC.m_sweep.localCenter);
+  m_lcD.set(m_bodyD.m_sweep.localCenter);
+  m_mA=m_bodyA.m_invMass;
+  m_mB=m_bodyB.m_invMass;
+  m_mC=m_bodyC.m_invMass;
+  m_mD=m_bodyD.m_invMass;
+  m_iA=m_bodyA.m_invI;
+  m_iB=m_bodyB.m_invI;
+  m_iC=m_bodyC.m_invI;
+  m_iD=m_bodyD.m_invI;
+  float aA=data.positions[m_indexA].a;
+  Vec2 vA=data.velocities[m_indexA].v;
+  float wA=data.velocities[m_indexA].w;
+  float aB=data.positions[m_indexB].a;
+  Vec2 vB=data.velocities[m_indexB].v;
+  float wB=data.velocities[m_indexB].w;
+  float aC=data.positions[m_indexC].a;
+  Vec2 vC=data.velocities[m_indexC].v;
+  float wC=data.velocities[m_indexC].w;
+  float aD=data.positions[m_indexD].a;
+  Vec2 vD=data.velocities[m_indexD].v;
+  float wD=data.velocities[m_indexD].w;
+  Rot qA=pool.popRot(), qB=pool.popRot(), qC=pool.popRot(), qD=pool.popRot();
+  qA.set(aA);
+  qB.set(aB);
+  qC.set(aC);
+  qD.set(aD);
+  m_mass=0.0f;
+  Vec2 temp=pool.popVec2();
+  if (m_typeA == JointType.REVOLUTE) {
+    m_JvAC.setZero();
+    m_JwA=1.0f;
+    m_JwC=1.0f;
+    m_mass+=m_iA + m_iC;
+  }
+ else {
+    Vec2 rC=pool.popVec2();
+    Vec2 rA=pool.popVec2();
+    Rot.mulToOutUnsafe(qC,m_localAxisC,m_JvAC);
+    Rot.mulToOutUnsafe(qC,temp.set(m_localAnchorC).subLocal(m_lcC),rC);
+    Rot.mulToOutUnsafe(qA,temp.set(m_localAnchorA).subLocal(m_lcA),rA);
+    m_JwC=Vec2.cross(rC,m_JvAC);
+    m_JwA=Vec2.cross(rA,m_JvAC);
+    m_mass+=m_mC + m_mA + m_iC * m_JwC * m_JwC + m_iA * m_JwA * m_JwA;
+    pool.pushVec2(2);
+  }
+  if (m_typeB == JointType.REVOLUTE) {
+    m_JvBD.setZero();
+    m_JwB=m_ratio;
+    m_JwD=m_ratio;
+    m_mass+=m_ratio * m_ratio * (m_iB + m_iD);
+  }
+ else {
+    Vec2 u=pool.popVec2();
+    Vec2 rD=pool.popVec2();
+    Vec2 rB=pool.popVec2();
+    Rot.mulToOutUnsafe(qD,m_localAxisD,u);
+    Rot.mulToOutUnsafe(qD,temp.set(m_localAnchorD).subLocal(m_lcD),rD);
+    Rot.mulToOutUnsafe(qB,temp.set(m_localAnchorB).subLocal(m_lcB),rB);
+    m_JvBD.set(u).mulLocal(m_ratio);
+    m_JwD=m_ratio * Vec2.cross(rD,u);
+    m_JwB=m_ratio * Vec2.cross(rB,u);
+    m_mass+=m_ratio * m_ratio * (m_mD + m_mB) + m_iD * m_JwD * m_JwD + m_iB * m_JwB * m_JwB;
+    pool.pushVec2(3);
+  }
+  m_mass=m_mass > 0.0f ? 1.0f / m_mass : 0.0f;
+  if (data.step.warmStarting) {
+    vA.x+=(m_mA * m_impulse) * m_JvAC.x;
+    vA.y+=(m_mA * m_impulse) * m_JvAC.y;
+    wA+=m_iA * m_impulse * m_JwA;
+    vB.x+=(m_mB * m_impulse) * m_JvBD.x;
+    vB.y+=(m_mB * m_impulse) * m_JvBD.y;
+    wB+=m_iB * m_impulse * m_JwB;
+    vC.x-=(m_mC * m_impulse) * m_JvAC.x;
+    vC.y-=(m_mC * m_impulse) * m_JvAC.y;
+    wC-=m_iC * m_impulse * m_JwC;
+    vD.x-=(m_mD * m_impulse) * m_JvBD.x;
+    vD.y-=(m_mD * m_impulse) * m_JvBD.y;
+    wD-=m_iD * m_impulse * m_JwD;
+  }
+ else {
+    m_impulse=0.0f;
+  }
+  pool.pushVec2(1);
+  pool.pushRot(4);
+  data.velocities[m_indexA].w=wA;
+  data.velocities[m_indexB].w=wB;
+  data.velocities[m_indexC].w=wC;
+  data.velocities[m_indexD].w=wD;
+}

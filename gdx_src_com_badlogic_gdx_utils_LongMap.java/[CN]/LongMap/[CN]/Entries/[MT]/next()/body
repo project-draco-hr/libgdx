@@ -1,5 +1,6 @@
 {
   if (!hasNext)   throw new NoSuchElementException();
+  if (!valid)   throw new GdxRuntimeException("#iterator() cannot be used nested.");
   long[] keyTable=map.keyTable;
   if (nextIndex == INDEX_ZERO) {
     entry.key=0;

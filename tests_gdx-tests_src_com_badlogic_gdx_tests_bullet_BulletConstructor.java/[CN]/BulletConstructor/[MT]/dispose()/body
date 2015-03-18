@@ -1,0 +1,6 @@
+{
+  if (bodyInfo != null)   bodyInfo.dispose();
+  if (shape != null)   shape.dispose();
+  bodyInfo=null;
+  shape=null;
+}

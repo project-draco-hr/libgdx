@@ -1,0 +1,8 @@
+{
+  if (!adjustNeeded) {
+    super.draw(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation,clockwise);
+  }
+ else {
+    drawAdjusted(region,x,y,originX,originY,width,height,scaleX,scaleY,rotation,clockwise);
+  }
+}

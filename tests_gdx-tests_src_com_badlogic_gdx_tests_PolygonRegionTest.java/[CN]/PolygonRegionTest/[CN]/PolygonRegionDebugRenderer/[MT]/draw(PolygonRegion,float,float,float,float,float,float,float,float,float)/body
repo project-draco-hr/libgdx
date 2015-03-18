@@ -1,6 +1,7 @@
 {
-  float[] localVertices=region.getLocalVertices();
-  float[] texCoords=region.getTextureCoords();
+  float[] vertices=region.getVertices();
+  short[] triangles=region.getTriangles();
+  float[] textureCoords=region.getTextureCoords();
   final float worldOriginX=x + originX;
   final float worldOriginY=y + originY;
   float sX=width / region.getRegion().getRegionWidth();
@@ -11,13 +12,16 @@
   final float sin=MathUtils.sinDeg(rotation);
   renderer.setColor(Color.RED);
   renderer.begin(ShapeType.Line);
-  for (int i=0; i < localVertices.length; i+=6) {
-    fx1=localVertices[i] * sX;
-    fy1=localVertices[i + 1] * sY;
-    fx2=localVertices[i + 2] * sX;
-    fy2=localVertices[i + 3] * sY;
-    fx3=localVertices[i + 4] * sX;
-    fy3=localVertices[i + 5] * sY;
+  for (int i=0, n=triangles.length; i < n; i+=3) {
+    int p1=triangles[i] * 2;
+    int p2=triangles[i + 1] * 2;
+    int p3=triangles[i + 2] * 2;
+    fx1=vertices[p1] * sX;
+    fy1=vertices[p1 + 1] * sY;
+    fx2=vertices[p2] * sX;
+    fy2=vertices[p2 + 1] * sY;
+    fx3=vertices[p3] * sX;
+    fy3=vertices[p3 + 1] * sY;
     fx1-=originX;
     fy1-=originY;
     fx2-=originX;
@@ -50,8 +54,8 @@
   }
   renderer.end();
   renderer.setColor(Color.BLUE);
-  renderer.begin(ShapeType.FilledCircle);
-  renderer.filledCircle(worldOriginX,worldOriginY,4);
+  renderer.begin(ShapeType.Filled);
+  renderer.circle(worldOriginX,worldOriginY,4);
   renderer.end();
   fx1=-originX;
   fy1=-originY;

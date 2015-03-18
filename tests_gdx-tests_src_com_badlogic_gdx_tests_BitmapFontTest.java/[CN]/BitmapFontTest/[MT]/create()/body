@@ -1,7 +1,19 @@
 {
   spriteBatch=new SpriteBatch();
-  atlas=new TextureAtlas("data/pack");
-  font=new BitmapFont(Gdx.files.internal("data/verdana39.fnt"),atlas.findRegion("verdana39"),false);
+  font=new BitmapFont(Gdx.files.internal("data/verdana39.fnt"),false);
+  multiPageFont=new BitmapFont(Gdx.files.internal("data/multipagefont.fnt"));
+  Colors.put("PERU",Color.valueOf("CD853F"));
   renderer=new ShapeRenderer();
   renderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
+  stage=new Stage();
+  Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  BitmapFont labelFont=skin.get("default-font",BitmapFont.class);
+  labelFont.setMarkupEnabled(true);
+  Label label=new Label("<<[BLUE]M[RED]u[YELLOW]l[GREEN]t[OLIVE]ic[]o[]l[]o[]r[]*[MAROON]Label[][] [Unknown Color]>>",skin);
+  label.setPosition(100,200);
+  stage.addActor(label);
+  Window window=new Window("[RED]Multicolor[GREEN] Title",skin);
+  window.setPosition(400,200);
+  window.pack();
+  stage.addActor(window);
 }

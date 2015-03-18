@@ -1,0 +1,5 @@
+{
+  begin();
+  part("capsule",primitiveType,attributes,material).capsule(radius,height,divisions);
+  return end();
+}

@@ -1,0 +1,3 @@
+{
+  self.onContactEnded((manifold == 0) ? null : new btPersistentManifold(manifold,false));
+}

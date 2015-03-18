@@ -1,15 +1,10 @@
 {
-  try {
-    if (parent != null && !parent.exists()) {
-      return false;
-    }
-    if (exists()) {
-      return false;
-    }
-    LocalStorage.setItem(getCanonicalPath(),"{}");
-    return true;
-  }
- catch (  IOException e) {
+  if (parent != null && !parent.exists()) {
     return false;
   }
+  if (exists()) {
+    return false;
+  }
+  LocalStorage.setItem(getCanonicalPath(),"{}");
+  return true;
 }

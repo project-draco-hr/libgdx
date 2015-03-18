@@ -1,0 +1,10 @@
+{
+  float length=length();
+  if (length < Settings.EPSILON) {
+    return 0f;
+  }
+  float invLength=1.0f / length;
+  x*=invLength;
+  y*=invLength;
+  return length;
+}

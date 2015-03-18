@@ -1,0 +1,5 @@
+{
+  if (space < 0)   throw new IllegalArgumentException("space cannot be < 0.");
+  space(new Fixed(space));
+  return this;
+}

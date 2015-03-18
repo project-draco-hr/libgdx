@@ -1,0 +1,6 @@
+{
+  cam.position.set(direction).scl(-halfDepth).add(center);
+  cam.direction.set(direction).nor();
+  cam.normalizeUp();
+  cam.update();
+}

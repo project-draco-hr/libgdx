@@ -1,9 +1,0 @@
-{
-  if (real.length != r.length && imag.length != i.length) {
-    throw new IllegalArgumentException("This won't work");
-  }
- else {
-    System.arraycopy(r,0,real,0,r.length);
-    System.arraycopy(i,0,imag,0,i.length);
-  }
-}

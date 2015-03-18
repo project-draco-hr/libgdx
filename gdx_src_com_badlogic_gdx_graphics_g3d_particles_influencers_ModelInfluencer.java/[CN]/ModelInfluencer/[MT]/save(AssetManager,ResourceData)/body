@@ -1,0 +1,4 @@
+{
+  SaveData data=resources.createSaveData();
+  for (  Model model : models)   data.saveAsset(manager.getAssetFileName(model),Model.class);
+}

@@ -1,0 +1,8 @@
+{
+  int intBits=((int)(255 * a) << 24) | ((int)(255 * b) << 16) | ((int)(255 * g) << 8)| ((int)(255 * r));
+  float color=NumberUtils.intToFloatColor(intBits);
+  for (int j=0, length=pageVertices.length; j < length; j++) {
+    float[] vertices=pageVertices[j];
+    for (int i=2, n=idx[j]; i < n; i+=5)     vertices[i]=color;
+  }
+}

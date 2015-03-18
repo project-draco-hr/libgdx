@@ -1,0 +1,4 @@
+{
+  long cPtr=SoftbodyJNI.btSoftBody_RContact_node_get(swigCPtr,this);
+  return (cPtr == 0) ? null : new btSoftBody.Node(cPtr,false);
+}

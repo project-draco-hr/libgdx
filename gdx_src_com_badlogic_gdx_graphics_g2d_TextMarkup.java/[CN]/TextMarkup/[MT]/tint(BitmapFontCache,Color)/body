@@ -1,0 +1,16 @@
+{
+  int current=0;
+  float floatColor=tempColor.set(defaultColor).mul(tint).toFloatBits();
+  for (  ColorChunk chunk : colorChunks) {
+    int next=chunk.start;
+    if (current < next) {
+      cache.setColors(floatColor,current,next);
+      current=next;
+    }
+    floatColor=tempColor.set(chunk.color).mul(tint).toFloatBits();
+  }
+  int charsCount=cache.getCharsCount();
+  if (current < charsCount) {
+    cache.setColors(floatColor,current,charsCount);
+  }
+}

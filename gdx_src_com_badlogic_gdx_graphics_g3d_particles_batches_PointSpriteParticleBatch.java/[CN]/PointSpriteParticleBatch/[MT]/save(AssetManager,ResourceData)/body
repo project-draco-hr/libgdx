@@ -1,0 +1,4 @@
+{
+  SaveData data=resources.createSaveData("pointSpriteBatch");
+  data.saveAsset(manager.getAssetFileName(getTexture()),Texture.class);
+}

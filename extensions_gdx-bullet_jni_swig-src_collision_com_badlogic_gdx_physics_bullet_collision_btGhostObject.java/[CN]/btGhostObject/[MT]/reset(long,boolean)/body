@@ -1,0 +1,4 @@
+{
+  if (!destroyed)   destroy();
+  super.reset(CollisionJNI.btGhostObject_SWIGUpcast(swigCPtr=cPtr),cMemoryOwn);
+}

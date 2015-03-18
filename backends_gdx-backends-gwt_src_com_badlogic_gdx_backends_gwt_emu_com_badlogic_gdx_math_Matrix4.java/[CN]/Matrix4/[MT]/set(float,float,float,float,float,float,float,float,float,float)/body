@@ -1,0 +1,23 @@
+{
+  final float xs=quaternionX * 2f, ys=quaternionY * 2f, zs=quaternionZ * 2f;
+  final float wx=quaternionW * xs, wy=quaternionW * ys, wz=quaternionW * zs;
+  final float xx=quaternionX * xs, xy=quaternionX * ys, xz=quaternionX * zs;
+  final float yy=quaternionY * ys, yz=quaternionY * zs, zz=quaternionZ * zs;
+  val[M00]=scaleX * (1.0f - (yy + zz));
+  val[M01]=scaleY * (xy - wz);
+  val[M02]=scaleZ * (xz + wy);
+  val[M03]=translationX;
+  val[M10]=scaleX * (xy + wz);
+  val[M11]=scaleY * (1.0f - (xx + zz));
+  val[M12]=scaleZ * (yz - wx);
+  val[M13]=translationY;
+  val[M20]=scaleX * (xz - wy);
+  val[M21]=scaleY * (yz + wx);
+  val[M22]=scaleZ * (1.0f - (xx + yy));
+  val[M23]=translationZ;
+  val[M30]=0.f;
+  val[M31]=0.f;
+  val[M32]=0.f;
+  val[M33]=1.0f;
+  return this;
+}

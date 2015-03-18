@@ -1,0 +1,10 @@
+{
+  Array<FileHandle> images=new Array<FileHandle>();
+  Element tilesheets=root.getChildByName("TileSheets");
+  for (  Element tileset : tilesheets.getChildrenByName("TileSheet")) {
+    Element imageSource=tileset.getChildByName("ImageSource");
+    FileHandle image=getRelativeFileHandle(tideFile,imageSource.getText());
+    images.add(image);
+  }
+  return images;
+}

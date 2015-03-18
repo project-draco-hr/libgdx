@@ -1,0 +1,24 @@
+{
+  JMenuBar menuBar=new JMenuBar();
+  JMenu menu=new JMenu("File");
+  menuBar.add(menu);
+  JMenuItem menuItem=new JMenuItem("Open");
+  menuItem.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent arg0){
+      open();
+    }
+  }
+);
+  menu.add(menuItem);
+  menuItem=new JMenuItem("Save");
+  menuItem.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent arg0){
+      save();
+    }
+  }
+);
+  menu.add(menuItem);
+  setJMenuBar(menuBar);
+  imagePanel=new ImagePanel();
+  getContentPane().add(imagePanel);
+}

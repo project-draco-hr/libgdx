@@ -1,4 +1,7 @@
 {
-  setX(x);
-  setY(y);
+  if (this.x != x || this.y != y) {
+    this.x=x;
+    this.y=y;
+    positionChanged();
+  }
 }

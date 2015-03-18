@@ -1,3 +1,4 @@
 {
-  return layout.getMinWidth();
+  if (sizeInvalid)   computeSize();
+  return tableMinWidth;
 }

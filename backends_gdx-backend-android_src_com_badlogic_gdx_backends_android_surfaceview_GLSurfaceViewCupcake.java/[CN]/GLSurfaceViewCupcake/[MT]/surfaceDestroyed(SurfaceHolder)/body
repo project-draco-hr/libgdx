@@ -1,6 +1,0 @@
-{
-  if (mGLThread != null) {
-    mGLThread.surfaceDestroyed();
-  }
-  mHasSurface=false;
-}

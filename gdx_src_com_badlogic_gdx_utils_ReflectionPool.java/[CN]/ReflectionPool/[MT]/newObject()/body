@@ -1,26 +1,8 @@
 {
   try {
-    return type.newInstance();
+    return (T)constructor.newInstance((Object[])null);
   }
  catch (  Exception ex) {
-    Constructor ctor;
-    try {
-      ctor=type.getConstructor((Class[])null);
-    }
- catch (    Exception ex2) {
-      try {
-        ctor=type.getDeclaredConstructor((Class[])null);
-        ctor.setAccessible(true);
-      }
- catch (      NoSuchMethodException ex3) {
-        throw new RuntimeException("Class cannot be created (missing no-arg constructor): " + type.getName());
-      }
-    }
-    try {
-      return (T)ctor.newInstance();
-    }
- catch (    Exception ex3) {
-      throw new GdxRuntimeException("Unable to create new instance: " + type.getName(),ex);
-    }
+    throw new GdxRuntimeException("Unable to create new instance: " + constructor.getDeclaringClass().getName(),ex);
   }
 }

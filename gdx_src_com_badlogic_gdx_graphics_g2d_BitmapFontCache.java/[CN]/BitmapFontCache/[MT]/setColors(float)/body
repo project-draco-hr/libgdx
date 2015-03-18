@@ -1,0 +1,6 @@
+{
+  for (int j=0, length=pageVertices.length; j < length; j++) {
+    float[] vertices=pageVertices[j];
+    for (int i=2, n=idx[j]; i < n; i+=5)     vertices[i]=color;
+  }
+}

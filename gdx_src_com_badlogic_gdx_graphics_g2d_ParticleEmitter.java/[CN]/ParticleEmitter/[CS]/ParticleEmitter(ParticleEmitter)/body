@@ -1,6 +1,7 @@
 {
   sprite=emitter.sprite;
   name=emitter.name;
+  imagePath=emitter.imagePath;
   setMaxParticleCount(emitter.maxParticleCount);
   minParticleCount=emitter.minParticleCount;
   delayValue.load(emitter.delayValue);
@@ -26,4 +27,6 @@
   aligned=emitter.aligned;
   behind=emitter.behind;
   additive=emitter.additive;
+  premultipliedAlpha=emitter.premultipliedAlpha;
+  cleansUpBlendFunction=emitter.cleansUpBlendFunction;
 }

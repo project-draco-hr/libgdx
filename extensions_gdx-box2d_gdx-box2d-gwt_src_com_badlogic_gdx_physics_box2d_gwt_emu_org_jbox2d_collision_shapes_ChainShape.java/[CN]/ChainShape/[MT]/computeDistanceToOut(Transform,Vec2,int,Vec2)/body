@@ -1,0 +1,5 @@
+{
+  final EdgeShape edge=pool0;
+  getChildEdge(edge,childIndex);
+  return edge.computeDistanceToOut(xf,p,0,normalOut);
+}

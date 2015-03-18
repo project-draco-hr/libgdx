@@ -1,0 +1,11 @@
+{
+  fbo=new FrameBuffer(Format.RGBA8888,shadowMapWidth,shadowMapHeight,true);
+  cam=new OrthographicCamera(shadowViewportWidth,shadowViewportHeight);
+  cam.near=shadowNear;
+  cam.far=shadowFar;
+  halfHeight=shadowViewportHeight * 0.5f;
+  halfDepth=shadowNear + 0.5f * (shadowFar - shadowNear);
+  textureDesc=new TextureDescriptor();
+  textureDesc.minFilter=textureDesc.magFilter=Texture.TextureFilter.Nearest;
+  textureDesc.uWrap=textureDesc.vWrap=Texture.TextureWrap.ClampToEdge;
+}

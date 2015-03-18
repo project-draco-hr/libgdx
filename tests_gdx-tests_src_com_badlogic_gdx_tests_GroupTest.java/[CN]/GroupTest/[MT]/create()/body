@@ -1,26 +1,14 @@
 {
-  stage=new Stage(0,0,false);
+  batch=new SpriteBatch();
+  font=new BitmapFont();
+  renderer=new ShapeRenderer();
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   region=new TextureRegion(new Texture(Gdx.files.internal("data/group-debug.png")));
-  Group group1=new ImageGroup();
-  group1.setRotation(30);
+  group2=new TestGroup("group2");
+  group2.setTransform(true);
+  stage.addActor(group2);
+  group1=new TestGroup("group1");
   group1.setTransform(true);
-  group1.setBounds(50,50,150,150);
-  stage.addActor(group1);
-  Group group2=new ImageGroup();
-  group2.setTransform(false);
-  group2.setBounds(50,50,50,50);
-  group1.addActor(group2);
-  Group group3=new ImageGroup();
-  group3.setTransform(true);
-  group3.setBounds(10,10,35,35);
-  group3.setOriginX(100);
-  group3.setRotation(45);
-  group2.addActor(group3);
-  Group group4=new ImageGroup();
-  group4.setTransform(false);
-  group4.setBounds(5,5,25,25);
-  group4.setOriginX(100);
-  group4.setRotation(45);
-  group3.addActor(group4);
+  group2.addActor(group1);
 }

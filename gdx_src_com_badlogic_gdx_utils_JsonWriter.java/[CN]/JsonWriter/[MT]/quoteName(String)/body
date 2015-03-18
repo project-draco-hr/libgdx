@@ -1,13 +1,10 @@
 {
-  value=value.replace("\\","\\\\");
+  value=value.replace("\\","\\\\").replace("\r","\\r").replace("\n","\\n").replace("\t","\\t");
 switch (this) {
 case minimal:
-    if (minimalPattern.matcher(value).matches())     return value;
-  return '"' + value.replace("\"","\\\"") + '"';
+    if (!value.contains("//") && !value.contains("/*") && minimalNamePattern.matcher(value).matches())     return value;
 case javascript:
-if (javascriptPattern.matcher(value).matches()) return value;
-return '"' + value.replace("\"","\\\"") + '"';
-default :
-return '"' + value.replace("\"","\\\"") + '"';
+  if (javascriptPattern.matcher(value).matches())   return value;
 }
+return '"' + value.replace("\"","\\\"") + '"';
 }

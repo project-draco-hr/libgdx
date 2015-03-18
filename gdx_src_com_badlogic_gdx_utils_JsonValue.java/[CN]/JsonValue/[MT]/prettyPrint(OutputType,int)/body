@@ -1,0 +1,6 @@
+{
+  PrettyPrintSettings settings=new PrettyPrintSettings();
+  settings.outputType=outputType;
+  settings.singleLineColumns=singleLineColumns;
+  return prettyPrint(settings);
+}

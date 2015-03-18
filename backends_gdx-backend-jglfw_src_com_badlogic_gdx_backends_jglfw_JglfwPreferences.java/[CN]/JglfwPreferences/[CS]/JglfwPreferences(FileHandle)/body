@@ -1,0 +1,16 @@
+{
+  this.name=file.name();
+  this.file=file;
+  if (!file.exists())   return;
+  InputStream in=null;
+  try {
+    in=new BufferedInputStream(file.read());
+    properties.load(in);
+  }
+ catch (  Throwable ex) {
+    ex.printStackTrace();
+  }
+ finally {
+    StreamUtils.closeQuietly(in);
+  }
+}

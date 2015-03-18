@@ -1,0 +1,12 @@
+{
+  image=new BufferedImage(source.getColorModel(),source.getRaster().createWritableChild(left,top,newWidth,newHeight,0,0,null),source.getColorModel().isAlphaPremultiplied(),null);
+  offsetX=left;
+  offsetY=top;
+  regionWidth=newWidth;
+  regionHeight=newHeight;
+  originalWidth=source.getWidth();
+  originalHeight=source.getHeight();
+  width=newWidth;
+  height=newHeight;
+  this.isPatch=isPatch;
+}

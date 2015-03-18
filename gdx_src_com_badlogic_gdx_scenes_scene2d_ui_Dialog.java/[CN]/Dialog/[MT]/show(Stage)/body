@@ -1,12 +1,5 @@
 {
-  stage.setKeyboardFocus(this);
-  stage.setScrollFocus(this);
-  pack();
+  show(stage,sequence(Actions.alpha(0),Actions.fadeIn(0.4f,Interpolation.fade)));
   setPosition(Math.round((stage.getWidth() - getWidth()) / 2),Math.round((stage.getHeight() - getHeight()) / 2));
-  stage.addActor(this);
-  if (fadeDuration > 0) {
-    getColor().a=0;
-    addAction(Actions.fadeIn(fadeDuration,Interpolation.fade));
-  }
   return this;
 }

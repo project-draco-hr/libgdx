@@ -1,0 +1,3 @@
+{
+  return derivative(out,continuous ? span : (span + (int)(degree * 0.5f)),u,controlPoints,degree,continuous,tmp);
+}

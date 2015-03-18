@@ -1,0 +1,8 @@
+{
+  return new Value(){
+    public float get(    Actor actor){
+      return actor.getHeight() * percent;
+    }
+  }
+;
+}

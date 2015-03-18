@@ -1,0 +1,10 @@
+{
+  final int size=strideInBytes / 4;
+  for (int i=0; i < numVertices; i++) {
+    final int offset=i * size;
+    boolean found=true;
+    for (int j=0; !found && j < size; j++)     if (vertices[offset + j] != vertex[j])     found=false;
+    if (found)     return (long)i;
+  }
+  return -1;
+}

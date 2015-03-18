@@ -1,0 +1,7 @@
+{
+  if (bounds == null)   bounds=new BoundingBox();
+  BoundingBox bounds=this.bounds;
+  bounds.inf();
+  for (  ParticleController emitter : controllers)   bounds.ext(emitter.getBoundingBox());
+  return bounds;
+}

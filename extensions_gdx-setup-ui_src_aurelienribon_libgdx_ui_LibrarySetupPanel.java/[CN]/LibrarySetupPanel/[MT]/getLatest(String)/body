@@ -1,5 +1,0 @@
-{
-  String input=Ctx.cfg.libs.getDef(libraryName).latestUrl;
-  String output=FilenameUtils.getName(input);
-  getFile(libraryName,input,output);
-}

@@ -3,7 +3,7 @@
   int i=0;
   builder.append("Managed shaders/app: { ");
   for (  Application app : shaders.keys()) {
-    builder.append(shaders.get(app).size());
+    builder.append(shaders.get(app).size);
     builder.append(" ");
   }
   builder.append("}");

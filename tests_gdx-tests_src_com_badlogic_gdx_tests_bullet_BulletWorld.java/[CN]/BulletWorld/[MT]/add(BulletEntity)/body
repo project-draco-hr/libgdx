@@ -1,0 +1,8 @@
+{
+  super.add(entity);
+  if (entity.body != null) {
+    if (entity.body instanceof btRigidBody)     ((btDiscreteDynamicsWorld)collisionWorld).addRigidBody((btRigidBody)entity.body);
+ else     collisionWorld.addCollisionObject(entity.body);
+    entity.body.setUserValue(entities.size - 1);
+  }
+}

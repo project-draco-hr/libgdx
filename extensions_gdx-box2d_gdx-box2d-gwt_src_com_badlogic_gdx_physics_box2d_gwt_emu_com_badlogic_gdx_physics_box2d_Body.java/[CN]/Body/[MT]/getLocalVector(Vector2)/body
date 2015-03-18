@@ -1,0 +1,5 @@
+{
+  tmp.set(worldVector.x,worldVector.y);
+  Vec2 lv=body.getLocalVector(tmp);
+  return localVector.set(lv.x,lv.y);
+}

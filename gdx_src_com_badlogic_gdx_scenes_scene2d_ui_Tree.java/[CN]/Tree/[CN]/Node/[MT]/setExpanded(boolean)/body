@@ -1,6 +1,7 @@
 {
-  if (expanded == this.expanded || children.size == 0)   return;
+  if (expanded == this.expanded)   return;
   this.expanded=expanded;
+  if (children.size == 0)   return;
   Tree tree=getTree();
   if (tree == null)   return;
   if (expanded) {

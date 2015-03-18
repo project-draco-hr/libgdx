@@ -1,0 +1,9 @@
+{
+  if (primitiveType == GL20.GL_TRIANGLES || primitiveType == GL20.GL_POINTS) {
+    index(index1,index2,index3);
+  }
+ else   if (primitiveType == GL20.GL_LINES) {
+    index(index1,index2,index2,index3,index3,index1);
+  }
+ else   throw new GdxRuntimeException("Incorrect primitive type");
+}

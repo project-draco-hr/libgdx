@@ -1,7 +1,0 @@
-{
-  btTransform startTransform=new btTransform();
-  startTransform.setIdentity();
-  btRigidBody body=new btRigidBody(0,new btDefaultMotionState(startTransform),new btStaticPlaneShape(new Vector3(0,0,1),0),new Vector3(0,0,0));
-  startTransform.delete();
-  return body;
-}

@@ -1,6 +1,0 @@
-{
-  if (min >= max)   throw new IllegalArgumentException("min must be < max");
-  this.min=min;
-  this.max=max;
-  setValue(min);
-}

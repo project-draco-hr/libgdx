@@ -1,0 +1,5 @@
+{
+  final btBroadphasePair result=pool.obtain();
+  result.reset(cPtr,own);
+  return result;
+}

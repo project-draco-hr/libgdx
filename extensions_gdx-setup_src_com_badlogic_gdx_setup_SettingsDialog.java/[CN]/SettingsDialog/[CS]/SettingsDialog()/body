@@ -1,0 +1,52 @@
+{
+  contentPane=new JPanel(new GridBagLayout());
+  setContentPane(contentPane);
+  setModal(true);
+  getRootPane().setDefaultButton(buttonOK);
+  uiLayout();
+  uiStyle();
+  buttonOK.addActionListener(new ActionListener(){
+    public void actionPerformed(    ActionEvent e){
+      if (offlineBox.isSelected()) {
+        int value=JOptionPane.showConfirmDialog(null,"You have selected offline mode. This requires you to have your dependencies already in your maven/gradle cache.\n\nThe setup will fail if you do not have the correct dependenices already.\n\nDo you want to continue?","Warning!",JOptionPane.YES_NO_OPTION);
+        if (value == 0) {
+          onOK();
+        }
+      }
+ else {
+        onOK();
+      }
+    }
+  }
+);
+  buttonCancel.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      onCancel();
+    }
+  }
+);
+  linkText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+  linkText.addMouseListener(new MouseAdapter(){
+    public void mouseClicked(    MouseEvent e){
+      if (e.getClickCount() > 0) {
+        if (Desktop.isDesktopSupported()) {
+          Desktop desktop=Desktop.getDesktop();
+          try {
+            URI uri=new URI("https://github.com/libgdx/libgdx/wiki/Improving-workflow-with-Gradle#how-to-remove-gradle-ide-integration-from-your-project");
+            desktop.browse(uri);
+          }
+ catch (          IOException ex) {
+            ex.printStackTrace();
+          }
+catch (          URISyntaxException ex) {
+            ex.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+);
+  setTitle("Advanced Settings");
+  setSize(600,300);
+  setLocationRelativeTo(null);
+}

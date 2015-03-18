@@ -1,0 +1,6 @@
+{
+  long id=loop();
+  setPitch(id,pitch);
+  setPan(id,pan,volume);
+  return id;
+}

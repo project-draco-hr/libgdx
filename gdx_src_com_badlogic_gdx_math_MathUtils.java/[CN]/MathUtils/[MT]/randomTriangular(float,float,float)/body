@@ -1,0 +1,6 @@
+{
+  float u=random.nextFloat();
+  float d=max - min;
+  if (u <= (mode - min) / d)   return min + (float)Math.sqrt(u * d * (mode - min));
+  return max - (float)Math.sqrt((1 - u) * d * (max - mode));
+}

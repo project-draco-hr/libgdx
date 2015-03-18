@@ -1,0 +1,17 @@
+{
+  try {
+    FileHandle tideFile=resolve(fileName);
+    root=xml.parse(tideFile);
+    ObjectMap<String,Texture> textures=new ObjectMap<String,Texture>();
+    for (    FileHandle textureFile : loadTileSheets(root,tideFile)) {
+      textures.put(textureFile.path(),new Texture(textureFile));
+    }
+    DirectImageResolver imageResolver=new DirectImageResolver(textures);
+    TiledMap map=loadMap(root,tideFile,imageResolver);
+    map.setOwnedResources(textures.values().toArray());
+    return map;
+  }
+ catch (  IOException e) {
+    throw new GdxRuntimeException("Couldn't load tilemap '" + fileName + "'",e);
+  }
+}

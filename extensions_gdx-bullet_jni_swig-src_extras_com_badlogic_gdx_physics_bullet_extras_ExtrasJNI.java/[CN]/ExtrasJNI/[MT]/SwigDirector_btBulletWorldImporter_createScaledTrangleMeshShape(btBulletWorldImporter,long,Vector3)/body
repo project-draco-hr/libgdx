@@ -1,0 +1,3 @@
+{
+  return btScaledBvhTriangleMeshShape.getCPtr(self.createScaledTrangleMeshShape((meshShape == 0) ? null : new btBvhTriangleMeshShape(meshShape,false),localScalingbtBvhTriangleMeshShape));
+}

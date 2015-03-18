@@ -1,0 +1,9 @@
+{
+  if (flag) {
+    m_flags|=e_autoSleepFlag;
+  }
+ else {
+    m_flags&=~e_autoSleepFlag;
+    setAwake(true);
+  }
+}

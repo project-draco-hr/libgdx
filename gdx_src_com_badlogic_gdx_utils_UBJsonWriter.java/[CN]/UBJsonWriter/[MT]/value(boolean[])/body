@@ -1,0 +1,8 @@
+{
+  array();
+  for (int i=0, n=values.length; i < n; i++) {
+    out.writeByte(values[i] ? 'T' : 'F');
+  }
+  pop();
+  return this;
+}

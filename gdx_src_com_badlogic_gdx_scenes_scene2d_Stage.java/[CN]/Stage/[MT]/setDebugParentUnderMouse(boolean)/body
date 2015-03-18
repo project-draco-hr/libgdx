@@ -1,0 +1,6 @@
+{
+  if (this.debugParentUnderMouse == debugParentUnderMouse)   return;
+  this.debugParentUnderMouse=debugParentUnderMouse;
+  if (debugParentUnderMouse)   debug=true;
+ else   root.setDebug(false,true);
+}

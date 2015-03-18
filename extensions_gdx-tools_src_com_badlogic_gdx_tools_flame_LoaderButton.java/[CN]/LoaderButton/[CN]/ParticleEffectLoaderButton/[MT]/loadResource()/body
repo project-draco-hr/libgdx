@@ -1,0 +1,15 @@
+{
+  File file=editor.showFileLoadDialog();
+  if (file != null) {
+    try {
+      String resource=file.getAbsolutePath();
+      listener.onResourceLoaded(editor.openEffect(file,false));
+    }
+ catch (    Exception ex) {
+      System.out.println("Error loading effect: " + file.getAbsolutePath());
+      ex.printStackTrace();
+      JOptionPane.showMessageDialog(getParent(),"Error opening effect.");
+      return;
+    }
+  }
+}

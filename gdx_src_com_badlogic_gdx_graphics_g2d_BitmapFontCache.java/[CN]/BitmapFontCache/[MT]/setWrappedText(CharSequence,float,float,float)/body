@@ -1,3 +1,4 @@
 {
-  return setWrappedText(str,x,y,wrapWidth,HAlignment.LEFT);
+  clear();
+  return addWrappedText(str,x,y,wrapWidth,HAlignment.LEFT);
 }

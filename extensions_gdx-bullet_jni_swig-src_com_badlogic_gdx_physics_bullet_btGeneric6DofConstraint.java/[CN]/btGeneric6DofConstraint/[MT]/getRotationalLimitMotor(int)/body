@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btGeneric6DofConstraint_getRotationalLimitMotor(swigCPtr,this,index);
-  return (cPtr == 0) ? null : new btRotationalLimitMotor(cPtr,false);
-}

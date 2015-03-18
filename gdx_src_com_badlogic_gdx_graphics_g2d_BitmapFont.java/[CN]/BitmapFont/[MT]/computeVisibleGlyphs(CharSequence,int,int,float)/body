@@ -1,31 +1,24 @@
 {
+  BitmapFontData data=this.data;
   int index=start;
   float width=0;
   Glyph lastGlyph=null;
-  if (data.scaleX == 1) {
-    for (; index < end; index++) {
-      char ch=str.charAt(index);
-      Glyph g=data.getGlyph(ch);
-      if (g != null) {
-        if (lastGlyph != null)         width+=lastGlyph.getKerning(ch);
-        if ((width + g.xadvance) - availableWidth > 0.001f)         break;
-        width+=g.xadvance;
-        lastGlyph=g;
+  availableWidth/=data.scaleX;
+  for (; index < end; index++) {
+    char ch=str.charAt(index);
+    if (ch == '[' && markupEnabled) {
+      index++;
+      if (!(index < end && str.charAt(index) == '[')) {
+        while (index < end && str.charAt(index) != ']')         index++;
+        continue;
       }
     }
-  }
- else {
-    float scaleX=this.data.scaleX;
-    for (; index < end; index++) {
-      char ch=str.charAt(index);
-      Glyph g=data.getGlyph(ch);
-      if (g != null) {
-        if (lastGlyph != null)         width+=lastGlyph.getKerning(ch) * scaleX;
-        float xadvance=g.xadvance * scaleX;
-        if ((width + xadvance) - availableWidth > 0.001f)         break;
-        width+=xadvance;
-        lastGlyph=g;
-      }
+    Glyph g=data.getGlyph(ch);
+    if (g != null) {
+      if (lastGlyph != null)       width+=lastGlyph.getKerning(ch);
+      if ((width + g.xadvance) - availableWidth > 0.001f)       break;
+      width+=g.xadvance;
+      lastGlyph=g;
     }
   }
   return index - start;

@@ -1,0 +1,9 @@
+{
+  m_root=NULL_NODE;
+  m_nodeCount=0;
+  m_nodeCapacity=16;
+  expandBuffers(0,m_nodeCapacity);
+  for (int i=0; i < drawVecs.length; i++) {
+    drawVecs[i]=new Vec2();
+  }
+}

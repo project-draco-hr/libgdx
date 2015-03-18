@@ -1,6 +1,0 @@
-{
-  doneFreeType(library.address);
-  for (  ByteBuffer buffer : library.fontData.values()) {
-    BufferUtils.disposeUnsafeByteBuffer(buffer);
-  }
-}

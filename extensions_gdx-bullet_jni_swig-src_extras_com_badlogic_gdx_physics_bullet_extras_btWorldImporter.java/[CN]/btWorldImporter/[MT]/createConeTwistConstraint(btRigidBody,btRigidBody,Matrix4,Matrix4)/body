@@ -1,0 +1,4 @@
+{
+  long cPtr=ExtrasJNI.btWorldImporter_createConeTwistConstraint__SWIG_0(swigCPtr,this,btRigidBody.getCPtr(rbA),rbA,btRigidBody.getCPtr(rbB),rbB,rbAFrame,rbBFrame);
+  return (cPtr == 0) ? null : new btConeTwistConstraint(cPtr,false);
+}

@@ -2,7 +2,7 @@
   for (  Page page : pages) {
     if (page.texture == null) {
       if (page.rects.size != 0 && page.addedRects.size > 0) {
-        page.texture=new Texture(new ManagedPixmapTextureData(page.image,page.image.getFormat(),useMipMaps)){
+        page.texture=new Texture(new PixmapTextureData(page.image,page.image.getFormat(),useMipMaps,false,true)){
           @Override public void dispose(){
             super.dispose();
             getTextureData().consumePixmap().dispose();
@@ -27,7 +27,6 @@
           atlas.addRegion(name,region);
         }
         page.addedRects.clear();
-        return;
       }
     }
   }

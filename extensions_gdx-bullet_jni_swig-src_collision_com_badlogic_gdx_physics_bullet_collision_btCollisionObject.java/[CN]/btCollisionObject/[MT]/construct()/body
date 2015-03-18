@@ -1,0 +1,6 @@
+{
+  super.construct();
+  gdxBridge=new GdxCollisionObjectBridge();
+  internalSetGdxBridge(gdxBridge);
+  addInstance(this);
+}

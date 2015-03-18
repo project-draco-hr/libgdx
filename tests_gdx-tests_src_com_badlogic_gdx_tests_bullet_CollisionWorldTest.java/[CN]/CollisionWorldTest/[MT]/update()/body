@@ -1,0 +1,6 @@
+{
+  super.update();
+  if (world.performanceCounter != null)   world.performanceCounter.start();
+  world.collisionWorld.performDiscreteCollisionDetection();
+  if (world.performanceCounter != null)   world.performanceCounter.stop();
+}

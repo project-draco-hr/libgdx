@@ -3,7 +3,6 @@
   pressed=isOver(event.getListenerActor(),x,y);
   if (pressed && pointer == 0 && button != -1 && !Gdx.input.isButtonPressed(button))   pressed=false;
   if (!pressed) {
-    touchDownX=-1;
-    touchDownY=-1;
+    invalidateTapSquare();
   }
 }

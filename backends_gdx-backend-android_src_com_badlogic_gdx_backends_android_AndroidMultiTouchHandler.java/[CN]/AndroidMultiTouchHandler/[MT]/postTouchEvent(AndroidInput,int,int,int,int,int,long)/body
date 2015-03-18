@@ -1,0 +1,10 @@
+{
+  TouchEvent event=input.usedTouchEvents.obtain();
+  event.timeStamp=timeStamp;
+  event.pointer=pointer;
+  event.x=x;
+  event.y=y;
+  event.type=type;
+  event.button=button;
+  input.touchEvents.add(event);
+}

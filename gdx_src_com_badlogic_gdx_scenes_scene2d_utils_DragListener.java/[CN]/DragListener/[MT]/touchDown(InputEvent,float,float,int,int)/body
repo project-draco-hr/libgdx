@@ -4,5 +4,7 @@
   pressedPointer=pointer;
   touchDownX=x;
   touchDownY=y;
+  stageTouchDownX=event.getStageX();
+  stageTouchDownY=event.getStageY();
   return true;
 }

@@ -1,0 +1,6 @@
+{
+  if (size == null)   throw new IllegalArgumentException("size cannot be null.");
+  maxWidth=size;
+  maxHeight=size;
+  return this;
+}

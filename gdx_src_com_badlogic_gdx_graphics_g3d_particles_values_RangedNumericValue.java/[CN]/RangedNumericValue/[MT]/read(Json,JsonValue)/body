@@ -1,0 +1,5 @@
+{
+  super.read(json,jsonData);
+  lowMin=json.readValue("lowMin",float.class,jsonData);
+  lowMax=json.readValue("lowMax",float.class,jsonData);
+}

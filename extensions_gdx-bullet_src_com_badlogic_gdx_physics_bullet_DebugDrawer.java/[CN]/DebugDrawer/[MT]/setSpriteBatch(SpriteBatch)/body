@@ -1,0 +1,7 @@
+{
+  if (ownsSpriteBatch && this.spriteBatch != null) {
+    this.spriteBatch.dispose();
+  }
+  this.spriteBatch=spriteBatch;
+  ownsSpriteBatch=false;
+}

@@ -1,0 +1,49 @@
+{
+  if (character != null) {
+    animation.update(Gdx.graphics.getDeltaTime());
+    if (upKey) {
+      if (!animation.inAction) {
+        trTmp.idt().lerp(trForward,Gdx.graphics.getDeltaTime() / animation.current.animation.duration);
+        character.transform.mul(trTmp.toMatrix4(tmpMatrix));
+      }
+      if (status != walk) {
+        animation.animate("Walk",-1,1f,null,0.2f);
+        status=walk;
+      }
+    }
+ else     if (downKey) {
+      if (!animation.inAction) {
+        trTmp.idt().lerp(trBackward,Gdx.graphics.getDeltaTime() / animation.current.animation.duration);
+        character.transform.mul(trTmp.toMatrix4(tmpMatrix));
+      }
+      if (status != back) {
+        animation.animate("Walk",-1,-1f,null,0.2f);
+        status=back;
+      }
+    }
+ else     if (status != idle) {
+      animation.animate("Idle",-1,1f,null,0.2f);
+      status=idle;
+    }
+    if (rightKey && (status == walk || status == back) && !animation.inAction) {
+      trTmp.idt().lerp(trRight,Gdx.graphics.getDeltaTime() / animation.current.animation.duration);
+      character.transform.mul(trTmp.toMatrix4(tmpMatrix));
+    }
+ else     if (leftKey && (status == walk || status == back) && !animation.inAction) {
+      trTmp.idt().lerp(trLeft,Gdx.graphics.getDeltaTime() / animation.current.animation.duration);
+      character.transform.mul(trTmp.toMatrix4(tmpMatrix));
+    }
+    if (spaceKey && !animation.inAction) {
+      animation.action("Attack",1,1f,null,0.2f);
+    }
+  }
+  if (character != null) {
+    shadowLight.begin(character.transform.getTranslation(tmpVector),cam.direction);
+    shadowBatch.begin(shadowLight.getCamera());
+    if (character != null)     shadowBatch.render(character);
+    if (tree != null)     shadowBatch.render(tree);
+    shadowBatch.end();
+    shadowLight.end();
+  }
+  super.render();
+}

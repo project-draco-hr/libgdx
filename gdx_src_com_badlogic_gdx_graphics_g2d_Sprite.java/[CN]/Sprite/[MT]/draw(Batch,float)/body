@@ -1,0 +1,6 @@
+{
+  float oldAlpha=getColor().a;
+  setAlpha(oldAlpha * alphaModulation);
+  draw(batch);
+  setAlpha(oldAlpha);
+}

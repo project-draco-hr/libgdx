@@ -1,8 +1,8 @@
 {
   if (group == GROUP_BLEND) {
     Sort.instance().sort(contents,comparator);
-    Gdx.gl10.glEnable(GL10.GL_BLEND);
-    Gdx.gl10.glDepthMask(false);
+    Gdx.gl.glEnable(GL20.GL_BLEND);
+    Gdx.gl.glDepthMask(false);
   }
  else {
   }

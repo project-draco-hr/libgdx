@@ -1,7 +1,5 @@
 {
-  if (hasSelection) {
-    int minIndex=Math.min(cursor,selectionStart);
-    int maxIndex=Math.max(cursor,selectionStart);
-    clipboard.setContents(text.substring(minIndex,maxIndex));
+  if (hasSelection && !passwordMode) {
+    clipboard.setContents(text.substring(Math.min(cursor,selectionStart),Math.max(cursor,selectionStart)));
   }
 }

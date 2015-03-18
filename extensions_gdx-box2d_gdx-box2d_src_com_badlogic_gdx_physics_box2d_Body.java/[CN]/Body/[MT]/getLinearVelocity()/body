@@ -1,0 +1,6 @@
+{
+  jniGetLinearVelocity(addr,tmp);
+  linearVelocity.x=tmp[0];
+  linearVelocity.y=tmp[1];
+  return linearVelocity;
+}

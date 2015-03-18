@@ -1,4 +1,0 @@
-{
-  long cPtr=gdxBulletJNI.btDefaultCollisionConstructionInfo_m_stackAlloc_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btStackAlloc(cPtr,false);
-}

@@ -1,0 +1,8 @@
+{
+  try {
+    return new Field(ReflectionCache.getType(c).getField(name));
+  }
+ catch (  SecurityException e) {
+    throw new ReflectionException("Security violation while getting field: " + name + ", for class: "+ c.getName(),e);
+  }
+}

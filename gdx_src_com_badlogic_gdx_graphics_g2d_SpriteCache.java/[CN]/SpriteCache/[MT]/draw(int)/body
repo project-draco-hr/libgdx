@@ -5,21 +5,14 @@
   int offset=cache.offset / (verticesPerImage * VERTEX_SIZE) * 6;
   Texture[] textures=cache.textures;
   int[] counts=cache.counts;
-  if (Gdx.graphics.isGL20Available()) {
-    for (int i=0, n=cache.textureCount; i < n; i++) {
-      int count=counts[i];
-      textures[i].bind();
-      if (customShader != null)       mesh.render(customShader,GL10.GL_TRIANGLES,offset,count);
- else       mesh.render(shader,GL10.GL_TRIANGLES,offset,count);
-      offset+=count;
-    }
+  int textureCount=cache.textureCount;
+  for (int i=0; i < textureCount; i++) {
+    int count=counts[i];
+    textures[i].bind();
+    if (customShader != null)     mesh.render(customShader,GL20.GL_TRIANGLES,offset,count);
+ else     mesh.render(shader,GL20.GL_TRIANGLES,offset,count);
+    offset+=count;
   }
- else {
-    for (int i=0, n=cache.textureCount; i < n; i++) {
-      int count=counts[i];
-      textures[i].bind();
-      mesh.render(GL10.GL_TRIANGLES,offset,count);
-      offset+=count;
-    }
-  }
+  renderCalls+=textureCount;
+  totalRenderCalls+=textureCount;
 }

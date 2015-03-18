@@ -1,0 +1,5 @@
+{
+  if (maxWidth == null)   throw new IllegalArgumentException("maxWidth cannot be null.");
+  this.maxWidth=maxWidth;
+  return this;
+}

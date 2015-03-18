@@ -7,4 +7,5 @@
   float maxY=Math.max(y + height,rect.y + rect.height);
   y=minY;
   height=maxY - minY;
+  return this;
 }

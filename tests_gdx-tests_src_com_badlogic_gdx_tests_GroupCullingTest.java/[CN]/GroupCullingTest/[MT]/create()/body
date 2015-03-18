@@ -1,5 +1,5 @@
 {
-  stage=new Stage(0,0,true);
+  stage=new Stage();
   Gdx.input.setInputProcessor(stage);
   root=new Table();
   root.setFillParent(true);
@@ -11,7 +11,7 @@
   root.add(drawnLabel=new Label("",skin));
   for (int i=0; i < count; i++) {
     labels.add(new Label("Label: " + i,skin){
-      public void draw(      SpriteBatch batch,      float parentAlpha){
+      public void draw(      Batch batch,      float parentAlpha){
         super.draw(batch,parentAlpha);
         drawn++;
       }

@@ -1,0 +1,7 @@
+{
+  if (radians == 0) {
+    idt();
+    return this;
+  }
+  return set(quat.setFromAxisRad(axisX,axisY,axisZ,radians));
+}

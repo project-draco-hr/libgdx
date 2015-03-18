@@ -1,0 +1,6 @@
+{
+  if (locale == null) {
+    throw new NullPointerException("locale == null");
+  }
+  defaultLocale=locale;
+}

@@ -1,0 +1,4 @@
+{
+  Vec2 wc=body.getWorldCenter();
+  return worldCenter.set(wc.x,wc.y);
+}

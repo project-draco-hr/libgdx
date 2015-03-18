@@ -4,6 +4,8 @@
       editRowsPanel.removeAll();
       addEditorRow(new NumericPanel(pixelsPerMeter,"Pixels per meter",""));
       addEditorRow(new NumericPanel(zoomLevel,"Zoom level",""));
+      addEditorRow(new NumericPanel(deltaMultiplier,"Delta multiplier",""));
+      addEditorRow(new GradientPanel(backgroundColor,"Background color","",true));
       rowsPanel.removeAll();
       ParticleEmitter emitter=getEmitter();
       addRow(new ImagePanel(ParticleEditor.this,"Image",""));
@@ -24,7 +26,7 @@
       addRow(new ScaledNumericPanel(emitter.getRotation(),"Life","Rotation","Particle rotation, in degrees."));
       addRow(new ScaledNumericPanel(emitter.getWind(),"Life","Wind","Wind strength, in world units per second."));
       addRow(new ScaledNumericPanel(emitter.getGravity(),"Life","Gravity","Gravity strength, in world units per second."));
-      addRow(new GradientPanel(emitter.getTint(),"Tint",""));
+      addRow(new GradientPanel(emitter.getTint(),"Tint","",false));
       addRow(new PercentagePanel(emitter.getTransparency(),"Life","Transparency",""));
       addRow(new OptionsPanel(ParticleEditor.this,"Options",""));
       for (      Component component : rowsPanel.getComponents())       if (component instanceof EditorPanel)       ((EditorPanel)component).update(ParticleEditor.this);

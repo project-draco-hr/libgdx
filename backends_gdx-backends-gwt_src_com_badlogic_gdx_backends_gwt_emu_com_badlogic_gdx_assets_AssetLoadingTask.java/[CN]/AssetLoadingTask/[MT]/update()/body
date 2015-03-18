@@ -1,9 +1,0 @@
-{
-  if (loader instanceof AsynchronousAssetLoader) {
-    handleAsynchLoader((AsynchronousAssetLoader)loader);
-  }
- else {
-    handleSynchLoader((SynchronousAssetLoader)loader);
-  }
-  return asset != null;
-}

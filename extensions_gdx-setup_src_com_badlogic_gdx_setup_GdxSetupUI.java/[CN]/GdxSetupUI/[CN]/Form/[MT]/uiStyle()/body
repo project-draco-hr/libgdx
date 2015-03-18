@@ -1,0 +1,34 @@
+{
+  nameText.setCaretColor(Color.WHITE);
+  packageText.setCaretColor(Color.WHITE);
+  gameClassText.setCaretColor(Color.WHITE);
+  destinationText.setCaretColor(Color.WHITE);
+  sdkLocationText.setCaretColor(Color.WHITE);
+  nameLabel.setForeground(Color.WHITE);
+  packageLabel.setForeground(Color.WHITE);
+  gameClassLabel.setForeground(Color.WHITE);
+  destinationLabel.setForeground(Color.WHITE);
+  sdkLocationLabel.setForeground(Color.WHITE);
+  sdkLocationText.setDisabledTextColor(Color.GRAY);
+  versionLabel.setForeground(new Color(255,20,20));
+  UIManager.put("ComboBox.selectionBackground",new ColorUIResource(new Color(70,70,70)));
+  UIManager.put("ComboBox.selectionForeground",new ColorUIResource(Color.WHITE));
+  versionButton.updateUI();
+  versionButton.setForeground(new Color(255,255,255));
+  versionButton.setBackground(new Color(20,20,20));
+  versionButton.setPrototypeDisplayValue("I am a prototype");
+  versionButton.setUI(new BasicComboBoxUI(){
+    @Override protected JButton createArrowButton(){
+      return new BasicArrowButton(BasicArrowButton.SOUTH,new Color(0,0,0),new Color(0,0,0),new Color(100,100,100),new Color(100,100,100));
+    }
+  }
+);
+  projectsLabel.setForeground(new Color(255,20,20));
+  extensionsLabel.setForeground(new Color(255,20,20));
+  subProjectsPanel.setOpaque(true);
+  subProjectsPanel.setBackground(new Color(46,46,46));
+  for (  JPanel extensionPanel : extensionsPanels) {
+    extensionPanel.setOpaque(true);
+    extensionPanel.setBackground(new Color(46,46,46));
+  }
+}

@@ -1,0 +1,8 @@
+{
+  if (capacity <= maximumCapacity) {
+    clear();
+    return;
+  }
+  size=0;
+  resize(maximumCapacity);
+}

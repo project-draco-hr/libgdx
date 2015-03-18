@@ -1,0 +1,35 @@
+{
+  validate();
+  Drawable background;
+  if (disabled && style.backgroundDisabled != null)   background=style.backgroundDisabled;
+ else   if (selectBoxList.hasParent() && style.backgroundOpen != null)   background=style.backgroundOpen;
+ else   if (clickListener.isOver() && style.backgroundOver != null)   background=style.backgroundOver;
+ else   if (style.background != null)   background=style.background;
+ else   background=null;
+  final BitmapFont font=style.font;
+  final Color fontColor=(disabled && style.disabledFontColor != null) ? style.disabledFontColor : style.fontColor;
+  Color color=getColor();
+  float x=getX();
+  float y=getY();
+  float width=getWidth();
+  float height=getHeight();
+  batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
+  if (background != null)   background.draw(batch,x,y,width,height);
+  T selected=selection.first();
+  if (selected != null) {
+    String string=selected.toString();
+    bounds.set(font.getBounds(string));
+    if (background != null) {
+      width-=background.getLeftWidth() + background.getRightWidth();
+      height-=background.getBottomHeight() + background.getTopHeight();
+      x+=background.getLeftWidth();
+      y+=(int)(height / 2 + background.getBottomHeight() + bounds.height / 2);
+    }
+ else {
+      y+=(int)(height / 2 + bounds.height / 2);
+    }
+    int numGlyphs=font.computeVisibleGlyphs(string,0,string.length(),width);
+    font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
+    font.draw(batch,string,x,y,0,numGlyphs);
+  }
+}

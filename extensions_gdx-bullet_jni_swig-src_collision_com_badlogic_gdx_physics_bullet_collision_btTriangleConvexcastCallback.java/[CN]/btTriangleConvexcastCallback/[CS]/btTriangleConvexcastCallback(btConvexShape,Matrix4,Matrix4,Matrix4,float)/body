@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btTriangleConvexcastCallback(btConvexShape.getCPtr(convexShape),convexShape,convexShapeFrom,convexShapeTo,triangleToWorld,triangleCollisionMargin),true);
+  CollisionJNI.btTriangleConvexcastCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

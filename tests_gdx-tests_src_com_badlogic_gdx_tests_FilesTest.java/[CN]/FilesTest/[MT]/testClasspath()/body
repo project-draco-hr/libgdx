@@ -1,4 +1,5 @@
 {
+  if (Gdx.app.getType() == ApplicationType.iOS)   return;
   FileHandle handle=Gdx.files.classpath("com/badlogic/gdx/utils/arial-15.png");
   if (!handle.exists())   fail();
   if (handle.isDirectory())   fail();

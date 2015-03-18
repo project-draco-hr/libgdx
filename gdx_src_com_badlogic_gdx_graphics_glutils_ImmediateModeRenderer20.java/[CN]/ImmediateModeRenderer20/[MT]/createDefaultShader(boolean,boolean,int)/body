@@ -1,5 +1,6 @@
 {
   String vertexShader=createVertexShader(hasNormals,hasColors,numTexCoords);
   String fragmentShader=createFragmentShader(hasNormals,hasColors,numTexCoords);
-  return new ShaderProgram(vertexShader,fragmentShader);
+  ShaderProgram program=new ShaderProgram(vertexShader,fragmentShader);
+  return program;
 }

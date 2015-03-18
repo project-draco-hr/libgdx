@@ -1,0 +1,8 @@
+{
+  if (!adjustNeeded) {
+    super.draw(texture,x,y,width,height);
+  }
+ else {
+    drawAdjusted(texture,x,y,0,0,width,height,1,1,0,0,1,1,0,false,false);
+  }
+}

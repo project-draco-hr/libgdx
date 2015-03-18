@@ -1,6 +1,0 @@
-{
-  assert(0 <= proxyId && proxyId < m_nodeCapacity);
-  assert(m_nodes[proxyId].isLeaf());
-  removeLeaf(proxyId);
-  freeNode(proxyId);
-}

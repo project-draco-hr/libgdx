@@ -1,3 +1,4 @@
 {
-  project(vec,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  project(worldCoords,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  return worldCoords;
 }

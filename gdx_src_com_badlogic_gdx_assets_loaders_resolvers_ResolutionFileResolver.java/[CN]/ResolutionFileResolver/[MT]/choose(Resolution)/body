@@ -1,5 +1,4 @@
 {
-  if (descriptors == null)   throw new IllegalArgumentException("descriptors cannot be null.");
   int w=Gdx.graphics.getWidth(), h=Gdx.graphics.getHeight();
   Resolution best=descriptors[0];
   if (w < h) {

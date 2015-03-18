@@ -1,0 +1,17 @@
+{
+  Stage stage=getStage();
+  if (stage != null) {
+    removeListener(focusListener);
+    if (previousKeyboardFocus != null && previousKeyboardFocus.getStage() == null)     previousKeyboardFocus=null;
+    Actor actor=stage.getKeyboardFocus();
+    if (actor == null || actor.isDescendantOf(this))     stage.setKeyboardFocus(previousKeyboardFocus);
+    if (previousScrollFocus != null && previousScrollFocus.getStage() == null)     previousScrollFocus=null;
+    actor=stage.getScrollFocus();
+    if (actor == null || actor.isDescendantOf(this))     stage.setScrollFocus(previousScrollFocus);
+  }
+  if (action != null) {
+    addCaptureListener(ignoreTouchDown);
+    addAction(sequence(action,Actions.removeListener(ignoreTouchDown,true),Actions.removeActor()));
+  }
+ else   remove();
+}

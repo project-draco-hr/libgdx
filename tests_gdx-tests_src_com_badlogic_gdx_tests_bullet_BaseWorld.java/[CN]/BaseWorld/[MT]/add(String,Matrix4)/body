@@ -1,0 +1,5 @@
+{
+  final T entity=constructors.get(type).construct(transform);
+  add(entity);
+  return entity;
+}

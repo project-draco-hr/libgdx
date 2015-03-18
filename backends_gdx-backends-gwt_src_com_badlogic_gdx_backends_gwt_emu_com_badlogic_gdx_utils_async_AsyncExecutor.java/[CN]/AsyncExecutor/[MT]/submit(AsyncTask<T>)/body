@@ -1,0 +1,10 @@
+{
+  T result=null;
+  try {
+    result=task.call();
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("Could not submit AsyncTask: " + t.getMessage(),t);
+  }
+  return new AsyncResult(result);
+}

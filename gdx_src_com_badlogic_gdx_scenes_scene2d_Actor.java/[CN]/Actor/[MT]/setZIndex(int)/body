@@ -1,8 +1,8 @@
 {
   if (index < 0)   throw new IllegalArgumentException("ZIndex cannot be < 0.");
-  Group parent=getParent();
+  Group parent=this.parent;
   if (parent == null)   return;
-  Array<Actor> children=parent.getChildren();
+  Array<Actor> children=parent.children;
   if (children.size == 1)   return;
   if (!children.removeValue(this,true))   return;
   if (index >= children.size)   children.add(this);

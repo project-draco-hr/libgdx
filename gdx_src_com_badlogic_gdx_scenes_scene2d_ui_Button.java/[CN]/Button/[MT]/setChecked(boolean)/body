@@ -2,9 +2,7 @@
   if (this.isChecked == isChecked)   return;
   if (buttonGroup != null && !buttonGroup.canCheck(this,isChecked))   return;
   this.isChecked=isChecked;
-  if (!isDisabled) {
-    ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
-    if (fire(changeEvent))     this.isChecked=!isChecked;
-    Pools.free(changeEvent);
-  }
+  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+  if (fire(changeEvent))   this.isChecked=!isChecked;
+  Pools.free(changeEvent);
 }

@@ -1,0 +1,8 @@
+{
+  if (parameter == null)   throw new RuntimeException("FreetypeFontParameter must be set in AssetManager#load to point at a TTF file!");
+  FreeTypeFontGenerator generator=manager.get(parameter.fontFileName + ".gen",FreeTypeFontGenerator.class);
+  FreeTypeBitmapFontData data=generator.generateData(parameter.fontParameters);
+  BitmapFont font=new BitmapFont(data,data.getTextureRegions(),false);
+  font.setOwnsTexture(true);
+  return font;
+}

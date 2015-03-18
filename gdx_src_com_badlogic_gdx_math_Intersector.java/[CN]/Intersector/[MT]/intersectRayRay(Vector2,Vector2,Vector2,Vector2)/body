@@ -1,0 +1,11 @@
+{
+  float difx=start2.x - start1.x;
+  float dify=start2.y - start1.y;
+  float d1xd2=direction1.x * direction2.y - direction1.y * direction2.x;
+  if (d1xd2 == 0.0f) {
+    return Float.POSITIVE_INFINITY;
+  }
+  float d2sx=direction2.x / d1xd2;
+  float d2sy=direction2.y / d1xd2;
+  return difx * d2sy - dify * d2sx;
+}

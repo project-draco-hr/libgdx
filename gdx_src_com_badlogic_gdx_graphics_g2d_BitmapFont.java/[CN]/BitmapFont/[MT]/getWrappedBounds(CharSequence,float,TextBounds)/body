@@ -1,21 +1,17 @@
 {
   if (wrapWidth <= 0)   wrapWidth=Integer.MAX_VALUE;
-  float down=this.data.down;
   int start=0;
   int numLines=0;
   int length=str.length();
   float maxWidth=0;
   while (start < length) {
     int newLine=BitmapFont.indexOf(str,'\n',start);
-    while (start < newLine) {
-      if (!BitmapFont.isWhitespace(str.charAt(start)))       break;
-      start++;
-    }
     int lineEnd=start + computeVisibleGlyphs(str,start,newLine,wrapWidth);
     int nextStart=lineEnd + 1;
     if (lineEnd < newLine) {
       while (lineEnd > start) {
         if (BitmapFont.isWhitespace(str.charAt(lineEnd)))         break;
+        if (isBreakChar(str.charAt(lineEnd - 1)))         break;
         lineEnd--;
       }
       if (lineEnd == start) {
@@ -24,6 +20,12 @@
       }
  else {
         nextStart=lineEnd;
+        while (nextStart < length) {
+          char c=str.charAt(nextStart);
+          if (!BitmapFont.isWhitespace(c))           break;
+          nextStart++;
+          if (c == '\n')           break;
+        }
         while (lineEnd > start) {
           if (!BitmapFont.isWhitespace(str.charAt(lineEnd - 1)))           break;
           lineEnd--;

@@ -1,0 +1,3 @@
+{
+  this(CollisionJNI.new_btCollisionDispatcher(btCollisionConfiguration.getCPtr(collisionConfiguration),collisionConfiguration),true);
+}

@@ -1,0 +1,5 @@
+{
+  Vec2 localAxis=joint.getLocalAxisA();
+  localAxisA.set(localAxis.x,localAxis.y);
+  return localAxisA;
+}

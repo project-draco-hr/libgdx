@@ -3,8 +3,7 @@
   this.deadzoneRadius=deadzoneRadius;
   knobPosition.set(getWidth() / 2f,getHeight() / 2f);
   setStyle(style);
-  setWidth(getPrefWidth());
-  setHeight(getPrefHeight());
+  setSize(getPrefWidth(),getPrefHeight());
   addListener(new InputListener(){
     @Override public boolean touchDown(    InputEvent event,    float x,    float y,    int pointer,    int button){
       if (touched)       return false;
@@ -17,7 +16,7 @@
     }
     @Override public void touchUp(    InputEvent event,    float x,    float y,    int pointer,    int button){
       touched=false;
-      calculatePositionAndValue(x,y,true);
+      calculatePositionAndValue(x,y,resetOnTouchUp);
     }
   }
 );

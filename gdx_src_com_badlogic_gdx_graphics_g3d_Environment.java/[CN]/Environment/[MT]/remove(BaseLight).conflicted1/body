@@ -1,0 +1,7 @@
+{
+  if (light instanceof DirectionalLight)   directionalLights.removeValue((DirectionalLight)light,false);
+ else   if (light instanceof PointLight)   pointLights.removeValue((PointLight)light,false);
+ else   if (light instanceof SpotLight)   spotLights.removeValue((SpotLight)light,false);
+ else   throw new GdxRuntimeException("Unknown light type");
+  return this;
+}

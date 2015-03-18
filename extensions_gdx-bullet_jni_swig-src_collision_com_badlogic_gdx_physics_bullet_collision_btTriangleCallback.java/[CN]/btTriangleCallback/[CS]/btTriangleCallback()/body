@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_btTriangleCallback(),true);
+  CollisionJNI.btTriangleCallback_director_connect(this,swigCPtr,swigCMemOwn,true);
+}

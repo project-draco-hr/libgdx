@@ -1,4 +1,5 @@
 {
-  layout.top();
+  align|=Align.top;
+  align&=~Align.bottom;
   return this;
 }

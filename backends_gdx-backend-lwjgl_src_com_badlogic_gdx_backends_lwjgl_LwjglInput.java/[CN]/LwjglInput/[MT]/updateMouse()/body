@@ -4,13 +4,15 @@
     int events=0;
     while (Mouse.next()) {
       events++;
-      int x=Mouse.getEventX();
-      int y=Gdx.graphics.getHeight() - Mouse.getEventY() - 1;
+      int x=(int)(Mouse.getEventX() * Display.getPixelScaleFactor());
+      int y=Gdx.graphics.getHeight() - (int)(Mouse.getEventY() * Display.getPixelScaleFactor()) - 1;
       int button=Mouse.getEventButton();
+      int gdxButton=toGdxButton(button);
+      if (button != -1 && gdxButton == -1)       continue;
       TouchEvent event=usedTouchEvents.obtain();
       event.x=x;
       event.y=y;
-      event.button=toGdxButton(button);
+      event.button=gdxButton;
       event.pointer=0;
       event.timeStamp=Mouse.getEventNanoseconds();
       if (button == -1) {
@@ -18,7 +20,7 @@
           event.type=TouchEvent.TOUCH_SCROLLED;
           event.scrollAmount=(int)-Math.signum(Mouse.getEventDWheel());
         }
- else         if (pressedButtons.size() > 0) {
+ else         if (pressedButtons.size > 0) {
           event.type=TouchEvent.TOUCH_DRAGGED;
         }
  else {
@@ -39,8 +41,8 @@
       touchEvents.add(event);
       mouseX=event.x;
       mouseY=event.y;
-      deltaX=Mouse.getEventDX();
-      deltaY=Mouse.getEventDY();
+      deltaX=(int)(Mouse.getEventDX() * Display.getPixelScaleFactor());
+      deltaY=(int)(Mouse.getEventDY() * Display.getPixelScaleFactor());
     }
     if (events == 0) {
       deltaX=0;

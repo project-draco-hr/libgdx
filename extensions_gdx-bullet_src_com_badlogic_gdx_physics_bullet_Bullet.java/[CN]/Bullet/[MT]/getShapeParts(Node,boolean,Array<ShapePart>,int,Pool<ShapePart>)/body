@@ -1,0 +1,32 @@
+{
+  final Matrix4 transform=applyTransform ? node.localTransform : idt;
+  if (node.parts.size > 0) {
+    ShapePart part=null;
+    for (int i=offset, n=out.size; i < n; i++) {
+      final ShapePart p=out.get(i);
+      if (Arrays.equals(p.transform.val,transform.val)) {
+        part=p;
+        break;
+      }
+    }
+    if (part == null) {
+      part=pool.obtain();
+      part.parts.clear();
+      part.transform.set(transform);
+      out.add(part);
+    }
+    for (int i=0, n=node.parts.size; i < n; i++)     part.parts.add(node.parts.get(i).meshPart);
+  }
+  if (node.hasChildren()) {
+    final boolean transformed=applyTransform && !Arrays.equals(transform.val,idt.val);
+    final int o=transformed ? out.size : offset;
+    getShapeParts(node.getChildren(),out,o,pool);
+    if (transformed) {
+      for (int i=o, n=out.size; i < n; i++) {
+        final ShapePart part=out.get(i);
+        tmpM.set(part.transform);
+        part.transform.set(transform).mul(tmpM);
+      }
+    }
+  }
+}

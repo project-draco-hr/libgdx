@@ -1,0 +1,32 @@
+{
+  assert(m_world.isLocked() == false);
+  if (m_world.isLocked() == true) {
+    return;
+  }
+  if (m_type != BodyType.DYNAMIC) {
+    return;
+  }
+  m_invMass=0.0f;
+  m_I=0.0f;
+  m_invI=0.0f;
+  m_mass=massData.mass;
+  if (m_mass <= 0.0f) {
+    m_mass=1f;
+  }
+  m_invMass=1.0f / m_mass;
+  if (massData.I > 0.0f && (m_flags & e_fixedRotationFlag) == 0) {
+    m_I=massData.I - m_mass * Vec2.dot(massData.center,massData.center);
+    assert(m_I > 0.0f);
+    m_invI=1.0f / m_I;
+  }
+  final Vec2 oldCenter=m_world.getPool().popVec2();
+  oldCenter.set(m_sweep.c);
+  m_sweep.localCenter.set(massData.center);
+  Transform.mulToOutUnsafe(m_xf,m_sweep.localCenter,m_sweep.c0);
+  m_sweep.c.set(m_sweep.c0);
+  final Vec2 temp=m_world.getPool().popVec2();
+  temp.set(m_sweep.c).subLocal(oldCenter);
+  Vec2.crossToOut(m_angularVelocity,temp,temp);
+  m_linearVelocity.addLocal(temp);
+  m_world.getPool().pushVec2(2);
+}

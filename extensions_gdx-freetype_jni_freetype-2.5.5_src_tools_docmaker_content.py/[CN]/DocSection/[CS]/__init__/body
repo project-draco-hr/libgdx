@@ -1,0 +1,10 @@
+def __init__(self, name='Other'):
+    self.name = name
+    self.blocks = {}
+    self.block_names = []
+    self.defs = []
+    self.abstract = ''
+    self.description = ''
+    self.order = []
+    self.title = 'ERROR'
+    self.chapter = None

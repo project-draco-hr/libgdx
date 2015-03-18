@@ -1,0 +1,5 @@
+{
+  super(set);
+  items=new Array(capacity);
+  items.addAll(set.items);
+}
