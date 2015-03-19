@@ -1,4 +1,5 @@
 {
+  if (start == end)   return -1;
   Pool<Color> pool=Pools.get(Color.class);
 switch (str.charAt(start)) {
 case '#':
