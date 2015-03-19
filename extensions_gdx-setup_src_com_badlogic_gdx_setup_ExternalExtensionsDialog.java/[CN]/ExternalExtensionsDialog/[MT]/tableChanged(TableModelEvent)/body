@@ -14,15 +14,4 @@
       mainDependencies.remove(dep);
     }
   }
-  if (column == 5) {
-    URI uri=((ExtensionTableModel)table.getModel()).getURI(row,column);
-    if (uri != null) {
-      try {
-        Desktop.getDesktop().browse(uri);
-      }
- catch (      IOException e1) {
-        e1.printStackTrace();
-      }
-    }
-  }
 }

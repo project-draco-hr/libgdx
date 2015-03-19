@@ -26,6 +26,24 @@
   table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
   table.getTableHeader().setReorderingAllowed(false);
   table.getModel().addTableModelListener(this);
+  table.addMouseListener(new MouseAdapter(){
+    public void mouseClicked(    MouseEvent e){
+      int row=table.getSelectedRow();
+      int column=table.getSelectedColumn();
+      if (column == 5) {
+        URI uri=((ExtensionTableModel)table.getModel()).getURI(row,column);
+        if (uri != null) {
+          try {
+            Desktop.getDesktop().browse(uri);
+          }
+ catch (          IOException e1) {
+            e1.printStackTrace();
+          }
+        }
+      }
+    }
+  }
+);
   scrollPane=new JScrollPane(table);
   bottomPanel=new JPanel(new GridBagLayout());
   buttonPanel=new JPanel(new GridBagLayout());
