@@ -1,0 +1,28 @@
+{
+  int row=e.getFirstRow();
+  int column=e.getColumn();
+  if (column == 0) {
+    ExternalExtension extension=((ExtensionTableModel)table.getModel()).getExtension(row);
+    Dependency dep=extension.generateDependency();
+    boolean selected=(Boolean)table.getModel().getValueAt(row,0);
+    if (selected) {
+      if (!mainDependencies.contains(dep)) {
+        mainDependencies.add(dep);
+      }
+    }
+ else {
+      mainDependencies.remove(dep);
+    }
+  }
+  if (column == 5) {
+    URI uri=((ExtensionTableModel)table.getModel()).getURI(row,column);
+    if (uri != null) {
+      try {
+        Desktop.getDesktop().browse(uri);
+      }
+ catch (      IOException e1) {
+        e1.printStackTrace();
+      }
+    }
+  }
+}
