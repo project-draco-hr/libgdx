@@ -1,6 +1,0 @@
-{
-  cache.clear();
-  TextBounds bounds=cache.addWrappedText(str,x,y,wrapWidth,alignment);
-  cache.draw(batch);
-  return bounds;
-}

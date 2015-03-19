@@ -2,7 +2,7 @@
   int y=10;
   float maxWidth=0;
   spriteBatch.setShader(null);
-  descriptionFont.drawMultiLine(spriteBatch,description,x,y);
+  descriptionFont.draw(spriteBatch,description,x,y);
   spriteBatch.flush();
   y+=10 + 2 * descriptionFont.getLineHeight();
   TextureFilter minFilter=linearFiltering ? TextureFilter.MipMapLinearNearest : TextureFilter.Nearest;

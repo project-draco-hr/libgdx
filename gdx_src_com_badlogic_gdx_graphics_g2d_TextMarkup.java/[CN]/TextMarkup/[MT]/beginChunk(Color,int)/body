@@ -1,8 +1,0 @@
-{
-  ColorChunk newChunk=colorChunkPool.obtain();
-  newChunk.color.set(color);
-  newChunk.start=start;
-  colorChunks.add(newChunk);
-  currentColorStack.add(lastColor);
-  lastColor=newChunk.color;
-}

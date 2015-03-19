@@ -2,7 +2,6 @@
   super.calculateOffsets();
   if (!this.text.equals(lastText)) {
     this.lastText=text;
-    BitmapFont.TextBounds bounds=new BitmapFont.TextBounds();
     BitmapFont font=style.font;
     float maxWidthLine=this.getWidth() - (style.background != null ? style.background.getLeftWidth() + style.background.getRightWidth() : 0);
     linesBreak.clear();
@@ -18,7 +17,7 @@
       }
  else {
         lastSpace=(continueCursor(i,0) ? lastSpace : i);
-        font.getBounds(text,lineStart,i + 1,bounds);
+        TextBounds bounds=font.getBounds(text.subSequence(lineStart,i + 1));
         if (bounds.width > maxWidthLine) {
           if (lineStart >= lastSpace) {
             lastSpace=i - 1;

@@ -42,9 +42,7 @@
  else {
         fileName=pageLine[2].substring(5,pageLine[2].length());
       }
-      String path=fontFile.parent().child(fileName).path().replaceAll("\\\\","/");
-      if (this.imagePath == null)       this.imagePath=path;
-      imagePaths[p]=path;
+      imagePaths[p]=fontFile.parent().child(fileName).path().replaceAll("\\\\","/");
     }
     descent=0;
     while (true) {

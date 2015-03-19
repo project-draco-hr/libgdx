@@ -1,6 +1,6 @@
 {
   cache.clear();
-  TextBounds bounds=cache.addText(str,x,y,0,str.length());
+  GlyphLayout layout=cache.addText(str,x,y);
   cache.draw(batch);
-  return bounds;
+  return layout;
 }

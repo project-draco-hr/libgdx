@@ -30,6 +30,6 @@
     }
     int numGlyphs=font.computeVisibleGlyphs(string,0,string.length(),width);
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,string,x,y,0,numGlyphs);
+    font.draw(batch,string,x,y,0,numGlyphs,0,Align.left,false);
   }
 }

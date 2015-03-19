@@ -7,13 +7,13 @@
   buttonTable.setPosition(width - buttonTable.getWidth(),Math.min(height - padTop,height - buttonTable.getHeight()));
   buttonTable.draw(batch,parentAlpha);
   y+=height;
-  TextBounds bounds=titleCache.getBounds();
+  GlyphLayout layout=titleCache.getLayouts().first();
   if ((titleAlignment & Align.left) != 0)   x+=getPadLeft();
- else   if ((titleAlignment & Align.right) != 0)   x+=width - bounds.width - getPadRight();
- else   x+=(width - bounds.width) / 2;
+ else   if ((titleAlignment & Align.right) != 0)   x+=width - layout.width - getPadRight();
+ else   x+=(width - layout.width) / 2;
   if ((titleAlignment & Align.top) == 0) {
-    if ((titleAlignment & Align.bottom) != 0)     y-=padTop - bounds.height;
- else     y-=(padTop - bounds.height) / 2;
+    if ((titleAlignment & Align.bottom) != 0)     y-=padTop - layout.height;
+ else     y-=(padTop - layout.height) / 2;
   }
   titleCache.tint(Color.tmp.set(getColor()).mul(style.titleFontColor));
   titleCache.setPosition((int)x,(int)y);

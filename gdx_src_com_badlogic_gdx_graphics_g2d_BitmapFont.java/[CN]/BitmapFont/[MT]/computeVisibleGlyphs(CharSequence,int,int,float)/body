@@ -6,7 +6,7 @@
   availableWidth/=data.scaleX;
   for (; index < end; index++) {
     char ch=str.charAt(index);
-    if (ch == '[' && markupEnabled) {
+    if (ch == '[' && data.markupEnabled) {
       index++;
       if (!(index < end && str.charAt(index) == '[')) {
         while (index < end && str.charAt(index) != ']')         index++;
