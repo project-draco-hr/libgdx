@@ -1,0 +1,6 @@
+{
+  GlyphLayout layout=Pools.obtain(GlyphLayout.class);
+  layout.setText(font,str,start,end,color,targetWidth,halign,wrap);
+  addText(layout,x,y);
+  return layout;
+}
