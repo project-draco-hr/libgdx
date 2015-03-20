@@ -74,7 +74,7 @@
           TiledMapTile tile=new StaticTiledMapTile(tileRegion);
           tile.setId(id);
           tile.setOffsetX(offsetX);
-          tile.setOffsetY(-offsetY);
+          tile.setOffsetY(flipY ? -offsetY : offsetY);
           tileset.putTile(id++,tile);
         }
       }
@@ -93,7 +93,7 @@
         TiledMapTile tile=new StaticTiledMapTile(texture);
         tile.setId(firstgid + tileElement.getIntAttribute("id"));
         tile.setOffsetX(offsetX);
-        tile.setOffsetY(-offsetY);
+        tile.setOffsetY(flipY ? -offsetY : offsetY);
         tileset.putTile(tile.getId(),tile);
       }
     }
