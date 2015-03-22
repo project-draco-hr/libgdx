@@ -1,15 +1,15 @@
 {
-  if (glyphIndices != null) {
-    if (glyphCount > glyphIndices[page].items.length)     glyphIndices[page].ensureCapacity(glyphCount - glyphIndices[page].items.length);
+  if (pageGlyphIndices != null) {
+    if (glyphCount > pageGlyphIndices[page].items.length)     pageGlyphIndices[page].ensureCapacity(glyphCount - pageGlyphIndices[page].items.length);
   }
   int vertexCount=idx[page] + glyphCount * 20;
-  float[] vertices=vertexData[page];
+  float[] vertices=pageVertices[page];
   if (vertices == null) {
-    vertexData[page]=new float[vertexCount];
+    pageVertices[page]=new float[vertexCount];
   }
  else   if (vertices.length < vertexCount) {
     float[] newVertices=new float[vertexCount];
     System.arraycopy(vertices,0,newVertices,0,idx[page]);
-    vertexData[page]=newVertices;
+    pageVertices[page]=newVertices;
   }
 }

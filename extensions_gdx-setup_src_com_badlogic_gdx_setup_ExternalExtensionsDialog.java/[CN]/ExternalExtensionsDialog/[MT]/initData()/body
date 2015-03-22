@@ -13,6 +13,10 @@
       String version=eElement.getElementsByTagName("version").item(0).getTextContent();
       String compatibility=eElement.getElementsByTagName("compatibility").item(0).getTextContent();
       String url=eElement.getElementsByTagName("website").item(0).getTextContent();
+      String[] gwtInherits=null;
+      NodeList inheritsNode=eElement.getElementsByTagName("inherit");
+      gwtInherits=new String[inheritsNode.getLength()];
+      for (int j=0; j < inheritsNode.getLength(); j++)       gwtInherits[j]=inheritsNode.item(j).getTextContent();
       final HashMap<String,List<String>> dependencies=new HashMap<String,List<String>>();
       addToDependencyMapFromXML(dependencies,eElement,"core");
       addToDependencyMapFromXML(dependencies,eElement,"desktop");
@@ -27,7 +31,7 @@
         e.printStackTrace();
       }
       if (uri != null) {
-        final ExternalExtension extension=new ExternalExtension(name,description,version);
+        final ExternalExtension extension=new ExternalExtension(name,gwtInherits,description,version);
         extension.setDependencies(dependencies);
         tableModel.addExtension(extension,false,name,description,version,compatibility,uri);
       }
