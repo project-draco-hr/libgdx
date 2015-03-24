@@ -19,7 +19,7 @@
   font.getData().markupEnabled=true;
   font.draw(spriteBatch,"[",100,60,100,Align.left,true);
   font.getData().markupEnabled=false;
-  String txt2="this font uses " + multiPageFont.getRegions().length + " texture pages: RpRpRpRpRpNM";
+  String txt2="this font uses " + multiPageFont.getRegions().size + " texture pages: RpRpRpRpRpNM";
   spriteBatch.renderCalls=0;
   multiPageFont.setColor(Color.BLUE);
   multiPageFont.draw(spriteBatch,txt2,10,100);

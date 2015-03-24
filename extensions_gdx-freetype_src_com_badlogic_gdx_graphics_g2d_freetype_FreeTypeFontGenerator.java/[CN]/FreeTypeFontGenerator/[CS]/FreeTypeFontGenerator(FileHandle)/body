@@ -1,11 +1,3 @@
 {
-  filePath=font.pathWithoutExtension();
-  library=FreeType.initFreeType();
-  if (library == null)   throw new GdxRuntimeException("Couldn't initialize FreeType");
-  face=library.newFace(font,0);
-  if (face == null)   throw new GdxRuntimeException("Couldn't create face for font '" + font + "'");
-  if (checkForBitmapFont()) {
-    return;
-  }
-  if (!face.setPixelSizes(0,15))   throw new GdxRuntimeException("Couldn't set size for font '" + font + "'");
+  this(font,font.name().endsWith(".gz") ? 0 : (int)font.length());
 }

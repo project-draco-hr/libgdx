@@ -3,7 +3,7 @@
     spriteBatch.draw(font.getRegion().getTexture(),pageVertices[0],start * 20,(end - start) * 20);
     return;
   }
-  TextureRegion[] regions=font.getRegions();
+  Array<TextureRegion> regions=font.getRegions();
   for (int i=0, pageCount=pageVertices.length; i < pageCount; i++) {
     int offset=-1, count=0;
     IntArray glyphIndices=pageGlyphIndices[i];
@@ -14,6 +14,6 @@
       if (glyphIndex >= start)       count++;
     }
     if (offset == -1 || count == 0)     continue;
-    spriteBatch.draw(regions[i].getTexture(),pageVertices[i],offset * 20,count * 20);
+    spriteBatch.draw(regions.get(i).getTexture(),pageVertices[i],offset * 20,count * 20);
   }
 }
