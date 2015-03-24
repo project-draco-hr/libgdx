@@ -1,8 +1,0 @@
-{
-  Pool<GlyphLayout> pool=Pools.get(GlyphLayout.class);
-  GlyphLayout layout=pool.obtain();
-  layout.setText(this,str);
-  bounds.width=layout.width;
-  bounds.height=layout.height;
-  return bounds;
-}

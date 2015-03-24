@@ -48,7 +48,7 @@ float xAdvance=run.xAdvances.get(i);
 x+=xAdvance;
 if (wrap && x > targetWidth && i > 0) {
 if (truncate != null) {
-  truncate(fontData,run,targetWidth,truncate,i);
+  truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
   break outer;
 }
 GlyphRun next=glyphRunPool.obtain();
