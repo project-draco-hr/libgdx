@@ -9,6 +9,6 @@
   if (pageCount > 1) {
     pageGlyphIndices=new IntArray[pageCount];
     for (int i=0, n=pageGlyphIndices.length; i < n; i++)     pageGlyphIndices[i]=new IntArray();
-    tempGlyphCount=new int[pageCount];
   }
+  tempGlyphCount=new int[pageCount];
 }

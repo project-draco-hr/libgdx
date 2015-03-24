@@ -1,0 +1,41 @@
+{
+  if (start == end)   return -1;
+  Pool<Color> pool=Pools.get(Color.class);
+switch (str.charAt(start)) {
+case '#':
+    int colorInt=0;
+  for (int i=start + 1; i < end; i++) {
+    char ch=str.charAt(i);
+    if (ch == ']') {
+      if (i < start + 2 || i > start + 9)       break;
+      Color color=pool.obtain();
+      colorStack.add(color);
+      Color.rgb888ToColor(color,colorInt);
+      if (i <= start + 7)       color.a=1f;
+      return i - start;
+    }
+    if (ch >= '0' && ch <= '9')     colorInt=colorInt * 16 + (ch - '0');
+ else     if (ch >= 'a' && ch <= 'f')     colorInt=colorInt * 16 + (ch - ('a' - 10));
+ else     if (ch >= 'A' && ch <= 'F')     colorInt=colorInt * 16 + (ch - ('A' - 10));
+ else     break;
+  }
+return -1;
+case '[':
+return -1;
+case ']':
+if (colorStack.size > 1) pool.free(colorStack.pop());
+return 0;
+}
+int colorStart=start;
+for (int i=start + 1; i < end; i++) {
+char ch=str.charAt(i);
+if (ch != ']') continue;
+Color namedColor=Colors.get(str.subSequence(colorStart,i).toString());
+if (namedColor == null) return -1;
+Color color=pool.obtain();
+colorStack.add(color);
+color.set(namedColor);
+return i - start;
+}
+return -1;
+}

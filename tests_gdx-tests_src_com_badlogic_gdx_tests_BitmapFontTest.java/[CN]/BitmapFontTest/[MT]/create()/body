@@ -5,10 +5,10 @@
   Colors.put("PERU",Color.valueOf("CD853F"));
   renderer=new ShapeRenderer();
   renderer.setProjectionMatrix(spriteBatch.getProjectionMatrix());
-  stage=new Stage();
+  stage=new Stage(new ScreenViewport());
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   BitmapFont labelFont=skin.get("default-font",BitmapFont.class);
-  labelFont.setMarkupEnabled(true);
+  labelFont.getData().markupEnabled=true;
   Label label=new Label("<<[BLUE]M[RED]u[YELLOW]l[GREEN]t[OLIVE]ic[]o[]l[]o[]r[]*[MAROON]Label[][] [Unknown Color]>>",skin);
   label.setPosition(100,200);
   stage.addActor(label);

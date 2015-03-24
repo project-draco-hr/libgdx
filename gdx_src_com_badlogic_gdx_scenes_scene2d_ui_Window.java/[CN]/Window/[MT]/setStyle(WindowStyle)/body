@@ -3,7 +3,7 @@
   this.style=style;
   setBackground(style.background);
   titleCache=new BitmapFontCache(style.titleFont);
-  titleCache.setColor(style.titleFontColor);
+  titleCache.getColor().set(style.titleFontColor);
   if (title != null)   setTitle(title);
   invalidateHierarchy();
 }

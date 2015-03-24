@@ -20,7 +20,7 @@
   cache4=new BitmapFontCache(font);
   cache5=new BitmapFontCache(font);
   createCaches("cached",cache1,cache2,cache3,cache4,cache5);
-  font.setScale(1.33f);
+  font.getData().setScale(1.33f);
   cacheScaled1=new BitmapFontCache(font);
   cacheScaled2=new BitmapFontCache(font);
   cacheScaled3=new BitmapFontCache(font);

@@ -1,0 +1,7 @@
+{
+  Pool<GlyphRun> glyphRunPool=Pools.get(GlyphRun.class);
+  glyphRunPool.freeAll(runs);
+  runs.clear();
+  width=0;
+  height=0;
+}
