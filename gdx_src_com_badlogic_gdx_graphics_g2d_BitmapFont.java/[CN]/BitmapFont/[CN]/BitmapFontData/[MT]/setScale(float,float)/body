@@ -1,0 +1,15 @@
+{
+  if (scaleX == 0)   throw new IllegalArgumentException("scaleX cannot be 0.");
+  if (scaleY == 0)   throw new IllegalArgumentException("scaleY cannot be 0.");
+  float x=scaleX / scaleX;
+  float y=scaleY / scaleY;
+  lineHeight*=y;
+  spaceWidth*=x;
+  xHeight*=y;
+  capHeight*=y;
+  ascent*=y;
+  descent*=y;
+  down*=y;
+  this.scaleX=scaleX;
+  this.scaleY=scaleY;
+}

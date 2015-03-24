@@ -1,14 +1,15 @@
 {
   BitmapFont font=style.font;
+  BitmapFontData data=font.getData();
   String text=this.text;
   int textLength=text.length();
   StringBuilder buffer=new StringBuilder();
   for (int i=0; i < textLength; i++) {
     char c=text.charAt(i);
-    buffer.append(font.containsCharacter(c) ? c : ' ');
+    buffer.append(data.hasGlyph(c) ? c : ' ');
   }
   String newDisplayText=buffer.toString();
-  if (passwordMode && font.containsCharacter(passwordCharacter)) {
+  if (passwordMode && data.hasGlyph(passwordCharacter)) {
     if (passwordBuffer == null)     passwordBuffer=new StringBuilder(newDisplayText.length());
     if (passwordBuffer.length() > textLength)     passwordBuffer.setLength(textLength);
  else {

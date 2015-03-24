@@ -2,7 +2,7 @@
   BitmapFont font=cache.getFont();
   float oldScaleX=font.getScaleX();
   float oldScaleY=font.getScaleY();
-  if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(fontScaleX,fontScaleY);
+  if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(fontScaleX,fontScaleY);
   if (sizeInvalid)   computeSize();
   if (wrap) {
     float prefHeight=getPrefHeight();
@@ -36,5 +36,5 @@
   }
   layout.setText(font,text,0,text.length,Color.WHITE,(ellipsis && width < bounds.x) ? width : bounds.x,lineAlign,wrap,ellipsis ? "..." : null);
   cache.setText(layout,x,y);
-  if (fontScaleX != 1 || fontScaleY != 1)   font.setScale(oldScaleX,oldScaleY);
+  if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(oldScaleX,oldScaleY);
 }

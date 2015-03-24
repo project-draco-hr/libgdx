@@ -56,7 +56,7 @@
  else           font=new BitmapFont(fontFile,flip);
         }
         font.getData().markupEnabled=markupEnabled;
-        if (scaledSize != -1)         font.setScale(scaledSize / font.getCapHeight());
+        if (scaledSize != -1)         font.getData().setScale(scaledSize / font.getCapHeight());
         return font;
       }
  catch (      RuntimeException ex) {
