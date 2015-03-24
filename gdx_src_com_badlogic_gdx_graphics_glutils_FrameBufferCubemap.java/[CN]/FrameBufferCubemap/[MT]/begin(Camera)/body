@@ -1,9 +1,0 @@
-{
-  if (this.camera != null)   throw new GdxRuntimeException("Call end() first.");
-  this.camera=camera;
-  cameraDirectionCache.set(camera.direction);
-  cameraUpCache.set(camera.up);
-  nbSides=0;
-  bind();
-  setFrameBufferViewport();
-}
