@@ -1,7 +1,8 @@
 {
   if (element.getName().equals("imagelayer")) {
     int x=Integer.parseInt(element.getAttribute("x","0"));
-    int y=mapHeightInPixels - Integer.parseInt(element.getAttribute("y","0"));
+    int y=Integer.parseInt(element.getAttribute("y","0"));
+    if (flipY)     y=mapHeightInPixels - y;
     TextureRegion texture=null;
     Element image=element.getChildByName("image");
     if (image != null) {

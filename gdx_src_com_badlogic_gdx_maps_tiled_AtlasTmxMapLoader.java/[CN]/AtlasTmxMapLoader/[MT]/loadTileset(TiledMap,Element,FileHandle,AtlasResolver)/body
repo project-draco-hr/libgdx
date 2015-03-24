@@ -84,7 +84,7 @@
         int tileid=firstgid + region.index;
         tile.setId(tileid);
         tile.setOffsetX(offsetX);
-        tile.setOffsetY(-offsetY);
+        tile.setOffsetY(flipY ? -offsetY : offsetY);
         tileset.putTile(tileid,tile);
       }
     }
@@ -101,7 +101,7 @@
           tile=new StaticTiledMapTile(region);
           tile.setId(tileid);
           tile.setOffsetX(offsetX);
-          tile.setOffsetY(-offsetY);
+          tile.setOffsetY(flipY ? -offsetY : offsetY);
           tileset.putTile(tileid,tile);
         }
       }

@@ -18,7 +18,7 @@
         if (tile != null) {
           Cell cell=createTileLayerCell(flipHorizontally,flipVertically,flipDiagonally);
           cell.setTile(tile);
-          layer.setCell(x,height - 1 - y,cell);
+          layer.setCell(x,flipY ? height - 1 - y : y,cell);
         }
       }
     }

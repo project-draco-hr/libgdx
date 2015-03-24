@@ -1,0 +1,16 @@
+{
+  GL30 gl=Gdx.gl30;
+  if (vaoDirty || !gl.glIsVertexArray(vaoHandle)) {
+    tmpHandle.clear();
+    gl.glGenVertexArrays(1,tmpHandle);
+    vaoHandle=tmpHandle.get(0);
+    gl.glBindVertexArray(vaoHandle);
+    bindAttributes(shader,locations);
+    vaoDirty=false;
+  }
+ else {
+    gl.glBindVertexArray(vaoHandle);
+  }
+  bindData(gl);
+  isBound=true;
+}
