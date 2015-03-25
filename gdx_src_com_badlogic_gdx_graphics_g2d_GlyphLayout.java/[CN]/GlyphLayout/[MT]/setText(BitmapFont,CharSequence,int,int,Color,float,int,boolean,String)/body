@@ -10,6 +10,7 @@
   int lines=0;
   Color nextColor=color;
   colorStack.add(color);
+  Pool<Color> colorPool=Pools.get(Color.class);
   int runStart=start;
   outer:   while (true) {
     int runEnd=-1;
@@ -26,7 +27,7 @@ case '\n':
     break;
 case '[':
   if (markupEnabled) {
-    int length=parseColorMarkup(str,start,end);
+    int length=parseColorMarkup(str,start,end,colorPool);
     if (length >= 0) {
       runEnd=start - 1;
       start+=length + 1;
@@ -77,8 +78,7 @@ color=nextColor;
 }
 }
 width=Math.max(width,x);
-Pools.freeAll(colorStack,true);
-colorStack.clear();
+for (int i=1, n=colorStack.size; i < n; i++) colorPool.free(colorStack.get(i));
 if ((halign & Align.left) == 0) {
 boolean center=(halign & Align.center) != 0;
 float lineWidth=0, lineY=Integer.MIN_VALUE;
