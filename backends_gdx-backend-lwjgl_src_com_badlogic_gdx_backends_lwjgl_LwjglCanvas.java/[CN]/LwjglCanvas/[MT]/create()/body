@@ -21,6 +21,7 @@
       }
       try {
         Display.processMessages();
+        if (cursor != null)         canvas.setCursor(cursor);
         boolean shouldRender=false;
         int width=Math.max(1,graphics.getWidth());
         int height=Math.max(1,graphics.getHeight());
@@ -44,7 +45,6 @@
           listener.render();
           Display.update(false);
         }
-        canvas.setCursor(cursor);
         Display.sync(getFrameRate());
       }
  catch (      Throwable ex) {
