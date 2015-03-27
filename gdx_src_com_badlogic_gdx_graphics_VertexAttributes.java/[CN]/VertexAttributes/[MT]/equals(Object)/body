@@ -1,4 +1,5 @@
 {
+  if (obj == this)   return true;
   if (!(obj instanceof VertexAttributes))   return false;
   VertexAttributes other=(VertexAttributes)obj;
   if (this.attributes.length != other.size())   return false;
