@@ -79,6 +79,7 @@ color=nextColor;
 }
 width=Math.max(width,x);
 for (int i=1, n=colorStack.size; i < n; i++) colorPool.free(colorStack.get(i));
+colorStack.clear();
 if ((halign & Align.left) == 0) {
 boolean center=(halign & Align.center) != 0;
 float lineWidth=0, lineY=Integer.MIN_VALUE;
