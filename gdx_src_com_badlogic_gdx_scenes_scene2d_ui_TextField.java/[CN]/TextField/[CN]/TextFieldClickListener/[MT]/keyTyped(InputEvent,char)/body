@@ -1,6 +1,6 @@
 {
   if (disabled)   return false;
-  if (character == 0)   return false;
+  if (character < 32)   return false;
   Stage stage=getStage();
   if (stage == null || stage.getKeyboardFocus() != TextField.this)   return false;
   if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
