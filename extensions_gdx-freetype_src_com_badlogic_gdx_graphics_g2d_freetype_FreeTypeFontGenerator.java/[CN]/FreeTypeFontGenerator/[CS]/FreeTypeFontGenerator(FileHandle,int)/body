@@ -25,5 +25,5 @@
   face=library.newMemoryFace(buffer,0);
   if (face == null)   throw new GdxRuntimeException("Couldn't create face for font: " + font);
   if (checkForBitmapFont())   return;
-  if (!face.setPixelSizes(0,15))   throw new GdxRuntimeException("Couldn't set size for font: " + font);
+  setPixelSizes(0,15);
 }
