@@ -3,7 +3,7 @@
   String characters=parameter.characters;
   int charactersLength=characters.length();
   boolean incremental=parameter.incremental;
-  if (!bitmapped && !face.setPixelSizes(0,parameter.size))   throw new GdxRuntimeException("Couldn't set size for font");
+  setPixelSizes(0,parameter.size);
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   data.flipped=parameter.flip;
   data.ascent=FreeType.toInt(fontMetrics.getAscender());

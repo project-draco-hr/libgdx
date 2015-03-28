@@ -1,5 +1,5 @@
 {
-  if (!bitmapped && !face.setPixelSizes(0,size))   throw new GdxRuntimeException("Couldn't set size for font");
+  setPixelSizes(0,size);
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   int baseline=FreeType.toInt(fontMetrics.getAscender());
   if (face.getCharIndex(c) == 0) {
