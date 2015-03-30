@@ -1,6 +1,7 @@
 {
   PixmapPacker packer=new PixmapPacker(FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,Format.RGBA8888,2,false);
-  FontMap<BitmapFontData> dataMap=new FontMap<BitmapFontData>();
+  fontMap=new FontMap<BitmapFont>();
+  int fontCount=0;
   for (  FontStyle style : FontStyle.values()) {
     FreeTypeFontGenerator gen=new FreeTypeFontGenerator(Gdx.files.internal(style.path));
     for (    FontSize size : FontSize.values()) {
@@ -8,23 +9,12 @@
       fontParameter.size=size.size;
       fontParameter.packer=packer;
       fontParameter.characters=CHARACTERS;
-      BitmapFontData data=gen.generateData(fontParameter);
-      dataMap.get(style).put(size,data);
-    }
-    gen.dispose();
-  }
-  regions=new Array<TextureRegion>();
-  packer.updateTextureRegions(regions,TextureFilter.Nearest,TextureFilter.Nearest,false,true);
-  packer.dispose();
-  fontMap=new FontMap<BitmapFont>();
-  int fontCount=0;
-  for (  FontStyle style : FontStyle.values()) {
-    for (    FontSize size : FontSize.values()) {
-      BitmapFontData data=dataMap.get(style).get(size);
-      BitmapFont bmFont=new BitmapFont(data,regions,INTEGER);
+      BitmapFont bmFont=gen.generateFont(fontParameter);
       fontMap.get(style).put(size,bmFont);
       fontCount++;
     }
+    gen.dispose();
   }
+  atlas=packer.generateTextureAtlas(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,false);
   return fontCount * CHARACTERS.length();
 }

@@ -1,6 +1,10 @@
 {
   generateData(parameter,data);
+  if (data.regions == null && parameter.packer != null) {
+    data.regions=new Array<TextureRegion>();
+    parameter.packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps,false);
+  }
   BitmapFont font=new BitmapFont(data,data.regions,false);
-  font.setOwnsTexture(true);
+  font.setOwnsTexture(parameter.packer == null);
   return font;
 }

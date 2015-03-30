@@ -1,0 +1,10 @@
+{
+  page.texture=new Texture(new PixmapTextureData(page.image,page.image.getFormat(),useMipMaps,false,true)){
+    @Override public void dispose(){
+      super.dispose();
+      getTextureData().consumePixmap().dispose();
+    }
+  }
+;
+  page.texture.setFilter(minFilter,magFilter);
+}

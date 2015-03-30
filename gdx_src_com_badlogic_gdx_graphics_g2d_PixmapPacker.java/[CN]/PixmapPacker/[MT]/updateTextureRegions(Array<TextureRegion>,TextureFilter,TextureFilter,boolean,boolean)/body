@@ -1,0 +1,15 @@
+{
+  if (disposed)   return;
+  for (  Page page : pages) {
+    if (page.texture == null) {
+      generatePageTexture(page,minFilter,magFilter,useMipMaps);
+    }
+ else     if (refresh && page.textureNeedsRefresh) {
+      page.texture.load(page.texture.getTextureData());
+      page.textureNeedsRefresh=false;
+    }
+    if (textureRegions.size < pages.size) {
+      textureRegions.add(new TextureRegion(page.texture));
+    }
+  }
+}

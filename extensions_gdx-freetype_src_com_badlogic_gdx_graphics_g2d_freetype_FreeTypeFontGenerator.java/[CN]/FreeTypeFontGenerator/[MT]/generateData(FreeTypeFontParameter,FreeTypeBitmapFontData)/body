@@ -59,7 +59,6 @@
     ownsAtlas=true;
     packer=new PixmapPacker(size,size,Format.RGBA8888,2,false);
   }
-  String packPrefix=ownsAtlas ? "" : (name + '_' + parameter.size+ (parameter.flip ? "_flip_" : '_'));
   Stroker stroker=null;
   if (parameter.borderWidth > 0) {
     stroker=library.createStroker();
@@ -69,13 +68,12 @@
     data.generator=this;
     data.parameter=parameter;
     data.stroker=stroker;
-    data.packPrefix=packPrefix;
     data.packer=packer;
     data.glyphs=new Array(charactersLength + 32);
   }
   for (int i=0; i < charactersLength; i++) {
     char c=characters.charAt(i);
-    Glyph glyph=createGlyph(c,data,parameter,stroker,baseLine,packPrefix,packer);
+    Glyph glyph=createGlyph(c,data,parameter,stroker,baseLine,packer);
     if (glyph != null) {
       data.setGlyph(c,glyph);
       if (incremental)       data.glyphs.add(glyph);
@@ -101,9 +99,8 @@
     }
   }
   if (ownsAtlas) {
-    Array<Page> pages=packer.getPages();
-    data.regions=new Array(pages.size);
-    for (int i=0; i < pages.size; i++)     data.regions.add(createRegion(pages.get(i),parameter));
+    data.regions=new Array<TextureRegion>();
+    packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps,true);
   }
   return data;
 }

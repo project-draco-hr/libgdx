@@ -69,20 +69,12 @@
       }
     }
   }
-  String name=packPrefix + c;
-  Rectangle rect=packer.pack(name,mainPixmap);
-  int pageIndex=packer.getPageIndex(name);
-  if (pageIndex == -1)   throw new IllegalStateException("Packer was not able to insert glyph into a page: " + name);
-  glyph.page=pageIndex;
+  Rectangle rect=packer.packDirectToTexture(mainPixmap);
+  glyph.page=packer.getPages().size - 1;
   glyph.srcX=(int)rect.x;
   glyph.srcY=(int)rect.y;
-  if (data.regions != null) {
-    if (pageIndex >= data.regions.size)     data.regions.add(createRegion(packer.getPages().get(pageIndex),parameter));
- else {
-      Texture texture=data.regions.get(pageIndex).getTexture();
-      texture.bind();
-      Gdx.gl.glTexSubImage2D(texture.glTarget,0,glyph.srcX,glyph.srcY,glyph.width,glyph.height,mainPixmap.getGLFormat(),mainPixmap.getGLType(),mainPixmap.getPixels());
-    }
+  if (data.regions != null && data.regions.size <= glyph.page) {
+    packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps,false);
   }
   mainPixmap.dispose();
   mainGlyph.dispose();
