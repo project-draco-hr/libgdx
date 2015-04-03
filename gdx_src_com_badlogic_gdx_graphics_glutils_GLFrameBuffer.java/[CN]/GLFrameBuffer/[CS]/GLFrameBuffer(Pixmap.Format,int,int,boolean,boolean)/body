@@ -1,0 +1,9 @@
+{
+  this.width=width;
+  this.height=height;
+  this.format=format;
+  this.hasDepth=hasDepth;
+  this.hasStencil=hasStencil;
+  build();
+  addManagedFrameBuffer(Gdx.app,this);
+}
