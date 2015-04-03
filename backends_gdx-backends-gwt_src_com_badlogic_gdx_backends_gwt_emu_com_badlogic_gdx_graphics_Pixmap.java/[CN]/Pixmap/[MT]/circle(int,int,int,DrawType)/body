@@ -2,7 +2,7 @@
   if (blending == Blending.None) {
     context.setFillStyle(clearColor);
     context.setStrokeStyle(clearColor);
-    context.setGlobalCompositeOperation("clear");
+    context.setGlobalCompositeOperation("destination-out");
     context.beginPath();
     context.arc(x,y,radius,0,2 * Math.PI,false);
     fillOrStrokePath(drawType);
