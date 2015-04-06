@@ -1,0 +1,4 @@
+{
+  if (type != o.type)   return (int)(type - o.type);
+  return ((ColorAttribute)o).color.toIntBits() - color.toIntBits();
+}
