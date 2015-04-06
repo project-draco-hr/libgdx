@@ -1,14 +1,15 @@
 {
   float cos=(float)Math.cos(radians);
   float sin=(float)Math.sin(radians);
-  this.val[M00]=cos;
-  this.val[M10]=sin;
-  this.val[M20]=0;
-  this.val[M01]=-sin;
-  this.val[M11]=cos;
-  this.val[M21]=0;
-  this.val[M02]=0;
-  this.val[M12]=0;
-  this.val[M22]=1;
+  float[] val=this.val;
+  val[M00]=cos;
+  val[M10]=sin;
+  val[M20]=0;
+  val[M01]=-sin;
+  val[M11]=cos;
+  val[M21]=0;
+  val[M02]=0;
+  val[M12]=0;
+  val[M22]=1;
   return this;
 }
