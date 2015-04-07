@@ -1,0 +1,24 @@
+{
+  Glyph glyph=super.getGlyph(ch);
+  if (glyph == null && generator != null && ch != 0) {
+    generator.setPixelSizes(0,parameter.size);
+    glyph=generator.createGlyph(ch,this,parameter,stroker,(ascent + capHeight) / scaleY,packPrefix,packer);
+    if (glyph == null)     return null;
+    setGlyph(ch,glyph);
+    setGlyphRegion(glyph,regions.get(glyph.page));
+    glyphs.add(glyph);
+    if (parameter.kerning) {
+      Face face=generator.face;
+      int glyphIndex=face.getCharIndex(ch);
+      for (int i=0, n=glyphs.size; i < n; i++) {
+        Glyph other=glyphs.get(i);
+        int otherIndex=face.getCharIndex(other.id);
+        int kerning=face.getKerning(glyphIndex,otherIndex,0);
+        if (kerning != 0)         glyph.setKerning(other.id,FreeType.toInt(kerning));
+        kerning=face.getKerning(otherIndex,glyphIndex,0);
+        if (kerning != 0)         other.setKerning(ch,FreeType.toInt(kerning));
+      }
+    }
+  }
+  return glyph;
+}

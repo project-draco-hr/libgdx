@@ -8,7 +8,7 @@
   this.istart=0;
   this.part=null;
   this.stride=attributes.vertexSize / 4;
-  this.vertex=new float[stride];
+  if (this.vertex == null || this.vertex.length < stride)   this.vertex=new float[stride];
   VertexAttribute a=attributes.findByUsage(Usage.Position);
   if (a == null)   throw new GdxRuntimeException("Cannot build mesh without position attribute");
   posOffset=a.offset / 4;

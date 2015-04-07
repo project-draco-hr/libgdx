@@ -2,7 +2,7 @@
   if (blending == Blending.None) {
     context.setFillStyle(clearColor);
     context.setStrokeStyle(clearColor);
-    context.setGlobalCompositeOperation("clear");
+    context.setGlobalCompositeOperation("destination-out");
     context.beginPath();
     context.moveTo(x1,y1);
     context.lineTo(x2,y2);

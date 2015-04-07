@@ -1,0 +1,6 @@
+{
+  generateData(parameter,data);
+  BitmapFont font=new BitmapFont(data,data.regions,false);
+  font.setOwnsTexture(true);
+  return font;
+}

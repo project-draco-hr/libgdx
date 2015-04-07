@@ -1,6 +1,6 @@
 {
   for (  ProjectDependency projectDep : ProjectDependency.values()) {
-    Dependency dependency=new Dependency(projectDep.name(),projectDep.getGwtInehrits(),projectDep.getDependencies(ProjectType.CORE),projectDep.getDependencies(ProjectType.DESKTOP),projectDep.getDependencies(ProjectType.ANDROID),projectDep.getDependencies(ProjectType.IOS),projectDep.getDependencies(ProjectType.HTML));
+    Dependency dependency=new Dependency(projectDep.name(),projectDep.getGwtInherits(),projectDep.getDependencies(ProjectType.CORE),projectDep.getDependencies(ProjectType.DESKTOP),projectDep.getDependencies(ProjectType.ANDROID),projectDep.getDependencies(ProjectType.IOS),projectDep.getDependencies(ProjectType.HTML));
     gdxDependencies.put(projectDep,dependency);
   }
 }

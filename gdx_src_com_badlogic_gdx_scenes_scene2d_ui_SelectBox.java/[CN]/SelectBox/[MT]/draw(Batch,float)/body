@@ -18,18 +18,17 @@
   T selected=selection.first();
   if (selected != null) {
     String string=selected.toString();
-    bounds.set(font.getBounds(string));
     if (background != null) {
       width-=background.getLeftWidth() + background.getRightWidth();
       height-=background.getBottomHeight() + background.getTopHeight();
       x+=background.getLeftWidth();
-      y+=(int)(height / 2 + background.getBottomHeight() + bounds.height / 2);
+      y+=(int)(height / 2 + background.getBottomHeight() + font.getData().capHeight / 2);
     }
  else {
-      y+=(int)(height / 2 + bounds.height / 2);
+      y+=(int)(height / 2 + font.getData().capHeight / 2);
     }
-    int numGlyphs=font.computeVisibleGlyphs(string,0,string.length(),width);
     font.setColor(fontColor.r,fontColor.g,fontColor.b,fontColor.a * parentAlpha);
-    font.draw(batch,string,x,y,0,numGlyphs);
+    layout.setText(font,string,0,string.length(),Color.WHITE,width,Align.left,false,"...");
+    font.draw(batch,layout,x,y);
   }
 }

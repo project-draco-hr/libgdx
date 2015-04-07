@@ -1,0 +1,9 @@
+{
+  long result=texture.glTarget;
+  result=811 * result + texture.getTextureObjectHandle();
+  result=811 * result + minFilter.getGLEnum();
+  result=811 * result + magFilter.getGLEnum();
+  result=811 * result + uWrap.getGLEnum();
+  result=811 * result + vWrap.getGLEnum();
+  return (int)(result ^ (result >> 32));
+}

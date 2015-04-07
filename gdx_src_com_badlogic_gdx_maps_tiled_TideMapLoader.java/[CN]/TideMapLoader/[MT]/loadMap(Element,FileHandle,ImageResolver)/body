@@ -1,6 +1,6 @@
 {
   TiledMap map=new TiledMap();
-  Element properties=root.getChildByName("properties");
+  Element properties=root.getChildByName("Properties");
   if (properties != null) {
     loadProperties(map.getProperties(),properties);
   }

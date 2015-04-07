@@ -1,12 +1,3 @@
 {
-  if (this.attributes == null)   throw new RuntimeException("Call begin() first");
-  endpart();
-  part=new MeshPart();
-  part.id=id;
-  this.primitiveType=part.primitiveType=primitiveType;
-  parts.add(part);
-  setColor(null);
-  setVertexTransform(null);
-  setUVRange(null);
-  return part;
+  return part(id,primitiveType,new MeshPart());
 }

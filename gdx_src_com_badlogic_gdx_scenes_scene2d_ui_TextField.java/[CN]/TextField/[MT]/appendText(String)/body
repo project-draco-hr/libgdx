@@ -2,5 +2,5 @@
   if (str == null)   throw new IllegalArgumentException("text cannot be null.");
   clearSelection();
   cursor=text.length();
-  paste(str,onlyFontChars);
+  paste(str);
 }

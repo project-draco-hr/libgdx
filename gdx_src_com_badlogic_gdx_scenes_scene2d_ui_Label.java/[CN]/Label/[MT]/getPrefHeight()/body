@@ -1,6 +1,6 @@
 {
   if (sizeInvalid)   scaleAndComputeSize();
-  float height=bounds.height - style.font.getDescent() * 2;
+  float height=bounds.y - style.font.getDescent() * 2;
   Drawable background=style.background;
   if (background != null)   height+=background.getTopHeight() + background.getBottomHeight();
   return height;

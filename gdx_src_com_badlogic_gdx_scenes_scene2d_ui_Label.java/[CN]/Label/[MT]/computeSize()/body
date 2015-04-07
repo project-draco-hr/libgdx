@@ -3,7 +3,8 @@
   if (wrap) {
     float width=getWidth();
     if (style.background != null)     width-=style.background.getLeftWidth() + style.background.getRightWidth();
-    bounds.set(cache.getFont().getWrappedBounds(text,width));
+    layout.setText(cache.getFont(),text,Color.WHITE,width,Align.left,true);
   }
- else   bounds.set(cache.getFont().getMultiLineBounds(text));
+ else   layout.setText(cache.getFont(),text);
+  bounds.set(layout.width,layout.height);
 }

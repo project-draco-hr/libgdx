@@ -1,0 +1,5 @@
+{
+  if (type != o.type)   return type < o.type ? -1 : 1;
+  float otherValue=((TestAttribute)o).value;
+  return MathUtils.isEqual(value,otherValue) ? 0 : (value < otherValue ? -1 : 1);
+}

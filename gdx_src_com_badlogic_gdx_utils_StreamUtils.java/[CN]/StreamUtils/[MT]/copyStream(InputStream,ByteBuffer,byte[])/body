@@ -1,0 +1,10 @@
+{
+  int startPosition=output.position(), total=0, bytesRead;
+  while ((bytesRead=input.read(buffer)) != -1) {
+    BufferUtils.copy(buffer,0,output,bytesRead);
+    total+=bytesRead;
+    output.position(startPosition + total);
+  }
+  output.position(startPosition);
+  return total;
+}

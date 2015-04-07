@@ -6,7 +6,13 @@
   }
  else   prefHeight=font.getCapHeight() - font.getDescent() * 2;
   float maxItemWidth=0;
-  for (int i=0; i < items.size; i++)   maxItemWidth=Math.max(font.getBounds(items.get(i).toString()).width,maxItemWidth);
+  Pool<GlyphLayout> layoutPool=Pools.get(GlyphLayout.class);
+  GlyphLayout layout=layoutPool.obtain();
+  for (int i=0; i < items.size; i++) {
+    layout.setText(font,items.get(i).toString());
+    maxItemWidth=Math.max(layout.width,maxItemWidth);
+  }
+  layoutPool.free(layout);
   prefWidth=maxItemWidth;
   if (bg != null)   prefWidth+=bg.getLeftWidth() + bg.getRightWidth();
   ListStyle listStyle=style.listStyle;

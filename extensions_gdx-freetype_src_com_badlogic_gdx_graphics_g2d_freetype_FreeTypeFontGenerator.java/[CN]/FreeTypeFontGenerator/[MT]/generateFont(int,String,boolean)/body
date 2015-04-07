@@ -1,6 +1,6 @@
 {
   FreeTypeBitmapFontData data=generateData(size,characters,flip,null);
-  BitmapFont font=new BitmapFont(data,data.getTextureRegions(),false);
+  BitmapFont font=new BitmapFont(data,data.regions,false);
   font.setOwnsTexture(true);
   return font;
 }

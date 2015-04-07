@@ -1,4 +1,5 @@
 {
+  float[] val=this.val;
   float v00=val[M00] * m.val[M00] + val[M01] * m.val[M10] + val[M02] * m.val[M20];
   float v01=val[M00] * m.val[M01] + val[M01] * m.val[M11] + val[M02] * m.val[M21];
   float v02=val[M00] * m.val[M02] + val[M01] * m.val[M12] + val[M02] * m.val[M22];
