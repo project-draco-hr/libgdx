@@ -1,0 +1,17 @@
+{
+  int w=Gdx.graphics.getWidth();
+  int h=Gdx.graphics.getHeight();
+  int x=(int)(w - w * 0.5f);
+  int y=(int)(h - h * 0.5f);
+  w*=0.5f;
+  h*=0.5f;
+  Gdx.gl.glViewport(x,y,w,h);
+  Gdx.gl.glEnable(GL20.GL_SCISSOR_TEST);
+  Gdx.gl.glScissor(x,y,w,h);
+  Gdx.gl.glClearColor(1,1,1,1);
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+  cubeInstance.transform.rotate(Vector3.Y,45 * Gdx.graphics.getDeltaTime());
+  cubeBatch.begin(camCube);
+  cubeBatch.render(cubeInstance);
+  cubeBatch.end();
+}
