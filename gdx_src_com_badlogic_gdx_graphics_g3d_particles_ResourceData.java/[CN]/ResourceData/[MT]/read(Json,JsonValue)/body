@@ -7,6 +7,6 @@
   for (  SaveData saveData : data) {
     saveData.resources=this;
   }
-  sharedAssets.addAll(json.readValue("assets",AssetData[].class,jsonData));
+  sharedAssets.addAll(json.readValue("assets",Array.class,AssetData.class,jsonData));
   resource=json.readValue("resource",null,jsonData);
 }
