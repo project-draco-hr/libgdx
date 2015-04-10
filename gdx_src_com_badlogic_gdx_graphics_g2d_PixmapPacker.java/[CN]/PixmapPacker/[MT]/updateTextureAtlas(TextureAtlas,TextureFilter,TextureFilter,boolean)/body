@@ -7,13 +7,15 @@
  else {
         page.texture.load(page.texture.getTextureData());
       }
+      page.textureNeedsRefresh=false;
+    }
+    if (page.addedRects.size > 0) {
       for (      String name : page.addedRects) {
         Rectangle rect=page.rects.get(name);
         TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
         atlas.addRegion(name,region);
       }
       page.addedRects.clear();
-      page.textureNeedsRefresh=false;
     }
     atlas.getTextures().add(page.texture);
   }
