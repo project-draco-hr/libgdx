@@ -1,4 +1,8 @@
 {
+  empty=maxIndices == 0;
+  if (empty) {
+    maxIndices=1;
+  }
   byteBuffer=BufferUtils.newUnsafeByteBuffer(maxIndices * 2);
   buffer=byteBuffer.asShortBuffer();
   buffer.flip();
