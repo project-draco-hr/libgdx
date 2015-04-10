@@ -1,0 +1,3 @@
+{
+  this(CollisionJNI.new_btGImpactCollisionAlgorithm(btCollisionAlgorithmConstructionInfo.getCPtr(ci),ci,btCollisionObjectWrapper.getCPtr(body0Wrap),body0Wrap,btCollisionObjectWrapper.getCPtr(body1Wrap),body1Wrap),true);
+}

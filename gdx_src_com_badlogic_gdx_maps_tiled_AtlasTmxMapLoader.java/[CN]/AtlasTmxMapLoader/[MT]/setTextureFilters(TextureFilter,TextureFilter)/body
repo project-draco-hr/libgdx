@@ -2,4 +2,5 @@
   for (  Texture texture : trackedTextures) {
     texture.setFilter(min,mag);
   }
+  trackedTextures.clear();
 }

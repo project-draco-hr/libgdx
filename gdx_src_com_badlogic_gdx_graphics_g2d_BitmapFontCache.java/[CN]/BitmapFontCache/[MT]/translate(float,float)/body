@@ -6,8 +6,8 @@
   }
   x+=xAmount;
   y+=yAmount;
-  for (int j=0, length=vertexData.length; j < length; j++) {
-    float[] vertices=vertexData[j];
+  for (int j=0, length=pageVertices.length; j < length; j++) {
+    float[] vertices=pageVertices[j];
     for (int i=0, n=idx[j]; i < n; i+=5) {
       vertices[i]+=xAmount;
       vertices[i + 1]+=yAmount;

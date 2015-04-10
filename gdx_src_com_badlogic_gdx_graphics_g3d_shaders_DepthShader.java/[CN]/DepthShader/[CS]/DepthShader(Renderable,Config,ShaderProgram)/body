@@ -1,5 +1,6 @@
 {
   super(renderable,config,shaderProgram);
+  final Attributes attributes=combineAttributes(renderable);
   this.numBones=renderable.bones == null ? 0 : config.numBones;
   int w=0;
   final int n=renderable.mesh.getVertexAttributes().size();

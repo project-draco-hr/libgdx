@@ -1,7 +1,8 @@
 {
-  if (renderable.material.has(BlendingAttribute.Type)) {
-    if ((materialMask & BlendingAttribute.Type) != BlendingAttribute.Type)     return false;
-    if (renderable.material.has(TextureAttribute.Diffuse) != ((materialMask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse))     return false;
+  final Attributes attributes=combineAttributes(renderable);
+  if (attributes.has(BlendingAttribute.Type)) {
+    if ((attributesMask & BlendingAttribute.Type) != BlendingAttribute.Type)     return false;
+    if (attributes.has(TextureAttribute.Diffuse) != ((attributesMask & TextureAttribute.Diffuse) == TextureAttribute.Diffuse))     return false;
   }
   final boolean skinned=((renderable.mesh.getVertexAttributes().getMask() & Usage.BoneWeight) == Usage.BoneWeight);
   if (skinned != (numBones > 0))   return false;

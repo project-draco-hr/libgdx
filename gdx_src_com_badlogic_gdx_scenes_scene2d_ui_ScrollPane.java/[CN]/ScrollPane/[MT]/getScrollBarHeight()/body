@@ -1,3 +1,7 @@
 {
-  return style.hScrollKnob == null || !scrollX ? 0 : style.hScrollKnob.getMinHeight();
+  if (!scrollX)   return 0;
+  float height=0;
+  if (style.hScrollKnob != null)   height=style.hScrollKnob.getMinHeight();
+  if (style.hScroll != null)   height=Math.max(height,style.hScroll.getMinHeight());
+  return height;
 }

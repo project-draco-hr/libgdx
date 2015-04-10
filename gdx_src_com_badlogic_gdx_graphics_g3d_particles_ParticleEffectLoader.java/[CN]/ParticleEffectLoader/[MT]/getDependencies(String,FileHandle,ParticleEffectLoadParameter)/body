@@ -12,7 +12,7 @@ synchronized (items) {
   Array<AssetDescriptor> descriptors=new Array<AssetDescriptor>();
   for (  AssetData<?> assetData : assets) {
     if (!resolve(assetData.filename).exists()) {
-      assetData.filename=file.parent().child(Gdx.files.absolute(assetData.filename).name()).path();
+      assetData.filename=file.parent().child(Gdx.files.internal(assetData.filename).name()).path();
     }
     if (assetData.type == ParticleEffect.class) {
       descriptors.add(new AssetDescriptor(assetData.filename,assetData.type,parameter));

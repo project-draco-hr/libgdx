@@ -3,6 +3,6 @@
   if (str.equals(text))   return;
   clearSelection();
   text="";
-  paste(str,onlyFontChars);
+  paste(str);
   cursor=0;
 }

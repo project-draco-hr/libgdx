@@ -1,5 +1,5 @@
 {
   if (text != null)   this.text.append(text);
   setStyle(style);
-  setSize(getPrefWidth(),getPrefHeight());
+  if (text != null && text.length() > 0)   setSize(getPrefWidth(),getPrefHeight());
 }

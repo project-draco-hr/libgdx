@@ -2,7 +2,7 @@
   OutputStream output=null;
   try {
     output=write(append);
-    StreamUtils.copyStream(input,output,4096);
+    StreamUtils.copyStream(input,output);
   }
  catch (  Exception ex) {
     throw new GdxRuntimeException("Error stream writing to file: " + file + " ("+ type+ ")",ex);

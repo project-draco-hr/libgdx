@@ -1,6 +1,6 @@
 {
   float y=this.y;
-  if ((align & top) != 0)   y+=height;
- else   if ((align & bottom) == 0)   y+=height / 2;
+  if ((alignment & top) != 0)   y+=height;
+ else   if ((alignment & bottom) == 0)   y+=height / 2;
   return y;
 }

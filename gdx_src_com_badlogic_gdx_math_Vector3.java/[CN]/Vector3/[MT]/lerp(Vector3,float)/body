@@ -1,5 +1,6 @@
 {
-  scl(1.0f - alpha);
-  add(target.x * alpha,target.y * alpha,target.z * alpha);
+  x+=alpha * (target.x - x);
+  y+=alpha * (target.y - y);
+  z+=alpha * (target.z - z);
   return this;
 }

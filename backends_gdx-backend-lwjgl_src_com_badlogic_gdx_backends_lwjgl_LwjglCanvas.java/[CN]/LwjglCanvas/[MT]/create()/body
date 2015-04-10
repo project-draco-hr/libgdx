@@ -20,7 +20,9 @@
         return;
       }
       try {
-        graphics.updateTime();
+        Display.processMessages();
+        if (cursor != null || !isWindows)         canvas.setCursor(cursor);
+        boolean shouldRender=false;
         int width=Math.max(1,graphics.getWidth());
         int height=Math.max(1,graphics.getHeight());
         if (lastWidth != width || lastHeight != height) {
@@ -29,15 +31,20 @@
           Gdx.gl.glViewport(0,0,lastWidth,lastHeight);
           resize(width,height);
           listener.resize(width,height);
+          shouldRender=true;
         }
-        executeRunnables();
+        if (executeRunnables())         shouldRender=true;
+        if (!running)         return;
         input.update();
+        shouldRender|=graphics.shouldRender();
         input.processEvents();
-        graphics.frameId++;
-        listener.render();
         if (audio != null)         audio.update();
-        Display.update();
-        canvas.setCursor(cursor);
+        if (shouldRender) {
+          graphics.updateTime();
+          graphics.frameId++;
+          listener.render();
+          Display.update(false);
+        }
         Display.sync(getFrameRate());
       }
  catch (      Throwable ex) {

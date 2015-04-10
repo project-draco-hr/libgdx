@@ -4,7 +4,7 @@
     final Node node=nodes.get(i);
     for (    final String nodeId : nodeIds) {
       if (nodeId.equals(node.id)) {
-        this.nodes.add(copyNode(null,node));
+        this.nodes.add(copyNode(node));
         break;
       }
     }

@@ -1,0 +1,7 @@
+{
+  Sprite sprite;
+  if (region instanceof AtlasRegion)   sprite=new AtlasSprite((AtlasRegion)region);
+ else   sprite=new Sprite(region);
+  sprite.setColor(tint);
+  return new SpriteDrawable(sprite);
+}

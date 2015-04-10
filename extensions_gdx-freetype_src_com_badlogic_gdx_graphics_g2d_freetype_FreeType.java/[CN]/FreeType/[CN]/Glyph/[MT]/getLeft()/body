@@ -1,0 +1,6 @@
+{
+  if (!rendered) {
+    throw new GdxRuntimeException("Glyph is not yet rendered");
+  }
+  return getLeft(address);
+}

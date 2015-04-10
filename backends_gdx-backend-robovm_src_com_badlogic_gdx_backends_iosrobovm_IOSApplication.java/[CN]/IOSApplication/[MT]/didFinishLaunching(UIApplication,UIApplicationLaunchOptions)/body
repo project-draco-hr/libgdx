@@ -3,6 +3,7 @@
   this.uiApp=uiApp;
   UIApplication.getSharedApplication().setIdleTimerDisabled(config.preventScreenDimming);
   Gdx.app.debug("IOSApplication","iOS version: " + UIDevice.getCurrentDevice().getSystemVersion());
+  Gdx.app.debug("IOSApplication","Running in " + (Bro.IS_64BIT ? "64-bit" : "32-bit") + " mode");
   float scale=(float)(getIosVersion() >= 8 ? UIScreen.getMainScreen().getNativeScale() : UIScreen.getMainScreen().getScale());
   if (scale >= 2.0f) {
     Gdx.app.debug("IOSApplication","scale: " + scale);

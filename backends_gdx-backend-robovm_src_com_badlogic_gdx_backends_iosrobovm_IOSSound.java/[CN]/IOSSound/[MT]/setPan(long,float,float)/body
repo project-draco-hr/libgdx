@@ -1,2 +1,7 @@
 {
+  ALSource source;
+  if ((source=getSoundSource(soundId)) != null) {
+    source.setPan(pan);
+    source.setVolume(volume);
+  }
 }

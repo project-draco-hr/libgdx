@@ -1,6 +1,0 @@
-{
-  cache.clear();
-  TextBounds bounds=cache.addText(str,x,y,start,end);
-  cache.draw(batch);
-  return bounds;
-}

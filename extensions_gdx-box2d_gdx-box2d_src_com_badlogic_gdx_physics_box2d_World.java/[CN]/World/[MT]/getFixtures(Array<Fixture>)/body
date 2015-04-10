@@ -1,0 +1,7 @@
+{
+  fixtures.clear();
+  fixtures.ensureCapacity(this.fixtures.size);
+  for (Iterator<Fixture> iter=this.fixtures.values(); iter.hasNext(); ) {
+    fixtures.add(iter.next());
+  }
+}

@@ -1,4 +1,4 @@
 {
-  FreeType.doneFace(face);
-  FreeType.doneFreeType(library);
+  face.dispose();
+  library.dispose();
 }

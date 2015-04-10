@@ -5,6 +5,7 @@
   updatePpi();
   Mesh.invalidateAllMeshes(app);
   Texture.invalidateAllTextures(app);
+  Cubemap.invalidateAllCubemaps(app);
   ShaderProgram.invalidateAllShaderPrograms(app);
   FrameBuffer.invalidateAllFrameBuffers(app);
   logManagedCachesStatus();

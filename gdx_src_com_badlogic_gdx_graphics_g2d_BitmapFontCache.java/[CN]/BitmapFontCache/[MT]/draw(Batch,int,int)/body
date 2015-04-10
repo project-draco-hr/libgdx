@@ -1,21 +1,19 @@
 {
-  if (vertexData.length == 1) {
-    spriteBatch.draw(font.getRegion().getTexture(),vertexData[0],start * 20,(end - start) * 20);
+  if (pageVertices.length == 1) {
+    spriteBatch.draw(font.getRegion().getTexture(),pageVertices[0],start * 20,(end - start) * 20);
+    return;
   }
- else {
-    TextureRegion[] regions=font.getRegions();
-    for (int i=0, pageCount=vertexData.length; i < pageCount; i++) {
-      int offset=-1;
-      int count=0;
-      IntArray currentGlyphIndices=glyphIndices[i];
-      for (int j=0, n=currentGlyphIndices.size; j < n; j++) {
-        int glyphIndex=currentGlyphIndices.items[j];
-        if (glyphIndex >= end)         break;
-        if (offset == -1 && glyphIndex >= start)         offset=j;
-        if (glyphIndex >= start)         count++;
-      }
-      if (offset == -1 || count == 0)       continue;
-      spriteBatch.draw(regions[i].getTexture(),vertexData[i],offset * 20,count * 20);
+  Array<TextureRegion> regions=font.getRegions();
+  for (int i=0, pageCount=pageVertices.length; i < pageCount; i++) {
+    int offset=-1, count=0;
+    IntArray glyphIndices=pageGlyphIndices[i];
+    for (int ii=0, n=glyphIndices.size; ii < n; ii++) {
+      int glyphIndex=glyphIndices.get(ii);
+      if (glyphIndex >= end)       break;
+      if (offset == -1 && glyphIndex >= start)       offset=ii;
+      if (glyphIndex >= start)       count++;
     }
+    if (offset == -1 || count == 0)     continue;
+    spriteBatch.draw(regions.get(i).getTexture(),pageVertices[i],offset * 20,count * 20);
   }
 }

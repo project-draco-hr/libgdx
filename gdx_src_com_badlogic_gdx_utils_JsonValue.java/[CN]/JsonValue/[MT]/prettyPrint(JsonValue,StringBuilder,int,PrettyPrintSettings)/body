@@ -1,6 +1,7 @@
 {
+  OutputType outputType=settings.outputType;
   if (object.isObject()) {
-    if (object.child() == null) {
+    if (object.child == null) {
       buffer.append("{}");
     }
  else {
@@ -9,12 +10,12 @@
       outer:       while (true) {
         buffer.append(newLines ? "{\n" : "{ ");
         int i=0;
-        for (JsonValue child=object.child(); child != null; child=child.next()) {
+        for (JsonValue child=object.child; child != null; child=child.next) {
           if (newLines)           indent(indent,buffer);
-          buffer.append(settings.outputType.quoteName(child.name()));
+          buffer.append(outputType.quoteName(child.name));
           buffer.append(": ");
           prettyPrint(child,buffer,indent + 1,settings);
-          if (child.next() != null)           buffer.append(",");
+          if ((!newLines || outputType != OutputType.minimal) && child.next != null)           buffer.append(',');
           buffer.append(newLines ? '\n' : ' ');
           if (!newLines && buffer.length() - start > settings.singleLineColumns) {
             buffer.setLength(start);
@@ -29,7 +30,7 @@
     }
   }
  else   if (object.isArray()) {
-    if (object.child() == null) {
+    if (object.child == null) {
       buffer.append("[]");
     }
  else {
@@ -38,10 +39,10 @@
       int start=buffer.length();
       outer:       while (true) {
         buffer.append(newLines ? "[\n" : "[ ");
-        for (JsonValue child=object.child(); child != null; child=child.next()) {
+        for (JsonValue child=object.child; child != null; child=child.next) {
           if (newLines)           indent(indent,buffer);
           prettyPrint(child,buffer,indent + 1,settings);
-          if (child.next() != null)           buffer.append(",");
+          if ((!newLines || outputType != OutputType.minimal) && child.next != null)           buffer.append(',');
           buffer.append(newLines ? '\n' : ' ');
           if (wrap && !newLines && buffer.length() - start > settings.singleLineColumns) {
             buffer.setLength(start);
@@ -56,7 +57,7 @@
     }
   }
  else   if (object.isString()) {
-    buffer.append(settings.outputType.quoteValue(object.asString()));
+    buffer.append(outputType.quoteValue(object.asString()));
   }
  else   if (object.isDouble()) {
     double doubleValue=object.asDouble();

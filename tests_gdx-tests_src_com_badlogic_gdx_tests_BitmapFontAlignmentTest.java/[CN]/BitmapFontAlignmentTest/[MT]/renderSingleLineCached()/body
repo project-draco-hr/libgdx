@@ -4,10 +4,10 @@
   float y=logoSprite.getY();
   float width=logoSprite.getWidth();
   float height=logoSprite.getHeight();
-  TextBounds bounds=cache.setMultiLineText(text,0,0);
+  GlyphLayout layout=cache.setText(text,0,0);
   cache.setColors(Color.BLUE,1,4);
-  x+=width / 2 - bounds.width / 2;
-  y+=height / 2 + bounds.height / 2;
+  x+=width / 2 - layout.width / 2;
+  y+=height / 2 + layout.height / 2;
   cache.setPosition(x,y);
   cache.draw(spriteBatch);
 }

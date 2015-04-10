@@ -9,10 +9,10 @@ case stringValue:
       v=value.stringValue;
     break;
 case doubleValue:
-  v=Double.toString(value.doubleValue);
+  v=stringValue != null ? stringValue : Double.toString(value.doubleValue);
 break;
 case longValue:
-v=Long.toString(value.longValue);
+v=stringValue != null ? stringValue : Long.toString(value.longValue);
 break;
 case booleanValue:
 v=value.longValue != 0 ? "true" : "false";

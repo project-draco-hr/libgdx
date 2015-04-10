@@ -1,0 +1,4 @@
+{
+  if (isBound)   throw new GdxRuntimeException("Cannot change usage while VBO is bound");
+  usage=value;
+}

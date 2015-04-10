@@ -1,5 +1,5 @@
 {
   if (ownsTexture) {
-    for (int i=0; i < regions.length; i++)     regions[i].getTexture().dispose();
+    for (int i=0; i < regions.size; i++)     regions.get(i).getTexture().dispose();
   }
 }

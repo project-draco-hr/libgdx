@@ -1,3 +1,4 @@
 {
-  context.drawImage(pixmap.getCanvasElement(),srcx,srcy,srcWidth,srcHeight,x,y,srcWidth,srcHeight);
+  CanvasElement image=pixmap.getCanvasElement();
+  image(image,srcx,srcy,srcWidth,srcHeight,x,y,srcWidth,srcHeight);
 }

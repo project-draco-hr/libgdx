@@ -1,5 +1,5 @@
 {
   if (logLevel >= LOG_DEBUG) {
-    Foundation.log("[debug] " + tag + ": "+ message);
+    Foundation.log("%@",new NSString("[debug] " + tag + ": "+ message));
   }
 }

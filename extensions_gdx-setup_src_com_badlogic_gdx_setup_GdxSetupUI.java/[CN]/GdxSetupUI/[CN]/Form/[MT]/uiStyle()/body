@@ -9,7 +9,7 @@
   gameClassLabel.setForeground(Color.WHITE);
   destinationLabel.setForeground(Color.WHITE);
   sdkLocationLabel.setForeground(Color.WHITE);
-  sdkLocationText.setDisabledTextColor(Color.BLACK);
+  sdkLocationText.setDisabledTextColor(Color.GRAY);
   versionLabel.setForeground(new Color(255,20,20));
   UIManager.put("ComboBox.selectionBackground",new ColorUIResource(new Color(70,70,70)));
   UIManager.put("ComboBox.selectionForeground",new ColorUIResource(Color.WHITE));
@@ -23,8 +23,8 @@
     }
   }
 );
-  projectsLabel.setForeground(new Color(200,20,20));
-  extensionsLabel.setForeground(new Color(200,20,20));
+  projectsLabel.setForeground(new Color(255,20,20));
+  extensionsLabel.setForeground(new Color(255,20,20));
   subProjectsPanel.setOpaque(true);
   subProjectsPanel.setBackground(new Color(46,46,46));
   for (  JPanel extensionPanel : extensionsPanels) {

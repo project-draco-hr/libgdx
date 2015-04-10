@@ -2,6 +2,7 @@
   if (radians == 0)   return this;
   float cos=(float)Math.cos(radians);
   float sin=(float)Math.sin(radians);
+  float[] tmp=this.tmp;
   tmp[M00]=cos;
   tmp[M10]=sin;
   tmp[M20]=0;

@@ -1,4 +1,5 @@
 {
+  if (!drawing)   throw new IllegalStateException("CpuSpriteBatch.begin must be called before draw.");
   if (texture != lastTexture)   switchTexture(texture);
   Affine2 t=adjustAffine;
   int copyCount=Math.min(vertices.length - idx,count);

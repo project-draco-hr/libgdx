@@ -1,39 +1,40 @@
 {
   check(ShapeType.Line,ShapeType.Filled,8);
+  float colorBits=color.toFloatBits();
   Vector2 t=tmp.set(y2 - y1,x1 - x2).nor();
   width*=0.5f;
   float tx=t.x * width;
   float ty=t.y * width;
   if (shapeType == ShapeType.Line) {
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 + tx,y1 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 - tx,y1 - ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 + tx,y2 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 - tx,y2 - ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 + tx,y2 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 + tx,y1 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 - tx,y2 - ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 - tx,y1 - ty,0);
   }
  else {
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 + tx,y1 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 - tx,y1 - ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 + tx,y2 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 - tx,y2 - ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x2 + tx,y2 + ty,0);
-    renderer.color(color);
+    renderer.color(colorBits);
     renderer.vertex(x1 - tx,y1 - ty,0);
   }
 }

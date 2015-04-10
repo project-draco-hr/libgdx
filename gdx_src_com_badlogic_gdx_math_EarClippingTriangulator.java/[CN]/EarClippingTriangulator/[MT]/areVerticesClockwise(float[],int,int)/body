@@ -8,9 +8,9 @@
     p2y=vertices[i + 3];
     area+=p1x * p2y - p2x * p1y;
   }
-  p1x=vertices[count - 2];
-  p1y=vertices[count - 1];
-  p2x=vertices[0];
-  p2y=vertices[1];
+  p1x=vertices[offset + count - 2];
+  p1y=vertices[offset + count - 1];
+  p2x=vertices[offset];
+  p2y=vertices[offset + 1];
   return area + p1x * p2y - p2x * p1y < 0;
 }

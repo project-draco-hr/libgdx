@@ -18,6 +18,11 @@
   if (gt.length() > 0) {
     sampleTextPane.setText(settings.getGlyphText());
   }
+  final String font2=settings.getFont2File();
+  if (font2.length() > 0)   fontFileText.setText(font2);
+ else   fontFileText.setText(prefs.get("font.file",""));
+  fontFileRadio.setSelected(settings.isFont2Active());
+  systemFontRadio.setSelected(!settings.isFont2Active());
   for (Iterator iter=settings.getEffects().iterator(); iter.hasNext(); ) {
     ConfigurableEffect settingsEffect=(ConfigurableEffect)iter.next();
     for (int i=0, n=effectsListModel.getSize(); i < n; i++) {

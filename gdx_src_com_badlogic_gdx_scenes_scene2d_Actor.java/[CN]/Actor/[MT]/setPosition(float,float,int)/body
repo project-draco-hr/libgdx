@@ -1,8 +1,8 @@
 {
-  if ((align & right) != 0)   x-=width;
- else   if ((align & left) == 0)   x-=width / 2;
-  if ((align & top) != 0)   y-=height;
- else   if ((align & bottom) == 0)   y-=height / 2;
+  if ((alignment & right) != 0)   x-=width;
+ else   if ((alignment & left) == 0)   x-=width / 2;
+  if ((alignment & top) != 0)   y-=height;
+ else   if ((alignment & bottom) == 0)   y-=height / 2;
   if (this.x != x || this.y != y) {
     this.x=x;
     this.y=y;

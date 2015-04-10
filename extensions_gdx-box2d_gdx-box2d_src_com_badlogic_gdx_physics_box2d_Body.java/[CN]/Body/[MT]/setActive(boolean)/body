@@ -1,3 +1,8 @@
 {
-  jniSetActive(addr,flag);
+  if (flag) {
+    jniSetActive(addr,flag);
+  }
+ else {
+    this.world.deactivateBody(this);
+  }
 }

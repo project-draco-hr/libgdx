@@ -1,7 +1,3 @@
 {
-  final float color=tint.toFloatBits();
-  for (int j=0, length=vertexData.length; j < length; j++) {
-    float[] vertices=vertexData[j];
-    for (int i=2, n=idx[j]; i < n; i+=5)     vertices[i]=color;
-  }
+  setColors(tint.toFloatBits());
 }

@@ -1,18 +1,26 @@
 {
-  if (type == VertexDataType.VertexBufferObject) {
+switch (type) {
+case VertexBufferObject:
     vertices=new VertexBufferObject(isStatic,maxVertices,attributes);
-    indices=new IndexBufferObject(isStatic,maxIndices);
-    isVertexArray=false;
-  }
- else   if (type == VertexDataType.VertexBufferObjectSubData) {
-    vertices=new VertexBufferObjectSubData(isStatic,maxVertices,attributes);
-    indices=new IndexBufferObjectSubData(isStatic,maxIndices);
-    isVertexArray=false;
-  }
- else {
-    vertices=new VertexArray(maxVertices,attributes);
-    indices=new IndexArray(maxIndices);
-    isVertexArray=true;
-  }
-  addManagedMesh(Gdx.app,this);
+  indices=new IndexBufferObject(isStatic,maxIndices);
+isVertexArray=false;
+break;
+case VertexBufferObjectSubData:
+vertices=new VertexBufferObjectSubData(isStatic,maxVertices,attributes);
+indices=new IndexBufferObjectSubData(isStatic,maxIndices);
+isVertexArray=false;
+break;
+case VertexBufferObjectWithVAO:
+vertices=new VertexBufferObjectWithVAO(isStatic,maxVertices,attributes);
+indices=new IndexBufferObjectSubData(isStatic,maxIndices);
+isVertexArray=false;
+break;
+case VertexArray:
+default :
+vertices=new VertexArray(maxVertices,attributes);
+indices=new IndexArray(maxIndices);
+isVertexArray=true;
+break;
+}
+addManagedMesh(Gdx.app,this);
 }

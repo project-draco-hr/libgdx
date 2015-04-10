@@ -1,0 +1,5 @@
+{
+  long stroker=strokerNew(address);
+  if (stroker == 0)   throw new GdxRuntimeException("Couldn't create FreeType stroker");
+  return new Stroker(stroker);
+}

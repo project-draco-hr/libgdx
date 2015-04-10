@@ -1,0 +1,6 @@
+{
+  cache.clear();
+  GlyphLayout layout=cache.addText(str,x,y,targetWidth,halign,wrap);
+  cache.draw(batch);
+  return layout;
+}

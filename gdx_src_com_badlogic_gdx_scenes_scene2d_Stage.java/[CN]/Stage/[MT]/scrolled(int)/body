@@ -1,12 +1,12 @@
 {
   Actor target=scrollFocus == null ? root : scrollFocus;
-  screenToStageCoordinates(stageCoords.set(mouseScreenX,mouseScreenY));
+  screenToStageCoordinates(tempCoords.set(mouseScreenX,mouseScreenY));
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
   event.setType(InputEvent.Type.scrolled);
   event.setScrollAmount(amount);
-  event.setStageX(stageCoords.x);
-  event.setStageY(stageCoords.y);
+  event.setStageX(tempCoords.x);
+  event.setStageY(tempCoords.y);
   target.fire(event);
   boolean handled=event.isHandled();
   Pools.free(event);

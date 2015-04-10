@@ -1,7 +1,10 @@
 {
-  if (size == keys.length)   resize(Math.max(8,(int)(size * 1.75f)));
   int index=indexOfKey(key);
-  if (index == -1)   index=size++;
+  if (index == -1) {
+    if (size == keys.length)     resize(Math.max(8,(int)(size * 1.75f)));
+    index=size++;
+  }
   keys[index]=key;
   values[index]=value;
+  return index;
 }

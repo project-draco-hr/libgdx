@@ -1,0 +1,6 @@
+{
+  if (!rendered) {
+    throw new GdxRuntimeException("Glyph is not yet rendered");
+  }
+  return new Bitmap(getBitmap(address));
+}

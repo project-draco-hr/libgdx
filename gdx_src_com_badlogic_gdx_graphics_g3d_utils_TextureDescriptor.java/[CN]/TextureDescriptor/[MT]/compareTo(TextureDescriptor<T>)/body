@@ -1,0 +1,10 @@
+{
+  if (o == this)   return 0;
+  if (texture.glTarget != o.texture.glTarget)   return texture.glTarget - o.texture.glTarget;
+  if (texture.getTextureObjectHandle() != o.texture.getTextureObjectHandle())   return texture.getTextureObjectHandle() - o.texture.getTextureObjectHandle();
+  if (minFilter != o.minFilter)   return minFilter.getGLEnum() - o.minFilter.getGLEnum();
+  if (magFilter != o.magFilter)   return magFilter.getGLEnum() - o.magFilter.getGLEnum();
+  if (uWrap != o.uWrap)   return uWrap.getGLEnum() - o.uWrap.getGLEnum();
+  if (vWrap != o.vWrap)   return vWrap.getGLEnum() - o.vWrap.getGLEnum();
+  return 0;
+}

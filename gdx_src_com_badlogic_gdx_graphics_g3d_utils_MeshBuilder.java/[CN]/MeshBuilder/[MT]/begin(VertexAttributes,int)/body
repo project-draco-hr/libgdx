@@ -8,14 +8,14 @@
   this.istart=0;
   this.part=null;
   this.stride=attributes.vertexSize / 4;
-  this.vertex=new float[stride];
+  if (this.vertex == null || this.vertex.length < stride)   this.vertex=new float[stride];
   VertexAttribute a=attributes.findByUsage(Usage.Position);
   if (a == null)   throw new GdxRuntimeException("Cannot build mesh without position attribute");
   posOffset=a.offset / 4;
   posSize=a.numComponents;
   a=attributes.findByUsage(Usage.Normal);
   norOffset=a == null ? -1 : a.offset / 4;
-  a=attributes.findByUsage(Usage.Color);
+  a=attributes.findByUsage(Usage.ColorUnpacked);
   colOffset=a == null ? -1 : a.offset / 4;
   colSize=a == null ? 0 : a.numComponents;
   a=attributes.findByUsage(Usage.ColorPacked);
@@ -23,5 +23,7 @@
   a=attributes.findByUsage(Usage.TextureCoordinates);
   uvOffset=a == null ? -1 : a.offset / 4;
   setColor(null);
+  setVertexTransform(null);
+  setUVRange(null);
   this.primitiveType=primitiveType;
 }
