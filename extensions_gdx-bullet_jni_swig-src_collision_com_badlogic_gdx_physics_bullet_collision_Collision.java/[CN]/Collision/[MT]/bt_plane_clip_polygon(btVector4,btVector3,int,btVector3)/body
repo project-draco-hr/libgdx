@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.bt_plane_clip_polygon(btVector4.getCPtr(plane),plane,btVector3.getCPtr(polygon_points),polygon_points,polygon_point_count,btVector3.getCPtr(clipped),clipped);
+}

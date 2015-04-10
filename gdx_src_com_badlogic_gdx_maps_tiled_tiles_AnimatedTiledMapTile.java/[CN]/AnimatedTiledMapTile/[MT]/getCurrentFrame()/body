@@ -1,9 +1,3 @@
 {
-  long currentTime=lastTiledMapRenderTime % loopDuration;
-  for (int i=0; i < animationIntervals.length; ++i) {
-    long animationInterval=animationIntervals[i];
-    if (currentTime <= animationInterval)     return frameTiles[i];
-    currentTime-=animationInterval;
-  }
-  throw new GdxRuntimeException("Could not determine current animation frame in AnimatedTiledMapTile.  This should never happen.");
+  return frameTiles[getCurrentFrameIndex()];
 }

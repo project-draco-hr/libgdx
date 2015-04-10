@@ -1,0 +1,3 @@
+{
+  return CollisionJNI.btPrimitiveTriangle_clip_triangle(swigCPtr,this,btPrimitiveTriangle.getCPtr(other),other,btVector3.getCPtr(clipped_points),clipped_points);
+}

@@ -1,4 +1,4 @@
 {
   color.set(r,g,b,a);
-  colorSet=true;
+  hasColor=!color.equals(Color.WHITE);
 }

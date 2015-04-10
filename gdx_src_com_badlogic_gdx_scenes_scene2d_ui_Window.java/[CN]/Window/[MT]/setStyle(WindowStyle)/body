@@ -2,8 +2,6 @@
   if (style == null)   throw new IllegalArgumentException("style cannot be null.");
   this.style=style;
   setBackground(style.background);
-  titleCache=new BitmapFontCache(style.titleFont);
-  titleCache.setColor(style.titleFontColor);
-  if (title != null)   setTitle(title);
+  titleLabel.setStyle(new LabelStyle(style.titleFont,style.titleFontColor));
   invalidateHierarchy();
 }

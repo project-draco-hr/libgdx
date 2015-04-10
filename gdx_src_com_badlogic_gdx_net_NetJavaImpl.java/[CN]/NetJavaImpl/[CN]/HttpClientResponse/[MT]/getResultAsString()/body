@@ -1,5 +1,8 @@
 {
   InputStream input=getInputStream();
+  if (input == null) {
+    return "";
+  }
   try {
     return StreamUtils.copyStreamToString(input,connection.getContentLength());
   }

@@ -1,11 +1,29 @@
 {
-  filePath=font.pathWithoutExtension();
+  name=font.pathWithoutExtension();
+  int fileSize=(int)font.length();
   library=FreeType.initFreeType();
   if (library == null)   throw new GdxRuntimeException("Couldn't initialize FreeType");
-  face=FreeType.newFace(library,font,0);
-  if (face == null)   throw new GdxRuntimeException("Couldn't create face for font '" + font + "'");
-  if (checkForBitmapFont()) {
-    return;
+  ByteBuffer buffer;
+  InputStream input=font.read();
+  try {
+    if (fileSize == 0) {
+      byte[] data=StreamUtils.copyStreamToByteArray(input,fileSize > 0 ? (int)(fileSize * 1.5f) : 1024 * 16);
+      buffer=BufferUtils.newUnsafeByteBuffer(data.length);
+      BufferUtils.copy(data,0,buffer,data.length);
+    }
+ else {
+      buffer=BufferUtils.newUnsafeByteBuffer(fileSize);
+      StreamUtils.copyStream(input,buffer);
+    }
   }
-  if (!FreeType.setPixelSizes(face,0,15))   throw new GdxRuntimeException("Couldn't set size for font '" + font + "'");
+ catch (  IOException ex) {
+    throw new GdxRuntimeException(ex);
+  }
+ finally {
+    StreamUtils.closeQuietly(input);
+  }
+  face=library.newMemoryFace(buffer,0);
+  if (face == null)   throw new GdxRuntimeException("Couldn't create face for font: " + font);
+  if (checkForBitmapFont())   return;
+  setPixelSizes(0,15);
 }

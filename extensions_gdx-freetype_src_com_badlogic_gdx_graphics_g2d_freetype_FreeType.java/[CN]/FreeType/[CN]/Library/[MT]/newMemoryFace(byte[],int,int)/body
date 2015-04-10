@@ -1,0 +1,5 @@
+{
+  ByteBuffer buffer=BufferUtils.newUnsafeByteBuffer(data.length);
+  BufferUtils.copy(data,0,buffer,data.length);
+  return newMemoryFace(buffer,faceIndex);
+}

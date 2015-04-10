@@ -1,0 +1,6 @@
+{
+  if (index < 0 || index > children.size)   index=children.size;
+  int i=index;
+  for (  T child : nodes)   insertChild(i++,child);
+  return index;
+}

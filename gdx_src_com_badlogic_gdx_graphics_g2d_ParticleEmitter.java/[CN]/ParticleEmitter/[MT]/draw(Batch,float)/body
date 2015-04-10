@@ -9,10 +9,11 @@
   if (premultipliedAlpha) {
     batch.setBlendFunction(GL20.GL_ONE,GL20.GL_ONE_MINUS_SRC_ALPHA);
   }
+ else   if (additive) {
+    batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE);
+  }
  else {
-    if (additive) {
-      batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE);
-    }
+    batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
   }
   Particle[] particles=this.particles;
   boolean[] active=this.active;
@@ -28,7 +29,7 @@
     }
   }
   this.activeCount=activeCount;
-  if (additive || premultipliedAlpha)   batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
+  if (cleansUpBlendFunction && (additive || premultipliedAlpha))   batch.setBlendFunction(GL20.GL_SRC_ALPHA,GL20.GL_ONE_MINUS_SRC_ALPHA);
   if (delayTimer < delay) {
     delayTimer+=deltaMillis;
     return;

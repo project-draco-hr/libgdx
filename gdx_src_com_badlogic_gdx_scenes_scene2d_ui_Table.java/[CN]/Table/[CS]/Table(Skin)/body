@@ -1,7 +1,6 @@
 {
   this.skin=skin;
   cellDefaults=obtainCell();
-  cellDefaults.defaults();
   setTransform(false);
   setTouchable(Touchable.childrenOnly);
 }

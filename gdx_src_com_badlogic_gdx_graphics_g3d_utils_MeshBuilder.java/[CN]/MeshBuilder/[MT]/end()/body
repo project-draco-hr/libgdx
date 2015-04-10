@@ -1,13 +1,3 @@
 {
-  if (this.attributes == null)   throw new RuntimeException("Call begin() first");
-  endpart();
-  final Mesh mesh=new Mesh(true,vertices.size / stride,indices.size,attributes);
-  mesh.setVertices(vertices.items,0,vertices.size);
-  mesh.setIndices(indices.items,0,indices.size);
-  for (  MeshPart p : parts)   p.mesh=mesh;
-  parts.clear();
-  attributes=null;
-  vertices.clear();
-  indices.clear();
-  return mesh;
+  return end(new Mesh(true,vertices.size / stride,indices.size,attributes));
 }

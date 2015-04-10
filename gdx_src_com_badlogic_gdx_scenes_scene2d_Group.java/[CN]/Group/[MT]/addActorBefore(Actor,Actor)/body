@@ -1,5 +1,5 @@
 {
-  actor.remove();
+  if (actor.parent != null)   actor.parent.removeActor(actor,false);
   int index=children.indexOf(actorBefore,true);
   children.insert(index,actor);
   actor.setParent(this);

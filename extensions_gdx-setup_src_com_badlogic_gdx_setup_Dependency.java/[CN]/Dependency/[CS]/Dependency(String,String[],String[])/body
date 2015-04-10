@@ -1,0 +1,7 @@
+{
+  this.name=name;
+  this.gwtInherits=gwtInherits;
+  for (  ProjectType type : ProjectType.values()) {
+    subDependencyMap.put(type,subDependencies[type.ordinal()]);
+  }
+}

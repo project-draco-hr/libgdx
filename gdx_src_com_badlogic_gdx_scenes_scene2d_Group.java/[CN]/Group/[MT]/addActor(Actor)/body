@@ -1,5 +1,5 @@
 {
-  actor.remove();
+  if (actor.parent != null)   actor.parent.removeActor(actor,false);
   children.add(actor);
   actor.setParent(this);
   actor.setStage(getStage());

@@ -5,10 +5,11 @@
       if (layer instanceof TiledMapTileLayer) {
         renderTileLayer((TiledMapTileLayer)layer);
       }
+      if (layer instanceof TiledMapImageLayer) {
+        renderImageLayer((TiledMapImageLayer)layer);
+      }
  else {
-        for (        MapObject object : layer.getObjects()) {
-          renderObject(object);
-        }
+        renderObjects(layer);
       }
     }
   }

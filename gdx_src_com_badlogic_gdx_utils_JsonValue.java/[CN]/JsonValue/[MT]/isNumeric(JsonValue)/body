@@ -1,4 +1,4 @@
 {
-  for (JsonValue child=object.child(); child != null; child=child.next())   if (!child.isNumber())   return false;
+  for (JsonValue child=object.child; child != null; child=child.next)   if (!child.isNumber())   return false;
   return true;
 }

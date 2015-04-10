@@ -1,5 +1,5 @@
 {
   this(ordered,count,(Class)array.getClass().getComponentType());
   size=count;
-  System.arraycopy(array,0,items,0,size);
+  System.arraycopy(array,start,items,0,size);
 }

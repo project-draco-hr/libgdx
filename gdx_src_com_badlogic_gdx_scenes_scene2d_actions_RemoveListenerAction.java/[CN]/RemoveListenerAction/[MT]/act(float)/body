@@ -1,6 +1,5 @@
 {
-  Actor actor=(targetActor != null ? targetActor : this.actor);
-  if (capture)   actor.removeCaptureListener(listener);
- else   actor.removeListener(listener);
+  if (capture)   target.removeCaptureListener(listener);
+ else   target.removeListener(listener);
   return true;
 }

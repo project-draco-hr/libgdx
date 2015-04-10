@@ -5,7 +5,7 @@
     shapeRenderer.setColor(node.isAnimated ? Color.RED : Color.YELLOW);
     node.globalTransform.getTranslation(tmpV);
     shapeRenderer.box(tmpV.x,tmpV.y,tmpV.z,0.5f,0.5f,0.5f);
-    for (    Node child : node.children)     renderSkeleton(tmpV,child);
+    for (    Node child : node.getChildren())     renderSkeleton(tmpV,child);
   }
   shapeRenderer.end();
 }

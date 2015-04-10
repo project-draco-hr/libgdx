@@ -1,4 +1,5 @@
 {
+  float[] val=this.val;
   float oc=1.0f - cos;
   val[M00]=oc * axis.x * axis.x + cos;
   val[M10]=oc * axis.x * axis.y - axis.z * sin;

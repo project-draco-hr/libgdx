@@ -4,7 +4,7 @@
   I18NBundle.setSimpleFormatter(true);
   try {
     FileHandle bfh=Gdx.files.internal("data/i18n/message2");
-    rb_root=I18NBundle.createBundle(bfh,Locale.ROOT);
+    rb_root=I18NBundle.createBundle(bfh,new Locale("","",""));
     rb_default=I18NBundle.createBundle(bfh);
     rb_en=I18NBundle.createBundle(bfh,new Locale("en","US"));
     rb_it=I18NBundle.createBundle(bfh,new Locale("it","IT"));

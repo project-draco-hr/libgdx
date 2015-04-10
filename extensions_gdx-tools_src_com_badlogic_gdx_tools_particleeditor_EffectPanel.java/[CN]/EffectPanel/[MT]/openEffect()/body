@@ -8,8 +8,10 @@
   lastDir=dir;
   ParticleEffect effect=new ParticleEffect();
   try {
-    effect.loadEmitters(Gdx.files.absolute(new File(dir,file).getAbsolutePath()));
+    File effectFile=new File(dir,file);
+    effect.loadEmitters(Gdx.files.absolute(effectFile.getAbsolutePath()));
     editor.effect=effect;
+    editor.effectFile=effectFile;
     emitterTableModel.getDataVector().removeAllElements();
     editor.particleData.clear();
   }

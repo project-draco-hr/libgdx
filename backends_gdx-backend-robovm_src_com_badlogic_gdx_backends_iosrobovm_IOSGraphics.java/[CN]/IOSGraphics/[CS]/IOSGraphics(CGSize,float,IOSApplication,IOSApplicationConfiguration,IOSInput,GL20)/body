@@ -1,8 +1,8 @@
 {
   this.config=config;
-  width=(int)bounds.width();
-  height=(int)bounds.height();
-  app.debug(tag,bounds.width() + "x" + bounds.height()+ ", "+ scale);
+  width=(int)bounds.getWidth();
+  height=(int)bounds.getHeight();
+  app.debug(tag,bounds.getWidth() + "x" + bounds.getHeight()+ ", "+ scale);
   this.gl20=gl20;
   context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
   view=new GLKView(new CGRect(new CGPoint(0,0),bounds),context){
@@ -62,16 +62,11 @@
   }
   bufferFormat=new BufferFormat(r,g,b,a,depth,stencil,samples,false);
   this.gl20=gl20;
-  density=1f;
-  app.debug(tag,"Calculating density, UIScreen.mainScreen.scale: " + scale);
-  if (scale == 2)   density=2f;
-  int ppi;
-  if (UIDevice.getCurrentDevice().getUserInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
-    ppi=Math.round(density * 132);
-  }
- else {
-    ppi=Math.round(density * 163);
-  }
+  String machineString=HWMachine.getMachineString();
+  IOSDevice device=IOSDevice.getDevice(machineString);
+  if (device == null)   app.error(tag,"Machine ID: " + machineString + " not found, please report to LibGDX");
+  int ppi=device != null ? device.ppi : 163;
+  density=device != null ? device.ppi / 160f : scale;
   ppiX=ppi;
   ppiY=ppi;
   ppcX=ppiX / 2.54f;
@@ -79,5 +74,5 @@
   app.debug(tag,"Display: ppi=" + ppi + ", density="+ density);
   lastFrameTime=System.nanoTime();
   framesStart=lastFrameTime;
-  paused=false;
+  appPaused=false;
 }

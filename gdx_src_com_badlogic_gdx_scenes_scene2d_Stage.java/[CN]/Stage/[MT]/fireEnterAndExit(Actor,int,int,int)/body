@@ -1,11 +1,11 @@
 {
-  screenToStageCoordinates(stageCoords.set(screenX,screenY));
-  Actor over=hit(stageCoords.x,stageCoords.y,true);
+  screenToStageCoordinates(tempCoords.set(screenX,screenY));
+  Actor over=hit(tempCoords.x,tempCoords.y,true);
   if (over == overLast)   return overLast;
   InputEvent event=Pools.obtain(InputEvent.class);
   event.setStage(this);
-  event.setStageX(stageCoords.x);
-  event.setStageY(stageCoords.y);
+  event.setStageX(tempCoords.x);
+  event.setStageY(tempCoords.y);
   event.setPointer(pointer);
   if (overLast != null) {
     event.setType(InputEvent.Type.exit);

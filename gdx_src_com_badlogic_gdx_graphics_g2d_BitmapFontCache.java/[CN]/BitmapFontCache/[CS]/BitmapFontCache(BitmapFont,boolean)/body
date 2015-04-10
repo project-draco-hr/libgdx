@@ -1,17 +1,13 @@
 {
   this.font=font;
   this.integer=integer;
-  int regionsLength=font.regions.length;
-  if (regionsLength == 0)   throw new IllegalArgumentException("The specified font must contain at least 1 texture page");
-  this.vertexData=new float[regionsLength][];
-  this.colorChunks=new Array<ColorChunk>();
-  this.idx=new int[regionsLength];
-  int vertexDataLength=vertexData.length;
-  if (vertexDataLength > 1) {
-    glyphIndices=new IntArray[vertexDataLength];
-    for (int i=0, n=glyphIndices.length; i < n; i++) {
-      glyphIndices[i]=new IntArray();
-    }
-    tmpGlyphCount=new int[vertexDataLength];
+  int pageCount=font.regions.size;
+  if (pageCount == 0)   throw new IllegalArgumentException("The specified font must contain at least one texture page.");
+  pageVertices=new float[pageCount][];
+  idx=new int[pageCount];
+  if (pageCount > 1) {
+    pageGlyphIndices=new IntArray[pageCount];
+    for (int i=0, n=pageGlyphIndices.length; i < n; i++)     pageGlyphIndices[i]=new IntArray();
   }
+  tempGlyphCount=new int[pageCount];
 }

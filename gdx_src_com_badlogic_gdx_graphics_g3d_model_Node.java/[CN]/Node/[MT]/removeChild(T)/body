@@ -1,0 +1,5 @@
+{
+  if (!children.removeValue(child,true))   return false;
+  child.parent=null;
+  return true;
+}

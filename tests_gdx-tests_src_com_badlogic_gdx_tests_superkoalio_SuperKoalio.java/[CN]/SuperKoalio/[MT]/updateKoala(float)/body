@@ -1,7 +1,7 @@
 {
   if (deltaTime == 0)   return;
   koala.stateTime+=deltaTime;
-  if ((Gdx.input.isKeyPressed(Keys.SPACE) || isTouched(0.75f,1)) && koala.grounded) {
+  if ((Gdx.input.isKeyPressed(Keys.SPACE) || isTouched(0.5f,1)) && koala.grounded) {
     koala.velocity.y+=Koala.JUMP_VELOCITY;
     koala.state=Koala.State.Jumping;
     koala.grounded=false;
@@ -59,7 +59,7 @@
     if (koalaRect.overlaps(tile)) {
       if (koala.velocity.y > 0) {
         koala.position.y=tile.y - Koala.HEIGHT;
-        TiledMapTileLayer layer=(TiledMapTileLayer)map.getLayers().get(1);
+        TiledMapTileLayer layer=(TiledMapTileLayer)map.getLayers().get("walls");
         layer.setCell((int)tile.x,(int)tile.y,null);
       }
  else {
