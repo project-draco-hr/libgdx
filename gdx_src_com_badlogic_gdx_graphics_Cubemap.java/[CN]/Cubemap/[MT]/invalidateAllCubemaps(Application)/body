@@ -33,7 +33,7 @@
         }
 ;
         assetManager.unload(fileName);
-        cubemap.glHandle=GLTexture.createGLHandle();
+        cubemap.glHandle=Gdx.gl.glGenTexture();
         assetManager.load(fileName,Cubemap.class,params);
       }
     }
