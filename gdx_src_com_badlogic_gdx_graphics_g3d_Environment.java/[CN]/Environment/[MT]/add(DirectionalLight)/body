@@ -1,0 +1,6 @@
+{
+  DirectionalLightsAttribute dirLights=((DirectionalLightsAttribute)get(DirectionalLightsAttribute.Type));
+  if (dirLights == null)   set(dirLights=new DirectionalLightsAttribute());
+  dirLights.lights.add(light);
+  return this;
+}

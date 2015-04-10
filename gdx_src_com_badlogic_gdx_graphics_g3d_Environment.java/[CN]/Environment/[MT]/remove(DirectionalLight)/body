@@ -1,0 +1,8 @@
+{
+  if (has(DirectionalLightsAttribute.Type)) {
+    DirectionalLightsAttribute dirLights=((DirectionalLightsAttribute)get(DirectionalLightsAttribute.Type));
+    dirLights.lights.removeValue(light,false);
+    if (dirLights.lights.size == 0)     remove(DirectionalLightsAttribute.Type);
+  }
+  return this;
+}

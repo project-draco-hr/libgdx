@@ -5,8 +5,8 @@
     cubemap=null;
   }
   if (name.equals("<none>")) {
-    if (lights.has(CubemapAttribute.EnvironmentMap)) {
-      lights.remove(CubemapAttribute.EnvironmentMap);
+    if (environment.has(CubemapAttribute.EnvironmentMap)) {
+      environment.remove(CubemapAttribute.EnvironmentMap);
       shaderProvider.clear();
     }
   }
@@ -16,7 +16,7 @@
     cubemap=new Cubemap(faces);
     faces.load(CubemapSide.NegativeX,root.child(name + "_NX.png"));
     cubemap.load(faces);
-    if (!lights.has(CubemapAttribute.EnvironmentMap))     shaderProvider.clear();
-    lights.set(new CubemapAttribute(CubemapAttribute.EnvironmentMap,cubemap));
+    if (!environment.has(CubemapAttribute.EnvironmentMap))     shaderProvider.clear();
+    environment.set(new CubemapAttribute(CubemapAttribute.EnvironmentMap,cubemap));
   }
 }
