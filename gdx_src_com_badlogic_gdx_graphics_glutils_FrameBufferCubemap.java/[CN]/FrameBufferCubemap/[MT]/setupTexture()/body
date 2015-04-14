@@ -1,0 +1,5 @@
+{
+  colorTexture=new Cubemap(width,height,width,format);
+  colorTexture.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  colorTexture.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+}

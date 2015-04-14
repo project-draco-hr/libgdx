@@ -1,0 +1,4 @@
+{
+  if (nbSides < 5)   throw new GdxRuntimeException("Not all sides have been rendered.");
+  super.end(x,y,width,height);
+}
