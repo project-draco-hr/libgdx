@@ -7,9 +7,10 @@
     return new BitmapFont(file,region);
   }
  else {
-    TextureRegion[] regs=new TextureRegion[data.getImagePaths().length];
-    for (int i=0; i < regs.length; i++) {
-      regs[i]=new TextureRegion(manager.get(data.getImagePath(i),Texture.class));
+    int n=data.getImagePaths().length;
+    Array<TextureRegion> regs=new Array(n);
+    for (int i=0; i < n; i++) {
+      regs.add(new TextureRegion(manager.get(data.getImagePath(i),Texture.class)));
     }
     return new BitmapFont(data,regs,true);
   }

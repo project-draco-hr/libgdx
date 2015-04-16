@@ -1,9 +1,3 @@
 {
-  byteBuffer=BufferUtils.newUnsafeByteBuffer(maxIndices * 2);
-  this.isDirect=true;
-  buffer=byteBuffer.asShortBuffer();
-  buffer.flip();
-  byteBuffer.flip();
-  bufferHandle=Gdx.gl20.glGenBuffer();
-  usage=GL20.GL_STATIC_DRAW;
+  this(true,maxIndices);
 }

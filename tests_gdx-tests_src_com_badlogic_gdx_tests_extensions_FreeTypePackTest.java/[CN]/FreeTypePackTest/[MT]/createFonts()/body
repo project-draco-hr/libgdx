@@ -10,12 +10,12 @@
     gen.dispose();
   }
   Array<Page> pages=packer.getPages();
-  regions=new TextureRegion[pages.size];
-  for (int i=0; i < regions.length; i++) {
+  regions=new Array(pages.size);
+  for (int i=0; i < pages.size; i++) {
     Page page=pages.get(i);
     Texture tex=new Texture(page.getPixmap());
     tex.setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
-    regions[i]=new TextureRegion(tex);
+    regions.add(new TextureRegion(tex));
   }
   packer.dispose();
   fontMap=new FontMap<BitmapFont>();

@@ -2,13 +2,14 @@
   super.calculateOffsets();
   if (!this.text.equals(lastText)) {
     this.lastText=text;
-    BitmapFont.TextBounds bounds=new BitmapFont.TextBounds();
     BitmapFont font=style.font;
     float maxWidthLine=this.getWidth() - (style.background != null ? style.background.getLeftWidth() + style.background.getRightWidth() : 0);
     linesBreak.clear();
     int lineStart=0;
     int lastSpace=0;
     char lastCharacter;
+    Pool<GlyphLayout> layoutPool=Pools.get(GlyphLayout.class);
+    GlyphLayout layout=layoutPool.obtain();
     for (int i=0; i < text.length(); i++) {
       lastCharacter=text.charAt(i);
       if (lastCharacter == ENTER_DESKTOP || lastCharacter == ENTER_ANDROID) {
@@ -18,8 +19,8 @@
       }
  else {
         lastSpace=(continueCursor(i,0) ? lastSpace : i);
-        font.getBounds(text,lineStart,i + 1,bounds);
-        if (bounds.width > maxWidthLine) {
+        layout.setText(font,text.subSequence(lineStart,i + 1));
+        if (layout.width > maxWidthLine) {
           if (lineStart >= lastSpace) {
             lastSpace=i - 1;
           }
@@ -30,6 +31,7 @@
         }
       }
     }
+    layoutPool.free(layout);
     if (lineStart < text.length()) {
       linesBreak.add(lineStart);
       linesBreak.add(text.length());

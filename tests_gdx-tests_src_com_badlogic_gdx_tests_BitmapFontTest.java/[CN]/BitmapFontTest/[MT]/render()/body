@@ -9,18 +9,17 @@
   float alignmentWidth;
   if (false) {
     alignmentWidth=0;
-    font.drawMultiLine(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
-  }
-  if (false) {
-    TextBounds bounds=font.getMultiLineBounds(text);
-    alignmentWidth=bounds.width;
-    font.drawMultiLine(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
+    font.draw(spriteBatch,text,x,viewHeight - y,alignmentWidth,Align.right,false);
   }
   if (true) {
     alignmentWidth=280;
-    font.drawWrapped(spriteBatch,text,x,viewHeight - y,alignmentWidth,HAlignment.RIGHT);
+    font.draw(spriteBatch,text,x,viewHeight - y,alignmentWidth,Align.right,true);
   }
-  String txt2="this font uses " + multiPageFont.getRegions().length + " texture pages: RpRpRpRpRpNM";
+  font.draw(spriteBatch,"[",50,60,100,Align.left,true);
+  font.getData().markupEnabled=true;
+  font.draw(spriteBatch,"[",100,60,100,Align.left,true);
+  font.getData().markupEnabled=false;
+  String txt2="this font uses " + multiPageFont.getRegions().size + " texture pages: RpRpRpRpRpNM";
   spriteBatch.renderCalls=0;
   multiPageFont.setColor(Color.BLUE);
   multiPageFont.draw(spriteBatch,txt2,10,100);
@@ -36,13 +35,13 @@
   cache.setColor(Color.BLACK);
   float textX=10;
   textX+=cache.setText("[black] ",textX,150).width;
-  multiPageFont.setMarkupEnabled(true);
+  multiPageFont.getData().markupEnabled=true;
   textX+=cache.addText("[[[PINK]pink[]] ",textX,150).width;
   textX+=cache.addText("[PERU][[peru] ",textX,150).width;
   cache.setColor(Color.GREEN);
   textX+=cache.addText("green ",textX,150).width;
   textX+=cache.addText("[#A52A2A]br[#A52A2ADF]ow[#A52A2ABF]n f[#A52A2A9F]ad[#A52A2A7F]in[#A52A2A5F]g o[#A52A2A3F]ut ",textX,150).width;
-  multiPageFont.setMarkupEnabled(false);
+  multiPageFont.getData().markupEnabled=false;
   cache.draw(spriteBatch);
   cache.tint(new Color(1f,1f,1f,0.3f));
   cache.translate(0f,40f);
@@ -50,7 +49,7 @@
   spriteBatch.end();
   renderer.begin(ShapeType.Line);
   renderer.setColor(Color.BLACK);
-  renderer.rect(x,viewHeight - y,x + alignmentWidth,300);
+  renderer.rect(x,viewHeight - y - 200,alignmentWidth,200);
   renderer.end();
   stage.act(Gdx.graphics.getDeltaTime());
   stage.draw();

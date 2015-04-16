@@ -24,7 +24,7 @@
   smallFont.setColor(Color.LIGHT_GRAY);
   smallFont.draw(spriteBatch,"cap height",20,viewHeight - 140);
   font.setColor(Color.BLACK);
-  TextBounds bounds=font.drawMultiLine(spriteBatch,text,x,y);
+  GlyphLayout layout=font.draw(spriteBatch,text,x,y);
   spriteBatch.end();
   renderer.begin(ShapeType.Filled);
   renderer.setColor(Color.BLACK);
@@ -47,6 +47,6 @@
   renderer.end();
   renderer.begin(ShapeType.Line);
   renderer.setColor(Color.BLUE);
-  renderer.rect(x,y,bounds.width,-bounds.height);
+  renderer.rect(x,y,layout.width,-layout.height);
   renderer.end();
 }

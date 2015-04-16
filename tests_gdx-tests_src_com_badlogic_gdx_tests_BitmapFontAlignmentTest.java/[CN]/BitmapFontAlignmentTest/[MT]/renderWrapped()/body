@@ -4,8 +4,8 @@
   float y=logoSprite.getY();
   float width=logoSprite.getWidth();
   float height=logoSprite.getHeight();
-  TextBounds bounds=font.getWrappedBounds(text,width);
-  x+=width / 2 - bounds.width / 2;
-  y+=height / 2 + bounds.height / 2;
-  font.drawWrapped(spriteBatch,text,x,y,width);
+  layout.setText(font,text,Color.WHITE,width,Align.left,true);
+  x+=width / 2 - layout.width / 2;
+  y+=height / 2 + layout.height / 2;
+  font.draw(spriteBatch,text,x,y,width,Align.left,true);
 }

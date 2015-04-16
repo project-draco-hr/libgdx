@@ -1,9 +1,0 @@
-{
-  if (currentColorStack.size > 0) {
-    lastColor=currentColorStack.pop();
-    ColorChunk newChunk=colorChunkPool.obtain();
-    newChunk.color.set(lastColor);
-    newChunk.start=start;
-    colorChunks.add(newChunk);
-  }
-}

@@ -1,0 +1,17 @@
+{
+  GlyphRun truncateRun=glyphRunPool.obtain();
+  fontData.getGlyphs(truncateRun,truncate,0,truncate.length());
+  float truncateWidth=targetWidth;
+  int n=truncateRun.glyphs.size;
+  for (int i=0; i < n; i++)   truncateWidth-=truncateRun.xAdvances.get(i);
+  while (run.width > truncateWidth) {
+    widthIndex--;
+    run.width-=run.xAdvances.get(widthIndex);
+  }
+  run.glyphs.truncate(widthIndex);
+  run.xAdvances.truncate(widthIndex);
+  run.glyphs.addAll(truncateRun.glyphs);
+  run.xAdvances.addAll(truncateRun.xAdvances);
+  run.width+=truncateWidth;
+  glyphRunPool.free(truncateRun);
+}

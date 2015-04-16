@@ -1,39 +1,47 @@
 {
   if (disabled)   return false;
-  if (character == 0)   return false;
-  Stage stage=getStage();
-  if (stage == null || stage.getKeyboardFocus() != TextField.this)   return false;
-  if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
-    next(UIUtils.shift());
-  }
+switch (character) {
+case BACKSPACE:
+case TAB:
+case ENTER_ANDROID:
+case ENTER_DESKTOP:
+    break;
+default :
+  if (character < 32)   return false;
+}
+Stage stage=getStage();
+if (stage == null || stage.getKeyboardFocus() != TextField.this) return false;
+if ((character == TAB || character == ENTER_ANDROID) && focusTraversal) {
+next(UIUtils.shift());
+}
  else {
-    boolean delete=character == DELETE;
-    boolean backspace=character == BACKSPACE;
-    boolean add=(!onlyFontChars || style.font.containsCharacter(character)) || (writeEnters && (character == ENTER_ANDROID || character == ENTER_DESKTOP));
-    boolean remove=backspace || delete;
-    if (add || remove) {
-      if (hasSelection)       cursor=delete(false);
+boolean delete=character == DELETE;
+boolean backspace=character == BACKSPACE;
+boolean add=(!onlyFontChars || style.font.getData().hasGlyph(character)) || (writeEnters && (character == ENTER_ANDROID || character == ENTER_DESKTOP));
+boolean remove=backspace || delete;
+if (add || remove) {
+  if (hasSelection)   cursor=delete(false);
  else {
-        if (backspace && cursor > 0) {
-          text=text.substring(0,cursor - 1) + text.substring(cursor--);
-          renderOffset=0;
-        }
-        if (delete && cursor < text.length()) {
-          text=text.substring(0,cursor) + text.substring(cursor + 1);
-        }
-      }
-      if (add && !remove) {
-        boolean isEnter=character == ENTER_DESKTOP || character == ENTER_ANDROID;
-        if (!isEnter) {
-          if (filter != null && !filter.acceptChar(TextField.this,character))           return true;
-        }
-        if (!withinMaxLength(text.length()))         return true;
-        String insertion=isEnter ? "\n" : String.valueOf(character);
-        text=insert(cursor++,insertion,text);
-      }
-      updateDisplayText();
+    if (backspace && cursor > 0) {
+      text=text.substring(0,cursor - 1) + text.substring(cursor--);
+      renderOffset=0;
+    }
+    if (delete && cursor < text.length()) {
+      text=text.substring(0,cursor) + text.substring(cursor + 1);
     }
   }
-  if (listener != null)   listener.keyTyped(TextField.this,character);
-  return true;
+  if (add && !remove) {
+    boolean isEnter=character == ENTER_DESKTOP || character == ENTER_ANDROID;
+    if (!isEnter) {
+      if (filter != null && !filter.acceptChar(TextField.this,character))       return true;
+    }
+    if (!withinMaxLength(text.length()))     return true;
+    String insertion=isEnter ? "\n" : String.valueOf(character);
+    text=insert(cursor++,insertion,text);
+  }
+  updateDisplayText();
+}
+}
+if (listener != null) listener.keyTyped(TextField.this,character);
+return true;
 }

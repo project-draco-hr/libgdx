@@ -1,4 +1,12 @@
 {
+  if (tasks.size() > 0) {
+    AssetLoadingTask currAsset=tasks.firstElement();
+    if (currAsset.assetDesc.fileName.equals(fileName)) {
+      currAsset.cancel=true;
+      log.debug("Unload (from tasks): " + fileName);
+      return;
+    }
+  }
   int foundIndex=-1;
   for (int i=0; i < loadQueue.size; i++) {
     if (loadQueue.get(i).fileName.equals(fileName)) {
@@ -11,14 +19,6 @@
     loadQueue.removeIndex(foundIndex);
     log.debug("Unload (from queue): " + fileName);
     return;
-  }
-  if (tasks.size() > 0) {
-    AssetLoadingTask currAsset=tasks.firstElement();
-    if (currAsset.assetDesc.fileName.equals(fileName)) {
-      currAsset.cancel=true;
-      log.debug("Unload (from tasks): " + fileName);
-      return;
-    }
   }
   Class type=assetTypes.get(fileName);
   if (type == null)   throw new GdxRuntimeException("Asset not loaded: " + fileName);

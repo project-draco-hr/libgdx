@@ -4,5 +4,5 @@
   long start=System.currentTimeMillis();
   int glyphCount=createFonts();
   long time=System.currentTimeMillis() - start;
-  text=glyphCount + " glyphs packed in " + regions.length+ " page(s) in "+ time+ " ms";
+  text=glyphCount + " glyphs packed in " + regions.size+ " page(s) in "+ time+ " ms";
 }

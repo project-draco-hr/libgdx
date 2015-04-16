@@ -34,7 +34,7 @@
         }
 ;
         assetManager.unload(fileName);
-        texture.glHandle=Texture.createGLHandle();
+        texture.glHandle=Gdx.gl.glGenTexture();
         assetManager.load(fileName,Texture.class,params);
       }
     }

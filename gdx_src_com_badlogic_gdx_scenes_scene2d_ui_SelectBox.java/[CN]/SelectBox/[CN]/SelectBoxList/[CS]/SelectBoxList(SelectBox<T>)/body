@@ -3,6 +3,7 @@
   this.selectBox=selectBox;
   setOverscroll(false,false);
   setFadeScrollBars(false);
+  setScrollingDisabled(true,false);
   list=new List(selectBox.style.listStyle);
   list.setTouchable(Touchable.disabled);
   setWidget(list);

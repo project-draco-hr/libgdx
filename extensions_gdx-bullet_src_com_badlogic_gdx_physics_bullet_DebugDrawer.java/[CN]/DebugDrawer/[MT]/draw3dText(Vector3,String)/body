@@ -14,8 +14,7 @@
     }
     shapeRenderer.end();
     spriteBatch.begin();
-    TextBounds bounds=font.getBounds(textString);
-    font.draw(spriteBatch,textString,location.x - (bounds.width / 2),location.y + (bounds.height / 2));
+    font.draw(spriteBatch,textString,location.x,location.y,0,textString.length(),0,Align.center,false);
     spriteBatch.end();
     shapeRenderer.begin(ShapeType.Line);
   }
