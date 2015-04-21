@@ -49,7 +49,7 @@ FloatArray xAdvances=run.xAdvances;
 for (int i=0, n=xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances.get(i);
 x+=xAdvance;
-if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX > targetWidth) {
+if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX - 0.00001f > targetWidth) {
   if (truncate != null) {
     truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
     break outer;
