@@ -1,0 +1,7 @@
+{
+  Glyph last=run.glyphs.peek();
+  if (fontData.isWhitespace((char)last.id))   return;
+  float width=(last.xoffset + last.width) * fontData.scaleX;
+  run.width+=width - run.xAdvances.peek();
+  run.xAdvances.set(run.xAdvances.size - 1,width);
+}

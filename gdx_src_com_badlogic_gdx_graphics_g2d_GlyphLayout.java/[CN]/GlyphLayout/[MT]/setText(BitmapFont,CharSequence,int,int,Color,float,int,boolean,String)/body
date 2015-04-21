@@ -1,5 +1,5 @@
 {
-  if (targetWidth == 0)   wrap=false;
+  if (targetWidth <= font.data.spaceWidth)   wrap=false;
   if (truncate != null)   wrap=true;
   BitmapFontData fontData=font.data;
   boolean markupEnabled=fontData.markupEnabled;
@@ -38,6 +38,7 @@ break;
 }
 }
 if (runEnd != -1) {
+if (runEnd != runStart) {
 GlyphRun run=glyphRunPool.obtain();
 runs.add(run);
 run.color.set(color);
@@ -48,24 +49,24 @@ FloatArray xAdvances=run.xAdvances;
 for (int i=0, n=xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances.get(i);
 x+=xAdvance;
-if (wrap && x > targetWidth && i > 0 && x - (xAdvance - run.glyphs.get(i).width) > targetWidth) {
-if (truncate != null) {
-  truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
-  break outer;
-}
-GlyphRun next=glyphRunPool.obtain();
-runs.add(next);
-wrap(fontData,run,next,Math.max(1,fontData.getWrapIndex(run.glyphs,i)),i);
-width=Math.max(width,run.width);
-x=0;
-y+=fontData.down;
-lines++;
-next.x=0;
-next.y=y;
-i=-1;
-n=next.xAdvances.size;
-xAdvances=next.xAdvances;
-run=next;
+if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX > targetWidth) {
+  if (truncate != null) {
+    truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
+    break outer;
+  }
+  GlyphRun next=glyphRunPool.obtain();
+  runs.add(next);
+  wrap(fontData,run,next,Math.max(1,fontData.getWrapIndex(run.glyphs,i - 1)),i);
+  width=Math.max(width,run.width);
+  x=0;
+  y+=fontData.down;
+  lines++;
+  next.x=0;
+  next.y=y;
+  i=-1;
+  n=next.xAdvances.size;
+  xAdvances=next.xAdvances;
+  run=next;
 }
  else run.width+=xAdvance;
 }
@@ -74,6 +75,7 @@ width=Math.max(width,x);
 x=0;
 y+=fontData.down;
 lines++;
+}
 }
 runStart=start;
 color=nextColor;
