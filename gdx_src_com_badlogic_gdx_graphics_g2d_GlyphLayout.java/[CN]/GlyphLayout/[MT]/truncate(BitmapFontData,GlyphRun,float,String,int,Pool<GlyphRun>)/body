@@ -4,17 +4,20 @@
   float truncateWidth=0;
   for (int i=1, n=truncateRun.xAdvances.size; i < n; i++)   truncateWidth+=truncateRun.xAdvances.get(i);
   targetWidth-=truncateWidth;
-  run.width=0;
   int count=0;
+  float width=0;
   while (true) {
     float xAdvance=run.xAdvances.get(count);
-    if (run.width + xAdvance > targetWidth)     break;
-    run.width+=xAdvance;
+    width+=xAdvance;
+    if (width > targetWidth) {
+      run.width=width - xAdvance;
+      break;
+    }
     count++;
   }
-  run.xAdvances.truncate(count);
   if (count > 1) {
     run.glyphs.truncate(count - 1);
+    run.xAdvances.truncate(count);
     adjustLastGlyph(fontData,run);
     run.xAdvances.addAll(truncateRun.xAdvances,1,truncateRun.xAdvances.size - 1);
   }
