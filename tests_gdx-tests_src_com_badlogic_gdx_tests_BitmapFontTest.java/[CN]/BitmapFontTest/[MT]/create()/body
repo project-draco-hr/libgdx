@@ -9,11 +9,11 @@
   Skin skin=new Skin(Gdx.files.internal("data/uiskin.json"));
   BitmapFont labelFont=skin.get("default-font",BitmapFont.class);
   labelFont.getData().markupEnabled=true;
-  Label label=new Label("<<[BLUE]M[RED]u[YELLOW]l[GREEN]t[OLIVE]ic[]o[]l[]o[]r[]*[MAROON]Label[][] [Unknown Color]>>",skin);
+  label=new Label("<<[BLUE]M[RED]u[YELLOW]l[GREEN]t[OLIVE]ic[]o[]l[]o[]r[]*[MAROON]Label[][] [Unknown Color]>>",skin);
   label.setPosition(100,200);
   stage.addActor(label);
   Window window=new Window("[RED]Multicolor[GREEN] Title",skin);
-  window.setPosition(400,200);
+  window.setPosition(400,300);
   window.pack();
   stage.addActor(window);
   layout=new GlyphLayout();

@@ -5,8 +5,8 @@
   for (int i=1, n=truncateRun.xAdvances.size; i < n; i++)   truncateWidth+=truncateRun.xAdvances.get(i);
   targetWidth-=truncateWidth;
   int count=0;
-  float width=0;
-  while (true) {
+  float width=run.x;
+  while (count < run.xAdvances.size) {
     float xAdvance=run.xAdvances.get(count);
     width+=xAdvance;
     if (width > targetWidth) {
