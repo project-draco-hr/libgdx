@@ -47,6 +47,7 @@ run.color.set(color);
 run.x=x;
 run.y=y;
 fontData.getGlyphs(run,str,runStart,runEnd);
+if (run.glyphs.size == 0) System.out.println();
 float[] xAdvances=run.xAdvances.items;
 for (int i=0, n=run.xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances[i];
@@ -56,10 +57,11 @@ if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xo
     truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
     break outer;
   }
-  GlyphRun next=glyphRunPool.obtain();
+  int wrapIndex=fontData.getWrapIndex(run.glyphs,i - 1);
+  if (run.x == 0 && wrapIndex == 0)   wrapIndex=i - 1;
+  GlyphRun next=wrap(fontData,run,glyphRunPool,wrapIndex,i);
   runs.add(next);
-  wrap(fontData,run,next,Math.max(1,fontData.getWrapIndex(run.glyphs,i - 1)),i);
-  width=Math.max(width,run.width);
+  width=Math.max(width,run.x + run.width);
   x=0;
   y+=fontData.down;
   lines++;

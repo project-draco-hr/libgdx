@@ -6,5 +6,5 @@
     if (isWhitespace(ch))     return i + 1;
     if (isBreakChar(ch))     return i;
   }
-  return start;
+  return 0;
 }

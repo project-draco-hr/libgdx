@@ -1,4 +1,5 @@
 {
+  GlyphRun second=glyphRunPool.obtain();
   second.color.set(first.color);
   second.glyphs.addAll(first.glyphs,wrapIndex,first.glyphs.size - wrapIndex);
   second.xAdvances.add(-second.glyphs.first().xoffset * fontData.scaleX);
@@ -12,7 +13,14 @@
     }
     break;
   }
-  first.glyphs.truncate(wrapIndex);
-  first.xAdvances.truncate(wrapIndex + 1);
-  adjustLastGlyph(fontData,first);
+  if (wrapIndex == 0) {
+    glyphRunPool.free(first);
+    runs.pop();
+  }
+ else {
+    first.glyphs.truncate(wrapIndex);
+    first.xAdvances.truncate(wrapIndex + 1);
+    adjustLastGlyph(fontData,first);
+  }
+  return second;
 }
