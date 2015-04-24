@@ -1,6 +1,6 @@
 {
-  if (targetWidth <= font.data.spaceWidth)   wrap=false;
   if (truncate != null)   wrap=true;
+ else   if (targetWidth <= font.data.spaceWidth)   wrap=false;
   BitmapFontData fontData=font.data;
   boolean markupEnabled=fontData.markupEnabled;
   Pool<GlyphRun> glyphRunPool=Pools.get(GlyphRun.class);
@@ -47,7 +47,6 @@ run.color.set(color);
 run.x=x;
 run.y=y;
 fontData.getGlyphs(run,str,runStart,runEnd);
-if (run.glyphs.size == 0) System.out.println();
 float[] xAdvances=run.xAdvances.items;
 for (int i=0, n=run.xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances[i];
@@ -55,10 +54,13 @@ x+=xAdvance;
 if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX - 0.00001f > targetWidth) {
   if (truncate != null) {
     truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
+    x=run.x + run.width;
     break outer;
   }
   int wrapIndex=fontData.getWrapIndex(run.glyphs,i - 1);
-  if (run.x == 0 && wrapIndex == 0)   wrapIndex=i - 1;
+  if ((run.x == 0 && wrapIndex == 0) || wrapIndex >= run.glyphs.size) {
+    wrapIndex=i - 1;
+  }
   GlyphRun next=wrap(fontData,run,glyphRunPool,wrapIndex,i);
   runs.add(next);
   width=Math.max(width,run.x + run.width);

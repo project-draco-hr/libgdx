@@ -10,7 +10,7 @@
     float xAdvance=run.xAdvances.get(count);
     width+=xAdvance;
     if (width > targetWidth) {
-      run.width=width - xAdvance;
+      run.width=width - run.x - xAdvance;
       break;
     }
     count++;

@@ -8,7 +8,7 @@
   while (widthIndex > wrapIndex + 1)   first.width-=first.xAdvances.get(--widthIndex);
   for (; wrapIndex > 0; wrapIndex--) {
     if (fontData.isWhitespace((char)first.glyphs.get(wrapIndex - 1).id)) {
-      first.width-=first.xAdvances.get(wrapIndex);
+      if (wrapIndex < widthIndex)       first.width-=first.xAdvances.get(wrapIndex);
       continue;
     }
     break;
