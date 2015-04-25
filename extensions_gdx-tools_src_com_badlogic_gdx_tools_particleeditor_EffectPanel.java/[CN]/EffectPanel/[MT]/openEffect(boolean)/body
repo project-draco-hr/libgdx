@@ -10,8 +10,15 @@
   try {
     File effectFile=new File(dir,file);
     effect.loadEmitters(Gdx.files.absolute(effectFile.getAbsolutePath()));
-    editor.effect=effect;
-    editor.effectFile=effectFile;
+    if (mergeIntoCurrent) {
+      for (      ParticleEmitter emitter : effect.getEmitters()) {
+        addEmitter(emitter.getName(),false,emitter);
+      }
+    }
+ else {
+      editor.effect=effect;
+      editor.effectFile=effectFile;
+    }
     emitterTableModel.getDataVector().removeAllElements();
     editor.particleData.clear();
   }
@@ -21,7 +28,7 @@
     JOptionPane.showMessageDialog(editor,"Error opening effect.");
     return;
   }
-  for (  ParticleEmitter emitter : effect.getEmitters()) {
+  for (  ParticleEmitter emitter : editor.effect.getEmitters()) {
     emitter.setPosition(editor.worldCamera.viewportWidth / 2,editor.worldCamera.viewportHeight / 2);
     emitterTableModel.addRow(new Object[]{emitter.getName(),true});
   }
