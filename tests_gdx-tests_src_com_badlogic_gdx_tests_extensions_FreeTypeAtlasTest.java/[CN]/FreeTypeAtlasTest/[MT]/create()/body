@@ -4,5 +4,5 @@
   long start=System.currentTimeMillis();
   int glyphCount=createFonts();
   long time=System.currentTimeMillis() - start;
-  text=glyphCount + " glyphs packed in " + atlas.getTextures().size+ " page(s) in "+ time+ " ms";
+  text=glyphCount + " glyphs packed in " + packer.getPages().size+ " page(s) in "+ time+ " ms";
 }

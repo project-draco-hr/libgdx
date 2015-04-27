@@ -99,8 +99,8 @@
     }
   }
   if (ownsAtlas) {
-    data.regions=new Array<TextureRegion>();
-    packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps,true);
+    data.regions=new Array();
+    packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps);
   }
   return data;
 }

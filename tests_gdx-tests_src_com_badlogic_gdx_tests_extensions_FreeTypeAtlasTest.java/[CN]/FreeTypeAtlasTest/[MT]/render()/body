@@ -18,7 +18,7 @@
   BitmapFont font=getFont(FontStyle.Regular,FontSize.Medium);
   font.draw(batch,text,10,font.getCapHeight() + 10);
   batch.setColor(1f,1f,1f,0.15f);
-  batch.draw(atlas.getTextures().first(),0,0);
+  batch.draw(packer.getPages().first().getTexture(),0,0);
   batch.setColor(1f,1f,1f,1f);
   batch.end();
 }

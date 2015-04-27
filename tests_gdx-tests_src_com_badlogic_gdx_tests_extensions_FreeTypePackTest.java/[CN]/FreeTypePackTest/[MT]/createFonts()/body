@@ -14,7 +14,7 @@
     gen.dispose();
   }
   regions=new Array<TextureRegion>();
-  packer.updateTextureRegions(regions,TextureFilter.Nearest,TextureFilter.Nearest,false,true);
+  packer.updateTextureRegions(regions,TextureFilter.Nearest,TextureFilter.Nearest,false);
   packer.dispose();
   fontMap=new FontMap<BitmapFont>();
   int fontCount=0;

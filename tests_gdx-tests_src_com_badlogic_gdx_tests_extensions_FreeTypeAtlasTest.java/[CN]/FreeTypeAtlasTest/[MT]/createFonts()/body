@@ -1,5 +1,5 @@
 {
-  PixmapPacker packer=new PixmapPacker(FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,Format.RGBA8888,2,false);
+  packer=new PixmapPacker(FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,Format.RGBA8888,2,false);
   fontMap=new FontMap<BitmapFont>();
   int fontCount=0;
   for (  FontStyle style : FontStyle.values()) {
@@ -15,6 +15,5 @@
     }
     gen.dispose();
   }
-  atlas=packer.generateTextureAtlas(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,false);
   return fontCount * CHARACTERS.length();
 }

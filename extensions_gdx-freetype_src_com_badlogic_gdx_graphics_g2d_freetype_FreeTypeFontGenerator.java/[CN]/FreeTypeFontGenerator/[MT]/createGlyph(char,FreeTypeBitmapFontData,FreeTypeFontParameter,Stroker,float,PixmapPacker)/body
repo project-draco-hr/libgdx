@@ -69,13 +69,11 @@
       }
     }
   }
-  Rectangle rect=packer.packDirectToTexture(mainPixmap);
+  Rectangle rect=packer.pack(mainPixmap);
   glyph.page=packer.getPages().size - 1;
   glyph.srcX=(int)rect.x;
   glyph.srcY=(int)rect.y;
-  if (data.regions != null && data.regions.size <= glyph.page) {
-    packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps,false);
-  }
+  if (parameter.incremental && data.regions != null && data.regions.size <= glyph.page)   packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps);
   mainPixmap.dispose();
   mainGlyph.dispose();
   if (missing)   data.setGlyph(0,glyph);

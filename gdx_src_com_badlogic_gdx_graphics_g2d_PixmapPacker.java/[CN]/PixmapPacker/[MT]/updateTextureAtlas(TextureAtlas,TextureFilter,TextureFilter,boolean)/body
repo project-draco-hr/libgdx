@@ -1,14 +1,6 @@
 {
+  updatePageTextures(minFilter,magFilter,useMipMaps);
   for (  Page page : pages) {
-    if (page.textureNeedsRefresh) {
-      if (page.texture == null) {
-        generatePageTexture(page,minFilter,magFilter,useMipMaps);
-      }
- else {
-        page.texture.load(page.texture.getTextureData());
-      }
-      page.textureNeedsRefresh=false;
-    }
     if (page.addedRects.size > 0) {
       for (      String name : page.addedRects) {
         Rectangle rect=page.rects.get(name);
@@ -16,7 +8,7 @@
         atlas.addRegion(name,region);
       }
       page.addedRects.clear();
+      atlas.getTextures().add(page.texture);
     }
-    atlas.getTextures().add(page.texture);
   }
 }

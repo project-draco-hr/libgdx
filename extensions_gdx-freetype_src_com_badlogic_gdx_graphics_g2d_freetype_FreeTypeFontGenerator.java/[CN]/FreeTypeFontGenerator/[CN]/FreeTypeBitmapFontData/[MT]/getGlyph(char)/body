@@ -5,7 +5,7 @@
     glyph=generator.createGlyph(ch,this,parameter,stroker,(ascent + capHeight) / scaleY,packer);
     if (glyph == null)     return null;
     setGlyph(ch,glyph);
-    setGlyphRegion(glyph,regions.get(glyph.page));
+    setGlyphRegion(glyph,regions.get(glyph.page),packer.getPageWidth(),packer.getPageHeight());
     glyphs.add(glyph);
     if (parameter.kerning) {
       Face face=generator.face;
