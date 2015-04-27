@@ -1,5 +1,4 @@
 {
-  if (updating)   throw new GdxRuntimeException("Cannot change animation during update");
   if (current == null)   current=anim;
  else {
     if (!allowSameAnimation && anim != null && current.animation == anim.animation)     anim.time=current.time;
