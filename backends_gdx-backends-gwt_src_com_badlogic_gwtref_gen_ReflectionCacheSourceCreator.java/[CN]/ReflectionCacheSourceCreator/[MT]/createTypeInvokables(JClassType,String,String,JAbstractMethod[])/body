@@ -47,7 +47,7 @@
  else {
         pbn("EMPTY_PARAMETERS,");
       }
-      pb(stub.isAbstract + ", " + stub.isFinal+ ", "+ stub.isStatic+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ stub.isNative+ ", "+ m.isVarArgs()+ ", "+ stub.isMethod+ ", "+ stub.isConstructor+ ", "+ stub.methodId+ "),");
+      pb(stub.isAbstract + ", " + stub.isFinal+ ", "+ stub.isStatic+ ", "+ m.isDefaultAccess()+ ", "+ m.isPrivate()+ ", "+ m.isProtected()+ ", "+ m.isPublic()+ ", "+ stub.isNative+ ", "+ m.isVarArgs()+ ", "+ stub.isMethod+ ", "+ stub.isConstructor+ ", "+ stub.methodId+ ","+ getAnnotations(m.getDeclaredAnnotations())+ "),");
     }
     pb("};");
   }
