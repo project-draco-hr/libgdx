@@ -7,8 +7,7 @@
       if (region == null) {
         throw new IllegalArgumentException("BitmapFont texture region array cannot contain null elements.");
       }
-      Texture texture=region.getTexture();
-      data.setGlyphRegion(glyph,region,texture.getWidth(),texture.getHeight());
+      data.setGlyphRegion(glyph,region);
     }
   }
 }
