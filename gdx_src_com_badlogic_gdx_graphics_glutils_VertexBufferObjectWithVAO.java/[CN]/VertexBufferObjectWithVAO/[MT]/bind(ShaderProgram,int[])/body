@@ -5,12 +5,12 @@
     gl.glGenVertexArrays(1,tmpHandle);
     vaoHandle=tmpHandle.get(0);
     gl.glBindVertexArray(vaoHandle);
-    bindAttributes(shader,locations);
     vaoDirty=false;
   }
  else {
     gl.glBindVertexArray(vaoHandle);
   }
+  bindAttributes(shader,locations);
   bindData(gl);
   isBound=true;
 }

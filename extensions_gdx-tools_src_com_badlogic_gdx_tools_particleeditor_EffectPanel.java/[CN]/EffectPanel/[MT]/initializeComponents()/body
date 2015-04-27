@@ -51,7 +51,17 @@
       sideButtons.add(openButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
       openButton.addActionListener(new ActionListener(){
         public void actionPerformed(        ActionEvent event){
-          openEffect();
+          openEffect(false);
+        }
+      }
+);
+    }
+{
+      JButton mergeButton=new JButton("Merge");
+      sideButtons.add(mergeButton,new GridBagConstraints(0,-1,1,1,0,0,GridBagConstraints.CENTER,GridBagConstraints.HORIZONTAL,new Insets(0,0,6,0),0,0));
+      mergeButton.addActionListener(new ActionListener(){
+        public void actionPerformed(        ActionEvent event){
+          openEffect(true);
         }
       }
 );

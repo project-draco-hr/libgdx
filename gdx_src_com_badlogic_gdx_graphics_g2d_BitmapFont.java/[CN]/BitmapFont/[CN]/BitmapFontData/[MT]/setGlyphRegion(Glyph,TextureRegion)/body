@@ -1,6 +1,7 @@
 {
-  float invTexWidth=1.0f / region.getTexture().getWidth();
-  float invTexHeight=1.0f / region.getTexture().getHeight();
+  Texture texture=region.getTexture();
+  float invTexWidth=1.0f / texture.getWidth();
+  float invTexHeight=1.0f / texture.getHeight();
   float offsetX=0, offsetY=0;
   float u=region.u;
   float v=region.v;
