@@ -1,0 +1,6 @@
+{
+  PointLightsAttribute pointLights=((PointLightsAttribute)get(PointLightsAttribute.Type));
+  if (pointLights == null)   set(pointLights=new PointLightsAttribute());
+  pointLights.lights.add(light);
+  return this;
+}
