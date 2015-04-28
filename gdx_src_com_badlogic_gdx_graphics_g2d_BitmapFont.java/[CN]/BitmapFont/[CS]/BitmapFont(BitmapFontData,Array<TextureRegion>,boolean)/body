@@ -14,7 +14,7 @@
     regions=pageRegions;
     ownsTexture=false;
   }
-  cache=new BitmapFontCache(this,integer);
+  cache=newFontCache();
   this.flipped=data.flipped;
   this.data=data;
   this.integer=integer;
