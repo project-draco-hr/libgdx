@@ -1,0 +1,7 @@
+{
+  if (shader == null) {
+    shader=createDistanceFieldShader();
+    shader.setUniformf(SMOOTHING_UNIFORM,0);
+  }
+  return shader;
+}

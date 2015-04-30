@@ -1,0 +1,6 @@
+{
+  setSmoothingUniform(spriteBatch);
+  super.draw(spriteBatch);
+  spriteBatch.flush();
+  DistanceFieldBitmapFont.getDistanceFieldShader().setUniformf(SMOOTHING_UNIFORM,0);
+}
