@@ -2,7 +2,7 @@
   GlyphRun second=glyphRunPool.obtain();
   second.color.set(first.color);
   second.glyphs.addAll(first.glyphs,wrapIndex,first.glyphs.size - wrapIndex);
-  second.xAdvances.add(-second.glyphs.first().xoffset * fontData.scaleX);
+  second.xAdvances.add(-second.glyphs.first().xoffset * fontData.scaleX - fontData.padLeft);
   second.xAdvances.addAll(first.xAdvances,wrapIndex + 1,first.xAdvances.size - (wrapIndex + 1));
   while (widthIndex < wrapIndex)   first.width+=first.xAdvances.get(widthIndex++);
   while (widthIndex > wrapIndex + 1)   first.width-=first.xAdvances.get(--widthIndex);

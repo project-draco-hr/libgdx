@@ -2,9 +2,9 @@
   int viewHeight=Gdx.graphics.getHeight();
   Gdx.gl.glClearColor(0,0,0,1);
   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-  if (false) {
-    BitmapFont font=label.getStyle().font;
-    label.getStyle().font.getRegion().getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
+  if (true) {
+    BitmapFont font=this.font;
+    font.getRegion().getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
     font.getData().setScale(2f);
     renderer.begin(ShapeRenderer.ShapeType.Line);
     renderer.setColor(0,1,0,1);
@@ -14,7 +14,12 @@
     spriteBatch.begin();
     String text="your new";
     text="How quickly [RED]daft jumping zebras vex.";
-    layout.setText(font,text,0,text.length(),font.getColor(),w,Align.center,false,"...");
+    if (false) {
+      layout.setText(font,text,0,text.length(),font.getColor(),w,Align.center,true,null);
+    }
+ else {
+      layout.setText(font,text,0,text.length(),font.getColor(),w,Align.center,false,"...");
+    }
     float meowy=(500 / 2 + layout.height / 2 + 5);
     font.draw(spriteBatch,layout,10,10 + meowy);
     spriteBatch.end();

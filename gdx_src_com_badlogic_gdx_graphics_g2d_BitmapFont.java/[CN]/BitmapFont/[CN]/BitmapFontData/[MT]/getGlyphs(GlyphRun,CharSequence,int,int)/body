@@ -9,10 +9,10 @@
     Glyph glyph=getGlyph(ch);
     if (glyph == null)     continue;
     glyphs.add(glyph);
-    if (lastGlyph == null)     xAdvances.add(-glyph.xoffset * scaleX);
+    if (lastGlyph == null)     xAdvances.add(-glyph.xoffset * scaleX - padLeft);
  else     xAdvances.add((lastGlyph.xadvance + lastGlyph.getKerning(ch)) * scaleX);
     lastGlyph=glyph;
     if (markupEnabled && ch == '[' && start < end && str.charAt(start) == '[')     start++;
   }
-  if (lastGlyph != null)   xAdvances.add((lastGlyph.xoffset + lastGlyph.width) * scaleX);
+  if (lastGlyph != null)   xAdvances.add((lastGlyph.xoffset + lastGlyph.width) * scaleX - padRight);
 }
