@@ -1,6 +1,3 @@
 {
-  for (int i=0; i < regions.size; i++) {
-    getRegion(i).getTexture().setFilter(TextureFilter.Linear,TextureFilter.Linear);
-  }
   return new DistanceFieldFontCache(this,integer);
 }
