@@ -1,6 +1,0 @@
-{
-  setSmoothingUniform(spriteBatch);
-  super.draw(spriteBatch);
-  spriteBatch.flush();
-  spriteBatch.getShader().setUniformf(SMOOTHING_UNIFORM,0);
-}
