@@ -1,10 +1,11 @@
 {
-  char ch=(char)glyphs.get(start).id;
-  if (isWhitespace(ch))   return start + 1;
-  for (int i=start - 1; i >= 1; i--) {
-    ch=(char)glyphs.get(i).id;
-    if (isWhitespace(ch))     return i + 1;
-    if (isBreakChar(ch))     return i;
+  for (int i=start; i >= 1; i--) {
+    char ch=(char)glyphs.get(i).id;
+    if (isWhitespace(ch)) {
+      while (--i >= 1)       if (!isWhitespace((char)glyphs.get(i).id))       break;
+      return i + 1;
+    }
+    if (i < start && isBreakChar(ch))     return i;
   }
   return 0;
 }
