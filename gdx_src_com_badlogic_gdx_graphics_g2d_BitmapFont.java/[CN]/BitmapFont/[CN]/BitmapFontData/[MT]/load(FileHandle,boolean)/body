@@ -11,7 +11,7 @@
     padLeft=Integer.parseInt(padding[1]);
     padBottom=Integer.parseInt(padding[2]);
     padRight=Integer.parseInt(padding[3]);
-    int padY=padTop + padBottom;
+    float padY=padTop + padBottom;
     line=reader.readLine();
     if (line == null)     throw new GdxRuntimeException("Missing common header.");
     String[] common=line.split(" ",7);
