@@ -1,13 +1,13 @@
 {
-  String textureAtlasPath;
-  ObjectMap<String,Object> resources;
-  if (parameter == null) {
-    textureAtlasPath=file.pathWithoutExtension() + ".atlas";
-    resources=null;
-  }
- else {
-    textureAtlasPath=parameter.textureAtlasPath;
-    resources=parameter.resources;
+  String textureAtlasPath=file.pathWithoutExtension() + ".atlas";
+  ObjectMap<String,Object> resources=null;
+  if (parameter != null) {
+    if (parameter.textureAtlasPath != null) {
+      textureAtlasPath=parameter.textureAtlasPath;
+    }
+    if (parameter.resources != null) {
+      resources=parameter.resources;
+    }
   }
   TextureAtlas atlas=manager.get(textureAtlasPath,TextureAtlas.class);
   Skin skin=new Skin(atlas);
