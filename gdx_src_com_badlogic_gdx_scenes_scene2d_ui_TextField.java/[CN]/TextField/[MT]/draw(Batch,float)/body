@@ -1,6 +1,7 @@
 {
   Stage stage=getStage();
   boolean focused=stage != null && stage.getKeyboardFocus() == this;
+  if (!focused)   keyRepeatTask.cancel();
   final BitmapFont font=style.font;
   final Color fontColor=(disabled && style.disabledFontColor != null) ? style.disabledFontColor : ((focused && style.focusedFontColor != null) ? style.focusedFontColor : style.fontColor);
   final Drawable selection=style.selection;
