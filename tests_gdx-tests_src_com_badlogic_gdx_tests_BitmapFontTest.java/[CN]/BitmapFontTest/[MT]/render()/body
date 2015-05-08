@@ -13,8 +13,8 @@
     renderer.end();
     spriteBatch.begin();
     String text="your new";
-    text="How quickly [RED]daft jumping zebras vex.";
-    if (false) {
+    text="Another font wrap is-sue, this time with    multiple whitespace characters.";
+    if (true) {
       layout.setText(font,text,0,text.length(),font.getColor(),w,Align.center,true,null);
     }
  else {

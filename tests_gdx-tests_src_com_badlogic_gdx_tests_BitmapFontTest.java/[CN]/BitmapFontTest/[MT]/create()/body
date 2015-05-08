@@ -2,6 +2,7 @@
   spriteBatch=new SpriteBatch();
   font=new BitmapFont(Gdx.files.internal("data/arial-32-pad.fnt"),false);
   font.getData().markupEnabled=true;
+  font.getData().breakChars=new char[]{'-'};
   multiPageFont=new BitmapFont(Gdx.files.internal("data/multipagefont.fnt"));
   Colors.put("PERU",Color.valueOf("CD853F"));
   renderer=new ShapeRenderer();
