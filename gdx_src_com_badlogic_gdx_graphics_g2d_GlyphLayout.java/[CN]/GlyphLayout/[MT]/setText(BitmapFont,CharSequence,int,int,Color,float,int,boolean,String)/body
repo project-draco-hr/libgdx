@@ -51,7 +51,7 @@ float[] xAdvances=run.xAdvances.items;
 for (int i=0, n=run.xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances[i];
 x+=xAdvance;
-if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX - 0.00001f > targetWidth) {
+if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX - 0.0001f > targetWidth) {
   if (truncate != null) {
     truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
     x=run.x + run.width;
