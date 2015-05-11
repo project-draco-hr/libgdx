@@ -1,8 +1,10 @@
 {
   java.lang.annotation.Annotation[] annotations=method.getDeclaredAnnotations();
-  for (  java.lang.annotation.Annotation annotation : annotations) {
-    if (annotation.annotationType().equals(annotationType)) {
-      return true;
+  if (annotations != null) {
+    for (    java.lang.annotation.Annotation annotation : annotations) {
+      if (annotation.annotationType().equals(annotationType)) {
+        return true;
+      }
     }
   }
   return false;
