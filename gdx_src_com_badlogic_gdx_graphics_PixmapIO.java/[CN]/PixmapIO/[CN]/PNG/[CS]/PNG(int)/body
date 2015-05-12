@@ -1,7 +1,4 @@
 {
   buffer=new ChunkBuffer(initialBufferSize);
   deflater=new Deflater();
-  if (Gdx.app.getType() != ApplicationType.Android) {
-    deflaterOutput=new DeflaterOutputStream(buffer,deflater);
-  }
 }

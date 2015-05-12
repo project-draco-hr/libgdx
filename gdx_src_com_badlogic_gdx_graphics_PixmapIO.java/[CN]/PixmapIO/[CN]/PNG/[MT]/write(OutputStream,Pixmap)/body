@@ -1,7 +1,5 @@
 {
-  if (Gdx.app.getType() == ApplicationType.Android) {
-    deflaterOutput=new DeflaterOutputStream(buffer,deflater);
-  }
+  DeflaterOutputStream deflaterOutput=new DeflaterOutputStream(buffer,deflater);
   DataOutputStream dataOutput=new DataOutputStream(output);
   dataOutput.write(SIGNATURE);
   buffer.writeInt(IHDR);
