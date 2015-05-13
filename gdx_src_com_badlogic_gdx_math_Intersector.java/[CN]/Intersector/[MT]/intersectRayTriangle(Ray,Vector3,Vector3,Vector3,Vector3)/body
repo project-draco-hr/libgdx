@@ -1,4 +1,8 @@
 {
+  if (t1.idt(ray.origin) || t2.idt(ray.origin) || t3.idt(ray.origin)) {
+    if (intersection != null)     intersection.set(ray.origin);
+    return true;
+  }
   p.set(t1,t2,t3);
   if (!intersectRayPlane(ray,p,i))   return false;
   v0.set(t3).sub(t1);
