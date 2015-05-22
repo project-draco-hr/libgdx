@@ -1,0 +1,8 @@
+{
+  Fragment fragment=getParentFragment();
+  while (fragment != null) {
+    if (fragment.isRemoving())     return true;
+    fragment=fragment.getParentFragment();
+  }
+  return false;
+}
