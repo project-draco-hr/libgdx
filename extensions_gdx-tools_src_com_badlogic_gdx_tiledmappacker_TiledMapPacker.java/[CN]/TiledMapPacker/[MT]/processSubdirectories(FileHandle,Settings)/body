@@ -1,0 +1,12 @@
+{
+  File parentPath=new File(currentDir.path());
+  File[] directories=parentPath.listFiles(new DirFilter());
+  for (  File directory : directories) {
+    currentDir=new FileHandle(directory.getCanonicalPath());
+    File[] mapFilesInCurrentDir=directory.listFiles(new TmxFilter());
+    for (    File mapFile : mapFilesInCurrentDir) {
+      processSingleMap(mapFile,currentDir,texturePackerSettings);
+    }
+    processSubdirectories(currentDir,texturePackerSettings);
+  }
+}
