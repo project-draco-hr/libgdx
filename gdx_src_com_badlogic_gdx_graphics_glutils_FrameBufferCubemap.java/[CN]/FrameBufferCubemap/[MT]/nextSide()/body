@@ -1,11 +1,11 @@
 {
-  if (nbSides > 5) {
+  if (currentSide > 5) {
     throw new GdxRuntimeException("No remaining sides.");
   }
- else   if (nbSides == 5) {
+ else   if (currentSide == 5) {
     return false;
   }
-  nbSides++;
+  currentSide++;
   bindSide(getSide());
   return true;
 }

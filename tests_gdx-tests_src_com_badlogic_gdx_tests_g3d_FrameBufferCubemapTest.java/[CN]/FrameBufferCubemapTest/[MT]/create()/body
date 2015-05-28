@@ -6,7 +6,7 @@
   camFb.near=0.1f;
   camFb.far=1000f;
   camFb.update();
-  fb=new FrameBufferCubemap(Format.RGBA8888,800,800,false);
+  fb=new FrameBufferCubemap(Format.RGBA8888,800,800,true);
   ObjLoader objLoader=new ObjLoader();
   cubeMesh=objLoader.loadModel(Gdx.files.internal("data/cube.obj"));
   cubeInstance=new ModelInstance(cubeMesh);
@@ -15,7 +15,7 @@
   camCube=new PerspectiveCamera(67,Gdx.graphics.getWidth() * 0.5f,Gdx.graphics.getHeight() * 0.5f);
   camCube.position.set(0f,2f,2f);
   camCube.lookAt(0,0,0);
-  camCube.near=0.1f;
+  camCube.near=1f;
   camCube.far=300f;
   camCube.update();
 }

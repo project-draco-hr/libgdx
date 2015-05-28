@@ -18,5 +18,5 @@
     modelBatch.end();
   }
   fb.end();
-  cubemap=fb.getColorBufferCubemap();
+  cubemap=fb.getColorBufferTexture();
 }
