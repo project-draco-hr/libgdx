@@ -1,0 +1,5 @@
+{
+  setSmoothingUniform(spriteBatch,getSmoothingFactor());
+  super.draw(spriteBatch,start,end);
+  setSmoothingUniform(spriteBatch,0);
+}

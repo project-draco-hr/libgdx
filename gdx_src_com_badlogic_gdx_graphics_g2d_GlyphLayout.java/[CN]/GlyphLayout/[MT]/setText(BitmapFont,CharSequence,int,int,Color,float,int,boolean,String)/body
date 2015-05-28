@@ -1,13 +1,15 @@
 {
-  if (targetWidth == 0)   wrap=false;
   if (truncate != null)   wrap=true;
+ else   if (targetWidth <= font.data.spaceWidth)   wrap=false;
   BitmapFontData fontData=font.data;
   boolean markupEnabled=fontData.markupEnabled;
   Pool<GlyphRun> glyphRunPool=Pools.get(GlyphRun.class);
+  Array<GlyphRun> runs=this.runs;
   glyphRunPool.freeAll(runs);
   runs.clear();
   float x=0, y=0, width=0;
   int lines=0;
+  Array<Color> colorStack=GlyphLayout.colorStack;
   Color nextColor=color;
   colorStack.add(color);
   Pool<Color> colorPool=Pools.get(Color.class);
@@ -38,36 +40,42 @@ break;
 }
 }
 if (runEnd != -1) {
+if (runEnd != runStart) {
 GlyphRun run=glyphRunPool.obtain();
 runs.add(run);
 run.color.set(color);
 run.x=x;
 run.y=y;
 fontData.getGlyphs(run,str,runStart,runEnd);
-FloatArray xAdvances=run.xAdvances;
-for (int i=0, n=xAdvances.size; i < n; i++) {
-float xAdvance=xAdvances.get(i);
+float[] xAdvances=run.xAdvances.items;
+for (int i=0, n=run.xAdvances.size; i < n; i++) {
+float xAdvance=xAdvances[i];
 x+=xAdvance;
-if (wrap && x > targetWidth && i > 0 && x - (xAdvance - run.glyphs.get(i).width) > targetWidth) {
-if (truncate != null) {
-  truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
-  break outer;
-}
-GlyphRun next=glyphRunPool.obtain();
-runs.add(next);
-wrap(fontData,run,next,Math.max(1,fontData.getWrapIndex(run.glyphs,i)),i);
-width=Math.max(width,run.width);
-x=0;
-y+=fontData.down;
-lines++;
-next.x=0;
-next.y=y;
-i=-1;
-n=next.xAdvances.size;
-xAdvances=next.xAdvances;
-run=next;
+if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xoffset + run.glyphs.get(i - 1).width) * fontData.scaleX - 0.0001f > targetWidth) {
+  if (truncate != null) {
+    truncate(fontData,run,targetWidth,truncate,i,glyphRunPool);
+    x=run.x + run.width;
+    break outer;
+  }
+  int wrapIndex=fontData.getWrapIndex(run.glyphs,i - 1);
+  if ((run.x == 0 && wrapIndex == 0) || wrapIndex >= run.glyphs.size) {
+    wrapIndex=i - 1;
+  }
+  GlyphRun next=wrap(fontData,run,glyphRunPool,wrapIndex,i);
+  runs.add(next);
+  width=Math.max(width,run.x + run.width);
+  x=0;
+  y+=fontData.down;
+  lines++;
+  next.x=0;
+  next.y=y;
+  i=-1;
+  n=next.xAdvances.size;
+  xAdvances=next.xAdvances.items;
+  run=next;
 }
  else run.width+=xAdvance;
+}
 }
 if (newline) {
 width=Math.max(width,x);

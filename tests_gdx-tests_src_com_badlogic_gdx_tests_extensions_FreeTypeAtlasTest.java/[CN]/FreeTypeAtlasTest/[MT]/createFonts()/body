@@ -1,0 +1,19 @@
+{
+  packer=new PixmapPacker(FONT_ATLAS_WIDTH,FONT_ATLAS_HEIGHT,Format.RGBA8888,2,false);
+  fontMap=new FontMap<BitmapFont>();
+  int fontCount=0;
+  for (  FontStyle style : FontStyle.values()) {
+    FreeTypeFontGenerator gen=new FreeTypeFontGenerator(Gdx.files.internal(style.path));
+    for (    FontSize size : FontSize.values()) {
+      FreeTypeFontGenerator.FreeTypeFontParameter fontParameter=new FreeTypeFontGenerator.FreeTypeFontParameter();
+      fontParameter.size=size.size;
+      fontParameter.packer=packer;
+      fontParameter.characters=CHARACTERS;
+      BitmapFont bmFont=gen.generateFont(fontParameter);
+      fontMap.get(style).put(size,bmFont);
+      fontCount++;
+    }
+    gen.dispose();
+  }
+  return fontCount * CHARACTERS.length();
+}

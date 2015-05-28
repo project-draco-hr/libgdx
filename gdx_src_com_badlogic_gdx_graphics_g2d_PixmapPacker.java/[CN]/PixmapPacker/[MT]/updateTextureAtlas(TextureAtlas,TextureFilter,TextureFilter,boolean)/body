@@ -1,33 +1,14 @@
 {
+  updatePageTextures(minFilter,magFilter,useMipMaps);
   for (  Page page : pages) {
-    if (page.texture == null) {
-      if (page.rects.size != 0 && page.addedRects.size > 0) {
-        page.texture=new Texture(new PixmapTextureData(page.image,page.image.getFormat(),useMipMaps,false,true)){
-          @Override public void dispose(){
-            super.dispose();
-            getTextureData().consumePixmap().dispose();
-          }
-        }
-;
-        page.texture.setFilter(minFilter,magFilter);
-        for (        String name : page.addedRects) {
-          Rectangle rect=page.rects.get(name);
-          TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
-          atlas.addRegion(name,region);
-        }
-        page.addedRects.clear();
+    if (page.addedRects.size > 0) {
+      for (      String name : page.addedRects) {
+        Rectangle rect=page.rects.get(name);
+        TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
+        atlas.addRegion(name,region);
       }
-    }
- else {
-      if (page.addedRects.size > 0) {
-        page.texture.load(page.texture.getTextureData());
-        for (        String name : page.addedRects) {
-          Rectangle rect=page.rects.get(name);
-          TextureRegion region=new TextureRegion(page.texture,(int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height);
-          atlas.addRegion(name,region);
-        }
-        page.addedRects.clear();
-      }
+      page.addedRects.clear();
+      atlas.getTextures().add(page.texture);
     }
   }
 }

@@ -1,0 +1,6 @@
+{
+  if (customShader == null) {
+    return shader;
+  }
+  return customShader;
+}

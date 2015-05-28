@@ -1,0 +1,10 @@
+{
+  prefSizeInvalid=false;
+  if (wrap && !ellipsis) {
+    float width=getWidth();
+    if (style.background != null)     width-=style.background.getLeftWidth() + style.background.getRightWidth();
+    layout.setText(cache.getFont(),text,Color.WHITE,width,Align.left,true);
+  }
+ else   layout.setText(cache.getFont(),text);
+  prefSize.set(layout.width,layout.height);
+}

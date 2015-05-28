@@ -4,19 +4,17 @@
   for (  FontStyle style : FontStyle.values()) {
     FreeTypeFontGenerator gen=new FreeTypeFontGenerator(Gdx.files.internal(style.path));
     for (    FontSize size : FontSize.values()) {
-      BitmapFontData data=gen.generateData(size.size,CHARACTERS,false,packer);
+      FreeTypeFontGenerator.FreeTypeFontParameter fontParameter=new FreeTypeFontGenerator.FreeTypeFontParameter();
+      fontParameter.size=size.size;
+      fontParameter.packer=packer;
+      fontParameter.characters=CHARACTERS;
+      BitmapFontData data=gen.generateData(fontParameter);
       dataMap.get(style).put(size,data);
     }
     gen.dispose();
   }
-  Array<Page> pages=packer.getPages();
-  regions=new Array(pages.size);
-  for (int i=0; i < pages.size; i++) {
-    Page page=pages.get(i);
-    Texture tex=new Texture(page.getPixmap());
-    tex.setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
-    regions.add(new TextureRegion(tex));
-  }
+  regions=new Array<TextureRegion>();
+  packer.updateTextureRegions(regions,TextureFilter.Nearest,TextureFilter.Nearest,false);
   packer.dispose();
   fontMap=new FontMap<BitmapFont>();
   int fontCount=0;

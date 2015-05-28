@@ -1,6 +1,8 @@
 {
   for (  Page page : pages) {
-    page.image.dispose();
+    if (page.texture == null) {
+      page.image.dispose();
+    }
   }
   disposed=true;
 }

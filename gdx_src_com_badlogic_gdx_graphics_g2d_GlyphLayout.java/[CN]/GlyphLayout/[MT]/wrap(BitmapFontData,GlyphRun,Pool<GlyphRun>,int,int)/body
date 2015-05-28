@@ -1,0 +1,26 @@
+{
+  GlyphRun second=glyphRunPool.obtain();
+  second.color.set(first.color);
+  int glyphCount=first.glyphs.size;
+  int endIndex=wrapIndex;
+  for (; endIndex > 0; endIndex--)   if (!fontData.isWhitespace((char)first.glyphs.get(endIndex - 1).id))   break;
+  int startIndex=wrapIndex;
+  for (; startIndex < glyphCount; startIndex++)   if (!fontData.isWhitespace((char)first.glyphs.get(startIndex).id))   break;
+  if (startIndex < glyphCount) {
+    second.glyphs.addAll(first.glyphs,startIndex,glyphCount - startIndex);
+    second.xAdvances.add(-second.glyphs.first().xoffset * fontData.scaleX - fontData.padLeft);
+    second.xAdvances.addAll(first.xAdvances,startIndex + 1,first.xAdvances.size - (startIndex + 1));
+  }
+  while (widthIndex < endIndex)   first.width+=first.xAdvances.get(widthIndex++);
+  while (widthIndex > endIndex + 1)   first.width-=first.xAdvances.get(--widthIndex);
+  if (endIndex == 0) {
+    glyphRunPool.free(first);
+    runs.pop();
+  }
+ else {
+    first.glyphs.truncate(endIndex);
+    first.xAdvances.truncate(endIndex + 1);
+    adjustLastGlyph(fontData,first);
+  }
+  return second;
+}

@@ -1,0 +1,3 @@
+{
+  return SWIGTYPE_p_btGearConstraint.getCPtr(self.createGearConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),axisInA,axisInB,ratio));
+}

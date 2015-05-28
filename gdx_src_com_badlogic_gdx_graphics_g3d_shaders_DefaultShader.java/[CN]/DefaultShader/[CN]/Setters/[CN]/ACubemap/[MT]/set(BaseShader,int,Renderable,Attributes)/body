@@ -3,8 +3,14 @@
  else {
     renderable.worldTransform.getTranslation(tmpV1);
     if (combinedAttributes.has(ColorAttribute.AmbientLight))     cacheAmbientCubemap.set(((ColorAttribute)combinedAttributes.get(ColorAttribute.AmbientLight)).color);
-    for (int i=dirLightsOffset; i < renderable.environment.directionalLights.size; i++)     cacheAmbientCubemap.add(renderable.environment.directionalLights.get(i).color,renderable.environment.directionalLights.get(i).direction);
-    for (int i=pointLightsOffset; i < renderable.environment.pointLights.size; i++)     cacheAmbientCubemap.add(renderable.environment.pointLights.get(i).color,renderable.environment.pointLights.get(i).position,tmpV1,renderable.environment.pointLights.get(i).intensity);
+    if (combinedAttributes.has(DirectionalLightsAttribute.Type)) {
+      Array<DirectionalLight> lights=((DirectionalLightsAttribute)combinedAttributes.get(DirectionalLightsAttribute.Type)).lights;
+      for (int i=dirLightsOffset; i < lights.size; i++)       cacheAmbientCubemap.add(lights.get(i).color,lights.get(i).direction);
+    }
+    if (combinedAttributes.has(PointLightsAttribute.Type)) {
+      Array<PointLight> lights=((PointLightsAttribute)combinedAttributes.get(PointLightsAttribute.Type)).lights;
+      for (int i=pointLightsOffset; i < lights.size; i++)       cacheAmbientCubemap.add(lights.get(i).color,lights.get(i).position,tmpV1,lights.get(i).intensity);
+    }
     cacheAmbientCubemap.clamp();
     shader.program.setUniform3fv(shader.loc(inputID),cacheAmbientCubemap.data,0,cacheAmbientCubemap.data.length);
   }

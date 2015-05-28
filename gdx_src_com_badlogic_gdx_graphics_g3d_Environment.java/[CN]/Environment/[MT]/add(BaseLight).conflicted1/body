@@ -1,7 +1,9 @@
 {
-  if (light instanceof DirectionalLight)   directionalLights.add((DirectionalLight)light);
- else   if (light instanceof PointLight)   pointLights.add((PointLight)light);
- else   if (light instanceof SpotLight)   spotLights.add((SpotLight)light);
+  if (light instanceof DirectionalLight)   add((DirectionalLight)light);
+ else   if (light instanceof PointLight) {
+    add((PointLight)light);
+  }
+ else   if (light instanceof SpotLight)   add((SpotLight)light);
  else   throw new GdxRuntimeException("Unknown light type");
   return this;
 }

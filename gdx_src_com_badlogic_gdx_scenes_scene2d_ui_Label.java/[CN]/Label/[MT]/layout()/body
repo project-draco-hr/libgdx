@@ -3,7 +3,7 @@
   float oldScaleX=font.getScaleX();
   float oldScaleY=font.getScaleY();
   if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(fontScaleX,fontScaleY);
-  if (sizeInvalid)   computeSize();
+  boolean wrap=this.wrap && !ellipsis;
   if (wrap) {
     float prefHeight=getPrefHeight();
     if (prefHeight != lastPrefHeight) {
@@ -12,7 +12,6 @@
     }
   }
   float width=getWidth(), height=getHeight();
-  float textWidth=layout.width, textHeight=layout.height;
   Drawable background=style.background;
   float x=0, y=0;
   if (background != null) {
@@ -20,6 +19,21 @@
     y=background.getBottomHeight();
     width-=background.getLeftWidth() + background.getRightWidth();
     height-=background.getBottomHeight() + background.getTopHeight();
+  }
+  GlyphLayout layout=this.layout;
+  float textWidth, textHeight;
+  if (wrap || text.indexOf("\n") != -1) {
+    layout.setText(font,text,0,text.length,Color.WHITE,width,lineAlign,wrap,ellipsis ? "..." : null);
+    textWidth=layout.width;
+    textHeight=layout.height;
+    if ((labelAlign & Align.left) == 0) {
+      if ((labelAlign & Align.right) != 0)       x+=width - textWidth;
+ else       x+=(width - textWidth) / 2;
+    }
+  }
+ else {
+    textWidth=width;
+    textHeight=font.getData().capHeight;
   }
   if ((labelAlign & Align.top) != 0) {
     y+=cache.getFont().isFlipped() ? 0 : height - textHeight;
@@ -29,13 +43,11 @@
     y+=cache.getFont().isFlipped() ? height - textHeight : 0;
     y-=style.font.getDescent();
   }
- else   y+=(int)((height - textHeight) / 2);
-  if (!cache.getFont().isFlipped())   y+=textHeight;
-  if ((labelAlign & Align.left) == 0) {
-    if ((labelAlign & Align.right) != 0)     x+=width - textWidth;
- else     x+=(int)((width - textWidth) / 2);
+ else {
+    y+=(height - textHeight) / 2;
   }
-  layout.setText(font,text,0,text.length,Color.WHITE,(ellipsis && width < textWidth) ? width : textWidth,lineAlign,wrap,ellipsis ? "..." : null);
+  if (!cache.getFont().isFlipped())   y+=textHeight;
+  layout.setText(font,text,0,text.length,Color.WHITE,textWidth,lineAlign,wrap,ellipsis ? "..." : null);
   cache.setText(layout,x,y);
   if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(oldScaleX,oldScaleY);
 }
