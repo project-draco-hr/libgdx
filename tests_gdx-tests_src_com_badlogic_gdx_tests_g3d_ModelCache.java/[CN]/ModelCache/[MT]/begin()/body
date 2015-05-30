@@ -1,0 +1,9 @@
+{
+  if (building)   throw new GdxRuntimeException("Call end() after calling begin()");
+  building=true;
+  renderablesPool.flush();
+  renderables.clear();
+  items.clear();
+  meshPartPool.flush();
+  meshPool.flush();
+}
