@@ -1,0 +1,17 @@
+{
+  this.posPos=attributes.getOffset(Usage.Position,-1);
+  this.norPos=attributes.getOffset(Usage.Normal,-1);
+  this.uvPos=attributes.getOffset(Usage.TextureCoordinates,-1);
+  this.colPos=attributes.getOffset(Usage.ColorUnpacked,-1);
+  smooth=smooth || (norPos < 0);
+  this.width=width;
+  this.height=height;
+  this.smooth=smooth;
+  this.data=new float[width * height];
+  this.stride=attributes.vertexSize / 4;
+  final int numVertices=smooth ? width * height : (width - 1) * (height - 1) * 4;
+  final int numIndices=(width - 1) * (height - 1) * 6;
+  this.mesh=new Mesh(isStatic,numVertices,numIndices,attributes);
+  this.vertices=new float[numVertices * stride];
+  setIndices();
+}

@@ -1,0 +1,28 @@
+{
+  int faces=0;
+  out.set(0,0,0);
+  Vector3 center=getPositionAt(tmpV2,x,y);
+  Vector3 left=x > 0 ? getPositionAt(tmpV3,x - 1,y) : null;
+  Vector3 right=x < (width - 1) ? getPositionAt(tmpV4,x + 1,y) : null;
+  Vector3 bottom=y > 0 ? getPositionAt(tmpV5,x,y - 1) : null;
+  Vector3 top=y < (height - 1) ? getPositionAt(tmpV6,x,y + 1) : null;
+  if (top != null && left != null) {
+    out.add(tmpV7.set(top).sub(center).nor().crs(tmpV8.set(center).sub(left).nor()).nor());
+    faces++;
+  }
+  if (left != null && bottom != null) {
+    out.add(tmpV7.set(left).sub(center).nor().crs(tmpV8.set(center).sub(bottom).nor()).nor());
+    faces++;
+  }
+  if (bottom != null && right != null) {
+    out.add(tmpV7.set(bottom).sub(center).nor().crs(tmpV8.set(center).sub(right).nor()).nor());
+    faces++;
+  }
+  if (right != null && top != null) {
+    out.add(tmpV7.set(right).sub(center).nor().crs(tmpV8.set(center).sub(top).nor()).nor());
+    faces++;
+  }
+  if (faces != 0)   out.scl(1f / (float)faces);
+ else   out.set(magnitude).nor();
+  return out;
+}
