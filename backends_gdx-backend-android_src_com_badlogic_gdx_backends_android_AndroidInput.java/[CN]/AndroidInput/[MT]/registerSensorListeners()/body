@@ -6,18 +6,30 @@
     }
  else {
       Sensor accelerometer=manager.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
-      accelerometerListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues);
+      accelerometerListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues,this.gyroscopeValues);
       accelerometerAvailable=manager.registerListener(accelerometerListener,accelerometer,SensorManager.SENSOR_DELAY_GAME);
     }
   }
  else   accelerometerAvailable=false;
+  if (config.useGyroscope) {
+    manager=(SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
+    if (manager.getSensorList(Sensor.TYPE_GYROSCOPE).size() == 0) {
+      gyroscopeAvailable=false;
+    }
+ else {
+      Sensor gyroscope=manager.getSensorList(Sensor.TYPE_GYROSCOPE).get(0);
+      gyroscopeListener=new SensorListener(this.nativeOrientation,this.gyroscopeValues,this.magneticFieldValues,this.gyroscopeValues);
+      gyroscopeAvailable=manager.registerListener(gyroscopeListener,gyroscope,SensorManager.SENSOR_DELAY_GAME);
+    }
+  }
+ else   gyroscopeAvailable=false;
   if (config.useCompass) {
     if (manager == null)     manager=(SensorManager)context.getSystemService(Context.SENSOR_SERVICE);
     Sensor sensor=manager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
     if (sensor != null) {
       compassAvailable=accelerometerAvailable;
       if (compassAvailable) {
-        compassListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues);
+        compassListener=new SensorListener(this.nativeOrientation,this.accelerometerValues,this.magneticFieldValues,this.gyroscopeValues);
         compassAvailable=manager.registerListener(compassListener,sensor,SensorManager.SENSOR_DELAY_GAME);
       }
     }
