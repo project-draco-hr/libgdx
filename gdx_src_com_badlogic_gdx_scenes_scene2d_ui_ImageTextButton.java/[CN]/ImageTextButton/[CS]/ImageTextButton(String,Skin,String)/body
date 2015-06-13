@@ -1,4 +1,4 @@
 {
-  this(text,skin.get(styleName,ImageTextButtonStyle.class));
+  this(text,skin.get(styleName,ImageTextButtonStyle.class),true);
   setSkin(skin);
 }
