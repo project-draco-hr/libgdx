@@ -1,6 +1,8 @@
 {
-  float dx=x - c.x;
-  float dy=y - c.y;
-  float maxDistanceSqrd=dx * dx + dy * dy + c.radius * c.radius;
-  return maxDistanceSqrd <= radius * radius;
+  final float dx=x - c.x;
+  final float dy=y - c.y;
+  final float dst=dx * dx + dy * dy;
+  final float radiusDiff=radius - c.radius;
+  final float radiusSum=radius + c.radius;
+  return (!(radiusDiff * radiusDiff < dst) && (dst < radiusSum * radiusSum));
 }
