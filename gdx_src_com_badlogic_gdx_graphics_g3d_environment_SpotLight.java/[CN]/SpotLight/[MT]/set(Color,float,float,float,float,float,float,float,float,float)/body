@@ -4,5 +4,6 @@
   this.direction.set(dirX,dirY,dirZ).nor();
   this.intensity=intensity;
   this.cutoffAngle=cutoffAngle;
+  this.exponent=exponent;
   return this;
 }
