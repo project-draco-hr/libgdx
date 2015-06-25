@@ -35,7 +35,7 @@
     float minX=Math.max(glyphPositions[minIndex],startPos);
     float maxX=Math.min(glyphPositions[maxIndex],glyphPositions[visibleTextEnd]);
     selectionX=minX;
-    selectionWidth=maxX - minX;
+    selectionWidth=maxX - minX - style.font.getData().cursorX;
   }
   if (textHAlign == Align.center || textHAlign == Align.right) {
     textOffset=visibleWidth - (glyphPositions[visibleTextEnd] - startPos);
