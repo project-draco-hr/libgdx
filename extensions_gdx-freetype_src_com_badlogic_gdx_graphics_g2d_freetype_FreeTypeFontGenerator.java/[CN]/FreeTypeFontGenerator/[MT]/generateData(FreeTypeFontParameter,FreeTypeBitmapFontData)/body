@@ -24,10 +24,6 @@
  else {
     data.spaceWidth=face.getMaxAdvanceWidth();
   }
-  Glyph spaceGlyph=new Glyph();
-  spaceGlyph.xadvance=(int)data.spaceWidth;
-  spaceGlyph.id=(int)' ';
-  data.setGlyph(' ',spaceGlyph);
   for (  char xChar : data.xChars) {
     if (!face.loadChar(xChar,FreeType.FT_LOAD_DEFAULT))     continue;
     data.xHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
@@ -79,6 +75,14 @@
       if (incremental)       data.glyphs.add(glyph);
     }
   }
+  Glyph spaceGlyph=data.getGlyph(' ');
+  if (spaceGlyph == null) {
+    spaceGlyph=new Glyph();
+    spaceGlyph.xadvance=(int)data.spaceWidth;
+    spaceGlyph.id=(int)' ';
+    data.setGlyph(' ',spaceGlyph);
+  }
+  if (spaceGlyph.width == 0)   spaceGlyph.width=(int)(spaceGlyph.xadvance + data.padRight);
   if (stroker != null && !incremental)   stroker.dispose();
   if (parameter.kerning) {
     for (int i=0; i < charactersLength; i++) {
