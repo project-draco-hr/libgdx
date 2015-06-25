@@ -3,7 +3,7 @@
   float oldScaleX=font.getScaleX();
   float oldScaleY=font.getScaleY();
   if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(fontScaleX,fontScaleY);
-  boolean wrap=this.wrap && !ellipsis;
+  boolean wrap=this.wrap && ellipsis == null;
   if (wrap) {
     float prefHeight=getPrefHeight();
     if (prefHeight != lastPrefHeight) {
@@ -23,7 +23,7 @@
   GlyphLayout layout=this.layout;
   float textWidth, textHeight;
   if (wrap || text.indexOf("\n") != -1) {
-    layout.setText(font,text,0,text.length,Color.WHITE,width,lineAlign,wrap,ellipsis ? "..." : null);
+    layout.setText(font,text,0,text.length,Color.WHITE,width,lineAlign,wrap,ellipsis);
     textWidth=layout.width;
     textHeight=layout.height;
     if ((labelAlign & Align.left) == 0) {
@@ -47,7 +47,7 @@
     y+=(height - textHeight) / 2;
   }
   if (!cache.getFont().isFlipped())   y+=textHeight;
-  layout.setText(font,text,0,text.length,Color.WHITE,textWidth,lineAlign,wrap,ellipsis ? "..." : null);
+  layout.setText(font,text,0,text.length,Color.WHITE,textWidth,lineAlign,wrap,ellipsis);
   cache.setText(layout,x,y);
   if (fontScaleX != 1 || fontScaleY != 1)   font.getData().setScale(oldScaleX,oldScaleY);
 }
