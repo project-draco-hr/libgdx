@@ -1,0 +1,7 @@
+{
+  super(text,style);
+  clearChildren();
+  setCheckBoxRight(false);
+  getLabel().setAlignment(Align.left);
+  setSize(getPrefWidth(),getPrefHeight());
+}

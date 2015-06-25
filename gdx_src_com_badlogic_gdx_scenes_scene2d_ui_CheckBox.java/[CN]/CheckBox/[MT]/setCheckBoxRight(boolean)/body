@@ -1,0 +1,11 @@
+{
+  Label label=getLabel();
+  if (right) {
+    add(label);
+    imageCell=add(image=new Image(style.checkboxOff));
+  }
+ else {
+    imageCell=add(image=new Image(style.checkboxOff));
+    add(label);
+  }
+}
