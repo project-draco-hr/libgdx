@@ -31,6 +31,7 @@
       x+=xAdvances.get(i);
     }
   }
+ else   fontOffset=0;
   glyphPositions.add(x);
   if (selectionStart > newDisplayText.length())   selectionStart=textLength;
 }
