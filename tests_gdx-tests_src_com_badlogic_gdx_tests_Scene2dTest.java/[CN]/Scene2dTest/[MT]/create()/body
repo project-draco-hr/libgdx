@@ -77,8 +77,17 @@
   window.pack();
   window.pack();
   stage.addActor(window);
-  ImageTextButton buttonLeft=new ImageTextButton("HI IM LEFT",skin,"default",true);
-  ImageTextButton buttonRight=new ImageTextButton("HI IM RIGHT",skin,"default",false);
+  ImageTextButtonStyle style=new ImageTextButtonStyle(skin.get("default",TextButtonStyle.class));
+  style.imageUp=skin.getDrawable("default-round");
+  ImageTextButton buttonLeft=new ImageTextButton("HI IM LEFT",style);
+  ImageTextButton buttonRight=new ImageTextButton("HI IM RIGHT",style){
+{
+      clearChildren();
+      add(getLabel());
+      add(getImage());
+    }
+  }
+;
   CheckBox checkBoxLeft=new CheckBox("HI IM LEFT",skin,"default",true);
   CheckBox checkBoxRight=new CheckBox("HI IM RIGHT",skin,"default",false);
   buttonLeft.setPosition(300,400);
