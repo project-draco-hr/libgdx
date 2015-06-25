@@ -5,7 +5,7 @@
   graphics.setContinuousRendering(true);
   graphics.pause();
   input.onPause();
-  if (isRemoving() || getActivity().isFinishing()) {
+  if (isRemoving() || isAnyParentFragmentRemoving() || getActivity().isFinishing()) {
     graphics.clearManagedCaches();
     graphics.destroy();
   }

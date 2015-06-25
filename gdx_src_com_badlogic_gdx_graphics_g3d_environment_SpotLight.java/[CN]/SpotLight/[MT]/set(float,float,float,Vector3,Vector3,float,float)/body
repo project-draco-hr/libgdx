@@ -1,8 +1,0 @@
-{
-  this.color.set(r,g,b,1f);
-  if (position != null)   this.position.set(position);
-  if (direction != null)   this.direction.set(direction).nor();
-  this.intensity=intensity;
-  this.cutoffAngle=cutoffAngle;
-  return this;
-}

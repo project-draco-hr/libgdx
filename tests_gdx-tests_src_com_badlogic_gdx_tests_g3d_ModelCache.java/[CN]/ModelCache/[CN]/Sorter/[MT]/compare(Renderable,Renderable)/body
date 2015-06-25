@@ -1,0 +1,13 @@
+{
+  final VertexAttributes va0=arg0.mesh.getVertexAttributes();
+  final VertexAttributes va1=arg1.mesh.getVertexAttributes();
+  final int vc=va0.compareTo(va1);
+  if (vc == 0) {
+    final int mc=arg0.material.compareTo(arg1.material);
+    if (mc == 0) {
+      return arg0.primitiveType - arg1.primitiveType;
+    }
+    return mc;
+  }
+  return vc;
+}

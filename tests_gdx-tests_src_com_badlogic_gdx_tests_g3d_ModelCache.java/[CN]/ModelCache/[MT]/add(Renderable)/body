@@ -1,0 +1,5 @@
+{
+  if (!building)   throw new GdxRuntimeException("Can only add items to the ModelCache in between .begin() and .end()");
+  if (renderable.bones == null)   items.add(renderable);
+ else   renderables.add(renderable);
+}

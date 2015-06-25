@@ -1,0 +1,14 @@
+{
+  for (int i=0, n=freeMeshes.size; i < n; ++i) {
+    final Mesh mesh=freeMeshes.get(i);
+    if (mesh.getVertexAttributes().equals(vertexAttributes) && mesh.getMaxVertices() == vertexCount && mesh.getMaxIndices() == indexCount) {
+      freeMeshes.removeIndex(i);
+      usedMeshes.add(mesh);
+      return mesh;
+    }
+  }
+  Gdx.app.log("ModelCache","Allocating new Mesh, vertices: " + vertexCount + ", indices: "+ indexCount);
+  Mesh result=new Mesh(true,vertexCount,indexCount,vertexAttributes);
+  usedMeshes.add(result);
+  return result;
+}

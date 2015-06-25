@@ -1,5 +1,8 @@
 {
   InputStream input=getInputStream();
+  if (input == null) {
+    return StreamUtils.EMPTY_BYTES;
+  }
   try {
     return StreamUtils.copyStreamToByteArray(input,connection.getContentLength());
   }

@@ -1,0 +1,19 @@
+{
+  super(style);
+  this.style=style;
+  defaults().space(3);
+  image=new Image();
+  image.setScaling(Scaling.fit);
+  label=new Label(text,new LabelStyle(style.font,style.fontColor));
+  label.setAlignment(Align.center);
+  if (imageLeft) {
+    add(image);
+    add(label);
+  }
+ else {
+    add(label);
+    add(image);
+  }
+  setStyle(style);
+  setSize(getPrefWidth(),getPrefHeight());
+}

@@ -1,0 +1,4 @@
+{
+  if (map.getWidth() != width || map.getHeight() != height)   throw new GdxRuntimeException("Incorrect map size");
+  set(map.getPixels(),map.getFormat());
+}
