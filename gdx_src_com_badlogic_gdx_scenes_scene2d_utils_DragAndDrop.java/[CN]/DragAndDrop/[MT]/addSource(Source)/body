@@ -31,13 +31,15 @@
           if (!target.actor.isAscendantOf(hit))           continue;
           newTarget=target;
           target.actor.stageToLocalCoordinates(tmpVector.set(stageX,stageY));
-          isValidTarget=target.drag(source,payload,tmpVector.x,tmpVector.y,pointer);
           break;
         }
       }
       if (newTarget != target) {
         if (target != null)         target.reset(source,payload);
         target=newTarget;
+      }
+      if (newTarget != null) {
+        isValidTarget=newTarget.drag(source,payload,tmpVector.x,tmpVector.y,pointer);
       }
       if (dragActor != null)       dragActor.setTouchable(dragActorTouchable);
       Actor actor=null;
