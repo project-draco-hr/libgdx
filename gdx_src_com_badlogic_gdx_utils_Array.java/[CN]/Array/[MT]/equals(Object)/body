@@ -1,7 +1,9 @@
 {
   if (object == this)   return true;
+  if (!ordered)   return false;
   if (!(object instanceof Array))   return false;
   Array array=(Array)object;
+  if (!array.ordered)   return false;
   int n=size;
   if (n != array.size)   return false;
   Object[] items1=this.items;
