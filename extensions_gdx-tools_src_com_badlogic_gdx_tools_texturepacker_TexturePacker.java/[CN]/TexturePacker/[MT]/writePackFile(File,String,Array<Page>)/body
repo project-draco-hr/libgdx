@@ -22,9 +22,12 @@
     writer.write("format: " + settings.format + "\n");
     writer.write("filter: " + settings.filterMin + ","+ settings.filterMag+ "\n");
     writer.write("repeat: " + getRepeatValue() + "\n");
+    page.outputRects.sort();
     for (    Rect rect : page.outputRects) {
       writeRect(writer,page,rect,rect.name);
-      for (      Alias alias : rect.aliases) {
+      Array<Alias> aliases=new Array(rect.aliases.toArray());
+      aliases.sort();
+      for (      Alias alias : aliases) {
         Rect aliasRect=new Rect();
         aliasRect.set(rect);
         alias.apply(aliasRect);
