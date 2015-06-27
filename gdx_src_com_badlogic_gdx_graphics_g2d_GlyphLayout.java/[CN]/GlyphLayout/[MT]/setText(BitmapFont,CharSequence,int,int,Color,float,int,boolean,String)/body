@@ -57,7 +57,7 @@ if (wrap && x > targetWidth && i > 1 && x - xAdvance + (run.glyphs.get(i - 1).xo
     x=run.x + run.width;
     break outer;
   }
-  int wrapIndex=fontData.getWrapIndex(run.glyphs,i - 1);
+  int wrapIndex=fontData.getWrapIndex(run.glyphs,i);
   if ((run.x == 0 && wrapIndex == 0) || wrapIndex >= run.glyphs.size) {
     wrapIndex=i - 1;
   }
