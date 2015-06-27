@@ -119,7 +119,10 @@
       spaceGlyph.xadvance=xadvanceGlyph.xadvance;
       setGlyph(' ',spaceGlyph);
     }
-    if (spaceGlyph.width == 0)     spaceGlyph.width=(int)(spaceGlyph.xadvance + padRight);
+    if (spaceGlyph.width == 0) {
+      spaceGlyph.width=(int)(spaceGlyph.xadvance + padRight);
+      spaceGlyph.xoffset=(int)-padLeft;
+    }
     spaceWidth=spaceGlyph.width;
     Glyph xGlyph=null;
     for (int i=0; i < xChars.length; i++) {
