@@ -1,6 +1,3 @@
 {
-  if (hasSelection && !passwordMode) {
-    copy();
-    cursor=delete();
-  }
+  cut(programmaticChangeEvents);
 }

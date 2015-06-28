@@ -9,7 +9,7 @@
   boolean jump=ctrl && !passwordMode;
   if (ctrl) {
     if (keycode == Keys.V) {
-      paste();
+      paste(clipboard.getContents(),true);
       repeat=true;
     }
     if (keycode == Keys.C || keycode == Keys.INSERT) {
@@ -17,7 +17,7 @@
       return true;
     }
     if (keycode == Keys.X || keycode == Keys.DEL) {
-      cut();
+      cut(true);
       return true;
     }
     if (keycode == Keys.A) {
@@ -26,11 +26,8 @@
     }
   }
   if (UIUtils.shift()) {
-    if (keycode == Keys.INSERT)     paste();
-    if (keycode == Keys.FORWARD_DEL && hasSelection) {
-      copy();
-      delete();
-    }
+    if (keycode == Keys.INSERT)     paste(clipboard.getContents(),true);
+    if (keycode == Keys.FORWARD_DEL)     cut(true);
     selection: {
       int temp=cursor;
       keys: {

@@ -1,0 +1,8 @@
+{
+  if (newText.equals(oldText))   return false;
+  ChangeEvent changeEvent=Pools.obtain(ChangeEvent.class);
+  boolean cancelled=fire(changeEvent);
+  text=cancelled ? oldText : newText;
+  Pools.free(changeEvent);
+  return !cancelled;
+}

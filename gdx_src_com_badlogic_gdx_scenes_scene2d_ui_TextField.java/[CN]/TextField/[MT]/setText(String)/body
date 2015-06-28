@@ -2,7 +2,9 @@
   if (str == null)   str="";
   if (str.equals(text))   return;
   clearSelection();
+  String oldText=text;
   text="";
-  paste(str);
+  paste(str,false);
+  if (programmaticChangeEvents)   changeText(oldText,text);
   cursor=0;
 }
