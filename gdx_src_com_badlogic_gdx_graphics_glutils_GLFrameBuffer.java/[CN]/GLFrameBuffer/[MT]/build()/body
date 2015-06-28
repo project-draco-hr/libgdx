@@ -36,10 +36,10 @@
   if (hasStencil) {
     gl.glFramebufferRenderbuffer(GL20.GL_FRAMEBUFFER,GL20.GL_STENCIL_ATTACHMENT,GL20.GL_RENDERBUFFER,stencilbufferHandle);
   }
-  int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
   gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,0);
   gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
   gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,defaultFramebufferHandle);
+  int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
   if (result != GL20.GL_FRAMEBUFFER_COMPLETE) {
     colorTexture.dispose();
     if (hasDepth)     gl.glDeleteRenderbuffer(depthbufferHandle);
