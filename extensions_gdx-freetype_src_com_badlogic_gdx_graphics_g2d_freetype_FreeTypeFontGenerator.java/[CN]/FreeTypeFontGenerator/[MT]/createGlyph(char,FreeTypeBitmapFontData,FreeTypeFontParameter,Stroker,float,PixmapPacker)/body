@@ -29,7 +29,9 @@
       borderGlyph.toBitmap(FreeType.FT_RENDER_MODE_NORMAL);
       borderBitmap=borderGlyph.getBitmap();
       Pixmap borderPixmap=borderBitmap.getPixmap(Format.RGBA8888,parameter.borderColor);
-      borderPixmap.drawPixmap(mainPixmap,mainGlyph.getLeft() - borderGlyph.getLeft(),-(mainGlyph.getTop() - borderGlyph.getTop()));
+      for (int i=0, n=parameter.borderGlyphCount; i < n; i++) {
+        borderPixmap.drawPixmap(mainPixmap,mainGlyph.getLeft() - borderGlyph.getLeft(),-(mainGlyph.getTop() - borderGlyph.getTop()));
+      }
       mainPixmap.dispose();
       mainGlyph.dispose();
       mainPixmap=borderPixmap;
@@ -42,7 +44,7 @@
       Pixmap.setBlending(Blending.None);
       shadowPixmap.drawPixmap(shadowPixmapSrc,Math.max(parameter.shadowOffsetX,0),Math.max(parameter.shadowOffsetY,0));
       Pixmap.setBlending(blending);
-      shadowPixmap.drawPixmap(mainPixmap,Math.max(-parameter.shadowOffsetX,0),Math.max(-parameter.shadowOffsetY,0));
+      for (int i=0, n=parameter.shadowGlyphCount; i < n; i++)       shadowPixmap.drawPixmap(mainPixmap,Math.max(-parameter.shadowOffsetX,0),Math.max(-parameter.shadowOffsetY,0));
       mainPixmap.dispose();
       mainPixmap=shadowPixmap;
     }
