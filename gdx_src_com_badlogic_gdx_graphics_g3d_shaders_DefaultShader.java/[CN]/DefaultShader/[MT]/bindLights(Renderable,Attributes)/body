@@ -4,6 +4,8 @@
   final Array<DirectionalLight> dirs=dla == null ? null : dla.lights;
   final PointLightsAttribute pla=attributes.get(PointLightsAttribute.class,PointLightsAttribute.Type);
   final Array<PointLight> points=pla == null ? null : pla.lights;
+  final SpotLightsAttribute sla=attributes.get(SpotLightsAttribute.class,SpotLightsAttribute.Type);
+  final Array<SpotLight> spots=sla == null ? null : sla.lights;
   if (dirLightsLoc >= 0) {
     for (int i=0; i < directionalLights.length; i++) {
       if (dirs == null || i >= dirs.size) {
@@ -33,13 +35,31 @@
       if (pointLightsSize <= 0)       break;
     }
   }
+  if (spotLightsLoc >= 0) {
+    for (int i=0; i < spotLights.length; i++) {
+      if (spots == null || i >= spots.size) {
+        if (lightsSet && spotLights[i].intensity == 0f)         continue;
+        spotLights[i].intensity=0f;
+      }
+ else       if (lightsSet && spotLights[i].equals(spots.get(i)))       continue;
+ else       spotLights[i].set(spots.get(i));
+      int idx=spotLightsLoc + i * spotLightsSize;
+      program.setUniformf(idx + spotLightsColorOffset,spotLights[i].color.r * spotLights[i].intensity,spotLights[i].color.g * spotLights[i].intensity,spotLights[i].color.b * spotLights[i].intensity);
+      program.setUniformf(idx + spotLightsPositionOffset,spotLights[i].position);
+      program.setUniformf(idx + spotLightsDirectionOffset,spotLights[i].direction);
+      program.setUniformf(idx + spotLightsCutoffAngleOffset,spotLights[i].cutoffAngle);
+      program.setUniformf(idx + spotLightsExponentOffset,spotLights[i].exponent);
+      if (spotLightsIntensityOffset >= 0)       program.setUniformf(idx + spotLightsIntensityOffset,spotLights[i].intensity);
+      if (spotLightsSize <= 0)       break;
+    }
+  }
   if (attributes.has(ColorAttribute.Fog)) {
     set(u_fogColor,((ColorAttribute)attributes.get(ColorAttribute.Fog)).color);
   }
   if (lights != null && lights.shadowMap != null) {
     set(u_shadowMapProjViewTrans,lights.shadowMap.getProjViewTrans());
     set(u_shadowTexture,lights.shadowMap.getDepthMap());
-    set(u_shadowPCFOffset,1.f / (float)(2f * lights.shadowMap.getDepthMap().texture.getWidth()));
+    set(u_shadowPCFOffset,1.f / (2f * lights.shadowMap.getDepthMap().texture.getWidth()));
   }
   lightsSet=true;
 }
