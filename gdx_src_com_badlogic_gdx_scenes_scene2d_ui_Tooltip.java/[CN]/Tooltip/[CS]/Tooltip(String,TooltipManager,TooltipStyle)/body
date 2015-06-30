@@ -1,0 +1,26 @@
+{
+  this.manager=manager;
+  label=new Label(text,style.label);
+  label.setWrap(true);
+  label.setWidth(300);
+  label.validate();
+  table=new Table(){
+    public void act(    float delta){
+      super.act(delta);
+      if (targetActor != null && targetActor.getStage() == null)       remove();
+    }
+  }
+;
+  table.setBackground(style.background);
+  table.setTransform(true);
+  table.setTouchable(Touchable.disabled);
+  table.defaults().left().pad(-4,0,-1,0);
+  table.add(label).width(new Value(){
+    public float get(    Actor context){
+      return Math.min(manager.maxWidth,label.getGlyphLayout().width);
+    }
+  }
+);
+  table.pack();
+  table.pack();
+}

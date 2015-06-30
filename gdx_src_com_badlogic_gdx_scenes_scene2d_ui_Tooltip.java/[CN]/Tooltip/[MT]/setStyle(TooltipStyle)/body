@@ -1,0 +1,9 @@
+{
+  if (style == null)   throw new IllegalArgumentException("style cannot be null.");
+  if (style.label == null)   throw new IllegalArgumentException("Missing TooltipStyle label.");
+  this.style=style;
+  label.setStyle(style.label);
+  table.setBackground(style.background);
+  table.pack();
+  table.pack();
+}

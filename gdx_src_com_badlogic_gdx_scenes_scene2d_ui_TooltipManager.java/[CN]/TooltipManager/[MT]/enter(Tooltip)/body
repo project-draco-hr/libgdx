@@ -1,0 +1,6 @@
+{
+  showTooltip=tooltip;
+  showTask.cancel();
+  if ((enabled && time == 0) || tooltip.instant)   showTask.run();
+ else   if (enabled)   Timer.schedule(showTask,time);
+}

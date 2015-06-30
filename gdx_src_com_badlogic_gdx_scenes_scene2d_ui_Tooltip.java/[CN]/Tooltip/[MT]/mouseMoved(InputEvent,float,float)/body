@@ -1,0 +1,5 @@
+{
+  if (table.hasParent())   return false;
+  setTablePosition(event.getListenerActor(),x,y);
+  return true;
+}

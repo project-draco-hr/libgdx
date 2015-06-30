@@ -1,0 +1,4 @@
+{
+  if (toActor != null && toActor.isDescendantOf(event.getListenerActor()))   return;
+  hide();
+}

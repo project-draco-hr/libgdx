@@ -1,0 +1,6 @@
+{
+  float actionTime=animations ? (time > 0 ? 0.5f : 0.15f) : 0.1f;
+  tooltip.table.getColor().a=0.2f;
+  tooltip.table.setScale(0.05f);
+  tooltip.table.addAction(parallel(fadeIn(actionTime,fade),scaleTo(1,1,actionTime,Interpolation.fade)));
+}

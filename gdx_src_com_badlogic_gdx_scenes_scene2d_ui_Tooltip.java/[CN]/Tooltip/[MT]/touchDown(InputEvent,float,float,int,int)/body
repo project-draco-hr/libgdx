@@ -1,0 +1,8 @@
+{
+  if (instant) {
+    table.toFront();
+    return false;
+  }
+  manager.touchDown(this);
+  return false;
+}

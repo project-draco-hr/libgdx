@@ -1,0 +1,7 @@
+{
+  showTask.cancel();
+  if (tooltip.table.remove())   resetTask.cancel();
+  resetTask.run();
+  showTooltip=tooltip;
+  Timer.schedule(showTask,time);
+}

@@ -1,0 +1,14 @@
+{
+  this.targetActor=actor;
+  Stage stage=actor.getStage();
+  if (stage == null)   return;
+  Vector2 point=actor.localToStageCoordinates(tmp.set(x + 15,y - 19 - table.getHeight()));
+  if (point.y < 7)   point=actor.localToStageCoordinates(tmp.set(x + 15,y + 19));
+  if (point.x < 7)   point.x=7;
+  if (point.x + table.getWidth() > stage.getWidth() - 7)   point.x=stage.getWidth() - 7 - table.getWidth();
+  if (point.y + table.getHeight() > stage.getHeight() - 7)   point.y=stage.getHeight() - 7 - table.getHeight();
+  table.setPosition(point.x,point.y);
+  point=actor.localToStageCoordinates(tmp.set(actor.getWidth() / 2,actor.getHeight() / 2));
+  point.sub(table.getX(),table.getY());
+  table.setOrigin(point.x,point.y);
+}

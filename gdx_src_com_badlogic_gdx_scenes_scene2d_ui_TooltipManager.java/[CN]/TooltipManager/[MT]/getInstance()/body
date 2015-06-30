@@ -1,0 +1,7 @@
+{
+  if (app == null || app != Gdx.app) {
+    app=Gdx.app;
+    instance=new TooltipManager();
+  }
+  return instance;
+}
