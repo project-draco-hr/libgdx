@@ -1,3 +1,4 @@
 {
+  if (jsonData == null)   return defaultValue;
   return (T)readValue(type,elementType,jsonData);
 }
