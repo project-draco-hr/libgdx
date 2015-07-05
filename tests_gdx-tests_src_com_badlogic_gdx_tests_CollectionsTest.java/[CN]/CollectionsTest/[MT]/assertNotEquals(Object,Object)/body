@@ -1,0 +1,5 @@
+{
+  if (a.equals(b))   throw new GdxRuntimeException("!equals() failed: " + a + " == "+ b);
+  if (b.equals(a))   throw new GdxRuntimeException("!equals() failed (not symmetric): " + b + " == "+ a);
+  if (a.hashCode() == b.hashCode())   System.out.println("Warning: hashCode() may be incorrect: " + a + " == "+ b);
+}

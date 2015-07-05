@@ -1,0 +1,15 @@
+{
+  try {
+    Method theMethod=null;
+    for (    Method method : object.getClass().getMethods()) {
+      if (methodName.equals(method.getName()) && method.getParameterTypes().length == args.length) {
+        theMethod=method;
+        break;
+      }
+    }
+    theMethod.invoke(object,args);
+  }
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException(ex);
+  }
+}
