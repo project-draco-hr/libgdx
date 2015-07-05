@@ -25,8 +25,8 @@
     for (    Map.Entry<String,String> header : httpRequest.getHeaders().entrySet())     connection.addRequestProperty(header.getKey(),header.getValue());
     connection.setConnectTimeout(httpRequest.getTimeOut());
     connection.setReadTimeout(httpRequest.getTimeOut());
-    executorService.submit(new Runnable(){
-      @Override public void run(){
+    asyncExecutor.submit(new AsyncTask<Void>(){
+      @Override public Void call() throws Exception {
         try {
           if (doingOutPut) {
             String contentAsString=httpRequest.getContent();
@@ -74,6 +74,7 @@
             removeFromConnectionsAndListeners(httpRequest);
           }
         }
+        return null;
       }
     }
 );
