@@ -1,6 +1,6 @@
 {
   if (instant) {
-    table.toFront();
+    container.toFront();
     return false;
   }
   manager.touchDown(this);

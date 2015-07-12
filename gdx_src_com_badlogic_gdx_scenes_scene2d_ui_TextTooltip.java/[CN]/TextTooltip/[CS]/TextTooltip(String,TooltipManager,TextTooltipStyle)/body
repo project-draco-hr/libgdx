@@ -1,0 +1,13 @@
+{
+  super(null,manager);
+  Label label=new Label(text,style.label);
+  label.setWrap(true);
+  container.setActor(label);
+  container.width(new Value(){
+    public float get(    Actor context){
+      return Math.min(manager.maxWidth,container.getActor().getGlyphLayout().width);
+    }
+  }
+);
+  setStyle(style);
+}

@@ -3,7 +3,6 @@
   if (Gdx.input.isTouched())   return;
   Actor actor=event.getListenerActor();
   if (fromActor != null && fromActor.isDescendantOf(actor))   return;
-  setTablePosition(actor,x,y);
-  table.setScale(2);
+  setContainerPosition(actor,x,y);
   manager.enter(this);
 }

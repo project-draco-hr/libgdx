@@ -1,6 +1,6 @@
 {
   showTask.cancel();
-  if (tooltip.table.remove())   resetTask.cancel();
+  if (tooltip.container.remove())   resetTask.cancel();
   resetTask.run();
   if (enabled || tooltip.always) {
     showTooltip=tooltip;

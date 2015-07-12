@@ -1,7 +1,7 @@
 {
   showTooltip=null;
   showTask.cancel();
-  if (tooltip.table.hasParent()) {
+  if (tooltip.container.hasParent()) {
     shown.removeValue(tooltip,true);
     hideAction(tooltip);
     resetTask.cancel();
