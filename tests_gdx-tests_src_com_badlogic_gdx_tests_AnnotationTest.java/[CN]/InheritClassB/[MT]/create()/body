@@ -38,6 +38,14 @@
  else {
       println("ERROR: Method 'annotatedMethod' not found.");
     }
+    println("Class annotations w/@Inherit:");
+    Annotation[] annotations=ClassReflection.getAnnotations(InheritClassB.class);
+    for (    Annotation a : annotations) {
+      println(" name=" + a.getAnnotationType().getSimpleName());
+    }
+    if (!ClassReflection.isAnnotationPresent(InheritClassB.class,TestInheritAnnotation.class)) {
+      println("ERROR: Inherited class annotation not found.");
+    }
   }
  catch (  Exception e) {
     println("FAILED: " + e.getMessage());
