@@ -1,3 +1,9 @@
 {
-  return lastSelected != null ? lastSelected : selected.first();
+  if (lastSelected != null) {
+    return lastSelected;
+  }
+ else   if (selected.size > 0) {
+    return selected.first();
+  }
+  return null;
 }
