@@ -1,7 +1,7 @@
 {
   try {
     Method theMethod=null;
-    for (    Method method : object.getClass().getMethods()) {
+    for (    Method method : ClassReflection.getMethods(object.getClass())) {
       if (methodName.equals(method.getName()) && method.getParameterTypes().length == args.length) {
         theMethod=method;
         break;

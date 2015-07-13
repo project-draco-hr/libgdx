@@ -1,6 +1,6 @@
 {
   try {
-    object.getClass().getField(fieldName).set(object,value);
+    ClassReflection.getField(object.getClass(),fieldName).set(object,value);
   }
  catch (  Throwable ex) {
     throw new GdxRuntimeException(ex);
