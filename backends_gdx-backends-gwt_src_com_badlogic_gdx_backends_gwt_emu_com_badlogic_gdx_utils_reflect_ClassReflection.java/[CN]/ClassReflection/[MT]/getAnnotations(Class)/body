@@ -1,0 +1,35 @@
+{
+  Type declType=ReflectionCache.getType(c);
+  java.lang.annotation.Annotation[] annotations=declType.getDeclaredAnnotations();
+  Annotation[] result=new Annotation[annotations.length];
+  for (int i=0; i < annotations.length; i++) {
+    result[i]=new Annotation(annotations[i]);
+  }
+  Type superType=declType.getSuperclass();
+  java.lang.annotation.Annotation[] superAnnotations;
+  while (!superType.getClassOfType().equals(Object.class)) {
+    superAnnotations=superType.getDeclaredAnnotations();
+    for (int i=0; i < superAnnotations.length; i++) {
+      Type annotationType=ReflectionCache.getType(superAnnotations[i].annotationType());
+      if (annotationType.getDeclaredAnnotation(Inherited.class) != null) {
+        boolean duplicate=false;
+        for (        Annotation annotation : result) {
+          if (annotation.getAnnotationType().equals(annotationType)) {
+            duplicate=true;
+            break;
+          }
+        }
+        if (!duplicate) {
+          Annotation[] copy=new Annotation[result.length + 1];
+          for (int j=0; j < result.length; j++) {
+            copy[j]=result[j];
+          }
+          copy[result.length]=new Annotation(superAnnotations[i]);
+          result=copy;
+        }
+      }
+    }
+    superType=superType.getSuperclass();
+  }
+  return result;
+}
