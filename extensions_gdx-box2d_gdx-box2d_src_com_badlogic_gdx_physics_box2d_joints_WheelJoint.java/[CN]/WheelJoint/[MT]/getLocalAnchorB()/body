@@ -1,5 +1,5 @@
 {
-  jniGetLocalAnchorA(addr,tmp);
+  jniGetLocalAnchorB(addr,tmp);
   localAnchorB.set(tmp[0],tmp[1]);
   return localAnchorB;
 }
