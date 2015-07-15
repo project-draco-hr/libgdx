@@ -1,9 +1,5 @@
 {
-  java.lang.annotation.Annotation[] annotations=ReflectionCache.getType(c).getDeclaredAnnotations();
-  for (  java.lang.annotation.Annotation annotation : annotations) {
-    if (annotation.annotationType().equals(annotationType)) {
-      return new Annotation(annotation);
-    }
-  }
+  java.lang.annotation.Annotation annotation=ReflectionCache.getType(c).getDeclaredAnnotation(annotationType);
+  if (annotation != null)   return new Annotation(annotation);
   return null;
 }
