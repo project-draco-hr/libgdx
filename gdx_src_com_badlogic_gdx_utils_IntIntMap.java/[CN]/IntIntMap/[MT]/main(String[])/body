@@ -1,7 +1,0 @@
-{
-  ObjectIntMap m=new ObjectIntMap();
-  m.put("Asd",10);
-  System.out.println(m.containsValue(10));
-  m.remove("Asd",0);
-  System.out.println(m.containsValue(10));
-}
