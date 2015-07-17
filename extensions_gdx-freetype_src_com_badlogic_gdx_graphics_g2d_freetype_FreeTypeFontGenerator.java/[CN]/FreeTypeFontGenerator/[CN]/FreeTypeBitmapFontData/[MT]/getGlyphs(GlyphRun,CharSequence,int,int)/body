@@ -1,4 +1,8 @@
 {
   if (packer != null)   packer.setPackToTexture(true);
   super.getGlyphs(run,str,start,end);
+  if (dirty) {
+    dirty=false;
+    packer.updateTextureRegions(regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps);
+  }
 }
