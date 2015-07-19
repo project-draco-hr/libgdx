@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glColorMask(red,green,blue,alpha);
+  check();
 }

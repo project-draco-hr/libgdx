@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glViewport(x,y,width,height);
+  check();
 }

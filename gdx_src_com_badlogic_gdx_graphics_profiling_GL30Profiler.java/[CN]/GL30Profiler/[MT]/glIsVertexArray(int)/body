@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsVertexArray(array);
+  final boolean result=gl30.glIsVertexArray(array);
+  check();
+  return result;
 }

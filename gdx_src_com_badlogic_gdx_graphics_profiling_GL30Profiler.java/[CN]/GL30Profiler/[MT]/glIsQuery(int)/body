@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsQuery(id);
+  final boolean result=gl30.glIsQuery(id);
+  check();
+  return result;
 }

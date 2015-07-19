@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glIsFramebuffer(framebuffer);
+  boolean result=gl20.glIsFramebuffer(framebuffer);
+  check();
+  return result;
 }

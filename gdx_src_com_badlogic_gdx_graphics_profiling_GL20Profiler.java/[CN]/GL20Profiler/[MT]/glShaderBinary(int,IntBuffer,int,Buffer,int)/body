@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glShaderBinary(n,shaders,binaryformat,binary,length);
+  check();
 }

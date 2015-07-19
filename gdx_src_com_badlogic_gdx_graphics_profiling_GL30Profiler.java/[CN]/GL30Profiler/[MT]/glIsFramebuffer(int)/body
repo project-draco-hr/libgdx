@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsFramebuffer(framebuffer);
+  boolean result=gl30.glIsFramebuffer(framebuffer);
+  check();
+  return result;
 }

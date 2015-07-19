@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glGetFramebufferAttachmentParameteriv(target,attachment,pname,params);
+  check();
 }

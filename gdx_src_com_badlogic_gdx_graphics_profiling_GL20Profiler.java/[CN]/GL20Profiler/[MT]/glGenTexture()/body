@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGenTexture();
+  int result=gl20.glGenTexture();
+  check();
+  return result;
 }

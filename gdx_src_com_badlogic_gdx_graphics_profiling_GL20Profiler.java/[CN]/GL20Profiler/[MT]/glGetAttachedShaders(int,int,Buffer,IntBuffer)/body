@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glGetAttachedShaders(program,maxcount,count,shaders);
+  check();
 }

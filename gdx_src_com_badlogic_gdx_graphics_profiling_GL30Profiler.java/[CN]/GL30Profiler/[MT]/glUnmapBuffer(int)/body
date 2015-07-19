@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glUnmapBuffer(target);
+  final boolean result=gl30.glUnmapBuffer(target);
+  check();
+  return result;
 }

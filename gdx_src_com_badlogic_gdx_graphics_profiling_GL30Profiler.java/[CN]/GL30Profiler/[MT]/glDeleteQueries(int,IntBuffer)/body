@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glDeleteQueries(n,ids);
+  check();
 }

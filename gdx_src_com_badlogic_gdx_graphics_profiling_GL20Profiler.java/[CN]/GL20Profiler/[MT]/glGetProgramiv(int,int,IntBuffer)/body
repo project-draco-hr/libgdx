@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glGetProgramiv(program,pname,params);
+  check();
 }

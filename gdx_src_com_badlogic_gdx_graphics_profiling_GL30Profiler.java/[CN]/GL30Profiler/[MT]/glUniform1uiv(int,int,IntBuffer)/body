@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glUniform1uiv(location,count,value);
+  check();
 }

@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsTexture(texture);
+  boolean result=gl30.glIsTexture(texture);
+  check();
+  return result;
 }

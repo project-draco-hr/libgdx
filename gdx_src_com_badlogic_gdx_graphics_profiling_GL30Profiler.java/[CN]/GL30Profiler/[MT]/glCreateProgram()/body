@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glCreateProgram();
+  int result=gl30.glCreateProgram();
+  check();
+  return result;
 }

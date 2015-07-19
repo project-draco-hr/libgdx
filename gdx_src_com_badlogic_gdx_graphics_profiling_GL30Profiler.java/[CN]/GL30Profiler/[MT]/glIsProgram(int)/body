@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsProgram(program);
+  boolean result=gl30.glIsProgram(program);
+  check();
+  return result;
 }

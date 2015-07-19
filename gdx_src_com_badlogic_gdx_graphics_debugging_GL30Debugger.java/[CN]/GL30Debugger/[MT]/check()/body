@@ -1,6 +1,0 @@
-{
-  int error=gl30.glGetError();
-  if (error != GL30.GL_NO_ERROR) {
-    GLDebugger.listener.onError(error);
-  }
-}

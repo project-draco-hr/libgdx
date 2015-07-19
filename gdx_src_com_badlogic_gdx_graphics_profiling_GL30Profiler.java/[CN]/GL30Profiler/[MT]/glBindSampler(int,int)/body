@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glBindSampler(unit,sampler);
+  check();
 }

@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glBufferSubData(target,offset,size,data);
+  check();
 }

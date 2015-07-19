@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGetAttribLocation(program,name);
+  int result=gl20.glGetAttribLocation(program,name);
+  check();
+  return result;
 }

@@ -2,4 +2,5 @@
   textureBindings++;
   calls++;
   gl30.glBindTexture(target,texture);
+  check();
 }
