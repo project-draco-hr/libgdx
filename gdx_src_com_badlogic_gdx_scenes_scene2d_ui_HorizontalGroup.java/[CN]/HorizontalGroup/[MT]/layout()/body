@@ -8,8 +8,9 @@
   for (int i=0, n=children.size; i < n; i++) {
     Actor child=children.get(i);
     float width, height;
+    Layout layout=null;
     if (child instanceof Layout) {
-      Layout layout=(Layout)child;
+      layout=(Layout)child;
       if (fill > 0)       height=groupHeight * fill;
  else       height=Math.min(layout.getPrefHeight(),groupHeight);
       height=Math.max(height,layout.getMinHeight());
@@ -29,5 +30,6 @@
     if (round)     child.setBounds(Math.round(x),Math.round(y),Math.round(width),Math.round(height));
  else     child.setBounds(x,y,width,height);
     if (!reverse)     x+=(width + spacing);
+    if (layout != null)     layout.validate();
   }
 }
