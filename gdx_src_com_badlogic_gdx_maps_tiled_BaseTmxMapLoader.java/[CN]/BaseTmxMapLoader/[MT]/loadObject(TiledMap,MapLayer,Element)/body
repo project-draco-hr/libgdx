@@ -44,16 +44,17 @@
         boolean flipHorizontally=((id & FLAG_FLIP_HORIZONTALLY) != 0);
         boolean flipVertically=((id & FLAG_FLIP_VERTICALLY) != 0);
         TiledMapTile tile=map.getTileSets().getTile(id & ~MASK_CLEAR);
-        TextureRegion textureRegion=new TextureRegion(tile.getTextureRegion());
-        textureRegion.flip(flipHorizontally,flipVertically);
-        TextureMapObject textureMapObject=new TextureMapObject(textureRegion);
-        textureMapObject.getProperties().put("gid",id);
-        textureMapObject.setX(x);
-        textureMapObject.setY(flipY ? y : y - height);
-        textureMapObject.setScaleX(scaleX * (element.getFloatAttribute("width",textureRegion.getRegionWidth()) / textureRegion.getRegionWidth()));
-        textureMapObject.setScaleY(scaleY * (element.getFloatAttribute("height",textureRegion.getRegionHeight()) / textureRegion.getRegionHeight()));
-        textureMapObject.setRotation(element.getFloatAttribute("rotation",0));
-        object=textureMapObject;
+        TiledMapTileMapObject tiledMapTileMapObject=new TiledMapTileMapObject(tile,flipHorizontally,flipVertically);
+        TextureRegion textureRegion=tiledMapTileMapObject.getTextureRegion();
+        tiledMapTileMapObject.getProperties().put("gid",id);
+        tiledMapTileMapObject.setX(x);
+        tiledMapTileMapObject.setY(flipY ? y : y - height);
+        float objectWidth=element.getFloatAttribute("width",textureRegion.getRegionWidth());
+        float objectHeight=element.getFloatAttribute("height",textureRegion.getRegionHeight());
+        tiledMapTileMapObject.setScaleX(scaleX * (objectWidth / textureRegion.getRegionWidth()));
+        tiledMapTileMapObject.setScaleY(scaleY * (objectHeight / textureRegion.getRegionHeight()));
+        tiledMapTileMapObject.setRotation(element.getFloatAttribute("rotation",0));
+        object=tiledMapTileMapObject;
       }
  else {
         object=new RectangleMapObject(x,flipY ? y - height : y,width,height);
