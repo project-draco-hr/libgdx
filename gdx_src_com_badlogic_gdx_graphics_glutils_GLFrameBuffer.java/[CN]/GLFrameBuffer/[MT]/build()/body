@@ -11,7 +11,7 @@
       defaultFramebufferHandle=0;
     }
   }
-  setupTexture();
+  colorTexture=createColorTexture();
   framebufferHandle=gl.glGenFramebuffer();
   if (hasDepth) {
     depthbufferHandle=gl.glGenRenderbuffer();
@@ -41,7 +41,7 @@
   gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,defaultFramebufferHandle);
   int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
   if (result != GL20.GL_FRAMEBUFFER_COMPLETE) {
-    colorTexture.dispose();
+    disposeColorTexture(colorTexture);
     if (hasDepth)     gl.glDeleteRenderbuffer(depthbufferHandle);
     if (hasStencil)     gl.glDeleteRenderbuffer(stencilbufferHandle);
     gl.glDeleteFramebuffer(framebufferHandle);

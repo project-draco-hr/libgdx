@@ -1,6 +1,6 @@
 {
   GL20 gl=Gdx.gl20;
-  colorTexture.dispose();
+  disposeColorTexture(colorTexture);
   if (hasDepth)   gl.glDeleteRenderbuffer(depthbufferHandle);
   if (hasStencil)   gl.glDeleteRenderbuffer(stencilbufferHandle);
   gl.glDeleteFramebuffer(framebufferHandle);
