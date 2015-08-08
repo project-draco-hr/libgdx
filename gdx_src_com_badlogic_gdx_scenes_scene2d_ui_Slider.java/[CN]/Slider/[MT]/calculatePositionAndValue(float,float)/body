@@ -1,6 +1,6 @@
 {
   final SliderStyle style=getStyle();
-  final Drawable knob=(disabled && style.disabledKnob != null) ? style.disabledKnob : style.knob;
+  final Drawable knob=getKnobDrawable();
   final Drawable bg=(disabled && style.disabledBackground != null) ? style.disabledBackground : style.background;
   float value;
   float oldPosition=position;
