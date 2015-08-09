@@ -17,13 +17,14 @@
           for (int y=0; y < mapHeight; ++y) {
             for (int x=0; x < mapWidth; ++x) {
               if (tlayer.getCell(x,y) != null) {
-                int tileid=tlayer.getCell(x,y).getTile().getId() & ~0xE0000000;
-                String tilesetName=tilesetNameFromTileId(map,tileid);
-                IntArray usedIds=getUsedIdsBucket(tilesetName,bucketSize);
-                usedIds.add(tileid);
-                if (!tilesetsToPack.containsKey(tilesetName)) {
-                  tilesetsToPack.put(tilesetName,map.getTileSets().getTileSet(tilesetName));
+                TiledMapTile tile=tlayer.getCell(x,y).getTile();
+                if (tile instanceof AnimatedTiledMapTile) {
+                  AnimatedTiledMapTile aTile=(AnimatedTiledMapTile)tile;
+                  for (                  StaticTiledMapTile t : aTile.getFrameTiles()) {
+                    addTile(t,bucketSize,tilesetsToPack);
+                  }
                 }
+                addTile(tile,bucketSize,tilesetsToPack);
               }
             }
           }

@@ -12,6 +12,8 @@
   for (int i=0; i < directionalLights.length; i++)   directionalLights[i]=new DirectionalLight();
   this.pointLights=new PointLight[lighting && config.numPointLights > 0 ? config.numPointLights : 0];
   for (int i=0; i < pointLights.length; i++)   pointLights[i]=new PointLight();
+  this.spotLights=new SpotLight[lighting && config.numSpotLights > 0 ? config.numSpotLights : 0];
+  for (int i=0; i < spotLights.length; i++)   spotLights[i]=new SpotLight();
   if (!config.ignoreUnimplemented && (implementedFlags & attributesMask) != attributesMask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + attributesMask + ")");
   u_projTrans=register(Inputs.projTrans,Setters.projTrans);
   u_viewTrans=register(Inputs.viewTrans,Setters.viewTrans);

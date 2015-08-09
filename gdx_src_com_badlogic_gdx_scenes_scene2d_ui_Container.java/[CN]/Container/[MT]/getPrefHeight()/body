@@ -1,5 +1,5 @@
 {
   float v=prefHeight.get(actor);
   if (background != null)   v=Math.max(v,background.getMinHeight());
-  return v + padTop.get(this) + padBottom.get(this);
+  return Math.max(getMinHeight(),v + padTop.get(this) + padBottom.get(this));
 }

@@ -23,7 +23,7 @@
     if (useShader) {
       distanceFieldShader.setSmoothing(smoothing / scale);
     }
-    font.draw(spriteBatch,layout,x,y + scale * getBaselineShift(font));
+    font.draw(spriteBatch,layout,x,y);
     y+=font.getLineHeight();
     spriteBatch.flush();
   }

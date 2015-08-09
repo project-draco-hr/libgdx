@@ -1,0 +1,14 @@
+{
+  Renderable result=renderablesPool.obtain();
+  result.bones=null;
+  result.environment=null;
+  result.material=material;
+  result.mesh=null;
+  result.meshPartOffset=0;
+  result.meshPartSize=0;
+  result.primitiveType=primitiveType;
+  result.shader=null;
+  result.userData=null;
+  result.worldTransform.idt();
+  return result;
+}

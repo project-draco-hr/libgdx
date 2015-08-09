@@ -1,5 +1,5 @@
 {
   super.create();
   createHUD();
-  Gdx.input.setInputProcessor(new InputMultiplexer(this,hud,inputController));
+  Gdx.input.setInputProcessor(new InputMultiplexer(hud,this,inputController));
 }

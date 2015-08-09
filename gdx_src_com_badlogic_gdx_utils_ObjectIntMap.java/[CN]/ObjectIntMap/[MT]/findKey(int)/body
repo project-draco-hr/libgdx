@@ -1,5 +1,6 @@
 {
+  K[] keyTable=this.keyTable;
   int[] valueTable=this.valueTable;
-  for (int i=capacity + stashSize; i-- > 0; )   if (valueTable[i] == value)   return keyTable[i];
+  for (int i=capacity + stashSize; i-- > 0; )   if (keyTable[i] != null && valueTable[i] == value)   return keyTable[i];
   return null;
 }

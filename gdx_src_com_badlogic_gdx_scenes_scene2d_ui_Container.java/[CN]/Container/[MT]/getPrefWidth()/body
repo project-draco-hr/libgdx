@@ -1,5 +1,5 @@
 {
   float v=prefWidth.get(actor);
   if (background != null)   v=Math.max(v,background.getMinWidth());
-  return v + padLeft.get(this) + padRight.get(this);
+  return Math.max(getMinWidth(),v + padLeft.get(this) + padRight.get(this));
 }

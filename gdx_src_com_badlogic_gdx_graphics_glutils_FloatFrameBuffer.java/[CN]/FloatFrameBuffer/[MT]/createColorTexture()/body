@@ -1,0 +1,8 @@
+{
+  FloatTextureData data=new FloatTextureData(width,height);
+  Texture result=new Texture(data);
+  if (Gdx.app.getType() == ApplicationType.Desktop || Gdx.app.getType() == ApplicationType.Applet)   result.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+ else   result.setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
+  result.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  return result;
+}

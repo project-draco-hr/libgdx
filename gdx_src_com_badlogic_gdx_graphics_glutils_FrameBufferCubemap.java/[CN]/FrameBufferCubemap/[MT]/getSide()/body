@@ -1,0 +1,3 @@
+{
+  return currentSide < 0 ? null : Cubemap.CubemapSide.values()[currentSide];
+}

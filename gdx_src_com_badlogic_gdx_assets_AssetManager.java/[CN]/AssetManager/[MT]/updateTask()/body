@@ -1,6 +1,14 @@
 {
   AssetLoadingTask task=tasks.peek();
-  if (task.cancel || task.update()) {
+  boolean complete=true;
+  try {
+    complete=task.cancel || task.update();
+  }
+ catch (  RuntimeException ex) {
+    task.cancel=true;
+    taskFailed(task.assetDesc,ex);
+  }
+  if (complete) {
     if (tasks.size() == 1)     loaded++;
     tasks.pop();
     if (task.cancel)     return true;

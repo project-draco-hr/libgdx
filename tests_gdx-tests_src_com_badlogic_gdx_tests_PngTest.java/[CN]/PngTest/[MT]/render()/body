@@ -11,6 +11,7 @@
     try {
       PNG writer=new PNG((int)(pixmap.getWidth() * pixmap.getHeight() * 1.5f));
       writer.write(file,pixmap);
+      writer.write(file,pixmap);
       writer.dispose();
     }
  catch (    IOException ex) {

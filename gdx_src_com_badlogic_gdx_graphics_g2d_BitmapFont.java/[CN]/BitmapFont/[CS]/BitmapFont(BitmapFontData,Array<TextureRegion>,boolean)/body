@@ -1,4 +1,7 @@
 {
+  this.flipped=data.flipped;
+  this.data=data;
+  this.integer=integer;
   if (pageRegions == null || pageRegions.size == 0) {
     int n=data.imagePaths.length;
     regions=new Array(n);
@@ -14,9 +17,6 @@
     regions=pageRegions;
     ownsTexture=false;
   }
-  cache=new BitmapFontCache(this,integer);
-  this.flipped=data.flipped;
-  this.data=data;
-  this.integer=integer;
+  cache=newFontCache();
   load(data);
 }

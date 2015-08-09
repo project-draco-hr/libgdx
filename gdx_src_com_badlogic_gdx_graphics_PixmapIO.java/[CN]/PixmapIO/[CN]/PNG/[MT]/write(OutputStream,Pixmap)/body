@@ -1,4 +1,5 @@
 {
+  DeflaterOutputStream deflaterOutput=new DeflaterOutputStream(buffer,deflater);
   DataOutputStream dataOutput=new DataOutputStream(output);
   dataOutput.write(SIGNATURE);
   buffer.writeInt(IHDR);

@@ -1,0 +1,8 @@
+{
+  if (has(PointLightsAttribute.Type)) {
+    PointLightsAttribute pointLights=((PointLightsAttribute)get(PointLightsAttribute.Type));
+    pointLights.lights.removeValue(light,false);
+    if (pointLights.lights.size == 0)     remove(PointLightsAttribute.Type);
+  }
+  return this;
+}

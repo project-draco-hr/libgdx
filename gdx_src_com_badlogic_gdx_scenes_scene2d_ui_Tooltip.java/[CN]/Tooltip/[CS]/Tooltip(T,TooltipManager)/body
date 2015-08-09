@@ -1,0 +1,12 @@
+{
+  this.manager=manager;
+  container=new Container(contents){
+    public void act(    float delta){
+      super.act(delta);
+      if (targetActor != null && targetActor.getStage() == null)       remove();
+    }
+  }
+;
+  container.setTouchable(Touchable.disabled);
+  container.pack();
+}

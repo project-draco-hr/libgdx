@@ -11,7 +11,7 @@
       int end=Math.min(linesBreak.get(i + 1),maxIndex);
       float selectionX=glyphPositions.get(start) - glyphPositions.get(linesBreak.get(i));
       float selectionWidth=glyphPositions.get(end) - glyphPositions.get(start);
-      selection.draw(batch,x + selectionX,y - textHeight - font.getDescent()- offsetY,selectionWidth,font.getLineHeight());
+      selection.draw(batch,x + selectionX + fontOffset,y - textHeight - font.getDescent()- offsetY,selectionWidth,font.getLineHeight());
     }
     offsetY+=font.getLineHeight();
     i+=2;

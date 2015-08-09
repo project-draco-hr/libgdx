@@ -1,5 +1,5 @@
 {
-  executorService=Executors.newCachedThreadPool();
+  asyncExecutor=new AsyncExecutor(1);
   connections=new ObjectMap<HttpRequest,HttpURLConnection>();
   listeners=new ObjectMap<HttpRequest,HttpResponseListener>();
 }

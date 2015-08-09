@@ -1,0 +1,4 @@
+{
+  if (building)   throw new GdxRuntimeException("Cannot render a ModelCache in between .begin() and .end()");
+  renderables.addAll(this.renderables);
+}

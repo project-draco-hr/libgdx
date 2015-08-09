@@ -1,0 +1,4 @@
+{
+  updatePageTextures(minFilter,magFilter,useMipMaps);
+  while (regions.size < pages.size)   regions.add(new TextureRegion(pages.get(regions.size).texture));
+}

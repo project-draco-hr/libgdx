@@ -1,8 +1,8 @@
 {
-  lights.directionalLights.get(0).direction.rotate(dirLightRotAxis,Gdx.graphics.getDeltaTime() * 45f);
+  dirLight.direction.rotate(dirLightRotAxis,Gdx.graphics.getDeltaTime() * 45f);
   super.render(null);
   for (  ObjectMap.Entry<ModelInstance,AnimationController> e : animationControllers.entries())   e.value.update(Gdx.graphics.getDeltaTime());
   shaderBatch.begin(cam);
-  shaderBatch.render(instances,lights);
+  shaderBatch.render(instances,environment);
   shaderBatch.end();
 }

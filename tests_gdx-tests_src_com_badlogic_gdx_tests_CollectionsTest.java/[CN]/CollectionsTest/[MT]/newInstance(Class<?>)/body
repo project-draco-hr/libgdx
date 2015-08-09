@@ -1,0 +1,8 @@
+{
+  try {
+    return ClassReflection.newInstance(clazz);
+  }
+ catch (  Throwable ex) {
+    throw new GdxRuntimeException(ex);
+  }
+}

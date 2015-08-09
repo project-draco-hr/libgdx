@@ -1,6 +1,10 @@
 {
   if (runs.size == 0)   return "";
   StringBuilder buffer=new StringBuilder(128);
+  buffer.append(width);
+  buffer.append('x');
+  buffer.append(height);
+  buffer.append('\n');
   for (int i=0, n=runs.size; i < n; i++) {
     buffer.append(runs.get(i).toString());
     buffer.append('\n');

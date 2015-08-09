@@ -1,0 +1,4 @@
+{
+  spriteBatch.flush();
+  spriteBatch.getShader().setUniformf("u_smoothing",smoothing);
+}

@@ -2,11 +2,20 @@
   if (imagePaths != null)   throw new IllegalStateException("Already loaded.");
   BufferedReader reader=new BufferedReader(new InputStreamReader(fontFile.read()),512);
   try {
-    reader.readLine();
     String line=reader.readLine();
     if (line == null)     throw new GdxRuntimeException("File is empty.");
+    line=line.substring(line.indexOf("padding=") + 8);
+    String[] padding=line.substring(0,line.indexOf(' ')).split(",",4);
+    if (padding.length != 4)     throw new GdxRuntimeException("Invalid padding.");
+    padTop=Integer.parseInt(padding[0]);
+    padLeft=Integer.parseInt(padding[1]);
+    padBottom=Integer.parseInt(padding[2]);
+    padRight=Integer.parseInt(padding[3]);
+    float padY=padTop + padBottom;
+    line=reader.readLine();
+    if (line == null)     throw new GdxRuntimeException("Missing common header.");
     String[] common=line.split(" ",7);
-    if (common.length < 3)     throw new GdxRuntimeException("Invalid header.");
+    if (common.length < 3)     throw new GdxRuntimeException("Invalid common header.");
     if (!common[1].startsWith("lineHeight="))     throw new GdxRuntimeException("Missing: lineHeight");
     lineHeight=Integer.parseInt(common[1].substring(11));
     if (!common[2].startsWith("base="))     throw new GdxRuntimeException("Missing: base");
@@ -82,6 +91,7 @@
       }
       if (glyph.width > 0 && glyph.height > 0)       descent=Math.min(baseLine + glyph.yoffset,descent);
     }
+    descent+=padBottom;
     while (true) {
       line=reader.readLine();
       if (line == null)       break;
@@ -109,14 +119,18 @@
       spaceGlyph.xadvance=xadvanceGlyph.xadvance;
       setGlyph(' ',spaceGlyph);
     }
-    spaceWidth=spaceGlyph != null ? spaceGlyph.xadvance + spaceGlyph.width : 1;
+    if (spaceGlyph.width == 0) {
+      spaceGlyph.width=(int)(spaceGlyph.xadvance + padRight);
+      spaceGlyph.xoffset=(int)-padLeft;
+    }
+    spaceWidth=spaceGlyph.width;
     Glyph xGlyph=null;
     for (int i=0; i < xChars.length; i++) {
       xGlyph=getGlyph(xChars[i]);
       if (xGlyph != null)       break;
     }
     if (xGlyph == null)     xGlyph=getFirstGlyph();
-    xHeight=xGlyph.height;
+    xHeight=xGlyph.height - padY;
     Glyph capGlyph=null;
     for (int i=0; i < capChars.length; i++) {
       capGlyph=getGlyph(capChars[i]);
@@ -132,6 +146,7 @@
       }
     }
  else     capHeight=capGlyph.height;
+    capHeight-=padY;
     ascent=baseLine - capHeight;
     down=-lineHeight;
     if (flip) {

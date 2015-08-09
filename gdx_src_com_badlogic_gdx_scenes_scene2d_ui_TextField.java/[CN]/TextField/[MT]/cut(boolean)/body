@@ -1,0 +1,7 @@
+{
+  if (hasSelection && !passwordMode) {
+    copy();
+    cursor=delete(fireChangeEvent);
+    updateDisplayText();
+  }
+}

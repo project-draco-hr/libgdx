@@ -1,0 +1,6 @@
+{
+  Cubemap result=new Cubemap(width,height,width,format);
+  result.setFilter(TextureFilter.Linear,TextureFilter.Linear);
+  result.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
+  return result;
+}

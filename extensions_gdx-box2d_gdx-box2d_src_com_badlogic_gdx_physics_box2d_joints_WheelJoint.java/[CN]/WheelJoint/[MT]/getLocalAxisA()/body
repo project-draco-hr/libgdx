@@ -1,5 +1,5 @@
 {
-  jniGetLocalAnchorA(addr,tmp);
+  jniGetLocalAxisA(addr,tmp);
   localAxisA.set(tmp[0],tmp[1]);
   return localAxisA;
 }
