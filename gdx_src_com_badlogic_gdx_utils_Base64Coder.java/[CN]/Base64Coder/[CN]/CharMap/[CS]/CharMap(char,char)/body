@@ -1,0 +1,20 @@
+{
+  int i=0;
+  for (char c='A'; c <= 'Z'; c++) {
+    encodingMap[i++]=c;
+  }
+  for (char c='a'; c <= 'z'; c++) {
+    encodingMap[i++]=c;
+  }
+  for (char c='0'; c <= '9'; c++) {
+    encodingMap[i++]=c;
+  }
+  encodingMap[i++]=char63;
+  encodingMap[i++]=char64;
+  for (i=0; i < decodingMap.length; i++) {
+    decodingMap[i]=-1;
+  }
+  for (i=0; i < 64; i++) {
+    decodingMap[encodingMap[i]]=(byte)i;
+  }
+}
