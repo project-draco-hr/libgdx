@@ -1,18 +1,21 @@
 {
   try {
-    if (config.useGL30) {
-      ContextAttribs context=new ContextAttribs(3,2).withForwardCompatible(false).withProfileCore(true);
+    if (useGL30) {
+      ContextAttribs context=new ContextAttribs(gles30ContextMajor,gles30ContextMinor).withForwardCompatible(false).withProfileCore(true);
       try {
         Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples),context);
       }
  catch (      Exception e) {
-        System.out.println("LwjglGraphics: couldn't create OpenGL 3.2+ core profile context");
-        throw e;
+        System.out.println("LwjglGraphics: OpenGL 4.3+ core profile (GLES 3.0) not supported.");
+        createDisplayPixelFormat(false,gles30ContextMajor,gles30ContextMinor);
+        return;
       }
-      System.out.println("LwjglGraphics: created OpenGL 3.2+ core profile context. This is experimental!");
+      System.out.println("LwjglGraphics: created OpenGL 4.3+ core profile context. This is experimental!");
+      usingGL30=true;
     }
  else {
       Display.create(new PixelFormat(config.r + config.g + config.b,config.a,config.depth,config.stencil,config.samples));
+      usingGL30=false;
     }
     bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
   }
@@ -49,7 +52,7 @@
         if (!softwareMode && config.allowSoftwareMode) {
           softwareMode=true;
           System.setProperty("org.lwjgl.opengl.Display.allowSoftwareOpenGL","true");
-          createDisplayPixelFormat();
+          createDisplayPixelFormat(useGL30,gles30ContextMajor,gles30ContextMinor);
           return;
         }
         String glInfo=glInfo();
