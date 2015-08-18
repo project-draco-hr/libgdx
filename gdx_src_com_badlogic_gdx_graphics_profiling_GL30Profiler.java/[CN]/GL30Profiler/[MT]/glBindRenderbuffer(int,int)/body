@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glBindRenderbuffer(target,renderbuffer);
+  check();
 }

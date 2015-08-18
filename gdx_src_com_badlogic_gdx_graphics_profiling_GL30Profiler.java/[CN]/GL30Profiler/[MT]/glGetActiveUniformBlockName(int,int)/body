@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glGetActiveUniformBlockName(program,uniformBlockIndex);
+  final String result=gl30.glGetActiveUniformBlockName(program,uniformBlockIndex);
+  check();
+  return result;
 }

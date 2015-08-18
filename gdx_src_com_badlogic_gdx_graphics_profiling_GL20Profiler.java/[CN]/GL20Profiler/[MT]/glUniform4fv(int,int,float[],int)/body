@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glUniform4fv(location,count,v,offset);
+  check();
 }

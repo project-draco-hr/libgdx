@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glIsShader(shader);
+  boolean result=gl20.glIsShader(shader);
+  check();
+  return result;
 }

@@ -2,4 +2,5 @@
   shaderSwitches++;
   calls++;
   gl20.glUseProgram(program);
+  check();
 }

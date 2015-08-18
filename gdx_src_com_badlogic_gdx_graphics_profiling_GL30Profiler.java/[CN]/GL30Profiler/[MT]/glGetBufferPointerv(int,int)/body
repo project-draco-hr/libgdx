@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glGetBufferPointerv(target,pname);
+  final Buffer result=gl30.glGetBufferPointerv(target,pname);
+  check();
+  return result;
 }

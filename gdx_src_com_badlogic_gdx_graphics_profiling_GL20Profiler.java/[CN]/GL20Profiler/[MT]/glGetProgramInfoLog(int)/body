@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGetProgramInfoLog(program);
+  String result=gl20.glGetProgramInfoLog(program);
+  check();
+  return result;
 }

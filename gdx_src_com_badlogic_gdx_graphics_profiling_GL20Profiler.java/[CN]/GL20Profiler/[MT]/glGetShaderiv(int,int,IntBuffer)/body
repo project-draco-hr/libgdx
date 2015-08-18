@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glGetShaderiv(shader,pname,params);
+  check();
 }

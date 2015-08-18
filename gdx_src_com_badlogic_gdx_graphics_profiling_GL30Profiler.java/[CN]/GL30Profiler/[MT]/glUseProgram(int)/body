@@ -2,4 +2,5 @@
   shaderSwitches++;
   calls++;
   gl30.glUseProgram(program);
+  check();
 }

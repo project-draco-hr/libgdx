@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glGetVertexAttribfv(index,pname,params);
+  check();
 }

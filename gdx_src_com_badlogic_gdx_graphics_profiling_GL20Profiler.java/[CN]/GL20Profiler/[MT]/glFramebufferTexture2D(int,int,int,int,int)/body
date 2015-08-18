@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glFramebufferTexture2D(target,attachment,textarget,texture,level);
+  check();
 }

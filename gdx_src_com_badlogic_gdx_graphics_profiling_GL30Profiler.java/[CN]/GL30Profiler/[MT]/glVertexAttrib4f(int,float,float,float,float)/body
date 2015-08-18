@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glVertexAttrib4f(indx,x,y,z,w);
+  check();
 }

@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glCheckFramebufferStatus(target);
+  int result=gl30.glCheckFramebufferStatus(target);
+  check();
+  return result;
 }

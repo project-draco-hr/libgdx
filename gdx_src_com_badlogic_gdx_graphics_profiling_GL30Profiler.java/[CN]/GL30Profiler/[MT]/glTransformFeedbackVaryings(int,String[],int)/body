@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glTransformFeedbackVaryings(program,varyings,bufferMode);
+  check();
 }

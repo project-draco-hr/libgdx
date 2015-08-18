@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGenFramebuffer();
+  int result=gl20.glGenFramebuffer();
+  check();
+  return result;
 }

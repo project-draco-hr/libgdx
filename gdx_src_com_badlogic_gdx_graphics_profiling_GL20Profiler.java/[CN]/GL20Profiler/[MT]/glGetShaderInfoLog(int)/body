@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGetShaderInfoLog(shader);
+  String result=gl20.glGetShaderInfoLog(shader);
+  check();
+  return result;
 }
