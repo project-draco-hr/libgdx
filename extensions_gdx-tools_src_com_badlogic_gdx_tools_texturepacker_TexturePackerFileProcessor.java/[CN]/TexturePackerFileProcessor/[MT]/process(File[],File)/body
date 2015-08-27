@@ -19,7 +19,7 @@
       String prefix=packFile.getName();
       int dotIndex=prefix.lastIndexOf('.');
       if (dotIndex != -1)       prefix=prefix.substring(0,dotIndex);
-      deleteProcessor.addInputRegex("(?i)" + prefix + "\\d*\\.(png|jpg)");
+      deleteProcessor.addInputRegex("(?i)" + prefix + "\\d*\\.(png|jpg|jpeg)");
       deleteProcessor.addInputRegex("(?i)" + prefix + "\\.atlas");
       String dir=packFile.getParent();
       if (dir == null)       deleteProcessor.process(outputRoot,null);
