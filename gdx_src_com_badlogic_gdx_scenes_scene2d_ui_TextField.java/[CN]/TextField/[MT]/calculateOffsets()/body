@@ -37,9 +37,9 @@
     selectionX=minX;
     selectionWidth=maxX - minX - style.font.getData().cursorX;
   }
-  if (textHAlign == Align.center || textHAlign == Align.right) {
+  if ((textHAlign & Align.left) == 0) {
     textOffset=visibleWidth - (glyphPositions[visibleTextEnd] - startPos);
-    if (textHAlign == Align.center)     textOffset=Math.round(textOffset * 0.5f);
+    if ((textHAlign & Align.center) != 0)     textOffset=Math.round(textOffset * 0.5f);
     if (hasSelection)     selectionX+=textOffset;
   }
 }
