@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glGetUniformuiv(program,location,params);
+  check();
 }

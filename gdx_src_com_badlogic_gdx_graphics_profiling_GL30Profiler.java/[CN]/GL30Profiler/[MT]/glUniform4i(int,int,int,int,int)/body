@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glUniform4i(location,x,y,z,w);
+  check();
 }

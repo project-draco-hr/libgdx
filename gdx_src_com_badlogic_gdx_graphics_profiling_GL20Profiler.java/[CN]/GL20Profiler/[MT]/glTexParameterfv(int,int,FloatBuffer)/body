@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glTexParameterfv(target,pname,params);
+  check();
 }

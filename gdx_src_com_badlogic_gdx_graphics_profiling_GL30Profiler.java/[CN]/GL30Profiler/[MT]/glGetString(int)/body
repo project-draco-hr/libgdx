@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glGetString(name);
+  String result=gl30.glGetString(name);
+  check();
+  return result;
 }

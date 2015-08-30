@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glShaderSource(shader,string);
+  check();
 }

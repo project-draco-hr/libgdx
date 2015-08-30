@@ -1,3 +1,5 @@
 {
-  return config.libsDir.child(target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32")).path().replace('\\','/');
+  String targetName=target.osFileName;
+  if (targetName == null)   targetName=target.os.toString().toLowerCase() + (target.is64Bit ? "64" : "32");
+  return config.libsDir.child(targetName).path().replace('\\','/');
 }

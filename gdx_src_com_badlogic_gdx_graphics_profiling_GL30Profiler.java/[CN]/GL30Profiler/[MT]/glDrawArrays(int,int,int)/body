@@ -3,4 +3,5 @@
   drawCalls++;
   calls++;
   gl30.glDrawArrays(mode,first,count);
+  check();
 }

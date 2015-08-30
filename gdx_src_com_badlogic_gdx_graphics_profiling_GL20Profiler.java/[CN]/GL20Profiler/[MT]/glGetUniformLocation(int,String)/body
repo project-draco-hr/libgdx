@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glGetUniformLocation(program,name);
+  int result=gl20.glGetUniformLocation(program,name);
+  check();
+  return result;
 }

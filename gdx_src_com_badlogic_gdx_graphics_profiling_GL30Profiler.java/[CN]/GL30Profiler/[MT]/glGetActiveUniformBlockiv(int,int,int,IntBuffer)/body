@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glGetActiveUniformBlockiv(program,uniformBlockIndex,pname,params);
+  check();
 }

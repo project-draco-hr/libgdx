@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glGetBufferParameteri64v(target,pname,params);
+  check();
 }

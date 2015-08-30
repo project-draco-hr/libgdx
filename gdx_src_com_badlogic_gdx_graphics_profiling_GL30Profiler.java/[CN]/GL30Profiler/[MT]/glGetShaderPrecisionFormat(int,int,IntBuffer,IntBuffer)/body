@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glGetShaderPrecisionFormat(shadertype,precisiontype,range,precision);
+  check();
 }

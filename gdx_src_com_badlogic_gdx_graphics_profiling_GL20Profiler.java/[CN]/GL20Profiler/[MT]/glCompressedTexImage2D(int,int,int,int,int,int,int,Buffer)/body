@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glCompressedTexImage2D(target,level,internalformat,width,height,border,imageSize,data);
+  check();
 }

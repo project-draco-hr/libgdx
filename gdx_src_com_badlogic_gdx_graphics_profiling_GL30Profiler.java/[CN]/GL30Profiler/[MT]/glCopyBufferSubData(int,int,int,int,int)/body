@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glCopyBufferSubData(readTarget,writeTarget,readOffset,writeOffset,size);
+  check();
 }

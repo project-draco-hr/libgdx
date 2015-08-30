@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glIsRenderbuffer(renderbuffer);
+  boolean result=gl30.glIsRenderbuffer(renderbuffer);
+  check();
+  return result;
 }

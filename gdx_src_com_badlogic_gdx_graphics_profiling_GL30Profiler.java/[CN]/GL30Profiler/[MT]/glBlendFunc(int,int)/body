@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glBlendFunc(sfactor,dfactor);
+  check();
 }

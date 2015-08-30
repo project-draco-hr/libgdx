@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl30.glGetUniformBlockIndex(program,uniformBlockName);
+  final int result=gl30.glGetUniformBlockIndex(program,uniformBlockName);
+  check();
+  return result;
 }

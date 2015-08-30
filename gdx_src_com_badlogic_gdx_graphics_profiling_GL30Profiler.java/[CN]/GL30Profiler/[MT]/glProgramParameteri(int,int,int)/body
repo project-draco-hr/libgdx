@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glProgramParameteri(program,pname,value);
+  check();
 }

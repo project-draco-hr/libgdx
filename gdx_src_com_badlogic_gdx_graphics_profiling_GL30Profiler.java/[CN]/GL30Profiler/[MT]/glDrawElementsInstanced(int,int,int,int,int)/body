@@ -3,4 +3,5 @@
   drawCalls++;
   calls++;
   gl30.glDrawElementsInstanced(mode,count,type,indicesOffset,instanceCount);
+  check();
 }

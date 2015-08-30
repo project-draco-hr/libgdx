@@ -1,4 +1,6 @@
 {
   calls++;
-  return gl20.glCreateShader(type);
+  int result=gl20.glCreateShader(type);
+  check();
+  return result;
 }

@@ -1,4 +1,5 @@
 {
   calls++;
   gl20.glVertexAttribPointer(indx,size,type,normalized,stride,ptr);
+  check();
 }

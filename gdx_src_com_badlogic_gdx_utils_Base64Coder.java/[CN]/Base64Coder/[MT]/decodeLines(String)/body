@@ -1,9 +1,3 @@
 {
-  char[] buf=new char[s.length()];
-  int p=0;
-  for (int ip=0; ip < s.length(); ip++) {
-    char c=s.charAt(ip);
-    if (c != ' ' && c != '\r' && c != '\n' && c != '\t')     buf[p++]=c;
-  }
-  return decode(buf,0,p);
+  return decodeLines(s,regularMap.decodingMap);
 }

@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glUniformBlockBinding(program,uniformBlockIndex,uniformBlockBinding);
+  check();
 }

@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glInvalidateFramebuffer(target,numAttachments,attachments);
+  check();
 }

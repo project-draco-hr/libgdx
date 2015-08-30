@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glUniformMatrix2fv(location,count,transpose,value,offset);
+  check();
 }

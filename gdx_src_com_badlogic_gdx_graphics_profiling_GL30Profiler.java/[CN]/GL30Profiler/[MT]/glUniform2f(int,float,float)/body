@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glUniform2f(location,x,y);
+  check();
 }

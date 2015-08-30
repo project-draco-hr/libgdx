@@ -1,4 +1,5 @@
 {
   calls++;
   gl30.glRenderbufferStorageMultisample(target,samples,internalformat,width,height);
+  check();
 }
