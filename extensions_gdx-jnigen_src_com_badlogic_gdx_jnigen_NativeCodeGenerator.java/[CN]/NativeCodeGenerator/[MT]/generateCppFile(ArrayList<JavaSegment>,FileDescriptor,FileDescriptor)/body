@@ -2,7 +2,7 @@
   String headerFileContent=hFile.readString();
   ArrayList<CMethod> cMethods=cMethodParser.parse(headerFileContent).getMethods();
   StringBuffer buffer=new StringBuffer();
-  buffer.append("#include <" + hFile.name() + ">\n");
+  emitHeaderInclude(buffer,hFile.name());
   for (  JavaSegment segment : javaSegments) {
     if (segment instanceof JniSection) {
       emitJniSection(buffer,(JniSection)segment);
