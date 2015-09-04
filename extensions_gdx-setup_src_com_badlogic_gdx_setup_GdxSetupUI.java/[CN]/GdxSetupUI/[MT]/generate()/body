@@ -9,6 +9,13 @@
     JOptionPane.showMessageDialog(this,"Please enter a package name.");
     return;
   }
+  Pattern pattern=Pattern.compile("[a-z][a-z0-9_]*(\\.[a-z0-9_]+)+[0-9a-z_]");
+  Matcher matcher=pattern.matcher(pack);
+  boolean matches=matcher.matches();
+  if (!matches) {
+    JOptionPane.showMessageDialog(this,"Invalid package name");
+    return;
+  }
   final String clazz=ui.form.gameClassText.getText().trim();
   if (clazz.length() == 0) {
     JOptionPane.showMessageDialog(this,"Please enter a game class name.");
