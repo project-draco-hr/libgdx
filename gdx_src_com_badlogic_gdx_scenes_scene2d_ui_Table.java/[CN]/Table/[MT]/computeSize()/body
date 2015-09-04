@@ -2,7 +2,11 @@
   sizeInvalid=false;
   Array<Cell> cells=this.cells;
   int cellCount=cells.size;
-  if (cellCount > 0 && !cells.peek().endRow)   endRow();
+  if (cellCount > 0 && !cells.peek().endRow) {
+    endRow();
+    implicitEndRow=true;
+  }
+ else   implicitEndRow=false;
   int columns=this.columns, rows=this.rows;
   float[] columnMinWidth=this.columnMinWidth=ensureSize(this.columnMinWidth,columns);
   float[] rowMinHeight=this.rowMinHeight=ensureSize(this.rowMinHeight,rows);

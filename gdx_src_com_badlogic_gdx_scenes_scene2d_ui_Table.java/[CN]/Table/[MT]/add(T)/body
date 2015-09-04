@@ -1,6 +1,11 @@
 {
   Cell<T> cell=obtainCell();
   cell.actor=actor;
+  if (implicitEndRow) {
+    implicitEndRow=false;
+    rows--;
+    cells.peek().endRow=false;
+  }
   Array<Cell> cells=this.cells;
   int cellCount=cells.size;
   if (cellCount > 0) {

@@ -11,5 +11,6 @@
   columns=0;
   if (rowDefaults != null)   cellPool.free(rowDefaults);
   rowDefaults=null;
+  implicitEndRow=false;
   super.clearChildren();
 }
