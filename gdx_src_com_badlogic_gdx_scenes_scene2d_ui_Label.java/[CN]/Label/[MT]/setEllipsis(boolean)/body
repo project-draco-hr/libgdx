@@ -1,3 +1,4 @@
 {
-  this.ellipsis="...";
+  if (ellipsis)   this.ellipsis="...";
+ else   this.ellipsis=null;
 }
