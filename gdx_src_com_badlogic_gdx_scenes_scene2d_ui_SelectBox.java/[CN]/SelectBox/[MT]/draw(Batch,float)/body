@@ -17,7 +17,7 @@
   if (background != null)   background.draw(batch,x,y,width,height);
   T selected=selection.first();
   if (selected != null) {
-    String string=selected.toString();
+    String string=itemNameProvider.get(selected);
     if (background != null) {
       width-=background.getLeftWidth() + background.getRightWidth();
       height-=background.getBottomHeight() + background.getTopHeight();

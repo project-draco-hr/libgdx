@@ -25,7 +25,7 @@
         selectedDrawable.draw(batch,x,y + itemY - itemHeight,width,itemHeight);
         font.setColor(fontColorSelected.r,fontColorSelected.g,fontColorSelected.b,fontColorSelected.a * parentAlpha);
       }
-      font.draw(batch,item.toString(),x + textOffsetX,y + itemY - textOffsetY);
+      font.draw(batch,itemNameProvider.get(item),x + textOffsetX,y + itemY - textOffsetY);
       if (selected) {
         font.setColor(fontColorUnselected.r,fontColorUnselected.g,fontColorUnselected.b,fontColorUnselected.a * parentAlpha);
       }

@@ -1,0 +1,5 @@
+{
+  if (itemNameProvider == null)   this.itemNameProvider=defaultProvider;
+ else   this.itemNameProvider=itemNameProvider;
+  selectBoxList.list.setItemNameProvider(itemNameProvider);
+}
