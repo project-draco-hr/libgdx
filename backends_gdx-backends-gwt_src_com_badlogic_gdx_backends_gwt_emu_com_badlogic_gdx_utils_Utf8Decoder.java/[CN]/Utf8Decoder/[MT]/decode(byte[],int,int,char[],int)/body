@@ -1,0 +1,7 @@
+{
+  this.charBuffer=charBuffer;
+  this.charOffset=charOffset;
+  int end=offset + length;
+  for (int i=offset; i < end; i++)   decode(b[i]);
+  return this.charOffset - charOffset;
+}
