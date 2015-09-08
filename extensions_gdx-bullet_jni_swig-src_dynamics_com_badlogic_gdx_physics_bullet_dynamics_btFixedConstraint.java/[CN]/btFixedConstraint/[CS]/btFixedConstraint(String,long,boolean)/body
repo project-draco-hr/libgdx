@@ -1,4 +1,4 @@
 {
-  super(className,cPtr,cMemoryOwn);
+  super(className,DynamicsJNI.btFixedConstraint_SWIGUpcast(cPtr),cMemoryOwn);
   swigCPtr=cPtr;
 }
