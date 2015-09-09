@@ -3,7 +3,7 @@
     return preferences.get(name);
   }
  else {
-    Preferences prefs=new HeadlessPreferences(name,".prefs/");
+    Preferences prefs=new HeadlessPreferences(name,this.preferencesdir);
     preferences.put(name,prefs);
     return prefs;
   }
