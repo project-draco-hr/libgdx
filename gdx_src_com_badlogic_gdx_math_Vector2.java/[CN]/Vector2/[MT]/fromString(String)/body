@@ -4,7 +4,7 @@
     try {
       float x=Float.parseFloat(v.substring(1,s));
       float y=Float.parseFloat(v.substring(s + 1,v.length() - 1));
-      return new Vector2(x,y);
+      return this.set(x,y);
     }
  catch (    NumberFormatException ex) {
     }
