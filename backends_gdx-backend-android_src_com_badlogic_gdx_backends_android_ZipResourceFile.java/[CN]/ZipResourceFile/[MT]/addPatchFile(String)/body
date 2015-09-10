@@ -1,0 +1,89 @@
+{
+  File file=new File(zipFileName);
+  RandomAccessFile f=new RandomAccessFile(file,"r");
+  long fileLength=f.length();
+  if (fileLength < kEOCDLen) {
+    f.close();
+    throw new java.io.IOException();
+  }
+  long readAmount=kMaxEOCDSearch;
+  if (readAmount > fileLength)   readAmount=fileLength;
+  f.seek(0);
+  int header=read4LE(f);
+  if (header == kEOCDSignature) {
+    Log.i(LOG_TAG,"Found Zip archive, but it looks empty");
+    throw new IOException();
+  }
+ else   if (header != kLFHSignature) {
+    Log.v(LOG_TAG,"Not a Zip archive");
+    throw new IOException();
+  }
+  long searchStart=fileLength - readAmount;
+  f.seek(searchStart);
+  ByteBuffer bbuf=ByteBuffer.allocate((int)readAmount);
+  byte[] buffer=bbuf.array();
+  f.readFully(buffer);
+  bbuf.order(ByteOrder.LITTLE_ENDIAN);
+  int eocdIdx;
+  for (eocdIdx=buffer.length - kEOCDLen; eocdIdx >= 0; eocdIdx--) {
+    if (buffer[eocdIdx] == 0x50 && bbuf.getInt(eocdIdx) == kEOCDSignature) {
+      if (LOGV) {
+        Log.v(LOG_TAG,"+++ Found EOCD at index: " + eocdIdx);
+      }
+      break;
+    }
+  }
+  if (eocdIdx < 0) {
+    Log.d(LOG_TAG,"Zip: EOCD not found, " + zipFileName + " is not zip");
+  }
+  int numEntries=bbuf.getShort(eocdIdx + kEOCDNumEntries);
+  long dirSize=bbuf.getInt(eocdIdx + kEOCDSize) & 0xffffffffL;
+  long dirOffset=bbuf.getInt(eocdIdx + kEOCDFileOffset) & 0xffffffffL;
+  if (dirOffset + dirSize > fileLength) {
+    Log.w(LOG_TAG,"bad offsets (dir " + dirOffset + ", size "+ dirSize+ ", eocd "+ eocdIdx+ ")");
+    throw new IOException();
+  }
+  if (numEntries == 0) {
+    Log.w(LOG_TAG,"empty archive?");
+    throw new IOException();
+  }
+  if (LOGV) {
+    Log.v(LOG_TAG,"+++ numEntries=" + numEntries + " dirSize="+ dirSize+ " dirOffset="+ dirOffset);
+  }
+  MappedByteBuffer directoryMap=f.getChannel().map(FileChannel.MapMode.READ_ONLY,dirOffset,dirSize);
+  directoryMap.order(ByteOrder.LITTLE_ENDIAN);
+  byte[] tempBuf=new byte[0xffff];
+  int currentOffset=0;
+  ByteBuffer buf=ByteBuffer.allocate(kLFHLen);
+  buf.order(ByteOrder.LITTLE_ENDIAN);
+  for (int i=0; i < numEntries; i++) {
+    if (directoryMap.getInt(currentOffset) != kCDESignature) {
+      Log.w(LOG_TAG,"Missed a central dir sig (at " + currentOffset + ")");
+      throw new IOException();
+    }
+    int fileNameLen=directoryMap.getShort(currentOffset + kCDENameLen) & 0xffff;
+    int extraLen=directoryMap.getShort(currentOffset + kCDEExtraLen) & 0xffff;
+    int commentLen=directoryMap.getShort(currentOffset + kCDECommentLen) & 0xffff;
+    directoryMap.position(currentOffset + kCDELen);
+    directoryMap.get(tempBuf,0,fileNameLen);
+    directoryMap.position(0);
+    String str=new String(tempBuf,0,fileNameLen);
+    if (LOGV) {
+      Log.v(LOG_TAG,"Filename: " + str);
+    }
+    ZipEntryRO ze=new ZipEntryRO(zipFileName,file,str);
+    ze.mMethod=directoryMap.getShort(currentOffset + kCDEMethod) & 0xffff;
+    ze.mWhenModified=directoryMap.getInt(currentOffset + kCDEModWhen) & 0xffffffffL;
+    ze.mCRC32=directoryMap.getLong(currentOffset + kCDECRC) & 0xffffffffL;
+    ze.mCompressedLength=directoryMap.getLong(currentOffset + kCDECompLen) & 0xffffffffL;
+    ze.mUncompressedLength=directoryMap.getLong(currentOffset + kCDEUncompLen) & 0xffffffffL;
+    ze.mLocalHdrOffset=directoryMap.getInt(currentOffset + kCDELocalOffset) & 0xffffffffL;
+    buf.clear();
+    ze.setOffsetFromFile(f,buf);
+    mHashMap.put(str,ze);
+    currentOffset+=kCDELen + fileNameLen + extraLen+ commentLen;
+  }
+  if (LOGV) {
+    Log.v(LOG_TAG,"+++ zip good scan " + numEntries + " entries");
+  }
+}

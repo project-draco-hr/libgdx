@@ -1,3 +1,8 @@
 {
-  return new AndroidFileHandle(type == FileType.Internal ? assets : null,path,type);
+  FileHandle handle=new AndroidFileHandle(type == FileType.Internal ? assets : null,path,type);
+  if (!handle.exists() && expansionFile != null) {
+    FileHandle zipHandle=new AndroidZipFileHandle(path);
+    if (zipHandle.exists())     handle=zipHandle;
+  }
+  return handle;
 }
