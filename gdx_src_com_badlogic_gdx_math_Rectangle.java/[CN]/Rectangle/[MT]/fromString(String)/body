@@ -8,7 +8,7 @@
       float y=Float.parseFloat(v.substring(s0 + 1,s1));
       float width=Float.parseFloat(v.substring(s1 + 1,s2));
       float height=Float.parseFloat(v.substring(s2 + 1,v.length() - 1));
-      return this.set(x,y,width,height);
+      return new Rectangle(x,y,width,height);
     }
  catch (    NumberFormatException ex) {
     }
