@@ -1,5 +1,4 @@
 {
-  if (!cancelTouchFocus)   return;
   Stage stage=getStage();
   if (stage != null)   stage.cancelTouchFocusExcept(flickScrollListener,this);
 }
