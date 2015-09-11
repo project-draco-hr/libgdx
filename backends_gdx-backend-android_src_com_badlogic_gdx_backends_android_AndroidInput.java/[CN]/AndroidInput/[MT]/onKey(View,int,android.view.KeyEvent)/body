@@ -16,7 +16,9 @@ synchronized (this) {
     }
     char character=(char)e.getUnicodeChar();
     if (keyCode == 67)     character='\b';
-    if (e.getKeyCode() >= SUPPORTED_KEYS)     return false;
+    if (e.getKeyCode() < 0 || e.getKeyCode() >= SUPPORTED_KEYS) {
+      return false;
+    }
 switch (e.getAction()) {
 case android.view.KeyEvent.ACTION_DOWN:
       event=usedKeyEvents.obtain();
