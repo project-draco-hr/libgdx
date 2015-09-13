@@ -1,0 +1,4 @@
+{
+  float delta=((toDegrees - fromDegrees + 360 + 180) % 360) - 180;
+  return (fromDegrees + delta * progress + 360) % 360;
+}
