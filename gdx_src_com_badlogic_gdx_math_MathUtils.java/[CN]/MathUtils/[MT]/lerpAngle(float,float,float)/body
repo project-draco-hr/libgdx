@@ -1,0 +1,4 @@
+{
+  float delta=((toRadians - fromRadians + PI2 + PI) % PI2) - PI;
+  return (fromRadians + delta * progress + PI2) % PI2;
+}

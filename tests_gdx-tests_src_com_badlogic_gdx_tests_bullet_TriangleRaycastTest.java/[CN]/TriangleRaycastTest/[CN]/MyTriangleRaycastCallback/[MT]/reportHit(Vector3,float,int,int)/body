@@ -1,0 +1,10 @@
+{
+  if (hitFraction < mHitFraction) {
+    this.hitNormalLocal.set(hitNormalLocal);
+    this.hitFraction=hitFraction;
+    this.partId=partId;
+    this.triangleIndex=triangleIndex;
+    return hitFraction;
+  }
+  return mHitFraction;
+}
