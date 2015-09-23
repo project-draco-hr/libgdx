@@ -8,5 +8,5 @@
  else     if (probability > value.frequency)     imin=imid + 1;
  else     break;
   }
-  return value.value;
+  return values.items[imin].value;
 }
