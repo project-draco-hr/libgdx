@@ -4,7 +4,12 @@
   setOverscroll(false,false);
   setFadeScrollBars(false);
   setScrollingDisabled(true,false);
-  list=new List(selectBox.style.listStyle);
+  list=new List<T>(selectBox.style.listStyle){
+    @Override protected String toString(    T obj){
+      return selectBox.toString(obj);
+    }
+  }
+;
   list.setTouchable(Touchable.disabled);
   setWidget(list);
   list.addListener(new ClickListener(){
