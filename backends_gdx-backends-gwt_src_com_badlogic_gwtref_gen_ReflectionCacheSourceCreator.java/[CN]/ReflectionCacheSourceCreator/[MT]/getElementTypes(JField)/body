@@ -5,7 +5,7 @@
     JClassType[] typeArgs=params.getTypeArgs();
     b.append("new Class[] {");
     for (    JClassType typeArg : typeArgs) {
-      if (typeArg.isWildcard() != null)       b.append("Object.class");
+      if (typeArg.isWildcard() != null)       b.append("null");
  else       if (!isVisible(typeArg))       b.append("null");
  else       if (typeArg.isClassOrInterface() != null)       b.append(typeArg.isClassOrInterface().getQualifiedSourceName()).append(".class");
  else       if (typeArg.isParameterized() != null)       b.append(typeArg.isParameterized().getQualifiedBinaryName()).append(".class");
