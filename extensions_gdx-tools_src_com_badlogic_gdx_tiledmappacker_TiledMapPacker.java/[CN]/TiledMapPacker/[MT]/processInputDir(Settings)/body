@@ -1,0 +1,13 @@
+{
+  FileHandle inputDirHandle=new FileHandle(inputDir.getCanonicalPath());
+  File[] mapFilesInCurrentDir=inputDir.listFiles(new TmxFilter());
+  tilesetsToPack=new ObjectMap<String,TiledMapTileSet>();
+  for (  File mapFile : mapFilesInCurrentDir) {
+    processSingleMap(mapFile,inputDirHandle,texturePackerSettings);
+  }
+  processSubdirectories(inputDirHandle,texturePackerSettings);
+  boolean combineTilesets=this.settings.combineTilesets;
+  if (combineTilesets == true) {
+    packTilesets(inputDirHandle,texturePackerSettings);
+  }
+}

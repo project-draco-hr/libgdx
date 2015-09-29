@@ -1,4 +1,3 @@
 {
-  if (name.endsWith(".tmx"))   return true;
-  return false;
+  return (name.endsWith(".tmx"));
 }
