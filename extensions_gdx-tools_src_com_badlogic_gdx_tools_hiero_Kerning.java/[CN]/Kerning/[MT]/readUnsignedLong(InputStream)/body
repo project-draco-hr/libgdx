@@ -1,7 +1,0 @@
-{
-  long value=readUnsignedByte(input);
-  value=(value << 8) + readUnsignedByte(input);
-  value=(value << 8) + readUnsignedByte(input);
-  value=(value << 8) + readUnsignedByte(input);
-  return value;
-}
