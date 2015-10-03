@@ -3,6 +3,7 @@
   if (dependenciesLoaded == false) {
     dependencies=asyncLoader.getDependencies(assetDesc.fileName,resolve(loader,assetDesc),assetDesc.params);
     if (dependencies != null) {
+      removeDuplicates(dependencies);
       manager.injectDependencies(assetDesc.fileName,dependencies);
     }
  else {
