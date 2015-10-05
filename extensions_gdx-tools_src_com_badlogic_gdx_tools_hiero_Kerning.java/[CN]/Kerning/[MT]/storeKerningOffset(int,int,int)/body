@@ -1,0 +1,8 @@
+{
+  int value=Math.round(offset * scale);
+  if (value == 0) {
+    return;
+  }
+  int key=(firstGlyphCode << 16) | secondGlyphCode;
+  kernings.put(key,value);
+}

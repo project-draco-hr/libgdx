@@ -1,5 +1,0 @@
-{
-  seek(input,headOffset + 2 * 4 + 2 * 4 + 2);
-  int unitsPerEm=readUnsignedShort(input);
-  scale=(float)size / unitsPerEm;
-}

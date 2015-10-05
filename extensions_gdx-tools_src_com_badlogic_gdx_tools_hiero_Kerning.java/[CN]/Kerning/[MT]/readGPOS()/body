@@ -1,0 +1,16 @@
+{
+  input.seek(gposOffset + 4 + 2+ 2);
+  int lookupListOffset=input.readUnsignedShort();
+  input.seek(gposOffset + lookupListOffset);
+  int lookupListPosition=input.getPosition();
+  int lookupCount=input.readUnsignedShort();
+  int[] lookupOffsets=input.readUnsignedShortArray(lookupCount);
+  for (int i=0; i < lookupCount; i++) {
+    int lookupPosition=lookupListPosition + lookupOffsets[i];
+    input.seek(lookupPosition);
+    int type=input.readUnsignedShort();
+    if (type == 2) {
+      readPairAdjustments(lookupPosition);
+    }
+  }
+}
