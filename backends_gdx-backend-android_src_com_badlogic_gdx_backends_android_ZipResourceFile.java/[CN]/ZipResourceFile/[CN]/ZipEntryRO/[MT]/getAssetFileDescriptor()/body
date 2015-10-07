@@ -1,0 +1,13 @@
+{
+  if (mMethod == kCompressStored) {
+    ParcelFileDescriptor pfd;
+    try {
+      pfd=ParcelFileDescriptor.open(mFile,ParcelFileDescriptor.MODE_READ_ONLY);
+      return new AssetFileDescriptor(pfd,getOffset(),mUncompressedLength);
+    }
+ catch (    FileNotFoundException e) {
+      e.printStackTrace();
+    }
+  }
+  return null;
+}
