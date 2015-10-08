@@ -6,7 +6,7 @@
   MediaPlayer mediaPlayer=new MediaPlayer();
   if (aHandle.type() == FileType.Internal) {
     try {
-      AssetFileDescriptor descriptor=aHandle.getAssetFileDescriptor(aHandle.path());
+      AssetFileDescriptor descriptor=aHandle.getAssetFileDescriptor();
       mediaPlayer.setDataSource(descriptor.getFileDescriptor(),descriptor.getStartOffset(),descriptor.getLength());
       descriptor.close();
       mediaPlayer.prepare();

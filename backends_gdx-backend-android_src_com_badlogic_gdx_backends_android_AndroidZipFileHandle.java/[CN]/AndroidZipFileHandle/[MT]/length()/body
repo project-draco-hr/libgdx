@@ -1,6 +1,6 @@
 {
   try {
-    return getAssetFileDescriptor("").getLength();
+    return getAssetFileDescriptor().getLength();
   }
  catch (  IOException e) {
   }
