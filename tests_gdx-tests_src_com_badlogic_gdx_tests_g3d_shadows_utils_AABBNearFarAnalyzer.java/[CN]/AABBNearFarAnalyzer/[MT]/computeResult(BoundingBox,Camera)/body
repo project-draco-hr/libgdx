@@ -1,0 +1,11 @@
+{
+  bb1.getBoundingSphere(sphere);
+  float distance=sphere.center.dst(camera.position);
+  float near=distance - sphere.radius;
+  float far=distance + sphere.radius;
+  if (near <= 0)   near=CAMERA_NEAR;
+  if (far <= 0)   far=CAMERA_FAR;
+  camera.near=near;
+  camera.far=far;
+  camera.update();
+}

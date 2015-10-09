@@ -1,0 +1,5 @@
+{
+  getCenter(out.center);
+  out.radius=getDimensions(tmpVector).len() * 0.5f;
+  return out;
+}
