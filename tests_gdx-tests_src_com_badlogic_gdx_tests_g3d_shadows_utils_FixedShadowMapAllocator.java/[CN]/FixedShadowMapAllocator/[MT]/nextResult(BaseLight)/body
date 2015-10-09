@@ -2,7 +2,7 @@
   if (!allocating) {
     throw new GdxRuntimeException("Allocator must begin before call");
   }
-  int nbOnLine=(int)Math.round(Math.sqrt(nbMap));
+  int nbOnLine=(int)Math.round(Math.sqrt(mapQuantity));
   int i=currentMap % nbOnLine;
   int j=currentMap / nbOnLine;
   int sizeMap=size / nbOnLine;
