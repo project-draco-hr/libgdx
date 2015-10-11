@@ -1,5 +1,9 @@
 {
   if (part != null) {
+    bounds.getCenter(part.center);
+    bounds.getDimensions(part.halfExtents).scl(0.5f);
+    part.radius=part.halfExtents.len();
+    bounds.inf();
     part.indexOffset=istart;
     part.numVertices=indices.size - istart;
     istart=indices.size;

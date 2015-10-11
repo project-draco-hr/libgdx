@@ -1,0 +1,6 @@
+{
+  mesh.calculateBoundingBox(bounds,indexOffset,numVertices);
+  bounds.getCenter(center);
+  bounds.getDimensions(halfExtents).scl(0.5f);
+  radius=halfExtents.len();
+}

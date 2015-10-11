@@ -6,6 +6,10 @@
     transformPosition(vertices.items,o + posOffset,posSize,positionTransform);
     if (norOffset >= 0)     transformNormal(vertices.items,o + norOffset,3,normalTransform);
   }
+  final float x=vertices.items[o + posOffset];
+  final float y=(posSize > 1) ? vertices.items[o + posOffset + 1] : 0f;
+  final float z=(posSize > 2) ? vertices.items[o + posOffset + 2] : 0f;
+  bounds.ext(x,y,z);
   if (hasColor) {
     if (colOffset >= 0) {
       vertices.items[o + colOffset]*=color.r;

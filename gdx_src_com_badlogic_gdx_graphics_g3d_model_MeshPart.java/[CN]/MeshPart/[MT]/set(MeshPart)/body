@@ -4,4 +4,7 @@
   this.indexOffset=other.indexOffset;
   this.numVertices=other.numVertices;
   this.primitiveType=other.primitiveType;
+  this.center.set(other.center);
+  this.halfExtents.set(other.halfExtents);
+  return this;
 }
