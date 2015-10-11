@@ -39,7 +39,5 @@
   Display.setInitialBackground(config.initialBackgroundColor.r,config.initialBackgroundColor.g,config.initialBackgroundColor.b);
   Display.setLocation(config.x,config.y);
   createDisplayPixelFormat(config.useGL30,config.gles30ContextMajorVersion,config.gles30ContextMinorVersion);
-  extractVersion();
-  extractExtensions();
-  initiateGLInstances();
+  initiateGL();
 }
