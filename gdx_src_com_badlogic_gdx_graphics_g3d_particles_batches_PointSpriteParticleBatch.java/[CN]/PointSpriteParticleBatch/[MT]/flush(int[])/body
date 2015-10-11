@@ -28,6 +28,6 @@
       vertices[offset + CPU_REGION_OFFSET + 3]=regionChannel.data[regionOffset + ParticleChannels.V2Offset];
     }
   }
-  renderable.meshPartSize=bufferedParticlesCount;
-  renderable.mesh.setVertices(vertices,0,bufferedParticlesCount * CPU_VERTEX_SIZE);
+  renderable.meshPart.numVertices=bufferedParticlesCount;
+  renderable.meshPart.mesh.setVertices(vertices,0,bufferedParticlesCount * CPU_VERTEX_SIZE);
 }

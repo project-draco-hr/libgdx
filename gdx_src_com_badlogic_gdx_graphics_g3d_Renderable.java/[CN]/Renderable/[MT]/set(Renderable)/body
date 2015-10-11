@@ -1,10 +1,7 @@
 {
   worldTransform.set(renderable.worldTransform);
   material=renderable.material;
-  mesh=renderable.mesh;
-  meshPartOffset=renderable.meshPartOffset;
-  meshPartSize=renderable.meshPartSize;
-  primitiveType=renderable.primitiveType;
+  meshPart.set(renderable.meshPart);
   bones=renderable.bones;
   environment=renderable.environment;
   shader=renderable.shader;

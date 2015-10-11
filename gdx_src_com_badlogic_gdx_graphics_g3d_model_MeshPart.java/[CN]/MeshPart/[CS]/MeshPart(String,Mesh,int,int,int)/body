@@ -1,7 +1,3 @@
 {
-  this.id=id;
-  this.mesh=mesh;
-  this.indexOffset=offset;
-  this.numVertices=size;
-  this.primitiveType=type;
+  set(id,mesh,offset,size,type);
 }
