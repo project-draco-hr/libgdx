@@ -1,0 +1,12 @@
+{
+  try {
+    assets.open(path).close();
+    return handle;
+  }
+ catch (  Exception ex) {
+    FileHandle zipHandle=new AndroidZipFileHandle(path);
+    if (!zipHandle.isDirectory())     return zipHandle;
+ else     if (zipHandle.exists())     return zipHandle;
+  }
+  return handle;
+}
