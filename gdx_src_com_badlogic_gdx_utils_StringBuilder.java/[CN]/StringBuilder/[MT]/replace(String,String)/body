@@ -1,0 +1,11 @@
+{
+  int findLength=find.length(), replaceLength=replace.length();
+  int index=0;
+  while (true) {
+    index=indexOf(find,index);
+    if (index == -1)     break;
+    replace0(index,index + findLength,replace);
+    index+=replaceLength;
+  }
+  return this;
+}
