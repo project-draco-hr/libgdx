@@ -1,0 +1,6 @@
+{
+  path=file.getPath().replace('\\','/');
+  expansionFile=((AndroidFiles)Gdx.files).getExpansionFile();
+  assetFd=expansionFile.getAssetFileDescriptor(getPath());
+  if (isDirectory())   path+="/";
+}

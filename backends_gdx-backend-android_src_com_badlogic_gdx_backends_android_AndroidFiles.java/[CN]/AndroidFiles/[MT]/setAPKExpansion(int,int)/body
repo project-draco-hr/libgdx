@@ -1,0 +1,9 @@
+{
+  try {
+    expansionFile=APKExpansionSupport.getAPKExpansionZipFile(((AndroidApplication)Gdx.app).getBaseContext(),mainVersion,patchVersion);
+  }
+ catch (  IOException ex) {
+    throw new GdxRuntimeException("APK expansion main version " + mainVersion + " or patch version "+ patchVersion+ " couldn't be opened!");
+  }
+  return expansionFile != null;
+}

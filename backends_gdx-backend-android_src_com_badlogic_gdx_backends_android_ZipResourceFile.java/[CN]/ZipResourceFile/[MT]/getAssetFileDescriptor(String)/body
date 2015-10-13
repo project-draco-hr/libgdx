@@ -1,0 +1,7 @@
+{
+  ZipEntryRO entry=mHashMap.get(assetPath);
+  if (null != entry) {
+    return entry.getAssetFileDescriptor();
+  }
+  return null;
+}
