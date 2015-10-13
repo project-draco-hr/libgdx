@@ -10,6 +10,6 @@ synchronized (this) {
       keyCount++;
       keys[event.keyCode]=true;
     }
-    Gdx.graphics.requestRendering();
+    lwjglAwtCanvas.graphics.requestRendering();
   }
 }

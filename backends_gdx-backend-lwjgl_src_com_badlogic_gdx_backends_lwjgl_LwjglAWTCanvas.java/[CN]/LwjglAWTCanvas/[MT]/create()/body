@@ -2,6 +2,7 @@
   try {
     setGlobals();
     graphics.initiateGL();
+    canvas.setVSyncEnabled(graphics.config.vSyncEnabled);
     listener.create();
     lastWidth=Math.max(1,graphics.getWidth());
     lastHeight=Math.max(1,graphics.getHeight());
