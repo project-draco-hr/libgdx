@@ -1,10 +1,11 @@
 {
-  value=value.replace("\\","\\\\").replace("\r","\\r").replace("\n","\\n").replace("\t","\\t");
+  StringBuilder buffer=new StringBuilder(value);
+  buffer.replace('\\',"\\\\").replace('\r',"\\r").replace('\n',"\\n").replace('\t',"\\t");
 switch (this) {
 case minimal:
-    if (!value.contains("//") && !value.contains("/*") && minimalNamePattern.matcher(value).matches())     return value;
+    if (!value.contains("//") && !value.contains("/*") && minimalNamePattern.matcher(buffer).matches())     return buffer.toString();
 case javascript:
-  if (javascriptPattern.matcher(value).matches())   return value;
+  if (javascriptPattern.matcher(buffer).matches())   return buffer.toString();
 }
-return '"' + value.replace("\"","\\\"") + '"';
+return '"' + buffer.replace('"',"\\\"").toString() + '"';
 }
