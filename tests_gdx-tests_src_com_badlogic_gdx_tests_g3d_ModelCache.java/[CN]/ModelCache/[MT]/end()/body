@@ -18,7 +18,7 @@
     final VertexAttributes va=renderable.meshPart.mesh.getVertexAttributes();
     final Material mat=renderable.material;
     final int pt=renderable.meshPart.primitiveType;
-    final boolean sameMesh=va.equals(vertexAttributes) && renderable.meshPart.numVertices + meshBuilder.getNumVertices() < Short.MAX_VALUE;
+    final boolean sameMesh=va.equals(vertexAttributes) && renderable.meshPart.size + meshBuilder.getNumVertices() < Short.MAX_VALUE;
     final boolean samePart=sameMesh && pt == primitiveType && mat.same(material,true);
     if (!samePart) {
       if (!sameMesh) {
@@ -28,17 +28,17 @@
       }
       final MeshPart newPart=meshBuilder.part("",pt,meshPartPool.obtain());
       final Renderable previous=renderables.get(renderables.size - 1);
-      previous.meshPart.indexOffset=part.indexOffset;
-      previous.meshPart.numVertices=part.numVertices;
+      previous.meshPart.offset=part.offset;
+      previous.meshPart.size=part.size;
       part=newPart;
       renderables.add(obtainRenderable(material=mat,primitiveType=pt));
     }
     meshBuilder.setVertexTransform(renderable.worldTransform);
-    meshBuilder.addMesh(renderable.meshPart.mesh,renderable.meshPart.indexOffset,renderable.meshPart.numVertices);
+    meshBuilder.addMesh(renderable.meshPart.mesh,renderable.meshPart.offset,renderable.meshPart.size);
   }
   final Mesh mesh=meshBuilder.end(meshPool.obtain(vertexAttributes,meshBuilder.getNumVertices(),meshBuilder.getNumIndices()));
   while (offset < renderables.size)   renderables.get(offset++).meshPart.mesh=mesh;
   final Renderable previous=renderables.get(renderables.size - 1);
-  previous.meshPart.indexOffset=part.indexOffset;
-  previous.meshPart.numVertices=part.numVertices;
+  previous.meshPart.offset=part.offset;
+  previous.meshPart.size=part.size;
 }

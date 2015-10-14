@@ -4,8 +4,8 @@
   result.environment=null;
   result.material=material;
   result.meshPart.mesh=null;
-  result.meshPart.indexOffset=0;
-  result.meshPart.numVertices=0;
+  result.meshPart.offset=0;
+  result.meshPart.size=0;
   result.meshPart.primitiveType=primitiveType;
   result.meshPart.center.set(0,0,0);
   result.meshPart.halfExtents.set(0,0,0);
