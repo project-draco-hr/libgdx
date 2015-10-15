@@ -1,0 +1,11 @@
+{
+  this.id=other.id;
+  this.mesh=other.mesh;
+  this.offset=other.offset;
+  this.size=other.size;
+  this.primitiveType=other.primitiveType;
+  this.center.set(other.center);
+  this.halfExtents.set(other.halfExtents);
+  this.radius=other.radius;
+  return this;
+}

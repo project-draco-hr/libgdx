@@ -1,5 +1,5 @@
 {
   vertices=new float[capacity * CPU_VERTEX_SIZE];
-  if (renderable.mesh != null)   renderable.mesh.dispose();
-  renderable.mesh=new Mesh(false,capacity,0,CPU_ATTRIBUTES);
+  if (renderable.meshPart.mesh != null)   renderable.meshPart.mesh.dispose();
+  renderable.meshPart.mesh=new Mesh(false,capacity,0,CPU_ATTRIBUTES);
 }

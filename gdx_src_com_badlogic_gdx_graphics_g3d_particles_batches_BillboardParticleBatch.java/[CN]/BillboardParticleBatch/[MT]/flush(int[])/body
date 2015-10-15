@@ -11,8 +11,9 @@
   for (int v=0; v < vCount; v+=addedVertexCount) {
     addedVertexCount=Math.min(vCount - v,MAX_VERTICES_PER_MESH);
     Renderable renderable=renderablePool.obtain();
-    renderable.meshPartSize=(addedVertexCount / 4) * 6;
-    renderable.mesh.setVertices(vertices,currentVertexSize * v,currentVertexSize * addedVertexCount);
+    renderable.meshPart.size=(addedVertexCount / 4) * 6;
+    renderable.meshPart.mesh.setVertices(vertices,currentVertexSize * v,currentVertexSize * addedVertexCount);
+    renderable.meshPart.update();
     renderables.add(renderable);
   }
 }

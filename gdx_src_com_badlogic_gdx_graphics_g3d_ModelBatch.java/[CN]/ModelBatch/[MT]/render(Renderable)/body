@@ -1,5 +1,5 @@
 {
   renderable.shader=shaderProvider.getShader(renderable);
-  renderable.mesh.setAutoBind(false);
+  renderable.meshPart.mesh.setAutoBind(false);
   renderables.add(renderable);
 }

@@ -22,7 +22,7 @@
     }
   }
   if (renderable != null) {
-    final VertexAttributes attrs=renderable.mesh.getVertexAttributes();
+    final VertexAttributes attrs=renderable.meshPart.mesh.getVertexAttributes();
     final int c=attrs.size();
     for (int i=0; i < c; i++) {
       final VertexAttribute attr=attrs.get(i);

@@ -6,5 +6,5 @@
     ColorAttribute colorAttr=(ColorAttribute)renderable.material.get(ColorAttribute.Diffuse);
     set(u_color,colorAttr.color);
   }
-  renderable.mesh.render(program,renderable.primitiveType,renderable.meshPartOffset,renderable.meshPartSize);
+  renderable.meshPart.render(program);
 }

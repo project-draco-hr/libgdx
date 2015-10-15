@@ -3,7 +3,7 @@
   this.program=shaderProgram;
   this.renderable=renderable;
   materialMask=renderable.material.getMask() | optionalAttributes;
-  vertexMask=renderable.mesh.getVertexAttributes().getMask();
+  vertexMask=renderable.meshPart.mesh.getVertexAttributes().getMask();
   if (!config.ignoreUnimplemented && (implementedFlags & materialMask) != materialMask)   throw new GdxRuntimeException("Some attributes not implemented yet (" + materialMask + ")");
   register(DefaultShader.Inputs.viewTrans,DefaultShader.Setters.viewTrans);
   register(DefaultShader.Inputs.projViewTrans,DefaultShader.Setters.projViewTrans);

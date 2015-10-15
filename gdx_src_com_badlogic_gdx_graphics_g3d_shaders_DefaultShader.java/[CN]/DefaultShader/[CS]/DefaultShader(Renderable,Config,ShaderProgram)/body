@@ -7,7 +7,7 @@
   this.shadowMap=lighting && renderable.environment.shadowMap != null;
   this.renderable=renderable;
   attributesMask=attributes.getMask() | optionalAttributes;
-  vertexMask=renderable.mesh.getVertexAttributes().getMask();
+  vertexMask=renderable.meshPart.mesh.getVertexAttributes().getMask();
   this.directionalLights=new DirectionalLight[lighting && config.numDirectionalLights > 0 ? config.numDirectionalLights : 0];
   for (int i=0; i < directionalLights.length; i++)   directionalLights[i]=new DirectionalLight();
   this.pointLights=new PointLight[lighting && config.numPointLights > 0 ? config.numPointLights : 0];
