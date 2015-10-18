@@ -1,0 +1,20 @@
+{
+  detach();
+  id=other.id;
+  isAnimated=other.isAnimated;
+  inheritTransform=other.inheritTransform;
+  translation.set(other.translation);
+  rotation.set(other.rotation);
+  scale.set(other.scale);
+  localTransform.set(other.localTransform);
+  globalTransform.set(other.globalTransform);
+  parts.clear();
+  for (  NodePart nodePart : other.parts) {
+    parts.add(nodePart.copy());
+  }
+  children.clear();
+  for (  Node child : other.getChildren()) {
+    addChild(child.copy());
+  }
+  return this;
+}
