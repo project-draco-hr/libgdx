@@ -1,0 +1,7 @@
+{
+  float cosPolar=MathUtils.cos(polarAngle);
+  float sinPolar=MathUtils.sin(polarAngle);
+  float cosAzim=MathUtils.cos(azimuthalAngle);
+  float sinAzim=MathUtils.sin(azimuthalAngle);
+  return this.set(cosAzim * sinPolar,sinAzim * sinPolar,cosPolar);
+}
