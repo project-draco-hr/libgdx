@@ -1,0 +1,7 @@
+{
+  float u=MathUtils.random();
+  float v=MathUtils.random();
+  float theta=MathUtils.PI2 * u;
+  float phi=(float)Math.acos(2f * v - 1f);
+  return this.setFromSpherical(theta,phi);
+}
