@@ -1,6 +1,8 @@
 {
-  int numIndices=getNumIndices();
-  if (offset < 0 || count < 1 || offset + count > numIndices)   throw new GdxRuntimeException("Not enough indices ( offset=" + offset + ", count="+ count+ ", max="+ numIndices+ " )");
+  final int numIndices=getNumIndices();
+  final int numVertices=getNumVertices();
+  final int max=numIndices == 0 ? numVertices : numIndices;
+  if (offset < 0 || count < 1 || offset + count > max)   throw new GdxRuntimeException("Invalid part specified ( offset=" + offset + ", count="+ count+ ", max="+ max+ " )");
   final FloatBuffer verts=vertices.getBuffer();
   final ShortBuffer index=indices.getBuffer();
   final VertexAttribute posAttrib=getVertexAttribute(Usage.Position);
@@ -9,27 +11,57 @@
   final int end=offset + count;
 switch (posAttrib.numComponents) {
 case 1:
-    for (int i=offset; i < end; i++) {
-      final int idx=index.get(i) * vertexSize + posoff;
-      tmpV.set(verts.get(idx),0,0);
-      if (transform != null)       tmpV.mul(transform);
-      out.ext(tmpV);
+    if (numIndices > 0) {
+      for (int i=offset; i < end; i++) {
+        final int idx=index.get(i) * vertexSize + posoff;
+        tmpV.set(verts.get(idx),0,0);
+        if (transform != null)         tmpV.mul(transform);
+        out.ext(tmpV);
+      }
+    }
+ else {
+      for (int i=offset; i < end; i++) {
+        final int idx=i * vertexSize + posoff;
+        tmpV.set(verts.get(idx),0,0);
+        if (transform != null)         tmpV.mul(transform);
+        out.ext(tmpV);
+      }
     }
   break;
 case 2:
-for (int i=offset; i < end; i++) {
-  final int idx=index.get(i) * vertexSize + posoff;
-  tmpV.set(verts.get(idx),verts.get(idx + 1),0);
-  if (transform != null)   tmpV.mul(transform);
-  out.ext(tmpV);
+if (numIndices > 0) {
+  for (int i=offset; i < end; i++) {
+    final int idx=index.get(i) * vertexSize + posoff;
+    tmpV.set(verts.get(idx),verts.get(idx + 1),0);
+    if (transform != null)     tmpV.mul(transform);
+    out.ext(tmpV);
+  }
+}
+ else {
+  for (int i=offset; i < end; i++) {
+    final int idx=i * vertexSize + posoff;
+    tmpV.set(verts.get(idx),verts.get(idx + 1),0);
+    if (transform != null)     tmpV.mul(transform);
+    out.ext(tmpV);
+  }
 }
 break;
 case 3:
+if (numIndices > 0) {
 for (int i=offset; i < end; i++) {
 final int idx=index.get(i) * vertexSize + posoff;
 tmpV.set(verts.get(idx),verts.get(idx + 1),verts.get(idx + 2));
 if (transform != null) tmpV.mul(transform);
 out.ext(tmpV);
+}
+}
+ else {
+for (int i=offset; i < end; i++) {
+final int idx=i * vertexSize + posoff;
+tmpV.set(verts.get(idx),verts.get(idx + 1),verts.get(idx + 2));
+if (transform != null) tmpV.mul(transform);
+out.ext(tmpV);
+}
 }
 break;
 }
