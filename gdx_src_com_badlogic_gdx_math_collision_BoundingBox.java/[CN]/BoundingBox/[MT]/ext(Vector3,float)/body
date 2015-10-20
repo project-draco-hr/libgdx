@@ -1,0 +1,3 @@
+{
+  return this.set(min.set(min(min.x,center.x - radius),min(min.y,center.y - radius),min(min.z,center.z - radius)),max.set(max(max.x,center.x + radius),max(max.y,center.y + radius),max(max.z,center.z + radius)));
+}

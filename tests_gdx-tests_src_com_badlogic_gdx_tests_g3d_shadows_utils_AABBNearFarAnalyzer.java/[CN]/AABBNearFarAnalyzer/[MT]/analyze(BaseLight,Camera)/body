@@ -5,10 +5,8 @@
   for (  Renderable renderable : renderables) {
     renderable.worldTransform.getTranslation(tmpV);
     tmpV.add(renderable.meshPart.center);
-    sphere.center.set(tmpV);
-    sphere.radius=renderable.meshPart.radius;
-    if (camera.frustum.sphereInFrustum(sphere)) {
-      bb1.ext(sphere);
+    if (camera.frustum.sphereInFrustum(tmpV,renderable.meshPart.radius)) {
+      bb1.ext(tmpV,renderable.meshPart.radius);
     }
   }
   computeResult(bb1,camera);
