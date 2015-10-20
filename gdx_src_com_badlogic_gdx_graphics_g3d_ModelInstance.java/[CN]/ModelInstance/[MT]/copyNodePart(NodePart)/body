@@ -1,9 +1,0 @@
-{
-  NodePart copy=new NodePart();
-  copy.meshPart=new MeshPart(nodePart.meshPart);
-  if (nodePart.invBoneBindTransforms != null)   nodePartBones.put(copy,nodePart.invBoneBindTransforms);
-  final int index=materials.indexOf(nodePart.material,false);
-  if (index < 0)   materials.add(copy.material=nodePart.material.copy());
- else   copy.material=materials.get(index);
-  return copy;
-}
