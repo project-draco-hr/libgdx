@@ -1,5 +1,5 @@
 {
-  getRenderables();
+  getRenderables(renderableProviders);
   prepareCamera(camera);
   bb1.inf();
   for (  Renderable renderable : renderables) {
@@ -10,5 +10,6 @@
     }
   }
   computeResult(bb1,camera);
+  renderablesPool.flush();
   renderables.clear();
 }
