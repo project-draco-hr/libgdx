@@ -2,7 +2,7 @@
   GL20 gl=Gdx.gl20;
   disposeColorTexture(colorTexture);
   if (hasDepthStencilPackedBuffer) {
-    gl.glDeleteBuffer(depthStencilPackedBufferHandle);
+    gl.glDeleteRenderbuffer(depthStencilPackedBufferHandle);
   }
  else {
     if (hasDepth)     gl.glDeleteRenderbuffer(depthbufferHandle);
