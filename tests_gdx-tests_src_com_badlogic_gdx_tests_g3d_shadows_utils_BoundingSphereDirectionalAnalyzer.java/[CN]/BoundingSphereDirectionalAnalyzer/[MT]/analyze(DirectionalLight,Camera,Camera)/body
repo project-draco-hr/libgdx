@@ -1,0 +1,18 @@
+{
+  bb.inf();
+  for (int i=0; i < mainCamera.frustum.planePoints.length; i++) {
+    bb.ext(mainCamera.frustum.planePoints[i]);
+  }
+  float radius=bb.getDimensions(tmpV).len() * 0.5f;
+  bb.getCenter(tmpV);
+  tmpV2.set(light.direction);
+  tmpV2.scl(radius * 1.5f);
+  out.direction.set(light.direction);
+  out.position.set(tmpV.sub(tmpV2));
+  out.near=0.5f * radius;
+  out.far=2.5f * radius;
+  out.up.set(light.direction.y,light.direction.z,light.direction.x);
+  out.viewportWidth=radius;
+  out.viewportHeight=radius;
+  return out;
+}
