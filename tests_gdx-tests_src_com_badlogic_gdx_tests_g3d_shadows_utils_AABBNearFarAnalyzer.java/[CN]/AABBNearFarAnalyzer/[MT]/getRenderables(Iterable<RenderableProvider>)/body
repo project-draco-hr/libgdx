@@ -1,0 +1,5 @@
+{
+  for (  RenderableProvider renderableProvider : renderableProviders) {
+    renderableProvider.getRenderables(renderables,renderablesPool);
+  }
+}
