@@ -9,7 +9,6 @@
   }
   vertexCount=1 + (int)Short.MAX_VALUE;
   indexCount=Math.max(1 + (int)Short.MAX_VALUE,1 << (32 - Integer.numberOfLeadingZeros(indexCount - 1)));
-  Gdx.app.log("ModelCache","Allocating new Mesh, vertices: " + vertexCount + ", indices: "+ indexCount);
   Mesh result=new Mesh(false,vertexCount,indexCount,vertexAttributes);
   usedMeshes.add(result);
   return result;

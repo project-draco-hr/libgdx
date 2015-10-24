@@ -7,7 +7,6 @@
       return mesh;
     }
   }
-  Gdx.app.log("ModelCache","Allocating new Mesh, vertices: " + vertexCount + ", indices: "+ indexCount);
   Mesh result=new Mesh(true,vertexCount,indexCount,vertexAttributes);
   usedMeshes.add(result);
   return result;

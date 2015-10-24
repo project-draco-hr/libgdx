@@ -1,6 +1,7 @@
 {
   if (building)   throw new GdxRuntimeException("Call end() after calling begin()");
   building=true;
+  this.camera=camera;
   renderablesPool.flush();
   renderables.clear();
   items.clear();

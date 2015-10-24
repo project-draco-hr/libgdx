@@ -2,7 +2,7 @@
   if (!building)   throw new GdxRuntimeException("Call begin() prior to calling end()");
   building=false;
   if (items.size == 0)   return;
-  sorter.sort(null,items);
+  sorter.sort(camera,items);
   int itemCount=items.size;
   int initCount=renderables.size;
   final Renderable first=items.get(0);
