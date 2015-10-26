@@ -1,0 +1,13 @@
+{
+  Camera camera=lp.camera;
+  ShadowMapRegion r=allocator.nextResult(currentLight);
+  if (r == null) {
+    return null;
+  }
+  TextureRegion region=lp.region;
+  region.setTexture(frameBuffers[PASS_1].getColorBufferTexture());
+  Gdx.gl.glViewport(r.x,r.y,r.width,r.height);
+  Gdx.gl.glScissor(r.x,r.y,r.width,r.height);
+  region.setRegion(r.x,r.y,r.width,r.height);
+  return tmpV2.set(r.width,r.height);
+}

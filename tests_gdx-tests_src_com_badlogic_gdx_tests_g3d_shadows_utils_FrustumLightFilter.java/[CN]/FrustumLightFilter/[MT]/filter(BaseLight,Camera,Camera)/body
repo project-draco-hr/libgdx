@@ -1,5 +1,5 @@
 {
-  Frustum f1=this.camera.frustum;
+  Frustum f1=mainCamera.frustum;
   Frustum f2=camera.frustum;
   bb.inf();
   for (int i=0; i < f2.planePoints.length; i++) {

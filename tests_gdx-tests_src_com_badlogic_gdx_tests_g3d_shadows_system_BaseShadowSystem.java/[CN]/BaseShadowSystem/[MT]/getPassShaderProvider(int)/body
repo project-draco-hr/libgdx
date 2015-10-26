@@ -1,0 +1,6 @@
+{
+  if (n >= passShaderProviders.length) {
+    throw new GdxRuntimeException("ShaderProvider " + n + " doesn't exist in "+ getClass().getName());
+  }
+  return passShaderProviders[n];
+}

@@ -1,0 +1,9 @@
+{
+  this.nearFarAnalyzer=nearFarAnalyzer;
+  this.allocator=allocator;
+  this.directionalAnalyzer=directionalAnalyzer;
+  this.lightFilter=lightFilter;
+  frameBuffers=new FrameBuffer[getPassQuantity()];
+  passShaderProviders=new ShaderProvider[getPassQuantity()];
+  init();
+}

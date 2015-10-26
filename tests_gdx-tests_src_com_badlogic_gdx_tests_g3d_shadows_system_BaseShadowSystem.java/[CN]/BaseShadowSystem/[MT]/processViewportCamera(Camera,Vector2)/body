@@ -1,0 +1,7 @@
+{
+  if (viewport != null) {
+    camera.viewportHeight=viewport.y;
+    camera.viewportWidth=viewport.x;
+    camera.update();
+  }
+}
