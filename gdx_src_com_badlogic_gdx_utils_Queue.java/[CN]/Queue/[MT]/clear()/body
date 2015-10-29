@@ -1,0 +1,10 @@
+{
+  final T[] values=this.values;
+  while (popIndex != pushIndex) {
+    values[popIndex]=null;
+    popIndex++;
+    if (popIndex == values.length) {
+      popIndex=0;
+    }
+  }
+}

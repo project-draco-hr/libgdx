@@ -1,0 +1,16 @@
+{
+  if (isEmpty()) {
+    return "Queue []";
+  }
+  final T[] values=this.values;
+  final int popIndex=this.popIndex;
+  final int pushIndex=this.pushIndex;
+  StringBuilder sb=new StringBuilder(64);
+  sb.append("Queue [");
+  sb.append(values[popIndex]);
+  for (int i=popIndex + 1; i != pushIndex; i=(i + 1) % values.length) {
+    sb.append(", ").append(values[i]);
+  }
+  sb.append(']');
+  return sb.toString();
+}
