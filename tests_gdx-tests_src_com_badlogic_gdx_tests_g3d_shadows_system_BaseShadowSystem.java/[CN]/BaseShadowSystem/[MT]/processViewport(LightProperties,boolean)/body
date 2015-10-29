@@ -3,7 +3,7 @@
   ShadowMapRegion r=allocator.nextResult(currentLight);
   if (r == null)   return;
   TextureRegion region=lp.region;
-  region.setTexture(frameBuffers[PASS_1].getColorBufferTexture());
+  region.setTexture(frameBuffers[FIRST_PASS].getColorBufferTexture());
   Gdx.gl.glViewport(r.x,r.y,r.width,r.height);
   Gdx.gl.glScissor(r.x,r.y,r.width,r.height);
   region.setRegion(r.x,r.y,r.width,r.height);
