@@ -1,6 +1,4 @@
 {
-  if (dirCameras.containsKey(dir)) {
-    return true;
-  }
+  if (dirCameras.containsKey(dir))   return true;
   return false;
 }

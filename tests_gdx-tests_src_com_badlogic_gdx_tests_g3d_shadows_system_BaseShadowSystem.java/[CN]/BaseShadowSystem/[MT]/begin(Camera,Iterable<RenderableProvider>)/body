@@ -1,7 +1,5 @@
 {
-  if (this.renderableProviders != null || this.camera != null) {
-    throw new GdxRuntimeException("Call end() first.");
-  }
+  if (this.renderableProviders != null || this.camera != null)   throw new GdxRuntimeException("Call end() first.");
   this.camera=camera;
   this.renderableProviders=renderableProviders;
 }

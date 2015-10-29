@@ -1,7 +1,5 @@
 {
-  if (!pointCameraIterator.hasNext() && currentPointSide > 5) {
-    return null;
-  }
+  if (!pointCameraIterator.hasNext() && currentPointSide > 5)   return null;
   if (currentPointSide > 5)   currentPointSide=0;
   if (currentPointSide == 0) {
     ObjectMap.Entry<PointLight,PointLightProperties> e=pointCameraIterator.next();

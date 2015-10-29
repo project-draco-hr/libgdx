@@ -1,7 +1,5 @@
 {
-  if (!dirCameraIterator.hasNext()) {
-    return null;
-  }
+  if (!dirCameraIterator.hasNext())   return null;
   ObjectMap.Entry<DirectionalLight,LightProperties> e=dirCameraIterator.next();
   currentLight=e.key;
   currentLightProperties=e.value;

@@ -1,6 +1,4 @@
 {
-  if (pointCameras.containsKey(point)) {
-    return true;
-  }
+  if (pointCameras.containsKey(point))   return true;
   return false;
 }
