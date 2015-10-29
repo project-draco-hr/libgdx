@@ -4,6 +4,6 @@
   currentLight=e.key;
   currentLightProperties=e.value;
   LightProperties lp=e.value;
-  processViewport(lp);
+  processViewport(lp,false);
   return lp;
 }

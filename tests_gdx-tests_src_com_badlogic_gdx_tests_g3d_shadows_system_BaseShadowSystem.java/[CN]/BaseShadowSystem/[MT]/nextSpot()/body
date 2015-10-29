@@ -7,6 +7,6 @@
   if (!lightFilter.filter(spotCameras.findKey(lp,true),lp.camera,this.camera)) {
     return nextSpot();
   }
-  processViewportCamera(lp.camera,processViewport(lp));
+  processViewport(lp,true);
   return lp;
 }

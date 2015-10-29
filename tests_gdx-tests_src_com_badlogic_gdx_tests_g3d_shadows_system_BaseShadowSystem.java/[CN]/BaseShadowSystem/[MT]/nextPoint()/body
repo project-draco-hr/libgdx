@@ -13,7 +13,7 @@
     if (!lightFilter.filter(pointCameras.findKey(currentPointProperties,true),lp.camera,this.camera)) {
       return nextPoint();
     }
-    processViewportCamera(lp.camera,processViewport(lp));
+    processViewport(lp,true);
     return lp;
   }
   currentPointSide+=1;

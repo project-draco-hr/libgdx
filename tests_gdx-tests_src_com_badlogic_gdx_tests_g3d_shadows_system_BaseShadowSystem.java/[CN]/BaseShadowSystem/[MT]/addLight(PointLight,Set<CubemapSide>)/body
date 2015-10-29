@@ -7,8 +7,8 @@
       camera.position.set(point.position);
       camera.direction.set(cubemapSide.direction);
       camera.up.set(cubemapSide.up);
-      camera.near=0.1f;
-      camera.far=1000;
+      camera.near=1;
+      camera.far=100;
       LightProperties p=new LightProperties(camera);
       plProperty.properties.put(cubemapSide,p);
     }
