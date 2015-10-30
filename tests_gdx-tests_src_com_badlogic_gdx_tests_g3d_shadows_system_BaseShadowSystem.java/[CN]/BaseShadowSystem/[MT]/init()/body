@@ -1,5 +1,7 @@
 {
   frameBuffers=new FrameBuffer[getPassQuantity()];
   passShaderProviders=new ShaderProvider[getPassQuantity()];
-  frameBuffers[FIRST_PASS]=new FrameBuffer(Pixmap.Format.RGBA8888,allocator.getWidth(),allocator.getHeight(),true);
+  for (int i=0; i < getPassQuantity(); i++) {
+    init(i);
+  }
 }

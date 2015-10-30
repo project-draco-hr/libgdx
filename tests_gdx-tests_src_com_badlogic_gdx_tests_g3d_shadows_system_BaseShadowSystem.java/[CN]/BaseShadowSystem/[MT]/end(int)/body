@@ -1,5 +1,4 @@
 {
   if (currentPass != n)   throw new GdxRuntimeException("Begin " + n + " must be called before end "+ n);
-  frameBuffers[n].end();
   endPass(n);
 }
