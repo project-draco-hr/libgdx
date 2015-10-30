@@ -3,7 +3,7 @@
     return defaultValue;
   }
   final T[] values=this.values;
-  T result=values[head];
+  final T result=values[head];
   values[head]=null;
   head++;
   if (head == values.length) {

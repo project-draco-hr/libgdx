@@ -2,5 +2,5 @@
   if (size == 0) {
     throw new NoSuchElementException("Queue is empty");
   }
-  return values[head];
+  return pop(null);
 }
