@@ -21,7 +21,7 @@
     }
  else {
       System.err.println("Unknown parameter: " + param);
-      System.exit(3);
+      exit(3);
     }
   }
   fontSizeSpinner.setValue((int)(0.5f + Math.max(4,scale * ((Integer)fontSizeSpinner.getValue()))));
