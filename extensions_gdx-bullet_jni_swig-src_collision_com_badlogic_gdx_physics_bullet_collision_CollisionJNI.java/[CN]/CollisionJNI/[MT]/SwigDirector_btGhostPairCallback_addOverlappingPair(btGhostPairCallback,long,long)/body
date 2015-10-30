@@ -1,3 +1,3 @@
 {
-  return btBroadphasePair.getCPtr(self.addOverlappingPair((proxy0 == 0) ? null : new btBroadphaseProxy(proxy0,false),(proxy1 == 0) ? null : new btBroadphaseProxy(proxy1,false)));
+  return btBroadphasePair.getCPtr(jself.addOverlappingPair((proxy0 == 0) ? null : new btBroadphaseProxy(proxy0,false),(proxy1 == 0) ? null : new btBroadphaseProxy(proxy1,false)));
 }

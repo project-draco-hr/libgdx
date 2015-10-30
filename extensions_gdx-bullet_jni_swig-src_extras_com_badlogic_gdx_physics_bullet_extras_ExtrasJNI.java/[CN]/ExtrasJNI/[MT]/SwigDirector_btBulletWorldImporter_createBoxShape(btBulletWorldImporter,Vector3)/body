@@ -1,3 +1,3 @@
 {
-  return btCollisionShape.getCPtr(self.createBoxShape(halfExtents));
+  return btCollisionShape.getCPtr(jself.createBoxShape(halfExtents));
 }

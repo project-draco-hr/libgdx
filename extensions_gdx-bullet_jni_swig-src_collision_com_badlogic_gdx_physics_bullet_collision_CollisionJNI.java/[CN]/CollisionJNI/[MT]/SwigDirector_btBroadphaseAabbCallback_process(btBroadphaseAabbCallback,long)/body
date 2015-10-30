@@ -1,3 +1,3 @@
 {
-  return self.process((proxy == 0) ? null : new btBroadphaseProxy(proxy,false));
+  return jself.process((proxy == 0) ? null : new btBroadphaseProxy(proxy,false));
 }

@@ -1,3 +1,3 @@
 {
-  return btCollisionShape.getCPtr(self.createCapsuleShapeZ(radius,height));
+  return btCollisionShape.getCPtr(jself.createCapsuleShapeZ(radius,height));
 }
