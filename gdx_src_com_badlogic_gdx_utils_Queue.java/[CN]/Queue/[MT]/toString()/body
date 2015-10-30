@@ -3,12 +3,12 @@
     return "Queue []";
   }
   final T[] values=this.values;
-  final int popIndex=this.popIndex;
-  final int pushIndex=this.pushIndex;
+  final int head=this.head;
+  final int tail=this.tail;
   StringBuilder sb=new StringBuilder(64);
   sb.append("Queue [");
-  sb.append(values[popIndex]);
-  for (int i=popIndex + 1; i != pushIndex; i=(i + 1) % values.length) {
+  sb.append(values[head]);
+  for (int i=(head + 1) % values.length; i != tail; i=(i + 1) % values.length) {
     sb.append(", ").append(values[i]);
   }
   sb.append(']');

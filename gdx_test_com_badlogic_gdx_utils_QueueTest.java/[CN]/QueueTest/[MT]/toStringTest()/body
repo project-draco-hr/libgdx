@@ -1,10 +1,21 @@
 {
-  Queue<Integer> q=new Queue<Integer>();
-  assertTrue(q.toString().equals("Queue []"));
-  q.add(4);
-  assertTrue(q.toString().equals("Queue [4]"));
-  q.add(5);
-  q.add(6);
-  q.add(7);
-  assertTrue(q.toString().equals("Queue [4, 5, 6, 7]"));
+{
+    Queue<Integer> q=new Queue<Integer>(1,true);
+    assertTrue(q.toString().equals("Queue []"));
+    q.add(4);
+    assertTrue(q.toString().equals("Queue [4]"));
+    q.add(5);
+    q.add(6);
+    q.add(7);
+    assertTrue(q.toString().equals("Queue [4, 5, 6, 7]"));
+  }
+{
+    Queue<Integer> nonResQ=new Queue<Integer>(4,false);
+    nonResQ.add(1);
+    nonResQ.add(2);
+    nonResQ.add(3);
+    nonResQ.add(4);
+    nonResQ.add(5);
+    assertTrue(nonResQ.toString().equals("Queue [1, 2, 3, 4]"));
+  }
 }

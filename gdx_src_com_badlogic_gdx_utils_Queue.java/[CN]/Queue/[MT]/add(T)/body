@@ -1,22 +1,18 @@
 {
-  final T[] values=this.values;
-  int pushIndex=this.pushIndex;
-  final int popIndex=this.popIndex;
-  values[pushIndex]=object;
-  pushIndex++;
-  if (pushIndex == values.length) {
-    pushIndex=0;
-  }
-  if (pushIndex == popIndex) {
-    final int newSize=values.length << 1;
-    final T[] newArray=(T[])ArrayReflection.newInstance(values.getClass().getComponentType(),newSize);
-    final int currentSize=values.length;
-    for (int i=0; i < currentSize; i++) {
-      newArray[i]=values[(popIndex + i) % currentSize];
+  T[] values=this.values;
+  if (size == values.length) {
+    if (!resizable) {
+      return false;
     }
-    this.popIndex=0;
-    pushIndex=currentSize;
-    this.values=newArray;
+ else {
+      resize(values.length << 1);
+      values=this.values;
+    }
   }
-  this.pushIndex=pushIndex;
+  values[tail++]=object;
+  if (tail == values.length) {
+    tail=0;
+  }
+  size++;
+  return true;
 }

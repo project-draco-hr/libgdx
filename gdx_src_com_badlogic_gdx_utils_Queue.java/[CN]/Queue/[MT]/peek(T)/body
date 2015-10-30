@@ -1,7 +1,6 @@
 {
-  final int popIndex=this.popIndex;
-  if (popIndex == pushIndex) {
+  if (size == 0) {
     return defaultValue;
   }
-  return values[popIndex];
+  return values[head];
 }

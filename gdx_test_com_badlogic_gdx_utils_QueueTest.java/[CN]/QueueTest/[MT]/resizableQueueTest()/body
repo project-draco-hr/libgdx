@@ -1,9 +1,9 @@
 {
-  Queue<Integer> q=new Queue<Integer>(8);
+  final Queue<Integer> q=new Queue<Integer>(8,true);
   assertTrue("New queue is not empty!",q.isEmpty());
   for (int i=0; i < 100; i++) {
     for (int j=0; j < i; j++) {
-      q.add(j);
+      assertTrue("Failed to add element " + j + " ("+ i+ ")",q.add(j));
       final int size=q.size();
       assertTrue("Size should be " + (j + 1) + " but is "+ size+ " ("+ i+ ")",size == j + 1);
     }

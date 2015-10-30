@@ -1,7 +1,3 @@
 {
-  final int pushIndex=this.pushIndex;
-  final int popIndex=this.popIndex;
-  if (pushIndex == popIndex)   return 0;
-  if (popIndex < pushIndex)   return (pushIndex - popIndex);
-  return values.length - (popIndex - pushIndex);
+  return size;
 }

@@ -1,0 +1,17 @@
+{
+  final Queue<Integer> q=new Queue<Integer>(5,false);
+  for (int i=0; i < 5; i++) {
+    assertTrue("Failed to add element " + i,q.add(i));
+    assertTrue("Wrong size after " + i,q.size() == i + 1);
+  }
+  assertTrue("Not full when should be full",q.isFull());
+  for (int i=5; i < 10; i++) {
+    assertFalse("Added element " + i,q.add(i));
+    assertTrue("Wrong size after " + i,q.size() == 5);
+    assertTrue("Not full when should be full (" + i + ")",q.isFull());
+  }
+  q.clear();
+  assertTrue("Wrong size after clear",q.size() == 0);
+  assertTrue("Not empty when should be empty",q.isEmpty());
+  assertFalse("Full when should be empty",q.isFull());
+}
