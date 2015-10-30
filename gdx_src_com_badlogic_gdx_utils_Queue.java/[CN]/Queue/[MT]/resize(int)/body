@@ -6,7 +6,7 @@
   if (head < tail) {
     System.arraycopy(values,head,newArray,0,tail - head);
   }
- else {
+ else   if (size > 0) {
     final int rest=values.length - head;
     System.arraycopy(values,head,newArray,0,rest);
     System.arraycopy(values,0,newArray,rest,tail);
