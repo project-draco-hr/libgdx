@@ -1,0 +1,7 @@
+{
+  OrthographicCamera camera=new OrthographicCamera();
+  camera.direction.set(dir.direction);
+  camera.near=1;
+  camera.far=100;
+  dirCameras.put(dir,new LightProperties(camera));
+}
