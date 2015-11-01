@@ -1,3 +1,3 @@
 {
-  return btConeTwistConstraint.getCPtr(self.createConeTwistConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),rbAFrame,rbBFrame));
+  return btConeTwistConstraint.getCPtr(jself.createConeTwistConstraint(new btRigidBody(rbA,false),new btRigidBody(rbB,false),rbAFrame,rbBFrame));
 }
