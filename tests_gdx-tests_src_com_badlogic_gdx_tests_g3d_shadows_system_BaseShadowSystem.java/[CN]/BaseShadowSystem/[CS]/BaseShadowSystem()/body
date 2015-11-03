@@ -1,0 +1,3 @@
+{
+  this(new AABBNearFarAnalyzer(),new FixedShadowMapAllocator(FixedShadowMapAllocator.QUALITY_MED,FixedShadowMapAllocator.QUANTITY_MAP_MED),new BoundingSphereDirectionalAnalyzer(),new FrustumLightFilter());
+}
