@@ -33,11 +33,9 @@
   }
   Color color=getColor();
   batch.setColor(color.r,color.g,color.b,color.a * parentAlpha);
-  if (style.background != null) {
-    style.background.draw(batch,0,0,getWidth(),getHeight());
-    batch.flush();
-  }
+  if (style.background != null)   style.background.draw(batch,0,0,getWidth(),getHeight());
   getStage().calculateScissors(widgetAreaBounds,scissorBounds);
+  batch.flush();
   if (ScissorStack.pushScissors(scissorBounds)) {
     drawChildren(batch,parentAlpha);
     batch.flush();
