@@ -2,7 +2,7 @@
   T[] values=this.values;
   if (size == values.length) {
     if (!resizable) {
-      return false;
+      throw new IllegalStateException("Deque is full");
     }
  else {
       resize(values.length << 1);
@@ -17,5 +17,4 @@
   values[head]=object;
   this.head=head;
   this.size++;
-  return true;
 }

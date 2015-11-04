@@ -3,7 +3,12 @@
   assertTrue("New deque is not empty!",q.size() == 0);
   for (int i=0; i < 100; i++) {
     for (int j=0; j < i; j++) {
-      assertTrue("Failed to add element " + j + " ("+ i+ ")",q.pushFront(j));
+      try {
+        q.pushFront(j);
+      }
+ catch (      IllegalStateException e) {
+        fail("Failed to add element " + j + " ("+ i+ ")");
+      }
       final Integer peeked=q.peek();
       assertTrue("peek shows " + peeked + ", should be "+ j+ " ("+ i+ ")",peeked.equals(j));
       final int size=q.size();

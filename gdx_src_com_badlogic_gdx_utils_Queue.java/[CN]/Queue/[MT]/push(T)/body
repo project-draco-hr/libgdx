@@ -2,7 +2,7 @@
   T[] values=this.values;
   if (size == values.length) {
     if (!resizable) {
-      return false;
+      throw new IllegalStateException("Queue is full");
     }
  else {
       resize(values.length << 1);
@@ -14,5 +14,4 @@
     tail=0;
   }
   size++;
-  return true;
 }
