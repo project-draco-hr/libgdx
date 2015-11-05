@@ -1,0 +1,4 @@
+{
+  if (config == null)   throw new GdxRuntimeException("MainShaderProvider needs config");
+  this.config=config;
+}
