@@ -1,4 +1,5 @@
 {
+  this.resolver=resolver;
   if (defaultLoaders) {
     setLoader(BitmapFont.class,new BitmapFontLoader(resolver));
     setLoader(Music.class,new MusicLoader(resolver));
