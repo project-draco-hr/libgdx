@@ -14,6 +14,10 @@
     offsetX=style.pressedOffsetX;
     offsetY=style.pressedOffsetY;
   }
+ else   if (isChecked && !isDisabled) {
+    offsetX=style.checkedOffsetX;
+    offsetY=style.checkedOffsetY;
+  }
  else {
     offsetX=style.unpressedOffsetX;
     offsetY=style.unpressedOffsetY;
