@@ -123,7 +123,7 @@ catch (        URISyntaxException e1) {
 ,ui.settings.getGradleArgs());
       log("Done!");
       if (ui.settings.getGradleArgs().contains("eclipse") || ui.settings.getGradleArgs().contains("idea")) {
-        log("To import in Eclipse: File -> Import -> General -> Exisiting Projects into Workspace");
+        log("To import in Eclipse: File -> Import -> General -> Existing Projects into Workspace");
         log("To import to Intellij IDEA: File -> Open -> YourProject.ipr");
       }
  else {
