@@ -1,6 +1,10 @@
 {
   if (vertexShader == null)   throw new IllegalArgumentException("vertex shader must not be null");
   if (fragmentShader == null)   throw new IllegalArgumentException("fragment shader must not be null");
+  if (prependCode != null && prependCode.length() > 0) {
+    vertexShader=prependCode + vertexShader;
+    fragmentShader=prependCode + fragmentShader;
+  }
   this.vertexShaderSource=vertexShader;
   this.fragmentShaderSource=fragmentShader;
   this.matrix=BufferUtils.newFloatBuffer(16);
