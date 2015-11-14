@@ -1,7 +1,7 @@
 {
   int glFormat=Gdx2DPixmap.toGlFormat(Pixmap.Format.toGdx2DPixmapFormat(format));
   int glType=Gdx2DPixmap.toGlType(Pixmap.Format.toGdx2DPixmapFormat(format));
-  GlOnlyTextureData data=new GlOnlyTextureData(width,height,0,glFormat,glFormat,glType);
+  GLOnlyTextureData data=new GLOnlyTextureData(width,height,0,glFormat,glFormat,glType);
   Texture result=new Texture(data);
   result.setFilter(TextureFilter.Linear,TextureFilter.Linear);
   result.setWrap(TextureWrap.ClampToEdge,TextureWrap.ClampToEdge);
