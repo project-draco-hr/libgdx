@@ -9,10 +9,26 @@
     Glyph glyph=getGlyph(ch);
     if (glyph == null)     continue;
     glyphs.add(glyph);
-    if (lastGlyph == null)     xAdvances.add(-glyph.xoffset * scaleX - padLeft);
- else     xAdvances.add((lastGlyph.xadvance + lastGlyph.getKerning(ch)) * scaleX);
+    if (lastGlyph == null) {
+      if (glyph.fixedWidth) {
+        xAdvances.add(0);
+      }
+ else {
+        xAdvances.add(-glyph.xoffset * scaleX - padLeft);
+      }
+    }
+ else {
+      xAdvances.add((lastGlyph.xadvance + lastGlyph.getKerning(ch)) * scaleX);
+    }
     lastGlyph=glyph;
     if (markupEnabled && ch == '[' && start < end && str.charAt(start) == '[')     start++;
   }
-  if (lastGlyph != null)   xAdvances.add((lastGlyph.xoffset + lastGlyph.width) * scaleX - padRight);
+  if (lastGlyph != null) {
+    if (lastGlyph.fixedWidth) {
+      xAdvances.add(lastGlyph.xadvance * scaleX - padRight);
+    }
+ else {
+      xAdvances.add((lastGlyph.xoffset + lastGlyph.width) * scaleX - padRight);
+    }
+  }
 }
