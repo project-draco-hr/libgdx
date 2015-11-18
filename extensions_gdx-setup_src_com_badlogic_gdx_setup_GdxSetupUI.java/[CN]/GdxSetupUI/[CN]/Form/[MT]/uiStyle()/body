@@ -10,19 +10,6 @@
   destinationLabel.setForeground(Color.WHITE);
   sdkLocationLabel.setForeground(Color.WHITE);
   sdkLocationText.setDisabledTextColor(Color.GRAY);
-  versionLabel.setForeground(new Color(255,20,20));
-  UIManager.put("ComboBox.selectionBackground",new ColorUIResource(new Color(70,70,70)));
-  UIManager.put("ComboBox.selectionForeground",new ColorUIResource(Color.WHITE));
-  versionButton.updateUI();
-  versionButton.setForeground(new Color(255,255,255));
-  versionButton.setBackground(new Color(20,20,20));
-  versionButton.setPrototypeDisplayValue("I am a prototype");
-  versionButton.setUI(new BasicComboBoxUI(){
-    @Override protected JButton createArrowButton(){
-      return new BasicArrowButton(BasicArrowButton.SOUTH,new Color(0,0,0),new Color(0,0,0),new Color(100,100,100),new Color(100,100,100));
-    }
-  }
-);
   projectsLabel.setForeground(new Color(255,20,20));
   extensionsLabel.setForeground(new Color(255,20,20));
   subProjectsPanel.setOpaque(true);
