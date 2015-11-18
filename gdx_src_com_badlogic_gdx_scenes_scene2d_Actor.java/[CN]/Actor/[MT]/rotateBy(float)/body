@@ -1,4 +1,6 @@
 {
-  rotation+=amountInDegrees;
-  if (amountInDegrees != 0)   rotationChanged();
+  if (amountInDegrees != 0) {
+    rotation+=amountInDegrees;
+    rotationChanged();
+  }
 }

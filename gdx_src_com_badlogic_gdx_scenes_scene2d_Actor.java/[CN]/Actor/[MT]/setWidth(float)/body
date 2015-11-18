@@ -1,5 +1,6 @@
 {
-  float oldWidth=this.width;
-  this.width=width;
-  if (width != oldWidth)   sizeChanged();
+  if (this.width != width) {
+    this.width=width;
+    sizeChanged();
+  }
 }
