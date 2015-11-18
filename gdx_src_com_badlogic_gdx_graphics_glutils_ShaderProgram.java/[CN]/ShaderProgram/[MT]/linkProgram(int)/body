@@ -1,7 +1,6 @@
 {
   GL20 gl=Gdx.gl20;
-  int program=gl.glCreateProgram();
-  if (program == 0)   return -1;
+  if (program == -1)   return -1;
   gl.glAttachShader(program,vertexShaderHandle);
   gl.glAttachShader(program,fragmentShaderHandle);
   gl.glLinkProgram(program);

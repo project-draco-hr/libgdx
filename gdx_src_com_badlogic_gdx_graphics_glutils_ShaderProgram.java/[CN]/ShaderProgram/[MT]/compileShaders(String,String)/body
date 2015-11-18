@@ -5,7 +5,7 @@
     isCompiled=false;
     return;
   }
-  program=linkProgram();
+  program=linkProgram(createProgram());
   if (program == -1) {
     isCompiled=false;
     return;
