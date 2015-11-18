@@ -1,6 +1,8 @@
 {
+  this.listener=listener;
   if (config == null)   config=new LwjglApplicationConfiguration();
   LwjglNativesLoader.load();
+  instanceCount++;
   AWTGLCanvas sharedDrawable=sharedContextCanvas != null ? sharedContextCanvas.canvas : null;
   try {
     canvas=new AWTGLCanvas(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice(),new PixelFormat(),sharedDrawable){
@@ -13,19 +15,21 @@
       }
       @Override public void paintGL(){
         try {
-          LwjglAWTCanvas.this.render();
+          render();
           repaint();
         }
- catch (        LWJGLException ex) {
-          throw new GdxRuntimeException(ex);
+ catch (        Throwable ex) {
+          exception(ex);
         }
       }
     }
 ;
   }
- catch (  LWJGLException ex) {
-    throw new GdxRuntimeException(ex);
+ catch (  Throwable ex) {
+    exception(ex);
+    return;
   }
+  canvas.setBackground(new Color(config.initialBackgroundColor.r,config.initialBackgroundColor.g,config.initialBackgroundColor.b,config.initialBackgroundColor.a));
   graphics=new LwjglGraphics(canvas,config){
     @Override public void setTitle(    String title){
       super.setTitle(title);
@@ -50,28 +54,9 @@ synchronized (this) {
     }
   }
 ;
-  if (!LwjglApplicationConfiguration.disableAudio && Gdx.audio == null) {
-    audio=new OpenALAudio();
-    Gdx.audio=audio;
-  }
- else {
-    audio=null;
-  }
-  if (Gdx.files == null) {
-    files=new LwjglFiles();
-    Gdx.files=files;
-  }
- else {
-    files=null;
-  }
-  if (Gdx.net == null) {
-    net=new LwjglNet();
-    Gdx.net=net;
-  }
- else {
-    net=null;
-  }
+  if (!LwjglApplicationConfiguration.disableAudio && Gdx.audio == null)   audio=new OpenALAudio();
+  if (Gdx.files == null)   files=new LwjglFiles();
+  if (Gdx.net == null)   net=new LwjglNet();
   input=new LwjglAWTInput(this);
-  this.listener=listener;
   setGlobals();
 }

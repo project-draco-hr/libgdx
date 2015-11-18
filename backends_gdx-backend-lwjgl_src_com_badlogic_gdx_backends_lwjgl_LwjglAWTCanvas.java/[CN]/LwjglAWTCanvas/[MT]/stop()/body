@@ -25,5 +25,6 @@ synchronized (listeners) {
   }
   if (files != null)   Gdx.files=null;
   if (net != null)   Gdx.net=null;
+  instanceCount--;
   stopped();
 }
