@@ -4,7 +4,6 @@
     return null;
   }
  catch (  Throwable ex) {
-    ex.printStackTrace();
     return ex;
   }
 }

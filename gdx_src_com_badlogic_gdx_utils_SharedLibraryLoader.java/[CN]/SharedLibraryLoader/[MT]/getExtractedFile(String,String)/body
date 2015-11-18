@@ -14,5 +14,5 @@
   if (canWrite(file))   return file;
   file=new File(".temp/" + dirName,fileName);
   if (canWrite(file))   return file;
-  return idealFile;
+  return null;
 }

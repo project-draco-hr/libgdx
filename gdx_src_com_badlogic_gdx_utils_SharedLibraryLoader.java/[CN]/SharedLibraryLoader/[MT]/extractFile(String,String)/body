@@ -3,6 +3,10 @@
     String sourceCrc=crc(readFile(sourcePath));
     if (dirName == null)     dirName=sourceCrc;
     File extractedFile=getExtractedFile(dirName,new File(sourcePath).getName());
+    if (extractedFile == null) {
+      extractedFile=getExtractedFile(UUID.randomUUID().toString(),new File(sourcePath).getName());
+      if (extractedFile == null)       throw new GdxRuntimeException("Unable to find writable path to extract file. Is the user home directory writable?");
+    }
     return extractFile(sourcePath,sourceCrc,extractedFile);
   }
  catch (  RuntimeException ex) {
