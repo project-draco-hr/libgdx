@@ -1,7 +1,3 @@
 {
-  GlyphLayout layout=Pools.obtain(GlyphLayout.class);
-  pooledLayouts.add(layout);
-  layout.setText(font,str,start,end,color,targetWidth,halign,wrap,null);
-  addText(layout,x,y);
-  return layout;
+  return addText(str,x,y,start,end,targetWidth,halign,wrap,null);
 }
