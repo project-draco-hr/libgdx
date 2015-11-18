@@ -19,13 +19,13 @@
     run.glyphs.truncate(count - 1);
     run.xAdvances.truncate(count);
     adjustLastGlyph(fontData,run);
-    run.xAdvances.addAll(truncateRun.xAdvances,1,truncateRun.xAdvances.size - 1);
+    if (truncateRun.xAdvances.size > 0)     run.xAdvances.addAll(truncateRun.xAdvances,1,truncateRun.xAdvances.size - 1);
   }
  else {
     run.glyphs.clear();
     run.xAdvances.clear();
     run.xAdvances.addAll(truncateRun.xAdvances);
-    run.width+=truncateRun.xAdvances.get(0);
+    if (truncateRun.xAdvances.size > 0)     run.width+=truncateRun.xAdvances.get(0);
   }
   run.glyphs.addAll(truncateRun.glyphs);
   run.width+=truncateWidth;
