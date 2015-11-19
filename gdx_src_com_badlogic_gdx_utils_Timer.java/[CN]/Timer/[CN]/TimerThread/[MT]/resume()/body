@@ -5,7 +5,7 @@ synchronized (instances) {
       instances.get(i).delay(delayMillis);
     }
   }
-  app=Gdx.app;
+  files=Gdx.files;
   Thread t=new Thread(this,"Timer");
   t.setDaemon(true);
   t.start();

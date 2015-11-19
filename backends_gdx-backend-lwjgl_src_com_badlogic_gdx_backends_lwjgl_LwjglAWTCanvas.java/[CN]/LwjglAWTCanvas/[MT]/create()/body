@@ -9,8 +9,8 @@
     listener.resize(lastWidth,lastHeight);
     start();
   }
- catch (  Exception ex) {
+ catch (  Throwable ex) {
     stopped();
-    throw new GdxRuntimeException(ex);
+    exception(ex);
   }
 }

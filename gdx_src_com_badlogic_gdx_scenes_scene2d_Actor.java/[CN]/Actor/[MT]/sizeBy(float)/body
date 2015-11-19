@@ -1,5 +1,7 @@
 {
-  width+=size;
-  height+=size;
-  sizeChanged();
+  if (size != 0) {
+    width+=size;
+    height+=size;
+    sizeChanged();
+  }
 }

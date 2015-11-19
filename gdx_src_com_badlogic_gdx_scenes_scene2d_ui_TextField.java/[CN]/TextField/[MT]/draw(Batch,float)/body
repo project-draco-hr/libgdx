@@ -32,7 +32,7 @@
       }
  else       font.setColor(0.7f,0.7f,0.7f,color.a * parentAlpha);
       BitmapFont messageFont=style.messageFont != null ? style.messageFont : font;
-      messageFont.draw(batch,messageText,x + bgLeftWidth,y + textY + yOffset,width - bgLeftWidth - bgRightWidth,textHAlign,false);
+      messageFont.draw(batch,messageText,x + bgLeftWidth,y + textY + yOffset,0,messageText.length(),width - bgLeftWidth - bgRightWidth,textHAlign,false,"...");
     }
   }
  else {

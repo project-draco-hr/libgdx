@@ -1,7 +1,7 @@
 {
   while (true) {
 synchronized (instances) {
-      if (app != Gdx.app)       return;
+      if (files != Gdx.files)       return;
       long timeMillis=System.nanoTime() / 1000000;
       long waitMillis=5000;
       for (int i=0, n=instances.size; i < n; i++) {
@@ -12,7 +12,7 @@ synchronized (instances) {
           throw new GdxRuntimeException("Task failed: " + instances.get(i).getClass().getName(),ex);
         }
       }
-      if (app != Gdx.app)       return;
+      if (files != Gdx.files)       return;
       try {
         if (waitMillis > 0)         instances.wait(waitMillis);
       }

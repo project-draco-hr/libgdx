@@ -1,5 +1,6 @@
 {
-  float oldHeight=this.height;
-  this.height=height;
-  if (height != oldHeight)   sizeChanged();
+  if (this.height != height) {
+    this.height=height;
+    sizeChanged();
+  }
 }

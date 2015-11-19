@@ -1,5 +1,6 @@
 {
-  float oldRotation=this.rotation;
-  this.rotation=degrees;
-  if (degrees != oldRotation)   rotationChanged();
+  if (this.rotation != degrees) {
+    this.rotation=degrees;
+    rotationChanged();
+  }
 }
