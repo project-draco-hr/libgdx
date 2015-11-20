@@ -1,0 +1,4 @@
+{
+  if (config == null)   throw new GdxRuntimeException("Pass2ShaderProvider needs config");
+  this.config=config;
+}

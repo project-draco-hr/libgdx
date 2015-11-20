@@ -1,0 +1,6 @@
+{
+  super(renderable,config,shaderProgram);
+  shadowSystem=config.shadowSystem;
+  register(Inputs.shadowTexture,Setters.shadowTexture);
+  register(Inputs.resolution,Setters.resolution);
+}
