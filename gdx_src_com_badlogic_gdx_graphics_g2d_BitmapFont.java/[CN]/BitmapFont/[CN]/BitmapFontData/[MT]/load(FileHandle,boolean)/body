@@ -125,15 +125,15 @@
     }
     spaceWidth=spaceGlyph.width;
     Glyph xGlyph=null;
-    for (int i=0; i < xChars.length; i++) {
-      xGlyph=getGlyph(xChars[i]);
+    for (    char xChar : xChars) {
+      xGlyph=getGlyph(xChar);
       if (xGlyph != null)       break;
     }
     if (xGlyph == null)     xGlyph=getFirstGlyph();
     xHeight=xGlyph.height - padY;
     Glyph capGlyph=null;
-    for (int i=0; i < capChars.length; i++) {
-      capGlyph=getGlyph(capChars[i]);
+    for (    char capChar : capChars) {
+      capGlyph=getGlyph(capChar);
       if (capGlyph != null)       break;
     }
     if (capGlyph == null) {
