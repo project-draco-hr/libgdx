@@ -1,13 +1,8 @@
 {
   T[] values=this.values;
   if (size == values.length) {
-    if (!resizable) {
-      throw new IllegalStateException("Deque is full");
-    }
- else {
-      resize(values.length << 1);
-      values=this.values;
-    }
+    resize(values.length << 1);
+    values=this.values;
   }
   int head=this.head;
   head--;

@@ -1,25 +1,12 @@
 {
 {
-    Queue<Integer> q=new Queue<Integer>(1,true);
+    Queue<Integer> q=new Queue<Integer>(1);
     assertTrue(q.toString().equals("[]"));
-    q.push(4);
+    q.addLast(4);
     assertTrue(q.toString().equals("[4]"));
-    q.push(5);
-    q.push(6);
-    q.push(7);
+    q.addLast(5);
+    q.addLast(6);
+    q.addLast(7);
     assertTrue(q.toString().equals("[4, 5, 6, 7]"));
-  }
-{
-    Queue<Integer> nonResQ=new Queue<Integer>(4,false);
-    nonResQ.push(1);
-    nonResQ.push(2);
-    nonResQ.push(3);
-    nonResQ.push(4);
-    try {
-      nonResQ.push(5);
-    }
- catch (    IllegalStateException e) {
-    }
-    assertTrue(nonResQ.toString().equals("[1, 2, 3, 4]"));
   }
 }
