@@ -52,22 +52,21 @@
     rowPrefHeight[row]=Math.max(rowPrefHeight[row],prefHeight + vpadding);
     rowMinHeight[row]=Math.max(rowMinHeight[row],minHeight + vpadding);
   }
-  outer:   for (int i=0; i < cellCount; i++) {
-    Cell c=cells.get(i);
-    int expandX=c.expandX;
-    if (expandX == 0)     continue;
-    int column=c.column, nn=column + c.colspan;
-    for (int ii=column; ii < nn; ii++)     if (expandWidth[ii] != 0)     continue outer;
-    for (int ii=column; ii < nn; ii++)     expandWidth[ii]=expandX;
-  }
   float uniformMinWidth=0, uniformMinHeight=0;
   float uniformPrefWidth=0, uniformPrefHeight=0;
   for (int i=0; i < cellCount; i++) {
     Cell c=cells.get(i);
+    int column=c.column;
+    int expandX=c.expandX;
+    outer:     if (expandX != 0) {
+      int nn=column + c.colspan;
+      for (int ii=column; ii < nn; ii++)       if (expandWidth[ii] != 0)       break outer;
+      for (int ii=column; ii < nn; ii++)       expandWidth[ii]=expandX;
+    }
     if (c.uniformX == Boolean.TRUE && c.colspan == 1) {
       float hpadding=c.computedPadLeft + c.computedPadRight;
-      uniformMinWidth=Math.max(uniformMinWidth,columnMinWidth[c.column] - hpadding);
-      uniformPrefWidth=Math.max(uniformPrefWidth,columnPrefWidth[c.column] - hpadding);
+      uniformMinWidth=Math.max(uniformMinWidth,columnMinWidth[column] - hpadding);
+      uniformPrefWidth=Math.max(uniformPrefWidth,columnPrefWidth[column] - hpadding);
     }
     if (c.uniformY == Boolean.TRUE) {
       float vpadding=c.computedPadTop + c.computedPadBottom;
