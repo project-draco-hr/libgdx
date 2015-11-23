@@ -11,5 +11,6 @@
     g.xoffset+=Math.round((maxAdvance - g.xadvance) / 2);
     g.xadvance=maxAdvance;
     g.kerning=null;
+    g.fixedWidth=true;
   }
 }
