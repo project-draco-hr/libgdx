@@ -5,6 +5,7 @@
   this.indices.clear();
   this.parts.clear();
   this.vindex=0;
+  this.lastIndex=-1;
   this.istart=0;
   this.part=null;
   this.stride=attributes.vertexSize / 4;
