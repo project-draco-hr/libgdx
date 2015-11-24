@@ -1,0 +1,5 @@
+{
+  if (!allowRemove)   throw new GdxRuntimeException("Remove not allowed.");
+  index--;
+  queue.removeIndex(index);
+}

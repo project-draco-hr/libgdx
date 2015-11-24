@@ -1,0 +1,6 @@
+{
+  int index=indexOf(value,identity);
+  if (index == -1)   return false;
+  removeIndex(index);
+  return true;
+}
