@@ -1,6 +1,6 @@
 {
   if (size == 0) {
-    throw new NoSuchElementException("Deque is empty");
+    throw new NoSuchElementException("Queue is empty.");
   }
   final T[] values=this.values;
   int tail=this.tail;

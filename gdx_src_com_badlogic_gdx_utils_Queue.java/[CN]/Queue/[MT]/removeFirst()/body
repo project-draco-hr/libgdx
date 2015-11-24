@@ -1,6 +1,6 @@
 {
   if (size == 0) {
-    throw new NoSuchElementException("Queue is empty");
+    throw new NoSuchElementException("Queue is empty.");
   }
   final T[] values=this.values;
   final T result=values[head];
