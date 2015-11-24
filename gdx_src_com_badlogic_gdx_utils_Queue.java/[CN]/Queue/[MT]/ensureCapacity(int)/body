@@ -1,0 +1,6 @@
+{
+  final int needed=size + additional;
+  if (values.length < needed) {
+    resize(needed);
+  }
+}
