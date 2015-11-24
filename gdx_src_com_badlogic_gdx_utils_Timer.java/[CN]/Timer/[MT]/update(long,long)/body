@@ -10,7 +10,7 @@ synchronized (tasks) {
         if (task.repeatCount == 0) {
           task.repeatCount=CANCELLED;
         }
-        Gdx.app.postRunnable(task);
+        task.app.postRunnable(task);
       }
       if (task.repeatCount == CANCELLED) {
         tasks.removeIndex(i);
