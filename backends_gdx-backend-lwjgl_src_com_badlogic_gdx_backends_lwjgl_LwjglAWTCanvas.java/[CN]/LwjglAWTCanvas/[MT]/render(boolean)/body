@@ -2,7 +2,6 @@
   if (!running)   return;
   setGlobals();
   canvas.setCursor(cursor);
-  boolean shouldRender=false;
   int width=Math.max(1,graphics.getWidth());
   int height=Math.max(1,graphics.getHeight());
   if (lastWidth != width || lastHeight != height) {

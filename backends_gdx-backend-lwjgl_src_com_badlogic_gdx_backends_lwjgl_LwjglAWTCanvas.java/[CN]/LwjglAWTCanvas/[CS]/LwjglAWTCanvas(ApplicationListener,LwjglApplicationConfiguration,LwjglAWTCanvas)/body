@@ -7,6 +7,7 @@
   try {
     canvas=new AWTGLCanvas(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice(),new PixelFormat(),sharedDrawable){
       private final Dimension minSize=new Dimension(0,0);
+      private final NonSystemPaint nonSystemPaint=new NonSystemPaint(this);
       @Override public Dimension getMinimumSize(){
         return minSize;
       }
@@ -15,8 +16,9 @@
       }
       @Override public void paintGL(){
         try {
-          render();
-          repaint();
+          boolean systemPaint=!(EventQueue.getCurrentEvent() instanceof NonSystemPaint);
+          render(systemPaint);
+          Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(nonSystemPaint);
         }
  catch (        Throwable ex) {
           exception(ex);
