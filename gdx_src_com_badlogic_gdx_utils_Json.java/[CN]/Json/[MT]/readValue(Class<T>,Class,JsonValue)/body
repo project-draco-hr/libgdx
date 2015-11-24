@@ -62,6 +62,11 @@
       for (JsonValue child=jsonData.child; child != null; child=child.next)       result.add(readValue(elementType,null,child));
       return (T)result;
     }
+    if (ClassReflection.isAssignableFrom(Queue.class,type)) {
+      Queue result=type == Queue.class ? new Queue() : (Queue)newInstance(type);
+      for (JsonValue child=jsonData.child; child != null; child=child.next)       result.addLast(readValue(elementType,null,child));
+      return (T)result;
+    }
     if (ClassReflection.isAssignableFrom(Collection.class,type)) {
       Collection result=type.isInterface() ? new ArrayList() : (Collection)newInstance(type);
       for (JsonValue child=jsonData.child; child != null; child=child.next)       result.add(readValue(elementType,null,child));
