@@ -16,6 +16,7 @@
   net=new LwjglNet();
   this.listener=listener;
   this.preferencesdir=config.preferencesDirectory;
+  this.preferencesFileType=config.preferencesFileType;
   Gdx.app=this;
   Gdx.graphics=graphics;
   Gdx.audio=audio;
