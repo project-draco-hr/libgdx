@@ -3,7 +3,7 @@
     return preferences.get(name);
   }
  else {
-    Preferences prefs=new LwjglPreferences(name,this.preferencesdir);
+    Preferences prefs=new LwjglPreferences(new LwjglFileHandle(new File(preferencesdir,name),preferencesFileType));
     preferences.put(name,prefs);
     return prefs;
   }
