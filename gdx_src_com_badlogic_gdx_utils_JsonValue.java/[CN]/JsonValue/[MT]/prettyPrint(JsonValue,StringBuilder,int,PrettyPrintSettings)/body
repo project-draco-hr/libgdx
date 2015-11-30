@@ -1,9 +1,7 @@
 {
   OutputType outputType=settings.outputType;
   if (object.isObject()) {
-    if (object.child == null) {
-      buffer.append("{}");
-    }
+    if (object.child == null)     buffer.append("{}");
  else {
       boolean newLines=!isFlat(object);
       int start=buffer.length();
@@ -30,9 +28,7 @@
     }
   }
  else   if (object.isArray()) {
-    if (object.child == null) {
-      buffer.append("[]");
-    }
+    if (object.child == null)     buffer.append("[]");
  else {
       boolean newLines=!isFlat(object);
       boolean wrap=settings.wrapNumericArrays || !isNumeric(object);

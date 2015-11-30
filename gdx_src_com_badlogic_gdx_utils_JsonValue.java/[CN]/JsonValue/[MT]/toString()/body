@@ -1,4 +1,4 @@
 {
   if (isValue())   return name == null ? asString() : name + ": " + asString();
- else   return (name == null ? "" : name + ": ") + prettyPrint(OutputType.minimal,0);
+  return (name == null ? "" : name + ": ") + prettyPrint(OutputType.minimal,0);
 }
