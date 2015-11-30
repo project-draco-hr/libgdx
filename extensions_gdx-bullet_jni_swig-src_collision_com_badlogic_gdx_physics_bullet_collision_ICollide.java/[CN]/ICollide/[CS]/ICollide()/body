@@ -1,0 +1,4 @@
+{
+  this(CollisionJNI.new_ICollide(),true);
+  CollisionJNI.ICollide_director_connect(this,swigCPtr,swigCMemOwn,true);
+}
