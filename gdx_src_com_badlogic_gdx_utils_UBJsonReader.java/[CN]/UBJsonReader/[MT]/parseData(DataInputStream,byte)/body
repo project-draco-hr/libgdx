@@ -5,6 +5,7 @@
   JsonValue prev=null;
   for (long i=0; i < size; i++) {
     final JsonValue val=parse(din,dataType);
+    val.parent=result;
     if (prev != null) {
       prev.next=val;
       result.size++;
