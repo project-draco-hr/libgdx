@@ -1,8 +1,10 @@
 {
-  if (task.repeatCount != CANCELLED)   throw new IllegalArgumentException("The same task may not be scheduled twice.");
-  task.executeTimeMillis=System.nanoTime() / 1000000 + (long)(delaySeconds * 1000);
-  task.intervalMillis=(long)(intervalSeconds * 1000);
-  task.repeatCount=repeatCount;
+synchronized (task) {
+    if (task.repeatCount != CANCELLED)     throw new IllegalArgumentException("The same task may not be scheduled twice.");
+    task.executeTimeMillis=System.nanoTime() / 1000000 + (long)(delaySeconds * 1000);
+    task.intervalMillis=(long)(intervalSeconds * 1000);
+    task.repeatCount=repeatCount;
+  }
 synchronized (tasks) {
     tasks.add(task);
   }

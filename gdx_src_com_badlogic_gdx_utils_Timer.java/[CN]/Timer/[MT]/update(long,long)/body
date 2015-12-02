@@ -2,25 +2,25 @@
 synchronized (tasks) {
     for (int i=0, n=tasks.size; i < n; i++) {
       Task task=tasks.get(i);
-      if (task.executeTimeMillis > timeMillis) {
-        waitMillis=Math.min(waitMillis,task.executeTimeMillis - timeMillis);
-        continue;
-      }
-      if (task.repeatCount != CANCELLED) {
-        if (task.repeatCount == 0) {
-          task.repeatCount=CANCELLED;
+synchronized (task) {
+        if (task.executeTimeMillis > timeMillis) {
+          waitMillis=Math.min(waitMillis,task.executeTimeMillis - timeMillis);
+          continue;
         }
-        task.app.postRunnable(task);
-      }
-      if (task.repeatCount == CANCELLED) {
-        tasks.removeIndex(i);
-        i--;
-        n--;
-      }
+        if (task.repeatCount != CANCELLED) {
+          if (task.repeatCount == 0)           task.repeatCount=CANCELLED;
+          task.app.postRunnable(task);
+        }
+        if (task.repeatCount == CANCELLED) {
+          tasks.removeIndex(i);
+          i--;
+          n--;
+        }
  else {
-        task.executeTimeMillis=timeMillis + task.intervalMillis;
-        waitMillis=Math.min(waitMillis,task.intervalMillis);
-        if (task.repeatCount > 0)         task.repeatCount--;
+          task.executeTimeMillis=timeMillis + task.intervalMillis;
+          waitMillis=Math.min(waitMillis,task.intervalMillis);
+          if (task.repeatCount > 0)           task.repeatCount--;
+        }
       }
     }
   }
