@@ -6,7 +6,7 @@
     T object=objects.get(i);
     if (object == null)     continue;
     if (freeObjects.size < max)     freeObjects.add(object);
-    if (object instanceof Poolable)     ((Poolable)object).reset();
+    reset(object);
   }
   peak=Math.max(peak,freeObjects.size);
 }

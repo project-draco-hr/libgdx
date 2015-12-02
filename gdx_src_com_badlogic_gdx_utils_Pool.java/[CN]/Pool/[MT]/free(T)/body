@@ -4,5 +4,5 @@
     freeObjects.add(object);
     peak=Math.max(peak,freeObjects.size);
   }
-  if (object instanceof Poolable)   ((Poolable)object).reset();
+  reset(object);
 }
