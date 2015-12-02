@@ -4,4 +4,5 @@
   this.clazz=clazz;
   this.superClass=new CachedTypeLookup(superClass);
   this.assignables=assignables != null ? assignables : EMPTY_ASSIGNABLES;
+  this.interfaces=interfaces != null ? interfaces : EMPTY_INTERFACES;
 }
