@@ -1,4 +1,0 @@
-def make_block_url(self, block, name=None):
-    if (name == None):
-        name = block.name
-    return ((self.make_section_url(block.section) + '#') + name)

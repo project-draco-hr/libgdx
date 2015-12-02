@@ -1,0 +1,31 @@
+def make_html_word(self, word):
+    'Analyze a simple word to detect cross-references and markup.'
+    m = re_crossref.match(word)
+    if m:
+        try:
+            name = m.group('name')
+            rest = m.group('rest')
+            block = self.identifiers[name]
+            url = self.make_block_url(block)
+            name = re.sub('\\[.*\\]', '', name)
+            url = string.replace(url, '[', '(')
+            url = string.replace(url, ']', ')')
+            try:
+                url = ((((('&lsquo;<a href="' + url) + '">') + block.title) + '</a>&rsquo;') + rest)
+            except:
+                url = ((((('<a href="' + url) + '">') + name) + '</a>') + rest)
+            return url
+        except:
+            sys.stderr.write(((('WARNING: undefined cross reference' + " '") + name) + "'.\n"))
+            return ((('?' + name) + '?') + rest)
+    m = re_italic.match(word)
+    if m:
+        name = m.group(1)
+        rest = m.group(2)
+        return ((('<i>' + name) + '</i>') + rest)
+    m = re_bold.match(word)
+    if m:
+        name = m.group(1)
+        rest = m.group(2)
+        return ((('<b>' + name) + '</b>') + rest)
+    return html_quote(word)
