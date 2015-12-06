@@ -1,17 +1,17 @@
 {
-  int width=getWidth();
+  int width=getWidth(), rows=getRows();
   ByteBuffer src=getBuffer();
   Pixmap pixmap;
-  if (color == Color.WHITE) {
-    pixmap=new Pixmap(width,getRows(),Format.Alpha);
+  int srcPitch=getPitch();
+  if (color == Color.WHITE && srcPitch == 1) {
+    pixmap=new Pixmap(width,rows,Format.Alpha);
     BufferUtils.copy(src,pixmap.getPixels(),pixmap.getPixels().capacity());
   }
  else {
-    pixmap=new Pixmap(width,getRows(),Format.RGBA8888);
-    int srcPitch=getPitch();
+    pixmap=new Pixmap(width,rows,Format.RGBA8888);
     int srcRGBA=Color.rgba8888(color);
     IntBuffer dst=pixmap.getPixels().asIntBuffer();
-    for (int y=0; y < getRows(); y++) {
+    for (int y=0; y < rows; y++) {
       int ySrcPitch=y * srcPitch;
       int yWidth=y * width;
       for (int x=0; x < width; x++) {
