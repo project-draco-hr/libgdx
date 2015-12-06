@@ -5,7 +5,7 @@ synchronized (task) {
     task.intervalMillis=(long)(intervalSeconds * 1000);
     task.repeatCount=repeatCount;
   }
-synchronized (tasks) {
+synchronized (this) {
     tasks.add(task);
   }
   wake();
