@@ -1,7 +1,7 @@
 {
-  this(map.capacity,map.loadFactor);
-  stashSize=map.stashSize;
-  System.arraycopy(map.keyTable,0,keyTable,0,map.keyTable.length);
-  size=map.size;
-  hasZeroValue=map.hasZeroValue;
+  this(set.capacity,set.loadFactor);
+  stashSize=set.stashSize;
+  System.arraycopy(set.keyTable,0,keyTable,0,set.keyTable.length);
+  size=set.size;
+  hasZeroValue=set.hasZeroValue;
 }
