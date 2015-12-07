@@ -4,7 +4,7 @@
     data.regions=new Array();
     parameter.packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps);
   }
-  BitmapFont font=new BitmapFont(data,data.regions,false);
+  BitmapFont font=new BitmapFont(data,data.regions,true);
   font.setOwnsTexture(parameter.packer == null);
   return font;
 }

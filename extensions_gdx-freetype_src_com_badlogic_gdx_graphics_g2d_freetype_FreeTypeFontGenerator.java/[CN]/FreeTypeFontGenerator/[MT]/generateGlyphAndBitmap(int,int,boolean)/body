@@ -13,7 +13,7 @@
   if (bitmapped) {
     bitmap=slot.getBitmap();
   }
- else   if (!slot.renderGlyph(FreeType.FT_RENDER_MODE_LIGHT)) {
+ else   if (!slot.renderGlyph(FreeType.FT_RENDER_MODE_NORMAL)) {
     bitmap=null;
   }
  else {

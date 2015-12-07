@@ -3,7 +3,7 @@
   ByteBuffer src=getBuffer();
   Pixmap pixmap;
   int srcPitch=getPitch();
-  if (color == Color.WHITE && srcPitch == 1) {
+  if (color == Color.WHITE && srcPitch == 1 && gamma == 1) {
     pixmap=new Pixmap(width,rows,Format.Alpha);
     BufferUtils.copy(src,pixmap.getPixels(),pixmap.getPixels().capacity());
   }
@@ -15,8 +15,9 @@
       int ySrcPitch=y * srcPitch;
       int yWidth=y * width;
       for (int x=0; x < width; x++) {
-        byte alpha=src.get(ySrcPitch + x);
-        dst.put(yWidth + x,(srcRGBA & 0xffffff00) | (int)((srcRGBA & 0xff) * (alpha & 0xff) / 255f));
+        float alpha=(src.get(ySrcPitch + x) & 0xff) / 255f;
+        alpha=(float)Math.pow(alpha,gamma);
+        dst.put(yWidth + x,(srcRGBA & 0xffffff00) | (int)((srcRGBA & 0xff) * alpha));
       }
     }
   }
