@@ -63,7 +63,8 @@
       tokens.nextToken();
       tokens.nextToken();
       int ch=Integer.parseInt(tokens.nextToken());
-      if (ch <= Character.MAX_VALUE)       setGlyph(ch,glyph);
+      if (ch == -1)       missingGlyph=glyph;
+ else       if (ch <= Character.MAX_VALUE)       setGlyph(ch,glyph);
  else       continue;
       glyph.id=ch;
       tokens.nextToken();

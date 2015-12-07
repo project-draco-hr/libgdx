@@ -1,3 +1,4 @@
 {
+  if (missingGlyph != null)   return true;
   return getGlyph(ch) != null;
 }

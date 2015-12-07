@@ -1,13 +1,17 @@
 {
   boolean markupEnabled=this.markupEnabled;
   float scaleX=this.scaleX;
+  Glyph missingGlyph=this.missingGlyph;
   Array<Glyph> glyphs=run.glyphs;
   FloatArray xAdvances=run.xAdvances;
   Glyph lastGlyph=null;
   while (start < end) {
     char ch=str.charAt(start++);
     Glyph glyph=getGlyph(ch);
-    if (glyph == null)     continue;
+    if (glyph == null) {
+      if (missingGlyph == null)       continue;
+      glyph=missingGlyph;
+    }
     glyphs.add(glyph);
     if (lastGlyph == null)     xAdvances.add(glyph.fixedWidth ? 0 : -glyph.xoffset * scaleX - padLeft);
  else     xAdvances.add((lastGlyph.xadvance + lastGlyph.getKerning(ch)) * scaleX);

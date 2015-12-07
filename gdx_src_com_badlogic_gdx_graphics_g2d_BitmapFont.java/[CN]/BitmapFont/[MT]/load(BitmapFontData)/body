@@ -1,13 +1,7 @@
 {
   for (  Glyph[] page : data.glyphs) {
     if (page == null)     continue;
-    for (    Glyph glyph : page) {
-      if (glyph == null)       continue;
-      TextureRegion region=regions.get(glyph.page);
-      if (region == null) {
-        throw new IllegalArgumentException("BitmapFont texture region array cannot contain null elements.");
-      }
-      data.setGlyphRegion(glyph,region);
-    }
+    for (    Glyph glyph : page)     if (glyph != null)     data.setGlyphRegion(glyph,regions.get(glyph.page));
   }
+  if (data.missingGlyph != null)   data.setGlyphRegion(data.missingGlyph,regions.get(data.missingGlyph.page));
 }
