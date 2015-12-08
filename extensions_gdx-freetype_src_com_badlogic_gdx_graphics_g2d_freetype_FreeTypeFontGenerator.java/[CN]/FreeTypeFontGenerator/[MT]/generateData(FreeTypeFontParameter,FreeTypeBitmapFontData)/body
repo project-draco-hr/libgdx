@@ -18,7 +18,7 @@
       }
     }
   }
-  if (face.loadChar(' ',FreeType.FT_LOAD_DEFAULT)) {
+  if (face.loadChar(' ',FreeType.FT_LOAD_DEFAULT) || face.loadChar('l',FreeType.FT_LOAD_DEFAULT)) {
     data.spaceWidth=FreeType.toInt(face.getGlyph().getMetrics().getHoriAdvance());
   }
  else {
