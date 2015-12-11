@@ -1,3 +1,5 @@
 {
-  return generateData(size,DEFAULT_CHARS,false,null);
+  FreeTypeFontParameter parameter=new FreeTypeFontParameter();
+  parameter.size=size;
+  return generateData(parameter);
 }

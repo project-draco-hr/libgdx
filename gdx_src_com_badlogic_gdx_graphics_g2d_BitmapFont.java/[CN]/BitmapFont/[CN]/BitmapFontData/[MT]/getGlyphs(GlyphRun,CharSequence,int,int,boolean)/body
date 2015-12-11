@@ -13,13 +13,13 @@
       glyph=missingGlyph;
     }
     glyphs.add(glyph);
-    if (lastGlyph == null)     xAdvances.add(glyph.fixedWidth ? 0 : -glyph.xoffset * scaleX - padLeft);
+    if (lastGlyph == null)     xAdvances.add((!tightBounds || glyph.fixedWidth) ? 0 : -glyph.xoffset * scaleX - padLeft);
  else     xAdvances.add((lastGlyph.xadvance + lastGlyph.getKerning(ch)) * scaleX);
     lastGlyph=glyph;
     if (markupEnabled && ch == '[' && start < end && str.charAt(start) == '[')     start++;
   }
   if (lastGlyph != null) {
-    int lastGlyphWidth=lastGlyph.fixedWidth ? lastGlyph.xadvance : lastGlyph.xoffset + lastGlyph.width;
-    xAdvances.add(lastGlyphWidth * scaleX - padRight);
+    float lastGlyphWidth=(!tightBounds || lastGlyph.fixedWidth) ? lastGlyph.xadvance : lastGlyph.xoffset + lastGlyph.width - padRight;
+    xAdvances.add(lastGlyphWidth * scaleX);
   }
 }

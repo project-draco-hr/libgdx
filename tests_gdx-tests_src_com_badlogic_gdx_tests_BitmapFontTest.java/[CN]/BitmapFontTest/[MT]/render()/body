@@ -2,7 +2,7 @@
   int viewHeight=Gdx.graphics.getHeight();
   Gdx.gl.glClearColor(0,0,0,1);
   Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-  if (true) {
+  if (!true) {
     BitmapFont font=this.font;
     font.getRegion().getTexture().setFilter(TextureFilter.Nearest,TextureFilter.Nearest);
     font.getData().setScale(2f);
@@ -13,6 +13,7 @@
     renderer.end();
     spriteBatch.begin();
     String text="your new";
+    text="How quickly [RED]daft jumping zebras vex.";
     text="test with AGWlWi      AGWlWi issue";
     if (true) {
       layout.setText(font,text,0,text.length(),font.getColor(),w,Align.center,true,null);
@@ -37,9 +38,8 @@
     label.debug();
     label.getStyle().font=font;
     label.setStyle(label.getStyle());
-    label.setText("How quickly [RED]daft jumping zebras vex.");
+    label.setText("How quickly [RED]daft[] jumping zebras vex.");
     label.setWrap(true);
-    label.setEllipsis(true);
     label.setAlignment(Align.center,Align.right);
     label.setWidth(Gdx.input.getX() - label.getX());
     label.setHeight(label.getPrefHeight());

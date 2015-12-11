@@ -1,6 +1,6 @@
 {
   GlyphRun truncateRun=glyphRunPool.obtain();
-  fontData.getGlyphs(truncateRun,truncate,0,truncate.length());
+  fontData.getGlyphs(truncateRun,truncate,0,truncate.length(),true);
   float truncateWidth=0;
   for (int i=1, n=truncateRun.xAdvances.size; i < n; i++)   truncateWidth+=truncateRun.xAdvances.get(i);
   targetWidth-=truncateWidth;
