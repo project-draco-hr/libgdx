@@ -83,6 +83,5 @@
   if (parameter.incremental && data.regions != null && data.regions.size <= glyph.page)   packer.updateTextureRegions(data.regions,parameter.minFilter,parameter.magFilter,parameter.genMipMaps);
   mainPixmap.dispose();
   mainGlyph.dispose();
-  if (missing)   data.setGlyph(0,glyph);
   return glyph;
 }
