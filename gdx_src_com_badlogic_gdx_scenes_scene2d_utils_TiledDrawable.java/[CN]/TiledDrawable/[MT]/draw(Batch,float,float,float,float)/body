@@ -1,4 +1,6 @@
 {
+  float batchColor=batch.getPackedColor();
+  batch.setColor(batch.getColor().mul(color));
   TextureRegion region=getRegion();
   float regionWidth=region.getRegionWidth(), regionHeight=region.getRegionHeight();
   int fullX=(int)(width / regionWidth), fullY=(int)(height / regionHeight);
@@ -38,4 +40,5 @@
       x+=regionWidth;
     }
   }
+  batch.setColor(batchColor);
 }
