@@ -16,7 +16,7 @@
   int runStart=start;
   outer:   while (true) {
     int runEnd=-1;
-    boolean newline=false;
+    boolean newline=false, colorRun=false;
     if (start == end) {
       if (runStart == end)       break;
       runEnd=end;
@@ -34,6 +34,7 @@ case '[':
       runEnd=start - 1;
       start+=length + 1;
       nextColor=colorStack.peek();
+      colorRun=true;
     }
   }
 break;
@@ -46,7 +47,7 @@ runs.add(run);
 run.color.set(color);
 run.x=x;
 run.y=y;
-fontData.getGlyphs(run,str,runStart,runEnd);
+fontData.getGlyphs(run,str,runStart,runEnd,colorRun);
 float[] xAdvances=run.xAdvances.items;
 for (int i=0, n=run.xAdvances.size; i < n; i++) {
 float xAdvance=xAdvances[i];
