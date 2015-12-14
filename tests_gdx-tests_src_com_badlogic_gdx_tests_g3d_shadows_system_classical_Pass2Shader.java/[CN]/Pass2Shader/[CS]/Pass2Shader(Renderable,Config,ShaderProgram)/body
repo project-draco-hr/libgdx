@@ -1,0 +1,13 @@
+{
+  super(renderable,config,shaderProgram);
+  shadowSystem=config.shadowSystem;
+  register(Inputs.shadowMapProjViewTrans,Setters.shadowMapProjViewTrans);
+  register(Inputs.shadowTexture,Setters.shadowTexture);
+  register(Inputs.uvTransform,Setters.uvTransform);
+  register(Inputs.lightColor,Setters.lightColor);
+  register(Inputs.lightDirection,Setters.lightDirection);
+  register(Inputs.lightPosition,Setters.lightPosition);
+  register(Inputs.lightIntensity,Setters.lightIntensity);
+  register(Inputs.lightCutoffAngle,Setters.lightCutoffAngle);
+  register(Inputs.lightExponent,Setters.lightExponent);
+}
