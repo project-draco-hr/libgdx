@@ -5,7 +5,7 @@
   if (face.getCharIndex(c) == 0) {
     return null;
   }
-  if (!face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
+  if (!loadChar(c)) {
     throw new GdxRuntimeException("Unable to load character!");
   }
   GlyphSlot slot=face.getGlyph();

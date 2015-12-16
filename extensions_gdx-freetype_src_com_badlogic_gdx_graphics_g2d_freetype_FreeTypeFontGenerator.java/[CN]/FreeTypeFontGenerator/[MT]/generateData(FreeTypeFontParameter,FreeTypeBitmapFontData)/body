@@ -12,26 +12,26 @@
   float baseLine=data.ascent;
   if (bitmapped && (data.lineHeight == 0)) {
     for (int c=32; c < (32 + face.getNumGlyphs()); c++) {
-      if (face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
+      if (loadChar(c)) {
         int lh=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
         data.lineHeight=(lh > data.lineHeight) ? lh : data.lineHeight;
       }
     }
   }
-  if (face.loadChar(' ',FreeType.FT_LOAD_DEFAULT) || face.loadChar('l',FreeType.FT_LOAD_DEFAULT)) {
+  if (loadChar(' ') || loadChar('l')) {
     data.spaceWidth=FreeType.toInt(face.getGlyph().getMetrics().getHoriAdvance());
   }
  else {
     data.spaceWidth=face.getMaxAdvanceWidth();
   }
   for (  char xChar : data.xChars) {
-    if (!face.loadChar(xChar,FreeType.FT_LOAD_DEFAULT))     continue;
+    if (!loadChar(xChar))     continue;
     data.xHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }
   if (data.xHeight == 0)   throw new GdxRuntimeException("No x-height character found in font");
   for (  char capChar : data.capChars) {
-    if (!face.loadChar(capChar,FreeType.FT_LOAD_DEFAULT))     continue;
+    if (!loadChar(capChar))     continue;
     data.capHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }

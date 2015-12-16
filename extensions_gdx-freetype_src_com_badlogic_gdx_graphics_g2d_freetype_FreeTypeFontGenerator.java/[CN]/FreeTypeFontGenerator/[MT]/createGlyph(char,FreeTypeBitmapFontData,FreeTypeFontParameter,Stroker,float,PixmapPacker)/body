@@ -1,7 +1,7 @@
 {
   boolean missing=face.getCharIndex(c) == 0;
   if (missing)   return null;
-  if (!face.loadChar(c,FreeType.FT_LOAD_DEFAULT)) {
+  if (!loadChar(c)) {
     Gdx.app.log("FreeTypeFontGenerator","Couldn't load char: " + c);
     return null;
   }
