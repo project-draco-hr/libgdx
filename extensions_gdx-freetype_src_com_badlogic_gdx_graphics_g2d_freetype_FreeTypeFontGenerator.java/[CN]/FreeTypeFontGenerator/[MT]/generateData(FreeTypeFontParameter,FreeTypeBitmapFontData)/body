@@ -18,6 +18,7 @@
       }
     }
   }
+  data.lineHeight+=parameter.spaceY;
   if (loadChar(' ') || loadChar('l')) {
     data.spaceWidth=FreeType.toInt(face.getGlyph().getMetrics().getHoriAdvance());
   }
@@ -101,7 +102,7 @@
   Glyph spaceGlyph=data.getGlyph(' ');
   if (spaceGlyph == null) {
     spaceGlyph=new Glyph();
-    spaceGlyph.xadvance=(int)data.spaceWidth;
+    spaceGlyph.xadvance=(int)data.spaceWidth + parameter.spaceX;
     spaceGlyph.id=(int)' ';
     data.setGlyph(' ',spaceGlyph);
   }
