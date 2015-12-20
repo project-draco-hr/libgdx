@@ -2,14 +2,15 @@
   Glyph glyph=super.getGlyph(ch);
   if (glyph == null && generator != null) {
     generator.setPixelSizes(0,parameter.size);
-    glyph=generator.createGlyph(ch,this,parameter,stroker,(ascent + capHeight) / scaleY,packer);
+    float baseline=((flipped ? -ascent : ascent) + capHeight) / scaleY;
+    glyph=generator.createGlyph(ch,this,parameter,stroker,baseline,packer);
     if (glyph == null)     return missingGlyph;
     setGlyphRegion(glyph,regions.get(glyph.page));
     setGlyph(ch,glyph);
     glyphs.add(glyph);
     dirty=true;
+    Face face=generator.face;
     if (parameter.kerning) {
-      Face face=generator.face;
       int glyphIndex=face.getCharIndex(ch);
       for (int i=0, n=glyphs.size; i < n; i++) {
         Glyph other=glyphs.get(i);

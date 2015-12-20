@@ -20,19 +20,19 @@
     pageIndex++;
   }
   out.println("chars count=" + glyphCount);
-  int[] glyphMetrics=getGlyphMetrics(font,32);
-  int xAdvance=glyphMetrics[1];
-  out.println("char id=32   x=0     y=0     width=0     height=0     xoffset=0     yoffset=" + unicodeFont.getAscent() + "    xadvance="+ xAdvance+ "     page=0  chnl=0 ");
+  Glyph missingGlyph=getGlyph('\u0000');
+  if (missingGlyph != null)   writeGlyph(out,pageWidth,pageHeight,pageIndex,missingGlyph);
+  Glyph spaceGlyph=getGlyph(' ');
+  if (spaceGlyph != null) {
+    out.println("char id=32   x=0     y=0     width=0     height=0     xoffset=0     yoffset=" + unicodeFont.getAscent() + "    xadvance="+ spaceGlyph.getXAdvance()+ "     page=0  chnl=0 ");
+  }
   pageIndex=0;
   List allGlyphs=new ArrayList(512);
   for (Iterator pageIter=unicodeFont.getGlyphPages().iterator(); pageIter.hasNext(); ) {
     GlyphPage page=(GlyphPage)pageIter.next();
     for (Iterator glyphIter=page.getGlyphs().iterator(); glyphIter.hasNext(); ) {
       Glyph glyph=(Glyph)glyphIter.next();
-      glyphMetrics=getGlyphMetrics(font,glyph.getCodePoint());
-      int xOffset=glyphMetrics[0];
-      xAdvance=glyphMetrics[1];
-      out.println("char id=" + glyph.getCodePoint() + "   "+ "x="+ (int)(glyph.getU() * pageWidth)+ "     y="+ (int)(glyph.getV() * pageHeight)+ "     width="+ glyph.getWidth()+ "     height="+ glyph.getHeight()+ "     xoffset="+ xOffset+ "     yoffset="+ glyph.getYOffset()+ "    xadvance="+ xAdvance+ "     page="+ pageIndex+ "  chnl=0 ");
+      writeGlyph(out,pageWidth,pageHeight,pageIndex,glyph);
     }
     allGlyphs.addAll(page.getGlyphs());
     pageIndex++;

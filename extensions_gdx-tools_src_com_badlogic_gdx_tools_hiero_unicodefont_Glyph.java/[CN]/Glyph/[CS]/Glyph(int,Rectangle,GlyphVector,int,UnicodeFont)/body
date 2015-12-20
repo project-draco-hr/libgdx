@@ -1,22 +1,37 @@
 {
   this.codePoint=codePoint;
-  GlyphMetrics metrics=vector.getGlyphMetrics(index);
-  int lsb=(int)metrics.getLSB();
-  if (lsb > 0)   lsb=0;
-  int rsb=(int)metrics.getRSB();
-  if (rsb > 0)   rsb=0;
-  int glyphWidth=bounds.width - lsb - rsb;
-  int glyphHeight=bounds.height;
-  if (glyphWidth > 0 && glyphHeight > 0) {
-    int padTop=unicodeFont.getPaddingTop();
-    int padRight=unicodeFont.getPaddingRight();
-    int padBottom=unicodeFont.getPaddingBottom();
-    int padLeft=unicodeFont.getPaddingLeft();
-    int glyphSpacing=1;
-    width=(short)(glyphWidth + padLeft + padRight+ glyphSpacing);
-    height=(short)(glyphHeight + padTop + padBottom+ glyphSpacing);
-    yOffset=(short)(unicodeFont.getAscent() + bounds.y - padTop);
+  int padTop=unicodeFont.getPaddingTop(), padBottom=unicodeFont.getPaddingBottom();
+  int padLeft=unicodeFont.getPaddingLeft(), padRight=unicodeFont.getPaddingRight();
+  if (unicodeFont.renderType == RenderType.FreeType && unicodeFont.bitmapFont != null) {
+    BitmapFont.Glyph g=unicodeFont.bitmapFont.getData().getGlyph((char)codePoint);
+    if (g == null)     isMissing=true;
+ else {
+      width=(short)(g.width + padLeft + padRight);
+      height=(short)(g.height + padTop + padBottom);
+      yOffset=(short)(g.yoffset - padTop);
+      xOffset=g.xoffset - unicodeFont.getPaddingLeft();
+      xAdvance=g.xadvance + unicodeFont.getPaddingAdvanceX() + unicodeFont.getPaddingLeft()+ unicodeFont.getPaddingRight();
+    }
   }
-  shape=vector.getGlyphOutline(index,-bounds.x + unicodeFont.getPaddingLeft(),-bounds.y + unicodeFont.getPaddingTop());
-  isMissing=!unicodeFont.getFont().canDisplay((char)codePoint);
+ else {
+    GlyphMetrics metrics=vector.getGlyphMetrics(index);
+    int lsb=(int)metrics.getLSB();
+    if (lsb > 0)     lsb=0;
+    int rsb=(int)metrics.getRSB();
+    if (rsb > 0)     rsb=0;
+    int glyphWidth=bounds.width - lsb - rsb;
+    int glyphHeight=bounds.height;
+    if (glyphWidth > 0 && glyphHeight > 0) {
+      width=(short)(glyphWidth + padLeft + padRight);
+      height=(short)(glyphHeight + padTop + padBottom);
+      yOffset=(short)(unicodeFont.getAscent() + bounds.y - padTop);
+    }
+    char[] chars=Character.toChars(codePoint);
+    GlyphVector charVector=unicodeFont.getFont().layoutGlyphVector(GlyphPage.renderContext,chars,0,chars.length,Font.LAYOUT_LEFT_TO_RIGHT);
+    GlyphMetrics charMetrics=vector.getGlyphMetrics(0);
+    xOffset=vector.getGlyphPixelBounds(0,GlyphPage.renderContext,0.5f,0).x - unicodeFont.getPaddingLeft();
+    xAdvance=(int)(metrics.getAdvanceX() + unicodeFont.getPaddingAdvanceX() + unicodeFont.getPaddingLeft()+ unicodeFont.getPaddingRight());
+    shape=vector.getGlyphOutline(index,-bounds.x + unicodeFont.getPaddingLeft(),-bounds.y + unicodeFont.getPaddingTop());
+    isMissing=!unicodeFont.getFont().canDisplay((char)codePoint);
+  }
 }

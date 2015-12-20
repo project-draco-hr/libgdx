@@ -1,0 +1,3 @@
+{
+  out.println("char id=" + glyph.getCodePoint() + "   "+ "x="+ (int)(glyph.getU() * pageWidth)+ "     y="+ (int)(glyph.getV() * pageHeight)+ "     width="+ glyph.getWidth()+ "     height="+ glyph.getHeight()+ "     xoffset="+ glyph.getXOffset()+ "     yoffset="+ glyph.getYOffset()+ "    xadvance="+ glyph.getXAdvance()+ "     page="+ pageIndex+ "  chnl=0 ");
+}

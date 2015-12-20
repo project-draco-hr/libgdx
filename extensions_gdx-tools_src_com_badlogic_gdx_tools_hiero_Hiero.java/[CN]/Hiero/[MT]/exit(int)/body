@@ -1,7 +1,7 @@
 {
   rendererCanvas.stop();
   EventQueue.invokeLater(new Runnable(){
-    @Override public void run(){
+    public void run(){
       System.exit(exitCode);
     }
   }

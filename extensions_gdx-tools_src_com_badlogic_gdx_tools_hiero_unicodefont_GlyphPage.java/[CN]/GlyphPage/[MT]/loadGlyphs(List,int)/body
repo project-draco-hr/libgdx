@@ -41,9 +41,7 @@
         rowHeight=height;
       }
     }
-    renderGlyph(glyph,width,height);
-    pageGlyphs.add(glyph);
-    pageX+=width;
+    if (renderGlyph(glyph,width,height))     pageX+=width;
     iter.remove();
     i++;
     if (i == maxGlyphsToLoad) {

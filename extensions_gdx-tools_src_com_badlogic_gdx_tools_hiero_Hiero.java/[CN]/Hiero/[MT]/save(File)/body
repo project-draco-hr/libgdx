@@ -6,6 +6,8 @@
   settings.setFont2Active(fontFileRadio.isSelected());
   settings.setBold(boldCheckBox.isSelected());
   settings.setItalic(italicCheckBox.isSelected());
+  settings.setMono(monoCheckBox.isSelected());
+  settings.setGamma(((Double)gammaSpinner.getValue()).floatValue());
   settings.setPaddingTop(((Integer)padTopSpinner.getValue()).intValue());
   settings.setPaddingRight(((Integer)padRightSpinner.getValue()).intValue());
   settings.setPaddingBottom(((Integer)padBottomSpinner.getValue()).intValue());

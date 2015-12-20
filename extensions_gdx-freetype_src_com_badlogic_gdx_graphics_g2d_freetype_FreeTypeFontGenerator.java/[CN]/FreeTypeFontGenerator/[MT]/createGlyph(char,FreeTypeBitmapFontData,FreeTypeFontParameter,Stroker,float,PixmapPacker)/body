@@ -1,14 +1,11 @@
 {
-  boolean missing=face.getCharIndex(c) == 0;
+  boolean missing=face.getCharIndex(c) == 0 && c != 0;
   if (missing)   return null;
-  if (!loadChar(c)) {
-    Gdx.app.log("FreeTypeFontGenerator","Couldn't load char: " + c);
-    return null;
-  }
+  if (!loadChar(c))   return null;
   GlyphSlot slot=face.getGlyph();
   FreeType.Glyph mainGlyph=slot.getGlyph();
   try {
-    mainGlyph.toBitmap(FreeType.FT_RENDER_MODE_NORMAL);
+    mainGlyph.toBitmap(parameter.mono ? FreeType.FT_RENDER_MODE_MONO : FreeType.FT_RENDER_MODE_NORMAL);
   }
  catch (  GdxRuntimeException e) {
     mainGlyph.dispose();
@@ -18,12 +15,16 @@
   Bitmap mainBitmap=mainGlyph.getBitmap();
   if (mainBitmap.getWidth() == 0 || mainBitmap.getRows() == 0)   return null;
   Pixmap mainPixmap=mainBitmap.getPixmap(Format.RGBA8888,parameter.color,parameter.gamma);
+  parameter.gamma=1.6f;
+  parameter.renderCount=3;
+  parameter.shadowOffsetY=1;
+  parameter.shadowColor=new Color(0,0,0,0.45f);
   int offsetX=0, offsetY=0;
   if (parameter.borderWidth > 0) {
     int top=mainGlyph.getTop(), left=mainGlyph.getLeft();
     FreeType.Glyph borderGlyph=slot.getGlyph();
     borderGlyph.strokeBorder(stroker,false);
-    borderGlyph.toBitmap(FreeType.FT_RENDER_MODE_NORMAL);
+    borderGlyph.toBitmap(parameter.mono ? FreeType.FT_RENDER_MODE_MONO : FreeType.FT_RENDER_MODE_NORMAL);
     offsetX=left - borderGlyph.getLeft();
     offsetY=-(top - borderGlyph.getTop());
     Bitmap borderBitmap=borderGlyph.getBitmap();

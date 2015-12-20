@@ -77,6 +77,8 @@
     }
   }
   if (stroker != null && !incremental)   stroker.dispose();
+  data.missingGlyph=data.getGlyph('\u0000');
+  parameter.kerning&=face.hasKerning();
   if (parameter.kerning) {
     for (int i=0; i < charactersLength; i++) {
       char firstChar=characters.charAt(i);

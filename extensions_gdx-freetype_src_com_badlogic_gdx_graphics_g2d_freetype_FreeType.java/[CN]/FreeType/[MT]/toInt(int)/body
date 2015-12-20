@@ -1,4 +1,3 @@
 {
-  if (value < 0)   return (int)((value - 32) >> 6);
-  return (int)((value + 32) >> 6);
+  return ((value + 63) & -64) >> 6;
 }

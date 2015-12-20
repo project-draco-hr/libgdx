@@ -1,9 +1,5 @@
 {
-  glViewport(0,0,width,height);
-  glScissor(0,0,width,height);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glOrtho(0,width,height,0,1,-1);
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
+  this.width=width;
+  this.height=height;
+  batch.getProjectionMatrix().setToOrtho2D(0,0,width,height);
 }

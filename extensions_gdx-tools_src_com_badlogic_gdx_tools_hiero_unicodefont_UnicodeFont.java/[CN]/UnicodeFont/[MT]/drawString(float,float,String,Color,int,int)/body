@@ -1,3 +1,12 @@
 {
-  drawDisplayList(x,y,text,color,startIndex,endIndex);
+  if (text == null)   throw new IllegalArgumentException("text cannot be null.");
+  if (text.length() == 0)   return;
+  if (color == null)   throw new IllegalArgumentException("color cannot be null.");
+  x-=paddingLeft;
+  y-=paddingTop;
+  GL11.glColor4f(color.r,color.g,color.b,color.a);
+  GL11.glTranslatef(x,y,0);
+  if (renderType == RenderType.FreeType && bitmapFont != null)   drawBitmap(text,startIndex,endIndex);
+ else   drawUnicode(text,startIndex,endIndex);
+  GL11.glTranslatef(-x,-y,0);
 }

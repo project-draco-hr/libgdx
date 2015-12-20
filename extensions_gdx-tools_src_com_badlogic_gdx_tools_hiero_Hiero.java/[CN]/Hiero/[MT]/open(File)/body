@@ -6,6 +6,8 @@
   fontSizeSpinner.setValue(new Integer(settings.getFontSize()));
   boldCheckBox.setSelected(settings.isBold());
   italicCheckBox.setSelected(settings.isItalic());
+  monoCheckBox.setSelected(settings.isMono());
+  gammaSpinner.setValue(new Float(settings.getGamma()));
   padTopSpinner.setValue(new Integer(settings.getPaddingTop()));
   padRightSpinner.setValue(new Integer(settings.getPaddingRight()));
   padBottomSpinner.setValue(new Integer(settings.getPaddingBottom()));
