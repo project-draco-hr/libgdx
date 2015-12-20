@@ -7,7 +7,7 @@
   final int regionVerticesLength=regionVertices.length;
   final Texture texture=region.region.texture;
   if (texture != lastTexture)   switchTexture(texture);
- else   if (triangleIndex + regionTrianglesLength > triangles.length || vertexIndex + regionVerticesLength > vertices.length)   flush();
+ else   if (triangleIndex + regionTrianglesLength > triangles.length || vertexIndex + regionVerticesLength * VERTEX_SIZE / 2 > vertices.length)   flush();
   int triangleIndex=this.triangleIndex;
   int vertexIndex=this.vertexIndex;
   final int startVertex=vertexIndex / VERTEX_SIZE;
