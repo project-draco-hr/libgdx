@@ -1,0 +1,8 @@
+{
+  super(packer);
+  root=new Node();
+  root.rect.x=packer.padding;
+  root.rect.y=packer.padding;
+  root.rect.width=packer.pageWidth - packer.padding * 2;
+  root.rect.height=packer.pageHeight - packer.padding * 2;
+}

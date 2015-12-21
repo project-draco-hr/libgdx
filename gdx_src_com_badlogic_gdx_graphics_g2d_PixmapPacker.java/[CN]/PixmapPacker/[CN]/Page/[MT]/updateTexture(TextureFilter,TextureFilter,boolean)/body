@@ -1,11 +1,9 @@
 {
   if (texture != null) {
     if (!dirty)     return false;
-    if (debug)     System.out.println("Reuploaded existing texture.");
     texture.load(texture.getTextureData());
   }
  else {
-    if (debug)     System.out.println("Created new texture.");
     texture=new Texture(new PixmapTextureData(image,image.getFormat(),useMipMaps,false,true)){
       @Override public void dispose(){
         super.dispose();

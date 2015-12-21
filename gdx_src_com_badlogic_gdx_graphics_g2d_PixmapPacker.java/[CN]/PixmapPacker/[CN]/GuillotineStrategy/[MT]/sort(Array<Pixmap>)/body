@@ -1,0 +1,11 @@
+{
+  if (comparator == null) {
+    comparator=new Comparator<Pixmap>(){
+      public int compare(      Pixmap o1,      Pixmap o2){
+        return Math.max(o1.getWidth(),o1.getHeight()) - Math.max(o2.getWidth(),o2.getHeight());
+      }
+    }
+;
+  }
+  pixmaps.sort(comparator);
+}

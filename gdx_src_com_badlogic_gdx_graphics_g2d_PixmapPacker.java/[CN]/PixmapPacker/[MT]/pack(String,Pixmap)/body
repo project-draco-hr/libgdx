@@ -1,48 +1,35 @@
 {
   if (disposed)   return null;
   if (name != null && getRect(name) != null)   throw new GdxRuntimeException("Pixmap has already been packed with name: " + name);
-  int borderPixels=(padding + (duplicateBorder ? 1 : 0)) << 1;
-  Rectangle rect=new Rectangle(0,0,image.getWidth() + borderPixels,image.getHeight() + borderPixels);
+  Rectangle rect=new Rectangle(0,0,image.getWidth(),image.getHeight());
   if (rect.getWidth() > pageWidth || rect.getHeight() > pageHeight) {
-    if (name == null)     throw new GdxRuntimeException("Page size too small for anonymous pixmap.");
+    if (name == null)     throw new GdxRuntimeException("Page size too small for pixmap.");
     throw new GdxRuntimeException("Page size too small for pixmap: " + name);
   }
-  Node node=insert(current.root,rect);
-  if (node == null) {
-    newPage();
-    return pack(name,image);
-  }
-  node.leafName=name == null ? ANONYMOUS : name;
-  rect=new Rectangle(node.rect);
-  rect.width-=borderPixels;
-  rect.height-=borderPixels;
-  borderPixels>>=1;
-  rect.x+=borderPixels;
-  rect.y+=borderPixels;
+  Page page=packStrategy.pack(this,name,rect);
   if (name != null) {
-    current.rects.put(name,rect);
-    current.addedRects.add(name);
+    page.rects.put(name,rect);
+    page.addedRects.add(name);
   }
   int rectX=(int)rect.x, rectY=(int)rect.y, rectWidth=(int)rect.width, rectHeight=(int)rect.height;
-  if (packToTexture && !duplicateBorder && current.texture != null && !current.dirty) {
-    if (debug)     System.out.println("Incrementally updated texture.");
-    current.texture.bind();
-    Gdx.gl.glTexSubImage2D(current.texture.glTarget,0,rectX,rectY,rectWidth,rectHeight,image.getGLFormat(),image.getGLType(),image.getPixels());
+  if (packToTexture && !duplicateBorder && page.texture != null && !page.dirty) {
+    page.texture.bind();
+    Gdx.gl.glTexSubImage2D(page.texture.glTarget,0,rectX,rectY,rectWidth,rectHeight,image.getGLFormat(),image.getGLType(),image.getPixels());
   }
- else   current.dirty=true;
+ else   page.dirty=true;
   Blending blending=Pixmap.getBlending();
   Pixmap.setBlending(Blending.None);
-  current.image.drawPixmap(image,rectX,rectY);
+  page.image.drawPixmap(image,rectX,rectY);
   if (duplicateBorder) {
     int imageWidth=image.getWidth(), imageHeight=image.getHeight();
-    current.image.drawPixmap(image,0,0,1,1,rectX - 1,rectY - 1,1,1);
-    current.image.drawPixmap(image,imageWidth - 1,0,1,1,rectX + rectWidth,rectY - 1,1,1);
-    current.image.drawPixmap(image,0,imageHeight - 1,1,1,rectX - 1,rectY + rectHeight,1,1);
-    current.image.drawPixmap(image,imageWidth - 1,imageHeight - 1,1,1,rectX + rectWidth,rectY + rectHeight,1,1);
-    current.image.drawPixmap(image,0,0,imageWidth,1,rectX,rectY - 1,rectWidth,1);
-    current.image.drawPixmap(image,0,imageHeight - 1,imageWidth,1,rectX,rectY + rectHeight,rectWidth,1);
-    current.image.drawPixmap(image,0,0,1,imageHeight,rectX - 1,rectY,1,rectHeight);
-    current.image.drawPixmap(image,imageWidth - 1,0,1,imageHeight,rectX + rectWidth,rectY,1,rectHeight);
+    page.image.drawPixmap(image,0,0,1,1,rectX - 1,rectY - 1,1,1);
+    page.image.drawPixmap(image,imageWidth - 1,0,1,1,rectX + rectWidth,rectY - 1,1,1);
+    page.image.drawPixmap(image,0,imageHeight - 1,1,1,rectX - 1,rectY + rectHeight,1,1);
+    page.image.drawPixmap(image,imageWidth - 1,imageHeight - 1,1,1,rectX + rectWidth,rectY + rectHeight,1,1);
+    page.image.drawPixmap(image,0,0,imageWidth,1,rectX,rectY - 1,rectWidth,1);
+    page.image.drawPixmap(image,0,imageHeight - 1,imageWidth,1,rectX,rectY + rectHeight,rectWidth,1);
+    page.image.drawPixmap(image,0,0,1,imageHeight,rectX - 1,rectY,1,rectHeight);
+    page.image.drawPixmap(image,imageWidth - 1,0,1,imageHeight,rectX + rectWidth,rectY,1,rectHeight);
   }
   Pixmap.setBlending(blending);
   return rect;

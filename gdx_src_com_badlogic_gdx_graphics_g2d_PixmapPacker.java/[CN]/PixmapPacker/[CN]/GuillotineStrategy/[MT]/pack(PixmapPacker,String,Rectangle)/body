@@ -1,0 +1,22 @@
+{
+  GuillotinePage page;
+  if (packer.pages.size == 0) {
+    page=new GuillotinePage(packer);
+    packer.pages.add(page);
+  }
+ else {
+    page=(GuillotinePage)packer.pages.peek();
+  }
+  int padding=packer.padding;
+  rect.width+=padding;
+  rect.height+=padding;
+  Node node=insert(page.root,rect);
+  if (node == null) {
+    page=new GuillotinePage(packer);
+    packer.pages.add(page);
+    node=insert(page.root,rect);
+  }
+  node.full=true;
+  rect.set(node.rect.x,node.rect.y,node.rect.width - padding,node.rect.height - padding);
+  return page;
+}
