@@ -3,4 +3,5 @@
   this.pageWidth=pageWidth;
   this.pageHeight=pageHeight;
   texture=new Texture(pageWidth,pageHeight,Format.RGBA8888);
+  rows.add(new Row());
 }

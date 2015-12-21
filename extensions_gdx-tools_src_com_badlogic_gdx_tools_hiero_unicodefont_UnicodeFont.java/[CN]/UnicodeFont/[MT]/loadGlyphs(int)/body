@@ -4,10 +4,6 @@
   for (Iterator iter=queuedGlyphs.iterator(); iter.hasNext(); ) {
     Glyph glyph=(Glyph)iter.next();
     int codePoint=glyph.getCodePoint();
-    if (glyph.getWidth() == 0 || codePoint == ' ') {
-      iter.remove();
-      continue;
-    }
     if (glyph.isMissing()) {
       if (missingGlyph != null) {
         if (glyph != missingGlyph)         iter.remove();

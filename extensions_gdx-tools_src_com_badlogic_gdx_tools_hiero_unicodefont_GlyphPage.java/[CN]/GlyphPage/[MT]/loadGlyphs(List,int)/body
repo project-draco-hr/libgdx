@@ -1,54 +1,41 @@
 {
-  if (rowHeight != 0 && maxGlyphsToLoad == -1) {
-    int testX=pageX;
-    int testY=pageY;
-    int testRowHeight=rowHeight;
-    for (Iterator iter=getIterator(glyphs); iter.hasNext(); ) {
-      Glyph glyph=(Glyph)iter.next();
-      int width=glyph.getWidth();
-      int height=glyph.getHeight();
-      if (testX + width >= pageWidth) {
-        testX=0;
-        testY+=testRowHeight;
-        testRowHeight=height;
-      }
- else       if (height > testRowHeight) {
-        testRowHeight=height;
-      }
-      if (testY + testRowHeight >= pageWidth)       return 0;
-      testX+=width;
-    }
-  }
   GL11.glColor4f(1,1,1,1);
   texture.bind();
-  int i=0;
-  for (Iterator iter=getIterator(glyphs); iter.hasNext(); ) {
+  int loadedCount=0;
+  for (Iterator iter=glyphs.iterator(); iter.hasNext(); ) {
     Glyph glyph=(Glyph)iter.next();
     int width=Math.min(MAX_GLYPH_SIZE,glyph.getWidth());
     int height=Math.min(MAX_GLYPH_SIZE,glyph.getHeight());
-    if (rowHeight == 0) {
-      rowHeight=height;
-    }
+    if (width == 0 || height == 0)     pageGlyphs.add(glyph);
  else {
-      if (pageX + width >= pageWidth) {
-        if (pageY + rowHeight + height >= pageHeight)         break;
-        pageX=0;
-        pageY+=rowHeight;
-        rowHeight=height;
+      Row bestRow=null;
+      for (int ii=0, nn=rows.size - 1; ii < nn; ii++) {
+        Row row=rows.get(ii);
+        if (row.x + width >= pageWidth)         continue;
+        if (row.y + height >= pageHeight)         continue;
+        if (height > row.height)         continue;
+        if (bestRow == null || row.height < bestRow.height)         bestRow=row;
       }
- else       if (height > rowHeight) {
-        if (pageY + height >= pageHeight)         break;
-        rowHeight=height;
+      if (bestRow == null) {
+        Row row=rows.peek();
+        if (row.y + height >= pageHeight)         continue;
+        if (row.x + width < pageWidth) {
+          row.height=Math.max(row.height,height);
+          bestRow=row;
+        }
+ else {
+          bestRow=new Row();
+          bestRow.y=row.y + row.height;
+          bestRow.height=height;
+          rows.add(bestRow);
+        }
       }
+      if (bestRow == null)       continue;
+      if (renderGlyph(glyph,bestRow.x,bestRow.y,width,height))       bestRow.x+=width;
     }
-    if (renderGlyph(glyph,width,height))     pageX+=width;
     iter.remove();
-    i++;
-    if (i == maxGlyphsToLoad) {
-      orderAscending=!orderAscending;
-      break;
-    }
+    loadedCount++;
+    if (loadedCount == maxGlyphsToLoad)     break;
   }
-  orderAscending=!orderAscending;
-  return i;
+  return loadedCount;
 }

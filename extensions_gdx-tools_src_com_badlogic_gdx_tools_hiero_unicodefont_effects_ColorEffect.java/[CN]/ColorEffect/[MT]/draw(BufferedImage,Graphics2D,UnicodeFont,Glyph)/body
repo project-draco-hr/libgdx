@@ -1,4 +1,8 @@
 {
   g.setColor(color);
-  g.fill(glyph.getShape());
+  try {
+    g.fill(glyph.getShape());
+  }
+ catch (  Throwable ignored) {
+  }
 }

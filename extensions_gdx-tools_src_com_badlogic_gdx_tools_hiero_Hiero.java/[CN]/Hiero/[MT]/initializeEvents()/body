@@ -27,7 +27,11 @@ class FontUpdateListener implements ChangeListener, ActionListener {
             if (text.equals(lastText))             return;
             lastText=text;
             int caretPosition=textField.getCaretPosition();
-            spinner.setValue(Integer.valueOf(text));
+            try {
+              spinner.setValue(Integer.valueOf(text));
+            }
+ catch (            NumberFormatException ex) {
+            }
             textField.setCaretPosition(caretPosition);
           }
         }
@@ -219,6 +223,7 @@ class FontUpdateListener implements ChangeListener, ActionListener {
   sampleNeheButton.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent evt){
       sampleTextPane.setText(NEHE_CHARS);
+      resetCacheButton.doClick();
     }
   }
 );
@@ -234,12 +239,14 @@ class FontUpdateListener implements ChangeListener, ActionListener {
         if (++count % 30 == 0)         buffer.append('\n');
       }
       sampleTextPane.setText(buffer.toString());
+      resetCacheButton.doClick();
     }
   }
 );
   sampleExtendedButton.addActionListener(new ActionListener(){
     public void actionPerformed(    ActionEvent evt){
       sampleTextPane.setText(EXTENDED_CHARS);
+      resetCacheButton.doClick();
     }
   }
 );
