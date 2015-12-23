@@ -4,6 +4,8 @@
   Glyph missingGlyph=this.missingGlyph;
   Array<Glyph> glyphs=run.glyphs;
   FloatArray xAdvances=run.xAdvances;
+  glyphs.ensureCapacity(end - start);
+  xAdvances.ensureCapacity(end - start + 1);
   Glyph lastGlyph=null;
   while (start < end) {
     char ch=str.charAt(start++);
