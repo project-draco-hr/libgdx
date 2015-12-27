@@ -6,9 +6,9 @@
   resetPositions();
   Field[] interpolationFields=ClassReflection.getFields(Interpolation.class);
   int interpolationMembers=0;
-  for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationMembers++;
+  for (int i=0; i < interpolationFields.length; i++)   if (ClassReflection.isAssignableFrom(Interpolation.class,interpolationFields[i].getDeclaringClass()))   interpolationMembers++;
   interpolationNames=new String[interpolationMembers];
-  for (int i=0; i < interpolationFields.length; i++)   if (Interpolation.class.isAssignableFrom(interpolationFields[i].getDeclaringClass()))   interpolationNames[i]=interpolationFields[i].getName();
+  for (int i=0; i < interpolationFields.length; i++)   if (ClassReflection.isAssignableFrom(Interpolation.class,interpolationFields[i].getDeclaringClass()))   interpolationNames[i]=interpolationFields[i].getName();
   selectedInterpolation=interpolationNames[0];
   list=new List(skin);
   list.setItems(interpolationNames);

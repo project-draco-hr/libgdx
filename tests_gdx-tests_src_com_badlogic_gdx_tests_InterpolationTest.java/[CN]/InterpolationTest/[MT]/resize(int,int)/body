@@ -2,4 +2,6 @@
   stage.getViewport().update(width,height,true);
   table.invalidateHierarchy();
   renderer.setProjectionMatrix(stage.getViewport().getCamera().combined);
+  graphSize=0.75f * Math.min(stage.getViewport().getWorldWidth(),stage.getViewport().getWorldHeight());
+  steps=graphSize * 0.5f;
 }

@@ -1,6 +1,6 @@
 {
   try {
-    return (Interpolation)Interpolation.class.getField(name).get(null);
+    return (Interpolation)ClassReflection.getField(Interpolation.class,name).get(null);
   }
  catch (  Exception e) {
     throw new RuntimeException(e);
