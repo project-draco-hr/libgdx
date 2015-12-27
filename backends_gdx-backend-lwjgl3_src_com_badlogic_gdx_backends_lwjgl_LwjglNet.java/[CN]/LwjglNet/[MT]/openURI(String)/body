@@ -1,3 +1,9 @@
 {
-  return Sys.openURL(URI);
+  try {
+    Desktop.getDesktop().browse(new URI(URI));
+    return true;
+  }
+ catch (  Throwable t) {
+    return false;
+  }
 }

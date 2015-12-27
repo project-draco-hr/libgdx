@@ -1,9 +1,0 @@
-{
-  try {
-    return canvas.isCurrent();
-  }
- catch (  Throwable ex) {
-    exception(ex);
-    return false;
-  }
-}

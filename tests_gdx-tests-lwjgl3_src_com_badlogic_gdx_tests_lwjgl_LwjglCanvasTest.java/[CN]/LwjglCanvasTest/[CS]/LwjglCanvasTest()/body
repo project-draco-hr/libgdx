@@ -1,0 +1,9 @@
+{
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  Container container=getContentPane();
+  canvas=new LwjglCanvas(new UITest());
+  container.add(canvas.getCanvas(),BorderLayout.CENTER);
+  pack();
+  setVisible(true);
+  setSize(800,480);
+}

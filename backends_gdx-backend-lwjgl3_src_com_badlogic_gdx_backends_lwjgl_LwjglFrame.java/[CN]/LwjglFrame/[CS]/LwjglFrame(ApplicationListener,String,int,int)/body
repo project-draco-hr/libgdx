@@ -1,8 +1,0 @@
-{
-  super(title);
-  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
-  config.title=title;
-  config.width=width;
-  config.height=height;
-  construct(listener,config);
-}

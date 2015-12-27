@@ -1,0 +1,36 @@
+{
+  setLayout(new BorderLayout());
+  final JButton button=new JButton("Run Test");
+  final JList list=new JList(GdxTests.getNames().toArray());
+  JScrollPane pane=new JScrollPane(list);
+  DefaultListSelectionModel m=new DefaultListSelectionModel();
+  m.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+  m.setLeadAnchorNotificationEnabled(false);
+  list.setSelectionModel(m);
+  list.addMouseListener(new MouseAdapter(){
+    public void mouseClicked(    MouseEvent event){
+      if (event.getClickCount() == 2)       button.doClick();
+    }
+  }
+);
+  list.addKeyListener(new KeyAdapter(){
+    public void keyPressed(    KeyEvent e){
+      if (e.getKeyCode() == KeyEvent.VK_ENTER)       button.doClick();
+    }
+  }
+);
+  final Preferences prefs=new LwjglPreferences(new FileHandle(new LwjglFiles().getExternalStoragePath() + ".prefs/lwjgl-tests"));
+  list.setSelectedValue(prefs.getString("last",null),true);
+  button.addActionListener(new ActionListener(){
+    @Override public void actionPerformed(    ActionEvent e){
+      String testName=(String)list.getSelectedValue();
+      prefs.putString("last",testName);
+      prefs.flush();
+      dispose();
+      runTest(testName);
+    }
+  }
+);
+  add(pane,BorderLayout.CENTER);
+  add(button,BorderLayout.SOUTH);
+}
