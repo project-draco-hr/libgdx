@@ -8,12 +8,6 @@
   }
   sourceToSoundId.clear();
   soundIdToSource.clear();
-  AL.destroy();
-  while (AL.isCreated()) {
-    try {
-      Thread.sleep(10);
-    }
- catch (    InterruptedException e) {
-    }
-  }
+  context.destroy();
+  device.destroy();
 }

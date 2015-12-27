@@ -7,12 +7,15 @@
   registerMusic("wav",Wav.Music.class);
   registerSound("mp3",Mp3.Sound.class);
   registerMusic("mp3",Mp3.Music.class);
-  try {
-    AL.create();
-  }
- catch (  LWJGLException ex) {
+  device=ALDevice.create(null);
+  if (device == null) {
     noDevice=true;
-    ex.printStackTrace();
+    return;
+  }
+  context=ALContext.create(device);
+  if (context == null) {
+    device.destroy();
+    noDevice=true;
     return;
   }
   allSources=new IntArray(false,simultaneousSources);
@@ -25,10 +28,10 @@
   soundIdToSource=new LongMap<Integer>();
   sourceToSoundId=new IntMap<Long>();
   FloatBuffer orientation=(FloatBuffer)BufferUtils.createFloatBuffer(6).put(new float[]{0.0f,0.0f,-1.0f,0.0f,1.0f,0.0f}).flip();
-  alListener(AL_ORIENTATION,orientation);
+  alListenerfv(AL_ORIENTATION,orientation);
   FloatBuffer velocity=(FloatBuffer)BufferUtils.createFloatBuffer(3).put(new float[]{0.0f,0.0f,0.0f}).flip();
-  alListener(AL_VELOCITY,velocity);
+  alListenerfv(AL_VELOCITY,velocity);
   FloatBuffer position=(FloatBuffer)BufferUtils.createFloatBuffer(3).put(new float[]{0.0f,0.0f,0.0f}).flip();
-  alListener(AL_POSITION,position);
+  alListenerfv(AL_POSITION,position);
   recentSounds=new OpenALSound[simultaneousSources];
 }
