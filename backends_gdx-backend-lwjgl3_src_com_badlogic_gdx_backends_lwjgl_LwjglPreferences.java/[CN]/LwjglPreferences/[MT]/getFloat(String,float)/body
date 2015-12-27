@@ -1,0 +1,3 @@
+{
+  return Float.parseFloat(properties.getProperty(key,Float.toString(defValue)));
+}

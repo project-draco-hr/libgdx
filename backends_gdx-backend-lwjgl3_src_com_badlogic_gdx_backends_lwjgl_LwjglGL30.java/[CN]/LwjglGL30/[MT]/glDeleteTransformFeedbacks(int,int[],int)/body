@@ -1,0 +1,5 @@
+{
+  for (int i=offset; i < offset + n; i++) {
+    GL40.glDeleteTransformFeedbacks(ids[i]);
+  }
+}

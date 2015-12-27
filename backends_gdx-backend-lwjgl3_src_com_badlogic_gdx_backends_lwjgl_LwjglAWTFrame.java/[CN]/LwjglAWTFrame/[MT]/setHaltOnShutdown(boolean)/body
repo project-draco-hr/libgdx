@@ -1,0 +1,16 @@
+{
+  if (halt) {
+    if (shutdownHook != null)     return;
+    shutdownHook=new Thread(){
+      public void run(){
+        Runtime.getRuntime().halt(0);
+      }
+    }
+;
+    Runtime.getRuntime().addShutdownHook(shutdownHook);
+  }
+ else   if (shutdownHook != null) {
+    Runtime.getRuntime().removeShutdownHook(shutdownHook);
+    shutdownHook=null;
+  }
+}

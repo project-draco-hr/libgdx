@@ -1,0 +1,4 @@
+{
+  Component root=SwingUtilities.getRoot(canvas);
+  return root instanceof Frame ? ((Frame)root).isActive() : true;
+}

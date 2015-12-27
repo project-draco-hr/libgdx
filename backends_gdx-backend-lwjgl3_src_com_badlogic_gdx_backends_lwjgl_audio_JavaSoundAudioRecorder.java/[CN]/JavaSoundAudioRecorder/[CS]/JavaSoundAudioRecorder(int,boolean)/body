@@ -1,0 +1,11 @@
+{
+  try {
+    AudioFormat format=new AudioFormat(Encoding.PCM_SIGNED,samplingRate,16,isMono ? 1 : 2,isMono ? 2 : 4,samplingRate,false);
+    line=AudioSystem.getTargetDataLine(format);
+    line.open(format,buffer.length);
+    line.start();
+  }
+ catch (  Exception ex) {
+    throw new GdxRuntimeException("Error creating JavaSoundAudioRecorder.",ex);
+  }
+}

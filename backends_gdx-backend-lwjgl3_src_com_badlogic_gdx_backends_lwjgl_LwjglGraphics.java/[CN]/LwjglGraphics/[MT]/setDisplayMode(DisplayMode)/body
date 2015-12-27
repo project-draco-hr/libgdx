@@ -1,0 +1,20 @@
+{
+  org.lwjgl.opengl.DisplayMode mode=((LwjglDisplayMode)displayMode).mode;
+  try {
+    if (!mode.isFullscreenCapable()) {
+      Display.setDisplayMode(mode);
+    }
+ else {
+      Display.setDisplayModeAndFullscreen(mode);
+    }
+    float scaleFactor=Display.getPixelScaleFactor();
+    config.width=(int)(mode.getWidth() * scaleFactor);
+    config.height=(int)(mode.getHeight() * scaleFactor);
+    if (Gdx.gl != null)     Gdx.gl.glViewport(0,0,config.width,config.height);
+    resize=true;
+    return true;
+  }
+ catch (  LWJGLException e) {
+    return false;
+  }
+}

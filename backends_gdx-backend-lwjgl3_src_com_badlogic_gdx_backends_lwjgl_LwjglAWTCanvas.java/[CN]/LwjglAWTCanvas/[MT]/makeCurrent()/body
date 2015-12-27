@@ -1,0 +1,9 @@
+{
+  try {
+    canvas.makeCurrent();
+    setGlobals();
+  }
+ catch (  Throwable ex) {
+    exception(ex);
+  }
+}

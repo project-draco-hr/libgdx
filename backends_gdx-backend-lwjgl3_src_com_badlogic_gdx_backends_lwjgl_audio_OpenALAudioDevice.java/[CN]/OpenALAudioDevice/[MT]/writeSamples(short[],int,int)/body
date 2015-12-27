@@ -1,0 +1,10 @@
+{
+  if (bytes == null || bytes.length < numSamples * 2)   bytes=new byte[numSamples * 2];
+  int end=Math.min(offset + numSamples,samples.length);
+  for (int i=offset, ii=0; i < end; i++) {
+    short sample=samples[i];
+    bytes[ii++]=(byte)(sample & 0xFF);
+    bytes[ii++]=(byte)((sample >> 8) & 0xFF);
+  }
+  writeSamples(bytes,0,numSamples * 2);
+}

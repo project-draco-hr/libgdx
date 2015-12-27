@@ -1,0 +1,8 @@
+{
+  mostRecetSound++;
+  mostRecetSound%=recentSounds.length;
+  if (stop) {
+    if (recentSounds[mostRecetSound] != null)     recentSounds[mostRecetSound].stop();
+  }
+  recentSounds[mostRecetSound]=sound;
+}

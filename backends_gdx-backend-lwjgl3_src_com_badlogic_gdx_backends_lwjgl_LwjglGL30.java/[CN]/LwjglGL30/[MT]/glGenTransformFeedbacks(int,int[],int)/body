@@ -1,0 +1,5 @@
+{
+  for (int i=offset; i < offset + n; i++) {
+    ids[i]=GL40.glGenTransformFeedbacks();
+  }
+}

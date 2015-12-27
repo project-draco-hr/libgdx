@@ -1,0 +1,4 @@
+{
+  if (audio.noDevice)   return;
+  audio.setSoundPitch(soundId,pitch);
+}

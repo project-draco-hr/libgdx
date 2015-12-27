@@ -1,0 +1,11 @@
+{
+  this.lwjglAwtCanvas=lwjglAwtCanvas;
+  setListeners(lwjglAwtCanvas.getCanvas());
+  try {
+    robot=new Robot(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice());
+  }
+ catch (  HeadlessException e) {
+  }
+catch (  AWTException e) {
+  }
+}

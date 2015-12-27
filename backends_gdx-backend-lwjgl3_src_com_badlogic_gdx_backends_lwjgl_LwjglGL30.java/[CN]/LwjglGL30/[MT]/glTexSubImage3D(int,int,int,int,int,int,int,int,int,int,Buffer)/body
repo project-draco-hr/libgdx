@@ -1,0 +1,4 @@
+{
+  if (pixels instanceof ByteBuffer)   GL12.glTexSubImage3D(target,level,xoffset,yoffset,zoffset,width,height,depth,format,type,(ByteBuffer)pixels);
+ else   throw new GdxRuntimeException("pixels must be byte buffer");
+}

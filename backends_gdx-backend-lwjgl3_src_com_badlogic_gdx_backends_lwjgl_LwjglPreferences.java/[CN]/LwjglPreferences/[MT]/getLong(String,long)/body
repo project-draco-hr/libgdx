@@ -1,0 +1,3 @@
+{
+  return Long.parseLong(properties.getProperty(key,Long.toString(defValue)));
+}
