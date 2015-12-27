@@ -1,3 +1,3 @@
 {
-  GL20.glUniform2(location,toFloatBuffer(v,offset,count << 1));
+  GL20.glUniform2fv(location,toFloatBuffer(v,offset,count << 1));
 }
