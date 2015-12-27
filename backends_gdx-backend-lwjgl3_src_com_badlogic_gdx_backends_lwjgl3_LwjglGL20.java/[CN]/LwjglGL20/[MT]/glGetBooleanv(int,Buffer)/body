@@ -1,0 +1,3 @@
+{
+  ((ByteBuffer)params).put(GL11.glGetBoolean(pname) ? (byte)1 : (byte)0);
+}
