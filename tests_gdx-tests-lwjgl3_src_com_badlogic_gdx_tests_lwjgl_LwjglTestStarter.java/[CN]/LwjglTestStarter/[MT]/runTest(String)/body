@@ -4,7 +4,7 @@
   if (test == null) {
     return false;
   }
-  LwjglApplicationConfiguration config=new LwjglApplicationConfiguration();
+  Lwjgl3ApplicationConfiguration config=new Lwjgl3ApplicationConfiguration();
   config.width=640;
   config.height=480;
   config.title=testName;

@@ -1,3 +1,0 @@
-{
-  return isOpenGLOrHigher(3,0) || extensions.contains("GL_EXT_framebuffer_object",false) || extensions.contains("GL_ARB_framebuffer_object",false);
-}

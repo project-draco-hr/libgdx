@@ -1,0 +1,5 @@
+{
+  if (type == FileType.External)   return new File(Lwjgl3Files.externalPath,file.getPath());
+  if (type == FileType.Local)   return new File(Lwjgl3Files.localPath,file.getPath());
+  return file;
+}

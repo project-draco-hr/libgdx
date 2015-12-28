@@ -1,0 +1,4 @@
+{
+  if (file.getPath().length() == 0)   return new Lwjgl3FileHandle(new File(name),type);
+  return new Lwjgl3FileHandle(new File(file,name),type);
+}
