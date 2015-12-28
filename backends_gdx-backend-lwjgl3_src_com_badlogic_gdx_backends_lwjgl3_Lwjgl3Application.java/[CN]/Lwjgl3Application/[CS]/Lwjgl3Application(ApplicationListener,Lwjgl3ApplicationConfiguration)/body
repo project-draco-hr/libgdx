@@ -19,6 +19,8 @@
   if (glfwInit() != GLFW_TRUE) {
     throw new GdxRuntimeException("Unable to initialize GLFW");
   }
-  createWindow(listener);
+  errorCallback=GLFWErrorCallback.createPrint(System.err);
+  Lwjgl3Window window=createWindow(listener);
+  windows.put(window.getWindowHandle(),window);
   loop();
 }

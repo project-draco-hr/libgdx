@@ -1,2 +1,26 @@
 {
+  while (running && windows.size > 0) {
+    Array<Lwjgl3Window> closedWindows=new Array<Lwjgl3Window>();
+    for (    Lwjgl3Window window : windows.values()) {
+      Gdx.graphics=window.getGraphics();
+      Gdx.gl=window.getGraphics().getGL30() != null ? window.getGraphics().getGL30() : window.getGraphics().getGL20();
+      Gdx.gl20=window.getGraphics().getGL20();
+      Gdx.gl30=window.getGraphics().getGL30();
+      Gdx.input=window.getInput();
+      window.update();
+      if (window.shouldClose()) {
+        closedWindows.add(window);
+      }
+    }
+    for (    Lwjgl3Window closedWindow : closedWindows) {
+      closedWindow.dispose();
+      windows.remove(closedWindow.getWindowHandle());
+    }
+  }
+  for (  Lwjgl3Window window : windows.values()) {
+    window.dispose();
+  }
+  if (audio instanceof OpenALAudio) {
+    ((OpenALAudio)audio).dispose();
+  }
 }
