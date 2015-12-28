@@ -17,9 +17,7 @@
     koala.facesRight=true;
   }
   koala.velocity.add(0,GRAVITY);
-  if (Math.abs(koala.velocity.x) > Koala.MAX_VELOCITY) {
-    koala.velocity.x=Math.signum(koala.velocity.x) * Koala.MAX_VELOCITY;
-  }
+  koala.velocity.x=MathUtils.clamp(koala.velocity.x,-Koala.MAX_VELOCITY,Koala.MAX_VELOCITY);
   if (Math.abs(koala.velocity.x) < 1) {
     koala.velocity.x=0;
     if (koala.grounded)     koala.state=Koala.State.Standing;
