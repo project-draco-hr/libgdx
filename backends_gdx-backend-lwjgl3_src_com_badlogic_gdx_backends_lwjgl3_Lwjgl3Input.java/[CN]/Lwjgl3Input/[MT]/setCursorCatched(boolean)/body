@@ -1,2 +1,3 @@
 {
+  glfwSetInputMode(window.getWindowHandle(),GLFW.GLFW_CURSOR,catched ? GLFW.GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
 }

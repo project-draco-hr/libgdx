@@ -49,7 +49,7 @@
     }
   }
 ;
-  if (queueEvents)   inputProcessor=processorQueue=new InputProcessorQueue(inputProcessor);
+  if (queueEvents)   inputProcessor=processorQueue=new InputEventQueue(inputProcessor);
  else   processorQueue=null;
   app.getCallbacks().add(new GlfwInputProcessor(inputProcessor));
 }

@@ -1,3 +1,7 @@
 {
-  return false;
+  if (key == Input.Keys.ANY_KEY)   return pressedKeys > 0;
+  if (key == Input.Keys.SYM) {
+    return GLFW.glfwGetKey(window.getWindowHandle(),GLFW.GLFW_KEY_LEFT_SUPER) == GLFW.GLFW_PRESS || GLFW.glfwGetKey(window.getWindowHandle(),GLFW.GLFW_KEY_RIGHT_SUPER) == GLFW.GLFW_PRESS;
+  }
+  return GLFW.glfwGetKey(window.getWindowHandle(),getGlfwKeyCode(key)) == GLFW.GLFW_PRESS;
 }

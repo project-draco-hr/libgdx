@@ -1,2 +1,7 @@
 {
+  glfwSetKeyCallback(window.getWindowHandle(),keyCallback);
+  glfwSetCharCallback(window.getWindowHandle(),charCallback);
+  glfwSetScrollCallback(window.getWindowHandle(),scrollCallback);
+  glfwSetCursorPosCallback(window.getWindowHandle(),cursorPosCallback);
+  glfwSetMouseButtonCallback(window.getWindowHandle(),mouseButtonCallback);
 }
