@@ -1,6 +1,6 @@
 {
   IntBuffer typeTmp=BufferUtils.createIntBuffer(2);
-  String name=GL20.glGetActiveUniform(program,index,256,typeTmp);
+  String name=GL20.glGetActiveUniform(program,index,256,size,typeTmp);
   size.put(typeTmp.get(0));
   if (type instanceof IntBuffer)   ((IntBuffer)type).put(typeTmp.get(1));
   return name;
