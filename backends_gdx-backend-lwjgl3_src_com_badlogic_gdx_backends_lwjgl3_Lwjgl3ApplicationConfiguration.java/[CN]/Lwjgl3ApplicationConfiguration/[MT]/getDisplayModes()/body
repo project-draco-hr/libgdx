@@ -4,7 +4,6 @@
   java.awt.DisplayMode desktopMode=device.getDisplayMode();
   java.awt.DisplayMode[] displayModes=device.getDisplayModes();
   ArrayList<DisplayMode> modes=new ArrayList<DisplayMode>();
-  int idx=0;
   for (  java.awt.DisplayMode mode : displayModes) {
     boolean duplicate=false;
     for (int i=0; i < modes.size(); i++) {

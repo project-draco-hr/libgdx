@@ -1,5 +1,4 @@
 {
-  this.name=file.name();
   this.file=file;
   if (!file.exists())   return;
   InputStream in=null;
