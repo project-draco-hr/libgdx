@@ -1,0 +1,24 @@
+{
+  Lwjgl3NativesLoader.load();
+  this.config=config;
+  if (!Lwjgl3ApplicationConfiguration.disableAudio) {
+    try {
+      this.audio=Gdx.audio=new OpenALAudio(config.audioDeviceSimultaneousSources,config.audioDeviceBufferCount,config.audioDeviceBufferSize);
+    }
+ catch (    Throwable t) {
+      log("Lwjgl3Application","Couldn't initialize audio, disabling audio",t);
+      this.audio=Gdx.audio=new MockAudio();
+    }
+  }
+ else {
+    this.audio=Gdx.audio=new MockAudio();
+  }
+  this.files=Gdx.files=new Lwjgl3Files();
+  this.net=Gdx.net=new Lwjgl3Net();
+  this.clipboard=new Lwjgl3Clipboard();
+  if (glfwInit() != GLFW_TRUE) {
+    throw new GdxRuntimeException("Unable to initialize GLFW");
+  }
+  createWindow(listener);
+  loop();
+}
