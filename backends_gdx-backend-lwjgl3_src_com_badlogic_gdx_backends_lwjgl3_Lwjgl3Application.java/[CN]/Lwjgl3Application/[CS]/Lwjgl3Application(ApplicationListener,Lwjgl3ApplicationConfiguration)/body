@@ -1,6 +1,7 @@
 {
   Lwjgl3NativesLoader.load();
   this.config=config;
+  Gdx.app=this;
   if (!Lwjgl3ApplicationConfiguration.disableAudio) {
     try {
       this.audio=Gdx.audio=new OpenALAudio(config.audioDeviceSimultaneousSources,config.audioDeviceBufferCount,config.audioDeviceBufferSize);

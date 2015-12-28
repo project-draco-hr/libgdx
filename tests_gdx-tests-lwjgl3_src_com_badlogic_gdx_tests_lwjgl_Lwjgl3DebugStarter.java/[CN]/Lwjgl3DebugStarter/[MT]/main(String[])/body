@@ -1,0 +1,7 @@
+{
+  GdxTest test=new UITest();
+  DisplayMode mode=Lwjgl3ApplicationConfiguration.getDesktopDisplayMode();
+  Lwjgl3ApplicationConfiguration config=new Lwjgl3ApplicationConfiguration();
+  config.setFromDisplayMode(mode);
+  new Lwjgl3Application(test,config);
+}

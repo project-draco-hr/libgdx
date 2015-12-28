@@ -7,10 +7,19 @@
       Gdx.gl20=window.getGraphics().getGL20();
       Gdx.gl30=window.getGraphics().getGL30();
       Gdx.input=window.getInput();
-      window.update();
+      currentWindow=window;
+synchronized (lifecycleListeners) {
+        window.update(lifecycleListeners);
+      }
       if (window.shouldClose()) {
         closedWindows.add(window);
       }
+    }
+synchronized (runnables) {
+      for (      Runnable runnable : runnables) {
+        runnable.run();
+      }
+      runnables.clear();
     }
     for (    Lwjgl3Window closedWindow : closedWindows) {
       closedWindow.dispose();

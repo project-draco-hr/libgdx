@@ -1,0 +1,6 @@
+{
+  if (title == null) {
+    title="";
+  }
+  GLFW.glfwSetWindowTitle(window.getWindowHandle(),title);
+}

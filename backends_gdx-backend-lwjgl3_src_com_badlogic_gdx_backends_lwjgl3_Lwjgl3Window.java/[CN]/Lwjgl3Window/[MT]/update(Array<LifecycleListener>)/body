@@ -1,0 +1,18 @@
+{
+  if (listenerInitialized == false) {
+    listener.create();
+    listener.resize(graphics.getWidth(),graphics.getHeight());
+    listenerInitialized=true;
+  }
+synchronized (runnables) {
+    for (    Runnable runnable : runnables) {
+      runnable.run();
+    }
+    runnables.clear();
+  }
+  graphics.update();
+  input.update();
+  listener.render();
+  glfwSwapBuffers(windowHandle);
+  glfwPollEvents();
+}

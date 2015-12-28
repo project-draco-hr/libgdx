@@ -1,7 +1,7 @@
 {
   this.windowHandle=windowHandle;
   this.listener=listener;
+  this.config=config;
   this.graphics=new Lwjgl3Graphics(this);
   this.input=new Lwjgl3Input(this);
-  this.config=config;
 }

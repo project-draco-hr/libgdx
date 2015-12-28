@@ -1,0 +1,10 @@
+{
+  IntBuffer width=BufferUtils.createIntBuffer(1);
+  IntBuffer height=BufferUtils.createIntBuffer(1);
+  GLFW.glfwGetFramebufferSize(window.getWindowHandle(),width,height);
+  this.width=width.get(0);
+  this.height=height.get(0);
+  this.isFullscreen=GLFW.glfwGetWindowMonitor(window.getWindowHandle()) != 0;
+  Lwjgl3ApplicationConfiguration config=window.getConfig();
+  bufferFormat=new BufferFormat(config.r,config.g,config.b,config.a,config.depth,config.stencil,config.samples,false);
+}
