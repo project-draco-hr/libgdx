@@ -1,4 +1,4 @@
 {
   Gdx.app.log("FullscreenTest","resized: " + width + ", "+ height);
-  Gdx.gl.glViewport(0,0,width,height);
+  batch.getProjectionMatrix().setToOrtho2D(0,0,width,height);
 }
