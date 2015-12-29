@@ -1,3 +1,9 @@
 {
+  if (window.getConfig().useHDPI) {
+    float xScale=window.getGraphics().getLogicalWidth() / (float)window.getGraphics().getFrameBufferWidth();
+    float yScale=window.getGraphics().getLogicalHeight() / (float)window.getGraphics().getFrameBufferHeight();
+    x=(int)(x * xScale);
+    y=(int)(y * yScale);
+  }
   glfwSetCursorPos(window.getWindowHandle(),x,y);
 }

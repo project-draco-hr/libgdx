@@ -3,5 +3,5 @@
   this.gl20=new Lwjgl3GL20();
   this.gl30=null;
   updateFramebufferInfo();
-  setupCallbacks();
+  GLFW.glfwSetFramebufferSizeCallback(window.getWindowHandle(),resizeCallback);
 }

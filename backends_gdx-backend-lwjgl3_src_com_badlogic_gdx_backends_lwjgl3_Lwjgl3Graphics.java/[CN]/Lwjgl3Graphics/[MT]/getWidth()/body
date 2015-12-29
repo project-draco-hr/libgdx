@@ -1,3 +1,8 @@
 {
-  return width;
+  if (window.getConfig().useHDPI) {
+    return frameBufferWidth;
+  }
+ else {
+    return logicalWidth;
+  }
 }

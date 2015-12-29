@@ -13,15 +13,14 @@
   if (windowHandle == 0) {
     throw new GdxRuntimeException("Couldn't create window");
   }
-  if (x == -1 && y == -1) {
-    GLFWVidMode vidMode=glfwGetVideoMode(glfwGetPrimaryMonitor());
-    glfwSetWindowPos(windowHandle,vidMode.width() / 2 - width / 2,vidMode.height() / 2 - height / 2);
-  }
+  if (!fullscreen) {
+    if (x == -1 && y == -1) {
+      GLFWVidMode vidMode=glfwGetVideoMode(glfwGetPrimaryMonitor());
+      glfwSetWindowPos(windowHandle,vidMode.width() / 2 - width / 2,vidMode.height() / 2 - height / 2);
+    }
  else {
-    glfwSetWindowPos(windowHandle,x,y);
-  }
-  if (title != null) {
-    glfwSetWindowTitle(windowHandle,title);
+      glfwSetWindowPos(windowHandle,x,y);
+    }
   }
   glfwSwapInterval(vSyncEnabled ? 1 : 0);
   glfwMakeContextCurrent(windowHandle);

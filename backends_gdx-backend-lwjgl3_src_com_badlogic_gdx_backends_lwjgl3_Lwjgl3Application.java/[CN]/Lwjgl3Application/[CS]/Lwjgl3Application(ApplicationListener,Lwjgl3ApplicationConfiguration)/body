@@ -1,5 +1,5 @@
 {
-  Lwjgl3NativesLoader.load();
+  initializeGlfw();
   this.config=config;
   Gdx.app=this;
   if (!Lwjgl3ApplicationConfiguration.disableAudio) {
@@ -17,10 +17,6 @@
   this.files=Gdx.files=new Lwjgl3Files();
   this.net=Gdx.net=new Lwjgl3Net();
   this.clipboard=new Lwjgl3Clipboard();
-  if (glfwInit() != GLFW_TRUE) {
-    throw new GdxRuntimeException("Unable to initialize GLFW");
-  }
-  errorCallback=GLFWErrorCallback.createPrint(System.err);
   Lwjgl3Window window=createWindow(listener);
   windows.put(window.getWindowHandle(),window);
   loop();
