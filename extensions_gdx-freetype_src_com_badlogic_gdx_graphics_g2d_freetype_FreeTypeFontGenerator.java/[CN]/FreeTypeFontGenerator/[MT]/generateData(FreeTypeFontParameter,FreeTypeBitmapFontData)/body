@@ -67,6 +67,11 @@
     stroker=library.createStroker();
     stroker.set((int)(parameter.borderWidth * 64f),parameter.borderStraight ? FreeType.FT_STROKER_LINECAP_BUTT : FreeType.FT_STROKER_LINECAP_ROUND,parameter.borderStraight ? FreeType.FT_STROKER_LINEJOIN_MITER_FIXED : FreeType.FT_STROKER_LINEJOIN_ROUND,0);
   }
+  Glyph missingGlyph=createGlyph('\0',data,parameter,stroker,baseLine,packer);
+  if (missingGlyph != null && missingGlyph.width != 0 && missingGlyph.height != 0) {
+    data.setGlyph('\0',missingGlyph);
+    if (incremental)     data.glyphs.add(missingGlyph);
+  }
   int[] heights=new int[charactersLength];
   for (int i=0, n=charactersLength; i < n; i++) {
     int height=loadChar(characters[i]) ? FreeType.toInt(face.getGlyph().getMetrics().getHeight()) : 0;
@@ -93,7 +98,6 @@
     characters[best]=characters[heightsCount];
   }
   if (stroker != null && !incremental)   stroker.dispose();
-  data.missingGlyph=data.getGlyph('\u0000');
   if (incremental) {
     data.generator=this;
     data.parameter=parameter;
