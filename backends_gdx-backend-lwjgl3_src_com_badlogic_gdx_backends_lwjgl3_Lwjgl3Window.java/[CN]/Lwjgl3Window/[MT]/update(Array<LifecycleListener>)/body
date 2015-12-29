@@ -1,8 +1,6 @@
 {
   if (listenerInitialized == false) {
-    listener.create();
-    listener.resize(graphics.getWidth(),graphics.getHeight());
-    listenerInitialized=true;
+    initializeListener();
   }
 synchronized (runnables) {
     for (    Runnable runnable : runnables) {

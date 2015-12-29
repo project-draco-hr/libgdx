@@ -1,0 +1,7 @@
+{
+  if (!listenerInitialized) {
+    listener.create();
+    listener.resize(graphics.getWidth(),graphics.getHeight());
+    listenerInitialized=true;
+  }
+}
