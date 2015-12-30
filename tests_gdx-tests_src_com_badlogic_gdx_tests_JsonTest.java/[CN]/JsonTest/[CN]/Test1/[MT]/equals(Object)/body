@@ -55,9 +55,9 @@
     if (!map.keys().toArray().equals(other.map.keys().toArray()))     return false;
     if (!map.values().toArray().equals(other.map.values().toArray()))     return false;
   }
-  if (array != other.array) {
-    if (array == null || other.array == null)     return false;
-    if (!array.equals(other.array))     return false;
+  if (stringArray != other.stringArray) {
+    if (stringArray == null || other.stringArray == null)     return false;
+    if (!stringArray.equals(other.stringArray))     return false;
   }
   if (byteField != other.byteField)   return false;
   if (charField != other.charField)   return false;
