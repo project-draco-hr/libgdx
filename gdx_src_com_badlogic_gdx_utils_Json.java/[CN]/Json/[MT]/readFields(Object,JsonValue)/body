@@ -2,14 +2,15 @@
   Class type=object.getClass();
   ObjectMap<String,FieldMetadata> fields=getFields(type);
   for (JsonValue child=jsonMap.child; child != null; child=child.next) {
-    FieldMetadata metadata=fields.get(child.name());
+    FieldMetadata metadata=fields.get(child.name);
     if (metadata == null) {
+      if (child.name.equals(typeName))       continue;
       if (ignoreUnknownFields) {
-        if (debug)         System.out.println("Ignoring unknown field: " + child.name() + " ("+ type.getName()+ ")");
+        if (debug)         System.out.println("Ignoring unknown field: " + child.name + " ("+ type.getName()+ ")");
         continue;
       }
  else {
-        SerializationException ex=new SerializationException("Field not found: " + child.name() + " ("+ type.getName()+ ")");
+        SerializationException ex=new SerializationException("Field not found: " + child.name + " ("+ type.getName()+ ")");
         ex.addTrace(child.trace());
         throw ex;
       }
