@@ -21,7 +21,7 @@
   this.fullscreen=fullscreen;
   if (!fullscreen) {
     if (x == -1 || y == -1) {
-      DisplayMode mode=getDesktopDisplayMode();
+      DisplayMode mode=getDisplayMode();
       x=(mode.width - width) / 2;
       y=(mode.height - height) / 2;
     }

@@ -1,0 +1,9 @@
+{
+  IntBuffer tmp=BufferUtils.createIntBuffer(1);
+  IntBuffer tmp2=BufferUtils.createIntBuffer(1);
+  GLFW.glfwGetMonitorPos(glfwMonitor,tmp,tmp2);
+  int virtualX=tmp.get(0);
+  int virtualY=tmp2.get(0);
+  String name=GLFW.glfwGetMonitorName(glfwMonitor);
+  return new Lwjgl3Monitor(virtualX,virtualY,name);
+}
