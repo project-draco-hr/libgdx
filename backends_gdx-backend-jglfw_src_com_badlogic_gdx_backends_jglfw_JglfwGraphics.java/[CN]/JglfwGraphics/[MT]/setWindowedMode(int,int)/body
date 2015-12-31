@@ -1,4 +1,5 @@
 {
+  boolean fullscreen=false;
   if (fullscreen || this.fullscreen) {
     boolean success=createWindow(width,height,fullscreen);
     if (success && fullscreen)     sizeChanged(width,height);
