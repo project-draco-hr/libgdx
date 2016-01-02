@@ -1,3 +1,4 @@
 {
-  return false;
+  window.getInput().resetPollingStates();
+  return recreateWindow(0,0,(Lwjgl3DisplayMode)displayMode);
 }

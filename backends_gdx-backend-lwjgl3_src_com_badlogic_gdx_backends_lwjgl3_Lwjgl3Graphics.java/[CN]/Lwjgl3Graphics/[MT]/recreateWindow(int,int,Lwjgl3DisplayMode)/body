@@ -1,0 +1,19 @@
+{
+  Lwjgl3ApplicationConfiguration config=Lwjgl3ApplicationConfiguration.copy(window.getConfig());
+  config.setWindowedMode(width,height);
+  config.setFullscreenMode(displayMode);
+  try {
+    long oldHandle=window.getWindowHandle();
+    long windowHandle=Lwjgl3Application.createGlfwWindow(config,oldHandle);
+    GLFW.glfwSetFramebufferSizeCallback(oldHandle,null);
+    GLFW.glfwDestroyWindow(oldHandle);
+    GLFW.glfwSetFramebufferSizeCallback(windowHandle,resizeCallback);
+    GLFW.glfwShowWindow(windowHandle);
+    window.windowHandleChanged(windowHandle);
+    return true;
+  }
+ catch (  GdxRuntimeException e) {
+    e.printStackTrace();
+    return false;
+  }
+}

@@ -1,10 +1,10 @@
 {
   while (running && windows.size > 0) {
-    Array<Lwjgl3Window> closedWindows=new Array<Lwjgl3Window>();
     if (audio instanceof OpenALAudio) {
       ((OpenALAudio)audio).update();
     }
-    for (    Lwjgl3Window window : windows.values()) {
+    closedWindows.clear();
+    for (    Lwjgl3Window window : windows) {
       Gdx.graphics=window.getGraphics();
       Gdx.gl=window.getGraphics().getGL30() != null ? window.getGraphics().getGL30() : window.getGraphics().getGL20();
       Gdx.gl20=window.getGraphics().getGL20();
@@ -19,20 +19,16 @@ synchronized (lifecycleListeners) {
       }
     }
 synchronized (runnables) {
-      for (      Runnable runnable : runnables) {
-        runnable.run();
-      }
+      executedRunnables.clear();
+      executedRunnables.addAll(runnables);
       runnables.clear();
+    }
+    for (    Runnable runnable : executedRunnables) {
+      runnable.run();
     }
     for (    Lwjgl3Window closedWindow : closedWindows) {
       closedWindow.dispose();
-      windows.remove(closedWindow.getWindowHandle());
+      windows.removeValue(closedWindow,false);
     }
-  }
-  for (  Lwjgl3Window window : windows.values()) {
-    window.dispose();
-  }
-  if (audio instanceof OpenALAudio) {
-    ((OpenALAudio)audio).dispose();
   }
 }

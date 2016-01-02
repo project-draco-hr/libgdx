@@ -1,0 +1,6 @@
+{
+  long windowHandle=createGlfwWindow(config,0);
+  Lwjgl3Window window=new Lwjgl3Window(windowHandle,listener,config);
+  glfwShowWindow(windowHandle);
+  return window;
+}

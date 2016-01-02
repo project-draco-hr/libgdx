@@ -2,7 +2,7 @@
   initializeGlfw();
   this.config=config;
   Gdx.app=this;
-  if (!Lwjgl3ApplicationConfiguration.disableAudio) {
+  if (!config.disableAudio) {
     try {
       this.audio=Gdx.audio=new OpenALAudio(config.audioDeviceSimultaneousSources,config.audioDeviceBufferCount,config.audioDeviceBufferSize);
     }
@@ -17,7 +17,8 @@
   this.files=Gdx.files=new Lwjgl3Files();
   this.net=Gdx.net=new Lwjgl3Net();
   this.clipboard=new Lwjgl3Clipboard();
-  Lwjgl3Window window=createWindow(listener);
-  windows.put(window.getWindowHandle(),window);
+  Lwjgl3Window window=createWindow(config,listener);
+  windows.add(window);
   loop();
+  cleanup();
 }

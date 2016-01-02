@@ -1,4 +1,5 @@
 {
+  resetPollingStates();
   glfwSetKeyCallback(window.getWindowHandle(),keyCallback);
   glfwSetCharCallback(window.getWindowHandle(),charCallback);
   glfwSetScrollCallback(window.getWindowHandle(),scrollCallback);

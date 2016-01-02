@@ -1,5 +1,5 @@
 {
-  if (window.getConfig().useHDPI) {
+  if (window.getConfig().hdpiMode == HdpiMode.Pixels) {
     return frameBufferHeight;
   }
  else {

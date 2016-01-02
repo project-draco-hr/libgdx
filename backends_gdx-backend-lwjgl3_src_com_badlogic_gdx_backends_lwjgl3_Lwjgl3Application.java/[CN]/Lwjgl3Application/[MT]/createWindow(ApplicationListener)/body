@@ -1,6 +1,0 @@
-{
-  long windowHandle=createGlfwWindow(config.resizable,config.r,config.g,config.b,config.a,config.stencil,config.depth,config.samples,config.width,config.height,config.title,config.fullscreen,config.x,config.y,config.vSyncEnabled,config.initialBackgroundColor,0);
-  Lwjgl3Window window=new Lwjgl3Window(windowHandle,listener,config);
-  glfwShowWindow(windowHandle);
-  return window;
-}

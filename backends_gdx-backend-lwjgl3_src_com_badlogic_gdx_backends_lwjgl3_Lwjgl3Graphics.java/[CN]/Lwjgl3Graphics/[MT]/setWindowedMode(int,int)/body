@@ -1,3 +1,10 @@
 {
-  return false;
+  window.getInput().resetPollingStates();
+  if (!isFullscreen()) {
+    GLFW.glfwSetWindowSize(window.getWindowHandle(),width,height);
+    return true;
+  }
+ else {
+    return recreateWindow(width,height,null);
+  }
 }

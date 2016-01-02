@@ -1,0 +1,5 @@
+{
+  Lwjgl3Application.initializeGlfw();
+  GLFWVidMode videoMode=GLFW.glfwGetVideoMode(((Lwjgl3Monitor)monitor).monitor);
+  return new Lwjgl3Graphics.Lwjgl3DisplayMode(((Lwjgl3Monitor)monitor).monitor,videoMode.width(),videoMode.height(),videoMode.refreshRate(),videoMode.redBits() + videoMode.greenBits() + videoMode.blueBits());
+}

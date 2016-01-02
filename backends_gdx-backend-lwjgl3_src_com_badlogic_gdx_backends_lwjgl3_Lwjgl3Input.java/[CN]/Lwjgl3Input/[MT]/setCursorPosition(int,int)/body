@@ -1,5 +1,5 @@
 {
-  if (window.getConfig().useHDPI) {
+  if (window.getConfig().hdpiMode == HdpiMode.Pixels) {
     float xScale=window.getGraphics().getLogicalWidth() / (float)window.getGraphics().getBackBufferWidth();
     float yScale=window.getGraphics().getLogicalHeight() / (float)window.getGraphics().getBackBufferHeight();
     x=(int)(x * xScale);
