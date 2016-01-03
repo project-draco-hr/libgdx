@@ -2,9 +2,12 @@
   window.getInput().resetPollingStates();
   if (!isFullscreen()) {
     GLFW.glfwSetWindowSize(window.getWindowHandle(),width,height);
+    updateFramebufferInfo();
     return true;
   }
  else {
-    return recreateWindow(width,height,null);
+    boolean result=recreateWindow(width,height,null);
+    updateFramebufferInfo();
+    return result;
   }
 }

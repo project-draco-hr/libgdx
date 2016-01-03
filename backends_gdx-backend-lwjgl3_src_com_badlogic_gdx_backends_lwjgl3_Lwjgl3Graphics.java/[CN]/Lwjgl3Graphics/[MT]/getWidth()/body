@@ -1,6 +1,6 @@
 {
   if (window.getConfig().hdpiMode == HdpiMode.Pixels) {
-    return frameBufferWidth;
+    return backBufferWidth;
   }
  else {
     return logicalWidth;

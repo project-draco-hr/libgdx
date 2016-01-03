@@ -1,7 +1,7 @@
 {
   GLFW.glfwGetFramebufferSize(window.getWindowHandle(),tmpBuffer,tmpBuffer2);
-  this.frameBufferWidth=tmpBuffer.get(0);
-  this.frameBufferHeight=tmpBuffer2.get(0);
+  this.backBufferWidth=tmpBuffer.get(0);
+  this.backBufferHeight=tmpBuffer2.get(0);
   GLFW.glfwGetWindowSize(window.getWindowHandle(),tmpBuffer,tmpBuffer2);
   Lwjgl3Graphics.this.logicalWidth=tmpBuffer.get(0);
   Lwjgl3Graphics.this.logicalHeight=tmpBuffer2.get(0);
