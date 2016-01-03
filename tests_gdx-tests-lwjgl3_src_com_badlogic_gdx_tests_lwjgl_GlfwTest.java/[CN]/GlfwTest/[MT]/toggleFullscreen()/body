@@ -9,17 +9,10 @@
     height=480;
   }
  else {
-    Buffer modes=glfwGetVideoModes(glfwGetPrimaryMonitor());
-    GLFWVidMode mode=null;
-    for (int i=0; i < modes.limit(); i++) {
-      mode=modes.get(i);
-      if (mode.width() == 1024) {
-        break;
-      }
-    }
+    GLFWVidMode mode=glfwGetVideoMode(glfwGetPrimaryMonitor());
+    glfwWindowHint(GLFW_REFRESH_RATE,mode.refreshRate());
     width=mode.width();
     height=mode.height();
-    glfwWindowHint(GLFW_REFRESH_RATE,mode.refreshRate());
     windowHandle=glfwCreateWindow(width,height,"Test",glfwGetPrimaryMonitor(),oldWindowHandle);
   }
   if (windowHandle == 0) {
