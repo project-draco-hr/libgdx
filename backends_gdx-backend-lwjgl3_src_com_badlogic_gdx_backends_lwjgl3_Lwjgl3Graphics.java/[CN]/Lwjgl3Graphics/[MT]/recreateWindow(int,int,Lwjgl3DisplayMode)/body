@@ -5,12 +5,12 @@
   try {
     long oldHandle=window.getWindowHandle();
     GLFW.glfwHideWindow(oldHandle);
-    long windowHandle=Lwjgl3Application.createGlfwWindow(config,oldHandle);
     GLFW.glfwSetFramebufferSizeCallback(oldHandle,null);
+    long windowHandle=Lwjgl3Application.createGlfwWindow(config,oldHandle);
     GLFW.glfwDestroyWindow(oldHandle);
     GLFW.glfwSetFramebufferSizeCallback(windowHandle,resizeCallback);
-    GLFW.glfwShowWindow(windowHandle);
     window.windowHandleChanged(windowHandle);
+    GLFW.glfwShowWindow(windowHandle);
     return true;
   }
  catch (  GdxRuntimeException e) {

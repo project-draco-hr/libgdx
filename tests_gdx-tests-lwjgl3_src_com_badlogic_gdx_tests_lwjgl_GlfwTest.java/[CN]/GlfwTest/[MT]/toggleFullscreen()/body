@@ -1,0 +1,37 @@
+{
+  glfwDefaultWindowHints();
+  glfwWindowHint(GLFW_VISIBLE,GLFW_FALSE);
+  glfwWindowHint(GLFW_RESIZABLE,GLFW_TRUE);
+  long oldWindowHandle=windowHandle;
+  if (isFullscreen) {
+    windowHandle=glfwCreateWindow(640,480,"Test",0,oldWindowHandle);
+    width=640;
+    height=480;
+  }
+ else {
+    Buffer modes=glfwGetVideoModes(glfwGetPrimaryMonitor());
+    GLFWVidMode mode=null;
+    for (int i=0; i < modes.limit(); i++) {
+      mode=modes.get(i);
+      if (mode.width() == 1024) {
+        break;
+      }
+    }
+    width=mode.width();
+    height=mode.height();
+    glfwWindowHint(GLFW_REFRESH_RATE,mode.refreshRate());
+    windowHandle=glfwCreateWindow(width,height,"Test",glfwGetPrimaryMonitor(),oldWindowHandle);
+  }
+  if (windowHandle == 0) {
+    throw new RuntimeException("Couldn't create window");
+  }
+  if (oldWindowHandle != 0) {
+    glfwDestroyWindow(oldWindowHandle);
+  }
+  glfwSetCharCallback(windowHandle,charCallback);
+  glfwMakeContextCurrent(windowHandle);
+  GL.createCapabilities();
+  glfwSwapInterval(1);
+  glfwShowWindow(windowHandle);
+  isFullscreen=!isFullscreen;
+}
