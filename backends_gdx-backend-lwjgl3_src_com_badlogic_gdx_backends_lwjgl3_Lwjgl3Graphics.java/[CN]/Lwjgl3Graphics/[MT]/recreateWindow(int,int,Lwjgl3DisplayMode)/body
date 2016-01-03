@@ -4,6 +4,7 @@
   config.setFullscreenMode(displayMode);
   try {
     long oldHandle=window.getWindowHandle();
+    GLFW.glfwHideWindow(oldHandle);
     long windowHandle=Lwjgl3Application.createGlfwWindow(config,oldHandle);
     GLFW.glfwSetFramebufferSizeCallback(oldHandle,null);
     GLFW.glfwDestroyWindow(oldHandle);
