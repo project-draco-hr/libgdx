@@ -5,6 +5,19 @@
     BitmapFont font;
     FPSLogger fps=new FPSLogger();
     @Override public void create(){
+      new Thread(new Runnable(){
+        @Override public void run(){
+          while (true) {
+            try {
+              Thread.sleep(1000);
+            }
+ catch (            InterruptedException e) {
+              e.printStackTrace();
+            }
+          }
+        }
+      }
+).start();
       batch=new SpriteBatch();
       font=new BitmapFont();
       Gdx.input.setInputProcessor(new InputAdapter(){
@@ -24,6 +37,9 @@
           }
           if (character == 'w') {
             Gdx.graphics.setWindowedMode(MathUtils.random(400,800),MathUtils.random(400,800));
+          }
+          if (character == 'e') {
+            throw new GdxRuntimeException("derp");
           }
           return false;
         }

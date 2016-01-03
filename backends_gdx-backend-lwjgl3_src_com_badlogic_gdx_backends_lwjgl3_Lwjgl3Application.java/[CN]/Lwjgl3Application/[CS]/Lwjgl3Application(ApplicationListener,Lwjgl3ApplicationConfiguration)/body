@@ -19,6 +19,13 @@
   this.clipboard=new Lwjgl3Clipboard();
   Lwjgl3Window window=createWindow(config,listener);
   windows.add(window);
-  loop();
-  cleanup();
+  try {
+    loop();
+  }
+ catch (  Throwable t) {
+    t.printStackTrace();
+  }
+ finally {
+    cleanup();
+  }
 }
