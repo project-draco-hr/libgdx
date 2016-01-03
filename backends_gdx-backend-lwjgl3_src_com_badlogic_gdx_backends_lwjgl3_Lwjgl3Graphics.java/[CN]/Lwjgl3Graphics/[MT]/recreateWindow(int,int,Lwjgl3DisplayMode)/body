@@ -1,5 +1,5 @@
 {
-  Lwjgl3ApplicationConfiguration config=Lwjgl3ApplicationConfiguration.copy(window.getConfig());
+  Lwjgl3ApplicationConfiguration config=getWindow().getConfig();
   config.setWindowedMode(width,height);
   config.setFullscreenMode(displayMode);
   try {

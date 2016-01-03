@@ -1,4 +1,5 @@
 {
+  Array<Lwjgl3Window> closedWindows=new Array<Lwjgl3Window>();
   while (running && windows.size > 0) {
     if (audio instanceof OpenALAudio) {
       ((OpenALAudio)audio).update();

@@ -3,11 +3,13 @@
     initializeListener();
   }
 synchronized (runnables) {
-    for (    Runnable runnable : runnables) {
-      runnable.run();
-    }
+    executedRunnables.addAll(runnables);
     runnables.clear();
   }
+  for (  Runnable runnable : executedRunnables) {
+    runnable.run();
+  }
+  executedRunnables.clear();
   graphics.update();
   listener.render();
   glfwSwapBuffers(windowHandle);
