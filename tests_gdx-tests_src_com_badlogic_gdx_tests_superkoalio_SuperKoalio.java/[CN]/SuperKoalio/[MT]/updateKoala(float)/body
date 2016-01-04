@@ -1,5 +1,6 @@
 {
   if (deltaTime == 0)   return;
+  if (deltaTime > 0.1f)   deltaTime=0.1f;
   koala.stateTime+=deltaTime;
   if ((Gdx.input.isKeyPressed(Keys.SPACE) || isTouched(0.5f,1)) && koala.grounded) {
     koala.velocity.y+=Koala.JUMP_VELOCITY;
