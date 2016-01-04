@@ -3,6 +3,6 @@
     Mouse.setNativeCursor(null);
   }
  catch (  LWJGLException e) {
-    throw new GdxRuntimeException("Could not set cursor image.",e);
+    throw new GdxRuntimeException("Couldn't set system cursor");
   }
 }
