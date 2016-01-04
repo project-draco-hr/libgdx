@@ -19,6 +19,6 @@
  catch (    Throwable t) {
       new GdxRuntimeException("Couldn't instantiate app listener",t);
     }
-    app.newWindow(listener,config);
+    Lwjgl3Window window=app.newWindow(listener,config);
   }
 }
