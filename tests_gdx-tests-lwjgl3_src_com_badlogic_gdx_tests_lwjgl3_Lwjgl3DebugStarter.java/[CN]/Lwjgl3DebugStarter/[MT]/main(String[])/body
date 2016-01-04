@@ -63,5 +63,5 @@
   for (  DisplayMode mode : Lwjgl3ApplicationConfiguration.getDisplayModes()) {
     System.out.println(mode.width + "x" + mode.height);
   }
-  new Lwjgl3Application(new CursorTest(),config);
+  new Lwjgl3Application(new ControllersTest(),config);
 }

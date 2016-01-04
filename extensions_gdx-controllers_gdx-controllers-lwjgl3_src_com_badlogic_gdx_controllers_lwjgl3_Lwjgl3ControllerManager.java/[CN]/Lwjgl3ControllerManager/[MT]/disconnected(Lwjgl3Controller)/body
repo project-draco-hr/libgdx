@@ -1,0 +1,6 @@
+{
+  controllers.removeValue(controller,true);
+  for (  ControllerListener listener : listeners) {
+    listener.disconnected(controller);
+  }
+}

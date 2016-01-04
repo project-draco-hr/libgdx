@@ -1,0 +1,7 @@
+{
+  this.manager=manager;
+  this.index=0;
+  this.axisState=new float[GLFW.glfwGetJoystickAxes(index).limit()];
+  this.buttonState=new boolean[GLFW.glfwGetJoystickButtons(index).limit()];
+  this.name=GLFW.glfwGetJoystickName(index);
+}

@@ -1,0 +1,5 @@
+{
+  for (  Controller controller : controllers) {
+    ((Lwjgl3Controller)controller).pollState();
+  }
+}

@@ -1,0 +1,30 @@
+{
+  if (GLFW.glfwJoystickPresent(index) == GLFW.GLFW_FALSE) {
+    manager.disconnected(this);
+  }
+  FloatBuffer axes=GLFW.glfwGetJoystickAxes(index);
+  for (int i=0; i < axes.limit(); i++) {
+    if (axisState[i] != axes.get(i)) {
+      for (      ControllerListener listener : listeners) {
+        listener.axisMoved(this,i,axes.get(i));
+      }
+      manager.axisChanged(this,i,axes.get(i));
+    }
+    axisState[i]=axes.get(i);
+  }
+  ByteBuffer buttons=GLFW.glfwGetJoystickButtons(index);
+  for (int i=0; i < buttons.limit(); i++) {
+    if (buttonState[i] != (buttons.get(i) == GLFW.GLFW_PRESS)) {
+      for (      ControllerListener listener : listeners) {
+        if (buttons.get(i) == GLFW.GLFW_PRESS) {
+          listener.buttonDown(this,i);
+        }
+ else {
+          listener.buttonUp(this,i);
+        }
+      }
+      manager.buttonChanged(this,i,buttons.get(i) == GLFW.GLFW_PRESS);
+    }
+    buttonState[i]=buttons.get(i) == GLFW.GLFW_PRESS;
+  }
+}

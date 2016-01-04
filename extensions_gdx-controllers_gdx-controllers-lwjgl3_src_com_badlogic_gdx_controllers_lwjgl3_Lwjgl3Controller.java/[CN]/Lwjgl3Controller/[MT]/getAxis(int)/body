@@ -1,0 +1,6 @@
+{
+  if (axisCode < 0 || axisCode >= axisState.length) {
+    return 0;
+  }
+  return axisState[axisCode];
+}

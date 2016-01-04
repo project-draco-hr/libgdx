@@ -1,0 +1,10 @@
+{
+  for (  ControllerListener listener : listeners) {
+    if (value) {
+      listener.buttonDown(controller,buttonCode);
+    }
+ else {
+      listener.buttonUp(controller,buttonCode);
+    }
+  }
+}
