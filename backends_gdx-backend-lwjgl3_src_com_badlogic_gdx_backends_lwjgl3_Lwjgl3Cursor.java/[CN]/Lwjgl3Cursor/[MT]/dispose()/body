@@ -6,4 +6,5 @@
   pixmapCopy.dispose();
   pixmapCopy=null;
   glfwImage.free();
+  GLFW.glfwDestroyCursor(glfwCursor);
 }

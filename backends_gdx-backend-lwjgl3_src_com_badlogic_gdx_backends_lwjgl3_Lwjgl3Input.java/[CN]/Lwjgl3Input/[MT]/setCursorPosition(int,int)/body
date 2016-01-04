@@ -5,5 +5,5 @@
     x=(int)(x * xScale);
     y=(int)(y * yScale);
   }
-  glfwSetCursorPos(window.getWindowHandle(),x,y);
+  GLFW.glfwSetCursorPos(window.getWindowHandle(),x,y);
 }

@@ -21,6 +21,6 @@
   glfwImage.width(pixmapCopy.getWidth());
   glfwImage.height(pixmapCopy.getHeight());
   glfwImage.pixels(pixmapCopy.getPixels());
-  cursor=GLFW.glfwCreateCursor(glfwImage,xHotspot,yHotspot);
+  glfwCursor=GLFW.glfwCreateCursor(glfwImage,xHotspot,yHotspot);
   cursors.add(this);
 }

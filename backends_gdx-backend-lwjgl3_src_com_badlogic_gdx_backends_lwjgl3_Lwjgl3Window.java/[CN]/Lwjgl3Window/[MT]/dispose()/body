@@ -3,5 +3,5 @@
   listener.dispose();
   graphics.dispose();
   input.dispose();
-  glfwDestroyWindow(windowHandle);
+  GLFW.glfwDestroyWindow(windowHandle);
 }

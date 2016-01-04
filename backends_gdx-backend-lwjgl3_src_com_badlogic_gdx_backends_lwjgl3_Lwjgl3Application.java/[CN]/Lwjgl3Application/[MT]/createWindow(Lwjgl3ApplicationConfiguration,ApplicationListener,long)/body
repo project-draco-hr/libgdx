@@ -1,6 +1,6 @@
 {
   long windowHandle=createGlfwWindow(config,sharedContext);
   Lwjgl3Window window=new Lwjgl3Window(windowHandle,listener,config);
-  glfwShowWindow(windowHandle);
+  GLFW.glfwShowWindow(windowHandle);
   return window;
 }

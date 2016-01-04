@@ -6,4 +6,5 @@
     ((OpenALAudio)audio).dispose();
   }
   errorCallback.release();
+  GLFW.glfwTerminate();
 }

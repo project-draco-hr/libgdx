@@ -11,7 +11,7 @@
       Gdx.gl20=window.getGraphics().getGL20();
       Gdx.gl30=window.getGraphics().getGL30();
       Gdx.input=window.getInput();
-      glfwMakeContextCurrent(window.getWindowHandle());
+      GLFW.glfwMakeContextCurrent(window.getWindowHandle());
       currentWindow=window;
 synchronized (lifecycleListeners) {
         window.update(lifecycleListeners);

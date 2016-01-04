@@ -12,7 +12,7 @@ synchronized (runnables) {
   executedRunnables.clear();
   graphics.update();
   listener.render();
-  glfwSwapBuffers(windowHandle);
+  GLFW.glfwSwapBuffers(windowHandle);
   input.update();
-  glfwPollEvents();
+  GLFW.glfwPollEvents();
 }
