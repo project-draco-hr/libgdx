@@ -1,3 +1,7 @@
 {
-  return Toolkit.getDefaultToolkit().getScreenResolution() / 2.54f;
+  Lwjgl3Monitor monitor=(Lwjgl3Monitor)getMonitor();
+  GLFW.glfwGetMonitorPhysicalSize(monitor.monitorHandle,tmpBuffer,tmpBuffer2);
+  int sizeY=tmpBuffer2.get(0);
+  DisplayMode mode=getDisplayMode();
+  return mode.height / (float)sizeY * 10;
 }
