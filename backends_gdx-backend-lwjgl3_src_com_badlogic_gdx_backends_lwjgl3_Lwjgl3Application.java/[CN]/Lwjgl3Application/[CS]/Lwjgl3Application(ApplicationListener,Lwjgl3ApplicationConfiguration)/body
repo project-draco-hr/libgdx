@@ -18,7 +18,7 @@
   this.files=Gdx.files=new Lwjgl3Files();
   this.net=Gdx.net=new Lwjgl3Net();
   this.clipboard=new Lwjgl3Clipboard();
-  Lwjgl3Window window=createWindow(config,listener);
+  Lwjgl3Window window=createWindow(config,listener,0);
   windows.add(window);
   try {
     loop();
