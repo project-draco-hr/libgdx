@@ -10,9 +10,10 @@ synchronized (runnables) {
     runnable.run();
   }
   executedRunnables.clear();
-  graphics.update();
-  listener.render();
-  GLFW.glfwSwapBuffers(windowHandle);
-  input.update();
-  GLFW.glfwPollEvents();
+  if (!iconified) {
+    graphics.update();
+    listener.render();
+    GLFW.glfwSwapBuffers(windowHandle);
+    input.update();
+  }
 }

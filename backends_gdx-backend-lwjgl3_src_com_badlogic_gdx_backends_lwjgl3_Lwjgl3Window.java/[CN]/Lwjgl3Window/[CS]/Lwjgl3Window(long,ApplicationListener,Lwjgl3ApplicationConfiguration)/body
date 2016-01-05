@@ -1,7 +1,13 @@
 {
   this.windowHandle=windowHandle;
   this.listener=listener;
+  this.windowListener=config.windowListener;
   this.config=config;
   this.input=new Lwjgl3Input(this);
   this.graphics=new Lwjgl3Graphics(this);
+  this.tmpBuffer=BufferUtils.createIntBuffer(1);
+  this.tmpBuffer2=BufferUtils.createIntBuffer(1);
+  GLFW.glfwSetWindowFocusCallback(windowHandle,focusCallback);
+  GLFW.glfwSetWindowIconifyCallback(windowHandle,iconifyCallback);
+  GLFW.glfwSetWindowCloseCallback(windowHandle,closeCallback);
 }

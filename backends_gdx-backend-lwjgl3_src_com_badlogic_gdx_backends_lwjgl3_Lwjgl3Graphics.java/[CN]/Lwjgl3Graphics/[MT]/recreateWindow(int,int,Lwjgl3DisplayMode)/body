@@ -10,7 +10,7 @@
     GLFW.glfwDestroyWindow(oldHandle);
     GLFW.glfwSetFramebufferSizeCallback(windowHandle,resizeCallback);
     window.windowHandleChanged(windowHandle);
-    GLFW.glfwShowWindow(windowHandle);
+    window.setVisible(true);
     return true;
   }
  catch (  GdxRuntimeException e) {

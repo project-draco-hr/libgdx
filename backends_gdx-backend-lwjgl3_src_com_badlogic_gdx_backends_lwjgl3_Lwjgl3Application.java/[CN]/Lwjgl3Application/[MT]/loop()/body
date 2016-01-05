@@ -20,6 +20,7 @@ synchronized (lifecycleListeners) {
         closedWindows.add(window);
       }
     }
+    GLFW.glfwPollEvents();
 synchronized (runnables) {
       executedRunnables.clear();
       executedRunnables.addAll(runnables);
