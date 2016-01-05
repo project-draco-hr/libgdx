@@ -1,0 +1,23 @@
+{
+  if (systemCursor == SystemCursor.Arrow) {
+    return "default";
+  }
+ else   if (systemCursor == SystemCursor.Crosshair) {
+    return "crosshair";
+  }
+ else   if (systemCursor == SystemCursor.Hand) {
+    return "pointer";
+  }
+ else   if (systemCursor == SystemCursor.HorizontalResize) {
+    return "ew-resize";
+  }
+ else   if (systemCursor == SystemCursor.VerticalResize) {
+    return "ns-resize";
+  }
+ else   if (systemCursor == SystemCursor.Ibeam) {
+    return "text";
+  }
+ else {
+    throw new GdxRuntimeException("Unknown system cursor " + systemCursor);
+  }
+}
