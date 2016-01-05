@@ -1,0 +1,3 @@
+{
+  return isOpenGLOrHigher(3,0) || GLFW.glfwExtensionSupported("GL_EXT_framebuffer_object") == GLFW.GLFW_TRUE || GLFW.glfwExtensionSupported("GL_ARB_framebuffer_object") == GLFW.GLFW_TRUE;
+}

@@ -11,6 +11,12 @@
     GLFW.glfwWindowHint(GLFW.GLFW_DEPTH_BITS,config.depth);
     GLFW.glfwWindowHint(GLFW.GLFW_SAMPLES,config.samples);
   }
+  if (config.useGL30) {
+    GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR,config.gles30ContextMajorVersion);
+    GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR,config.gles30ContextMinorVersion);
+    GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_FORWARD_COMPAT,GLFW.GLFW_TRUE);
+    GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE,GLFW.GLFW_OPENGL_CORE_PROFILE);
+  }
   long windowHandle=0;
   if (config.fullscreenMode != null) {
     windowHandle=GLFW.glfwCreateWindow(config.fullscreenMode.width,config.fullscreenMode.height,config.title,config.fullscreenMode.getMonitor(),sharedContextWindow);
@@ -33,13 +39,10 @@
   GLFW.glfwMakeContextCurrent(windowHandle);
   GLFW.glfwSwapInterval(config.vSyncEnabled ? 1 : 0);
   GL.createCapabilities();
-  String version=GL11.glGetString(GL20.GL_VERSION);
-  int glMajorVersion=Integer.parseInt("" + version.charAt(0));
-  if (glMajorVersion <= 1)   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version);
-  if (glMajorVersion == 2 || version.contains("2.1")) {
-    if (GLFW.glfwExtensionSupported("GL_EXT_framebuffer_object") == GLFW.GLFW_FALSE && GLFW.glfwExtensionSupported("GL_ARB_framebuffer_object") == GLFW.GLFW_FALSE) {
-      throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version + ", FBO extension: false");
-    }
+  extractVersion();
+  if (!isOpenGLOrHigher(2,0))   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + "\n"+ glInfo());
+  if (!supportsFBO()) {
+    throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + ", FBO extension: false\n"+ glInfo());
   }
   for (int i=0; i < 2; i++) {
     GL11.glClearColor(config.initialBackgroundColor.r,config.initialBackgroundColor.g,config.initialBackgroundColor.b,config.initialBackgroundColor.a);
