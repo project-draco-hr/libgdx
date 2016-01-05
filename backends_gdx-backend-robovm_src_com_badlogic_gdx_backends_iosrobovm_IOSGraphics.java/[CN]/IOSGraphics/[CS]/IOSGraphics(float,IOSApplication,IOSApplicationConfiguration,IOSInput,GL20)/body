@@ -1,22 +1,22 @@
 {
   this.config=config;
+  final CGRect bounds=app.getBounds();
   width=(int)bounds.getWidth();
   height=(int)bounds.getHeight();
-  app.debug(tag,bounds.getWidth() + "x" + bounds.getHeight()+ ", "+ scale);
   this.gl20=gl20;
   context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
-  view=new GLKView(new CGRect(new CGPoint(0,0),bounds),context){
+  view=new GLKView(new CGRect(0,0,bounds.getWidth(),bounds.getHeight()),context){
     @Method(selector="touchesBegan:withEvent:") public void touchesBegan(    @Pointer long touches,    UIEvent event){
-      IOSGraphics.this.input.touchDown(touches,event);
+      IOSGraphics.this.input.onTouch(touches);
     }
     @Method(selector="touchesCancelled:withEvent:") public void touchesCancelled(    @Pointer long touches,    UIEvent event){
-      IOSGraphics.this.input.touchUp(touches,event);
+      IOSGraphics.this.input.onTouch(touches);
     }
     @Method(selector="touchesEnded:withEvent:") public void touchesEnded(    @Pointer long touches,    UIEvent event){
-      IOSGraphics.this.input.touchUp(touches,event);
+      IOSGraphics.this.input.onTouch(touches);
     }
     @Method(selector="touchesMoved:withEvent:") public void touchesMoved(    @Pointer long touches,    UIEvent event){
-      IOSGraphics.this.input.touchMoved(touches,event);
+      IOSGraphics.this.input.onTouch(touches);
     }
     @Override public void draw(    CGRect rect){
       IOSGraphics.this.draw(this,rect);
