@@ -2,5 +2,9 @@
   if (!isFullscreen()) {
     canvas.setWidth(config.width);
     canvas.setHeight(config.height);
+    if (config.fullscreenOrientation != null)     unlockOrientation();
+  }
+ else {
+    if (config.fullscreenOrientation != null)     lockOrientation(config.fullscreenOrientation);
   }
 }
