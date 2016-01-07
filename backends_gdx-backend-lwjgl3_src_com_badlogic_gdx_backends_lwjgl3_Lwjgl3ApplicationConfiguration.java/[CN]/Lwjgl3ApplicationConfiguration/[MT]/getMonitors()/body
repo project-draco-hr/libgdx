@@ -1,4 +1,5 @@
 {
+  Lwjgl3Application.initializeGlfw();
   PointerBuffer glfwMonitors=GLFW.glfwGetMonitors();
   Monitor[] monitors=new Monitor[glfwMonitors.limit()];
   for (int i=0; i < glfwMonitors.limit(); i++) {
