@@ -1,17 +1,11 @@
 {
-  if (next != null) {
-    return true;
+  if (delimiters == null) {
+    throw new NullPointerException("delimiters == null");
   }
-  while (pos < len && deli.indexOf(s.charAt(pos)) != -1) {
-    pos++;
+  int length=string.length();
+  if (position < length) {
+    if (returnDelimiters)     return true;
+    for (int i=position; i < length; i++)     if (delimiters.indexOf(string.charAt(i),0) == -1)     return true;
   }
-  if (pos >= len) {
-    return false;
-  }
-  int p0=pos++;
-  while (pos < len && deli.indexOf(s.charAt(pos)) == -1) {
-    pos++;
-  }
-  next=s.substring(p0,pos++);
-  return true;
+  return false;
 }
