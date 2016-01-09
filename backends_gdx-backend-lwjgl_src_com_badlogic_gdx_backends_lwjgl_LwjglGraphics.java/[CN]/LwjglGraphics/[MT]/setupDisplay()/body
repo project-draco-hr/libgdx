@@ -6,12 +6,29 @@
     Display.setParent(canvas);
   }
  else {
-    boolean displayCreated=setDisplayMode(config.width,config.height,config.fullscreen);
+    boolean displayCreated=false;
+    if (!config.fullscreen) {
+      displayCreated=setWindowedMode(config.width,config.height);
+    }
+ else {
+      DisplayMode bestMode=null;
+      for (      DisplayMode mode : getDisplayModes()) {
+        if (mode.width == config.width && mode.height == config.height) {
+          if (bestMode == null || bestMode.refreshRate < this.getDisplayMode().refreshRate) {
+            bestMode=mode;
+          }
+        }
+      }
+      if (bestMode == null) {
+        bestMode=this.getDisplayMode();
+      }
+      displayCreated=setFullscreenMode(bestMode);
+    }
     if (!displayCreated) {
       if (config.setDisplayModeCallback != null) {
         config=config.setDisplayModeCallback.onFailure(config);
         if (config != null) {
-          displayCreated=setDisplayMode(config.width,config.height,config.fullscreen);
+          displayCreated=setWindowedMode(config.width,config.height);
         }
       }
       if (!displayCreated) {

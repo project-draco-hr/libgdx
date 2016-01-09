@@ -1,0 +1,14 @@
+{
+  for (int i=GLFW.GLFW_JOYSTICK_1; i < GLFW.GLFW_JOYSTICK_LAST; i++) {
+    if (GLFW.glfwJoystickPresent(i) == GLFW.GLFW_TRUE) {
+      controllers.add(new Lwjgl3Controller(this,i));
+    }
+  }
+  Gdx.app.postRunnable(new Runnable(){
+    @Override public void run(){
+      pollState();
+      Gdx.app.postRunnable(this);
+    }
+  }
+);
+}

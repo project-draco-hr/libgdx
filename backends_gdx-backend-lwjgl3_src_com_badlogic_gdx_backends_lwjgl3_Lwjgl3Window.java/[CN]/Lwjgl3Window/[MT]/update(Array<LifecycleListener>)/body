@@ -3,14 +3,17 @@
     initializeListener();
   }
 synchronized (runnables) {
-    for (    Runnable runnable : runnables) {
-      runnable.run();
-    }
+    executedRunnables.addAll(runnables);
     runnables.clear();
   }
-  graphics.update();
-  listener.render();
-  glfwSwapBuffers(windowHandle);
-  input.update();
-  glfwPollEvents();
+  for (  Runnable runnable : executedRunnables) {
+    runnable.run();
+  }
+  executedRunnables.clear();
+  if (!iconified) {
+    graphics.update();
+    listener.render();
+    GLFW.glfwSwapBuffers(windowHandle);
+    input.update();
+  }
 }

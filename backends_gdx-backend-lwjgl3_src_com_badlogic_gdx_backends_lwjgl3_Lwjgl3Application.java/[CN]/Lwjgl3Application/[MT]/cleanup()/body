@@ -1,0 +1,10 @@
+{
+  for (  Lwjgl3Window window : windows) {
+    window.dispose();
+  }
+  if (audio instanceof OpenALAudio) {
+    ((OpenALAudio)audio).dispose();
+  }
+  errorCallback.release();
+  GLFW.glfwTerminate();
+}

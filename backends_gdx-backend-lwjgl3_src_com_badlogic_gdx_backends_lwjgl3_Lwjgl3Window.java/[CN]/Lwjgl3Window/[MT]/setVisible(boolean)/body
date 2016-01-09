@@ -1,0 +1,8 @@
+{
+  if (visible) {
+    GLFW.glfwShowWindow(windowHandle);
+  }
+ else {
+    GLFW.glfwHideWindow(windowHandle);
+  }
+}

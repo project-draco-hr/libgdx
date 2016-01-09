@@ -1,8 +1,8 @@
 {
-  if (cursor == null) {
-    LwjglCursor.resetCursor();
+  try {
+    Mouse.setNativeCursor(((LwjglCursor)cursor).lwjglCursor);
   }
- else {
-    cursor.setSystemCursor();
+ catch (  LWJGLException e) {
+    throw new GdxRuntimeException("Could not set cursor image.",e);
   }
 }

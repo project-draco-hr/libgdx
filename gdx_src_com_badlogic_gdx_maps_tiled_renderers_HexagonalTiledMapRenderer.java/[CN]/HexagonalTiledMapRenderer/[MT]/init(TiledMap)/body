@@ -1,0 +1,46 @@
+{
+  String axis=map.getProperties().get("staggeraxis",String.class);
+  if (axis != null) {
+    if (axis.equals("x")) {
+      staggerAxisX=true;
+    }
+ else {
+      staggerAxisX=false;
+    }
+  }
+  String index=map.getProperties().get("staggerindex",String.class);
+  if (index != null) {
+    if (index.equals("even")) {
+      staggerIndexEven=true;
+    }
+ else {
+      staggerIndexEven=false;
+    }
+  }
+  Integer length=map.getProperties().get("hexsidelength",Integer.class);
+  if (length != null) {
+    hexSideLength=length.intValue();
+  }
+ else {
+    if (staggerAxisX) {
+      length=map.getProperties().get("tilewidth",Integer.class);
+      if (length != null) {
+        hexSideLength=0.5f * length.intValue();
+      }
+ else {
+        TiledMapTileLayer tmtl=(TiledMapTileLayer)map.getLayers().get(0);
+        hexSideLength=0.5f * tmtl.getTileWidth();
+      }
+    }
+ else {
+      length=map.getProperties().get("tileheight",Integer.class);
+      if (length != null) {
+        hexSideLength=0.5f * length.intValue();
+      }
+ else {
+        TiledMapTileLayer tmtl=(TiledMapTileLayer)map.getLayers().get(0);
+        hexSideLength=0.5f * tmtl.getTileHeight();
+      }
+    }
+  }
+}

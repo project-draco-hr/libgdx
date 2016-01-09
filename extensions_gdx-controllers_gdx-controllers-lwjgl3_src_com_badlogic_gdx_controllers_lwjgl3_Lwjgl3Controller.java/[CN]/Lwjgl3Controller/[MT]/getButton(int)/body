@@ -1,0 +1,6 @@
+{
+  if (buttonCode < 0 || buttonCode >= buttonState.length) {
+    return false;
+  }
+  return buttonState[buttonCode];
+}

@@ -4,6 +4,10 @@
       manager.unregisterListener(accelerometerListener);
       accelerometerListener=null;
     }
+    if (gyroscopeListener != null) {
+      manager.unregisterListener(gyroscopeListener);
+      gyroscopeListener=null;
+    }
     if (compassListener != null) {
       manager.unregisterListener(compassListener);
       compassListener=null;

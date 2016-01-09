@@ -1,0 +1,6 @@
+{
+  if (isFullscreenJSNI())   exitFullscreen();
+  canvas.setWidth(width);
+  canvas.setHeight(height);
+  return true;
+}

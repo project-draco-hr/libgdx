@@ -1,0 +1,4 @@
+{
+  Lwjgl3Application.initializeGlfw();
+  return toLwjgl3Monitor(GLFW.glfwGetPrimaryMonitor());
+}

@@ -1,4 +1,13 @@
 {
   listener.pause();
   listener.dispose();
+  graphics.dispose();
+  input.dispose();
+  GLFW.glfwSetWindowFocusCallback(windowHandle,null);
+  GLFW.glfwSetWindowIconifyCallback(windowHandle,null);
+  GLFW.glfwSetWindowCloseCallback(windowHandle,null);
+  GLFW.glfwDestroyWindow(windowHandle);
+  focusCallback.release();
+  iconifyCallback.release();
+  closeCallback.release();
 }

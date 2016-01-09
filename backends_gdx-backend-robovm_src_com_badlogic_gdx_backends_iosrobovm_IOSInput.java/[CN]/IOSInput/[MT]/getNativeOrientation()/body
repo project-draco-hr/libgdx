@@ -1,3 +1,9 @@
 {
+switch (app.uiApp.getStatusBarOrientation()) {
+case LandscapeLeft:
+case LandscapeRight:
+    return Orientation.Landscape;
+default :
   return Orientation.Portrait;
+}
 }

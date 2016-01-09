@@ -31,6 +31,11 @@ case RemoteSender.SIZE:
 remoteWidth=in.readFloat();
 remoteHeight=in.readFloat();
 break;
+case RemoteSender.GYRO:
+gyrate[0]=in.readFloat();
+gyrate[1]=in.readFloat();
+gyrate[2]=in.readFloat();
+break;
 case RemoteSender.KEY_DOWN:
 keyEvent=new KeyEvent();
 keyEvent.keyCode=in.readInt();

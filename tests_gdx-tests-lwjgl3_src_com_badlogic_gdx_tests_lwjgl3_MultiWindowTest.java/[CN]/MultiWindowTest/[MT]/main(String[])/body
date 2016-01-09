@@ -1,0 +1,5 @@
+{
+  Lwjgl3ApplicationConfiguration config=new Lwjgl3ApplicationConfiguration();
+  config.setTitle("Multi-window test");
+  new Lwjgl3Application(new MainWindow(),config);
+}

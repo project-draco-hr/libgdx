@@ -1,9 +1,20 @@
 {
-  try {
-    Desktop.getDesktop().browse(new URI(URI));
-    return true;
+  if (SharedLibraryLoader.isMac) {
+    try {
+      FileManager.openURL(URI);
+      return true;
+    }
+ catch (    IOException e) {
+      return false;
+    }
   }
- catch (  Throwable t) {
-    return false;
+ else {
+    try {
+      Desktop.getDesktop().browse(new URI(URI));
+      return true;
+    }
+ catch (    Throwable t) {
+      return false;
+    }
   }
 }

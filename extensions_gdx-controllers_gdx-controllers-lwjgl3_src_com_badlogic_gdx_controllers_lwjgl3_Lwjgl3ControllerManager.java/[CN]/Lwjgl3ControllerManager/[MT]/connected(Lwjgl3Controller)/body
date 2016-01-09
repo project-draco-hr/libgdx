@@ -1,0 +1,6 @@
+{
+  controllers.add(controller);
+  for (  ControllerListener listener : listeners) {
+    listener.connected(controller);
+  }
+}

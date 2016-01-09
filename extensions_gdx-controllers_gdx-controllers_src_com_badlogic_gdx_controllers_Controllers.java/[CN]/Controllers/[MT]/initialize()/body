@@ -13,7 +13,12 @@
     }
   }
  else   if (type == ApplicationType.Desktop) {
-    className="com.badlogic.gdx.controllers.desktop.DesktopControllerManager";
+    if (Gdx.graphics.getType() == GraphicsType.LWJGL3) {
+      className="com.badlogic.gdx.controllers.lwjgl3.Lwjgl3ControllerManager";
+    }
+ else {
+      className="com.badlogic.gdx.controllers.desktop.DesktopControllerManager";
+    }
   }
  else   if (type == ApplicationType.WebGL) {
     className="com.badlogic.gdx.controllers.gwt.GwtControllers";

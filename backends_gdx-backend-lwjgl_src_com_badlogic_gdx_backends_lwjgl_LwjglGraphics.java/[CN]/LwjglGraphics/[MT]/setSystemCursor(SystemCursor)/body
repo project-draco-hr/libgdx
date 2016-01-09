@@ -1,0 +1,8 @@
+{
+  try {
+    Mouse.setNativeCursor(null);
+  }
+ catch (  LWJGLException e) {
+    throw new GdxRuntimeException("Couldn't set system cursor");
+  }
+}

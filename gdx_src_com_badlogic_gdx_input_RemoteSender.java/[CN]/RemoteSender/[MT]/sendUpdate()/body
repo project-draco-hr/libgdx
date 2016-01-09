@@ -14,6 +14,10 @@ synchronized (this) {
     out.writeInt(SIZE);
     out.writeFloat(Gdx.graphics.getWidth());
     out.writeFloat(Gdx.graphics.getHeight());
+    out.writeInt(GYRO);
+    out.writeFloat(Gdx.input.getGyroscopeX());
+    out.writeFloat(Gdx.input.getGyroscopeY());
+    out.writeFloat(Gdx.input.getGyroscopeZ());
   }
  catch (  Throwable t) {
     out=null;

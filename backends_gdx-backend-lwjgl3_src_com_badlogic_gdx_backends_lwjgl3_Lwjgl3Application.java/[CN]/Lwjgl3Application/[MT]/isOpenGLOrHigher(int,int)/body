@@ -1,0 +1,3 @@
+{
+  return versionMajor > major || (versionMajor == major && versionMinor >= minor);
+}

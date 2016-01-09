@@ -7,7 +7,7 @@
   final float atan, z=y / x;
   if (Math.abs(z) < 1f) {
     atan=z / (1f + 0.28f * z * z);
-    if (x < 0f)     return y < 0f ? atan - PI : atan + PI;
+    if (x < 0f)     return atan + (y < 0f ? -PI : PI);
     return atan;
   }
   atan=PI / 2 - z / (z * z + 0.28f);

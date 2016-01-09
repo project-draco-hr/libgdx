@@ -12,4 +12,14 @@
   if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
     System.arraycopy(event.values,0,magneticFieldValues,0,magneticFieldValues.length);
   }
+  if (event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+    if (nativeOrientation == Orientation.Portrait) {
+      System.arraycopy(event.values,0,gyroscopeValues,0,gyroscopeValues.length);
+    }
+ else {
+      gyroscopeValues[0]=event.values[1];
+      gyroscopeValues[1]=-event.values[0];
+      gyroscopeValues[2]=event.values[2];
+    }
+  }
 }

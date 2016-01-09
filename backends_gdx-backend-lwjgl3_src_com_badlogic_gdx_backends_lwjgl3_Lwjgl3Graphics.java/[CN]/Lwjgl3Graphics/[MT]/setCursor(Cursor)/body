@@ -1,2 +1,3 @@
 {
+  GLFW.glfwSetCursor(getWindow().getWindowHandle(),((Lwjgl3Cursor)cursor).glfwCursor);
 }

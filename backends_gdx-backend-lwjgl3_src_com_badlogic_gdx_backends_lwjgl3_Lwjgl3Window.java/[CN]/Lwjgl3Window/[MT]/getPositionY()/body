@@ -1,0 +1,4 @@
+{
+  GLFW.glfwGetWindowPos(windowHandle,tmpBuffer,tmpBuffer2);
+  return tmpBuffer2.get(0);
+}

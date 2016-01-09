@@ -1,6 +1,6 @@
 {
-  if (window.getConfig().useHDPI) {
-    return frameBufferHeight;
+  if (window.getConfig().hdpiMode == HdpiMode.Pixels) {
+    return backBufferHeight;
   }
  else {
     return logicalHeight;

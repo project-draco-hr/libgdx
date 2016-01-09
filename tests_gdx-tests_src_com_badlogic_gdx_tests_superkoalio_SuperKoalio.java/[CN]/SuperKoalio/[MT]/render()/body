@@ -8,4 +8,5 @@
   renderer.setView(camera);
   renderer.render();
   renderKoala(deltaTime);
+  if (debug)   renderDebug();
 }

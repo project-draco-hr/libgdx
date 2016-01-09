@@ -1,7 +1,8 @@
 {
-  glfwSetKeyCallback(window.getWindowHandle(),keyCallback);
-  glfwSetCharCallback(window.getWindowHandle(),charCallback);
-  glfwSetScrollCallback(window.getWindowHandle(),scrollCallback);
-  glfwSetCursorPosCallback(window.getWindowHandle(),cursorPosCallback);
-  glfwSetMouseButtonCallback(window.getWindowHandle(),mouseButtonCallback);
+  resetPollingStates();
+  GLFW.glfwSetKeyCallback(window.getWindowHandle(),keyCallback);
+  GLFW.glfwSetCharCallback(window.getWindowHandle(),charCallback);
+  GLFW.glfwSetScrollCallback(window.getWindowHandle(),scrollCallback);
+  GLFW.glfwSetCursorPosCallback(window.getWindowHandle(),cursorPosCallback);
+  GLFW.glfwSetMouseButtonCallback(window.getWindowHandle(),mouseButtonCallback);
 }

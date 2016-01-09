@@ -1,0 +1,10 @@
+{
+  if (pixmapCopy == null) {
+    throw new GdxRuntimeException("Cursor already disposed");
+  }
+  cursors.removeValue(this,true);
+  pixmapCopy.dispose();
+  pixmapCopy=null;
+  glfwImage.free();
+  GLFW.glfwDestroyCursor(glfwCursor);
+}
