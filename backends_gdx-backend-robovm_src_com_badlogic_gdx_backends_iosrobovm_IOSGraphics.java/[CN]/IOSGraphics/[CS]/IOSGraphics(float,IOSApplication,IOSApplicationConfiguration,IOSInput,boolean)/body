@@ -3,8 +3,16 @@
   final CGRect bounds=app.getBounds();
   width=(int)bounds.getWidth();
   height=(int)bounds.getHeight();
-  this.gl20=gl20;
-  context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
+  if (useGLES30) {
+    context=new EAGLContext(EAGLRenderingAPI.OpenGLES3);
+    if (context != null)     gl20=gl30=new IOSGLES30();
+ else     Gdx.app.log("IOGraphics","OpenGL ES 3.0 not supported, falling back on 2.0");
+  }
+  if (context == null) {
+    context=new EAGLContext(EAGLRenderingAPI.OpenGLES2);
+    gl20=new IOSGLES20();
+    gl30=null;
+  }
   view=new GLKView(new CGRect(0,0,bounds.getWidth(),bounds.getHeight()),context){
     @Method(selector="touchesBegan:withEvent:") public void touchesBegan(    @Pointer long touches,    UIEvent event){
       IOSGraphics.this.input.onTouch(touches);
