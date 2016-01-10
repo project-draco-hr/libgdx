@@ -1,6 +1,9 @@
 {
   int error;
+  boolean result=true;
   while ((error=egl.eglGetError()) != EGL10.EGL_SUCCESS) {
+    result=false;
     Log.e(TAG,String.format("%s: EGL error: 0x%x",prompt,error));
   }
+  return result;
 }
