@@ -1,0 +1,11 @@
+{
+  String version=gl.glGetString(GL10.GL_VERSION);
+  try {
+    String[] versionSplit=version.split(" ")[2].split("\\.",2);
+    major=Integer.parseInt(versionSplit[0]);
+    minor=Integer.parseInt(versionSplit[1]);
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("Error extracting the OpenGL version: " + version,t);
+  }
+}

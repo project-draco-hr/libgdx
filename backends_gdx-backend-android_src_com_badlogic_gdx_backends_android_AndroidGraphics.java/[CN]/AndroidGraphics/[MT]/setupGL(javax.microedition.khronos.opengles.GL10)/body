@@ -1,6 +1,6 @@
 {
-  String version=gl.glGetString(GL10.GL_VERSION);
-  if (config.useGL30 && version.contains("OpenGL ES 3.")) {
+  extractVersion(gl);
+  if (config.useGL30 && AndroidGraphics.major > 2) {
     if (gl30 != null)     return;
     gl30=new AndroidGL30();
     Gdx.gl=gl30;

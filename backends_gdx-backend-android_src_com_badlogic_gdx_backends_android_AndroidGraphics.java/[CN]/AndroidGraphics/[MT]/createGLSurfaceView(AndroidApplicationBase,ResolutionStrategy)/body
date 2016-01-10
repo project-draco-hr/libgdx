@@ -2,14 +2,7 @@
   if (!checkGL20())   throw new GdxRuntimeException("Libgdx requires OpenGL ES 2.0");
   EGLConfigChooser configChooser=getEglConfigChooser();
   int sdkVersion=android.os.Build.VERSION.SDK_INT;
-  if (config.useGL30) {
-    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy,3);
-    if (configChooser != null)     view.setEGLConfigChooser(configChooser);
- else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
-    view.setRenderer(this);
-    return view;
-  }
- else   if (sdkVersion <= 10 && config.useGLSurfaceView20API18) {
+  if (sdkVersion <= 10 && config.useGLSurfaceView20API18) {
     GLSurfaceView20API18 view=new GLSurfaceView20API18(application.getContext(),resolutionStrategy);
     if (configChooser != null)     view.setEGLConfigChooser(configChooser);
  else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
@@ -17,7 +10,7 @@
     return view;
   }
  else {
-    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy);
+    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy,config.useGL30 ? 3 : 2);
     if (configChooser != null)     view.setEGLConfigChooser(configChooser);
  else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
     view.setRenderer(this);
