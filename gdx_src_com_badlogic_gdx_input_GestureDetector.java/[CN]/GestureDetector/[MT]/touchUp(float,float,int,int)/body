@@ -18,6 +18,7 @@
   }
   if (pinching) {
     pinching=false;
+    listener.pinchStop();
     panning=true;
     if (pointer == 0) {
       tracker.start(pointer2.x,pointer2.y,Gdx.input.getCurrentEventTime());
