@@ -1,5 +1,3 @@
 {
-  super(context);
-  this.resolutionStrategy=resolutionStrategy;
-  init(false,16,0);
+  this(context,resolutionStrategy,2);
 }

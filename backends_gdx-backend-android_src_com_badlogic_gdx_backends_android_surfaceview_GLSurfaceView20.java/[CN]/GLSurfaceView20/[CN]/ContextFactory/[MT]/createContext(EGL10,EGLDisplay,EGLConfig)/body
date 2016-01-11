@@ -1,8 +1,14 @@
 {
-  Log.w(TAG,"creating OpenGL ES 2.0 context");
-  checkEglError("Before eglCreateContext",egl);
-  int[] attrib_list={EGL_CONTEXT_CLIENT_VERSION,2,EGL10.EGL_NONE};
+  Log.w(TAG,"creating OpenGL ES " + GLSurfaceView20.targetGLESVersion + ".0 context");
+  checkEglError("Before eglCreateContext " + targetGLESVersion,egl);
+  int[] attrib_list={EGL_CONTEXT_CLIENT_VERSION,GLSurfaceView20.targetGLESVersion,EGL10.EGL_NONE};
   EGLContext context=egl.eglCreateContext(display,eglConfig,EGL10.EGL_NO_CONTEXT,attrib_list);
-  checkEglError("After eglCreateContext",egl);
+  boolean success=checkEglError("After eglCreateContext " + targetGLESVersion,egl);
+  if ((!success || context == null) && GLSurfaceView20.targetGLESVersion > 2) {
+    Log.w(TAG,"Falling back to GLES 2");
+    GLSurfaceView20.targetGLESVersion=2;
+    return createContext(egl,display,eglConfig);
+  }
+  Log.w(TAG,"Returning a GLES " + targetGLESVersion + " context");
   return context;
 }

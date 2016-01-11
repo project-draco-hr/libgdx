@@ -1,0 +1,9 @@
+{
+  if (string == null) {
+    throw new NullPointerException("string == null");
+  }
+  this.string=string;
+  this.delimiters=delimiters;
+  this.returnDelimiters=returnDelimiters;
+  this.position=0;
+}

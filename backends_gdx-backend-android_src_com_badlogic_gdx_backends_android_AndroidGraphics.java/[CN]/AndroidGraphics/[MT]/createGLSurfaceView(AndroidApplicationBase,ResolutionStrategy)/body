@@ -10,7 +10,7 @@
     return view;
   }
  else {
-    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy);
+    GLSurfaceView20 view=new GLSurfaceView20(application.getContext(),resolutionStrategy,config.useGL30 ? 3 : 2);
     if (configChooser != null)     view.setEGLConfigChooser(configChooser);
  else     view.setEGLConfigChooser(config.r,config.g,config.b,config.a,config.depth,config.stencil);
     view.setRenderer(this);
