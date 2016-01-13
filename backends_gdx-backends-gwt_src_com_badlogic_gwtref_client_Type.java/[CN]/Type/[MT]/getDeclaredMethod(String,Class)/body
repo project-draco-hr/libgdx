@@ -1,0 +1,6 @@
+{
+  for (  Method m : getDeclaredMethods()) {
+    if (m.match(name,parameterTypes))     return m;
+  }
+  throw new NoSuchMethodException();
+}

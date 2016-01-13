@@ -1,5 +1,5 @@
 {
-  for (  Field f : getFields()) {
+  for (  Field f : getDeclaredFields()) {
     if (f.name.equals(name))     return f;
   }
   throw new NoSuchFieldException();
