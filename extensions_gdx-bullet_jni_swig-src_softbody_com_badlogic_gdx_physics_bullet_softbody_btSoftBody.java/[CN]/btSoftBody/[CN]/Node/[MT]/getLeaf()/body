@@ -1,4 +1,3 @@
 {
-  long cPtr=SoftbodyJNI.btSoftBody_Node_leaf_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btDbvtNode(cPtr,false);
+  return btDbvtNode.internalTemp(SoftbodyJNI.btSoftBody_Node_leaf_get(swigCPtr,this),false);
 }

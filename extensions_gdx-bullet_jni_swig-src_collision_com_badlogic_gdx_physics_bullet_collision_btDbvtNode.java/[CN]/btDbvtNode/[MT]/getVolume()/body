@@ -1,4 +1,3 @@
 {
-  long cPtr=CollisionJNI.btDbvtNode_volume_get(swigCPtr,this);
-  return (cPtr == 0) ? null : new btDbvtAabbMm(cPtr,false);
+  return btDbvtAabbMm.internalTemp(CollisionJNI.btDbvtNode_volume_get(swigCPtr,this),false);
 }
