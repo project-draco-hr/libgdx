@@ -17,7 +17,7 @@
       NodeList inheritsNode=eElement.getElementsByTagName("inherit");
       gwtInherits=new String[inheritsNode.getLength()];
       for (int j=0; j < inheritsNode.getLength(); j++)       gwtInherits[j]=inheritsNode.item(j).getTextContent();
-      final HashMap<String,List<String>> dependencies=new HashMap<String,List<String>>();
+      final HashMap<String,List<ExternalExtensionDependency>> dependencies=new HashMap<String,List<ExternalExtensionDependency>>();
       addToDependencyMapFromXML(dependencies,eElement,"core");
       addToDependencyMapFromXML(dependencies,eElement,"desktop");
       addToDependencyMapFromXML(dependencies,eElement,"android");
