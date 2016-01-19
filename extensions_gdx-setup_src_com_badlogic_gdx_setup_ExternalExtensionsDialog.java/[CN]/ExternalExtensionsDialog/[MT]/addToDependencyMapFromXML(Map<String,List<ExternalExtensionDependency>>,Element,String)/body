@@ -1,7 +1,7 @@
 {
   if (eElement.getElementsByTagName(platform).item(0) != null) {
     Element project=(Element)eElement.getElementsByTagName(platform).item(0);
-    ArrayList<String> deps=new ArrayList<String>();
+    ArrayList<ExternalExtensionDependency> deps=new ArrayList<ExternalExtensionDependency>();
     if (project.getTextContent().trim().equals("")) {
     }
  else     if (project.getTextContent().trim().equals("null")) {
@@ -13,7 +13,8 @@
         Node nNode=nList.item(i);
         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
           Element dependencyNode=(Element)nNode;
-          deps.add(dependencyNode.getTextContent());
+          boolean external=Boolean.parseBoolean(dependencyNode.getAttribute("external"));
+          deps.add(new ExternalExtensionDependency(dependencyNode.getTextContent(),external));
         }
       }
     }
