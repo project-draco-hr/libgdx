@@ -30,15 +30,15 @@
     unicodeFont=new UnicodeFont(Font.decode((String)fontList.getSelectedValue()),fontSize,boldCheckBox.isSelected(),italicCheckBox.isSelected());
   }
   unicodeFont.setMono(monoCheckBox.isSelected());
-  unicodeFont.setGamma(((Double)gammaSpinner.getValue()).floatValue());
-  unicodeFont.setPaddingTop(((Integer)padTopSpinner.getValue()).intValue());
-  unicodeFont.setPaddingRight(((Integer)padRightSpinner.getValue()).intValue());
-  unicodeFont.setPaddingBottom(((Integer)padBottomSpinner.getValue()).intValue());
-  unicodeFont.setPaddingLeft(((Integer)padLeftSpinner.getValue()).intValue());
-  unicodeFont.setPaddingAdvanceX(((Integer)padAdvanceXSpinner.getValue()).intValue());
-  unicodeFont.setPaddingAdvanceY(((Integer)padAdvanceYSpinner.getValue()).intValue());
-  unicodeFont.setGlyphPageWidth(((Integer)glyphPageWidthCombo.getSelectedItem()).intValue());
-  unicodeFont.setGlyphPageHeight(((Integer)glyphPageHeightCombo.getSelectedItem()).intValue());
+  unicodeFont.setGamma(((Number)gammaSpinner.getValue()).floatValue());
+  unicodeFont.setPaddingTop(((Number)padTopSpinner.getValue()).intValue());
+  unicodeFont.setPaddingRight(((Number)padRightSpinner.getValue()).intValue());
+  unicodeFont.setPaddingBottom(((Number)padBottomSpinner.getValue()).intValue());
+  unicodeFont.setPaddingLeft(((Number)padLeftSpinner.getValue()).intValue());
+  unicodeFont.setPaddingAdvanceX(((Number)padAdvanceXSpinner.getValue()).intValue());
+  unicodeFont.setPaddingAdvanceY(((Number)padAdvanceYSpinner.getValue()).intValue());
+  unicodeFont.setGlyphPageWidth(((Number)glyphPageWidthCombo.getSelectedItem()).intValue());
+  unicodeFont.setGlyphPageHeight(((Number)glyphPageHeightCombo.getSelectedItem()).intValue());
   if (nativeRadio.isSelected())   unicodeFont.setRenderType(RenderType.Native);
  else   if (freeTypeRadio.isSelected())   unicodeFont.setRenderType(RenderType.FreeType);
  else   unicodeFont.setRenderType(RenderType.Java);

@@ -8,13 +8,18 @@
  else {
     String[] arr=new String[dependencies.get(platformName).size()];
     for (int i=0; i < dependencies.get(platformName).size(); i++) {
-      String dependencyString=dependencies.get(platformName).get(i);
-      if (dependencyString.split(":").length == 3) {
-        String[] split=dependencyString.split(":");
-        arr[i]=split[0] + ":" + split[1]+ ":"+ version+ ":"+ split[2];
+      ExternalExtensionDependency dependency=dependencies.get(platformName).get(i);
+      if (dependency.external) {
+        arr[i]=dependency.text;
       }
  else {
-        arr[i]=dependencyString + ":" + version;
+        String[] split=dependency.text.split(":");
+        if (split.length == 3) {
+          arr[i]=split[0] + ":" + split[1]+ ":"+ version+ ":"+ split[2];
+        }
+ else {
+          arr[i]=dependency.text + ":" + version;
+        }
       }
     }
     return arr;
