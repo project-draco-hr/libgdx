@@ -16,6 +16,10 @@
   posSize=a.numComponents;
   a=attributes.findByUsage(Usage.Normal);
   norOffset=a == null ? -1 : a.offset / 4;
+  a=attributes.findByUsage(Usage.BiNormal);
+  biNorOffset=a == null ? -1 : a.offset / 4;
+  a=attributes.findByUsage(Usage.Tangent);
+  tangentOffset=a == null ? -1 : a.offset / 4;
   a=attributes.findByUsage(Usage.ColorUnpacked);
   colOffset=a == null ? -1 : a.offset / 4;
   colSize=a == null ? 0 : a.numComponents;
