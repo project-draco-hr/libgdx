@@ -5,6 +5,8 @@
   if (vertexTransformationEnabled) {
     transformPosition(vertices.items,o + posOffset,posSize,positionTransform);
     if (norOffset >= 0)     transformNormal(vertices.items,o + norOffset,3,normalTransform);
+    if (biNorOffset >= 0)     transformNormal(vertices.items,o + biNorOffset,3,normalTransform);
+    if (tangentOffset >= 0)     transformNormal(vertices.items,o + tangentOffset,3,normalTransform);
   }
   final float x=vertices.items[o + posOffset];
   final float y=(posSize > 1) ? vertices.items[o + posOffset + 1] : 0f;
