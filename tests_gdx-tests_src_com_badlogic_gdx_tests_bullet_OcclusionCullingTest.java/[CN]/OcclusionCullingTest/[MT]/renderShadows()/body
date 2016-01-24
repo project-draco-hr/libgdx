@@ -1,0 +1,7 @@
+{
+  ((DirectionalShadowLight)light).begin(Vector3.Zero,camera.direction);
+  shadowBatch.begin(((DirectionalShadowLight)light).getCamera());
+  world.render(shadowBatch,null,visibleEntities);
+  shadowBatch.end();
+  ((DirectionalShadowLight)light).end();
+}

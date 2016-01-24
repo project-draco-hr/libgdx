@@ -1,0 +1,11 @@
+{
+  float oldDepth=depthBuffer.get(bufferIndex);
+switch (this) {
+case DRAW:
+    if (newDepth > oldDepth)     depthBuffer.put(bufferIndex,newDepth);
+  return false;
+case QUERY:
+return (newDepth >= oldDepth);
+}
+return false;
+}

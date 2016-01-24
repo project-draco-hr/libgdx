@@ -1,0 +1,13 @@
+{
+  bufferWidth=width;
+  bufferHeight=height;
+  bufferHalfExt=new Vector2(width * 0.5f,height * 0.5f);
+  bufferOffset=new Vector2(bufferHalfExt.x + 0.5f,bufferHalfExt.y + 0.5f);
+  buffer=BufferUtils.newFloatBuffer(width * height);
+  for (int i=0; i < 8; i++) {
+    box[i]=new Vector3();
+    tmpVertices[i]=new Quaternion();
+    clippedQuad[i]=new Quaternion();
+  }
+  for (int i=0; i < 4; i++)   quad[i]=new Quaternion();
+}

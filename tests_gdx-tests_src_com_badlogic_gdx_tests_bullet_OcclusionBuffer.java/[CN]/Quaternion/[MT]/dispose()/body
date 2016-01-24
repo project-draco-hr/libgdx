@@ -1,0 +1,8 @@
+{
+  if (debugPixmap != null) {
+    debugPixmap.dispose();
+    debugTexture.dispose();
+    debugPixmap=null;
+    debugTexture=null;
+  }
+}

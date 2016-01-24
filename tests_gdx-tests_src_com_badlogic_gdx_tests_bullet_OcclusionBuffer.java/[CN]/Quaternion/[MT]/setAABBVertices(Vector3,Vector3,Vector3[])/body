@@ -1,0 +1,10 @@
+{
+  vertices[0].set(center.x - halfExt.x,center.y - halfExt.y,center.z - halfExt.z);
+  vertices[1].set(center.x + halfExt.x,center.y - halfExt.y,center.z - halfExt.z);
+  vertices[2].set(center.x + halfExt.x,center.y + halfExt.y,center.z - halfExt.z);
+  vertices[3].set(center.x - halfExt.x,center.y + halfExt.y,center.z - halfExt.z);
+  vertices[4].set(center.x - halfExt.x,center.y - halfExt.y,center.z + halfExt.z);
+  vertices[5].set(center.x + halfExt.x,center.y - halfExt.y,center.z + halfExt.z);
+  vertices[6].set(center.x + halfExt.x,center.y + halfExt.y,center.z + halfExt.z);
+  vertices[7].set(center.x - halfExt.x,center.y + halfExt.y,center.z + halfExt.z);
+}

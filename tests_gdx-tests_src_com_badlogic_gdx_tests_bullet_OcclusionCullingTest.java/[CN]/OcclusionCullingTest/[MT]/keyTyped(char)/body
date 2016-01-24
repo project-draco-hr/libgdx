@@ -1,0 +1,33 @@
+{
+  oclBuffer.clear();
+switch (character) {
+case '0':
+    for (int i=0; i < KEY_SPAWN_OCCLUDEE_AMOUNT; i++)     addRandomOccludee(false);
+  break;
+case '1':
+cullingPolicy=cullingPolicy.next();
+break;
+case '2':
+state^=USE_FRUSTUM_CAM;
+camera=((state & USE_FRUSTUM_CAM) == USE_FRUSTUM_CAM) ? frustumCam : overviewCam;
+break;
+case '3':
+state^=PAUSE_FRUSTUM_CAM;
+break;
+case '4':
+oclBuffer.dispose();
+bufferExtentIndex=(bufferExtentIndex + 1) % OCL_BUFFER_EXTENTS.length;
+int extent=OCL_BUFFER_EXTENTS[bufferExtentIndex];
+oclBuffer=new OcclusionBuffer(extent,extent);
+break;
+case '5':
+state^=SHOW_DEBUG_IMAGE;
+break;
+case '6':
+shadows=!shadows;
+visibleEntities.clear();
+renderShadows();
+break;
+}
+return true;
+}

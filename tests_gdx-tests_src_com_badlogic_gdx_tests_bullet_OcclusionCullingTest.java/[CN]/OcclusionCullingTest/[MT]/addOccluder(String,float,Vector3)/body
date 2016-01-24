@@ -1,0 +1,7 @@
+{
+  BulletEntity e=world.add(type,0,0,0);
+  e.body.setWorldTransform(e.transform.setToRotation(Vector3.Y,rotationY).setTranslation(position));
+  e.body.setCollisionFlags(e.body.getCollisionFlags() | CF_OCCLUDER_OBJECT);
+  e.setColor(Color.RED);
+  return e;
+}

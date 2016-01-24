@@ -1,0 +1,5 @@
+{
+  setFrustumPlanes(camera.frustum);
+  btDbvt.collideKDOP(broadphase.getSet1().getRoot(),frustumNormals,frustumOffsets,NUM_PLANES,collider);
+  btDbvt.collideKDOP(broadphase.getSet0().getRoot(),frustumNormals,frustumOffsets,NUM_PLANES,collider);
+}

@@ -1,0 +1,29 @@
+{
+  if (debugPixmap == null) {
+    debugPixmap=new Pixmap(bufferWidth,bufferHeight,Pixmap.Format.RGBA8888);
+    debugTexture=new Texture(debugPixmap);
+    debugTextureRegion=new TextureRegion(debugTexture);
+    debugTextureRegion.flip(false,true);
+  }
+  debugPixmap.setColor(Color.BLACK);
+  debugPixmap.fill();
+  float minDepth=Float.POSITIVE_INFINITY;
+  float maxDepth=Float.NEGATIVE_INFINITY;
+  buffer.clear();
+  while (buffer.position() < buffer.capacity()) {
+    float depth=MathUtils.clamp(buffer.get(),0,Float.POSITIVE_INFINITY);
+    minDepth=Math.min(depth,minDepth);
+    maxDepth=Math.max(depth,maxDepth);
+  }
+  float extent=1 / (maxDepth - minDepth);
+  buffer.clear();
+  for (int x=0; x < bufferWidth; x++) {
+    for (int y=0; y < bufferHeight; y++) {
+      float depth=MathUtils.clamp(buffer.get(x + y * bufferWidth),0,Float.POSITIVE_INFINITY);
+      float c=depth * extent;
+      debugPixmap.drawPixel(x,y,Color.rgba8888(c,c,c,1));
+    }
+  }
+  debugTexture.draw(debugPixmap,0,0);
+  return debugTextureRegion;
+}

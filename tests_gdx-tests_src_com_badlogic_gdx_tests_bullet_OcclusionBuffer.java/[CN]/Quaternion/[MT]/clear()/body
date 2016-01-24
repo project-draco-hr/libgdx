@@ -1,0 +1,4 @@
+{
+  buffer.clear();
+  while (buffer.position() < buffer.capacity())   buffer.put(-1);
+}

@@ -1,0 +1,8 @@
+{
+  btCollisionObject object=leaf.getDataAsProxyClientObject();
+  onObjectVisible(object);
+  btCollisionShape shape=object.getCollisionShape();
+  if (shape instanceof btBoxShape && isOccluder(object)) {
+    oclBuffer.drawBB(object.getWorldTransform(),((btBoxShape)shape).getHalfExtentsWithMargin());
+  }
+}

@@ -1,0 +1,12 @@
+{
+  if (node.isleaf()) {
+    onObjectVisible(node.getDataAsProxyClientObject());
+  }
+ else {
+    long nodePointer=node.getCPointer();
+    btDbvtNode child;
+    if ((child=btDbvtNode.internalTemp(nodePointer,false).getChild(0)).getCPointer() != 0)     AllLeaves(child);
+    if ((child=btDbvtNode.internalTemp(nodePointer,false).getChild(1)).getCPointer() != 0)     AllLeaves(child);
+  }
+  return true;
+}

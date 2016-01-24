@@ -1,0 +1,23 @@
+{
+  visibleEntities.clear();
+  if (world.performanceCounter != null)   world.performanceCounter.start();
+  if (cullingPolicy == CullingPolicy.NONE) {
+    visibleEntities.addAll(world.entities);
+  }
+ else   if (cullingPolicy == CullingPolicy.SIMPLE) {
+    for (    BulletEntity entity : world.entities)     if (entityInFrustum(entity))     visibleEntities.add(entity);
+  }
+ else   if (cullingPolicy == CullingPolicy.OCCLUSION) {
+    oclBuffer.clear();
+    occlusionCuller.performOcclusionCulling(broadphase,oclBuffer,frustumCam);
+  }
+ else   if (cullingPolicy == CullingPolicy.KDOP) {
+    occlusionCuller.performKDOPCulling(broadphase,frustumCam);
+  }
+  if (world.performanceCounter != null)   world.performanceCounter.stop();
+  if (shadows)   renderShadows();
+  modelBatch.begin(camera);
+  world.render(modelBatch,environment,visibleEntities);
+  if ((state & USE_FRUSTUM_CAM) != USE_FRUSTUM_CAM)   modelBatch.render(frustumInstance);
+  modelBatch.end();
+}
