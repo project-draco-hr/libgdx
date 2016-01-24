@@ -17,4 +17,5 @@
   context.lineTo(x2,y2);
   fillOrStrokePath(drawType);
   context.closePath();
+  pixels=null;
 }

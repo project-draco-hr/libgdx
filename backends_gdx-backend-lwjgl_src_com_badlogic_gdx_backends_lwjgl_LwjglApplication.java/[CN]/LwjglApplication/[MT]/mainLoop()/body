@@ -1,5 +1,5 @@
 {
-  Array<LifecycleListener> lifecycleListeners=this.lifecycleListeners;
+  SnapshotArray<LifecycleListener> lifecycleListeners=this.lifecycleListeners;
   try {
     graphics.setupDisplay();
   }
@@ -19,14 +19,18 @@
     if (wasActive && !isActive) {
       wasActive=false;
 synchronized (lifecycleListeners) {
-        for (        LifecycleListener listener : lifecycleListeners)         listener.pause();
+        LifecycleListener[] listeners=lifecycleListeners.begin();
+        for (int i=0, n=lifecycleListeners.size; i < n; ++i)         listeners[i].pause();
+        lifecycleListeners.end();
       }
       listener.pause();
     }
     if (!wasActive && isActive) {
       wasActive=true;
 synchronized (lifecycleListeners) {
-        for (        LifecycleListener listener : lifecycleListeners)         listener.resume();
+        LifecycleListener[] listeners=lifecycleListeners.begin();
+        for (int i=0, n=lifecycleListeners.size; i < n; ++i)         listeners[i].resume();
+        lifecycleListeners.end();
       }
       listener.resume();
     }
@@ -76,10 +80,12 @@ synchronized (lifecycleListeners) {
     if (frameRate > 0)     Display.sync(frameRate);
   }
 synchronized (lifecycleListeners) {
-    for (    LifecycleListener listener : lifecycleListeners) {
-      listener.pause();
-      listener.dispose();
+    LifecycleListener[] listeners=lifecycleListeners.begin();
+    for (int i=0, n=lifecycleListeners.size; i < n; ++i) {
+      listeners[i].pause();
+      listeners[i].dispose();
     }
+    lifecycleListeners.end();
   }
   listener.pause();
   listener.dispose();

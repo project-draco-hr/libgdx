@@ -1,5 +1,5 @@
 {
-  super.keyDown(event,keycode);
+  boolean result=super.keyDown(event,keycode);
   Stage stage=getStage();
   if (stage != null && stage.getKeyboardFocus() == TextArea.this) {
     boolean repeat=false;
@@ -39,5 +39,5 @@
     showCursor();
     return true;
   }
-  return false;
+  return result;
 }

@@ -1,6 +1,6 @@
 {
   try {
-    return new Method(ReflectionCache.getType(c).getMethod(name,parameterTypes));
+    return new Method(ReflectionCache.getType(c).getDeclaredMethod(name,parameterTypes));
   }
  catch (  SecurityException e) {
     throw new ReflectionException("Security violation while getting method: " + name + ", for class: "+ c.getName(),e);

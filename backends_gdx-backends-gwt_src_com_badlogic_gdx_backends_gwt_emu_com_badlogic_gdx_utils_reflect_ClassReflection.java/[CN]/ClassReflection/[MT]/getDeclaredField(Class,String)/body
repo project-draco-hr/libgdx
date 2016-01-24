@@ -1,8 +1,11 @@
 {
   try {
-    return new Field(ReflectionCache.getType(c).getField(name));
+    return new Field(ReflectionCache.getType(c).getDeclaredField(name));
   }
  catch (  SecurityException e) {
     throw new ReflectionException("Security violation while getting field: " + name + ", for class: "+ c.getName(),e);
+  }
+catch (  NoSuchFieldException e) {
+    throw new ReflectionException("Field not found: " + name + ", for class: "+ c.getName(),e);
   }
 }

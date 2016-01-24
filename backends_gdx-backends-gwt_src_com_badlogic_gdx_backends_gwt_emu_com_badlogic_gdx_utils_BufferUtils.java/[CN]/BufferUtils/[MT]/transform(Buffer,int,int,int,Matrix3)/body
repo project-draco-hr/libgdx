@@ -6,13 +6,13 @@
   int stride=strideInBytes / 4;
   float[] m=matrix.val;
   for (int i=0; i < count; i++) {
-    idx+=stride;
     final float x=arr[idx];
     final float y=arr[idx + 1];
     final float z=dimensions >= 3 ? arr[idx + 2] : 1f;
     arr[idx]=x * m[0] + y * m[3] + z * m[6];
     arr[idx + 1]=x * m[1] + y * m[4] + z * m[7];
     if (dimensions >= 3)     arr[idx + 2]=x * m[2] + y * m[5] + z * m[8];
+    idx+=stride;
   }
   buffer.put(arr);
   buffer.position(pos);
