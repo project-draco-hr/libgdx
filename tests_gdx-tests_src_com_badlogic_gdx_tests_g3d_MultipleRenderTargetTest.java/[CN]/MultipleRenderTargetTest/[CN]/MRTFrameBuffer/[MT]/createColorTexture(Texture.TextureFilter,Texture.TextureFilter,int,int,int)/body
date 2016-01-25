@@ -1,0 +1,7 @@
+{
+  GLOnlyTextureData data=new GLOnlyTextureData(width,height,0,internalformat,format,type);
+  Texture result=new Texture(data);
+  result.setFilter(min,mag);
+  result.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  return result;
+}

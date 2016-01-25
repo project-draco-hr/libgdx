@@ -1,0 +1,7 @@
+{
+  this.context=context;
+  shaderProgram.begin();
+  shaderProgram.setUniformMatrix("u_projViewTrans",camera.combined);
+  context.setDepthTest(GL20.GL_LEQUAL);
+  context.setCullFace(GL20.GL_BACK);
+}

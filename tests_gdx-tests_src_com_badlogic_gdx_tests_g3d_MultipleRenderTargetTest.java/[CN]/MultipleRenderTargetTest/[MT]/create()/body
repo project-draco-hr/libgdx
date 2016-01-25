@@ -1,0 +1,63 @@
+{
+  batch=new SpriteBatch();
+  ShaderProgram.pedantic=false;
+  modelCache=new ModelCache();
+  ShaderProgram.prependVertexCode=Gdx.app.getType().equals(Application.ApplicationType.Desktop) ? "#version 140\n #extension GL_ARB_explicit_attrib_location : enable\n" : "#version 300 es\n";
+  ShaderProgram.prependFragmentCode=Gdx.app.getType().equals(Application.ApplicationType.Desktop) ? "#version 140\n #extension GL_ARB_explicit_attrib_location : enable\n" : "#version 300 es\n";
+  renderContext=new RenderContext(new DefaultTextureBinder(DefaultTextureBinder.ROUNDROBIN));
+  shaderProvider=new BaseShaderProvider(){
+    @Override protected Shader createShader(    Renderable renderable){
+      return new MRTShader(renderable);
+    }
+  }
+;
+  renderableSorter=new DefaultRenderableSorter(){
+    @Override public int compare(    Renderable o1,    Renderable o2){
+      return o1.shader.compareTo(o2.shader);
+    }
+  }
+;
+  mrtSceneShader=new ShaderProgram(Gdx.files.internal("data/g3d/shaders/mrtscene.vert"),Gdx.files.internal("data/g3d/shaders/mrtscene.frag"));
+  if (!mrtSceneShader.isCompiled()) {
+    System.out.println(mrtSceneShader.getLog());
+  }
+  quad=createFullScreenQuad();
+  camera=new PerspectiveCamera(67,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+  camera.near=1f;
+  camera.far=100f;
+  camera.position.set(3,5,10);
+  camera.lookAt(0,2,0);
+  camera.up.set(0,1,0);
+  camera.update();
+  cameraController=new FirstPersonCameraController(camera);
+  cameraController.setVelocity(50);
+  Gdx.input.setInputProcessor(cameraController);
+  frameBuffer=new MRTFrameBuffer(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),3);
+  AssetManager assetManager=new AssetManager();
+  assetManager.load("data/g3d/materials/cannon.g3db",Model.class);
+  assetManager.finishLoading();
+  Model scene=assetManager.get("data/g3d/materials/cannon.g3db");
+  cannon=new ModelInstance(scene,"Cannon_LP");
+  cannon.transform.setToTranslationAndScaling(0,0,0,0.001f,0.001f,0.001f);
+  ModelBuilder modelBuilder=new ModelBuilder();
+  for (int i=0; i < NUM_LIGHTS; i++) {
+    modelBuilder.begin();
+    Light light=new Light();
+    light.color.set(MathUtils.random(1f),MathUtils.random(1f),MathUtils.random(1f));
+    light.position.set(MathUtils.random(-10f,10f),MathUtils.random(10f,15f),MathUtils.random(-10f,10f));
+    light.vy=MathUtils.random(10f,20f);
+    light.vx=MathUtils.random(-10f,10f);
+    light.vz=MathUtils.random(-10f,10f);
+    MeshPartBuilder meshPartBuilder=modelBuilder.part("light",GL20.GL_TRIANGLES,VertexAttributes.Usage.Position | VertexAttributes.Usage.ColorPacked | VertexAttributes.Usage.Normal,new Material());
+    meshPartBuilder.setColor(light.color.x,light.color.y,light.color.z,1f);
+    meshPartBuilder.sphere(0.2f,0.2f,0.2f,10,10);
+    light.lightInstance=new ModelInstance(modelBuilder.end());
+    lights.add(light);
+  }
+  modelBuilder.begin();
+  MeshPartBuilder meshPartBuilder=modelBuilder.part("floor",GL20.GL_TRIANGLES,VertexAttributes.Usage.Position | VertexAttributes.Usage.ColorPacked | VertexAttributes.Usage.Normal,new Material());
+  meshPartBuilder.setColor(0.2f,0.2f,0.2f,1f);
+  meshPartBuilder.box(0,-0.1f,0f,20f,0.1f,20f);
+  floorInstance=new ModelInstance(modelBuilder.end());
+  Gdx.input.setInputProcessor(new InputMultiplexer(this,cameraController));
+}

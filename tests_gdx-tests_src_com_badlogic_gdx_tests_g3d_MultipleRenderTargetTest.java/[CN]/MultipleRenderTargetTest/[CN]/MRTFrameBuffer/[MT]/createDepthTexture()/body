@@ -1,0 +1,7 @@
+{
+  GLOnlyTextureData data=new GLOnlyTextureData(width,height,0,GL30.GL_DEPTH_COMPONENT32F,GL30.GL_DEPTH_COMPONENT,GL30.GL_FLOAT);
+  Texture result=new Texture(data);
+  result.setFilter(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest);
+  result.setWrap(Texture.TextureWrap.ClampToEdge,Texture.TextureWrap.ClampToEdge);
+  return result;
+}
