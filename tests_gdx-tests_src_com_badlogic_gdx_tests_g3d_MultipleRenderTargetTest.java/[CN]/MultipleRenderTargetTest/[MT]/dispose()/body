@@ -1,0 +1,11 @@
+{
+  frameBuffer.dispose();
+  batch.dispose();
+  cannon.model.dispose();
+  floorInstance.model.dispose();
+  for (  Light light : lights) {
+    light.lightInstance.model.dispose();
+  }
+  mrtSceneShader.dispose();
+  quad.dispose();
+}
