@@ -1,6 +1,6 @@
 {
   GwtApplication.agentInfo=computeAgentInfo();
-  this.listener=getApplicationListener();
+  this.listener=createApplicationListener();
   this.config=getConfig();
   this.log=config.log;
   addEventListeners();
