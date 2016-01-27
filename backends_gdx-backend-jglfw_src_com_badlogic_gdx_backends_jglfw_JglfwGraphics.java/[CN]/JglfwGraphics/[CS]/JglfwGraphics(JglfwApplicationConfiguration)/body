@@ -14,13 +14,14 @@
   if (!createWindow(config.width,config.height,config.fullscreen)) {
     throw new GdxRuntimeException("Unable to create window: " + config.width + "x"+ config.height+ ", fullscreen: "+ config.fullscreen);
   }
-  String version=GL.glGetString(GL20.GL_VERSION);
-  glMajorVersion=Integer.parseInt("" + version.charAt(0));
-  glMinorVersion=Integer.parseInt("" + version.charAt(2));
-  if (glMajorVersion <= 1)   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version);
-  if (glMajorVersion == 2 || version.contains("2.1")) {
+  String versionString=GL.glGetString(GL20.GL_VERSION);
+  String vendorString=GL.glGetString(GL20.GL_VENDOR);
+  String rendererString=GL.glGetString(GL20.GL_RENDERER);
+  glVersion=new GLVersion(Application.ApplicationType.Desktop,versionString,vendorString,rendererString);
+  if (glVersion.getMajorVersion() <= 1)   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + glVersion.getMajorVersion() + ":"+ glVersion.getMinorVersion());
+  if (glVersion.getMajorVersion() == 2) {
     if (!supportsExtension("GL_EXT_framebuffer_object") && !supportsExtension("GL_ARB_framebuffer_object")) {
-      throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + version + ", FBO extension: false");
+      throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + glVersion.getMajorVersion() + ":"+ glVersion.getMinorVersion()+ ", FBO extension: false");
     }
   }
   gl20=new JglfwGL20();

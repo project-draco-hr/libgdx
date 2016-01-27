@@ -1,9 +1,0 @@
-{
-  try {
-    return ((Number)NumberFormat.getInstance().parse(v)).intValue();
-  }
- catch (  ParseException e) {
-    Gdx.app.error(LOG_TAG,"Error parsing number: " + v + ", assuming: "+ defaultValue);
-    return defaultValue;
-  }
-}

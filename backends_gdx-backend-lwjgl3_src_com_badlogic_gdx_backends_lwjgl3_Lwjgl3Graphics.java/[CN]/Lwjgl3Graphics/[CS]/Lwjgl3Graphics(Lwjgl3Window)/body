@@ -9,5 +9,6 @@
     this.gl30=null;
   }
   updateFramebufferInfo();
+  initiateGL();
   GLFW.glfwSetFramebufferSizeCallback(window.getWindowHandle(),resizeCallback);
 }

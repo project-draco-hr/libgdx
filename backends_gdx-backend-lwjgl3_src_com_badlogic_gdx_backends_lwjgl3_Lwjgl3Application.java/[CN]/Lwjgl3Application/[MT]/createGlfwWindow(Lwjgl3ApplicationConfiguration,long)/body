@@ -40,10 +40,10 @@
   GLFW.glfwMakeContextCurrent(windowHandle);
   GLFW.glfwSwapInterval(config.vSyncEnabled ? 1 : 0);
   GL.createCapabilities();
-  extractVersion();
-  if (!isOpenGLOrHigher(2,0))   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + "\n"+ glInfo());
+  initiateGL();
+  if (!glVersion.isVersionEqualToOrHigher(2,0))   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + "\n"+ glVersion.getDebugVersionString());
   if (!supportsFBO()) {
-    throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + ", FBO extension: false\n"+ glInfo());
+    throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + ", FBO extension: false\n"+ glVersion.getDebugVersionString());
   }
   for (int i=0; i < 2; i++) {
     GL11.glClearColor(config.initialBackgroundColor.r,config.initialBackgroundColor.g,config.initialBackgroundColor.b,config.initialBackgroundColor.a);

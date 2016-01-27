@@ -1,3 +1,3 @@
 {
-  return isOpenGLOrHigher(4,1) || extensions.contains("GL_ARB_ES2_compatibility",false);
+  return glVersion.isVersionEqualToOrHigher(4,1) || extensions.contains("GL_ARB_ES2_compatibility",false);
 }
