@@ -1,0 +1,5 @@
+{
+  if (((MRTShader)other).attributes == attributes)   return 0;
+  if ((((MRTShader)other).attributes & TextureAttribute.Normal) == 1)   return -1;
+  return 1;
+}

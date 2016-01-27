@@ -1,0 +1,6 @@
+{
+  Array<MRTFrameBuffer> managedResources=buffers.get(app);
+  if (managedResources == null)   managedResources=new Array<MRTFrameBuffer>();
+  managedResources.add(frameBuffer);
+  buffers.put(app,managedResources);
+}

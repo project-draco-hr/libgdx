@@ -1,0 +1,48 @@
+{
+  GL20 gl=Gdx.gl20;
+  if (!defaultFramebufferHandleInitialized) {
+    defaultFramebufferHandleInitialized=true;
+    if (Gdx.app.getType() == Application.ApplicationType.iOS) {
+      IntBuffer intbuf=ByteBuffer.allocateDirect(16 * Integer.SIZE / 8).order(ByteOrder.nativeOrder()).asIntBuffer();
+      gl.glGetIntegerv(GL20.GL_FRAMEBUFFER_BINDING,intbuf);
+      defaultFramebufferHandle=intbuf.get(0);
+    }
+ else {
+      defaultFramebufferHandle=0;
+    }
+  }
+  colorTextures=new Array<Texture>();
+  framebufferHandle=gl.glGenFramebuffer();
+  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,framebufferHandle);
+  Texture diffuse=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGBA8,GL30.GL_RGBA,GL30.GL_UNSIGNED_BYTE);
+  Texture normal=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB8,GL30.GL_RGB,GL30.GL_UNSIGNED_BYTE);
+  Texture position=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB8,GL30.GL_RGB,GL30.GL_UNSIGNED_BYTE);
+  Texture depth=createDepthTexture();
+  colorTextures.add(diffuse);
+  colorTextures.add(normal);
+  colorTextures.add(position);
+  colorTextures.add(depth);
+  gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL30.GL_COLOR_ATTACHMENT0,GL30.GL_TEXTURE_2D,diffuse.getTextureObjectHandle(),0);
+  gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL30.GL_COLOR_ATTACHMENT1,GL30.GL_TEXTURE_2D,normal.getTextureObjectHandle(),0);
+  gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL30.GL_COLOR_ATTACHMENT2,GL30.GL_TEXTURE_2D,position.getTextureObjectHandle(),0);
+  gl.glFramebufferTexture2D(GL20.GL_FRAMEBUFFER,GL20.GL_DEPTH_ATTACHMENT,GL20.GL_TEXTURE_2D,depth.getTextureObjectHandle(),0);
+  IntBuffer buffer=BufferUtils.newIntBuffer(3);
+  buffer.put(GL30.GL_COLOR_ATTACHMENT0);
+  buffer.put(GL30.GL_COLOR_ATTACHMENT1);
+  buffer.put(GL30.GL_COLOR_ATTACHMENT2);
+  buffer.position(0);
+  Gdx.gl30.glDrawBuffers(3,buffer);
+  gl.glBindRenderbuffer(GL20.GL_RENDERBUFFER,0);
+  gl.glBindTexture(GL20.GL_TEXTURE_2D,0);
+  int result=gl.glCheckFramebufferStatus(GL20.GL_FRAMEBUFFER);
+  gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,defaultFramebufferHandle);
+  if (result != GL20.GL_FRAMEBUFFER_COMPLETE) {
+    for (    Texture colorTexture : colorTextures)     disposeColorTexture(colorTexture);
+    gl.glDeleteFramebuffer(framebufferHandle);
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete attachment");
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS)     throw new IllegalStateException("frame buffer couldn't be constructed: incomplete dimensions");
+    if (result == GL20.GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)     throw new IllegalStateException("frame buffer couldn't be constructed: missing attachment");
+    if (result == GL20.GL_FRAMEBUFFER_UNSUPPORTED)     throw new IllegalStateException("frame buffer couldn't be constructed: unsupported combination of formats");
+    throw new IllegalStateException("frame buffer couldn't be constructed: unknown error " + result);
+  }
+}

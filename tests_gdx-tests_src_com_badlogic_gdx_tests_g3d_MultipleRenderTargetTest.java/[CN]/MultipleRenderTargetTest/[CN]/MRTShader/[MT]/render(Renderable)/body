@@ -1,0 +1,18 @@
+{
+  Material material=renderable.material;
+  TextureAttribute diffuseTexture=(TextureAttribute)material.get(TextureAttribute.Diffuse);
+  TextureAttribute normalTexture=(TextureAttribute)material.get(TextureAttribute.Normal);
+  TextureAttribute specTexture=(TextureAttribute)material.get(TextureAttribute.Specular);
+  if (diffuseTexture != null) {
+    shaderProgram.setUniformi("u_diffuseTexture",context.textureBinder.bind(diffuseTexture.textureDescription.texture));
+  }
+  if (normalTexture != null) {
+    shaderProgram.setUniformi("u_normalTexture",context.textureBinder.bind(normalTexture.textureDescription.texture));
+  }
+  if (specTexture != null) {
+    shaderProgram.setUniformi("u_specularTexture",context.textureBinder.bind(specTexture.textureDescription.texture));
+  }
+  shaderProgram.setUniformMatrix("u_worldTrans",renderable.worldTransform);
+  shaderProgram.setUniformMatrix("u_normalMatrix",matrix3.set(renderable.worldTransform).inv().transpose());
+  renderable.meshPart.render(shaderProgram);
+}

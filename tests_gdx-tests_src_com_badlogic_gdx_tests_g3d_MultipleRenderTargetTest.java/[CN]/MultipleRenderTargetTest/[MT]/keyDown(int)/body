@@ -1,0 +1,10 @@
+{
+  if (keycode == Input.Keys.SPACE) {
+    for (    Light light : lights) {
+      light.vy=MathUtils.random(10f,20f);
+      light.vx=MathUtils.random(-10f,10f);
+      light.vz=MathUtils.random(-10f,10f);
+    }
+  }
+  return super.keyDown(keycode);
+}

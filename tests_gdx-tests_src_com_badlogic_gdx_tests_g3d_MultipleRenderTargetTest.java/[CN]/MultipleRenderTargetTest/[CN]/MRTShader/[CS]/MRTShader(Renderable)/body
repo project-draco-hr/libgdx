@@ -1,0 +1,14 @@
+{
+  String prefix="";
+  if (renderable.material.has(TextureAttribute.Normal)) {
+    prefix+="#define texturedFlag\n";
+  }
+  String vert=Gdx.files.internal("data/g3d/shaders/mrt.vert").readString();
+  String frag=Gdx.files.internal("data/g3d/shaders/mrt.frag").readString();
+  shaderProgram=new ShaderProgram(prefix + vert,prefix + frag);
+  if (!shaderProgram.isCompiled()) {
+    throw new GdxRuntimeException(shaderProgram.getLog());
+  }
+  renderable.material.set(tmpAttributes);
+  attributes=tmpAttributes.getMask();
+}
