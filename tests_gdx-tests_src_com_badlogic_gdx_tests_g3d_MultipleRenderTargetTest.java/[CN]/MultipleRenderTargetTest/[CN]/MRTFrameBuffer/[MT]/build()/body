@@ -14,9 +14,9 @@
   colorTextures=new Array<Texture>();
   framebufferHandle=gl.glGenFramebuffer();
   gl.glBindFramebuffer(GL20.GL_FRAMEBUFFER,framebufferHandle);
-  Texture diffuse=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGBA,GL30.GL_RGBA,GL30.GL_UNSIGNED_BYTE);
-  Texture normal=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB16F,GL30.GL_RGB,GL30.GL_FLOAT);
-  Texture position=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB16F,GL30.GL_RGB,GL30.GL_FLOAT);
+  Texture diffuse=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGBA8,GL30.GL_RGBA,GL30.GL_UNSIGNED_BYTE);
+  Texture normal=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB8,GL30.GL_RGB,GL30.GL_UNSIGNED_BYTE);
+  Texture position=createColorTexture(Texture.TextureFilter.Nearest,Texture.TextureFilter.Nearest,GL30.GL_RGB8,GL30.GL_RGB,GL30.GL_UNSIGNED_BYTE);
   Texture depth=createDepthTexture();
   colorTextures.add(diffuse);
   colorTextures.add(normal);
