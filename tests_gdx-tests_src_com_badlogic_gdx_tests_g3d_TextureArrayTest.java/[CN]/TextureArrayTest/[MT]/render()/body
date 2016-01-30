@@ -1,0 +1,15 @@
+{
+  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+  Gdx.gl.glEnable(GL20.GL_DEPTH_TEST);
+  Gdx.gl.glDepthFunc(GL20.GL_LEQUAL);
+  Gdx.gl.glCullFace(GL20.GL_BACK);
+  modelView.translate(10f,0,10f).rotate(0,1f,0,2f * Gdx.graphics.getDeltaTime()).translate(-10f,0,-10f);
+  cameraController.update();
+  textureArray.bind();
+  shaderProgram.begin();
+  shaderProgram.setUniformi("u_textureArray",0);
+  shaderProgram.setUniformMatrix("u_projViewTrans",camera.combined);
+  shaderProgram.setUniformMatrix("u_modelView",modelView);
+  terrain.render(shaderProgram,GL20.GL_TRIANGLES);
+  shaderProgram.end();
+}

@@ -1,0 +1,8 @@
+{
+  Array<TextureArray> managedTextureArray=managedTextureArrays.get(app);
+  if (managedTextureArray == null)   return;
+  for (int i=0; i < managedTextureArray.size; i++) {
+    TextureArray textureArray=managedTextureArray.get(i);
+    textureArray.reload();
+  }
+}

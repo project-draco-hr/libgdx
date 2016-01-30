@@ -1,0 +1,7 @@
+{
+  FileHandle[] handles=new FileHandle[internalPaths.length];
+  for (int i=0; i < internalPaths.length; i++) {
+    handles[i]=Gdx.files.internal(internalPaths[i]);
+  }
+  return handles;
+}

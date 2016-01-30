@@ -2,6 +2,7 @@
   Mesh.clearAllMeshes(app);
   Texture.clearAllTextures(app);
   Cubemap.clearAllCubemaps(app);
+  TextureArray.clearAllTextureArrays(app);
   ShaderProgram.clearAllShaderPrograms(app);
   FrameBuffer.clearAllFrameBuffers(app);
   logManagedCachesStatus();

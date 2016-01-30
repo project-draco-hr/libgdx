@@ -1,0 +1,9 @@
+{
+  this.format=format;
+  this.useMipMaps=useMipMaps;
+  this.depth=files.length;
+  textureDatas=new TextureData[files.length];
+  for (int i=0; i < files.length; i++) {
+    textureDatas[i]=TextureData.Factory.loadFromFile(files[i],format,useMipMaps);
+  }
+}
