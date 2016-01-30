@@ -1,0 +1,23 @@
+{
+  id=0;
+  Vector3[] planePoints=camera.frustum.planePoints;
+  for (int i=0; i < planePoints.length; i++) {
+    vertice(planePoints[i],colorFrustum);
+  }
+  vertice(camera.position,colorCone);
+  vertice(middlePoint(planePoints[1],planePoints[0]),colorCross);
+  vertice(middlePoint(planePoints[3],planePoints[2]),colorCross);
+  vertice(middlePoint(planePoints[2],planePoints[1]),colorCross);
+  vertice(middlePoint(planePoints[3],planePoints[0]),colorCross);
+  vertice(middlePoint(planePoints[5],planePoints[4]),colorCross);
+  vertice(middlePoint(planePoints[7],planePoints[6]),colorCross);
+  vertice(middlePoint(planePoints[6],planePoints[5]),colorCross);
+  vertice(middlePoint(planePoints[7],planePoints[4]),colorCross);
+  vertice(centerPoint(planePoints[0],planePoints[1],planePoints[2]),colorCross);
+  vertice(centerPoint(planePoints[4],planePoints[5],planePoints[6]),colorTarget);
+  float halfNearSize=tmp.set(planePoints[1]).sub(planePoints[0]).scl(0.5f).len();
+  Vector3 centerNear=centerPoint(planePoints[0],planePoints[1],planePoints[2]);
+  tmp.set(camera.up).scl(halfNearSize * 2);
+  vertice(centerNear.add(tmp),colorUp);
+  mesh.setVertices(vertices,0,id);
+}
