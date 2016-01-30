@@ -1,0 +1,8 @@
+{
+  for (  TextureData data : textureDatas) {
+    if (!data.isManaged()) {
+      return false;
+    }
+  }
+  return true;
+}

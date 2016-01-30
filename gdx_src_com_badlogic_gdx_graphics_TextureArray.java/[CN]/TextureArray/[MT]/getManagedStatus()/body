@@ -1,0 +1,10 @@
+{
+  StringBuilder builder=new StringBuilder();
+  builder.append("Managed TextureArrays/app: { ");
+  for (  Application app : managedTextureArrays.keySet()) {
+    builder.append(managedTextureArrays.get(app).size);
+    builder.append(" ");
+  }
+  builder.append("}");
+  return builder.toString();
+}
