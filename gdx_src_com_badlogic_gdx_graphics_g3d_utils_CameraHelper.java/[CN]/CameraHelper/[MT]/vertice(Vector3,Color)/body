@@ -2,8 +2,5 @@
   vertices[id++]=point.x;
   vertices[id++]=point.y;
   vertices[id++]=point.z;
-  vertices[id++]=color.r;
-  vertices[id++]=color.g;
-  vertices[id++]=color.b;
-  vertices[id++]=color.a;
+  vertices[id++]=color.toFloatBits();
 }

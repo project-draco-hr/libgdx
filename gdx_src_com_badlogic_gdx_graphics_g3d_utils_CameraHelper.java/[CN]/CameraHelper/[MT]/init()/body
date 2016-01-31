@@ -1,7 +1,12 @@
 {
   short[] indices=new short[]{0,1,1,2,2,3,3,0,4,5,5,6,6,7,7,4,0,4,1,5,2,6,3,7,0,8,1,8,2,8,3,8,9,10,11,12,13,14,15,16,8,17,17,18,19,2,2,3,3,19};
   int maxVertices=20;
-  mesh=new Mesh(false,maxVertices,indices.length,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.ColorUnpacked,4,"a_color"));
-  vertices=new float[maxVertices * (mesh.getVertexSize() / 4)];
+  mesh=new Mesh(false,maxVertices,indices.length,new VertexAttribute(Usage.Position,3,"a_position"),new VertexAttribute(Usage.ColorPacked,4,"a_color"));
   mesh.setIndices(indices,0,indices.length);
+  vertices=new float[maxVertices * (mesh.getVertexSize() / 4)];
+  renderable.meshPart.mesh=mesh;
+  renderable.meshPart.offset=0;
+  renderable.meshPart.size=mesh.getNumIndices();
+  renderable.meshPart.primitiveType=GL20.GL_LINES;
+  renderable.material=new Material();
 }

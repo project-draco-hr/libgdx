@@ -1,12 +1,3 @@
 {
-  Renderable r=pool.obtain();
-  r.worldTransform.idt();
-  r.meshPart.mesh=mesh;
-  r.meshPart.offset=0;
-  r.meshPart.size=mesh.getNumIndices();
-  r.meshPart.primitiveType=GL20.GL_LINES;
-  r.material=material;
-  r.bones=null;
-  r.userData=null;
-  renderables.add(r);
+  renderables.add(renderable);
 }
