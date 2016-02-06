@@ -10,4 +10,5 @@
   GLFW.glfwSetWindowFocusCallback(windowHandle,focusCallback);
   GLFW.glfwSetWindowIconifyCallback(windowHandle,iconifyCallback);
   GLFW.glfwSetWindowCloseCallback(windowHandle,closeCallback);
+  GLFW.glfwSetDropCallback(windowHandle,dropCallback);
 }

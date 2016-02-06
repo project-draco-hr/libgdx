@@ -1,0 +1,10 @@
+{
+  BufferedImage image=new BufferedImage(10,10,BufferedImage.TYPE_4BYTE_ABGR);
+  stage=new Stage();
+  skin=new Skin(Gdx.files.internal("data/uiskin.json"));
+  Gdx.input.setInputProcessor(stage);
+  root=new Table();
+  root.setFillParent(true);
+  root.align(Align.left | Align.top);
+  stage.addActor(root);
+}

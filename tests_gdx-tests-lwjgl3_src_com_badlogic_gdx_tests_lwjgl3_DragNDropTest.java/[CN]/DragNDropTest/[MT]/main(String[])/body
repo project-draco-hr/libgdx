@@ -1,0 +1,16 @@
+{
+  final DragNDropTest test=new DragNDropTest();
+  Lwjgl3ApplicationConfiguration config=new Lwjgl3ApplicationConfiguration();
+  config.setWindowedMode(640,480);
+  config.setTitle("Drag files in this window");
+  config.setWindowListener(new Lwjgl3WindowAdapter(){
+    @Override public void filesDropped(    String[] files){
+      for (      String file : files) {
+        Gdx.app.log("GLWF Drop",file);
+      }
+      test.addFiles(files);
+    }
+  }
+);
+  new Lwjgl3Application(test,config);
+}
