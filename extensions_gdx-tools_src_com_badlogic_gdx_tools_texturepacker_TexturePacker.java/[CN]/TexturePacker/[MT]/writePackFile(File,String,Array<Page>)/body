@@ -15,7 +15,7 @@
       }
     }
   }
-  FileWriter writer=new FileWriter(packFile,true);
+  Writer writer=new OutputStreamWriter(new FileOutputStream(packFile,true),"UTF-8");
   for (  Page page : pages) {
     writer.write("\n" + page.imageName + "\n");
     writer.write("size: " + page.imageWidth + ","+ page.imageHeight+ "\n");
