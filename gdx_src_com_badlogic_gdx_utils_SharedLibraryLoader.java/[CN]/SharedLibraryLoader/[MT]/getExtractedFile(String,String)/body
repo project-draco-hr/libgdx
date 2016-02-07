@@ -14,5 +14,6 @@
   if (canWrite(file))   return file;
   file=new File(".temp/" + dirName,fileName);
   if (canWrite(file))   return file;
+  if (System.getenv("APP_SANDBOX_CONTAINER_ID") != null)   return idealFile;
   return null;
 }
