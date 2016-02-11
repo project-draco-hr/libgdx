@@ -1,0 +1,4 @@
+{
+  tmp.set(point1).sub(point0).scl(0.5f);
+  return tmp2.set(point0).add(tmp);
+}
