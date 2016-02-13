@@ -1,0 +1,8 @@
+{
+  for (int i=0, n=controllers.size; i < n; i++) {
+    if (!controllers.get(i).isComplete()) {
+      return false;
+    }
+  }
+  return true;
+}

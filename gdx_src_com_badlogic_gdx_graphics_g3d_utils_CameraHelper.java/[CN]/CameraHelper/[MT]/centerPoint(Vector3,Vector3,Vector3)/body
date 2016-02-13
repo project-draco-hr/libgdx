@@ -1,0 +1,6 @@
+{
+  tmp.set(point1).sub(point0).scl(0.5f);
+  tmp2.set(point0).add(tmp);
+  tmp.set(point2).sub(point1).scl(0.5f);
+  return tmp2.add(tmp);
+}
