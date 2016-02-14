@@ -102,9 +102,11 @@
     @Override public void focusGained(){
       Gdx.app.log("Window","focus gained");
     }
-    @Override public boolean windowIsClosing(){
+    @Override public boolean closeRequested(){
       Gdx.app.log("Window","closing");
       return false;
+    }
+    @Override public void filesDropped(    String[] files){
     }
   }
 );
