@@ -1,5 +1,3 @@
 {
-  super(GL20.GL_TEXTURE_2D,Gdx.gl.glGenTexture());
-  load(data);
-  if (data.isManaged())   addManagedTexture(Gdx.app,this);
+  this(GL20.GL_TEXTURE_2D,Gdx.gl.glGenTexture(),data);
 }
