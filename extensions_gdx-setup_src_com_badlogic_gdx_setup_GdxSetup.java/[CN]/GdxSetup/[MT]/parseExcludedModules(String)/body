@@ -1,0 +1,9 @@
+{
+  List<String> excludedModulesList=new ArrayList<String>();
+  while (excludedModules.contains(";")) {
+    excludedModulesList.add(excludedModules.substring(0,excludedModules.indexOf(";")).toLowerCase());
+    excludedModules=excludedModules.substring(excludedModules.indexOf(";") + 1);
+  }
+  excludedModulesList.add(excludedModules.toLowerCase());
+  return excludedModulesList;
+}
