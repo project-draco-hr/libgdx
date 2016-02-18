@@ -33,7 +33,12 @@
       if (!excludedModules.contains("html"))       projects.add(ProjectType.HTML);
     }
     List<Dependency> dependencies=new ArrayList<Dependency>();
-    dependencies.add(bank.getDependency(ProjectDependency.GDX));
+    if (params.containsKey("extensions")) {
+      dependencies.addAll(parseDependencies(params.get("extensions"),bank));
+    }
+ else {
+      dependencies.add(bank.getDependency(ProjectDependency.GDX));
+    }
     builder.buildProject(projects,dependencies);
     builder.build();
     new GdxSetup().build(builder,params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),sdkLocation,new CharCallback(){

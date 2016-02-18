@@ -1,0 +1,22 @@
+{
+  List<String> dependencyNames=new ArrayList<String>();
+  while (dependencies.contains(";")) {
+    dependencyNames.add(dependencies.substring(0,dependencies.indexOf(";")).toLowerCase());
+    dependencies=dependencies.substring(dependencies.indexOf(";") + 1);
+  }
+  dependencyNames.add(dependencies.toLowerCase());
+  Map<String,Dependency> dependencyMap=new HashMap<String,Dependency>();
+  for (  ProjectDependency pd : ProjectDependency.values()) {
+    dependencyMap.put(pd.name().toLowerCase(),bank.getDependency(pd));
+  }
+  List<Dependency> dependencyList=new ArrayList<Dependency>();
+  dependencyList.add(bank.getDependency(ProjectDependency.GDX));
+  for (  String name : dependencyNames) {
+    if (dependencyMap.containsKey(name)) {
+      System.out.println("Extension " + name + " found");
+      dependencyList.add(dependencyMap.get(name));
+    }
+ else     System.out.println("Extension " + name + " not found");
+  }
+  return dependencyList;
+}
