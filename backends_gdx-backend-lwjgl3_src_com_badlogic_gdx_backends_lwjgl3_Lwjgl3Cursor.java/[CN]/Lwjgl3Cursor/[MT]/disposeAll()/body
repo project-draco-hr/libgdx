@@ -5,4 +5,5 @@
   for (  long systemCursor : systemCursors.values()) {
     GLFW.glfwDestroyCursor(systemCursor);
   }
+  systemCursors.clear();
 }
