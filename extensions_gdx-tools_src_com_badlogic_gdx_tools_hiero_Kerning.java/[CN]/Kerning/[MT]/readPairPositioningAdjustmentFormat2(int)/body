@@ -7,9 +7,22 @@
   int class1Count=input.readUnsignedShort();
   int class2Count=input.readUnsignedShort();
   int position=input.getPosition();
+  input.seek((int)(subTablePosition + coverageOffset));
+  int[] coverage=readCoverageTable();
+  input.seek(position);
   IntArray[] glyphsByClass1=readClassDefinition(subTablePosition + classDefOffset1,class1Count);
   IntArray[] glyphsByClass2=readClassDefinition(subTablePosition + classDefOffset2,class2Count);
   input.seek(position);
+  for (int i=0; i < coverage.length; i++) {
+    int glyph=coverage[i];
+    boolean found=false;
+    for (int j=1; j < class1Count && !found; j++) {
+      found=glyphsByClass1[j].contains(glyph);
+    }
+    if (!found) {
+      glyphsByClass1[0].add(glyph);
+    }
+  }
   for (int i=0; i < class1Count; i++) {
     for (int j=0; j < class2Count; j++) {
       int xAdvance1=readXAdvanceFromValueRecord(valueFormat1);

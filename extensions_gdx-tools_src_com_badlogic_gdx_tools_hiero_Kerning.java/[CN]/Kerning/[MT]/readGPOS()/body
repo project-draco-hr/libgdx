@@ -9,8 +9,6 @@
     int lookupPosition=lookupListPosition + lookupOffsets[i];
     input.seek(lookupPosition);
     int type=input.readUnsignedShort();
-    if (type == 2) {
-      readPairAdjustments(lookupPosition);
-    }
+    readSubtables(type,lookupPosition);
   }
 }
