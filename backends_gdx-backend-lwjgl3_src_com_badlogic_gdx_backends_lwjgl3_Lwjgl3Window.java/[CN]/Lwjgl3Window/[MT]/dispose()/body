@@ -1,6 +1,7 @@
 {
   listener.pause();
   listener.dispose();
+  Lwjgl3Cursor.dispose(this);
   graphics.dispose();
   input.dispose();
   GLFW.glfwSetWindowFocusCallback(windowHandle,null);

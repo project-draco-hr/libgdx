@@ -1,0 +1,8 @@
+{
+  try {
+    return (ApplicationListener)clazz.newInstance();
+  }
+ catch (  Throwable t) {
+    throw new GdxRuntimeException("Couldn't instantiate app listener",t);
+  }
+}
