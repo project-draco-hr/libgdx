@@ -1,3 +1,4 @@
 {
+  if (listener == null)   throw new IllegalArgumentException("listener cannot be null.");
   return captureListeners.removeValue(listener,true);
 }

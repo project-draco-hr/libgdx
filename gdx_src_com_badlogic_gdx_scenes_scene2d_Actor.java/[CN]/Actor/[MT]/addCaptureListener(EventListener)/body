@@ -1,4 +1,5 @@
 {
+  if (listener == null)   throw new IllegalArgumentException("listener cannot be null.");
   if (!captureListeners.contains(listener,true))   captureListeners.add(listener);
   return true;
 }

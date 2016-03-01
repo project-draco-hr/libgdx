@@ -1,4 +1,5 @@
 {
+  if (listener == null)   throw new IllegalArgumentException("listener cannot be null.");
   if (!listeners.contains(listener,true)) {
     listeners.add(listener);
     return true;
