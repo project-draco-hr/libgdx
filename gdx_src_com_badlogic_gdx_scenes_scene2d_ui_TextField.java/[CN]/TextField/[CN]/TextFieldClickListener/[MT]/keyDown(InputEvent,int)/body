@@ -24,6 +24,13 @@
       selectAll();
       return true;
     }
+    if (keycode == Keys.Z) {
+      String oldText=text;
+      setText(undoText);
+      undoText=oldText;
+      updateDisplayText();
+      return true;
+    }
   }
   if (UIUtils.shift()) {
     if (keycode == Keys.INSERT)     paste(clipboard.getContents(),true);

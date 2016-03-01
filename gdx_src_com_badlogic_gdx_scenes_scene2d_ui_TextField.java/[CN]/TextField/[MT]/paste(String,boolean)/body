@@ -8,6 +8,7 @@
     if (!withinMaxLength(textLength + buffer.length()))     break;
     char c=content.charAt(i);
     if (!(writeEnters && (c == ENTER_ANDROID || c == ENTER_DESKTOP))) {
+      if (c == '\r' || c == '\n')       continue;
       if (onlyFontChars && !data.hasGlyph(c))       continue;
       if (filter != null && !filter.acceptChar(this,c))       continue;
     }
