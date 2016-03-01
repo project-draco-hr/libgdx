@@ -1,23 +1,25 @@
 {
   Rect bestNode=new Rect();
   bestNode.score1=-1;
-  for (int i=0; i < freeRectangles.size; i++) {
-    if (freeRectangles.get(i).width >= width && freeRectangles.get(i).height >= height) {
-      int score=contactPointScoreNode(freeRectangles.get(i).x,freeRectangles.get(i).y,width,height);
+  Array<Rect> freeRectangles=this.freeRectangles;
+  for (int i=0, n=freeRectangles.size; i < n; i++) {
+    Rect free=freeRectangles.get(i);
+    if (free.width >= width && free.height >= height) {
+      int score=contactPointScoreNode(free.x,free.y,width,height);
       if (score > bestNode.score1) {
-        bestNode.x=freeRectangles.get(i).x;
-        bestNode.y=freeRectangles.get(i).y;
+        bestNode.x=free.x;
+        bestNode.y=free.y;
         bestNode.width=width;
         bestNode.height=height;
         bestNode.score1=score;
         bestNode.rotated=false;
       }
     }
-    if (rotate && freeRectangles.get(i).width >= rotatedWidth && freeRectangles.get(i).height >= rotatedHeight) {
-      int score=contactPointScoreNode(freeRectangles.get(i).x,freeRectangles.get(i).y,rotatedWidth,rotatedHeight);
+    if (rotate && free.width >= rotatedWidth && free.height >= rotatedHeight) {
+      int score=contactPointScoreNode(free.x,free.y,rotatedWidth,rotatedHeight);
       if (score > bestNode.score1) {
-        bestNode.x=freeRectangles.get(i).x;
-        bestNode.y=freeRectangles.get(i).y;
+        bestNode.x=free.x;
+        bestNode.y=free.y;
         bestNode.width=rotatedWidth;
         bestNode.height=rotatedHeight;
         bestNode.score1=score;
