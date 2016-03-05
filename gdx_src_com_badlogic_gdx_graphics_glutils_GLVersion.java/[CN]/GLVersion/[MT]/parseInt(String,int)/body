@@ -1,8 +1,8 @@
 {
   try {
-    return ((Number)NumberFormat.getInstance().parse(v)).intValue();
+    return Integer.parseInt(v);
   }
- catch (  ParseException e) {
+ catch (  NumberFormatException nfe) {
     Gdx.app.error("LibGDX GL","Error parsing number: " + v + ", assuming: "+ defaultValue);
     return defaultValue;
   }
