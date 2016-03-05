@@ -1,0 +1,5 @@
+{
+  BulletEntity entity=shoot(getRandomOccludeeType(true),x,y,30f);
+  entity.setColor(Color.WHITE);
+  return true;
+}

@@ -1,0 +1,12 @@
+{
+  frustumNormals.clear();
+  frustumOffsets.clear();
+  for (int i=1; i < 6; i++) {
+    Plane plane=frustum.planes[i];
+    frustumNormals.put(plane.normal.x);
+    frustumNormals.put(plane.normal.y);
+    frustumNormals.put(plane.normal.z);
+    frustumNormals.put(0);
+    frustumOffsets.put(plane.d);
+  }
+}

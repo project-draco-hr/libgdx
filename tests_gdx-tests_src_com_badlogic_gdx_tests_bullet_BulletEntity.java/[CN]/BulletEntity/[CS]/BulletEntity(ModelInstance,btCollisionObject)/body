@@ -2,6 +2,8 @@
   this.modelInstance=modelInstance;
   this.transform=this.modelInstance.transform;
   this.body=body;
+  modelInstance.calculateBoundingBox(boundingBox);
+  boundingBoxRadius=boundingBox.getDimensions(new Vector3()).len() * 0.5f;
   if (body != null) {
     body.userData=this;
     if (body instanceof btRigidBody) {

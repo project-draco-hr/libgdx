@@ -1,0 +1,27 @@
+{
+  int numVerts=verticesIn.length;
+  int numVertsBehind=0;
+  float[] s=new float[4];
+  for (int i=0; i < numVerts; i++) {
+    s[i]=verticesIn[i].z + verticesIn[i].w;
+    if (s[i] < 0)     numVertsBehind++;
+  }
+  if (numVertsBehind == numVerts) {
+    return 0;
+  }
+ else   if (numVertsBehind > 0) {
+    int newNumVerts=0;
+    for (int i=numVerts - 1, j=0; j < numVerts; i=j++) {
+      Quaternion a=tmpQ1.set(verticesIn[i]);
+      Quaternion b=tmpQ2.set(verticesIn[j]);
+      float t=s[i] / (a.w + a.z - b.w - b.z);
+      if ((t > 0) && (t < 1))       verticesOut[newNumVerts++].set(a).mulAdd(b.sub(a),t);
+      if (s[j] > 0)       verticesOut[newNumVerts++].set(verticesIn[j]);
+    }
+    return newNumVerts;
+  }
+ else {
+    for (int i=0; i < numVerts; i++)     verticesOut[i].set(verticesIn[i]);
+    return numVerts;
+  }
+}

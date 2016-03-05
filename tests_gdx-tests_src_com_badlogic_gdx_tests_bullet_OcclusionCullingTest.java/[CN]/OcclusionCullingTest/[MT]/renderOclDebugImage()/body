@@ -1,0 +1,10 @@
+{
+  TextureRegion oclDebugTexture=oclBuffer.drawDebugTexture();
+  spriteBatch.begin();
+  spriteBatch.draw(oclDebugTexture,0,0);
+  spriteBatch.end();
+  shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+  shapeRenderer.setColor(Color.DARK_GRAY);
+  shapeRenderer.rect(0,0,oclDebugTexture.getRegionWidth(),oclDebugTexture.getRegionHeight());
+  shapeRenderer.end();
+}

@@ -1,0 +1,8 @@
+{
+  btDefaultCollisionConfiguration collisionConfig=new btDefaultCollisionConfiguration();
+  btCollisionDispatcher dispatcher=new btCollisionDispatcher(collisionConfig);
+  btSequentialImpulseConstraintSolver solver=new btSequentialImpulseConstraintSolver();
+  broadphase=new btDbvtBroadphase();
+  btDiscreteDynamicsWorld collisionWorld=new btDiscreteDynamicsWorld(dispatcher,broadphase,solver,collisionConfig);
+  return new BulletWorld(collisionConfig,dispatcher,broadphase,solver,collisionWorld);
+}

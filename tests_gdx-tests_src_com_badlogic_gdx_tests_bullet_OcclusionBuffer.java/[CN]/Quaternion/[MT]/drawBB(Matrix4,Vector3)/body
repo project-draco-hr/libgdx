@@ -1,0 +1,10 @@
+{
+  Vector3 center=tmpV1.setZero();
+  setAABBVertices(center,halfExt,box);
+  worldTransform.getTranslation(center);
+  for (  Vector3 vertex : box) {
+    vertex.rot(worldTransform);
+    vertex.add(center);
+  }
+  drawBox(box,Policy.DRAW);
+}
