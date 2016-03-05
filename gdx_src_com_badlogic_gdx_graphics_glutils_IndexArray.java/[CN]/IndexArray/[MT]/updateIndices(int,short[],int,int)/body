@@ -1,0 +1,6 @@
+{
+  final int pos=byteBuffer.position();
+  byteBuffer.position(targetOffset * 2);
+  BufferUtils.copy(indices,offset,byteBuffer,count);
+  byteBuffer.position(pos);
+}
