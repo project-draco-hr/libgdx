@@ -1,6 +1,0 @@
-{
-  String version=gl.glGetString(GL10.GL_VERSION);
-  String[] versionSplit=version.split(" ")[2].split("\\.",2);
-  major=parseInt(versionSplit[0],2);
-  minor=versionSplit.length < 2 ? 0 : parseInt(versionSplit[1],0);
-}

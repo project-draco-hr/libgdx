@@ -1,12 +1,6 @@
 {
-  String version=org.lwjgl.opengl.GL11.glGetString(GL11.GL_VERSION);
-  try {
-    String[] v=version.split(" ",2)[0].split("\\.",3);
-    major=Integer.parseInt(v[0]);
-    minor=Integer.parseInt(v[1]);
-    release=v.length > 2 ? Integer.parseInt(v[2]) : 0;
-  }
- catch (  Throwable t) {
-    throw new GdxRuntimeException("Error extracting the OpenGL version: " + version,t);
-  }
+  String versionString=org.lwjgl.opengl.GL11.glGetString(GL11.GL_VERSION);
+  String vendorString=org.lwjgl.opengl.GL11.glGetString(GL11.GL_VENDOR);
+  String rendererString=org.lwjgl.opengl.GL11.glGetString(GL11.GL_RENDERER);
+  glVersion=new GLVersion(Application.ApplicationType.Desktop,versionString,vendorString,rendererString);
 }

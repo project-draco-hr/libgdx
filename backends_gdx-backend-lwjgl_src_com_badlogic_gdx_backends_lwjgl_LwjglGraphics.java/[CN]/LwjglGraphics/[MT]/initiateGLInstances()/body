@@ -6,9 +6,9 @@
  else {
     gl20=new LwjglGL20();
   }
-  if (!isOpenGLOrHigher(2,0))   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + "\n"+ glInfo());
+  if (!glVersion.isVersionEqualToOrHigher(2,0))   throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + "\n"+ glVersion.getDebugVersionString());
   if (!supportsFBO()) {
-    throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + ", FBO extension: false\n"+ glInfo());
+    throw new GdxRuntimeException("OpenGL 2.0 or higher with the FBO extension is required. OpenGL version: " + GL11.glGetString(GL11.GL_VERSION) + ", FBO extension: false\n"+ glVersion.getDebugVersionString());
   }
   Gdx.gl=gl20;
   Gdx.gl20=gl20;
