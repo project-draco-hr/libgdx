@@ -1,0 +1,5 @@
+{
+  int xd=x - this.x;
+  int yd=y - this.y;
+  return (float)Math.sqrt(xd * xd + yd * yd);
+}

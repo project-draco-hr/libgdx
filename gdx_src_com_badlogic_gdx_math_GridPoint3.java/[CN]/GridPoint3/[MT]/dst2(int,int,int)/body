@@ -1,0 +1,6 @@
+{
+  int xd=x - this.x;
+  int yd=y - this.y;
+  int zd=z - this.z;
+  return xd * xd + yd * yd + zd * zd;
+}
