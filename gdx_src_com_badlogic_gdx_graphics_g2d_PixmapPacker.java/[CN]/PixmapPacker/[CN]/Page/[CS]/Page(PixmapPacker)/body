@@ -1,3 +1,6 @@
 {
   image=new Pixmap(packer.pageWidth,packer.pageHeight,packer.pageFormat);
+  final Color transparentColor=packer.getTransparentColor();
+  this.image.setColor(transparentColor);
+  this.image.fill();
 }
