@@ -1,4 +1,7 @@
 {
+  if (canvas != null && SharedLibraryLoader.isMac) {
+    return;
+  }
   try {
     Mouse.setNativeCursor(((LwjglCursor)cursor).lwjglCursor);
   }
