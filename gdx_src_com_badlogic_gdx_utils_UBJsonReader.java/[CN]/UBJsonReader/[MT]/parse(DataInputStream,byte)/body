@@ -14,5 +14,6 @@
  else   if (type == 'D')   return new JsonValue(din.readDouble());
  else   if (type == 's' || type == 'S')   return new JsonValue(parseString(din,type));
  else   if (type == 'a' || type == 'A')   return parseData(din,type);
+ else   if (type == 'C')   return new JsonValue(din.readChar());
  else   throw new GdxRuntimeException("Unrecognized data type");
 }
