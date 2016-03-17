@@ -1,0 +1,52 @@
+{
+  final float dt=Gdx.graphics.getDeltaTime();
+  ghostEntity.transform.idt();
+  ghostEntity.transform.rotate(Vector3.X,angleX=(angleX + dt * SPEED_X) % 360);
+  ghostEntity.transform.rotate(Vector3.Y,angleY=(angleY + dt * SPEED_Y) % 360);
+  ghostEntity.transform.rotate(Vector3.Z,angleZ=(angleZ + dt * SPEED_Z) % 360);
+  ghostEntity.body.setWorldTransform(ghostEntity.transform);
+  frustumCam.direction.set(0,0,-1);
+  frustumCam.up.set(0,1,0);
+  frustumCam.position.set(0,0,0);
+  frustumCam.rotate(ghostEntity.transform);
+  frustumCam.update();
+  super.render();
+  shapeRenderer.setProjectionMatrix(camera.combined);
+  shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+  shapeRenderer.setColor(Color.WHITE);
+  btBroadphasePairArray arr=world.broadphase.getOverlappingPairCache().getOverlappingPairArray();
+  int numPairs=arr.size();
+  for (int i=0; i < numPairs; ++i) {
+    manifoldArray.clear();
+    btBroadphasePair pair=arr.at(i);
+    btBroadphaseProxy proxy0=btBroadphaseProxy.obtain(pair.getPProxy0().getCPointer(),false);
+    btBroadphaseProxy proxy1=btBroadphaseProxy.obtain(pair.getPProxy1().getCPointer(),false);
+    btBroadphasePair collisionPair=world.collisionWorld.getPairCache().findPair(proxy0,proxy1);
+    if (collisionPair == null)     continue;
+    btCollisionAlgorithm algorithm=collisionPair.getAlgorithm();
+    if (algorithm != null)     algorithm.getAllContactManifolds(manifoldArray);
+    for (int j=0; j < manifoldArray.size(); j++) {
+      btPersistentManifold manifold=manifoldArray.at(j);
+      boolean isFirstBody=manifold.getBody0() == ghostObject;
+      int otherObjectIndex=isFirstBody ? manifold.getBody1().getUserValue() : manifold.getBody0().getUserValue();
+      Color otherObjectColor=world.entities.get(otherObjectIndex).getColor();
+      for (int p=0; p < manifold.getNumContacts(); ++p) {
+        btManifoldPoint pt=manifold.getContactPoint(p);
+        if (pt.getDistance() < 0.f) {
+          if (isFirstBody) {
+            pt.getPositionWorldOnA(tmpV2);
+            pt.getPositionWorldOnB(tmpV1);
+          }
+ else {
+            pt.getPositionWorldOnA(tmpV1);
+            pt.getPositionWorldOnB(tmpV2);
+          }
+          shapeRenderer.line(tmpV1.x,tmpV1.y,tmpV1.z,tmpV2.x,tmpV2.y,tmpV2.z,otherObjectColor,Color.WHITE);
+        }
+      }
+    }
+    btBroadphaseProxy.free(proxy0);
+    btBroadphaseProxy.free(proxy1);
+  }
+  shapeRenderer.end();
+}
