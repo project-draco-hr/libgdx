@@ -8,6 +8,7 @@
   appConfig.setFullscreenMode(config.fullscreenMode);
   appConfig.setTitle(config.title);
   appConfig.setInitialBackgroundColor(config.initialBackgroundColor);
+  appConfig.setInitialVisible(config.initialVisible);
   Lwjgl3Window window=createWindow(appConfig,listener,windows.get(0).getWindowHandle());
   windows.add(window);
   return window;
