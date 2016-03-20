@@ -1,4 +1,4 @@
 {
-  org.lwjgl.opengl.DisplayMode mode=Display.getDesktopDisplayMode();
+  org.lwjgl.opengl.DisplayMode mode=Display.getDisplayMode();
   return new LwjglDisplayMode(mode.getWidth(),mode.getHeight(),mode.getFrequency(),mode.getBitsPerPixel(),mode);
 }
