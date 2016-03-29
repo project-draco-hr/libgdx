@@ -1,0 +1,9 @@
+{
+  super.render();
+  if ((state & SHOW_DEBUG_IMAGE) == SHOW_DEBUG_IMAGE)   renderOclDebugImage();
+  performance.append(", Culling: ").append(cullingPolicy.name());
+  performance.append(", Visible: ").append(visibleEntities.size).append("/").append(world.entities.size);
+  performance.append(", Buffer: ").append(OCL_BUFFER_EXTENTS[bufferExtentIndex]).append("px ");
+  performance.append(", GL Draw calls: ").append(GLProfiler.drawCalls);
+  GLProfiler.reset();
+}

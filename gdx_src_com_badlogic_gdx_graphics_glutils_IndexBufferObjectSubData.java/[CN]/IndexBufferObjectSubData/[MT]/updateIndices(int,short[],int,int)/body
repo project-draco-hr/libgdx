@@ -1,0 +1,12 @@
+{
+  isDirty=true;
+  final int pos=byteBuffer.position();
+  byteBuffer.position(targetOffset * 2);
+  BufferUtils.copy(indices,offset,byteBuffer,count);
+  byteBuffer.position(pos);
+  buffer.position(0);
+  if (isBound) {
+    Gdx.gl20.glBufferSubData(GL20.GL_ELEMENT_ARRAY_BUFFER,0,byteBuffer.limit(),byteBuffer);
+    isDirty=false;
+  }
+}

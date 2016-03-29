@@ -1,0 +1,4 @@
+{
+  int i=rng.nextInt(OCCLUDEE_PATHS_STATIC.length);
+  return (dynamic) ? OCCLUDEE_PATHS_DYNAMIC[i] : OCCLUDEE_PATHS_STATIC[i];
+}

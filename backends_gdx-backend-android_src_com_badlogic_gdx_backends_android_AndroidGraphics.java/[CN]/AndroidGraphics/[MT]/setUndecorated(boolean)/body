@@ -1,0 +1,4 @@
+{
+  final int mask=(undecorated) ? 1 : 0;
+  app.getApplicationWindow().setFlags(LayoutParams.FLAG_FULLSCREEN,mask);
+}

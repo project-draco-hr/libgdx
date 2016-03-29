@@ -1,0 +1,6 @@
+{
+  Array<TextureArray> managedTextureArray=managedTextureArrays.get(app);
+  if (managedTextureArray == null)   managedTextureArray=new Array<TextureArray>();
+  managedTextureArray.add(texture);
+  managedTextureArrays.put(app,managedTextureArray);
+}

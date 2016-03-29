@@ -1,0 +1,16 @@
+{
+  super.update();
+  if ((state & PAUSE_FRUSTUM_CAM) == PAUSE_FRUSTUM_CAM)   return;
+  final float dt=Gdx.graphics.getDeltaTime();
+  frustumInstance.transform.idt().rotate(Vector3.Y,frustumCamAngleY=(frustumCamAngleY + dt * FRUSTUM_ANG_SPEED) % 360);
+  frustumCam.direction.set(0,0,-1);
+  frustumCam.up.set(Vector3.Y);
+  frustumCam.position.set(Vector3.Zero);
+  frustumCam.rotate(frustumInstance.transform);
+  float frustumCamPosY=frustumCamPos.y;
+  frustumCamPos.add(tmpV1.set(Vector3.Y).crs(tmpV2.set(frustumCamPos).nor()).scl(dt * FRUSTUM_LIN_SPEED)).nor().scl(FRUSTUM_MOVE_RADIUS);
+  frustumCamPos.y=frustumCamPosY;
+  frustumCam.position.set(frustumCamPos);
+  frustumInstance.transform.setTranslation(frustumCamPos);
+  frustumCam.update();
+}

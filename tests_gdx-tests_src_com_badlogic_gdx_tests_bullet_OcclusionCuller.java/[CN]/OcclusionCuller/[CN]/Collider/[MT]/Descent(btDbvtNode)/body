@@ -1,0 +1,3 @@
+{
+  return oclBuffer.queryAABB(tmpV1.set(node.getVolume().Center()),tmpV2.set(node.getVolume().Extents()));
+}

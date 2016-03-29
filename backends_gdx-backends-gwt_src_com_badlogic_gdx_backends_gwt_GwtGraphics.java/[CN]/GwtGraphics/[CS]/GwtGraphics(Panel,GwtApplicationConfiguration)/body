@@ -15,4 +15,8 @@
   context=WebGLRenderingContext.getContext(canvas,attributes);
   context.viewport(0,0,config.width,config.height);
   this.gl=config.useDebugGL ? new GwtGL20Debug(context) : new GwtGL20(context);
+  String versionString=gl.glGetString(GL20.GL_VERSION);
+  String vendorString=gl.glGetString(GL20.GL_VENDOR);
+  String rendererString=gl.glGetString(GL20.GL_RENDERER);
+  glVersion=new GLVersion(Application.ApplicationType.WebGL,versionString,vendorString,rendererString);
 }

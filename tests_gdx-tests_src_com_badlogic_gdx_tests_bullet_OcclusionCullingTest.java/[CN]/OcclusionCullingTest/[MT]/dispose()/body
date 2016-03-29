@@ -1,0 +1,10 @@
+{
+  Gdx.input.setOnscreenKeyboardVisible(false);
+  GLProfiler.disable();
+  visibleEntities.clear();
+  rng.setSeed(0);
+  state=0;
+  bufferExtentIndex=0;
+  cullingPolicy=CullingPolicy.OCCLUSION;
+  super.dispose();
+}

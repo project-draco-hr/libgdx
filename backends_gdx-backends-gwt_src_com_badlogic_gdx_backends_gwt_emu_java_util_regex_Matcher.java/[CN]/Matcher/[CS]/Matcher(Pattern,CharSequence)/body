@@ -1,4 +1,5 @@
 {
   this.regExp=pattern.regExp;
   this.input=String.valueOf(input);
+  matchResult=regExp.exec(this.input);
 }

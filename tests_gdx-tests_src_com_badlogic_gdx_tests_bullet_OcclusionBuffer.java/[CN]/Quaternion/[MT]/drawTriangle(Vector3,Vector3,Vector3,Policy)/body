@@ -1,0 +1,32 @@
+{
+  if (((tmpV1.set(b).sub(a)).crs(tmpV2.set(c).sub(a))).z <= 0)   return false;
+  triX.set((int)(a.x * bufferHalfExt.x + bufferOffset.x),(int)(b.x * bufferHalfExt.x + bufferOffset.x),(int)(c.x * bufferHalfExt.x + bufferOffset.x));
+  triY.set((int)(a.y * bufferHalfExt.y + bufferOffset.y),(int)(b.y * bufferHalfExt.y + bufferOffset.y),(int)(c.y * bufferHalfExt.y + bufferOffset.y));
+  int xMin=Math.max(0,Math.min(triX.x,Math.min(triX.y,triX.z)));
+  int xMax=Math.min(bufferWidth,1 + Math.max(triX.x,Math.max(triX.y,triX.z)));
+  int yMin=Math.max(0,Math.min(triY.x,Math.min(triY.y,triY.z)));
+  int yMax=Math.min(bufferWidth,1 + Math.max(triY.x,Math.max(triY.y,triY.z)));
+  int width=xMax - xMin;
+  int height=yMax - yMin;
+  if (width * height <= 0)   return false;
+  triDX.set(triY.x - triY.y,triY.y - triY.z,triY.z - triY.x);
+  triDY.set(triX.y - triX.x - triDX.x * width,triX.z - triX.y - triDX.y * width,triX.x - triX.z - triDX.z * width);
+  cursor.set(yMin * (triX.y - triX.x) + xMin * (triY.x - triY.y) + triX.x * triY.y - triX.y * triY.x,yMin * (triX.z - triX.y) + xMin * (triY.y - triY.z) + triX.y * triY.z - triX.z * triY.y,yMin * (triX.x - triX.z) + xMin * (triY.z - triY.x) + triX.z * triY.x - triX.x * triY.z);
+  float ia=1f / (float)(triX.x * triY.y - triX.y * triY.x + triX.z * triY.x - triX.x * triY.z + triX.y * triY.z - triX.z * triY.y);
+  float dzx=ia * (triY.x * (c.z - b.z) + triY.y * (a.z - c.z) + triY.z * (b.z - a.z));
+  float dzy=ia * (triX.x * (b.z - c.z) + triX.y * (c.z - a.z) + triX.z * (a.z - b.z)) - (dzx * width);
+  float drawDepth=ia * (a.z * cursor.y + b.z * cursor.z + c.z * cursor.x);
+  int bufferRow=(yMin * bufferHeight);
+  for (int iy=yMin; iy < yMax; iy++) {
+    for (int ix=xMin; ix < xMax; ix++) {
+      int bufferIndex=bufferRow + ix;
+      if (cursor.x >= 0 && cursor.y >= 0 && cursor.z >= 0 && policy.process(buffer,bufferIndex,drawDepth))       return true;
+      cursor.add(triDX);
+      drawDepth+=dzx;
+    }
+    cursor.add(triDY);
+    drawDepth+=dzy;
+    bufferRow+=bufferWidth;
+  }
+  return false;
+}

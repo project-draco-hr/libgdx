@@ -1,0 +1,4 @@
+{
+  entity.modelInstance.transform.getTranslation(tmpV1);
+  return frustumCam.frustum.sphereInFrustum(tmpV1.add(entity.boundingBox.getCenter(tmpV2)),entity.boundingBoxRadius);
+}

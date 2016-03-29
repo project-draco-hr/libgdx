@@ -1,6 +1,6 @@
 {
   extensions=new Array<String>();
-  if (isOpenGLOrHigher(3,2)) {
+  if (glVersion.isVersionEqualToOrHigher(3,2)) {
     int numExtensions=GL11.glGetInteger(GL30.GL_NUM_EXTENSIONS);
     for (int i=0; i < numExtensions; ++i)     extensions.add(org.lwjgl.opengl.GL30.glGetStringi(GL20.GL_EXTENSIONS,i));
   }

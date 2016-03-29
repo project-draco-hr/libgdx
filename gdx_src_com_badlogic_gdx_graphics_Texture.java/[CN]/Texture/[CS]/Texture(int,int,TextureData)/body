@@ -1,0 +1,5 @@
+{
+  super(glTarget,glHandle);
+  load(data);
+  if (data.isManaged())   addManagedTexture(Gdx.app,this);
+}

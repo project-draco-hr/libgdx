@@ -1,4 +1,7 @@
 {
+  if (((LwjglGraphics)Gdx.graphics).canvas != null && SharedLibraryLoader.isMac) {
+    return;
+  }
   try {
     if (pixmap == null) {
       lwjglCursor=null;

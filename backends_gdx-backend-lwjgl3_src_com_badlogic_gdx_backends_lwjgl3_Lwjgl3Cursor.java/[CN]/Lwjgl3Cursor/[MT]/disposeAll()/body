@@ -1,8 +1,0 @@
-{
-  while (cursors.size > 0) {
-    cursors.removeIndex(0).dispose();
-  }
-  for (  long systemCursor : systemCursors.values()) {
-    GLFW.glfwDestroyCursor(systemCursor);
-  }
-}

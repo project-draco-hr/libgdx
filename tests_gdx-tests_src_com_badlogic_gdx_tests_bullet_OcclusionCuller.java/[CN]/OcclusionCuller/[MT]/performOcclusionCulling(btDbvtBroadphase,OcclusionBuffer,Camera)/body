@@ -1,0 +1,7 @@
+{
+  this.oclBuffer=oclBuffer;
+  oclBuffer.setProjectionMatrix(camera.combined);
+  setFrustumPlanes(camera.frustum);
+  btDbvt.collideOCL(broadphase.getSet1().getRoot(),frustumNormals,frustumOffsets,camera.direction,NUM_PLANES,collider);
+  btDbvt.collideOCL(broadphase.getSet0().getRoot(),frustumNormals,frustumOffsets,camera.direction,NUM_PLANES,collider);
+}

@@ -1,0 +1,13 @@
+{
+  BulletEntity entity=world.add(getRandomOccludeeType(dynamic),0,0,0);
+  entity.setColor(Color.WHITE);
+  float rotationY=rng.nextFloat() * 360f;
+  Vector3 position=tmpV1;
+  int maxDstX=(int)(GROUND_DIM.x * 0.49f);
+  position.x=rng.nextInt(maxDstX) * ((rng.nextBoolean()) ? 1 : -1);
+  position.z=rng.nextInt(maxDstX) * ((rng.nextBoolean()) ? 1 : -1);
+  position.y=entity.boundingBox.getDimensions(tmpV2).y * 0.5f;
+  entity.modelInstance.transform.setToRotation(Vector3.Y,rotationY).setTranslation(position);
+  entity.body.setWorldTransform(entity.modelInstance.transform);
+  return entity;
+}

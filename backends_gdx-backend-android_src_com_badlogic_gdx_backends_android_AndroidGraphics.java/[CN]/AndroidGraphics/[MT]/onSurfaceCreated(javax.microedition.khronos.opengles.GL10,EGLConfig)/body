@@ -6,6 +6,7 @@
   Mesh.invalidateAllMeshes(app);
   Texture.invalidateAllTextures(app);
   Cubemap.invalidateAllCubemaps(app);
+  TextureArray.invalidateAllTextureArrays(app);
   ShaderProgram.invalidateAllShaderPrograms(app);
   FrameBuffer.invalidateAllFrameBuffers(app);
   logManagedCachesStatus();

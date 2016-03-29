@@ -1,27 +1,44 @@
 {
   Map<String,String> params=parseArgs(args);
-  if (!params.containsKey("dir") || !params.containsKey("name") || !params.containsKey("package")|| !params.containsKey("mainClass")|| ((!params.containsKey("sdkLocation") && System.getenv("ANDROID_HOME") == null))) {
+  List<String> excludedModules=null;
+  if (params.containsKey("excludeModules"))   excludedModules=parseExcludedModules(params.get("excludeModules"));
+  if (!params.containsKey("dir") || !params.containsKey("name") || !params.containsKey("package")|| !params.containsKey("mainClass")|| (!params.containsKey("sdkLocation") && System.getenv("ANDROID_HOME") == null && (excludedModules == null || !excludedModules.contains("android")))) {
     new GdxSetupUI();
     printHelp();
   }
  else {
     String sdkLocation="";
-    if (System.getenv("ANDROID_HOME") != null && !params.containsKey("sdkLocation")) {
-      sdkLocation=System.getenv("ANDROID_HOME");
-    }
+    if (excludedModules == null || !excludedModules.contains("android")) {
+      if (System.getenv("ANDROID_HOME") != null && !params.containsKey("sdkLocation")) {
+        sdkLocation=System.getenv("ANDROID_HOME");
+      }
  else {
-      sdkLocation=params.get("sdkLocation");
+        sdkLocation=params.get("sdkLocation");
+      }
     }
     DependencyBank bank=new DependencyBank();
     ProjectBuilder builder=new ProjectBuilder(bank);
     List<ProjectType> projects=new ArrayList<ProjectType>();
     projects.add(ProjectType.CORE);
-    projects.add(ProjectType.DESKTOP);
-    projects.add(ProjectType.ANDROID);
-    projects.add(ProjectType.IOS);
-    projects.add(ProjectType.HTML);
+    if (excludedModules == null) {
+      projects.add(ProjectType.DESKTOP);
+      projects.add(ProjectType.ANDROID);
+      projects.add(ProjectType.IOS);
+      projects.add(ProjectType.HTML);
+    }
+ else {
+      if (!excludedModules.contains("desktop"))       projects.add(ProjectType.DESKTOP);
+      if (!excludedModules.contains("android"))       projects.add(ProjectType.ANDROID);
+      if (!excludedModules.contains("ios"))       projects.add(ProjectType.IOS);
+      if (!excludedModules.contains("html"))       projects.add(ProjectType.HTML);
+    }
     List<Dependency> dependencies=new ArrayList<Dependency>();
-    dependencies.add(bank.getDependency(ProjectDependency.GDX));
+    if (params.containsKey("extensions")) {
+      dependencies.addAll(parseDependencies(params.get("extensions"),bank));
+    }
+ else {
+      dependencies.add(bank.getDependency(ProjectDependency.GDX));
+    }
     builder.buildProject(projects,dependencies);
     builder.build();
     new GdxSetup().build(builder,params.get("dir"),params.get("name"),params.get("package"),params.get("mainClass"),sdkLocation,new CharCallback(){

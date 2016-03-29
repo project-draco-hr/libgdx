@@ -1,0 +1,7 @@
+{
+  this.x+=quaternion.x * scalar;
+  this.y+=quaternion.y * scalar;
+  this.z+=quaternion.z * scalar;
+  this.w+=quaternion.w * scalar;
+  return this;
+}

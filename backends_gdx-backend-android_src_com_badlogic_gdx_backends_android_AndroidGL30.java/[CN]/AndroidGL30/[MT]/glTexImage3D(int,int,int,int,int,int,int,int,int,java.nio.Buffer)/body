@@ -1,3 +1,4 @@
 {
-  GLES30.glTexImage3D(target,level,internalformat,width,height,depth,border,format,type,pixels);
+  if (pixels == null)   GLES30.glTexImage3D(target,level,internalformat,width,height,depth,border,format,type,0);
+ else   GLES30.glTexImage3D(target,level,internalformat,width,height,depth,border,format,type,pixels);
 }

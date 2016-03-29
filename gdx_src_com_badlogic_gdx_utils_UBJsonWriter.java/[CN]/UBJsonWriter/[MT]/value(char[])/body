@@ -1,7 +1,7 @@
 {
   array();
   out.writeByte('$');
-  out.writeByte('I');
+  out.writeByte('C');
   out.writeByte('#');
   value(values.length);
   for (int i=0, n=values.length; i < n; i++) {

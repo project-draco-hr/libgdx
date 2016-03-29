@@ -1,0 +1,12 @@
+{
+switch (this) {
+case DRAW:
+    return false;
+case QUERY:
+  for (  Quaternion vertex : vertices) {
+    if (vertex.z + vertex.w <= 0)     return true;
+  }
+return false;
+}
+return false;
+}

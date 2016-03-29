@@ -1,0 +1,5 @@
+{
+  for (  String file : files) {
+    root.add(new Label(file,skin)).left().row();
+  }
+}
