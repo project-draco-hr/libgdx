@@ -1,0 +1,13 @@
+{
+  Array<TextureRegion> regions=null;
+  int i=0;
+  TextureRegion region=optional(regionName + "_" + (i++),TextureRegion.class);
+  if (region != null) {
+    regions=new Array<TextureRegion>();
+    while (region != null) {
+      regions.add(region);
+      region=optional(regionName + "_" + (i++),TextureRegion.class);
+    }
+  }
+  return regions;
+}
