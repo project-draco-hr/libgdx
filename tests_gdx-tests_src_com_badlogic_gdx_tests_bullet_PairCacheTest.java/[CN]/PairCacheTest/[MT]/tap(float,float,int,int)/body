@@ -1,5 +1,6 @@
 {
-  if (useFrustumCam=!useFrustumCam)   camera=frustumCam;
+  useFrustumCam=!useFrustumCam;
+  if (useFrustumCam)   camera=frustumCam;
  else   camera=overviewCam;
   return true;
 }
