@@ -1,0 +1,9 @@
+{
+  int type=input.readUnsignedShort();
+  if (type == 1) {
+    readPairPositioningAdjustmentFormat1(subTablePosition);
+  }
+ else   if (type == 2) {
+    readPairPositioningAdjustmentFormat2(subTablePosition);
+  }
+}

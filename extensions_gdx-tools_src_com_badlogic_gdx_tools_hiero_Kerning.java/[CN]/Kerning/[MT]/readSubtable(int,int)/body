@@ -1,0 +1,9 @@
+{
+  input.seek(subTablePosition);
+  if (type == 2) {
+    readPairAdjustmentSubtable(subTablePosition);
+  }
+ else   if (type == 9) {
+    readExtensionPositioningSubtable(subTablePosition);
+  }
+}
