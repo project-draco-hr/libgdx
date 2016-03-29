@@ -1,0 +1,4 @@
+{
+  BitmapFont font=style.font;
+  return -(-font.getDescent() / 2 - (cursorLine - firstLineShowing + 1) * font.getLineHeight());
+}
