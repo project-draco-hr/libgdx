@@ -3,6 +3,7 @@
   char[] characters=parameter.characters.toCharArray();
   int charactersLength=characters.length;
   boolean incremental=parameter.incremental;
+  int flags=getLoadingFlags(parameter);
   setPixelSizes(0,parameter.size);
   SizeMetrics fontMetrics=face.getSize().getMetrics();
   data.flipped=parameter.flip;
@@ -12,27 +13,27 @@
   float baseLine=data.ascent;
   if (bitmapped && (data.lineHeight == 0)) {
     for (int c=32; c < (32 + face.getNumGlyphs()); c++) {
-      if (loadChar(c)) {
+      if (loadChar(c,flags)) {
         int lh=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
         data.lineHeight=(lh > data.lineHeight) ? lh : data.lineHeight;
       }
     }
   }
   data.lineHeight+=parameter.spaceY;
-  if (loadChar(' ') || loadChar('l')) {
+  if (loadChar(' ',flags) || loadChar('l',flags)) {
     data.spaceWidth=FreeType.toInt(face.getGlyph().getMetrics().getHoriAdvance());
   }
  else {
     data.spaceWidth=face.getMaxAdvanceWidth();
   }
   for (  char xChar : data.xChars) {
-    if (!loadChar(xChar))     continue;
+    if (!loadChar(xChar,flags))     continue;
     data.xHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }
   if (data.xHeight == 0)   throw new GdxRuntimeException("No x-height character found in font");
   for (  char capChar : data.capChars) {
-    if (!loadChar(capChar))     continue;
+    if (!loadChar(capChar,flags))     continue;
     data.capHeight=FreeType.toInt(face.getGlyph().getMetrics().getHeight());
     break;
   }
@@ -74,7 +75,7 @@
   }
   int[] heights=new int[charactersLength];
   for (int i=0, n=charactersLength; i < n; i++) {
-    int height=loadChar(characters[i]) ? FreeType.toInt(face.getGlyph().getMetrics().getHeight()) : 0;
+    int height=loadChar(characters[i],flags) ? FreeType.toInt(face.getGlyph().getMetrics().getHeight()) : 0;
     heights[i]=height;
   }
   int heightsCount=heights.length;

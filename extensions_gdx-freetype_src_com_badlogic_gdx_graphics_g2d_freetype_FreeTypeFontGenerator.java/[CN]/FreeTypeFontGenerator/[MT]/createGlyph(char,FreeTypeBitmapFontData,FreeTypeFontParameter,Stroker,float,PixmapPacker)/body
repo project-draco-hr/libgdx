@@ -1,7 +1,7 @@
 {
   boolean missing=face.getCharIndex(c) == 0 && c != 0;
   if (missing)   return null;
-  if (!loadChar(c))   return null;
+  if (!loadChar(c,getLoadingFlags(parameter)))   return null;
   GlyphSlot slot=face.getGlyph();
   FreeType.Glyph mainGlyph=slot.getGlyph();
   try {
