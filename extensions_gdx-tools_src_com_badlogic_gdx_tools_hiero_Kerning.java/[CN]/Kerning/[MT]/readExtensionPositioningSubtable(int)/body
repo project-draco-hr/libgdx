@@ -1,0 +1,6 @@
+{
+  int type=input.readUnsignedShort();
+  if (type == 1) {
+    readExtensionPositioningFormat1(subTablePosition);
+  }
+}

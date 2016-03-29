@@ -1,0 +1,5 @@
+{
+  int lookupType=input.readUnsignedShort();
+  int lookupPosition=subTablePosition + (int)input.readUnsignedLong();
+  readSubtable(lookupType,lookupPosition);
+}
