@@ -290,7 +290,7 @@ if (p == eof) break;
 }
 }
 p--;
-while (data[p] == ' ') p--;
+while (Character.isSpace(data[p])) p--;
 }
 break;
 case 8:
