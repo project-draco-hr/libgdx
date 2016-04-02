@@ -1,0 +1,7 @@
+{
+  if (building)   throw new GdxRuntimeException("Call end() after calling begin()");
+  building=true;
+  builder.begin(mesh.getVertexAttributes());
+  builder.part(id,primitiveType,renderable.meshPart);
+  return builder;
+}

@@ -1,0 +1,16 @@
+{
+  Vector3[] planePoints=camera.frustum.planePoints;
+  build(builder,camera.frustum,frustumColor,crossColor);
+  builder.line(planePoints[0],coneColor,camera.position,coneColor);
+  builder.line(planePoints[1],coneColor,camera.position,coneColor);
+  builder.line(planePoints[2],coneColor,camera.position,coneColor);
+  builder.line(planePoints[3],coneColor,camera.position,coneColor);
+  builder.line(camera.position,targetColor,centerPoint(planePoints[4],planePoints[5],planePoints[6]),targetColor);
+  float halfNearSize=tmpV0.set(planePoints[1]).sub(planePoints[0]).scl(0.5f).len();
+  Vector3 centerNear=centerPoint(planePoints[0],planePoints[1],planePoints[2]);
+  tmpV0.set(camera.up).scl(halfNearSize * 2);
+  centerNear.add(tmpV0);
+  builder.line(centerNear,upColor,planePoints[2],upColor);
+  builder.line(planePoints[2],upColor,planePoints[3],upColor);
+  builder.line(planePoints[3],upColor,centerNear,upColor);
+}

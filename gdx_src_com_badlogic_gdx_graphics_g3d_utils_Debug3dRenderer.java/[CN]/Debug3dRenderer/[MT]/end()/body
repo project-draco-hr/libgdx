@@ -1,0 +1,5 @@
+{
+  if (!building)   throw new GdxRuntimeException("Call begin() prior to calling end()");
+  building=false;
+  builder.end(mesh);
+}

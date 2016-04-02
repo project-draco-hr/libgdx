@@ -1,0 +1,7 @@
+{
+  mesh=new Mesh(false,maxVertices,maxIndices,attributes);
+  builder=new MeshBuilder();
+  renderable.meshPart.mesh=mesh;
+  renderable.meshPart.primitiveType=primitiveType;
+  renderable.material=new Material();
+}
