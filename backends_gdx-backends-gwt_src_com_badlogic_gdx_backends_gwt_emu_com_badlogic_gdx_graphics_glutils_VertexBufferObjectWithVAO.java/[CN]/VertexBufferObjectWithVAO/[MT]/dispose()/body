@@ -3,10 +3,5 @@
   gl.glBindBuffer(GL20.GL_ARRAY_BUFFER,0);
   gl.glDeleteBuffer(bufferHandle);
   bufferHandle=0;
-  if (gl.glIsVertexArray(vaoHandle)) {
-    tmpHandle.clear();
-    tmpHandle.put(vaoHandle);
-    tmpHandle.flip();
-    gl.glDeleteVertexArrays(1,tmpHandle);
-  }
+  deleteVAO();
 }

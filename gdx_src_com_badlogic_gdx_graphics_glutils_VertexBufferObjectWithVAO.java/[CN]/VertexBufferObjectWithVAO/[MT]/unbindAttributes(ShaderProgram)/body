@@ -1,0 +1,13 @@
+{
+  if (cachedLocations.size == 0) {
+    return;
+  }
+  int numAttributes=attributes.size();
+  for (int i=0; i < numAttributes; i++) {
+    int location=cachedLocations.get(i);
+    if (location < 0) {
+      continue;
+    }
+    shaderProgram.disableVertexAttribute(location);
+  }
+}

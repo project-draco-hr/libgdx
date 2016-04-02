@@ -1,0 +1,9 @@
+{
+  if (vaoHandle != -1) {
+    tmpHandle.clear();
+    tmpHandle.put(vaoHandle);
+    tmpHandle.flip();
+    Gdx.gl30.glDeleteVertexArrays(1,tmpHandle);
+    vaoHandle=-1;
+  }
+}
