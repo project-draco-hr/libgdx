@@ -1,0 +1,8 @@
+{
+  final float hw=width * 0.5f;
+  final float hh=height * 0.5f;
+  final float hd=depth * 0.5f;
+  final float x0=x - hw, y0=y - hh, z0=z - hd, x1=x + hw, y1=y + hh, z1=z + hd;
+  build(builder,obtainV3().set(x0,y0,z0),obtainV3().set(x0,y1,z0),obtainV3().set(x1,y0,z0),obtainV3().set(x1,y1,z0),obtainV3().set(x0,y0,z1),obtainV3().set(x0,y1,z1),obtainV3().set(x1,y0,z1),obtainV3().set(x1,y1,z1));
+  freeAll();
+}

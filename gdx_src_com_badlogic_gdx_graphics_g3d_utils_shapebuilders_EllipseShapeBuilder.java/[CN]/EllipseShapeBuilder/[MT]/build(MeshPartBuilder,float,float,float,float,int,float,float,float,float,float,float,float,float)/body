@@ -1,0 +1,7 @@
+{
+  tmpV1.set(normalX,normalY,normalZ).crs(0,0,1);
+  tmpV2.set(normalX,normalY,normalZ).crs(0,1,0);
+  if (tmpV2.len2() > tmpV1.len2())   tmpV1.set(tmpV2);
+  tmpV2.set(tmpV1.nor()).crs(normalX,normalY,normalZ).nor();
+  build(builder,width,height,innerWidth,innerHeight,divisions,centerX,centerY,centerZ,normalX,normalY,normalZ,tmpV1.x,tmpV1.y,tmpV1.z,tmpV2.x,tmpV2.y,tmpV2.z,angleFrom,angleTo);
+}

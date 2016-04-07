@@ -1,0 +1,4 @@
+{
+  build(builder,obtainV3().set(-0.5f,-0.5f,-0.5f).mul(transform),obtainV3().set(-0.5f,0.5f,-0.5f).mul(transform),obtainV3().set(0.5f,-0.5f,-0.5f).mul(transform),obtainV3().set(0.5f,0.5f,-0.5f).mul(transform),obtainV3().set(-0.5f,-0.5f,0.5f).mul(transform),obtainV3().set(-0.5f,0.5f,0.5f).mul(transform),obtainV3().set(0.5f,-0.5f,0.5f).mul(transform),obtainV3().set(0.5f,0.5f,0.5f).mul(transform));
+  freeAll();
+}

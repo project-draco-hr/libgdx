@@ -1,15 +1,3 @@
 {
-  if (divisionsU < 1 || divisionsV < 1) {
-    throw new GdxRuntimeException("divisionsU and divisionV must be > 0, u,v: " + divisionsU + ", "+ divisionsV);
-  }
-  ensureRectangles((divisionsV + 1) * (divisionsU + 1),divisionsV * divisionsU);
-  for (int u=0; u <= divisionsU; u++) {
-    final float alphaU=(float)u / (float)divisionsU;
-    vertTmp5.set(corner00).lerp(corner10,alphaU);
-    vertTmp6.set(corner01).lerp(corner11,alphaU);
-    for (int v=0; v <= divisionsV; v++) {
-      final short idx=vertex(vertTmp7.set(vertTmp5).lerp(vertTmp6,(float)v / (float)divisionsV));
-      if (u > 0 && v > 0)       rect((short)(idx - divisionsV - 2),(short)(idx - 1),idx,(short)(idx - divisionsV - 1));
-    }
-  }
+  PatchShapeBuilder.build(this,corner00,corner10,corner11,corner01,divisionsU,divisionsV);
 }
