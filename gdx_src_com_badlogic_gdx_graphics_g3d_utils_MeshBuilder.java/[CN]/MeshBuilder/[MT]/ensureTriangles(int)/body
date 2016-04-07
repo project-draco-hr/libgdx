@@ -1,3 +1,4 @@
 {
-  ensureTriangles(3 * numTriangles,numTriangles);
+  ensureVertices(3 * numTriangles);
+  ensureTriangleIndices(numTriangles);
 }

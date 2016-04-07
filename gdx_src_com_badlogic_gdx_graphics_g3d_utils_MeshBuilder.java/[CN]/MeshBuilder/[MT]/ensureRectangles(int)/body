@@ -1,3 +1,4 @@
 {
-  ensureRectangles(4 * numRectangles,numRectangles);
+  ensureVertices(4 * numRectangles);
+  ensureRectangleIndices(numRectangles);
 }

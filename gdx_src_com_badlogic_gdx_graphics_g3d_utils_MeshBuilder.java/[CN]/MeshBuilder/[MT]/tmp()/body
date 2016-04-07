@@ -1,5 +1,0 @@
-{
-  final Matrix4 result=matrices4Pool.obtain().idt();
-  matrices4Array.add(result);
-  return result;
-}

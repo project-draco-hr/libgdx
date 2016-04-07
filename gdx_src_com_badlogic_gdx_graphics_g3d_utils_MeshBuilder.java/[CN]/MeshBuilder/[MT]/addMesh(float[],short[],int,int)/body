@@ -8,7 +8,7 @@
   final int numVertices=vertices.length / stride;
   ensureVertices(numVertices < numIndices ? numVertices : numIndices);
   for (int i=0; i < numIndices; i++) {
-    final int sidx=indices[i];
+    final int sidx=indices[indexOffset + i];
     int didx=indicesMap.get(sidx,-1);
     if (didx < 0) {
       addVertex(vertices,sidx * stride);

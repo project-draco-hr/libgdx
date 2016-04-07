@@ -1,7 +1,3 @@
 {
-  tempV1.set(normalX,normalY,normalZ).crs(0,0,1);
-  tempV2.set(normalX,normalY,normalZ).crs(0,1,0);
-  if (tempV2.len2() > tempV1.len2())   tempV1.set(tempV2);
-  tempV2.set(tempV1.nor()).crs(normalX,normalY,normalZ).nor();
-  ellipse(width,height,innerWidth,innerHeight,divisions,centerX,centerY,centerZ,normalX,normalY,normalZ,tempV1.x,tempV1.y,tempV1.z,tempV2.x,tempV2.y,tempV2.z,angleFrom,angleTo);
+  EllipseShapeBuilder.build(this,width,height,innerWidth,innerHeight,divisions,centerX,centerY,centerZ,normalX,normalY,normalZ,angleFrom,angleTo);
 }

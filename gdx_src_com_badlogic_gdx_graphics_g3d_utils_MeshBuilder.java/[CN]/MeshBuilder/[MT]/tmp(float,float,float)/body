@@ -1,5 +1,0 @@
-{
-  final Vector3 result=vectorPool.obtain().set(x,y,z);
-  vectorArray.add(result);
-  return result;
-}
