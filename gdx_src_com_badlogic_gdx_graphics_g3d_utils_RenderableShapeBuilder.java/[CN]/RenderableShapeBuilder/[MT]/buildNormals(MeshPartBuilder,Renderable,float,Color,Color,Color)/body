@@ -1,0 +1,55 @@
+{
+  Mesh mesh=renderable.meshPart.mesh;
+  int positionOffset=-1;
+  if (mesh.getVertexAttribute(Usage.Position) != null)   positionOffset=mesh.getVertexAttribute(Usage.Position).offset / FLOAT_BYTES;
+  int normalOffset=-1;
+  if (mesh.getVertexAttribute(Usage.Normal) != null)   normalOffset=mesh.getVertexAttribute(Usage.Normal).offset / FLOAT_BYTES;
+  int tangentOffset=-1;
+  if (mesh.getVertexAttribute(Usage.Tangent) != null)   tangentOffset=mesh.getVertexAttribute(Usage.Tangent).offset / FLOAT_BYTES;
+  int binormalOffset=-1;
+  if (mesh.getVertexAttribute(Usage.BiNormal) != null)   binormalOffset=mesh.getVertexAttribute(Usage.BiNormal).offset / FLOAT_BYTES;
+  int attributesSize=mesh.getVertexSize() / FLOAT_BYTES;
+  ensureVerticesCapacity(attributesSize);
+  int i=renderable.meshPart.offset;
+  int last=i + renderable.meshPart.size;
+  while (i < last) {
+    if (mesh.getNumIndices() > 0) {
+      mesh.getIndices(i,1,indices,0);
+      mesh.getVertices(indices[0] * attributesSize,attributesSize,vertices,0);
+      i++;
+    }
+ else {
+      mesh.getVertices(i * attributesSize,attributesSize,vertices,0);
+      i+=attributesSize;
+    }
+    tmpV0.set(vertices[positionOffset],vertices[positionOffset + 1],vertices[positionOffset + 2]);
+    if (normalOffset != -1) {
+      tmpV1.set(vertices[normalOffset],vertices[normalOffset + 1],vertices[normalOffset + 2]);
+      tmpV2.set(tmpV0).add(tmpV1.scl(vectorSize));
+    }
+    if (tangentOffset != -1) {
+      tmpV3.set(vertices[tangentOffset],vertices[tangentOffset + 1],vertices[tangentOffset + 2]);
+      tmpV4.set(tmpV0).add(tmpV3.scl(vectorSize));
+    }
+    if (binormalOffset != -1) {
+      tmpV5.set(vertices[binormalOffset],vertices[binormalOffset + 1],vertices[binormalOffset + 2]);
+      tmpV6.set(tmpV0).add(tmpV5.scl(vectorSize));
+    }
+    tmpV0.mul(renderable.worldTransform);
+    tmpV2.mul(renderable.worldTransform);
+    tmpV4.mul(renderable.worldTransform);
+    tmpV6.mul(renderable.worldTransform);
+    if (normalOffset != -1) {
+      builder.setColor(normalColor);
+      builder.line(tmpV0,tmpV2);
+    }
+    if (tangentOffset != -1) {
+      builder.setColor(tangentColor);
+      builder.line(tmpV0,tmpV4);
+    }
+    if (binormalOffset != -1) {
+      builder.setColor(binormalColor);
+      builder.line(tmpV0,tmpV6);
+    }
+  }
+}

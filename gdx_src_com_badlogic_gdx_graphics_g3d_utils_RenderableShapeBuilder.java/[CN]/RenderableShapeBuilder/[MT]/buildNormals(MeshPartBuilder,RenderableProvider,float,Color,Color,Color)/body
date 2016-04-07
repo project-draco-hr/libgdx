@@ -1,0 +1,8 @@
+{
+  renderableProvider.getRenderables(renderables,renderablesPool);
+  for (  Renderable renderable : renderables) {
+    buildNormals(builder,renderable,vectorSize,normalColor,tangentColor,binormalColor);
+  }
+  renderablesPool.flush();
+  renderables.clear();
+}
