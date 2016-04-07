@@ -1,4 +1,4 @@
 {
-  isPlaying&=sound.getPlayState() == 1;
+  isPlaying=!sound.getPaused() && sound.getPlayState() == 1;
   return isPlaying;
 }
