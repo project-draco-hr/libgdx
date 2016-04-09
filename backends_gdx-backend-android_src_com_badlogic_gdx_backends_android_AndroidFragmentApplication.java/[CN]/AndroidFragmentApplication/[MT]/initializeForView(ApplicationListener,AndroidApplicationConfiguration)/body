@@ -9,6 +9,7 @@
   net=new AndroidNet(this);
   this.listener=listener;
   this.handler=new Handler();
+  this.clipboard=new AndroidClipboard(getActivity());
   addLifecycleListener(new LifecycleListener(){
     @Override public void resume(){
       audio.resume();
