@@ -12,6 +12,7 @@
   this.handler=new Handler();
   this.useImmersiveMode=config.useImmersiveMode;
   this.hideStatusBar=config.hideStatusBar;
+  this.clipboard=new AndroidClipboard(this);
   addLifecycleListener(new LifecycleListener(){
     @Override public void resume(){
     }
