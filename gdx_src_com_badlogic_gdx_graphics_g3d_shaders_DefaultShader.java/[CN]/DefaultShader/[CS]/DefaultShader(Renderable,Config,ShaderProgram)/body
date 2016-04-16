@@ -21,6 +21,7 @@
   u_cameraPosition=register(Inputs.cameraPosition,Setters.cameraPosition);
   u_cameraDirection=register(Inputs.cameraDirection,Setters.cameraDirection);
   u_cameraUp=register(Inputs.cameraUp,Setters.cameraUp);
+  u_cameraNearFar=register(Inputs.cameraNearFar,Setters.cameraNearFar);
   u_time=register(new Uniform("u_time"));
   u_worldTrans=register(Inputs.worldTrans,Setters.worldTrans);
   u_viewWorldTrans=register(Inputs.viewWorldTrans,Setters.viewWorldTrans);
