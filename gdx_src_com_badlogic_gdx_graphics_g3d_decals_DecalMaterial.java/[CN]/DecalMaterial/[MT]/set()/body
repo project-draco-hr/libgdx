@@ -1,5 +1,5 @@
 {
-  textureRegion.getTexture().bind();
+  textureRegion.getTexture().bind(0);
   if (!isOpaque()) {
     Gdx.gl.glBlendFunc(srcBlendFactor,dstBlendFactor);
   }
