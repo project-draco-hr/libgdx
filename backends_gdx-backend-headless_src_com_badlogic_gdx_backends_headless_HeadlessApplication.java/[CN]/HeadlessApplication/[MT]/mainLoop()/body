@@ -1,7 +1,6 @@
 {
   Array<LifecycleListener> lifecycleListeners=this.lifecycleListeners;
   listener.create();
-  boolean wasActive=true;
   long t=TimeUtils.nanoTime() + renderInterval;
   if (renderInterval >= 0f) {
     while (running) {
