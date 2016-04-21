@@ -1,6 +1,7 @@
 {
   write(wr,"buildscript {");
   write(wr,"repositories {");
+  write(wr,DependencyBank.mavenLocal);
   write(wr,DependencyBank.mavenCentral);
   write(wr,"maven { url \"" + DependencyBank.libGDXSnapshotsUrl + "\" }");
   if (projects.contains(ProjectType.HTML)) {
