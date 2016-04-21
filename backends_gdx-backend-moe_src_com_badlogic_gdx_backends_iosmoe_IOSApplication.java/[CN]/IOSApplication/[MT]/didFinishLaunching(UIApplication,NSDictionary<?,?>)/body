@@ -1,0 +1,42 @@
+{
+  Gdx.app=this;
+  this.uiApp=uiApp;
+  UIApplication.sharedApplication().setIdleTimerDisabled(config.preventScreenDimming);
+  Gdx.app.debug("IOSApplication","iOS version: " + UIDevice.currentDevice().systemVersion());
+  float scale=(float)(getIosVersion() >= 8 ? UIScreen.mainScreen().nativeScale() : UIScreen.mainScreen().nativeScale());
+  if (scale >= 2.0f) {
+    Gdx.app.debug("IOSApplication","scale: " + scale);
+    if (UIDevice.currentDevice().userInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfRetina * scale;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfRetina * scale;
+    }
+  }
+ else {
+    if (UIDevice.currentDevice().userInterfaceIdiom() == UIUserInterfaceIdiom.Pad) {
+      displayScaleFactor=config.displayScaleLargeScreenIfNonRetina;
+    }
+ else {
+      displayScaleFactor=config.displayScaleSmallScreenIfNonRetina;
+    }
+  }
+  this.input=new IOSInput(this);
+  this.graphics=IOSGraphics.alloc().init(scale,this,config,input,config.useGL30);
+  Gdx.gl=Gdx.gl20=graphics.gl20;
+  Gdx.gl30=graphics.gl30;
+  this.files=new IOSFiles();
+  this.audio=new IOSAudio(config);
+  this.net=new IOSNet(this);
+  Gdx.files=this.files;
+  Gdx.graphics=this.graphics;
+  Gdx.audio=this.audio;
+  Gdx.input=this.input;
+  Gdx.net=this.net;
+  this.input.setupPeripherals();
+  this.uiWindow=UIWindow.alloc().initWithFrame(UIScreen.mainScreen().bounds());
+  this.uiWindow.setRootViewController(this.graphics.viewController);
+  this.uiWindow.makeKeyAndVisible();
+  Gdx.app.debug("IOSApplication","created");
+  return true;
+}

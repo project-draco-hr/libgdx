@@ -1,0 +1,5 @@
+{
+  NSNumber value=(NSNumber)nsDictionary.get(convertKey(key));
+  if (value == null)   return false;
+  return value.boolValue();
+}

@@ -69,6 +69,8 @@
     project.files.add(new ProjectFile("ios/robovm.properties"));
     project.files.add(new ProjectFile("ios/robovm.xml",true));
   }
+  if (builder.modules.contains(ProjectType.IOSMOE)) {
+  }
   Map<String,String> values=new HashMap<String,String>();
   values.put("%APP_NAME%",appName);
   values.put("%APP_NAME_ESCAPED%",appName.replace("'","\\'"));

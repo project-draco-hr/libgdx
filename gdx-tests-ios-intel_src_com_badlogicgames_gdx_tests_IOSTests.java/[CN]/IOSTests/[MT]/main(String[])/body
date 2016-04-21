@@ -1,0 +1,5 @@
+{
+  NSAutoreleasePool pool=NSAutoreleasePool.alloc();
+  UIKit.UIApplicationMain(0,null,null,IOSTests.class.getName());
+  pool.dealloc();
+}

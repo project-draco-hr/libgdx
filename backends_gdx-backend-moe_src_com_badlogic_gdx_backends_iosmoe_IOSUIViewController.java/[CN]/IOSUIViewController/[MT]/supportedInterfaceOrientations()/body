@@ -1,0 +1,10 @@
+{
+  long mask=0;
+  if (app.config.orientationLandscape) {
+    mask|=((1 << UIInterfaceOrientation.LandscapeLeft) | (1 << UIInterfaceOrientation.LandscapeRight));
+  }
+  if (app.config.orientationPortrait) {
+    mask|=((1 << UIInterfaceOrientation.Portrait) | (1 << UIInterfaceOrientation.PortraitUpsideDown));
+  }
+  return mask;
+}

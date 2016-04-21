@@ -1,0 +1,10 @@
+{
+  Object __old=delegate();
+  if (value != null) {
+    ObjCRuntime.associateObjCObject(this,value);
+  }
+  setDelegate_unsafe(value);
+  if (__old != null) {
+    ObjCRuntime.dissociateObjCObject(this,__old);
+  }
+}

@@ -1,0 +1,11 @@
+{
+  File libraryPath=new File(System.getenv("HOME"),"Library");
+  File finalPath=new File(libraryPath,name + ".plist");
+  String path=libraryPath + "/" + name+ ".plist";
+  NSMutableDictionary<NSString,NSObject> nsDictionary=NSMutableDictionary.dictionaryWithContentsOfFile(path);
+  if (nsDictionary == null) {
+    nsDictionary=(NSMutableDictionary<NSString,NSObject>)NSMutableDictionary.alloc();
+    nsDictionary.writeToFileAtomically(path,false);
+  }
+  return new IOSPreferences(nsDictionary,finalPath.getAbsolutePath());
+}

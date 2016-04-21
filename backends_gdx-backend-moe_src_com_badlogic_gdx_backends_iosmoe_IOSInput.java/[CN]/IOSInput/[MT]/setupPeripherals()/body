@@ -1,0 +1,7 @@
+{
+  motionManager=CMMotionManager.alloc();
+  setupAccelerometer();
+  setupCompass();
+  UIDevice device=UIDevice.currentDevice();
+  if (device.model().equalsIgnoreCase("iphone"))   hasVibrator=true;
+}

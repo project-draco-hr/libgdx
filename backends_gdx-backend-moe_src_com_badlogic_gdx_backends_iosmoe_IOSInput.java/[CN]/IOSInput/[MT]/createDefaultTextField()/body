@@ -1,0 +1,12 @@
+{
+  textfield=UITextField.alloc();
+  textfield.initWithFrame(new CGRect(new CGPoint(10,10),new CGSize(100,50)));
+  textfield.setKeyboardType(UIKeyboardType.Default);
+  textfield.setReturnKeyType(UIReturnKeyType.Done);
+  textfield.setAutocapitalizationType(UITextAutocapitalizationType.None);
+  textfield.setAutocorrectionType(UITextAutocorrectionType.No);
+  textfield.setSpellCheckingType(UITextSpellCheckingType.No);
+  textfield.setHidden(true);
+  textfield.setText("x");
+  app.getUIViewController().view().addSubview(textfield);
+}

@@ -1,0 +1,18 @@
+{
+  this.track=track;
+  AVAudioPlayerDelegate delegate=new AVAudioPlayerDelegate(){
+    @Override public void audioPlayerDidFinishPlayingSuccessfully(    AVAudioPlayer player,    boolean flag){
+      final OnCompletionListener listener=onCompletionListener;
+      if (onCompletionListener != null) {
+        Gdx.app.postRunnable(new Runnable(){
+          @Override public void run(){
+            listener.onCompletion(IOSMusic.this);
+          }
+        }
+);
+      }
+    }
+  }
+;
+  this.track.setDelegate(delegate);
+}

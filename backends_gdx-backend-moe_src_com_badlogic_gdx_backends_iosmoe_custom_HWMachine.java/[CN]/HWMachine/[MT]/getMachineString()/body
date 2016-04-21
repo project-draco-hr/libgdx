@@ -1,0 +1,8 @@
+{
+  String name="hw.machine";
+  IntPtr sizePtr=PtrFactory.newIntPtr(BufferUtils.newIntBuffer(1));
+  sysctlbyname(name,null,sizePtr,null,0);
+  BytePtr machine=PtrFactory.newBytePtr(sizePtr.get(),true,true);
+  sysctlbyname(name,machine,sizePtr,null,0);
+  return machine.toUTF8String();
+}
