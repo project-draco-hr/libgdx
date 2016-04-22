@@ -1,0 +1,5 @@
+{
+  if (a == null || b == null)   return false;
+  boolean equal=a.bitsPerPixel == b.bitsPerPixel && a.height == b.height && a.refreshRate == b.refreshRate && a.width == b.width;
+  return equal;
+}
