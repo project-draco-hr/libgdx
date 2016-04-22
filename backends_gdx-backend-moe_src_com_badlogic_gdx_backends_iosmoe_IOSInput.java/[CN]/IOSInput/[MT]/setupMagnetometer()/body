@@ -8,5 +8,5 @@
     }
   }
 ;
-  motionManager.startMagnetometerUpdatesToQueueWithHandler(NSOperationQueue.alloc(),handler);
+  motionManager.startMagnetometerUpdatesToQueueWithHandler(NSOperationQueue.alloc().init(),handler);
 }

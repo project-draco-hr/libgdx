@@ -7,6 +7,6 @@
       }
     }
 ;
-    motionManager.startAccelerometerUpdatesToQueueWithHandler(NSOperationQueue.alloc(),handler);
+    motionManager.startAccelerometerUpdatesToQueueWithHandler(NSOperationQueue.alloc().init(),handler);
   }
 }

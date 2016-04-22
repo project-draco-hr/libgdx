@@ -1,5 +1,5 @@
 {
-  motionManager=CMMotionManager.alloc();
+  motionManager=CMMotionManager.alloc().init();
   setupAccelerometer();
   setupCompass();
   UIDevice device=UIDevice.currentDevice();
