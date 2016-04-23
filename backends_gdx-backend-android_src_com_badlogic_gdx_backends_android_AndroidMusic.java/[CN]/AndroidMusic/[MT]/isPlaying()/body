@@ -1,4 +1,10 @@
 {
   if (player == null)   return false;
-  return player.isPlaying();
+  try {
+    return player.isPlaying();
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return false;
+  }
 }
