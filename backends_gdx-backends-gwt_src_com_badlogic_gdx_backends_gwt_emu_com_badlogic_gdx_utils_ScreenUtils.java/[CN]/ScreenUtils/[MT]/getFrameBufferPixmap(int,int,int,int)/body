@@ -1,0 +1,8 @@
+{
+  Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT,1);
+  final Pixmap pixmap=new Pixmap(w,h,Format.RGBA8888);
+  ByteBuffer pixels=BufferUtils.newByteBuffer(h * w * 4);
+  Gdx.gl.glReadPixels(x,y,w,h,GL20.GL_RGBA,GL20.GL_UNSIGNED_BYTE,pixels);
+  putPixelsBack(pixmap,pixels);
+  return pixmap;
+}
