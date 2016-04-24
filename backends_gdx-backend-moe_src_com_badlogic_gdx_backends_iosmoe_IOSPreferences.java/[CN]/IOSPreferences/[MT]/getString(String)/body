@@ -1,5 +1,5 @@
 {
-  NSString value=(NSString)nsDictionary.get(convertKey(key));
+  Object value=nsDictionary.get(convertKey(key));
   if (value == null)   return "";
   return value.toString();
 }
