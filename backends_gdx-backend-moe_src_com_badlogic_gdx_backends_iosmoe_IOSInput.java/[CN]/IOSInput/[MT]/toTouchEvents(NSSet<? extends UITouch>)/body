@@ -17,7 +17,7 @@ synchronized (touchEvents) {
       touchEvents.add(event);
       if (phase == UITouchPhase.Began) {
         event.pointer=getFreePointer();
-        touchDown[event.pointer]=0;
+        touchDown[event.pointer]=touch;
         touchX[event.pointer]=event.x;
         touchY[event.pointer]=event.y;
         deltaX[event.pointer]=0;
@@ -33,7 +33,7 @@ synchronized (touchEvents) {
       }
       if (phase == UITouchPhase.Cancelled || phase == UITouchPhase.Ended) {
         event.pointer=findPointer(touch);
-        touchDown[event.pointer]=0;
+        touchDown[event.pointer]=null;
         touchX[event.pointer]=event.x;
         touchY[event.pointer]=event.y;
         deltaX[event.pointer]=0;

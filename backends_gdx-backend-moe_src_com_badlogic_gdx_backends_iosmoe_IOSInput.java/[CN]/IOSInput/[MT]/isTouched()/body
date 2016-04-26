@@ -1,6 +1,6 @@
 {
   for (int pointer=0; pointer < MAX_TOUCHES; pointer++) {
-    if (touchDown[pointer] != 0) {
+    if (touchDown[pointer] != null) {
       return true;
     }
   }
