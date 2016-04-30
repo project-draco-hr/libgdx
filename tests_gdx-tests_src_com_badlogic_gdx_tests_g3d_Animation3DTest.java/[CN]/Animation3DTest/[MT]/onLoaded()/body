@@ -18,5 +18,12 @@
     animation.animate("Idle",-1,1f,null,0.2f);
     status=idle;
     for (    Animation anim : character.animations)     Gdx.app.log("Test",anim.id);
+    ship=assets.get("data/g3d/ship.obj",Model.class).nodes.get(0).copy();
+    ship.detach();
+    ship.translation.x=10f;
+    ship.rotation.set(Vector3.Z,90f);
+    ship.scale.scl(5f);
+    ship.parts.get(0).enabled=false;
+    character.getNode("sword").addChild(ship);
   }
 }

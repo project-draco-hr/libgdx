@@ -12,6 +12,7 @@
   assets.load("data/g3d/skydome.g3db",Model.class);
   assets.load("data/g3d/concrete.png",Texture.class);
   assets.load("data/tree.png",Texture.class);
+  assets.load("data/g3d/ship.obj",Model.class);
   loading=true;
   trForward.translation.set(0,0,8f);
   trBackward.translation.set(0,0,-8f);
