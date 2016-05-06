@@ -2,5 +2,5 @@
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
   config.useAccelerometer=false;
   config.useGL30=false;
-  return new IOSApplication(new BulletTestCollection(),config);
+  return new IOSApplication(new SpriteBatchTest(),config);
 }
