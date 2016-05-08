@@ -1,0 +1,4 @@
+{
+  if (pixmap.getWidth() == 0 || pixmap.getHeight() == 0)   return;
+  putPixelsBack(((HasArrayBufferView)pixels).getTypedArray(),pixmap.getWidth(),pixmap.getHeight(),pixmap.getContext());
+}

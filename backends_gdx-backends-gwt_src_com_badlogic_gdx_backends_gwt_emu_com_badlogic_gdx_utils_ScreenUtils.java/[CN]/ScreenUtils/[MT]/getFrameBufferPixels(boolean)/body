@@ -1,0 +1,5 @@
+{
+  final int w=Gdx.graphics.getBackBufferWidth();
+  final int h=Gdx.graphics.getBackBufferHeight();
+  return getFrameBufferPixels(0,0,w,h,flipY);
+}

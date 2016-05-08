@@ -1,6 +1,12 @@
 {
   if (player == null)   return;
-  if (player.isPlaying())   return;
+  try {
+    if (player.isPlaying())     return;
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return;
+  }
   try {
     if (!isPrepared) {
       player.prepare();

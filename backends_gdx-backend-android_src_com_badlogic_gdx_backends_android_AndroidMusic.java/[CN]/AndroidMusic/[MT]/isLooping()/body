@@ -1,4 +1,10 @@
 {
   if (player == null)   return false;
-  return player.isLooping();
+  try {
+    return player.isLooping();
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
+    return false;
+  }
 }

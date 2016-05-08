@@ -1,7 +1,12 @@
 {
   if (player == null)   return;
-  if (player.isPlaying()) {
-    player.pause();
+  try {
+    if (player.isPlaying()) {
+      player.pause();
+    }
+  }
+ catch (  Exception e) {
+    e.printStackTrace();
   }
   wasPlaying=false;
 }

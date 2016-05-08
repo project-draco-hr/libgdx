@@ -1,0 +1,12 @@
+{
+  DisplayMode displayMode=Gdx.graphics.getDisplayMode();
+  DisplayMode displayModeForMonitor=Gdx.graphics.getDisplayMode(Gdx.graphics.getMonitor());
+  DisplayMode[] displayModes=Gdx.graphics.getDisplayModes();
+  DisplayMode[] displayModesForMonitor=Gdx.graphics.getDisplayModes(Gdx.graphics.getMonitor());
+  Gdx.app.log("DisplayModeTest","Display mode (using Gdx.graphics.getDisplayMode() ) : " + displayMode);
+  Gdx.app.log("DisplayModeTest","Display mode (using Gdx.graphics.getDisplayMode(Gdx.graphics.getMonitor()) ) : " + Arrays.toString(displayModes));
+  Gdx.app.log("DisplayModeTest","Display mode (using Gdx.graphics.getDisplayModes() ) : " + Arrays.toString(displayModesForMonitor));
+  Gdx.app.log("DisplayModeTest","Display mode (using Gdx.graphics.getDisplayModes(Gdx.graphics.getMonitor()) ): " + displayModeForMonitor);
+  assertDisplayModeEquals(displayMode,displayModeForMonitor);
+  assertDisplayModesEquals(displayModes,displayModesForMonitor);
+}
