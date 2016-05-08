@@ -1,0 +1,6 @@
+{
+  truncate(newSize);
+  if (newSize > items.length)   resize(Math.max(8,newSize));
+  size=newSize;
+  return items;
+}
