@@ -1,0 +1,28 @@
+{
+  final CGRect screenBounds=UIScreen.mainScreen().bounds();
+  final CGRect statusBarFrame=uiApp.statusBarFrame();
+  final long statusBarOrientation=uiApp.statusBarOrientation();
+  double statusBarHeight=Math.min(statusBarFrame.size().width(),statusBarFrame.size().height());
+  double screenWidth=screenBounds.size().width();
+  double screenHeight=screenBounds.size().height();
+  if (statusBarOrientation == UIInterfaceOrientation.LandscapeLeft || statusBarOrientation == UIInterfaceOrientation.LandscapeRight) {
+    if (screenHeight > screenWidth) {
+      debug("IOSApplication","Switching reported width and height (w=" + screenWidth + " h="+ screenHeight+ ")");
+      double tmp=screenHeight;
+      screenHeight=screenWidth;
+      screenWidth=tmp;
+    }
+  }
+  screenWidth*=displayScaleFactor;
+  screenHeight*=displayScaleFactor;
+  if (statusBarHeight != 0.0) {
+    debug("IOSApplication","Status bar is visible (height = " + statusBarHeight + ")");
+    statusBarHeight*=displayScaleFactor;
+    screenHeight-=statusBarHeight;
+  }
+ else {
+    debug("IOSApplication","Status bar is not visible");
+  }
+  debug("IOSApplication","Total computed bounds are w=" + screenWidth + " h="+ screenHeight);
+  return lastScreenBounds=new CGRect(new CGPoint(0,statusBarHeight),new CGSize(screenWidth,screenHeight));
+}

@@ -1,0 +1,7 @@
+{
+  long ptr=0;
+  for (int i=0; i < touchDown.length; i++) {
+    if (touchDown[i] == touch)     return i;
+  }
+  throw new GdxRuntimeException("Couldn't find pointer id for touch event!");
+}

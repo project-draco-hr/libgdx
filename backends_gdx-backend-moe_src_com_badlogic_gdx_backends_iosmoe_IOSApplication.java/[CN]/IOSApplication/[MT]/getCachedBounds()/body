@@ -1,0 +1,4 @@
+{
+  if (lastScreenBounds == null)   return getBounds();
+ else   return lastScreenBounds;
+}

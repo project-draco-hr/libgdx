@@ -1,0 +1,45 @@
+{
+  for (  UITouch touch : touches.allObjects()) {
+    final int locX, locY;
+{
+      CGPoint loc=touch.locationInView(touch.window());
+      final CGRect bounds=app.getCachedBounds();
+      locX=(int)(loc.x() * app.displayScaleFactor - bounds.origin().x());
+      locY=(int)(loc.y() * app.displayScaleFactor - bounds.origin().y());
+    }
+synchronized (touchEvents) {
+      long phase=touch.phase();
+      TouchEvent event=touchEventPool.obtain();
+      event.x=locX;
+      event.y=locY;
+      event.phase=phase;
+      event.timestamp=(long)(touch.timestamp() * 1000000000);
+      touchEvents.add(event);
+      if (phase == UITouchPhase.Began) {
+        event.pointer=getFreePointer();
+        touchDown[event.pointer]=touch;
+        touchX[event.pointer]=event.x;
+        touchY[event.pointer]=event.y;
+        deltaX[event.pointer]=0;
+        deltaY[event.pointer]=0;
+        numTouched++;
+      }
+      if (phase == UITouchPhase.Moved || phase == UITouchPhase.Stationary) {
+        event.pointer=findPointer(touch);
+        deltaX[event.pointer]=event.x - touchX[event.pointer];
+        deltaY[event.pointer]=event.y - touchY[event.pointer];
+        touchX[event.pointer]=event.x;
+        touchY[event.pointer]=event.y;
+      }
+      if (phase == UITouchPhase.Cancelled || phase == UITouchPhase.Ended) {
+        event.pointer=findPointer(touch);
+        touchDown[event.pointer]=null;
+        touchX[event.pointer]=event.x;
+        touchY[event.pointer]=event.y;
+        deltaX[event.pointer]=0;
+        deltaY[event.pointer]=0;
+        numTouched--;
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  if (orientation == UIInterfaceOrientation.LandscapeLeft || orientation == UIInterfaceOrientation.LandscapeRight)   return app.config.orientationLandscape;
+ else   return app.config.orientationPortrait;
+}

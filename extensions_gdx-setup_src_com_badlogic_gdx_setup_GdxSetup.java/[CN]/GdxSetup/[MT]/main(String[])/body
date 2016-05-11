@@ -24,12 +24,14 @@
       projects.add(ProjectType.DESKTOP);
       projects.add(ProjectType.ANDROID);
       projects.add(ProjectType.IOS);
+      projects.add(ProjectType.IOSMOE);
       projects.add(ProjectType.HTML);
     }
  else {
       if (!excludedModules.contains("desktop"))       projects.add(ProjectType.DESKTOP);
       if (!excludedModules.contains("android"))       projects.add(ProjectType.ANDROID);
       if (!excludedModules.contains("ios"))       projects.add(ProjectType.IOS);
+      if (!excludedModules.contains("iosmoe"))       projects.add(ProjectType.IOSMOE);
       if (!excludedModules.contains("html"))       projects.add(ProjectType.HTML);
     }
     List<Dependency> dependencies=new ArrayList<Dependency>();

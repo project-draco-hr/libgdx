@@ -1,0 +1,69 @@
+{
+  init();
+  this.config=config;
+  final CGRect bounds=app.getBounds();
+  width=(int)bounds.size().width();
+  height=(int)bounds.size().height();
+  if (useGLES30) {
+    context=EAGLContext.alloc().initWithAPI(EAGLRenderingAPI.GLES3);
+    ;
+    if (context != null)     gl20=gl30=new IOSGLES30();
+ else     Gdx.app.log("IOGraphics","OpenGL ES 3.0 not supported, falling back on 2.0");
+  }
+  if (context == null) {
+    context=EAGLContext.alloc().initWithAPI(EAGLRenderingAPI.GLES2);
+    gl20=new IOSGLES20();
+    gl30=null;
+  }
+  view=IOSGLKView.alloc().init(this,new CGRect(new CGPoint(0,0),new CGSize(bounds.size().width(),bounds.size().height())),context);
+  view.setDelegate(this);
+  view.setDrawableColorFormat(config.colorFormat);
+  view.setDrawableDepthFormat(config.depthFormat);
+  view.setDrawableStencilFormat(config.stencilFormat);
+  view.setDrawableMultisample(config.multisample);
+  view.setMultipleTouchEnabled(true);
+  viewController=IOSUIViewController.alloc().init(app,this);
+  viewController.setView(view);
+  viewController.setDelegate(this);
+  viewController.setPreferredFramesPerSecond(config.preferredFramesPerSecond);
+  this.app=app;
+  this.input=input;
+  int r=0, g=0, b=0, a=0, depth=0, stencil=0, samples=0;
+  if (config.colorFormat == GLKViewDrawableColorFormat.RGB565) {
+    r=5;
+    g=6;
+    b=5;
+    a=0;
+  }
+ else {
+    r=g=b=a=8;
+  }
+  if (config.depthFormat == GLKViewDrawableDepthFormat.Format16) {
+    depth=16;
+  }
+ else   if (config.depthFormat == GLKViewDrawableDepthFormat.Format24) {
+    depth=24;
+  }
+ else {
+    depth=0;
+  }
+  if (config.stencilFormat == GLKViewDrawableStencilFormat.Format8) {
+    stencil=8;
+  }
+  if (config.multisample == GLKViewDrawableMultisample.Multisample4X) {
+    samples=4;
+  }
+  bufferFormat=new BufferFormat(r,g,b,a,depth,stencil,samples,false);
+  IOSDevice device=null;
+  int ppi=device != null ? device.ppi : 163;
+  density=device != null ? device.ppi / 160f : scale;
+  ppiX=ppi;
+  ppiY=ppi;
+  ppcX=ppiX / 2.54f;
+  ppcY=ppiY / 2.54f;
+  app.debug(tag,"Display: ppi=" + ppi + ", density="+ density);
+  lastFrameTime=System.nanoTime();
+  framesStart=lastFrameTime;
+  appPaused=false;
+  return this;
+}

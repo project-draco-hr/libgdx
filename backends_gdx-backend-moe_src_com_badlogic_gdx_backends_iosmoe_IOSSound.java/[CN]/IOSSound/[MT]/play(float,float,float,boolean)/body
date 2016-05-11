@@ -1,0 +1,8 @@
+{
+  if (streamIds.size == 8)   streamIds.pop();
+  ALSource soundSource=OALSimpleAudio.sharedInstance().playBufferVolumePitchPanLoop(soundBuffer,volume,pitch,pan,loop);
+  if (soundSource == null)   return -1;
+  if (soundSource.sourceId() == -1)   return -1;
+  streamIds.insert(0,soundSource.sourceId());
+  return soundSource.sourceId();
+}

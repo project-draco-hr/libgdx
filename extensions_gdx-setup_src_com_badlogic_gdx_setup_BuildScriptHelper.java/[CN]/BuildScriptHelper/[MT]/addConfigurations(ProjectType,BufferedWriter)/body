@@ -1,5 +1,5 @@
 {
-  if (project.equals(ProjectType.ANDROID)) {
+  if (project.equals(ProjectType.ANDROID) || project.equals(ProjectType.IOSMOE)) {
     write(wr,"configurations { natives }");
   }
 }

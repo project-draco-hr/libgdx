@@ -1,0 +1,5 @@
+{
+  Object value=nsDictionary.get(convertKey(key));
+  if (value == null)   return "";
+  return value.toString();
+}

@@ -1,0 +1,8 @@
+{
+  if (track.paused()) {
+    track.setPaused(false);
+  }
+ else   if (!track.playing()) {
+    track.play();
+  }
+}

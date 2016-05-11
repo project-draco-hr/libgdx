@@ -1,0 +1,27 @@
+{
+  UIAlertViewDelegate delegate=new UIAlertViewDelegate(){
+    @Override public void alertViewClickedButtonAtIndex(    UIAlertView alertView,    @NInt long buttonIndex){
+      if (buttonIndex == 0) {
+        listener.canceled();
+      }
+ else       if (buttonIndex == 1) {
+        UITextField textField=alertView.textFieldAtIndex(0);
+        listener.input(textField.text());
+      }
+    }
+    @Override public void alertViewCancel(    UIAlertView alertView){
+      listener.canceled();
+    }
+  }
+;
+  final UIAlertView uiAlertView=UIAlertView.alloc().init();
+  uiAlertView.setTitle(title);
+  uiAlertView.addButtonWithTitle("Cancel");
+  uiAlertView.addButtonWithTitle("Ok");
+  uiAlertView.setAlertViewStyle(UIAlertViewStyle.PlainTextInput);
+  uiAlertView.setDelegate(delegate);
+  UITextField textField=uiAlertView.textFieldAtIndex(0);
+  textField.setPlaceholder(placeholder);
+  textField.setText(text);
+  return uiAlertView;
+}

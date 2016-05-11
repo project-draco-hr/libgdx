@@ -8,6 +8,8 @@ case ANDROID:
 return androidDependencies;
 case IOS:
 return iosDependencies;
+case IOSMOE:
+return iosMoeDependencies;
 case HTML:
 return gwtDependencies;
 }
