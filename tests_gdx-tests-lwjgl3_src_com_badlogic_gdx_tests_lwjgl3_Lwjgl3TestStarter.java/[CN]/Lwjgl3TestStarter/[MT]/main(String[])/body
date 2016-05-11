@@ -1,0 +1,6 @@
+{
+  System.setProperty("java.awt.headless","true");
+  Lwjgl3ApplicationConfiguration config=new Lwjgl3ApplicationConfiguration();
+  config.setWindowedMode(640,480);
+  new Lwjgl3Application(new TestChooser(),config);
+}
