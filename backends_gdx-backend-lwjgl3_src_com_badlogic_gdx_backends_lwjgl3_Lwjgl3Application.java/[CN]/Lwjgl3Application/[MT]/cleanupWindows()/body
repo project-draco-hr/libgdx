@@ -1,0 +1,6 @@
+{
+  for (  Lwjgl3Window window : windows) {
+    window.dispose();
+  }
+  windows.clear();
+}
