@@ -1,6 +1,4 @@
 {
   IOSApplicationConfiguration config=new IOSApplicationConfiguration();
-  config.useAccelerometer=false;
-  config.useGL30=true;
   return new IOSApplication(new BulletTestCollection(),config);
 }
