@@ -1,0 +1,11 @@
+{
+  return new Clipboard(){
+    @Override public void setContents(    String content){
+      UIPasteboard.generalPasteboard().setString(content);
+    }
+    @Override public String getContents(){
+      return UIPasteboard.generalPasteboard().string();
+    }
+  }
+;
+}

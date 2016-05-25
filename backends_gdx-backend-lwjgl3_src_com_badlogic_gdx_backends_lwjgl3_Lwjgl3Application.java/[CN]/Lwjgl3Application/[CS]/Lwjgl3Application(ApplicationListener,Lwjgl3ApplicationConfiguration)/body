@@ -22,6 +22,7 @@
   windows.add(window);
   try {
     loop();
+    cleanupWindows();
   }
  catch (  Throwable t) {
     if (t instanceof RuntimeException)     throw (RuntimeException)t;

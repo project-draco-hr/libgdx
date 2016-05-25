@@ -1,0 +1,9 @@
+{
+  Gdx.app.debug("IOSApplication","resumed");
+  OALAudioSession.sharedInstance().forceEndInterruption();
+  if (config.allowIpod) {
+    OALSimpleAudio.sharedInstance().setUseHardwareIfAvailable(false);
+  }
+  graphics.makeCurrent();
+  graphics.resume();
+}

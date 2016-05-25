@@ -1,0 +1,6 @@
+{
+  if (app.uiApp.statusBarOrientation() == UIDeviceOrientation.LandscapeLeft)   return 270;
+  if (app.uiApp.statusBarOrientation() == UIDeviceOrientation.PortraitUpsideDown)   return 180;
+  if (app.uiApp.statusBarOrientation() == UIDeviceOrientation.LandscapeRight)   return 90;
+  return 0;
+}

@@ -1,0 +1,8 @@
+{
+  OALSimpleAudio audio=OALSimpleAudio.sharedInstance();
+  if (audio != null) {
+    audio.setAllowIpod(config.allowIpod);
+    audio.setHonorSilentSwitch(true);
+  }
+ else   Gdx.app.error("IOSAudio","No OALSimpleAudio instance available, audio will not be availabe");
+}

@@ -1,0 +1,12 @@
+{
+  if (config.useAccelerometer) {
+    motionManager.setAccelerometerUpdateInterval(config.accelerometerUpdate);
+    CMMotionManager.Block_startAccelerometerUpdatesToQueueWithHandler handler=new CMMotionManager.Block_startAccelerometerUpdatesToQueueWithHandler(){
+      @Override public void call_startAccelerometerUpdatesToQueueWithHandler(      CMAccelerometerData cmAccelerometerData,      NSError nsError){
+        updateAccelerometer(cmAccelerometerData);
+      }
+    }
+;
+    motionManager.startAccelerometerUpdatesToQueueWithHandler(NSOperationQueue.alloc().init(),handler);
+  }
+}

@@ -1,0 +1,10 @@
+{
+  if (textfield == null)   createDefaultTextField();
+  if (visible) {
+    textfield.becomeFirstResponder();
+    textfield.setDelegate(textDelegate);
+  }
+ else {
+    textfield.resignFirstResponder();
+  }
+}

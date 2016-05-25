@@ -1,0 +1,35 @@
+{
+  final float eX=(float)data.magneticField().x();
+  final float eY=(float)data.magneticField().y();
+  final float eZ=(float)data.magneticField().z();
+  float gX=acceleration[0];
+  float gY=acceleration[1];
+  float gZ=acceleration[2];
+  float cX=eY * gZ - eZ * gY;
+  float cY=eZ * gX - eX * gZ;
+  float cZ=eX * gY - eY * gX;
+  final float normal=(float)Math.sqrt(cX * cX + cY * cY + cZ * cZ);
+  final float invertC=1.0f / normal;
+  cX*=invertC;
+  cY*=invertC;
+  cZ*=invertC;
+  final float invertG=1.0f / (float)Math.sqrt(gX * gX + gY * gY + gZ * gZ);
+  gX*=invertG;
+  gY*=invertG;
+  gZ*=invertG;
+  final float mX=gY * cZ - gZ * cY;
+  final float mY=gZ * cX - gX * cZ;
+  final float mZ=gX * cY - gY * cX;
+  R[0]=cX;
+  R[1]=cY;
+  R[2]=cZ;
+  R[3]=mX;
+  R[4]=mY;
+  R[5]=mZ;
+  R[6]=gX;
+  R[7]=gY;
+  R[8]=gZ;
+  rotation[0]=(float)Math.atan2(R[1],R[4]) * MathUtils.radDeg;
+  rotation[1]=(float)Math.asin(-R[7]) * MathUtils.radDeg;
+  rotation[2]=(float)Math.atan2(-R[6],R[8]) * MathUtils.radDeg;
+}

@@ -1,0 +1,8 @@
+{
+  float x=(float)data.acceleration().x() * 10f;
+  float y=(float)data.acceleration().y() * 10f;
+  float z=(float)data.acceleration().z() * 10f;
+  acceleration[0]=-x;
+  acceleration[1]=-y;
+  acceleration[2]=-z;
+}

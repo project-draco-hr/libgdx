@@ -1,0 +1,12 @@
+{
+  if (motionManager.isMagnetometerAvailable() && config.useCompass)   compassSupported=true;
+ else   return;
+  motionManager.setMagnetometerUpdateInterval(config.magnetometerUpdate);
+  CMMotionManager.Block_startMagnetometerUpdatesToQueueWithHandler handler=new CMMotionManager.Block_startMagnetometerUpdatesToQueueWithHandler(){
+    @Override public void call_startMagnetometerUpdatesToQueueWithHandler(    CMMagnetometerData cmMagnetometerData,    NSError nsError){
+      updateRotation(cmMagnetometerData);
+    }
+  }
+;
+  motionManager.startMagnetometerUpdatesToQueueWithHandler(NSOperationQueue.alloc().init(),handler);
+}

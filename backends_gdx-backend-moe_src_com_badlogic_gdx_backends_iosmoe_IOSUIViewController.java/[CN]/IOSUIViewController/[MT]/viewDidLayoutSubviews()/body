@@ -1,0 +1,10 @@
+{
+  super.viewDidLayoutSubviews();
+  CGRect bounds=app.getBounds();
+  graphics.width=(int)bounds.size().width();
+  graphics.height=(int)bounds.size().height();
+  graphics.makeCurrent();
+  if (app.graphics.created) {
+    app.listener.resize(graphics.width,graphics.height);
+  }
+}
