@@ -1,6 +1,7 @@
 {
   boolean added=false;
   snapshot();
+  lastSelected=null;
   selected.clear();
   for (int i=0, n=items.size; i < n; i++) {
     T item=items.get(i);
@@ -8,6 +9,6 @@
     if (selected.add(item))     added=true;
   }
   if (added && programmaticChangeEvents && fireChangeEvent())   revert();
- else   lastSelected=items.peek();
+ else   if (items.size > 0)   lastSelected=items.peek();
   cleanup();
 }
