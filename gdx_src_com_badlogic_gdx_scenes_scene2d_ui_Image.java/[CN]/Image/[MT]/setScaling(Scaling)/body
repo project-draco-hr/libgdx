@@ -1,4 +1,5 @@
 {
   if (scaling == null)   throw new IllegalArgumentException("scaling cannot be null.");
   this.scaling=scaling;
+  invalidate();
 }
