@@ -1,7 +1,19 @@
 {
-  selection=new Selection();
-  selection.setActor(this);
-  selection.setMultiple(true);
-  setStyle(style);
-  initialize();
+  selection=new Selection<Node>(){
+    protected void changed(){
+switch (size()) {
+case 0:
+        rangeStart=null;
+      break;
+case 1:
+    rangeStart=first();
+  break;
+}
+}
+}
+;
+selection.setActor(this);
+selection.setMultiple(true);
+setStyle(style);
+initialize();
 }

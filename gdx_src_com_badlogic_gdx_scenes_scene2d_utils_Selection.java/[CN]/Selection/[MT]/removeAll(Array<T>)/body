@@ -6,7 +6,12 @@
     if (item == null)     throw new IllegalArgumentException("item cannot be null.");
     if (selected.remove(item))     removed=true;
   }
-  if (removed && programmaticChangeEvents && fireChangeEvent())   revert();
- else   lastSelected=null;
+  if (removed) {
+    if (programmaticChangeEvents && fireChangeEvent())     revert();
+ else {
+      lastSelected=null;
+      changed();
+    }
+  }
   cleanup();
 }

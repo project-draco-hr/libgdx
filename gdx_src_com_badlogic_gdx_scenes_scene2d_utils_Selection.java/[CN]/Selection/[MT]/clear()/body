@@ -3,6 +3,9 @@
   snapshot();
   selected.clear();
   if (programmaticChangeEvents && fireChangeEvent())   revert();
- else   lastSelected=null;
+ else {
+    lastSelected=null;
+    changed();
+  }
   cleanup();
 }

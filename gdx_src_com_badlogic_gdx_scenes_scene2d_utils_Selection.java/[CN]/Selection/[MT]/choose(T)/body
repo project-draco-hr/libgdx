@@ -19,6 +19,7 @@
       lastSelected=item;
     }
     if (fireChangeEvent())     revert();
+ else     changed();
   }
   finally {
     cleanup();

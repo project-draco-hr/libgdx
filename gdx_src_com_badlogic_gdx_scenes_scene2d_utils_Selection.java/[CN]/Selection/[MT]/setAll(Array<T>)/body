@@ -8,7 +8,12 @@
     if (item == null)     throw new IllegalArgumentException("item cannot be null.");
     if (selected.add(item))     added=true;
   }
-  if (added && programmaticChangeEvents && fireChangeEvent())   revert();
- else   if (items.size > 0)   lastSelected=items.peek();
+  if (added) {
+    if (programmaticChangeEvents && fireChangeEvent())     revert();
+ else     if (items.size > 0) {
+      lastSelected=items.peek();
+      changed();
+    }
+  }
   cleanup();
 }

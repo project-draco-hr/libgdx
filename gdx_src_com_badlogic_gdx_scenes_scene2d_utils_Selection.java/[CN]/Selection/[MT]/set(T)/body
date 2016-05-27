@@ -5,6 +5,9 @@
   selected.clear();
   selected.add(item);
   if (programmaticChangeEvents && fireChangeEvent())   revert();
- else   lastSelected=item;
+ else {
+    lastSelected=item;
+    changed();
+  }
   cleanup();
 }
