@@ -1,5 +1,5 @@
 {
-  if (GLFW.glfwJoystickPresent(index) == GLFW.GLFW_FALSE) {
+  if (!GLFW.glfwJoystickPresent(index)) {
     manager.disconnected(this);
     return;
   }

@@ -3,7 +3,7 @@
     Lwjgl3NativesLoader.load();
     errorCallback=GLFWErrorCallback.createPrint(System.err);
     GLFW.glfwSetErrorCallback(errorCallback);
-    if (GLFW.glfwInit() != GLFW.GLFW_TRUE) {
+    if (!GLFW.glfwInit()) {
       throw new GdxRuntimeException("Unable to initialize GLFW");
     }
   }

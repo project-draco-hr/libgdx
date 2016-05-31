@@ -3,6 +3,6 @@
   if (audio instanceof OpenALAudio) {
     ((OpenALAudio)audio).dispose();
   }
-  errorCallback.release();
+  errorCallback.free();
   GLFW.glfwTerminate();
 }
