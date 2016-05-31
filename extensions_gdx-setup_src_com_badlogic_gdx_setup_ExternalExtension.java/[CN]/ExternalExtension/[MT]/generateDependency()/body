@@ -1,4 +1,4 @@
 {
-  Dependency dep=new Dependency(name,gwtInherits,getPlatformDependencies("core"),getPlatformDependencies("desktop"),getPlatformDependencies("android"),getPlatformDependencies("ios"),getPlatformDependencies("html"));
+  Dependency dep=new Dependency(name,gwtInherits,getPlatformDependencies("core"),getPlatformDependencies("desktop"),getPlatformDependencies("android"),getPlatformDependencies("ios"),getPlatformDependencies("ios-moe"),getPlatformDependencies("html"));
   return dep;
 }
