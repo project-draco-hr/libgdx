@@ -14,7 +14,7 @@
       GLFW.glfwMakeContextCurrent(window.getWindowHandle());
       currentWindow=window;
 synchronized (lifecycleListeners) {
-        window.update(lifecycleListeners);
+        window.update();
       }
       if (window.shouldClose()) {
         closedWindows.add(window);
@@ -30,6 +30,15 @@ synchronized (runnables) {
       runnable.run();
     }
     for (    Lwjgl3Window closedWindow : closedWindows) {
+      if (windows.size == 1) {
+        Iterator<LifecycleListener> it=lifecycleListeners.iterator();
+        while (it.hasNext()) {
+          LifecycleListener l=it.next();
+          l.pause();
+          l.dispose();
+          it.remove();
+        }
+      }
       closedWindow.dispose();
       windows.removeValue(closedWindow,false);
     }
