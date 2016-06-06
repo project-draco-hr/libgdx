@@ -1,4 +1,10 @@
 {
+synchronized (lifecycleListeners) {
+    for (    LifecycleListener lifecycleListener : lifecycleListeners) {
+      lifecycleListener.pause();
+      lifecycleListener.dispose();
+    }
+  }
   for (  Lwjgl3Window window : windows) {
     window.dispose();
   }

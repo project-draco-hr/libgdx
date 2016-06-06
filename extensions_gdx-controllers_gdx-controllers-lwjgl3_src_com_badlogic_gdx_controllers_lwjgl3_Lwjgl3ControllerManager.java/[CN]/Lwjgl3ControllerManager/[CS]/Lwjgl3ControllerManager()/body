@@ -1,6 +1,6 @@
 {
   for (int i=GLFW.GLFW_JOYSTICK_1; i < GLFW.GLFW_JOYSTICK_LAST; i++) {
-    if (GLFW.glfwJoystickPresent(i) == GLFW.GLFW_TRUE) {
+    if (GLFW.glfwJoystickPresent(i)) {
       controllers.add(new Lwjgl3Controller(this,i));
     }
   }

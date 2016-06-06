@@ -1,3 +1,3 @@
 {
-  return GLFW.glfwWindowShouldClose(windowHandle) == GLFW.GLFW_TRUE;
+  return GLFW.glfwWindowShouldClose(windowHandle);
 }

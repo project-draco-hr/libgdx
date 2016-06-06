@@ -9,8 +9,8 @@
   GLFW.glfwSetWindowCloseCallback(windowHandle,null);
   GLFW.glfwSetDropCallback(windowHandle,null);
   GLFW.glfwDestroyWindow(windowHandle);
-  focusCallback.release();
-  iconifyCallback.release();
-  closeCallback.release();
-  dropCallback.release();
+  focusCallback.free();
+  iconifyCallback.free();
+  closeCallback.free();
+  dropCallback.free();
 }
