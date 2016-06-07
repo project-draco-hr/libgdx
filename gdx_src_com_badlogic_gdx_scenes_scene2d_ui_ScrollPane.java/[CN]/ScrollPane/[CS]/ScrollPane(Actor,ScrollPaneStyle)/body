@@ -78,15 +78,15 @@
       amountX-=deltaX;
       amountY+=deltaY;
       clamp();
-      if (cancelTouchFocus)       cancelTouchFocus();
+      if (cancelTouchFocus && ((scrollX && deltaX != 0) || (scrollY && deltaY != 0)))       cancelTouchFocus();
     }
     public void fling(    InputEvent event,    float x,    float y,    int button){
-      if (Math.abs(x) > 150) {
+      if (Math.abs(x) > 150 && scrollX) {
         flingTimer=flingTime;
         velocityX=x;
         if (cancelTouchFocus)         cancelTouchFocus();
       }
-      if (Math.abs(y) > 150) {
+      if (Math.abs(y) > 150 && scrollY) {
         flingTimer=flingTime;
         velocityY=-y;
         if (cancelTouchFocus)         cancelTouchFocus();
