@@ -17,5 +17,8 @@
   if (bg != null)   prefWidth+=bg.getLeftWidth() + bg.getRightWidth();
   ListStyle listStyle=style.listStyle;
   ScrollPaneStyle scrollStyle=style.scrollStyle;
-  prefWidth=Math.max(prefWidth,maxItemWidth + (scrollStyle.background == null ? 0 : scrollStyle.background.getLeftWidth() + scrollStyle.background.getRightWidth()) + listStyle.selection.getLeftWidth()+ listStyle.selection.getRightWidth()+ Math.max(style.scrollStyle.vScroll != null ? style.scrollStyle.vScroll.getMinWidth() : 0,style.scrollStyle.vScrollKnob != null ? style.scrollStyle.vScrollKnob.getMinWidth() : 0));
+  float listWidth=maxItemWidth + listStyle.selection.getLeftWidth() + listStyle.selection.getRightWidth();
+  if (scrollStyle.background != null)   listWidth+=scrollStyle.background.getLeftWidth() + scrollStyle.background.getRightWidth();
+  if (selectBoxList == null || !selectBoxList.disableY)   listWidth+=Math.max(style.scrollStyle.vScroll != null ? style.scrollStyle.vScroll.getMinWidth() : 0,style.scrollStyle.vScrollKnob != null ? style.scrollStyle.vScrollKnob.getMinWidth() : 0);
+  prefWidth=Math.max(prefWidth,listWidth);
 }

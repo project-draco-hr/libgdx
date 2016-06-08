@@ -26,10 +26,7 @@
   setHeight(height);
   validate();
   float width=Math.max(getPrefWidth(),selectBox.getWidth());
-  if (getPrefHeight() > height)   width+=getScrollBarWidth();
-  if (scrollPaneBackground != null) {
-    width+=Math.max(0,scrollPaneBackground.getRightWidth() - scrollPaneBackground.getLeftWidth());
-  }
+  if (getPrefHeight() > height && !disableY)   width+=getScrollBarWidth();
   setWidth(width);
   validate();
   scrollTo(0,list.getHeight() - selectBox.getSelectedIndex() * itemHeight - itemHeight / 2,0,0,true,true);
