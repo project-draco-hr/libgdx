@@ -1,12 +1,14 @@
 {
   validate();
-  boolean isPressed=isPressed();
   boolean isDisabled=isDisabled();
+  boolean isPressed=isPressed();
+  boolean isChecked=isChecked();
+  boolean isOver=isOver();
   Drawable background=null;
   if (isDisabled && style.disabled != null)   background=style.disabled;
  else   if (isPressed && style.down != null)   background=style.down;
- else   if (isChecked && style.checked != null)   background=(style.checkedOver != null && isOver()) ? style.checkedOver : style.checked;
- else   if (isOver() && style.over != null)   background=style.over;
+ else   if (isChecked && style.checked != null)   background=(style.checkedOver != null && isOver) ? style.checkedOver : style.checked;
+ else   if (isOver && style.over != null)   background=style.over;
  else   if (style.up != null)   background=style.up;
   setBackground(background);
   float offsetX=0, offsetY=0;
