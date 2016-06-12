@@ -2,12 +2,19 @@
   Stage stage=getStage();
   if (stage == null)   return;
   getParent().localToStageCoordinates(tmp1.set(getX(),getY()));
-  TextField textField=findNextTextField(stage.getActors(),null,tmp2,tmp1,up);
-  if (textField == null) {
-    if (up)     tmp1.set(Float.MIN_VALUE,Float.MIN_VALUE);
- else     tmp1.set(Float.MAX_VALUE,Float.MAX_VALUE);
-    textField=findNextTextField(getStage().getActors(),null,tmp2,tmp1,up);
+  TextField current=this;
+  while (true) {
+    TextField textField=current.findNextTextField(stage.getActors(),null,tmp2,tmp1,up);
+    if (textField == null) {
+      if (up)       tmp1.set(Float.MIN_VALUE,Float.MIN_VALUE);
+ else       tmp1.set(Float.MAX_VALUE,Float.MAX_VALUE);
+      textField=current.findNextTextField(getStage().getActors(),null,tmp2,tmp1,up);
+    }
+    if (textField == null) {
+      Gdx.input.setOnscreenKeyboardVisible(false);
+      break;
+    }
+    if (stage.setKeyboardFocus(textField))     break;
+    current=textField;
   }
-  if (textField != null)   stage.setKeyboardFocus(textField);
- else   Gdx.input.setOnscreenKeyboardVisible(false);
 }
