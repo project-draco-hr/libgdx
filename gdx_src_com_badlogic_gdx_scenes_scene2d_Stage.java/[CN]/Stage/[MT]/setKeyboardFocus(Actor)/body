@@ -1,5 +1,5 @@
 {
-  if (keyboardFocus == actor)   return;
+  if (keyboardFocus == actor)   return true;
   FocusEvent event=Pools.obtain(FocusEvent.class);
   event.setStage(this);
   event.setType(FocusEvent.Type.keyboard);
@@ -9,14 +9,17 @@
     event.setRelatedActor(actor);
     oldKeyboardFocus.fire(event);
   }
-  if (!event.isCancelled()) {
+  boolean success=!event.isCancelled();
+  if (success) {
     keyboardFocus=actor;
     if (actor != null) {
       event.setFocused(true);
       event.setRelatedActor(oldKeyboardFocus);
       actor.fire(event);
-      if (event.isCancelled())       setKeyboardFocus(oldKeyboardFocus);
+      success=!event.isCancelled();
+      if (!success)       setKeyboardFocus(oldKeyboardFocus);
     }
   }
   Pools.free(event);
+  return success;
 }

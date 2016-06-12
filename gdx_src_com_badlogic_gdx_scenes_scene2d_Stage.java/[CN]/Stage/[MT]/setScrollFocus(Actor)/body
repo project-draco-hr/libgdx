@@ -1,5 +1,5 @@
 {
-  if (scrollFocus == actor)   return;
+  if (scrollFocus == actor)   return true;
   FocusEvent event=Pools.obtain(FocusEvent.class);
   event.setStage(this);
   event.setType(FocusEvent.Type.scroll);
@@ -9,14 +9,17 @@
     event.setRelatedActor(actor);
     oldScrollFocus.fire(event);
   }
-  if (!event.isCancelled()) {
+  boolean success=!event.isCancelled();
+  if (success) {
     scrollFocus=actor;
     if (actor != null) {
       event.setFocused(true);
       event.setRelatedActor(oldScrollFocus);
       actor.fire(event);
-      if (event.isCancelled())       setScrollFocus(oldScrollFocus);
+      success=!event.isCancelled();
+      if (success)       setScrollFocus(oldScrollFocus);
     }
   }
   Pools.free(event);
+  return success;
 }
