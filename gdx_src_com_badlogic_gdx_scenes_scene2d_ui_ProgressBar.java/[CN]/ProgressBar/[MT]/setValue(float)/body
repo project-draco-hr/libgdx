@@ -1,6 +1,5 @@
 {
   value=clamp(Math.round(value / stepSize) * stepSize);
-  if (!shiftIgnoresSnap || (!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT) && !Gdx.input.isKeyPressed(Keys.SHIFT_RIGHT)))   value=snap(value);
   float oldValue=this.value;
   if (value == oldValue)   return false;
   float oldVisualValue=getVisualValue();
