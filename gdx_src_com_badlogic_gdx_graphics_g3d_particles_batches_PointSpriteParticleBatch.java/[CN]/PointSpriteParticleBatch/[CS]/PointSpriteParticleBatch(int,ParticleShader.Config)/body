@@ -1,0 +1,8 @@
+{
+  super(PointSpriteControllerRenderData.class);
+  if (!pointSpritesEnabled)   enablePointSprites();
+  allocRenderable();
+  ensureCapacity(capacity);
+  renderable.shader=new ParticleShader(renderable,shaderConfig);
+  renderable.shader.init();
+}
