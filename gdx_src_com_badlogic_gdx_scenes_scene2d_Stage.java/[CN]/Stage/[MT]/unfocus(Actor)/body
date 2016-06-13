@@ -1,5 +1,5 @@
 {
   cancelTouchFocus(actor);
-  if (scrollFocus != null && scrollFocus.isDescendantOf(actor))   scrollFocus=null;
-  if (keyboardFocus != null && keyboardFocus.isDescendantOf(actor))   keyboardFocus=null;
+  if (scrollFocus != null && scrollFocus.isDescendantOf(actor))   setScrollFocus(null);
+  if (keyboardFocus != null && keyboardFocus.isDescendantOf(actor))   setKeyboardFocus(null);
 }
