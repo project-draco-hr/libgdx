@@ -1,0 +1,4 @@
+{
+  long cPtr=SoftbodyJNI.btSoftBody_getLink(swigCPtr,this,idx);
+  return (cPtr == 0) ? null : new btSoftBody.Link(cPtr,false);
+}
