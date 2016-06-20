@@ -5,6 +5,7 @@
     JniSection section=iter.next();
     if (section.getNativeCode().startsWith("JNI"))     iter.remove();
     if (section.getNativeCode().startsWith("-{"))     iter.remove();
+    if (!CustomIgnoreTag.isEmpty() && section.getNativeCode().startsWith(CustomIgnoreTag))     iter.remove();
   }
   return sections;
 }
