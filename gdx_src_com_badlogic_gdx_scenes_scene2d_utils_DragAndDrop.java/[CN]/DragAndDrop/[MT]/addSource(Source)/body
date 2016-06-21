@@ -38,9 +38,7 @@
         if (target != null)         target.reset(source,payload);
         target=newTarget;
       }
-      if (newTarget != null) {
-        isValidTarget=newTarget.drag(source,payload,tmpVector.x,tmpVector.y,pointer);
-      }
+      if (newTarget != null)       isValidTarget=newTarget.drag(source,payload,tmpVector.x,tmpVector.y,pointer);
       if (dragActor != null)       dragActor.setTouchable(dragActorTouchable);
       Actor actor=null;
       if (target != null)       actor=isValidTarget ? payload.validDragActor : payload.invalidDragActor;
