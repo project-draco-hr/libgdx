@@ -1,13 +1,18 @@
 {
   window.getInput().resetPollingStates();
-  boolean result=false;
+  Lwjgl3DisplayMode newMode=(Lwjgl3DisplayMode)displayMode;
   if (isFullscreen()) {
-    GLFW.glfwSetWindowSize(window.getWindowHandle(),displayMode.width,displayMode.height);
-    result=true;
+    Lwjgl3DisplayMode currentMode=(Lwjgl3DisplayMode)getDisplayMode();
+    if (currentMode.getMonitor() == newMode.getMonitor() && currentMode.refreshRate == newMode.refreshRate) {
+      GLFW.glfwSetWindowSize(window.getWindowHandle(),newMode.width,newMode.height);
+    }
+ else {
+      GLFW.glfwSetWindowMonitor(window.getWindowHandle(),newMode.getMonitor(),0,0,newMode.width,newMode.height,newMode.refreshRate);
+    }
   }
  else {
-    result=recreateWindow(0,0,(Lwjgl3DisplayMode)displayMode);
+    GLFW.glfwSetWindowMonitor(window.getWindowHandle(),newMode.getMonitor(),0,0,newMode.width,newMode.height,newMode.refreshRate);
   }
   updateFramebufferInfo();
-  return result;
+  return true;
 }

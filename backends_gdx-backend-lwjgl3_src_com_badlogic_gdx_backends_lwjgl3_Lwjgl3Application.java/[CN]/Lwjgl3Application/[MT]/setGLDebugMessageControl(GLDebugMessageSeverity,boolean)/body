@@ -1,0 +1,21 @@
+{
+  GLCapabilities caps=GL.getCapabilities();
+  final int GL_DONT_CARE=0x1100;
+  if (caps.OpenGL43) {
+    GL43.glDebugMessageControl(GL_DONT_CARE,GL_DONT_CARE,severity.gl43,(IntBuffer)null,enabled);
+    return true;
+  }
+  if (caps.GL_KHR_debug) {
+    KHRDebug.glDebugMessageControl(GL_DONT_CARE,GL_DONT_CARE,severity.khr,(IntBuffer)null,enabled);
+    return true;
+  }
+  if (caps.GL_ARB_debug_output && severity.arb != -1) {
+    ARBDebugOutput.glDebugMessageControlARB(GL_DONT_CARE,GL_DONT_CARE,severity.arb,(IntBuffer)null,enabled);
+    return true;
+  }
+  if (caps.GL_AMD_debug_output && severity.amd != -1) {
+    AMDDebugOutput.glDebugMessageEnableAMD(GL_DONT_CARE,severity.amd,(IntBuffer)null,enabled);
+    return true;
+  }
+  return false;
+}

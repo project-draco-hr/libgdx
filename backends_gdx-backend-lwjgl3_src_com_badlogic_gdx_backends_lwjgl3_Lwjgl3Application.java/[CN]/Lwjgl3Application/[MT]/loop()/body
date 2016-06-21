@@ -31,13 +31,12 @@ synchronized (runnables) {
     }
     for (    Lwjgl3Window closedWindow : closedWindows) {
       if (windows.size == 1) {
-        Iterator<LifecycleListener> it=lifecycleListeners.iterator();
-        while (it.hasNext()) {
-          LifecycleListener l=it.next();
+        for (int i=lifecycleListeners.size - 1; i >= 0; i--) {
+          LifecycleListener l=lifecycleListeners.get(i);
           l.pause();
           l.dispose();
-          it.remove();
         }
+        lifecycleListeners.clear();
       }
       closedWindow.dispose();
       windows.removeValue(closedWindow,false);
