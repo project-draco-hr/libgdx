@@ -4,5 +4,8 @@
     ((OpenALAudio)audio).dispose();
   }
   errorCallback.free();
+  if (glDebugCallback != null) {
+    glDebugCallback.free();
+  }
   GLFW.glfwTerminate();
 }
