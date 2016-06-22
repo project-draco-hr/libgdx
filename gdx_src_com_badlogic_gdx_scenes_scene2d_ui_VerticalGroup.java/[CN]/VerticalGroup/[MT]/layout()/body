@@ -1,35 +1,47 @@
 {
-  float spacing=this.spacing, padLeft=this.padLeft;
+  if (wrap) {
+    layoutWrapped();
+    return;
+  }
+  boolean round=this.round;
   int align=this.align;
-  boolean reverse=this.reverse, round=this.round;
-  float groupWidth=getWidth() - padLeft - padRight;
-  float y=reverse ? padBottom : getHeight() - padTop + spacing;
+  float space=this.space, padLeft=this.padLeft, fill=this.fill;
+  float columnWidth=getWidth() - padLeft - padRight, y=prefHeight - padTop + space;
+  if ((align & Align.right) != 0)   y+=getHeight() - prefHeight;
+ else   if ((align & Align.left) == 0)   y+=(getHeight() - prefHeight) / 2;
+  align=columnAlign;
   SnapshotArray<Actor> children=getChildren();
-  for (int i=0, n=children.size; i < n; i++) {
+  int i=0, n=children.size, incr=1;
+  if (reverse) {
+    i=n - 1;
+    n=-1;
+    incr=-1;
+  }
+  for (int r=0; i != n; i+=incr) {
     Actor child=children.get(i);
     float width, height;
     Layout layout=null;
     if (child instanceof Layout) {
       layout=(Layout)child;
-      if (fill > 0)       width=groupWidth * fill;
- else       width=Math.min(layout.getPrefWidth(),groupWidth);
-      width=Math.max(width,layout.getMinWidth());
-      float maxWidth=layout.getMaxWidth();
-      if (maxWidth > 0 && width > maxWidth)       width=maxWidth;
+      width=layout.getPrefWidth();
       height=layout.getPrefHeight();
     }
  else {
       width=child.getWidth();
       height=child.getHeight();
-      if (fill > 0)       width*=fill;
+    }
+    if (fill > 0)     width=columnWidth * fill;
+    if (layout != null) {
+      width=Math.max(width,layout.getMinWidth());
+      float maxWidth=layout.getMaxWidth();
+      if (maxWidth > 0 && width > maxWidth)       width=maxWidth;
     }
     float x=padLeft;
-    if ((align & Align.right) != 0)     x+=groupWidth - width;
- else     if ((align & Align.left) == 0)     x+=(groupWidth - width) / 2;
-    if (!reverse)     y-=(height + spacing);
+    if ((align & Align.top) != 0)     x+=columnWidth - width;
+ else     if ((align & Align.bottom) == 0)     x+=(columnWidth - width) / 2;
+    y-=height + space;
     if (round)     child.setBounds(Math.round(x),Math.round(y),Math.round(width),Math.round(height));
  else     child.setBounds(x,y,width,height);
-    if (reverse)     y+=(height + spacing);
     if (layout != null)     layout.validate();
   }
 }

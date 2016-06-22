@@ -1,4 +1,10 @@
 {
+  horiz.setWidth(Gdx.input.getX() - horiz.getX());
+  horizWrap.setWidth(Gdx.input.getX() - horizWrap.getX());
+  horizWrap.setHeight(200);
+  vert.setHeight(Gdx.graphics.getHeight() - Gdx.input.getY() - vert.getY());
+  vertWrap.setHeight(Gdx.graphics.getHeight() - Gdx.input.getY() - vertWrap.getY());
+  vertWrap.setWidth(200);
   group2.setBounds(150,150,150,150);
   group2.setRotation(45);
   group2.setOrigin(150,150);

@@ -1,35 +1,47 @@
 {
-  float spacing=this.spacing, padBottom=this.padBottom;
+  if (wrap) {
+    layoutWrapped();
+    return;
+  }
+  boolean round=this.round;
   int align=this.align;
-  boolean reverse=this.reverse, round=this.round;
-  float groupHeight=getHeight() - padTop - padBottom;
-  float x=!reverse ? padLeft : getWidth() - padRight + spacing;
+  float space=this.space, padBottom=this.padBottom, fill=this.fill;
+  float rowHeight=getHeight() - padTop - padBottom, x=padLeft;
+  if ((align & Align.right) != 0)   x+=getWidth() - prefWidth;
+ else   if ((align & Align.left) == 0)   x+=(getWidth() - prefWidth) / 2;
+  align=this.rowAlign;
   SnapshotArray<Actor> children=getChildren();
-  for (int i=0, n=children.size; i < n; i++) {
+  int i=0, n=children.size, incr=1;
+  if (reverse) {
+    i=n - 1;
+    n=-1;
+    incr=-1;
+  }
+  for (int r=0; i != n; i+=incr) {
     Actor child=children.get(i);
     float width, height;
     Layout layout=null;
     if (child instanceof Layout) {
       layout=(Layout)child;
-      if (fill > 0)       height=groupHeight * fill;
- else       height=Math.min(layout.getPrefHeight(),groupHeight);
-      height=Math.max(height,layout.getMinHeight());
-      float maxHeight=layout.getMaxHeight();
-      if (maxHeight > 0 && height > maxHeight)       height=maxHeight;
       width=layout.getPrefWidth();
+      height=layout.getPrefHeight();
     }
  else {
       width=child.getWidth();
       height=child.getHeight();
-      if (fill > 0)       height*=fill;
+    }
+    if (fill > 0)     height=rowHeight * fill;
+    if (layout != null) {
+      height=Math.max(height,layout.getMinHeight());
+      float maxHeight=layout.getMaxHeight();
+      if (maxHeight > 0 && height > maxHeight)       height=maxHeight;
     }
     float y=padBottom;
-    if ((align & Align.top) != 0)     y+=groupHeight - height;
- else     if ((align & Align.bottom) == 0)     y+=(groupHeight - height) / 2;
-    if (reverse)     x-=(width + spacing);
+    if ((align & Align.top) != 0)     y+=rowHeight - height;
+ else     if ((align & Align.bottom) == 0)     y+=(rowHeight - height) / 2;
     if (round)     child.setBounds(Math.round(x),Math.round(y),Math.round(width),Math.round(height));
  else     child.setBounds(x,y,width,height);
-    if (!reverse)     x+=(width + spacing);
+    x+=width + space;
     if (layout != null)     layout.validate();
   }
 }

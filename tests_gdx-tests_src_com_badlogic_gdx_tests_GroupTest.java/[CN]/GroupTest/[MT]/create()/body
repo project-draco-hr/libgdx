@@ -11,4 +11,45 @@
   group1=new TestGroup("group1");
   group1.setTransform(true);
   group2.addActor(group1);
+  LabelStyle style=new LabelStyle();
+  style.font=new BitmapFont();
+  Texture texture=new Texture(Gdx.files.internal("data/badlogic.jpg"));
+  horiz=new HorizontalGroup().pad(10,20,30,40).top().space(5).reverse();
+  for (int i=1; i <= 15; i++) {
+    horiz.addActor(new Label(i + ",",style));
+    if (i == 7)     horiz.addActor(new Container(new Image(texture)).size(10));
+  }
+  horiz.addActor(new Container(new Image(texture)).size(30));
+  horiz.debug();
+  horiz.setPosition(10,10);
+  horiz.pack();
+  stage.addActor(horiz);
+  horizWrap=new HorizontalGroup().wrap().pad(10,20,30,40).right().rowRight().space(5).wrapSpace(15).reverse();
+  for (int i=1; i <= 15; i++) {
+    horizWrap.addActor(new Label(i + ",",style));
+    if (i == 7)     horizWrap.addActor(new Container(new Image(texture)).prefSize(10).fill());
+  }
+  horizWrap.addActor(new Container(new Image(texture)).prefSize(30));
+  horizWrap.debug();
+  horizWrap.setBounds(10,85,150,40);
+  stage.addActor(horizWrap);
+  vert=new VerticalGroup().pad(10,20,30,40).top().space(5).reverse();
+  for (int i=1; i <= 8; i++) {
+    vert.addActor(new Label(i + ",",style));
+    if (i == 4)     vert.addActor(new Container(new Image(texture)).size(10));
+  }
+  vert.addActor(new Container(new Image(texture)).size(30));
+  vert.debug();
+  vert.setPosition(515,10);
+  vert.pack();
+  stage.addActor(vert);
+  vertWrap=new VerticalGroup().wrap().pad(10,20,30,40).bottom().columnBottom().space(5).wrapSpace(15).reverse();
+  for (int i=1; i <= 8; i++) {
+    vertWrap.addActor(new Label(i + ",",style));
+    if (i == 4)     vertWrap.addActor(new Container(new Image(texture)).prefSize(10).fill());
+  }
+  vertWrap.addActor(new Container(new Image(texture)).prefSize(30));
+  vertWrap.debug();
+  vertWrap.setBounds(610,10,150,40);
+  stage.addActor(vertWrap);
 }

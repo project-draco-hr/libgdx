@@ -3,17 +3,64 @@
   SnapshotArray<Actor> children=getChildren();
   int n=children.size;
   prefWidth=0;
-  prefHeight=padTop + padBottom + spacing * (n - 1);
-  for (int i=0; i < n; i++) {
-    Actor child=children.get(i);
-    if (child instanceof Layout) {
-      Layout layout=(Layout)child;
-      prefWidth=Math.max(prefWidth,layout.getPrefWidth());
-      prefHeight+=layout.getPrefHeight();
+  if (wrap) {
+    prefHeight=0;
+    if (columnSizes == null)     columnSizes=new FloatArray();
+ else     columnSizes.clear();
+    FloatArray columnSizes=this.columnSizes;
+    float space=this.space, wrapSpace=this.wrapSpace;
+    float pad=padTop + padBottom, groupHeight=getHeight() - pad, x=0, y=0, columnWidth=0;
+    int i=0, incr=1;
+    if (reverse) {
+      i=n - 1;
+      n=-1;
+      incr=-1;
     }
+    for (; i != n; i+=incr) {
+      Actor child=children.get(i);
+      float width, height;
+      if (child instanceof Layout) {
+        Layout layout=(Layout)child;
+        width=layout.getPrefWidth();
+        height=layout.getPrefHeight();
+      }
  else {
-      prefWidth=Math.max(prefWidth,child.getWidth());
-      prefHeight+=child.getHeight();
+        width=child.getWidth();
+        height=child.getHeight();
+      }
+      float incrY=height + (y > 0 ? space : 0);
+      if (y + incrY > groupHeight && y > 0) {
+        columnSizes.add(y);
+        columnSizes.add(columnWidth);
+        prefHeight=Math.max(prefHeight,y + pad);
+        if (x > 0)         x+=wrapSpace;
+        x+=columnWidth;
+        columnWidth=0;
+        y=0;
+        incrY=height;
+      }
+      y+=incrY;
+      columnWidth=Math.max(columnWidth,width);
+    }
+    columnSizes.add(y);
+    columnSizes.add(columnWidth);
+    prefHeight=Math.max(prefHeight,y + pad);
+    if (x > 0)     x+=wrapSpace;
+    prefWidth=Math.max(prefWidth,x + columnWidth);
+  }
+ else {
+    prefHeight=padTop + padBottom + space * (n - 1);
+    for (int i=0; i < n; i++) {
+      Actor child=children.get(i);
+      if (child instanceof Layout) {
+        Layout layout=(Layout)child;
+        prefWidth=Math.max(prefWidth,layout.getPrefWidth());
+        prefHeight+=layout.getPrefHeight();
+      }
+ else {
+        prefWidth=Math.max(prefWidth,child.getWidth());
+        prefHeight+=child.getHeight();
+      }
     }
   }
   prefWidth+=padLeft + padRight;
