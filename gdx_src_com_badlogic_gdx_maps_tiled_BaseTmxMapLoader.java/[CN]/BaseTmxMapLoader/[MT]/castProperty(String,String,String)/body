@@ -1,0 +1,17 @@
+{
+  if (type == null) {
+    return value;
+  }
+ else   if (type.equals("int")) {
+    return Integer.valueOf(value);
+  }
+ else   if (type.equals("float")) {
+    return Float.valueOf(value);
+  }
+ else   if (type.equals("bool")) {
+    return Boolean.valueOf(value);
+  }
+ else {
+    throw new GdxRuntimeException("Wrong type given for property " + name + ", given : "+ type+ ", supported : string, bool, int, float");
+  }
+}
