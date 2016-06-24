@@ -1,4 +1,5 @@
 {
   WebGLUniformLocation location=gl.getUniformLocation(programs.get(program),name);
+  if (location == null)   return -1;
   return allocateUniformLocationId(program,location);
 }
