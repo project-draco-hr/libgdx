@@ -7,8 +7,8 @@
   int align=this.align;
   float space=this.space, padLeft=this.padLeft, fill=this.fill;
   float columnWidth=getWidth() - padLeft - padRight, y=prefHeight - padTop + space;
-  if ((align & Align.right) != 0)   y+=getHeight() - prefHeight;
- else   if ((align & Align.left) == 0)   y+=(getHeight() - prefHeight) / 2;
+  if ((align & Align.top) != 0)   y+=getHeight() - prefHeight;
+ else   if ((align & Align.bottom) == 0)   y+=(getHeight() - prefHeight) / 2;
   align=columnAlign;
   SnapshotArray<Actor> children=getChildren();
   int i=0, n=children.size, incr=1;
