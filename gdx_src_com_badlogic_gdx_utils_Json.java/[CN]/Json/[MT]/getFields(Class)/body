@@ -23,6 +23,7 @@
         continue;
       }
     }
+    if (ignoreDeprecated && field.isAnnotationPresent(Deprecated.class))     continue;
     nameToField.put(field.getName(),new FieldMetadata(field));
   }
   typeToFields.put(type,nameToField);
