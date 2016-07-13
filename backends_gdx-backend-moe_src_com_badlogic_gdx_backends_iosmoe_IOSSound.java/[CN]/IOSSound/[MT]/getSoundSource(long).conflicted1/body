@@ -1,0 +1,6 @@
+{
+  for (  ALSource source : sourcePool) {
+    if (source.sourceId() == soundId)     return source;
+  }
+  return null;
+}
