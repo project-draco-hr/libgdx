@@ -1,6 +1,0 @@
-{
-  ALSource source;
-  for (int i=0; i < streamIds.size; i++) {
-    if ((source=getSoundSource(streamIds.get(i))) != null)     source.stop();
-  }
-}
