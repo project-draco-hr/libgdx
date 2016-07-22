@@ -1,4 +1,4 @@
 {
   stop();
-  soundBuffer.dealloc();
+  OALSimpleAudio.sharedInstance().unloadEffect(soundPath);
 }
