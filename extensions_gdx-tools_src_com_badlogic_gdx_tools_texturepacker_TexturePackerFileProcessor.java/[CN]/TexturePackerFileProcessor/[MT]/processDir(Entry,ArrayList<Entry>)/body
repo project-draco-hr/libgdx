@@ -9,6 +9,7 @@
     parent=parent.getParentFile();
   }
   if (settings == null)   settings=defaultSettings;
+  if (settings.ignore)   return;
   if (settings.combineSubdirectories) {
     files=new FileProcessor(this){
       protected void processDir(      Entry entryDir,      ArrayList<Entry> files){
