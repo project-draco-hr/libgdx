@@ -1,4 +1,4 @@
 {
   WebGLTexture texture=gl.createTexture();
-  return allocateTextureId(texture);
+  return textures.add(texture);
 }

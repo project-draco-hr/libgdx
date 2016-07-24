@@ -1,5 +1,4 @@
 {
-  WebGLTexture texture=this.textures.get(id);
-  deallocateTextureId(id);
+  WebGLTexture texture=this.textures.remove(id);
   gl.deleteTexture(texture);
 }

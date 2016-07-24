@@ -1,4 +1,4 @@
 {
   WebGLBuffer buffer=gl.createBuffer();
-  return allocateBufferId(buffer);
+  return buffers.add(buffer);
 }

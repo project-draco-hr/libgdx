@@ -1,5 +1,7 @@
 {
-  WebGLTexture texture=gl.createTexture();
-  int id=allocateTextureId(texture);
-  textures.put(id);
+  for (int i=0; i < n; i++) {
+    WebGLTexture texture=gl.createTexture();
+    int id=this.textures.add(texture);
+    textures.put(id);
+  }
 }

@@ -1,4 +1,4 @@
 {
   WebGLFramebuffer fb=gl.createFramebuffer();
-  return allocateFrameBufferId(fb);
+  return frameBuffers.add(fb);
 }

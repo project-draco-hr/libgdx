@@ -1,4 +1,4 @@
 {
   WebGLProgram program=gl.createProgram();
-  return allocateProgramId(program);
+  return programs.add(program);
 }

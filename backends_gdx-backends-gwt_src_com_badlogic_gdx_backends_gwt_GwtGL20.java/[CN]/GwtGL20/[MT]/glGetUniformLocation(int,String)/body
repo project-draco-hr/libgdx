@@ -1,5 +1,11 @@
 {
   WebGLUniformLocation location=gl.getUniformLocation(programs.get(program),name);
   if (location == null)   return -1;
-  return allocateUniformLocationId(program,location);
+  IntMap<WebGLUniformLocation> progUniforms=uniforms.get(program);
+  if (progUniforms == null) {
+    progUniforms=IntMap.create();
+    uniforms.put(program,progUniforms);
+  }
+  int id=progUniforms.add(location);
+  return id;
 }
