@@ -1,7 +1,7 @@
 {
   for (int i=0; i < n; i++) {
     WebGLFramebuffer fb=gl.createFramebuffer();
-    int id=allocateFrameBufferId(fb);
+    int id=this.frameBuffers.add(fb);
     framebuffers.put(id);
   }
 }

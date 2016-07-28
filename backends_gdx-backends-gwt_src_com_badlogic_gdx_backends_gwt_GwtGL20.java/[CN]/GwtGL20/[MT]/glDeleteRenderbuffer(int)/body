@@ -1,5 +1,4 @@
 {
-  WebGLRenderbuffer rb=this.renderBuffers.get(id);
-  deallocateRenderBufferId(id);
+  WebGLRenderbuffer rb=this.renderBuffers.remove(id);
   gl.deleteRenderbuffer(rb);
 }

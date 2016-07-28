@@ -1,5 +1,4 @@
 {
-  WebGLShader sh=shaders.get(shader);
-  deallocateShaderId(shader);
+  WebGLShader sh=shaders.remove(shader);
   gl.deleteShader(sh);
 }

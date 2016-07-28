@@ -1,7 +1,7 @@
 {
   for (int i=0; i < n; i++) {
     WebGLRenderbuffer rb=gl.createRenderbuffer();
-    int id=allocateRenderBufferId(rb);
+    int id=this.renderBuffers.add(rb);
     renderbuffers.put(id);
   }
 }

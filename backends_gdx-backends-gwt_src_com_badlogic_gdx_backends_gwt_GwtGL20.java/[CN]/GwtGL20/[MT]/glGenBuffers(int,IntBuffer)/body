@@ -1,7 +1,7 @@
 {
   for (int i=0; i < n; i++) {
     WebGLBuffer buffer=gl.createBuffer();
-    int id=allocateBufferId(buffer);
+    int id=this.buffers.add(buffer);
     buffers.put(id);
   }
 }

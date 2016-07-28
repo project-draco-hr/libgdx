@@ -1,5 +1,6 @@
 {
   WebGLProgram prog=programs.get(program);
-  deallocateProgramId(program);
+  programs.remove(program);
+  uniforms.remove(program);
   gl.deleteProgram(prog);
 }

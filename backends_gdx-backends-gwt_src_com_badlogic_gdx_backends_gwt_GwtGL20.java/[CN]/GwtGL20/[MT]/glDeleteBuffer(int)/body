@@ -1,5 +1,4 @@
 {
-  WebGLBuffer buffer=this.buffers.get(id);
-  deallocateBufferId(id);
+  WebGLBuffer buffer=this.buffers.remove(id);
   gl.deleteBuffer(buffer);
 }
