@@ -4,7 +4,7 @@
   }
  catch (  Throwable e) {
     root.clear();
-    root.add(new Label("Sorry, your browser doesn't seem to support WebGL"));
+    root.add(getNoWebGLSupportWidget());
     return;
   }
   lastWidth=graphics.getWidth();
