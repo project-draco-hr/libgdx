@@ -1,13 +1,10 @@
 {
-  if (log == null) {
-    log=new TextArea();
+  if (log != null) {
     if (graphics != null) {
       log.setSize(graphics.getWidth() + "px","200px");
     }
  else {
       log.setSize("400px","200px");
     }
-    log.setReadOnly(true);
-    root.add(log);
   }
 }
