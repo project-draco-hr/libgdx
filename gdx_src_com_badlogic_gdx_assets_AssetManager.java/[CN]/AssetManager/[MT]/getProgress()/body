@@ -1,4 +1,8 @@
 {
   if (toLoad == 0)   return 1;
-  return Math.min(1,loaded / (float)toLoad);
+  float fractionalLoaded=(float)loaded;
+  if (peakTasks > 0) {
+    fractionalLoaded+=((peakTasks - tasks.size()) / (float)peakTasks);
+  }
+  return Math.min(1,fractionalLoaded / (float)toLoad);
 }

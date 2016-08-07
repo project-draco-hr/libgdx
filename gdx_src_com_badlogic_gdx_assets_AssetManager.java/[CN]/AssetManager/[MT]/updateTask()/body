@@ -9,7 +9,10 @@
     taskFailed(task.assetDesc,ex);
   }
   if (complete) {
-    if (tasks.size() == 1)     loaded++;
+    if (tasks.size() == 1) {
+      loaded++;
+      peakTasks=0;
+    }
     tasks.pop();
     if (task.cancel)     return true;
     addAsset(task.assetDesc.fileName,task.assetDesc.type,task.getAsset());

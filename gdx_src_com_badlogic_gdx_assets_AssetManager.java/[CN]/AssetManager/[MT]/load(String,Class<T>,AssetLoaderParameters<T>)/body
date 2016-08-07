@@ -4,6 +4,7 @@
   if (loadQueue.size == 0) {
     loaded=0;
     toLoad=0;
+    peakTasks=0;
   }
   for (int i=0; i < loadQueue.size; i++) {
     AssetDescriptor desc=loadQueue.get(i);
