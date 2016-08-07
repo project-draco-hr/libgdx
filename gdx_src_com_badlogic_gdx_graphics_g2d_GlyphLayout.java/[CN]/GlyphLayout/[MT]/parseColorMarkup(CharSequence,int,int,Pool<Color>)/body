@@ -23,7 +23,7 @@ case '#':
   }
 return -1;
 case '[':
-return -1;
+return -2;
 case ']':
 if (colorStack.size > 1) colorPool.free(colorStack.pop());
 return 0;

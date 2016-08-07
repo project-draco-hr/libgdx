@@ -36,6 +36,10 @@ case '[':
       nextColor=colorStack.peek();
       colorRun=true;
     }
+ else     if (length == -2) {
+      start++;
+      continue outer;
+    }
   }
 break;
 }
