@@ -1,0 +1,13 @@
+{
+  if (log == null) {
+    ((GwtApplication)Gdx.app).log=log=new TextArea();
+    if (Gdx.graphics != null) {
+      log.setSize(Gdx.graphics.getWidth() + "px","200px");
+    }
+ else {
+      log.setSize("400px","200px");
+    }
+    log.setReadOnly(true);
+    ((GwtApplication)Gdx.app).getRootPanel().add(log);
+  }
+}

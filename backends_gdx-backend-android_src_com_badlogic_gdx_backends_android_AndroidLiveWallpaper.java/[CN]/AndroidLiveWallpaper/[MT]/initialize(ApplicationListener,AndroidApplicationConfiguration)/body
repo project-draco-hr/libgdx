@@ -2,6 +2,7 @@
   if (this.getVersion() < MINIMUM_SDK) {
     throw new GdxRuntimeException("LibGDX requires Android API Level " + MINIMUM_SDK + " or later.");
   }
+  setApplicationLogger(new AndroidApplicationLogger());
   graphics=new AndroidGraphicsLiveWallpaper(this,config,config.resolutionStrategy == null ? new FillResolutionStrategy() : config.resolutionStrategy);
   input=AndroidInputFactory.newAndroidInput(this,this.getService(),graphics.view,config);
   audio=new AndroidAudio(this.getService(),config);

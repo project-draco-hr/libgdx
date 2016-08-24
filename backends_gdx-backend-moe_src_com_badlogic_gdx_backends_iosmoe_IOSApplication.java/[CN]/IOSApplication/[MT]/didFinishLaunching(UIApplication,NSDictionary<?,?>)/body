@@ -1,4 +1,5 @@
 {
+  setApplicationLogger(new IOSApplicationLogger());
   Gdx.app=this;
   this.uiApp=uiApp;
   UIApplication.sharedApplication().setIdleTimerDisabled(config.preventScreenDimming);

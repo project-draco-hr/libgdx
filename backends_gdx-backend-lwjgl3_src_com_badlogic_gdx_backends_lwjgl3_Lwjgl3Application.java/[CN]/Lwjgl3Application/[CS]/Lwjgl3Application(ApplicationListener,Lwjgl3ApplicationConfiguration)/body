@@ -1,5 +1,6 @@
 {
   initializeGlfw();
+  setApplicationLogger(new Lwjgl3ApplicationLogger());
   this.config=Lwjgl3ApplicationConfiguration.copy(config);
   if (this.config.title == null)   this.config.title=listener.getClass().getSimpleName();
   Gdx.app=this;

@@ -1,0 +1,6 @@
+{
+  checkLogLabel();
+  log.setText(log.getText() + "\n" + tag+ ": "+ message+ "\n");
+  log.setCursorPos(log.getText().length() - 1);
+  System.err.println(tag + ": " + message);
+}
