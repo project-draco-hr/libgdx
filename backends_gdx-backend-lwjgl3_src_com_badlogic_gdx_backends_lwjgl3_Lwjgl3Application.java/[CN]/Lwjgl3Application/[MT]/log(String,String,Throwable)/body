@@ -1,6 +1,3 @@
 {
-  if (logLevel >= LOG_INFO) {
-    System.out.println(tag + ": " + message);
-    exception.printStackTrace(System.out);
-  }
+  if (logLevel >= LOG_INFO)   getApplicationLogger().log(tag,message,exception);
 }

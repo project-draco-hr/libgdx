@@ -1,6 +1,3 @@
 {
-  if (logLevel >= LOG_ERROR) {
-    System.err.println(tag + ": " + message);
-    exception.printStackTrace(System.err);
-  }
+  if (logLevel >= LOG_ERROR)   getApplicationLogger().error(tag,message,exception);
 }

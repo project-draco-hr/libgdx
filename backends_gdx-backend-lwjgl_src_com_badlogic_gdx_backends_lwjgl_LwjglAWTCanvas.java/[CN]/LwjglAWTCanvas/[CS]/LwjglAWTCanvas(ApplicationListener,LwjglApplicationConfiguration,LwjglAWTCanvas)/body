@@ -2,6 +2,7 @@
   this.listener=listener;
   if (config == null)   config=new LwjglApplicationConfiguration();
   LwjglNativesLoader.load();
+  setApplicationLogger(new LwjglApplicationLogger());
   instanceCount++;
   AWTGLCanvas sharedDrawable=sharedContextCanvas != null ? sharedContextCanvas.canvas : null;
   try {

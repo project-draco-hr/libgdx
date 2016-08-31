@@ -1,0 +1,4 @@
+{
+  Foundation.log("%@",new NSString("[error] " + tag + ": "+ message));
+  exception.printStackTrace();
+}

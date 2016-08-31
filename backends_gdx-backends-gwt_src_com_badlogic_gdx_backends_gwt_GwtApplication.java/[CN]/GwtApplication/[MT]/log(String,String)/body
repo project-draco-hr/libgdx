@@ -1,8 +1,3 @@
 {
-  if (logLevel >= LOG_INFO) {
-    checkLogLabel();
-    log.setText(log.getText() + "\n" + tag+ ": "+ message);
-    log.setCursorPos(log.getText().length() - 1);
-    System.out.println(tag + ": " + message);
-  }
+  if (logLevel >= LOG_INFO)   getApplicationLogger().log(tag,message);
 }

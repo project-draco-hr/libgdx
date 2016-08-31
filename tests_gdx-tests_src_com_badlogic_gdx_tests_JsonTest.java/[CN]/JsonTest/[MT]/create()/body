@@ -41,6 +41,8 @@
   roundTrip(test);
   test.stringArray.add("moo");
   roundTrip(test);
+  TestMapGraph objectGraph=new TestMapGraph();
+  testObjectGraph(objectGraph,"exoticTypeName");
   test=new Test1();
   test.map=new ObjectMap();
   roundTrip(test);

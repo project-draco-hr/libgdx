@@ -1,5 +1,6 @@
 {
   LwjglNativesLoader.load();
+  setApplicationLogger(new LwjglApplicationLogger());
   canvas=new Canvas(){
     private final Dimension minSize=new Dimension(1,1);
     public final void addNotify(){

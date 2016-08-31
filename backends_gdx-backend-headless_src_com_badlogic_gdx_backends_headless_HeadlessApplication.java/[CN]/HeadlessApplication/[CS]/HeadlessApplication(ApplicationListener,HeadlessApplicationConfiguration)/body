@@ -1,6 +1,7 @@
 {
   if (config == null)   config=new HeadlessApplicationConfiguration();
   HeadlessNativesLoader.load();
+  setApplicationLogger(new HeadlessApplicationLogger());
   this.listener=listener;
   this.files=new HeadlessFiles();
   this.net=new HeadlessNet();

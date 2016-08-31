@@ -2,7 +2,7 @@
   GwtApplication.agentInfo=computeAgentInfo();
   this.listener=createApplicationListener();
   this.config=getConfig();
-  this.log=config.log;
+  setApplicationLogger(new GwtApplicationLogger(this.config.log));
   addEventListeners();
   if (config.rootPanel != null) {
     this.root=config.rootPanel;

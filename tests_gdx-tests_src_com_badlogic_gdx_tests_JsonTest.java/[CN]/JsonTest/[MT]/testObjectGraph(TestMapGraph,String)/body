@@ -1,0 +1,18 @@
+{
+  Json json=new Json();
+  json.setTypeName(typeName);
+  json.setUsePrototypes(false);
+  json.setIgnoreUnknownFields(true);
+  json.setOutputType(OutputType.json);
+  String text=json.prettyPrint(object);
+  TestMapGraph object2=json.fromJson(TestMapGraph.class,text);
+  if (object2.map.size() != object.map.size()) {
+    throw new RuntimeException("Too many items in deserialized json map.");
+  }
+  if (object2.objectMap.size != object.objectMap.size) {
+    throw new RuntimeException("Too many items in deserialized json object map.");
+  }
+  if (object2.arrayMap.size != object.arrayMap.size) {
+    throw new RuntimeException("Too many items in deserialized json map.");
+  }
+}

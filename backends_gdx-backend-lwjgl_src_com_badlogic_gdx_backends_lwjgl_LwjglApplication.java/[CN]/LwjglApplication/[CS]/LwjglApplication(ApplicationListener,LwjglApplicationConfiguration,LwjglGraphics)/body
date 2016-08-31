@@ -1,5 +1,6 @@
 {
   LwjglNativesLoader.load();
+  setApplicationLogger(new LwjglApplicationLogger());
   if (config.title == null)   config.title=listener.getClass().getSimpleName();
   this.graphics=graphics;
   if (!LwjglApplicationConfiguration.disableAudio) {
