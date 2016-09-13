@@ -2,7 +2,7 @@
   BitmapFont font=cache.getFont();
   float oldScaleX=font.getScaleX();
   float oldScaleY=font.getScaleY();
-  if (fontScaleX != oldScaleX || fontScaleY != oldScaleY)   font.getData().setScale(fontScaleX,fontScaleY);
+  if (fontScaleChanged)   font.getData().setScale(fontScaleX,fontScaleY);
   computePrefSize();
-  if (fontScaleX != oldScaleX || fontScaleY != oldScaleY)   font.getData().setScale(oldScaleX,oldScaleY);
+  if (fontScaleChanged)   font.getData().setScale(oldScaleX,oldScaleY);
 }
