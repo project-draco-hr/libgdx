@@ -49,8 +49,8 @@
         dragActor=actor;
         stage.addActor(actor);
       }
-      float actorX=event.getStageX() + dragActorX;
-      float actorY=event.getStageY() + dragActorY - actor.getHeight();
+      float actorX=event.getStageX() - actor.getWidth() + dragActorX;
+      float actorY=event.getStageY() + dragActorY;
       if (keepWithinStage) {
         if (actorX < 0)         actorX=0;
         if (actorY < 0)         actorY=0;
