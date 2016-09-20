@@ -1,0 +1,6 @@
+{
+  if (center.isZero())   worldTransform.getTranslation(output);
+ else   if (!worldTransform.hasRotationOrScaling())   worldTransform.getTranslation(output).add(center);
+ else   output.set(center).mul(worldTransform);
+  return output;
+}

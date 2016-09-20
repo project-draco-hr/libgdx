@@ -1,0 +1,3 @@
+{
+  return !(MathUtils.isEqual(val[M00],1) && MathUtils.isEqual(val[M11],1) && MathUtils.isEqual(val[M22],1)&& MathUtils.isZero(val[M01])&& MathUtils.isZero(val[M02])&& MathUtils.isZero(val[M10])&& MathUtils.isZero(val[M12])&& MathUtils.isZero(val[M20])&& MathUtils.isZero(val[M21]));
+}
