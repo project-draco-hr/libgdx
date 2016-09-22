@@ -17,6 +17,9 @@
   settings.setGlyphPageWidth(((Number)glyphPageWidthCombo.getSelectedItem()).intValue());
   settings.setGlyphPageHeight(((Number)glyphPageHeightCombo.getSelectedItem()).intValue());
   settings.setGlyphText(sampleTextPane.getText());
+  if (nativeRadio.isSelected())   settings.setRenderType(RenderType.Native.ordinal());
+ else   if (freeTypeRadio.isSelected())   settings.setRenderType(RenderType.FreeType.ordinal());
+ else   settings.setRenderType(RenderType.Java.ordinal());
   for (Iterator iter=effectPanels.iterator(); iter.hasNext(); ) {
     EffectPanel panel=(EffectPanel)iter.next();
     settings.getEffects().add(panel.getEffect());

@@ -66,6 +66,9 @@
  else       if (name.equals("glyph.text")) {
         glyphText=value;
       }
+ else       if (name.equals(RENDER_TYPE)) {
+        renderType=Integer.parseInt(value);
+      }
  else       if (name.equals("effect.class")) {
         try {
           effects.add(Class.forName(value).newInstance());

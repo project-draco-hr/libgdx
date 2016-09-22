@@ -22,6 +22,8 @@
   out.println("glyph.page.height=" + glyphPageHeight);
   out.println("glyph.text=" + glyphText);
   out.println();
+  out.println(RENDER_TYPE + "=" + renderType);
+  out.println();
   for (Iterator iter=effects.iterator(); iter.hasNext(); ) {
     ConfigurableEffect effect=(ConfigurableEffect)iter.next();
     out.println("effect.class=" + effect.getClass().getName());
