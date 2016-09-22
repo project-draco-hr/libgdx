@@ -1,5 +1,5 @@
 {
   long glyph=getGlyph(address);
-  if (glyph == 0)   throw new GdxRuntimeException("Couldn't get glyph");
+  if (glyph == 0)   throw new GdxRuntimeException("Couldn't get glyph, FreeType error code: " + getLastErrorCode());
   return new Glyph(glyph);
 }

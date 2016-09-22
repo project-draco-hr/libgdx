@@ -1,6 +1,6 @@
 {
   new SharedLibraryLoader().load("gdx-freetype");
   long address=initFreeTypeJni();
-  if (address == 0)   throw new GdxRuntimeException("Couldn't initialize FreeType library");
+  if (address == 0)   throw new GdxRuntimeException("Couldn't initialize FreeType library, FreeType error code: " + getLastErrorCode());
  else   return new Library(address);
 }

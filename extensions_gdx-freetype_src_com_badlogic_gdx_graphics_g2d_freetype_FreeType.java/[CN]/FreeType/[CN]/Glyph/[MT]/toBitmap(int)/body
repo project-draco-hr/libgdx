@@ -1,6 +1,6 @@
 {
   long bitmap=toBitmap(address,renderMode);
-  if (bitmap == 0)   throw new GdxRuntimeException("Couldn't render glyph");
+  if (bitmap == 0)   throw new GdxRuntimeException("Couldn't render glyph, FreeType error code: " + getLastErrorCode());
   address=bitmap;
   rendered=true;
 }
